@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 351: Fossil Kabutops #9 deepened; corpus ff8d8ca)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 352: Gym Challenge Blaine's Arcanine #1 deepened; corpus ed072c3)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-second
+  catalog-history pass inside
+  `data/catalog-history/source-sets/gym_challenge_v0_1.json`:
+  `en_wotc_gym_challenge_20001016:gym2-1` Blaine's Arcanine #1 is now
+  upgraded from generated first-pass texture to a hand-authored dossier.
+  The pass also adds Blaine's Arcanine to the Gym Challenge source-set scope
+  list. Blaine's Arcanine uses local English WoC Gym Challenge #1, Blaine's
+  Growlithe #62, Blaine trainer/quiz boundary rows, Gym Heroes Blaine's
+  Growlithe boundaries, Base Set and Legendary Collection generic Arcanine /
+  Growlithe boundaries, local Japanese Challenge from the Darkness
+  ブレインのアルカニン / PMCG6-034 source lane, Blaine's Charizard #2 chase-
+  neighbor context, Pokemon TCG API Gym Challenge card and set records, and
+  bounded Bulbapedia Blaine's Arcanine / Arcanine TCG / Arcanine species /
+  Blaine / Ken Sugimori context. The dossier carries Rare Holo, card number
+  1, 90 HP, Stage 1 Fire, Heat Tackle, Firestorm 120 damage, the first-TCG-
+  attack-over-100-base-damage note, Ken Sugimori core species art, Blaine
+  owner-Pokemon grammar, Japanese Challenge from the Darkness lineage, and
+  explicit no-collapse rules for generic Arcanine, Base Set Arcanine,
+  Legendary Collection Arcanine, Blaine's Growlithe, Japanese PMCG6, and
+  Blaine's Charizard. Validation passed:
+  `build_catalog_history_dossiers.py` wrote corpus
+  `ed072c34131d2efa123fc280f1070f63ad91dbffb4e733b2456bcba499374d87`
+  with 209 release dossiers, 4549 card dossiers, 3639 generated card
+  dossiers, 24636 claims, 7825 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Blaine's Arcanine boundary assertion all passed.
+  Next catalog-history queue target is Gym Challenge Koga's Ditto #10.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-fifty-first
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:

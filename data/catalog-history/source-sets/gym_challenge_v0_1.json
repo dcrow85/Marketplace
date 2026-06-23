@@ -4,6 +4,7 @@
     "description": "Hand-researched deepening pass for English Gym Challenge and six rows that show trainer ownership, Rocket pressure, and localization boundaries.",
     "in_scope": [
       "Gym Challenge release dossier",
+      "Blaine's Arcanine",
       "Blaine's Charizard",
       "Erika's Venusaur",
       "Misty's Gyarados",
@@ -199,6 +200,529 @@
           "price truth",
           "condition truth",
           "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-1",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Arcanine",
+        "name_ja": "ブレインのアルカニン",
+        "romaji": "Blaine no Arcanine",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-1",
+        "catalog_row_id": "gym2-1",
+        "card_number": "1",
+        "release_name": "Gym Challenge",
+        "source_expansion_lineage": "English Gym Challenge / Japanese Challenge from the Darkness lineage",
+        "variant_lane": "Rare Holo #1 owner Pokemon, Blaine's Growlithe #62 evolution lane, Blaine trainer portrait and Quiz support lane, Japanese Challenge from the Darkness PMCG6-034 source lane, Gym Heroes Blaine's Growlithe boundary, generic Base/Legendary Collection Arcanine boundaries, and Blaine's Charizard chase-neighbor boundary"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-1",
+          "title": "Local English WoC card row: Blaine's Arcanine #1",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-62",
+          "title": "Local English WoC card row: Blaine's Growlithe #62",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:Blaine",
+          "title": "Local English WoC Gym Challenge Blaine trainer and quiz boundary rows",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:BlaineGrowlithe",
+          "title": "Local English WoC Gym Heroes boundary rows: Blaine's Growlithe",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:ArcanineGrowlithe",
+          "title": "Local English WoC Base Set boundary rows: Arcanine and Growlithe",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "trainer-owned row proof",
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:ArcanineGrowlithe",
+          "title": "Local English WoC Legendary Collection boundary rows: Arcanine and Growlithe",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "trainer-owned row proof",
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-034",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Blaine's Arcanine 034",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English printing proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-2",
+          "title": "Local English WoC card row: Blaine's Charizard #2",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-1",
+          "title": "Pokemon TCG API v2 card record: Blaine's Arcanine #1",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokemon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Arcanine_(Gym_Challenge_1)",
+          "title": "Bulbapedia: Blaine's Arcanine (Gym Challenge 1)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(TCG)",
+          "title": "Bulbapedia: Arcanine (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s13",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Arcanine (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Game Freak source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s14",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine_(anime)",
+          "title": "Bulbapedia: Blaine (anime)",
+          "retrieved": "2026-06-23",
+          "tier": "C",
+          "not_claiming": [
+            "card text source",
+            "official TCG design intent",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s15",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Gym Challenge Blaine's Arcanine gym2-1 is the English Rare Holo row for Blaine's Arcanine, cataloged as card number 1, a Stage 1 Fire Pokemon with 90 HP, and Ken Sugimori credit.",
+          "sources": [
+            "s1",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Blaine's Arcanine with Heat Tackle for 40 damage and 10 self-damage, plus Firestorm for 120 damage requiring three attached Fire Energy to be discarded.",
+          "sources": [
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The Japanese source lane is Challenge from the Darkness card 034 / PMCG6-034, whose local source row appears as ブレインのアルカニン and is normalized here as Blaine's Arcanine.",
+          "sources": [
+            "s7",
+            "s11",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Blaine's Growlithe #62 is the direct Gym Challenge evolution lane for Blaine's Arcanine #1, while Gym Heroes also has earlier Blaine's Growlithe rows that should remain separate.",
+          "sources": [
+            "s2",
+            "s4",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Generic Base Set Arcanine/Growlithe and Legendary Collection Arcanine/Growlithe are species-family boundaries, not trainer-owned Blaine's Arcanine proof.",
+          "sources": [
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Gym Challenge is modeled as the English 132-card Gym set released on October 16, 2000, with Japanese lineage to Gym Expansion 2: Challenge from the Darkness.",
+          "sources": [
+            "s1",
+            "s10",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Ken Sugimori for Blaine's Arcanine #1; the Japanese local row is useful as lineage but does not itself provide clean illustrator authority in the current catalog.",
+          "sources": [
+            "s1",
+            "s7",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Ken Sugimori's importance here is not only a card credit: his early Pokemon model art made Arcanine readable as both loyal dog and mythic fire beast, which the owner-card grammar then hands to Blaine.",
+          "sources": [
+            "s13",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia's card-page trivia notes that Firestorm was the first TCG attack with base damage over 100, making Blaine's Arcanine historically important beyond ordinary holo status.",
+          "sources": [
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "The owner-Pokemon context matters because Blaine's Arcanine is not generic Arcanine; its Heat Tackle self-damage and Firestorm energy discard make Blaine's fire identity feel mechanically expensive and spectacular.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s8",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "history.lineage",
+          "text": "Blaine's Charizard #2 sits beside Blaine's Arcanine #1 as the obvious Fire-owner chase neighbor, but Charizard demand should not erase Arcanine's own card-number-one and Firestorm history.",
+          "sources": [
+            "s1",
+            "s8",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c9"
+          ]
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "An agent handling Blaine's Arcanine should confirm owner name, Gym Challenge set, card number 1, Rare Holo finish, evolution-from-Blaine's-Growlithe lane, and image evidence before treating a listing as the gym2-1 row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c11"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_blaines_arcanine_1_firestorm_owner_species_boundary_v0.1",
+          "trigger": "A listing, want, binder photo, or agent note says Blaine's Arcanine, Gym Challenge Arcanine, gym2-1, card 1, Challenge from the Darkness Arcanine, ブレインのアルカニン, Blaine's Growlithe, Firestorm, Heat Tackle, generic Arcanine, Base Arcanine, Legendary Collection Arcanine, or Blaine fire holo.",
+          "summary": "Start with Gym Challenge gym2-1 only when the evidence points to the Rare Holo owner-Pokemon row; keep generic Arcanine, Japanese PMCG6, Growlithe, and Blaine's Charizard memories separate.",
+          "steps": [
+            "Confirm the English Gym Challenge set identity, card number 1/132, Rare Holo finish, Stage 1 Fire identity, 90 HP, Ken Sugimori credit, Heat Tackle, and Firestorm before binding a listing to gym2-1.",
+            "Preserve the owner name: \"Blaine's Arcanine\" is not generic Arcanine, Base Set Arcanine, or Legendary Collection Arcanine.",
+            "Treat Japanese Challenge from the Darkness PMCG6-034 as source lineage and comparison context, not as English Gym Challenge row equivalence.",
+            "Treat Blaine's Growlithe rows and Blaine trainer/quiz rows as owner-line context, not proof that a seller has Blaine's Arcanine.",
+            "Keep Blaine's Charizard #2 as a neighboring chase card, not a substitute for Arcanine #1.",
+            "Do not use Fire type, Arcanine species lore, Sugimori credit, or Blaine ownership alone as proof of the exact Gym Challenge #1 card.",
+            "For a possible purchase or sale, ask for front/back photos, lower-corner set and number visibility, owner-name line visibility, holo-surface evidence, slab label or cert if graded, and enough edge/corner detail to support condition judgment."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English/Japanese equivalence",
+            "generic Arcanine equivalence",
+            "Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Blaine's Growlithe equivalence",
+            "Blaine's Charizard equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blaine's Arcanine #1 - fire with a handler",
+        "why_it_matters": "Blaine's Arcanine opens Gym Challenge like a match struck too close to the paper. Charizard will always pull the gravity, but Arcanine is the card that says what Blaine's corner of the set feels like before the dragon arrives: loyalty, speed, heat, and a willingness to pay for spectacle. Heat Tackle hurts itself. Firestorm throws 120 onto the table and burns three Fire Energy to do it. That was not just big damage; Bulbapedia records it as the first TCG attack with base damage over 100. So the card is a chase, yes, but it is also a little design monument: Gym ownership turning a beloved species into a trainer's temperament.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Gym Challenge Blaine's Arcanine #1 is a Rare Holo owner-Pokemon row: a 90 HP Stage 1 Fire card by Ken Sugimori with Heat Tackle and Firestorm, the latter recorded by Bulbapedia as the first TCG attack with base damage over 100. Keep it apart from generic Arcanine, Base/Legendary Collection Arcanine, Japanese Challenge from the Darkness PMCG6-034, Blaine's Growlithe context, and Blaine's Charizard chase gravity.",
+        "assembly_themes": [
+          "Gym Challenge Rare Holo row",
+          "card number 1",
+          "Blaine owner-Pokemon grammar",
+          "Ken Sugimori original species-model art",
+          "ブレインのアルカニン Japanese source lane",
+          "Challenge from the Darkness PMCG6-034 lineage",
+          "Blaine's Growlithe evolution context",
+          "Heat Tackle self-damage",
+          "Firestorm 120 damage",
+          "first TCG attack over 100 base damage",
+          "Fire Energy discard cost",
+          "generic Arcanine boundary",
+          "Base Set Arcanine boundary",
+          "Legendary Collection Arcanine boundary",
+          "Blaine's Charizard neighboring chase boundary"
+        ],
+        "collector_texture_note": "This is the Arcanine that refuses to be merely the Charizard warm-up. It is card #1, it carries Blaine's name, and Firestorm gives it one of those early-TCG bragging rights that makes a binder row feel alive.",
+        "signals": [
+          "Gym Challenge",
+          "2000-10-16",
+          "gym2-1",
+          "card 1",
+          "Rare Holo",
+          "Pokemon",
+          "Stage 1",
+          "Fire",
+          "Blaine",
+          "Ken Sugimori",
+          "Blaine's Growlithe",
+          "Heat Tackle",
+          "Firestorm",
+          "120 damage",
+          "ブレインのアルカニン"
         ]
       },
       "coverage": {
