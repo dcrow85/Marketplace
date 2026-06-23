@@ -1,0 +1,34 @@
+{
+  "artifacts": {
+    "index": {
+      "path": "data/azuki-tcg/index.json",
+      "sha256": "3404b3fd35ce0868b31c5050a197a1cc916c5b0b5b5a68bbd3c6d7f96ab77a0b"
+    },
+    "release": {
+      "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
+      "sha256": "cf157aee2c171089b7f942925a26ad9d3bef74c5ebb14d371b3516ccbbd26a6a"
+    }
+  },
+  "counts": {
+    "gallery_entries": 234,
+    "multi_entry_card_ids": 27,
+    "official_api_count": 234,
+    "unique_card_ids": 202
+  },
+  "generated_at": "2026-06-23T00:00:00+00:00",
+  "not_claiming": [
+    "complete physical-product checklist beyond the official gallery endpoint",
+    "seller possession",
+    "physical-card authenticity",
+    "condition truth",
+    "market value",
+    "image rights approval",
+    "errata adjudication beyond source text"
+  ],
+  "schema": "azuki_tcg_catalog_manifest_v0.1",
+  "source_snapshot": {
+    "api_url": "https://tcg.azuki.com/api/cards",
+    "path": "data/azuki-tcg/source-snapshots/cards_api_2026-06-23.json",
+    "sha256": "d064834f0988fd070d4495eb5e1f46c7331bd20ab86a370b041961a6b20e815c"
+  }
+}
