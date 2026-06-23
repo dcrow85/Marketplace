@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-22 · Codex (alpha-admission A1-A7 drill added; 42/42 negative cases and mutation teeth)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 335: Expedition Skarmory #27 deepened; corpus 03435a2)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-fifth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-27` Skarmory #27 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses the local English WoC Expedition #27 and #63 rows, local Gold,
+  Silver, to a New World... Skarmory context, Pokemon TCG API card and set
+  records, bounded Bulbapedia Skarmory / Expedition / Kimiya Masago category
+  context, WikiDex e-Reader context, and The Art of Pokemon illustrator-index
+  context. The dossier carries Rare Holo, Basic Metal, 60 HP, Steel Beak,
+  Air Cutter, Fire weakness, Grass resistance, two-Colorless retreat, Kimiya
+  Masago credit, Japanese Base Expansion Pack 128/128 holo and 096/128
+  non-holo mirrors, B-96 / B-96-# e-Reader identities, short-strip-only data,
+  no-long-strip boundary, Pokemon Crystal feather/sword Pokedex texture, and
+  the #27 Rare Holo versus #63 Rare non-holo trap. Its special identification
+  packet tells agents to keep #27, #63, reverse-holo finish lanes, B-96 /
+  B-96-#, short-strip readability, no-long-strip status, Japanese Base
+  Expansion Pack 128/128 and 096/128, Neo Genesis / Gold Silver New World,
+  Premium File 3, Skyridge, Falkner's Skarmory, and generic Metal-bird memory
+  separate unless set, number, finish, artist, attack package, B-ID, image,
+  row, and seller evidence align. No-overclaim remains explicit: this is
+  catalog history and agent browsing texture, not seller possession,
+  authenticity, condition, price truth, image rights approval, e-Reader strip
+  readability, short-strip data accessibility, holo/non-holo equivalence,
+  reverse-holo equivalence, Japanese Base Expansion Pack equivalence, other
+  Skarmory route equivalence, or spendability. Validation run: `json.tool` OK;
+  `scripts/build_catalog_history_dossiers.py` wrote 209 release dossiers,
+  4549 card dossiers, 3656 generated card dossiers, 24470 claims, 7569
+  sources, queue 100, corpus `03435a2...`; `--check` OK;
+  `scripts/build_card_dossiers.py --check` OK;
+  `scripts/build_catalog_completion_audit.py --check` OK; focused index and
+  queue-removal assertion OK. Next queue item is Expedition Typhlosion #28.
 - `[passive]` 2026-06-22 · Codex — read the GPTPRO / Claude author≠verifier
   handoff from `claude/surface-agent` and converted the A1-A7 alpha-readiness
   blockers into an executable pre-chain admission drill:
