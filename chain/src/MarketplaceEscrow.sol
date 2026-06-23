@@ -360,6 +360,7 @@ contract MarketplaceEscrow {
     uint256 public nextTradeId = 1;
     IMarketplaceActorRegistry public immutable actorRegistry;
     uint64 public constant ALPHA_POLICY_VERSION = 1;
+    uint64 public constant ALPHA_EPOCH_LENGTH_BLOCKS = 216_000;
     bytes32 public constant ROUTE_COMMITMENT_GATE = keccak256("marketplace.gate.route_commitment.v0.1");
     bytes32 public constant DELIVERY_CONFIRMATION_GATE = keccak256("marketplace.gate.delivery_confirmation.v0.1");
     bytes32 public constant ROUTE_COMMITMENT_LEG = keccak256("marketplace.leg.route_commitment.v0.1");
@@ -1819,6 +1820,10 @@ contract MarketplaceEscrow {
         );
     }
 
+    function currentAlphaEpochId() public view returns (uint64) {
+        return _alphaEpochIdAtBlock(block.number);
+    }
+
     function routeAssemblyWitnessHash(
         uint256 tradeId,
         bytes32 routeHash,
@@ -2239,7 +2244,7 @@ contract MarketplaceEscrow {
             policy.version != ALPHA_POLICY_VERSION || block.number < policy.effectiveBlock
                 || policy.routeClass == bytes32(0) || policy.deliveryMode == bytes32(0)
                 || policy.disputeBranch == bytes32(0) || policy.registryVersionHash == bytes32(0)
-                || policy.epochId == 0
+                || policy.epochId != currentAlphaEpochId()
         ) {
             revert AlphaAdmissionPolicyRejected(policy.policyHash);
         }
@@ -2746,6 +2751,10 @@ contract MarketplaceEscrow {
         trade.alphaEpochExposureReserved = 0;
 
         emit AlphaExposureReleased(tradeId, trade.alphaPolicyHash);
+    }
+
+    function _alphaEpochIdAtBlock(uint256 blockNumber_) internal pure returns (uint64) {
+        return uint64(blockNumber_ / ALPHA_EPOCH_LENGTH_BLOCKS + 1);
     }
 
     function _send(address payable to, uint256 amount) internal {

@@ -1992,6 +1992,37 @@ contract MarketplaceEscrowTest {
         );
     }
 
+    function testA1CreateTradeRejectsRotatedEpochId() public {
+        bytes32 intentHash = _h("intent:a1-rotated-epoch");
+        bytes32 termsHash = _h("terms:a1-rotated-epoch");
+        uint256 expectedTradeId = escrow.nextTradeId();
+        MarketplaceEscrow.AlphaAdmissionPolicy memory alphaPolicy =
+            _defaultAlphaPolicy(expectedTradeId, 1 ether, arbiter);
+        alphaPolicy.epochId = escrow.currentAlphaEpochId() + 1;
+        alphaPolicy.globalEpochLossAfter = escrow.alphaEpochExposure(alphaPolicy.epochId) + 1 ether;
+        bytes memory alphaPolicySignature = _alphaPolicySignature(expectedTradeId, alphaPolicy);
+
+        vm.expectRevert(
+            abi.encodeWithSelector(MarketplaceEscrow.AlphaAdmissionPolicyRejected.selector, alphaPolicy.policyHash)
+        );
+        vm.prank(buyer);
+        escrow.createTrade{value: 1 ether}(
+            seller,
+            arbiter,
+            0.1 ether,
+            0.01 ether,
+            2 days,
+            intentHash,
+            termsHash,
+            _defaultJscHash(intentHash, termsHash, arbiter),
+            replacementArbiter,
+            alphaPolicy,
+            alphaPolicySignature,
+            _sig(buyerKey, intentHash),
+            _sig(buyerKey, termsHash)
+        );
+    }
+
     function testA1CreateTradeRequiresPolicyAuthoritySignature() public {
         bytes32 intentHash = _h("intent:a1-authority-signature");
         bytes32 termsHash = _h("terms:a1-authority-signature");
@@ -2058,10 +2089,11 @@ contract MarketplaceEscrowTest {
 
     function testA1ExposureLedgerReleasesOnBuyerAcceptance() public {
         uint256 tradeId = _deliverTrade(1 ether, 0.1 ether, 0.01 ether);
+        uint64 epochId = escrow.currentAlphaEpochId();
 
         _assertEq(escrow.alphaPrincipalExposure(buyer), 1 ether, "principal exposure reserved");
         _assertEq(escrow.alphaJudgmentAuthorityExposure(arbiter), 1 ether, "judgment exposure reserved");
-        _assertEq(escrow.alphaEpochExposure(1), 1 ether, "epoch exposure reserved");
+        _assertEq(escrow.alphaEpochExposure(epochId), 1 ether, "epoch exposure reserved");
 
         bytes32 receiptHash = _h("receipt:a1-release-exposure");
         vm.prank(buyer);
@@ -2069,7 +2101,7 @@ contract MarketplaceEscrowTest {
 
         _assertEq(escrow.alphaPrincipalExposure(buyer), 0, "principal exposure released");
         _assertEq(escrow.alphaJudgmentAuthorityExposure(arbiter), 0, "judgment exposure released");
-        _assertEq(escrow.alphaEpochExposure(1), 0, "epoch exposure released");
+        _assertEq(escrow.alphaEpochExposure(epochId), 0, "epoch exposure released");
     }
 
     function testA1JscVerifierRouteReservesVerifierExposure() public {
@@ -2700,6 +2732,7 @@ contract MarketplaceEscrowTest {
         view
         returns (MarketplaceEscrow.AlphaAdmissionPolicy memory)
     {
+        uint64 epochId = escrow.currentAlphaEpochId();
         return MarketplaceEscrow.AlphaAdmissionPolicy({
             policyHash: keccak256(abi.encodePacked("alpha-policy:v1:", tradeId)),
             policyAuthority: replacementArbiter,
@@ -2725,8 +2758,8 @@ contract MarketplaceEscrowTest {
             registryVersionHash: _h("registry:alpha:v1"),
             registryVersionExposureAfter: escrow.alphaRegistryVersionExposure(_h("registry:alpha:v1")) + escrowAmount,
             maxRegistryVersionExposure: 100 ether,
-            epochId: 1,
-            globalEpochLossAfter: escrow.alphaEpochExposure(1) + escrowAmount,
+            epochId: epochId,
+            globalEpochLossAfter: escrow.alphaEpochExposure(epochId) + escrowAmount,
             maxGlobalEpochLoss: 100 ether,
             deliveryMode: _h("delivery:tracked-or-cowitnessed"),
             disputeBranch: _h("dispute:manual-dual-control"),
