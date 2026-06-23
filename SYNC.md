@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 339: Expedition Weezing #32 deepened; corpus 28e1025)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 340: Expedition Butterfree #5 deepened; corpus 63b40f5)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,47 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-fortieth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-5` Butterfree #5 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass also repairs the source-set scope list so Butterfree #5 is declared
+  in the file header. Butterfree uses local English WoC Expedition #5, #38,
+  #87, and #96 rows, local Japanese Base Expansion Pack e E1-098 and E1-066
+  rows, local Base Expansion Pack e Butterfree E1-098 context, Jungle /
+  Southern Islands / Neo Discovery Butterfree boundary rows, Pokemon TCG API
+  card and set records, bounded Bulbapedia Butterfree / Flower Power /
+  Sumiyoshi Kizuki / Butterfree TCG context, and The Art of Pokemon's
+  Sumiyoshi Kizuki illustrator context. The dossier carries Rare Holo,
+  Stage 2 Grass, 80 HP, Miraculous Powder, Spiral Drain, Fire weakness,
+  zero retreat cost, Sumiyoshi Kizuki credit, Japanese Base Expansion Pack
+  098/128 and 066/128 mirrors, B-68 / B-68-# e-Reader identities,
+  short-strip Pokedex and card summary data, Flower Power long-strip
+  mini-game data, Pokemon Crystal honey-and-flower Pokedex texture, the
+  #5 versus #38 same-artist/same-mechanics trap, the E1-098 versus E1-066
+  mirror split, and Expedition Caterpie #96 / Metapod #87 line context.
+  Its special identification packet tells agents to keep #5, #38,
+  reverse-holo finish lanes, B-68 / B-68-#, short-strip readability,
+  long-strip Flower Power playback, the three-card Flower Power requirement,
+  E1-098, E1-066, Expedition Caterpie and Metapod, Jungle Butterfree,
+  Southern Islands Butterfree, Neo Discovery Butterfree, Legendary
+  Collection Butterfree, and later Butterfree memories separate. No price,
+  condition, seller possession, authenticity, strip readability, long-strip
+  mini-game playback, complete Flower Power card set possession, or
+  physical-card verification is promoted from catalog texture. Validation
+  passed: catalog-history 209 release dossiers, 4549 card dossiers, 3651
+  generated card dossiers, 24523 claims, 7649 sources, card queue 100,
+  corpus `63b40f52f70944cc01e91c8dd44b8844c48c29e0fc3dde0b1ab26125246c6724`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-68, B-68-#, Flower Power long-strip mini-game, the three-card
+  mini-game assembly, Sumiyoshi Kizuki, the soft crayon-like illustrator
+  lane, Butterfree #5 versus #38 trap, E1-098, E1-066, Miraculous Powder,
+  Spiral Drain, and the complete-Flower-Power-possession non-claim are
+  present, and Butterfree #5 has left the deepening queue. Next card queue
+  target is `en_wotc_expedition_base_set_20020915:ecard1-7` Clefable #7.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-ninth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
