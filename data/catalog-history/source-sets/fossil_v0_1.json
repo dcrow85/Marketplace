@@ -6,6 +6,7 @@
       "Fossil release dossier",
       "Aerodactyl holo",
       "Articuno holo",
+      "Ditto holo",
       "Dragonite holo",
       "Gengar holo",
       "Lapras holo",
@@ -464,6 +465,493 @@
           "price truth",
           "condition truth",
           "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_fossil_19991010:base3-3",
+      "type": "card",
+      "context": {
+        "name_en": "Ditto",
+        "name_ja": "メタモン",
+        "romaji": "Metamon",
+        "release_family_id": "en_wotc_fossil_19991010",
+        "row_id": "en_wotc_fossil_19991010:base3-3",
+        "catalog_row_id": "base3-3",
+        "card_number": "3",
+        "release_name": "Fossil",
+        "source_expansion_lineage": "English Fossil / Japanese Mystery of the Fossils lineage",
+        "variant_lane": "Rare Holo #3 with non-holo #18, Japanese Mystery of the Fossils source lane, Koga's Ditto boundary, Skyridge Ditto boundary, and generic Transform species-memory boundary"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-3",
+          "title": "Local English WoC card row: Ditto #3",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:en_wotc_fossil_19991010:base3-18",
+          "title": "Local English WoC card row: Ditto #18",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "holo row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:042",
+          "title": "Local Japanese pre-English row: Mystery of the Fossils Ditto",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English print equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-10",
+          "title": "Local English WoC Gym Challenge Koga's Ditto boundary row",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-51",
+          "title": "Local English WoC Skyridge Ditto boundary row",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Fossil equivalence",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-3",
+          "title": "Pokemon TCG API v2 card record: Ditto base3-3",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base3-18",
+          "title": "Pokemon TCG API v2 card record: Ditto base3-18",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "holo row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base3",
+          "title": "Pokemon TCG API v2 set record: Fossil",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ditto_(Fossil_3)",
+          "title": "Bulbapedia: Ditto (Fossil 3)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ditto_(TCG)",
+          "title": "Bulbapedia: Ditto (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete TCG lineage",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ditto_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Ditto (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "TCG-specific print identity",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Keiji_Kinebuchi",
+          "title": "Bulbapedia: Keiji Kinebuchi",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ditto as Fossil card #3, a Rare Holo Basic Colorless Pokemon credited to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s6",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia and the local Japanese pre-English catalog identify the Japanese source lane as Mystery of the Fossils Ditto, メタモン / Metamon.",
+          "sources": [
+            "s3",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API record Fossil Ditto #3 with 50 HP, Fighting weakness, Psychic resistance, one-Colorless retreat, no printed attack, and the Transform Pokemon Power.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The local catalog and Pokemon TCG API text Transform as treating Active Ditto as the same card as the Defending Pokemon, including type, Hit Points, Weakness, and so on, while preventing evolution and letting any Energy attached to Ditto count as any type; Ditto stops copying while Asleep, Confused, or Paralyzed.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify a matching Fossil non-holo Ditto as #18, Rare, with the same Keiji Kinebuchi credit, Basic Colorless profile, Transform Pokemon Power, and 50 HP.",
+          "sources": [
+            "s2",
+            "s7",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "The Pokemon TCG API models Fossil as set id base3 with releaseDate 1999/10/10 and total 62; Bulbapedia's Fossil Ditto page places the English card in Fossil and its first Japanese release in Mystery of the Fossils.",
+          "sources": [
+            "s8",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, local Japanese pre-English row, and Bulbapedia credit Fossil Ditto #3/#18 and Mystery of the Fossils Ditto to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6",
+            "s7",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Bulbapedia describes Keiji Kinebuchi as one of the original TCG artists and an illustrator closely associated with early computer-generated Pokemon card art; this makes Fossil Ditto part of the early digital/object-making lane of the TCG.",
+          "sources": [
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "The local Fossil flavor text says Ditto can copy an enemy's genetic code to instantly transform into a duplicate; Bulbapedia's species page preserves Ditto's core identity as a transforming Pokemon.",
+          "sources": [
+            "s1",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Bulbapedia's trivia for Fossil Ditto says it is the only printed card in the Fossil expansion that uses the phrase Hit Points instead of HP, and notes that the card is one of several Fossil cards not included in the Pokemon Trading Card Game or Pokemon Card GB2 video games, likely because its Pokemon Power would have been too difficult to program.",
+          "sources": [
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.lineage",
+          "text": "Local Gym Challenge Koga's Ditto and Skyridge Ditto rows are separate branches with different artists, mechanics, and historical meanings: Koga's Ditto uses Giant Growth and Pound under Ken Sugimori, while Skyridge Ditto uses Prismatic Body and Copy under Tomokazu Komiya.",
+          "sources": [
+            "s4",
+            "s5",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c12",
+          "field": "history.significance",
+          "text": "Fossil Ditto matters because it turns identity into a temporary rules state: it does not resemble the opposing Pokemon in art, it becomes the opposing card by condition, while status effects can collapse the copy.",
+          "sources": [
+            "s1",
+            "s6",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c9",
+            "c10"
+          ]
+        },
+        {
+          "id": "c13",
+          "field": "identification.special_instructions",
+          "text": "Because Ditto routes through Fossil #3, Fossil #18, Japanese Mystery of the Fossils, Koga's Ditto, Skyridge Ditto, and generic Transform species memory, agents must keep row, finish, expansion, art style, and copy-mechanic claims separate before any trade action.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s9",
+            "s10",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c5",
+            "c11"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "fossil_ditto_3_transform_holo_nonholo_and_copy_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Fossil Ditto, Ditto #3, Ditto #18, base3-3, base3-18, Mystery of the Fossils Ditto, メタモン, Metamon, Transform, Keiji Kinebuchi Ditto, Koga's Ditto, Skyridge Ditto, Copy, Prismatic Body, or shapeshifter Pokemon.",
+          "summary": "Fossil Ditto #3 is the Rare Holo Keiji Kinebuchi Transform row; keep #3, #18, Japanese Mystery, Koga's Ditto, Skyridge Ditto, and generic Transform species memory distinct.",
+          "steps": [
+            "Start with Fossil set id base3, card #3/62, Rare Holo, Basic Colorless, 50 HP, Keiji Kinebuchi, and Transform before importing Ditto lore.",
+            "Preserve Fossil #3 Rare Holo and Fossil #18 non-holo Rare as sibling catalog rows, not the same physical print or finish.",
+            "Treat Japanese Mystery of the Fossils メタモン / Metamon as source-lineage context, not English-card equivalence without print evidence.",
+            "Separate Gym Challenge Koga's Ditto, Skyridge Ditto, and generic Ditto species memory unless set, number, finish, image, and packet evidence align.",
+            "Do not treat a card's ability to copy another Pokemon in game text as evidence that a physical listing can be identified by resemblance; the Fossil row still needs set, number, finish, and image proof.",
+            "For a trade packet, ask for front/back images showing set symbol, card number, holo surface, border/corner condition, and any slab/cert if graded before treating the claim as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holo/non-holo equivalence",
+            "Japanese Mystery of the Fossils equivalence",
+            "Koga's Ditto equivalence",
+            "Skyridge Ditto equivalence",
+            "generic Transform equivalence",
+            "physical-card identity by resemblance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Ditto #3 - identity as a rules state",
+        "why_it_matters": "Fossil Ditto is a perfect card for this whole catalog project because it makes identity slippery on purpose. Kinebuchi's early digital/object art gives the little purple body a strange made-thing quality, but the real magic is that Ditto has no attack printed on the card. Transform is the card. If Ditto is Active, it becomes the Defending Pokemon for type, Hit Points, Weakness, and almost everything else, while its attached Energy can count as any type. Then the rule snaps back if Ditto is Asleep, Confused, or Paralyzed. That is deliciously weird: identity is not appearance, it is an active condition with failure modes. Even Bulbapedia's trivia fits the feeling, noting the odd Hit Points wording and the likely video-game omission because this Power was too awkward to program. For a collector agent, Ditto is a reminder to be romantic and strict at the same time. Love the shapeshifter, but do not let shapeshifting become sloppy catalog logic: #3 holo is not #18 non-holo, Japanese Mystery is lineage rather than automatic equivalence, Koga's Ditto and Skyridge Ditto are different mechanisms, and no physical card is identified by resemblance alone.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12",
+          "c13"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "holo/non-holo equivalence",
+          "Japanese Mystery of the Fossils equivalence",
+          "Koga's Ditto equivalence",
+          "Skyridge Ditto equivalence",
+          "physical-card identity by resemblance"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Keiji Kinebuchi",
+        "assembly_note": "Fossil Ditto #3 is Kinebuchi identity machinery: Rare Holo, Basic Colorless, 50 HP, Transform as the whole card, Hit Points wording oddity, a likely Game Boy TCG programming boundary, a #18 non-holo sibling, Japanese Mystery of the Fossils source lane, and Koga / Skyridge branches that must not collapse into the holo want.",
+        "assembly_themes": [
+          "Fossil Rare Holo row",
+          "Keiji Kinebuchi early digital art trace",
+          "メタモン / Metamon Japanese name lane",
+          "Mystery of the Fossils source lineage",
+          "Fossil #3 holo vs #18 non-holo trap",
+          "Transform Pokemon Power",
+          "no printed attack",
+          "identity as active condition",
+          "any Energy as any type",
+          "status effects collapse copy",
+          "Hit Points wording oddity",
+          "Game Boy TCG omission / programmability boundary",
+          "Koga's Ditto boundary",
+          "Skyridge Ditto Prismatic Body boundary",
+          "generic shapeshifter species memory",
+          "physical identity not by resemblance"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Ditto #3 is Fossil's identity puzzle: Kinebuchi art, no attacks, Transform doing everything, a #18 sibling, Japanese Mystery memory, and later Ditto branches that prove copying is not the same as provenance.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "holo/non-holo equivalence",
+          "Japanese Mystery of the Fossils equivalence",
+          "Koga's Ditto equivalence",
+          "Skyridge Ditto equivalence",
+          "physical-card identity by resemblance"
+        ],
+        "number": "3",
+        "rarity_signal": "Rare Holo with non-holo #18, Japanese Mystery of the Fossils source lane, Koga's Ditto boundary, Skyridge Ditto boundary, and Transform species-memory boundary",
+        "signals": [
+          "Fossil",
+          "1999/10/10",
+          "3",
+          "Rare Holo",
+          "Pokemon",
+          "Basic",
+          "Colorless",
+          "Keiji Kinebuchi",
+          "Transform",
+          "メタモン"
         ]
       },
       "coverage": {

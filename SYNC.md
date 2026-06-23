@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 346: Fossil Raichu #14 deepened; corpus 92f7069)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 347: Fossil Ditto #3 deepened; corpus 565b669)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,43 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-seventh
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-3` Ditto #3 is now upgraded from generated
+  first-pass texture to a hand-authored dossier. The pass also repairs the
+  source-set scope list so Ditto holo is declared in the file header. Ditto
+  uses local English WoC Fossil #3 and #18 rows, local Japanese Mystery of
+  the Fossils メタモン / Metamon row, local Gym Challenge Koga's Ditto
+  boundary context, local Skyridge Ditto boundary context, Pokemon TCG API
+  Fossil card and set records, and bounded Bulbapedia Ditto / Ditto TCG /
+  Ditto species / Keiji Kinebuchi context. The dossier carries Rare Holo,
+  Basic Colorless, 50 HP, Fighting weakness, Psychic resistance, one-
+  Colorless retreat, no printed attack, Transform as the entire card,
+  any-Energy-as-any-type text, status effects collapsing the copy state,
+  Keiji Kinebuchi early digital/object art context, Japanese Mystery source
+  lane, the #3 holo versus #18 non-holo trap, the Hit Points wording oddity,
+  the likely Game Boy TCG / Pokemon Card GB2 programming boundary, and Koga
+  / Skyridge branches that must not collapse into a Fossil want. Its special
+  identification packet tells agents to keep #3, #18, Japanese Mystery,
+  Koga's Ditto, Skyridge Ditto, and generic Transform species memory separate
+  unless set, number, finish, image, and packet evidence align. No price,
+  condition, seller possession, authenticity, holo/non-holo equivalence,
+  Japanese Mystery equivalence, Koga's Ditto equivalence, Skyridge Ditto
+  equivalence, generic Transform equivalence, physical-card identity by
+  resemblance, or physical-card verification is promoted from catalog
+  texture. Validation passed: catalog-history 209 release dossiers, 4549
+  card dossiers, 3644 generated card dossiers, 24593 claims, 7751 sources,
+  card queue 100, corpus
+  `565b6690290fbf7ef705a3bfc9c2a9437aaa80d79dba74a3e0c20ca15d13dbe5`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed Transform, Keiji Kinebuchi, Hit Points, Game Boy TCG, base3-3,
+  base3-18, Mystery of the Fossils, メタモン, Metamon, Koga's Ditto, Skyridge
+  Ditto, Prismatic Body, Copy, identity, and resemblance are present; Ditto
+  #3 has left the deepening queue. Next card queue target is
+  `en_wotc_fossil_19991010:base3-6` Haunter #6.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-sixth
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
