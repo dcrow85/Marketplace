@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 335: Expedition Skarmory #27 deepened; corpus 03435a2)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 336: Expedition Typhlosion #28 deepened; corpus 718bf28)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-sixth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-28` Typhlosion #28 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass uses local English WoC Expedition #28, #65, #64, #91, #104, and #105
+  rows, local Gold, Silver, to a New World... Typhlosion context, local
+  P Promotional 017/P context, Pokemon TCG API card and set records, bounded
+  Bulbapedia Typhlosion / Expedition / e-Reader ID / K. Hoshiba page and
+  K. Hoshiba category context. The dossier carries Rare Holo, Stage 2 Fire,
+  100 HP, Heat Up, Super Singe, Water weakness, two-Colorless retreat,
+  K. Hoshiba credit, Japanese Base Expansion Pack 106/128 and 074/128
+  mirrors, B-71 / B-71-# e-Reader identities, short-strip-only data,
+  no-long-strip boundary, Pokemon Crystal versus Pokemon Gold Pokedex-entry
+  source split, the Typhlosion #28 versus #65 same-art/same-mechanics trap,
+  and the Typhlosion #64 different-art/different-mechanics trap. Its special
+  identification packet tells agents to keep #28, #65, #64, reverse-holo
+  finish lanes, B-71 / B-71-#, short-strip readability, no-long-strip status,
+  Cyndaquil / Quilava evolution-line context, Japanese Base Expansion Pack,
+  Neo Genesis #17 / #18, Dark Typhlosion, P Promotional 017/P, and
+  Typhlosion ex separate. No price, condition, seller possession,
+  authenticity, or physical-card verification is promoted from catalog
+  texture. Validation passed: catalog-history 209 release dossiers, 4549
+  card dossiers, 3655 generated card dossiers, 24481 claims, 7585 sources,
+  card queue 100, corpus `718bf28e51f9977c5f7ca2bd7d7bbf3311c6ba605eacdd8534e86839a143893a`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-71, B-71-#, short-strip, no-long-strip, K. Hoshiba, Heat Up,
+  and both Typhlosion trap labels are present, and Typhlosion #28 has left
+  the deepening queue. Next card queue target is
+  `en_wotc_expedition_base_set_20020915:ecard1-3` Arbok #3.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-fifth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
