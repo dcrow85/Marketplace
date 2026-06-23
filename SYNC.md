@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 348: Fossil Haunter #6 deepened; corpus 95a5e7a)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 349: Fossil Hitmonlee #7 deepened; corpus aa5696e)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/fossil_v0_1.json`:
+  `en_wotc_fossil_19991010:base3-7` Hitmonlee #7 is now upgraded from
+  generated first-pass texture to a hand-authored dossier. The pass also
+  adds Hitmonlee holo to the Fossil source-set scope list. Hitmonlee uses
+  local English WoC Fossil #7 and #22 rows, local Japanese Mystery of the
+  Fossils サワムラー / Sawamular #039 source lane, Base Set Hitmonchan and
+  Gym Heroes Rocket's Hitmonchan punch-branch boundaries, Neo Discovery
+  Hitmontop and Tyrogue family boundaries, Neo Destiny Hitmonlee boundary,
+  Legendary Collection Hitmonlee later-reprint boundary, Pokemon TCG API
+  Fossil card and set records, and bounded Bulbapedia Hitmonlee / Hitmonlee
+  TCG / Hitmonlee species / Ken Sugimori context. The dossier carries Rare
+  Holo, Basic Fighting, 60 HP, Stretch Kick bench reach, High Jump Kick,
+  long-leg and loping-stride flavor, Ken Sugimori core species art, the #7
+  holo versus #22 non-holo trap, Japanese Mystery source lineage, martial-
+  arts naming texture, and explicit no-collapse rules for Hitmonchan,
+  Rocket's Hitmonchan, Hitmontop, Tyrogue, Neo Destiny Hitmonlee, and
+  Legendary Collection Hitmonlee. Validation passed:
+  `build_catalog_history_dossiers.py` wrote corpus
+  `aa5696ef967e1ef6228dfcff99d1fb33c4fb0958b7ef498219ae7400f89c6a5b`
+  with 209 release dossiers, 4549 card dossiers, 3642 generated card
+  dossiers, 24612 claims, 7781 sources, 0 release-queue items, and 100
+  card-queue items; `build_catalog_history_dossiers.py --check`,
+  `build_card_dossiers.py --check`, `build_catalog_completion_audit.py
+  --check`, and a focused Hitmonlee boundary assertion all passed. Next
+  catalog-history queue target is Fossil Hypno #8.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-forty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/fossil_v0_1.json`:
