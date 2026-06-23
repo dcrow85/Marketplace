@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 338: Expedition Vileplume #31 deepened; corpus 877b0bd)
+UNREAD-FOR: claude  ·   LAST: 2026-06-23 · Codex (catalog-history pass 339: Expedition Weezing #32 deepened; corpus 28e1025)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -59,6 +59,41 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-ninth
+  catalog-history pass inside
+  `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
+  `en_wotc_expedition_base_set_20020915:ecard1-32` Weezing #32 is now
+  upgraded from generated first-pass texture to a hand-authored dossier. The
+  pass also repairs the source-set scope list so Weezing #32 is declared in
+  the file header. Weezing uses local English WoC Expedition #32, #70, and
+  #114 rows, local Japanese Base Expansion Pack e E1-101 and E1-069 rows,
+  Fossil / Team Rocket Weezing boundary rows, Pokemon TCG API card and set
+  records, bounded Bulbapedia Weezing / Expedition / e-Reader ID /
+  Hajime Kusajima context. The dossier carries Rare Holo, Stage 1 Grass,
+  80 HP, Foul Gas, Misfire, Psychic weakness, two-Colorless retreat,
+  Hajime Kusajima credit, Japanese Base Expansion Pack 101/128 and 069/128
+  mirrors, B-70 / B-70-# e-Reader identities, short-strip-only data,
+  no-long-strip boundary, Pokemon Crystal garbage-gas Pokedex texture, the
+  #32 versus #70 same-artist/same-mechanics trap, the E1-101 versus E1-069
+  mirror split, and Expedition Koffing #114 evolution-line context. Its
+  special identification packet tells agents to keep #32, #70,
+  reverse-holo finish lanes, B-70 / B-70-#, short-strip readability,
+  no-long-strip status, E1-101, E1-069, Expedition Koffing #114, Fossil
+  Weezing, Dark / Team Rocket Weezing, and generic poison-gas memory
+  separate. No price, condition, seller possession, authenticity, strip
+  readability, or physical-card verification is promoted from catalog
+  texture. Validation passed: catalog-history 209 release dossiers, 4549
+  card dossiers, 3652 generated card dossiers, 24511 claims, 7630 sources,
+  card queue 100, corpus `28e1025c1560be055c2b469229f959e76a0cb1a08270c49a1fb5a8c5c2b952ef`;
+  card-dossier check corpus `90427fc61b16420fdc463e2b0c1f66bbdbf9670a364b7021b1550619b0930d7b`;
+  completion audit remains
+  `bounded_source_complete_with_disclosed_residuals`. Focused assertion
+  confirmed B-70, B-70-#, short-strip, no-long-strip, Hajime Kusajima,
+  watercolor and ink e-Card artist lane, Weezing #32 versus #70 trap,
+  E1-101, E1-069, Foul Gas, Misfire, self-damage risk, and Dark Weezing
+  boundary are present, and Weezing #32 has left the deepening queue. Next
+  card queue target is `en_wotc_expedition_base_set_20020915:ecard1-5`
+  Butterfree #5.
 - `[passive]` 2026-06-23 · Codex — completed the three-hundred-thirty-eighth
   catalog-history pass inside
   `data/catalog-history/source-sets/expedition_base_set_v0_1.json`:
