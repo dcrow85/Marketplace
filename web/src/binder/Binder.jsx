@@ -8,6 +8,17 @@ const CATALOG_URL = import.meta.env.BASE_URL + 'catalog-sample.json'
 
 const nm = (c) => c.name_ja || c.name_en || c.uid
 
+// Flaky-network resilience: the card images all serve 200, but a bad connection drops
+// a fraction of the parallel lazy loads. Retry a failed image a few times with backoff
+// and a cache-bust so transient drops recover instead of showing a name-placeholder.
+function retryImg(e, src) {
+  const t = e.currentTarget
+  const n = Number(t.dataset.retry || 0) + 1
+  if (n > 4) return
+  t.dataset.retry = String(n)
+  setTimeout(() => { t.src = src + (src.includes('?') ? '&' : '?') + 'r=' + n }, 500 * n)
+}
+
 function effStance(c, store) {
   const u = store[c.uid] || {}
   let st = u.stance != null ? u.stance : c.stance != null ? c.stance : c.owned ? 'have' : 'none'
@@ -67,7 +78,7 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
         <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{c.romaji || (c.name_is_en ? 'EN' : '')}</div></div>
-        {c.image && <img src={c.image} alt={nm(c)} loading="lazy" decoding="async" />}
+        {c.image && <img src={c.image} alt={nm(c)} loading="lazy" decoding="async" onError={(e) => retryImg(e, c.image)} />}
         {c.holo ? <span className="holodot" title="holo" /> : null}
         {provBadge(c)}
       </div>
@@ -124,7 +135,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
           <div className="mleft">
             <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
               {c.image
-                ? <img src={c.image} className={e.stance !== 'have' ? 'grey' : ''} alt={nm(c)} />
+                ? <img src={c.image} className={e.stance !== 'have' ? 'grey' : ''} alt={nm(c)} onError={(ev) => retryImg(ev, c.image)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
               {c.holo ? <span className="holodot" title="holo" /> : null}
               {provBadge(c)}
@@ -260,6 +271,24 @@ export default function Binder({ accountId, agentName }) {
 
   useEffect(() => { fetch(CATALOG_URL).then((r) => r.json()).then(setData).catch((e) => setErr(String(e))) }, [])
   useEffect(() => { try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { setStore({}) } }, [storeKey])
+
+  // Flaky-network recovery: a dropping connection leaves Chrome's reused image loads
+  // hung (so onError never fires). Every few seconds, re-trigger any near-viewport card
+  // image that still hasn't loaded — a fresh request recovers it. Capped per image.
+  useEffect(() => {
+    const id = setInterval(() => {
+      for (const img of document.querySelectorAll('.cell img')) {
+        if (img.naturalWidth > 0) continue
+        const r = img.getBoundingClientRect()
+        if (r.bottom < -400 || r.top > window.innerHeight + 400) continue
+        const n = Number(img.dataset.sweep || 0)
+        if (n >= 5) continue
+        img.dataset.sweep = String(n + 1)
+        img.src = img.src.split('?')[0] + '?s=' + n
+      }
+    }, 4000)
+    return () => clearInterval(id)
+  }, [])
 
   const setById = useMemo(() => Object.fromEntries((data?.sets || []).map((s) => [s.id, s])), [data])
   const SETS = useMemo(() => (data?.sets || []).slice().sort((a, b) => a.order - b.order), [data])
