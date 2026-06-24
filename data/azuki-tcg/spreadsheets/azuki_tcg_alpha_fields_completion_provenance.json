@@ -1,0 +1,98 @@
+{
+  "columns": [
+    "ID",
+    "IKZ COST",
+    "NAME",
+    "ELEMENT",
+    "TYPE",
+    "SUBTYPE_1",
+    "SUBTYPE_2",
+    "SUBTYPE_3",
+    "GATE_PWR",
+    "ATK",
+    "HP",
+    "PLUS_ATK",
+    "REF_IP",
+    "REF_ID",
+    "REF_IP2",
+    "REF_ID2",
+    "RARITY",
+    "ILLUSTRATOR",
+    "E_1",
+    "E_1_TEXT",
+    "E_2",
+    "E_2_TEXT",
+    "F_TEXT",
+    "DEFINITION_TEXT",
+    "RULING_TEXT",
+    "STAMP",
+    "IMG",
+    "ALT_IMG",
+    "ROW_KEY",
+    "SOURCE_RELEASE",
+    "SOURCE_ENTRY_ID",
+    "SETS",
+    "IMAGE_URL",
+    "FIELD_SOURCE",
+    "MISSING_ALPHA_FIELDS",
+    "REVIEW_STATUS"
+  ],
+  "counts": {
+    "alpha_crosswalk_rows": 122,
+    "blank_illustrator_rows": 2,
+    "image_view_illustrator_rows": 110,
+    "official_gallery_completion_rows": 112,
+    "review_queue_rows": 2,
+    "rows": 234,
+    "unique_row_keys": 234
+  },
+  "image_review_queue": {
+    "S1-AZK01-067_Frida_E_C_die": {
+      "gallery_image_url": "https://static-content.azuki.com/tcg/card_art/S1-AZK01-067_Frida_E_C_die.jpg",
+      "note": "Image credit line is visible but too stylized/compressed for confident transcription."
+    },
+    "S1-AZK01-073_Top-Beanz_E_C_die": {
+      "gallery_image_url": "https://static-content.azuki.com/tcg/card_art/S1-AZK01-073_Top-Beanz_E_C_die.jpg",
+      "note": "Image credit line appears to match Frida, but remains too stylized/compressed for confident transcription."
+    }
+  },
+  "missing_alpha_field_counts": {
+    "ALT_IMG": 234,
+    "ATK": 91,
+    "DEFINITION_TEXT": 187,
+    "ELEMENT": 6,
+    "E_1": 49,
+    "E_1_TEXT": 33,
+    "E_2": 208,
+    "E_2_TEXT": 204,
+    "F_TEXT": 182,
+    "GATE_PWR": 91,
+    "HP": 80,
+    "IKZ COST": 38,
+    "ILLUSTRATOR": 2,
+    "PLUS_ATK": 223,
+    "RARITY": 6,
+    "REF_ID": 176,
+    "REF_ID2": 233,
+    "REF_IP": 180,
+    "REF_IP2": 233,
+    "RULING_TEXT": 173,
+    "SUBTYPE_1": 1,
+    "SUBTYPE_2": 111,
+    "SUBTYPE_3": 212
+  },
+  "name": "Azuki TCG Alpha-Field Completion Spreadsheet",
+  "row_count": 234,
+  "schema": "azuki_tcg_alpha_fields_completion_provenance_v0.1",
+  "source_policy": {
+    "alpha_master_sheet_crosswalk": "If a gallery entry shares a card ID with the linked Alpha Master Sheet, Alpha sheet fields are used for Alpha-style columns and the gallery supplies the image URL/unique source row.",
+    "not_claiming": [
+      "that an image-view illustrator read has the same authority as the Alpha Master Sheet",
+      "reference IP/ID when the official gallery API does not provide it",
+      "flavor text when it appears only in card art and has not been transcribed",
+      "physical-card authenticity, possession, condition, or market value"
+    ],
+    "official_gallery_completion": "If no Alpha row exists, mechanical fields are derived from the official gallery API. Illustrator is filled only when the card image credit line was manually readable."
+  },
+  "spreadsheet_path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv"
+}

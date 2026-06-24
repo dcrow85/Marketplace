@@ -1,5 +1,13 @@
 {
   "artifacts": {
+    "alpha_fields_completion_csv": {
+      "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
+      "sha256": "ccf7634edf8fcf69107ef325a77a1f9fc49f2e8967035199c1987a77066a4631"
+    },
+    "alpha_fields_completion_provenance": {
+      "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion_provenance.json",
+      "sha256": "dcee4fcbe3d9972052d2cbe60dc61313b2d466300d8d0fe7a09c100bced4a53c"
+    },
     "alpha_master_sheet_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_alpha_master_sheet.json",
       "sha256": "002c75924614baf629ee54e5130817d98a18445f1baf13edf9f46a114e529b4a"
@@ -14,6 +22,15 @@
     }
   },
   "counts": {
+    "alpha_fields_completion": {
+      "alpha_crosswalk_rows": 122,
+      "blank_illustrator_rows": 2,
+      "image_view_illustrator_rows": 110,
+      "official_gallery_completion_rows": 112,
+      "review_queue_rows": 2,
+      "rows": 234,
+      "unique_row_keys": 234
+    },
     "alpha_master_sheet": {
       "catalog_cards": 104,
       "gallery_crosswalk_matched_cards": 104,
