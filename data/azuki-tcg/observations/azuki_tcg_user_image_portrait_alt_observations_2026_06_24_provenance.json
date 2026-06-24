@@ -1,0 +1,51 @@
+{
+  "checks": {
+    "all_observations_have_authority_label": true,
+    "all_observations_have_printed_id": true,
+    "matched_gallery_uids_exist": true,
+    "source_images_not_committed": true
+  },
+  "counts": {
+    "observed_cards_not_in_gallery_snapshot": 0,
+    "printed_id_shape_discrepancies": 1,
+    "rows": 2,
+    "source_conflicts": 0,
+    "unique_observation_ids": 2
+  },
+  "csv_path": "data/azuki-tcg/observations/azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv",
+  "name": "Azuki TCG User Image Portrait Alt Observations",
+  "not_claiming": [
+    "market value",
+    "seller possession beyond the user-provided images",
+    "physical authenticity or condition",
+    "that the user images should overwrite linked sheet or gallery fields",
+    "that a shared card ID proves identical physical printing across variants"
+  ],
+  "observed_cards_not_in_gallery_snapshot": [],
+  "printed_id_shape_discrepancies": [
+    {
+      "disposition": "preserve_printed_id_and_gallery_normalized_id_separately",
+      "normalized_card_id": "STT04-01",
+      "observation_id": "portrait-alt-image-20260624-001",
+      "printed_id": "STT04-001"
+    }
+  ],
+  "row_count": 2,
+  "schema": "azuki_tcg_portrait_alt_observation_provenance_v0.1",
+  "sources": {
+    "shao": {
+      "date": "2026-06-24",
+      "kind": "user_provided_image",
+      "note": "The source image was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the card image.",
+      "sha256": "15bd740904d593e33fdc41ad305a707f93fccac407ea47a402e0cc2e40bab958",
+      "stored_in_repo": false
+    },
+    "zero": {
+      "date": "2026-06-24",
+      "kind": "user_provided_image",
+      "note": "The source image was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the card image.",
+      "sha256": "dfbf7caf3dc3ea0a02a078e883607d4f5b5af584541c8879ac878a8e2a70a38b",
+      "stored_in_repo": false
+    }
+  }
+}

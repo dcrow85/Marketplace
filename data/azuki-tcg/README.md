@@ -43,6 +43,12 @@ And it contains a user-photo observation layer:
 - `observations/azuki_tcg_user_photo_promo_observations_2026_06_24_provenance.json`
   records the observation authority boundary, gallery matches, and conflicts.
   This layer is evidence from a photo, not an official checklist expansion.
+- `observations/azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv`
+  records two portrait alternate rare leader images observed from user-provided
+  image files.
+- `observations/azuki_tcg_user_image_portrait_alt_observations_2026_06_24_provenance.json`
+  records their image hashes, gallery matches, and the printed/gallery ID-shape
+  boundary.
 
 The catalog preserves source data as returned by each source, including
 variant entries, alternate-art entries, promo entries, starter deck entries,
@@ -88,6 +94,16 @@ Promo observation layer:
   Invader-style visual stamp, matched to gallery `STT03-01` rows only as a
   comparison candidate
 
+Portrait alternate observation layer:
+
+- 2 user-image observation rows
+- `STT02-001` Shao matches the official gallery portrait alternate-art booster
+  row `STT02-001A_Shao_L_AA_Die`
+- `STT04-001` Zero matches the official gallery booster-star row
+  `S1-STT04-001_Zero_L_L_die__2`, while the gallery canonical card ID is
+  `STT04-01`; both printed and normalized ID shapes are preserved
+- Both rows read `Illus. steamboy` and `L ★` from the image
+
 Authority boundary:
 
 - This catalog does not prove seller possession.
@@ -103,6 +119,9 @@ Authority boundary:
   facts. They remain lower authority than linked sheet fields.
 - User-photo observations do not overwrite official gallery or linked sheet
   fields. They are a separate evidence layer for agents to inspect.
+- User-image portrait-alt observations likewise remain evidence rows. A matched
+  gallery UID means the observed image aligns with a gallery row; it does not
+  prove physical possession, condition, authenticity, or market value.
 
 Rebuild:
 
