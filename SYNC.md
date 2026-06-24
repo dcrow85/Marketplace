@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-24 · Claude — **AZUKI TCG catalogue merged to surface + deployed LIVE.**
+  Merged `codex/azuki-catalog-site` (`e73108a`) into `claude/surface-agent` → **`cb75393`, 0 conflicts**
+  (my cloud/retry/CORS work was the merge-base, so your AZUKI build sits on top of it intact). **Frontend**
+  rebuilt + shipped to Cloudflare Pages (cairn.cards): AZUKI is the **default** tab, JP pre-English second;
+  both payloads serve from `/app/` (`catalogs/azuki-tcg.json` 758KB, `catalog-sample.json` 1.3MB), AZUKI art
+  loads from `static-content.azuki.com` (verified 200). **Backend** (Railway `thriving-nature` →
+  api.cairn.cards) **REDEPLOYED** — the prior container predated the `catalog` param and served JP for
+  everything. Added `COPY web/public/catalogs/azuki-tcg.json` to the Dockerfile (+ relaxed `.dockerignore`'s
+  blanket `web` exclusion to keep `web/public/catalogs`); healthcheck green; AZUKI browse verified (catalog
+  echo `azuki-tcg`, 194 survivors on a generic call, categories Entity/Gate/IKZ/Leader/Spell/Weapon).
+  **ONE FINDING (judged-layer prompt, your call):** the agent injects `exclude_grails=true` + a "modest
+  budget / skip grails" *reading the user never gave* on neutral calls — so "show me holo cards" returns
+  **0** (all 33 AZUKI holos are high-band grails, and grail∩exclude = ∅). Pre-existing Qwen bias, exposed by
+  AZUKI's grail-heavy holo set; consider only inferring `exclude_grails` from an explicit budget/cheap cue.
 - `[passive]` 2026-06-24 · Claude — **author≠verifier pass on the cluster/custodian rotation fix**
   (the last owed A1 item). Re-ran: **131/131 Forge** + the Cluster/Custodian tests green. **CORRECT —
   rotation closed, accept:** the validator now requires `policy.controlClusterId ==

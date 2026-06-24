@@ -1,9 +1,15 @@
-# Keep the build context lean — the image only needs simulations/ + the catalog json.
+# Keep the build context lean — the image only needs simulations/ + the catalog json
+# (mockups/catalog-sample.json + web/public/catalogs/azuki-tcg.json). Exclude web's
+# bulk but KEEP web/public/catalogs so the AZUKI catalog COPY resolves.
 .git
 **/__pycache__
 **/*.pyc
 node_modules
-web
+web/node_modules
+web/dist
+web/.wrangler
+web/src
+web/public/catalog-sample.json
 runs
 chain
 models
