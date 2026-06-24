@@ -1,12 +1,33 @@
 import { useState, useEffect } from 'react'
 import { usePrivy } from '@privy-io/react-auth'
-import { handleFor, avatarSVG, shortId, randomAgentName } from './identity.js'
+import { handleFor, avatarSVG, randomAgentName } from './identity.js'
 import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
 const DEV_PREVIEW = import.meta.env.DEV && new URLSearchParams(window.location.search).has('preview')
 const MOCK_ID = '0xpreview0000000000000000000000000000dev1'
+const CATALOGS = [
+  {
+    id: 'azuki-tcg',
+    label: 'Azuki TCG',
+    title: 'Azuki TCG catalog',
+    path: 'catalogs/azuki-tcg.json',
+    note: 'Official gallery rows, Alpha-sheet fields, and source scars.',
+  },
+  {
+    id: 'japanese-pre-english',
+    label: 'Japanese pre-English',
+    title: 'Japanese pre-English catalog',
+    path: 'catalog-sample.json',
+    note: 'Pokemon launch-era and pre-English references.',
+  },
+]
+
+function catalogFromUrl() {
+  const wanted = new URLSearchParams(window.location.search).get('catalog')
+  return CATALOGS.find((c) => c.id === wanted) || CATALOGS[0]
+}
 
 function Wordmark({ big }) {
   return (
@@ -61,7 +82,7 @@ function MeetAgent({ accountId, onNamed }) {
   )
 }
 
-function AuthedApp({ accountId, agent, onSignOut }) {
+function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   return (
     <div className="app">
       <nav className="nav">
@@ -73,9 +94,21 @@ function AuthedApp({ accountId, agent, onSignOut }) {
       </nav>
       <main className="main">
         <div className="ek">Your collection</div>
-        <h1>Japanese pre-English catalog</h1>
+        <h1>{catalog.title}</h1>
+        <div className="catalogswitch" aria-label="catalog selection">
+          {CATALOGS.map((c) => (
+            <button
+              key={c.id}
+              className={'catalogtab' + (c.id === catalog.id ? ' on' : '')}
+              onClick={() => setCatalog(c)}
+            >
+              <span>{c.label}</span>
+              <small>{c.note}</small>
+            </button>
+          ))}
+        </div>
         <div className="agentline"><Avatar seed={agent} size={20} /> <b>{agent}</b> is signed in and ready.</div>
-        <Binder accountId={accountId} agentName={agent} />
+        <Binder accountId={accountId} agentName={agent} catalog={catalog} />
       </main>
     </div>
   )
@@ -86,24 +119,34 @@ export default function App() {
   const accountId = DEV_PREVIEW ? MOCK_ID : (user?.wallet?.address || user?.id || '').toLowerCase()
   const agentStoreKey = accountId ? `cairn-agent:${accountId}` : ''
   const [agent, setAgent] = useState('')
+  const [catalog, setCatalogState] = useState(catalogFromUrl)
 
   useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect -- hydrate the persisted agent name for this account. */
     if (!agentStoreKey) { setAgent(''); return }
     try { setAgent(localStorage.getItem(agentStoreKey) || (DEV_PREVIEW ? 'Ledger' : '')) } catch { setAgent('') }
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [agentStoreKey])
 
   const nameAgent = (n) => {
     try { localStorage.setItem(agentStoreKey, n) } catch { /* ignore */ }
     setAgent(n)
   }
+  const setCatalog = (c) => {
+    setCatalogState(c)
+    try { localStorage.setItem('cairn-catalog', c.id) } catch { /* ignore */ }
+    const u = new URL(window.location.href)
+    u.searchParams.set('catalog', c.id)
+    window.history.replaceState(null, '', u)
+  }
   const signOut = () => { if (DEV_PREVIEW) { setAgent(''); return } logout() }
 
   if (DEV_PREVIEW) {
     if (!agent) return <MeetAgent accountId={accountId} onNamed={nameAgent} />
-    return <AuthedApp accountId={accountId} agent={agent} onSignOut={signOut} />
+    return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
   }
   if (!ready) return <Splash />
   if (!authenticated) return <SignIn onLogin={login} />
   if (!agent) return <MeetAgent accountId={accountId} onNamed={nameAgent} />
-  return <AuthedApp accountId={accountId} agent={agent} onSignOut={signOut} />
+  return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
 }

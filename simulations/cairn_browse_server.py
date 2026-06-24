@@ -4,7 +4,7 @@
 Serves the binder (mockups/) statically and exposes a SMALL, deliberately narrow
 API so the live judged-layer agent can be poked from a browser:
 
-  POST /api/browse   {"call": "<natural-language browse call>"}  -> browse() result
+  POST /api/browse   {"call": "<natural-language browse call>", "catalog": "azuki-tcg"}  -> browse() result
   GET  /api/health                                               -> {"qwen": bool}
 
 Design constraints (this is the thing that gets exposed via the tunnel):
@@ -139,6 +139,7 @@ class BrowseHandler(SimpleHTTPRequestHandler):
         try:
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
             call = str(payload.get("call", "")).strip()[:MAX_CALL_CHARS]
+            catalog = str(payload.get("catalog", "")).strip() or None
         except (json.JSONDecodeError, UnicodeDecodeError):
             self.send_json({"error": "bad_json"}, status=400)
             return
@@ -151,9 +152,9 @@ class BrowseHandler(SimpleHTTPRequestHandler):
         try:
             if LOCAL_MODEL:
                 with _MODEL_LOCK:  # single-flight: the local 35B is single-GPU
-                    result = browse(call)
+                    result = browse(call, catalog=catalog)
             else:
-                result = browse(call)  # hosted endpoint scales; allow concurrent visitors
+                result = browse(call, catalog=catalog)  # hosted endpoint scales; allow concurrent visitors
         except Exception as exc:  # noqa: BLE001 — never leak a stack trace to the demo
             self.send_json({"error": "browse_failed", "detail": type(exc).__name__}, status=502)
             return

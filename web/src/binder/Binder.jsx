@@ -4,7 +4,8 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 // the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
 // and under a '/app/' base path on the deployed site.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
-const CATALOG_URL = import.meta.env.BASE_URL + 'catalog-sample.json'
+const DEFAULT_CATALOG = { id: 'japanese-pre-english', path: 'catalog-sample.json', title: 'Japanese pre-English catalog' }
+const catalogUrl = (catalog) => import.meta.env.BASE_URL + (catalog?.path || DEFAULT_CATALOG.path)
 
 const nm = (c) => c.name_ja || c.name_en || c.uid
 
@@ -43,6 +44,13 @@ function capMeta(c, e, store) {
   if (e.stance === 'want') return wantActive(c, store) ? { t: 'hunt', cls: 'm-want' } : { t: 'wishlist', cls: 'm-wish' }
   return { t: c.rarity || '', cls: 'm-none' }
 }
+function issueSeverity(c) {
+  const rank = { high: 3, medium: 2, low: 1, info: 0 }
+  const issues = c.issues || []
+  let best = null
+  for (const i of issues) if (!best || (rank[i.severity] ?? 0) > (rank[best] ?? 0)) best = i.severity
+  return best
+}
 function provBadge(c) {
   if (!c.image) return null
   if (c.image_status === 'exact_source') return <span className="prov pv-exact">exact</span>
@@ -58,6 +66,9 @@ function applyAgentFilter(cards, f, setById) {
   if (f.owned != null) out = out.filter((c) => !!c.owned === !!f.owned)
   if (f.exclude_grails) out = out.filter((c) => (c.band_rank || 0) < 3)
   if (f.category) out = out.filter((c) => (c.category || '').toLowerCase() === String(f.category).toLowerCase())
+  if (f.element) out = out.filter((c) => (c.element || '').toLowerCase() === String(f.element).toLowerCase())
+  if (f.star_alt != null) out = out.filter((c) => !!c.star_alt === !!f.star_alt)
+  if (f.rarity) out = out.filter((c) => (c.rarity || '').toLowerCase().includes(String(f.rarity).toLowerCase()))
   if (f.set) { const s = String(f.set).toLowerCase(); out = out.filter((c) => (setById[c.set_id]?.label || '').toLowerCase().includes(s)) }
   if (f.character) { const ch = String(f.character).toLowerCase(); out = out.filter((c) => (c.name_en || '').toLowerCase().includes(ch) || (c.name_ja || '').toLowerCase().includes(ch)) }
   return out
@@ -68,6 +79,7 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
   const meta = capMeta(c, e, store)
+  const sev = issueSeverity(c)
   return (
     <div className={'cell ' + (have ? 'own' : 'ghost') + (pick ? ' is-pick' : '') + (e.stance === 'pass' ? ' passed' : '')}>
       <div className="stancebar">
@@ -79,7 +91,8 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
         <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{c.romaji || (c.name_is_en ? 'EN' : '')}</div></div>
         {c.image && <img src={c.image} alt={nm(c)} loading="lazy" decoding="async" onError={(e) => retryImg(e, c.image)} />}
-        {c.holo ? <span className="holodot" title="holo" /> : null}
+        {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
+        {sev && <span className={'issueflag ' + sev} title="catalog issue carried forward">{sev === 'high' ? '!' : '?'}</span>}
         {provBadge(c)}
       </div>
       <div className="caption" onClick={() => onOpen && onOpen(c.uid)}>
@@ -104,6 +117,7 @@ const PROV_LABEL = {
   exact_source: 'Exact source image',
   provider_path: 'Provider-path reference image',
   no_rarity_reference: 'No Rarity reference image',
+  user_observation_no_public_image: 'User observation, no public image',
 }
 const mpill = (t, i) => t ? <span className="mpill" key={i}>{t}</span> : null
 
@@ -127,6 +141,8 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const condVal = u.want_cond !== undefined ? u.want_cond : (c.want_cond || 'any')
   const maxVal = u.want_max !== undefined ? u.want_max : (c.want_max || '')
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
+  const issues = c.issues || []
+  const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
   return (
     <div className="modal" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
       <div className="sheet" role="dialog" aria-modal="true">
@@ -137,7 +153,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {c.image
                 ? <img src={c.image} className={e.stance !== 'have' ? 'grey' : ''} alt={nm(c)} onError={(ev) => retryImg(ev, c.image)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
-              {c.holo ? <span className="holodot" title="holo" /> : null}
+              {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
               {provBadge(c)}
             </div>
           </div>
@@ -150,9 +166,31 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {c.name_is_en && <span className="enmark">EN</span>}
             </div>
             <div className="m-attrs">
-              {[c.category, types, c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'value-tier ' + c.band_rank : '']
+              {[c.category, types, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'attention-tier ' + c.band_rank : '']
                 .map((t, i) => mpill(t, i))}
             </div>
+            {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
+              <div className="dossier">
+                {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
+                {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
+                {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}
+                {visibleEffects.map((fx, i) => (
+                  <div key={i}><b>{fx.label || 'Effect'}</b><span>{fx.text || 'Effect label only.'}</span></div>
+                ))}
+                {c.flavor_text && <div><b>Flavor</b><span>{c.flavor_text}</span></div>}
+              </div>
+            )}
+            {issues.length > 0 && (
+              <div className="issuebox">
+                <div className="ititle">Catalog warnings</div>
+                {issues.map((i, idx) => (
+                  <div className={'irow ' + (i.severity || 'info')} key={idx}>
+                    <b>{i.severity || 'info'}</b>
+                    <span>{[...(i.codes || []), i.notes || i.recommended_action].filter(Boolean).join(' · ')}</span>
+                  </div>
+                ))}
+              </div>
+            )}
             <div className="m-stance">
               <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
               <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
@@ -192,13 +230,15 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 <b>{c.image ? (PROV_LABEL[c.image_status] || 'Reference image') : 'No image on file'}.</b>{' '}
                 {c.image_status === 'no_rarity_reference'
                   ? 'Source-labeled No Rarity reference.'
+                  : c.image_status === 'user_observation_no_public_image'
+                    ? 'Observation row from a user-provided image. The image hash is recorded in the catalog layer, but the image itself is not published here.'
                   : c.image
-                    ? 'External reference witness — not seller evidence, authentication, or proof of a specific physical card.'
+                    ? 'Reference witness — not seller evidence, authentication, or proof of a specific physical card.'
                     : 'No reference image has been sourced for this print yet.'}
                 {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
               </div>
             </div>
-            <div className="m-cite mono">catalog {(c.catalog_hash || '—').slice(0, 12)}{c.catalog_hash ? '…' : ''} · row {c.row_id ?? '—'}</div>
+            <div className="m-cite mono">catalog {(c.catalog_hash || '—').slice(0, 12)}{c.catalog_hash ? '…' : ''} · row {c.row_id ?? '—'}{c.source_entry_id ? ` · source ${c.source_entry_id}` : ''}</div>
           </div>
         </div>
       </div>
@@ -212,7 +252,7 @@ function AgentPanel({ res, agentName }) {
     return <div className="apanel"><div className="aoff">{off ? 'Your agent is offline right now (the model isn’t running).' : 'Could not reach your agent.'}</div></div>
   }
   const o = res.data, f = o.filter || {}, r = o.result || {}
-  const dims = ['holo', 'owned', 'exclude_grails', 'set', 'character', 'category']
+  const dims = ['holo', 'star_alt', 'owned', 'exclude_grails', 'set', 'character', 'category', 'element', 'rarity']
   const chips = dims.filter((k) => f[k] != null && f[k] !== false)
   const flags = o.overclaim_flags || []
   return (
@@ -230,7 +270,7 @@ function AgentPanel({ res, agentName }) {
   )
 }
 
-function AgentBar({ agentName, busy, res, onAsk }) {
+function AgentBar({ agentName, busy, res, onAsk, placeholder }) {
   const [call, setCall] = useState('')
   const ask = () => { const c = call.trim(); if (c && !busy) onAsk(c) }
   return (
@@ -238,7 +278,7 @@ function AgentBar({ agentName, busy, res, onAsk }) {
       <div className="acall">
         <span className="ek2 agent">Ask {agentName}</span>
         <div className="ainput">
-          <input value={call} maxLength={280} placeholder={'holos I’m missing that won’t break the bank…'}
+          <input value={call} maxLength={280} placeholder={placeholder || 'holos I’m missing that won’t break the bank…'}
             onChange={(e) => setCall(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
           <button onClick={ask} disabled={busy}>{busy ? '…' : 'browse'}</button>
         </div>
@@ -248,29 +288,45 @@ function AgentBar({ agentName, busy, res, onAsk }) {
   )
 }
 
-const CHIPS = [
-  { l: 'All', g: 'all' },
-  { l: 'Have', g: 'stance', v: 'have' }, { l: 'Want', g: 'stance', v: 'want', acc: 1 },
-  { sep: 1 },
-  { l: 'Pokémon', g: 'cat', v: 'Pokemon' }, { l: 'Trainer', g: 'cat', v: 'Trainer' }, { l: 'Energy', g: 'cat', v: 'Energy' },
-  { sep: 1 }, { l: 'Holo', g: 'holo' },
-]
+function chipsFor(data) {
+  const cats = data?.ui?.category_chips || ['Pokemon', 'Trainer', 'Energy']
+  const elements = data?.ui?.element_chips || []
+  const holoLabel = data?.ui?.holo_label || 'Holo'
+  return [
+    { l: 'All', g: 'all' },
+    { l: 'Have', g: 'stance', v: 'have' }, { l: 'Want', g: 'stance', v: 'want', acc: 1 },
+    { sep: 1 },
+    ...cats.map((c) => ({ l: c, g: 'cat', v: c })),
+    ...(elements.length ? [{ sep: 1 }, ...elements.map((e) => ({ l: e, g: 'element', v: e }))] : []),
+    { sep: 1 }, { l: holoLabel, g: 'holo' },
+  ]
+}
 
-export default function Binder({ accountId, agentName }) {
+export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
   const [store, setStore] = useState({})
   const [q, setQ] = useState('')
   const [stanceF, setStanceF] = useState(() => new Set())
   const [catF, setCatF] = useState(() => new Set())
+  const [elementF, setElementF] = useState(() => new Set())
   const [holoOnly, setHoloOnly] = useState(false)
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
   const [selected, setSelected] = useState(null)
-  const storeKey = accountId ? `cairn-cards:${accountId}` : 'cairn-cards'
+  const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
 
-  useEffect(() => { fetch(CATALOG_URL).then((r) => r.json()).then(setData).catch((e) => setErr(String(e))) }, [])
-  useEffect(() => { try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { setStore({}) } }, [storeKey])
+  useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
+    setData(null); setErr(''); setAgentRes(null); setQ(''); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false)
+    fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch((e) => setErr(String(e)))
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [catalog])
+  useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect -- hydrate stance state from localStorage for the selected catalog. */
+    try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { setStore({}) }
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [storeKey])
 
   // Flaky-network recovery: a dropping connection leaves Chrome's reused image loads
   // hung (so onError never fires). Every few seconds, re-trigger any near-viewport card
@@ -317,11 +373,11 @@ export default function Binder({ accountId, agentName }) {
   const askAgent = useCallback(async (call) => {
     setAgentBusy(true)
     try {
-      const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call }) })
+      const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call, catalog: catalog.id }) })
       setAgentRes({ ok: r.ok, data: await r.json() })
     } catch { setAgentRes({ ok: false, data: { error: 'network' } }) }
     finally { setAgentBusy(false) }
-  }, [])
+  }, [catalog.id])
   const clearAgent = () => setAgentRes(null)
 
   const agentActive = !!(agentRes?.ok && agentRes.data?.filter)
@@ -345,25 +401,28 @@ export default function Binder({ accountId, agentName }) {
         if (!((stanceF.has('have') && e.stance === 'have') || (stanceF.has('want') && e.stance === 'want'))) return false
       }
       if (catF.size && !catF.has(c.category)) return false
+      if (elementF.size && !elementF.has(c.element)) return false
       if (holoOnly && !c.holo) return false
       if (qq) {
-        const hay = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
+        const hay = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' + (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
         if (hay.indexOf(qq) < 0) return false
       }
       return true
     })
     if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, catF, holoOnly, store, setById, agentRes, agentActive, pickSet])
+  }, [data, q, stanceF, catF, elementF, holoOnly, store, setById, agentRes, agentActive, pickSet])
 
   const grouped = !q.trim() && !agentActive
+  const CHIPS = useMemo(() => chipsFor(data), [data])
   const toggleChip = (ch) => {
-    if (ch.g === 'all') { setStanceF(new Set()); setCatF(new Set()); setHoloOnly(false) }
+    if (ch.g === 'all') { setStanceF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
     else if (ch.g === 'cat') setCatF((p) => toggle(p, ch.v))
+    else if (ch.g === 'element') setElementF((p) => toggle(p, ch.v))
     else if (ch.g === 'holo') setHoloOnly((v) => !v)
   }
-  const chipOn = (ch) => ch.g === 'all' ? (!stanceF.size && !catF.size && !holoOnly) : ch.g === 'stance' ? stanceF.has(ch.v) : ch.g === 'cat' ? catF.has(ch.v) : holoOnly
+  const chipOn = (ch) => ch.g === 'all' ? (!stanceF.size && !catF.size && !elementF.size && !holoOnly) : ch.g === 'stance' ? stanceF.has(ch.v) : ch.g === 'cat' ? catF.has(ch.v) : ch.g === 'element' ? elementF.has(ch.v) : holoOnly
 
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
@@ -379,7 +438,7 @@ export default function Binder({ accountId, agentName }) {
         <span><b className="t-want">{countStance('want')}</b> want</span>
         <span><b>{data.summary.cards}</b> in catalog</span>
       </div>
-      <AgentBar agentName={agentName} busy={agentBusy} res={agentRes} onAsk={askAgent} />
+      <AgentBar agentName={agentName} busy={agentBusy} res={agentRes} onAsk={askAgent} placeholder={data.ui?.agent_placeholder} />
       <div className="controls">
         <div className="search"><input value={q} placeholder="search name or number…" onChange={(e) => setQ(e.target.value)} /></div>
         <div className="chips">

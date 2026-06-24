@@ -1,0 +1,46 @@
+{
+  "checks": {
+    "all_observations_have_authority_label": true,
+    "all_observations_have_printed_id": true,
+    "matched_gallery_uids_exist": true,
+    "source_image_not_committed": true
+  },
+  "counts": {
+    "observed_cards_not_in_gallery_snapshot": 2,
+    "rows": 4,
+    "source_conflicts": 1,
+    "unique_observation_ids": 4
+  },
+  "csv_path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv",
+  "name": "Azuki TCG User Photo Promo Observations",
+  "not_claiming": [
+    "official checklist inclusion for observed printed IDs absent from the gallery snapshot",
+    "market value",
+    "seller possession beyond the single user-provided photo",
+    "physical authenticity or condition",
+    "that the user photo should overwrite linked sheet or gallery fields"
+  ],
+  "observed_cards_not_in_gallery_snapshot": [
+    "AZP-005",
+    "AZP-004"
+  ],
+  "row_count": 4,
+  "schema": "azuki_tcg_promo_observation_provenance_v0.1",
+  "source": {
+    "date": "2026-06-24",
+    "kind": "user_provided_photo",
+    "note": "The source photo was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the user's physical-card image.",
+    "sha256": "59ff048dde6796c4720da70572f615b27ce95bf3f845020f5b42d26c05f7bf44",
+    "stored_in_repo": false
+  },
+  "source_conflicts": [
+    {
+      "disposition": "preserve_as_source_conflict_not_silent_correction",
+      "field": "ILLUSTRATOR",
+      "linked_alpha_sheet_value": "Comiccho",
+      "observation_id": "promo-photo-20260624-003",
+      "observed_value": "Tomugi",
+      "printed_id": "AZK01-028"
+    }
+  ]
+}

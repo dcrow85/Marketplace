@@ -1,0 +1,91 @@
+{
+  "checks": {
+    "alpha_fields_completion": {
+      "blank_illustrator_rows_disclosed": true,
+      "has_unique_row_keys": true,
+      "image_review_queue_disclosed": true,
+      "row_count_matches_official_gallery_entries": true
+    },
+    "alpha_master_sheet": {
+      "all_rows_have_illustrator_or_token_boundary": true,
+      "all_rows_have_names": true,
+      "gallery_crosswalk_unmatched_card_ids": [],
+      "no_duplicate_card_ids": true,
+      "row_count_matches_cards": true
+    },
+    "official_gallery": {
+      "all_expected_keys_present": true,
+      "api_count_matches_entries": true,
+      "image_urls_present": true,
+      "uid_count_matches_entries": true,
+      "unknown_categories_preserved": [
+        "SR ★"
+      ],
+      "unknown_elements": []
+    },
+    "portrait_alt_observations": {
+      "all_observations_have_authority_label": true,
+      "all_observations_have_printed_id": true,
+      "matched_gallery_uids_exist": true,
+      "source_images_not_committed": true
+    },
+    "promo_observations": {
+      "all_observations_have_authority_label": true,
+      "all_observations_have_printed_id": true,
+      "matched_gallery_uids_exist": true,
+      "source_image_not_committed": true
+    }
+  },
+  "counts": {
+    "alpha_fields_completion": {
+      "alpha_crosswalk_rows": 122,
+      "blank_illustrator_rows": 2,
+      "image_view_illustrator_rows": 110,
+      "official_gallery_completion_rows": 112,
+      "review_queue_rows": 2,
+      "rows": 234,
+      "unique_row_keys": 234
+    },
+    "alpha_master_sheet": {
+      "catalog_cards": 104,
+      "gallery_crosswalk_matched_cards": 104,
+      "gallery_crosswalk_unmatched_cards": 0,
+      "sheet_rows": 104,
+      "unique_card_ids": 104
+    },
+    "official_gallery": {
+      "gallery_entries": 234,
+      "multi_entry_card_ids": 27,
+      "official_api_count": 234,
+      "unique_card_ids": 202
+    },
+    "portrait_alt_observations": {
+      "observed_cards_not_in_gallery_snapshot": 0,
+      "printed_id_shape_discrepancies": 1,
+      "rows": 2,
+      "source_conflicts": 0,
+      "unique_observation_ids": 2
+    },
+    "promo_observations": {
+      "observed_cards_not_in_gallery_snapshot": 2,
+      "rows": 4,
+      "source_conflicts": 1,
+      "unique_observation_ids": 4
+    }
+  },
+  "not_claiming": [
+    "complete physical-product checklist beyond the linked Alpha Master Sheet",
+    "complete physical-product checklist beyond the official gallery endpoint",
+    "condition truth",
+    "errata adjudication beyond source text",
+    "gallery-image equivalence unless crosswalked by card ID",
+    "image rights approval",
+    "market value",
+    "physical-card authenticity",
+    "rules adjudication beyond source text",
+    "seller possession"
+  ],
+  "passed": true,
+  "schema": "azuki_tcg_catalog_audit_v0.2",
+  "status": "azuki_sources_imported_with_disclosed_residuals"
+}
