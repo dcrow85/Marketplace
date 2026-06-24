@@ -21,6 +21,19 @@ The directory now contains two sibling release files:
   effect text, flavor text, definition/ruling text, stamp, and a card-ID
   crosswalk back to the gallery catalog when available.
 
+It also contains a spreadsheet completion layer:
+
+- `spreadsheets/azuki_tcg_alpha_fields_completion.csv` is a 234-row
+  Alpha-style spreadsheet for every official gallery entry. The first columns
+  match the Alpha Master Sheet fields; trailing provenance columns preserve a
+  unique row key, source entry ID, set, image URL, field source, missing-field
+  list, and review status.
+- `spreadsheets/azuki_tcg_alpha_fields_completion_provenance.json` explains
+  how the completion was built. Alpha-crosswalked rows use the linked Alpha
+  sheet for Alpha fields. Non-Alpha gallery rows use official API fields where
+  available, and use an image-view pass only for manually readable illustrator
+  credit lines.
+
 The catalog preserves source data as returned by each source, including
 variant entries, alternate-art entries, promo entries, starter deck entries,
 sheet rows, and source anomalies. It does not silently normalize source scars.
@@ -44,6 +57,16 @@ Alpha Master Sheet:
 - One non-`Alpha` stamp is preserved as source data:
   `AZP-002` / `Azuki Trial Event Winner`
 
+Alpha-field completion spreadsheet:
+
+- 234 rows, one per official gallery entry
+- 234 unique row keys
+- 122 rows crosswalked to the Alpha Master Sheet by shared `cardId`
+- 112 rows completed from official gallery data
+- 110 official-only rows have illustrator credits filled by image view
+- 2 official-only rows remain in the image-review queue because the printed
+  credit line is visible but too compressed/stylized to transcribe confidently
+
 Authority boundary:
 
 - This catalog does not prove seller possession.
@@ -55,6 +78,8 @@ Authority boundary:
   endpoint and linked Alpha Master Sheet snapshots in `source-snapshots/`.
 - The Alpha-to-gallery crosswalk means shared card ID only; it does not prove
   identical image treatment, rarity treatment, physical printing, or possession.
+- Image-view illustrator reads are useful completion hints, not official API
+  facts. They remain lower authority than linked sheet fields.
 
 Rebuild:
 

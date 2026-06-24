@@ -1,5 +1,11 @@
 {
   "checks": {
+    "alpha_fields_completion": {
+      "blank_illustrator_rows_disclosed": true,
+      "has_unique_row_keys": true,
+      "image_review_queue_disclosed": true,
+      "row_count_matches_official_gallery_entries": true
+    },
     "alpha_master_sheet": {
       "all_rows_have_illustrator_or_token_boundary": true,
       "all_rows_have_names": true,
@@ -19,6 +25,15 @@
     }
   },
   "counts": {
+    "alpha_fields_completion": {
+      "alpha_crosswalk_rows": 122,
+      "blank_illustrator_rows": 2,
+      "image_view_illustrator_rows": 110,
+      "official_gallery_completion_rows": 112,
+      "review_queue_rows": 2,
+      "rows": 234,
+      "unique_row_keys": 234
+    },
     "alpha_master_sheet": {
       "catalog_cards": 104,
       "gallery_crosswalk_matched_cards": 104,

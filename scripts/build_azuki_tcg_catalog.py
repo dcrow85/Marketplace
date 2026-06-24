@@ -12,7 +12,9 @@ import argparse
 import collections
 import csv
 import hashlib
+import io
 import json
+import re
 import sys
 import urllib.request
 from datetime import date
@@ -24,6 +26,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "data" / "azuki-tcg"
 SNAPSHOT_DIR = BASE / "source-snapshots"
 RELEASE_DIR = BASE / "releases"
+SPREADSHEET_DIR = BASE / "spreadsheets"
 API_URL = "https://tcg.azuki.com/api/cards"
 GALLERY_URL = "https://tcg.azuki.com/gallery"
 RELEASE_ID = "azuki_tcg_official_gallery"
@@ -32,6 +35,7 @@ ALPHA_SHEET_URL = f"https://docs.google.com/spreadsheets/d/{ALPHA_SHEET_ID}/edit
 ALPHA_CSV_URL = f"https://docs.google.com/spreadsheets/d/{ALPHA_SHEET_ID}/gviz/tq?tqx=out:csv&gid=0"
 ALPHA_IMAGE_CSV_URL = f"https://docs.google.com/spreadsheets/d/{ALPHA_SHEET_ID}/gviz/tq?tqx=out:csv&gid=1096719524"
 ALPHA_RELEASE_ID = "azuki_tcg_alpha_master_sheet"
+ALPHA_FIELDS_COMPLETION_ID = "azuki_tcg_alpha_fields_completion"
 
 EXPECTED_CARD_KEYS = {
     "abilities",
@@ -76,6 +80,169 @@ ALPHA_NOT_CLAIMING = [
     "gallery-image equivalence unless crosswalked by card ID",
 ]
 
+ALPHA_COLUMNS = [
+    "ID",
+    "IKZ COST",
+    "NAME",
+    "ELEMENT",
+    "TYPE",
+    "SUBTYPE_1",
+    "SUBTYPE_2",
+    "SUBTYPE_3",
+    "GATE_PWR",
+    "ATK",
+    "HP",
+    "PLUS_ATK",
+    "REF_IP",
+    "REF_ID",
+    "REF_IP2",
+    "REF_ID2",
+    "RARITY",
+    "ILLUSTRATOR",
+    "E_1",
+    "E_1_TEXT",
+    "E_2",
+    "E_2_TEXT",
+    "F_TEXT",
+    "DEFINITION_TEXT",
+    "RULING_TEXT",
+    "STAMP",
+    "IMG",
+    "ALT_IMG",
+]
+
+COMPLETION_EXTRA_COLUMNS = [
+    "ROW_KEY",
+    "SOURCE_RELEASE",
+    "SOURCE_ENTRY_ID",
+    "SETS",
+    "IMAGE_URL",
+    "FIELD_SOURCE",
+    "MISSING_ALPHA_FIELDS",
+    "REVIEW_STATUS",
+]
+
+# Image-view pass, 2026-06-23. These are deliberately not treated as official
+# gallery API facts: they are manual reads from the lower-left print line of
+# the source card images, used only to reduce blank spreadsheet fields.
+IMAGE_READ_ILLUSTRATORS = {
+    "S1-AZK01-068_Pip_E_C_die": "Nohgo",
+    "S1-AZK01-069_Link_E_C_die": "Nohgo",
+    "S1-AZK01-070_Mocking-Dummy_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-071_Alley-Fetchduck_E_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-072_Beanz-Mentor_E_R_die": "Twisted Hand Studio",
+    "S1-AZK01-074_Gurugumi-Vanguard_E_UC_die": "Zhongqiu",
+    "S1-AZK01-075_Drunken-Brewmaster_E_C_die": "Avo",
+    "S1-AZK01-076_Horen-of-Two-Paths_E_C_die": "Aaron",
+    "S1-AZK01-077_Stalking-Assassin_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-078_Fermented-Beanz_E_C_die": "Avo",
+    "S1-AZK01-079_Gin-and-Tonika_E_SR_die": "Tomugi",
+    "S1-AZK01-079A_Gin-and-Tonika_E_SR_die": "Tomugi",
+    "S1-AZK01-080_Bladebound-Ally_E_R_die": "Pandart Studio",
+    "S1-AZK01-081_Gurugumi-Mentor_E_C_die": "Skycrow",
+    "S1-AZK01-082_Black-Jade-Brawler_E_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-083_Gurugumi-Imitator_E_R_die": "Skycrow",
+    "S1-AZK01-084_Good-Enough-Replica_S_C_die": "Twisted Hand Studio",
+    "S1-AZK01-085_Invigorating-Concoction_S_C_die": "Nick Oji",
+    "S1-AZK01-086_Forging-Tricks_S_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-087_Mizuryuus-Torrent_S_SR_die": "Pandart Studio",
+    "S1-AZK01-087A_Mizuryuus-Torrent_S_SR_die": "Twisted Hand Studio",
+    "S1-AZK01-088_Pulled-Under_S_R_die": "Twisted Hand Studio",
+    "S1-AZK01-089_Mizuryuu-Fist-Master_E_UC_die": "Pandart Studio",
+    "S1-AZK01-090_Priestess-of-the-Mists_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-091_Bubble-Adept_E_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-092_Lotus-of-Reflection_S_C_die": "Twisted Hand Studio",
+    "S1-AZK01-093_Naiyara-the-Tideweaver_E_R_die": "Pandart Studio",
+    "S1-AZK01-094_Hidden-Dagger_W_C_die": "Twisted Hand Studio",
+    "S1-AZK01-095_Stormglass-Katana_W_C_die": "Twisted Hand Studio",
+    "S1-AZK01-096_Ninpo-Thunderstep_S_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-097_Black-Jade-Pawnbroker_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-098_Arms-Dealer-Kin_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-099_Raikos-Wrath-Shin_E_SR_die": "DKANG!",
+    "S1-AZK01-099A_Raikos-Wrath-Shin_E_SR_die": "Malcolm Wope",
+    "S1-AZK01-100_Raizans-Riposte_S_C_die": "Twisted Hand Studio",
+    "S1-AZK01-101_Sand-Stands-Still_S_SR_die": "Pandart Studio",
+    "S1-AZK01-102_Oathstone_S_C_die": "Twisted Hand Studio",
+    "S1-AZK01-103_Dropline-Station_E_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-104_Sanzus-Envoy_E_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-105_Prickly-Tumbleweed_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-106_Lord-of-Sands-Osunanami_E_SR_die": "Pandart Studio",
+    "S1-AZK01-107_Offering-to-Stillstone_S_C_die": "Twisted Hand Studio",
+    "S1-AZK01-108_Crushing-Weight_S_R_die": "Pandart Studio",
+    "S1-AZK01-109_Rock-Sloth_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-110_Gluttonous-Devourer-Kasha_E_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-111_Black-Jade-Decoy_E_R_die": "Twisted Hand Studio",
+    "S1-AZK01-112_Enrai-Shakunetsu_E_SR_die": "Twisted Hand Studio",
+    "S1-AZK01-112A_Enrai-Shakunetsu_E_SR_die": "Qin Fang",
+    "S1-AZK01-113_Cinderwake-Pursuer_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-114_Omen-Peddler_E_R_die": "Samuel Gildas",
+    "S1-AZK01-115_Crazed-Arsonist_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-116_Tenmoku-Daiki_E_R_die": "Pandart Studio",
+    "S1-AZK01-117_Ignition-Pact_S_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-118_Bandit-Ringleader_E_C_die": "Twisted Hand Studio",
+    "S1-AZK01-119_Piko-of-Thousand-Blades_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-119A_Piko-of-Thousand-Blades_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-120_Stormchain-Gate_G_G_die": "Twisted Hand Studio",
+    "S1-AZK01-121_Kagoro-of-the-Burnt-Path_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-121A_Kagoro-of-the-Burnt-Path_L_L_die": "steamboy",
+    "S1-AZK01-122_Rushfire-Gate_G_G_die": "Twisted Hand Studio",
+    "S1-AZK01-123_Goro-Graveloth_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-123A_Goro-Graveloth_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-124_Gate-of-Devotion-Gate_G_G_die": "Twisted Hand Studio",
+    "S1-AZK01-125_Benzai-the-Sly_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-125A_Benzai-the-Sly_L_L_die": "Twisted Hand Studio",
+    "S1-AZK01-126_Gate-of-Echoed-Waves-Gate_G_G_die": "Twisted Hand Studio",
+    "S1-AZK01-127_Sundering-Strike_S_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-128_Wrong-Step_S_UC_die": "Twisted Hand Studio",
+    "S1-AZK01-129_Silk-Tongue-Velya_E_UC_die": "Twisted Hand Studio",
+    "AZP-003_IKZ_INV26-Participation_die": "Crowex",
+    "S1-STT03-001_Bobu_L_L_die": "Pandart Studio",
+    "S1-STT03-001A_Bobu_L_L_die": "steamboy",
+    "S1-STT03-002_Stonehaven-Gate_G_G_die": "Angélo Sung",
+    "S1-STT03-002A_Stonehaven-Gate_G_G_die": "Angélo Sung",
+    "S1-STT03-003_Koyama-Farm-Potter_E_C_die": "Twisted Hand Studio",
+    "S1-STT03-004_Sloth-Scarecrow_E_C_die": "Twisted Hand Studio",
+    "S1-STT03-005_Wobbly-Cabbage-Cart_E_C_die": "Twisted Hand Studio",
+    "S1-STT03-006_Cactus-Farmer_E_UC_die": "Twisted Hand Studio",
+    "S1-STT03-007_Koyama-Farm-Caretaker_E_R_die": "Twisted Hand Studio",
+    "S1-STT03-008_Midnight-Courier_E_C_die": "Kilo",
+    "S1-STT03-009_Warding-Totem_E_UC_die": "Twisted Hand Studio",
+    "S1-STT03-010_Shroommancer_E_C_die": "Twisted Hand Studio",
+    "S1-STT03-011_Koyama-Farm-Plowman_E_C_die": "Twisted Hand Studio",
+    "S1-STT03-012_Miharu-of-the-White-Bloom_E_SR_die": "Twisted Hand Studio",
+    "S1-STT03-013_Stone-Masked-Ancient_E_SR_die": "Twisted Hand Studio",
+    "S1-STT03-013A_Stone-Masked-Ancient_E_SR_die": "Twisted Hand Studio",
+    "S1-STT03-014_Sandcoil-Python_E_UC_die": "Twisted Hand Studio",
+    "S1-STT03-015_Jar-of-Beans_S_UC_die": "Twisted Hand Studio",
+    "S1-STT03-016_Quicksand_S_R_die": "Twisted Hand Studio",
+    "S1-STT03-017_Sprout-of-Fortune_S_C_die": "Twisted Hand Studio",
+    "S1-STT04-001_Zero_L_L_die": "Pandart Studio",
+    "S1-STT04-001_Zero_L_L_die__2": "Pandart Studio",
+    "S1-STT04-002_Ragefire-Gate_G_G_die": "Rylor",
+    "S1-STT04-002A_Ragefire-Gate_G_G_die": "Rylor",
+    "S1-STT04-003_Cinderwake-Seer_E_UC_die": "Twisted Hand Studio",
+    "S1-STT04-004_Fanatic-Kindler_E_C_die": "Twisted Hand Studio",
+    "S1-STT04-005_Ruby_E_C_die": "Zhongqiu",
+    "S1-STT04-006_Wolf-Cub_E_C_die": "Twisted Hand Studio",
+    "S1-STT04-007_Enraged-Howler_E_C_die": "Twisted Hand Studio",
+    "S1-STT04-008_Lady-Emberheart_E_UC_die": "Aaron",
+    "S1-STT04-009_Cinderwake-Ritualist_E_R_die": "Soysauce",
+    "S1-STT04-010_Reckless-Tinkerer_E_C_die": "Twisted Hand Studio",
+    "S1-STT04-011_Scorchland-Raven_E_C_die": "Twisted Hand Studio",
+    "S1-STT04-012_Spiteful-Raider_E_UC_die": "Twisted Hand Studio",
+    "S1-STT04-013_Kurai-the-Volcano_E_SR_die": "Avo",
+    "S1-STT04-014_Scorchveil-Shinobi-Suzuka_E_SR_die": "Twisted Hand Studio",
+    "S1-STT04-014A_Scorchveil-Shinobi-Suzuka_E_SR_die": "Twisted Hand Studio",
+    "S1-STT04-015_Detonation-Pact_S_C_die": "Twisted Hand Studio",
+    "S1-STT04-016_Collateral-Burst_S_UC_die": "Twisted Hand Studio",
+    "S1-STT04-017_Wrath-of-Sinder_S_R_die": "Twisted Hand Studio",
+}
+
+IMAGE_REVIEW_QUEUE = {
+    "S1-AZK01-067_Frida_E_C_die": "Image credit line is visible but too stylized/compressed for confident transcription.",
+    "S1-AZK01-073_Top-Beanz_E_C_die": "Image credit line appears to match Frida, but remains too stylized/compressed for confident transcription.",
+}
+
 
 def canonical_json(data: Any) -> str:
     return json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
@@ -96,6 +263,15 @@ def read_json(path: Path) -> Any:
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def csv_text(rows: list[dict[str, Any]], columns: list[str]) -> str:
+    handle = io.StringIO()
+    writer = csv.DictWriter(handle, fieldnames=columns, extrasaction="ignore", lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        writer.writerow({column: "" if row.get(column) is None else row.get(column) for column in columns})
+    return handle.getvalue()
 
 
 def fetch_snapshot() -> Path:
@@ -202,6 +378,14 @@ def clean_sheet_value(value: Any) -> str | None:
     return text
 
 
+def sheet_value(value: Any) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, list):
+        return "; ".join(str(item) for item in value if item is not None)
+    return str(value)
+
+
 def sheet_int(value: Any) -> int | None:
     text = clean_sheet_value(value)
     if text is None:
@@ -216,6 +400,28 @@ def read_csv_rows(path: Path) -> list[dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     return [row for row in rows if clean_sheet_value(row.get("ID"))]
+
+
+def split_effects(card_text: str, abilities: list[str]) -> tuple[str, str, str, str]:
+    text = (card_text or "").strip()
+    if not text:
+        return "", "", "", ""
+
+    segments = [segment.strip() for segment in re.split(r"\n\s*\n", text) if segment.strip()]
+    effects: list[tuple[str, str]] = []
+    for segment in segments:
+        match = re.match(r"^((?:\[[^\]]+\])+)\s*(.*)$", segment, flags=re.S)
+        if match:
+            labels = "; ".join(re.findall(r"\[([^\]]+)\]", match.group(1)))
+            effects.append((labels, match.group(2).strip()))
+        else:
+            effects.append(("", segment))
+
+    if len(effects) == 1 and not effects[0][0] and abilities:
+        effects[0] = ("; ".join(abilities), effects[0][1])
+
+    padded = effects[:2] + [("", ""), ("", "")]
+    return padded[0][0], padded[0][1], padded[1][0], padded[1][1]
 
 
 def row_ref(row: dict[str, str], prefix: str = "") -> dict[str, str | None] | None:
@@ -626,6 +832,176 @@ def build_combined_index(gallery_release: dict[str, Any], alpha_release: dict[st
     }
 
 
+def alpha_completion_row_from_alpha(card: dict[str, Any], gallery_card: dict[str, Any]) -> dict[str, Any]:
+    effects = card.get("effects") or []
+    first = effects[0] if len(effects) > 0 else {}
+    second = effects[1] if len(effects) > 1 else {}
+    refs = card.get("reference_ips") or []
+    primary = refs[0] if len(refs) > 0 else {}
+    secondary = refs[1] if len(refs) > 1 else {}
+    row = {
+        "ID": card["card_id"],
+        "IKZ COST": sheet_value(card.get("ikz_cost")),
+        "NAME": sheet_value(card.get("name")),
+        "ELEMENT": sheet_value(card.get("element")),
+        "TYPE": sheet_value(card.get("category")),
+        "SUBTYPE_1": sheet_value((card.get("subtypes") or [""])[0] if len(card.get("subtypes") or []) > 0 else ""),
+        "SUBTYPE_2": sheet_value((card.get("subtypes") or ["", ""])[1] if len(card.get("subtypes") or []) > 1 else ""),
+        "SUBTYPE_3": sheet_value((card.get("subtypes") or ["", "", ""])[2] if len(card.get("subtypes") or []) > 2 else ""),
+        "GATE_PWR": sheet_value(card.get("gate_power")),
+        "ATK": sheet_value(card.get("attack")),
+        "HP": sheet_value(card.get("health")),
+        "PLUS_ATK": sheet_value(card.get("plus_attack")),
+        "REF_IP": sheet_value(primary.get("ip")),
+        "REF_ID": sheet_value(primary.get("id")),
+        "REF_IP2": sheet_value(secondary.get("ip")),
+        "REF_ID2": sheet_value(secondary.get("id")),
+        "RARITY": sheet_value(card.get("rarity")),
+        "ILLUSTRATOR": sheet_value(card.get("illustrator")),
+        "E_1": sheet_value(first.get("label")),
+        "E_1_TEXT": sheet_value(first.get("text")),
+        "E_2": sheet_value(second.get("label")),
+        "E_2_TEXT": sheet_value(second.get("text")),
+        "F_TEXT": sheet_value(card.get("flavor_text")),
+        "DEFINITION_TEXT": sheet_value(card.get("definition_text")),
+        "RULING_TEXT": sheet_value(card.get("ruling_text")),
+        "STAMP": sheet_value(card.get("stamp")),
+        "IMG": sheet_value(gallery_card.get("image_url") or card.get("source_image_cell")),
+        "ALT_IMG": sheet_value(card.get("source_alt_image_cell")),
+        "ROW_KEY": gallery_card["uid"],
+        "SOURCE_RELEASE": "alpha_master_sheet_crosswalk",
+        "SOURCE_ENTRY_ID": sheet_value(gallery_card.get("source_entry_id")),
+        "SETS": sheet_value(gallery_card.get("sets")),
+        "IMAGE_URL": sheet_value(gallery_card.get("image_url")),
+        "FIELD_SOURCE": "linked_alpha_master_sheet; official_gallery_image_url",
+        "REVIEW_STATUS": "sheet_sourced",
+    }
+    return row
+
+
+def alpha_completion_row_from_gallery(card: dict[str, Any]) -> dict[str, Any]:
+    e1, e1_text, e2, e2_text = split_effects(card.get("card_text") or "", card.get("abilities") or [])
+    subtypes = card.get("subtypes") or []
+    source_entry_id = card["source_entry_id"]
+    illustrator = IMAGE_READ_ILLUSTRATORS.get(source_entry_id, "")
+    category = card.get("category")
+    attack = card.get("attack")
+    plus_attack = attack if category == "Weapon" else None
+    row = {
+        "ID": card["card_id"],
+        "IKZ COST": sheet_value(card.get("ikz_cost")),
+        "NAME": sheet_value(card.get("name")),
+        "ELEMENT": sheet_value(card.get("element")),
+        "TYPE": sheet_value(category),
+        "SUBTYPE_1": sheet_value(subtypes[0] if len(subtypes) > 0 else ""),
+        "SUBTYPE_2": sheet_value(subtypes[1] if len(subtypes) > 1 else ""),
+        "SUBTYPE_3": sheet_value(subtypes[2] if len(subtypes) > 2 else ""),
+        "GATE_PWR": sheet_value(card.get("gate_power")),
+        "ATK": "" if category == "Weapon" else sheet_value(attack),
+        "HP": sheet_value(card.get("health")),
+        "PLUS_ATK": sheet_value(plus_attack),
+        "REF_IP": "",
+        "REF_ID": "",
+        "REF_IP2": "",
+        "REF_ID2": "",
+        "RARITY": sheet_value(card.get("rarity")),
+        "ILLUSTRATOR": illustrator,
+        "E_1": e1,
+        "E_1_TEXT": e1_text,
+        "E_2": e2,
+        "E_2_TEXT": e2_text,
+        "F_TEXT": "",
+        "DEFINITION_TEXT": "; ".join(card.get("abilities") or []),
+        "RULING_TEXT": category if category in {"Spell", "Weapon", "Gate", "IKZ"} else "",
+        "STAMP": sheet_value(card.get("sets")),
+        "IMG": sheet_value(card.get("image_url")),
+        "ALT_IMG": "",
+        "ROW_KEY": card["uid"],
+        "SOURCE_RELEASE": "official_gallery_completion",
+        "SOURCE_ENTRY_ID": source_entry_id,
+        "SETS": sheet_value(card.get("sets")),
+        "IMAGE_URL": sheet_value(card.get("image_url")),
+        "FIELD_SOURCE": "official_gallery_api; image_view_illustrator" if illustrator else "official_gallery_api",
+        "REVIEW_STATUS": "image_credit_read" if illustrator else "needs_image_credit_review",
+    }
+    if source_entry_id in IMAGE_REVIEW_QUEUE:
+        row["REVIEW_STATUS"] = "needs_image_credit_review"
+    return row
+
+
+def build_alpha_fields_completion(
+    gallery_release: dict[str, Any],
+    alpha_release: dict[str, Any],
+) -> tuple[str, dict[str, Any]]:
+    alpha_by_card_id = {card["card_id"]: card for card in alpha_release["cards"]}
+    rows: list[dict[str, Any]] = []
+    for gallery_card in gallery_release["cards"]:
+        alpha_card = alpha_by_card_id.get(gallery_card["card_id"])
+        if alpha_card:
+            row = alpha_completion_row_from_alpha(alpha_card, gallery_card)
+        else:
+            row = alpha_completion_row_from_gallery(gallery_card)
+        missing = [column for column in ALPHA_COLUMNS if not sheet_value(row.get(column))]
+        row["MISSING_ALPHA_FIELDS"] = "; ".join(missing)
+        rows.append(row)
+
+    rows.sort(key=lambda row: (row["ID"], row["SOURCE_ENTRY_ID"]))
+    columns = ALPHA_COLUMNS + COMPLETION_EXTRA_COLUMNS
+    text = csv_text(rows, columns)
+    missing_counts: collections.Counter[str] = collections.Counter()
+    for row in rows:
+        for column in row["MISSING_ALPHA_FIELDS"].split("; "):
+            if column:
+                missing_counts[column] += 1
+    illustrator_sources = collections.Counter(
+        "alpha_sheet"
+        if row["SOURCE_RELEASE"] == "alpha_master_sheet_crosswalk" and row["ILLUSTRATOR"]
+        else "image_view"
+        if row["ILLUSTRATOR"]
+        else "blank"
+        for row in rows
+    )
+    provenance = {
+        "schema": "azuki_tcg_alpha_fields_completion_provenance_v0.1",
+        "name": "Azuki TCG Alpha-Field Completion Spreadsheet",
+        "spreadsheet_path": f"data/azuki-tcg/spreadsheets/{ALPHA_FIELDS_COMPLETION_ID}.csv",
+        "row_count": len(rows),
+        "columns": columns,
+        "source_policy": {
+            "alpha_master_sheet_crosswalk": "If a gallery entry shares a card ID with the linked Alpha Master Sheet, Alpha sheet fields are used for Alpha-style columns and the gallery supplies the image URL/unique source row.",
+            "official_gallery_completion": "If no Alpha row exists, mechanical fields are derived from the official gallery API. Illustrator is filled only when the card image credit line was manually readable.",
+            "not_claiming": [
+                "that an image-view illustrator read has the same authority as the Alpha Master Sheet",
+                "reference IP/ID when the official gallery API does not provide it",
+                "flavor text when it appears only in card art and has not been transcribed",
+                "physical-card authenticity, possession, condition, or market value",
+            ],
+        },
+        "counts": {
+            "rows": len(rows),
+            "unique_row_keys": len({row["ROW_KEY"] for row in rows}),
+            "alpha_crosswalk_rows": sum(1 for row in rows if row["SOURCE_RELEASE"] == "alpha_master_sheet_crosswalk"),
+            "official_gallery_completion_rows": sum(1 for row in rows if row["SOURCE_RELEASE"] == "official_gallery_completion"),
+            "image_view_illustrator_rows": illustrator_sources["image_view"],
+            "blank_illustrator_rows": illustrator_sources["blank"],
+            "review_queue_rows": sum(1 for row in rows if row["REVIEW_STATUS"] == "needs_image_credit_review"),
+        },
+        "missing_alpha_field_counts": dict(sorted(missing_counts.items())),
+        "image_review_queue": {
+            source_entry_id: {
+                "note": note,
+                "gallery_image_url": next(
+                    card["image_url"]
+                    for card in gallery_release["cards"]
+                    if card["source_entry_id"] == source_entry_id
+                ),
+            }
+            for source_entry_id, note in sorted(IMAGE_REVIEW_QUEUE.items())
+        },
+    }
+    return text, provenance
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--refresh", action="store_true", help="Fetch the official API and linked alpha sheet into dated snapshots before building.")
@@ -643,10 +1019,13 @@ def main() -> None:
     release, _legacy_index, _legacy_manifest, gallery_audit = build(snapshot_path)
     alpha_release, alpha_audit = build_alpha(alpha_snapshot_path, alpha_image_snapshot_path, release)
     index = build_combined_index(release, alpha_release)
+    completion_csv, completion_provenance = build_alpha_fields_completion(release, alpha_release)
 
     release_sha = sha256_text(canonical_json(release))
     alpha_release_sha = sha256_text(canonical_json(alpha_release))
     index_sha = sha256_text(canonical_json(index))
+    completion_csv_sha = sha256_text(completion_csv)
+    completion_provenance_sha = sha256_text(canonical_json(completion_provenance))
     snapshot_date = snapshot_path.stem.replace("cards_api_", "")
     alpha_source = {
         "path": str(alpha_snapshot_path.relative_to(ROOT)),
@@ -685,39 +1064,61 @@ def main() -> None:
                 "path": "data/azuki-tcg/index.json",
                 "sha256": index_sha,
             },
+            "alpha_fields_completion_csv": {
+                "path": f"data/azuki-tcg/spreadsheets/{ALPHA_FIELDS_COMPLETION_ID}.csv",
+                "sha256": completion_csv_sha,
+            },
+            "alpha_fields_completion_provenance": {
+                "path": f"data/azuki-tcg/spreadsheets/{ALPHA_FIELDS_COMPLETION_ID}_provenance.json",
+                "sha256": completion_provenance_sha,
+            },
         },
         "counts": {
             "official_gallery": release["counts"],
             "alpha_master_sheet": alpha_release["counts"],
+            "alpha_fields_completion": completion_provenance["counts"],
         },
         "not_claiming": sorted(set(AUTHORITY_NOT_CLAIMING + ALPHA_NOT_CLAIMING)),
     }
 
+    completion_checks = {
+        "row_count_matches_official_gallery_entries": completion_provenance["row_count"] == release["counts"]["gallery_entries"],
+        "has_unique_row_keys": completion_provenance["counts"]["unique_row_keys"] == completion_provenance["counts"]["rows"],
+        "image_review_queue_disclosed": completion_provenance["counts"]["review_queue_rows"] == len(IMAGE_REVIEW_QUEUE),
+        "blank_illustrator_rows_disclosed": completion_provenance["counts"]["blank_illustrator_rows"] == len(IMAGE_REVIEW_QUEUE),
+    }
+    completion_passed = all(completion_checks.values())
+    sources_passed = gallery_audit["passed"] and alpha_audit["passed"]
     audit = {
         "schema": "azuki_tcg_catalog_audit_v0.2",
-        "passed": gallery_audit["passed"] and alpha_audit["passed"],
+        "passed": sources_passed and completion_passed,
         "status": "azuki_sources_imported_with_disclosed_residuals"
-        if gallery_audit["passed"] and alpha_audit["passed"]
+        if sources_passed and completion_passed
         else "azuki_source_import_failed",
         "checks": {
             "official_gallery": gallery_audit["checks"],
             "alpha_master_sheet": alpha_audit["checks"],
+            "alpha_fields_completion": completion_checks,
         },
         "counts": manifest["counts"],
         "not_claiming": manifest["not_claiming"],
     }
 
-    targets = {
+    json_targets = {
         RELEASE_DIR / f"{RELEASE_ID}.json": release,
         RELEASE_DIR / f"{ALPHA_RELEASE_ID}.json": alpha_release,
         BASE / "index.json": index,
         BASE / "manifest.json": manifest,
         BASE / "audit.json": audit,
+        SPREADSHEET_DIR / f"{ALPHA_FIELDS_COMPLETION_ID}_provenance.json": completion_provenance,
+    }
+    text_targets = {
+        SPREADSHEET_DIR / f"{ALPHA_FIELDS_COMPLETION_ID}.csv": completion_csv,
     }
 
     if args.check:
         mismatches = []
-        for path, data in targets.items():
+        for path, data in json_targets.items():
             if not path.exists():
                 mismatches.append(f"missing {path.relative_to(ROOT)}")
                 continue
@@ -725,14 +1126,25 @@ def main() -> None:
             expected = json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
             if current != expected:
                 mismatches.append(f"stale {path.relative_to(ROOT)}")
+        for path, expected in text_targets.items():
+            if not path.exists():
+                mismatches.append(f"missing {path.relative_to(ROOT)}")
+                continue
+            current = path.read_text(encoding="utf-8")
+            if current != expected:
+                mismatches.append(f"stale {path.relative_to(ROOT)}")
         print(json.dumps({"passed": not mismatches and audit["passed"], "snapshots": {"official_gallery": str(snapshot_path.relative_to(ROOT)), "alpha_master_sheet": str(alpha_snapshot_path.relative_to(ROOT))}, "counts": manifest["counts"], "mismatches": mismatches, "audit_status": audit["status"]}, indent=2, sort_keys=True))
         if mismatches or not audit["passed"]:
             sys.exit(1)
         return
 
-    for path, data in targets.items():
+    for path, data in json_targets.items():
         write_json(path, data)
-    print(json.dumps({"wrote": [str(path.relative_to(ROOT)) for path in targets], "snapshots": {"official_gallery": str(snapshot_path.relative_to(ROOT)), "alpha_master_sheet": str(alpha_snapshot_path.relative_to(ROOT))}, "counts": manifest["counts"], "audit_status": audit["status"]}, indent=2, sort_keys=True))
+    for path, text in text_targets.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding="utf-8")
+    wrote = list(json_targets) + list(text_targets)
+    print(json.dumps({"wrote": [str(path.relative_to(ROOT)) for path in wrote], "snapshots": {"official_gallery": str(snapshot_path.relative_to(ROOT)), "alpha_master_sheet": str(alpha_snapshot_path.relative_to(ROOT))}, "counts": manifest["counts"], "audit_status": audit["status"]}, indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":
