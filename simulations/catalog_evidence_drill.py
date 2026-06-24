@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Falsification drill for the §5 gates (CE1-CE8) of Protocol_Catalog_Evidence_v0.1.md.
+"""Falsification drill for the §5 gates (CE1-CE10) of Protocol_Catalog_Evidence_v0.2.md.
 Deterministic, model-free.
 
 PER-SUBGUARD TEETH: each compound gate is mutated one subclause at a time. For every
@@ -22,7 +22,7 @@ _AUTH_LABELS = {"authentic", "genuine", "is that card", "verified authentic", "r
 _TIER_RANK = {"raw": 1, "anchored": 2, "curated": 3}
 
 
-def ce1(c, off=frozenset()):  # Zero reference weight until provenance-anchored
+def ce1(c, off=frozenset()):  # Zero reference weight until provenance-anchored, with a tight anchor
     r = []
     if "raw_zero_weight" not in off and c["tier"] == "raw" and c["reference_weight"] > 0:
         r.append("raw specimen carries nonzero reference weight")
@@ -30,6 +30,13 @@ def ce1(c, off=frozenset()):  # Zero reference weight until provenance-anchored
         r.append("tiered specimen without an anchor_ref")
     if "anchor_type_valid" not in off and c["anchor_ref"] and c["anchor_type"] not in _VALID_ANCHORS:
         r.append(f"anchor type not a resolved-genuine outcome ({c['anchor_type']})")
+    # settled_trade is NOT a resolved-genuine outcome unless it adjudicated scope AND finality elapsed
+    if "settled_covered_scope" not in off and c["anchor_type"] == "settled_trade" \
+            and not c["settled_covered_authenticity_at_scope"]:
+        r.append("settled_trade anchor did not cover row/variant/authenticity scope")
+    if "settled_final" not in off and c["anchor_type"] == "settled_trade" \
+            and not c["settled_finality_and_tail_elapsed"]:
+        r.append("settled_trade anchor before finality + tail elapsed")
     return (not r, r)
 
 
@@ -51,8 +58,12 @@ def ce3(c, off=frozenset()):  # Anchor integrity (poison / Verifier §6)
     return (not r, r)
 
 
-def ce4(c, off=frozenset()):  # Sybil / flood caps (A1 aggregate shape, applied to corpus influence)
+def ce4(c, off=frozenset()):  # Sybil / flood caps on REGISTRY-CANONICAL labels (the A1 rotation lesson)
     r = []
+    if "contributor_label_canonical" not in off and not c["contributor_label_registry_resolved"]:
+        r.append("contributor label is self-asserted, not registry-resolved (rotatable)")
+    if "cluster_label_canonical" not in off and not c["cluster_label_registry_canonical"]:
+        r.append("control-cluster label is self-asserted, not registry-canonical (rotatable)")
     if "per_contributor_cap" not in off and c["contributor_weighted_share"] > c["contributor_cap"]:
         r.append("per-contributor weighted corpus share over cap")
     if "per_cluster_cap" not in off and c["cluster_weighted_share"] > c["cluster_cap"]:
@@ -95,11 +106,38 @@ def ce8(c, off=frozenset()):  # Incentive anti-poison
     return (not r, r)
 
 
+def ce9(c, off=frozenset()):  # CorpusVisibilityPolicy — the public corpus can't be a forger training set
+    r = []
+    if "policy_present" not in off and not c["visibility_policy_bound"]:
+        r.append("no corpus visibility policy bound")
+    if "high_res_anchored_not_public" not in off and c["rendered_public"] and c["resolution"] == "full" \
+            and not c["down_res_or_watermarked"]:
+        r.append("full-res anchored specimen rendered public without down-res/watermark")
+    if "forger_value_gated" not in off and c["high_discriminating_view"] and c["visibility"] != "verifier_only":
+        r.append("high-discriminating (forger-valuable) view not gated to verifier-only")
+    return (not r, r)
+
+
+def ce10(c, off=frozenset()):  # Row/variant-scope precision (the missing attack H)
+    r = []
+    if "row_ref_exact" not in off and not c["row_ref_resolves_to_single_variant"]:
+        r.append("row_ref is a broad/parent row, not a single variant")
+    if "anchor_scope_matches_row" not in off and c["anchor_adjudicated_scope"] != c["specimen_row_variant"]:
+        r.append("anchor adjudicated a different scope than the specimen's row/variant")
+    if "cross_variant_excluded" not in off and c["content_matches_variant"] != c["specimen_row_variant"] \
+            and not c["flagged_for_review"]:
+        r.append("specimen content matches a different variant than its row_ref (cross-variant poison)")
+    return (not r, r)
+
+
 GATES = [
-    ("CE1", ce1, {"tier": "anchored", "reference_weight": 1, "anchor_ref": True, "anchor_type": "grader_cert"},
+    ("CE1", ce1, {"tier": "anchored", "reference_weight": 1, "anchor_ref": True, "anchor_type": "settled_trade",
+                  "settled_covered_authenticity_at_scope": True, "settled_finality_and_tail_elapsed": True},
      [("raw_zero_weight", {"tier": "raw", "reference_weight": 1}),
       ("anchored_requires_anchor_ref", {"anchor_ref": False}),
-      ("anchor_type_valid", {"anchor_type": "self_attest"})]),
+      ("anchor_type_valid", {"anchor_type": "self_attest"}),
+      ("settled_covered_scope", {"settled_covered_authenticity_at_scope": False}),
+      ("settled_final", {"settled_finality_and_tail_elapsed": False})]),
 
     ("CE2", ce2, {"derived_from": "specimen_match", "rendered_label": "matches 12 community specimens"},
      [("no_auth_render", {"rendered_label": "authentic"})]),
@@ -110,9 +148,12 @@ GATES = [
       ("related_party_anchor_excluded", {"anchor_attestor": "affilA"}),
       ("outlier_flagged", {"anomaly_outlier": True, "flagged_for_review": False})]),
 
-    ("CE4", ce4, {"contributor_weighted_share": 0.05, "contributor_cap": 0.10,
+    ("CE4", ce4, {"contributor_label_registry_resolved": True, "cluster_label_registry_canonical": True,
+                  "contributor_weighted_share": 0.05, "contributor_cap": 0.10,
                   "cluster_weighted_share": 0.10, "cluster_cap": 0.20},
-     [("per_contributor_cap", {"contributor_weighted_share": 0.20}),
+     [("contributor_label_canonical", {"contributor_label_registry_resolved": False}),
+      ("cluster_label_canonical", {"cluster_label_registry_canonical": False}),
+      ("per_contributor_cap", {"contributor_weighted_share": 0.20}),
       ("per_cluster_cap", {"cluster_weighted_share": 0.30})]),
 
     ("CE5", ce5, {"required_not_claiming": {"possession", "authenticity", "condition"},
@@ -130,6 +171,19 @@ GATES = [
 
     ("CE8", ce8, {"credit_granted": True, "provenance_tier": "anchored"},
      [("credit_only_anchored", {"provenance_tier": "raw"})]),
+
+    ("CE9", ce9, {"visibility_policy_bound": True, "rendered_public": True, "resolution": "reduced",
+                  "down_res_or_watermarked": True, "high_discriminating_view": False, "visibility": "public"},
+     [("policy_present", {"visibility_policy_bound": False}),
+      ("high_res_anchored_not_public", {"resolution": "full", "down_res_or_watermarked": False}),
+      ("forger_value_gated", {"high_discriminating_view": True, "visibility": "public"})]),
+
+    ("CE10", ce10, {"row_ref_resolves_to_single_variant": True, "anchor_adjudicated_scope": "row:base-charizard-v1",
+                    "specimen_row_variant": "row:base-charizard-v1", "content_matches_variant": "row:base-charizard-v1",
+                    "flagged_for_review": False},
+     [("row_ref_exact", {"row_ref_resolves_to_single_variant": False}),
+      ("anchor_scope_matches_row", {"anchor_adjudicated_scope": "row:other-variant"}),
+      ("cross_variant_excluded", {"content_matches_variant": "row:different-variant"})]),
 ]
 
 
