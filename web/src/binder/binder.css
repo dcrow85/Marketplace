@@ -62,6 +62,9 @@ section { padding: 14px 0 70px; }
 .card .face .nn { font-family: var(--mono); font-size: 9px; color: var(--dim); }
 .card.ghost .face .ja { color: var(--faint); }
 .holodot { position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; border-radius: 50%; background: var(--agent); z-index: 3; }
+.issueflag { position: absolute; top: 5px; left: 6px; z-index: 4; display: grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; font-family: var(--mono); font-size: 10px; font-weight: 700; color: #fff; background: #9A6B12; box-shadow: 0 0 0 1px rgba(255,255,255,.7); }
+.issueflag.high { background: var(--signal); }
+.issueflag.info { background: var(--faint); }
 .prov { position: absolute; bottom: 6px; left: 6px; z-index: 3; font-family: var(--mono); font-size: 7.5px; letter-spacing: .07em; text-transform: uppercase; padding: 2px 5px; border-radius: 3px; }
 .pv-exact { background: rgba(20,18,14,.74); color: #fff; }
 .pv-ref { background: rgba(20,18,14,.34); color: #fff; border: 0.5px solid rgba(255,255,255,.75); }
@@ -113,6 +116,16 @@ section { padding: 14px 0 70px; }
 .m-sub .cnum { color: var(--dim); }
 .m-attrs { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
 .mpill { font-family: var(--mono); font-size: 10.5px; color: var(--ink2); border: 0.5px solid var(--rule); border-radius: 999px; padding: 3px 10px; }
+.dossier { display: grid; gap: 7px; margin: 12px 0 14px; border: 0.5px solid var(--rule2); border-radius: 8px; padding: 11px 13px; background: rgba(20,18,14,.025); }
+.dossier div { display: grid; grid-template-columns: 86px 1fr; gap: 10px; align-items: baseline; }
+.dossier b { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--dim); }
+.dossier span { font-size: 12.5px; line-height: 1.45; color: var(--ink2); }
+.issuebox { margin: 12px 0 14px; border: 0.5px solid rgba(176,56,28,.32); border-radius: 8px; padding: 10px 12px; background: rgba(176,56,28,.055); }
+.issuebox .ititle { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--signal); margin-bottom: 7px; }
+.irow { display: grid; grid-template-columns: 56px 1fr; gap: 9px; font-size: 12px; line-height: 1.45; color: var(--ink2); }
+.irow + .irow { margin-top: 6px; }
+.irow b { font-family: var(--mono); font-size: 10px; color: #9A6B12; text-transform: uppercase; }
+.irow.high b { color: var(--signal); }
 .m-stance { display: flex; gap: 8px; margin: 14px 0 8px; }
 .mseg { flex: 1; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; padding: 9px 0; background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; color: var(--dim); cursor: pointer; }
 .mseg:hover { color: var(--ink); }
@@ -150,4 +163,5 @@ section { padding: 14px 0 70px; }
   .sheet { padding: 20px 16px; }
   .mcols { grid-template-columns: 1fr; gap: 16px; }
   .mleft { max-width: 190px; margin: 0 auto; }
+  .dossier div, .irow { grid-template-columns: 1fr; gap: 2px; }
 }

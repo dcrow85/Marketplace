@@ -9,7 +9,7 @@ code does facts, the model does judgment + words. No-overclaim is INSTRUCTED (th
 prompt forbids selling and requires judged-caveats) AND post-checked: commentary_flags
 scans the model's words for selling/hype or asserted physical-facts and surfaces any
 hits (heuristic, not a hard proof — it catches the blatant cases). The catalog has
-value BANDS, not prices.
+attention/value BANDS, not prices.
 
 Usage:
   python3 simulations/cairn_browse.py "holos I'm missing that won't break the bank"
@@ -69,27 +69,81 @@ COST_FIELD = {
     "trust": "leans on established shops",
 }
 
-DATA = json.loads((ROOT / "mockups" / "catalog-sample.json").read_text(encoding="utf-8"))
-SETLABEL = {s["id"]: s["label"] for s in DATA["sets"]}
+CATALOG_PATHS = {
+    "japanese-pre-english": [
+        ROOT / "mockups" / "catalog-sample.json",
+        ROOT / "web" / "public" / "catalog-sample.json",
+        ROOT / "web" / "dist" / "catalog-sample.json",
+    ],
+    "azuki-tcg": [
+        ROOT / "web" / "dist" / "catalogs" / "azuki-tcg.json",
+        ROOT / "web" / "public" / "catalogs" / "azuki-tcg.json",
+        ROOT / "data" / "azuki-tcg" / "ui" / "azuki-catalog-sample.json",
+    ],
+}
+_CATALOG_CACHE: dict[str, dict] = {}
 
 
 def nm(c: dict) -> str:
     return c.get("name_ja") or c.get("name_en") or c["uid"]
 
 
-FILTER_SYS = (
-    "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
-    "card catalog, using their standing COST FIELD. The catalog has NO dollar prices, only value bands.\n\n"
-    "Available filter dimensions (use only these):\n"
-    " - holo: true | false | null\n"
-    " - owned: true | false | null   (for 'missing' / 'don't have', set false)\n"
-    " - exclude_grails: true | false  (the top value tier is 'high-scrutiny holo' grails; set true for "
-    "'cheap' / 'affordable' / \"won't break the bank\")\n"
-    " - set: a set-name substring, or null\n"
-    " - character: a pokemon-name substring, or null\n"
-    " - category: \"Pokemon\" | \"Trainer\" | \"Energy\" | null\n\n"
-    'Return ONLY JSON: {"holo":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"reading":"one line on how you read the call against the cost field"}'
-)
+def normalize_catalog_id(catalog: str | None) -> str:
+    cid = (catalog or "japanese-pre-english").strip().lower()
+    if cid in ("azuki", "azuki-tcg", "azuki_tcg"):
+        return "azuki-tcg"
+    return "japanese-pre-english"
+
+
+def load_catalog(catalog: str | None) -> dict:
+    cid = normalize_catalog_id(catalog)
+    if cid in _CATALOG_CACHE:
+        return _CATALOG_CACHE[cid]
+    for path in CATALOG_PATHS[cid]:
+        if path.exists():
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["_catalog_id"] = cid
+            data["_catalog_path"] = str(path)
+            data["_set_label"] = {s["id"]: s["label"] for s in data["sets"]}
+            _CATALOG_CACHE[cid] = data
+            return data
+    raise FileNotFoundError(f"No catalog payload found for {cid}")
+
+
+def filter_system(data: dict) -> str:
+    profile = data.get("profile", {})
+    if profile.get("id") == "azuki-tcg":
+        cats = " | ".join(data.get("ui", {}).get("category_chips") or ["Leader", "Gate", "Entity", "Weapon", "Spell", "IKZ"])
+        elements = " | ".join(data.get("ui", {}).get("element_chips") or ["Neutral", "Water", "Lightning", "Earth", "Fire"])
+        return (
+            "You translate a collector's loose browse CALL into a structured filter over an Azuki TCG "
+            "catalog, using their standing COST FIELD. The catalog has NO dollar prices; it has rarity, "
+            "star/alternate-art signals, and issue flags. Do not infer condition, authenticity, or market value.\n\n"
+            "Available filter dimensions (use only these):\n"
+            " - star_alt: true | false | null   (for ★, alternate art, portrait rare, or star treatment)\n"
+            " - holo: true | false | null       (same physical UI field as star_alt; prefer star_alt for Azuki)\n"
+            " - owned: true | false | null      (for 'missing' / 'don't have', set false)\n"
+            " - exclude_grails: true | false    (use for 'cheap' / 'not the big ones'; it removes high-attention rows)\n"
+            " - set: a set-name substring, or null\n"
+            " - character: a name substring, or null\n"
+            f" - category: {cats} | null\n"
+            f" - element: {elements} | null\n"
+            " - rarity: a rarity substring such as C, UC, SR, SR ★, L ★, IKZ ★, or null\n\n"
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"reading":"one line on how you read the call against the cost field"}'
+        )
+    return (
+        "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
+        "card catalog, using their standing COST FIELD. The catalog has NO dollar prices, only value bands.\n\n"
+        "Available filter dimensions (use only these):\n"
+        " - holo: true | false | null\n"
+        " - owned: true | false | null   (for 'missing' / 'don't have', set false)\n"
+        " - exclude_grails: true | false  (the top value tier is 'high-scrutiny holo' grails; set true for "
+        "'cheap' / 'affordable' / \"won't break the bank\")\n"
+        " - set: a set-name substring, or null\n"
+        " - character: a pokemon-name substring, or null\n"
+        " - category: \"Pokemon\" | \"Trainer\" | \"Energy\" | null\n\n"
+        'Return ONLY JSON: {"holo":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"reading":"one line on how you read the call against the cost field"}'
+    )
 
 COMMENT_SYS = (
     "You are a collector's browsing agent. A deterministic filter has ALREADY narrowed the catalog (you did "
@@ -97,46 +151,60 @@ COMMENT_SYS = (
     "filter cut and why.\n\n"
     "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
     " - 'holo' = the card is holographic.\n"
+    " - 'star-alt' = the catalog row carries a star/alternate-art signal.\n"
     " - 'unowned' / 'in-collection' = whether it is in the collection. This is an OWNERSHIP fact, NOT a "
     "condition. 'unowned' does NOT mean a missing foil, a defect, or anything physical.\n"
-    " - 'value-tierN' = a market value band (a price PROXY; higher N = pricier). NOT a grade, NOT centering, "
+    " - 'value-tierN' or 'attention-tierN' = a catalogue attention band. NOT a grade, NOT centering, "
     "NOT a defect.\n"
-    "Do NOT infer condition, foil presence, surface, centering, or defects from these flags — condition is "
-    "unconfirmed and the value tier is a proxy, not a price. Never SELL a card. Then pick up to 6 uids to "
+    " - 'issues:...' means the catalog carries a source disagreement or review note. It is not proof the card is wrong.\n"
+    "Do NOT infer condition, foil presence, surface, centering, authenticity, price, or defects from these flags — condition is "
+    "unconfirmed and attention tier is not a price. Never SELL a card. Then pick up to 6 uids to "
     "surface first.\n\n"
     'Return ONLY JSON: {"commentary":"2-4 sentences", "picks":["uid",..], "caveat":"one honest limitation"}'
 )
 
 
-def apply_filter(cards: list[dict], f: dict) -> list[dict]:
+def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
     out = cards
     if f.get("holo") is not None:
         out = [c for c in out if bool(c["holo"]) == bool(f["holo"])]
+    if f.get("star_alt") is not None:
+        out = [c for c in out if bool(c.get("star_alt")) == bool(f["star_alt"])]
     if f.get("owned") is not None:
         out = [c for c in out if bool(c["owned"]) == bool(f["owned"])]
     if f.get("exclude_grails"):
         out = [c for c in out if (c.get("band_rank") or 0) < 3]  # band 3 = high-scrutiny holo grail
     if f.get("category"):
         out = [c for c in out if (c.get("category") or "").lower() == str(f["category"]).lower()]
+    if f.get("element"):
+        out = [c for c in out if (c.get("element") or "").lower() == str(f["element"]).lower()]
+    if f.get("rarity"):
+        r = str(f["rarity"]).lower()
+        out = [c for c in out if r in (c.get("rarity") or "").lower()]
     if f.get("set"):
         s = str(f["set"]).lower()
-        out = [c for c in out if s in SETLABEL.get(c["set_id"], "").lower()]
+        out = [c for c in out if s in setlabel.get(c["set_id"], "").lower()]
     if f.get("character"):
         ch = str(f["character"]).lower()
         out = [c for c in out if ch in (c.get("name_en") or "").lower() or ch in (c.get("name_ja") or "").lower()]
     return out
 
 
-def brief(c: dict) -> str:
+def brief(c: dict, setlabel: dict[str, str]) -> str:
     # Self-describing tags: the model used to read cryptic "missing"/"band2" as
     # physical facts ("foil absent", "spine defect"). Name them for what they are.
     tags = []
     if c["holo"]:
-        tags.append("holo")
+        tags.append("star-alt" if c.get("star_alt") else "holo")
+    if c.get("element"):
+        tags.append(str(c["element"]))
     if c.get("band_rank"):
-        tags.append(f"value-tier{c['band_rank']}")
+        tags.append(f"attention-tier{c['band_rank']}")
+    if c.get("issues"):
+        severities = sorted({i.get("severity", "info") for i in c.get("issues", [])})
+        tags.append("issues:" + ",".join(severities))
     tags.append("in-collection" if c["owned"] else "unowned")
-    return f"{c['uid']} · {c['num']} {nm(c)} · {SETLABEL.get(c['set_id'],'?')} · {' '.join(tags)}"
+    return f"{c['uid']} · {c['num']} {nm(c)} · {setlabel.get(c['set_id'],'?')} · {c.get('category','')} · {c.get('rarity','')} · {' '.join(tags)}"
 
 
 def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
@@ -162,40 +230,51 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
-def browse(call: str, cap: int = 42) -> dict:
+def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
+    data = load_catalog(catalog)
+    setlabel = data["_set_label"]
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
-    f = call_model(MODEL, FILTER_SYS, fuser, ENDPOINT, 180)
-    survivors = apply_filter(DATA["cards"], f)
+    f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 180)
+    survivors = apply_filter(data["cards"], f, setlabel)
     pool = diverse_pool(survivors, cap)
     n_sets = len({c["set_id"] for c in survivors})
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','owned','exclude_grails','set','character','category')})}\n"
-        f"It cut the {len(DATA['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
+        f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity') if k in f or f.get(k) is not None})}\n"
+        f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
-        + ":\n" + "\n".join(brief(c) for c in pool) + "\n\nWrite the commentary JSON."
+        + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
     )
     c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
     flags = commentary_flags(c.get("commentary", ""), c.get("caveat", ""))
-    return {"call": call, "filter": f, "n_survivors": len(survivors), "result": c, "overclaim_flags": flags}
+    return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")), "filter": f, "n_survivors": len(survivors), "result": c, "overclaim_flags": flags}
 
 
 def main() -> int:
-    call = " ".join(sys.argv[1:]) or "holos I'm missing that won't break the bank"
+    catalog = "japanese-pre-english"
+    args = sys.argv[1:]
+    if args[:2] and args[0] == "--catalog":
+        catalog = args[1]
+        args = args[2:]
+    call = " ".join(args) or "holos I'm missing that won't break the bank"
     print(f'CALL: "{call}"\n')
-    out = browse(call)
+    out = browse(call, catalog=catalog)
     f = out["filter"]
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','owned','exclude_grails','set','character','category')})}")
+    data = load_catalog(catalog)
+    setlabel = data["_set_label"]
+    print(f"CATALOG: {out['catalog']}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity')})}")
     print(f"  reading: {f.get('reading','')}")
-    print(f"  -> {out['n_survivors']} of {len(DATA['cards'])} cards survive\n")
+    print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]
     print(f"COMMENTARY: {r.get('commentary','')}")
     print(f"CAVEAT:     {r.get('caveat','')}")
     print("PICKS:")
-    by = {c["uid"]: c for c in DATA["cards"]}
+    by = {c["uid"]: c for c in data["cards"]}
     for uid in (r.get("picks") or [])[:6]:
         c = by.get(uid)
-        print(f"  - {brief(c)}" if c else f"  - {uid} (?)")
+        print(f"  - {brief(c, setlabel)}" if c else f"  - {uid} (?)")
     if out.get("overclaim_flags"):
         print(f"\n!! NO-OVERCLAIM CHECK flagged selling/overclaim language: {out['overclaim_flags']} — surface for review, do not present as-is.")
     return 0
