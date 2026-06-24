@@ -38,6 +38,7 @@ ALPHA_IMAGE_CSV_URL = f"https://docs.google.com/spreadsheets/d/{ALPHA_SHEET_ID}/
 ALPHA_RELEASE_ID = "azuki_tcg_alpha_master_sheet"
 ALPHA_FIELDS_COMPLETION_ID = "azuki_tcg_alpha_fields_completion"
 PROMO_OBSERVATION_ID = "azuki_tcg_user_photo_promo_observations_2026_06_24"
+PORTRAIT_ALT_OBSERVATION_ID = "azuki_tcg_user_image_portrait_alt_observations_2026_06_24"
 
 EXPECTED_CARD_KEYS = {
     "abilities",
@@ -430,6 +431,110 @@ USER_PROMO_PHOTO_OBSERVATIONS = [
         "MATCHED_GALLERY_UIDS": [],
         "OBSERVATION_CONFIDENCE": "high",
         "OBSERVATION_NOTE": "Printed AZP-004 is not present in the current official gallery snapshot.",
+    },
+]
+
+USER_PORTRAIT_ALT_IMAGE_SOURCES = {
+    "zero": {
+        "kind": "user_provided_image",
+        "date": "2026-06-24",
+        "sha256": "dfbf7caf3dc3ea0a02a078e883607d4f5b5af584541c8879ac878a8e2a70a38b",
+        "stored_in_repo": False,
+        "note": "The source image was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the card image.",
+    },
+    "shao": {
+        "kind": "user_provided_image",
+        "date": "2026-06-24",
+        "sha256": "15bd740904d593e33fdc41ad305a707f93fccac407ea47a402e0cc2e40bab958",
+        "stored_in_repo": False,
+        "note": "The source image was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the card image.",
+    },
+}
+
+USER_PORTRAIT_ALT_IMAGE_OBSERVATIONS = [
+    {
+        "OBSERVATION_ID": "portrait-alt-image-20260624-001",
+        "ID": "STT04-001",
+        "PRINTED_ID": "STT04-001",
+        "NORMALIZED_CARD_ID": "STT04-01",
+        "SOURCE_KEY": "zero",
+        "IKZ COST": "",
+        "NAME": "Zero",
+        "ELEMENT": "Fire",
+        "TYPE": "Leader",
+        "SUBTYPE_1": "Black Jade",
+        "SUBTYPE_2": "Scorchweaver",
+        "SUBTYPE_3": "",
+        "GATE_PWR": "",
+        "ATK": "",
+        "HP": "20",
+        "PLUS_ATK": "",
+        "REF_IP": "Azuki",
+        "REF_ID": "87",
+        "REF_IP2": "",
+        "REF_ID2": "",
+        "RARITY": "L ★",
+        "ILLUSTRATOR": "steamboy",
+        "E_1": "Once/Turn; Main",
+        "E_1_TEXT": "Deal 1 damage to this card: Deal 1 damage to an entity in your Garden or Alley, then give that entity +1 attack until the end of the turn.",
+        "E_2": "",
+        "E_2_TEXT": "",
+        "F_TEXT": "",
+        "DEFINITION_TEXT": "",
+        "RULING_TEXT": "",
+        "STAMP": "portrait alternate rare image observation",
+        "IMG": "",
+        "ALT_IMG": "",
+        "PHYSICAL_LOCATION_IN_IMAGE": "single_card_image_zero",
+        "OBSERVED_AZUKI_NUMBER": "Azuki #87",
+        "OBSERVED_STAMP": "star leader portrait treatment",
+        "MATCHED_GALLERY_UIDS": [
+            "azuki_tcg_official_gallery:S1-STT04-001_Zero_L_L_die__2",
+        ],
+        "OBSERVATION_CONFIDENCE": "high",
+        "OBSERVATION_NOTE": "Image reads printed STT04-001, L ★, Illus. steamboy, Azuki #87. Current official gallery represents the matched booster-star row with canonical card_id STT04-01, so preserve the printed/gallery ID shape instead of silently normalizing.",
+    },
+    {
+        "OBSERVATION_ID": "portrait-alt-image-20260624-002",
+        "ID": "STT02-001",
+        "PRINTED_ID": "STT02-001",
+        "NORMALIZED_CARD_ID": "STT02-001",
+        "SOURCE_KEY": "shao",
+        "IKZ COST": "",
+        "NAME": "Shao",
+        "ELEMENT": "Water",
+        "TYPE": "Leader",
+        "SUBTYPE_1": "Shao",
+        "SUBTYPE_2": "",
+        "SUBTYPE_3": "",
+        "GATE_PWR": "",
+        "ATK": "",
+        "HP": "20",
+        "PLUS_ATK": "",
+        "REF_IP": "Azuki",
+        "REF_ID": "187",
+        "REF_IP2": "",
+        "REF_ID2": "",
+        "RARITY": "L ★",
+        "ILLUSTRATOR": "steamboy",
+        "E_1": "Once/Turn; Response",
+        "E_1_TEXT": "1 IKZ: Reduce a leader's or an entity's attack by 1 until the end of the turn.",
+        "E_2": "",
+        "E_2_TEXT": "",
+        "F_TEXT": "",
+        "DEFINITION_TEXT": "",
+        "RULING_TEXT": "",
+        "STAMP": "portrait alternate rare image observation",
+        "IMG": "",
+        "ALT_IMG": "",
+        "PHYSICAL_LOCATION_IN_IMAGE": "single_card_image_shao",
+        "OBSERVED_AZUKI_NUMBER": "Azuki #187",
+        "OBSERVED_STAMP": "star leader portrait treatment",
+        "MATCHED_GALLERY_UIDS": [
+            "azuki_tcg_official_gallery:STT02-001A_Shao_L_AA_Die",
+        ],
+        "OBSERVATION_CONFIDENCE": "high",
+        "OBSERVATION_NOTE": "Image reads printed STT02-001, L ★, Illus. steamboy, Azuki #187. Matched to the official gallery portrait alternate-art booster row.",
     },
 ]
 
@@ -1261,6 +1366,80 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
     return text, provenance
 
 
+def build_portrait_alt_observations(gallery_release: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    gallery_uids = {card["uid"] for card in gallery_release["cards"]}
+    rows: list[dict[str, Any]] = []
+    for observation in USER_PORTRAIT_ALT_IMAGE_OBSERVATIONS:
+        source = USER_PORTRAIT_ALT_IMAGE_SOURCES[observation["SOURCE_KEY"]]
+        row = dict(observation)
+        row["MATCHED_GALLERY_UIDS"] = "; ".join(row.get("MATCHED_GALLERY_UIDS") or [])
+        row["SOURCE_IMAGE_SHA256"] = source["sha256"]
+        row["SOURCE_IMAGE_STORED"] = str(source["stored_in_repo"]).lower()
+        row["AUTHORITY_LABEL"] = "user_image_observation_not_official_gallery_fact"
+        rows.append(row)
+
+    columns = ALPHA_COLUMNS + PROMO_OBSERVATION_EXTRA_COLUMNS
+    text = csv_text(rows, columns)
+    missing_gallery_matches = [
+        {
+            "observation_id": observation["OBSERVATION_ID"],
+            "unmatched_gallery_uids": sorted(
+                uid for uid in observation.get("MATCHED_GALLERY_UIDS", []) if uid not in gallery_uids
+            ),
+        }
+        for observation in USER_PORTRAIT_ALT_IMAGE_OBSERVATIONS
+    ]
+    missing_gallery_matches = [item for item in missing_gallery_matches if item["unmatched_gallery_uids"]]
+    not_in_gallery = [
+        observation["PRINTED_ID"]
+        for observation in USER_PORTRAIT_ALT_IMAGE_OBSERVATIONS
+        if not observation.get("MATCHED_GALLERY_UIDS")
+    ]
+    printed_id_shape_discrepancies = [
+        {
+            "observation_id": observation["OBSERVATION_ID"],
+            "printed_id": observation["PRINTED_ID"],
+            "normalized_card_id": observation["NORMALIZED_CARD_ID"],
+            "disposition": "preserve_printed_id_and_gallery_normalized_id_separately",
+        }
+        for observation in USER_PORTRAIT_ALT_IMAGE_OBSERVATIONS
+        if observation["PRINTED_ID"] != observation["NORMALIZED_CARD_ID"]
+    ]
+    provenance = {
+        "schema": "azuki_tcg_portrait_alt_observation_provenance_v0.1",
+        "name": "Azuki TCG User Image Portrait Alt Observations",
+        "csv_path": f"data/azuki-tcg/observations/{PORTRAIT_ALT_OBSERVATION_ID}.csv",
+        "sources": USER_PORTRAIT_ALT_IMAGE_SOURCES,
+        "row_count": len(rows),
+        "counts": {
+            "rows": len(rows),
+            "unique_observation_ids": len({row["OBSERVATION_ID"] for row in rows}),
+            "observed_cards_not_in_gallery_snapshot": len(not_in_gallery),
+            "source_conflicts": 0,
+            "printed_id_shape_discrepancies": len(printed_id_shape_discrepancies),
+        },
+        "observed_cards_not_in_gallery_snapshot": not_in_gallery,
+        "printed_id_shape_discrepancies": printed_id_shape_discrepancies,
+        "checks": {
+            "all_observations_have_printed_id": all(row["PRINTED_ID"] for row in rows),
+            "all_observations_have_authority_label": all(row["AUTHORITY_LABEL"] for row in rows),
+            "matched_gallery_uids_exist": not missing_gallery_matches,
+            "source_images_not_committed": all(
+                source["stored_in_repo"] is False
+                for source in USER_PORTRAIT_ALT_IMAGE_SOURCES.values()
+            ),
+        },
+        "not_claiming": [
+            "market value",
+            "seller possession beyond the user-provided images",
+            "physical authenticity or condition",
+            "that the user images should overwrite linked sheet or gallery fields",
+            "that a shared card ID proves identical physical printing across variants",
+        ],
+    }
+    return text, provenance
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--refresh", action="store_true", help="Fetch the official API and linked alpha sheet into dated snapshots before building.")
@@ -1280,6 +1459,7 @@ def main() -> None:
     index = build_combined_index(release, alpha_release)
     completion_csv, completion_provenance = build_alpha_fields_completion(release, alpha_release)
     promo_observations_csv, promo_observations_provenance = build_promo_observations(release)
+    portrait_alt_observations_csv, portrait_alt_observations_provenance = build_portrait_alt_observations(release)
 
     release_sha = sha256_text(canonical_json(release))
     alpha_release_sha = sha256_text(canonical_json(alpha_release))
@@ -1288,6 +1468,8 @@ def main() -> None:
     completion_provenance_sha = sha256_text(canonical_json(completion_provenance))
     promo_observations_csv_sha = sha256_text(promo_observations_csv)
     promo_observations_provenance_sha = sha256_text(canonical_json(promo_observations_provenance))
+    portrait_alt_observations_csv_sha = sha256_text(portrait_alt_observations_csv)
+    portrait_alt_observations_provenance_sha = sha256_text(canonical_json(portrait_alt_observations_provenance))
     snapshot_date = snapshot_path.stem.replace("cards_api_", "")
     alpha_source = {
         "path": str(alpha_snapshot_path.relative_to(ROOT)),
@@ -1342,12 +1524,21 @@ def main() -> None:
                 "path": f"data/azuki-tcg/observations/{PROMO_OBSERVATION_ID}_provenance.json",
                 "sha256": promo_observations_provenance_sha,
             },
+            "portrait_alt_observations_csv": {
+                "path": f"data/azuki-tcg/observations/{PORTRAIT_ALT_OBSERVATION_ID}.csv",
+                "sha256": portrait_alt_observations_csv_sha,
+            },
+            "portrait_alt_observations_provenance": {
+                "path": f"data/azuki-tcg/observations/{PORTRAIT_ALT_OBSERVATION_ID}_provenance.json",
+                "sha256": portrait_alt_observations_provenance_sha,
+            },
         },
         "counts": {
             "official_gallery": release["counts"],
             "alpha_master_sheet": alpha_release["counts"],
             "alpha_fields_completion": completion_provenance["counts"],
             "promo_observations": promo_observations_provenance["counts"],
+            "portrait_alt_observations": portrait_alt_observations_provenance["counts"],
         },
         "not_claiming": sorted(set(AUTHORITY_NOT_CLAIMING + ALPHA_NOT_CLAIMING)),
     }
@@ -1361,18 +1552,21 @@ def main() -> None:
     completion_passed = all(completion_checks.values())
     promo_observation_checks = promo_observations_provenance["checks"]
     promo_observations_passed = all(promo_observation_checks.values())
+    portrait_alt_observation_checks = portrait_alt_observations_provenance["checks"]
+    portrait_alt_observations_passed = all(portrait_alt_observation_checks.values())
     sources_passed = gallery_audit["passed"] and alpha_audit["passed"]
     audit = {
         "schema": "azuki_tcg_catalog_audit_v0.2",
-        "passed": sources_passed and completion_passed and promo_observations_passed,
+        "passed": sources_passed and completion_passed and promo_observations_passed and portrait_alt_observations_passed,
         "status": "azuki_sources_imported_with_disclosed_residuals"
-        if sources_passed and completion_passed and promo_observations_passed
+        if sources_passed and completion_passed and promo_observations_passed and portrait_alt_observations_passed
         else "azuki_source_import_failed",
         "checks": {
             "official_gallery": gallery_audit["checks"],
             "alpha_master_sheet": alpha_audit["checks"],
             "alpha_fields_completion": completion_checks,
             "promo_observations": promo_observation_checks,
+            "portrait_alt_observations": portrait_alt_observation_checks,
         },
         "counts": manifest["counts"],
         "not_claiming": manifest["not_claiming"],
@@ -1386,10 +1580,12 @@ def main() -> None:
         BASE / "audit.json": audit,
         SPREADSHEET_DIR / f"{ALPHA_FIELDS_COMPLETION_ID}_provenance.json": completion_provenance,
         OBSERVATION_DIR / f"{PROMO_OBSERVATION_ID}_provenance.json": promo_observations_provenance,
+        OBSERVATION_DIR / f"{PORTRAIT_ALT_OBSERVATION_ID}_provenance.json": portrait_alt_observations_provenance,
     }
     text_targets = {
         SPREADSHEET_DIR / f"{ALPHA_FIELDS_COMPLETION_ID}.csv": completion_csv,
         OBSERVATION_DIR / f"{PROMO_OBSERVATION_ID}.csv": promo_observations_csv,
+        OBSERVATION_DIR / f"{PORTRAIT_ALT_OBSERVATION_ID}.csv": portrait_alt_observations_csv,
     }
 
     if args.check:
