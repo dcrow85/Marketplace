@@ -1,0 +1,54 @@
+{
+  "audit_csv_path": "data/azuki-tcg/audits/azuki_tcg_star_alt_art_audit_2026_06_24.csv",
+  "audit_policy": {
+    "checks": [
+      "gallery star rarity vs completion CSV star rarity",
+      "source/image filename card ID vs gallery card_id",
+      "star row exact image URL reuse with a non-star sibling",
+      "variant marker with missing gallery star when also paired to a different gallery card_id"
+    ],
+    "in_scope": [
+      "rows where official gallery rarity contains ★",
+      "rows where Alpha-field completion rarity contains ★",
+      "rows where source/image filename has an alternate/promo-style variant marker"
+    ],
+    "not_claiming": [
+      "visual confirmation that every variant image is correct",
+      "official correction of the source API",
+      "physical-card authenticity, possession, condition, or market value",
+      "that every source filename A/AX marker is necessarily an alt-art rarity marker"
+    ]
+  },
+  "counts": {
+    "alpha_completion_rows": 234,
+    "audit_rows": 50,
+    "completion_star_rows_in_scope": 13,
+    "gallery_star_rows_in_scope": 31,
+    "issues": {
+      "completion_row_missing_gallery_star": 18,
+      "gallery_rarity_missing_star_for_variant_marker": 1,
+      "source_entry_card_id_disagrees_with_gallery_card_id": 4,
+      "star_row_reuses_nonstar_image_url": 1
+    },
+    "official_gallery_rows": 234,
+    "rows_needing_review": 22,
+    "severity": {
+      "high": 5,
+      "medium": 17,
+      "none": 28
+    }
+  },
+  "csv_sha256": "a2e09d38e295b5cba07b63269f8190a85e03390cacb0a97a0d5ba7ea2e3db294",
+  "name": "Azuki TCG Star / Alternate-Art Signal Audit",
+  "schema": "azuki_tcg_star_alt_art_audit_provenance_v0.1",
+  "source_inputs": {
+    "alpha_fields_completion_csv": {
+      "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
+      "sha256": "ccf7634edf8fcf69107ef325a77a1f9fc49f2e8967035199c1987a77066a4631"
+    },
+    "official_gallery_release": {
+      "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
+      "sha256": "0b75c792cd9e833232eec9f7376919fa054483c6c52c7eb5892025c36be2234f"
+    }
+  }
+}

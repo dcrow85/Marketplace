@@ -104,6 +104,18 @@ Portrait alternate observation layer:
   `STT04-01`; both printed and normalized ID shapes are preserved
 - Both rows read `Illus. steamboy` and `L ★` from the image
 
+Star / alternate-art signal audit:
+
+- `audits/azuki_tcg_star_alt_art_audit_2026_06_24.csv` compares official
+  gallery `★` rarity, Alpha-field completion `★` rarity, source/image filename
+  variant markers, and exact image URL reuse across siblings.
+- `audits/azuki_tcg_star_alt_art_audit_2026_06_24_provenance.json` records the
+  audit policy and counts.
+- Current findings: 50 rows in scope, 22 review rows, 5 high-severity rows.
+  The high-severity bucket includes one `★` row reusing a non-star image URL
+  (`STT04-01` Zero), four source/image card-ID disagreement rows, and the
+  completion-layer star-flattening pattern is separated as medium severity.
+
 Authority boundary:
 
 - This catalog does not prove seller possession.
@@ -127,6 +139,7 @@ Rebuild:
 
 ```bash
 python3 scripts/build_azuki_tcg_catalog.py --check
+python3 scripts/audit_azuki_star_alt_art.py --check
 ```
 
 Refresh from the live official endpoint and linked Alpha Master Sheet:
