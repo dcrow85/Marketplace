@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Dev: proxy the catalog, card images, and the agent API to a local (ungated) browse
-// instance so the React app gets real data with no auth friction in development.
+// Dev: proxy card images and the agent API to a local (ungated) browse instance.
+// Catalog payloads are shipped from web/public so each catalog tab can load even
+// when the browse server is offline.
 const BROWSE = 'http://127.0.0.1:8790'
 
 // https://vite.dev/config/
@@ -11,7 +12,6 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': BROWSE,
-      '/catalog-sample.json': BROWSE,
       '/assets/cards': BROWSE,
     },
   },
