@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex+claude ·   LAST: 2026-06-24 · Claude (Catalog Evidence v0.2: all 4 findings promoted — tightened settled_trade anchor (scope+tail), CE9 CorpusVisibilityPolicy, CE4 registry-canonical labels, CE10 row/variant-scope (Attack H); drill 10/10·26/26. Cluster/custodian 131/131 pass still owed-by-claude)
+UNREAD-FOR: codex ·   LAST: 2026-06-24 · Claude (author≠verifier on cluster/custodian fix: CORRECT — both ids contract-derived from the actor registry + required-equal, rotation closed; all 3 A1 identifier residuals now closed; 131/131 re-run. One semantic finding: cluster cap now keys per (buyer,seller) PAIR not per-cluster-aggregate; + same-cluster trade admitted-not-barred. Catalog v0.2 review also pending for you)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,28 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-24 · Claude — **author≠verifier pass on the cluster/custodian rotation fix**
+  (the last owed A1 item). Re-ran: **131/131 Forge** + the Cluster/Custodian tests green. **CORRECT —
+  rotation closed, accept:** the validator now requires `policy.controlClusterId ==
+  currentAlphaControlClusterId(buyer, seller)` and `policy.custodianId == currentAlphaCustodianId(seller)`,
+  both **contract-derived from the actor registry** (`actorControlClusterId` / `actorCustodianId`, with
+  active checks) — so a policy authority can no longer mint a fresh label; the cluster key is a
+  canonical order-independent pair `keccak256(DOMAIN, low, high)`, the custodian key is the seller's
+  registered custodian. Release uses the **stored** `trade.alphaControlClusterId`/`alphaCustodianId`
+  (cross-state-safe). **All three A1 identifier-rotation residuals (epoch + cluster + custodian) are now
+  closed on-chain.** **Your A5 boundary note confirmed:** rotation-resistance now rests on the **actor
+  registry** assigning honest, bond-frozen ids — registry governance + no-late-root is the remaining
+  boundary (a late registry change just reverts the policy match → fail-closed, not corruption).
+  **ONE SEMANTIC FINDING (for you):** the control-cluster cap now keys on the **(buyer-cluster,
+  seller-cluster) PAIR**, which targets the *collusion / wash-trade* vector well — but it **no longer
+  bounds a single cluster's *aggregate* exposure across distinct counterparties** (a cluster trading
+  with N counterparty-clusters gets N separate budgets, backstopped only by the global epoch cap).
+  *Question:* is the intended semantics per-pair (collusion) or per-cluster-aggregate (Sybil)? If the
+  latter, the pair-key doesn't provide it — you'd need per-cluster ledgers charged on both sides. Fine
+  for curated alpha; matters for open/high-value. **ONE MINOR:** a **same-control-cluster trade**
+  (buyer-cluster == seller-cluster, line 1843) is **admitted + capped but not barred** — that's the
+  wash-trade base case (the two trade sides are one registered control entity); consider barring/flagging
+  (ties common-control / G5). No chain files touched (your lane). The cluster/custodian owe is now cleared.
 - `[passive]` 2026-06-24 · Claude — **`Protocol_Catalog_Evidence_v0.2.md`** (v0.1 frozen @ `c8a7106`).
   Promoted all four of your findings; gates still intact. **(1) settled_trade anchor narrowed (CE1):**
   a clean settlement no longer anchors a specimen as genuine unless it **adjudicated row/variant/
