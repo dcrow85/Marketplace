@@ -19,6 +19,14 @@
     "official_gallery_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
       "sha256": "cf157aee2c171089b7f942925a26ad9d3bef74c5ebb14d371b3516ccbbd26a6a"
+    },
+    "promo_observations_csv": {
+      "path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv",
+      "sha256": "eebca55aa75aa0e76f95beb915c7114f27660f82f689a7b8ee1f0b3bb940612c"
+    },
+    "promo_observations_provenance": {
+      "path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24_provenance.json",
+      "sha256": "e7b7247e035ea9c28396f79af0c5ac072aba4eab4f74a90d43bd2d809f1a57dc"
     }
   },
   "counts": {
@@ -43,6 +51,12 @@
       "multi_entry_card_ids": 27,
       "official_api_count": 234,
       "unique_card_ids": 202
+    },
+    "promo_observations": {
+      "observed_cards_not_in_gallery_snapshot": 2,
+      "rows": 4,
+      "source_conflicts": 1,
+      "unique_observation_ids": 4
     }
   },
   "generated_at": "2026-06-23T00:00:00+00:00",
