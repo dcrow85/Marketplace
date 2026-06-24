@@ -34,6 +34,16 @@ It also contains a spreadsheet completion layer:
   available, and use an image-view pass only for manually readable illustrator
   credit lines.
 
+And it contains a user-photo observation layer:
+
+- `observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv`
+  records four promo/variant cards observed from a user-provided photo. The
+  photo itself is **not** committed to the public repository; the provenance
+  file records only its SHA-256 hash.
+- `observations/azuki_tcg_user_photo_promo_observations_2026_06_24_provenance.json`
+  records the observation authority boundary, gallery matches, and conflicts.
+  This layer is evidence from a photo, not an official checklist expansion.
+
 The catalog preserves source data as returned by each source, including
 variant entries, alternate-art entries, promo entries, starter deck entries,
 sheet rows, and source anomalies. It does not silently normalize source scars.
@@ -67,6 +77,17 @@ Alpha-field completion spreadsheet:
 - 2 official-only rows remain in the image-review queue because the printed
   credit line is visible but too compressed/stylized to transcribe confidently
 
+Promo observation layer:
+
+- 4 user-photo observation rows
+- 2 printed IDs not present in the current official gallery snapshot:
+  `AZP-004`, `AZP-005`
+- 1 preserved source conflict: photo-observed `AZK01-028` illustrator reads
+  `Tomugi`, while the linked Alpha Master Sheet currently supplies `Comiccho`
+- 1 Bobu variant observation: printed `STT03-001`, `Illus. nJoo`, with an
+  Invader-style visual stamp, matched to gallery `STT03-01` rows only as a
+  comparison candidate
+
 Authority boundary:
 
 - This catalog does not prove seller possession.
@@ -80,6 +101,8 @@ Authority boundary:
   identical image treatment, rarity treatment, physical printing, or possession.
 - Image-view illustrator reads are useful completion hints, not official API
   facts. They remain lower authority than linked sheet fields.
+- User-photo observations do not overwrite official gallery or linked sheet
+  fields. They are a separate evidence layer for agents to inspect.
 
 Rebuild:
 
