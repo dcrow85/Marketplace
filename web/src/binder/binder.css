@@ -43,7 +43,13 @@ section { padding: 14px 0 70px; }
 .sethead .scode { font-family: var(--mono); font-size: 11px; color: var(--dim); }
 .sethead .smeta { font-family: var(--mono); font-size: 10.5px; color: var(--faint); margin-left: auto; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); gap: 18px; }
+.grid.gallery { grid-template-columns: repeat(auto-fill, minmax(216px, 1fr)); gap: 22px; }
 .cell { display: flex; flex-direction: column; }
+.viewtoggle { display: inline-flex; border: 0.5px solid var(--rule); border-radius: 7px; overflow: hidden; }
+.viewtoggle .vb { display: grid; place-items: center; width: 34px; height: 30px; background: transparent; border: 0; border-right: 0.5px solid var(--rule); color: var(--dim); cursor: pointer; }
+.viewtoggle .vb:last-child { border-right: 0; }
+.viewtoggle .vb:hover { color: var(--ink); }
+.viewtoggle .vb.on { background: var(--ink); color: var(--paper); }
 .stancebar { display: flex; border: 0.5px solid var(--rule); border-radius: 6px; overflow: hidden; margin-bottom: 7px; }
 .seg { flex: 1; font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .03em; padding: 5px 0; background: transparent; border: 0; border-right: 0.5px solid var(--rule); color: var(--dim); cursor: pointer; }
 .seg:last-child { border-right: 0; }

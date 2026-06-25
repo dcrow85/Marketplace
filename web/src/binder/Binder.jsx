@@ -361,6 +361,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
   const [selected, setSelected] = useState(null)
+  const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'standard' } catch { return 'standard' } })
+  const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
 
   useEffect(() => {
@@ -488,6 +490,14 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       <AgentBar agentName={agentName} busy={agentBusy} res={agentRes} onAsk={askAgent} placeholder={data.ui?.agent_placeholder} />
       <div className="controls">
         <div className="search"><input value={q} placeholder="search name or number…" onChange={(e) => setQ(e.target.value)} /></div>
+        <div className="viewtoggle" role="group" aria-label="card size">
+          <button className={'vb' + (view === 'standard' ? ' on' : '')} onClick={() => chooseView('standard')} title="Standard — more cards" aria-label="Standard view">
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3.5" height="3.5" rx=".7"/><rect x="6.25" y="1" width="3.5" height="3.5" rx=".7"/><rect x="11.5" y="1" width="3.5" height="3.5" rx=".7"/><rect x="1" y="6.25" width="3.5" height="3.5" rx=".7"/><rect x="6.25" y="6.25" width="3.5" height="3.5" rx=".7"/><rect x="11.5" y="6.25" width="3.5" height="3.5" rx=".7"/><rect x="1" y="11.5" width="3.5" height="3.5" rx=".7"/><rect x="6.25" y="11.5" width="3.5" height="3.5" rx=".7"/><rect x="11.5" y="11.5" width="3.5" height="3.5" rx=".7"/></svg>
+          </button>
+          <button className={'vb' + (view === 'gallery' ? ' on' : '')} onClick={() => chooseView('gallery')} title="Gallery — bigger art" aria-label="Gallery view">
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+          </button>
+        </div>
         <div className="chips">
           {CHIPS.map((ch, i) => ch.sep ? <span key={i} className="sep" /> : (
             <button key={i} className={'chip' + (chipOn(ch) ? ' on' : '') + (chipOn(ch) && ch.acc ? ' acc' : '')} onClick={() => toggleChip(ch)}>
@@ -507,11 +517,11 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           SETS.filter((s) => groups[s.id]).map((s) => (
             <div className="setblock" key={s.id}>
               <div className="sethead"><h2>{s.label}</h2><span className="scode">{s.code} · {s.date}</span><span className="smeta">{groups[s.id].length} / {s.count}</span></div>
-              <div className="grid">{groups[s.id].map((c) => cardEl(c, false))}</div>
+              <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{groups[s.id].map((c) => cardEl(c, false))}</div>
             </div>
           ))
         ) : (
-          <div className="grid">{rows.map((c) => cardEl(c, true))}</div>
+          <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
       {selected && <CardModal uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} onClose={() => setSelected(null)} />}
