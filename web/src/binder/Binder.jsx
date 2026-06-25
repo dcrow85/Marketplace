@@ -153,11 +153,12 @@ function Frow({ label, children }) {
 }
 
 function CardModal({ uid, data, setById, store, setStance, setField, agentName, onClose }) {
+  const [zoom, setZoom] = useState(false)  // fullscreen image view
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose() }
+    const onKey = (e) => { if (e.key === 'Escape') { if (zoom) setZoom(false); else onClose() } }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
-  }, [onClose])
+  }, [onClose, zoom])
   const c = byUid(data, uid)
   if (!c || !c.set_id) return null
   const e = effStance(c, store)
@@ -171,6 +172,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const issues = c.issues || []
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
   return (
+    <>
     <div className="modal" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
       <div className="sheet" role="dialog" aria-modal="true">
         <button className="mx" onClick={onClose} aria-label="close">✕</button>
@@ -178,10 +180,10 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
           <div className="mleft">
             <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
               {c.image
-                ? <img src={c.image} className={e.stance !== 'have' ? 'grey' : ''} alt={nm(c)} onError={(ev) => retryImg(ev, c.image)} />
+                ? <img src={c.image} className="zoomable" alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, c.image)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
               {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
-              {provBadge(c)}
+              {c.image && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
             </div>
           </div>
           <div className="mright">
@@ -281,6 +283,13 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
         </div>
       </div>
     </div>
+    {zoom && c.image && (
+      <div className="lightbox" onClick={() => setZoom(false)}>
+        <button className="lbx" onClick={() => setZoom(false)} aria-label="close full screen">✕</button>
+        <img src={c.image} alt={nm(c)} onClick={(ev) => ev.stopPropagation()} onError={(ev) => retryImg(ev, c.image)} />
+      </div>
+    )}
+    </>
   )
 }
 

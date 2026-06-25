@@ -105,7 +105,13 @@ section { padding: 14px 0 70px; }
 .mcard { position: relative; aspect-ratio: 63/88; border: 0.75px solid #6E6A60; background: var(--mount); border-radius: 6px; overflow: hidden; }
 .mcard.ghost { border-color: var(--rule); }
 .mcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.mcard img.grey { filter: grayscale(.9); opacity: .72; }
+.mcard img.zoomable { cursor: zoom-in; }
+.zoombtn { position: absolute; bottom: 7px; right: 7px; z-index: 4; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; border: 0; cursor: pointer; font-size: 13px; line-height: 1; color: #fff; background: rgba(20,18,14,.5); }
+.zoombtn:hover { background: rgba(20,18,14,.8); }
+.lightbox { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(12,11,8,.93); cursor: zoom-out; }
+.lightbox img { max-width: 94vw; max-height: 94vh; object-fit: contain; border-radius: 4px; box-shadow: 0 12px 48px rgba(0,0,0,.5); cursor: default; }
+.lbx { position: fixed; top: 18px; right: 22px; z-index: 201; width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; font-size: 16px; color: #fff; background: rgba(255,255,255,.14); }
+.lbx:hover { background: rgba(255,255,255,.24); }
 .mcard .noimg { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; padding: 14px; }
 .mcard .noimg .ja { font-size: 17px; line-height: 1.16; color: var(--ink); font-weight: 500; overflow-wrap: anywhere; }
 .mcard .noimg .nn { font-family: var(--mono); font-size: 9.5px; color: var(--dim); }
