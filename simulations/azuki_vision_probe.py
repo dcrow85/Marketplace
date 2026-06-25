@@ -72,9 +72,42 @@ def parse(raw):
         return None
 
 
+_STOP = {"the", "of", "a", "and", "no", "to", "in", "for"}
+
+
+def _toks(s):
+    return {t for t in re.findall(r"[a-z0-9]+", (s or "").lower()) if t not in _STOP}
+
+
 def match(name, names, idx):
-    hit = difflib.get_close_matches((name or "").lower(), names, n=1, cutoff=0.82)
-    return (hit[0], idx[hit[0]]) if hit else None
+    """Resolve a model-read name to a catalog name. Layered: exact -> close fuzzy (OCR
+    slips like saeko/saiko) -> substring -> token-subset (a prominent/subtype read like
+    'Watercrafting' inside the full 'Frog, Merchant, Watercrafting')."""
+    q = (name or "").strip().lower()
+    if not q:
+        return None
+    if q in idx:
+        return q, idx[q]
+    hit = difflib.get_close_matches(q, names, n=1, cutoff=0.86)
+    if hit:
+        return hit[0], idx[hit[0]]
+    qt = _toks(q)
+    if not qt:
+        return None
+    best = None
+    for nm in names:
+        nt = _toks(nm)
+        if not nt:
+            continue
+        if len(q) >= 5 and (q in nm or nm in q):
+            sc = 1.0
+        elif (qt <= nt or nt <= qt) and any(len(t) >= 4 for t in (qt & nt)):
+            sc = len(qt & nt) / max(len(qt), len(nt))
+        else:
+            continue
+        if best is None or sc > best[0]:
+            best = (sc, nm)
+    return (best[1], idx[best[1]]) if best else None
 
 
 def score(label, raw, dt, names, idx, expect_alpha):
