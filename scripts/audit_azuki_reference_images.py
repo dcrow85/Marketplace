@@ -136,8 +136,8 @@ def recommended_action(codes: list[str]) -> str:
         return "Suppress the reference image for the star row; the current source gives the same image to a non-star sibling."
     if "image_url_reused_across_different_row_state" in codes:
         return "Suppress the ambiguous reference image for rows whose source image is reused across differing row states."
-    if "inherited_alpha_stamp_on_non_alpha_gallery_row" in codes:
-        return "Do not display the Alpha-sheet stamp as a row-specific stamp for this official gallery row."
+    if "gates_awakened_row_inherits_alpha_stamp" in codes:
+        return "Do not display the Alpha-sheet stamp as a row-specific stamp for this Gates Awakened row."
     if "completion_row_missing_gallery_star" in codes:
         return "Use row-specific gallery rarity; do not let card-level Alpha completion flatten this variant."
     if "completion_row_has_star_but_gallery_rarity_not_star" in codes:
@@ -168,11 +168,11 @@ def build_audit() -> tuple[str, dict[str, Any]]:
         reused_with_different_state = any(row_state(peer) != row_state(row) for peer in image_peers)
         star_reuses_nonstar = has_star(row.get("rarity")) and any(not has_star(peer.get("rarity")) for peer in image_peers)
 
-        sets = row.get("sets") or []
-        inherited_alpha_stamp_on_non_alpha = (
-            completion.get("STAMP") == "Alpha"
+        source_entry_id = row.get("source_entry_id") or ""
+        inherited_alpha_stamp_on_gates_awakened = (
+            source_entry_id.startswith("S1-")
+            and completion.get("STAMP") == "Alpha"
             and "linked_alpha_master_sheet" in (completion.get("FIELD_SOURCE") or "")
-            and sets != ["Booster"]
         )
 
         issue_codes: list[str] = []
@@ -182,8 +182,8 @@ def build_audit() -> tuple[str, dict[str, Any]]:
             issue_codes.append("star_row_reuses_nonstar_image_url")
         if reused_with_different_state and (source_matches is False or star_reuses_nonstar):
             issue_codes.append("image_url_reused_across_different_row_state")
-        if inherited_alpha_stamp_on_non_alpha:
-            issue_codes.append("inherited_alpha_stamp_on_non_alpha_gallery_row")
+        if inherited_alpha_stamp_on_gates_awakened:
+            issue_codes.append("gates_awakened_row_inherits_alpha_stamp")
         if has_star(row.get("rarity")) and not has_star(completion.get("RARITY")):
             issue_codes.append("completion_row_missing_gallery_star")
         if has_star(completion.get("RARITY")) and not has_star(row.get("rarity")):
@@ -191,7 +191,7 @@ def build_audit() -> tuple[str, dict[str, Any]]:
 
         sev = severity(issue_codes)
         reference_policy = "suppress_reference_image" if sev == "high" else "display_reference_image"
-        stamp_policy = "suppress_inherited_alpha_stamp" if inherited_alpha_stamp_on_non_alpha else "display_stamp_if_present"
+        stamp_policy = "suppress_inherited_alpha_stamp" if inherited_alpha_stamp_on_gates_awakened else "display_stamp_if_present"
 
         notes: list[str] = []
         if source_matches is False:
@@ -200,8 +200,8 @@ def build_audit() -> tuple[str, dict[str, Any]]:
             notes.append("A star row shares the exact image URL with a non-star sibling.")
         if reused_with_different_state:
             notes.append("Image URL is reused across rows with different card_id/rarity/set/source state.")
-        if inherited_alpha_stamp_on_non_alpha:
-            notes.append("Alpha-sheet stamp is inherited by card-id crosswalk into a non-Booster official gallery row.")
+        if inherited_alpha_stamp_on_gates_awakened:
+            notes.append("Alpha-sheet stamp is inherited by card-id crosswalk into a Gates Awakened S1 official gallery row.")
         if has_star(row.get("rarity")) and not has_star(completion.get("RARITY")):
             notes.append("Gallery row is star/alt but completion rarity is flattened.")
         if has_star(completion.get("RARITY")) and not has_star(row.get("rarity")):
@@ -221,7 +221,7 @@ def build_audit() -> tuple[str, dict[str, Any]]:
                     "CARD_ID": row.get("card_id") or "",
                     "NORMALIZED_CARD_ID": normalized,
                     "NAME": row.get("name") or "",
-                    "SETS": "; ".join(sets),
+                    "SETS": "; ".join(row.get("sets") or []),
                     "SOURCE_ENTRY_ID": row.get("source_entry_id") or "",
                     "IMAGE_BASENAME": os.path.basename(image_url),
                     "IMAGE_URL_PRESENT": str(bool(image_url)).lower(),
@@ -273,7 +273,7 @@ def build_audit() -> tuple[str, dict[str, Any]]:
                 "image URL is reused across different row states and one of the identity/star conditions above applies",
             ],
             "suppressed_field_conditions": [
-                "Alpha-sheet STAMP=Alpha inherited by card-id crosswalk into a non-Booster official gallery row",
+                "Alpha-sheet STAMP=Alpha inherited by card-id crosswalk into a Gates Awakened S1 official gallery row",
             ],
             "not_claiming": [
                 "visual authentication of any physical card",

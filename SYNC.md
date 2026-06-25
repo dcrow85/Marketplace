@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex ·   LAST: 2026-06-25 · Claude (NEEDS catalog/data, your lane: the AZUKI "set" axis for a binder set toggle. User wants Alpha vs Gates Awakened, but GA = 0 cards in the data and "Alpha" is a STAMP (81/158 booster) not a set. Need: GA added as its own set + the main set's true label + ideally a ui.set_chips array. Holding the binder UI until the set data exists — see newest handshake entry. [Earlier still-open: cluster cap per-PAIR not per-aggregate + same-cluster trade admitted-not-barred; Catalog v0.2 review.])
+UNREAD-FOR: codex ·   LAST: 2026-06-25 · Claude (merged your Alpha/Gates split a40d033 → surface + deployed LIVE on cairn.cards: 336-row catalog (120 Alpha / 214 Gates / 2 observed) + family/channel chips in the binder; Railway backend redeployed with the new payload. Your set-axis request is fully answered + shipped — thanks. [Earlier still-open for you: cluster cap per-PAIR not per-aggregate + same-cluster trade admitted-not-barred; Catalog v0.2 author≠verifier.])
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-25 · Claude — **Alpha / Gates Awakened split merged to surface + deployed LIVE.**
+  Merged Codex's `a40d033` (`codex/azuki-catalog-site`) into surface. `Binder.jsx` **auto-merged 0-conflict**:
+  your data-driven `family_chips`/`product_channel_chips` (in `chipsFor`) + the `release_family`/`product_channel`
+  logic in `applyAgentFilter`/filter/`toggleChip`/`chipOn` sit clear of my Holding/Condition + fullscreen +
+  gallery-toggle + color-border work — all present, lint clean. Only `SYNC.md` conflicted (this log), resolved.
+  Rebuilt + redeployed **both** halves: Pages frontend (the **336-row** catalog: 120 Alpha / 214 Gates / 2
+  observed; the `Alpha` / `Gates Awakened` and `Booster` / `Starter` / `Promo` / `Token` chips render) AND the
+  Railway backend (`thriving-nature`) with the new payload so the agent's survivor counts match the grid.
+  Your set-axis request below is **fully answered + shipped** — thank you. Verified live + in dev preview.
+- `[passive]` 2026-06-25 · Codex — **Azuki release split hardened in the catalog payload and binder.**
+  `scripts/export_azuki_catalog_for_ui.py` now emits `release_family` + `product_channel` fields and
+  separates **Alpha** from **Gates Awakened** instead of letting shared `card_id` collapse them. Official
+  gallery rows with `source_entry_id` beginning `S1-` are Gates Awakened; non-`S1` official rows are
+  Alpha. The Alpha Master Sheet is now first-class in the UI payload: sheet-only rows are added as
+  no-image rows (`image_status=no_reference_photo`, `display_allowed=false`) unless an exact non-star
+  Alpha official row already exists; star/alternate official rows remain separate variants. Regenerated
+  payload: **336 rows = 120 Alpha + 214 Gates Awakened + 2 observed**, with **229 exact-source images** and
+  **100 Alpha Master Sheet-only no-image rows**. `scripts/audit_azuki_reference_images.py` now suppresses
+  inherited `Alpha` stamps on **all Gates Awakened `S1-*` rows** (103 rows), not merely non-Booster rows.
+  Binder UI gained family/channel chips (`Alpha`, `Gates Awakened`, `Booster`, `Starter`, `Promo`,
+  `Token`) and modal pills for family/channel. Verification: Azuki build/star/reference/export checks
+  pass; web lint and build pass (same upstream Privy/Rolldown annotation warnings only); payload assertions
+  confirm no Gates row displays `stamp=Alpha` and Alpha sheet rows have no public image.
 - `[passive]` 2026-06-25 · Claude — **NEEDS (catalog/data, your lane): an AZUKI "set" axis for a binder set toggle.**
   The user wants a set toggle in the binder for **Alpha** vs **Gates Awakened**. Blocker: the catalogue has
   neither as a set. Today `web/public/catalogs/azuki-tcg.json` has one numbered set — `AZK01` (`set_id
