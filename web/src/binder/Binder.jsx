@@ -28,8 +28,9 @@ function effStance(c, store) {
   if (st === 'wish') st = 'want'
   if (!st) st = 'none'
   const trade = u.trade !== undefined ? !!u.trade : extra
+  const sell = u.sell !== undefined ? !!u.sell : !!c.sell
   const grail = u.grail !== undefined ? !!u.grail : !!c.grail
-  return { stance: st, extra, trade, grail }
+  return { stance: st, extra, trade, sell, grail }
 }
 function wantActive(c, store) {
   const u = store[c.uid] || {}
@@ -37,10 +38,28 @@ function wantActive(c, store) {
   const max = u.want_max !== undefined ? u.want_max : c.want_max || ''
   return (max !== '' && max != null) || (cond && cond !== 'any')
 }
+// Condition: a structured type (raw / graded / TAG) + a free grade detail, with a
+// legacy free-text `cond` fallback for collections saved before the dropdown existed.
+const COND_TYPES = [['raw', 'Raw'], ['graded', 'Graded'], ['tag', 'TAG']]
+const condPlaceholder = (t) => t === 'graded' ? 'PSA 9 · BGS 9.5 · …' : t === 'tag' ? 'TAG 9.5 · …' : 'NM · LP · played · …'
+function condText(c, store) {
+  const u = store[c.uid] || {}
+  const type = u.cond_type !== undefined ? u.cond_type : c.cond_type
+  const grade = ((u.cond_grade !== undefined ? u.cond_grade : c.cond_grade) || '').trim()
+  if (!type && !grade) return ((u.cond !== undefined ? u.cond : c.cond) || '').trim()
+  if (type === 'graded') return grade || 'graded'
+  if (type === 'tag') return grade ? 'TAG ' + grade : 'TAG'
+  return grade ? (type === 'raw' ? 'raw ' + grade : grade) : (type === 'raw' ? 'raw' : '')
+}
 function capMeta(c, e, store) {
   if (e.grail && (e.stance === 'have' || e.stance === 'want')) return { t: 'grail ★', cls: 'm-grail' }
   if (e.stance === 'pass') return { t: 'pass', cls: 'm-pass' }
-  if (e.stance === 'have') return e.trade ? { t: 'for trade', cls: 'm-trade' } : { t: c.cond || 'keeper', cls: 'm-have' }
+  if (e.stance === 'have') {
+    if (e.trade && e.sell) return { t: 'trade · sell', cls: 'm-trade' }
+    if (e.sell) return { t: 'for sale', cls: 'm-trade' }
+    if (e.trade) return { t: 'for trade', cls: 'm-trade' }
+    return { t: condText(c, store) || 'keeper', cls: 'm-have' }
+  }
   if (e.stance === 'want') return wantActive(c, store) ? { t: 'hunt', cls: 'm-want' } : { t: 'wishlist', cls: 'm-wish' }
   return { t: c.rarity || '', cls: 'm-none' }
 }
@@ -205,11 +224,17 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {e.stance === 'have' && <>
                 <Frow label="Holding">
                   <div className="switch2">
-                    <button className={'sw' + (!e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', false)}>Keeper</button>
-                    <button className={'sw' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', true)}>For trade</button>
+                    <button className={'sw' + (!e.trade && !e.sell ? ' on' : '')} onClick={() => { setField(c.uid, 'trade', false); setField(c.uid, 'sell', false) }}>Keep</button>
+                    <button className={'sw' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', !e.trade)}>Trade</button>
+                    <button className={'sw' + (e.sell ? ' on' : '')} onClick={() => setField(c.uid, 'sell', !e.sell)}>Sell</button>
                   </div>
                 </Frow>
-                <Frow label="Condition"><input className="ti" placeholder="raw NM · PSA 9 · …" value={u.cond || ''} onChange={(ev) => setField(c.uid, 'cond', ev.target.value)} /></Frow>
+                <Frow label="Condition">
+                  <select className="ti condtype" value={u.cond_type || 'raw'} onChange={(ev) => setField(c.uid, 'cond_type', ev.target.value)}>
+                    {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                  </select>
+                  <input className="ti condgrade" placeholder={condPlaceholder(u.cond_type || 'raw')} value={u.cond_grade || ''} onChange={(ev) => setField(c.uid, 'cond_grade', ev.target.value)} />
+                </Frow>
                 <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
               </>}
@@ -354,7 +379,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       const cur = effStance(byUid(data, uid), prev).stance
       const u = { ...(prev[uid] || {}) }
       u.stance = cur === st ? 'none' : st
-      if (u.stance !== 'have') { u.extra = false; u.trade = false }
+      if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false }
       if (u.stance === 'none' || u.stance === 'pass') u.grail = false
       const next = { ...prev, [uid]: u }
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
