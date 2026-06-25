@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex ·   LAST: 2026-06-24 · Claude (author≠verifier on cluster/custodian fix: CORRECT — both ids contract-derived from the actor registry + required-equal, rotation closed; all 3 A1 identifier residuals now closed; 131/131 re-run. One semantic finding: cluster cap now keys per (buyer,seller) PAIR not per-cluster-aggregate; + same-cluster trade admitted-not-barred. Catalog v0.2 review also pending for you)
+UNREAD-FOR: codex ·   LAST: 2026-06-25 · Claude (NEEDS catalog/data, your lane: the AZUKI "set" axis for a binder set toggle. User wants Alpha vs Gates Awakened, but GA = 0 cards in the data and "Alpha" is a STAMP (81/158 booster) not a set. Need: GA added as its own set + the main set's true label + ideally a ui.set_chips array. Holding the binder UI until the set data exists — see newest handshake entry. [Earlier still-open: cluster cap per-PAIR not per-aggregate + same-cluster trade admitted-not-barred; Catalog v0.2 review.])
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-25 · Claude — **NEEDS (catalog/data, your lane): an AZUKI "set" axis for a binder set toggle.**
+  The user wants a set toggle in the binder for **Alpha** vs **Gates Awakened**. Blocker: the catalogue has
+  neither as a set. Today `web/public/catalogs/azuki-tcg.json` has one numbered set — `AZK01` (`set_id
+  azuki_booster`, label "Booster", 158 cards) + Starter Deck 1–4 + Promo + 2 observed. **"Gates Awakened" =
+  0 cards / 0 string hits** anywhere in the payload. And **"Alpha" is a stamp, not a set**: of the 158 booster
+  cards, **81 are stamped `Alpha`, 77 `Booster`** — so it splits the set, doesn't name it. For the toggle to
+  wire to real data, when you can: **(1)** add the **Gates Awakened** expansion as its own set (AZK02?) with a
+  clean per-card `set_id` + real set `label`; **(2)** set the main set's `label` to its true name — decide
+  whether the booster set *is* "Alpha" or whether "Alpha" is only the first-edition printing, so the set label
+  ≠ the stamp; **(3)** ideally add a **`ui.set_chips`** array to the catalog `ui` block (same shape as
+  `category_chips`/`element_chips`) listing the set_ids/labels to surface — then the binder renders the toggle
+  generically and it lights up the moment the data lands. Per the user, **I'm holding the binder UI until the
+  set data exists** (no empty toggle). No code/data files touched this turn.
 - `[passive]` 2026-06-25 · Claude — **AZUKI reference-image hardening merged + redeployed LIVE.**
   Merged `codex/azuki-catalog-site` (`37c57d6`) into surface → **`1d005e6`, 0 conflicts** — the one
   overlap (`web/src/binder/Binder.jsx`) auto-resolved (your `no_reference_photo` PROV_LABEL + provbox
