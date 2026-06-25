@@ -27,6 +27,7 @@ WEB_CATALOG_DIR = ROOT / "web" / "public" / "catalogs"
 OFFICIAL = AZUKI / "releases" / "azuki_tcg_official_gallery.json"
 COMPLETION = AZUKI / "spreadsheets" / "azuki_tcg_alpha_fields_completion.csv"
 STAR_AUDIT = AZUKI / "audits" / "azuki_tcg_star_alt_art_audit_2026_06_24.csv"
+REFERENCE_AUDIT = AZUKI / "audits" / "azuki_tcg_reference_image_audit_2026_06_25.csv"
 PROMO_OBS = AZUKI / "observations" / "azuki_tcg_user_photo_promo_observations_2026_06_24.csv"
 PORTRAIT_OBS = AZUKI / "observations" / "azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv"
 MANIFEST = AZUKI / "manifest.json"
@@ -111,6 +112,19 @@ def issue_from_audit(row: dict[str, str] | None) -> dict[str, Any] | None:
     }
 
 
+def issue_from_reference_audit(row: dict[str, str] | None) -> dict[str, Any] | None:
+    if not row or row.get("SEVERITY") in ("", "none"):
+        return None
+    return {
+        "source": "reference_image_audit_2026_06_25",
+        "severity": row.get("SEVERITY") or "needs_review",
+        "status": row.get("AUDIT_STATUS") or "needs_review",
+        "codes": split_semis(row.get("ISSUE_CODES")),
+        "recommended_action": row.get("RECOMMENDED_ACTION") or "",
+        "notes": row.get("NOTES") or "",
+    }
+
+
 def completion_for(uid: str, by_uid: dict[str, dict[str, str]]) -> dict[str, str]:
     return by_uid.get(uid, {})
 
@@ -149,12 +163,14 @@ def card_from_official(
     card: dict[str, Any],
     completion_by_uid: dict[str, dict[str, str]],
     audit_by_uid: dict[str, dict[str, str]],
+    reference_audit_by_uid: dict[str, dict[str, str]],
     observations_by_uid: dict[str, list[dict[str, str]]],
     manifest_hash: str,
 ) -> dict[str, Any]:
     uid = card["uid"]
     comp = completion_for(uid, completion_by_uid)
     audit = audit_by_uid.get(uid)
+    ref_audit = reference_audit_by_uid.get(uid)
     obs = [observation_note(row) for row in observations_by_uid.get(uid, [])]
 
     rarity = card.get("rarity") or comp.get("RARITY") or ""
@@ -162,7 +178,14 @@ def card_from_official(
     subtypes = card.get("subtypes") or [comp.get("SUBTYPE_1"), comp.get("SUBTYPE_2"), comp.get("SUBTYPE_3")]
     subtypes = [s for s in subtypes if s]
     types = [v for v in [element, *subtypes] if v]
-    issues = [issue for issue in [issue_from_audit(audit)] if issue]
+    star_issue = issue_from_audit(audit)
+    reference_issue = issue_from_reference_audit(ref_audit)
+    if star_issue and reference_issue:
+        reference_codes = set(reference_issue.get("codes", []))
+        star_issue["codes"] = [code for code in star_issue.get("codes", []) if code not in reference_codes]
+        if not star_issue["codes"]:
+            star_issue = None
+    issues = [issue for issue in [star_issue, reference_issue] if issue]
     if obs:
         issues.append({
             "source": "user_observation_layer",
@@ -178,6 +201,22 @@ def card_from_official(
     row_id = uid
     name = card.get("name") or comp.get("NAME") or row_id
     entry_id = card.get("source_entry_id") or comp.get("SOURCE_ENTRY_ID") or ""
+    suppress_reference = ref_audit and ref_audit.get("REFERENCE_IMAGE_POLICY") == "suppress_reference_image"
+    suppress_stamp = ref_audit and ref_audit.get("STAMP_FIELD_POLICY") == "suppress_inherited_alpha_stamp"
+    original_image = card.get("image_url") or comp.get("IMAGE_URL") or ""
+    image = "" if suppress_reference else original_image
+    image_status = "no_reference_photo" if suppress_reference else "exact_source"
+    provenance = (
+        "Reference image suppressed by reference-image audit; source row does not currently provide an exact photo for this catalog row."
+        if suppress_reference
+        else "Official Azuki gallery image URL; not seller evidence or physical-card proof."
+    )
+    stamp = "" if suppress_stamp else (comp.get("STAMP") or "")
+    suppressed_fields = []
+    if suppress_reference:
+        suppressed_fields.append("image")
+    if suppress_stamp:
+        suppressed_fields.append("stamp")
     return {
         "uid": uid,
         "catalog_profile": "azuki-tcg",
@@ -196,10 +235,13 @@ def card_from_official(
         "star_alt": has_star(rarity),
         "rarity": rarity,
         "band_rank": band_rank({"rarity": rarity}, audit),
-        "image": card.get("image_url") or comp.get("IMAGE_URL") or "",
-        "image_status": "exact_source",
-        "display_allowed": True,
-        "provenance": "Official Azuki gallery image URL; not seller evidence or physical-card proof.",
+        "image": image,
+        "image_status": image_status,
+        "display_allowed": not suppress_reference,
+        "provenance": provenance,
+        "reference_image_policy": ref_audit.get("REFERENCE_IMAGE_POLICY") if ref_audit else "display_reference_image",
+        "stamp_field_policy": ref_audit.get("STAMP_FIELD_POLICY") if ref_audit else "display_stamp_if_present",
+        "suppressed_fields": suppressed_fields,
         "source_authority": card.get("authority_label") or "official_gallery_api_fact",
         "field_source": comp.get("FIELD_SOURCE") or "official_gallery_api_fact",
         "missing_alpha_fields": split_semis(comp.get("MISSING_ALPHA_FIELDS")),
@@ -231,7 +273,7 @@ def card_from_official(
         "flavor_text": comp.get("F_TEXT") or "",
         "definition_text": comp.get("DEFINITION_TEXT") or "",
         "ruling_text": comp.get("RULING_TEXT") or "",
-        "stamp": comp.get("STAMP") or "",
+        "stamp": stamp,
         "variant_group": card.get("variant_group") or {},
         "issues": issues,
         "observations": obs,
@@ -324,15 +366,17 @@ def build_payload() -> dict[str, Any]:
     official_cards = official_release["cards"]
     completion_rows = read_csv(COMPLETION)
     star_rows = read_csv(STAR_AUDIT)
+    reference_rows = read_csv(REFERENCE_AUDIT)
     manifest = read_json(MANIFEST)
     manifest_hash = sha256(MANIFEST)
 
     completion_by_uid = {r["ROW_KEY"]: r for r in completion_rows if r.get("ROW_KEY")}
     audit_by_uid = {r["UID"]: r for r in star_rows if r.get("UID")}
+    reference_audit_by_uid = {r["UID"]: r for r in reference_rows if r.get("UID")}
     observations_by_uid, unmatched_observations = observation_indexes([PROMO_OBS, PORTRAIT_OBS])
 
     cards = [
-        card_from_official(card, completion_by_uid, audit_by_uid, observations_by_uid, manifest_hash)
+        card_from_official(card, completion_by_uid, audit_by_uid, reference_audit_by_uid, observations_by_uid, manifest_hash)
         for card in official_cards
     ]
     cards.extend(card_from_unmatched_observation(row, manifest_hash) for row in unmatched_observations)
@@ -396,6 +440,7 @@ def build_payload() -> dict[str, Any]:
             "cards": len(cards),
             "with_image": sum(1 for c in cards if c.get("image")),
             "exact_source": sum(1 for c in cards if c.get("image_status") == "exact_source"),
+            "no_reference_photo": sum(1 for c in cards if c.get("image_status") == "no_reference_photo"),
             "provider_path": 0,
             "no_rarity_reference": 0,
             "missing_name_ja": 0,
@@ -410,6 +455,7 @@ def build_payload() -> dict[str, Any]:
             "official_gallery": {"path": str(OFFICIAL.relative_to(ROOT)), "sha256": sha256(OFFICIAL)},
             "completion_csv": {"path": str(COMPLETION.relative_to(ROOT)), "sha256": sha256(COMPLETION)},
             "star_audit": {"path": str(STAR_AUDIT.relative_to(ROOT)), "sha256": sha256(STAR_AUDIT)},
+            "reference_image_audit": {"path": str(REFERENCE_AUDIT.relative_to(ROOT)), "sha256": sha256(REFERENCE_AUDIT)},
             "manifest": {"path": str(MANIFEST.relative_to(ROOT)), "sha256": manifest_hash},
         },
         "cards": cards,

@@ -116,6 +116,23 @@ Star / alternate-art signal audit:
   (`STT04-01` Zero), four source/image card-ID disagreement rows, and the
   completion-layer star-flattening pattern is separated as medium severity.
 
+Reference image / Alpha-field audit:
+
+- `audits/azuki_tcg_reference_image_audit_2026_06_25.csv` is the stricter
+  display audit. It decides whether the site may honestly show a row's image as
+  that row's reference photo.
+- Current findings: 59 rows in scope, 5 high-severity rows, and 54
+  medium-severity rows. High severity means the UI suppresses the reference
+  image; medium severity means the row stays visible but a field-level warning
+  is carried.
+- The 5 suppressed-image rows are rows where the source/image card ID points to
+  a different gallery row, or where a `★` row reuses the exact image URL of a
+  non-`★` sibling. In the site payload those rows have `image: ""` and
+  `image_status: "no_reference_photo"`.
+- 40 rows suppress an inherited `Alpha` stamp. These are non-Booster official
+  gallery rows where `STAMP=Alpha` came from a card-level Alpha-sheet crosswalk,
+  not a row-specific visual confirmation.
+
 Authority boundary:
 
 - This catalog does not prove seller possession.
@@ -129,6 +146,9 @@ Authority boundary:
   identical image treatment, rarity treatment, physical printing, or possession.
 - Image-view illustrator reads are useful completion hints, not official API
   facts. They remain lower authority than linked sheet fields.
+- Reference images are displayed only when the current source row can honestly
+  cite that image as the row's own reference photo. If the row/image identity is
+  ambiguous, the catalogue has no reference photo for that row.
 - User-photo observations do not overwrite official gallery or linked sheet
   fields. They are a separate evidence layer for agents to inspect.
 - User-image portrait-alt observations likewise remain evidence rows. A matched
@@ -140,6 +160,8 @@ Rebuild:
 ```bash
 python3 scripts/build_azuki_tcg_catalog.py --check
 python3 scripts/audit_azuki_star_alt_art.py --check
+python3 scripts/audit_azuki_reference_images.py --check
+python3 scripts/export_azuki_catalog_for_ui.py --check
 ```
 
 Refresh from the live official endpoint and linked Alpha Master Sheet:
