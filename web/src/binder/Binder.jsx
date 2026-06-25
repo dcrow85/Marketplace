@@ -143,6 +143,7 @@ const PROV_LABEL = {
   exact_source: 'Exact source image',
   provider_path: 'Provider-path reference image',
   no_rarity_reference: 'No Rarity reference image',
+  no_reference_photo: 'No reference photo',
   user_observation_no_public_image: 'User observation, no public image',
 }
 const mpill = (t, i) => t ? <span className="mpill" key={i}>{t}</span> : null
@@ -265,6 +266,8 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 <b>{c.image ? (PROV_LABEL[c.image_status] || 'Reference image') : 'No image on file'}.</b>{' '}
                 {c.image_status === 'no_rarity_reference'
                   ? 'Source-labeled No Rarity reference.'
+                  : c.image_status === 'no_reference_photo'
+                    ? 'The candidate image was suppressed by the catalogue audit. This row currently has no honest reference photo.'
                   : c.image_status === 'user_observation_no_public_image'
                     ? 'Observation row from a user-provided image. The image hash is recorded in the catalog layer, but the image itself is not published here.'
                   : c.image

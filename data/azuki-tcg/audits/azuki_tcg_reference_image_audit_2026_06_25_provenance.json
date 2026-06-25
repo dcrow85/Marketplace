@@ -1,0 +1,58 @@
+{
+  "audit_csv_path": "data/azuki-tcg/audits/azuki_tcg_reference_image_audit_2026_06_25.csv",
+  "audit_policy": {
+    "display_rule": "Only display a reference image when the row can honestly cite that image as this row's reference photo.",
+    "not_claiming": [
+      "visual authentication of any physical card",
+      "seller possession",
+      "that source URLs are permanent or image-rights cleared",
+      "that every unflagged image has been manually inspected pixel-by-pixel",
+      "that Alpha-sheet card-level fields are variant-specific unless explicitly marked"
+    ],
+    "suppressed_field_conditions": [
+      "Alpha-sheet STAMP=Alpha inherited by card-id crosswalk into a non-Booster official gallery row"
+    ],
+    "suppressed_reference_image_conditions": [
+      "source/image filename card ID disagrees with gallery row card_id",
+      "star/alternate-art row reuses the exact image URL of a non-star sibling",
+      "image URL is reused across different row states and one of the identity/star conditions above applies"
+    ]
+  },
+  "counts": {
+    "alpha_completion_rows": 234,
+    "audit_rows": 59,
+    "issues": {
+      "completion_row_missing_gallery_star": 18,
+      "image_url_reused_across_different_row_state": 1,
+      "inherited_alpha_stamp_on_non_alpha_gallery_row": 40,
+      "source_entry_card_id_disagrees_with_gallery_card_id": 4,
+      "star_row_reuses_nonstar_image_url": 1
+    },
+    "official_gallery_rows": 234,
+    "reference_policy": {
+      "display_reference_image": 54,
+      "suppress_reference_image": 5
+    },
+    "severity": {
+      "high": 5,
+      "medium": 54
+    },
+    "stamp_policy": {
+      "display_stamp_if_present": 19,
+      "suppress_inherited_alpha_stamp": 40
+    }
+  },
+  "csv_sha256": "1fbfff97310efc3e280b641b10e7d86e2e8a91e14101121d618674d40baf2912",
+  "name": "Azuki TCG Reference Image and Alpha Field Audit",
+  "schema": "azuki_tcg_reference_image_audit_provenance_v0.1",
+  "source_inputs": {
+    "alpha_fields_completion_csv": {
+      "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
+      "sha256": "ccf7634edf8fcf69107ef325a77a1f9fc49f2e8967035199c1987a77066a4631"
+    },
+    "official_gallery_release": {
+      "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
+      "sha256": "0b75c792cd9e833232eec9f7376919fa054483c6c52c7eb5892025c36be2234f"
+    }
+  }
+}

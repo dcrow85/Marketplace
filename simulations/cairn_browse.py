@@ -152,6 +152,7 @@ COMMENT_SYS = (
     "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
     " - 'holo' = the card is holographic.\n"
     " - 'star-alt' = the catalog row carries a star/alternate-art signal.\n"
+    " - 'no-reference-photo' = the catalog deliberately suppressed or lacks a usable reference image for this row.\n"
     " - 'unowned' / 'in-collection' = whether it is in the collection. This is an OWNERSHIP fact, NOT a "
     "condition. 'unowned' does NOT mean a missing foil, a defect, or anything physical.\n"
     " - 'value-tierN' or 'attention-tierN' = a catalogue attention band. NOT a grade, NOT centering, "
@@ -203,6 +204,8 @@ def brief(c: dict, setlabel: dict[str, str]) -> str:
     if c.get("issues"):
         severities = sorted({i.get("severity", "info") for i in c.get("issues", [])})
         tags.append("issues:" + ",".join(severities))
+    if not c.get("image"):
+        tags.append("no-reference-photo")
     tags.append("in-collection" if c["owned"] else "unowned")
     return f"{c['uid']} · {c['num']} {nm(c)} · {setlabel.get(c['set_id'],'?')} · {c.get('category','')} · {c.get('rarity','')} · {' '.join(tags)}"
 
