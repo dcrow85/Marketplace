@@ -62,6 +62,13 @@ function provBadge(c) {
 // agent's survivors and the count matches what it said ("cut to N candidates").
 function applyAgentFilter(cards, f, setById) {
   let out = cards
+  if (f.release_family) out = out.filter((c) => (c.release_family || '').toLowerCase() === String(f.release_family).toLowerCase())
+  if (f.product_channel) {
+    const ch = String(f.product_channel).toLowerCase()
+    out = out.filter((c) => ch === 'starter'
+      ? String(c.product_channel || '').startsWith('starter_deck_')
+      : (c.product_channel || '').toLowerCase() === ch)
+  }
   if (f.holo != null) out = out.filter((c) => !!c.holo === !!f.holo)
   if (f.owned != null) out = out.filter((c) => !!c.owned === !!f.owned)
   if (f.exclude_grails) out = out.filter((c) => (c.band_rank || 0) < 3)
@@ -167,7 +174,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {c.name_is_en && <span className="enmark">EN</span>}
             </div>
             <div className="m-attrs">
-              {[c.category, types, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'attention-tier ' + c.band_rank : '']
+              {[c.release_family_label, c.product_channel_label, c.category, types, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'attention-tier ' + c.band_rank : '']
                 .map((t, i) => mpill(t, i))}
             </div>
             {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
@@ -255,7 +262,7 @@ function AgentPanel({ res, agentName }) {
     return <div className="apanel"><div className="aoff">{off ? 'Your agent is offline right now (the model isn’t running).' : 'Could not reach your agent.'}</div></div>
   }
   const o = res.data, f = o.filter || {}, r = o.result || {}
-  const dims = ['holo', 'star_alt', 'owned', 'exclude_grails', 'set', 'character', 'category', 'element', 'rarity']
+  const dims = ['release_family', 'product_channel', 'holo', 'star_alt', 'owned', 'exclude_grails', 'set', 'character', 'category', 'element', 'rarity']
   const chips = dims.filter((k) => f[k] != null && f[k] !== false)
   const flags = o.overclaim_flags || []
   return (
@@ -294,10 +301,14 @@ function AgentBar({ agentName, busy, res, onAsk, placeholder }) {
 function chipsFor(data) {
   const cats = data?.ui?.category_chips || ['Pokemon', 'Trainer', 'Energy']
   const elements = data?.ui?.element_chips || []
+  const families = data?.ui?.family_chips || []
+  const channels = data?.ui?.product_channel_chips || []
   const holoLabel = data?.ui?.holo_label || 'Holo'
   return [
     { l: 'All', g: 'all' },
     { l: 'Have', g: 'stance', v: 'have' }, { l: 'Want', g: 'stance', v: 'want', acc: 1 },
+    ...(families.length ? [{ sep: 1 }, ...families.map((f) => ({ l: f.label, g: 'family', v: f.value }))] : []),
+    ...(channels.length ? [{ sep: 1 }, ...channels.map((ch) => ({ l: ch.label, g: 'channel', v: ch.value }))] : []),
     { sep: 1 },
     ...cats.map((c) => ({ l: c, g: 'cat', v: c })),
     ...(elements.length ? [{ sep: 1 }, ...elements.map((e) => ({ l: e, g: 'element', v: e }))] : []),
@@ -311,6 +322,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [store, setStore] = useState({})
   const [q, setQ] = useState('')
   const [stanceF, setStanceF] = useState(() => new Set())
+  const [familyF, setFamilyF] = useState(() => new Set())
+  const [channelF, setChannelF] = useState(() => new Set())
   const [catF, setCatF] = useState(() => new Set())
   const [elementF, setElementF] = useState(() => new Set())
   const [holoOnly, setHoloOnly] = useState(false)
@@ -321,7 +334,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
-    setData(null); setErr(''); setAgentRes(null); setQ(''); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false)
+    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false)
     fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch((e) => setErr(String(e)))
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [catalog])
@@ -403,29 +416,43 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         const e = effStance(c, store)
         if (!((stanceF.has('have') && e.stance === 'have') || (stanceF.has('want') && e.stance === 'want'))) return false
       }
+      if (familyF.size && !familyF.has(c.release_family)) return false
+      if (channelF.size) {
+        const isStarter = String(c.product_channel || '').startsWith('starter_deck_')
+        if (!((channelF.has('starter') && isStarter) || channelF.has(c.product_channel))) return false
+      }
       if (catF.size && !catF.has(c.category)) return false
       if (elementF.size && !elementF.has(c.element)) return false
       if (holoOnly && !c.holo) return false
       if (qq) {
-        const hay = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' + (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
+        const hay = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' + (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' + (c.release_family_label || '') + ' ' + (c.product_channel_label || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
         if (hay.indexOf(qq) < 0) return false
       }
       return true
     })
     if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, catF, elementF, holoOnly, store, setById, agentRes, agentActive, pickSet])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, holoOnly, store, setById, agentRes, agentActive, pickSet])
 
   const grouped = !q.trim() && !agentActive
   const CHIPS = useMemo(() => chipsFor(data), [data])
   const toggleChip = (ch) => {
-    if (ch.g === 'all') { setStanceF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }
+    if (ch.g === 'all') { setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
+    else if (ch.g === 'family') setFamilyF((p) => toggle(p, ch.v))
+    else if (ch.g === 'channel') setChannelF((p) => toggle(p, ch.v))
     else if (ch.g === 'cat') setCatF((p) => toggle(p, ch.v))
     else if (ch.g === 'element') setElementF((p) => toggle(p, ch.v))
     else if (ch.g === 'holo') setHoloOnly((v) => !v)
   }
-  const chipOn = (ch) => ch.g === 'all' ? (!stanceF.size && !catF.size && !elementF.size && !holoOnly) : ch.g === 'stance' ? stanceF.has(ch.v) : ch.g === 'cat' ? catF.has(ch.v) : ch.g === 'element' ? elementF.has(ch.v) : holoOnly
+  const chipOn = (ch) => ch.g === 'all'
+    ? (!stanceF.size && !familyF.size && !channelF.size && !catF.size && !elementF.size && !holoOnly)
+    : ch.g === 'stance' ? stanceF.has(ch.v)
+      : ch.g === 'family' ? familyF.has(ch.v)
+        : ch.g === 'channel' ? channelF.has(ch.v)
+          : ch.g === 'cat' ? catF.has(ch.v)
+            : ch.g === 'element' ? elementF.has(ch.v)
+              : holoOnly
 
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>

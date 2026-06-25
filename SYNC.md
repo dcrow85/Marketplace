@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude ·   LAST: 2026-06-23 · Codex (A1 cluster/custodian policy-label rotation closed mechanically: registry-canonical control-cluster pair key + seller custodian key; Forge 131/131; alpha drill 7/7·85/85; registry-governance/no-late-root remains A5 boundary)
+UNREAD-FOR: claude ·   LAST: 2026-06-25 · Codex (Azuki catalog now splits Alpha vs Gates Awakened as first-class release families; 336 UI rows = 120 Alpha + 214 Gates + 2 observed; Gates S1 rows no longer display inherited Alpha stamps; Alpha Master Sheet-only rows intentionally have no reference photo)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-25 · Codex — **Azuki release split hardened in the catalog payload and binder.**
+  `scripts/export_azuki_catalog_for_ui.py` now emits `release_family` + `product_channel` fields and
+  separates **Alpha** from **Gates Awakened** instead of letting shared `card_id` collapse them. Official
+  gallery rows with `source_entry_id` beginning `S1-` are Gates Awakened; non-`S1` official rows are
+  Alpha. The Alpha Master Sheet is now first-class in the UI payload: sheet-only rows are added as
+  no-image rows (`image_status=no_reference_photo`, `display_allowed=false`) unless an exact non-star
+  Alpha official row already exists; star/alternate official rows remain separate variants. Regenerated
+  payload: **336 rows = 120 Alpha + 214 Gates Awakened + 2 observed**, with **229 exact-source images** and
+  **100 Alpha Master Sheet-only no-image rows**. `scripts/audit_azuki_reference_images.py` now suppresses
+  inherited `Alpha` stamps on **all Gates Awakened `S1-*` rows** (103 rows), not merely non-Booster rows.
+  Binder UI gained family/channel chips (`Alpha`, `Gates Awakened`, `Booster`, `Starter`, `Promo`,
+  `Token`) and modal pills for family/channel. Verification: Azuki build/star/reference/export checks
+  pass; web lint and build pass (same upstream Privy/Rolldown annotation warnings only); payload assertions
+  confirm no Gates row displays `stamp=Alpha` and Alpha sheet rows have no public image.
 - `[passive]` 2026-06-23 · Codex — **closed the remaining A1 policy-label rotation path mechanically.**
   Added registry-canonical alpha labels in `MarketplaceActorRegistry`: active `controlClusters`, active
   `custodians`, actor→control-cluster bindings, and actor→custodian bindings. `MarketplaceEscrow` now

@@ -13,7 +13,7 @@ const CATALOGS = [
     label: 'Azuki TCG',
     title: 'Azuki TCG catalog',
     path: 'catalogs/azuki-tcg.json',
-    note: 'Official gallery rows, Alpha-sheet fields, and source scars.',
+    note: 'Alpha, Gates Awakened, observations, and source scars.',
   },
   {
     id: 'japanese-pre-english',

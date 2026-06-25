@@ -10,7 +10,7 @@
       "that Alpha-sheet card-level fields are variant-specific unless explicitly marked"
     ],
     "suppressed_field_conditions": [
-      "Alpha-sheet STAMP=Alpha inherited by card-id crosswalk into a non-Booster official gallery row"
+      "Alpha-sheet STAMP=Alpha inherited by card-id crosswalk into a Gates Awakened S1 official gallery row"
     ],
     "suppressed_reference_image_conditions": [
       "source/image filename card ID disagrees with gallery row card_id",
@@ -20,29 +20,29 @@
   },
   "counts": {
     "alpha_completion_rows": 234,
-    "audit_rows": 59,
+    "audit_rows": 122,
     "issues": {
       "completion_row_missing_gallery_star": 18,
+      "gates_awakened_row_inherits_alpha_stamp": 103,
       "image_url_reused_across_different_row_state": 1,
-      "inherited_alpha_stamp_on_non_alpha_gallery_row": 40,
       "source_entry_card_id_disagrees_with_gallery_card_id": 4,
       "star_row_reuses_nonstar_image_url": 1
     },
     "official_gallery_rows": 234,
     "reference_policy": {
-      "display_reference_image": 54,
+      "display_reference_image": 117,
       "suppress_reference_image": 5
     },
     "severity": {
       "high": 5,
-      "medium": 54
+      "medium": 117
     },
     "stamp_policy": {
       "display_stamp_if_present": 19,
-      "suppress_inherited_alpha_stamp": 40
+      "suppress_inherited_alpha_stamp": 103
     }
   },
-  "csv_sha256": "1fbfff97310efc3e280b641b10e7d86e2e8a91e14101121d618674d40baf2912",
+  "csv_sha256": "771f6de424291611bbc593566c5d25ff3e99d2b568e1499e025b44f2429067e4",
   "name": "Azuki TCG Reference Image and Alpha Field Audit",
   "schema": "azuki_tcg_reference_image_audit_provenance_v0.1",
   "source_inputs": {
