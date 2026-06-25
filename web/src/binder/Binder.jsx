@@ -38,18 +38,25 @@ function wantActive(c, store) {
   const max = u.want_max !== undefined ? u.want_max : c.want_max || ''
   return (max !== '' && max != null) || (cond && cond !== 'any')
 }
-// Condition: a structured type (raw / graded / TAG) + a free grade detail, with a
-// legacy free-text `cond` fallback for collections saved before the dropdown existed.
+// Condition: two fixed dropdowns (type + grade) so the record is uniform across
+// everyone — no free text. A legacy free-text `cond` is still read for display
+// (collections saved before the dropdowns existed).
 const COND_TYPES = [['raw', 'Raw'], ['graded', 'Graded'], ['tag', 'TAG']]
-const condPlaceholder = (t) => t === 'graded' ? 'PSA 9 · BGS 9.5 · …' : t === 'tag' ? 'TAG 9.5 · …' : 'NM · LP · played · …'
+const NUM_GRADES = ['10', '9.5', '9', '8.5', '8', '7.5', '7', '6.5', '6', '5.5', '5', '4', '3', '2', '1']
+const COND_GRADES = {
+  raw: [['M', 'Mint'], ['NM', 'Near Mint'], ['LP', 'Lightly Played'], ['MP', 'Moderately Played'], ['HP', 'Heavily Played'], ['DMG', 'Damaged']],
+  graded: NUM_GRADES.map((g) => [g, g]),
+  tag: NUM_GRADES.map((g) => [g, g]),
+}
+const gradePrompt = (t) => t === 'raw' ? 'condition…' : 'grade…'
 function condText(c, store) {
   const u = store[c.uid] || {}
   const type = u.cond_type !== undefined ? u.cond_type : c.cond_type
   const grade = ((u.cond_grade !== undefined ? u.cond_grade : c.cond_grade) || '').trim()
   if (!type && !grade) return ((u.cond !== undefined ? u.cond : c.cond) || '').trim()
-  if (type === 'graded') return grade || 'graded'
+  if (type === 'graded') return grade ? 'graded ' + grade : 'graded'
   if (type === 'tag') return grade ? 'TAG ' + grade : 'TAG'
-  return grade ? (type === 'raw' ? 'raw ' + grade : grade) : (type === 'raw' ? 'raw' : '')
+  return grade || 'raw'
 }
 function capMeta(c, e, store) {
   if (e.grail && (e.stance === 'have' || e.stance === 'want')) return { t: 'grail ★', cls: 'm-grail' }
@@ -230,10 +237,13 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                   </div>
                 </Frow>
                 <Frow label="Condition">
-                  <select className="ti condtype" value={u.cond_type || 'raw'} onChange={(ev) => setField(c.uid, 'cond_type', ev.target.value)}>
+                  <select className="ti condtype" value={u.cond_type || 'raw'} onChange={(ev) => { setField(c.uid, 'cond_type', ev.target.value); setField(c.uid, 'cond_grade', '') }}>
                     {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                   </select>
-                  <input className="ti condgrade" placeholder={condPlaceholder(u.cond_type || 'raw')} value={u.cond_grade || ''} onChange={(ev) => setField(c.uid, 'cond_grade', ev.target.value)} />
+                  <select className="ti condgrade" value={u.cond_grade || ''} onChange={(ev) => setField(c.uid, 'cond_grade', ev.target.value)}>
+                    <option value="">{gradePrompt(u.cond_type || 'raw')}</option>
+                    {(COND_GRADES[u.cond_type || 'raw'] || COND_GRADES.raw).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                  </select>
                 </Frow>
                 <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
