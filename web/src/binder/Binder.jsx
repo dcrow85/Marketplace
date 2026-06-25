@@ -345,13 +345,11 @@ function AgentBar({ agentName, busy, res, onAsk, placeholder }) {
 function chipsFor(data) {
   const cats = data?.ui?.category_chips || ['Pokemon', 'Trainer', 'Energy']
   const elements = data?.ui?.element_chips || []
-  const families = data?.ui?.family_chips || []
   const channels = data?.ui?.product_channel_chips || []
   const holoLabel = data?.ui?.holo_label || 'Holo'
   return [
     { l: 'All', g: 'all' },
     { l: 'Have', g: 'stance', v: 'have' }, { l: 'Want', g: 'stance', v: 'want', acc: 1 },
-    ...(families.length ? [{ sep: 1 }, ...families.map((f) => ({ l: f.label, g: 'family', v: f.value }))] : []),
     ...(channels.length ? [{ sep: 1 }, ...channels.map((ch) => ({ l: ch.label, g: 'channel', v: ch.value }))] : []),
     { sep: 1 },
     ...cats.map((c) => ({ l: c, g: 'cat', v: c })),
@@ -482,6 +480,18 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   const grouped = !q.trim() && !agentActive
   const CHIPS = useMemo(() => chipsFor(data), [data])
+  const FAMILIES = useMemo(() => data?.ui?.family_chips || [], [data])
+  // Open on the release family with the most card art, so AZUKI lands on Gates Awakened rather than
+  // Alpha's master-sheet-only rows (which have no individual photo). User can switch to All / Alpha freely.
+  useEffect(() => {
+    if (!data) return
+    const fams = data.ui?.family_chips || []
+    if (fams.length < 2) return
+    const best = fams.map((f) => ({ v: f.value, n: data.cards.filter((c) => c.release_family === f.value && c.image).length }))
+      .sort((a, b) => b.n - a.n)[0]
+    /* eslint-disable-next-line react-hooks/set-state-in-effect -- default the release view once per catalog load. */
+    if (best && best.n > 0) setFamilyF(new Set([best.v]))
+  }, [data])
   const toggleChip = (ch) => {
     if (ch.g === 'all') { setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
@@ -515,6 +525,17 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         <span><b>{data.summary.cards}</b> in catalog</span>
       </div>
       <AgentBar agentName={agentName} busy={agentBusy} res={agentRes} onAsk={askAgent} placeholder={data.ui?.agent_placeholder} />
+      {FAMILIES.length > 0 && (
+        <div className="releasebar">
+          <span className="rlabel">Release</span>
+          <div className="famtoggle" role="group" aria-label="release family">
+            <button className={'fb' + (!familyF.size ? ' on' : '')} onClick={() => setFamilyF(new Set())}>All</button>
+            {FAMILIES.map((f) => (
+              <button key={f.value} className={'fb' + (familyF.has(f.value) ? ' on' : '')} onClick={() => setFamilyF(new Set([f.value]))}>{f.label}</button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="controls">
         <div className="search"><input value={q} placeholder="search name or number…" onChange={(e) => setQ(e.target.value)} /></div>
         <div className="viewtoggle" role="group" aria-label="card size">

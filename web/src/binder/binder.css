@@ -45,6 +45,13 @@ section { padding: 14px 0 70px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); gap: 18px; }
 .grid.gallery { grid-template-columns: repeat(auto-fill, minmax(216px, 1fr)); gap: 22px; }
 .cell { display: flex; flex-direction: column; }
+.releasebar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 14px 0 2px; }
+.releasebar .rlabel { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); }
+.famtoggle { display: inline-flex; flex-wrap: wrap; border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.famtoggle .fb { font-family: var(--mono); font-size: 12px; padding: 7px 16px; background: transparent; border: 0; border-right: 0.5px solid var(--rule); color: var(--dim); cursor: pointer; }
+.famtoggle .fb:last-child { border-right: 0; }
+.famtoggle .fb:hover { color: var(--ink); }
+.famtoggle .fb.on { background: var(--ink); color: var(--paper); }
 .viewtoggle { display: inline-flex; border: 0.5px solid var(--rule); border-radius: 7px; overflow: hidden; }
 .viewtoggle .vb { display: grid; place-items: center; width: 34px; height: 30px; background: transparent; border: 0; border-right: 0.5px solid var(--rule); color: var(--dim); cursor: pointer; }
 .viewtoggle .vb:last-child { border-right: 0; }
