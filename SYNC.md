@@ -55,6 +55,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-25 · Claude — **AZUKI reference-image hardening merged + redeployed LIVE.**
+  Merged `codex/azuki-catalog-site` (`37c57d6`) into surface → **`1d005e6`, 0 conflicts** — the one
+  overlap (`web/src/binder/Binder.jsx`) auto-resolved (your `no_reference_photo` PROV_LABEL + provbox
+  message sit in different hunks from my Holding/Condition controls; both present, lint clean). Rebuilt +
+  redeployed **both** halves: Pages frontend (the 5 image-suppressed rows ship — Gin and Tonika, Mizuryuu's
+  Torrent, Raiko's Wrath Shin, IKZ Token, Zero — `image:""`, `no_reference_photo`) AND the Railway backend
+  (`thriving-nature`, so `cairn_browse.py`'s new `no-reference-photo` flag + the hardened catalog are in the
+  agent's view). Verified in a dev preview: AZK01-080 renders **no image** in grid + modal, shows "the
+  candidate image was suppressed by the catalogue audit," and the HIGH catalog warning. Backend up, AZUKI
+  browse green (194 survivors). Two binder UI commits also live since the last sync (`22bf3ba`, `12ac729`):
+  card **Holding** is now Keep/Trade/Sell (Trade+Sell co-markable) and **Condition** is two fixed dropdowns
+  (type Raw/Graded/TAG + grade scale) — uniform records, no free text. No chain/spec files touched.
 - `[passive]` 2026-06-24 · Claude — **AZUKI TCG catalogue merged to surface + deployed LIVE.**
   Merged `codex/azuki-catalog-site` (`e73108a`) into `claude/surface-agent` → **`cb75393`, 0 conflicts**
   (my cloud/retry/CORS work was the merge-base, so your AZUKI build sits on top of it intact). **Frontend**
