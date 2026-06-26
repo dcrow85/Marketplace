@@ -168,28 +168,41 @@ function Frow({ label, children }) {
   return <label className="frow"><span className="flabel">{label}</span><span className="fbody">{children}</span></label>
 }
 
-// Down-res a chosen photo to a data URI before upload — smaller payload, faster read,
-// and (per CE9) the import path never hands the public a forger-grade full-res scan.
-function downscale(file, max = 1000) {
+function loadImage(file) {
   return new Promise((resolve, reject) => {
     const img = new Image()
-    img.onload = () => {
-      const s = Math.min(1, max / Math.max(img.width, img.height))
-      const cv = document.createElement('canvas')
-      cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s)
-      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
-      URL.revokeObjectURL(img.src)
-      resolve(cv.toDataURL('image/jpeg', 0.85))
-    }
+    img.onload = () => resolve(img)
     img.onerror = reject
     img.src = URL.createObjectURL(file)
   })
+}
+// Render a chosen photo to a JPEG data URI bounded to a long-edge size.
+function renderJpeg(img, max, quality) {
+  const s = Math.min(1, max / Math.max(img.width, img.height))
+  const cv = document.createElement('canvas')
+  cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s)
+  cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
+  return cv.toDataURL('image/jpeg', quality)
+}
+// Sizes from one photo: a small READ copy (cheap vision call, never stored) and a high-res
+// INSPECTION copy (what a buyer zooms to judge condition — ~685 DPI on a card). A grid
+// THUMB joins here when storage is wired (so card lists stay fast).
+async function renderSizes(file) {
+  const img = await loadImage(file)
+  try {
+    return {
+      read: renderJpeg(img, 1000, 0.85),
+      full: renderJpeg(img, 2400, 0.9),
+    }
+  } finally {
+    URL.revokeObjectURL(img.src)
+  }
 }
 
 function CardModal({ uid, data, setById, store, setStance, setField, agentName, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
-  const [photo, setPhoto] = useState(null) // the user's down-res'd upload (data URI)
+  const [photo, setPhoto] = useState(null) // the high-res inspection copy shown in the modal
   const [read, setRead] = useState(null)   // the vision agent's read of it
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') { if (zoom) setZoom(false); else onClose() } }
@@ -211,12 +224,12 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const shownImg = (imp !== 'idle' && photo) ? photo : c.image
   const onPhoto = async (file) => {
     if (!file) return
-    let dataUri
-    try { dataUri = await downscale(file) } catch { setRead({ error: 'bad_image' }); setImp('error'); return }
-    setPhoto(dataUri); setRead(null); setImp('reading')
+    let imgs
+    try { imgs = await renderSizes(file) } catch { setRead({ error: 'bad_image' }); setImp('error'); return }
+    setPhoto(imgs.full); setRead(null); setImp('reading')
     try {
       const expect = { name: c.name_en || nm(c), num: c.num, release: c.release_family }
-      const r = await fetch(API_BASE + '/api/read', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ image: dataUri, expect }) })
+      const r = await fetch(API_BASE + '/api/read', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ image: imgs.read, expect }) })
       const d = await r.json()
       if (!r.ok || d.error) { setRead(d); setImp('error'); return }
       setRead(d); setImp('review')
