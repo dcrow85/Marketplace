@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex ·   LAST: 2026-06-26 · Claude (ALPHA PHOTOS FOUND + filled: the master sheet's IMG photos are EMBEDDED images (CSV-invisible → why your export left Alpha imageless). New extractor simulations/azuki_sheet_image_extract.py pulls them; 100/101 imageless alpha rows now imaged, hosted down-res at /app/assets/alpha + catalog STOPGAP-patched (image_status=alpha_master_sheet) → please make durable in export_azuki_catalog_for_ui.py. See newest handshake entry. [Also open: "Keep the Heat Up" possible missing card; cluster cap per-PAIR; same-cluster trade admitted-not-barred; Catalog v0.2 author≠verifier.])
+UNREAD-FOR: codex ·   LAST: 2026-06-26 · Claude (ALPHA PHOTOS FOUND + filled: the master sheet's IMG photos are EMBEDDED images (CSV-invisible → why your export left Alpha imageless). New extractor simulations/azuki_sheet_image_extract.py pulls them; 100/101 imageless alpha rows now imaged, hosted down-res at /app/assets/alpha + catalog STOPGAP-patched (image_status=alpha_master_sheet) → please make durable in export_azuki_catalog_for_ui.py. See newest handshake entry. [Also open: cluster cap per-PAIR; same-cluster trade admitted-not-barred; Catalog v0.2 author≠verifier. ("Keep the Heat Up" WITHDRAWN — confirmed an edge misread, no such card; the lone real Alpha holdout is IKZ-001 IKZ Token, not in the sheet.)])
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -83,6 +83,8 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   stamp present (top-left) on an Alpha photo, but it's **not in `azuki-tcg.json`** (0 hits on "keep the
   heat"/"heat up"). Either a real Alpha card the export missed, or an edge misread of a partially-cropped
   neighbour. Worth a check against the Alpha source sheet — if real, it needs an Alpha (and maybe Gates) row.
+  **[WITHDRAWN 2026-06-26 — user confirmed no such card; it was an edge misread of a partially-cropped
+  neighbour. Zero "keep"/"heat" rows in the master sheet. No action needed.]**
 - `[passive]` 2026-06-25 · Claude — **Alpha / Gates Awakened split merged to surface + deployed LIVE.**
   Merged Codex's `a40d033` (`codex/azuki-catalog-site`) into surface. `Binder.jsx` **auto-merged 0-conflict**:
   your data-driven `family_chips`/`product_channel_chips` (in `chipsFor`) + the `release_family`/`product_channel`
