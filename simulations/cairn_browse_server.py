@@ -43,8 +43,10 @@ STATIC_DIR = MOCKUPS  # overridable via --static-dir (e.g. the built web/dist in
 import sys
 sys.path.insert(0, str(ROOT / "simulations"))
 from cairn_browse import browse, ENDPOINT  # noqa: E402  (reuse the proven loop)
+from cairn_vision import read_photo  # noqa: E402  (photo-import vision read)
 
 MAX_CALL_CHARS = 280
+MAX_READ_BYTES = 12 * 1024 * 1024  # /api/read accepts a down-res'd image (base64)
 _MODEL_LOCK = threading.Lock()  # single-flight: serialize calls to the one local model
 
 # Cloud-deploy config (all env-gated; unset = current local behavior).
@@ -126,23 +128,33 @@ class BrowseHandler(SimpleHTTPRequestHandler):
     def do_POST(self) -> None:
         if not self._authorized():
             return
-        if self.path != "/api/browse":
+        if self.path == "/api/browse":
+            self._post_browse()
+        elif self.path == "/api/read":
+            self._post_read()
+        else:
             self.send_error(404, "Unknown endpoint")
-            return
+
+    def _body(self, max_bytes: int):
         try:
             length = int(self.headers.get("Content-Length", "0"))
         except ValueError:
             length = 0
-        if length <= 0 or length > 4096:
+        if length <= 0 or length > max_bytes:
             self.send_json({"error": "bad_request"}, status=400)
-            return
+            return None
         try:
-            payload = json.loads(self.rfile.read(length).decode("utf-8"))
-            call = str(payload.get("call", "")).strip()[:MAX_CALL_CHARS]
-            catalog = str(payload.get("catalog", "")).strip() or None
+            return json.loads(self.rfile.read(length).decode("utf-8"))
         except (json.JSONDecodeError, UnicodeDecodeError):
             self.send_json({"error": "bad_json"}, status=400)
+            return None
+
+    def _post_browse(self) -> None:
+        payload = self._body(4096)
+        if payload is None:
             return
+        call = str(payload.get("call", "")).strip()[:MAX_CALL_CHARS]
+        catalog = str(payload.get("catalog", "")).strip() or None
         if not call:
             self.send_json({"error": "empty_call"}, status=400)
             return
@@ -157,6 +169,23 @@ class BrowseHandler(SimpleHTTPRequestHandler):
                 result = browse(call, catalog=catalog)  # hosted endpoint scales; allow concurrent visitors
         except Exception as exc:  # noqa: BLE001 — never leak a stack trace to the demo
             self.send_json({"error": "browse_failed", "detail": type(exc).__name__}, status=502)
+            return
+        self.send_json(result)
+
+    def _post_read(self) -> None:
+        """Photo-import vision read: {image: <data-uri>, expect: {name,num,release}} -> structured read."""
+        payload = self._body(MAX_READ_BYTES)
+        if payload is None:
+            return
+        image = str(payload.get("image", ""))
+        expect = payload.get("expect") if isinstance(payload.get("expect"), dict) else None
+        if not image.startswith("data:image"):
+            self.send_json({"error": "bad_image"}, status=400)
+            return
+        try:
+            result = read_photo(image, expect)  # hosted vision endpoint; concurrent OK
+        except Exception as exc:  # noqa: BLE001 — never leak a stack trace
+            self.send_json({"error": "read_failed", "detail": type(exc).__name__}, status=502)
             return
         self.send_json(result)
 

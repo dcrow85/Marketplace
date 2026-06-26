@@ -163,9 +163,29 @@ function Frow({ label, children }) {
   return <label className="frow"><span className="flabel">{label}</span><span className="fbody">{children}</span></label>
 }
 
+// Down-res a chosen photo to a data URI before upload — smaller payload, faster read,
+// and (per CE9) the import path never hands the public a forger-grade full-res scan.
+function downscale(file, max = 1000) {
+  return new Promise((resolve, reject) => {
+    const img = new Image()
+    img.onload = () => {
+      const s = Math.min(1, max / Math.max(img.width, img.height))
+      const cv = document.createElement('canvas')
+      cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s)
+      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
+      URL.revokeObjectURL(img.src)
+      resolve(cv.toDataURL('image/jpeg', 0.85))
+    }
+    img.onerror = reject
+    img.src = URL.createObjectURL(file)
+  })
+}
+
 function CardModal({ uid, data, setById, store, setStance, setField, agentName, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
-  const [imp, setImp] = useState('idle')   // MOCK photo-import flow: idle -> review -> added
+  const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
+  const [photo, setPhoto] = useState(null) // the user's down-res'd upload (data URI)
+  const [read, setRead] = useState(null)   // the vision agent's read of it
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') { if (zoom) setZoom(false); else onClose() } }
     document.addEventListener('keydown', onKey)
@@ -183,7 +203,20 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
   const issues = c.issues || []
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
-  const shownImg = c.image || (imp !== 'idle' ? import.meta.env.BASE_URL + 'sample-alpha.jpg' : null)
+  const shownImg = c.image || photo
+  const onPhoto = async (file) => {
+    if (!file) return
+    let dataUri
+    try { dataUri = await downscale(file) } catch { setRead({ error: 'bad_image' }); setImp('error'); return }
+    setPhoto(dataUri); setRead(null); setImp('reading')
+    try {
+      const expect = { name: c.name_en || nm(c), num: c.num, release: c.release_family }
+      const r = await fetch(API_BASE + '/api/read', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ image: dataUri, expect }) })
+      const d = await r.json()
+      if (!r.ok || d.error) { setRead(d); setImp('error'); return }
+      setRead(d); setImp('review')
+    } catch (err) { setRead({ error: String(err) }); setImp('error') }
+  }
   return (
     <>
     <div className="modal" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
@@ -193,33 +226,50 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
           <div className="mleft">
             <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
               {shownImg
-                ? <img src={shownImg} className={'zoomable' + (imp === 'review' ? ' pending' : '')} alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, shownImg)} />
+                ? <img src={shownImg} className={'zoomable' + (imp === 'reading' || imp === 'review' ? ' pending' : '')} alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, shownImg)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
               {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
               {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
               {imp === 'added' && <span className="contribbadge">collector photo · witness, not proof</span>}
             </div>
             {import.meta.env.DEV && !c.image && imp === 'idle' && (
-              <button className="addphoto" onClick={() => setImp('review')}>
+              <label className="addphoto">
                 <span className="apt">＋ Add your photo</span>
-                <span className="aps">no official pic exists — yours becomes the catalog's first</span>
-              </button>
+                <span className="aps">no official pic yet — yours becomes the catalog's first</span>
+                <input type="file" accept="image/*" capture="environment" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} />
+              </label>
             )}
-            {!c.image && imp === 'review' && (
+            {!c.image && imp === 'reading' && (
               <div className="imprev">
-                <div className="imhd"><span className="ek2 agent">{agentName} read your photo</span><span className="imtag">judged</span></div>
-                <div className="imrow"><span className="ick">✓</span> Matches <b>{nm(c)}</b> · {c.num}</div>
-                <div className="imrow"><span className="ick">✓</span> Alpha <span className="agly">α</span> stamp detected <span className="imdim">· top-right corner</span></div>
-                <div className="imrow"><span className="ick">✓</span> Reads as the <b>Alpha</b> print <span className="imdim">(stamp + exact name)</span></div>
-                <div className="imcav">A collector's photo of one physical card — a witness, not proof of authenticity or condition.</div>
+                <div className="imhd"><span className="ek2 agent">{agentName} is reading your photo…</span></div>
+                <div className="imrow imdim">checking the card, the number, the α stamp…</div>
+              </div>
+            )}
+            {!c.image && imp === 'review' && read && (
+              <div className="imprev">
+                <div className="imhd"><span className="ek2 agent">{agentName}&rsquo;s read</span><span className="imtag">judged</span></div>
+                {read.matches_expected
+                  ? <div className="imrow"><span className="ick">✓</span> Matches <b>{nm(c)}</b> · {c.num}</div>
+                  : <div className="imrow"><span className="iwarn">⚠</span> Doesn&rsquo;t look like <b>{nm(c)}</b>{read.name_read ? <> — reads as <b>{read.name_read}</b></> : null}</div>}
+                {read.alpha_stamp === 'present'
+                  ? <div className="imrow"><span className="ick">✓</span> Alpha <span className="agly">α</span> stamp detected{read.alpha_where ? <span className="imdim"> · {read.alpha_where}</span> : null}</div>
+                  : <div className="imrow"><span className="iwarn">⚠</span> No <span className="agly">α</span> stamp seen{c.release_family === 'alpha' ? <span className="imdim"> — expected on an Alpha print</span> : null}</div>}
+                {(read.red_flags || []).map((f, i) => <div className="imrow imflag" key={i}>⚑ {f}</div>)}
+                <div className="imcav">A collector&rsquo;s photo of one physical card — a witness, not proof of authenticity or condition.</div>
                 <div className="imact">
-                  <button className="btn-add" onClick={() => setImp('added')}>Looks right — add it</button>
-                  <button className="btn-no" onClick={() => setImp('idle')}>Not my card</button>
+                  <button className="btn-add" onClick={() => setImp('added')}>{read.matches_expected ? 'Looks right — add it' : 'Add it anyway'}</button>
+                  <label className="btn-no">Try another<input type="file" accept="image/*" capture="environment" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} /></label>
                 </div>
               </div>
             )}
+            {!c.image && imp === 'error' && (
+              <div className="imprev">
+                <div className="imrow imflag">⚑ Couldn&rsquo;t read that photo{read && read.error ? <span className="imdim"> ({read.error})</span> : null}.</div>
+                <div className="imact"><label className="btn-no">Try another<input type="file" accept="image/*" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} /></label></div>
+              </div>
+            )}
             {!c.image && imp === 'added' && (
-              <div className="contribnote">Added as <b>your</b> collector photo — recorded to your wallet, shown to everyone with the badge.</div>
+              <div className="contribnote">Added as <b>your</b> collector photo. <span className="imdim">(Saved to your view for now — shared, recorded storage is the next step.)</span></div>
             )}
           </div>
           <div className="mright">
