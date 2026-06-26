@@ -76,3 +76,10 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .placeholder b { color: var(--ink); }
 
 @media (max-width: 640px) { .nav, .main { padding-left: 20px; padding-right: 20px; } }
+/* phones: keep the nav to one line — the avatar carries identity, drop the handle text */
+@media (max-width: 560px) {
+  .navr { gap: 10px; }
+  .chip { padding: 6px 7px; }
+  .chip .handle { display: none; }
+  .main h1 { font-size: 26px; }
+}

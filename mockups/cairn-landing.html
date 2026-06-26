@@ -176,6 +176,11 @@
     .trich{grid-template-columns:1fr;gap:20px}
     .two{grid-template-columns:1fr;gap:22px}
   }
+  /* phones: collapse the nav to wordmark + the primary CTA + theme toggle (the rest is one scroll away) */
+  @media(max-width:640px){
+    .navr{gap:16px}
+    .navr a:not(.go){display:none}
+  }
 </style>
 <script>(function(){try{var t=localStorage.getItem('cairn-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>

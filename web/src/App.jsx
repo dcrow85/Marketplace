@@ -104,7 +104,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
       <nav className="nav">
         <Wordmark />
         <div className="navr mono">
-          <span className="chip"><Avatar seed={accountId} size={18} /> {handleFor(accountId)}</span>
+          <span className="chip"><Avatar seed={accountId} size={18} /> <span className="handle">{handleFor(accountId)}</span></span>
           <ThemeToggle />
           <button className="ghost sm" onClick={onSignOut}>sign out</button>
         </div>
