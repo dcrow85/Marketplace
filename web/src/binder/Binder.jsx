@@ -4,9 +4,11 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 // the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
 // and under a '/app/' base path on the deployed site.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
-// Photo-import shows in dev, or on prod via ?upload (a preview flag) — until persistent,
-// shared storage (R2 + the Catalog-Evidence record) lands and it goes fully live.
-const IMPORT_ON = import.meta.env.DEV || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('upload'))
+// Photo-entry is the primary path (collectors add cards by photo), so it's on for
+// everyone — not hidden behind a flag. The agent read is live; a confirmed photo is
+// session-only until persistent shared storage (R2 + the Catalog-Evidence record)
+// lands, and the modal note says so. Flip to false to hide the whole flow.
+const IMPORT_ON = true
 const DEFAULT_CATALOG = { id: 'japanese-pre-english', path: 'catalog-sample.json', title: 'Japanese pre-English catalog' }
 const catalogUrl = (catalog) => import.meta.env.BASE_URL + (catalog?.path || DEFAULT_CATALOG.path)
 
