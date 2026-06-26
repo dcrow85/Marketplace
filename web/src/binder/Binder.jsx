@@ -377,19 +377,12 @@ function AgentBar({ agentName, busy, res, onAsk, placeholder }) {
   )
 }
 
-function chipsFor(data) {
-  const cats = data?.ui?.category_chips || ['Pokemon', 'Trainer', 'Energy']
-  const elements = data?.ui?.element_chips || []
-  const channels = data?.ui?.product_channel_chips || []
-  const holoLabel = data?.ui?.holo_label || 'Holo'
+// Stance lives in chips; Product / Type / Element are collapsed into dropdowns (see render).
+function chipsFor() {
   return [
     { l: 'All', g: 'all' },
-    { l: 'Have', g: 'stance', v: 'have' }, { l: 'Want', g: 'stance', v: 'want', acc: 1 },
-    ...(channels.length ? [{ sep: 1 }, ...channels.map((ch) => ({ l: ch.label, g: 'channel', v: ch.value }))] : []),
-    { sep: 1 },
-    ...cats.map((c) => ({ l: c, g: 'cat', v: c })),
-    ...(elements.length ? [{ sep: 1 }, ...elements.map((e) => ({ l: e, g: 'element', v: e }))] : []),
-    { sep: 1 }, { l: holoLabel, g: 'holo' },
+    { l: 'Have', g: 'stance', v: 'have' },
+    { l: 'Want', g: 'stance', v: 'want', acc: 1 },
   ]
 }
 
@@ -514,7 +507,10 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   }, [data, q, stanceF, familyF, channelF, catF, elementF, holoOnly, store, setById, agentRes, agentActive, pickSet])
 
   const grouped = !q.trim() && !agentActive
-  const CHIPS = useMemo(() => chipsFor(data), [data])
+  const CHIPS = useMemo(() => chipsFor(), [])
+  const CHANNELS = useMemo(() => data?.ui?.product_channel_chips || [], [data])
+  const CATS = useMemo(() => data?.ui?.category_chips || [], [data])
+  const ELEMENTS = useMemo(() => data?.ui?.element_chips || [], [data])
   const FAMILIES = useMemo(() => data?.ui?.family_chips || [], [data])
   // Open on the release family with the most card art, so AZUKI lands on Gates Awakened rather than
   // Alpha's master-sheet-only rows (which have no individual photo). User can switch to All / Alpha freely.
@@ -582,11 +578,30 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           </button>
         </div>
         <div className="chips">
-          {CHIPS.map((ch, i) => ch.sep ? <span key={i} className="sep" /> : (
+          {CHIPS.map((ch, i) => (
             <button key={i} className={'chip' + (chipOn(ch) ? ' on' : '') + (chipOn(ch) && ch.acc ? ' acc' : '')} onClick={() => toggleChip(ch)}>
               {ch.l}{ch.g === 'stance' ? <span className="ct"> {countStance(ch.v)}</span> : null}
             </button>
           ))}
+          {CHANNELS.length > 0 && (
+            <select className={'fsel' + (channelF.size ? ' on' : '')} value={[...channelF][0] || ''} onChange={(e) => setChannelF(e.target.value ? new Set([e.target.value]) : new Set())} aria-label="Product">
+              <option value="">Product</option>
+              {CHANNELS.map((ch) => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
+            </select>
+          )}
+          {CATS.length > 0 && (
+            <select className={'fsel' + (catF.size ? ' on' : '')} value={[...catF][0] || ''} onChange={(e) => setCatF(e.target.value ? new Set([e.target.value]) : new Set())} aria-label="Type">
+              <option value="">Type</option>
+              {CATS.map((c) => <option key={c} value={c}>{c}</option>)}
+            </select>
+          )}
+          {ELEMENTS.length > 0 && (
+            <select className={'fsel' + (elementF.size ? ' on' : '')} value={[...elementF][0] || ''} onChange={(e) => setElementF(e.target.value ? new Set([e.target.value]) : new Set())} aria-label="Element">
+              <option value="">Element</option>
+              {ELEMENTS.map((el) => <option key={el} value={el}>{el}</option>)}
+            </select>
+          )}
+          <button className={'chip' + (holoOnly ? ' on' : '')} onClick={() => setHoloOnly((v) => !v)}>{data.ui?.holo_label || '★ Alt art'}</button>
         </div>
       </div>
       {agentActive && (

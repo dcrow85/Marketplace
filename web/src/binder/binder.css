@@ -33,6 +33,9 @@
 .chip:hover { color: var(--ink); } .chip .ct { opacity: .6; }
 .chip.on { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .chip.on.acc { background: var(--agent); border-color: var(--agent); }
+.fsel { font-family: var(--mono); font-size: 11.5px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 999px; padding: 5px 8px 5px 12px; cursor: pointer; }
+.fsel:hover { color: var(--ink); }
+.fsel.on { color: var(--ink); border-color: var(--ink2); font-weight: 500; }
 .sep { width: 0.5px; background: var(--rule); align-self: stretch; margin: 2px 3px; }
 
 /* grid + cells */
