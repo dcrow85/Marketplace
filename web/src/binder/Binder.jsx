@@ -4,6 +4,9 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 // the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
 // and under a '/app/' base path on the deployed site.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
+// Photo-import shows in dev, or on prod via ?upload (a preview flag) — until persistent,
+// shared storage (R2 + the Catalog-Evidence record) lands and it goes fully live.
+const IMPORT_ON = import.meta.env.DEV || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('upload'))
 const DEFAULT_CATALOG = { id: 'japanese-pre-english', path: 'catalog-sample.json', title: 'Japanese pre-English catalog' }
 const catalogUrl = (catalog) => import.meta.env.BASE_URL + (catalog?.path || DEFAULT_CATALOG.path)
 
@@ -203,7 +206,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
   const issues = c.issues || []
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
-  const shownImg = c.image || photo
+  const shownImg = (imp !== 'idle' && photo) ? photo : c.image
   const onPhoto = async (file) => {
     if (!file) return
     let dataUri
@@ -232,20 +235,20 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
               {imp === 'added' && <span className="contribbadge">collector photo · witness, not proof</span>}
             </div>
-            {import.meta.env.DEV && !c.image && imp === 'idle' && (
+            {IMPORT_ON && imp === 'idle' && (
               <label className="addphoto">
                 <span className="apt">＋ Add your photo</span>
-                <span className="aps">no official pic yet — yours becomes the catalog's first</span>
+                <span className="aps">{c.image ? 'add a photo of your copy' : 'no official pic yet — yours becomes the catalog’s first'}</span>
                 <input type="file" accept="image/*" capture="environment" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} />
               </label>
             )}
-            {!c.image && imp === 'reading' && (
+            {imp === 'reading' && (
               <div className="imprev">
                 <div className="imhd"><span className="ek2 agent">{agentName} is reading your photo…</span></div>
                 <div className="imrow imdim">checking the card, the number, the α stamp…</div>
               </div>
             )}
-            {!c.image && imp === 'review' && read && (
+            {imp === 'review' && read && (
               <div className="imprev">
                 <div className="imhd"><span className="ek2 agent">{agentName}&rsquo;s read</span><span className="imtag">judged</span></div>
                 {read.matches_expected
@@ -262,13 +265,13 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 </div>
               </div>
             )}
-            {!c.image && imp === 'error' && (
+            {imp === 'error' && (
               <div className="imprev">
                 <div className="imrow imflag">⚑ Couldn&rsquo;t read that photo{read && read.error ? <span className="imdim"> ({read.error})</span> : null}.</div>
                 <div className="imact"><label className="btn-no">Try another<input type="file" accept="image/*" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} /></label></div>
               </div>
             )}
-            {!c.image && imp === 'added' && (
+            {imp === 'added' && (
               <div className="contribnote">Added as <b>your</b> collector photo. <span className="imdim">(Saved to your view for now — shared, recorded storage is the next step.)</span></div>
             )}
           </div>
