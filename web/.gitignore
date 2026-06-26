@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Alpha card photos — build artifact, regenerate: azuki_sheet_image_extract.py <sheet.xlsx> web/public/assets/alpha
+web/public/assets/alpha/
+web/public/sample-alpha.jpg

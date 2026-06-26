@@ -161,6 +161,7 @@ function Frow({ label, children }) {
 
 function CardModal({ uid, data, setById, store, setStance, setField, agentName, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
+  const [imp, setImp] = useState('idle')   // MOCK photo-import flow: idle -> review -> added
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') { if (zoom) setZoom(false); else onClose() } }
     document.addEventListener('keydown', onKey)
@@ -178,6 +179,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
   const issues = c.issues || []
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
+  const shownImg = c.image || (imp !== 'idle' ? import.meta.env.BASE_URL + 'sample-alpha.jpg' : null)
   return (
     <>
     <div className="modal" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
@@ -186,12 +188,35 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
         <div className="mcols">
           <div className="mleft">
             <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
-              {c.image
-                ? <img src={c.image} className="zoomable" alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, c.image)} />
+              {shownImg
+                ? <img src={shownImg} className={'zoomable' + (imp === 'review' ? ' pending' : '')} alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, shownImg)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
               {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
-              {c.image && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
+              {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
+              {imp === 'added' && <span className="contribbadge">collector photo · witness, not proof</span>}
             </div>
+            {import.meta.env.DEV && !c.image && imp === 'idle' && (
+              <button className="addphoto" onClick={() => setImp('review')}>
+                <span className="apt">＋ Add your photo</span>
+                <span className="aps">no official pic exists — yours becomes the catalog's first</span>
+              </button>
+            )}
+            {!c.image && imp === 'review' && (
+              <div className="imprev">
+                <div className="imhd"><span className="ek2 agent">{agentName} read your photo</span><span className="imtag">judged</span></div>
+                <div className="imrow"><span className="ick">✓</span> Matches <b>{nm(c)}</b> · {c.num}</div>
+                <div className="imrow"><span className="ick">✓</span> Alpha <span className="agly">α</span> stamp detected <span className="imdim">· top-right corner</span></div>
+                <div className="imrow"><span className="ick">✓</span> Reads as the <b>Alpha</b> print <span className="imdim">(stamp + exact name)</span></div>
+                <div className="imcav">A collector's photo of one physical card — a witness, not proof of authenticity or condition.</div>
+                <div className="imact">
+                  <button className="btn-add" onClick={() => setImp('added')}>Looks right — add it</button>
+                  <button className="btn-no" onClick={() => setImp('idle')}>Not my card</button>
+                </div>
+              </div>
+            )}
+            {!c.image && imp === 'added' && (
+              <div className="contribnote">Added as <b>your</b> collector photo — recorded to your wallet, shown to everyone with the badge.</div>
+            )}
           </div>
           <div className="mright">
             <div className="m-set mono">{[s.label, s.code, s.date].filter(Boolean).join('  ·  ')}</div>
@@ -290,10 +315,10 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
         </div>
       </div>
     </div>
-    {zoom && c.image && (
+    {zoom && shownImg && (
       <div className="lightbox" onClick={() => setZoom(false)}>
         <button className="lbx" onClick={() => setZoom(false)} aria-label="close full screen">✕</button>
-        <img src={c.image} alt={nm(c)} onClick={(ev) => ev.stopPropagation()} onError={(ev) => retryImg(ev, c.image)} />
+        <img src={shownImg} alt={nm(c)} onClick={(ev) => ev.stopPropagation()} onError={(ev) => retryImg(ev, shownImg)} />
       </div>
     )}
     </>
@@ -572,7 +597,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
-      {selected && <CardModal uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} onClose={() => setSelected(null)} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} onClose={() => setSelected(null)} />}
     </>
   )
 }

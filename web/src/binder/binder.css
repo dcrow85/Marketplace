@@ -125,6 +125,28 @@ section { padding: 14px 0 70px; }
 .lightbox img { max-width: 94vw; max-height: 94vh; object-fit: contain; border-radius: 4px; box-shadow: 0 12px 48px rgba(0,0,0,.5); cursor: default; }
 .lbx { position: fixed; top: 18px; right: 22px; z-index: 201; width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; font-size: 16px; color: #fff; background: rgba(255,255,255,.14); }
 .lbx:hover { background: rgba(255,255,255,.24); }
+/* MOCK photo-import flow on imageless cards */
+.contribbadge { position: absolute; bottom: 6px; left: 6px; z-index: 3; font-family: var(--mono); font-size: 7px; letter-spacing: .05em; text-transform: uppercase; padding: 3px 6px; border-radius: 3px; background: rgba(20,18,14,.72); color: var(--paper); }
+.mcard img.pending { opacity: .82; }
+.addphoto { display: flex; flex-direction: column; gap: 3px; width: 100%; margin-top: 10px; padding: 11px 12px; border: 0.75px dashed var(--agent); border-radius: 8px; background: var(--agent-bg); color: var(--agent); cursor: pointer; text-align: left; }
+.addphoto:hover { background: rgba(44,91,140,.13); }
+.addphoto .apt { font-family: var(--mono); font-size: 12.5px; font-weight: 600; }
+.addphoto .aps { font-size: 11px; color: var(--dim); }
+.imprev { margin-top: 10px; border: 0.5px solid var(--agent); border-radius: 8px; padding: 11px 12px; background: var(--paper); }
+.imhd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.imtag { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .05em; color: var(--agent); border: 0.5px solid var(--agent); border-radius: 3px; padding: 1px 5px; }
+.imrow { font-size: 12.5px; color: var(--ink2); line-height: 1.7; }
+.imrow b { color: var(--ink); }
+.ick { color: var(--have); font-weight: 700; margin-right: 5px; }
+.agly { font-weight: 700; color: var(--ink); }
+.imdim { color: var(--dim); }
+.imcav { margin: 9px 0 11px; font-size: 11.5px; line-height: 1.5; color: var(--dim); border-left: 2px solid var(--rule); padding-left: 9px; }
+.imact { display: flex; gap: 8px; }
+.btn-add { flex: 1; font-family: var(--mono); font-size: 12px; padding: 8px 10px; border: 0; border-radius: 7px; background: var(--have); color: #fff; cursor: pointer; }
+.btn-no { font-family: var(--mono); font-size: 12px; padding: 8px 12px; border: 0.5px solid var(--rule); border-radius: 7px; background: transparent; color: var(--dim); cursor: pointer; }
+.btn-no:hover { color: var(--ink); }
+.contribnote { margin-top: 10px; font-size: 11.5px; line-height: 1.5; color: var(--ink2); background: rgba(62,125,82,.09); border: 0.5px solid rgba(62,125,82,.4); border-radius: 7px; padding: 9px 11px; }
+.contribnote b { color: var(--have); }
 .mcard .noimg { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; padding: 14px; }
 .mcard .noimg .ja { font-size: 17px; line-height: 1.16; color: var(--ink); font-weight: 500; overflow-wrap: anywhere; }
 .mcard .noimg .nn { font-family: var(--mono); font-size: 9.5px; color: var(--dim); }
