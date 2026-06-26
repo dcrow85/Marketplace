@@ -25,7 +25,7 @@
 .aoff { font-size: 13px; color: var(--dim); padding: 4px 0; }
 
 /* controls */
-.controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 0; position: sticky; top: 60px; z-index: 20; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--rule2); }
+.controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 0; position: sticky; top: 60px; z-index: 20; background: var(--bar); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--rule2); }
 .search { flex: 1; min-width: 180px; border: 0.5px solid var(--rule); border-radius: 6px; padding: 7px 11px; }
 .search input { width: 100%; border: 0; background: transparent; color: var(--ink); font-family: var(--mono); font-size: 12.5px; outline: none; }
 .chips { display: flex; gap: 7px; flex-wrap: wrap; }

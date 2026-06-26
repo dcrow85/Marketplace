@@ -29,6 +29,22 @@ function catalogFromUrl() {
   return CATALOGS.find((c) => c.id === wanted) || CATALOGS[0]
 }
 
+function toggleTheme() {
+  const h = document.documentElement
+  const next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+  h.setAttribute('data-theme', next)
+  try { localStorage.setItem('cairn-theme', next) } catch { /* ignore */ }
+}
+
+function ThemeToggle() {
+  return (
+    <button className="themebtn" onClick={toggleTheme} aria-label="Toggle dark mode" title="Toggle theme">
+      <svg className="moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z" /></svg>
+      <svg className="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3" /><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2" /></svg>
+    </button>
+  )
+}
+
 function Wordmark({ big }) {
   return (
     <span className={'wm' + (big ? ' big' : '')}>
@@ -89,6 +105,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
         <Wordmark />
         <div className="navr mono">
           <span className="chip"><Avatar seed={accountId} size={18} /> {handleFor(accountId)}</span>
+          <ThemeToggle />
           <button className="ghost sm" onClick={onSignOut}>sign out</button>
         </div>
       </nav>
