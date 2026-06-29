@@ -136,6 +136,24 @@ G5.1 non-party arbiter).
 The full `MarketplaceEscrow` (4-contract spine, adversarial gates) is the **Stage 3+
 graduation target**, not the pilot vehicle.
 
+## Deployment status (Stage 1 — Arbitrum Sepolia)
+- **Contract built (Codex):** `chain/src/ThinPilotEscrow.sol` + `chain/test/ThinPilotEscrow.t.sol`
+  — **`forge test` 113/113 green**. Reviewed (Claude): matches this interface and carries all
+  four GPTPRO repairs (A1 cap, C-02 buyer-only `confirmReceived`, C-03 `settleByTimeout`→seller,
+  G5.1 non-party arbiter) + reentrancy guards + return-custody-gated refunds. ABI for surface
+  wiring: **`chain/abi/ThinPilotEscrow.json`**.
+- **Constructor:** `constructor(usdc, valueCap, shippedTimeout)` — USDC token, hard value cap (A1),
+  and the shipped→inspection timeout fallback. The inspection window is per-trade (a `createTrade`
+  arg). In `resolve`, `splitBps` = the **buyer-refund** bps for a SPLIT outcome.
+- **Stage-1 config:** USDC = Circle Arbitrum Sepolia test token
+  `0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d`; RPC `https://sepolia-rollup.arbitrum.io/rpc`
+  (chain id `421614`); conservative pilot cap (e.g. 200 USDC = `200000000`, USDC has 6 decimals) and
+  a shipped-timeout long enough for a real handoff (e.g. 14 days = `1209600`).
+- **DEPLOY — Crowley's step (a funded Sepolia signer; neither agent holds a key):** fund a deployer
+  with Arbitrum Sepolia ETH from a faucet, then from `chain/`:
+  `forge create src/ThinPilotEscrow.sol:ThinPilotEscrow --rpc-url https://sepolia-rollup.arbitrum.io/rpc --private-key "$PRIVATE_KEY" --constructor-args 0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d 200000000 1209600`
+  Then publish the deployed address (and Stage-2 will redo this on Arbitrum One with real USDC).
+
 ## Built vs to-build
 **Have:** catalog + binder + browse (Ledger); photo import + vision read + high-res
 capture; Privy auth/wallets; the no-overclaim discipline + the Glance.
