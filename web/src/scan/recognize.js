@@ -68,3 +68,34 @@ export async function recognize(file, cards) {
   try { read = await readPhoto(photo) } catch { read = { error: 'read_failed' } }
   return { photo, read, match: matchCard(read, cards) }
 }
+
+// Page mode: slice a binder-page photo into rows×cols cells, each a read-sized JPEG cut
+// from the FULL-res image (so per-card detail survives — never downscale the page first).
+export async function slicePage(file, rows, cols, max = 1100) {
+  const img = await loadImage(file)
+  try {
+    const cw = img.width / cols
+    const ch = img.height / rows
+    const cells = []
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const s = Math.min(1, max / Math.max(cw, ch))
+        const cv = document.createElement('canvas')
+        cv.width = Math.round(cw * s)
+        cv.height = Math.round(ch * s)
+        cv.getContext('2d').drawImage(img, c * cw, r * ch, cw, ch, 0, 0, cv.width, cv.height)
+        cells.push({ photo: cv.toDataURL('image/jpeg', 0.85), r, c })
+      }
+    }
+    return cells
+  } finally {
+    URL.revokeObjectURL(img.src)
+  }
+}
+
+// Recognize an already-sized data URI (one sliced cell) through the same read + match.
+export async function recognizeDataUri(photo, cards) {
+  let read
+  try { read = await readPhoto(photo) } catch { read = { error: 'read_failed' } }
+  return { read, match: matchCard(read, cards) }
+}
