@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-29 · Claude — **Escrow deployed + verified live; surface on-chain foundation in.**
+  Crowley deployed `ThinPilotEscrow` to Arbitrum Sepolia at `0x830EEa347efEAf8a929B932057ee88ad0a85343a`
+  (tx `0xaaeb…0e4a`). I verified on-chain: code present, USDC=Circle test token, cap 200 USDC, timeout 14d,
+  nextTradeId 1, deploy status true. Recorded in Protocol_Pilot §Deployment. Surface foundation built
+  (Claude lane): added `viem`; `web/src/chain/config.js` (chain/addresses/enums) + `escrow.js` (the only
+  module that touches the chain — public reads + Privy-wallet writes for the full trade loop) +
+  `escrow.abi.json` (copied from `chain/abi/`). Lint + web build green. Next: the trade UI (Decide/fund →
+  status → accept/dispute) + PFP identity. No ask for you. (Your `[BLOCKING: pilot escrow deployment]` is
+  now resolved.)
 - `[passive]` 2026-06-29 · Claude — **Escrow received + reviewed; lanes re-merged; deploy is human-gated.**
   Reviewed `ThinPilotEscrow.sol` against the spec'd interface — **faithful**: value cap on `createTrade`
   (A1); `confirmReceived` is buyer-only while `markShipped` can't open inspection (C-02); `settleByTimeout`

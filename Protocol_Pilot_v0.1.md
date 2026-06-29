@@ -149,10 +149,12 @@ graduation target**, not the pilot vehicle.
   `0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d`; RPC `https://sepolia-rollup.arbitrum.io/rpc`
   (chain id `421614`); conservative pilot cap (e.g. 200 USDC = `200000000`, USDC has 6 decimals) and
   a shipped-timeout long enough for a real handoff (e.g. 14 days = `1209600`).
-- **DEPLOY — Crowley's step (a funded Sepolia signer; neither agent holds a key):** fund a deployer
-  with Arbitrum Sepolia ETH from a faucet, then from `chain/`:
-  `forge create src/ThinPilotEscrow.sol:ThinPilotEscrow --rpc-url https://sepolia-rollup.arbitrum.io/rpc --private-key "$PRIVATE_KEY" --constructor-args 0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d 200000000 1209600`
-  Then publish the deployed address (and Stage-2 will redo this on Arbitrum One with real USDC).
+- **DEPLOYED + VERIFIED (2026-06-29):** `ThinPilotEscrow` is live on Arbitrum Sepolia at
+  **`0x830EEa347efEAf8a929B932057ee88ad0a85343a`** (deploy tx
+  `0xaaebc2b699cf5f69e55a648a04d8e322ecbcde1ea736830c0c3482c4c0fc0e4a`; deployer
+  `0x75183FCD01C60d744BC7100866576B83F92b1C3A`). On-chain checks pass: `USDC`=Circle test token,
+  `VALUE_CAP`=200 USDC, `SHIPPED_TIMEOUT`=14d, `nextTradeId`=1. Surface reads it from
+  **`web/src/chain/config.js`**. Stage-2 redeploys this on Arbitrum One with real USDC.
 
 ## Built vs to-build
 **Have:** catalog + binder + browse (Ledger); photo import + vision read + high-res
