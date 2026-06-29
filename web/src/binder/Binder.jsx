@@ -431,25 +431,7 @@ function AgentPanel({ res, agentName }) {
   )
 }
 
-function AgentBar({ agentName, busy, res, onAsk, placeholder }) {
-  const [call, setCall] = useState('')
-  const ask = () => { const c = call.trim(); if (c && !busy) onAsk(c) }
-  return (
-    <div className="agentbar">
-      <div className="acall">
-        <span className="ek2 agent">Ask {agentName}</span>
-        <div className="ainput">
-          <input value={call} maxLength={280} placeholder={placeholder || 'holos I’m missing that won’t break the bank…'}
-            onChange={(e) => setCall(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
-          <button onClick={ask} disabled={busy}>{busy ? '…' : 'browse'}</button>
-        </div>
-      </div>
-      {res && <AgentPanel res={res} agentName={agentName} />}
-    </div>
-  )
-}
-
-// Stance lives in chips; Product / Type / Element are collapsed into dropdowns (see render).
+// Stance lives in chips; Product / Type / Element are collapsed into the filters sheet (see render).
 function chipsFor() {
   return [
     { l: 'All', g: 'all' },
@@ -463,6 +445,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [err, setErr] = useState('')
   const [store, setStore] = useState({})
   const [q, setQ] = useState('')
+  const [query, setQuery] = useState('') // the unified search/ask input text
   const [stanceF, setStanceF] = useState(() => new Set())
   const [familyF, setFamilyF] = useState(() => new Set())
   const [channelF, setChannelF] = useState(() => new Set())
@@ -473,6 +456,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [agentBusy, setAgentBusy] = useState(false)
   const [selected, setSelected] = useState(null)
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
+  const [filtersOpen, setFiltersOpen] = useState(false)
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'standard' } catch { return 'standard' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
@@ -509,13 +493,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   // Show your scanned photos as the card image. Load lazily for scanned uids; reset on
   // catalog/account switch. (commitScans seeds fresh ones directly so they appear at once.)
-  useEffect(() => { setUserPhotos({}) }, [storeKey])
+  useEffect(() => { setUserPhotos({}) /* eslint-disable-line react-hooks/set-state-in-effect -- reset photos on catalog/account switch */ }, [storeKey])
   useEffect(() => {
     let live = true
     const want = Object.keys(store).filter((uid) => store[uid]?.scanned && !(uid in userPhotos))
     if (!want.length) return undefined
     Promise.all(want.map((uid) => getPhoto(`${storeKey}:${uid}`).then((p) => [uid, p || null]).catch(() => [uid, null])))
-      /* eslint-disable-next-line react-hooks/set-state-in-effect -- async hydrate of stored photos */
       .then((entries) => { if (live) setUserPhotos((prev) => ({ ...prev, ...Object.fromEntries(entries) })) })
     return () => { live = false }
   }, [store, storeKey, userPhotos])
@@ -643,6 +626,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
 
+  const refineCount = channelF.size + catF.size + elementF.size + (holoOnly ? 1 : 0)
+  // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
+  const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ('') } }
   const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
@@ -655,27 +641,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         <span><b>{data.summary.cards}</b> in catalog</span>
         <button className="scanbtn" onClick={() => setScanning(true)}>＋ Scan cards</button>
       </div>
-      <AgentBar agentName={agentName} busy={agentBusy} res={agentRes} onAsk={askAgent} placeholder={data.ui?.agent_placeholder} />
-      {FAMILIES.length > 0 && (
-        <div className="releasebar">
-          <span className="rlabel">Release</span>
-          <div className="famtoggle" role="group" aria-label="release family">
-            <button className={'fb' + (!familyF.size ? ' on' : '')} onClick={() => setFamilyF(new Set())}>All</button>
-            {FAMILIES.map((f) => (
-              <button key={f.value} className={'fb' + (familyF.has(f.value) ? ' on' : '')} onClick={() => setFamilyF(new Set([f.value]))}>{f.label}</button>
-            ))}
-          </div>
-        </div>
-      )}
       <div className="controls">
-        <div className="search"><input value={q} placeholder="search name or number…" onChange={(e) => setQ(e.target.value)} /></div>
-        <div className="viewtoggle" role="group" aria-label="card size">
-          <button className={'vb' + (view === 'standard' ? ' on' : '')} onClick={() => chooseView('standard')} title="Standard — more cards" aria-label="Standard view">
-            <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="3.5" height="3.5" rx=".7"/><rect x="6.25" y="1" width="3.5" height="3.5" rx=".7"/><rect x="11.5" y="1" width="3.5" height="3.5" rx=".7"/><rect x="1" y="6.25" width="3.5" height="3.5" rx=".7"/><rect x="6.25" y="6.25" width="3.5" height="3.5" rx=".7"/><rect x="11.5" y="6.25" width="3.5" height="3.5" rx=".7"/><rect x="1" y="11.5" width="3.5" height="3.5" rx=".7"/><rect x="6.25" y="11.5" width="3.5" height="3.5" rx=".7"/><rect x="11.5" y="11.5" width="3.5" height="3.5" rx=".7"/></svg>
-          </button>
-          <button className={'vb' + (view === 'gallery' ? ' on' : '')} onClick={() => chooseView('gallery')} title="Gallery — bigger art" aria-label="Gallery view">
-            <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
-          </button>
+        <div className="askbar">
+          <input value={query} maxLength={280} placeholder={`Search or ask ${agentName}…`}
+            onChange={(e) => { const v = e.target.value; setQuery(v); if (agentRes) clearAgent(); setQ(v) }}
+            onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
+          <button className="askbtn" onClick={ask} disabled={agentBusy || !query.trim()}>{agentBusy ? '…' : `Ask ${agentName}`}</button>
         </div>
         <div className="chips">
           {CHIPS.map((ch, i) => (
@@ -683,27 +654,58 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
               {ch.l}{ch.g === 'stance' ? <span className="ct"> {countStance(ch.v)}</span> : null}
             </button>
           ))}
-          {CHANNELS.length > 0 && (
-            <select className={'fsel' + (channelF.size ? ' on' : '')} value={[...channelF][0] || ''} onChange={(e) => setChannelF(e.target.value ? new Set([e.target.value]) : new Set())} aria-label="Product">
-              <option value="">Product</option>
-              {CHANNELS.map((ch) => <option key={ch.value} value={ch.value}>{ch.label}</option>)}
-            </select>
+          {(FAMILIES.length || CHANNELS.length || CATS.length || ELEMENTS.length) > 0 && (
+            <button className={'chip filterbtn' + (refineCount ? ' on' : '')} onClick={() => setFiltersOpen(true)} aria-label="Filters">
+              ⚑ Filters{refineCount ? ` · ${refineCount}` : ''}
+            </button>
           )}
-          {CATS.length > 0 && (
-            <select className={'fsel' + (catF.size ? ' on' : '')} value={[...catF][0] || ''} onChange={(e) => setCatF(e.target.value ? new Set([e.target.value]) : new Set())} aria-label="Type">
-              <option value="">Type</option>
-              {CATS.map((c) => <option key={c} value={c}>{c}</option>)}
-            </select>
-          )}
-          {ELEMENTS.length > 0 && (
-            <select className={'fsel' + (elementF.size ? ' on' : '')} value={[...elementF][0] || ''} onChange={(e) => setElementF(e.target.value ? new Set([e.target.value]) : new Set())} aria-label="Element">
-              <option value="">Element</option>
-              {ELEMENTS.map((el) => <option key={el} value={el}>{el}</option>)}
-            </select>
-          )}
-          <button className={'chip' + (holoOnly ? ' on' : '')} onClick={() => setHoloOnly((v) => !v)}>{data.ui?.holo_label || '★ Alt art'}</button>
         </div>
       </div>
+      {agentRes && <AgentPanel res={agentRes} agentName={agentName} />}
+      {filtersOpen && (
+        <div className="fsheet-ov" onClick={() => setFiltersOpen(false)}>
+          <div className="fsheet" onClick={(e) => e.stopPropagation()}>
+            <div className="fsheet-head"><div className="ek">Filters</div><button className="sc-x" onClick={() => setFiltersOpen(false)} aria-label="Close">✕</button></div>
+            <div className="fsheet-body">
+              {FAMILIES.length > 0 && (
+                <div className="fs-group"><label>Release</label><div className="fs-opts">
+                  <button className={'fo' + (!familyF.size ? ' on' : '')} onClick={() => setFamilyF(new Set())}>All</button>
+                  {FAMILIES.map((f) => <button key={f.value} className={'fo' + (familyF.has(f.value) ? ' on' : '')} onClick={() => setFamilyF(new Set([f.value]))}>{f.label}</button>)}
+                </div></div>
+              )}
+              {CHANNELS.length > 0 && (
+                <div className="fs-group"><label>Product</label><div className="fs-opts">
+                  <button className={'fo' + (!channelF.size ? ' on' : '')} onClick={() => setChannelF(new Set())}>Any</button>
+                  {CHANNELS.map((ch) => <button key={ch.value} className={'fo' + (channelF.has(ch.value) ? ' on' : '')} onClick={() => setChannelF(channelF.has(ch.value) ? new Set() : new Set([ch.value]))}>{ch.label}</button>)}
+                </div></div>
+              )}
+              {CATS.length > 0 && (
+                <div className="fs-group"><label>Type</label><div className="fs-opts">
+                  <button className={'fo' + (!catF.size ? ' on' : '')} onClick={() => setCatF(new Set())}>Any</button>
+                  {CATS.map((c) => <button key={c} className={'fo' + (catF.has(c) ? ' on' : '')} onClick={() => setCatF(catF.has(c) ? new Set() : new Set([c]))}>{c}</button>)}
+                </div></div>
+              )}
+              {ELEMENTS.length > 0 && (
+                <div className="fs-group"><label>Element</label><div className="fs-opts">
+                  <button className={'fo' + (!elementF.size ? ' on' : '')} onClick={() => setElementF(new Set())}>Any</button>
+                  {ELEMENTS.map((el) => <button key={el} className={'fo' + (elementF.has(el) ? ' on' : '')} onClick={() => setElementF(elementF.has(el) ? new Set() : new Set([el]))}>{el}</button>)}
+                </div></div>
+              )}
+              <div className="fs-group"><label>Alt art</label><div className="fs-opts">
+                <button className={'fo' + (holoOnly ? ' on' : '')} onClick={() => setHoloOnly((v) => !v)}>{data.ui?.holo_label || '★ Alt art'}</button>
+              </div></div>
+              <div className="fs-group"><label>Card size</label><div className="fs-opts">
+                <button className={'fo' + (view === 'standard' ? ' on' : '')} onClick={() => chooseView('standard')}>Standard</button>
+                <button className={'fo' + (view === 'gallery' ? ' on' : '')} onClick={() => chooseView('gallery')}>Gallery</button>
+              </div></div>
+            </div>
+            <div className="fsheet-actions">
+              <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }}>Clear all</button>
+              <button className="fs-done" onClick={() => setFiltersOpen(false)}>Done</button>
+            </div>
+          </div>
+        </div>
+      )}
       {agentActive && (
         <div className="agentband">
           <span><b>{agentName}</b> narrowed {data.summary.cards} → <b>{agentRes.data.n_survivors}</b>{pickSet.size ? ` · ${pickSet.size} surfaced first ★` : ''}{rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>

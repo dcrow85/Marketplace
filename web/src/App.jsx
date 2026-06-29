@@ -112,37 +112,30 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           <button className="ghost sm" onClick={onSignOut}>sign out</button>
         </div>
       </nav>
+      <div className="viewnav" role="tablist" aria-label="view">
+        <button role="tab" aria-selected={view === 'collection'} className={view === 'collection' ? 'on' : ''} onClick={() => setView('collection')}>
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.2" /><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.2" /><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.2" /><rect x="9" y="9" width="5.5" height="5.5" rx="1.2" /></svg>
+          <span>Collection</span>
+        </button>
+        <button role="tab" aria-selected={view === 'trade'} className={view === 'trade' ? 'on' : ''} onClick={() => setView('trade')}>
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
+          <span>Trades</span>
+        </button>
+      </div>
       <main className="main">
-        <div className="viewtabs" aria-label="view">
-          <button className={view === 'collection' ? 'on' : ''} onClick={() => setView('collection')}>Collection</button>
-          <button className={view === 'trade' ? 'on' : ''} onClick={() => setView('trade')}>Trades</button>
-        </div>
         {view === 'collection' ? (
           <>
-            <div className="ek">Your collection</div>
-            <h1>{catalog.title}</h1>
-            <div className="catalogswitch" aria-label="catalog selection">
-              {CATALOGS.map((c) => (
-                <button
-                  key={c.id}
-                  className={'catalogtab' + (c.id === catalog.id ? ' on' : '')}
-                  onClick={() => setCatalog(c)}
-                >
-                  <span>{c.label}</span>
-                  <small>{c.note}</small>
-                </button>
-              ))}
-            </div>
-            <div className="agentline"><Avatar seed={agent} size={20} /> <b>{agent}</b> is signed in and ready.</div>
+            {CATALOGS.length > 1 && (
+              <div className="catalogpick" aria-label="catalog">
+                {CATALOGS.map((c) => (
+                  <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
+                ))}
+              </div>
+            )}
             <Binder accountId={accountId} agentName={agent} catalog={catalog} />
           </>
         ) : (
-          <>
-            <div className="ek">Trade</div>
-            <h1>Escrowed trades</h1>
-            <div className="agentline mono dim">USDC escrow on Arbitrum Sepolia · testnet pilot</div>
-            <TradePanel />
-          </>
+          <TradePanel />
         )}
       </main>
     </div>
