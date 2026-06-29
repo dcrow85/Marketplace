@@ -1,0 +1,652 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Togepi, the All Nippon Airlines / All Nippon Airways Get in a Jet! 2000 campaign phase 2 promo distributed through the September 1-October 31, 2000 airline redemption route, emphasizing ANA domestic boarding-pass stubs, special postcard mechanics, the November 10 deadline, ANA special 2000 border text, Johto-era Togepi softness, and illustrator-credit conflict rails.",
+    "in_scope": [
+      "All Nippon Airlines Get in a Jet! 2000 campaign phase 2 release dossier",
+      "Togepi unnumbered promotional row 207",
+      "ANA domestic-flight boarding-pass redemption mechanics",
+      "Media Factory postcard route",
+      "ANA special 2000 version border-text identification",
+      "Ryuta Kusumi / CR CG gangs / Naoyo Kimura illustrator-credit surface",
+      "Togepi Johto-era collector texture"
+    ],
+    "not_claiming": [
+      "complete ANA campaign archive",
+      "official print run",
+      "complete passenger or redemption record",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "final illustrator-credit adjudication beyond cited sources"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september",
+        "name_en": "All Nippon Airlines \"Get in a Jet! 2000\" campaign phase 2 (September 1-October 31, 2000)",
+        "release_date": "2000-09-01/2000-10-31",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "ANA airline travel distribution",
+          "Get in a Jet! 2000 phase 2 route",
+          "boarding-pass stub redemption",
+          "Media Factory special postcard mechanics",
+          "Togepi as Johto-era softness",
+          "artist-credit conflict kept legible"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september:207",
+            "name": "Togepi [ANA Get in a Jet! 2000 phase 2]",
+            "why": "This is a chase because a gentle Johto-era mascot is tied to a physical travel route: domestic ANA boarding-pass stubs, a special postcard, a Media Factory deadline, and campaign text that makes movement part of the card's identity.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ryuta Kusumi / CR CG gangs / Naoyo Kimura",
+            "row_count": 1,
+            "examples": [
+              "Togepi [ANA Get in a Jet! 2000 phase 2]"
+            ],
+            "why": "The artist surface matters because the ANA 2000 route is already a layered corporate/travel object. Bulbapedia attaches Ryuta Kusumi and CR CG gangs to the card, while PokeBoon lists Naoyo Kimura; an agent should keep that conflict visible instead of collapsing it into a single clean credit.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication",
+              "final illustrator-credit adjudication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete ANA campaign archive",
+          "complete passenger redemption record",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the All Nippon Airlines Get in a Jet! 2000 campaign phase 2 source group as one row containing Togepi at source index 207.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the ANA Togepi was an Unnumbered Promotional card distributed by All Nippon Airways between September 1 and October 31, 2000 through the Get in a Jet! 2000 campaign.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says passengers could redeem boarding passes for the card, with stubs affixed to special postcards and mailed to Media Factory no later than November 10, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "PokeBoon's Japanese event page says the Get in a Jet! 2000 campaign required two All Nippon Airways domestic boarding-pass stubs attached to a postcard, with phase 2 covering September 1-October 31, a November 10 deadline, and Togepi as the phase 2 present.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the bottom border text on the ANA Togepi reads ANA special 2000 version card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the ANA Togepi artwork to Ryuta Kusumi and CR CG gangs.",
+          "sources": [
+            "s2",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "PokeBoon lists the ANA Togepi illustrator as Naoyo Kimura, creating a source-surface conflict with Bulbapedia's Ryuta Kusumi / CR CG gangs credit.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the ANA Togepi as トゲピー Togepi, a Colorless-type Basic Pokemon card with 40 HP and the Run Around attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, ANA Get in a Jet! 2000 Togepi matters because the card's softness sits inside a hard route: an airline flight, boarding-pass stubs, a postcard, a deadline, and a campaign border all have to line up before the catalog identity makes sense.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete ANA campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "final illustrator-credit adjudication"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "ANA Get in a Jet! 2000 Togepi: the soft card with a hard route",
+        "why_it_matters": "The phase 2 ANA Togepi has a wonderful tension: the card is tiny, gentle, almost shy, but its identity is all route discipline. You need the September-October domestic-flight window, the two boarding-pass stubs, the special postcard, the Media Factory deadline, and the ANA special 2000 border text before the word Togepi is enough. That is exactly why this belongs in the catalog: the story is not just the character, it is the assembly that let the character arrive.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete ANA campaign archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability",
+          "final illustrator-credit adjudication"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "ana_get_in_a_jet_2000_phase2_togepi_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Togepi, ANA, All Nippon Airlines, All Nippon Airways, Get in a Jet! 2000, phase 2, September-October 2000, domestic boarding pass, Media Factory postcard, ANA special 2000, Ryuta Kusumi, CR CG gangs, Naoyo Kimura, CoroCoro Togepi, Neo Togepi, or Wizards Promo Togepi.",
+          "summary": "Identify Togepi by ANA Get in a Jet! 2000 phase 2 route, domestic boarding-pass/postcard redemption, November 10 deadline, and ANA special 2000 border text before trusting generic Togepi memory.",
+          "steps": [
+            "Confirm the object is Togepi / トゲピー and the claimed route is All Nippon Airlines / All Nippon Airways Get in a Jet! 2000 campaign phase 2, September 1-October 31, 2000.",
+            "Preserve the redemption mechanics: two domestic boarding-pass stubs attached to a special postcard and mailed to Media Factory no later than November 10, 2000.",
+            "Inspect for ANA special 2000 version card border text or equivalent readable campaign text on the card.",
+            "Separate this phase 2 Togepi from phase 1 Marill, the 1998 ANA Get in a Jet! Double Chance Campaign, ANA Everyone's Happy Campaign cards, CoroCoro June 1999 Togepi, Neo Genesis / Gold Silver to a New World Togepi, English Wizards Promo 30, Southern Islands Togepi, and generic Togepi listings.",
+            "Preserve the illustrator-credit conflict: Bulbapedia credits Ryuta Kusumi / CR CG gangs; PokeBoon lists Naoyo Kimura. Do not use any single artist label as proof of route.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, ANA/campaign border text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete ANA campaign archive",
+            "boarding-pass provenance for a specific seller copy",
+            "CoroCoro Togepi equivalence",
+            "Neo Togepi equivalence",
+            "Wizards Promo Togepi equivalence",
+            "final illustrator-credit adjudication",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september.json",
+          "title": "Local Japanese unnumbered WotC promo release row: ANA Get in a Jet! 2000 phase 2 Togepi",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Togepi_(ANA_promo)",
+          "title": "Togepi (ANA promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete ANA campaign archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://pokeboon.com/jp/promo_event/ana-jet-de-get-2000/",
+          "title": "ANA ジェットでゲットだ！2000 - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "complete campaign archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/ana_togepi_promo/",
+          "title": "Togepi Promo: ANA Get in a Jet! 2000 campaign phase 2 - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "final illustrator-credit adjudication",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Ryuta_Kusumi",
+          "title": "Category: Illus. by Ryuta Kusumi - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_CR_CG_gangs",
+          "title": "Category: Illus. by CR CG gangs - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september:207",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september:207",
+        "release_family_id": "jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september",
+        "name_en": "Togepi [ANA Get in a Jet! 2000 phase 2]",
+        "name_ja": "トゲピー",
+        "card_number": "None",
+        "rarity_signal": "ANA airline campaign unnumbered promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 207 as Togepi from the All Nippon Airlines Get in a Jet! 2000 phase 2 source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the ANA Togepi as トゲピー Togepi, a Colorless-type Basic Pokemon card with 40 HP.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places the Japanese ANA Togepi in Unnumbered Promotional cards, while the local row models it with no printed number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the ANA Togepi artwork to Ryuta Kusumi and CR CG gangs, while PokeBoon lists Naoyo Kimura for the same ANA phase 2 route.",
+          "sources": [
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.art",
+          "text": "As interpretive art context, the split Ryuta Kusumi / CR CG gangs / Naoyo Kimura credit surface is part of the identification work: this promo should be read by route, card text, and border evidence rather than artist name alone.",
+          "sources": [
+            "s2",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "cc1",
+            "cc4"
+          ],
+          "not_claiming": [
+            "official artist intent",
+            "complete art-history account",
+            "authentication",
+            "seller possession",
+            "final illustrator-credit adjudication"
+          ]
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This card must be separated from CoroCoro June 1999 Togepi, Neo Genesis / Gold Silver to a New World Togepi, English Wizards Promo 30, Southern Islands Togepi, phase 1 ANA Marill, 1998 ANA Get in a Jet cards, and ANA Everyone's Happy cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Togepi [ANA Get in a Jet! 2000 phase 2] matters because it makes a sweet Johto mascot dependent on hard evidence: date window, boarding-pass route, postcard, deadline, and campaign border text.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run",
+            "final illustrator-credit adjudication"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Togepi: the soft card with a receipt trail",
+        "why_it_matters": "Togepi is the right kind of fragile for this route. On the surface, it is a small Colorless baby Pokemon with one tiny attack. Underneath, it is a travel object: two ANA domestic boarding-pass stubs, a postcard, a Media Factory deadline, and the phrase ANA special 2000 version card holding the route on the cardboard. The card asks the agent to be gentle and strict at the same time.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete ANA campaign archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability",
+          "final illustrator-credit adjudication"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "ana_get_in_a_jet_2000_phase2_togepi_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A specific scan, listing, slab, seller story, or agent match says Togepi, トゲピー, ANA, All Nippon Airlines, All Nippon Airways, Get in a Jet! 2000, phase 2, September-October 2000, domestic boarding pass, Media Factory postcard, Ryuta Kusumi, CR CG gangs, Naoyo Kimura, CoroCoro Togepi, Neo Genesis Togepi, or Wizards Promo 30.",
+          "summary": "Match this card by exact Togepi identity plus ANA Get in a Jet! 2000 phase 2 route, ANA special 2000 border text, and domestic boarding-pass/postcard redemption before accepting it as row 207.",
+          "steps": [
+            "Confirm the card title is Togepi / トゲピー.",
+            "Confirm the source route is ANA / All Nippon Airways / All Nippon Airlines Get in a Jet! 2000 phase 2, September 1-October 31, 2000.",
+            "Look for ANA special 2000 version card border text or other readable ANA campaign text on the card.",
+            "Preserve the redemption story: two domestic boarding-pass stubs, special postcard, Media Factory, and November 10, 2000 mailing deadline.",
+            "Preserve the illustrator-credit conflict: Bulbapedia credits Ryuta Kusumi / CR CG gangs; PokeBoon lists Naoyo Kimura. Do not use art or artist label alone to claim route.",
+            "Separate this print from CoroCoro June 1999 Togepi, Neo Genesis / Gold Silver to a New World Togepi, English Wizards Promo 30, Southern Islands Togepi, ANA phase 1 Marill, ANA 1998 Get in a Jet cards, and ANA Everyone's Happy cards.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, ANA/campaign border text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "boarding-pass provenance for a specific seller copy",
+            "CoroCoro Togepi equivalence",
+            "Neo Togepi equivalence",
+            "Wizards Promo Togepi equivalence",
+            "that catalog identity makes the evidence spendable",
+            "final illustrator-credit adjudication"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_207_all_nippon_airlines_get_in_a_jet_2000_campaign_phase_2_september.json",
+          "title": "Local Japanese unnumbered WotC promo release row: ANA Get in a Jet! 2000 phase 2 Togepi",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Togepi_(ANA_promo)",
+          "title": "Togepi (ANA promo) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete ANA campaign archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://pokeboon.com/jp/promo_event/ana-jet-de-get-2000/",
+          "title": "ANA ジェットでゲットだ！2000 - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "complete campaign archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/ana_togepi_promo/",
+          "title": "Togepi Promo: ANA Get in a Jet! 2000 campaign phase 2 - PokeBoon JAPAN",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official print run",
+            "final illustrator-credit adjudication",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Ryuta_Kusumi",
+          "title": "Category: Illus. by Ryuta Kusumi - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_CR_CG_gangs",
+          "title": "Category: Illus. by CR CG gangs - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}

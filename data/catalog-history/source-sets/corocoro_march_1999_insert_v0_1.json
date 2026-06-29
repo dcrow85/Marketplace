@@ -1,0 +1,784 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the CoroCoro Comic March 1999 issue insert source slice, emphasizing February 15 1999 magazine route, Blaine/Sabrina Gym Leader ownership, the two-card insert relationship, Gym-symbol promotional addition context, and artist-lineage traps across Gym deck/expansion, CoroCoro promo, and later Wizards promo memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Blaine's Growlithe row 084",
+      "Sabrina's Abra row 085",
+      "two-card insert relationship",
+      "Gym Leader ownership identity rails",
+      "CoroCoro March 1999 route",
+      "artist-lineage/source-tension warning"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete magazine-object ledger",
+      "official copy count",
+      "complete Gym-series promo census",
+      "complete artist biography",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999",
+        "name_en": "CoroCoro Comic March 1999 issue insert (February 15, 1999)",
+        "release_date": "1999-02-15",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro magazine distribution",
+          "two-card insert relationship",
+          "Blaine and Sabrina Gym Leader ownership",
+          "Gym-symbol promotional addition",
+          "artist-lineage tension",
+          "unnumbered promo identity trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:084",
+            "name": "Blaine's Growlithe",
+            "why": "Blaine plus Growlithe gives the slice its fire-gym warmth, but the real chase is the CoroCoro two-card route rather than a normal Gym Heroes memory.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:085",
+            "name": "Sabrina's Abra",
+            "why": "Sabrina plus Abra gives the pair its psychic-gym hinge, with later Gym Challenge and Wizards Black Star memories making exact route discipline especially important.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 2,
+            "examples": [
+              "Blaine's Growlithe artist-lineage context",
+              "Sabrina's Abra Gym Challenge / Japanese print context"
+            ],
+            "why": "Sugimori is part of the official-feeling Gym Leader memory around this pair. The Sabrina's Abra page directly places Ken Sugimori on the Gym Challenge/Japanese print lineage, while the Blaine's Growlithe page also puts Sugimori in the artwork lineage. This is source-page context, not seller-card proof.",
+            "authority_label": "source_page_context_and_judged_texture",
+            "not_claiming": [
+              "single unambiguous physical-print authority for every image",
+              "complete artist biography",
+              "seller-card proof"
+            ]
+          },
+          {
+            "name": "Atsuko Nishida",
+            "row_count": 2,
+            "examples": [
+              "Blaine's Growlithe artist-lineage context",
+              "Sabrina's Abra later Wizards Black Star artwork context"
+            ],
+            "why": "Nishida is also present in the source-page artwork lineage. That matters because collectors can remember the same character-card family through different prints and artists; the agent should list the lineage and then demand exact route/image evidence before treating a card as this CoroCoro object.",
+            "authority_label": "source_page_context_and_judged_texture",
+            "not_claiming": [
+              "single unambiguous physical-print authority for every image",
+              "complete artist biography",
+              "seller-card proof"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete magazine-object ledger",
+          "official copy count",
+          "complete Gym-series promo census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release row and Bulbapedia raw source row place this CoroCoro Comic March 1999 issue insert on February 15, 1999.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The bounded source slice models two source-pinned identities: Blaine's Growlithe row 084 and Sabrina's Abra row 085.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia card-page release information describes each card as available on a two-card insert alongside the other in the March 1999 issue of CoroCoro Comic, released February 15, 1999.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The card pages expose an artist lineage involving Ken Sugimori and Atsuko Nishida across Gym print, Unnumbered Promotional print, and later Wizards/Nintendo Power memory. This dossier lists that lineage as route context and requires image/route checks instead of collapsing it into one unqualified print-authority claim.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This release matters because CoroCoro made two Gym Leader relationships collectible at once: Blaine and Growlithe as the warm fire-gym half, Sabrina and Abra as the psychic-gym half, both arriving before or beside later Gym expansion memory could swallow the route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "This source slice is not a complete CoroCoro issue archive, magazine-object ledger, copy-count authority, Gym-series promo census, image-rights grant, price source, condition source, or physical-card authentication source.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the February 15 1999 CoroCoro March issue route, two-card insert relationship, row 084/085 identity, Japanese/romaji names when source-page supported, Gym-symbol promotional-addition context, and artist-lineage trap before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "CoroCoro March 1999 insert — Blaine and Sabrina before the Gym memory hardens",
+        "why_it_matters": "This is CoroCoro doing one of its quiet little feats: taking two Gym Leader relationships and making them feel like something a reader received, not just something a set later organized. Blaine's Growlithe is warm, loyal, very human-scale fire. Sabrina's Abra is small, strange, and psychic in that early-Kanto way where a kid could feel the mystery before understanding the rules. The pair is not valuable because it is huge; it is valuable because the route is delicate. Name, Gym Leader, species, and artist memory all point toward other prints. The assembly is the magazine: February 15, 1999, March issue, two-card insert, rows 084 and 085.",
+        "not_claiming": [
+          "complete release history",
+          "complete CoroCoro issue archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: CoroCoro Comic March 1999 issue insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 084-085",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Blaine's Growlithe (Gym Heroes 35 / CoroCoro promo redirect)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Growlithe_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "resolved source-text contradiction",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Sabrina's Abra (Gym Challenge 93 / CoroCoro promo redirect)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sabrina%27s_Abra_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_march_1999_two_card_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Blaine's Growlithe, Sabrina's Abra, カツラのガーディ, ナツメのケーシィ, Katsura's Gardie, Natsume's Casey, CoroCoro March 1999, February 15 1999, two-card insert, Gym Leader promo, Gym symbol, Ken Sugimori, Atsuko Nishida, or rows 084/085.",
+          "summary": "Preserve the February 15 1999 CoroCoro March issue two-card insert route before accepting either card as this source slice.",
+          "steps": [
+            "Confirm CoroCoro Comic March 1999 issue insert context and February 15, 1999 date.",
+            "Preserve the pair relationship: Blaine's Growlithe row 084 and Sabrina's Abra row 085 were documented as a two-card insert alongside each other.",
+            "Preserve source-page Japanese/romaji names where used: カツラのガーディ / Katsura's Gardie and ナツメのケーシィ / Natsume's Casey.",
+            "Preserve the Gym-symbol promotional-addition context, but do not collapse the cards into ordinary Gym Heroes, Gym Challenge, Guren Town Gym, or Yamabuki City Gym objects.",
+            "Treat Ken Sugimori and Atsuko Nishida as artist-lineage context requiring exact print/image checks; do not use artist memory alone as route proof.",
+            "Use seller photos for physical format, stock, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Gym-series promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:084",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999",
+        "release_name": "CoroCoro Comic March 1999 issue insert (February 15, 1999)",
+        "row_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:084",
+        "catalog_row_id": "084",
+        "name_en": "Blaine's Growlithe",
+        "name_ja": "カツラのガーディ",
+        "romaji": "Katsura's Gardie"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "084",
+        "artist": "Ken Sugimori / Atsuko Nishida artwork-lineage context; exact promo-print image must be checked",
+        "rarity_signal": "Unnumbered Promotional / source row 084",
+        "signals": [
+          "CoroCoro Comic March 1999 issue insert",
+          "February 15 1999",
+          "two-card insert",
+          "Blaine's Growlithe",
+          "カツラのガーディ",
+          "Katsura's Gardie",
+          "Gym symbol",
+          "row 084"
+        ],
+        "assembly_themes": [
+          "magazine/media distribution",
+          "Blaine ownership",
+          "Gym-symbol promotional addition",
+          "artist-lineage trap",
+          "identity trap"
+        ],
+        "assembly_note": "Blaine's Growlithe sits in the CoroCoro March 1999 insert as row 084; the card is easy to confuse with Gym Heroes/Guren Town Gym memory unless the magazine route and image are kept attached.",
+        "collector_texture_note": "Blaine's Growlithe is not the loudest promo, which is part of its charm. It is a small fire-dog companion tucked into a magazine issue: loyal, warm, and route-sensitive. The buyer's agent should feel the difference between 'I know this card family' and 'I know this exact CoroCoro object.'",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof",
+          "resolved source-text contradiction"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Blaine's Growlithe as source row 084 in the CoroCoro Comic March 1999 issue insert source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia's card page gives Blaine's Growlithe the Japanese name カツラのガーディ and transliteration Katsura's Gardie.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia release information says the Japanese Unnumbered Promotional version was available on a two-card insert alongside Sabrina's Abra in the March 1999 issue of CoroCoro Comic, released February 15, 1999.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The Blaine's Growlithe source page exposes Ken Sugimori and Atsuko Nishida across the Gym Heroes and Unnumbered Promotional artwork lineage. Because the rendered and raw source contexts are easy to misread, this dossier treats artist data as lineage context requiring exact image/route checks.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Blaine's Growlithe gives the two-card insert its warm human scale: not a dragon, not a trophy, but a Gym Leader's loyal fire partner arriving through CoroCoro before later Gym memory can flatten the route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 084, CoroCoro March 1999 route, two-card insert pairing, Japanese/romaji name, Gym-symbol promotional-addition context, and artist-lineage trap before accepting this as Blaine's Growlithe.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Blaine's Growlithe — the warm half of the March 1999 insert",
+        "why_it_matters": "Blaine's Growlithe is wonderful because it is modest. It is a companion card: small enough to feel like something a CoroCoro reader could tuck away, but bound to a strong character line through Blaine. The trap is that the broader Gym Heroes/Guren Town Gym memory is louder than the promo route. The agent should keep saying the quiet thing out loud: row 084, CoroCoro March 1999, two-card insert with Sabrina's Abra, exact image needed.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography",
+          "resolved source-text contradiction"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: CoroCoro Comic March 1999 issue insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999.json#row:jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:084",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 084",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Blaine's Growlithe (Gym Heroes 35 / CoroCoro promo redirect)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Growlithe_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "resolved source-text contradiction",
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_march_1999_084_blaines_growlithe_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Blaine's Growlithe, カツラのガーディ, Katsura's Gardie, CoroCoro March 1999, February 15 1999, Guren Town Gym, Gym Heroes, Gym symbol, Ken Sugimori, Atsuko Nishida, or row 084.",
+          "summary": "Keep Blaine's Growlithe pinned to CoroCoro March 1999 row 084 and the two-card insert relationship.",
+          "steps": [
+            "Require CoroCoro Comic March 1999 issue / February 15, 1999 route and row 084.",
+            "Preserve Japanese/romaji name from the card page: カツラのガーディ / Katsura's Gardie.",
+            "Preserve the paired-insert relationship with Sabrina's Abra row 085.",
+            "Preserve Gym-symbol promotional-addition context without treating ordinary Gym Heroes or Guren Town Gym memory as enough.",
+            "Treat Ken Sugimori and Atsuko Nishida as artist-lineage context requiring exact print/image checks; do not use artist memory alone as route proof.",
+            "Use seller photos for physical format, stock, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Gym-series promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography",
+            "resolved source-text contradiction"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:085",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999",
+        "release_name": "CoroCoro Comic March 1999 issue insert (February 15, 1999)",
+        "row_id": "jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:085",
+        "catalog_row_id": "085",
+        "name_en": "Sabrina's Abra",
+        "name_ja": "ナツメのケーシィ",
+        "romaji": "Natsume's Casey"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "085",
+        "artist": "Ken Sugimori for Gym Challenge/Japanese print lineage; Atsuko Nishida for later Wizards Black Star lineage",
+        "rarity_signal": "Unnumbered Promotional / source row 085",
+        "signals": [
+          "CoroCoro Comic March 1999 issue insert",
+          "February 15 1999",
+          "two-card insert",
+          "Sabrina's Abra",
+          "ナツメのケーシィ",
+          "Natsume's Casey",
+          "Gym symbol",
+          "row 085"
+        ],
+        "assembly_themes": [
+          "magazine/media distribution",
+          "Sabrina ownership",
+          "Gym-symbol promotional addition",
+          "Wizards Black Star lookback pressure",
+          "identity trap"
+        ],
+        "assembly_note": "Sabrina's Abra sits in the CoroCoro March 1999 insert as row 085; later Gym Challenge and Wizards Black Star memory make exact source-route checks necessary.",
+        "collector_texture_note": "Sabrina's Abra is a tiny psychic card with a big memory shadow. Abra is already an absence-machine in the games; Sabrina makes it stranger. As a CoroCoro insert, it is not just 'the Abra card' or 'the Wizards promo family.' It is the psychic half of a magazine pair.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Sabrina's Abra as source row 085 in the CoroCoro Comic March 1999 issue insert source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia's card page gives Sabrina's Abra the Japanese name ナツメのケーシィ and transliteration Natsume's Casey.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia release information says the Japanese print was an Unnumbered Promotional card made available on a two-card insert alongside Blaine's Growlithe in the March 1999 issue of CoroCoro Comic, released February 15, 1999.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia gives the Gym Challenge/Japanese print lineage as Ken Sugimori and the later Wizards Black Star Promo lineage as Atsuko Nishida; this dossier uses both as artist-lineage context and keeps route identity separate.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Sabrina's Abra gives the two-card insert its strange psychic half: the smallest body in the pair, but the one that makes the route feel mysterious rather than simply Gym-themed.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 085, CoroCoro March 1999 route, two-card insert pairing, Japanese/romaji name, Gym-symbol promotional-addition context, and Wizards Black Star/Gym Challenge non-equivalence before accepting this as Sabrina's Abra.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Sabrina's Abra — the psychic half of the March 1999 insert",
+        "why_it_matters": "Sabrina's Abra has the exact collector problem this catalog is built for. The name pulls toward Gym Challenge. The English memory pulls toward Wizards Black Star. The character pulls toward Sabrina. But the object here is quieter and more specific: row 085, CoroCoro March 1999, a two-card insert with Blaine's Growlithe. It is a little psychic hinge in the magazine route, and the agent should protect that hinge from being smeared into every later Abra memory.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: CoroCoro Comic March 1999 issue insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999.json#row:jp_promo_unnumbered_wotc_084_corocoro_comic_march_1999_issue_insert_february_15_1999:085",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 085",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Sabrina's Abra (Gym Challenge 93 / CoroCoro promo redirect)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sabrina%27s_Abra_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_march_1999_085_sabrinas_abra_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Sabrina's Abra, ナツメのケーシィ, Natsume's Casey, CoroCoro March 1999, February 15 1999, Yamabuki City Gym, Gym Challenge, Wizards Black Star Promo 19, Nintendo Power, Gym symbol, Ken Sugimori, Atsuko Nishida, or row 085.",
+          "summary": "Keep Sabrina's Abra pinned to CoroCoro March 1999 row 085 and the two-card insert relationship.",
+          "steps": [
+            "Require CoroCoro Comic March 1999 issue / February 15, 1999 route and row 085.",
+            "Preserve Japanese/romaji name from the card page: ナツメのケーシィ / Natsume's Casey.",
+            "Preserve the paired-insert relationship with Blaine's Growlithe row 084.",
+            "Preserve Gym-symbol promotional-addition context without treating ordinary Gym Challenge, Yamabuki City Gym, Wizards Black Star, or Nintendo Power memory as enough.",
+            "List Ken Sugimori and Atsuko Nishida as artist-lineage context across print families, but require exact print/image checks before accepting a match.",
+            "Use seller photos for physical format, stock, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Gym-series promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    }
+  ]
+}

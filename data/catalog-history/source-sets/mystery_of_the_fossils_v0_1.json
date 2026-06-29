@@ -1,0 +1,1805 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Mystery of the Fossils and ten rows that carry its fossil, ghost, bird, Mew, and mechanical-hinge structure.",
+    "in_scope": [
+      "Mystery of the Fossils release dossier",
+      "Muk",
+      "Moltres",
+      "Lapras",
+      "Raichu",
+      "Zapdos",
+      "Gengar",
+      "Mew",
+      "Aerodactyl",
+      "Dragonite",
+      "Mysterious Fossil"
+    ],
+    "not_claiming": [
+      "complete Mystery of the Fossils scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "English Fossil equivalence"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621",
+      "type": "release",
+      "context": {
+        "name_en": "Mystery of the Fossils",
+        "name_ja": "化石の秘密",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "release_date": "1997-06-21"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json",
+          "title": "Local Japanese pre-English catalog: Mystery of the Fossils",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/",
+          "title": "Pokellector: Mystery of the Fossils expansion",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG3",
+          "title": "TCGdex API set record: PMCG3 Mystery of the Fossils",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mystery_of_the_Fossils_(TCG)",
+          "title": "Bulbapedia: Mystery of the Fossils (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json#jp_tcg_mystery_of_the_fossils_19970621",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md#jp_tcg_mystery_of_the_fossils_19970621",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models Mystery of the Fossils as released on June 21, 1997.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog, Pokellector source snapshot, and TCGdex source snapshot support a 48-row Japanese Mystery of the Fossils checklist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "The Japanese pre-English release map treats Mystery of the Fossils as a Japanese main booster expansion and the Japanese Fossil equivalent, but the catalog preserves it as its own release_family_id separate from English Fossil.",
+          "sources": [
+            "s1",
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix records Mystery of the Fossils as printing with rarity symbols, so this release must not be used as a Base No Rarity source.",
+          "sources": [
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local attention rows for Mystery of the Fossils include Muk, Moltres, Lapras, Raichu, Zapdos, Gengar, Mew, Aerodactyl, Dragonite, and Mysterious Fossil.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local artist clusters for Mystery of the Fossils are led by Kagemaru Himeno, Ken Sugimori, Mitsuhiro Arita, Keiji Kinebuchi, and a one-row Miki Tanaka contribution.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Mystery of the Fossils matters because it turns Pokemon's first-year creature world toward buried memory: ancient Pokemon, legendary birds, ghosts, and Mew all share a compact 48-row apparatus where discovery feels both archaeological and mythic.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_japanese_48_row_symbol_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Mystery of the Fossils, Japanese Fossil, 化石の秘密, PMCG3, Mew Fossil, Fossil Dragonite, or Mysterious Fossil.",
+          "summary": "Preserve the Japanese 48-row release boundary, rarity-symbol context, and local catalog row id before comparing to English Fossil or Base No Rarity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and Japanese release context.",
+            "Use the local three-digit row id as catalog coordinate; do not assume the physical card prints that number as an English-style collector number.",
+            "Do not collapse this 48-row Japanese release into English Fossil's 62-card Wizards checklist.",
+            "Do not treat Mystery of the Fossils as a No Rarity source; the symbol-status matrix marks the release as with-rarity-symbol.",
+            "For Mew, Dragonite, Aerodactyl, Gengar, and legendary-bird claims, require the seller scan or graded label to support the exact language/release row rather than importing English Fossil memory."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "Base No Rarity source status",
+            "physical card numbering proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The cave opens under the first year",
+        "why_it_matters": "Mystery of the Fossils is smaller than English Fossil and stranger in the hand. It feels like the Japanese release where early Pokemon turns from playground creatures toward buried machinery: fossil evolution, cave ghosts, legendary weather, and Mew as a mythic punctuation mark. The set is not only about old Pokemon. It is about the pleasure of finding a creature world under the one you thought you knew.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Mystery of the Fossils history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:007",
+      "type": "card",
+      "context": {
+        "name_en": "Muk",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:007",
+        "catalog_row_id": "007"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:007",
+          "title": "Local Mystery of the Fossils row: Muk 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-007",
+          "title": "TCGdex API card record: Muk",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Muk-Card-7",
+          "title": "Pokellector row page: Muk 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 007 as Muk.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Muk row 007 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Muk row 007 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Muk is one of the cards that keeps Mystery of the Fossils from becoming a clean museum case. Arita gives the set a living stink: the old world is not only bones and relics, it is gas, sludge, and active danger. For agents, Muk is also a reminder that Japanese rarity and holo attention do not need English numbering to matter.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_muk_007_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Muk, or row 007.",
+          "summary": "Muk is a Japanese Mystery of the Fossils Rare holo row; preserve row 007 and do not substitute English Fossil Muk 13/62.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 007.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The sludge that makes the cave breathe",
+        "why_it_matters": "Muk is one of the cards that keeps Mystery of the Fossils from becoming a clean museum case. Arita gives the set a living stink: the old world is not only bones and relics, it is gas, sludge, and active danger. For agents, Muk is also a reminder that Japanese rarity and holo attention do not need English numbering to matter.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:009",
+      "type": "card",
+      "context": {
+        "name_en": "Moltres",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:009",
+        "catalog_row_id": "009"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:009",
+          "title": "Local Mystery of the Fossils row: Moltres 009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-009",
+          "title": "TCGdex API card record: Moltres",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Moltres-Card-9",
+          "title": "Pokellector row page: Moltres 009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 009 as Moltres.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Moltres row 009 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Moltres row 009 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Moltres makes the fossil set flare upward. The release is named for what is underfoot, but Arita places legendary weather above the cave, so the binder has both excavation and sky. The card matters as part of the bird trio and as a bright counterweight to the damp fossil theme.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_moltres_009_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Moltres, or row 009.",
+          "summary": "Moltres row 009 is Japanese Mystery of the Fossils, not English Fossil Moltres 12/62.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 009.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Fire in the buried sky",
+        "why_it_matters": "Moltres makes the fossil set flare upward. The release is named for what is underfoot, but Arita places legendary weather above the cave, so the binder has both excavation and sky. The card matters as part of the bird trio and as a bright counterweight to the damp fossil theme.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:022",
+      "type": "card",
+      "context": {
+        "name_en": "Lapras",
+        "name_ja": "ラプラス",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:022",
+        "catalog_row_id": "022"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:022",
+          "title": "Local Mystery of the Fossils row: Lapras 022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-022",
+          "title": "TCGdex API card record: Lapras",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Lapras-Card-22",
+          "title": "Pokellector row page: Lapras 022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 022 as Lapras.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Lapras row 022 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lapras row 022 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lapras is the kindness in the fossil cave. Sugimori gives the set a ferry, not just a trophy: a creature that feels like it could carry you across the old world instead of simply standing in it. That gentleness is part of why the release feels broader than bones and rocks.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_lapras_022_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Lapras, or row 022.",
+          "summary": "Lapras row 022 is Japanese Mystery of the Fossils; preserve the Japanese row coordinate before comparing to English Fossil Lapras.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 022.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The gentle passage through the ruins",
+        "why_it_matters": "Lapras is the kindness in the fossil cave. Sugimori gives the set a ferry, not just a trophy: a creature that feels like it could carry you across the old world instead of simply standing in it. That gentleness is part of why the release feels broader than bones and rocks.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:024",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu",
+        "name_ja": "ライチュウ",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:024",
+        "catalog_row_id": "024"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:024",
+          "title": "Local Mystery of the Fossils row: Raichu 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-024",
+          "title": "TCGdex API card record: Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Raichu-Card-24",
+          "title": "Pokellector row page: Raichu 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 024 as Raichu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Raichu row 024 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Raichu row 024 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Raichu gives Mystery of the Fossils a familiar mascot-line jolt inside a set otherwise dominated by ancient and cave-coded ideas. Arita makes the row feel like a live wire through the excavation. Agents should treat it as a Japanese release coordinate, not generic Fossil Raichu memory.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_raichu_024_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Raichu, or row 024.",
+          "summary": "Raichu row 024 is Japanese Mystery of the Fossils; do not substitute English Fossil Raichu holo/non-holo rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 024.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Electricity in the compact checklist",
+        "why_it_matters": "Raichu gives Mystery of the Fossils a familiar mascot-line jolt inside a set otherwise dominated by ancient and cave-coded ideas. Arita makes the row feel like a live wire through the excavation. Agents should treat it as a Japanese release coordinate, not generic Fossil Raichu memory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:026",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "サンダー",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:026",
+        "catalog_row_id": "026"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:026",
+          "title": "Local Mystery of the Fossils row: Zapdos 026",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-026",
+          "title": "TCGdex API card record: Zapdos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Zapdos-Card-26",
+          "title": "Pokellector row page: Zapdos 026",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 026 as Zapdos.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Zapdos row 026 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Zapdos row 026 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Zapdos finishes the legendary weather system. In Mystery of the Fossils, the birds make the release feel larger than a cave: Articuno, Moltres, and Zapdos turn the old world into an island with sky, fire, ice, and lightning.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_zapdos_026_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Zapdos, or row 026.",
+          "summary": "Zapdos row 026 is Japanese Mystery of the Fossils; preserve language and local row before comparing to English Fossil Zapdos.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 026.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The last storm over the cave",
+        "why_it_matters": "Zapdos finishes the legendary weather system. In Mystery of the Fossils, the birds make the release feel larger than a cave: Articuno, Moltres, and Zapdos turn the old world into an island with sky, fire, ice, and lightning.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:031",
+      "type": "card",
+      "context": {
+        "name_en": "Gengar",
+        "name_ja": "ゲンガー",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:031",
+        "catalog_row_id": "031"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:031",
+          "title": "Local Mystery of the Fossils row: Gengar 031",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-031",
+          "title": "TCGdex API card record: Gengar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Gengar-Card-31",
+          "title": "Pokellector row page: Gengar 031",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 031 as Gengar.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Gengar row 031 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gengar row 031 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Gengar gives the fossil cave a face. Kinebuchi’s credit matters here because the row is not just a species check; it is atmosphere. The set becomes haunted, funny, and a little dangerous all at once.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_gengar_031_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Gengar, or row 031.",
+          "summary": "Gengar row 031 is Japanese Mystery of the Fossils; do not import English Fossil Gengar numbering or holo/non-holo duplication.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 031.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The grin that proves the cave is inhabited",
+        "why_it_matters": "Gengar gives the fossil cave a face. Kinebuchi’s credit matters here because the row is not just a species check; it is atmosphere. The set becomes haunted, funny, and a little dangerous all at once.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:033",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "ミュウ",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:033",
+        "catalog_row_id": "033"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:033",
+          "title": "Local Mystery of the Fossils row: Mew 033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-033",
+          "title": "TCGdex API card record: Mew",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Mew-Card-33",
+          "title": "Pokellector row page: Mew 033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 033 as Mew.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Mew row 033 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mew row 033 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew is the Japanese-release shock point. In this compact fossil world, the card makes the old-world premise suddenly cosmic: not only extinct forms, but origin-myth energy. For an agent, Mew is a high-risk memory trap because English Fossil habits do not map cleanly onto this Japanese row.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Mew row 033 needs explicit Japanese Mystery of the Fossils evidence before an agent carries over English Fossil or error-memory assumptions.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_mew_033_japanese_only_attention_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Mew, or row 033.",
+          "summary": "Mew row 033 belongs to Japanese Mystery of the Fossils in this catalog; do not infer an English Fossil equivalent row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 033.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The myth hiding in the excavation",
+        "why_it_matters": "Mew is the Japanese-release shock point. In this compact fossil world, the card makes the old-world premise suddenly cosmic: not only extinct forms, but origin-myth energy. For an agent, Mew is a high-risk memory trap because English Fossil habits do not map cleanly onto this Japanese row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:041",
+      "type": "card",
+      "context": {
+        "name_en": "Aerodactyl",
+        "name_ja": "プテラ",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:041",
+        "catalog_row_id": "041"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:041",
+          "title": "Local Mystery of the Fossils row: Aerodactyl 041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-041",
+          "title": "TCGdex API card record: Aerodactyl",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Aerodactyl-Card-41",
+          "title": "Pokellector row page: Aerodactyl 041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 041 as Aerodactyl.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Aerodactyl row 041 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Aerodactyl row 041 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Aerodactyl is the set saying its own premise out loud. Himeno makes the ancient creature feel alive rather than diagrammed, and the row anchors the fossil-recovery idea better than almost anything else in the checklist.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_aerodactyl_041_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Aerodactyl, or row 041.",
+          "summary": "Aerodactyl row 041 is Japanese Mystery of the Fossils; preserve the 48-row Japanese boundary before comparing to English Fossil Aerodactyl.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 041.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The fossil that names the whole apparatus",
+        "why_it_matters": "Aerodactyl is the set saying its own premise out loud. Himeno makes the ancient creature feel alive rather than diagrammed, and the row anchors the fossil-recovery idea better than almost anything else in the checklist.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:043",
+      "type": "card",
+      "context": {
+        "name_en": "Dragonite",
+        "name_ja": "カイリュー",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:043",
+        "catalog_row_id": "043"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:043",
+          "title": "Local Mystery of the Fossils row: Dragonite 043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-043",
+          "title": "TCGdex API card record: Dragonite",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Dragonite-Card-43",
+          "title": "Pokellector row page: Dragonite 043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 043 as Dragonite.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Dragonite row 043 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Dragonite row 043 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dragonite is the emotional turn. A fossil set can be sharp, old, and eerie; Himeno’s Dragonite makes it suddenly round and generous. That tenderness is part of the early Pokemon assembly: the same binder can hold ruins and comfort.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Dragonite row 043 needs explicit Japanese Mystery of the Fossils evidence before an agent carries over English Fossil or error-memory assumptions.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_dragonite_043_japanese_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Dragonite, or row 043.",
+          "summary": "Dragonite row 043 is Japanese Mystery of the Fossils; no-symbol/error claims require seller scan or graded evidence and cannot be inferred from this catalog row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 043.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The soft surprise at the back of the cave",
+        "why_it_matters": "Dragonite is the emotional turn. A fossil set can be sharp, old, and eerie; Himeno’s Dragonite makes it suddenly round and generous. That tenderness is part of the early Pokemon assembly: the same binder can hold ruins and comfort.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mystery_of_the_fossils_19970621:046",
+      "type": "card",
+      "context": {
+        "name_en": "Mysterious Fossil",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_mystery_of_the_fossils_19970621",
+        "row_id": "jp_tcg_mystery_of_the_fossils_19970621:046",
+        "catalog_row_id": "046"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_mystery_of_the_fossils_19970621.json#row:jp_tcg_mystery_of_the_fossils_19970621:046",
+          "title": "Local Mystery of the Fossils row: Mysterious Fossil 046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/PMCG3-046",
+          "title": "TCGdex API card record: Mysterious Fossil",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Mystery-of-the-Fossils-Expansion/Mysterious-Fossil-Card-46",
+          "title": "Pokellector row page: Mysterious Fossil 046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mystery of the Fossils row 046 as Mysterious Fossil.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and TCGdex record Mysterious Fossil row 046 as Common.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mysterious Fossil row 046 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mysterious Fossil is the little apparatus under the set. It is not a mascot, but it teaches the theme as a rule: buried things can become playable. Kinebuchi’s trainer row is where the release title stops being decoration and starts acting.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mystery_fossils_mysterious_fossil_046_trainer_hinge_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Japanese Fossil, Mystery of the Fossils, Mysterious Fossil, or row 046.",
+          "summary": "Mysterious Fossil row 046 is a Common Trainer row; do not treat it as a Pokemon species row or as English Fossil 62/62 without naming the release change.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_mystery_of_the_fossils_19970621 and local row id 046.",
+            "Confirm the card is being discussed as Japanese Mystery of the Fossils before comparing to English Fossil.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or print-error status from this catalog row."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Fossil equivalence",
+            "physical-card proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The hinge hidden in plain sight",
+        "why_it_matters": "Mysterious Fossil is the little apparatus under the set. It is not a mascot, but it teaches the theme as a rule: buried things can become playable. Kinebuchi’s trainer row is where the release title stops being decoration and starts acting.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

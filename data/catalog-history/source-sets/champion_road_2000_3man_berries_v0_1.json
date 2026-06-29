@@ -1,0 +1,785 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for Champion Road 2000: 3-Man Tournament Corner, emphasizing Berry and Miracle Berry as tournament prize Pokemon Tool rows, Gen II item-to-card translation, CR CG gangs / Yousuke Hirata art, Champion Road route boundaries, and traps against Champion Road participation-prize starter rows, Neo Genesis, Gold/Silver/New World, Intro Pack Neo, and later Oran/Lum Berry memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Berry row 154",
+      "Miracle Berry row 155",
+      "Champion Road 2000: 3-Man Tournament Corner route",
+      "Pokemon Tool / Gen II item lineage",
+      "tournament prize context",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Champion Road 2000 event archive",
+      "official copy count",
+      "official prize distribution ledger",
+      "complete tournament bracket record",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner",
+        "name_en": "Champion Road 2000: 3-Man Tournament Corner",
+        "release_date": "2000",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "tournament corner prize route",
+          "Pokemon Tool cards as prize objects",
+          "Gen II item memory translated into TCG mechanics",
+          "CR CG gangs / Yousuke Hirata shared art",
+          "Champion Road adjacency trap with Johto starter participation cards",
+          "Neo Genesis and Intro Pack Neo reprint traps"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner:155",
+            "name": "Miracle Berry",
+            "why": "Miracle Berry has the stronger collector pull: a prize-tool row whose effect echoes the Gen II MiracleBerry / later Lum Berry memory and whose Champion Road route is easy to blur with Neo Genesis.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner:154",
+            "name": "Berry",
+            "why": "Berry is quieter but beautifully protocol-shaped: a small healing object turned into a tournament prize row, where the route matters more than the headline card name.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Yousuke Hirata",
+            "row_count": 2,
+            "examples": [
+              "Berry",
+              "Miracle Berry"
+            ],
+            "why": "Hirata is credited alongside CR CG gangs on both Tool cards, giving this little tournament-corner pair a shared visual production identity rather than two isolated checklist rows.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Berry print authority"
+            ]
+          },
+          {
+            "name": "CR CG gangs",
+            "row_count": 2,
+            "examples": [
+              "Berry",
+              "Miracle Berry"
+            ],
+            "why": "CR CG gangs is part of the credited production memory here: these are designed Tool objects, and the CG credit helps keep the pair tied to early-2000 tournament promo texture.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete studio history",
+              "seller-card proof",
+              "all Berry print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Champion Road 2000 event archive",
+          "official copy count",
+          "official prize distribution ledger",
+          "complete tournament bracket record",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models two Champion Road 2000: 3-Man Tournament Corner rows: Berry row 154 and Miracle Berry row 155.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local source rows derive from Bulbapedia raw wikitext rows 154-155, both carrying the promotion note Champion Road 2000: 3-Man Tournament Corner.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Pokumon labels Miracle Berry as Champion Road 2000: 3-player Tournament Corner and tags it as a Tournament Prize, Champion Road, 2000, Trainer, Unnumbered, Non-holo, Japanese, Foil Stamp card.",
+          "sources": [
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "C"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Pokumon's Champion Road event page groups Berry, Miracle Berry, Chikorita, Cyndaquil, Totodile, and Trainer Certification Card under Champion Road, which supports treating the Berry pair as adjacent to but distinct from the Johto-starter participation trio.",
+          "sources": [
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "C"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits both Berry and Miracle Berry to Yousuke Hirata and CR CG gangs.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Berry and Miracle Berry were first released in Neo Genesis / Gold, Silver, to a New World..., and in Japan were reprinted as Unnumbered Promotional cards given away at the 2000 Champion Road tournament.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This source group matters because Champion Road turns small Gen II held-item logic into tournament-route objects: Berry and Miracle Berry are quiet cards whose identity lives in how they were awarded.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Champion Road 2000: 3-Man Tournament Corner route, rows 154-155 pair identity, Pokemon Tool status, Berry / Miracle Berry Gen II item lineage, CR CG gangs and Yousuke Hirata credits, non-holo / foil-stamp prize context where visible, and non-equivalence with Champion Road participation-prize starter rows, Neo Genesis, Gold Silver New World, Intro Pack Neo, Oran Berry, Lum Berry, and later Berry/Miracle Berry memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Champion Road 2000 3-Man Tournament Corner — tiny tools with tournament fingerprints",
+        "why_it_matters": "This is a lovely corrective to chase-card thinking. Berry and Miracle Berry are not big monsters. They are small tools: little held-item memories from Generation II, translated into cardboard, then handed out through a tournament-corner route. That makes them perfect for this catalogue. The card name alone is weak; Berry could be Neo Genesis, Intro Pack Neo, or just item memory. The route is the thing. Champion Road makes the quiet tool feel earned, and the shared CR CG gangs / Yousuke Hirata credit turns the pair into one little designed object rather than loose checklist filler.",
+        "not_claiming": [
+          "complete release history",
+          "complete Champion Road 2000 event archive",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Champion Road 2000: 3-Man Tournament Corner",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 154-155",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete event archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Berry (Neo Genesis 99)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Berry_(Neo_Genesis_99)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Miracle Berry (Neo Genesis 94)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Miracle_Berry_(Neo_Genesis_94)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_database_reference",
+          "title": "Pokumon: Miracle Berry (Champion Road 2000) (Unnumbered)",
+          "ref": "https://pokumon.com/card/miracle-berry-champion-road-2000-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_database_reference",
+          "title": "Pokumon: Release Event Champion Road",
+          "ref": "https://pokumon.com/release_event/champion-road/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "complete event archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "champion_road_2000_3man_berries_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Champion Road 2000, 3-Man Tournament Corner, 3-player Tournament Corner, Berry, きのみ, Miracle Berry, きせきのみ, Marvel Berry, Pokemon Tool, foil stamp, CR CG gangs, Yousuke Hirata, rows 154/155, Neo Genesis, Gold Silver New World, or Intro Pack Neo.",
+          "summary": "Do not accept a generic Berry or Miracle Berry match. Preserve the Champion Road 2000: 3-Man Tournament Corner route, rows 154-155, Pokemon Tool identity, and reprint boundaries first.",
+          "steps": [
+            "Confirm exact promotion note: Champion Road 2000: 3-Man Tournament Corner.",
+            "Confirm source rows 154-155 as Berry and Miracle Berry, not the adjacent Champion Road participation-prize starter rows 151-153.",
+            "Preserve Pokemon Tool status and Gen II item lineage for both rows.",
+            "Preserve CR CG gangs / Yousuke Hirata credit context.",
+            "Treat Pokumon copy estimates or market tags as collector-source context only, never official copy count or spendable proof.",
+            "Check against Neo Genesis, Gold Silver New World, Intro Pack Neo, Oran Berry, Lum Berry, and later Berry/Miracle Berry memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete event archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner:154",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner",
+        "row_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner:154",
+        "source_index": "154",
+        "name_en": "Berry",
+        "name_ja": "きのみ",
+        "romaji": "Berry",
+        "release_route": "Champion Road 2000: 3-Man Tournament Corner",
+        "artist": "Yousuke Hirata / CR CG gangs"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Yousuke Hirata / CR CG gangs",
+        "assembly_themes": [
+          "Pokemon Tool as tournament prize",
+          "Gen II healing item lineage",
+          "Champion Road 2000 route",
+          "Neo Genesis / Intro Pack Neo trap"
+        ],
+        "collector_texture_note": "Berry is the humble half of the Champion Road pair: a small healing Tool whose tournament route gives it collector identity beyond the common Neo-era card name.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 154 as Berry in the Champion Road 2000: 3-Man Tournament Corner source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Berry as きのみ Berry, a Pokemon Tool card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Berry to Yousuke Hirata and CR CG gangs.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Berry was first released in Neo Genesis / Gold, Silver, to a New World..., then in Japan was reprinted as an Unnumbered Promotional card given away at the 2000 Champion Road tournament, and later reprinted in Intro Pack Neo.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Berry matters here because it is ordinary item memory made special by route: a small healing Tool whose identity depends on Champion Road distribution rather than card-name gravity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Berry match, agents should preserve row 154, Champion Road 2000: 3-Man Tournament Corner route, きのみ / Berry name context, Pokemon Tool status, CR CG gangs / Yousuke Hirata credit, paired Miracle Berry relationship, and non-equivalence with Neo Genesis, Gold Silver New World, Intro Pack Neo, Oran Berry, and later Berry memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Berry — a small heal with a tournament route",
+        "why_it_matters": "Berry is quiet, almost stubbornly so, and that is why it belongs in this catalogue. It is not a dragon, not a mascot, not a holo centerpiece. It is a small healing object from the Game Boy world, translated into a Pokemon Tool and then made special by Champion Road 2000. A good agent has to care about that kind of smallness. The card proves that provenance can make a common-looking object matter.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Champion Road 2000: 3-Man Tournament Corner",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 154",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Berry (Neo Genesis 99)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Berry_(Neo_Genesis_99)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "champion_road_2000_3man_154_berry_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Berry, きのみ, Champion Road 2000, 3-Man Tournament Corner, Pokemon Tool, CR CG gangs, Yousuke Hirata, Neo Genesis, Gold Silver New World, Intro Pack Neo, Oran Berry, or row 154.",
+          "summary": "Berry must stay bound to row 154 and the Champion Road 2000: 3-Man Tournament Corner route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 154 and Champion Road 2000: 3-Man Tournament Corner context.",
+            "Record Japanese name `きのみ` and label `Berry`; do not silently replace with an English-only or item-only memory.",
+            "Preserve Pokemon Tool status and CR CG gangs / Yousuke Hirata credit.",
+            "Keep the paired Miracle Berry row in view, but do not confuse this pair with the adjacent Johto starter participation-prize rows.",
+            "Check against Neo Genesis, Gold Silver New World, Intro Pack Neo, Oran Berry, and later Berry memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner:155",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner",
+        "row_id": "jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner:155",
+        "source_index": "155",
+        "name_en": "Miracle Berry",
+        "name_ja": "きせきのみ",
+        "romaji": "Marvel Berry",
+        "release_route": "Champion Road 2000: 3-Man Tournament Corner",
+        "artist": "Yousuke Hirata / CR CG gangs"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Yousuke Hirata / CR CG gangs",
+        "assembly_themes": [
+          "Pokemon Tool as tournament prize",
+          "Gen II status-healing item lineage",
+          "Champion Road 2000 route",
+          "Lum Berry future-memory trap"
+        ],
+        "collector_texture_note": "Miracle Berry has the more magical pull of the pair: a status-clearing Tool with Champion Road route pressure and a later Lum Berry echo.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 155 as Miracle Berry in the Champion Road 2000: 3-Man Tournament Corner source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Miracle Berry as きせきのみ Marvel Berry, a Pokemon Tool card.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Miracle Berry to Yousuke Hirata and CR CG gangs.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Miracle Berry was first released in Neo Genesis / Gold, Silver, to a New World..., and in Japan was reprinted as an Unnumbered Promotional card given away at the 2000 Champion Road tournament.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says Miracle Berry is similar to Lum Berry from EX Ruby & Sapphire because Lum Berry's Generation III and IV effect matches the Generation II MiracleBerry effect.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Miracle Berry matters here because it carries the stronger item-lore echo: the Champion Road prize row points backward to Generation II MiracleBerry and forward to Lum Berry memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Before accepting a Miracle Berry match, agents should preserve row 155, Champion Road 2000: 3-Man Tournament Corner route, きせきのみ / Marvel Berry name context, Pokemon Tool status, CR CG gangs / Yousuke Hirata credit, paired Berry relationship, and non-equivalence with Neo Genesis, Gold Silver New World, Intro Pack Neo, Lum Berry, and later Miracle Berry memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Miracle Berry — the prize tool with a future echo",
+        "why_it_matters": "Miracle Berry is the card in this pair that feels like a little spell. Its job is practical, almost humble: remove status, then disappear. But the history around it is richer than the text box. It starts as Gen II item logic, becomes a Neo-era Pokemon Tool, gets a Champion Road prize body, and later echoes through Lum Berry. That is exactly the kind of card an agent can mishandle if it only sees the name. The Champion Road 3-Man Tournament route is the difference between a rule memory and this object.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Champion Road 2000: 3-Man Tournament Corner",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_154_champion_road_2000_3_man_tournament_corner.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 155",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Miracle Berry (Neo Genesis 94)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Miracle_Berry_(Neo_Genesis_94)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "champion_road_2000_3man_155_miracle_berry_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Miracle Berry, きせきのみ, Marvel Berry, Champion Road 2000, 3-Man Tournament Corner, Pokemon Tool, CR CG gangs, Yousuke Hirata, Neo Genesis, Gold Silver New World, Intro Pack Neo, Lum Berry, or row 155.",
+          "summary": "Miracle Berry must stay bound to row 155 and the Champion Road 2000: 3-Man Tournament Corner route before it can be used as a catalogue match.",
+          "steps": [
+            "Require row 155 and Champion Road 2000: 3-Man Tournament Corner context.",
+            "Record Japanese name `きせきのみ` and Bulbapedia's Marvel Berry rendering; do not silently replace with an English-only Miracle Berry memory.",
+            "Preserve Pokemon Tool status and CR CG gangs / Yousuke Hirata credit.",
+            "Keep the paired Berry row in view, but do not confuse this pair with the adjacent Johto starter participation-prize rows.",
+            "Check against Neo Genesis, Gold Silver New World, Intro Pack Neo, Lum Berry, and later Miracle Berry memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

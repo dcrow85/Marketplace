@@ -1,0 +1,1633 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Crossing the Ruins... / 遺跡をこえて... within the catalog-history deepening pass.",
+    "in_scope": [
+      "Crossing the Ruins... release dossier",
+      "selected chase and identity-teaching card dossiers",
+      "special identification rails for exact Japanese neo2 row identity"
+    ],
+    "not_claiming": [
+      "complete 57-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707",
+      "type": "release",
+      "context": {
+        "name_en": "Crossing the Ruins...",
+        "name_ja": "遺跡をこえて...",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "release_date": "2000-07-07"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json",
+          "title": "Local Japanese classic catalog: Crossing the Ruins...",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/neo2",
+          "title": "TCGdex Japanese set endpoint: neo2 / Crossing the Ruins...",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Crossing the Ruins... / 遺跡をこえて... with a July 7, 2000 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 57 card rows for Crossing the Ruins..., with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Crossing the Ruins... is modeled as a Japanese main expansion in the ポケモンカード★neo series, using TCGdex set id neo2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Crossing the Ruins... matters because Johto becomes archaeological: insects, fossils, Unown-shaped uncertainty, Dark Raichu past the obvious map, and Eevee branches all make the set feel discovered rather than merely opened.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Umbreon, Butterfree, Beedrill, Yanma, Houndour, and Kabutops as local chase or attention rows; this tranche also hand-authors Dark Raichu and Espeon because they teach secret-number and Eevee-branch identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card number, local id, rough source-row text, and normalized collector label separately before treating a famous species match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "crossing_the_ruins_release_exact_set_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Crossing the Ruins, 遺跡をこえて, Neo Discovery, neo2, Dark Raichu, Umbreon, Espeon, Houndour, or Kabutops.",
+          "summary": "Keep Crossing the Ruins... as Japanese neo2 / 遺跡をこえて... with row-number identity; do not collapse it into English Neo Discovery or same-character rows.",
+          "steps": [
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact release.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Separate this release from English Neo Discovery and later same-character reprints unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Crossing the Ruins... — when Johto becomes archaeology",
+        "why_it_matters": "Crossing the Ruins... is a set about finding Pokemon inside old structures: fossils, bugs, dark sparks, and Eevee branches all feel like evidence pulled from stone. It is a perfect agent-training release because the desire is real, but the row identity is delicate: source text, number, set id, and normalized collector label all have to stay attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 57-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-009",
+      "type": "card",
+      "context": {
+        "name_en": "Butterfree",
+        "name_ja": "蝶",
+        "normalized_label": "Butterfree",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-009",
+        "card_number": "009"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-009",
+          "title": "Local Japanese classic catalog row: Butterfree / Crossing the Ruins #009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-009",
+          "title": "TCGdex Japanese card endpoint: neo2-009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-009 as Crossing the Ruins / 遺跡をこえて... card #009, with rough source-row text '蝶'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Butterfree' as a normalized collector label while preserving the rough local source-row text '蝶'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-009 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Butterfree matters in this tranche because the set opens its holo attention with a fragile, living thing instead of only obvious power.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Butterfree, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #009, local id neo2-009, rough source-row text '蝶', and normalized label 'Butterfree'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-009_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Butterfree, 蝶, Crossing the Ruins, Neo Discovery, neo2, or card 009.",
+          "summary": "Preserve Butterfree as Japanese Crossing the Ruins / 遺跡をこえて... #009, with local id neo2-009 and source-row text '蝶'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-009 and local id neo2-009.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 009 and the rough local source-row text '蝶' separately from the normalized collector label 'Butterfree'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Butterfree — Crossing the Ruins #009",
+        "why_it_matters": "Butterfree turns Crossing the Ruins into more than a checklist: the set opens its holo attention with a fragile, living thing instead of only obvious power. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-010",
+      "type": "card",
+      "context": {
+        "name_en": "Beedrill",
+        "name_ja": "beedrill",
+        "normalized_label": "Beedrill",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-010",
+        "card_number": "010"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-010",
+          "title": "Local Japanese classic catalog row: Beedrill / Crossing the Ruins #010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-010",
+          "title": "TCGdex Japanese card endpoint: neo2-010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-010 as Crossing the Ruins / 遺跡をこえて... card #010, with rough source-row text 'beedrill'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Beedrill' as a normalized collector label while preserving the rough local source-row text 'beedrill'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-010 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Beedrill matters in this tranche because another Kanto insect becomes dangerous again inside Johto ruins grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Beedrill, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #010, local id neo2-010, rough source-row text 'beedrill', and normalized label 'Beedrill'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-010_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Beedrill, beedrill, Crossing the Ruins, Neo Discovery, neo2, or card 010.",
+          "summary": "Preserve Beedrill as Japanese Crossing the Ruins / 遺跡をこえて... #010, with local id neo2-010 and source-row text 'beedrill'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-010 and local id neo2-010.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 010 and the rough local source-row text 'beedrill' separately from the normalized collector label 'Beedrill'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Beedrill — Crossing the Ruins #010",
+        "why_it_matters": "Beedrill turns Crossing the Ruins into more than a checklist: another Kanto insect becomes dangerous again inside Johto ruins grammar. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-011",
+      "type": "card",
+      "context": {
+        "name_en": "Yanma",
+        "name_ja": "ヤンマ",
+        "normalized_label": "Yanma",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-011",
+        "card_number": "011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-011",
+          "title": "Local Japanese classic catalog row: Yanma / Crossing the Ruins #011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-011",
+          "title": "TCGdex Japanese card endpoint: neo2-011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-011 as Crossing the Ruins / 遺跡をこえて... card #011, with rough source-row text 'ヤンマ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Yanma' as a normalized collector label while preserving the rough local source-row text 'ヤンマ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-011 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Yanma matters in this tranche because a Johto bug/fossil-air card that makes the set feel like old biology waking up.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Yanma, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #011, local id neo2-011, rough source-row text 'ヤンマ', and normalized label 'Yanma'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-011_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Yanma, ヤンマ, Crossing the Ruins, Neo Discovery, neo2, or card 011.",
+          "summary": "Preserve Yanma as Japanese Crossing the Ruins / 遺跡をこえて... #011, with local id neo2-011 and source-row text 'ヤンマ'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-011 and local id neo2-011.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 011 and the rough local source-row text 'ヤンマ' separately from the normalized collector label 'Yanma'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Yanma — Crossing the Ruins #011",
+        "why_it_matters": "Yanma turns Crossing the Ruins into more than a checklist: a Johto bug/fossil-air card that makes the set feel like old biology waking up. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-012",
+      "type": "card",
+      "context": {
+        "name_en": "Houndour holo",
+        "name_ja": "ハウンドア（HR）",
+        "normalized_label": "Houndour holo",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-012",
+        "card_number": "012"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-012",
+          "title": "Local Japanese classic catalog row: Houndour holo / Crossing the Ruins #012",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-012",
+          "title": "TCGdex Japanese card endpoint: neo2-012",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-012 as Crossing the Ruins / 遺跡をこえて... card #012, with rough source-row text 'ハウンドア（HR）'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Houndour holo' as a normalized collector label while preserving the rough local source-row text 'ハウンドア（HR）'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-012 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Houndour holo matters in this tranche because new-darkness energy enters through a small hunter rather than only a final evolution.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Houndour holo, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #012, local id neo2-012, rough source-row text 'ハウンドア（HR）', and normalized label 'Houndour holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-012_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Houndour holo, ハウンドア（HR）, Crossing the Ruins, Neo Discovery, neo2, or card 012.",
+          "summary": "Preserve Houndour holo as Japanese Crossing the Ruins / 遺跡をこえて... #012, with local id neo2-012 and source-row text 'ハウンドア（HR）'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-012 and local id neo2-012.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 012 and the rough local source-row text 'ハウンドア（HR）' separately from the normalized collector label 'Houndour holo'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Houndour holo — Crossing the Ruins #012",
+        "why_it_matters": "Houndour holo turns Crossing the Ruins into more than a checklist: new-darkness energy enters through a small hunter rather than only a final evolution. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-018",
+      "type": "card",
+      "context": {
+        "name_en": "Kabutops",
+        "name_ja": "カブトップス",
+        "normalized_label": "Kabutops",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-018",
+        "card_number": "018"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-018",
+          "title": "Local Japanese classic catalog row: Kabutops / Crossing the Ruins #018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-018",
+          "title": "TCGdex Japanese card endpoint: neo2-018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-018 as Crossing the Ruins / 遺跡をこえて... card #018, with rough source-row text 'カブトップス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Kabutops' as a normalized collector label while preserving the rough local source-row text 'カブトップス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-018 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Kabutops matters in this tranche because the fossil machine of the set: archaeology turns back into claws.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Kabutops, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #018, local id neo2-018, rough source-row text 'カブトップス', and normalized label 'Kabutops'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-018_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kabutops, カブトップス, Crossing the Ruins, Neo Discovery, neo2, or card 018.",
+          "summary": "Preserve Kabutops as Japanese Crossing the Ruins / 遺跡をこえて... #018, with local id neo2-018 and source-row text 'カブトップス'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-018 and local id neo2-018.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 018 and the rough local source-row text 'カブトップス' separately from the normalized collector label 'Kabutops'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Kabutops — Crossing the Ruins #018",
+        "why_it_matters": "Kabutops turns Crossing the Ruins into more than a checklist: the fossil machine of the set: archaeology turns back into claws. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-021",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Raichu secret rare",
+        "name_ja": "ダークライチュ",
+        "normalized_label": "Dark Raichu secret rare",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-021",
+        "card_number": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-021",
+          "title": "Local Japanese classic catalog row: Dark Raichu secret rare / Crossing the Ruins #021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-021",
+          "title": "TCGdex Japanese card endpoint: neo2-021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-021 as Crossing the Ruins / 遺跡をこえて... card #021, with rough source-row text 'ダークライチュ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Raichu secret rare' as a normalized collector label while preserving the rough local source-row text 'ダークライチュ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-021 include 'Secret Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Raichu secret rare matters in this tranche because the secret-number lesson, where a familiar mascot line becomes something hidden past the printed map.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Raichu secret rare, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #021, local id neo2-021, rough source-row text 'ダークライチュ', and normalized label 'Dark Raichu secret rare'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Dark Raichu is the tranche row that teaches agents to respect the local secret-rare / over-map signal: the number and set rail matter as much as the famous name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-021_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Raichu secret rare, ダークライチュ, Crossing the Ruins, Neo Discovery, neo2, or card 021.",
+          "summary": "Preserve Dark Raichu secret rare as Japanese Crossing the Ruins / 遺跡をこえて... #021, with local id neo2-021 and source-row text 'ダークライチュ'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-021 and local id neo2-021.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 021 and the rough local source-row text 'ダークライチュ' separately from the normalized collector label 'Dark Raichu secret rare'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Raichu secret rare — Crossing the Ruins #021",
+        "why_it_matters": "Dark Raichu secret rare turns Crossing the Ruins into more than a checklist: the secret-number lesson, where a familiar mascot line becomes something hidden past the printed map. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-029",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon",
+        "name_ja": "エスペオン",
+        "normalized_label": "Espeon",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-029",
+        "card_number": "029"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-029",
+          "title": "Local Japanese classic catalog row: Espeon / Crossing the Ruins #029",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-029",
+          "title": "TCGdex Japanese card endpoint: neo2-029",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-029 as Crossing the Ruins / 遺跡をこえて... card #029, with rough source-row text 'エスペオン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Espeon' as a normalized collector label while preserving the rough local source-row text 'エスペオン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-029 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Espeon matters in this tranche because the daylight half of the Eevee split, making evolution feel like temperament.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Espeon, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #029, local id neo2-029, rough source-row text 'エスペオン', and normalized label 'Espeon'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Espeon carries Eevee-branch attention here: an agent should understand the row as part of Johto making evolution feel like mood, time, and atmosphere rather than a simple checklist slot.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-029_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Espeon, エスペオン, Crossing the Ruins, Neo Discovery, neo2, or card 029.",
+          "summary": "Preserve Espeon as Japanese Crossing the Ruins / 遺跡をこえて... #029, with local id neo2-029 and source-row text 'エスペオン'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-029 and local id neo2-029.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 029 and the rough local source-row text 'エスペオン' separately from the normalized collector label 'Espeon'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Espeon — Crossing the Ruins #029",
+        "why_it_matters": "Espeon turns Crossing the Ruins into more than a checklist: the daylight half of the Eevee split, making evolution feel like temperament. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_crossing_the_ruins_20000707:neo2-040",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "Umbreon",
+        "normalized_label": "Umbreon",
+        "release_family_id": "jp_tcg_crossing_the_ruins_20000707",
+        "local_id": "neo2-040",
+        "card_number": "040"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_crossing_the_ruins_20000707.json#row:jp_tcg_crossing_the_ruins_20000707:neo2-040",
+          "title": "Local Japanese classic catalog row: Umbreon / Crossing the Ruins #040",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo2-040",
+          "title": "TCGdex Japanese card endpoint: neo2-040",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_crossing_the_ruins_20000707:neo2-040 as Crossing the Ruins / 遺跡をこえて... card #040, with rough source-row text 'Umbreon'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Umbreon' as a normalized collector label while preserving the rough local source-row text 'Umbreon'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_crossing_the_ruins_20000707:neo2-040 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Umbreon matters in this tranche because the nighttime half of the Eevee split and the collector magnet that makes this set feel haunted.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Umbreon, preserve Japanese title 遺跡をこえて..., TCGdex set id neo2, card #040, local id neo2-040, rough source-row text 'Umbreon', and normalized label 'Umbreon'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Umbreon carries Eevee-branch attention here: an agent should understand the row as part of Johto making evolution feel like mood, time, and atmosphere rather than a simple checklist slot.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_crossing_the_ruins_20000707_neo2-040_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Umbreon, Umbreon, Crossing the Ruins, Neo Discovery, neo2, or card 040.",
+          "summary": "Preserve Umbreon as Japanese Crossing the Ruins / 遺跡をこえて... #040, with local id neo2-040 and source-row text 'Umbreon'; do not accept famous-name or English Neo Discovery matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_crossing_the_ruins_20000707:neo2-040 and local id neo2-040.",
+            "Require Japanese title 遺跡をこえて... or TCGdex set id neo2 before naming this exact catalog row.",
+            "Preserve card number 040 and the rough local source-row text 'Umbreon' separately from the normalized collector label 'Umbreon'.",
+            "Separate this row from English Neo Discovery, later Japanese reprints, same-character rows, and database-title-only matches unless the set/number rail is also present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Discovery equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Umbreon — Crossing the Ruins #040",
+        "why_it_matters": "Umbreon turns Crossing the Ruins into more than a checklist: the nighttime half of the Eevee split and the collector magnet that makes this set feel haunted. The agent should feel the card as a piece of Johto archaeology while keeping the exact Japanese set, number, local id, and rough source text attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

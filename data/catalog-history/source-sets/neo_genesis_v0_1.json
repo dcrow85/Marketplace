@@ -1,0 +1,1321 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Neo Genesis and seven rows that show the Johto doorway: Lugia, Baby Pokemon, Metal type, starter power engines, and the Neo-era frame shift.",
+    "in_scope": [
+      "Neo Genesis release dossier",
+      "Ampharos",
+      "Feraligatr 5",
+      "Lugia",
+      "Meganium 11",
+      "Pichu",
+      "Skarmory",
+      "Metal Energy"
+    ],
+    "not_claiming": [
+      "complete Neo Genesis scholarship",
+      "complete error-card catalog",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_neo_genesis_20001216",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Genesis",
+        "name_ja": "金、銀、新世界へ...",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "release_date": "2000-12-16"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json",
+          "title": "Local English WoC release catalog: Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/neo1",
+          "title": "Pokemon TCG API v2 set record: Neo Genesis",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_Genesis_(TCG)",
+          "title": "Bulbapedia: Neo Genesis (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://www.psacard.com/articles/articleview/8872/psa-set-registry-collecting-2000-pokemon-neo-genesis-1st-edition-card-set",
+          "title": "PSA: Collecting the 2000 Pokemon Neo Genesis 1st Edition Card Set",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Wizards source",
+            "price truth",
+            "condition truth",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Neo Genesis with set id neo1 and an English release date of December 16, 2000.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API model Neo Genesis with printedTotal 111 and total 111; the local corpus keeps 111 returned rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia connects Neo Genesis to the Japanese Gold, Silver, to a New World... release lineage and frames it as the first Neo Series expansion in English.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The local catalog shows Neo Genesis as the English set where Johto species, Baby Pokemon rules, Darkness and Metal Energy context, and Generation II starter lines enter the local WoC corpus together.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.vehicle",
+          "text": "PSA describes Neo Genesis 1st Edition booster packs as 11-card packs and identifies Lugia as the most popular card in the set from a collecting overview perspective.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Lugia, Ampharos, Meganium, Pichu, Skarmory, Feraligatr, Typhlosion, and Metal Energy, with several starter final evolutions appearing as multiple Rare Holo rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Neo Genesis are led by Ken Sugimori, Keiji Kinebuchi, Atsuko Nishida, Shin-ichi Yoshida, Tomokazu Komiya, Hironobu Yoshida, Sumiyoshi Kizuki, Naoyo Kimura, Kagemaru Himeno, Miki Tanaka, Mitsuhiro Arita, and Milky Isobe.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Neo Genesis matters because it is the English TCG's first big Johto hinge: new Pokemon, new babies, new Energy grammar, and a new visual mood arrive together, making the set feel like a second beginning rather than a simple sequel.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_johto_first_wave_and_multirow_starter_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Neo Genesis error variants",
+            "Japanese pack collation truth"
+          ],
+          "steps": [
+            "Confirm English set id neo1, name Neo Genesis, and 111-card local/API count before importing Japanese Gold, Silver, to a New World... context.",
+            "Treat the Japanese title as release-lineage context, not proof that every English row maps to one Japanese product path or variant state.",
+            "Preserve card number and rarity for starter final evolutions before merging wants: Feraligatr, Meganium, and Typhlosion each have multiple Rare Holo rows in the local/API catalog.",
+            "Keep Baby Pokemon rules, Metal Energy, and Darkness/Metal typing as catalog mechanics, not physical-card authentication signs.",
+            "If a listing mentions Neo Genesis errors, request row number and variant evidence separately; this release dossier is not a complete error taxonomy."
+          ],
+          "summary": "Neo Genesis is the Johto doorway, but agents must keep row number, baby/energy rules, and multi-row starter identities explicit.",
+          "trigger": "A listing, want, or binder import references Neo Genesis, Gold/Silver/New World, Lugia, Pichu, Metal Energy, or a Johto starter final evolution."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second beginning",
+        "why_it_matters": "Neo Genesis is the sound of the Pokemon world opening another door. Lugia gives the era a mythic center, Pichu rewrites evolution backward, Metal Energy makes a new kind of durability legible, and the Johto starters arrive with competing power engines instead of simple nostalgia. It is not just more cards; it is the TCG learning how to be a sequel.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-9",
+      "type": "card",
+      "context": {
+        "name_en": "Lugia",
+        "name_ja": "ルギア",
+        "romaji": "Lugia",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-9",
+        "catalog_row_id": "neo1-9"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-9",
+          "title": "Local English WoC card row: Lugia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-9",
+          "title": "Pokemon TCG API v2 card record: Lugia neo1-9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lugia_(Neo_Genesis_9)",
+          "title": "Bulbapedia: Lugia (Neo Genesis 9)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://www.psacard.com/articles/articleview/8872/psa-set-registry-collecting-2000-pokemon-neo-genesis-1st-edition-card-set",
+          "title": "PSA: Collecting the 2000 Pokemon Neo Genesis 1st Edition Card Set",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Wizards source",
+            "price truth",
+            "condition truth",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Lugia as Neo Genesis number 9, a Rare Holo Basic Colorless Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Lugia with Elemental Blast, a 90-damage attack requiring Fire, Water, and Lightning Energy to be discarded.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Lugia to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lugia matters because it gives Neo Genesis a single mythic center: a new legendary whose attack literally asks for Fire, Water, and Lightning, making the card feel like the set's elemental announcement.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_lugia_9_elemental_blast_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm Neo Genesis number 9/111 and Rare Holo before routing this as Lugia neo1-9.",
+            "Record Hironobu Yoshida as illustrator and Elemental Blast as the local/API attack identity.",
+            "Do not collapse this row into later Lugia rows, Aquapolis Crystal Lugia, Neo Revelation Lugia, or Japanese promo Lugia rows.",
+            "If a listing references '1st edition Lugia' or an error/variant, request a clear lower-number image and variant evidence separately.",
+            "Use the catalog image and attack text as row comparison aids only; they do not prove physical-card authenticity or condition."
+          ],
+          "summary": "Lugia 9 is the Hironobu Yoshida Rare Holo Neo Genesis row; later Lugia and Crystal Lugia rows must stay separate.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Lugia, Lugia holo, Elemental Blast, or Lugia 9/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The myth arrives all at once",
+        "why_it_matters": "Lugia is the card that makes Neo Genesis feel like a new era rather than a new checklist. Elemental Blast asks for three different kinds of energy, like the set is trying to gather the whole world into one attack. Hironobu Yoshida's credit gives that arrival a distinct card-art fingerprint in a set otherwise heavily shaped by Ken Sugimori.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-5",
+      "type": "card",
+      "context": {
+        "name_en": "Feraligatr",
+        "name_ja": "オーダイル",
+        "romaji": "Ordile",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-5",
+        "catalog_row_id": "neo1-5"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-5",
+          "title": "Local English WoC card row: Feraligatr 5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-5",
+          "title": "Pokemon TCG API v2 card record: Feraligatr neo1-5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Feraligatr_(Neo_Genesis_5)",
+          "title": "Bulbapedia: Feraligatr (Neo Genesis 5)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Feraligatr 5 as a Neo Genesis Rare Holo Stage 2 Water Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Feraligatr 5 with Downpour and Riptide; Downpour discards Water Energy from hand and Riptide counts Water Energy in the discard pile before shuffling them back.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Feraligatr 5 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Feraligatr 5 matters because it makes the Johto starter line feel like an engine, not just a mascot: its own Pokemon Power feeds its attack plan.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_feraligatr_5_vs_4_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 5/111 and Rare Holo before routing this as the Downpour/Riptide Feraligatr row.",
+            "Record Ken Sugimori as illustrator, but do not use artist credit alone to merge it with Feraligatr 4/111.",
+            "Separate Feraligatr 5 from Feraligatr 4: number 5 has Downpour/Riptide in the API/local row, while number 4 has Berserk/Chomp.",
+            "If a listing says only 'Neo Genesis Feraligatr,' ask for number or a clear text image before routing the want.",
+            "Do not infer physical holofoil status, authenticity, or tournament legality from the catalog row."
+          ],
+          "summary": "Feraligatr 5 is the Downpour/Riptide row; Feraligatr 4 is a separate holo row with a different power and attack.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Feraligatr without a number or says Feraligatr 5/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The water engine",
+        "why_it_matters": "Feraligatr 5 is one of those old cards that feels like a machine when you read it. Downpour feeds the discard pile, Riptide pulls that water back into damage, and suddenly a starter final evolution is not just a picture of power but a little loop of resource logic. That is Neo Genesis growing new muscles.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-11",
+      "type": "card",
+      "context": {
+        "name_en": "Meganium",
+        "name_ja": "メガニウム",
+        "romaji": "Meganium",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-11",
+        "catalog_row_id": "neo1-11"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-11",
+          "title": "Local English WoC card row: Meganium 11",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-11",
+          "title": "Pokemon TCG API v2 card record: Meganium neo1-11",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meganium_(Neo_Genesis_11)",
+          "title": "Bulbapedia: Meganium (Neo Genesis 11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Meganium 11 as a Neo Genesis Rare Holo Stage 2 Grass Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Meganium 11 with Wild Growth, a Pokemon Power that makes each Grass Energy attached to Grass Pokemon provide two Grass Energy while active.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Meganium 11 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Meganium 11 matters because it turns the Grass starter into infrastructure: Wild Growth changes what attached Energy means for an entire type line.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_meganium_11_vs_10_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 11/111 and Rare Holo before routing this as the Wild Growth Meganium row.",
+            "Record Ken Sugimori as illustrator, but do not use artist credit alone to merge it with Meganium 10/111.",
+            "Separate Meganium 11 from Meganium 10: number 11 has Wild Growth/Soothing Scent in the API/local row, while number 10 has Herbal Scent/Body Slam.",
+            "If a listing says only 'Neo Genesis Meganium,' ask for number or text image before routing the want.",
+            "Do not infer physical holofoil status, authenticity, or condition from the catalog row."
+          ],
+          "summary": "Meganium 11 is the Wild Growth row; Meganium 10 is a separate holo row with different rules text.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Meganium without a number or says Meganium 11/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Grass becomes infrastructure",
+        "why_it_matters": "Meganium 11 is quiet until you understand what it does. Wild Growth is not a bigger punch; it changes the economy around every Grass Energy attached to your Grass Pokemon. That makes the card feel beautifully Neo: a starter evolution as a whole little system.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-12",
+      "type": "card",
+      "context": {
+        "name_en": "Pichu",
+        "name_ja": "ピチュー",
+        "romaji": "Pichu",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-12",
+        "catalog_row_id": "neo1-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-12",
+          "title": "Local English WoC card row: Pichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-12",
+          "title": "Pokemon TCG API v2 card record: Pichu neo1-12",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pichu_(Neo_Genesis_12)",
+          "title": "Bulbapedia: Pichu (Neo Genesis 12)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Pichu as Neo Genesis number 12, a Rare Holo Baby Lightning Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Pichu with the Baby Pokemon attack-prevention rule and Zzzap, which damages each Pokemon in play that has a Pokemon Power.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Pichu to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pichu matters because it rewrites the family tree backward: the TCG now has a baby form before Pikachu, and that changes how evolution itself feels in the binder.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_pichu_baby_rule_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 12/111, Rare Holo, and Baby subtype/rule before routing this as Neo Genesis Pichu.",
+            "Record Ken Sugimori as illustrator and Zzzap as the API/local attack name.",
+            "Do not collapse Pichu into Pikachu, baby-Pokemon promos, or later Pichu rows; preserve the Baby rule as row context.",
+            "If a listing says only 'Pichu holo,' request set symbol, number, and a clear rules-box image before routing the want.",
+            "Use Baby Pokemon text as catalog identity only, not as evidence of physical authenticity."
+          ],
+          "summary": "Pichu 12 is a Baby Pokemon rule row, not just a smaller Pikachu search result.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Pichu, Pichu holo, Baby Pokemon, or Pichu 12/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu gets a childhood",
+        "why_it_matters": "Pichu is tiny, but structurally it is huge. Suddenly the mascot line has a past, and the card even has its own Baby rule to make that fragility real in play. Neo Genesis is a second beginning partly because cards like this make familiar Pokemon feel newly assembled.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-13",
+      "type": "card",
+      "context": {
+        "name_en": "Skarmory",
+        "name_ja": "エアームド",
+        "romaji": "Airmd",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-13",
+        "catalog_row_id": "neo1-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-13",
+          "title": "Local English WoC card row: Skarmory",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-13",
+          "title": "Pokemon TCG API v2 card record: Skarmory neo1-13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Skarmory_(Neo_Genesis_13)",
+          "title": "Bulbapedia: Skarmory (Neo Genesis 13)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Skarmory as Neo Genesis number 13, a Rare Holo Basic Metal Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Skarmory with Steel Wing, an attack that uses Metal Energy in its printed cost and can reduce incoming damage after a successful coin flip.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Skarmory to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Skarmory matters because it gives the new Metal type a creature-body in Neo Genesis, beside Metal Energy's rule text.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_skarmory_metal_type_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 13/111, Rare Holo, and Metal type before routing this as Neo Genesis Skarmory.",
+            "Record Ken Sugimori as illustrator and Steel Wing as the API/local attack identity.",
+            "Do not collapse Skarmory's Metal-type identity into Metal Energy 19; one is a Pokemon row, the other is a Special Energy row.",
+            "If a listing says only 'Metal holo Neo Genesis,' ask whether the card is Skarmory 13 or Metal Energy 19.",
+            "Do not use Metal typing as physical authenticity evidence."
+          ],
+          "summary": "Skarmory 13 is the Metal Pokemon row; Metal Energy 19 is a separate Special Energy row.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Skarmory, Metal holo, or Skarmory 13/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Metal gets a silhouette",
+        "why_it_matters": "Skarmory is the creature that makes Metal feel visible. Metal Energy explains the rule, but Skarmory gives the new type a body, a beak, and a defensive gesture. In a set full of new beginnings, it makes the new material feel alive.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-19",
+      "type": "card",
+      "context": {
+        "name_en": "Metal Energy",
+        "name_ja": "鋼エネルギー",
+        "romaji": "Hagane Energy",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-19",
+        "catalog_row_id": "neo1-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-19",
+          "title": "Local English WoC card row: Metal Energy",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-19",
+          "title": "Pokemon TCG API v2 card record: Metal Energy neo1-19",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Metal_Energy_(Neo_Genesis_19)",
+          "title": "Bulbapedia: Metal Energy (Neo Genesis 19)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Metal Energy as Neo Genesis number 19, a Rare Holo Special Energy credited to Milky Isobe.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Metal Energy as providing Metal Energy and reducing damage done to the attached Pokemon, with a damage-reduction tradeoff when attached to non-Metal Pokemon.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Metal Energy to Milky Isobe.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Metal Energy matters because it is not a character chase at all; it is a rules object that lets a new Pokemon material become playable infrastructure.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_metal_energy_special_energy_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 19/111, Rare Holo, and Special Energy before routing this as Neo Genesis Metal Energy.",
+            "Record Milky Isobe as illustrator/credit for this row.",
+            "Do not treat Metal Energy as a Basic Energy card; preserve its Special Energy rules text from the API/local row.",
+            "Do not collapse this row into Skarmory 13 or other Metal-type Pokemon rows.",
+            "If a listing says 'Metal holo Neo Genesis,' ask whether the card is Metal Energy 19 or a Metal-type Pokemon."
+          ],
+          "summary": "Metal Energy 19 is a Special Energy rules row, not a Pokemon row and not a generic Basic Energy.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Metal Energy, Metal holo, Special Energy, or Metal Energy 19/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A new material enters the game",
+        "why_it_matters": "Metal Energy is the card that makes Neo Genesis feel engineered. It is not cute, not legendary, not a starter. It is a rules artifact: a way for the TCG to say that a new kind of Pokemon body needs a new kind of resource.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_genesis_20001216:neo1-1",
+      "type": "card",
+      "context": {
+        "name_en": "Ampharos",
+        "name_ja": "デンリュウ",
+        "romaji": "Denryu",
+        "release_family_id": "en_wotc_neo_genesis_20001216",
+        "row_id": "en_wotc_neo_genesis_20001216:neo1-1",
+        "catalog_row_id": "neo1-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_genesis_20001216.json#row:en_wotc_neo_genesis_20001216:neo1-1",
+          "title": "Local English WoC card row: Ampharos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo1-1",
+          "title": "Pokemon TCG API v2 card record: Ampharos neo1-1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ampharos_(Neo_Genesis_1)",
+          "title": "Bulbapedia: Ampharos (Neo Genesis 1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Ampharos as Neo Genesis number 1, a Rare Holo Stage 2 Lightning Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Ampharos with Gigaspark, which can Paralyze the Defending Pokemon and spread 10 damage to each opposing Benched Pokemon after a successful coin flip.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Ampharos to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Ampharos matters because it opens the English checklist at number 1 while also representing a new Johto evolution line, a small but satisfying catalog signal that the old Kanto order has shifted.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_genesis_ampharos_1_checklist_opening_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holofoil status of a physical copy"
+          ],
+          "steps": [
+            "Confirm card number 1/111 and Rare Holo before routing this as Neo Genesis Ampharos.",
+            "Record Ken Sugimori as illustrator and Gigaspark as the API/local attack identity.",
+            "Do not collapse this row into later Ampharos e-Reader, ex-era, or Japanese promo rows.",
+            "If a listing emphasizes checklist number 1, preserve that as row identity but do not treat it as price or condition evidence.",
+            "Use set symbol, number, and rules text as comparison aids only; they do not prove physical authenticity."
+          ],
+          "summary": "Ampharos 1 is the checklist-opening Rare Holo Neo Genesis row and should not merge with later Ampharos lines.",
+          "trigger": "A listing, want, or binder import says Neo Genesis Ampharos, Ampharos holo, or Ampharos 1/111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The new checklist starts with a lighthouse",
+        "why_it_matters": "Ampharos at number 1 feels wonderfully Johto. Before you even reach Lugia or the starters, the set opens with a lighthouse-coded evolution line and a Ken Sugimori holo. It tells the collector, quietly but firmly, that this is not the old region wearing a new logo.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

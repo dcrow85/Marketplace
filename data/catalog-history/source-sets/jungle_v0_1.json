@@ -1,0 +1,4385 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Jungle, emphasizing the first English sequel expansion, the 64-row holo/non-holo mirror, Eeveelution forest memory, no-symbol error caution, and collector-facing identification rails.",
+    "in_scope": [
+      "Jungle release dossier",
+      "Clefable 1",
+      "Flareon 3",
+      "Jolteon 4",
+      "Kangaskhan 5",
+      "Mr. Mime 6",
+      "Nidoqueen 7",
+      "Pidgeot 8",
+      "Pinsir 9",
+      "Scyther 10",
+      "Snorlax 11",
+      "Vaporeon 12",
+      "Vileplume 15",
+      "Wigglytuff 16",
+      "Flareon 19",
+      "Jolteon 20",
+      "Scyther 26",
+      "Snorlax 27",
+      "Vaporeon 28",
+      "Eevee 51",
+      "Pikachu 60",
+      "Poké Ball 64"
+    ],
+    "not_claiming": [
+      "complete Jungle scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "First Edition status",
+      "Unlimited status",
+      "no-symbol error status"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_jungle_19990616",
+      "type": "release",
+      "context": {
+        "name_en": "Jungle",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "release_date": "1999-06-16"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json",
+          "title": "Local English WoC catalog: Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base2",
+          "title": "Pokemon TCG API v2 set record: Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia model English Jungle as released on June 16, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API support a 64-row English Jungle checklist.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Jungle as the second main expansion of the Pokemon Trading Card Game, with the English release expanded to 64 cards by including non-holofoil prints of the rare holo cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The local catalog preserves Jungle as Pokemon TCG API set id base2 and release_family_id en_wotc_jungle_19990616, separate from Japanese Pokemon Jungle, Base Set 2, Legendary Collection, promo variants, and physical edition/error states.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's error-card page records English Jungle no-symbol errors as an Unlimited Jungle holo-rare print issue; this supports a special identification rail but does not authenticate any individual card.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia lists additional Jungle-related promo or special rows such as Prerelease Clefable, gold-border Meowth, and W Promo Pikachu; those are adjacent branches, not automatic matches for ordinary Jungle catalog rows.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local Jungle artist clusters are: Kagemaru Himeno (23 local rows; examples: Flareon, Jolteon, Pidgeot), Mitsuhiro Arita (19 local rows; examples: Clefable, Electrode, Kangaskhan), Ken Sugimori (17 local rows; examples: Mr. Mime, Nidoqueen, Scyther), Keiji Kinebuchi (5 local rows; examples: Vileplume, Vileplume, Gloom).",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Jungle matters because it is the first English sequel expansion: Pokemon leaves the launch-room grammar and steps into a wilder collector space where Eeveelutions, Snorlax, Scyther, Pikachu, and the first big English error folklore make the set feel less like a rulebook and more like a binder page people wanted to live in.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_holo_nonholo_no_symbol_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, base2, no symbol, no set symbol, 1st Edition, Unlimited, holo, non-holo, Eeveelution, Scyther, Snorlax, Pikachu, Prerelease Clefable, W Promo Pikachu, gold-border Meowth, Base Set 2, or Legendary Collection.",
+          "summary": "English Jungle is a 64-row set where holo rares 1-16 have non-holo rare mirrors 17-32, and no-symbol claims belong to Unlimited Jungle holo rares only unless another sourced branch is provided.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API set id base2.",
+            "Before transaction logic, read the printed card number and rarity surface: 1-16 are holo-rare catalog rows, 17-32 are non-holo rare mirror rows, and 33-64 are uncommon/common rows.",
+            "For no-symbol claims, require a clear lower-right set-symbol scan and edition context; do not infer no-symbol status from the catalog row, card name, or missing symbol in a low-resolution image.",
+            "Do not promote Prerelease Clefable, W Promo Pikachu, gold-border Meowth, Base Set 2, Legendary Collection, Japanese Pokemon Jungle, First Edition, or Unlimited status without branch-specific evidence.",
+            "For price, condition, edition, error, or authenticity claims, use seller evidence, market evidence, and/or verifier judgment; this catalog only makes the identification questions legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The forest where the binder opens",
+        "why_it_matters": "Jungle is where the English game stops feeling like only a launch apparatus and starts feeling like a place. The first set taught the grammar; Jungle gives the binder a habitat: Eevee splitting into Flareon, Jolteon, and Vaporeon, Snorlax blocking the path, Scyther flashing through the grass, Pikachu tucked among commons, and a whole folklore of set-symbol and print errors waiting at the lower right. For the protocol, it is a beautiful troublemaker. Same name can mean holo or non-holo, ordinary or no-symbol, base2 or a later reprint. The card has to tell you which forest it came from.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Jungle history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-1",
+      "type": "card",
+      "context": {
+        "name_en": "Clefable",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-1",
+        "catalog_row_id": "base2-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-1",
+          "title": "Local Jungle row: Clefable base2-1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-1",
+          "title": "Pokemon TCG API v2 card record: Clefable",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-1 as Clefable.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Clefable base2-1 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Clefable base2-1 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Clefable is the first English Jungle row and immediately tells the collector this set is different: softer, stranger, more fairy-tale than launch combat. Arita gives it a moonlit kind of quiet, and the card also carries branch pressure because Clefable has prerelease and no-symbol-adjacent memory around it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Clefable sits at the front of the holo run and is a common place where prerelease and no-symbol language can blur.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_1_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Clefable, base2-1, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Clefable sits at the front of the holo run and is a common place where prerelease and no-symbol language can blur.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-1.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Clefable turns the sequel sideways",
+        "why_it_matters": "Clefable is the first English Jungle row and immediately tells the collector this set is different: softer, stranger, more fairy-tale than launch combat. Arita gives it a moonlit kind of quiet, and the card also carries branch pressure because Clefable has prerelease and no-symbol-adjacent memory around it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-3",
+      "type": "card",
+      "context": {
+        "name_en": "Flareon",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-3",
+        "catalog_row_id": "base2-3"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-3",
+          "title": "Local Jungle row: Flareon base2-3",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-3",
+          "title": "Pokemon TCG API v2 card record: Flareon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-3 as Flareon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Flareon base2-3 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Flareon base2-3 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Flareon is one of Jungle's emotional engines. Himeno's Eeveelution work makes the evolution line feel like choice becoming character: same small origin, wildly different atmospheres. For collectors, Flareon is not just a holo; it is the fire branch of wanting all three.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Flareon anchors the Eeveelution chase and belongs to the holo/no-symbol danger zone.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_3_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Flareon, base2-3, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Flareon anchors the Eeveelution chase and belongs to the holo/no-symbol danger zone.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-3.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Flareon makes Eevee feel combustible",
+        "why_it_matters": "Flareon is one of Jungle's emotional engines. Himeno's Eeveelution work makes the evolution line feel like choice becoming character: same small origin, wildly different atmospheres. For collectors, Flareon is not just a holo; it is the fire branch of wanting all three.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-4",
+      "type": "card",
+      "context": {
+        "name_en": "Jolteon",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-4",
+        "catalog_row_id": "base2-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-4",
+          "title": "Local Jungle row: Jolteon base2-4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-4",
+          "title": "Pokemon TCG API v2 card record: Jolteon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-4 as Jolteon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Jolteon base2-4 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Jolteon base2-4 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Jolteon sharpens Jungle. Himeno turns the Eevee line into texture and mood: Flareon glows, Vaporeon flows, Jolteon crackles. The card matters because the set's sequel magic is not only new Pokemon; it is new ways for familiar affection to fork.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Jolteon anchors the Eeveelution chase and belongs to the holo/no-symbol danger zone.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_4_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Jolteon, base2-4, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Jolteon anchors the Eeveelution chase and belongs to the holo/no-symbol danger zone.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-4.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Jolteon gives the binder electricity",
+        "why_it_matters": "Jolteon sharpens Jungle. Himeno turns the Eevee line into texture and mood: Flareon glows, Vaporeon flows, Jolteon crackles. The card matters because the set's sequel magic is not only new Pokemon; it is new ways for familiar affection to fork.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-5",
+      "type": "card",
+      "context": {
+        "name_en": "Kangaskhan",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-5",
+        "catalog_row_id": "base2-5"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-5",
+          "title": "Local Jungle row: Kangaskhan base2-5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-5",
+          "title": "Pokemon TCG API v2 card record: Kangaskhan",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-5 as Kangaskhan.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Kangaskhan base2-5 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Kangaskhan base2-5 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Kangaskhan gives Jungle body and tenderness at once: big basic presence, protective silhouette, and a holo slot that feels like an encounter rather than a trophy alone. Arita's row also matters because Jungle error folklore includes Kangaskhan-specific print anomalies.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Kangaskhan belongs to the holo/no-symbol danger zone and has separate error folklore; do not merge those without evidence.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_5_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Kangaskhan, base2-5, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Kangaskhan belongs to the holo/no-symbol danger zone and has separate error folklore; do not merge those without evidence.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-5.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Kangaskhan makes the forest parental",
+        "why_it_matters": "Kangaskhan gives Jungle body and tenderness at once: big basic presence, protective silhouette, and a holo slot that feels like an encounter rather than a trophy alone. Arita's row also matters because Jungle error folklore includes Kangaskhan-specific print anomalies.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-6",
+      "type": "card",
+      "context": {
+        "name_en": "Mr. Mime",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-6",
+        "catalog_row_id": "base2-6"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-6",
+          "title": "Local Jungle row: Mr. Mime base2-6",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-6",
+          "title": "Pokemon TCG API v2 card record: Mr. Mime",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-6 as Mr. Mime.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Mr. Mime base2-6 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Mr. Mime base2-6 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mr. Mime is not a forest animal in the obvious sense, which is why it works. Sugimori's character art brings mime, barrier, and weird Kanto stagecraft into a set otherwise full of paths, bugs, plants, and beasts. It is Jungle reminding you the habitat is psychological too.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Mr. Mime belongs to the holo/no-symbol danger zone.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_6_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Mr. Mime, base2-6, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Mr. Mime belongs to the holo/no-symbol danger zone.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-6.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mr. Mime brings theater into the grass",
+        "why_it_matters": "Mr. Mime is not a forest animal in the obvious sense, which is why it works. Sugimori's character art brings mime, barrier, and weird Kanto stagecraft into a set otherwise full of paths, bugs, plants, and beasts. It is Jungle reminding you the habitat is psychological too.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-7",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoqueen",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-7",
+        "catalog_row_id": "base2-7"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-7",
+          "title": "Local Jungle row: Nidoqueen base2-7",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-7",
+          "title": "Pokemon TCG API v2 card record: Nidoqueen",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-7 as Nidoqueen.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Nidoqueen base2-7 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Nidoqueen base2-7 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Nidoqueen turns the sequel set into family structure: Nidoran, Nidorina, Nidoqueen, all placed inside the forest's evolutionary ladder. Sugimori's credit ties it back to core Pokemon design while the Jungle row makes that design collectible as a holo encounter.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Nidoqueen belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_7_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Nidoqueen, base2-7, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Nidoqueen belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-7.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Nidoqueen gives Jungle a royal line",
+        "why_it_matters": "Nidoqueen turns the sequel set into family structure: Nidoran, Nidorina, Nidoqueen, all placed inside the forest's evolutionary ladder. Sugimori's credit ties it back to core Pokemon design while the Jungle row makes that design collectible as a holo encounter.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-8",
+      "type": "card",
+      "context": {
+        "name_en": "Pidgeot",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-8",
+        "catalog_row_id": "base2-8"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-8",
+          "title": "Local Jungle row: Pidgeot base2-8",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-8",
+          "title": "Pokemon TCG API v2 card record: Pidgeot",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-8 as Pidgeot.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Pidgeot base2-8 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Pidgeot base2-8 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pidgeot is Jungle's air. Himeno's credit sits beside a Stage 2 bird that makes the set feel vertical: not just bushes and paths, but canopy, movement, and height. For a binder, Pidgeot is one of those holos that makes the page breathe.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Pidgeot belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_8_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Pidgeot, base2-8, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Pidgeot belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-8.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pidgeot opens the canopy",
+        "why_it_matters": "Pidgeot is Jungle's air. Himeno's credit sits beside a Stage 2 bird that makes the set feel vertical: not just bushes and paths, but canopy, movement, and height. For a binder, Pidgeot is one of those holos that makes the page breathe.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-9",
+      "type": "card",
+      "context": {
+        "name_en": "Pinsir",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-9",
+        "catalog_row_id": "base2-9"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-9",
+          "title": "Local Jungle row: Pinsir base2-9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-9",
+          "title": "Pokemon TCG API v2 card record: Pinsir",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-9 as Pinsir.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Pinsir base2-9 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Pinsir base2-9 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pinsir is Jungle at its most direct: insect, claw, horn, pressure. Himeno's row makes the bug-collecting root of Pokemon visible inside the English TCG, and it is one of the cards that makes the set feel like the grass could bite back.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Pinsir belongs to the holo/no-symbol danger zone and has 1st Edition holo scratch-error folklore separate from ordinary identity.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_9_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Pinsir, base2-9, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Pinsir belongs to the holo/no-symbol danger zone and has 1st Edition holo scratch-error folklore separate from ordinary identity.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-9.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pinsir gives the page its teeth",
+        "why_it_matters": "Pinsir is Jungle at its most direct: insect, claw, horn, pressure. Himeno's row makes the bug-collecting root of Pokemon visible inside the English TCG, and it is one of the cards that makes the set feel like the grass could bite back.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-10",
+      "type": "card",
+      "context": {
+        "name_en": "Scyther",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-10",
+        "catalog_row_id": "base2-10"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-10",
+          "title": "Local Jungle row: Scyther base2-10",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-10",
+          "title": "Pokemon TCG API v2 card record: Scyther",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-10 as Scyther.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Scyther base2-10 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Scyther base2-10 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Scyther is one of Jungle's cleanest chase shapes: instantly readable silhouette, Sugimori linework, and a card identity that feels fast before you read a word. It is a perfect agent test because Scyther also appears in other early branches; the name alone is not the route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Scyther belongs to the holo/no-symbol danger zone and has adjacent Japanese Quick Starter / Vending / later reprint memory.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_10_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Scyther, base2-10, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Scyther belongs to the holo/no-symbol danger zone and has adjacent Japanese Quick Starter / Vending / later reprint memory.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-10.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Scyther is the blade in the grass",
+        "why_it_matters": "Scyther is one of Jungle's cleanest chase shapes: instantly readable silhouette, Sugimori linework, and a card identity that feels fast before you read a word. It is a perfect agent test because Scyther also appears in other early branches; the name alone is not the route.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-11",
+      "type": "card",
+      "context": {
+        "name_en": "Snorlax",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-11",
+        "catalog_row_id": "base2-11"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-11",
+          "title": "Local Jungle row: Snorlax base2-11",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-11",
+          "title": "Pokemon TCG API v2 card record: Snorlax",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-11 as Snorlax.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Snorlax base2-11 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Snorlax base2-11 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Snorlax is why Jungle feels lived-in. It is funny, massive, beloved, and mechanically memorable as an obstacle. Sugimori's image gives the set one of its great character anchors: not a final boss, but a body in the road that everyone remembers.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Snorlax belongs to the holo/no-symbol danger zone and has separate non-holo error folklore; do not merge holo, non-holo, no-symbol, or error claims without evidence.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_11_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Snorlax, base2-11, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Snorlax belongs to the holo/no-symbol danger zone and has separate non-holo error folklore; do not merge holo, non-holo, no-symbol, or error claims without evidence.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-11.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Snorlax blocks the path and steals the set",
+        "why_it_matters": "Snorlax is why Jungle feels lived-in. It is funny, massive, beloved, and mechanically memorable as an obstacle. Sugimori's image gives the set one of its great character anchors: not a final boss, but a body in the road that everyone remembers.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-12",
+      "type": "card",
+      "context": {
+        "name_en": "Vaporeon",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-12",
+        "catalog_row_id": "base2-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-12",
+          "title": "Local Jungle row: Vaporeon base2-12",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-12",
+          "title": "Pokemon TCG API v2 card record: Vaporeon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-12 as Vaporeon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Vaporeon base2-12 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Vaporeon base2-12 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Vaporeon completes the emotional triangle with Flareon and Jolteon. Himeno gives Jungle a water mood that feels less like a type slot and more like an alternate life for Eevee. The row matters because collectors often chase the trio as a single feeling.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Vaporeon anchors the Eeveelution chase and belongs to the holo/no-symbol danger zone.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_12_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Vaporeon, base2-12, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Vaporeon anchors the Eeveelution chase and belongs to the holo/no-symbol danger zone.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-12.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Vaporeon makes the forest aquatic",
+        "why_it_matters": "Vaporeon completes the emotional triangle with Flareon and Jolteon. Himeno gives Jungle a water mood that feels less like a type slot and more like an alternate life for Eevee. The row matters because collectors often chase the trio as a single feeling.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-15",
+      "type": "card",
+      "context": {
+        "name_en": "Vileplume",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-15",
+        "catalog_row_id": "base2-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-15",
+          "title": "Local Jungle row: Vileplume base2-15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-15",
+          "title": "Pokemon TCG API v2 card record: Vileplume",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-15 as Vileplume.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Vileplume base2-15 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Vileplume base2-15 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Vileplume is Jungle's flower as spectacle. Kinebuchi's local Jungle cluster is smaller than Himeno, Arita, or Sugimori, which makes the rows stand out: grass-line cards with an early digital/graphic flavor inside the forest set.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Vileplume belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_15_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Vileplume, base2-15, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Vileplume belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-15.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Vileplume lets Keiji Kinebuchi bloom",
+        "why_it_matters": "Vileplume is Jungle's flower as spectacle. Kinebuchi's local Jungle cluster is smaller than Himeno, Arita, or Sugimori, which makes the rows stand out: grass-line cards with an early digital/graphic flavor inside the forest set.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-16",
+      "type": "card",
+      "context": {
+        "name_en": "Wigglytuff",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-16",
+        "catalog_row_id": "base2-16"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-16",
+          "title": "Local Jungle row: Wigglytuff base2-16",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-16",
+          "title": "Pokemon TCG API v2 card record: Wigglytuff",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-16 as Wigglytuff.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Wigglytuff base2-16 as Rare Holo.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Wigglytuff base2-16 to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Wigglytuff ends the holo run with a big, soft presence. Arita's row keeps Jungle from becoming only sharp leaves and claws; the set has plushness too. It is a chase card because affection can be as sticky as power.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Wigglytuff belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia records Jungle no-symbol errors as an Unlimited holo-rare issue; this makes the lower-right set symbol a required evidence field for this holo row, not a catalog-proven property.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_16_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Wigglytuff, base2-16, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Wigglytuff belongs to the holo/no-symbol danger zone and must be separated from its non-holo mirror.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-16.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "For no-symbol claims, verify that the physical evidence is an Unlimited Jungle holo rare and that the Jungle symbol is actually absent; do not infer this from the name or row alone.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Wigglytuff closes the holo row with charm",
+        "why_it_matters": "Wigglytuff ends the holo run with a big, soft presence. Arita's row keeps Jungle from becoming only sharp leaves and claws; the set has plushness too. It is a chase card because affection can be as sticky as power.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-19",
+      "type": "card",
+      "context": {
+        "name_en": "Flareon",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-19",
+        "catalog_row_id": "base2-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-19",
+          "title": "Local Jungle row: Flareon base2-19",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-19",
+          "title": "Pokemon TCG API v2 card record: Flareon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-19 as Flareon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Flareon base2-19 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Flareon base2-19 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Flareon #19 is not a lesser memory so much as a different assembly: same character pull, non-holo rare lane, different number. For agents, this is the core Jungle lesson in miniature: holo #3 and non-holo #19 are related, not interchangeable.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Non-holo Flareon is not the no-symbol holo lane; preserve #19 and non-holo rare status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_19_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Flareon, base2-19, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Non-holo Flareon is not the no-symbol holo lane; preserve #19 and non-holo rare status.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-19.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Treat this as the non-holo rare mirror row, not the holo no-symbol lane; compare against the holo counterpart only after preserving the printed number.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Non-holo Flareon proves the mirror matters",
+        "why_it_matters": "Flareon #19 is not a lesser memory so much as a different assembly: same character pull, non-holo rare lane, different number. For agents, this is the core Jungle lesson in miniature: holo #3 and non-holo #19 are related, not interchangeable.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-20",
+      "type": "card",
+      "context": {
+        "name_en": "Jolteon",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-20",
+        "catalog_row_id": "base2-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-20",
+          "title": "Local Jungle row: Jolteon base2-20",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-20",
+          "title": "Pokemon TCG API v2 card record: Jolteon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-20 as Jolteon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Jolteon base2-20 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Jolteon base2-20 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Jolteon #20 carries the same Eeveelution desire through the non-holo mirror. It is exactly the kind of row a collector may want because it completes a shape rather than wins a hierarchy. The protocol should preserve that want, not flatten it into the holo.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Non-holo Jolteon is not the no-symbol holo lane; preserve #20 and non-holo rare status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_20_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Jolteon, base2-20, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Non-holo Jolteon is not the no-symbol holo lane; preserve #20 and non-holo rare status.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-20.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Treat this as the non-holo rare mirror row, not the holo no-symbol lane; compare against the holo counterpart only after preserving the printed number.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Non-holo Jolteon keeps the fork affordable",
+        "why_it_matters": "Jolteon #20 carries the same Eeveelution desire through the non-holo mirror. It is exactly the kind of row a collector may want because it completes a shape rather than wins a hierarchy. The protocol should preserve that want, not flatten it into the holo.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-26",
+      "type": "card",
+      "context": {
+        "name_en": "Scyther",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-26",
+        "catalog_row_id": "base2-26"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-26",
+          "title": "Local Jungle row: Scyther base2-26",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-26",
+          "title": "Pokemon TCG API v2 card record: Scyther",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-26 as Scyther.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Scyther base2-26 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Scyther base2-26 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Scyther #26 is the mirror problem made sharp. A seller can say Scyther and be true while still not naming the right card. The agent's job is to ask: holo #10, non-holo #26, Japanese branch, or later reprint?",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Non-holo Scyther is not the no-symbol holo lane; preserve #26 and non-holo rare status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_26_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Scyther, base2-26, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Non-holo Scyther is not the no-symbol holo lane; preserve #26 and non-holo rare status.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-26.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Treat this as the non-holo rare mirror row, not the holo no-symbol lane; compare against the holo counterpart only after preserving the printed number.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Non-holo Scyther keeps the blade but changes the proof",
+        "why_it_matters": "Scyther #26 is the mirror problem made sharp. A seller can say Scyther and be true while still not naming the right card. The agent's job is to ask: holo #10, non-holo #26, Japanese branch, or later reprint?",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-27",
+      "type": "card",
+      "context": {
+        "name_en": "Snorlax",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-27",
+        "catalog_row_id": "base2-27"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-27",
+          "title": "Local Jungle row: Snorlax base2-27",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-27",
+          "title": "Pokemon TCG API v2 card record: Snorlax",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-27 as Snorlax.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Snorlax base2-27 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Snorlax base2-27 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Snorlax #27 keeps the character gravity without the holo surface. That matters for real collectors: not every want is highest gloss. Sometimes the want is the creature, the page, the childhood obstacle, and the copy you can actually live with.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Non-holo Snorlax is not the no-symbol holo lane; preserve #27 and non-holo rare status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_27_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Snorlax, base2-27, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Non-holo Snorlax is not the no-symbol holo lane; preserve #27 and non-holo rare status.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-27.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Treat this as the non-holo rare mirror row, not the holo no-symbol lane; compare against the holo counterpart only after preserving the printed number.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Non-holo Snorlax is still the roadblock",
+        "why_it_matters": "Snorlax #27 keeps the character gravity without the holo surface. That matters for real collectors: not every want is highest gloss. Sometimes the want is the creature, the page, the childhood obstacle, and the copy you can actually live with.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-28",
+      "type": "card",
+      "context": {
+        "name_en": "Vaporeon",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-28",
+        "catalog_row_id": "base2-28"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-28",
+          "title": "Local Jungle row: Vaporeon base2-28",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-28",
+          "title": "Pokemon TCG API v2 card record: Vaporeon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-28 as Vaporeon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Vaporeon base2-28 as Rare.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Vaporeon base2-28 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Vaporeon #28 is the non-holo water branch of the Eevee trio. It belongs beside Flareon #19 and Jolteon #20 in an agent's mental model: a collector may be completing the trio, not optimizing a price ladder.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Non-holo Vaporeon is not the no-symbol holo lane; preserve #28 and non-holo rare status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_28_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Vaporeon, base2-28, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Non-holo Vaporeon is not the no-symbol holo lane; preserve #28 and non-holo rare status.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-28.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Treat this as the non-holo rare mirror row, not the holo no-symbol lane; compare against the holo counterpart only after preserving the printed number.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Non-holo Vaporeon keeps the trio whole",
+        "why_it_matters": "Vaporeon #28 is the non-holo water branch of the Eevee trio. It belongs beside Flareon #19 and Jolteon #20 in an agent's mental model: a collector may be completing the trio, not optimizing a price ladder.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-51",
+      "type": "card",
+      "context": {
+        "name_en": "Eevee",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-51",
+        "catalog_row_id": "base2-51"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-51",
+          "title": "Local Jungle row: Eevee base2-51",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-51",
+          "title": "Pokemon TCG API v2 card record: Eevee",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-51 as Eevee.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Eevee base2-51 as Common.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Eevee base2-51 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Eevee is a common, but Jungle makes it feel like a key. The set's famous elemental holos all point back to this small origin. Himeno's credit lets the line feel emotionally continuous: one creature, several futures, one binder page asking for completion.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Eevee is a common row and not a holo/no-symbol error target; separate it from Eeveelution evolutions and promo/reprint branches.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_51_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Eevee, base2-51, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Eevee is a common row and not a holo/no-symbol error target; separate it from Eeveelution evolutions and promo/reprint branches.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-51.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Do not route this row into the holo no-symbol error lane unless separate evidence establishes a different branch.",
+            "Separate Eevee #51 from Flareon/Jolteon/Vaporeon rows and later Eevee promo/reprint branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Eevee is the little hinge of the whole forest",
+        "why_it_matters": "Eevee is a common, but Jungle makes it feel like a key. The set's famous elemental holos all point back to this small origin. Himeno's credit lets the line feel emotionally continuous: one creature, several futures, one binder page asking for completion.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-60",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-60",
+        "catalog_row_id": "base2-60"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-60",
+          "title": "Local Jungle row: Pikachu base2-60",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-60",
+          "title": "Pokemon TCG API v2 card record: Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Error_cards#Jungle",
+          "title": "Bulbapedia: Error cards - Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete error-population census"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-60 as Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Pikachu base2-60 as Common.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Pikachu base2-60 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Jungle Pikachu is a common row with mascot gravity. Sugimori's credit and Pikachu's cultural pull make it a card collectors notice even without holo shine. It also needs branch discipline because Jungle-related Pikachu promo memory exists beside the ordinary #60 row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Jungle #60 common identity; do not infer W Promo, accidentally included 1st Edition Promo, Base, or Japanese identity from the name Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_60_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Pikachu, base2-60, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Preserve Jungle #60 common identity; do not infer W Promo, accidentally included 1st Edition Promo, Base, or Japanese identity from the name Pikachu.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-60.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Do not route this row into the holo no-symbol error lane unless separate evidence establishes a different branch.",
+            "Separate ordinary Jungle #60 from W Promo Pikachu and any accidentally included 1st Edition Promo Pikachu memory.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu proves common does not mean quiet",
+        "why_it_matters": "Jungle Pikachu is a common row with mascot gravity. Sugimori's credit and Pikachu's cultural pull make it a card collectors notice even without holo shine. It also needs branch discipline because Jungle-related Pikachu promo memory exists beside the ordinary #60 row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_jungle_19990616:base2-64",
+      "type": "card",
+      "context": {
+        "name_en": "Poké Ball",
+        "name_ja": "",
+        "release_family_id": "en_wotc_jungle_19990616",
+        "row_id": "en_wotc_jungle_19990616:base2-64",
+        "catalog_row_id": "base2-64"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_jungle_19990616.json#row:en_wotc_jungle_19990616:base2-64",
+          "title": "Local Jungle row: Poké Ball base2-64",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base2-64",
+          "title": "Pokemon TCG API v2 card record: Poké Ball",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jungle row base2-64 as Poké Ball.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API record Poké Ball base2-64 as Common.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Jungle Poké Ball base2-64 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Poke Ball is the last row and a perfect protocol card: less glamorous than Eeveelutions or Snorlax, but it names the capture apparatus that makes Pokemon collecting legible in the first place. Kinebuchi's row reminds us tools are part of the assembly too.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Poke Ball is a generic trainer/tool name reused across history; preserve Jungle #64 before comparing to other Poke Ball prints.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jungle_base2_64_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Jungle, Poké Ball, base2-64, no symbol, 1st Edition, Unlimited, holo, non-holo, Base Set 2, Legendary Collection, promo, or error.",
+          "summary": "Poke Ball is a generic trainer/tool name reused across history; preserve Jungle #64 before comparing to other Poke Ball prints.",
+          "steps": [
+            "Preserve release_family_id en_wotc_jungle_19990616 and Pokemon TCG API card id base2-64.",
+            "Ask for a clear scan of the lower-right set-symbol area and printed card number before accepting edition, no-symbol, or mirror-row claims.",
+            "Do not route this row into the holo no-symbol error lane unless separate evidence establishes a different branch.",
+            "Because Poke Ball is a reused trainer name, preserve Jungle set id and number before comparing to other Poke Ball prints.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "no-symbol status",
+            "First Edition status",
+            "Unlimited status",
+            "promo status",
+            "error status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Poke Ball is the apparatus hiding in plain sight",
+        "why_it_matters": "Poke Ball is the last row and a perfect protocol card: less glamorous than Eeveelutions or Snorlax, but it names the capture apparatus that makes Pokemon collecting legible in the first place. Kinebuchi's row reminds us tools are part of the assembly too.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "no-symbol status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

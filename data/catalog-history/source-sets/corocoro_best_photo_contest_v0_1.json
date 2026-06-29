@@ -1,0 +1,1198 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete five-row bounded tranche for Japanese CoroCoro Best Photo Contest unnumbered promo source group.",
+    "in_scope": [
+      "CoroCoro Best Photo Contest release/source-group dossier",
+      "all five source rows 096-100: Bulbasaur, Gyarados, Magikarp, Poliwag, Pikachu",
+      "special identification rails for unnumbered promo source-index identity"
+    ],
+    "not_claiming": [
+      "official campaign boundary proof beyond the source promotion note",
+      "complete external history",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "row-level Japanese name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+      "type": "release",
+      "context": {
+        "name_en": "CoroCoro Best Photo Contest",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "release_date": "1998-11-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Best Photo Contest source group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local unnumbered WotC promo catalog models the CoroCoro Best Photo Contest source group with a November 13, 1998 release date, while marking date precision as mixed source notes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local source group contains five contiguous Bulbapedia raw source rows, 096 through 100: Bulbasaur, Gyarados, Magikarp, Poliwag, and Pikachu.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The catalog treats this as an unnumbered promotional campaign source group derived from the promotion note CoroCoro Best Photo Contest, parented to the WotC-era Japanese unnumbered promo continuation slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "This group matters because it shows Pokemon assembly through media participation: CoroCoro was not just reporting Pokemon culture, it was a route by which fan-facing magazine activity became collectible card memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "The local catalog explicitly says this campaign-level split is derived from a source promotion note and is not official product-boundary proof beyond that note.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The five-card group is small enough for complete hand-authored coverage; collector attention concentrates around Pikachu and Gyarados, while Bulbasaur, Magikarp, and Poliwag complete the contest-row sequence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The primary source rows do not provide illustrator authority for this unnumbered promo source slice, so this tranche leaves artist coverage unresolved rather than importing credits from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the source group name CoroCoro Best Photo Contest, source indices 096-100, parent unnumbered promo continuation slice, distribution note, and absence of printed set number before accepting a card-name match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_best_photo_contest_source_group_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says CoroCoro Best Photo Contest, unnumbered promo, Bulbasaur, Gyarados, Magikarp, Poliwag, Pikachu, source index 096-100, or magazine contest promo.",
+          "summary": "Keep this as a five-row CoroCoro Best Photo Contest source group; because the cards are unnumbered, source index and distribution note are the audit handles.",
+          "steps": [
+            "Require the CoroCoro Best Photo Contest distribution/source-group note before naming this exact slice.",
+            "Preserve source indices 096, 097, 098, 099, and 100; these rows have no printed set number in the source.",
+            "Keep the parent Japanese unnumbered WotC promo continuation slice visible; do not collapse the cards into Base Set, No Rarity, or ordinary English-name rows.",
+            "Treat the campaign boundary as source-derived, not official product-boundary proof beyond the promotion note.",
+            "Use seller evidence to check physical format, card face, distribution tells, and condition before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Base Set equivalence",
+            "No Rarity equivalence",
+            "English release equivalence",
+            "approved image rights",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "CoroCoro Best Photo Contest — when fan media becomes card memory",
+        "why_it_matters": "This is a beautiful little hinge in the archive: five familiar Pokemon, no printed set number in the source, and a magazine contest note doing the work of provenance. CoroCoro was one of the places where Pokemon learned how to become a public culture, and these rows make that visible. The card names are friendly; the identity work is not.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "official campaign boundary proof beyond the source promotion note",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "official campaign boundary proof beyond the source promotion note"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:096",
+      "type": "card",
+      "context": {
+        "name_en": "Bulbasaur",
+        "name_ja": "",
+        "normalized_label": "Bulbasaur",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "local_id": "096",
+        "card_number": "None"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Best Photo Contest source group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Bulbasaur as CoroCoro Best Photo Contest source row 096, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:096.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbasaur belongs to a five-row unnumbered promotional source group derived from the promotion note CoroCoro Best Photo Contest.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Bulbasaur; the useful handle is source index 096 plus distribution note, not a rarity label.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Bulbasaur is the soft opening of the five-card contest group: a starter face that makes the magazine route feel approachable before the wilder water rows arrive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbasaur helps show how the CoroCoro Best Photo Contest group is assembled from familiar Pokemon names, magazine/media distribution, and source-index identity rather than ordinary set numbering.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 096, card name Bulbasaur, CoroCoro Best Photo Contest distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_best_photo_contest_096_source_index_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Bulbasaur, CoroCoro Best Photo Contest, unnumbered promo, source index 096, or magazine contest promo.",
+          "summary": "Keep Bulbasaur pinned to CoroCoro Best Photo Contest source index 096; name resemblance is not promo identity.",
+          "steps": [
+            "Require source index 096 or equivalent CoroCoro Best Photo Contest source-group evidence before naming this exact row.",
+            "Require card name Bulbasaur plus the distribution note; do not rely on name alone.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Base Set, No Rarity, English promos, later reprints, and other unnumbered Japanese promo families.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Base Set equivalence",
+            "No Rarity equivalence",
+            "English release equivalence",
+            "later reprint equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Bulbasaur — CoroCoro Best Photo Contest source row 096",
+        "why_it_matters": "Bulbasaur is the soft opening of the five-card contest group: a starter face that makes the magazine route feel approachable before the wilder water rows arrive.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:097",
+      "type": "card",
+      "context": {
+        "name_en": "Gyarados",
+        "name_ja": "",
+        "normalized_label": "Gyarados",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "local_id": "097",
+        "card_number": "None"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Best Photo Contest source group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Gyarados as CoroCoro Best Photo Contest source row 097, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:097.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Gyarados belongs to a five-row unnumbered promotional source group derived from the promotion note CoroCoro Best Photo Contest.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Gyarados; the useful handle is source index 097 plus distribution note, not a rarity label.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Gyarados gives the small group its monster voltage. In a photo-contest context, it feels like the card asking how fan spectacle enters the official record.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Gyarados helps show how the CoroCoro Best Photo Contest group is assembled from familiar Pokemon names, magazine/media distribution, and source-index identity rather than ordinary set numbering.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 097, card name Gyarados, CoroCoro Best Photo Contest distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_best_photo_contest_097_source_index_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Gyarados, CoroCoro Best Photo Contest, unnumbered promo, source index 097, or magazine contest promo.",
+          "summary": "Keep Gyarados pinned to CoroCoro Best Photo Contest source index 097; name resemblance is not promo identity.",
+          "steps": [
+            "Require source index 097 or equivalent CoroCoro Best Photo Contest source-group evidence before naming this exact row.",
+            "Require card name Gyarados plus the distribution note; do not rely on name alone.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Base Set, No Rarity, English promos, later reprints, and other unnumbered Japanese promo families.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Base Set equivalence",
+            "No Rarity equivalence",
+            "English release equivalence",
+            "later reprint equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Gyarados — CoroCoro Best Photo Contest source row 097",
+        "why_it_matters": "Gyarados gives the small group its monster voltage. In a photo-contest context, it feels like the card asking how fan spectacle enters the official record.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:098",
+      "type": "card",
+      "context": {
+        "name_en": "Magikarp",
+        "name_ja": "",
+        "normalized_label": "Magikarp",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "local_id": "098",
+        "card_number": "None"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Best Photo Contest source group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Magikarp as CoroCoro Best Photo Contest source row 098, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:098.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Magikarp belongs to a five-row unnumbered promotional source group derived from the promotion note CoroCoro Best Photo Contest.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Magikarp; the useful handle is source index 098 plus distribution note, not a rarity label.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Magikarp matters because it sits beside Gyarados in the source sequence. The pair makes evolution feel like a magazine-page joke and a collector map at the same time.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Magikarp helps show how the CoroCoro Best Photo Contest group is assembled from familiar Pokemon names, magazine/media distribution, and source-index identity rather than ordinary set numbering.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 098, card name Magikarp, CoroCoro Best Photo Contest distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_best_photo_contest_098_source_index_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Magikarp, CoroCoro Best Photo Contest, unnumbered promo, source index 098, or magazine contest promo.",
+          "summary": "Keep Magikarp pinned to CoroCoro Best Photo Contest source index 098; name resemblance is not promo identity.",
+          "steps": [
+            "Require source index 098 or equivalent CoroCoro Best Photo Contest source-group evidence before naming this exact row.",
+            "Require card name Magikarp plus the distribution note; do not rely on name alone.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Base Set, No Rarity, English promos, later reprints, and other unnumbered Japanese promo families.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Base Set equivalence",
+            "No Rarity equivalence",
+            "English release equivalence",
+            "later reprint equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Magikarp — CoroCoro Best Photo Contest source row 098",
+        "why_it_matters": "Magikarp matters because it sits beside Gyarados in the source sequence. The pair makes evolution feel like a magazine-page joke and a collector map at the same time.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:099",
+      "type": "card",
+      "context": {
+        "name_en": "Poliwag",
+        "name_ja": "",
+        "normalized_label": "Poliwag",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "local_id": "099",
+        "card_number": "None"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Best Photo Contest source group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Poliwag as CoroCoro Best Photo Contest source row 099, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:099.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Poliwag belongs to a five-row unnumbered promotional source group derived from the promotion note CoroCoro Best Photo Contest.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Poliwag; the useful handle is source index 099 plus distribution note, not a rarity label.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Poliwag is the quiet water row between Magikarp and Pikachu, a reminder that contest promos are not only grails; they are little traces of who got invited into the cultural machinery.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Poliwag helps show how the CoroCoro Best Photo Contest group is assembled from familiar Pokemon names, magazine/media distribution, and source-index identity rather than ordinary set numbering.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 099, card name Poliwag, CoroCoro Best Photo Contest distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_best_photo_contest_099_source_index_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Poliwag, CoroCoro Best Photo Contest, unnumbered promo, source index 099, or magazine contest promo.",
+          "summary": "Keep Poliwag pinned to CoroCoro Best Photo Contest source index 099; name resemblance is not promo identity.",
+          "steps": [
+            "Require source index 099 or equivalent CoroCoro Best Photo Contest source-group evidence before naming this exact row.",
+            "Require card name Poliwag plus the distribution note; do not rely on name alone.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Base Set, No Rarity, English promos, later reprints, and other unnumbered Japanese promo families.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Base Set equivalence",
+            "No Rarity equivalence",
+            "English release equivalence",
+            "later reprint equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Poliwag — CoroCoro Best Photo Contest source row 099",
+        "why_it_matters": "Poliwag is the quiet water row between Magikarp and Pikachu, a reminder that contest promos are not only grails; they are little traces of who got invited into the cultural machinery.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:100",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "normalized_label": "Pikachu",
+        "release_family_id": "jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest",
+        "local_id": "100",
+        "card_number": "None"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Best Photo Contest source group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Pikachu as CoroCoro Best Photo Contest source row 100, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_096_corocoro_best_photo_contest:100.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Pikachu belongs to a five-row unnumbered promotional source group derived from the promotion note CoroCoro Best Photo Contest.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Pikachu; the useful handle is source index 100 plus distribution note, not a rarity label.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu closes the source group with mascot gravity. It is the row most likely to attract sloppy name-only matching, so the source index 100 has to stay louder than the famous face.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Pikachu helps show how the CoroCoro Best Photo Contest group is assembled from familiar Pokemon names, magazine/media distribution, and source-index identity rather than ordinary set numbering.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 100, card name Pikachu, CoroCoro Best Photo Contest distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_best_photo_contest_100_source_index_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pikachu, CoroCoro Best Photo Contest, unnumbered promo, source index 100, or magazine contest promo.",
+          "summary": "Keep Pikachu pinned to CoroCoro Best Photo Contest source index 100; name resemblance is not promo identity.",
+          "steps": [
+            "Require source index 100 or equivalent CoroCoro Best Photo Contest source-group evidence before naming this exact row.",
+            "Require card name Pikachu plus the distribution note; do not rely on name alone.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Base Set, No Rarity, English promos, later reprints, and other unnumbered Japanese promo families.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Base Set equivalence",
+            "No Rarity equivalence",
+            "English release equivalence",
+            "later reprint equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pikachu — CoroCoro Best Photo Contest source row 100",
+        "why_it_matters": "Pikachu closes the source group with mascot gravity. It is the row most likely to attract sloppy name-only matching, so the source index 100 has to stay louder than the famous face.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

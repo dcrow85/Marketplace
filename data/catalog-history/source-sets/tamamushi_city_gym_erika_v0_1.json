@@ -1,0 +1,1794 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Tamamushi City Gym / Erika, emphasizing Japanese Gym standard-deck identity, garden/Grass ownership grammar, the 64-card product / 28-row catalog surface, and missing-symbol deck-lane boundaries.",
+    "in_scope": [
+      "Tamamushi City Gym / Erika release dossier",
+      "Erika's Oddish 001",
+      "Erika's Oddish 002",
+      "Erika's Vileplume 004",
+      "Erika's Victreebel 008",
+      "Erika's Dratini 013",
+      "Erika 016",
+      "Erika's Maids 017",
+      "Erika's Perfume 018",
+      "Celadon City Gym 021",
+      "Good Manners 027",
+      "Double Colorless Energy 028"
+    ],
+    "not_claiming": [
+      "complete Tamamushi City Gym scholarship",
+      "complete sealed-deck collation proof",
+      "English Gym Heroes equivalence",
+      "English Gym Challenge equivalence",
+      "Base No Rarity source status",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725",
+      "type": "release",
+      "context": {
+        "name_en": "Tamamushi City Gym / Erika",
+        "name_ja": "タマムシシティジム エリカ",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "release_date": "1998-07-25"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json",
+          "title": "Local Japanese pre-English catalog: Tamamushi City Gym / Erika",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete sealed-deck collation proof"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/TCGYM",
+          "title": "PokeCardex: Tamamushi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tamamushi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Tamamushi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md#jp_tcg_tamamushi_city_gym_erika_19980725",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Erika rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json",
+          "title": "Local English WotC catalog: Gym Challenge Erika rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog, Japanese pre-English release map, and Bulbapedia model Tamamushi City Gym / Erika as released on July 25, 1998.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia describes Tamamushi City Gym as a Japanese-exclusive Standard Deck that complements Leaders' Stadium; the local catalog models it as a Gym standard deck with strict release membership.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "Bulbapedia says the deck contains 64 fixed cards rather than the traditional 60, while the local catalog exposes 28 unique catalog rows and preserves the 60-card deck plus 4 additional cards product note.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia says most cards not found in the Japanese main expansion were added to the English main set, and that the deck contents provided the basis for the English Erika Theme Deck.",
+          "sources": [
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local attention rows are led by Erika's Oddish, Erika's Gloom, Erika's Vileplume, Erika's Bellsprout, Erika's Victreebel, Erika's Dratini, Erika, Erika's Maids, Erika's Perfume, Celadon City Gym, and Double Colorless Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local artist clusters are led by Ken Sugimori and Keiji Kinebuchi, with Atsuko Nishida carrying key gentle-character rows such as Erika's Oddish 001 and Erika's Bellsprout 005.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Tamamushi City Gym / Erika matters because it turns a Gym Leader into a garden apparatus: Grass evolutions, maids, perfume, charity, good manners, a named city gym, and resource cards all make the release feel cultivated rather than merely typed.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_city_gym_erika_64_product_28_row_missing_symbol_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Tamamushi City Gym, Erika deck, タマムシシティジム エリカ, Celadon City Gym, Erika's Oddish, Erika's Vileplume, Erika's Dratini, no rarity, missing rarity, Sans rarete, Gym Heroes, Gym Challenge, or Erika Theme Deck.",
+          "summary": "Preserve the Gym deck product boundary: 64-card product context, 28 unique catalog rows, missing-symbol deck lane, not Base No Rarity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and the Japanese Gym standard-deck context.",
+            "Do not treat the 28 unique catalog rows as proof that the sealed product contains only 28 cards; Bulbapedia and the local product note preserve a 64-card product context.",
+            "Do not collapse Sans rarete / missing-symbol deck cards into 1996 Base No Rarity; this is a Gym deck missing-symbol lane.",
+            "Preserve owner-name and place identity: Erika's Oddish, Erika's Vileplume, Erika's Dratini, Erika's Maids, Erika's Perfume, and Celadon City Gym are not generic species, trainer, or place rows.",
+            "For English Gym Heroes, Gym Challenge, or Erika Theme Deck comparisons, name the Japanese deck row and the later English row separately before importing rarity, number, or set assumptions.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "complete sealed-deck collation proof",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence",
+            "row-level physical symbol proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A garden becomes a deck",
+        "why_it_matters": "Tamamushi City Gym is not just a Grass deck. It is Erika as a cultivated system: Oddish and Bellsprout lines, Vileplume and Victreebel at the top, Dratini as a soft surprise, then maids, perfume, charity, manners, city, and resources. The cards feel gentle, but the catalog work is strict. A seller can say no rarity, Erika, Celadon, or Gym Heroes; the agent has to keep the Japanese deck lane intact.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Tamamushi City Gym history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-deck collation proof",
+          "Base No Rarity source status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:001",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Oddish",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:001",
+          "title": "Local Tamamushi City Gym row: Erika's Oddish 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tamamushi_City_Gym_(TCG)",
+          "title": "Bulbapedia deck list: Tamamushi City Gym",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 001 as Erika's Oddish.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Erika's Oddish 001 as Sans rarete, a Gym deck missing-symbol context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Oddish 001 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Erika's Oddish 001 opens the garden with a gentle Atsuko Nishida row. It is small, owned, and easy to confuse with later English Erika's Oddish rows unless the Japanese deck route stays attached.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Oddish 001 as the Atsuko Nishida Japanese deck row and keep it separate from row 002 and later English rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_oddish_001_two_oddish_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Oddish, Tamamushi City Gym, row 001, Atsuko Nishida, no rarity, Gym Heroes 47, Gym Heroes 78, or Gym Challenge 70.",
+          "summary": "Erika's Oddish 001 is the Atsuko Nishida Japanese deck row; keep it separate from row 002 and later English rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 001.",
+            "Confirm whether the card is row 001 or row 002 before treating a scan or want as matched.",
+            "Preserve Atsuko Nishida as the row 001 artist credit; row 002 carries a different local artist credit.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Do not collapse this row into English Gym Heroes 47, Gym Heroes 78, or Gym Challenge 70 without naming the release and row separately.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "row 002 equivalence",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The small opening leaf",
+        "why_it_matters": "Erika's Oddish 001 is exactly the kind of card a collector can love for being quiet. It is the first little leaf of the deck, credited to Atsuko Nishida, and it tells the agent to slow down: same name as row 002, different row, different artist, different comparison burden.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:002",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Oddish",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:002",
+        "catalog_row_id": "002"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:002",
+          "title": "Local Tamamushi City Gym row: Erika's Oddish 002",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 002 as a second Erika's Oddish row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Erika's Oddish 002 as Sans rarete, a Gym deck missing-symbol context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Oddish 002 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Erika's Oddish 002 makes the opening line a variation system: a second Oddish, a second artist credit, and a second row an agent must not flatten.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Oddish 002 as the Ken Sugimori Japanese deck row and keep it separate from row 001 and later English rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_oddish_002_two_oddish_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Oddish, Tamamushi City Gym, row 002, Ken Sugimori, no rarity, Gym Heroes 47, Gym Heroes 78, or Gym Challenge 70.",
+          "summary": "Erika's Oddish 002 is the Ken Sugimori Japanese deck row; keep it separate from row 001 and later English rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 002.",
+            "Confirm whether the card is row 001 or row 002 before treating a scan or want as matched.",
+            "Preserve Ken Sugimori as the row 002 artist credit; row 001 carries a different local artist credit.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Do not collapse this row into English Gym Heroes 47, Gym Heroes 78, or Gym Challenge 70 without naming the release and row separately.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "row 001 equivalence",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second opening leaf",
+        "why_it_matters": "Erika's Oddish 002 is the row that proves the garden is arranged, not accidental. Another Oddish, now Sugimori, and still part of the same deck grammar. For an agent, this is where 'I saw an Erika's Oddish' becomes an actual identification question.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:004",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Vileplume",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:004",
+        "catalog_row_id": "004"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:004",
+          "title": "Local Tamamushi City Gym row: Erika's Vileplume 004",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Erika's Vileplume 5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 004 as Erika's Vileplume.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Vileplume 004 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Vileplume gives the deck its garden crown: the Oddish line reaches a fully owned, fully bloomed endpoint that later becomes one of the familiar English Gym Heroes Erika identities.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Vileplume 004 as a Japanese deck row before comparing to English Gym Heroes 5 or other Erika Vileplume rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_vileplume_004_deck_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Vileplume, Tamamushi City Gym, Gym Heroes 5, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Erika's Vileplume 004 is a Japanese Tamamushi deck row; compare English rows only after preserving this origin.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 004.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 5 unless the listing explicitly names that English release.",
+            "Preserve owner-name identity before treating the card as a generic Vileplume.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The garden crown",
+        "why_it_matters": "Erika's Vileplume 004 is the bloom at the center of the deck. It is not only a Grass evolution; it is Erika's line reaching its owned endpoint. The card asks the catalog to hold beauty and route discipline together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:008",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Victreebel",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:008",
+        "catalog_row_id": "008"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:008",
+          "title": "Local Tamamushi City Gym row: Erika's Victreebel 008",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Erika's Victreebel 26",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 008 as Erika's Victreebel.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Victreebel 008 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Victreebel gives the deck a sharper botanical edge: the garden is gentle, but not harmless, and the English Gym Heroes afterlife makes exact route memory useful.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Victreebel 008 as a Japanese deck row before comparing to English Gym Heroes 26.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_victreebel_008_deck_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Victreebel, Tamamushi City Gym, Gym Heroes 26, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Erika's Victreebel 008 is a Japanese Tamamushi deck row; preserve it before English Gym Heroes comparison.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 008.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 26 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The garden has teeth",
+        "why_it_matters": "Erika's Victreebel 008 keeps the deck from becoming only soft perfume and flowers. It is still Erika's, still botanical, but now the garden can bite. That makes it one of the rows where personality and battle identity meet.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:013",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Dratini",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:013",
+        "catalog_row_id": "013"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:013",
+          "title": "Local Tamamushi City Gym row: Erika's Dratini 013",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "title": "Local Unnumbered Promotional source slice: Erika's Dratini promo route",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Tamamushi deck print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 013 as Erika's Dratini.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Dratini 013 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Dratini is the deck's soft surprise: not Grass, but graceful enough to belong in Erika's garden. It is also an identity trap because Erika's Dratini has a separate pre-English promo route.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Dratini 013 as the Tamamushi deck row before comparing to the Unnumbered Promotional Erika's Dratini route or English Gym Heroes 42.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_dratini_013_deck_vs_promo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Dratini, Tamamushi City Gym, CoroCoro promo, Unnumbered Promotional, Gym Heroes 42, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Erika's Dratini 013 is the Japanese Tamamushi deck row; do not collapse it into the separate promo route or English Gym Heroes row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 013.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from the Unnumbered Promotional Erika's Dratini route unless evidence explicitly names that promo source.",
+            "Separate this row from English Gym Heroes 42 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "Unnumbered Promotional equivalence",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The graceful exception",
+        "why_it_matters": "Erika's Dratini 013 is the little surprise in the garden. It is not the obvious Grass-line card, which makes it feel chosen rather than automatic. For the protocol, it is also a route trap: deck Dratini, promo Dratini, and English Gym Heroes Dratini must not be allowed to blur.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "promo route equivalence",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:016",
+      "type": "card",
+      "context": {
+        "name_en": "Erika",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:016",
+        "catalog_row_id": "016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:016",
+          "title": "Local Tamamushi City Gym row: Erika 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Erika rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 016 as Erika.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika 016 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika 016 is the deck's signature card: after the owned plants and gentle tactics, the Gym Leader herself enters the apparatus.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika 016 as the Japanese Tamamushi deck trainer row before comparing to English Gym Heroes 16 or 100.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erika_016_trainer_row_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika, Tamamushi City Gym, Gym Heroes 16, Gym Heroes 100, Erika Theme Deck, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Erika 016 is the Japanese Tamamushi deck trainer row; English Erika rows are separate comparison routes.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 016.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 16 and 100 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The gardener signs the deck",
+        "why_it_matters": "Erika 016 is the point where the whole deck admits whose world it is. The plants, perfume, maids, manners, and city have been pointing here. This row is the signature on the garden.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:017",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Maids",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:017",
+        "catalog_row_id": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:017",
+          "title": "Local Tamamushi City Gym row: Erika's Maids 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Erika's Maids 109",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 017 as Erika's Maids.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Maids 017 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Maids turns the deck into a household and a garden staff, not just a combat type. It makes Erika's identity social and cultivated.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Maids 017 as the Japanese Tamamushi deck row before comparing to English Gym Heroes 109.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_maids_017_trainer_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Maids, Tamamushi City Gym, Gym Heroes 109, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Erika's Maids 017 is the Japanese Tamamushi deck row; preserve it before English Gym Heroes comparison.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 017.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 109 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A garden needs attendants",
+        "why_it_matters": "Erika's Maids 017 is one of those trainer cards that makes the release feel lived in. It gives the garden attendants and routine. For a collector, that texture is why a Gym deck feels like a world instead of a mechanical list.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:018",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Perfume",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:018",
+        "catalog_row_id": "018"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:018",
+          "title": "Local Tamamushi City Gym row: Erika's Perfume 018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Erika's Perfume 110",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 018 as Erika's Perfume.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Erika's Perfume 018 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Perfume is the deck's most atmospheric trainer row: a card that makes the Gym Leader's aesthetic feel like a mechanic and a place at the same time.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Erika's Perfume 018 as the Japanese Tamamushi deck row before comparing to English Gym Heroes 110.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_erikas_perfume_018_trainer_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Perfume, Tamamushi City Gym, Gym Heroes 110, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Erika's Perfume 018 is the Japanese Tamamushi deck row; preserve it before English Gym Heroes comparison.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 018.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 110 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The scent of the deck",
+        "why_it_matters": "Erika's Perfume 018 is beautifully specific. It gives the deck something beyond species and attacks: atmosphere. The card helps explain why Erika's release feels cultivated rather than merely botanical.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:021",
+      "type": "card",
+      "context": {
+        "name_en": "Celadon City Gym",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:021",
+        "catalog_row_id": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:021",
+          "title": "Local Tamamushi City Gym row: Celadon City Gym 021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Celadon City Gym 107",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 021 as Celadon City Gym.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Celadon City Gym 021 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Celadon City Gym is the place-card hinge: the garden gets an address, and Erika's identity becomes a room with rules.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Celadon City Gym 021 as the Japanese Tamamushi deck place-card row before comparing to English Gym Heroes 107.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_celadon_city_gym_021_place_card_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Celadon City Gym, Tamamushi City Gym, Gym Heroes 107, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Celadon City Gym 021 is the Japanese deck place-card row; keep it separate from English Gym Heroes numbering.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 021.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 107 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The garden gets an address",
+        "why_it_matters": "Celadon City Gym 021 is the place where the deck becomes architecture. Kinebuchi's apparatus work matters here: the card is less about a character portrait than about giving Erika's world a room, a rule, and a map pin.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:027",
+      "type": "card",
+      "context": {
+        "name_en": "Good Manners",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:027",
+        "catalog_row_id": "027"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:027",
+          "title": "Local Tamamushi City Gym row: Good Manners 027",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 027 as Good Manners.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Good Manners 027 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Good Manners is the quiet thesis card of Erika's deck: this release is about style, conduct, and cultivation as much as battle math.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Good Manners 027 as a Japanese Tamamushi deck trainer row before comparing to other trainer print lanes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_good_manners_027_trainer_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Good Manners, Tamamushi City Gym, Erika deck, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Good Manners 027 is a Japanese Tamamushi deck trainer row; preserve its product route before broader trainer comparisons.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 027.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Do not collapse this row into generic trainer memory without naming the Japanese deck route.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "other trainer print equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The deck teaches conduct",
+        "why_it_matters": "Good Manners 027 is a tiny perfect Erika card. It turns personality into procedure: the deck is not only flowers and Pokemon, but a way of behaving. That makes it valuable catalog texture even if it is not the loud chase.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "other trainer print equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_tamamushi_city_gym_erika_19980725:028",
+      "type": "card",
+      "context": {
+        "name_en": "Double Colorless Energy",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_tamamushi_city_gym_erika_19980725",
+        "row_id": "jp_tcg_tamamushi_city_gym_erika_19980725:028",
+        "catalog_row_id": "028"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_tamamushi_city_gym_erika_19980725.json#row:jp_tcg_tamamushi_city_gym_erika_19980725:028",
+          "title": "Local Tamamushi City Gym row: Double Colorless Energy 028",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Tamamushi City Gym row 028 as Double Colorless Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Double Colorless Energy 028 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Double Colorless Energy 028 keeps the garden playable: even Erika's cultivated deck needs resource acceleration and neutral energy structure under the flowers.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Double Colorless Energy 028 as the Tamamushi deck row before comparing to Base, Starter, Gift Pack, Kuchiba, or other energy print lanes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "tamamushi_double_colorless_energy_028_energy_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Double Colorless Energy, Tamamushi City Gym, Base Set, Starter Pack, Gift Pack, Kuchiba City Gym, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Double Colorless Energy 028 is a Tamamushi deck row; do not collapse it into other launch-family, Gym deck, or English energy lanes.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_tamamushi_city_gym_erika_19980725 and local row id 028.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from Base Set, Starter Pack, Gift Pack, Kuchiba City Gym, English, and other Double Colorless Energy print lanes unless evidence names that release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "Starter Pack equivalence",
+            "Gift Pack equivalence",
+            "Kuchiba City Gym equivalence",
+            "English row equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The resource under the garden",
+        "why_it_matters": "Double Colorless Energy 028 is the useful reminder that Erika's garden still runs on costs. The flowers and manners are the visible identity, but the deck also needs a resource skeleton. Kinebuchi's apparatus row quietly holds that up.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "other energy print equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

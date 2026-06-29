@@ -1,0 +1,2407 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Pokemon Card web / ポケモンカード★web within the catalog-history deepening pass.",
+    "in_scope": [
+      "Pokemon Card web release dossier",
+      "selected web-route / nostalgia / Dark / legendary identity-teaching card dossiers",
+      "special identification rails for exact Japanese web1 row identity and source-gap honesty"
+    ],
+    "not_claiming": [
+      "complete 48-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card web",
+        "name_ja": "ポケモンカード★web",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "release_date": "2001-10-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json",
+          "title": "Local Japanese classic catalog: Pokemon Card web",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority",
+            "complete row coverage"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/web1",
+          "title": "TCGdex Japanese set endpoint: web1 / Pokemon Card web",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority",
+            "complete row coverage"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Pokemon Card web / ポケモンカード★web with an October 20, 2001 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog models 47 rows for Pokemon Card web while the release metadata expects 48 total rows and records one source gap: expected local number 039.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Pokemon Card web is modeled as a Japanese web release in the web series, using TCGdex set id web1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Pokemon Card web matters because old card memory is routed through a new interface-era apparatus: web distribution, e-Card/scannable context, and famous earlier identities all meet in one narrow release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Dark Venusaur, Dark Charizard, Moltres, Dark Blastoise, Articuno, and Zapdos; this tranche also hand-authors Surfing Pikachu, Nidoking, Raichu, Dark Alakazam, Dragonite, and Gengar because they teach web-route identity and nostalgia boundaries.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title ポケモンカード★web, TCGdex set id web1, card number, local id, rough source-row text, normalized collector label, and the explicit missing local number 039 source gap before treating a famous species, old-set, or promo match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_web_release_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Card web, ポケモンカード★web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, legendary bird, or web release.",
+          "summary": "Keep Pokemon Card web as Japanese web1 / ポケモンカード★web with route and row-number identity; do not collapse it into old-set, promo, or famous-species rows.",
+          "steps": [
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact release.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Preserve the explicit expected-row source gap at local number 039; do not silently fill it from other checklists.",
+            "Separate this release from older Base/Jungle/Fossil/Team Rocket style rows, promos, English equivalents, and later same-character reprints unless web1 set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "old-set equivalence",
+            "promo equivalence",
+            "English equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pokemon Card web — when old card memory goes through a new route",
+        "why_it_matters": "Pokemon Card web is a strange, compact bridge: the cards feel familiar, even nostalgic, but the route is new. That is exactly why agents need it. A famous name is not enough; the web apparatus, row number, and missing-row honesty are part of the object.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 48-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-025",
+      "type": "card",
+      "context": {
+        "name_en": "Surfing Pikachu",
+        "name_ja": "サーフィンピカチュ",
+        "normalized_label": "Surfing Pikachu",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-025",
+        "card_number": "025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-025",
+          "title": "Local Japanese classic catalog row: Surfing Pikachu / Pokemon Card web #025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-025",
+          "title": "TCGdex Japanese card endpoint: web1-025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-025 as Pokemon Card web / ポケモンカード★web card #025, with rough source-row text 'サーフィンピカチュ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Surfing Pikachu' as a normalized collector label while preserving the rough local source-row text 'サーフィンピカチュ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-025 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Surfing Pikachu matters in this tranche because the web release turns a famous novelty Pikachu into interface-era nostalgia, familiar but not interchangeable with earlier promo routes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Surfing Pikachu, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #025, local id web1-025, rough source-row text 'サーフィンピカチュ', and normalized label 'Surfing Pikachu'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Surfing Pikachu is a route-sensitive novelty name here: prior promo identity is relevant context, but the web1 row remains a distinct catalog object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-025_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Surfing Pikachu, サーフィンピカチュ, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Surfing Pikachu as Pokemon Card web / ポケモンカード★web #025, local id web1-025, source-row text 'サーフィンピカチュ'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-025 and local id web1-025.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 025, rough source-row text 'サーフィンピカチュ', and normalized collector label 'Surfing Pikachu' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Surfing Pikachu — Pokemon Card web #025",
+        "why_it_matters": "Surfing Pikachu shows why Pokemon Card web is a distribution story, not just a reprint story: the web release turns a famous novelty Pikachu into interface-era nostalgia, familiar but not interchangeable with earlier promo routes. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-033",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoking",
+        "name_ja": "ニドキング",
+        "normalized_label": "Nidoking",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-033",
+        "card_number": "033"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-033",
+          "title": "Local Japanese classic catalog row: Nidoking / Pokemon Card web #033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-033",
+          "title": "TCGdex Japanese card endpoint: web1-033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-033 as Pokemon Card web / ポケモンカード★web card #033, with rough source-row text 'ニドキング'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Nidoking' as a normalized collector label while preserving the rough local source-row text 'ニドキング'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-033 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Nidoking matters in this tranche because old Base-era power returns through a new distribution surface, making web feel like memory repackaged by infrastructure.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Nidoking, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #033, local id web1-033, rough source-row text 'ニドキング', and normalized label 'Nidoking'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-033_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Nidoking, ニドキング, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Nidoking as Pokemon Card web / ポケモンカード★web #033, local id web1-033, source-row text 'ニドキング'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-033 and local id web1-033.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 033, rough source-row text 'ニドキング', and normalized collector label 'Nidoking' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Nidoking — Pokemon Card web #033",
+        "why_it_matters": "Nidoking shows why Pokemon Card web is a distribution story, not just a reprint story: old Base-era power returns through a new distribution surface, making web feel like memory repackaged by infrastructure. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-036",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu",
+        "name_ja": "ライチュ",
+        "normalized_label": "Raichu",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-036",
+        "card_number": "036"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-036",
+          "title": "Local Japanese classic catalog row: Raichu / Pokemon Card web #036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-036",
+          "title": "TCGdex Japanese card endpoint: web1-036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-036 as Pokemon Card web / ポケモンカード★web card #036, with rough source-row text 'ライチュ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Raichu' as a normalized collector label while preserving the rough local source-row text 'ライチュ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-036 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Raichu matters in this tranche because it carries mascot-line gravity without collapsing into generic Pikachu-family demand.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Raichu, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #036, local id web1-036, rough source-row text 'ライチュ', and normalized label 'Raichu'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-036_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Raichu, ライチュ, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Raichu as Pokemon Card web / ポケモンカード★web #036, local id web1-036, source-row text 'ライチュ'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-036 and local id web1-036.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 036, rough source-row text 'ライチュ', and normalized collector label 'Raichu' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Raichu — Pokemon Card web #036",
+        "why_it_matters": "Raichu shows why Pokemon Card web is a distribution story, not just a reprint story: it carries mascot-line gravity without collapsing into generic Pikachu-family demand. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-037",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Alakazam",
+        "name_ja": "ダークアラカザム",
+        "normalized_label": "Dark Alakazam",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-037",
+        "card_number": "037"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-037",
+          "title": "Local Japanese classic catalog row: Dark Alakazam / Pokemon Card web #037",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-037",
+          "title": "TCGdex Japanese card endpoint: web1-037",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-037 as Pokemon Card web / ポケモンカード★web card #037, with rough source-row text 'ダークアラカザム'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Alakazam' as a normalized collector label while preserving the rough local source-row text 'ダークアラカザム'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-037 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Alakazam matters in this tranche because it brings the Team Rocket shadow vocabulary into the web frame, a reprint-feeling object that still has its own route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Alakazam, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #037, local id web1-037, rough source-row text 'ダークアラカザム', and normalized label 'Dark Alakazam'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Alakazam carries Team Rocket / Dark vocabulary through the web release; the Dark prefix and web route must travel together before an agent treats it as this exact object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-037_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Alakazam, ダークアラカザム, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Dark Alakazam as Pokemon Card web / ポケモンカード★web #037, local id web1-037, source-row text 'ダークアラカザム'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-037 and local id web1-037.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 037, rough source-row text 'ダークアラカザム', and normalized collector label 'Dark Alakazam' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Alakazam — Pokemon Card web #037",
+        "why_it_matters": "Dark Alakazam shows why Pokemon Card web is a distribution story, not just a reprint story: it brings the Team Rocket shadow vocabulary into the web frame, a reprint-feeling object that still has its own route. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-038",
+      "type": "card",
+      "context": {
+        "name_en": "Dragonite",
+        "name_ja": "ドラゴナイト",
+        "normalized_label": "Dragonite",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-038",
+        "card_number": "038"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-038",
+          "title": "Local Japanese classic catalog row: Dragonite / Pokemon Card web #038",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-038",
+          "title": "TCGdex Japanese card endpoint: web1-038",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-038 as Pokemon Card web / ポケモンカード★web card #038, with rough source-row text 'ドラゴナイト'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dragonite' as a normalized collector label while preserving the rough local source-row text 'ドラゴナイト'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-038 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dragonite matters in this tranche because it is a soft heavy-hitter: beloved, old, and newly framed by web distribution.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dragonite, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #038, local id web1-038, rough source-row text 'ドラゴナイト', and normalized label 'Dragonite'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-038_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dragonite, ドラゴナイト, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Dragonite as Pokemon Card web / ポケモンカード★web #038, local id web1-038, source-row text 'ドラゴナイト'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-038 and local id web1-038.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 038, rough source-row text 'ドラゴナイト', and normalized collector label 'Dragonite' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dragonite — Pokemon Card web #038",
+        "why_it_matters": "Dragonite shows why Pokemon Card web is a distribution story, not just a reprint story: it is a soft heavy-hitter: beloved, old, and newly framed by web distribution. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-041",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Venusaur",
+        "name_ja": "暗い金星",
+        "normalized_label": "Dark Venusaur",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-041",
+        "card_number": "041"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-041",
+          "title": "Local Japanese classic catalog row: Dark Venusaur / Pokemon Card web #041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-041",
+          "title": "TCGdex Japanese card endpoint: web1-041",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-041 as Pokemon Card web / ポケモンカード★web card #041, with rough source-row text '暗い金星'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Venusaur' as a normalized collector label while preserving the rough local source-row text '暗い金星'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-041 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Venusaur matters in this tranche because it gives one of the original starters a shadowed web-era second life, and the Dark prefix is part of the exact object identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Venusaur, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #041, local id web1-041, rough source-row text '暗い金星', and normalized label 'Dark Venusaur'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Venusaur carries Team Rocket / Dark vocabulary through the web release; the Dark prefix and web route must travel together before an agent treats it as this exact object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-041_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Venusaur, 暗い金星, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Dark Venusaur as Pokemon Card web / ポケモンカード★web #041, local id web1-041, source-row text '暗い金星'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-041 and local id web1-041.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 041, rough source-row text '暗い金星', and normalized collector label 'Dark Venusaur' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Venusaur — Pokemon Card web #041",
+        "why_it_matters": "Dark Venusaur shows why Pokemon Card web is a distribution story, not just a reprint story: it gives one of the original starters a shadowed web-era second life, and the Dark prefix is part of the exact object identity. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-042",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Charizard",
+        "name_ja": "暗いカリザード",
+        "normalized_label": "Dark Charizard",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-042",
+        "card_number": "042"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-042",
+          "title": "Local Japanese classic catalog row: Dark Charizard / Pokemon Card web #042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-042",
+          "title": "TCGdex Japanese card endpoint: web1-042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-042 as Pokemon Card web / ポケモンカード★web card #042, with rough source-row text '暗いカリザード'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Charizard' as a normalized collector label while preserving the rough local source-row text '暗いカリザード'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-042 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Charizard matters in this tranche because the obvious gravity well: Charizard, Rocket darkness, and web scarcity language all collide, but the exact web row must stay attached.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Charizard, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #042, local id web1-042, rough source-row text '暗いカリザード', and normalized label 'Dark Charizard'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Charizard carries Team Rocket / Dark vocabulary through the web release; the Dark prefix and web route must travel together before an agent treats it as this exact object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-042_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Charizard, 暗いカリザード, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Dark Charizard as Pokemon Card web / ポケモンカード★web #042, local id web1-042, source-row text '暗いカリザード'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-042 and local id web1-042.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 042, rough source-row text '暗いカリザード', and normalized collector label 'Dark Charizard' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Charizard — Pokemon Card web #042",
+        "why_it_matters": "Dark Charizard shows why Pokemon Card web is a distribution story, not just a reprint story: the obvious gravity well: Charizard, Rocket darkness, and web scarcity language all collide, but the exact web row must stay attached. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-043",
+      "type": "card",
+      "context": {
+        "name_en": "Moltres",
+        "name_ja": "モルトレス",
+        "normalized_label": "Moltres",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-043",
+        "card_number": "043"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-043",
+          "title": "Local Japanese classic catalog row: Moltres / Pokemon Card web #043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-043",
+          "title": "TCGdex Japanese card endpoint: web1-043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-043 as Pokemon Card web / ポケモンカード★web card #043, with rough source-row text 'モルトレス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Moltres' as a normalized collector label while preserving the rough local source-row text 'モルトレス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-043 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Moltres matters in this tranche because one legendary bird helps the web set feel like a curated memory cabinet rather than a random pile of reprints.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Moltres, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #043, local id web1-043, rough source-row text 'モルトレス', and normalized label 'Moltres'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-043_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Moltres, モルトレス, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Moltres as Pokemon Card web / ポケモンカード★web #043, local id web1-043, source-row text 'モルトレス'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-043 and local id web1-043.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 043, rough source-row text 'モルトレス', and normalized collector label 'Moltres' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Moltres — Pokemon Card web #043",
+        "why_it_matters": "Moltres shows why Pokemon Card web is a distribution story, not just a reprint story: one legendary bird helps the web set feel like a curated memory cabinet rather than a random pile of reprints. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-044",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Blastoise",
+        "name_ja": "ダークブラストワイズ",
+        "normalized_label": "Dark Blastoise",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-044",
+        "card_number": "044"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-044",
+          "title": "Local Japanese classic catalog row: Dark Blastoise / Pokemon Card web #044",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-044",
+          "title": "TCGdex Japanese card endpoint: web1-044",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-044 as Pokemon Card web / ポケモンカード★web card #044, with rough source-row text 'ダークブラストワイズ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Blastoise' as a normalized collector label while preserving the rough local source-row text 'ダークブラストワイズ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-044 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Blastoise matters in this tranche because it completes the starter-darkness pressure beside Venusaur and Charizard, with a rough local source text that needs preservation.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Blastoise, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #044, local id web1-044, rough source-row text 'ダークブラストワイズ', and normalized label 'Dark Blastoise'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Blastoise carries Team Rocket / Dark vocabulary through the web release; the Dark prefix and web route must travel together before an agent treats it as this exact object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-044_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Blastoise, ダークブラストワイズ, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Dark Blastoise as Pokemon Card web / ポケモンカード★web #044, local id web1-044, source-row text 'ダークブラストワイズ'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-044 and local id web1-044.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 044, rough source-row text 'ダークブラストワイズ', and normalized collector label 'Dark Blastoise' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Blastoise — Pokemon Card web #044",
+        "why_it_matters": "Dark Blastoise shows why Pokemon Card web is a distribution story, not just a reprint story: it completes the starter-darkness pressure beside Venusaur and Charizard, with a rough local source text that needs preservation. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-045",
+      "type": "card",
+      "context": {
+        "name_en": "Articuno",
+        "name_ja": "articuno",
+        "normalized_label": "Articuno",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-045",
+        "card_number": "045"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-045",
+          "title": "Local Japanese classic catalog row: Articuno / Pokemon Card web #045",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-045",
+          "title": "TCGdex Japanese card endpoint: web1-045",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-045 as Pokemon Card web / ポケモンカード★web card #045, with rough source-row text 'articuno'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Articuno' as a normalized collector label while preserving the rough local source-row text 'articuno'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-045 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Articuno matters in this tranche because it gives the set cold legendary balance and keeps the birds visible as a trio-like memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Articuno, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #045, local id web1-045, rough source-row text 'articuno', and normalized label 'Articuno'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-045_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Articuno, articuno, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Articuno as Pokemon Card web / ポケモンカード★web #045, local id web1-045, source-row text 'articuno'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-045 and local id web1-045.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 045, rough source-row text 'articuno', and normalized collector label 'Articuno' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Articuno — Pokemon Card web #045",
+        "why_it_matters": "Articuno shows why Pokemon Card web is a distribution story, not just a reprint story: it gives the set cold legendary balance and keeps the birds visible as a trio-like memory. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-046",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "ザプドス",
+        "normalized_label": "Zapdos",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-046",
+        "card_number": "046"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-046",
+          "title": "Local Japanese classic catalog row: Zapdos / Pokemon Card web #046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-046",
+          "title": "TCGdex Japanese card endpoint: web1-046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-046 as Pokemon Card web / ポケモンカード★web card #046, with rough source-row text 'ザプドス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Zapdos' as a normalized collector label while preserving the rough local source-row text 'ザプドス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-046 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Zapdos matters in this tranche because it completes the legendary bird voltage inside the web release, a familiar icon under a different apparatus.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Zapdos, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #046, local id web1-046, rough source-row text 'ザプドス', and normalized label 'Zapdos'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-046_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Zapdos, ザプドス, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Zapdos as Pokemon Card web / ポケモンカード★web #046, local id web1-046, source-row text 'ザプドス'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-046 and local id web1-046.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 046, rough source-row text 'ザプドス', and normalized collector label 'Zapdos' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Zapdos — Pokemon Card web #046",
+        "why_it_matters": "Zapdos shows why Pokemon Card web is a distribution story, not just a reprint story: it completes the legendary bird voltage inside the web release, a familiar icon under a different apparatus. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_pokemon_card_web_20011020:web1-047",
+      "type": "card",
+      "context": {
+        "name_en": "Gengar",
+        "name_ja": "ジェンガー",
+        "normalized_label": "Gengar",
+        "release_family_id": "jp_tcg_pokemon_card_web_20011020",
+        "local_id": "web1-047",
+        "card_number": "047"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_pokemon_card_web_20011020.json#row:jp_tcg_pokemon_card_web_20011020:web1-047",
+          "title": "Local Japanese classic catalog row: Gengar / Pokemon Card web #047",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/web1-047",
+          "title": "TCGdex Japanese card endpoint: web1-047",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_pokemon_card_web_20011020:web1-047 as Pokemon Card web / ポケモンカード★web card #047, with rough source-row text 'ジェンガー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Gengar' as a normalized collector label while preserving the rough local source-row text 'ジェンガー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_pokemon_card_web_20011020:web1-047 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Gengar matters in this tranche because it adds spooky old charisma to the curated web memory, another famous name that must not outrun the set rail.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Gengar, preserve Japanese title ポケモンカード★web, TCGdex set id web1, card #047, local id web1-047, rough source-row text 'ジェンガー', and normalized label 'Gengar'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_pokemon_card_web_20011020_web1-047_web_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Gengar, ジェンガー, Pokemon Card web, web1, e-Card, Dark Charizard, Dark Blastoise, Surfing Pikachu, or legendary bird.",
+          "summary": "Preserve Gengar as Pokemon Card web / ポケモンカード★web #047, local id web1-047, source-row text 'ジェンガー'; do not accept old-set, promo, or famous-species matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_pokemon_card_web_20011020:web1-047 and local id web1-047.",
+            "Require Japanese title ポケモンカード★web or TCGdex set id web1 before naming this exact catalog row.",
+            "Preserve card number 047, rough source-row text 'ジェンガー', and normalized collector label 'Gengar' separately.",
+            "Treat web/e-Card distribution context as a route identity rail; similar artwork, species, or Dark prefix from older sets is not enough.",
+            "Remember that the release file has one explicit source gap at expected local number 039; do not fill missing web rows by inference.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "older-set equivalence",
+            "promo equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "complete row coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Gengar — Pokemon Card web #047",
+        "why_it_matters": "Gengar shows why Pokemon Card web is a distribution story, not just a reprint story: it adds spooky old charisma to the curated web memory, another famous name that must not outrun the set rail. The agent should hold the web route, set id, and row number alongside the nostalgia.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority",
+          "complete row coverage"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

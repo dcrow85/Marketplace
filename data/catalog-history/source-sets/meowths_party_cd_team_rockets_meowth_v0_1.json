@@ -1,0 +1,739 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Meowth's Party CD insert Team Rocket's Meowth",
+    "release_family_id": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999",
+    "notes": [
+      "Deepens the October 27, 1999 Meowth's Party CD insert source slice.",
+      "Covers the single modeled source-pinned row: Team Rocket's Meowth source index 133.",
+      "Treats the object as a music / anime / card contact point: a Pikachu Records mini CD single carrying a Team Rocket's Meowth promo."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999",
+      "type": "release",
+      "context": {
+        "name_en": "Meowth's Party CD insert",
+        "name_ja": "ニャースのパーティ CD封入",
+        "release_family_id": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999",
+        "release_date": "1999-10-27",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Meowth's Party CD single",
+          "Pikachu Records music route",
+          "Team Rocket's Meowth source index 133",
+          "Inuko Inuyama / Meowth voice route",
+          "Akihito Toda lyrics and Hirokazu Tanaka composition",
+          "Kunihiko Yuyama animation-and-card bridge",
+          "Pikachu Records logo as visible card tell"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999:133",
+            "name": "Team Rocket's Meowth",
+            "number": "133",
+            "why": "Team Rocket's Meowth is the chase because the route is almost absurdly coherent: Meowth sings the ending theme, Inuko Inuyama performs it, Pikachu Records sells the single, and the card turns that performance into a Team Rocket-owned promo object.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Kunihiko Yuyama",
+            "row_count": 1,
+            "examples": [
+              "Team Rocket's Meowth"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          },
+          {
+            "name": "Inuko Inuyama / Akihito Toda / Hirokazu Tanaka",
+            "row_count": 1,
+            "examples": [
+              "Meowth's Party"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "card illustration credit",
+              "complete music-production credit list"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete CD packaging census",
+          "official copy count",
+          "sealed CD status"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: Meowth's Party CD insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket%27s_Meowth_(Wizards_Promo_18)",
+          "title": "Bulbapedia: Team Rocket's Meowth (Wizards Promo 18)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete print-variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth%27s_Party_(single)",
+          "title": "Bulbapedia: Meowth's Party (single)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth%27s_Party",
+          "title": "Bulbapedia: Meowth's Party",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kunihiko_Yuyama",
+          "title": "Bulbapedia: Kunihiko Yuyama",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Inuko_Inuyama",
+          "title": "Bulbapedia: Inuko Inuyama",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete performer biography",
+            "card illustration credit",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Akihito_Toda",
+          "title": "Bulbapedia: Akihito Toda",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete lyricist biography",
+            "card illustration credit",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hirokazu_Tanaka",
+          "title": "Bulbapedia: Hirokazu Tanaka",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete composer biography",
+            "card illustration credit",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local row and Bulbapedia place the Meowth's Party CD single and Team Rocket's Meowth insert route on October 27, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The route is the Pikachu Records Meowth's Party mini CD single, not a booster, deck, tournament prize, ordinary Wizards Black Star Promo distribution, or Pokemon Web e-Card release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Team Rocket's Meowth source index 133.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia identifies Meowth's Party as a Pikachu Records mini CD single with catalogue number ZMDP-1027, released October 27, 1999, with five tracks including Meowth's Party, Meowth's Song 2000, So They Say, Meow, the karaoke version, and Meowth's Monologue.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia identifies Meowth's Party as the seventh Japanese ending theme of the original series, debuting in EP117, with Meowth singing and a 3-D computer graphics ending sequence that made Team Rocket's Meowth a music-and-animation object before it was a CD insert.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Team Rocket's Meowth artwork to Kunihiko Yuyama / 湯山邦彦; Yuyama's profile identifies him as a founding OLM member, executive director / director across Pokemon animation, and an illustrator for the TCG.",
+          "sources": [
+            "s2",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Meowth's Party page credits Meowth / Inuko Inuyama as performer, Akihito Toda as lyricist, and Hirokazu Tanaka as composer and arranger; their profiles tie the song to major Pokemon voice, writing, music, and Creatures-era production histories.",
+          "sources": [
+            "s4",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Team Rocket's Meowth, Japanese ロケット団のニャース / Rocket Gang's Nyarth, a Colorless Basic Rocket-class Pokemon card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia transcribes the attack as Miraculous Comeback / だいぎゃくてん?, which flips coins equal to Pokemon in play and can damage Team Rocket's Meowth for tails; the self-risky comeback mechanic fits the chaos of the singing Team Rocket mascot.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Japanese Unnumbered Promotional print was included with Meowth's Party and features the Pikachu Records logo in place of an expansion symbol; it also notes the Japanese promo has a clause under the card name saying the card cannot evolve into Persian.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the card across Wizards Black Star Promo 18, the Japanese Meowth's Party unnumbered promo, and the later Japanese Pokemon Web 039/048 e-Card layout; agents should preserve that lineage without treating the releases as interchangeable physical objects.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c12",
+          "field": "release.boundary",
+          "text": "Agents should keep this CD insert route separate from Wizards Black Star Promo 18 Pokemon League / Millennium Dome distribution, Pokemon Web 039/048, generic Team Rocket's Meowth listings, other Meowth music media, and CD-only lots without card evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c10",
+            "c11"
+          ]
+        },
+        {
+          "id": "c13",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Team Rocket's Meowth plus Meowth's Party CD route plus visible Pikachu Records / no-evolve-into-Persian evidence; catalog facts do not prove possession, authenticity, condition, price, complete CD state, sealed CD state, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c10",
+            "c12"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "meowths_party_1999_cd_insert_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, CD lot, slab, or agent memory says Meowth's Party, Nyarth no Party, ニャースのパーティ, Pikachu Records, Team Rocket's Meowth, Rocket Gang's Nyarth, ロケット団のニャース, CD promo, source index 133, or October 27, 1999.",
+          "summary": "Confirm the Meowth's Party CD route and Team Rocket's Meowth print tells before allowing the match to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact route language: Meowth's Party, ニャースのパーティ, Pikachu Records, mini CD, CD insert, bonus card, Team Rocket's Meowth, or generic Wizards Promo 18.",
+            "Confirm the offered card is Team Rocket's Meowth / ロケット団のニャース and not a generic Meowth, Pokemon Web 039/048, or another Team Rocket card.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "Inspect the expansion-symbol area for the Pikachu Records logo rather than a Wizards promo star, Pokemon Web e-Card layout, or unreadable symbol area.",
+            "Inspect the Japanese promo for the clause under the card name saying it cannot evolve into Persian; preserve unreadable text as missing evidence.",
+            "If CD provenance is claimed, request CD, case, insert poster, lyrics sheet, obi, tray, or packaging evidence separately; the card alone does not prove complete CD state.",
+            "Keep price, grade, authenticity, condition, official copy count, sealed CD status, complete CD packaging, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "sealed CD status",
+            "complete CD packaging census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Meowth's Party CD insert: the talking cat gets the room",
+        "why_it_matters": "This route is Pokemon assembly at full volume. Meowth is not simply a species here; he is a voice, a song, a Team Rocket personality, a 3-D ending theme, a Pikachu Records mini CD, and then a card with its own chaotic comeback attack. The CD single turns the anime's weirdest little performer into a physical object collectors can hold.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c10",
+          "c13"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "sealed CD status",
+          "complete CD packaging census",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999:133",
+      "type": "card",
+      "context": {
+        "name_en": "Team Rocket's Meowth",
+        "name_ja": "ロケット団のニャース",
+        "row_id": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999:133",
+        "release_family_id": "jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999",
+        "source_index": "133"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "why_it_matters": "Team Rocket's Meowth matters because it is a character card in the deepest sense. It is not only Meowth; it is the speaking, scheming, singing Team Rocket Meowth, pulled through Yuyama's animation world and Pikachu Records' music route into a promo card.",
+        "identity": {
+          "name_en": "Team Rocket's Meowth",
+          "name_ja": "ロケット団のニャース",
+          "number": "133",
+          "category": "Pokemon",
+          "rarity_signal": "Unnumbered Promotional / no printed card number",
+          "authority_label": "fact"
+        },
+        "artist": {
+          "name": "Kunihiko Yuyama",
+          "why": "Yuyama is a striking credit because he is not merely a card illustrator in this context; he is one of the people who shaped Pokemon animation itself. A Meowth music promo illustrated by the longtime animation director makes the card feel like an anime artifact before it feels like a checklist entry.",
+          "authority_label": "fact",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ]
+        },
+        "collector_texture": [
+          "Pikachu Records logo in the symbol area",
+          "cannot evolve into Persian clause on the Japanese promo",
+          "Miraculous Comeback / だいぎゃくてん? attack",
+          "Wizards Promo 18 and Pokemon Web 039/048 lineage trap",
+          "Inuko Inuyama / Meowth performance route"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_133_meowth_s_party_cd_insert_october_27_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: Meowth's Party CD insert Team Rocket's Meowth row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Team_Rocket%27s_Meowth_(Wizards_Promo_18)",
+          "title": "Bulbapedia: Team Rocket's Meowth (Wizards Promo 18)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete print-variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth%27s_Party_(single)",
+          "title": "Bulbapedia: Meowth's Party (single)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Meowth%27s_Party",
+          "title": "Bulbapedia: Meowth's Party",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kunihiko_Yuyama",
+          "title": "Bulbapedia: Kunihiko Yuyama",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Inuko_Inuyama",
+          "title": "Bulbapedia: Inuko Inuyama",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete performer biography",
+            "card illustration credit",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia identify source index 133 as Team Rocket's Meowth, Japanese ロケット団のニャース / Rocket Gang's Nyarth.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says the Japanese Unnumbered Promotional print was included with Meowth's Party, released on October 27, 1999.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Team Rocket's Meowth to Kunihiko Yuyama / 湯山邦彦.",
+          "sources": [
+            "s2",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Yuyama profile identifies him as a founding OLM member and longtime Pokemon animation director, including director/storyboard credits for early Pokemon movies and an executive-director role across the TV series.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia transcribes the attack as Miraculous Comeback / だいぎゃくてん?, a coin-flip attack that can damage Team Rocket's Meowth itself on tails.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Japanese Meowth's Party print uses the Pikachu Records logo in place of an expansion symbol and has a clause under the card name stating that the card cannot evolve into Persian.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Bulbapedia places the card across Wizards Black Star Promo 18, the Japanese Meowth's Party unnumbered promo, and Pokemon Web 039/048, so agents should not treat a name match as a release match.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia identifies Meowth's Party as an anime ending performed by Meowth / Inuko Inuyama, with Jessie and James as guests, making this card's route unusually character-native: the singing character is also the card subject.",
+          "sources": [
+            "s4",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "release.boundary",
+          "text": "Agents should not match by Team Rocket's Meowth, Wizards Promo 18, or Yuyama credit alone; the row requires the Meowth's Party CD route and the visible Pikachu Records / no-evolve-into-Persian print evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "The catalog can make the route and visible-tell checklist legible, but it does not prove the seller owns the card, that a shown card is authentic, that the CD is complete or sealed, that condition is true, that price is fair, or that the row is spendable.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c6",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "meowths_party_1999_team_rockets_meowth_133_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A candidate card, image crop, binder page, want, seller response, or slab says Team Rocket's Meowth, Rocket Gang's Nyarth, ロケット団のニャース, Meowth's Party, Pikachu Records, Wizards Promo 18, Pokemon Web 039/048, or source index 133.",
+          "summary": "Treat the Meowth's Party CD-promo tells as required checks before elevating a candidate beyond a generic Team Rocket's Meowth match.",
+          "steps": [
+            "Confirm the name line reads Team Rocket's Meowth / ロケット団のニャース; do not match by Meowth artwork, Team Rocket ownership, or Yuyama credit alone.",
+            "Confirm the card is the Japanese Unnumbered Promotional / Meowth's Party print, not Wizards Black Star Promo 18, Pokemon Web 039/048, or a later Meowth card.",
+            "Check for the Pikachu Records logo in the symbol area; a Wizards promo star, e-Card layout, Pokemon Web number, or unreadable symbol area should lower confidence.",
+            "Check for the Japanese clause under the card name saying this card cannot evolve into Persian; record unreadable text as missing evidence rather than pass.",
+            "If CD provenance is offered, verify Meowth's Party / ニャースのパーティ specifically; other Pikachu Records CDs are adjacent routes, not substitutes.",
+            "If a loose card is offered, request seller-controlled front/back photos and, for sale-grade use, fresh possession proof before treating it as more than a catalog match.",
+            "Keep price, grade, authenticity, condition, sealed CD state, complete insert state, and spendability separate from this identification packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed CD status",
+            "complete insert state",
+            "complete Team Rocket's Meowth variant census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Team Rocket's Meowth 133: a promo with a stage light on it",
+        "why_it_matters": "Team Rocket's Meowth is special here because the card feels like it walked out of the ending credits still singing. Yuyama's animation authority, Inuko Inuyama's Meowth voice, Pikachu Records, and the CD insert route all gather around one little promo. The hard checks keep that romance honest: Pikachu Records symbol, no-evolve clause, and CD route or it is just a similar-looking Meowth.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "sealed CD status",
+          "complete insert state",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

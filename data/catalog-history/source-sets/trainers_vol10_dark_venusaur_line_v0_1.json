@@ -1,0 +1,778 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the Pokemon Card Trainers Vol. 10 insert source slice, emphasizing Dark Ivysaur and Dark Venusaur as a magazine-insert evolution pair tied to Pokemon Trading Card Game 2: The Invasion of Team GR!, Neo-era Dark Pokemon design, GB-symbol identity, Shin-ichi Yoshida art, and route traps against Pokemon Web, Best of Game, Winner-stamped, Jumbo, Rocket, and ordinary Venusaur-line memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Dark Ivysaur row 225",
+      "Dark Venusaur row 226",
+      "Pokemon Card Trainers Vol. 10 magazine route",
+      "Game Boy / Team GR tie",
+      "GB-symbol print identity",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Trainers Vol. 10 archive",
+      "complete magazine-object ledger",
+      "official copy count",
+      "complete Dark Ivysaur/Dark Venusaur print census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001",
+        "name_en": "Pokemon Card Trainers Vol. 10 insert (March 1, 2001)",
+        "release_date": "2001-03-01",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "magazine insert as videogame bridge",
+          "Team GR / Game Boy Color tie",
+          "Dark Pokemon design after Team Rocket",
+          "GB symbol instead of expansion symbol",
+          "Dark Ivysaur and Dark Venusaur as an evolution pair",
+          "Pokemon Web and Best of Game reprint traps"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001:226",
+            "name": "Dark Venusaur",
+            "why": "The holofoil final-stage prize energy sits here: a Dark Venusaur whose magazine route, GB symbol, and Team GR tie are the real collector identity.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001:225",
+            "name": "Dark Ivysaur",
+            "why": "Dark Ivysaur is the bridge card that proves the release is an evolution pair, not just a Venusaur headline.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Shin-ichi Yoshida",
+            "row_count": 2,
+            "examples": [
+              "Dark Ivysaur",
+              "Dark Venusaur"
+            ],
+            "why": "Yoshida gives both rows their shared Team GR / Dark Pokemon texture, and his credit connects the Japanese magazine inserts to later Pokemon Web and Best of Game memory without making those routes equivalent.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Dark Pokemon print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Pokemon Card Trainers Vol. 10 archive",
+          "complete magazine-object ledger",
+          "official copy count",
+          "complete Dark Ivysaur/Dark Venusaur print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models two Pokemon Card Trainers Vol. 10 insert rows: Dark Ivysaur row 225 and Dark Venusaur row 226.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local source rows derive from Bulbapedia raw wikitext rows 225-226, both carrying the promotion note Pokemon Card Trainers Vol. 10 insert (March 1, 2001).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia's card pages say the Japanese prints were included in Volume 10 of Pokemon Card Trainers magazine and feature a GB symbol in place of an expansion symbol, referencing Pokemon Trading Card Game 2: The Invasion of Team GR!",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia describes the prints as using the Neo Series layout and the aesthetic differences common to Dark Pokemon cards from this period.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia categorizes both Dark Ivysaur and Dark Venusaur as illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This source group matters because it is not merely a magazine freebie: it is a physical bridge between Pokemon Card Trainers, the Game Boy Color Team GR sequel, and late Neo-era Dark Pokemon visual language.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pokemon Card Trainers Vol. 10 route, March 1 2001 date, rows 225-226 pair identity, GB-symbol print context, Team GR tie, Neo/Dark Pokemon layout context, Yoshida credit, Dark Venusaur holofoil caveat, and non-equivalence with Pokemon Web, Best of Game, Winner-stamped, Jumbo, Rocket, and generic Venusaur-line memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Pokemon Card Trainers Vol. 10 — Team GR leaks out of the Game Boy",
+        "why_it_matters": "This release has that lovely late-WoC Japanese feeling where the card game, the magazines, and the Game Boy games are all talking to each other. Dark Ivysaur and Dark Venusaur are not just darker versions of familiar Grass evolutions. They are magazine-carried artifacts from the Team GR moment, with a GB symbol where a normal expansion symbol would sit and Neo-era Dark Pokemon design language around them. The route matters because the cards later echo through Pokemon Web, Best of Game, Winner-stamped, and Jumbo memories. A good agent should see the Venusaur-line gravity, then keep the magazine and Game Boy hinge intact.",
+        "not_claiming": [
+          "complete release history",
+          "complete Pokemon Card Trainers Vol. 10 archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Trainers Vol. 10 insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 225-226",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete Pokemon Card Trainers Vol. 10 archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Dark Ivysaur (Best of Game 6)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Ivysaur_(Best_of_Game_6)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Dark Venusaur (Best of Game 7)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Venusaur_(Best_of_Game_7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol10_dark_venusaur_line_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Card Trainers Vol. 10, March 1 2001, Team GR, GB symbol, Dark Ivysaur, Dark Venusaur, Bad Fushigisou, Bad Fushigibana, Shin-ichi Yoshida, Pokemon Web, Best of Game, Winner, Jumbo, or rows 225/226.",
+          "summary": "Preserve the Pokemon Card Trainers Vol. 10 magazine route and GB-symbol Team GR context before accepting either card as this source slice.",
+          "steps": [
+            "Confirm Pokemon Card Trainers Vol. 10 insert context and March 1, 2001 source date.",
+            "Preserve the pair relationship: Dark Ivysaur row 225 and Dark Venusaur row 226 share the same source promotion note.",
+            "Preserve GB-symbol context and the tie to Pokemon Trading Card Game 2: The Invasion of Team GR!",
+            "Preserve Neo Series / Dark Pokemon layout context without treating ordinary Rocket, Pokemon Web, or Best of Game route memory as enough.",
+            "Preserve Shin-ichi Yoshida as source-page artist context for both rows, scoped as catalog/source metadata rather than seller-card proof.",
+            "Use seller photos for physical format, card face/back, stock/gloss, GB symbol, holofoil status, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete Pokemon Card Trainers Vol. 10 archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Dark Ivysaur/Dark Venusaur print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001:225",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001",
+        "name_en": "Dark Ivysaur",
+        "name_ja": "わるいフシギソウ",
+        "romaji": "Bad Fushigisou",
+        "local_id": "225",
+        "card_type": "Grass Pokemon",
+        "rarity_or_signal": "Unnumbered Promotional / Pokemon Card Trainers Vol. 10 insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Shin-ichi Yoshida",
+        "why_it_matters": "Dark Ivysaur keeps the release from becoming only a Dark Venusaur chase note; it is the evolution bridge that makes the Team GR pair legible.",
+        "collector_signals": [
+          "Pokemon Card Trainers Vol. 10 route",
+          "GB symbol in place of expansion symbol",
+          "Team GR videogame tie",
+          "Neo Series / Dark Pokemon layout",
+          "paired with Dark Venusaur row 226"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Ivysaur as Pokemon Card Trainers Vol. 10 insert row 225.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Dark Ivysaur's Japanese name as わるいフシギソウ and gives Bad Fushigisou as the romanized/translated name.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia categorizes Dark Ivysaur as illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says this Japanese print uses the Neo Series layout, carries the aesthetic differences common to Dark Pokemon cards from this period, and features a GB symbol in place of an expansion symbol.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia connects the card to later Pokemon Web, Best of Game, Winner-stamped, and Jumbo memories; those are lineage/comparison contexts rather than the same route as the Pokemon Card Trainers Vol. 10 insert.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Dark Ivysaur matters because it is the quiet hinge of the pair: the middle evolution that turns a Dark Venusaur chase into a visible Team GR evolution line.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Dark Ivysaur row 225, わるいフシギソウ / Bad Fushigisou identity, Pokemon Card Trainers Vol. 10 route, GB symbol, Team GR tie, Yoshida credit, and non-equivalence with Pokemon Web, Best of Game, Winner-stamped, Jumbo, Rocket, and generic Ivysaur/Venusaur-line memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Dark Ivysaur — the middle evolution that keeps the route honest",
+        "why_it_matters": "Dark Ivysaur is easy to under-love next to Dark Venusaur, but it is the card that makes this release feel assembled rather than merely chased. It says: this was a pair, an evolution line fragment, a Team GR magazine moment. The GB symbol and Neo-era Dark Pokemon look are doing protocol work here; they keep the row out of generic Rocket or Pokemon Web memory. Shin-ichi Yoshida's art gives the card that rougher Dark Pokemon energy without making later reprints equivalent.",
+        "not_claiming": [
+          "complete release history",
+          "complete Pokemon Card Trainers Vol. 10 archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Pokemon Card Trainers Vol. 10 Dark Ivysaur 225",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001.json#row:jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001:225",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext row 225",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete Pokemon Card Trainers Vol. 10 archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Dark Ivysaur (Best of Game 6)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Ivysaur_(Best_of_Game_6)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol10_225_dark_ivysaur_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Ivysaur, わるいフシギソウ, Bad Fushigisou, Pokemon Card Trainers Vol. 10, Team GR, GB symbol, Shin-ichi Yoshida, Pokemon Web, Best of Game, Winner, Jumbo, Rocket, or row 225.",
+          "summary": "Keep Dark Ivysaur row 225 pinned to Pokemon Card Trainers Vol. 10 and the Team GR / GB-symbol route.",
+          "steps": [
+            "Require row 225 and Pokemon Card Trainers Vol. 10 insert context.",
+            "Preserve Japanese/romaji name context: わるいフシギソウ / Bad Fushigisou.",
+            "Confirm GB symbol in place of expansion symbol and Team GR / Game Boy Color tie.",
+            "Preserve Neo Series / Dark Pokemon layout context without treating ordinary Rocket, Pokemon Web, or Best of Game memory as enough.",
+            "Preserve the pair relationship with Dark Venusaur row 226.",
+            "Use seller photos for physical format, card face/back, stock/gloss, GB symbol, holofoil status, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete Pokemon Card Trainers Vol. 10 archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Dark Ivysaur print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001:226",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001",
+        "name_en": "Dark Venusaur",
+        "name_ja": "わるいフシギバナ",
+        "romaji": "Bad Fushigibana",
+        "local_id": "226",
+        "card_type": "Grass Pokemon",
+        "rarity_or_signal": "Holofoil Unnumbered Promotional / Pokemon Card Trainers Vol. 10 insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Shin-ichi Yoshida",
+        "why_it_matters": "Dark Venusaur is the loud card: final evolution, holofoil, Team GR darkness, and enough later reprint pressure that route discipline becomes essential.",
+        "collector_signals": [
+          "holofoil Pokemon Card Trainers Vol. 10 route",
+          "GB symbol in place of expansion symbol",
+          "Team GR videogame tie",
+          "Neo Series / Dark Pokemon layout",
+          "paired with Dark Ivysaur row 225"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dark Venusaur as Pokemon Card Trainers Vol. 10 insert row 226.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Dark Venusaur's Japanese name as わるいフシギバナ and gives Bad Fushigibana as the romanized/translated name.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia categorizes Dark Venusaur as illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Dark Venusaur was first available in Japan as a Holofoil unnumbered promotional card alongside Dark Ivysaur in Pokemon Card Trainers Vol. 10.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Japanese print uses the Neo Series layout, carries the aesthetic differences common to Dark Pokemon cards from this period, and features a GB symbol in place of an expansion symbol.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "Bulbapedia connects the card to later Pokemon Web, Best of Game, Winner-stamped, and Jumbo memories; those are lineage/comparison contexts rather than the same route as the Pokemon Card Trainers Vol. 10 insert.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Dark Venusaur matters because it concentrates the release's appeal: a holofoil final evolution whose strongest identity is not just Venusaur, but Venusaur filtered through Team GR, GB symbol, and magazine route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Dark Venusaur row 226, わるいフシギバナ / Bad Fushigibana identity, Pokemon Card Trainers Vol. 10 route, holofoil caveat, GB symbol, Team GR tie, Yoshida credit, and non-equivalence with Pokemon Web, Best of Game, Winner-stamped, Jumbo, Rocket, and generic Venusaur-line memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Dark Venusaur — the holofoil Team GR bloom",
+        "why_it_matters": "Dark Venusaur has the easy gravity: starter final evolution, holofoil, villain-era aura. But the important part is how it was assembled. This is not Base Venusaur nostalgia in a black coat. It is Team GR videogame memory entering the paper TCG through Pokemon Card Trainers Vol. 10, marked by a GB symbol and Shin-ichi Yoshida's Dark Pokemon texture. Later English and web-era echoes make the card feel familiar; the magazine route is what makes it precise.",
+        "not_claiming": [
+          "complete release history",
+          "complete Pokemon Card Trainers Vol. 10 archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Pokemon Card Trainers Vol. 10 Dark Venusaur 226",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001.json#row:jp_promo_unnumbered_wotc_225_pok_mon_card_trainers_vol_10_insert_march_1_2001:226",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext row 226",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete Pokemon Card Trainers Vol. 10 archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Dark Venusaur (Best of Game 7)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Venusaur_(Best_of_Game_7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol10_226_dark_venusaur_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Venusaur, わるいフシギバナ, Bad Fushigibana, Pokemon Card Trainers Vol. 10, Team GR, GB symbol, Shin-ichi Yoshida, holofoil, Pokemon Web, Best of Game, Winner, Jumbo, Rocket, or row 226.",
+          "summary": "Keep Dark Venusaur row 226 pinned to Pokemon Card Trainers Vol. 10 and its holofoil Team GR / GB-symbol route.",
+          "steps": [
+            "Require row 226 and Pokemon Card Trainers Vol. 10 insert context.",
+            "Preserve Japanese/romaji name context: わるいフシギバナ / Bad Fushigibana.",
+            "Confirm holofoil unnumbered promotional context for the Japanese Vol. 10 print.",
+            "Confirm GB symbol in place of expansion symbol and Team GR / Game Boy Color tie.",
+            "Preserve Shin-ichi Yoshida artist context and the paired relationship with Dark Ivysaur row 225.",
+            "Separate from Pokemon Web, Best of Game, Winner-stamped, Jumbo, Rocket, and generic Venusaur-line memories unless the route evidence explicitly supports those lanes.",
+            "Use seller photos for physical format, card face/back, stock/gloss, GB symbol, holofoil surface, language, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete Pokemon Card Trainers Vol. 10 archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Dark Venusaur print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

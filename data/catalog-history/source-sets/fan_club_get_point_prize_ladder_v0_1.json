@@ -1,0 +1,1340 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Three-release deepening tranche for the Pokemon Card Fan Club GET point prize ladder: 500 GET Eevee row 160, 600 GET Shining Magikarp row 235, and 700 GET Porygon row 161. The tranche emphasizes point-bank participation, campaign-logo / rarity-symbol boundaries, Japanese name handling, illustrator separation, and route traps against JR, League, Neo, Awakening Legends, Cool Porygon, Gift Pack, and ordinary Base memories.",
+    "in_scope": [
+      "Pokemon Card Fan Club 500 GET point prize release row",
+      "Pokemon Card Fan Club 600 GET point prize release row",
+      "Pokemon Card Fan Club 700 GET point prize release row",
+      "Eevee row 160",
+      "Shining Magikarp row 235",
+      "Porygon row 161",
+      "Fan Club GET point ladder identity",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Fan Club archive",
+      "official redemption ledger",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize",
+        "name_en": "Pokemon Card Fan Club 500 GET point prize",
+        "release_date": "1998-11-13",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club participation",
+          "500 GET point threshold",
+          "Eevee as accessible chase",
+          "Toshinao Aoki Japanese Fan Club art",
+          "JR / Wizards / League route trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize:160",
+            "name": "Eevee",
+            "why": "Eevee is the soft entry point into the GET ladder: not just a beloved character, but a record of a fan slowly accumulating 500 points inside the club.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Toshinao Aoki",
+            "row_count": 1,
+            "examples": [
+              "Eevee"
+            ],
+            "why": "Aoki's Japanese Fan Club Eevee is the important split from Kagemaru Himeno's English Wizards / JR-related Eevee memory.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Eevee print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Fan Club campaign archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Pokemon Card Fan Club 500 GET point prize row: Eevee row 160.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Japanese Fan Club Eevee print was available through the Pokemon Card Fan Club from April 2000 until the end of December 2002 and required 500 GET Points.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Japanese Fan Club Eevee print to Toshinao Aoki, while the later English Wizards Promo route uses a separate Kagemaru Himeno credit.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "The 500 GET Eevee sits in the same broader Eevee memory field as Wizards Promo 11 and JR East gold-course Eevee, but its assembly route is the Fan Club point bank, not a rail-rally or English Wizards release.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row matters because the Pokemon Card Fan Club turned ordinary affection into a ledger: an Eevee could be earned by sustained participation, not pulled from a pack.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Fan Club 500 GET route, row 160 identity, Japanese name イーブイ / Eievui, Toshinao Aoki Japanese print credit, and non-equivalence with JR East gold-course Eevee, English Wizards Promo 11, Pokemon League Eevee, Jungle Eevee, and later Eevee memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Fan Club 500 GET — Eevee as earned affection",
+        "why_it_matters": "The 500 GET Eevee is charming because it makes fandom measurable without making it cold. Someone did not just open a booster and hope. They stayed in the club long enough for the ledger to hand back an Eevee. That is why the card needs a route-aware instruction: it looks like a familiar Eevee memory, but its identity is the Fan Club point bank, the Aoki Japanese print, and the little social machine around GET points.",
+        "not_claiming": [
+          "complete Fan Club history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Fan Club 500 GET point prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Fan Club archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 160",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Eevee (Wizards Promo 11)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Eevee_(Wizards_Promo_11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_500_get_eevee_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Eevee, イーブイ, Eievui, Pokemon Card Fan Club, 500 GET, GET Points, Toshinao Aoki, Wizards Promo 11, Kagemaru Himeno, JR East gold course, Pokemon League, or row 160.",
+          "summary": "Do not accept a generic Eevee or Wizards #11 memory as this row. Confirm Fan Club 500 GET route and Japanese Aoki-print context.",
+          "steps": [
+            "Confirm local row 160 and Pokemon Card Fan Club 500 GET point prize route.",
+            "Preserve the Japanese name イーブイ and romaji Eievui as identity texture.",
+            "Record Toshinao Aoki as the Japanese Fan Club print artist context; keep Kagemaru Himeno as a separate English Wizards / JR-related route context.",
+            "Check against JR East gold-course Eevee, English Wizards Promo 11, Pokemon League Eevee, Jungle Eevee, Premium File / Expansion Sheet memories, and later Eevee prints before accepting a match.",
+            "Do not infer physical-card authenticity, condition, or possession from a Fan Club row match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete Fan Club archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize:160",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize:160",
+        "release_family_id": "jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize",
+        "name_en": "Eevee",
+        "name_ja": "イーブイ",
+        "romaji": "Eievui",
+        "artist": "Toshinao Aoki",
+        "point_threshold": "500 GET Points"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Eevee as row 160 in the Pokemon Card Fan Club 500 GET point prize source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Japanese Fan Club Eevee print to Toshinao Aoki.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "card.identity",
+          "text": "This dossier records the Japanese name イーブイ and romaji Eievui for agent-facing identity work.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.art",
+          "text": "The important art boundary is not just who drew Eevee, but which Eevee print-route is being discussed: Toshinao Aoki for the Japanese Fan Club prize, not the Kagemaru Himeno English Wizards/JR memory.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Fan Club Eevee is the gentlest ladder prize: it makes a beloved evolution seed into proof of club participation and point accrual.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must verify row 160, Fan Club 500 GET route, Japanese name, Aoki credit, and route non-equivalence with JR/English/League Eevee memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "card_highlights": {
+        "number": "None",
+        "rarity_signal": "Fan Club promo",
+        "artist": "Toshinao Aoki",
+        "assembly_themes": [
+          "earned club participation",
+          "Eevee character gravity",
+          "artist-route split",
+          "identity trap"
+        ],
+        "assembly_note": "Eevee is familiar enough to be dangerous for matching. In this row, the identity is not 'an Eevee promo' but the 500 GET Fan Club prize with Aoki Japanese print context.",
+        "collector_texture_note": "A beloved Pokemon becomes a participation receipt.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Eevee — the 500 GET prize that asks you to remember the route",
+        "why_it_matters": "Eevee is the kind of card people recognize too quickly. That is why this dossier slows the agent down. The Fan Club print is not just a face, a species, or a Wizards number; it is an earned club object with a Japanese name, a point threshold, and a Toshinao Aoki route that should not be folded into the JR East or English Wizards story.",
+        "not_claiming": [
+          "complete Eevee print history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Eevee / Fan Club 500 GET",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize.json#row:jp_promo_unnumbered_wotc_160_pok_mon_card_fan_club_500_get_point_prize:160",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 160",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Eevee (Wizards Promo 11)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Eevee_(Wizards_Promo_11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_500_get_eevee_card_identity_v0.1",
+          "authority_label": "legible",
+          "trigger": "A user or seller says Fan Club Eevee, 500 GET Eevee, イーブイ, Eievui, Aoki Eevee, Wizards Promo 11, or JR East Eevee.",
+          "summary": "Treat this as a route-sensitive Eevee. Confirm Fan Club 500 GET before promoting it as the target row.",
+          "steps": [
+            "Ask for or inspect evidence that supports Pokemon Card Fan Club 500 GET point prize context.",
+            "Keep the row id 160 and Japanese name イーブイ visible in the agent note.",
+            "Do not use Kagemaru Himeno / English Wizards Promo 11 evidence as proof of the Japanese Fan Club print.",
+            "If the evidence points to JR East gold course, Pokemon League, Jungle, or another Eevee route, branch to that row instead.",
+            "If the seller only supplies a generic Eevee image, mark route unproven and request stronger context."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize",
+        "name_en": "Pokemon Card Fan Club 600 GET point prize",
+        "release_date": "1998-11-13",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club participation",
+          "600 GET point threshold",
+          "Shining Pokemon prize identity",
+          "rarity-symbol absence",
+          "Neo / Awakening Legends route trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize:235",
+            "name": "Shining Magikarp",
+            "why": "Shining Magikarp is the ladder's strange jewel: a famous secret-style Pokemon whose Fan Club copy is earned through 600 GET points and lacks a rarity symbol.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Shining Magikarp"
+            ],
+            "why": "Sugimori's Shining Magikarp makes the weakest old joke of a Pokemon into one of the franchise's best route-sensitive prize objects.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Shining Magikarp print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Fan Club campaign archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Pokemon Card Fan Club 600 GET point prize row: Shining Magikarp row 235.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Fan Club Shining Magikarp print was available through the Pokemon Card Fan Club from May 2001 until the end of December 2002 and required 600 GET Points.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the Fan Club Shining Magikarp print lacks a rarity symbol and has the same embossed foil treatment later featured on Shining Pokemon from Neo Revelation.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Shining Magikarp to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row is load-bearing for agents because it combines three strong memories that can be accidentally collapsed: Fan Club redemption, Shining Pokemon texture, and no-rarity-symbol appearance.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Fan Club 600 GET route, row 235 identity, Japanese name ひかるコイキング / Hikaru Koiking, Ken Sugimori credit, rarity-symbol absence, and non-equivalence with Awakening Legends, Neo Revelation, English Neo Revelation, and Shining Gyarados memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Fan Club 600 GET — Shining Magikarp before the shortcut",
+        "why_it_matters": "This is the ladder's card that most needs the new instruction field. A Shining Magikarp with no rarity symbol will tempt an agent to say too much too fast. The honest version is better: 600 GET Fan Club redemption, row 235, Ken Sugimori, rarity-symbol absence, and embossed Shining texture all assemble the card, but none of that proves a seller's physical copy without evidence.",
+        "not_claiming": [
+          "complete Fan Club history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Fan Club 600 GET point prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Fan Club archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 235",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Shining Magikarp (Neo Revelation 66)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Magikarp_(Neo_Revelation_66)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_600_get_shining_magikarp_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Shining Magikarp, ひかるコイキング, Hikaru Koiking, Fan Club, 600 GET, GET Points, no rarity symbol, embossed foil, Neo Revelation, Awakening Legends, or row 235.",
+          "summary": "Do not collapse no-rarity-symbol appearance into No Rarity Base or Neo Shining identity. Confirm Fan Club 600 GET route first.",
+          "steps": [
+            "Confirm local row 235 and Pokemon Card Fan Club 600 GET point prize route.",
+            "Preserve the Japanese name ひかるコイキング and romaji Hikaru Koiking as identity texture.",
+            "Record Ken Sugimori as the card-page artist credit.",
+            "Treat rarity-symbol absence as an identification clue for this Fan Club print, not as No Rarity Base Set proof.",
+            "Check against Awakening Legends, English Neo Revelation 66/64, Japanese Neo-era Shining Magikarp, Shining Gyarados, and later shiny Magikarp memories before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete Fan Club archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize:235",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize:235",
+        "release_family_id": "jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize",
+        "name_en": "Shining Magikarp",
+        "name_ja": "ひかるコイキング",
+        "romaji": "Hikaru Koiking",
+        "artist": "Ken Sugimori",
+        "point_threshold": "600 GET Points"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Shining Magikarp as row 235 in the Pokemon Card Fan Club 600 GET point prize source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Shining Magikarp to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Fan Club Shining Magikarp print lacks a rarity symbol and uses embossed foil treatment associated with Shining Pokemon.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "This dossier records the Japanese name ひかるコイキング and romaji Hikaru Koiking for route-sensitive agent work.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Fan Club Shining Magikarp is a beautiful troublemaker for the catalog: it is visually loud, symbol-sensitive, and famous enough to draw Neo-era memories into the wrong lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must verify row 235, Fan Club 600 GET route, Japanese name, Ken Sugimori credit, rarity-symbol absence as Fan Club clue, and non-equivalence with Neo Revelation / Awakening Legends Shining Magikarp.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "card_highlights": {
+        "number": "None",
+        "rarity_signal": "Fan Club promo; lacks rarity symbol per card-page source",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "earned club participation",
+          "Shining Pokemon texture",
+          "rarity-symbol trap",
+          "identity trap"
+        ],
+        "assembly_note": "Shining Magikarp carries the joy and risk of an iconic exception: the agent must keep Fan Club 600 GET route and Neo-era Shining memories apart.",
+        "collector_texture_note": "A joke fish made luminous, then made route-sensitive.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Shining Magikarp — the 600 GET prize that can fool an eager agent",
+        "why_it_matters": "Shining Magikarp is already one of Pokemon's best jokes: weakness polished into treasure. The Fan Club prize adds another layer. It lacks a rarity symbol, has Shining texture, and belongs to a point-redemption path. An agent should love that, but slowly. The route is the difference between useful catalog memory and an overconfident match.",
+        "not_claiming": [
+          "complete Shining Magikarp print history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Shining Magikarp / Fan Club 600 GET",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize.json#row:jp_promo_unnumbered_wotc_235_pok_mon_card_fan_club_600_get_point_prize:235",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 235",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Shining Magikarp (Neo Revelation 66)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Magikarp_(Neo_Revelation_66)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_600_get_shining_magikarp_card_identity_v0.1",
+          "authority_label": "legible",
+          "trigger": "A user or seller says Fan Club Shining Magikarp, 600 GET Shining Magikarp, no-rarity Shining Magikarp, ひかるコイキング, Hikaru Koiking, Neo Revelation 66, or Awakening Legends 022.",
+          "summary": "Treat symbol absence as one clue in the Fan Club route, not as a complete identity or authenticity proof.",
+          "steps": [
+            "Ask for evidence that supports Pokemon Card Fan Club 600 GET point prize context.",
+            "Keep row 235, Japanese name ひかるコイキング, and 600 GET threshold visible in the agent note.",
+            "Check whether the seller is actually describing Neo Revelation 66/64, Japanese Awakening Legends 022, or another Shining Magikarp print.",
+            "Do not let a missing rarity symbol alone promote the card into the wrong catalog lane.",
+            "If the seller evidence only shows artwork and foil, mark route unresolved and request stronger source/context photos."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize",
+        "name_en": "Pokemon Card Fan Club 700 GET point prize",
+        "release_date": "1998-11-13",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club participation",
+          "700 GET point threshold",
+          "Porygon as digital oddball",
+          "GET campaign logo",
+          "Cool Porygon / Base route trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize:161",
+            "name": "Porygon",
+            "why": "Porygon is the ladder's strange endpoint: the artificial Pokemon, credited to Tomoaki Imakuni, carrying the Fan Club GET campaign logo instead of an ordinary expansion mark.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Tomoaki Imakuni",
+            "row_count": 1,
+            "examples": [
+              "Porygon"
+            ],
+            "why": "Imakuni's Porygon credit makes the artificial Pokemon feel like a media-performance object, which fits the Fan Club reward path beautifully.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "all Porygon print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Fan Club campaign archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models one Pokemon Card Fan Club 700 GET point prize row: Porygon row 161.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Fan Club Porygon print was available through the Pokemon Card Fan Club from April 2000 until the end of December 2002 and required 700 GET Points.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Fan Club Porygon card features the Pokemon Card Fan Club GET campaign logo in place of an expansion symbol.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Fan Club Porygon print to Tomoaki Imakuni.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "The 700 GET Porygon is the ladder's weird conceptual capstone: a digital Pokemon, an Imakuni credit, and a campaign logo all make the card feel assembled by the fan system around it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Fan Club 700 GET route, row 161 identity, Japanese name ポリゴン / Porygon, Tomoaki Imakuni credit, GET campaign logo in place of expansion symbol, and non-equivalence with Cool Porygon, Base/Gift Pack Porygon, Expansion Sheet Porygon, and later Porygon memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Fan Club 700 GET — Porygon as the ladder's strange machine",
+        "why_it_matters": "Porygon is already an artificial Pokemon, a little polygonal thought experiment sitting inside the franchise. The Fan Club 700 GET prize makes that feeling even sharper: a card earned through a point system, marked by a GET campaign logo, and credited to Tomoaki Imakuni. It is not just a Porygon. It is Porygon as a club-machine artifact.",
+        "not_claiming": [
+          "complete Fan Club history",
+          "official copy count",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Pokemon Card Fan Club 700 GET point prize",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Fan Club archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 row 161",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Porygon (Fan Club promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Porygon_(Fan_Club_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_700_get_porygon_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Porygon, ポリゴン, Pokemon Card Fan Club, 700 GET, GET Points, Tomoaki Imakuni, GET campaign logo, Cool Porygon, Base Porygon, Gift Pack, or row 161.",
+          "summary": "Do not accept a generic Porygon or Cool Porygon match. Confirm Fan Club 700 GET route and GET campaign logo context.",
+          "steps": [
+            "Confirm local row 161 and Pokemon Card Fan Club 700 GET point prize route.",
+            "Preserve the Japanese name ポリゴン and romaji Porygon as identity texture.",
+            "Record Tomoaki Imakuni as the Fan Club Porygon artist credit.",
+            "Look for the Fan Club GET campaign logo in place of a normal expansion symbol when image evidence is available.",
+            "Check against Cool Porygon, Base/Gift Pack Porygon, Expansion Sheet Porygon, Song Best / media Porygon memories, and later Porygon prints before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete Fan Club archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize:161",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize:161",
+        "release_family_id": "jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize",
+        "name_en": "Porygon",
+        "name_ja": "ポリゴン",
+        "romaji": "Porygon",
+        "artist": "Tomoaki Imakuni",
+        "point_threshold": "700 GET Points"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Porygon as row 161 in the Pokemon Card Fan Club 700 GET point prize source slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Fan Club Porygon print to Tomoaki Imakuni.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Fan Club Porygon features the GET campaign logo in place of an expansion symbol.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "This dossier records the Japanese name ポリゴン and romaji Porygon for route-sensitive agent work.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Fan Club Porygon is unusually on-theme: a digital Pokemon earned through a club points system and visibly marked by the campaign logo.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must verify row 161, Fan Club 700 GET route, Japanese name, Tomoaki Imakuni credit, GET campaign logo, and non-equivalence with Cool Porygon or ordinary Base/Gift Pack Porygon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "card_highlights": {
+        "number": "None",
+        "rarity_signal": "Fan Club promo; GET campaign logo per card-page source",
+        "artist": "Tomoaki Imakuni",
+        "assembly_themes": [
+          "earned club participation",
+          "digital Pokemon identity",
+          "campaign-logo symbol trap",
+          "identity trap"
+        ],
+        "assembly_note": "Porygon belongs to the Fan Club ladder because the route and symbol space do real work: 700 GET points and the GET campaign logo separate it from Cool Porygon and ordinary Base/Gift Pack memory.",
+        "collector_texture_note": "The artificial Pokemon becomes a point-system prize.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Porygon — the 700 GET prize with a campaign logo for a heart",
+        "why_it_matters": "Porygon is already the card-world's little artificial thought. In the Fan Club ladder it becomes even better: a digital creature earned through a points apparatus, carrying the GET campaign logo where a normal expansion mark might sit. A good agent should not just see Porygon. It should see the machine that made this Porygon payable.",
+        "not_claiming": [
+          "complete Porygon print history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Porygon / Fan Club 700 GET",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize.json#row:jp_promo_unnumbered_wotc_161_pok_mon_card_fan_club_700_get_point_prize:161",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards row 161",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Porygon (Fan Club promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Porygon_(Fan_Club_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_700_get_porygon_card_identity_v0.1",
+          "authority_label": "legible",
+          "trigger": "A user or seller says Fan Club Porygon, 700 GET Porygon, ポリゴン, Tomoaki Imakuni, GET campaign logo, Cool Porygon, Base Porygon, or Gift Pack Porygon.",
+          "summary": "Treat this as a campaign-logo Porygon. Confirm Fan Club 700 GET before promoting it as the target row.",
+          "steps": [
+            "Ask for evidence that supports Pokemon Card Fan Club 700 GET point prize context.",
+            "Keep row 161, Japanese name ポリゴン, and 700 GET threshold visible in the agent note.",
+            "When image evidence exists, look for the GET campaign logo in place of ordinary expansion-symbol context.",
+            "Check whether the seller is actually describing Cool Porygon, Base/Gift Pack Porygon, or another Porygon print.",
+            "If the seller only supplies a generic Porygon image, mark route unresolved and request stronger context."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

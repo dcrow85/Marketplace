@@ -1,0 +1,649 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "release_family_id": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3",
+    "description": "Deepens the local unnumbered-promo Celebi row inside the broader Neo Era Premium File 3 product context. This source-set treats the catalog UID as a source-row route, not as proof that all nine Premium File 3 cards are modeled under this UID."
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Era Premium File 3 Celebi source row",
+        "name_ja": "プレミアムファイル3",
+        "release_family_id": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3",
+        "release_date": "2000-11-23",
+        "modeled_count": 1,
+        "broader_product_card_count": 9,
+        "local_source_index_span": "210-210"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Neo Era Premium File 3 source-row boundary",
+          "Awakening Legends precursor",
+          "nine-card type panorama",
+          "Legendary Pokemon concentration",
+          "Celebi TCG debut context",
+          "combined illustration across Celebi / Sudowoodo / Sneasel",
+          "Sumiyoshi Kizuki soft crayon-like visual lane",
+          "Premium File object versus expansion-pack pull",
+          "source index 210 as local audit handle"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210",
+            "name": "Celebi",
+            "name_ja": "セレビィ",
+            "romaji": "Serebii",
+            "number": "210",
+            "why": "Celebi is the hinge of this file: the little time-travel myth that makes Premium File 3 feel like a threshold object before Awakening Legends. The collector interest is not just that Celebi is desirable; it is that this print arrives as part of a deliberately arranged nine-card page where types, legends, and connected art teach the Neo era how to look assembled.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "broader_product_cards": [
+          "Celebi",
+          "Entei",
+          "Suicune",
+          "Raikou",
+          "Lugia",
+          "Sudowoodo",
+          "Skarmory",
+          "Sneasel",
+          "Ho-Oh"
+        ],
+        "key_artists": [
+          {
+            "name": "Sumiyoshi Kizuki",
+            "name_ja": "木月すみよし",
+            "row_count": 1,
+            "examples": [
+              "Celebi",
+              "Sudowoodo",
+              "Sneasel"
+            ],
+            "why": "Kizuki's Celebi matters because the artwork is not isolated; it is one panel of a connected Celebi / Sudowoodo / Sneasel scene. Her soft, storybook handling turns a catalog row into a little forest encounter, which is exactly the kind of assembly a collector agent should preserve.",
+            "authority_label": "fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          },
+          {
+            "name": "Naoyo Kimura",
+            "name_ja": "木村直代",
+            "row_count": 0,
+            "examples": [
+              "Entei",
+              "Suicune",
+              "Raikou"
+            ],
+            "why": "Kimura's legendary-beast combined artwork belongs to the broader Premium File 3 product context; this catalog UID does not model those rows, but agents should know why complete-file listings often invoke the beasts alongside Celebi.",
+            "authority_label": "contextual_fact",
+            "not_claiming": [
+              "that the local UID models these rows",
+              "seller possession",
+              "complete artist biography"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete sealed-product census",
+          "official print run",
+          "that this local release UID models all nine Premium File 3 cards",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_210_neo_era_premium_file_3.json",
+          "title": "Local Japanese unnumbered WotC catalog: Neo Era Premium File 3 Celebi source row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "exact product date authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise",
+          "title": "Bulbapedia: Neo TCG Era merchandise",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Neo_Revelation_16)",
+          "title": "Bulbapedia: Celebi (Neo Revelation 16)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Combined_illustration_(TCG)",
+          "title": "Bulbapedia: Combined illustration (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete illustration taxonomy",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sumiyoshi_Kizuki",
+          "title": "Bulbapedia: Sumiyoshi Kizuki",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "official biographical source",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "release.date",
+          "text": "Bulbapedia's Neo TCG Era merchandise page gives Premium File 3 / プレミアムファイル3 a November 23, 2000 release date.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "release.product_count",
+          "text": "The broader Premium File 3 product is described as a nine-card special-card set and precursor to Awakening Legends, collectively representing every TCG type.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ],
+          "not_claiming": [
+            "that this local UID models all nine rows"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "release.context",
+          "text": "The broader Premium File 3 card list includes Celebi, Entei, Suicune, Raikou, Lugia, Sudowoodo, Skarmory, Sneasel, and Ho-Oh.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "release.chase_structure",
+          "text": "The local catalog models only the unnumbered Celebi source row for this release family; the broader nine-card product context is preserved as legible context, not as modeled row coverage.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "card.art",
+          "text": "Bulbapedia's combined-illustration reference links Celebi with Sudowoodo and Sneasel in a Sumiyoshi Kizuki connected-art group, while Entei, Suicune, and Raikou form a separate Naoyo Kimura Premium File 3 group.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s4"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "artist.impact",
+          "text": "Bulbapedia identifies Sumiyoshi Kizuki / 木月すみよし as a Pokemon TCG illustrator whose style was often noted for a soft crayon-like look and whose early TCG work began around Team Rocket.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s5"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "history.significance",
+          "text": "Premium File 3 is not merely a checklist stop: it is a compact Neo-era page-object where Awakening Legends, type coverage, legendary Pokemon, and connected illustrations arrive together before the expansion pack version of the story.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g3",
+            "g5"
+          ],
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "id": "g8",
+          "field": "identification.special_instructions",
+          "text": "This release dossier carries a special identification packet for the Premium File 3 Celebi source-row boundary.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Premium File 3 Celebi — the time traveler in a nine-card Neo page",
+        "why_it_matters": "Premium File 3 is where the Neo era starts arranging itself like a little museum page. Celebi is the card our local unnumbered-promo slice can actually model, but the emotional charge comes from the surrounding object: nine special cards, every TCG type represented, legends stacked around a new mythical time traveler, and connected artwork that lets a collector see the file as one composed scene rather than nine loose rectangles. That is the assembly worth preserving.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7",
+          "g8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete file state"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "neo_era_premium_file_3_celebi_source_row_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this local release UID as the Premium File 3 Celebi source-row route, not as proof that all nine Premium File 3 cards are present or modeled under the UID.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Celebi, セレビィ, Serebii, Premium File 3, プレミアムファイル3, Awakening Legends, Neo Revelation, Psychic Leaf, Sumiyoshi Kizuki, Sudowoodo, Sneasel, or source index 210.",
+          "steps": [
+            "Anchor the broader product to Premium File 3 / プレミアムファイル3, released November 23, 2000 as a precursor to Awakening Legends.",
+            "Remember the product-level frame: nine special cards representing all TCG types, with many Legendary or Mythical Pokemon.",
+            "Preserve source index 210 as the local catalog's Celebi route; do not treat this UID as complete coverage of the other eight Premium File 3 cards.",
+            "Confirm the candidate row is Celebi / セレビィ / Serebii, No. 251, Grass type, Basic, HP 50, with Psychic Leaf.",
+            "Use Sumiyoshi Kizuki / 木月すみよし as the expected Celebi artist credit.",
+            "Use the connected-art clue: Celebi belongs with Sudowoodo and Sneasel in a Sumiyoshi Kizuki combined illustration.",
+            "Separate product-level Premium File 3 context from card-level seller evidence; a file listing does not prove Celebi is present, original, attached, or undamaged.",
+            "Separate this print from Neo Revelation English/Japanese expansion numbering, Awakening Legends booster-pack rows, later Celebi promos, Shining Celebi, movie Celebi, and modern classic reprints.",
+            "If a seller claims a complete Premium File 3, ask for full-file photos plus close photos of Celebi, because file completeness and card identity are separate claims.",
+            "Before any funded trade, require seller-controlled evidence for the exact physical card or sealed/file object being claimed."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_210_neo_era_premium_file_3.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Neo_Revelation_16)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Combined_illustration_(TCG)"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete file state",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi",
+        "name_ja": "セレビィ",
+        "romaji": "Serebii",
+        "release_name": "Neo Era Premium File 3",
+        "release_family_id": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3",
+        "row_id": "jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210",
+        "catalog_row_id": "210",
+        "source_index": "210",
+        "pokedex_no": "251"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Sumiyoshi Kizuki",
+        "artist_ja": "木月すみよし",
+        "rarity_signal": "unnumbered Premium File 3 promo context; no printed set number supplied by local source row",
+        "number": "source index 210",
+        "assembly_themes": [
+          "Celebi TCG debut context",
+          "time-travel myth entering the Neo card world",
+          "Psychic Leaf attack",
+          "Awakening Legends symbol on Japanese print",
+          "connected-art clue with Sudowoodo and Sneasel",
+          "soft crayon-like Sumiyoshi Kizuki style",
+          "file-object route rather than pack-pull route"
+        ],
+        "signals": [
+          "Celebi",
+          "セレビィ",
+          "Serebii",
+          "No. 251",
+          "Grass",
+          "Basic",
+          "HP 50",
+          "Psychic Leaf",
+          "Sumiyoshi Kizuki",
+          "木月すみよし",
+          "Sudowoodo",
+          "Sneasel",
+          "Awakening Legends symbol",
+          "Premium File 3",
+          "source index 210"
+        ],
+        "collector_texture_note": "This is the dreamy little time traveler of Premium File 3. The card matters because it is Celebi stepping into the TCG through a connected Sumiyoshi Kizuki forest scene, not just because a price guide can spell the name.",
+        "assembly_note": "Celebi is the local row, but the object around it is the story: Premium File 3 gathers types and legends into a page, then lets Celebi, Sudowoodo, and Sneasel share a single visual world.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete file state"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_210_neo_era_premium_file_3.json#row:jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210",
+          "title": "Local Japanese unnumbered WotC catalog row: Celebi source index 210",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Neo_Revelation_16)",
+          "title": "Bulbapedia: Celebi (Neo Revelation 16)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Combined_illustration_(TCG)",
+          "title": "Bulbapedia: Combined illustration (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "complete illustration taxonomy"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Sumiyoshi_Kizuki",
+          "title": "Bulbapedia: Sumiyoshi Kizuki",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "official biographical source",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Celebi as source index 210 in the Neo Era Premium File 3 unnumbered-promo source row.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "history.variant",
+          "text": "Bulbapedia's Celebi card page identifies the Premium File 3 Japanese print as a promotional addition to Awakening Legends and notes the Awakening Legends symbol on the Japanese print.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Celebi page and marketplace metadata converge on the row-level signals: Grass-type Basic Pokemon, HP 50, No. 251, Fire weakness, one retreat cost, and Psychic Leaf.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ],
+          "not_claiming": [
+            "that marketplace pricing is authoritative"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "artist.credit",
+          "text": "The Celebi row is illustrated by Sumiyoshi Kizuki / 木月すみよし.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s4"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "card.art",
+          "text": "Celebi's artwork is part of a connected Premium File 3 illustration with Sudowoodo and Sneasel.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "artist.impact",
+          "text": "Bulbapedia describes Sumiyoshi Kizuki's style as often notable for a soft crayon-like look; this matters for Celebi because the card reads as a gentle forest scene rather than a combat poster.",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "g4",
+            "g5"
+          ],
+          "tier": "B",
+          "sources": [
+            "s4"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "history.significance",
+          "text": "Celebi's collector meaning in this route comes from its position as a Premium File 3 / Awakening Legends bridge and from the way its art connects to surrounding cards, not from name-only scarcity.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g4",
+            "g5",
+            "g6"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "g8",
+          "field": "identification.special_instructions",
+          "text": "This card dossier carries a special identification packet for Premium File 3 Celebi source index 210.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Celebi — source index 210, the little time traveler in the file",
+        "why_it_matters": "This Celebi is easy to flatten into a name and a price, but that misses the card. It is a file-born Celebi, a small mythical Pokemon carried into the TCG through the Neo era's page logic: all types represented, legends orbiting it, Awakening Legends just ahead, and Sumiyoshi Kizuki's soft connected illustration making Celebi feel less like a trophy and more like a quiet visitor in a forest with Sudowoodo and Sneasel nearby.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7",
+          "g8"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete file state"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "neo_era_premium_file_3_celebi_210_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Premium File 3 Celebi only when Celebi identity, source index 210, Premium File 3 route, Awakening Legends symbol context, and Sumiyoshi Kizuki connected-art clues line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Celebi, セレビィ, Serebii, Premium File 3, プレミアムファイル3, Psychic Leaf, No. 251, HP 50, Awakening Legends, Sumiyoshi Kizuki, Sudowoodo, Sneasel, or source index 210.",
+          "steps": [
+            "Confirm the card is Celebi / セレビィ / Serebii, No. 251, Grass type, Basic, HP 50.",
+            "Confirm the Premium File 3 / プレミアムファイル3 route and source index 210 in this local unnumbered-promo catalog.",
+            "Check for Psychic Leaf as the attack name and keep it as an identification clue, not as condition or authenticity proof.",
+            "Use the Japanese Awakening Legends symbol as a route clue when visible; do not turn symbol presence into seller-card authenticity.",
+            "Use Sumiyoshi Kizuki / 木月すみよし as the expected illustrator.",
+            "Check whether the art aligns with the connected Celebi / Sudowoodo / Sneasel scene; this helps distinguish the print from unrelated Celebi cards.",
+            "Separate this row from Neo Revelation expansion pulls, Awakening Legends booster rows, later Celebi promos, Shining Celebi, movie-related Celebi cards, and modern classic reprints.",
+            "If the listing is for a full Premium File 3, require both whole-file context and card-level photos of Celebi; a file route does not prove this row's physical state.",
+            "Keep seller possession, authenticity, condition, price, complete file state, and spendability outside the catalog row until separate evidence supports them."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_210_neo_era_premium_file_3.json#row:jp_promo_unnumbered_wotc_210_neo_era_premium_file_3:210"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Neo_Revelation_16)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Combined_illustration_(TCG)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Sumiyoshi_Kizuki"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete file state",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

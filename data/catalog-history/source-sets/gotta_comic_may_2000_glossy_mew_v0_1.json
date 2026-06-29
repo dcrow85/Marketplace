@@ -1,0 +1,683 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Mew, the English Wizards Promo #8 glossy variant inserted in Gotta Comic May 2000, emphasizing English-face/Japanese-magazine distribution, glossy Japanese-stock variant identity, Ken Sugimori art, mythical Mew play/text context, and traps against ordinary matte WotC Promo #8, holo Promo #9, CoroCoro/JR Mew 005, Ancient Mew, Song Best Mew, Shining Mew, and generic Mew rows.",
+    "in_scope": [
+      "Gotta Comic May 2000 issue insert release dossier",
+      "Mew unnumbered promotional row 162",
+      "English Wizards Promo #8 glossy variant context",
+      "Ken Sugimori illustration credit",
+      "Glossy/Japanese-stock identification rails"
+    ],
+    "not_claiming": [
+      "complete Gotta Comic issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000",
+        "name_en": "Gotta Comic May 2000 issue insert (May 1, 2000)",
+        "release_date": "2000-05-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Gotta Comic magazine insert",
+          "English Wizards Promo in Japanese distribution",
+          "glossy Japanese-stock variant",
+          "Ken Sugimori Mew art",
+          "Mew myth / mirage language",
+          "finish-and-route identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000:162",
+            "name": "Mew [English] [Glossy]",
+            "why": "This is a chase because it turns a familiar English Black Star Mew into a Japanese magazine-contact object: same #8 face, different route, different finish, different collector problem.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Mew [English] [Glossy]"
+            ],
+            "why": "Sugimori matters here because Mew's official creature language is the whole quiet spell: small, floating, mythic, and immediately legible even when the card crosses language and distribution borders.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete Ken Sugimori bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Mew art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Gotta Comic issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Gotta Comic May 2000 issue insert as a one-row unnumbered promotional source group containing Mew at source index 162.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Mew Wizards Promo 8 page says a glossy version of the initial English print was included in the May 2000 issue of Gotta Comic, released on May 1, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies the card as Mew [English] from Gotta Comic May 2000 and tags it as Book / magazine-inserted / unpeeled.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Collector discussion on Elite Fourum distinguishes the Gotta Mew as an English promo printed on glossy Japanese card stock and released in Gotta Comic/Magazine; this is collector testimony, not official print authority.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Mew Wizards Promo 8 to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits the Gotta Comic Mew promo to Ken Sugimori.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Mew LV.23, Japanese name ミュウ, Psychic-type Basic Pokemon, HP 50, English Wizards Black Star Promo #8, with Psywave and Devolution Beam.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Bulbapedia's Pokédex text for the card calls Mew so rare it is still said to be a mirage by many experts, which makes the Gotta Comic route especially fitting: the card's identity is visible, but the variant hides in finish and route.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "artist.other_work",
+          "text": "The Art of Pokemon describes Ken Sugimori as a Game Freak board member and art director who has been in charge of design for Pokemon series works and has created numerous Pokemon TCG illustrations.",
+          "sources": [
+            "s8"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve English language, Wizards Black Star Promo #8 face, Gotta Comic May 2000 route, glossy/Japanese-stock finish, Ken Sugimori credit, and non-equivalence with ordinary matte Promo #8 or holo Promo #9 before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gotta_comic_may_2000_glossy_mew_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Mew, Gotta Comic, Gotta Magazine, May 2000, English Mew, glossy Mew, Japanese glossy Mew, Wizards Promo 8, Black Star Promo 8, Promo 9, Ancient Mew, Shining Mew, Song Best Mew, JR Stamp Rally Mew, or CoroCoro Mew.",
+          "summary": "Identify Gotta Comic Mew by English Wizards Promo #8 face plus May 2000 Gotta Comic route plus glossy/Japanese-stock finish; Mew name alone is not enough.",
+          "steps": [
+            "Confirm the card face is English Wizards Black Star Promo Mew #8, not Japanese Mystery of the Fossils Mew or holo Promo #9.",
+            "Confirm the distribution route is Gotta Comic May 2000 issue insert, released May 1, 2000.",
+            "Preserve Ken Sugimori as illustrator.",
+            "Check for glossy finish / Japanese-stock texture using angled light photos; compare against ordinary matte English Promo #8 when possible.",
+            "Ask whether the card is still unpeeled or accompanied by magazine/provenance evidence; treat that as provenance, not automatic authenticity.",
+            "Separate ordinary English League Promo #8, holo Promo #9, CoroCoro/JR Mew 005, Ancient Mew, Song Best Mew, Shining Mew, World Challenge Mew-themed Lucky Stadium, and modern Mew promos unless route and finish evidence prove this exact row.",
+            "Request front/back photos and surface/finish evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "ordinary matte Promo 8 equivalence",
+            "holo Promo 9 equivalence",
+            "CoroCoro/JR Mew 005 equivalence",
+            "Ancient Mew equivalence",
+            "Song Best Mew equivalence",
+            "Shining Mew equivalence",
+            "modern Mew equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mew [English] [Glossy]: the mirage in the magazine",
+        "why_it_matters": "This is a perfect little trap for a collector's agent. It looks like a familiar English Black Star Mew, but the important history lives in the surface and the route: glossy Japanese stock, Gotta Comic May 2000, a magazine insert that turns an English promo into a Japanese contact object. Mew already carries mirage language in the card text; here the mirage becomes catalog work. The card is not hard to name. It is hard to name precisely.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Gotta Comic issue contents",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Gotta Comic May 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mew_%28Wizards_Promo_8%29",
+          "title": "Bulbapedia: Mew (Wizards Promo 8)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/gotta-mew-english-promo/",
+          "title": "PokeBoon: Mew [English] Promo: Gotta Comic May 2000",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://www.elitefourum.com/t/gotta-mew/54994",
+          "title": "Elite Fourum: GOTTA Mew",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete collector consensus",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/black-star-promos-wotc/19497/",
+          "title": "CGC Population Report: Black Star Promos - WotC",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "official distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://www.pricecharting.com/game/pokemon-promo/mew-8",
+          "title": "PriceCharting: Mew #8 Pokemon Promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "stable market price",
+            "variant separation completeness",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "web",
+          "ref": "https://www.artofpkm.com/illustrators/3/artwork",
+          "title": "The Art of Pokemon: Ken Sugimori",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "card-specific distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000:162",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000",
+        "row_id": "jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000:162",
+        "name_en": "Mew [English] [Glossy]",
+        "name_ja": "ミュウ",
+        "source_index": "162",
+        "release_date": "2000-05-01"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "k1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 162 as Mew [English], Psychic type, Wizards Promo #8 source expansion, and Gotta Comic May 2000 insert route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "k2",
+          "field": "card.identity",
+          "text": "Bulbapedia lists Mew Wizards Promo 8 as Mew LV.23, Japanese name ミュウ, Psychic-type Basic Pokemon, HP 50, English card number 8.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k3",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit this Mew artwork to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Psywave, doing 10 damage times the number of Energy attached to the Defending Pokemon, and Devolution Beam, which returns an evolved Pokemon's highest Stage Evolution card to its player's hand.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k5",
+          "field": "history.lineage",
+          "text": "The Gotta Comic card belongs to the English Wizards Promo #8 lineage but must be separated from the ordinary English League version because the Gotta route and glossy finish are the variant identity.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k1",
+            "k2",
+            "k3"
+          ]
+        },
+        {
+          "id": "k6",
+          "field": "card.art",
+          "text": "The art matters because Sugimori's calm Mew image is recognizably official and mythic, which makes the finish/route distinction easy to miss unless the agent explicitly asks for surface evidence.",
+          "sources": [
+            "s3",
+            "s4",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k2",
+            "k3"
+          ]
+        },
+        {
+          "id": "k7",
+          "field": "identification.special_instructions",
+          "text": "The card should be checked as English Wizards Promo #8 with Gotta Comic May 2000 route and glossy Japanese-stock finish; neither English language nor Mew name alone proves this row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "gotta_comic_may_2000_glossy_mew_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer, seller, listing, scan, or agent memory identifies Mew as Gotta Comic, Gotta Magazine, English glossy, Japanese glossy, Wizards Promo 8, Black Star #8, May 2000, Ken Sugimori, Psywave, Devolution Beam, or source index 162.",
+          "summary": "Match row 162 by English Wizards Promo #8 face plus Gotta Comic May 2000 route plus glossy finish; do not let Mew name or Black Star #8 alone collapse the variant.",
+          "steps": [
+            "Confirm Mew / ミュウ identity, English Wizards Black Star Promo #8 numbering, Psychic type, Basic Pokemon, and HP 50.",
+            "Confirm Gotta Comic May 2000 issue insert / May 1, 2000 route from listing text, provenance, or seller evidence.",
+            "Confirm Ken Sugimori credit when a scan is legible or a reference row is cited.",
+            "Look for Psywave and Devolution Beam text where photos allow.",
+            "Ask for angled-light photos to assess glossy finish / Japanese-stock texture against ordinary matte English Promo #8.",
+            "Separate ordinary English Promo #8, holo Promo #9, CoroCoro/JR Mew 005, Ancient Mew, Song Best Mew, Shining Mew, World Challenge Mew-themed Lucky Stadium, and modern Mew rows unless evidence supports this exact route and finish.",
+            "Escalate to seller evidence for possession, authenticity, condition, surface quality, and unpeeled/magazine provenance."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "ordinary matte Promo 8 equivalence",
+            "holo Promo 9 equivalence",
+            "CoroCoro/JR Mew 005 equivalence",
+            "Ancient Mew equivalence",
+            "Song Best Mew equivalence",
+            "Shining Mew equivalence",
+            "modern Mew equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mew [English] [Glossy]: same face, different contact",
+        "why_it_matters": "This Mew teaches the whole catalog a useful suspicion. The face is familiar: English Wizards Promo #8, Sugimori, Psywave, Devolution Beam. But the object is not ordinary, because Gotta Comic changed the contact surface. It made the card glossy, Japanese-routed, and much easier to misfile as the cheap familiar version. That is why this row matters: the mythical Pokemon is doing myth work again, hiding in plain sight until route and finish make it real.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "k1",
+          "k2",
+          "k3",
+          "k4",
+          "k5",
+          "k7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_162_gotta_comic_may_2000_issue_insert_may_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Gotta Comic May 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mew_%28Wizards_Promo_8%29",
+          "title": "Bulbapedia: Mew (Wizards Promo 8)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/gotta-mew-english-promo/",
+          "title": "PokeBoon: Mew [English] Promo: Gotta Comic May 2000",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://www.elitefourum.com/t/gotta-mew/54994",
+          "title": "Elite Fourum: GOTTA Mew",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete collector consensus",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/black-star-promos-wotc/19497/",
+          "title": "CGC Population Report: Black Star Promos - WotC",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "official distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://www.pricecharting.com/game/pokemon-promo/mew-8",
+          "title": "PriceCharting: Mew #8 Pokemon Promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "stable market price",
+            "variant separation completeness",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "web",
+          "ref": "https://www.artofpkm.com/illustrators/3/artwork",
+          "title": "The Art of Pokemon: Ken Sugimori",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "card-specific distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

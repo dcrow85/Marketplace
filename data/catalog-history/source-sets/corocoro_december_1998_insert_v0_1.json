@@ -1,0 +1,1011 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete four-row bounded tranche for Japanese CoroCoro Comic December 1998 issue insert unnumbered promo source group.",
+    "in_scope": [
+      "CoroCoro Comic December 1998 issue insert release/source-group dossier",
+      "all four source rows 063-066: Brock's Mankey, Erika's Bulbasaur, Misty's Tentacool, Lt. Surge's Jolteon",
+      "special identification rails for owner-prefixed unnumbered promo source-index identity"
+    ],
+    "not_claiming": [
+      "official campaign boundary proof beyond the source promotion note",
+      "complete external history",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "row-level Japanese name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998",
+      "type": "release",
+      "context": {
+        "name_en": "CoroCoro Comic December 1998 issue insert (November 15, 1998)",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998",
+        "release_date": "1998-11-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Comic December 1998 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local unnumbered WotC promo catalog models the CoroCoro Comic December 1998 issue insert source group with a November 15, 1998 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local source group contains four contiguous Bulbapedia raw source rows, 063 through 066: Brock's Mankey, Erika's Bulbasaur, Misty's Tentacool, and Lt. Surge's Jolteon.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The catalog treats this as an unnumbered promotional campaign source group derived from the promotion note CoroCoro Comic December 1998 issue insert (November 15, 1998), parented to the WotC-era Japanese unnumbered promo continuation slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "This source group matters because it puts Gym Leader ownership into magazine distribution: Brock, Erika, Misty, and Lt. Surge names become identity rails, not decoration.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "The local catalog explicitly says this campaign-level split is derived from a source promotion note and is not official product-boundary proof beyond that note.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The four-card group is small enough for complete hand-authored coverage; collector attention comes from Gym Leader ownership plus familiar species rather than conventional rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The primary source rows do not provide illustrator authority for this unnumbered promo source slice, so this tranche leaves artist coverage unresolved rather than importing credits from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the CoroCoro December 1998 distribution/source-group note, source indices 063-066, owner-prefixed card names, parent unnumbered promo continuation slice, and absence of printed set number before accepting a card-name match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_december_1998_gym_owner_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says CoroCoro December 1998, Brock's Mankey, Erika's Bulbasaur, Misty's Tentacool, Lt. Surge's Jolteon, Gym Leader promo, unnumbered promo, or source index 063-066.",
+          "summary": "Keep this as a four-row CoroCoro December 1998 source group; owner prefixes and source indices are identity, not flavor text.",
+          "steps": [
+            "Require the CoroCoro Comic December 1998 issue insert distribution note before naming this exact slice.",
+            "Preserve source indices 063, 064, 065, and 066; these rows have no printed set number in the source.",
+            "Preserve Gym Leader ownership prefixes exactly: Brock's, Erika's, Misty's, and Lt. Surge's.",
+            "Keep the parent Japanese unnumbered WotC promo continuation slice visible; do not collapse the cards into Gym expansion, theme-deck, English-name, or ordinary species rows.",
+            "Treat the campaign boundary as source-derived, not official product-boundary proof beyond the promotion note.",
+            "Use seller photos and provenance evidence to check physical format, distribution tells, and condition before any trade action.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, artist credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Gym expansion equivalence",
+            "theme-deck equivalence",
+            "English release equivalence",
+            "ordinary species equivalence",
+            "approved image rights",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "CoroCoro December 1998 — Gym ownership in a magazine lane",
+        "why_it_matters": "This little insert shows how the franchise was learning to bind character, trainer, and distribution together. Brock, Erika, Misty, and Lt. Surge are not just labels on Pokemon; they are ownership marks that change what a listing means. In an unnumbered promo world, the magazine note and the source index become the binder tabs.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "official campaign boundary proof beyond the source promotion note",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "official campaign boundary proof beyond the source promotion note"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:063",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Mankey",
+        "name_ja": "",
+        "normalized_label": "Brock's Mankey",
+        "release_family_id": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998",
+        "local_id": "063",
+        "card_number": "None",
+        "owner": "Brock",
+        "species": "Mankey"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Comic December 1998 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Brock's Mankey as CoroCoro Comic December 1998 issue insert source row 063, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:063.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Brock's Mankey belongs to a four-row unnumbered promotional source group derived from the promotion note CoroCoro Comic December 1998 issue insert (November 15, 1998).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Brock's Mankey; the useful handle is source index 063 plus distribution note and owner-prefixed name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Brock's Mankey opens the insert with a perfect owner/species lock: without Brock, it is just Mankey; with Brock, it becomes a gym-era media object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Brock's Mankey helps show how Gym Leader ownership changes card identity: the owner prefix Brock must travel with Mankey, especially in an unnumbered promo source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 063, owner-prefixed card name Brock's Mankey, CoroCoro December 1998 distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_december_1998_063_owner_prefix_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Mankey, Mankey, Brock, CoroCoro December 1998, unnumbered promo, Gym Leader promo, or source index 063.",
+          "summary": "Keep Brock's Mankey pinned to CoroCoro December 1998 source index 063; owner prefix plus source index are identity.",
+          "steps": [
+            "Require source index 063 or equivalent CoroCoro December 1998 source-group evidence before naming this exact row.",
+            "Require the owner-prefixed name Brock's Mankey; do not accept plain Mankey as enough.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Gym expansion cards, theme-deck rows, English-name-only matches, and ordinary species cards.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Gym expansion equivalence",
+            "theme-deck equivalence",
+            "ordinary species equivalence",
+            "English release equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Brock's Mankey — source row 063",
+        "why_it_matters": "Brock's Mankey opens the insert with a perfect owner/species lock: without Brock, it is just Mankey; with Brock, it becomes a gym-era media object.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:064",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Bulbasaur",
+        "name_ja": "",
+        "normalized_label": "Erika's Bulbasaur",
+        "release_family_id": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998",
+        "local_id": "064",
+        "card_number": "None",
+        "owner": "Erika",
+        "species": "Bulbasaur"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Comic December 1998 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Erika's Bulbasaur as CoroCoro Comic December 1998 issue insert source row 064, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:064.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Erika's Bulbasaur belongs to a four-row unnumbered promotional source group derived from the promotion note CoroCoro Comic December 1998 issue insert (November 15, 1998).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Erika's Bulbasaur; the useful handle is source index 064 plus distribution note and owner-prefixed name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Erika's Bulbasaur is the soft center of the group, where a beloved starter becomes a trainer-owned promo and the apostrophe becomes part of the card identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Erika's Bulbasaur helps show how Gym Leader ownership changes card identity: the owner prefix Erika must travel with Bulbasaur, especially in an unnumbered promo source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 064, owner-prefixed card name Erika's Bulbasaur, CoroCoro December 1998 distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_december_1998_064_owner_prefix_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Bulbasaur, Bulbasaur, Erika, CoroCoro December 1998, unnumbered promo, Gym Leader promo, or source index 064.",
+          "summary": "Keep Erika's Bulbasaur pinned to CoroCoro December 1998 source index 064; owner prefix plus source index are identity.",
+          "steps": [
+            "Require source index 064 or equivalent CoroCoro December 1998 source-group evidence before naming this exact row.",
+            "Require the owner-prefixed name Erika's Bulbasaur; do not accept plain Bulbasaur as enough.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Gym expansion cards, theme-deck rows, English-name-only matches, and ordinary species cards.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Gym expansion equivalence",
+            "theme-deck equivalence",
+            "ordinary species equivalence",
+            "English release equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Erika's Bulbasaur — source row 064",
+        "why_it_matters": "Erika's Bulbasaur is the soft center of the group, where a beloved starter becomes a trainer-owned promo and the apostrophe becomes part of the card identity.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:065",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tentacool",
+        "name_ja": "",
+        "normalized_label": "Misty's Tentacool",
+        "release_family_id": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998",
+        "local_id": "065",
+        "card_number": "None",
+        "owner": "Misty",
+        "species": "Tentacool"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Comic December 1998 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Misty's Tentacool as CoroCoro Comic December 1998 issue insert source row 065, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:065.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Misty's Tentacool belongs to a four-row unnumbered promotional source group derived from the promotion note CoroCoro Comic December 1998 issue insert (November 15, 1998).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Misty's Tentacool; the useful handle is source index 065 plus distribution note and owner-prefixed name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Tentacool keeps the water-gym lane alive inside the magazine insert, and it teaches the agent not to strip a card down to species when ownership is the point.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Misty's Tentacool helps show how Gym Leader ownership changes card identity: the owner prefix Misty must travel with Tentacool, especially in an unnumbered promo source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 065, owner-prefixed card name Misty's Tentacool, CoroCoro December 1998 distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_december_1998_065_owner_prefix_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Misty's Tentacool, Tentacool, Misty, CoroCoro December 1998, unnumbered promo, Gym Leader promo, or source index 065.",
+          "summary": "Keep Misty's Tentacool pinned to CoroCoro December 1998 source index 065; owner prefix plus source index are identity.",
+          "steps": [
+            "Require source index 065 or equivalent CoroCoro December 1998 source-group evidence before naming this exact row.",
+            "Require the owner-prefixed name Misty's Tentacool; do not accept plain Tentacool as enough.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Gym expansion cards, theme-deck rows, English-name-only matches, and ordinary species cards.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Gym expansion equivalence",
+            "theme-deck equivalence",
+            "ordinary species equivalence",
+            "English release equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Misty's Tentacool — source row 065",
+        "why_it_matters": "Misty's Tentacool keeps the water-gym lane alive inside the magazine insert, and it teaches the agent not to strip a card down to species when ownership is the point.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:066",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Jolteon",
+        "name_ja": "",
+        "normalized_label": "Lt. Surge's Jolteon",
+        "release_family_id": "jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998",
+        "local_id": "066",
+        "card_number": "None",
+        "owner": "Lt. Surge",
+        "species": "Jolteon"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998.json",
+          "title": "Local Japanese unnumbered WotC promo catalog: CoroCoro Comic December 1998 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "row-level Japanese name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG) / 1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "complete artist authority",
+            "stable official campaign boundary"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog models Lt. Surge's Jolteon as CoroCoro Comic December 1998 issue insert source row 066, with no printed card number supplied by the source row and row id jp_promo_unnumbered_wotc_063_corocoro_comic_december_1998_issue_insert_november_15_1998:066.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Lt. Surge's Jolteon belongs to a four-row unnumbered promotional source group derived from the promotion note CoroCoro Comic December 1998 issue insert (November 15, 1998).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row does not provide a conventional rarity signal for Lt. Surge's Jolteon; the useful handle is source index 066 plus distribution note and owner-prefixed name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge's Jolteon gives the insert its electric chase edge: a popular Eeveelution, but only this exact owner-prefixed promo row if the source index and distribution note survive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Lt. Surge's Jolteon helps show how Gym Leader ownership changes card identity: the owner prefix Lt. Surge must travel with Jolteon, especially in an unnumbered promo source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The primary source row does not provide illustrator authority for this unnumbered promo source slice, so artist coverage remains unresolved rather than inferred from other printings.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source index 066, owner-prefixed card name Lt. Surge's Jolteon, CoroCoro December 1998 distribution note, parent unnumbered promo source slice, and absence of printed set number before accepting this row as a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_december_1998_066_owner_prefix_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Jolteon, Jolteon, Lt. Surge, CoroCoro December 1998, unnumbered promo, Gym Leader promo, or source index 066.",
+          "summary": "Keep Lt. Surge's Jolteon pinned to CoroCoro December 1998 source index 066; owner prefix plus source index are identity.",
+          "steps": [
+            "Require source index 066 or equivalent CoroCoro December 1998 source-group evidence before naming this exact row.",
+            "Require the owner-prefixed name Lt. Surge's Jolteon; do not accept plain Jolteon as enough.",
+            "Preserve that the source row supplies no row-level Japanese name and no printed set number.",
+            "Keep this row separate from Gym expansion cards, theme-deck rows, English-name-only matches, and ordinary species cards.",
+            "Use seller photos and provenance evidence to check physical format and distribution tells before treating it as a transaction candidate.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, illustrator credit, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "Gym expansion equivalence",
+            "theme-deck equivalence",
+            "ordinary species equivalence",
+            "English release equivalence",
+            "artist authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Lt. Surge's Jolteon — source row 066",
+        "why_it_matters": "Lt. Surge's Jolteon gives the insert its electric chase edge: a popular Eeveelution, but only this exact owner-prefixed promo row if the source index and distribution note survive.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete external history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "artist authority",
+          "spendability"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

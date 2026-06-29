@@ -1,0 +1,257 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "gap_count": 1,
+  "gaps": [
+    {
+      "authority_label": "legible",
+      "boundary_note": "Jumbo is not safely bounded to the WoC era from this source alone; needs a row-level and date-bounded source before modeling.",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "language": "en",
+      "name": "Jumbo cards",
+      "not_claiming": [
+        "card-row model",
+        "complete set checklist",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "partial_resolution": {
+        "modeled_row_count": 10,
+        "not_claiming": [
+          "complete Jumbo coverage",
+          "complete source-gap resolution",
+          "rows outside the bounded subset",
+          "seller possession",
+          "authenticity",
+          "condition truth"
+        ],
+        "remaining_source_gap_count": 150,
+        "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only the 10 clearly early English WoC-era/edge rows through July 2003, ending with Best of Game Winner Jumbo rows before the Nintendo/e-League rows begin; later and unsafe-to-bound Jumbo rows remain unresolved.",
+        "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
+        "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
+        "resolved_catalog_hash": "7839a2bbbf77fbe8e8403ba2e77b9f5d67c29c76c5b9ed10ab3f06d125837726",
+        "status": "partially_resolved_by_bounded_subset"
+      },
+      "reason": "TCGdex lists Jumbo cards as a 160-card English miscellaneous set but returns zero card refs in the set payload.",
+      "release_date": "2000-02-01",
+      "resolution_required_before_card_rows": [
+        "row-level card identities",
+        "source-attributed local IDs or card numbers",
+        "source payload hashes or snapshots",
+        "current catalog row fields and non-claims"
+      ],
+      "schema": "marketplace.catalog_source_gap.v0.1",
+      "series": {
+        "id": "misc",
+        "name": "Miscellaneous"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/en/sets/jumbo",
+      "set_id": "jumbo",
+      "set_payload_hash": "a88ff7ee1e529de75eca798cb03a716e3980c66bb315224103617f5cf02eba6f",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 160,
+        "reverse": 0,
+        "total": 160
+      },
+      "source_gap_count": 160
+    }
+  ],
+  "generated_at": "2026-06-18T20:56:44Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "complete catalog expansion gap inventory",
+    "card-row model",
+    "complete set checklist",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
+  ],
+  "partial_resolution_count": 1,
+  "partially_modeled_source_gap_rows": 10,
+  "resolved_gap_count": 4,
+  "resolved_gaps": [
+    {
+      "authority_label": "legible",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "former_source_gap_count": 7,
+      "language": "en",
+      "name": "W Promotional",
+      "not_claiming": [
+        "TCGdex card-row model",
+        "official source",
+        "complete catalog expansion gap inventory",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_date": "1999-09-01",
+      "resolution_note": "TCGdex still returns zero card refs, but Bulbapedia raw wikitext supplies the 7 W Promotional stamped promo rows.",
+      "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
+      "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_w_promotional_19990901.json",
+      "resolved_catalog_hash": "2eefac26d455399ae77c62626ae07cd01fa5d89d4825935c269057e505a644f4",
+      "schema": "marketplace.catalog_source_gap_resolution.v0.1",
+      "series": {
+        "id": "base",
+        "name": "Base"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/en/sets/wp",
+      "set_id": "wp",
+      "set_payload_hash": "7f04c760a87f6fb4c57f7d57ad94a1c3b09320f15a44b2f34d2ecfdcfd8ba25e",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 7,
+        "reverse": 0,
+        "total": 7
+      },
+      "status": "resolved_by_alternate_row_source"
+    },
+    {
+      "authority_label": "legible",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "former_source_gap_count": 10,
+      "language": "en",
+      "name": "Sample",
+      "not_claiming": [
+        "TCGdex card-row model",
+        "official source",
+        "complete catalog expansion gap inventory",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_date": "2002-08-01",
+      "resolution_note": "TCGdex still returns zero card refs, but Bulbapedia raw wikitext supplies the 10 English New York Press Conference Sample rows.",
+      "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
+      "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_sample_set_new_york_20020801.json",
+      "resolved_catalog_hash": "0e51640e1145fd4fbe155561f0a146946f6c43120714ea3eb9e0be84186db4d9",
+      "schema": "marketplace.catalog_source_gap_resolution.v0.1",
+      "series": {
+        "id": "ecard",
+        "name": "E-Card"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/en/sets/sp",
+      "set_id": "sp",
+      "set_payload_hash": "005a1ca66f3b14165c663aaffdc4f5003eeef950df42a956fb16ac4e3f6269c1",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 10,
+        "reverse": 0,
+        "total": 10
+      },
+      "status": "resolved_by_alternate_row_source"
+    },
+    {
+      "authority_label": "legible",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "former_source_gap_count": 55,
+      "language": "ja",
+      "name": "拡張パック",
+      "not_claiming": [
+        "TCGdex card-row model",
+        "official source",
+        "complete catalog expansion gap inventory",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_date": "2003-01-31",
+      "resolution_note": "TCGdex still returns zero card refs, but TCG Collector supplies 55 row-level pages for the Japanese ADV Expansion Pack.",
+      "resolution_source": "TCG Collector row pages + TCGdex set metadata",
+      "resolved_by": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_expansion_pack_20030131.json",
+      "resolved_catalog_hash": "4f5140781f4d584447061f5674bc258a5f8c6727e4f822a38a24a6f2bab5a67a",
+      "schema": "marketplace.catalog_source_gap_resolution.v0.1",
+      "series": {
+        "id": "ADV",
+        "name": "ADV"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/ja/sets/ADV1",
+      "set_id": "ADV1",
+      "set_payload_hash": "809fe0326dd8be79ac0d80658c720b9002ad805e5be1de4814652aa1f85e5a50",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 55,
+        "reverse": 0,
+        "total": 55
+      },
+      "status": "resolved_by_alternate_row_source"
+    },
+    {
+      "authority_label": "legible",
+      "card_refs_returned": 0,
+      "docs_url": "https://tcgdex.dev/rest",
+      "former_source_gap_count": 53,
+      "language": "ja",
+      "name": "砂漠のきせき",
+      "not_claiming": [
+        "TCGdex card-row model",
+        "official source",
+        "complete catalog expansion gap inventory",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_date": "2003-04-18",
+      "resolution_note": "TCGdex still returns zero card refs, but TCG Collector supplies 53 row-level pages for Miracle of the Desert.",
+      "resolution_source": "TCG Collector row pages + TCGdex set metadata",
+      "resolved_by": "data/japanese-adv-pre-wotc/releases/jp_tcg_adv_miracle_of_the_desert_20030418.json",
+      "resolved_catalog_hash": "c4747b5dda6c31c145bb88072b3f4a3bfef390c4fa47b2404ddafa3c5e729a69",
+      "schema": "marketplace.catalog_source_gap_resolution.v0.1",
+      "series": {
+        "id": "ADV",
+        "name": "ADV"
+      },
+      "set_api_url": "https://api.tcgdex.net/v2/ja/sets/ADV2",
+      "set_id": "ADV2",
+      "set_payload_hash": "a7987eab6c5b3c05df7433ba7d714928e6637f1e418e7cac5827751dbfc6a1a4",
+      "source": "TCGdex REST API",
+      "source_card_count": {
+        "firstEd": 0,
+        "holo": 0,
+        "normal": 0,
+        "official": 53,
+        "reverse": 0,
+        "total": 53
+      },
+      "status": "resolved_by_alternate_row_source"
+    }
+  ],
+  "resolved_source_gap_rows": 125,
+  "schema": "marketplace.catalog_expansion_gap_register.v0.1",
+  "source": "TCGdex REST API",
+  "source_docs_url": "https://tcgdex.dev/rest",
+  "total_source_gap_rows": 160
+}

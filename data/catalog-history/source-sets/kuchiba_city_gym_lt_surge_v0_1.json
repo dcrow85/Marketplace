@@ -1,0 +1,1775 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Kuchiba City Gym / Lt. Surge, emphasizing Japanese Gym standard-deck identity, the 64-card product / 25-row catalog surface, owner-name electricity grammar, and missing-symbol deck-lane boundaries.",
+    "in_scope": [
+      "Kuchiba City Gym / Lt. Surge release dossier",
+      "Lt. Surge's Pikachu 001",
+      "Lt. Surge's Pikachu 002",
+      "Lt. Surge's Raichu 003",
+      "Lt. Surge's Magneton 006",
+      "Lt. Surge's Electrode 009",
+      "Lt. Surge's Electabuzz 010",
+      "Vermilion City Gym 016",
+      "Secret Mission 017",
+      "Lt. Surge 022",
+      "Lt. Surge's Treaty 023",
+      "Double Colorless Energy 025"
+    ],
+    "not_claiming": [
+      "complete Kuchiba City Gym scholarship",
+      "complete sealed-deck collation proof",
+      "English Gym Heroes equivalence",
+      "English Gym Challenge equivalence",
+      "Base No Rarity source status",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+      "type": "release",
+      "context": {
+        "name_en": "Kuchiba City Gym / Lt. Surge",
+        "name_ja": "クチバシティジム マチス",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "release_date": "1998-07-25"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json",
+          "title": "Local Japanese pre-English catalog: Kuchiba City Gym / Lt. Surge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete sealed-deck collation proof"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/KCGYM",
+          "title": "PokeCardex: Kuchiba City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kuchiba_City_Gym_(TCG)",
+          "title": "Bulbapedia: Kuchiba City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md#jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Lt. Surge rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json",
+          "title": "Local English WotC catalog: Gym Challenge Lt. Surge rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Japanese pre-English release map model Kuchiba City Gym / Lt. Surge as released on July 25, 1998.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The local catalog models Kuchiba City Gym / Lt. Surge as a Japanese Gym standard-deck product with strict release membership, not as a booster expansion.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local catalog preserves the deck/product count as 60-card deck plus 4 additional cards, while the catalog surface exposes 25 unique rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia frames Kuchiba City Gym as a Japanese-exclusive Standard Deck that complements Leaders' Stadium and later feeds English Lt. Surge/Gym-era deck and set memory.",
+          "sources": [
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local attention rows are led by the two Lt. Surge's Pikachu rows, Lt. Surge's Raichu, Lt. Surge's Magneton, Lt. Surge's Electabuzz, Vermilion City Gym, Lt. Surge, Lt. Surge's Treaty, and Double Colorless Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local artist clusters are led by Ken Sugimori and Keiji Kinebuchi, with Atsuko Nishida adding key second-copy electricity rows such as Lt. Surge's Pikachu 002, Lt. Surge's Magnemite 005, and Lt. Surge's Voltorb 007.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Kuchiba City Gym / Lt. Surge matters because it makes electricity into ownership grammar: two Pikachu rows, Raichu, Magneton, Electrode, Electabuzz, a named gym, a commander card, and a treaty card all say this is not just Lightning type; it is Lt. Surge's apparatus.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_city_gym_lt_surge_64_product_25_row_missing_symbol_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Kuchiba City Gym, Lt. Surge deck, クチバシティジム マチス, Vermilion City Gym, Lt. Surge's Pikachu, Lt. Surge's Raichu, missing rarity, no rarity, Sans rarete, Gym Heroes, or Gym Challenge.",
+          "summary": "Preserve the Gym deck product boundary: 64-card product context, 25 unique catalog rows, missing-symbol deck lane, not Base No Rarity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and the Japanese Gym standard-deck context.",
+            "Do not treat the 25 unique catalog rows as proof that the sealed product contains only 25 cards; the local product note and release map preserve a 64-card product context.",
+            "Do not collapse Sans rarete / missing-symbol deck cards into 1996 Base No Rarity; this is a Gym deck missing-symbol lane.",
+            "Preserve owner-name identity: Lt. Surge's Pikachu, Lt. Surge's Raichu, Vermilion City Gym, Secret Mission, Lt. Surge, and Lt. Surge's Treaty are not generic Pikachu, Raichu, place, or trainer rows.",
+            "For English Gym Heroes or Gym Challenge comparisons, name the Japanese deck row and the later English row separately before importing rarity, number, or set assumptions.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "complete sealed-deck collation proof",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence",
+            "row-level physical symbol proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Electricity becomes command structure",
+        "why_it_matters": "Kuchiba City Gym is the Lt. Surge deck doing exactly what a Gym deck should do: turning a character into a working machine. The electricity is not abstract. It is his Pikachu twice, his Raichu, his Magneton, his Electrode, his Electabuzz, his gym, his secret mission, his treaty. That is why this release is useful for agents. A seller may say no rarity, Gym Heroes, Lt. Surge, or just Pikachu, but the real identity is a product route with a commander stamped across the cards.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Kuchiba City Gym history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-deck collation proof",
+          "Base No Rarity source status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:001",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Pikachu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:001",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Pikachu 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kuchiba_City_Gym_(TCG)",
+          "title": "Bulbapedia: Kuchiba City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 001 as Lt. Surge's Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Lt. Surge's Pikachu 001 as Sans rarete, a Gym deck missing-symbol context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Pikachu 001 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge's Pikachu 001 is the deck's front spark: familiar mascot, unfamiliar ownership. The card asks an agent to keep two ideas together at once: Pikachu is globally legible, but this row belongs to a 1998 Japanese Lt. Surge deck lane.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Pikachu 001 as the Ken Sugimori row and keep it separate from row 002, English Gym Heroes 81, and English Gym Challenge 84.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_pikachu_001_two_pikachu_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Pikachu, Kuchiba City Gym, row 001, Ken Sugimori, no rarity, Gym Heroes 81, or Gym Challenge 84.",
+          "summary": "Lt. Surge's Pikachu 001 is the Ken Sugimori Japanese deck row; keep it separate from row 002 and later English rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 001.",
+            "Confirm whether the card is row 001 or row 002 before treating a scan or want as matched.",
+            "Preserve Ken Sugimori as the row 001 artist credit; row 002 carries a different local artist credit.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Do not collapse this row into English Gym Heroes 81 or Gym Challenge 84 without naming the release and row separately.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "row 002 equivalence",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first spark belongs to Surge",
+        "why_it_matters": "Lt. Surge's Pikachu 001 is a perfect agent test. Everyone recognizes Pikachu; the protocol has to remember ownership, row, and product route anyway. This is the Ken Sugimori row, the first little bolt in the Kuchiba deck, and it should never become just 'a no-rarity Pikachu' in a hurry.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:002",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Pikachu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:002",
+        "catalog_row_id": "002"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:002",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Pikachu 002",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json",
+          "title": "Local English WotC catalog: Gym Challenge Lt. Surge's Pikachu 84",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 002 as a second Lt. Surge's Pikachu row.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Lt. Surge's Pikachu 002 as Sans rarete, a Gym deck missing-symbol context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Pikachu 002 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge's Pikachu 002 is where the deck stops being a single mascot note and becomes a variation system: same owner-name, same product, different row, different artist credit, later English comparison risk.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Pikachu 002 as the Atsuko Nishida row and keep it separate from row 001, English Gym Heroes 81, and English Gym Challenge 84.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_pikachu_002_two_pikachu_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Pikachu, Kuchiba City Gym, row 002, Atsuko Nishida, no rarity, Gym Heroes 81, or Gym Challenge 84.",
+          "summary": "Lt. Surge's Pikachu 002 is the Atsuko Nishida Japanese deck row; keep it separate from row 001 and later English rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 002.",
+            "Confirm whether the card is row 001 or row 002 before treating a scan or want as matched.",
+            "Preserve Atsuko Nishida as the row 002 artist credit; row 001 carries a different local artist credit.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Do not collapse this row into English Gym Heroes 81 or Gym Challenge 84 without naming the release and row separately.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "row 001 equivalence",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Pikachu makes it a system",
+        "why_it_matters": "Lt. Surge's Pikachu 002 is small, but it is exactly the kind of row a serious catalog should care about. Another Pikachu, another artist, another local number. Atsuko Nishida's credit gives the deck a second mascot texture, and the agent's job is to keep that difference alive.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:003",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Raichu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:003",
+        "catalog_row_id": "003"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:003",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Raichu 003",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Lt. Surge's Raichu 28",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 003 as Lt. Surge's Raichu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Raichu 003 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lt. Surge's Raichu gives the deck its evolved voltage: Pikachu becomes command and risk, then later reappears in English Gym memory where the row can be confused if the Japanese deck origin is not named.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Raichu 003 as a Japanese Kuchiba deck row before comparing it to English Gym Heroes or Gym Challenge Raichu rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_raichu_003_japanese_deck_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Raichu, Kuchiba City Gym, Gym Heroes 28, Gym Challenge 11, no rarity, or Sans rarete.",
+          "summary": "Lt. Surge's Raichu 003 is a Japanese Kuchiba deck row; compare English Raichu rows only after preserving this origin.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 003.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 28 and Gym Challenge 11 unless the listing explicitly names that English release.",
+            "Preserve owner-name identity before treating the card as a generic Raichu.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The evolved voltage",
+        "why_it_matters": "Lt. Surge's Raichu 003 is where the deck's mascot line starts to look dangerous. It is still Sugimori, still a fixed Japanese deck lane, still missing-symbol context rather than Base No Rarity. But emotionally it turns the little spark into command.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:006",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Magneton",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:006",
+        "catalog_row_id": "006"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:006",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Magneton 006",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 006 as Lt. Surge's Magneton.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Magneton 006 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lt. Surge's Magneton makes the deck's electricity feel engineered rather than cute: a cluster of machines under a military-minded trainer's name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Magneton 006 as a Japanese deck row before comparing to English Gym Heroes 8.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_magneton_006_owner_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Magneton, Kuchiba City Gym, Gym Heroes 8, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Lt. Surge's Magneton 006 is owner-name Japanese deck identity; preserve the deck lane before English comparisons.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 006.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name before comparing to English Gym Heroes or other Magneton rows.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Electricity becomes hardware",
+        "why_it_matters": "Lt. Surge's Magneton 006 shifts the deck from mascot electricity to apparatus electricity. It is the clean little machine row: Sugimori, owner-name, missing-symbol Gym deck context, and a later English memory waiting to blur the route if the agent gets lazy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:009",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Electrode",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:009",
+        "catalog_row_id": "009"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:009",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Electrode 009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 009 as Lt. Surge's Electrode.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Electrode 009 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lt. Surge's Electrode is the deck's risk object: electricity as pressure, speed, and self-damage memory, exactly the kind of thing that makes the Surge identity feel different from a generic Lightning pile.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Electrode 009 as a Japanese deck row before comparing to English Gym Challenge 52 or other owner-name Electrode rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_electrode_009_owner_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Electrode, Kuchiba City Gym, Gym Challenge 52, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Lt. Surge's Electrode 009 is a Japanese Kuchiba deck row; do not treat later English owner-name rows as the same print.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 009.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Challenge 52 and other Electrode rows unless the listing explicitly names that release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The risk object",
+        "why_it_matters": "Lt. Surge's Electrode 009 is the deck's little warning label. It is electricity that might bite back. In collection terms, it keeps the Surge deck from feeling merely cute; in protocol terms, it reminds the agent that owner-name and deck lane matter before any English comparison.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:010",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Electabuzz",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:010",
+        "catalog_row_id": "010"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:010",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Electabuzz 010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Lt. Surge's Electabuzz rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 010 as Lt. Surge's Electabuzz.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Electabuzz 010 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lt. Surge's Electabuzz is the muscular part of the electric apparatus: a row that later has multiple English Gym Heroes memories, making exact Japanese deck identity especially worth preserving.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Electabuzz 010 as the Japanese Kuchiba deck row before comparing to English Gym Heroes 6 or 27 or CoroCoro promo Electabuzz memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_electabuzz_010_multiroute_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Electabuzz, Kuchiba City Gym, Gym Heroes 6, Gym Heroes 27, CoroCoro promo, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Lt. Surge's Electabuzz 010 is the Japanese Kuchiba deck row; English Gym Heroes and promo memories are separate routes.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 010.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 6, English Gym Heroes 27, and CoroCoro promo Electabuzz references unless evidence names that route.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "CoroCoro promo equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The punch in the circuit",
+        "why_it_matters": "Lt. Surge's Electabuzz 010 gives the deck muscle. It is not as universally adorable as Pikachu, but it may be more Surge: aggressive, electric, direct. Because Electabuzz has other Lt. Surge routes in English and promo memory, this Japanese row needs a firm fence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence",
+          "promo route equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:016",
+      "type": "card",
+      "context": {
+        "name_en": "Vermilion City Gym",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:016",
+        "catalog_row_id": "016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:016",
+          "title": "Local Kuchiba City Gym row: Vermilion City Gym 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Vermilion City Gym 120",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 016 as Vermilion City Gym.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Vermilion City Gym 016 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Vermilion City Gym is the place-card hinge: the deck does not only give Surge Pokemon, it gives him a room, a rule, and a named geography.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Vermilion City Gym 016 as the Japanese Kuchiba deck row before comparing to English Gym Heroes 120.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_vermilion_city_gym_016_place_card_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Vermilion City Gym, Kuchiba City Gym, Gym Heroes 120, no rarity, missing rarity, or Sans rarete.",
+          "summary": "Vermilion City Gym 016 is the Japanese deck place-card row; keep it separate from English Gym Heroes numbering.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 016.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 120 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The deck gets a room",
+        "why_it_matters": "Vermilion City Gym 016 is the architectural card. It turns the deck from a list of owned Pokemon into a place. Kinebuchi's credit sits on the apparatus side of the release: cards that make the battle feel located, ruled, and staged.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:017",
+      "type": "card",
+      "context": {
+        "name_en": "Secret Mission",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:017",
+        "catalog_row_id": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:017",
+          "title": "Local Kuchiba City Gym row: Secret Mission 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 017 as Secret Mission.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Secret Mission 017 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Secret Mission makes the Surge deck feel like a command briefing. It is not a species card; it is the deck telling you that this Gym Leader's identity includes orders, plans, and tactical drama.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Secret Mission 017 as a Japanese Kuchiba deck trainer row and do not collapse it into English Lt. Surge's Secret Plan without naming the later release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_secret_mission_017_translation_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Secret Mission, Lt. Surge's Secret Plan, Kuchiba City Gym, Gym Challenge 107, no rarity, missing rarity, or Sans rarete.",
+          "summary": "Secret Mission 017 is the Japanese Kuchiba deck row; later English naming should be treated as a separate route unless explicitly matched.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 017.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Do not collapse Secret Mission into English Lt. Surge's Secret Plan without naming the English release and row.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Challenge equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A command briefing in cardboard",
+        "why_it_matters": "Secret Mission 017 is the card that makes the deck feel like Lt. Surge is issuing orders. It is one of those trainer rows that can seem secondary until you care about assembly: character, city, team, and tactics all becoming a playable object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:022",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:022",
+        "catalog_row_id": "022"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:022",
+          "title": "Local Kuchiba City Gym row: Lt. Surge 022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Lt. Surge rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 022 as Lt. Surge.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge 022 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lt. Surge 022 is the deck's signature becoming literal: after all the owned Pokemon, the trainer himself enters as a row, making the product's authority visible.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge 022 as the Japanese Kuchiba deck trainer row before comparing to English Gym Heroes 17 or 101.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_022_trainer_row_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge, Kuchiba City Gym, Gym Heroes 17, Gym Heroes 101, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Lt. Surge 022 is the Japanese deck trainer row; English Gym Heroes Lt. Surge rows are separate comparison routes.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 022.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 17 and 101 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The commander signs the deck",
+        "why_it_matters": "Lt. Surge 022 is the deck saying its quiet part out loud. The cards have carried his name all along, but here the trainer himself becomes a row. That makes this a useful anchor for agents: the deck is not merely electric, it is commanded.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:023",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Treaty",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:023",
+        "catalog_row_id": "023"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:023",
+          "title": "Local Kuchiba City Gym row: Lt. Surge's Treaty 023",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WotC catalog: Gym Heroes Lt. Surge's Treaty 112",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese print authority",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 023 as Lt. Surge's Treaty.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Lt. Surge's Treaty 023 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Lt. Surge's Treaty is the deck's strangest kind of authority card: not creature, not place, but agreement. It gives the Surge apparatus a political/social edge that a pure Lightning-type checklist would miss.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Lt. Surge's Treaty 023 as the Japanese Kuchiba deck row before comparing to English Gym Heroes 112.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_lt_surge_treaty_023_trainer_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Lt. Surge's Treaty, Kuchiba City Gym, Gym Heroes 112, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Lt. Surge's Treaty 023 is the Japanese Kuchiba deck row; preserve it before English Gym Heroes comparison.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 023.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from English Gym Heroes 112 unless the listing explicitly names that English release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The agreement card",
+        "why_it_matters": "Lt. Surge's Treaty 023 is wonderfully odd. It makes the deck feel less like a pile of attacks and more like a little society with rules, commands, and agreements. That is the kind of card a collector may overlook until the release is read as assembly.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "English row equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:025",
+      "type": "card",
+      "context": {
+        "name_en": "Double Colorless Energy",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725",
+        "row_id": "jp_tcg_kuchiba_city_gym_lt_surge_19980725:025",
+        "catalog_row_id": "025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:jp_tcg_kuchiba_city_gym_lt_surge_19980725:025",
+          "title": "Local Kuchiba City Gym row: Double Colorless Energy 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kuchiba City Gym row 025 as Double Colorless Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Double Colorless Energy 025 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Double Colorless Energy reminds the agent that a deck's identity is also resource architecture. Even in a Surge-branded product, the energy apparatus matters as much as the named Pokemon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Preserve Double Colorless Energy 025 as the Kuchiba deck row before comparing to Base, Starter, Gift Pack, or other energy print lanes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "kuchiba_double_colorless_energy_025_energy_route_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Double Colorless Energy, Kuchiba City Gym, Base Set, Starter Pack, Gift Pack, missing rarity, no rarity, or Sans rarete.",
+          "summary": "Double Colorless Energy 025 is a Kuchiba deck row; do not collapse it into other launch-family or English energy lanes.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_kuchiba_city_gym_lt_surge_19980725 and local row id 025.",
+            "Treat Sans rarete / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Separate this row from Base Set, Starter Pack, Gift Pack, English, and other Double Colorless Energy print lanes unless evidence names that release.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "Starter Pack equivalence",
+            "Gift Pack equivalence",
+            "English row equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The resource under the voltage",
+        "why_it_matters": "Double Colorless Energy 025 is the quiet infrastructure row. It is easy to chase only named Pokemon, but decks are built from costs and accelerants too. This card keeps the catalog honest about play: the apparatus needs resources, not just personality.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "other energy print equivalence"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

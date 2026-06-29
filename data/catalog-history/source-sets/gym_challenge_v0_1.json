@@ -1,0 +1,3214 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Gym Challenge and six rows that show trainer ownership, Rocket pressure, and localization boundaries.",
+    "in_scope": [
+      "Gym Challenge release dossier",
+      "Blaine's Arcanine",
+      "Blaine's Charizard",
+      "Erika's Venusaur",
+      "Koga's Ditto",
+      "Lt. Surge's Raichu",
+      "Misty's Golduck",
+      "Misty's Gyarados",
+      "Rocket's Mewtwo",
+      "Rocket's Zapdos",
+      "Misty's Tears"
+    ],
+    "not_claiming": [
+      "complete Gym Challenge scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_gym_challenge_20001016",
+      "type": "release",
+      "context": {
+        "name_en": "Gym Challenge",
+        "name_ja": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "release_date": "2000-10-16"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json",
+          "title": "Local English WoC release catalog: Gym Challenge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokémon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Gym_Challenge_(TCG)",
+          "title": "Bulbapedia: Gym Challenge (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokémon TCG API model Gym Challenge with an October 16, 2000 English release date; Bulbapedia also lists English release date October 16, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokémon TCG API both model 132 Gym Challenge rows for set id gym2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Gym Challenge as the seventh main English Pokémon TCG expansion and says the Japanese release was Gym Expansion 2: Challenge from the Darkness.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia's set blurb frames Gym Challenge around Blaine, Sabrina, Koga, and Giovanni as trickster or mischievous Gym Leaders.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Blaine's Charizard, Erika's Venusaur, Giovanni's Gyarados, Misty's Gyarados, Rocket's Mewtwo, Rocket's Zapdos, Lt. Surge's Raichu, Sabrina's Alakazam, and holo trainer portraits.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Gym Challenge are led by Ken Sugimori, Keiji Kinebuchi, Atsuko Nishida, Shin-ichi Yoshida, Hikaru Koike, and Sumiyoshi Kizuki.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Gym Challenge matters because it makes ownership the set's organizing grammar: Pokémon are not just species, they are Blaine's, Misty's, Giovanni's, Rocket's, Sabrina's, Koga's, or Surge's, so the card identity includes a relationship.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_owner_name_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all owner-named cards share the same release context"
+          ],
+          "steps": [
+            "Preserve the full owner-name string, including Rocket's, Blaine's, Misty's, Giovanni's, or Sabrina's, before comparing species rows.",
+            "Confirm English Gym Challenge / set id gym2 before importing Challenge from the Darkness or Japanese deck context.",
+            "Do not collapse owner-named Pokémon into normal species rows for search, pricing, or evidence comparison.",
+            "If a card has a known artwork, error, or reprint boundary, keep that boundary separate from the owner-name identity."
+          ],
+          "summary": "Gym Challenge identity is owner-plus-species. Agents should not flatten owner-named rows into ordinary Pokémon names.",
+          "trigger": "Identifying or comparing English Gym Challenge cards."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When ownership became the card's grammar",
+        "why_it_matters": "Gym Challenge is less about discovering new creatures than seeing old ones under someone else's hand. Blaine turns Charizard into a lesson in volatility, Misty makes Gyarados rebellious, Rocket makes Mewtwo and Zapdos feel captured, and the trainer portraits stare back from the checklist. The set matters because it makes relationship part of identity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-1",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Arcanine",
+        "name_ja": "ブレインのアルカニン",
+        "romaji": "Blaine no Arcanine",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-1",
+        "catalog_row_id": "gym2-1",
+        "card_number": "1",
+        "release_name": "Gym Challenge",
+        "source_expansion_lineage": "English Gym Challenge / Japanese Challenge from the Darkness lineage",
+        "variant_lane": "Rare Holo #1 owner Pokemon, Blaine's Growlithe #62 evolution lane, Blaine trainer portrait and Quiz support lane, Japanese Challenge from the Darkness PMCG6-034 source lane, Gym Heroes Blaine's Growlithe boundary, generic Base/Legendary Collection Arcanine boundaries, and Blaine's Charizard chase-neighbor boundary"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-1",
+          "title": "Local English WoC card row: Blaine's Arcanine #1",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-62",
+          "title": "Local English WoC card row: Blaine's Growlithe #62",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:Blaine",
+          "title": "Local English WoC Gym Challenge Blaine trainer and quiz boundary rows",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:BlaineGrowlithe",
+          "title": "Local English WoC Gym Heroes boundary rows: Blaine's Growlithe",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:ArcanineGrowlithe",
+          "title": "Local English WoC Base Set boundary rows: Arcanine and Growlithe",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "trainer-owned row proof",
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:ArcanineGrowlithe",
+          "title": "Local English WoC Legendary Collection boundary rows: Arcanine and Growlithe",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "trainer-owned row proof",
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-034",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Blaine's Arcanine 034",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English printing proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-2",
+          "title": "Local English WoC card row: Blaine's Charizard #2",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Blaine's Arcanine row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-1",
+          "title": "Pokemon TCG API v2 card record: Blaine's Arcanine #1",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokemon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Arcanine_(Gym_Challenge_1)",
+          "title": "Bulbapedia: Blaine's Arcanine (Gym Challenge 1)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(TCG)",
+          "title": "Bulbapedia: Arcanine (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s13",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Arcanine_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Arcanine (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Game Freak source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s14",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine_(anime)",
+          "title": "Bulbapedia: Blaine (anime)",
+          "retrieved": "2026-06-23",
+          "tier": "C",
+          "not_claiming": [
+            "card text source",
+            "official TCG design intent",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s15",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Gym Challenge Blaine's Arcanine gym2-1 is the English Rare Holo row for Blaine's Arcanine, cataloged as card number 1, a Stage 1 Fire Pokemon with 90 HP, and Ken Sugimori credit.",
+          "sources": [
+            "s1",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Blaine's Arcanine with Heat Tackle for 40 damage and 10 self-damage, plus Firestorm for 120 damage requiring three attached Fire Energy to be discarded.",
+          "sources": [
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The Japanese source lane is Challenge from the Darkness card 034 / PMCG6-034, whose local source row appears as ブレインのアルカニン and is normalized here as Blaine's Arcanine.",
+          "sources": [
+            "s7",
+            "s11",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Blaine's Growlithe #62 is the direct Gym Challenge evolution lane for Blaine's Arcanine #1, while Gym Heroes also has earlier Blaine's Growlithe rows that should remain separate.",
+          "sources": [
+            "s2",
+            "s4",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Generic Base Set Arcanine/Growlithe and Legendary Collection Arcanine/Growlithe are species-family boundaries, not trainer-owned Blaine's Arcanine proof.",
+          "sources": [
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.context",
+          "text": "Gym Challenge is modeled as the English 132-card Gym set released on October 16, 2000, with Japanese lineage to Gym Expansion 2: Challenge from the Darkness.",
+          "sources": [
+            "s1",
+            "s10",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Ken Sugimori for Blaine's Arcanine #1; the Japanese local row is useful as lineage but does not itself provide clean illustrator authority in the current catalog.",
+          "sources": [
+            "s1",
+            "s7",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "Ken Sugimori's importance here is not only a card credit: his early Pokemon model art made Arcanine readable as both loyal dog and mythic fire beast, which the owner-card grammar then hands to Blaine.",
+          "sources": [
+            "s13",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Bulbapedia's card-page trivia notes that Firestorm was the first TCG attack with base damage over 100, making Blaine's Arcanine historically important beyond ordinary holo status.",
+          "sources": [
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "The owner-Pokemon context matters because Blaine's Arcanine is not generic Arcanine; its Heat Tackle self-damage and Firestorm energy discard make Blaine's fire identity feel mechanically expensive and spectacular.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s8",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "history.lineage",
+          "text": "Blaine's Charizard #2 sits beside Blaine's Arcanine #1 as the obvious Fire-owner chase neighbor, but Charizard demand should not erase Arcanine's own card-number-one and Firestorm history.",
+          "sources": [
+            "s1",
+            "s8",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c9"
+          ]
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "An agent handling Blaine's Arcanine should confirm owner name, Gym Challenge set, card number 1, Rare Holo finish, evolution-from-Blaine's-Growlithe lane, and image evidence before treating a listing as the gym2-1 row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8",
+            "s9",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c11"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_blaines_arcanine_1_firestorm_owner_species_boundary_v0.1",
+          "trigger": "A listing, want, binder photo, or agent note says Blaine's Arcanine, Gym Challenge Arcanine, gym2-1, card 1, Challenge from the Darkness Arcanine, ブレインのアルカニン, Blaine's Growlithe, Firestorm, Heat Tackle, generic Arcanine, Base Arcanine, Legendary Collection Arcanine, or Blaine fire holo.",
+          "summary": "Start with Gym Challenge gym2-1 only when the evidence points to the Rare Holo owner-Pokemon row; keep generic Arcanine, Japanese PMCG6, Growlithe, and Blaine's Charizard memories separate.",
+          "steps": [
+            "Confirm the English Gym Challenge set identity, card number 1/132, Rare Holo finish, Stage 1 Fire identity, 90 HP, Ken Sugimori credit, Heat Tackle, and Firestorm before binding a listing to gym2-1.",
+            "Preserve the owner name: \"Blaine's Arcanine\" is not generic Arcanine, Base Set Arcanine, or Legendary Collection Arcanine.",
+            "Treat Japanese Challenge from the Darkness PMCG6-034 as source lineage and comparison context, not as English Gym Challenge row equivalence.",
+            "Treat Blaine's Growlithe rows and Blaine trainer/quiz rows as owner-line context, not proof that a seller has Blaine's Arcanine.",
+            "Keep Blaine's Charizard #2 as a neighboring chase card, not a substitute for Arcanine #1.",
+            "Do not use Fire type, Arcanine species lore, Sugimori credit, or Blaine ownership alone as proof of the exact Gym Challenge #1 card.",
+            "For a possible purchase or sale, ask for front/back photos, lower-corner set and number visibility, owner-name line visibility, holo-surface evidence, slab label or cert if graded, and enough edge/corner detail to support condition judgment."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English/Japanese equivalence",
+            "generic Arcanine equivalence",
+            "Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Blaine's Growlithe equivalence",
+            "Blaine's Charizard equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blaine's Arcanine #1 - fire with a handler",
+        "why_it_matters": "Blaine's Arcanine opens Gym Challenge like a match struck too close to the paper. Charizard will always pull the gravity, but Arcanine is the card that says what Blaine's corner of the set feels like before the dragon arrives: loyalty, speed, heat, and a willingness to pay for spectacle. Heat Tackle hurts itself. Firestorm throws 120 onto the table and burns three Fire Energy to do it. That was not just big damage; Bulbapedia records it as the first TCG attack with base damage over 100. So the card is a chase, yes, but it is also a little design monument: Gym ownership turning a beloved species into a trainer's temperament.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Gym Challenge Blaine's Arcanine #1 is a Rare Holo owner-Pokemon row: a 90 HP Stage 1 Fire card by Ken Sugimori with Heat Tackle and Firestorm, the latter recorded by Bulbapedia as the first TCG attack with base damage over 100. Keep it apart from generic Arcanine, Base/Legendary Collection Arcanine, Japanese Challenge from the Darkness PMCG6-034, Blaine's Growlithe context, and Blaine's Charizard chase gravity.",
+        "assembly_themes": [
+          "Gym Challenge Rare Holo row",
+          "card number 1",
+          "Blaine owner-Pokemon grammar",
+          "Ken Sugimori original species-model art",
+          "ブレインのアルカニン Japanese source lane",
+          "Challenge from the Darkness PMCG6-034 lineage",
+          "Blaine's Growlithe evolution context",
+          "Heat Tackle self-damage",
+          "Firestorm 120 damage",
+          "first TCG attack over 100 base damage",
+          "Fire Energy discard cost",
+          "generic Arcanine boundary",
+          "Base Set Arcanine boundary",
+          "Legendary Collection Arcanine boundary",
+          "Blaine's Charizard neighboring chase boundary"
+        ],
+        "collector_texture_note": "This is the Arcanine that refuses to be merely the Charizard warm-up. It is card #1, it carries Blaine's name, and Firestorm gives it one of those early-TCG bragging rights that makes a binder row feel alive.",
+        "signals": [
+          "Gym Challenge",
+          "2000-10-16",
+          "gym2-1",
+          "card 1",
+          "Rare Holo",
+          "Pokemon",
+          "Stage 1",
+          "Fire",
+          "Blaine",
+          "Ken Sugimori",
+          "Blaine's Growlithe",
+          "Heat Tackle",
+          "Firestorm",
+          "120 damage",
+          "ブレインのアルカニン"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-2",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-2",
+        "catalog_row_id": "gym2-2"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-2",
+          "title": "Local Gym Challenge row: Blaine's Charizard 2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-2",
+          "title": "Pokémon TCG API v2 card record: Blaine's Charizard gym2-2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Charizard_(Gym_Challenge_2)",
+          "title": "Bulbapedia: Blaine's Charizard (Gym Challenge 2)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Blaine's Charizard as Gym Challenge number 2, a Rare Holo Stage 2 Fire Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Blaine's Charizard with the attacks Roaring Flames and Flame Jet.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says some early copies of Blaine's Charizard were printed with a symbol in the Roaring Flames attack.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blaine's Charizard is the set's cleanest chase-card collision: Charizard demand meets Gym Leader ownership and an early-print attack-symbol issue.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "blaines_charizard_roaring_flames_symbol_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "every copy has the attack-symbol issue"
+          ],
+          "steps": [
+            "Preserve the full name Blaine's Charizard and row 2 before comparing to any ordinary Charizard row.",
+            "Ask for a clear image of the Roaring Flames attack area if a buyer cares about the early-copy symbol note.",
+            "Do not treat the existence of the symbol variant as proof that a seller's physical card has it.",
+            "Keep Ken Sugimori credit as catalog metadata, not physical-card authentication."
+          ],
+          "summary": "Blaine's Charizard needs owner-name and attack-text inspection; the Roaring Flames symbol note is a seller-image question, not an automatic claim.",
+          "trigger": "A listing references Blaine's Charizard, early print, error, symbol, or variant language."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard under a teacher's hand",
+        "why_it_matters": "Blaine's Charizard is not just another Charizard tax on a set. It has a handler, an attitude, and a mechanical appetite: Roaring Flames burns through energy because that is what this relationship feels like. Then the attack-symbol note adds the little print-history hook collectors love to argue over.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-4",
+      "type": "card",
+      "context": {
+        "name_en": "Erika's Venusaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-4",
+        "catalog_row_id": "gym2-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-4",
+          "title": "Local Gym Challenge row: Erika's Venusaur 4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-4",
+          "title": "Pokemon TCG API v2 card record: Erika's Venusaur gym2-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Erika%27s_Venusaur_(Gym_Challenge_4)",
+          "title": "Bulbapedia: Erika's Venusaur (Gym Challenge 4)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Erika's Venusaur as Gym Challenge number 4, a Rare Holo Stage 2 Grass Pokemon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Erika's Venusaur as HP 90, Level 45, evolving from Erika's Ivysaur, with Fire weakness, two Colorless retreat cost, and the attacks Growth and Wide Solarbeam.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Erika's Venusaur matters because the owner prefix changes the Venusaur comparison problem: this is not Base Set Venusaur, Expedition Venusaur, or a Japanese launch Venusaur, but a Gym Challenge card where the species is bound to Erika's cultivated trainer identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Special identification work should preserve the owner-prefixed name, Gym Challenge set id gym2, printed number 4, Rare Holo finish label, Ken Sugimori credit, Growth, and Wide Solarbeam before importing ordinary Venusaur history or price comparisons.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_erikas_venusaur_4_owner_prefix_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Erika deck equivalence",
+            "ordinary Venusaur equivalence",
+            "Base Set equivalence",
+            "Expedition equivalence",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm English Gym Challenge / set id gym2 printed number 4 before importing this row's history.",
+            "Confirm the owner-prefixed name Erika's Venusaur; plain Venusaur is not enough.",
+            "Check Rare Holo, Ken Sugimori, Growth, Wide Solarbeam, HP 90, Level 45, Erika's Ivysaur, Fire weakness, and two Colorless retreat cost as row-alignment signals.",
+            "Do not infer First Edition, Unlimited, holo condition, graded-cert truth, seller possession, or authenticity from the catalog row.",
+            "Separate this card from Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Japanese Expansion Pack / No Rarity Venusaur, CD or promo Venusaur rows, Tamamushi City Gym / Japanese Erika deck rows, and later Venusaur ex/GX/V memory.",
+            "If edition, finish, condition, slab, or variant context matters, ask for seller scans, label/cert evidence, and current physical-card proof."
+          ],
+          "summary": "Erika's Venusaur gym2-4 is the English Gym Challenge Rare Holo owner-prefixed row. Preserve owner prefix, set id, printed number, and seller evidence needs before comparing it to ordinary Venusaur prints.",
+          "trigger": "A listing, want, scan, or agent memory says Erika's Venusaur, Gym Challenge Venusaur, gym2-4, Venusaur #4, owner Venusaur, Growth Venusaur, Wide Solarbeam Venusaur, or Erika."
+        }
+      ],
+      "card_highlights": {
+        "number": "4",
+        "rarity_signal": "Rare Holo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Gym owner grammar",
+          "holo surface",
+          "trainer relationship",
+          "Grass cultivation",
+          "identity trap"
+        ],
+        "signals": [
+          "Gym Challenge",
+          "gym2",
+          "Erika's Venusaur",
+          "4",
+          "Rare Holo",
+          "Ken Sugimori",
+          "Erika's Ivysaur",
+          "Growth",
+          "Wide Solarbeam",
+          "HP 90",
+          "Level 45",
+          "Fire weakness",
+          "retreat cost 2"
+        ],
+        "collector_texture_note": "The owner prefix changes the card: a Venusaur under Erika's cultivated hand, not Base, Expedition, or No Rarity Venusaur wearing a familiar species name."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Erika's Venusaur #4: the garden chooses its owner",
+        "why_it_matters": "Base Venusaur is engine, Expedition Venusaur is interface, and Erika's Venusaur is relationship. The apostrophe matters. It turns the species into a card with a trainer's hand on it: Growth feels cultivated, Wide Solarbeam feels controlled, and the whole object asks the agent to slow down before saying simply Venusaur.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-10",
+      "type": "card",
+      "context": {
+        "name_en": "Koga's Ditto",
+        "name_ja": "キョウのメタモン",
+        "romaji": "Kyo no Metamon",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-10",
+        "catalog_row_id": "gym2-10",
+        "card_number": "10",
+        "release_name": "Gym Challenge",
+        "source_expansion_lineage": "English Gym Challenge / Japanese Challenge from the Darkness lineage",
+        "variant_lane": "Rare Holo #10 owner Pokemon, Koga trainer and Koga's Ninja Trick context, Koga poison-family boundary rows, Fossil Ditto holo/non-holo transformation boundary, Skyridge Ditto later Komiya boundary, and Japanese Challenge from the Darkness source lane"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-10",
+          "title": "Local English WoC card row: Koga's Ditto #10",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:Koga",
+          "title": "Local English WoC Gym Challenge Koga trainer and Koga-owned boundary rows",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Koga's Ditto row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-9",
+          "title": "Local English WoC card row: Koga's Beedrill #9",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Koga's Ditto row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:Ditto",
+          "title": "Local English WoC Fossil boundary rows: Ditto #3 and #18",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Koga's Ditto row proof",
+            "trainer-owned row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_skyridge_20030512.json#row:en_wotc_skyridge_20030512:ecard3-51",
+          "title": "Local English WoC Skyridge boundary row: Ditto #51",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Koga's Ditto row proof",
+            "trainer-owned row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-10",
+          "title": "Pokemon TCG API v2 card record: Koga's Ditto #10",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokemon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Koga%27s_Ditto_(Gym_Challenge_10)",
+          "title": "Bulbapedia: Koga's Ditto (Gym Challenge 10)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ditto_(TCG)",
+          "title": "Bulbapedia: Ditto (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ditto_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Ditto (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Game Freak source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Koga",
+          "title": "Bulbapedia: Koga",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "card text source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Gym Challenge Koga's Ditto gym2-10 is the English Rare Holo row for Koga's Ditto, cataloged as card number 10, a Basic Colorless Pokemon with 40 HP, and Ken Sugimori credit.",
+          "sources": [
+            "s1",
+            "s6",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Koga's Ditto with Giant Growth, which can raise its maximum HP to 80 and make Pound's base damage 30 until it is benched, plus Pound for base 10 damage.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Koga's Ditto with Fighting Weakness, Psychic Resistance, and one Colorless retreat cost.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Gym Challenge is modeled as the English 132-card Gym set released on October 16, 2000, with Japanese lineage to Gym Expansion 2: Challenge from the Darkness.",
+          "sources": [
+            "s1",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The local English row and Pokemon TCG API credit Ken Sugimori for Koga's Ditto #10.",
+          "sources": [
+            "s1",
+            "s6",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Ken Sugimori's importance here is not only a card credit: his early Pokemon model clarity makes Ditto readable as a soft, unstable body even before Koga's owner grammar turns it into a trick.",
+          "sources": [
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Koga's owner context matters because Koga is associated with ninja and poison Gym identity, and Koga's Ditto turns that misdirection language toward a Pokemon already defined by transformation.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6",
+            "s8",
+            "s10",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Fossil Ditto #3 and #18 are earlier transformation-memory boundary rows illustrated by Keiji Kinebuchi, not trainer-owned Koga's Ditto proof.",
+          "sources": [
+            "s4",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.variant",
+          "text": "Skyridge Ditto #51 is a later Tomokazu Komiya Ditto boundary and should not be collapsed into the Gym Challenge Koga owner row.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.lineage",
+          "text": "Koga's Beedrill and the wider Koga-owned Gym Challenge rows give poison/ninja owner context, but they do not identify or authenticate Koga's Ditto #10.",
+          "sources": [
+            "s2",
+            "s3",
+            "s11"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "Bulbapedia's card trivia notes that Pound is a move in the Pokemon games, but Ditto itself cannot normally learn it; that makes Koga's Ditto a small early-TCG/game-model mismatch worth preserving.",
+          "sources": [
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "An agent handling Koga's Ditto should confirm owner name, Gym Challenge set, card number 10, Rare Holo finish, Basic Colorless identity, Giant Growth/Pound text, and image evidence before treating a listing as the gym2-10 row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c8",
+            "c9",
+            "c10",
+            "c11"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_kogas_ditto_10_giant_growth_owner_transform_boundary_v0.1",
+          "trigger": "A listing, want, binder photo, or agent note says Koga's Ditto, Gym Challenge Ditto, gym2-10, card 10, Challenge from the Darkness Ditto, キョウのメタモン, Giant Growth, Pound, Koga, Fossil Ditto, Skyridge Ditto, or transform Ditto.",
+          "summary": "Start with Gym Challenge gym2-10 only when the evidence points to the Rare Holo owner-Pokemon row; keep generic Ditto, Fossil Ditto, Skyridge Ditto, and other Koga rows separate.",
+          "steps": [
+            "Confirm the English Gym Challenge set identity, card number 10/132, Rare Holo finish, Basic Colorless identity, 40 HP, Ken Sugimori credit, Giant Growth, and Pound before binding a listing to gym2-10.",
+            "Preserve the owner name: \"Koga's Ditto\" is not generic Ditto, Fossil Ditto, or Skyridge Ditto.",
+            "Treat Koga trainer rows, Koga's Ninja Trick, Koga's Beedrill, and other Koga-owned Pokemon as owner-context evidence, not proof that a seller has Koga's Ditto.",
+            "Do not use Ditto transformation lore, Koga poison/ninja flavor, Sugimori credit, Colorless type, or a generic pink Ditto image as proof of the exact Gym Challenge #10 card.",
+            "Keep Fossil Ditto #3/#18 and Skyridge Ditto #51 as comparison boundaries unless the set symbol, card number, finish, and image evidence align.",
+            "For a possible purchase or sale, ask for front/back photos, lower-corner set and number visibility, owner-name line visibility, holo-surface evidence, slab label or cert if graded, and enough edge/corner detail to support condition judgment."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "generic Ditto equivalence",
+            "Fossil Ditto equivalence",
+            "Skyridge Ditto equivalence",
+            "Koga trainer equivalence",
+            "Koga's Beedrill equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Koga's Ditto #10 - a trick wearing a trainer's name",
+        "why_it_matters": "Ditto is already the franchise's softest identity problem: a Pokemon that becomes other Pokemon, a body that refuses to stay fixed. Then Gym Challenge gives it to Koga, the ninja-poison Gym Leader, and the card suddenly feels like a tactic. Giant Growth is not a normal transformation into another species; it is a temporary body change, a bigger HP total and a stronger Pound until the bench breaks the spell. That makes Koga's Ditto one of the set's sharpest owner-Pokemon ideas. The apostrophe does real work. This is not just Ditto being Ditto. It is Ditto under Koga's method: misdirection, timing, and a body that changes only while the trick holds.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Gym Challenge Koga's Ditto #10 is a Rare Holo owner-Pokemon row: a 40 HP Basic Colorless card by Ken Sugimori with Giant Growth and Pound. Giant Growth can temporarily make it an 80 HP body and turn Pound into 30 base damage, while benching ends the effect. Keep it apart from Fossil Ditto, Skyridge Ditto, generic transformation lore, Koga trainer rows, and Koga's poison-line Pokemon.",
+        "assembly_themes": [
+          "Gym Challenge Rare Holo row",
+          "Koga owner-Pokemon grammar",
+          "Ken Sugimori original species-model art",
+          "キョウのメタモン Japanese name lane",
+          "Challenge from the Darkness lineage",
+          "Basic Colorless Pokemon",
+          "Giant Growth temporary body change",
+          "Pound damage shift",
+          "bench ends the effect",
+          "Ditto transformation lore",
+          "Koga ninja and poison context",
+          "Pound game-model mismatch",
+          "Fossil Ditto boundary",
+          "Skyridge Ditto boundary",
+          "Koga's Beedrill owner-neighbor boundary"
+        ],
+        "collector_texture_note": "The fun is that Koga does not make Ditto less slippery. He makes the slipperiness feel intentional. For agents, that means the card can be interesting immediately, but the exact row still depends on owner name, set, number, finish, and evidence.",
+        "signals": [
+          "Gym Challenge",
+          "2000-10-16",
+          "gym2-10",
+          "card 10",
+          "Rare Holo",
+          "Pokemon",
+          "Basic",
+          "Colorless",
+          "Koga",
+          "Ken Sugimori",
+          "Giant Growth",
+          "Pound",
+          "Fossil Ditto",
+          "Skyridge Ditto",
+          "キョウのメタモン"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-11",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Raichu",
+        "name_ja": "マチスのライチュウ",
+        "romaji": "Matis no Raichu",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-11",
+        "catalog_row_id": "gym2-11",
+        "card_number": "11",
+        "release_name": "Gym Challenge",
+        "source_expansion_lineage": "English Gym Challenge / Japanese Challenge from the Darkness lineage, with Kuchiba City Gym deck ancestry",
+        "variant_lane": "Rare Holo #11 owner Pokemon, Lt. Surge's Pikachu #84 evolution lane, Challenge from the Darkness PMCG6-041 source lane, Kuchiba City Gym Lt. Surge's Raichu deck lane, Gym Heroes Lt. Surge's Raichu boundary, Base/Fossil/Legendary Collection Raichu boundaries, and Surge trainer/secret-plan context"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-11",
+          "title": "Local English WoC card row: Lt. Surge's Raichu #11",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-84",
+          "title": "Local English WoC card row: Lt. Surge's Pikachu #84",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Lt. Surge's Raichu row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:LtSurge",
+          "title": "Local English WoC Gym Challenge Lt. Surge trainer and electric boundary rows",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Lt. Surge's Raichu row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:LtSurgeRaichu",
+          "title": "Local English WoC Gym Heroes boundary rows: Lt. Surge's Raichu and Lt. Surge's Pikachu",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:RaichuPikachu",
+          "title": "Local English WoC Base Set boundary rows: Raichu and Pikachu",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "trainer-owned row proof",
+            "Lt. Surge's Raichu row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:Raichu",
+          "title": "Local English WoC Fossil boundary rows: Raichu #14 and #29",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "trainer-owned row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:RaichuPikachu",
+          "title": "Local English WoC Legendary Collection boundary rows: Dark Raichu and Pikachu",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Gym Challenge row proof",
+            "trainer-owned row proof",
+            "Lt. Surge's Raichu row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_challenge_from_the_darkness_19990625.json#row:jp_tcg_challenge_from_the_darkness_19990625:PMCG6-041",
+          "title": "Local Japanese classic catalog: Challenge from the Darkness row: Lt. Surge's Raichu 041",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English printing proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_kuchiba_city_gym_lt_surge_19980725.json#row:LtSurgeRaichu",
+          "title": "Local Japanese pre-English Kuchiba City Gym deck row: Lt. Surge's Raichu 003",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English printing proof",
+            "Gym Challenge row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-11",
+          "title": "Pokemon TCG API v2 card record: Lt. Surge's Raichu #11",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokemon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lt._Surge%27s_Raichu_(Gym_Challenge_11)",
+          "title": "Bulbapedia: Lt. Surge's Raichu (Gym Challenge 11)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s13",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Raichu_(TCG)",
+          "title": "Bulbapedia: Raichu (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s14",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Raichu_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Raichu (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Game Freak source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s15",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lt._Surge",
+          "title": "Bulbapedia: Lt. Surge",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "card text source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s16",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Gym Challenge Lt. Surge's Raichu gym2-11 is the English Rare Holo row for Lt. Surge's Raichu, cataloged as card number 11, a Stage 1 Lightning Pokemon with 80 HP, and Ken Sugimori credit.",
+          "sources": [
+            "s1",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Lt. Surge's Raichu with Kerzap for 20+ damage, a heads result that adds 30 damage and discards all attached Lightning Energy, and Thundertackle for 40 damage with either Paralysis on heads or 20 self-damage on tails.",
+          "sources": [
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Lt. Surge's Raichu as evolving from Lt. Surge's Pikachu, with Fighting Weakness and a two-Colorless retreat cost.",
+          "sources": [
+            "s2",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Gym Challenge is modeled as the English 132-card Gym set released on October 16, 2000, with Japanese lineage to Gym Expansion 2: Challenge from the Darkness.",
+          "sources": [
+            "s1",
+            "s11",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "The Challenge from the Darkness source lane is card 041 / PMCG6-041, while the older Kuchiba City Gym deck lane has its own Lt. Surge's Raichu 003 row; both are lineage or comparison context, not English Gym Challenge equivalence.",
+          "sources": [
+            "s8",
+            "s9",
+            "s12",
+            "s13"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Gym Heroes Lt. Surge's Raichu #28 is a separate earlier English Gym row and should not be collapsed into Gym Challenge #11.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Base Set Raichu, Fossil Raichu, Legendary Collection Dark Raichu, and their Pikachu-family rows are species-family boundaries, not owner-prefixed Lt. Surge's Raichu proof.",
+          "sources": [
+            "s5",
+            "s6",
+            "s7",
+            "s13"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.credit",
+          "text": "The local English Gym Challenge row and Pokemon TCG API credit Ken Sugimori for Lt. Surge's Raichu #11.",
+          "sources": [
+            "s1",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.impact",
+          "text": "Ken Sugimori's importance here is not only a card credit: his early Pokemon model art lets Raichu stay instantly readable while the owner-card grammar turns it into Lt. Surge's commanded electricity.",
+          "sources": [
+            "s14",
+            "s16"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Lt. Surge's owner context matters because the card's Kerzap and Thundertackle mechanics turn electricity into command risk: big upside, energy discard, Paralysis chance, and self-damage all read as tactical voltage rather than generic mascot evolution.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s10",
+            "s12",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "The Kuchiba City Gym deck context shows Lt. Surge's electricity as an apparatus of Pikachu, Raichu, Magneton, Electrode, Electabuzz, place, trainer, treaty, and mission rows; Gym Challenge #11 is a later English holo expression of that owner grammar.",
+          "sources": [
+            "s3",
+            "s9",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c5",
+            "c10"
+          ]
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "An agent handling Lt. Surge's Raichu should confirm owner name, Gym Challenge set, card number 11, Rare Holo finish, evolution-from-Lt.-Surge's-Pikachu lane, Kerzap/Thundertackle text, and image evidence before treating a listing as the gym2-11 row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8",
+            "s9",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_lt_surges_raichu_11_kerzap_owner_voltage_boundary_v0.1",
+          "trigger": "A listing, want, binder photo, or agent note says Lt. Surge's Raichu, Gym Challenge Raichu, gym2-11, card 11, Challenge from the Darkness Raichu, PMCG6-041, Kuchiba City Gym Raichu, マチスのライチュウ, Lt. Surge's Pikachu, Kerzap, Thundertackle, Base Raichu, Fossil Raichu, Dark Raichu, or generic Raichu.",
+          "summary": "Start with Gym Challenge gym2-11 only when the evidence points to the Rare Holo owner-Pokemon row; keep generic Raichu, Gym Heroes, Japanese deck, Japanese Challenge, Fossil, Base, and Legendary Collection memories separate.",
+          "steps": [
+            "Confirm the English Gym Challenge set identity, card number 11/132, Rare Holo finish, Stage 1 Lightning identity, 80 HP, Ken Sugimori credit, Kerzap, and Thundertackle before binding a listing to gym2-11.",
+            "Preserve the owner name: \"Lt. Surge's Raichu\" is not generic Raichu, Base Set Raichu, Fossil Raichu, Dark Raichu, or Legendary Collection Pikachu/Raichu-family memory.",
+            "Treat Lt. Surge's Pikachu #84, Lt. Surge trainer rows, Lt. Surge's Secret Plan, and other Surge-owned Pokemon as owner-line context, not proof that a seller has Lt. Surge's Raichu #11.",
+            "Treat Challenge from the Darkness PMCG6-041 and Kuchiba City Gym Lt. Surge's Raichu 003 as source/comparison lanes, not English Gym Challenge equivalence.",
+            "Keep Gym Heroes Lt. Surge's Raichu #28 separate unless the set symbol, card number, finish, and image evidence align.",
+            "Do not use Lightning type, Raichu species lore, Sugimori credit, Surge ownership, or generic Pikachu-family affection as proof of the exact Gym Challenge #11 card.",
+            "For a possible purchase or sale, ask for front/back photos, lower-corner set and number visibility, owner-name line visibility, holo-surface evidence, slab label or cert if graded, and enough edge/corner detail to support condition judgment."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "generic Raichu equivalence",
+            "Base Set equivalence",
+            "Fossil equivalence",
+            "Legendary Collection equivalence",
+            "Gym Heroes equivalence",
+            "Kuchiba City Gym equivalence",
+            "Challenge from the Darkness equivalence",
+            "Lt. Surge's Pikachu equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lt. Surge's Raichu #11 - voltage under command",
+        "why_it_matters": "Raichu already lives in Pikachu's long shadow, which makes this Gym Challenge row feel especially useful. The apostrophe gives it a commander. This is not just the evolved mascot line; it is Lt. Surge's electricity, trained into risk. Kerzap can spike harder, but it throws away the Lightning Energy. Thundertackle can paralyze, or snap back into self-damage. That is the whole Surge apparatus in miniature: voltage, discipline, gamble, recoil. Ken Sugimori keeps the species readable, but the card's identity is relational. It belongs to a Gym Leader, to a deck lineage, to a later English holo moment, and to the collector who knows that a Raichu row can be more than 'not Pikachu.'",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Gym Challenge Lt. Surge's Raichu #11 is a Rare Holo owner-Pokemon row: an 80 HP Stage 1 Lightning card by Ken Sugimori with Kerzap and Thundertackle. Kerzap can hit harder but discards all attached Lightning Energy; Thundertackle can paralyze or self-damage. Keep it apart from Base Raichu, Fossil Raichu, Dark Raichu, Gym Heroes Lt. Surge's Raichu, the Japanese Kuchiba deck row, and Challenge from the Darkness PMCG6-041.",
+        "assembly_themes": [
+          "Gym Challenge Rare Holo row",
+          "Lt. Surge owner-Pokemon grammar",
+          "Ken Sugimori original species-model art",
+          "マチスのライチュウ Japanese name lane",
+          "Challenge from the Darkness PMCG6-041 lineage",
+          "Kuchiba City Gym deck ancestry",
+          "Lt. Surge's Pikachu evolution context",
+          "Stage 1 Lightning Pokemon",
+          "Kerzap energy-discard gamble",
+          "Thundertackle paralysis or self-damage",
+          "commanded electricity apparatus",
+          "Base Set Raichu boundary",
+          "Fossil Raichu boundary",
+          "Legendary Collection Dark Raichu boundary",
+          "Gym Heroes Lt. Surge's Raichu boundary"
+        ],
+        "collector_texture_note": "This is a Raichu with a chain of command. It lets an agent talk about Pikachu-family affection, Surge's electric apparatus, and real attack-risk texture while still demanding exact set, number, owner name, and finish evidence.",
+        "signals": [
+          "Gym Challenge",
+          "2000-10-16",
+          "gym2-11",
+          "card 11",
+          "Rare Holo",
+          "Pokemon",
+          "Stage 1",
+          "Lightning",
+          "Lt. Surge",
+          "Ken Sugimori",
+          "Lt. Surge's Pikachu",
+          "Kerzap",
+          "Thundertackle",
+          "Raichu",
+          "マチスのライチュウ"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-12",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Golduck",
+        "name_ja": "カスミのゴルダック",
+        "romaji": "Kasumi no Golduck",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-12",
+        "catalog_row_id": "gym2-12",
+        "card_number": "12",
+        "release_name": "Gym Challenge",
+        "source_expansion_lineage": "English Gym Challenge / Japanese Leaders' Stadium lineage, with Hanada City Gym Misty's Psyduck ancestry",
+        "variant_lane": "Rare Holo #12 owner Pokemon, Misty's Psyduck #90 evolution lane, Japanese Leaders' Stadium #032 source lane, Hanada City Gym Misty's Psyduck deck ancestry, Sabrina's Golduck/Psyduck psychic-duck boundary, generic Fossil/Legendary/Aquapolis Golduck boundaries, and Misty's Gyarados / Misty's Tears owner-context boundaries"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-12",
+          "title": "Local English WoC card row: Misty's Golduck #12",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-90",
+          "title": "Local English WoC card row: Misty's Psyduck #90",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_leaders_stadium_19981024.json#row:jp_tcg_leaders_stadium_19981024:032",
+          "title": "Local Japanese pre-English Leaders' Stadium card row: Misty's Golduck #032",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "English printing proof",
+            "Gym Challenge row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json#row:jp_tcg_hanada_city_gym_misty_19980426:001",
+          "title": "Local Japanese pre-English Hanada City Gym card row: Misty's Psyduck #001",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "English printing proof",
+            "Gym Challenge row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:SabrinaGolduckPsyduck",
+          "title": "Local English WoC Gym Challenge boundary rows: Sabrina's Golduck and Sabrina's Psyduck",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "Misty owner proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_fossil_19991010.json#row:GolduckPsyduck",
+          "title": "Local English WoC Fossil boundary rows: Golduck and Psyduck",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "trainer-owned row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:GolduckPsyduck",
+          "title": "Local English WoC Legendary Collection boundary rows: Golduck and Psyduck",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "trainer-owned row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json#row:GolduckPsyduck",
+          "title": "Local English WoC Aquapolis boundary rows: Golduck and Psyduck",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "trainer-owned row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:MistyContext",
+          "title": "Local English WoC Gym Challenge Misty owner-context rows",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "Misty's Golduck row proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s10",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-12",
+          "title": "Pokemon TCG API v2 card record: Misty's Golduck #12",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "direct physical-card inspection",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s11",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym2",
+          "title": "Pokemon TCG API v2 set record: Gym Challenge",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s12",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Golduck_(Gym_Challenge_12)",
+          "title": "Bulbapedia: Misty's Golduck (Gym Challenge 12)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s13",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Golduck_(TCG)",
+          "title": "Bulbapedia: Golduck (TCG)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s14",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Golduck_(Pok%C3%A9mon)",
+          "title": "Bulbapedia: Golduck (Pokemon)",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "primary Game Freak source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s15",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty",
+          "title": "Bulbapedia: Misty",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "card text source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s16",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-23",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Gym Challenge Misty's Golduck gym2-12 is the English Rare Holo row for Misty's Golduck, cataloged as card number 12, a Stage 1 Water Pokemon with 70 HP, and Ken Sugimori credit.",
+          "sources": [
+            "s1",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Misty's Golduck with Electro Beam for 40 damage and a tails result that discards all Energy attached to Misty's Golduck, plus Super Removal, which can discard one Energy from each opposing Pokemon with Energy attached.",
+          "sources": [
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Pokemon TCG API records Misty's Golduck as evolving from Misty's Psyduck, with Grass Weakness and a one-Colorless retreat cost.",
+          "sources": [
+            "s2",
+            "s10"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Gym Challenge is modeled as the English 132-card Gym set released on October 16, 2000, while Misty's Golduck's Japanese source lane is Leaders' Stadium rather than Challenge from the Darkness.",
+          "sources": [
+            "s1",
+            "s3",
+            "s10",
+            "s11",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "The local Japanese source lane is Leaders' Stadium #032, while Hanada City Gym Misty's Psyduck #001 gives older Misty/Psyduck deck ancestry without proving the English Gym Challenge Golduck row.",
+          "sources": [
+            "s3",
+            "s4",
+            "s12",
+            "s13"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Gym Challenge also has Sabrina's Golduck and Sabrina's Psyduck rows, making owner-name separation especially important for any Golduck or Psyduck memory in this set.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Fossil, Legendary Collection, and Aquapolis Golduck/Psyduck rows are generic or later species-family boundaries, not Misty-owned Gym Challenge proof.",
+          "sources": [
+            "s6",
+            "s7",
+            "s8",
+            "s13"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.credit",
+          "text": "The local English row, the Leaders' Stadium source row, and Pokemon TCG API credit Ken Sugimori for Misty's Golduck.",
+          "sources": [
+            "s1",
+            "s3",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.impact",
+          "text": "Ken Sugimori's importance here is not only a card credit: his early Pokemon model art keeps Golduck readable as a sleek water-duck body while the card's Psychic-cost Super Removal exposes the species' stranger mind-power side.",
+          "sources": [
+            "s14",
+            "s16"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "Misty's owner context matters because the card is not only a Water-type holo: Electro Beam risks self-stripping Energy, while Super Removal uses Psychic Energy to pressure every opposing Pokemon with Energy attached.",
+          "sources": [
+            "s1",
+            "s2",
+            "s9",
+            "s10",
+            "s12",
+            "s14",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "Misty's Gyarados, Misty's Tears, and the Hanada City Gym deck context show Misty's identity as more than Water type; Misty's Golduck adds the psychic-water edge where water control becomes energy denial.",
+          "sources": [
+            "s4",
+            "s9",
+            "s15"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c5",
+            "c10"
+          ]
+        },
+        {
+          "id": "c12",
+          "field": "identification.special_instructions",
+          "text": "An agent handling Misty's Golduck should confirm owner name, Gym Challenge set, card number 12, Rare Holo finish, evolution-from-Misty's-Psyduck lane, Electro Beam/Super Removal text, and image evidence before treating a listing as the gym2-12 row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8",
+            "s10",
+            "s12"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_challenge_mistys_golduck_12_electro_beam_super_removal_owner_boundary_v0.1",
+          "trigger": "A listing, want, binder photo, or agent note says Misty's Golduck, Gym Challenge Golduck, gym2-12, card 12, Leaders' Stadium Golduck, Misty's Psyduck, Hanada City Gym, カスミのゴルダック, Electro Beam, Super Removal, Sabrina's Golduck, Fossil Golduck, Legendary Collection Golduck, Aquapolis Golduck, or generic Golduck.",
+          "summary": "Start with Gym Challenge gym2-12 only when the evidence points to the Rare Holo owner-Pokemon row; keep Sabrina, generic Golduck, Leaders' Stadium, Hanada City Gym, Fossil, Legendary Collection, and Aquapolis memories separate.",
+          "steps": [
+            "Confirm the English Gym Challenge set identity, card number 12/132, Rare Holo finish, Stage 1 Water identity, 70 HP, Ken Sugimori credit, Electro Beam, and Super Removal before binding a listing to gym2-12.",
+            "Preserve the owner name: \"Misty's Golduck\" is not generic Golduck, Sabrina's Golduck, Fossil Golduck, Legendary Collection Golduck, or Aquapolis Golduck.",
+            "Treat Leaders' Stadium #032 as source lineage and comparison context, not as English Gym Challenge row equivalence.",
+            "Treat Misty's Psyduck rows, Hanada City Gym, Misty's Gyarados, and Misty's Tears as Misty-owner context, not proof that a seller has Misty's Golduck.",
+            "Do not use Water type, Golduck species lore, Sugimori credit, Misty ownership, or generic Psyduck/Golduck affection as proof of the exact Gym Challenge #12 card.",
+            "For a possible purchase or sale, ask for front/back photos, lower-corner set and number visibility, owner-name line visibility, holo-surface evidence, slab label or cert if graded, and enough edge/corner detail to support condition judgment."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "generic Golduck equivalence",
+            "Sabrina's Golduck equivalence",
+            "Leaders' Stadium equivalence",
+            "Hanada City Gym equivalence",
+            "Fossil equivalence",
+            "Legendary Collection equivalence",
+            "Aquapolis equivalence",
+            "Misty's Psyduck equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty's Golduck #12 - water with a second mind",
+        "why_it_matters": "Misty's Golduck is where Misty's water identity gets beautifully less simple. Golduck looks like a sleek Water Pokemon, but the card quietly insists on the species' psychic strangeness: Electro Beam hits hard but can strip its own Energy away, while Super Removal asks for Psychic Energy and reaches across the opponent's whole board. That is a very Misty kind of control card. It is not as loud as Gyarados and not as famous as Misty's Tears, but it is a wonderful hinge: Hanada deck memory, Leaders' Stadium source route, English Gym Challenge holo, and a duck line that keeps crossing water with mind power. The agent should feel the poetry and still ask for the corner number.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11",
+          "c12"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession"
+        ]
+      },
+      "card_highlights": {
+        "artist": "Ken Sugimori",
+        "assembly_note": "Gym Challenge Misty's Golduck #12 is a Rare Holo owner-Pokemon row: a 70 HP Stage 1 Water card by Ken Sugimori with Electro Beam and Super Removal. Electro Beam can discard all attached Energy on tails; Super Removal uses Psychic Energy to discard Energy from each opposing Pokemon with Energy attached. Keep it apart from Sabrina's Golduck, generic Fossil/Legendary/Aquapolis Golduck, Leaders' Stadium #032, Hanada City Gym Misty's Psyduck, and other Misty-owner rows.",
+        "assembly_themes": [
+          "Gym Challenge Rare Holo row",
+          "Misty owner-Pokemon grammar",
+          "Ken Sugimori original species-model art",
+          "カスミのゴルダック Japanese name lane",
+          "Leaders' Stadium #032 source lineage",
+          "Hanada City Gym Misty's Psyduck ancestry",
+          "Misty's Psyduck evolution context",
+          "Stage 1 Water Pokemon",
+          "Electro Beam self-discard risk",
+          "Super Removal energy-denial effect",
+          "Psychic Energy on a Water owner card",
+          "Golduck psychic-water lore",
+          "Sabrina's Golduck boundary",
+          "Fossil Golduck boundary",
+          "Legendary Collection Golduck boundary",
+          "Aquapolis Golduck boundary",
+          "Misty's Gyarados and Misty's Tears owner context"
+        ],
+        "collector_texture_note": "Misty's Golduck rewards the collector who likes the odd middle cards. It is not only Water. It is a Misty holo that smuggles in Golduck's psychic edge and turns it into energy control.",
+        "signals": [
+          "Gym Challenge",
+          "2000-10-16",
+          "gym2-12",
+          "card 12",
+          "Rare Holo",
+          "Pokemon",
+          "Stage 1",
+          "Water",
+          "Misty",
+          "Ken Sugimori",
+          "Misty's Psyduck",
+          "Electro Beam",
+          "Super Removal",
+          "Psychic Energy",
+          "カスミのゴルダック"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-13",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Gyarados",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-13",
+        "catalog_row_id": "gym2-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-13",
+          "title": "Local Gym Challenge row: Misty's Gyarados 13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-13",
+          "title": "Pokémon TCG API v2 card record: Misty's Gyarados gym2-13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Misty's Gyarados as Gym Challenge number 13, a Rare Holo Stage 1 Water Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Misty's Gyarados with the Pokémon Power Rebellion and the attack Tidal Wave.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Misty's Gyarados matters because the owner name and Rebellion power make the old Magikarp-to-Gyarados drama explicitly relational: the card is about control, not just evolution.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_gyarados_owner_power_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "ordinary Gyarados rows are equivalent"
+          ],
+          "steps": [
+            "Preserve Misty's owner-name context before comparing this card to ordinary Gyarados rows.",
+            "Check row 13 and Rebellion / Tidal Wave text before treating the card as Gym Challenge Misty's Gyarados.",
+            "If a listing says only Gyarados, ask for the owner-name and row evidence before importing Gym Challenge context."
+          ],
+          "summary": "Misty's Gyarados is owner-specific; the Rebellion power is part of the row's meaning and should not be flattened into generic Gyarados history.",
+          "trigger": "A user or seller references Misty's Gyarados or a Gym-era Gyarados."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty tries to hold the storm",
+        "why_it_matters": "Misty's Gyarados is funny and perfect because Gyarados was never going to become polite just because a Gym Leader claimed it. The Rebellion power makes the relationship visible in rules text: power is present, but control is not guaranteed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-14",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Mewtwo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-14",
+        "catalog_row_id": "gym2-14"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-14",
+          "title": "Local Gym Challenge row: Rocket's Mewtwo 14",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-14",
+          "title": "Pokémon TCG API v2 card record: Rocket's Mewtwo gym2-14",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rocket%27s_Mewtwo_(Gym_Challenge_14)",
+          "title": "Bulbapedia: Rocket's Mewtwo (Gym Challenge 14)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Rocket's Mewtwo as Gym Challenge number 14, a Rare Holo Basic Psychic Pokémon illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Rocket's Mewtwo with three attacks: Juxtapose, Hypnoblast, and Psyburn.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Rocket's Mewtwo was reprinted as a Reverse Holofoil Best of Game promotional card with a gold Winner stamp, and that a non-holofoil jumbo version was also released.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Rocket's Mewtwo was the first card to have three attacks and that its art window is shorter because of the extra attack text.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rocket's Mewtwo is a control story in both fiction and cardboard: Giovanni/Rocket ownership, three attacks, a compressed art window, and later Winner/jumbo branches all make the row easy to misdescribe if the agent only sees 'Mewtwo'.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rockets_mewtwo_three_attack_winner_jumbo_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Gym Challenge, Winner, and jumbo prints are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is Gym Challenge 14, Best of Game Winner-stamp, or jumbo before comparing value or rarity.",
+            "Check for the Rocket's owner-name and three-attack layout; do not treat ordinary Mewtwo rows as matches.",
+            "Ask for scale evidence if a seller image could be jumbo.",
+            "Ask for a clear bottom-right artwork image if the seller claims a gold Winner stamp."
+          ],
+          "summary": "Rocket's Mewtwo has Gym Challenge, Winner-stamp, and jumbo branches; owner-name, three attacks, stamp, and size must remain legible.",
+          "trigger": "A listing references Rocket's Mewtwo, Best of Game, Winner stamp, or jumbo format."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo under Rocket grammar",
+        "why_it_matters": "Rocket's Mewtwo feels wrong in the productive way. Mewtwo was already a story about control; putting Rocket's name on the card makes that explicit, then the three attacks crowd the frame like the card itself is under pressure.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-15",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Zapdos",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-15",
+        "catalog_row_id": "gym2-15"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-15",
+          "title": "Local Gym Challenge row: Rocket's Zapdos 15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-15",
+          "title": "Pokémon TCG API v2 card record: Rocket's Zapdos gym2-15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rocket%27s_Zapdos_(Gym_Challenge_15)",
+          "title": "Bulbapedia: Rocket's Zapdos (Gym Challenge 15)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Rocket's Zapdos as Gym Challenge number 15, a Rare Holo Basic Lightning Pokémon illustrated by Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Rocket's Zapdos with Plasma and Electroburn.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Rocket's Zapdos was later rereleased in Celebrations Classic Collection and in Japan's 25th Anniversary Promo Card Pack, both with anniversary-logo differences from the Wizards print.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the Challenge from the Darkness print was included in the Pokémon Card Game 25th Anniversary Creatures Deck, where it represented the year 1999 in Creatures' history.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Rocket's Zapdos matters because it ties villain ownership, legendary-bird collecting, anniversary reprint memory, and a Creatures company-history object into one row lineage.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rockets_zapdos_anniversary_reprint_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Wizards and anniversary prints are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is the Wizards Gym Challenge print, Celebrations Classic Collection, Japanese 25th Anniversary promo, or Creatures Deck print.",
+            "Check for anniversary logos, copyright differences, and any special back/context before importing a lineage claim.",
+            "Do not let the Rocket's owner-name or Zapdos species name substitute for print identification.",
+            "If a seller claims Creatures Deck provenance, ask for evidence of that specific physical context separately."
+          ],
+          "summary": "Rocket's Zapdos has later anniversary and Creatures-history branches; print context must be explicit.",
+          "trigger": "A listing references Rocket's Zapdos, Celebrations, 25th Anniversary, or Creatures Deck provenance."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A captured storm with a long afterlife",
+        "why_it_matters": "Rocket's Zapdos is wonderfully overdetermined: a legendary bird, Rocket ownership, self-burning lightning, later anniversary returns, even a Creatures history deck. The card keeps getting used as a marker of memory, which means the print context matters every time.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_challenge_20001016:gym2-118",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tears",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_challenge_20001016",
+        "row_id": "en_wotc_gym_challenge_20001016:gym2-118",
+        "catalog_row_id": "gym2-118"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_challenge_20001016.json#row:en_wotc_gym_challenge_20001016:gym2-118",
+          "title": "Local Gym Challenge row: Misty's Tears 118",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym2-118",
+          "title": "Pokémon TCG API v2 card record: Misty's Tears gym2-118",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Tears_(Gym_Challenge_118)",
+          "title": "Bulbapedia: Misty's Tears (Gym Challenge 118)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Misty's Tears as Gym Challenge number 118, an Uncommon Trainer card illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Misty's Tears as discarding one other card from hand to search the deck for up to two Water Energy cards.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Misty's Tears is one of several cards whose artwork changed between Japanese and English releases.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Tears is the cross-release bridge card in this pass: the English Gym Challenge row carries the same name and function into a localized artwork boundary that agents must not flatten.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_mistys_tears_artwork_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese and English artwork are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the listing is English Gym Challenge 118 or Japanese Hanada City Gym row 018 before comparing artwork.",
+            "Do not use the English artwork as the sole reference image for a Japanese card, or the Japanese artwork as the sole reference image for an English card.",
+            "Preserve Ken Sugimori credit and Water Energy search function, but treat artwork match as a print-context clue, not authentication.",
+            "If a buyer cares about variant context, route the Japanese/English artwork boundary to human-facing explanation."
+          ],
+          "summary": "English Misty's Tears needs artwork-boundary handling against the Japanese Hanada City Gym card.",
+          "trigger": "A listing or agent note compares Misty's Tears across Japanese and English prints."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The same tear, redrawn",
+        "why_it_matters": "Misty's Tears is small but load-bearing. It proves that translation is not just language; sometimes the image itself moves. A good catalog has to remember that the English row is not merely a renamed Japanese object. It is the same gameplay idea passing through a different visual gate.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2289 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Darkness, and to Light... / 闇、そして光へ... within the catalog-history deepening pass.",
+    "in_scope": [
+      "Darkness, and to Light... release dossier",
+      "selected Dark / Light / Shining chase and identity-teaching card dossiers",
+      "special identification rails for exact Japanese neo4 row identity"
+    ],
+    "not_claiming": [
+      "complete 113-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420",
+      "type": "release",
+      "context": {
+        "name_en": "Darkness, and to Light...",
+        "name_ja": "闇、そして光へ...",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "release_date": "2001-04-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json",
+          "title": "Local Japanese classic catalog: Darkness, and to Light...",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/neo4",
+          "title": "TCGdex Japanese set endpoint: neo4 / Darkness, and to Light...",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Darkness, and to Light... / 闇、そして光へ... with an April 20, 2001 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 113 official card rows for Darkness, and to Light..., with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Darkness, and to Light... is modeled as a Japanese main expansion in the ポケモンカード★neo series, using TCGdex set id neo4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Darkness, and to Light... matters because the set turns moral language into catalog structure: Dark, Light, and Shining rows ask collectors to care about how the same franchise body can be shadowed, protected, or made rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Dark Crobat, Light Arcanine, Dark Typhlosion, Dark Feraligatr, Light Azumarill, and Dark Ampharos; this tranche also hand-authors Shining Charizard, Dark Gengar, Dark Espeon, Shining Mewtwo, and Shining Tyranitar because they teach the release’s prefix and trophy-card grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card number, local id, rough source-row text, normalized collector label, and Dark/Light/Shining prefix before treating a famous species match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "darkness_and_to_light_release_exact_set_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Darkness and to Light, 闇、そして光へ, Neo Destiny, neo4, Dark, Light, Shining, Shining Charizard, Shining Mewtwo, or Dark Gengar.",
+          "summary": "Keep Darkness, and to Light... as Japanese neo4 / 闇、そして光へ... with prefix and row-number identity; do not collapse it into English Neo Destiny or same-character rows.",
+          "steps": [
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact release.",
+            "Preserve Dark, Light, and Shining prefixes as identity rails, not decorative adjectives.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Separate this release from English Neo Destiny and later same-character reprints unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Darkness, and to Light... — when morality becomes a set structure",
+        "why_it_matters": "Darkness, and to Light... is where Johto stops being only discovery and becomes a moral weather system. Dark, Light, and Shining are not just labels for an agent to parse; they are how the set teaches collectors to feel difference inside familiar species, from gentle Arcanine to dangerous Charizard to haunted Gengar.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 113-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-012",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Crobat",
+        "name_ja": "暗いクロバット",
+        "normalized_label": "Dark Crobat",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-012",
+        "card_number": "012"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-012",
+          "title": "Local Japanese classic catalog row: Dark Crobat / Darkness, and to Light... #012",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-012",
+          "title": "TCGdex Japanese card endpoint: neo4-012",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-012 as Darkness, and to Light... / 闇、そして光へ... card #012, with rough source-row text '暗いクロバット'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Crobat' as a normalized collector label while preserving the rough local source-row text '暗いクロバット'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-012 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Crobat matters in this tranche because it turns a familiar cave evolution into a shadow instrument; the Dark prefix is not flavor only, it is the set teaching moral weather through card identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Crobat, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #012, local id neo4-012, rough source-row text '暗いクロバット', and normalized label 'Dark Crobat'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Crobat carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-012_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Crobat, 暗いクロバット, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Dark Crobat as Japanese Darkness, and to Light... / 闇、そして光へ... #012, local id neo4-012, source-row text '暗いクロバット'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-012 and local id neo4-012.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 012, rough source-row text '暗いクロバット', and normalized collector label 'Dark Crobat' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Crobat — Darkness, and to Light #012",
+        "why_it_matters": "Dark Crobat helps the set do its real work: it turns a familiar cave evolution into a shadow instrument; the Dark prefix is not flavor only, it is the set teaching moral weather through card identity. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-021",
+      "type": "card",
+      "context": {
+        "name_en": "Light Arcanine",
+        "name_ja": "軽アルカニン",
+        "normalized_label": "Light Arcanine",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-021",
+        "card_number": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-021",
+          "title": "Local Japanese classic catalog row: Light Arcanine / Darkness, and to Light... #021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-021",
+          "title": "TCGdex Japanese card endpoint: neo4-021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-021 as Darkness, and to Light... / 闇、そして光へ... card #021, with rough source-row text '軽アルカニン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Light Arcanine' as a normalized collector label while preserving the rough local source-row text '軽アルカニン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-021 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Light Arcanine matters in this tranche because it gives a beloved power species warmth and protection instead of menace, making Light feel like a real collecting lane rather than the absence of Dark.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Light Arcanine, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #021, local id neo4-021, rough source-row text '軽アルカニン', and normalized label 'Light Arcanine'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Light Arcanine carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-021_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Light Arcanine, 軽アルカニン, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Light Arcanine as Japanese Darkness, and to Light... / 闇、そして光へ... #021, local id neo4-021, source-row text '軽アルカニン'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-021 and local id neo4-021.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 021, rough source-row text '軽アルカニン', and normalized collector label 'Light Arcanine' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Light Arcanine — Darkness, and to Light #021",
+        "why_it_matters": "Light Arcanine helps the set do its real work: it gives a beloved power species warmth and protection instead of menace, making Light feel like a real collecting lane rather than the absence of Dark. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-022",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Typhlosion",
+        "name_ja": "暗い染色",
+        "normalized_label": "Dark Typhlosion",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-022",
+        "card_number": "022"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-022",
+          "title": "Local Japanese classic catalog row: Dark Typhlosion / Darkness, and to Light... #022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-022",
+          "title": "TCGdex Japanese card endpoint: neo4-022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-022 as Darkness, and to Light... / 闇、そして光へ... card #022, with rough source-row text '暗い染色'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Typhlosion' as a normalized collector label while preserving the rough local source-row text '暗い染色'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-022 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Typhlosion matters in this tranche because it bends a Johto starter final form into the dark half of the release, so starter nostalgia has to pass through the set’s moral split.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Typhlosion, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #022, local id neo4-022, rough source-row text '暗い染色', and normalized label 'Dark Typhlosion'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Typhlosion carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-022_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Typhlosion, 暗い染色, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Dark Typhlosion as Japanese Darkness, and to Light... / 闇、そして光へ... #022, local id neo4-022, source-row text '暗い染色'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-022 and local id neo4-022.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 022, rough source-row text '暗い染色', and normalized collector label 'Dark Typhlosion' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Typhlosion — Darkness, and to Light #022",
+        "why_it_matters": "Dark Typhlosion helps the set do its real work: it bends a Johto starter final form into the dark half of the release, so starter nostalgia has to pass through the set’s moral split. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-025",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Charizard",
+        "name_ja": "輝くチャリザード",
+        "normalized_label": "Shining Charizard",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-025",
+        "card_number": "025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-025",
+          "title": "Local Japanese classic catalog row: Shining Charizard / Darkness, and to Light... #025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-025",
+          "title": "TCGdex Japanese card endpoint: neo4-025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-025 as Darkness, and to Light... / 闇、そして光へ... card #025, with rough source-row text '輝くチャリザード'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Shining Charizard' as a normalized collector label while preserving the rough local source-row text '輝くチャリザード'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-025 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Charizard matters in this tranche because it is the obvious gravity well: Charizard plus Shining texture, where rarity and spectacle become almost inseparable.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Shining Charizard, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #025, local id neo4-025, rough source-row text '輝くチャリザード', and normalized label 'Shining Charizard'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Shining Charizard is treated here as a Shining-row identity: the Shining word, exact number, and Japanese neo4 set rail must travel together before an agent treats it as this card.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-025_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Shining Charizard, 輝くチャリザード, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Shining Charizard as Japanese Darkness, and to Light... / 闇、そして光へ... #025, local id neo4-025, source-row text '輝くチャリザード'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-025 and local id neo4-025.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 025, rough source-row text '輝くチャリザード', and normalized collector label 'Shining Charizard' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Shining Charizard — Darkness, and to Light #025",
+        "why_it_matters": "Shining Charizard helps the set do its real work: it is the obvious gravity well: Charizard plus Shining texture, where rarity and spectacle become almost inseparable. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-039",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Feraligatr",
+        "name_ja": "暗いferaligatr",
+        "normalized_label": "Dark Feraligatr",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-039",
+        "card_number": "039"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-039",
+          "title": "Local Japanese classic catalog row: Dark Feraligatr / Darkness, and to Light... #039",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-039",
+          "title": "TCGdex Japanese card endpoint: neo4-039",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-039 as Darkness, and to Light... / 闇、そして光へ... card #039, with rough source-row text '暗いferaligatr'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Feraligatr' as a normalized collector label while preserving the rough local source-row text '暗いferaligatr'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-039 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Feraligatr matters in this tranche because it gives another Johto starter final form a darker market memory and keeps the release from being a one-card Charizard story.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Feraligatr, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #039, local id neo4-039, rough source-row text '暗いferaligatr', and normalized label 'Dark Feraligatr'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Feraligatr carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-039_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Feraligatr, 暗いferaligatr, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Dark Feraligatr as Japanese Darkness, and to Light... / 闇、そして光へ... #039, local id neo4-039, source-row text '暗いferaligatr'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-039 and local id neo4-039.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 039, rough source-row text '暗いferaligatr', and normalized collector label 'Dark Feraligatr' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Feraligatr — Darkness, and to Light #039",
+        "why_it_matters": "Dark Feraligatr helps the set do its real work: it gives another Johto starter final form a darker market memory and keeps the release from being a one-card Charizard story. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-040",
+      "type": "card",
+      "context": {
+        "name_en": "Light Azumarill",
+        "name_ja": "軽いアズマリル",
+        "normalized_label": "Light Azumarill",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-040",
+        "card_number": "040"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-040",
+          "title": "Local Japanese classic catalog row: Light Azumarill / Darkness, and to Light... #040",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-040",
+          "title": "TCGdex Japanese card endpoint: neo4-040",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-040 as Darkness, and to Light... / 闇、そして光へ... card #040, with rough source-row text '軽いアズマリル'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Light Azumarill' as a normalized collector label while preserving the rough local source-row text '軽いアズマリル'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-040 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Light Azumarill matters in this tranche because it proves the light side can be soft, strange, and collectible rather than just heroic.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Light Azumarill, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #040, local id neo4-040, rough source-row text '軽いアズマリル', and normalized label 'Light Azumarill'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Light Azumarill carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-040_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Light Azumarill, 軽いアズマリル, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Light Azumarill as Japanese Darkness, and to Light... / 闇、そして光へ... #040, local id neo4-040, source-row text '軽いアズマリル'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-040 and local id neo4-040.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 040, rough source-row text '軽いアズマリル', and normalized collector label 'Light Azumarill' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Light Azumarill — Darkness, and to Light #040",
+        "why_it_matters": "Light Azumarill helps the set do its real work: it proves the light side can be soft, strange, and collectible rather than just heroic. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-046",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Ampharos",
+        "name_ja": "暗いアンファロ",
+        "normalized_label": "Dark Ampharos",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-046",
+        "card_number": "046"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-046",
+          "title": "Local Japanese classic catalog row: Dark Ampharos / Darkness, and to Light... #046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-046",
+          "title": "TCGdex Japanese card endpoint: neo4-046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-046 as Darkness, and to Light... / 闇、そして光へ... card #046, with rough source-row text '暗いアンファロ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Ampharos' as a normalized collector label while preserving the rough local source-row text '暗いアンファロ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-046 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Ampharos matters in this tranche because it makes electricity brooding: a lighthouse-line Pokemon pulled into the set’s shadow language.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Ampharos, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #046, local id neo4-046, rough source-row text '暗いアンファロ', and normalized label 'Dark Ampharos'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Ampharos carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-046_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Ampharos, 暗いアンファロ, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Dark Ampharos as Japanese Darkness, and to Light... / 闇、そして光へ... #046, local id neo4-046, source-row text '暗いアンファロ'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-046 and local id neo4-046.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 046, rough source-row text '暗いアンファロ', and normalized collector label 'Dark Ampharos' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Ampharos — Darkness, and to Light #046",
+        "why_it_matters": "Dark Ampharos helps the set do its real work: it makes electricity brooding: a lighthouse-line Pokemon pulled into the set’s shadow language. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-066",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Gengar",
+        "name_ja": "ダークジェンガー",
+        "normalized_label": "Dark Gengar",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-066",
+        "card_number": "066"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-066",
+          "title": "Local Japanese classic catalog row: Dark Gengar / Darkness, and to Light... #066",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-066",
+          "title": "TCGdex Japanese card endpoint: neo4-066",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-066 as Darkness, and to Light... / 闇、そして光へ... card #066, with rough source-row text 'ダークジェンガー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Gengar' as a normalized collector label while preserving the rough local source-row text 'ダークジェンガー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-066 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Gengar matters in this tranche because it anchors the set’s ghostly intelligence, where Dark reads as mischief, threat, and beloved old spooky charisma at once.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Gengar, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #066, local id neo4-066, rough source-row text 'ダークジェンガー', and normalized label 'Dark Gengar'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Gengar carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-066_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Gengar, ダークジェンガー, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Dark Gengar as Japanese Darkness, and to Light... / 闇、そして光へ... #066, local id neo4-066, source-row text 'ダークジェンガー'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-066 and local id neo4-066.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 066, rough source-row text 'ダークジェンガー', and normalized collector label 'Dark Gengar' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Gengar — Darkness, and to Light #066",
+        "why_it_matters": "Dark Gengar helps the set do its real work: it anchors the set’s ghostly intelligence, where Dark reads as mischief, threat, and beloved old spooky charisma at once. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-067",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Espeon",
+        "name_ja": "暗いエスペオン",
+        "normalized_label": "Dark Espeon",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-067",
+        "card_number": "067"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-067",
+          "title": "Local Japanese classic catalog row: Dark Espeon / Darkness, and to Light... #067",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-067",
+          "title": "TCGdex Japanese card endpoint: neo4-067",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-067 as Darkness, and to Light... / 闇、そして光へ... card #067, with rough source-row text '暗いエスペオン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dark Espeon' as a normalized collector label while preserving the rough local source-row text '暗いエスペオン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-067 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Espeon matters in this tranche because it complicates the elegant Eevee branch; Espeon becomes part of the shadow grammar rather than pure daylight.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dark Espeon, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #067, local id neo4-067, rough source-row text '暗いエスペオン', and normalized label 'Dark Espeon'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Dark Espeon carries the release’s Light/Dark grammar: the prefix is part of the object identity and part of why collectors read this set as a moral split, not just a roster.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-067_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dark Espeon, 暗いエスペオン, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Dark Espeon as Japanese Darkness, and to Light... / 闇、そして光へ... #067, local id neo4-067, source-row text '暗いエスペオン'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-067 and local id neo4-067.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 067, rough source-row text '暗いエスペオン', and normalized collector label 'Dark Espeon' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dark Espeon — Darkness, and to Light #067",
+        "why_it_matters": "Dark Espeon helps the set do its real work: it complicates the elegant Eevee branch; Espeon becomes part of the shadow grammar rather than pure daylight. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-068",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Mewtwo",
+        "name_ja": "輝くミュウツー",
+        "normalized_label": "Shining Mewtwo",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-068",
+        "card_number": "068"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-068",
+          "title": "Local Japanese classic catalog row: Shining Mewtwo / Darkness, and to Light... #068",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-068",
+          "title": "TCGdex Japanese card endpoint: neo4-068",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-068 as Darkness, and to Light... / 闇、そして光へ... card #068, with rough source-row text '輝くミュウツー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Shining Mewtwo' as a normalized collector label while preserving the rough local source-row text '輝くミュウツー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-068 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Mewtwo matters in this tranche because it turns laboratory myth into a rare-object signal, making Mewtwo feel less like a character and more like a dangerous artifact.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Shining Mewtwo, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #068, local id neo4-068, rough source-row text '輝くミュウツー', and normalized label 'Shining Mewtwo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Shining Mewtwo is treated here as a Shining-row identity: the Shining word, exact number, and Japanese neo4 set rail must travel together before an agent treats it as this card.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-068_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Shining Mewtwo, 輝くミュウツー, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Shining Mewtwo as Japanese Darkness, and to Light... / 闇、そして光へ... #068, local id neo4-068, source-row text '輝くミュウツー'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-068 and local id neo4-068.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 068, rough source-row text '輝くミュウツー', and normalized collector label 'Shining Mewtwo' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Shining Mewtwo — Darkness, and to Light #068",
+        "why_it_matters": "Shining Mewtwo helps the set do its real work: it turns laboratory myth into a rare-object signal, making Mewtwo feel less like a character and more like a dangerous artifact. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_darkness_and_to_light_20010420:neo4-082",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Tyranitar",
+        "name_ja": "輝くタイラニター",
+        "normalized_label": "Shining Tyranitar",
+        "release_family_id": "jp_tcg_darkness_and_to_light_20010420",
+        "local_id": "neo4-082",
+        "card_number": "082"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_darkness_and_to_light_20010420.json#row:jp_tcg_darkness_and_to_light_20010420:neo4-082",
+          "title": "Local Japanese classic catalog row: Shining Tyranitar / Darkness, and to Light... #082",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/neo4-082",
+          "title": "TCGdex Japanese card endpoint: neo4-082",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_darkness_and_to_light_20010420:neo4-082 as Darkness, and to Light... / 闇、そして光へ... card #082, with rough source-row text '輝くタイラニター'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Shining Tyranitar' as a normalized collector label while preserving the rough local source-row text '輝くタイラニター'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_darkness_and_to_light_20010420:neo4-082 include 'Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Tyranitar matters in this tranche because it gives Johto’s kaiju its trophy route, heavy enough to stand beside Charizard and Mewtwo without borrowing their fame.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Shining Tyranitar, preserve Japanese title 闇、そして光へ..., TCGdex set id neo4, card #082, local id neo4-082, rough source-row text '輝くタイラニター', and normalized label 'Shining Tyranitar'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Shining Tyranitar is treated here as a Shining-row identity: the Shining word, exact number, and Japanese neo4 set rail must travel together before an agent treats it as this card.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_darkness_and_to_light_20010420_neo4-082_dark_light_shining_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Shining Tyranitar, 輝くタイラニター, Darkness and to Light, Neo Destiny, neo4, Dark, Light, or Shining.",
+          "summary": "Preserve Shining Tyranitar as Japanese Darkness, and to Light... / 闇、そして光へ... #082, local id neo4-082, source-row text '輝くタイラニター'; do not accept famous-name, prefix-only, or English Neo Destiny matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_darkness_and_to_light_20010420:neo4-082 and local id neo4-082.",
+            "Require Japanese title 闇、そして光へ... or TCGdex set id neo4 before naming this exact catalog row.",
+            "Preserve card number 082, rough source-row text '輝くタイラニター', and normalized collector label 'Shining Tyranitar' separately.",
+            "Treat Dark, Light, and Shining as exact-row identity rails, not decorative adjectives that can be dropped during matching.",
+            "Separate this row from English Neo Destiny, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Neo Destiny equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Shining Tyranitar — Darkness, and to Light #082",
+        "why_it_matters": "Shining Tyranitar helps the set do its real work: it gives Johto’s kaiju its trophy route, heavy enough to stand beside Charizard and Mewtwo without borrowing their fame. For agents, the card is also a discipline test: keep Dark, Light, or Shining attached to the Japanese neo4 row instead of flattening it into a famous species search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

@@ -1,0 +1,770 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Nintendo 64 W Double Get Campaign",
+    "release_family_id": "jp_promo_n64_double_get_199712",
+    "description": "Deepening tranche for the 1997-1998 Nintendo 64 W Double Get Campaign source slice: a purchase-campaign lane where Cool Porygon and Hungry Snorlax were bundled with the Singing Pokemon Encyclopedia music CD, booklet, and Hungry Snorlax Food counters, later becoming an identity trap with Pokemon Song Best Collection and English Cool Porygon memory.",
+    "in_scope": [
+      "Nintendo 64 W Double Get Campaign release dossier",
+      "Cool Porygon source row 028",
+      "Hungry Snorlax source row 029",
+      "December 10, 1997-January 31, 1998 purchase-campaign window",
+      "Singing Pokemon Encyclopedia CD and sealed booklet context",
+      "Food counter object context for Hungry Snorlax",
+      "Song Best Collection reuse boundary",
+      "Cool Porygon English/Wizards Black Star boundary",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete campaign archive",
+      "participating-store ledger",
+      "official copy count",
+      "sealed CD/booklet variant catalog",
+      "Food counter token completeness",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_n64_double_get_199712",
+      "type": "release",
+      "context": {
+        "name_en": "Nintendo 64 W Double Get Campaign source slice",
+        "name_ja": "NINTENDO64 Wゲットキャンペーン プロモ",
+        "release_family_id": "jp_promo_n64_double_get_199712",
+        "release_date": "1997-12-10/1998-01-31",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_n64_double_get_199712.json",
+          "title": "Local Japanese pre-English catalog: Nintendo 64 W Double Get Campaign source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Pokumon Nintendo 64 W Double Get Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign archive",
+            "participating-store ledger",
+            "official copy count",
+            "sealed CD/booklet variant catalog",
+            "Food counter token completeness",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json",
+          "title": "Local Japanese pre-English catalog: Pokemon Song Best Collection",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Nintendo 64 campaign provenance for a specific copy",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Cool_Porygon_(Wizards_Promo_15)",
+          "title": "Bulbapedia: Cool Porygon (Wizards Promo 15)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hungry_Snorlax_(Nintendo_64_promo)",
+          "title": "Bulbapedia: Hungry Snorlax (Nintendo 64 promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local Nintendo 64 W Double Get Campaign source slice models two currently source-pinned rows: Cool Porygon and Hungry Snorlax.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The selected Pokumon lines place the campaign between December 10, 1997 and January 31, 1998.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The selected Pokumon lines describe the cards as given to customers at participating stores who purchased a Nintendo 64, together with the Singing Pokemon Encyclopedia music CD.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.vehicle",
+          "text": "The selected Pokumon lines describe the cards as contained in a booklet sealed with the music CD, with two Food counters stored behind Hungry Snorlax for use with its attacks.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The selected Pokumon lines say Cool Porygon and Hungry Snorlax were later reprinted in Pokemon Song Best Collection CD and describe those reprints as identical to the Nintendo 64 campaign versions.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local source-pinned rows credit Cool Porygon to Hiromichi Sugiyama and Hungry Snorlax to Sumiyoshi Kizuki.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "The campaign shows Pokemon as a bundled media apparatus: a Nintendo 64 hardware purchase, music CD, booklet, two promo cards, and physical Food counters all sharing one collector object.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should separate N64 W Double Get campaign identity from later Song Best Collection packaging, English Wizards Black Star Cool Porygon, generic CD promos, generic Snorlax/Porygon listings, and seller claims of sealed CD/booklet/Food-counter completeness.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "release_highlights": {
+        "assembly_themes": [
+          "Nintendo 64 purchase-campaign distribution",
+          "Singing Pokemon Encyclopedia music CD",
+          "sealed CD/booklet object",
+          "Food counters behind Hungry Snorlax",
+          "Cool Porygon / Hungry Snorlax two-card pair",
+          "Song Best Collection identical-reprint boundary",
+          "English Cool Porygon boundary",
+          "Pokemon as hardware/music/card bundle"
+        ],
+        "chase_cards": [
+          {
+            "name": "Cool Porygon",
+            "row_id": "jp_promo_n64_double_get_199712:028",
+            "why": "It is a Porygon card tied directly to Nintendo hardware retail memory, then later pulled into Song Best and English promo memory. The hard part is keeping the route legible instead of collapsing every Cool Porygon into one bucket.",
+            "authority_label": "judged_texture"
+          },
+          {
+            "name": "Hungry Snorlax",
+            "row_id": "jp_promo_n64_double_get_199712:029",
+            "why": "It is the more physical of the two: the booklet apparently stored Food counters behind the card, so the card's play idea spills into a little paper-object kit.",
+            "authority_label": "judged_texture"
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Hiromichi Sugiyama",
+            "why": "Cool Porygon's credit matters because Porygon is already a character about artificial construction; here it becomes a hardware-purchase promo whose afterlife crosses into CD and English promo channels.",
+            "authority_label": "local_catalog_fact"
+          },
+          {
+            "name": "Sumiyoshi Kizuki",
+            "why": "Hungry Snorlax's credit sits on the campaign's most tactile object: a Snorlax card with Food counters stored behind it, where illustration, rule text, and packaging all ask to be kept together.",
+            "authority_label": "local_catalog_fact"
+          }
+        ]
+      },
+      "narrative": {
+        "human_title": "Nintendo 64 W Double Get: Pokemon becomes a bundled machine",
+        "why_it_matters": "This is one of those little promo lanes where the whole apparatus peeks through. A child did not only get a card; the story runs through a Nintendo 64 purchase, a music CD, a sealed booklet, two promo cards, and Hungry Snorlax's Food counters. Cool Porygon makes the hardware-memory obvious, Hungry Snorlax makes it tactile, and the later Song Best reuse turns the pair into a route-identification puzzle. The cards are charming, but the real collector pulse is the bundle: Pokemon learning how to move through stores, machines, songs, paper, and play pieces at once.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "n64_w_double_get_campaign_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Nintendo 64 W Double Get Campaign, N64 promo, Cool Porygon, Hungry Snorlax, Kakkoii Porygon, Kuishinbo Kabigon, Singing Pokemon Encyclopedia, Pokemon Song Best Collection, CD promo, Food counters, sealed booklet, Wizards Black Star Cool Porygon, or Space World 1997.",
+          "summary": "Keep the two-card N64 purchase-campaign route legible while separating it from Song Best, English Cool Porygon, and generic CD-promo claims.",
+          "steps": [
+            "Confirm the campaign route is Nintendo 64 W Double Get Campaign, not merely a generic CD promo or English Wizards Black Star Cool Porygon listing.",
+            "Confirm the modeled pair is Cool Porygon and Hungry Snorlax, local source rows 028 and 029.",
+            "Check the claimed date/context against the December 10, 1997-January 31, 1998 purchase-campaign window.",
+            "If the seller mentions the Singing Pokemon Encyclopedia CD, sealed booklet, or Food counters, record those as provenance objects to inspect, not automatic proof that the card is campaign-distributed.",
+            "Separate the N64 campaign source slice from the later Pokemon Song Best Collection CD release, even when the card versions are described as identical.",
+            "Separate Japanese Cool Porygon / Hungry Snorlax from English Wizards Black Star Cool Porygon and from ordinary Porygon or Snorlax prints.",
+            "Preserve Hiromichi Sugiyama and Sumiyoshi Kizuki credits as illustrator context, but do not treat artist credit as route proof.",
+            "Before any trade gate or spendability decision, require seller-controlled front/back images, close-ups of title, copyright/layout, artwork, surface/corners, and evidence for any claimed CD/booklet/Food-counter/sealed-object completeness."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "participating-store ledger",
+            "sealed CD/booklet variant completeness",
+            "Food counter token completeness"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_n64_double_get_199712:028",
+      "type": "card",
+      "context": {
+        "name_en": "Cool Porygon",
+        "name_ja": "かっこいいポリゴン",
+        "romaji": "Kakkoii Porygon",
+        "release_family_id": "jp_promo_n64_double_get_199712",
+        "row_id": "jp_promo_n64_double_get_199712:028",
+        "catalog_row_id": "028",
+        "release_date": "1997-12-10/1998-01-31"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "number": "028",
+        "rarity_signal": "Unnumbered Promotional / Nintendo 64 W Double Get Campaign source slice",
+        "artist": "Hiromichi Sugiyama",
+        "assembly_note": "Cool Porygon is the cleanest hardware-memory card in this pair: Porygon already feels like a digital object, and here it is tied to an actual Nintendo 64 purchase route before later Song Best and English promo afterlives complicate the trail.",
+        "collector_texture_note": "The useful question is not just 'is this Cool Porygon?' but 'which Cool Porygon route is the seller actually showing?'",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_n64_double_get_199712.json",
+          "title": "Local row: N64 W Double Get Cool Porygon 028",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "N64 campaign provenance for a specific copy"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Pokumon Nintendo 64 W Double Get Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json",
+          "title": "Local Song Best row: Cool Porygon 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Nintendo 64 campaign provenance for a specific copy",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Cool_Porygon_(Wizards_Promo_15)",
+          "title": "Bulbapedia: Cool Porygon (Wizards Promo 15)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local N64 W Double Get source slice anchors Cool Porygon as row 028.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The local Song Best witness supplies the Japanese name かっこいいポリゴン and romaji Kakkoii Porygon for Cool Porygon.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local N64 row and richer Song Best witness credit Cool Porygon to Hiromichi Sugiyama.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The selected Pokumon lines say Cool Porygon was part of the N64 W Double Get campaign and was later reprinted in Pokemon Song Best Collection CD in an identical version.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Cool Porygon's appeal is unusually literal: a constructed digital Pokemon attached to a Nintendo 64 hardware purchase route, then recontextualized through music-CD and English-promo memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification should distinguish N64 W Double Get Cool Porygon from Song Best Cool Porygon, English Wizards Black Star Cool Porygon, Fan Club Porygon, Base/Gift Pack Porygon, and generic Porygon listings.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "human_title": "Cool Porygon: a digital Pokemon tied to a console purchase",
+        "why_it_matters": "Cool Porygon is almost too perfect as an artifact. Porygon is a made thing inside the fiction, and this card is attached to a made thing in the world: the Nintendo 64. Its later Song Best and English lives are part of the charm, but also the danger. A good agent should enjoy the route and refuse to blur it.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "N64 campaign provenance for a specific copy",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "n64_cool_porygon_route_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Cool Porygon, かっこいいポリゴン, Kakkoii Porygon, Nintendo 64, W Double Get, Song Best, Wizards Black Star 15, English Cool Porygon, Fan Club Porygon, Base Porygon, or Gift Pack Porygon.",
+          "summary": "Confirm the Cool Porygon route before using the row. Name match alone is too broad.",
+          "steps": [
+            "Confirm the card name is Cool Porygon / かっこいいポリゴン.",
+            "Confirm whether the seller is claiming the Nintendo 64 W Double Get route, the Pokemon Song Best Collection route, or the English Wizards Black Star route.",
+            "For this row, preserve source row 028 and the N64 campaign window of December 10, 1997-January 31, 1998.",
+            "Do not treat an identical Song Best version as proof of N64 campaign provenance for a specific copy.",
+            "Check against Fan Club Porygon, Base/Gift Pack Porygon, Expansion Sheet Porygon, and other Porygon prints before accepting a match.",
+            "Preserve Hiromichi Sugiyama as artist context, but do not treat artist credit as route proof.",
+            "If a seller claims CD/booklet/sealed-object completeness, request evidence of the object and hash it separately from the card row.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of title, artwork, copyright/layout, surface/corners, and any slab/cert/CD/booklet evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "N64 campaign provenance for a specific copy",
+            "CD/booklet completeness"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_n64_double_get_199712:029",
+      "type": "card",
+      "context": {
+        "name_en": "Hungry Snorlax",
+        "name_ja": "くいしんぼカビゴン",
+        "romaji": "Kuishinbo Kabigon",
+        "release_family_id": "jp_promo_n64_double_get_199712",
+        "row_id": "jp_promo_n64_double_get_199712:029",
+        "catalog_row_id": "029",
+        "release_date": "1997-12-10/1998-01-31"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "number": "029",
+        "rarity_signal": "Unnumbered Promotional / Nintendo 64 W Double Get Campaign source slice",
+        "artist": "Sumiyoshi Kizuki",
+        "assembly_note": "Hungry Snorlax is the tactile half of the N64 pair: its card memory is entangled with Food counters, a booklet pocket, and the idea that a promo could arrive as a little playable kit.",
+        "collector_texture_note": "The card is not only a Snorlax image. The Food counters and booklet context are the collector texture that make the route feel alive.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_n64_double_get_199712.json",
+          "title": "Local row: N64 W Double Get Hungry Snorlax 029",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "N64 campaign provenance for a specific copy"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_n64_double_get_campaign_1997_selected_lines.json",
+          "title": "Local selected-lines snapshot: Pokumon Nintendo 64 W Double Get Campaign",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete campaign archive",
+            "official copy count",
+            "Food counter token completeness",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_pokemon_song_best_collection_19990101.json",
+          "title": "Local Song Best row: Hungry Snorlax 008",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Nintendo 64 campaign provenance for a specific copy",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hungry_Snorlax_(Nintendo_64_promo)",
+          "title": "Bulbapedia: Hungry Snorlax (Nintendo 64 promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local N64 W Double Get source slice anchors Hungry Snorlax as row 029.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The local Song Best witness supplies the Japanese name くいしんぼカビゴン and romaji Kuishinbo Kabigon for Hungry Snorlax.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local N64 row and richer Song Best witness credit Hungry Snorlax to Sumiyoshi Kizuki.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.vehicle",
+          "text": "The selected Pokumon lines say the sealed CD/booklet included two Food counters to be used with Hungry Snorlax's attacks, stored in a pocket behind the Hungry Snorlax card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The selected Pokumon lines say Hungry Snorlax was later reprinted in Pokemon Song Best Collection CD and describe that reprint as identical to the Nintendo 64 campaign version.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Hungry Snorlax carries the campaign's physical assembly most clearly: card, booklet pocket, and Food counters make the promo feel like a small play kit rather than a loose single.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Special identification should distinguish N64 W Double Get Hungry Snorlax from Song Best Hungry Snorlax, ordinary Snorlax prints, generic CD promos, and unsupported claims that Food counters or booklet pieces remain complete.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "human_title": "Hungry Snorlax: the promo with pieces behind it",
+        "why_it_matters": "Hungry Snorlax is lovable because the card points past itself. The selected campaign lines keep returning to the booklet and the Food counters tucked behind the card, as if Snorlax dragged a little lunchbox of game pieces into the promo object. That is the kind of detail a collector remembers.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "N64 campaign provenance for a specific copy",
+          "Food counter token completeness",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "n64_hungry_snorlax_route_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Hungry Snorlax, くいしんぼカビゴン, Kuishinbo Kabigon, Nintendo 64, W Double Get, Song Best, Food counters, sealed booklet, CD promo, Snorlax promo, or Hungry Snorlax tokens.",
+          "summary": "Confirm the Hungry Snorlax route and keep Food-counter/booklet claims as inspected provenance, not automatic completeness.",
+          "steps": [
+            "Confirm the card name is Hungry Snorlax / くいしんぼカビゴン.",
+            "Confirm whether the seller is claiming the Nintendo 64 W Double Get route or the Pokemon Song Best Collection route.",
+            "For this row, preserve source row 029 and the N64 campaign window of December 10, 1997-January 31, 1998.",
+            "Treat Food counters, booklet pockets, sealed CD packaging, and CD completeness as separate provenance/evidence objects to inspect.",
+            "Do not treat an identical Song Best version as proof of N64 campaign provenance for a specific copy.",
+            "Check against ordinary Snorlax prints, other Snorlax promos, and generic CD-promo listings before accepting a match.",
+            "Preserve Sumiyoshi Kizuki as artist context, but do not treat artist credit as route proof.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of title, artwork, copyright/layout, surface/corners, and any Food-counter/booklet/CD/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "N64 campaign provenance for a specific copy",
+            "Food counter token completeness",
+            "sealed CD/booklet completeness"
+          ]
+        }
+      ]
+    }
+  ]
+}

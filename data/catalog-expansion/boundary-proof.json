@@ -1,0 +1,425 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "completion_status": {
+    "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and final external-source completion still needs a dedicated audit.",
+    "status": "in_progress"
+  },
+  "generated_at": "2026-06-18T20:56:44Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "goal complete",
+    "complete physical-good truth",
+    "complete Jumbo coverage",
+    "official status for non-official sources",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
+  ],
+  "passed": true,
+  "proof_hash": "d0a56212744883f79ed77a3d4e51d8a0c5c7f6832f8bd865596635500ba9e281",
+  "schema": "marketplace.catalog_boundary_proof.v0.1",
+  "sections": {
+    "english_pokemontcg_api": {
+      "cutoff": "2003-05-12",
+      "expected_in_scope_set_ids": [
+        "base1",
+        "base2",
+        "basep",
+        "base3",
+        "base4",
+        "base5",
+        "gym1",
+        "gym2",
+        "neo1",
+        "neo2",
+        "si1",
+        "neo3",
+        "neo4",
+        "base6",
+        "ecard1",
+        "bp",
+        "ecard2",
+        "ecard3"
+      ],
+      "first_post_boundary_sets": [
+        {
+          "api_set_id": "ex1",
+          "name": "Ruby & Sapphire",
+          "printed_total": 109,
+          "release_date": "2003-07-01",
+          "total": 109
+        },
+        {
+          "api_set_id": "ex2",
+          "name": "Sandstorm",
+          "printed_total": 100,
+          "release_date": "2003-09-18",
+          "total": 100
+        },
+        {
+          "api_set_id": "np",
+          "name": "Nintendo Black Star Promos",
+          "printed_total": 40,
+          "release_date": "2003-10-01",
+          "total": 40
+        },
+        {
+          "api_set_id": "ex3",
+          "name": "Dragon",
+          "printed_total": 97,
+          "release_date": "2003-11-24",
+          "total": 100
+        },
+        {
+          "api_set_id": "ex4",
+          "name": "Team Magma vs Team Aqua",
+          "printed_total": 95,
+          "release_date": "2004-03-01",
+          "total": 97
+        }
+      ],
+      "in_scope_source_set_ids": [
+        "base1",
+        "base2",
+        "base3",
+        "base4",
+        "base5",
+        "base6",
+        "basep",
+        "bp",
+        "ecard1",
+        "ecard2",
+        "ecard3",
+        "gym1",
+        "gym2",
+        "neo1",
+        "neo2",
+        "neo3",
+        "neo4",
+        "si1"
+      ],
+      "missing_in_scope_source_set_ids": [],
+      "modeled_api_set_ids": [
+        "base1",
+        "base2",
+        "base3",
+        "base4",
+        "base5",
+        "base6",
+        "basep",
+        "bp",
+        "ecard1",
+        "ecard2",
+        "ecard3",
+        "gym1",
+        "gym2",
+        "neo1",
+        "neo2",
+        "neo3",
+        "neo4",
+        "si1"
+      ],
+      "not_claiming": [
+        "non-PokemonTCG-API supplemental coverage",
+        "post-WoC Nintendo/EX-era coverage",
+        "approved image rights",
+        "physical-card truth"
+      ],
+      "passed": true,
+      "schema": "marketplace.boundary_proof.english_pokemontcg_api.v0.1",
+      "source": "Pokemon TCG API v2 /sets",
+      "source_payload_hash": "a78c0460766c300284d715ceee817f3d536931d47e93c7c49f2171cdca5c471b",
+      "source_set_count": 173,
+      "source_url": "https://api.pokemontcg.io/v2/sets",
+      "unexpected_modeled_api_set_ids": []
+    },
+    "english_supplemental_sources": {
+      "active_partial_gaps": [
+        {
+          "name": "Jumbo cards",
+          "partial_resolution": {
+            "modeled_row_count": 10,
+            "not_claiming": [
+              "complete Jumbo coverage",
+              "complete source-gap resolution",
+              "rows outside the bounded subset",
+              "seller possession",
+              "authenticity",
+              "condition truth"
+            ],
+            "remaining_source_gap_count": 150,
+            "resolution_note": "Bulbapedia raw wikitext spans many Jumbo eras. The catalog models only the 10 clearly early English WoC-era/edge rows through July 2003, ending with Best of Game Winner Jumbo rows before the Nintendo/e-League rows begin; later and unsafe-to-bound Jumbo rows remain unresolved.",
+            "resolution_source": "Bulbapedia raw wikitext + TCGdex set metadata",
+            "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
+            "resolved_catalog_hash": "7839a2bbbf77fbe8e8403ba2e77b9f5d67c29c76c5b9ed10ab3f06d125837726",
+            "status": "partially_resolved_by_bounded_subset"
+          },
+          "set_id": "jumbo",
+          "source_gap_count": 160
+        }
+      ],
+      "active_tcgdex_zero_ref_set_ids": [
+        "jumbo"
+      ],
+      "jumbo_boundary_proof": {
+        "hash": "70d8d7de1864d10cbd70e5b642ca031e98638930ab7e3a4435cb38f9e2cef279",
+        "modeled_prefix": {
+          "entries": [
+            {
+              "classification_note": "Early English Jumbo row before the post-boundary jump.",
+              "name": "Pikachu",
+              "printed_number": "58/102",
+              "promotion": "Top Deck Magazine (February 2000)",
+              "source_index": 1,
+              "source_set": "Base Set"
+            },
+            {
+              "classification_note": "Early English Jumbo row before the post-boundary jump.",
+              "name": "Articuno, Moltres, and Zapdos",
+              "printed_number": "None",
+              "promotion": "Warner Bros. Pokémon The Movie 2000 promotion (July 2000)",
+              "source_index": 2,
+              "source_set": "Warner Bros."
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Electabuzz",
+              "printed_number": "Best 1",
+              "promotion": "BattleZone (December 2002)",
+              "source_index": 3,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Rocket's Sneasel",
+              "printed_number": "Best 5",
+              "promotion": "BattleZone (January 2003)",
+              "source_index": 4,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Hitmonchan",
+              "printed_number": "Best 2",
+              "promotion": "BattleZone (February 2003)",
+              "source_index": 5,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Rocket's Scizor",
+              "printed_number": "Best 4",
+              "promotion": "BattleZone (March 2003)",
+              "source_index": 6,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Dark Ivysaur",
+              "printed_number": "Best 6",
+              "promotion": "BattleZone (April 2003)",
+              "source_index": 7,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Dark Venusaur",
+              "printed_number": "Best 7",
+              "promotion": "BattleZone (May 2003)",
+              "source_index": 8,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Rocket's Mewtwo",
+              "printed_number": "Best 8",
+              "promotion": "BattleZone (June 2003)",
+              "source_index": 9,
+              "source_set": "Best of Game"
+            },
+            {
+              "classification_note": "Best of Game Winner Jumbo row; Best of Game is modeled as an English WoC-era promo series.",
+              "name": "Rocket's Hitmonchan",
+              "printed_number": "Best 9",
+              "promotion": "BattleZone (July 2003)",
+              "source_index": 10,
+              "source_set": "Best of Game"
+            }
+          ],
+          "modeled_row_count": 10,
+          "resolved_by": "data/english-supplemental-wotc/releases/en_wotc_jumbo_bounded_200002_200307.json",
+          "resolved_catalog_hash": "7839a2bbbf77fbe8e8403ba2e77b9f5d67c29c76c5b9ed10ab3f06d125837726",
+          "resolved_file_hash": "4148d78a5bb51c5e8d3a56dedabee3e296a2b0ab76ccd26820bda2cdf13affbc",
+          "source_index_end": 10,
+          "source_index_start": 1
+        },
+        "passed": true,
+        "path": "data/catalog-expansion/english-jumbo-boundary-proof.json",
+        "proof_hash": "d378bb185220d589fd423d3a75ae8c51a5a5059d6f32b16413c8ee74b0b15423",
+        "source_row_count": 390,
+        "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
+        "unclassified_excluded_count": 0
+      },
+      "modeled_release_family_ids": [
+        "en_wotc_w_promotional_19990901",
+        "en_wotc_sample_set_new_york_20020801",
+        "en_wotc_jumbo_bounded_200002_200307"
+      ],
+      "modeled_rows": 27,
+      "not_claiming": [
+        "complete Jumbo coverage",
+        "all English miscellaneous products outside the named source register",
+        "approved image rights",
+        "physical-card truth"
+      ],
+      "passed": true,
+      "resolved_tcgdex_zero_ref_set_ids": [
+        "ADV1",
+        "ADV2",
+        "sp",
+        "wp"
+      ],
+      "schema": "marketplace.boundary_proof.english_supplemental_sources.v0.1",
+      "source": "TCGdex zero-ref source gap register plus Bulbapedia row sources",
+      "source_gap_register_hash": "49ebc2f13df054c5ca59cbea595b0556c09010236f1d02df9e63b2c3fb6edbf4",
+      "source_gap_register_path": "data/catalog-expansion/source-gaps.json",
+      "supplemental_manifest_hash": "193dd361d0b1e0a2b7dfc248f8fca0211f4fec151d44e1fda505c7b42b93dda2",
+      "supplemental_manifest_path": "data/english-supplemental-wotc/manifest.json"
+    },
+    "japanese_promo_sources": {
+      "modeled_rows": 313,
+      "modeled_sources": [
+        {
+          "coverage_note": "Selected source rows 001-060 already represented by the pre-English aggregate slice and child releases.",
+          "name": "Unnumbered Promotional cards pre-English source slice",
+          "path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
+          "row_count": 55
+        },
+        {
+          "coverage_note": "Models source rows 061-257; row 258 begins Summer 2003 and later rows stay excluded.",
+          "name": "Unnumbered Promotional cards WoC-era continuation source slice",
+          "path": "data/japanese-unnumbered-promo-wotc/manifest.json",
+          "row_count": 197
+        },
+        {
+          "coverage_note": "Models complete numbered P Promotional page, 001/P through 047/P.",
+          "name": "P Promotional cards",
+          "path": "data/japanese-promo-wotc/manifest.json",
+          "row_count": 47
+        },
+        {
+          "coverage_note": "Models 001/ADV-P through 014/ADV-P; 015/ADV-P begins June 25, 2003 and later rows stay excluded.",
+          "name": "ADV-P Promotional cards pre-edge subset",
+          "path": "data/japanese-promo-wotc/manifest.json",
+          "row_count": 14
+        }
+      ],
+      "not_claiming": [
+        "official campaign boundary proof beyond source promotion notes",
+        "official source",
+        "post-boundary promo coverage",
+        "physical-card truth"
+      ],
+      "passed": true,
+      "schema": "marketplace.boundary_proof.japanese_promo_sources.v0.1",
+      "source": "Bulbapedia raw promo setlist pages plus existing Japanese pre-English source slice"
+    },
+    "japanese_tcgdex_api": {
+      "cutoff": "2003-05-12",
+      "expected_in_scope_set_ids": [
+        "PMCG1",
+        "PMCG2",
+        "PMCG3",
+        "PMCG4",
+        "PMCG5",
+        "PMCG6",
+        "neo1",
+        "neo2",
+        "neo3",
+        "neo4",
+        "VS1",
+        "web1",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "ADV1",
+        "ADV2"
+      ],
+      "first_post_boundary_sets": [
+        {
+          "cards_returned": 0,
+          "name": "天空の覇者",
+          "official_count": 54,
+          "release_date": "2003-06-25",
+          "set_id": "ADV3"
+        },
+        {
+          "cards_returned": 0,
+          "name": "強化拡張パックex1マグマVSアクア ふたつの野望",
+          "official_count": 80,
+          "release_date": "2003-10-24",
+          "set_id": "ADV4"
+        },
+        {
+          "cards_returned": 0,
+          "name": "とかれた封印",
+          "official_count": 83,
+          "release_date": "2004-01-16",
+          "set_id": "ADV5"
+        },
+        {
+          "cards_returned": 82,
+          "name": "伝説の飛翔",
+          "official_count": 82,
+          "release_date": "2004-04-09",
+          "set_id": "PCG1"
+        },
+        {
+          "cards_returned": 82,
+          "name": "蒼空の激突",
+          "official_count": 82,
+          "release_date": "2004-07-01",
+          "set_id": "PCG2"
+        }
+      ],
+      "in_scope_source_set_ids": [
+        "ADV1",
+        "ADV2",
+        "E1",
+        "E2",
+        "E3",
+        "E4",
+        "E5",
+        "PMCG1",
+        "PMCG2",
+        "PMCG3",
+        "PMCG4",
+        "PMCG5",
+        "PMCG6",
+        "VS1",
+        "neo1",
+        "neo2",
+        "neo3",
+        "neo4",
+        "web1"
+      ],
+      "missing_in_scope_source_set_ids": [],
+      "not_claiming": [
+        "Japanese promo coverage from TCGdex",
+        "official source",
+        "post-cutoff ADV/PCG coverage",
+        "physical-card truth"
+      ],
+      "passed": true,
+      "schema": "marketplace.boundary_proof.japanese_tcgdex_api.v0.1",
+      "source": "TCGdex Japanese set index plus per-set detail payloads",
+      "source_index_payload_hash": "9e19fe5f84e7e585440a4f5c248e6cbe6091f73de7eb9d7ddf9f539e3ca95e14",
+      "source_set_count": 172,
+      "source_url": "https://api.tcgdex.net/v2/ja/sets"
+    }
+  }
+}

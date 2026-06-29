@@ -1,0 +1,1168 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Premium File 2",
+    "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+    "notes": [
+      "Japanese unnumbered promo campaign source group for the November 13, 1998 Premium File 2 rows.",
+      "This pass deepens all eight modeled Premium File 2 rows and treats the file route plus adjacent Charizard boundary as the important identification rail."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2",
+      "type": "release",
+      "context": {
+        "name_en": "Premium File 2",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "release_date": "1998-11-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_184_neo_era_premium_file_2.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: adjacent Neo Era Premium File 2 singleton",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence with the eight-row Premium File 2 group"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local unnumbered-promo catalog models Premium File 2 with a November 13, 1998 release date.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local Premium File 2 group models eight contiguous source rows: 185 through 192.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The source group is an unnumbered promotional Premium File 2 object, not a normal expansion with printed set numbers.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The adjacent source row 184 is modeled separately as Neo Era Premium File 2 / Charizard, so this eight-row dossier does not silently absorb it.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Premium File 2 matters because it arranges Johto as a set of choices and symbols: Entei as myth, Pichu as baby-era signal, Espeon and Umbreon as Eevee branching, and Unown as alphabetic mystery.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "Collector attention naturally gathers around Entei, Pichu, Espeon, Umbreon, and Eevee, while the Unown letters make the object feel like an intentional Johto-language packet rather than leftover promo rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A Premium File 2 match should preserve the file route, the source-index range 185-192, and the exact card name together; name alone is not enough for unnumbered promo identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_19981113_eight_row_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Premium File 2, Neo-era Premium File 2, Eevee file, Unown file, or one of the eight Premium File 2 card names.",
+          "summary": "Confirm the November 13, 1998 Premium File 2 route and source-index boundary before treating a card as one of these eight unnumbered promo rows.",
+          "steps": [
+            "Confirm the claimed card is one of source rows 185-192: Entei, Pichu, Espeon, Unown E, Unown N, Unown O, Umbreon, or Eevee.",
+            "Preserve the Premium File 2 route separately from the card name; the unnumbered promo identity is not carried by name alone.",
+            "Do not silently absorb adjacent source row 184 / Neo Era Premium File 2 / Charizard into this eight-row group.",
+            "Do not merge these rows with Neo Discovery, Neo Genesis, later Eevee-family cards, Unown cards, or legendary-beast printings without route evidence.",
+            "For transactional use, ask for full front/back photos, any file/page/insert evidence, and close images of corners, stock, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official product-boundary proof beyond cited catalogs",
+            "price truth",
+            "complete Premium File 2 variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Johto becomes choice, myth, and alphabet",
+        "why_it_matters": "Premium File 2 feels like Pokemon widening its grammar. Premium File gave collectors evolution lines; this one gives them forks, letters, babies, and beasts. That is a real assembly moment: the franchise is teaching collectors that a card can matter because it names a choice, a symbol, or a future language, not only because it is the biggest monster in the room.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:185",
+      "type": "card",
+      "context": {
+        "name_en": "Entei",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:185",
+        "catalog_row_id": "185"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:185",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Entei 185",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Entei as Premium File 2 source row 185.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Entei.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Entei puts a legendary beast at the front of Premium File 2. It makes the file feel less like a checklist and more like a signal that Johto is bringing folklore, not just new evolutions.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Entei, preserve source row 185 and the Premium File 2 route; do not treat another Entei print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_entei_185_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Entei, Neo-era file Entei, or unnumbered promo Entei.",
+          "summary": "Confirm Entei belongs to Premium File 2 source row 185 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Entei.",
+            "Preserve source row 185 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Entei equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the myth at the gate",
+        "why_it_matters": "Entei puts a legendary beast at the front of Premium File 2. It makes the file feel less like a checklist and more like a signal that Johto is bringing folklore, not just new evolutions.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:186",
+      "type": "card",
+      "context": {
+        "name_en": "Pichu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:186",
+        "catalog_row_id": "186"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:186",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Pichu 186",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Pichu as Premium File 2 source row 186.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Pichu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Pichu is tiny, but it changes the emotional machinery of Pokemon. Premium File 2 can hold baby Pokemon, legends, letters, and evolutions in one object, which is exactly why the route matters.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Pichu, preserve source row 186 and the Premium File 2 route; do not treat another Pichu print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_pichu_186_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Pichu, Neo-era file Pichu, or unnumbered promo Pichu.",
+          "summary": "Confirm Pichu belongs to Premium File 2 source row 186 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Pichu.",
+            "Preserve source row 186 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Pichu equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the little spark before Pikachu",
+        "why_it_matters": "Pichu is tiny, but it changes the emotional machinery of Pokemon. Premium File 2 can hold baby Pokemon, legends, letters, and evolutions in one object, which is exactly why the route matters.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:187",
+      "type": "card",
+      "context": {
+        "name_en": "Espeon",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:187",
+        "catalog_row_id": "187"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:187",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Espeon 187",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Espeon as Premium File 2 source row 187.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Espeon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Espeon gives the file one half of the Eevee fork. For an agent, the card matters because it turns evolution into preference: not stronger/weaker, but a path a collector recognizes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Espeon, preserve source row 187 and the Premium File 2 route; do not treat another Espeon print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_espeon_187_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Espeon, Neo-era file Espeon, or unnumbered promo Espeon.",
+          "summary": "Confirm Espeon belongs to Premium File 2 source row 187 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Espeon.",
+            "Preserve source row 187 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Espeon equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "daylight choice",
+        "why_it_matters": "Espeon gives the file one half of the Eevee fork. For an agent, the card matters because it turns evolution into preference: not stronger/weaker, but a path a collector recognizes.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:188",
+      "type": "card",
+      "context": {
+        "name_en": "Unown E",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:188",
+        "catalog_row_id": "188"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:188",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Unown E 188",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Unown E as Premium File 2 source row 188.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Unown E.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Unown E makes Premium File 2 feel archaeological. The card is not chased only as a monster; it is part of Pokemon learning to use signs, ruins, and letters as collectible texture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Unown E, preserve source row 188 and the Premium File 2 route; do not treat another Unown E print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_unown_e_188_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Unown E, Neo-era file Unown E, or unnumbered promo Unown E.",
+          "summary": "Confirm Unown E belongs to Premium File 2 source row 188 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Unown E.",
+            "Preserve source row 188 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Unown E equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "a letter enters the binder",
+        "why_it_matters": "Unown E makes Premium File 2 feel archaeological. The card is not chased only as a monster; it is part of Pokemon learning to use signs, ruins, and letters as collectible texture.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:189",
+      "type": "card",
+      "context": {
+        "name_en": "Unown N",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:189",
+        "catalog_row_id": "189"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:189",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Unown N 189",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Unown N as Premium File 2 source row 189.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Unown N.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Unown N is a quiet row, but it helps the file say something important: Johto is not only adding species, it is adding systems for mystery.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Unown N, preserve source row 189 and the Premium File 2 route; do not treat another Unown N print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_unown_n_189_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Unown N, Neo-era file Unown N, or unnumbered promo Unown N.",
+          "summary": "Confirm Unown N belongs to Premium File 2 source row 189 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Unown N.",
+            "Preserve source row 189 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Unown N equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the alphabet keeps unfolding",
+        "why_it_matters": "Unown N is a quiet row, but it helps the file say something important: Johto is not only adding species, it is adding systems for mystery.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:190",
+      "type": "card",
+      "context": {
+        "name_en": "Unown O",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:190",
+        "catalog_row_id": "190"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:190",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Unown O 190",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Unown O as Premium File 2 source row 190.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Unown O.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Unown O keeps the letter run from becoming a one-off cameo. In a file object, repeated letters teach the agent to inspect the sequence, not just the character name.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Unown O, preserve source row 190 and the Premium File 2 route; do not treat another Unown O print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_unown_o_190_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Unown O, Neo-era file Unown O, or unnumbered promo Unown O.",
+          "summary": "Confirm Unown O belongs to Premium File 2 source row 190 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Unown O.",
+            "Preserve source row 190 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Unown O equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "one more sign in the sequence",
+        "why_it_matters": "Unown O keeps the letter run from becoming a one-off cameo. In a file object, repeated letters teach the agent to inspect the sequence, not just the character name.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:191",
+      "type": "card",
+      "context": {
+        "name_en": "Umbreon",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:191",
+        "catalog_row_id": "191"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:191",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Umbreon 191",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Umbreon as Premium File 2 source row 191.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Umbreon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Umbreon is the shadow half of the Eevee fork and one of the file's natural collector anchors. The card carries the drama of Johto's new Darkness identity without needing a printed set number to matter.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Umbreon, preserve source row 191 and the Premium File 2 route; do not treat another Umbreon print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_umbreon_191_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Umbreon, Neo-era file Umbreon, or unnumbered promo Umbreon.",
+          "summary": "Confirm Umbreon belongs to Premium File 2 source row 191 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Umbreon.",
+            "Preserve source row 191 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Umbreon equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "moonlight choice",
+        "why_it_matters": "Umbreon is the shadow half of the Eevee fork and one of the file's natural collector anchors. The card carries the drama of Johto's new Darkness identity without needing a printed set number to matter.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_185_premium_file_2:192",
+      "type": "card",
+      "context": {
+        "name_en": "Eevee",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_185_premium_file_2",
+        "row_id": "jp_promo_unnumbered_wotc_185_premium_file_2:192",
+        "catalog_row_id": "192"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_185_premium_file_2.json#row:jp_promo_unnumbered_wotc_185_premium_file_2:192",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File 2 row: Eevee 192",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Eevee as Premium File 2 source row 192.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File 2 row does not provide an illustrator credit for Eevee.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Eevee closes the eight-row group by revealing the engine beneath Espeon and Umbreon. In this file, it is not filler; it is the little hinge that makes the choice cards make sense.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Eevee, preserve source row 192 and the Premium File 2 route; do not treat another Eevee print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_2_eevee_192_boundary_v0.1",
+          "trigger": "A user or listing says Premium File 2 Eevee, Neo-era file Eevee, or unnumbered promo Eevee.",
+          "summary": "Confirm Eevee belongs to Premium File 2 source row 192 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Eevee.",
+            "Preserve source row 192 and the Premium File 2 route.",
+            "Do not merge with later expansion, promo, Eevee-family, Unown-family, or legendary-beast rows without route evidence.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Eevee equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the source of the fork",
+        "why_it_matters": "Eevee closes the eight-row group by revealing the engine beneath Espeon and Umbreon. In this file, it is not filler; it is the little hinge that makes the choice cards make sense.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

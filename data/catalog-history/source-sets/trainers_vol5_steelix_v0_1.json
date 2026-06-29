@@ -1,0 +1,686 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Steelix, the Pokemon Card Trainers Vol. 5 insert released March 1, 2000, emphasizing Trainer Magazine distribution, Benimaru Itoh art, Metal-type Johto weight, Gold/Silver symbol, bonus-card border text, and traps against Neo/Gold-Silver Steelix, English Neo Genesis, Jasmine's Steelix, Shining Steelix, and generic Steelix listings.",
+    "in_scope": [
+      "Pokemon Card Trainers Vol. 5 release dossier",
+      "Steelix unnumbered promotional row 158",
+      "Benimaru Itoh illustration context",
+      "Trainer Magazine insert and bonus-card border text",
+      "Metal-type Steelix identity rails"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Trainers Vol. 5 issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000",
+        "name_en": "Pokemon Card Trainers Vol. 5 insert (March 1, 2000)",
+        "release_date": "2000-03-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Trainers magazine insert",
+          "early Johto Metal-type showcase",
+          "Benimaru Itoh illustration",
+          "holographic unnumbered promo",
+          "Gold/Silver expansion-symbol rail",
+          "Neo-era species confusion trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000:158",
+            "name": "Steelix",
+            "why": "This is a chase because it is a magazine-borne Johto heavyweight: Steelix gets a dedicated Trainer Magazine promo with Benimaru Itoh's harder-edged art and the new Metal identity made physical.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c4",
+              "c6",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Benimaru Itoh",
+            "row_count": 1,
+            "examples": [
+              "Steelix"
+            ],
+            "why": "Itoh matters here because Steelix is a creature of weight, texture, and mechanical force. His Pokemon background also crosses into 3D modeling and Creatures-era production, which makes this card feel close to the machinery of Pokemon, not only the card frame.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete Benimaru Itoh biography",
+              "seller-card proof",
+              "authentication",
+              "all Steelix art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Trainer Magazine issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Pokemon Card Trainers Vol. 5 insert as a one-row unnumbered promotional source group containing Steelix at source index 158.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says this Steelix was available as an Unnumbered Promotional card included in Volume 5 of Pokemon Card Trainers magazine, released on March 1, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "PokeBoon also describes the Steelix promo as Pokemon Card Trainers Vol. 5 with distribution date March 1, 2000, and tags the source as Book / Unopened.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "A collector-maintained Trainer Magazine promo list records the early insert sequence as Vol. 1 Snap Pikachu, Vol. 3 Bilingual Exeggutor, Vol. 4 Murkrow & Darkness Energy, and Vol. 5 Steelix.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "The official Pokemon site lists Pokemon Gold and Silver as released in Japan on November 21, 1999, placing this March 2000 Steelix magazine promo in the early Johto period.",
+          "sources": [
+            "s8"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Steelix illustration to Benimaru Itoh.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits this Steelix promo to Benimaru Itoh.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Benimaru Itoh page says he is a manga artist, designer, and musician; at Creatures, Inc. he worked as 3D modeling director for the Pokemon Stadium series and illustrated Pokemon Newspaper Strip comics and several Pokemon TCG card artworks.",
+          "sources": [
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Steelix LV.57, Japanese name ハガネール Haganeil, Metal-type Stage 1 evolving from Onix, HP 100, and National Pokédex number 208.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the card features the Gold, Silver, to a New World... symbol and that the bottom card border reads Pokemon Card Official Magazine 'Trainers Vol. 5' bonus card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c11",
+          "field": "history.significance",
+          "text": "The card matters because it makes early Johto's Metal identity feel tactile: Steelix is not only a species label, but a magazine-distributed object where Onix becomes industrial, heavy, and newly typed.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c5",
+            "c6",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol5_steelix_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Steelix, Haganeil, ハガネール, No.208, Trainers Vol. 5, Pokemon Card Trainers, March 1 2000, Benimaru Itoh, Metal Crash, Rumble, Neo Genesis, Gold/Silver Steelix, Jasmine's Steelix, Shining Steelix, or magazine promo.",
+          "summary": "Identify Trainers Vol. 5 Steelix by magazine-insert route, Benimaru Itoh credit, Metal-type Stage 1 text, Gold/Silver symbol, and Trainers Vol. 5 bonus-card border text before trusting species-only Steelix memory.",
+          "steps": [
+            "Confirm the release route is Pokemon Card Trainers Vol. 5 insert, released March 1, 2000.",
+            "Confirm the card is Steelix / ハガネール Haganeil, National Pokédex No. 208, as an unnumbered Japanese promotional card.",
+            "Preserve Benimaru Itoh as illustrator and do not silently replace the credit with Ken Sugimori from the Neo/Gold-Silver expansion Steelix.",
+            "Check for Metal-type Stage 1 frame, HP 100, evolution from Onix, and attacks Metal Crash / メタルクラッシュ and Rumble / じひびき where image quality allows.",
+            "Check for the Gold, Silver, to a New World... symbol and bottom-border text reading Pokemon Card Official Magazine 'Trainers Vol. 5' bonus card.",
+            "Separate Japanese Gold/Silver to a New World Steelix, English Neo Genesis Steelix, Jasmine's Steelix, Shining Steelix, Mysterious Mountains Steelix, Wind from the Sea Steelix, and modern Steelix cards unless source evidence proves this exact row.",
+            "Request front/back seller photos, holo/surface evidence, and magazine provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "Neo Genesis equivalence",
+            "Gold/Silver expansion equivalence",
+            "Jasmine's Steelix equivalence",
+            "Shining Steelix equivalence",
+            "modern Steelix equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Steelix: metal enters through the magazine spine",
+        "why_it_matters": "This Steelix has the right kind of weight. It is not just Onix evolved; it is Johto's new Metal grammar arriving as a Trainer Magazine object, with Benimaru Itoh giving the serpent a harder, stranger body than the neat Sugimori expansion card. That matters for collectors because the assembly is visible: magazine route, bonus-card border text, Gold/Silver symbol, and a creature whose whole identity is pressure made solid. The card feels like early-2000 Pokemon learning to be industrial.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c5",
+          "c6",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Trainer Magazine issue contents",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokemon Card Trainers Vol. 5 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Steelix_%28Pok%C3%A9mon_Card_Trainers_promo%29",
+          "title": "Bulbapedia: Steelix (Pokemon Card Trainers promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/trainers_steelix_promo/",
+          "title": "PokeBoon: Steelix Promo: Pokemon Card Trainers Vol. 5",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://www.elitefourum.com/t/trainers-mag-promo-lists/11294",
+          "title": "Elite Fourum: Trainers Mag. Promo Lists?",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.pricecharting.com/game/pokemon-japanese-promo/steelix-208",
+          "title": "PriceCharting: Steelix #208 Pokemon Japanese Promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "stable market price",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete transaction universe"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Benimaru_Itoh",
+          "title": "Bulbapedia: Benimaru Itoh",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card-specific distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "web",
+          "ref": "https://www.pokemon.co.jp/game/other/gbc-gs/",
+          "title": "Pokemon official site: Pocket Monsters Gold/Silver",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000:158",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000",
+        "row_id": "jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000:158",
+        "name_en": "Steelix",
+        "name_ja": "ハガネール",
+        "source_index": "158",
+        "release_date": "2000-03-01"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "k1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 158 as Steelix, a Metal Pokemon row in the Pokemon Card Trainers Vol. 5 insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "k2",
+          "field": "card.identity",
+          "text": "Bulbapedia lists the card as Steelix LV.57, Japanese name ハガネール Haganeil, Metal-type Stage 1 evolving from Onix, HP 100, and National Pokédex No. 208.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k3",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon credit this Steelix to Benimaru Itoh.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records Metal Crash for 50 damage with a coin-flip drawback and Rumble for 20 damage with a retreat-lock effect.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k5",
+          "field": "history.lineage",
+          "text": "The promo's identity sits beside, but should not collapse into, the Japanese Gold/Silver to a New World Steelix row; the Trainer Magazine card has its own artist credit, source route, and border text.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k1",
+            "k2",
+            "k3"
+          ]
+        },
+        {
+          "id": "k6",
+          "field": "card.art",
+          "text": "The art matters because Benimaru Itoh's Steelix makes the new Metal typing feel physical and heavy, not merely a type icon; this is a different collector texture than the cleaner main-expansion Sugimori Steelix.",
+          "sources": [
+            "s3",
+            "s4",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k2",
+            "k3"
+          ]
+        },
+        {
+          "id": "k7",
+          "field": "identification.special_instructions",
+          "text": "The card should be checked as the Pokemon Card Trainers Vol. 5 bonus Steelix with Gold/Silver symbol, Benimaru Itoh credit, and Trainers Vol. 5 border text, not merely as a Japanese Steelix.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol5_steelix_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer, seller, listing, scan, or agent memory identifies a Japanese Steelix as Trainers Vol. 5, Pokemon Card Trainers, March 2000, Benimaru Itoh, Metal Crash, Rumble, No.208, Holo, Neo Genesis, Gold/Silver, or source index 158.",
+          "summary": "Match row 158 by Steelix identity plus Pokemon Card Trainers Vol. 5 bonus-card rails; do not let famous Steelix name or Neo-era nostalgia collapse the promo variant.",
+          "steps": [
+            "Confirm Steelix / ハガネール identity, Metal type, Stage 1 evolution from Onix, and No. 208 context.",
+            "Confirm Pokemon Card Trainers Vol. 5 insert / March 1, 2000 route from listing text, provenance, or seller evidence.",
+            "Confirm Benimaru Itoh credit when a scan is legible or a reference row is cited.",
+            "Look for Metal Crash / メタルクラッシュ and Rumble / じひびき text where photos allow.",
+            "Look for Gold/Silver symbol and bottom-border Pokemon Card Official Magazine 'Trainers Vol. 5' bonus-card text.",
+            "Separate Japanese Gold/Silver to a New World Steelix, English Neo Genesis Steelix, Jasmine's Steelix, Shining Steelix, Mysterious Mountains Steelix, Wind from the Sea Steelix, and modern Steelix rows unless evidence supports this exact row.",
+            "Escalate to seller evidence for possession, authenticity, condition, holo/surface quality, and magazine provenance."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "Neo Genesis equivalence",
+            "Gold/Silver expansion equivalence",
+            "Jasmine's Steelix equivalence",
+            "Shining Steelix equivalence",
+            "modern Steelix equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Steelix: the magazine-born metal serpent",
+        "why_it_matters": "Steelix is easy to flatten into a famous species name, but this promo deserves its own shape. It came through Pokemon Card Trainers Vol. 5, not a booster pack, and Benimaru Itoh makes the new Metal era feel massive: HP 100, Stage 1 from Onix, Metal Crash, Rumble, and a body compressed harder than diamond. It is a perfect agent test case because resemblance is dangerous here. The right card is not any Steelix. It is this magazine Steelix, with its route, artist, symbol, and bonus-card text still attached.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "k1",
+          "k2",
+          "k3",
+          "k4",
+          "k5",
+          "k7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_158_pok_mon_card_trainers_vol_5_insert_march_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokemon Card Trainers Vol. 5 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Steelix_%28Pok%C3%A9mon_Card_Trainers_promo%29",
+          "title": "Bulbapedia: Steelix (Pokemon Card Trainers promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/trainers_steelix_promo/",
+          "title": "PokeBoon: Steelix Promo: Pokemon Card Trainers Vol. 5",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://www.elitefourum.com/t/trainers-mag-promo-lists/11294",
+          "title": "Elite Fourum: Trainers Mag. Promo Lists?",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.pricecharting.com/game/pokemon-japanese-promo/steelix-208",
+          "title": "PriceCharting: Steelix #208 Pokemon Japanese Promo",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "stable market price",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete transaction universe"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Benimaru_Itoh",
+          "title": "Bulbapedia: Benimaru Itoh",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card-specific distribution source",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "web",
+          "ref": "https://www.pokemon.co.jp/game/other/gbc-gs/",
+          "title": "Pokemon official site: Pocket Monsters Gold/Silver",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

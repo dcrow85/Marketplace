@@ -1,0 +1,706 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the Hyper CoroCoro Spring 1999 issue insert source slice, emphasizing English Wizards Promo cards distributed through a Japanese magazine route, gray-star/yellow-PROMO identity, glossy Japanese stock pressure, Pikachu and Jigglypuff source rows 086-087, and route traps against ordinary English Wizards Black Star, CoroCoro October 1996 glossy, Jungle, Base, Song Best, and later mascot memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Pikachu row 086",
+      "Jigglypuff row 087",
+      "Hyper CoroCoro Spring 1999 magazine route",
+      "English w/Gray Star variant context",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Hyper CoroCoro issue archive",
+      "complete magazine-object ledger",
+      "official copy count",
+      "complete Wizards promo census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999",
+        "name_en": "Hyper CoroCoro Spring 1999 issue insert (March 1, 1999)",
+        "release_date": "1999-03-01",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "English cards routed through a Japanese magazine",
+          "Hyper CoroCoro Spring 1999 issue insert",
+          "gray-star yellow-PROMO variant pressure",
+          "glossy-stock Japanese magazine memory",
+          "Pikachu and Jigglypuff as a mascot pair",
+          "Wizards Black Star route confusion"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999:086",
+            "name": "Pikachu",
+            "why": "Mascot gravity plus the English-in-Japanese-magazine route makes Pikachu the card most likely to be name-matched too quickly.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999:087",
+            "name": "Jigglypuff",
+            "why": "Jigglypuff is the quiet half of the pair: less market-loud than Pikachu, but equally useful for proving the magazine-insert route.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Keiji Kinebuchi",
+            "row_count": 1,
+            "examples": [
+              "Pikachu"
+            ],
+            "why": "Bulbapedia records that Wizards originally credited the English promo to Mitsuhiro Arita, while Creatures later confirmed Keiji Kinebuchi as illustrator; that correction history is part of why this row needs an artist rail.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "seller-card proof",
+              "complete biography"
+            ]
+          },
+          {
+            "name": "Mitsuhiro Arita",
+            "row_count": 0,
+            "examples": [
+              "Pikachu miscredit / original Wizards credit context"
+            ],
+            "why": "Arita matters here as the miscredit/memory pressure on Pikachu, not as the accepted illustrator for this row.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "credit for this Pikachu row",
+              "seller-card proof",
+              "complete biography"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Hyper CoroCoro issue archive",
+          "complete magazine-object ledger",
+          "official copy count",
+          "complete Wizards promo census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local source slice models two Hyper CoroCoro Spring 1999 issue insert rows: Pikachu row 086 and Jigglypuff row 087.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local source rows derive from Bulbapedia raw wikitext rows 086-087, both carrying the promotion note Hyper CoroCoro Spring 1999 issue insert (March 1, 1999).",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local source rows mark both cards as English w/Gray Star and point to Wizards Promo identities: Pikachu Wizards Promo 1 and Jigglypuff Wizards Promo 7.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "This source slice matters because the cards are English-language Wizards Promo designs moving through a Japanese Hyper CoroCoro magazine route, so language, symbol, and distribution route must all survive matching.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Hyper CoroCoro Spring 1999 route, March 1 1999 date, row 086-087 pair identity, English w/Gray Star variant note, gray-star/yellow-PROMO symbol context, and non-equivalence with ordinary English Wizards Black Star, October 1996 glossy CoroCoro, Base, Jungle, Song Best, and later mascot memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Hyper CoroCoro Spring 1999 — English promos inside a Japanese magazine",
+        "why_it_matters": "This little two-card insert is a perfect protocol problem. Pikachu and Jigglypuff look like familiar English Wizards promos, but the route is not simply English retail memory; the source slice says Hyper CoroCoro Spring 1999, March 1, 1999. That means the agent cannot stop at name, language, or gray star. It has to keep the magazine route alive. The romance is small and very CoroCoro: two mascot-weight cards crossing language and market boundaries through a kid's magazine object, making the franchise feel wider than one country's checklist.",
+        "not_claiming": [
+          "complete release history",
+          "complete Hyper CoroCoro issue archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo release: Hyper CoroCoro Spring 1999 issue insert",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005 rows 086-087",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete Hyper CoroCoro issue archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 1)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Jigglypuff (Wizards Promo 7)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Wizards_Promo_7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "hyper_corocoro_spring_1999_two_card_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Hyper CoroCoro, Spring 1999, March 1 1999, English gray star, yellow PROMO, Pikachu Wizards Promo 1, Jigglypuff Wizards Promo 7, glossy Japanese stock, CoroCoro promo, or rows 086/087.",
+          "summary": "Preserve the Hyper CoroCoro Spring 1999 two-card magazine route before accepting either English gray-star promo as this Japanese source slice.",
+          "steps": [
+            "Confirm Hyper CoroCoro Spring 1999 issue insert context and March 1, 1999 source date.",
+            "Preserve the pair relationship: Pikachu row 086 and Jigglypuff row 087 share the same source promotion note.",
+            "Preserve English w/Gray Star variant context; do not assume ordinary English Wizards Black Star distribution.",
+            "Check gray star with yellow PROMO symbol and row-specific seller photos before treating the object as a candidate match.",
+            "Separate this route from CoroCoro October 1996 glossy Pikachu/Jigglypuff, Base/Jungle pack cards, Song Best Pikachu, and later mascot promos.",
+            "Use seller photos for physical format, card face/back, stock/gloss, symbol area, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete Hyper CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Wizards promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999:086",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999",
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachuu",
+        "local_id": "086",
+        "card_type": "Lightning Pokemon",
+        "rarity_or_signal": "English w/Gray Star Wizards Promo 1 via Hyper CoroCoro"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Keiji Kinebuchi",
+        "why_it_matters": "This is Pikachu as boundary test: mascot recognition pulls one way, English Wizards Promo memory another, and the Hyper CoroCoro magazine route is the thing the agent must not drop.",
+        "collector_signals": [
+          "Pikachu Wizards Promo 1 identity",
+          "English w/Gray Star source note",
+          "gray star with yellow PROMO symbol",
+          "Hyper CoroCoro Spring 1999 Japanese magazine route",
+          "Keiji Kinebuchi illustrator correction context"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as Hyper CoroCoro Spring 1999 issue insert row 086, tied to Wizards Promo 1 with variant note English w/Gray Star.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia says Wizards originally credited Pikachu Wizards Promo 1 to Mitsuhiro Arita, but Creatures later confirmed Keiji Kinebuchi as the illustrator.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local row records this Pikachu as English w/Gray Star, while Bulbapedia describes the printed symbol as a gray star with PROMO in yellow letters.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This Pikachu matters because it is almost too recognizable: the catalog has to keep language, promo-symbol, artist-credit correction, and Japanese magazine route from collapsing into generic mascot memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pikachu row 086, Hyper CoroCoro Spring 1999 route, English w/Gray Star variant note, gray-star/yellow-PROMO symbol context, Keiji Kinebuchi correction context, and non-equivalence with ordinary English Wizards Black Star, CoroCoro October 1996 glossy, Base, Song Best, ANA/Flying Pikachu, and later Pikachu promos before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Pikachu — the English promo that still needs a Japanese magazine route",
+        "why_it_matters": "Pikachu is the dangerous one because every collector already thinks they know it. Here, that confidence is the trap. The card is an English Wizards Promo identity, yes, but the source slice cares about a Japanese magazine route: Hyper CoroCoro Spring 1999. The gray star, yellow PROMO, and Keiji Kinebuchi correction context help orient the card, but they do not replace the route. A good agent should feel the mascot gravity and still slow down.",
+        "not_claiming": [
+          "complete release history",
+          "complete Hyper CoroCoro issue archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Hyper CoroCoro Pikachu 086",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999.json#row:jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999:086",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext row 086",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete Hyper CoroCoro issue archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 1)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "hyper_corocoro_1999_086_pikachu_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pikachu, ピカチュウ, Pikachuu, Wizards Promo 1, English gray star, yellow PROMO, Hyper CoroCoro Spring 1999, CoroCoro glossy Pikachu, Keiji Kinebuchi, Mitsuhiro Arita, Song Best, Base, ANA, Flying Pikachu, or row 086.",
+          "summary": "Keep Pikachu row 086 pinned to Hyper CoroCoro Spring 1999; mascot recognition and English promo identity are not enough.",
+          "steps": [
+            "Require row 086 and Hyper CoroCoro Spring 1999 issue insert context.",
+            "Preserve Japanese/romaji name context: ピカチュウ / Pikachuu.",
+            "Preserve English w/Gray Star variant note and gray-star/yellow-PROMO symbol context.",
+            "Preserve Keiji Kinebuchi as corrected illustrator context and Mitsuhiro Arita as miscredit/memory pressure, not accepted credit for this row.",
+            "Separate from ordinary English Wizards Black Star distribution, CoroCoro October 1996 glossy Pikachu, Base/No Rarity Pikachu, Song Best English Pikachu, ANA/Flying Pikachu, and later mascot promos.",
+            "Use seller photos for physical format, card face/back, stock/gloss, symbol area, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete Hyper CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Wizards promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999:087",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999",
+        "name_en": "Jigglypuff",
+        "name_ja": "プリン",
+        "romaji": "Purin",
+        "local_id": "087",
+        "card_type": "Colorless Pokemon",
+        "rarity_or_signal": "English w/Gray Star Wizards Promo 7 via Hyper CoroCoro"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Kagemaru Himeno",
+        "why_it_matters": "Jigglypuff is the softer half of the insert, and that softness is exactly why a route rail matters: it can disappear into Jungle or ordinary Wizards promo memory unless the Hyper CoroCoro pair survives.",
+        "collector_signals": [
+          "Jigglypuff Wizards Promo 7 identity",
+          "English w/Gray Star source note",
+          "gray star with yellow PROMO symbol",
+          "paired with Pikachu row 086",
+          "Hyper CoroCoro Spring 1999 Japanese magazine route"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Jigglypuff as Hyper CoroCoro Spring 1999 issue insert row 087, tied to Wizards Promo 7 with variant note English w/Gray Star.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Jigglypuff Wizards Promo 7 to Kagemaru Himeno.",
+          "sources": [
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local row records this Jigglypuff as English w/Gray Star, while Bulbapedia describes the printed symbol as a gray star with PROMO in yellow letters.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Jigglypuff matters here because it proves the release is a pair, not just another Pikachu footnote: the quieter card keeps the Hyper CoroCoro route honest.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Jigglypuff row 087, Hyper CoroCoro Spring 1999 route, English w/Gray Star variant note, gray-star/yellow-PROMO symbol context, Kagemaru Himeno credit, paired relationship with Pikachu row 086, and non-equivalence with ordinary English Wizards Black Star, Jungle/Base, CoroCoro October 1996 glossy, and later Jigglypuff memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Jigglypuff — the quiet proof that this was a pair",
+        "why_it_matters": "Jigglypuff is not the loud card in this insert, and that is why it earns its keep. Pikachu gets the spotlight; Jigglypuff proves the route. It ties the Hyper CoroCoro Spring 1999 source note to a two-card magazine object and asks the agent to respect the pair rather than chase mascot gravity. Kagemaru Himeno's soft character language fits the card beautifully, but the collector work is still route work: English w/Gray Star, gray PROMO symbol, Japanese magazine insert, row 087.",
+        "not_claiming": [
+          "complete release history",
+          "complete Hyper CoroCoro issue archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese unnumbered promo row: Hyper CoroCoro Jigglypuff 087",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999.json#row:jp_promo_unnumbered_wotc_086_hyper_corocoro_spring_1999_issue_insert_march_1_1999:087",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete magazine archive",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "raw_wikitext_reference",
+          "title": "Bulbapedia raw wikitext row 087",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_(TCG)/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete Hyper CoroCoro issue archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Jigglypuff (Wizards Promo 7)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Wizards_Promo_7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete reprint history",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "hyper_corocoro_1999_087_jigglypuff_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Jigglypuff, プリン, Purin, Wizards Promo 7, English gray star, yellow PROMO, Hyper CoroCoro Spring 1999, CoroCoro glossy Jigglypuff, Kagemaru Himeno, Jungle, Base, or row 087.",
+          "summary": "Keep Jigglypuff row 087 pinned to Hyper CoroCoro Spring 1999 and its paired relationship with Pikachu row 086.",
+          "steps": [
+            "Require row 087 and Hyper CoroCoro Spring 1999 issue insert context.",
+            "Preserve Japanese/romaji name context: プリン / Purin.",
+            "Preserve English w/Gray Star variant note and gray-star/yellow-PROMO symbol context.",
+            "Preserve the paired relationship with Pikachu row 086; do not treat this as a single-card loose memory.",
+            "Preserve Kagemaru Himeno as illustrator context while separating this route from ordinary English Wizards Black Star distribution, CoroCoro October 1996 glossy Jigglypuff, Jungle/Base Jigglypuff, and later Jigglypuff memories.",
+            "Use seller photos for physical format, card face/back, stock/gloss, symbol area, language, surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete Hyper CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "complete Wizards promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

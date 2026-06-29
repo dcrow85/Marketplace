@@ -1,0 +1,2449 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Nivi City Gym / Brock and thirteen rows that carry its gym-leader ownership, missing-symbol deck, duplicate-name, and common-rare structure.",
+    "in_scope": [
+      "Nivi City Gym / Brock release dossier",
+      "Brock's Zubat",
+      "Brock's Vulpix",
+      "Brock's Sandslash",
+      "Brock's Mankey",
+      "Brock's Geodude",
+      "Brock's Geodude",
+      "Brock's Onix",
+      "Brock's Onix",
+      "Brock's Rhyhorn",
+      "Brock",
+      "Brock's Training Method",
+      "Pewter City Gym",
+      "Double Colorless Energy"
+    ],
+    "not_claiming": [
+      "complete Nivi City Gym scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "English Gym Heroes equivalence",
+      "Base No Rarity status"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426",
+      "type": "release",
+      "context": {
+        "name_en": "Nivi City Gym / Brock",
+        "name_ja": "ニビシティジム タケシ",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "release_date": "1998-04-26"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json",
+          "title": "Local Japanese pre-English catalog: Nivi City Gym / Brock",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json#jp_tcg_nivi_city_gym_brock_19980426",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md#jp_tcg_nivi_city_gym_brock_19980426",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Japanese pre-English release map model Nivi City Gym / Brock as released on April 26, 1998.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog models the product as a 60-card deck plus 4 additional cards, while its unique-row catalog exposure is 25 rows.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Nivi City Gym as a Japanese-exclusive Standard Deck that complements Leaders' Stadium and provided the basis for the English Brock Theme Deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that Brock's Onix, Brock's Rhyhorn, Brock's Sandslash, and Brock's Zubat became notorious common rares in Gym Heroes because of their fixed rarity in this deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix records Nivi City Gym / Brock as a real missing-symbol lane, but not a Base No Rarity source.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local attention rows include Brock's Zubat, Brock's Vulpix, Brock's Sandshrew, Brock's Sandslash, Brock's Geodude, Brock's Onix, Brock, Brock's Training Method, Pewter City Gym, and Double Colorless Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local artist clusters are led by Ken Sugimori and Keiji Kinebuchi, with smaller Atsuko Nishida, Benimaru Itoh, and Sumiyoshi Kizuki contributions.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Nivi City Gym / Brock matters because it turns a Gym Leader into a complete play apparatus: the Pokémon are not merely species, they are Brock's team, Brock's training, Brock's city, and Brock's deck constraints made physical.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_city_gym_brock_64_product_25_row_missing_symbol_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Nivi City Gym, Brock deck, ニビシティジム タケシ, Brock's Onix, Brock's Zubat, common rare, missing rarity, or No Rarity.",
+          "summary": "Preserve the gym-deck product boundary: 64-card product context, 25 unique catalog rows, missing-symbol deck lane, not Base No Rarity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and the Japanese gym-deck context.",
+            "Do not treat the 25 unique catalog rows as proof that the sealed product contains only 25 cards; the local product note and Bulbapedia deck list point to a 64-card product context.",
+            "Do not collapse missing-symbol deck cards into 1996 Base No Rarity; this is a Gym deck missing-symbol lane.",
+            "Preserve owner-name identity: Brock's Onix, Brock's Geodude, Brock's Training Method, and Pewter City Gym are not ordinary species or generic trainer rows.",
+            "For common-rare or Gym Heroes carryover claims, require the exact Japanese deck row and the later English row to be named separately."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "complete sealed-deck collation proof",
+            "English Gym Heroes equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Brock becomes an apparatus",
+        "why_it_matters": "Nivi City Gym is where the binder stops treating Brock as a character and starts treating him as infrastructure. The creatures belong to him, the city belongs to him, even the training method belongs to him. It is wonderfully specific: a 1998 Japanese deck object that turns Gym Leader identity into play, then later leaves strange fossils of itself in English Gym Heroes common rares. The charm is not chase gloss. It is ownership becoming grammar.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Nivi City Gym history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:001",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Zubat",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:001",
+          "title": "Local Nivi City Gym / Brock row: Brock's Zubat 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 001 as Brock's Zubat.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Zubat row 001 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Zubat row 001 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Zubat is small, but it carries a big later shadow. Bulbapedia’s common-rare note makes this row a bridge from Japanese fixed-deck rarity into English Gym Heroes weirdness. In the deck, it feels like Brock’s cave ecology: not flashy, but absolutely part of his terrain.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Zubat row 001 is a missing-symbol Gym deck row and one of the later common-rare context cards; do not call it Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_zubat_001_common_rare_missing_symbol_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Zubat, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Zubat row 001 is a missing-symbol Gym deck row and one of the later common-rare context cards; do not call it Base No Rarity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 001.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The common rare starts here",
+        "why_it_matters": "Brock’s Zubat is small, but it carries a big later shadow. Bulbapedia’s common-rare note makes this row a bridge from Japanese fixed-deck rarity into English Gym Heroes weirdness. In the deck, it feels like Brock’s cave ecology: not flashy, but absolutely part of his terrain.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:002",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Vulpix",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:002",
+        "catalog_row_id": "002"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:002",
+          "title": "Local Nivi City Gym / Brock row: Brock's Vulpix 002",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 002 as Brock's Vulpix.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Vulpix row 002 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Vulpix row 002 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Vulpix is the charming wrinkle in a deck people remember as rock and fighting. Sugimori’s credit keeps it close to core design memory, while the owner-name prefix makes it feel like Brock has chosen a companion outside the obvious type stereotype.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Vulpix row 002 is owner-name deck identity; do not collapse it into ordinary Vulpix or English Gym Heroes without naming the release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_vulpix_002_owner_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Vulpix, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Vulpix row 002 is owner-name deck identity; do not collapse it into ordinary Vulpix or English Gym Heroes without naming the release.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 002.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A little fire in Brock’s rock deck",
+        "why_it_matters": "Brock’s Vulpix is the charming wrinkle in a deck people remember as rock and fighting. Sugimori’s credit keeps it close to core design memory, while the owner-name prefix makes it feel like Brock has chosen a companion outside the obvious type stereotype.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:004",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Sandslash",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:004",
+        "catalog_row_id": "004"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:004",
+          "title": "Local Nivi City Gym / Brock row: Brock's Sandslash 004",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 004 as Brock's Sandslash.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Sandslash row 004 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Sandslash row 004 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Sandslash matters because it shows how deck construction can leak into collector language later. It is a fixed-deck row first, then a common-rare problem in English memory. The protocol should keep those layers separate instead of flattening them into “rare.”",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Sandslash row 004 is part of the fixed-deck/common-rare boundary; rarity language needs release context.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_sandslash_004_common_rare_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Sandslash, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Sandslash row 004 is part of the fixed-deck/common-rare boundary; rarity language needs release context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 004.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "One of the fixed-deck common rares",
+        "why_it_matters": "Brock’s Sandslash matters because it shows how deck construction can leak into collector language later. It is a fixed-deck row first, then a common-rare problem in English memory. The protocol should keep those layers separate instead of flattening them into “rare.”",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:005",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Mankey",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:005",
+        "catalog_row_id": "005"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:005",
+          "title": "Local Nivi City Gym / Brock row: Brock's Mankey 005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 005 as Brock's Mankey.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Mankey row 005 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Mankey row 005 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Mankey gives the deck a different hand. The local catalog credits Atsuko Nishida, and that matters because the deck is not just Sugimori-style Gym machinery; it has smaller artist turns inside a very controlled product.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Mankey row 005 should preserve Atsuko Nishida’s local artist credit and owner-name identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_mankey_005_artist_lane_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Mankey, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Mankey row 005 should preserve Atsuko Nishida’s local artist credit and owner-name identity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 005.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Atsuko Nishida cuts against the stone",
+        "why_it_matters": "Brock’s Mankey gives the deck a different hand. The local catalog credits Atsuko Nishida, and that matters because the deck is not just Sugimori-style Gym machinery; it has smaller artist turns inside a very controlled product.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:006",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Geodude",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:006",
+        "catalog_row_id": "006"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:006",
+          "title": "Local Nivi City Gym / Brock row: Brock's Geodude 006",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 006 as Brock's Geodude.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Geodude row 006 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Geodude row 006 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Geodude row 006 is one half of a duplicate-name trap. It is easy for an agent to say “Brock’s Geodude” and lose the row. The point here is that a deck can carry two separate catalog coordinates for the same owned species.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Geodude row 006 must not be merged with row 007; preserve local row id and artist credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_geodude_006_duplicate_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Geodude, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Geodude row 006 must not be merged with row 007; preserve local row id and artist credit.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 006.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first Geodude coordinate",
+        "why_it_matters": "Brock’s Geodude row 006 is one half of a duplicate-name trap. It is easy for an agent to say “Brock’s Geodude” and lose the row. The point here is that a deck can carry two separate catalog coordinates for the same owned species.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:007",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Geodude",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:007",
+        "catalog_row_id": "007"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:007",
+          "title": "Local Nivi City Gym / Brock row: Brock's Geodude 007",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 007 as Brock's Geodude.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Geodude row 007 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Geodude row 007 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Geodude row 007 proves the same name can be a different catalog object. The local artist credit changes to Atsuko Nishida, making the duplicate-name boundary visible enough for an agent to respect.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Geodude row 007 must not be merged with row 006; preserve local row id and artist credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_geodude_007_duplicate_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Geodude, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Geodude row 007 must not be merged with row 006; preserve local row id and artist credit.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 007.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Geodude coordinate",
+        "why_it_matters": "Brock’s Geodude row 007 proves the same name can be a different catalog object. The local artist credit changes to Atsuko Nishida, making the duplicate-name boundary visible enough for an agent to respect.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:010",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Onix",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:010",
+        "catalog_row_id": "010"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:010",
+          "title": "Local Nivi City Gym / Brock row: Brock's Onix 010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 010 as Brock's Onix.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Onix row 010 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Onix row 010 to Benimaru Itoh.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Onix row 010 is the deck’s mascot energy, but it is also a duplicate-row trap. Benimaru Itoh’s local credit gives this coordinate its own texture; “Brock’s Onix” alone is not enough.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Onix row 010 must not be merged with row 011; preserve local row id and Benimaru Itoh credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_onix_010_duplicate_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Onix, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Onix row 010 must not be merged with row 011; preserve local row id and Benimaru Itoh credit.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 010.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Onix, but not the only Onix",
+        "why_it_matters": "Brock’s Onix row 010 is the deck’s mascot energy, but it is also a duplicate-row trap. Benimaru Itoh’s local credit gives this coordinate its own texture; “Brock’s Onix” alone is not enough.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:011",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Onix",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:011",
+        "catalog_row_id": "011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:011",
+          "title": "Local Nivi City Gym / Brock row: Brock's Onix 011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 011 as Brock's Onix.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Onix row 011 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Onix row 011 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Onix row 011 keeps the duplicate-name lesson going. Sugimori’s local credit makes it feel closer to base character memory, but the agent still needs the row coordinate before making any match.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Onix row 011 must not be merged with row 010; preserve local row id and Ken Sugimori credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_onix_011_duplicate_name_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Onix, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Onix row 011 must not be merged with row 010; preserve local row id and Ken Sugimori credit.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 011.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The other Onix in the sleeve",
+        "why_it_matters": "Brock’s Onix row 011 keeps the duplicate-name lesson going. Sugimori’s local credit makes it feel closer to base character memory, but the agent still needs the row coordinate before making any match.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:012",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Rhyhorn",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:012",
+        "catalog_row_id": "012"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:012",
+          "title": "Local Nivi City Gym / Brock row: Brock's Rhyhorn 012",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 012 as Brock's Rhyhorn.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Rhyhorn row 012 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Rhyhorn row 012 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Rhyhorn is another row where the fixed-deck origin matters later. If an agent only sees “common rare,” it has already skipped the assembly history: Japanese deck rarity first, English collector weirdness later.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Rhyhorn row 012 needs Japanese deck context before any common-rare or English Gym Heroes claim.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_rhyhorn_012_common_rare_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Rhyhorn, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Rhyhorn row 012 needs Japanese deck context before any common-rare or English Gym Heroes claim.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 012.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rhyhorn and the common-rare echo",
+        "why_it_matters": "Brock’s Rhyhorn is another row where the fixed-deck origin matters later. If an agent only sees “common rare,” it has already skipped the assembly history: Japanese deck rarity first, English collector weirdness later.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:018",
+      "type": "card",
+      "context": {
+        "name_en": "Brock",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:018",
+        "catalog_row_id": "018"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:018",
+          "title": "Local Nivi City Gym / Brock row: Brock 018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 018 as Brock.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock row 018 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock row 018 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock the Trainer row is the deck’s signature. It turns the whole object from “a pile of fighting Pokémon” into “Brock’s apparatus.” The card matters because the owner-name grammar has a human anchor.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock row 018 is the trainer anchor for the deck; do not collapse it into generic Brock cards from later English releases.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_trainer_018_human_anchor_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock row 018 is the trainer anchor for the deck; do not collapse it into generic Brock cards from later English releases.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 018.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The trainer becomes the coordinate",
+        "why_it_matters": "Brock the Trainer row is the deck’s signature. It turns the whole object from “a pile of fighting Pokémon” into “Brock’s apparatus.” The card matters because the owner-name grammar has a human anchor.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:019",
+      "type": "card",
+      "context": {
+        "name_en": "Brock's Training Method",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:019",
+        "catalog_row_id": "019"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:019",
+          "title": "Local Nivi City Gym / Brock row: Brock's Training Method 019",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 019 as Brock's Training Method.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Brock's Training Method row 019 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Brock's Training Method row 019 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Brock’s Training Method is the product explaining itself. The deck is not just owned; it teaches through Brock’s own method, making the Gym Leader a rule pathway rather than only a face on packaging.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Brock’s Training Method row 019 is a named trainer row tied to this deck lane; preserve full name and release.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_brock_training_method_019_method_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Training Method, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Brock’s Training Method row 019 is a named trainer row tied to this deck lane; preserve full name and release.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 019.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The method card says the quiet part out loud",
+        "why_it_matters": "Brock’s Training Method is the product explaining itself. The deck is not just owned; it teaches through Brock’s own method, making the Gym Leader a rule pathway rather than only a face on packaging.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:021",
+      "type": "card",
+      "context": {
+        "name_en": "Pewter City Gym",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:021",
+        "catalog_row_id": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:021",
+          "title": "Local Nivi City Gym / Brock row: Pewter City Gym 021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 021 as Pewter City Gym.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pewter City Gym row 021 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pewter City Gym row 021 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Pewter City Gym is where place becomes a card. This is why the deck feels like a small physical room: Pokémon, trainer, method, and location all fold into one play surface.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Pewter City Gym row 021 is a place/stadium row in this Japanese deck context; do not treat it as generic Gym Heroes-only memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_pewter_city_gym_021_place_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pewter City Gym, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Pewter City Gym row 021 is a place/stadium row in this Japanese deck context; do not treat it as generic Gym Heroes-only memory.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 021.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The city enters the rules",
+        "why_it_matters": "Pewter City Gym is where place becomes a card. This is why the deck feels like a small physical room: Pokémon, trainer, method, and location all fold into one play surface.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_nivi_city_gym_brock_19980426:025",
+      "type": "card",
+      "context": {
+        "name_en": "Double Colorless Energy",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_nivi_city_gym_brock_19980426",
+        "row_id": "jp_tcg_nivi_city_gym_brock_19980426:025",
+        "catalog_row_id": "025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_nivi_city_gym_brock_19980426.json#row:jp_tcg_nivi_city_gym_brock_19980426:025",
+          "title": "Local Nivi City Gym / Brock row: Double Colorless Energy 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/NCGYM",
+          "title": "PokéCardex: Nivi City Gym set page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Nivi_City_Gym_(TCG)",
+          "title": "Bulbapedia: Nivi City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Nivi City Gym / Brock row 025 as Double Colorless Energy.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Double Colorless Energy row 025 as Sans rareté, a missing-symbol deck context rather than Base No Rarity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Double Colorless Energy row 025 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Double Colorless Energy is not glamorous here, but it is apparatus. It is the resource hinge that lets the deck move, and Kinebuchi’s local credit places it in the same visual-tool layer as many trainers.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Double Colorless Energy row 025 is part of the Nivi City Gym unique-row catalog; preserve release context before comparing to Base or other DCE prints.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "nivi_double_colorless_energy_025_resource_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Double Colorless Energy, Brock deck, Nivi City Gym, missing rarity, common rare, or No Rarity.",
+          "summary": "Double Colorless Energy row 025 is part of the Nivi City Gym unique-row catalog; preserve release context before comparing to Base or other DCE prints.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_nivi_city_gym_brock_19980426 and local row id 025.",
+            "Treat 'Sans rareté' / missing-symbol as Gym deck context, not Base No Rarity evidence.",
+            "Preserve the owner-name or trainer/place/resource name exactly before comparing to English Gym Heroes or other prints.",
+            "Treat catalog/reference images as comparison aids only; ask for seller evidence before transaction use.",
+            "Do not infer seller possession, authenticity, condition, price, or sealed-product inclusion from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity source status",
+            "English Gym Heroes equivalence",
+            "sealed-deck inclusion proof"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The energy hinge in Brock’s machine",
+        "why_it_matters": "Double Colorless Energy is not glamorous here, but it is apparatus. It is the resource hinge that lets the deck move, and Kinebuchi’s local credit places it in the same visual-tool layer as many trainers.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

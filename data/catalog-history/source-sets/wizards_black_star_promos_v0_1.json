@@ -1,0 +1,1013 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Wizards Black Star Promos and five rows that expose the promo-series assembly logic.",
+    "in_scope": [
+      "Wizards Black Star Promos release dossier",
+      "Pikachu 1",
+      "Mew 8",
+      "Mew 9",
+      "_____'s Pikachu 24",
+      "Lucky Stadium 41"
+    ],
+    "not_claiming": [
+      "complete Wizards Black Star scholarship",
+      "complete distribution proof for every promo row",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_black_star_promos_19990701",
+      "type": "release",
+      "context": {
+        "name_en": "Wizards Black Star Promos",
+        "name_ja": "",
+        "release_family_id": "en_wotc_black_star_promos_19990701",
+        "release_date": "1999-07-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_black_star_promos_19990701.json",
+          "title": "Local English WoC release catalog: Wizards Black Star Promos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/basep",
+          "title": "Pokémon TCG API v2 set record: Wizards Black Star Promos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete distribution history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Wizards_Black_Star_Promos_(TCG)",
+          "title": "Bulbapedia: Wizards Black Star Promos (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokémon TCG API set record both model Wizards Black Star Promos with a July 1, 1999 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokémon TCG API both model 53 Wizards Black Star Promo rows for set id basep.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia's checklist records many different distribution routes inside the same promo family, including Pokémon League months, Pokémon movie releases, magazine/book tie-ins, the Game Boy TCG, a Create-a-Card activity, Pokémon Center New York, and home-video releases.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia lists early Black Star rows as tied to the July 1999 Pokémon League and the November 12, 1999 theatrical release of Pokémon: The First Movie.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Pikachu, multiple Mew and Mewtwo rows, Venusaur, Zapdos, _____'s Pikachu, Flying Pikachu, Surfing Pikachu, Lucky Stadium, Celebi, Ho-Oh, and Suicune.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Wizards Black Star Promos are led by Ken Sugimori, Atsuko Nishida, Toshinao Aoki, Kagemaru Himeno, Keiji Kinebuchi, and \"Big Mama\" Tagawa.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Wizards Black Star Promos matter because the promo star is not one product shape; it is a public-contact map of early English Pokémon, where League attendance, theater visits, magazines, guides, store openings, and video releases all become card provenance.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "wizards_black_star_distribution_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "every Black Star Promo has the same distribution route"
+          ],
+          "steps": [
+            "Confirm the local row number and set id basep before importing a distribution story.",
+            "Treat the Black Star Promo mark as family membership, not as a single product or event provenance.",
+            "If a card has multiple known distribution channels, keep those channels legible instead of collapsing them into 'promo'.",
+            "For personalized, event, or location-linked promos, ask for seller-side images of the relevant text, stamp, or row details before making a transaction recommendation."
+          ],
+          "summary": "The Black Star family is a distribution network. Agents should identify the specific row and route before using promo history as trust or value context.",
+          "trigger": "Explaining or comparing Wizards Black Star Promo cards."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The promo star as a map of first contact",
+        "why_it_matters": "Wizards Black Star Promos are not a normal set pretending to be a checklist. They are the trail of early English Pokémon meeting people in public: league tables, movie lines, guidebooks, mail-in activities, a New York store opening, home video, magazines. The cards feel scattered because they are scattered; that is the point. Their assembly history is the story.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_black_star_promos_19990701:basep-1",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_black_star_promos_19990701",
+        "row_id": "en_wotc_black_star_promos_19990701:basep-1",
+        "catalog_row_id": "basep-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_black_star_promos_19990701.json#row:en_wotc_black_star_promos_19990701:basep-1",
+          "title": "Local Wizards Black Star row: Pikachu 1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/basep-1",
+          "title": "Pokémon TCG API v2 card record: Pikachu basep-1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Wizards_Black_Star_Promos_(TCG)",
+          "title": "Bulbapedia checklist: Wizards Black Star Promos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Pikachu as Wizards Black Star Promo number 1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit Pikachu 1 to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's Wizards Black Star checklist ties Pikachu 1 to the Pokémon League in July 1999.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu 1 is a good opening row because it shows the promo line beginning as League contact rather than as booster collation: mascot, player program, and Black Star symbol arrive together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "black_star_pikachu_1_league_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all early Pikachu promos are row 1"
+          ],
+          "steps": [
+            "Confirm row number 1 and set id basep before applying the July 1999 League context.",
+            "Do not merge this row with Pikachu 4, Pikachu 26, Pikachu 27, Flying Pikachu, Surfing Pikachu, or _____'s Pikachu.",
+            "Use the Keiji Kinebuchi credit as catalog metadata, not physical-card proof."
+          ],
+          "summary": "Black Star Pikachu 1 is a row-specific League promo identity, not a generic early Pikachu bucket.",
+          "trigger": "A listing or user note says early Black Star Pikachu without a row number."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot as League handshake",
+        "why_it_matters": "Pikachu 1 is charming because it is so direct: here is the mascot, here is the Black Star, here is the League table. It is the kind of card that makes the promo series feel less like a side checklist and more like evidence that kids were gathering somewhere.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_black_star_promos_19990701:basep-8",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_black_star_promos_19990701",
+        "row_id": "en_wotc_black_star_promos_19990701:basep-8",
+        "catalog_row_id": "basep-8"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_black_star_promos_19990701.json#row:en_wotc_black_star_promos_19990701:basep-8",
+          "title": "Local Wizards Black Star row: Mew 8",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/basep-8",
+          "title": "Pokémon TCG API v2 card record: Mew basep-8",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mew_(Wizards_Promo_8)",
+          "title": "Bulbapedia: Mew (Wizards Promo 8)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Mew as Wizards Black Star Promo number 8.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit Mew 8 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says Mew 8 was first released as a non-holofoil Wizards Black Star Promo through the Pokémon League starting January 8, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew 8 carries the promo line's monthly-League rhythm: a mythical Pokémon made ordinary enough to hand across a table, while still retaining its species aura through Sugimori's canonical visual language.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "black_star_mew_8_nonholo_league_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Mew 8 and Mew 9 are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is Mew 8 or Mew 9 before importing holo/non-holo or month-of-League context.",
+            "For Mew 8, preserve the non-holofoil League context from Bulbapedia and row 8 from the local catalog.",
+            "Do not use the shared Ken Sugimori credit or shared Mew name to collapse row 8 and row 9."
+          ],
+          "summary": "Mew 8 needs row-level identity because the Black Star series contains multiple Mew promos with different finish/context signals.",
+          "trigger": "A buyer or seller says Black Star Mew without a row number or finish."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mythical card becomes a League rhythm",
+        "why_it_matters": "Mew 8 has the lovely contradiction of early Pokémon: Mew is supposed to feel almost unreachable, but here it is as a League promo with a date and a row number. That tension is the whole point of promos: the myth came down to the table.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_black_star_promos_19990701:basep-9",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_black_star_promos_19990701",
+        "row_id": "en_wotc_black_star_promos_19990701:basep-9",
+        "catalog_row_id": "basep-9"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_black_star_promos_19990701.json#row:en_wotc_black_star_promos_19990701:basep-9",
+          "title": "Local Wizards Black Star row: Mew 9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/basep-9",
+          "title": "Pokémon TCG API v2 card record: Mew basep-9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Wizards_Black_Star_Promos_(TCG)",
+          "title": "Bulbapedia checklist: Wizards Black Star Promos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Mew as Wizards Black Star Promo number 9.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit Mew 9 to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's Wizards Black Star checklist ties Mew 9 to the Pokémon League in April 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew 9 matters beside Mew 8 because the promo family repeats the same species as separate numbered contact events; the row number, finish, and distribution month carry the identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "black_star_mew_9_row_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Mew 8 and Mew 9 are interchangeable"
+          ],
+          "steps": [
+            "Confirm row 9 before treating the card as the April 2000 League Mew from the Black Star checklist.",
+            "Compare finish and row number against Mew 8 before any collector recommendation.",
+            "Preserve the shared Ken Sugimori credit as an artist link, not as an identity substitute."
+          ],
+          "summary": "Mew 9 is a separate Black Star row; agents should not merge it with Mew 8 just because both are Ken Sugimori Mew promos.",
+          "trigger": "A seller image, buyer want, or catalog import says Black Star Mew without row/finish clarity."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Mew is the lesson",
+        "why_it_matters": "One Mew promo would be a chase. Two Mew promos become catalog grammar. Mew 9 teaches the agent to stop trusting names alone: same species, same major artist, same promo family, but a different row and a different contact point.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_black_star_promos_19990701:basep-24",
+      "type": "card",
+      "context": {
+        "name_en": "_____'s Pikachu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_black_star_promos_19990701",
+        "row_id": "en_wotc_black_star_promos_19990701:basep-24",
+        "catalog_row_id": "basep-24"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_black_star_promos_19990701.json#row:en_wotc_black_star_promos_19990701:basep-24",
+          "title": "Local Wizards Black Star row: _____'s Pikachu 24",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/basep-24",
+          "title": "Pokémon TCG API v2 card record: _____'s Pikachu basep-24",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/%27s_Pikachu_(Wizards_Promo_24)",
+          "title": "Bulbapedia: _____'s Pikachu (Wizards Promo 24)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify _____'s Pikachu as Wizards Black Star Promo number 24.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokémon TCG API credit _____'s Pikachu 24 to Kagemaru Himeno.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records the attack Birthday Surprise and the flavor/additional text Your Birthdate for _____'s Pikachu 24.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the card first appeared in Japan as an Unnumbered Promotional card in the All Card Calendar and first became available in English through the Pikachu World Collection at Pokémon Park 2000, then in North America through a Pokémon League Create-a-Card campaign.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "_____'s Pikachu is one of the clearest examples of promo cards as social machinery: the card invites a name and birthday into the object, so the blank line is part of the card's meaning rather than a normal catalog omission.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "birthday_pikachu_owner_field_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "personal writing is always damage",
+            "personal writing is always acceptable"
+          ],
+          "steps": [
+            "Confirm the row is basep-24 and preserve the exact printed name _____'s Pikachu.",
+            "Inspect whether the owner/birthdate fields are blank, filled, erased, or altered; report that state as evidence, not as an automatic condition verdict.",
+            "Do not compare this row as a generic Pikachu without preserving the owner-field mechanic and distribution lineage.",
+            "If the buyer cares about playability, personalization, or grade impact, route that to human judgment rather than hiding it inside a scalar condition guess."
+          ],
+          "summary": "Birthday Pikachu's blank owner/birthdate fields are load-bearing. The agent must surface their state instead of treating writing as automatically good or bad.",
+          "trigger": "A seller lists _____'s Pikachu / Birthday Pikachu, especially with visible writing or erased fields."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The card that asks to be touched",
+        "why_it_matters": "Birthday Pikachu is almost mischievous as a collector object. The card asks for a person to enter the frame, then the market later has to decide what that touch means. That makes it perfect for Cairn: the right answer is not a single grade word, but a clear record of what is printed, what is written, and what the buyer cares about.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_black_star_promos_19990701:basep-41",
+      "type": "card",
+      "context": {
+        "name_en": "Lucky Stadium",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_black_star_promos_19990701",
+        "row_id": "en_wotc_black_star_promos_19990701:basep-41",
+        "catalog_row_id": "basep-41"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_black_star_promos_19990701.json#row:en_wotc_black_star_promos_19990701:basep-41",
+          "title": "Local Wizards Black Star row: Lucky Stadium 41",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/basep-41",
+          "title": "Pokémon TCG API v2 card record: Lucky Stadium basep-41",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Wizards_Black_Star_Promos_(TCG)",
+          "title": "Bulbapedia checklist: Wizards Black Star Promos",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_(Neo_Destiny_100)",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Lucky Stadium as Wizards Black Star Promo number 41.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokémon TCG API, and Bulbapedia gallery credit the New York City / Wizards Black Star Lucky Stadium print to \"Big Mama\" Tagawa.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API identifies Lucky Stadium 41 as a Trainer Stadium card whose rule lets each player flip a coin once during their turn to draw a card on heads.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Wizards Black Star checklist ties Lucky Stadium 41 to the Pokémon Center New York opening on November 16, 2001.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's Lucky Stadium gallery lists many regional or event prints and identifies the New York City print as the Wizards Black Star Promo number 41.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Lucky Stadium 41 is a place-card as much as a game card: its identity is bound to the New York City print and Pokémon Center New York opening context, so provenance language matters more than a generic Stadium name.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "lucky_stadium_new_york_print_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Lucky Stadium prints are Black Star 41",
+            "location story proves a seller's copy"
+          ],
+          "steps": [
+            "Confirm the row is Wizards Black Star Promo 41 before applying Pokémon Center New York opening context.",
+            "Do not merge the New York City print with other Lucky Stadium regional/event prints without checking artwork, number, and release context.",
+            "If a seller invokes New York provenance, ask for card-front/back images and any provenance evidence separately; the catalog only supplies the reference route.",
+            "Preserve the \"Big Mama\" Tagawa credit for this row, but do not use artist credit alone to authenticate the physical card."
+          ],
+          "summary": "Lucky Stadium is a print-context trap: the New York Black Star row is only one Lucky Stadium identity among several.",
+          "trigger": "A buyer or seller references Lucky Stadium, Pokémon Center New York, or a New York City print."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A stadium that remembers a place",
+        "why_it_matters": "Lucky Stadium 41 is why promotional cards feel alive. The card does not just say Stadium; it carries a place, an opening day, an artist credit, and a tangle of other Lucky Stadium prints nearby. A good agent should treat that as provenance texture, not background decoration.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

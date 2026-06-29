@@ -1,0 +1,652 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Neo Era Premium File 2 Charizard singleton",
+    "release_family_id": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2",
+    "notes": [
+      "Deepens the singleton Charizard row adjacent to the eight-row Premium File 2 source group.",
+      "Covers the single modeled source-pinned row: Charizard source index 184.",
+      "Preserves the boundary that this row is not silently absorbed into jp_promo_unnumbered_wotc_185_premium_file_2 even though it belongs to the broader Premium File 2 product route."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Era Premium File 2 Charizard singleton",
+        "name_ja": "プレミアムファイル2",
+        "release_family_id": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2",
+        "release_date": "2000-07-08 / 2000-08-05",
+        "modeled_count": 1,
+        "broader_product_card_count": 9
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Premium File 2 singleton row boundary",
+          "Spell of the Unown: Entei cinema route",
+          "July 8, 2000 participating-cinema availability",
+          "August 5, 2000 general release",
+          "Crossing the Ruins accompaniment context",
+          "Cosmos Reverse Holofoil treatment",
+          "Charizard / Entei / Pichu movie-tie rows",
+          "Ken Sugimori Charizard credit",
+          "Base Set Fire Spin echo without Base Set provenance"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2:184",
+            "name": "Charizard",
+            "number": "184",
+            "why": "Charizard is the loud card, but the route is the point. This is not Base Set mythology floating loose; it is Charizard reassembled through a Neo movie/file object, reverse-holo surface, and a Premium File 2 boundary that agents must not flatten.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "name_ja": "杉森建",
+            "row_count": 1,
+            "examples": [
+              "Charizard"
+            ],
+            "why": "Sugimori's credit keeps the card tied to official character grammar while the Premium File 2 route changes the object around that familiar fire.",
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete sealed-product census",
+          "official print run",
+          "equivalence with Base Set Charizard",
+          "equivalence with the eight-row local Premium File 2 source group"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_184_neo_era_premium_file_2.json",
+          "title": "Local Japanese unnumbered WotC catalog: Neo Era Premium File 2 Charizard singleton",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "exact product date authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Premium_File_2_promo)",
+          "title": "Bulbapedia: Charizard (Premium File 2 promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official print run"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise",
+          "title": "Bulbapedia: Neo TCG Era merchandise",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete sealed-product census"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "Bulbapedia says Premium File 2 was first available at participating cinemas showing Spell of the Unown: Entei from July 8, 2000, with general release following on August 5, 2000; this supersedes the local source row's inherited continuation-slice date baggage for product-route discussion.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia's Neo TCG Era merchandise page says Premium File 2 was released as an accompaniment with the second Neo era expansion Crossing the Ruins... and includes nine special cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Charizard page says this card was one of nine Unnumbered Promotional cards in Premium File 2, initially sold at participating cinemas showing Spell of the Unown: Entei from July 8, 2000 and generally released on August 5, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned Charizard row for this route: source index 184; a separate existing source-set models the adjacent eight-row Premium File 2 group at source indices 185-192.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's Neo TCG Era merchandise page says all Premium File 2 cards feature a Cosmos Reverse Holofoil treatment, and that Charizard, Entei, and Pichu have ties to Spell of the Unown: Entei / Pikachu & Pichu.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Charizard (Premium File 2 promo) illustration to Ken Sugimori / 杉森建.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Sugimori profile identifies him as the illustrator of the original artwork for the Pokemon games and the original artwork for all 151 Generation I Pokemon, making his Charizard credit part of the official visual grammar collectors recognize across routes.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists this Charizard as LV.78, Fire type, Stage 2, HP 120, No. 006, with the Pokemon Power Fire Raise and the attack Fire Spin for 100; its Fire Spin effect matches Base Set Charizard while the card route remains Premium File 2.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "release.boundary",
+          "text": "Agents should keep source row 184 separate from the adjacent local Premium File 2 eight-row group, Base Set Charizard, Japanese Expansion Pack / No Rarity Charizard, Song Best Charizard, Trade Please Charizard, English jumbo Charizard, Base Set 2, Legendary Collection, Celebrations, and modern classic reprints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c3",
+            "c4",
+            "c5",
+            "c8"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "The catalog can make the Premium File 2 Charizard route, movie/cinema context, reverse-holo surface, and source-index boundary legible, but it does not prove seller possession, authenticity, condition, price, sealed-file completeness, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c9"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Premium File 2 Charizard — the fire that refuses to be just Base Set again",
+        "why_it_matters": "This is a perfect Charizard trap. The name is loud enough to drown out the route, and the Fire Spin echo tempts a lazy agent back toward Base Set memory. But row 184 is its own assembly: a Neo-era Premium File 2 object, tied to Spell of the Unown cinema distribution, wrapped in Cosmos reverse holofoil, and standing just beside an eight-row Premium File 2 group without becoming the same catalog family. The awe is real; the shortcut is not.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "sealed-file completeness",
+          "official print run",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "neo_era_premium_file_2_charizard_singleton_route_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat source row 184 as the Premium File 2 Charizard singleton with cinema/movie route and reverse-holo surface, not as Base Set Charizard or the adjacent eight-row Premium File 2 group.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Charizard, リザードン, Lizardon, Premium File 2, Neo Premium File 2, Spell of the Unown, Entei movie, Cosmos reverse holo, Fire Raise, Fire Spin, No. 006, or source index 184.",
+          "steps": [
+            "Anchor the route to Premium File 2 / プレミアムファイル2, with first cinema availability from July 8, 2000 and general release on August 5, 2000.",
+            "Confirm the candidate is Charizard / リザードン / Lizardon, LV.78, Fire type, Stage 2, HP 120, No. 006, not another Charizard surface.",
+            "Preserve source index 184 as a singleton local catalog route; do not absorb it into the adjacent eight-row Premium File 2 source group at rows 185-192.",
+            "Look for Cosmos Reverse Holofoil / Premium File 2 surface context when seller photos allow; do not infer the surface from name alone.",
+            "Use Ken Sugimori / 杉森建 as the expected artist credit.",
+            "Treat Fire Raise and Fire Spin as useful row details; do not let Fire Spin collapse this into Base Set Charizard or No Rarity Charizard.",
+            "Separate this row from Song Best Charizard, Trade Please Charizard, English jumbo Charizard, Base Set 2, Legendary Collection, Celebrations, metal cards, and modern classic reprints.",
+            "If a seller offers a complete Premium File 2, ask whether Charizard is present, attached, removed, substituted, or separately photographed; file possession is not card possession.",
+            "Before any funded trade, require seller-controlled photos of the actual card or exact sealed/file state being claimed."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_184_neo_era_premium_file_2.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Premium_File_2_promo)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "sealed-file completeness",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2:184",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "romaji": "Lizardon",
+        "row_id": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2:184",
+        "release_family_id": "jp_promo_unnumbered_wotc_184_neo_era_premium_file_2",
+        "source_index": "184"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "why_it_matters": "Charizard usually arrives with thunder. Here the interesting part is restraint: the agent has to honor the Charizard gravity while keeping it pinned to Premium File 2, movie distribution, reverse-holo surface, and row 184. Same monster. Different apparatus.",
+        "identity": {
+          "name_en": "Charizard",
+          "name_ja": "リザードン",
+          "romaji": "Lizardon",
+          "number": "source index 184 / No. 006 on card",
+          "category": "Fire Stage 2 Pokemon",
+          "rarity_signal": "Unnumbered Promotional / Cosmos Reverse Holofoil",
+          "authority_label": "fact"
+        },
+        "artist": {
+          "name": "Ken Sugimori",
+          "name_ja": "杉森建",
+          "why": "Sugimori gives the card official-character continuity; Premium File 2 gives it a new route and surface. Both have to remain visible.",
+          "authority_label": "fact",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ]
+        },
+        "collector_texture": [
+          "Premium File 2 / プレミアムファイル2 singleton route",
+          "Spell of the Unown: Entei cinema availability from July 8, 2000",
+          "general release on August 5, 2000",
+          "Cosmos Reverse Holofoil surface context",
+          "Charizard / リザードン / Lizardon source index 184",
+          "Fire Raise Pokemon Power and Fire Spin attack",
+          "Ken Sugimori / 杉森建 official-character gravity",
+          "Base Set echo without Base Set provenance"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_184_neo_era_premium_file_2.json",
+          "title": "Local Japanese unnumbered WotC catalog: Neo Era Premium File 2 Charizard row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Premium_File_2_promo)",
+          "title": "Bulbapedia: Charizard (Premium File 2 promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise",
+          "title": "Bulbapedia: Neo TCG Era merchandise",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete sealed-product census"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia identify source index 184 as Charizard / リザードン / Lizardon in the Premium File 2 unnumbered promotional route.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says this Charizard was one of nine Unnumbered Promotional cards available in Premium File 2, first at participating cinemas showing Spell of the Unown: Entei from July 8, 2000 and then through general release on August 5, 2000.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Premium File 2 Charizard illustration to Ken Sugimori / 杉森建.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Premium File 2 cards feature a Cosmos Reverse Holofoil treatment; for this Charizard, that surface is part of the route identity when seller photos support it.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists the card as LV.78, HP 120, Fire type, Stage 2, No. 006, with Fire Raise and Fire Spin; Fire Spin matches the Base Set Charizard effect, but route identity remains Premium File 2.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Ken Sugimori page identifies him as the illustrator of the original artwork for the Pokemon games and the original artwork for all 151 Generation I Pokemon, preserving why Sugimori Charizard art carries franchise-wide recognition.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This row matters because Charizard's familiar visual authority is reassembled through a Neo-era movie/file route and reverse-holo surface, so the catalog must keep awe and provenance separate.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "release.boundary",
+          "text": "Agents should not match by Charizard name, Fire Spin, Ken Sugimori, or reverse-holo surface alone; this row requires Premium File 2 / source index 184 context and should be separated from other Charizard route memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The catalog can identify why a Charizard candidate belongs near this Premium File 2 row, but it cannot authenticate the card, prove possession, assign condition, price the copy, prove file/card completeness, or promote the row into spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c8"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Charizard — row 184, movie file fire",
+        "why_it_matters": "The joy of this card is that it looks easy and is not. Charizard, Sugimori, Fire Spin: the brain races to Base Set. But the right collector read is more specific and more interesting. This is a Premium File 2 object, tied to a Neo movie moment, with a reverse-holo treatment and a source-index boundary that keeps it from becoming just another famous dragon in a price search.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "file/card completeness",
+          "official print run",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "neo_era_premium_file_2_charizard_184_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Premium File 2 Charizard only when Charizard identity, source index 184, movie/file route, and reverse-holo Premium File 2 context line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Charizard, リザードン, Lizardon, Premium File 2, Neo Premium File 2, Spell of the Unown, Entei, Cosmos reverse holo, Fire Raise, Fire Spin, No. 006, or source index 184.",
+          "steps": [
+            "Confirm the card is Charizard / リザードン / Lizardon, LV.78, HP 120, Fire type, Stage 2, No. 006.",
+            "Confirm route identity as Premium File 2 / プレミアムファイル2, not generic unnumbered promo Charizard.",
+            "Confirm source index 184 in this local unnumbered-promo catalog route; do not substitute rows 185-192 from the adjacent eight-row Premium File 2 group.",
+            "Look for Cosmos Reverse Holofoil / Premium File 2 surface context when seller images support it.",
+            "Use Ken Sugimori / 杉森建 as the expected artist credit.",
+            "Use Fire Raise and Fire Spin as row details, not as Base Set or No Rarity proof.",
+            "Separate this print from Japanese Expansion Pack / No Rarity Charizard, English Base Set, Song Best, Trade Please, English jumbo CoroCoro, Base Set 2, Legendary Collection, Celebrations, metal cards, and modern classic reprints.",
+            "If the seller offers a complete file, ask whether Charizard is present and visible, because file route and card presence are separate claims.",
+            "Keep price, condition, authenticity, file completeness, and spendability outside the catalog row until separate seller-controlled evidence supports them."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_184_neo_era_premium_file_2.json#row:jp_promo_unnumbered_wotc_184_neo_era_premium_file_2:184"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Premium_File_2_promo)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "file/card completeness",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

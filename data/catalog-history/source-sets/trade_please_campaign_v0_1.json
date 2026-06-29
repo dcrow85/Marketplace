@@ -1,0 +1,1315 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete four-row deepening tranche for the 1998 Trade Please Campaign source slice, emphasizing mail-in exchange mechanics, A/B/C course structure, Suzukisan CD/flyer route, big-three starter prize rows, Imakuni? performance authorship, holographic-back Trade Please! identity, and route traps against CD Promo, Base, Song Best Collection, and later Trade Please revivals.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Venusaur row 033",
+      "Charizard row 034",
+      "Blastoise row 035",
+      "Trade Please! row 036",
+      "mail-in campaign mechanics",
+      "A/B/C course identity rails"
+    ],
+    "not_claiming": [
+      "complete campaign flyer catalog",
+      "complete return-envelope variant catalog",
+      "complete fulfillment ledger",
+      "official copy count",
+      "proof one participant received all four cards in one mailing",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_trade_please_199802",
+      "context": {
+        "release_family_id": "jp_promo_trade_please_199802",
+        "name_en": "Trade Please Campaign source slice",
+        "name_ja": "とりかえっこプリーズキャンペーン プロモ",
+        "release_date": "1998-02-10/1998-07-31",
+        "expected_row_count": 4,
+        "source_indices": [
+          "033",
+          "034",
+          "035",
+          "036"
+        ],
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "mail-in exchange campaign",
+          "CD/flyer media route",
+          "big-three starter choice",
+          "Imakuni? performance culture",
+          "holographic-back identity trap",
+          "market behavior made collectible"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_trade_please_199802:034",
+            "name": "Charizard",
+            "why": "A Course prize row: Charizard plus Trade Please!, the obvious high-gravity route in the campaign.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_trade_please_199802:035",
+            "name": "Blastoise",
+            "why": "B Course prize row: Blastoise plus Trade Please!, a Kanto starter route that turns mail-in choice into card provenance.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_trade_please_199802:033",
+            "name": "Venusaur",
+            "why": "C Course prize row: Venusaur plus Trade Please!, completing the campaign's big-three starter decision tree.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_trade_please_199802:036",
+            "name": "Trade Please!",
+            "why": "The campaign's thesis card: a card about trading, received in every course, with Imakuni?'s strange human energy and a special-back identity trap.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 3,
+            "examples": [
+              "Venusaur",
+              "Charizard",
+              "Blastoise"
+            ],
+            "why": "Sugimori's starter-monster grammar gives the campaign its recognizable prize language: big Kanto icons carrying the offer while the mail-in mechanic supplies the provenance.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority beyond cited source rows"
+            ]
+          },
+          {
+            "name": "Imakuni?",
+            "row_count": 1,
+            "examples": [
+              "Trade Please!"
+            ],
+            "why": "Imakuni? turns the campaign from a redemption program into performance culture: the human weirdness is not extra; it is part of why this card feels alive.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority beyond cited source rows"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete campaign flyer catalog",
+          "complete return-envelope variant catalog",
+          "complete fulfillment ledger",
+          "official copy count",
+          "proof one participant received all four cards in one mailing",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected-lines snapshot record the Trade Please campaign window as February 10 through July 31, 1998.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Trade Please! page says participants mailed a flyer included with the Suzukisan Trade Please CD, any two Pokemon trading cards, and a return envelope to MediaFactory, then selected one course.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.chase_structure",
+          "text": "The selected-lines snapshot records A Course as Charizard plus Trade Please!, B Course as Blastoise plus Trade Please!, and C Course as Venusaur plus Trade Please!. The release models four source-pinned card identities, not a claim that one participant received all four in one mailing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local rows credit Venusaur, Charizard, and Blastoise to Ken Sugimori and Trade Please! to Imakuni? as source/provider metadata; those credits orient catalog memory but do not authenticate a physical card.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Trade Please matters because the market behavior becomes the object: the participant literally traded cards through the mail, and the campaign returned a card about trading plus one chosen Kanto starter prize.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents must preserve the mail-in campaign route, course pairing, source row 033-036 identities, CD/flyer route, starter prize row, Trade Please! special-back identity, and the difference from CD Promo, Base, Song Best Collection, and later 20th Anniversary Trade Please revivals.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "Trade Please Campaign — the market becomes a card",
+        "why_it_matters": "This is one of the cleanest origin objects for the whole protocol idea. The campaign asked a person to choose a course, mail in cards, and receive back a new pair. Charizard, Blastoise, or Venusaur supplied the desire; Trade Please! supplied the joke and the ritual. The card market was not just around the object. It was printed into the object.",
+        "not_claiming": [
+          "complete campaign flyer catalog",
+          "complete fulfillment ledger",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Trade Please Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_trade_please_199802.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Bulbapedia + Pokumon Trade Please campaign 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign source",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "card_context_reference",
+          "title": "Bulbapedia: Trade Please! (Trade Please promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Venusaur (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Charizard (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Blastoise (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Trade Please! (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trade_please_campaign_course_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Trade Please, Torikaekko Please, Suzukisan CD, mail-in campaign, MediaFactory return envelope, Charizard course, Blastoise course, Venusaur course, Imakuni?, holographic back, or rows 033-036.",
+          "summary": "Preserve the 1998 mail-in campaign route, selected course pair, and source row identity before treating a card as a Trade Please campaign object.",
+          "steps": [
+            "Confirm campaign route: Trade Please campaign, February 10-July 31, 1998.",
+            "Preserve source row identity: Venusaur 033, Charizard 034, Blastoise 035, Trade Please! 036.",
+            "Preserve course pairing: A Course Charizard plus Trade Please!, B Course Blastoise plus Trade Please!, C Course Venusaur plus Trade Please!.",
+            "Do not claim one participant received all four cards from one mailing unless separate evidence proves that exact object history.",
+            "Preserve mail-in mechanics as historical route information: flyer from the Suzukisan CD, two Pokemon cards mailed in, return envelope, MediaFactory fulfillment.",
+            "Do not collapse the starter rows into CD Promo, Base, No Rarity, Song Best Collection, or other Venusaur/Charizard/Blastoise memories without explicit route evidence.",
+            "Do not collapse Trade Please! into later 20th Anniversary Trade Please revivals, Imakuni?, Dance! Neo Imakuni?, or generic Trainer promo rows.",
+            "Use seller photos for front/back, special back/foil where relevant, campaign insert/flyer/CD provenance if claimed, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete campaign flyer catalog",
+            "complete return-envelope variant catalog",
+            "complete fulfillment ledger",
+            "official copy count",
+            "proof one participant received all four cards in one mailing",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_trade_please_199802:033",
+      "context": {
+        "release_family_id": "jp_promo_trade_please_199802",
+        "release_name": "Trade Please Campaign source slice",
+        "row_id": "jp_promo_trade_please_199802:033",
+        "catalog_row_id": "033",
+        "name_en": "Venusaur",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "033",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Trade Please campaign / C Course prize",
+        "signals": [
+          "Trade Please Campaign source slice",
+          "033",
+          "Venusaur",
+          "Ken Sugimori",
+          "C Course",
+          "Trade Please campaign",
+          "mail-in exchange"
+        ],
+        "assembly_themes": [
+          "Kanto starter gravity",
+          "mail-in choice route",
+          "C Course pairing",
+          "Sugimori prize language",
+          "identity trap"
+        ],
+        "assembly_note": "Venusaur row 033 is the C Course starter prize paired with Trade Please!, not a generic Venusaur promo and not proof of full campaign provenance without seller evidence.",
+        "collector_texture_note": "Venusaur is the calm course: the big Grass choice that makes the campaign feel less like a random redemption and more like a real fork in collector desire. The beauty is that you did not simply get a Venusaur; you chose a route.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Venusaur as Trade Please Campaign source slice row 033.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected-lines snapshot records Venusaur as the C Course starter prize paired with Trade Please! in the 1998 Trade Please mail-in campaign.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row credits Venusaur to Ken Sugimori as source/provider metadata, not physical-card authentication.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Venusaur matters in this campaign because it makes course choice visible: the participant selected the Grass starter path and received Venusaur plus the Trade Please! card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Venusaur row 033, C Course route, Trade Please campaign source slice, Ken Sugimori credit, and distinguish it from Base, No Rarity, CD Promo, Song Best Collection, and other Venusaur rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Venusaur — the C Course choice",
+        "why_it_matters": "Venusaur is the calm course: the big Grass choice that makes the campaign feel less like a random redemption and more like a real fork in collector desire. The beauty is that you did not simply get a Venusaur; you chose a route.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Trade Please Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_trade_please_199802.json#row:jp_promo_trade_please_199802:033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Bulbapedia + Pokumon Trade Please campaign 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign source",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "card_context_reference",
+          "title": "Bulbapedia: Trade Please! (Trade Please promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Venusaur (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/venusaur-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trade_please_033_venusaur_c_course_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Venusaur, Trade Please, C Course, mail-in campaign, CD promo, Song Best Collection, Base Set, No Rarity, or row 033.",
+          "summary": "Keep Venusaur pinned to Trade Please row 033 and the C Course campaign route.",
+          "steps": [
+            "Require row 033 and subject Venusaur.",
+            "Preserve Trade Please Campaign source slice and C Course route: Venusaur plus Trade Please!.",
+            "Do not claim the seller's copy came from an original mail-in fulfillment without separate provenance evidence.",
+            "Preserve Ken Sugimori credit as local/source metadata, not physical-card authentication.",
+            "Do not collapse into Base, No Rarity, CD Promo, Song Best Collection, or generic Venusaur promo rows without explicit route evidence.",
+            "Use seller photos for front/back, campaign-specific print markers where visible, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete campaign flyer catalog",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_trade_please_199802:034",
+      "context": {
+        "release_family_id": "jp_promo_trade_please_199802",
+        "release_name": "Trade Please Campaign source slice",
+        "row_id": "jp_promo_trade_please_199802:034",
+        "catalog_row_id": "034",
+        "name_en": "Charizard",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "034",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Trade Please campaign / A Course prize",
+        "signals": [
+          "Trade Please Campaign source slice",
+          "034",
+          "Charizard",
+          "Ken Sugimori",
+          "A Course",
+          "Trade Please campaign",
+          "mail-in exchange"
+        ],
+        "assembly_themes": [
+          "Charizard gravity",
+          "mail-in choice route",
+          "A Course pairing",
+          "Sugimori prize language",
+          "identity trap"
+        ],
+        "assembly_note": "Charizard row 034 is the A Course starter prize paired with Trade Please!, carrying the campaign's loudest desire signal.",
+        "collector_texture_note": "Charizard is the obvious magnet, but that is also the danger. The campaign identity is not just 'old Japanese Charizard.' It is A Course, mail-in exchange, Trade Please! pairing, and a specific source route.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Charizard as Trade Please Campaign source slice row 034.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected-lines snapshot records Charizard as the A Course starter prize paired with Trade Please! in the 1998 Trade Please mail-in campaign.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row credits Charizard to Ken Sugimori as source/provider metadata, not physical-card authentication.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Charizard matters here because the campaign uses the biggest desire object as a chosen route, not a random chase pull: A Course means Charizard plus Trade Please!.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Charizard row 034, A Course route, Trade Please campaign source slice, Ken Sugimori credit, and distinguish it from Base, No Rarity, CD Promo, Song Best Collection, and other Charizard rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Charizard — the A Course magnet",
+        "why_it_matters": "Charizard is the obvious magnet, but that is also the danger. The campaign identity is not just 'old Japanese Charizard.' It is A Course, mail-in exchange, Trade Please! pairing, and a specific source route.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Trade Please Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_trade_please_199802.json#row:jp_promo_trade_please_199802:034",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Bulbapedia + Pokumon Trade Please campaign 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign source",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "card_context_reference",
+          "title": "Bulbapedia: Trade Please! (Trade Please promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Charizard (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/charizard-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trade_please_034_charizard_a_course_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Charizard, Trade Please, A Course, mail-in campaign, CD promo, Song Best Collection, Base Set, No Rarity, or row 034.",
+          "summary": "Keep Charizard pinned to Trade Please row 034 and the A Course campaign route.",
+          "steps": [
+            "Require row 034 and subject Charizard.",
+            "Preserve Trade Please Campaign source slice and A Course route: Charizard plus Trade Please!.",
+            "Do not claim the seller's copy came from an original mail-in fulfillment without separate provenance evidence.",
+            "Preserve Ken Sugimori credit as local/source metadata, not physical-card authentication.",
+            "Do not collapse into Base, No Rarity, CD Promo, Song Best Collection, or generic Charizard promo rows without explicit route evidence.",
+            "Use seller photos for front/back, campaign-specific print markers where visible, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete campaign flyer catalog",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_trade_please_199802:035",
+      "context": {
+        "release_family_id": "jp_promo_trade_please_199802",
+        "release_name": "Trade Please Campaign source slice",
+        "row_id": "jp_promo_trade_please_199802:035",
+        "catalog_row_id": "035",
+        "name_en": "Blastoise",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "035",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Trade Please campaign / B Course prize",
+        "signals": [
+          "Trade Please Campaign source slice",
+          "035",
+          "Blastoise",
+          "Ken Sugimori",
+          "B Course",
+          "Trade Please campaign",
+          "mail-in exchange"
+        ],
+        "assembly_themes": [
+          "Kanto starter gravity",
+          "mail-in choice route",
+          "B Course pairing",
+          "Sugimori prize language",
+          "identity trap"
+        ],
+        "assembly_note": "Blastoise row 035 is the B Course starter prize paired with Trade Please!, the water-weight counterpart to Charizard and Venusaur.",
+        "collector_texture_note": "Blastoise makes the campaign feel balanced. Charizard gets the oxygen, but B Course says a collector could choose the heavy Water icon instead and still receive the same Trade Please! ritual card.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Blastoise as Trade Please Campaign source slice row 035.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected-lines snapshot records Blastoise as the B Course starter prize paired with Trade Please! in the 1998 Trade Please mail-in campaign.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row credits Blastoise to Ken Sugimori as source/provider metadata, not physical-card authentication.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blastoise matters here because B Course shows the campaign as a real choice structure rather than a one-card giveaway: Blastoise plus Trade Please! is its own route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Blastoise row 035, B Course route, Trade Please campaign source slice, Ken Sugimori credit, and distinguish it from Base, No Rarity, CD Promo, Song Best Collection, and other Blastoise rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Blastoise — the B Course weight",
+        "why_it_matters": "Blastoise makes the campaign feel balanced. Charizard gets the oxygen, but B Course says a collector could choose the heavy Water icon instead and still receive the same Trade Please! ritual card.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Trade Please Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_trade_please_199802.json#row:jp_promo_trade_please_199802:035",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Bulbapedia + Pokumon Trade Please campaign 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign source",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "card_context_reference",
+          "title": "Bulbapedia: Trade Please! (Trade Please promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Blastoise (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/blastoise-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trade_please_035_blastoise_b_course_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Blastoise, Trade Please, B Course, mail-in campaign, CD promo, Song Best Collection, Base Set, No Rarity, or row 035.",
+          "summary": "Keep Blastoise pinned to Trade Please row 035 and the B Course campaign route.",
+          "steps": [
+            "Require row 035 and subject Blastoise.",
+            "Preserve Trade Please Campaign source slice and B Course route: Blastoise plus Trade Please!.",
+            "Do not claim the seller's copy came from an original mail-in fulfillment without separate provenance evidence.",
+            "Preserve Ken Sugimori credit as local/source metadata, not physical-card authentication.",
+            "Do not collapse into Base, No Rarity, CD Promo, Song Best Collection, or generic Blastoise promo rows without explicit route evidence.",
+            "Use seller photos for front/back, campaign-specific print markers where visible, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete campaign flyer catalog",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_trade_please_199802:036",
+      "context": {
+        "release_family_id": "jp_promo_trade_please_199802",
+        "release_name": "Trade Please Campaign source slice",
+        "row_id": "jp_promo_trade_please_199802:036",
+        "catalog_row_id": "036",
+        "name_en": "Trade Please!",
+        "name_ja": "とりかえっこプリーズ！",
+        "romaji": "Torikaekko Please!"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "036",
+        "artist": "Imakuni?",
+        "rarity_signal": "Trade Please campaign / course companion",
+        "signals": [
+          "Trade Please Campaign source slice",
+          "036",
+          "Trade Please!",
+          "Torikaekko Please!",
+          "Imakuni?",
+          "mail-in exchange",
+          "special back"
+        ],
+        "assembly_themes": [
+          "market behavior as object",
+          "Imakuni? performance culture",
+          "course companion card",
+          "special-back identity trap",
+          "campaign route"
+        ],
+        "assembly_note": "Trade Please! row 036 is the companion card for every course, and the one that turns the campaign mechanic into card text and card art.",
+        "collector_texture_note": "Trade Please! is the thesis card. It is loud, strange, and almost self-aware: a card received through trading, about trading, illustrated through Imakuni?'s performance-world energy. For this marketplace project, it is practically a fossil of intent.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Trade Please! as Trade Please Campaign source slice row 036 and credits Imakuni? as illustrator/source metadata.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected-lines snapshot records Trade Please! as the companion card in A, B, and C Courses of the 1998 Trade Please mail-in campaign.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row credits Trade Please! to Imakuni? as source/provider metadata, and the earlier hand-authored unnumbered promo dossier also preserves Imakuni? as the local illustrator credit.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Trade Please! matters because it makes exchange itself collectible: a card about trade that arrived through a mail-in trade ritual.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s7"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Trade Please! row 036, Torikaekko Please name, Imakuni? credit, campaign companion-card role, special-back identity, and distinction from later Trade Please revivals or generic Imakuni trainer cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s7"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Trade Please! — the market printed onto itself",
+        "why_it_matters": "Trade Please! is the thesis card. It is loud, strange, and almost self-aware: a card received through trading, about trading, illustrated through Imakuni?'s performance-world energy. For this marketplace project, it is practically a fossil of intent.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Trade Please Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_trade_please_199802.json#row:jp_promo_trade_please_199802:036",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Bulbapedia + Pokumon Trade Please campaign 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_trade_please_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete campaign source",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "card_context_reference",
+          "title": "Bulbapedia: Trade Please! (Trade Please promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Trade_Please!_(Trade_Please_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "complete campaign archive",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Trade Please! (Trade Please campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/trade-please-trade-please-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trade_please_036_companion_special_back_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Trade Please!, Torikaekko Please, Imakuni?, Suzukisan CD, mail-in campaign, special back, holo back, 20th Anniversary Trade Please, Imakuni?, Dance!, Neo Imakuni?, or row 036.",
+          "summary": "Keep Trade Please! pinned to row 036, the 1998 mail-in campaign, and its companion-card role.",
+          "steps": [
+            "Require row 036 and title Trade Please! / とりかえっこプリーズ！ / Torikaekko Please!.",
+            "Preserve 1998 Trade Please Campaign source slice and companion-card role in A/B/C Courses.",
+            "Preserve Imakuni? credit as local/source metadata, not physical-card authentication.",
+            "Check seller photos for front/back and any special-back or foil-back identity claims.",
+            "Do not collapse into 20th Anniversary Trade Please revivals, Imakuni?, Dance! Neo Imakuni?, or generic Trainer promo rows without explicit route evidence.",
+            "If a listing claims original CD/flyer/envelope provenance, request separate photos and chain-of-custody evidence rather than relying on the catalog row.",
+            "Use seller photos for surface, edges, back, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete campaign flyer catalog",
+            "complete fulfillment ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    }
+  ]
+}

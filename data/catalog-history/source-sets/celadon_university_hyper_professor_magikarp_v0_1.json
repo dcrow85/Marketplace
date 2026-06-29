@@ -1,0 +1,583 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the Celadon University Hyper Professor Test Magikarp prize, emphasizing Shogakukan's exam apparatus, Tamamushi/Celadon University identity, Hyper Professor certification, prototype/final-card traps, Pokemon Web reprint boundaries, and the Magikarp joke becoming intellectual credential.",
+    "in_scope": [
+      "Celadon University Hyper Professor Test certification prize release/source-slice dossier",
+      "Magikarp unnumbered promotional row 080",
+      "Shogakukan/Pokemon Card Official Book test route",
+      "Tamamushi University / Celadon University naming boundary",
+      "Hyper Professor award identity",
+      "prototype/final/reprint special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Shogakukan test archive",
+      "complete applicant or winner ledger",
+      "official copy count beyond source-stated award language",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize",
+        "name_en": "Celadon University Hyper Professor Test certification prize",
+        "name_ja": "タマムシ大学ハイパー博士試験認定賞",
+        "release_date": "1998-11-13",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "exam as distribution route",
+          "Shogakukan magazine/book infrastructure",
+          "collector skill turned into certification",
+          "Magikarp as joke-object and credential",
+          "prototype/final/reprint boundary",
+          "scarcity routed through participation rather than packs"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize:080",
+            "name": "Magikarp",
+            "why": "The entire source slice is one strange card: a Magikarp awarded through an exam ladder, so the collector gravity comes from the route, not from printed power or ordinary rarity.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count beyond cited award language"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "unknown in current local source row",
+            "row_count": 1,
+            "examples": [
+              "Magikarp"
+            ],
+            "why": "The current local source row does not provide an illustrator, so this tranche deliberately treats art credit as unresolved rather than importing a guess from a later or related Magikarp print.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "final-card illustrator truth",
+              "seller-card proof"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Shogakukan test archive",
+          "complete applicant or winner ledger",
+          "complete artist biography",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Celadon University Hyper Professor Test certification prize as a one-row unnumbered promotional source group containing Magikarp at source index 080.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records November 13, 1998 as the date attached to this source group, with mixed-source-note precision rather than a full campaign-object chronology.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the route as the Celadon University Hyper Professor Test certification prize, not a booster, starter, ordinary Fan Club point prize, or standard set release.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia describes Celadon University as an event sponsored by Shogakukan in which readers used the Pocket Monsters Card Game Official Book to take ranked tests: Entrance, Professor, Super Professor, and Hyper Professor.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Celadon University page says applicants who successfully completed the Hyper Professor Test could mail in the certificate included with their notification by March 31, 1998 to receive a Magikarp card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.distribution",
+          "text": "Bulbapedia reports that 1,000 copies of the University Magikarp card were awarded through the Hyper Professor route.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that prototype University Magikarp cards illustrated by Kagemaru Himeno appeared in Shogakukan test publications, while the awarded card has distinct final artwork and later received a Pokémon Web reprint in 2001.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.credit",
+          "text": "The current local source row does not provide a final-card illustrator for the University Magikarp row; this dossier therefore keeps final-card artist credit unresolved instead of promoting a prototype or reprint-adjacent credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "The Hyper Professor Magikarp matters because it turns Pokémon knowledge into a collectible credential: Shogakukan made fans study, pass, certify, and only then receive the joke fish as a serious prize.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Celadon/Tamamushi University, Hyper Professor certification route, Magikarp identity, unnumbered promo row 080, prototype/final-card distinction, and Pokémon Web reprint non-equivalence before accepting a match.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Celadon University Magikarp: the joke fish as a diploma",
+        "why_it_matters": "This is one of those early Pokémon objects where the route is the magic. Magikarp is supposed to be the punchline: weak, flailing, waiting to become something else. Shogakukan turns that joke into a credential. You read, tested, climbed from entrance level toward Hyper Professor, and the prize at the end was not Charizard or Mewtwo but Magikarp, as if Pokémon itself were smiling at the people who understood the game deeply enough to earn the joke. For agents, the important thing is not to flatten that into 'rare Magikarp.' The university route, certificate mechanics, prototype images, final prize identity, and later Web reprint all need to stay visible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "complete Shogakukan test archive",
+          "complete applicant or winner ledger",
+          "official copy count beyond cited award language",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize.json",
+          "title": "Local Japanese unnumbered promo catalog: Celadon University Hyper Professor Test certification prize",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 080",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Celadon_University",
+          "title": "Bulbapedia: Celadon University",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete applicant ledger"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magikarp_(University_promo)",
+          "title": "Bulbapedia: Magikarp (University promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "celadon_university_hyper_professor_magikarp_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says University Magikarp, Celadon University, Tamamushi University, Hyper Professor, exam prize, Kagemaru Himeno prototype, Pokemon Web Magikarp, rare Magikarp, or unnumbered promo row 080.",
+          "summary": "Identify this card by the Hyper Professor certification route and final University Magikarp identity, not by Magikarp name or image similarity alone.",
+          "steps": [
+            "Preserve the source route first: Celadon/Tamamushi University Hyper Professor Test certification prize, not booster, deck, Fan Club point prize, or ordinary magazine insert.",
+            "Require the Magikarp row to stay attached to unnumbered promotional source index 080 and the University/Celadon/Tamamushi naming context.",
+            "Separate final prize-card evidence from prototype University Magikarp images shown in Shogakukan test publications.",
+            "Do not collapse this row into the 2001 Pokemon Web Magikarp reprint or any ordinary Base/Expansion Pack/No Rarity Magikarp row.",
+            "Treat the source-stated award language as route evidence, not as proof that a seller's physical card is authentic, possessed, unaltered, or one of the awarded copies.",
+            "If a seller provides a scan, ask for clear front/back, source-route tells, and any provenance paperwork separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Shogakukan test archive",
+            "complete applicant or winner ledger",
+            "prototype/final equivalence",
+            "Pokemon Web equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize:080",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize:080",
+        "name_en": "Magikarp",
+        "name_ja": "コイキング",
+        "romaji": "Koiking",
+        "release_family_id": "jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize",
+        "catalog_row_id": "080"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "C",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "080",
+        "rarity_signal": "unnumbered promotional Hyper Professor certification prize",
+        "artist": "",
+        "assembly_themes": [
+          "Magikarp as comic reversal",
+          "exam-earned promo",
+          "intellectual fan credential",
+          "prototype/final/reprint trap",
+          "identity route over species name"
+        ],
+        "collector_texture_note": "University Magikarp is funny because it is serious. The card takes the old Koiking gag and places it at the end of a knowledge ladder, so the person holding it is not just holding a fish; they are holding proof that a fan culture had exams, certificates, deadlines, and prizes.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "official copy count beyond cited award language"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Magikarp, source index 080, within the Celadon University Hyper Professor Test certification prize source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese species name for Magikarp is コイキング, commonly romanized as Koiking; this is useful for Japanese listing and scan matching but is not enough to identify the University promo route.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia describes the University Magikarp as a prize for successful Hyper Professor applicants who returned the included certificate by the stated deadline.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.rarity",
+          "text": "The useful rarity signal for this row is not a printed set rarity but an unnumbered promotional prize route tied to the Hyper Professor test.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The current local source row provides no final-card illustrator credit for this University Magikarp; keep the field unresolved rather than borrowing prototype or later-print credit.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Prototype University Magikarp images in Shogakukan test publications and the later Pokémon Web Magikarp reprint are comparison surfaces, not automatic matches to this prize row.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "University Magikarp matters because it makes the least impressive original Pokémon into the reward for being impressive at Pokémon knowledge.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "For University Magikarp, agents should preserve Japanese name, unnumbered row 080, Hyper Professor certificate route, final-prize identity, prototype distinction, and Pokemon Web non-equivalence before advancing a match.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "University Magikarp: Koiking with a certificate",
+        "why_it_matters": "Magikarp is the perfect prize because it refuses to behave like a prize. It is weak, ridiculous, beloved, and future-loaded. In the University route, that joke gets mounted inside a serious machine: Shogakukan, an official book, tests, certificates, deadlines, and a fan proving they knew enough to earn the least glamorous fish in Kanto. That is why this row needs special care. A name match will find many Magikarp. Only the route tells you why this one matters.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete Shogakukan test archive",
+          "complete applicant or winner ledger",
+          "official copy count beyond cited award language",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize.json#row:jp_promo_unnumbered_wotc_080_celadon_university_hyper_professor_test_certification_prize:080",
+          "title": "Local Japanese unnumbered promo catalog row: University Magikarp 080",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 080",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Celadon_University",
+          "title": "Bulbapedia: Celadon University",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete applicant ledger"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Magikarp_(University_promo)",
+          "title": "Bulbapedia: Magikarp (University promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "university_magikarp_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says University Magikarp, Celadon University, Tamamushi University, Koiking, Hyper Professor, 1,000 copies, prototype, Kagemaru Himeno, Pokemon Web, or rare Magikarp.",
+          "summary": "Match the University Magikarp by route and final-prize identity before using species name or image similarity.",
+          "steps": [
+            "Start with route: Celadon/Tamamushi University Hyper Professor Test certification prize.",
+            "Preserve row identity as Japanese unnumbered promotional source index 080.",
+            "Use コイキング / Koiking as Japanese-language search help, not as a sufficient match.",
+            "Separate prototype/publication images from the final prize card unless the source explicitly says the offered card is the final prize version.",
+            "Separate the later Pokemon Web reprint from this unnumbered promotional prize route.",
+            "Request seller evidence for front, back, gloss/card stock, provenance paperwork, and any certificate/story separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete applicant or winner ledger",
+            "prototype/final equivalence",
+            "Pokemon Web equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

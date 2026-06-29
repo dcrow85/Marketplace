@@ -1,0 +1,561 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the Pokemon Card Trainers Vol. 1 Pikachu insert, emphasizing the specialist-magazine route, glossy Japanese print, camera-symbol / Pokemon Snap texture, Gakuji Nomoto artist credit, and traps against Wizards Promo 26, Snap Pikachu, Base/No Rarity Pikachu, ANA, CoroCoro, and later Pikachu memories.",
+    "in_scope": [
+      "Pokemon Card Trainers Vol. 1 insert release/source-slice dossier",
+      "Pikachu unnumbered promotional row 094",
+      "May 28 1999 Trainers magazine route",
+      "glossy Japanese print and camera-symbol tell",
+      "Gakuji Nomoto artist context",
+      "Wizards Promo 26 / Snap Pikachu comparison surfaces",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Trainers Vol. 1 magazine archive",
+      "complete Pikachu print census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999",
+        "name_en": "Pokemon Card Trainers Vol. 1 insert",
+        "name_ja": "ポケモンカードトレーナーズ Vol.1 付録",
+        "release_date": "1999-05-28",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "specialist magazine as collector infrastructure",
+          "Pikachu as mascot plus camera-game bridge",
+          "glossy Japanese promo surface",
+          "camera-symbol identification tell",
+          "Gakuji Nomoto CG/promo art trace",
+          "Wizards Promo / Snap memory trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999:094",
+            "name": "Pikachu",
+            "why": "The whole source slice is one Pikachu, but the point is not generic mascot gravity; it is a Trainers magazine object where the TCG, glossy promo culture, and Pokemon Snap/camera iconography touch.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "complete Pikachu print census"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Gakuji Nomoto",
+            "row_count": 1,
+            "examples": [
+              "Pikachu"
+            ],
+            "why": "Bulbapedia and Pokumon references credit this Pikachu promo to Gakuji Nomoto, making the card feel different from the Sugimori default-memory that many early Pikachu rows trigger.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Pikachu print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete Pokemon Card Trainers Vol. 1 magazine archive",
+          "complete Pikachu print census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Trainers Vol. 1 insert as a one-row unnumbered promotional source group containing Pikachu at source index 094.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records May 28, 1999 as the date attached to the Pokemon Card Trainers Vol. 1 insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the distribution note as a Pokemon Card Trainers Vol. 1 insert, not a booster, deck, Fan Club route, or CoroCoro route.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "The source row names Pikachu as the card in this one-row Pokemon Card Trainers Vol. 1 insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit this Pikachu promo artwork to Gakuji Nomoto.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia's Pikachu promo reference describes the Japanese print as glossy and identifies a camera graphic at the bottom-right of the artwork, while connecting the English print to Wizards Promo 26.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This Pikachu matters because Pokemon Card Trainers Vol. 1 turns the mascot into a magazine-specialist object: glossy, camera-marked, and close enough to Pokemon Snap memory that an agent has to preserve the publication route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pokemon Card Trainers Vol. 1 route, May 28 1999 date, source index 094, glossy Japanese print, camera-symbol tell, Gakuji Nomoto source-reference credit, and non-equivalence with Wizards Promo 26, Snap Pikachu, ANA, Base/No Rarity, CoroCoro, and later Pikachu rows before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Trainers Vol. 1 Pikachu: the mascot with a camera mark",
+        "why_it_matters": "This Pikachu is wonderful because it sits where the machinery becomes visible. Pokemon Card Trainers was not just another kid-facing magazine; it was a specialist surface for people already learning how to care about the card game. Then Pikachu appears there glossy, camera-marked, and credited to Gakuji Nomoto rather than dissolving into generic mascot memory. It feels like a little badge from the moment Pokemon cards, magazines, CG/game culture, and Pokemon Snap-style looking all started talking to each other. The agent has to keep the route intact because 'Pikachu promo' is far too loud a phrase.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete Pokemon Card Trainers Vol. 1 magazine archive",
+          "complete Pikachu print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: Pokemon Card Trainers Vol. 1 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Trainers Vol. 1 archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_26)",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 26)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to English Wizards Promo 26"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol1_pikachu_camera_symbol_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Pikachu, Pokemon Card Trainers Vol. 1, May 28 1999, camera symbol, glossy Japanese Pikachu, Gakuji Nomoto, Snap Pikachu, Wizards Promo 26, ANA Pikachu, CoroCoro Pikachu, No Rarity Pikachu, or unnumbered promo row 094.",
+          "summary": "Identify this Pikachu by Trainers Vol. 1 route, glossy Japanese print, camera-symbol tell, and Gakuji Nomoto credit before trusting Pikachu name or Snap/Wizards memory.",
+          "steps": [
+            "Preserve the exact local route: Pokemon Card Trainers Vol. 1 insert, dated May 28, 1999.",
+            "Preserve source index 094 and Pikachu identity together.",
+            "Check for Japanese glossy print context and the camera graphic at the lower-right of the artwork before routing it as this row.",
+            "Preserve Gakuji Nomoto as the source-reference artist credit, but do not use artist alone as a match.",
+            "Separate this row from English Wizards Promo 26, Pokemon Snap / Snap Pikachu shorthand, ANA Pikachu, CoroCoro glossy/non-glossy Pikachu, No Rarity/Base Pikachu, and later Pikachu promos unless source evidence proves equivalence.",
+            "Ask for seller front/back photos and any Trainers Vol. 1 magazine provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Trainers Vol. 1 archive",
+            "complete Pikachu print census",
+            "English Wizards Promo 26 equivalence",
+            "Snap Pikachu equivalence",
+            "ANA Pikachu equivalence",
+            "CoroCoro Pikachu equivalence",
+            "No Rarity Pikachu equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999:094",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999:094",
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999",
+        "catalog_row_id": "094"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "094",
+        "rarity_signal": "Pokemon Card Trainers Vol. 1 insert / unnumbered promo",
+        "artist": "Gakuji Nomoto",
+        "assembly_themes": [
+          "Trainers magazine route",
+          "glossy Japanese promo",
+          "camera-symbol tell",
+          "Pikachu mascot gravity",
+          "Wizards/Snap confusion trap"
+        ],
+        "collector_texture_note": "This is not just another Pikachu. The camera mark and Trainers Vol. 1 route turn it into a small cross-media object: card game specialist magazine, mascot, and photography-game memory all compressed into one glossy promo.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete Pikachu print census"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Pikachu, source index 094, within the Pokemon Card Trainers Vol. 1 insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese name ピカチュウ is romanized as Pikachu; use it as a Japanese-language search aid, not as sufficient row identity.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is Pokemon Card Trainers Vol. 1 insert / unnumbered promo, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit this Pikachu promo artwork to Gakuji Nomoto.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's Pikachu promo reference describes the Japanese print as glossy and notes a camera graphic at the bottom-right of the artwork, while connecting the English print to Wizards Promo 26.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pikachu 094 matters because it is a mascot card whose identity depends on a specialist magazine route and a camera-marked visual tell, not only on the famous species name.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "For this Pikachu, agents should preserve source index 094, Pokemon Card Trainers Vol. 1 route, May 28 1999 date, glossy Japanese print, camera-symbol tell, Gakuji Nomoto source-reference credit, and non-equivalence with Wizards Promo 26, Snap, ANA, CoroCoro, No Rarity/Base, and later Pikachu rows before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu 094: the little camera in the corner",
+        "why_it_matters": "Pikachu is so famous that the name almost becomes noise. This row cuts through by giving the agent handles: Trainers Vol. 1, May 1999, glossy Japanese print, Gakuji Nomoto, and that camera mark sitting in the artwork like a clue. It feels like a card made at the intersection of collecting and looking. The player is no longer only battling; they are reading a specialist magazine, noticing variants, and learning that even Pikachu needs a route before it can be understood.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete Pokemon Card Trainers Vol. 1 magazine archive",
+          "complete Pikachu print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999.json#row:jp_promo_unnumbered_wotc_094_pok_mon_card_trainers_vol_1_insert_may_28_1999:094",
+          "title": "Local Japanese unnumbered promo catalog row: Pikachu 094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete Trainers Vol. 1 archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 094",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_26)",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 26)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to English Wizards Promo 26"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "pikachu_094_trainers_camera_symbol_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Pikachu, ピカチュウ, Pokemon Card Trainers Vol. 1, Trainers magazine Pikachu, May 28 1999, camera symbol, glossy Japanese Pikachu, Gakuji Nomoto, Snap Pikachu, Wizards Promo 26, ANA Pikachu, CoroCoro Pikachu, No Rarity Pikachu, or Japanese unnumbered promo row 094.",
+          "summary": "Match this Pikachu by Trainers Vol. 1 route, source index 094, glossy Japanese print, and camera-symbol tell before trusting the species name or Snap/Wizards shorthand.",
+          "steps": [
+            "Start with route: Pokemon Card Trainers Vol. 1 insert, dated May 28, 1999.",
+            "Preserve row identity as Japanese unnumbered promotional source index 094.",
+            "Use ピカチュウ / Pikachu as Japanese-language search help, not as sufficient identity.",
+            "Check Japanese glossy print context and the camera graphic at the lower-right of the artwork.",
+            "Separate English Wizards Promo 26, Pokemon Snap / Snap Pikachu shorthand, ANA Pikachu, CoroCoro Pikachu, No Rarity/Base Pikachu, and later Pikachu rows unless source evidence proves equivalence.",
+            "Request seller front/back photos and any Trainers Vol. 1 magazine provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete Trainers Vol. 1 archive",
+            "complete Pikachu print census",
+            "English Wizards Promo 26 equivalence",
+            "Snap Pikachu equivalence",
+            "ANA Pikachu equivalence",
+            "CoroCoro Pikachu equivalence",
+            "No Rarity Pikachu equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,638 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Victory Ring, the Battle Road Spring 2003 winner prize, emphasizing the first 2003 Battle Road prize-object turn after the personalized 2002 Trainer trophies: a winner-only Trainer card by Takumi Akabane, top-three-per-age-division regional distribution, eight Spring 2003 conference route, framed-certificate presentation, 2003-2004 print continuity, and traps against Victory Orb, Victory Medal, 2005-2006 Pikachu Victory Ring, and generic trophy listings.",
+    "in_scope": [
+      "Battle Road Spring 2003 winner-prize release dossier",
+      "Victory Ring unnumbered promotional row 257",
+      "Spring 2003 regional conference schedule",
+      "top-three-per-age-division prize route",
+      "winner-only card text and prize-card mechanic",
+      "Takumi Akabane illustrator and broader TCG staff context",
+      "framed certificate / winner-name presentation context",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete Battle Road Spring 2003 tournament archive",
+      "official winner ledger",
+      "official Spring 2003 copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize",
+        "name_en": "Battle Road Spring 2003 winner prize",
+        "featured_card_name_ja": "勝利のリング",
+        "release_date": "2003-03-23/2003-04-06",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Battle Road Spring 2003 regional winner-prize route",
+          "Victory Ring winner-only Trainer identity",
+          "top-three-per-age-division distribution",
+          "eight-conference Spring 2003 schedule",
+          "framed-certificate presentation",
+          "Takumi Akabane TCG apparatus lineage",
+          "2003-2004 print continuity",
+          "Victory Ring / Victory Orb / Victory Medal boundary"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize:257",
+            "name": "Victory Ring",
+            "why": "This is a chase because Battle Road memory changes shape here. Instead of a personalized No.1/No.2/No.3 Trainer portrait object, Victory Ring is a reusable winner-only tool: a card whose text says only official tournament winners may use it, and whose distribution still encodes region, age division, and podium finish.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official Spring 2003 copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Takumi Akabane",
+            "row_count": 1,
+            "examples": [
+              "Victory Ring [Battle Road Spring 2003]"
+            ],
+            "why": "Akabane is not just a name on an illustration line; he sits inside the assembly of the TCG itself. Bulbapedia identifies him as a former Creatures R&D director, a co-creator of the Pokémon TCG with Tsunekazu Ishihara and Kouichi Ooyama, and the TCG creative director from 2001 to 2008. Victory Ring therefore carries both an artist credit and an apparatus credit.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete Takumi Akabane bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official Spring 2003 copy count",
+          "complete Battle Road Spring 2003 archive",
+          "official winner ledger",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Battle Road Spring 2003 winner prize as one unnumbered promotional source row containing Victory Ring at source index 257.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says Victory Ring was awarded to the top three competitors from each age division in each regional Japanese Battle Road Spring 2003 tournament held between March and April 2003.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.date",
+          "text": "Bulbapedia lists Battle Road Spring 2003 conferences at Hokkaido, Kanto A, Kansai, Tohoku, Chubu, Kyushu, Kanto B, and Chugoku/Shikoku between March 23 and April 6, 2003.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia gives Victory Ring's rule text as usable only by official tournament winners, then lets the player reveal Prize cards, exchange any number into the deck, shuffle, and set replacement Prize cards from the top of the deck.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia says the same 2003-2004 Victory Ring print was awarded again at Battle Road Autumn 2003, Battle Road Spring 2004, and Battle Road Autumn 2004, while 2005-2006 used a holographic Pikachu version with different artwork by the same illustrator.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies Victory Ring as illustrated by Takumi Akabane and places Victory Ring among Akabane's miscellaneous promotional card illustrations.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "Bulbapedia says Takumi Akabane was a former Creatures research and development director, was credited with creating the Pokémon TCG alongside Tsunekazu Ishihara and Kouichi Ooyama, and acted as TCG creative director from 2001 to 2008.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says Victory Ring cards awarded between 2003 and 2004 were presented in framed certificates that featured the event name, regional tournament, age division, and winner name.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.variant",
+          "text": "Bulbapedia estimates 189 copies of the 2003-2004 print based on regional tournament distribution; this is a broad print estimate, not an official Spring 2003 copy count for this row.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "As judged collector texture, Victory Ring matters because it turns winner status into a playable, winner-only mechanism: the trophy is no longer only a named portrait or certificate but a card that acts on Prize cards while declaring who is allowed to use it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ],
+          "not_claiming": [
+            "official Spring 2003 copy count",
+            "official winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Victory Ring / 勝利のリング identity, source index 257, Battle Road Spring 2003 winner-prize route, top-three-per-age-division distribution, Takumi Akabane credit, framed-certificate context, and non-equivalence with Victory Orb, Victory Medal, 2005-2006 Pikachu Victory Ring, Autumn 2003/2004 copies, or generic trophy listings before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Battle Road Spring 2003 Victory Ring: the trophy becomes a playable rule",
+        "why_it_matters": "Victory Ring is a hinge. The 2002 trophies remembered people by name, photograph, and place; this card remembers winners by giving them a strange little permission in the game itself. It says: only official tournament winners may use this. That line is pure apparatus. Region, age division, framed certificate, winner name, and Takumi Akabane's TCG-building hand all gather around a card that turns victory into a playable object.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "not_claiming": [
+          "official Spring 2003 copy count",
+          "complete Battle Road Spring 2003 archive",
+          "official winner ledger",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "battle_road_spring_2003_victory_ring_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Victory Ring, 勝利のリング, Battle Road Spring 2003, Spring Battle Road, winner prize, Takumi Akabane, framed certificate, winner name, regional tournament, age division, Victory Orb, Victory Medal, 2005 Pikachu Victory Ring, 2006 Pikachu Victory Ring, Autumn Battle Road, Battle Road 2004, or generic trophy promo.",
+          "summary": "Identify this row by Victory Ring / 勝利のリング plus Battle Road Spring 2003 winner-prize route and 2003-2004 non-Pikachu artwork; trophy wording or market labels alone are too broad.",
+          "steps": [
+            "Confirm the card title is Victory Ring / 勝利のリング, not Victory Orb or Victory Medal.",
+            "Confirm the catalog route is Battle Road Spring 2003 winner prize at source index 257.",
+            "Check whether the claimed distribution is top three competitors from each age division at Spring 2003 regional Battle Road conferences between March 23 and April 6, 2003.",
+            "Separate the 2003-2004 non-Pikachu print from the 2005-2006 holographic Pikachu Victory Ring artwork.",
+            "If a framed certificate, winner name, regional tournament, or age division is offered, treat it as provenance evidence to inspect and hash, not automatic authenticity.",
+            "Preserve Takumi Akabane as illustrator and TCG apparatus figure, but do not let artist credit substitute for event-route proof.",
+            "Separate Spring 2003 copies from Autumn 2003, Spring 2004, Autumn 2004, Victory Orb Summer/Autumn routes, Victory Medal, Champion's League, and generic trophy promo listings.",
+            "Before any trade gate or spendability decision, require seller-controlled front/back images plus close-ups of title, copyright/layout, artwork, surface/corners, and slab/cert/framed-certificate evidence if claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official Spring 2003 copy count",
+            "official winner ledger"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize.json#row:jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize:257",
+          "title": "Local Japanese unnumbered promotional source-slice row 257",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Victory_Ring_(Battle_Road_promo)",
+          "title": "Bulbapedia: Victory Ring (Battle Road promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official Spring 2003 copy count",
+            "complete Battle Road Spring 2003 archive",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/card/victory-ring-battle-road-20032004-unnumbered/",
+          "title": "Pokumon: Victory Ring (Battle Road 2003,2004) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Takumi_Akabane",
+          "title": "Bulbapedia: Takumi Akabane",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Takumi Akabane bibliography",
+            "official artist intent",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize:257",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize",
+        "source_index": "257",
+        "name_en": "Victory Ring",
+        "name_ja": "勝利のリング",
+        "release_date": "2003-03-23/2003-04-06"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Victory Ring",
+        "name_ja": "勝利のリング",
+        "romaji": "Shouri no Ringu",
+        "number": "None",
+        "rarity_signal": "Unnumbered Promotional / Battle Road Spring 2003 winner prize",
+        "artist": "Takumi Akabane",
+        "release": "Battle Road Spring 2003 winner prize"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies source index 257 as Victory Ring from the Battle Road Spring 2003 winner prize route.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says Victory Ring can only be used by official tournament winners and has a Prize-card exchange effect.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Battle Road Spring 2003 print was awarded to the top three competitors from each age division at each regional tournament between March and April 2003.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies Victory Ring as illustrated by Takumi Akabane.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Bulbapedia says Takumi Akabane helped create the Pokémon TCG and served as its creative director from 2001 to 2008.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes the 2003-2004 Victory Ring print from the later 2005-2006 holographic Pikachu artwork and estimates 189 copies for the broad 2003-2004 print, not an official Spring 2003 count.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Victory Ring matters because it is a winner-only card whose own game text carries tournament authority into play.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "not_claiming": [
+            "official Spring 2003 copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should check Victory Ring / 勝利のリング title, Battle Road Spring 2003 route, source index 257, top-three-per-age-division distribution, 2003-2004 non-Pikachu artwork, Takumi Akabane credit, and distinction from Victory Orb, Victory Medal, 2005-2006 Pikachu Victory Ring, Autumn/Spring later copies, and generic trophy listings.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Victory Ring, Spring 2003: permission printed as a card",
+        "why_it_matters": "The line that matters is almost ceremonial: only official tournament winners may use this card. Victory Ring is collectible because it is scarce, yes, but the deeper pull is stranger. It is a card about being allowed to play a card, a little loop where organized play recognizes itself. For the catalog, that means title, event route, certificate context, and non-Pikachu 2003-2004 artwork must stay attached.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official Spring 2003 copy count",
+          "complete Battle Road Spring 2003 archive",
+          "official winner ledger",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "victory_ring_battle_road_spring_2003_card_identity_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Victory Ring, 勝利のリング, Spring Battle Road 2003, Battle Road Spring 2003, winner prize, Takumi Akabane, framed certificate, winner name, age division, regional tournament, Victory Orb, Victory Medal, Pikachu Victory Ring, 2005, 2006, Autumn 2003, Spring 2004, Autumn 2004, or trophy promo.",
+          "summary": "For this card, Victory Ring title, Spring 2003 route, 2003-2004 non-Pikachu artwork, and winner-prize provenance must travel together.",
+          "steps": [
+            "Confirm the title is Victory Ring / 勝利のリング.",
+            "Confirm the catalog route is Battle Road Spring 2003 winner prize at source index 257.",
+            "Check the claimed event route against the March-April 2003 Spring regional schedule, not Summer Victory Orb or Autumn Victory Ring.",
+            "Separate the 2003-2004 non-Pikachu Victory Ring print from the 2005-2006 holographic Pikachu Victory Ring.",
+            "Preserve Takumi Akabane as illustrator and TCG apparatus figure, but do not treat artist credit as event-route proof.",
+            "If a framed certificate, winner name, age division, regional tournament, slab label, or provenance story is offered, inspect and hash it rather than treating it as automatic authenticity.",
+            "Separate this row from Victory Orb, Victory Medal, Champion's League, later Battle Road copies, and generic trophy promo listings.",
+            "Before any trade gate or spendability decision, require seller-controlled front/back images, close-ups of title, artwork, copyright/layout, surface/corners, and slab/cert/framed-certificate evidence if claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official Spring 2003 copy count",
+            "official winner ledger"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize.json#row:jp_promo_unnumbered_wotc_257_battle_road_spring_2003_winner_prize:257",
+          "title": "Local Japanese unnumbered promotional source-slice row 257",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Victory_Ring_(Battle_Road_promo)",
+          "title": "Bulbapedia: Victory Ring (Battle Road promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "official Spring 2003 copy count",
+            "complete Battle Road Spring 2003 archive",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://pokumon.com/card/victory-ring-battle-road-20032004-unnumbered/",
+          "title": "Pokumon: Victory Ring (Battle Road 2003,2004) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "official copy count",
+            "complete winner ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Takumi_Akabane",
+          "title": "Bulbapedia: Takumi Akabane",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Takumi Akabane bibliography",
+            "official artist intent",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ]
+    }
+  ]
+}

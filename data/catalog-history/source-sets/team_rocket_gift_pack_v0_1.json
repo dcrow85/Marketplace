@@ -1,0 +1,1097 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Team Rocket Gift Pack product context and six duplicated candidate chase rows.",
+    "in_scope": [
+      "Team Rocket Gift Pack deck-component context release dossier",
+      "Dark Charizard candidate in rocket_deck_a",
+      "Dark Blastoise candidate in rocket_deck_a",
+      "Dark Gyarados candidate in rocket_deck_a",
+      "Dark Charizard candidate in rocket_deck_b",
+      "Dark Blastoise candidate in rocket_deck_b",
+      "Dark Gyarados candidate in rocket_deck_b"
+    ],
+    "not_claiming": [
+      "fixed Team Rocket Gift Pack deck list",
+      "sealed Team Rocket Gift Pack contents",
+      "per-deck card counts for modeled candidate rows",
+      "complete Team Rocket Gift Pack scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219",
+      "type": "release",
+      "context": {
+        "name_en": "Team Rocket Gift Pack deck-component context",
+        "name_ja": "ロケット団ギフトパック",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "release_date": "1997-12-19"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json",
+          "title": "Local Japanese pre-English catalog: Team Rocket Gift Pack deck-component context",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed Team Rocket Gift Pack deck list",
+            "sealed Team Rocket Gift Pack contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_team_rocket_gift_pack_19971219_selected_lines.json",
+          "title": "Selected rendered PokemonWiki lines: Team Rocket Gift Pack",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "fixed per-deck card list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json",
+          "title": "Local Japanese pre-English catalog: Rocket Gang",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_doc",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese pre-English release map",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "fixed per-deck card list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and selected PokemonWiki snapshot model Team Rocket Gift Pack as released on December 19, 1997.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The selected PokemonWiki snapshot records 120 cards, two 60-card decks, 30 damage counters, 8 poison markers, a special playmat, and a guidebook for the Team Rocket Gift Pack product.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local catalog deliberately models 130 unresolved candidate rows as 2 x 65 Rocket Gang source rows because the fixed per-deck lists are not source-pinned here; those 130 rows are not a claim of 130 physical cards.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The local release map marks Team Rocket Gift Pack as a two-player gift product and separately records Rocket Gang as the 65-card booster release, so the product context must stay distinct from the booster checklist.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix keeps Team Rocket Gift Pack symbol status unresolved and warns not to infer it from Rocket Gang booster status.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The generated queue and local candidate rows surface Dark Charizard, Dark Blastoise, and Dark Gyarados in both modeled component lanes as high-attention candidate rows, not fixed deck-list proof.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Team Rocket Gift Pack matters because it is a packaged play object rather than only a checklist: two fixed decks, counters, markers, a playmat, and a guidebook show Pokemon being assembled as a tabletop apparatus for two people.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_unresolved_deck_component_boundary_v0.1",
+          "trigger": "A listing, want, sealed product note, or agent search says Team Rocket Gift Pack, Rocket Gang Gift Pack, two Rocket decks, fixed Rocket deck, or Gift Pack Dark Charizard.",
+          "summary": "Team Rocket Gift Pack is a product context with two documented 60-card decks, but this catalog has unresolved fixed deck lists and only models candidate rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_team_rocket_gift_pack_19971219 for the product context.",
+            "Do not claim that any modeled candidate row is a fixed deck inclusion unless a later source-pinned deck list proves it.",
+            "Do not treat the 130 catalog rows as 130 physical product cards; the product count is documented as 120 cards across two 60-card decks.",
+            "Do not infer symbol status from Rocket Gang booster status; this release remains unverified in the local symbol-status matrix.",
+            "Keep Team Rocket Gift Pack distinct from Rocket Gang booster rows and from English Team Rocket rows.",
+            "For sealed or complete-product claims, require product photographs and source-pinned contents evidence before advancing beyond catalog context."
+          ],
+          "not_claiming": [
+            "fixed Team Rocket Gift Pack deck list",
+            "sealed Team Rocket Gift Pack contents",
+            "per-deck card counts for modeled rows",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The Rocket apparatus in a box",
+        "why_it_matters": "Team Rocket Gift Pack is where Rocket Gang stops being only a booster world and becomes a table for two. The counters, poison markers, playmat, guidebook, and two fixed decks matter because they show Pokemon being packaged as a ritual of play, not just as cards to pull. The catalog has to be unusually honest here: the product is real, the 120-card shape is sourced, but the exact fixed deck lists are not pinned in this dataset yet.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed Team Rocket Gift Pack deck list",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-017",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Charizard",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "row_id": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-017",
+        "catalog_row_id": "rocket_deck_a-017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json#row:jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-017",
+          "title": "Local Team Rocket Gift Pack candidate row: rocket_deck_a Dark Charizard 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:017",
+          "title": "Local Rocket Gang source row: Dark Charizard 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Gift Pack catalog identifies rocket_deck_a-017 as a Dark Charizard candidate row derived from Rocket Gang row 017.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The local product scope marks this as a possible component candidate row, not a fixed Team Rocket Gift Pack deck inclusion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog carries Ken Sugimori as the source-row illustrator credit for this Dark Charizard candidate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This candidate matters because it shows the product-context temptation clearly: a huge card name appears inside a gift-pack lane, but the agent must still keep candidate status visible.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_deck_a_dark_charizard_candidate_v0.1",
+          "trigger": "A listing or want says Gift Pack Dark Charizard, deck A Dark Charizard, Rocket Gift Pack Charizard, or sealed Team Rocket Gift Pack Charizard.",
+          "summary": "Dark Charizard rocket_deck_a-017 is a modeled candidate row; do not promote it to fixed deck inclusion.",
+          "steps": [
+            "Preserve component_lane rocket_deck_a and row rocket_deck_a-017.",
+            "State that this is modeled from Rocket Gang source row 017 as a candidate row.",
+            "Do not claim fixed Team Rocket Gift Pack inclusion without source-pinned fixed deck-list evidence.",
+            "Do not collapse this row into Rocket Gang booster Dark Charizard without naming the product-context distinction."
+          ],
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The chase name that must stay conditional",
+        "why_it_matters": "Dark Charizard in a gift-pack lane is exactly the kind of phrase that can make an agent overreach. The emotional signal is loud, but the catalog signal is careful: candidate row, source-row lineage, unresolved deck list. The card can matter without the database pretending to know more than it does.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed deck inclusion",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-024",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Blastoise",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "row_id": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-024",
+        "catalog_row_id": "rocket_deck_a-024"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json#row:jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-024",
+          "title": "Local Team Rocket Gift Pack candidate row: rocket_deck_a Dark Blastoise 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:024",
+          "title": "Local Rocket Gang source row: Dark Blastoise 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Gift Pack catalog identifies rocket_deck_a-024 as a Dark Blastoise candidate row derived from Rocket Gang row 024.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The local product scope marks this as a possible component candidate row, not a fixed Team Rocket Gift Pack deck inclusion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog carries Mitsuhiro Arita as the source-row illustrator credit for this Dark Blastoise candidate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This candidate matters because it brings a starter-final chase silhouette into a product-context lane while still remaining only a modeled candidate until deck-list evidence improves.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_deck_a_dark_blastoise_candidate_v0.1",
+          "trigger": "A listing or want says Gift Pack Dark Blastoise, deck A Dark Blastoise, Rocket Gift Pack Blastoise, or sealed Team Rocket Gift Pack Blastoise.",
+          "summary": "Dark Blastoise rocket_deck_a-024 is a modeled candidate row; do not promote it to fixed deck inclusion.",
+          "steps": [
+            "Preserve component_lane rocket_deck_a and row rocket_deck_a-024.",
+            "State that this is modeled from Rocket Gang source row 024 as a candidate row.",
+            "Do not claim fixed Team Rocket Gift Pack inclusion without source-pinned fixed deck-list evidence.",
+            "Do not collapse this row into Rocket Gang booster Dark Blastoise without naming the product-context distinction."
+          ],
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Heavy water, held at arm's length",
+        "why_it_matters": "Dark Blastoise brings real collector gravity to the Gift Pack model, but the honest part is the restraint. The product context is a doorway, not a verdict. Until the fixed deck list is pinned, this is a strong candidate signal and a weak inclusion claim, exactly the difference the agent needs to preserve.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed deck inclusion",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-025",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Gyarados",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "row_id": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-025",
+        "catalog_row_id": "rocket_deck_a-025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json#row:jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_a-025",
+          "title": "Local Team Rocket Gift Pack candidate row: rocket_deck_a Dark Gyarados 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:025",
+          "title": "Local Rocket Gang source row: Dark Gyarados 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Gift Pack catalog identifies rocket_deck_a-025 as a Dark Gyarados candidate row derived from Rocket Gang row 025.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The local product scope marks this as a possible component candidate row, not a fixed Team Rocket Gift Pack deck inclusion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog carries Kagemaru Himeno as the source-row illustrator credit for this Dark Gyarados candidate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This candidate matters because it shows how a recognizable Rocket Gang monster can be made product-legible without pretending the fixed deck lane has been proved.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_deck_a_dark_gyarados_candidate_v0.1",
+          "trigger": "A listing or want says Gift Pack Dark Gyarados, deck A Dark Gyarados, Rocket Gift Pack Gyarados, or sealed Team Rocket Gift Pack Gyarados.",
+          "summary": "Dark Gyarados rocket_deck_a-025 is a modeled candidate row; do not promote it to fixed deck inclusion.",
+          "steps": [
+            "Preserve component_lane rocket_deck_a and row rocket_deck_a-025.",
+            "State that this is modeled from Rocket Gang source row 025 as a candidate row.",
+            "Do not claim fixed Team Rocket Gift Pack inclusion without source-pinned fixed deck-list evidence.",
+            "Do not collapse this row into Rocket Gang booster Dark Gyarados without naming the product-context distinction."
+          ],
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A monster-shaped candidate, not a promise",
+        "why_it_matters": "Dark Gyarados gives the Gift Pack model a dramatic creature to point at, but its best lesson is procedural. The card can help a collector search the product context, yet it cannot certify a fixed deck list by itself. That is not a weakness; it is the catalog telling the truth in public.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed deck inclusion",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-017",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Charizard",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "row_id": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-017",
+        "catalog_row_id": "rocket_deck_b-017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json#row:jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-017",
+          "title": "Local Team Rocket Gift Pack candidate row: rocket_deck_b Dark Charizard 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:017",
+          "title": "Local Rocket Gang source row: Dark Charizard 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Gift Pack catalog identifies rocket_deck_b-017 as a Dark Charizard candidate row derived from Rocket Gang row 017.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The local product scope marks this as a possible component candidate row, not a fixed Team Rocket Gift Pack deck inclusion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog carries Ken Sugimori as the source-row illustrator credit for this Dark Charizard candidate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This candidate matters because the duplicated lane proves why lane labels are not evidence of fixed deck inclusion; the same source-row candidate appears again under rocket_deck_b.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_deck_b_dark_charizard_candidate_v0.1",
+          "trigger": "A listing or want says Gift Pack Dark Charizard, deck B Dark Charizard, Rocket Gift Pack Charizard, or sealed Team Rocket Gift Pack Charizard.",
+          "summary": "Dark Charizard rocket_deck_b-017 is a second modeled candidate lane row; do not promote it to fixed deck inclusion.",
+          "steps": [
+            "Preserve component_lane rocket_deck_b and row rocket_deck_b-017.",
+            "State that this is modeled from Rocket Gang source row 017 as a candidate row.",
+            "Do not claim fixed Team Rocket Gift Pack inclusion without source-pinned fixed deck-list evidence.",
+            "Do not treat the duplicate deck-lane candidate as proof that both physical decks contain this card."
+          ],
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The duplicate lane makes the warning visible",
+        "why_it_matters": "Dark Charizard appearing again under rocket_deck_b is not a second promise; it is a map of uncertainty. The duplicated candidate tells the agent something valuable: this product needs better deck-list evidence before it can speak with confidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed deck inclusion",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-024",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Blastoise",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "row_id": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-024",
+        "catalog_row_id": "rocket_deck_b-024"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json#row:jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-024",
+          "title": "Local Team Rocket Gift Pack candidate row: rocket_deck_b Dark Blastoise 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:024",
+          "title": "Local Rocket Gang source row: Dark Blastoise 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Gift Pack catalog identifies rocket_deck_b-024 as a Dark Blastoise candidate row derived from Rocket Gang row 024.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The local product scope marks this as a possible component candidate row, not a fixed Team Rocket Gift Pack deck inclusion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog carries Mitsuhiro Arita as the source-row illustrator credit for this Dark Blastoise candidate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This candidate matters because it repeats a chase name under the second modeled lane, which is useful for search but not a substitute for fixed deck-list proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_deck_b_dark_blastoise_candidate_v0.1",
+          "trigger": "A listing or want says Gift Pack Dark Blastoise, deck B Dark Blastoise, Rocket Gift Pack Blastoise, or sealed Team Rocket Gift Pack Blastoise.",
+          "summary": "Dark Blastoise rocket_deck_b-024 is a second modeled candidate lane row; do not promote it to fixed deck inclusion.",
+          "steps": [
+            "Preserve component_lane rocket_deck_b and row rocket_deck_b-024.",
+            "State that this is modeled from Rocket Gang source row 024 as a candidate row.",
+            "Do not claim fixed Team Rocket Gift Pack inclusion without source-pinned fixed deck-list evidence.",
+            "Do not treat the duplicate deck-lane candidate as proof that both physical decks contain this card."
+          ],
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second lane repeats the weight",
+        "why_it_matters": "Dark Blastoise in rocket_deck_b is heavy in the catalog, but only as a candidate. That distinction is the entire point of this product pass. The row helps a collector-agent find the right neighborhood while refusing to pretend it has walked inside the sealed deck.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed deck inclusion",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-025",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Gyarados",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_team_rocket_gift_pack_19971219",
+        "row_id": "jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-025",
+        "catalog_row_id": "rocket_deck_b-025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_team_rocket_gift_pack_19971219.json#row:jp_tcg_team_rocket_gift_pack_19971219:rocket_deck_b-025",
+          "title": "Local Team Rocket Gift Pack candidate row: rocket_deck_b Dark Gyarados 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_rocket_gang_19971121.json#row:jp_tcg_rocket_gang_19971121:025",
+          "title": "Local Rocket Gang source row: Dark Gyarados 025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Team Rocket Gift Pack fixed deck list",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Gift Pack catalog identifies rocket_deck_b-025 as a Dark Gyarados candidate row derived from Rocket Gang row 025.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.boundary",
+          "text": "The local product scope marks this as a possible component candidate row, not a fixed Team Rocket Gift Pack deck inclusion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog carries Kagemaru Himeno as the source-row illustrator credit for this Dark Gyarados candidate.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "This candidate matters because it repeats the Gift Pack's search affordance while keeping the unresolved deck-list wall visible.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "team_rocket_gift_pack_deck_b_dark_gyarados_candidate_v0.1",
+          "trigger": "A listing or want says Gift Pack Dark Gyarados, deck B Dark Gyarados, Rocket Gift Pack Gyarados, or sealed Team Rocket Gift Pack Gyarados.",
+          "summary": "Dark Gyarados rocket_deck_b-025 is a second modeled candidate lane row; do not promote it to fixed deck inclusion.",
+          "steps": [
+            "Preserve component_lane rocket_deck_b and row rocket_deck_b-025.",
+            "State that this is modeled from Rocket Gang source row 025 as a candidate row.",
+            "Do not claim fixed Team Rocket Gift Pack inclusion without source-pinned fixed deck-list evidence.",
+            "Do not treat the duplicate deck-lane candidate as proof that both physical decks contain this card."
+          ],
+          "not_claiming": [
+            "fixed deck inclusion",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A second candidate, not a second certainty",
+        "why_it_matters": "Dark Gyarados in rocket_deck_b is useful precisely because it looks redundant. The duplicate lane shows the shape of the unresolved model. An agent can search through it, compare against Rocket Gang, and explain the product context, but it still has to say the quiet word: candidate.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "fixed deck inclusion",
+          "sealed-unit contents",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

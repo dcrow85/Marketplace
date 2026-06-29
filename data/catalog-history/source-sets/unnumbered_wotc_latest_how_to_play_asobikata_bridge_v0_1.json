@@ -1,0 +1,739 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Unnumbered WotC Latest Edition How-to-Play / Asobikata bridge",
+    "release_family_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem",
+    "notes": [
+      "Deepens the Bulbapedia raw-wikitext unnumbered-promo source group for Easily Understand How to Play Pokemon Cards: Latest Edition.",
+      "This is a bridge view over the same Diglett/Dugtrio Asobikata object already deepened in the Japanese pre-English source slice.",
+      "It keeps raw source-index authority, richer Asobikata evidence, artist credit, Japanese names, and transaction evidence in separate authority lanes."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem",
+      "type": "release",
+      "context": {
+        "name_en": "Easily Understand How to Play Pokemon Cards: Latest Edition (November 13, 1998)",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem",
+        "release_date": "1998-11-13",
+        "source_indices": [
+          "061",
+          "062"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Bulbapedia raw source-index 061/062 view",
+          "Latest Edition how-to-play book route",
+          "Asobikata collector nickname",
+          "bridge to Japanese pre-English rows 054/055",
+          "Miki Tanaka credit from richer Asobikata evidence",
+          "Pokemon Web e-Card reprint boundary",
+          "source-derived campaign family boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:061",
+            "name": "Diglett",
+            "number": "061",
+            "why": "Diglett is the first raw-index contact for the Asobikata pair in this unnumbered-promo view. It matters because the humble basic is a bridge between a rule book, a later Pokemon Web reprint, and two separate catalog surfaces.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:062",
+            "name": "Dugtrio",
+            "number": "062",
+            "why": "Dugtrio completes the tiny evolution lesson. In this source group, it is a route check as much as a card: Asobikata book, raw index, Pokemon Web boundary, and ordinary Dugtrio confusion all press together.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Miki Tanaka",
+            "row_count": 2,
+            "examples": [
+              "Diglett",
+              "Dugtrio"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "artist credit from the raw unnumbered row itself",
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "official product-boundary proof",
+          "physical-card truth",
+          "complete book-object ledger"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: Latest Edition source-index group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "artist credit",
+            "Japanese print-name authority",
+            "official product-boundary proof",
+            "complete book-object ledger",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/latest_how_to_play_book_1998_asobikata_v0_1.json",
+          "title": "Catalog-history source set: Latest Edition How-to-Play Asobikata pair",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+          "title": "Local selected-lines snapshot: Latest Edition How-to-Play / Asobikata pair",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "full book source",
+            "complete accessory-object ledger",
+            "sealed-book variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "artist credit for these rows",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+          "title": "Bulbapedia: Diglett (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+          "title": "Bulbapedia: Dugtrio (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The raw unnumbered-promo source group and the richer Asobikata slice both place the Latest Edition how-to-play route on November 13, 1998.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "This unnumbered-promo source group models two raw source-index rows: Diglett 061 and Dugtrio 062.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "The local unnumbered catalog states this is a source-derived campaign family grouped by a Bulbapedia promotion/distribution note, not official product-boundary proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "The richer Asobikata evidence ties the same physical story to Japanese pre-English rows 054/055, Japanese names, Miki Tanaka credit, and later Pokemon Web e-Card reprints.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The raw unnumbered-promo rows do not provide illustrator credit, while the richer Asobikata slice records Miki Tanaka for the paired Diglett/Dugtrio object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This bridge matters because it prevents two catalog surfaces from drifting apart: the raw index says rows 061/062, while the collector story says Asobikata Diglett and Dugtrio in a rule-teaching book.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should use this group as a bridge: preserve raw indices 061/062 and the Asobikata route together, but do not treat either catalog surface as seller evidence, authenticity, condition, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "unnumbered_wotc_061_062_asobikata_bridge_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says unnumbered promo 061, unnumbered promo 062, Asobikata, Latest Edition, Easily Understand How to Play Pokemon Cards, Diglett, Dugtrio, Miki Tanaka, Pokemon Web, e-Card, raw Bulbapedia index, rows 054/055, or rows 061/062.",
+          "summary": "Keep the raw unnumbered source-index group and the richer Asobikata book-route evidence aligned without promoting either into physical-card proof.",
+          "steps": [
+            "Confirm the raw-index view: rows 061 and 062 in the unnumbered-promo WotC/Bulbapedia source group.",
+            "Confirm the book-route view: Easily Understand How to Play Pokemon Cards: Latest Edition, November 13, 1998.",
+            "Bridge to the richer Asobikata slice for Japanese names, Miki Tanaka credit, and Pokemon Web e-Card reprint boundary.",
+            "Preserve that the raw unnumbered rows themselves do not provide illustrator or Japanese print-name authority.",
+            "Separate this source-derived campaign family from official product-boundary proof, complete book-object provenance, and sealed-book variant coverage.",
+            "Separate original Asobikata prints from later Pokemon Web e-Card Series reprints.",
+            "Separate this 1998 Latest Edition route from the 1996 How-to-Play Pikachu/Jigglypuff route and ordinary Diglett/Dugtrio rows.",
+            "Before trade/spendability use, require seller-controlled front/back photos, title/name area, illustrator/copyright area, lower-right symbol/number area, surface/corners, and any book/slab/cert evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official product-boundary proof",
+            "complete book-object ledger",
+            "sealed-book variant catalog",
+            "artist credit from the raw unnumbered rows themselves"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Asobikata through the raw index — when the map has two coordinates",
+        "why_it_matters": "This is not a new pair of cards so much as a second coordinate system for the same little teaching object. One catalog surface says Diglett 061 and Dugtrio 062 in the raw unnumbered promo index; the richer source slice says Asobikata, Miki Tanaka, Japanese names, and the later Pokemon Web echo. The value is in keeping both maps visible, because collectors get hurt when a row number starts pretending to be the whole route.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "new physical release distinct from the Asobikata object",
+          "official product-boundary proof",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:061",
+      "type": "card",
+      "context": {
+        "name_en": "Diglett",
+        "name_ja": "",
+        "romaji": null,
+        "release_family_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem",
+        "release_name": "Easily Understand How to Play Pokemon Cards: Latest Edition (November 13, 1998)",
+        "row_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:061"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Diglett",
+        "name_ja": "",
+        "romaji": null,
+        "number": "061",
+        "row_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:061"
+      },
+      "card_highlights": {
+        "number": "061",
+        "rarity_signal": "Unnumbered Promotional / raw index view of Asobikata Diglett",
+        "artist": "Miki Tanaka (from richer Asobikata evidence, not the raw row)",
+        "assembly_themes": [
+          "raw source-index 061",
+          "Asobikata Diglett bridge",
+          "Miki Tanaka credit via richer slice",
+          "Pokemon Web e-Card reprint boundary"
+        ],
+        "not_claiming": [
+          "artist credit from the raw row itself",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem.json#row:jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:061",
+          "title": "Local unnumbered WotC row: Diglett 061 / Latest Edition",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "artist credit",
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/latest_how_to_play_book_1998_asobikata_v0_1.json",
+          "title": "Catalog-history source set: Asobikata Diglett richer source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+          "title": "Bulbapedia: Diglett (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The raw unnumbered-promo catalog anchors Diglett as source index 061 in the Latest Edition group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "The richer Asobikata slice links this same Diglett story to row 054, Japanese name ディグダ / Digda, and the original Asobikata Diglett nickname.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The raw row does not provide illustrator authority, while the richer Asobikata evidence records Miki Tanaka for Diglett.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "As raw index 061, Diglett is the small hinge between two catalog maps: a humble teaching-card identity that becomes legible only when source index and Asobikata route are held together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should match Diglett 061 by raw index plus Asobikata route, then separate original Asobikata Diglett from Pokemon Web e-Card reprints and ordinary Diglett rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "unnumbered_wotc_061_diglett_asobikata_bridge_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Diglett 061, Asobikata Diglett, ディグダ, Digda, Latest Edition, Pokemon Web, e-Card, row 054, or row 061.",
+          "summary": "Treat Diglett 061 as the raw-index view of Asobikata Diglett only when the source index and book route both line up.",
+          "steps": [
+            "Confirm raw unnumbered source index 061 and name Diglett.",
+            "Bridge to the richer Asobikata Diglett evidence for Japanese name ディグダ / Digda and Miki Tanaka credit.",
+            "Preserve that the raw row itself lacks illustrator and Japanese print-name authority.",
+            "Separate original Asobikata Diglett from the Pokemon Web e-Card Series reprint.",
+            "Separate this row from ordinary Diglett, Lucky Stadium Diglett, and other Diglett-named cards.",
+            "Ask for seller-controlled front/back scans, title/name area, artist/copyright area, lower-right symbol/number area, surface/corners, and any book/slab/cert evidence before trade use.",
+            "Do not treat row 061, row 054, a provider image, or a book story as spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "artist credit from the raw unnumbered row itself",
+            "complete variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Diglett 061 — the raw-index doorway into Asobikata",
+        "why_it_matters": "Diglett 061 is a quiet catalog lesson. The raw index can find the card, but it cannot explain why collectors call it Asobikata, why Miki Tanaka matters here, or why Pokemon Web is a trap door beside it. The card is small; the route is the thing that needs care.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:062",
+      "type": "card",
+      "context": {
+        "name_en": "Dugtrio",
+        "name_ja": "",
+        "romaji": null,
+        "release_family_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem",
+        "release_name": "Easily Understand How to Play Pokemon Cards: Latest Edition (November 13, 1998)",
+        "row_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:062"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Dugtrio",
+        "name_ja": "",
+        "romaji": null,
+        "number": "062",
+        "row_id": "jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:062"
+      },
+      "card_highlights": {
+        "number": "062",
+        "rarity_signal": "Unnumbered Promotional / raw index view of Asobikata Dugtrio",
+        "artist": "Miki Tanaka (from richer Asobikata evidence, not the raw row)",
+        "assembly_themes": [
+          "raw source-index 062",
+          "Asobikata Dugtrio bridge",
+          "Miki Tanaka credit via richer slice",
+          "Pokemon Web e-Card reprint boundary",
+          "Dugtrio Team Battle phone-card boundary"
+        ],
+        "not_claiming": [
+          "artist credit from the raw row itself",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem.json#row:jp_promo_unnumbered_wotc_061_easily_understand_how_to_play_pok_mon_cards_latest_edition_novem:062",
+          "title": "Local unnumbered WotC row: Dugtrio 062 / Latest Edition",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "artist credit",
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/latest_how_to_play_book_1998_asobikata_v0_1.json",
+          "title": "Catalog-history source set: Asobikata Dugtrio richer source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+          "title": "Bulbapedia: Dugtrio (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The raw unnumbered-promo catalog anchors Dugtrio as source index 062 in the Latest Edition group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "The richer Asobikata slice links this same Dugtrio story to row 055, Japanese name ダグトリオ, and the original Asobikata Dugtrio nickname.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The raw row does not provide illustrator authority, while the richer Asobikata evidence records Miki Tanaka for Dugtrio.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "As raw index 062, Dugtrio is the evolution lesson repeated through another catalog surface: three heads, one book route, and a useful warning against name-only matching.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should match Dugtrio 062 by raw index plus Asobikata route, then separate original Asobikata Dugtrio from Pokemon Web e-Card reprints, ordinary Dugtrio rows, and Dugtrio Team Battle phone-card/event memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "unnumbered_wotc_062_dugtrio_asobikata_bridge_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Dugtrio 062, Asobikata Dugtrio, ダグトリオ, Latest Edition, Pokemon Web, e-Card, Dugtrio Team Battle, phone card, row 055, or row 062.",
+          "summary": "Treat Dugtrio 062 as the raw-index view of Asobikata Dugtrio only when the source index and book route both line up.",
+          "steps": [
+            "Confirm raw unnumbered source index 062 and name Dugtrio.",
+            "Bridge to the richer Asobikata Dugtrio evidence for Japanese name ダグトリオ and Miki Tanaka credit.",
+            "Preserve that the raw row itself lacks illustrator and Japanese print-name authority.",
+            "Separate original Asobikata Dugtrio from the Pokemon Web e-Card Series reprint.",
+            "Separate this row from ordinary Dugtrio, Dugtrio Team Battle phone-card/event objects, and other Dugtrio-named cards.",
+            "Ask for seller-controlled front/back scans, title/name area, artist/copyright area, lower-right symbol/number area, surface/corners, and any book/slab/cert evidence before trade use.",
+            "Do not treat row 062, row 055, a provider image, or a book story as spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "artist credit from the raw unnumbered row itself",
+            "complete variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Dugtrio 062 — the lesson repeated through another map",
+        "why_it_matters": "Dugtrio 062 is why the bridge matters. The raw index can name the card, but the collector needs the route: Asobikata, Miki Tanaka, the later Pokemon Web echo, and the phone-card/event traps around Dugtrio. The card looks simple until the catalog has to prove which Dugtrio memory it means.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    }
+  ]
+}

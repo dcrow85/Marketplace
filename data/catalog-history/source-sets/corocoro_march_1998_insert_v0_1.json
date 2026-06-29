@@ -1,0 +1,880 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the CoroCoro Comic March 1998 promo source slice, emphasizing February 15 1998 magazine route, Brock/Misty Gym Leader ownership, two-card insert relationship, Ken Sugimori source credits, and later Gym/reprint non-equivalence.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Brock's Onix row 037",
+      "Misty's Staryu row 038",
+      "two-card insert relationship",
+      "Gym Leader ownership identity rails",
+      "Ken Sugimori source-credit texture"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue archive",
+      "complete magazine-object ledger",
+      "later mail-in prize-draw coverage",
+      "theme-deck or expansion reprint census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_corocoro_march_1998_19980215",
+      "context": {
+        "release_family_id": "jp_promo_corocoro_march_1998_19980215",
+        "name_en": "CoroCoro Comic March 1998 promos source slice",
+        "name_ja": "月刊コロコロコミック1998年3月号プロモ",
+        "release_date": "1998-02-15",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro magazine distribution",
+          "two-card insert relationship",
+          "Gym Leader ownership",
+          "Sugimori official-feeling character memory",
+          "UPC aggregate row boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_corocoro_march_1998_19980215:037",
+            "name": "Brock's Onix",
+            "why": "Brock identity plus huge partner Pokémon, one half of the two-card March 1998 insert",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_corocoro_march_1998_19980215:038",
+            "name": "Misty's Staryu",
+            "why": "Misty identity plus compact water-type partner, paired explicitly with Brock’s Onix on the insert",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 2,
+            "examples": [
+              "Brock's Onix",
+              "Misty's Staryu"
+            ],
+            "why": "Both rows carry Sugimori credit, making the tiny insert feel official and character-model close while still requiring source-route discipline.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete magazine-object ledger",
+          "later mail-in prize-draw coverage",
+          "theme-deck or expansion reprint census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected snapshot place the CoroCoro Comic March 1998 promo source slice on February 15, 1998 as the March 1998 issue insert.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The bounded source slice models two source-pinned card identities: Brock's Onix row 037 and Misty's Staryu row 038, with source_gap_count 0 for this slice.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Selected lines for both card pages say each card was available on a two-card insert alongside the other in the March 1998 issue of CoroCoro.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The two-card pair matters as Gym Leader ownership memory: Brock and Misty are not just species labels, but anime/game character relationships arriving through magazine media before later Gym-set memory can blur the route.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The selected lines and local rows credit Ken Sugimori for both Brock's Onix and Misty's Staryu as source/provider metadata, not physical-card proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "This source slice is not a complete CoroCoro issue archive, magazine-object ledger, later mail-in prize-draw account, theme-deck or expansion reprint census, official copy-count source, or authentication proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "The release matters because it turns a magazine insert into a small relationship object: rock-solid Brock beside water-bright Misty, both Sugimori-clean, both meant to be understood as a pair pulled from CoroCoro rather than as loose Gym-name cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve February 15 1998 CoroCoro March issue route, two-card insert relationship, row 037/038 identity, Japanese/romaji names, Ken Sugimori credit, UPC source-row mode, and reprint/non-magazine non-equivalence before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "CoroCoro March 1998 insert — Brock and Misty arrive as a pair",
+        "why_it_matters": "This little source slice has a very clean kind of magic. It is not a booster set trying to be complete; it is a CoroCoro reader opening an issue and finding Brock and Misty as a paired object. Brock’s Onix is heavy, stone, gym-leader certainty. Misty’s Staryu is smaller, bright, water-gym motion. Both are Sugimori-clean, which gives the pair an official character-model feeling, but the real identity is the route: February 15, 1998, March issue, two-card insert, rows 037 and 038. The agent has to keep the pair together in memory even when a seller only shows one card.",
+        "not_claiming": [
+          "complete release history",
+          "complete CoroCoro issue archive",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: CoroCoro Comic March 1998 promos source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_march_1998_19980215.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "title": "Bulbapedia + PokéCardex selected lines: CoroCoro March 1998 two-card insert",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_march_1998_selected_lines.json",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Brock's Onix (CoroCoro promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Brock%27s_Onix_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Misty's Staryu (CoroCoro promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Staryu_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "provider_reference",
+          "title": "PokéCardex UPC aggregate source rows 037-038",
+          "ref": "https://www.pokecardex.com/en/series/jp/UPC",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_march_1998_two_card_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Onix, Misty's Staryu, タケシのイワーク, カスミのヒトデマン, CoroCoro March 1998, February 15 1998, two-card insert, Gym Leader promo, or UPC rows 037/038.",
+          "summary": "Preserve the February 15 1998 CoroCoro March issue two-card insert route before accepting either card as this source slice.",
+          "steps": [
+            "Confirm CoroCoro Comic March 1998 issue insert context and February 15, 1998 date.",
+            "Preserve the pair relationship: Brock's Onix row 037 and Misty's Staryu row 038 were documented as a two-card insert alongside each other.",
+            "Preserve Japanese/romaji names: タケシのイワーク / Takeshi's Iwark and カスミのヒトデマン / Kasumi's Hitodeman.",
+            "Preserve Ken Sugimori as source/provider illustrator credit for both rows, but do not use artist credit alone as physical-card proof.",
+            "Do not collapse these rows into later Gym, theme-deck, expansion, or mail-in/prize-draw memories without explicit route evidence.",
+            "Use seller photos for card face/back, stock, gloss, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_corocoro_march_1998_19980215:037",
+      "context": {
+        "release_family_id": "jp_promo_corocoro_march_1998_19980215",
+        "release_name": "CoroCoro Comic March 1998 promos source slice",
+        "row_id": "jp_promo_corocoro_march_1998_19980215:037",
+        "catalog_row_id": "037",
+        "name_en": "Brock's Onix",
+        "name_ja": "タケシのイワーク",
+        "romaji": "Takeshi's Iwark"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "037",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Unnumbered Promotional / Sans rareté",
+        "signals": [
+          "CoroCoro Comic March 1998 promos source slice",
+          "037",
+          "CoroCoro Comic March 1998 issue insert",
+          "February 15 1998",
+          "two-card insert",
+          "Ken Sugimori",
+          "タケシのイワーク",
+          "Takeshi's Iwark"
+        ],
+        "assembly_themes": [
+          "magazine/media distribution",
+          "Gym Leader ownership",
+          "two-card insert relationship",
+          "artist trace",
+          "identity trap"
+        ],
+        "assembly_note": "Brock's Onix sits in the CoroCoro March 1998 insert as row 037; the two-card relationship and magazine route need to stay attached.",
+        "collector_texture_note": "Brock’s Onix gives the insert its weight. It is a Gym Leader partner card before the later Gym-set machinery can take over the memory, so the route matters: this is not just an Onix and not just a Brock card. It is the rock half of a CoroCoro two-card pair, Sugimori-clean, row 037, March 1998 issue.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Brock's Onix as CoroCoro March 1998 promo source-slice row 037, with Japanese name タケシのイワーク and romaji Takeshi's Iwark.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected lines place Brock's Onix on a two-card insert in the March 1998 issue of CoroCoro, released February 15, 1998, alongside Misty's Staryu row 038.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row records Brock's Onix as an Unnumbered Promotional / Sans rareté UPC-row promo signal; this is source identity, not price or authenticity proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The selected lines and local row credit Brock's Onix to Ken Sugimori as source/provider metadata, not physical-card proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "Keep Brock's Onix pinned to the CoroCoro March 1998 two-card insert route and do not accept Gym Leader name, species name, or Sugimori credit alone as source identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Brock’s Onix gives the insert its weight. It is a Gym Leader partner card before the later Gym-set machinery can take over the memory, so the route matters: this is not just an Onix and not just a Brock card. It is the rock half of a CoroCoro two-card pair, Sugimori-clean, row 037, March 1998 issue.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 037, CoroCoro March 1998 issue route, two-card insert pairing, Japanese/romaji name, Ken Sugimori credit, and later Gym/reprint non-equivalence before accepting this as Brock's Onix.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Brock's Onix — CoroCoro March 1998 two-card insert row 037",
+        "why_it_matters": "Brock’s Onix gives the insert its weight. It is a Gym Leader partner card before the later Gym-set machinery can take over the memory, so the route matters: this is not just an Onix and not just a Brock card. It is the rock half of a CoroCoro two-card pair, Sugimori-clean, row 037, March 1998 issue.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: CoroCoro Comic March 1998 promos source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_march_1998_19980215.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "title": "Bulbapedia + PokéCardex selected lines: CoroCoro March 1998 two-card insert",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_march_1998_selected_lines.json",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Brock's Onix (CoroCoro promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Brock%27s_Onix_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "provider_reference",
+          "title": "PokéCardex UPC aggregate source rows 037-038",
+          "ref": "https://www.pokecardex.com/en/series/jp/UPC",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_march_1998_037_two_card_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Brock's Onix, タケシのイワーク, Takeshi's Iwark, CoroCoro March 1998, February 15 1998, two-card insert, Gym Leader promo, Ken Sugimori, or UPC row 037.",
+          "summary": "Keep Brock's Onix pinned to CoroCoro March 1998 row 037 and the two-card insert relationship.",
+          "steps": [
+            "Require CoroCoro Comic March 1998 issue / February 15, 1998 route and row 037.",
+            "Preserve Japanese/romaji name: タケシのイワーク / Takeshi's Iwark.",
+            "Preserve the paired-insert relationship with Misty's Staryu row 038.",
+            "Preserve Ken Sugimori source/provider credit but do not use it alone as physical-card proof.",
+            "Reject name-only or Gym Leader-only matches to later Gym, theme-deck, expansion, or other promo memories without explicit source-route evidence.",
+            "Use seller photos for physical format, stock, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_corocoro_march_1998_19980215:038",
+      "context": {
+        "release_family_id": "jp_promo_corocoro_march_1998_19980215",
+        "release_name": "CoroCoro Comic March 1998 promos source slice",
+        "row_id": "jp_promo_corocoro_march_1998_19980215:038",
+        "catalog_row_id": "038",
+        "name_en": "Misty's Staryu",
+        "name_ja": "カスミのヒトデマン",
+        "romaji": "Kasumi's Hitodeman"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "038",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Unnumbered Promotional / Sans rareté",
+        "signals": [
+          "CoroCoro Comic March 1998 promos source slice",
+          "038",
+          "CoroCoro Comic March 1998 issue insert",
+          "February 15 1998",
+          "two-card insert",
+          "Ken Sugimori",
+          "カスミのヒトデマン",
+          "Kasumi's Hitodeman"
+        ],
+        "assembly_themes": [
+          "magazine/media distribution",
+          "Gym Leader ownership",
+          "two-card insert relationship",
+          "artist trace",
+          "identity trap"
+        ],
+        "assembly_note": "Misty's Staryu sits in the CoroCoro March 1998 insert as row 038; the two-card relationship and magazine route need to stay attached.",
+        "collector_texture_note": "Misty’s Staryu gives the insert its motion. It is the water half of the same small magazine object, and it only fully makes sense beside Brock’s Onix. The agent should feel the charm but keep the rail strict: Kasumi’s Hitodeman, row 038, February 15 1998 CoroCoro March issue, paired insert route.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Misty's Staryu as CoroCoro March 1998 promo source-slice row 038, with Japanese name カスミのヒトデマン and romaji Kasumi's Hitodeman.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected lines place Misty's Staryu on a two-card insert in the March 1998 issue of CoroCoro, released February 15, 1998, alongside Brock's Onix row 037.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row records Misty's Staryu as an Unnumbered Promotional / Sans rareté UPC-row promo signal; this is source identity, not price or authenticity proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The selected lines and local row credit Misty's Staryu to Ken Sugimori as source/provider metadata, not physical-card proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "Keep Misty's Staryu pinned to the CoroCoro March 1998 two-card insert route and do not accept Gym Leader name, species name, or Sugimori credit alone as source identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Misty’s Staryu gives the insert its motion. It is the water half of the same small magazine object, and it only fully makes sense beside Brock’s Onix. The agent should feel the charm but keep the rail strict: Kasumi’s Hitodeman, row 038, February 15 1998 CoroCoro March issue, paired insert route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve row 038, CoroCoro March 1998 issue route, two-card insert pairing, Japanese/romaji name, Ken Sugimori credit, and later Gym/reprint non-equivalence before accepting this as Misty's Staryu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Misty's Staryu — CoroCoro March 1998 two-card insert row 038",
+        "why_it_matters": "Misty’s Staryu gives the insert its motion. It is the water half of the same small magazine object, and it only fully makes sense beside Brock’s Onix. The agent should feel the charm but keep the rail strict: Kasumi’s Hitodeman, row 038, February 15 1998 CoroCoro March issue, paired insert route.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: CoroCoro Comic March 1998 promos source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_march_1998_19980215.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "title": "Bulbapedia + PokéCardex selected lines: CoroCoro March 1998 two-card insert",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_corocoro_march_1998_selected_lines.json",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Misty's Staryu (CoroCoro promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Staryu_(CoroCoro_promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete reprint history",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "provider_reference",
+          "title": "PokéCardex UPC aggregate source rows 037-038",
+          "ref": "https://www.pokecardex.com/en/series/jp/UPC",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_march_1998_038_two_card_insert_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Misty's Staryu, カスミのヒトデマン, Kasumi's Hitodeman, CoroCoro March 1998, February 15 1998, two-card insert, Gym Leader promo, Ken Sugimori, or UPC row 038.",
+          "summary": "Keep Misty's Staryu pinned to CoroCoro March 1998 row 038 and the two-card insert relationship.",
+          "steps": [
+            "Require CoroCoro Comic March 1998 issue / February 15, 1998 route and row 038.",
+            "Preserve Japanese/romaji name: カスミのヒトデマン / Kasumi's Hitodeman.",
+            "Preserve the paired-insert relationship with Brock's Onix row 037.",
+            "Preserve Ken Sugimori source/provider credit but do not use it alone as physical-card proof.",
+            "Reject name-only or Gym Leader-only matches to later Gym, theme-deck, expansion, or other promo memories without explicit source-route evidence.",
+            "Use seller photos for physical format, stock, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete CoroCoro issue archive",
+            "complete magazine-object ledger",
+            "later mail-in prize-draw coverage",
+            "theme-deck or expansion reprint census",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    }
+  ]
+}

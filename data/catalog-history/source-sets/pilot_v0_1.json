@@ -1,0 +1,2538 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Pilot for the catalog-wide history and collector-texture dossier layer. It proves release-level and card-level shape before scaling to every modeled release and card.",
+    "in_scope": [
+      "Japanese First Expansion Pack / No Rarity launch-family rows",
+      "Japanese Expansion Pack / No Rarity Venusaur",
+      "Japanese Expansion Pack / No Rarity Blastoise",
+      "Japanese Expansion Pack / No Rarity Mewtwo",
+      "first CoroCoro glossy Pikachu promo",
+      "English Base Set as a later crosswalk/reference release",
+      "English Base Set Mewtwo #10"
+    ],
+    "not_claiming": [
+      "complete deep-history coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts unless explicitly sourced",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_expansion_pack_19961020",
+      "type": "release",
+      "context": {
+        "name_en": "Expansion Pack / No Rarity Lab",
+        "name_ja": "第1弾 拡張パック",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "release_date": "1996-10-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json",
+          "title": "Local Japanese pre-English release catalog: First Expansion Pack / No Rarity lab",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and product-count synthesis",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog records October 20, 1996 as the release date for the Japanese First Expansion Pack / No Rarity lab release family.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local release model carries 102 launch-family rows while explicitly marking the strict booster product count as 96 and the six basic Energy cards as broader Starter Pack caveats.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "The research synthesis frames the Expansion Pack as the first full Pokémon TCG set while noting that earlier non-TCG Pokémon card objects and the first glossy CoroCoro promos predate or sit beside it.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The research synthesis treats the blank lower-right corner as the collector-facing No Rarity marker, while warning that the official confirmation trail is thinner than market confidence can make it sound.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local release rows identify Charizard, Blastoise, Venusaur, Chansey, Mewtwo, Zapdos, Raichu, and other holos as high-attention early chase anchors by rarity, image provenance, and collector texture.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This release matters because it is where the catalog stops being only a list and starts becoming a market memory: product boundaries, rarity grammar, artists, child retail, and later collector proof all collide in one launch-family object.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "release_no_rarity_boundary_v0.1",
+          "not_claiming": [
+            "physical-card No Rarity truth",
+            "seller possession",
+            "authenticity",
+            "complete official print-run proof"
+          ],
+          "steps": [
+            "Separate the strict 96-card booster checklist from the 102-row launch-family lab model.",
+            "For non-Energy No Rarity claims, inspect the lower-right rarity-symbol region row by row.",
+            "For basic Energy rows, preserve the Starter Pack caveat rather than treating them as strict booster pulls.",
+            "Do not use the release dossier alone as proof that a seller's physical card is a No Rarity copy."
+          ],
+          "summary": "Keep the 96-vs-102 boundary and the lower-right No Rarity marker visible; this release dossier explains context, not physical-card truth.",
+          "trigger": "Explaining or identifying the Japanese First Expansion Pack / No Rarity launch-family model."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first binder page that became a market",
+        "why_it_matters": "This is where Pokémon stops being only screen memory and becomes cardboard ritual: a pack, a corner mark, a missing corner mark, a child opening ten cards, and decades later an agent trying to decide what that little blank space should cost in evidence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:011",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:011",
+        "catalog_row_id": "011",
+        "release_name": "Expansion Pack / No Rarity Lab"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:011",
+          "title": "Local Japanese pre-English catalog row: Venusaur / PMCG1-011",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "direct Japanese illustrator authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and identification synthesis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Venusaur as Japanese Expansion Pack / No Rarity Lab row jp_tcg_expansion_pack_19961020:011, with local signal PMCG1-011 and Japanese name フシギバナ / Fushigibana.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog's visible rarity or collector signal for Venusaur PMCG1-011 is Holo Rare and marks it as an active No Rarity target.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row carries Mitsuhiro Arita as artist metadata through an English Base Set crosswalk and explicitly caveats that this is useful catalog texture, not direct Japanese-print illustrator authority if the Illus. line becomes dispute-relevant.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance describes a source-labeled No Rarity reference image with an expected empty lower-right rarity-symbol field, while preserving that the reference image is not seller evidence, authentication proof, or condition proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur PMCG1-011 matters because it makes the No Rarity problem feel beautiful and dangerous at once: a launch holo, an Arita-linked garden-beast image, and a blank lower-right corner that can orient a search but cannot carry a transaction by itself.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Japanese Expansion Pack / No Rarity Venusaur PMCG1-011 from English Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Erika's Venusaur, CD/promo Venusaur rows, and Series 1 Starter Pack source ambiguity; the lower-right blank corner is necessary for a No Rarity claim but not sufficient for possession, authenticity, or condition.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_expansion_pack_venusaur_011_no_rarity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No Rarity Venusaur, Japanese Base Venusaur, Expansion Pack Venusaur, PMCG1-011, Fushigibana, フシギバナ, blank corner Venusaur, or Venusaur no symbol.",
+          "summary": "Japanese Expansion Pack Venusaur PMCG1-011 is a launch-family No Rarity target. Preserve Japanese row identity, lower-right symbol evidence, and source-family ambiguity before comparing to other Venusaur prints.",
+          "steps": [
+            "Confirm the row as Japanese Expansion Pack / No Rarity Lab PMCG1-011 with Japanese name フシギバナ / Fushigibana.",
+            "Inspect the lower-right rarity-symbol region; a No Rarity claim needs the expected blank corner visible, not merely the name Venusaur.",
+            "Treat the source-labeled No Rarity reference image as a comparison witness only; it is not seller possession, seller card match, authentication, or condition evidence.",
+            "Preserve the Mitsuhiro Arita artist signal as crosswalk catalog metadata unless the exact Japanese Illus. line is visible in seller evidence.",
+            "Separate this row from English Base Set Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, Erika's Venusaur, CD/promo Venusaur, Series 1 Starter Pack source ambiguity, and later Venusaur ex/GX/V memory.",
+            "For transaction use, ask for seller-controlled front/back scans, angled holo-surface images, lower-right corner close-up, edge/corner photos, and any slab/cert evidence before treating the physical card as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "holo surface condition",
+            "direct Japanese illustrator authority",
+            "Series 1 Starter Pack equivalence",
+            "English Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Expedition equivalence",
+            "Erika's Venusaur equivalence",
+            "CD promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "011",
+        "rarity_signal": "Holo Rare",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "No Rarity target",
+          "launch holo",
+          "blank-corner evidence",
+          "starter finale",
+          "artist crosswalk"
+        ],
+        "signals": [
+          "PMCG1-011",
+          "Expansion Pack / No Rarity Lab",
+          "Venusaur",
+          "フシギバナ",
+          "Fushigibana",
+          "Holo Rare",
+          "Mitsuhiro Arita",
+          "Grass",
+          "Stage2",
+          "National Pokedex 3",
+          "expected empty lower-right rarity-symbol field"
+        ],
+        "collector_texture_note": "Venusaur is the garden becoming a tank, but on a No Rarity claim the poetry lives or dies in the corner: the huge flower, the holo surface, and the blank lower-right field all need to be seen."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur PMCG1-011: the garden and the blank corner",
+        "why_it_matters": "No Rarity Venusaur is quieter than Charizard and somehow more protocol-shaped. It is a launch holo with all the first-set gravity, but the thing that makes the market lean forward is a tiny absence in the lower-right corner. That is why this row is useful for agents: it teaches that absence can be evidence, but only when it is placed. Name, row, image, corner, source, seller proof, then judgment. The garden does not get to spend until the assembly is real.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "seller card match",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "physical-card No Rarity truth",
+          "holo surface condition"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:032",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "カメックス",
+        "romaji": "Kamekkusu",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:032",
+        "catalog_row_id": "032",
+        "release_name": "Expansion Pack / No Rarity Lab"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:032",
+          "title": "Local Japanese pre-English catalog row: Blastoise / PMCG1-032",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "direct Japanese illustrator authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and identification synthesis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Blastoise as Japanese Expansion Pack / No Rarity Lab row jp_tcg_expansion_pack_19961020:032, with local signal PMCG1-032 and Japanese name カメックス / Kamekkusu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog's visible rarity or collector signal for Blastoise PMCG1-032 is Holo Rare and marks it as an active No Rarity target.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row carries Ken Sugimori as artist metadata through an English Base Set crosswalk and explicitly caveats that this is useful catalog texture, not direct Japanese-print illustrator authority if the Illus. line becomes dispute-relevant.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance describes a source-labeled No Rarity reference image with an expected empty lower-right rarity-symbol field, while preserving that the reference image is not seller evidence, authentication proof, or condition proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Blastoise PMCG1-032 matters because it carries launch-holo weight in a different register from Venusaur: cannons, shell bulk, Water starter finality, and a No Rarity blank-corner claim that needs evidence worthy of the collector pressure around it.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Japanese Expansion Pack / No Rarity Blastoise PMCG1-032 from English Base Set Blastoise, Base Set 2 Blastoise, Legendary Collection Dark Blastoise, Expedition Blastoise, CD/promo Blastoise rows, and Series 1 Starter Pack source ambiguity; the lower-right blank corner is necessary for a No Rarity claim but not sufficient for possession, authenticity, or condition.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_expansion_pack_blastoise_032_no_rarity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No Rarity Blastoise, Japanese Base Blastoise, Expansion Pack Blastoise, PMCG1-032, Kamekkusu, カメックス, blank corner Blastoise, or Blastoise no symbol.",
+          "summary": "Japanese Expansion Pack Blastoise PMCG1-032 is a launch-family No Rarity target. Preserve Japanese row identity, lower-right symbol evidence, and source-family ambiguity before comparing to other Blastoise prints.",
+          "steps": [
+            "Confirm the row as Japanese Expansion Pack / No Rarity Lab PMCG1-032 with Japanese name カメックス / Kamekkusu.",
+            "Inspect the lower-right rarity-symbol region; a No Rarity claim needs the expected blank corner visible, not merely the name Blastoise.",
+            "Treat the source-labeled No Rarity reference image as a comparison witness only; it is not seller possession, seller card match, authentication, or condition evidence.",
+            "Preserve the Ken Sugimori artist signal as crosswalk catalog metadata unless the exact Japanese Illus. line is visible in seller evidence.",
+            "Separate this row from English Base Set Blastoise, Base Set 2 Blastoise, Legendary Collection Dark Blastoise, Expedition Blastoise, CD/promo Blastoise, Series 1 Starter Pack source ambiguity, and later Blastoise ex/GX/V memory.",
+            "For transaction use, ask for seller-controlled front/back scans, angled holo-surface images, lower-right corner close-up, edge/corner photos, and any slab/cert evidence before treating the physical card as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "holo surface condition",
+            "direct Japanese illustrator authority",
+            "Series 1 Starter Pack equivalence",
+            "English Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Expedition equivalence",
+            "CD promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "032",
+        "rarity_signal": "Holo Rare",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "No Rarity target",
+          "launch holo",
+          "blank-corner evidence",
+          "Water starter finale",
+          "artist crosswalk"
+        ],
+        "signals": [
+          "PMCG1-032",
+          "Expansion Pack / No Rarity Lab",
+          "Blastoise",
+          "カメックス",
+          "Kamekkusu",
+          "Holo Rare",
+          "Ken Sugimori",
+          "Water",
+          "Stage2",
+          "National Pokedex 9",
+          "expected empty lower-right rarity-symbol field"
+        ],
+        "collector_texture_note": "Blastoise is cannons, bulk, and childhood final-boss energy; on a No Rarity claim the card needs evidence as heavy as the story collectors put on it."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blastoise PMCG1-032: cannons and the blank corner",
+        "why_it_matters": "No Rarity Blastoise has a wonderful bluntness to it. Venusaur asks you to notice the garden; Blastoise asks you to feel the shell, the cannons, the weight. But the marketplace lesson is the same and maybe sharper because the card carries so much starter-holo gravity: a famous name is not enough, a reference image is not enough, and a blank corner is not spendable until a seller's actual card has been placed in the chain.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "seller card match",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "physical-card No Rarity truth",
+          "holo surface condition"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:050",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Myuutsuu",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:050",
+        "catalog_row_id": "050",
+        "release_name": "Expansion Pack / No Rarity Lab"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:050",
+          "title": "Local Japanese pre-English catalog row: Mewtwo / PMCG1-050",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "direct Japanese illustrator authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_research_synthesis",
+          "ref": "No_Rarity_Set_Research.md#L28",
+          "title": "No Rarity Set Research: launch and identification synthesis",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official corporate print-run disclosure",
+            "official No Rarity switchover date",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mewtwo as Japanese Expansion Pack / No Rarity Lab row jp_tcg_expansion_pack_19961020:050, with local signal PMCG1-050 and Japanese name ミュウツー / Myuutsuu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog's visible rarity or collector signal for Mewtwo PMCG1-050 is Holo Rare and marks it as an active No Rarity target.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row carries Ken Sugimori as artist metadata through an English Base Set crosswalk and explicitly caveats that this is useful catalog texture, not direct Japanese-print illustrator authority if the Illus. line becomes dispute-relevant.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance describes a source-labeled No Rarity reference image with an expected empty lower-right rarity-symbol field, while preserving that the reference image is not seller evidence, authentication proof, or condition proof.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo PMCG1-050 matters because the launch holo carries myth before it carries price: laboratory origin, Psychic scarcity, Sugimori severity, and a No Rarity blank-corner claim that should make an agent ask for better evidence rather than speak louder.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Japanese Expansion Pack / No Rarity Mewtwo PMCG1-050 from English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, P Promotional Mewtwo 046/P, and Series 1 Starter Pack source ambiguity; the lower-right blank corner is necessary for a No Rarity claim but not sufficient for possession, authenticity, or condition.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "jp_expansion_pack_mewtwo_050_no_rarity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says No Rarity Mewtwo, Japanese Base Mewtwo, Expansion Pack Mewtwo, PMCG1-050, Myuutsuu, ミュウツー, blank corner Mewtwo, Mewtwo no symbol, or vintage Japanese Mewtwo holo.",
+          "summary": "Japanese Expansion Pack Mewtwo PMCG1-050 is a launch-family No Rarity target. Preserve Japanese row identity, lower-right symbol evidence, and source-family ambiguity before comparing to other Mewtwo prints.",
+          "steps": [
+            "Confirm the row as Japanese Expansion Pack / No Rarity Lab PMCG1-050 with Japanese name ミュウツー / Myuutsuu.",
+            "Inspect the lower-right rarity-symbol region; a No Rarity claim needs the expected blank corner visible, not merely the name Mewtwo.",
+            "Treat the source-labeled No Rarity reference image as a comparison witness only; it is not seller possession, seller card match, authentication, or condition evidence.",
+            "Preserve the Ken Sugimori artist signal as crosswalk catalog metadata unless the exact Japanese Illus. line is visible in seller evidence.",
+            "Separate this row from English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, P Promotional Mewtwo 046/P, Series 1 Starter Pack source ambiguity, and later Mewtwo ex/GX/V memory.",
+            "For transaction use, ask for seller-controlled front/back scans, angled holo-surface images, lower-right corner close-up, edge/corner photos, and any slab/cert evidence before treating the physical card as spendable evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-card No Rarity truth",
+            "holo surface condition",
+            "direct Japanese illustrator authority",
+            "Series 1 Starter Pack equivalence",
+            "English Base Set equivalence",
+            "Legendary Collection equivalence",
+            "Expedition equivalence",
+            "movie promo equivalence",
+            "P Promotional equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "050",
+        "rarity_signal": "Holo Rare",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "No Rarity target",
+          "launch holo",
+          "blank-corner evidence",
+          "laboratory myth",
+          "artist crosswalk"
+        ],
+        "signals": [
+          "PMCG1-050",
+          "Expansion Pack / No Rarity Lab",
+          "Mewtwo",
+          "ミュウツー",
+          "Myuutsuu",
+          "Holo Rare",
+          "Ken Sugimori",
+          "Psychic",
+          "Basic",
+          "National Pokedex 150",
+          "expected empty lower-right rarity-symbol field"
+        ],
+        "collector_texture_note": "Mewtwo arrives with myth already attached. On a No Rarity copy, the blank corner does not need drama; it needs placement, light, and proof."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo PMCG1-050: myth and the blank corner",
+        "why_it_matters": "No Rarity Mewtwo is almost too quiet for how much weight it carries. It is not a starter finale; it is the lab myth already waiting inside the first card game, a Psychic holo with Sugimori severity and a name that does half the work before the card is even inspected. That is exactly why the agent has to be stern. The myth can explain why the card matters, but only the row, the corner, the source, and seller evidence can make a claim usable.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "seller card match",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "physical-card No Rarity truth",
+          "holo surface condition"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109",
+      "type": "release",
+      "context": {
+        "name_en": "Base Set",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "release_date": "1999-01-09"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json",
+          "title": "Local English WoC release catalog: Base Set",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base1",
+          "title": "Pokémon TCG API v2 set record: Base",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards product-history essay",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Base_Set_(TCG)",
+          "title": "Bulbapedia: Base Set (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local English WoC catalog records January 9, 1999 as the Base Set release date.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The Pokémon TCG API Base Set record returns printedTotal 102 and total 102 for set id base1.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The local corpus treats English Base Set as a later English reference/crosswalk surface for many Japanese launch-family cards, especially artist and card-identity metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia frames Base Set as the first main expansion outside Japan and as the English-language launch set built from the Japanese Expansion Pack / launch-card lineage.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows for English Base Set include the Kanto starter holos, Mewtwo, Chansey, Raichu, Gyarados, Zapdos, key trainer tools, and energy rows that made the early English game feel complete rather than merely collectible.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local English Base artist cluster is dominated by Ken Sugimori and Mitsuhiro Arita, with Kagemaru Himeno, Keiji Kinebuchi, and early trainer/energy artists giving the launch binder its mixed character-art, monster-art, and tool-card grammar.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "For this project, English Base is both the familiar doorway many collectors learned first and a dangerous resemblance machine: it makes the Japanese launch family emotionally legible while requiring agents to preserve English set, edition, Shadowless, Unlimited, and Japanese-print boundaries.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_set_base1_launch_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set, base1, English Base, original English Pokemon cards, Shadowless, First Edition, Unlimited, no expansion symbol, or same art as Japanese Expansion Pack.",
+          "summary": "English Base Set is the 102-row English launch expansion modeled as base1. Preserve set id, row number, language, and edition/Shadowless evidence before comparing it to Japanese launch cards or later reprints.",
+          "steps": [
+            "Preserve release_family_id en_wotc_base_set_19990109 and Pokemon TCG API set id base1.",
+            "Confirm the printed row number and no-expansion-symbol Base Set frame before using this release identity.",
+            "Do not treat shared artwork as proof of Japanese Expansion Pack, No Rarity, Base Set 2, Legendary Collection, or later reprint identity.",
+            "Keep First Edition, Shadowless, and Unlimited as seller-evidence claims; the release row alone does not determine which physical print variant a seller has.",
+            "For price, condition, edition, or authenticity claims, use seller-controlled images, graded-label/cert evidence when present, and market evidence; do not infer from catalog memory."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The doorway most collectors learned first",
+        "why_it_matters": "English Base is where a huge part of the English-speaking world learned the shape of Pokemon cards: the Charizard gravity, the starter trio, the trainers that taught the game, the energy floor, the Ken Sugimori and Mitsuhiro Arita visual grammar. In this catalog it is useful, beloved, and dangerous. It helps an agent explain why an older Japanese row feels familiar, but it must never let familiarity become provenance. English Base is a doorway, not a shortcut.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "English Base is the same object as Japanese Expansion Pack",
+          "direct Japanese print authority",
+          "First Edition status",
+          "Shadowless status",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109:base1-10",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-10",
+        "catalog_row_id": "10",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-10",
+          "title": "Local English WotC catalog row: Mewtwo base1-10",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-10",
+          "title": "Pokemon TCG API v2 card record: Mewtwo base1-10",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Base_Set_10)",
+          "title": "Bulbapedia: Mewtwo (Base Set 10)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Mewtwo as English Base Set row base1-10 / printed number 10.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Mewtwo base1-10 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Ken Sugimori as the illustrator for Mewtwo base1-10.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Mewtwo base1-10 as a Level 53 Psychic Basic Pokemon with HP 60, Psychic weakness, retreat cost 3, and the attacks Psychic and Barrier.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo base1-10 matters because it brought the franchise's laboratory myth into the English launch binder as a holo rather than a side-story: the flavor text, Barrier, and psychic type made the card feel dangerous even beside the starter icons.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Mewtwo base1-10 from Japanese Expansion Pack / No Rarity Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, and Japanese P Promotional Mewtwo 046/P; the English Base row number, set id base1, Rare Holo status, Ken Sugimori credit, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_mewtwo_10_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Mewtwo, original Mewtwo holo, base1-10, Mewtwo #10, Shadowless Mewtwo, First Edition Mewtwo, Unlimited Mewtwo, or Ken Sugimori Mewtwo.",
+          "summary": "Mewtwo base1-10 is the English Base Set Rare Holo row. Preserve set id base1, printed number 10, and edition/Shadowless evidence before comparing to other Mewtwo prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 10 before using this dossier.",
+            "Check the card is the Rare Holo Mewtwo with Ken Sugimori credit, Psychic / Barrier attacks, HP 60, Psychic weakness, and retreat cost 3.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, and P Promotional Mewtwo 046/P.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, and edition as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Mewtwo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "10",
+        "rarity_signal": "Rare Holo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "laboratory myth",
+          "artist trace",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Mewtwo",
+          "10",
+          "Rare Holo",
+          "Ken Sugimori",
+          "Psychic",
+          "Barrier",
+          "HP 60",
+          "Level 53",
+          "Psychic weakness",
+          "retreat cost 3"
+        ],
+        "collector_texture_note": "Base Set Mewtwo is the English launch holo that made the laboratory legend feel heavy in a binder: Sugimori image, Psychic/Barrier text, and holo surface all before any seller-specific variant claim.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo #10: the lab myth in the launch binder",
+        "why_it_matters": "Base Set Mewtwo does not need to be the loudest card in the room to change the room. Charizard is spectacle; Mewtwo is unease. Sugimori's image, the stark Psychic/Barrier play pattern, and the flavor of engineered power made the English launch binder feel like it contained something older and colder than a starter evolution. For an agent, that feeling is useful only if the rails stay visible: base1-10 first, edition evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109:base1-15",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-15",
+        "catalog_row_id": "15",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-15",
+          "title": "Local English WotC catalog row: Venusaur base1-15",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-15",
+          "title": "Pokemon TCG API v2 card record: Venusaur base1-15",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+          "title": "Bulbapedia: Venusaur (Base Set 15)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Venusaur as English Base Set row base1-15 / printed number 15.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Venusaur base1-15 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Mitsuhiro Arita as the illustrator for Venusaur base1-15.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Venusaur base1-15 as a Level 67 Grass Stage 2 Pokemon evolving from Ivysaur, with HP 100, Fire weakness, retreat cost 2, the Pokemon Power Energy Trans, and the attack Solarbeam.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur base1-15 matters because it made the English launch binder feel like an ecosystem, not only a monster parade: Arita's full-bodied plant-beast image and Energy Trans made the Grass starter line feel infrastructural, moving energy through the board while carrying holo starter prestige.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Venusaur base1-15 from Japanese Expansion Pack / No Rarity Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, CD/promo Venusaur rows, and later Venusaur ex/GX/V memories; the English Base row number, set id base1, Rare Holo status, Mitsuhiro Arita credit, Energy Trans text, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_venusaur_15_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Venusaur, original Venusaur holo, base1-15, Venusaur #15, Shadowless Venusaur, First Edition Venusaur, Unlimited Venusaur, Arita Venusaur, or Energy Trans Venusaur.",
+          "summary": "Venusaur base1-15 is the English Base Set Rare Holo row. Preserve set id base1, printed number 15, and edition/Shadowless evidence before comparing to other Venusaur prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 15 before using this dossier.",
+            "Check the card is the Rare Holo Venusaur with Mitsuhiro Arita credit, Energy Trans, Solarbeam, HP 100, Fire weakness, and retreat cost 2.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Venusaur, Base Set 2 Venusaur, Legendary Collection Venusaur, Expedition Venusaur, CD/promo Venusaur rows, and later Venusaur ex/GX/V memories.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, and edition as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Venusaur equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "15",
+        "rarity_signal": "Rare Holo",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "starter-line gravity",
+          "energy movement",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Venusaur",
+          "15",
+          "Rare Holo",
+          "Mitsuhiro Arita",
+          "Energy Trans",
+          "Solarbeam",
+          "HP 100",
+          "Level 67",
+          "Fire weakness",
+          "retreat cost 2"
+        ],
+        "collector_texture_note": "Base Set Venusaur is the English launch holo where Arita's starter-line art meets a real game engine: Energy Trans makes the big plant feel like infrastructure, not just a trophy.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur #15: the launch binder's living engine",
+        "why_it_matters": "Base Set Venusaur is easy to undersell if the room is only talking about Charizard. But Venusaur is one of the cards that makes the first English set feel alive. Arita gives it weight and bloom; Energy Trans gives it a job. It is the starter holo that turns Grass energy into motion across the board, which is exactly the kind of assembly this catalog is trying to preserve: art, character, game text, and collector memory all braided into one object. For an agent, the order matters: base1-15 first, edition evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109:base1-2",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-2",
+        "catalog_row_id": "2",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-2",
+          "title": "Local English WotC catalog row: Blastoise base1-2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-2",
+          "title": "Pokemon TCG API v2 card record: Blastoise base1-2",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Base_Set_2)",
+          "title": "Bulbapedia: Blastoise (Base Set 2)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Blastoise as English Base Set row base1-2 / printed number 2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Blastoise base1-2 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Ken Sugimori as the illustrator for Blastoise base1-2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Blastoise base1-2 as a Level 52 Water Stage 2 Pokemon evolving from Wartortle, with HP 100, Lightning weakness, retreat cost 3, the Pokemon Power Rain Dance, and the attack Hydro Pump.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Blastoise base1-2 matters because Rain Dance made the English launch set feel explosive in a different way than Charizard: the card is a starter-line trophy, but also an engine that turns Water Energy into sudden board pressure.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Blastoise base1-2 from Japanese Expansion Pack / No Rarity Blastoise, Base Set 2 Blastoise, Legendary Collection Blastoise, Expedition Blastoise, CD/promo Blastoise rows, Dark Blastoise, and later Blastoise ex/GX/V memory; the English Base row number, set id base1, Rare Holo status, Ken Sugimori credit, Rain Dance text, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_blastoise_2_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Blastoise, original Blastoise holo, base1-2, Blastoise #2, Shadowless Blastoise, First Edition Blastoise, Unlimited Blastoise, Sugimori Blastoise, or Rain Dance Blastoise.",
+          "summary": "Blastoise base1-2 is the English Base Set Rare Holo row. Preserve set id base1, printed number 2, and edition/Shadowless evidence before comparing to other Blastoise prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 2 before using this dossier.",
+            "Check the card is the Rare Holo Blastoise with Ken Sugimori credit, Rain Dance, Hydro Pump, HP 100, Lightning weakness, and retreat cost 3.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Blastoise, Base Set 2 Blastoise, Legendary Collection Blastoise, Expedition Blastoise, CD/promo Blastoise rows, Dark Blastoise, and later Blastoise ex/GX/V memories.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, and edition as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Blastoise equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "2",
+        "rarity_signal": "Rare Holo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "starter-line gravity",
+          "energy acceleration",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Blastoise",
+          "2",
+          "Rare Holo",
+          "Ken Sugimori",
+          "Rain Dance",
+          "Hydro Pump",
+          "HP 100",
+          "Level 52",
+          "Lightning weakness",
+          "retreat cost 3"
+        ],
+        "collector_texture_note": "Base Set Blastoise is the English launch holo that pairs Sugimori's cannon-backed starter with one of the first set's great engine texts: Rain Dance.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blastoise #2: the launch binder's pressure system",
+        "why_it_matters": "Base Set Blastoise is not just the Water starter standing next to Charizard. It is one of the early game's machines. Sugimori gives it the armored-cannon silhouette everyone remembers, and Rain Dance gives that silhouette a mechanism: Water Energy floods the board, Hydro Pump turns the pressure into damage, and suddenly the big turtle is not only a collection icon but a way the game teaches acceleration. For an agent, the feeling is useful only with rails: base1-2 first, edition evidence second, condition and authenticity only after seller proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_base_set_19990109:base1-4",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_base_set_19990109",
+        "row_id": "en_wotc_base_set_19990109:base1-4",
+        "catalog_row_id": "4",
+        "release_name": "Base Set"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_base_set_19990109.json#row:en_wotc_base_set_19990109:base1-4",
+          "title": "Local English WotC catalog row: Charizard base1-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-4",
+          "title": "Pokemon TCG API v2 card record: Charizard base1-4",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)",
+          "title": "Bulbapedia: Charizard (Base Set 4)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Charizard as English Base Set row base1-4 / printed number 4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog and Pokemon TCG API classify Charizard base1-4 as a Rare Holo Pokemon card.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit Mitsuhiro Arita as the illustrator for Charizard base1-4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API payload models Charizard base1-4 as a Level 76 Fire Stage 2 Pokemon evolving from Charmeleon, with HP 120, Water weakness, Fighting resistance, retreat cost 3, the Pokemon Power Energy Burn, and the attack Fire Spin.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Charizard base1-4 matters because it became the English launch set's most famous pressure point: Arita's airborne fire-dragon image, 120 HP, Energy Burn, and Fire Spin made the card feel oversized before market culture made it mythic.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should distinguish Charizard base1-4 from Japanese Expansion Pack / No Rarity Charizard, Base Set 2 Charizard, Legendary Collection Charizard, Expedition Charizard rows, CD/promo Charizard rows, Dark Charizard, Blaine's Charizard, Shining Charizard, and later Charizard ex/GX/V memory; the English Base row number, set id base1, Rare Holo status, Mitsuhiro Arita credit, Energy Burn text, and edition/Shadowless evidence are load-bearing.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "english_base_charizard_4_holo_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Base Set Charizard, original Charizard holo, base1-4, Charizard #4, Shadowless Charizard, First Edition Charizard, Unlimited Charizard, Arita Charizard, Energy Burn Charizard, or Fire Spin Charizard.",
+          "summary": "Charizard base1-4 is the English Base Set Rare Holo row. Preserve set id base1, printed number 4, and edition/Shadowless evidence before comparing to other Charizard prints.",
+          "steps": [
+            "Confirm the row as English Base Set / base1 printed number 4 before using this dossier.",
+            "Check the card is the Rare Holo Charizard with Mitsuhiro Arita credit, Energy Burn, Fire Spin, HP 120, Water weakness, Fighting resistance, and retreat cost 3.",
+            "Do not infer First Edition, Shadowless, or Unlimited status from this catalog row; require seller scan or graded-label/cert evidence for that variant claim.",
+            "Separate this row from Japanese Expansion Pack / No Rarity Charizard, Base Set 2 Charizard, Legendary Collection Charizard, Expedition Charizard rows, CD/promo Charizard rows, Dark Charizard, Blaine's Charizard, Shining Charizard, and later Charizard ex/GX/V memories.",
+            "If a buyer cares about holo scratching, silvering, centering, print variant, stage line, or slab status, ask for seller-controlled front/back/angle images and cert evidence where applicable.",
+            "Treat price, condition, authenticity, edition, and grail claims as separately sourced transaction claims; catalog identity only makes the row legible."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "grail valuation",
+            "First Edition status",
+            "Shadowless status",
+            "Unlimited status",
+            "holo surface condition",
+            "graded-cert truth",
+            "Japanese Expansion Pack equivalence",
+            "No Rarity equivalence",
+            "Base Set 2 equivalence",
+            "other Charizard equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "4",
+        "rarity_signal": "Rare Holo",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "English launch binder",
+          "holo surface",
+          "starter-line gravity",
+          "grail pressure",
+          "edition trap"
+        ],
+        "signals": [
+          "Base Set",
+          "base1",
+          "Charizard",
+          "4",
+          "Rare Holo",
+          "Mitsuhiro Arita",
+          "Energy Burn",
+          "Fire Spin",
+          "HP 120",
+          "Level 76",
+          "Water weakness",
+          "Fighting resistance",
+          "retreat cost 3"
+        ],
+        "collector_texture_note": "Base Set Charizard is the English launch holo where Arita's image, Fire-type spectacle, and later grail culture all meet. The catalog must preserve that gravity without turning it into price or variant truth.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "grail valuation",
+          "First Edition status",
+          "Shadowless status",
+          "holo surface condition"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard #4: the launch binder's gravity well",
+        "why_it_matters": "Base Set Charizard is the card that can distort the whole room. It is Arita's dragon in flight, 120 HP, Energy Burn, Fire Spin, the childhood memory, the auction headline, the card everyone thinks they know. That is exactly why the catalog has to be disciplined. The feeling matters; the assembly matters more. This row is English Base Set base1-4 first, edition evidence second, condition and authenticity only after seller proof. Let the grail glow, but do not let the glow become provenance.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "grail valuation",
+          "First Edition status",
+          "Shadowless status",
+          "Unlimited status",
+          "holo surface condition",
+          "seller provenance"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:001",
+      "type": "card",
+      "context": {
+        "name_en": "Bulbasaur",
+        "name_ja": "フシギダネ",
+        "romaji": "Fushigidane",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:001",
+        "catalog_row_id": "PMCG1-001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:001",
+          "title": "Local No Rarity launch-family row: Bulbasaur",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-44",
+          "title": "Pokémon TCG API English Base Set Bulbasaur card record",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Bulbasaur as Japanese Expansion Pack / No Rarity lab row PMCG1-001.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row imports Mitsuhiro Arita as illustrator from English Base Set crosswalk metadata while warning that this is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row models Bulbasaur as a Common, Basic Grass Pokémon with National Pokédex number 1.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Bulbasaur matters in this pilot because it is the opening row: the first catalog position turns a modest common into a test of whether the agent can care about more than grails.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Inside the pilot, Arita's credit appears across Bulbasaur, Pikachu, and Charizard, which makes him a connective artist for the launch-family story rather than a one-card footnote.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The small first row",
+        "why_it_matters": "Bulbasaur is not the loudest card in the room, which is exactly why it belongs in the first pilot. If the catalog can make PMCG1-001 feel alive without inflating it into a chase myth, the voice is learning restraint.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "physical-card No Rarity truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:021",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "romaji": "Rizaadon",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:021",
+        "catalog_row_id": "PMCG1-021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:021",
+          "title": "Local No Rarity launch-family row: Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-4",
+          "title": "Pokémon TCG API English Base Set Charizard card record",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Charizard as Japanese Expansion Pack / No Rarity lab row PMCG1-021.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row imports Mitsuhiro Arita as illustrator from English Base Set crosswalk metadata while warning that this is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row records Charizard as a Holo Rare, Fire-type, Stage 2 Pokémon with National Pokédex number 6.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The local collector texture already marks Charizard as the hype magnet and says the evidence has to be colder than the hype.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Charizard is the pilot's pressure card: it forces the agent to be passionate without becoming promotional, because this row carries the most temptation to convert collector feeling into unsupported certainty.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "no_rarity_lower_right_region_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth",
+            "rarity-symbol absence from image alone is sufficient"
+          ],
+          "steps": [
+            "Identify the card first as Japanese Expansion Pack Charizard / PMCG1-021.",
+            "Inspect the lower-right rarity-symbol region on the card face.",
+            "Treat a missing rarity symbol as necessary evidence for the No Rarity target, not sufficient proof of authenticity.",
+            "Do not merge this row with later Japanese rarity-symbol Expansion Pack Charizard or English Base Set Charizard."
+          ],
+          "summary": "For this No Rarity target, the lower-right rarity-symbol region is load-bearing; absence is a catalog identification cue, not physical-card proof.",
+          "trigger": "Identifying a claimed Japanese No Rarity Charizard."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The card that makes restraint necessary",
+        "why_it_matters": "Charizard is already glowing before the agent opens its mouth. The dossier's job is not to add more fire; it is to keep the fire in view while making every claim earn its place.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "physical-card No Rarity truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_expansion_pack_19961020:035",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachuu",
+        "release_family_id": "jp_tcg_expansion_pack_19961020",
+        "row_id": "jp_tcg_expansion_pack_19961020:035",
+        "catalog_row_id": "PMCG1-035"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json#row:jp_tcg_expansion_pack_19961020:035",
+          "title": "Local No Rarity launch-family row: Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base1-58",
+          "title": "Pokémon TCG API English Base Set Pikachu card record",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "direct Japanese print authority",
+            "seller card match",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as Japanese Expansion Pack / No Rarity lab row PMCG1-035.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row imports Mitsuhiro Arita as illustrator from English Base Set crosswalk metadata while warning that this is not direct Japanese-print proof.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local row records Pikachu as a Common, Lightning-type, Basic Pokémon with National Pokédex number 25.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The local collector texture says Pikachu's mascot gravity works before price enters the room.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pikachu is a perfect agent test because a common can still be emotionally central; the agent must not confuse cultural charge with rarity or price.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "no_rarity_lower_right_region_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card No Rarity truth",
+            "rarity-symbol absence from image alone is sufficient"
+          ],
+          "steps": [
+            "Identify the card first as Japanese Expansion Pack Pikachu / PMCG1-035.",
+            "Inspect the lower-right rarity-symbol region on the card face.",
+            "Treat a missing rarity symbol as necessary evidence for the No Rarity target, not sufficient proof of authenticity.",
+            "Do not merge this row with glossy CoroCoro Pikachu, How-to-Play Pikachu, Game Boy Pikachu, or English Base Set Pikachu."
+          ],
+          "summary": "For this No Rarity target, the lower-right rarity-symbol region is load-bearing; keep it separate from the many early Pikachu promo rows.",
+          "trigger": "Identifying a claimed Japanese No Rarity Pikachu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The common with gravity",
+        "why_it_matters": "Pikachu is where the catalog has to admit that rarity is only one kind of importance. A common can be a cultural center of mass, and the agent needs language for that without turning it into a price claim.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "physical-card No Rarity truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_corocoro_first_19961015:001",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_family_id": "jp_promo_corocoro_first_19961015",
+        "row_id": "jp_promo_corocoro_first_19961015:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "source_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "title": "Selected source lines for early 1996 unnumbered promotional cards",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_first_19961015.json#row:jp_promo_corocoro_first_19961015:001",
+          "title": "Local Japanese pre-English release row: first CoroCoro glossy Pikachu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete promo family checklist",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy count"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.vehicle",
+          "text": "The selected source snapshot lists Pikachu [Glossy] as a CoroCoro Comic November 1996 issue insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The selected source snapshot gives October 15, 1996 as the date for the CoroCoro Comic November 1996 issue insert.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The selected source snapshot lists Ken Sugimori immediately under Pikachu [Glossy].",
+          "sources": [
+            "s1"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row preserves Keiji Kinebuchi from provider metadata as a conflict artifact while preferring the selected source snapshot's Ken Sugimori credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "C",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This row matters because it sits five days before the First Expansion Pack release date in the local corpus, making it a sharp reminder that Pokémon card culture assembled through magazines and promos as well as booster products.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "glossy_pikachu_illustrator_conflict_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "physical-card inspection",
+            "provider metadata is false in all contexts"
+          ],
+          "steps": [
+            "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
+            "Use the selected source line: Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert.",
+            "Preserve PokéCardex's Keiji Kinebuchi value as conflicting provider metadata rather than silently overwriting the conflict.",
+            "Do not merge this with non-glossy, How-to-Play, Game Boy, No Rarity, or other early Pikachu rows."
+          ],
+          "summary": "Identify this as the first CoroCoro glossy Pikachu and keep the illustrator conflict explicit: preferred source credit Ken Sugimori, conflicting provider value Keiji Kinebuchi.",
+          "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The magazine insert before the pack",
+        "why_it_matters": "This is the kind of card that makes the project worth doing. It is not just Pikachu; it is CoroCoro, timing, glossy paper, source conflict, and the messy way a culture becomes collectible before the tidy checklist arrives.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "A",
+        "art": "C",
+        "history": "B",
+        "identification": "A"
+      }
+    }
+  ]
+}

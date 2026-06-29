@@ -1,0 +1,303 @@
+{
+  "cards": [
+    {
+      "card_number": "None",
+      "category": "Trainer",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "No.3 Trainer appears in the unnumbered promotional source slice at row 252. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "252",
+          "Battle Road Summer 2002",
+          "No.3 Trainer",
+          "",
+          "Trainer",
+          "No.3 Trainer",
+          "Battle Road Summer 2002 regional third place prize"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:252",
+        "provider_title": "No.3 Trainer - Unnumbered Promotional source row 252",
+        "release_family_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize:252",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "252",
+      "name_en": "No.3 Trainer",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 252-252 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Battle Road Summer 2002 regional third place prize",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 1,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 252-252 with promotion note: Battle Road Summer 2002 regional third place prize",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Battle Road Summer 2002",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 1
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Battle Road Summer 2002 regional third place prize",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Battle Road Summer 2002",
+        "source_expansion_number": "promo",
+        "source_index": "252",
+        "type": "Trainer",
+        "variant_note": ""
+      },
+      "rarity_source": "No.3 Trainer",
+      "release_family_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize",
+      "row_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize:252",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Battle Road Summer 2002|No.3 Trainer|promo}}|Trainer|No.3 Trainer||Battle Road Summer 2002 regional third place prize}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "252",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "252",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "252",
+        "Battle Road Summer 2002",
+        "No.3 Trainer",
+        "Trainer",
+        "No.3 Trainer",
+        ""
+      ]
+    }
+  ],
+  "not_claiming": [
+    "complete Japanese unnumbered promo universe",
+    "official campaign boundary proof beyond the source promotion note",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release": {
+    "boundary_note": "Source-derived campaign family grouped by the exact Bulbapedia promotion/distribution note; not an official product-boundary proof.",
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "bulbapedia_raw_promotion_group",
+    "date_precision": "mixed_source_notes",
+    "expected_row_count": 1,
+    "name_en": "Battle Road Summer 2002 regional third place prize",
+    "name_ja": "アンナンバードプロモカード",
+    "note": "Campaign-level split derived from the source promotion note to make unnumbered promo matching more legible for agents.",
+    "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "product_card_count": 1,
+    "product_count_basis": "Bulbapedia raw source rows 252-252 with promotion note: Battle Road Summer 2002 regional third place prize",
+    "release_date": "1998-11-13",
+    "release_family_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize",
+    "release_type": "unnumbered_promo_campaign_source_group",
+    "source_indices": [
+      "252"
+    ],
+    "source_indices_contiguous": true,
+    "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 1
+  },
+  "schema": "marketplace.japanese_unnumbered_promo_wotc_release_catalog.v0.1",
+  "sources": [
+    {
+      "bulbapedia_raw_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+      "bulbapedia_rows_found": 1,
+      "not_claiming": [
+        "official source",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "promotion": "Battle Road Summer 2002 regional third place prize",
+      "source": "Bulbapedia raw wikitext",
+      "source_index_end": "252",
+      "source_index_start": "252",
+      "source_indices": [
+        "252"
+      ]
+    }
+  ],
+  "symbol_status": {
+    "confidence": "low",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+    "scope": "release_context_not_row_fact",
+    "source": "Bulbapedia unnumbered promo table; physical symbol state varies by row and must be checked from evidence.",
+    "source_mode": "bulbapedia_unnumbered_promo_setlist",
+    "source_release_family_id": "jp_promo_unnumbered_wotc_252_battle_road_summer_2002_regional_third_place_prize"
+  }
+}

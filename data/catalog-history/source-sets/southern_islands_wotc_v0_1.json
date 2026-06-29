@@ -1,0 +1,3858 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Southern Islands",
+    "release_family_id": "en_wotc_southern_islands_20010731",
+    "notes": [
+      "Deepens the English Wizards-era Southern Islands mini-set as an 18-card postcard/panorama object.",
+      "Covers all 18 modeled rows, split locally into Keiko Fukuyama and Naoyo Kimura artist halves.",
+      "Keeps image rights, seller possession, authenticity, condition, price truth, and physical-product collation outside catalog-history authority."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_southern_islands_20010731",
+      "type": "release",
+      "context": {
+        "name_en": "Southern Islands",
+        "name_ja": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_date": "2001-07-31",
+        "modeled_count": 18,
+        "release_type": "mini_set"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "English WotC mini-set route",
+          "18-card postcard/panorama structure",
+          "Mew collector anchor",
+          "Keiko Fukuyama Rainbow Island half",
+          "Naoyo Kimura Tropical Island half",
+          "Southern Islands art reuse boundary for Tropical Present"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "en_wotc_southern_islands_20010731:si1-1",
+            "name": "Mew",
+            "number": "1",
+            "why": "Mew is the clear collector anchor: iconic, scenic, and mechanically named Rainbow Wave, a perfect thesis card for Southern Islands.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "en_wotc_southern_islands_20010731:si1-14",
+            "name": "Slowking",
+            "number": "14",
+            "why": "Slowking carries Johto/movie-era gravity into the tropical half and often attracts character collectors beyond set builders.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "en_wotc_southern_islands_20010731:si1-12",
+            "name": "Lapras",
+            "number": "12",
+            "why": "Lapras is an emotional sea-travel anchor for Kimura’s half, strong for collectors who care about atmosphere as much as rarity.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Keiko Fukuyama",
+            "row_count": 9,
+            "examples": [
+              "Mew",
+              "Pidgeot",
+              "Onix"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          },
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 9,
+            "examples": [
+              "Tentacruel",
+              "Marill",
+              "Lapras"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth",
+          "approved image display rights"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json",
+          "title": "Local English WotC catalog: Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "physical-product collation proof beyond the API row set"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/si1",
+          "title": "Pokemon TCG API v2: Southern Islands set metadata",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards product history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_(TCG)",
+          "title": "Bulbapedia: Southern Islands (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Wizards product history",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local English WotC catalog records Southern Islands with a July 31, 2001 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "Pokemon TCG API-derived local data models Southern Islands as an 18-card mini-set, with 18 rows returned for set.id si1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local release classifies Southern Islands as a mini_set rather than a booster expansion or deck.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "The local credited-artist surface splits the set evenly: Keiko Fukuyama is credited on cards 1-9 and Naoyo Kimura on cards 10-18.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Southern Islands matters because it is a scenic object first: an English WotC-era mini-set where cards behave like fragments of a postcard panorama rather than only game pieces.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands by English WotC set id si1, card number 1-18, artist half, and scene/postcard context, while separating it from Japanese Southern Islands, Tropical Present art reuse, and ordinary character-name matches.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_english_wotc_postcard_set_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Southern Islands, si1, Rainbow Island, Tropical Island, postcard, Mew Southern Islands, Keiko Fukuyama, Naoyo Kimura, Tropical Present, Japanese Southern Islands, or WotC mini-set.",
+          "summary": "Confirm the English WotC Southern Islands route and card number before treating a scan or listing as this mini-set.",
+          "steps": [
+            "Confirm English WotC Southern Islands / set.id si1 rather than Japanese Southern Islands, Tropical Present, or generic tropical-themed promos.",
+            "Confirm the card number is one of 1-18 and matches the claimed character.",
+            "Use the artist split as a sanity check: cards 1-9 are Keiko Fukuyama in the local data, cards 10-18 are Naoyo Kimura.",
+            "Treat Mew as the collector anchor, not as a price guarantee.",
+            "Separate Southern Islands set cards from Fan Club Tropical Present objects that reuse Southern Islands sea-scene memory.",
+            "Use API/provider images as reference witnesses only; they are not seller evidence or approved display/training rights.",
+            "Before trade/spendability use, require seller-controlled front/back photos, title/name, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence.",
+            "Do not infer authenticity, condition, possession, or complete product packaging from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "physical-product collation proof",
+            "complete Japanese/English variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands — the set as postcard weather",
+        "why_it_matters": "Southern Islands is one of the clearest examples of Pokemon cards becoming an illustrated place. Mew gives the set its obvious gravity, but the deeper joy is the assembly: eighteen small windows, two artists, two island moods, and a WotC-era product that feels closer to a travel keepsake than a normal expansion. It is exactly the kind of set an agent should understand as culture, not just inventory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official product memoir",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "complete packaging history"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-1",
+      "type": "card",
+      "context": {
+        "name_en": "Mew",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-1"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Mew",
+        "name_ja": "",
+        "romaji": "",
+        "number": "1",
+        "row_id": "en_wotc_southern_islands_20010731:si1-1",
+        "stage": "Basic",
+        "types": "Psychic"
+      },
+      "card_highlights": {
+        "number": "1",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "character gravity",
+          "Rainbow Wave attack identity",
+          "Keiko Fukuyama scenic lane"
+        ],
+        "scene_role": "Rainbow Island / sky-memory anchor",
+        "attack_names": "Rainbow Wave",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-1",
+          "title": "Local catalog row: Mew / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-1",
+          "title": "Pokemon TCG API v2 card payload: Mew / Southern Islands #1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mew as Southern Islands #1, row en_wotc_southern_islands_20010731:si1-1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Mew as Basic with type Psychic and attack text including Rainbow Wave.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "The glowing anchor of the set: a small Psychic Mew using Rainbow Wave, perfectly matched to Southern Islands as a color-and-scene object rather than a battle-first expansion.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Mew by English set id si1, card number 1, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_01_mew_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Mew, Mew #1, si1-1, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Mew by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Mew printing.",
+            "Confirm printed/card number 1 and row en_wotc_southern_islands_20010731:si1-1.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Mew — Rainbow Island / sky-memory anchor",
+        "why_it_matters": "The glowing anchor of the set: a small Psychic Mew using Rainbow Wave, perfectly matched to Southern Islands as a color-and-scene object rather than a battle-first expansion.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-2",
+      "type": "card",
+      "context": {
+        "name_en": "Pidgeot",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-2"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Pidgeot",
+        "name_ja": "",
+        "romaji": "",
+        "number": "2",
+        "row_id": "en_wotc_southern_islands_20010731:si1-2",
+        "stage": "Stage 2",
+        "types": "Colorless"
+      },
+      "card_highlights": {
+        "number": "2",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Stage 2 evolution",
+          "Keiko Fukuyama scenic lane",
+          "postcard panorama role"
+        ],
+        "scene_role": "Rainbow Island / aerial scene card",
+        "attack_names": "Supersonic Flight, Slicing Wind",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-2",
+          "title": "Local catalog row: Pidgeot / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-2",
+          "title": "Pokemon TCG API v2 card payload: Pidgeot / Southern Islands #2",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pidgeot as Southern Islands #2, row en_wotc_southern_islands_20010731:si1-2.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Pidgeot as Stage 2 with type Colorless and attack text including Supersonic Flight, Slicing Wind.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pidgeot gives Rainbow Island height. It is the bird-eye view of the postcard sheet, turning the set into a place you look across instead of just a stack you sort.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Pidgeot by English set id si1, card number 2, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_02_pidgeot_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Pidgeot, Pidgeot #2, si1-2, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Pidgeot by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Pidgeot printing.",
+            "Confirm printed/card number 2 and row en_wotc_southern_islands_20010731:si1-2.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Pidgeot — Rainbow Island / aerial scene card",
+        "why_it_matters": "Pidgeot gives Rainbow Island height. It is the bird-eye view of the postcard sheet, turning the set into a place you look across instead of just a stack you sort.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-3",
+      "type": "card",
+      "context": {
+        "name_en": "Onix",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-3"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Onix",
+        "name_ja": "",
+        "romaji": "",
+        "number": "3",
+        "row_id": "en_wotc_southern_islands_20010731:si1-3",
+        "stage": "Basic",
+        "types": "Fighting"
+      },
+      "card_highlights": {
+        "number": "3",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Basic Pokemon",
+          "Keiko Fukuyama scenic lane",
+          "habitat composition"
+        ],
+        "scene_role": "Rainbow Island / landscape weight",
+        "attack_names": "Slam, Body Slam",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-3",
+          "title": "Local catalog row: Onix / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-3",
+          "title": "Pokemon TCG API v2 card payload: Onix / Southern Islands #3",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Onix as Southern Islands #3, row en_wotc_southern_islands_20010731:si1-3.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Onix as Basic with type Fighting and attack text including Slam, Body Slam.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Onix is the weight under the island fantasy: a huge familiar body tucked into a soft scenic mini-set, making Southern Islands feel like a habitat instead of a trophy case.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Onix by English set id si1, card number 3, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_03_onix_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Onix, Onix #3, si1-3, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Onix by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Onix printing.",
+            "Confirm printed/card number 3 and row en_wotc_southern_islands_20010731:si1-3.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Onix — Rainbow Island / landscape weight",
+        "why_it_matters": "Onix is the weight under the island fantasy: a huge familiar body tucked into a soft scenic mini-set, making Southern Islands feel like a habitat instead of a trophy case.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-4",
+      "type": "card",
+      "context": {
+        "name_en": "Togepi",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-4"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Togepi",
+        "name_ja": "",
+        "romaji": "",
+        "number": "4",
+        "row_id": "en_wotc_southern_islands_20010731:si1-4",
+        "stage": "Basic",
+        "types": "Colorless"
+      },
+      "card_highlights": {
+        "number": "4",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Gold/Silver-era character pull",
+          "Keiko Fukuyama scenic lane",
+          "collector nostalgia"
+        ],
+        "scene_role": "Rainbow Island / baby Pokemon bridge",
+        "attack_names": "Bawl",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-4",
+          "title": "Local catalog row: Togepi / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-4",
+          "title": "Pokemon TCG API v2 card payload: Togepi / Southern Islands #4",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Togepi as Southern Islands #4, row en_wotc_southern_islands_20010731:si1-4.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Togepi as Basic with type Colorless and attack text including Bawl.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Togepi is the baby-era charm point, a Gold/Silver bridge inside a WotC-era English mini-set that still feels gentle and storybook-like.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Togepi by English set id si1, card number 4, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_04_togepi_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Togepi, Togepi #4, si1-4, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Togepi by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Togepi printing.",
+            "Confirm printed/card number 4 and row en_wotc_southern_islands_20010731:si1-4.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Togepi — Rainbow Island / baby Pokemon bridge",
+        "why_it_matters": "Togepi is the baby-era charm point, a Gold/Silver bridge inside a WotC-era English mini-set that still feels gentle and storybook-like.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-5",
+      "type": "card",
+      "context": {
+        "name_en": "Ivysaur",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-5"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Ivysaur",
+        "name_ja": "",
+        "romaji": "",
+        "number": "5",
+        "row_id": "en_wotc_southern_islands_20010731:si1-5",
+        "stage": "Stage 1",
+        "types": "Grass"
+      },
+      "card_highlights": {
+        "number": "5",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Stage 1 evolution",
+          "Keiko Fukuyama scenic lane",
+          "environmental Pokemon memory"
+        ],
+        "scene_role": "Rainbow Island / starter-line middle evolution",
+        "attack_names": "Strange Scent, Razor Leaf",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-5",
+          "title": "Local catalog row: Ivysaur / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-5",
+          "title": "Pokemon TCG API v2 card payload: Ivysaur / Southern Islands #5",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Ivysaur as Southern Islands #5, row en_wotc_southern_islands_20010731:si1-5.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Ivysaur as Stage 1 with type Grass and attack text including Strange Scent, Razor Leaf.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Ivysaur brings the starter-line memory without turning the set into a starter chase. It works because the island can hold middle evolutions as living creatures, not just mascots.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Ivysaur by English set id si1, card number 5, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_05_ivysaur_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Ivysaur, Ivysaur #5, si1-5, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Ivysaur by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Ivysaur printing.",
+            "Confirm printed/card number 5 and row en_wotc_southern_islands_20010731:si1-5.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Ivysaur — Rainbow Island / starter-line middle evolution",
+        "why_it_matters": "Ivysaur brings the starter-line memory without turning the set into a starter chase. It works because the island can hold middle evolutions as living creatures, not just mascots.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-6",
+      "type": "card",
+      "context": {
+        "name_en": "Raticate",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-6"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Raticate",
+        "name_ja": "",
+        "romaji": "",
+        "number": "6",
+        "row_id": "en_wotc_southern_islands_20010731:si1-6",
+        "stage": "Stage 1",
+        "types": "Colorless"
+      },
+      "card_highlights": {
+        "number": "6",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Stage 1 evolution",
+          "Keiko Fukuyama scenic lane",
+          "non-chase texture"
+        ],
+        "scene_role": "Rainbow Island / lived-in common-world slot",
+        "attack_names": "Sharp Teeth",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-6",
+          "title": "Local catalog row: Raticate / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-6",
+          "title": "Pokemon TCG API v2 card payload: Raticate / Southern Islands #6",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Raticate as Southern Islands #6, row en_wotc_southern_islands_20010731:si1-6.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Raticate as Stage 1 with type Colorless and attack text including Sharp Teeth.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Raticate is one of the reasons Southern Islands feels honest: not every slot is glamorous, and that makes the illustrated world feel inhabited.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Raticate by English set id si1, card number 6, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_06_raticate_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Raticate, Raticate #6, si1-6, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Raticate by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Raticate printing.",
+            "Confirm printed/card number 6 and row en_wotc_southern_islands_20010731:si1-6.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Raticate — Rainbow Island / lived-in common-world slot",
+        "why_it_matters": "Raticate is one of the reasons Southern Islands feels honest: not every slot is glamorous, and that makes the illustrated world feel inhabited.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-7",
+      "type": "card",
+      "context": {
+        "name_en": "Ledyba",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-7"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Ledyba",
+        "name_ja": "",
+        "romaji": "",
+        "number": "7",
+        "row_id": "en_wotc_southern_islands_20010731:si1-7",
+        "stage": "Basic",
+        "types": "Grass"
+      },
+      "card_highlights": {
+        "number": "7",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Basic Pokemon",
+          "Keiko Fukuyama scenic lane",
+          "Johto-era bridge"
+        ],
+        "scene_role": "Rainbow Island / small Johto texture",
+        "attack_names": "Gnaw, Agility",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-7",
+          "title": "Local catalog row: Ledyba / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-7",
+          "title": "Pokemon TCG API v2 card payload: Ledyba / Southern Islands #7",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Ledyba as Southern Islands #7, row en_wotc_southern_islands_20010731:si1-7.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Ledyba as Basic with type Grass and attack text including Gnaw, Agility.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Ledyba makes the sheet feel airy and small-scale, a little Johto-era insect presence that helps the set read as a scene rather than a power list.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Ledyba by English set id si1, card number 7, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_07_ledyba_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Ledyba, Ledyba #7, si1-7, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Ledyba by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Ledyba printing.",
+            "Confirm printed/card number 7 and row en_wotc_southern_islands_20010731:si1-7.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Ledyba — Rainbow Island / small Johto texture",
+        "why_it_matters": "Ledyba makes the sheet feel airy and small-scale, a little Johto-era insect presence that helps the set read as a scene rather than a power list.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-8",
+      "type": "card",
+      "context": {
+        "name_en": "Jigglypuff",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-8"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Jigglypuff",
+        "name_ja": "",
+        "romaji": "",
+        "number": "8",
+        "row_id": "en_wotc_southern_islands_20010731:si1-8",
+        "stage": "Basic",
+        "types": "Colorless"
+      },
+      "card_highlights": {
+        "number": "8",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Basic Pokemon",
+          "Keiko Fukuyama scenic lane",
+          "mascot-adjacent charm"
+        ],
+        "scene_role": "Rainbow Island / character-song texture",
+        "attack_names": "Tempting Eyes, Sing",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-8",
+          "title": "Local catalog row: Jigglypuff / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-8",
+          "title": "Pokemon TCG API v2 card payload: Jigglypuff / Southern Islands #8",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Jigglypuff as Southern Islands #8, row en_wotc_southern_islands_20010731:si1-8.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Jigglypuff as Basic with type Colorless and attack text including Tempting Eyes, Sing.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Jigglypuff keeps the set close to character comedy and song-memory: soft, round, and theatrical in a product that already feels like illustrated travel stationery.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Jigglypuff by English set id si1, card number 8, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_08_jigglypuff_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Jigglypuff, Jigglypuff #8, si1-8, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Jigglypuff by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Jigglypuff printing.",
+            "Confirm printed/card number 8 and row en_wotc_southern_islands_20010731:si1-8.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Jigglypuff — Rainbow Island / character-song texture",
+        "why_it_matters": "Jigglypuff keeps the set close to character comedy and song-memory: soft, round, and theatrical in a product that already feels like illustrated travel stationery.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-9",
+      "type": "card",
+      "context": {
+        "name_en": "Butterfree",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-9"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Butterfree",
+        "name_ja": "",
+        "romaji": "",
+        "number": "9",
+        "row_id": "en_wotc_southern_islands_20010731:si1-9",
+        "stage": "Stage 2",
+        "types": "Grass"
+      },
+      "card_highlights": {
+        "number": "9",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Keiko Fukuyama",
+        "assembly_themes": [
+          "Stage 2 evolution",
+          "Keiko Fukuyama scenic lane",
+          "panorama closure"
+        ],
+        "scene_role": "Rainbow Island / metamorphosis close",
+        "attack_names": "Fly, Rainbow Powder",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-9",
+          "title": "Local catalog row: Butterfree / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-9",
+          "title": "Pokemon TCG API v2 card payload: Butterfree / Southern Islands #9",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Butterfree as Southern Islands #9, row en_wotc_southern_islands_20010731:si1-9.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Keiko Fukuyama.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Butterfree as Stage 2 with type Grass and attack text including Fly, Rainbow Powder.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Keiko Fukuyama carries the Rainbow Island half in the local catalog, including Mew, Pidgeot, Onix, Togepi, Ivysaur, Raticate, Ledyba, Jigglypuff, and Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Butterfree closes the first half with metamorphosis and air. In Southern Islands, it is less a competitive card than a proof that the image-world has weather and motion.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Butterfree by English set id si1, card number 9, Keiko Fukuyama credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_09_butterfree_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Butterfree, Butterfree #9, si1-9, Keiko Fukuyama, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Butterfree by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Butterfree printing.",
+            "Confirm printed/card number 9 and row en_wotc_southern_islands_20010731:si1-9.",
+            "Check artist credit against Keiko Fukuyama in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Butterfree — Rainbow Island / metamorphosis close",
+        "why_it_matters": "Butterfree closes the first half with metamorphosis and air. In Southern Islands, it is less a competitive card than a proof that the image-world has weather and motion.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-10",
+      "type": "card",
+      "context": {
+        "name_en": "Tentacruel",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-10"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Tentacruel",
+        "name_ja": "",
+        "romaji": "",
+        "number": "10",
+        "row_id": "en_wotc_southern_islands_20010731:si1-10",
+        "stage": "Stage 1",
+        "types": "Water"
+      },
+      "card_highlights": {
+        "number": "10",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Water Pokemon",
+          "environmental tension"
+        ],
+        "scene_role": "Tropical Island / sea-depth opener",
+        "attack_names": "Tentacle Grip, Poison Sting",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-10",
+          "title": "Local catalog row: Tentacruel / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-10",
+          "title": "Pokemon TCG API v2 card payload: Tentacruel / Southern Islands #10",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Tentacruel as Southern Islands #10, row en_wotc_southern_islands_20010731:si1-10.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Tentacruel as Stage 1 with type Water and attack text including Tentacle Grip, Poison Sting.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Tentacruel opens Kimura’s half with water and danger, making Tropical Island feel deeper than a vacation image.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Tentacruel by English set id si1, card number 10, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_10_tentacruel_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Tentacruel, Tentacruel #10, si1-10, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Tentacruel by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Tentacruel printing.",
+            "Confirm printed/card number 10 and row en_wotc_southern_islands_20010731:si1-10.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Tentacruel — Tropical Island / sea-depth opener",
+        "why_it_matters": "Tentacruel opens Kimura’s half with water and danger, making Tropical Island feel deeper than a vacation image.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-11",
+      "type": "card",
+      "context": {
+        "name_en": "Marill",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-11"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Marill",
+        "name_ja": "",
+        "romaji": "",
+        "number": "11",
+        "row_id": "en_wotc_southern_islands_20010731:si1-11",
+        "stage": "Basic",
+        "types": "Water"
+      },
+      "card_highlights": {
+        "number": "11",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Gold/Silver-era character pull",
+          "friendly water texture"
+        ],
+        "scene_role": "Tropical Island / Johto water charm",
+        "attack_names": "Squirt, Rolling Tackle",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-11",
+          "title": "Local catalog row: Marill / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-11",
+          "title": "Pokemon TCG API v2 card payload: Marill / Southern Islands #11",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Marill as Southern Islands #11, row en_wotc_southern_islands_20010731:si1-11.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Marill as Basic with type Water and attack text including Squirt, Rolling Tackle.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Marill is the friendly new-generation face of the water scene, a soft bridge between Johto excitement and tropical postcard calm.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Marill by English set id si1, card number 11, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_11_marill_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Marill, Marill #11, si1-11, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Marill by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Marill printing.",
+            "Confirm printed/card number 11 and row en_wotc_southern_islands_20010731:si1-11.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Marill — Tropical Island / Johto water charm",
+        "why_it_matters": "Marill is the friendly new-generation face of the water scene, a soft bridge between Johto excitement and tropical postcard calm.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-12",
+      "type": "card",
+      "context": {
+        "name_en": "Lapras",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-12"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Lapras",
+        "name_ja": "",
+        "romaji": "",
+        "number": "12",
+        "row_id": "en_wotc_southern_islands_20010731:si1-12",
+        "stage": "Basic",
+        "types": "Water"
+      },
+      "card_highlights": {
+        "number": "12",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Kanto nostalgia",
+          "sea-travel motif"
+        ],
+        "scene_role": "Tropical Island / transport-and-memory anchor",
+        "attack_names": "Gentle Song, Ice Beam",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-12",
+          "title": "Local catalog row: Lapras / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-12",
+          "title": "Pokemon TCG API v2 card payload: Lapras / Southern Islands #12",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Lapras as Southern Islands #12, row en_wotc_southern_islands_20010731:si1-12.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Lapras as Basic with type Water and attack text including Gentle Song, Ice Beam.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Lapras is one of the emotional centers of the sea half: travel, gentleness, and old Kanto memory all sitting inside Kimura’s tropical environment.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Lapras by English set id si1, card number 12, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_12_lapras_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Lapras, Lapras #12, si1-12, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Lapras by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Lapras printing.",
+            "Confirm printed/card number 12 and row en_wotc_southern_islands_20010731:si1-12.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Lapras — Tropical Island / transport-and-memory anchor",
+        "why_it_matters": "Lapras is one of the emotional centers of the sea half: travel, gentleness, and old Kanto memory all sitting inside Kimura’s tropical environment.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-13",
+      "type": "card",
+      "context": {
+        "name_en": "Exeggutor",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-13"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Exeggutor",
+        "name_ja": "",
+        "romaji": "",
+        "number": "13",
+        "row_id": "en_wotc_southern_islands_20010731:si1-13",
+        "stage": "Stage 1",
+        "types": "Grass"
+      },
+      "card_highlights": {
+        "number": "13",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "island motif",
+          "character humor"
+        ],
+        "scene_role": "Tropical Island / comic tropical signal",
+        "attack_names": "Sharpshooter",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-13",
+          "title": "Local catalog row: Exeggutor / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-13",
+          "title": "Pokemon TCG API v2 card payload: Exeggutor / Southern Islands #13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Exeggutor as Southern Islands #13, row en_wotc_southern_islands_20010731:si1-13.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Exeggutor as Stage 1 with type Grass and attack text including Sharpshooter.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Exeggutor is the set laughing at its own island premise. It is tropical literally and tonally, a perfect oddball for a mini-set built around place.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Exeggutor by English set id si1, card number 13, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_13_exeggutor_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Exeggutor, Exeggutor #13, si1-13, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Exeggutor by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Exeggutor printing.",
+            "Confirm printed/card number 13 and row en_wotc_southern_islands_20010731:si1-13.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Exeggutor — Tropical Island / comic tropical signal",
+        "why_it_matters": "Exeggutor is the set laughing at its own island premise. It is tropical literally and tonally, a perfect oddball for a mini-set built around place.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-14",
+      "type": "card",
+      "context": {
+        "name_en": "Slowking",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-14"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Slowking",
+        "name_ja": "",
+        "romaji": "",
+        "number": "14",
+        "row_id": "en_wotc_southern_islands_20010731:si1-14",
+        "stage": "Stage 1",
+        "types": "Psychic"
+      },
+      "card_highlights": {
+        "number": "14",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Gold/Silver-era character pull",
+          "collector character gravity"
+        ],
+        "scene_role": "Tropical Island / clever Johto royalty",
+        "attack_names": "Revelation, Psychic",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-14",
+          "title": "Local catalog row: Slowking / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-14",
+          "title": "Pokemon TCG API v2 card payload: Slowking / Southern Islands #14",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Slowking as Southern Islands #14, row en_wotc_southern_islands_20010731:si1-14.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Slowking as Stage 1 with type Psychic and attack text including Revelation, Psychic.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Slowking carries movie-era and Johto-era intelligence into the island world, giving the water half a sly, knowing center.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Slowking by English set id si1, card number 14, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_14_slowking_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Slowking, Slowking #14, si1-14, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Slowking by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Slowking printing.",
+            "Confirm printed/card number 14 and row en_wotc_southern_islands_20010731:si1-14.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Slowking — Tropical Island / clever Johto royalty",
+        "why_it_matters": "Slowking carries movie-era and Johto-era intelligence into the island world, giving the water half a sly, knowing center.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-15",
+      "type": "card",
+      "context": {
+        "name_en": "Wartortle",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-15"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Wartortle",
+        "name_ja": "",
+        "romaji": "",
+        "number": "15",
+        "row_id": "en_wotc_southern_islands_20010731:si1-15",
+        "stage": "Stage 1",
+        "types": "Water"
+      },
+      "card_highlights": {
+        "number": "15",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Stage 1 evolution",
+          "starter-line memory"
+        ],
+        "scene_role": "Tropical Island / starter-line water echo",
+        "attack_names": "Water Gun",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-15",
+          "title": "Local catalog row: Wartortle / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-15",
+          "title": "Pokemon TCG API v2 card payload: Wartortle / Southern Islands #15",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Wartortle as Southern Islands #15, row en_wotc_southern_islands_20010731:si1-15.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Wartortle as Stage 1 with type Water and attack text including Water Gun.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Wartortle gives the sea side a starter-line echo without needing Blastoise. It is the middle-stage creature as environment resident.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Wartortle by English set id si1, card number 15, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_15_wartortle_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Wartortle, Wartortle #15, si1-15, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Wartortle by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Wartortle printing.",
+            "Confirm printed/card number 15 and row en_wotc_southern_islands_20010731:si1-15.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Wartortle — Tropical Island / starter-line water echo",
+        "why_it_matters": "Wartortle gives the sea side a starter-line echo without needing Blastoise. It is the middle-stage creature as environment resident.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-16",
+      "type": "card",
+      "context": {
+        "name_en": "Lickitung",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-16"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Lickitung",
+        "name_ja": "",
+        "romaji": "",
+        "number": "16",
+        "row_id": "en_wotc_southern_islands_20010731:si1-16",
+        "stage": "Basic",
+        "types": "Colorless"
+      },
+      "card_highlights": {
+        "number": "16",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "non-obvious character selection",
+          "comic texture"
+        ],
+        "scene_role": "Tropical Island / oddball texture",
+        "attack_names": "Lick Wounds, Tongue Stretch",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-16",
+          "title": "Local catalog row: Lickitung / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-16",
+          "title": "Pokemon TCG API v2 card payload: Lickitung / Southern Islands #16",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Lickitung as Southern Islands #16, row en_wotc_southern_islands_20010731:si1-16.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Lickitung as Basic with type Colorless and attack text including Lick Wounds, Tongue Stretch.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Lickitung is wonderfully strange here: a comic body in a scenic product, proof that Southern Islands loved atmosphere more than obvious hierarchy.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Lickitung by English set id si1, card number 16, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_16_lickitung_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Lickitung, Lickitung #16, si1-16, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Lickitung by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Lickitung printing.",
+            "Confirm printed/card number 16 and row en_wotc_southern_islands_20010731:si1-16.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Lickitung — Tropical Island / oddball texture",
+        "why_it_matters": "Lickitung is wonderfully strange here: a comic body in a scenic product, proof that Southern Islands loved atmosphere more than obvious hierarchy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-17",
+      "type": "card",
+      "context": {
+        "name_en": "Vileplume",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-17"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Vileplume",
+        "name_ja": "",
+        "romaji": "",
+        "number": "17",
+        "row_id": "en_wotc_southern_islands_20010731:si1-17",
+        "stage": "Stage 2",
+        "types": "Grass"
+      },
+      "card_highlights": {
+        "number": "17",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Stage 2 evolution",
+          "plant-life atmosphere"
+        ],
+        "scene_role": "Tropical Island / botanical canopy",
+        "attack_names": "Paradise Pollen, Horrid Pollen",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-17",
+          "title": "Local catalog row: Vileplume / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-17",
+          "title": "Pokemon TCG API v2 card payload: Vileplume / Southern Islands #17",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Vileplume as Southern Islands #17, row en_wotc_southern_islands_20010731:si1-17.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Vileplume as Stage 2 with type Grass and attack text including Paradise Pollen, Horrid Pollen.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Vileplume brings the flower canopy into the tropical half, letting the island feel botanical as well as aquatic.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Vileplume by English set id si1, card number 17, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_17_vileplume_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Vileplume, Vileplume #17, si1-17, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Vileplume by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Vileplume printing.",
+            "Confirm printed/card number 17 and row en_wotc_southern_islands_20010731:si1-17.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Vileplume — Tropical Island / botanical canopy",
+        "why_it_matters": "Vileplume brings the flower canopy into the tropical half, letting the island feel botanical as well as aquatic.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "en_wotc_southern_islands_20010731:si1-18",
+      "type": "card",
+      "context": {
+        "name_en": "Primeape",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_southern_islands_20010731",
+        "release_name": "Southern Islands",
+        "row_id": "en_wotc_southern_islands_20010731:si1-18"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Primeape",
+        "name_ja": "",
+        "romaji": "",
+        "number": "18",
+        "row_id": "en_wotc_southern_islands_20010731:si1-18",
+        "stage": "Stage 1",
+        "types": "Fighting"
+      },
+      "card_highlights": {
+        "number": "18",
+        "rarity_signal": "Southern Islands mini-set row",
+        "artist": "Naoyo Kimura",
+        "assembly_themes": [
+          "Naoyo Kimura scenic lane",
+          "Stage 1 evolution",
+          "comic motion"
+        ],
+        "scene_role": "Tropical Island / kinetic closer",
+        "attack_names": "Low Kick, Rampage",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_southern_islands_20010731.json#row:en_wotc_southern_islands_20010731:si1-18",
+          "title": "Local catalog row: Primeape / Southern Islands",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/si1-18",
+          "title": "Pokemon TCG API v2 card payload: Primeape / Southern Islands #18",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image display rights"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Primeape as Southern Islands #18, row en_wotc_southern_islands_20010731:si1-18.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The Pokemon TCG API-derived local row credits Illus. Naoyo Kimura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local card payload models Primeape as Stage 1 with type Fighting and attack text including Low Kick, Rampage.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura carries the Tropical Island half in the local catalog; later catalog history also has her Southern Islands sea-scene artwork reappearing through Tropical Present, which makes her environmental scene-language especially important for this archive.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Primeape closes Southern Islands with motion and temper, a funny final jolt after all the postcard softness.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Southern Islands Primeape by English set id si1, card number 18, Naoyo Kimura credit, and seller-controlled scans rather than by character name alone.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "southern_islands_18_primeape_identity_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent result says Southern Islands Primeape, Primeape #18, si1-18, Naoyo Kimura, postcard, Rainbow Island, Tropical Island, or WotC mini-set.",
+          "summary": "Confirm Southern Islands Primeape by set, number, artist, and seller evidence before using it as a transaction object.",
+          "steps": [
+            "Confirm English Southern Islands / set.id si1, not a different Primeape printing.",
+            "Confirm printed/card number 18 and row en_wotc_southern_islands_20010731:si1-18.",
+            "Check artist credit against Naoyo Kimura in the local/API row.",
+            "Use the external API image only as a reference witness, not as seller evidence or authentication proof.",
+            "Ask for seller-controlled front/back photos, name/title area, set symbol/number area, copyright/artist area, surface/corners, and any slab/cert evidence before trade use.",
+            "If a listing relies on postcard, sealed, binder, or packaging provenance, require separate provenance images or records rather than accepting the card row as proof.",
+            "Do not promote character popularity, scene fit, or catalog match into spendability without a fresh evidence packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "approved image display rights",
+            "complete packaging provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Southern Islands Primeape — Tropical Island / kinetic closer",
+        "why_it_matters": "Primeape closes Southern Islands with motion and temper, a funny final jolt after all the postcard softness.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    }
+  ]
+}

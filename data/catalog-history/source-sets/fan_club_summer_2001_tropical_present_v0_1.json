@@ -1,0 +1,599 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Tropical Present, the Pokemon Card Fan Club Summer 2001 postcard / Jumbo Special Card, emphasizing Fan Club GET Points, same-title print-version traps, e-card stock, the 2001/Summer marking, Hiromi Ito artwork, Fan Club logo identity, and non-equivalence with the January 1999 Atsuko Nishida print, July/Summer 1999 Naoyo Kimura print, Southern Islands cards, Tropical Mega Battle material, and ordinary Trainer cards.",
+    "in_scope": [
+      "Pokemon Card Fan Club Summer 2001 release dossier",
+      "Tropical Present unnumbered promotional row 236",
+      "Summer 2001 e-card-stock Tropical Present print",
+      "postcard / Jumbo / Special Card object identity",
+      "GET Points membership loop",
+      "Hiromi Ito illustration context",
+      "same-title Tropical Present print-version identification rails"
+    ],
+    "not_claiming": [
+      "complete Pokemon Card Fan Club archive",
+      "official member ledger",
+      "official copy count",
+      "exact mailing date beyond Summer 2001",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001",
+        "name_en": "Pokemon Card Fan Club (Summer 2001)",
+        "release_date": "2001-summer",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Fan Club mailing route",
+          "Summer 2001 Tropical Present print",
+          "postcard / Jumbo / Special Card object",
+          "GET Points membership economy",
+          "e-card-stock edge",
+          "Hiromi Ito artwork"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001:236",
+            "name": "Tropical Present",
+            "why": "This is a chase because it is not only a card but a receipt of club participation: the Summer 2001 Tropical Present turns GET Points, mail, postcard scale, and an e-card-era visual edge into one object.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official copy count"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Hiromi Ito",
+            "row_count": 1,
+            "examples": [
+              "Tropical Present"
+            ],
+            "why": "Ito matters here because the 2001 print is the third Tropical Present identity, not a generic reprint. Bulbapedia also credits Ito with logo work on Tropical Mega Battle Trainer cards, which keeps his trace close to the tournament/gift-card visual apparatus rather than ordinary Pokemon portraiture.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c5",
+              "c6"
+            ],
+            "not_claiming": [
+              "complete Hiromi Ito bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Fan Club archive",
+          "exact mailing date beyond Summer 2001",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models Pokemon Card Fan Club (Summer 2001) as a one-row unnumbered promotional source group containing Tropical Present at source index 236, with Postcard as the variant note.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Summer 2001 Tropical Present was sent to Pokemon Fan Club members who had already earned 200 GET Points or more.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia says Tropical Present's card text states the special card was sent to players to obtain 10 GET Points, with points added automatically.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies the Summer 2001 Tropical Present print as illustrated by Hiromi Ito.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Hiromi Ito page lists Tropical Present under cards illustrated and credits Ito with logo work on Tropical Mega Battle No.1 Trainer, No.2 Trainer, and No.3 Trainer cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says Tropical Present had three Japanese Fan Club versions: an early 1999 Atsuko Nishida print, a July/Summer 1999 Naoyo Kimura print using Southern Islands Sea-scene artwork, and a Summer 2001 e-card-stock print with new artwork by Hiromi Ito.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says the e-card reprint has '2001/Summer' where a collection number usually appears and uses the Pokemon Fan Club logo in place of an expansion symbol, with the logo replacing the e on the e-card reprint.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Tropical Present as Japanese トロピカルプレゼント, translated Tropical Present, a Special Card and Unnumbered Promotional card that was never released in English.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, the Summer 2001 Tropical Present matters because the same Fan Club title becomes a new assembly: higher GET threshold, e-card-era stock/marking, new Hiromi Ito artwork, and the same gift-card function of turning membership activity into a physical object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c7",
+            "c8"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "complete Fan Club archive",
+            "exact mailing date beyond Summer 2001",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the Summer 2001 Fan Club route, source index 236, postcard/Jumbo/Special Card format, 200 GET Points threshold, 2001/Summer marking, e-card-stock edge, Fan Club logo treatment, Hiromi Ito art credit, and non-equivalence with the 1999 Tropical Present prints before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Tropical Present, Summer 2001: the Fan Club ledger becomes a postcard again",
+        "why_it_matters": "Tropical Present is a beautiful little lesson in Pokemon's social machinery. It looks like a card, but it behaves like club infrastructure: a mailed object, a Jumbo postcard, a Special Card, a little automatic credit back into the GET Points account. By 2001 the same title has become an e-card-era artifact with Hiromi Ito art and a 2001/Summer tell. That is why the catalog has to love it carefully. The word Tropical is not the identity; the route is.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Fan Club archive",
+          "official member ledger",
+          "exact mailing date beyond Summer 2001",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "fan_club_summer_2001_tropical_present_e_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Tropical Present, トロピカルプレゼント, Fan Club, Summer 2001, 2001/Summer, e-card stock, postcard, Jumbo, Special Card, GET Points, Hiromi Ito, Atsuko Nishida, Naoyo Kimura, Southern Islands, Tropical Mega Battle, or Tropical Wind.",
+          "summary": "Identify Summer 2001 Tropical Present by Fan Club route, postcard/Jumbo/Special Card format, e-card-stock 2001/Summer marking, Fan Club logo treatment, Hiromi Ito artwork, and 200 GET Points context before trusting the repeated Tropical Present title.",
+          "steps": [
+            "Confirm the exact title pair: Tropical Present / トロピカルプレゼント.",
+            "Confirm the route is Pokemon Card Fan Club Summer 2001, local source index 236, not January 1999 or July/Summer 1999.",
+            "Confirm the object is a postcard / Jumbo / Special Card object rather than a standard-size Trainer card.",
+            "Look for the e-card-stock identity and the '2001/Summer' marking where a collection number would usually appear.",
+            "Check the Pokemon Fan Club logo treatment, including its replacement of the e-card e on this reprint.",
+            "Preserve Hiromi Ito as the Summer 2001 illustrator; separate Atsuko Nishida's early 1999 print and Naoyo Kimura's Summer 1999 Southern Islands Sea-scene print.",
+            "Separate this row from Southern Islands set cards, Tropical Mega Battle / Tropical Wind material, ordinary Trainer cards, and generic tropical-themed listings unless the seller evidence proves this exact Fan Club object.",
+            "For a transaction, require seller-controlled front/back photos plus size evidence, postcard/Jumbo context, logo/marking close-ups, surface/corner evidence, and slab label/cert if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "official member ledger",
+            "exact mailing date beyond Summer 2001",
+            "January 1999 equivalence",
+            "July 1999 equivalence",
+            "Southern Islands set-card equivalence",
+            "Tropical Mega Battle equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001.json#row:jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001:236",
+          "title": "Local Japanese unnumbered promotional source-slice row 236",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Present_(Fan_Club_promo)",
+          "title": "Bulbapedia: Tropical Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Fan Club archive",
+            "official member ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hiromi_Ito",
+          "title": "Bulbapedia: Hiromi Ito",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official biography",
+            "complete illustrator bibliography",
+            "official artist intent",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001:236",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001:236",
+        "release_family_id": "jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001",
+        "name_en": "Tropical Present",
+        "name_ja": "トロピカルプレゼント",
+        "source_index": "236",
+        "release_date": "2001-summer"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Tropical Present",
+        "name_ja": "トロピカルプレゼント",
+        "romaji": "Toropikaru Purezento",
+        "number": "2001/Summer",
+        "rarity_signal": "Unnumbered Promotional / Special Card / Jumbo postcard",
+        "artist": "Hiromi Ito",
+        "release": "Pokemon Card Fan Club (Summer 2001)"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Tropical Present as Japanese トロピカルプレゼント, translated Tropical Present, a Special Card and Unnumbered Promotional card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says the Summer 2001 version was sent to Fan Club members who had already earned 200 GET Points or more.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia gives the card text as a special card sent to players to obtain 10 GET Points, with points added automatically.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Summer 2001 Tropical Present print to Hiromi Ito.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Hiromi Ito page lists Tropical Present as a card illustrated by Ito and also lists logo work on Tropical Mega Battle No.1 Trainer, No.2 Trainer, and No.3 Trainer cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia says the e-card reprint has '2001/Summer' where a collection number usually appears, and that all versions of Tropical Present were released as Jumbo cards and were not legal for tournaments or official events.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says Tropical Present features Special Card instead of Trainer at the top and uses the Pokemon Fan Club logo in place of an expansion symbol.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, the card matters because its playable-looking face is really a club-account action: it records Pokemon fandom as membership, mail, points, and a physical object that is not tournament-legal.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c6",
+            "c7"
+          ],
+          "not_claiming": [
+            "official copy count",
+            "official member ledger",
+            "exact mailing date beyond Summer 2001",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "A Summer 2001 Tropical Present match should preserve the Fan Club route, postcard/Jumbo/Special Card object status, 2001/Summer marking, Fan Club logo, Hiromi Ito art credit, GET Points context, and separation from the 1999 Tropical Present prints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Tropical Present 2001: a card-shaped thank-you from the Fan Club",
+        "why_it_matters": "This is one of those objects that makes the catalog feel alive. It is not a battle card in the normal way. It is a club thank-you, a point-bank nudge, a mailed Jumbo thing, and by 2001 it even wears the e-card era on its body. Hiromi Ito gives the final Tropical Present print its own face, but the deeper charm is social: a collector did something, the Fan Club noticed, and a present arrived.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "complete Fan Club archive",
+          "official member ledger",
+          "exact mailing date beyond Summer 2001",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "tropical_present_summer_2001_card_identity_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Tropical Present, トロピカルプレゼント, Fan Club, Summer 2001, 2001/Summer, e-card, postcard, Jumbo, Special Card, GET Points, Hiromi Ito, Naoyo Kimura, Atsuko Nishida, Southern Islands, Tropical Mega Battle, Tropical Wind, or Trainer card.",
+          "summary": "Treat this Tropical Present as a same-title, route-specific print: Summer 2001 Fan Club, Hiromi Ito, e-card-stock / 2001/Summer marking, Fan Club logo, and Jumbo postcard/Special Card status must all be checked.",
+          "steps": [
+            "Confirm the title pair Tropical Present / トロピカルプレゼント.",
+            "Confirm Summer 2001 Fan Club route and source index 236 rather than the early 1999 or July/Summer 1999 versions.",
+            "Confirm the object is Jumbo/postcard-like and marked Special Card, not a standard-size Trainer card.",
+            "Inspect for the 2001/Summer marking and Fan Club logo treatment associated with the e-card reprint.",
+            "Confirm Hiromi Ito as the artwork credit; do not substitute Atsuko Nishida or Naoyo Kimura print memories.",
+            "Use GET Points context as route support, but do not treat it as proof that a seller's object is genuine.",
+            "Before spending or trade gating, ask for seller-controlled front/back photos, size evidence, logo/marking close-ups, surface/corner evidence, and slab label/cert if graded."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy count",
+            "official member ledger",
+            "exact mailing date beyond Summer 2001",
+            "standard-size card equivalence",
+            "1999 Tropical Present equivalence",
+            "Tropical Mega Battle equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001.json#row:jp_promo_unnumbered_wotc_236_pok_mon_card_fan_club_summer_2001:236",
+          "title": "Local Japanese unnumbered promotional source-slice row 236",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Tropical_Present_(Fan_Club_promo)",
+          "title": "Bulbapedia: Tropical Present (Fan Club promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete Fan Club archive",
+            "official member ledger",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "external_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hiromi_Ito",
+          "title": "Bulbapedia: Hiromi Ito",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official biography",
+            "complete illustrator bibliography",
+            "official artist intent",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ]
+    }
+  ]
+}

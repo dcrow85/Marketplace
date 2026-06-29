@@ -1,0 +1,1186 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Neo Destiny and six rows that carry the Light, Dark, and Shining assembly.",
+    "in_scope": [
+      "Neo Destiny release dossier",
+      "Dark Espeon",
+      "Dark Tyranitar",
+      "Shining Charizard",
+      "Shining Mewtwo",
+      "Shining Raichu",
+      "Shining Tyranitar"
+    ],
+    "not_claiming": [
+      "complete Neo Destiny scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_neo_destiny_20020228",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Destiny",
+        "name_ja": "闇、そして光へ...",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "release_date": "2002-02-28"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json",
+          "title": "Local English WoC release catalog: Neo Destiny",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/neo4",
+          "title": "Pokemon TCG API v2 set record: Neo Destiny",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_Destiny_(TCG)",
+          "title": "Bulbapedia: Neo Destiny (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Neo Destiny with a February 28, 2002 English release date; Bulbapedia also lists English release date February 28, 2002.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokemon TCG API model set id neo4 with printedTotal 105 and total 113; the local corpus keeps all 113 returned rows, including the Shining rows beyond the printed checklist.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Neo Destiny as the fourth and final main expansion of the Neo Series in English and gives the Japanese title as Darkness, and to Light....",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia's blurb frames Neo Destiny around Pokemon wreathed in mysterious light and shrouded in darkness, asking what their connection is to Team Rocket.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Dark Tyranitar, Dark Espeon, Shining Charizard, Shining Mewtwo, Shining Raichu, and Shining Tyranitar, with the Shining rows marked Rare Shining.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Neo Destiny are led by CR CG gangs, Ken Sugimori, Atsuko Nishida, Tomokazu Komiya, Yuka Morii, Kagemaru Himeno, Shin-ichi Yoshida, and Hironobu Yoshida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Neo Destiny matters because it turns the Neo era into a moral and visual fork: Dark cards, Light cards, and Shining secret-style rows make the set feel like a question about what a Pokemon can become under pressure, care, or rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "neo_destiny_105_printed_113_total_shining_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all 113 API rows were collated identically in sealed product"
+          ],
+          "steps": [
+            "Preserve the distinction between printedTotal 105 and total 113 before treating Shining rows as ordinary numbered set rows.",
+            "Confirm set id neo4 and the English Neo Destiny release context before importing Japanese Darkness, and to Light... details.",
+            "If a listing references a Shining card, record the card number beyond 105 and the Rare Shining rarity signal explicitly.",
+            "Do not treat the catalog's Shining row as proof that a seller's physical card is authentic, holo, pack-pulled, or in any condition."
+          ],
+          "summary": "Neo Destiny uses 105 printed checklist cards plus 113 modeled catalog rows; Shining rows need explicit row-number handling.",
+          "trigger": "Identifying or comparing Neo Destiny cards, especially Shining rows numbered 106 through 113."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The set where Neo chooses a side",
+        "why_it_matters": "Neo Destiny feels like the Neo era looking in a mirror. The Dark cards keep the Team Rocket shadow alive, the Light cards answer with care, and the Shining cards sit outside the normal checklist like hidden proof that rarity can become mythology. It is late Wizards-era Pokemon at its most theatrical: not just new monsters, but moral weather.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_destiny_20020228:neo4-4",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Espeon",
+        "name_ja": "わるいエーフィ",
+        "romaji": "Warui Eifie",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "row_id": "en_wotc_neo_destiny_20020228:neo4-4",
+        "catalog_row_id": "neo4-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json#row:en_wotc_neo_destiny_20020228:neo4-4",
+          "title": "Local English WoC card row: Dark Espeon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo4-4",
+          "title": "Pokemon TCG API v2 card record: Dark Espeon",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Espeon_(Neo_Destiny_4)",
+          "title": "Bulbapedia: Dark Espeon (Neo Destiny 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Dark Espeon as Neo Destiny number 4, a Rare Holo Stage 1 Psychic Dark Pokemon credited to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Dark Espeon's attacks as Gouge and Psysplash, with Psysplash scaling across the opponent's Pokemon by attached Energy.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that Espeon was released as a Dark Pokemon with the other Dark Eeveelution branches, while Umbreon was not released as a Dark Pokemon in this set, likely due to the in-set Darkness-type rule.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia credit Dark Espeon to Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Espeon matters because it shows the set's moral vocabulary touching a fan-favorite evolution line: not just an Eeveelution, but a Psychic branch bent into the Dark side of Neo Destiny's question.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "dark_espeon_eeveelution_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Umbreon absence proves any physical-card trait"
+          ],
+          "steps": [
+            "Preserve the full Dark Espeon name before comparing against normal Espeon or later Espeon rows.",
+            "Record Neo Destiny number 4 and Rare Holo status from the catalog row.",
+            "Use the Umbreon-not-Dark note only as set-context texture, not as a physical identification mark.",
+            "Keep the Atsuko Nishida credit as catalog art context, not proof of a seller's card."
+          ],
+          "summary": "Dark Espeon should remain an ownerless Dark Eeveelution row, not collapse into generic Espeon search or later Espeon pricing.",
+          "trigger": "A listing or want references Dark Espeon, Espeon, Eeveelution, or Neo Destiny number 4."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A moonlit branch without the moon",
+        "why_it_matters": "Dark Espeon has the strange pull of an almost-complete thought. The set darkens several Eevee branches, but not Umbreon, so Espeon ends up carrying extra atmosphere: elegant, psychic, and just off-center. Atsuko Nishida's credit makes that turn feel even more intimate, because the card asks a soft creature to wear the set's shadow.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_destiny_20020228:neo4-11",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Tyranitar",
+        "name_ja": "わるいバンギラス",
+        "romaji": "Warui Bangiras",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "row_id": "en_wotc_neo_destiny_20020228:neo4-11",
+        "catalog_row_id": "neo4-11"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json#row:en_wotc_neo_destiny_20020228:neo4-11",
+          "title": "Local English WoC card row: Dark Tyranitar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo4-11",
+          "title": "Pokemon TCG API v2 card record: Dark Tyranitar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Tyranitar_(Neo_Destiny_11)",
+          "title": "Bulbapedia: Dark Tyranitar (Neo Destiny 11)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Dark Tyranitar as Neo Destiny number 11, a Rare Holo Stage 2 Fighting Dark Pokemon credited to Shin-ichi Yoshida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Dark Tyranitar's Mountain Smasher and Fling Away attacks, including deck-discard and bench-pressure effects.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that Dark Tyranitar is Fighting-type in this card context and says no Darkness-type Pokemon were made into Dark Pokemon in Neo Destiny.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia notes two printed-data oddities: the card's level 47 is below Pupitar's level 55 evolution point in the games, and the card has Lightning resistance despite Tyranitar not being Ground-type.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dark Tyranitar matters because it makes the Dark side of Neo Destiny feel like force rather than mood: a Johto pseudo-legendary turned into deck destruction, bench pressure, and catalog weight.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "dark_tyranitar_dark_vs_darkness_type_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "type context proves print authenticity"
+          ],
+          "steps": [
+            "Preserve Dark Tyranitar as the card name and Fighting as the TCG type for this row.",
+            "Do not assume every Dark-named Neo Destiny card is Darkness-type.",
+            "Record the local row number 11 and Rare Holo status separately from Shining Tyranitar number 113.",
+            "Treat level and resistance oddities as catalog comparison clues, not standalone authenticity tests."
+          ],
+          "summary": "Dark Tyranitar and Shining Tyranitar are different Neo Destiny rows; type, number, and rarity must stay separate.",
+          "trigger": "A listing references Tyranitar, Dark Tyranitar, Shining Tyranitar, Fighting type, or Darkness type."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A mountain with Team Rocket weather",
+        "why_it_matters": "Dark Tyranitar feels like Neo Destiny's threat made heavy. It is not just a Tyranitar card; it is a Tyranitar card asked to mill, fling, resist oddly, and carry the Dark name without becoming Darkness-type. That tension is exactly why the row deserves care: the card is a pile of late-Neo rules choices compressed into one monster.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_destiny_20020228:neo4-107",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Charizard",
+        "name_ja": "ひかるリザードン",
+        "romaji": "Hikaru Lizardon",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "row_id": "en_wotc_neo_destiny_20020228:neo4-107",
+        "catalog_row_id": "neo4-107"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json#row:en_wotc_neo_destiny_20020228:neo4-107",
+          "title": "Local English WoC card row: Shining Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo4-107",
+          "title": "Pokemon TCG API v2 card record: Shining Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Charizard_(Neo_Destiny_107)",
+          "title": "Bulbapedia: Shining Charizard (Neo Destiny 107)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Shining Charizard as Neo Destiny number 107, a Rare Shining Basic Fire Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The Pokemon TCG API records Shining Charizard with the rule that a deck cannot contain more than one Shining Charizard.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records White-hot Flame as a five-Energy attack using three Fire Energy and two Lightning Energy, dealing 100 damage with discard and self-damage risk.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia identifies the card as featuring the Shiny version of Charizard.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Charizard matters because it fuses the franchise's strongest chase creature with Neo Destiny's secret-row machinery: an iconic species, unusual energy mix, one-per-deck rule, and number beyond the printed checklist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "shining_charizard_secret_row_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "holo texture or physical shine"
+          ],
+          "steps": [
+            "Confirm the card is Shining Charizard, not Base, Blaine's, Legendary Collection, or another Charizard row.",
+            "Record Neo Destiny number 107 and Rare Shining rarity before comparing comps or evidence.",
+            "Preserve the one-per-deck rule and five-Energy White-hot Flame context as card-row information.",
+            "Treat any physical shine, texture, holo, condition, or authenticity claim as seller evidence requiring photos or verification."
+          ],
+          "summary": "Shining Charizard is a secret-style Neo Destiny row beyond the printed 105-card checklist; number and rarity must be explicit.",
+          "trigger": "A listing or want references Shining Charizard or Neo Destiny Charizard."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The dragon past the checklist",
+        "why_it_matters": "Shining Charizard is the binder page that feels like a rumor became cardboard. It is numbered after the printed set, burns through an awkward, specific energy mix, and carries the one-per-deck Shining rule like a warning label. Collectors love it because it does not merely depict Charizard; it makes Charizard feel discovered.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_destiny_20020228:neo4-109",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Mewtwo",
+        "name_ja": "ひかるミュウツー",
+        "romaji": "Hikaru Myuutsuu",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "row_id": "en_wotc_neo_destiny_20020228:neo4-109",
+        "catalog_row_id": "neo4-109"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json#row:en_wotc_neo_destiny_20020228:neo4-109",
+          "title": "Local English WoC card row: Shining Mewtwo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo4-109",
+          "title": "Pokemon TCG API v2 card record: Shining Mewtwo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Mewtwo_(Neo_Destiny_109)",
+          "title": "Bulbapedia: Shining Mewtwo (Neo Destiny 109)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Shining Mewtwo as Neo Destiny number 109, a Rare Shining Basic Psychic Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The Pokemon TCG API records Shining Mewtwo with the rule that a deck cannot contain more than one Shining Mewtwo.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia states that this card features a Shiny Mewtwo, but unlike the green coloration in the video games, this Shiny Mewtwo is blue.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Reflect Shield and Psyburst, with Psyburst requiring Psychic and Fire Energy and scaling with Energy attached to the Defending Pokemon.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Mewtwo matters because it makes the set's rarity mythology strange rather than simple: the card is Shining, but its color story does not map cleanly to the games, so an agent must carry both catalog identity and visual caution.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "shining_mewtwo_blue_shiny_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "color alone proves identity"
+          ],
+          "steps": [
+            "Confirm Neo Destiny number 109 and Rare Shining rarity before comparing to other Mewtwo rows.",
+            "Record the Bulbapedia color note as catalog context: this Shiny Mewtwo is blue rather than the game's green Shiny coloration.",
+            "Do not use color alone as proof of authenticity, condition, or correct print.",
+            "Ask for seller photos and row-level evidence if the listing depends on visual color or holo appearance."
+          ],
+          "summary": "Shining Mewtwo has a known blue-vs-game-green color context; agents should preserve it without treating color as authentication.",
+          "trigger": "A listing references Shining Mewtwo, blue Mewtwo, Shiny Mewtwo, or Neo Destiny number 109."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A laboratory myth in the wrong color",
+        "why_it_matters": "Shining Mewtwo is great because it is not tidy. Mewtwo already carries laboratory myth, and Neo Destiny turns that myth into a Shining card whose color does not simply mirror the games. The result feels like an artifact from a parallel branch: familiar, rare, and slightly misaligned.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_destiny_20020228:neo4-111",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Raichu",
+        "name_ja": "ひかるライチュウ",
+        "romaji": "Hikaru Raichuu",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "row_id": "en_wotc_neo_destiny_20020228:neo4-111",
+        "catalog_row_id": "neo4-111"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json#row:en_wotc_neo_destiny_20020228:neo4-111",
+          "title": "Local English WoC card row: Shining Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo4-111",
+          "title": "Pokemon TCG API v2 card record: Shining Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Raichu_(Neo_Destiny_111)",
+          "title": "Bulbapedia: Shining Raichu (Neo Destiny 111)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Shining Raichu as Neo Destiny number 111, a Rare Shining Basic Lightning Pokemon credited to Hironobu Yoshida.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The Pokemon TCG API records Shining Raichu with the rule that a deck cannot contain more than one Shining Raichu.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Thundersquall as a Lightning and Water Energy attack that can damage a Benched Pokemon based on Water Energy attached to Shining Raichu.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia identifies the card as featuring the Shiny version of Raichu.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Raichu matters because it takes Pikachu-line familiarity and makes it mechanically odd: a Lightning Pokemon that wants Water Energy, tucked into the secret-style Shining run.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "shining_raichu_lightning_water_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "energy-cost match proves physical identity"
+          ],
+          "steps": [
+            "Confirm Neo Destiny number 111 and Rare Shining rarity before comparing to other Raichu or Pikachu-line rows.",
+            "Record the Lightning plus Water Energy attack cost as row context.",
+            "Do not treat the unusual Energy mix as a standalone authenticity test.",
+            "If the seller image is unclear, ask for the name line, number, rarity line, and attack cost area before escalating."
+          ],
+          "summary": "Shining Raichu is a secret-style Raichu row with a distinctive Lightning/Water attack context, not a generic Raichu.",
+          "trigger": "A listing references Shining Raichu, Raichu, Pikachu-line chase cards, or Neo Destiny number 111."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The familiar mouse made strange",
+        "why_it_matters": "Shining Raichu works because it starts with comfort and then slips sideways. Everyone knows the Pikachu line, but this card asks Raichu to become a secret-row object with Water in the attack cost and a storm that reaches the bench. It is a friendly shape carrying weird late-Neo electricity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_neo_destiny_20020228:neo4-113",
+      "type": "card",
+      "context": {
+        "name_en": "Shining Tyranitar",
+        "name_ja": "ひかるバンギラス",
+        "romaji": "Hikaru Bangiras",
+        "release_family_id": "en_wotc_neo_destiny_20020228",
+        "row_id": "en_wotc_neo_destiny_20020228:neo4-113",
+        "catalog_row_id": "neo4-113"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_neo_destiny_20020228.json#row:en_wotc_neo_destiny_20020228:neo4-113",
+          "title": "Local English WoC card row: Shining Tyranitar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/neo4-113",
+          "title": "Pokemon TCG API v2 card record: Shining Tyranitar",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Shining_Tyranitar_(Neo_Destiny_113)",
+          "title": "Bulbapedia: Shining Tyranitar (Neo Destiny 113)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia identify Shining Tyranitar as Neo Destiny number 113, a Rare Shining Basic Darkness Pokemon credited to Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The Pokemon TCG API records Shining Tyranitar with the rule that a deck cannot contain more than one Shining Tyranitar.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Shining Tyranitar's Mountain Crush and Destructive Fire attacks, with Darkness, Fighting, and Fire Energy involved.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that Shining Tyranitar's Pokedex entry contains a spelling error, where 'hust' should read 'just', and notes the card features the Shiny version of Tyranitar.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Shining Tyranitar matters because it mirrors Dark Tyranitar while changing the whole claim: secret-style row, Darkness-type identity, Shiny framing, and Ken Sugimori's franchise-rooted art credit.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "shining_tyranitar_dark_tyranitar_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spelling-error presence proves authenticity"
+          ],
+          "steps": [
+            "Separate Shining Tyranitar number 113 from Dark Tyranitar number 11 before pricing, search, or evidence comparison.",
+            "Record Rare Shining rarity and Darkness type for Shining Tyranitar.",
+            "Treat the Pokedex spelling-error note as row context and comparison texture, not standalone authentication.",
+            "If a listing depends on Shining versus Dark identity, ask for full-card photos showing name, number, rarity, type, and attack text."
+          ],
+          "summary": "Shining Tyranitar and Dark Tyranitar are paired in collector attention but separate rows with different type, number, rarity, and claims.",
+          "trigger": "A listing references Tyranitar in Neo Destiny, especially Shining Tyranitar or number 113."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The last Shining row as a closing roar",
+        "why_it_matters": "Shining Tyranitar feels like Neo Destiny shutting the heavy door. It is the final secret-style number in the local model, a Darkness-type Tyranitar drawn by Ken Sugimori, with enough textual oddity to remind an agent that even legendary-feeling catalog rows are made of small printed details. It is a chase card, yes, but also a boundary marker.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

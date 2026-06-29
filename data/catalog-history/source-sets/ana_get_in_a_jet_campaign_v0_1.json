@@ -1,0 +1,748 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the ANA Get in a Jet! Double Chance Campaign source slice, emphasizing airline/travel distribution, Flying Pikachu and Dragonite source-pinned identities, All Nippon Airways / All Nippon Airlines naming, date-wording caveat, Toshinao Aoki source-provider credit, and route traps against CoroCoro Flying Pikachu, Game Boy Dragonite, Fossil Dragonite, ANA airline promo objects, and later travel/campaign Pikachu memories.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Flying Pikachu row 051",
+      "Dragonite row 052",
+      "All Nippon Airways / All Nippon Airlines route",
+      "Get in a Jet! Double Chance Campaign identity rails",
+      "date wording caveat"
+    ],
+    "not_claiming": [
+      "complete airline campaign source",
+      "complete redemption-form ledger",
+      "complete flight ledger",
+      "complete passenger or customer ledger",
+      "official copy count",
+      "complete ANA promo census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_ana_get_in_a_jet_199811",
+      "context": {
+        "release_family_id": "jp_promo_ana_get_in_a_jet_199811",
+        "name_en": "ANA Get in a Jet! Double Chance Campaign source slice",
+        "name_ja": "ANA とべとべキャンペーン プロモ",
+        "release_date": "1998-11-01/1999-01-31",
+        "date_precision": "source_date_range_crosses_cutoff",
+        "expected_row_count": 2,
+        "source_indices": [
+          "051",
+          "052"
+        ],
+        "parent_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "airline travel distribution",
+          "Pikachu flight motif",
+          "Dragonite messenger/travel gravity",
+          "ANA naming and date caveat",
+          "Aoki source-provider credit",
+          "promo-route identity trap"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_ana_get_in_a_jet_199811:051",
+            "name": "Flying Pikachu",
+            "why": "The travel thesis card: Pikachu already airborne, now bound to an airline campaign instead of CoroCoro or later Flying Pikachu memories.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_ana_get_in_a_jet_199811:052",
+            "name": "Dragonite",
+            "why": "Dragonite makes the airline route feel old-Pokemon right: a friendly carrier figure turned into travel-campaign provenance.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Toshinao Aoki",
+            "row_count": 2,
+            "examples": [
+              "Flying Pikachu",
+              "Dragonite"
+            ],
+            "why": "The local rows credit both cards to Aoki, while the selected source snapshot directly surfaces Aoki on the Dragonite page. Aoki's clean, friendly promo grammar is exactly what lets airline distribution feel playful rather than corporate.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority beyond cited source/provider metadata"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete airline campaign source",
+          "complete redemption-form ledger",
+          "complete flight ledger",
+          "complete passenger or customer ledger",
+          "official copy count",
+          "complete ANA promo census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected snapshot preserve the ANA Get in a Jet! Double Chance Campaign source slice as November 1, 1998 through January 31, 1999, while also preserving a Bulbapedia rendered-table wording caveat that says November 1-31, 1998.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected snapshot identifies the distribution context as All Nippon Airways / All Nippon Airlines Get in a Jet! Double Chance Campaign and source-pins Flying Pikachu and Dragonite to that campaign.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local release models two currently source-pinned card identities in this child slice: Flying Pikachu row 051 and Dragonite row 052. It does not model redemption forms, flight/customer records, official copy counts, or a complete ANA promo census.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local rows credit both Flying Pikachu and Dragonite to Toshinao Aoki as source-provider metadata; the selected snapshot directly surfaces a Toshinao Aoki label for Dragonite. Treat the artist claim as catalog texture, not physical-card authentication.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This source group matters because airline travel becomes part of Pokemon's collectible assembly: Flying Pikachu makes the flight motif literal, while Dragonite gives the campaign an older, gentle carrier energy.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents must preserve ANA/Get in a Jet route, row 051/052 identities, date-wording caveat, Aoki source-provider credit, and distinguish this slice from CoroCoro Flying Pikachu, Game Boy/Fossil/Rocket/VS Dragonite rows, ANA postcard or airline merch objects, and later travel Pikachu memories.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "ANA Get in a Jet! — Pokemon as airline memory",
+        "why_it_matters": "This is one of those promo slices where the object smells like the outside world. Pokemon was not only in binders and magazines; it was in airlines, travel campaigns, and the fantasy of being carried somewhere. Flying Pikachu is the obvious icon, but Dragonite is the soul of the route: friendly, heavy, airborne, and exactly the kind of creature you would trust with a journey.",
+        "not_claiming": [
+          "complete airline campaign history",
+          "complete redemption-form ledger",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: ANA Get in a Jet! Double Chance Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_ana_get_in_a_jet_199811.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete airline campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Pokumon + Bulbapedia ANA Get in a Jet 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_ana_get_in_a_jet_1998_selected_lines.json",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete airline campaign source",
+            "complete redemption-form ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Flying Pikachu (Get in a Jet! Double Chance Campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/flying-pikachu-get-in-a-jet-double-chance-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Dragonite (Get in a Jet! Double Chance Campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/dragonite-get-in-a-jet-double-chance-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_get_in_a_jet_campaign_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says ANA, All Nippon Airways, All Nippon Airlines, Get in a Jet, Double Chance Campaign, Flying Pikachu, Dragonite, Toshinao Aoki, airline promo, airplane Pikachu, or rows 051-052.",
+          "summary": "Preserve the ANA Get in a Jet campaign route, row identity, and source-date caveat before treating a card as this airline-campaign object.",
+          "steps": [
+            "Confirm campaign route: ANA / All Nippon Airways / All Nippon Airlines Get in a Jet! Double Chance Campaign.",
+            "Preserve source row identity: Flying Pikachu 051 and Dragonite 052.",
+            "Preserve source-date caveat: local/Pokumon route uses November 1, 1998-January 31, 1999, while Bulbapedia table wording says November 1-31, 1998.",
+            "Do not infer passenger, flight, redemption-form, customer, or copy-count facts from the catalog row.",
+            "Do not collapse Flying Pikachu into CoroCoro November 1997, English Wizards promo, Surfing Pikachu, or later Flying Pikachu variants without explicit route evidence.",
+            "Do not collapse Dragonite into Game Boy insert, Mystery of the Fossils, Rocket/Gift Pack, Pokemon Card web, VS, or generic Dragonite memories without explicit route evidence.",
+            "If seller claims airline paperwork, envelope, postcard, boarding/passenger provenance, or sealed campaign material, request separate photos and chain-of-custody evidence.",
+            "Use seller photos for front/back, campaign-specific print markers where visible, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete airline campaign source",
+            "complete redemption-form ledger",
+            "complete flight ledger",
+            "complete passenger or customer ledger",
+            "official copy count",
+            "complete ANA promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_ana_get_in_a_jet_199811:051",
+      "context": {
+        "release_family_id": "jp_promo_ana_get_in_a_jet_199811",
+        "release_name": "ANA Get in a Jet! Double Chance Campaign source slice",
+        "row_id": "jp_promo_ana_get_in_a_jet_199811:051",
+        "catalog_row_id": "051",
+        "name_en": "Flying Pikachu",
+        "name_ja": "そらをとぶピカチュウ",
+        "romaji": "Flying Pikachu"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "051",
+        "artist": "Toshinao Aoki",
+        "rarity_signal": "ANA Get in a Jet! campaign",
+        "signals": [
+          "ANA Get in a Jet! Double Chance Campaign source slice",
+          "051",
+          "Flying Pikachu",
+          "Toshinao Aoki",
+          "All Nippon Airways",
+          "airline promo",
+          "travel/campaign route"
+        ],
+        "assembly_themes": [
+          "Pikachu flight motif",
+          "airline campaign route",
+          "CoroCoro lookalike pressure",
+          "Aoki promo grammar",
+          "identity trap"
+        ],
+        "assembly_note": "Flying Pikachu row 051 is the ANA Get in a Jet! print, not the earlier CoroCoro November 1997 Flying Pikachu and not a later generic Flying Pikachu memory.",
+        "collector_texture_note": "Flying Pikachu is almost too literal, which is why it works. The balloon/flying idea was already part of Pikachu promo language; ANA turns it into actual travel memory. The route is the romance and the trap.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Flying Pikachu as ANA Get in a Jet! Double Chance Campaign source slice row 051.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected snapshot identifies Flying Pikachu as a Get in a Jet! Double Chance Campaign 1998 unnumbered card associated with All Nippon Airlines / All Nippon Airways.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row credits Flying Pikachu to Toshinao Aoki as source/provider metadata; this is catalog texture and not physical-card authentication.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Flying Pikachu matters here because ANA turns the existing flying-Pikachu motif into real-world travel distribution, making the route part of the card's meaning.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Flying Pikachu row 051, ANA/Get in a Jet route, Aoki local credit, date-wording caveat, and distinction from CoroCoro November 1997, Wizards promo, Surfing Pikachu, and later Flying Pikachu variants.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Flying Pikachu — airline route, not just balloon memory",
+        "why_it_matters": "Flying Pikachu is almost too literal, which is why it works. The balloon/flying idea was already part of Pikachu promo language; ANA turns it into actual travel memory. The route is the romance and the trap.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: ANA Get in a Jet! Double Chance Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_ana_get_in_a_jet_199811.json#row:jp_promo_ana_get_in_a_jet_199811:051",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete airline campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Pokumon + Bulbapedia ANA Get in a Jet 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_ana_get_in_a_jet_1998_selected_lines.json",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete airline campaign source",
+            "complete redemption-form ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Flying Pikachu (Get in a Jet! Double Chance Campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/flying-pikachu-get-in-a-jet-double-chance-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_get_in_a_jet_051_flying_pikachu_route_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Flying Pikachu, Sora wo Tobu Pikachu, ANA, Get in a Jet, All Nippon Airways, All Nippon Airlines, airline promo, CoroCoro Flying Pikachu, Wizards promo, or row 051.",
+          "summary": "Keep Flying Pikachu pinned to ANA row 051 and the Get in a Jet campaign route.",
+          "steps": [
+            "Require row 051 and subject Flying Pikachu / そらをとぶピカチュウ.",
+            "Preserve ANA / All Nippon Airways / All Nippon Airlines Get in a Jet! Double Chance Campaign route.",
+            "Preserve source-date caveat rather than flattening Pokumon and Bulbapedia wording.",
+            "Preserve Toshinao Aoki credit as local/source metadata, not physical-card authentication.",
+            "Do not collapse into CoroCoro November 1997 Flying Pikachu, English Wizards Black Star promo, Surfing Pikachu, or later Flying Pikachu variants without explicit route evidence.",
+            "If seller claims airline paperwork, sealed campaign material, or passenger/flight provenance, request separate evidence.",
+            "Use seller photos for front/back, campaign-specific print markers where visible, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete airline campaign source",
+            "complete redemption-form ledger",
+            "complete flight ledger",
+            "complete passenger or customer ledger",
+            "official copy count",
+            "complete ANA promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_ana_get_in_a_jet_199811:052",
+      "context": {
+        "release_family_id": "jp_promo_ana_get_in_a_jet_199811",
+        "release_name": "ANA Get in a Jet! Double Chance Campaign source slice",
+        "row_id": "jp_promo_ana_get_in_a_jet_199811:052",
+        "catalog_row_id": "052",
+        "name_en": "Dragonite",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "052",
+        "artist": "Toshinao Aoki",
+        "rarity_signal": "ANA Get in a Jet! campaign",
+        "signals": [
+          "ANA Get in a Jet! Double Chance Campaign source slice",
+          "052",
+          "Dragonite",
+          "Toshinao Aoki",
+          "All Nippon Airways",
+          "airline promo",
+          "travel/campaign route"
+        ],
+        "assembly_themes": [
+          "Dragonite carrier motif",
+          "airline campaign route",
+          "Game Boy/Fossil lookalike pressure",
+          "Aoki promo grammar",
+          "identity trap"
+        ],
+        "assembly_note": "Dragonite row 052 is the ANA Get in a Jet! print, not the Game Boy insert, Mystery of the Fossils Dragonite, or later Dragonite rows.",
+        "collector_texture_note": "Dragonite is the card that makes this airline campaign feel emotionally right. Pikachu can fly with balloons, but Dragonite feels like a creature built to carry mail, people, and memory across distance. It gives the campaign a kind of gentle infrastructure.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dragonite as ANA Get in a Jet! Double Chance Campaign source slice row 052.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The selected snapshot identifies Dragonite as a Get in a Jet! Double Chance Campaign 1998 unnumbered card associated with All Nippon Airlines / All Nippon Airways.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The selected snapshot directly surfaces Toshinao Aoki on the Dragonite Pokumon page, and the local row also credits Dragonite to Toshinao Aoki as source/provider metadata.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Dragonite matters here because it turns the airline route from brand tie-in into creature logic: Dragonite is already a friendly carrier figure, so the ANA campaign feels assembled from the Pokemon world rather than merely pasted onto it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Dragonite row 052, ANA/Get in a Jet route, Aoki credit, date-wording caveat, and distinction from Game Boy, Fossil, Rocket/Gift Pack, Pokemon Card web, VS, and generic Dragonite rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Dragonite — the gentle airline infrastructure",
+        "why_it_matters": "Dragonite is the card that makes this airline campaign feel emotionally right. Pikachu can fly with balloons, but Dragonite feels like a creature built to carry mail, people, and memory across distance. It gives the campaign a kind of gentle infrastructure.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: ANA Get in a Jet! Double Chance Campaign source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_ana_get_in_a_jet_199811.json#row:jp_promo_ana_get_in_a_jet_199811:052",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete airline campaign archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_lines_snapshot",
+          "title": "Selected rendered lines: Pokumon + Bulbapedia ANA Get in a Jet 1998",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_ana_get_in_a_jet_1998_selected_lines.json",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete airline campaign source",
+            "complete redemption-form ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "collector_context_reference",
+          "title": "Pokumon: Dragonite (Get in a Jet! Double Chance Campaign 1998) (Unnumbered)",
+          "ref": "https://pokumon.com/card/dragonite-get-in-a-jet-double-chance-campaign-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official Pokemon source",
+            "complete distribution census",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "ana_get_in_a_jet_052_dragonite_route_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dragonite, Kairyu, ANA, Get in a Jet, All Nippon Airways, All Nippon Airlines, airline promo, Game Boy Dragonite, Fossil Dragonite, Dragonite promo, or row 052.",
+          "summary": "Keep Dragonite pinned to ANA row 052 and the Get in a Jet campaign route.",
+          "steps": [
+            "Require row 052 and subject Dragonite.",
+            "Preserve ANA / All Nippon Airways / All Nippon Airlines Get in a Jet! Double Chance Campaign route.",
+            "Preserve source-date caveat rather than flattening Pokumon and Bulbapedia wording.",
+            "Preserve Toshinao Aoki credit as selected-source/local metadata, not physical-card authentication.",
+            "Do not collapse into Game Boy Dragonite, Mystery of the Fossils Dragonite, Rocket/Gift Pack Dark Dragonite, Pokemon Card web Dragonite, VS trainer-owned Dragonite, or generic Dragonite memories without explicit route evidence.",
+            "If seller claims airline paperwork, sealed campaign material, or passenger/flight provenance, request separate evidence.",
+            "Use seller photos for front/back, campaign-specific print markers where visible, surface, edges, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete airline campaign source",
+            "complete redemption-form ledger",
+            "complete flight ledger",
+            "complete passenger or customer ledger",
+            "official copy count",
+            "complete ANA promo census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,983 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete two-row deepening tranche for the May 1998 Garura Parent/Child Tournament source slice, emphasizing family-tournament culture, Touch Change! participation/Garura Rules use, Kangaskhan prize lane, artist texture, and the Touch Change! Fan Club Vol. 5 reprint caveat.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Touch Change! row 042",
+      "Kangaskhan row 043",
+      "participation-vs-prize role boundary",
+      "Touch Change! tournament-vs-Fan-Club route boundary",
+      "artist/source-credit texture"
+    ],
+    "not_claiming": [
+      "complete tournament source",
+      "complete rules packet",
+      "complete participant/winner ledger",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability",
+      "complete Touch Change distribution census",
+      "proof that the two cards were distributed as one physical packet",
+      "complete artist biography"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_garura_parent_child_199805",
+      "context": {
+        "release_family_id": "jp_promo_garura_parent_child_199805",
+        "name_en": "Garura Parent/Child Tournament source slice",
+        "name_ja": "ガルーラ親子大会 プロモ",
+        "release_date": "1998-05",
+        "expected_source_card_count": 2,
+        "source_gap_count": 0
+      },
+      "coverage": {
+        "history": "B",
+        "release": "B",
+        "cards": "B",
+        "artists": "B",
+        "identification": "B",
+        "art": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "family tournament culture",
+          "participation-vs-prize lane",
+          "special rules object",
+          "artist trace",
+          "reprint boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_garura_parent_child_199805:043",
+            "name": "Kangaskhan",
+            "why": "winner/reached-win-threshold prize, Garura family theme, original Pocket Monsters Card Game logo signal",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_garura_parent_child_199805:042",
+            "name": "Touch Change!",
+            "why": "participation/Garura Rules card that turns the tournament format itself into a collectible object",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "examples": [
+              "Kangaskhan"
+            ],
+            "why": "The Kangaskhan prize uses the franchise-defining visual hand for a family-format trophy object. The local source credit is row-level; broader career texture is sourced only as artist-index context.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Nobuyuki Habu",
+            "examples": [
+              "Touch Change!"
+            ],
+            "why": "Habu makes the rules card feel playful rather than bureaucratic: an event mechanic becomes a small illustrated invitation to swap partners. Artist-index context suggests a compact early-card footprint, not a complete biography.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete tournament source",
+          "complete rules packet",
+          "complete participant/winner ledger",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability",
+          "proof that both cards were distributed as one packet",
+          "complete Touch Change distribution census"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected snapshot place the Garura Parent/Child Tournament source slice in May 1998.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The modeled source slice has two source-pinned card identities: Touch Change! row 042 and Kangaskhan row 043, with source_gap_count 0 for this bounded slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The selected lines describe Touch Change! as a participant/Garura Rules-use card and Kangaskhan as a prize for parent/child teams that reached a certain number of wins.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "This is a source-pinned promo-family card identity slice, not a complete tournament archive, rules packet, participant ledger, official copy-count source, or marketplace price authority.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Touch Change! carries a reprint caveat: the selected lines and Pokumon note a Pokémon Card Fan Club Vol. 5 insert route in June 1998, so agents must not collapse every Touch Change! copy into the May 1998 tournament route.",
+          "sources": [
+            "s2",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local rows and selected lines credit Nobuyuki Habu for Touch Change! and Ken Sugimori for Kangaskhan, with the credits treated as source/provider metadata rather than physical-card proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "artist.other_work",
+          "text": "External artist-index references are useful texture only: The Art of Pokémon lists Nobuyuki Habu with a small Japanese TCG card footprint including Touch Change!, and Ken Sugimori as a major Pokémon/Game Freak art figure with a very large TCG footprint.",
+          "sources": [
+            "s7",
+            "s8"
+          ],
+          "authority_label": "interpretive",
+          "tier": "C",
+          "basis_claims": [
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "The release matters because it makes the Pokemon card game visibly intergenerational: parents and children play as teams, a special rules card teaches the format, and Kangaskhan turns the prize into a perfect family symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the May 1998 Garura Parent/Child source route, the participation-vs-prize lane, Touch Change! Fan Club reprint caveat, Kangaskhan logo signal, row 042/043 identity, and artist credits before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "human_title": "Garura Parent/Child Tournament: the family table becomes a prize lane",
+        "why_it_matters": "This is one of those releases where the object only makes full sense when you picture the room. A parent and a child sit together, battle another family pair, and the tournament creates two different kinds of memory: Touch Change! for everyone who needed the Garura Rules machinery, and Kangaskhan for teams that pushed far enough to earn the prize. Kangaskhan is almost too perfect here: a parent Pokemon with its child in the pouch, carrying the emotional thesis of the event. Touch Change! is the quieter marvel, a rules card that proves the tournament format itself became collectible. For an agent, the lesson is not just name matching. The role, route, reprint caveat, and family-tournament context are the identity.",
+        "not_claiming": [
+          "complete tournament history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Garura Parent/Child Tournament source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_garura_parent_child_199805.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete tournament source"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "title": "Bulbapedia + Pokumon selected lines: Garura Parent/Child 1998 roles and reprint caveat",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "complete rules packet",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Touch Change! (Garura Parent/Child promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Touch_Change%21_%28Garura_Parent/Child_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete tournament source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Kangaskhan (Garura Parent/Child promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_%28Garura_Parent/Child_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete prize-threshold documentation",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "database_reference",
+          "title": "Pokumon: Touch Change! (Garura Parent/Child Tournament, Pokemon Card Fan Club Magazine 1998)",
+          "ref": "https://pokumon.com/card/touch-change-garura-parent-child-tournament-pokemon-card-fan-club-magazine-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "database_reference",
+          "title": "Pokumon: Kangaskhan (Garura Parent/Child Tournament 1998)",
+          "ref": "https://pokumon.com/card/kangaskhan-garura-parent-child-tournament-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "artist_index_reference",
+          "title": "The Art of Pokémon: Nobuyuki Habu illustrator index",
+          "ref": "https://www.artofpkm.com/illustrators/423",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "official Pokemon source",
+            "physical-card print authority"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "artist_index_reference",
+          "title": "The Art of Pokémon: Ken Sugimori illustrator index",
+          "ref": "https://www.artofpkm.com/illustrators/3",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "official Pokemon source",
+            "physical-card print authority"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "garura_parent_child_1998_source_slice_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Garura Parent/Child, Parent/Child Mega Battle, Touch Change!, タッチ交代, Kangaskhan, ガルーラ, Picasso Touch, Pokemon Card Fan Club Vol. 5, Garura Rules, or early unnumbered promo.",
+          "summary": "Preserve the May 1998 family-tournament route, participation-vs-prize lane, Touch Change! reprint caveat, and row 042/043 identity before accepting a match.",
+          "steps": [
+            "Confirm May 1998 Garura Parent/Child Tournament / Parent-Child Mega Battle context before treating either card as this source slice.",
+            "Preserve the two-lane structure: Touch Change! row 042 is the participation/Garura Rules-use card; Kangaskhan row 043 is the winner or reached-win-threshold prize lane.",
+            "For Touch Change!, check whether the offered copy is being represented as tournament distribution or Pokémon Card Fan Club Vol. 5 reprint; do not equate those routes without evidence.",
+            "For Kangaskhan, preserve Japanese/romaji identity ガルーラ / Garura, the Ken Sugimori source credit, and the original Pocket Monsters Card Game logo signal as catalog identifiers, not authentication proof.",
+            "Preserve Nobuyuki Habu as Touch Change! source/provider artist credit and Ken Sugimori as Kangaskhan source/provider artist credit; do not use artist name alone as source identity.",
+            "Use seller photos for face/back, stock, logo, gloss/surface, dimensions, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete tournament source",
+            "complete rules packet",
+            "complete participant/winner ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "proof that both cards were distributed as one physical packet",
+            "complete Touch Change distribution census",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_garura_parent_child_199805:042",
+      "context": {
+        "release_family_id": "jp_promo_garura_parent_child_199805",
+        "release_name": "Garura Parent/Child Tournament source slice",
+        "row_id": "jp_promo_garura_parent_child_199805:042",
+        "catalog_row_id": "042",
+        "name_en": "Touch Change!",
+        "name_ja": "タッチ交代！",
+        "romaji": "Touch Change!"
+      },
+      "coverage": {
+        "history": "B",
+        "release": "B",
+        "art": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "042",
+        "artist": "Nobuyuki Habu",
+        "rarity_signal": "Sans rareté",
+        "signals": [
+          "Touch Change!",
+          "タッチ交代！",
+          "Touch Change!",
+          "Garura Parent/Child Tournament",
+          "May 1998",
+          "Garura Parent/Child Tournament participation prize"
+        ],
+        "assembly_themes": [
+          "family tournament culture",
+          "special distribution lane",
+          "artist trace",
+          "source-route identity"
+        ],
+        "assembly_note": "Touch Change! sits in the Garura Parent/Child source slice as row 042; event role and source route need to stay attached to the name.",
+        "collector_texture_note": "Touch Change! is wonderful because it makes the format itself collectible. It is not the big trophy card, and that is why it matters: it is the little mechanism that let the Parent/Child tournament feel different from normal play. The card says the table has two bodies on each side, two generations leaning over the same game, and a special rule for how they pass the turn between them. Habu’s contribution is gentle and strange: rules text becomes a memory object. The collector trap is the reprint route, because a Touch Change! can belong to the tournament story or to the later Fan Club Vol. 5 magazine route; the agent has to ask which assembly path the seller is actually claiming.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Touch Change! as Garura Parent/Child Tournament source-slice row 042, with Japanese name タッチ交代！ and romaji/English Touch Change!.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected lines describe Touch Change! as given to participants of the May 1998 Garura Parent/Child Tournament and necessary for the Garura Rules version of the TCG used there.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The selected lines say Touch Change! was not part of a 60-card deck and had no effect when not playing by Garura Rules, making it a format-specific rules object rather than ordinary deck filler.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Pokumon and the selected snapshot preserve the Pokémon Card Fan Club Vol. 5 June 1998 reprint caveat, so tournament participation route and magazine reprint route must remain distinct.",
+          "sources": [
+            "s2",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The local row and selected lines credit Touch Change! to Nobuyuki Habu as source/provider metadata, not physical-card proof.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "The Art of Pokémon index lists Nobuyuki Habu with a small Japanese-card footprint including Touch Change!, useful as artist texture but not a complete biography or official source.",
+          "sources": [
+            "s7"
+          ],
+          "authority_label": "interpretive",
+          "tier": "C",
+          "basis_claims": [
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Touch Change! matters because it turns the event rules into a collectible artifact: the card is a little switchboard for parent/child play, not just a prize or character portrait.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Do not accept Touch Change! name alone; preserve row 042, Garura Rules use, tournament participation route, Fan Club Vol. 5 reprint caveat, and Habu credit before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Touch Change!: the rules card that proves the tournament had a body",
+        "why_it_matters": "Touch Change! is wonderful because it makes the format itself collectible. It is not the big trophy card, and that is why it matters: it is the little mechanism that let the Parent/Child tournament feel different from normal play. The card says the table has two bodies on each side, two generations leaning over the same game, and a special rule for how they pass the turn between them. Habu’s contribution is gentle and strange: rules text becomes a memory object. The collector trap is the reprint route, because a Touch Change! can belong to the tournament story or to the later Fan Club Vol. 5 magazine route; the agent has to ask which assembly path the seller is actually claiming.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local catalog row: Touch Change! / Garura Parent-Child 1998",
+          "ref": "data/japanese-pre-english/releases/jp_promo_garura_parent_child_199805.json#row:jp_promo_garura_parent_child_199805:042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "title": "Bulbapedia + Pokumon selected lines: Garura Parent/Child 1998 roles",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Touch Change! (Garura Parent/Child promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Touch_Change%21_%28Garura_Parent/Child_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete tournament source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "database_reference",
+          "title": "Pokumon: Touch Change! (Garura Parent/Child Tournament, Pokemon Card Fan Club Magazine 1998)",
+          "ref": "https://pokumon.com/card/touch-change-garura-parent-child-tournament-pokemon-card-fan-club-magazine-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "artist_index_reference",
+          "title": "The Art of Pokémon: Nobuyuki Habu illustrator index",
+          "ref": "https://www.artofpkm.com/illustrators/423",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "official Pokemon source",
+            "physical-card print authority"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "garura_parent_child_1998_042_touch_change_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Touch Change!, タッチ交代, Garura Rules, Picasso Touch, Parent/Child Tournament, Pokemon Card Fan Club Vol. 5, June 1998 reprint, or unnumbered promo.",
+          "summary": "Keep Touch Change! pinned to row 042 and the Garura Parent/Child source slice before accepting a match.",
+          "steps": [
+            "Keep Touch Change! pinned to row 042 and the Garura Parent/Child source slice before accepting a match.",
+            "Preserve Japanese/romaji name: タッチ交代！ / Touch Change!.",
+            "Require the role claim: participation/Garura Rules-use card, not Kangaskhan winner-prize lane.",
+            "Preserve the selected-source fact that the card was necessary for Garura Rules play, not part of a 60-card deck, and had no effect outside Garura Rules.",
+            "Ask whether the copy is being represented as May 1998 tournament distribution or Pokémon Card Fan Club Vol. 5 June 1998 reprint; do not collapse those routes.",
+            "Preserve Nobuyuki Habu source/provider credit, but use seller photos for physical format, stock, print surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete tournament source",
+            "complete rules packet",
+            "complete participant/winner ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_garura_parent_child_199805:043",
+      "context": {
+        "release_family_id": "jp_promo_garura_parent_child_199805",
+        "release_name": "Garura Parent/Child Tournament source slice",
+        "row_id": "jp_promo_garura_parent_child_199805:043",
+        "catalog_row_id": "043",
+        "name_en": "Kangaskhan",
+        "name_ja": "ガルーラ",
+        "romaji": "Garura"
+      },
+      "coverage": {
+        "history": "B",
+        "release": "B",
+        "art": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "043",
+        "artist": "Ken Sugimori",
+        "rarity_signal": "Sans rareté",
+        "signals": [
+          "Kangaskhan",
+          "ガルーラ",
+          "Garura",
+          "Garura Parent/Child Tournament",
+          "May 1998",
+          "Garura Parent/Child Tournament winner's prize"
+        ],
+        "assembly_themes": [
+          "family tournament culture",
+          "special distribution lane",
+          "artist trace",
+          "source-route identity"
+        ],
+        "assembly_note": "Kangaskhan sits in the Garura Parent/Child source slice as row 043; event role and source route need to stay attached to the name.",
+        "collector_texture_note": "Kangaskhan is the emotional center of the release. The tournament asks a parent and child to play as a pair, then rewards successful teams with the Pokémon whose whole design is parenthood made visible. That is why this card has a gravity beyond the checklist row: it is the event’s thesis in one picture. Sugimori’s credit matters because the prize leans on the franchise’s foundational visual language; this does not authenticate any copy, but it explains why the object feels so canonical. The agent has to be strict: this is not just any Kangaskhan, not Jungle, not Quick Starter, not a later reference image. It is row 043, Garura Parent/Child, prize lane, logo signal, source route.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Kangaskhan as Garura Parent/Child Tournament source-slice row 043, with Japanese name ガルーラ and romaji Garura.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Selected Bulbapedia/Pokumon lines describe Kangaskhan as the Parent/Child Mega Battle prize for parent/child teams that reached a certain number of wins.",
+          "sources": [
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The meaningful collecting signal is unnumbered promotional tournament prize, not ordinary Jungle/Base Kangaskhan name matching.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Selected lines note this Kangaskhan is one of few promotional cards to feature the original Pocket Monsters Card Game logo; that is a catalog identification signal, not authentication proof.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The local row credits Kangaskhan to Ken Sugimori as source/provider metadata, not direct physical-card proof.",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The Art of Pokémon index presents Sugimori as a major Pokémon/Game Freak art figure with a large TCG footprint; within this slice, that wider authority makes the family-symbol prize feel especially official.",
+          "sources": [
+            "s8"
+          ],
+          "authority_label": "interpretive",
+          "tier": "C",
+          "basis_claims": [
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Kangaskhan matters here because the character and the event rhyme: a parent-child Pokémon becomes the trophy memory for actual parent-child teams.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Do not accept Kangaskhan name alone; preserve row 043, Garura/ガルーラ identity, winner/reached-threshold prize route, logo signal, and Sugimori credit before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Kangaskhan: the prize card that says what the event was about",
+        "why_it_matters": "Kangaskhan is the emotional center of the release. The tournament asks a parent and child to play as a pair, then rewards successful teams with the Pokémon whose whole design is parenthood made visible. That is why this card has a gravity beyond the checklist row: it is the event’s thesis in one picture. Sugimori’s credit matters because the prize leans on the franchise’s foundational visual language; this does not authenticate any copy, but it explains why the object feels so canonical. The agent has to be strict: this is not just any Kangaskhan, not Jungle, not Quick Starter, not a later reference image. It is row 043, Garura Parent/Child, prize lane, logo signal, source route.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local catalog row: Kangaskhan / Garura Parent-Child 1998",
+          "ref": "data/japanese-pre-english/releases/jp_promo_garura_parent_child_199805.json#row:jp_promo_garura_parent_child_199805:043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "title": "Bulbapedia + Pokumon selected lines: Garura Parent/Child 1998 roles",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_pokumon_garura_parent_child_1998_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete tournament source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "title": "Bulbapedia: Kangaskhan (Garura Parent/Child promo)",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Kangaskhan_%28Garura_Parent/Child_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete prize-threshold documentation",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "database_reference",
+          "title": "Pokumon: Kangaskhan (Garura Parent/Child Tournament 1998)",
+          "ref": "https://pokumon.com/card/kangaskhan-garura-parent-child-tournament-1998-unnumbered/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "artist_index_reference",
+          "title": "The Art of Pokémon: Ken Sugimori illustrator index",
+          "ref": "https://www.artofpkm.com/illustrators/3",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete artist biography",
+            "official Pokemon source",
+            "physical-card print authority"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "garura_parent_child_1998_043_kangaskhan_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kangaskhan, ガルーラ, Garura, Parent/Child Mega Battle, Garura Parent/Child winner, tournament prize, original Pocket Monsters Card Game logo, or unnumbered promo.",
+          "summary": "Keep Kangaskhan pinned to row 043 and the Garura Parent/Child source slice before accepting a match.",
+          "steps": [
+            "Keep Kangaskhan pinned to row 043 and the Garura Parent/Child source slice before accepting a match.",
+            "Preserve Japanese/romaji name: ガルーラ / Garura.",
+            "Require the role claim: winner or reached-win-threshold prize for parent/child teams, not Touch Change! participation/Garura Rules lane.",
+            "Preserve the original Pocket Monsters Card Game logo signal as a catalog identification feature, not authentication proof.",
+            "Preserve Ken Sugimori source/provider credit, but do not use artist name alone to identify the print route.",
+            "Reject name-only matches to other Kangaskhan releases; require seller photos for card face/back, logo, stock, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete tournament source",
+            "complete rules packet",
+            "complete participant/winner ledger",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ]
+        }
+      ]
+    }
+  ]
+}

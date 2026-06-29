@@ -1,0 +1,558 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Scizor, the CoroCoro Comic July 2000 issue insert released June 15, 2000, emphasizing the Japanese unnumbered promo route, the later English Wizards Promo 33 relationship, Hironobu Yoshida's hard-edged Scizor artwork, the Crossing the Ruins symbol as a promo-addition clue, and traps against English Black Star Promo 33, Neo Discovery/Crossing the Ruins set copies, and generic Scizor rows.",
+    "in_scope": [
+      "CoroCoro Comic July 2000 issue insert release dossier",
+      "Scizor unnumbered promotional row 163",
+      "Japanese unnumbered promo versus English Wizards Black Star Promo 33 boundary",
+      "Hironobu Yoshida illustration credit",
+      "Crossing the Ruins symbol and CoroCoro border-text identification rails"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "foil truth beyond sourced card-specific evidence",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000",
+        "name_en": "CoroCoro Comic July 2000 issue insert (June 15, 2000)",
+        "release_date": "2000-06-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro Comic magazine insert",
+          "Japanese unnumbered promo",
+          "Johto Metal-type showcase",
+          "Crossing the Ruins symbol as expansion-adjacent signal",
+          "Hironobu Yoshida artwork",
+          "English Promo 33 / Japanese predecessor boundary"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000:163",
+            "name": "Scizor",
+            "why": "This is a chase because it catches Scizor at exactly the Neo turn: the new Metal-type bug, sharp and red, moving through CoroCoro before the English Black Star version reached Pokemon League binders.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c7"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Hironobu Yoshida",
+            "row_count": 1,
+            "examples": [
+              "Scizor"
+            ],
+            "why": "Yoshida matters here because this card is all silhouette and pressure: Scizor looks engineered, not cuddly, and that hard mechanical insect language made the Neo Metal turn feel like a new texture of Pokemon.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete Hironobu Yoshida bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Scizor art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic July 2000 issue insert as a one-row unnumbered promotional source group containing Scizor at source index 163.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Scizor Wizards Promo 33 page says the Japanese print was available as an Unnumbered Promotional card on an insert in the July 2000 issue of CoroCoro Comic, released June 15, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies the Scizor promo as a CoroCoro Comic July 2000 insert, classifies it as magazine-inserted and unpeeled, and gives a distribution date of June 15, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Pokumon's Neo-era timeline places CoroCoro Comic's July 2000 Scizor promo on June 15, 2000, between the May 2000 Gotta Mew and the June 28 Can You Name All the Pokemon Neo? CD insert.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Scizor Wizards Promo 33 to Hironobu Yoshida.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits the CoroCoro Scizor promo illustration to Hironobu Yoshida.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the Japanese print features the Crossing the Ruins... symbol, indicating that it is a promotional addition to that expansion, and that the bottom border text identifies it as a CoroCoro Comic July issue bonus card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "As judged collector texture, this row matters because it makes Scizor legible as a Neo-era Metal-type media object: not just a set card, not yet the English League promo, but a CoroCoro contact point for a second-generation Pokemon that felt sleek, sharp, and new.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c4",
+            "c7"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Scizor: CoroCoro catches the steel bug",
+        "why_it_matters": "This is one of those magazine promos where the route is half the romance. Scizor was still fresh Neo energy: a red, clamp-handed Metal-type evolution that felt more engineered than cuddly. CoroCoro put that future-feeling Pokemon into readers' hands before the English Black Star #33 version had its own League life, which makes the row a tiny hinge between Japanese kid-media contact and the global WotC promo machine.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue contents",
+          "official print run",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_july_2000_scizor_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A seller, collector, or agent identifies a Scizor as the CoroCoro Comic July 2000 unnumbered promo or conflates it with Wizards Black Star Promo 33.",
+          "summary": "Do not identify this row from Scizor name alone. The legible target is the Japanese unnumbered CoroCoro insert route, with Crossing the Ruins symbol and CoroCoro July bonus-card border text as source-described clues.",
+          "steps": [
+            "Confirm the offered item is a Japanese unnumbered promotional Scizor, not the English Wizards Black Star Promo #33 card.",
+            "Ask for clear images of the expansion-symbol area and the lower border text; Bulbapedia describes the Japanese print as bearing the Crossing the Ruins symbol and bottom text for the CoroCoro Comic July issue bonus card.",
+            "Treat sealed/unpeeled magazine-insert condition as separate evidence; PokeBoon's page describes the route as magazine-inserted and unpeeled, but a seller must still show their own copy.",
+            "If the card is English, numbered 33, Pokemon League distributed, or presented as a normal Neo Discovery / Crossing the Ruins set card, route it away from this row.",
+            "Do not promote the catalog match into authenticity, possession, foil, condition, or price truth."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "foil truth",
+            "price truth",
+            "official print run",
+            "approved image rights"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000.json",
+          "title": "Local release catalog: CoroCoro Comic July 2000 issue insert (June 15, 2000)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete issue contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Scizor_%28Wizards_Promo_33%29",
+          "title": "Bulbapedia: Scizor (Wizards Promo 33)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/corocoro_scizor_promo/",
+          "title": "PokeBoon: Scizor Promo: CoroCoro Comic July 2000 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "reference",
+          "ref": "https://pokumon.com/timeline-neo-era/",
+          "title": "Pokumon: Timeline - Neo Era",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official primary publication record",
+            "complete timeline",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000:163",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000:163",
+        "release_family_id": "jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000",
+        "name_en": "Scizor",
+        "name_ja": "ハッサム",
+        "romaji": "Hassam",
+        "release_date": "2000-06-15"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_profile": {
+        "authority_label": "local_catalog_fact_and_reference_fact",
+        "identity": "Scizor / ハッサム Hassam, Japanese unnumbered promotional card, source row 163",
+        "artist": "Hironobu Yoshida",
+        "mechanical_texture": [
+          "Metal-type Stage 1 Pokemon",
+          "70 HP",
+          "Evolves from Scyther",
+          "Leer",
+          "Metal Pincer",
+          "Wizards Black Star Promo 33 relationship"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "foil truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors row 163 as Scizor in the CoroCoro Comic July 2000 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies this card as Scizor LV.36, Japanese name ハッサム Hassam, a Metal-type Stage 1 Pokemon card with 70 HP that evolves from Scyther.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists the card's attacks as Leer and Metal Pincer; the latter does 30 damage plus more for consecutive heads, giving the card a very Scizor-like pressure rhythm rather than a plain binder-only identity.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon both credit Scizor's illustration to Hironobu Yoshida.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Hironobu Yoshida illustration category includes Scizor, Scyther, Shining Celebi, Shining Charizard, Shining Kabutops, Shining Mew, Shining Mewtwo, Shining Raichu, Skarmory FB, and Smeargle, showing that this illustrator sits near several high-memory Neo-era and Shining-card collector lanes.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The Japanese print is not merely an English Promo 33 copy in another language: Bulbapedia describes it as an unnumbered CoroCoro insert that bears the Crossing the Ruins symbol and CoroCoro Comic July issue bonus-card border text.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "card.art",
+          "text": "As judged art texture, Yoshida's Scizor image earns collector attention because it makes the Pokemon feel cut from metal: hard red armor, claws as tools, and a silhouette that says Johto's new types are not just palette swaps but a different design temperature.",
+          "sources": [
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "not_claiming": [
+            "official art interpretation",
+            "all Yoshida work",
+            "authentication",
+            "condition truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Scizor: a blade in the magazine",
+        "why_it_matters": "Scizor is a perfect promo subject for this moment because it looks like the future of Pokemon had sharpened overnight. The CoroCoro copy is not only a card to identify; it is a contact event: Japanese magazine reader, Neo expansion symbol, Yoshida's armored bug, and later English Promo 33 all stacked in one object. The agent should keep those layers separate, because that is where the card gets interesting.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official art interpretation",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "foil truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_july_2000_scizor_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A card-level Scizor match is being prepared for a want, sale, dossier, or agent comparison.",
+          "summary": "The card name is insufficient. Confirm Japanese unnumbered CoroCoro identity, expansion-adjacent symbol, and border-text route before treating the row as this exact promo.",
+          "steps": [
+            "Start from language and numbering: this row is Japanese and unnumbered; English Wizards Black Star Promo #33 belongs to a related but different route.",
+            "Ask for a close crop of the symbol area; the expected source-described clue is the Crossing the Ruins symbol, not a generic set-number mark.",
+            "Ask for a lower-border crop; Bulbapedia describes the Japanese print's bottom border text as identifying the CoroCoro Comic July issue bonus card.",
+            "Compare against Neo Discovery / Crossing the Ruins set Scizor and later Scizor cards before adding collection state, because Scizor name and Metal type alone are too broad.",
+            "If the user only has a binder-page photo, mark the identification provisional and ask the agent to crop the symbol area and bottom border before publishing a confident row match."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "foil truth",
+            "price truth",
+            "official print run",
+            "approved image rights"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000.json#row:jp_promo_unnumbered_wotc_163_corocoro_comic_july_2000_issue_insert_june_15_2000:163",
+          "title": "Local catalog row: Scizor / CoroCoro Comic July 2000 issue insert (June 15, 2000)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete issue contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Scizor_%28Wizards_Promo_33%29",
+          "title": "Bulbapedia: Scizor (Wizards Promo 33)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/corocoro_scizor_promo/",
+          "title": "PokeBoon: Scizor Promo: CoroCoro Comic July 2000 insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category%3AIllus._by_Hironobu_Yoshida",
+          "title": "Bulbapedia: Category: Illus. by Hironobu Yoshida",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete illustrator bibliography",
+            "official primary artist archive",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ]
+    }
+  ]
+}

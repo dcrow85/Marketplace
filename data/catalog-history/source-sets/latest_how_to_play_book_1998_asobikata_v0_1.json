@@ -1,0 +1,773 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Three-dossier deepening tranche for the November 13, 1998 Easily Understand How to Play Pokemon Cards: Latest Edition / Asobikata source slice. It covers Diglett and Dugtrio, emphasizing the second how-to-play book object, Miki Tanaka's paired illustrations, Asobikata collector naming, later Pokemon Web e-Card reprints, and special instructions against 1996 How-to-Play, ordinary Fossil/Base-style Diglett/Dugtrio, Pokemon Web, and Dugtrio Team Battle confusion.",
+    "in_scope": [
+      "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+      "Diglett row 054",
+      "Dugtrio row 055",
+      "November 13, 1998 Latest Edition / Asobikata route",
+      "Miki Tanaka illustrator credit",
+      "Japanese names and romaji",
+      "Pokemon Web e-Card reprint boundary",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete book source",
+      "complete source object",
+      "complete accessory-object ledger",
+      "complete sealed-book variant catalog",
+      "official copy count",
+      "complete Asobikata promo variant census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_latest_how_to_play_book_19981113",
+      "context": {
+        "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "name_en": "Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+        "name_ja": "「ポケモンカードの遊びかたがよくわかる本 最新版」プロモ",
+        "release_date": "1998-11-13",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Latest Edition how-to-play book route",
+          "Asobikata collector nickname",
+          "Diglett / Dugtrio paired teaching-line identity",
+          "Miki Tanaka two-card artist lane",
+          "Pokemon Web e-Card reprint boundary",
+          "1996 How-to-Play Pikachu / Jigglypuff boundary",
+          "Dugtrio Team Battle phone-card boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_latest_how_to_play_book_19981113:054",
+            "name": "Diglett",
+            "why": "Diglett is the tiny first step in the Asobikata pair: a humble Fighting-type basic that makes the Latest Edition book feel practical and instructional instead of mascot-led.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_latest_how_to_play_book_19981113:055",
+            "name": "Dugtrio",
+            "why": "Dugtrio completes the pair as the evolved echo: three heads, one teaching lane, and a perfect reminder that the book object was explaining play through simple evolutionary logic.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Miki Tanaka",
+            "row_count": 2,
+            "examples": [
+              "Diglett",
+              "Dugtrio"
+            ],
+            "why": "Tanaka's paired credit matters because this source slice is about teaching through a small evolutionary line. The art lane is not a random credit; it helps keep Diglett and Dugtrio together as one Asobikata teaching object.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete book source",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected Pokumon/Bulbapedia snapshot place Easily Understand How to Play Pokemon Cards: Latest Edition on November 13, 1998.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The source slice models two source-pinned rows for the Latest Edition how-to-play book: Diglett and Dugtrio.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The selected snapshot describes the distribution context as Easily Understand How to Play Pokemon Cards: Latest Edition / Asobikata book.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local rows and selected snapshot credit both Diglett and Dugtrio to Miki Tanaka.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia lines in the selected snapshot say the original Diglett and Dugtrio prints are commonly known as Asobikata Diglett and Asobikata Dugtrio, in reference to the how-to-play publication.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The selected Bulbapedia lines say both cards were later reprinted in the Japanese Pokemon Web expansion using the e-Card Series layout.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "This source slice matters because it shows the how-to-play apparatus maturing from mascot comfort in 1996 to a small evolutionary teaching pair in 1998: Diglett, Dugtrio, one artist, one book route, and a later e-Card afterlife.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the November 13 1998 Latest Edition / Asobikata route, Diglett/Dugtrio pair relationship, Miki Tanaka credit, Japanese names, Pokemon Web/e-Card reprint boundary, and non-equivalence with the 1996 How-to-Play pair, ordinary Diglett/Dugtrio prints, and Dugtrio Team Battle before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Latest Edition How-to-Play: the ground line teaches the game",
+        "why_it_matters": "The 1996 How-to-Play book used Pikachu and Jigglypuff to make the card game approachable. Two years later, the Latest Edition uses Diglett and Dugtrio, which feels wonderfully practical: a tiny basic Pokemon and its three-headed evolution, one artist, one rule-learning object. It is less mascot sparkle and more apparatus. This is Pokemon learning how to explain evolution, stages, and play through a humble little line that later resurfaces in Pokemon Web's e-Card world.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete book source",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_latest_how_to_play_book_19981113.json",
+          "title": "Local Japanese pre-English catalog: Easily Understand How to Play Pokemon Cards Latest Edition promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete book source",
+            "complete source object",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+          "title": "Selected Pokumon + Bulbapedia lines: Latest How-to-Play Diglett/Dugtrio",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "complete source object",
+            "complete accessory-object ledger",
+            "complete sealed-book variant catalog",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+          "title": "Bulbapedia: Diglett (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+          "title": "Bulbapedia: Dugtrio (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "latest_how_to_play_1998_asobikata_pair_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Latest Edition, Easily Understand How to Play Pokemon Cards, Asobikata, Diglett, Dugtrio, Miki Tanaka, Pokemon Web, e-Card, 1996 How-to-Play, Pikachu, Jigglypuff, Dugtrio Team Battle, phone card, or rows 054/055.",
+          "summary": "Keep the November 13, 1998 Latest Edition / Asobikata Diglett-Dugtrio pair separate from 1996 How-to-Play, Pokemon Web reprints, ordinary Diglett/Dugtrio, and Dugtrio Team Battle objects.",
+          "steps": [
+            "Confirm the claimed route is Easily Understand How to Play Pokemon Cards: Latest Edition, released November 13, 1998.",
+            "Confirm the modeled pair is Diglett row 054 and Dugtrio row 055.",
+            "Preserve the Asobikata nickname as collector context tied to the how-to-play publication.",
+            "Preserve Miki Tanaka as the paired illustrator credit, but do not treat artist credit as route proof.",
+            "Separate original Asobikata prints from later Pokemon Web e-Card Series layout reprints.",
+            "Separate this 1998 Latest Edition route from the 1996 How-to-Play Pikachu/Jigglypuff pair.",
+            "Separate ordinary Diglett/Dugtrio TCG prints and Dugtrio Team Battle phone-card objects from this book-promo pair.",
+            "Before trade/spendability, require seller-controlled front/back images, close-ups of title/name, illustrator line, copyright/layout, surface/corners, and any book/sealed/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "complete book source",
+            "complete sealed-book variant catalog"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_latest_how_to_play_book_19981113:054",
+      "context": {
+        "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "row_id": "jp_promo_latest_how_to_play_book_19981113:054",
+        "catalog_row_id": "054",
+        "name_en": "Diglett",
+        "name_ja": "ディグダ",
+        "romaji": "Digda",
+        "release_date": "1998-11-13"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Diglett",
+        "name_ja": "ディグダ",
+        "romaji": "Digda",
+        "number": "054",
+        "rarity_signal": "Unnumbered Promotional / Easily Understand How to Play Pokemon Cards Latest Edition",
+        "artist": "Miki Tanaka",
+        "release": "Easily Understand How to Play Pokemon Cards: Latest Edition"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "Asobikata book route",
+          "Miki Tanaka credit",
+          "Diglett/Dugtrio pair relationship",
+          "Pokemon Web reprint boundary",
+          "book-promo identity trap"
+        ],
+        "collector_texture_note": "Diglett is the tiny start of the Asobikata pair. Its value here is not loudness, but route discipline: one small basic Pokemon that teaches the path into its evolved partner.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Diglett as Latest Edition How-to-Play source row 054.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The selected snapshot identifies Diglett as ディグダ / Digda.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row and selected snapshot credit Diglett to Miki Tanaka.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia lines in the selected snapshot say the original print is commonly known as Asobikata Diglett and was later reprinted in Pokemon Web using the e-Card Series layout.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Diglett matters here because it turns a humble Basic Pokemon into the entry point for a teaching-book evolutionary pair.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep Asobikata Diglett row 054 separate from ordinary Diglett prints, Pokemon Web e-Card reprints, Lucky Stadium Diglett, and any Dugtrio Team Battle phone-card context.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Asobikata Diglett — the small door into the lesson",
+        "why_it_matters": "Diglett is almost comically modest, which is why it works. In this book-promo lane, it is not trying to be a mascot or trophy. It is a simple Basic Pokemon holding the door open for a rules lesson: here is the little one, here is where it can go, here is how the game thinks.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_latest_how_to_play_book_19981113.json",
+          "title": "Local row: Latest Edition How-to-Play Diglett 054",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete book source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+          "title": "Selected Pokumon + Bulbapedia lines: Latest How-to-Play Diglett/Dugtrio",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Diglett_(Asobikata_promo)",
+          "title": "Bulbapedia: Diglett (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "latest_how_to_play_1998_diglett_row_054_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Asobikata Diglett, Diglett, ディグダ, Digda, Latest Edition, How-to-Play, Pokemon Web, e-Card, Lucky Stadium Diglett, Dugtrio Team Battle, or row 054.",
+          "summary": "Treat this as Asobikata Diglett only when the November 13, 1998 Latest Edition book route and row 054 identity are supported.",
+          "steps": [
+            "Confirm the subject is Diglett / ディグダ / Digda.",
+            "Confirm the route is Easily Understand How to Play Pokemon Cards: Latest Edition, November 13, 1998.",
+            "Preserve the Asobikata Diglett nickname as collector context tied to the book route.",
+            "Preserve Miki Tanaka as artist context, but do not treat artist credit as route proof.",
+            "Separate original Asobikata Diglett from the later Pokemon Web e-Card Series reprint.",
+            "Separate ordinary Diglett prints, Lucky Stadium Diglett, and non-card/phone-card event objects from this book-promo row.",
+            "Treat book, sealed-book, or source-object stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of title/name, illustrator line, copyright/layout, surface/corners, and any book/sealed/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_latest_how_to_play_book_19981113:055",
+      "context": {
+        "release_family_id": "jp_promo_latest_how_to_play_book_19981113",
+        "row_id": "jp_promo_latest_how_to_play_book_19981113:055",
+        "catalog_row_id": "055",
+        "name_en": "Dugtrio",
+        "name_ja": "ダグトリオ",
+        "romaji": "Dugtrio",
+        "release_date": "1998-11-13"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Dugtrio",
+        "name_ja": "ダグトリオ",
+        "romaji": "Dugtrio",
+        "number": "055",
+        "rarity_signal": "Unnumbered Promotional / Easily Understand How to Play Pokemon Cards Latest Edition",
+        "artist": "Miki Tanaka",
+        "release": "Easily Understand How to Play Pokemon Cards: Latest Edition"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "Asobikata book route",
+          "Miki Tanaka credit",
+          "Diglett/Dugtrio pair relationship",
+          "Pokemon Web reprint boundary",
+          "Dugtrio Team Battle name trap"
+        ],
+        "collector_texture_note": "Dugtrio completes the pair and carries the biggest name trap: Dugtrio can mean an evolved Pokemon, an Asobikata book promo, a Pokemon Web reprint, or an event/phone-card memory if the route is not pinned.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Dugtrio as Latest Edition How-to-Play source row 055.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The selected snapshot identifies Dugtrio as ダグトリオ / Dugtrio.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row and selected snapshot credit Dugtrio to Miki Tanaka.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia lines in the selected snapshot say the original print is commonly known as Asobikata Dugtrio and was later reprinted in Pokemon Web using the e-Card Series layout.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dugtrio matters here because it completes the Latest Edition book's tiny evolutionary lesson while creating a route trap with other Dugtrio-named event memories.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep Asobikata Dugtrio row 055 separate from ordinary Dugtrio prints, Pokemon Web e-Card reprints, and Dugtrio Team Battle phone-card/event contexts.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Asobikata Dugtrio — the lesson multiplied",
+        "why_it_matters": "Dugtrio is Diglett's joke and lesson repeated three times. In this source slice, that repetition matters: the Latest Edition book is not using a mascot to sell you the game, it is using an evolutionary pair to teach how the game thinks. The card is simple, but the assembly is elegant.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_latest_how_to_play_book_19981113.json",
+          "title": "Local row: Latest Edition How-to-Play Dugtrio 055",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete book source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_latest_how_to_play_book_1998_selected_lines.json",
+          "title": "Selected Pokumon + Bulbapedia lines: Latest How-to-Play Diglett/Dugtrio",
+          "retrieved": "2026-06-18",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete book source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dugtrio_(Asobikata_promo)",
+          "title": "Bulbapedia: Dugtrio (Asobikata promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "latest_how_to_play_1998_dugtrio_row_055_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Asobikata Dugtrio, Dugtrio, ダグトリオ, Latest Edition, How-to-Play, Pokemon Web, e-Card, Dugtrio Team Battle, phone card, Tropical Mega Battle, or row 055.",
+          "summary": "Treat this as Asobikata Dugtrio only when the November 13, 1998 Latest Edition book route and row 055 identity are supported.",
+          "steps": [
+            "Confirm the subject is Dugtrio / ダグトリオ.",
+            "Confirm the route is Easily Understand How to Play Pokemon Cards: Latest Edition, November 13, 1998.",
+            "Preserve the Asobikata Dugtrio nickname as collector context tied to the book route.",
+            "Preserve Miki Tanaka as artist context, but do not treat artist credit as route proof.",
+            "Separate original Asobikata Dugtrio from the later Pokemon Web e-Card Series reprint.",
+            "Separate ordinary Dugtrio prints and Dugtrio Team Battle phone-card/event objects from this book-promo row.",
+            "Treat book, sealed-book, or source-object stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of title/name, illustrator line, copyright/layout, surface/corners, and any book/sealed/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    }
+  ]
+}

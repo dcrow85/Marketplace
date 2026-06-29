@@ -1,0 +1,822 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Hanada City Gym / Misty and four cards that carry the deck's collector logic.",
+    "in_scope": [
+      "Hanada City Gym / Misty release dossier",
+      "Misty's Psyduck",
+      "Misty's Tentacool",
+      "Misty's Goldeen row 009",
+      "Misty's Tears"
+    ],
+    "not_claiming": [
+      "complete Hanada City Gym scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "official copy counts beyond cited deck quantities",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_hanada_city_gym_misty_19980426",
+      "type": "release",
+      "context": {
+        "name_en": "Hanada City Gym / Misty",
+        "name_ja": "ハナダシティジム カスミ",
+        "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+        "release_date": "1998-04-26"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json",
+          "title": "Local Japanese pre-English release catalog: Hanada City Gym / Misty",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/HCGYM",
+          "title": "PokéCardex series page: Hanada City Gym",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "approved image display rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hanada_City_Gym_(TCG)",
+          "title": "Bulbapedia: Hanada City Gym (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog, PokéCardex, and Bulbapedia all place Hanada City Gym / Misty on April 26, 1998.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia describes Hanada City Gym as a Japanese-exclusive Standard Deck that complements Leaders' Stadium, while the local catalog models the product as a gym standard deck with 24 unique card rows.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "Bulbapedia says the deck contains 64 fixed cards rather than the usual 60; the local catalog and PokéCardex expose 24 unique non-Energy rows for the deck-family catalog surface.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia says most cards in the deck were not found in the Japanese main expansion and that those cards were added to the main set for English release; it also says the deck contents provided the basis for the English Misty Theme Deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia calls Misty's Goldeen and Misty's Tentacool two notorious Gym Heroes 'common rares' and ties that English rarity memory to their fixed rarity in this Japanese deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows for Hanada City Gym / Misty include Misty's Psyduck, Misty's Poliwag, Misty's Tentacool, Misty's Tentacruel, Misty's Seel, Misty's Goldeen, Misty's Starmie, and Misty's Tears.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Hanada City Gym / Misty are Ken Sugimori, Keiji Kinebuchi, and Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Hanada City Gym / Misty matters because it is a fixed-deck character object that later becomes English set texture: the deck's private distribution logic, no-rarity deck context, common-rare memory, and Misty-specific card choices all travel differently when the cards are reassembled for English Gym-era collecting.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "hanada_city_gym_deck_no_rarity_context_v0.1",
+          "not_claiming": [
+            "No Rarity Base Set identity",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "row-level symbol proof from a seller image"
+          ],
+          "steps": [
+            "Confirm the card belongs to the Hanada City Gym / Misty deck family, not the 1996 Expansion Pack No Rarity family.",
+            "Treat the deck-family no-rarity symbol status as release context, not as proof that a seller's physical card has been inspected.",
+            "For English Gym Heroes/Gym Challenge comparisons, check whether the card was reassembled into an English expansion or theme-deck context before importing rarity assumptions.",
+            "When a card name overlaps a later English Gym card, preserve the Japanese deck row identity and cite the local row id."
+          ],
+          "summary": "Hanada City Gym cards can be missing rarity symbols because they are fixed-deck Japanese Gym cards; that must not be laundered into a 1996 No Rarity Base Set claim.",
+          "trigger": "Identifying or comparing Hanada City Gym / Misty cards, especially when a seller uses 'no rarity' language."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty as a deck, not just a character",
+        "why_it_matters": "Hanada City Gym is where a Gym Leader becomes a small machine: 64 fixed cards, water lines, trainer personality, and a few rows that later look strange in English binders. This is exactly the kind of release an agent has to understand historically, because the same card-shaped object can mean fixed-deck memory in Japan, set rarity weirdness in English, and seller shorthand in a marketplace listing.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_hanada_city_gym_misty_19980426:001",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Psyduck",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+        "row_id": "jp_tcg_hanada_city_gym_misty_19980426:001",
+        "catalog_row_id": "001"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json#row:jp_tcg_hanada_city_gym_misty_19980426:001",
+          "title": "Local Hanada City Gym row: Misty's Psyduck 001",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hanada_City_Gym_(TCG)",
+          "title": "Bulbapedia deck list: Hanada City Gym",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Misty's Psyduck as Hanada City Gym / Misty row 001.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Misty's Psyduck to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's Hanada City Gym deck list shows Misty's Psyduck as a single-copy Pokémon row in the fixed deck.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Psyduck is the front door to the deck's personality: a single-copy row by Atsuko Nishida that lets the binder feel like Misty rather than simply Water type.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_psyduck_hanada_row_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Misty's Psyduck prints share the same source context"
+          ],
+          "steps": [
+            "Confirm the release family is Hanada City Gym / Misty and preserve row 001.",
+            "Do not collapse this row into later English Gym-era Misty's Psyduck records without an explicit print/context match.",
+            "Use the local artist credit as catalog metadata, not as physical-card authentication."
+          ],
+          "summary": "Misty's Psyduck should be treated as a specific Hanada City Gym row before an agent compares it to other Misty-era Psyduck cards.",
+          "trigger": "A buyer or seller identifies a card as Misty's Psyduck from the Japanese Misty deck."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The little row that makes it Misty",
+        "why_it_matters": "A deck can be mathematically Water type and still feel anonymous. Misty's Psyduck keeps that from happening. It is one copy, early in the row order, and credited to Atsuko Nishida; the card works like a character signature before the deck settles into its water engine.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_hanada_city_gym_misty_19980426:003",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tentacool",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+        "row_id": "jp_tcg_hanada_city_gym_misty_19980426:003",
+        "catalog_row_id": "003"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json#row:jp_tcg_hanada_city_gym_misty_19980426:003",
+          "title": "Local Hanada City Gym row: Misty's Tentacool 003",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hanada_City_Gym_(TCG)",
+          "title": "Bulbapedia: Hanada City Gym common-rare note",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Misty's Tentacool as Hanada City Gym / Misty row 003.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Misty's Tentacool to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia names Misty's Tentacool as one of the notorious Gym Heroes 'common rares' created by the card's fixed-rarity origin in the Japanese Hanada City Gym deck.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Tentacool is a useful agent test because its importance is not the character alone; the row carries a rarity-translation story from fixed Japanese deck card to English common-rare memory.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_tentacool_common_rare_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English rarity applies to the Japanese deck row"
+          ],
+          "steps": [
+            "Confirm whether the listing is for Japanese Hanada City Gym row 003 or an English Gym Heroes/Gym Challenge-era card.",
+            "If a seller says 'rare' or 'common rare,' ask which release context they mean before treating the word as a price or scarcity claim.",
+            "Preserve the Japanese fixed-deck origin separately from English set rarity language."
+          ],
+          "summary": "Misty's Tentacool is a rarity-language trap: fixed-deck Japanese context and English common-rare memory should remain separate.",
+          "trigger": "A listing or agent note uses rarity language for Misty's Tentacool."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A tiny card with a rarity afterlife",
+        "why_it_matters": "Misty's Tentacool is not a chase because Tentacool suddenly became Charizard. It is interesting because the card remembers how products were assembled. A fixed-deck Japanese row becomes a strange English rarity story, and that is exactly the kind of context a good agent should keep from flattening.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_hanada_city_gym_misty_19980426:009",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Goldeen",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+        "row_id": "jp_tcg_hanada_city_gym_misty_19980426:009",
+        "catalog_row_id": "009"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json#row:jp_tcg_hanada_city_gym_misty_19980426:009",
+          "title": "Local Hanada City Gym row: Misty's Goldeen 009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json#row:jp_tcg_hanada_city_gym_misty_19980426:010",
+          "title": "Local Hanada City Gym row: Misty's Goldeen 010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hanada_City_Gym_(TCG)",
+          "title": "Bulbapedia: Hanada City Gym common-rare note",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Misty's Goldeen row 009 and Misty's Goldeen row 010 as separate Hanada City Gym / Misty rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits row 009 to Atsuko Nishida and row 010 to Ken Sugimori, making the duplicate species name an artist-sensitive distinction.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia names Misty's Goldeen as one of the notorious Gym Heroes 'common rares' created by the card's fixed-rarity origin in the Japanese Hanada City Gym deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Goldeen is a cataloging pressure point: two same-name deck rows, two artist credits in the local catalog, and later English rarity memory mean an agent should ask which row is being discussed before sounding confident.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_goldeen_duplicate_row_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "row 009 and row 010 are interchangeable"
+          ],
+          "steps": [
+            "Ask whether the card is Hanada City Gym row 009 or row 010 before importing artist or image context.",
+            "Use the image/reference row only as catalog comparison, not as proof of a seller's physical card.",
+            "Keep English common-rare language separate from the Japanese fixed-deck row identity."
+          ],
+          "summary": "Misty's Goldeen has duplicate same-name row pressure; row identity matters before artist, image, or rarity language can be trusted.",
+          "trigger": "A listing or user note says Misty's Goldeen without a row number or image."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Same name, different little histories",
+        "why_it_matters": "Misty's Goldeen is a perfect small-card lesson. It looks like something you could wave away as filler, but the deck gives you two same-name rows and the catalog gives them different artist traces. That is the whole Cairn problem in miniature: the row matters before the story can be honest.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_hanada_city_gym_misty_19980426:018",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tears",
+        "name_ja": "カスミのなみだ",
+        "romaji": "Kasumi no Namida",
+        "release_family_id": "jp_tcg_hanada_city_gym_misty_19980426",
+        "row_id": "jp_tcg_hanada_city_gym_misty_19980426:018",
+        "catalog_row_id": "018"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_hanada_city_gym_misty_19980426.json#row:jp_tcg_hanada_city_gym_misty_19980426:018",
+          "title": "Local Hanada City Gym row: Misty's Tears 018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Tears_(Gym_Challenge_118)",
+          "title": "Bulbapedia: Misty's Tears (Gym Challenge 118)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hanada_City_Gym_(TCG)",
+          "title": "Bulbapedia deck list: Hanada City Gym",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Misty's Tears as Hanada City Gym / Misty row 018.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the Japanese title as カスミのなみだ, rendered Kasumi's Tears.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Misty's Tears to Ken Sugimori, and Bulbapedia's gallery labels both English and Japanese prints as illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Misty's Tears is one of several cards whose artwork changed between Japanese and English releases.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's card text says Misty's Tears discards one other card from the player's hand to search the deck for up to two Energy cards.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Misty's Tears is the deck's clearest variant-boundary card: it links Japanese deck origin, English Gym Challenge naming, Ken Sugimori credit, and artwork-change memory in one row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_tears_artwork_variant_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English and Japanese artwork are interchangeable",
+            "artwork comparison alone proves a physical card"
+          ],
+          "steps": [
+            "Preserve the Japanese title カスミのなみだ / Kasumi no Namida when explaining the Hanada City Gym row.",
+            "Do not compare a seller image only against the English Gym Challenge artwork; this card has a documented Japanese/English artwork-change boundary.",
+            "Confirm the release context before treating the card as Hanada City Gym, Gym Challenge, or another print.",
+            "Use artwork match as a reference clue only; require seller evidence before any transaction claim."
+          ],
+          "summary": "Misty's Tears needs variant-aware comparison because the Japanese and English artwork histories diverge.",
+          "trigger": "A buyer, seller, or agent uses Misty's Tears imagery, English Gym Challenge references, or Japanese deck references interchangeably."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The card where comparison can lie",
+        "why_it_matters": "Misty's Tears is exactly why this catalog cannot be a flat checklist. The name, art credit, deck origin, English set memory, and artwork-change boundary all pull on the same object. An agent that knows this card should not sound more certain; it should ask a better question.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

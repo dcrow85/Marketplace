@@ -1,0 +1,4736 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the Japanese Series 1 Starter Pack possible-content pool, emphasizing launch play grammar, 60-card deck context, 102-row possible-content modeling, No Rarity / missing-symbol ambiguity, and trainer text-layout traps.",
+    "in_scope": [
+      "Series 1 Starter Pack possible-content pool",
+      "Venusaur 011",
+      "Charizard 021",
+      "Blastoise 032",
+      "Pikachu 035",
+      "Raichu 038",
+      "Alakazam 049",
+      "Mewtwo 050",
+      "Porygon 064",
+      "Potion 071",
+      "Gust of Wind 072",
+      "Switch 073",
+      "Energy Retrieval 076",
+      "Professor Oak 077",
+      "Super Energy Removal 088",
+      "Computer Search 090",
+      "Pokémon Trader 093",
+      "Double Colorless Energy 096",
+      "Grass Energy 097",
+      "Fire Energy 098",
+      "Water Energy 099"
+    ],
+    "not_claiming": [
+      "complete Series 1 Starter Pack scholarship",
+      "fixed deck list",
+      "sealed deck contents",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "No Rarity status",
+      "missing-symbol status"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_starter_pack_19961020",
+      "type": "release",
+      "context": {
+        "name_en": "Series 1 Starter Pack possible-content pool",
+        "name_ja": "第1弾スターターパック",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "release_date": "1996-10-20"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json",
+          "title": "Local Japanese pre-English catalog: Series 1 Starter Pack possible-content pool",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_pack_19961020.json",
+          "title": "Local Japanese pre-English catalog: Expansion Pack / No Rarity launch-family rows",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed starter deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Expansion_Pack_(TCG)",
+          "title": "Bulbapedia: Expansion Pack (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/gift_pack_v0_1.json",
+          "title": "Local history dossier: Gift Pack component-context boundary",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Starter Pack authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Japanese pre-English release map model Series 1 Starter Pack as released on October 20, 1996, the same day as the launch Expansion Pack.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The local catalog treats Series 1 Starter Pack as a 60-card starter deck/product associated with 30 random Expansion Pack-card slots plus 30 Basic Energy slots.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local catalog preserves a 102-row possible-content pool for Starter Pack reasoning: 96 non-energy launch-family card rows plus six Basic Energy rows, not a fixed sealed-deck list.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The local catalog marks strict_release_member false and warns that the Starter Pack model is useful for source-family ambiguity but does not assert any sealed deck's exact contents, collation, distribution, or fixed composition.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix and release map mark Starter Pack as mixed with medium-high confidence; early Starter Pack cards are a major candidate confusion source because No Rarity cards may appear through deck as well as pack lanes, but sealed deck externals do not guarantee contents.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research on Elite Fourum argues No Rarity cards came from both packs and decks, supporting the need to keep deck-source evidence and card-front evidence separate.",
+          "sources": [
+            "s7"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Collector research on Elite Fourum also warns that later Quick Starter trainer reprints without rarity symbols can be mistaken for Base No Rarity trainer cards, so Starter Pack and Expansion Pack trainer claims still need text/layout comparison where names overlap.",
+          "sources": [
+            "s8",
+            "s9"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "The local Starter Pack possible-content artist clusters are: Ken Sugimori (44 local rows; examples: Caterpie, Metapod, Nidoran ♂), Keiji Kinebuchi (38 local rows; examples: Kakuna, Staryu, Starmie), Mitsuhiro Arita (19 local rows; examples: Bulbasaur, Weedle, Koffing), Tomoaki Imakuni (1 local rows; examples: Porygon).",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Series 1 Starter Pack matters because it turns the launch card pool into the first practical teaching apparatus: the cards are no longer just booster discoveries, but possible tools in a 60-card product meant to put energy, Pokemon, trainers, and another player into motion.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_possible_content_no_rarity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, 第1弾スターターパック, Starter Deck, deck pull, No Rarity, missing symbol, sealed deck, 60-card deck, Expansion Pack, Gift Pack, Base Set, trainer text, or Basic Energy.",
+          "summary": "Series 1 Starter Pack is a possible-content context, not a fixed sealed-deck proof. Preserve the 102-row possible-content model, the 60-card product context, and mixed No Rarity risk before using any row in transaction logic.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and the exact possible-content row number 001-102.",
+            "Do not treat the catalog row as proof that a specific sealed Starter Pack contained that card; this is a possible-content rollup over launch-family rows.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and compare against Expansion Pack, Starter Pack, Gift Pack, and later Quick Starter trap lanes where relevant.",
+            "For Potion, Gust of Wind, Switch, Energy Retrieval, and Pokemon Trader, require Japanese text/layout comparison before allowing a Base No Rarity claim to advance.",
+            "For Basic Energy rows, preserve the six-energy caveat and do not treat energy presence as proof of booster-checklist membership.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, or edition status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Gift Pack sealed contents"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The launch grammar becomes playable",
+        "why_it_matters": "The Series 1 Starter Pack is where the first Japanese card pool becomes an invitation instead of only a checklist. It gathers Pokemon, trainers, and energy into the idea of a 60-card deck, but the catalog has to speak carefully: this is a possible-content pool, not a prophecy about a sealed deck. That tension is the whole charm. The product is close to the birth of No Rarity, close to Expansion Pack, close to Gift Pack, and close to the first kitchen-table lesson. It teaches the agent that launch history is not one lane. It is pack, deck, energy floor, random contents, and the human desire to actually play.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Starter Pack history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:011",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:011",
+        "catalog_row_id": "011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:011",
+          "title": "Local Starter Pack possible-content row: Venusaur 011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 011 as Venusaur.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Venusaur 011 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 011 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Venusaur gives the possible-content pool a slow, heavy center. Arita's launch image is already iconic, but in the Starter Pack model it becomes a possible teaching encounter: the kind of card that makes a new player understand evolution as weight and arrival.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 011; do not infer sealed deck presence or No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_011_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Venusaur, 011, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 011; do not infer sealed deck presence or No Rarity status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 011.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur roots the starter apparatus",
+        "why_it_matters": "Venusaur gives the possible-content pool a slow, heavy center. Arita's launch image is already iconic, but in the Starter Pack model it becomes a possible teaching encounter: the kind of card that makes a new player understand evolution as weight and arrival.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:021",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:021",
+        "catalog_row_id": "021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:021",
+          "title": "Local Starter Pack possible-content row: Charizard 021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 021 as Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Charizard 021 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 021 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Charizard is the famous pull, but Starter Pack makes the question sharper: was this card in this deck, this pack, this product, this physical object? The name carries heat, and the protocol rail carries restraint.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 021; do not infer sealed deck presence, Expansion Pack identity, or No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_021_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Charizard, 021, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 021; do not infer sealed deck presence, Expansion Pack identity, or No Rarity status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 021.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard is gravity inside a possible deck",
+        "why_it_matters": "Charizard is the famous pull, but Starter Pack makes the question sharper: was this card in this deck, this pack, this product, this physical object? The name carries heat, and the protocol rail carries restraint.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:032",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "カメックス",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:032",
+        "catalog_row_id": "032"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:032",
+          "title": "Local Starter Pack possible-content row: Blastoise 032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 032 as Blastoise.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Blastoise 032 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 032 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blastoise is the water endpoint of the first game grammar. Sugimori's image makes it feel foundational, but here the row matters as part of a deck-source possibility, not as proof of any individual sealed product.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 032; do not infer sealed deck presence or No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_032_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Blastoise, 032, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 032; do not infer sealed deck presence or No Rarity status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 032.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blastoise turns launch play into pressure",
+        "why_it_matters": "Blastoise is the water endpoint of the first game grammar. Sugimori's image makes it feel foundational, but here the row matters as part of a deck-source possibility, not as proof of any individual sealed product.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:035",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:035",
+        "catalog_row_id": "035"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:035",
+          "title": "Local Starter Pack possible-content row: Pikachu 035",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 035 as Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pikachu 035 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 035 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu is common here, and that is part of its power. It is the card a new player can recognize before understanding rarity, deck composition, or print history. Arita's Pikachu becomes a social bridge into the game.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 035; separate from Expansion Pack, Gift Pack component rows, Jungle Pikachu, promo Pikachu, and No Rarity claims.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_035_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Pikachu, 035, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 035; separate from Expansion Pack, Gift Pack component rows, Jungle Pikachu, promo Pikachu, and No Rarity claims.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 035.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu makes the teaching deck human",
+        "why_it_matters": "Pikachu is common here, and that is part of its power. It is the card a new player can recognize before understanding rarity, deck composition, or print history. Arita's Pikachu becomes a social bridge into the game.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:038",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu",
+        "name_ja": "ライチュウ",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:038",
+        "catalog_row_id": "038"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:038",
+          "title": "Local Starter Pack possible-content row: Raichu 038",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 038 as Raichu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Raichu 038 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 038 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Raichu matters because it turns Pikachu affection into evolution pressure. The starter apparatus needs that: a player learns not only that Pokemon are cute, but that they become something stronger and stranger.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 038; do not infer sealed deck presence or No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_038_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Raichu, 038, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 038; do not infer sealed deck presence or No Rarity status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 038.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Raichu teaches the mascot has a future",
+        "why_it_matters": "Raichu matters because it turns Pikachu affection into evolution pressure. The starter apparatus needs that: a player learns not only that Pokemon are cute, but that they become something stronger and stranger.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:049",
+      "type": "card",
+      "context": {
+        "name_en": "Alakazam",
+        "name_ja": "フーディン",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:049",
+        "catalog_row_id": "049"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:049",
+          "title": "Local Starter Pack possible-content row: Alakazam 049",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 049 as Alakazam.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Alakazam 049 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 049 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Alakazam brings psychic intelligence into the launch pool. Sugimori's design makes the card feel like a mind at the edge of the table, and the Starter Pack context makes it a possible lesson in powers beyond simple attacks.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 049; do not infer sealed deck presence or No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_049_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Alakazam, 049, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 049; do not infer sealed deck presence or No Rarity status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 049.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Alakazam makes launch feel cerebral",
+        "why_it_matters": "Alakazam brings psychic intelligence into the launch pool. Sugimori's design makes the card feel like a mind at the edge of the table, and the Starter Pack context makes it a possible lesson in powers beyond simple attacks.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:050",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:050",
+        "catalog_row_id": "050"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:050",
+          "title": "Local Starter Pack possible-content row: Mewtwo 050",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 050 as Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Mewtwo 050 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 050 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo is not merely a chase; it is the laboratory shadow behind early Pokemon. Inside the Starter Pack possible-content model, it makes the teaching product feel bigger than a beginner kit: the rules open onto lore.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 050; separate from promo Mewtwo and later Best of Game / jumbo branches.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_050_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Mewtwo, 050, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 050; separate from promo Mewtwo and later Best of Game / jumbo branches.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 050.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo is the myth behind the lesson",
+        "why_it_matters": "Mewtwo is not merely a chase; it is the laboratory shadow behind early Pokemon. Inside the Starter Pack possible-content model, it makes the teaching product feel bigger than a beginner kit: the rules open onto lore.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:064",
+      "type": "card",
+      "context": {
+        "name_en": "Porygon",
+        "name_ja": "ポリゴン",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:064",
+        "catalog_row_id": "064"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:064",
+          "title": "Local Starter Pack possible-content row: Porygon 064",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 064 as Porygon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Porygon 064 as Uncommon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 064 to Tomoaki Imakuni.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Porygon is a wonderful little anomaly: a digital Pokemon credited locally to Tomoaki Imakuni. In a launch pool full of Sugimori and Arita gravity, it feels like the franchise already making room for weirdness, performance, and media play.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 064; do not infer promo Imakuni-related identity beyond the local artist credit.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_064_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Porygon, 064, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 064; do not infer promo Imakuni-related identity beyond the local artist credit.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 064.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Porygon lets Imakuni into the machinery",
+        "why_it_matters": "Porygon is a wonderful little anomaly: a digital Pokemon credited locally to Tomoaki Imakuni. In a launch pool full of Sugimori and Arita gravity, it feels like the franchise already making room for weirdness, performance, and media play.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:071",
+      "type": "card",
+      "context": {
+        "name_en": "Potion",
+        "name_ja": "きずぐすり",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:071",
+        "catalog_row_id": "071"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:071",
+          "title": "Local Starter Pack possible-content row: Potion 071",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 071 as Potion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Potion 071 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 071 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Potion looks like a simple trainer, which is exactly why it matters. Later missing-symbol trainer lookalikes can make a quiet card dangerous for agents; the text and layout have to speak before a No Rarity claim moves.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Potion, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research identifies later Quick Starter missing-symbol trainer reprints as a Base No Rarity trap lane, so this trainer name needs text/layout comparison before a missing-symbol claim advances.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_071_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Potion, 071, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "For Potion, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 071.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Potion is ordinary until it becomes forensic",
+        "why_it_matters": "Potion looks like a simple trainer, which is exactly why it matters. Later missing-symbol trainer lookalikes can make a quiet card dangerous for agents; the text and layout have to speak before a No Rarity claim moves.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:072",
+      "type": "card",
+      "context": {
+        "name_en": "Gust of Wind",
+        "name_ja": "突風",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:072",
+        "catalog_row_id": "072"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:072",
+          "title": "Local Starter Pack possible-content row: Gust of Wind 072",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 072 as Gust of Wind.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Gust of Wind 072 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 072 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Gust of Wind is a common trainer with a large identity burden. A missing corner mark is not enough; the card's Japanese text layout and assembly history decide whether the claim belongs to Base No Rarity or a later trap lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Gust of Wind, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research identifies later Quick Starter missing-symbol trainer reprints as a Base No Rarity trap lane, so this trainer name needs text/layout comparison before a missing-symbol claim advances.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_072_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Gust of Wind, 072, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "For Gust of Wind, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 072.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Gust of Wind is a tiny storm of proof burden",
+        "why_it_matters": "Gust of Wind is a common trainer with a large identity burden. A missing corner mark is not enough; the card's Japanese text layout and assembly history decide whether the claim belongs to Base No Rarity or a later trap lane.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:073",
+      "type": "card",
+      "context": {
+        "name_en": "Switch",
+        "name_ja": "ポケモンいれかえ",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:073",
+        "catalog_row_id": "073"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:073",
+          "title": "Local Starter Pack possible-content row: Switch 073",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 073 as Switch.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Switch 073 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 073 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Switch is mechanically about changing position, and catalog-wise it demands the same. The agent must move from appearance to provenance: which release lane, which text layout, which physical evidence?",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Switch, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research identifies later Quick Starter missing-symbol trainer reprints as a Base No Rarity trap lane, so this trainer name needs text/layout comparison before a missing-symbol claim advances.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_073_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Switch, 073, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "For Switch, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 073.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Switch is the move before the verdict",
+        "why_it_matters": "Switch is mechanically about changing position, and catalog-wise it demands the same. The agent must move from appearance to provenance: which release lane, which text layout, which physical evidence?",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:076",
+      "type": "card",
+      "context": {
+        "name_en": "Energy Retrieval",
+        "name_ja": "エネルギー回収",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:076",
+        "catalog_row_id": "076"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:076",
+          "title": "Local Starter Pack possible-content row: Energy Retrieval 076",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 076 as Energy Retrieval.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Energy Retrieval 076 as Uncommon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 076 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Energy Retrieval is a resource card with a provenance problem. It can look like part of the Base No Rarity story, but similar missing-symbol trainer lanes make the source route matter more than the blank corner.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Energy Retrieval, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research identifies later Quick Starter missing-symbol trainer reprints as a Base No Rarity trap lane, so this trainer name needs text/layout comparison before a missing-symbol claim advances.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_076_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Energy Retrieval, 076, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "For Energy Retrieval, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter trap exemplars before any Base No Rarity claim advances.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 076.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Energy Retrieval asks where power came from",
+        "why_it_matters": "Energy Retrieval is a resource card with a provenance problem. It can look like part of the Base No Rarity story, but similar missing-symbol trainer lanes make the source route matter more than the blank corner.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:077",
+      "type": "card",
+      "context": {
+        "name_en": "Professor Oak",
+        "name_ja": "オーキドはかせ",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:077",
+        "catalog_row_id": "077"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:077",
+          "title": "Local Starter Pack possible-content row: Professor Oak 077",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 077 as Professor Oak.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Professor Oak 077 as Uncommon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 077 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Professor Oak is the human voice of early Pokemon research and one of the great early trainer engines. In the Starter Pack possible-content pool, Oak is not just a card; he is the game telling a player to refill the hand and keep going.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 077; do not infer sealed deck presence, condition, or No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_077_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Professor Oak, 077, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 077; do not infer sealed deck presence, condition, or No Rarity status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 077.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Professor Oak makes the apparatus draw breath",
+        "why_it_matters": "Professor Oak is the human voice of early Pokemon research and one of the great early trainer engines. In the Starter Pack possible-content pool, Oak is not just a card; he is the game telling a player to refill the hand and keep going.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:088",
+      "type": "card",
+      "context": {
+        "name_en": "Super Energy Removal",
+        "name_ja": "超エネルギーリムーブ",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:088",
+        "catalog_row_id": "088"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:088",
+          "title": "Local Starter Pack possible-content row: Super Energy Removal 088",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 088 as Super Energy Removal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Super Energy Removal 088 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 088 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Super Energy Removal is friction made into cardboard. A beginner product needs energy, but the early game also teaches denial, tempo, and interruption. This is where play stops being only collection and starts becoming strategy.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 088; trainer names recur and need exact source context.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_088_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Super Energy Removal, 088, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 088; trainer names recur and need exact source context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 088.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Super Energy Removal teaches denial",
+        "why_it_matters": "Super Energy Removal is friction made into cardboard. A beginner product needs energy, but the early game also teaches denial, tempo, and interruption. This is where play stops being only collection and starts becoming strategy.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:090",
+      "type": "card",
+      "context": {
+        "name_en": "Computer Search",
+        "name_ja": "パソコン通信",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:090",
+        "catalog_row_id": "090"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:090",
+          "title": "Local Starter Pack possible-content row: Computer Search 090",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 090 as Computer Search.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Computer Search 090 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 090 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Computer Search feels wonderfully 1996: a trainer card where computation itself becomes access. Kinebuchi's local credit places it inside the launch apparatus as the card that says the right thing may already be in the deck if you can search for it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 090; do not infer sealed deck presence or later reprint identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_090_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Computer Search, 090, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 090; do not infer sealed deck presence or later reprint identity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 090.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Computer Search is the early machine dream",
+        "why_it_matters": "Computer Search feels wonderfully 1996: a trainer card where computation itself becomes access. Kinebuchi's local credit places it inside the launch apparatus as the card that says the right thing may already be in the deck if you can search for it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:093",
+      "type": "card",
+      "context": {
+        "name_en": "Pokémon Trader",
+        "name_ja": "ポケモン交換おじさん",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:093",
+        "catalog_row_id": "093"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:093",
+          "title": "Local Starter Pack possible-content row: Pokémon Trader 093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 093 as Pokémon Trader.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pokémon Trader 093 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 093 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pokemon Trader sounds harmless, but it is one of the cards that can make the protocol wake up. Later Quick Starter text/layout differences mean a missing rarity mark cannot carry the claim alone; the exact Japanese wording and lane have to be compared.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Pokemon Trader, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research identifies later Quick Starter missing-symbol trainer reprints as a Base No Rarity trap lane, so this trainer name needs text/layout comparison before a missing-symbol claim advances.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_093_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Pokémon Trader, 093, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "For Pokemon Trader, require Japanese text/layout comparison against Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 093.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack/Starter Pack and Quick Starter exemplars before any Base No Rarity claim advances.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokemon Trader is the trap with a friendly face",
+        "why_it_matters": "Pokemon Trader sounds harmless, but it is one of the cards that can make the protocol wake up. Later Quick Starter text/layout differences mean a missing rarity mark cannot carry the claim alone; the exact Japanese wording and lane have to be compared.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:096",
+      "type": "card",
+      "context": {
+        "name_en": "Double Colorless Energy",
+        "name_ja": "無色2個エネルギー",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:096",
+        "catalog_row_id": "096"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:096",
+          "title": "Local Starter Pack possible-content row: Double Colorless Energy 096",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 096 as Double Colorless Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Double Colorless Energy 096 as Uncommon.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 096 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Double Colorless Energy is not flashy, but it changes the tempo of early play. It shows that the starter apparatus is not just creatures and attacks; it is also resource engineering.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 096; separate special energy identity from six Basic Energy caveat rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_096_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Double Colorless Energy, 096, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 096; separate special energy identity from six Basic Energy caveat rows.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 096.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Separate Double Colorless Energy from the six Basic Energy caveat rows and from later reprints.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Double Colorless Energy is the shortcut card",
+        "why_it_matters": "Double Colorless Energy is not flashy, but it changes the tempo of early play. It shows that the starter apparatus is not just creatures and attacks; it is also resource engineering.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:097",
+      "type": "card",
+      "context": {
+        "name_en": "Grass Energy",
+        "name_ja": "草のエネルギー",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:097",
+        "catalog_row_id": "097"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:097",
+          "title": "Local Starter Pack possible-content row: Grass Energy 097",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 097 as Grass Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Grass Energy 097 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 097 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Grass Energy is a floor card, not a chase card, but the deck cannot breathe without it. The six Basic Energy rows are exactly why the 96-vs-102 launch-family count needs to stay legible.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 097 and the Basic Energy caveat; do not count it as a strict 96-card booster row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_097_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Grass Energy, 097, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 097 and the Basic Energy caveat; do not count it as a strict 96-card booster row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 097.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Preserve the Basic Energy caveat: this row belongs to the broad 102-row launch-family model, not the strict 96-card booster checklist.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Grass Energy is the floor under Bulbasaur",
+        "why_it_matters": "Grass Energy is a floor card, not a chase card, but the deck cannot breathe without it. The six Basic Energy rows are exactly why the 96-vs-102 launch-family count needs to stay legible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:098",
+      "type": "card",
+      "context": {
+        "name_en": "Fire Energy",
+        "name_ja": "火エネルギー",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:098",
+        "catalog_row_id": "098"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:098",
+          "title": "Local Starter Pack possible-content row: Fire Energy 098",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 098 as Fire Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Fire Energy 098 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 098 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Fire Energy is the humble cost beneath the famous flame. A Charizard story without energy is just desire; the Starter Pack apparatus makes the cost visible.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 098 and the Basic Energy caveat; do not count it as a strict 96-card booster row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_098_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Fire Energy, 098, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 098 and the Basic Energy caveat; do not count it as a strict 96-card booster row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 098.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Preserve the Basic Energy caveat: this row belongs to the broad 102-row launch-family model, not the strict 96-card booster checklist.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Fire Energy is the heat under Charizard",
+        "why_it_matters": "Fire Energy is the humble cost beneath the famous flame. A Charizard story without energy is just desire; the Starter Pack apparatus makes the cost visible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_starter_pack_19961020:099",
+      "type": "card",
+      "context": {
+        "name_en": "Water Energy",
+        "name_ja": "水エネルギー",
+        "release_family_id": "jp_tcg_starter_pack_19961020",
+        "row_id": "jp_tcg_starter_pack_19961020:099",
+        "catalog_row_id": "099"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json#row:jp_tcg_starter_pack_19961020:099",
+          "title": "Local Starter Pack possible-content row: Water Energy 099",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_第1弾スターターパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Series 1 Starter Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed deck contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/a-guide-explaining-why-no-rarity-comes-from-packs-and-decks/16617",
+          "title": "Elite Fourum: Guide explaining why No Rarity comes from packs and decks",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Starter Pack possible-content row 099 as Water Energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Water Energy 099 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Starter Pack possible-content row 099 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Water Energy gives the launch pool its resource grammar for Squirtle and Blastoise lines. It is ordinary by design, and that ordinariness is part of the assembly.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Starter Pack possible-content row 099 and the Basic Energy caveat; do not count it as a strict 96-card booster row.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "starter_pack_19961020_099_possible_content_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Series 1 Starter Pack, Starter Deck, Water Energy, 099, No Rarity, missing symbol, sealed deck, Expansion Pack, Gift Pack, Quick Starter, or Base Set.",
+          "summary": "Preserve Starter Pack possible-content row 099 and the Basic Energy caveat; do not count it as a strict 96-card booster row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_starter_pack_19961020 and possible-content row 099.",
+            "Do not treat this possible-content row as proof that a specific sealed Starter Pack contained the card.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and preserve source route: Expansion Pack, Starter Pack, Gift Pack component, or later trap lane.",
+            "Preserve the Basic Energy caveat: this row belongs to the broad 102-row launch-family model, not the strict 96-card booster checklist.",
+            "Do not infer seller possession, authenticity, condition, price, fixed deck composition, sealed-deck contents, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed deck contents",
+            "No Rarity status",
+            "missing-symbol status",
+            "Expansion Pack equivalence",
+            "Quick Starter equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Water Energy is the flow under Blastoise",
+        "why_it_matters": "Water Energy gives the launch pool its resource grammar for Squirtle and Blastoise lines. It is ordinary by design, and that ordinariness is part of the assembly.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed deck contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

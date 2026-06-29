@@ -1,0 +1,737 @@
+{
+  "canonical_field_coverage": {
+    "category": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "collector_texture": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "holo_source": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "illustrator": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "image_provenance": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "information_audit": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "local_id": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "name_en": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "name_ja": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "name_ja_status": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "name_source_note": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "not_claiming": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "pokemon_profile": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "product_scope": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "provider_row": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "rarity_source": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "release_family_id": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "row_id": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "schema": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "source_contacts": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "special_identification_instructions": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "symbol_status": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    },
+    "tags": {
+      "missing_rows": 0,
+      "present_rows": 4549,
+      "sample_missing": []
+    }
+  },
+  "canonical_fields_passed": true,
+  "canonical_missing": {},
+  "canonical_row_fields": [
+    "schema",
+    "row_id",
+    "release_family_id",
+    "local_id",
+    "name_en",
+    "name_ja",
+    "name_ja_status",
+    "name_source_note",
+    "category",
+    "rarity_source",
+    "holo_source",
+    "pokemon_profile",
+    "illustrator",
+    "product_scope",
+    "symbol_status",
+    "image_provenance",
+    "special_identification_instructions",
+    "collector_texture",
+    "information_audit",
+    "source_contacts",
+    "provider_row",
+    "not_claiming",
+    "tags"
+  ],
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "generated_at": "2026-06-18T20:56:46Z",
+  "hash_algorithm": "sha256",
+  "known_schema_asymmetries": [
+    {
+      "affected_schema": "marketplace.japanese_pre_english_card_row.v0.1",
+      "field": "card_number",
+      "handling": "Use normalized_agent_projection.display_number = local_id for these rows unless/until the historical corpus is regenerated with card_number.",
+      "missing_rows": 1264,
+      "not_claiming": [
+        "underlying source schema equality",
+        "physical-card printed-number verification"
+      ]
+    }
+  ],
+  "normalized_agent_projection": {
+    "fields": {
+      "catalog_row_id": "row.row_id",
+      "catalog_treatment": "row.product_scope.catalog_treatment",
+      "category": "row.category",
+      "display_number": "row.card_number if present else row.local_id",
+      "holo_source": "row.holo_source",
+      "illustrator_credit_status": "row.illustrator.credit_status",
+      "illustrator_display": "row.illustrator.display",
+      "image_display_allowed": "row.image_provenance.display_allowed",
+      "local_id": "row.local_id",
+      "name_en": "row.name_en",
+      "name_ja": "row.name_ja",
+      "name_ja_status": "row.name_ja_status",
+      "not_claiming": "row.not_claiming",
+      "rarity_source": "row.rarity_source",
+      "release_date": "row.product_scope.release_date",
+      "release_family_id": "row.release_family_id",
+      "release_type": "row.product_scope.release_type",
+      "source_contacts": "row.source_contacts",
+      "source_schema": "row.schema",
+      "special_identification_instructions": "row.special_identification_instructions",
+      "symbol_status": "row.symbol_status.prints_without_rarity_symbol",
+      "types": "row.pokemon_profile.types"
+    },
+    "projection_notes": [
+      "display_number intentionally falls back to local_id because the older japanese-pre-english corpus predates the universal card_number field.",
+      "source-specific rails remain available on the raw row and must not be erased by the projection.",
+      "Projection creates a stable reading surface only; it does not make any physical-card truth spendable."
+    ],
+    "purpose": "Stable read surface for agents across source-specific row schemas.",
+    "schema": "marketplace.catalog_agent_projection.v0.1"
+  },
+  "not_claiming": [
+    "single physical source schema",
+    "source-specific optional rails are universal",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "optional_field_profiles": {
+    "card_number": {
+      "missing_rows": 1264,
+      "present_rows": 3285,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "gift_pack_scope": {
+      "missing_rows": 4345,
+      "present_rows": 204,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "no_rarity_scope": {
+      "missing_rows": 4141,
+      "present_rows": 408,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "parent_rollup": {
+      "missing_rows": 4485,
+      "present_rows": 64,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "pokemon_tcg_api": {
+      "missing_rows": 1657,
+      "present_rows": 2892,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "print_context": {
+      "missing_rows": 4538,
+      "present_rows": 11,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "promo_child_source_row_mode": {
+      "missing_rows": 4545,
+      "present_rows": 4,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012",
+        "jp_promo_first_official_tournament_199706:013",
+        "jp_promo_garura_parent_child_199805:042"
+      ]
+    },
+    "promo_context": {
+      "missing_rows": 3693,
+      "present_rows": 856,
+      "sample_missing": [
+        "jp_tcg_expansion_pack_19961020:001",
+        "jp_tcg_expansion_pack_19961020:002",
+        "jp_tcg_expansion_pack_19961020:003",
+        "jp_tcg_expansion_pack_19961020:004",
+        "jp_tcg_expansion_pack_19961020:005",
+        "jp_tcg_expansion_pack_19961020:006",
+        "jp_tcg_expansion_pack_19961020:007",
+        "jp_tcg_expansion_pack_19961020:008",
+        "jp_tcg_expansion_pack_19961020:009",
+        "jp_tcg_expansion_pack_19961020:010",
+        "jp_tcg_expansion_pack_19961020:011",
+        "jp_tcg_expansion_pack_19961020:012",
+        "jp_tcg_expansion_pack_19961020:013",
+        "jp_tcg_expansion_pack_19961020:014",
+        "jp_tcg_expansion_pack_19961020:015",
+        "jp_tcg_expansion_pack_19961020:016",
+        "jp_tcg_expansion_pack_19961020:017",
+        "jp_tcg_expansion_pack_19961020:018",
+        "jp_tcg_expansion_pack_19961020:019",
+        "jp_tcg_expansion_pack_19961020:020"
+      ]
+    },
+    "promo_family_scope": {
+      "missing_rows": 4502,
+      "present_rows": 47,
+      "sample_missing": [
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:004",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:005",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:006",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:007",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:008",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:009",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:010",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:011",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:012",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:013",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:014",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:016",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:017",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:018",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:019",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:020",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:021",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:022",
+        "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:023"
+      ]
+    },
+    "romaji": {
+      "missing_rows": 393,
+      "present_rows": 4156,
+      "sample_missing": [
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-001",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-002",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-003",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-004",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-005",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-006",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-007",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-008",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-009",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-010",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-011",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-012",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-013",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-014",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-015",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-016",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-017",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-018",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-019",
+        "jp_tcg_adv_expansion_pack_20030131:ADV1-020"
+      ]
+    },
+    "source_index": {
+      "missing_rows": 4352,
+      "present_rows": 197,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "starter_pack_scope": {
+      "missing_rows": 4243,
+      "present_rows": 306,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "subtypes": {
+      "missing_rows": 1657,
+      "present_rows": 2892,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "tcgdex": {
+      "missing_rows": 258,
+      "present_rows": 4291,
+      "sample_missing": [
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-001-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-002-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-003-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-004-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-005-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-006-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-007-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-009-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p",
+        "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
+        "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-001-p",
+        "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-002-p",
+        "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-003-p",
+        "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-004-p",
+        "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-005-p",
+        "jp_promo_p_promotional_20010701_20021231:numbered_p_promo-006-p"
+      ]
+    },
+    "team_rocket_gift_pack_scope": {
+      "missing_rows": 4419,
+      "present_rows": 130,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    },
+    "variant_traps": {
+      "missing_rows": 4141,
+      "present_rows": 408,
+      "sample_missing": [
+        "jp_promo_all_card_calendar_19981105:053",
+        "jp_promo_ana_get_in_a_jet_199811:051",
+        "jp_promo_ana_get_in_a_jet_199811:052",
+        "jp_promo_corocoro_19971215:030",
+        "jp_promo_corocoro_19971215:031",
+        "jp_promo_corocoro_april_1998_19980315:039",
+        "jp_promo_corocoro_april_1998_19980315:040",
+        "jp_promo_corocoro_april_1998_19980315:041",
+        "jp_promo_corocoro_early_1997:005",
+        "jp_promo_corocoro_early_1997:007",
+        "jp_promo_corocoro_early_1997:016",
+        "jp_promo_corocoro_early_1997:017",
+        "jp_promo_corocoro_early_1997:020",
+        "jp_promo_corocoro_first_19961015:001",
+        "jp_promo_corocoro_first_19961015:002",
+        "jp_promo_corocoro_march_1998_19980215:037",
+        "jp_promo_corocoro_march_1998_19980215:038",
+        "jp_promo_fan_club_vol3_19971118:024",
+        "jp_promo_first_official_tournament_199706:011",
+        "jp_promo_first_official_tournament_199706:012"
+      ]
+    }
+  },
+  "passed": true,
+  "per_schema": {
+    "marketplace.english_supplemental_wotc_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "card_number",
+        "tcgdex"
+      ],
+      "row_count": 27
+    },
+    "marketplace.english_wotc_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "card_number",
+        "romaji",
+        "tcgdex",
+        "pokemon_tcg_api",
+        "subtypes"
+      ],
+      "row_count": 1789
+    },
+    "marketplace.japanese_adv_pre_wotc_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "card_number",
+        "tcgdex"
+      ],
+      "row_count": 108
+    },
+    "marketplace.japanese_classic_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "card_number",
+        "romaji",
+        "tcgdex",
+        "pokemon_tcg_api",
+        "subtypes"
+      ],
+      "row_count": 1103
+    },
+    "marketplace.japanese_pre_english_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "romaji",
+        "tcgdex",
+        "variant_traps",
+        "promo_context",
+        "promo_family_scope",
+        "no_rarity_scope",
+        "starter_pack_scope",
+        "gift_pack_scope",
+        "team_rocket_gift_pack_scope",
+        "print_context",
+        "parent_rollup",
+        "promo_child_source_row_mode"
+      ],
+      "row_count": 1264
+    },
+    "marketplace.japanese_promo_wotc_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "card_number"
+      ],
+      "row_count": 61
+    },
+    "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1": {
+      "missing_canonical_fields": [],
+      "optional_fields_present": [
+        "card_number",
+        "source_index"
+      ],
+      "row_count": 197
+    }
+  },
+  "profile_hash": "9a4d3e5b7092988209b7b048ae08d509ac6c2d031cf6c789f12e2b83596de888",
+  "release_roots": [
+    {
+      "path": "data/japanese-pre-english/releases",
+      "release_file_count": 40
+    },
+    {
+      "path": "data/english-wotc/releases",
+      "release_file_count": 18
+    },
+    {
+      "path": "data/japanese-classic/releases",
+      "release_file_count": 12
+    },
+    {
+      "path": "data/japanese-adv-pre-wotc/releases",
+      "release_file_count": 2
+    },
+    {
+      "path": "data/japanese-promo-wotc/releases",
+      "release_file_count": 2
+    },
+    {
+      "path": "data/japanese-unnumbered-promo-wotc/releases",
+      "release_file_count": 132
+    },
+    {
+      "path": "data/english-supplemental-wotc/releases",
+      "release_file_count": 3
+    }
+  ],
+  "row_count": 4549,
+  "schema": "marketplace.catalog_schema_profile.v0.1",
+  "schema_counts": {
+    "marketplace.english_supplemental_wotc_card_row.v0.1": 27,
+    "marketplace.english_wotc_card_row.v0.1": 1789,
+    "marketplace.japanese_adv_pre_wotc_card_row.v0.1": 108,
+    "marketplace.japanese_classic_card_row.v0.1": 1103,
+    "marketplace.japanese_pre_english_card_row.v0.1": 1264,
+    "marketplace.japanese_promo_wotc_card_row.v0.1": 61,
+    "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1": 197
+  }
+}

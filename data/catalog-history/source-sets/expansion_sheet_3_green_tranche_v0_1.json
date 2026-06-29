@@ -1,0 +1,3559 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Expansion Sheet Series 3 Green, emphasizing glossy vending-sheet distribution, 36-standard-plus-17-special count caveat, Mewtwo/Scyther/Kangaskhan anchors, rule-format cards, Ooyama/Imakuni personality rows, location/adventure rows, and No Rarity non-equivalence.",
+    "in_scope": [
+      "release dossier",
+      "anchor card dossiers for rows 008, 019, 020, 026, 033, 037, 039, 040, 042, 044, 047, 053",
+      "release-wide special identification rails for glossy vending-sheet / non-No-Rarity identity",
+      "standard-vs-special/non-standard count-lane caveat",
+      "artist/personality-credit texture from local rows and Bulbapedia caption metadata"
+    ],
+    "not_claiming": [
+      "complete 53-row hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "Base No Rarity equivalence",
+      "complete special/non-standard insert taxonomy"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "name_en": "Expansion Sheet Series 3 Green",
+        "name_ja": "拡張シート 第3弾 緑版",
+        "release_date": "1998-11-24",
+        "expected_row_count": 53,
+        "unique_catalog_row_count": 53
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "36-plus-17 count caveat",
+          "special/non-standard rule cards",
+          "Ooyama/Imakuni weirdness",
+          "common-rarity scalar trap",
+          "No Rarity boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_tcg_expansion_sheet_3_green_19981124:026",
+            "name": "Mewtwo",
+            "why": "psychic anchor in glossy vending-sheet body, Kazuhiko Nishihara credit",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_tcg_expansion_sheet_3_green_19981124:042",
+            "name": "Ooyama's Pikachu",
+            "why": "non-playable Ooyama personality card, one of the release’s strongest identity traps",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_tcg_expansion_sheet_3_green_19981124:044",
+            "name": "Imakuni?'s Nasty Plot",
+            "why": "Imakuni? performance/gag culture inside vending-sheet structure",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_tcg_expansion_sheet_3_green_19981124:008",
+            "name": "Scyther",
+            "why": "fan-favorite edge in glossy vending-sheet form, Hironobu Yoshida credit",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_tcg_expansion_sheet_3_green_19981124:033",
+            "name": "Kangaskhan",
+            "why": "family-symbol Pokemon reappearing after the Garura tournament context in a different vending-sheet lane",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_tcg_expansion_sheet_3_green_19981124:053",
+            "name": "The Last Cave - Cerulean!",
+            "why": "location/adventure memory at the back of the special-card run",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Atsuko Nishida",
+            "row_count": 6,
+            "examples": [
+              "Nidorina",
+              "Nidorino",
+              "Vulpix",
+              "Magmar"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Nobuyuki Habu",
+            "row_count": 6,
+            "examples": [
+              "Haunter",
+              "4 Prize Battle",
+              "20 Damage from Confusion",
+              "3 Deck Battle"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Masako Yamashita",
+            "row_count": 4,
+            "examples": [
+              "Kingler",
+              "Gastly",
+              "Hypno",
+              "Kangaskhan"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Tomokazu Komiya",
+            "row_count": 4,
+            "examples": [
+              "Growlithe",
+              "Seadra",
+              "Machoke",
+              "Rhydon"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Keiji Kinebuchi",
+            "row_count": 3,
+            "examples": [
+              "Weezing",
+              "Sandslash",
+              "Pokémon Tower"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Miki Tanaka",
+            "row_count": 3,
+            "examples": [
+              "Bellsprout",
+              "Staryu",
+              "Kadabra"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Naoyo Kimura",
+            "row_count": 3,
+            "examples": [
+              "Arbok",
+              "Ponyta",
+              "Golduck"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Sumiyoshi Kizuki",
+            "row_count": 3,
+            "examples": [
+              "Venonat",
+              "Horsea",
+              "Haunter"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Hikaru Koike",
+            "row_count": 2,
+            "examples": [
+              "Graveler",
+              "Pokémon Retransfer"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          },
+          {
+            "name": "Imakuni?",
+            "row_count": 2,
+            "examples": [
+              "Imakuni?'s Nasty Plot",
+              "Lose?"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete 53-row hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy counts",
+          "approved image display rights",
+          "spendability",
+          "Base No Rarity equivalence",
+          "complete special/non-standard insert taxonomy"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog places Expansion Sheet Series 3 Green on November 24, 1998.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local release models 53 unique catalog rows and carries the count caveat that the release is often described as 36 standard cards plus 17 special/non-standard cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local release identifies the product as glossy Vending/Expansion Sheet cards, with Pokellector as source and Bulbapedia caption metadata used for artist-credit texture.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The pre-English symbol-status matrix marks Expansion Sheet Series 3 Green as prints_without_rarity_symbol: no, high confidence, with trap consequence that vending cards are glossy and not the Base No Rarity lane.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The release has a common-rarity surface but contains high-memory rows including Mewtwo, Scyther, Kangaskhan, Ooyama's Pikachu, Imakuni? cards, rule-format cards, and adventure/location cards; common rarity is not a proxy for low collector meaning.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local sheet carries a wide illustrator/personality roster including Nobuyuki Habu, Atsuko Nishida, Tomokazu Komiya, Masako Yamashita, Ooyama/OOYAMA, Imakuni?, Hironobu Yoshida, Kazuhiko Nishihara, Keiji Kinebuchi, and others; several special rows have no surfaced illustrator credit.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Series 3 Green matters because the vending-sheet form stretches from ordinary Kanto rows into rule experiments, non-playable personality cards, Imakuni? weirdness, Ooyama visual humor, and location/adventure prompts. It is a sheet that starts as catalog and ends as culture.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title, date, row number, glossy vending-sheet format, Common rarity signal, the 36-plus-17 count caveat, special/non-standard card status, artist/personality credit source, and no/not-Base-No-Rarity symbol boundary before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "Expansion Sheet Series 3 Green — where vending turns into a funhouse",
+        "why_it_matters": "Series 3 Green is the vending sheet that starts like a set and then slips sideways. Yes, there are familiar Kanto creatures and Mewtwo gravity, but the back half becomes rules, puzzles, personality cards, Ooyama, Imakuni?, and little scenes that feel closer to Pokémon culture than to ordinary booster structure. That is why the count caveat matters: 36 standard cards plus a strange special tail is not just bookkeeping, it is the shape of the object. For agents, Green is a warning and a joy: never identify by character name alone when the route itself is this expressive.",
+        "not_claiming": [
+          "complete release history",
+          "complete 53-row hand-authored card coverage",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: Expansion Sheet Series 3 Green",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_release_vending_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Expansion Sheet, Vending Series 3 Green, 拡張シート 第3弾 緑版, glossy vending, Ooyama Pikachu, Imakuni, non-playable, special card, Mewtwo, Scyther, or No Rarity comparison.",
+          "summary": "Keep Series 3 Green as glossy vending-sheet identity with 36-plus-17 count caveat; it is not Base No Rarity and not ordinary booster-pack identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green, Vending Series 3 Green, or Japanese title 拡張シート 第3弾 緑版 before naming this exact release.",
+            "Preserve November 24, 1998 release date, row number, and local id; famous character/personality names alone are not enough.",
+            "Preserve the 53-row / 36 standard plus 17 special or non-standard count caveat when explaining the release.",
+            "Preserve glossy vending/Expansion Sheet physical-format context and Common rarity signal as identity-relevant.",
+            "Preserve symbol-status matrix result: prints_without_rarity_symbol = no; do not route these cards into Base No Rarity matching.",
+            "Use seller photos for gloss, card face/back, dimensions, stock, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:008",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:008",
+        "catalog_row_id": "008",
+        "name_en": "Scyther",
+        "name_ja": "ストライク",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "008",
+        "artist": "Hironobu Yoshida",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "008",
+          "Common",
+          "glossy vending sheet",
+          "Hironobu Yoshida",
+          "ストライク",
+          "",
+          "standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "standard creature lane"
+        ],
+        "assembly_note": "Scyther sits in Series 3 Green as row 008; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Scyther gives Green an edge before the sheet turns fully strange. Hironobu Yoshida’s row is a familiar collector shape, but the real identity is not just the blade Pokemon; it is Scyther inside glossy Series 3 vending structure.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Scyther as Expansion Sheet Series 3 Green row 008.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Scyther; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Scyther belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Hironobu Yoshida for Scyther, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Hironobu Yoshida functions as a major TCG illustrator whose later rows include large-era myth and power cards; here the local examples include Scyther. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Scyther gives Green an edge before the sheet turns fully strange. Hironobu Yoshida’s row is a familiar collector shape, but the real identity is not just the blade Pokemon; it is Scyther inside glossy Series 3 vending structure.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 008, glossy vending-sheet format, Common rarity signal, Japanese name ストライク, artist/personality credit Hironobu Yoshida, and No Rarity non-equivalence before accepting this as Scyther.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Scyther — Expansion Sheet Series 3 Green row 008",
+        "why_it_matters": "Scyther gives Green an edge before the sheet turns fully strange. Hironobu Yoshida’s row is a familiar collector shape, but the real identity is not just the blade Pokemon; it is Scyther inside glossy Series 3 vending structure.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Scyther 008",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:008",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_008_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Scyther, ストライク, Expansion Sheet, Vending Series 3 Green, glossy vending, row 008, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Scyther pinned to Expansion Sheet Series 3 Green row 008; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 008 before naming this exact card.",
+            "Preserve Japanese/romaji name: ストライク / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:019",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:019",
+        "catalog_row_id": "019",
+        "name_en": "Kadabra",
+        "name_ja": "ユンゲラー",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "019",
+        "artist": "Miki Tanaka",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "019",
+          "Common",
+          "glossy vending sheet",
+          "Miki Tanaka",
+          "ユンゲラー",
+          "",
+          "standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "standard creature lane"
+        ],
+        "assembly_note": "Kadabra sits in Series 3 Green as row 019; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Kadabra row 019 is useful because Green has two Kadabra rows back to back. The agent has to learn that shared species name is not enough; row number and artist hand are part of the identity.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Kadabra as Expansion Sheet Series 3 Green row 019.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Kadabra; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Kadabra belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Miki Tanaka for Kadabra, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Miki Tanaka functions as one of the two Kadabra row artists, useful for separating same-name rows. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Kadabra row 019 is useful because Green has two Kadabra rows back to back. The agent has to learn that shared species name is not enough; row number and artist hand are part of the identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 019, glossy vending-sheet format, Common rarity signal, Japanese name ユンゲラー, artist/personality credit Miki Tanaka, and No Rarity non-equivalence before accepting this as Kadabra.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Kadabra — Expansion Sheet Series 3 Green row 019",
+        "why_it_matters": "Kadabra row 019 is useful because Green has two Kadabra rows back to back. The agent has to learn that shared species name is not enough; row number and artist hand are part of the identity.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Kadabra 019",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:019",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_019_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kadabra, ユンゲラー, Expansion Sheet, Vending Series 3 Green, glossy vending, row 019, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Kadabra pinned to Expansion Sheet Series 3 Green row 019; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 019 before naming this exact card.",
+            "Preserve Japanese/romaji name: ユンゲラー / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:020",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:020",
+        "catalog_row_id": "020",
+        "name_en": "Kadabra",
+        "name_ja": "ユンゲラー",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "020",
+        "artist": "Shin-ichi Yoshida",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "020",
+          "Common",
+          "glossy vending sheet",
+          "Shin-ichi Yoshida",
+          "ユンゲラー",
+          "",
+          "standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "standard creature lane"
+        ],
+        "assembly_note": "Kadabra sits in Series 3 Green as row 020; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Kadabra row 020 is the twin that proves the point. Same English/Japanese name, different row, different artist credit. For a marketplace agent, this is a tiny anti-laundering exercise.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Kadabra as Expansion Sheet Series 3 Green row 020.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Kadabra; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Kadabra belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Shin-ichi Yoshida for Kadabra, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Shin-ichi Yoshida functions as one of the two Kadabra row artists, useful for separating same-name rows. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Kadabra row 020 is the twin that proves the point. Same English/Japanese name, different row, different artist credit. For a marketplace agent, this is a tiny anti-laundering exercise.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 020, glossy vending-sheet format, Common rarity signal, Japanese name ユンゲラー, artist/personality credit Shin-ichi Yoshida, and No Rarity non-equivalence before accepting this as Kadabra.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Kadabra — Expansion Sheet Series 3 Green row 020",
+        "why_it_matters": "Kadabra row 020 is the twin that proves the point. Same English/Japanese name, different row, different artist credit. For a marketplace agent, this is a tiny anti-laundering exercise.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Kadabra 020",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_020_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kadabra, ユンゲラー, Expansion Sheet, Vending Series 3 Green, glossy vending, row 020, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Kadabra pinned to Expansion Sheet Series 3 Green row 020; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 020 before naming this exact card.",
+            "Preserve Japanese/romaji name: ユンゲラー / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:026",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:026",
+        "catalog_row_id": "026",
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "026",
+        "artist": "Kazuhiko Nishihara",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "026",
+          "Common",
+          "glossy vending sheet",
+          "Kazuhiko Nishihara",
+          "ミュウツー",
+          "",
+          "standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "standard creature lane"
+        ],
+        "assembly_note": "Mewtwo sits in Series 3 Green as row 026; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Mewtwo is the psychic gravity well of Green. Kazuhiko Nishihara’s credit gives it a distinct row fingerprint, and the vending-sheet route keeps it from dissolving into movie, CoroCoro, or Base-era Mewtwo memory.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mewtwo as Expansion Sheet Series 3 Green row 026.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Mewtwo; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Mewtwo belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Kazuhiko Nishihara for Mewtwo, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Kazuhiko Nishihara functions as a surfaced Series 3 Green illustrator credit for Mewtwo, giving the row a distinct local hand. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Mewtwo is the psychic gravity well of Green. Kazuhiko Nishihara’s credit gives it a distinct row fingerprint, and the vending-sheet route keeps it from dissolving into movie, CoroCoro, or Base-era Mewtwo memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 026, glossy vending-sheet format, Common rarity signal, Japanese name ミュウツー, artist/personality credit Kazuhiko Nishihara, and No Rarity non-equivalence before accepting this as Mewtwo.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Mewtwo — Expansion Sheet Series 3 Green row 026",
+        "why_it_matters": "Mewtwo is the psychic gravity well of Green. Kazuhiko Nishihara’s credit gives it a distinct row fingerprint, and the vending-sheet route keeps it from dissolving into movie, CoroCoro, or Base-era Mewtwo memory.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Mewtwo 026",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:026",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_026_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Mewtwo, ミュウツー, Expansion Sheet, Vending Series 3 Green, glossy vending, row 026, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Mewtwo pinned to Expansion Sheet Series 3 Green row 026; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 026 before naming this exact card.",
+            "Preserve Japanese/romaji name: ミュウツー / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:033",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:033",
+        "catalog_row_id": "033",
+        "name_en": "Kangaskhan",
+        "name_ja": "ガルーラ",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "033",
+        "artist": "Masako Yamashita",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "033",
+          "Common",
+          "glossy vending sheet",
+          "Masako Yamashita",
+          "ガルーラ",
+          "",
+          "standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "standard creature lane"
+        ],
+        "assembly_note": "Kangaskhan sits in Series 3 Green as row 033; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Kangaskhan returns here as ordinary Green vending memory after the Garura Parent/Child tournament lane. That makes it a great boundary row: same character feeling, different assembly path.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Kangaskhan as Expansion Sheet Series 3 Green row 033.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Kangaskhan; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Kangaskhan belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Masako Yamashita for Kangaskhan, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Masako Yamashita functions as an early illustrator whose local Green examples include Golduck, Gastly, Hypno, and Kangaskhan. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Kangaskhan returns here as ordinary Green vending memory after the Garura Parent/Child tournament lane. That makes it a great boundary row: same character feeling, different assembly path.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 033, glossy vending-sheet format, Common rarity signal, Japanese name ガルーラ, artist/personality credit Masako Yamashita, and No Rarity non-equivalence before accepting this as Kangaskhan.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Kangaskhan — Expansion Sheet Series 3 Green row 033",
+        "why_it_matters": "Kangaskhan returns here as ordinary Green vending memory after the Garura Parent/Child tournament lane. That makes it a great boundary row: same character feeling, different assembly path.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Kangaskhan 033",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:033",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_033_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Kangaskhan, ガルーラ, Expansion Sheet, Vending Series 3 Green, glossy vending, row 033, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Kangaskhan pinned to Expansion Sheet Series 3 Green row 033; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 033 before naming this exact card.",
+            "Preserve Japanese/romaji name: ガルーラ / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:037",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:037",
+        "catalog_row_id": "037",
+        "name_en": "4 Prize Battle",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "037",
+        "artist": "Nobuyuki Habu",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "037",
+          "Common",
+          "glossy vending sheet",
+          "Nobuyuki Habu",
+          "",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "4 Prize Battle sits in Series 3 Green as row 037; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "4 Prize Battle is the sheet talking about play structure. It is modest as a collector object until you care about apparatus: the card game experimenting with its own knobs and dials.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors 4 Prize Battle as Expansion Sheet Series 3 Green row 037.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for 4 Prize Battle; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "4 Prize Battle belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Nobuyuki Habu for 4 Prize Battle, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Nobuyuki Habu functions as the dominant local special-card illustrator for Green rule-format rows 037-041. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "4 Prize Battle is the sheet talking about play structure. It is modest as a collector object until you care about apparatus: the card game experimenting with its own knobs and dials.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 037, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist/personality credit Nobuyuki Habu, and No Rarity non-equivalence before accepting this as 4 Prize Battle.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "4 Prize Battle — Expansion Sheet Series 3 Green row 037",
+        "why_it_matters": "4 Prize Battle is the sheet talking about play structure. It is modest as a collector object until you care about apparatus: the card game experimenting with its own knobs and dials.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: 4 Prize Battle 037",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:037",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_037_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says 4 Prize Battle, , Expansion Sheet, Vending Series 3 Green, glossy vending, row 037, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep 4 Prize Battle pinned to Expansion Sheet Series 3 Green row 037; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 037 before naming this exact card.",
+            "Preserve Japanese/romaji name: not supplied / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:039",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:039",
+        "catalog_row_id": "039",
+        "name_en": "3 Deck Battle",
+        "name_ja": "3デッキバトル",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "039",
+        "artist": "Nobuyuki Habu",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "039",
+          "Common",
+          "glossy vending sheet",
+          "Nobuyuki Habu",
+          "3デッキバトル",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "3 Deck Battle sits in Series 3 Green as row 039; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "3 Deck Battle turns format variation into cardboard. It is exactly the kind of row that proves Pokémon was being assembled as a play culture, not only as a list of monsters.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors 3 Deck Battle as Expansion Sheet Series 3 Green row 039.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for 3 Deck Battle; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "3 Deck Battle belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Nobuyuki Habu for 3 Deck Battle, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Nobuyuki Habu functions as the dominant local special-card illustrator for Green rule-format rows 037-041. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "3 Deck Battle turns format variation into cardboard. It is exactly the kind of row that proves Pokémon was being assembled as a play culture, not only as a list of monsters.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 039, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name 3デッキバトル, artist/personality credit Nobuyuki Habu, and No Rarity non-equivalence before accepting this as 3 Deck Battle.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "3 Deck Battle — Expansion Sheet Series 3 Green row 039",
+        "why_it_matters": "3 Deck Battle turns format variation into cardboard. It is exactly the kind of row that proves Pokémon was being assembled as a play culture, not only as a list of monsters.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: 3 Deck Battle 039",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:039",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_039_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says 3 Deck Battle, 3デッキバトル, Expansion Sheet, Vending Series 3 Green, glossy vending, row 039, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep 3 Deck Battle pinned to Expansion Sheet Series 3 Green row 039; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 039 before naming this exact card.",
+            "Preserve Japanese/romaji name: 3デッキバトル / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:040",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:040",
+        "catalog_row_id": "040",
+        "name_en": "3 vs 3 Dugtrio Team Battle",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "040",
+        "artist": "Nobuyuki Habu",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "040",
+          "Common",
+          "glossy vending sheet",
+          "Nobuyuki Habu",
+          "",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "3 vs 3 Dugtrio Team Battle sits in Series 3 Green as row 040; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "3 vs 3 Dugtrio Team Battle is a rules/event-shaped oddity. Dugtrio becomes a format signpost, and Habu’s credit ties the weirdness to the sheet’s special back-half language.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors 3 vs 3 Dugtrio Team Battle as Expansion Sheet Series 3 Green row 040.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for 3 vs 3 Dugtrio Team Battle; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "3 vs 3 Dugtrio Team Battle belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Nobuyuki Habu for 3 vs 3 Dugtrio Team Battle, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Nobuyuki Habu functions as the dominant local special-card illustrator for Green rule-format rows 037-041. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "3 vs 3 Dugtrio Team Battle is a rules/event-shaped oddity. Dugtrio becomes a format signpost, and Habu’s credit ties the weirdness to the sheet’s special back-half language.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 040, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist/personality credit Nobuyuki Habu, and No Rarity non-equivalence before accepting this as 3 vs 3 Dugtrio Team Battle.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "3 vs 3 Dugtrio Team Battle — Expansion Sheet Series 3 Green row 040",
+        "why_it_matters": "3 vs 3 Dugtrio Team Battle is a rules/event-shaped oddity. Dugtrio becomes a format signpost, and Habu’s credit ties the weirdness to the sheet’s special back-half language.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: 3 vs 3 Dugtrio Team Battle 040",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:040",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_040_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says 3 vs 3 Dugtrio Team Battle, , Expansion Sheet, Vending Series 3 Green, glossy vending, row 040, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep 3 vs 3 Dugtrio Team Battle pinned to Expansion Sheet Series 3 Green row 040; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 040 before naming this exact card.",
+            "Preserve Japanese/romaji name: not supplied / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:042",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:042",
+        "catalog_row_id": "042",
+        "name_en": "Ooyama's Pikachu",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "042",
+        "artist": "OOYAMA",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "042",
+          "Common",
+          "glossy vending sheet",
+          "OOYAMA",
+          "",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "Ooyama's Pikachu sits in Series 3 Green as row 042; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Ooyama’s Pikachu is Green’s charm bomb and identity trap. It is a Pikachu, but not a normal Pikachu; the local caption even carries the cannot-be-used-in-games warning. The agent must preserve Ooyama, row 042, non-playable status, and vending route.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Ooyama's Pikachu as Expansion Sheet Series 3 Green row 042.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Ooyama's Pikachu; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Ooyama's Pikachu belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits OOYAMA for Ooyama's Pikachu, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, OOYAMA functions as the credited personality/artist lane for Ooyama’s Pikachu, with non-playable card status preserved. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Ooyama’s Pikachu is Green’s charm bomb and identity trap. It is a Pikachu, but not a normal Pikachu; the local caption even carries the cannot-be-used-in-games warning. The agent must preserve Ooyama, row 042, non-playable status, and vending route.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 042, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist/personality credit OOYAMA, and No Rarity non-equivalence before accepting this as Ooyama's Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Ooyama's Pikachu — Expansion Sheet Series 3 Green row 042",
+        "why_it_matters": "Ooyama’s Pikachu is Green’s charm bomb and identity trap. It is a Pikachu, but not a normal Pikachu; the local caption even carries the cannot-be-used-in-games warning. The agent must preserve Ooyama, row 042, non-playable status, and vending route.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Ooyama's Pikachu 042",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_042_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Ooyama's Pikachu, , Expansion Sheet, Vending Series 3 Green, glossy vending, row 042, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Ooyama's Pikachu pinned to Expansion Sheet Series 3 Green row 042; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 042 before naming this exact card.",
+            "Preserve Japanese/romaji name: not supplied / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:044",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:044",
+        "catalog_row_id": "044",
+        "name_en": "Imakuni?'s Nasty Plot",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "044",
+        "artist": "Imakuni?",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "044",
+          "Common",
+          "glossy vending sheet",
+          "Imakuni?",
+          "",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "Imakuni?'s Nasty Plot sits in Series 3 Green as row 044; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Imakuni?’s Nasty Plot is performance culture inside the catalog. It is not just a Trainer card; it is Imakuni? energy, joke logic, and non-playable weirdness in a vending-sheet lane.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Imakuni?'s Nasty Plot as Expansion Sheet Series 3 Green row 044.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Imakuni?'s Nasty Plot; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Imakuni?'s Nasty Plot belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Imakuni? for Imakuni?'s Nasty Plot, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Imakuni? functions as the performer/personality credit for Imakuni? special rows. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Imakuni?’s Nasty Plot is performance culture inside the catalog. It is not just a Trainer card; it is Imakuni? energy, joke logic, and non-playable weirdness in a vending-sheet lane.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 044, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist/personality credit Imakuni?, and No Rarity non-equivalence before accepting this as Imakuni?'s Nasty Plot.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Imakuni?'s Nasty Plot — Expansion Sheet Series 3 Green row 044",
+        "why_it_matters": "Imakuni?’s Nasty Plot is performance culture inside the catalog. It is not just a Trainer card; it is Imakuni? energy, joke logic, and non-playable weirdness in a vending-sheet lane.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Imakuni?'s Nasty Plot 044",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:044",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_044_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Imakuni?'s Nasty Plot, , Expansion Sheet, Vending Series 3 Green, glossy vending, row 044, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Imakuni?'s Nasty Plot pinned to Expansion Sheet Series 3 Green row 044; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 044 before naming this exact card.",
+            "Preserve Japanese/romaji name: not supplied / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:047",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:047",
+        "catalog_row_id": "047",
+        "name_en": "Pokémon Machine",
+        "name_ja": "",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "047",
+        "artist": "Ooyama",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "047",
+          "Common",
+          "glossy vending sheet",
+          "Ooyama",
+          "",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "Pokémon Machine sits in Series 3 Green as row 047; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "Pokémon Machine is Ooyama apparatus: not monster, not normal Trainer, but a strange tool-card object that makes the sheet feel hand-built and mischievous.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pokémon Machine as Expansion Sheet Series 3 Green row 047.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for Pokémon Machine; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "Pokémon Machine belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits Ooyama for Pokémon Machine, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Within this release, Ooyama functions as the credited artist/personality lane for Pokémon Machine. This is local release texture, not a complete biography.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "interpretive",
+          "tier": "B",
+          "basis_claims": [
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Pokémon Machine is Ooyama apparatus: not monster, not normal Trainer, but a strange tool-card object that makes the sheet feel hand-built and mischievous.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 047, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name not supplied, artist/personality credit Ooyama, and No Rarity non-equivalence before accepting this as Pokémon Machine.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Pokémon Machine — Expansion Sheet Series 3 Green row 047",
+        "why_it_matters": "Pokémon Machine is Ooyama apparatus: not monster, not normal Trainer, but a strange tool-card object that makes the sheet feel hand-built and mischievous.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: Pokémon Machine 047",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:047",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_047_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Pokémon Machine, , Expansion Sheet, Vending Series 3 Green, glossy vending, row 047, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep Pokémon Machine pinned to Expansion Sheet Series 3 Green row 047; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 047 before naming this exact card.",
+            "Preserve Japanese/romaji name: not supplied / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_tcg_expansion_sheet_3_green_19981124:053",
+      "context": {
+        "release_family_id": "jp_tcg_expansion_sheet_3_green_19981124",
+        "release_name": "Expansion Sheet Series 3 Green",
+        "row_id": "jp_tcg_expansion_sheet_3_green_19981124:053",
+        "catalog_row_id": "053",
+        "name_en": "The Last Cave – Cerulean!",
+        "name_ja": "最後の洞窟-セルリアン！",
+        "romaji": ""
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "053",
+        "artist": "",
+        "rarity_signal": "Common",
+        "signals": [
+          "Expansion Sheet Series 3 Green",
+          "053",
+          "Common",
+          "glossy vending sheet",
+          "",
+          "最後の洞窟-セルリアン！",
+          "",
+          "special/non-standard row"
+        ],
+        "assembly_themes": [
+          "glossy vending-sheet distribution",
+          "common-rarity scalar trap",
+          "artist/personality trace",
+          "identity trap",
+          "special/non-standard tail"
+        ],
+        "assembly_note": "The Last Cave – Cerulean! sits in Series 3 Green as row 053; row, glossy vending format, count-lane context, and No Rarity non-equivalence need to stay together.",
+        "collector_texture_note": "The Last Cave - Cerulean! closes the tranche as adventure memory. It points away from creature portraiture and toward place, route, and game-world exploration, which is exactly the larger assembly story.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors The Last Cave – Cerulean! as Expansion Sheet Series 3 Green row 053.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local row records rarity signal Common for The Last Cave – Cerulean!; in this release common rarity does not erase collector relevance because glossy vending-sheet format and special-row context are part of identity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "The Last Cave – Cerulean! belongs to glossy Vending/Expansion Sheet Series 3 Green, not a standard booster-pack release and not Base No Rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local row credits no surfaced illustrator credit for The Last Cave – Cerulean!, with source/provider caveats preserved.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "The Last Cave - Cerulean! closes the tranche as adventure memory. It points away from creature portraiture and toward place, route, and game-world exploration, which is exactly the larger assembly story.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Expansion Sheet Series 3 Green, row 053, special/non-standard row status, glossy vending-sheet format, Common rarity signal, Japanese name 最後の洞窟-セルリアン！, artist/personality credit not supplied, and No Rarity non-equivalence before accepting this as The Last Cave – Cerulean!.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "human_title": "The Last Cave – Cerulean! — Expansion Sheet Series 3 Green row 053",
+        "why_it_matters": "The Last Cave - Cerulean! closes the tranche as adventure memory. It points away from creature portraiture and toward place, route, and game-world exploration, which is exactly the larger assembly story.",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Series 3 Green row: The Last Cave – Cerulean! 053",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_expansion_sheet_3_green_19981124.json#row:jp_tcg_expansion_sheet_3_green_19981124:053",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "provider_snapshot",
+          "title": "Pokellector source page: Vending Series 3 Green Expansion",
+          "ref": "https://jp.pokellector.com/Vending-Series-3-Green-Expansion/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "title": "Bulbapedia: Vending Machine cards (TCG), Series 3 (Green) artist-caption metadata",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Vending_Machine_cards_(TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "local_matrix",
+          "title": "Pre-English symbol-status matrix: Expansion Sheet Series 3 Green",
+          "ref": "data/pre-english-symbol-status.json#release_family_id:jp_tcg_expansion_sheet_3_green_19981124",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "physical-card proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "expansion_sheet_3_green_053_vending_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says The Last Cave – Cerulean!, 最後の洞窟-セルリアン！, Expansion Sheet, Vending Series 3 Green, glossy vending, row 053, special card, Ooyama, Imakuni, or No Rarity comparison.",
+          "summary": "Keep The Last Cave – Cerulean! pinned to Expansion Sheet Series 3 Green row 053; do not accept name, character, or gag-card surface alone as source identity.",
+          "steps": [
+            "Require Expansion Sheet Series 3 Green / 拡張シート 第3弾 緑版 and row 053 before naming this exact card.",
+            "Preserve Japanese/romaji name: 最後の洞窟-セルリアン！ / not supplied.",
+            "Preserve glossy vending-sheet physical format and Common rarity signal as catalog identity fields.",
+            "Preserve standard vs special/non-standard row context, especially for rows 037-053.",
+            "Preserve artist/personality credit as source/provider metadata, not physical-card proof.",
+            "Preserve symbol-status matrix result: this is not a Base No Rarity lane.",
+            "Use seller photos for physical format, gloss, card face/back, dimensions, surface, and condition before any transaction claim."
+          ],
+          "not_claiming": [
+            "complete 53-row hand-authored coverage",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official copy counts",
+            "approved image display rights",
+            "spendability",
+            "Base No Rarity equivalence",
+            "complete special/non-standard insert taxonomy",
+            "complete artist biography"
+          ]
+        }
+      ]
+    }
+  ]
+}

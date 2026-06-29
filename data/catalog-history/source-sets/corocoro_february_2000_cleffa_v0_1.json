@@ -1,0 +1,647 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Cleffa, the CoroCoro Comic February 2000 issue insert released January 15, 2000, emphasizing early Johto baby-Pokemon context, Ken Sugimori art, Eek/draw-card play memory, glossy magazine-insert identity, Gold/Silver symbol, and traps against Wizards Promo 31, Japanese Gold/Silver expansion Cleffa, and generic Cleffa rows.",
+    "in_scope": [
+      "CoroCoro Comic February 2000 issue insert release dossier",
+      "Cleffa unnumbered promotional row 156",
+      "Baby Pokemon and Eek card context",
+      "Ken Sugimori illustration credit",
+      "Gold/Silver symbol and CoroCoro border-text identification rails"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000",
+        "name_en": "CoroCoro Comic February 2000 issue insert (January 15, 2000)",
+        "release_date": "2000-01-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro Comic magazine insert",
+          "early Johto baby Pokemon signal",
+          "glossy unnumbered promo",
+          "Ken Sugimori character art",
+          "Gold/Silver expansion-symbol rail",
+          "Eek / draw-card play memory"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000:156",
+            "name": "Cleffa",
+            "why": "This row is a chase because it is a small card with a surprisingly large footprint: Johto's baby-Pokemon idea, CoroCoro's monthly insert machine, Sugimori's official species language, and the Eek draw-card memory all converge.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c4",
+              "c5",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Cleffa"
+            ],
+            "why": "Sugimori matters here because baby Pokemon needed immediate visual legibility. Cleffa's star-shape and soft official pose make the new Johto category readable before any collector starts arguing about variants.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7",
+              "c8"
+            ],
+            "not_claiming": [
+              "complete Ken Sugimori bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Cleffa art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic February 2000 issue insert as a one-row unnumbered promotional source group containing Cleffa at source index 156.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's Cleffa page says the Japanese print was available as an unnumbered promotional card on an insert in the February 2000 issue of CoroCoro Comic, released January 15, 2000.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "PokeBoon and Pokumon both frame this Cleffa as a 2000 CoroCoro magazine promo, with Pokumon tagging it as Colorless, Unnumbered, Ken Sugimori, Non-holo, Japanese, and Glossy.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The official Pokemon site lists Pokemon Gold and Silver as released in Japan on November 21, 1999, placing this January 15, 2000 Cleffa insert in the first months of the Johto launch moment.",
+          "sources": [
+            "s7"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.vehicle",
+          "text": "A collector reference to CoroCoro insert culture describes CoroCoro Comic as a monthly Shogakukan manga magazine and notes that it is known for including Pokemon promotional cards.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Cleffa illustration to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "PokeBoon and Pokumon also credit this CoroCoro Cleffa promo to Ken Sugimori.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Cleffa as a Colorless-type Baby Pokemon card, HP 30, with the attack Eek drawing 2 cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia says the Japanese print features the Gold, Silver, to a New World... symbol and that the bottom border reads CoroCoro Comic February issue bonus card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "history.significance",
+          "text": "This Cleffa matters because it joins three separate kinds of early-2000 Pokemon assembly: new Johto species education, baby-Pokemon game mechanics, and CoroCoro's monthly promo-distribution rhythm.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c8",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_february_2000_cleffa_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Cleffa, Pii, Py, ピィ, CoroCoro February 2000, January 15 2000, glossy Cleffa, Gold/Silver symbol, Eek, Wizards Promo 31, Japanese Promo 31, #173, or unnumbered Japanese promo.",
+          "summary": "Identify CoroCoro February 2000 Cleffa by magazine-insert route, glossy unnumbered promo identity, Ken Sugimori credit, Baby Pokemon / Eek text, Gold/Silver symbol, and February-issue bonus-card border text before trusting generic Cleffa memory.",
+          "steps": [
+            "Confirm the release route is CoroCoro Comic February 2000 issue insert, released January 15, 2000.",
+            "Confirm the card is Cleffa / ピィ as an unnumbered Japanese promotional card, not merely any Cleffa card.",
+            "Preserve Ken Sugimori as illustrator where scan or citation allows.",
+            "Check for Colorless Baby Pokemon frame/text and the Eek / ピッピッ draw-card attack where image quality allows.",
+            "Check for glossy CoroCoro magazine-insert stock where seller photos allow.",
+            "Check for the Gold, Silver, to a New World... symbol and bottom-border CoroCoro Comic February issue bonus-card text.",
+            "Separate the later English Wizards Black Star Promo 31, Japanese Gold/Silver expansion Cleffa, modern Cleffa reprints, and generic #173/Pokedex-label listings unless evidence supports this exact row.",
+            "Request front/back seller photos and surface evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "Wizards Promo 31 equivalence",
+            "Japanese Gold/Silver expansion equivalence",
+            "modern Cleffa equivalence",
+            "other CoroCoro promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Cleffa: the baby star in CoroCoro's Johto machine",
+        "why_it_matters": "Cleffa looks tiny until you let the assembly come into focus. Gold and Silver had just opened Johto, baby Pokemon were teaching players that evolution could have a prehistory, and CoroCoro put that idea directly into a glossy insert. The card is sweet, but also mechanical: Baby Pokemon protection, Eek, two cards drawn, a little star-shaped creature making the new era playable. This is why the catalog cannot only rank trophies. Sometimes the important card is the one that taught a generation how the world had expanded.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c6",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue contents",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic February 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Cleffa_%28Wizards_Promo_31%29",
+          "title": "Bulbapedia: Cleffa (Wizards Promo 31)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/corocoro_cleffa_promo/",
+          "title": "PokeBoon: Cleffa Promo: CoroCoro Comic February 2000 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://pokumon.com/card/cleffa-corocoro-2000-unnumbered/",
+          "title": "Pokumon: Cleffa (CoroCoro 2000) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.magiclibrarities.net/175-rarities-coro-coro-comic-book-inserts-japanese-japanese-cards-index.html",
+          "title": "The Magic Librarities: Coro Coro Comic Book Inserts (Japanese)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "Pokemon-specific authority",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://www.pokemon.co.jp/game/other/gbc-gs/",
+          "title": "Pokemon official site: Pocket Monsters Gold/Silver",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000:156",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000",
+        "row_id": "jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000:156",
+        "name_en": "Cleffa",
+        "name_ja": "ピィ",
+        "source_index": "156",
+        "release_date": "2000-01-15"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "k1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 156 as Cleffa, a Colorless Pokemon row in the CoroCoro Comic February 2000 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "k2",
+          "field": "card.identity",
+          "text": "Bulbapedia lists Cleffa's Japanese name as ピィ Py, its type as Colorless, its HP as 30, and its evolution stage as Baby Pokemon.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k3",
+          "field": "artist.credit",
+          "text": "Bulbapedia, PokeBoon, and Pokumon credit this Cleffa to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia records the Baby Pokemon defensive text and the Eek attack, which draws 2 cards.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k5",
+          "field": "history.lineage",
+          "text": "The Japanese CoroCoro print later connects to the English Wizards Black Star Promo 31 release, but the Japanese row's identity still depends on the CoroCoro insert route and Japanese-print tells.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k1",
+            "k2"
+          ]
+        },
+        {
+          "id": "k6",
+          "field": "card.art",
+          "text": "The art matters because Sugimori's simple star-shaped Cleffa makes a new baby-stage concept immediately readable as cute, small, and mechanically different from the older Clefairy line.",
+          "sources": [
+            "s3",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k2",
+            "k3",
+            "k4"
+          ]
+        },
+        {
+          "id": "k7",
+          "field": "identification.special_instructions",
+          "text": "The card should be checked as the Japanese CoroCoro February 2000 unnumbered promo with Gold/Silver symbol and CoroCoro February issue bonus-card border text, not merely as Cleffa or Wizards Promo 31.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_february_2000_cleffa_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer, seller, listing, scan, or agent memory identifies a Japanese Cleffa as CoroCoro, January 2000, February 2000, glossy, Ken Sugimori, Baby Pokemon, Eek, Gold/Silver symbol, Wizards Promo 31, #173, or source index 156.",
+          "summary": "Match row 156 by Cleffa identity plus CoroCoro February 2000 glossy insert rails; do not let Cleffa, #173, or Wizards Promo 31 naming collapse the Japanese promo variant.",
+          "steps": [
+            "Confirm Cleffa / ピィ identity and Colorless Baby Pokemon context.",
+            "Confirm CoroCoro Comic February 2000 issue insert / January 15, 2000 route from listing text, provenance, or seller evidence.",
+            "Confirm Ken Sugimori credit when a scan is legible or a reference row is cited.",
+            "Look for Eek / ピッピッ and draw-card text where photos allow.",
+            "Look for glossy magazine-insert stock, Gold/Silver symbol, and bottom-border CoroCoro Comic February issue bonus-card text.",
+            "Separate English Wizards Black Star Promo 31, Japanese Gold/Silver expansion Cleffa, modern Cleffa cards, and generic #173 labels unless evidence supports this exact row.",
+            "Escalate to seller evidence for possession, authenticity, condition, surface quality, and back-side consistency."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "Wizards Promo 31 equivalence",
+            "Japanese Gold/Silver expansion equivalence",
+            "modern Cleffa equivalence",
+            "other CoroCoro promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Cleffa: a tiny rulebook for Johto",
+        "why_it_matters": "Cleffa is sweet enough to disappear into the binder if you only sort by spectacle. But this little CoroCoro insert is doing serious assembly work. It carries Sugimori's new Johto baby-language, teaches the Baby Pokemon defensive flip, offers Eek as a tiny draw engine, and wears the Gold/Silver symbol like a flag planted in the new era. It is the kind of card that makes the catalog feel alive: small, glossy, monthly, and absolutely part of how Pokemon taught people what Johto was.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "k1",
+          "k2",
+          "k3",
+          "k4",
+          "k5",
+          "k7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_156_corocoro_comic_february_2000_issue_insert_january_15_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic February 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Cleffa_%28Wizards_Promo_31%29",
+          "title": "Bulbapedia: Cleffa (Wizards Promo 31)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokeboon.com/corocoro_cleffa_promo/",
+          "title": "PokeBoon: Cleffa Promo: CoroCoro Comic February 2000 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://pokumon.com/card/cleffa-corocoro-2000-unnumbered/",
+          "title": "Pokumon: Cleffa (CoroCoro 2000) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.magiclibrarities.net/175-rarities-coro-coro-comic-book-inserts-japanese-japanese-cards-index.html",
+          "title": "The Magic Librarities: Coro Coro Comic Book Inserts (Japanese)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "Pokemon-specific authority",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "web",
+          "ref": "https://www.pokemon.co.jp/game/other/gbc-gs/",
+          "title": "Pokemon official site: Pocket Monsters Gold/Silver",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Lucky Stadium [Zapdos], the Chūbu World Challenge Summer participation-prize print, emphasizing the regional-stadium architecture of the 2000 Lucky Stadium campaign, the Zapdos / Osaka Castle tower identity, the July 22, 2000 Nagoya Trade & Industry Center event route, Ryuta Kusumi and CR CG gangs artwork, and traps against the other seven World Challenge Summer regional Lucky Stadium cards, Spring/Summer date confusion, Tropical Mega Battle, Neo Destiny, Intro Pack Neo, and Pokemon Center New York prints.",
+    "in_scope": [
+      "World Challenge Summer Chūbu participation-prize release dossier",
+      "Lucky Stadium [Zapdos] unnumbered promotional row 170",
+      "World Challenge Summer 2000 regional Lucky Stadium family context",
+      "Ryuta Kusumi and CR CG gangs illustration credit",
+      "Chūbu / Zapdos / Osaka Castle tower identification rails"
+    ],
+    "not_claiming": [
+      "complete World Challenge event archive",
+      "official attendance count",
+      "official print run",
+      "resolution of every Spring/Summer secondary-source date conflict",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference",
+        "name_en": "World Challenge Summer participation prize (Chūbu conference)",
+        "release_date": "2000-07-22",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "World Challenge Summer 2000 tournament participation prize",
+          "Chūbu regional Lucky Stadium print",
+          "Zapdos mascot cue",
+          "Osaka Castle central tower landmark cue",
+          "Ryuta Kusumi / CR CG gangs artwork",
+          "regional-variant and date-conflict identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference:170",
+            "name": "Lucky Stadium [Zapdos] [Chūbu]",
+            "why": "This is a chase because Zapdos gives the Chūbu print voltage: a legendary bird, a castle-tower landmark, and the Nagoya event route all make one regional Stadium crackle differently from the others.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ryuta Kusumi and CR CG gangs",
+            "row_count": 1,
+            "examples": [
+              "Lucky Stadium [Zapdos] [Chūbu]"
+            ],
+            "why": "This credit matters because the Chūbu card has to stage an electric legendary against built stone. The artwork is not just Pokemon plus background; it is a regional tournament signal.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Lucky Stadium art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete World Challenge event archive",
+          "complete date-conflict resolution",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Chūbu World Challenge Summer participation-prize source group as one row containing Lucky Stadium at source index 170.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.context",
+          "text": "Bulbapedia says Lucky Stadium was first awarded to participants of the Japanese World Challenge Summer tournaments held between July and August 2000, with eight variations printed, each one exclusive to a region of Japan.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia lists the Chūbu print, featuring Zapdos, as available at the Nagoya Trade & Industry Center, Nagoya on July 22, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies Lucky Stadium [Zapdos] [Chubu] as a World Challenge Summer participation prize and gives the Zapdos/Chubu identity, while showing an April 29, 2000 distribution date that this dossier treats as a secondary-source date conflict against Bulbapedia's July 22 Summer event listing.",
+          "sources": [
+            "s3",
+            "s2"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia's Lucky Stadium gallery credits the Chūbu region print to Ryuta Kusumi and CR CG gangs.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits Lucky Stadium [Zapdos] [Chubu] to CR CG gangs and Ryuta Kusumi.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says all World Challenge Summer Lucky Stadium prints feature regional landmarks; the Chūbu print features the central tower of Osaka Castle.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.lineage",
+          "text": "Bulbapedia separates the regional World Challenge Summer prints from the Tropical Mega Battle bilingual print, Neo Destiny English print, Intro Pack Neo print, and Pokemon Center New York print, each of which has different artwork or route.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, the Chūbu print matters because Zapdos makes the regional Stadium read like charged architecture: electricity, castle stone, and tournament geography held in one small promo.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c5",
+            "c7",
+            "c8"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity",
+            "resolution of every date conflict"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Zapdos] [Chūbu]: lightning over the tower",
+        "why_it_matters": "The Chūbu print has a funny, almost theatrical voltage. Zapdos is a creature of sudden weather; the landmark cue is castle architecture; the route is a one-day Nagoya tournament stop. That combination makes the card feel like a flash striking a regional stage. It is still Lucky Stadium, but this one has electricity in its bones.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete World Challenge event archive",
+          "official print run",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "resolution of every secondary-source date conflict"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_chubu_lucky_stadium_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A seller, collector, or agent identifies a Lucky Stadium as the World Challenge Summer Chūbu participation-prize print.",
+          "summary": "Do not identify this row from Lucky Stadium or Zapdos alone. The legible target is the Chūbu regional participation prize: Zapdos + Nagoya route + Osaka Castle central-tower landmark context.",
+          "steps": [
+            "Confirm the card is a Japanese World Challenge Summer Lucky Stadium regional print, not the English Neo Destiny 100/105 card.",
+            "Confirm the featured Pokemon is Zapdos; other regional World Challenge Summer prints feature Onix, Lugia, Ho-Oh, Gyarados, Diglett, Mew, or Pikachu.",
+            "Ask for clear front images of the regional artwork and any readable event/region text; Chūbu should not be inferred from Lucky Stadium name alone.",
+            "Check the venue/date claim carefully: this dossier follows Bulbapedia's July 22, 2000 Nagoya Trade & Industry Center Summer listing and records PokeBoon's April 29 date as a secondary-source conflict, not as the controlling date for this row.",
+            "Screen against the Tropical Mega Battle bilingual Lucky Stadium, Intro Pack Neo Lucky Stadium, Pokemon Center New York Lucky Stadium, ordinary Neo Destiny Lucky Stadium, and later Stadium cards before publishing a confident row match.",
+            "Do not promote regional identity into authenticity, possession, condition, or price truth."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights",
+            "resolution of every secondary-source date conflict"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference.json",
+          "title": "Local release catalog: World Challenge Summer participation prize (Chūbu conference)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_%28Neo_Destiny_100%29",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/chubu_luckystadium-zapdos_promo/",
+          "title": "PokeBoon: Lucky Stadium [Zapdos] [Chubu] Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "date-conflict resolution"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/world-challenge-summer-promo/13473/",
+          "title": "CGC Cards Population Report: World Challenge Summer Promo - Japanese",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "market price truth",
+            "seller-card match",
+            "condition",
+            "approved image rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference:170",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference:170",
+        "release_family_id": "jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference",
+        "name_en": "Lucky Stadium [Zapdos] [Chūbu]",
+        "name_ja": "ラッキースタジアム",
+        "romaji": "Lucky Stadium",
+        "release_date": "2000-07-22"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_profile": {
+        "authority_label": "local_catalog_fact_and_reference_fact",
+        "identity": "Lucky Stadium [Zapdos] [Chūbu], World Challenge Summer participation-prize regional Stadium card",
+        "artist": "Ryuta Kusumi and CR CG gangs",
+        "mechanical_texture": [
+          "Trainer",
+          "Stadium",
+          "regional World Challenge Summer print",
+          "Zapdos featured Pokemon",
+          "Osaka Castle central tower landmark cue",
+          "participation prize"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors row 170 as Lucky Stadium in the World Challenge Summer Chūbu participation-prize source group, with Zapdos as the row's distinguishing Pokemon signal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Lucky Stadium as a Stadium card and lists the Japanese name as ラッキースタジアム Lucky Stadium.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's card text for the Neo Destiny-style Lucky Stadium effect lets each player flip a coin once during their turn before attacking; on heads, that player draws a card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon both associate the Chūbu Zapdos Lucky Stadium artwork with Ryuta Kusumi and CR CG gangs.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "As judged art texture, the Chūbu card works because Zapdos makes a built landmark feel charged rather than static, turning a tournament participation prize into a storm over stone.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ],
+          "not_claiming": [
+            "official art interpretation",
+            "all illustrator work",
+            "authentication",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The Chūbu print is one member of an eight-print World Challenge Summer regional set; Bulbapedia lists separate region/Pokemon pairings for Kyūshū/Onix, Kantō/Lugia, Kansai/Ho-Oh, Hokkaidō/Pikachu, Hokushin'etsu/Mew, Chūgoku-Shikoku/Gyarados, and Tōhoku/Diglett.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Lucky Stadium [Zapdos] [Chūbu] rewards exactness: the title and rules text are shared, but the meaningful object is Zapdos, Chūbu, Nagoya, Osaka Castle's tower, and the Summer event route assembled together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c6"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Zapdos] [Chūbu]: thunder over stone",
+        "why_it_matters": "Zapdos gives this regional print its personality. The shared Lucky Stadium effect is almost quiet, but the Chūbu card itself is not: Nagoya event route, castle-tower landmark, electric legendary, and old-back tournament memory all stacked together. It is the sort of card where the agent has to keep the whole assembly alive or the magic collapses into just another Stadium.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official art interpretation",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_chubu_lucky_stadium_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A card-level Lucky Stadium match is being prepared for a want, sale, dossier, or agent comparison.",
+          "summary": "The card name is too broad. Confirm the Chūbu regional print by Zapdos, event/landmark cues, and exclusion of the other Lucky Stadium routes.",
+          "steps": [
+            "Confirm the front artwork features Zapdos; this is the Chūbu print's key Pokemon cue.",
+            "Ask for close images of any region/event text and the whole artwork field; do not infer Chūbu from a seller title alone.",
+            "Compare against all other World Challenge Summer regional prints: Onix, Lugia, Ho-Oh, Gyarados, Diglett, Mew, and Pikachu variants.",
+            "Compare against the Tropical Mega Battle bilingual Lucky Stadium and ordinary Neo Destiny / Intro Pack Neo / New York City Lucky Stadium prints.",
+            "If a listing cites April 29, 2000 for a Zapdos/Chubu card, preserve that as a source conflict and do not silently merge it with the July 22 Summer row without stronger evidence.",
+            "Do not treat CGC/PSA population, auction title, or marketplace category as physical-card proof without matching images and seller evidence."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights",
+            "resolution of every secondary-source date conflict"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference.json#row:jp_promo_unnumbered_wotc_170_world_challenge_summer_participation_prize_ch_bu_conference:170",
+          "title": "Local catalog row: Lucky Stadium [Zapdos] / World Challenge Summer Chūbu participation prize",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_%28Neo_Destiny_100%29",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/chubu_luckystadium-zapdos_promo/",
+          "title": "PokeBoon: Lucky Stadium [Zapdos] [Chubu] Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "date-conflict resolution"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/world-challenge-summer-promo/13473/",
+          "title": "CGC Cards Population Report: World Challenge Summer Promo - Japanese",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "market price truth",
+            "seller-card match",
+            "condition",
+            "approved image rights"
+          ]
+        }
+      ]
+    }
+  ]
+}

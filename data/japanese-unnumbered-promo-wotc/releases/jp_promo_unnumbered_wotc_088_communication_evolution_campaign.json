@@ -1,0 +1,1245 @@
+{
+  "cards": [
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Omastar appears in the unnumbered promotional source slice at row 088. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "088",
+          "Communication Evolution Campaign",
+          "Omastar",
+          "",
+          "Water",
+          "",
+          "Communication Evolution Campaign"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:088",
+        "provider_title": "Omastar - Unnumbered Promotional source row 088",
+        "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:088",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "088",
+      "name_en": "Omastar",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 088-092 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Communication Evolution Campaign",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 088-092 with promotion note: Communication Evolution Campaign",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Communication Evolution Campaign",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_index": "088",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+      "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:088",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Communication Evolution Campaign|Omastar|promo}}|Water|||Communication Evolution Campaign}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "088",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "088",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "088",
+        "Communication Evolution Campaign",
+        "Omastar",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Alakazam appears in the unnumbered promotional source slice at row 089. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "089",
+          "Communication Evolution Campaign",
+          "Alakazam",
+          "",
+          "Psychic",
+          "",
+          "Communication Evolution Campaign"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:089",
+        "provider_title": "Alakazam - Unnumbered Promotional source row 089",
+        "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:089",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "089",
+      "name_en": "Alakazam",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Psychic"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 088-092 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Communication Evolution Campaign",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 088-092 with promotion note: Communication Evolution Campaign",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Communication Evolution Campaign",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_index": "089",
+        "type": "Psychic",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+      "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:089",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Communication Evolution Campaign|Alakazam|promo}}|Psychic|||Communication Evolution Campaign}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "089",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "089",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "089",
+        "Communication Evolution Campaign",
+        "Alakazam",
+        "Psychic",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Gengar appears in the unnumbered promotional source slice at row 090. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "090",
+          "Communication Evolution Campaign",
+          "Gengar",
+          "",
+          "Psychic",
+          "",
+          "Communication Evolution Campaign"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:090",
+        "provider_title": "Gengar - Unnumbered Promotional source row 090",
+        "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:090",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "090",
+      "name_en": "Gengar",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Psychic"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 088-092 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Communication Evolution Campaign",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 088-092 with promotion note: Communication Evolution Campaign",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Communication Evolution Campaign",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_index": "090",
+        "type": "Psychic",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+      "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:090",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Communication Evolution Campaign|Gengar|promo}}|Psychic|||Communication Evolution Campaign}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "090",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "090",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "090",
+        "Communication Evolution Campaign",
+        "Gengar",
+        "Psychic",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Golem appears in the unnumbered promotional source slice at row 091. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "091",
+          "Communication Evolution Campaign",
+          "Golem",
+          "",
+          "Fighting",
+          "",
+          "Communication Evolution Campaign"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:091",
+        "provider_title": "Golem - Unnumbered Promotional source row 091",
+        "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:091",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "091",
+      "name_en": "Golem",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 088-092 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Communication Evolution Campaign",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 088-092 with promotion note: Communication Evolution Campaign",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Communication Evolution Campaign",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_index": "091",
+        "type": "Fighting",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+      "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:091",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Communication Evolution Campaign|Golem|promo}}|Fighting|||Communication Evolution Campaign}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "091",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "091",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "091",
+        "Communication Evolution Campaign",
+        "Golem",
+        "Fighting",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Machamp appears in the unnumbered promotional source slice at row 092. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "092",
+          "Communication Evolution Campaign",
+          "Machamp",
+          "",
+          "Fighting",
+          "",
+          "Communication Evolution Campaign"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:092",
+        "provider_title": "Machamp - Unnumbered Promotional source row 092",
+        "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:092",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "092",
+      "name_en": "Machamp",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fighting"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 088-092 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Communication Evolution Campaign",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 5,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 088-092 with promotion note: Communication Evolution Campaign",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 5
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Communication Evolution Campaign",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Communication Evolution Campaign",
+        "source_expansion_number": "promo",
+        "source_index": "092",
+        "type": "Fighting",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+      "row_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign:092",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Communication Evolution Campaign|Machamp|promo}}|Fighting|||Communication Evolution Campaign}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "092",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "092",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "092",
+        "Communication Evolution Campaign",
+        "Machamp",
+        "Fighting",
+        "",
+        ""
+      ]
+    }
+  ],
+  "not_claiming": [
+    "complete Japanese unnumbered promo universe",
+    "official campaign boundary proof beyond the source promotion note",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release": {
+    "boundary_note": "Source-derived campaign family grouped by the exact Bulbapedia promotion/distribution note; not an official product-boundary proof.",
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "bulbapedia_raw_promotion_group",
+    "date_precision": "mixed_source_notes",
+    "expected_row_count": 5,
+    "name_en": "Communication Evolution Campaign",
+    "name_ja": "アンナンバードプロモカード",
+    "note": "Campaign-level split derived from the source promotion note to make unnumbered promo matching more legible for agents.",
+    "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "product_card_count": 5,
+    "product_count_basis": "Bulbapedia raw source rows 088-092 with promotion note: Communication Evolution Campaign",
+    "release_date": "1998-11-13",
+    "release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign",
+    "release_type": "unnumbered_promo_campaign_source_group",
+    "source_indices": [
+      "088",
+      "089",
+      "090",
+      "091",
+      "092"
+    ],
+    "source_indices_contiguous": true,
+    "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 5
+  },
+  "schema": "marketplace.japanese_unnumbered_promo_wotc_release_catalog.v0.1",
+  "sources": [
+    {
+      "bulbapedia_raw_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+      "bulbapedia_rows_found": 5,
+      "not_claiming": [
+        "official source",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "promotion": "Communication Evolution Campaign",
+      "source": "Bulbapedia raw wikitext",
+      "source_index_end": "092",
+      "source_index_start": "088",
+      "source_indices": [
+        "088",
+        "089",
+        "090",
+        "091",
+        "092"
+      ]
+    }
+  ],
+  "symbol_status": {
+    "confidence": "low",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+    "scope": "release_context_not_row_fact",
+    "source": "Bulbapedia unnumbered promo table; physical symbol state varies by row and must be checked from evidence.",
+    "source_mode": "bulbapedia_unnumbered_promo_setlist",
+    "source_release_family_id": "jp_promo_unnumbered_wotc_088_communication_evolution_campaign"
+  }
+}

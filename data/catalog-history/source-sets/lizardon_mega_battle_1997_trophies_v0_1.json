@@ -1,0 +1,1167 @@
+{
+  "dossiers": [
+    {
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.date",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The local catalog records the Lizardon / Charizard Mega Battle regional trophy source slice as spanning 1997-11-08/1998-04-26; the selected Pokumon snapshot separates the 1997-11-08/1998-02-15 qualifying window from the 1998-04-26 national event date.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.context",
+          "id": "c2",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "Pokumon describes Lizardon Mega Battle, also called Charizard Mega Battle, as the second official Pokemon TCG tournament and says it was often billed as the first official national championships because the earlier official tournament was much smaller in scale.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c3",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected snapshot says qualifying tournaments were held across six locations in Japan from November 8, 1997 to February 15, 1998, and the live Pokumon article names those cups as Kobe Masara, Fukuoka Tokiwa, Tokyo Nibi, Osaka Hanada, Sapporo Sion, and Nagoya Kuchiba.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c4",
+          "sources": [
+            "s3"
+          ],
+          "text": "Pokumon says attendees were divided into junior and senior divisions, used single-elimination qualifier structures, and that top three players at each cup from each age division received No.1-3 Trainer cards while fourth-place players were invited onward without receiving a trophy card.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.product_count",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "This child source slice models exactly three currently source-pinned PokéCardex UPC regional trophy rows: No.1 Trainer 021, No.2 Trainer 022, and No.3 Trainer 023. It does not model plaque variants, award-object copies, or a complete trophy object ledger.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c6",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected snapshot says the Lizardon regional No.1-3 Trainer cards were presented in acrylic plaques that designated the cup where they were awarded.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "This source slice is the other side of the First Official Tournament confusion boundary: agents must not collapse Regional Lizardon Mega Battle 1997 No.1-3 Trainer rows into Pokemon Card Game Official Tournament 1997 No.1-3 Trainer rows, even though both families use No.1/No.2/No.3 trophy language.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c8",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local source slice credits Mitsuhiro Arita for all three Regional Lizardon Mega Battle No.1-3 Trainer rows. This is source-scoped provider metadata, not direct physical-card authentication.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.other_work",
+          "id": "c9",
+          "sources": [
+            "s5"
+          ],
+          "text": "Local catalog examples show Arita's later footprint across major English-era cards, including Aquapolis-era work; this dossier uses that only as local artist-context texture, not a complete biography or proof of Japanese print facts.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8",
+            "c9"
+          ],
+          "field": "history.significance",
+          "id": "c10",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "text": "Lizardon Mega Battle matters because it made early organized Pokemon feel national: regional cups named after real cities and Kanto towns, age divisions, a huge Makuhari Messe final, trophy cards, plaques, caps, and spectacle all turned play into ceremony. The cards are scarce objects, but the deeper collector reason is that they are fragments of the apparatus learning how to remember competition.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c11",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents should preserve Lizardon / Charizard Mega Battle context, regional qualifier lane, November 1997-February 1998 qualifier window, April 26 1998 final-event context, rank number, source row 021-023, Arita credit, plaque context, and First Official Tournament non-equivalence before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "name_en": "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "name_ja": "リザードンメガバトル プロモ",
+        "release_date": "1997-11-08/1998-04-26",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10",
+          "c11"
+        ],
+        "human_title": "Lizardon Mega Battle: Pokemon learns to stage a championship",
+        "not_claiming": [
+          "complete Lizardon Mega Battle history",
+          "official copy counts",
+          "complete winner ledger",
+          "price truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Lizardon Mega Battle is where early Pokemon organized play starts to look like ceremony instead of only play. The cards are simple in the catalog -- No.1, No.2, No.3 -- but around them is a whole machine: city cups, age divisions, plaques, caps, a national stage, and Charizard as mascot energy. These trophy rows matter because they are not just rare; they are the apparatus leaving fingerprints of who was allowed onto the ladder."
+      },
+      "release_highlights": {
+        "assembly_themes": [
+          "tournament/prize culture",
+          "regional-to-national ladder",
+          "plaque-and-rank identity",
+          "artist trace",
+          "confusion-boundary discipline"
+        ],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "chase_cards": [
+          {
+            "name": "No.1 Trainer",
+            "number": "021",
+            "row_id": "jp_promo_lizardon_mega_battle_199711_199804:021"
+          },
+          {
+            "name": "No.2 Trainer",
+            "number": "022",
+            "row_id": "jp_promo_lizardon_mega_battle_199711_199804:022"
+          },
+          {
+            "name": "No.3 Trainer",
+            "number": "023",
+            "row_id": "jp_promo_lizardon_mega_battle_199711_199804:023"
+          }
+        ],
+        "key_artists": [
+          {
+            "authority_label": "local_catalog_fact",
+            "examples": [
+              "No.1 Trainer",
+              "No.2 Trainer",
+              "No.3 Trainer"
+            ],
+            "name": "Mitsuhiro Arita",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ],
+            "row_count": 3
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ],
+        "source_contacts": [
+          "Pokumon selected rendered-lines snapshot",
+          "Pokumon Lizardon / Charizard Mega Battle article",
+          "local Japanese pre-English release row",
+          "local symbol-status matrix"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete tournament-object ledger"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_lizardon_mega_battle_199711_199804.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Japanese pre-English catalog: Lizardon / Charizard Mega Battle regional trophy source slice",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon selected rendered lines: Lizardon / Charizard Mega Battle Tournaments",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete surviving-copy census"
+          ],
+          "ref": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Lizardon (Charizard) Mega Battle Tournaments",
+          "type": "community_research"
+        },
+        {
+          "id": "s4",
+          "not_claiming": [
+            "row-level source truth",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "complete pre-English catalog"
+          ],
+          "ref": "data/pre-english-symbol-status.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local pre-English symbol-status matrix",
+          "type": "local_symbol_matrix"
+        },
+        {
+          "id": "s5",
+          "not_claiming": [
+            "complete artist biography",
+            "direct Japanese print authority",
+            "physical-card proof"
+          ],
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Arita example catalog: Aquapolis",
+          "type": "local_catalog_examples"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "lizardon_mega_battle_1997_regional_trophy_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy counts",
+            "complete regional venue schedule",
+            "complete winner ledger",
+            "complete trophy-plaque variant catalog",
+            "First Official Tournament equivalence",
+            "Kamex Mega Battle equivalence",
+            "image rights approval",
+            "spendability"
+          ],
+          "steps": [
+            "Require Lizardon / Charizard Mega Battle regional context before naming this exact trophy slice.",
+            "Preserve qualifier route: regional cups from November 8, 1997 to February 15, 1998, with national event context on April 26, 1998.",
+            "Preserve rank and row together: No.1 Trainer 021, No.2 Trainer 022, No.3 Trainer 023.",
+            "Ask whether the physical object is card-only, card removed from plaque, or still presented in an acrylic plaque naming a cup; do not infer that state from the catalog row.",
+            "Keep this family separate from the June 1997 First Official Tournament No.1-3 Trainer cards and from Kamex Mega Battle or later Trainer trophy rows.",
+            "Treat provider-path images and Pokumon article imagery as catalog comparison aids, not seller evidence, authentication, condition proof, or image-rights approval.",
+            "Use seller provenance, physical-card evidence, plaque/cert evidence if present, and expert review before any transaction claim."
+          ],
+          "summary": "Keep the Regional Lizardon Mega Battle 1997 trophy slice separate from First Official Tournament, Kamex Mega Battle, Challenge Road, and later No.1-3 Trainer families; event route, rank, cup/plaque context, and row number are identity rails.",
+          "trigger": "A listing, want, scan, or agent memory says Lizardon Mega Battle, Charizard Mega Battle, No.1 Trainer, No.2 Trainer, No.3 Trainer, regional trophy, acrylic plaque, Masara Cup, Tokiwa Cup, Nibi Cup, Hanada Cup, Sion Cup, Kuchiba Cup, or First Official Tournament comparison."
+        }
+      ],
+      "type": "release",
+      "uid": "jp_promo_lizardon_mega_battle_199711_199804"
+    },
+    {
+      "card_highlights": {
+        "artist": "Mitsuhiro Arita",
+        "assembly_note": "No.1 Trainer sits in Lizardon Mega Battle as the 1st place regional trophy lane; the card only becomes legible when event route, row 021, rank, and plaque context stay together.",
+        "assembly_themes": [
+          "tournament/prize culture",
+          "rank identity",
+          "plaque context",
+          "artist trace",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "No.1 Trainer is the summit of the regional ladder: not merely a label, but a claim that a child or teen sat inside the first national-scale Pokemon TCG machinery and won a cup lane.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "plaque state truth"
+        ],
+        "number": "021",
+        "rarity_signal": "Regional Lizardon Mega Battle 1st place trophy lane",
+        "signals": [
+          "Lizardon / Charizard Mega Battle regional trophy source slice",
+          "Regional Lizardon Mega Battle 1997",
+          "1st place",
+          "acrylic plaque context",
+          "Arita source-scoped credit",
+          "First Official Tournament non-equivalence"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local catalog anchors No.1 Trainer as Regional Lizardon Mega Battle 1997 source-slice row 021.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected Pokumon snapshot lists No.1 Trainer (Regional Lizardon Mega Battle 1997) as an unnumbered regional trophy card, and Pokumon describes the top three players at each cup from each age division receiving No.1-3 Trainer cards.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The meaningful rarity signal for this row is not a normal pack rarity but the 1st place regional trophy lane in the Lizardon Mega Battle source slice.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local source slice credits Mitsuhiro Arita for No.1 Trainer, with provider metadata caveats preserved; this is catalog texture, not physical-card proof.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.other_work",
+          "id": "c5",
+          "sources": [
+            "s5"
+          ],
+          "text": "Local catalog examples show Arita's later footprint across major English-era cards, including Aquapolis-era work; this only helps an agent understand the artist trace and does not settle Japanese print authority.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents must not collapse No.1 Trainer row 021 into the June 1997 First Official Tournament trophy family, the Kamex Mega Battle family, or later No.1 Trainer trophy rows. The event family and row number are identity rails.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "field": "history.significance",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "text": "No.1 Trainer is the summit of the regional ladder: not merely a label, but a claim that a child or teen sat inside the first national-scale Pokemon TCG machinery and won a cup lane.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c8",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents should preserve No.1 Trainer, 1st place rank, row 021, Regional Lizardon Mega Battle 1997 context, qualifier-to-final event route, plaque context, Arita credit, and First Official Tournament non-equivalence before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "021",
+        "name_en": "No.1 Trainer",
+        "name_ja": "",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "release_name": "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "romaji": "",
+        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:021"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "No.1 Trainer: rank as an artifact",
+        "not_claiming": [
+          "complete event history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "No.1 Trainer is the summit of the regional ladder: not merely a label, but a claim that a child or teen sat inside the first national-scale Pokemon TCG machinery and won a cup lane. For a collector, the romance is not only scarcity. It is the way a weekend of play was transformed into an object that can still point back to a route, a cup, and a place in the early competitive machine."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete trophy-object ledger"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_lizardon_mega_battle_199711_199804.json#row:jp_promo_lizardon_mega_battle_199711_199804:021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: No.1 Trainer / Lizardon Mega Battle",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon selected rendered lines: Lizardon / Charizard Mega Battle Tournaments",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete surviving-copy census"
+          ],
+          "ref": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Lizardon (Charizard) Mega Battle Tournaments",
+          "type": "community_research"
+        },
+        {
+          "id": "s5",
+          "not_claiming": [
+            "complete artist biography",
+            "direct Japanese print authority",
+            "physical-card proof"
+          ],
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Arita example catalog: Aquapolis",
+          "type": "local_catalog_examples"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "lizardon_mega_battle_1997_021_rank_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy counts",
+            "complete regional venue schedule",
+            "complete winner ledger",
+            "complete trophy-plaque variant catalog",
+            "First Official Tournament equivalence",
+            "Kamex Mega Battle equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ],
+          "steps": [
+            "Require Regional Lizardon Mega Battle 1997 context and row 021 before naming this exact card.",
+            "Preserve rank: No.1 Trainer is the 1st place regional trophy lane in this source slice.",
+            "Ask whether the offered object is loose card, removed-from-plaque card, graded card, or card still in an acrylic plaque naming a cup; do not infer object state from catalog identity.",
+            "Keep this row separate from June 1997 First Official Tournament trophies, Kamex Mega Battle trophies, Challenge Road, World Challenge, Neo Road, and later Trainer trophy rows.",
+            "Preserve Arita credit as source-scoped provider metadata, not direct physical-card proof.",
+            "Use seller provenance, physical-card images, grading/cert evidence if present, plaque evidence if present, and expert review before any transaction claim."
+          ],
+          "summary": "Keep No.1 Trainer pinned to Regional Lizardon Mega Battle row 021; first-place rank, regional cup route, plaque context, and event family are identity, not decoration.",
+          "trigger": "A listing, want, scan, or agent memory says No.1 Trainer, 1st place, regional trophy, Lizardon Mega Battle, Charizard Mega Battle, acrylic plaque, Arita, or First Official Tournament comparison."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_lizardon_mega_battle_199711_199804:021"
+    },
+    {
+      "card_highlights": {
+        "artist": "Mitsuhiro Arita",
+        "assembly_note": "No.2 Trainer sits in Lizardon Mega Battle as the 2nd place regional trophy lane; the card only becomes legible when event route, row 022, rank, and plaque context stay together.",
+        "assembly_themes": [
+          "tournament/prize culture",
+          "rank identity",
+          "plaque context",
+          "artist trace",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "No.2 Trainer keeps the ladder honest. It says the event remembered more than the champion: the runner-up's route was also made into an artifact, held beside a cup name and age-division context.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "plaque state truth"
+        ],
+        "number": "022",
+        "rarity_signal": "Regional Lizardon Mega Battle 2nd place trophy lane",
+        "signals": [
+          "Lizardon / Charizard Mega Battle regional trophy source slice",
+          "Regional Lizardon Mega Battle 1997",
+          "2nd place",
+          "acrylic plaque context",
+          "Arita source-scoped credit",
+          "First Official Tournament non-equivalence"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local catalog anchors No.2 Trainer as Regional Lizardon Mega Battle 1997 source-slice row 022.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected Pokumon snapshot lists No.2 Trainer (Regional Lizardon Mega Battle 1997) as an unnumbered regional trophy card, and Pokumon describes the top three players at each cup from each age division receiving No.1-3 Trainer cards.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The meaningful rarity signal for this row is not a normal pack rarity but the 2nd place regional trophy lane in the Lizardon Mega Battle source slice.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local source slice credits Mitsuhiro Arita for No.2 Trainer, with provider metadata caveats preserved; this is catalog texture, not physical-card proof.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.other_work",
+          "id": "c5",
+          "sources": [
+            "s5"
+          ],
+          "text": "Local catalog examples show Arita's later footprint across major English-era cards, including Aquapolis-era work; this only helps an agent understand the artist trace and does not settle Japanese print authority.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents must not collapse No.2 Trainer row 022 into the June 1997 First Official Tournament trophy family, the Kamex Mega Battle family, or later No.2 Trainer trophy rows. The event family and row number are identity rails.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "field": "history.significance",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "text": "No.2 Trainer keeps the ladder honest. It says the event remembered more than the champion: the runner-up's route was also made into an artifact, held beside a cup name and age-division context.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c8",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents should preserve No.2 Trainer, 2nd place rank, row 022, Regional Lizardon Mega Battle 1997 context, qualifier-to-final event route, plaque context, Arita credit, and First Official Tournament non-equivalence before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "022",
+        "name_en": "No.2 Trainer",
+        "name_ja": "",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "release_name": "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "romaji": "",
+        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:022"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "No.2 Trainer: rank as an artifact",
+        "not_claiming": [
+          "complete event history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "No.2 Trainer keeps the ladder honest. It says the event remembered more than the champion: the runner-up's route was also made into an artifact, held beside a cup name and age-division context. For a collector, the romance is not only scarcity. It is the way a weekend of play was transformed into an object that can still point back to a route, a cup, and a place in the early competitive machine."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete trophy-object ledger"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_lizardon_mega_battle_199711_199804.json#row:jp_promo_lizardon_mega_battle_199711_199804:022",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: No.2 Trainer / Lizardon Mega Battle",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon selected rendered lines: Lizardon / Charizard Mega Battle Tournaments",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete surviving-copy census"
+          ],
+          "ref": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Lizardon (Charizard) Mega Battle Tournaments",
+          "type": "community_research"
+        },
+        {
+          "id": "s5",
+          "not_claiming": [
+            "complete artist biography",
+            "direct Japanese print authority",
+            "physical-card proof"
+          ],
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Arita example catalog: Aquapolis",
+          "type": "local_catalog_examples"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "lizardon_mega_battle_1997_022_rank_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy counts",
+            "complete regional venue schedule",
+            "complete winner ledger",
+            "complete trophy-plaque variant catalog",
+            "First Official Tournament equivalence",
+            "Kamex Mega Battle equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ],
+          "steps": [
+            "Require Regional Lizardon Mega Battle 1997 context and row 022 before naming this exact card.",
+            "Preserve rank: No.2 Trainer is the 2nd place regional trophy lane in this source slice.",
+            "Ask whether the offered object is loose card, removed-from-plaque card, graded card, or card still in an acrylic plaque naming a cup; do not infer object state from catalog identity.",
+            "Keep this row separate from June 1997 First Official Tournament trophies, Kamex Mega Battle trophies, Challenge Road, World Challenge, Neo Road, and later Trainer trophy rows.",
+            "Preserve Arita credit as source-scoped provider metadata, not direct physical-card proof.",
+            "Use seller provenance, physical-card images, grading/cert evidence if present, plaque evidence if present, and expert review before any transaction claim."
+          ],
+          "summary": "Keep No.2 Trainer pinned to Regional Lizardon Mega Battle row 022; second-place rank, regional cup route, plaque context, and event family are identity, not decoration.",
+          "trigger": "A listing, want, scan, or agent memory says No.2 Trainer, 2nd place, regional trophy, Lizardon Mega Battle, Charizard Mega Battle, acrylic plaque, Arita, or First Official Tournament comparison."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_lizardon_mega_battle_199711_199804:022"
+    },
+    {
+      "card_highlights": {
+        "artist": "Mitsuhiro Arita",
+        "assembly_note": "No.3 Trainer sits in Lizardon Mega Battle as the 3rd place regional trophy lane; the card only becomes legible when event route, row 023, rank, and plaque context stay together.",
+        "assembly_themes": [
+          "tournament/prize culture",
+          "rank identity",
+          "plaque context",
+          "artist trace",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "No.3 Trainer completes the podium grammar. It turns a regional top-three finish into a durable object and shows that early Pokemon competition was already building ceremony around placement, not just victory.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "plaque state truth"
+        ],
+        "number": "023",
+        "rarity_signal": "Regional Lizardon Mega Battle 3rd place trophy lane",
+        "signals": [
+          "Lizardon / Charizard Mega Battle regional trophy source slice",
+          "Regional Lizardon Mega Battle 1997",
+          "3rd place",
+          "acrylic plaque context",
+          "Arita source-scoped credit",
+          "First Official Tournament non-equivalence"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local catalog anchors No.3 Trainer as Regional Lizardon Mega Battle 1997 source-slice row 023.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "text": "The selected Pokumon snapshot lists No.3 Trainer (Regional Lizardon Mega Battle 1997) as an unnumbered regional trophy card, and Pokumon describes the top three players at each cup from each age division receiving No.1-3 Trainer cards.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The meaningful rarity signal for this row is not a normal pack rarity but the 3rd place regional trophy lane in the Lizardon Mega Battle source slice.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local source slice credits Mitsuhiro Arita for No.3 Trainer, with provider metadata caveats preserved; this is catalog texture, not physical-card proof.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.other_work",
+          "id": "c5",
+          "sources": [
+            "s5"
+          ],
+          "text": "Local catalog examples show Arita's later footprint across major English-era cards, including Aquapolis-era work; this only helps an agent understand the artist trace and does not settle Japanese print authority.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents must not collapse No.3 Trainer row 023 into the June 1997 First Official Tournament trophy family, the Kamex Mega Battle family, or later No.3 Trainer trophy rows. The event family and row number are identity rails.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "field": "history.significance",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "text": "No.3 Trainer completes the podium grammar. It turns a regional top-three finish into a durable object and shows that early Pokemon competition was already building ceremony around placement, not just victory.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c8",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Agents should preserve No.3 Trainer, 3rd place rank, row 023, Regional Lizardon Mega Battle 1997 context, qualifier-to-final event route, plaque context, Arita credit, and First Official Tournament non-equivalence before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "023",
+        "name_en": "No.3 Trainer",
+        "name_ja": "",
+        "release_family_id": "jp_promo_lizardon_mega_battle_199711_199804",
+        "release_name": "Lizardon / Charizard Mega Battle regional trophy source slice",
+        "romaji": "",
+        "row_id": "jp_promo_lizardon_mega_battle_199711_199804:023"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "No.3 Trainer: rank as an artifact",
+        "not_claiming": [
+          "complete event history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "No.3 Trainer completes the podium grammar. It turns a regional top-three finish into a durable object and shows that early Pokemon competition was already building ceremony around placement, not just victory. For a collector, the romance is not only scarcity. It is the way a weekend of play was transformed into an object that can still point back to a route, a cup, and a place in the early competitive machine."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete trophy-object ledger"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_lizardon_mega_battle_199711_199804.json#row:jp_promo_lizardon_mega_battle_199711_199804:023",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: No.3 Trainer / Lizardon Mega Battle",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy counts",
+            "plaque variant catalog",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_lizardon_mega_battle_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Pokumon selected rendered lines: Lizardon / Charizard Mega Battle Tournaments",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete surviving-copy census"
+          ],
+          "ref": "https://pokumon.com/lizardon-charizard-mega-battle-tournaments/",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Pokumon: Lizardon (Charizard) Mega Battle Tournaments",
+          "type": "community_research"
+        },
+        {
+          "id": "s5",
+          "not_claiming": [
+            "complete artist biography",
+            "direct Japanese print authority",
+            "physical-card proof"
+          ],
+          "ref": "data/english-wotc/releases/en_wotc_aquapolis_20030115.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Arita example catalog: Aquapolis",
+          "type": "local_catalog_examples"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "lizardon_mega_battle_1997_023_rank_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy counts",
+            "complete regional venue schedule",
+            "complete winner ledger",
+            "complete trophy-plaque variant catalog",
+            "First Official Tournament equivalence",
+            "Kamex Mega Battle equivalence",
+            "image rights approval",
+            "complete artist biography",
+            "spendability"
+          ],
+          "steps": [
+            "Require Regional Lizardon Mega Battle 1997 context and row 023 before naming this exact card.",
+            "Preserve rank: No.3 Trainer is the 3rd place regional trophy lane in this source slice.",
+            "Ask whether the offered object is loose card, removed-from-plaque card, graded card, or card still in an acrylic plaque naming a cup; do not infer object state from catalog identity.",
+            "Keep this row separate from June 1997 First Official Tournament trophies, Kamex Mega Battle trophies, Challenge Road, World Challenge, Neo Road, and later Trainer trophy rows.",
+            "Preserve Arita credit as source-scoped provider metadata, not direct physical-card proof.",
+            "Use seller provenance, physical-card images, grading/cert evidence if present, plaque evidence if present, and expert review before any transaction claim."
+          ],
+          "summary": "Keep No.3 Trainer pinned to Regional Lizardon Mega Battle row 023; third-place rank, regional cup route, plaque context, and event family are identity, not decoration.",
+          "trigger": "A listing, want, scan, or agent memory says No.3 Trainer, 3rd place, regional trophy, Lizardon Mega Battle, Charizard Mega Battle, acrylic plaque, Arita, or First Official Tournament comparison."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_lizardon_mega_battle_199711_199804:023"
+    }
+  ],
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete three-row tranche for the Japanese Lizardon / Charizard Mega Battle regional trophy source slice, emphasizing the regional-to-national tournament ladder, No.1/No.2/No.3 Trainer rank lanes, acrylic plaque context, Arita source-scoped credits, and the confusion boundary against First Official Tournament and later Trainer trophy rows.",
+    "in_scope": [
+      "Lizardon / Charizard Mega Battle regional trophy release/source-slice dossier",
+      "all three regional trophy rows 021-023: No.1 Trainer, No.2 Trainer, No.3 Trainer",
+      "regional qualifier window, national event context, rank, plaque context, Arita credit, and trophy-family boundary rails"
+    ],
+    "not_claiming": [
+      "official copy counts",
+      "complete regional venue schedule",
+      "complete participant ledger",
+      "complete winner ledger",
+      "complete age-division accounting",
+      "complete trophy-plaque variant catalog",
+      "complete national-final coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  }
+}

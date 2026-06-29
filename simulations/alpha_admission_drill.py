@@ -1,628 +1,532 @@
 #!/usr/bin/env python3
-"""Reference falsification drill for A1-A7 alpha-admission blocker gates.
+"""Executable A1-A7 alpha-admission drill.
 
-Source: Cairn_Protocol_GPTPRO_Review_Response_v0.1.md.
-Deterministic, model-free.
-
-PER-SUBGUARD TEETH: each compound gate is mutated one subclause at a time. For
-every subguard, an attack violating only that subguard must (a) BLOCK under the
-full gate, and (b) flip to ADMIT when only that subguard is disabled. This proves
-the subcondition is load-bearing, not decorative.
-
-Honesty note: Codex authored the A1-A7 response. This drill is a reference
-implementation with teeth, not an independent author!=verifier sign-off.
-
-Run: python3 simulations/alpha_admission_drill.py
+This is a falsification drill for the GPTPRO alpha-readiness blockers. It does
+not claim the chain enforces these gates. It turns the prose blockers into a
+deterministic validator surface and proves each guard has teeth by mutating it
+off against an adversarial fixture.
 """
 
 from __future__ import annotations
 
-
-def a1(c, off=frozenset()):
-    """A1 - AlphaAdmissionPolicy at every exposure-increasing transition."""
-    r = []
-    delta = c["new_exposure"]
-    if "transition_checked" not in off and c["exposure_increasing"] and not c["policy_checked_at_transition"]:
-        r.append("exposure-increasing transition did not check the policy snapshot")
-    if "policy_known" not in off and not c["policy_known"]:
-        r.append("unknown policy hash")
-    if "policy_version" not in off and c["policy_version"] not in c["known_policy_versions"]:
-        r.append("unknown policy version")
-    if "effective_block" not in off and c["current_block"] < c["effective_block"]:
-        r.append("policy snapshot not yet effective")
-    if "route_class" not in off and c["route_class"] not in c["allowed_route_classes"]:
-        r.append("route_class not admitted by policy")
-    if "trade_value" not in off and c["trade_value"] > c["max_trade_value"]:
-        r.append("trade value exceeds per-trade alpha cap")
-    if "principal_cap" not in off and c["principal_exposure"] + delta > c["max_principal_exposure"]:
-        r.append("principal exposure cap exceeded")
-    if "control_cluster_cap" not in off and c["control_cluster_exposure"] + delta > c["max_control_cluster_exposure"]:
-        r.append("control-cluster exposure cap exceeded")
-    if "custodian_cap" not in off and c["custodian_exposure"] + delta > c["max_custodian_exposure"]:
-        r.append("custodian exposure cap exceeded")
-    if "verifier_cap" not in off and c["verifier_exposure"] + delta > c["max_verifier_exposure"]:
-        r.append("verifier exposure cap exceeded")
-    if "judgment_authority_cap" not in off and (
-        c["judgment_authority_exposure"] + delta > c["max_judgment_authority_exposure"]
-    ):
-        r.append("judgment-authority exposure cap exceeded")
-    if "registry_version_cap" not in off and c["registry_version_exposure"] + delta > c["max_registry_version_exposure"]:
-        r.append("registry-version exposure cap exceeded")
-    if "global_epoch_cap" not in off and c["global_epoch_loss"] + delta > c["max_global_epoch_loss"]:
-        r.append("global epoch loss budget exceeded")
-    if "delivery_mode" not in off and c["delivery_mode"] not in c["allowed_delivery_modes"]:
-        r.append("delivery mode not admitted by policy")
-    if "dispute_branch" not in off and c["dispute_branch"] not in c["allowed_dispute_branches"]:
-        r.append("dispute branch not admitted by policy")
-
-    if c["manual_override_used"]:
-        if "manual_authority" not in off and c["manual_authority"] not in c["allowed_manual_authorities"]:
-            r.append("manual override authority not admitted")
-        if "manual_two_person" not in off and (
-            not c["manual_second_approver"] or c["manual_second_approver"] == c["manual_authority"]
-        ):
-            r.append("manual override lacks two-person approval")
-        if "manual_reason_log" not in off and not c["manual_reason_log"]:
-            r.append("manual override lacks a reason log")
-        if "manual_loss_budget" not in off and c["manual_override_loss"] > c["manual_remaining_loss_budget"]:
-            r.append("manual override exceeds its loss budget")
-    return (not r, r)
+import copy
+import json
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
 
 
-def a2(c, off=frozenset()):
-    """A2 - DeliveryTriggerPolicy: asserted witness is not final value authority."""
-    r = []
-    if c["delivery_final_requested"]:
-        if "final_requires_assertion" not in off and not c["delivery_asserted"]:
-            r.append("delivery_final requested without delivery_asserted")
-        if "assertion_not_final" not in off and c["finalization_basis"] == "assertion_only":
-            r.append("delivery_asserted laundered into delivery_final")
-        if "witness_class" not in off and c["witness_class"] not in c["allowed_witness_classes"]:
-            r.append("witness class not admitted")
-        if "witness_issuer" not in off and c["witness_issuer"] not in c["authorized_witness_issuers"]:
-            r.append("witness issuer not authorized")
-        if "witness_conflict" not in off and c["witness_conflicted"]:
-            r.append("witness has a registered conflict")
-        if "scope_match" not in off and c["witness_scope"] != c["route_scope"]:
-            r.append("delivery witness scope mismatch")
-        if "expiry" not in off and c["current_block"] > c["witness_expiry_block"]:
-            r.append("delivery witness expired")
-        if "challenge_window" not in off and c["current_block"] < c["challenge_deadline_block"]:
-            r.append("delivery final before challenge window elapsed")
-        if "settlement_ceiling" not in off and c["settlement_amount"] > c["settlement_ceiling"]:
-            r.append("delivery-triggered settlement exceeds ceiling")
-
-    if "seller_singleton" not in off and c["irreversible_buyer_unfavorable"] and c["seller_associated_witness"] \
-            and c["independent_witness_count"] < 1:
-        r.append("single seller-associated witness controls buyer-unfavorable finality")
-
-    if "missing_witness_not_non_delivery" not in off and c["possible_physical_handoff"] and c["missing_witness"] \
-            and c["missing_witness_establishes_non_delivery"]:
-        r.append("missing witness after possible handoff establishes non-delivery")
-    return (not r, r)
+ROOT = Path(__file__).resolve().parents[1]
+RUNS = ROOT / "runs"
 
 
-def a3(c, off=frozenset()):
-    """A3 - PostHandoffRemedyMatrix for buyer-favoring post-handoff settlement."""
-    r = []
-    buyer_favoring = c["post_handoff"] and c["remedy_direction"] == "buyer"
-    if not buyer_favoring:
-        return (True, r)
-
-    if "matrix_entry" not in off and not c["matrix_entry_exists"]:
-        r.append("no remedy-matrix entry")
-    if "claim_type" not in off and c["claim_type"] not in c["covered_claim_types"]:
-        r.append("claim_type not covered by remedy matrix")
-    if "remedy_type" not in off and c["remedy_type"] not in c["allowed_remedies_by_claim"].get(c["claim_type"], set()):
-        r.append("remedy_type not admitted for claim_type")
-    if "max_amount" not in off and c["amount"] > c["max_amount"]:
-        r.append("remedy amount exceeds max_amount")
-    if "return_or_non_return" not in off and not c["return_required"] and not c["non_return_remedy_allowed"]:
-        r.append("non-return remedy not allowed")
-    if "return_custody" not in off and c["return_required"] and not c["return_custody_hash"]:
-        r.append("return required but return_custody_hash missing")
-    if "evidence_root" not in off and not c["evidence_root"]:
-        r.append("evidence_root missing")
-    if "appeal_final_state" not in off and c["appeal_final_state"] != "final":
-        r.append("remedy before final appeal state")
-    if "card_plus_refund" not in off and c["remedy_type"] == "full_refund" and c["buyer_may_retain_card"] \
-            and c["return_custody_status"] != "third_party_custody":
-        r.append("full refund while buyer may still retain the card")
-    return (not r, r)
+GateResult = dict[str, Any]
 
 
-def a4(c, off=frozenset()):
-    """A4 - TypedSpendabilityIssuer, blocking spendability-oracle capture."""
-    r = []
-    if "canonical_preimage" not in off and not c["canonical_preimage"]:
-        r.append("spendability preimage is not canonical")
-    if "constituent_claims" not in off and not c["constituent_claim_hashes"]:
-        r.append("no constituent source claim hashes")
-    if "source_claims_available" not in off and not c["source_claims_available"]:
-        r.append("constituent source claims unavailable")
-    if "validator_code_hash" not in off and c["validator_code_hash"] not in c["registered_validator_code_hashes"]:
-        r.append("validator code hash not registered")
-    if "validator_policy_hash" not in off and c["validator_policy_hash"] != c["expected_validator_policy_hash"]:
-        r.append("validator policy hash mismatch")
-    if "issuer_role" not in off and c["issuer_role"] not in c["allowed_issuer_roles"]:
-        r.append("issuer role not admitted")
-    if "authority_ceiling" not in off and c["requested_authority"] > c["issuer_authority_ceiling"]:
-        r.append("issuer authority ceiling exceeded")
-    if "conflict_ref" not in off and c["issuer_conflict_status"] == "conflicted":
-        r.append("issuer conflict/independence ref is conflicted")
-    if "registry_snapshot" not in off and c["registry_snapshot"] != c["frozen_registry_snapshot"]:
-        r.append("registry snapshot mismatch")
-    if "expiry" not in off and c["current_block"] > c["expiry_block"]:
-        r.append("spendability packet expired")
-    if "data_availability" not in off and not c["data_availability_receipt"]:
-        r.append("data availability receipt missing")
-    if "preimage_available" not in off and not c["preimage_available"]:
-        r.append("canonical preimage unavailable")
-    if "not_claiming" not in off and not c["required_not_claiming"].issubset(c["not_claiming"]):
-        r.append("not_claiming boundary incomplete")
-    if "no_model_or_reputation_authority" not in off and c["value_authority"] and c["source_basis"] in {
-        "model_output",
-        "reputation_score",
-        "summary",
-    }:
-        r.append("model/reputation/summary minted value authority")
-    if "issuer_not_source_author" not in off and c["issuer"] == c["source_claim_author"] \
-            and not (c["downgraded"] and c["value_capped"]):
-        r.append("source-claim author is final spendability issuer without downgrade+cap")
-    return (not r, r)
+@dataclass(frozen=True)
+class Guard:
+    gate: str
+    guard_id: str
+    description: str
+    mutation: str
 
 
-def a5(c, off=frozenset()):
-    """A5 - SnapshotBeforeBond: roots freeze no later than seller acceptance/bond."""
-    r = []
-    bond_block = c["seller_bond_block"]
-    for sg, field, label in [
-        ("authority_root", "authority_root_block", "authority root"),
-        ("control_root", "control_root_block", "control-distance root"),
-        ("disclosure_root", "disclosure_root_block", "disclosure root"),
-        ("eligible_set_root", "eligible_set_root_block", "eligible-set root"),
-        ("policy_root", "policy_root_block", "policy root"),
-        ("claim_matrix_root", "claim_matrix_root_block", "claim-matrix root"),
-    ]:
-        if sg not in off and c[field] > bond_block:
-            r.append(f"{label} froze after seller bond")
-    if "snapshot_hash_in_bond" not in off and not c["snapshot_hash_in_bond"]:
-        r.append("seller bond does not bind the snapshot hash")
-    if "no_late_governance" not in off and c["later_governance_root_used"]:
-        r.append("later governance root retroactively changed the trade")
-    return (not r, r)
+def utc_stamp() -> str:
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
 
 
-def a6(c, off=frozenset()):
-    """A6 - EvidenceAvailabilityAndSymmetry."""
-    r = []
-    if "availability_receipt" not in off and not c["availability_receipt"]:
-        r.append("availability receipt missing")
-    if "content_addressed_manifest" not in off and not c["content_addressed_manifest"]:
-        r.append("content-addressed evidence manifest missing")
-    if "canonical_bundle_hash" not in off and not c["canonical_bundle_hash"]:
-        r.append("canonical bundle hash missing")
-    if "retention" not in off and c["retention_until_block"] < c["deadline_block"]:
-        r.append("evidence retention expires before deadline")
-    if "recipient_commitments" not in off and not c["required_recipients"].issubset(c["recipient_commitments"]):
-        r.append("recipient/key commitments do not cover all required parties")
-    if "key_commitments" not in off and not c["key_commitments"]:
-        r.append("key commitments missing")
-    if "notice_timestamp" not in off and c["notice_block"] > c["deadline_block"] - c["min_response_window"]:
-        r.append("notice too late for the response window")
-    if "equal_response_windows" not in off and len(set(c["response_windows"].values())) != 1:
-        r.append("response windows are asymmetric")
-    if "theft_sensitive_handling" not in off and c["custody_location_sensitive"] \
-            and c["disclosure_mode"] not in {"encrypted", "delayed", "redacted"}:
-        r.append("theft-sensitive custody data publicly leaked")
-    if "access_logs" not in off and not c["access_logs"]:
-        r.append("access log missing")
-    if "preimages_available_to_all" not in off and not c["preimages_available_to_all"]:
-        r.append("preimages unavailable to all required parties")
-    return (not r, r)
-
-
-def a7(c, off=frozenset()):
-    """A7 - G2CapacityAdmission with measurable capacity and failure posture."""
-    r = []
-    if "snapshot_before_commitment" not in off and not c["capacity_snapshot_before_commitment"]:
-        r.append("capacity snapshot missing before route commitment")
-    if "clusters_after_exclusions" not in off and c["eligible_clusters_after_exclusions"] < 3:
-        r.append("<3 eligible registered control clusters after exclusions")
-    if "remove_largest" not in off and c["clusters_after_largest_removed"] < 2:
-        r.append("after removing largest cluster, <2 clusters remain")
-    if "peak_slots" not in off and c["slots_available"] < 1.5 * c["conservative_peak_demand"]:
-        r.append("slots do not cover 1.5x conservative peak demand")
-    if "replay_sla" not in off and c["replay_sla_rate"] < 0.99:
-        r.append("30-day replay below 99% SLA under one-cluster failure")
-    if "zero_conflicted_fallbacks" not in off and c["conflicted_fallbacks"] > 0:
-        r.append("conflicted fallback present")
-    if "no_silent_custodian_substitution" not in off and c["silent_same_subject_custodian_substitution"]:
-        r.append("silent same-subject custodian substitution")
-    if "cluster_share" not in off and c["largest_cluster_assignment_share"] > 0.33:
-        r.append("cluster assignment share >33%")
-    if "buyer_verifier_pair" not in off and c["buyer_verifier_pair_share"] > 0.10:
-        r.append("buyer-verifier pair share >10% rolling window")
-    if "seller_verifier_pair" not in off and c["seller_verifier_pair_share"] > 0.10:
-        r.append("seller-verifier pair share >10% rolling window")
-    if "reserved_capacity" not in off and c["assigned_exposure"] > c["reserved_capacity"]:
-        r.append("assigned exposure exceeds atomically reserved capacity")
-    failed_closed = (
-        c["route_status"] == "capacity_failed"
-        and c["neutral_placement_claim"] == "forbidden"
-        and c["settlement_authority"] in {"none", "manual-capped"}
-        and c["automatic_value_cap"] == 0
-    )
-    if "failure_posture" not in off and c["capacity_failed"] and not failed_closed:
-        r.append("capacity failure did not force failed route posture")
-    return (not r, r)
-
-
-GATES = [
-    (
-        "A1",
-        a1,
-        {
-            "exposure_increasing": True,
-            "policy_checked_at_transition": True,
-            "policy_known": True,
-            "policy_version": "v1",
-            "known_policy_versions": {"v1"},
-            "current_block": 100,
-            "effective_block": 90,
-            "route_class": "curated_low_value",
-            "allowed_route_classes": {"curated_low_value"},
-            "trade_value": 50,
-            "max_trade_value": 100,
-            "new_exposure": 20,
-            "principal_exposure": 10,
-            "max_principal_exposure": 100,
-            "control_cluster_exposure": 10,
-            "max_control_cluster_exposure": 100,
-            "custodian_exposure": 10,
-            "max_custodian_exposure": 100,
-            "verifier_exposure": 10,
-            "max_verifier_exposure": 100,
-            "judgment_authority_exposure": 10,
-            "max_judgment_authority_exposure": 100,
-            "registry_version_exposure": 10,
-            "max_registry_version_exposure": 100,
-            "global_epoch_loss": 100,
-            "max_global_epoch_loss": 1000,
-            "delivery_mode": "tracked_carrier",
-            "allowed_delivery_modes": {"tracked_carrier", "custodian_handoff"},
-            "dispute_branch": "manual_dual_control",
-            "allowed_dispute_branches": {"manual_dual_control"},
-            "manual_override_used": False,
-            "manual_authority": "opsA",
-            "allowed_manual_authorities": {"opsA"},
-            "manual_second_approver": "opsB",
-            "manual_reason_log": True,
-            "manual_override_loss": 10,
-            "manual_remaining_loss_budget": 100,
-        },
-        [
-            ("transition_checked", {"policy_checked_at_transition": False}),
-            ("policy_known", {"policy_known": False}),
-            ("policy_version", {"policy_version": "v9"}),
-            ("effective_block", {"current_block": 80}),
-            ("route_class", {"route_class": "open_public"}),
-            ("trade_value", {"trade_value": 150}),
-            ("principal_cap", {"principal_exposure": 90}),
-            ("control_cluster_cap", {"control_cluster_exposure": 90}),
-            ("custodian_cap", {"custodian_exposure": 90}),
-            ("verifier_cap", {"verifier_exposure": 90}),
-            ("judgment_authority_cap", {"judgment_authority_exposure": 90}),
-            ("registry_version_cap", {"registry_version_exposure": 90}),
-            ("global_epoch_cap", {"global_epoch_loss": 990}),
-            ("delivery_mode", {"delivery_mode": "plain_untracked_mail"}),
-            ("dispute_branch", {"dispute_branch": "auto_buyer_refund"}),
-            ("manual_authority", {"manual_override_used": True, "manual_authority": "seller"}),
-            ("manual_two_person", {"manual_override_used": True, "manual_second_approver": "opsA"}),
-            ("manual_reason_log", {"manual_override_used": True, "manual_reason_log": False}),
-            ("manual_loss_budget", {"manual_override_used": True, "manual_override_loss": 200}),
-        ],
-    ),
-    (
-        "A2",
-        a2,
-        {
-            "delivery_final_requested": True,
-            "delivery_asserted": True,
-            "finalization_basis": "challenge_elapsed",
-            "witness_class": "carrier_scan",
-            "allowed_witness_classes": {"carrier_scan", "custodian_receipt"},
-            "witness_issuer": "carrierA",
-            "authorized_witness_issuers": {"carrierA"},
-            "witness_conflicted": False,
-            "witness_scope": "trade:1",
-            "route_scope": "trade:1",
-            "current_block": 100,
-            "witness_expiry_block": 150,
-            "challenge_deadline_block": 90,
-            "settlement_amount": 10,
-            "settlement_ceiling": 50,
-            "irreversible_buyer_unfavorable": False,
-            "seller_associated_witness": False,
-            "independent_witness_count": 1,
-            "possible_physical_handoff": True,
-            "missing_witness": False,
-            "missing_witness_establishes_non_delivery": False,
-        },
-        [
-            ("final_requires_assertion", {"delivery_asserted": False}),
-            ("assertion_not_final", {"finalization_basis": "assertion_only"}),
-            ("witness_class", {"witness_class": "seller_photo"}),
-            ("witness_issuer", {"witness_issuer": "sellerNode"}),
-            ("witness_conflict", {"witness_conflicted": True}),
-            ("scope_match", {"witness_scope": "trade:2"}),
-            ("expiry", {"current_block": 200}),
-            ("challenge_window", {"current_block": 50}),
-            ("settlement_ceiling", {"settlement_amount": 60}),
-            (
-                "seller_singleton",
-                {
-                    "irreversible_buyer_unfavorable": True,
-                    "seller_associated_witness": True,
-                    "independent_witness_count": 0,
-                },
-            ),
-            (
-                "missing_witness_not_non_delivery",
-                {
-                    "delivery_final_requested": False,
-                    "delivery_asserted": False,
-                    "missing_witness": True,
-                    "missing_witness_establishes_non_delivery": True,
-                },
-            ),
-        ],
-    ),
-    (
-        "A3",
-        a3,
-        {
-            "post_handoff": True,
-            "remedy_direction": "buyer",
-            "matrix_entry_exists": True,
-            "claim_type": "authenticity",
-            "covered_claim_types": {"authenticity", "condition"},
-            "remedy_type": "full_refund",
-            "allowed_remedies_by_claim": {
-                "authenticity": {"full_refund", "partial_refund"},
-                "condition": {"partial_refund"},
+def clean_route() -> dict[str, Any]:
+    return {
+        "route_id": "alpha-admit-clean-001",
+        "trade_value": 180,
+        "principal_exposure": 180,
+        "control_cluster_exposure": 420,
+        "custodian_exposure": 520,
+        "verifier_exposure": 480,
+        "judgment_authority_exposure": 360,
+        "registry_version_exposure": 760,
+        "global_epoch_loss": 2100,
+        "route_class": "curated_low_value_single_card",
+        "delivery_mode": "tracked_insured_carrier",
+        "dispute_branch": "manual_dual_control_post_handoff",
+        "exposure_increasing_transition": "seller_bond_acceptance",
+        "policy_snapshot": {
+            "policy_hash": "0xpolicy-a1",
+            "version": "alpha-admission-v0.1",
+            "effective_block": 101,
+            "route_class": "curated_low_value_single_card",
+            "max_trade_value": 250,
+            "max_principal_exposure": 500,
+            "max_control_cluster_exposure": 750,
+            "max_custodian_exposure": 900,
+            "max_verifier_exposure": 800,
+            "max_judgment_authority_exposure": 600,
+            "max_registry_version_exposure": 1200,
+            "max_global_epoch_loss": 3000,
+            "allowed_delivery_modes": ["tracked_insured_carrier", "local_handoff"],
+            "allowed_dispute_branches": ["manual_dual_control_post_handoff"],
+            "manual_override": {
+                "authority": "ops-council-2of2",
+                "two_person_required": True,
+                "reason_log": "required",
+                "loss_budget": 500,
             },
-            "amount": 80,
-            "max_amount": 100,
+        },
+        "delivery": {
+            "state": "delivery_asserted",
+            "settlement_effect": "none_until_challenge_window_or_manual_final",
+            "witness_class": "carrier_tracking_plus_signature",
+            "issuer": "carrier:usps",
+            "issuer_role": "independent_carrier",
+            "issuer_conflict": "none_registered",
+            "scope": "route_delivery_attempt",
+            "expiry": "2026-07-01T00:00:00Z",
+            "challenge_window_seconds": 172800,
+            "settlement_ceiling": 0,
+            "delivery_final_requires": ["inspection_window_elapsed", "no_open_claim", "manual_dual_control_if_contested"],
+        },
+        "post_handoff_remedy": {
+            "claim_type": "wrong_item_after_delivery",
+            "remedy_type": "refund_after_return",
+            "max_amount": 180,
             "return_required": True,
-            "return_custody_hash": "return:hash",
-            "evidence_root": "evidence:root",
+            "return_custody_hash": "0xreturn-custody",
+            "evidence_root": "0xevidence-root",
             "appeal_final_state": "final",
             "non_return_remedy_allowed": False,
-            "buyer_may_retain_card": False,
-            "return_custody_status": "third_party_custody",
         },
-        [
-            ("matrix_entry", {"matrix_entry_exists": False}),
-            (
-                "claim_type",
-                {
-                    "claim_type": "shipping_delay",
-                    "allowed_remedies_by_claim": {
-                        "authenticity": {"full_refund", "partial_refund"},
-                        "condition": {"partial_refund"},
-                        "shipping_delay": {"full_refund"},
-                    },
-                },
-            ),
-            ("remedy_type", {"remedy_type": "punitive_refund"}),
-            ("max_amount", {"amount": 150}),
-            ("return_or_non_return", {"return_required": False, "non_return_remedy_allowed": False, "remedy_type": "partial_refund"}),
-            ("return_custody", {"return_custody_hash": None}),
-            ("evidence_root", {"evidence_root": None}),
-            ("appeal_final_state", {"appeal_final_state": "pending"}),
-            (
-                "card_plus_refund",
-                {
-                    "buyer_may_retain_card": True,
-                    "return_custody_status": "buyer_holds",
-                    "return_required": True,
-                    "non_return_remedy_allowed": False,
-                },
-            ),
-        ],
-    ),
-    (
-        "A4",
-        a4,
-        {
-            "canonical_preimage": True,
-            "constituent_claim_hashes": {"claim:A", "claim:B"},
-            "source_claims_available": True,
-            "validator_code_hash": "code:v1",
-            "registered_validator_code_hashes": {"code:v1"},
-            "validator_policy_hash": "policy:v1",
-            "expected_validator_policy_hash": "policy:v1",
-            "issuer_role": "spendability_validator",
-            "allowed_issuer_roles": {"spendability_validator"},
-            "requested_authority": 2,
-            "issuer_authority_ceiling": 2,
-            "issuer_conflict_status": "clear",
-            "registry_snapshot": "registry:1",
-            "frozen_registry_snapshot": "registry:1",
-            "current_block": 100,
-            "expiry_block": 200,
-            "data_availability_receipt": True,
-            "preimage_available": True,
-            "required_not_claiming": {"physical_truth", "semantic_independence"},
-            "not_claiming": {"physical_truth", "semantic_independence"},
-            "value_authority": True,
-            "source_basis": "typed_claims",
-            "issuer": "issuerA",
-            "source_claim_author": "authorB",
-            "downgraded": False,
-            "value_capped": False,
+        "spendability": {
+            "canonical_preimage": "trade|gate|leg|artifacts|issuer|expiry",
+            "constituent_source_claim_hashes": ["0xclaim-card", "0xclaim-route", "0xclaim-policy"],
+            "validator_code_hash": "0xvalidator-code",
+            "validator_policy_hash": "0xvalidator-policy",
+            "issuer_role": "deterministic_validator",
+            "issuer_authority_ceiling": "route_commitment_only",
+            "issuer_conflict_ref": "registry:none",
+            "registry_snapshot": "0xregistry-snapshot",
+            "expiry": "2026-07-01T00:00:00Z",
+            "data_availability_receipt": "0xda-receipt",
+            "not_claiming": ["model_verdict", "physical_card_truth", "reputation_score_truth"],
+            "source_claim_author": "seller_agent",
+            "issuer": "validator:route-spendability-v1",
+            "route_downgraded_and_value_capped": False,
+            "model_output_used_as_authority": False,
+            "reputation_score_used_as_authority": False,
         },
-        [
-            ("canonical_preimage", {"canonical_preimage": False}),
-            ("constituent_claims", {"constituent_claim_hashes": set()}),
-            ("source_claims_available", {"source_claims_available": False}),
-            ("validator_code_hash", {"validator_code_hash": "code:rogue"}),
-            ("validator_policy_hash", {"validator_policy_hash": "policy:old"}),
-            ("issuer_role", {"issuer_role": "agent_summary"}),
-            ("authority_ceiling", {"requested_authority": 3}),
-            ("conflict_ref", {"issuer_conflict_status": "conflicted"}),
-            ("registry_snapshot", {"registry_snapshot": "registry:2"}),
-            ("expiry", {"current_block": 250}),
-            ("data_availability", {"data_availability_receipt": False}),
-            ("preimage_available", {"preimage_available": False}),
-            ("not_claiming", {"not_claiming": {"semantic_independence"}}),
-            ("no_model_or_reputation_authority", {"source_basis": "model_output"}),
-            ("issuer_not_source_author", {"issuer": "authorB"}),
-        ],
-    ),
-    (
-        "A5",
-        a5,
-        {
-            "seller_bond_block": 100,
-            "authority_root_block": 90,
-            "control_root_block": 90,
-            "disclosure_root_block": 90,
-            "eligible_set_root_block": 90,
-            "policy_root_block": 90,
-            "claim_matrix_root_block": 90,
-            "snapshot_hash_in_bond": True,
-            "later_governance_root_used": False,
+        "snapshot": {
+            "freeze_point": "seller_acceptance_bond",
+            "authority_root": "0xauthority-root",
+            "control_root": "0xcontrol-root",
+            "disclosure_root": "0xdisclosure-root",
+            "eligible_set_root": "0xeligible-set-root",
+            "policy_root": "0xpolicy-root",
+            "claim_matrix_root": "0xclaim-matrix-root",
+            "later_governance_changes_apply": False,
         },
-        [
-            ("authority_root", {"authority_root_block": 110}),
-            ("control_root", {"control_root_block": 110}),
-            ("disclosure_root", {"disclosure_root_block": 110}),
-            ("eligible_set_root", {"eligible_set_root_block": 110}),
-            ("policy_root", {"policy_root_block": 110}),
-            ("claim_matrix_root", {"claim_matrix_root_block": 110}),
-            ("snapshot_hash_in_bond", {"snapshot_hash_in_bond": False}),
-            ("no_late_governance", {"later_governance_root_used": True}),
-        ],
-    ),
-    (
-        "A6",
-        a6,
-        {
-            "availability_receipt": True,
-            "content_addressed_manifest": True,
-            "canonical_bundle_hash": True,
-            "retention_until_block": 200,
-            "deadline_block": 150,
-            "required_recipients": {"buyer", "seller", "arbiter"},
-            "recipient_commitments": {"buyer", "seller", "arbiter"},
-            "key_commitments": True,
-            "notice_block": 100,
-            "min_response_window": 20,
-            "response_windows": {"buyer": 50, "seller": 50, "arbiter": 50},
-            "custody_location_sensitive": True,
-            "disclosure_mode": "encrypted",
-            "access_logs": True,
-            "preimages_available_to_all": True,
+        "evidence": {
+            "availability_receipts": ["0xda-receipt", "0xcarrier-receipt"],
+            "access_logs": ["0xbuyer-access", "0xseller-access"],
+            "key_commitments": ["0xbuyer-key", "0xseller-key"],
+            "notice_timestamps": ["2026-06-22T12:00:00Z"],
+            "equal_response_windows": True,
+            "canonical_bundle_manifest": "0xbundle-manifest",
+            "retention_policy": "alpha-90-days",
+            "theft_sensitive_data_policy": "encrypted_or_delayed",
         },
-        [
-            ("availability_receipt", {"availability_receipt": False}),
-            ("content_addressed_manifest", {"content_addressed_manifest": False}),
-            ("canonical_bundle_hash", {"canonical_bundle_hash": False}),
-            ("retention", {"retention_until_block": 120}),
-            ("recipient_commitments", {"recipient_commitments": {"buyer", "arbiter"}}),
-            ("key_commitments", {"key_commitments": False}),
-            ("notice_timestamp", {"notice_block": 140}),
-            ("equal_response_windows", {"response_windows": {"buyer": 50, "seller": 10, "arbiter": 50}}),
-            ("theft_sensitive_handling", {"disclosure_mode": "public"}),
-            ("access_logs", {"access_logs": False}),
-            ("preimages_available_to_all", {"preimages_available_to_all": False}),
-        ],
-    ),
-    (
-        "A7",
-        a7,
-        {
-            "capacity_snapshot_before_commitment": True,
-            "eligible_clusters_after_exclusions": 3,
-            "clusters_after_largest_removed": 2,
-            "slots_available": 150,
-            "conservative_peak_demand": 100,
-            "replay_sla_rate": 0.99,
+        "capacity": {
+            "cell": "us_raw_low_7day",
+            "eligible_registered_control_clusters": 4,
+            "clusters_after_largest_removed": 3,
+            "replacement_available": True,
+            "slots": 18,
+            "conservative_peak_concurrent_demand": 10,
+            "deterministic_30day_replay_sla": 0.995,
             "conflicted_fallbacks": 0,
             "silent_same_subject_custodian_substitution": False,
-            "largest_cluster_assignment_share": 0.33,
-            "buyer_verifier_pair_share": 0.10,
-            "seller_verifier_pair_share": 0.10,
-            "assigned_exposure": 90,
-            "reserved_capacity": 100,
-            "capacity_failed": False,
-            "route_status": "capacity_ok",
-            "neutral_placement_claim": "allowed",
-            "settlement_authority": "policy",
-            "automatic_value_cap": 100,
+            "largest_cluster_assignment_share": 0.31,
+            "buyer_verifier_pair_share": 0.08,
+            "seller_verifier_pair_share": 0.06,
+            "assigned_exposure": 420,
+            "atomically_reserved_capacity": 500,
         },
-        [
-            ("snapshot_before_commitment", {"capacity_snapshot_before_commitment": False}),
-            ("clusters_after_exclusions", {"eligible_clusters_after_exclusions": 2}),
-            ("remove_largest", {"clusters_after_largest_removed": 1}),
-            ("peak_slots", {"slots_available": 149}),
-            ("replay_sla", {"replay_sla_rate": 0.98}),
-            ("zero_conflicted_fallbacks", {"conflicted_fallbacks": 1}),
-            ("no_silent_custodian_substitution", {"silent_same_subject_custodian_substitution": True}),
-            ("cluster_share", {"largest_cluster_assignment_share": 0.34}),
-            ("buyer_verifier_pair", {"buyer_verifier_pair_share": 0.11}),
-            ("seller_verifier_pair", {"seller_verifier_pair_share": 0.11}),
-            ("reserved_capacity", {"assigned_exposure": 101}),
-            (
-                "failure_posture",
-                {
-                    "capacity_failed": True,
-                    "route_status": "capacity_ok",
-                    "neutral_placement_claim": "allowed",
-                    "settlement_authority": "policy",
-                    "automatic_value_cap": 100,
-                },
-            ),
-        ],
-    ),
+    }
+
+
+GUARDS: list[Guard] = [
+    Guard("A1", "A1.policy_snapshot_present", "Policy snapshot is present.", "missing_policy_snapshot"),
+    Guard("A1", "A1.known_policy_version", "Unknown policy versions fail closed.", "unknown_policy_version"),
+    Guard("A1", "A1.route_class_match", "Route class must match active policy.", "wrong_route_class"),
+    Guard("A1", "A1.trade_value_cap", "Per-trade value cap is enforced.", "trade_value_over_cap"),
+    Guard("A1", "A1.aggregate_caps", "Principal/cluster/custodian/verifier/judgment/registry/global caps are enforced.", "aggregate_exposure_over_cap"),
+    Guard("A1", "A1.allowed_delivery_mode", "Delivery mode must be admitted.", "unadmitted_delivery_mode"),
+    Guard("A1", "A1.allowed_dispute_branch", "Dispute branch must be admitted.", "unadmitted_dispute_branch"),
+    Guard("A1", "A1.manual_override_bounded", "Manual override requires 2-person authority and loss budget.", "weak_manual_override"),
+    Guard("A2", "A2.asserted_not_final", "delivery_asserted is not delivery_final.", "delivery_asserted_marked_final"),
+    Guard("A2", "A2.no_single_interested_witness", "Single seller-associated witness cannot cause irreversible buyer-unfavorable settlement.", "seller_witness_auto_release"),
+    Guard("A2", "A2.witness_scope_expiry_conflict", "Witness class/issuer/conflict/scope/expiry/challenge window are bound.", "delivery_witness_unscoped"),
+    Guard("A2", "A2.no_missing_witness_auto_non_delivery", "Missing witness cannot auto-establish non-delivery after possible handoff.", "missing_witness_auto_refund"),
+    Guard("A3", "A3.claim_type_bound", "Claim type is bound.", "remedy_missing_claim_type"),
+    Guard("A3", "A3.remedy_type_bound", "Remedy type is bound.", "remedy_missing_type"),
+    Guard("A3", "A3.amount_ceiling", "Remedy amount is capped.", "remedy_over_amount"),
+    Guard("A3", "A3.return_custody_for_full_refund", "Full refund after handoff requires return/custody or bounded non-return remedy.", "full_refund_without_return"),
+    Guard("A3", "A3.evidence_root_bound", "Evidence root is bound.", "remedy_missing_evidence_root"),
+    Guard("A3", "A3.appeal_final", "Appeal must be final before value moves.", "remedy_appeal_not_final"),
+    Guard("A4", "A4.canonical_preimage", "Spendability has canonical preimage.", "spendability_missing_preimage"),
+    Guard("A4", "A4.constituent_claims", "Spendability cites constituent source claim hashes.", "spendability_missing_claims"),
+    Guard("A4", "A4.validator_hashes", "Validator code and policy hashes are bound.", "spendability_missing_validator_hash"),
+    Guard("A4", "A4.issuer_authority", "Issuer role and authority ceiling are bound.", "spendability_unbounded_issuer"),
+    Guard("A4", "A4.registry_snapshot", "Registry snapshot is bound.", "spendability_missing_registry"),
+    Guard("A4", "A4.availability_and_expiry", "Expiry and data availability receipt are bound.", "spendability_missing_da"),
+    Guard("A4", "A4.no_model_or_reputation_authority", "Model output/reputation score cannot mint value authority.", "model_output_mints_spendability"),
+    Guard("A4", "A4.author_issuer_separation", "Source-claim author cannot be final issuer unless downgraded and capped.", "same_author_and_issuer"),
+    Guard("A5", "A5.freeze_before_bond", "Roots freeze no later than seller acceptance/bond.", "snapshot_after_bond"),
+    Guard("A5", "A5.required_roots", "Authority/control/disclosure/eligible/policy/claim roots are present.", "snapshot_missing_roots"),
+    Guard("A5", "A5.no_retroactive_governance", "Later governance changes cannot retroactively change a trade.", "retroactive_governance"),
+    Guard("A6", "A6.availability_receipts", "Evidence has content-addressed availability receipts.", "evidence_missing_availability"),
+    Guard("A6", "A6.access_and_keys", "Access logs and key commitments are present.", "evidence_missing_access_keys"),
+    Guard("A6", "A6.notice_and_equal_windows", "Notice timestamps and equal response windows are present.", "evidence_asymmetric_deadline"),
+    Guard("A6", "A6.bundle_and_retention", "Canonical bundle manifest and retention policy are present.", "evidence_missing_bundle"),
+    Guard("A6", "A6.theft_sensitive_policy", "Theft-sensitive data is encrypted or delayed, not public by default.", "evidence_public_theft_data"),
+    Guard("A7", "A7.min_clusters", "At least 3 eligible registered control clusters per cell.", "capacity_too_few_clusters"),
+    Guard("A7", "A7.remove_largest_resilience", "After removing largest cluster, at least 2 clusters remain with replacement.", "capacity_largest_cluster_failure"),
+    Guard("A7", "A7.peak_slots", "Slots cover at least 1.5x conservative peak demand.", "capacity_under_peak"),
+    Guard("A7", "A7.replay_sla", "30-day deterministic replay completes at least 99 percent within SLA.", "capacity_sla_low"),
+    Guard("A7", "A7.no_conflicted_fallbacks", "No conflicted fallbacks.", "capacity_conflicted_fallback"),
+    Guard("A7", "A7.no_silent_substitution", "No silent same-subject custodian substitution.", "capacity_silent_substitution"),
+    Guard("A7", "A7.assignment_shares", "No cluster >33 percent and no buyer/seller-verifier pair >10 percent.", "capacity_share_over_limit"),
+    Guard("A7", "A7.reserved_capacity", "Assigned exposure is at most atomically reserved capacity.", "capacity_unreserved_exposure"),
 ]
 
 
-def run() -> int:
-    print("A1-A7 alpha-admission gates - per-subguard falsification drill\n" + "-" * 74)
-    gates_ok = 0
-    total_subs = 0
-    passed_subs = 0
-    for gid, fn, clean, subs in GATES:
-        ok_clean, clean_reasons = fn(clean)
-        gate_pass = ok_clean
-        detail = []
-        for sg, override in subs:
-            attack = {**clean, **override}
-            ok_attack, attack_reasons = fn(attack)
-            blocked = not ok_attack
-            admitted = fn(attack, off=frozenset({sg}))[0]
-            teeth = blocked and admitted
-            total_subs += 1
-            passed_subs += 1 if teeth else 0
-            gate_pass = gate_pass and teeth
-            suffix = "ok" if teeth else f"FAIL(blocked={blocked}, admit_off={admitted}, reasons={attack_reasons})"
-            detail.append(f"{sg}:{suffix}")
-        if gate_pass:
-            gates_ok += 1
-        print(
-            f"[{'PASS' if gate_pass else 'FAIL'}] {gid} clean_admits={ok_clean} "
-            f"subguards {sum(1 for d in detail if d.endswith(':ok'))}/{len(subs)}"
+def mutate_route(route: dict[str, Any], mutation: str) -> dict[str, Any]:
+    route = copy.deepcopy(route)
+    policy = route.get("policy_snapshot", {})
+    if mutation == "missing_policy_snapshot":
+        route.pop("policy_snapshot", None)
+    elif mutation == "unknown_policy_version":
+        policy["version"] = "unknown-alpha-policy"
+    elif mutation == "wrong_route_class":
+        route["route_class"] = "open_public_route"
+    elif mutation == "trade_value_over_cap":
+        route["trade_value"] = policy["max_trade_value"] + 1
+    elif mutation == "aggregate_exposure_over_cap":
+        route["global_epoch_loss"] = policy["max_global_epoch_loss"] + 1
+    elif mutation == "unadmitted_delivery_mode":
+        route["delivery_mode"] = "untracked_dm"
+    elif mutation == "unadmitted_dispute_branch":
+        route["dispute_branch"] = "auto_buyer_refund_post_handoff"
+    elif mutation == "weak_manual_override":
+        policy["manual_override"]["two_person_required"] = False
+    elif mutation == "delivery_asserted_marked_final":
+        route["delivery"]["state"] = "delivery_final"
+        route["delivery"]["settlement_effect"] = "auto_release"
+    elif mutation == "seller_witness_auto_release":
+        route["delivery"]["issuer_role"] = "seller_associated"
+        route["delivery"]["settlement_effect"] = "auto_release"
+        route["delivery"]["settlement_ceiling"] = route["trade_value"]
+    elif mutation == "delivery_witness_unscoped":
+        route["delivery"]["scope"] = ""
+    elif mutation == "missing_witness_auto_refund":
+        route["delivery"]["witness_class"] = "missing"
+        route["delivery"]["settlement_effect"] = "auto_buyer_refund"
+    elif mutation == "remedy_missing_claim_type":
+        route["post_handoff_remedy"]["claim_type"] = ""
+    elif mutation == "remedy_missing_type":
+        route["post_handoff_remedy"]["remedy_type"] = ""
+    elif mutation == "remedy_over_amount":
+        route["post_handoff_remedy"]["max_amount"] = route["trade_value"] + 1
+    elif mutation == "full_refund_without_return":
+        route["post_handoff_remedy"]["remedy_type"] = "full_refund"
+        route["post_handoff_remedy"]["return_required"] = False
+        route["post_handoff_remedy"]["return_custody_hash"] = ""
+        route["post_handoff_remedy"]["non_return_remedy_allowed"] = False
+    elif mutation == "remedy_missing_evidence_root":
+        route["post_handoff_remedy"]["evidence_root"] = ""
+    elif mutation == "remedy_appeal_not_final":
+        route["post_handoff_remedy"]["appeal_final_state"] = "pending"
+    elif mutation == "spendability_missing_preimage":
+        route["spendability"]["canonical_preimage"] = ""
+    elif mutation == "spendability_missing_claims":
+        route["spendability"]["constituent_source_claim_hashes"] = []
+    elif mutation == "spendability_missing_validator_hash":
+        route["spendability"]["validator_code_hash"] = ""
+    elif mutation == "spendability_unbounded_issuer":
+        route["spendability"]["issuer_authority_ceiling"] = ""
+    elif mutation == "spendability_missing_registry":
+        route["spendability"]["registry_snapshot"] = ""
+    elif mutation == "spendability_missing_da":
+        route["spendability"]["data_availability_receipt"] = ""
+    elif mutation == "model_output_mints_spendability":
+        route["spendability"]["model_output_used_as_authority"] = True
+    elif mutation == "same_author_and_issuer":
+        route["spendability"]["issuer"] = route["spendability"]["source_claim_author"]
+    elif mutation == "snapshot_after_bond":
+        route["snapshot"]["freeze_point"] = "after_seller_bond"
+    elif mutation == "snapshot_missing_roots":
+        route["snapshot"]["authority_root"] = ""
+    elif mutation == "retroactive_governance":
+        route["snapshot"]["later_governance_changes_apply"] = True
+    elif mutation == "evidence_missing_availability":
+        route["evidence"]["availability_receipts"] = []
+    elif mutation == "evidence_missing_access_keys":
+        route["evidence"]["key_commitments"] = []
+    elif mutation == "evidence_asymmetric_deadline":
+        route["evidence"]["equal_response_windows"] = False
+    elif mutation == "evidence_missing_bundle":
+        route["evidence"]["canonical_bundle_manifest"] = ""
+    elif mutation == "evidence_public_theft_data":
+        route["evidence"]["theft_sensitive_data_policy"] = "public_by_default"
+    elif mutation == "capacity_too_few_clusters":
+        route["capacity"]["eligible_registered_control_clusters"] = 2
+    elif mutation == "capacity_largest_cluster_failure":
+        route["capacity"]["clusters_after_largest_removed"] = 1
+    elif mutation == "capacity_under_peak":
+        route["capacity"]["slots"] = 14
+    elif mutation == "capacity_sla_low":
+        route["capacity"]["deterministic_30day_replay_sla"] = 0.98
+    elif mutation == "capacity_conflicted_fallback":
+        route["capacity"]["conflicted_fallbacks"] = 1
+    elif mutation == "capacity_silent_substitution":
+        route["capacity"]["silent_same_subject_custodian_substitution"] = True
+    elif mutation == "capacity_share_over_limit":
+        route["capacity"]["largest_cluster_assignment_share"] = 0.34
+    elif mutation == "capacity_unreserved_exposure":
+        route["capacity"]["assigned_exposure"] = route["capacity"]["atomically_reserved_capacity"] + 1
+    else:
+        raise ValueError(f"unknown mutation: {mutation}")
+    return route
+
+
+def active(skip: set[str], guard_id: str) -> bool:
+    return guard_id not in skip
+
+
+def evaluate(route: dict[str, Any], *, skip: set[str] | None = None) -> GateResult:
+    skip = skip or set()
+    errors: list[dict[str, str]] = []
+
+    def fail(gate: str, guard_id: str, message: str) -> None:
+        if active(skip, guard_id):
+            errors.append({"gate": gate, "guard_id": guard_id, "message": message})
+
+    policy = route.get("policy_snapshot")
+    if not policy:
+        fail("A1", "A1.policy_snapshot_present", "missing policy snapshot")
+    else:
+        if policy.get("version") != "alpha-admission-v0.1":
+            fail("A1", "A1.known_policy_version", "unknown policy version")
+        if route.get("route_class") != policy.get("route_class"):
+            fail("A1", "A1.route_class_match", "route class not admitted")
+        if route.get("trade_value", 0) > policy.get("max_trade_value", -1):
+            fail("A1", "A1.trade_value_cap", "trade value exceeds policy cap")
+        cap_fields = [
+            ("principal_exposure", "max_principal_exposure"),
+            ("control_cluster_exposure", "max_control_cluster_exposure"),
+            ("custodian_exposure", "max_custodian_exposure"),
+            ("verifier_exposure", "max_verifier_exposure"),
+            ("judgment_authority_exposure", "max_judgment_authority_exposure"),
+            ("registry_version_exposure", "max_registry_version_exposure"),
+            ("global_epoch_loss", "max_global_epoch_loss"),
+        ]
+        if any(route.get(left, 0) > policy.get(right, -1) for left, right in cap_fields):
+            fail("A1", "A1.aggregate_caps", "aggregate exposure cap exceeded")
+        if route.get("delivery_mode") not in policy.get("allowed_delivery_modes", []):
+            fail("A1", "A1.allowed_delivery_mode", "delivery mode not admitted")
+        if route.get("dispute_branch") not in policy.get("allowed_dispute_branches", []):
+            fail("A1", "A1.allowed_dispute_branch", "dispute branch not admitted")
+        override = policy.get("manual_override", {})
+        if not (override.get("authority") and override.get("two_person_required") is True and override.get("reason_log") and override.get("loss_budget", 0) > 0):
+            fail("A1", "A1.manual_override_bounded", "manual override is not bounded")
+
+    delivery = route.get("delivery", {})
+    if delivery.get("state") == "delivery_final" and delivery.get("settlement_effect") != "none_until_challenge_window_or_manual_final":
+        fail("A2", "A2.asserted_not_final", "delivery assertion was promoted to finality")
+    if delivery.get("issuer_role") in {"seller", "seller_associated"} and delivery.get("settlement_effect") in {"auto_release", "buyer_unfavorable_release"}:
+        fail("A2", "A2.no_single_interested_witness", "interested delivery witness controls release")
+    if not all(delivery.get(field) for field in ("witness_class", "issuer", "issuer_conflict", "scope", "expiry", "challenge_window_seconds")):
+        fail("A2", "A2.witness_scope_expiry_conflict", "delivery witness metadata incomplete")
+    if delivery.get("witness_class") == "missing" and delivery.get("settlement_effect") == "auto_buyer_refund":
+        fail("A2", "A2.no_missing_witness_auto_non_delivery", "missing witness became auto non-delivery")
+
+    remedy = route.get("post_handoff_remedy", {})
+    if not remedy.get("claim_type"):
+        fail("A3", "A3.claim_type_bound", "claim type missing")
+    if not remedy.get("remedy_type"):
+        fail("A3", "A3.remedy_type_bound", "remedy type missing")
+    if remedy.get("max_amount", 0) > route.get("trade_value", 0):
+        fail("A3", "A3.amount_ceiling", "remedy exceeds trade value")
+    full_refund = remedy.get("remedy_type") == "full_refund" or remedy.get("max_amount") == route.get("trade_value")
+    if full_refund and not remedy.get("return_required") and not remedy.get("return_custody_hash") and not remedy.get("non_return_remedy_allowed"):
+        fail("A3", "A3.return_custody_for_full_refund", "full refund lacks return custody or bounded non-return remedy")
+    if not remedy.get("evidence_root"):
+        fail("A3", "A3.evidence_root_bound", "evidence root missing")
+    if remedy.get("appeal_final_state") != "final":
+        fail("A3", "A3.appeal_final", "appeal is not final")
+
+    spend = route.get("spendability", {})
+    if not spend.get("canonical_preimage"):
+        fail("A4", "A4.canonical_preimage", "spendability preimage missing")
+    if not spend.get("constituent_source_claim_hashes"):
+        fail("A4", "A4.constituent_claims", "constituent claims missing")
+    if not spend.get("validator_code_hash") or not spend.get("validator_policy_hash"):
+        fail("A4", "A4.validator_hashes", "validator hashes missing")
+    if not spend.get("issuer_role") or not spend.get("issuer_authority_ceiling"):
+        fail("A4", "A4.issuer_authority", "issuer authority missing")
+    if not spend.get("registry_snapshot"):
+        fail("A4", "A4.registry_snapshot", "registry snapshot missing")
+    if not spend.get("expiry") or not spend.get("data_availability_receipt"):
+        fail("A4", "A4.availability_and_expiry", "expiry or data availability missing")
+    if spend.get("model_output_used_as_authority") or spend.get("reputation_score_used_as_authority"):
+        fail("A4", "A4.no_model_or_reputation_authority", "model or reputation minted spendability")
+    if spend.get("issuer") == spend.get("source_claim_author") and not spend.get("route_downgraded_and_value_capped"):
+        fail("A4", "A4.author_issuer_separation", "source author is final issuer without downgrade")
+
+    snap = route.get("snapshot", {})
+    if snap.get("freeze_point") not in {"seller_acceptance", "seller_acceptance_bond"}:
+        fail("A5", "A5.freeze_before_bond", "snapshot freezes after seller bond")
+    root_fields = ("authority_root", "control_root", "disclosure_root", "eligible_set_root", "policy_root", "claim_matrix_root")
+    if not all(snap.get(field) for field in root_fields):
+        fail("A5", "A5.required_roots", "snapshot roots incomplete")
+    if snap.get("later_governance_changes_apply"):
+        fail("A5", "A5.no_retroactive_governance", "later governance changes apply retroactively")
+
+    evidence = route.get("evidence", {})
+    if not evidence.get("availability_receipts"):
+        fail("A6", "A6.availability_receipts", "availability receipts missing")
+    if not evidence.get("access_logs") or not evidence.get("key_commitments"):
+        fail("A6", "A6.access_and_keys", "access logs or key commitments missing")
+    if not evidence.get("notice_timestamps") or evidence.get("equal_response_windows") is not True:
+        fail("A6", "A6.notice_and_equal_windows", "notice or equal windows missing")
+    if not evidence.get("canonical_bundle_manifest") or not evidence.get("retention_policy"):
+        fail("A6", "A6.bundle_and_retention", "bundle manifest or retention missing")
+    if evidence.get("theft_sensitive_data_policy") not in {"encrypted_or_delayed", "redacted_then_escrowed"}:
+        fail("A6", "A6.theft_sensitive_policy", "theft-sensitive data exposed")
+
+    cap = route.get("capacity", {})
+    if cap.get("eligible_registered_control_clusters", 0) < 3:
+        fail("A7", "A7.min_clusters", "too few eligible control clusters")
+    if cap.get("clusters_after_largest_removed", 0) < 2 or cap.get("replacement_available") is not True:
+        fail("A7", "A7.remove_largest_resilience", "largest-cluster removal leaves insufficient replacement")
+    if cap.get("slots", 0) < 1.5 * cap.get("conservative_peak_concurrent_demand", 0):
+        fail("A7", "A7.peak_slots", "capacity below 1.5x peak")
+    if cap.get("deterministic_30day_replay_sla", 0) < 0.99:
+        fail("A7", "A7.replay_sla", "30-day replay SLA below 99 percent")
+    if cap.get("conflicted_fallbacks", 0) != 0:
+        fail("A7", "A7.no_conflicted_fallbacks", "conflicted fallback present")
+    if cap.get("silent_same_subject_custodian_substitution"):
+        fail("A7", "A7.no_silent_substitution", "silent custodian substitution present")
+    if cap.get("largest_cluster_assignment_share", 1) > 0.33 or cap.get("buyer_verifier_pair_share", 1) > 0.10 or cap.get("seller_verifier_pair_share", 1) > 0.10:
+        fail("A7", "A7.assignment_shares", "assignment share over limit")
+    if cap.get("assigned_exposure", 0) > cap.get("atomically_reserved_capacity", -1):
+        fail("A7", "A7.reserved_capacity", "assigned exposure exceeds reserved capacity")
+
+    by_gate: dict[str, int] = {}
+    for err in errors:
+        by_gate[err["gate"]] = by_gate.get(err["gate"], 0) + 1
+    return {"admitted": not errors, "errors": errors, "error_count": len(errors), "errors_by_gate": by_gate}
+
+
+def run_drill() -> dict[str, Any]:
+    base = clean_route()
+    clean = evaluate(base)
+    negative_cases: list[dict[str, Any]] = []
+    mutation_teeth: list[dict[str, Any]] = []
+
+    for guard in GUARDS:
+        bad = mutate_route(base, guard.mutation)
+        observed = evaluate(bad)
+        hit = any(err["guard_id"] == guard.guard_id for err in observed["errors"])
+        negative_cases.append(
+            {
+                "guard_id": guard.guard_id,
+                "gate": guard.gate,
+                "mutation": guard.mutation,
+                "blocked": not observed["admitted"],
+                "target_guard_hit": hit,
+                "errors": observed["errors"],
+            }
         )
-        if clean_reasons:
-            print("        clean reasons: " + "; ".join(clean_reasons))
-        print("        " + ", ".join(detail))
-    print("-" * 74)
-    print(f"{gates_ok}/{len(GATES)} gates pass - {passed_subs}/{total_subs} subguards have independent teeth")
-    return 0 if gates_ok == len(GATES) and passed_subs == total_subs else 1
+        weakened = evaluate(bad, skip={guard.guard_id})
+        mutation_teeth.append(
+            {
+                "guard_id": guard.guard_id,
+                "gate": guard.gate,
+                "mutation": guard.mutation,
+                "original_blocked": not observed["admitted"],
+                "weakened_admitted": weakened["admitted"],
+                "killed": (not observed["admitted"]) and weakened["admitted"],
+                "residual_errors_when_weakened": weakened["errors"],
+            }
+        )
+
+    gate_counts: dict[str, int] = {}
+    for guard in GUARDS:
+        gate_counts[guard.gate] = gate_counts.get(guard.gate, 0) + 1
+
+    passed = (
+        clean["admitted"]
+        and all(case["blocked"] and case["target_guard_hit"] for case in negative_cases)
+        and all(tooth["killed"] for tooth in mutation_teeth)
+    )
+    return {
+        "schema": "marketplace.alpha_admission_drill.v0.1",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "not_claiming": [
+            "chain_enforces_A1_A7",
+            "alpha_is_admitted",
+            "physical_card_truth",
+            "economic_sufficiency",
+            "complete_protocol_review",
+        ],
+        "clean_case": clean,
+        "gate_counts": gate_counts,
+        "negative_case_count": len(negative_cases),
+        "mutation_tooth_count": len(mutation_teeth),
+        "negative_cases": negative_cases,
+        "mutation_teeth": mutation_teeth,
+        "passed": passed,
+    }
+
+
+def write_report(result: dict[str, Any]) -> Path:
+    out_dir = RUNS / f"alpha_admission_drill_{utc_stamp()}"
+    out_dir.mkdir(parents=True, exist_ok=False)
+    (out_dir / "result.json").write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
+    lines = [
+        "# Alpha Admission Drill",
+        "",
+        f"- Passed: `{result['passed']}`",
+        f"- Clean case admitted: `{result['clean_case']['admitted']}`",
+        f"- Negative cases: `{result['negative_case_count']}`",
+        f"- Mutation teeth: `{result['mutation_tooth_count']}`",
+        f"- Gate counts: `{json.dumps(result['gate_counts'], sort_keys=True)}`",
+        "",
+        "## Boundary",
+        "",
+        "This drill makes A1-A7 executable as deterministic admission checks. It does not claim the chain enforces them yet.",
+        "",
+        "## Killed Mutations",
+        "",
+    ]
+    for tooth in result["mutation_teeth"]:
+        lines.append(f"- `{tooth['guard_id']}` via `{tooth['mutation']}`: killed `{tooth['killed']}`")
+    (out_dir / "REPORT.md").write_text("\n".join(lines) + "\n")
+    return out_dir
+
+
+def main() -> int:
+    result = run_drill()
+    out_dir = write_report(result)
+    print(json.dumps({
+        "passed": result["passed"],
+        "negative_cases": result["negative_case_count"],
+        "mutation_teeth": result["mutation_tooth_count"],
+        "gate_counts": result["gate_counts"],
+        "report": str(out_dir / "REPORT.md"),
+    }, indent=2, sort_keys=True))
+    return 0 if result["passed"] else 1
 
 
 if __name__ == "__main__":
-    raise SystemExit(run())
+    raise SystemExit(main())

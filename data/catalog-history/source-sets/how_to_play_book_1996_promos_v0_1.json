@@ -1,0 +1,882 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Three-dossier deepening tranche for the November 30, 1996 Easily Understand How to Play Pokemon Cards promo source slice. It covers the non-glossy Pikachu and Jigglypuff pair, emphasizing early rule-teaching book distribution, regular-stock vs glossy CoroCoro boundary, Keiji Kinebuchi illustrator correction on Pikachu, and special instructions against CoroCoro glossy, English Wizards, and later How-to-Play Latest Edition confusion.",
+    "in_scope": [
+      "Easily Understand How to Play Pokemon Cards promos source slice",
+      "Pikachu row 003",
+      "Jigglypuff row 004",
+      "November 30, 1996 book/manual route",
+      "non-glossy / regular card stock distinction",
+      "CoroCoro glossy pair boundary",
+      "Keiji Kinebuchi illustrator correction",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete book-object archive",
+      "official copy count",
+      "complete sealed-book variant census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_how_to_play_book_19961130",
+      "context": {
+        "release_family_id": "jp_promo_how_to_play_book_19961130",
+        "name_en": "Easily Understand How to Play Pokemon Cards promos source slice",
+        "name_ja": "「ポケモンカードの遊びかたがよくわかる本」プロモ",
+        "release_date": "1996-11-30",
+        "expected_source_card_count": 2,
+        "unique_catalog_row_count": 2
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "rule-teaching book distribution",
+          "early non-glossy promo pair",
+          "Pikachu / Jigglypuff approachable teaching duo",
+          "regular-stock vs glossy CoroCoro boundary",
+          "Keiji Kinebuchi illustrator correction",
+          "manual provider-path row caveat",
+          "Latest Edition Diglett / Dugtrio boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_how_to_play_book_19961130:003",
+            "name": "Pikachu [Non-glossy]",
+            "why": "Pikachu is the teach-me face of the pair, and this print matters because the How-to-Play route corrects the earlier CoroCoro glossy illustrator credit to Keiji Kinebuchi while moving onto regular stock.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_how_to_play_book_19961130:004",
+            "name": "Jigglypuff [Non-glossy]",
+            "why": "Jigglypuff is the friendly second voice: soft, readable, and perfect for a rule-learning book that needed the TCG to feel less intimidating.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Keiji Kinebuchi",
+            "row_count": 2,
+            "examples": [
+              "Pikachu [Non-glossy]",
+              "Jigglypuff [Non-glossy]"
+            ],
+            "why": "Kinebuchi matters here because the pair is about making the game legible. His credit sits directly on the corrected Pikachu print and the Jigglypuff companion, turning artist metadata into an identification rail rather than a decoration.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller possession",
+              "physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete book-object archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected early-1996 promo snapshot place the Easily Understand How to Play Pokemon Cards promo pair on November 30, 1996.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The selected snapshot lists two non-glossy Easily Understand How to Play Pokemon Cards entries: Pikachu [Non-glossy] and Jigglypuff [Non-glossy].",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "PokeBoon classifies both How-to-Play cards as 1996 Book / Unopened promos, and Heritage describes the object as the original Easily Understand How to Play Pokemon Cards magazine/book made to teach the rules of the TCG with two unnumbered promotional cards.",
+          "sources": [
+            "s4",
+            "s5",
+            "s7"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia distinguishes the October 15, 1996 CoroCoro glossy Pikachu/Jigglypuff pair from the November 30, 1996 Easily Understand How to Play Pokemon Cards non-glossy / regular-stock pair.",
+          "sources": [
+            "s2",
+            "s6",
+            "s8",
+            "s9"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The local rows and PokeBoon card pages credit both How-to-Play Pikachu and Jigglypuff to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5",
+            "s8",
+            "s9"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia says the How-to-Play Pikachu print updates the illustrator to the correct Keiji Kinebuchi after the earlier glossy CoroCoro print incorrectly credited Ken Sugimori.",
+          "sources": [
+            "s8"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c7",
+          "field": "release.boundary",
+          "text": "The local release records Pikachu as a bounded manual provider-path row and Jigglypuff as a parent source-pinned row; manual provider-path rows are useful references, not parent aggregate decrypted rows or physical-card proof.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "This source slice matters because it shows the TCG teaching itself: two friendly mascot-weight cards included with a rule-learning book so the new game could become playable, not merely collectible.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s7"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve November 30 1996 How-to-Play book route, non-glossy / regular-stock identity, Keiji Kinebuchi correction, Pikachu manual provider-path caveat, Jigglypuff row lineage, CoroCoro glossy non-equivalence, English Wizards promo non-equivalence, and Latest Edition Diglett/Dugtrio non-equivalence before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5",
+            "s8",
+            "s9"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "How-to-Play promos: the cards that taught the card game",
+        "why_it_matters": "This pair feels gentle, but it is quietly one of the most important shapes in early Pokemon card culture. The booster made the game collectible; the How-to-Play book made it teachable. Pikachu and Jigglypuff are not trophies here. They are companions at the table, regular-stock reprints that say: you can learn this. The Pikachu credit correction is not trivia either; it is the paper trail of the apparatus correcting itself while the new game was still learning how to be explained.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete book-object archive",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_how_to_play_book_19961130.json",
+          "title": "Local Japanese pre-English catalog: Easily Understand How to Play Pokemon Cards promos source slice",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete book-object source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "title": "Bulbapedia selected rendered lines: first 1996 unnumbered promotional entries",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/howtoplay_pikachu-non-glossy_promo/",
+          "title": "PokeBoon: Pikachu [Non-glossy] Promo: Easily Understand How to Play Pokemon Cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete book-object archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/howtoplay_jigglypuff-non-glossy_promo/",
+          "title": "PokeBoon: Jigglypuff [Non-glossy] Promo: Easily Understand How to Play Pokemon Cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete book-object archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/timeline/",
+          "title": "Pokumon timeline: November 30, 1996 Easily Understand How to Play Pokemon Cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete book-object archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "auction_reference",
+          "ref": "https://comics.ha.com/itm/memorabilia/trading-cards/pokemon-easily-understand-how-to-play-pokemon-cards-magazine-with-promotional-cards-media-factory-1996-/a/332550-57037.s",
+          "title": "Heritage Auctions: Easily Understand How to Play Pokemon Cards magazine with promotional cards",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete book-object archive",
+            "price truth",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_1)",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Wizards_Promo_7)",
+          "title": "Bulbapedia: Jigglypuff (Wizards Promo 7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "how_to_play_1996_non_glossy_pair_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says How to Play, Easily Understand How to Play Pokemon Cards, 1996 book promo, non-glossy Pikachu, non-glossy Jigglypuff, Keiji Kinebuchi, CoroCoro glossy, Wizards Promo Pikachu 1, Wizards Promo Jigglypuff 7, Latest Edition, Diglett, Dugtrio, or rows 003/004.",
+          "summary": "Keep the November 30, 1996 How-to-Play non-glossy pair separate from the October 1996 glossy CoroCoro pair, English Wizards promos, and 1998 Latest Edition book promos.",
+          "steps": [
+            "Confirm the claimed route is Easily Understand How to Play Pokemon Cards, released November 30, 1996.",
+            "Confirm the modeled pair is Pikachu row 003 and Jigglypuff row 004.",
+            "Confirm the relevant identity marker is non-glossy / regular stock, not CoroCoro glossy stock.",
+            "For Pikachu, preserve the Keiji Kinebuchi corrected illustrator rail and do not collapse into the glossy CoroCoro Ken Sugimori miscredit route.",
+            "Separate Japanese How-to-Play rows from English Wizards Black Star Pikachu 1 and Jigglypuff 7.",
+            "Separate this 1996 book route from the 1998 Latest Edition Diglett/Dugtrio book promos.",
+            "Treat book, sealed book, insert, or manual-provider-path stories as provenance evidence to inspect and hash separately.",
+            "Before trade/spendability, require seller-controlled front/back images, close-ups of stock/surface, title/name area, illustrator line, copyright/layout, corners, and any book/sealed/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count",
+            "complete sealed-book variant census"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_how_to_play_book_19961130:003",
+      "context": {
+        "release_family_id": "jp_promo_how_to_play_book_19961130",
+        "row_id": "jp_promo_how_to_play_book_19961130:003",
+        "catalog_row_id": "003",
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "release_date": "1996-11-30"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "Pikachu",
+        "number": "003",
+        "rarity_signal": "Non-glossy Unnumbered Promotional / Easily Understand How to Play Pokemon Cards",
+        "artist": "Keiji Kinebuchi",
+        "release": "Easily Understand How to Play Pokemon Cards"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "How-to-Play book route",
+          "non-glossy regular-stock correction",
+          "Keiji Kinebuchi corrected illustrator rail",
+          "CoroCoro glossy boundary",
+          "manual provider-path caveat"
+        ],
+        "collector_texture_note": "This Pikachu is not only early. It is corrective: the How-to-Play print updates the illustrator credit and turns a glossy magazine invitation into a regular-stock teaching-card object.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as How-to-Play source row 003, modeled as a bounded manual provider-path row.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The card is identified here as Pikachu / ピカチュウ / Pikachu.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row, PokeBoon page, and Bulbapedia release note credit the How-to-Play Pikachu print to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says this How-to-Play print uses regular card stock and corrects the earlier glossy CoroCoro print's Ken Sugimori illustrator miscredit to Keiji Kinebuchi.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "This Pikachu matters because it is a teaching-card version of the mascot: a friendly entry point into the rules and a visible correction in the early paper trail.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep How-to-Play Pikachu row 003 separate from CoroCoro glossy Pikachu row 001, English Wizards Promo Pikachu 1, Toyota Pikachu, Intro Pack Pikachu, and later Pikachu promo memories.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Pikachu [Non-glossy] — the correction that teaches",
+        "why_it_matters": "This is Pikachu as a classroom hand. The earlier glossy magazine print invited kids into the card world; this regular-stock How-to-Play print helped them understand what to do once they got there. The corrected Keiji Kinebuchi credit makes it feel even more alive: the apparatus is still young enough to fix its own labels.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_how_to_play_book_19961130.json",
+          "title": "Local row: How-to-Play Pikachu 003",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete book-object source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "title": "Bulbapedia selected rendered lines: first 1996 unnumbered promotional entries",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/howtoplay_pikachu-non-glossy_promo/",
+          "title": "PokeBoon: Pikachu [Non-glossy] Promo: Easily Understand How to Play Pokemon Cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete book-object archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_1)",
+          "title": "Bulbapedia: Pikachu (Wizards Promo 1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "how_to_play_1996_pikachu_row_003_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says How-to-Play Pikachu, non-glossy Pikachu, Keiji Kinebuchi Pikachu, Ivy Pikachu, CoroCoro glossy Pikachu, Wizards Promo 1, Toyota Pikachu, Intro Pack Pikachu, or row 003.",
+          "summary": "Treat this as How-to-Play Pikachu only when the November 30, 1996 book route, non-glossy stock, and Kinebuchi correction are supported.",
+          "steps": [
+            "Confirm the subject is Pikachu / ピカチュウ.",
+            "Confirm the route is Easily Understand How to Play Pokemon Cards, November 30, 1996.",
+            "Confirm the relevant stock claim is non-glossy / regular card stock, not CoroCoro glossy.",
+            "Preserve Keiji Kinebuchi as the corrected illustrator rail for this print.",
+            "Separate from CoroCoro glossy Pikachu row 001 and its Ken Sugimori miscredit story.",
+            "Separate from English Wizards Promo 1, Toyota campaign Pikachu, Intro Pack Pikachu, and later Pikachu promos.",
+            "Treat book, sealed-book, or manual-provider-path stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of stock/surface, name/title, illustrator line, copyright/layout, corners, and any book/sealed/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_how_to_play_book_19961130:004",
+      "context": {
+        "release_family_id": "jp_promo_how_to_play_book_19961130",
+        "row_id": "jp_promo_how_to_play_book_19961130:004",
+        "catalog_row_id": "004",
+        "name_en": "Jigglypuff",
+        "name_ja": "プリン",
+        "romaji": "Purin",
+        "release_date": "1996-11-30"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Jigglypuff",
+        "name_ja": "プリン",
+        "romaji": "Purin",
+        "number": "004",
+        "rarity_signal": "Non-glossy Unnumbered Promotional / Easily Understand How to Play Pokemon Cards",
+        "artist": "Keiji Kinebuchi",
+        "release": "Easily Understand How to Play Pokemon Cards"
+      },
+      "card_highlights": {
+        "assembly_themes": [
+          "How-to-Play book route",
+          "non-glossy regular-stock pair",
+          "Keiji Kinebuchi credit",
+          "CoroCoro glossy boundary",
+          "friendly teaching-card role"
+        ],
+        "collector_texture_note": "Jigglypuff is the soft companion card in the pair: less market-loud than Pikachu, but crucial to proving the book route because the pair belongs together.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Jigglypuff as How-to-Play source row 004.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The card is identified here as Jigglypuff / プリン / Purin.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local row and PokeBoon card page credit How-to-Play Jigglypuff to Keiji Kinebuchi.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Jigglypuff was first available as a glossy CoroCoro insert on October 15, 1996 and later reprinted in Easily Understand How to Play Pokemon Cards on regular card stock on November 30, 1996.",
+          "sources": [
+            "s4"
+          ],
+          "authority_label": "fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Jigglypuff matters because it makes the teaching object feel friendly: a soft companion to Pikachu in a book built to make the new TCG readable.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification must keep How-to-Play Jigglypuff row 004 separate from CoroCoro glossy Jigglypuff row 002, English Wizards Promo Jigglypuff 7, and later Jigglypuff promo memories.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "human_title": "Jigglypuff [Non-glossy] — the soft teaching companion",
+        "why_it_matters": "Jigglypuff is the quieter half of the book pair, and that quietness is exactly the point. The How-to-Play object needed the card game to feel approachable. Pikachu could pull your eye; Jigglypuff could soften the room. Together they make the TCG less like a rules sheet and more like something a kid might actually sit down with.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_promo_how_to_play_book_19961130.json",
+          "title": "Local row: How-to-Play Jigglypuff 004",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete book-object source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_rendered_lines_snapshot",
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "title": "Bulbapedia selected rendered lines: first 1996 unnumbered promotional entries",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/howtoplay_jigglypuff-non-glossy_promo/",
+          "title": "PokeBoon: Jigglypuff [Non-glossy] Promo: Easily Understand How to Play Pokemon Cards",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete book-object archive",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Wizards_Promo_7)",
+          "title": "Bulbapedia: Jigglypuff (Wizards Promo 7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "how_to_play_1996_jigglypuff_row_004_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says How-to-Play Jigglypuff, non-glossy Jigglypuff, Purin, プリン, Keiji Kinebuchi Jigglypuff, CoroCoro glossy Jigglypuff, Wizards Promo 7, or row 004.",
+          "summary": "Treat this as How-to-Play Jigglypuff only when the November 30, 1996 book route and non-glossy stock are supported.",
+          "steps": [
+            "Confirm the subject is Jigglypuff / プリン / Purin.",
+            "Confirm the route is Easily Understand How to Play Pokemon Cards, November 30, 1996.",
+            "Confirm the relevant stock claim is non-glossy / regular card stock, not CoroCoro glossy.",
+            "Preserve Keiji Kinebuchi as artist context for this row.",
+            "Separate from CoroCoro glossy Jigglypuff row 002.",
+            "Separate from English Wizards Promo 7 and later Jigglypuff promo memories.",
+            "Treat book, sealed-book, or insert stories as provenance evidence to inspect separately.",
+            "Before trade/spendability, require seller-controlled front/back, close-ups of stock/surface, name/title, illustrator line, copyright/layout, corners, and any book/sealed/slab/cert evidence claimed."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official copy count"
+          ]
+        }
+      ]
+    }
+  ]
+}

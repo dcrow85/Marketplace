@@ -1,0 +1,1168 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Premium File",
+    "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+    "notes": [
+      "Japanese unnumbered promo campaign source group for the November 13, 1998 Premium File rows.",
+      "This pass deepens all eight modeled Premium File rows and treats the file route plus source-index boundary as the important identification rail."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file",
+      "type": "release",
+      "context": {
+        "name_en": "Premium File",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "release_date": "1998-11-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: Premium File campaign group",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_137_neo_era_premium_file.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: adjacent Neo Era Premium File singleton",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence with the eight-row Premium File group"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local unnumbered-promo catalog models Premium File with a November 13, 1998 release date.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local Premium File group models eight contiguous source rows: 138 through 145.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The source group is an unnumbered promotional Premium File object, not a normal expansion with printed set numbers.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The adjacent source row 137 is modeled separately as Neo Era Premium File / Chikorita, so this eight-row dossier does not silently absorb it.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "Premium File matters because it makes the Johto starter evolutions feel like a prepared handoff object: Grass, Fire, and Water lines placed together before a buyer agent should even think about individual-market intent.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "Collector attention naturally gathers around the completed starter evolution lines, especially the final forms Meganium, Typhlosion, and Feraligatr, but this is a collector-reading rather than a price ranking.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A Premium File match should preserve the file route, the source-index range 138-145, and the exact card name together; name alone is not enough for unnumbered promo identity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_19981113_eight_row_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Premium File, Neo-era Premium File, Johto starter Premium File, or one of the eight Premium File card names.",
+          "summary": "Confirm the November 13, 1998 Premium File route and source-index boundary before treating a card as one of these eight unnumbered promo rows.",
+          "steps": [
+            "Confirm the claimed card is one of source rows 138-145: Bayleef, Meganium, Cyndaquil, Quilava, Typhlosion, Totodile, Croconaw, or Feraligatr.",
+            "Preserve the Premium File route separately from the card name; the unnumbered promo identity is not carried by name alone.",
+            "Do not silently absorb adjacent source row 137 / Neo Era Premium File / Chikorita into this eight-row group.",
+            "Do not merge these rows with Neo Genesis, later Johto expansion cards, or other starter-evolution printings without route evidence.",
+            "For transactional use, ask for full front/back photos, any file/page/insert evidence, and close images of corners, stock, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official product-boundary proof beyond cited catalogs",
+            "price truth",
+            "complete Premium File variant census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Johto arrives as a file you can open",
+        "why_it_matters": "Premium File is charming because it feels like Pokemon preparing the next room before asking collectors to walk into it. The three starter lines are not scattered as loose trivia; they are arranged as an object, almost a handoff packet from late Kanto memory into Johto. For an agent, the file route is the point: it tells the agent this is not just Bayleef or Typhlosion, but a card whose meaning comes from placement.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:138",
+      "type": "card",
+      "context": {
+        "name_en": "Bayleef",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:138",
+        "catalog_row_id": "138"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:138",
+          "title": "Local Japanese unnumbered promo row: Premium File Bayleef 138",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Bayleef as Premium File source row 138.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Bayleef.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bayleef opens this dossier as the middle-stage Grass starter line member after the separately modeled Chikorita row 137.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Bayleef, preserve source row 138 and the Premium File route; do not treat a later Bayleef print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_bayleef_138_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Bayleef, Johto file Bayleef, or unnumbered promo Bayleef.",
+          "summary": "Confirm Bayleef belongs to Premium File source row 138 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Bayleef.",
+            "Preserve source row 138 and the Premium File route.",
+            "Do not merge with later Bayleef expansion rows or the adjacent Chikorita singleton.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Bayleef equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The leaf in the handoff",
+        "why_it_matters": "Bayleef is the hinge of the Grass line here: not the first hello and not the final statement, but the card that makes the file feel sequential. It asks the agent to read placement, not just species.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:139",
+      "type": "card",
+      "context": {
+        "name_en": "Meganium",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:139",
+        "catalog_row_id": "139"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:139",
+          "title": "Local Japanese unnumbered promo row: Premium File Meganium 139",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Meganium as Premium File source row 139.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Meganium.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Meganium gives the Grass line its final form inside the file and is one of the natural collector anchors of the eight-row object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Meganium, preserve source row 139 and the Premium File route; do not treat a later Meganium print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_meganium_139_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Meganium, Johto file Meganium, or unnumbered promo Meganium.",
+          "summary": "Confirm Meganium belongs to Premium File source row 139 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Meganium.",
+            "Preserve source row 139 and the Premium File route.",
+            "Do not merge with later Meganium expansion rows or with generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Meganium equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The Grass line blooms inside the file",
+        "why_it_matters": "Meganium is where the file's Grass thread resolves. In a normal checklist it is just a name; in this object it tells the agent that the file is arranging evolution as anticipation.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:140",
+      "type": "card",
+      "context": {
+        "name_en": "Cyndaquil",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:140",
+        "catalog_row_id": "140"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:140",
+          "title": "Local Japanese unnumbered promo row: Premium File Cyndaquil 140",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Cyndaquil as Premium File source row 140.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Cyndaquil.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Cyndaquil begins the Fire line inside the eight-row Premium File group and gives the object one of its clearest starter hooks.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Cyndaquil, preserve source row 140 and the Premium File route; do not treat a later Cyndaquil print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_cyndaquil_140_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Cyndaquil, Johto file Cyndaquil, or unnumbered promo Cyndaquil.",
+          "summary": "Confirm Cyndaquil belongs to Premium File source row 140 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Cyndaquil.",
+            "Preserve source row 140 and the Premium File route.",
+            "Do not merge with later Cyndaquil expansion rows or generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Cyndaquil equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The small flame in the file",
+        "why_it_matters": "Cyndaquil gives Premium File its spark. The charm is that the card is not alone; it is placed where the line can grow in front of you.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:141",
+      "type": "card",
+      "context": {
+        "name_en": "Quilava",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:141",
+        "catalog_row_id": "141"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:141",
+          "title": "Local Japanese unnumbered promo row: Premium File Quilava 141",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Quilava as Premium File source row 141.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Quilava.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Quilava is the middle Fire-stage row in the file, placed between Cyndaquil and Typhlosion as part of the object sequence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Quilava, preserve source row 141 and the Premium File route; do not treat a later Quilava print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_quilava_141_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Quilava, Johto file Quilava, or unnumbered promo Quilava.",
+          "summary": "Confirm Quilava belongs to Premium File source row 141 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Quilava.",
+            "Preserve source row 141 and the Premium File route.",
+            "Do not merge with later Quilava expansion rows or generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Quilava equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The line warming up",
+        "why_it_matters": "Quilava is easy to skip if an agent only ranks final forms. Inside Premium File, though, it is the rhythm card: proof that the object is arranging evolution as a sequence.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:142",
+      "type": "card",
+      "context": {
+        "name_en": "Typhlosion",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:142",
+        "catalog_row_id": "142"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:142",
+          "title": "Local Japanese unnumbered promo row: Premium File Typhlosion 142",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Typhlosion as Premium File source row 142.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Typhlosion.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Typhlosion gives the Fire line its final-form anchor inside the Premium File object and is one of the set's obvious attention cards.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Typhlosion, preserve source row 142 and the Premium File route; do not treat a later Typhlosion print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_typhlosion_142_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Typhlosion, Johto file Typhlosion, or unnumbered promo Typhlosion.",
+          "summary": "Confirm Typhlosion belongs to Premium File source row 142 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Typhlosion.",
+            "Preserve source row 142 and the Premium File route.",
+            "Do not merge with later Typhlosion expansion rows or generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Typhlosion equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The file catches fire",
+        "why_it_matters": "Typhlosion is the card a collector's eye is likely to land on first in the Fire line. Its job here is bigger than species identity: it makes the Premium File feel like a launch signal.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:143",
+      "type": "card",
+      "context": {
+        "name_en": "Totodile",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:143",
+        "catalog_row_id": "143"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:143",
+          "title": "Local Japanese unnumbered promo row: Premium File Totodile 143",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Totodile as Premium File source row 143.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Totodile.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Totodile begins the Water line inside the Premium File group and gives the object its most playful starter energy.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Totodile, preserve source row 143 and the Premium File route; do not treat a later Totodile print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_totodile_143_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Totodile, Johto file Totodile, or unnumbered promo Totodile.",
+          "summary": "Confirm Totodile belongs to Premium File source row 143 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Totodile.",
+            "Preserve source row 143 and the Premium File route.",
+            "Do not merge with later Totodile expansion rows or generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Totodile equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The bite of the new generation",
+        "why_it_matters": "Totodile brings a different kind of personality into the file. It is the small Water card that makes Johto feel less like a list and more like a cast arriving.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:144",
+      "type": "card",
+      "context": {
+        "name_en": "Croconaw",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:144",
+        "catalog_row_id": "144"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:144",
+          "title": "Local Japanese unnumbered promo row: Premium File Croconaw 144",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Croconaw as Premium File source row 144.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Croconaw.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Croconaw is the middle Water-stage row in the file, placed between Totodile and Feraligatr as part of the object sequence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Croconaw, preserve source row 144 and the Premium File route; do not treat a later Croconaw print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_croconaw_144_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Croconaw, Johto file Croconaw, or unnumbered promo Croconaw.",
+          "summary": "Confirm Croconaw belongs to Premium File source row 144 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Croconaw.",
+            "Preserve source row 144 and the Premium File route.",
+            "Do not merge with later Croconaw expansion rows or generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Croconaw equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The awkward middle stage matters",
+        "why_it_matters": "Croconaw gives the Water line its body language. In a collector search it may not shout like Feraligatr, but in the file it is one of the steps that makes the whole object legible.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_138_premium_file:145",
+      "type": "card",
+      "context": {
+        "name_en": "Feraligatr",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:145",
+        "catalog_row_id": "145"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_138_premium_file.json#row:jp_promo_unnumbered_wotc_138_premium_file:145",
+          "title": "Local Japanese unnumbered promo row: Premium File Feraligatr 145",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local unnumbered promo source group identifies Feraligatr as Premium File source row 145.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The current local Premium File row does not provide an illustrator credit for Feraligatr.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Feraligatr closes the Water line and the eight-row Premium File group, making it one of the natural collector anchors of the object.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "For Feraligatr, preserve source row 145 and the Premium File route; do not treat a later Feraligatr print as this unnumbered promo without route evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "premium_file_feraligatr_145_boundary_v0.1",
+          "trigger": "A user or listing says Premium File Feraligatr, Johto file Feraligatr, or unnumbered promo Feraligatr.",
+          "summary": "Confirm Feraligatr belongs to Premium File source row 145 before treating it as this catalog row.",
+          "steps": [
+            "Confirm the card name is Feraligatr.",
+            "Preserve source row 145 and the Premium File route.",
+            "Do not merge with later Feraligatr expansion rows or generic Johto starter listings.",
+            "Treat the missing illustrator credit as unknown in this local source, not as no artist.",
+            "For a trade, ask for full front/back photos plus any file/page evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "file provenance",
+            "other Feraligatr equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The file ends with teeth",
+        "why_it_matters": "Feraligatr closes the sequence with weight. It is the last source row in this group, and that makes it useful for agents: if the file route is real, the boundary has an end.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

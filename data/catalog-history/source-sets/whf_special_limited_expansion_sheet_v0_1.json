@@ -1,0 +1,806 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Four-dossier deepening tranche for the 7th Next Generation World Hobby Fair Special Limited Expansion Sheet / Series 00 source slice. It covers the three source-pinned cards, Pikachu row 025, Mew row 026, and Mewtwo row 027, with emphasis on event-sheet identity, Vending-adjacent classification, Song Best Collection overlap for Mew/Mewtwo, Ken Sugimori source-provider artist texture, and special instructions against ordinary Pikachu/Mew/Mewtwo promo laundering.",
+    "in_scope": [
+      "WHF Special Limited Expansion Sheet source slice",
+      "Pikachu row 025",
+      "Mew row 026",
+      "Mewtwo row 027",
+      "7th Next Generation World Hobby Fair source window",
+      "Series 00 / Vending-adjacent classification caveat",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete World Hobby Fair event archive",
+      "complete venue schedule",
+      "official copy count",
+      "complete sheet-object variant catalog",
+      "complete later CD reprint census",
+      "retail vending release proof",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_whf_special_limited_expansion_sheet_199712",
+      "context": {
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "name_en": "WHF Special Limited Expansion Sheet source slice",
+        "name_ja": "次世代ワールドホビーフェア 特別限定拡張シート プロモ",
+        "release_date": "1997-12-07/1998-02-01",
+        "expected_source_card_count": 3,
+        "modeled_cards": [
+          "Pikachu",
+          "Mew",
+          "Mewtwo"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "7th Next Generation World Hobby Fair",
+          "special limited Expansion Sheet",
+          "Series 00 / Vending-adjacent identity",
+          "Pikachu Mew Mewtwo trio",
+          "Ken Sugimori source-provider artist texture"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
+            "name": "Pikachu",
+            "why": "Pikachu gives the sheet its immediate public face, but the event-sheet route is the identity wall.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
+            "name": "Mew",
+            "why": "Mew turns the sheet mythic and carries the later Song Best Collection overlap that agents must keep separate.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
+            "name": "Mewtwo",
+            "why": "Mewtwo gives the sheet a second mythic anchor and the same Song Best overlap risk as Mew.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 3,
+            "examples": [
+              "Pikachu",
+              "Mew",
+              "Mewtwo"
+            ],
+            "why": "The local rows credit all three cards to Sugimori as source-provider metadata, which fits the sheet's early iconic-species grammar but is not physical-card proof.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete biography",
+              "seller-card proof",
+              "direct print-name authority beyond source-provider metadata"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete WHF archive",
+          "official copy count",
+          "complete sheet-object variant catalog",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local release and selected source snapshot frame the 7th Next Generation World Hobby Fair window as December 7, 1997 through February 1, 1998.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local child slice models three source-pinned promo cards for the WHF Special Limited Expansion Sheet: Pikachu row 025, Mew row 026, and Mewtwo row 027.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "The selected Pokumon timeline lines say the 7th Next Generation World Hobby Fair had a special limited Expansion Sheet on sale with three promo cards.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The selected Bulbapedia lines describe a special preview expansion sheet available at the fair, classify the cards as Unnumbered Promotional cards, and note they are often regarded as additions to the Vending Machine collection and dubbed Series 00.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "The local source-provider rows credit Pikachu, Mew, and Mewtwo in this slice to Ken Sugimori, scoped as catalog texture rather than direct physical-card proof.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "This slice matters because it is a liminal object: a World Hobby Fair special sheet with unnumbered promotional identity, Vending-adjacent Series 00 memory, and three of the franchise's strongest early faces sharing one small event apparatus.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve WHF Special Limited Expansion Sheet route, December 1997-February 1998 event window, rows 025-027, Series 00 / Vending-adjacent classification caveat, Mew/Mewtwo Song Best overlap, and non-equivalence with ordinary Vending, Song Best, JR, CoroCoro, or later Pikachu/Mew/Mewtwo promos before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "WHF Special Limited Expansion Sheet — the little Series 00 hinge",
+        "why_it_matters": "This is exactly the sort of object the catalog should protect from flattening. It is not just Pikachu, Mew, and Mewtwo, and it is not simply ordinary Vending. It is a special limited sheet sold through the 7th Next Generation World Hobby Fair, remembered beside the Vending Machine collection as Series 00, and later tangled with Song Best memory for Mew and Mewtwo. It feels like Pokemon culture learning how many doors a card can enter through: fair, sheet, promo, vending-adjacent archive, CD overlap, collector shorthand.",
+        "not_claiming": [
+          "complete World Hobby Fair history",
+          "official copy count",
+          "complete sheet-object variant catalog",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English release: WHF Special Limited Expansion Sheet source slice",
+          "ref": "data/japanese-pre-english/releases/jp_promo_whf_special_limited_expansion_sheet_199712.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete event archive",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_source_snapshot",
+          "title": "Selected Pokumon + Bulbapedia rendered lines for WHF Special Limited Expansion Sheet / Series 00",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete event source",
+            "official copy count",
+            "complete venue schedule",
+            "complete sheet-object variant catalog",
+            "complete later CD reprint census",
+            "retail vending release proof",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_special_limited_expansion_sheet_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says WHF, World Hobby Fair, 7th Next Generation World Hobby Fair, Special Limited Expansion Sheet, Series 00, Vending, Pikachu, Mew, Mewtwo, Song Best Collection, or rows 025-027.",
+          "summary": "Confirm the WHF special sheet route before treating Pikachu, Mew, or Mewtwo as this source slice.",
+          "steps": [
+            "Confirm the source slice is the WHF Special Limited Expansion Sheet / 7th Next Generation World Hobby Fair route.",
+            "Preserve the date window 1997-12-07/1998-02-01 as selected-source context, not a complete venue schedule.",
+            "Confirm the modeled trio: Pikachu row 025, Mew row 026, and Mewtwo row 027.",
+            "Keep Series 00 / Vending-adjacent classification as a caveat: these are Unnumbered Promotional cards often regarded as Vending Machine additions, not ordinary retail Vending proof.",
+            "For Mew and Mewtwo, preserve Song Best Collection overlap as a route warning rather than collapsing the WHF and CD memories."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "complete event archive",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
+      "context": {
+        "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:025",
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "name_en": "Pikachu",
+        "artist": "Ken Sugimori",
+        "source_row": "025"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Pikachu as row 025 in the WHF Special Limited Expansion Sheet source slice.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row credits Pikachu to Ken Sugimori as source-provider metadata, not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The selected snapshot identifies Pikachu as one of the three WHF Special Limited Expansion Sheet promo cards.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu is the public-facing spark of the sheet, but its catalog value here is route discipline: WHF sheet first, famous character second.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Pikachu row 025, WHF Special Limited Expansion Sheet route, Ken Sugimori source-provider credit, and non-equivalence with JR, ANA, CoroCoro, Vending, Base, Jungle, or later Pikachu memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "card_highlights": {
+        "number": "025",
+        "rarity_signal": "Sans rareté",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "WHF special sheet route",
+          "Pikachu character gravity",
+          "Series 00 / Vending-adjacent caveat",
+          "identity trap"
+        ],
+        "assembly_note": "Pikachu row 025 is valuable to an agent because it teaches route before mascot gravity.",
+        "collector_texture_note": "A Pikachu that looks like it could pull every memory toward itself; the sheet route keeps it honest.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Pikachu — the WHF sheet face, not just another mascot row",
+        "why_it_matters": "Pikachu is dangerous because everyone recognizes it. This row asks the agent to resist that easy confidence. The card matters as Pikachu inside the World Hobby Fair sheet apparatus: row 025, Sugimori source-provider credit, Series 00/Vending-adjacent context, and a special-sheet route that should not vanish under the mascot's brightness.",
+        "not_claiming": [
+          "complete Pikachu print history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English row: Pikachu / WHF Special Limited Expansion Sheet",
+          "ref": "data/japanese-pre-english/releases/jp_promo_whf_special_limited_expansion_sheet_199712.json#row:jp_promo_whf_special_limited_expansion_sheet_199712:025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_source_snapshot",
+          "title": "Selected Pokumon + Bulbapedia rendered lines for WHF Special Limited Expansion Sheet / Series 00",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "complete event source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_special_sheet_pikachu_row025_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A user or seller says WHF Pikachu, World Hobby Fair Pikachu, Series 00 Pikachu, Vending Pikachu, Special Limited Expansion Sheet, or row 025.",
+          "summary": "Treat this as WHF-sheet Pikachu only when the event-sheet route is supported.",
+          "steps": [
+            "Confirm row 025 and WHF Special Limited Expansion Sheet source-slice context.",
+            "Keep Series 00 / Vending-adjacent wording as classification context, not ordinary Vending release proof.",
+            "Preserve Ken Sugimori as source-provider metadata, not physical-card authentication.",
+            "Check against Base/Jungle/Vending/CoroCoro/JR/ANA/later Pikachu routes before accepting a match.",
+            "If evidence only shows a generic Pikachu image, mark route unresolved."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
+      "context": {
+        "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:026",
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "name_en": "Mew",
+        "artist": "Ken Sugimori",
+        "source_row": "026"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mew as row 026 in the WHF Special Limited Expansion Sheet source slice.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row credits Mew to Ken Sugimori as source-provider metadata, not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The selected snapshot identifies Mew as a WHF Special Limited Expansion Sheet promo card and also notes Pokemon Song Best Collection CD association in the Pokumon label.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mew makes the sheet feel mythic, but it also carries overlap risk: WHF sheet memory and Song Best Collection memory must remain legible as route context.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Mew row 026, WHF Special Limited Expansion Sheet route, Song Best Collection overlap caveat, Ken Sugimori source-provider credit, and non-equivalence with JR East Mew, Fossil Mew, Southern Islands Mew, Pokemon Song Best-only memory, and later Mew promos before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "card_highlights": {
+        "number": "026",
+        "rarity_signal": "Sans rareté",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "WHF special sheet route",
+          "Mew mythic gravity",
+          "Song Best overlap caveat",
+          "Series 00 / Vending-adjacent caveat",
+          "identity trap"
+        ],
+        "assembly_note": "Mew row 026 is the sheet's mythic hinge and needs WHF/Song Best route separation.",
+        "collector_texture_note": "Mew makes every early promo feel a little secret; this row keeps the secret attached to the sheet.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Mew — the WHF sheet myth with a CD shadow",
+        "why_it_matters": "Mew is always a myth-making machine. Here the myth is unusually specific: row 026 belongs to the WHF special sheet, while the selected source label also keeps Song Best Collection in view. That overlap is not clutter; it is the assembly. A good agent should preserve it instead of forcing the card into one flattened promo bucket.",
+        "not_claiming": [
+          "complete Mew print history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English row: Mew / WHF Special Limited Expansion Sheet",
+          "ref": "data/japanese-pre-english/releases/jp_promo_whf_special_limited_expansion_sheet_199712.json#row:jp_promo_whf_special_limited_expansion_sheet_199712:026",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_source_snapshot",
+          "title": "Selected Pokumon + Bulbapedia rendered lines for WHF Special Limited Expansion Sheet / Series 00",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "complete event source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_special_sheet_mew_row026_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A user or seller says WHF Mew, World Hobby Fair Mew, Series 00 Mew, Vending Mew, Pokemon Song Best Collection Mew, Special Limited Expansion Sheet, or row 026.",
+          "summary": "Treat this as WHF-sheet Mew only when the event-sheet route is supported; keep Song Best as an overlap caveat.",
+          "steps": [
+            "Confirm row 026 and WHF Special Limited Expansion Sheet source-slice context.",
+            "Keep Series 00 / Vending-adjacent wording as classification context, not ordinary Vending release proof.",
+            "Preserve Pokemon Song Best Collection association as an overlap warning, not automatic same-route proof.",
+            "Preserve Ken Sugimori as source-provider metadata, not physical-card authentication.",
+            "Check against JR East Mew, Fossil Mew, Southern Islands Mew, Song Best-only memory, and later Mew routes before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
+      "context": {
+        "row_id": "jp_promo_whf_special_limited_expansion_sheet_199712:027",
+        "release_family_id": "jp_promo_whf_special_limited_expansion_sheet_199712",
+        "name_en": "Mewtwo",
+        "artist": "Ken Sugimori",
+        "source_row": "027"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Mewtwo as row 027 in the WHF Special Limited Expansion Sheet source slice.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local row credits Mewtwo to Ken Sugimori as source-provider metadata, not direct physical-card print proof.",
+          "sources": [
+            "s1"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "The selected snapshot identifies Mewtwo as a WHF Special Limited Expansion Sheet promo card and also notes Pokemon Song Best Collection CD association in the Pokumon label.",
+          "sources": [
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo gives the sheet a second mythic pole: not hidden like Mew, but laboratory-power memory carried through an event sheet and later CD-overlap context.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "judged_texture",
+          "tier": "B",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Mewtwo row 027, WHF Special Limited Expansion Sheet route, Song Best Collection overlap caveat, Ken Sugimori source-provider credit, and non-equivalence with Movie Promo, JR East silver-course, Base/Expansion Pack, Song Best-only memory, and later Mewtwo promos before accepting a match.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "authority_label": "local_catalog_fact",
+          "tier": "B"
+        }
+      ],
+      "card_highlights": {
+        "number": "027",
+        "rarity_signal": "Sans rareté",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "WHF special sheet route",
+          "Mewtwo mythic gravity",
+          "Song Best overlap caveat",
+          "Series 00 / Vending-adjacent caveat",
+          "identity trap"
+        ],
+        "assembly_note": "Mewtwo row 027 keeps the sheet's mythic pressure high while adding another route-overlap trap.",
+        "collector_texture_note": "Mewtwo makes the sheet feel like an early monument, but the route still has to do the identification work.",
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity"
+        ]
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "human_title": "Mewtwo — the WHF sheet's engineered myth",
+        "why_it_matters": "Mewtwo gives the WHF sheet a different kind of gravity than Mew. It feels engineered, cinematic, and early-legendary, but the agent still has to hold the route: row 027, special sheet, Series 00/Vending-adjacent context, and Song Best overlap. Otherwise Mewtwo's fame will swallow the actual object.",
+        "not_claiming": [
+          "complete Mewtwo print history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "complete artist biography"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "title": "Local Japanese pre-English row: Mewtwo / WHF Special Limited Expansion Sheet",
+          "ref": "data/japanese-pre-english/releases/jp_promo_whf_special_limited_expansion_sheet_199712.json#row:jp_promo_whf_special_limited_expansion_sheet_199712:027",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "selected_source_snapshot",
+          "title": "Selected Pokumon + Bulbapedia rendered lines for WHF Special Limited Expansion Sheet / Series 00",
+          "ref": "data/japanese-pre-english/source-snapshots/pokumon_bulbapedia_whf_special_sheet_1997_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "not_claiming": [
+            "complete event source",
+            "official copy count",
+            "seller possession",
+            "authenticity",
+            "condition truth"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "whf_special_sheet_mewtwo_row027_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A user or seller says WHF Mewtwo, World Hobby Fair Mewtwo, Series 00 Mewtwo, Vending Mewtwo, Pokemon Song Best Collection Mewtwo, Special Limited Expansion Sheet, or row 027.",
+          "summary": "Treat this as WHF-sheet Mewtwo only when the event-sheet route is supported; keep Song Best as an overlap caveat.",
+          "steps": [
+            "Confirm row 027 and WHF Special Limited Expansion Sheet source-slice context.",
+            "Keep Series 00 / Vending-adjacent wording as classification context, not ordinary Vending release proof.",
+            "Preserve Pokemon Song Best Collection association as an overlap warning, not automatic same-route proof.",
+            "Preserve Ken Sugimori as source-provider metadata, not physical-card authentication.",
+            "Check against Movie Promo Mewtwo, JR East silver-course Mewtwo, Base/Expansion Pack Mewtwo, Song Best-only memory, and later Mewtwo routes before accepting a match."
+          ],
+          "not_claiming": [
+            "physical-card authenticity",
+            "seller possession",
+            "condition truth",
+            "official copy count",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

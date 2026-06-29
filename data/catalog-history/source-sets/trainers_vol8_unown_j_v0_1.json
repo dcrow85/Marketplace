@@ -1,0 +1,558 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Unown J, the Pokémon Card Trainers Vol. 8 insert released September 1, 2000, emphasizing magazine / specialist-periodical distribution, the J/O/I/N play mechanic, Hideki Kazama art, the strange edge case of Unown J and Unown R sitting outside the Neo expansion run, and exact-row rails against English Wizards Promo and later Unown memories.",
+    "in_scope": [
+      "Pokémon Card Trainers Vol. 8 insert release dossier",
+      "Unown J unnumbered promotional row 208",
+      "magazine / specialist-periodical distribution",
+      "Hideki Kazama illustrator context",
+      "Unown J / O / I / N play-system memory",
+      "Unown J and Unown R as Neo-era forms distributed through promos rather than Neo booster rows"
+    ],
+    "not_claiming": [
+      "complete Pokémon Card Trainers magazine archive",
+      "complete Unown print census",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000",
+        "name_en": "Pokémon Card Trainers Vol. 8 insert (September 1, 2000)",
+        "release_date": "2000-09-01",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokémon Card Trainers magazine distribution",
+          "single-card Unown promo route",
+          "J/O/I/N play-system memory",
+          "Hideki Kazama art",
+          "Neo-era alphabet completion edge"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000:208",
+            "name": "Unown J [Pokémon Card Trainers Vol. 8]",
+            "why": "This is a chase because it is not loud by price or trophy aura; it is a little alphabet hinge. J reaches collectors through a specialist magazine insert, then asks to be read with O, I, and N as a word inside the play system.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c5"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Hideki Kazama",
+            "row_count": 1,
+            "examples": [
+              "Unown J [Pokémon Card Trainers Vol. 8]"
+            ],
+            "why": "Kazama matters here because Unown is design reduced to almost pure sign. The card is creature, letter, and rule object at once, and the illustrator credit helps keep that graphic identity attached to the exact magazine promo route.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "official artist intent",
+              "seller-card proof",
+              "authentication"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokémon Card Trainers archive",
+          "complete Unown print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Pokémon Card Trainers Vol. 8 insert source group as one row containing Unown J at source index 208.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia places the Japanese Unown J print in Unnumbered Promotional cards and identifies its release as a Pokémon Card Trainers Vol. 8 insert on September 1, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Unown J as a Psychic-type Basic Pokémon card with 30 HP and the Hidden Power attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says Unown J's Pokémon Power applies only if Unown J, Unown O, Unown I, and Unown N are on the player's Bench.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Unown J artwork to Hideki Kazama.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Hideki Kazama category includes multiple Unown letter cards, tying Kazama's early TCG credit surface to the alphabet-creature lane.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the English version of Unown J was released as Wizards Black Star Promo 38 and was available with Spell of the Unown: Entei on VHS or DVD.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia says the Generation II Unown forms J and R were not released in a Japanese or English expansion; they were instead released as Japanese Unnumbered Promotional cards and English Wizards Black Star Promos.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, Unown J matters because it turns the alphabet into both distribution puzzle and play puzzle: a single magazine insert that also points sideways to O, I, and N.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ],
+          "not_claiming": [
+            "official print run",
+            "complete magazine archive",
+            "complete Unown print census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pokémon Card Trainers Vol. 8 Unown J: a letter that wants company",
+        "why_it_matters": "Unown J is one of those small cards that explains why a collector catalog needs more than names and dates. It arrived through Pokémon Card Trainers Vol. 8, not a booster pack, and it is built like a tiny instruction to look sideways: J only fully wakes up beside O, I, and N. The card is a letter, a creature, a magazine insert, a Kazama graphic object, and a missing Neo-expansion edge case all at once.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokémon Card Trainers archive",
+          "complete Unown print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol8_unown_j_release_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, slab label, or agent memory says Unown J, アンノーンJ, Pokémon Card Trainers Vol. 8, September 1 2000, Wizards Promo 38, Spell of the Unown, Neo Unown, Hideki Kazama, or Unown alphabet set.",
+          "summary": "Identify Unown J by Pokémon Card Trainers Vol. 8 insert route, source index 208, Japanese unnumbered promo status, and J/O/I/N play context before trusting name-only Unown matching.",
+          "steps": [
+            "Confirm the card is Unown J, not another Unown letter.",
+            "Preserve the source route: Pokémon Card Trainers Vol. 8 insert, September 1, 2000, local source index 208.",
+            "Check that the object is being treated as a Japanese Unnumbered Promotional card, not as English Wizards Black Star Promo 38 or a Neo expansion row.",
+            "Use the J/O/I/N rule text as contextual support: this card's Pokémon Power depends on Unown J, O, I, and N on the Bench.",
+            "Preserve Hideki Kazama art credit without treating the credit alone as route proof.",
+            "Separate this row from Unown R, other Japanese Unown promos, English Spell of the Unown / Wizards Promo copies, Neo Discovery/Neo Destiny Unown cards, and name-only Unown listings.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "complete Pokémon Card Trainers archive",
+            "complete Unown print census",
+            "English Wizards Promo equivalence",
+            "Neo expansion equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokémon Card Trainers Vol. 8 Unown J",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unown_J_(Wizards_Promo_38)",
+          "title": "Unown J (Wizards Promo 38) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Pokémon Card Trainers archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_Trainers",
+          "title": "Pokémon Card Trainers - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine archive",
+            "complete insert census",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Hideki_Kazama",
+          "title": "Category: Illus. by Hideki Kazama - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000:208",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000:208",
+        "release_family_id": "jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000",
+        "name_en": "Unown J [Pokémon Card Trainers Vol. 8]",
+        "name_ja": "アンノーンJ",
+        "card_number": "None",
+        "rarity_signal": "Pokémon Card Trainers unnumbered promo"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "cc1",
+          "field": "card.identity",
+          "text": "The local catalog row identifies source index 208 as Unown J from the Pokémon Card Trainers Vol. 8 insert source slice.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "cc2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the Japanese card as アンノーンJ Unown J, a Psychic-type Basic Pokémon card with 30 HP.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc3",
+          "field": "card.rarity",
+          "text": "Bulbapedia places the Japanese Unown J in Unnumbered Promotional cards, while the local row models it with no printed number.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Unown J artwork to Hideki Kazama.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia says Unown J's Pokémon Power requires Unown J, Unown O, Unown I, and Unown N on the Bench.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc6",
+          "field": "history.variant",
+          "text": "This row must be separated from English Wizards Black Star Promo 38, Spell of the Unown media-pack copies, Unown R, Neo expansion Unown cards, and other Japanese Unown promotional rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "cc7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Unown J matters because the card is both a missing alphabet edge in the Neo-era release map and a small rule-machine that spells JOIN with other Unown cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "cc1",
+            "cc2",
+            "cc3",
+            "cc4",
+            "cc5",
+            "cc6"
+          ],
+          "not_claiming": [
+            "official market ranking",
+            "price truth",
+            "authenticity",
+            "condition truth",
+            "seller possession",
+            "official print run"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Unown J: the letter that needs O, I, and N",
+        "why_it_matters": "Unown J is wonderfully literal. It is a letter Pokémon, a magazine insert, and a card whose own rules ask it to assemble a word with its neighbors. That makes it a perfect agent-catalog card: the name is not enough, the letter is not enough, the artwork is not enough. You need the Trainers Vol. 8 route, the Japanese unnumbered promo identity, and the J/O/I/N context before the object really comes into focus.",
+        "basis_claims": [
+          "cc1",
+          "cc2",
+          "cc3",
+          "cc4",
+          "cc5",
+          "cc6",
+          "cc7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete Pokémon Card Trainers archive",
+          "complete Unown print census",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "trainers_vol8_unown_j_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A specific scan, listing, slab, seller story, or agent match says Unown J, アンノーンJ, Pokémon Card Trainers Vol. 8, September 1 2000, Wizards Promo 38, Spell of the Unown, Hideki Kazama, JOIN, or Neo Unown.",
+          "summary": "Match this card by exact Unown J identity plus Pokémon Card Trainers Vol. 8 insert route and Japanese unnumbered promo status before accepting it as row 208.",
+          "steps": [
+            "Confirm the card title is Unown J / アンノーンJ.",
+            "Confirm the source route is Pokémon Card Trainers Vol. 8 insert, September 1, 2000.",
+            "Preserve local source index 208 and no printed number.",
+            "Use the J/O/I/N Pokémon Power context as support, not as a substitute for row identity.",
+            "Preserve Hideki Kazama illustrator credit but do not use artist alone to prove route.",
+            "Separate this print from English Wizards Black Star Promo 38, Spell of the Unown VHS/DVD copies, Unown R, Neo expansion Unown cards, and other Japanese Unown promo rows.",
+            "Before spending or trade gating, require seller-controlled photos of front/back, language, card text, surface, edges/corners, and slab label if graded; catalog identity is legible support, not physical truth."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "English Wizards Promo equivalence",
+            "Spell of the Unown package provenance for a specific seller copy",
+            "Neo expansion equivalence",
+            "that catalog identity makes the evidence spendable"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_208_pok_mon_card_trainers_vol_8_insert_september_1_2000.json",
+          "title": "Local Japanese unnumbered WotC promo release row: Pokémon Card Trainers Vol. 8 Unown J",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "external event verification",
+            "physical-card authenticity",
+            "seller possession",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unown_J_(Wizards_Promo_38)",
+          "title": "Unown J (Wizards Promo 38) - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official print run",
+            "complete Pokémon Card Trainers archive",
+            "seller possession",
+            "physical-card authenticity",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_Card_Trainers",
+          "title": "Pokémon Card Trainers - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete magazine archive",
+            "complete insert census",
+            "seller possession",
+            "physical-card authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Hideki_Kazama",
+          "title": "Category: Illus. by Hideki Kazama - Bulbapedia",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist bibliography",
+            "official artist intent",
+            "seller-card proof",
+            "authentication"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2636 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "ADV-P Promotional cards - pre-WoC-edge subset",
+    "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+    "notes": [
+      "Japanese numbered ADV-P promo bounded source slice.",
+      "This pass deepens the release plus the first Hoenn-contact tranche: Kyogre ex, Groudon ex, the January 2003 McDonald's starters and Eon duo, the Shogakukan starter-evolution magazine lane, and Jirachi."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "type": "release",
+      "context": {
+        "name_en": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "name_ja": "ADV-Pプロモカード",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "release_date": "2003-01-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json",
+          "title": "Local Japanese promo WotC catalog: ADV-P pre-WoC-edge bounded subset",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete ADV-P coverage",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "complete physical provenance",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_boundary_proof",
+          "ref": "data/catalog-expansion/boundary-proof.json",
+          "title": "Catalog expansion boundary proof: ADV-P pre-edge subset",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete ADV-P coverage",
+            "row-level physical verification",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog models the bounded ADV-P pre-WoC-edge subset with a January 2003 start date.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog models 14 rows in this bounded slice: 001/ADV-P through 014/ADV-P.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.boundary",
+          "text": "The local boundary note says the full ADV-P page spans beyond this corpus; rows 015/ADV-P and later remain outside this bounded pre-edge slice.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "The modeled rows show early 2003 ADV-P moving through CoroCoro Comic, a January-February McDonald's promotion, Shogakukan Elementary School magazines, ticket exchange, and June 2003 CoroCoro coverage.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.context",
+          "text": "This slice matters because it is Pokemon's printed handoff into Hoenn: Kyogre, Groudon, Treecko, Torchic, Mudkip, Latias, Latios, and Jirachi appear as distribution objects before the later ADV-P catalog becomes too large for this boundary.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Agents must read the printed NNN/ADV-P number and keep the 001-014 boundary visible; the row cannot be treated as generic ADV-P coverage.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_pre_wotc_edge_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says ADV-P, ADV promo, 001/ADV-P through 014/ADV-P, Kyogre ex ADV-P, Groudon ex ADV-P, McDonald's ADV-P, or Jirachi ADV-P.",
+          "summary": "Confirm the printed NNN/ADV-P number and the 001-014 bounded-slice membership before using this catalog row.",
+          "steps": [
+            "Read the printed promo number and confirm it uses the NNN/ADV-P format.",
+            "Confirm the number is 001/ADV-P through 014/ADV-P before treating it as in-scope for this corpus.",
+            "Preserve the distribution note separately from the card identity.",
+            "Do not import later ADV-P rows or later ADV-era context into this bounded pre-edge slice.",
+            "For transactional use, ask for close photos of the promo number, full front, back, borders, surface, and any distribution packaging or provenance claimed by the seller."
+          ],
+          "not_claiming": [
+            "complete ADV-P coverage",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "distribution provenance"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Hoenn arrives through numbers, magazines, and meals",
+        "why_it_matters": "ADV-P is the catalog turning a corner. The old WotC-era gravity is still nearby, but the card names are suddenly ocean, continent, new starters, Eon twins, and a wish star. The slice is not all of ADV-P, and that boundary is part of its truth: this is the first numbered promo contact with the Ruby/Sapphire world, moving through CoroCoro, McDonald's, Shogakukan magazines, and ticket exchange routes before the later ADV-P field widens.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete ADV-P coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-001-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Kyogre ex",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-001-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-001-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-001-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Kyogre ex 001/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Kyogre ex as ADV-P promo number 001/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records February 2003 CoroCoro Comic, with a January 2003 distribution note, for Kyogre ex 001/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Kyogre ex 001/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Kyogre ex 001/ADV-P matters because the first modeled ADV-P number belongs to the sea-side legendary of Ruby/Sapphire's new cosmology.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_kyogre_ex_001_number_boundary_v0.1",
+          "trigger": "A user or listing says Kyogre ex ADV-P, CoroCoro Kyogre ex, or 001/ADV-P.",
+          "summary": "Confirm Kyogre ex and printed 001/ADV-P before treating the card as this ADV-P row.",
+          "steps": [
+            "Confirm the card name is Kyogre ex.",
+            "Read the printed promo number as 001/ADV-P.",
+            "Keep the CoroCoro distribution note legible but separate from physical provenance.",
+            "Do not merge with Kyogre ex 011/ADV-P or later Kyogre rows.",
+            "For a trade, ask for close photos of the number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CoroCoro copy provenance",
+            "other Kyogre equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The ocean takes the first number",
+        "why_it_matters": "There is a little thrill in seeing 001/ADV-P attached to Kyogre ex. It says the promo line is no longer orbiting only Kanto and Johto memory. The sea arrives first, through CoroCoro, with an ex frame announcing that the next era has its own weight.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-002-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Groudon ex",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-002-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-002-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-002-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Groudon ex 002/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Groudon ex as ADV-P promo number 002/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records CoroCoro Comic, January 2003, as the distribution note for Groudon ex 002/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Groudon ex 002/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Groudon ex 002/ADV-P pairs immediately with Kyogre ex, making the opening of the bounded ADV-P slice feel like the sea-and-land thesis of Hoenn printed as promo numbers.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_groudon_ex_002_number_boundary_v0.1",
+          "trigger": "A user or listing says Groudon ex ADV-P, CoroCoro Groudon ex, or 002/ADV-P.",
+          "summary": "Confirm Groudon ex and printed 002/ADV-P before treating the card as this ADV-P row.",
+          "steps": [
+            "Confirm the card name is Groudon ex.",
+            "Read the printed promo number as 002/ADV-P.",
+            "Keep the CoroCoro distribution note legible but separate from physical provenance.",
+            "Do not merge with Groudon ex 012/ADV-P or later Groudon rows.",
+            "For a trade, ask for close photos of the number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CoroCoro copy provenance",
+            "other Groudon equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The land answers immediately",
+        "why_it_matters": "Groudon ex at 002/ADV-P makes the opening pair feel intentional even when the catalog only proves the row facts. Kyogre takes the sea, Groudon takes the land, and the promo file suddenly has a Ruby/Sapphire center of gravity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-003-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Treecko",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-003-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-003-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-003-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Treecko 003/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Treecko as ADV-P promo number 003/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records a January 17-February 6, 2003 McDonald's promotion as the distribution note for Treecko 003/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Treecko 003/ADV-P starts the Hoenn starter trio inside a fast-food promotion route, which makes the new generation feel public and kid-facing rather than only booster-pack formal.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Treecko 003/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_treecko_003_mcdonalds_number_boundary_v0.1",
+          "trigger": "A user or listing says Treecko ADV-P, McDonald's Treecko, or 003/ADV-P.",
+          "summary": "Confirm Treecko and printed 003/ADV-P before treating the card as this McDonald's-route ADV-P row.",
+          "steps": [
+            "Confirm the card name is Treecko.",
+            "Read the printed promo number as 003/ADV-P.",
+            "Keep the McDonald's promotion date range as a distribution note, not as proof of physical provenance.",
+            "Do not merge with later Treecko promos or main-set Treecko cards.",
+            "For a trade, ask for close photos of the promo number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "McDonald's provenance",
+            "other Treecko equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The grass starter in public",
+        "why_it_matters": "Treecko at 003/ADV-P is the new generation stepping out of the game cartridge and into a promotion kids could actually encounter. It is not just the Grass starter; it is Hoenn becoming social distribution.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-004-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Torchic",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-004-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-004-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-004-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Torchic 004/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Torchic as ADV-P promo number 004/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records a January 17-February 6, 2003 McDonald's promotion as the distribution note for Torchic 004/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Torchic 004/ADV-P keeps the McDonald's starter trio warm and immediate: Hoenn's Fire starter appears as a numbered promo rather than a later collector abstraction.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Torchic 004/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_torchic_004_mcdonalds_number_boundary_v0.1",
+          "trigger": "A user or listing says Torchic ADV-P, McDonald's Torchic, or 004/ADV-P.",
+          "summary": "Confirm Torchic and printed 004/ADV-P before treating the card as this McDonald's-route ADV-P row.",
+          "steps": [
+            "Confirm the card name is Torchic.",
+            "Read the printed promo number as 004/ADV-P.",
+            "Keep the McDonald's promotion date range as a distribution note, not as proof of physical provenance.",
+            "Do not merge with later Torchic promos or main-set Torchic cards.",
+            "For a trade, ask for close photos of the promo number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "McDonald's provenance",
+            "other Torchic equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The small fire of Hoenn",
+        "why_it_matters": "Torchic is a perfect promo character because it is tiny, bright, and instantly legible. In this ADV-P row, the little Fire starter carries a bigger signal: Ruby/Sapphire is no longer only incoming. It is being handed out.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-005-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Mudkip",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-005-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-005-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-005-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Mudkip 005/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Mudkip as ADV-P promo number 005/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records a January 17-February 6, 2003 McDonald's promotion as the distribution note for Mudkip 005/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Mudkip 005/ADV-P completes the McDonald's starter trio in this slice, making the three Hoenn starters legible as one public launch gesture.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Mudkip 005/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_mudkip_005_mcdonalds_number_boundary_v0.1",
+          "trigger": "A user or listing says Mudkip ADV-P, McDonald's Mudkip, or 005/ADV-P.",
+          "summary": "Confirm Mudkip and printed 005/ADV-P before treating the card as this McDonald's-route ADV-P row.",
+          "steps": [
+            "Confirm the card name is Mudkip.",
+            "Read the printed promo number as 005/ADV-P.",
+            "Keep the McDonald's promotion date range as a distribution note, not as proof of physical provenance.",
+            "Do not merge with later Mudkip promos or main-set Mudkip cards.",
+            "For a trade, ask for close photos of the promo number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "McDonald's provenance",
+            "other Mudkip equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The water starter closes the trio",
+        "why_it_matters": "Mudkip makes the January 2003 McDonald's group feel complete. Treecko, Torchic, Mudkip: the new starter choice shows up as three numbered promo rows, the exact sort of public contact that turns game choice into card memory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-006-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Latias",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-006-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-006-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-006-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Latias 006/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Latias as ADV-P promo number 006/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records a January 17-February 6, 2003 McDonald's promotion as the distribution note for Latias 006/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Latias 006/ADV-P makes the same public route carry not only starters but the new Eon mythology of Hoenn.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Latias 006/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_latias_006_mcdonalds_number_boundary_v0.1",
+          "trigger": "A user or listing says Latias ADV-P, McDonald's Latias, or 006/ADV-P.",
+          "summary": "Confirm Latias and printed 006/ADV-P before treating the card as this McDonald's-route ADV-P row.",
+          "steps": [
+            "Confirm the card name is Latias.",
+            "Read the printed promo number as 006/ADV-P.",
+            "Keep the McDonald's promotion date range as a distribution note, not as proof of physical provenance.",
+            "Do not merge with Latios 007/ADV-P or later Latias rows.",
+            "For a trade, ask for close photos of the promo number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "McDonald's provenance",
+            "other Latias equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The red Eon twin joins the public route",
+        "why_it_matters": "Latias is a different kind of early Hoenn excitement than the starters. It is not the first choice in the lab; it is the new mythic motion of the region. Seeing it inside the McDonald's ADV-P run makes the promotion feel bigger than a starter sample.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-007-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Latios",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-007-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-007-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-007-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Latios 007/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Latios as ADV-P promo number 007/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records a January 17-February 6, 2003 McDonald's promotion as the distribution note for Latios 007/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Latios 007/ADV-P completes the Eon pair in the McDonald's tranche, making the early ADV-P slice feel like a compact map of Hoenn's new emotional centers.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Latios 007/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_latios_007_mcdonalds_number_boundary_v0.1",
+          "trigger": "A user or listing says Latios ADV-P, McDonald's Latios, or 007/ADV-P.",
+          "summary": "Confirm Latios and printed 007/ADV-P before treating the card as this McDonald's-route ADV-P row.",
+          "steps": [
+            "Confirm the card name is Latios.",
+            "Read the printed promo number as 007/ADV-P.",
+            "Keep the McDonald's promotion date range as a distribution note, not as proof of physical provenance.",
+            "Do not merge with Latias 006/ADV-P or later Latios rows.",
+            "For a trade, ask for close photos of the promo number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "McDonald's provenance",
+            "other Latios equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The blue Eon twin closes the pair",
+        "why_it_matters": "Latios belongs beside Latias. In the ADV-P slice, the pair gives the January 2003 promotion a skyward feeling: starters for choosing, Eon twins for wonder. That contrast is what makes the early Hoenn assembly feel alive.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Grovyle",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-008-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-008-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Grovyle 008/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Grovyle as ADV-P promo number 008/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Shogakukan Elementary School magazines, March-April 2003, as the distribution note for Grovyle 008/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Grovyle 008/ADV-P as a Grass Pokemon row, but does not provide HP, attacks, stage text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Grovyle 008/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Grovyle 008/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Grovyle 008/ADV-P matters because the ADV-P slice shifts from McDonald's public starter sampling into Shogakukan magazine circulation: the Hoenn starters are no longer only first partners, they are evolving through kid-media routes.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Grovyle and printed 008/ADV-P, preserve the Shogakukan Elementary School magazine route as distribution context only, and avoid importing later Grovyle promos, main-set Grovyle rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_grovyle_008_shogakukan_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Grovyle ADV-P, Shogakukan Grovyle, Elementary School magazine Grovyle, 008/ADV-P, Japanese Grovyle promo, or early Hoenn promo.",
+          "summary": "Confirm Grovyle and printed 008/ADV-P before treating the card as this Shogakukan Elementary School magazine ADV-P row.",
+          "steps": [
+            "Confirm the card name is Grovyle.",
+            "Read the printed promo number as 008/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the Shogakukan Elementary School magazines March-April 2003 note legible but separate from physical provenance.",
+            "Do not import later ADV-P rows, main-set Grovyle cards, English EX-era Grovyle rows, or Treecko/Torchic/Marshtomp starter-family memory into this row without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for magazine/package provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Shogakukan copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "later ADV-P equivalence",
+            "main-set Grovyle equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "008/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "Shogakukan magazine route",
+          "promo numbering",
+          "Hoenn evolution",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "008/ADV-P",
+          "Grovyle",
+          "Grass",
+          "Shogakukan Elementary School magazines",
+          "March-April 2003",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Grovyle 008/ADV-P is Hoenn growing up through a magazine route: a Grass evolution row whose most important facts are the printed promo number and the Shogakukan distribution lane."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Grovyle 008/ADV-P: Hoenn starts to evolve",
+        "why_it_matters": "Grovyle is where the early ADV-P slice stops feeling like only arrival and starts feeling like growth. Treecko came through the McDonald's route as a first partner; Grovyle arrives through Shogakukan Elementary School magazines, a kid-media lane with a different texture. The row is modest, but the assembly is rich: printed number, school-magazine route, Grass evolution, and a bounded corpus edge that tells the agent exactly how much it knows.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Shogakukan copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-009-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Combusken",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-009-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-009-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-009-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Combusken 009/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Combusken as ADV-P promo number 009/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Shogakukan Elementary School magazines, February 2003, as the distribution note for Combusken 009/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Combusken 009/ADV-P as a Fire Pokemon row, but does not provide HP, attacks, stage text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Combusken 009/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Combusken 009/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Combusken 009/ADV-P matters because it gives the Fire starter line the same magazine-route evolution signal that Grovyle gives Treecko: early Hoenn is being assembled through school-age media, not only public fast-food sampling.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Combusken and printed 009/ADV-P, preserve the Shogakukan Elementary School magazine route as distribution context only, and avoid importing later Combusken promos, main-set Combusken rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_combusken_009_shogakukan_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Combusken ADV-P, Shogakukan Combusken, Elementary School magazine Combusken, 009/ADV-P, Japanese Combusken promo, or early Hoenn promo.",
+          "summary": "Confirm Combusken and printed 009/ADV-P before treating the card as this Shogakukan Elementary School magazine ADV-P row.",
+          "steps": [
+            "Confirm the card name is Combusken.",
+            "Read the printed promo number as 009/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the Shogakukan Elementary School magazines February 2003 note legible but separate from physical provenance.",
+            "Do not import later ADV-P rows, main-set Combusken cards, English EX-era Combusken rows, or Treecko/Grovyle/Torchic/Marshtomp starter-family memory into this row without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for magazine/package provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Shogakukan copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "later ADV-P equivalence",
+            "main-set Combusken equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "009/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "Shogakukan magazine route",
+          "promo numbering",
+          "Hoenn evolution",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "009/ADV-P",
+          "Combusken",
+          "Fire",
+          "Shogakukan Elementary School magazines",
+          "February 2003",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Combusken 009/ADV-P is the Fire-side companion to the Shogakukan evolution lane: a numbered promo whose important facts are the printed number, February 2003 magazine route, and source silence around art details."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Combusken 009/ADV-P: Torchic grows up in print",
+        "why_it_matters": "Combusken gives the early ADV-P slice a different kind of heat. The McDonald's cards say Hoenn has arrived; the Shogakukan magazine evolutions say kids were already being invited to follow those partners forward. It is a small row with a precise job: printed 009/ADV-P, Fire evolution, February 2003 school-magazine route, and no permission to pretend the source tells us more than that.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Shogakukan copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Marshtomp",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-010-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-010-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Marshtomp 010/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Marshtomp as ADV-P promo number 010/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records Shogakukan Elementary School magazines, February 2003, as the distribution note for Marshtomp 010/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Marshtomp 010/ADV-P as a Water Pokemon row, but does not provide HP, attacks, stage text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Marshtomp 010/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Marshtomp 010/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Marshtomp 010/ADV-P matters because it completes the Shogakukan middle-evolution trio for the Hoenn starters: Grass, Fire, and Water all move from first-partner sampling into magazine-followed growth.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Marshtomp and printed 010/ADV-P, preserve the Shogakukan Elementary School magazine route as distribution context only, and avoid importing later Marshtomp promos, main-set Marshtomp rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_marshtomp_010_shogakukan_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Marshtomp ADV-P, Shogakukan Marshtomp, Elementary School magazine Marshtomp, 010/ADV-P, Japanese Marshtomp promo, or early Hoenn promo.",
+          "summary": "Confirm Marshtomp and printed 010/ADV-P before treating the card as this Shogakukan Elementary School magazine ADV-P row.",
+          "steps": [
+            "Confirm the card name is Marshtomp.",
+            "Read the printed promo number as 010/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the Shogakukan Elementary School magazines February 2003 note legible but separate from physical provenance.",
+            "Do not import later ADV-P rows, main-set Marshtomp cards, English EX-era Marshtomp rows, or Treecko/Grovyle/Torchic/Combusken starter-family memory into this row without number evidence.",
+            "Do not infer illustrator, attacks, HP, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, and surface; ask for magazine/package provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Shogakukan copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "later ADV-P equivalence",
+            "main-set Marshtomp equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "010/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "Shogakukan magazine route",
+          "promo numbering",
+          "Hoenn evolution",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "010/ADV-P",
+          "Marshtomp",
+          "Water",
+          "Shogakukan Elementary School magazines",
+          "February 2003",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Marshtomp 010/ADV-P is the Water-side completion of the Shogakukan evolution lane: a numbered promo whose value to the catalog is route, number, and careful restraint."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Marshtomp 010/ADV-P: the third starter grows too",
+        "why_it_matters": "Marshtomp makes the Shogakukan lane feel intentional rather than accidental. Grovyle, Combusken, and Marshtomp together turn the early ADV-P slice into a tiny coming-of-age map for Hoenn: the starters were not just introduced, they were followed. The source does not give us art, attacks, or a scan to lean on, so the agent's job is beautifully narrow: hold the printed number, the Water identity, and the February 2003 magazine route without pretending those are physical-card proof.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "Shogakukan copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Kyogre ex",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-011-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-011-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Kyogre ex 011/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Kyogre ex as ADV-P promo number 011/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records February 2003 CoroCoro Comic ticket exchange as the distribution note for Kyogre ex 011/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Kyogre ex 011/ADV-P as a Water Pokemon row, but does not provide HP, attacks, stage text, ex rules text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Kyogre ex 011/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Kyogre ex 011/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Kyogre ex 011/ADV-P matters because it re-enters the bounded ADV-P slice as a ticket-exchange object: the sea-side legendary is no longer only the opening number, but something readers had to route through CoroCoro participation to obtain.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Kyogre ex and printed 011/ADV-P, preserve the February 2003 CoroCoro Comic ticket-exchange route as distribution context only, and avoid merging this row with Kyogre ex 001/ADV-P, later Kyogre ex rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_kyogre_ex_011_ticket_exchange_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Kyogre ex ADV-P, ticket-exchange Kyogre, CoroCoro Kyogre ex, 011/ADV-P, Japanese Kyogre ex promo, or early Hoenn ex promo.",
+          "summary": "Confirm Kyogre ex and printed 011/ADV-P before treating the card as this February 2003 CoroCoro Comic ticket-exchange ADV-P row.",
+          "steps": [
+            "Confirm the card name is Kyogre ex.",
+            "Read the printed promo number as 011/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the February 2003 CoroCoro Comic ticket-exchange note legible but separate from physical provenance.",
+            "Do not merge this card with Kyogre ex 001/ADV-P, later ADV-P Kyogre rows, main-set Kyogre ex cards, English EX-era Kyogre ex rows, or Groudon ex companion memory without number evidence.",
+            "Do not infer illustrator, attacks, HP, ex rules text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and ex header area; ask for ticket-exchange provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "CoroCoro ticket-exchange provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ex rules text",
+            "Kyogre ex 001/ADV-P equivalence",
+            "later ADV-P equivalence",
+            "main-set Kyogre ex equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "011/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "CoroCoro ticket exchange",
+          "promo numbering",
+          "Hoenn legendary",
+          "ex-era signal",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "011/ADV-P",
+          "Kyogre ex",
+          "Water",
+          "February 2003 CoroCoro Comic ticket exchange",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Kyogre ex 011/ADV-P is the sea legendary as a ticket-exchange object: a numbered promo where the route matters as much as the name, and where 011/ADV-P must not be collapsed into 001/ADV-P."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Kyogre ex 011/ADV-P: the sea returns by ticket",
+        "why_it_matters": "Kyogre already opens this bounded ADV-P world at 001/ADV-P, but 011/ADV-P has a different feeling. This is not simply the sea arriving; it is the sea being chased through CoroCoro's ticket-exchange machinery. That is the assembly we care about: magazine reader, ticket route, early ex-era legendary, and a printed number that tells the agent which Kyogre this is. The source gives us the route and the row, not the physical copy in front of a buyer.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CoroCoro ticket-exchange provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Groudon ex",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-012-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-012-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Groudon ex 012/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Groudon ex as ADV-P promo number 012/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records February 2003 CoroCoro Comic ticket exchange as the distribution note for Groudon ex 012/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Groudon ex 012/ADV-P as a Fighting Pokemon row, but does not provide HP, attacks, stage text, ex rules text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Groudon ex 012/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Groudon ex 012/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Groudon ex 012/ADV-P matters because it completes the February 2003 ticket-exchange land-and-sea pair with Kyogre ex 011/ADV-P: Hoenn's weather mythology becomes a participation route, not only a set-list fact.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Groudon ex and printed 012/ADV-P, preserve the February 2003 CoroCoro Comic ticket-exchange route as distribution context only, and avoid merging this row with Groudon ex 002/ADV-P, later Groudon ex rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_groudon_ex_012_ticket_exchange_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Groudon ex ADV-P, ticket-exchange Groudon, CoroCoro Groudon ex, 012/ADV-P, Japanese Groudon ex promo, or early Hoenn ex promo.",
+          "summary": "Confirm Groudon ex and printed 012/ADV-P before treating the card as this February 2003 CoroCoro Comic ticket-exchange ADV-P row.",
+          "steps": [
+            "Confirm the card name is Groudon ex.",
+            "Read the printed promo number as 012/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the February 2003 CoroCoro Comic ticket-exchange note legible but separate from physical provenance.",
+            "Do not merge this card with Groudon ex 002/ADV-P, later ADV-P Groudon rows, main-set Groudon ex cards, English EX-era Groudon ex rows, or Kyogre ex companion memory without number evidence.",
+            "Do not infer illustrator, attacks, HP, ex rules text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and ex header area; ask for ticket-exchange provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "CoroCoro ticket-exchange provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ex rules text",
+            "Groudon ex 002/ADV-P equivalence",
+            "later ADV-P equivalence",
+            "main-set Groudon ex equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "012/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "CoroCoro ticket exchange",
+          "promo numbering",
+          "Hoenn legendary",
+          "ex-era signal",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "012/ADV-P",
+          "Groudon ex",
+          "Fighting",
+          "February 2003 CoroCoro Comic ticket exchange",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Groudon ex 012/ADV-P is the land legendary as a ticket-exchange object: paired with Kyogre ex 011/ADV-P, but still its own numbered route and not a stand-in for 002/ADV-P."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Groudon ex 012/ADV-P: the land answers the ticket",
+        "why_it_matters": "Groudon ex 012/ADV-P is the other half of the ticket-exchange weather myth. If Kyogre is the sea being chased through CoroCoro, Groudon is the land answering back: same route, same early ex-era gravity, a different elemental promise. The agent should feel the pair, but not smear the numbers. This is 012/ADV-P, not 002/ADV-P, and the catalog row gives route and identity rather than proof of a seller's card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CoroCoro ticket-exchange provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Armaldo ex",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-013-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-013-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Armaldo ex 013/ADV-P",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability",
+            "distribution provenance"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights approval"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia raw wikitext identify Armaldo ex as ADV-P promo number 013/ADV-P in the bounded pre-WoC-edge ADV-P slice.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records May 2003 CoroCoro Comic, with an April 2003 note, as the distribution context for Armaldo ex 013/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The local row marks Armaldo ex 013/ADV-P as a Fighting Pokemon row, but does not provide HP, attacks, stage text, ex rules text, or Japanese name in the promoted exact-source payload.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Armaldo ex 013/ADV-P, so this dossier leaves the artist unset rather than importing art memory from another print.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local row does not promote a row-specific image URL for Armaldo ex 013/ADV-P; image provenance is raw-wikitext identity only, not an image witness.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Armaldo ex 013/ADV-P matters because it widens the bounded ADV-P story beyond starters and weather legends: Hoenn's fossil ecology enters the early ex-era promo lane through CoroCoro.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should confirm Armaldo ex and printed 013/ADV-P, preserve the May 2003 CoroCoro Comic / April 2003 note as distribution context only, and avoid importing later Armaldo ex rows, main-set fossil-memory rows, or art/attack details absent from this source row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_armaldo_ex_013_corocoro_number_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Armaldo ex ADV-P, CoroCoro Armaldo ex, 013/ADV-P, Japanese Armaldo ex promo, fossil ex promo, or early Hoenn ex promo.",
+          "summary": "Confirm Armaldo ex and printed 013/ADV-P before treating the card as this May 2003 CoroCoro Comic ADV-P row.",
+          "steps": [
+            "Confirm the card name is Armaldo ex.",
+            "Read the printed promo number as 013/ADV-P and keep it inside the bounded 001-014 pre-edge slice.",
+            "Keep the May 2003 CoroCoro Comic / April 2003 note legible but separate from physical provenance.",
+            "Do not merge this card with later ADV-P Armaldo rows, main-set Armaldo ex cards, English EX-era Armaldo ex rows, or broader fossil-card memory without number evidence.",
+            "Do not infer illustrator, attacks, HP, ex rules text, Japanese name, image availability, seller possession, authenticity, condition, or distribution provenance from this catalog row.",
+            "For a trade, ask for close photos of the promo number, full front, back, borders, surface, and ex header area; ask for CoroCoro provenance only if the seller claims it."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "CoroCoro copy provenance",
+            "image availability",
+            "illustrator credit",
+            "Japanese name certainty",
+            "attack text",
+            "ex rules text",
+            "later ADV-P equivalence",
+            "main-set Armaldo ex equivalence",
+            "fossil-card equivalence",
+            "complete ADV-P coverage",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "013/ADV-P",
+        "rarity_signal": "ADV-P Promotional cards - pre-WoC-edge subset",
+        "artist": "",
+        "assembly_themes": [
+          "CoroCoro magazine route",
+          "promo numbering",
+          "Hoenn fossil ecology",
+          "ex-era signal",
+          "bounded ADV-P slice",
+          "no image witness"
+        ],
+        "signals": [
+          "ADV-P Promotional cards - pre-WoC-edge subset",
+          "013/ADV-P",
+          "Armaldo ex",
+          "Fighting",
+          "May 2003 CoroCoro Comic",
+          "April 2003 note",
+          "no row-specific image promoted",
+          "artist not provided by source"
+        ],
+        "collector_texture_note": "Armaldo ex 013/ADV-P is the fossil-side widening of early ADV-P: a CoroCoro-routed ex promo whose best catalog value is precise number, route, and restraint."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Armaldo ex 013/ADV-P: the fossil lane surfaces",
+        "why_it_matters": "After starters and weather gods, Armaldo ex is a lovely swerve. It says early ADV-P was not only selling the obvious symbols of Hoenn; it was also making room for the region's stranger ancient ecology. The card's catalog truth is narrow but flavorful: 013/ADV-P, Fighting, CoroCoro's May 2003 lane with an April note, no source-promoted image, no artist credit, no permission to pretend a row is a physical card.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "CoroCoro copy provenance",
+          "illustrator credit",
+          "image witness"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
+      "type": "card",
+      "context": {
+        "name_en": "Jirachi",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+        "row_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
+        "catalog_row_id": "numbered_adv_p_promo_bounded_subset-014-adv-p"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json#row:jp_promo_adv_p_pre_wotc_edge_200301_200305:numbered_adv_p_promo_bounded_subset-014-adv-p",
+          "title": "Local Japanese promo WotC catalog row: Jirachi 014/ADV-P",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference_raw",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+          "title": "Bulbapedia raw wikitext: ADV-P Promotional cards (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Media Factory source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Jirachi as ADV-P promo number 014/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "The local row records June 2003 CoroCoro Comic, with a May 2003 note, as the distribution context for Jirachi 014/ADV-P.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Jirachi 014/ADV-P is a natural capstone for this bounded slice: a wish-star mythic closing the early Hoenn promo edge before later ADV-P rows fall outside the corpus boundary.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The current numbered ADV-P source row does not provide an illustrator credit for Jirachi 014/ADV-P, so this dossier leaves the artist unset.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "adv_p_jirachi_014_number_boundary_v0.1",
+          "trigger": "A user or listing says Jirachi ADV-P, CoroCoro Jirachi, June 2003 Jirachi, or 014/ADV-P.",
+          "summary": "Confirm Jirachi and printed 014/ADV-P before treating the card as this bounded ADV-P row.",
+          "steps": [
+            "Confirm the card name is Jirachi.",
+            "Read the printed promo number as 014/ADV-P.",
+            "Keep the June 2003 CoroCoro / May 2003 note legible but separate from physical provenance.",
+            "Do not use this row to include 015/ADV-P or later ADV-P cards in the bounded slice.",
+            "For a trade, ask for close photos of the promo number, full front, back, and surface."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "CoroCoro copy provenance",
+            "later ADV-P equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The wish star at the boundary",
+        "why_it_matters": "Jirachi at 014/ADV-P feels like a hinge. It is still inside our bounded pre-edge slice, but it points toward the wider ADV-P future. As a collector row, it is lovely because it lets the catalog say both things at once: here is a mythic new Hoenn presence, and here is the exact place where this corpus stops.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

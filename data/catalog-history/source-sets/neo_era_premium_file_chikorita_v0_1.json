@@ -1,0 +1,614 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Neo Era Premium File Chikorita",
+    "release_family_id": "jp_promo_unnumbered_wotc_137_neo_era_premium_file",
+    "notes": [
+      "Deepens the first Neo Era Premium File source slice.",
+      "Covers the single modeled source-pinned row: Chikorita source index 137.",
+      "Preserves the local date caveat: the source row inherits aggregate continuation-slice date baggage, while the Premium File itself is sourced to December 10, 1999."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_137_neo_era_premium_file",
+      "type": "release",
+      "context": {
+        "name_en": "Neo Era Premium File",
+        "name_ja": "プレミアムファイル",
+        "release_family_id": "jp_promo_unnumbered_wotc_137_neo_era_premium_file",
+        "release_date": "1999-12-10",
+        "modeled_count": 1,
+        "full_product_card_count": 9
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Gold and Silver launch celebration",
+          "Neo era first Premium File",
+          "Generation II first-partner family sheet",
+          "nine-card starter-evolution product",
+          "card book / binder-object presentation",
+          "Ken Sugimori Chikorita print",
+          "Gold and Silver to a New World expansion-symbol boundary",
+          "WHF / Champion Road Chikorita route boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_137_neo_era_premium_file:137",
+            "name": "Chikorita",
+            "why": "Chikorita is the quiet opening to the Premium File story: the first Johto partner as a handled binder-card object, released exactly at the Gold/Silver threshold. It is not the loudest card in the nine-card file, but it is the first leaf of the Neo era turning over.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "name_ja": "杉森建",
+            "row_count": 1,
+            "examples": [
+              "Chikorita"
+            ],
+            "why": "Sugimori's Chikorita print connects the Premium File to the franchise's public design grammar: official character art becoming a collectible launch object for a new generation.",
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete sealed-product census",
+          "official print run",
+          "complete Premium File product taxonomy"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_137_neo_era_premium_file.json",
+          "title": "Local Japanese unnumbered WotC catalog: Neo Era Premium File",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "exact product date authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise",
+          "title": "Bulbapedia: Neo TCG Era merchandise",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete sealed-product census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Chikorita_(Neo_Genesis_54)",
+          "title": "Bulbapedia: Chikorita (Neo Genesis 54)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "Bulbapedia's Neo TCG Era merchandise page says the Premium File was made available on December 10, 1999 to celebrate the release of Pokemon Gold and Silver.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "Bulbapedia says the Premium File includes special prints of the Generation II first partner Pokemon and their Evolutions for a total of nine cards, plus a card book.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned row for this route: Chikorita source index 137.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The Premium File matters as a binder-like launch object: it packaged the Johto first-partner lines as something to hold and page through at the moment Gold and Silver were widening Pokemon beyond Kanto.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia's Chikorita (Neo Genesis 54) page credits the card illustration to Ken Sugimori / 杉森建.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Sugimori profile identifies him as the illustrator of the original artwork for the Pokemon games and the original artwork for all 151 Generation I Pokemon, making the credit important to how early official Pokemon visual memory travels into cards.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia's Chikorita page says the Japanese print was one of nine Unnumbered Promotional cards available in the Premium File released on December 10, 1999, and that it uses the Gold and Silver to a New World expansion symbol.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.boundary",
+          "text": "Agents should keep this Premium File Chikorita route separate from World Hobby Fair / Champion Road Chikorita rows, regular Neo Genesis English #54 listings, later 25th Anniversary jumbo first-partner prints, and generic Neo Premium File sealed-product lots without card evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The catalog can make the Premium File route and visible-tell checklist legible, but it does not prove a seller owns the card, that a shown card is authentic, that a sealed file includes the exact card state claimed, that condition is true, that price is fair, or that the row is spendable.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Neo Era Premium File — Johto arrives as a thing you can page through",
+        "why_it_matters": "The Premium File is not just a small stack of starter cards. It is Pokemon turning the page from Kanto into Johto, literally: nine special starter-family prints and a card book released on the Gold/Silver threshold. Chikorita gives that file its soft opening. The card is quiet, but the object around it is loud: a new region, a new generation, and an early lesson that Pokemon history often lives in packaging, routes, and how children were invited to hold the future before the booster era caught up.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "complete sealed-product state",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "neo_era_premium_file_chikorita_route_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat Premium File Chikorita as a specific Gold/Silver launch-file route, not as a generic Chikorita, Neo Genesis, WHF, Champion Road, or jumbo first-partner listing.",
+          "trigger": "A listing, want, scan, seller memory, or agent note says Chikorita, チコリータ, Chicorita, Premium File, Neo Premium File, Gold/Silver, Neo Genesis 54, Johto starter, starter file, or unnumbered Japanese promo.",
+          "steps": [
+            "Anchor the route to Neo Era Premium File / プレミアムファイル and December 10, 1999, not the inherited local continuation-slice date.",
+            "Expect the broader product to be a nine-card Generation II first-partner family file with a card book; do not treat a loose Chikorita as a complete Premium File.",
+            "Confirm the card candidate is Chikorita / チコリータ / Chicorita and source index 137 in this local catalog route.",
+            "Look for the Japanese Premium File / unnumbered promotional route and the Gold and Silver to a New World expansion-symbol context.",
+            "Separate this row from WHF / Champion Road Chikorita prints, which use a different route and neighboring source indices.",
+            "Separate this row from English Neo Genesis #54 and from the later 25th Anniversary jumbo first-partner print.",
+            "If a seller offers a sealed Premium File, ask whether the claim is about sealed-product condition, included-card condition, or a specific Chikorita copy; those are different evidence questions.",
+            "Before any funded trade, require seller-controlled photos of the actual card or sealed product, not only a catalog image, checklist entry, or product name."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_137_neo_era_premium_file.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Chikorita_(Neo_Genesis_54)"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "sealed-product completeness",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_137_neo_era_premium_file:137",
+      "type": "card",
+      "context": {
+        "name_en": "Chikorita",
+        "name_ja": "チコリータ",
+        "romaji": "Chicorita",
+        "row_id": "jp_promo_unnumbered_wotc_137_neo_era_premium_file:137",
+        "release_family_id": "jp_promo_unnumbered_wotc_137_neo_era_premium_file",
+        "source_index": "137"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "why_it_matters": "Chikorita is the gentle one, which makes the assembly more interesting, not less. In the Premium File it is a first contact point for Johto: small, leafy, unnumbered, and packaged as part of a launch-era object that taught collectors a new region by letting them page through its starters.",
+        "identity": {
+          "name_en": "Chikorita",
+          "name_ja": "チコリータ",
+          "romaji": "Chicorita",
+          "number": "source index 137",
+          "category": "Grass Basic Pokemon",
+          "rarity_signal": "Unnumbered Promotional / Premium File",
+          "authority_label": "fact"
+        },
+        "artist": {
+          "name": "Ken Sugimori",
+          "name_ja": "杉森建",
+          "why": "Sugimori's line here matters because it lets a starter feel official before it feels rare. Chikorita is not performing spectacle; it is carrying official design trust into the new region.",
+          "authority_label": "fact",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ]
+        },
+        "collector_texture": [
+          "Neo Era Premium File / プレミアムファイル route",
+          "Gold and Silver launch threshold",
+          "nine-card Generation II starter-family object",
+          "Gold and Silver to a New World expansion-symbol context",
+          "Ken Sugimori / 杉森建 official-art gravity",
+          "quiet Grass starter as the file's opening emotional note"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_137_neo_era_premium_file.json",
+          "title": "Local Japanese unnumbered WotC catalog: Neo Era Premium File Chikorita row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Neo_TCG_Era_merchandise",
+          "title": "Bulbapedia: Neo TCG Era merchandise",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official print run"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Chikorita_(Neo_Genesis_54)",
+          "title": "Bulbapedia: Chikorita (Neo Genesis 54)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ken_Sugimori",
+          "title": "Bulbapedia: Ken Sugimori",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies source index 137 as Chikorita in the Neo Era Premium File source group; Bulbapedia's card page identifies the card as Chikorita, Japanese チコリータ Chicorita.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says the Japanese print was one of nine Unnumbered Promotional cards available in the Premium File released on December 10, 1999.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the Chikorita (Neo Genesis 54) illustration to Ken Sugimori / 杉森建.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says this Japanese print uses the Gold and Silver to a New World expansion symbol and belongs to the Premium File route; the page also notes a later 25th Anniversary jumbo version, which should not be collapsed into this 1999 object.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.impact",
+          "text": "Bulbapedia's Ken Sugimori page identifies him as the illustrator of the original artwork for the Pokemon games and all 151 Generation I Pokemon, which makes his Johto starter card credit important as a continuity signal in the new generation.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Chikorita matters here because the Premium File turns a new-region starter into a pageable object at the Gold/Silver launch boundary; its value to the catalog is route memory, not only character popularity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "release.boundary",
+          "text": "Agents should not match by Chikorita name alone; this row requires Premium File / source index 137 context and should be separated from WHF row 148, Champion Road row 151, regular English Neo Genesis #54, and later jumbo Chikorita prints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "The catalog can identify why a Chikorita candidate belongs near this Premium File row, but it cannot authenticate the card, prove possession, assign condition, price the copy, prove sealed-product completeness, or promote the row into spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c7"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Chikorita — the little leaf at the Neo threshold",
+        "why_it_matters": "This is the kind of card a big-price list can make look small. But if the catalog is trying to teach an agent how Pokemon was assembled, Chikorita in the first Premium File is beautiful: the new Grass starter placed into a nine-card Gold/Silver object, gentle official art carrying the promise that there is a whole new region now. It is a card about arrival. Not a trophy, not a battle prize, not the loudest holo in the room. A leaf on the first page.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "sealed-product completeness",
+          "spendability"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "neo_era_premium_file_chikorita_137_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Premium File Chikorita only when the Chikorita identity, Japanese Premium File route, source index 137, and Gold/Silver-to-a-New-World symbol context line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Chikorita, チコリータ, Chicorita, Premium File, Neo Premium File, Neo Genesis 54, Gold/Silver, Johto starter, or source index 137.",
+          "steps": [
+            "Confirm the card is Chikorita / チコリータ / Chicorita, a Grass Basic Pokemon, not another Johto starter or evolution from the nine-card file.",
+            "Confirm the route is Neo Era Premium File / プレミアムファイル, released December 10, 1999, rather than a later English Neo Genesis or anniversary product.",
+            "Look for the Gold and Silver to a New World expansion symbol context described on Bulbapedia for the Japanese Premium File print.",
+            "Check that the candidate is being asserted as source index 137 in this local unnumbered-promo catalog, not WHF source index 148 or Champion Road source index 151.",
+            "Use Ken Sugimori / 杉森建 as the expected artist credit for this print; do not borrow Naoyo Kimura from the WHF / Champion Road Chikorita lane.",
+            "If seller evidence is sealed-product focused, ask for photos that connect the sealed Premium File claim to the exact card claim and clarify whether card condition is visible or inferred.",
+            "If seller evidence is loose-card focused, ask for front/back photos and symbol-area clarity; do not accept a product checklist or stock image as card possession proof.",
+            "Keep any price, condition, authenticity, and sealed-completeness conclusion outside the catalog row until separate seller-controlled evidence supports it."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_137_neo_era_premium_file.json#row:jp_promo_unnumbered_wotc_137_neo_era_premium_file:137"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Chikorita_(Neo_Genesis_54)"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "sealed-product completeness",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

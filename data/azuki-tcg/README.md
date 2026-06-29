@@ -15,9 +15,7 @@ The current import is built from two Azuki sources:
 The directory now contains two sibling release files:
 
 - `releases/azuki_tcg_official_gallery.json` records **official gallery
-  entries** from the website API. In the current snapshot, gallery
-  `source_entry_id` values beginning with `S1-` are treated in the UI payload as
-  **Gates Awakened** rows, not Alpha rows.
+  entries** from the website API.
 - `releases/azuki_tcg_alpha_master_sheet.json` records **Alpha Master Sheet
   rows** from the linked Google Sheet, including illustrator, reference IP,
   effect text, flavor text, definition/ruling text, stamp, and a card-ID
@@ -118,39 +116,6 @@ Star / alternate-art signal audit:
   (`STT04-01` Zero), four source/image card-ID disagreement rows, and the
   completion-layer star-flattening pattern is separated as medium severity.
 
-Reference image / Alpha-field audit:
-
-- `audits/azuki_tcg_reference_image_audit_2026_06_25.csv` is the stricter
-  display audit. It decides whether the site may honestly show a row's image as
-  that row's reference photo.
-- Current findings: 122 rows in scope, 5 high-severity rows, and 117
-  medium-severity rows. High severity means the UI suppresses the reference
-  image; medium severity means the row stays visible but a field-level warning
-  is carried.
-- The 5 suppressed-image rows are rows where the source/image card ID points to
-  a different gallery row, or where a `★` row reuses the exact image URL of a
-  non-`★` sibling. In the site payload those rows have `image: ""` and
-  `image_status: "no_reference_photo"`.
-- 103 rows suppress an inherited `Alpha` stamp. These are Gates Awakened
-  `S1-*` official gallery rows where `STAMP=Alpha` came from a card-level
-  Alpha-sheet crosswalk, not a row-specific release confirmation.
-
-UI payload release split:
-
-- `scripts/export_azuki_catalog_for_ui.py` emits Alpha and Gates Awakened as
-  separate release families. Shared `card_id` is not release equivalence.
-- Alpha Master Sheet rows are first-class catalog rows. They are displayed with
-  `image: ""`, `image_status: "no_reference_photo"`, and
-  `display_allowed: false` unless an exact Alpha official-gallery row already
-  exists.
-- Exact Alpha official-gallery promo/token rows such as `AZP-001`, `AZP-002`,
-  `IKZ-001`, and `IKZ-002` are not duplicated as no-image Alpha sheet rows.
-  Star/alternate official rows remain separate variants.
-- Current UI export: 336 rows total — 120 Alpha, 214 Gates Awakened, and 2
-  observation-only rows. The 100 Alpha Master Sheet-only rows intentionally
-  carry no reference photo. The 229 displayed images are exact source images
-  from rows that passed the display audit.
-
 Authority boundary:
 
 - This catalog does not prove seller possession.
@@ -162,14 +127,8 @@ Authority boundary:
   endpoint and linked Alpha Master Sheet snapshots in `source-snapshots/`.
 - The Alpha-to-gallery crosswalk means shared card ID only; it does not prove
   identical image treatment, rarity treatment, physical printing, or possession.
-- A Gates Awakened `S1-*` row must not inherit Alpha release identity or an
-  Alpha stamp merely because its `card_id` crosswalks to the Alpha Master
-  Sheet.
 - Image-view illustrator reads are useful completion hints, not official API
   facts. They remain lower authority than linked sheet fields.
-- Reference images are displayed only when the current source row can honestly
-  cite that image as the row's own reference photo. If the row/image identity is
-  ambiguous, the catalogue has no reference photo for that row.
 - User-photo observations do not overwrite official gallery or linked sheet
   fields. They are a separate evidence layer for agents to inspect.
 - User-image portrait-alt observations likewise remain evidence rows. A matched
@@ -181,8 +140,6 @@ Rebuild:
 ```bash
 python3 scripts/build_azuki_tcg_catalog.py --check
 python3 scripts/audit_azuki_star_alt_art.py --check
-python3 scripts/audit_azuki_reference_images.py --check
-python3 scripts/export_azuki_catalog_for_ui.py --check
 ```
 
 Refresh from the live official endpoint and linked Alpha Master Sheet:

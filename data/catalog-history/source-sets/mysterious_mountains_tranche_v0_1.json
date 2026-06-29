@@ -1,0 +1,2334 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Bounded high-gravity tranche for Japanese Mysterious Mountains / 神秘なる山 within the catalog-history deepening pass.",
+    "in_scope": [
+      "Mysterious Mountains release dossier",
+      "selected terrain / legendary / late-number identity-teaching card dossiers",
+      "special identification rails for exact Japanese E5 row identity"
+    ],
+    "not_claiming": [
+      "complete 91-card hand-authored coverage",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "official copy counts",
+      "approved image display rights",
+      "spendability",
+      "clean translated-name authority",
+      "complete illustrator authority"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004",
+      "type": "release",
+      "context": {
+        "name_en": "Mysterious Mountains",
+        "name_ja": "神秘なる山",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "release_date": "2002-10-04"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json",
+          "title": "Local Japanese classic catalog: Mysterious Mountains",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E5",
+          "title": "TCGdex Japanese set endpoint: E5 / Mysterious Mountains",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Mysterious Mountains / 神秘なる山 with an October 4, 2002 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 91 total rows for Mysterious Mountains, while the same metadata records 88 official rows.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Mysterious Mountains is modeled as a Japanese main expansion in the ポケモンカードe series, using TCGdex set id E5.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Mysterious Mountains matters because the e-Card frame meets terrain memory: mountain, ruin, legendary weather, old Kanto power, and late-number map edges all become part of the set’s identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local deepening queue highlights Beedrill, Nidoqueen, Arcanine, Moltres, Dewgong, and Gyarados; this tranche also hand-authors Articuno, Gengar, Steelix, Ancient Ruins, Charizard, and Celebi because they teach mountain ecology, archaeological texture, and late-number identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "The local Japanese classic rows for this release do not provide illustrator authority, so this tranche leaves artist coverage unresolved rather than inventing or importing credits without a cited source.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Japanese title 神秘なる山, TCGdex set id E5, card number, local id, rough source-row text, normalized collector label, and official-count / total-count context before treating a famous species or English Skyridge match as this exact release row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "mysterious_mountains_release_exact_set_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Mysterious Mountains, 神秘なる山, Skyridge, E5, e-Card, Charizard, Celebi, Moltres, Articuno, Gyarados, or Ancient Ruins.",
+          "summary": "Keep Mysterious Mountains as Japanese E5 / 神秘なる山 with row-number and official-count boundary identity; do not collapse it into English Skyridge or same-character rows.",
+          "steps": [
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact release.",
+            "Preserve card number and local id for each row; many source-row names are rough and must not be treated as clean translation authority.",
+            "Preserve the 88 official / 91 total row distinction when discussing late-number rows.",
+            "Separate this release from English Skyridge and later same-character reprints unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mysterious Mountains — when the e-Card frame becomes terrain",
+        "why_it_matters": "Mysterious Mountains is late e-Card atmosphere: old powers climb into a scannable frame, ruins become rules, and the row map itself has edges worth preserving. It teaches agents that a set can be a landscape, not just a release date and a pile of names.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete 91-card hand-authored coverage",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-005",
+      "type": "card",
+      "context": {
+        "name_en": "Beedrill holo",
+        "name_ja": "beedrill",
+        "normalized_label": "Beedrill holo",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-005",
+        "card_number": "005"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-005",
+          "title": "Local Japanese classic catalog row: Beedrill holo / Mysterious Mountains #005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-005",
+          "title": "TCGdex Japanese card endpoint: E5-005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-005 as Mysterious Mountains / 神秘なる山 card #005, with rough source-row text 'beedrill'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Beedrill holo' as a normalized collector label while preserving the rough local source-row text 'beedrill'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-005 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Beedrill holo matters in this tranche because it turns an old Kanto threat into mountain wildlife, sharp and territorial rather than merely nostalgic.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Beedrill holo, preserve Japanese title 神秘なる山, TCGdex set id E5, card #005, local id E5-005, rough source-row text 'beedrill', and normalized label 'Beedrill holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-005_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Beedrill holo, beedrill, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Beedrill holo as Japanese Mysterious Mountains / 神秘なる山 #005, local id E5-005, source-row text 'beedrill'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-005 and local id E5-005.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 005, rough source-row text 'beedrill', and normalized collector label 'Beedrill holo' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Beedrill holo — Mysterious Mountains #005",
+        "why_it_matters": "Beedrill holo helps Mysterious Mountains feel like terrain with memory: it turns an old Kanto threat into mountain wildlife, sharp and territorial rather than merely nostalgic. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-010",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoqueen holo",
+        "name_ja": "nidoqueen",
+        "normalized_label": "Nidoqueen holo",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-010",
+        "card_number": "010"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-010",
+          "title": "Local Japanese classic catalog row: Nidoqueen holo / Mysterious Mountains #010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-010",
+          "title": "TCGdex Japanese card endpoint: E5-010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-010 as Mysterious Mountains / 神秘なる山 card #010, with rough source-row text 'nidoqueen'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Nidoqueen holo' as a normalized collector label while preserving the rough local source-row text 'nidoqueen'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-010 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Nidoqueen holo matters in this tranche because it gives the set a heavy creature presence: queenly, grounded, and suited to the mountain’s pressure.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Nidoqueen holo, preserve Japanese title 神秘なる山, TCGdex set id E5, card #010, local id E5-010, rough source-row text 'nidoqueen', and normalized label 'Nidoqueen holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-010_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Nidoqueen holo, nidoqueen, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Nidoqueen holo as Japanese Mysterious Mountains / 神秘なる山 #010, local id E5-010, source-row text 'nidoqueen'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-010 and local id E5-010.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 010, rough source-row text 'nidoqueen', and normalized collector label 'Nidoqueen holo' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Nidoqueen holo — Mysterious Mountains #010",
+        "why_it_matters": "Nidoqueen holo helps Mysterious Mountains feel like terrain with memory: it gives the set a heavy creature presence: queenly, grounded, and suited to the mountain’s pressure. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-017",
+      "type": "card",
+      "context": {
+        "name_en": "Arcanine holo",
+        "name_ja": "アルカニン",
+        "normalized_label": "Arcanine holo",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-017",
+        "card_number": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-017",
+          "title": "Local Japanese classic catalog row: Arcanine holo / Mysterious Mountains #017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-017",
+          "title": "TCGdex Japanese card endpoint: E5-017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-017 as Mysterious Mountains / 神秘なる山 card #017, with rough source-row text 'アルカニン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Arcanine holo' as a normalized collector label while preserving the rough local source-row text 'アルカニン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-017 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Arcanine holo matters in this tranche because it brings warmth and speed into a hard landscape, the kind of classic Kanto card that still feels alive inside e-Card framing.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Arcanine holo, preserve Japanese title 神秘なる山, TCGdex set id E5, card #017, local id E5-017, rough source-row text 'アルカニン', and normalized label 'Arcanine holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-017_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Arcanine holo, アルカニン, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Arcanine holo as Japanese Mysterious Mountains / 神秘なる山 #017, local id E5-017, source-row text 'アルカニン'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-017 and local id E5-017.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 017, rough source-row text 'アルカニン', and normalized collector label 'Arcanine holo' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Arcanine holo — Mysterious Mountains #017",
+        "why_it_matters": "Arcanine holo helps Mysterious Mountains feel like terrain with memory: it brings warmth and speed into a hard landscape, the kind of classic Kanto card that still feels alive inside e-Card framing. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-019",
+      "type": "card",
+      "context": {
+        "name_en": "Moltres holo",
+        "name_ja": "モルトレス",
+        "normalized_label": "Moltres holo",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-019",
+        "card_number": "019"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-019",
+          "title": "Local Japanese classic catalog row: Moltres holo / Mysterious Mountains #019",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-019",
+          "title": "TCGdex Japanese card endpoint: E5-019",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-019 as Mysterious Mountains / 神秘なる山 card #019, with rough source-row text 'モルトレス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Moltres holo' as a normalized collector label while preserving the rough local source-row text 'モルトレス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-019 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Moltres holo matters in this tranche because fire becomes altitude and omen here; the legendary bird makes the mountain feel mythic rather than just rocky.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Moltres holo, preserve Japanese title 神秘なる山, TCGdex set id E5, card #019, local id E5-019, rough source-row text 'モルトレス', and normalized label 'Moltres holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-019_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Moltres holo, モルトレス, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Moltres holo as Japanese Mysterious Mountains / 神秘なる山 #019, local id E5-019, source-row text 'モルトレス'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-019 and local id E5-019.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 019, rough source-row text 'モルトレス', and normalized collector label 'Moltres holo' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Moltres holo — Mysterious Mountains #019",
+        "why_it_matters": "Moltres holo helps Mysterious Mountains feel like terrain with memory: fire becomes altitude and omen here; the legendary bird makes the mountain feel mythic rather than just rocky. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-025",
+      "type": "card",
+      "context": {
+        "name_en": "Dewgong holo",
+        "name_ja": "デューゴン",
+        "normalized_label": "Dewgong holo",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-025",
+        "card_number": "025"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-025",
+          "title": "Local Japanese classic catalog row: Dewgong holo / Mysterious Mountains #025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-025",
+          "title": "TCGdex Japanese card endpoint: E5-025",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-025 as Mysterious Mountains / 神秘なる山 card #025, with rough source-row text 'デューゴン'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Dewgong holo' as a normalized collector label while preserving the rough local source-row text 'デューゴン'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-025 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Dewgong holo matters in this tranche because it keeps the set from being only stone and fire, adding cold-water contrast to the mountain ecology.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Dewgong holo, preserve Japanese title 神秘なる山, TCGdex set id E5, card #025, local id E5-025, rough source-row text 'デューゴン', and normalized label 'Dewgong holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-025_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Dewgong holo, デューゴン, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Dewgong holo as Japanese Mysterious Mountains / 神秘なる山 #025, local id E5-025, source-row text 'デューゴン'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-025 and local id E5-025.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 025, rough source-row text 'デューゴン', and normalized collector label 'Dewgong holo' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Dewgong holo — Mysterious Mountains #025",
+        "why_it_matters": "Dewgong holo helps Mysterious Mountains feel like terrain with memory: it keeps the set from being only stone and fire, adding cold-water contrast to the mountain ecology. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-028",
+      "type": "card",
+      "context": {
+        "name_en": "Gyarados holo",
+        "name_ja": "ギャラドス",
+        "normalized_label": "Gyarados holo",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-028",
+        "card_number": "028"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-028",
+          "title": "Local Japanese classic catalog row: Gyarados holo / Mysterious Mountains #028",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-028",
+          "title": "TCGdex Japanese card endpoint: E5-028",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-028 as Mysterious Mountains / 神秘なる山 card #028, with rough source-row text 'ギャラドス'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Gyarados holo' as a normalized collector label while preserving the rough local source-row text 'ギャラドス'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-028 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Gyarados holo matters in this tranche because the set’s water violence, a classic threat pulled into the e-Card era with old danger intact.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Gyarados holo, preserve Japanese title 神秘なる山, TCGdex set id E5, card #028, local id E5-028, rough source-row text 'ギャラドス', and normalized label 'Gyarados holo'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-028_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Gyarados holo, ギャラドス, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Gyarados holo as Japanese Mysterious Mountains / 神秘なる山 #028, local id E5-028, source-row text 'ギャラドス'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-028 and local id E5-028.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 028, rough source-row text 'ギャラドス', and normalized collector label 'Gyarados holo' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Gyarados holo — Mysterious Mountains #028",
+        "why_it_matters": "Gyarados holo helps Mysterious Mountains feel like terrain with memory: the set’s water violence, a classic threat pulled into the e-Card era with old danger intact. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-031",
+      "type": "card",
+      "context": {
+        "name_en": "Articuno",
+        "name_ja": "articuno",
+        "normalized_label": "Articuno",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-031",
+        "card_number": "031"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-031",
+          "title": "Local Japanese classic catalog row: Articuno / Mysterious Mountains #031",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-031",
+          "title": "TCGdex Japanese card endpoint: E5-031",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-031 as Mysterious Mountains / 神秘なる山 card #031, with rough source-row text 'articuno'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Articuno' as a normalized collector label while preserving the rough local source-row text 'articuno'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-031 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Articuno matters in this tranche because it pairs with Moltres as a legendary weather signal, turning the mountain into a place of extremes.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Articuno, preserve Japanese title 神秘なる山, TCGdex set id E5, card #031, local id E5-031, rough source-row text 'articuno', and normalized label 'Articuno'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-031_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Articuno, articuno, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Articuno as Japanese Mysterious Mountains / 神秘なる山 #031, local id E5-031, source-row text 'articuno'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-031 and local id E5-031.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 031, rough source-row text 'articuno', and normalized collector label 'Articuno' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Articuno — Mysterious Mountains #031",
+        "why_it_matters": "Articuno helps Mysterious Mountains feel like terrain with memory: it pairs with Moltres as a legendary weather signal, turning the mountain into a place of extremes. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-044",
+      "type": "card",
+      "context": {
+        "name_en": "Gengar",
+        "name_ja": "ジェンガー",
+        "normalized_label": "Gengar",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-044",
+        "card_number": "044"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-044",
+          "title": "Local Japanese classic catalog row: Gengar / Mysterious Mountains #044",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-044",
+          "title": "TCGdex Japanese card endpoint: E5-044",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-044 as Mysterious Mountains / 神秘なる山 card #044, with rough source-row text 'ジェンガー'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Gengar' as a normalized collector label while preserving the rough local source-row text 'ジェンガー'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-044 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Gengar matters in this tranche because it adds haunted interior space to the landscape: caves, shadow, and old mischief inside the mountain.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Gengar, preserve Japanese title 神秘なる山, TCGdex set id E5, card #044, local id E5-044, rough source-row text 'ジェンガー', and normalized label 'Gengar'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-044_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Gengar, ジェンガー, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Gengar as Japanese Mysterious Mountains / 神秘なる山 #044, local id E5-044, source-row text 'ジェンガー'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-044 and local id E5-044.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 044, rough source-row text 'ジェンガー', and normalized collector label 'Gengar' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Gengar — Mysterious Mountains #044",
+        "why_it_matters": "Gengar helps Mysterious Mountains feel like terrain with memory: it adds haunted interior space to the landscape: caves, shadow, and old mischief inside the mountain. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-074",
+      "type": "card",
+      "context": {
+        "name_en": "Steelix",
+        "name_ja": "Steelix",
+        "normalized_label": "Steelix",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-074",
+        "card_number": "074"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-074",
+          "title": "Local Japanese classic catalog row: Steelix / Mysterious Mountains #074",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-074",
+          "title": "TCGdex Japanese card endpoint: E5-074",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-074 as Mysterious Mountains / 神秘なる山 card #074, with rough source-row text 'Steelix'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Steelix' as a normalized collector label while preserving the rough local source-row text 'Steelix'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-074 include 'Holo Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Steelix matters in this tranche because it makes the mountain literal and mechanical at once, a metal serpent built for rock pressure.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Steelix, preserve Japanese title 神秘なる山, TCGdex set id E5, card #074, local id E5-074, rough source-row text 'Steelix', and normalized label 'Steelix'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-074_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Steelix, Steelix, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Steelix as Japanese Mysterious Mountains / 神秘なる山 #074, local id E5-074, source-row text 'Steelix'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-074 and local id E5-074.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 074, rough source-row text 'Steelix', and normalized collector label 'Steelix' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Steelix — Mysterious Mountains #074",
+        "why_it_matters": "Steelix helps Mysterious Mountains feel like terrain with memory: it makes the mountain literal and mechanical at once, a metal serpent built for rock pressure. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-084",
+      "type": "card",
+      "context": {
+        "name_en": "Ancient Ruins",
+        "name_ja": "古代の遺跡",
+        "normalized_label": "Ancient Ruins",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-084",
+        "card_number": "084"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-084",
+          "title": "Local Japanese classic catalog row: Ancient Ruins / Mysterious Mountains #084",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-084",
+          "title": "TCGdex Japanese card endpoint: E5-084",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-084 as Mysterious Mountains / 神秘なる山 card #084, with rough source-row text '古代の遺跡'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Ancient Ruins' as a normalized collector label while preserving the rough local source-row text '古代の遺跡'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-084 include 'Uncommon'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Ancient Ruins matters in this tranche because it names the archaeological grammar directly: this is not just a place, but old structure becoming play.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Ancient Ruins, preserve Japanese title 神秘なる山, TCGdex set id E5, card #084, local id E5-084, rough source-row text '古代の遺跡', and normalized label 'Ancient Ruins'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.lineage",
+          "text": "Ancient Ruins is treated as a place-and-rule card in this tranche: it carries the set’s archaeological language directly rather than functioning as a creature chase.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-084_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Ancient Ruins, 古代の遺跡, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Ancient Ruins as Japanese Mysterious Mountains / 神秘なる山 #084, local id E5-084, source-row text '古代の遺跡'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-084 and local id E5-084.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 084, rough source-row text '古代の遺跡', and normalized collector label 'Ancient Ruins' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ancient Ruins — Mysterious Mountains #084",
+        "why_it_matters": "Ancient Ruins helps Mysterious Mountains feel like terrain with memory: it names the archaeological grammar directly: this is not just a place, but old structure becoming play. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-089",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard late-number row",
+        "name_ja": "カリザード",
+        "normalized_label": "Charizard late-number row",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-089",
+        "card_number": "089"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-089",
+          "title": "Local Japanese classic catalog row: Charizard late-number row / Mysterious Mountains #089",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-089",
+          "title": "TCGdex Japanese card endpoint: E5-089",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-089 as Mysterious Mountains / 神秘なる山 card #089, with rough source-row text 'カリザード'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Charizard late-number row' as a normalized collector label while preserving the rough local source-row text 'カリザード'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-089 include 'Secret Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Charizard late-number row matters in this tranche because it is a map-edge gravity well: a famous species living beyond the normal official-count boundary in the local total.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Charizard late-number row, preserve Japanese title 神秘なる山, TCGdex set id E5, card #089, local id E5-089, rough source-row text 'カリザード', and normalized label 'Charizard late-number row'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Charizard late-number row sits beyond the local release metadata official-count boundary: TCGdex-derived metadata gives official count 88 and total count 91, so agents must preserve the number rail instead of treating the famous name as sufficient.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-089_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Charizard late-number row, カリザード, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Charizard late-number row as Japanese Mysterious Mountains / 神秘なる山 #089, local id E5-089, source-row text 'カリザード'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-089 and local id E5-089.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 089, rough source-row text 'カリザード', and normalized collector label 'Charizard late-number row' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Charizard late-number row — Mysterious Mountains #089",
+        "why_it_matters": "Charizard late-number row helps Mysterious Mountains feel like terrain with memory: it is a map-edge gravity well: a famous species living beyond the normal official-count boundary in the local total. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_mysterious_mountains_20021004:E5-091",
+      "type": "card",
+      "context": {
+        "name_en": "Celebi late-number row",
+        "name_ja": "セレビ",
+        "normalized_label": "Celebi late-number row",
+        "release_family_id": "jp_tcg_mysterious_mountains_20021004",
+        "local_id": "E5-091",
+        "card_number": "091"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_mysterious_mountains_20021004.json#row:jp_tcg_mysterious_mountains_20021004:E5-091",
+          "title": "Local Japanese classic catalog row: Celebi late-number row / Mysterious Mountains #091",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/cards/E5-091",
+          "title": "TCGdex Japanese card endpoint: E5-091",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row jp_tcg_mysterious_mountains_20021004:E5-091 as Mysterious Mountains / 神秘なる山 card #091, with rough source-row text 'セレビ'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "This hand-authored dossier uses 'Celebi late-number row' as a normalized collector label while preserving the rough local source-row text 'セレビ'; it does not claim clean translated-name authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1"
+          ]
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals for jp_tcg_mysterious_mountains_20021004:E5-091 include 'Secret Rare'.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "The local Japanese classic row does not provide illustrator authority for this card, so this dossier leaves artist coverage unresolved instead of borrowing an unsourced credit.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Celebi late-number row matters in this tranche because it gives the mountain a time-myth ending, a small legendary presence at the edge of the local row map.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Before treating a listing as Celebi late-number row, preserve Japanese title 神秘なる山, TCGdex set id E5, card #091, local id E5-091, rough source-row text 'セレビ', and normalized label 'Celebi late-number row'.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Celebi late-number row sits beyond the local release metadata official-count boundary: TCGdex-derived metadata gives official count 88 and total count 91, so agents must preserve the number rail instead of treating the famous name as sufficient.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "jp_tcg_mysterious_mountains_20021004_E5-091_e5_mountain_exact_row_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, or agent memory says Celebi late-number row, セレビ, Mysterious Mountains, 神秘なる山, Skyridge, e-Card, E5, Charizard, Celebi, Moltres, or Gyarados.",
+          "summary": "Preserve Celebi late-number row as Japanese Mysterious Mountains / 神秘なる山 #091, local id E5-091, source-row text 'セレビ'; do not accept famous-name, English Skyridge, or e-Card matches alone.",
+          "steps": [
+            "Preserve row_id jp_tcg_mysterious_mountains_20021004:E5-091 and local id E5-091.",
+            "Require Japanese title 神秘なる山 or TCGdex set id E5 before naming this exact catalog row.",
+            "Preserve card number 091, rough source-row text 'セレビ', and normalized collector label 'Celebi late-number row' separately.",
+            "If the row number is above the official-count boundary, keep that map-edge status visible instead of silently treating it as an ordinary row.",
+            "Separate this row from English Skyridge, later Japanese reprints, same-character rows, and database-title-only matches unless set/number evidence is present.",
+            "Do not infer seller possession, authenticity, condition, price, image rights, or spendability from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image rights",
+            "English Skyridge equivalence",
+            "later reprint equivalence",
+            "clean translated-name authority",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Celebi late-number row — Mysterious Mountains #091",
+        "why_it_matters": "Celebi late-number row helps Mysterious Mountains feel like terrain with memory: it gives the mountain a time-myth ending, a small legendary presence at the edge of the local row map. The agent should keep the Japanese E5 row identity attached while letting the mountain story breathe.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "image rights",
+          "spendability",
+          "clean translated-name authority"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

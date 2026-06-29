@@ -1,0 +1,571 @@
+{
+  "dossiers": [
+    {
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.date",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog and selected early-1996 promo snapshot place the first CoroCoro glossy promo source slice on October 15, 1996, as the CoroCoro Comic November 1996 issue insert.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.product_count",
+          "id": "c2",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The selected snapshot lists two CoroCoro Comic November 1996 issue insert entries: Pikachu [Glossy] and Jigglypuff [Glossy].",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ],
+          "field": "release.context",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "This release sits five days before the official Japanese TCG launch date used elsewhere in the catalog. It is a magazine-insert doorway into the card game moment rather than a booster or deck product.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "history.variant",
+          "id": "c4",
+          "sources": [
+            "s2"
+          ],
+          "text": "The same selected snapshot distinguishes the October 15, 1996 glossy CoroCoro Pikachu/Jigglypuff pair from a later November 30, 1996 non-glossy How-to-Play Pikachu/Jigglypuff pair. Glossy status and source route are therefore identity rails, not decoration.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The selected snapshot credits Pikachu [Glossy] to Ken Sugimori. The local row preserves that selected-source credit while retaining PokéCardex Keiji Kinebuchi as conflicting provider metadata, not as the accepted illustrator for this glossy row.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s4"
+          ],
+          "text": "The local manual provider-path row credits Jigglypuff to Keiji Kinebuchi, source-scoped as selected/card-page metadata rather than physical-card proof.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog preserves Pikachu as a parent aggregate UPC row already hand-authored in the pilot source-set, and Jigglypuff as a manual provider-path row for the expected glossy CoroCoro counterpart; neither row is possession, authenticity, condition, or image-rights proof.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ],
+          "field": "history.significance",
+          "id": "c8",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "text": "The first CoroCoro glossy promos matter because they show Pokémon becoming magazine-native at the exact edge of the TCG launch. Pikachu is already the face that can carry the franchise through a paper insert; Jigglypuff is the softer companion, proving that the early promotional machine was not just about power or rarity but about making the new card world feel friendly, shiny, and reachable.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c9",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "Agents should preserve CoroCoro Comic November 1996 issue route, October 15 1996 date, glossy stock, row 001/002 identity, Pikachu Ken Sugimori preferred-source illustrator resolution from the existing pilot dossier, conflicting provider metadata, Jigglypuff Keiji Kinebuchi credit, Jigglypuff manual provider-path mode, and non-glossy How-to-Play non-equivalence before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "name_en": "First CoroCoro glossy promos source slice",
+        "name_ja": "月刊コロコロコミック1996年11月号プロモ",
+        "release_date": "1996-10-15",
+        "release_family_id": "jp_promo_corocoro_first_19961015"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "human_title": "First CoroCoro glossy promos: the shiny paper doorway",
+        "not_claiming": [
+          "complete CoroCoro issue history",
+          "official copy counts",
+          "price truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "This slice feels like the magazine opening the door before the card game has even settled into public memory. Pikachu and Jigglypuff are not tournament trophies or deck staples here; they are glossy invitations. CoroCoro turns Pokémon into something a child can pull from an issue, hold up to the light, and understand immediately. Pikachu row 001 is already hand-authored in the pilot dossier, so this tranche keeps that illustrator-conflict rail visible while adding the release frame and Jigglypuff row 002. The agent has to be precise because the romance depends on it: glossy, October 1996, magazine route, row identity, and the Pikachu illustrator correction all belong to the story."
+      },
+      "release_highlights": {
+        "assembly_themes": [
+          "magazine/media distribution",
+          "launch-edge promo memory",
+          "glossy-vs-non-glossy boundary",
+          "illustrator conflict discipline",
+          "artist trace"
+        ],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "chase_cards": [
+          {
+            "name": "Pikachu [Glossy]",
+            "number": "001",
+            "row_id": "jp_promo_corocoro_first_19961015:001"
+          },
+          {
+            "name": "Jigglypuff [Glossy]",
+            "number": "002",
+            "row_id": "jp_promo_corocoro_first_19961015:002"
+          }
+        ],
+        "key_artists": [
+          {
+            "authority_label": "selected_source_snapshot",
+            "examples": [
+              "Pikachu [Glossy]"
+            ],
+            "name": "Ken Sugimori",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card proof"
+            ],
+            "row_count": 1
+          },
+          {
+            "authority_label": "manual_source_gap_row",
+            "examples": [
+              "Jigglypuff [Glossy]"
+            ],
+            "name": "Keiji Kinebuchi",
+            "not_claiming": [
+              "complete artist biography",
+              "physical-card proof"
+            ],
+            "row_count": 1
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ],
+        "source_contacts": [
+          "local Japanese pre-English release file",
+          "Bulbapedia early-1996 selected rendered-lines snapshot",
+          "Bulbapedia card lineage pages"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete magazine source"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_first_19961015.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Japanese pre-English catalog: First CoroCoro glossy promos source slice",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Bulbapedia selected rendered lines: first 1996 unnumbered promotional entries",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Wizards_Promo_1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Pikachu promotional print lineage",
+          "type": "database_reference"
+        },
+        {
+          "id": "s4",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Wizards_Promo_7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Jigglypuff promotional print lineage",
+          "type": "database_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_first_1996_glossy_promo_boundary_v0.1",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object source",
+            "official copy counts",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "provider metadata is false in all contexts",
+            "spendability",
+            "How-to-Play equivalence",
+            "complete illustrator biography"
+          ],
+          "steps": [
+            "Confirm CoroCoro Comic November 1996 issue insert context and October 15, 1996 date.",
+            "Preserve row identity: Pikachu [Glossy] 001 and Jigglypuff [Glossy] 002.",
+            "For Pikachu, use the existing pilot dossier as the row-level authority: prefer the selected-source Ken Sugimori credit and keep PokéCardex Keiji Kinebuchi only as conflicting provider metadata.",
+            "Confirm glossy stock/source route; do not collapse into the later non-glossy How-to-Play Pikachu or Jigglypuff pair.",
+            "Preserve Jigglypuff source-row mode as manual_provider_path_gap_row, not parent aggregate decrypted row.",
+            "Use seller photos for gloss, physical condition, card face/back, and source-route evidence before any transaction claim."
+          ],
+          "summary": "Preserve the October 15, 1996 CoroCoro glossy route, existing Pikachu pilot rail, Jigglypuff manual row, and illustrator/stock boundary before treating a card as this source slice.",
+          "trigger": "A listing, want, scan, or agent memory says first CoroCoro promo, CoroCoro November 1996, glossy Pikachu, glossy Jigglypuff, Ken Sugimori Pikachu, Keiji Kinebuchi conflict, How-to-Play non-glossy, or early unnumbered promo."
+        }
+      ],
+      "type": "release",
+      "uid": "jp_promo_corocoro_first_19961015"
+    },
+    {
+      "card_highlights": {
+        "artist": "Keiji Kinebuchi",
+        "assembly_note": "Jigglypuff sits in the first CoroCoro glossy promo pair as Jigglypuff [Glossy] / CoroCoro November 1996 unnumbered promo; issue route, gloss, row, and artist boundary need to travel together.",
+        "assembly_themes": [
+          "magazine/media distribution",
+          "launch-edge promo memory",
+          "glossy format",
+          "artist trace",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Jigglypuff is the companion that makes the first CoroCoro pair feel soft rather than purely mascot-driven. It carries the same glossy magazine route but with a different mood: round, sing-song, approachable. The manual provider-path row is part of the story too, because the catalog has to model the expected counterpart without pretending it has the same parent aggregate witness as Pikachu.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ],
+        "number": "002",
+        "rarity_signal": "Jigglypuff [Glossy] / CoroCoro November 1996 unnumbered promo",
+        "signals": [
+          "CoroCoro Comic November 1996 issue insert",
+          "October 15 1996",
+          "002",
+          "Jigglypuff [Glossy] / CoroCoro November 1996 unnumbered promo",
+          "Keiji Kinebuchi",
+          "manual_provider_path_gap_row"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1"
+          ],
+          "text": "The local catalog anchors Jigglypuff as First CoroCoro glossy promo source-slice row 002.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s2"
+          ],
+          "text": "The selected early-1996 snapshot lists Jigglypuff [Glossy] as a CoroCoro Comic November 1996 issue insert released October 15, 1996.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The meaningful local rarity/format signal for Jigglypuff is: Jigglypuff [Glossy] / CoroCoro November 1996 unnumbered promo.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The accepted source-scoped artist credit for this row is Keiji Kinebuchi. For Pikachu, this explicitly follows the selected-source snapshot over conflicting provider metadata.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep glossy Jigglypuff pinned to CoroCoro November 1996 row 002 and manual provider-path mode; do not accept non-glossy How-to-Play Jigglypuff or name-only matches.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ],
+          "field": "history.significance",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Jigglypuff is the companion that makes the first CoroCoro pair feel soft rather than purely mascot-driven. It carries the same glossy magazine route but with a different mood: round, sing-song, approachable. The manual provider-path row is part of the story too, because the catalog has to model the expected counterpart without pretending it has the same parent aggregate witness as Pikachu.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep glossy Jigglypuff pinned to CoroCoro November 1996 row 002 and manual provider-path mode; do not accept non-glossy How-to-Play Jigglypuff or name-only matches.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "002",
+        "name_en": "Jigglypuff",
+        "name_ja": "プリン",
+        "release_family_id": "jp_promo_corocoro_first_19961015",
+        "release_name": "First CoroCoro glossy promos source slice",
+        "romaji": "Purin",
+        "row_id": "jp_promo_corocoro_first_19961015:002"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Jigglypuff [Glossy]: first CoroCoro doorway row 002",
+        "not_claiming": [
+          "complete card history",
+          "official copy counts",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Jigglypuff is the companion that makes the first CoroCoro pair feel soft rather than purely mascot-driven. It carries the same glossy magazine route but with a different mood: round, sing-song, approachable. The manual provider-path row is part of the story too, because the catalog has to model the expected counterpart without pretending it has the same parent aggregate witness as Pikachu. The agent should keep the story warm and the identity strict: source route first, then card name."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "data/japanese-pre-english/releases/jp_promo_corocoro_first_19961015.json#row:jp_promo_corocoro_first_19961015:002",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: Jigglypuff / First CoroCoro glossy promos",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official copy counts"
+          ],
+          "ref": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
+          "retrieved": "2026-06-17",
+          "tier": "B",
+          "title": "Bulbapedia selected rendered lines: first 1996 unnumbered promotional entries",
+          "type": "selected_rendered_lines_snapshot"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jigglypuff_(Wizards_Promo_7)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Jigglypuff promotional print lineage",
+          "type": "database_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_first_1996_002_glossy_identity_boundary_v0.1",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "complete UPC source",
+            "complete CoroCoro issue archive",
+            "complete magazine-object source",
+            "official copy counts",
+            "image rights",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "provider metadata is false in all contexts",
+            "spendability",
+            "complete artist biography"
+          ],
+          "steps": [
+            "Require CoroCoro Comic November 1996 issue context and row 002 before naming this exact card.",
+            "Preserve Japanese/romaji name: プリン / Purin.",
+            "Confirm glossy CoroCoro source route; do not rely on name or artwork alone.",
+            "Keep the later non-glossy How-to-Play version out unless separately selected.",
+            "Use seller photos for gloss, stock, physical condition, card face/back, and route evidence before any transaction claim."
+          ],
+          "summary": "Keep glossy Jigglypuff pinned to CoroCoro November 1996 row 002 and manual provider-path mode; do not accept non-glossy How-to-Play Jigglypuff or name-only matches.",
+          "trigger": "A listing, want, scan, or agent memory says Jigglypuff, プリン, first CoroCoro promo, glossy, November 1996 issue, October 15 1996, Ken Sugimori, Keiji Kinebuchi, or How-to-Play non-glossy."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_corocoro_first_19961015:002"
+    }
+  ],
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched release-plus-gap-row tranche for the First CoroCoro glossy promo source slice, emphasizing October 15, 1996 magazine insertion, glossy Pikachu/Jigglypuff route, the already-hand-authored Pikachu illustrator conflict rail, and Jigglypuff's manual provider-path witness.",
+    "in_scope": [
+      "release/source-slice dossier",
+      "Jigglypuff [Glossy] row 002",
+      "release-level discussion of Pikachu [Glossy] row 001 through existing pilot coverage",
+      "glossy-vs-non-glossy and illustrator-conflict identification rails"
+    ],
+    "not_claiming": [
+      "raw HTML snapshot",
+      "complete UPC source",
+      "complete CoroCoro issue archive",
+      "complete magazine-object source",
+      "official copy counts",
+      "image rights",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "provider metadata is false in all contexts",
+      "spendability"
+    ]
+  }
+}

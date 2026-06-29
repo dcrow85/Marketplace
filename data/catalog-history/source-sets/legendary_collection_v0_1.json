@@ -1,0 +1,1283 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Legendary Collection and six rows that show reprint memory, fireworks Reverse Holofoil, theme-deck exceptions, and late-Wizards nostalgia assembly.",
+    "in_scope": [
+      "Legendary Collection release dossier",
+      "Charizard",
+      "Dark Blastoise",
+      "Dark Raichu",
+      "Gyarados",
+      "Venusaur",
+      "Mewtwo"
+    ],
+    "not_claiming": [
+      "complete Legendary Collection scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_legendary_collection_20020524",
+      "type": "release",
+      "context": {
+        "name_en": "Legendary Collection",
+        "name_ja": "",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "release_date": "2002-05-24"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json",
+          "title": "Local English WoC release catalog: Legendary Collection",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/base6",
+          "title": "Pokemon TCG API v2 set record: Legendary Collection",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_(TCG)",
+          "title": "Bulbapedia: Legendary Collection (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Holofoil#Reverse_Holofoil",
+          "title": "Bulbapedia: Holofoil / Reverse Holofoil",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete print-run history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokemon TCG API model Legendary Collection with a May 24, 2002 English release date; Bulbapedia also lists May 24, 2002.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog, Pokemon TCG API, and Bulbapedia model Legendary Collection as a 110-card set.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Legendary Collection as composed of reprints from Base Set, Jungle, Fossil, and Team Rocket, with no main Japanese equivalent.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says Legendary Collection introduced Reverse Holofoil prints with Holofoil throughout the card except the artwork window, and says this expansion's Reverse Holofoil has a fireworks-like pattern.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.vehicle",
+          "text": "Bulbapedia lists Lava and Turmoil as the Legendary Collection theme decks and notes exclusive non-holo prints of Charizard, Dark Blastoise, and Dark Raichu tied to those decks.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Charizard, Dark Blastoise, Dark Raichu, Gyarados, Venusaur, Zapdos, and other reprinted Kanto-era icons.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Legendary Collection are led by Ken Sugimori, Mitsuhiro Arita, Kagemaru Himeno, and Keiji Kinebuchi, with single-row credits including Christopher Rush, Shin-ichi Yoshida, Sumiyoshi Kizuki, and Miki Tanaka.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Legendary Collection matters because it turns early Pokemon memory into a new object: familiar Base/Jungle/Fossil/Team Rocket cards return under a new set mark, fireworks Reverse Holofoil treatment, theme-deck exceptions, and collector nostalgia as the organizing principle.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_reprint_reverse_holo_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "same artwork means same set or same foil treatment"
+          ],
+          "steps": [
+            "Confirm Legendary Collection set id base6 and the printed number before comparing to Base Set, Jungle, Fossil, or Team Rocket originals.",
+            "Record whether a listing claims regular holo, non-holo theme-deck exclusive, or fireworks Reverse Holofoil treatment.",
+            "Do not collapse Legendary Collection reprints into their original-set rows for pricing, evidence, or wants.",
+            "If a listing says 'reverse' or shows fireworks foil, ask for clear images of the whole card surface, number, and set symbol before routing."
+          ],
+          "summary": "Legendary Collection identity is reprint-plus-treatment: source lineage, set mark, foil state, and theme-deck exceptions all matter.",
+          "trigger": "Identifying or comparing Legendary Collection cards, especially reverse holos or theme-deck non-holos."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When nostalgia got fireworks",
+        "why_it_matters": "Legendary Collection is not a normal expansion so much as a memory machine. Wizards takes the early binder canon, gives it a new set mark, and then covers the card body in fireworks foil. The result is wonderfully strange: the same childhood images, but louder, shinier, and suddenly separate from their origin rows.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-3",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "romaji": "Lizardon",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-3",
+        "catalog_row_id": "base6-3"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-3",
+          "title": "Local English WoC card row: Legendary Collection Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-3",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Charizard",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Charizard_(Base_Set_4)",
+          "title": "Bulbapedia: Charizard (Base Set 4)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_(TCG)",
+          "title": "Bulbapedia: Legendary Collection (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Charizard as Legendary Collection number 3, a Rare Holo Stage 2 Fire row credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Charizard page lists a Legendary Collection print of the Base Set Charizard card, while the Legendary Collection page lists a non-holo Charizard as a Lava Theme Deck exclusive additional card.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Charizard's Energy Burn Pokemon Power and Fire Spin attack for this Legendary Collection row.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Legendary Collection Charizard matters because it is not simply Base Charizard again; it is Base Charizard reframed by fireworks reverse holo possibility, a new set mark, and a Lava deck non-holo branch.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_charizard_reverse_lava_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base Set and Legendary Collection Charizard are interchangeable"
+          ],
+          "steps": [
+            "Confirm Legendary Collection number 3/110 and set symbol before comparing to Base Set, Base Set 2, Stormfront, or later Charizard rows.",
+            "Record whether the listing claims regular holo, fireworks Reverse Holofoil, or Lava Theme Deck non-holo context.",
+            "Keep Energy Burn / Fire Spin as row text context, not physical proof.",
+            "If a seller image resembles Base Charizard, ask for set symbol, number, and foil-surface evidence."
+          ],
+          "summary": "Legendary Collection Charizard is a reprint identity with foil-state and Lava-deck branches; do not collapse it into Base Charizard.",
+          "trigger": "A listing or want references Legendary Collection Charizard, reverse holo Charizard, or Lava Theme Deck Charizard."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The old flame under fireworks",
+        "why_it_matters": "Legendary Collection Charizard is memory with a flashbulb. The Arita image is already loaded with childhood gravity, but this set makes the collector ask a new question: which surface, which symbol, which treatment? The same dragon becomes a different artifact because the assembly changed around it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-4",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Blastoise",
+        "name_ja": "わるいカメックス",
+        "romaji": "Warui Kamex",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-4",
+        "catalog_row_id": "base6-4"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-4",
+          "title": "Local English WoC card row: Legendary Collection Dark Blastoise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-4",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Dark Blastoise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Blastoise_(Team_Rocket_3)",
+          "title": "Bulbapedia: Dark Blastoise (Team Rocket 3)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_(TCG)",
+          "title": "Bulbapedia: Legendary Collection (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Dark Blastoise as Legendary Collection number 4, a Rare Holo Stage 2 Water row credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Dark Blastoise was first released in Team Rocket, later reprinted in Japanese Pokemon Web, later reprinted in Legendary Collection, and also reprinted as a Non Holofoil card in the Turmoil Theme Deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia's Legendary Collection page also lists Dark Blastoise as a Non Holo Turmoil Theme Deck exclusive additional card.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Legendary Collection Dark Blastoise matters because a Team Rocket identity returns inside a nostalgia set, with Pokemon Web, Legendary Collection holo, reverse holo, and Turmoil non-holo branches all nearby.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_dark_blastoise_turmoil_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Team Rocket and Legendary Collection prints are interchangeable"
+          ],
+          "steps": [
+            "Separate Team Rocket, Pokemon Web, Legendary Collection holo/reverse, and Turmoil Theme Deck non-holo contexts before comparison.",
+            "Confirm Legendary Collection number 4/110 and set symbol for the English base6 row.",
+            "Record whether the listing claims regular holo, fireworks Reverse Holofoil, or Turmoil non-holo.",
+            "Ask for set symbol, number, and foil-surface photos if a listing only says Dark Blastoise."
+          ],
+          "summary": "Dark Blastoise crosses Team Rocket, Pokemon Web, Legendary Collection, and Turmoil branches; set and foil state must be explicit.",
+          "trigger": "A listing or want references Dark Blastoise, Legendary Collection, Pokemon Web, Team Rocket, or Turmoil Theme Deck."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Rocket water in the nostalgia machine",
+        "why_it_matters": "Dark Blastoise is one of the rows where Legendary Collection shows its real trick. It is not just pulling from Base memory; it is pulling Team Rocket's darker vocabulary into a commemorative surface. The result is a card that feels familiar, villainous, and administratively fussy in exactly the way collectors end up caring about.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-7",
+      "type": "card",
+      "context": {
+        "name_en": "Dark Raichu",
+        "name_ja": "わるいライチュウ",
+        "romaji": "Warui Raichuu",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-7",
+        "catalog_row_id": "base6-7"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-7",
+          "title": "Local English WoC card row: Legendary Collection Dark Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-7",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Dark Raichu",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Dark_Raichu_(Team_Rocket_83)",
+          "title": "Bulbapedia: Dark Raichu (Team Rocket 83)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_(TCG)",
+          "title": "Bulbapedia: Legendary Collection (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Dark Raichu as Legendary Collection number 7, a Rare Holo Stage 1 Lightning row credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Dark Raichu was included as a Secret card in Team Rocket, made especially for the English set by Wizards of the Coast, later printed in Japanese Crossing the Ruins..., and reprinted in Legendary Collection.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia notes the original Team Rocket Dark Raichu top-right text error and says it was corrected in the Legendary Collection reprint; it also says a Non Holofoil print was included in the Turmoil Theme Deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.vehicle",
+          "text": "Bulbapedia's Legendary Collection page lists Dark Raichu as a Non Holo Turmoil Theme Deck exclusive additional card.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Legendary Collection Dark Raichu matters because it reprints one of Wizards' own English-origin secrets while visibly correcting text and adding fireworks and theme-deck branches.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_dark_raichu_corrected_text_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "corrected text proves authenticity"
+          ],
+          "steps": [
+            "Separate Team Rocket 83/82, Japanese Crossing the Ruins, Legendary Collection 7/110, and Turmoil Theme Deck non-holo contexts.",
+            "Record whether the top-right evolution text is the original erroneous text or the Legendary Collection corrected text.",
+            "Record whether the listing claims regular holo, fireworks Reverse Holofoil, or Turmoil non-holo.",
+            "Treat corrected text as row-context evidence, not standalone physical authentication."
+          ],
+          "summary": "Dark Raichu has an English-origin secret-card lineage and a corrected-text Legendary Collection boundary.",
+          "trigger": "A listing or want references Dark Raichu, Team Rocket 83/82, Legendary Collection 7/110, corrected text, or Turmoil Theme Deck."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The secret card comes back corrected",
+        "why_it_matters": "Dark Raichu is the most self-aware card in this pass. It began as an English-made secret, crossed into Japanese print history, then came back in Legendary Collection with corrected text and new foil possibilities. It is a small card-history knot, and exactly the sort of thing an agent should never flatten.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-12",
+      "type": "card",
+      "context": {
+        "name_en": "Gyarados",
+        "name_ja": "ギャラドス",
+        "romaji": "Gyarados",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-12",
+        "catalog_row_id": "base6-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-12",
+          "title": "Local English WoC card row: Legendary Collection Gyarados",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-12",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Gyarados",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Gyarados_(Base_Set_6)",
+          "title": "Bulbapedia: Gyarados (Base Set 6)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Gyarados as Legendary Collection number 12, a Rare Holo Stage 1 Water row credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "history.lineage",
+          "text": "Bulbapedia says the Base Set Gyarados print was reprinted in Base Set 2 and Legendary Collection, and also notes a separate rare Japanese Pokemon Snap Best Photo Contest print by Ryouichi Abe.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records Gyarados's Dragon Rage and Bubblebeam attacks for the Legendary Collection row.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Legendary Collection Gyarados matters because it shows how ordinary-looking reprint rows can hide sharp lineage traps: Base Set, Base Set 2, Legendary Collection, and the separate Pokemon Snap photo contest branch all need different treatment.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_gyarados_snap_reprint_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "photo contest branch is equivalent to Legendary Collection"
+          ],
+          "steps": [
+            "Confirm Legendary Collection number 12/110 and set symbol before comparing to Base Set or Base Set 2 Gyarados.",
+            "Do not route the Japanese Pokemon Snap Best Photo Contest print as the same row; it has different artwork and provenance.",
+            "Record whether the listing claims regular holo or fireworks Reverse Holofoil.",
+            "Ask for set symbol, number, and artwork evidence if a seller only says vintage Gyarados."
+          ],
+          "summary": "Legendary Collection Gyarados is a reprint row, but the Pokemon Snap photo branch is a separate high-risk lineage.",
+          "trigger": "A listing or want references Legendary Collection Gyarados, Base Set Gyarados, or Pokemon Snap Gyarados."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The familiar sea monster with a hidden photo ghost",
+        "why_it_matters": "Gyarados looks straightforward until you follow the branches. Arita's Base-era monster returns in Legendary Collection, but nearby in the species history is the strange Ryouichi Abe Pokemon Snap contest print. That is why this catalog exists: the card is familiar, but the assembly is not simple.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-18",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-18",
+        "catalog_row_id": "base6-18"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-18",
+          "title": "Local English WoC card row: Legendary Collection Venusaur",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-18",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Venusaur",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Venusaur_(Base_Set_15)",
+          "title": "Bulbapedia: Venusaur (Base Set 15)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Legendary_Collection_(TCG)",
+          "title": "Bulbapedia: Legendary Collection (TCG)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Venusaur as Legendary Collection number 18, a Rare Holo Stage 2 Grass Pokemon credited to Mitsuhiro Arita.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokemon TCG API records this Legendary Collection Venusaur with HP 100, Level 67, the Energy Trans Pokemon Power, Solarbeam, Fire weakness, and a two Colorless retreat cost.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Venusaur page treats the Legendary Collection print as part of the Base Set Venusaur card lineage, while the Legendary Collection page frames the expansion as reprints from Base Set, Jungle, Fossil, and Team Rocket rather than a new Japanese-equivalent expansion.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia's Legendary Collection page says the set introduced Reverse Holofoil prints with a fireworks-like pattern, so this Venusaur row needs regular-holo versus fireworks Reverse Holofoil treatment kept separate.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Legendary Collection Venusaur matters because it turns the Base-era Arita Grass engine into a late-Wizards nostalgia object: same old Energy Trans memory, but now under a new set mark and a possible fireworks reverse-holo surface.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Special identification work should preserve Legendary Collection set id base6, printed number 18, Mitsuhiro Arita credit, Energy Trans, Solarbeam, and claimed foil treatment before comparing to Base Set, Base Set 2, No Rarity, Expedition, Gym, CD, or later Venusaur rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_venusaur_reverse_base_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "regular holo status",
+            "fireworks Reverse Holofoil status",
+            "holo surface condition",
+            "Base Set equivalence",
+            "Base Set 2 equivalence",
+            "No Rarity equivalence",
+            "Expedition equivalence",
+            "Erika's Venusaur equivalence",
+            "CD promo equivalence",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm Legendary Collection / set id base6 printed number 18 before importing this row's history.",
+            "Confirm the row signals: Venusaur, Mitsuhiro Arita, HP 100, Level 67, Energy Trans, Solarbeam, Fire weakness, and two Colorless retreat cost.",
+            "Record whether the seller claims regular holo or fireworks Reverse Holofoil; do not infer either treatment from the catalog row alone.",
+            "Do not collapse this card into Base Set Venusaur, Base Set 2 Venusaur, Japanese Expansion Pack / No Rarity Venusaur, Expedition Venusaur, Erika's Venusaur, CD/promo Venusaur, or later Venusaur ex/GX/V memory.",
+            "If foil treatment, edition, condition, slab, or variant context matters, ask for full-card scans showing set symbol, printed number, surface treatment, and any label/cert evidence."
+          ],
+          "summary": "Legendary Collection Venusaur base6-18 is Base-era Venusaur memory reassembled as a 2002 Legendary Collection row. Set mark, number, and foil treatment are load-bearing.",
+          "trigger": "A listing, want, scan, or agent memory says Legendary Collection Venusaur, base6-18, Venusaur #18, reverse holo Venusaur, fireworks Venusaur, Energy Trans Venusaur, or vintage Venusaur."
+        }
+      ],
+      "card_highlights": {
+        "number": "18",
+        "rarity_signal": "Rare Holo",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "reprint memory",
+          "fireworks reverse holo",
+          "Base-era engine",
+          "late-Wizards nostalgia",
+          "foil treatment trap"
+        ],
+        "signals": [
+          "Legendary Collection",
+          "base6",
+          "Venusaur",
+          "18",
+          "Rare Holo",
+          "Mitsuhiro Arita",
+          "Energy Trans",
+          "Solarbeam",
+          "HP 100",
+          "Level 67",
+          "Fire weakness",
+          "retreat cost 2",
+          "fireworks Reverse Holofoil context"
+        ],
+        "collector_texture_note": "This is not just Base Venusaur again. Legendary Collection changes the apparatus around the Arita image: new set mark, new number, and the fireworks reverse-holo question."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur under the fireworks skin",
+        "why_it_matters": "Legendary Collection Venusaur is the old garden engine made loud. Energy Trans still feels like the heart of Base-era Grass play, but the card now belongs to a 2002 memory machine where the surface can become fireworks and the set mark changes the object. For an agent, this is exactly the lesson: nostalgia is not identity until the assembly is placed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_legendary_collection_20020524:base6-29",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Mewtwo",
+        "release_family_id": "en_wotc_legendary_collection_20020524",
+        "row_id": "en_wotc_legendary_collection_20020524:base6-29",
+        "catalog_row_id": "base6-29"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_legendary_collection_20020524.json#row:en_wotc_legendary_collection_20020524:base6-29",
+          "title": "Local English WoC card row: Legendary Collection Mewtwo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/base6-29",
+          "title": "Pokemon TCG API v2 card record: Legendary Collection Mewtwo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mewtwo_(Wizards_Promo_3)",
+          "title": "Bulbapedia: Mewtwo (Wizards Promo 3)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokemon TCG API identify Mewtwo as Legendary Collection number 29, a Rare Basic Psychic row credited to Christopher Rush.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog and Pokemon TCG API credit this Legendary Collection Mewtwo row to Christopher Rush, making it a visual outlier among the set's mostly Japanese TCG artist clusters.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia's Wizards Promo Mewtwo page documents multiple Mewtwo promo branches tied to Mewtwo Strikes Back, Black Star Promos, and Japanese unnumbered promotional cards; those branches are not the same row as Legendary Collection Mewtwo.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Legendary Collection Mewtwo matters because it shows that not every nostalgia row is the obvious Base holo: a Christopher Rush rare sits beside Arita and Sugimori memory, reminding the agent to inspect artist and row identity instead of species fame alone.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "legendary_collection_mewtwo_christopher_rush_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all vintage Mewtwo rows share artist or promo lineage"
+          ],
+          "steps": [
+            "Confirm Legendary Collection number 29/110 and Christopher Rush credit before comparing to Base, promo, movie-stamp, or other Mewtwo rows.",
+            "Do not import Mewtwo Strikes Back stamp or Black Star promo assumptions into this row unless the listing explicitly shows that print.",
+            "Record whether the listing claims regular or fireworks Reverse Holofoil treatment.",
+            "Ask for set symbol, number, artist line, and full-card photos if a listing only says vintage Mewtwo."
+          ],
+          "summary": "Legendary Collection Mewtwo is a Christopher Rush rare, not the Base holo or movie-promo branch; artist line matters.",
+          "trigger": "A listing or want references Legendary Collection Mewtwo, vintage Mewtwo, Christopher Rush, or Mewtwo movie promo."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The odd artist credit in the memory set",
+        "why_it_matters": "Mewtwo 29 is the quiet corrective to lazy nostalgia. Legendary Collection is full of huge familiar images, but this row asks the agent to notice Christopher Rush, a different branch of Mewtwo memory, and a non-holo rare slot. Species fame is not enough. The card has to be placed.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

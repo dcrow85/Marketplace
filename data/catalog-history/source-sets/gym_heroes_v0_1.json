@@ -1,0 +1,954 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for English Gym Heroes and five rows that show the first English Gym assembly.",
+    "in_scope": [
+      "Gym Heroes release dossier",
+      "Blaine's Moltres",
+      "Misty's Tentacruel",
+      "Rocket's Scyther",
+      "Lt. Surge's Raichu",
+      "Misty's Psyduck"
+    ],
+    "not_claiming": [
+      "complete Gym Heroes scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "en_wotc_gym_heroes_20000814",
+      "type": "release",
+      "context": {
+        "name_en": "Gym Heroes",
+        "name_ja": "",
+        "release_family_id": "en_wotc_gym_heroes_20000814",
+        "release_date": "2000-08-14"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json",
+          "title": "Local English WoC release catalog: Gym Heroes",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/sets/gym1",
+          "title": "Pokémon TCG API v2 set record: Gym Heroes",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete narrative history",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Gym_Heroes_(TCG)",
+          "title": "Bulbapedia: Gym Heroes (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Pokémon TCG API model Gym Heroes with an August 14, 2000 English release date; Bulbapedia also lists English release date August 14, 2000.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and Pokémon TCG API both model 132 Gym Heroes rows for set id gym1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Gym Heroes as the sixth main English Pokémon TCG expansion and says the Japanese release was Gym Expansion 1: Leaders' Stadium.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.vehicle",
+          "text": "Bulbapedia lists Brock, Misty, Lt. Surge, and Erika theme decks for Gym Heroes and frames the set around teaming up with those Gym Leaders.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Blaine's Moltres, Misty's Tentacruel, Rocket's Hitmonchan, Rocket's Moltres, Rocket's Scyther, Sabrina's Gengar, trainer portraits, Lt. Surge's Raichu, and Misty deck-linked rows.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "The local catalog's credited-artist clusters for Gym Heroes are led by Ken Sugimori, Atsuko Nishida, Keiji Kinebuchi, Sumiyoshi Kizuki, Benimaru Itoh, and Shin-ichi Yoshida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Gym Heroes matters because it is the first English Gym set: it turns Japanese Leaders' Stadium and related Gym material into an English expansion where owner names, theme decks, and trainer identity become the organizing principle.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gym_heroes_leaders_stadium_assembly_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "English Gym Heroes rows map one-to-one to one Japanese product"
+          ],
+          "steps": [
+            "Preserve English Gym Heroes / set id gym1 before comparing against Japanese Leaders' Stadium, Japanese theme decks, or W Promotional branches.",
+            "Keep owner-name identity intact; do not merge Misty's, Rocket's, Brock's, Erika's, or Lt. Surge's rows into ordinary species rows.",
+            "When a card has theme-deck, magazine, or promo lineage, surface that lineage as context rather than treating it as proof of a seller's copy.",
+            "For duplicate owner-name species rows, ask for row number and image before importing artist or rarity context."
+          ],
+          "summary": "Gym Heroes is an English assembly of Gym-era materials; agents must keep owner name, row number, and Japanese/source-product lineage visible.",
+          "trigger": "Identifying or comparing English Gym Heroes cards."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first English binder of borrowed teams",
+        "why_it_matters": "Gym Heroes is where the English game learns that a Pokémon card can belong to someone. The creatures are familiar, but the ownership changes the air: Brock makes the rocks patient, Erika makes the grass gentle, Surge makes electricity disciplined, and Misty turns water into personality. It is the start of the owner-name grammar that Gym Challenge later sharpens.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_heroes_20000814:gym1-1",
+      "type": "card",
+      "context": {
+        "name_en": "Blaine's Moltres",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_heroes_20000814",
+        "row_id": "en_wotc_gym_heroes_20000814:gym1-1",
+        "catalog_row_id": "gym1-1"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:en_wotc_gym_heroes_20000814:gym1-1",
+          "title": "Local Gym Heroes row: Blaine's Moltres 1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym1-1",
+          "title": "Pokémon TCG API v2 card record: Blaine's Moltres gym1-1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Blaine%27s_Moltres_(Gym_Heroes_1)",
+          "title": "Bulbapedia: Blaine's Moltres (Gym Heroes 1)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Blaine's Moltres as Gym Heroes number 1, a Rare Holo Basic Fire Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Blaine's Moltres with the attack Phoenix Flame, which costs five Fire Energy and does 90 damage before a coin-flip drawback.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Blaine's Moltres was the first card to feature an attack costing five Energy.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blaine's Moltres matters because the card makes Blaine's identity mechanical: huge flame, huge cost, and a self-resetting drawback, all wrapped around a legendary bird.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "blaines_moltres_five_energy_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Moltres cards share this energy-cost significance"
+          ],
+          "steps": [
+            "Preserve the full owner name Blaine's Moltres and row 1 before comparing to ordinary Moltres rows.",
+            "Use the five-Energy attack note only for this card's historical context, not as evidence of a seller's copy.",
+            "Ask for a clear attack-text image if a buyer specifically cares about Phoenix Flame text or print condition."
+          ],
+          "summary": "Blaine's Moltres is row-specific: its five-Energy Phoenix Flame context should not be applied to generic Moltres cards.",
+          "trigger": "A listing references Blaine's Moltres, Phoenix Flame, or five-Energy attack history."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blaine turns fire into commitment",
+        "why_it_matters": "Blaine's Moltres is wonderfully excessive. Five Fire Energy is not subtle; it makes the card feel like a dare. That is why the owner name works: the legendary bird is not just strong, it has been trained into Blaine's philosophy of all-in flame.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_heroes_20000814:gym1-10",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Tentacruel",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_heroes_20000814",
+        "row_id": "en_wotc_gym_heroes_20000814:gym1-10",
+        "catalog_row_id": "gym1-10"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:en_wotc_gym_heroes_20000814:gym1-10",
+          "title": "Local Gym Heroes row: Misty's Tentacruel 10",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym1-10",
+          "title": "Pokémon TCG API v2 card record: Misty's Tentacruel gym1-10",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Tentacruel_(Gym_Heroes_10)",
+          "title": "Bulbapedia: Misty's Tentacruel (Gym Heroes 10)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Misty's Tentacruel as Gym Heroes number 10, a Rare Holo Stage 1 Water Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Misty's Tentacruel with the Pokémon Power Flee and the attack Jellyfish Poison.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Misty's Tentacruel was released in Japan in the Hanada City Gym Theme Deck and later in Gym Heroes after a Japanese Leaders' Stadium reprint.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Tentacruel is a perfect bridge from Japanese deck identity to English expansion identity: the same Misty-owned water line gets reassembled from Hanada City Gym into Gym Heroes.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_tentacruel_hanada_to_gym_heroes_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Japanese Hanada and English Gym Heroes prints are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is Japanese Hanada City Gym, Japanese Leaders' Stadium, or English Gym Heroes before comparing artwork/rarity.",
+            "Preserve owner-name and row 10 for the English Gym Heroes card.",
+            "Do not treat the Japanese deck origin as proof that a seller's English copy has any particular condition or provenance.",
+            "Use Flee / Jellyfish Poison as row confirmation when a listing image is ambiguous."
+          ],
+          "summary": "Misty's Tentacruel crosses Japanese deck and English expansion contexts; agents should keep those assembly layers separate.",
+          "trigger": "A listing compares Misty's Tentacruel across Hanada City Gym, Leaders' Stadium, or Gym Heroes."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Misty's water line changes rooms",
+        "why_it_matters": "Misty's Tentacruel feels like the catalog breathing across products. It starts as a Japanese deck card, passes through Leaders' Stadium, and becomes an English Gym Heroes holo. The card is less a single stop than a little current moving between assemblies.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_heroes_20000814:gym1-13",
+      "type": "card",
+      "context": {
+        "name_en": "Rocket's Scyther",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_heroes_20000814",
+        "row_id": "en_wotc_gym_heroes_20000814:gym1-13",
+        "catalog_row_id": "gym1-13"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:en_wotc_gym_heroes_20000814:gym1-13",
+          "title": "Local Gym Heroes row: Rocket's Scyther 13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym1-13",
+          "title": "Pokémon TCG API v2 card record: Rocket's Scyther gym1-13",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Rocket%27s_Scyther_(Gym_Heroes_13)",
+          "title": "Bulbapedia: Rocket's Scyther (Gym Heroes 13)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Rocket's Scyther as Gym Heroes number 13, a Rare Holo Basic Grass Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Rocket's Scyther with Shadow Images and Blinding Scythe.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "Bulbapedia says Scyther did not have an evolution at the time of Rocket's Scyther's release, making the Shadow Images text 'or is evolved' an error.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Rocket's Scyther is a rules-text trap as much as a holo: it carries Rocket ownership and a future-facing evolution phrase that did not yet match the species timeline.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "rockets_scyther_shadow_images_error_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Scyther cards contain this text issue"
+          ],
+          "steps": [
+            "Confirm Rocket's Scyther row 13 before applying the Shadow Images error context.",
+            "Do not import the 'or is evolved' issue onto ordinary Scyther cards or later Rocket's Scizor cards.",
+            "Ask for a clear image of the Shadow Images text if the buyer cares about the error wording.",
+            "Keep Rocket ownership visible in search and comparison; do not collapse to generic Scyther."
+          ],
+          "summary": "Rocket's Scyther has a row-specific rules-text error around evolution wording; agents should surface it only after row confirmation.",
+          "trigger": "A listing references Rocket's Scyther, Shadow Images, evolution wording, or error text."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A future evolution hiding in the text",
+        "why_it_matters": "Rocket's Scyther is deliciously strange. The card is already evasive in play, then the text gestures toward evolution before Scyther had one in the TCG moment. It is a tiny fossil of the franchise changing under the card frame.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_heroes_20000814:gym1-28",
+      "type": "card",
+      "context": {
+        "name_en": "Lt. Surge's Raichu",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_heroes_20000814",
+        "row_id": "en_wotc_gym_heroes_20000814:gym1-28",
+        "catalog_row_id": "gym1-28"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:en_wotc_gym_heroes_20000814:gym1-28",
+          "title": "Local Gym Heroes row: Lt. Surge's Raichu 28",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym1-28",
+          "title": "Pokémon TCG API v2 card record: Lt. Surge's Raichu gym1-28",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lt._Surge%27s_Raichu_(Gym_Heroes_28)",
+          "title": "Bulbapedia: Lt. Surge's Raichu (Gym Heroes 28)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Lt. Surge's Raichu as Gym Heroes number 28, a Rare Stage 1 Lightning Pokémon illustrated by Ken Sugimori.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Lt. Surge's Raichu with Mega Punch and Thunderbolt, with Thunderbolt discarding all Energy attached to use the attack.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia identifies the Japanese source context for Lt. Surge's Raichu as the Kuchiba City Gym theme deck.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Lt. Surge's Raichu matters because it makes the anime/game Gym Leader bond explicit: a familiar Raichu is no longer generic electricity, it is Surge's disciplined burst of power.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "lt_surges_raichu_kuchiba_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Raichu cards share Lt. Surge context"
+          ],
+          "steps": [
+            "Preserve Lt. Surge's owner-name context before comparing to ordinary Raichu rows.",
+            "Confirm Gym Heroes row 28 or Japanese Kuchiba City Gym context before importing deck lineage.",
+            "Use Mega Punch / Thunderbolt as row-confirming text, not as proof of physical authenticity."
+          ],
+          "summary": "Lt. Surge's Raichu is owner- and product-context specific; generic Raichu comparison is not enough.",
+          "trigger": "A listing references Lt. Surge's Raichu or a Gym-era Raichu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Surge's electricity has a chain of command",
+        "why_it_matters": "Lt. Surge's Raichu is almost austere compared with flashier holos, but that is the charm. It feels trained: Mega Punch, Thunderbolt, all energy spent at once. The owner name turns a mascot evolution into a Gym Leader's instrument.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "en_wotc_gym_heroes_20000814:gym1-54",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Psyduck",
+        "name_ja": "",
+        "romaji": "",
+        "release_family_id": "en_wotc_gym_heroes_20000814",
+        "row_id": "en_wotc_gym_heroes_20000814:gym1-54",
+        "catalog_row_id": "gym1-54"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/english-wotc/releases/en_wotc_gym_heroes_20000814.json#row:en_wotc_gym_heroes_20000814:gym1-54",
+          "title": "Local Gym Heroes row: Misty's Psyduck 54",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.pokemontcg.io/v2/cards/gym1-54",
+          "title": "Pokémon TCG API v2 card record: Misty's Psyduck gym1-54",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller card match",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Psyduck_(Gym_Heroes_54)",
+          "title": "Bulbapedia: Misty's Psyduck (Gym Heroes 54)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "primary Wizards source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Pokémon TCG API identify Misty's Psyduck as Gym Heroes number 54, an Uncommon Basic Water Pokémon illustrated by Atsuko Nishida.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.play_or_collecting_context",
+          "text": "The Pokémon TCG API records Misty's Psyduck with Scratch and Call for Friend, which searches for a Basic Pokémon with Misty in its name on a successful coin flip.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.lineage",
+          "text": "Bulbapedia says Misty's Psyduck was first released in the Japanese Hanada City Gym theme deck and that a W Wizards stamped print was included in the August 2000 issue of Top Deck Magazine.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Misty's Psyduck matters because a small character card carries three assembly contexts at once: Japanese deck origin, English Gym Heroes row, and W-stamped magazine promo branch.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "mistys_psyduck_w_stamp_hanada_context_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "unstamped and W-stamped prints are interchangeable"
+          ],
+          "steps": [
+            "Confirm whether the card is the standard Gym Heroes row, Japanese Hanada City Gym print, or W Wizards stamped Top Deck Magazine print.",
+            "If a seller claims W-stamped provenance, ask for a clear image of the W stamp and row details.",
+            "Preserve the Atsuko Nishida credit and Call for Friend text as row context, not physical proof.",
+            "Do not compare this row only against the earlier Hanada City Gym catalog row without checking language and stamp state."
+          ],
+          "summary": "Misty's Psyduck has Japanese deck, English set, and W-stamped magazine branches; stamp state must be explicit.",
+          "trigger": "A listing references Misty's Psyduck, W stamp, Top Deck Magazine, or Hanada City Gym origin."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The small duck with three doorways",
+        "why_it_matters": "Misty's Psyduck is the kind of card that rewards caring. It is not the loudest holo; it is a little connector between Misty's Japanese deck, the English Gym Heroes set, and a magazine-stamped promo branch. The card is a map folded into an uncommon.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

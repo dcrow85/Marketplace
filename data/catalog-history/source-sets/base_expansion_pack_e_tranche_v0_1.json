@@ -1,0 +1,1410 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Pokemon Card e Base Expansion Pack high-gravity tranche",
+    "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+    "notes": [
+      "Japanese Pokemon Card e main expansion released December 1, 2001 with 128 modeled rows in the local catalog.",
+      "This pass deepens the release dossier plus nine high-gravity / interface-teaching card rows; the remaining 119 card rows stay generated follow-up work."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card e Base Expansion Pack",
+        "name_ja": "基本拡張パック",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "release_date": "2001-12-01"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "clean translated-name authority"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/E1",
+          "title": "TCGdex Japanese set endpoint: E1 / Pokemon Card e Base Expansion Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete artist authority",
+            "image rights approval",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local Japanese classic catalog models Pokemon Card e Base Expansion Pack / 基本拡張パック with a December 1, 2001 release date.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog and TCGdex-derived metadata model 128 card rows for Base Expansion Pack e, with no source-gap rows in the local release file.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Base Expansion Pack e is modeled as a Japanese main expansion in the ポケモンカードe series, using TCGdex set id E1.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Base Expansion Pack e matters because it is not just another checklist: it is Pokemon moving into the e-Card apparatus, where the card frame, numbering, and interface become part of collector identity.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "release.chase_structure",
+          "text": "Collector attention naturally gathers around Charizard, the two Mewtwo rows, Pikachu, and the holo Kanto/Johto anchors, but the release-level story is the interface shift into Japanese E1 rather than a pure character ranking.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "release.boundary",
+          "text": "This source-set pass deepens the release and nine high-gravity card rows only; the other 119 Base Expansion Pack e rows remain generated catalog-history follow-up work.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A Base Expansion Pack e match should preserve Japanese title 基本拡張パック, TCGdex set id E1, local card number, row id, and source-row text together; translated names alone are not enough.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_e1_release_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent result says Base Expansion Pack e, Japanese e-Card Base, E1, Expedition Japanese, 基本拡張パック, e-Card Charizard, e-Card Mewtwo, or another high-gravity E1 card.",
+          "summary": "Confirm Japanese Base Expansion Pack e / E1 identity by title, set id, card number, and row id before treating a card as this release.",
+          "steps": [
+            "Confirm the Japanese release title 基本拡張パック and/or TCGdex set id E1.",
+            "Confirm the card number/local id against the local row, especially for famous names that appear in English Expedition or later e-Card products.",
+            "Do not treat English Expedition Base Set, later reprints, or same-character cards as equivalent without set/number evidence.",
+            "Preserve messy source-row text and normalized collector labels separately when the local source translation is uncertain.",
+            "For transactional use, ask for front/back photos, e-Card border/number area, holo features where applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "complete 128-card hand-authored coverage",
+            "illustrator authority",
+            "price truth",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "When the card becomes an interface",
+        "why_it_matters": "Base Expansion Pack e is an apparatus shift. Pokemon is no longer only arranging monsters on cardboard; it is asking the card to behave like an interface, with a new border language and an E1 spine that agents must preserve. That is why the famous names are almost dangerous here: Charizard and Mewtwo pull attention, but the set identity lives in the e-Card frame, the Japanese title, and the row number.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-016",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "ピカチュウ",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-016",
+        "catalog_row_id": "016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-016",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Pikachu 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 016 / local id E1-016; the source row name appears as ピカチュウ, while this dossier uses normalized collector label Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Pikachu / E1-016 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Pikachu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pikachu matters here because the familiar face crosses into a new interface. The card is common in the local rarity signal, but culturally it shows the e-Card era asking the oldest mascot to teach collectors a new card shape.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Pikachu, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 016, local id E1-016, source-row text ピカチュウ, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_pikachu_016_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Pikachu, Japanese e-Card Base Pikachu, Expedition-era Japanese Pikachu, or Pikachu #016.",
+          "summary": "Confirm Pikachu by Japanese E1 set identity plus card number 016, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 016 / E1-016.",
+            "Preserve source-row text 'ピカチュウ' and normalized collector label 'Pikachu' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Pikachu equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the mascot enters the e-Card frame",
+        "why_it_matters": "Pikachu matters here because the familiar face crosses into a new interface. The card is common in the local rarity signal, but culturally it shows the e-Card era asking the oldest mascot to teach collectors a new card shape.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-086",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "mewtwo",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-086",
+        "catalog_row_id": "086"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-086",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Mewtwo 086",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 086 / local id E1-086; the source row name appears as mewtwo, while this dossier uses normalized collector label Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Mewtwo / E1-086 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo appears twice in the local Base Expansion Pack e spine. The rare row is useful for agents precisely because it can be confused with the holo row; number and local id have to carry the distinction.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Mewtwo, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 086, local id E1-086, source-row text mewtwo, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_mewtwo_086_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Mewtwo, Japanese e-Card Base Mewtwo, Expedition-era Japanese Mewtwo, or Mewtwo #086.",
+          "summary": "Confirm Mewtwo by Japanese E1 set identity plus card number 086, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 086 / E1-086.",
+            "Preserve source-row text 'mewtwo' and normalized collector label 'Mewtwo' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Mewtwo equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the non-holo psychic anchor",
+        "why_it_matters": "Mewtwo appears twice in the local Base Expansion Pack e spine. The rare row is useful for agents precisely because it can be confused with the holo row; number and local id have to carry the distinction.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-097",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "金星",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-097",
+        "catalog_row_id": "097"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-097",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Venusaur 097",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 097 / local id E1-097; the source row name appears as 金星, while this dossier uses normalized collector label Venusaur.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Venusaur / E1-097 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Venusaur.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The local source row text for card 097 is messy, but the queue treats it as a Venusaur chase signal. The right move is not to smooth that away: preserve the source text, the normalized collector reading, and the number together.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Venusaur, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 097, local id E1-097, source-row text 金星, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_venusaur_097_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Venusaur, Japanese e-Card Base Venusaur, Expedition-era Japanese Venusaur, or Venusaur #097.",
+          "summary": "Confirm Venusaur by Japanese E1 set identity plus card number 097, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 097 / E1-097.",
+            "Preserve source-row text '金星' and normalized collector label 'Venusaur' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Venusaur equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "a starter icon through messy source text",
+        "why_it_matters": "The local source row text for card 097 is messy, but the queue treats it as a Venusaur chase signal. The right move is not to smooth that away: preserve the source text, the normalized collector reading, and the number together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-098",
+      "type": "card",
+      "context": {
+        "name_en": "Butterfree",
+        "name_ja": "蝶",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-098",
+        "catalog_row_id": "098"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-098",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Butterfree 098",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 098 / local id E1-098; the source row name appears as 蝶, while this dossier uses normalized collector label Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Butterfree / E1-098 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Butterfree.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Butterfree gives the e-Card base object a softer Kanto memory. It is not only a chase by power; it is the old butterfly line carried through a newer card interface.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Butterfree, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 098, local id E1-098, source-row text 蝶, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_butterfree_098_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Butterfree, Japanese e-Card Base Butterfree, Expedition-era Japanese Butterfree, or Butterfree #098.",
+          "summary": "Confirm Butterfree by Japanese E1 set identity plus card number 098, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 098 / E1-098.",
+            "Preserve source-row text '蝶' and normalized collector label 'Butterfree' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Butterfree equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "a fragile Kanto memory becomes holo",
+        "why_it_matters": "Butterfree gives the e-Card base object a softer Kanto memory. It is not only a chase by power; it is the old butterfly line carried through a newer card interface.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-099",
+      "type": "card",
+      "context": {
+        "name_en": "Arbok",
+        "name_ja": "アーボック",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-099",
+        "catalog_row_id": "099"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-099",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Arbok 099",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 099 / local id E1-099; the source row name appears as アーボック, while this dossier uses normalized collector label Arbok.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Arbok / E1-099 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Arbok.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Arbok is a good e-Card-era test case because it is familiar, slightly sinister Kanto material living inside the new scanning-era frame. It shows continuity without needing mascot status.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Arbok, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 099, local id E1-099, source-row text アーボック, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_arbok_099_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Arbok, Japanese e-Card Base Arbok, Expedition-era Japanese Arbok, or Arbok #099.",
+          "summary": "Confirm Arbok by Japanese E1 set identity plus card number 099, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 099 / E1-099.",
+            "Preserve source-row text 'アーボック' and normalized collector label 'Arbok' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Arbok equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "old danger in a new border",
+        "why_it_matters": "Arbok is a good e-Card-era test case because it is familiar, slightly sinister Kanto material living inside the new scanning-era frame. It shows continuity without needing mascot status.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-100",
+      "type": "card",
+      "context": {
+        "name_en": "Vileplume",
+        "name_ja": "vileplume",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-100",
+        "catalog_row_id": "100"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-100",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Vileplume 100",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 100 / local id E1-100; the source row name appears as vileplume, while this dossier uses normalized collector label Vileplume.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Vileplume / E1-100 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Vileplume.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Vileplume keeps the early Grass-line memory in the e-Card base. The card matters as a continuity anchor: old ecological texture reassembled through the post-Neo interface.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Vileplume, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 100, local id E1-100, source-row text vileplume, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_vileplume_100_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Vileplume, Japanese e-Card Base Vileplume, Expedition-era Japanese Vileplume, or Vileplume #100.",
+          "summary": "Confirm Vileplume by Japanese E1 set identity plus card number 100, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 100 / E1-100.",
+            "Preserve source-row text 'vileplume' and normalized collector label 'Vileplume' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Vileplume equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the garden gets an e-Card body",
+        "why_it_matters": "Vileplume keeps the early Grass-line memory in the e-Card base. The card matters as a continuity anchor: old ecological texture reassembled through the post-Neo interface.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-102",
+      "type": "card",
+      "context": {
+        "name_en": "Meganium",
+        "name_ja": "ミーガニウム",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-102",
+        "catalog_row_id": "102"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-102",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Meganium 102",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 102 / local id E1-102; the source row name appears as ミーガニウム, while this dossier uses normalized collector label Meganium.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Meganium / E1-102 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Meganium.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Meganium brings Johto starter gravity into the e-Card base object. After the Premium File handoff, this row shows the starter memory entering a more systematic, scannable release spine.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Meganium, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 102, local id E1-102, source-row text ミーガニウム, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_meganium_102_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Meganium, Japanese e-Card Base Meganium, Expedition-era Japanese Meganium, or Meganium #102.",
+          "summary": "Confirm Meganium by Japanese E1 set identity plus card number 102, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 102 / E1-102.",
+            "Preserve source-row text 'ミーガニウム' and normalized collector label 'Meganium' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Meganium equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Johto starter memory crosses the interface",
+        "why_it_matters": "Meganium brings Johto starter gravity into the e-Card base object. After the Premium File handoff, this row shows the starter memory entering a more systematic, scannable release spine.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-103",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "カリザード",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-103",
+        "catalog_row_id": "103"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-103",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Charizard 103",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 103 / local id E1-103; the source row name appears as カリザード, while this dossier uses normalized collector label Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Charizard / E1-103 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Charizard is the obvious gravity well, but the important point is apparatus: this is not generic Charizard. It is Charizard inside Japanese Base Expansion Pack e, with E1 numbering and e-Card-era identity rails.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Charizard, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 103, local id E1-103, source-row text カリザード, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_charizard_103_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Charizard, Japanese e-Card Base Charizard, Expedition-era Japanese Charizard, or Charizard #103.",
+          "summary": "Confirm Charizard by Japanese E1 set identity plus card number 103, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 103 / E1-103.",
+            "Preserve source-row text 'カリザード' and normalized collector label 'Charizard' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Charizard equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the old fire crown in a new apparatus",
+        "why_it_matters": "Charizard is the obvious gravity well, but the important point is apparatus: this is not generic Charizard. It is Charizard inside Japanese Base Expansion Pack e, with E1 numbering and e-Card-era identity rails.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_base_expansion_pack_e_20011201:E1-118",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "mewtwo",
+        "romaji": "",
+        "release_family_id": "jp_tcg_base_expansion_pack_e_20011201",
+        "row_id": "jp_tcg_base_expansion_pack_e_20011201:E1-118",
+        "catalog_row_id": "118"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-classic/releases/jp_tcg_base_expansion_pack_e_20011201.json#row:jp_tcg_base_expansion_pack_e_20011201:E1-118",
+          "title": "Local Japanese classic catalog: Pokemon Card e Base Expansion Pack row: Mewtwo 118",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "illustrator authority",
+            "clean translated-name authority"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local Japanese classic catalog identifies Base Expansion Pack e card 118 / local id E1-118; the source row name appears as mewtwo, while this dossier uses normalized collector label Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local collector-texture signals mark Mewtwo / E1-118 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The current local Base Expansion Pack e row does not provide an illustrator credit for Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "The holo Mewtwo row is the companion to the rare Mewtwo row. Together they make the tranche a good lesson for agents: same famous name, different row, different rarity signal, different transactional questions.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "For Mewtwo, preserve Japanese title 基本拡張パック, TCGdex set id E1, card number 118, local id E1-118, source-row text mewtwo, and normalized collector label separately.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "base_expansion_pack_e_mewtwo_118_identity_v0.1",
+          "trigger": "A user or listing says Base Expansion Pack e Mewtwo, Japanese e-Card Base Mewtwo, Expedition-era Japanese Mewtwo, or Mewtwo #118.",
+          "summary": "Confirm Mewtwo by Japanese E1 set identity plus card number 118, not by name alone.",
+          "steps": [
+            "Confirm the Japanese release is 基本拡張パック / Pokemon Card e Base Expansion Pack with TCGdex set id E1.",
+            "Confirm the printed or cataloged card number/local id matches 118 / E1-118.",
+            "Preserve source-row text 'mewtwo' and normalized collector label 'Mewtwo' separately.",
+            "Do not merge with English Expedition Base Set, later e-Card reprints, or same-character cards without set/number evidence.",
+            "For a trade, ask for full front/back photos, e-Card border/number area, holo area when applicable, and condition-focused surface/corner images."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "English Expedition equivalence",
+            "other Mewtwo equivalence",
+            "illustrator authority",
+            "translated-name certainty"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "the holo psychic doublet",
+        "why_it_matters": "The holo Mewtwo row is the companion to the rare Mewtwo row. Together they make the tranche a good lesson for agents: same famous name, different row, different rarity signal, different transactional questions.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "none",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

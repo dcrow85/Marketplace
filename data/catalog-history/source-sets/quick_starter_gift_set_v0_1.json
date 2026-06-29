@@ -1,0 +1,1234 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Quick Starter Gift Set and seven rows that show red/green deck lanes, Vending reprint context, and No Rarity trap boundaries.",
+    "in_scope": [
+      "Quick Starter Gift Set parent rollup release dossier",
+      "Mewtwo",
+      "Chansey",
+      "Pikachu red-009",
+      "Pikachu red-010",
+      "Raichu",
+      "Zapdos",
+      "Pokemon Trader"
+    ],
+    "not_claiming": [
+      "complete Quick Starter scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204",
+      "type": "release",
+      "context": {
+        "name_en": "Quick Starter Gift Set",
+        "name_ja": "クイックスターターギフト",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "release_date": "1998-12-04"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json",
+          "title": "Local Japanese pre-English catalog: Quick Starter Gift Set parent rollup",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_red_deck_19981204.json",
+          "title": "Local Japanese pre-English catalog: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_green_deck_19981204.json",
+          "title": "Local Japanese pre-English catalog: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Quick_Starter_Gift_Set_(TCG)",
+          "title": "Bulbapedia: Quick Starter Gift Set (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise",
+          "title": "Bulbapedia: Original TCG Era merchandise",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "complete merchandise archive",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSR",
+          "title": "Pokecardex: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s9",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/the-no-rarity-cards-that-werent-and-the-lying-pop-report/33531",
+          "title": "Elite Fourum: The No Rarity cards that weren't",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete variant proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog and Bulbapedia merchandise page model Quick Starter Gift Set as released on December 4, 1998.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia describes Quick Starter Gift Set as a deck kit containing two Standard Decks, Red Deck and Green Deck, named after the first Japanese Pokemon games.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local parent rollup models the product as two 60-card decks, with 32 unique red-deck rows and 32 unique green-deck rows preserved as 64 parent-lane catalog rows.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.lineage",
+          "text": "Bulbapedia frames the included cards as Vending Machine / Expansion Sheet reprints, while the local catalog preserves the red and green child-deck lanes rather than flattening them by card name.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix marks Quick Starter Gift Set as printing without rarity symbols and identifies five explicit Base-overlap trainer trap rows: Energy Retrieval, Gust of Wind, Pokemon Trader, Potion, and Switch.",
+          "sources": [
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Collector research on Elite Fourum describes Quick Starter Gift Set cards as non-glossy, without rarity symbols, and specifically warns that updated trainers such as Gust of Wind, Pokemon Trader, Energy Retrieval, Switch, and Potion can be mistaken for No Rarity Base cards.",
+          "sources": [
+            "s9"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.chase_structure",
+          "text": "The local catalog's attention rows include Mewtwo, Chansey, two Pikachu rows, Raichu, Zapdos, and trainer trap rows such as Pokemon Trader, Gust of Wind, Potion, Switch, and Energy Retrieval.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "artist.impact",
+          "text": "The local catalog's credited artist clusters are led by Atsuko Nishida and Keiji Kinebuchi, followed by Tomokazu Komiya, Kagemaru Himeno, Ken Sugimori, Sumiyoshi Kizuki, and others.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "Quick Starter Gift Set matters because it is both a teaching product and a catalog trap: it made Vending/Expansion Sheet material playable out of the box, while its missing-symbol trainer reprints later became exactly the kind of appearance/provenance confusion this protocol is built to keep legible.",
+          "sources": [
+            "s1",
+            "s4",
+            "s5",
+            "s8",
+            "s9"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_parent_no_rarity_trap_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "child deck rows are interchangeable"
+          ],
+          "steps": [
+            "Treat the parent as a rollup over red and green child-deck lanes, not as a separate third checklist.",
+            "Preserve the lane prefix (red or green) and child row id whenever a card is discussed.",
+            "Do not treat missing rarity symbols as Japanese Base No Rarity proof; Quick Starter rows can also lack rarity symbols.",
+            "For Energy Retrieval, Gust of Wind, Pokemon Trader, Potion, and Switch, require Japanese text/layout comparison against known Expansion Pack and Quick Starter exemplars before a No Rarity Base claim is allowed to advance.",
+            "Do not collapse Vending/Expansion Sheet origin, Quick Starter deck membership, and Base No Rarity appearance into one trust claim."
+          ],
+          "summary": "Quick Starter is a red/green deck-kit rollup and a missing-symbol trap lane; appearance never substitutes for provenance.",
+          "trigger": "A listing, want, or binder import says Quick Starter, Red Green Gift Set, QSGS, no rarity trainer, or names one of the five sensitive trainer rows."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The starter kit that taught the protocol its favorite warning",
+        "why_it_matters": "Quick Starter Gift Set is almost a perfect little protocol parable. It was built to make play immediate: two decks, red and green, a ready-made way to sit down and battle. But for collectors it became something sharper, because some of its missing-symbol trainer reprints look close enough to Base No Rarity cards to tempt a sloppy story. That is why this product matters so much here. It teaches the agent that resemblance is not provenance, and that the assembly history of a card can matter more than the most obvious thing printed in the corner.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:green-020",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:green-020",
+        "catalog_row_id": "green-020"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:green-020",
+          "title": "Local Quick Starter parent row: Mewtwo green-020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies green-020 as Mewtwo in the green deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mewtwo green-020 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Mewtwo matters here because Quick Starter places a mythic psychic anchor inside a teaching product, making a high-gravity character part of the ready-to-play green deck lane.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_mewtwo_green_020_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof"
+          ],
+          "steps": [
+            "Preserve the green deck lane and row id green-020; do not describe this as just Quick Starter Mewtwo without lane context.",
+            "Record Atsuko Nishida as the local illustrator credit, but do not use artist credit alone as a physical-card identifier.",
+            "Do not infer Japanese Base No Rarity status from the absence of a rarity symbol."
+          ],
+          "summary": "Mewtwo green-020 is a green-deck Quick Starter row, not a generic old-back Mewtwo identity.",
+          "trigger": "A listing or want says Quick Starter Mewtwo, old-back Mewtwo, green deck, or no-rarity Mewtwo."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mythic boss inside the teaching deck",
+        "why_it_matters": "Mewtwo in the green deck gives Quick Starter real drama. This was a product meant to get people playing quickly, but it still understood that a deck needs a center of gravity. Atsuko Nishida's credit adds another lovely twist: one of Pokemon's foundational designers helping carry the eerie final-lab icon into a practical beginner product.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:green-023",
+      "type": "card",
+      "context": {
+        "name_en": "Chansey",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:green-023",
+        "catalog_row_id": "green-023"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:green-023",
+          "title": "Local Quick Starter parent row: Chansey green-023",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSG",
+          "title": "Pokecardex: Quick Starter Gift Set Green Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies green-023 as Chansey in the green deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Chansey green-023 to Tomokazu Komiya.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Chansey matters here because Tomokazu Komiya's strange, warm visual language gives the green deck a character row that feels less like a stock reprint and more like a handmade invitation into play.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_chansey_green_023_lane_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof"
+          ],
+          "steps": [
+            "Preserve the green deck lane and row id green-023.",
+            "Record Tomokazu Komiya as the local illustrator credit, but do not use artist credit alone as a physical-card identifier.",
+            "Do not collapse this Chansey into Base Set, no-rarity, or later Chansey rows without row-level evidence."
+          ],
+          "summary": "Chansey green-023 is a green-deck Quick Starter row with its own lane identity.",
+          "trigger": "A listing or want says Quick Starter Chansey, old-back Chansey, green deck, or no-rarity Chansey."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Komiya makes the beginner deck feel handmade",
+        "why_it_matters": "Chansey is not the loudest card in Quick Starter, but it has a collector pulse because Tomokazu Komiya's art has that unmistakable handmade wobble. In a product built for quick play, that matters. The deck kit is practical, but the card still carries the evidence of a person drawing Pokemon strangely and lovingly.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:red-009",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:red-009",
+        "catalog_row_id": "red-009"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:red-009",
+          "title": "Local Quick Starter parent row: Pikachu red-009",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSR",
+          "title": "Pokecardex: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies red-009 as a Pikachu row in the red deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pikachu red-009 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Pikachu red-009 matters because it puts Atsuko Nishida's mascot lineage directly inside the red teaching deck, one of two distinct Pikachu rows that must not be collapsed.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_pikachu_red_009_nishida_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof"
+          ],
+          "steps": [
+            "Preserve red-009 as distinct from red-010; both are Pikachu rows in the red deck.",
+            "Record Atsuko Nishida as the local illustrator credit, but do not use the Pikachu name alone as identity.",
+            "Ask for row-level image evidence before accepting a Quick Starter Pikachu identification."
+          ],
+          "summary": "Pikachu red-009 is the Atsuko Nishida red-deck Pikachu row and must stay separate from red-010.",
+          "trigger": "A listing or want says Quick Starter Pikachu, red deck Pikachu, old-back Pikachu, or no-rarity Pikachu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The mascot, but not the only mascot row",
+        "why_it_matters": "Pikachu red-009 is the kind of row that makes agents earn their keep. It is Pikachu, yes, and Atsuko Nishida's credit gives it immediate historical warmth. But the red deck has another Pikachu right next to it. The charm and the danger are the same: everybody knows the character, so the catalog has to insist on the row.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:red-010",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:red-010",
+        "catalog_row_id": "red-010"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:red-010",
+          "title": "Local Quick Starter parent row: Pikachu red-010",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSR",
+          "title": "Pokecardex: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies red-010 as a second Pikachu row in the red deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pikachu red-010 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Pikachu red-010 matters because it makes the red deck's duplicate-Pikachu structure explicit: the mascot appears twice, with different illustrator context, so row identity must do real work.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_pikachu_red_010_sugimori_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof"
+          ],
+          "steps": [
+            "Preserve red-010 as distinct from red-009; both are Pikachu rows in the red deck.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use artist credit alone as a physical-card identifier.",
+            "Ask for row-level image evidence before accepting a Quick Starter Pikachu identification."
+          ],
+          "summary": "Pikachu red-010 is the Ken Sugimori red-deck Pikachu row and must stay separate from red-009.",
+          "trigger": "A listing or want says Quick Starter Pikachu, red deck Pikachu, old-back Pikachu, or no-rarity Pikachu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Pikachu proves names are not enough",
+        "why_it_matters": "Pikachu red-010 is a tiny catalog lesson hiding in plain sight. Same product lane, same character, adjacent row, different artist credit. Sugimori's name pulls it toward official design memory, while the duplicate-row structure reminds the agent that a famous name can still be underspecified.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:red-011",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:red-011",
+        "catalog_row_id": "red-011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:red-011",
+          "title": "Local Quick Starter parent row: Raichu red-011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSR",
+          "title": "Pokecardex: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies red-011 as Raichu in the red deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Raichu red-011 to Atsuko Nishida.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Raichu matters here because the red deck lets the Pikachu line escalate inside a ready-to-play product, turning mascot recognition into an evolution path.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_raichu_red_011_pikachu_line_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof"
+          ],
+          "steps": [
+            "Preserve the red deck lane and row id red-011.",
+            "Do not collapse this row into Base Raichu, No Rarity Raichu, or generic Pikachu-line searches.",
+            "Record Atsuko Nishida as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Raichu red-011 is the red-deck Quick Starter evolution row and needs row-level separation from Base Raichu.",
+          "trigger": "A listing or want says Quick Starter Raichu, old-back Raichu, Pikachu-line, red deck, or no-rarity Raichu."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The red deck lets Pikachu grow up",
+        "why_it_matters": "Raichu gives the red deck a small arc: Pikachu is not only a mascot here, but a line that can move. Atsuko Nishida's credit keeps the evolution close to Pokemon's creature-design origins, while the Quick Starter context keeps it practical: this is iconography built for play at the kitchen table.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:red-015",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:red-015",
+        "catalog_row_id": "red-015"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:red-015",
+          "title": "Local Quick Starter parent row: Zapdos red-015",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSR",
+          "title": "Pokecardex: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies red-015 as Zapdos in the red deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Zapdos red-015 to Naoyo Kimura.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.significance",
+          "text": "Zapdos matters here because the red deck gives a ready-to-play product a legendary-bird ceiling, making the deck feel bigger than a beginner kit without making it a booster chase.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_zapdos_red_015_legendary_bird_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base or Fossil equivalence"
+          ],
+          "steps": [
+            "Preserve the red deck lane and row id red-015.",
+            "Do not collapse this row into Fossil Zapdos, Base-adjacent Zapdos searches, or other legendary-bird rows.",
+            "Record Naoyo Kimura as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Zapdos red-015 is the red-deck Quick Starter legendary-bird row, not a generic Zapdos reference.",
+          "trigger": "A listing or want says Quick Starter Zapdos, old-back Zapdos, red deck, legendary bird, or no-rarity Zapdos."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "A legendary ceiling for a ready-made deck",
+        "why_it_matters": "Zapdos makes the Quick Starter red deck feel charged. It is a beginner product, yes, but it still gives the player a legendary bird to look at and imagine around. Naoyo Kimura's credit belongs to that quieter early-Pokemon texture where a card can be both practical and mythic.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_quick_starter_gift_set_19981204:red-030",
+      "type": "card",
+      "context": {
+        "name_en": "Pokemon Trader",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_quick_starter_gift_set_19981204",
+        "row_id": "jp_tcg_quick_starter_gift_set_19981204:red-030",
+        "catalog_row_id": "red-030"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_quick_starter_gift_set_19981204.json#row:jp_tcg_quick_starter_gift_set_19981204:red-030",
+          "title": "Local Quick Starter parent row: Pokemon Trader red-030",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://www.pokecardex.com/en/series/jp/QSGSR",
+          "title": "Pokecardex: Quick Starter Gift Set Red Deck",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://www.elitefourum.com/t/no-rarity-vs-qss-pokemon-trader-psa-question/15195",
+          "title": "Elite Fourum: No Rarity vs QSS Pokemon Trader PSA Question",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "complete text-layout proof",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies red-030 as Pokemon Trader in the red deck lane of the Quick Starter Gift Set parent rollup.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "The local catalog credits Pokemon Trader red-030 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "history.variant",
+          "text": "The local symbol-status matrix lists Pokemon Trader among the explicit Base-overlap trainer trap rows for Quick Starter Gift Set.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "identification.special_instructions",
+          "text": "Collector discussion on Elite Fourum specifically compares No Rarity and Quick Starter Pokemon Trader text/layout differences, supporting a text-layout check before treating a missing-symbol Pokemon Trader as Japanese Base No Rarity.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Pokemon Trader matters because it is not only a trainer card in a deck kit; it is one of the protocol's cleanest examples of why visible absence is not spendable provenance.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "quick_starter_pokemon_trader_red_030_text_layout_trap_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "Base No Rarity proof",
+            "PSA or population label correctness"
+          ],
+          "steps": [
+            "Preserve red-030 as a Quick Starter red deck row; note that a green-deck Pokemon Trader row also exists.",
+            "Do not accept missing rarity symbol alone as Japanese Base No Rarity evidence.",
+            "Require side-by-side Japanese text/layout comparison against known Expansion Pack and Quick Starter exemplars before a No Rarity Base Pokemon Trader claim can advance.",
+            "Record Ken Sugimori as the local illustrator credit, but do not use artist credit alone as a physical-card identifier."
+          ],
+          "summary": "Pokemon Trader red-030 is a named Quick Starter text-layout trap; missing-symbol appearance is not enough.",
+          "trigger": "A listing, want, or slab label says Pokemon Trader, No Rarity, Quick Starter, QSS, Red Green Gift Set, or missing rarity symbol."
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The trainer card that proves absence can lie",
+        "why_it_matters": "Pokemon Trader is the card in this pass that feels most like protocol law. The corner is quiet, the rarity mark is absent, and a lazy catalog could let that absence become a false No Rarity story. But the assembly history says otherwise. Quick Starter gives the card a different route, and the agent has to honor that route before money or confidence moves.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

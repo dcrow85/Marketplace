@@ -1,0 +1,3802 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for Japanese Pokemon Jungle, emphasizing the 48-card second Japanese booster, all-with-rarity-symbol boundary, no English-style holo/non-holo duplication, Eeveelution forest memory, and cross-language identification rails.",
+    "in_scope": [
+      "Pokemon Jungle release dossier",
+      "Nidoqueen 013",
+      "Vileplume 014",
+      "Venomoth 015",
+      "Victreebel 016",
+      "Scyther 017",
+      "Pinsir 018",
+      "Flareon 020",
+      "Vaporeon 023",
+      "Pikachu 024",
+      "Jolteon 026",
+      "Eevee 037",
+      "Pidgeot 043",
+      "Clefable 044",
+      "Wigglytuff 045",
+      "Kangaskhan 046",
+      "Snorlax 047",
+      "Poké Ball 048"
+    ],
+    "not_claiming": [
+      "complete Pokemon Jungle scholarship",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights",
+      "English Jungle equivalence",
+      "No Rarity status",
+      "no-symbol error status"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_jungle_19970305",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Jungle",
+        "name_ja": "ポケモンジャングル",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "release_date": "1997-03-05"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json",
+          "title": "Local Japanese pre-English catalog: Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/List_of_Japanese_Pokémon_Trading_Card_Game_expansions",
+          "title": "Bulbapedia: List of Japanese Pokemon Trading Card Game expansions",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s7",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s8",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/jungle_v0_1.json",
+          "title": "Local history dossier: English Jungle comparison boundary",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "Japanese release authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local catalog, TCGdex, Pokellector, and Bulbapedia model Japanese Pokemon Jungle as released on March 5, 1997.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local catalog, TCGdex, Pokellector, and Bulbapedia support a 48-card Japanese Pokemon Jungle checklist.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Bulbapedia describes Jungle as the second main expansion of the Pokemon Trading Card Game and says the Japanese release was Pokemon Jungle, based on Generation I Pokemon and associated with the Kanto Safari Zone setting.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.boundary",
+          "text": "The local catalog preserves Pokemon Jungle as release_family_id jp_tcg_jungle_19970305, a 48-row Japanese booster release without English-style holo/non-holo duplicate numbering.",
+          "sources": [
+            "s1",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "The local pre-English symbol-status matrix and release map mark Japanese Pokemon Jungle as all-with-rarity-symbols, making it a post-Base comparison source rather than a No Rarity source.",
+          "sources": [
+            "s6",
+            "s7"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.lineage",
+          "text": "The English Jungle history dossier records the later English release as a 64-row expansion with holo/non-holo duplication and no-symbol error folklore; those are English assembly features, not automatic properties of the Japanese 48-row release.",
+          "sources": [
+            "s8",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local Japanese Jungle artist clusters are: Kagemaru Himeno (18 local rows; examples: Bellsprout, Butterfree, Weepinbell), Mitsuhiro Arita (15 local rows; examples: Venonat, Exeggcute, Rapidash), Ken Sugimori (11 local rows; examples: Nidoran♀, Paras, Nidorina), Keiji Kinebuchi (4 local rows; examples: Oddish, Gloom, Vileplume).",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Japanese Pokemon Jungle matters because it is the first sequel habitat after the launch grammar: a compact 48-card forest where Eevee's futures, Safari-zone creature memory, Pikachu's common-row gravity, Scyther's sharp silhouette, and Snorlax's beloved obstruction all arrive before English expansion logic adds mirrors and errors.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6",
+            "s7",
+            "s8"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_48_with_symbol_no_english_mirror_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, ポケモンジャングル, PMCG2, Japanese Jungle, Jungle, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, Eeveelution, Scyther, Snorlax, or Pikachu.",
+          "summary": "Japanese Pokemon Jungle is a 48-row Japanese booster release with rarity symbols and no English-style holo/non-holo duplicate numbering. Preserve Japanese row identity before comparing to English Jungle, Base Set 2, Legendary Collection, or no-symbol folklore.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305, Japanese product name ポケモンジャングル, and the printed row number 001-048.",
+            "Do not infer English Jungle set id base2, English 64-card numbering, English holo/non-holo mirror identity, or English no-symbol error status from a Japanese Jungle row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base comparison source unless direct evidence and a different sourced branch say otherwise.",
+            "For Eeveelutions, Scyther, Snorlax, Pikachu, or Poke Ball, compare row number and language before carrying any market, edition, error, or reprint memory into transaction logic.",
+            "Use seller scans and verifier judgment for possession, authenticity, condition, edition, and price; this catalog makes the branch questions legible only."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol error status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first forest before the mirrors",
+        "why_it_matters": "Japanese Pokemon Jungle is the sequel before the sequel gets complicated. It has no English-style holo/non-holo mirror rows, no English no-symbol error folklore, and no need to inflate itself to 64 cards. It is a tighter object: 48 cards, a forest after the launch-room grammar, and a page where Eevee can split three ways while Snorlax blocks the path and Scyther cuts through the grass. For the catalog, this is the clean branch that teaches comparison: same forest memory, different assembly.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Pokemon Jungle history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:013",
+      "type": "card",
+      "context": {
+        "name_en": "Nidoqueen",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:013",
+        "catalog_row_id": "013"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:013",
+          "title": "Local Pokemon Jungle row: Nidoqueen 013",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 013 as Nidoqueen.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Nidoqueen 013 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Nidoqueen 013 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Nidoqueen gives Japanese Jungle a sturdy evolution-line center. Sugimori's design language keeps it close to the creature roots of the franchise, while the rare slot turns the forest into a family hierarchy rather than only a path of small encounters.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #013 rare identity; do not infer English #7/#23 mirror numbering or no-symbol status.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_013_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Nidoqueen, 013, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #013 rare identity; do not infer English #7/#23 mirror numbering or no-symbol status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 013.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Nidoqueen makes the forest royal",
+        "why_it_matters": "Nidoqueen gives Japanese Jungle a sturdy evolution-line center. Sugimori's design language keeps it close to the creature roots of the franchise, while the rare slot turns the forest into a family hierarchy rather than only a path of small encounters.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:014",
+      "type": "card",
+      "context": {
+        "name_en": "Vileplume",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:014",
+        "catalog_row_id": "014"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:014",
+          "title": "Local Pokemon Jungle row: Vileplume 014",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 014 as Vileplume.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Vileplume 014 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Vileplume 014 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Vileplume is one of Keiji Kinebuchi's key Jungle rows, and it makes the set feel humid and strange. The flower is not just a Grass-type endpoint; it is the forest becoming color, sleep, pollen, and atmosphere.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #014 rare identity; do not infer English #15/#31 mirror numbering or no-symbol status.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_014_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Vileplume, 014, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #014 rare identity; do not infer English #15/#31 mirror numbering or no-symbol status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 014.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Vileplume blooms as graphic atmosphere",
+        "why_it_matters": "Vileplume is one of Keiji Kinebuchi's key Jungle rows, and it makes the set feel humid and strange. The flower is not just a Grass-type endpoint; it is the forest becoming color, sleep, pollen, and atmosphere.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:015",
+      "type": "card",
+      "context": {
+        "name_en": "Venomoth",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:015",
+        "catalog_row_id": "015"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:015",
+          "title": "Local Pokemon Jungle row: Venomoth 015",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 015 as Venomoth.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Venomoth 015 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Venomoth 015 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Venomoth is the softer, stranger wing of Jungle. Sugimori's credit ties it to core Pokemon design, but the card's power is mood: the forest is not only cute or bright; it has dusk and powder and uncertain motion.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #015 rare identity; do not infer English #13/#29 mirror numbering or no-symbol status.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_015_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Venomoth, 015, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #015 rare identity; do not infer English #13/#29 mirror numbering or no-symbol status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 015.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venomoth turns the forest nocturnal",
+        "why_it_matters": "Venomoth is the softer, stranger wing of Jungle. Sugimori's credit ties it to core Pokemon design, but the card's power is mood: the forest is not only cute or bright; it has dusk and powder and uncertain motion.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:016",
+      "type": "card",
+      "context": {
+        "name_en": "Victreebel",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:016",
+        "catalog_row_id": "016"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:016",
+          "title": "Local Pokemon Jungle row: Victreebel 016",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 016 as Victreebel.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Victreebel 016 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Victreebel 016 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Victreebel makes the plant line predatory. In the assembly of Jungle, that matters: the forest is not scenery but appetite, an ecosystem with cute beginnings and alarming endpoints.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #016 rare identity; do not infer English #14/#30 mirror numbering or no-symbol status.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_016_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Victreebel, 016, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #016 rare identity; do not infer English #14/#30 mirror numbering or no-symbol status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 016.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Victreebel gives the grass teeth",
+        "why_it_matters": "Victreebel makes the plant line predatory. In the assembly of Jungle, that matters: the forest is not scenery but appetite, an ecosystem with cute beginnings and alarming endpoints.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:017",
+      "type": "card",
+      "context": {
+        "name_en": "Scyther",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:017",
+        "catalog_row_id": "017"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:017",
+          "title": "Local Pokemon Jungle row: Scyther 017",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 017 as Scyther.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Scyther 017 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Scyther 017 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Scyther is one of Japanese Jungle's cleanest silhouettes: fast, dangerous, and instantly readable. It later becomes a branch-confusion magnet across English Jungle, Base Set 2, Quick Starter, Vending memory, and other reprints, so this row needs its Japanese 017 spine intact.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #017 rare identity; separate from English Jungle Scyther #10/#26, Base Set 2, Quick Starter, Vending/Expansion Sheet, and no-symbol folklore.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_017_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Scyther, 017, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #017 rare identity; separate from English Jungle Scyther #10/#26, Base Set 2, Quick Starter, Vending/Expansion Sheet, and no-symbol folklore.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 017.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Scyther is the blade before the reprints",
+        "why_it_matters": "Scyther is one of Japanese Jungle's cleanest silhouettes: fast, dangerous, and instantly readable. It later becomes a branch-confusion magnet across English Jungle, Base Set 2, Quick Starter, Vending memory, and other reprints, so this row needs its Japanese 017 spine intact.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:018",
+      "type": "card",
+      "context": {
+        "name_en": "Pinsir",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:018",
+        "catalog_row_id": "018"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:018",
+          "title": "Local Pokemon Jungle row: Pinsir 018",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 018 as Pinsir.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pinsir 018 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Pinsir 018 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pinsir is the childhood bug hunt sharpened into a rare. Himeno's art helps Jungle stay close to Pokemon's collecting root: peer into the grass, find something with horns, decide whether delight and danger are the same feeling.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #018 rare identity; separate from English Jungle #9/#25 and English error-memory claims.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_018_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Pinsir, 018, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #018 rare identity; separate from English Jungle #9/#25 and English error-memory claims.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 018.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pinsir keeps the bug-collecting origin visible",
+        "why_it_matters": "Pinsir is the childhood bug hunt sharpened into a rare. Himeno's art helps Jungle stay close to Pokemon's collecting root: peer into the grass, find something with horns, decide whether delight and danger are the same feeling.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:020",
+      "type": "card",
+      "context": {
+        "name_en": "Flareon",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:020",
+        "catalog_row_id": "020"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:020",
+          "title": "Local Pokemon Jungle row: Flareon 020",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 020 as Flareon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Flareon 020 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Flareon 020 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Flareon is one branch of Jungle's emotional machine. Himeno makes the Eeveelution line feel like choice made visible: the same small creature can become warmth, speed, or water. Japanese Jungle gives that feeling its compact original sequel frame.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #020 rare identity; separate from English Jungle #3/#19, Base Set 2, and later Eeveelution reprints.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_020_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Flareon, 020, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #020 rare identity; separate from English Jungle #3/#19, Base Set 2, and later Eeveelution reprints.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 020.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Flareon is Eevee choosing fire",
+        "why_it_matters": "Flareon is one branch of Jungle's emotional machine. Himeno makes the Eeveelution line feel like choice made visible: the same small creature can become warmth, speed, or water. Japanese Jungle gives that feeling its compact original sequel frame.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:023",
+      "type": "card",
+      "context": {
+        "name_en": "Vaporeon",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:023",
+        "catalog_row_id": "023"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:023",
+          "title": "Local Pokemon Jungle row: Vaporeon 023",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 023 as Vaporeon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Vaporeon 023 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Vaporeon 023 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Vaporeon is the cool branch of the Eevee trio, the card that makes Jungle feel less like one biome and more like a set of possible habitats. Himeno's line holds the trio together emotionally.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #023 rare identity; separate from English Jungle #12/#28, Base Set 2, and later Eeveelution reprints.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_023_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Vaporeon, 023, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #023 rare identity; separate from English Jungle #12/#28, Base Set 2, and later Eeveelution reprints.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 023.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Vaporeon lets water enter the forest",
+        "why_it_matters": "Vaporeon is the cool branch of the Eevee trio, the card that makes Jungle feel less like one biome and more like a set of possible habitats. Himeno's line holds the trio together emotionally.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:024",
+      "type": "card",
+      "context": {
+        "name_en": "Pikachu",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:024",
+        "catalog_row_id": "024"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:024",
+          "title": "Local Pokemon Jungle row: Pikachu 024",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 024 as Pikachu.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pikachu 024 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Pikachu 024 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Japanese Jungle Pikachu is a common row with mascot gravity. Its importance is exactly that tension: not every meaningful card is a rare, and an agent should understand why a collector might care about a small yellow common in the second Japanese booster.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #024 common identity; separate from English Jungle #60, W Promo Pikachu, Base Set Pikachu, and No Rarity / no-symbol claims.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_024_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Pikachu, 024, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #024 common identity; separate from English Jungle #60, W Promo Pikachu, Base Set Pikachu, and No Rarity / no-symbol claims.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 024.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pikachu is common but never minor",
+        "why_it_matters": "Japanese Jungle Pikachu is a common row with mascot gravity. Its importance is exactly that tension: not every meaningful card is a rare, and an agent should understand why a collector might care about a small yellow common in the second Japanese booster.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:026",
+      "type": "card",
+      "context": {
+        "name_en": "Jolteon",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:026",
+        "catalog_row_id": "026"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:026",
+          "title": "Local Pokemon Jungle row: Jolteon 026",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 026 as Jolteon.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Jolteon 026 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Jolteon 026 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Jolteon is the electric branch of the trio and one of the reasons Jungle feels like a living choice tree. Himeno's Eeveelutions give the set a collector psychology: the want is rarely just one card; it is the three futures together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #026 rare identity; separate from English Jungle #4/#20, Base Set 2, and later Eeveelution reprints.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_026_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Jolteon, 026, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #026 rare identity; separate from English Jungle #4/#20, Base Set 2, and later Eeveelution reprints.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 026.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Jolteon makes Eevee crackle",
+        "why_it_matters": "Jolteon is the electric branch of the trio and one of the reasons Jungle feels like a living choice tree. Himeno's Eeveelutions give the set a collector psychology: the want is rarely just one card; it is the three futures together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:037",
+      "type": "card",
+      "context": {
+        "name_en": "Eevee",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:037",
+        "catalog_row_id": "037"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:037",
+          "title": "Local Pokemon Jungle row: Eevee 037",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 037 as Eevee.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Eevee 037 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Eevee 037 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Eevee is a common, but in Jungle it is the hinge the set turns on. The three rare evolutions make more emotional sense because this small origin is here, sitting quietly in the same forest.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #037 common identity; separate from English Jungle #51 and later Eevee branches.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_037_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Eevee, 037, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #037 common identity; separate from English Jungle #51 and later Eevee branches.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 037.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Eevee is the hinge hidden among commons",
+        "why_it_matters": "Eevee is a common, but in Jungle it is the hinge the set turns on. The three rare evolutions make more emotional sense because this small origin is here, sitting quietly in the same forest.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:043",
+      "type": "card",
+      "context": {
+        "name_en": "Pidgeot",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:043",
+        "catalog_row_id": "043"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:043",
+          "title": "Local Pokemon Jungle row: Pidgeot 043",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 043 as Pidgeot.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pidgeot 043 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Pidgeot 043 to Kagemaru Himeno.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pidgeot gives the Japanese checklist height. Himeno's bird sits near the end of the 48-row release, where the forest opens upward into flight rather than only grass and underbrush.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #043 rare identity; separate from English Jungle #8/#24 and Base Set 2.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_043_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Pidgeot, 043, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #043 rare identity; separate from English Jungle #8/#24 and Base Set 2.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 043.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pidgeot opens the canopy in the Japanese order",
+        "why_it_matters": "Pidgeot gives the Japanese checklist height. Himeno's bird sits near the end of the 48-row release, where the forest opens upward into flight rather than only grass and underbrush.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:044",
+      "type": "card",
+      "context": {
+        "name_en": "Clefable",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:044",
+        "catalog_row_id": "044"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:044",
+          "title": "Local Pokemon Jungle row: Clefable 044",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 044 as Clefable.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Clefable 044 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Clefable 044 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Clefable adds a soft, moonlit oddness to Jungle. Arita's row is a reminder that the forest set is not purely naturalistic; Pokemon's habitat always has a little stage magic in it.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #044 rare identity; separate from English Jungle #1/#17 and Prerelease Clefable memory.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_044_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Clefable, 044, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #044 rare identity; separate from English Jungle #1/#17 and Prerelease Clefable memory.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 044.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Clefable makes the forest fairy-lit",
+        "why_it_matters": "Clefable adds a soft, moonlit oddness to Jungle. Arita's row is a reminder that the forest set is not purely naturalistic; Pokemon's habitat always has a little stage magic in it.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:045",
+      "type": "card",
+      "context": {
+        "name_en": "Wigglytuff",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:045",
+        "catalog_row_id": "045"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:045",
+          "title": "Local Pokemon Jungle row: Wigglytuff 045",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 045 as Wigglytuff.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Wigglytuff 045 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Wigglytuff 045 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Wigglytuff is charming, but not lightweight. Arita's row gives Japanese Jungle a soft-bodied rare that collectors remember by feeling as much as by mechanics.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #045 rare identity; separate from English Jungle #16/#32 and Base Set 2.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_045_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Wigglytuff, 045, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #045 rare identity; separate from English Jungle #16/#32 and Base Set 2.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 045.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Wigglytuff closes with plush force",
+        "why_it_matters": "Wigglytuff is charming, but not lightweight. Arita's row gives Japanese Jungle a soft-bodied rare that collectors remember by feeling as much as by mechanics.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:046",
+      "type": "card",
+      "context": {
+        "name_en": "Kangaskhan",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:046",
+        "catalog_row_id": "046"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:046",
+          "title": "Local Pokemon Jungle row: Kangaskhan 046",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 046 as Kangaskhan.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Kangaskhan 046 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Kangaskhan 046 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Kangaskhan makes the forest familial. Arita's card carries size, protection, and gentleness at once, which is exactly the kind of emotional complexity that made early Pokemon cards feel collectable beyond play text.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #046 rare identity; separate from English Jungle #5/#21 and English error-memory claims.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_046_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Kangaskhan, 046, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #046 rare identity; separate from English Jungle #5/#21 and English error-memory claims.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 046.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Kangaskhan brings care into the wild",
+        "why_it_matters": "Kangaskhan makes the forest familial. Arita's card carries size, protection, and gentleness at once, which is exactly the kind of emotional complexity that made early Pokemon cards feel collectable beyond play text.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:047",
+      "type": "card",
+      "context": {
+        "name_en": "Snorlax",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:047",
+        "catalog_row_id": "047"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:047",
+          "title": "Local Pokemon Jungle row: Snorlax 047",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 047 as Snorlax.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Snorlax 047 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Snorlax 047 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Snorlax is a whole story in one body: obstruction, humor, comfort, and memory. Japanese Jungle gives that story its compact 48-card branch before English mirrors and later reprints multiply the identity surface.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #047 rare identity; separate from English Jungle #11/#27, Base Set 2, and English error-memory claims.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_047_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Snorlax, 047, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #047 rare identity; separate from English Jungle #11/#27, Base Set 2, and English error-memory claims.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 047.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Snorlax blocks the path in Japanese first",
+        "why_it_matters": "Snorlax is a whole story in one body: obstruction, humor, comfort, and memory. Japanese Jungle gives that story its compact 48-card branch before English mirrors and later reprints multiply the identity surface.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_jungle_19970305:048",
+      "type": "card",
+      "context": {
+        "name_en": "Poké Ball",
+        "name_ja": "",
+        "release_family_id": "jp_tcg_jungle_19970305",
+        "row_id": "jp_tcg_jungle_19970305:048",
+        "catalog_row_id": "048"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_jungle_19970305.json#row:jp_tcg_jungle_19970305:048",
+          "title": "Local Pokemon Jungle row: Poké Ball 048",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "database_reference",
+          "ref": "https://jp.pokellector.com/Pokemon-Jungle-Expansion/",
+          "title": "Pokellector: Pokemon Jungle Japanese set list",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "api_reference",
+          "ref": "https://api.tcgdex.net/v2/ja/sets/PMCG2",
+          "title": "TCGdex Japanese set API: PMCG2 Pokemon Jungle",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "image availability"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Jungle_(TCG)",
+          "title": "Bulbapedia: Jungle (TCG)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "data/pre-english-symbol-status.json",
+          "title": "Local pre-English symbol-status matrix",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Japanese Pokemon Jungle row 048 as Poké Ball.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Poké Ball 048 as Common.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Japanese Pokemon Jungle Poké Ball 048 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Poke Ball closes the Japanese Jungle checklist, and that is quietly wonderful. After the creatures, the forest ends with the tool that makes capture, play, and collection possible. The apparatus gets the last word.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve Japanese Jungle #048 common Trainer identity; Poke Ball is a reused trainer name and needs exact set/language/number context.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "pokemon_jungle_jp_048_identity_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Pokemon Jungle, Japanese Jungle, Poké Ball, 048, PMCG2, no symbol, No Rarity, English Jungle, Base Set 2, Legendary Collection, holo, non-holo, or reprint.",
+          "summary": "Preserve Japanese Jungle #048 common Trainer identity; Poke Ball is a reused trainer name and needs exact set/language/number context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_jungle_19970305 and Japanese row number 048.",
+            "Check language, set symbol, and row number before comparing to English Jungle or later reprints.",
+            "Do not infer English holo/non-holo mirror numbering, English no-symbol error status, First Edition status, Base Set 2 identity, or Legendary Collection identity from this row.",
+            "For No Rarity or missing-symbol claims, treat Japanese Jungle as a with-rarity-symbol post-Base release unless direct evidence and a different sourced branch say otherwise.",
+            "Do not infer seller possession, authenticity, condition, price, edition, or error status from this catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "No Rarity status",
+            "no-symbol status",
+            "English Jungle equivalence",
+            "Base Set 2 equivalence",
+            "Legendary Collection equivalence"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Poke Ball is the apparatus at the edge",
+        "why_it_matters": "Poke Ball closes the Japanese Jungle checklist, and that is quietly wonderful. After the creatures, the forest ends with the tool that makes capture, play, and collection possible. The apparatus gets the last word.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

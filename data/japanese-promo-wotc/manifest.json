@@ -1,0 +1,80 @@
+{
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "generated_at": "2026-06-18T20:00:24Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "complete Japanese promo universe",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release_count": 2,
+  "releases": [
+    {
+      "boundary_note": "Complete numbered P Promotional page as exposed by the selected source; promotions run from July 2001 through 2002.",
+      "bulbapedia_raw_sha256": "aeeab38da08bd8f0c8f14d6583d7e0971bd62d4fae56219584ab6e22e912e49c",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=P_Promotional_cards_%28TCG%29&action=raw",
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "9e36b622e3cbf94181d7580789df28e20a9297999218104a7e64e0360c53ebb0",
+      "catalog_treatment": "Catalog target",
+      "expected_row_count": 47,
+      "hash_algorithm": "sha256",
+      "path": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json",
+      "product_card_count": 47,
+      "product_count_basis": "Bulbapedia P Promotional raw wikitext lists 47 numbered promo rows, 001/P through 047/P.",
+      "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+      "release_not_claiming": [
+        "complete Japanese promo universe",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_type": "numbered_p_promo",
+      "row_count": 47,
+      "schema": "marketplace.japanese_promo_wotc_manifest_release.v0.1",
+      "source_payload_without_image_rows": 47,
+      "special_identification_instruction_rows": 47,
+      "strict_release_member": true
+    },
+    {
+      "boundary_note": "Bounded Japanese ADV-P subset through the May 2003 edge; not claiming complete ADV-P coverage.",
+      "bulbapedia_raw_sha256": "c6f3b3accaa44a214bd289f2da9b5e828678775b8a795b832638510c1296ee39",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=ADV-P_Promotional_cards_%28TCG%29&action=raw",
+      "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+      "catalog_hash": "7d8f42cdd214918996720bb552dab10638b9aa3717aa48d2c39eee924b43d74f",
+      "catalog_treatment": "Catalog target",
+      "expected_row_count": 14,
+      "hash_algorithm": "sha256",
+      "path": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json",
+      "product_card_count": 14,
+      "product_count_basis": "Bulbapedia ADV-P Promotional raw wikitext spans 63 rows; this corpus models only 001/ADV-P through 014/ADV-P, whose distribution notes fall in January-May 2003. Rows 015/ADV-P and later begin at June 25, 2003 or later and stay outside this bounded slice.",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "release_not_claiming": [
+        "complete Japanese promo universe",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "release_type": "numbered_adv_p_promo_bounded_subset",
+      "row_count": 14,
+      "schema": "marketplace.japanese_promo_wotc_manifest_release.v0.1",
+      "source_payload_without_image_rows": 14,
+      "special_identification_instruction_rows": 14,
+      "strict_release_member": true
+    }
+  ],
+  "schema": "marketplace.japanese_promo_wotc_manifest.v0.1",
+  "source_contact_policy": "Rows are raw-wikitext reference identities without image promotion unless a row-specific image source is later added.",
+  "source_payload_without_image_rows": 61,
+  "special_identification_instruction_rows": 61,
+  "total_rows": 61
+}

@@ -1,0 +1,524 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Mirage Pokemon: Lugia's Explosive Birth movie pamphlet Ancient Mew",
+    "release_family_id": "jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet",
+    "notes": [
+      "Deepens the Ancient Mew row from the Mirage Pokemon: Lugia's Explosive Birth / The Power of One movie pamphlet source slice.",
+      "Covers the single modeled source-pinned row: Ancient Mew source index 116.",
+      "Preserves the date correction: the local aggregate row inherits 1998-11-13, while the card-specific Japanese pamphlet route begins July 17, 1999."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet",
+      "type": "release",
+      "context": {
+        "name_en": "Mirage Pokemon: Lugia's Explosive Birth movie pamphlet",
+        "name_ja": "幻のポケモン ルギア爆誕 映画パンフレット",
+        "release_family_id": "jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet",
+        "release_date": "1999-07-17",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Lugia's Explosive Birth movie pamphlet",
+          "Ancient Mew source index 116",
+          "Nintedo error / corrected / Cosmos sequence",
+          "speckle Holofoil versus Cosmos Holofoil",
+          "runes and Mayan glyphs as card interface",
+          "Lawrence III collection myth",
+          "unknown illustrator / Kouichi Ooyama context"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet:116",
+            "name": "Ancient Mew",
+            "number": "116",
+            "why": "Ancient Mew is the chase because it makes mystery itself collectible. It is not just Mew; it is runes, glyphs, movie lore, pamphlet sales, print errors, and a card whose surface asks the buyer to slow down before reading.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Unknown illustrator / design author",
+            "row_count": 1,
+            "examples": [
+              "Ancient Mew"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "known named illustrator",
+              "complete design-history attribution",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete pamphlet packaging census",
+          "official copy count",
+          "complete Ancient Mew print census"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet.json",
+          "title": "Local Japanese unnumbered WotC catalog: Lugia's Explosive Birth movie pamphlet",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "exact card-specific date authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ancient_Mew_(The_Power_of_One_promo)",
+          "title": "Bulbapedia: Ancient Mew (The Power of One promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/M02",
+          "title": "Bulbapedia: M02 / The Power of One",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "Bulbapedia says the Japanese Ancient Mew was included in The Power of One movie pamphlets available at participating cinemas from July 17, 1999 while stocks lasted; the local source row's 1998-11-13 date is aggregate-source baggage and should not be used as the card-specific pamphlet date.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The route is the Japanese theatrical movie pamphlet for Mirage Pokemon: Lugia's Explosive Birth / The Power of One, not a booster, deck, tournament prize, or ordinary international theater handout.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Ancient Mew source index 116.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "Bulbapedia says the first Japanese prints have speckle Holofoil and a 'Nintedo' copyright misspelling, that a briefly released corrected speckle print followed, and that a third Japanese version used Cosmos Holofoil like the international print but with Japanese-print differences.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia notes that Ancient Mew appears in The Power of One as the object setting Lawrence III's collecting actions in motion, making this unusually literal: a Pokemon card inside the movie also becomes the movie pamphlet's physical promo.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.art",
+          "text": "Bulbapedia describes Ancient Mew's card text as runic, with a mixture of Germanic runes and Mayan glyphs; the Japanese September 1999 CoroCoro lexicon translated the runic text and mapped four glyphs to Birth, Enthronement, Right of Succession, and Death.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "Bulbapedia states the card's illustrator is unknown due to its unusual design, while noting that the CoroCoro lexicon issue showed Kouichi Ooyama impersonated as Dr. Mason.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "release.boundary",
+          "text": "Agents should keep this Japanese pamphlet route separate from international Ancient Mew theater distributions, 2019 Mewtwo Strikes Back Evolution pamphlet reprint, 2020 Korean print, ordinary Mew promos, Shining Mew, and any slab label that hides Nintedo/corrected/Cosmos distinctions.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c6"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Ancient Mew plus Japanese Lugia's Explosive Birth movie pamphlet route plus exact print-variant evidence; catalog facts do not prove possession, authenticity, condition, price, sealed pamphlet state, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c4",
+            "c8"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "lugia_explosive_birth_1999_ancient_mew_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, slab, or agent memory says Ancient Mew, Nintedo, corrected Nintendo, Cosmos, speckle holo, Lugia's Explosive Birth, The Power of One, movie pamphlet, source index 116, or Japanese Ancient Mew.",
+          "summary": "Confirm Japanese movie-pamphlet Ancient Mew by route and print variant before allowing the match to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact route language: Lugia's Explosive Birth, The Power of One, Japanese movie pamphlet, Ancient Mew I, Nintedo, corrected Nintendo, Cosmos, international, 2019, or Korean.",
+            "Confirm the offered card is Ancient Mew / ミュウ and not ordinary Mew, Shining Mew, Song Best Mew, JR Mew, or modern Ancient Mew reprints.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "Inspect the copyright line for Nintedo versus corrected Nintendo and preserve that exact string as a variant fact.",
+            "Inspect holo pattern and border behavior: Japanese speckle, brief corrected speckle, later Japanese Cosmos, international Cosmos, 2019 speckle reprint, or other branch.",
+            "If pamphlet provenance is claimed, request pamphlet, theater-sale, envelope, insert, or packaging evidence separately; the card alone does not prove complete pamphlet provenance.",
+            "Keep price, grade, authenticity, condition, official copy count, sealed pamphlet status, complete pamphlet packaging, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete pamphlet packaging census",
+            "sealed pamphlet status",
+            "complete Ancient Mew print census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ancient Mew: mystery sold at the theater counter",
+        "why_it_matters": "Ancient Mew is one of the purest examples of Pokemon turning assembly into awe. The card is intentionally hard to read, tied to a movie about collecting legendary power, sold through the pamphlet ritual, and then fractured into Nintedo, corrected, Cosmos, international, and anniversary branches. It is Mew as artifact, not mascot. The agent has to love the mystery and still pin the print.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c9"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete pamphlet packaging census",
+          "sealed pamphlet status",
+          "complete Ancient Mew print census",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet:116",
+      "type": "card",
+      "context": {
+        "name_en": "Ancient Mew",
+        "name_ja": "ミュウ",
+        "romaji": "Mew",
+        "number": "116",
+        "release_family_id": "jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet",
+        "release_name": "Mirage Pokemon: Lugia's Explosive Birth movie pamphlet"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "116",
+        "rarity_signal": "movie pamphlet / Ancient Mew print-variant route",
+        "artist": "Unknown illustrator",
+        "assembly_themes": [
+          "Ancient Mew / runic card text",
+          "Nintedo error",
+          "corrected speckle print",
+          "Cosmos Holofoil branch",
+          "Lawrence III collection object",
+          "movie pamphlet provenance trap"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet.json#row:jp_promo_unnumbered_wotc_116_mirage_pok_mon_lugia_s_explosive_birth_movie_pamphlet:116",
+          "title": "Local Japanese unnumbered WotC catalog row: Ancient Mew source index 116",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Ancient_Mew_(The_Power_of_One_promo)",
+          "title": "Bulbapedia: Ancient Mew (The Power of One promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete print-variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/M02",
+          "title": "Bulbapedia: M02 / The Power of One",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local row identifies Ancient Mew as source index 116 in the Mirage Pokemon: Lugia's Explosive Birth movie pamphlet source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The row is an unnumbered promotional movie-pamphlet route, not a booster-set rarity row.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia states Ancient Mew's illustrator is unknown due to its unusual design; this catalog should not invent an artist credit.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Ancient Mew as a Psychic-type Basic Pokemon card with HP 30 and Psyche / サイコキネシス for 40 damage, while its actual card text is encoded in runes.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "Bulbapedia says the card mixes Germanic runes and Mayan glyphs; the runes are a cipher for the Latin alphabet and the four glyphs mean Birth, Enthronement, Right of Succession, and Death.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia records the Japanese Nintedo error, brief corrected speckle print, and later Japanese Cosmos print sequence; agents must not collapse these into a single Ancient Mew variant.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Bulbapedia's movie page says Lawrence III's actions in The Power of One were set in motion by an Ancient Mew card, making this promo one of the few places where an in-universe collecting object and real distribution object overlap.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "A safe match requires Ancient Mew identity, Japanese movie-pamphlet route, copyright-string evidence, holo-pattern evidence, and separation from international, 2019, 2020, Shining Mew, and ordinary Mew branches.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "lugia_explosive_birth_1999_ancient_mew_116_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Ancient Mew as Japanese movie pamphlet, Lugia's Explosive Birth, The Power of One, Nintedo error, corrected Nintendo, Cosmos, source index 116, or international Ancient Mew.",
+          "summary": "Confirm Ancient Mew 116 by Japanese movie-pamphlet route and exact print variant; the name alone is much too broad.",
+          "steps": [
+            "Capture exact seller title and route terms: Ancient Mew, Japanese pamphlet, Lugia's Explosive Birth, The Power of One, Nintedo, corrected Nintendo, Cosmos, international, 2019, or Korean.",
+            "Ask for uncropped front and back images showing the copyright line, holo surface, border, card back, corners, and any pamphlet/insert packaging.",
+            "Check the copyright line exactly: Nintedo error, corrected Nintendo, 2019 copyright, 2020 Korean copyright, or another branch.",
+            "Check the holo treatment and border: Japanese speckle, corrected speckle, Japanese Cosmos, international Cosmos, or reprint pattern.",
+            "Separate Japanese pamphlet route from international theater distribution and later anniversary pamphlet routes.",
+            "If pamphlet provenance is claimed, request pamphlet/theater-sale/envelope/insert evidence as its own branch.",
+            "Require seller-controlled evidence and, for higher-value trades, fresh possession proof before any spendability or route-lock decision."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete pamphlet packaging census",
+            "sealed pamphlet status",
+            "complete Ancient Mew print census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Ancient Mew 116: a card written like a relic",
+        "why_it_matters": "Ancient Mew is the rare promo where the surface itself teaches the collector how to behave. You cannot simply read it; you have to decode it, compare it, and ask what branch of the object you are holding. That is perfect for this catalog. The card is a movie prop, a pamphlet insert, an error chase, a glyph puzzle, and a Mew card all at once. The romance is real, but the variant rails are the romance's skeleton.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete pamphlet packaging census",
+          "sealed pamphlet status",
+          "complete Ancient Mew print census",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

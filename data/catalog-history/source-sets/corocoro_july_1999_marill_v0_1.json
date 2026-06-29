@@ -1,0 +1,557 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the CoroCoro Comic July 1999 issue insert Marill promo, emphasizing CoroCoro magazine distribution, Marill as pre-Neo/Pikablu-era anticipation, Ken Sugimori source-reference art credit, Japanese Original Series glossy promo identity, and traps against English Wizards Promo 29, Neo Genesis, ANA, and later Marill rows.",
+    "in_scope": [
+      "CoroCoro Comic July 1999 issue insert release/source-slice dossier",
+      "Marill unnumbered promotional row 108",
+      "CoroCoro magazine insert route",
+      "Marill pre-Neo / second-generation anticipation context",
+      "Ken Sugimori source-reference art context",
+      "Japanese Original Series / English Wizards Promo / Neo boundary",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete CoroCoro July 1999 issue archive",
+      "complete Marill print census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999",
+        "name_en": "CoroCoro Comic July 1999 issue insert",
+        "name_ja": "月刊コロコロコミック1999年7月号付録",
+        "release_date": "1999-06-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro as monthly preview pipe",
+          "single-card magazine insert",
+          "Marill as second-generation anticipation",
+          "Pikablu-era fan memory",
+          "Sugimori character clarity",
+          "English Wizards / Neo comparison trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999:108",
+            "name": "Marill",
+            "why": "The whole source slice is one Marill: a CoroCoro insert where a blue, round, next-generation mascot lets the magazine act as a bridge toward Johto before Neo-era set memory takes over.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "complete Marill print census"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Marill"
+            ],
+            "why": "Bulbapedia and Pokumon references credit the promo Marill artwork to Ken Sugimori, keeping official character-design memory attached to the CoroCoro route rather than to English reprint shorthand.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Marill print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Marill print census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic July 1999 issue insert as a one-row unnumbered promotional source group containing Marill at source index 108.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records June 15, 1999 as the date attached to the CoroCoro Comic July 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the distribution note as a CoroCoro Comic July 1999 issue insert, not a booster, deck, Fan Club route, or standard set release.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "The source row names Marill as the card in this one-row CoroCoro Comic July 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit the promo Marill artwork to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia's Marill promo reference distinguishes the Japanese print's Original Series layout from the English Wizards Promo / Neo-era presentation, so language, layout, and route must stay attached.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Marill matters here because CoroCoro could use a new, rounded, water-blue character to make the next Pokemon generation feel present before Neo/Gold-Silver set memory fully arrived.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve CoroCoro Comic July 1999 issue insert route, June 15 1999 date, source index 108, Marill identity, Ken Sugimori source-reference credit, Japanese Original Series layout, and non-equivalence with English Wizards Promo 29, Neo Genesis, ANA, and later Marill rows before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "CoroCoro July 1999 Marill: the blue future peeking through",
+        "why_it_matters": "Marill is one of those cards where the history is almost louder than the attack text. In 1999, the little blue shape carried rumor, preview energy, and second-generation curiosity. CoroCoro could place it into a magazine issue and make the future feel hand-held before Neo-era binders and English Wizards memories rewrote the context. This row is not simply Marill; it is source index 108, June 1999, Japanese Original Series layout, Sugimori character clarity, and the soft thrill of seeing the next world arrive early.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Marill print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: CoroCoro Comic July 1999 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 108",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Marill_(Wizards_Promo_29)",
+          "title": "Bulbapedia: Marill (Wizards Promo 29)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to English Wizards Promo 29"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_july_1999_marill_original_layout_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Marill, Marril, Pikablu, CoroCoro Marill, CoroCoro Comic July 1999, June 15 1999, Wizards Promo 29, Neo Genesis Marill, ANA Marill, Japanese Original Series layout, or unnumbered promo row 108.",
+          "summary": "Identify this Marill by source index 108, CoroCoro July 1999 route, and Japanese Original Series layout before relying on Marill/Pikablu name memory or English Neo/Wizards shorthand.",
+          "steps": [
+            "Preserve the exact local route: CoroCoro Comic July 1999 issue insert, dated June 15, 1999.",
+            "Preserve source index 108 and Marill identity together.",
+            "Check Japanese Original Series layout and Japanese-language card face before comparing to English Wizards Promo 29 or Neo-era presentation.",
+            "Preserve Ken Sugimori as the source-reference artist credit, but do not use artist alone as a match.",
+            "Separate this row from ANA Marill, Neo Genesis / Gold Silver to a New World Marill, English Wizards Promo 29, and later Marill rows unless source evidence proves equivalence.",
+            "Ask for seller front/back photos and any magazine-insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete CoroCoro issue archive",
+            "complete Marill print census",
+            "English Wizards Promo 29 equivalence",
+            "ANA Marill equivalence",
+            "Neo Genesis equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999:108",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999:108",
+        "name_en": "Marill",
+        "name_ja": "マリル",
+        "romaji": "Maril",
+        "release_family_id": "jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999",
+        "catalog_row_id": "108"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "108",
+        "rarity_signal": "CoroCoro Comic July 1999 issue insert / unnumbered promo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "magazine-insert route",
+          "pre-Neo anticipation",
+          "Pikablu-era memory",
+          "Sugimori official character grammar",
+          "English Neo/Wizards trap"
+        ],
+        "collector_texture_note": "This Marill is a little blue preview-object. Its identity is route plus timing: CoroCoro, June 1999, before the later English Wizards/Neo drawer makes everything feel settled.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete Marill print census"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Marill, source index 108, within the CoroCoro Comic July 1999 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese name マリル is romanized here as Maril; use it as a Japanese-language search aid, not as sufficient row identity.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is CoroCoro Comic July 1999 issue insert / unnumbered promo, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit the promo Marill artwork to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's Marill promo reference distinguishes the Japanese print's Original Series layout from the English Wizards Promo / Neo-era memory.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Marill 108 matters because it shows CoroCoro carrying second-generation anticipation through a single-card promo before the later set and English-promo lanes made Marill feel ordinary.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "For this Marill, agents should preserve source index 108, CoroCoro Comic July 1999 issue route, June 15 1999 date, Ken Sugimori source-reference credit, Original Series layout, and non-equivalence with English Wizards Promo 29, ANA, and Neo-era Marill routes before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Marill 108: the blue rumor before the binder settled",
+        "why_it_matters": "Marill has that particular late-1990s electricity: small, round, blue, rumored, and somehow bigger than its stats. In this row it belongs to CoroCoro before it belongs to the neat English Wizards/Neo memory. That is why the route matters. The card is a magazine-handled preview of the next world, with Sugimori clarity and Japanese Original Series structure holding the object in place before the name Marill, or the old Pikablu echo, makes an agent jump too fast.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Marill print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999.json#row:jp_promo_unnumbered_wotc_108_corocoro_comic_july_1999_issue_insert_june_15_1999:108",
+          "title": "Local Japanese unnumbered promo catalog row: Marill 108",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 108",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Marill_(Wizards_Promo_29)",
+          "title": "Bulbapedia: Marill (Wizards Promo 29)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to English Wizards Promo 29"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "marill_108_original_series_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Marill, Marril, マリル, Pikablu, CoroCoro Marill, CoroCoro Comic July 1999, June 15 1999, Wizards Promo 29, Neo Genesis Marill, ANA Marill, Original Series layout, or Japanese unnumbered promo row 108.",
+          "summary": "Match this Marill by source index 108, CoroCoro July 1999 route, and Japanese Original Series layout before trusting Marill/Pikablu name memory or English Neo/Wizards shorthand.",
+          "steps": [
+            "Start with route: CoroCoro Comic July 1999 issue insert, dated June 15, 1999.",
+            "Preserve row identity as Japanese unnumbered promotional source index 108.",
+            "Use マリル / Maril as Japanese-language search help, not as sufficient identity.",
+            "Check Japanese Original Series layout before comparing to English Wizards Promo 29 or Neo-era rows.",
+            "Separate ANA Marill, English Wizards Promo 29, Neo Genesis / Gold Silver to a New World Marill, and later Marill rows unless source evidence proves equivalence.",
+            "Request seller front/back photos and magazine-insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete CoroCoro issue archive",
+            "complete Marill print census",
+            "English Wizards Promo 29 equivalence",
+            "ANA Marill equivalence",
+            "Neo Genesis equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

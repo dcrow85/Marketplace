@@ -1,0 +1,750 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Emperor of the Crystal Tower: Entei theatrical release promo pair",
+    "release_family_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release",
+    "notes": [
+      "Deepens the theatrical-release Hitmontop/Igglybuff pair tied to Pocket Monsters the Movie: Emperor of the Crystal Tower: Entei.",
+      "Separates the normal-size movie attendee pair from the CoroCoro Crystal Tower's Entei jumbo and from later English Wizards Black Star versions.",
+      "The local raw source group has mixed/inherited date metadata; stronger card-page evidence places the Japanese theatrical screening route on July 8, 2000."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release",
+      "type": "release",
+      "context": {
+        "name_en": "Emperor of the Crystal Tower: Entei theatrical release",
+        "name_ja": "アンナンバードプロモカード",
+        "release_family_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release",
+        "release_date": "2000-07-08",
+        "source_indices": [
+          "182",
+          "183"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "third-movie theatrical attendee route",
+          "Hitmontop / Igglybuff normal-size pair",
+          "Johto baby-and-motion contrast",
+          "Atsuko Nishida Hitmontop credit",
+          "Kagemaru Himeno Igglybuff credit",
+          "Crystal Tower's Entei jumbo boundary",
+          "English Wizards Black Star boundary"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:182",
+            "name": "Hitmontop",
+            "number": "182",
+            "why": "Hitmontop is the action half of the movie-attendee pair: a Johto Fighting-type promo pulled through the third movie route, not a normal Neo-era Hitmontop.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          },
+          {
+            "row_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:183",
+            "name": "Igglybuff",
+            "number": "183",
+            "why": "Igglybuff is the baby-era softness beside Hitmontop's motion, turning the theatrical gift into a small Johto contrast pair.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Atsuko Nishida",
+            "row_count": 1,
+            "examples": [
+              "Hitmontop"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          },
+          {
+            "name": "Kagemaru Himeno",
+            "row_count": 1,
+            "examples": [
+              "Igglybuff"
+            ],
+            "authority_label": "local_catalog_fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "official theater distribution ledger",
+          "physical-card truth",
+          "complete sealed-packet census"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release.json",
+          "title": "Local Japanese unnumbered promo WotC catalog: Emperor of the Crystal Tower theatrical release pair",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "precise theatrical date",
+            "artist credit",
+            "Japanese print-name authority",
+            "official theater distribution ledger",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hitmontop_(Wizards_Promo_37)",
+          "title": "Bulbapedia: Hitmontop (Wizards Promo 37)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official theater distribution ledger"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Igglybuff_(Wizards_Promo_36)",
+          "title": "Bulbapedia: Igglybuff (Wizards Promo 36)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official theater distribution ledger"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/movie-hitmontop-promo/",
+          "title": "PokeBoon: Movie Hitmontop Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official theater distribution ledger",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/movie-igglybuff-promo/",
+          "title": "PokeBoon: Movie Igglybuff Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official theater distribution ledger",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/catalog-history/source-sets/corocoro_crystal_tower_entei_jumbo_v0_1.json",
+          "title": "Catalog-history source set: CoroCoro Crystal Tower's Entei jumbo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "equivalence with theatrical Hitmontop/Igglybuff pair",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "Bulbapedia card pages place the Japanese theatrical-screening availability for Hitmontop and Igglybuff on July 8, 2000, while the local raw source group preserves the theatrical-release note under source indices 182 and 183.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.product_count",
+          "text": "The local raw source group models two source-index rows for this theatrical route: Hitmontop 182 and Igglybuff 183.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia and PokeBoon describe the Japanese route as a theatrical-screening / movie-attendee promotional card distribution for Emperor of the Crystal Tower: Entei.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "PokeBoon and the Bulbapedia card pages identify Atsuko Nishida for Hitmontop and Kagemaru Himeno for Igglybuff; the local raw source rows themselves do not provide illustrator authority.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "This normal-size theatrical pair must be kept separate from Crystal Tower's Entei, a CoroCoro August 2000 jumbo insert deepened elsewhere in the catalog-history layer.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "The pair matters because it turns a movie outing into a small two-card Johto souvenir: Hitmontop carries motion and Fighting-type novelty, while Igglybuff carries baby-Pokemon softness beside the Entei movie machine.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve source indices 182/183, theatrical-route context, artist split, movie-attendee text, and non-equivalence with the CoroCoro Entei jumbo, ordinary Neo-era Hitmontop/Igglybuff, and English Wizards Black Star listings before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "crystal_tower_entei_theatrical_pair_boundary_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Emperor of the Crystal Tower: Entei, Spell of the Unown, theatrical release, movie attendee, Hitmontop 182, Igglybuff 183, Wizards Promo 36/37, Crystal Tower's Entei, CoroCoro jumbo, or Pikachu the Movie 2000.",
+          "summary": "Confirm the normal-size Hitmontop/Igglybuff movie-attendee route before treating either card as this theatrical pair.",
+          "steps": [
+            "Confirm the route is the Japanese theatrical-screening / movie-attendee promotion for Emperor of the Crystal Tower: Entei, not a generic movie-themed card.",
+            "Confirm the raw source-index pair: Hitmontop 182 and Igglybuff 183.",
+            "Use July 8, 2000 as the theatrical-screening date from the card-page evidence, not the inherited local raw-group date field.",
+            "Check the bottom-border / attendance-present language when a seller provides scans, because that is a route tell.",
+            "Preserve the artist split: Atsuko Nishida on Hitmontop and Kagemaru Himeno on Igglybuff, with the raw rows themselves lacking artist authority.",
+            "Separate this normal-size pair from Crystal Tower's Entei CoroCoro jumbo, ordinary Entei cards, ordinary Hitmontop/Igglybuff cards, and English Wizards Black Star versions.",
+            "For sealed/unpeeled/pair claims, ask for packaging or connection evidence in addition to card fronts and backs.",
+            "Before trade/spendability use, require seller-controlled front/back photos, title/name, artist/copyright, bottom-border route text, surface/corners, and any slab/cert/theater-material evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official theater distribution ledger",
+            "complete sealed-packet census",
+            "equivalence with Crystal Tower's Entei jumbo"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Entei at the theater door — Hitmontop and Igglybuff as movie souvenirs",
+        "why_it_matters": "This pair is Pokemon as an outing you could hold. The third movie made the Crystal Tower enormous on screen, but the theater gift was small and intimate: Hitmontop spinning with new-Johto energy, Igglybuff softening the route into baby-Pokemon charm. It is not just a promo pair; it is a receipt from a summer movie moment.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official theater memoir",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:182",
+      "type": "card",
+      "context": {
+        "name_en": "Hitmontop",
+        "name_ja": "",
+        "romaji": null,
+        "release_family_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release",
+        "release_name": "Emperor of the Crystal Tower: Entei theatrical release",
+        "row_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:182"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Hitmontop",
+        "name_ja": "",
+        "romaji": null,
+        "number": "182",
+        "row_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:182"
+      },
+      "card_highlights": {
+        "number": "182",
+        "rarity_signal": "Unnumbered Promotional / Emperor of the Crystal Tower theatrical attendee route",
+        "artist": "Atsuko Nishida",
+        "assembly_themes": [
+          "theatrical attendee route",
+          "source index 182",
+          "Johto Fighting-type motion",
+          "Atsuko Nishida credit",
+          "English Wizards Promo 37 boundary"
+        ],
+        "not_claiming": [
+          "artist credit from local raw row itself",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release.json#row:jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:182",
+          "title": "Local unnumbered WotC row: Hitmontop 182 / Crystal Tower theatrical release",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "artist credit",
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hitmontop_(Wizards_Promo_37)",
+          "title": "Bulbapedia: Hitmontop (Wizards Promo 37)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/movie-hitmontop-promo/",
+          "title": "PokeBoon: Movie Hitmontop Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official theater distribution ledger"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local raw unnumbered catalog anchors Hitmontop as source index 182 in the Emperor of the Crystal Tower theatrical release group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon identify Atsuko Nishida as the illustrator for the movie Hitmontop promo; the local raw row itself does not provide illustrator authority.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia and PokeBoon describe Hitmontop as available during theatrical screenings / movie attendee rewards for Emperor of the Crystal Tower: Entei.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Hitmontop matters in this pair because it is the kinetic Johto body at the theater door: a spinning Fighting-type card attached to a movie experience rather than a normal set slot.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Hitmontop 182 by theatrical route, source index, Atsuko Nishida credit, and bottom-border attendance-present evidence, while separating Japanese movie-attendee copies from English Wizards Promo 37 and ordinary Hitmontop cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "crystal_tower_entei_theatrical_hitmontop_182_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Hitmontop 182, movie Hitmontop, Emperor of the Crystal Tower, Spell of the Unown, theatrical release, Atsuko Nishida, Wizards Promo 37, or Japanese movie attendee card.",
+          "summary": "Treat Hitmontop 182 as the Japanese movie-attendee promo only when theatrical-route evidence supports the claim.",
+          "steps": [
+            "Confirm source index 182 and Hitmontop identity in the unnumbered promotional row.",
+            "Check for Japanese theatrical / movie-attendee route evidence tied to Emperor of the Crystal Tower: Entei.",
+            "Use Atsuko Nishida as the external card-page artist credit, while preserving that the local raw row lacks artist authority.",
+            "Inspect seller scans for bottom-border / attendance-present route text where visible.",
+            "Separate Japanese movie Hitmontop from English Wizards Black Star Promo 37, ordinary Neo-era Hitmontop, Aquapolis/other Hitmontop rows, and generic movie listings.",
+            "For sealed/unpeeled pair claims, request evidence showing the Hitmontop/Igglybuff pair relationship, not just one loose card.",
+            "Before trade/spendability use, require seller-controlled front/back photos, title/name, artist/copyright, route text, surface/corners, and any slab/cert/theater-material evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official theater distribution ledger",
+            "complete sealed-packet census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Movie Hitmontop — the spin at the theater door",
+        "why_it_matters": "Hitmontop feels exactly right for a movie-attendee promo: motion, novelty, and Johto-era freshness arriving in a kid's hands after the Crystal Tower filled the screen. Atsuko Nishida's credit gives the card a clean artist lane, but the real identity is the route. Without the theater story, it is only another Hitmontop.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:183",
+      "type": "card",
+      "context": {
+        "name_en": "Igglybuff",
+        "name_ja": "",
+        "romaji": null,
+        "release_family_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release",
+        "release_name": "Emperor of the Crystal Tower: Entei theatrical release",
+        "row_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:183"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card": {
+        "name_en": "Igglybuff",
+        "name_ja": "",
+        "romaji": null,
+        "number": "183",
+        "row_id": "jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:183"
+      },
+      "card_highlights": {
+        "number": "183",
+        "rarity_signal": "Unnumbered Promotional / Emperor of the Crystal Tower theatrical attendee route",
+        "artist": "Kagemaru Himeno",
+        "assembly_themes": [
+          "theatrical attendee route",
+          "source index 183",
+          "baby Pokemon softness",
+          "Kagemaru Himeno credit",
+          "English Wizards Promo 36 boundary"
+        ],
+        "not_claiming": [
+          "artist credit from local raw row itself",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release.json#row:jp_promo_unnumbered_wotc_182_emperor_of_the_crystal_tower_entei_theatrical_release:183",
+          "title": "Local unnumbered WotC row: Igglybuff 183 / Crystal Tower theatrical release",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "artist credit",
+            "Japanese print-name authority",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Igglybuff_(Wizards_Promo_36)",
+          "title": "Bulbapedia: Igglybuff (Wizards Promo 36)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/movie-igglybuff-promo/",
+          "title": "PokeBoon: Movie Igglybuff Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official theater distribution ledger"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local raw unnumbered catalog anchors Igglybuff as source index 183 in the Emperor of the Crystal Tower theatrical release group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon identify Kagemaru Himeno as the illustrator for the movie Igglybuff promo; the local raw row itself does not provide illustrator authority.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia and PokeBoon describe Igglybuff as available during theatrical screenings / movie attendee rewards for Emperor of the Crystal Tower: Entei.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Igglybuff matters in this pair because it gives the Entei movie route a baby-Pokemon counterweight: soft, round, and unmistakably Johto-era beside Hitmontop's motion.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Agents should identify Igglybuff 183 by theatrical route, source index, Kagemaru Himeno credit, and bottom-border attendance-present evidence, while separating Japanese movie-attendee copies from English Wizards Promo 36 and ordinary Igglybuff cards.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "crystal_tower_entei_theatrical_igglybuff_183_checks_v0.1",
+          "trigger": "A listing, want, scan, seller story, or agent result says Igglybuff 183, movie Igglybuff, Emperor of the Crystal Tower, Spell of the Unown, theatrical release, Kagemaru Himeno, Wizards Promo 36, or Japanese movie attendee card.",
+          "summary": "Treat Igglybuff 183 as the Japanese movie-attendee promo only when theatrical-route evidence supports the claim.",
+          "steps": [
+            "Confirm source index 183 and Igglybuff identity in the unnumbered promotional row.",
+            "Check for Japanese theatrical / movie-attendee route evidence tied to Emperor of the Crystal Tower: Entei.",
+            "Use Kagemaru Himeno as the external card-page artist credit, while preserving that the local raw row lacks artist authority.",
+            "Inspect seller scans for bottom-border / attendance-present route text where visible.",
+            "Separate Japanese movie Igglybuff from English Wizards Black Star Promo 36, ordinary Neo-era Igglybuff, and generic baby-Pokemon listings.",
+            "For sealed/unpeeled pair claims, request evidence showing the Hitmontop/Igglybuff pair relationship, not just one loose card.",
+            "Before trade/spendability use, require seller-controlled front/back photos, title/name, artist/copyright, route text, surface/corners, and any slab/cert/theater-material evidence."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "spendability",
+            "official theater distribution ledger",
+            "complete sealed-packet census"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Movie Igglybuff — the soft card beside the tower",
+        "why_it_matters": "Igglybuff is the little emotional counterspell to the Crystal Tower. The movie apparatus is huge: Entei, Unown, theater crowds, summer promotion. Then this tiny baby Pokemon appears as something you could take home. Kagemaru Himeno's lane makes that softness feel intentional, but again the route is the identity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "route proof without seller evidence"
+        ]
+      }
+    }
+  ]
+}

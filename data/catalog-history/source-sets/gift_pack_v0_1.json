@@ -1,0 +1,3349 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Hand-researched deepening pass for the December 1996 Japanese Gift Pack product-component context, emphasizing two-player apparatus, Starter Pack component lanes, unresolved special-card slots, and No Rarity / missing-symbol caution.",
+    "in_scope": [
+      "Gift Pack product-component context",
+      "Venusaur starter_a-011",
+      "Charizard starter_a-021",
+      "Blastoise starter_a-032",
+      "Gyarados starter_a-034",
+      "Raichu starter_a-038",
+      "Zapdos starter_a-042",
+      "Mewtwo starter_a-050",
+      "Pidgeotto starter_a-066",
+      "Super Energy Removal starter_a-088",
+      "Venusaur starter_b-011",
+      "Charizard starter_b-021",
+      "Mewtwo starter_b-050",
+      "Blastoise starter_b-032",
+      "Super Energy Removal starter_b-088"
+    ],
+    "not_claiming": [
+      "complete Gift Pack scholarship",
+      "fixed Gift Pack deck list",
+      "sealed Gift Pack contents",
+      "special-card identities",
+      "price truth",
+      "condition truth",
+      "seller possession",
+      "physical-card authenticity",
+      "approved image display rights"
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_tcg_gift_pack_19961212",
+      "type": "release",
+      "context": {
+        "name_en": "Gift Pack product-component context",
+        "name_ja": "ギフトパック",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "release_date": "1996-12-12"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json",
+          "title": "Local Japanese pre-English catalog: Gift Pack product-component context",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_starter_pack_19961020.json",
+          "title": "Local Japanese pre-English catalog: Series 1 Starter Pack possible-content pool",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "PokemonWiki selected rendered lines and the local catalog model Gift Pack as released on December 12, 1996.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "PokemonWiki identifies the product form as Gift Pack and records 122 cards, with two Series 1 Starter Pack products, a special playmat, 30 damage counters, poison markers, an instruction booklet, and two special-card slots.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Bulbapedia frames Gift Pack as a product designed to let two players engage with the TCG through two Starter Decks and play supplies.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.product_count",
+          "text": "The local catalog models Gift Pack as a product-component context with two starter lanes, 204 possible component rows, 102 unique underlying Starter Pack rows, and two unmodeled special-card slots.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "release.boundary",
+          "text": "The local catalog explicitly treats Gift Pack as strict_release_member false: useful for product-family reasoning, not a fixed Gift Pack deck list and not a complete model of the two special-card slots.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The Japanese pre-English release map marks Gift Pack symbol status as unverified, with possible Starter Pack inherited risk, so agents should treat missing-symbol claims as unverified mixed risk rather than clean No Rarity evidence.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.impact",
+          "text": "The local Gift Pack component-lane artist clusters are: Ken Sugimori (88 component rows; examples: Caterpie, Metapod, Nidoran ♂), Keiji Kinebuchi (76 component rows; examples: Kakuna, Staryu, Starmie), Mitsuhiro Arita (38 component rows; examples: Bulbasaur, Weedle, Koffing), Tomoaki Imakuni (2 component rows; examples: Porygon, Porygon).",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "Gift Pack matters because it turns the first Japanese TCG into a household apparatus: not just cards in isolation, but two starter paths, play surface, counters, poison markers, instructions, and unresolved special cards bundled as a teach-someone-with-me object.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_component_lane_unresolved_special_slots_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, ギフトパック, 122 cards, starter_a, starter_b, two starter decks, special cards, No Rarity, missing symbol, sealed Gift Pack, or launch Starter Pack.",
+          "summary": "Gift Pack is a product-component context, not a fixed deck-list proof. Preserve starter_a/starter_b lane identity, unresolved special-card slots, and unverified missing-symbol risk before using any row in transaction logic.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and the exact component lane id such as starter_a-021 or starter_b-021.",
+            "Do not treat a Gift Pack component row as proof that a specific sealed Gift Pack contained that card; the local model is a possible-content component rollup.",
+            "Do not identify the two special-card slots unless a separate source pins the promo identities for the exact product copy or catalog branch.",
+            "For No Rarity or missing-symbol claims, require direct card-front evidence and compare against Starter Pack / Expansion Pack lanes; Gift Pack symbol status is unverified mixed risk, not a clean positive claim.",
+            "For high-value starter holos, preserve product context separately from the underlying launch card identity; price, condition, edition, and authenticity need seller evidence and/or verifier judgment."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identities",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The first game night in a box",
+        "why_it_matters": "Gift Pack is not exciting because it invents a new checklist. It is exciting because it shows Pokemon learning how to be played with another person. The product gathers two starter paths, a mat, counters, poison markers, instructions, and two unresolved special-card slots around the launch-card grammar. That makes it a little domestic, almost ceremonial: here are the cards, here is the table, here is enough apparatus for two people to learn the game together. For agents, the lesson is severe and useful: a product context can be historically rich while still not proving a fixed card list, a missing-symbol state, or a sealed unit's exact contents.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "complete Gift Pack history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "special-card identities"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-011",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-011",
+        "catalog_row_id": "starter_a-011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-011",
+          "title": "Local Gift Pack component row: Venusaur starter_a-011",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-011 as Venusaur.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Venusaur starter_a-011 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-011 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Venusaur in the Gift Pack component lane is not merely a chase holo; it is one of the launch bosses carried into a teaching product. Arita's Venusaur becomes something a new pair of players might meet while learning the apparatus together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-011 lane identity; do not infer sealed Gift Pack contents or No Rarity status from the row.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_011_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Venusaur, starter_a-011, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-011 lane identity; do not infer sealed Gift Pack contents or No Rarity status from the row.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-011.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur as table-anchor",
+        "why_it_matters": "Venusaur in the Gift Pack component lane is not merely a chase holo; it is one of the launch bosses carried into a teaching product. Arita's Venusaur becomes something a new pair of players might meet while learning the apparatus together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-021",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-021",
+        "catalog_row_id": "starter_a-021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-021",
+          "title": "Local Gift Pack component row: Charizard starter_a-021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-021 as Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Charizard starter_a-021 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-021 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Charizard is the obvious gravity well, but Gift Pack changes the feeling. The card is no longer only pack-pull mythology; it is part of a boxed invitation to learn the game with someone else. That product context matters as much as the name.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-021 lane identity; do not merge with starter_b-021, Expansion Pack, Starter Pack, or No Rarity claims without evidence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_021_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Charizard, starter_a-021, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-021 lane identity; do not merge with starter_b-021, Expansion Pack, Starter Pack, or No Rarity claims without evidence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-021.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Charizard enters the household apparatus",
+        "why_it_matters": "Charizard is the obvious gravity well, but Gift Pack changes the feeling. The card is no longer only pack-pull mythology; it is part of a boxed invitation to learn the game with someone else. That product context matters as much as the name.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-032",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "カメックス",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-032",
+        "catalog_row_id": "starter_a-032"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-032",
+          "title": "Local Gift Pack component row: Blastoise starter_a-032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-032 as Blastoise.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Blastoise starter_a-032 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-032 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Blastoise gives the Gift Pack its water-weight: another launch icon inside the two-player apparatus. Sugimori's credit makes the row feel foundational, but the product lane still has to stay separate from ordinary launch-set memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-032 lane identity; do not merge with starter_b-032, Expansion Pack, Starter Pack, or No Rarity claims without evidence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_032_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Blastoise, starter_a-032, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-032 lane identity; do not merge with starter_b-032, Expansion Pack, Starter Pack, or No Rarity claims without evidence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-032.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Blastoise steadies the second path",
+        "why_it_matters": "Blastoise gives the Gift Pack its water-weight: another launch icon inside the two-player apparatus. Sugimori's credit makes the row feel foundational, but the product lane still has to stay separate from ordinary launch-set memory.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-034",
+      "type": "card",
+      "context": {
+        "name_en": "Gyarados",
+        "name_ja": "ギャラドス",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-034",
+        "catalog_row_id": "starter_a-034"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-034",
+          "title": "Local Gift Pack component row: Gyarados starter_a-034",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-034 as Gyarados.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Gyarados starter_a-034 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-034 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Gyarados brings drama into the component pool. In a gift product, that matters: the lesson is not only rules, but the sudden feeling that the card on the table has a mythic temper.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-034 component identity and do not infer sealed-unit contents.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_034_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Gyarados, starter_a-034, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-034 component identity and do not infer sealed-unit contents.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-034.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Gyarados gives the box a monster story",
+        "why_it_matters": "Gyarados brings drama into the component pool. In a gift product, that matters: the lesson is not only rules, but the sudden feeling that the card on the table has a mythic temper.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-038",
+      "type": "card",
+      "context": {
+        "name_en": "Raichu",
+        "name_ja": "ライチュウ",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-038",
+        "catalog_row_id": "starter_a-038"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-038",
+          "title": "Local Gift Pack component row: Raichu starter_a-038",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-038 as Raichu.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Raichu starter_a-038 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-038 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Raichu is the afterimage of Pikachu made heavier. In a two-player learning product, that evolution tells a new player the game has ladders: cute beginnings, stronger forms, and the little thrill of getting there.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-038 component identity and do not infer missing-symbol or edition status.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_038_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Raichu, starter_a-038, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-038 component identity and do not infer missing-symbol or edition status.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-038.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Raichu carries mascot evolution into the kit",
+        "why_it_matters": "Raichu is the afterimage of Pikachu made heavier. In a two-player learning product, that evolution tells a new player the game has ladders: cute beginnings, stronger forms, and the little thrill of getting there.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-042",
+      "type": "card",
+      "context": {
+        "name_en": "Zapdos",
+        "name_ja": "サンダー",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-042",
+        "catalog_row_id": "starter_a-042"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-042",
+          "title": "Local Gift Pack component row: Zapdos starter_a-042",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-042 as Zapdos.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Zapdos starter_a-042 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-042 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Zapdos gives the Gift Pack a legendary voltage. It keeps the launch-card pool from feeling only like starters and basics; there is a flash of the larger Kanto myth inside the teaching box.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-042 component identity and do not infer sealed-unit contents.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_042_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Zapdos, starter_a-042, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-042 component identity and do not infer sealed-unit contents.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-042.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Zapdos makes the starter pool feel electric",
+        "why_it_matters": "Zapdos gives the Gift Pack a legendary voltage. It keeps the launch-card pool from feeling only like starters and basics; there is a flash of the larger Kanto myth inside the teaching box.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-050",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-050",
+        "catalog_row_id": "starter_a-050"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-050",
+          "title": "Local Gift Pack component row: Mewtwo starter_a-050",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-050 as Mewtwo.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Mewtwo starter_a-050 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-050 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Mewtwo brings a different tone to the Gift Pack: less household play, more laboratory myth. Sugimori's figure sits inside a product meant to teach, which makes the card feel like a deeper promise behind the rules.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-050 component identity and do not infer special-card-slot identity.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_050_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Mewtwo, starter_a-050, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-050 component identity and do not infer special-card-slot identity.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-050.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo is the intelligence at the edge",
+        "why_it_matters": "Mewtwo brings a different tone to the Gift Pack: less household play, more laboratory myth. Sugimori's figure sits inside a product meant to teach, which makes the card feel like a deeper promise behind the rules.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-066",
+      "type": "card",
+      "context": {
+        "name_en": "Pidgeotto",
+        "name_ja": "ピジョン",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-066",
+        "catalog_row_id": "starter_a-066"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-066",
+          "title": "Local Gift Pack component row: Pidgeotto starter_a-066",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-066 as Pidgeotto.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Pidgeotto starter_a-066 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-066 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Pidgeotto is not the loudest card here, but Gift Pack needs cards like this. Middle evolutions make a starter pool feel like a living route rather than a trophy wall; they teach continuity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-066 component identity and do not collapse into English/Japanese later Pidgeotto branches.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_066_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Pidgeotto, starter_a-066, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-066 component identity and do not collapse into English/Japanese later Pidgeotto branches.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-066.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Pidgeotto proves the middle rows matter",
+        "why_it_matters": "Pidgeotto is not the loudest card here, but Gift Pack needs cards like this. Middle evolutions make a starter pool feel like a living route rather than a trophy wall; they teach continuity.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_a-088",
+      "type": "card",
+      "context": {
+        "name_en": "Super Energy Removal",
+        "name_ja": "超エネルギーリムーブ",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_a-088",
+        "catalog_row_id": "starter_a-088"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_a-088",
+          "title": "Local Gift Pack component row: Super Energy Removal starter_a-088",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_a-088 as Super Energy Removal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Super Energy Removal starter_a-088 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_a-088 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "Super Energy Removal is the kind of trainer that makes the game feel like a game. In the Gift Pack apparatus it matters because learning Pokemon TCG is not only attaching energy and attacking; it is also learning interruption.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_a-088 component identity; trainer names recur and need exact row context.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_a_088_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Super Energy Removal, starter_a-088, starter_a, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_a-088 component identity; trainer names recur and need exact row context.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_a-088.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Super Energy Removal teaches friction",
+        "why_it_matters": "Super Energy Removal is the kind of trainer that makes the game feel like a game. In the Gift Pack apparatus it matters because learning Pokemon TCG is not only attaching energy and attacking; it is also learning interruption.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-011",
+      "type": "card",
+      "context": {
+        "name_en": "Venusaur",
+        "name_ja": "フシギバナ",
+        "romaji": "Fushigibana",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-011",
+        "catalog_row_id": "starter_b-011"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-011",
+          "title": "Local Gift Pack component row: Venusaur starter_b-011",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-011 as Venusaur, inherited from the Series 1 Starter Pack possible-content pool and ultimately tied to PMCG1-011 launch-card memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Venusaur starter_b-011 as Holo Rare and marks it as an active No Rarity target through inherited component-row metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Venusaur starter_b-011 to Mitsuhiro Arita through English Base Set crosswalk metadata, while preserving that this is not direct Japanese-print illustrator authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance says the reference image is inherited through Gift Pack component rollup from a Starter Pack possible-content row and source-row Expansion Pack / No Rarity image; it is not direct Gift Pack image evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Venusaur starter_b-011 matters because it exposes the Gift Pack problem in miniature: a beloved launch holo can be historically relevant to a two-player product context while still failing to prove fixed deck inclusion, sealed-unit contents, or physical No Rarity status.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-011 lane identity; do not merge with starter_a-011, Expansion Pack PMCG1-011, Series 1 Starter Pack possible-content rows, or No Rarity claims without seller-controlled evidence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_011_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Venusaur, starter_b-011, starter_b, Starter Pack, Expansion Pack, PMCG1-011, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_b-011 lane identity; do not merge it with starter_a-011, Expansion Pack PMCG1-011, or a physical No Rarity claim without evidence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-011.",
+            "Keep starter_b lane identity separate from starter_a-011, Series 1 Starter Pack possible-content rows, and Expansion Pack / No Rarity PMCG1-011.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "Treat inherited No Rarity reference imagery as lineage/comparison only; it is not direct Gift Pack image evidence, seller possession, authentication, condition, or fixed inclusion proof.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against Starter Pack / Expansion Pack lanes.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, sealed-unit contents, or physical No Rarity status from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status",
+            "physical-card No Rarity truth",
+            "starter_a-011 equivalence",
+            "Expansion Pack PMCG1-011 equivalence",
+            "direct Gift Pack image evidence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "starter_b-011",
+        "rarity_signal": "Holo Rare",
+        "artist": "Mitsuhiro Arita",
+        "assembly_themes": [
+          "Gift Pack component lane",
+          "possible-content ambiguity",
+          "launch holo inheritance",
+          "two-player apparatus",
+          "inherited reference image"
+        ],
+        "signals": [
+          "Gift Pack product-component context",
+          "starter_b",
+          "starter_b-011",
+          "Series 1 Starter Pack possible-content pool",
+          "PMCG1-011",
+          "Venusaur",
+          "フシギバナ",
+          "Fushigibana",
+          "Holo Rare",
+          "Mitsuhiro Arita",
+          "inherited No Rarity reference image"
+        ],
+        "collector_texture_note": "Gift Pack starter_b Venusaur is not a louder Venusaur claim; it is a route claim. The interesting part is the product lane, the inherited image lineage, and the proof it still cannot supply by itself."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Venusaur starter_b-011: the second lane of the table",
+        "why_it_matters": "The beautiful thing about Gift Pack Venusaur is also the dangerous thing. It feels like the same launch boss walking into a box built for two players, but the route matters more than the feeling. starter_b-011 is a component-lane memory: it tells an agent where the card can sit in the product model, not what a sealed box contains and not what a seller has in hand. That is the exact kind of boring distinction that makes a market safer.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "fixed deck list",
+          "No Rarity status",
+          "seller possession"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-021",
+      "type": "card",
+      "context": {
+        "name_en": "Charizard",
+        "name_ja": "リザードン",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-021",
+        "catalog_row_id": "starter_b-021"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-021",
+          "title": "Local Gift Pack component row: Charizard starter_b-021",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-021 as Charizard.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Charizard starter_b-021 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_b-021 to Mitsuhiro Arita.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "starter_b-021 exists to remind an agent that Gift Pack is modeled as two component lanes. Same name, same underlying launch gravity, different component lane. That distinction is boring until it saves a transaction from false certainty.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-021 lane identity; do not merge with starter_a-021 or claim duplicate physical inclusion.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_021_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Charizard, starter_b-021, starter_b, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_b-021 lane identity; do not merge with starter_a-021 or claim duplicate physical inclusion.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-021.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Charizard lane is the whole point",
+        "why_it_matters": "starter_b-021 exists to remind an agent that Gift Pack is modeled as two component lanes. Same name, same underlying launch gravity, different component lane. That distinction is boring until it saves a transaction from false certainty.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-050",
+      "type": "card",
+      "context": {
+        "name_en": "Mewtwo",
+        "name_ja": "ミュウツー",
+        "romaji": "Myuutsuu",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-050",
+        "catalog_row_id": "starter_b-050"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-050",
+          "title": "Local Gift Pack component row: Mewtwo starter_b-050",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-050 as Mewtwo, inherited from the Series 1 Starter Pack possible-content pool and ultimately tied to PMCG1-050 launch-card memory.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Mewtwo starter_b-050 as Holo Rare and marks it as an active No Rarity target through inherited component-row metadata.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Mewtwo starter_b-050 to Ken Sugimori through English Base Set crosswalk metadata, while preserving that this is not direct Japanese-print illustrator authority.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.variant",
+          "text": "The local row's image provenance says the reference image is inherited through Gift Pack component rollup from a Starter Pack possible-content row and source-row Expansion Pack / No Rarity image; it is not direct Gift Pack image evidence.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Mewtwo starter_b-050 matters because it shows how even a myth-heavy launch holo becomes a humble route problem inside Gift Pack: the catalog can describe the component lane, but it cannot prove a sealed box, a special-card slot, or a seller's physical No Rarity card.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-050 lane identity; do not merge with starter_a-050, Expansion Pack PMCG1-050, Series 1 Starter Pack possible-content rows, movie/Wizards promo Mewtwo, P Promotional Mewtwo 046/P, or No Rarity claims without seller-controlled evidence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_050_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Mewtwo, starter_b-050, starter_b, Starter Pack, Expansion Pack, PMCG1-050, No Rarity, missing symbol, sealed Gift Pack, movie promo Mewtwo, or launch holo.",
+          "summary": "Preserve starter_b-050 lane identity; do not merge it with starter_a-050, Expansion Pack PMCG1-050, promo Mewtwo branches, or a physical No Rarity claim without evidence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-050.",
+            "Keep starter_b lane identity separate from starter_a-050, Series 1 Starter Pack possible-content rows, and Expansion Pack / No Rarity PMCG1-050.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "Treat inherited No Rarity reference imagery as lineage/comparison only; it is not direct Gift Pack image evidence, seller possession, authentication, condition, or fixed inclusion proof.",
+            "Separate this component row from English Base Set Mewtwo, Base Set 2 Mewtwo, Legendary Collection Mewtwo, Expedition Mewtwo, movie/Wizards promo Mewtwo, and P Promotional Mewtwo 046/P before making comparisons.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against Starter Pack / Expansion Pack lanes.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, sealed-unit contents, promo identity, or physical No Rarity status from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "seller card match",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status",
+            "physical-card No Rarity truth",
+            "starter_a-050 equivalence",
+            "Expansion Pack PMCG1-050 equivalence",
+            "movie promo equivalence",
+            "P Promotional equivalence",
+            "direct Gift Pack image evidence",
+            "spendability"
+          ]
+        }
+      ],
+      "card_highlights": {
+        "number": "starter_b-050",
+        "rarity_signal": "Holo Rare",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "Gift Pack component lane",
+          "possible-content ambiguity",
+          "launch holo inheritance",
+          "laboratory myth",
+          "inherited reference image"
+        ],
+        "signals": [
+          "Gift Pack product-component context",
+          "starter_b",
+          "starter_b-050",
+          "Series 1 Starter Pack possible-content pool",
+          "PMCG1-050",
+          "Mewtwo",
+          "ミュウツー",
+          "Myuutsuu",
+          "Holo Rare",
+          "Ken Sugimori",
+          "inherited No Rarity reference image"
+        ],
+        "collector_texture_note": "Gift Pack starter_b Mewtwo is not a louder Mewtwo claim; it is a lane through which the launch myth might be modeled, with all the ambiguity still attached."
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Mewtwo starter_b-050: myth in a component lane",
+        "why_it_matters": "Gift Pack Mewtwo is a perfect humility test for the catalog. The name has gravity, the launch holo has gravity, the No Rarity memory has gravity, but starter_b-050 is still only a component-lane statement until seller evidence appears. The agent should feel the myth and then do the boring thing: preserve the route, ask for proof, and refuse to turn product context into physical truth.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "fixed deck list",
+          "No Rarity status",
+          "seller possession",
+          "promo identity"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-032",
+      "type": "card",
+      "context": {
+        "name_en": "Blastoise",
+        "name_ja": "カメックス",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-032",
+        "catalog_row_id": "starter_b-032"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-032",
+          "title": "Local Gift Pack component row: Blastoise starter_b-032",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-032 as Blastoise.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Blastoise starter_b-032 as Holo Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_b-032 to Ken Sugimori.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "starter_b-032 is not a new Blastoise story so much as a product-structure story. Gift Pack is for two players, and the doubled component lanes make that visible in the catalog.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-032 lane identity; do not merge with starter_a-032 or claim duplicate physical inclusion.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_032_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Blastoise, starter_b-032, starter_b, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_b-032 lane identity; do not merge with starter_a-032 or claim duplicate physical inclusion.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-032.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Blastoise lane keeps the pair visible",
+        "why_it_matters": "starter_b-032 is not a new Blastoise story so much as a product-structure story. Gift Pack is for two players, and the doubled component lanes make that visible in the catalog.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    },
+    {
+      "uid": "jp_tcg_gift_pack_19961212:starter_b-088",
+      "type": "card",
+      "context": {
+        "name_en": "Super Energy Removal",
+        "name_ja": "超エネルギーリムーブ",
+        "release_family_id": "jp_tcg_gift_pack_19961212",
+        "row_id": "jp_tcg_gift_pack_19961212:starter_b-088",
+        "catalog_row_id": "starter_b-088"
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/releases/jp_tcg_gift_pack_19961212.json#row:jp_tcg_gift_pack_19961212:starter_b-088",
+          "title": "Local Gift Pack component row: Super Energy Removal starter_b-088",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed Gift Pack deck list",
+            "sealed Gift Pack contents",
+            "special-card identities"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "local_catalog",
+          "ref": "data/japanese-pre-english/source-snapshots/pokemonwiki_gift_pack_19961212_selected_lines.json",
+          "title": "Local selected rendered-lines snapshot: PokemonWiki Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "special-card identities",
+            "fixed deck list",
+            "sealed-unit contents",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://wiki.pokemonwiki.com/wiki/ポケットモンスターカードゲーム_ギフトパック",
+          "title": "PokemonWiki: Pocket Monsters Card Game Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "raw HTML snapshot",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Original_TCG_Era_merchandise#Gift_Pack",
+          "title": "Bulbapedia: Original TCG Era merchandise - Gift Pack",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "sealed-unit contents"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "local_catalog",
+          "ref": "Japanese_Pre_English_Release_Map_v0.1.md",
+          "title": "Japanese Pre-English Release Map v0.1",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "row-level physical truth",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "sealed-unit contents"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog identifies Gift Pack component row starter_b-088 as Super Energy Removal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The local catalog records Super Energy Removal starter_b-088 as Rare.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "The local catalog credits Gift Pack component row starter_b-088 to Keiji Kinebuchi.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "history.significance",
+          "text": "starter_b-088 makes the same point in trainer form: duplicated component lanes are not duplicate proof of physical contents. The row is useful because it keeps the model honest.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ]
+        },
+        {
+          "id": "c5",
+          "field": "identification.special_instructions",
+          "text": "Preserve starter_b-088 lane identity; do not merge with starter_a-088 or claim fixed deck-list presence.",
+          "sources": [
+            "s1",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact",
+          "basis_claims": [
+            "c1"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "gift_pack_19961212_starter_b_088_component_boundary_v0.1",
+          "trigger": "A listing, want, scan, or agent memory says Gift Pack, Super Energy Removal, starter_b-088, starter_b, Starter Pack, Expansion Pack, No Rarity, missing symbol, sealed Gift Pack, or launch holo.",
+          "summary": "Preserve starter_b-088 lane identity; do not merge with starter_a-088 or claim fixed deck-list presence.",
+          "steps": [
+            "Preserve release_family_id jp_tcg_gift_pack_19961212 and component row starter_b-088.",
+            "Keep Gift Pack product context separate from ordinary Starter Pack / Expansion Pack row identity.",
+            "Do not treat this possible-content component row as proof of a fixed deck list or a specific sealed Gift Pack's contents.",
+            "For missing-symbol / No Rarity claims, require direct front/back evidence and compare against launch Starter Pack and Expansion Pack branches.",
+            "Do not infer seller possession, authenticity, condition, price, edition, special-card-slot identity, or sealed-unit contents from the catalog row alone."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "fixed deck list",
+            "sealed Gift Pack contents",
+            "special-card identity",
+            "No Rarity status",
+            "missing-symbol status"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "The second Super Energy Removal is a catalog warning",
+        "why_it_matters": "starter_b-088 makes the same point in trainer form: duplicated component lanes are not duplicate proof of physical contents. The row is useful because it keeps the model honest.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5"
+        ],
+        "not_claiming": [
+          "official emotional history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "sealed-unit contents",
+          "No Rarity status"
+        ]
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      }
+    }
+  ]
+}

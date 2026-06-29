@@ -1,0 +1,591 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Wooper, the CoroCoro Comic January 2000 issue insert released December 15, 1999, emphasizing the Gold/Silver launch moment, CoroCoro as Johto-era delivery rail, Ken Sugimori art, glossy unnumbered promo identity, and traps against later Wooper cards or generic CoroCoro promo memory.",
+    "in_scope": [
+      "CoroCoro Comic January 2000 issue insert release dossier",
+      "Wooper unnumbered promotional row 146",
+      "Gold/Silver early-Johto historical context",
+      "Ken Sugimori illustration credit",
+      "Glossy magazine-insert identification rails"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999",
+        "name_en": "CoroCoro Comic January 2000 issue insert (December 15, 1999)",
+        "release_date": "1999-12-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro Comic magazine insert",
+          "early Gold/Silver Johto signal",
+          "glossy unnumbered promo",
+          "Ken Sugimori character art",
+          "Gold/Silver expansion symbol",
+          "small-card magazine excitement"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999:146",
+            "name": "Wooper",
+            "why": "This row is a chase because it catches a newly arrived Johto Pokemon in CoroCoro's hands just weeks after Gold/Silver launched in Japan; modest creature, huge moment.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c4",
+              "c5"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Wooper"
+            ],
+            "why": "Bulbapedia, Pokumon, and PokeBoon credit this Wooper to Ken Sugimori; in this specific row the importance is not a showy composition, but the mainline Pokemon visual language being carried directly into a magazine bonus card.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete Ken Sugimori bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Wooper art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic January 2000 issue insert as a one-row unnumbered promotional source group containing Wooper at source index 146.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia's unnumbered promotional list places Wooper in the CoroCoro Comic January 2000 issue insert, released December 15, 1999.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "Pokumon and PokeBoon both describe the card as a CoroCoro / magazine-insert promo, and Pokumon further tags it as glossy and non-holo.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "The official Pokemon site lists Pokemon Gold and Silver as released in Japan on November 21, 1999, less than a month before this CoroCoro insert date.",
+          "sources": [
+            "s6"
+          ],
+          "tier": "A",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Because the row appears immediately after the Japanese Gold/Silver launch, this Wooper functions as a magazine-era Johto arrival marker rather than merely a standalone common Pokemon promo.",
+          "sources": [
+            "s1",
+            "s2",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "Bulbapedia's Wooper CoroCoro promo page credits the illustration to Ken Sugimori.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "artist.credit",
+          "text": "Pokumon and PokeBoon also list Ken Sugimori as the illustrator for this CoroCoro Wooper promo.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Bulbapedia's Wooper promo page says the card carries the Gold, Silver, to a New World... symbol and bottom-border text reading CoroCoro Comic January issue bonus card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve the CoroCoro January 2000 insert route, December 15 1999 date, glossy unnumbered promo signal, Ken Sugimori credit, Gold/Silver symbol, and January-issue bonus-card border text before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_january_2000_wooper_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Wooper, CoroCoro January 2000, December 15 1999, glossy Wooper, Ken Sugimori Wooper, Gold/Silver symbol, Johto promo, CoroCoro bonus card, or unnumbered Japanese promo.",
+          "summary": "Identify CoroCoro January 2000 Wooper by its magazine-insert route, glossy unnumbered promo identity, Ken Sugimori credit, Gold/Silver symbol, and January-issue bonus-card border text before trusting generic Wooper memory.",
+          "steps": [
+            "Confirm the release route is CoroCoro Comic January 2000 issue insert, released December 15, 1999.",
+            "Confirm the card is Wooper / ウパー as an unnumbered Japanese promotional card, not a numbered expansion Wooper or later Wooper reprint.",
+            "Preserve Ken Sugimori as illustrator and avoid replacing the credit with a generic unknown-artist value.",
+            "Check for glossy CoroCoro magazine-insert stock when scan and seller evidence allow.",
+            "Check for the Gold, Silver, to a New World... promotional symbol.",
+            "Check the bottom card border for CoroCoro Comic January issue bonus-card text where image quality allows.",
+            "Separate ordinary neo-era Wooper, English-language Wooper cards, later Wooper promos, and generic CoroCoro promo listings unless source evidence proves this exact row.",
+            "Request front/back seller photos and issue-insert or provenance evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "ordinary Wooper equivalence",
+            "English Wooper equivalence",
+            "later Wooper promo equivalence",
+            "other CoroCoro promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Wooper: a little Johto creature tucked into CoroCoro",
+        "why_it_matters": "This is not a trophy-card roar. It is something quieter and, in its own way, better for the history layer: a new Johto Pokemon arriving through the magazine pipeline while Gold and Silver were still fresh on Japanese shelves. Wooper feels like a small creature, but the assembly around it is large: CoroCoro's kid-facing distribution, Sugimori's official visual language, the Gold/Silver symbol, and the physical pleasure of a glossy bonus card. It is Pokemon turning the page from Kanto to Johto in a child's hands.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c8"
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue contents",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic January 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Wooper_%28CoroCoro_promo%29",
+          "title": "Bulbapedia: Wooper (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokumon.com/card/wooper-corocoro-2000-unnumbered/",
+          "title": "Pokumon: Wooper (CoroCoro 2000) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://pokeboon.com/corocoro_wooper_promo/",
+          "title": "PokeBoon: Wooper Promo: CoroCoro Comic January 2000 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.pokemon.co.jp/game/other/gbc-gs/",
+          "title": "Pokemon official site: Pocket Monsters Gold/Silver",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999:146",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999",
+        "row_id": "jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999:146",
+        "name_en": "Wooper",
+        "name_ja": "ウパー",
+        "source_index": "146",
+        "release_date": "1999-12-15"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "claims": [
+        {
+          "id": "k1",
+          "field": "card.identity",
+          "text": "The local catalog identifies row 146 as Wooper, a Water-type Pokemon row in the CoroCoro Comic January 2000 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "k2",
+          "field": "card.identity",
+          "text": "Bulbapedia's Wooper CoroCoro promo page lists the Japanese name as ウパー Upah, the card as a Water-type Basic Pokemon card, and the HP as 40.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k3",
+          "field": "artist.credit",
+          "text": "Bulbapedia, Pokumon, and PokeBoon credit the illustration to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "k4",
+          "field": "history.lineage",
+          "text": "The official Pokemon site places Gold and Silver's Japanese release on November 21, 1999, making this December 15, 1999 Wooper insert an early Johto-era magazine card.",
+          "sources": [
+            "s1",
+            "s6"
+          ],
+          "tier": "A",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k1"
+          ]
+        },
+        {
+          "id": "k5",
+          "field": "card.art",
+          "text": "The card's art significance is its clean Sugimori creature read: a Johto species carried into the TCG promo stream in the same official visual grammar collectors already knew from the games and guide material.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "k3",
+            "k4"
+          ]
+        },
+        {
+          "id": "k6",
+          "field": "identification.special_instructions",
+          "text": "The card should be checked as the CoroCoro January 2000 issue bonus Wooper with the Gold/Silver symbol and bonus-card border text, not merely as any Japanese Wooper.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_january_2000_wooper_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer, seller, listing, scan, or agent memory identifies a Japanese Wooper as CoroCoro, January 2000, glossy, Ken Sugimori, Gold/Silver symbol, unnumbered promo, or source index 146.",
+          "summary": "Match row 146 by Wooper identity plus CoroCoro January 2000 glossy insert rails; do not let the name Wooper alone collapse the variant.",
+          "steps": [
+            "Confirm the card name Wooper / ウパー and the unnumbered Japanese promo context.",
+            "Confirm CoroCoro Comic January 2000 issue insert / December 15, 1999 route from listing text, provenance, or seller evidence.",
+            "Confirm Ken Sugimori credit when a scan is legible or a reference row is cited.",
+            "Look for glossy magazine-insert stock and the Gold/Silver promotional symbol when photos allow.",
+            "Look for bottom-border CoroCoro Comic January issue bonus-card text when photo quality allows.",
+            "Separate later Wooper cards, English Wooper cards, generic Neo-era Wooper, and other CoroCoro promos unless evidence supports this exact row.",
+            "Escalate to seller evidence for possession, authenticity, condition, and surface quality; the catalog row is not enough."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "later Wooper equivalence",
+            "English Wooper equivalence",
+            "generic Neo Wooper equivalence",
+            "other CoroCoro promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Wooper: Johto in miniature",
+        "why_it_matters": "Wooper is exactly the kind of card a collector can miss if the catalog only worships trophies. It is a little blue creature from the moment the Pokemon world doubled: Gold and Silver had just opened Johto, and CoroCoro put one of those new faces directly into the magazine stack. The appeal is not drama. It is intimacy: Sugimori's simple character language, glossy stock, a Gold/Silver symbol, and the feeling that a new region had slipped into your binder before the rest of the world caught up.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "k1",
+          "k2",
+          "k3",
+          "k4",
+          "k6"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_146_corocoro_comic_january_2000_issue_insert_december_15_1999.json",
+          "title": "Local Japanese unnumbered WotC promo release row: CoroCoro Comic January 2000 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "web",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Wooper_%28CoroCoro_promo%29",
+          "title": "Bulbapedia: Wooper (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "web",
+          "ref": "https://pokumon.com/card/wooper-corocoro-2000-unnumbered/",
+          "title": "Pokumon: Wooper (CoroCoro 2000) (Unnumbered)",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "web",
+          "ref": "https://pokeboon.com/corocoro_wooper_promo/",
+          "title": "PokeBoon: Wooper Promo: CoroCoro Comic January 2000 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "web",
+          "ref": "https://www.pokemon.co.jp/game/other/gbc-gs/",
+          "title": "Pokemon official site: Pocket Monsters Gold/Silver",
+          "retrieved": "2026-06-19",
+          "tier": "A",
+          "not_claiming": [
+            "card-specific source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth"
+          ]
+        }
+      ]
+    }
+  ]
+}

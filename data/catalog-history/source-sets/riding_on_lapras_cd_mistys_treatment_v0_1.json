@@ -1,0 +1,620 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "Riding on Lapras CD insert Misty's Treatment",
+    "release_family_id": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999",
+    "notes": [
+      "Deepens the August 21, 1999 Riding on Lapras CD insert source slice.",
+      "Covers the single modeled source-pinned row: Misty's Treatment source index 129.",
+      "Treats the object as a music / anime / card contact point: an 8cm Pikachu Records CD single carrying a Misty-Lapras trainer promo."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999",
+      "type": "release",
+      "context": {
+        "name_en": "Riding on Lapras CD insert",
+        "name_ja": "ラプラスにのって CD封入",
+        "release_family_id": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999",
+        "release_date": "1999-08-21",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Riding on Lapras CD single",
+          "Pikachu Records music route",
+          "Misty / Kasumi anime voice and card identity",
+          "Lapras text as visible card tell",
+          "Toshinao Aoki illustration",
+          "source index 129",
+          "CD bonus-card footer"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999:129",
+            "name": "Misty's Treatment",
+            "number": "129",
+            "why": "Misty's Treatment is the chase here because it turns a song single into a tiny scene: Misty, Lapras, a healing effect, the Pikachu Records symbol, and a border line that says exactly what kind of object it came from. It is a card you identify by listening to its route, not by pretending it is just another trainer.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Toshinao Aoki",
+            "row_count": 1,
+            "examples": [
+              "Misty's Treatment"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete CD packaging census",
+          "official copy count",
+          "sealed CD status"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: Riding on Lapras CD insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Treatment_(CD_promo)",
+          "title": "Bulbapedia: Misty's Treatment (CD promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete print-variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Riding_on_Lapras_(single)",
+          "title": "Bulbapedia: Riding on Lapras (single)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Toshinao_Aoki",
+          "title": "Bulbapedia: Toshinao Aoki",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local row and Bulbapedia place the Riding on Lapras CD single and Misty's Treatment insert route on August 21, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "The route is the Pikachu Records Riding on Lapras CD single, not a booster, deck, tournament prize, ordinary Gym-series Misty card, or loose anime-merch lot.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.product_count",
+          "text": "The local source slice models one source-pinned card row for this route: Misty's Treatment source index 129.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.context",
+          "text": "Bulbapedia identifies Riding on Lapras as a CD single released by Pikachu Records with catalogue number ZMDP-1026 and three tracks: Riding on Lapras, Everyone Walk Together, and Riding on Lapras original karaoke.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia lists Mayumi Iizuka, Misty's Japanese voice actor, as the performer for Riding on Lapras, making the promo route unusually direct: Misty's voice, Misty's card, and Lapras all meet in one CD package.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the card's Japanese name as カスミのてあて / Kasumi's Treatment and classifies it as an Unnumbered Promotional Trainer card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia transcribes the effect as removing up to three damage counters from one Basic Pokémon named Lapras in play; the card is also marked as not usable at official Pokémon Card tournaments.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.variant",
+          "text": "Bulbapedia says Misty's Treatment features the Pikachu Records logo in place of an expansion symbol, has the Lapras reference in blue, and carries bottom-border text reading 'Pokémon CD \"Riding on Lapras\" bonus card.'",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Misty's Treatment to Toshinao Aoki. Aoki's broader TCG profile begins with Surfing Pikachu for the 1997 JR Train Rally and includes Pokémon Tales books such as Lapras Makes a Friend and Wake Up, Lugia!, giving this Lapras CD promo a natural place in his soft, storybook-adjacent Pokémon lane.",
+          "sources": [
+            "s2",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c10",
+          "field": "release.boundary",
+          "text": "Agents should keep this CD bonus-card route separate from ordinary Misty Trainer cards, Gym Heroes or Gym Challenge Misty cards, Surfing Pikachu or JR Train Rally Aoki cards, later Lapras cards, loose CD listings without card evidence, and any listing that shows the song CD but not the specific bonus-card footer or Pikachu Records symbol.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c8",
+            "c9"
+          ]
+        },
+        {
+          "id": "c11",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Misty's Treatment plus Riding on Lapras CD route plus visible Pikachu Records / blue Lapras / bottom-border bonus-card evidence; catalog facts do not prove possession, authenticity, condition, price, sealed CD state, complete insert state, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c8",
+            "c10"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "riding_on_lapras_1999_cd_insert_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, CD lot, slab, or agent memory says Riding on Lapras, Lapras ni Notte, Pikachu Records, Misty's Treatment, Kasumi's Treatment, カスミのてあて, CD promo, source index 129, or August 21, 1999.",
+          "summary": "Confirm the CD-single route and the card-specific print tells before allowing Misty's Treatment to influence a funded want or seller response.",
+          "steps": [
+            "Record the seller's exact route language: Riding on Lapras, ラプラスにのって, Pikachu Records, CD single, CD insert, bonus card, Misty's Treatment, or generic Misty card.",
+            "Confirm the offered card is Misty's Treatment / カスミのてあて and not another Misty, Lapras, or Aoki-illustrated promo.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "Inspect the expansion-symbol area for the Pikachu Records logo rather than a set symbol or blank assumption.",
+            "Inspect the card text for the blue-highlighted Lapras reference and preserve whether the image is clear enough to read it.",
+            "Inspect the bottom border for the CD bonus-card footer: Pokémon CD \"Riding on Lapras\" bonus card.",
+            "If CD provenance is claimed, request CD, obi, case, insert tray, booklet, or package evidence separately; the card alone does not prove complete CD state.",
+            "Keep price, grade, authenticity, condition, official copy count, sealed CD status, complete CD packaging, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "sealed CD status",
+            "complete CD packaging census",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Riding on Lapras CD insert: Misty's song becomes a card",
+        "why_it_matters": "This source slice is charming because the assembly is so intimate. A Pikachu Records single gives you Misty's voice, Lapras as a song subject, and then a trainer card where Misty heals Lapras. The card is not trying to be a tournament staple; it is a little music-object souvenir that lets the anime, the CD shelf, and the TCG touch.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c8",
+          "c9",
+          "c11"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "sealed CD status",
+          "complete CD packaging census",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999:129",
+      "type": "card",
+      "context": {
+        "name_en": "Misty's Treatment",
+        "name_ja": "カスミのてあて",
+        "row_id": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999:129",
+        "release_family_id": "jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999",
+        "source_index": "129"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "why_it_matters": "Misty's Treatment matters because it behaves like a souvenir of a relationship, not a tournament card. The effect heals Lapras, the singer is Misty's Japanese voice, the illustration centers Misty, and the CD route makes the promo feel like a piece of anime-world tenderness slipping into the TCG.",
+        "identity": {
+          "name_en": "Misty's Treatment",
+          "name_ja": "カスミのてあて",
+          "number": "129",
+          "category": "Trainer",
+          "rarity_signal": "Unnumbered Promotional / no printed card number",
+          "authority_label": "fact"
+        },
+        "artist": {
+          "name": "Toshinao Aoki",
+          "why": "Aoki is exactly the right hand for this kind of card: less battle-poster, more little story. His early Pokemon work includes Surfing Pikachu, later retro-card callbacks, and Pokemon Tales books including Lapras Makes a Friend and Wake Up, Lugia!, so Misty tending Lapras belongs to a softer, narrative side of the brand.",
+          "authority_label": "fact",
+          "not_claiming": [
+            "complete artist biography",
+            "artist signature on physical card"
+          ]
+        },
+        "collector_texture": [
+          "Pikachu Records logo where a set symbol would normally live",
+          "blue Lapras text in the effect",
+          "CD bonus-card footer",
+          "Misty / Kasumi anime-song route",
+          "unplayable promotional trainer"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "price truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_129_riding_on_lapras_cd_insert_august_21_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: Riding on Lapras CD insert Misty's Treatment row",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Misty%27s_Treatment_(CD_promo)",
+          "title": "Bulbapedia: Misty's Treatment (CD promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete print-variant census"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Riding_on_Lapras_(single)",
+          "title": "Bulbapedia: Riding on Lapras (single)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "card authentication proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Toshinao_Aoki",
+          "title": "Bulbapedia: Toshinao Aoki",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "card authentication proof",
+            "seller possession",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog and Bulbapedia identify source index 129 as Misty's Treatment, Japanese カスミのてあて / Kasumi's Treatment.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia says the card was included in copies of the Riding on Lapras CD single released on August 21, 1999.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the illustration to Toshinao Aoki.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.other_work",
+          "text": "Bulbapedia's Toshinao Aoki page says his first Pokemon TCG card was Surfing Pikachu for the August 1997 JR Train Rally, that he later returned after a long absence with Crown Zenith Exeggutor, and that his non-card Pokemon work includes Pokemon Tales books such as Lapras Makes a Friend and Wake Up, Lugia!",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia transcribes the card effect as removing up to three damage counters from one Basic Pokemon named Lapras in play.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia marks the card as not usable at official Pokemon Card tournaments, so an agent should not describe it as a normal competitive trainer even though it has trainer-card text.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia's release and trivia notes name three visible tells: Pikachu Records logo in place of an expansion symbol, blue Lapras text, and bottom-border text reading 'Pokémon CD \"Riding on Lapras\" bonus card.'",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.significance",
+          "text": "The card's emotional logic is unusually coherent: a Misty card heals Lapras, the CD song is Riding on Lapras, and Mayumi Iizuka performs the title track, tying anime voice, music object, and trainer-card effect into one route.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5",
+            "c7"
+          ]
+        },
+        {
+          "id": "c9",
+          "field": "release.boundary",
+          "text": "Agents should not match by Misty, Lapras, or Aoki alone; the row requires the CD promo route and the visible Pikachu Records / blue Lapras / bottom-border bonus-card evidence.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c7"
+          ]
+        },
+        {
+          "id": "c10",
+          "field": "identification.special_instructions",
+          "text": "The catalog can make the route and visible-tell checklist legible, but it does not prove the seller owns the card, that a shown card is authentic, that the CD is complete or sealed, that condition is true, that price is fair, or that the row is spendable.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c7",
+            "c9"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "riding_on_lapras_1999_mistys_treatment_129_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A candidate card, image crop, binder page, want, seller response, or slab says Misty's Treatment, Kasumi's Treatment, カスミのてあて, Riding on Lapras, Pikachu Records, CD promo, or source index 129.",
+          "summary": "Treat the visible CD-promo tells as required legible checks before elevating a candidate beyond a loose Misty/Lapras match.",
+          "steps": [
+            "Confirm the name line reads Misty's Treatment / カスミのてあて; do not match by Misty artwork or Lapras text alone.",
+            "Confirm the card is a Trainer card and preserve the source index 129 only as catalog routing, not as a printed number.",
+            "Check for the Pikachu Records logo in the symbol area; absence, a normal set symbol, or an unreadable symbol area should lower confidence.",
+            "Check whether Lapras is highlighted in blue in the effect text; record unreadable text as missing evidence rather than treating it as pass.",
+            "Check the bottom border for the CD bonus-card sentence naming Pokemon CD \"Riding on Lapras\".",
+            "If a CD lot is offered, verify that the card itself is shown; the CD cover, obi, case, or booklet without card images is provenance evidence, not card possession proof.",
+            "If a loose card is offered, request seller-controlled front/back photos and, for sale-grade use, fresh possession proof before treating it as more than a catalog match.",
+            "Keep tournament playability, price, authenticity, condition, sealed CD state, complete insert state, and spendability separate from this identification packet."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "tournament legality beyond source note",
+            "sealed CD status",
+            "complete insert state",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Misty's Treatment 129: a soft little Lapras card with hard tells",
+        "why_it_matters": "Misty's Treatment works because the tenderness is visible and the identification is mechanical. The romance is Misty caring for Lapras; the hard rails are the Pikachu Records symbol, the blue Lapras text, the CD bonus-card footer, and the Toshinao Aoki credit. That is the catalog's best mode: let the card feel human, then give the agent enough hooks to avoid wishful matching.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c6",
+          "c7",
+          "c8",
+          "c9",
+          "c10"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "sealed CD status",
+          "complete insert state",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

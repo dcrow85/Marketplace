@@ -1,0 +1,606 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "release_family_id": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001",
+    "description": "Deepens the Pokemon Card Information Vol. 2 Bellossom insert route and its single local unnumbered-promo source row."
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001",
+      "type": "release",
+      "context": {
+        "name_en": "Pokemon Card Information Vol. 2 insert",
+        "name_ja": "ポケモンカードインフォメーション その2",
+        "release_family_id": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001",
+        "release_date": "2001-04-01",
+        "modeled_count": 1,
+        "local_source_index_span": "233-233"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "Pokemon Card Information booklet route",
+          "free participating-store distribution",
+          "Information Pack bonus-card border text part 2",
+          "Vol. 1 Dunsparce to Vol. 2 Bellossom continuity",
+          "Naoyo Kimura Neo-era softness",
+          "Bellossom dance and sound Pokedex flavor",
+          "ordinary information handout as collector memory",
+          "source index 233 as local audit handle"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001:233",
+            "name": "Bellossom",
+            "name_ja": "キレイハナ",
+            "romaji": "Kireihana",
+            "number": "233",
+            "why": "Bellossom makes the Information Pack route feel gentle rather than obscure. It is a free shop-counter insert with a bright Kimura illustration and a card text about flowers making pleasant sound when Bellossom dances. The card's charm is that the route itself is humble, but the object still feels cared for.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Naoyo Kimura",
+            "name_ja": "木村直代",
+            "row_count": 1,
+            "examples": [
+              "Bellossom",
+              "Southern Islands",
+              "Neo Premium File 2 Eevee / Espeon / Umbreon",
+              "Legendary beasts connected art"
+            ],
+            "why": "Kimura is one of the artists who made Pokemon feel like printed storybook space, not just battle data. Bellossom fits that lane: a floral, dancing Pokemon carried by a plain information packet, made collectible by a soft image and a very specific paper route.",
+            "authority_label": "fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority",
+              "seller possession"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete sealed-packet census",
+          "official print run",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001.json",
+          "title": "Local Japanese unnumbered WotC catalog: Pokemon Card Information Vol. 2 insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Bellossom_(Information_Pack_promo)",
+          "title": "Bulbapedia: Bellossom (Information Pack promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_(TCG)/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards (TCG)/1996-2005",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Naoyo_Kimura",
+          "title": "Bulbapedia: Naoyo Kimura",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "official biographical source",
+            "seller possession",
+            "authenticity"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "release.date",
+          "text": "The local catalog and Bulbapedia align on April 1, 2001 for Pokemon Card Information Vol. 2 Bellossom distribution.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "release.distribution",
+          "text": "Bulbapedia states the Bellossom promo was available in Japan in the second volume of Pokemon Card Information and distributed for free at participating stores from April 1, 2001.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "release.product_count",
+          "text": "The local release family models one row: Bellossom source index 233, with the promotion note Pokemon Card Information Vol. 2 insert.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "release.context",
+          "text": "Bulbapedia's 2001 unnumbered-promo table places Bellossom after the Vol. 1 Dunsparce route and before Vol. 3 Pryce's Lapras, making it the middle step of the early Information Pack sequence modeled in this queue.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s3"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "artist.impact",
+          "text": "Bulbapedia identifies Naoyo Kimura / 木村直代 as a Pokemon TCG illustrator notable for Neo Series and Southern Islands work, as well as Pokemon Tales picture books and later Pokemon x Van Gogh collaboration artwork.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s4"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "history.significance",
+          "text": "Pokemon Card Information Vol. 2 matters because the Information Pack route turns an ordinary store handout into a preserved collector object; Bellossom's dance-and-flower identity makes that route feel especially tender.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g3",
+            "g4",
+            "g5"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "identification.special_instructions",
+          "text": "This release dossier carries a special identification packet for Pokemon Card Information Vol. 2 Bellossom source index 233.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Pokemon Card Information Vol. 2 — Bellossom as the soft middle of the shop-counter sequence",
+        "why_it_matters": "Vol. 2 gives the Information Pack route its gentlest face. Dunsparce made the route charmingly odd; Bellossom makes it floral, rhythmic, and quietly collectible. A free participating-store handout becomes a small paper vessel for Naoyo Kimura's Neo-era softness, a Bellossom dance, and the strange fact that even an information sheet could carry real TCG memory.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "official emotional history",
+          "price truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete sealed-packet state"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_information_vol2_bellossom_route_boundary_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this route as Pokemon Card Information Vol. 2 Bellossom source index 233, distributed through the second information volume, not as a generic Bellossom or any other Information Pack promo.",
+          "trigger": "A listing, want, scan, seller note, or agent memory says Bellossom, キレイハナ, Kireihana, Pokemon Card Information Vol. 2, ポケモンカードインフォメーション その2, Information Pack, bonus card part 2, Naoyo Kimura, Floral Spin, or source index 233.",
+          "steps": [
+            "Anchor the route to Pokemon Card Information Vol. 2 / ポケモンカードインフォメーション その2 and April 1, 2001.",
+            "Confirm the candidate is Bellossom / キレイハナ / Kireihana, not another Grass-type unnumbered promo.",
+            "Use source index 233 as the local catalog audit handle.",
+            "Preserve the distribution route: second volume of Pokemon Card Information, free at participating stores.",
+            "Look for the bottom-border text clue: Information Pack bonus card part 2.",
+            "Use Naoyo Kimura / 木村直代 as the expected illustrator credit.",
+            "Separate this release from Pokemon Card Information Vol. 1 Dunsparce, Vol. 3 Pryce's Lapras, Vol. 4 Ponyta, and other Information Pack rows.",
+            "Separate this row from Neo Genesis Bellossom, later Bellossom cards, TCG Pocket reuse of the illustration, and generic Bellossom listings.",
+            "If a seller claims an unopened information packet, ask for packet-front, packet-back, insert visibility, and card-closeup evidence because packet route and card state are separate claims.",
+            "Before any funded trade, require seller-controlled evidence for the exact physical card or sealed packet being claimed."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001.json"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Bellossom_(Information_Pack_promo)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Naoyo_Kimura"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete sealed-packet state",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001:233",
+      "type": "card",
+      "context": {
+        "name_en": "Bellossom",
+        "name_ja": "キレイハナ",
+        "romaji": "Kireihana",
+        "release_name": "Pokemon Card Information Vol. 2 insert",
+        "release_family_id": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001",
+        "row_id": "jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001:233",
+        "catalog_row_id": "233",
+        "source_index": "233",
+        "pokedex_no": "182"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "artist": "Naoyo Kimura",
+        "artist_ja": "木村直代",
+        "rarity_signal": "unnumbered non-holo Information Pack promo context",
+        "number": "source index 233",
+        "assembly_themes": [
+          "Bellossom as floral Johto evolution",
+          "Naoyo Kimura Neo-era softness",
+          "Information Pack bonus card part 2 border text",
+          "free participating-store promo",
+          "Floral Spin / フローラルスピン",
+          "Pokemon Silver Pokedex text",
+          "TCG Pocket illustration reuse context",
+          "Vol. 2 route between Dunsparce and Pryce's Lapras"
+        ],
+        "signals": [
+          "Bellossom",
+          "キレイハナ",
+          "Kireihana",
+          "LV.38",
+          "No. 182",
+          "Grass",
+          "Stage 2",
+          "Gloom",
+          "HP 80",
+          "Floral Spin",
+          "フローラルスピン",
+          "Naoyo Kimura",
+          "木村直代",
+          "Information Pack bonus card part 2",
+          "Pokemon Card Information Vol. 2",
+          "source index 233"
+        ],
+        "collector_texture_note": "Bellossom is the Information Pack route at its softest: a non-holo shop-counter card whose whole identity is flowers, dancing, pleasant sound, and a Kimura illustration worth pausing over.",
+        "assembly_note": "Bellossom is not a loud chase; it is a gentle proof that the TCG's memory lived in free paper packets too. The route, artist, border text, and Silver Pokedex flavor all matter.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete sealed-packet state"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001.json#row:jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001:233",
+          "title": "Local Japanese unnumbered WotC catalog row: Bellossom source index 233",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Bellossom_(Information_Pack_promo)",
+          "title": "Bulbapedia: Bellossom (Information Pack promo)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Naoyo_Kimura",
+          "title": "Bulbapedia: Naoyo Kimura",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "complete artist biography",
+            "official biographical source",
+            "seller possession",
+            "authenticity"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Bellossom_(Space-Time_Smackdown_3)",
+          "title": "Bulbapedia: Bellossom (Space-Time Smackdown 3)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "that TCG Pocket creates the 2001 promo route"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "g1",
+          "field": "card.identity",
+          "text": "The local catalog anchors Bellossom as source index 233 in the Pokemon Card Information Vol. 2 unnumbered-promo source row.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        },
+        {
+          "id": "g2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies the card as Bellossom / キレイハナ Kireihana, a Grass-type Stage 2 Pokemon card evolving from Gloom, with HP 80 and No. 182.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia lists Floral Spin / フローラルスピン as the card's attack, with Fire weakness and two retreat cost.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g4",
+          "field": "artist.credit",
+          "text": "Bulbapedia identifies Naoyo Kimura / 木村直代 as the illustrator for the Bellossom Information Pack promo.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2",
+            "s3"
+          ]
+        },
+        {
+          "id": "g5",
+          "field": "history.variant",
+          "text": "Bulbapedia records the bottom-border text as Information Pack bonus card part 2, making the route itself a visible card-detail clue.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g6",
+          "field": "history.lineage",
+          "text": "Bulbapedia states the card's Pokedex entry comes from Pokemon Silver; the entry describes Bellossom living in southern lands and making pleasant sounds when its petals touch while dancing.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s2"
+          ]
+        },
+        {
+          "id": "g7",
+          "field": "artist.impact",
+          "text": "Naoyo Kimura's broader work includes Neo Series cards, Southern Islands, Pokemon Tales picture books, and later Pokemon x Van Gogh collaboration artwork, which makes Bellossom part of a much larger printed-storybook visual lane.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s3"
+          ]
+        },
+        {
+          "id": "g8",
+          "field": "history.variant",
+          "text": "Bulbapedia's TCG Pocket Bellossom page notes that a later TCG Pocket illustration reused artwork first featured on the Japan-only Bellossom Information Pack promo; this is a later reuse signal, not original-route proof.",
+          "authority_label": "fact",
+          "tier": "B",
+          "sources": [
+            "s4"
+          ],
+          "not_claiming": [
+            "that TCG Pocket creates the original 2001 route"
+          ]
+        },
+        {
+          "id": "g9",
+          "field": "history.significance",
+          "text": "Bellossom matters here because its softness fits the route: a free information-packet promo, a Kimura floral illustration, and a Pokedex text about petal music make a small paper handout feel like a kept memory.",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "g1",
+            "g2",
+            "g4",
+            "g5",
+            "g6",
+            "g7",
+            "g8"
+          ],
+          "tier": "B",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ]
+        },
+        {
+          "id": "g10",
+          "field": "identification.special_instructions",
+          "text": "This card dossier carries a special identification packet for Pokemon Card Information Vol. 2 Bellossom source index 233.",
+          "authority_label": "local_catalog_fact",
+          "tier": "B",
+          "sources": [
+            "s1"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Bellossom — source index 233, the little flower dance in the packet",
+        "why_it_matters": "Bellossom is the kind of card that makes the catalog feel alive. It is not trying to roar. It is a free store-packet promo illustrated by Naoyo Kimura, with Floral Spin, Silver-era petal music, and border text that tells you exactly how it entered the world. Later reuse of the image only underlines what collectors already feel: this quiet 2001 handout carried an image good enough to keep traveling.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7",
+          "g8",
+          "g9",
+          "g10"
+        ],
+        "not_claiming": [
+          "complete deep history",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity",
+          "seller possession",
+          "complete sealed-packet state"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "pokemon_card_information_vol2_bellossom_233_checks_v0.1",
+          "authority_label": "legible",
+          "summary": "Treat this as Pokemon Card Information Vol. 2 Bellossom only when Bellossom identity, source index 233, Information Pack route, part-2 border text, and Naoyo Kimura credit line up.",
+          "trigger": "A listing, scan, want, seller note, or agent memory says Bellossom, キレイハナ, Kireihana, Pokemon Card Information Vol. 2, Information Pack, bonus card part 2, Naoyo Kimura, LV.38, HP 80, Floral Spin, TCG Pocket reuse, or source index 233.",
+          "steps": [
+            "Confirm the card is Bellossom / キレイハナ / Kireihana, LV.38, Grass type, Stage 2, evolves from Gloom, HP 80, No. 182.",
+            "Confirm the Pokemon Card Information Vol. 2 / Information Pack route and source index 233 in this local unnumbered-promo catalog.",
+            "Look for the bottom-border text clue: Information Pack bonus card part 2.",
+            "Use Naoyo Kimura / 木村直代 as the expected illustrator.",
+            "Use Floral Spin / フローラルスピン as a row-detail clue.",
+            "Use Fire weakness and two retreat cost as secondary text-layout checks when seller photos are sharp.",
+            "Separate this row from Pokemon Card Information Vol. 1 Dunsparce, Vol. 3 Pryce's Lapras, Vol. 4 Ponyta, Neo Genesis Bellossom, later Bellossom cards, and TCG Pocket cards reusing the illustration.",
+            "If the listing is for an unopened information packet, require both packet evidence and card-level visibility or disclosure; sealed-route and card-state claims are separate.",
+            "Keep seller possession, authenticity, condition, price, complete packet state, official print run, and spendability outside the catalog row until separate evidence supports them."
+          ],
+          "source_refs": [
+            {
+              "source": "local_catalog",
+              "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001.json#row:jp_promo_unnumbered_wotc_233_pok_mon_card_information_vol_2_insert_april_1_2001:233"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Bellossom_(Information_Pack_promo)"
+            },
+            {
+              "source": "Bulbapedia",
+              "ref": "https://bulbapedia.bulbagarden.net/wiki/Naoyo_Kimura"
+            }
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete sealed-packet state",
+            "official print run",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

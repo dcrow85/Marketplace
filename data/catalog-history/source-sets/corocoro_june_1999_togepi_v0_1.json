@@ -1,0 +1,557 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for the CoroCoro Comic June 1999 issue insert Togepi promo, emphasizing CoroCoro magazine distribution, Togepi as soft Johto-forward character gravity, Ken Sugimori source-reference art credit, Japanese Original Series layout versus English Neo-era/Wizards Promo memories, and route-first identification rails.",
+    "in_scope": [
+      "CoroCoro Comic June 1999 issue insert release/source-slice dossier",
+      "Togepi unnumbered promotional row 093",
+      "CoroCoro magazine insert route",
+      "Togepi early-Johto / anime-era collector texture",
+      "Ken Sugimori source-reference art context",
+      "Japanese Original Series / English Wizards Promo / Neo layout boundary",
+      "special identification instructions"
+    ],
+    "not_claiming": [
+      "complete CoroCoro June 1999 issue archive",
+      "complete Togepi print census",
+      "official copy count",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999",
+        "name_en": "CoroCoro Comic June 1999 issue insert",
+        "name_ja": "月刊コロコロコミック1999年6月号付録",
+        "release_date": "1999-05-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro as monthly preview pipe",
+          "single-card magazine insert",
+          "Togepi as pre-Johto softness",
+          "Sugimori character grammar",
+          "Japanese Original Series layout boundary",
+          "English Wizards / Neo comparison trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999:093",
+            "name": "Togepi",
+            "why": "The whole source slice is one Togepi: a CoroCoro insert where a gentle new-generation mascot turns magazine distribution into a soft bridge toward Johto.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "complete Togepi print census"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Ken Sugimori",
+            "row_count": 1,
+            "examples": [
+              "Togepi"
+            ],
+            "why": "Bulbapedia and Pokumon references credit this Togepi promo artwork to Ken Sugimori, keeping the early official character-art grammar attached to the magazine route.",
+            "authority_label": "local_catalog_fact_and_judged_texture",
+            "not_claiming": [
+              "complete artist biography",
+              "seller-card proof",
+              "all Togepi print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Togepi print census",
+          "official copy count",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "approved image display rights",
+          "spendability"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic June 1999 issue insert as a one-row unnumbered promotional source group containing Togepi at source index 093.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.date",
+          "text": "The local release row records May 15, 1999 as the date attached to the CoroCoro Comic June 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.vehicle",
+          "text": "The local row and Bulbapedia raw source identify the distribution note as a CoroCoro Comic June 1999 issue insert, not a booster, deck, Fan Club route, or standard set release.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.identity",
+          "text": "The source row names Togepi as the card in this one-row CoroCoro Comic June 1999 issue insert source group.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit the Togepi promo artwork to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia's Togepi promo reference distinguishes the Japanese print's Original Series layout from the English Wizards Promo / Neo-era presentation, so layout and language are identity rails, not decoration.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Togepi matters here because CoroCoro could use a small, soft, new-generation character to make the TCG feel like it was already leaning toward the next world before the English Neo memory took over.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve CoroCoro Comic June 1999 issue insert route, May 15 1999 date, source index 093, Togepi identity, Ken Sugimori source-reference credit, Japanese Original Series layout, and non-equivalence with English Wizards Promo 30, Neo Genesis, ANA, and other Togepi memories before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "CoroCoro June 1999 Togepi: a small egg-shaped bridge to Johto",
+        "why_it_matters": "This Togepi is quiet in the way important early promos often are. It is not a trophy, not a Charizard, not a tournament receipt. It is CoroCoro handing children a soft little future: Togepi, Sugimori's readable character grammar, and the sense that the card game was already stretching beyond the first 151. The exact route matters because the English Wizards Promo and Neo memories are loud. The Japanese CoroCoro insert has its own assembly: May 1999 magazine timing, source index 093, Original Series layout, and a creature whose gentleness helped the next era arrive without feeling like a rupture.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Togepi print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: CoroCoro Comic June 1999 issue insert",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Togepi_(Wizards_Promo_30)",
+          "title": "Bulbapedia: Togepi (Wizards Promo 30)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to English Wizards Promo 30"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_june_1999_togepi_original_layout_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Togepi, CoroCoro Togepi, CoroCoro Comic June 1999, May 15 1999, Wizards Promo 30, Neo Genesis Togepi, ANA Togepi, Japanese Original Series layout, or unnumbered promo row 093.",
+          "summary": "Identify this Togepi by source index 093, CoroCoro June 1999 route, and Japanese Original Series layout before relying on Togepi name or English Neo/Wizards memory.",
+          "steps": [
+            "Preserve the exact local route: CoroCoro Comic June 1999 issue insert, dated May 15, 1999.",
+            "Preserve source index 093 and Togepi identity together.",
+            "Check Japanese Original Series layout and Japanese-language card face before comparing to English Wizards Promo 30 or Neo-era presentation.",
+            "Preserve Ken Sugimori as the source-reference artist credit, but do not use artist alone as a match.",
+            "Separate this row from ANA Togepi, Neo Genesis / Gold Silver to a New World Togepi, English Wizards Promo 30, and later Togepi rows unless source evidence proves equivalence.",
+            "Ask for seller front/back photos and any magazine-insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete CoroCoro issue archive",
+            "complete Togepi print census",
+            "English Wizards Promo 30 equivalence",
+            "ANA Togepi equivalence",
+            "Neo Genesis equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999:093",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999:093",
+        "name_en": "Togepi",
+        "name_ja": "トゲピー",
+        "romaji": "Togepy",
+        "release_family_id": "jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999",
+        "catalog_row_id": "093"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "093",
+        "rarity_signal": "CoroCoro Comic June 1999 issue insert / unnumbered promo",
+        "artist": "Ken Sugimori",
+        "assembly_themes": [
+          "magazine-insert route",
+          "soft Johto preview energy",
+          "Sugimori official character grammar",
+          "Original Series layout",
+          "English Neo/Wizards trap"
+        ],
+        "collector_texture_note": "This Togepi is a soft hinge card: a small character whose cultural weight comes from timing and route rather than power. It feels like CoroCoro letting the next era peek through the page.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "complete Togepi print census"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Togepi, source index 093, within the CoroCoro Comic June 1999 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "The Japanese name トゲピー is commonly romanized as Togepy; use it as a Japanese-language search aid, not as sufficient row identity.",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is CoroCoro Comic June 1999 issue insert / unnumbered promo, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and Pokumon references credit the promo Togepi artwork to Ken Sugimori.",
+          "sources": [
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.variant",
+          "text": "Bulbapedia's Togepi promo reference distinguishes the Japanese print's Original Series layout from the English Wizards Promo / Neo-era memory.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "Togepi 093 matters because it is a small, gentle character carrying next-era attention through CoroCoro before an agent can safely collapse the card into English Neo or Wizards Promo memory.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "For this Togepi, agents should preserve source index 093, CoroCoro Comic June 1999 issue route, May 15 1999 date, Ken Sugimori source-reference credit, Original Series layout, and non-equivalence with English Wizards Promo 30, ANA, and Neo-era Togepi routes before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Togepi 093: the soft future in the magazine",
+        "why_it_matters": "Togepi is not loud, and that is the point. In this row it arrives through CoroCoro as a little egg-shaped promise that Pokémon was about to get wider, softer, and stranger. Sugimori's character clarity helps it feel official even before the English Neo-era memory gets loud. The agent has to slow down here: source index 093, Japanese CoroCoro June 1999 route, Original Series layout, and the Japanese face all matter before the familiar word Togepi starts pulling the card into the wrong drawer.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "complete CoroCoro issue archive",
+          "complete Togepi print census",
+          "official copy count",
+          "price truth",
+          "physical-card authenticity",
+          "condition truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999.json#row:jp_promo_unnumbered_wotc_093_corocoro_comic_june_1999_issue_insert_may_15_1999:093",
+          "title": "Local Japanese unnumbered promo catalog row: Togepi 093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete CoroCoro issue archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 row 093",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "database_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Togepi_(Wizards_Promo_30)",
+          "title": "Bulbapedia: Togepi (Wizards Promo 30)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "equivalence to English Wizards Promo 30"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "database_reference",
+          "ref": "https://pokeboon.com/category/ptcg-promo/first-design/",
+          "title": "Pokumon: First design promo card visual reference page",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "togepi_093_original_series_route_first_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Togepi, Togepy, トゲピー, CoroCoro Togepi, CoroCoro Comic June 1999, May 15 1999, Wizards Promo 30, Neo Genesis Togepi, ANA Togepi, Original Series layout, or Japanese unnumbered promo row 093.",
+          "summary": "Match this Togepi by source index 093, CoroCoro June 1999 route, and Japanese Original Series layout before trusting character name or English Neo/Wizards memory.",
+          "steps": [
+            "Start with route: CoroCoro Comic June 1999 issue insert, dated May 15, 1999.",
+            "Preserve row identity as Japanese unnumbered promotional source index 093.",
+            "Use トゲピー / Togepy as Japanese-language search help, not as sufficient identity.",
+            "Check Japanese Original Series layout before comparing to English Wizards Promo 30 or Neo-era rows.",
+            "Separate ANA Togepi, English Wizards Promo 30, Neo Genesis / Gold Silver to a New World Togepi, and later Togepi rows unless source evidence proves equivalence.",
+            "Request seller front/back photos and magazine-insert provenance separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "complete CoroCoro issue archive",
+            "complete Togepi print census",
+            "English Wizards Promo 30 equivalence",
+            "ANA Togepi equivalence",
+            "Neo Genesis equivalence",
+            "spendability"
+          ]
+        }
+      ]
+    }
+  ]
+}

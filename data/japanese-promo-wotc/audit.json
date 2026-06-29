@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-06-18T20:00:24Z",
+  "not_claiming": [
+    "complete Japanese promo universe",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "passed": true,
+  "release_audits": [
+    {
+      "expected_row_count": 47,
+      "malformed_special_identification_instructions": [],
+      "missing_source_contacts": [],
+      "missing_special_identification_instructions": [],
+      "passed": true,
+      "path": "data/japanese-promo-wotc/releases/jp_promo_p_promotional_20010701_20021231.json",
+      "release_family_id": "jp_promo_p_promotional_20010701_20021231",
+      "row_count": 47,
+      "row_count_matches_expected": true
+    },
+    {
+      "expected_row_count": 14,
+      "malformed_special_identification_instructions": [],
+      "missing_source_contacts": [],
+      "missing_special_identification_instructions": [],
+      "passed": true,
+      "path": "data/japanese-promo-wotc/releases/jp_promo_adv_p_pre_wotc_edge_200301_200305.json",
+      "release_family_id": "jp_promo_adv_p_pre_wotc_edge_200301_200305",
+      "row_count": 14,
+      "row_count_matches_expected": true
+    }
+  ],
+  "release_count": 2,
+  "schema": "marketplace.japanese_promo_wotc_audit.v0.1",
+  "source_payload_without_image_rows": 61,
+  "special_identification_instruction_rows": 61,
+  "total_rows": 61
+}

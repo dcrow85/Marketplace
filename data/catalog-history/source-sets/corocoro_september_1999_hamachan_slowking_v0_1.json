@@ -1,0 +1,623 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Hama-chan's Slowking, the CoroCoro Comic September 1999 issue insert released August 15, 1999, emphasizing The Power of One tie-in, Masatoshi Hamada's voice/illustration role, spoof-card text, Gold/Silver promotional symbol, square Evolution-box oddity, and traps against ordinary Slowking, Southern Islands, Lawrence III, Ancient Mew, and generic CoroCoro promo memories.",
+    "in_scope": [
+      "CoroCoro Comic September 1999 issue insert release dossier",
+      "Hama-chan's Slowking unnumbered promotional row 128",
+      "The Power of One tie-in context",
+      "Masatoshi Hamada voice/illustrator context",
+      "spoof-card and bonus-card identification rails"
+    ],
+    "not_claiming": [
+      "complete CoroCoro issue contents",
+      "official print run",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999",
+        "name_en": "CoroCoro Comic September 1999 issue insert (August 15, 1999)",
+        "release_date": "1999-08-15",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro Comic magazine insert",
+          "The Power of One media tie-in",
+          "celebrity voice/illustrator crossover",
+          "spoof-card Japanese promo culture",
+          "Gold/Silver promotional symbol",
+          "CoroCoro glossy identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999:128",
+            "name": "Hama-chan's Slowking",
+            "why": "This is a chase because it is a movie voice, a comedian's drawing, a CoroCoro insert, and a card joke all fused into one early Japanese-only promo.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Masatoshi Hamada",
+            "row_count": 1,
+            "examples": [
+              "Hama-chan's Slowking"
+            ],
+            "why": "Bulbapedia says Hamada voiced Slowking in The Power of One and also illustrated this card; the art credit is inseparable from the gag, because the card is literally Hama-chan's Slowking.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c4",
+              "c5"
+            ],
+            "not_claiming": [
+              "complete entertainer biography",
+              "seller-card proof",
+              "authentication",
+              "other Hamada artwork catalog"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete CoroCoro issue archive",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the CoroCoro Comic September 1999 issue insert as a one-row unnumbered promotional source group containing Hama-chan's Slowking at source index 128.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.distribution",
+          "text": "Bulbapedia says Hama-chan's Slowking was available as an unnumbered promotional insert in the September 1999 issue of CoroCoro Comic, released on August 15, 1999.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.context",
+          "text": "Pokumon and PokeBoon both frame the row as a September 1999 CoroCoro magazine promo, and PokeBoon tags it as movie / The Power of One related.",
+          "sources": [
+            "s4",
+            "s5"
+          ],
+          "tier": "C",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2"
+          ]
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits the illustration to Masatoshi Hamada.",
+          "sources": [
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia says Hama-chan is Masatoshi Hamada's nickname, that Hamada voiced Slowking in The Power of One, and that he also provided the card's illustration.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.significance",
+          "text": "The card matters because it captures a very Japanese early-Pokemon media crossing: comedian, film voice role, magazine insert, and spoof-card mechanics all land on one physical promo.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "Agents should preserve Hama-chan's Slowking name, CoroCoro September 1999 insert route, August 15 1999 release date, Masatoshi Hamada illustrator/voice context, spoof-card attack text, Gold/Silver symbol, and bonus-card border text before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "corocoro_september_1999_hamachan_slowking_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent memory says Hama-chan's Slowking, Hama-chan, Hamada, Masatoshi Hamada, Slowking, CoroCoro September 1999, August 15 1999, The Power of One, Lugia movie, Gold/Silver symbol, spoof card, glossy CoroCoro, Lawrence III, Ancient Mew, Southern Islands, or ordinary Slowking.",
+          "summary": "Identify Hama-chan's Slowking by CoroCoro September 1999 insert route, Hamada voice/illustrator context, and spoof-card text before trusting ordinary Slowking or movie-promo memory.",
+          "steps": [
+            "Confirm the release route is CoroCoro Comic September 1999 issue insert, released August 15, 1999.",
+            "Confirm the card is Hama-chan's Slowking / ハマちゃんのヤドキング, not ordinary Slowking or a regular expansion Slowking.",
+            "Preserve Masatoshi Hamada as both Hama-chan and the card's credited illustrator; keep the The Power of One Slowking voice-role context legible.",
+            "Check for spoof-card attack requirements such as mumbling phrases before attacks.",
+            "Check for Gold/Silver promotional symbol and bottom-border bonus-card text where scan quality allows.",
+            "Separate Lawrence III, Ancient Mew, movie birds, Southern Islands, and generic glossy CoroCoro promos unless source evidence proves this exact row.",
+            "Request seller front/back photos and gloss/surface/issue-insert evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "ordinary Slowking equivalence",
+            "Lawrence III equivalence",
+            "Ancient Mew equivalence",
+            "Southern Islands equivalence",
+            "other CoroCoro promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Hama-chan's Slowking: the joke that made it onto cardboard",
+        "why_it_matters": "This is one of those cards that proves the catalog cannot only track monsters and numbers. Hama-chan's Slowking is Pokemon as media ecology: CoroCoro mailstream, movie tie-in, celebrity voice role, comedian-drawn art, and attacks that make the player mumble lines before using them. It is funny, but not disposable. The joke is the provenance. The card remembers how wide Pokemon had become by 1999.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official print run",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "complete CoroCoro issue archive",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999.json",
+          "title": "Local Japanese unnumbered promo catalog: Hama-chan's Slowking row 128",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005 row 128",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hama-chan%27s_Slowking_(CoroCoro_promo)",
+          "title": "Bulbapedia: Hama-chan's Slowking (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_reference",
+          "ref": "https://pokumon.com/card/hama-chans-slowking-corocoro-1999-unnumbered/",
+          "title": "Pokumon: Hama-chan's Slowking CoroCoro 1999",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_reference",
+          "ref": "https://pokeboon.com/corocoro_hama-chan-slowking_promo/",
+          "title": "PokeBoon: Hama-chan's Slowking Promo, CoroCoro Comic September 1999 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Masatoshi_Hamada",
+          "title": "Bulbapedia: Category, Illus. by Masatoshi Hamada",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999:128",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999",
+        "row_id": "jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999:128",
+        "name_en": "Hama-chan's Slowking",
+        "name_ja": "ハマちゃんのヤドキング",
+        "romaji": "Hama-chan no Yadoking",
+        "source_index": "128"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "CoroCoro September 1999 insert",
+          "The Power of One Slowking voice role",
+          "Masatoshi Hamada illustration",
+          "spoof-card attack requirements",
+          "Gold/Silver promotional symbol",
+          "ordinary Slowking identity trap"
+        ],
+        "artist": "Masatoshi Hamada",
+        "collector_texture_note": "Hama-chan's Slowking is not merely a Slowking promo; its identity rests on Hama-chan/Masatoshi Hamada, CoroCoro September 1999, and the joke mechanics printed on the card.",
+        "signals": [
+          "128",
+          "Hama-chan's Slowking",
+          "ハマちゃんのヤドキング",
+          "Masatoshi Hamada",
+          "CoroCoro September 1999",
+          "The Power of One",
+          "Gold/Silver symbol",
+          "spoof card"
+        ],
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "official print run"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors this row as Hama-chan's Slowking, source index 128, within the CoroCoro Comic September 1999 issue insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia gives the Japanese name as ハマちゃんのヤドキング, Hama-chan's Yadoking.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.rarity",
+          "text": "The useful rarity/format signal for this row is unnumbered promotional CoroCoro Comic September 1999 issue insert, not a standard set rarity.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia credits Hama-chan's Slowking to Masatoshi Hamada, and its Masatoshi Hamada illustrator category contains only this card.",
+          "sources": [
+            "s3",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.play_or_collecting_context",
+          "text": "The card's attacks require the player to mumble phrases before using them, which makes the joke part of the game text rather than only the illustration.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia notes that the card has the Gold, Silver, to a New World symbol and bottom-border text identifying it as a CoroCoro Comic September issue bonus card.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "Hama-chan's Slowking matters because the card makes Hamada's movie voice performance, his drawing, and CoroCoro's promo machinery visible in a single object.",
+          "sources": [
+            "s1",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c4",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "For row 128, agents should preserve Hama-chan's Slowking name, Japanese name, CoroCoro September 1999 insert route, Masatoshi Hamada credit, spoof-card text, Gold/Silver symbol, and non-equivalence with ordinary Slowking or other movie promos before accepting a match.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "hamachan_slowking_128_corocoro_movie_spoof_match_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, scan, seller story, or agent result says Hama-chan's Slowking, ハマちゃんのヤドキング, Hama-chan no Yadoking, Hamada, Masatoshi Hamada, CoroCoro September 1999, August 15 1999, The Power of One, Lugia movie, I'm in Trouble, Corkscrew Punch, Gold/Silver symbol, spoof card, ordinary Slowking, Ancient Mew, Lawrence III, Southern Islands, or source index 128.",
+          "summary": "Match Hama-chan's Slowking row 128 by CoroCoro September 1999 insert route, Hamada credit, and spoof-card mechanics before trusting Slowking or movie-promo memory.",
+          "steps": [
+            "Start with row identity: source index 128, Hama-chan's Slowking / ハマちゃんのヤドキング.",
+            "Confirm CoroCoro Comic September 1999 issue insert route and August 15, 1999 release date.",
+            "Confirm Masatoshi Hamada / Hama-chan illustrator context and The Power of One Slowking voice-role context.",
+            "Check for spoof attack text requiring the player to mumble phrases before attacks.",
+            "Check Gold/Silver promotional symbol and bottom-border CoroCoro September issue bonus-card text when scans permit.",
+            "Separate ordinary Slowking, Southern Islands, Ancient Mew, Lawrence III, movie legendary birds, and other glossy CoroCoro promos.",
+            "Request seller front/back photos and surface/gloss/issue-insert evidence separately from catalog identity."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "official print run",
+            "ordinary Slowking equivalence",
+            "Ancient Mew equivalence",
+            "Lawrence III equivalence",
+            "Southern Islands equivalence",
+            "other CoroCoro promo equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Hama-chan's Slowking: a comedian, a king, and a magazine insert",
+        "why_it_matters": "The card is wonderfully unserious in a way that makes it historically serious. Hamada voices Slowking in the movie, draws this strange little promo, and CoroCoro places it directly into kids' hands as a bonus card. The attacks make the player perform the joke. The catalog should remember that: not only who Slowking is, but how a movie, a comedian, a magazine, and the TCG briefly made one object together.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official print run",
+          "spendability"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_128_corocoro_comic_september_1999_issue_insert_august_15_1999.json",
+          "title": "Local Japanese unnumbered promo catalog row: Hama-chan's Slowking 128",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "source_wikitext",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
+          "title": "Bulbapedia: Unnumbered Promotional cards 1996-2005 row 128",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Hama-chan%27s_Slowking_(CoroCoro_promo)",
+          "title": "Bulbapedia: Hama-chan's Slowking (CoroCoro promo)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "collector_reference",
+          "ref": "https://pokumon.com/card/hama-chans-slowking-corocoro-1999-unnumbered/",
+          "title": "Pokumon: Hama-chan's Slowking CoroCoro 1999",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "collector_reference",
+          "ref": "https://pokeboon.com/corocoro_hama-chan-slowking_promo/",
+          "title": "PokeBoon: Hama-chan's Slowking Promo, CoroCoro Comic September 1999 insert",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "official source",
+            "approved image rights",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "reference_page",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Category:Illus._by_Masatoshi_Hamada",
+          "title": "Bulbapedia: Category, Illus. by Masatoshi Hamada",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "complete artist biography",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ]
+        }
+      ]
+    }
+  ]
+}

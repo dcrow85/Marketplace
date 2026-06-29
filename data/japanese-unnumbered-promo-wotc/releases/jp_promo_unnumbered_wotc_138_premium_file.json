@@ -1,0 +1,1950 @@
+{
+  "cards": [
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Bayleef appears in the unnumbered promotional source slice at row 138. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "138",
+          "Premium File",
+          "Bayleef",
+          "",
+          "Grass",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:138",
+        "provider_title": "Bayleef - Unnumbered Promotional source row 138",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:138",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "138",
+      "name_en": "Bayleef",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "138",
+        "type": "Grass",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:138",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Bayleef|promo}}|Grass|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "138",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "138",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "138",
+        "Premium File",
+        "Bayleef",
+        "Grass",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Meganium appears in the unnumbered promotional source slice at row 139. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "139",
+          "Premium File",
+          "Meganium",
+          "",
+          "Grass",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:139",
+        "provider_title": "Meganium - Unnumbered Promotional source row 139",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:139",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "139",
+      "name_en": "Meganium",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Grass"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "139",
+        "type": "Grass",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:139",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Meganium|promo}}|Grass|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "139",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "139",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "139",
+        "Premium File",
+        "Meganium",
+        "Grass",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Cyndaquil appears in the unnumbered promotional source slice at row 140. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "140",
+          "Premium File",
+          "Cyndaquil",
+          "",
+          "Fire",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:140",
+        "provider_title": "Cyndaquil - Unnumbered Promotional source row 140",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:140",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "140",
+      "name_en": "Cyndaquil",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fire"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "140",
+        "type": "Fire",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:140",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Cyndaquil|promo}}|Fire|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "140",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "140",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "140",
+        "Premium File",
+        "Cyndaquil",
+        "Fire",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Quilava appears in the unnumbered promotional source slice at row 141. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "141",
+          "Premium File",
+          "Quilava",
+          "",
+          "Fire",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:141",
+        "provider_title": "Quilava - Unnumbered Promotional source row 141",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:141",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "141",
+      "name_en": "Quilava",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fire"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "141",
+        "type": "Fire",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:141",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Quilava|promo}}|Fire|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "141",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "141",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "141",
+        "Premium File",
+        "Quilava",
+        "Fire",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Typhlosion appears in the unnumbered promotional source slice at row 142. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "142",
+          "Premium File",
+          "Typhlosion",
+          "",
+          "Fire",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:142",
+        "provider_title": "Typhlosion - Unnumbered Promotional source row 142",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:142",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "142",
+      "name_en": "Typhlosion",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Fire"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "142",
+        "type": "Fire",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:142",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Typhlosion|promo}}|Fire|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "142",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "142",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "142",
+        "Premium File",
+        "Typhlosion",
+        "Fire",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Totodile appears in the unnumbered promotional source slice at row 143. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "143",
+          "Premium File",
+          "Totodile",
+          "",
+          "Water",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:143",
+        "provider_title": "Totodile - Unnumbered Promotional source row 143",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:143",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "143",
+      "name_en": "Totodile",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "143",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:143",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Totodile|promo}}|Water|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "143",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "143",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "143",
+        "Premium File",
+        "Totodile",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Croconaw appears in the unnumbered promotional source slice at row 144. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "144",
+          "Premium File",
+          "Croconaw",
+          "",
+          "Water",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:144",
+        "provider_title": "Croconaw - Unnumbered Promotional source row 144",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:144",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "144",
+      "name_en": "Croconaw",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "144",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:144",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Croconaw|promo}}|Water|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "144",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "144",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "144",
+        "Premium File",
+        "Croconaw",
+        "Water",
+        "",
+        ""
+      ]
+    },
+    {
+      "card_number": "None",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "Bulbapedia raw wikitext Setlist row"
+        ],
+        "note": "Feraligatr appears in the unnumbered promotional source slice at row 145. Treat this as a reference identity, then ask for seller evidence before any trade.",
+        "signals": [
+          "145",
+          "Premium File",
+          "Feraligatr",
+          "",
+          "Water",
+          "",
+          "Premium File"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Primary source row does not provide illustrator for this unnumbered promo source slice.",
+        "caption": "",
+        "credit_status": "not_provided_by_primary_source",
+        "display": "",
+        "name": "",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+      },
+      "image_provenance": {
+        "allowed_use": [],
+        "display_allowed": false,
+        "exactness_basis": [
+          "Bulbapedia raw wikitext row identity only; no row-specific image URL promoted by this builder."
+        ],
+        "image_large": "",
+        "image_role": "No external reference image is promoted for this row until a row-specific source supplies one.",
+        "image_small": "",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity",
+          "image availability",
+          "image rights approval"
+        ],
+        "provider_id": "bulbapedia:Unnumbered_Promotional_cards_(TCG)/1996-2005:145",
+        "provider_title": "Feraligatr - Unnumbered Promotional source row 145",
+        "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+        "rights_status": "no_image_source_supplied",
+        "row_id": "jp_promo_unnumbered_wotc_138_premium_file:145",
+        "source": "Bulbapedia raw wikitext",
+        "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+        "status": "source_payload_without_image",
+        "verification_status": "raw_wikitext_catalog_row_without_image_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "raw wikitext hash",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "not_claiming",
+            "why": "Keeps source identity separate from physical-card truth."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "source index",
+            "surface": "primary",
+            "why": "The row has no printed set number; source order is the stable audit handle."
+          },
+          {
+            "field": "distribution note",
+            "surface": "agent",
+            "why": "Distribution context is central to identifying unnumbered promos."
+          },
+          {
+            "field": "special identification instructions",
+            "surface": "agent",
+            "why": "Unnumbered promos require source-family and variant checks, not name-only matching."
+          }
+        ]
+      },
+      "local_id": "145",
+      "name_en": "Feraligatr",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "Bulbapedia raw wikitext Setlist row supplies the English display name; no row-level Japanese name is promoted by this builder.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "convertedRetreatCost": null,
+        "dex_id": [],
+        "evolvesFrom": "",
+        "evolvesTo": [],
+        "hp": null,
+        "level": null,
+        "resistances": [],
+        "retreatCost": null,
+        "rules": [],
+        "stage": "",
+        "types": [
+          "Water"
+        ],
+        "weaknesses": []
+      },
+      "product_scope": {
+        "authority": "Japanese unnumbered promo aggregate source-slice derived from Bulbapedia raw wikitext.",
+        "boundary_note": "Models source rows 138-145 that share the same Bulbapedia promotion/distribution note. This is a source-derived campaign family, not an official product-boundary proof.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "Rows are grouped by the source promotion/distribution note; exact campaign boundaries may need a stronger source for high-stakes use.",
+        "date_precision": "mixed_source_notes",
+        "english_context_name": "Premium File",
+        "japanese_set_name": "アンナンバードプロモカード",
+        "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "product_card_count": 8,
+        "product_count_basis": "Bulbapedia raw wikitext source rows 138-145 with promotion note: Premium File",
+        "release_date": "1998-11-13",
+        "release_type": "unnumbered_promo_campaign_source_group",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 8
+      },
+      "provider_row": {
+        "adapter": "bulbapedia_raw_setlist",
+        "printed_number": "None",
+        "promotion": "Premium File",
+        "raw_title": "Unnumbered_Promotional_cards_(TCG)/1996-2005",
+        "source_expansion_name": "Premium File",
+        "source_expansion_number": "promo",
+        "source_index": "145",
+        "type": "Water",
+        "variant_note": ""
+      },
+      "rarity_source": "",
+      "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+      "row_id": "jp_promo_unnumbered_wotc_138_premium_file:145",
+      "schema": "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1",
+      "source_contacts": [
+        {
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "image rights approval"
+          ],
+          "raw_entry": "{{Setlist/nmentry|None|{{TCG ID|Premium File|Feraligatr|promo}}|Water|||Premium File}}",
+          "source": "Bulbapedia raw wikitext",
+          "source_index": "145",
+          "source_page_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+        }
+      ],
+      "source_index": "145",
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "japanese_unnumbered_promo_distribution_identity_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "official campaign boundary proof beyond the source promotion note",
+            "exact date for season-only rows"
+          ],
+          "source_refs": [
+            {
+              "source": "Bulbapedia raw wikitext",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw"
+            }
+          ],
+          "steps": [
+            "Do not rely on name alone; many rows share names or art lineage with other releases.",
+            "Compare the source family named by the catalog row, such as CoroCoro, ANA, Fan Club, Premium File, or tournament family.",
+            "Preserve variant notes such as Jumbo, English, postcard, bilingual, glossy, or trainer-prize context.",
+            "Use seller photos to confirm the physical format and distribution tell before treating the row as a candidate match.",
+            "Do not infer possession, authenticity, condition, or exact distribution date from this source-slice row."
+          ],
+          "summary": "Because these rows usually have no printed set number, identify by card name, source family, variant note, and distribution note together.",
+          "trigger": "Identifying a Japanese unnumbered promotional card from the WoC-era continuation slice."
+        }
+      ],
+      "symbol_status": {
+        "confidence": "low",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession",
+          "No Rarity proof"
+        ],
+        "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "bulbapedia_unnumbered_promo_setlist",
+        "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+      },
+      "tags": [
+        "jp_promo_unnumbered_wotc_138_premium_file",
+        "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+        "145",
+        "Premium File",
+        "Feraligatr",
+        "Water",
+        "",
+        ""
+      ]
+    }
+  ],
+  "not_claiming": [
+    "complete Japanese unnumbered promo universe",
+    "official campaign boundary proof beyond the source promotion note",
+    "approved image rights",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "spendability"
+  ],
+  "release": {
+    "boundary_note": "Source-derived campaign family grouped by the exact Bulbapedia promotion/distribution note; not an official product-boundary proof.",
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "bulbapedia_raw_promotion_group",
+    "date_precision": "mixed_source_notes",
+    "expected_row_count": 8,
+    "name_en": "Premium File",
+    "name_ja": "アンナンバードプロモカード",
+    "note": "Campaign-level split derived from the source promotion note to make unnumbered promo matching more legible for agents.",
+    "parent_release_family_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "product_card_count": 8,
+    "product_count_basis": "Bulbapedia raw source rows 138-145 with promotion note: Premium File",
+    "release_date": "1998-11-13",
+    "release_family_id": "jp_promo_unnumbered_wotc_138_premium_file",
+    "release_type": "unnumbered_promo_campaign_source_group",
+    "source_indices": [
+      "138",
+      "139",
+      "140",
+      "141",
+      "142",
+      "143",
+      "144",
+      "145"
+    ],
+    "source_indices_contiguous": true,
+    "source_slice_id": "jp_promo_unnumbered_wotc_continuation_source_slice_19981113_2003spring",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 8
+  },
+  "schema": "marketplace.japanese_unnumbered_promo_wotc_release_catalog.v0.1",
+  "sources": [
+    {
+      "bulbapedia_raw_sha256": "b1ee1214b8d4b42edc9ab3cd056fe97469643dd18418c0fbe60544b32ef77f57",
+      "bulbapedia_raw_url": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+      "bulbapedia_rows_found": 8,
+      "not_claiming": [
+        "official source",
+        "approved image rights",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "promotion": "Premium File",
+      "source": "Bulbapedia raw wikitext",
+      "source_index_end": "145",
+      "source_index_start": "138",
+      "source_indices": [
+        "138",
+        "139",
+        "140",
+        "141",
+        "142",
+        "143",
+        "144",
+        "145"
+      ]
+    }
+  ],
+  "symbol_status": {
+    "confidence": "low",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "No Rarity proof without seller evidence"
+    ],
+    "prints_without_rarity_symbol": "mixed_or_not_applicable_unnumbered_promo",
+    "scope": "release_context_not_row_fact",
+    "source": "Bulbapedia unnumbered promo table; physical symbol state varies by row and must be checked from evidence.",
+    "source_mode": "bulbapedia_unnumbered_promo_setlist",
+    "source_release_family_id": "jp_promo_unnumbered_wotc_138_premium_file"
+  }
+}

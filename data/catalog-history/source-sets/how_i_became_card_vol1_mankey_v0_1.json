@@ -1,0 +1,584 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "name": "How I Became a Pokemon Card Vol. 1 Mankey",
+    "release_family_id": "jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999",
+    "notes": [
+      "Deepens the May 22, 1999 How I Became a Pokemon Card Vol. 1 insert source slice.",
+      "Covers the single modeled source-pinned row: Mankey source index 095.",
+      "Frames this as a manga/book route by Kagemaru Himeno, where the card is part of a story about becoming a Pokemon card."
+    ]
+  },
+  "dossiers": [
+    {
+      "uid": "jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999",
+      "type": "release",
+      "context": {
+        "name_en": "How I Became a Pokemon Card Vol. 1 insert",
+        "name_ja": "ポケモンカードになったワケ 1",
+        "release_family_id": "jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999",
+        "release_date": "1999-05-22",
+        "modeled_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "How I Became a Pokemon Card manga route",
+          "Pokemon Card ni Natta Wake Vol. 1",
+          "Mankey source index 095",
+          "Kagemaru Himeno manga and card authorship",
+          "open book with trading card symbol",
+          "glossy unnumbered book promo",
+          "story explaining the card image"
+        ],
+        "main_chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999:095",
+            "name": "Mankey",
+            "number": "095",
+            "why": "Mankey is the chase because it starts one of the sweetest meta-routes in early Pokemon cards: a manga by Kagemaru Himeno where the card image is not only collected, but explained as a little story.",
+            "authority_label": "interpretive",
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Kagemaru Himeno",
+            "row_count": 1,
+            "examples": [
+              "Mankey"
+            ],
+            "authority_label": "fact",
+            "not_claiming": [
+              "complete artist biography",
+              "direct physical-card print authority"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "market liquidity",
+          "physical-card truth",
+          "complete book packaging census",
+          "official copy count"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999.json",
+          "title": "Local Japanese unnumbered WotC catalog: How I Became a Pokemon Card Vol. 1 insert",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official product-boundary proof",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/How_I_Became_a_Pok%C3%A9mon_Card_volume_1",
+          "title": "Bulbapedia: How I Became a Pokemon Card volume 1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/How_I_Became_a_Pok%C3%A9mon_Card",
+          "title": "Bulbapedia: How I Became a Pokemon Card",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "complete manga-analysis coverage"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mankey_(Jungle_55)",
+          "title": "Bulbapedia: Mankey (Jungle 55)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Mankey variant coverage"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/natta_mankey_promo/",
+          "title": "PokeBoon: Mankey Promo - How I Became a Pokemon Card Vol. 1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s6",
+          "type": "community_reference",
+          "ref": "https://pokumon.com/card/mankey-how-i-became-a-pokemon-card-1999-unnumbered/",
+          "title": "Pokumon: Mankey (How I Became a Pokemon Card 1999) (Unnumbered)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.date",
+          "text": "The local row, Bulbapedia, PokeBoon, and Pokumon place the How I Became a Pokemon Card Vol. 1 Mankey insert route on May 22, 1999.",
+          "sources": [
+            "s1",
+            "s2",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.vehicle",
+          "text": "Bulbapedia identifies volume 1 as the first of six How I Became a Pokemon Card manga volumes and states that its included promo card is Mankey.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.publisher",
+          "text": "Bulbapedia lists the first edition as a Japanese Kadokawa-Media Factory publication with ISBN 4889917179.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon identify How I Became a Pokemon Card as created by Kagemaru Himeno, and PokeBoon credits the Mankey promo illustration to Kagemaru Himeno.",
+          "sources": [
+            "s2",
+            "s3",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.significance",
+          "text": "Bulbapedia says each How I Became a Pokemon Card book includes a special Pokemon card and that the cards featured in the chapters are original Himeno illustrations, making this route unusually self-aware: manga, card, and illustration process are joined.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "Bulbapedia's Mankey card page says the Vol. 1 promo is a Japanese unnumbered promotional reprint with different artwork by the same artist and a color graphic of an open book with a trading card where an expansion symbol would normally sit.",
+          "sources": [
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "release.boundary",
+          "text": "Agents should keep this Mankey route separate from Jungle Mankey, Brock's Mankey, later TCG Pocket Promo-A Mankey, generic Natta Wake lots, and the other How I Became a Pokemon Card volume inserts: Psyduck, Jynx, Sunkern, Hoppip, and _____'s Pikachu.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5",
+            "s6"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c5",
+            "c6"
+          ]
+        },
+        {
+          "id": "c8",
+          "field": "identification.special_instructions",
+          "text": "The legible target is Mankey plus How I Became a Pokemon Card Vol. 1 route plus open-book symbol / book-insert evidence; catalog facts do not prove possession, authenticity, condition, price, complete book packaging, or spendability.",
+          "sources": [
+            "s1",
+            "s2",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c2",
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "how_i_became_card_vol1_1999_mankey_route_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A listing, want, or agent match mentions Mankey, How I Became a Pokemon Card, Pokemon Card ni Natta Wake, Natta Wake Vol. 1, manga insert, source index 095, glossy promo, or Kagemaru Himeno.",
+          "summary": "Confirm the How I Became a Pokemon Card Vol. 1 Mankey route before treating a Mankey promo listing as this row.",
+          "steps": [
+            "Record the seller's exact route language: How I Became a Pokemon Card, Pokemon Card ni Natta Wake, Natta Wake Vol. 1, manga insert, glossy promo, source index 095, or Kagemaru Himeno.",
+            "Confirm the offered card is Mankey / マンキー and not Jungle Mankey, Brock's Mankey, TCG Pocket Promo-A Mankey, or a generic Mankey card.",
+            "Ask for seller-controlled front and back images before using catalog or community images as more than reference comparison.",
+            "Check the lower release-symbol area for the open book with trading card graphic; blur, crop, absent symbol, or different mark remains a named uncertainty.",
+            "If the listing claims complete manga provenance, request book/obi/bag/insert-context evidence separately; the card alone does not prove complete book packaging.",
+            "Separate Vol. 1 Mankey from Vol. 2 Psyduck, Vol. 3 Jynx, Vol. 4 Sunkern, Vol. 5 Hoppip, and Vol. 6 _____'s Pikachu.",
+            "Keep price, grade, authenticity, condition, official copy count, possession, complete book state, and spendability outside catalog authority until seller-controlled evidence and any verifier process are present."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete book packaging census",
+            "all Natta Wake volume equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mankey, where the card becomes a story about becoming",
+        "why_it_matters": "How I Became a Pokemon Card is one of the most charming pieces of the early TCG apparatus because it refuses to let card art stay mute. Himeno draws the Pokemon, writes the little world around the drawing, and then the book gives you the card. Mankey is humble, funny, and perfect as the first doorway: not a Charizard-style thunderbolt, but a scratchy little creature becoming collectible through manga, paper, and explanation. This is exactly the assembly we care about.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c8"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete book packaging census",
+          "all Natta Wake volume equivalence",
+          "spendability"
+        ]
+      }
+    },
+    {
+      "uid": "jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999:095",
+      "type": "card",
+      "context": {
+        "name_en": "Mankey",
+        "name_ja": "マンキー",
+        "romaji": "Mankey",
+        "number": "095",
+        "release_family_id": "jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999",
+        "release_name": "How I Became a Pokemon Card Vol. 1 insert"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "number": "095",
+        "rarity_signal": "unnumbered promotional manga route",
+        "artist": "Kagemaru Himeno",
+        "assembly_themes": [
+          "Mankey / Mankey",
+          "Kagemaru Himeno manga and card art",
+          "open book with trading card symbol",
+          "different artwork from Jungle Mankey",
+          "glossy book promo",
+          "Vol. 1 route"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999.json#row:jp_promo_unnumbered_wotc_095_how_i_became_a_pok_mon_card_vol_1_insert_may_22_1999:095",
+          "title": "Local Japanese unnumbered WotC catalog row: Mankey source index 095",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "spendability"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Mankey_(Jungle_55)",
+          "title": "Bulbapedia: Mankey (Jungle 55)",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "all Mankey variant coverage"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/How_I_Became_a_Pok%C3%A9mon_Card_volume_1",
+          "title": "Bulbapedia: How I Became a Pokemon Card volume 1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "community_reference",
+          "ref": "https://pokeboon.com/natta_mankey_promo/",
+          "title": "PokeBoon: Mankey Promo - How I Became a Pokemon Card Vol. 1",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        },
+        {
+          "id": "s5",
+          "type": "community_reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/PW07",
+          "title": "Bulbapedia: Mankey and Mankey and Okorizaru",
+          "retrieved": "2026-06-20",
+          "tier": "B",
+          "not_claiming": [
+            "full manga chapter reproduction",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local row identifies Mankey as source index 095 in the How I Became a Pokemon Card Vol. 1 insert source group.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.rarity",
+          "text": "The row is an unnumbered promotional manga/book route, not a booster-set rarity row.",
+          "sources": [
+            "s1",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c3",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon support Kagemaru Himeno as creator/illustrator context for the book and Mankey promo route.",
+          "sources": [
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's Mankey card page states the Vol. 1 promo has different artwork by the same artist from the Jungle print and an open-book/card graphic in the symbol location.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "history.lineage",
+          "text": "Bulbapedia's chapter page for Mankey and Mankey and Okorizaru says the How I Became a Pokemon Card manga chapter features Mankey and Primeape cards, linking the card identity to a story chapter rather than only a checklist slot.",
+          "sources": [
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.impact",
+          "text": "Himeno's impact here is not only drawing the card; the series makes card illustration narrative, turning a static image into a reason, a scene, and a comic premise.",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c3",
+            "c5"
+          ]
+        },
+        {
+          "id": "c7",
+          "field": "identification.special_instructions",
+          "text": "A safe match requires Mankey identity, Vol. 1 Natta Wake route, open-book symbol, and book-insert context; ordinary Jungle Mankey or generic Natta Wake lot language is insufficient.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4"
+          ],
+          "tier": "B",
+          "authority_label": "interpretive",
+          "basis_claims": [
+            "c1",
+            "c4",
+            "c6"
+          ]
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "id": "how_i_became_card_vol1_1999_mankey_095_checks_v0.1",
+          "authority_label": "legible",
+          "trigger": "A buyer wants or seller offers Mankey / マンキー as How I Became a Pokemon Card, Pokemon Card ni Natta Wake, Natta Wake Vol. 1, manga insert, glossy promo, or source index 095.",
+          "summary": "Confirm Mankey 095 as the Vol. 1 How I Became a Pokemon Card insert and keep book/package claims separate from card identity.",
+          "steps": [
+            "Capture exact seller title and route terms: Mankey, How I Became a Pokemon Card, Pokemon Card ni Natta Wake, Natta Wake Vol. 1, manga insert, glossy promo, source index 095, or Kagemaru Himeno.",
+            "Ask for uncropped front and back images showing the name, HP, Pokemon Power / attack text area, lower symbol area, illustrator line, copyright block, corners, and glossy surface.",
+            "Check that the card is Mankey / マンキー and that the lower symbol area shows the open-book-with-card graphic rather than Jungle, Gym, or later promo markings.",
+            "Separate this card from Jungle Mankey, Brock's Mankey, TCG Pocket Promo-A Mankey, and the other Natta Wake volume promos.",
+            "If a listing claims complete book provenance, request book/cover/obi/bag/insert-context evidence as its own branch.",
+            "Treat grade labels, glossy comments, book condition, and complete-set claims as separate evidence branches, not catalog-verified physical truth.",
+            "Require seller-controlled evidence and, for higher-value trades, fresh possession proof before any spendability or route-lock decision."
+          ],
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official copy count",
+            "complete book packaging census",
+            "all Natta Wake volume equivalence",
+            "spendability"
+          ]
+        }
+      ],
+      "narrative": {
+        "human_title": "Mankey 095: Himeno lets the card explain itself",
+        "why_it_matters": "Mankey is exactly the right kind of small card for this route. It does not need to be majestic; it needs to be alive, irritable, funny, and specific enough that a manga chapter can wrap itself around the picture. Himeno's Natta Wake idea makes the card feel less like an isolated rectangle and more like the residue of a story. That is the charm an agent should preserve.",
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth",
+          "official copy count",
+          "complete book packaging census",
+          "all Natta Wake volume equivalence",
+          "spendability"
+        ]
+      }
+    }
+  ]
+}

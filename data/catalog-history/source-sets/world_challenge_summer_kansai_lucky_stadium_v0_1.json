@@ -1,0 +1,571 @@
+{
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "One-row deepening tranche for Lucky Stadium [Ho-Oh], the Kansai World Challenge Summer participation-prize print, emphasizing the regional-stadium architecture of the 2000 Lucky Stadium campaign, the Ho-Oh / Tō-ji pagoda identity, the July 8-9, 2000 Asia & Pacific Trade Center event route, Yuichi Sawayama and CR CG gangs artwork, and traps against the other seven World Challenge Summer regional Lucky Stadium cards, Spring/Summer date confusion, Tropical Mega Battle, Neo Destiny, Intro Pack Neo, and Pokemon Center New York prints.",
+    "in_scope": [
+      "World Challenge Summer Kansai participation-prize release dossier",
+      "Lucky Stadium [Ho-Oh] unnumbered promotional row 168",
+      "World Challenge Summer 2000 regional Lucky Stadium family context",
+      "Yuichi Sawayama and CR CG gangs illustration credit",
+      "Kansai / Ho-Oh / Tō-ji pagoda identification rails"
+    ],
+    "not_claiming": [
+      "complete World Challenge event archive",
+      "official attendance count",
+      "official print run",
+      "resolution of every Spring/Summer secondary-source date conflict",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  },
+  "dossiers": [
+    {
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference",
+      "context": {
+        "release_family_id": "jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference",
+        "name_en": "World Challenge Summer participation prize (Kansai conference)",
+        "release_date": "2000-07-08",
+        "expected_source_card_count": 1,
+        "unique_catalog_row_count": 1
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "release_highlights": {
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "assembly_themes": [
+          "World Challenge Summer 2000 tournament participation prize",
+          "Kansai regional Lucky Stadium print",
+          "Ho-Oh mascot cue",
+          "Tō-ji pagoda / Kyoto landmark cue",
+          "Yuichi Sawayama / CR CG gangs artwork",
+          "regional-variant and date-conflict identity trap"
+        ],
+        "chase_cards": [
+          {
+            "row_id": "jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference:168",
+            "name": "Lucky Stadium [Ho-Oh] [Kansai]",
+            "why": "This is a chase because Ho-Oh turns the Kansai print into a phoenix-card and a place-card at once: the legendary bird, the Tō-ji pagoda, and the Osaka event route all have to stay assembled.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c1",
+              "c2",
+              "c3",
+              "c4",
+              "c8"
+            ],
+            "not_claiming": [
+              "price truth",
+              "condition truth",
+              "seller possession",
+              "authenticity",
+              "official print run"
+            ]
+          }
+        ],
+        "key_artists": [
+          {
+            "name": "Yuichi Sawayama and CR CG gangs",
+            "row_count": 1,
+            "examples": [
+              "Lucky Stadium [Ho-Oh] [Kansai]"
+            ],
+            "why": "This credit matters because the card has to make a legendary Pokemon and a regional landmark coexist. Ho-Oh's mythic color needs the architecture beneath it, not just a blank Stadium frame.",
+            "authority_label": "interpretive",
+            "basis_claims": [
+              "c5",
+              "c6",
+              "c7"
+            ],
+            "not_claiming": [
+              "complete illustrator bibliography",
+              "seller-card proof",
+              "authentication",
+              "all Lucky Stadium art lineage"
+            ]
+          }
+        ],
+        "not_claiming": [
+          "official print run",
+          "complete World Challenge event archive",
+          "complete date-conflict resolution",
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "release.product_count",
+          "text": "The local catalog models the Kansai World Challenge Summer participation-prize source group as one row containing Lucky Stadium at source index 168.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "release.context",
+          "text": "Bulbapedia says Lucky Stadium was first awarded to participants of the Japanese World Challenge Summer tournaments held between July and August 2000, with eight variations printed, each one exclusive to a region of Japan.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "release.distribution",
+          "text": "Bulbapedia lists the Kansai print, featuring Ho-Oh, as available at the Asia & Pacific Trade Center (ATC), Osaka between July 8-9, 2000.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "release.distribution",
+          "text": "PokeBoon identifies Lucky Stadium [Ho-Oh] [Kansai] as a World Challenge Summer participation prize and gives the Ho-Oh/Kansai identity, while showing an April 9, 2000 distribution date that this dossier treats as a secondary-source date conflict against Bulbapedia's July 8-9 Summer event listing.",
+          "sources": [
+            "s3",
+            "s2"
+          ],
+          "tier": "C",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "artist.credit",
+          "text": "Bulbapedia's Lucky Stadium gallery credits the Kansai region print to Yuichi Sawayama and CR CG gangs.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c6",
+          "field": "artist.credit",
+          "text": "PokeBoon also credits Lucky Stadium [Ho-Oh] [Kansai] to CR CG gangs and Yuichi Sawayama.",
+          "sources": [
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.variant",
+          "text": "Bulbapedia says all World Challenge Summer Lucky Stadium prints feature regional landmarks; the Kansai print features the pagoda at Tō-ji in Kyoto, Japan's tallest pagoda.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c8",
+          "field": "history.lineage",
+          "text": "Bulbapedia separates the regional World Challenge Summer prints from the Tropical Mega Battle bilingual print, Neo Destiny English print, Intro Pack Neo print, and Pokemon Center New York print, each of which has different artwork or route.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c9",
+          "field": "history.significance",
+          "text": "As judged collector texture, the Kansai print matters because Ho-Oh's sacred-bird presence and Tō-ji's pagoda cue make the Stadium card feel less like an arena and more like a regional shrine to the 2000 circuit.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c2",
+            "c3",
+            "c5",
+            "c7",
+            "c8"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity",
+            "resolution of every date conflict"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Ho-Oh] [Kansai]: the phoenix over the pagoda",
+        "why_it_matters": "Kansai feels different from the first two Lucky Stadiums because Ho-Oh brings myth with it. The Stadium is still a tournament prize, still a shared rules object, but the Tō-ji pagoda and Ho-Oh's sacred-bird gravity make this one feel almost ceremonial. It is a map card, a regional card, and a legendary-card memory braided together.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c5",
+          "c7",
+          "c8",
+          "c9"
+        ],
+        "not_claiming": [
+          "complete World Challenge event archive",
+          "official print run",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth",
+          "resolution of every secondary-source date conflict"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_kansai_lucky_stadium_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A seller, collector, or agent identifies a Lucky Stadium as the World Challenge Summer Kansai participation-prize print.",
+          "summary": "Do not identify this row from Lucky Stadium or Ho-Oh alone. The legible target is the Kansai regional participation prize: Ho-Oh + Kansai route + Tō-ji pagoda / Kyoto landmark context.",
+          "steps": [
+            "Confirm the card is a Japanese World Challenge Summer Lucky Stadium regional print, not the English Neo Destiny 100/105 card.",
+            "Confirm the featured Pokemon is Ho-Oh; other regional World Challenge Summer prints feature Onix, Lugia, Gyarados, Zapdos, Diglett, Mew, or Pikachu.",
+            "Ask for clear front images of the regional artwork and any readable event/region text; Kansai should not be inferred from Lucky Stadium name alone.",
+            "Check the venue/date claim carefully: this dossier follows Bulbapedia's July 8-9, 2000 Asia & Pacific Trade Center Summer listing and records PokeBoon's April 9 date as a secondary-source conflict, not as the controlling date for this row.",
+            "Screen against the Tropical Mega Battle bilingual Lucky Stadium, Intro Pack Neo Lucky Stadium, Pokemon Center New York Lucky Stadium, ordinary Neo Destiny Lucky Stadium, and later Stadium cards before publishing a confident row match.",
+            "Do not promote regional identity into authenticity, possession, condition, or price truth."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights",
+            "resolution of every secondary-source date conflict"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference.json",
+          "title": "Local release catalog: World Challenge Summer participation prize (Kansai conference)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_%28Neo_Destiny_100%29",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/kansai_luckystadium-ho-oh_promo/",
+          "title": "PokeBoon: Lucky Stadium [Ho-Oh] [Kansai] Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "date-conflict resolution"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/world-challenge-summer-promo/13473/",
+          "title": "CGC Cards Population Report: World Challenge Summer Promo - Japanese",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "market price truth",
+            "seller-card match",
+            "condition",
+            "approved image rights"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference:168",
+      "context": {
+        "row_id": "jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference:168",
+        "release_family_id": "jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference",
+        "name_en": "Lucky Stadium [Ho-Oh] [Kansai]",
+        "name_ja": "ラッキースタジアム",
+        "romaji": "Lucky Stadium",
+        "release_date": "2000-07-08"
+      },
+      "coverage": {
+        "release": "B",
+        "art": "B",
+        "history": "B",
+        "identification": "B"
+      },
+      "card_profile": {
+        "authority_label": "local_catalog_fact_and_reference_fact",
+        "identity": "Lucky Stadium [Ho-Oh] [Kansai], World Challenge Summer participation-prize regional Stadium card",
+        "artist": "Yuichi Sawayama and CR CG gangs",
+        "mechanical_texture": [
+          "Trainer",
+          "Stadium",
+          "regional World Challenge Summer print",
+          "Ho-Oh featured Pokemon",
+          "Tō-ji pagoda / Kyoto landmark cue",
+          "participation prize"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "claims": [
+        {
+          "id": "c1",
+          "field": "card.identity",
+          "text": "The local catalog anchors row 168 as Lucky Stadium in the World Challenge Summer Kansai participation-prize source group, with Ho-Oh as the row's distinguishing Pokemon signal.",
+          "sources": [
+            "s1"
+          ],
+          "tier": "B",
+          "authority_label": "local_catalog_fact"
+        },
+        {
+          "id": "c2",
+          "field": "card.identity",
+          "text": "Bulbapedia identifies Lucky Stadium as a Stadium card and lists the Japanese name as ラッキースタジアム Lucky Stadium.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c3",
+          "field": "card.play_or_collecting_context",
+          "text": "Bulbapedia's card text for the Neo Destiny-style Lucky Stadium effect lets each player flip a coin once during their turn before attacking; on heads, that player draws a card.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c4",
+          "field": "artist.credit",
+          "text": "Bulbapedia and PokeBoon both associate the Kansai Ho-Oh Lucky Stadium artwork with Yuichi Sawayama and CR CG gangs.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c5",
+          "field": "card.art",
+          "text": "As judged art texture, the Kansai card works because Ho-Oh turns a regional tournament prize into something almost shrine-like: a legendary bird above a Kyoto landmark, framed as a Stadium.",
+          "sources": [
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4"
+          ],
+          "not_claiming": [
+            "official art interpretation",
+            "all illustrator work",
+            "authentication",
+            "condition truth"
+          ]
+        },
+        {
+          "id": "c6",
+          "field": "history.variant",
+          "text": "The Kansai print is one member of an eight-print World Challenge Summer regional set; Bulbapedia lists separate region/Pokemon pairings for Kyūshū/Onix, Kantō/Lugia, Hokkaidō/Pikachu, Chūbu/Zapdos, Hokushin'etsu/Mew, Chūgoku-Shikoku/Gyarados, and Tōhoku/Diglett.",
+          "sources": [
+            "s2"
+          ],
+          "tier": "B",
+          "authority_label": "fact"
+        },
+        {
+          "id": "c7",
+          "field": "history.significance",
+          "text": "As judged collector texture, Lucky Stadium [Ho-Oh] [Kansai] rewards exactness: the shared Stadium title is only the shell; the meaningful object is Ho-Oh, Kansai, Tō-ji, and the July 2000 summer-circuit route assembled together.",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "tier": "C",
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c4",
+            "c6"
+          ],
+          "not_claiming": [
+            "official market importance",
+            "price truth",
+            "print run",
+            "authenticity"
+          ]
+        }
+      ],
+      "narrative": {
+        "authority_label": "judged_texture",
+        "human_title": "Lucky Stadium [Ho-Oh] [Kansai]: a shrine-shaped Stadium",
+        "why_it_matters": "This card is why the regional Lucky Stadium set is more than a checklist exercise. The name stays the same, the effect stays the same, but Ho-Oh changes the whole temperature. Kansai becomes a place of pagoda, ritual, and summer tournament memory. For an agent, that means the card must be understood as a small assembly of place, art, event, and mascot, not as a generic Lucky Stadium.",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "not_claiming": [
+          "official art interpretation",
+          "authenticity",
+          "seller possession",
+          "condition truth",
+          "price truth"
+        ]
+      },
+      "special_identification_instructions": [
+        {
+          "id": "world_challenge_summer_kansai_lucky_stadium_card_boundary_v0.1",
+          "authority_label": "legible",
+          "trigger": "A card-level Lucky Stadium match is being prepared for a want, sale, dossier, or agent comparison.",
+          "summary": "The card name is too broad. Confirm the Kansai regional print by Ho-Oh, pagoda/event cues, and exclusion of the other Lucky Stadium routes.",
+          "steps": [
+            "Confirm the front artwork features Ho-Oh; this is the Kansai print's key Pokemon cue.",
+            "Ask for close images of any region/event text and the whole artwork field; do not infer Kansai from a seller title alone.",
+            "Compare against all other World Challenge Summer regional prints: Onix, Lugia, Gyarados, Zapdos, Diglett, Mew, and Pikachu variants.",
+            "Compare against the Tropical Mega Battle bilingual Lucky Stadium and ordinary Neo Destiny / Intro Pack Neo / New York City Lucky Stadium prints.",
+            "If a listing cites April 9, 2000 for a Ho-Oh/Kansai card, preserve that as a source conflict and do not silently merge it with the July 8-9 Summer row without stronger evidence.",
+            "Do not treat CGC/PSA population, auction title, or marketplace category as physical-card proof without matching images and seller evidence."
+          ],
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "official print run",
+            "approved image rights",
+            "resolution of every secondary-source date conflict"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "s1",
+          "type": "local_catalog",
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference.json#row:jp_promo_unnumbered_wotc_168_world_challenge_summer_participation_prize_kansai_conference:168",
+          "title": "Local catalog row: Lucky Stadium [Ho-Oh] / World Challenge Summer Kansai participation prize",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "authenticity",
+            "seller possession",
+            "condition",
+            "price truth",
+            "complete event archive"
+          ]
+        },
+        {
+          "id": "s2",
+          "type": "reference",
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lucky_Stadium_%28Neo_Destiny_100%29",
+          "title": "Bulbapedia: Lucky Stadium (Neo Destiny 100)",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ]
+        },
+        {
+          "id": "s3",
+          "type": "reference",
+          "ref": "https://pokeboon.com/kansai_luckystadium-ho-oh_promo/",
+          "title": "PokeBoon: Lucky Stadium [Ho-Oh] [Kansai] Promo",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "not_claiming": [
+            "official primary publication record",
+            "seller-card match",
+            "condition",
+            "price truth",
+            "approved image rights",
+            "date-conflict resolution"
+          ]
+        },
+        {
+          "id": "s4",
+          "type": "reference",
+          "ref": "https://www.cgccards.com/population-report/tcg/pok%C3%A9mon/2/promotional/839/world-challenge-summer-promo/13473/",
+          "title": "CGC Cards Population Report: World Challenge Summer Promo - Japanese",
+          "retrieved": "2026-06-19",
+          "tier": "C",
+          "not_claiming": [
+            "complete population truth",
+            "market price truth",
+            "seller-card match",
+            "condition",
+            "approved image rights"
+          ]
+        }
+      ]
+    }
+  ]
+}

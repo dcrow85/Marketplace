@@ -1,0 +1,1056 @@
+{
+  "dossiers": [
+    {
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.date",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog groups rows 118-120 under the promotion note CoroCoro Comic August 1999 issue insert, released July 15, 1999.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.product_count",
+          "id": "c2",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The source group models three rows from the Bulbapedia raw list: Giovanni's Nidoking 118, Koga's Ninja Gym 119, and Lawrence III 120.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c3",
+          "sources": [
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "Bulbapedia's individual pages describe Giovanni's Nidoking and Koga's Ninja Gym as a two-card insert in the August 1999 CoroCoro issue, with another insert in the same issue containing the Jumbo Lawrence III card.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3"
+          ],
+          "field": "release.context",
+          "id": "c4",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "This CoroCoro issue sits at a busy July 1999 hinge: Gym-series owner identity, magazine insert distribution, and movie-era Lugia's Explosive Birth material overlap in the same monthly magazine apparatus.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "External card pages credit Giovanni's Nidoking to Atsuko Nishida and Koga's Ninja Gym to Keiji Kinebuchi; Lawrence III is listed with unknown illustrator. The local primary source rows themselves do not provide illustrator credits, so the artist layer remains source-attributed rather than primary-row authority.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "The important boundary is format and insert route: Giovanni's Nidoking and Koga's Ninja Gym are regular unnumbered promotional cards on one insert, while Lawrence III is a Jumbo unnumbered promotional card on another insert in the same CoroCoro issue.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "field": "history.significance",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "The August 1999 CoroCoro insert is a perfect little assembly object: two Gym-era mechanical cards for Giovanni and Koga beside a giant movie-villain card for Lawrence III. It shows CoroCoro doing what it did best, making the monthly magazine into a crossing where game mechanics, character ownership, and movie promotion all entered a kid's binder at once.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c8",
+          "sources": [
+            "s1",
+            "s2",
+            "s3",
+            "s4",
+            "s5"
+          ],
+          "text": "Agents should preserve the exact CoroCoro August 1999 issue route, July 15 1999 date, row indices 118-120, regular-vs-Jumbo insert distinction, and artist-credit source boundary before accepting a match.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "name_en": "CoroCoro Comic August 1999 issue insert (July 15, 1999)",
+        "name_ja": "アンナンバードプロモカード",
+        "release_date": "1999-07-15",
+        "release_family_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7",
+          "c8"
+        ],
+        "human_title": "CoroCoro August 1999: one magazine, two inserts, three kinds of memory",
+        "not_claiming": [
+          "complete CoroCoro issue history",
+          "official campaign boundary proof",
+          "price truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "This source group has wonderful magazine logic. Giovanni's Nidoking and Koga's Ninja Gym pull Gym-era owner identity into the reader's hands, while Jumbo Lawrence III ties the same issue to the 1999 movie machine. The set is small, but it shows CoroCoro as an assembly surface: battle mechanics, villain mythology, and oversized movie spectacle all arriving through one monthly paper door."
+      },
+      "release_highlights": {
+        "assembly_themes": [
+          "magazine/media distribution",
+          "gym-owner identity",
+          "movie tie-in",
+          "regular-vs-Jumbo format boundary",
+          "artist-source boundary"
+        ],
+        "authority_label": "local_catalog_fact_with_judged_texture",
+        "chase_cards": [
+          {
+            "name": "Giovanni's Nidoking",
+            "number": "118",
+            "row_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:118"
+          },
+          {
+            "name": "Koga's Ninja Gym",
+            "number": "119",
+            "row_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:119"
+          },
+          {
+            "name": "Lawrence III",
+            "number": "120",
+            "row_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:120"
+          }
+        ],
+        "key_artists": [
+          {
+            "authority_label": "community_reference",
+            "examples": [
+              "Giovanni's Nidoking"
+            ],
+            "name": "Atsuko Nishida",
+            "not_claiming": [
+              "complete artist biography",
+              "primary-row illustrator authority"
+            ],
+            "row_count": 1
+          },
+          {
+            "authority_label": "community_reference",
+            "examples": [
+              "Koga's Ninja Gym"
+            ],
+            "name": "Keiji Kinebuchi",
+            "not_claiming": [
+              "complete artist biography",
+              "primary-row illustrator authority"
+            ],
+            "row_count": 1
+          },
+          {
+            "authority_label": "community_reference",
+            "examples": [
+              "Lawrence III"
+            ],
+            "name": "Unknown",
+            "not_claiming": [
+              "artist identified",
+              "complete artist biography"
+            ],
+            "row_count": 1
+          }
+        ],
+        "not_claiming": [
+          "price ranking",
+          "complete artist biography",
+          "market liquidity",
+          "physical-card truth"
+        ],
+        "source_contacts": [
+          "local Japanese unnumbered promo release file",
+          "Bulbapedia raw unnumbered promo rows",
+          "Bulbapedia individual card pages"
+        ]
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "approved image rights"
+          ],
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999.json",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local Japanese unnumbered promo catalog: CoroCoro Comic August 1999 issue insert",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 rows 118-120",
+          "type": "community_raw_wikitext"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Giovanni%27s_Nidoking_%28CoroCoro_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Giovanni's Nidoking (CoroCoro promo)",
+          "type": "community_reference"
+        },
+        {
+          "id": "s4",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Koga%27s_Ninja_Gym_%28CoroCoro_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Koga's Ninja Gym (CoroCoro promo)",
+          "type": "community_reference"
+        },
+        {
+          "id": "s5",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lawrence_III_%28CoroCoro_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Lawrence III (CoroCoro promo)",
+          "type": "community_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_august_1999_insert_boundary_v0.1",
+          "not_claiming": [
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth",
+            "official campaign boundary proof beyond the source promotion note",
+            "complete CoroCoro issue archive",
+            "complete insert packaging census",
+            "image rights approval",
+            "spendability"
+          ],
+          "steps": [
+            "Confirm the campaign/source group is CoroCoro Comic August 1999 issue insert, released July 15, 1999.",
+            "Preserve row identity: Giovanni's Nidoking 118, Koga's Ninja Gym 119, Lawrence III 120.",
+            "Separate the two-card regular insert containing Giovanni's Nidoking and Koga's Ninja Gym from the separate Jumbo Lawrence III insert.",
+            "For Lawrence III, require Jumbo / oversized physical-format evidence before treating the card as row 120.",
+            "For Koga's Ninja Gym, do not collapse into Koga's Ninja Trick or other Koga trainer rows merely because of name similarity.",
+            "Treat artist credits as source-attributed: Nishida and Kinebuchi are supported by individual card pages; Lawrence III remains unknown in the cited page.",
+            "Use seller photos for format, symbol, physical dimensions, and condition before any transaction claim."
+          ],
+          "summary": "Preserve CoroCoro August 1999 issue route and regular-vs-Jumbo insert distinction before treating a card as this source-group row.",
+          "trigger": "A listing, want, scan, or agent memory says CoroCoro August 1999, July 15 1999, Giovanni's Nidoking, Koga's Ninja Gym, Lawrence III, Jumbo Lawrence, Gym symbol, Lugia's Explosive Birth, or movie special jumbo card."
+        }
+      ],
+      "type": "release",
+      "uid": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999"
+    },
+    {
+      "card_highlights": {
+        "artist": "Atsuko Nishida",
+        "assembly_note": "Giovanni's Nidoking sits in the CoroCoro August 1999 insert group as regular unnumbered CoroCoro promo insert card; the card only becomes legible when source row, issue date, format lane, and insert route stay together.",
+        "assembly_themes": [
+          "magazine/media distribution",
+          "format boundary",
+          "gym/movie identity",
+          "artist-source boundary",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Giovanni's Nidoking has that perfect Gym-era weight: a boss-owned Stage 2 Pokemon, drawn by Nishida, delivered not through a deck or pack but through CoroCoro. It feels like organized villain identity slipping straight into a reader's binder.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ],
+        "number": "118",
+        "rarity_signal": "regular unnumbered CoroCoro promo insert card",
+        "signals": [
+          "CoroCoro Comic August 1999 issue insert",
+          "July 15 1999",
+          "118",
+          "regular unnumbered CoroCoro promo insert card",
+          "Atsuko Nishida"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog anchors Giovanni's Nidoking as CoroCoro Comic August 1999 issue insert row 118.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s3"
+          ],
+          "text": "The cited individual card page places Giovanni's Nidoking in the August 1999 issue of CoroCoro Comic, released on July 15, 1999.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The meaningful local rarity/format signal for Giovanni's Nidoking is: regular unnumbered CoroCoro promo insert card.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "text": "The cited individual card page lists illustrator credit for Giovanni's Nidoking as Atsuko Nishida. The local primary row does not provide illustrator credit, so this remains source-attributed.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "For Giovanni's Nidoking, preserve format and insert lane: regular-size card; two-card insert lane with Koga's Ninja Gym.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ],
+          "field": "history.significance",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Giovanni's Nidoking has that perfect Gym-era weight: a boss-owned Stage 2 Pokemon, drawn by Nishida, delivered not through a deck or pack but through CoroCoro. It feels like organized villain identity slipping straight into a reader's binder.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep Giovanni's Nidoking pinned to CoroCoro August 1999 row 118 and the two-card regular insert route; do not accept species-only Nidoking, Giovanni-only, or Gym-set resemblance as enough.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "118",
+        "name_en": "Giovanni's Nidoking",
+        "name_ja": "サカキのニドキング",
+        "release_family_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999",
+        "release_name": "CoroCoro Comic August 1999 issue insert",
+        "romaji": "Sakaki's Nidoking",
+        "row_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:118"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Giovanni's Nidoking: regular-size card; two-card insert lane with Koga's Ninja Gym",
+        "not_claiming": [
+          "complete card history",
+          "official campaign boundary proof",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Giovanni's Nidoking has that perfect Gym-era weight: a boss-owned Stage 2 Pokemon, drawn by Nishida, delivered not through a deck or pack but through CoroCoro. It feels like organized villain identity slipping straight into a reader's binder. The agent should keep the row boringly exact so the human can enjoy the weirdness without losing the object boundary."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999.json#row:jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:118",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: Giovanni's Nidoking / CoroCoro August 1999",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 rows 118-120",
+          "type": "community_raw_wikitext"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Giovanni%27s_Nidoking_%28CoroCoro_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Giovanni's Nidoking (CoroCoro promo)",
+          "type": "community_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_august_1999_118_identity_boundary_v0.1",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "complete CoroCoro issue archive",
+            "complete insert packaging census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ],
+          "steps": [
+            "Require CoroCoro Comic August 1999 issue insert context and source row 118 before naming this exact card.",
+            "Preserve Japanese/romaji name: サカキのニドキング / Sakaki's Nidoking.",
+            "Preserve format lane: regular-size card; two-card insert lane with Koga's Ninja Gym.",
+            "Do not infer authenticity, possession, condition, or exact physical dimensions from catalog identity.",
+            "Use seller photos to confirm format, card back/front, printed symbols/logos, physical scale, and condition before any transaction claim."
+          ],
+          "summary": "Keep Giovanni's Nidoking pinned to CoroCoro August 1999 row 118 and the two-card regular insert route; do not accept species-only Nidoking, Giovanni-only, or Gym-set resemblance as enough.",
+          "trigger": "A listing, want, scan, or agent memory says Giovanni's Nidoking, サカキのニドキング, CoroCoro August 1999, July 15 1999, Jumbo, Gym symbol, Giovanni, Koga, or Lawrence III."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:118"
+    },
+    {
+      "card_highlights": {
+        "artist": "Keiji Kinebuchi",
+        "assembly_note": "Koga's Ninja Gym sits in the CoroCoro August 1999 insert group as regular unnumbered CoroCoro promo insert Stadium card; the card only becomes legible when source row, issue date, format lane, and insert route stay together.",
+        "assembly_themes": [
+          "magazine/media distribution",
+          "format boundary",
+          "gym/movie identity",
+          "artist-source boundary",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Koga's Ninja Gym is a place-card more than a creature-card: the magazine gives you a Stadium, a rules space, a little pocket of Koga's world. Kinebuchi's credit matters because the card is about interface as much as illustration -- a board state becoming a location.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ],
+        "number": "119",
+        "rarity_signal": "regular unnumbered CoroCoro promo insert Stadium card",
+        "signals": [
+          "CoroCoro Comic August 1999 issue insert",
+          "July 15 1999",
+          "119",
+          "regular unnumbered CoroCoro promo insert Stadium card",
+          "Keiji Kinebuchi"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog anchors Koga's Ninja Gym as CoroCoro Comic August 1999 issue insert row 119.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s3"
+          ],
+          "text": "The cited individual card page places Koga's Ninja Gym in the August 1999 issue of CoroCoro Comic, released on July 15, 1999.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The meaningful local rarity/format signal for Koga's Ninja Gym is: regular unnumbered CoroCoro promo insert Stadium card.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "text": "The cited individual card page lists illustrator credit for Koga's Ninja Gym as Keiji Kinebuchi. The local primary row does not provide illustrator credit, so this remains source-attributed.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "For Koga's Ninja Gym, preserve format and insert lane: regular-size card; two-card insert lane with Giovanni's Nidoking.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ],
+          "field": "history.significance",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Koga's Ninja Gym is a place-card more than a creature-card: the magazine gives you a Stadium, a rules space, a little pocket of Koga's world. Kinebuchi's credit matters because the card is about interface as much as illustration -- a board state becoming a location.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep Koga's Ninja Gym pinned to CoroCoro August 1999 row 119 and Stadium identity; do not collapse it into Koga's Ninja Trick or other Koga trainer rows.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "119",
+        "name_en": "Koga's Ninja Gym",
+        "name_ja": "キョウの忍者ジム",
+        "release_family_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999",
+        "release_name": "CoroCoro Comic August 1999 issue insert",
+        "romaji": "Kyou's Ninja Gym",
+        "row_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:119"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Koga's Ninja Gym: regular-size card; two-card insert lane with Giovanni's Nidoking",
+        "not_claiming": [
+          "complete card history",
+          "official campaign boundary proof",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Koga's Ninja Gym is a place-card more than a creature-card: the magazine gives you a Stadium, a rules space, a little pocket of Koga's world. Kinebuchi's credit matters because the card is about interface as much as illustration -- a board state becoming a location. The agent should keep the row boringly exact so the human can enjoy the weirdness without losing the object boundary."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999.json#row:jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:119",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: Koga's Ninja Gym / CoroCoro August 1999",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 rows 118-120",
+          "type": "community_raw_wikitext"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Koga%27s_Ninja_Gym_%28CoroCoro_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Koga's Ninja Gym (CoroCoro promo)",
+          "type": "community_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_august_1999_119_identity_boundary_v0.1",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "complete CoroCoro issue archive",
+            "complete insert packaging census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ],
+          "steps": [
+            "Require CoroCoro Comic August 1999 issue insert context and source row 119 before naming this exact card.",
+            "Preserve Japanese/romaji name: キョウの忍者ジム / Kyou's Ninja Gym.",
+            "Preserve format lane: regular-size card; two-card insert lane with Giovanni's Nidoking.",
+            "Do not infer authenticity, possession, condition, or exact physical dimensions from catalog identity.",
+            "Use seller photos to confirm format, card back/front, printed symbols/logos, physical scale, and condition before any transaction claim."
+          ],
+          "summary": "Keep Koga's Ninja Gym pinned to CoroCoro August 1999 row 119 and Stadium identity; do not collapse it into Koga's Ninja Trick or other Koga trainer rows.",
+          "trigger": "A listing, want, scan, or agent memory says Koga's Ninja Gym, キョウの忍者ジム, CoroCoro August 1999, July 15 1999, Jumbo, Gym symbol, Giovanni, Koga, or Lawrence III."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:119"
+    },
+    {
+      "card_highlights": {
+        "artist": "Unknown",
+        "assembly_note": "Lawrence III sits in the CoroCoro August 1999 insert group as Jumbo unnumbered CoroCoro promo insert card; the card only becomes legible when source row, issue date, format lane, and insert route stay together.",
+        "assembly_themes": [
+          "magazine/media distribution",
+          "format boundary",
+          "gym/movie identity",
+          "artist-source boundary",
+          "identity trap"
+        ],
+        "authority_label": "local_catalog_fact_and_judged_texture",
+        "collector_texture_note": "Lawrence III is the strange theater piece of the issue. It is oversized, tied to Lugia's Explosive Birth, and built around a movie villain whose card text literally steals legendary birds. It is not just a card; it is CoroCoro turning cinema into a big physical object.",
+        "not_claiming": [
+          "price truth",
+          "condition truth",
+          "seller possession",
+          "authenticity",
+          "physical-format proof"
+        ],
+        "number": "120",
+        "rarity_signal": "Jumbo unnumbered CoroCoro promo insert card",
+        "signals": [
+          "CoroCoro Comic August 1999 issue insert",
+          "July 15 1999",
+          "120",
+          "Jumbo unnumbered CoroCoro promo insert card",
+          "Unknown"
+        ]
+      },
+      "claims": [
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.identity",
+          "id": "c1",
+          "sources": [
+            "s1",
+            "s2"
+          ],
+          "text": "The local catalog anchors Lawrence III as CoroCoro Comic August 1999 issue insert row 120.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.distribution",
+          "id": "c2",
+          "sources": [
+            "s3"
+          ],
+          "text": "The cited individual card page places Lawrence III in the August 1999 issue of CoroCoro Comic, released on July 15, 1999.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "card.rarity",
+          "id": "c3",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "The meaningful local rarity/format signal for Lawrence III is: Jumbo unnumbered CoroCoro promo insert card.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "artist.credit",
+          "id": "c4",
+          "sources": [
+            "s1",
+            "s3"
+          ],
+          "text": "The cited individual card page lists illustrator credit for Lawrence III as Unknown. The local primary row does not provide illustrator credit, so this remains source-attributed.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "release.boundary",
+          "id": "c5",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "For Lawrence III, preserve format and insert lane: Jumbo / oversized insert lane; separate from the two-card regular insert.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "judged_texture",
+          "basis_claims": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5"
+          ],
+          "field": "history.significance",
+          "id": "c6",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Lawrence III is the strange theater piece of the issue. It is oversized, tied to Lugia's Explosive Birth, and built around a movie villain whose card text literally steals legendary birds. It is not just a card; it is CoroCoro turning cinema into a big physical object.",
+          "tier": "B"
+        },
+        {
+          "authority_label": "local_catalog_fact",
+          "field": "identification.special_instructions",
+          "id": "c7",
+          "sources": [
+            "s1",
+            "s2",
+            "s3"
+          ],
+          "text": "Keep Lawrence III pinned to CoroCoro August 1999 row 120 and Jumbo physical format; regular-size Lawrence-like evidence is not enough.",
+          "tier": "B"
+        }
+      ],
+      "context": {
+        "catalog_row_id": "120",
+        "name_en": "Lawrence III",
+        "name_ja": "ジラルダン",
+        "release_family_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999",
+        "release_name": "CoroCoro Comic August 1999 issue insert",
+        "romaji": "Gelardan",
+        "row_id": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:120"
+      },
+      "coverage": {
+        "art": "B",
+        "history": "B",
+        "identification": "B",
+        "release": "B"
+      },
+      "narrative": {
+        "authority_label": "judged_texture",
+        "basis_claims": [
+          "c1",
+          "c2",
+          "c3",
+          "c4",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "human_title": "Lawrence III: Jumbo / oversized insert lane; separate from the two-card regular insert",
+        "not_claiming": [
+          "complete card history",
+          "official campaign boundary proof",
+          "price truth",
+          "condition truth",
+          "physical-card authenticity"
+        ],
+        "why_it_matters": "Lawrence III is the strange theater piece of the issue. It is oversized, tied to Lugia's Explosive Birth, and built around a movie villain whose card text literally steals legendary birds. It is not just a card; it is CoroCoro turning cinema into a big physical object. The agent should keep the row boringly exact so the human can enjoy the weirdness without losing the object boundary."
+      },
+      "sources": [
+        {
+          "id": "s1",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "data/japanese-unnumbered-promo-wotc/releases/jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999.json#row:jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:120",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Local catalog row: Lawrence III / CoroCoro August 1999",
+          "type": "local_catalog"
+        },
+        {
+          "id": "s2",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/w/index.php?title=Unnumbered_Promotional_cards_%28TCG%29/1996-2005&action=raw",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia raw wikitext: Unnumbered Promotional cards 1996-2005 rows 118-120",
+          "type": "community_raw_wikitext"
+        },
+        {
+          "id": "s3",
+          "not_claiming": [
+            "official Pokemon source",
+            "seller possession",
+            "authenticity",
+            "condition",
+            "price truth"
+          ],
+          "ref": "https://bulbapedia.bulbagarden.net/wiki/Lawrence_III_%28CoroCoro_promo%29",
+          "retrieved": "2026-06-19",
+          "tier": "B",
+          "title": "Bulbapedia: Lawrence III (CoroCoro promo)",
+          "type": "community_reference"
+        }
+      ],
+      "special_identification_instructions": [
+        {
+          "authority_label": "legible",
+          "id": "corocoro_august_1999_120_identity_boundary_v0.1",
+          "not_claiming": [
+            "official campaign boundary proof beyond the source promotion note",
+            "complete CoroCoro issue archive",
+            "complete insert packaging census",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "price truth",
+            "approved image display rights",
+            "spendability",
+            "complete artist biography"
+          ],
+          "steps": [
+            "Require CoroCoro Comic August 1999 issue insert context and source row 120 before naming this exact card.",
+            "Preserve Japanese/romaji name: ジラルダン / Gelardan.",
+            "Preserve format lane: Jumbo / oversized insert lane; separate from the two-card regular insert.",
+            "Do not infer authenticity, possession, condition, or exact physical dimensions from catalog identity.",
+            "Use seller photos to confirm format, card back/front, printed symbols/logos, physical scale, and condition before any transaction claim."
+          ],
+          "summary": "Keep Lawrence III pinned to CoroCoro August 1999 row 120 and Jumbo physical format; regular-size Lawrence-like evidence is not enough.",
+          "trigger": "A listing, want, scan, or agent memory says Lawrence III, ジラルダン, CoroCoro August 1999, July 15 1999, Jumbo, Gym symbol, Giovanni, Koga, or Lawrence III."
+        }
+      ],
+      "type": "card",
+      "uid": "jp_promo_unnumbered_wotc_118_corocoro_comic_august_1999_issue_insert_july_15_1999:120"
+    }
+  ],
+  "schema": "marketplace.catalog_history_source_set.v0.1",
+  "scope": {
+    "description": "Complete three-row tranche for the CoroCoro Comic August 1999 issue insert source group, emphasizing magazine insert distribution, Gym-owner identity, Lawrence III movie/Jumbo context, artist-source boundaries, and regular-vs-Jumbo format rails.",
+    "in_scope": [
+      "release/source-group dossier",
+      "all three rows 118-120",
+      "regular two-card insert and separate Jumbo Lawrence III insert",
+      "source-attributed illustrator credits where available"
+    ],
+    "not_claiming": [
+      "official campaign boundary proof beyond the source promotion note",
+      "complete CoroCoro issue archive",
+      "complete insert packaging census",
+      "seller possession",
+      "authenticity",
+      "condition truth",
+      "price truth",
+      "approved image display rights",
+      "spendability"
+    ]
+  }
+}
