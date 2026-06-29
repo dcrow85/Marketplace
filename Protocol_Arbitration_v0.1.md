@@ -1,6 +1,8 @@
 # Protocol Arbitration v0.1
 
-Generated 2026-06-12.
+Generated 2026-06-12. Reconciled 2026-06-29: the judgment-supply
+layer is two-sided — pre-trade verifiers alongside post-dispute arbiters,
+supplied by competing humans and agents under the same no-overclaim boundary.
 
 The judgment-supply layer. This concretizes the `JudgmentSupplyCommitment` the
 audit found missing (AUD-D6-001), supplies the liveness fallback for a stuck
@@ -32,6 +34,12 @@ disclose, measure). The aperture's risk budget picks the tier.
    the buyer to enter the chain on the same terms the seller did.
 7. Accountable, not impossible. The physical gaps persist; arbitration prices and
    routes them, it does not close them.
+8. Cairn hosts the market; it is not the judge. Judgment supply — verification
+   and arbitration — is bought from a competitive market. The protocol anchors
+   and records agreed fee, scope, bond, conflict disclosures, and calibration
+   claims (today: signed JSC hash + active-arbiter/floor-executor checks;
+   registry bond is metadata, fee escrow and calibration gates are not yet
+   on-chain). It never turns a provider's judgment into enforced physical truth.
 ```
 
 ## The tier ladder (the cost field)
@@ -218,6 +226,86 @@ Design rules:
   arbiter being gamed shows up as rulings that diverge from outcomes.
 ```
 
+## The two-sided judgment market
+
+The calibration market above is one half of a larger judgment-supply mechanism.
+The hard calls a protocol cannot make — what was inspected, whether evidence
+meets scope, who bears a claim — are not made by Cairn. They are bought from a
+competitive market on both sides of the trade:
+
+| role | when | buys down | the call it makes |
+|---|---|---|---|
+| verifier | pre-trade, before route/funds advance | route risk | "I inspected this subject under this scope and sign this bounded claim / not_claiming set" |
+| arbiter | post-dispute, from the record | stuck claim risk | "on the evidence package, the ruling is X" |
+
+Both are judgment supply. The arbiter ladder (tiers 0-3) is the post-dispute
+half; verification is its pre-trade mirror, with the same economics: providers
+compete on calibration x cost x turnaround, and the agent selects per trade
+against the aperture's risk budget.
+
+### Cairn hosts the market; it is not the judge
+
+The protocol supplies the spine (anchor and record agreed fee, scope, bond,
+conflict disclosures, and calibration; enforce only the mechanical subset that
+has landed on-chain) and the marketplace (discovery, selection, settlement). It
+never supplies the verdict. Centralized authentication would be the overclaim the
+protocol exists to refuse, so expertise is routed through a market and held
+accountable by typed claims, bonds, appeal paths, and calibration scars.
+
+### The supply side — shops and specialists
+
+The scarce resource is trusted human judgment. The protocol pulls it in by
+paying for it. Local shops and domain specialists can supply physical presence,
+standing expertise, and imported trust, but the shop-network rule is capacity,
+not closure:
+
+```text
+- physical presence  — inspection in hand, the one gap no protocol crosses
+- standing expertise — grading, counterfeit tells, domain routines
+- imported trust     — receipts, reputation, and conflict history as legible data
+```
+
+A shop that owns, sells, consigns, sources, custodies, or inventory-locks the
+same subject is a seller-side/custody actor for that subject, not its physical
+verifier. Cross-verification is the primitive. A provider may offer both
+verification and arbitration services in the network, but it cannot arbitrate its
+own same-trade pre-trade call without a conflict bar or an explicit, non-default
+waiver path that remains judged and visible.
+
+### The demand side — the agent shops it
+
+The agent selects a provider per trade against the legibility vector and the
+aperture's risk budget:
+
+```text
+scope_fit           declared expertise matches this card / claim / dispute
+source_calibration  track record against eventual outcomes, with sparse-truth caveats
+cost / turnaround   priced against the risk budget (cheap trade -> floor only;
+                    grail -> a paid specialist)
+independence        measured distance from both parties and this subject
+```
+
+Provider selection is a decide-moment: the human sees who the agent chose, which
+scope the provider may claim, what the provider is not claiming, and why the
+conflict route is acceptable or blocked.
+
+### Market boundaries
+
+```text
+1. Still judgment, not proof. A paid call is "reviewed by <provider> for <scope>,"
+   never "verified authentic." The market makes judgment accountable, not
+   infallible; the forensic ceiling persists.
+2. Conflict disclosure is mandatory (AUD-D6-004). Same-subject seller/custody/
+   ownership/sourcing/inventory-lock conflicts block physical-verifier authority
+   where registered; hidden common control remains legible/judged.
+3. Independence is measured, not declared (AUD-D7-003 frontier). Self-declared
+   independence has no weight without receipts, distance checks, and denominator
+   accounting.
+4. Providers post a bond where the protocol relies on their call. Slashability
+   is bounded by locked capital and tail windows; released funds cannot be
+   magically clawed back on-chain.
+```
+
 ## Honesty constraints
 
 ```text
@@ -239,6 +327,11 @@ Design rules:
 - The legibility vector's source_calibration measures arbiter quality; cost_to_fake
   sets gameability.
 - The custody ledger's claim-path leg renders this evidence chain.
+- Verifiers are the pre-trade mirror of the arbiter ladder; both are judgment
+  supply, selected against the aperture risk budget and scored by
+  source_calibration with explicit sparse-truth caveats.
+- `Protocol_Verifier_v0.4` owns verifier route/conflict details; this document
+  owns post-dispute arbitration and the shared judgment-supply market boundary.
 ```
 
 ## Open questions
@@ -251,4 +344,10 @@ Design rules:
 - Rotating-pool granularity vs per-trade reproducibility.
 - Calibrating the buyer-side evidence floor so legitimate disputes are not
   deterred (the hardest measurement — absence of a dispute is silent).
+- Verifier calibration is sparse: a pre-trade call is only ground-truthed if a
+  dispute, audit, or later evidence tests it; most verifications settle clean and
+  are never checked. Bond sizing and denominator accounting must account for this.
+- Same-provider conflict: the network may contain shops that sell, verify, and
+  arbitrate in different lanes, but same-subject and same-trade authority must be
+  barred, waived, or surfaced before it can affect money.
 ```

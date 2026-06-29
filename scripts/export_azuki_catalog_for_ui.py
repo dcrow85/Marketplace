@@ -15,14 +15,17 @@ import hashlib
 import json
 import re
 import shutil
+import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 AZUKI = ROOT / "data" / "azuki-tcg"
 UI_DIR = AZUKI / "ui"
 WEB_CATALOG_DIR = ROOT / "web" / "public" / "catalogs"
+WEB_PUBLIC_DIR = ROOT / "web" / "public"
 
 OFFICIAL = AZUKI / "releases" / "azuki_tcg_official_gallery.json"
 ALPHA = AZUKI / "releases" / "azuki_tcg_alpha_master_sheet.json"
@@ -32,6 +35,21 @@ REFERENCE_AUDIT = AZUKI / "audits" / "azuki_tcg_reference_image_audit_2026_06_25
 PROMO_OBS = AZUKI / "observations" / "azuki_tcg_user_photo_promo_observations_2026_06_24.csv"
 PORTRAIT_OBS = AZUKI / "observations" / "azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv"
 MANIFEST = AZUKI / "manifest.json"
+ALPHA_IMAGE_MANIFEST = AZUKI / "source-snapshots" / "alpha_master_sheet_image_manifest_2026-06-26.json"
+ALPHA_ASSET_DIR = WEB_PUBLIC_DIR / "assets" / "alpha"
+ALPHA_ASSET_WEB_PREFIX = "assets/alpha"
+
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+XLSX_MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+XLSX_REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+XLSX_DRAWING_NS = "http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing"
+XLSX_BLIP_NS = "http://schemas.openxmlformats.org/drawingml/2006/main"
+XLSX_NS = {
+    "main": XLSX_MAIN_NS,
+    "r": XLSX_REL_NS,
+    "xdr": XLSX_DRAWING_NS,
+    "a": XLSX_BLIP_NS,
+}
 
 RELEASE_FAMILY_LABEL = {
     "alpha": "Alpha",
@@ -79,6 +97,155 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def column_number(ref: str) -> int:
+    letters = "".join(ch for ch in ref if ch.isalpha())
+    number = 0
+    for ch in letters:
+        number = number * 26 + (ord(ch.upper()) - 64)
+    return number - 1
+
+
+def extract_alpha_master_sheet_images(workbook: Path, out_dir: Path = ALPHA_ASSET_DIR) -> int:
+    """Extract embedded IMG-column workbook media into web/public assets."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    total = 0
+    with zipfile.ZipFile(workbook) as zf:
+        names = set(zf.namelist())
+        shared_strings = []
+        if "xl/sharedStrings.xml" in names:
+            root = ET.fromstring(zf.read("xl/sharedStrings.xml"))
+            shared_strings = [
+                "".join((text.text or "") for text in si.iter(f"{{{XLSX_MAIN_NS}}}t"))
+                for si in root.findall("main:si", XLSX_NS)
+            ]
+
+        def cell_value(cell: ET.Element) -> str:
+            value = cell.find("main:v", XLSX_NS)
+            if value is None:
+                return ""
+            if cell.get("t") == "s" and value.text:
+                return shared_strings[int(value.text)]
+            return value.text or ""
+
+        sheet_paths = sorted(
+            p for p in names
+            if p.startswith("xl/worksheets/sheet") and p.endswith(".xml")
+        )
+        for sheet_path in sheet_paths:
+            worksheet = ET.fromstring(zf.read(sheet_path))
+            sheet_name = Path(sheet_path).name
+            row_id_by_index: dict[int, str] = {}
+            image_column = None
+            for row in worksheet.findall("main:sheetData/main:row", XLSX_NS):
+                row_index = int(row.get("r", "0")) - 1
+                for cell in row.findall("main:c", XLSX_NS):
+                    ref = cell.get("r")
+                    if not ref:
+                        continue
+                    col_index = column_number(ref)
+                    value = cell_value(cell)
+                    if col_index == 0:
+                        row_id_by_index[row_index] = value
+                    if row_index == 0 and value.strip().upper() == "IMG":
+                        image_column = col_index
+
+            drawing_ref = worksheet.find("main:drawing", XLSX_NS)
+            rel_path = f"xl/worksheets/_rels/{sheet_name}.rels"
+            if drawing_ref is None or image_column is None or rel_path not in names:
+                continue
+            drawing_rel_id = drawing_ref.get(f"{{{XLSX_REL_NS}}}id")
+            drawing_target = None
+            for rel in ET.fromstring(zf.read(rel_path)):
+                if rel.get("Id") == drawing_rel_id:
+                    drawing_target = rel.get("Target")
+                    break
+            if not drawing_target:
+                continue
+
+            drawing_name = Path(drawing_target).name
+            drawing_path = f"xl/drawings/{drawing_name}"
+            drawing_rels_path = f"xl/drawings/_rels/{drawing_name}.rels"
+            if drawing_path not in names or drawing_rels_path not in names:
+                continue
+            drawing = ET.fromstring(zf.read(drawing_path))
+            embedded = {
+                rel.get("Id"): rel.get("Target")
+                for rel in ET.fromstring(zf.read(drawing_rels_path))
+            }
+
+            for anchor in list(drawing):
+                from_el = anchor.find("xdr:from", XLSX_NS)
+                blip = anchor.find(".//a:blip", XLSX_NS)
+                if from_el is None or blip is None:
+                    continue
+                col_el = from_el.find("xdr:col", XLSX_NS)
+                row_el = from_el.find("xdr:row", XLSX_NS)
+                if col_el is None or row_el is None or int(col_el.text or "-1") != image_column:
+                    continue
+                card_id = (row_id_by_index.get(int(row_el.text or "-1")) or "").strip()
+                if not card_id or card_id.upper() == "ID":
+                    continue
+                embed_id = blip.get(f"{{{XLSX_REL_NS}}}embed")
+                media_target = embedded.get(embed_id or "")
+                if not media_target:
+                    continue
+                media_path = f"xl/media/{Path(media_target).name}"
+                if media_path not in names:
+                    continue
+                ext = Path(media_path).suffix or ".jpg"
+                (out_dir / f"{card_id}{ext}").write_bytes(zf.read(media_path))
+                total += 1
+    return total
+
+
+def alpha_manifest_index(path: Path = ALPHA_IMAGE_MANIFEST) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    payload = read_json(path)
+    return {
+        row["card_id"]: row["image"]
+        for row in payload.get("images", [])
+        if row.get("card_id") and row.get("image")
+    }
+
+
+def alpha_asset_index(asset_dir: Path = ALPHA_ASSET_DIR) -> dict[str, str]:
+    if not asset_dir.exists():
+        return {}
+    images: dict[str, str] = {}
+    for path in sorted(asset_dir.iterdir()):
+        if path.is_file() and path.suffix.lower() in IMAGE_EXTENSIONS:
+            images[path.stem] = f"{ALPHA_ASSET_WEB_PREFIX}/{path.name}"
+    return images
+
+
+def alpha_master_sheet_image_index() -> dict[str, str]:
+    images = alpha_manifest_index()
+    images.update(alpha_asset_index())
+    return images
+
+
+def write_alpha_image_manifest(images: dict[str, str], path: Path = ALPHA_IMAGE_MANIFEST) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "schema": "azuki_tcg_alpha_master_sheet_image_manifest_v0.1",
+        "authority_label": "linked_alpha_master_sheet_reference_image",
+        "asset_policy": "raw image files are gitignored build artifacts; regenerate from the embedded-image workbook export",
+        "not_claiming": [
+            "seller possession",
+            "physical-card authenticity",
+            "condition truth",
+            "per-physical-card evidence",
+        ],
+        "images": [
+            {"card_id": card_id, "image": image}
+            for card_id, image in sorted(images.items())
+        ],
+    }
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return path
 
 
 def split_semis(text: str | None) -> list[str]:
@@ -377,7 +544,7 @@ def alpha_ref_ip(row: dict[str, Any]) -> list[str]:
     return out
 
 
-def card_from_alpha_master(row: dict[str, Any], manifest_hash: str) -> dict[str, Any]:
+def card_from_alpha_master(row: dict[str, Any], manifest_hash: str, alpha_images: dict[str, str]) -> dict[str, Any]:
     card_id = row.get("card_id") or ""
     rarity = row.get("rarity") or ""
     element = row.get("element") or ""
@@ -397,6 +564,29 @@ def card_from_alpha_master(row: dict[str, Any], manifest_hash: str) -> dict[str,
         "official gallery reference image",
         "image equivalence through shared card ID",
     ])
+    alpha_image = alpha_images.get(card_id, "")
+    if alpha_image:
+        image = alpha_image
+        image_status = "alpha_master_sheet"
+        display_allowed = True
+        provenance = (
+            "Alpha Master Sheet embedded reference photo, extracted from the source workbook; "
+            "reference-grade project image, not seller evidence or physical-card proof."
+        )
+        reference_image_policy = "display_alpha_master_sheet_reference_image"
+        suppressed_fields: list[str] = []
+        review_status = "alpha_master_sheet_row_with_reference_photo"
+    else:
+        image = ""
+        image_status = "no_reference_photo"
+        display_allowed = False
+        provenance = (
+            "Alpha Master Sheet row. The source sheet carries card fields but no exact row image; "
+            "shared card ID crosswalks to official gallery rows are not reference-photo equivalence."
+        )
+        reference_image_policy = "no_source_image_in_alpha_master_sheet"
+        suppressed_fields = ["image"]
+        review_status = "alpha_master_sheet_row_no_reference_photo"
     return {
         "uid": row["uid"],
         "catalog_profile": "azuki-tcg",
@@ -420,21 +610,18 @@ def card_from_alpha_master(row: dict[str, Any], manifest_hash: str) -> dict[str,
         "star_alt": has_star(rarity),
         "rarity": rarity,
         "band_rank": band_rank({"rarity": rarity}, None),
-        "image": "",
-        "image_status": "no_reference_photo",
-        "display_allowed": False,
-        "provenance": (
-            "Alpha Master Sheet row. The source sheet carries card fields but no exact row image; "
-            "shared card ID crosswalks to official gallery rows are not reference-photo equivalence."
-        ),
-        "reference_image_policy": "no_source_image_in_alpha_master_sheet",
+        "image": image,
+        "image_status": image_status,
+        "display_allowed": display_allowed,
+        "provenance": provenance,
+        "reference_image_policy": reference_image_policy,
         "stamp_field_policy": "display_alpha_master_sheet_stamp_if_present",
-        "suppressed_fields": ["image"],
+        "suppressed_fields": suppressed_fields,
         "source_authority": row.get("authority_label") or "linked_alpha_master_sheet_fact",
         "field_source": "linked_alpha_master_sheet_fact",
         "alpha_crosswalk_scope": "card_id_only_not_release_specific",
         "missing_alpha_fields": [],
-        "review_status": "alpha_master_sheet_row_no_reference_photo",
+        "review_status": review_status,
         "promo": {"sets": sets} if product_channel in ("promo", "token") else None,
         "owned": False,
         "cond": None,
@@ -581,6 +768,7 @@ def build_payload() -> dict[str, Any]:
     audit_by_uid = {r["UID"]: r for r in star_rows if r.get("UID")}
     reference_audit_by_uid = {r["UID"]: r for r in reference_rows if r.get("UID")}
     observations_by_uid, unmatched_observations = observation_indexes([PROMO_OBS, PORTRAIT_OBS])
+    alpha_images = alpha_master_sheet_image_index()
 
     cards = [
         card_from_official(card, completion_by_uid, audit_by_uid, reference_audit_by_uid, observations_by_uid, manifest_hash)
@@ -588,7 +776,7 @@ def build_payload() -> dict[str, Any]:
     ]
     exact_alpha_card_ids = official_alpha_exact_alpha_sheet_card_ids(official_cards)
     cards.extend(
-        card_from_alpha_master(row, manifest_hash)
+        card_from_alpha_master(row, manifest_hash, alpha_images)
         for row in alpha_cards
         if (row.get("card_id") or "") not in exact_alpha_card_ids
     )
@@ -669,8 +857,10 @@ def build_payload() -> dict[str, Any]:
             "with_image": sum(1 for c in cards if c.get("image")),
             "exact_source": sum(1 for c in cards if c.get("image_status") == "exact_source"),
             "no_reference_photo": sum(1 for c in cards if c.get("image_status") == "no_reference_photo"),
+            "alpha_master_sheet_images": sum(1 for c in cards if c.get("image_status") == "alpha_master_sheet"),
             "provider_path": 0,
             "no_rarity_reference": 0,
+            "image_statuses": dict(sorted(Counter(c.get("image_status") or "unknown" for c in cards).items())),
             "missing_name_ja": 0,
             "star_alt": sum(1 for c in cards if c.get("star_alt")),
             "issue_cards": len(issue_cards),
@@ -689,6 +879,15 @@ def build_payload() -> dict[str, Any]:
             "completion_csv": {"path": str(COMPLETION.relative_to(ROOT)), "sha256": sha256(COMPLETION)},
             "star_audit": {"path": str(STAR_AUDIT.relative_to(ROOT)), "sha256": sha256(STAR_AUDIT)},
             "reference_image_audit": {"path": str(REFERENCE_AUDIT.relative_to(ROOT)), "sha256": sha256(REFERENCE_AUDIT)},
+            "alpha_master_sheet_image_manifest": (
+                {
+                    "path": str(ALPHA_IMAGE_MANIFEST.relative_to(ROOT)),
+                    "sha256": sha256(ALPHA_IMAGE_MANIFEST),
+                    "count": len(alpha_images),
+                }
+                if ALPHA_IMAGE_MANIFEST.exists()
+                else {"path": str(ALPHA_IMAGE_MANIFEST.relative_to(ROOT)), "sha256": "", "count": len(alpha_images)}
+            ),
             "manifest": {"path": str(MANIFEST.relative_to(ROOT)), "sha256": manifest_hash},
         },
         "cards": cards,
@@ -709,7 +908,28 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Export Azuki TCG catalog for the Cairn binder UI.")
     parser.add_argument("--check", action="store_true", help="verify generated payload matches committed outputs")
     parser.add_argument("--no-web", action="store_true", help="only write data/azuki-tcg/ui output")
+    parser.add_argument(
+        "--alpha-master-sheet-xlsx",
+        type=Path,
+        help="extract embedded Alpha Master Sheet images from this workbook before exporting",
+    )
+    parser.add_argument(
+        "--write-alpha-image-manifest",
+        action="store_true",
+        help="write the lightweight Alpha image manifest from web/public/assets/alpha",
+    )
     args = parser.parse_args()
+
+    if args.alpha_master_sheet_xlsx:
+        workbook = args.alpha_master_sheet_xlsx.expanduser()
+        if not workbook.exists():
+            parser.error(f"Alpha Master Sheet workbook not found: {workbook}")
+        total = extract_alpha_master_sheet_images(workbook)
+        print(f"extracted {total} Alpha Master Sheet images to {ALPHA_ASSET_DIR.relative_to(ROOT)}")
+
+    if args.write_alpha_image_manifest:
+        manifest_path = write_alpha_image_manifest(alpha_asset_index())
+        print(f"wrote {manifest_path.relative_to(ROOT)}")
 
     payload = build_payload()
     rendered = json.dumps(payload, indent=2, ensure_ascii=False)
@@ -727,7 +947,8 @@ def main() -> int:
             return 1
         print(
             f"Azuki UI export OK: {payload['summary']['cards']} cards · "
-            f"{payload['summary']['star_alt']} ★ · {payload['summary']['issue_cards']} issue-marked"
+            f"{payload['summary']['star_alt']} ★ · {payload['summary']['issue_cards']} issue-marked · "
+            f"{payload['summary']['alpha_master_sheet_images']} Alpha sheet images"
         )
         return 0
 
@@ -742,7 +963,8 @@ def main() -> int:
     print(
         f"  {payload['summary']['star_alt']} ★/alt · "
         f"{payload['summary']['issue_cards']} issue-marked · "
-        f"{payload['summary']['high_issue_cards']} high"
+        f"{payload['summary']['high_issue_cards']} high · "
+        f"{payload['summary']['alpha_master_sheet_images']} Alpha sheet images"
     )
     return 0
 
