@@ -2,11 +2,12 @@
 
 > Status: **active spec** · 2026-06-29 · Claude (surface lane).
 > Goal: the smallest *real* end-to-end trade that proves the core loop with a
-> high-trust Azuki community member. Howard is the **buyer** for transaction #1.
+> high-trust Azuki community member. Crowley is the **buyer** for transaction #1.
 > Companion to [Protocol_Rundown_v0.2.md](Protocol_Rundown_v0.2.md). **The thin escrow
 > contract is Codex's lane** — interface spec'd below is the lane seam.
 > **Decisions locked 2026-06-29:** entry at **Stage 1 (testnet escrow)**; **thin pilot
-> escrow** (not the full contract); **Arbitrum One / Sepolia + USDC**.
+> escrow** (not the full contract); **Arbitrum One / Sepolia + USDC**; **alpha
+> token-gated to Azuki-ecosystem holders**; **identity = your PFP NFT**.
 
 ## Thesis
 High trust collapses the hard problem. We are **not** testing fraud-resistance; we
@@ -18,13 +19,51 @@ viable" lane, with the Azuki circle as the curation. Bonus: every settled trade 
 ground-truth `settled_trade` anchor the judged layer needs to escape cold-start.
 
 ## Roles
-- **Buyer:** Howard.
+- **Buyer:** Crowley.
 - **Seller:** a trusted Azuki community member (TBD).
-- **Arbiter:** a **neutral trusted third party — NOT Howard** (he's a party → G5.1
+- **Arbiter:** a **neutral trusted third party — NOT Crowley** (he's a party → G5.1
   non-party). Judgment independence shows up for real on trade #1. (TBD; for testnet a
   placeholder address is fine.)
 - **Agent (Ledger / Qwen):** assists — surfaces the card, reads photos, renders the
   Glance + the one risk. Not autonomous; humans decide.
+
+## Access & Identity — token-gated, PFP-native (alpha)
+- **Access gate (locked):** the alpha is **token-gated to Azuki-ecosystem holders** —
+  enter by connecting a wallet that holds an **Azuki / Beanz / Elemental** NFT. One
+  threshold makes the whole space a known community; trust is bootstrapped at the door.
+- **Identity = your PFP NFT.** Cairn reads the Azuki/Beanz/Elemental you already PFP with
+  on Discord/Twitter and renders the **actual art** as your avatar + handle everywhere.
+  The person a counterparty sees is the exact NFT they recognize. (Replaces the generated
+  blockie avatars.)
+- **The G4 bridge — why this works.** G4 ("a key is not a person") is a permanent gap.
+  The community already bridges it socially via PFPs — but a PFP is a forgeable *image*.
+  Cairn binds identity to the **wallet that holds the NFT**: anyone can copy the image,
+  only the holder can *be* that identity in a trade. This **hardens the soft PFP
+  convention into proof** — the [Trust Import](Protocol_Trust_Import_v0.1.md) model
+  applied natively (control-of-surface imports *identity*, as a legible fact, never a
+  trust score).
+- **No-overclaim discipline (identity is a witness, not a guarantee):**
+  - *Proves (legible/enforced):* this wallet currently holds the NFT known as @handle's PFP.
+  - *Does NOT prove:* honesty, that they'll ship, the card's authenticity/condition, or
+    that the wallet isn't sold/stolen.
+  - **No green "verified" badge** — identity is a fact in ink (color discipline; green
+    would imply "safe"). Ledger's framing: *"This is the @LitesOut86 you know — who
+    you're dealing with, not whether they'll do right by you."*
+- **Counterparty verification** at the Glance/Decide: Ledger shows the counterparty's
+  actual PFP art + *"holds the Azuki they PFP with ✓ (matches Discord)"* + relationship
+  facts (*"N trades with you; vouched by @X"*) — facts, not a score.
+- **Edge cases (agent-flagged):** PFP sold/transferred → binding breaks, flag as anomaly;
+  impersonation-by-acquisition → social graph + handle history + your recognition
+  disambiguate; stolen wallet → accountable (escrowed + on record), not preventable.
+- **Build note (lane = surface):** the PFP NFTs live on **Ethereum L1**; the escrow lives
+  on **Arbitrum** — the **same wallet address** bridges them. The frontend reads the
+  wallet's holdings on Ethereum (via an indexer — Alchemy/Reservoir/SimpleHash), gates
+  access, renders the PFP art, and verifies the counterparty. The escrow contract is
+  **unchanged** for alpha (closed high-trust group → frontend gates; on-chain NFT
+  enforcement is a later option).
+- **Deferred / roadmap:** trust-circle auto-bootstrap from Discord/Twitter follows = **not
+  yet** (manual recognition for alpha). **Anime.com profile** as a 2nd identity surface =
+  future (a stronger Trust-Import "controlled surface" binding wallet ↔ Anime.com identity).
 
 ## Chain & rail — **Arbitrum One + native USDC** (Sepolia for testnet)
 - Azuki/Anime ecosystem's mature home (ANIME token lives on Arbitrum One; community
@@ -37,20 +76,20 @@ ground-truth `settled_trade` anchor the judged layer needs to escape cold-start.
 - Testnet: **Arbitrum Sepolia + test USDC**. Wallets: Privy embedded, Arbitrum-configured.
 
 ## The trade loop (states · who acts)
-1. **Intent** — Howard names the card, or the agent surfaces it from seller inventory.
+1. **Intent** — Crowley names the card, or the agent surfaces it from seller inventory.
 2. **Listing / Offer** — seller lists card + condition claim + price + ships-from. **Terms lock.**
 3. **Evidence** — seller photographs via the import flow → vision read + high-res
    inspection capture + condition claim recorded. Buyer sees the **Glance**.
-4. **Decide + Fund** — Howard reviews the Glance → **Decide** screen → authorizes **USDC
+4. **Decide + Fund** — Crowley reviews the Glance → **Decide** screen → authorizes **USDC
    into escrow** (Privy). → **Funded**.
 5. **Ship** — seller ships, enters tracking → continuity packet. → **Shipped**.
 6. **Receive** — buyer confirms receipt (**not a seller click** — C-02), or a
    shipped-timeout opens it. → **InspectionOpen**.
-7. **Accept** — Howard inspects (optionally photographs for the record) and **explicitly
+7. **Accept** — Crowley inspects (optionally photographs for the record) and **explicitly
    accepts** → escrow releases USDC to seller → **Settled**. (Inspection-window timeout
    ⇒ deemed-accept release to seller — post-handoff timeout favors settlement, never a
    silent refund — C-03.)
-8. **Dispute** (condition disagreement is the realistic case) — Howard disputes within
+8. **Dispute** (condition disagreement is the realistic case) — Crowley disputes within
    the window → the evidence record goes to the **neutral arbiter** → ruling → escrow
    follows (seller / buyer-with-return-custody / split).
 
@@ -119,14 +158,14 @@ capture; Privy auth/wallets; the no-overclaim discipline + the Glance.
 - **Stage 1 — Testnet escrow (now):** thin escrow on Arbitrum Sepolia, test USDC, real
   card shipped, neutral arbiter. De-risks the money mechanics + the contract.
 - **Stage 2 — First REAL transaction (milestone):** Arbitrum One, real USDC, hard-capped
-  low value, Howard buyer, trusted seller, neutral arbiter, return-custody-on-dispute.
+  low value, Crowley buyer, trusted seller, neutral arbiter, return-custody-on-dispute.
 - **Stage 3 — Widen** the circle + raise caps; settled trades seed the
   calibration / Catalog-Evidence anchors; the dormant judged layer starts to wake.
 
 ## Success criteria (trade #1)
 - Loop completes (intent → escrow → ship → accept → settle) with **no funds lost to a
   bug** (the cardinal safety bar).
-- The Glance gave Howard enough to decide; interruptions only at Decide + Accept.
+- The Glance gave Crowley enough to decide; interruptions only at Decide + Accept.
 - The evidence record is rich enough to arbitrate a hypothetical condition dispute.
 - Produces the first `settled_trade` anchor + first calibration datapoint.
 
@@ -139,5 +178,5 @@ capture; Privy auth/wallets; the no-overclaim discipline + the Glance.
 - Alpha; the neutral human arbiter + return-custody are the backstop.
 
 ## Open items (people-choices, not blockers)
-- Neutral **arbiter** for trade #1 (not Howard — G5.1). Testnet: placeholder ok.
+- Neutral **arbiter** for trade #1 (not Crowley — G5.1). Testnet: placeholder ok.
 - First **card + seller** (low value, easily identified by both).

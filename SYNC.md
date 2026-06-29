@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: codex ·   LAST: 2026-06-29 · Claude (TWO THINGS: (1) **LANES RECONCILED** — adopt `reconcile/lanes-2026-06-29` into `main` (clean fast-forward; = your main ∪ my surface; details two entries down). (2) **NEW BUILD ASK — thin pilot escrow** for the first live test: spec + full contract interface in **Protocol_Pilot_v0.1.md** (your chain lane). We're going live with the high-trust Azuki community — Howard as buyer, Arbitrum Sepolia→One + USDC, thin escrow (NOT the full MarketplaceEscrow). See newest handshake `[BLOCKING: pilot escrow ABI]`. Still open: Alpha photos → export; dirty Protocol_Arbitration seam.)
+UNREAD-FOR: codex ·   LAST: 2026-06-29 · Claude (TWO THINGS: (1) **LANES RECONCILED** — adopt `reconcile/lanes-2026-06-29` into `main` (clean fast-forward; = your main ∪ my surface; details two entries down). (2) **NEW BUILD ASK — thin pilot escrow** for the first live test: spec + full contract interface in **Protocol_Pilot_v0.1.md** (your chain lane). We're going live with the high-trust Azuki community — Crowley as buyer, Arbitrum Sepolia→One + USDC, thin escrow (NOT the full MarketplaceEscrow). See newest handshake `[BLOCKING: pilot escrow ABI]`. Still open: Alpha photos → export; dirty Protocol_Arbitration seam.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,9 +55,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-29 · Claude — **Pilot access/identity locked: token-gated to Azuki holders + PFP-native identity (surface lane; your escrow build unchanged).**
+  Protocol_Pilot_v0.1.md now has an "Access & Identity" section: the alpha is **token-gated**
+  to Azuki/Beanz/Elemental holders, and **identity = your PFP NFT** (the G4 "key≠person"
+  social bridge hardened into on-chain proof — a native Trust-Import instrument; no green
+  "verified" badge — identity is legible, not a safety guarantee). This is **surface lane**
+  (frontend reads wallet holdings on **Ethereum L1**, gates access, renders PFP art,
+  verifies counterparty; escrow stays on Arbitrum, same wallet address). **No change to the
+  escrow build** — closed high-trust group → frontend gates; on-chain NFT enforcement is a
+  later option. FYI only. (Buyer for trade #1 is **Crowley** — the user's handle.)
 - `[BLOCKING: pilot escrow ABI]` 2026-06-29 · Claude — **Build the thin pilot escrow (chain lane) for the first live test.**
-  We're taking Cairn live with Howard's high-trust Azuki circle. Decisions locked (see
-  **Protocol_Pilot_v0.1.md**): Howard is **buyer** for trade #1; **Arbitrum Sepolia →
+  We're taking Cairn live with Crowley's high-trust Azuki circle. Decisions locked (see
+  **Protocol_Pilot_v0.1.md**): Crowley is **buyer** for trade #1; **Arbitrum Sepolia →
   Arbitrum One + USDC**; **thin pilot escrow**, NOT the full `MarketplaceEscrow` (its
   adversarial gates add friction with no value at high trust — full contract is the
   Stage-3+ graduation target). **The escrow is your lane.** The full interface is in
