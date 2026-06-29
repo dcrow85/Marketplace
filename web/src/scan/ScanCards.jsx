@@ -1,5 +1,5 @@
 import { useRef, useState, useMemo } from 'react'
-import { recognize, slicePage, recognizeDataUri } from './recognize.js'
+import { recognize, slicePageAligned, recognizeDataUri } from './recognize.js'
 
 const cardName = (c) => c?.name_en || c?.name_ja || c?.uid || '—'
 const GRIDS = [{ l: '3×3', r: 3, c: 3 }, { l: '4×3', r: 3, c: 4 }, { l: '3×4', r: 4, c: 3 }, { l: '4×4', r: 4, c: 4 }]
@@ -28,7 +28,8 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const [items, setItems] = useState([]) // {id, status:'reading'|'matched'|'unmatched', photo, read, match}
   const [picking, setPicking] = useState(null) // item id currently being picked
   const [mode, setMode] = useState('card') // 'card' (one per shot) | 'page' (a binder page)
-  const [grid, setGrid] = useState({ r: 3, c: 3 })
+  const [grid, setGrid] = useState({ r: 3, c: 3 }) // page layout — you pick it; the slice auto-crops + aligns to the gaps
+  const [detected, setDetected] = useState(null) // {r,c} echoed back after a page slice
   const idRef = useRef(0)
 
   // recognize a batch of {id, photo} items (limited concurrency), updating each as it resolves
@@ -50,9 +51,10 @@ export default function ScanCards({ cards, onCommit, onClose }) {
 
   const addPage = async (file) => {
     if (!file) return
-    let cells
-    try { cells = await slicePage(file, grid.r, grid.c) } catch { return }
-    const fresh = cells.map((cell) => ({ id: ++idRef.current, status: 'reading', photo: cell.photo, read: null, match: null }))
+    let result
+    try { result = await slicePageAligned(file, grid.r, grid.c) } catch { return }
+    setDetected({ r: result.r, c: result.c })
+    const fresh = result.cells.map((cell) => ({ id: ++idRef.current, status: 'reading', photo: cell.photo, read: null, match: null }))
     setItems((prev) => [...prev, ...fresh])
     await runReads(fresh)
   }
@@ -95,7 +97,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
           <div>
             <div className="ek">Scan into your collection</div>
             <div className="sc-count mono">
-              {items.length === 0 ? (mode === 'page' ? 'photograph a full binder page' : 'point your camera at a card') : `${matched.length} recognized${reading ? ` · ${reading} reading…` : ''}${items.length - matched.length - reading ? ` · ${items.length - matched.length - reading} need a pick` : ''}`}
+              {items.length === 0 ? (mode === 'page' ? 'photograph a full binder page' : 'point your camera at a card') : `${matched.length} recognized${reading ? ` · ${reading} reading…` : ''}${items.length - matched.length - reading ? ` · ${items.length - matched.length - reading} need a pick` : ''}${detected ? ` · grid ${detected.r}×${detected.c}` : ''}`}
             </div>
           </div>
           <button className="sc-x" onClick={onClose} aria-label="Close">✕</button>
@@ -136,6 +138,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
           </div>
           {mode === 'page' && (
             <div className="sc-grid-pick" aria-label="page layout">
+              <span className="sc-gl mono dim">layout</span>
               {GRIDS.map((g) => <button key={g.l} className={grid.r === g.r && grid.c === g.c ? 'on' : ''} onClick={() => setGrid({ r: g.r, c: g.c })}>{g.l}</button>)}
             </div>
           )}
@@ -158,7 +161,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
         </div>
         <p className="sc-note dim">
           {mode === 'page'
-            ? <>Frame the page so the cards fill the photo; each pocket is read separately. Fix any miss with “pick”.</>
+            ? <>Pick your layout — the page is auto-cropped and each pocket read separately. Fix any miss with “pick”.</>
             : <>Recognized cards are tagged <b>have</b>, your photo kept as evidence — a witness, not proof. Condition is a first-pass read you refine when you list.</>}
         </p>
       </div>
