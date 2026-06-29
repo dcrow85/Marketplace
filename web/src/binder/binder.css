@@ -224,3 +224,6 @@ section { padding: 14px 0 70px; }
   .dossier div, .irow { grid-template-columns: 1fr; gap: 2px; }
   .imprev, .addphoto, .contribnote { max-width: 250px; margin-left: auto; margin-right: auto; }
 }
+
+/* your scanned photo, shown as the card image */
+.card .yoursflag { position: absolute; bottom: 4px; left: 4px; font-family: var(--mono); font-size: 8.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--paper); background: var(--have); padding: 1px 5px; border-radius: 4px; opacity: .9; pointer-events: none; }

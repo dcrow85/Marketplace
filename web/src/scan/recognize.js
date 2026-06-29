@@ -42,27 +42,24 @@ const lc = (s) => (s || '').toString().trim().toLowerCase()
 const printedNum = (s) => { const m = (s || '').toString().match(/\d+/); return m ? parseInt(m[0], 10) : null } // first number in the read
 const catNum = (s) => { const m = (s || '').toString().match(/\d+/g); return m ? parseInt(m[m.length - 1], 10) : null } // last group of the code = card no.
 
-// Name is the reliable signal; the printed number disambiguates same-named alt-arts.
+// Name is the reliable signal; the printed number narrows alt-arts; the α stamp picks
+// the release family (Alpha vs Gates share name + number).
 export function matchCard(read, cards) {
   if (!read || read.error) return null
   const name = lc(read.name_read)
   const n = printedNum(read.number_read)
+  const alpha = read.alpha_stamp === 'present'
   let cands = []
   if (name) {
     cands = cards.filter((c) => lc(c.name_en) === name || lc(c.name_ja) === name)
     if (!cands.length) cands = cards.filter((c) => { const cn = lc(c.name_en) || lc(c.name_ja); return cn && (cn.includes(name) || name.includes(cn)) })
   }
-  if (cands.length === 1) return cands[0]
-  if (cands.length > 1 && n != null) {
-    const byNum = cands.find((c) => catNum(c.num) === n)
-    if (byNum) return byNum
-  }
-  if (cands.length) return cands[0] // best-effort: first name match
-  if (n != null) { // no name read — fall back to a unique printed-number hit
-    const hits = cards.filter((c) => catNum(c.num) === n)
-    if (hits.length === 1) return hits[0]
-  }
-  return null
+  if (!cands.length && n != null) cands = cards.filter((c) => catNum(c.num) === n) // no name → printed number
+  if (cands.length <= 1) return cands[0] || null
+  let pool = cands
+  if (n != null) { const byNum = pool.filter((c) => catNum(c.num) === n); if (byNum.length) pool = byNum }
+  if (pool.length > 1) { const byFam = pool.filter((c) => (alpha ? c.release_family === 'alpha' : c.release_family !== 'alpha')); if (byFam.length) pool = byFam }
+  return pool[0]
 }
 
 export async function recognize(file, cards) {

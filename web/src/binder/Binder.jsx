@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import ScanCards from '../scan/ScanCards.jsx'
-import { putPhoto } from '../scan/photoStore.js'
+import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
@@ -119,7 +119,7 @@ function applyAgentFilter(cards, f, setById) {
   return out
 }
 
-function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
+function Card({ c, store, setStance, showSet, setLabel, pick, onOpen, userPhoto }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
@@ -135,7 +135,8 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen }) {
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
         <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{c.romaji || (c.name_is_en ? 'EN' : '')}</div></div>
-        {c.image && <img src={c.image} alt={nm(c)} loading="lazy" decoding="async" onError={(e) => retryImg(e, c.image)} />}
+        {(userPhoto || c.image) && <img src={userPhoto || c.image} alt={nm(c)} loading="lazy" decoding="async" onError={userPhoto ? undefined : (e) => retryImg(e, c.image)} />}
+        {userPhoto && <span className="yoursflag" title="your photo">yours</span>}
         {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
         {sev && <span className={'issueflag ' + sev} title="catalog issue carried forward">{sev === 'high' ? '!' : '?'}</span>}
         {provBadge(c)}
@@ -202,7 +203,7 @@ async function renderSizes(file) {
   }
 }
 
-function CardModal({ uid, data, setById, store, setStance, setField, agentName, onClose }) {
+function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
   const [photo, setPhoto] = useState(null) // the high-res inspection copy shown in the modal
@@ -224,7 +225,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
   const issues = c.issues || []
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
-  const shownImg = (imp !== 'idle' && photo) ? photo : c.image
+  const shownImg = (imp !== 'idle' && photo) ? photo : (userPhoto || c.image)
   const onPhoto = async (file) => {
     if (!file) return
     let imgs
@@ -471,6 +472,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
   const [selected, setSelected] = useState(null)
+  const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'standard' } catch { return 'standard' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
@@ -505,6 +507,19 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     return () => clearInterval(id)
   }, [])
 
+  // Show your scanned photos as the card image. Load lazily for scanned uids; reset on
+  // catalog/account switch. (commitScans seeds fresh ones directly so they appear at once.)
+  useEffect(() => { setUserPhotos({}) }, [storeKey])
+  useEffect(() => {
+    let live = true
+    const want = Object.keys(store).filter((uid) => store[uid]?.scanned && !(uid in userPhotos))
+    if (!want.length) return undefined
+    Promise.all(want.map((uid) => getPhoto(`${storeKey}:${uid}`).then((p) => [uid, p || null]).catch(() => [uid, null])))
+      /* eslint-disable-next-line react-hooks/set-state-in-effect -- async hydrate of stored photos */
+      .then((entries) => { if (live) setUserPhotos((prev) => ({ ...prev, ...Object.fromEntries(entries) })) })
+    return () => { live = false }
+  }, [store, storeKey, userPhotos])
+
   const setById = useMemo(() => Object.fromEntries((data?.sets || []).map((s) => [s.id, s])), [data])
   const SETS = useMemo(() => (data?.sets || []).slice().sort((a, b) => a.order - b.order), [data])
 
@@ -538,6 +553,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
       return next
     })
+    setUserPhotos((prev) => ({ ...prev, ...Object.fromEntries(scans.filter((s) => s.photo).map((s) => [s.uid, s.photo])) }))
     for (const s of scans) if (s.photo) putPhoto(`${storeKey}:${s.uid}`, s.photo).catch(() => {})
   }, [storeKey])
 
@@ -627,7 +643,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
 
-  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} />
+  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
 
@@ -706,7 +722,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
-      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} onClose={() => setSelected(null)} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} onClose={() => setSelected(null)} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )
