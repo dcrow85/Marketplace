@@ -639,7 +639,14 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         <span><b className="t-have">{countStance('have')}</b> have</span>
         <span><b className="t-want">{countStance('want')}</b> want</span>
         <span><b>{data.summary.cards}</b> in catalog</span>
-        <button className="scanbtn" onClick={() => setScanning(true)}>＋ Scan cards</button>
+        <button className="scanbtn" onClick={() => setScanning(true)} aria-label="Scan cards to add">
+          <svg className="scanico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 8.5V6.5A2.5 2.5 0 0 1 6.5 4H8.5" /><path d="M15.5 4H17.5A2.5 2.5 0 0 1 20 6.5V8.5" />
+            <path d="M20 15.5V17.5A2.5 2.5 0 0 1 17.5 20H15.5" /><path d="M8.5 20H6.5A2.5 2.5 0 0 1 4 17.5V15.5" />
+            <circle cx="12" cy="12" r="2.3" />
+          </svg>
+          <span className="scanbtn-label">Scan cards</span>
+        </button>
       </div>
       <div className="controls">
         <div className="askbar">

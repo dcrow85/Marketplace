@@ -42,6 +42,7 @@
 .sc-commit:disabled { opacity: .4; cursor: default; background: var(--dim); }
 .sc-note { font-size: 11px; line-height: 1.45; padding: 0 20px 16px; margin: 0; }
 
-/* entry button in the binder tallies row */
-.scanbtn { margin-left: auto; font-family: var(--mono); font-size: 12px; color: var(--paper); background: var(--agent); border: 0; border-radius: 8px; padding: 7px 13px; cursor: pointer; white-space: nowrap; }
+/* entry button in the binder tallies row (desktop: pill w/ icon + label) */
+.scanbtn { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 12px; color: var(--paper); background: var(--agent); border: 0; border-radius: 8px; padding: 8px 14px; cursor: pointer; white-space: nowrap; }
 .scanbtn:hover { filter: brightness(1.07); }
+.scanico { width: 15px; height: 15px; display: block; }

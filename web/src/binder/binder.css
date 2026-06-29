@@ -243,10 +243,16 @@ section { padding: 14px 0 70px; }
 .fsheet-actions { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); border-top: 0.5px solid var(--rule2); }
 .fs-done { font-family: var(--mono); font-size: 13px; color: var(--paper); background: var(--agent); border: 0; border-radius: 9px; padding: 10px 22px; cursor: pointer; }
 
-/* scan: a floating action button on phones (above the bottom nav), inline on desktop */
+/* scan: a prominent circular FAB on phones (above the bottom nav), inline pill on desktop */
 @media (max-width: 640px) {
-  .scanbtn { position: fixed; right: 16px; bottom: 90px; z-index: 45; margin: 0; border-radius: 24px; padding: 13px 18px; box-shadow: 0 8px 24px rgba(0,0,0,.28); font-size: 13px; }
+  .scanbtn { position: fixed; right: 18px; bottom: 94px; z-index: 45; margin: 0; width: 60px; height: 60px; padding: 0; border-radius: 50%; justify-content: center; box-shadow: 0 0 0 4px var(--paper), 0 10px 26px rgba(44,91,140,.55), 0 4px 12px rgba(0,0,0,.35); animation: scan-pop .4s cubic-bezier(.2,1.35,.5,1) both; }
+  .scanbtn:active { transform: scale(.94); }
+  .scanbtn .scanbtn-label { display: none; }
+  .scanbtn .scanico { width: 27px; height: 27px; stroke-width: 2; }
+  .scanbtn::after { content: ''; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--agent); opacity: 0; animation: scan-ring 2.2s ease-out 1.2s 2; }
 }
+@keyframes scan-pop { from { transform: scale(.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes scan-ring { 0% { opacity: .55; transform: scale(.9); } 100% { opacity: 0; transform: scale(1.6); } }
 
 /* unified search + ask bar (replaces the separate search box and ask-agent bar) */
 .controls .askbar { flex: 1 1 100%; display: flex; gap: 8px; align-items: center; }
