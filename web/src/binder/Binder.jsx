@@ -1,4 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
+import ScanCards from '../scan/ScanCards.jsx'
+import { putPhoto } from '../scan/photoStore.js'
+import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
 // the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
@@ -526,6 +529,18 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     })
   }, [storeKey])
 
+  const [scanning, setScanning] = useState(false)
+  // Scan-to-collection: tag each recognized card `have`, keep its photo locally as evidence.
+  const commitScans = useCallback((scans) => {
+    setStore((prev) => {
+      const next = { ...prev }
+      for (const s of scans) next[s.uid] = { ...(next[s.uid] || {}), stance: 'have', scanned: true }
+      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      return next
+    })
+    for (const s of scans) if (s.photo) putPhoto(`${storeKey}:${s.uid}`, s.photo).catch(() => {})
+  }, [storeKey])
+
   const askAgent = useCallback(async (call) => {
     setAgentBusy(true)
     try {
@@ -622,6 +637,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         <span><b className="t-have">{countStance('have')}</b> have</span>
         <span><b className="t-want">{countStance('want')}</b> want</span>
         <span><b>{data.summary.cards}</b> in catalog</span>
+        <button className="scanbtn" onClick={() => setScanning(true)}>＋ Scan cards</button>
       </div>
       <AgentBar agentName={agentName} busy={agentBusy} res={agentRes} onAsk={askAgent} placeholder={data.ui?.agent_placeholder} />
       {FAMILIES.length > 0 && (
@@ -691,6 +707,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         )}
       </section>
       {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} onClose={() => setSelected(null)} />}
+      {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )
 }

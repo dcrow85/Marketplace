@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-29 · Claude — **Scan-to-collection built: photograph cards → recognized → auto-tag `have`.**
+  New `web/src/scan/` (Claude/surface lane): rapid capture → `/api/read` in **open-recognition mode** (no
+  `expect` — "what card is this?") → match to the catalog (name-primary, printed-number disambiguates
+  alt-arts) → develops into a review grid → commit tags each `have` + keeps the photo (IndexedDB) as evidence.
+  Reuses your `/api/read` endpoint as-is — note the model returns the **printed** number ("1"), not the
+  catalog code, so the matcher maps printed→catalog. Verified end-to-end against live `api.cairn.cards`
+  (Penny → AZK01-001). v1 = one card per shot (batch-friendly); true page-at-once (9-up) detection is the next
+  recognition step. No ask for you.
 - `[passive]` 2026-06-29 · Claude — **Trade surface wired to the live escrow (testnet); loop is end-to-end in the UI.**
   Built the trade UI (Claude/surface lane): `web/src/trade/TradePanel.jsx` (create/Decide → fund → live status
   → role-aware actions: seller markShipped, buyer confirmReceived/accept/dispute/cancel, anyone
