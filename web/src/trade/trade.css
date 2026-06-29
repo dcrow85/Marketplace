@@ -1,0 +1,66 @@
+/* Trade surface — restrained chrome; the card art + the one risk hue carry color. */
+.tp { margin-top: 18px; }
+.tp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.tp-tabs { display: flex; align-items: center; gap: 6px; }
+.tp-tabs button { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 7px 12px; cursor: pointer; }
+.tp-tabs button.on { color: var(--agent); border-color: var(--agent); background: var(--agent-bg); }
+.tp-tabs button:disabled { opacity: .5; cursor: default; }
+.tp-load input { width: 78px; font-size: 12px; padding: 6px 9px; border: 0.5px solid var(--rule); border-radius: 7px; background: var(--paper); color: var(--ink); outline: none; }
+.tp-who { font-size: 11.5px; color: var(--ink2); }
+.tp-who a { color: var(--agent); text-decoration: none; }
+
+/* Decide / fund */
+.decide { display: grid; grid-template-columns: 220px 1fr; gap: 26px; align-items: start; max-width: 760px; }
+.decide-card { position: sticky; top: 76px; }
+.dc-frame { aspect-ratio: 5 / 7; border: 0.5px solid var(--rule); border-radius: 12px; background: var(--paper2); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,.08); }
+.dc-art { color: var(--dim); font-size: 13px; padding: 12px; text-align: center; }
+.decide-body h3 { font-weight: 600; font-size: 20px; color: var(--ink); margin: 6px 0 16px; letter-spacing: -.01em; }
+.decide-body label { display: block; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin: 12px 0 5px; }
+.decide-body input { width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 9px 11px; outline: none; }
+.decide-body input:focus { border-color: var(--agent); }
+.decide-body input.mono { font-family: var(--mono); font-size: 13px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.suffix { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-left: 6px; }
+.boundary { font-size: 12.5px; line-height: 1.5; color: var(--ink2); background: var(--paper2); border: 0.5px solid var(--rule2); border-radius: 8px; padding: 10px 12px; margin: 16px 0 14px; }
+.warn { color: var(--signal); font-size: 12.5px; margin: 8px 0 0; }
+.err { color: var(--signal); font-size: 12px; margin: 10px 0 0; word-break: break-word; }
+.fund { width: 100%; font-family: var(--mono); font-size: 13px; letter-spacing: .03em; color: var(--paper); background: var(--agent); border: 0; border-radius: 9px; padding: 13px; cursor: pointer; margin-top: 4px; }
+.fund:hover:not(:disabled) { filter: brightness(1.07); }
+.fund:disabled { opacity: .45; cursor: default; }
+
+/* enforced / legible / judged labels — neutral pills, never a green "safe" badge */
+.tag { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border-radius: 5px; border: 0.5px solid var(--rule); color: var(--dim); margin-left: 2px; }
+.tag.enforced { color: var(--agent); border-color: var(--agent); }
+.tag.judged { color: var(--ink2); }
+
+/* Detail / status */
+.detail { max-width: 560px; }
+.d-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.d-top .mono { font-size: 12px; }
+.pill { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--rule); color: var(--ink2); }
+.pill.s-1 { color: var(--agent); border-color: var(--agent); }            /* Funded */
+.pill.s-2, .pill.s-3 { color: var(--ink); }                               /* Shipped / InspectionOpen */
+.pill.s-4, .pill.s-6 { color: var(--have); border-color: var(--have); }   /* Settled / Resolved */
+.pill.s-5 { color: var(--signal); border-color: var(--signal); }          /* Disputed */
+.pill.s-7 { color: var(--dim); }                                          /* Cancelled */
+.d-grid { display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; font-size: 12.5px; padding: 12px 0; border-top: 0.5px solid var(--rule2); border-bottom: 0.5px solid var(--rule2); }
+.d-grid span:nth-child(odd) { color: var(--dim); }
+.d-grid a { color: var(--agent); text-decoration: none; }
+.d-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+.act { font-family: var(--mono); font-size: 12px; color: var(--paper); background: var(--agent); border: 0; border-radius: 8px; padding: 9px 13px; cursor: pointer; }
+.act:hover:not(:disabled) { filter: brightness(1.07); }
+.act:disabled { opacity: .45; cursor: default; }
+.act-row { display: flex; gap: 6px; align-items: center; }
+.act-row input { font-size: 12.5px; padding: 8px 10px; border: 0.5px solid var(--rule); border-radius: 8px; background: var(--paper); color: var(--ink); outline: none; }
+.arb { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.arb .dim { font-family: var(--mono); font-size: 11px; }
+
+.viewtabs { display: flex; gap: 6px; margin-bottom: 18px; }
+.viewtabs button { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 8px; padding: 8px 16px; cursor: pointer; }
+.viewtabs button.on { color: var(--agent); border-color: var(--agent); background: var(--agent-bg); }
+
+@media (max-width: 640px) {
+  .decide { grid-template-columns: 1fr; gap: 16px; }
+  .decide-card { position: static; max-width: 180px; }
+  .row2 { grid-template-columns: 1fr; }
+}

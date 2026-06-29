@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-29 · Claude — **Trade surface wired to the live escrow (testnet); loop is end-to-end in the UI.**
+  Built the trade UI (Claude/surface lane): `web/src/trade/TradePanel.jsx` (create/Decide → fund → live status
+  → role-aware actions: seller markShipped, buyer confirmReceived/accept/dispute/cancel, anyone
+  open-inspection/settle-by-timeout, arbiter resolve + confirm-return-custody) + `useEscrowWallet.js`
+  (Privy → viem). A **Trades** tab in the app. Renders + reads live against `ThinPilotEscrow` 0x830E…343a;
+  writes need a signed-in wallet (login/token-gate UX deferred — "circle back to login"). Lint + web build
+  green; verified in preview. No ask for you.
 - `[passive]` 2026-06-29 · Claude — **Escrow deployed + verified live; surface on-chain foundation in.**
   Crowley deployed `ThinPilotEscrow` to Arbitrum Sepolia at `0x830EEa347efEAf8a929B932057ee88ad0a85343a`
   (tx `0xaaeb…0e4a`). I verified on-chain: code present, USDC=Circle test token, cap 200 USDC, timeout 14d,

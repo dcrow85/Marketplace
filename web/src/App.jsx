@@ -3,6 +3,8 @@ import { usePrivy } from '@privy-io/react-auth'
 import { handleFor, avatarSVG, randomAgentName } from './identity.js'
 import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
+import TradePanel from './trade/TradePanel.jsx'
+import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
 const DEV_PREVIEW = import.meta.env.DEV && new URLSearchParams(window.location.search).has('preview')
@@ -99,6 +101,7 @@ function MeetAgent({ accountId, onNamed }) {
 }
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
+  const [view, setView] = useState('collection') // 'collection' | 'trade'
   return (
     <div className="app">
       <nav className="nav">
@@ -110,22 +113,37 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
         </div>
       </nav>
       <main className="main">
-        <div className="ek">Your collection</div>
-        <h1>{catalog.title}</h1>
-        <div className="catalogswitch" aria-label="catalog selection">
-          {CATALOGS.map((c) => (
-            <button
-              key={c.id}
-              className={'catalogtab' + (c.id === catalog.id ? ' on' : '')}
-              onClick={() => setCatalog(c)}
-            >
-              <span>{c.label}</span>
-              <small>{c.note}</small>
-            </button>
-          ))}
+        <div className="viewtabs" aria-label="view">
+          <button className={view === 'collection' ? 'on' : ''} onClick={() => setView('collection')}>Collection</button>
+          <button className={view === 'trade' ? 'on' : ''} onClick={() => setView('trade')}>Trades</button>
         </div>
-        <div className="agentline"><Avatar seed={agent} size={20} /> <b>{agent}</b> is signed in and ready.</div>
-        <Binder accountId={accountId} agentName={agent} catalog={catalog} />
+        {view === 'collection' ? (
+          <>
+            <div className="ek">Your collection</div>
+            <h1>{catalog.title}</h1>
+            <div className="catalogswitch" aria-label="catalog selection">
+              {CATALOGS.map((c) => (
+                <button
+                  key={c.id}
+                  className={'catalogtab' + (c.id === catalog.id ? ' on' : '')}
+                  onClick={() => setCatalog(c)}
+                >
+                  <span>{c.label}</span>
+                  <small>{c.note}</small>
+                </button>
+              ))}
+            </div>
+            <div className="agentline"><Avatar seed={agent} size={20} /> <b>{agent}</b> is signed in and ready.</div>
+            <Binder accountId={accountId} agentName={agent} catalog={catalog} />
+          </>
+        ) : (
+          <>
+            <div className="ek">Trade</div>
+            <h1>Escrowed trades</h1>
+            <div className="agentline mono dim">USDC escrow on Arbitrum Sepolia · testnet pilot</div>
+            <TradePanel />
+          </>
+        )}
       </main>
     </div>
   )
