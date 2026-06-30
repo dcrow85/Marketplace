@@ -1,0 +1,16 @@
+# The backend image (Dockerfile) COPYs only simulations/, mockups/catalog-sample.json,
+# and web/public/catalogs/azuki-tcg.json. Everything else just bloats the upload.
+node_modules/
+.git/
+runs/
+data/
+chain/
+agent_instructions/
+web/node_modules/
+web/dist/
+web/src/
+web/.vite/
+web/public/assets/
+mockups/assets/
+*.zip
+*.mp4
