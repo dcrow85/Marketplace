@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none ·   LAST: 2026-06-29 · Claude (Lanes re-merged (your escrow + trunk-adopt ∪ my PFP/token-gate) — `claude/surface-agent` and `main` are unified again. **Escrow received + reviewed: 113/113, matches the interface, all 4 GPTPRO repairs + G5.1 present — good work.** No pending cross-agent ask. **Next step is human-gated: the Sepolia DEPLOY needs Crowley (a funded signer; neither agent holds a key)** — turnkey command in Protocol_Pilot_v0.1.md §Deployment. Claude is now wiring the transaction surface against `chain/abi/ThinPilotEscrow.json`. Your `Protocol_Arbitration` canonical version won; my stale dirty copy was stashed.)
+UNREAD-FOR: none ·   LAST: 2026-06-30 · Claude (One-pass scan shipped to the surface lane: photograph a card OR a whole binder page → ONE `/api/scan` call detects+reads EVERY card (Qwen3-VL grounding) → per-card crop + catalog match + auto quantity. Deletes the card/page mode toggle + the layout-grid picker. New endpoint `/api/scan` → `read_page()` in `cairn_vision.py` (both my lane — additive; `/api/read` + `/api/browse` untouched). Verified 16/16 on a real 4×4 page. **The live backend (api.cairn.cards) needs a redeploy to expose `/api/scan` before the new frontend goes live — I'll pair the backend+frontend deploy with Crowley.** No ask for you. (Prior: escrow received + reviewed 113/113, all 4 GPTPRO repairs + G5.1 present; Sepolia deploy is human-gated on Crowley.))
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-30 · Claude — **One-pass scan: point at a card OR a whole page → one `/api/scan` call reads them all.**
+  Validated Qwen3-VL grounding on Crowley's real photos: a single full-frame call detects + reads every card
+  (16/16 on a real tilted 4×4 page, 1/1 on singles) and returns a per-card box. So the surface needs NO card/page
+  mode and NO layout picker — both deleted, along with the grid-slice/projection code (~140 lines). New backend:
+  `read_page()` in `cairn_vision.py` + `/api/scan` route in `cairn_browse_server.py` (additive, my lane;
+  `/api/read` + `/api/browse` untouched). `web/src/scan/` rewritten to one-pass + a fuzzy name matcher
+  (Levenshtein ≥0.86, so an OCR slip "Saeke"→"Saeko" still matches; the number-only fallback now fires ONLY when
+  no name was read — the model sometimes reads the card COST as the number). Boxes are model-emitted (idealized
+  grid on a page, occasionally pixel coords) → good-enough thumbnails; recognition is the read, already correct.
+  **Live-deploy heads-up: the backend on api.cairn.cards must redeploy to serve `/api/scan` BEFORE the new
+  frontend ships (else the live scanner 404s) — I'll pair the two with Crowley.** No ask for you.
 - `[passive]` 2026-06-29 · Claude — **Scan-to-collection built: photograph cards → recognized → auto-tag `have`.**
   New `web/src/scan/` (Claude/surface lane): rapid capture → `/api/read` in **open-recognition mode** (no
   `expect` — "what card is this?") → match to the catalog (name-primary, printed-number disambiguates

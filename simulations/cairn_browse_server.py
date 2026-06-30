@@ -43,7 +43,7 @@ STATIC_DIR = MOCKUPS  # overridable via --static-dir (e.g. the built web/dist in
 import sys
 sys.path.insert(0, str(ROOT / "simulations"))
 from cairn_browse import browse, ENDPOINT  # noqa: E402  (reuse the proven loop)
-from cairn_vision import read_photo  # noqa: E402  (photo-import vision read)
+from cairn_vision import read_photo, read_page  # noqa: E402  (photo-import vision read)
 
 MAX_CALL_CHARS = 280
 MAX_READ_BYTES = 12 * 1024 * 1024  # /api/read accepts a down-res'd image (base64)
@@ -132,6 +132,8 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             self._post_browse()
         elif self.path == "/api/read":
             self._post_read()
+        elif self.path == "/api/scan":
+            self._post_scan()
         else:
             self.send_error(404, "Unknown endpoint")
 
@@ -186,6 +188,24 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             result = read_photo(image, expect)  # hosted vision endpoint; concurrent OK
         except Exception as exc:  # noqa: BLE001 — never leak a stack trace
             self.send_json({"error": "read_failed", "detail": type(exc).__name__}, status=502)
+            return
+        self.send_json(result)
+
+    def _post_scan(self) -> None:
+        """One-pass detect+read over a whole frame: {image: <data-uri>} -> {cards:[...], total}.
+        Same model as /api/read; here it returns EVERY card it sees (one or many) with a box,
+        so the surface needs no card/page mode and no layout picker."""
+        payload = self._body(MAX_READ_BYTES)
+        if payload is None:
+            return
+        image = str(payload.get("image", ""))
+        if not image.startswith("data:image"):
+            self.send_json({"error": "bad_image"}, status=400)
+            return
+        try:
+            result = read_page(image)  # hosted vision endpoint; concurrent OK
+        except Exception as exc:  # noqa: BLE001 — never leak a stack trace
+            self.send_json({"error": "scan_failed", "detail": type(exc).__name__}, status=502)
             return
         self.send_json(result)
 

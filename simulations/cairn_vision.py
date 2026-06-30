@@ -49,6 +49,26 @@ def _prompt(expect: dict | None) -> str:
     )
 
 
+def _page_prompt() -> str:
+    """Open recognition over a WHOLE frame — one card or a full binder page. The model
+    detects every card, reads each, and returns a box so the surface can crop a per-card
+    thumbnail. No `expect` — the catalog match happens client-side, name-primary."""
+    return (
+        "You help a collector catalog trading cards from a photo of their PHYSICAL cards. "
+        "You do NOT verify authenticity, condition, or grade.\n"
+        "The photo shows ONE card or a binder page of MANY. Detect EVERY distinct card. "
+        "For EACH card: read the printed NAME exactly; read the collector NUMBER if legible; "
+        'check for a small printed Greek letter "α" (alpha) glyph on the card face (MOST cards '
+        'have none — answer "present" ONLY if you clearly see the actual "α" glyph, else "absent"; '
+        "do not guess it from the art, set, or name); and give a bounding box as [x0,y0,x1,y1] in "
+        "FRACTIONS of the image width and height, top-left origin (x rightward, y downward, 0..1).\n"
+        "List cards in reading order (left-to-right, top-to-bottom); include one entry per copy.\n"
+        "Return STRICT JSON only, no prose, no markdown:\n"
+        '{"cards":[{"name_read":"","number_read":"","alpha_stamp":"present|absent|unsure","box":[0,0,0,0]}],"total":0}\n'
+        "Never state or imply that any card is authentic, genuine, real, verified, mint, or graded."
+    )
+
+
 def _parse(raw: str):
     s = re.sub(r"```(json)?", "", raw).strip()
     m = re.search(r"\{.*\}", s, re.S)
@@ -80,6 +100,36 @@ def read_photo(image_uri: str, expect: dict | None = None) -> dict:
     raw = r["choices"][0]["message"]["content"]
     res = _parse(raw)
     if res is None:
+        return {"error": "unparseable", "raw": raw[:200]}
+    res["overclaim_flags"] = sorted({m.group(0).lower() for m in _OVERCLAIM.finditer(raw)})
+    res["model"] = MODEL
+    return res
+
+
+def read_page(image_uri: str) -> dict:
+    """One-pass detect+read over a whole frame (one card or a page of many). Returns
+    {"cards":[{name_read,number_read,alpha_stamp,box:[x0,y0,x1,y1]}, ...], "total", ...}
+    or {"error": ...}. Boxes are model-emitted (fractions, occasionally pixels — the surface
+    normalizes); a slightly-loose box never changes the read, only the thumbnail crop."""
+    if not image_uri or not isinstance(image_uri, str):
+        return {"error": "no_image"}
+    if len(image_uri) > MAX_IMAGE_CHARS:
+        return {"error": "image_too_large"}
+    payload = {
+        "model": MODEL, "temperature": 0, "max_tokens": 3200,
+        "messages": [{"role": "user", "content": [
+            {"type": "text", "text": _page_prompt()},
+            {"type": "image_url", "image_url": {"url": image_uri}},
+        ]}],
+    }
+    headers = {"Content-Type": "application/json"}
+    if _KEY:
+        headers["Authorization"] = f"Bearer {_KEY}"
+    req = urllib.request.Request(ENDPOINT, data=json.dumps(payload).encode(), headers=headers)
+    r = json.load(urllib.request.urlopen(req, timeout=240))
+    raw = r["choices"][0]["message"]["content"]
+    res = _parse(raw)
+    if res is None or not isinstance(res.get("cards"), list):
         return {"error": "unparseable", "raw": raw[:200]}
     res["overclaim_flags"] = sorted({m.group(0).lower() for m in _OVERCLAIM.finditer(raw)})
     res["model"] = MODEL
