@@ -1,5 +1,5 @@
-import { useRef, useState, useMemo } from 'react'
-import { recognizePhoto } from './recognize.js'
+import { useRef, useState, useMemo, useEffect } from 'react'
+import { recognizePhoto, ensureWarpWorker } from './recognize.js'
 
 const cardName = (c) => c?.name_en || c?.name_ja || c?.uid || '—'
 
@@ -27,6 +27,9 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const [items, setItems] = useState([]) // {id, status:'reading'|'matched'|'unmatched', photo, read, match}
   const [picking, setPicking] = useState(null) // item id currently being picked
   const idRef = useRef(0)
+
+  // Warm up the OpenCV warp worker (off the main thread) while the user frames their shot.
+  useEffect(() => { ensureWarpWorker() }, [])
 
   // Each photo → one /api/scan call → many cards. While a call is in flight we show one
   // "reading" placeholder for that photo, then replace it with the cards it found.

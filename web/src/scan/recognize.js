@@ -171,19 +171,71 @@ function edgeSnap(img, box) {
   return [nx0, ny0, nx1, ny1]
 }
 
+// --- pixel-perfect crop via OpenCV, in a Web Worker (strictly optional) --------------
+// The worker loads OpenCV OFF the main thread (no UI freeze) and warps each card straight.
+// The scan NEVER waits on it to load: crops start as edge-snap and are upgraded to the
+// warped version only if the worker is already ready, and only within a timeout. If the
+// worker never loads, fails, or is slow, you just keep the edge-snap crop.
+let _worker = null
+let _workerReady = null
+export function ensureWarpWorker() {
+  if (_workerReady) return _workerReady
+  _workerReady = new Promise((resolve) => {
+    let w
+    try { w = new Worker(new URL('./warp.worker.js', import.meta.url)) } catch { resolve(null); return }
+    const opencvUrl = new URL((import.meta.env.BASE_URL || '/') + 'vendor/opencv.js', self.location.origin).href
+    const onReady = (e) => {
+      if (!e.data || e.data.type !== 'ready') return
+      w.removeEventListener('message', onReady)
+      if (e.data.ok) { _worker = w; resolve(w) } else { w.terminate(); resolve(null) }
+    }
+    w.addEventListener('message', onReady)
+    w.onerror = () => resolve(null)
+    w.postMessage({ type: 'load', url: opencvUrl })
+  })
+  return _workerReady
+}
+
+// Ask the worker to warp `boxes` from an RGBA `buffer` (transferred). Resolves to an array
+// of crop data-URLs (null per card that didn't resolve), or null on timeout/error.
+function warpViaWorker(worker, buffer, width, height, boxes, timeoutMs = 8000) {
+  return new Promise((resolve) => {
+    const id = 'w' + width + 'x' + height + '_' + boxes.length + '_' + performance.now()
+    let done = false
+    const onMsg = (e) => {
+      if (!e.data || e.data.type !== 'warped' || e.data.id !== id) return
+      done = true; clearTimeout(timer); worker.removeEventListener('message', onMsg)
+      resolve(Array.isArray(e.data.crops) ? e.data.crops : null)
+    }
+    const timer = setTimeout(() => { if (!done) { worker.removeEventListener('message', onMsg); resolve(null) } }, timeoutMs)
+    worker.addEventListener('message', onMsg)
+    worker.postMessage({ type: 'warp', id, buffer, width, height, boxes }, [buffer])
+  })
+}
+
 // Photograph anything → array of { read, match, photo(crop) }, one per detected card.
 export async function recognizePhoto(file, cards) {
   const img = await loadImage(file)
   try {
     const dataUri = imgToDataUri(img)
-    let res
-    try { res = await readPage(dataUri) } catch { res = { error: 'scan_failed' } }
+    const res = await readPage(dataUri).catch(() => ({ error: 'scan_failed' }))
     const found = res && Array.isArray(res.cards) ? res.cards : []
-    return found.map((read) => ({
-      read,
-      match: matchCard(read, cards),
-      photo: cropBox(img, edgeSnap(img, normBox(read.box, img.width, img.height))),
-    }))
+    const boxes = found.map((read) => normBox(read.box, img.width, img.height))
+    const crops = boxes.map((b) => cropBox(img, edgeSnap(img, b))) // always-available baseline
+
+    // Upgrade to warped crops IFF the worker is already loaded (never awaits the load here).
+    if (_worker && found.length) {
+      try {
+        const S = Math.min(1, 1800 / Math.max(img.width, img.height))
+        const bw = Math.max(1, Math.round(img.width * S)), bh = Math.max(1, Math.round(img.height * S))
+        const cv = document.createElement('canvas'); cv.width = bw; cv.height = bh
+        const ctx = cv.getContext('2d', { willReadFrequently: true }); ctx.drawImage(img, 0, 0, bw, bh)
+        const buf = ctx.getImageData(0, 0, bw, bh).data.buffer
+        const warped = await warpViaWorker(_worker, buf, bw, bh, boxes)
+        if (warped) warped.forEach((u, i) => { if (u) crops[i] = u })
+      } catch { /* keep the edge-snap crops */ }
+    }
+    return found.map((read, i) => ({ read, match: matchCard(read, cards), photo: crops[i] }))
   } finally {
     URL.revokeObjectURL(img.src)
   }
