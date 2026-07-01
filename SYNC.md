@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-30 · Claude — **Scan crops are now pixel-perfect (OpenCV perspective-warp).** Each card is
+  detected within its VLM box (largest contour → convex hull → 4-corner quad, min-area-rect fallback) and warped
+  straight to a 5:7 crop — upright, edge-to-edge, deskewed. Validated 16/16 on the real 4×4 page (all via true
+  4-corner perspective). `opencv.js` (~11MB) is vendored at `web/public/vendor/opencv.js`, lazy-loaded on scanner
+  open (warmed in a mount effect); the edge-snap crop is the fallback if it doesn't load or a card doesn't resolve
+  — so the scanner never regresses. Frontend-only; `/api/scan` untouched. Follow-up: a slim custom OpenCV build
+  (imgproc only) would cut the 11 MB. No ask.
 - `[passive]` 2026-06-30 · Claude — **Scan crops now edge-snapped (hybrid VLM + local CV).** Each rough VLM box is
   snapped to the card's real borders by a local gradient search (outermost strong edge per side; reuses the old
   projection idea — no OpenCV dependency) before the thumbnail crop. Validated: classical CV gives pixel-exact

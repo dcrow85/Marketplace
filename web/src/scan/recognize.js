@@ -171,19 +171,122 @@ function edgeSnap(img, box) {
   return [nx0, ny0, nx1, ny1]
 }
 
+// --- pixel-perfect crop via OpenCV (lazy-loaded) ------------------------------
+// The VLM box locates the card; OpenCV finds its exact 4 corners and perspective-warps it
+// straight — an upright, edge-to-edge crop. opencv.js (~11MB) loads lazily when the scanner
+// mounts, so it's usually ready by the time the vision read returns; if it isn't (or a card
+// doesn't resolve to a clean quad) we fall back to the edge-snap crop — never a worse result.
+let _cvPromise = null
+export function ensureOpenCV() {
+  if (_cvPromise) return _cvPromise
+  _cvPromise = new Promise((resolve) => {
+    if (window.cv && window.cv.Mat) return resolve(window.cv)
+    const s = document.createElement('script')
+    s.src = (import.meta.env.BASE_URL || '/') + 'vendor/opencv.js'
+    s.async = true
+    s.onload = () => {
+      const done = () => resolve(window.cv)
+      if (window.cv && window.cv.Mat) return done()
+      if (window.cv && typeof window.cv.then === 'function') { window.cv.then((m) => { window.cv = m; done() }); return }
+      window.cv = window.cv || {}
+      window.cv.onRuntimeInitialized = done
+    }
+    s.onerror = () => resolve(null)
+    document.head.appendChild(s)
+  })
+  return _cvPromise
+}
+
+// Largest contour → convex hull → 4-corner quad (else min-area rect), ordered TL,TR,BR,BL
+// in full-image pixels. The hull cleans up rounded corners/notches so a card resolves to a
+// clean quad far more often than raw approxPolyDP.
+function orderedQuad(cv, c, X, Y) {
+  const hull = new cv.Mat()
+  cv.convexHull(c, hull, false, true)
+  const peri = cv.arcLength(hull, true)
+  let q = null
+  for (const f of [0.02, 0.03, 0.05, 0.08, 0.12]) {
+    const ap = new cv.Mat()
+    cv.approxPolyDP(hull, ap, f * peri, true)
+    if (ap.rows === 4) { q = [0, 1, 2, 3].map((i) => [ap.data32S[i * 2] + X, ap.data32S[i * 2 + 1] + Y]); ap.delete(); break }
+    ap.delete()
+  }
+  if (!q) {
+    const rr = cv.minAreaRect(hull), cx = rr.center.x, cy = rr.center.y, w = rr.size.width, h = rr.size.height
+    const a = rr.angle * Math.PI / 180, co = Math.cos(a), si = Math.sin(a)
+    q = [[-w / 2, -h / 2], [w / 2, -h / 2], [w / 2, h / 2], [-w / 2, h / 2]].map(([dx, dy]) => [cx + dx * co - dy * si + X, cy + dx * si + dy * co + Y])
+  }
+  hull.delete()
+  q.sort((a, b) => a[1] - b[1])
+  const t = q.slice(0, 2).sort((a, b) => a[0] - b[0]), b2 = q.slice(2, 4).sort((a, b) => a[0] - b[0])
+  return [t[0], t[1], b2[1], b2[0]]
+}
+
+// Detect the card in the box's neighborhood and perspective-warp it to a straight 5:7 crop.
+// Returns a JPEG data URI, or null if no confident card rectangle was found.
+function warpCardCV(cv, src, box, OW = 500, OH = 700) {
+  const W = src.cols, H = src.rows, bw = box[2] - box[0], bh = box[3] - box[1], pad = 0.06
+  const X = Math.max(0, Math.round((box[0] - bw * pad) * W)), Y = Math.max(0, Math.round((box[1] - bh * pad) * H))
+  const rw = Math.min(W, Math.round((box[2] + bw * pad) * W)) - X, rh = Math.min(H, Math.round((box[3] + bh * pad) * H)) - Y
+  if (rw < 16 || rh < 16) return null
+  const roi = src.roi(new cv.Rect(X, Y, rw, rh))
+  const gray = new cv.Mat(), edges = new cv.Mat()
+  const k = cv.getStructuringElement(cv.MORPH_RECT, new cv.Size(7, 7))
+  const contours = new cv.MatVector(), hier = new cv.Mat()
+  let url = null
+  try {
+    cv.cvtColor(roi, gray, cv.COLOR_RGBA2GRAY)
+    cv.GaussianBlur(gray, gray, new cv.Size(5, 5), 0)
+    cv.Canny(gray, edges, 30, 110)
+    cv.morphologyEx(edges, edges, cv.MORPH_CLOSE, k)
+    cv.findContours(edges, contours, hier, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+    let bi = -1, ba = 0
+    for (let i = 0; i < contours.size(); i++) { const cc = contours.get(i); const a = cv.contourArea(cc); if (a > ba) { ba = a; bi = i } cc.delete() }
+    if (bi >= 0 && ba > rw * rh * 0.2) {
+      const c = contours.get(bi)
+      const o = orderedQuad(cv, c, X, Y)
+      c.delete()
+      const st = cv.matFromArray(4, 1, cv.CV_32FC2, [o[0][0], o[0][1], o[1][0], o[1][1], o[2][0], o[2][1], o[3][0], o[3][1]])
+      const dt = cv.matFromArray(4, 1, cv.CV_32FC2, [0, 0, OW, 0, OW, OH, 0, OH])
+      const M = cv.getPerspectiveTransform(st, dt), out = new cv.Mat()
+      cv.warpPerspective(src, out, M, new cv.Size(OW, OH), cv.INTER_LINEAR, cv.BORDER_REPLICATE)
+      const oc = document.createElement('canvas'); oc.width = OW; oc.height = OH
+      cv.imshow(oc, out)
+      url = oc.toDataURL('image/jpeg', 0.9)
+      st.delete(); dt.delete(); M.delete(); out.delete()
+    }
+  } catch { url = null } finally {
+    roi.delete(); gray.delete(); edges.delete(); k.delete(); contours.delete(); hier.delete()
+  }
+  return url
+}
+
 // Photograph anything → array of { read, match, photo(crop) }, one per detected card.
+// OpenCV warps each card straight (pixel-exact); edge-snap is the fallback.
 export async function recognizePhoto(file, cards) {
   const img = await loadImage(file)
   try {
     const dataUri = imgToDataUri(img)
-    let res
-    try { res = await readPage(dataUri) } catch { res = { error: 'scan_failed' } }
+    const [res, cv] = await Promise.all([
+      readPage(dataUri).catch(() => ({ error: 'scan_failed' })),
+      ensureOpenCV(),
+    ])
     const found = res && Array.isArray(res.cards) ? res.cards : []
-    return found.map((read) => ({
-      read,
-      match: matchCard(read, cards),
-      photo: cropBox(img, edgeSnap(img, normBox(read.box, img.width, img.height))),
-    }))
+    let src = null
+    if (cv && cv.Mat && found.length) {
+      const cvs = document.createElement('canvas'); cvs.width = img.width; cvs.height = img.height
+      cvs.getContext('2d').drawImage(img, 0, 0)
+      try { src = cv.imread(cvs) } catch { src = null }
+    }
+    const out = found.map((read) => {
+      const box = normBox(read.box, img.width, img.height)
+      let photo = null
+      if (src) { try { photo = warpCardCV(cv, src, box) } catch { photo = null } }
+      if (!photo) photo = cropBox(img, edgeSnap(img, box))
+      return { read, match: matchCard(read, cards), photo }
+    })
+    if (src) src.delete()
+    return out
   } finally {
     URL.revokeObjectURL(img.src)
   }
