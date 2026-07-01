@@ -124,6 +124,53 @@ function cropBox(img, b, max = 720) {
   return cv.toDataURL('image/jpeg', 0.85)
 }
 
+// Snap a rough VLM box to the card's real edges. The model gives the location + count
+// (recall); this gives the precision. Within a slightly-expanded region, find the OUTERMOST
+// strong gradient line on each side — the card border, not the interior art (which is why
+// the dark low-contrast cards still snap: a local search doesn't need global contrast).
+// Falls back to the original box if the snap looks degenerate — never makes a crop worse.
+function smoothProfile(p, w) {
+  const n = p.length, o = new Float32Array(n)
+  for (let i = 0; i < n; i++) { let s = 0, k = 0; for (let j = -w; j <= w; j++) { const t = i + j; if (t >= 0 && t < n) { s += p[t]; k++ } } o[i] = s / k }
+  return o
+}
+function outerEdge(p, lo, hi, fromLeft) {
+  let m = 0
+  for (let i = lo; i <= hi; i++) if (p[i] > m) m = p[i]
+  const thr = m * 0.4
+  if (fromLeft) { for (let i = lo; i <= hi; i++) if (p[i] >= thr) return i } else { for (let i = hi; i >= lo; i--) if (p[i] >= thr) return i }
+  return -1
+}
+function edgeSnap(img, box) {
+  const [x0, y0, x1, y1] = box, bw = x1 - x0, bh = y1 - y0
+  if (bw < 0.03 || bh < 0.03) return box
+  const pad = 0.14
+  const rx0 = clamp01(x0 - bw * pad), ry0 = clamp01(y0 - bh * pad), rx1 = clamp01(x1 + bw * pad), ry1 = clamp01(y1 + bh * pad)
+  const sx = rx0 * img.width, sy = ry0 * img.height, sw = (rx1 - rx0) * img.width, sh = (ry1 - ry0) * img.height
+  if (sw < 12 || sh < 12) return box
+  const W = 360, H = Math.max(12, Math.round(W * sh / sw))
+  const cv = document.createElement('canvas'); cv.width = W; cv.height = H
+  const ctx = cv.getContext('2d', { willReadFrequently: true })
+  ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H)
+  const d = ctx.getImageData(0, 0, W, H).data
+  const g = new Float32Array(W * H)
+  for (let i = 0; i < W * H; i++) { const j = i * 4; g[i] = d[j] * 0.3 + d[j + 1] * 0.59 + d[j + 2] * 0.11 }
+  let col = new Float32Array(W), rowp = new Float32Array(H)
+  for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) { const i = y * W + x; col[x] += Math.abs(g[i + 1] - g[i - 1]); rowp[y] += Math.abs(g[i + W] - g[i - W]) }
+  col = smoothProfile(col, Math.max(1, Math.round(W / 70)))
+  rowp = smoothProfile(rowp, Math.max(1, Math.round(H / 70)))
+  const lx = outerEdge(col, Math.round(W * 0.02), Math.round(W * 0.42), true)
+  const rx = outerEdge(col, Math.round(W * 0.58), Math.round(W * 0.98), false)
+  const ty = outerEdge(rowp, Math.round(H * 0.02), Math.round(H * 0.42), true)
+  const by = outerEdge(rowp, Math.round(H * 0.58), Math.round(H * 0.98), false)
+  if (lx < 0 || rx < 0 || ty < 0 || by < 0 || rx - lx < W * 0.4 || by - ty < H * 0.4) return box
+  const nx0 = rx0 + (lx / W) * (rx1 - rx0), nx1 = rx0 + (rx / W) * (rx1 - rx0)
+  const ny0 = ry0 + (ty / H) * (ry1 - ry0), ny1 = ry0 + (by / H) * (ry1 - ry0)
+  const asp = (nx1 - nx0) / (ny1 - ny0)
+  if (nx1 - nx0 < 0.02 || ny1 - ny0 < 0.02 || asp < 0.4 || asp > 1.1) return box
+  return [nx0, ny0, nx1, ny1]
+}
+
 // Photograph anything → array of { read, match, photo(crop) }, one per detected card.
 export async function recognizePhoto(file, cards) {
   const img = await loadImage(file)
@@ -135,7 +182,7 @@ export async function recognizePhoto(file, cards) {
     return found.map((read) => ({
       read,
       match: matchCard(read, cards),
-      photo: cropBox(img, normBox(read.box, img.width, img.height)),
+      photo: cropBox(img, edgeSnap(img, normBox(read.box, img.width, img.height))),
     }))
   } finally {
     URL.revokeObjectURL(img.src)

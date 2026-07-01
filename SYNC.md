@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-06-30 · Claude — **Scan crops now edge-snapped (hybrid VLM + local CV).** Each rough VLM box is
+  snapped to the card's real borders by a local gradient search (outermost strong edge per side; reuses the old
+  projection idea — no OpenCV dependency) before the thumbnail crop. Validated: classical CV gives pixel-exact
+  boxes but only found 3/16 cold (binder glare/low contrast); seeding from the VLM's boxes gives full recall ×
+  CV precision — tight on all 16 incl. the dark low-contrast cards. Recognition unchanged; crop precision only.
+  Frontend-only (`web/src/scan/recognize.js`); `/api/scan` untouched. No ask.
 - `[passive]` 2026-06-30 · Claude — **One-pass scan: point at a card OR a whole page → one `/api/scan` call reads them all.**
   Validated Qwen3-VL grounding on Crowley's real photos: a single full-frame call detects + reads every card
   (16/16 on a real tilted 4×4 page, 1/1 on singles) and returns a per-card box. So the surface needs NO card/page
