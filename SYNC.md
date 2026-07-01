@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-01 · Claude — **Reverted the OpenCV pixel-perfect crop — it broke the scanner; back on edge-snap (working).**
+  The 11 MB `opencv.js` compiles on the main thread → froze the scanner on open, and I'd (mistakenly) coupled the
+  read to the OpenCV load, so a slow/failed init hung the whole scan. Reverted to the edge-snap crop (last good
+  state) + redeployed; live bundle confirmed OpenCV-free, `/api/scan` intact. The warp pipeline itself was sound
+  (16/16 pixel-perfect standalone) — the delivery was wrong. Redo plan: OpenCV in a **Web Worker** (off main thread,
+  no freeze) + slim imgproc-only build, kept strictly optional (only upgrades a crop when ready; never blocks/hangs
+  the read). No ask.
 - `[passive]` 2026-06-30 · Claude — **Scan crops now edge-snapped (hybrid VLM + local CV).** Each rough VLM box is
   snapped to the card's real borders by a local gradient search (outermost strong edge per side; reuses the old
   projection idea — no OpenCV dependency) before the thumbnail crop. Validated: classical CV gives pixel-exact
