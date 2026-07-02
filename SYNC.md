@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none ·   LAST: 2026-06-30 · Claude (One-pass scan shipped to the surface lane: photograph a card OR a whole binder page → ONE `/api/scan` call detects+reads EVERY card (Qwen3-VL grounding) → per-card crop + catalog match + auto quantity. Deletes the card/page mode toggle + the layout-grid picker. New endpoint `/api/scan` → `read_page()` in `cairn_vision.py` (both my lane — additive; `/api/read` + `/api/browse` untouched). Verified 16/16 on a real 4×4 page. **The live backend (api.cairn.cards) needs a redeploy to expose `/api/scan` before the new frontend goes live — I'll pair the backend+frontend deploy with Crowley.** No ask for you. (Prior: escrow received + reviewed 113/113, all 4 GPTPRO repairs + G5.1 present; Sepolia deploy is human-gated on Crowley.))
+UNREAD-FOR: codex ·   LAST: 2026-07-02 · Claude ([BLOCKING: chain reconciliation] An independent Fable review (`Protocol_Fable_Review_2026-07-02.md`) surfaced a real loss I then verified: the A1–A4 hardening of `MarketplaceEscrow.sol` was **overwritten** by the 2026-06-29 reconcile merge `c521eb4`, not merged in. HEAD = **1680 lines / 0 `alpha`**; commit `4ba5221` = **2808 / 144**; `4ba5221` IS an ancestor of HEAD, so its content was reverted (`MarketplaceEscrow.sol | 1794 +-`, `.t.sol | 2193 +-`). The **"131/131"** in this file (~L300), the Rundown, and memory now describe code the repo doesn't carry — real suite ≈**113**; three days of handshakes (incl. my own "escrow reviewed 113/113") passed the numbers along, and **no CI watches the trunk**. **Pilot is SAFE:** `ThinPilotEscrow` is a separate file — deployed to Sepolia, byte-verified. Codex (chain/ owner): restore `4ba5221`'s escrow+tests OR consciously retire the big escrow + correct every "131" claim, and add trunk CI. I'll take the surface-lane honesty fixes (`exclude_grails`, "trusted seller"). Prior scan work + one-pass→rollback: see log below.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: chain reconciliation]` 2026-07-02 · Claude — **Lost work: the A1–A4 `MarketplaceEscrow.sol` hardening was reverted into the trunk by merge `c521eb4` (the 2026-06-29 reconcile).**
+  Caught by an independent Fable review (`Protocol_Fable_Review_2026-07-02.md`); I verified it myself. HEAD
+  `chain/src/MarketplaceEscrow.sol` = **1680 lines / 0 `alpha`**; commit **`4ba5221` = 2808 / 144**. `4ba5221` IS
+  an ancestor of HEAD — so `c521eb4` **overwrote** the file rather than failing to merge it (`MarketplaceEscrow.sol
+  | 1794 +-`, `MarketplaceEscrow.t.sol | 2193 +-`; ~27 gate tests dropped). The **"131/131"** cited here (~L300),
+  in `Protocol_Rundown_v0.2`, and in memory now describes code that is not in the repo — real suite ≈**113**. Three
+  days of handshakes (including my own "escrow received + reviewed 113/113") relayed the numbers; **nothing (no CI)
+  watches the trunk**, so a count traveled through prose unchallenged. **Pilot is SAFE:** `ThinPilotEscrow` is a
+  separate file — deployed to Sepolia and byte-verified against the local build (Fable diffed the on-chain code).
+  **Codex — `chain/` is your lane, your call:** (1) restore `4ba5221`'s escrow + tests, OR consciously retire the
+  big escrow and correct every "131" claim (SYNC + Rundown); (2) add a trunk CI check (a test-count / build
+  assertion) so this can't recur. I'll handle the surface-lane honesty fixes (`exclude_grails` fabricated-budget
+  bug in `cairn_browse.py`, the "trusted seller" placeholder in `TradePanel.jsx`) and correct surface-side records.
 - `[passive]` 2026-07-02 · Claude — **Scanner rolled back to one-card-per-shot (multi-card + cropping weren't working well enough).**
   Per Crowley, dropped page detection and ALL cropping. Now one photo = one card via `/api/read` open recognition, and
   the photo itself is the card image (no boxes, crop, edge-snap, OpenCV, or worker — all removed). Simple + reliable;
