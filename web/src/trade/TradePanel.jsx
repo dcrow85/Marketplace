@@ -115,7 +115,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
             <input className="mono" value={f.amount} onChange={set('amount')} placeholder="0" inputMode="decimal" /></div>
         </div>
         <label>Seller wallet</label>
-        <input className="mono" value={f.seller} onChange={set('seller')} placeholder="0x… (a trusted seller)" />
+        <input className="mono" value={f.seller} onChange={set('seller')} placeholder="0x… (seller wallet)" />
         <div className="row2">
           <div><label>Arbiter wallet <span className="dim">not you</span></label>
             <input className="mono" value={f.arbiter} onChange={set('arbiter')} placeholder="0x… (neutral)" /></div>

@@ -61,12 +61,16 @@ from interrupt_bar_probe import call_model  # noqa: E402  (reuse the proven mlx 
 MODEL = os.environ.get("CAIRN_MODEL_ID", "/Users/che/models/mlx/Qwen3.6-35B-A3B-4bit")
 ENDPOINT = os.environ.get("CAIRN_MODEL_ENDPOINT", "http://127.0.0.1:8081/v1/chat/completions")
 
-# the standing cost field (the editable dashboard the human browses through)
+# The standing cost field — the USER's own editable preferences, and EMPTY by default.
+# No-overclaim: the protocol must not assert a motive/budget/condition/trust the user never
+# gave, so we don't seed a fabricated persona here. Filters are driven purely by the user's
+# actual call unless they set these fields themselves (e.g. a call that says "cheap" still
+# sets exclude_grails — that comes from the user's words, not an invented budget).
 COST_FIELD = {
-    "motive": "completionist-leaning collector, here for the love of the set",
-    "budget": "modest — skip the grails for now",
-    "condition": "raw is fine",
-    "trust": "leans on established shops",
+    "motive": "",
+    "budget": "",
+    "condition": "",
+    "trust": "",
 }
 
 CATALOG_PATHS = {
