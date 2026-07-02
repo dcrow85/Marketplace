@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import ScanCards from '../scan/ScanCards.jsx'
+import { hashText } from '../chain/escrow.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import '../scan/scan.css'
 
@@ -363,6 +364,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                     {(COND_GRADES[u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')] || COND_GRADES.raw).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                   </select>
                 </Frow>
+                <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
                 <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
               </>}
@@ -544,7 +546,14 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const commitScans = useCallback((scans) => {
     setStore((prev) => {
       const next = { ...prev }
-      for (const s of scans) next[s.uid] = { ...(next[s.uid] || {}), stance: 'have', scanned: true }
+      for (const s of scans) {
+        const copies = Math.max(next[s.uid]?.copies || 0, s.copies || 1)
+        next[s.uid] = {
+          ...(next[s.uid] || {}), stance: 'have', scanned: true, copies,
+          ...(copies > 1 ? { extra: true } : {}),
+          ...(s.photo ? { photo_hash: hashText(s.photo) } : {}), // anchors the local photo; verifiable when sync lands
+        }
+      }
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
       return next
     })

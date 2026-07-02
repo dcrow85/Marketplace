@@ -65,7 +65,14 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const dupes = matched.length - uniq
   const commit = () => {
     if (!matched.length) return
-    onCommit(matched.map((x) => ({ uid: x.match.uid, photo: x.photo, read: x.read })))
+    // Copies are counted per card and RECORDED (the count you see is the count that's kept).
+    const byUid = new Map()
+    for (const x of matched) {
+      const cur = byUid.get(x.match.uid)
+      if (cur) cur.copies += 1
+      else byUid.set(x.match.uid, { uid: x.match.uid, photo: x.photo, read: x.read, copies: 1 })
+    }
+    onCommit([...byUid.values()])
     onClose()
   }
 
@@ -105,6 +112,9 @@ export default function ScanCards({ cards, onCommit, onClose }) {
                   <span className="sc-no">couldn’t read it</span>
                   <button className="sc-change" onClick={() => setPicking(it.id)}>pick</button>
                 </div>
+              )}
+              {(it.read?.red_flags || []).length > 0 && (
+                <div className="sc-flags">{it.read.red_flags.map((f, i) => <div key={i}>⚑ {f}</div>)}</div>
               )}
               {picking === it.id && (
                 <CardPicker cards={cards} onPick={(c) => { setMatch(it.id, c); setPicking(null) }} />

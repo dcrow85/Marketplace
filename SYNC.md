@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Scanner mechanism review → 4 honesty fixes, LIVE.** Reviewed the one-per-shot
+  scanner live (4/4 real-photo reads incl. glare + a 300px fragment; noise fails honestly; ~4s/read ×2 concurrent).
+  Fixed what the look found: (1) **the count is now kept** — commit groups copies per card, records `copies` +
+  `extra` (UI said "(4 copies)" but stored a bare `have`; verified store now carries `copies:3, extra:true`);
+  (2) the model's `red_flags` now ride the scan tiles (were silently dropped in bulk — the modal path already
+  surfaced them); (3) matched tiles are **agent-blue** until commit records them (green = recorded-good only —
+  closes the Fable "green ✓ over model reads" item under the new color law); (4) each scanned photo's
+  **keccak anchor** (`photo_hash`, same `hashText` convention as `/api/record`) is recorded at commit, so the
+  future R2/CE sync verifies instead of trusts. Modal gains an editable Copies field. Known-accepted, listed for
+  pre-cohort: `/api/read` is CORS-open (DeepInfra cost surface); evidence still device-local (R2 centerpiece).
+  Surface lane only. No ask.
 - `[passive]` 2026-07-02 · Claude — **Design-audit rulings executed; the repaint is LIVE on cairn.cards.**
   Crowley ruled: (1) three-signal color constitution — **blue = the agent** (lawful only where the agent
   acts/reads/speaks), green = recorded-good, oxblood = risk, everything else ink (ruling recorded atop
