@@ -16,7 +16,9 @@ evidenced, accountable — than DMs + PayPal G&S. The judged layer
 (verifier/insurance/arbitration machinery) stays **designed and dormant**; trust +
 a neutral human arbiter stub it. This is the GPTPRO "low-value, curated = conditionally
 viable" lane, with the Azuki circle as the curation. Bonus: every settled trade is a
-ground-truth `settled_trade` anchor the judged layer needs to escape cold-start.
+recorded datapoint for the judged layer to learn from; it is **not** automatically a
+Catalog Evidence `settled_trade` anchor unless CE1's row/variant/authenticity scope and
+finality conditions are actually adjudicated.
 
 ## Roles
 - **Buyer:** Crowley.
@@ -138,7 +140,8 @@ graduation target**, not the pilot vehicle.
 
 ## Deployment status (Stage 1 — Arbitrum Sepolia)
 - **Contract built (Codex):** `chain/src/ThinPilotEscrow.sol` + `chain/test/ThinPilotEscrow.t.sol`
-  — **`forge test` 113/113 green**. Reviewed (Claude): matches this interface and carries all
+  — thin-pilot suite **9/9 green**; full chain suite after the 2026-07-02 chain
+  reconciliation is **140/140 green**. Reviewed (Claude): matches this interface and carries all
   four GPTPRO repairs (A1 cap, C-02 buyer-only `confirmReceived`, C-03 `settleByTimeout`→seller,
   G5.1 non-party arbiter) + reentrancy guards + return-custody-gated refunds. ABI for surface
   wiring: **`chain/abi/ThinPilotEscrow.json`**.
@@ -169,9 +172,8 @@ capture; Privy auth/wallets; the no-overclaim discipline + the Glance.
 - Dispute → arbiter view: the evidence packet to the neutral arbiter.
 
 **To build — backbone (Codex):**
-- The thin pilot escrow contract (above interface) + forge tests (incl. the four
-  repairs + G5.1) + deploy to **Arbitrum Sepolia**, then **Arbitrum One**. Publish the
-  deployed address + ABI back via SYNC.
+- The thin pilot escrow contract is built, tested, deployed to **Arbitrum Sepolia**, and
+  wired by ABI. Stage 2 requires a redeploy to **Arbitrum One** with real USDC.
 
 ## Staging
 - ~~Stage 0 — witnessed, no escrow~~ **(skipped — going straight to testnet).**
@@ -179,15 +181,18 @@ capture; Privy auth/wallets; the no-overclaim discipline + the Glance.
   card shipped, neutral arbiter. De-risks the money mechanics + the contract.
 - **Stage 2 — First REAL transaction (milestone):** Arbitrum One, real USDC, hard-capped
   low value, Crowley buyer, trusted seller, neutral arbiter, return-custody-on-dispute.
-- **Stage 3 — Widen** the circle + raise caps; settled trades seed the
-  calibration / Catalog-Evidence anchors; the dormant judged layer starts to wake.
+- **Stage 3 — Widen** the circle + raise caps; settled trades seed calibration data, and
+  only CE1-qualified adjudicated settlements become Catalog Evidence anchors; the dormant
+  judged layer starts to wake.
 
 ## Success criteria (trade #1)
 - Loop completes (intent → escrow → ship → accept → settle) with **no funds lost to a
   bug** (the cardinal safety bar).
 - The Glance gave Crowley enough to decide; interruptions only at Decide + Accept.
 - The evidence record is rich enough to arbitrate a hypothetical condition dispute.
-- Produces the first `settled_trade` anchor + first calibration datapoint.
+- Produces the first settled trade record + calibration datapoint. It is not a CE1
+  `settled_trade` anchor unless the trade actually adjudicates row/variant/authenticity
+  scope through the required finality tail.
 
 ## Boundaries (disclose, even to friends)
 - Cairn **witnesses + escrows + makes the trade accountable**; it does **not** verify

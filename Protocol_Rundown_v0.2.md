@@ -4,6 +4,8 @@
 > layers, every canonical spec (linked), and the honest status of each.
 > Generated 2026-06-29 · status: **orientation doc** (not canonical for any lane —
 > each module is canonical for its own lane; this just indexes them).
+> Updated 2026-07-02 after chain reconciliation restored the A1–A4
+> `MarketplaceEscrow` hardening and added trunk CI.
 > Supersedes [`Claude_Fable5_Protocol_Rundown.md`](Claude_Fable5_Protocol_Rundown.md).
 > The adversarially-reviewed single front-door is [`Protocol_Consolidated_Spec_v0.2.md`](Protocol_Consolidated_Spec_v0.2.md);
 > read it next for the gate machinery.
@@ -56,7 +58,9 @@ ClaimPending → Settled. Enforces packet replay protection, item-fingerprint co
 checks, buyer-scoped verifier approvals, inventory-lock-bound-to-fingerprint, **route
 commitment consuming a typed spendability hash**, arbiter replacement + emergency timeout.
 
-**Proven:** 114 forge tests green; `unified_stress_runner.py` runs 250 trades × 14 attacks
+**Proven:** 140 forge tests green after the 2026-07-02 chain reconciliation
+(`MarketplaceEscrow` 119 + `MarketplaceInventory` 12 + `ThinPilotEscrow` 9);
+CI now runs `forge build` plus a committed test-count assertion. `unified_stress_runner.py` runs 250 trades × 14 attacks
 + Anvil replay → *every* attack invariant `== 0` (no silent accepts, trust laundering,
 out-of-scope routing, stale-bundle routing); `protocol_e2e.py` settles + resolves claims +
 runs arbiter handoff. Named falsification drills with teeth (fingerprint collision,
@@ -139,7 +143,9 @@ spendability bypass, wall-bundle, evidence manifest).
   *"conceptually strong, operationally fragile — constrain two problems, prove one path."*
 - **Maturity gap:** the **spine is real and passing**; the **judged layer is
   reviewed-but-mostly-design-only** (only the G5 floor-path is bound on-chain). Insurance,
-  registries, and attested triggers are not built yet.
+  registries, and attested triggers are not built yet. Judged-layer spec heads are frozen
+  until one settled pilot trade exists, except for correcting false status/anchor claims or
+  writing the trade-#1 runbook.
 - **First judged-layer transducer is running:** local Qwen3.6 (35B) scored 15/15 on the
   interrupt-bar probe, 0 overclaim; browses the real catalog and self-labels. *(Overclaim
   check is a keyword heuristic, not semantic — caveat.)*
@@ -169,7 +175,7 @@ Surface code: `mockups/`, `web/` (Vite/React/Privy app at `/app/`), `simulations
 |---|---|---|
 | Front door | [Consolidated Spec v0.2](Protocol_Consolidated_Spec_v0.2.md) | alpha, Kepler-reviewed |
 | Boundary | [Architecture Boundary v0.1](Protocol_Architecture_Boundary_v0.1.md) · [Bootstrap v0.1](Protocol_Bootstrap_v0.1.md) | current |
-| Spine | [`chain/`](chain/) — 4 contracts + drills | **built, 114 tests green** |
+| Spine | [`chain/`](chain/) — 4 contracts + drills | **built, 140 tests green + CI count guard** |
 | Legible | [Legibility v0.1](Protocol_Legibility_v0.1.md) · [Walls v0.1](Protocol_Walls_v0.1.md) · [Agent API v0.1](Protocol_Agent_API_v0.1.md) | designed |
 | Catalog | [Card Reference v0.1](Pokemon_Card_Reference_Layer_v0.1.md) · [Lineage v0.1](Protocol_Catalog_Lineage_v0.1.md) | designed + drills |
 | Judged | [Verifier v0.4](Protocol_Verifier_v0.4.md) | designed |

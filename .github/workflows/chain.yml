@@ -1,0 +1,27 @@
+name: Chain
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "chain/**"
+      - ".github/workflows/chain.yml"
+  pull_request:
+    paths:
+      - "chain/**"
+      - ".github/workflows/chain.yml"
+
+jobs:
+  forge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.7.1
+      - name: Forge build
+        working-directory: chain
+        run: forge build
+      - name: Forge test count assertion
+        run: python3 chain/script/assert_forge_test_count.py
