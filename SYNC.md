@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Landing page trued up for tomorrow's pilot trades — LIVE on cairn.cards.**
+  The craft stayed (the triad hero, the cairn stack, the trichotomy, "Accountable, not impossible"); the truth
+  drift went: lede now describes the live loop (binder → scan → escrowed trade with a verifiable record; hunt is
+  named as the trajectory, not sold as live); CTAs "Start a hunt"→"Open your binder"; the fabricated $6,400
+  Charizard showcase (made-up seller + market read) replaced with a REAL Azuki Alpha scan story (Lounge Siren
+  AZK01-057, "recorded · have — from your photo", witness flag); "seller's stake/bond" overclaims removed (the
+  pilot escrow carries no bond); why-agent vetting mock labeled "design target — today's pilot trades inside a
+  circle you already trust"; footer disclaimer now covers Chiru Labs (Azuki) alongside Nintendo/TPC; title+meta
+  description added. NOTE deploy assembly now also copies `mockups/assets/azuki-alpha-obv.jpg`. Verified live
+  (stale copy greps = 0). Surface lane. No ask.
 - `[passive]` 2026-07-02 · Claude — **Mobile audit → touch pass, LIVE.** Walked all surfaces at 375×812 (addendum
   in `Protocol_Design_Audit_2026-07-02.md`). Good bones verified: no overflow, lazy images (210/210), safe-areas,
   FAB/nav sizing. Fixed: primary touch targets (stance segs 21→41px, modal close 22×16→42×36, chips/filters/tabs

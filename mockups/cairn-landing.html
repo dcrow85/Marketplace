@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cairn</title>
+<title>Cairn — agentic trade for things that have to be real</title>
+<meta name="description" content="Your agent reads the evidence, an escrow holds the money, and every trade leaves a record you can verify. A witness, not proof. In pilot with the Azuki TCG.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -100,6 +101,7 @@
   .layer p .en{color:var(--dim)}
   .layer p .unproven{color:var(--signal)}
   .stacknote{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:26px;letter-spacing:.01em}
+  .dnote{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:13px}
   @media(max-width:720px){.stack{grid-template-columns:1fr;gap:18px}.cairn{order:-1}.cairn svg{width:118px}}
 
   /* artifact / specimen */
@@ -203,7 +205,7 @@
       <a href="#how">how it works</a>
       <a href="#see">what you see</a>
       <a href="cairn-protocol.html">protocol</a>
-      <a href="/app/" class="go">start a hunt</a>
+      <a href="/app/" class="go">open your binder</a>
       <button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
     </span>
   </div>
@@ -221,9 +223,9 @@
     </svg>
     <div class="ek">Agentic trade for things that have to be real</div>
     <h1>Your agent hunts.<br>The protocol holds.<br><span class="you">You decide.</span></h1>
-    <p class="lede">You name the card. Your agent finds it, reads the seller's evidence, and locks the money, the terms, and the seller's stake before anything moves. You see one honest read and one decision — nothing else asks for you. Starting with the Azuki TCG.</p>
+    <p class="lede">You bring the cards. Your agent reads every one you photograph and keeps your haves and wants; when you trade, the protocol holds the money, locks the terms, and keeps a record anyone can verify — before anything moves, and long after. First trades are live now, with the Azuki TCG.</p>
     <div class="cta">
-      <a href="/app/" class="btn">Start a hunt</a>
+      <a href="/app/" class="btn">Open your binder</a>
       <a href="#how" class="btn-ghost">see how it works ↓</a>
     </div>
   </div>
@@ -265,6 +267,7 @@
         <li><span class="c">✓</span>3 prior Cairn trades, all settled clean</li>
       </ul>
       <div class="dist">→ one line for you: <b>"known shop, strong history."</b></div>
+      <div class="dnote">the design target — today's pilot trades inside a circle you already trust</div>
     </div>
     <p class="scalar">Faced with all that, you'd want one number — <i>just tell me it's safe.</i> That number would be a lie; it hides every dimension it averaged — including the one that should stop you. So the agent holds the whole picture and hands you only what would change your mind.</p>
     <p class="verdict">You want a number.<br>Your agent keeps the <span class="ag">vector</span>.</p>
@@ -293,11 +296,11 @@
         </div>
         <div class="layer">
           <div class="lhead"><h3>The agent's read</h3><span class="ltag t-judged">judged</span></div>
-          <p>It hunts, reads the evidence, and ranks what it can and can't vouch for. Judgment, labeled as judgment, never dressed up as proof. <span class="en">Out-of-scope and overpriced offers never reach you.</span></p>
+          <p>It reads your cards and the evidence, and ranks what it can and can't vouch for. Judgment, labeled as judgment, never dressed up as proof. <span class="en">Out-of-scope and overpriced offers never reach you.</span></p>
         </div>
         <div class="layer">
           <div class="lhead"><h3>The evidence</h3><span class="ltag t-legible">legible</span></div>
-          <p>Every photo, scan, and claim — and the seller's bond — signed and pinned to the record so it can't be quietly changed. <span class="en">A vector, never a verdict: readable, still yours or an arbiter's to weigh.</span></p>
+          <p>Every photo, scan, and claim — signed and pinned to the record so it can't be quietly changed. <span class="en">A vector, never a verdict: readable, still yours or an arbiter's to weigh.</span></p>
         </div>
         <div class="layer">
           <div class="lhead"><h3>The record</h3><span class="ltag t-enforced">enforced</span></div>
@@ -315,20 +318,20 @@
     <div class="show">
       <div class="spec">
         <div class="reg">
-          <div class="mount"><span class="tk a"></span><span class="tk b"></span><span class="tk c"></span><span class="tk d"></span><img src="assets/charizard-jp-base-obv.jpg" alt="No Rarity Charizard"></div>
+          <div class="mount"><span class="tk a"></span><span class="tk b"></span><span class="tk c"></span><span class="tk d"></span><img src="assets/azuki-alpha-obv.jpg" alt="Lounge Siren, Saeko — Azuki TCG Alpha, from a collector's photo"></div>
         </div>
-        <div class="sn">No Rarity Charizard</div>
-        <div class="ss">Base · Japanese 1996 · Kanto Cards, Osaka</div>
-        <div class="sp">$6,400 <span style="font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400">· fair for the grade</span></div>
-        <div class="sr">Right row, from a shop I know. I'd get one fresh holo shot before your money moves — the rest looks ready.</div>
-        <div class="flag"><span class="fi">▲</span><span>Surface unconfirmed — I'm reading a low-res photo.</span></div>
+        <div class="sn">Lounge Siren, Saeko</div>
+        <div class="ss">AZK01-057 · Alpha · α stamp present</div>
+        <div class="sp">recorded <span style="font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400">· have — from your photo</span></div>
+        <div class="sr">Read from your binder photo: the name and the α stamp match the Alpha row. Recorded as a have — your photo stays on file as the witness.</div>
+        <div class="flag"><span class="fi">▲</span><span>A witness, not proof — condition stays yours to judge.</span></div>
       </div>
       <div class="cap">
         <div class="ek">What you see</div>
         <h2>One card. One honest read.</h2>
-        <p>No dashboards, no jargon. The card, the price against the market, the seller, and your agent's call — at a glance.</p>
-        <p>And the part most marketplaces bury: the one thing still unproven, named in plain language, before you spend a dollar.</p>
-        <p class="pt">The full record — evidence, hashes, trust vector — is one gesture away.</p>
+        <p>No dashboards, no jargon. Point your camera at a card — the agent reads it, matches the catalog row, and records what it saw. Your photo is the evidence.</p>
+        <p>And the part most marketplaces bury: what is <i>not</i> proven, named in plain language, before any money moves.</p>
+        <p class="pt">The full record — identifiers, hashes, the trade itself — is one gesture away, on the dark bench.</p>
       </div>
     </div>
   </div>
@@ -341,7 +344,7 @@
     <h2 class="lead">The record outlives the trade.</h2>
     <p class="lead2">A cairn is built one stone at a time. Every trade leaves a record — the images, the evidence, the provenance, the custody — and it doesn't vanish when the deal closes. It accretes, and a bad trade stays answerable for as long as it does.</p>
     <div class="two">
-      <div><h4>Yours</h4><p>The record anchors to your wallet, not to Cairn. Your collection becomes a history you own and carry, trade to trade. <span class="en">Vintage cards today — anything that has to be real next.</span></p></div>
+      <div><h4>Yours</h4><p>The record anchors to your wallet, not to Cairn. Your collection becomes a history you own and carry, trade to trade. <span class="en">Trading cards today — anything that has to be real next.</span></p></div>
       <div><h4>A protocol, not a platform</h4><p>Cairn is designed as an open protocol, not a walled garden: evidence can come from anywhere, and the record is free to read. <span class="en">Bring your history in, take it out — by design, not by permission.</span></p></div>
     </div>
   </div>
@@ -357,7 +360,7 @@
       <div><h4>Verifiers</h4><p>Inspect, grade, and vouch — each reviewed for a stated scope, never a blanket "it's real." <span class="en">A shop in Osaka can put its standing behind a read for a buyer in Ohio — a witness, not proof; the one gap no protocol crosses.</span></p></div>
       <div><h4>Arbiters</h4><p>Rule on a dispute from the record. <span class="en">An LLM baseline sits at the floor; a human expert is one tier up, when the value justifies it.</span></p></div>
     </div>
-    <p class="lead2" style="margin-top:26px">For shops and specialists, that's a new income stream — paid for expertise, not just inventory. Every call lands on the record, and a wrong one costs their standing. <span style="color:var(--dim)">This judgment market is designed, not yet open; today's alpha runs on the locked record alone.</span></p>
+    <p class="lead2" style="margin-top:26px">For shops and specialists, that's a new income stream — paid for expertise, not just inventory. Every call lands on the record, and a wrong one costs their standing. <span style="color:var(--dim)">This judgment market is designed, not yet open; today's pilot runs on the locked record alone.</span></p>
   </div>
 </section>
 
@@ -379,10 +382,10 @@
 <hr>
 <section class="start" id="start">
   <div class="wrap">
-    <h2>Tell your agent what you're hunting.</h2>
-    <p>Cairn is in alpha — curated, low-value Azuki TCG singles. The escrow is built and tested. The market for judgment is being built. The honesty is the whole point.</p>
+    <h2>Bring your binder.</h2>
+    <p>Cairn is in pilot — real trades, small stakes, inside a circle that already trusts each other. The escrow is live on Arbitrum testnet; every trade leaves a record you can read and verify. The judgment market comes after. The honesty is the whole point.</p>
     <div class="cta">
-      <a href="/app/" class="btn">Start a hunt</a>
+      <a href="/app/" class="btn">Open your binder</a>
       <a href="cairn-protocol.html" class="btn-ghost">read the protocol →</a>
     </div>
   </div>
@@ -400,7 +403,7 @@
       </svg>
       <span class="wm">c<span class="pq">(</span><span class="ai">ai</span><span class="pq">)</span>rn</span>
     </span>
-    <div class="disc">Independent protocol, in alpha. Cairn records evidence, holds funds, locks terms, and bonds the seller; it does not verify authenticity or condition, and a reference image is a witness, not proof. Not affiliated with, sponsored by, or endorsed by Nintendo or The Pokémon Company.</div>
+    <div class="disc">Independent protocol, in pilot. Cairn records evidence, holds funds, and locks terms; it does not verify authenticity or condition, and a reference image is a witness, not proof. Not affiliated with, sponsored by, or endorsed by Chiru Labs (Azuki), Nintendo, or The Pokémon Company.</div>
   </div>
 </footer>
 
