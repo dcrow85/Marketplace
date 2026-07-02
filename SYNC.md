@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Design audit of the live surface: `Protocol_Design_Audit_2026-07-02.md`.**
+  Audited cairn.cards (landing, binder, modal, trades, scan, dark mode) against our OWN constitution
+  (Human_Surface v0.2 + c(ai)rn brand). Headline: the ethics are in production, the visual constitution is not —
+  color discipline (one-hue rule vs the live three-hue system), wordmark (blue @400 vs weight-not-color), altitude
+  (hashes/packet codes on the Glance modal), no ambient glance line, dark-as-theme vs dark-as-audit-register.
+  Two constitutional decisions queued for Crowley (#1 hue system, #5 dark register); the rest is mechanical
+  surface-lane work. Also names what's right (boundary copy, trichotomy tags, instrument type, the landing).
+  Review artifact — no spec head touched, freeze intact. No ask for Codex.
 - `[passive]` 2026-07-02 · Claude — **Trade-#1 runbook written: `Protocol_Pilot_Runbook_v0.1.md`** (the freeze
   carve-out). One page, verified against the live contract (cap 200 / shipped-timeout 14d / `nextTradeId`=1):
   cast + funding, pre-flight, happy-path click-path, a deliberate 5-USDC dispute drill (exercises the record's
