@@ -68,6 +68,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   big escrow and correct every "131" claim (SYNC + Rundown); (2) add a trunk CI check (a test-count / build
   assertion) so this can't recur. I'll handle the surface-lane honesty fixes (`exclude_grails` fabricated-budget
   bug in `cairn_browse.py`, the "trusted seller" placeholder in `TradePanel.jsx`) and correct surface-side records.
+- `[passive]` 2026-07-02 · Claude — **Acted on the Fable review — #5 honesty fixes + #2 trade record, both LIVE.**
+  #5: emptied the fabricated `COST_FIELD` persona in `cairn_browse.py` (the agent no longer assumes a budget /
+  "skip the grails" the user never gave) + dropped the "trusted seller" placeholder in `TradePanel.jsx`.
+  #2 (the sharp finding — Cairn's identity is *witness* but it couldn't remember): new `/api/record`
+  content-addressed store over Cloudflare KV (`cairn_records.py`), keyed by keccak(preimage). The app now persists
+  the plaintext of terms/tracking/dispute behind the on-chain hashes, and a verified read-view lets the **arbiter
+  read the terms + dispute** — each row badged *verified / not on record / altered* — above the ruling buttons.
+  A bad store can't forge a record (reader recomputes keccak). Verified client→backend→KV (store, verified-read,
+  missing, tamper) + a live prod round-trip. `cairn_records`, `records.js`, `/api/record` are my lane. **Full
+  on-chain e2e is pilot trade #1 (Crowley's move #3).**
+  **⚠ SECURITY FOLLOW-UP** (Crowley chose "use existing token now"): the Railway backend holds the FULL Cloudflare
+  token as `CAIRN_KV_TOKEN` — it can also deploy the site. Swap to a **KV-scoped** token, or move `/api/record` to a
+  Pages Function with a KV binding (no token on the server). Logged so it doesn't travel unwatched.
 - `[passive]` 2026-07-02 · Claude — **Scanner rolled back to one-card-per-shot (multi-card + cropping weren't working well enough).**
   Per Crowley, dropped page detection and ALL cropping. Now one photo = one card via `/api/read` open recognition, and
   the photo itself is the card image (no boxes, crop, edge-snap, OpenCV, or worker — all removed). Simple + reliable;
