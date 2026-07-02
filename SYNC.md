@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Scanner rolled back to one-card-per-shot (multi-card + cropping weren't working well enough).**
+  Per Crowley, dropped page detection and ALL cropping. Now one photo = one card via `/api/read` open recognition, and
+  the photo itself is the card image (no boxes, crop, edge-snap, OpenCV, or worker — all removed). Simple + reliable;
+  still batch-friendly (snap several in a row / pick multiple). `web/src/scan/` slimmed hard; `warp.worker.js` +
+  vendored `opencv.js` deleted. Backend `/api/scan` + `read_page` left in place (unused now, harmless). Live on
+  cairn.cards. This is the clean base to rebuild multi-card from later if we want. No ask.
 - `[passive]` 2026-07-01 · Claude — **Pixel-perfect crop redone the right way: OpenCV in a Web Worker (no freeze).**
   The warp runs off the main thread (`web/src/scan/warp.worker.js`), so the 11 MB compile can't freeze the UI; the
   scan never awaits the worker's load and only *upgrades* an edge-snap crop within an 8s timeout, so it can't hang

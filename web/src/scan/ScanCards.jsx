@@ -1,5 +1,5 @@
-import { useRef, useState, useMemo, useEffect } from 'react'
-import { recognizePhoto, ensureWarpWorker } from './recognize.js'
+import { useRef, useState, useMemo } from 'react'
+import { recognizePhoto } from './recognize.js'
 
 const cardName = (c) => c?.name_en || c?.name_ja || c?.uid || '—'
 
@@ -28,11 +28,8 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const [picking, setPicking] = useState(null) // item id currently being picked
   const idRef = useRef(0)
 
-  // Warm up the OpenCV warp worker (off the main thread) while the user frames their shot.
-  useEffect(() => { ensureWarpWorker() }, [])
-
-  // Each photo → one /api/scan call → many cards. While a call is in flight we show one
-  // "reading" placeholder for that photo, then replace it with the cards it found.
+  // Each photo → one card. While the read is in flight we show a "reading" placeholder,
+  // then replace it with the recognized card.
   const addPhotos = async (fileList) => {
     const files = [...(fileList || [])]
     if (!files.length) return
@@ -73,7 +70,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   }
 
   const status = items.length === 0
-    ? 'point at one card or a whole page'
+    ? 'point at a card'
     : (reading && !matched.length ? 'reading your photo…'
       : `${uniq} recognized${dupes ? ` · ${dupes + uniq} copies` : ''}${reading ? ' · reading…' : ''}${needPick ? ` · ${needPick} need a pick` : ''}`)
 
@@ -124,8 +121,8 @@ export default function ScanCards({ cards, onCommit, onClose }) {
           </button>
         </div>
         <p className="sc-note dim">
-          Point at one card or a whole binder page — every card in frame is read at once.
-          Recognized cards are tagged <b>have</b>, your photo kept as evidence — a witness, not proof. Fix any miss with “pick”.
+          Snap one card at a time — or pick several photos at once. Recognized cards are tagged <b>have</b>,
+          your photo kept as evidence — a witness, not proof. Fix any miss with “pick”.
         </p>
       </div>
     </div>
