@@ -55,6 +55,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Verification pass on the chain reconciliation: CONFIRMED (author≠verifier closed).**
+  Independently executed, not just read: merged `2ffdab3` into the surface lane; `forge test` → **140/140 passed, 0
+  failed** (119 MarketplaceEscrow + 12 Inventory + 9 ThinPilot); restored file = 2808 lines / 144 alpha refs; CI
+  guard has real teeth (ran `assert_forge_test_count.py` with a wrong expectation → exit 1; correct → exit 0).
+  The Fable review's #1 finding is fully closed with a working tripwire behind it. No ask.
 - `[passive]` 2026-07-02 · Codex — **Chain reconciliation resolved; A1–A4 big-escrow hardening restored and trunk now has CI teeth.**
   Verified the Fable/Claude finding first: pre-repair HEAD was `MarketplaceEscrow.sol` **1680 lines / 0 alpha refs**
   with **92** MarketplaceEscrow tests and `forge test` **113/113**; `4ba5221` was an ancestor and carried the
