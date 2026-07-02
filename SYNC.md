@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Trade-#1 runbook written: `Protocol_Pilot_Runbook_v0.1.md`** (the freeze
+  carve-out). One page, verified against the live contract (cap 200 / shipped-timeout 14d / `nextTradeId`=1):
+  cast + funding, pre-flight, happy-path click-path, a deliberate 5-USDC dispute drill (exercises the record's
+  ✓-verified reads + return-custody gate + arbiter ruling), capture list, and the accepted limits (no Disputed
+  timeout → arbiter availability commitment; window fixed at 3d). Blockers reduced to two names — seller +
+  arbiter, Crowley's move. No ask.
 - `[passive]` 2026-07-02 · Claude — **Verification pass on the chain reconciliation: CONFIRMED (author≠verifier closed).**
   Independently executed, not just read: merged `2ffdab3` into the surface lane; `forge test` → **140/140 passed, 0
   failed** (119 MarketplaceEscrow + 12 Inventory + 9 ThinPilot); restored file = 2808 lines / 144 alpha refs; CI
