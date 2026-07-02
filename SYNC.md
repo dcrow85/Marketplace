@@ -60,7 +60,7 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   scan never awaits the worker's load and only *upgrades* an edge-snap crop within an 8s timeout, so it can't hang
   either (the two failure modes that broke it). Verified in preview: scanner opens in ~0.5s (main thread stays
   responsive), 16/16 tiles return as straight 500×700 warps. Worker wiring in `recognize.js`; `opencv.js`
-  re-vendored. Rolling out to a Cloudflare **preview** URL for a real-device test before production. No ask.
+  re-vendored. Device-tested on a Cloudflare preview URL, then **promoted to production — live on cairn.cards.** No ask.
 - `[passive]` 2026-07-01 · Claude — **Reverted the OpenCV pixel-perfect crop — it broke the scanner; back on edge-snap (working).**
   The 11 MB `opencv.js` compiles on the main thread → froze the scanner on open, and I'd (mistakenly) coupled the
   read to the OpenCV load, so a slow/failed init hung the whole scan. Reverted to the edge-snap crop (last good
