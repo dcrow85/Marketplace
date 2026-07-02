@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Mobile audit → touch pass, LIVE.** Walked all surfaces at 375×812 (addendum
+  in `Protocol_Design_Audit_2026-07-02.md`). Good bones verified: no overflow, lazy images (210/210), safe-areas,
+  FAB/nav sizing. Fixed: primary touch targets (stance segs 21→41px, modal close 22×16→42×36, chips/filters/tabs
+  ≥38px — one `@media (pointer: coarse)` block), all inputs 16px on touch (no iOS focus-zoom mid-Fund), body
+  scroll-lock under modal/scan/filters (`web/src/useScrollLock.js`), landing CTA padded. Verified by measurement
+  before/after. Deferred to trade-#1 device pass: keyboard-over-input in bottom sheets. Surface lane only. No ask.
 - `[passive]` 2026-07-02 · Claude — **Scanner mechanism review → 4 honesty fixes, LIVE.** Reviewed the one-per-shot
   scanner live (4/4 real-photo reads incl. glare + a 300px fragment; noise fails honestly; ~4s/read ×2 concurrent).
   Fixed what the look found: (1) **the count is now kept** — commit groups copies per card, records `copies` +

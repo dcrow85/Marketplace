@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import ScanCards from '../scan/ScanCards.jsx'
 import { hashText } from '../chain/escrow.js'
+import { useScrollLock } from '../useScrollLock.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import '../scan/scan.css'
 
@@ -206,6 +207,7 @@ async function renderSizes(file) {
 
 function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
+  useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
   const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
   const [photo, setPhoto] = useState(null) // the high-res inspection copy shown in the modal
@@ -471,6 +473,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [selected, setSelected] = useState(null)
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  useScrollLock(filtersOpen)
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'standard' } catch { return 'standard' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`

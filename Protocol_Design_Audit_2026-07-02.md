@@ -149,3 +149,17 @@ should be ink either way).
 5. Repaint primaries to ink per the decision (#7).
 
 *Numbers 2–5 are all surface-lane work; none touch chain/ or the frozen spec heads.*
+
+---
+
+## Mobile addendum (2026-07-02, later)
+Walked every surface at 375×812. **Passed:** no horizontal overflow, correct viewport
+meta, all 210 grid images lazy-loaded, safe-area insets on the bottom nav, FAB 60×60
+clearing the nav, landing scales cleanly. **Fixed same day:** touch targets on primary
+controls (stance segs 21→41px, modal close 22×16→42×36, chips/filters/tabs/commit all
+≥38px via one `@media (pointer: coarse)` block), inputs to 16px on touch (kills the iOS
+focus-zoom lurch — worst mid-Fund typing wallet addresses), body scroll-lock under the
+card modal / scan sheet / filters sheet (`useScrollLock`), landing nav CTA padded.
+**Deferred to the trade-#1 real-device pass:** keyboard-over-input behavior in bottom
+sheets (untestable headless); the bench record's 10.5px mono is accepted as the audit
+register's deliberate density.

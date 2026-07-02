@@ -1,5 +1,6 @@
 import { useRef, useState, useMemo } from 'react'
 import { recognizePhoto } from './recognize.js'
+import { useScrollLock } from '../useScrollLock.js'
 
 const cardName = (c) => c?.name_en || c?.name_ja || c?.uid || '—'
 
@@ -27,6 +28,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const [items, setItems] = useState([]) // {id, status:'reading'|'matched'|'unmatched', photo, read, match}
   const [picking, setPicking] = useState(null) // item id currently being picked
   const idRef = useRef(0)
+  useScrollLock() // overlay is mounted only while open
 
   // Each photo → one card. While the read is in flight we show a "reading" placeholder,
   // then replace it with the recognized card.
