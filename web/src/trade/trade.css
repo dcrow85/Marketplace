@@ -64,3 +64,16 @@
   .decide-card { position: static; max-width: 180px; }
   .row2 { grid-template-columns: 1fr; }
 }
+
+/* The readable record behind the on-chain hashes — verified plaintext for the arbiter. */
+.d-record { margin: 14px 0; padding: 12px 14px; border: 0.5px solid var(--rule2); border-radius: 10px; background: var(--paper2); }
+.d-record .ek2 { margin-bottom: 8px; }
+.rec-row { display: grid; grid-template-columns: 74px 1fr auto; gap: 10px; align-items: baseline; padding: 5px 0; font-size: 13px; color: var(--ink); }
+.rec-row + .rec-row { border-top: 0.5px solid var(--rule2); }
+.rec-k { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--dim); }
+.rec-v { line-height: 1.4; word-break: break-word; }
+.rec-dispute .rec-v { color: var(--ink); }
+.rec-badge { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 5px; border: 0.5px solid var(--rule); white-space: nowrap; }
+.rec-badge.rb-ok { color: var(--have); border-color: var(--have); }
+.rec-badge.rb-miss { color: var(--dim); }
+.rec-badge.rb-bad { color: var(--signal); border-color: var(--signal); }

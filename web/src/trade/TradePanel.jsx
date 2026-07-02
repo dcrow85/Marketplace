@@ -6,6 +6,7 @@ import {
   approveUsdc, createTrade, markShipped, confirmReceived, openInspection,
   acceptTrade, settleByTimeout, disputeTrade, resolveTrade, confirmReturnCustody, cancelBeforeShip,
 } from '../chain/escrow.js'
+import { putRecord, getRecord } from './records.js'
 
 const short = (a) => (a ? a.slice(0, 6) + '…' + a.slice(-4) : '—')
 const errText = (e) => e?.shortMessage || e?.details || e?.message || String(e)
@@ -65,6 +66,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
   const [f, setF] = useState({ card: '', seller: '', arbiter: '', amount: '', condition: 'Near Mint', days: '7' })
   const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }))
   const [bal, setBal] = useState(null)
+  const [recWarn, setRecWarn] = useState(null)
   const { pending, error, run } = useAction()
 
   useEffect(() => {
@@ -87,12 +89,16 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
       const amountRaw = toUsdc(f.amount)
       const allow = await usdcAllowance(address)
       if (allow < amountRaw) await run('Approving USDC…', () => approveUsdc(wc, amountRaw))
-      const termsHash = hashText(JSON.stringify({ card: f.card, condition: f.condition, amount: f.amount }))
+      const termsStr = JSON.stringify({ card: f.card, condition: f.condition, amount: f.amount })
+      const termsHash = hashText(termsStr)
       const cardRefHash = hashText(f.card)
       const { tradeId } = await run('Funding escrow…', () => createTrade(wc, {
         seller: f.seller, arbiter: f.arbiter, amountRaw, cardRefHash, termsHash,
         inspectionWindow: Math.max(1, Number(f.days)) * 86400,
       }))
+      // Persist the readable record so the seller + arbiter can read AND verify the terms.
+      const saved = (await Promise.all([putRecord(termsStr), putRecord(f.card)])).every(Boolean)
+      if (!saved) setRecWarn('Terms are on-chain, but the readable copy didn’t save — the arbiter won’t see them. Retry from the trade.')
       if (tradeId) onCreated(tradeId)
     } catch { /* surfaced by run() */ }
   }
@@ -135,6 +141,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
           {pending || (ready ? 'Fund escrow' : 'Sign in to fund')}
         </button>
         {error && <p className="err mono">{error}</p>}
+        {recWarn && <p className="warn">{recWarn}</p>}
       </div>
     </div>
   )
@@ -179,12 +186,14 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
         {t.returnCustodyConfirmed && <><span>return custody</span><span>confirmed</span></>}
       </div>
 
+      <TradeRecord t={t} />
+
       <div className="d-actions">
         {role === 'buyer' && t.stateName === 'Funded' && actBtn('Cancel (refund)', act('Cancelling…', (wc) => cancelBeforeShip(wc, tradeId)))}
         {role === 'seller' && t.stateName === 'Funded' && (
           <div className="act-row">
             <input className="mono" placeholder="tracking #" value={tracking} onChange={(e) => setTracking(e.target.value)} />
-            {actBtn('Mark shipped', act('Shipping…', (wc) => markShipped(wc, tradeId, hashText(tracking || 'shipped'))))}
+            {actBtn('Mark shipped', act('Shipping…', async (wc) => { await putRecord(tracking || 'shipped'); return markShipped(wc, tradeId, hashText(tracking || 'shipped')) }))}
           </div>
         )}
         {role === 'buyer' && t.stateName === 'Shipped' && actBtn('Confirm received', act('Confirming…', (wc) => confirmReceived(wc, tradeId)))}
@@ -194,7 +203,7 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
             {actBtn('Looks right — accept', act('Releasing…', (wc) => acceptTrade(wc, tradeId)))}
             <div className="act-row">
               <input placeholder="what's wrong?" value={reason} onChange={(e) => setReason(e.target.value)} />
-              {actBtn('Dispute', act('Opening dispute…', (wc) => disputeTrade(wc, tradeId, hashText(reason || 'dispute'))))}
+              {actBtn('Dispute', act('Opening dispute…', async (wc) => { await putRecord(reason || 'dispute'); return disputeTrade(wc, tradeId, hashText(reason || 'dispute')) }))}
             </div>
           </>
         )}
@@ -213,6 +222,59 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
       {error && <p className="err mono">{error}</p>}
       <p className="boundary">The escrow follows these actions on-chain <span className="tag enforced">enforced</span>;
         condition and authenticity stay the parties&rsquo; and arbiter&rsquo;s judgment.</p>
+    </div>
+  )
+}
+
+// ---- The readable record behind the on-chain hashes (fetched + keccak-verified) ----
+// This is how the arbiter reads the terms and the dispute before ruling — Cairn's memory,
+// made legible. Each row is verified against the chain, so a wrong/absent record is visible.
+function RecBadge({ status }) {
+  const m = {
+    verified: ['✓ verified', 'rb-ok'], missing: ['not on record', 'rb-miss'],
+    mismatch: ['⚠ altered', 'rb-bad'], error: ['couldn’t load', 'rb-miss'],
+  }[status]
+  return m ? <span className={'rec-badge ' + m[1]}>{m[0]}</span> : null
+}
+
+function TradeRecord({ t }) {
+  const [rec, setRec] = useState(null)
+  useEffect(() => {
+    let live = true
+    Promise.all([getRecord(t.termsHash), getRecord(t.disputeReasonHash), getRecord(t.trackingHash)])
+      .then(([terms, dispute, tracking]) => { if (live) setRec({ terms, dispute, tracking }) })
+    return () => { live = false }
+  }, [t.termsHash, t.disputeReasonHash, t.trackingHash])
+  if (!rec) return null
+  if (rec.terms.status === 'unset' && rec.dispute.status === 'unset' && rec.tracking.status === 'unset') return null
+
+  let terms = null
+  if (rec.terms.status === 'verified') { try { terms = JSON.parse(rec.terms.value) } catch { /* fall through to raw */ } }
+
+  return (
+    <div className="d-record">
+      <div className="ek2">the record <span className="dim">— plaintext behind the on-chain hashes</span></div>
+      {rec.terms.status !== 'unset' && (
+        <div className="rec-row">
+          <span className="rec-k">terms</span>
+          <span className="rec-v">{terms ? <>{terms.card} · {terms.condition} · <b>{terms.amount} USDC</b></> : (rec.terms.value || <span className="dim">—</span>)}</span>
+          <RecBadge status={rec.terms.status} />
+        </div>
+      )}
+      {rec.tracking.status !== 'unset' && (
+        <div className="rec-row">
+          <span className="rec-k">tracking</span>
+          <span className="rec-v mono">{rec.tracking.value || <span className="dim">—</span>}</span>
+          <RecBadge status={rec.tracking.status} />
+        </div>
+      )}
+      {rec.dispute.status !== 'unset' && (
+        <div className="rec-row rec-dispute">
+          <span className="rec-k">dispute</span>
+          <span className="rec-v">{rec.dispute.value || <span className="dim">—</span>}</span>
+          <RecBadge status={rec.dispute.status} />
+        </div>
+      )}
     </div>
   )
 }

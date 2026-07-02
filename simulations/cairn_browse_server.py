@@ -44,6 +44,7 @@ import sys
 sys.path.insert(0, str(ROOT / "simulations"))
 from cairn_browse import browse, ENDPOINT  # noqa: E402  (reuse the proven loop)
 from cairn_vision import read_photo, read_page  # noqa: E402  (photo-import vision read)
+from cairn_records import put_record, get_record  # noqa: E402  (content-addressed trade-record store)
 
 MAX_CALL_CHARS = 280
 MAX_READ_BYTES = 12 * 1024 * 1024  # /api/read accepts a down-res'd image (base64)
@@ -119,6 +120,9 @@ class BrowseHandler(SimpleHTTPRequestHandler):
         if self.path == "/api/health":  # public liveness — no auth (frontend + host healthchecks)
             self.send_json({"qwen": qwen_up()})
             return
+        if self.path.split("?", 1)[0] == "/api/record":  # public: content-addressed, keccak-verified by the reader
+            self._get_record()
+            return
         if not self._authorized():
             return
         if self.path == "/" and not (STATIC_DIR / "index.html").exists():
@@ -134,6 +138,8 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             self._post_read()
         elif self.path == "/api/scan":
             self._post_scan()
+        elif self.path == "/api/record":
+            self._post_record_store()
         else:
             self.send_error(404, "Unknown endpoint")
 
@@ -208,6 +214,32 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             self.send_json({"error": "scan_failed", "detail": type(exc).__name__}, status=502)
             return
         self.send_json(result)
+
+    def _get_record(self) -> None:
+        """GET /api/record?key=0x<32-byte-hash> -> {found, value} (the keccak preimage)."""
+        from urllib.parse import parse_qs, urlparse
+        key = (parse_qs(urlparse(self.path).query).get("key") or [""])[0]
+        try:
+            self.send_json(get_record(key))
+        except Exception as exc:  # noqa: BLE001
+            self.send_json({"error": "record_get_failed", "detail": type(exc).__name__}, status=502)
+
+    def _post_record_store(self) -> None:
+        """POST /api/record {key: 0x<hash>, value: <preimage string>} -> {ok} | {error}.
+        The store is untrusted: the reader verifies keccak(value)==key, so a bad write can
+        only make a record unreadable, never forge one."""
+        payload = self._body(300_000)  # small record ({key, value} JSON); value itself is capped in put_record
+        if payload is None:
+            return
+        key = str(payload.get("key", ""))
+        value = payload.get("value", "")
+        if not isinstance(value, str):
+            self.send_json({"error": "bad_value"}, status=400)
+            return
+        try:
+            self.send_json(put_record(key, value))
+        except Exception as exc:  # noqa: BLE001
+            self.send_json({"error": "record_put_failed", "detail": type(exc).__name__}, status=502)
 
     def _send_cors(self) -> None:
         if ALLOW_ORIGIN:
