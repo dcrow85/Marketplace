@@ -4,6 +4,7 @@ import { handleFor, avatarSVG, randomAgentName } from './identity.js'
 import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
+import Ambient from './ambient/Ambient.jsx'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -102,6 +103,7 @@ function MeetAgent({ accountId, onNamed }) {
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [view, setView] = useState('collection') // 'collection' | 'trade'
+  const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   return (
     <div className="app">
       <nav className="nav">
@@ -122,6 +124,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           <span>Trades</span>
         </button>
       </div>
+      <Ambient onOpenTrade={(id) => { setOpenTrade(id); setView('trade') }} />
       <main className="main">
         {view === 'collection' ? (
           <>
@@ -135,7 +138,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             <Binder accountId={accountId} agentName={agent} catalog={catalog} />
           </>
         ) : (
-          <TradePanel />
+          <TradePanel openTradeId={openTrade} />
         )}
       </main>
     </div>

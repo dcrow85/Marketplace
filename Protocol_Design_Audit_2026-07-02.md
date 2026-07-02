@@ -8,6 +8,19 @@ trade panel, scan sheet, dark mode) in the running app; inspected computed style
 cross-checked source. Review artifact, not a spec head — the judged-layer freeze is
 untouched.
 
+> **Ruling (Crowley, 2026-07-02)** — the two constitutional questions are decided:
+> **(1) Three-signal constitution, policed.** Blue is the *agent's* hue — lawful only
+> where the agent acts, reads, or speaks (ask, agent panel, scan recognition, photo
+> read). Green remains recorded-good (have, verified, settled). Oxblood remains risk.
+> Everything else is ink on paper — active states, tabs, human commits (Fund), links,
+> and chrome carry hierarchy by weight/value/space, never hue. The wordmark's "(ai)"
+> refers to the agent, so it may carry agent blue — but gains the weight the brand rule
+> always required. To be folded into Human_Surface v0.3 when the spec freeze lifts;
+> until then this ruling + the code are the record.
+> **(2) Dark bench, unmistakable, toggle stays.** The comfort dark theme remains; the
+> audit/record surfaces get their own fixed forensic treatment (bench black, bone ink,
+> mono ledger) that reads unmistakably in either theme.
+
 **Verdict up front:** the surface has the *ethics* right — the honesty copy, the
 enforced/judged tags, the witness-not-proof boundaries are present and often excellent —
 but it has not adopted its own visual constitution. The three loudest rules in

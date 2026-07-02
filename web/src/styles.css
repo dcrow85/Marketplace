@@ -1,6 +1,6 @@
 :root {
   --paper: #FFFFFF; --paper2: #F3F2EE; --mount: #ECEAE3; --ink: #16140E; --ink2: #3B382F;
-  --dim: #85827A; --faint: #B4B1A7; --rule: rgba(20,18,14,.15); --rule2: rgba(20,18,14,.065);
+  --dim: #6C6960; --faint: #B4B1A7; --rule: rgba(20,18,14,.15); --rule2: rgba(20,18,14,.065);
   --signal: #B0381C; --agent: #2C5B8C; --agent-bg: rgba(44,91,140,.08); --have: #3E7D52;
   --bar: rgba(255,255,255,.9);
   --sans: "IBM Plex Sans", system-ui, sans-serif;
@@ -23,7 +23,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 /* wordmark */
 .wm { font-family: var(--serif); font-size: 23px; color: var(--ink); letter-spacing: .2px; }
 .wm.big { font-size: 40px; }
-.wm .pq { color: var(--faint); } .wm .ai { color: var(--agent); }
+.wm .pq { color: var(--faint); } .wm .ai { color: var(--agent); font-weight: 600; }
 
 /* full-screen gates (sign-in, meet-agent) */
 .splash, .gate { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
@@ -42,10 +42,10 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .intro { font-family: var(--serif); font-size: 15.5px; line-height: 1.6; color: var(--ink); margin: 0 0 20px; }
 .row { display: flex; gap: 8px; margin-bottom: 14px; }
 .row input { flex: 1; font-family: var(--sans); font-size: 16px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 7px; padding: 9px 12px; outline: none; }
-.row input:focus { border-color: var(--agent); }
+.row input:focus { border-color: var(--ink); }
 
 /* buttons */
-.primary { width: 100%; font-family: var(--mono); font-size: 13px; letter-spacing: .03em; color: var(--paper); background: var(--agent); border: 0; border-radius: 8px; padding: 12px; cursor: pointer; }
+.primary { width: 100%; font-family: var(--mono); font-size: 13px; letter-spacing: .03em; color: var(--paper); background: var(--ink); border: 0; border-radius: 8px; padding: 12px; cursor: pointer; }
 .primary:hover { filter: brightness(1.07); }
 .primary:disabled { opacity: .5; cursor: default; }
 .ghost { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 0 12px; cursor: pointer; white-space: nowrap; }
@@ -61,7 +61,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .themebtn .sun { display: none; }
 [data-theme="dark"] .themebtn .moon { display: none; }
 [data-theme="dark"] .themebtn .sun { display: block; }
-.chip { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11.5px; color: var(--ink); border: 0.5px solid var(--agent); border-radius: 6px; padding: 6px 11px; }
+.chip { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 11.5px; color: var(--ink); border: 0.5px solid var(--rule); border-radius: 6px; padding: 6px 11px; }
 .main { max-width: 1120px; margin: 0 auto; padding: 34px 36px 80px; }
 .main h1 { font-weight: 600; font-size: 30px; letter-spacing: -.02em; color: var(--ink); margin: 7px 0 0; }
 .catalogswitch { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 4px; }
@@ -69,7 +69,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .catalogtab span { display: block; font-family: var(--mono); font-size: 12px; color: var(--ink2); letter-spacing: .02em; }
 .catalogtab small { display: block; margin-top: 3px; font-size: 11.5px; line-height: 1.35; color: var(--dim); }
 .catalogtab.on { border-color: var(--agent); background: var(--agent-bg); }
-.catalogtab.on span { color: var(--agent); }
+.catalogtab.on span { color: var(--ink); }
 .agentline { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-family: var(--mono); font-size: 13px; color: var(--ink2); }
 .agentline b { color: var(--agent); }
 .placeholder { margin-top: 22px; padding: 22px 24px; border: 0.5px solid var(--rule); border-radius: 10px; background: var(--paper2); max-width: 70ch; line-height: 1.6; }
@@ -88,12 +88,12 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .catalogpick { display: flex; gap: 8px; flex-wrap: wrap; margin: 2px 0 14px; }
 .cpill { font-family: var(--mono); font-size: 12px; color: var(--dim); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 7px 13px; cursor: pointer; }
 .cpill:hover { color: var(--ink); }
-.cpill.on { color: var(--agent); border-color: var(--agent); background: var(--agent-bg); }
+.cpill.on { color: var(--ink); border-color: var(--ink); background: var(--mount); }
 
 /* view nav — inline top tabs on desktop, fixed bottom bar on phones */
 .viewnav { display: flex; gap: 6px; max-width: 1120px; margin: 4px auto 0; padding: 14px 36px 0; }
 .viewnav button { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 8px; padding: 8px 16px; cursor: pointer; }
-.viewnav button.on { color: var(--agent); border-color: var(--agent); background: var(--agent-bg); }
+.viewnav button.on { color: var(--ink); border-color: var(--ink); background: var(--mount); }
 .viewnav svg { display: block; }
 @media (max-width: 640px) {
   .viewnav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 40; max-width: none; margin: 0; gap: 0; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); background: var(--bar); backdrop-filter: blur(10px); border-top: 0.5px solid var(--rule); }
@@ -102,3 +102,8 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
   .viewnav svg { width: 20px; height: 20px; }
   .main { padding-bottom: 80px; } /* clear the fixed bottom bar */
 }
+
+/* ambient glance — one quiet line above the cards; oxblood accent ONLY when something needs you */
+.ambient { max-width: 1120px; margin: 14px auto 0; padding: 0 36px; font-size: 13px; color: var(--ink2); }
+.ambient button { font: inherit; color: var(--ink); background: transparent; border: 0; border-left: 2px solid var(--signal); padding: 2px 0 2px 10px; cursor: pointer; text-align: left; }
+@media (max-width: 640px) { .ambient { padding: 0 20px; } }

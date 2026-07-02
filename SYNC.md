@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Design-audit rulings executed; the repaint is LIVE on cairn.cards.**
+  Crowley ruled: (1) three-signal color constitution — **blue = the agent** (lawful only where the agent
+  acts/reads/speaks), green = recorded-good, oxblood = risk, everything else ink (ruling recorded atop
+  `Protocol_Design_Audit_2026-07-02.md`; folds into Human_Surface v0.3 when the freeze lifts); (2) dark bench =
+  fixed forensic register in either theme; comfort dark-mode toggle stays. Shipped: ~40 CSS de-blues (active
+  states/commits/links/focus/want-stance → ink; Fund is now the darkest thing on the screen), wordmark "(ai)"
+  gains weight 600, EXACT badge inverted to exception-only, modal machine forms (hash/row/warning codes) moved
+  behind "▸ open the record" onto a real dark bench, the trade-record panel benched the same way, **ambient
+  glance line built** (`web/src/ambient/Ambient.jsx` — one calm line above the cards from live escrow state;
+  needs a signer, so its live render gets exercised at trade-#1 pre-flight), landing Pokémon→Azuki, `--dim`
+  AA-contrast fix. All lint/build green; glance/modal/trades visually verified. Surface lane only. No ask.
 - `[passive]` 2026-07-02 · Claude — **Design audit of the live surface: `Protocol_Design_Audit_2026-07-02.md`.**
   Audited cairn.cards (landing, binder, modal, trades, scan, dark mode) against our OWN constitution
   (Human_Surface v0.2 + c(ai)rn brand). Headline: the ethics are in production, the visual constitution is not —

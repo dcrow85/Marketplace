@@ -23,10 +23,13 @@ function useAction() {
   return { pending, error, run, setError }
 }
 
-export default function TradePanel() {
+export default function TradePanel({ openTradeId }) {
   const { address, ready, getWalletClient } = useEscrowWallet()
   const [view, setView] = useState('create') // 'create' | 'detail'
   const [tradeId, setTradeId] = useState(null)
+  useEffect(() => { // the ambient line can open a specific trade
+    if (openTradeId) { setTradeId(openTradeId); setView('detail') } // eslint-disable-line react-hooks/set-state-in-effect
+  }, [openTradeId])
 
   return (
     <div className="tp">
@@ -123,7 +126,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
         <label>Seller wallet</label>
         <input className="mono" value={f.seller} onChange={set('seller')} placeholder="0x… (seller wallet)" />
         <div className="row2">
-          <div><label>Arbiter wallet <span className="dim">not you</span></label>
+          <div><label>Arbiter wallet</label>
             <input className="mono" value={f.arbiter} onChange={set('arbiter')} placeholder="0x… (neutral)" /></div>
           <div><label>Inspection window</label>
             <input className="mono" value={f.days} onChange={set('days')} /><span className="suffix">days</span></div>

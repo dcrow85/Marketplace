@@ -3,11 +3,11 @@
 .tp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .tp-tabs { display: flex; align-items: center; gap: 6px; }
 .tp-tabs button { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 7px 12px; cursor: pointer; }
-.tp-tabs button.on { color: var(--agent); border-color: var(--agent); background: var(--agent-bg); }
+.tp-tabs button.on { color: var(--ink); border-color: var(--ink); background: var(--mount); }
 .tp-tabs button:disabled { opacity: .5; cursor: default; }
 .tp-load input { width: 78px; font-size: 12px; padding: 6px 9px; border: 0.5px solid var(--rule); border-radius: 7px; background: var(--paper); color: var(--ink); outline: none; }
 .tp-who { font-size: 11.5px; color: var(--ink2); }
-.tp-who a { color: var(--agent); text-decoration: none; }
+.tp-who a { color: var(--ink); text-decoration: underline; }
 
 /* Decide / fund */
 .decide { display: grid; grid-template-columns: 220px 1fr; gap: 26px; align-items: start; max-width: 760px; }
@@ -17,20 +17,20 @@
 .decide-body h3 { font-weight: 600; font-size: 20px; color: var(--ink); margin: 6px 0 16px; letter-spacing: -.01em; }
 .decide-body label { display: block; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin: 12px 0 5px; }
 .decide-body input { width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 9px 11px; outline: none; }
-.decide-body input:focus { border-color: var(--agent); }
+.decide-body input:focus { border-color: var(--ink); }
 .decide-body input.mono { font-family: var(--mono); font-size: 13px; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .suffix { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-left: 6px; }
 .boundary { font-size: 12.5px; line-height: 1.5; color: var(--ink2); background: var(--paper2); border: 0.5px solid var(--rule2); border-radius: 8px; padding: 10px 12px; margin: 16px 0 14px; }
 .warn { color: var(--signal); font-size: 12.5px; margin: 8px 0 0; }
 .err { color: var(--signal); font-size: 12px; margin: 10px 0 0; word-break: break-word; }
-.fund { width: 100%; font-family: var(--mono); font-size: 13px; letter-spacing: .03em; color: var(--paper); background: var(--agent); border: 0; border-radius: 9px; padding: 13px; cursor: pointer; margin-top: 4px; }
+.fund { width: 100%; font-family: var(--mono); font-size: 13px; letter-spacing: .03em; color: var(--paper); background: var(--ink); border: 0; border-radius: 9px; padding: 13px; cursor: pointer; margin-top: 4px; }
 .fund:hover:not(:disabled) { filter: brightness(1.07); }
 .fund:disabled { opacity: .45; cursor: default; }
 
 /* enforced / legible / judged labels — neutral pills, never a green "safe" badge */
 .tag { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; padding: 1px 6px; border-radius: 5px; border: 0.5px solid var(--rule); color: var(--dim); margin-left: 2px; }
-.tag.enforced { color: var(--agent); border-color: var(--agent); }
+.tag.enforced { color: var(--ink); border-color: var(--ink); }
 .tag.judged { color: var(--ink2); }
 
 /* Detail / status */
@@ -38,16 +38,16 @@
 .d-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
 .d-top .mono { font-size: 12px; }
 .pill { font-family: var(--mono); font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--rule); color: var(--ink2); }
-.pill.s-1 { color: var(--agent); border-color: var(--agent); }            /* Funded */
+.pill.s-1 { color: var(--ink); border-color: var(--ink); }               /* Funded */
 .pill.s-2, .pill.s-3 { color: var(--ink); }                               /* Shipped / InspectionOpen */
 .pill.s-4, .pill.s-6 { color: var(--have); border-color: var(--have); }   /* Settled / Resolved */
 .pill.s-5 { color: var(--signal); border-color: var(--signal); }          /* Disputed */
 .pill.s-7 { color: var(--dim); }                                          /* Cancelled */
 .d-grid { display: grid; grid-template-columns: 110px 1fr; gap: 6px 14px; font-size: 12.5px; padding: 12px 0; border-top: 0.5px solid var(--rule2); border-bottom: 0.5px solid var(--rule2); }
 .d-grid span:nth-child(odd) { color: var(--dim); }
-.d-grid a { color: var(--agent); text-decoration: none; }
+.d-grid a { color: var(--ink); text-decoration: underline; }
 .d-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
-.act { font-family: var(--mono); font-size: 12px; color: var(--paper); background: var(--agent); border: 0; border-radius: 8px; padding: 9px 13px; cursor: pointer; }
+.act { font-family: var(--mono); font-size: 12px; color: var(--paper); background: var(--ink); border: 0; border-radius: 8px; padding: 9px 13px; cursor: pointer; }
 .act:hover:not(:disabled) { filter: brightness(1.07); }
 .act:disabled { opacity: .45; cursor: default; }
 .act-row { display: flex; gap: 6px; align-items: center; }
@@ -65,15 +65,17 @@
   .row2 { grid-template-columns: 1fr; }
 }
 
-/* The readable record behind the on-chain hashes — verified plaintext for the arbiter. */
-.d-record { margin: 14px 0; padding: 12px 14px; border: 0.5px solid var(--rule2); border-radius: 10px; background: var(--paper2); }
-.d-record .ek2 { margin-bottom: 8px; }
-.rec-row { display: grid; grid-template-columns: 74px 1fr auto; gap: 10px; align-items: baseline; padding: 5px 0; font-size: 13px; color: var(--ink); }
-.rec-row + .rec-row { border-top: 0.5px solid var(--rule2); }
-.rec-k { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--dim); }
-.rec-v { line-height: 1.4; word-break: break-word; }
-.rec-dispute .rec-v { color: var(--ink); }
-.rec-badge { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 5px; border: 0.5px solid var(--rule); white-space: nowrap; }
-.rec-badge.rb-ok { color: var(--have); border-color: var(--have); }
-.rec-badge.rb-miss { color: var(--dim); }
-.rec-badge.rb-bad { color: var(--signal); border-color: var(--signal); }
+/* The record — the dark bench. Fixed forensic register, unmistakable in EITHER theme:
+   bench black, bone ink, mono ledger. This is the audit altitude, not a themed card. */
+.d-record { margin: 14px 0; padding: 13px 15px; border: 0.5px solid rgba(236,234,227,.18); border-radius: 10px; background: #0D0C10; color: #ECEAE3; }
+.d-record .ek2 { margin-bottom: 8px; color: #8C897F; }
+.d-record .ek2 .dim { color: #6A675E; }
+.rec-row { display: grid; grid-template-columns: 74px 1fr auto; gap: 10px; align-items: baseline; padding: 6px 0; font-size: 12.5px; font-family: var(--mono); color: #ECEAE3; }
+.rec-row + .rec-row { border-top: 0.5px solid rgba(236,234,227,.09); }
+.rec-k { font-size: 10.5px; text-transform: uppercase; letter-spacing: .07em; color: #8C897F; }
+.rec-v { line-height: 1.45; word-break: break-word; }
+.rec-dispute .rec-v { color: #ECEAE3; }
+.rec-badge { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .05em; padding: 1px 6px; border-radius: 5px; border: 0.5px solid rgba(236,234,227,.25); white-space: nowrap; }
+.rec-badge.rb-ok { color: #5FA877; border-color: #5FA877; }
+.rec-badge.rb-miss { color: #8C897F; }
+.rec-badge.rb-bad { color: #D2654A; border-color: #D2654A; }

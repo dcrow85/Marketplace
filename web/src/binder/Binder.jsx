@@ -91,7 +91,7 @@ function issueSeverity(c) {
 }
 function provBadge(c) {
   if (!c.image) return null
-  if (c.image_status === 'exact_source') return <span className="prov pv-exact">exact</span>
+  if (c.image_status === 'exact_source') return null // the default is unmarked — badge only exceptions
   if (c.image_status === 'provider_path') return <span className="prov pv-ref">ref</span>
   return null
 }
@@ -205,6 +205,7 @@ async function renderSizes(file) {
 
 function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
+  const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
   const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
   const [photo, setPhoto] = useState(null) // the high-res inspection copy shown in the modal
   const [read, setRead] = useState(null)   // the vision agent's read of it
@@ -323,7 +324,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 {issues.map((i, idx) => (
                   <div className={'irow ' + (i.severity || 'info')} key={idx}>
                     <b>{i.severity || 'info'}</b>
-                    <span>{[...(i.codes || []), i.notes || i.recommended_action].filter(Boolean).join(' · ')}</span>
+                    <span>{i.notes || i.recommended_action || (i.codes || []).join(' · ')}</span>
                   </div>
                 ))}
               </div>
@@ -392,7 +393,18 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
               </div>
             </div>
-            <div className="m-cite mono">catalog {(c.catalog_hash || '—').slice(0, 12)}{c.catalog_hash ? '…' : ''} · row {c.row_id ?? '—'}{c.source_entry_id ? ` · source ${c.source_entry_id}` : ''}</div>
+            <button className="recopen mono" onClick={() => setRecOpen(!recOpen)}>{recOpen ? '▾ the record' : '▸ open the record'}</button>
+            {recOpen && (
+              <div className="benchrec mono">
+                <div className="br-t">the record — this row&rsquo;s machine forms</div>
+                <div>catalog {c.catalog_hash || '—'}</div>
+                <div>row {c.row_id ?? '—'}</div>
+                {c.source_entry_id && <div>source {c.source_entry_id}</div>}
+                <div>image_status {c.image_status || '—'}</div>
+                {issues.map((i, idx) => (i.codes || []).length > 0 && <div key={idx}>warning [{i.severity || 'info'}] {(i.codes || []).join(' ')}</div>)}
+                <div className="br-b">identifiers as the catalog holds them — a record, not proof.</div>
+              </div>
+            )}
           </div>
         </div>
       </div>
