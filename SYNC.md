@@ -65,7 +65,7 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   binder page + 8 table/sleeve/rotated singles + synthetic ground-truth spreads): page 14/16 pixel-tight crops +
   2 loose-but-containing, singles 8/8 rectified upright (incl. a frame-cut rotated card on wood), reads 16/16
   every run. In-UI verified: 2 photos → 17 cards recognized · matched · cropped, overlay open 402ms during worker
-  load. Deployed to `multiscan-preview` branch ONLY; production keeps one-per-shot until Crowley signs off.
+  load. Phone-tested by Crowley and **PROMOTED TO PRODUCTION — live on cairn.cards** (apex verified serving the multiscan bundle).
   Eval harness in scratchpad (detect.py/evalcards.py) — worth committing to `simulations/` if we iterate further.
   No ask.
 - `[passive]` 2026-07-02 · Claude — **The guided rail: every step of the trade path now narrates — LIVE.**
