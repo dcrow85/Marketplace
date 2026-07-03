@@ -1,5 +1,5 @@
-import { useRef, useState, useMemo } from 'react'
-import { recognizePhoto } from './recognize.js'
+import { useRef, useState, useMemo, useEffect } from 'react'
+import { recognizePhoto, ensureLocateWorker } from './recognize.js'
 import { useScrollLock } from '../useScrollLock.js'
 
 const cardName = (c) => c?.name_en || c?.name_ja || c?.uid || '—'
@@ -29,6 +29,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const [picking, setPicking] = useState(null) // item id currently being picked
   const idRef = useRef(0)
   useScrollLock() // overlay is mounted only while open
+  useEffect(() => { ensureLocateWorker() }, []) // warm the CV worker while the user frames the shot
 
   // Each photo → one card. While the read is in flight we show a "reading" placeholder,
   // then replace it with the recognized card.
@@ -79,7 +80,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   }
 
   const status = items.length === 0
-    ? 'point at a card'
+    ? 'point at one card, a page, or a spread'
     : (reading && !matched.length ? 'reading your photo…'
       : `${uniq} recognized${dupes ? ` · ${dupes + uniq} copies` : ''}${reading ? ' · reading…' : ''}${needPick ? ` · ${needPick} need a pick` : ''}`)
 
@@ -133,8 +134,8 @@ export default function ScanCards({ cards, onCommit, onClose }) {
           </button>
         </div>
         <p className="sc-note dim">
-          Snap one card at a time — or pick several photos at once. Recognized cards are tagged <b>have</b>,
-          your photo kept as evidence — a witness, not proof. Fix any miss with “pick”.
+          One card or many: every card in frame is read and cut out in one shot. Recognized cards are tagged <b>have</b>,
+          each crop kept as evidence: a witness, not proof. Fix any miss with “pick”.
         </p>
       </div>
     </div>

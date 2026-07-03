@@ -1,7 +1,9 @@
-// One card per shot: photograph a single card → one vision read (/api/read, open
-// recognition — "what card is this?") → match it to the catalog. The photo itself is the
-// card image; there is no cropping, box detection, or perspective work. Batch-friendly:
-// snap several cards in a row (or pick multiple photos).
+// Many cards in one shot: photograph one card, a binder page, or a table spread → ONE
+// vision call (/api/scan) reads EVERY card (name/number/α + rough box) → a local CV
+// worker finds each card's exact quad inside its box and perspective-warps it upright
+// (validated on real photos: tables, sleeves, rotation, binder pages). The VLM is never
+// trusted for pixels; local CV is never trusted for names. If the worker isn't ready or
+// a card doesn't resolve, that card falls back to an edge-snapped box crop.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 
 function loadImage(file) {
@@ -23,12 +25,12 @@ function imgToDataUri(img, max = 1400, quality = 0.85) {
   return cv.toDataURL('image/jpeg', quality)
 }
 
-async function readPhoto(dataUri) {
-  const r = await fetch(API_BASE + '/api/read', {
+async function readPage(dataUri) {
+  const r = await fetch(API_BASE + '/api/scan', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ image: dataUri }),
   })
-  if (!r.ok) throw new Error('read_failed')
+  if (!r.ok) throw new Error('scan_failed')
   return r.json()
 }
 
@@ -95,15 +97,95 @@ export function matchCard(read, cards) {
   return pool[0]
 }
 
-// Photograph one card → [{ read, match, photo }]. Returns a single-element array so the
-// scan UI (which maps over results) is unchanged. The photo IS the card image.
+const clamp01 = (v) => Math.max(0, Math.min(1, v))
+
+// The model emits [x0,y0,x1,y1]; usually fractions, occasionally pixels (of the ~1400px
+// upload). Normalize to fractions, fix swaps, full-frame fallback when degenerate.
+function normBox(box, W, H) {
+  if (!Array.isArray(box) || box.length < 4) return [0, 0, 1, 1]
+  let [x0, y0, x1, y1] = box.map(Number)
+  if (![x0, y0, x1, y1].every((v) => Number.isFinite(v))) return [0, 0, 1, 1]
+  if (Math.max(x0, y0, x1, y1) > 1.5) { x0 /= W; x1 /= W; y0 /= H; y1 /= H }
+  if (x1 < x0) [x0, x1] = [x1, x0]
+  if (y1 < y0) [y0, y1] = [y1, y0]
+  ;[x0, y0, x1, y1] = [clamp01(x0), clamp01(y0), clamp01(x1), clamp01(y1)]
+  if (x1 - x0 < 0.02 || y1 - y0 < 0.02) return [0, 0, 1, 1]
+  return [x0, y0, x1, y1]
+}
+
+// Fallback crop: the box region cut from the full-res photo (bounded size).
+function cropBox(img, b, max = 720) {
+  const sx = b[0] * img.width, sy = b[1] * img.height
+  const sw = Math.max(1, (b[2] - b[0]) * img.width), sh = Math.max(1, (b[3] - b[1]) * img.height)
+  const s = Math.min(1, max / Math.max(sw, sh))
+  const cv = document.createElement('canvas')
+  cv.width = Math.round(sw * s); cv.height = Math.round(sh * s)
+  cv.getContext('2d').drawImage(img, sx, sy, sw, sh, 0, 0, cv.width, cv.height)
+  return cv.toDataURL('image/jpeg', 0.85)
+}
+
+// --- the localization worker (OpenCV off the main thread; strictly optional) ---------
+let _worker = null
+let _workerReady = null
+export function ensureLocateWorker() {
+  if (_workerReady) return _workerReady
+  _workerReady = new Promise((resolve) => {
+    let w
+    try { w = new Worker(new URL('./locate.worker.js', import.meta.url)) } catch { resolve(null); return }
+    const url = new URL((import.meta.env.BASE_URL || '/') + 'vendor/opencv.js', self.location.origin).href
+    const onReady = (e) => {
+      if (!e.data || e.data.type !== 'ready') return
+      w.removeEventListener('message', onReady)
+      if (e.data.ok) { _worker = w; resolve(w) } else { w.terminate(); resolve(null) }
+    }
+    w.addEventListener('message', onReady)
+    w.onerror = () => resolve(null)
+    w.postMessage({ type: 'load', url })
+  })
+  return _workerReady
+}
+
+function locateViaWorker(worker, buffer, width, height, boxes, timeoutMs = 15000) {
+  return new Promise((resolve) => {
+    const id = 'loc' + width + 'x' + height + '_' + boxes.length + '_' + performance.now()
+    let done = false
+    const onMsg = (e) => {
+      if (!e.data || e.data.type !== 'located' || e.data.id !== id) return
+      done = true; clearTimeout(timer); worker.removeEventListener('message', onMsg)
+      resolve(Array.isArray(e.data.crops) ? e.data.crops : null)
+    }
+    const timer = setTimeout(() => { if (!done) { worker.removeEventListener('message', onMsg); resolve(null) } }, timeoutMs)
+    worker.addEventListener('message', onMsg)
+    worker.postMessage({ type: 'locate', id, buffer, width, height, boxes }, [buffer])
+  })
+}
+
+// Photograph anything → [{ read, match, photo }], one per card the model saw.
+// Crops come from the worker's exact quads; any miss falls back to the box crop.
 export async function recognizePhoto(file, cards) {
   const img = await loadImage(file)
   try {
-    const photo = imgToDataUri(img)
-    let read
-    try { read = await readPhoto(photo) } catch { read = { error: 'read_failed' } }
-    return [{ read, match: matchCard(read, cards), photo }]
+    const dataUri = imgToDataUri(img)
+    const res = await readPage(dataUri).catch(() => null)
+    const found = res && Array.isArray(res.cards) ? res.cards : []
+    if (!found.length) return []
+    const boxes = found.map((c) => normBox(c.box, img.width, img.height))
+    let crops = null
+    if (_worker) {
+      try {
+        const cv = document.createElement('canvas')
+        cv.width = img.width; cv.height = img.height
+        const ctx = cv.getContext('2d', { willReadFrequently: true })
+        ctx.drawImage(img, 0, 0)
+        const buf = ctx.getImageData(0, 0, img.width, img.height).data.buffer
+        crops = await locateViaWorker(_worker, buf, img.width, img.height, boxes)
+      } catch { crops = null }
+    }
+    return found.map((read, i) => ({
+      read,
+      match: matchCard(read, cards),
+      photo: (crops && crops[i]) || cropBox(img, boxes[i]),
+    }))
   } finally {
     URL.revokeObjectURL(img.src)
   }

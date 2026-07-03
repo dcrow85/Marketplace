@@ -55,6 +55,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Many-cards-in-one-shot v3 (the shop feature) — on a PREVIEW branch, gated
+  on Crowley's phone.** Architecture per the two rollbacks' lessons: names from ONE `/api/scan` VLM read (never
+  trusted for pixels); crops from a local CV worker (never trusted for names) doing per-VLM-box quad search
+  (multi-strategy binarization → scored convex quads; card beats its binder pocket inside its own ROI), drift
+  correction from confident neighbors, per-side gradient line-fit refinement, perspective rectification — all in
+  `locate.worker.js` OFF the main thread, strictly optional (worker slow/dead → edge-snapped box crop; UI can't
+  freeze or hang, the two historical failure modes). Python prototype iterated against a REAL eval set (Crowley's
+  binder page + 8 table/sleeve/rotated singles + synthetic ground-truth spreads): page 14/16 pixel-tight crops +
+  2 loose-but-containing, singles 8/8 rectified upright (incl. a frame-cut rotated card on wood), reads 16/16
+  every run. In-UI verified: 2 photos → 17 cards recognized · matched · cropped, overlay open 402ms during worker
+  load. Deployed to `multiscan-preview` branch ONLY; production keeps one-per-shot until Crowley signs off.
+  Eval harness in scratchpad (detect.py/evalcards.py) — worth committing to `simulations/` if we iterate further.
+  No ask.
 - `[passive]` 2026-07-02 · Claude — **The guided rail: every step of the trade path now narrates — LIVE.**
   Crowley's read: the path to a trade felt clunky. Root cause: the state machine narrates on-chain and goes
   silent in the UI. Shipped: (1) create-form **guide line** that always names the one next step (Step 1 paste
