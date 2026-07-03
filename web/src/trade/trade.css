@@ -79,3 +79,8 @@
 .rec-badge.rb-ok { color: #5FA877; border-color: #5FA877; }
 .rec-badge.rb-miss { color: #8C897F; }
 .rec-badge.rb-bad { color: #D2654A; border-color: #D2654A; }
+
+/* trade sheet paste box — fills the form, never moves money */
+.sheetbox { width: 100%; font-size: 12px; line-height: 1.5; color: var(--ink); background: var(--paper2); border: 0.5px dashed var(--rule); border-radius: 8px; padding: 9px 11px; outline: none; resize: vertical; }
+.sheetbox:focus { border-color: var(--ink); }
+.sheetok { font-size: 12px; color: var(--ink2); margin: 8px 0 0; }

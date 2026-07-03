@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Trade sheet shipped: the sell/trade bridge, deliberately link-free — LIVE.**
+  Design ruling (Crowley + discussion): the modal stays the INTENT surface, Trades stays the one money surface;
+  the bridge is a **plaintext sheet you paste, not a link you click** (links are the drainer pattern this circle
+  is trained to distrust; a legible sheet wears its payload). Seller: Sell/Trade on → Ask field → "Copy trade
+  sheet" (card · num / condition / ask / seller wallet). Buyer: navigates to cairn.cards themselves → Trades →
+  pastes → form fills; arbiter stays the buyer's job; a sheet can never move money (wallet approval remains the
+  only gate). Parser is defensive: 4KB cap, known keys only, amount must be numeric, seller must be a real 0x40
+  address (verified: the dev placeholder is rejected). E2E verified in preview: modal sheet → paste → "Buy Black
+  Jade Courier · AZK01-003 for 25 USDC?" prefilled. When the signed-intent market lands, signed listings replace
+  pasted sheets; the muscle memory transfers. Surface lane. No ask.
 - `[passive]` 2026-07-02 · Claude — **Card modal decluttered per Crowley ("overwhelming; warnings confusing;
   what matters is Have/Want + Trade/Sell") — LIVE.** Reordered: name → chips → **HAVE/WANT/PASS + grail +
   Holding/Condition/Copies** (the decision cluster, now first) → rules/flavor reference → provenance → record.

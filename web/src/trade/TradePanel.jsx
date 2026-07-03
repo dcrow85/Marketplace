@@ -64,13 +64,41 @@ function LoadTrade({ onLoad }) {
   )
 }
 
+// Parse a pasted trade sheet (plaintext, seller-authored — see the modal's generator).
+// Untrusted input: cap the size, accept only known keys, validate each value, and fill a
+// form the buyer still reads, completes (arbiter), and signs. A sheet can never move money.
+function parseTradeSheet(text) {
+  if (typeof text !== 'string' || text.length > 4000) return null
+  const out = {}
+  for (const raw of text.split(/\r?\n/).slice(0, 40)) {
+    const m = raw.trim().match(/^(card|condition|ask|seller)\s{2,}(.+)$/i) || raw.trim().match(/^(card|condition|ask|seller)\s*[:=]\s*(.+)$/i)
+    if (!m) continue
+    const key = m[1].toLowerCase()
+    const val = m[2].trim().slice(0, 140)
+    if (key === 'card' && val) out.card = val
+    else if (key === 'condition' && val) out.condition = val.slice(0, 60)
+    else if (key === 'ask') { const n = val.replace(/usdc/i, '').trim(); if (/^\d+(\.\d{1,6})?$/.test(n)) out.amount = n }
+    else if (key === 'seller' && /^0x[a-fA-F0-9]{40}$/.test(val)) out.seller = val
+  }
+  return Object.keys(out).length ? out : null
+}
+
 // ---- Create / Decide-to-fund ----
 function CreateTrade({ address, ready, getWalletClient, onCreated }) {
   const [f, setF] = useState({ card: '', seller: '', arbiter: '', amount: '', condition: 'Near Mint', days: '7' })
   const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }))
   const [bal, setBal] = useState(null)
   const [recWarn, setRecWarn] = useState(null)
+  const [sheetNote, setSheetNote] = useState(null)
   const { pending, error, run } = useAction()
+
+  const onSheetPaste = (text) => {
+    const p = parseTradeSheet(text)
+    if (!p) { if (text.trim()) setSheetNote({ warn: true, text: 'That doesn\u2019t read as a trade sheet. Nothing was filled.' }); return }
+    setF((prev) => ({ ...prev, ...(p.card ? { card: p.card } : {}), ...(p.condition ? { condition: p.condition } : {}), ...(p.amount ? { amount: p.amount } : {}), ...(p.seller ? { seller: p.seller } : {}) }))
+    const filled = ['card', 'condition', 'amount', 'seller'].filter((k) => p[k === 'amount' ? 'amount' : k])
+    setSheetNote({ warn: false, text: `Sheet loaded: ${filled.join(', ')}. Read every line, check the seller address against your conversation, add your arbiter.` })
+  }
 
   useEffect(() => {
     let live = true
@@ -114,6 +142,11 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
       <div className="decide-body">
         <div className="ek">Decide</div>
         <h3>{amt > 0 && f.seller ? <>Buy <b>{f.card || 'this card'}</b> for <b>{amt} USDC</b>?</> : 'Start a trade'}</h3>
+
+        <label>Have a trade sheet from your seller?</label>
+        <textarea className="sheetbox mono" rows={2} placeholder="Paste it here as text. It only fills this form — you still read it, add the arbiter, and sign."
+          onChange={(ev) => { const t = ev.target.value; if (t.trim()) { onSheetPaste(t); ev.target.value = '' } }} />
+        {sheetNote && <p className={sheetNote.warn ? 'warn' : 'sheetok mono'}>{sheetNote.text}</p>}
 
         <label>Card</label>
         <input value={f.card} onChange={set('card')} placeholder="e.g. Penny · AZK01-001" />

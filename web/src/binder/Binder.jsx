@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import ScanCards from '../scan/ScanCards.jsx'
 import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
+import { useEscrowWallet } from '../trade/useEscrowWallet.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import '../scan/scan.css'
 
@@ -205,10 +206,36 @@ async function renderSizes(file) {
   }
 }
 
-function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose }) {
+function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
+  const { address: walletAddr } = useEscrowWallet()
+  const [sheetCopied, setSheetCopied] = useState(false)
+  // The trade sheet: a PLAINTEXT handoff the seller pastes into chat as text. Deliberately
+  // not a link (links are the drainer pattern this circle is trained to distrust) — the
+  // buyer navigates to cairn.cards themselves and pastes it into Trades. Legible by
+  // design: every line the buyer pastes is a line they can read.
+  const tradeSheet = () => {
+    const u2 = store[c.uid] || {}
+    const condStr = [
+      (u2.cond_type === 'graded' || u2.cond_type === 'tag') ? ['graded', u2.cond_grader].filter(Boolean).join(' · ') : (u2.cond_type || 'raw'),
+      u2.cond_grade,
+    ].filter(Boolean).join(' · ')
+    const seller = walletAddr || accountId || ''
+    return [
+      'CAIRN TRADE SHEET',
+      `card       ${nm(c)} · ${c.num}`,
+      `condition  ${condStr}`,
+      u2.ask ? `ask        ${u2.ask} USDC` : null,
+      seller ? `seller     ${seller}` : null,
+    ].filter(Boolean).join('\n')
+  }
+  const copySheet = async () => {
+    try { await navigator.clipboard.writeText(tradeSheet()) } catch { return }
+    setSheetCopied(true)
+    setTimeout(() => setSheetCopied(false), 2400)
+  }
   const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
   const [photo, setPhoto] = useState(null) // the high-res inspection copy shown in the modal
   const [read, setRead] = useState(null)   // the vision agent's read of it
@@ -349,6 +376,11 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 </Frow>
                 <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
                 <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
+                {(e.trade || e.sell) && <>
+                  <Frow label="Ask"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="USDC" value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
+                  <button className="sheetbtn mono" onClick={copySheet}>{sheetCopied ? '✓ copied — paste it to your buyer as text' : '⎘ Copy trade sheet'}</button>
+                  <div className="sheethint">Plain text, not a link. Your buyer opens cairn.cards themselves and pastes it into Trades. They can read every line.</div>
+                </>}
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
               </>}
               {e.stance === 'want' && <>
@@ -747,7 +779,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
-      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} onClose={() => setSelected(null)} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )
