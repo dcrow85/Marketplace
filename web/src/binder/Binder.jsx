@@ -228,7 +228,10 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const maxVal = u.want_max !== undefined ? u.want_max : (c.want_max || '')
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
   const issues = c.issues || []
+  const norm = (t) => (t || '').replace(/\s+/g, ' ').trim()
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
+    .filter((x) => !(c.card_text && x.label && norm(c.card_text).toLowerCase().includes(`[${x.label}]`.toLowerCase()))) // rules text already carries this labeled effect
+    .filter((x) => !(x.text && c.card_text && norm(c.card_text).includes(norm(x.text).slice(0, 80)))) // or the verbatim text
   const shownImg = (imp !== 'idle' && photo) ? photo : (userPhoto || c.image)
   const onPhoto = async (file) => {
     if (!file) return
@@ -310,28 +313,6 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {[c.release_family_label, c.product_channel_label, c.category, types, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'attention-tier ' + c.band_rank : '']
                 .map((t, i) => mpill(t, i))}
             </div>
-            {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
-              <div className="dossier">
-                {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
-                {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
-                {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}
-                {visibleEffects.map((fx, i) => (
-                  <div key={i}><b>{fx.label || 'Effect'}</b><span>{fx.text || 'Effect label only.'}</span></div>
-                ))}
-                {c.flavor_text && <div><b>Flavor</b><span>{c.flavor_text}</span></div>}
-              </div>
-            )}
-            {issues.length > 0 && (
-              <div className="issuebox">
-                <div className="ititle">Catalog warnings</div>
-                {issues.map((i, idx) => (
-                  <div className={'irow ' + (i.severity || 'info')} key={idx}>
-                    <b>{i.severity || 'info'}</b>
-                    <span>{i.notes || i.recommended_action || (i.codes || []).join(' · ')}</span>
-                  </div>
-                ))}
-              </div>
-            )}
             <div className="m-stance">
               <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
               <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
@@ -381,6 +362,17 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               {e.stance === 'pass' && <div className="fnote">Marked <b>pass</b> — this card dims and sinks to the bottom of its set. Switch to Have or Want anytime.</div>}
               {e.stance === 'none' && <div className="fnote">Pick <b>Have</b>, <b>Want</b>, or <b>Pass</b>. Have records condition + custody; Want sets the terms your agent hunts to; Pass clears it out of the way.</div>}
             </div>
+            {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
+              <div className="dossier">
+                {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
+                {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
+                {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}
+                {visibleEffects.map((fx, i) => (
+                  <div key={i}><b>{fx.label || 'Effect'}</b><span>{fx.text || 'Effect label only.'}</span></div>
+                ))}
+                {c.flavor_text && <div><b>Flavor</b><span>{c.flavor_text}</span></div>}
+              </div>
+            )}
             <div className="provbox">
               <div className="pt"><span className={'lgdot ' + dot} /> Image provenance</div>
               <div className="pb">
@@ -397,7 +389,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
               </div>
             </div>
-            <button className="recopen mono" onClick={() => setRecOpen(!recOpen)}>{recOpen ? '▾ the record' : '▸ open the record'}</button>
+            <button className="recopen mono" onClick={() => setRecOpen(!recOpen)}>{recOpen ? '▾ the record' : `▸ open the record${issues.length ? ` · ${issues.length} catalog note${issues.length > 1 ? 's' : ''}` : ''}`}</button>
             {recOpen && (
               <div className="benchrec mono">
                 <div className="br-t">the record — this row&rsquo;s machine forms</div>
@@ -405,7 +397,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 <div>row {c.row_id ?? '—'}</div>
                 {c.source_entry_id && <div>source {c.source_entry_id}</div>}
                 <div>image_status {c.image_status || '—'}</div>
-                {issues.map((i, idx) => (i.codes || []).length > 0 && <div key={idx}>warning [{i.severity || 'info'}] {(i.codes || []).join(' ')}</div>)}
+                {issues.map((i, idx) => <div key={idx}>note [{i.severity || 'info'}] {(i.codes || []).join(' ')}{i.notes ? ` · ${i.notes}` : (i.recommended_action ? ` · ${i.recommended_action}` : '')}</div>)}
                 <div className="br-b">identifiers as the catalog holds them — a record, not proof.</div>
               </div>
             )}

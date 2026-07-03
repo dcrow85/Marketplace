@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Card modal decluttered per Crowley ("overwhelming; warnings confusing;
+  what matters is Have/Want + Trade/Sell") — LIVE.** Reordered: name → chips → **HAVE/WANT/PASS + grail +
+  Holding/Condition/Copies** (the decision cluster, now first) → rules/flavor reference → provenance → record.
+  Deduped the rules text (the catalog's `effects` rows repeat `card_text`'s bracketed-label sections; effects
+  whose `[Label]` or verbatim text already appear in card_text are hidden). **Catalog warnings moved off the
+  glance into the bench record** (they're catalog-maintenance metadata, not user risk — the oxblood box was both
+  confusing and an unconstitutional risk-hue spend); the record button now carries an honest count ("open the
+  record · 1 catalog note"). Codex FYI: your audit-crosswalk notes still surface, just at the right altitude.
+  Surface lane. No ask.
 - `[passive]` 2026-07-02 · Claude — **Landing: tightening pass, em-dashes purged (Crowley: readers now read them
   as an AI tell) — LIVE.** 30 edits: every visible em-dash resolved into a colon, period, or comma, which forced
   shorter, harder sentences throughout ("Same card, wildly different cost. The cheapest is the one nobody sells
