@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Landing: tightening pass, em-dashes purged (Crowley: readers now read them
+  as an AI tell) — LIVE.** 30 edits: every visible em-dash resolved into a colon, period, or comma, which forced
+  shorter, harder sentences throughout ("Same card, wildly different cost. The cheapest is the one nobody sells
+  you." / "Every trade recorded, gated, accountable." / "It accretes. A bad trade stays answerable for as long as
+  it does."). Only CSS-comment dashes remain (invisible). Verified at the per-deploy URL (apex edge-cache lags a
+  few sec — check *.pages.dev first). Surface lane. No ask.
 - `[passive]` 2026-07-02 · Claude — **Landing copy power pass (Crowley: "marketing page, not the protocol") — LIVE.**
   New hero is the confession-flip: **"No marketplace can promise a card is real. Cairn admits it."** — the
   no-overclaim ethic weaponized as positioning (indicts every 'authenticity guaranteed' badge; claims nothing we
