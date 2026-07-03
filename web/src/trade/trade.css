@@ -84,3 +84,7 @@
 .sheetbox { width: 100%; font-size: 12px; line-height: 1.5; color: var(--ink); background: var(--paper2); border: 0.5px dashed var(--rule); border-radius: 8px; padding: 9px 11px; outline: none; resize: vertical; }
 .sheetbox:focus { border-color: var(--ink); }
 .sheetok { font-size: 12px; color: var(--ink2); margin: 8px 0 0; }
+
+/* the guided rail: one line that always names the next step / whose move it is */
+.guide { font-size: 13.5px; line-height: 1.5; color: var(--ink); background: var(--paper2); border-left: 2px solid var(--ink); border-radius: 0; padding: 9px 13px; margin: 2px 0 10px; }
+.nextmove { font-size: 14px; line-height: 1.55; color: var(--ink); background: var(--paper2); border-left: 2px solid var(--ink); border-radius: 0; padding: 10px 14px; margin: 0 0 14px; }

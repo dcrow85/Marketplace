@@ -110,6 +110,12 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
   const overCap = amt > VALUE_CAP_USDC
   const lowBal = bal != null && amt > 0 && toUsdc(f.amount) > bal
   const badAddr = (a) => a && !/^0x[a-fA-F0-9]{40}$/.test(a)
+  const guide = !f.card ? 'Step 1: paste your seller\u2019s sheet above, or type the card by hand.'
+    : (!f.seller || badAddr(f.seller)) ? 'Step 2: the seller\u2019s wallet address, exactly as they gave it to you.'
+    : (!f.arbiter || badAddr(f.arbiter)) ? 'Step 3: your arbiter. Someone who is neither of you and answers within a day or two.'
+    : !(amt > 0) ? 'Step 4: the amount you agreed, in USDC.'
+    : !ready ? 'Sign in to fund. Reads work without it; money needs a signer.'
+    : `Ready. Funding locks ${amt} USDC with the escrow until you accept or dispute. Expect two wallet confirmations: approve, then fund.`
   const canSubmit = ready && f.card && f.seller && f.arbiter && amt > 0 && !overCap
     && !badAddr(f.seller) && !badAddr(f.arbiter) && !eq(f.seller, address) && !eq(f.arbiter, address) && !eq(f.seller, f.arbiter)
 
@@ -142,6 +148,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
       <div className="decide-body">
         <div className="ek">Decide</div>
         <h3>{amt > 0 && f.seller ? <>Buy <b>{f.card || 'this card'}</b> for <b>{amt} USDC</b>?</> : 'Start a trade'}</h3>
+        <p className="guide">{guide}</p>
 
         <label>Have a trade sheet from your seller?</label>
         <textarea className="sheetbox mono" rows={2} placeholder="Paste it here as text. It only fills this form — you still read it, add the arbiter, and sign."
@@ -169,6 +176,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
         {lowBal && <p className="warn">Your USDC balance is below this amount.</p>}
         {eq(f.arbiter, address) && <p className="warn">The arbiter can&rsquo;t be you — you&rsquo;re the buyer (G5.1).</p>}
         {bal != null && <p className="dim mono">your USDC: {fromUsdc(bal)}</p>}
+        {bal != null && bal === 0n && <p className="dim">No test USDC yet: faucet.circle.com, pick Arbitrum Sepolia. Gas needs a little Sepolia ETH too.</p>}
 
         <p className="boundary">Cairn escrows the funds and records the claim <span className="tag enforced">enforced</span>.
           It can&rsquo;t confirm the card is authentic or its grade — a witness, not proof.</p>
@@ -181,6 +189,36 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
       </div>
     </div>
   )
+}
+
+// The state machine narrates: whose move it is, what happens on silence. The chain
+// enforces this; the surface says it out loud so nobody has to infer it from buttons.
+function nextMove(t, role, tradeId) {
+  const s = t.stateName
+  const when = (secs) => { try { return new Date(Number(secs) * 1000).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) } catch { return 'the deadline' } }
+  if (s === 'Funded') {
+    if (role === 'seller') return 'Your move: ship the card, then mark it shipped with the tracking number.'
+    if (role === 'buyer') return `Funded. The seller ships next; this trade shows up in their app. If you\u2019re talking, tell them it\u2019s trade #${tradeId}.`
+    return 'Waiting on the seller to ship.'
+  }
+  if (s === 'Shipped') {
+    if (role === 'buyer') return 'On its way. When it arrives, confirm received and inspect it against the record above.'
+    return 'Shipped. Waiting on the buyer to confirm arrival.'
+  }
+  if (s === 'InspectionOpen') {
+    const d = when(Number(t.inspectionOpenedAt) + Number(t.inspectionWindow))
+    if (role === 'buyer') return `Your move: inspect against the terms in the record. Accept releases the funds; dispute holds them for the arbiter. Silence settles to the seller after ${d}.`
+    return `The buyer is inspecting. Silence settles to the seller after ${d}.`
+  }
+  if (s === 'Disputed') {
+    if (role === 'arbiter') return 'Your ruling. Read the record above. A buyer refund needs return custody confirmed first.'
+    if (role === 'seller') return 'Disputed. Confirm return custody when the card is back; the arbiter rules from the record.'
+    return 'Disputed. Waiting on the arbiter.'
+  }
+  if (s === 'Settled') return 'Settled. Funds released to the seller. The record stays.'
+  if (s === 'Resolved') return 'Resolved by the arbiter. The record stays.'
+  if (s === 'Cancelled') return 'Cancelled before shipping. The buyer was refunded.'
+  return null
 }
 
 // ---- Detail / status + role-aware actions ----
@@ -199,7 +237,7 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
     refresh() // eslint-disable-line react-hooks/set-state-in-effect -- load trade state on mount / id change
   }, [refresh])
 
-  if (!tradeId) return <div className="empty">No trade selected.</div>
+  if (!tradeId) return <div className="empty">Load a trade by its number, or start one under New trade. If a trade needs you, the line above your binder says so.</div>
   if (loadErr) return <div className="empty">Couldn&rsquo;t load trade #{tradeId} ({loadErr})</div>
   if (!t) return <div className="empty">Loading trade #{tradeId}…</div>
 
@@ -214,6 +252,7 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
         <span className={'pill s-' + t.state}>{t.stateName}</span>
         <span className="mono dim">#{tradeId} · you are the <b>{role}</b></span>
       </div>
+      {nextMove(t, role, tradeId) && <p className="nextmove">{nextMove(t, role, tradeId)}</p>}
       <div className="d-grid mono">
         <span>amount</span><span>{fromUsdc(t.usdcAmount)} USDC</span>
         <span>buyer</span><span><a href={addrUrl(t.buyer)} target="_blank" rel="noreferrer">{short(t.buyer)}</a></span>

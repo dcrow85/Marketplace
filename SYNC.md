@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **The guided rail: every step of the trade path now narrates — LIVE.**
+  Crowley's read: the path to a trade felt clunky. Root cause: the state machine narrates on-chain and goes
+  silent in the UI. Shipped: (1) create-form **guide line** that always names the one next step (Step 1 paste
+  or type the card → Step 2 seller wallet → Step 3 arbiter → Step 4 amount → "Ready … expect two wallet
+  confirmations: approve, then fund") and skips steps the sheet already filled; (2) **whose-move narration** on
+  every trade state, role-aware ("Your move: ship, then mark shipped…" / "Funded. The seller ships next; tell
+  them it's trade #N" / "Silence settles to the seller after <date>" / "A buyer refund needs return custody
+  confirmed first"); (3) **Selling chip** in the binder (sellers can finally review what they've marked
+  sell/trade); (4) modal sell-flow reordered (Holding → Condition → Ask → Copy sheet); (5) zero-USDC faucet hint;
+  (6) honest Trades empty state. Verified in preview: guide progression + skip logic + Selling filter. The
+  detail-narration renders per state at tomorrow's pre-flight (needs a live trade + signer). Surface lane. No ask.
 - `[passive]` 2026-07-02 · Claude — **Trade sheet shipped: the sell/trade bridge, deliberately link-free — LIVE.**
   Design ruling (Crowley + discussion): the modal stays the INTENT surface, Trades stays the one money surface;
   the bridge is a **plaintext sheet you paste, not a link you click** (links are the drainer pattern this circle

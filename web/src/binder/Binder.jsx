@@ -374,13 +374,13 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                     {(COND_GRADES[u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')] || COND_GRADES.raw).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                   </select>
                 </Frow>
-                <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
-                <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 {(e.trade || e.sell) && <>
                   <Frow label="Ask"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="USDC" value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
-                  <button className="sheetbtn mono" onClick={copySheet}>{sheetCopied ? '✓ copied — paste it to your buyer as text' : '⎘ Copy trade sheet'}</button>
+                  <button className="sheetbtn mono" onClick={copySheet}>{sheetCopied ? '✓ copied. paste it to your buyer as text' : '⎘ Copy trade sheet'}</button>
                   <div className="sheethint">Plain text, not a link. Your buyer opens cairn.cards themselves and pastes it into Trades. They can read every line.</div>
                 </>}
+                <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
+                <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
               </>}
               {e.stance === 'want' && <>
@@ -477,6 +477,7 @@ function chipsFor() {
     { l: 'All', g: 'all' },
     { l: 'Have', g: 'stance', v: 'have' },
     { l: 'Want', g: 'stance', v: 'want', acc: 1 },
+    { l: 'Selling', g: 'stance', v: 'selling' },
   ]
 }
 
@@ -616,7 +617,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     base = base.filter((c) => {
       if (stanceF.size) {
         const e = effStance(c, store)
-        if (!((stanceF.has('have') && e.stance === 'have') || (stanceF.has('want') && e.stance === 'want'))) return false
+        if (!((stanceF.has('have') && e.stance === 'have') || (stanceF.has('want') && e.stance === 'want') || (stanceF.has('selling') && e.stance === 'have' && (e.sell || e.trade)))) return false
       }
       if (familyF.size && !familyF.has(c.release_family)) return false
       if (channelF.size) {
