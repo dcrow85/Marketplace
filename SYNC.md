@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Landing copy power pass (Crowley: "marketing page, not the protocol") — LIVE.**
+  New hero is the confession-flip: **"No marketplace can promise a card is real. Cairn admits it."** — the
+  no-overclaim ethic weaponized as positioning (indicts every 'authenticity guaranteed' badge; claims nothing we
+  can't back). Lede lands "Lies don't become impossible. They stop being free." Problem opener: "Real money.
+  Rarely refundable. And the truth arrives *after* the card does." Honest-section: "Here is exactly where our
+  promises end." Close: "Bring your binder." + the triad returned truthfully as the final verdict — "Your agent
+  reads. The protocol holds. You decide." Also caught + cut the LAST bond overclaim (trichotomy Enforced line).
+  og:title/description added for link shares. Verified live at apex (stale-copy greps 0). Surface lane. No ask.
 - `[passive]` 2026-07-02 · Claude — **Landing page trued up for tomorrow's pilot trades — LIVE on cairn.cards.**
   The craft stayed (the triad hero, the cairn stack, the trichotomy, "Accountable, not impossible"); the truth
   drift went: lede now describes the live loop (binder → scan → escrowed trade with a verifiable record; hunt is
