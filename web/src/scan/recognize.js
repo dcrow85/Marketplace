@@ -166,10 +166,16 @@ export async function recognizePhoto(file, cards) {
   const img = await loadImage(file)
   try {
     const dataUri = imgToDataUri(img)
+    // When the model returns PIXEL boxes, they are pixels of the ~1400px UPLOAD, not of
+    // the full-res photo. Normalizing against full-res shrank every box toward the
+    // top-left corner on 12MP phone photos (invisible on small test files) — the
+    // "cropped to the background" bug. Normalize against the uploaded dimensions.
+    const us = Math.min(1, 1400 / Math.max(img.width, img.height))
+    const uw = Math.round(img.width * us), uh = Math.round(img.height * us)
     const res = await readPage(dataUri).catch(() => null)
     const found = res && Array.isArray(res.cards) ? res.cards : []
     if (!found.length) return []
-    const boxes = found.map((c) => normBox(c.box, img.width, img.height))
+    const boxes = found.map((c) => normBox(c.box, uw, uh))
     let crops = null
     if (_worker) {
       try {

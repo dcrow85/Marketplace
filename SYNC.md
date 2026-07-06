@@ -55,6 +55,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-02 · Claude — **Multiscan crop bug found + fixed + live: pixel boxes were normalized against
+  the wrong image.** Crowley's phone crops landed on background. Root cause: when Qwen returns PIXEL boxes they are
+  pixels of the ~1400px UPLOAD, but `normBox` divided by the FULL-RES photo dims — on 12MP phone photos every box
+  shrank ~65% toward the top-left (background); on my 1112px test files the same bug was a ~5% error, invisible, so
+  every test passed. Humbling detail: I hit this exact bug in the Python eval harness mid-build, fixed it THERE,
+  and didn't audit the production path for it. Fixed (`recognize.js` normalizes against uploaded dims), reproduced
+  + verified at simulated 12MP (16/16 tight crops on a 4000px photo), live on cairn.cards (apex-verified). Lesson
+  for the record: a bug found in the harness must trigger a grep of production for its twin. No ask.
 - `[passive]` 2026-07-02 · Claude — **Many-cards-in-one-shot v3 (the shop feature) — on a PREVIEW branch, gated
   on Crowley's phone.** Architecture per the two rollbacks' lessons: names from ONE `/api/scan` VLM read (never
   trusted for pixels); crops from a local CV worker (never trusted for names) doing per-VLM-box quad search
