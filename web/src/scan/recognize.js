@@ -113,8 +113,11 @@ function normBox(box, W, H) {
   return [x0, y0, x1, y1]
 }
 
-// Fallback crop: the box region cut from the full-res photo (bounded size).
+// Fallback crop: the box region cut from the full-res photo (bounded size), padded
+// outward — a loose crop keeps context, a cutting crop destroys evidence.
 function cropBox(img, b, max = 720) {
+  const pw = (b[2] - b[0]) * 0.05, ph = (b[3] - b[1]) * 0.05
+  b = [clamp01(b[0] - pw), clamp01(b[1] - ph), clamp01(b[2] + pw), clamp01(b[3] + ph)]
   const sx = b[0] * img.width, sy = b[1] * img.height
   const sw = Math.max(1, (b[2] - b[0]) * img.width), sh = Math.max(1, (b[3] - b[1]) * img.height)
   const s = Math.min(1, max / Math.max(sw, sh))

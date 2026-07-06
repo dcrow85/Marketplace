@@ -187,6 +187,12 @@ def refine_quad(img, quad, band=8, samples=24):
     return newq
 
 
+def expand_quad(q, f=1.06):
+    """Loose beats cut: scale a quad outward about its centroid before warping."""
+    c = q.reshape(4, 2).mean(axis=0)
+    return c + (q.reshape(4, 2) - c) * f
+
+
 def rectify(img, quad, out_w=500, out_h=700):
     q = _order_quad(quad.copy()).astype(np.float32)
     s = _sides(q)
@@ -215,7 +221,7 @@ def quad_for_box(img, box, pad=0.16):
         cnts, _ = cv2.findContours(bm, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         for c in cnts:
             a = cv2.contourArea(c)
-            if a < 0.22 * wa or a > 0.98 * wa:
+            if a < 0.32 * wa or a > 0.98 * wa:
                 continue
             q = _quad_from_contour(c)
             s2 = _score(q)

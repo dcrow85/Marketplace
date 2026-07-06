@@ -114,7 +114,7 @@ function quadForBox(cv, src, box, W, H, pad = 0.16) {
     for (let i = 0; i < contours.size(); i++) {
       const c = contours.get(i)
       const a = cv.contourArea(c)
-      if (a >= 0.22 * wa && a <= 0.98 * wa) {
+      if (a >= 0.32 * wa && a <= 0.98 * wa) {
         const q = quadFromContour(cv, c)
         const s = rectangularity(cv, q) * aspectScore(q) * oppositeScore(q)
         if (s > bs) { bs = s; best = q }
@@ -183,6 +183,14 @@ function refineQuad(cv, magData, W, H, quad, band = 8, samples = 24) {
   for (let i = 0; i < 4; i++) moved = Math.max(moved, dist(nq[i], q[i]))
   if (moved > 0.06 * size + 4) return quad
   return nq
+}
+
+// Asymmetric safety: a loose crop keeps context, a cutting crop destroys evidence.
+// Expand every final quad outward before warping so card edges are never sliced.
+function expandQuad(q, f = 1.06) {
+  const cx = (q[0][0] + q[1][0] + q[2][0] + q[3][0]) / 4
+  const cy = (q[0][1] + q[1][1] + q[2][1] + q[3][1]) / 4
+  return q.map(([x, y]) => [cx + (x - cx) * f, cy + (y - cy) * f])
 }
 
 function rectifyToCanvas(cv, src, quad, outW = 500, outH = 700) {
@@ -254,7 +262,7 @@ self.onmessage = async (e) => {
                       [b[2] * W + drift[0], b[3] * H + drift[1]], [b[0] * W + drift[0], b[3] * H + drift[1]]]
           q = refineQuad(cv, magData, W, H, bx, 22, 28)
         }
-        return rectifyToCanvas(cv, src, q)
+        return rectifyToCanvas(cv, src, expandQuad(q))
       })
       const urls = []
       for (const oc of crops) {

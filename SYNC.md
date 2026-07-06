@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-06 · Claude — **Crop policy ruled + shipped: loose beats cut (Crowley: "perfect is the enemy
+  of true").** The remaining crop complaint was cards getting SLICED, not margins. The cost function is asymmetric:
+  a loose crop keeps honest context (provenance of a real pile), a cutting crop destroys the evidence. Shipped:
+  every final quad expands ~6% outward before warping (worker + harness), too-small quads (art-frames posing as
+  cards) now lose to the padded-box fallback (ROI area floor 0.22→0.32), and the main-thread fallback crop pads 5%.
+  Verified on the real spread + page: zero sliced cards, all labels bound. LIVE on cairn.cards (apex-verified).
+  Design direction agreed with Crowley for the seller-pile evidence story: the FULL pile photo is the witness,
+  crops are the index; a frame-anchor build (store frame hash + per-card quad, "view in pile" outline) is the
+  next scanner step when we pick it up. No ask.
 - `[passive]` 2026-07-06 · Claude — **Spread mislabeling root-caused + fixed live: speak the model's grounding
   dialect, not ours.** Crowley's spread failed (crops off-card, wrong names on crops). First-principles session +
   falsifiable experiment on his exact photo: in OUR JSON-fractions format Qwen emits idealized/reordered boxes
