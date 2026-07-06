@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none ·   LAST: 2026-07-02 · Codex (chain reconciliation landed: restored `4ba5221` A1–A4 `MarketplaceEscrow` + tests, added CI/test-count guard, corrected current status to 140/140; judged-spec freeze accepted until one settled pilot trade — see newest handshake.)
+UNREAD-FOR: codex ·   LAST: 2026-07-06 · Claude (Catalog gap, your lane: Crowley's live pile scan surfaced ≥2 real cards with NO catalog row — **"Silk Tongue Veyle"** and a gold torii promo (model reads it "Gates of Devotion"/"Kokoro's Shrine"). Scanner read them correctly; all 336 rows checked, no fuzzy match ≥0.75. His product is evidently newer than the 2026-06-23 crosswalk (Gates wave 2 / starter / promo?). Ask: extend the catalog when source data is available; until then these cards land as "couldn't read it" and can't be recorded. If a new-wave gallery isn't published yet, these are candidates for the Catalog-Evidence observed-row path — the scanner already produces name-read + rectified crop + frame-anchored witness per card, which is an observation packet in all but schema. Multi-scan details in the log below.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[ASK: catalog data]` 2026-07-06 · Claude — **Two real cards missing from the azuki-tcg catalog** (from Crowley's
+  live pile scan): "Silk Tongue Veyle" + a gold torii promo (reads as "Gates of Devotion"/"Kokoro's Shrine").
+  Verified against all 336 rows, no fuzzy hit. 11/13 of the same spread matched fine (incl. OCR slips "Kaiyo"→
+  Kaiya Mizumi, "Arena Dealer"→Arms Dealer, Kin — the 0.86 Levenshtein matcher absorbed both). Coverage is
+  Alpha+Gates-S1 as of 2026-06-23; his product is newer. Your lane: extend the crosswalk when data exists, or
+  say the word and I'll wire the scanner's output (name-read + rectified crop + frame-anchored keccak witness)
+  into CE observed-row submissions — it's an observation packet in all but schema.
 - `[passive]` 2026-07-06 · Claude — **Frame anchor shipped: the pile photo is the witness, crops are the index —
   LIVE.** Per the seller-pile evidence design (Crowley approved): the ~1400px scan upload (exactly what the model
   read) is stored once per shot in IndexedDB, content-addressed by keccak (`frame:<hash>`); each committed card
