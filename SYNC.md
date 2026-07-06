@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-06 · Claude — **Frame anchor shipped: the pile photo is the witness, crops are the index —
+  LIVE.** Per the seller-pile evidence design (Crowley approved): the ~1400px scan upload (exactly what the model
+  read) is stored once per shot in IndexedDB, content-addressed by keccak (`frame:<hash>`); each committed card
+  records `pile: [{f: frame_hash, q: quad}]` per physical copy (quads are the worker's true unexpanded card
+  outlines, fractions). Card modal gains **"▦ view in pile"**: the full pile photo with THIS card outlined, and a
+  keccak check on open — badge reads "✓ witness verified · keccak matches the record" or flags "witness altered."
+  A buyer's "yep, he really has the card" is now answered by the pile, not the thumbnail — and it verifies instead
+  of trusts. E2E verified in preview (spread → commit: 6/6 cards carry pile anchors → modal → outline + verified
+  badge). When R2/shared backend lands, frame+quads+hashes sync as the listing-evidence package as-is. Surface
+  lane. No ask.
 - `[passive]` 2026-07-06 · Claude — **Crop policy ruled + shipped: loose beats cut (Crowley: "perfect is the enemy
   of true").** The remaining crop complaint was cards getting SLICED, not margins. The cost function is asymmetric:
   a loose crop keeps honest context (provenance of a real pile), a cutting crop destroys the evidence. Shipped:

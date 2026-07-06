@@ -249,6 +249,7 @@ self.onmessage = async (e) => {
       cv.Sobel(gray, gy, cv.CV_32F, 0, 1, 3)
       cv.magnitude(gx, gy, mag)
       const magData = mag.data32F
+      const quadsOut = []
       const crops = m.boxes.map((b, i) => {
         let q = first[i]
         if (!q && (Math.abs(drift[0]) > 2 || Math.abs(drift[1]) > 2)) {
@@ -262,6 +263,8 @@ self.onmessage = async (e) => {
                       [b[2] * W + drift[0], b[3] * H + drift[1]], [b[0] * W + drift[0], b[3] * H + drift[1]]]
           q = refineQuad(cv, magData, W, H, bx, 22, 28)
         }
+        // the frame-anchor outline wants the true (unexpanded) quad, as fractions
+        quadsOut.push(q.map(([x, y]) => [Math.max(0, Math.min(1, x / W)), Math.max(0, Math.min(1, y / H))]))
         return rectifyToCanvas(cv, src, expandQuad(q))
       })
       const urls = []
@@ -269,7 +272,7 @@ self.onmessage = async (e) => {
         const blob = await oc.convertToBlob({ type: 'image/jpeg', quality: 0.9 })
         urls.push(new FileReaderSync().readAsDataURL(blob))
       }
-      self.postMessage({ type: 'located', id: m.id, crops: urls })
+      self.postMessage({ type: 'located', id: m.id, crops: urls, quads: quadsOut })
     } catch {
       self.postMessage({ type: 'located', id: m.id, crops: null })
     } finally {

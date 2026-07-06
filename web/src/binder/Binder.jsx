@@ -210,6 +210,16 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
+  const [pileView, setPileView] = useState(null) // { frame, quad, verified } — the witness photo with this card outlined
+  const openPile = async (entry) => {
+    const p = (entry.pile || [])[0]
+    if (!p) return
+    try {
+      const frame = await getPhoto(`frame:${p.f}`)
+      if (!frame) return
+      setPileView({ frame, quad: p.q, verified: hashText(frame) === p.f })
+    } catch { /* witness unavailable — button simply does nothing */ }
+  }
   const { address: walletAddr } = useEscrowWallet()
   const [sheetCopied, setSheetCopied] = useState(false)
   // The trade sheet: a PLAINTEXT handoff the seller pastes into chat as text. Deliberately
@@ -421,6 +431,9 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
               </div>
             </div>
+            {(u.pile || []).length > 0 && (
+              <button className="recopen mono" onClick={() => openPile(u)}>▦ view in pile · the witness photo</button>
+            )}
             <button className="recopen mono" onClick={() => setRecOpen(!recOpen)}>{recOpen ? '▾ the record' : `▸ open the record${issues.length ? ` · ${issues.length} catalog note${issues.length > 1 ? 's' : ''}` : ''}`}</button>
             {recOpen && (
               <div className="benchrec mono">
@@ -437,6 +450,20 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
         </div>
       </div>
     </div>
+    {pileView && (
+      <div className="lightbox" onClick={() => setPileView(null)}>
+        <button className="lbx" onClick={() => setPileView(null)} aria-label="close pile view">✕</button>
+        <div className="pilewrap" onClick={(ev) => ev.stopPropagation()}>
+          <img src={pileView.frame} alt="the pile photo this card was scanned from" />
+          <svg className="pileoutline" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+            <polygon points={pileView.quad.map(([x, y]) => `${x * 1000},${y * 1000}`).join(' ')} />
+          </svg>
+          <div className={'pilebadge mono' + (pileView.verified ? '' : ' bad')}>
+            {pileView.verified ? '✓ witness verified · keccak matches the record' : '⚑ witness altered — hash does not match'}
+          </div>
+        </div>
+      </div>
+    )}
     {zoom && shownImg && (
       <div className="lightbox" onClick={() => setZoom(false)}>
         <button className="lbx" onClick={() => setZoom(false)} aria-label="close full screen">✕</button>
@@ -576,10 +603,18 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       const next = { ...prev }
       for (const s of scans) {
         const copies = Math.max(next[s.uid]?.copies || 0, s.copies || 1)
+        // frame anchor: the pile photo is the witness; each copy records where it sits.
+        // Frames are content-addressed (keccak) and stored once in IndexedDB.
+        const pile = (s.pile || []).slice(0, 8).map((p) => {
+          const f = hashText(p.frame)
+          putPhoto(`frame:${f}`, p.frame).catch(() => {})
+          return { f, q: p.quad }
+        })
         next[s.uid] = {
           ...(next[s.uid] || {}), stance: 'have', scanned: true, copies,
           ...(copies > 1 ? { extra: true } : {}),
           ...(s.photo ? { photo_hash: hashText(s.photo) } : {}), // anchors the local photo; verifiable when sync lands
+          ...(pile.length ? { pile } : {}),
         }
       }
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }

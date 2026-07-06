@@ -42,10 +42,11 @@ export default function ScanCards({ cards, onCommit, onClose }) {
         const file = files[cursor++]
         const pid = ++idRef.current
         setItems((prev) => [...prev, { id: pid, status: 'reading', photo: null, read: null, match: null }])
+        let frame = null
         let results
-        try { results = await recognizePhoto(file, cards) } catch { results = [] }
+        try { const out = await recognizePhoto(file, cards); frame = out.frame; results = out.items } catch { results = [] }
         const fresh = results.map((r) => ({
-          id: ++idRef.current, status: r.match ? 'matched' : 'unmatched', photo: r.photo, read: r.read, match: r.match,
+          id: ++idRef.current, status: r.match ? 'matched' : 'unmatched', photo: r.photo, read: r.read, match: r.match, frame, quad: r.quad,
         }))
         setItems((prev) => {
           const i = prev.findIndex((x) => x.id === pid)
@@ -72,8 +73,8 @@ export default function ScanCards({ cards, onCommit, onClose }) {
     const byUid = new Map()
     for (const x of matched) {
       const cur = byUid.get(x.match.uid)
-      if (cur) cur.copies += 1
-      else byUid.set(x.match.uid, { uid: x.match.uid, photo: x.photo, read: x.read, copies: 1 })
+      if (cur) { cur.copies += 1; if (x.frame && x.quad) cur.pile.push({ frame: x.frame, quad: x.quad }) }
+      else byUid.set(x.match.uid, { uid: x.match.uid, photo: x.photo, read: x.read, copies: 1, pile: (x.frame && x.quad) ? [{ frame: x.frame, quad: x.quad }] : [] })
     }
     onCommit([...byUid.values()])
     onClose()

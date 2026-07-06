@@ -155,7 +155,7 @@ function locateViaWorker(worker, buffer, width, height, boxes, timeoutMs = 15000
     const onMsg = (e) => {
       if (!e.data || e.data.type !== 'located' || e.data.id !== id) return
       done = true; clearTimeout(timer); worker.removeEventListener('message', onMsg)
-      resolve(Array.isArray(e.data.crops) ? e.data.crops : null)
+      resolve(Array.isArray(e.data.crops) ? { crops: e.data.crops, quads: e.data.quads || null } : null)
     }
     const timer = setTimeout(() => { if (!done) { worker.removeEventListener('message', onMsg); resolve(null) } }, timeoutMs)
     worker.addEventListener('message', onMsg)
@@ -163,23 +163,23 @@ function locateViaWorker(worker, buffer, width, height, boxes, timeoutMs = 15000
   })
 }
 
-// Photograph anything → [{ read, match, photo }], one per card the model saw.
+// Photograph anything → { frame, items: [{ read, match, photo, quad }] }.
+// `frame` is the ~1400px upload (what the model actually read) — the WITNESS the pile
+// evidence anchors to. Each item's quad locates its card in that frame (fractions).
 // Crops come from the worker's exact quads; any miss falls back to the box crop.
 export async function recognizePhoto(file, cards) {
   const img = await loadImage(file)
   try {
     const dataUri = imgToDataUri(img)
     // When the model returns PIXEL boxes, they are pixels of the ~1400px UPLOAD, not of
-    // the full-res photo. Normalizing against full-res shrank every box toward the
-    // top-left corner on 12MP phone photos (invisible on small test files) — the
-    // "cropped to the background" bug. Normalize against the uploaded dimensions.
+    // the full-res photo. Normalize against the uploaded dimensions.
     const us = Math.min(1, 1400 / Math.max(img.width, img.height))
     const uw = Math.round(img.width * us), uh = Math.round(img.height * us)
     const res = await readPage(dataUri).catch(() => null)
     const found = res && Array.isArray(res.cards) ? res.cards : []
-    if (!found.length) return []
+    if (!found.length) return { frame: dataUri, items: [] }
     const boxes = found.map((c) => normBox(c.box, uw, uh))
-    let crops = null
+    let located = null
     if (_worker) {
       try {
         const cv = document.createElement('canvas')
@@ -187,14 +187,17 @@ export async function recognizePhoto(file, cards) {
         const ctx = cv.getContext('2d', { willReadFrequently: true })
         ctx.drawImage(img, 0, 0)
         const buf = ctx.getImageData(0, 0, img.width, img.height).data.buffer
-        crops = await locateViaWorker(_worker, buf, img.width, img.height, boxes)
-      } catch { crops = null }
+        located = await locateViaWorker(_worker, buf, img.width, img.height, boxes)
+      } catch { located = null }
     }
-    return found.map((read, i) => ({
+    const items = found.map((read, i) => ({
       read,
       match: matchCard(read, cards),
-      photo: (crops && crops[i]) || cropBox(img, boxes[i]),
+      photo: (located && located.crops[i]) || cropBox(img, boxes[i]),
+      quad: (located && located.quads && located.quads[i])
+        || [[boxes[i][0], boxes[i][1]], [boxes[i][2], boxes[i][1]], [boxes[i][2], boxes[i][3]], [boxes[i][0], boxes[i][3]]],
     }))
+    return { frame: dataUri, items }
   } finally {
     URL.revokeObjectURL(img.src)
   }
