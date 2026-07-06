@@ -19,40 +19,38 @@
     ]
   },
   "counts": {
-    "alpha_completion_rows": 234,
-    "audit_rows": 122,
+    "alpha_completion_rows": 237,
+    "audit_rows": 121,
     "issues": {
-      "completion_row_missing_gallery_star": 18,
-      "gates_awakened_row_inherits_alpha_stamp": 103,
-      "image_url_reused_across_different_row_state": 1,
-      "source_entry_card_id_disagrees_with_gallery_card_id": 4,
-      "star_row_reuses_nonstar_image_url": 1
+      "completion_row_missing_gallery_star": 19,
+      "gates_awakened_row_inherits_alpha_stamp": 104,
+      "source_entry_card_id_disagrees_with_gallery_card_id": 2
     },
-    "official_gallery_rows": 234,
+    "official_gallery_rows": 237,
     "reference_policy": {
-      "display_reference_image": 117,
-      "suppress_reference_image": 5
+      "display_reference_image": 119,
+      "suppress_reference_image": 2
     },
     "severity": {
-      "high": 5,
-      "medium": 117
+      "high": 2,
+      "medium": 119
     },
     "stamp_policy": {
-      "display_stamp_if_present": 19,
-      "suppress_inherited_alpha_stamp": 103
+      "display_stamp_if_present": 17,
+      "suppress_inherited_alpha_stamp": 104
     }
   },
-  "csv_sha256": "771f6de424291611bbc593566c5d25ff3e99d2b568e1499e025b44f2429067e4",
+  "csv_sha256": "b0cd7550f239b1a6b94b586a0a98ebaf61496c195f4555deaa4cd7321527b2c0",
   "name": "Azuki TCG Reference Image and Alpha Field Audit",
   "schema": "azuki_tcg_reference_image_audit_provenance_v0.1",
   "source_inputs": {
     "alpha_fields_completion_csv": {
       "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
-      "sha256": "ccf7634edf8fcf69107ef325a77a1f9fc49f2e8967035199c1987a77066a4631"
+      "sha256": "5409f03f432a068964271f56f4346b839f517453137aa11bbb29c10424a783f3"
     },
     "official_gallery_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
-      "sha256": "0b75c792cd9e833232eec9f7376919fa054483c6c52c7eb5892025c36be2234f"
+      "sha256": "f68d3fc066ddb65181e51f6473da465810a239e44227660f1c5aeff7f32f893e"
     }
   }
 }

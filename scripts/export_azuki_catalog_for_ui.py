@@ -85,6 +85,21 @@ PRODUCT_CHANNEL_ORDER = {
 CATEGORY_ORDER = ["Leader", "Gate", "Entity", "Weapon", "Spell", "IKZ"]
 ELEMENT_ORDER = ["Neutral", "Water", "Lightning", "Earth", "Fire"]
 
+OBSERVED_NAME_READ_ALIASES = {
+    "S1-AZK01-129_Silk-Tongue-Velya_E_UC_die": [
+        {
+            "name": "Silk Tongue Veyle",
+            "source": "2026-07-06 scanner observed read; official gallery name is Silk Tongue Velya.",
+        },
+    ],
+    "S1-AZK01-124_Gate-of-Devotion-Gate_G_G_die": [
+        {
+            "name": "Gates of Devotion",
+            "source": "2026-07-06 scanner observed read; official gallery name is Gate of Devotion.",
+        },
+    ],
+}
+
 
 def read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -440,6 +455,8 @@ def card_from_official(
     row_id = uid
     name = card.get("name") or comp.get("NAME") or row_id
     entry_id = card.get("source_entry_id") or comp.get("SOURCE_ENTRY_ID") or ""
+    name_alias_notes = OBSERVED_NAME_READ_ALIASES.get(entry_id, [])
+    name_aliases = [alias["name"] for alias in name_alias_notes]
     suppress_reference = ref_audit and ref_audit.get("REFERENCE_IMAGE_POLICY") == "suppress_reference_image"
     suppress_stamp = ref_audit and ref_audit.get("STAMP_FIELD_POLICY") == "suppress_inherited_alpha_stamp"
     original_image = card.get("image_url") or comp.get("IMAGE_URL") or ""
@@ -469,6 +486,8 @@ def card_from_official(
         "name_ja": "",
         "romaji": "",
         "name_en": name,
+        "name_aliases": name_aliases,
+        "name_alias_notes": name_alias_notes,
         "name_is_en": False,
         "name_ja_status": "english_print_name",
         "category": card.get("category") or comp.get("TYPE") or "",

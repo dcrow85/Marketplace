@@ -4,7 +4,7 @@
 // (validated on real photos: tables, sleeves, rotation, binder pages). The VLM is never
 // trusted for pixels; local CV is never trusted for names. If the worker isn't ready or
 // a card doesn't resolve, that card falls back to an edge-snapped box crop.
-const API_BASE = import.meta.env.VITE_API_BASE || ''
+const API_BASE = import.meta.env?.VITE_API_BASE || ''
 
 function loadImage(file) {
   return new Promise((resolve, reject) => {
@@ -35,6 +35,7 @@ async function readPage(dataUri) {
 }
 
 const lc = (s) => (s || '').toString().trim().toLowerCase()
+const namesFor = (c) => [c.name_en, c.name_ja, ...(c.name_aliases || [])].map(lc).filter(Boolean)
 // The model reads the PRINTED number ("1"), not the catalog code ("AZK01-001").
 const printedNum = (s) => { const m = (s || '').toString().match(/\d+/); return m ? parseInt(m[0], 10) : null } // first number in the read
 const catNum = (s) => { const m = (s || '').toString().match(/\d+/g); return m ? parseInt(m[m.length - 1], 10) : null } // last group of the code = card no.
@@ -64,7 +65,7 @@ function closestName(name, cards) {
   let best = null, bestScore = 0
   const seen = new Set()
   for (const c of cards) {
-    for (const cn of [lc(c.name_en), lc(c.name_ja)]) {
+    for (const cn of namesFor(c)) {
       if (!cn || seen.has(cn)) continue
       seen.add(cn)
       const sc = sim(name, cn)
@@ -85,9 +86,9 @@ export function matchCard(read, cards) {
   const alpha = read.alpha_stamp === 'present'
   let cands = []
   if (name) {
-    cands = cards.filter((c) => lc(c.name_en) === name || lc(c.name_ja) === name)
-    if (!cands.length) cands = cards.filter((c) => { const cn = lc(c.name_en) || lc(c.name_ja); return cn && (cn.includes(name) || name.includes(cn)) })
-    if (!cands.length) { const bn = closestName(name, cards); if (bn) cands = cards.filter((c) => lc(c.name_en) === bn || lc(c.name_ja) === bn) }
+    cands = cards.filter((c) => namesFor(c).includes(name))
+    if (!cands.length) cands = cards.filter((c) => namesFor(c).some((cn) => cn.includes(name) || name.includes(cn)))
+    if (!cands.length) { const bn = closestName(name, cards); if (bn) cands = cards.filter((c) => namesFor(c).includes(bn)) }
   }
   if (!cands.length && !name && n != null) cands = cards.filter((c) => catNum(c.num) === n) // only with NO name read
   if (cands.length <= 1) return cands[0] || null

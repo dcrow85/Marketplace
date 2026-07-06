@@ -38,13 +38,13 @@
     "REVIEW_STATUS"
   ],
   "counts": {
-    "alpha_crosswalk_rows": 122,
-    "blank_illustrator_rows": 2,
-    "image_view_illustrator_rows": 110,
-    "official_gallery_completion_rows": 112,
-    "review_queue_rows": 2,
-    "rows": 234,
-    "unique_row_keys": 234
+    "alpha_crosswalk_rows": 123,
+    "blank_illustrator_rows": 5,
+    "image_view_illustrator_rows": 109,
+    "official_gallery_completion_rows": 114,
+    "review_queue_rows": 5,
+    "rows": 237,
+    "unique_row_keys": 237
   },
   "image_review_queue": {
     "S1-AZK01-067_Frida_E_C_die": {
@@ -54,35 +54,46 @@
     "S1-AZK01-073_Top-Beanz_E_C_die": {
       "gallery_image_url": "https://static-content.azuki.com/tcg/card_art/S1-AZK01-073_Top-Beanz_E_C_die.jpg",
       "note": "Image credit line appears to match Frida, but remains too stylized/compressed for confident transcription."
+    },
+    "S1-AZK01-106A_Lord-of-Sands-Osunanami_E_SR_die": {
+      "gallery_image_url": "https://static-content.azuki.com/tcg/card_art/S1-AZK01-106A_Lord-of-Sands-Osunanami_E_SR_die.jpg",
+      "note": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet."
+    },
+    "S1-STT04-001AC_Zero_L_L-AAC_die": {
+      "gallery_image_url": "https://static-content.azuki.com/tcg/card_art/S1-STT04-001AC_Zero_L_L-AAC_die.jpg",
+      "note": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet."
+    },
+    "S1-STT04-001A_Zero_L_L_die": {
+      "gallery_image_url": "https://static-content.azuki.com/tcg/card_art/S1-STT04-001A_Zero_L_L_die.jpg",
+      "note": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet."
     }
   },
   "missing_alpha_field_counts": {
-    "ALT_IMG": 234,
-    "ATK": 91,
-    "DEFINITION_TEXT": 187,
+    "ALT_IMG": 237,
+    "ATK": 93,
+    "DEFINITION_TEXT": 189,
     "ELEMENT": 6,
     "E_1": 49,
     "E_1_TEXT": 33,
-    "E_2": 208,
-    "E_2_TEXT": 204,
-    "F_TEXT": 182,
-    "GATE_PWR": 91,
-    "HP": 80,
-    "IKZ COST": 38,
-    "ILLUSTRATOR": 2,
-    "PLUS_ATK": 223,
+    "E_2": 211,
+    "E_2_TEXT": 207,
+    "F_TEXT": 185,
+    "GATE_PWR": 93,
+    "HP": 72,
+    "IKZ COST": 40,
+    "ILLUSTRATOR": 5,
+    "PLUS_ATK": 226,
     "RARITY": 6,
-    "REF_ID": 176,
-    "REF_ID2": 233,
-    "REF_IP": 180,
-    "REF_IP2": 233,
-    "RULING_TEXT": 173,
-    "SUBTYPE_1": 1,
+    "REF_ID": 178,
+    "REF_ID2": 236,
+    "REF_IP": 182,
+    "REF_IP2": 236,
+    "RULING_TEXT": 176,
     "SUBTYPE_2": 111,
-    "SUBTYPE_3": 212
+    "SUBTYPE_3": 215
   },
   "name": "Azuki TCG Alpha-Field Completion Spreadsheet",
-  "row_count": 234,
+  "row_count": 237,
   "schema": "azuki_tcg_alpha_fields_completion_provenance_v0.1",
   "source_policy": {
     "alpha_master_sheet_crosswalk": "If a gallery entry shares a card ID with the linked Alpha Master Sheet, Alpha sheet fields are used for Alpha-style columns and the gallery supplies the image URL/unique source row.",

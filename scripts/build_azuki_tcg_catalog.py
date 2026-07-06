@@ -259,6 +259,9 @@ IMAGE_READ_ILLUSTRATORS = {
 IMAGE_REVIEW_QUEUE = {
     "S1-AZK01-067_Frida_E_C_die": "Image credit line is visible but too stylized/compressed for confident transcription.",
     "S1-AZK01-073_Top-Beanz_E_C_die": "Image credit line appears to match Frida, but remains too stylized/compressed for confident transcription.",
+    "S1-AZK01-106A_Lord-of-Sands-Osunanami_E_SR_die": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet.",
+    "S1-STT04-001A_Zero_L_L_die": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet.",
+    "S1-STT04-001AC_Zero_L_L-AAC_die": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet.",
 }
 
 USER_PROMO_PHOTO_SOURCE = {
@@ -489,10 +492,10 @@ USER_PORTRAIT_ALT_IMAGE_OBSERVATIONS = [
         "OBSERVED_AZUKI_NUMBER": "Azuki #87",
         "OBSERVED_STAMP": "star leader portrait treatment",
         "MATCHED_GALLERY_UIDS": [
-            "azuki_tcg_official_gallery:S1-STT04-001_Zero_L_L_die__2",
+            "azuki_tcg_official_gallery:S1-STT04-001A_Zero_L_L_die",
         ],
         "OBSERVATION_CONFIDENCE": "high",
-        "OBSERVATION_NOTE": "Image reads printed STT04-001, L ★, Illus. steamboy, Azuki #87. Current official gallery represents the matched booster-star row with canonical card_id STT04-01, so preserve the printed/gallery ID shape instead of silently normalizing.",
+        "OBSERVATION_NOTE": "Image reads printed STT04-001, L ★, Illus. steamboy, Azuki #87. Current official gallery represents the matched booster-star row as S1-STT04-001A_Zero_L_L_die with canonical card_id STT04-01, so preserve the printed/gallery ID shape instead of silently normalizing.",
     },
     {
         "OBSERVATION_ID": "portrait-alt-image-20260624-002",
@@ -632,13 +635,22 @@ def count_values(cards: list[dict[str, Any]], key: str) -> dict[str, int]:
     return dict(sorted(counter.items()))
 
 
+def source_entry_id(raw: dict[str, Any]) -> str:
+    image = str(raw.get("image") or "")
+    filename = image.rsplit("/", 1)[-1]
+    if filename:
+        return filename.rsplit(".", 1)[0]
+    return str(raw["id"])
+
+
 def normalize_card(raw: dict[str, Any], siblings: dict[str, list[str]]) -> dict[str, Any]:
     card_id = raw["cardId"]
-    source_id = raw["id"]
+    source_id = source_entry_id(raw)
     return {
         "uid": f"{RELEASE_ID}:{source_id}",
         "authority_label": "official_gallery_api_fact",
         "source_entry_id": source_id,
+        "official_api_id": raw["id"],
         "card_id": card_id,
         "name": raw["name"],
         "image_url": raw["image"],
@@ -815,10 +827,10 @@ def build(snapshot_path: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str
 
     sibling_map: dict[str, list[str]] = collections.defaultdict(list)
     for card in cards:
-        sibling_map[card["cardId"]].append(card["id"])
+        sibling_map[card["cardId"]].append(source_entry_id(card))
     sibling_map = {key: sorted(value) for key, value in sorted(sibling_map.items())}
 
-    normalized_cards = [normalize_card(card, sibling_map) for card in sorted(cards, key=lambda c: (c["cardId"], c["id"]))]
+    normalized_cards = [normalize_card(card, sibling_map) for card in sorted(cards, key=lambda c: (c["cardId"], source_entry_id(c)))]
 
     unknown_categories = sorted({card.get("category") for card in cards} - EXPECTED_CATEGORIES)
     unknown_elements = sorted({card.get("element") for card in cards} - EXPECTED_ELEMENTS)
@@ -862,7 +874,7 @@ def build(snapshot_path: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str
                 "kind": "unexpected_category_value",
                 "values": unknown_categories,
                 "affected_entry_ids": sorted(
-                    card["id"] for card in cards if card.get("category") in unknown_categories
+                    source_entry_id(card) for card in cards if card.get("category") in unknown_categories
                 ),
                 "authority_label": "source_preserved_not_corrected",
                 "note": "The official endpoint currently has category values outside the gallery filter categories. The importer preserves them instead of normalizing silently.",

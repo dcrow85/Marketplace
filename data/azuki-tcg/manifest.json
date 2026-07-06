@@ -2,27 +2,27 @@
   "artifacts": {
     "alpha_fields_completion_csv": {
       "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
-      "sha256": "ccf7634edf8fcf69107ef325a77a1f9fc49f2e8967035199c1987a77066a4631"
+      "sha256": "5409f03f432a068964271f56f4346b839f517453137aa11bbb29c10424a783f3"
     },
     "alpha_fields_completion_provenance": {
       "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion_provenance.json",
-      "sha256": "dcee4fcbe3d9972052d2cbe60dc61313b2d466300d8d0fe7a09c100bced4a53c"
+      "sha256": "482b05f54943e4855cb006e5032bbbad675111c3b4424c2840cedf0c57144e11"
     },
     "alpha_master_sheet_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_alpha_master_sheet.json",
-      "sha256": "002c75924614baf629ee54e5130817d98a18445f1baf13edf9f46a114e529b4a"
+      "sha256": "fa5c5d8e03bc8b0134d43d95fd653479ea35e40ab56bce310d1734cf8b8b6ca6"
     },
     "index": {
       "path": "data/azuki-tcg/index.json",
-      "sha256": "706bd8cb181737d443a52d3594ed55e9f1f6ab1e3847f3c6d7c7b71b4bcbc599"
+      "sha256": "e963cfb7e55fe9cab5cbc7cbad3e1c404683de24a080162245deb9c5a984222c"
     },
     "official_gallery_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
-      "sha256": "cf157aee2c171089b7f942925a26ad9d3bef74c5ebb14d371b3516ccbbd26a6a"
+      "sha256": "cbf1509e7f89ba45e6993810de246e19a464dca99db07968e2acd124c404a40b"
     },
     "portrait_alt_observations_csv": {
       "path": "data/azuki-tcg/observations/azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv",
-      "sha256": "8991d90761ea82351d2e1bea54ee6d0511691bcb50afed63cdf7a45149ac5703"
+      "sha256": "74d800a92ce799e31aa1b4b6ade8eff90526d6a5ade4a7b69a24f5b73d3f4b64"
     },
     "portrait_alt_observations_provenance": {
       "path": "data/azuki-tcg/observations/azuki_tcg_user_image_portrait_alt_observations_2026_06_24_provenance.json",
@@ -39,13 +39,13 @@
   },
   "counts": {
     "alpha_fields_completion": {
-      "alpha_crosswalk_rows": 122,
-      "blank_illustrator_rows": 2,
-      "image_view_illustrator_rows": 110,
-      "official_gallery_completion_rows": 112,
-      "review_queue_rows": 2,
-      "rows": 234,
-      "unique_row_keys": 234
+      "alpha_crosswalk_rows": 123,
+      "blank_illustrator_rows": 5,
+      "image_view_illustrator_rows": 109,
+      "official_gallery_completion_rows": 114,
+      "review_queue_rows": 5,
+      "rows": 237,
+      "unique_row_keys": 237
     },
     "alpha_master_sheet": {
       "catalog_cards": 104,
@@ -55,9 +55,9 @@
       "unique_card_ids": 104
     },
     "official_gallery": {
-      "gallery_entries": 234,
-      "multi_entry_card_ids": 27,
-      "official_api_count": 234,
+      "gallery_entries": 237,
+      "multi_entry_card_ids": 29,
+      "official_api_count": 237,
       "unique_card_ids": 202
     },
     "portrait_alt_observations": {
@@ -74,7 +74,7 @@
       "unique_observation_ids": 4
     }
   },
-  "generated_at": "2026-06-23T00:00:00+00:00",
+  "generated_at": "2026-07-06T00:00:00+00:00",
   "not_claiming": [
     "complete physical-product checklist beyond the linked Alpha Master Sheet",
     "complete physical-product checklist beyond the official gallery endpoint",
@@ -92,18 +92,18 @@
     "alpha_master_sheet": {
       "companion_image_snapshot": {
         "csv_url": "https://docs.google.com/spreadsheets/d/10HREsBCaSkEvbPdM505PZSbXxiWGEP-Itv96Xa5Ene0/gviz/tq?tqx=out:csv&gid=1096719524",
-        "path": "data/azuki-tcg/source-snapshots/alpha_image_sheet_gid1096719524_2026-06-23.csv",
+        "path": "data/azuki-tcg/source-snapshots/alpha_image_sheet_gid1096719524_2026-07-06.csv",
         "sha256": "5db051a5e8f01d65e49eb02ea8b91a818acb660588032edcc1e4a117e30567d1"
       },
       "csv_url": "https://docs.google.com/spreadsheets/d/10HREsBCaSkEvbPdM505PZSbXxiWGEP-Itv96Xa5Ene0/gviz/tq?tqx=out:csv&gid=0",
-      "path": "data/azuki-tcg/source-snapshots/alpha_master_sheet_gid0_2026-06-23.csv",
+      "path": "data/azuki-tcg/source-snapshots/alpha_master_sheet_gid0_2026-07-06.csv",
       "sha256": "bf8cbe5164ed837a607ba615b42b2ef41b9bd3e703c95d89e314acb598599349",
       "sheet_url": "https://docs.google.com/spreadsheets/d/10HREsBCaSkEvbPdM505PZSbXxiWGEP-Itv96Xa5Ene0/edit?gid=0#gid=0"
     },
     "official_gallery": {
       "api_url": "https://tcg.azuki.com/api/cards",
-      "path": "data/azuki-tcg/source-snapshots/cards_api_2026-06-23.json",
-      "sha256": "d064834f0988fd070d4495eb5e1f46c7331bd20ab86a370b041961a6b20e815c"
+      "path": "data/azuki-tcg/source-snapshots/cards_api_2026-07-06.json",
+      "sha256": "350c7116baf603222eba9bcc787cea0eced37b082917fce0935b07a02d8875b8"
     }
   }
 }
