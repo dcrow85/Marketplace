@@ -50,23 +50,44 @@ def _prompt(expect: dict | None) -> str:
 
 
 def _page_prompt() -> str:
-    """Open recognition over a WHOLE frame — one card or a full binder page. The model
-    detects every card, reads each, and returns a box so the surface can crop a per-card
-    thumbnail. No `expect` — the catalog match happens client-side, name-primary."""
+    """Open recognition + grounding over a WHOLE frame. Uses Qwen-VL's NATIVE grounding
+    dialect (bbox_2d in 0-1000 space): in our JSON-fractions format the model emitted
+    idealized/reordered boxes (mislabeled crops on spreads); in its own dialect the boxes
+    land on the right cards with the right labels. Collector NUMBER is deliberately NOT
+    requested here: under the grounding schema the model enumerates (1,2,3…) instead of
+    reading, and a hallucinated number can steer alt-art matching wrong."""
     return (
         "You help a collector catalog trading cards from a photo of their PHYSICAL cards. "
         "You do NOT verify authenticity, condition, or grade.\n"
-        "The photo shows ONE card or a binder page of MANY. Detect EVERY distinct card. "
-        "For EACH card: read the printed NAME exactly; read the collector NUMBER if legible; "
-        'check for a small printed Greek letter "α" (alpha) glyph on the card face (MOST cards '
-        'have none — answer "present" ONLY if you clearly see the actual "α" glyph, else "absent"; '
-        "do not guess it from the art, set, or name); and give a bounding box as [x0,y0,x1,y1] in "
-        "FRACTIONS of the image width and height, top-left origin (x rightward, y downward, 0..1).\n"
-        "List cards in reading order (left-to-right, top-to-bottom); include one entry per copy.\n"
-        "Return STRICT JSON only, no prose, no markdown:\n"
-        '{"cards":[{"name_read":"","number_read":"","alpha_stamp":"present|absent|unsure","box":[0,0,0,0]}],"total":0}\n'
+        "Locate every trading card in the image; report each physical card exactly once "
+        "(duplicates of the same card are separate physical cards — report each). For each "
+        'card also check the card face for a small printed Greek letter "α" (alpha) glyph '
+        '(MOST cards have none — answer "present" ONLY if you clearly see the actual "α" '
+        'glyph, else "absent"; do not guess it from the art, set, or name).\n'
+        "Output ONLY a JSON list, no prose, no markdown:\n"
+        '[{"label": "<the card\'s printed name>", "bbox_2d": [x1, y1, x2, y2], '
+        '"alpha_stamp": "present|absent|unsure"}]\n'
+        "with bbox_2d as integers in the 0-1000 normalized coordinate space, top-left origin.\n"
         "Never state or imply that any card is authentic, genuine, real, verified, mint, or graded."
     )
+
+
+def _parse_list(raw: str):
+    """Parse the grounding response: a JSON list (possibly fenced), or a dict with a
+    cards/list field. Returns a list or None."""
+    s = re.sub(r"```(json)?", "", raw).strip()
+    m = re.search(r"\[.*\]", s, re.S)
+    if m:
+        try:
+            v = json.loads(m.group(0))
+            if isinstance(v, list):
+                return v
+        except Exception:
+            pass
+    d = _parse(s)
+    if isinstance(d, dict) and isinstance(d.get("cards"), list):
+        return d["cards"]
+    return None
 
 
 def _parse(raw: str):
@@ -128,9 +149,50 @@ def read_page(image_uri: str) -> dict:
     req = urllib.request.Request(ENDPOINT, data=json.dumps(payload).encode(), headers=headers)
     r = json.load(urllib.request.urlopen(req, timeout=240))
     raw = r["choices"][0]["message"]["content"]
-    res = _parse(raw)
-    if res is None or not isinstance(res.get("cards"), list):
+    items = _parse_list(raw)
+    if items is None:
         return {"error": "unparseable", "raw": raw[:200]}
-    res["overclaim_flags"] = sorted({m.group(0).lower() for m in _OVERCLAIM.finditer(raw)})
-    res["model"] = MODEL
-    return res
+    cards = []
+    for it in items:
+        if not isinstance(it, dict):
+            continue
+        b = it.get("bbox_2d") or []
+        try:
+            b = [float(v) for v in b[:4]]
+        except (TypeError, ValueError):
+            b = []
+        if len(b) != 4:
+            continue
+        # 0-1000 -> fractions; tolerate stray 0..1 outputs
+        scale = 1000.0 if max(b) > 1.5 else 1.0
+        x0, y0, x1, y1 = (min(b[0], b[2]) / scale, min(b[1], b[3]) / scale,
+                          max(b[0], b[2]) / scale, max(b[1], b[3]) / scale)
+        box = [max(0.0, x0), max(0.0, y0), min(1.0, x1), min(1.0, y1)]
+        if box[2] - box[0] < 0.01 or box[3] - box[1] < 0.01:
+            continue
+        cards.append({
+            "name_read": str(it.get("label") or it.get("name") or "")[:120],
+            "number_read": "",
+            "alpha_stamp": str(it.get("alpha_stamp") or "unsure")[:10],
+            "box": box,
+        })
+    # the model sometimes emits the whole list twice — drop near-identical boxes
+    deduped = []
+    for c in cards:
+        dup = False
+        for k in deduped:
+            a, bb = c["box"], k["box"]
+            ix = max(0.0, min(a[2], bb[2]) - max(a[0], bb[0]))
+            iy = max(0.0, min(a[3], bb[3]) - max(a[1], bb[1]))
+            inter = ix * iy
+            union = (a[2] - a[0]) * (a[3] - a[1]) + (bb[2] - bb[0]) * (bb[3] - bb[1]) - inter
+            if union > 0 and inter / union > 0.6:
+                dup = True
+                break
+        if not dup:
+            deduped.append(c)
+    return {
+        "cards": deduped, "total": len(deduped),
+        "overclaim_flags": sorted({m.group(0).lower() for m in _OVERCLAIM.finditer(raw)}),
+        "model": MODEL,
+    }

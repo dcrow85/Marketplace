@@ -55,6 +55,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-06 · Claude — **Spread mislabeling root-caused + fixed live: speak the model's grounding
+  dialect, not ours.** Crowley's spread failed (crops off-card, wrong names on crops). First-principles session +
+  falsifiable experiment on his exact photo: in OUR JSON-fractions format Qwen emits idealized/reordered boxes
+  (name[i]≁box[i] on non-grid scenes = mislabeled crops); in its NATIVE grounding dialect (`bbox_2d`, 0-1000
+  ints) the same model boxes every card correctly WITH the right label (12/12 on the failing spread). Backend
+  `read_page` rewritten to the native dialect + robust list parsing + box dedupe (the model sometimes emits the
+  list twice) + collector-number DROPPED from multi-scan (under the grounding schema it enumerates 1,2,3…
+  instead of reading — a hallucinated number could steer alt-art matching). Boxes now return as fractions
+  server-side, killing the resolution-dependence bug class. Frontend unchanged. E2E verified via local server
+  (spread: labels bound correctly; page: 16/16) and LIVE on api.cairn.cards (13 cards, sane fraction boxes).
+  Also: the Python detection harness is now IN THE REPO (`simulations/card_detect.py`) after the scratchpad
+  copy got wiped. Crop tightness scales with input resolution; Crowley's re-test photo was a 556px compressed
+  export — the real camera flow uploads ~1400px of a 12MP frame. Awaiting his phone re-test. No ask.
 - `[passive]` 2026-07-02 · Claude — **Multiscan crop bug found + fixed + live: pixel boxes were normalized against
   the wrong image.** Crowley's phone crops landed on background. Root cause: when Qwen returns PIXEL boxes they are
   pixels of the ~1400px UPLOAD, but `normBox` divided by the FULL-RES photo dims — on 12MP phone photos every box
