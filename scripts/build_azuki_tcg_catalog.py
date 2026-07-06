@@ -643,14 +643,52 @@ def source_entry_id(raw: dict[str, Any]) -> str:
     return str(raw["id"])
 
 
+def source_prefix_card_id(source_id: str) -> str | None:
+    text = source_id.removeprefix("S1-")
+    match = re.match(r"^(AZK\d{2}|STT\d{2}|IKZ|AZP)-(\d{1,3})([A-Z0-9]*)_", text)
+    if not match:
+        return None
+    family, number, _suffix = match.groups()
+    return f"{family}-{int(number):03d}"
+
+
+def normalize_card_id(card_id: str) -> str:
+    match = re.match(r"^(AZK\d{2}|STT\d{2}|IKZ|AZP)-(\d{1,3})$", card_id or "")
+    if not match:
+        return card_id or ""
+    return f"{match.group(1)}-{int(match.group(2)):03d}"
+
+
+def canonical_card_id(raw: dict[str, Any]) -> str:
+    api_card_id = normalize_card_id(str(raw["cardId"]))
+    source_card_id = source_prefix_card_id(source_entry_id(raw))
+    if source_card_id and source_card_id != api_card_id:
+        return source_card_id
+    return api_card_id
+
+
 def normalize_card(raw: dict[str, Any], siblings: dict[str, list[str]]) -> dict[str, Any]:
-    card_id = raw["cardId"]
+    card_id = canonical_card_id(raw)
     source_id = source_entry_id(raw)
+    source_anomalies = []
+    if card_id != normalize_card_id(str(raw["cardId"])):
+        source_anomalies.append(
+            {
+                "kind": "api_card_id_disagrees_with_image_source_id",
+                "official_api_card_id": raw["cardId"],
+                "canonical_card_id": card_id,
+                "source_entry_id": source_id,
+                "authority_label": "source_preserved_with_declared_normalization",
+                "note": "The official API row's id/image/name identify one collector number while cardId names another; the catalog keys the row by the image/source id and preserves the raw cardId here.",
+            }
+        )
     return {
         "uid": f"{RELEASE_ID}:{source_id}",
         "authority_label": "official_gallery_api_fact",
         "source_entry_id": source_id,
         "official_api_id": raw["id"],
+        "official_api_card_id": raw["cardId"],
+        "source_anomalies": source_anomalies,
         "card_id": card_id,
         "name": raw["name"],
         "image_url": raw["image"],
@@ -827,16 +865,49 @@ def build(snapshot_path: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str
 
     sibling_map: dict[str, list[str]] = collections.defaultdict(list)
     for card in cards:
-        sibling_map[card["cardId"]].append(source_entry_id(card))
+        sibling_map[canonical_card_id(card)].append(source_entry_id(card))
     sibling_map = {key: sorted(value) for key, value in sorted(sibling_map.items())}
 
-    normalized_cards = [normalize_card(card, sibling_map) for card in sorted(cards, key=lambda c: (c["cardId"], source_entry_id(c)))]
+    normalized_cards = [normalize_card(card, sibling_map) for card in sorted(cards, key=lambda c: (canonical_card_id(c), source_entry_id(c)))]
 
     unknown_categories = sorted({card.get("category") for card in cards} - EXPECTED_CATEGORIES)
     unknown_elements = sorted({card.get("element") for card in cards} - EXPECTED_ELEMENTS)
     multi_entry_card_ids = {
         card_id: ids for card_id, ids in sibling_map.items() if len(ids) > 1
     }
+    card_id_mismatches = [
+        {
+            "source_entry_id": source_entry_id(card),
+            "official_api_id": card["id"],
+            "official_api_card_id": card["cardId"],
+            "canonical_card_id": canonical_card_id(card),
+            "name": card.get("name"),
+        }
+        for card in cards
+        if canonical_card_id(card) != normalize_card_id(str(card["cardId"]))
+    ]
+    known_source_anomalies = []
+    if card_id_mismatches:
+        known_source_anomalies.append(
+            {
+                "kind": "api_card_id_disagrees_with_image_source_id",
+                "affected_entries": card_id_mismatches,
+                "authority_label": "source_preserved_with_declared_normalization",
+                "note": "For these rows, the official API id/image filename/name identify one collector number while cardId identifies another. The importer keys the row by the image/source id and preserves the raw cardId on the card.",
+            }
+        )
+    if unknown_categories:
+        known_source_anomalies.append(
+            {
+                "kind": "unexpected_category_value",
+                "values": unknown_categories,
+                "affected_entry_ids": sorted(
+                    source_entry_id(card) for card in cards if card.get("category") in unknown_categories
+                ),
+                "authority_label": "source_preserved_not_corrected",
+                "note": "The official endpoint currently has category values outside the gallery filter categories. The importer preserves them instead of normalizing silently.",
+            }
+        )
 
     snapshot_bytes = snapshot_path.read_bytes()
     snapshot_sha = sha256_bytes(snapshot_bytes)
@@ -869,19 +940,7 @@ def build(snapshot_path: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str
             "rarity": count_values(cards, "rarity"),
             "set": count_values(cards, "set"),
         },
-        "known_source_anomalies": [
-            {
-                "kind": "unexpected_category_value",
-                "values": unknown_categories,
-                "affected_entry_ids": sorted(
-                    source_entry_id(card) for card in cards if card.get("category") in unknown_categories
-                ),
-                "authority_label": "source_preserved_not_corrected",
-                "note": "The official endpoint currently has category values outside the gallery filter categories. The importer preserves them instead of normalizing silently.",
-            }
-        ]
-        if unknown_categories
-        else [],
+        "known_source_anomalies": known_source_anomalies,
         "cards": normalized_cards,
         "not_claiming": AUTHORITY_NOT_CLAIMING,
     }

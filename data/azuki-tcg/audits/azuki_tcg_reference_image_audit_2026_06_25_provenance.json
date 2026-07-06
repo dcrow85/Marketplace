@@ -20,37 +20,34 @@
   },
   "counts": {
     "alpha_completion_rows": 237,
-    "audit_rows": 121,
+    "audit_rows": 119,
     "issues": {
       "completion_row_missing_gallery_star": 19,
-      "gates_awakened_row_inherits_alpha_stamp": 104,
-      "source_entry_card_id_disagrees_with_gallery_card_id": 2
+      "gates_awakened_row_inherits_alpha_stamp": 104
     },
     "official_gallery_rows": 237,
     "reference_policy": {
-      "display_reference_image": 119,
-      "suppress_reference_image": 2
+      "display_reference_image": 119
     },
     "severity": {
-      "high": 2,
       "medium": 119
     },
     "stamp_policy": {
-      "display_stamp_if_present": 17,
+      "display_stamp_if_present": 15,
       "suppress_inherited_alpha_stamp": 104
     }
   },
-  "csv_sha256": "b0cd7550f239b1a6b94b586a0a98ebaf61496c195f4555deaa4cd7321527b2c0",
+  "csv_sha256": "2a1a1bd79050e9a810ad84973942271b4d6e37d27799bb70aac134de00a2b915",
   "name": "Azuki TCG Reference Image and Alpha Field Audit",
   "schema": "azuki_tcg_reference_image_audit_provenance_v0.1",
   "source_inputs": {
     "alpha_fields_completion_csv": {
       "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
-      "sha256": "5409f03f432a068964271f56f4346b839f517453137aa11bbb29c10424a783f3"
+      "sha256": "ffdd09af99844f01b223fee0fddc00af7c18f7dc1d6c481fc652bb2a41b09a53"
     },
     "official_gallery_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
-      "sha256": "f68d3fc066ddb65181e51f6473da465810a239e44227660f1c5aeff7f32f893e"
+      "sha256": "8ca6726f313c8b46d0f13fd5dab8b593d108d0abb1d02df634458dcb7627f249"
     }
   }
 }

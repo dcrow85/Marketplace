@@ -25,28 +25,26 @@
     "completion_star_rows_in_scope": 17,
     "gallery_star_rows_in_scope": 36,
     "issues": {
-      "completion_row_missing_gallery_star": 19,
-      "source_entry_card_id_disagrees_with_gallery_card_id": 2
+      "completion_row_missing_gallery_star": 19
     },
     "official_gallery_rows": 237,
-    "rows_needing_review": 21,
+    "rows_needing_review": 19,
     "severity": {
-      "high": 2,
       "medium": 19,
-      "none": 32
+      "none": 34
     }
   },
-  "csv_sha256": "a7b4deffe868608e35e6e32e60ae0c94c078e1d0e153353445347fde30630141",
+  "csv_sha256": "2748539663177ce8ec10c38e0ba1dceea038c3aade692b74cb0150a481d9bff5",
   "name": "Azuki TCG Star / Alternate-Art Signal Audit",
   "schema": "azuki_tcg_star_alt_art_audit_provenance_v0.1",
   "source_inputs": {
     "alpha_fields_completion_csv": {
       "path": "data/azuki-tcg/spreadsheets/azuki_tcg_alpha_fields_completion.csv",
-      "sha256": "5409f03f432a068964271f56f4346b839f517453137aa11bbb29c10424a783f3"
+      "sha256": "ffdd09af99844f01b223fee0fddc00af7c18f7dc1d6c481fc652bb2a41b09a53"
     },
     "official_gallery_release": {
       "path": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
-      "sha256": "f68d3fc066ddb65181e51f6473da465810a239e44227660f1c5aeff7f32f893e"
+      "sha256": "8ca6726f313c8b46d0f13fd5dab8b593d108d0abb1d02df634458dcb7627f249"
     }
   }
 }
