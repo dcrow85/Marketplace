@@ -498,6 +498,54 @@ function AgentPanel({ res, agentName }) {
   )
 }
 
+// The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
+// pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
+// the agent, filters, and the scanner all operate on the binder itself.
+function PocketPages({ rows, store, userPhotos, onOpen }) {
+  const [page, setPage] = useState(0)
+  useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
+  const pages = []
+  for (let i = 0; i < rows.length; i += 9) pages.push(rows.slice(i, i + 9))
+  const pg = pages[Math.min(page, pages.length - 1)] || []
+  const filled = pg.filter((c) => effStance(c, store).stance === 'have').length
+  return (
+    <div className="bv">
+      <div className="bv-head">
+        <div className="bv-title">Page {Math.min(page, pages.length - 1) + 1} of {pages.length}
+          <span className="dim"> · {filled} of {pg.length} pockets filled</span></div>
+        <div className="bv-comp mono">{rows.filter((c) => effStance(c, store).stance === 'have').length} / {rows.length}</div>
+      </div>
+      <div className="bv-page">
+        {pg.map((c) => {
+          const e = effStance(c, store)
+          const img = userPhotos[c.uid] || c.image
+          if (e.stance === 'have') {
+            return (
+              <button key={c.uid} className="bv-pocket filled" onClick={() => onOpen(c.uid)}>
+                {img ? <img src={img} alt={nm(c)} loading="lazy" /> : <span className="bv-noimg">{nm(c)}</span>}
+                {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
+                {e.grail && <span className="bv-grail">★</span>}
+                {(e.sell || e.trade) && <span className="bv-sell mono">selling</span>}
+              </button>
+            )
+          }
+          return (
+            <button key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')} onClick={() => onOpen(c.uid)}>
+              <span className="mono bv-gnum">{c.num}</span>
+              <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
+            </button>
+          )
+        })}
+      </div>
+      <div className="bv-nav">
+        <button className="ghost sm" disabled={page <= 0} onClick={() => setPage((p) => p - 1)}>← page {page}</button>
+        <span className="dim bv-hint">every pocket opens the card — gaps included</span>
+        <button className="ghost sm" disabled={page >= pages.length - 1} onClick={() => setPage((p) => p + 1)}>page {page + 2} →</button>
+      </div>
+    </div>
+  )
+}
+
 // Stance lives in chips; Product / Type / Element are collapsed into the filters sheet (see render).
 function chipsFor() {
   return [
@@ -526,7 +574,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [filtersOpen, setFiltersOpen] = useState(false)
   useScrollLock(filtersOpen)
-  const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'standard' } catch { return 'standard' } })
+  const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'pages' } catch { return 'pages' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
 
@@ -786,6 +834,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
                 <button className={'fo' + (holoOnly ? ' on' : '')} onClick={() => setHoloOnly((v) => !v)}>{data.ui?.holo_label || '★ Alt art'}</button>
               </div></div>
               <div className="fs-group"><label>Card size</label><div className="fs-opts">
+                <button className={'fo' + (view === 'pages' ? ' on' : '')} onClick={() => chooseView('pages')}>Pages</button>
                 <button className={'fo' + (view === 'standard' ? ' on' : '')} onClick={() => chooseView('standard')}>Standard</button>
                 <button className={'fo' + (view === 'gallery' ? ' on' : '')} onClick={() => chooseView('gallery')}>Gallery</button>
               </div></div>
@@ -804,7 +853,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         </div>
       )}
       <section>
-        {!rows.length ? <div className="empty">no cards match.</div> : grouped ? (
+        {!rows.length ? <div className="empty">no cards match.</div> : view === 'pages' ? (
+          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} />
+        ) : grouped ? (
           SETS.filter((s) => groups[s.id]).map((s) => (
             <div className="setblock" key={s.id}>
               <div className="sethead"><h2>{s.label}</h2><span className="scode">{s.code} · {s.date}</span><span className="smeta">{groups[s.id].length} / {s.count}</span></div>

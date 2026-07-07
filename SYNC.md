@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-06 · Claude — **Binder + catalog fully merged (Crowley): pocket pages are now the DEFAULT
+  layout of the real Binder — LIVE.** `PocketPages` is a layout mode inside `Binder.jsx`, so the ask bar, agent,
+  filters, scanner, and the full card modal all operate on the pockets themselves; every pocket (filled or ghost)
+  opens the card. Search narrows pockets; ghosts show num+name, wants show ✓. Layout picker: Pages (default) /
+  Standard / Gallery. Sections: Binder · For sale; nav: Binder · Trades. Standalone BinderView retired from the
+  render. Verified: 9 pockets default, ghost→full modal, search→1 pocket, FAB present. Surface lane. No ask.
 - `[passive]` 2026-07-06 · Claude — **One binder (Crowley's call): nav is now Binder · Trades — LIVE.** The
   four-tab split lasted an hour; the physical metaphor won. Everything card-side lives inside the binder as
   sections: **Pages** (pockets, default) · **For sale** (the ledger — the back of the binder, like real

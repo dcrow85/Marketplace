@@ -5,7 +5,6 @@ import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
-import BinderView from './binder/BinderView.jsx'
 import SellPile from './binder/SellPile.jsx'
 import './trade/trade.css'
 
@@ -105,7 +104,7 @@ function MeetAgent({ accountId, onNamed }) {
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [view, setView] = useState('binder') // 'binder' | 'trade'
-  const [bseg, setBseg] = useState('pages') // inside the binder: 'pages' | 'sale' | 'index'
+  const [bseg, setBseg] = useState('binder') // inside the binder: 'binder' | 'sale'
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   return (
     <div className="app">
@@ -140,14 +139,12 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
                 </div>
               )}
               <div className="bsegs mono" role="tablist" aria-label="binder section">
-                <button role="tab" aria-selected={bseg === 'pages'} className={bseg === 'pages' ? 'on' : ''} onClick={() => setBseg('pages')}>Pages</button>
+                <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
                 <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>For sale</button>
-                <button role="tab" aria-selected={bseg === 'index'} className={bseg === 'index' ? 'on' : ''} onClick={() => setBseg('index')}>Index</button>
               </div>
             </div>
-            {bseg === 'pages' && <BinderView accountId={accountId} catalog={catalog} />}
+            {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
             {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
-            {bseg === 'index' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
           </>
         )}
         {view === 'trade' && <TradePanel openTradeId={openTrade} />}
