@@ -131,3 +131,10 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
   .ainput input, .askbar input, .row input, .decide-body input, .decide-body input.mono,
   .tp-load input, .ti, .sc-pick input, .act-row input { font-size: 16px; }
 }
+
+/* the binder's own sections: pages (pockets) · for sale (back of the binder) · index */
+.bindertop { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.bsegs { display: inline-flex; border: 0.5px solid var(--rule); border-radius: 9px; overflow: hidden; }
+.bsegs button { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0; padding: 9px 15px; cursor: pointer; }
+.bsegs button.on { color: var(--paper); background: var(--ink); }
+@media (pointer: coarse), (max-width: 640px) { .bsegs button { padding: 12px 16px; } }

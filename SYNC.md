@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-06 · Claude — **One binder (Crowley's call): nav is now Binder · Trades — LIVE.** The
+  four-tab split lasted an hour; the physical metaphor won. Everything card-side lives inside the binder as
+  sections: **Pages** (pockets, default) · **For sale** (the ledger — the back of the binder, like real
+  collectors keep) · **Index** (the dense grid + search + agent + scanner). Trades stays its own room because
+  money is a different altitude. App.jsx-only change; the three views themselves untouched. Verified in preview.
+  Surface lane. No ask.
 - `[passive]` 2026-07-06 · Claude — **Three rooms shipped: Binder (pride) · Catalog (hunting) · Selling (ledger) —
   LIVE.** Crowley's step-back: one surface was playing three roles. Now: (1) **Binder** — 3×3 pocket pages per
   release family, only YOUR cards (your scans preferred), ×N count + ★ grail + "selling" flags on pockets, set
