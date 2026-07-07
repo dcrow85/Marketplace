@@ -70,15 +70,23 @@ function LoadTrade({ onLoad }) {
 function parseTradeSheet(text) {
   if (typeof text !== 'string' || text.length > 4000) return null
   const out = {}
-  for (const raw of text.split(/\r?\n/).slice(0, 40)) {
-    const m = raw.trim().match(/^(card|condition|ask|seller)\s{2,}(.+)$/i) || raw.trim().match(/^(card|condition|ask|seller)\s*[:=]\s*(.+)$/i)
+  const cardsList = []
+  for (const raw of text.split(/\r?\n/).slice(0, 60)) {
+    const m = raw.trim().match(/^(card|condition|ask|seller|lot)\s{2,}(.+)$/i) || raw.trim().match(/^(card|condition|ask|seller|lot)\s*[:=]\s*(.+)$/i)
     if (!m) continue
     const key = m[1].toLowerCase()
-    const val = m[2].trim().slice(0, 140)
-    if (key === 'card' && val) out.card = val
+    const val = m[2].trim().slice(0, 160)
+    if (key === 'card' && val) cardsList.push(val)
     else if (key === 'condition' && val) out.condition = val.slice(0, 60)
     else if (key === 'ask') { const n = val.replace(/usdc/i, '').trim(); if (/^\d+(\.\d{1,6})?$/.test(n)) out.amount = n }
+    else if (key === 'lot') { const n = (val.match(/(\d+(?:\.\d{1,6})?)\s*usdc/i) || [])[1]; if (n) out.amount = n }
     else if (key === 'seller' && /^0x[a-fA-F0-9]{40}$/.test(val)) out.seller = val
+  }
+  if (cardsList.length === 1) out.card = cardsList[0]
+  else if (cardsList.length > 1) {
+    out.card = `Lot of ${cardsList.length}: ${cardsList.map((c) => c.split('·')[0].trim()).join(', ')}`.slice(0, 140)
+    out.lot = cardsList
+    out.condition = out.condition || 'per lot sheet'
   }
   return Object.keys(out).length ? out : null
 }
@@ -95,7 +103,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
   const onSheetPaste = (text) => {
     const p = parseTradeSheet(text)
     if (!p) { if (text.trim()) setSheetNote({ warn: true, text: 'That doesn\u2019t read as a trade sheet. Nothing was filled.' }); return }
-    setF((prev) => ({ ...prev, ...(p.card ? { card: p.card } : {}), ...(p.condition ? { condition: p.condition } : {}), ...(p.amount ? { amount: p.amount } : {}), ...(p.seller ? { seller: p.seller } : {}) }))
+    setF((prev) => ({ ...prev, ...(p.card ? { card: p.card } : {}), ...(p.condition ? { condition: p.condition } : {}), ...(p.amount ? { amount: p.amount } : {}), ...(p.seller ? { seller: p.seller } : {}), _lot: p.lot || null }))
     const filled = ['card', 'condition', 'amount', 'seller'].filter((k) => p[k === 'amount' ? 'amount' : k])
     setSheetNote({ warn: false, text: `Sheet loaded: ${filled.join(', ')}. Read every line, check the seller address against your conversation, add your arbiter.` })
   }
@@ -126,7 +134,7 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
       const amountRaw = toUsdc(f.amount)
       const allow = await usdcAllowance(address)
       if (allow < amountRaw) await run('Approving USDC…', () => approveUsdc(wc, amountRaw))
-      const termsStr = JSON.stringify({ card: f.card, condition: f.condition, amount: f.amount })
+      const termsStr = JSON.stringify({ card: f.card, condition: f.condition, amount: f.amount, ...(f._lot ? { lot: f._lot } : {}) })
       const termsHash = hashText(termsStr)
       const cardRefHash = hashText(f.card)
       const { tradeId } = await run('Funding escrow…', () => createTrade(wc, {

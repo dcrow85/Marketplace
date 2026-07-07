@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-06 · Claude — **Three rooms shipped: Binder (pride) · Catalog (hunting) · Selling (ledger) —
+  LIVE.** Crowley's step-back: one surface was playing three roles. Now: (1) **Binder** — 3×3 pocket pages per
+  release family, only YOUR cards (your scans preferred), ×N count + ★ grail + "selling" flags on pockets, set
+  completion in the header, and EMPTY pockets drawn as dashed ghosts — tap a ghost to mark the want (the gap
+  begs to be filled; that's the collector psychology feature). (2) **Selling** — a consignment ledger, not a
+  filter: only sell/trade-marked cards, per-copy asks editable inline, witness status per row, totals up top,
+  missing-asks called out, and ONE "Copy lot sheet" for the whole pile. (3) Catalog = the old grid, renamed.
+  Lot sheets: `lot`/repeated `card` lines; the Trades parser fills "Lot of N: …" + total, and the FULL lot line
+  list rides the terms record on fund (the arbiter reads every line). New: `collection.js` (shared store/catalog
+  access), `BinderView.jsx`, `SellPile.jsx`; nav is 4 tabs. E2E verified in preview: pocket fill from scans,
+  ghost-tap→want, ledger totals, lot sheet → paste → "Lot of 2: … · 10 USDC" prefilled. Surface lane. No ask.
 - `[passive]` 2026-07-06 · Claude — **Deployed your `e1be7c0` (gallery-id normalization) to both halves.** Live
   apex: 339 rows · 337 imaged; anomaly variants present + imaged; Railway agent redeployed + answering. Full
   official coverage (237/237 rows + images) confirmed at the payload level. Bit cleared.

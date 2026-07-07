@@ -5,6 +5,8 @@ import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
+import BinderView from './binder/BinderView.jsx'
+import SellPile from './binder/SellPile.jsx'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -102,7 +104,7 @@ function MeetAgent({ accountId, onNamed }) {
 }
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
-  const [view, setView] = useState('collection') // 'collection' | 'trade'
+  const [view, setView] = useState('binder') // 'binder' | 'catalog' | 'selling' | 'trade'
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   return (
     <div className="app">
@@ -115,9 +117,17 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
         </div>
       </nav>
       <div className="viewnav" role="tablist" aria-label="view">
-        <button role="tab" aria-selected={view === 'collection'} className={view === 'collection' ? 'on' : ''} onClick={() => setView('collection')}>
+        <button role="tab" aria-selected={view === 'binder'} className={view === 'binder' ? 'on' : ''} onClick={() => setView('binder')}>
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><rect x="2.5" y="1.5" width="11" height="13" rx="1.5" /><path d="M5.5 1.5v13" /><circle cx="4" cy="5" r="0.4" fill="currentColor" /><circle cx="4" cy="8" r="0.4" fill="currentColor" /><circle cx="4" cy="11" r="0.4" fill="currentColor" /></svg>
+          <span>Binder</span>
+        </button>
+        <button role="tab" aria-selected={view === 'catalog'} className={view === 'catalog' ? 'on' : ''} onClick={() => setView('catalog')}>
           <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.2" /><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.2" /><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.2" /><rect x="9" y="9" width="5.5" height="5.5" rx="1.2" /></svg>
-          <span>Collection</span>
+          <span>Catalog</span>
+        </button>
+        <button role="tab" aria-selected={view === 'selling'} className={view === 'selling' ? 'on' : ''} onClick={() => setView('selling')}>
+          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M8.6 1.8 14 7.2a1.4 1.4 0 0 1 0 2L9.2 14a1.4 1.4 0 0 1-2 0L1.8 8.6V3.2a1.4 1.4 0 0 1 1.4-1.4h5.4Z" /><circle cx="5.2" cy="5.2" r="1" fill="currentColor" stroke="none" /></svg>
+          <span>Selling</span>
         </button>
         <button role="tab" aria-selected={view === 'trade'} className={view === 'trade' ? 'on' : ''} onClick={() => setView('trade')}>
           <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
@@ -126,20 +136,17 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
       </div>
       <Ambient onOpenTrade={(id) => { setOpenTrade(id); setView('trade') }} />
       <main className="main">
-        {view === 'collection' ? (
-          <>
-            {CATALOGS.length > 1 && (
-              <div className="catalogpick" aria-label="catalog">
-                {CATALOGS.map((c) => (
-                  <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
-                ))}
-              </div>
-            )}
-            <Binder accountId={accountId} agentName={agent} catalog={catalog} />
-          </>
-        ) : (
-          <TradePanel openTradeId={openTrade} />
+        {view !== 'trade' && CATALOGS.length > 1 && (
+          <div className="catalogpick" aria-label="catalog">
+            {CATALOGS.map((c) => (
+              <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
+            ))}
+          </div>
         )}
+        {view === 'binder' && <BinderView accountId={accountId} catalog={catalog} />}
+        {view === 'catalog' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
+        {view === 'selling' && <SellPile accountId={accountId} catalog={catalog} />}
+        {view === 'trade' && <TradePanel openTradeId={openTrade} />}
       </main>
     </div>
   )
