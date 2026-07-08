@@ -8,7 +8,9 @@ import Ambient from './ambient/Ambient.jsx'
 import SellPile from './binder/SellPile.jsx'
 import Market from './market/Market.jsx'
 import Swaps from './trade/Swaps.jsx'
+import MockTrades from './trade/MockTrades.jsx'
 import { swapKeyFor, loadSwaps } from './trade/swaps.js'
+import { startMockMarket, tradesKeyFor, loadTrades } from './market/mockAgents.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -110,9 +112,27 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   useEffect(() => {
     const bump = () => setSwapRev((r) => r + 1)
     window.addEventListener('cairn-swaps', bump)
-    return () => window.removeEventListener('cairn-swaps', bump)
+    window.addEventListener('cairn-mock', bump)
+    window.addEventListener('cairn-store', bump)
+    return () => { window.removeEventListener('cairn-swaps', bump); window.removeEventListener('cairn-mock', bump); window.removeEventListener('cairn-store', bump) }
   }, [])
-  const swapN = useMemo(() => loadSwaps(swapKeyFor(catalog.id, accountId)).length, [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
+  useEffect(() => {
+    let stop = () => {}
+    let live = true
+    fetch((import.meta.env.BASE_URL || '/') + (catalog.path || 'catalog-sample.json'))
+      .then((r) => r.json())
+      .then((d) => {
+        if (!live) return
+        const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
+        stop = startMockMarket({ catalogId: catalog.id, accountId, cardName: (uid) => byUid.get(uid) })
+      }).catch(() => {})
+    return () => { live = false; stop() }
+  }, [catalog, accountId])
+  const swapN = useMemo(() => {
+    const swaps = loadSwaps(swapKeyFor(catalog.id, accountId)).filter((sw) => sw.status !== 'settled' && sw.status !== 'declined').length
+    const trades = loadTrades(tradesKeyFor(catalog.id, accountId)).filter((t) => t.state !== 'settled' && t.state !== 'declined').length
+    return swaps + trades
+  }, [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
   return (
     <div className="app">
       <nav className="nav">
@@ -159,6 +179,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
               <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
+              <MockTrades accountId={accountId} catalog={catalog} />
               <Swaps accountId={accountId} catalog={catalog} />
               <TradePanel openTradeId={openTrade} />
             </div>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, saveStore, catalogUrl, entryFor, condStr } from '../binder/collection.js'
 import { swapKeyFor, proposeSwap } from '../trade/swaps.js'
+import { startBuy, loadHidden, hiddenKeyFor } from './mockAgents.js'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
 
@@ -56,7 +57,7 @@ function CopySheet({ text, small }) {
   )
 }
 
-function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onTrade }) {
+function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onTrade, onBuy }) {
   return (
     <div className={'mk-row' + (mine ? ' mk-mine' : '')}>
       {showSeller
@@ -73,6 +74,7 @@ function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onTrade }) {
       {witnessCell(l.witness)}
       <span className="mono mk-ask">{l.ask} USDC</span>
       <span className="mk-acts">
+        {onBuy && <button className="sheetbtn mk-sm mk-buy" onClick={() => onBuy(c, seller, l)} title="offer the ask — a mock trade plays the whole rail">buy</button>}
         {onTrade && <button className="sheetbtn mk-sm" onClick={() => onTrade(c, seller)} title="offer one of your cards for it">⇄ trade</button>}
         <CopySheet text={sellerSheet(seller, c, l)} small />
       </span>
@@ -126,9 +128,16 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
   const [wantsOnly, setWantsOnly] = useState(false)
   const [swapFor, setSwapFor] = useState(null) // {c, seller} — the card you tapped ⇄ on
   const [swapMsg, setSwapMsg] = useState(null)
+  const [mockRev, setMockRev] = useState(0)
+  useEffect(() => {
+    const bump = () => setMockRev((r) => r + 1)
+    window.addEventListener('cairn-mock', bump)
+    window.addEventListener('cairn-store', bump)
+    return () => { window.removeEventListener('cairn-mock', bump); window.removeEventListener('cairn-store', bump) }
+  }, [])
   const [storeRev, setStoreRev] = useState(0) // bump after writes so the memo re-reads
   const storeKey = storeKeyFor(catalog.id, accountId)
-  const store = useMemo(() => loadStore(storeKey), [storeKey, storeRev]) // eslint-disable-line react-hooks/exhaustive-deps -- storeRev is the invalidation signal
+  const store = useMemo(() => loadStore(storeKey), [storeKey, storeRev, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- storeRev/mockRev are the invalidation signals
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- reset + hydrate on catalog switch */
@@ -139,7 +148,12 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
   }, [catalog, storeKey])
 
   const byUid = useMemo(() => new Map((data?.cards || []).map((c) => [c.uid, c])), [data])
-  const sellers = useMemo(() => (mkt && mkt.catalog_id === catalog.id ? mkt.sellers : []), [mkt, catalog])
+  const sellers = useMemo(() => {
+    if (!(mkt && mkt.catalog_id === catalog.id)) return []
+    const hidden = loadHidden(hiddenKeyFor(catalog.id, accountId))
+    const gone = new Set(hidden.map((h) => h.seller + '|' + h.uid))
+    return mkt.sellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
+  }, [mkt, catalog, accountId, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
   const myWants = useMemo(() => {
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'want').map((c) => c.uid))
@@ -153,6 +167,10 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     return data.cards.map((c) => ({ c, e: entryFor(c, store) })).filter(({ e }) => e.stance === 'have')
   }, [data, store])
 
+  const doBuy = (c, seller, l) => {
+    startBuy({ catalogId: catalog.id, accountId, card: c, seller, ask: l.ask, cond: l.cond })
+    setSwapMsg(`offer sent to ${handleFor(seller.id)} at ${l.ask} USDC — their agent is reading it. Watch Trades.`)
+  }
   const doPick = (mine) => {
     const their = swapFor
     if (!their) return
@@ -192,7 +210,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         {asks.length
           ? <div className="mk-rows">
               {asks.sort((a, b) => a.l.ask - b.l.ask).map(({ s, l }, i) => (
-                <ListingRow key={i} seller={s} c={c} l={l} mine={myWants.has(focusUid)} showSeller onOpenSeller={(id) => { onClearFocus(); setSel(id) }} onTrade={(cc, ss) => setSwapFor({ c: cc, seller: ss })} />
+                <ListingRow key={i} seller={s} c={c} l={l} mine={myWants.has(focusUid)} showSeller onOpenSeller={(id) => { onClearFocus(); setSel(id) }} onTrade={(cc, ss) => setSwapFor({ c: cc, seller: ss })} onBuy={doBuy} />
               ))}
             </div>
           : <div className="empty">Nobody is asking on this card right now.</div>}
@@ -242,7 +260,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         </div>
         <div className="mk-rows">
           {rows.map(({ l, c }, i) => (
-            <ListingRow key={i} seller={open} c={c} l={l} mine={myWants.has(c.uid)} onTrade={(cc) => setSwapFor({ c: cc, seller: open })} />
+            <ListingRow key={i} seller={open} c={c} l={l} mine={myWants.has(c.uid)} onTrade={(cc) => setSwapFor({ c: cc, seller: open })} onBuy={doBuy} />
           ))}
           {!rows.length && <div className="empty">Nothing on this table matches your wants.</div>}
         </div>

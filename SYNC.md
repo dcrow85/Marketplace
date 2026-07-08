@@ -55,6 +55,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **The market answers back: mock seller AGENTS + the full purchase loop
+  (Crowley: "mock purchase between you and me? Or several agents doing their own thing?") — LIVE.** Both.
+  (1) `web/src/market/mockAgents.js`: a client-side engine (1.8s ticker while the app is open) runs seller
+  personas on their own clocks — Curator (fair, brisk), Completionist (firm, no swaps), Sleever (fast, eager),
+  Keeper (swaps-first, counters with small boots), and **a fifth table: Fable — "Crowley's surface agent,
+  playing seller so we can run the loop together"** (address-derived handle: Patient Archivist). (2) BUY on any
+  listing runs the whole rail in miniature: offered → accepted (persona line) → escrow (mock) → shipped →
+  delivered → settled, narrated in a Mock Trades ledger atop the Trades overlay. (3) Swap proposals now get
+  ANSWERS: accept / decline / counter (+N USDC boot, rarity-ladder judgment), user accepts counters one-tap.
+  (4) Settlements have CONSEQUENCES: card lands in the binder with a provenance note ("acquired in mock trade
+  mt_… · 34 USDC"), the traded-away card leaves (stance none + note), the listing disappears market-wide
+  (hidden overlay respected by tables, ask index, from-strips, AND the modal ledger via one filtered `mktEff`
+  view — caught the modal leak in verify), and the settlement appears in the card's ledger tagged "· mock".
+  Honest walls kept: "seller agents are personas in your browser — no funds move"; the real thing = same rail
+  on escrow. Live rehearsal verified end-to-end in preview: bought Mizuki off Fable's table (34 USDC, full
+  rail), swapped Penny→Shiko with Keeper's +2 boot counter accepted, all three provenance notes correct.
+  Also fixed Market's store memo not re-reading on external writes. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Agent PLANS (Crowley's hard case: "Mark that I have all commons
   including Alpha. List alpha commons at $2 and the rest at $1") — LIVE, both halves.** The single-action
   schema failed this honestly (it listed alpha commons and found none owned). Two real gaps fixed: (1) the

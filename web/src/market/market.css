@@ -79,3 +79,23 @@
 .sw-arrow { color: var(--ink2); }
 .sw-who { font-size: 11px; color: var(--dim); }
 .sw-acts { display: inline-flex; gap: 6px; }
+
+/* mock trades + agent answers */
+.mk-buy { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.mt { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
+.mt-row { border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.mt-row.done { border-color: var(--have); }
+.mt-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.mt-steps { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 10.5px; color: var(--faint); }
+.mt-step.on { color: var(--ink2); }
+.mt-step.ok { color: var(--have); }
+.mt-step.dead { color: var(--signal); }
+.mt-log { display: flex; flex-direction: column; gap: 3px; }
+.mt-line { font-size: 12px; color: var(--ink2); }
+.mt-line .mono { font-size: 10px; margin-right: 6px; }
+.sw-say { font-size: 12px; color: var(--ink2); width: 100%; }
+.sw-say .mono { font-size: 10px; margin-right: 6px; }
+.sw-st { font-weight: 600; }
+.sw-st.st-settled { color: var(--have); }
+.sw-st.st-declined { color: var(--signal); }
+.sw-boot { border-color: var(--ink); color: var(--ink); }

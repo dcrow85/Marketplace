@@ -5,6 +5,7 @@ import { useScrollLock } from '../useScrollLock.js'
 import { useEscrowWallet } from '../trade/useEscrowWallet.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import { handleFor } from '../identity.js'
+import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
@@ -272,11 +273,11 @@ function QuickSell({ c, store, setField, fromAsk, lastSale, onOpenFull, onClose 
 // Market context for one card: current asks (availability) + recorded settlements.
 // Asks are sellers' claims; a settlement is a trade that closed through escrow — the
 // one price fact the protocol can state in its own voice. All of it sample data for now.
-function MarketBlock({ c, market, onBrowseCard }) {
+function MarketBlock({ c, market, mockSales, onBrowseCard }) {
   const asks = useMemo(() => (market?.sellers || [])
     .flatMap((s) => s.listings.filter((l) => l.uid === c.uid).map((l) => ({ s, l })))
     .sort((a, b) => a.l.ask - b.l.ask), [market, c])
-  const sales = (market?.sales || {})[c.uid] || []
+  const sales = [...((mockSales || {})[c.uid] || []), ...((market?.sales || {})[c.uid] || [])]
   if (!market) return null
   const copies = asks.reduce((n, { l }) => n + (l.copies || 1), 0)
   return (
@@ -305,7 +306,7 @@ function MarketBlock({ c, market, onBrowseCard }) {
         : 'recorded settlements — none on record'}</div>
       {sales.slice(0, 4).map((x, i) => (
         <div className="mkb-row sale" key={i}>
-          <span className="mono mkb-d">{x.d}</span>
+          <span className="mono mkb-d">{x.d}{x.mock ? ' · mock' : ''}</span>
           <span className="mono mkb-cond">{x.cond}</span>
           <span className={'mono mkb-wit' + (x.wit ? ' ok' : '')}>{x.wit ? '✓ witnessed' : '—'}</span>
           <span className="mono mkb-p">{x.p} USDC</span>
@@ -316,7 +317,7 @@ function MarketBlock({ c, market, onBrowseCard }) {
   )
 }
 
-function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose, market, onBrowseCard }) {
+function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose, market, mockSales, onBrowseCard }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
@@ -515,7 +516,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               </>}
               {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b> — or neither. Have records condition and copies; Want sets the terms your agent hunts to. Tap again to clear.</div>}
             </div>
-            <MarketBlock c={c} market={market} onBrowseCard={onBrowseCard} />
+            <MarketBlock c={c} market={market} mockSales={mockSales} onBrowseCard={onBrowseCard} />
             {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
               <div className="dossier">
                 {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
@@ -746,15 +747,35 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
   const [mkt, setMkt] = useState(null) // the market payload: sellers' asks + recorded settlements
-  const askIndex = useMemo(() => {
+  const [mockRev, setMockRev] = useState(0)
+  useEffect(() => {
+    const onStore = () => {
+      try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { /* keep current */ }
+      setMockRev((r) => r + 1)
+    }
+    const onMock = () => setMockRev((r) => r + 1)
+    window.addEventListener('cairn-store', onStore)
+    window.addEventListener('cairn-mock', onMock)
+    return () => { window.removeEventListener('cairn-store', onStore); window.removeEventListener('cairn-mock', onMock) }
+  }, [storeKey])
+  const mockSales = useMemo(() => loadMockSales(mockSalesKeyFor(catalog.id)), [catalog, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
+  // one filtered view of the market — listings you already bought (mock) are gone
+  // everywhere: the ask index, the card modal's ledger, the from-ask strips.
+  const mktEff = useMemo(() => {
     if (!mkt) return null
+    const gone = new Set(loadHidden(hiddenKeyFor(catalog.id, accountId)).map((h) => h.seller + '|' + h.uid))
+    if (!gone.size) return mkt
+    return { ...mkt, sellers: mkt.sellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) })) }
+  }, [mkt, catalog, accountId, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
+  const askIndex = useMemo(() => {
+    if (!mktEff) return null
     const m = new Map()
-    for (const sl of mkt.sellers) for (const l of sl.listings) {
+    for (const sl of mktEff.sellers) for (const l of sl.listings) {
       const cur = m.get(l.uid)
       if (cur == null || l.ask < cur) m.set(l.uid, l.ask)
     }
     return m
-  }, [mkt])
+  }, [mktEff])
 
   useEffect(() => {
     let live = true
@@ -1125,7 +1146,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           lastSale={(mkt?.sales || {})[sellPop]?.[0] || null}
           onOpenFull={(uid) => setSelected(uid)} onClose={() => setSellPop(null)} /> : null
       })()}
-      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} market={mkt} onBrowseCard={onBrowseCard} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} market={mktEff} mockSales={mockSales} onBrowseCard={onBrowseCard} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )

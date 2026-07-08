@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, catalogUrl, entryFor, condStr } from '../binder/collection.js'
 import { swapKeyFor, loadSwaps, withdrawSwap, swapSheet } from './swaps.js'
+import { acceptCounter } from '../market/mockAgents.js'
 import { useEscrowWallet } from './useEscrowWallet.js'
 import { handleFor } from '../identity.js'
 
@@ -24,7 +25,8 @@ export default function Swaps({ accountId, catalog }) {
   useEffect(() => {
     const bump = () => setRev((r) => r + 1)
     window.addEventListener('cairn-swaps', bump)
-    return () => window.removeEventListener('cairn-swaps', bump)
+    window.addEventListener('cairn-store', bump)
+    return () => { window.removeEventListener('cairn-swaps', bump); window.removeEventListener('cairn-store', bump) }
   }, [])
 
   const swaps = useMemo(() => loadSwaps(swapKey), [swapKey, rev]) // eslint-disable-line react-hooks/exhaustive-deps -- rev is the invalidation signal
@@ -46,7 +48,7 @@ export default function Swaps({ accountId, catalog }) {
     <div className="sw">
       <div className="sw-head">
         <span className="ek">Swaps</span>
-        <span className="mono dim">{swaps.length} proposed</span>
+        <span className="mono dim">{swaps.length}</span>
       </div>
       {swaps.map((sw) => {
         const their = byUid.get(sw.their.uid)
@@ -58,17 +60,22 @@ export default function Swaps({ accountId, catalog }) {
               <span className="sw-arrow mono">⇄</span>
               <span className="sw-card">{their?.name_en || sw.their.uid}<span className="mono mk-num">{their?.num}</span></span>
             </div>
-            <span className="mono sw-who">{handleFor(sw.their.seller)} · {sw.at}</span>
+            <span className="mono sw-who">{handleFor(sw.their.seller)} · {sw.at} · <b className={'sw-st st-' + (sw.status || 'proposed')}>{(sw.status || 'proposed').replace('_', ' ')}</b></span>
+            {sw.response?.line && <div className="sw-say"><span className="mono dim">their agent</span> {sw.response.line}</div>}
             <span className="sw-acts">
+              {sw.status === 'countered' && (
+                <button className="sheetbtn mk-sm mono sw-boot" onClick={() => acceptCounter(swapKey, sw.id)}>accept · card +{sw.response?.boot} USDC</button>
+              )}
               <button className="sheetbtn mk-sm mono" onClick={() => copy(sw)}>{copied === sw.id ? '✓ copied' : '⎘ sheet'}</button>
-              <button className="sheetbtn mk-sm mono" onClick={() => withdrawSwap(swapKey, sw.id)}>✕ withdraw</button>
+              {sw.status !== 'settled' && <button className="sheetbtn mk-sm mono" onClick={() => withdrawSwap(swapKey, sw.id)}>✕ {sw.status === 'declined' ? 'clear' : 'withdraw'}</button>}
+              {sw.status === 'settled' && <button className="sheetbtn mk-sm mono" onClick={() => withdrawSwap(swapKey, sw.id)}>✕ clear</button>}
             </span>
           </div>
         )
       })}
-      <p className="sc-note dim">Yours on the left, theirs on the right. Sample sellers can&rsquo;t answer; with a real trader
-        you&rsquo;d send the sheet. Settling a swap — both cards moving, accountably — is not built yet: today only the
-        escrowed money path below settles.</p>
+      <p className="sc-note dim">Yours on the left, theirs on the right. These seller agents are mock personas answering
+        in your browser — with a real trader you&rsquo;d send the sheet. A settled mock swap moves both cards in your
+        records only; the real thing needs the two-sided escrow object.</p>
     </div>
   )
 }
