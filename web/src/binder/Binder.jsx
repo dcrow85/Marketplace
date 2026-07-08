@@ -589,32 +589,41 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
 // The agent PROPOSED a bulk change to your own cards; this bar is the enforced half:
 // code resolved the exact set from your store, and nothing writes until you tap apply.
 const ACTION_VERB = {
+  mark_have: 'mark as have', mark_want: 'mark as want',
   list_for_sale: 'list for sale', open_to_trade: 'open to trade',
   unlist: 'unlist', close_trade: 'close to trade',
 }
-function ActionBar({ agentName, action, reading, affected, done, onApply, onUndo, onDismiss }) {
-  const n = affected.length
-  const names = affected.slice(0, 3).map((c) => c.name_en || c.uid).join(', ')
-  const total = action.ask != null ? Math.round(action.ask * n * 100) / 100 : null
+function ActionBar({ agentName, plan, reading, done, onApply, onUndo, onDismiss }) {
+  const touched = Object.keys(plan.draft).length
+  const total = Math.round(plan.steps.reduce((t, st) => t + (st.op === 'list_for_sale' && st.ask != null ? st.ask * st.affected.length : 0), 0) * 100) / 100
   return (
     <div className="aprop">
-      <span className="atag jud">{agentName} · proposes</span>
-      <div className="aprop-line">
-        {ACTION_VERB[action.op]} <b>{n}</b> card{n === 1 ? '' : 's'}
-        {action.ask != null && <> at <b>{action.ask} USDC</b> each{n > 1 && total != null ? ` (${total} total)` : ''}</>}
-        {n > 0 && <span className="dim"> — {names}{n > 3 ? ` +${n - 3} more` : ''}</span>}
-      </div>
+      <span className="atag jud">{agentName} · proposes{plan.steps.length > 1 ? ` · ${plan.steps.length} steps, in order` : ''}</span>
+      {plan.steps.map((st, i) => {
+        const n = st.affected.length
+        const names = st.affected.slice(0, 3).map((c) => c.name_en || c.uid).join(', ')
+        return (
+          <div className="aprop-line" key={i}>
+            {plan.steps.length > 1 && <span className="mono dim">{i + 1}. </span>}
+            {ACTION_VERB[st.op]} <b>{n}</b> card{n === 1 ? '' : 's'}
+            {st.ask != null && n > 0 && <> at <b>{st.ask} USDC</b> each</>}
+            {n > 0 ? <span className="dim"> — {names}{n > 3 ? ` +${n - 3} more` : ''}</span>
+              : <span className="dim"> — nothing to change</span>}
+          </div>
+        )
+      })}
+      {total > 0 && <div className="aprop-read">asks total <b>{total} USDC</b> across the plan</div>}
       {reading && <div className="aprop-read dim">{reading}</div>}
       {done
         ? <div className="aprop-acts">
-            <span className="aprop-done mono">✓ done — {done.n} card{done.n === 1 ? '' : 's'} {ACTION_VERB[done.op]}{done.op === 'list_for_sale' ? ' · on your table' : ''}</span>
+            <span className="aprop-done mono">✓ done — {done.n} card{done.n === 1 ? '' : 's'} changed{done.steps > 1 ? ` across ${done.steps} steps` : ''}</span>
             <button className="ghost sm" onClick={onUndo}>undo</button>
             <button className="ghost sm" onClick={onDismiss}>✕</button>
           </div>
         : <div className="aprop-acts">
-            <button className="aprop-apply" onClick={onApply} disabled={!n}>{n ? 'apply' : 'nothing matches'}</button>
+            <button className="aprop-apply" onClick={onApply} disabled={!touched}>{touched ? 'apply' : 'nothing matches'}</button>
             <button className="ghost sm" onClick={onDismiss}>cancel</button>
-            {action.op === 'list_for_sale' && action.ask == null && n > 0 && <span className="dim aprop-note">no price named — cards list without an ask; set asks on your table</span>}
+            {plan.steps.some((st) => st.op === 'list_for_sale' && st.ask == null && st.affected.length > 0) && <span className="dim aprop-note">no price named on a listing step — those cards list without an ask</span>}
           </div>}
     </div>
   )
@@ -865,35 +874,48 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const agentAction = agentRes?.ok && agentRes.data?.action ? agentRes.data : null
   const agentActive = !agentAction && !!(agentRes?.ok && agentRes.data?.filter)
   const pickSet = useMemo(() => new Set(agentActive ? agentRes.data.result?.picks || [] : []), [agentRes, agentActive])
-  const affected = useMemo(() => {
-    if (!agentAction || !data) return []
-    const scope = { ...(agentAction.filter || {}) }
-    delete scope.owned // 'my cards' means YOUR store, not the demo catalog flag
-    delete scope.action
-    let base = applyAgentFilter(data.cards, scope, setById).filter((c) => effStance(c, store).stance === 'have')
-    const op = agentAction.action.op
-    if (op === 'unlist') base = base.filter((c) => effStance(c, store).sell)
-    if (op === 'close_trade') base = base.filter((c) => effStance(c, store).trade)
-    return base
+  // A plan resolves step by step against a DRAFT of your store, so step 2 sees what
+  // step 1 changed ("mark commons have; list alpha commons at $2" works in one call).
+  const plan = useMemo(() => {
+    if (!agentAction || !data) return null
+    const steps = Array.isArray(agentAction.action) ? agentAction.action : [agentAction.action]
+    const draft = {}
+    const eff = (c) => effStance(c, draft[c.uid] ? { [c.uid]: { ...(store[c.uid] || {}), ...draft[c.uid] } } : store)
+    const resolved = steps.map((st) => {
+      const scope = { ...(st.scope || {}) }
+      delete scope.owned // 'my cards' means YOUR store, not the demo catalog flag
+      let base = applyAgentFilter(data.cards, scope, setById)
+      const op = st.op
+      if (op === 'mark_have') base = base.filter((c) => eff(c).stance !== 'have')
+      else if (op === 'mark_want') base = base.filter((c) => { const e = eff(c); return e.stance !== 'want' && e.stance !== 'have' })
+      else {
+        base = base.filter((c) => eff(c).stance === 'have')
+        if (op === 'unlist') base = base.filter((c) => eff(c).sell)
+        if (op === 'close_trade') base = base.filter((c) => eff(c).trade)
+      }
+      for (const c of base) {
+        const d = draft[c.uid] = draft[c.uid] || {}
+        if (op === 'mark_have') d.stance = 'have'
+        else if (op === 'mark_want') d.stance = 'want'
+        else if (op === 'list_for_sale') { d.sell = true; if (st.ask != null) d.ask = String(st.ask) }
+        else if (op === 'open_to_trade') d.trade = true
+        else if (op === 'unlist') d.sell = false
+        else if (op === 'close_trade') d.trade = false
+      }
+      return { op, ask: st.ask, affected: base }
+    })
+    return { steps: resolved, draft }
   }, [agentAction, data, setById, store])
   const applyProposal = () => {
-    if (!agentAction || !affected.length) return
-    const { op, ask } = agentAction.action
+    if (!plan || !Object.keys(plan.draft).length) return
     setStore((prev) => {
       undoStore.current = prev
       const next = { ...prev }
-      for (const c of affected) {
-        const u = { ...(next[c.uid] || {}) }
-        if (op === 'list_for_sale') { u.sell = true; if (ask != null) u.ask = String(ask) }
-        else if (op === 'open_to_trade') u.trade = true
-        else if (op === 'unlist') u.sell = false
-        else if (op === 'close_trade') u.trade = false
-        next[c.uid] = u
-      }
+      for (const [uid, d] of Object.entries(plan.draft)) next[uid] = { ...(next[uid] || {}), ...d }
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
       return next
     })
-    setActionDone({ n: affected.length, op })
+    setActionDone({ n: Object.keys(plan.draft).length, steps: plan.steps.length })
   }
   const undoProposal = () => {
     if (!undoStore.current) return
@@ -916,7 +938,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     const cmp = (a, b) => (setById[a.set_id].order - setById[b.set_id].order) || (passed(a) - passed(b)) || ('' + a.num).localeCompare('' + b.num, undefined, { numeric: true })
     let base = data.cards
     if (agentActive) base = applyAgentFilter(base, agentRes.data.filter || {}, setById)
-    if (agentAction) { const ids = new Set(affected.map((c) => c.uid)); base = base.filter((c) => ids.has(c.uid)) }
+    if (agentAction && plan) { const ids = new Set(plan.steps.flatMap((st) => st.affected.map((c) => c.uid))); base = base.filter((c) => ids.has(c.uid)) }
     const qq = q.trim().toLowerCase()
     base = base.filter((c) => {
       if (stanceF.size) {
@@ -940,7 +962,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     })
     if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet, agentAction, affected])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet, agentAction, plan])
 
   const grouped = !q.trim() && !agentActive
   const CHIPS = useMemo(() => chipsFor(), [])
@@ -1022,8 +1044,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           )}
         </div>
       </div>
-      {agentAction && <ActionBar agentName={agentName} action={agentAction.action} reading={agentAction.filter?.reading}
-        affected={affected} done={actionDone} onApply={applyProposal} onUndo={undoProposal} onDismiss={clearAgent} />}
+      {agentAction && plan && <ActionBar agentName={agentName} plan={plan} reading={agentAction.filter?.reading}
+        done={actionDone} onApply={applyProposal} onUndo={undoProposal} onDismiss={clearAgent} />}
       {agentRes && !agentAction && <AgentPanel res={agentRes} agentName={agentName} />}
       {filtersOpen && (
         <div className="fsheet-ov" onClick={() => setFiltersOpen(false)}>

@@ -132,14 +132,24 @@ def filter_system(data: dict) -> str:
             " - character: a name substring, or null\n"
             f" - category: {cats} | null\n"
             f" - element: {elements} | null\n"
-            " - rarity: an EXACT rarity code — C (common), UC (uncommon), R (rare), SR, SR ★, SR ★★, L, L ★, G, G ★, IKZ, IKZ ★ — or null\n\n"
-            "The call may instead be an INSTRUCTION about the collector's own cards (list/sell, open to trade, "
-            "unlist, close trade) — e.g. 'list all my commons for $1.50'. Then ALSO set:\n"
-            ' - action: {"op": "list_for_sale" | "open_to_trade" | "unlist" | "close_trade", "ask": number or null}\n'
-            "   with the SAME filter dimensions scoping WHICH of their cards ('my commons' -> rarity C). "
-            "ask is the per-card price if they named one (strip $ and units). For browse calls, action is null. "
-            "You only ever PROPOSE — code shows the exact set and the collector confirms.\n\n"
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"action":..,"reading":"one line on how you read the call"}'
+            " - rarity: an EXACT rarity code — C (common), UC (uncommon), R (rare), SR, SR ★, SR ★★, L, L ★, G, G ★, IKZ, IKZ ★ — or null\n"
+            " - release_family: alpha | gates_awakened | null   ('Alpha' vs 'Gates Awakened' printings)\n"
+            " - product_channel: booster | starter | promo | null\n\n"
+            "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
+            "action: a LIST of steps, IN ORDER. Each step:\n"
+            ' {"op": "mark_have" | "mark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade",\n'
+            '  "ask": number or null,  (per-card price if named; strip $ and units)\n'
+            '  "scope": {"rarity":.., "release_family":.., "product_channel":.., "star_alt":.., "category":.., "element":.., "set":.., "character":..}}\n'
+            "Steps run in order — a card marked have by step 1 can be listed by step 2. Scope carries ONLY what "
+            "the collector said: 'all commons including alpha' -> {\"rarity\":\"C\"} with NO family key; "
+            "'the rest' means the complement of the families already handled.\n"
+            "Example — 'mark that I have all commons including alpha; list alpha commons at $2 and the rest at $1' ->\n"
+            ' [{"op":"mark_have","ask":null,"scope":{"rarity":"C"}},\n'
+            '  {"op":"list_for_sale","ask":2,"scope":{"rarity":"C","release_family":"alpha"}},\n'
+            '  {"op":"list_for_sale","ask":1,"scope":{"rarity":"C","release_family":"gates_awakened"}}]\n'
+            "For browse calls, action is null. You only ever PROPOSE — code resolves the exact set from the "
+            "collector's own records and they confirm.\n\n"
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"action":..,"reading":"one line on how you read the call"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
@@ -177,6 +187,12 @@ COMMENT_SYS = (
 
 def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
     out = cards
+    if f.get("release_family"):
+        out = [c for c in out if (c.get("release_family") or "").lower() == str(f["release_family"]).lower()]
+    if f.get("product_channel"):
+        ch = str(f["product_channel"]).lower()
+        out = [c for c in out if str(c.get("product_channel") or "").startswith("starter_deck_")] if ch == "starter" \
+            else [c for c in out if (c.get("product_channel") or "").lower() == ch]
     if f.get("holo") is not None:
         out = [c for c in out if bool(c["holo"]) == bool(f["holo"])]
     if f.get("star_alt") is not None:
@@ -247,12 +263,11 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
-ACTION_OPS = {"list_for_sale", "open_to_trade", "unlist", "close_trade"}
+ACTION_OPS = {"mark_have", "mark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade"}
+SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails"}
 
 
-def valid_action(a) -> dict | None:
-    """The model PROPOSES; this gate types it. Anything malformed dies here, so the
-    frontend only ever sees a well-formed {op, ask} it can resolve deterministically."""
+def _valid_step(a, fallback_scope: dict) -> dict | None:
     if not isinstance(a, dict) or a.get("op") not in ACTION_OPS:
         return None
     ask = a.get("ask")
@@ -265,7 +280,25 @@ def valid_action(a) -> dict | None:
             return None
         if ask == int(ask):
             ask = int(ask)
-    return {"op": a["op"], "ask": ask}
+    raw = a.get("scope") if isinstance(a.get("scope"), dict) else fallback_scope
+    scope = {k: v for k, v in raw.items() if k in SCOPE_KEYS and v is not None}
+    return {"op": a["op"], "ask": ask, "scope": scope}
+
+
+def valid_plan(a, f: dict) -> list[dict] | None:
+    """The model PROPOSES; this gate types it. A plan is an ordered list of steps, each
+    with its own scope. Anything malformed dies here — the frontend only ever sees
+    well-formed steps it can resolve deterministically against the collector's store.
+    A bare dict (the old single-action shape) normalizes to a one-step plan scoped by
+    the top-level filter, so older model emissions stay valid."""
+    fallback = {k: v for k, v in (f or {}).items() if k in SCOPE_KEYS and v is not None}
+    if isinstance(a, dict):
+        st = _valid_step(a, fallback)
+        return [st] if st else None
+    if isinstance(a, list) and 0 < len(a) <= 8:
+        steps = [_valid_step(x, fallback) for x in a]
+        return steps if all(steps) else None
+    return None
 
 
 def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
@@ -273,7 +306,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     setlabel = data["_set_label"]
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
     f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 180)
-    action = valid_action(f.get("action")) if isinstance(f, dict) else None
+    action = valid_plan(f.get("action"), f) if isinstance(f, dict) else None
     if action:
         # Instruction, not a browse: the model's whole job was language -> typed action.
         # The client resolves the scope against the collector's OWN store (which never

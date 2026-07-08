@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Agent PLANS (Crowley's hard case: "Mark that I have all commons
+  including Alpha. List alpha commons at $2 and the rest at $1") — LIVE, both halves.** The single-action
+  schema failed this honestly (it listed alpha commons and found none owned). Two real gaps fixed: (1) the
+  model had NO release_family dimension — the azuki prompt (and backend `apply_filter`, for parity with the
+  frontend mirror) now carries release_family + product_channel; (2) `action` grew into an ordered PLAN —
+  a list of ≤8 typed steps, each with its OWN scope, plus new ops mark_have/mark_want. Server gate
+  `valid_plan` types every step (old single-dict emissions normalize to one-step plans). The client resolves
+  steps SEQUENTIALLY against a draft of the store — step 2 sees what step 1 marked — so the proposal bar
+  shows the whole program before anything writes: "LEDGER · PROPOSES · 3 STEPS, IN ORDER / 1. mark as have
+  124 cards / 2. list for sale 42 at 2 USDC / 3. list for sale 82 at 1 USDC / asks total 166 USDC across the
+  plan", grid narrowed to the union, one apply, one undo (whole-plan snapshot). Verified: DeepInfra probe
+  3/3 (the hard case exact, single-step regression, mixed open-to-trade+unlist compound), preview end-to-end
+  from an EMPTY store (124 marked → 42@$2 + 82@$1 → undo restores empty), prod API answering the hard case
+  with the correct 3-step plan, apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Agent bulk actions (Crowley: "list all my commons for $1.50") — LIVE,
   both halves.** The trichotomy extended to writes, by construction: the MODEL's whole job is language → a
   typed proposal ({op: list_for_sale|open_to_trade|unlist|close_trade, ask} + the existing filter dims as
