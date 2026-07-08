@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { usePrivy } from '@privy-io/react-auth'
 import { handleFor, avatarSVG, randomAgentName } from './identity.js'
 import Binder from './binder/Binder.jsx'
@@ -7,6 +7,8 @@ import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
 import SellPile from './binder/SellPile.jsx'
 import Market from './market/Market.jsx'
+import Swaps from './trade/Swaps.jsx'
+import { swapKeyFor, loadSwaps } from './trade/swaps.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -104,6 +106,13 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
+  const [swapRev, setSwapRev] = useState(0)
+  useEffect(() => {
+    const bump = () => setSwapRev((r) => r + 1)
+    window.addEventListener('cairn-swaps', bump)
+    return () => window.removeEventListener('cairn-swaps', bump)
+  }, [])
+  const swapN = useMemo(() => loadSwaps(swapKeyFor(catalog.id, accountId)).length, [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
   return (
     <div className="app">
       <nav className="nav">
@@ -127,12 +136,12 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           <div className="bt-right">
             <div className="bsegs mono" role="tablist" aria-label="binder section">
               <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
-              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>For sale</button>
+              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My table</button>
               <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
             </div>
             <button className="tradesbtn mono" onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title="escrow trades">
               <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
-              <span>Trades</span>
+              <span>Trades{swapN ? ` ·${swapN}` : ''}</span>
             </button>
           </div>
         </div>
@@ -150,6 +159,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
               <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
+              <Swaps accountId={accountId} catalog={catalog} />
               <TradePanel openTradeId={openTrade} />
             </div>
           </div>

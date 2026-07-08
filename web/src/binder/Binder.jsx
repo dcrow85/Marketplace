@@ -410,10 +410,17 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
             )}
             <div className="m-fields">
               {e.stance === 'have' && <>
-                <button className={'listtog' + ((e.sell || e.trade) ? ' on' : '')}
-                  onClick={() => { const on = !(e.sell || e.trade); setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'trade', false) }}>
-                  {(e.sell || e.trade) ? '● Listed for sale — in your For sale pile' : '○ List for sale'}
-                </button>
+                <div className="listrow">
+                  <button className={'listtog' + (e.sell ? ' on' : '')} onClick={() => setField(c.uid, 'sell', !e.sell)}>
+                    {e.sell ? '● For sale' : '○ List for sale'}
+                  </button>
+                  <button className={'listtog' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', !e.trade)}>
+                    {e.trade ? '⇄ Open to trade' : '○ Open to trade'}
+                  </button>
+                </div>
+                {(e.sell || e.trade) && <div className="listhint dim">{e.sell && e.trade ? 'On your table for sale or swap.'
+                  : e.sell ? 'On your table — buyers copy your sheet and fund escrow.'
+                  : 'On your table — a trader can offer one of their cards for it.'}</div>}
                 <Frow label="Condition">
                   <select className="ti condtype" value={u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')} onChange={(ev) => { setField(c.uid, 'cond_type', ev.target.value); setField(c.uid, 'cond_grade', ''); setField(c.uid, 'cond_grader', '') }}>
                     {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}

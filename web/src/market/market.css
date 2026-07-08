@@ -52,3 +52,30 @@
   .mk-row { grid-template-columns: 1fr auto auto auto; }
   .mk-cond { display: none; }
 }
+
+/* swap proposal confirmation — one quiet dismissible line */
+.mk-swapmsg { text-align: left; font-size: 12px; color: var(--ink); background: var(--mount); border: 0.5px solid var(--rule); border-radius: 8px; padding: 9px 12px; cursor: pointer; }
+.mk-acts { display: inline-flex; gap: 6px; }
+
+/* the swap picker: your side of the trade */
+.swp { max-width: 560px; }
+.swp-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 10px; border-bottom: 0.5px solid var(--rule); flex: none; }
+.swp-title { font-size: 14px; margin-top: 2px; }
+.swp-body { overflow-y: auto; padding: 10px 18px 18px; display: flex; flex-direction: column; gap: 4px; }
+.swp-sec { font-size: 10.5px; letter-spacing: .06em; color: var(--dim); margin: 8px 0 2px; }
+.swp-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; text-align: left; font-size: 13.5px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 11px 13px; cursor: pointer; }
+.swp-row:hover { border-color: var(--ink); }
+.swp-row.dim { opacity: .62; }
+.swp-row.dim:hover { opacity: 1; }
+.swp-name { display: flex; align-items: baseline; gap: 8px; }
+.swp-cond { font-size: 11px; color: var(--ink2); }
+
+/* pending swaps in the Trades overlay */
+.sw { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
+.sw-head { display: flex; align-items: baseline; gap: 10px; }
+.sw-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; }
+.sw-pair { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; font-size: 13.5px; }
+.sw-card { display: inline-flex; align-items: baseline; gap: 6px; }
+.sw-arrow { color: var(--ink2); }
+.sw-who { font-size: 11px; color: var(--dim); }
+.sw-acts { display: inline-flex; gap: 6px; }

@@ -35,10 +35,11 @@ export default function SellPile({ accountId, catalog }) {
     })
   }
 
-  const priced = rows.filter(({ e }) => Number(e.ask) > 0)
+  const priced = rows.filter(({ e }) => e.sell && Number(e.ask) > 0)
   const totalCards = rows.reduce((s, { e }) => s + (e.copies || 1), 0)
   const total = priced.reduce((s, { e }) => s + Number(e.ask) * (e.copies || 1), 0)
-  const missing = rows.length - priced.length
+  const missing = rows.filter(({ e }) => e.sell && !(Number(e.ask) > 0)).length
+  const tradeN = rows.filter(({ e }) => e.trade).length
 
   const copyLotSheet = async () => {
     const seller = address || accountId || ''
@@ -54,18 +55,18 @@ export default function SellPile({ accountId, catalog }) {
     setTimeout(() => setCopied(false), 2400)
   }
 
-  if (!data) return <div className="empty">Loading your sell pile…</div>
+  if (!data) return <div className="empty">Opening your table…</div>
   if (!rows.length) {
-    return <div className="empty">Nothing marked for sale yet. Open a card you Have and tap “List for sale” — it shows up here with its ask.</div>
+    return <div className="empty">Your table is empty. Open a card you Have and mark it “List for sale” or “Open to trade” — it shows up here.</div>
   }
 
   return (
     <div className="sp">
       <div className="sp-head">
         <div>
-          <div className="ek">Your sell pile</div>
+          <div className="ek">Your table</div>
           <div className="sp-title">{totalCards} card{totalCards === 1 ? '' : 's'}
-            <span className="dim"> · {total} USDC asked{missing ? ` · ${missing} missing an ask` : ''}</span>
+            <span className="dim"> · {total} USDC asked{tradeN ? ` · ${tradeN} open to trade` : ''}{missing ? ` · ${missing} missing an ask` : ''}</span>
           </div>
         </div>
         <button className="sheetbtn sp-copy mono" onClick={copyLotSheet} disabled={!priced.length}>
@@ -79,7 +80,7 @@ export default function SellPile({ accountId, catalog }) {
               {(e.copies || 1) > 1 && <span className="mono dim"> ×{e.copies}</span>}
               <span className="mono sp-num">{c.num}</span>
             </span>
-            <span className="mono sp-cond">{condStr(e)}</span>
+            <span className="mono sp-cond">{condStr(e)}{e.trade ? ' · ⇄ trade' : ''}</span>
             <span className="mono sp-wit">{(e.pile || []).length || e.photo_hash ? '✓ witness' : '—'}</span>
             <span className="sp-ask">
               <span className="fpre">$</span>

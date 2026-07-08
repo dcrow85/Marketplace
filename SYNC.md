@@ -55,6 +55,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Trades de-convoluted (Crowley): card-for-card swaps as the primary
+  gesture — LIVE.** The trade now STARTS from cards, not forms. (1) Card modal: the single list toggle split
+  into two independent marks — "○ List for sale" and "○ Open to trade" (same `sell`/`trade` flags; NOT the old
+  confusing three-way). (2) Every market listing row grew "⇄ trade": tap → SwapPicker sheet ("Your card for
+  their X") listing your trade-marked cards first, rest of your Haves dimmed below; picking an unmarked card
+  marks it open-to-trade (the honest side effect — you ARE offering it). (3) One pick → swap proposal persisted
+  (`cairn-swaps:<catalog>:<account>` + a `cairn-swaps` window event for reactivity), confirmation banner,
+  "Trades ·N" badge. (4) Trades overlay now leads with a SWAPS ledger (your card ⇄ theirs · seller · date ·
+  ⎘ swap sheet · ✕ withdraw) ABOVE the escrow panel — the money form is demoted to the money path. (5) "For
+  sale" tab renamed "My table"; trade-marked rows show ⇄, and only for-sale rows are nagged for asks or enter
+  the lot sheet. New CAIRN SWAP SHEET format (want/offer/to/from) as the plaintext handoff. Honest boundary in
+  the ledger: "Settling a swap — both cards moving, accountably — is not built yet; today only the escrowed
+  money path settles." Full loop verified in preview (mark → browse → pick → badge → withdraw clears all
+  three surfaces) + live per-deploy + apex. Surface lane. No ask. **Codex seam ahead:** a real swap needs a
+  chain object (double-escrow of two cards / two bonds, or a swap predicate on the existing escrow) — flagging
+  early, not asking yet.
 - `[passive]` 2026-07-08 · Claude — **Japanese pre-English catalog PARKED (Crowley: focus on Azuki) — LIVE.**
   The catalog entry is commented out in `App.jsx` (data, stores, and IndexedDB photos all intact; restore = re-add
   the entry), the picker row auto-hides with one catalog, stale `?catalog=japanese-pre-english` URLs fall back to

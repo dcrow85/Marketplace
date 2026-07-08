@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
-import { storeKeyFor, loadStore, catalogUrl, entryFor } from '../binder/collection.js'
+import { storeKeyFor, loadStore, saveStore, catalogUrl, entryFor, condStr } from '../binder/collection.js'
+import { swapKeyFor, proposeSwap } from '../trade/swaps.js'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
 
@@ -55,7 +56,7 @@ function CopySheet({ text, small }) {
   )
 }
 
-function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller }) {
+function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onTrade }) {
   return (
     <div className={'mk-row' + (mine ? ' mk-mine' : '')}>
       {showSeller
@@ -71,7 +72,49 @@ function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller }) {
       <span className="mono mk-cond" title="the seller's claim — the protocol records it, it does not verify it">{l.cond}</span>
       {witnessCell(l.witness)}
       <span className="mono mk-ask">{l.ask} USDC</span>
-      <CopySheet text={sellerSheet(seller, c, l)} small />
+      <span className="mk-acts">
+        {onTrade && <button className="sheetbtn mk-sm" onClick={() => onTrade(c, seller)} title="offer one of your cards for it">⇄ trade</button>}
+        <CopySheet text={sellerSheet(seller, c, l)} small />
+      </span>
+    </div>
+  )
+}
+
+// Pick one of YOUR cards to offer for theirs. Cards you marked "open to trade" lead;
+// the rest of your Haves follow dimmed — picking one marks it for trade as a side effect
+// of the honest kind (you are, in fact, offering to trade it).
+function SwapPicker({ their, seller, rows, onPick, onClose }) {
+  const marked = rows.filter(({ e }) => e.trade)
+  const rest = rows.filter(({ e }) => !e.trade)
+  return (
+    <div className="sc-overlay" role="dialog" aria-label="Offer a trade" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
+      <div className="sc-sheet swp">
+        <div className="swp-head">
+          <div>
+            <div className="ek">Offer a trade</div>
+            <div className="swp-title">Your card for their <b>{their.name_en || their.uid}</b>
+              <span className="mono dim"> · {handleFor(seller.id)}</span></div>
+          </div>
+          <button className="ghost sm" onClick={onClose}>✕</button>
+        </div>
+        <div className="swp-body">
+          {marked.length > 0 && <div className="swp-sec mono">marked open to trade</div>}
+          {marked.map(({ c, e }) => (
+            <button key={c.uid} className="swp-row" onClick={() => onPick(c)}>
+              <span className="swp-name">{c.name_en || c.uid}<span className="mono mk-num">{c.num}</span></span>
+              <span className="mono swp-cond">{condStr(e)}</span>
+            </button>
+          ))}
+          {rest.length > 0 && <div className="swp-sec mono">the rest of your binder</div>}
+          {rest.map(({ c, e }) => (
+            <button key={c.uid} className="swp-row dim" onClick={() => onPick(c)}>
+              <span className="swp-name">{c.name_en || c.uid}<span className="mono mk-num">{c.num}</span></span>
+              <span className="mono swp-cond">{condStr(e)}</span>
+            </button>
+          ))}
+          {!rows.length && <div className="empty">You have no cards to offer yet — mark some Haves first.</div>}
+        </div>
+      </div>
     </div>
   )
 }
@@ -81,8 +124,11 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
   const [mkt, setMkt] = useState(null)
   const [sel, setSel] = useState(null) // seller id whose table is open
   const [wantsOnly, setWantsOnly] = useState(false)
+  const [swapFor, setSwapFor] = useState(null) // {c, seller} — the card you tapped ⇄ on
+  const [swapMsg, setSwapMsg] = useState(null)
+  const [storeRev, setStoreRev] = useState(0) // bump after writes so the memo re-reads
   const storeKey = storeKeyFor(catalog.id, accountId)
-  const store = useMemo(() => loadStore(storeKey), [storeKey])
+  const store = useMemo(() => loadStore(storeKey), [storeKey, storeRev]) // eslint-disable-line react-hooks/exhaustive-deps -- storeRev is the invalidation signal
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- reset + hydrate on catalog switch */
@@ -102,6 +148,23 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'have').map((c) => c.uid))
   }, [data, store])
+  const myRows = useMemo(() => {
+    if (!data) return []
+    return data.cards.map((c) => ({ c, e: entryFor(c, store) })).filter(({ e }) => e.stance === 'have')
+  }, [data, store])
+
+  const doPick = (mine) => {
+    const their = swapFor
+    if (!their) return
+    proposeSwap(swapKeyFor(catalog.id, accountId), { theirUid: their.c.uid, sellerId: their.seller.id, mineUid: mine.uid })
+    const cur = loadStore(storeKey)
+    if (!entryFor(mine, cur).trade) {
+      saveStore(storeKey, { ...cur, [mine.uid]: { ...(cur[mine.uid] || {}), trade: true } })
+      setStoreRev((r) => r + 1)
+    }
+    setSwapFor(null)
+    setSwapMsg(`⇄ proposed — your ${mine.name_en || mine.uid} for their ${their.c.name_en || their.c.uid}. It's waiting in Trades.`)
+  }
 
   if (!data || !mkt) return <div className="empty">Opening the market…</div>
   if (!sellers.length) return <div className="empty">No tables in this catalog yet.</div>
@@ -115,6 +178,8 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     return (
       <div className="mk">
         <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
+        {swapFor && <SwapPicker their={swapFor.c} seller={swapFor.seller} rows={myRows} onPick={doPick} onClose={() => setSwapFor(null)} />}
         <div className="mk-head">
           <div>
             <div className="ek">On the market</div>
@@ -127,7 +192,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         {asks.length
           ? <div className="mk-rows">
               {asks.sort((a, b) => a.l.ask - b.l.ask).map(({ s, l }, i) => (
-                <ListingRow key={i} seller={s} c={c} l={l} mine={myWants.has(focusUid)} showSeller onOpenSeller={(id) => { onClearFocus(); setSel(id) }} />
+                <ListingRow key={i} seller={s} c={c} l={l} mine={myWants.has(focusUid)} showSeller onOpenSeller={(id) => { onClearFocus(); setSel(id) }} onTrade={(cc, ss) => setSwapFor({ c: cc, seller: ss })} />
               ))}
             </div>
           : <div className="empty">Nobody is asking on this card right now.</div>}
@@ -151,6 +216,8 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     return (
       <div className="mk">
         <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
+        {swapFor && <SwapPicker their={swapFor.c} seller={swapFor.seller} rows={myRows} onPick={doPick} onClose={() => setSwapFor(null)} />}
         <div className="mk-head">
           <div className="mk-seller">
             <Avatar seed={open.id} size={40} />
@@ -175,7 +242,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         </div>
         <div className="mk-rows">
           {rows.map(({ l, c }, i) => (
-            <ListingRow key={i} seller={open} c={c} l={l} mine={myWants.has(c.uid)} />
+            <ListingRow key={i} seller={open} c={c} l={l} mine={myWants.has(c.uid)} onTrade={(cc) => setSwapFor({ c: cc, seller: open })} />
           ))}
           {!rows.length && <div className="empty">Nothing on this table matches your wants.</div>}
         </div>
@@ -215,6 +282,8 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
   return (
     <div className="mk">
       <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
+        {swapFor && <SwapPicker their={swapFor.c} seller={swapFor.seller} rows={myRows} onPick={doPick} onClose={() => setSwapFor(null)} />}
       <div className="mk-head">
         <div>
           <div className="ek">The market</div>
