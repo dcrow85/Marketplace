@@ -126,7 +126,7 @@ function applyAgentFilter(cards, f, setById) {
   return out
 }
 
-function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk }) {
+function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk, onQuickSell }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
@@ -137,7 +137,7 @@ function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, 
         <button className={'seg sg-have' + (have ? ' on' : '')} onClick={() => setStance(c.uid, have ? 'none' : 'have')}>Have</button>
         {have
           ? <>
-              <button className={'seg sg-sell' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'} onClick={() => setField(c.uid, 'sell', !e.sell)}>$</button>
+              <button className={'seg sg-sell' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'} onClick={() => { const on = !e.sell; setField(c.uid, 'sell', on); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
               <button className={'seg sg-tradeq' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'} onClick={() => setField(c.uid, 'trade', !e.trade)}>⇄</button>
             </>
           : <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>}
@@ -213,6 +213,55 @@ async function renderSizes(file) {
   }
 }
 
+
+
+// The $ pop-up: list a card without leaving the page. Just the listing facts — ask,
+// condition, copies — with the market's own numbers right above the ask so pricing
+// isn't a guess. The full modal stays one tap away for everything else.
+function QuickSell({ c, store, setField, fromAsk, lastSale, onOpenFull, onClose }) {
+  const u = store[c.uid] || {}
+  const ct = u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')
+  return (
+    <div className="sc-overlay" role="dialog" aria-label="List for sale" onClick={(ev) => { if (ev.target === ev.currentTarget) onClose() }}>
+      <div className="sc-sheet qs">
+        <div className="qs-head">
+          <div>
+            <div className="ek">For sale</div>
+            <div className="qs-title">{nm(c)} <span className="mono dim">{c.num}</span></div>
+          </div>
+          <button className="primary qs-done" onClick={onClose}>done</button>
+        </div>
+        <div className="qs-mkt mono">
+          {fromAsk != null ? `market: from ${fromAsk} USDC` : 'market: nobody else is asking'}
+          {lastSale ? ` · last settled ${lastSale.p} USDC (${lastSale.d})` : ' · no settlements on record'}
+        </div>
+        <div className="qs-body">
+          <Frow label="Ask"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="USDC" autoFocus value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
+          <Frow label="Condition">
+            <select className="ti condtype" value={ct} onChange={(ev) => { setField(c.uid, 'cond_type', ev.target.value); setField(c.uid, 'cond_grade', ''); setField(c.uid, 'cond_grader', '') }}>
+              {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+            </select>
+            {ct === 'graded' && (
+              <select className="ti condgrader" value={u.cond_grader || ''} onChange={(ev) => { setField(c.uid, 'cond_grader', ev.target.value); setField(c.uid, 'cond_type', 'graded') }}>
+                <option value="">grader…</option>
+                {GRADERS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+              </select>
+            )}
+            <select className="ti condgrade" value={u.cond_grade || ''} onChange={(ev) => setField(c.uid, 'cond_grade', ev.target.value)}>
+              <option value="">{gradePrompt(ct)}</option>
+              {(COND_GRADES[ct] || COND_GRADES.raw).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+            </select>
+          </Frow>
+          <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
+        </div>
+        <div className="qs-foot">
+          <button className="ghost sm" onClick={() => { setField(c.uid, 'sell', false); onClose() }}>✕ unlist</button>
+          <button className="ghost sm" onClick={() => { onClose(); onOpenFull(c.uid) }}>open the full card →</button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 // Market context for one card: current asks (availability) + recorded settlements.
 // Asks are sellers' claims; a settlement is a trade that closed through escrow — the
@@ -558,7 +607,7 @@ function AgentPanel({ res, agentName }) {
 // The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
 // pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
 // the agent, filters, and the scanner all operate on the binder itself.
-function PocketPages({ rows, store, userPhotos, onOpen, setField, askIndex }) {
+function PocketPages({ rows, store, userPhotos, onOpen, setField, askIndex, onQuickSell }) {
   const [page, setPage] = useState(0)
   useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
   const pages = []
@@ -584,9 +633,10 @@ function PocketPages({ rows, store, userPhotos, onOpen, setField, askIndex }) {
                 {img ? <img src={img} alt={nm(c)} loading="lazy" /> : <span className="bv-noimg">{nm(c)}</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
                 {e.grail && <span className="bv-grail">★</span>}
+                {fromAsk != null && <span className="bv-from onart mono">from {fromAsk} USDC</span>}
                 <span className="bv-q">
                   <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
-                    onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'sell', !e.sell) }}>$</button>
+                    onClick={(ev) => { ev.stopPropagation(); const on = !e.sell; setField(c.uid, 'sell', on); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
                   <button className={'bv-qb' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
                     onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
                 </span>
@@ -637,6 +687,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
   const [selected, setSelected] = useState(null)
+  const [sellPop, setSellPop] = useState(null) // uid being quick-listed via the $ mark
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [filtersOpen, setFiltersOpen] = useState(false)
   useScrollLock(filtersOpen)
@@ -848,7 +899,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const refineCount = channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
   const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ('') } }
-  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} />
+  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
 
@@ -947,7 +998,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       )}
       <section>
         {!rows.length ? <div className="empty">no cards match.</div> : view === 'pages' ? (
-          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setField={setField} askIndex={askIndex} />
+          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setField={setField} askIndex={askIndex} onQuickSell={setSellPop} />
         ) : grouped ? (
           SETS.filter((s) => groups[s.id]).map((s) => (
             <div className="setblock" key={s.id}>
@@ -959,6 +1010,13 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
+      {sellPop && data && (() => {
+        const c = data.cards.find((x) => x.uid === sellPop)
+        return c ? <QuickSell c={c} store={store} setField={setField}
+          fromAsk={askIndex ? askIndex.get(sellPop) : null}
+          lastSale={(mkt?.sales || {})[sellPop]?.[0] || null}
+          onOpenFull={(uid) => setSelected(uid)} onClose={() => setSellPop(null)} /> : null
+      })()}
       {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} market={mkt} onBrowseCard={onBrowseCard} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>

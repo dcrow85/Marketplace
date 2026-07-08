@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **$ pop-up + denser prices (Crowley: liked the toggles; wanted a small
+  details pop-up on "for sale" and more visible prices) — LIVE.** (1) Tapping $ ON now opens a QuickSell
+  sheet — ask · condition · copies, with the market's own numbers directly above the ask ("market: from 2 USDC
+  · last settled 2 USDC (2026-06-26)", honest empties otherwise) so pricing isn't a guess; footer = ✕ unlist /
+  open the full card →. Tapping $ OFF stays a quiet unlist, no ceremony. Same pop-up from grid and pocket chips.
+  (2) Filled pockets now carry the "from N USDC" strip too (dark pill over art) — availability everywhere, not
+  just on gaps. (3) Mock market DENSIFIED so the page reads real: 112 listings over 110 cards (~⅓ of catalog;
+  Curator's shop wall +45, others proportionally in character), 74 settlement histories. Existing showcase rows
+  (Hidden Dagger, Surge Gate G★ collision, Mizuki) untouched. Verified in preview (list→popup→ask→My table
+  shows "2 USDC asked"; unlist quiet; 62/217 gates cells priced) + live per-deploy + apex. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **One-page density pass (Crowley: "the most that can happen on one page") —
   LIVE.** (1) Every card in the standard/gallery grid with a market ask now carries "available · from N USDC"
   under its caption (min ask via a uid→minAsk index over the market payload). (2) Marking a card HAVE swaps the
