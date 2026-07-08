@@ -132,8 +132,14 @@ def filter_system(data: dict) -> str:
             " - character: a name substring, or null\n"
             f" - category: {cats} | null\n"
             f" - element: {elements} | null\n"
-            " - rarity: a rarity substring such as C, UC, SR, SR ★, L ★, IKZ ★, or null\n\n"
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"reading":"one line on how you read the call against the cost field"}'
+            " - rarity: an EXACT rarity code — C (common), UC (uncommon), R (rare), SR, SR ★, SR ★★, L, L ★, G, G ★, IKZ, IKZ ★ — or null\n\n"
+            "The call may instead be an INSTRUCTION about the collector's own cards (list/sell, open to trade, "
+            "unlist, close trade) — e.g. 'list all my commons for $1.50'. Then ALSO set:\n"
+            ' - action: {"op": "list_for_sale" | "open_to_trade" | "unlist" | "close_trade", "ask": number or null}\n'
+            "   with the SAME filter dimensions scoping WHICH of their cards ('my commons' -> rarity C). "
+            "ask is the per-card price if they named one (strip $ and units). For browse calls, action is null. "
+            "You only ever PROPOSE — code shows the exact set and the collector confirms.\n\n"
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"action":..,"reading":"one line on how you read the call"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
@@ -184,8 +190,12 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
     if f.get("element"):
         out = [c for c in out if (c.get("element") or "").lower() == str(f["element"]).lower()]
     if f.get("rarity"):
-        r = str(f["rarity"]).lower()
-        out = [c for c in out if r in (c.get("rarity") or "").lower()]
+        r = str(f["rarity"]).strip().lower()
+        known = {(c.get("rarity") or "").strip().lower() for c in cards}
+        if r in known:  # exact code — 'c' must not swallow 'uc'
+            out = [c for c in out if (c.get("rarity") or "").strip().lower() == r]
+        else:
+            out = [c for c in out if r in (c.get("rarity") or "").lower()]
     if f.get("set"):
         s = str(f["set"]).lower()
         out = [c for c in out if s in setlabel.get(c["set_id"], "").lower()]
@@ -237,11 +247,41 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
+ACTION_OPS = {"list_for_sale", "open_to_trade", "unlist", "close_trade"}
+
+
+def valid_action(a) -> dict | None:
+    """The model PROPOSES; this gate types it. Anything malformed dies here, so the
+    frontend only ever sees a well-formed {op, ask} it can resolve deterministically."""
+    if not isinstance(a, dict) or a.get("op") not in ACTION_OPS:
+        return None
+    ask = a.get("ask")
+    if ask is not None:
+        try:
+            ask = float(ask)
+        except (TypeError, ValueError):
+            return None
+        if not (0 <= ask < 1e9):
+            return None
+        if ask == int(ask):
+            ask = int(ask)
+    return {"op": a["op"], "ask": ask}
+
+
 def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
     f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 180)
+    action = valid_action(f.get("action")) if isinstance(f, dict) else None
+    if action:
+        # Instruction, not a browse: the model's whole job was language -> typed action.
+        # The client resolves the scope against the collector's OWN store (which never
+        # leaves their device) and shows the exact set for confirmation. No commentary
+        # call — the proposal bar carries the numbers.
+        return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")),
+                "filter": f, "action": action,
+                "result": {"commentary": "", "picks": [], "caveat": ""}, "overclaim_flags": []}
     survivors = apply_filter(data["cards"], f, setlabel)
     pool = diverse_pool(survivors, cap)
     n_sets = len({c["set_id"] for c in survivors})

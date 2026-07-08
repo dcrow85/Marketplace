@@ -55,6 +55,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Agent bulk actions (Crowley: "list all my commons for $1.50") — LIVE,
+  both halves.** The trichotomy extended to writes, by construction: the MODEL's whole job is language → a
+  typed proposal ({op: list_for_sale|open_to_trade|unlist|close_trade, ask} + the existing filter dims as
+  scope); a server-side gate (`valid_action`) kills anything malformed; the CLIENT resolves the scope against
+  the collector's OWN store (which never leaves the device — `owned` is stripped, effStance decides "my");
+  and NOTHING writes until the human taps apply on a blue proposal bar showing the exact set ("list for sale
+  5 cards at 1.5 USDC each (7.5 total) — Penny, Black Jade Courier, Alley Thug +2 more"), with the grid
+  narrowed to exactly those cards. Applied actions get ✓ done + one-tap UNDO (store snapshot). Browse calls
+  still flow to commentary; action calls skip it (the bar carries the numbers). DeepInfra probe 4/4 (commons
+  @1.5 · SR to trade · unlist all · browse stays browse); prod API answering. **Also fixed a live rarity bug
+  in BOTH `apply_filter` (backend) and `applyAgentFilter` (frontend): substring match made 'C' swallow 'UC'
+  (and IKZ ★ etc.) — now exact-code-first with substring fallback for unknown values.** Backend redeployed
+  (Railway `thriving-nature`), frontend live at apex. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **$ pop-up + denser prices (Crowley: liked the toggles; wanted a small
   details pop-up on "for sale" and more visible prices) — LIVE.** (1) Tapping $ ON now opens a QuickSell
   sheet — ask · condition · copies, with the market's own numbers directly above the ask ("market: from 2 USDC

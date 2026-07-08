@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import ScanCards from '../scan/ScanCards.jsx'
 import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
@@ -120,7 +120,13 @@ function applyAgentFilter(cards, f, setById) {
   if (f.category) out = out.filter((c) => (c.category || '').toLowerCase() === String(f.category).toLowerCase())
   if (f.element) out = out.filter((c) => (c.element || '').toLowerCase() === String(f.element).toLowerCase())
   if (f.star_alt != null) out = out.filter((c) => !!c.star_alt === !!f.star_alt)
-  if (f.rarity) out = out.filter((c) => (c.rarity || '').toLowerCase().includes(String(f.rarity).toLowerCase()))
+  if (f.rarity) {
+    const r = String(f.rarity).trim().toLowerCase()
+    const known = new Set(cards.map((c) => (c.rarity || '').trim().toLowerCase()))
+    out = known.has(r) // exact code — 'C' must not swallow 'UC'
+      ? out.filter((c) => (c.rarity || '').trim().toLowerCase() === r)
+      : out.filter((c) => (c.rarity || '').toLowerCase().includes(r))
+  }
   if (f.set) { const s = String(f.set).toLowerCase(); out = out.filter((c) => (setById[c.set_id]?.label || '').toLowerCase().includes(s)) }
   if (f.character) { const ch = String(f.character).toLowerCase(); out = out.filter((c) => (c.name_en || '').toLowerCase().includes(ch) || (c.name_ja || '').toLowerCase().includes(ch)) }
   return out
@@ -580,6 +586,40 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
   )
 }
 
+// The agent PROPOSED a bulk change to your own cards; this bar is the enforced half:
+// code resolved the exact set from your store, and nothing writes until you tap apply.
+const ACTION_VERB = {
+  list_for_sale: 'list for sale', open_to_trade: 'open to trade',
+  unlist: 'unlist', close_trade: 'close to trade',
+}
+function ActionBar({ agentName, action, reading, affected, done, onApply, onUndo, onDismiss }) {
+  const n = affected.length
+  const names = affected.slice(0, 3).map((c) => c.name_en || c.uid).join(', ')
+  const total = action.ask != null ? Math.round(action.ask * n * 100) / 100 : null
+  return (
+    <div className="aprop">
+      <span className="atag jud">{agentName} · proposes</span>
+      <div className="aprop-line">
+        {ACTION_VERB[action.op]} <b>{n}</b> card{n === 1 ? '' : 's'}
+        {action.ask != null && <> at <b>{action.ask} USDC</b> each{n > 1 && total != null ? ` (${total} total)` : ''}</>}
+        {n > 0 && <span className="dim"> — {names}{n > 3 ? ` +${n - 3} more` : ''}</span>}
+      </div>
+      {reading && <div className="aprop-read dim">{reading}</div>}
+      {done
+        ? <div className="aprop-acts">
+            <span className="aprop-done mono">✓ done — {done.n} card{done.n === 1 ? '' : 's'} {ACTION_VERB[done.op]}{done.op === 'list_for_sale' ? ' · on your table' : ''}</span>
+            <button className="ghost sm" onClick={onUndo}>undo</button>
+            <button className="ghost sm" onClick={onDismiss}>✕</button>
+          </div>
+        : <div className="aprop-acts">
+            <button className="aprop-apply" onClick={onApply} disabled={!n}>{n ? 'apply' : 'nothing matches'}</button>
+            <button className="ghost sm" onClick={onDismiss}>cancel</button>
+            {action.op === 'list_for_sale' && action.ask == null && n > 0 && <span className="dim aprop-note">no price named — cards list without an ask; set asks on your table</span>}
+          </div>}
+    </div>
+  )
+}
+
 function AgentPanel({ res, agentName }) {
   if (!res.ok) {
     const off = res.data?.error === 'agent_offline'
@@ -688,6 +728,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [agentBusy, setAgentBusy] = useState(false)
   const [selected, setSelected] = useState(null)
   const [sellPop, setSellPop] = useState(null) // uid being quick-listed via the $ mark
+  const [actionDone, setActionDone] = useState(null) // last applied agent proposal
+  const undoStore = useRef(null) // store snapshot from before the proposal applied
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [filtersOpen, setFiltersOpen] = useState(false)
   useScrollLock(filtersOpen)
@@ -810,16 +852,57 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   const askAgent = useCallback(async (call) => {
     setAgentBusy(true)
+    setActionDone(null)
+    undoStore.current = null
     try {
       const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call, catalog: catalog.id }) })
       setAgentRes({ ok: r.ok, data: await r.json() })
     } catch { setAgentRes({ ok: false, data: { error: 'network' } }) }
     finally { setAgentBusy(false) }
   }, [catalog.id])
-  const clearAgent = () => setAgentRes(null)
+  const clearAgent = () => { setAgentRes(null); setActionDone(null); undoStore.current = null }
 
-  const agentActive = !!(agentRes?.ok && agentRes.data?.filter)
+  const agentAction = agentRes?.ok && agentRes.data?.action ? agentRes.data : null
+  const agentActive = !agentAction && !!(agentRes?.ok && agentRes.data?.filter)
   const pickSet = useMemo(() => new Set(agentActive ? agentRes.data.result?.picks || [] : []), [agentRes, agentActive])
+  const affected = useMemo(() => {
+    if (!agentAction || !data) return []
+    const scope = { ...(agentAction.filter || {}) }
+    delete scope.owned // 'my cards' means YOUR store, not the demo catalog flag
+    delete scope.action
+    let base = applyAgentFilter(data.cards, scope, setById).filter((c) => effStance(c, store).stance === 'have')
+    const op = agentAction.action.op
+    if (op === 'unlist') base = base.filter((c) => effStance(c, store).sell)
+    if (op === 'close_trade') base = base.filter((c) => effStance(c, store).trade)
+    return base
+  }, [agentAction, data, setById, store])
+  const applyProposal = () => {
+    if (!agentAction || !affected.length) return
+    const { op, ask } = agentAction.action
+    setStore((prev) => {
+      undoStore.current = prev
+      const next = { ...prev }
+      for (const c of affected) {
+        const u = { ...(next[c.uid] || {}) }
+        if (op === 'list_for_sale') { u.sell = true; if (ask != null) u.ask = String(ask) }
+        else if (op === 'open_to_trade') u.trade = true
+        else if (op === 'unlist') u.sell = false
+        else if (op === 'close_trade') u.trade = false
+        next[c.uid] = u
+      }
+      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      return next
+    })
+    setActionDone({ n: affected.length, op })
+  }
+  const undoProposal = () => {
+    if (!undoStore.current) return
+    const prev = undoStore.current
+    undoStore.current = null
+    setStore(prev)
+    try { localStorage.setItem(storeKey, JSON.stringify(prev)) } catch { /* ignore */ }
+    setActionDone(null)
+  }
 
   const countStance = useCallback((v) => {
     if (!data) return 0
@@ -833,6 +916,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     const cmp = (a, b) => (setById[a.set_id].order - setById[b.set_id].order) || (passed(a) - passed(b)) || ('' + a.num).localeCompare('' + b.num, undefined, { numeric: true })
     let base = data.cards
     if (agentActive) base = applyAgentFilter(base, agentRes.data.filter || {}, setById)
+    if (agentAction) { const ids = new Set(affected.map((c) => c.uid)); base = base.filter((c) => ids.has(c.uid)) }
     const qq = q.trim().toLowerCase()
     base = base.filter((c) => {
       if (stanceF.size) {
@@ -856,7 +940,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     })
     if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet, agentAction, affected])
 
   const grouped = !q.trim() && !agentActive
   const CHIPS = useMemo(() => chipsFor(), [])
@@ -938,7 +1022,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           )}
         </div>
       </div>
-      {agentRes && <AgentPanel res={agentRes} agentName={agentName} />}
+      {agentAction && <ActionBar agentName={agentName} action={agentAction.action} reading={agentAction.filter?.reading}
+        affected={affected} done={actionDone} onApply={applyProposal} onUndo={undoProposal} onDismiss={clearAgent} />}
+      {agentRes && !agentAction && <AgentPanel res={agentRes} agentName={agentName} />}
       {filtersOpen && (
         <div className="fsheet-ov" onClick={() => setFiltersOpen(false)}>
           <div className="fsheet" onClick={(e) => e.stopPropagation()}>

@@ -374,3 +374,14 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
 
 /* price strip over card art needs its own backing */
 .bv-from.onart { left: 5px; right: auto; bottom: 5px; text-align: left; color: #DBD5C8; background: rgba(20,19,16,.74); padding: 2px 7px; border-radius: 5px; }
+
+/* the agent's bulk proposal: blue register (it's the agent talking), code-resolved set,
+   nothing writes until apply. */
+.aprop { margin: 16px 0; border: 0.5px solid var(--agent); border-radius: 10px; background: var(--agent-bg); padding: 12px 16px 14px; }
+.aprop-line { font-size: 14px; margin-top: 2px; }
+.aprop-read { font-size: 12px; margin-top: 4px; }
+.aprop-acts { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.aprop-apply { font-family: var(--mono); font-size: 12.5px; color: var(--paper); background: var(--agent); border: 0; border-radius: 7px; padding: 10px 22px; cursor: pointer; }
+.aprop-apply:disabled { opacity: .5; cursor: default; }
+.aprop-done { font-size: 12px; color: var(--have); }
+.aprop-note { font-size: 11.5px; }
