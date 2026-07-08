@@ -55,6 +55,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Anko at his post (Crowley: "portrait by the search, his domain") —
+  LIVE.** His portrait now sits at the left of the ask bar (30px round, tooltip = his provenance line), and it
+  GLOWS agent-blue in a slow pulse while his onibi reads (the `.busy` state that already flips the button to
+  "onibi reading…"). The ask bar is now visibly his territory: face → input → "Ask Anko". Verified in preview +
+  apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Anko intro rewritten for warmth (Crowley: "more approachable and
   fun") — LIVE.** Same five beats and the same honest bones, but the mic is HIS now: the onibi myth becomes a
   self-deprecating joke ("Mine's broken. It just shows you things. Best defect I ever had."), the reveal grins

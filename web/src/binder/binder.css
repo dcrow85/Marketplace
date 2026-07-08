@@ -388,3 +388,11 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
 
 /* Anko's face rides his own register tags */
 .anko-face { width: 16px; height: 16px; border-radius: 50%; object-fit: cover; vertical-align: -3px; margin-right: 5px; }
+
+/* Anko at his post — the ask bar is his domain. The portrait glows while his onibi reads. */
+.anko-search { flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); align-self: center; }
+.anko-search.busy { border-color: var(--agent); animation: anko-read 1.4s ease-in-out infinite; }
+@keyframes anko-read {
+  0%, 100% { box-shadow: 0 0 0 rgba(90,180,255,0); }
+  50% { box-shadow: 0 0 14px rgba(90,180,255,.65); }
+}

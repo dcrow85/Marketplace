@@ -1047,6 +1047,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       </div>
       <div className="controls">
         <div className="askbar">
+          <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
+            alt="" title={`${agentName} — Elemental 4193 · Fire · Red Panda`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input value={query} maxLength={280} placeholder={`Search or ask ${agentName}…`}
             onChange={(e) => { const v = e.target.value; setQuery(v); if (agentRes) clearAgent(); setQ(v) }}
             onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
