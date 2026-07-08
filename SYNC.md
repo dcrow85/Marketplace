@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **ANKO: the house agent (Crowley's Azuki Elemental #4193, Fire, Red
+  Panda) — named, staged, LIVE.** The name-your-agent ritual is gone; everyone now meets HIM once: a 5-beat
+  dark-bench intro (`web/src/agent/MeetAnko.jsx`) that teaches the platform in his voice — (1) the onibi myth
+  inverted ("ghost lights lure travelers… this one doesn't — it holds still, so you can read by it"; his flame
+  is a pure-CSS blue ghost light that flickers but never moves), (2) the reveal + HIS OWN PROVENANCE ("Elemental
+  4193 · Fire · Red Panda · held since Jan 2025 — even your agent carries a record"), (3) the trichotomy as his
+  three registers (recorded/claimed/my read, constitution colors), (4) the three rooms, (5) the two promises
+  ("I will never sell you anything. I will never call a card real, or mint, when I can't see it.") → "Light the
+  lamp →". Skippable, replays never (per-account met-flag; existing named agents migrate). App-wide: agentName
+  is fixed 'Anko', ask button reads "onibi reading…" while busy, his face rides the agent tags (graceful 404
+  fallback until the PNG lands at `web/public/agent/house.png` — Crowley still to drop it), the mock seller
+  desk is recast "The rehearsal desk … Not Anko: your agent never sells" (house agent ≠ counterparty). Backend
+  COMMENT_SYS now carries his persona (voice + registers + never-sell/never-assert constraints); probed on
+  DeepInfra — commentary honest, 0 overclaim flags; Railway redeployed. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **The market answers back: mock seller AGENTS + the full purchase loop
   (Crowley: "mock purchase between you and me? Or several agents doing their own thing?") — LIVE.** Both.
   (1) `web/src/market/mockAgents.js`: a client-side engine (1.8s ticker while the app is open) runs seller

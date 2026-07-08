@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import { usePrivy } from '@privy-io/react-auth'
-import { handleFor, avatarSVG, randomAgentName } from './identity.js'
+import { handleFor, avatarSVG } from './identity.js'
+import MeetAnko from './agent/MeetAnko.jsx'
 import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
@@ -71,33 +72,6 @@ function SignIn({ onLogin }) {
         <p className="lead">Your collection, your terms, your agent.</p>
         <button className="primary" onClick={onLogin}>Sign in</button>
         <div className="fine mono">email · google · apple · passkey · wallet — no crypto required</div>
-      </div>
-    </div>
-  )
-}
-function MeetAgent({ accountId, onNamed }) {
-  const [name, setName] = useState('')
-  const seed = name.trim() || accountId || 'agent'
-  const go = () => onNamed(name.trim() || 'Cairn')
-  return (
-    <div className="gate">
-      <div className="meetcard">
-        <div className="meetav"><Avatar seed={seed} size={56} /></div>
-        <div className="ek agent">Your agent</div>
-        <p className="intro">
-          I read the catalog — not the cards. I&rsquo;ll show you what&rsquo;s recorded, flag what&rsquo;s
-          only claimed, and say plainly when something&rsquo;s just my judgment. I won&rsquo;t call a card
-          mint when I can&rsquo;t see it, and I&rsquo;ll never sell you anything. Give me a name and we&rsquo;ll
-          get to work.
-        </p>
-        <label className="ek2">Name your agent</label>
-        <div className="row">
-          <input value={name} maxLength={24} placeholder="…" autoFocus
-            onChange={(e) => setName(e.target.value)}
-            onKeyDown={(e) => { if (e.key === 'Enter' && name.trim()) go() }} />
-          <button className="ghost" onClick={() => setName(randomAgentName())}>surprise me</button>
-        </div>
-        <button className="primary" onClick={go}>{name.trim() ? `meet ${name.trim()}` : 'meet your agent'}</button>
       </div>
     </div>
   )
@@ -193,20 +167,23 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
 export default function App() {
   const { ready, authenticated, user, login, logout } = usePrivy()
   const accountId = DEV_PREVIEW ? MOCK_ID : (user?.wallet?.address || user?.id || '').toLowerCase()
-  const agentStoreKey = accountId ? `cairn-agent:${accountId}` : ''
-  const [agent, setAgent] = useState('')
+  // The house agent: one character, one voice, everyone's agent. Meeting him once
+  // replaces the old name-your-agent ritual (previously named agents migrate).
+  const metKey = accountId ? `cairn-met-anko:${accountId}` : ''
+  const [met, setMet] = useState(false)
   const [catalog, setCatalogState] = useState(catalogFromUrl)
+  const agent = 'Anko'
 
   useEffect(() => {
-    /* eslint-disable react-hooks/set-state-in-effect -- hydrate the persisted agent name for this account. */
-    if (!agentStoreKey) { setAgent(''); return }
-    try { setAgent(localStorage.getItem(agentStoreKey) || (DEV_PREVIEW ? 'Ledger' : '')) } catch { setAgent('') }
+    /* eslint-disable react-hooks/set-state-in-effect -- hydrate the met-Anko flag for this account. */
+    if (!metKey) { setMet(false); return }
+    try { setMet(!!localStorage.getItem(metKey)) } catch { setMet(false) }
     /* eslint-enable react-hooks/set-state-in-effect */
-  }, [agentStoreKey])
+  }, [metKey])
 
-  const nameAgent = (n) => {
-    try { localStorage.setItem(agentStoreKey, n) } catch { /* ignore */ }
-    setAgent(n)
+  const meetDone = () => {
+    try { localStorage.setItem(metKey, '1') } catch { /* ignore */ }
+    setMet(true)
   }
   const setCatalog = (c) => {
     setCatalogState(c)
@@ -215,14 +192,14 @@ export default function App() {
     u.searchParams.set('catalog', c.id)
     window.history.replaceState(null, '', u)
   }
-  const signOut = () => { if (DEV_PREVIEW) { setAgent(''); return } logout() }
+  const signOut = () => { if (DEV_PREVIEW) { try { localStorage.removeItem(metKey) } catch { /* ignore */ } setMet(false); return } logout() }
 
   if (DEV_PREVIEW) {
-    if (!agent) return <MeetAgent accountId={accountId} onNamed={nameAgent} />
+    if (!met) return <MeetAnko onDone={meetDone} />
     return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
   }
   if (!ready) return <Splash />
   if (!authenticated) return <SignIn onLogin={login} />
-  if (!agent) return <MeetAgent accountId={accountId} onNamed={nameAgent} />
+  if (!met) return <MeetAnko onDone={meetDone} />
   return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
 }

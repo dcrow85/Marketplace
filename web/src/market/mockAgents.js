@@ -57,7 +57,7 @@ const PERSONAS = {
         ? { verdict: 'accepted', line: 'Like for like. That’s what tables are for. Accepted.' }
         : { verdict: 'countered', boot: 2, line: 'I’d do it with 2 USDC on top — my side grades a shade heavier.' },
   },
-  '0x5989': { // Fable — your surface agent, playing seller
+  '0x5989': { // the rehearsal desk — a scripted seller (NOT Anko; the house agent never sells)
     delay: [2500, 5000],
     acceptBuy: () => true,
     buyLine: (c) => `Accepted — and I’ll narrate the rail as we go: terms locked, escrow next (mock), then the witness travels with ${c}. You’ll see the settlement land in the card’s ledger.`,
