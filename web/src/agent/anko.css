@@ -56,3 +56,8 @@
 .anko-dots i.on { background: #9fe8ff; }
 .anko-hint { font-size: 10.5px; letter-spacing: .12em; color: #8a857a; animation: anko-pulse 2.4s ease-in-out infinite; }
 @keyframes anko-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+
+/* the somebody-else's-listing quote — the foil his registers answer */
+.anko-quote { font-size: 15px; line-height: 1.6; color: #DBD5C8; border-left: 2px solid rgba(236,234,227,.3); padding: 4px 0 4px 14px; font-style: italic; max-width: 42ch; text-align: left; }
+.anko-quote .mono { font-style: normal; font-size: 10.5px; margin-left: 8px; }
+.anko-line i { color: #DBD5C8; }

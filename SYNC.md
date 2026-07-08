@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Anko intro rewritten for warmth (Crowley: "more approachable and
+  fun") — LIVE.** Same five beats and the same honest bones, but the mic is HIS now: the onibi myth becomes a
+  self-deprecating joke ("Mine's broken. It just shows you things. Best defect I ever had."), the reveal grins
+  ("Red panda — not a raccoon, everyone gets one free mistake. Named after bean paste." / "You're stuck with
+  me — luckily, I'm great."), and the trichotomy is taught as a QUICK GAME on a concrete listing — a styled
+  quote ("Mint condition. Super rare. Definitely real." — someone, somewhere) answered in his three registers
+  on the same card, which lands the lesson better than the lecture table did. Tour is "speedrun edition …
+  That's it. That's the app."; promises got teeth with a wink ("People who say otherwise are selling
+  something.") and close on "Everything else, we figure out together." Even the chrome is in character: skip →
+  "(he'll forgive you)", hint "tap anywhere — he doesn't bite". All beats verified in preview; apex on the new
+  bundle. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **ANKO: the house agent (Crowley's Azuki Elemental #4193, Fire, Red
   Panda) — named, staged, LIVE.** The name-your-agent ritual is gone; everyone now meets HIM once: a 5-beat
   dark-bench intro (`web/src/agent/MeetAnko.jsx`) that teaches the platform in his voice — (1) the onibi myth
