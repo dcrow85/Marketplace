@@ -633,7 +633,7 @@ function ActionBar({ agentName, plan, reading, done, onApply, onUndo, onDismiss 
 function AgentPanel({ res, agentName }) {
   if (!res.ok) {
     const off = res.data?.error === 'agent_offline'
-    return <div className="apanel"><div className="aoff">{off ? 'Your agent is offline right now (the model isn’t running).' : 'Could not reach your agent.'}</div></div>
+    return <div className="apanel"><div className="aoff">{off ? 'Anko’s lamp is dark — the model behind him isn’t running.' : 'Couldn’t reach Anko. The lamp flickered — give it another try.'}</div></div>
   }
   const o = res.data, f = o.filter || {}, r = o.result || {}
   const dims = ['release_family', 'product_channel', 'holo', 'star_alt', 'owned', 'exclude_grails', 'set', 'character', 'category', 'element', 'rarity']

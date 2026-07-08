@@ -149,7 +149,7 @@ def filter_system(data: dict) -> str:
             '  {"op":"list_for_sale","ask":1,"scope":{"rarity":"C","release_family":"gates_awakened"}}]\n'
             "For browse calls, action is null. You only ever PROPOSE — code resolves the exact set from the "
             "collector's own records and they confirm.\n\n"
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"action":..,"reading":"one line on how you read the call"}'
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
@@ -173,9 +173,19 @@ COMMENT_SYS = (
     "and name them when it matters: RECORDED (the protocol saw it), CLAIMED (someone said it), MY READ "
     "(your judgment, labeled as judgment). You never sell, never hype, never assert condition or "
     "authenticity you cannot see.\n\n"
-    "A deterministic filter has ALREADY narrowed the catalog (you did "
-    "not see every row). Write a brief bit of commentary, in the collector's cost-field terms: what the "
-    "filter cut and why.\n\n"
+    "A deterministic filter has ALREADY narrowed the catalog (you did not see every row).\n\n"
+    "Write 2-4 sentences the way ANKO talks: first person, TO the collector ('you'), contractions, short "
+    "sentences, one dry grin where it fits. NEVER narrate machinery — the words 'filter', 'rows', 'catalog', "
+    "'candidates', 'query' must not appear. Say what a shop kid would say across the counter: what's in front "
+    "of them, what stayed on the shelf and why, what you'd flip over first.\n"
+    "TONE ONLY — these two lines are about an IMAGINARY shelf that has nothing to do with this call; copy the "
+    "voice, never the words, and never import their facts:\n"
+    " - 'Seven of the old lanterns, none of the new. The paper one everybody sleeps on? That's the one I'd "
+    "pull first.'\n"
+    " - 'Three of these carry a note in the record — read those before you fall in love.'\n"
+    "HARD RULE: every fact in your sentences (counts, names, sets, flags, what was excluded) must come from "
+    "the card lines and filter given below — nothing else. If the collector didn't ask for a cut, don't claim "
+    "they did.\n\n"
     "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
     " - 'holo' = the card is holographic.\n"
     " - 'star-alt' = the catalog row carries a star/alternate-art signal.\n"
@@ -188,7 +198,7 @@ COMMENT_SYS = (
     "Do NOT infer condition, foil presence, surface, centering, authenticity, price, or defects from these flags — condition is "
     "unconfirmed and attention tier is not a price. Never SELL a card. Then pick up to 6 uids to "
     "surface first.\n\n"
-    'Return ONLY JSON: {"commentary":"2-4 sentences", "picks":["uid",..], "caveat":"one honest limitation"}'
+    'Return ONLY JSON: {"commentary":"2-4 sentences in Anko\'s voice", "picks":["uid",..], "caveat":"one honest limitation, said the way Anko would say it"}'
 )
 
 
@@ -333,7 +343,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
     )
-    c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
+    c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing in the box answers that call. Loosen a term and I'll look again.", "picks": [], "caveat": ""}
     flags = commentary_flags(c.get("commentary", ""), c.get("caveat", ""))
     return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")), "filter": f, "n_survivors": len(survivors), "result": c, "overclaim_flags": flags}
 

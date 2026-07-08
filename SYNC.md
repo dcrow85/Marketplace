@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Anko's voice in his ANSWERS (Crowley: "personality even when he
+  answers") — LIVE, both halves.** The commentary and reading prompts got a concrete VOICE CONTRACT, not
+  adjectives: first person TO the collector, contractions, one dry grin; machinery words banned from output
+  ('filter', 'rows', 'catalog', 'candidates', 'query'); the reading line is spoken to you ("Putting all your
+  commons up for sale at one fifty each"), never "the user wants". **Caught a real fabrication vector in the
+  first probe:** in-domain style examples got copied nearly verbatim, importing a constraint the caller never
+  asked for ("like you asked") — fixed by making the tone examples an IMAGINARY shelf (old lanterns) + a HARD
+  RULE that every fact must come from the supplied card lines. Re-probe 3/3: grounded counts/picks/flags,
+  honest caveats in-voice ("I can't see the physical surface — I'm only reading what the record flags say"),
+  0 overclaim flags. Hardcoded lines joined the character: empty result = "Nothing in the box answers that
+  call. Loosen a term and I'll look again."; offline = "Anko's lamp is dark — the model behind him isn't
+  running." Residual to watch for the probe suite: occasional tone-phrase borrowing from the examples
+  ("before you fall in love") — harmless as voice, add a no-verbatim check when voice-drift probes land.
+  Railway redeployed + prod probed in-voice; frontend on apex. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Anko at his post (Crowley: "portrait by the search, his domain") —
   LIVE.** His portrait now sits at the left of the ask bar (30px round, tooltip = his provenance line), and it
   GLOWS agent-blue in a slow pulse while his onibi reads (the `.busy` state that already flips the button to
