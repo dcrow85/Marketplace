@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **unmark ops (Crowley hit the gap: "unmark all my haves and wants isn't
+  working") — FIXED, both halves LIVE.** The action vocabulary had mark_have/mark_want but no reverse — the
+  model literally couldn't express clearing a stance. Added `unmark_have` / `unmark_want` end to end: prompt
+  (+ the 'unmark/remove/clear' phrasing map), `valid_plan` gate, frontend resolution (targets cards currently
+  in that stance; clearing a stance also drops sell/trade/grail — a none-stance card can't stay listed), verbs
+  in the proposal bar. Probes 3/3 on DeepInfra (his exact sentence → 2-step plan; "clear my want list";
+  scoped "remove my alpha commons" → unmark_have {rarity C, alpha}); preview end-to-end (2 haves + 3 wants →
+  proposal names them → apply → Have 0/Want 0/Selling 0 → undo restores); prod parsing confirmed. Surface
+  lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Anko's voice in his ANSWERS (Crowley: "personality even when he
   answers") — LIVE, both halves.** The commentary and reading prompts got a concrete VOICE CONTRACT, not
   adjectives: first person TO the collector, contractions, one dry grin; machinery words banned from output

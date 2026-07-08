@@ -591,6 +591,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
 // code resolved the exact set from your store, and nothing writes until you tap apply.
 const ACTION_VERB = {
   mark_have: 'mark as have', mark_want: 'mark as want',
+  unmark_have: 'unmark as have', unmark_want: 'unmark as want',
   list_for_sale: 'list for sale', open_to_trade: 'open to trade',
   unlist: 'unlist', close_trade: 'close to trade',
 }
@@ -909,6 +910,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       const op = st.op
       if (op === 'mark_have') base = base.filter((c) => eff(c).stance !== 'have')
       else if (op === 'mark_want') base = base.filter((c) => { const e = eff(c); return e.stance !== 'want' && e.stance !== 'have' })
+      else if (op === 'unmark_have') base = base.filter((c) => eff(c).stance === 'have')
+      else if (op === 'unmark_want') base = base.filter((c) => eff(c).stance === 'want')
       else {
         base = base.filter((c) => eff(c).stance === 'have')
         if (op === 'unlist') base = base.filter((c) => eff(c).sell)
@@ -918,6 +921,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         const d = draft[c.uid] = draft[c.uid] || {}
         if (op === 'mark_have') d.stance = 'have'
         else if (op === 'mark_want') d.stance = 'want'
+        else if (op === 'unmark_have' || op === 'unmark_want') { d.stance = 'none'; d.sell = false; d.trade = false; d.grail = false }
         else if (op === 'list_for_sale') { d.sell = true; if (st.ask != null) d.ask = String(st.ask) }
         else if (op === 'open_to_trade') d.trade = true
         else if (op === 'unlist') d.sell = false

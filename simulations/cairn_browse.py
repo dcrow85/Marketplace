@@ -137,9 +137,11 @@ def filter_system(data: dict) -> str:
             " - product_channel: booster | starter | promo | null\n\n"
             "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
             "action: a LIST of steps, IN ORDER. Each step:\n"
-            ' {"op": "mark_have" | "mark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade",\n'
+            ' {"op": "mark_have" | "mark_want" | "unmark_have" | "unmark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade",\n'
             '  "ask": number or null,  (per-card price if named; strip $ and units)\n'
             '  "scope": {"rarity":.., "release_family":.., "product_channel":.., "star_alt":.., "category":.., "element":.., "set":.., "character":..}}\n'
+            "'unmark'/'remove'/'clear' my haves -> unmark_have; my wants -> unmark_want (both also drop any "
+            "listing on the card). "
             "Steps run in order — a card marked have by step 1 can be listed by step 2. Scope carries ONLY what "
             "the collector said: 'all commons including alpha' -> {\"rarity\":\"C\"} with NO family key; "
             "'the rest' means the complement of the families already handled.\n"
@@ -280,7 +282,7 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
-ACTION_OPS = {"mark_have", "mark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade"}
+ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade"}
 SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails"}
 
 
