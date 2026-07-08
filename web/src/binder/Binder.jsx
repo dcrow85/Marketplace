@@ -206,7 +206,7 @@ async function renderSizes(file) {
   }
 }
 
-function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose }) {
+function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose, marketAsks, onBrowseCard }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
@@ -357,6 +357,11 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
             {(e.stance === 'have' || e.stance === 'want') && (
               <button className={'grailtog' + (e.grail ? ' on' : '')} onClick={() => setField(c.uid, 'grail', !e.grail)}>
                 <span className="gstar">★</span>{e.grail ? 'Grail — top of your list' : 'Mark as grail'}
+              </button>
+            )}
+            {marketAsks && onBrowseCard && (
+              <button className="mktline mono" onClick={() => onBrowseCard(c.uid)}>
+                on the market — {marketAsks.n} ask{marketAsks.n === 1 ? '' : 's'} · from {marketAsks.min} USDC →
               </button>
             )}
             <div className="m-fields">
@@ -550,7 +555,7 @@ function chipsFor() {
   ]
 }
 
-export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG }) {
+export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
   const [store, setStore] = useState({})
@@ -572,6 +577,24 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'pages' } catch { return 'pages' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
+  const [mktIndex, setMktIndex] = useState(null) // uid -> {n, min} across the market's tables
+
+  useEffect(() => {
+    let live = true
+    fetch((import.meta.env.BASE_URL || '/') + 'market-sample.json')
+      .then((r) => r.json())
+      .then((m) => {
+        if (!live) return
+        if (!m || m.catalog_id !== catalog.id) { setMktIndex(null); return }
+        const idx = new Map()
+        for (const s of m.sellers) for (const l of s.listings) {
+          const cur = idx.get(l.uid)
+          if (cur) { cur.n += 1; cur.min = Math.min(cur.min, l.ask) } else idx.set(l.uid, { n: 1, min: l.ask })
+        }
+        setMktIndex(idx)
+      }).catch(() => {})
+    return () => { live = false }
+  }, [catalog])
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
@@ -869,7 +892,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
-      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} marketAsks={mktIndex ? mktIndex.get(selected) : null} onBrowseCard={onBrowseCard} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )

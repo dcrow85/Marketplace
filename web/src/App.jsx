@@ -6,6 +6,7 @@ import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
 import SellPile from './binder/SellPile.jsx'
+import Market from './market/Market.jsx'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -103,9 +104,10 @@ function MeetAgent({ accountId, onNamed }) {
 }
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
-  const [bseg, setBseg] = useState('binder') // 'binder' | 'sale'
+  const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
+  const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
   return (
     <div className="app">
       <nav className="nav">
@@ -130,6 +132,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             <div className="bsegs mono" role="tablist" aria-label="binder section">
               <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
               <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>For sale</button>
+              <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
             </div>
             <button className="tradesbtn mono" onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title="escrow trades">
               <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
@@ -137,8 +140,11 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             </button>
           </div>
         </div>
-        {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
+        {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
+          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }} />}
         {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
+        {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
+          focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
       </main>
       {tradesOpen && (
         <div className="sc-overlay" role="dialog" aria-label="Trades" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>

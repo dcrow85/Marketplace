@@ -322,3 +322,7 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
 /* one obvious listing switch (replaces Keep/Trade/Sell) */
 .listtog { width: 100%; margin-top: 10px; text-align: left; font-size: 13.5px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 12px 14px; cursor: pointer; }
 .listtog.on { border-color: var(--have); color: var(--have); background: transparent; }
+
+/* the by-card market hook in the modal: quiet ink, opens the market focused on this card */
+.mktline { width: 100%; margin-top: 8px; text-align: left; font-size: 11.5px; color: var(--ink2); background: transparent; border: 0.5px solid var(--rule); border-radius: 8px; padding: 10px 13px; cursor: pointer; }
+.mktline:hover { color: var(--ink); border-color: var(--ink); }

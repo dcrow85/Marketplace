@@ -1,0 +1,54 @@
+/* The market — other people's tables. Same forensic register as the ledger:
+   ink for claims, green ONLY for recorded evidence, no risk theater. */
+.mk { display: flex; flex-direction: column; gap: 14px; }
+.mk-samplenote { font-size: 11px; color: var(--dim); letter-spacing: .04em; border: 0.5px dashed var(--rule); border-radius: 8px; padding: 8px 12px; }
+.mk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.mk-title { font-size: 17px; font-weight: 600; margin-top: 2px; }
+
+/* directory */
+.mk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.mk-table { text-align: left; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 10px; padding: 14px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 9px; }
+.mk-table:hover { border-color: var(--ink); }
+.mk-seller { display: flex; align-items: center; gap: 10px; }
+.mk-handle { font-size: 14.5px; font-weight: 600; }
+.mk-sub { font-size: 11px; }
+.mk-tmeter { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11.5px; color: var(--ink2); }
+.mk-tbio { font-size: 12.5px; line-height: 1.45; }
+.mk-bio { font-size: 13.5px; color: var(--ink2); margin: -4px 0 0; }
+
+/* one table */
+.mk-meter { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 12px; color: var(--ink2); }
+.mk-wantsbtn { font: inherit; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 5px 10px; cursor: pointer; }
+.mk-wantsbtn.on { border-color: var(--ink); background: var(--mount); }
+.mk-rows { display: flex; flex-direction: column; }
+.mk-row { display: grid; grid-template-columns: 1fr auto auto auto auto; align-items: center; gap: 12px; padding: 9px 2px; border-bottom: 0.5px solid var(--rule); font-size: 13px; }
+.mk-row.mk-mine { background: color-mix(in srgb, var(--mount) 55%, transparent); }
+.mk-name { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.mk-num { font-size: 11px; color: var(--dim); }
+.mk-cond { font-size: 11.5px; color: var(--ink2); }
+.mk-wit { font-size: 11px; }
+.mk-wit.ok { color: var(--have); }
+.mk-wit.none { color: var(--dim); }
+.mk-ask { font-size: 12.5px; }
+.mk-who { display: inline-flex; align-items: center; gap: 8px; font: inherit; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mk-who:hover { text-decoration: underline; }
+.mk-wantflag { font-family: var(--mono); font-size: 10px; color: var(--ink); border: 0.5px solid var(--ink); border-radius: 5px; padding: 1px 6px; }
+.sheetbtn.mk-sm { padding: 6px 10px; font-size: 11px; }
+
+/* lots */
+.mk-lot { border: 0.5px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 7px; }
+.mk-lothead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mk-lotcards { font-size: 12px; line-height: 1.5; }
+.mk-lotnote { font-size: 11.5px; }
+
+/* what they're hunting */
+.mk-hunting { display: flex; flex-direction: column; gap: 8px; border-top: 0.5px solid var(--rule); padding-top: 12px; }
+.mk-huntrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.mk-hunt { font-size: 11px; color: var(--dim); border: 0.5px solid var(--rule); border-radius: 6px; padding: 3px 8px; }
+.mk-hunt.mk-swap { color: var(--ink); border-color: var(--ink); }
+.mk-swapnote { font-size: 12px; }
+
+@media (max-width: 640px) {
+  .mk-row { grid-template-columns: 1fr auto auto auto; }
+  .mk-cond { display: none; }
+}

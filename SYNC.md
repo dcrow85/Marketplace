@@ -55,6 +55,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **The market: browsing other people's listings (mock) — LIVE.** New Market
+  section (Binder · For sale · Market) with FOUR sample sellers built from real catalog rows
+  (`web/public/market-sample.json`, clearly bannered "mock sellers … nothing here is a real offer"): Veteran
+  Curator (22 commons + a lot, 22/22 witnessed), Pristine Completionist (6 chase, documented), **Sharp Sleever
+  (chase cards cheap, 0/6 witnessed — the trust-signal test case)**, Quiet Keeper (dupes + 8 wants). Two browse
+  axes: **by seller** (table = what they chose to list: witness meter, listings ledger, lots, "they're hunting"
+  strip with "you have it" swap-bait + honest note "a swap conversation, not a protocol object yet") and
+  **by card** (card modal grows "on the market — N asks · from X USDC →" via a light uid→{n,min} index; opens
+  the market focused on that card, cheapest first, "your want" flagged). "N of your wants" surfaces on tables
+  and filters a table down to your hunt. Buying rides the EXISTING rail: every listing/lot copies a plaintext
+  CAIRN TRADE SHEET; verified the parser fills card/condition/amount/seller from a market sheet end-to-end.
+  No-overclaim held: condition column tooltips "the seller's claim…", witness column = "a scan is recorded",
+  green spent ONLY on recorded witness. Identity = deterministic handle/avatar from address (same as users).
+  Verified in preview (directory, wants filter 22→1, swap note, sheet round-trip) + per-deploy + apex.
+  Surface lane. No ask. **Design note for the real thing:** listings here are static JSON; the built path needs
+  the signed-intent market (who·card·stance·terms·evidence·scope·expiry + signature, consent-gated discovery)
+  and shared storage — the deferred R2/identity work.
 - `[passive]` 2026-07-08 · Claude — **One-interface pass (Crowley's punch list, 6/6) — LIVE.** (1) Trades TAB
   removed: the binder IS the app; `TradePanel` now opens as an overlay sheet (quiet `⇄ Trades` button beside
   Binder·For sale, and the ambient line still opens straight to a trade needing you). (2) Rarity filter in the
