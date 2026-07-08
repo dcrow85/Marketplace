@@ -318,3 +318,7 @@ section { padding: 14px 0 70px; }
   .sp-ask { grid-column: 2; grid-row: 1 / span 2; }
 }
 button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: pointer; }
+
+/* one obvious listing switch (replaces Keep/Trade/Sell) */
+.listtog { width: 100%; margin-top: 10px; text-align: left; font-size: 13.5px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 12px 14px; cursor: pointer; }
+.listtog.on { border-color: var(--have); color: var(--have); background: transparent; }

@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **One-interface pass (Crowley's punch list, 6/6) — LIVE.** (1) Trades TAB
+  removed: the binder IS the app; `TradePanel` now opens as an overlay sheet (quiet `⇄ Trades` button beside
+  Binder·For sale, and the ambient line still opens straight to a trade needing you). (2) Rarity filter in the
+  sheet (Any + ladder-ordered chips C→UC→R→SR→SR★→…, multi-select, refine-count wired). (3) Keep/Trade/Sell
+  switch replaced with ONE toggle: "○ List for sale / ● Listed for sale — in your For sale pile" (writes `sell`;
+  clears `trade` on unlist). (4) Held/custody field removed for now. (5) The `issueflag` ?/! badge is OFF the
+  card face forever (catalog notes still in the modal's record, with count). (6) Pass removed from grid + modal;
+  Have/Want now toggle-to-clear (tap again = neutral), copy updated; legacy `pass` stances still render dimmed.
+  Also fixed the Selling chip count (counted `stance==='selling'`, which nothing has — now counts have+sell/trade).
+  Verified in preview (overlay open/close, list→For sale pile ledger, SR filter 25→3 pages, mobile: no bottom tab
+  bar) and live at per-deploy + apex (new bundle, `sg-pass`/`issueflag`/`viewnav` greps 0). Surface lane. No ask.
 - `[passive]` 2026-07-06 · Claude — **Binder + catalog fully merged (Crowley): pocket pages are now the DEFAULT
   layout of the real Binder — LIVE.** `PocketPages` is a layout mode inside `Binder.jsx`, so the ask bar, agent,
   filters, scanner, and the full card modal all operate on the pockets themselves; every pocket (filled or ghost)

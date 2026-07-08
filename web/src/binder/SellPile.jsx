@@ -56,7 +56,7 @@ export default function SellPile({ accountId, catalog }) {
 
   if (!data) return <div className="empty">Loading your sell pile…</div>
   if (!rows.length) {
-    return <div className="empty">Nothing marked for sale yet. In the catalog, set a card to Have, then Holding → Sell or Trade. It shows up here with its ask.</div>
+    return <div className="empty">Nothing marked for sale yet. Open a card you Have and tap “List for sale” — it shows up here with its ask.</div>
   }
 
   return (

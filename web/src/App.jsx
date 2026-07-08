@@ -103,8 +103,8 @@ function MeetAgent({ accountId, onNamed }) {
 }
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
-  const [view, setView] = useState('binder') // 'binder' | 'trade'
-  const [bseg, setBseg] = useState('binder') // inside the binder: 'binder' | 'sale'
+  const [bseg, setBseg] = useState('binder') // 'binder' | 'sale'
+  const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   return (
     <div className="app">
@@ -116,39 +116,43 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           <button className="ghost sm" onClick={onSignOut}>sign out</button>
         </div>
       </nav>
-      <div className="viewnav" role="tablist" aria-label="view">
-        <button role="tab" aria-selected={view === 'binder'} className={view === 'binder' ? 'on' : ''} onClick={() => setView('binder')}>
-          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><rect x="2.5" y="1.5" width="11" height="13" rx="1.5" /><path d="M5.5 1.5v13" /><circle cx="4" cy="5" r="0.4" fill="currentColor" /><circle cx="4" cy="8" r="0.4" fill="currentColor" /><circle cx="4" cy="11" r="0.4" fill="currentColor" /></svg>
-          <span>Binder</span>
-        </button>
-        <button role="tab" aria-selected={view === 'trade'} className={view === 'trade' ? 'on' : ''} onClick={() => setView('trade')}>
-          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
-          <span>Trades</span>
-        </button>
-      </div>
-      <Ambient onOpenTrade={(id) => { setOpenTrade(id); setView('trade') }} />
+      <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />
       <main className="main">
-        {view === 'binder' && (
-          <>
-            <div className="bindertop">
-              {CATALOGS.length > 1 && (
-                <div className="catalogpick" aria-label="catalog">
-                  {CATALOGS.map((c) => (
-                    <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
-                  ))}
-                </div>
-              )}
-              <div className="bsegs mono" role="tablist" aria-label="binder section">
-                <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
-                <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>For sale</button>
-              </div>
+        <div className="bindertop">
+          {CATALOGS.length > 1 && (
+            <div className="catalogpick" aria-label="catalog">
+              {CATALOGS.map((c) => (
+                <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
+              ))}
             </div>
-            {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
-            {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
-          </>
-        )}
-        {view === 'trade' && <TradePanel openTradeId={openTrade} />}
+          )}
+          <div className="bt-right">
+            <div className="bsegs mono" role="tablist" aria-label="binder section">
+              <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
+              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>For sale</button>
+            </div>
+            <button className="tradesbtn mono" onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title="escrow trades">
+              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
+              <span>Trades</span>
+            </button>
+          </div>
+        </div>
+        {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
+        {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
       </main>
+      {tradesOpen && (
+        <div className="sc-overlay" role="dialog" aria-label="Trades" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>
+          <div className="sc-sheet trades-sheet">
+            <div className="trades-head">
+              <span className="ek">Trades</span>
+              <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
+            </div>
+            <div className="trades-body">
+              <TradePanel openTradeId={openTrade} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

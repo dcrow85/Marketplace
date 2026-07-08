@@ -85,12 +85,15 @@ function capMeta(c, e, store) {
   if (e.stance === 'want') return wantActive(c, store) ? { t: 'hunt', cls: 'm-want' } : { t: 'wishlist', cls: 'm-wish' }
   return { t: c.rarity || '', cls: 'm-none' }
 }
-function issueSeverity(c) {
-  const rank = { high: 3, medium: 2, low: 1, info: 0 }
-  const issues = c.issues || []
-  let best = null
-  for (const i of issues) if (!best || (rank[i.severity] ?? 0) > (rank[best] ?? 0)) best = i.severity
-  return best
+// Distinct rarities in ladder order — common first, chase last; unknown codes trail in data order.
+const RARITY_LADDER = ['C', 'UC', 'R', 'SR', 'SR ★', 'SR ★★', 'L', 'L ★', 'G', 'G ★']
+function rarityOrder(cards) {
+  const seen = [...new Set(cards.map((c) => c.rarity).filter(Boolean))]
+  const first = new Map(seen.map((r, i) => [r, i]))
+  return seen.sort((a, b) => {
+    const ia = RARITY_LADDER.indexOf(a), ib = RARITY_LADDER.indexOf(b)
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || first.get(a) - first.get(b)
+  })
 }
 function provBadge(c) {
   if (!c.image) return null
@@ -127,13 +130,11 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen, userPhoto 
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
   const meta = capMeta(c, e, store)
-  const sev = issueSeverity(c)
   return (
     <div className={'cell ' + (have ? 'own' : 'ghost') + (pick ? ' is-pick' : '') + (e.stance === 'pass' ? ' passed' : '')}>
       <div className="stancebar">
-        <button className={'seg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
-        <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
-        <button className={'seg sg-pass' + (e.stance === 'pass' ? ' on' : '')} onClick={() => setStance(c.uid, 'pass')}>Pass</button>
+        <button className={'seg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'have' ? 'none' : 'have')}>Have</button>
+        <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>
       </div>
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
@@ -141,7 +142,6 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen, userPhoto 
         {(userPhoto || c.image) && <img src={userPhoto || c.image} alt={nm(c)} loading="lazy" decoding="async" onError={userPhoto ? undefined : (e) => retryImg(e, c.image)} />}
         {userPhoto && <span className="yoursflag" title="your photo">yours</span>}
         {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
-        {sev && <span className={'issueflag ' + sev} title="catalog issue carried forward">{sev === 'high' ? '!' : '?'}</span>}
         {provBadge(c)}
       </div>
       <div className="caption" onClick={() => onOpen && onOpen(c.uid)}>
@@ -351,9 +351,8 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 .map((t, i) => mpill(t, i))}
             </div>
             <div className="m-stance">
-              <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, 'have')}>Have</button>
-              <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, 'want')}>Want</button>
-              <button className={'mseg sg-pass' + (e.stance === 'pass' ? ' on' : '')} onClick={() => setStance(c.uid, 'pass')}>Pass</button>
+              <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'have' ? 'none' : 'have')}>Have</button>
+              <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>
             </div>
             {(e.stance === 'have' || e.stance === 'want') && (
               <button className={'grailtog' + (e.grail ? ' on' : '')} onClick={() => setField(c.uid, 'grail', !e.grail)}>
@@ -362,13 +361,10 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
             )}
             <div className="m-fields">
               {e.stance === 'have' && <>
-                <Frow label="Holding">
-                  <div className="switch2">
-                    <button className={'sw' + (!e.trade && !e.sell ? ' on' : '')} onClick={() => { setField(c.uid, 'trade', false); setField(c.uid, 'sell', false) }}>Keep</button>
-                    <button className={'sw' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', !e.trade)}>Trade</button>
-                    <button className={'sw' + (e.sell ? ' on' : '')} onClick={() => setField(c.uid, 'sell', !e.sell)}>Sell</button>
-                  </div>
-                </Frow>
+                <button className={'listtog' + ((e.sell || e.trade) ? ' on' : '')}
+                  onClick={() => { const on = !(e.sell || e.trade); setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'trade', false) }}>
+                  {(e.sell || e.trade) ? '● Listed for sale — in your For sale pile' : '○ List for sale'}
+                </button>
                 <Frow label="Condition">
                   <select className="ti condtype" value={u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')} onChange={(ev) => { setField(c.uid, 'cond_type', ev.target.value); setField(c.uid, 'cond_grade', ''); setField(c.uid, 'cond_grader', '') }}>
                     {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
@@ -390,7 +386,6 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                   <div className="sheethint">Plain text, not a link. Your buyer opens cairn.cards themselves and pastes it into Trades. They can read every line.</div>
                 </>}
                 <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
-                <Frow label="Held"><input className="ti" placeholder="self · shop · vault" value={u.custody || ''} onChange={(ev) => setField(c.uid, 'custody', ev.target.value)} /></Frow>
                 <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
               </>}
               {e.stance === 'want' && <>
@@ -401,8 +396,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                   ? <><b>Active hunt.</b> {agentName} flags matches that meet your condition and budget.</>
                   : <><b>On your wishlist.</b> Set a condition or budget to make it an active hunt.</>}</div>
               </>}
-              {e.stance === 'pass' && <div className="fnote">Marked <b>pass</b> — this card dims and sinks to the bottom of its set. Switch to Have or Want anytime.</div>}
-              {e.stance === 'none' && <div className="fnote">Pick <b>Have</b>, <b>Want</b>, or <b>Pass</b>. Have records condition + custody; Want sets the terms your agent hunts to; Pass clears it out of the way.</div>}
+              {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b> — or neither. Have records condition and copies; Want sets the terms your agent hunts to. Tap again to clear.</div>}
             </div>
             {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
               <div className="dossier">
@@ -567,6 +561,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [channelF, setChannelF] = useState(() => new Set())
   const [catF, setCatF] = useState(() => new Set())
   const [elementF, setElementF] = useState(() => new Set())
+  const [rarityF, setRarityF] = useState(() => new Set())
   const [holoOnly, setHoloOnly] = useState(false)
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
@@ -580,7 +575,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
-    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false)
+    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false)
     fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch((e) => setErr(String(e)))
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [catalog])
@@ -687,6 +682,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   const countStance = useCallback((v) => {
     if (!data) return 0
+    if (v === 'selling') return data.cards.filter((c) => { const e = effStance(c, store); return e.stance === 'have' && (e.sell || e.trade) }).length
     return data.cards.filter((c) => effStance(c, store).stance === v).length
   }, [data, store])
 
@@ -709,6 +705,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       }
       if (catF.size && !catF.has(c.category)) return false
       if (elementF.size && !elementF.has(c.element)) return false
+      if (rarityF.size && !rarityF.has(c.rarity)) return false
       if (holoOnly && !c.holo) return false
       if (qq) {
         const hay = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' + (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' + (c.release_family_label || '') + ' ' + (c.product_channel_label || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
@@ -718,7 +715,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     })
     if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, familyF, channelF, catF, elementF, holoOnly, store, setById, agentRes, agentActive, pickSet])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet])
 
   const grouped = !q.trim() && !agentActive
   const CHIPS = useMemo(() => chipsFor(), [])
@@ -738,7 +735,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     if (best && best.n > 0) setFamilyF(new Set([best.v]))
   }, [data])
   const toggleChip = (ch) => {
-    if (ch.g === 'all') { setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }
+    if (ch.g === 'all') { setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
     else if (ch.g === 'family') setFamilyF((p) => toggle(p, ch.v))
     else if (ch.g === 'channel') setChannelF((p) => toggle(p, ch.v))
@@ -758,7 +755,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
 
-  const refineCount = channelF.size + catF.size + elementF.size + (holoOnly ? 1 : 0)
+  const refineCount = channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
   const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ('') } }
   const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} />
@@ -830,6 +827,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
                   {ELEMENTS.map((el) => <button key={el} className={'fo' + (elementF.has(el) ? ' on' : '')} onClick={() => setElementF(elementF.has(el) ? new Set() : new Set([el]))}>{el}</button>)}
                 </div></div>
               )}
+              <div className="fs-group"><label>Rarity</label><div className="fs-opts">
+                <button className={'fo' + (!rarityF.size ? ' on' : '')} onClick={() => setRarityF(new Set())}>Any</button>
+                {rarityOrder(data.cards).map((r) => (
+                  <button key={r} className={'fo' + (rarityF.has(r) ? ' on' : '')} onClick={() => setRarityF((p) => { const n = new Set(p); if (n.has(r)) n.delete(r); else n.add(r); return n })}>{r}</button>
+                ))}
+              </div></div>
               <div className="fs-group"><label>Alt art</label><div className="fs-opts">
                 <button className={'fo' + (holoOnly ? ' on' : '')} onClick={() => setHoloOnly((v) => !v)}>{data.ui?.holo_label || '★ Alt art'}</button>
               </div></div>
@@ -840,7 +843,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
               </div></div>
             </div>
             <div className="fsheet-actions">
-              <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setHoloOnly(false) }}>Clear all</button>
+              <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }}>Clear all</button>
               <button className="fs-done" onClick={() => setFiltersOpen(false)}>Done</button>
             </div>
           </div>
