@@ -55,6 +55,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Japanese pre-English catalog PARKED (Crowley: focus on Azuki) — LIVE.**
+  The catalog entry is commented out in `App.jsx` (data, stores, and IndexedDB photos all intact; restore = re-add
+  the entry), the picker row auto-hides with one catalog, stale `?catalog=japanese-pre-english` URLs fall back to
+  Azuki, and Binder's standalone DEFAULT_CATALOG now points at azuki-tcg (the JP label is grep-0 in the shipped
+  bundles). Codex FYI: JP catalog work stays valid — it's parked, not removed. Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Market context inside the card modal (Crowley: "past sales, current
   prices, availability") — LIVE.** The thin "on the market" line grew into a MarketBlock between the decision
   fields and the dossier: **available now** (asks cheapest-first: seller handle · condition claim · witness ·

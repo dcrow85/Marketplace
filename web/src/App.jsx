@@ -20,13 +20,9 @@ const CATALOGS = [
     path: 'catalogs/azuki-tcg.json',
     note: 'Alpha, Gates Awakened, observations, and source scars.',
   },
-  {
-    id: 'japanese-pre-english',
-    label: 'Japanese pre-English',
-    title: 'Japanese pre-English catalog',
-    path: 'catalog-sample.json',
-    note: 'Pokemon launch-era and pre-English references.',
-  },
+  // Japanese pre-English (Pokemon) parked while the pilot focuses on Azuki — data and
+  // stores stay intact; restore by re-adding the entry:
+  // { id: 'japanese-pre-english', label: 'Japanese pre-English', title: 'Japanese pre-English catalog', path: 'catalog-sample.json', note: 'Pokemon launch-era and pre-English references.' },
 ]
 
 function catalogFromUrl() {
