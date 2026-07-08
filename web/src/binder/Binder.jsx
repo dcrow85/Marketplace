@@ -4,6 +4,7 @@ import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
 import { useEscrowWallet } from '../trade/useEscrowWallet.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
+import { handleFor } from '../identity.js'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
@@ -206,7 +207,55 @@ async function renderSizes(file) {
   }
 }
 
-function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose, marketAsks, onBrowseCard }) {
+
+// Market context for one card: current asks (availability) + recorded settlements.
+// Asks are sellers' claims; a settlement is a trade that closed through escrow — the
+// one price fact the protocol can state in its own voice. All of it sample data for now.
+function MarketBlock({ c, market, onBrowseCard }) {
+  const asks = useMemo(() => (market?.sellers || [])
+    .flatMap((s) => s.listings.filter((l) => l.uid === c.uid).map((l) => ({ s, l })))
+    .sort((a, b) => a.l.ask - b.l.ask), [market, c])
+  const sales = (market?.sales || {})[c.uid] || []
+  if (!market) return null
+  const copies = asks.reduce((n, { l }) => n + (l.copies || 1), 0)
+  return (
+    <div className="mkb">
+      <div className="mkb-head">
+        <span className="mkb-title mono">market</span>
+        <span className="mkb-sample mono">sample data</span>
+        {asks.length > 0 && onBrowseCard && (
+          <button className="mkb-browse mono" onClick={() => onBrowseCard(c.uid)}>browse →</button>
+        )}
+      </div>
+      <div className="mkb-sec mono">{asks.length
+        ? `available now — ${asks.length} ask${asks.length === 1 ? '' : 's'} · ${copies} cop${copies === 1 ? 'y' : 'ies'} · from ${asks[0].l.ask} USDC`
+        : 'available now — nobody is asking'}</div>
+      {asks.slice(0, 3).map(({ s, l }, i) => (
+        <div className="mkb-row" key={i}>
+          <button className="mkb-who" onClick={() => onBrowseCard && onBrowseCard(c.uid)} title="see it on the market">{handleFor(s.id)}</button>
+          <span className="mono mkb-cond" title="the seller&rsquo;s claim">{l.cond}</span>
+          <span className={'mono mkb-wit' + (l.witness ? ' ok' : '')}>{l.witness ? `✓ witness ·${l.witness}` : '— no scan'}</span>
+          <span className="mono mkb-p">{l.ask} USDC</span>
+        </div>
+      ))}
+      {asks.length > 3 && <button className="mkb-more mono" onClick={() => onBrowseCard && onBrowseCard(c.uid)}>+ {asks.length - 3} more →</button>}
+      <div className="mkb-sec mono" title="trades that closed through escrow — recorded, not appraised">{sales.length
+        ? `recorded settlements — last ${sales[0].p} USDC · ${sales[0].d}`
+        : 'recorded settlements — none on record'}</div>
+      {sales.slice(0, 4).map((x, i) => (
+        <div className="mkb-row sale" key={i}>
+          <span className="mono mkb-d">{x.d}</span>
+          <span className="mono mkb-cond">{x.cond}</span>
+          <span className={'mono mkb-wit' + (x.wit ? ' ok' : '')}>{x.wit ? '✓ witnessed' : '—'}</span>
+          <span className="mono mkb-p">{x.p} USDC</span>
+        </div>
+      ))}
+      <div className="mkb-note">A settlement is a closed escrow trade — a recorded fact, not an appraisal. Asks are sellers&rsquo; claims.</div>
+    </div>
+  )
+}
+
+function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, accountId, onClose, market, onBrowseCard }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
@@ -359,11 +408,6 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
                 <span className="gstar">★</span>{e.grail ? 'Grail — top of your list' : 'Mark as grail'}
               </button>
             )}
-            {marketAsks && onBrowseCard && (
-              <button className="mktline mono" onClick={() => onBrowseCard(c.uid)}>
-                on the market — {marketAsks.n} ask{marketAsks.n === 1 ? '' : 's'} · from {marketAsks.min} USDC →
-              </button>
-            )}
             <div className="m-fields">
               {e.stance === 'have' && <>
                 <button className={'listtog' + ((e.sell || e.trade) ? ' on' : '')}
@@ -403,6 +447,7 @@ function CardModal({ uid, data, setById, store, setStance, setField, agentName, 
               </>}
               {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b> — or neither. Have records condition and copies; Want sets the terms your agent hunts to. Tap again to clear.</div>}
             </div>
+            <MarketBlock c={c} market={market} onBrowseCard={onBrowseCard} />
             {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
               <div className="dossier">
                 {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
@@ -577,22 +622,14 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'pages' } catch { return 'pages' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
-  const [mktIndex, setMktIndex] = useState(null) // uid -> {n, min} across the market's tables
+  const [mkt, setMkt] = useState(null) // the market payload: sellers' asks + recorded settlements
 
   useEffect(() => {
     let live = true
     fetch((import.meta.env.BASE_URL || '/') + 'market-sample.json')
       .then((r) => r.json())
-      .then((m) => {
-        if (!live) return
-        if (!m || m.catalog_id !== catalog.id) { setMktIndex(null); return }
-        const idx = new Map()
-        for (const s of m.sellers) for (const l of s.listings) {
-          const cur = idx.get(l.uid)
-          if (cur) { cur.n += 1; cur.min = Math.min(cur.min, l.ask) } else idx.set(l.uid, { n: 1, min: l.ask })
-        }
-        setMktIndex(idx)
-      }).catch(() => {})
+      .then((m) => { if (live) setMkt(m && m.catalog_id === catalog.id ? m : null) })
+      .catch(() => {})
     return () => { live = false }
   }, [catalog])
 
@@ -892,7 +929,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <div className={'grid' + (view === 'gallery' ? ' gallery' : '')}>{rows.map((c) => cardEl(c, true))}</div>
         )}
       </section>
-      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} marketAsks={mktIndex ? mktIndex.get(selected) : null} onBrowseCard={onBrowseCard} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} accountId={accountId} onClose={() => setSelected(null)} market={mkt} onBrowseCard={onBrowseCard} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )

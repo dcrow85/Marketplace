@@ -55,6 +55,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **Market context inside the card modal (Crowley: "past sales, current
+  prices, availability") — LIVE.** The thin "on the market" line grew into a MarketBlock between the decision
+  fields and the dossier: **available now** (asks cheapest-first: seller handle · condition claim · witness ·
+  ask · copies, "browse →" hops to the focused market view) and **recorded settlements** (dated escrow-closed
+  trades, newest first, "last N USDC · date" headline). Vocabulary is load-bearing: a settlement is "a closed
+  escrow trade — a recorded fact, not an appraisal. Asks are sellers' claims" (the block's own footer), and the
+  whole thing wears a "sample data" tag. Honest empties ("nobody is asking" / "none on record") on every card;
+  JP catalog shows no block. Data: `market-sample.json` grew `sales` (100 mock settlements over 44 cards, priced
+  around asks ±~25%) + two deliberate ask-collisions — the showpiece is Surge Gate G★: Sleever asks 343 (no
+  scan) vs Completionist 572 (witness ·4) over settlements 502/418/616 — the undercut sits below every recorded
+  price and the UI never editorializes. Verified all four modal states in preview + live per-deploy + apex.
+  Surface lane. No ask. **Design seams surfaced for the real thing:** (1) market facts are per catalog ROW —
+  variants (base vs ★ die-cut) are separate ledgers on purpose, but a "other printings" cross-link may be wanted;
+  (2) binder filters reset when hopping Binder↔Market (bseg remount) — mild, noted; (3) settlements need a real
+  source: the escrow record is Codex's lane when we get there.
 - `[passive]` 2026-07-08 · Claude — **The market: browsing other people's listings (mock) — LIVE.** New Market
   section (Binder · For sale · Market) with FOUR sample sellers built from real catalog rows
   (`web/public/market-sample.json`, clearly bannered "mock sellers … nothing here is a real offer"): Veteran

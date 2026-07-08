@@ -323,6 +323,24 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
 .listtog { width: 100%; margin-top: 10px; text-align: left; font-size: 13.5px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 12px 14px; cursor: pointer; }
 .listtog.on { border-color: var(--have); color: var(--have); background: transparent; }
 
-/* the by-card market hook in the modal: quiet ink, opens the market focused on this card */
-.mktline { width: 100%; margin-top: 8px; text-align: left; font-size: 11.5px; color: var(--ink2); background: transparent; border: 0.5px solid var(--rule); border-radius: 8px; padding: 10px 13px; cursor: pointer; }
-.mktline:hover { color: var(--ink); border-color: var(--ink); }
+/* market context in the modal: availability (asks) + recorded settlements. Ledger
+   register — mono facts, green only on recorded evidence, no appraisal voice. */
+.mkb { margin-top: 14px; border: 0.5px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.mkb-head { display: flex; align-items: center; gap: 8px; }
+.mkb-title { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink2); }
+.mkb-sample { font-size: 10px; color: var(--dim); border: 0.5px dashed var(--rule); border-radius: 5px; padding: 1px 6px; }
+.mkb-browse { margin-left: auto; font-size: 11px; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mkb-browse:hover { text-decoration: underline; }
+.mkb-sec { font-size: 11px; color: var(--ink2); margin-top: 6px; }
+.mkb-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: baseline; gap: 10px; font-size: 12px; padding: 3px 0; }
+.mkb-who { font: inherit; text-align: left; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mkb-who:hover { text-decoration: underline; }
+.mkb-d { color: var(--dim); font-size: 11px; }
+.mkb-cond { color: var(--ink2); font-size: 11px; }
+.mkb-wit { color: var(--dim); font-size: 10.5px; }
+.mkb-wit.ok { color: var(--have); }
+.mkb-p { font-size: 12px; }
+.mkb-more { align-self: flex-start; font-size: 11px; color: var(--ink2); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mkb-more:hover { color: var(--ink); text-decoration: underline; }
+.mkb-note { font-size: 11px; color: var(--dim); line-height: 1.5; margin-top: 4px; }
+@media (max-width: 640px) { .mkb-cond { display: none; } .mkb-row { grid-template-columns: 1fr auto auto; } }
