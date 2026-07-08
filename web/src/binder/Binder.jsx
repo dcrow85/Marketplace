@@ -126,7 +126,7 @@ function applyAgentFilter(cards, f, setById) {
   return out
 }
 
-function Card({ c, store, setStance, showSet, setLabel, pick, onOpen, userPhoto }) {
+function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
@@ -134,8 +134,13 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen, userPhoto 
   return (
     <div className={'cell ' + (have ? 'own' : 'ghost') + (pick ? ' is-pick' : '') + (e.stance === 'pass' ? ' passed' : '')}>
       <div className="stancebar">
-        <button className={'seg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'have' ? 'none' : 'have')}>Have</button>
-        <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>
+        <button className={'seg sg-have' + (have ? ' on' : '')} onClick={() => setStance(c.uid, have ? 'none' : 'have')}>Have</button>
+        {have
+          ? <>
+              <button className={'seg sg-sell' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'} onClick={() => setField(c.uid, 'sell', !e.sell)}>$</button>
+              <button className={'seg sg-tradeq' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'} onClick={() => setField(c.uid, 'trade', !e.trade)}>⇄</button>
+            </>
+          : <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>}
       </div>
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
@@ -152,6 +157,7 @@ function Card({ c, store, setStance, showSet, setLabel, pick, onOpen, userPhoto 
           <span className="crom">{c.romaji || c.name_en || ''}{c.name_is_en && <span className="enmark">EN</span>}</span>
           <span className={'cmeta ' + meta.cls}>{meta.t}</span>
         </div>
+        {fromAsk != null && <div className="cap-avail mono">available · from {fromAsk} USDC</div>}
       </div>
     </div>
   )
@@ -552,7 +558,7 @@ function AgentPanel({ res, agentName }) {
 // The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
 // pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
 // the agent, filters, and the scanner all operate on the binder itself.
-function PocketPages({ rows, store, userPhotos, onOpen }) {
+function PocketPages({ rows, store, userPhotos, onOpen, setField, askIndex }) {
   const [page, setPage] = useState(0)
   useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
   const pages = []
@@ -570,20 +576,28 @@ function PocketPages({ rows, store, userPhotos, onOpen }) {
         {pg.map((c) => {
           const e = effStance(c, store)
           const img = userPhotos[c.uid] || c.image
+          const fromAsk = askIndex ? askIndex.get(c.uid) : null
           if (e.stance === 'have') {
             return (
-              <button key={c.uid} className="bv-pocket filled" onClick={() => onOpen(c.uid)}>
+              <div key={c.uid} className="bv-pocket filled" role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
+                onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
                 {img ? <img src={img} alt={nm(c)} loading="lazy" /> : <span className="bv-noimg">{nm(c)}</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
                 {e.grail && <span className="bv-grail">★</span>}
-                {(e.sell || e.trade) && <span className="bv-sell mono">selling</span>}
-              </button>
+                <span className="bv-q">
+                  <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
+                    onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'sell', !e.sell) }}>$</button>
+                  <button className={'bv-qb' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
+                    onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
+                </span>
+              </div>
             )
           }
           return (
             <button key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')} onClick={() => onOpen(c.uid)}>
               <span className="mono bv-gnum">{c.num}</span>
               <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
+              {fromAsk != null && <span className="bv-from mono">from {fromAsk} USDC</span>}
             </button>
           )
         })}
@@ -630,6 +644,15 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
   const [mkt, setMkt] = useState(null) // the market payload: sellers' asks + recorded settlements
+  const askIndex = useMemo(() => {
+    if (!mkt) return null
+    const m = new Map()
+    for (const sl of mkt.sellers) for (const l of sl.listings) {
+      const cur = m.get(l.uid)
+      if (cur == null || l.ask < cur) m.set(l.uid, l.ask)
+    }
+    return m
+  }, [mkt])
 
   useEffect(() => {
     let live = true
@@ -825,7 +848,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const refineCount = channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
   const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ('') } }
-  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} />
+  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
 
@@ -924,7 +947,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       )}
       <section>
         {!rows.length ? <div className="empty">no cards match.</div> : view === 'pages' ? (
-          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} />
+          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setField={setField} askIndex={askIndex} />
         ) : grouped ? (
           SETS.filter((s) => groups[s.id]).map((s) => (
             <div className="setblock" key={s.id}>

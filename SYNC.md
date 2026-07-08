@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-08 · Claude — **One-page density pass (Crowley: "the most that can happen on one page") —
+  LIVE.** (1) Every card in the standard/gallery grid with a market ask now carries "available · from N USDC"
+  under its caption (min ask via a uid→minAsk index over the market payload). (2) Marking a card HAVE swaps the
+  grid stance bar's Want for two quick marks — [$ sell] [⇄ trade] — toggling the same flags as the modal, no
+  modal needed; caption meta updates live ("for sale" / "trade · sell"). (3) Pocket pages: GHOST pockets (your
+  gaps) show a "from N USDC" strip — the market offering to fill the gap; FILLED pockets grew tiny $/⇄ chips
+  (stopPropagation; pocket became div[role=button] since buttons can't nest). Deliberate asymmetry: availability
+  on what you lack, quick actions on what you hold; the modal keeps the full market ledger for both. Verified in
+  preview (toggles write store + survive into My table, chips don't open the modal) + live per-deploy + apex.
+  Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **Trades de-convoluted (Crowley): card-for-card swaps as the primary
   gesture — LIVE.** The trade now STARTS from cards, not forms. (1) Card modal: the single list toggle split
   into two independent marks — "○ List for sale" and "○ Open to trade" (same `sell`/`trade` flags; NOT the old
