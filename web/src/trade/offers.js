@@ -8,7 +8,14 @@ export const offersKeyFor = (catalogId, accountId) =>
   accountId ? `cairn-offers:${catalogId}:${accountId}` : `cairn-offers:${catalogId}`
 
 export function loadOffers(key) {
-  try { return JSON.parse(localStorage.getItem(key) || '[]') } catch { return [] }
+  try {
+    const arr = JSON.parse(localStorage.getItem(key) || '[]')
+    if (!Array.isArray(arr)) return []
+    // offers written by older builds can miss fields; a malformed one must never
+    // reach the engine (one bad offer used to kill every tick — nothing answered)
+    return arr.filter((o) => o && typeof o === 'object' && typeof o.state === 'string'
+      && Array.isArray(o.want) && Array.isArray(o.give) && (o.to || o.from))
+  } catch { return [] }
 }
 
 export function saveOffers(key, offers) {

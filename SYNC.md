@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Zoom, checkout, Trades up top + the buy fix (Crowley's list) — LIVE.**
+  (1) BUY WASN'T ANSWERING: root cause is almost certainly stale offers from the frame-bug-era builds sitting
+  in localStorage — one malformed offer threw inside the engine tick and stalled EVERY offer at 'sent'. Fixed
+  twice over: `loadOffers` now sanitizes (old-shape offers filtered on read), and the tick wraps each offer in
+  try/catch (a bad one gets declined with "Their agent couldn't read that offer — cleared", the rest proceed).
+  (2) CARD ZOOM: every tile (market tables, composer both grids) grew a ⤢ — a dark lightbox with the art at
+  72vh, facts beneath, and the scan line kept honest ("✓ 3 pile scans recorded — with real listings, the scans
+  show here" / "no scans behind this listing: their word alone"). (3) CHECKOUT: the basket bar became a real
+  checkout drawer — marked cards as overlapping thumbs, asks total, [buy all · N] (one pure-cash offer for the
+  lot) / [⇄ compose an offer] / clear — so the table stays lean while you mark. (4) TRADES IS FIRST-CLASS: the
+  button moved to the top nav with a live count; when an incoming offer awaits YOU it goes oxblood with a dot
+  (constitution: signal = needs-you only; settling counts stay ink). Verified: lightbox (Aquatic Veil full-art),
+  3-card checkout → "19 USDC for 3 cards" seen by Keeper, nav badge, engine survives poisoned offers. Surface
+  lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Card-show polish, Crowley's 7-item punch list — LIVE.** (1) MY TABLE is
   a table now: avatar+handle header, art tiles with inline $-ask fields, ⇄ trade flags, and a "table sign"
   input (140 chars, stored per account, honest placeholder: "a line buyers will read when publishing lands").

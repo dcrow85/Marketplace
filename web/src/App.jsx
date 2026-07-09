@@ -106,14 +106,22 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
     }).catch(() => {})
     return () => { live = false; stop() }
   }, [catalog, accountId])
-  const swapN = useMemo(() => loadOffers(offersKeyFor(catalog.id, accountId))
-    .filter((o) => (o.dir === 'in' && OFFER_OPEN.includes(o.state)) || OFFER_SETTLING.includes(o.state)).length,
-  [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
+  const { swapN, needsYou } = useMemo(() => {
+    const offers = loadOffers(offersKeyFor(catalog.id, accountId))
+    const inOpen = offers.filter((o) => o.dir === 'in' && OFFER_OPEN.includes(o.state)).length
+    const settling = offers.filter((o) => OFFER_SETTLING.includes(o.state)).length
+    return { swapN: inOpen + settling, needsYou: inOpen > 0 }
+  }, [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
   return (
     <div className="app">
       <nav className="nav">
         <Wordmark />
         <div className="navr mono">
+          <button className={'tradesbtn nav-trades' + (needsYou ? ' needs-you' : '')} onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title={needsYou ? 'an offer is waiting on you' : 'your trades'}>
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
+            <span>Trades{swapN ? ` ·${swapN}` : ''}</span>
+            {needsYou && <i className="nav-dot" aria-hidden="true" />}
+          </button>
           <span className="chip"><Avatar seed={accountId} size={18} /> <span className="handle">{handleFor(accountId)}</span></span>
           <ThemeToggle />
           <button className="ghost sm" onClick={onSignOut}>sign out</button>
@@ -135,10 +143,6 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
               <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My table</button>
               <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
             </div>
-            <button className="tradesbtn mono" onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title="escrow trades">
-              <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
-              <span>Trades{swapN ? ` ·${swapN}` : ''}</span>
-            </button>
           </div>
         </div>
         {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}

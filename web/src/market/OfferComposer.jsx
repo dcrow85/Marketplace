@@ -3,6 +3,7 @@ import { storeKeyFor, loadStore, catalogUrl, entryFor, condStr } from '../binder
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { handleFor, avatarSVG } from '../identity.js'
+import CardZoom from './CardZoom.jsx'
 
 // The offer composer: everything on ONE screen — their cards, your cards, the cash
 // leg, and the send. No wizard. Anko's line quotes the RECORD (latest settlements per
@@ -21,6 +22,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
   const [cashAmt, setCashAmt] = useState(initialCash ? String(initialCash.amount) : '')
   const [cashSide, setCashSide] = useState(initialCash?.side || 'from')
   const [note, setNote] = useState('')
+  const [zoom, setZoom] = useState(null)
   const [qw, setQw] = useState('') // search their side
   const [qg, setQg] = useState('') // search your binder
   const storeKey = storeKeyFor(catalog.id, accountId)
@@ -78,10 +80,12 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
     onClose()
   }
 
-  const tile = (c, sel, onTap, sub, price) => (
+  const tile = (c, sel, onTap, sub, price, witness) => (
     <button key={c.uid} className={'ofr-tile' + (sel ? ' sel' : '')} onClick={() => onTap(c.uid)}>
       {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
       {price != null && <span className="pricetag">{price} USDC</span>}
+      <span className="zoombtn" role="button" tabIndex={0} title="enlarge"
+        onClick={(ev) => { ev.stopPropagation(); setZoom({ c, sub, witness }) }}>⤢</span>
       <span className="ofr-name">{c.name_en}</span>
       {sub && <span className="mono ofr-sub">{sub}</span>}
       {sel && <span className="ofr-check">✓</span>}
@@ -104,7 +108,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           {theirCards.length > 8 && <input className="ofr-search" placeholder="search their table…" value={qw} onChange={(e) => setQw(e.target.value)} />}
           <div className="ofr-grid">
             {theirCards.filter(({ c }) => hit(c, qw) || want.has(c.uid)).map(({ c, l }) =>
-              tile(c, want.has(c.uid), toggle(want, setWant), l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : '— no scans', l.ask))}
+              tile(c, want.has(c.uid), toggle(want, setWant), l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : '— no scans', l.ask, l.witness))}
           </div>
           <div className="ofr-sec mono">you give — your binder{myCards.some(({ e }) => e.trade) ? ' (open-to-trade first)' : ''}</div>
           {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}
@@ -133,6 +137,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
         </div>
         <p className="sc-note dim ofr-fine">An offer is a message, not a lock — cards and money only move through escrow.
           {' '}Sample sellers answer right here in your browser.</p>
+        {zoom && <CardZoom card={zoom.c} sub={zoom.sub} witness={zoom.witness} onClose={() => setZoom(null)} />}
       </div>
     </div>
   )

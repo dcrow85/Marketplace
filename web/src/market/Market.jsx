@@ -4,6 +4,7 @@ import { loadHidden, hiddenKeyFor } from './mockAgents.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import MarketFinds from './MarketFinds.jsx'
+import CardZoom from './CardZoom.jsx'
 import OfferComposer from './OfferComposer.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
@@ -56,6 +57,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [basket, setBasket] = useState(() => new Set()) // their cards you tapped, per table
   const [composer, setComposer] = useState(null) // {seller, want:[uids], cash?}
   const [swapMsg, setSwapMsg] = useState(null)
+  const [zoom, setZoom] = useState(null) // {c, l} — the card held up to the light
   const [aq, setAq] = useState('')
   const [abusy, setAbusy] = useState(false)
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
@@ -185,6 +187,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {ankoBar}
         {ankoPanel}
         {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
+        {zoom && <CardZoom card={zoom.c} sub={zoom.l ? `${zoom.l.ask} USDC · ${zoom.l.cond}` : null} witness={zoom.l ? zoom.l.witness : null} onClose={() => setZoom(null)} />}
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
         <div className="mk-head">
@@ -229,6 +232,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {ankoBar}
         {ankoPanel}
         {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
+        {zoom && <CardZoom card={zoom.c} sub={zoom.l ? `${zoom.l.ask} USDC · ${zoom.l.cond}` : null} witness={zoom.l ? zoom.l.witness : null} onClose={() => setZoom(null)} />}
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
         <div className="mk-head">
@@ -260,6 +264,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               onClick={() => setBasket((p) => { const n = new Set(p); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })}>
               {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
               <span className="pricetag">{l.ask} USDC</span>
+              <button className="zoombtn" title="enlarge" onClick={(ev) => { ev.stopPropagation(); setZoom({ c, l }) }}>⤢</button>
               <span className="ofr-name">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span>
               <span className="mono ofr-sub">{l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : '— no scans'}</span>
               <span className="ofr-acts">
@@ -271,12 +276,27 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           ))}
           {!rows.length && <div className="empty">Nothing on this table matches your wants.</div>}
         </div>
-        {basket.size > 0 && (
-          <div className="mk-basketbar">
-            <span>{basket.size} card{basket.size === 1 ? '' : 's'} picked from this table</span>
-            <button className="primary" onClick={() => openComposer(open.id, [...basket])}>Make an offer →</button>
-          </div>
-        )}
+        {basket.size > 0 && (() => {
+          const picks = open.listings.filter((l) => basket.has(l.uid))
+          const asksSum = picks.reduce((t, l) => t + l.ask, 0)
+          return (
+            <div className="mk-checkout">
+              <div className="mk-ckthumbs">
+                {picks.map((l) => { const c = byUid.get(l.uid); return c?.image ? <img key={l.uid} src={c.image} alt="" title={c.name_en} /> : null })}
+              </div>
+              <span className="mono mk-cksum">{basket.size} card{basket.size === 1 ? '' : 's'} · asks total {asksSum} USDC</span>
+              <span className="mk-ckacts">
+                <button className="ofr-buy" onClick={() => {
+                  sendOffer(offersKeyFor(catalog.id, accountId), { to: open.id, want: picks.map((l) => ({ uid: l.uid })), give: [], cash: { side: 'from', amount: asksSum }, note: null })
+                  setSwapMsg(`offer sent at their asks — ${asksSum} USDC for ${basket.size} cards to ${handleFor(open.id)}. Watch Trades.`)
+                  setBasket(new Set())
+                }}>buy all · {asksSum}</button>
+                <button className="ofr-tradebtn" onClick={() => openComposer(open.id, [...basket])}>⇄ compose an offer</button>
+                <button className="ghost sm" onClick={() => setBasket(new Set())}>clear</button>
+              </span>
+            </div>
+          )
+        })()}
         {(open.lots || []).map((lot, i) => {
           const lotTotal = lot.cards.reduce((s, x) => s + x.ask * (x.copies || 1), 0)
           return (
@@ -317,6 +337,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       {ankoBar}
       {ankoPanel}
         {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
+        {zoom && <CardZoom card={zoom.c} sub={zoom.l ? `${zoom.l.ask} USDC · ${zoom.l.cond}` : null} witness={zoom.l ? zoom.l.witness : null} onClose={() => setZoom(null)} />}
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
       <div className="mk-head">

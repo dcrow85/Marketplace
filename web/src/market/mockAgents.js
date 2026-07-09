@@ -140,12 +140,20 @@ export function startMockMarket({ catalogId, accountId, byUid, askOf }) {
     for (const o of offers) {
       // catch-up loop: browsers throttle timers in hidden tabs, and a user can be gone
       // for hours — every transition that came due while we weren't ticking runs now.
+      // One offer that throws must never stall the rest: it gets declined and skipped.
+      try {
       for (let hop = 0; hop < 8; hop++) {
         if (['declined', 'withdrawn', 'settled', 'countered'].includes(o.state)) break
         const p = personaFor(o.dir === 'out' ? o.to : o.from)
         if (o.dir === 'out' && o.state === 'sent' && !o.nextAt) { o.nextAt = now + between(p.delay) / 2; changed = true; break }
         if (!o.nextAt || o.nextAt > now) break
         step(o, p, now, offers)
+        changed = true
+      }
+      } catch {
+        o.state = 'declined'
+        o.nextAt = null
+        o.response = { line: 'Their agent couldn’t read that offer — cleared.' }
         changed = true
       }
     }
