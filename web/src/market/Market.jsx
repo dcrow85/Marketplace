@@ -300,6 +300,15 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'have').map((c) => c.uid))
   }, [data, store])
+  const salesAll = useMemo(() => ({ ...(mkt?.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }), [mkt, catalog, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
+  const myTradeSum = useMemo(() => {
+    if (!data) return 0
+    return data.cards.reduce((t, c) => {
+      const e = entryFor(c, store)
+      if (e.stance !== 'have' || !e.trade) return t
+      return t + (salesAll[c.uid]?.[0]?.p ?? 0)
+    }, 0)
+  }, [data, store, salesAll])
 
   const pickUp = (sellerId, uid, mode) => addToPile(pileKey, sellerId, uid, mode)
   const askAnko = async () => {
@@ -550,6 +559,15 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               })}
             </div>
             <span className="mono mk-cksum">your pile · {pile.length} card{pile.length === 1 ? '' : 's'}{buysSum > 0 ? ` · buys ${buysSum} USDC` : ''}</span>
+            {(() => {
+              const pileVal = pile.reduce((t, p) => {
+                const l = open.listings.find((x) => x.uid === p.uid)
+                return t + (p.mode === 'buy' ? (l?.ask ?? 0) : (salesAll[p.uid]?.[0]?.p ?? l?.ask ?? 0))
+              }, 0)
+              if (!pileVal || !myTradeSum) return null
+              const pct = Math.round((myTradeSum / pileVal) * 100)
+              return <span className="mono mk-ckwhisper" title="their side by asks and settlements, yours by settlements only — history, not an appraisal">⇄ your tradeables&rsquo; settlements ~{myTradeSum} USDC · ~{pct}% of this pile</span>
+            })()}
             <span className="mk-ckacts">
               <button className="primary mk-settle" onClick={() => setSettling(true)}>Settle up · {pile.length} →</button>
               <button className="ghost sm" onClick={() => clearPile(pileKey, open.id)}>clear</button>

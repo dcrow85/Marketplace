@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **The drawer whisper (Crowley: "push it!") — LIVE.** The pile drawer now
+  murmurs the coverage math BEFORE you enter the settle room: "⇄ your tradeables' settlements ~34 USDC ·
+  ~80% of this pile" — their side priced by asks (buys) + settlements (trade-fors), your ⇄-marked cards by
+  settlements only, the honest framing in the hover title ("history, not an appraisal"). Renders only when
+  both sides have something to say; agent-blue because it's the record whispering. Verified in preview
+  (live recompute as the pile grows); apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Settle room polish: scroll-to-top + ANKO runs your side (Crowley's
   exact asks, incl. his two example calls) — LIVE, both halves.** (1) Opening Settle now starts at the top of
   the page (you arrived somewhere new; act like it). (2) The your-side search box became Anko's bar — typing

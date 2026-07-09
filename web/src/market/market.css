@@ -265,3 +265,6 @@
 .stl-ask { margin: 0; }
 .stl-ankoline { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 8px; padding: 8px 12px; }
 .stl-clear { font: inherit; color: var(--ink); background: transparent; border: 0; cursor: pointer; text-decoration: underline; }
+
+/* the drawer whisper: what your tradeables' history covers of this pile */
+.mk-ckwhisper { font-size: 10.5px; color: var(--agent); }
