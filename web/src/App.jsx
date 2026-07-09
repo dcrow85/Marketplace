@@ -146,8 +146,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           </div>
         </div>
         {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
-          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
-          onOpenOffer={(seed) => setOfferSeed(seed)} />}
+          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }} />}
         {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
         {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
           focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}

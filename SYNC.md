@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **THE PILE: one deal per table (Crowley's model, built) — LIVE.** The
+  card-show insight made literal: you don't transact per card, you build a PILE and cut one deal. (1) buy·N /
+  ⇄trade everywhere (tiles, the LIGHTBOX — which now has price + both buttons right under the art — the
+  by-card page, Anko's finds) now mean ADD TO MY PILE, tagged; nothing sends on tap, buttons flip to "✓ in
+  pile". Tile tap = zoom (pick the card up). (2) The pile drawer rides the table: thumbs with $/⇄ tags (tap a
+  tag to flip buy↔trade, ✕ puts it back), buys total, "Review the deal →" expands an INLINE checkout (no
+  popup): buys itemized at asks · trade-fors · your-side binder grid with search · ONE editable cash line
+  prefilled to the buy total ("following the buy total" until touched — Crowley's single-line ruling) · Anko's
+  record line · Send the deal. One offer carries the whole basket; the persona judges it whole. (3) Piles
+  PERSIST per seller (walk away, come back — directory tables show "your pile · N"). (4) The OfferComposer
+  popup is retired from table flow (kept only for counters); quickBuy/basket/instant-send all gone. Verified
+  end-to-end: 2 buys + 1 trade-for + 1 give + 3 USDC → one offer, pile cleared, drawer folded; lightbox
+  buy → "✓ in pile"; lots → pile. Vocabulary: the pile (accumulation) → the deal (the offer). Surface lane.
+  No ask.
 - `[passive]` 2026-07-09 · Claude — **Zoom, checkout, Trades up top + the buy fix (Crowley's list) — LIVE.**
   (1) BUY WASN'T ANSWERING: root cause is almost certainly stale offers from the frame-bug-era builds sitting
   in localStorage — one malformed offer threw inside the engine tick and stalled EVERY offer at 'sent'. Fixed

@@ -5,6 +5,7 @@ import { useScrollLock } from '../useScrollLock.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import { handleFor } from '../identity.js'
 import { applyAgentFilter } from './agentFilter.js'
+import { pileKeyFor, addToPile } from '../market/pile.js'
 import MarketFinds from '../market/MarketFinds.jsx'
 import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
 import '../scan/scan.css'
@@ -666,7 +667,7 @@ function chipsFor() {
   ]
 }
 
-export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard, onOpenOffer }) {
+export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
   const [store, setStore] = useState({})
@@ -1036,7 +1037,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         </div>
       </div>
       {agentAction && findStep && <MarketFinds agentName={agentName} reading={agentAction.filter?.reading}
-        finds={finds} mode={findStep.mode || 'buy'} onOpenOffer={(seed) => { clearAgent(); onOpenOffer && onOpenOffer(seed) }} onDismiss={clearAgent} />}
+        finds={finds} mode={findStep.mode || 'buy'}
+        onAddPile={({ seller, uid, mode }) => addToPile(pileKeyFor(catalog.id, accountId), seller, uid, mode)} onDismiss={clearAgent} />}
       {agentAction && !findStep && plan && <ActionBar agentName={agentName} plan={plan} reading={agentAction.filter?.reading}
         done={actionDone} onApply={applyProposal} onUndo={undoProposal} onDismiss={clearAgent} />}
       {agentRes && !agentAction && <AgentPanel res={agentRes} agentName={agentName} />}

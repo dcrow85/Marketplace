@@ -221,3 +221,29 @@
 .nav-trades { position: relative; }
 .nav-trades.needs-you { border-color: var(--signal); color: var(--signal); }
 .nav-dot { position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--signal); }
+
+/* the pile + the deal */
+.ofr-buy.on, .ofr-tradebtn.on { background: var(--have); color: var(--paper); border-color: var(--have); }
+.mk-ckthumb { position: relative; margin-right: 4px; }
+.mk-ckthumb img { width: 40px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 5px; border: 1px solid var(--rule); display: block; }
+.mk-cktag { position: absolute; bottom: -5px; left: -4px; width: 18px; height: 18px; border-radius: 50%; font-size: 10px; color: var(--paper); background: var(--ink); border: 1px solid var(--paper); cursor: pointer; }
+.mk-cktag.tr { background: var(--agent); }
+.mk-ckx { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; border-radius: 50%; font-size: 9px; color: var(--ink2); background: var(--paper); border: 0.5px solid var(--rule); cursor: pointer; }
+.mk-pilebadge { color: var(--paper); background: var(--ink); border-radius: 5px; padding: 1px 7px; font-size: 10px; }
+.zoom-acts { display: flex; gap: 8px; }
+.zoom-acts .ofr-buy, .zoom-acts .ofr-tradebtn { flex: none; padding: 10px 20px; font-size: 12px; }
+.mk-focusart { cursor: zoom-in; }
+.mkf-offer.done { background: var(--have); }
+
+.deal { border: 0.5px solid var(--ink); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.deal-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.deal-sec { display: flex; flex-direction: column; gap: 6px; }
+.deal-label { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); }
+.deal-row { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; color: var(--ink2); border-bottom: 0.5px solid var(--rule); padding: 5px 2px; }
+.deal-row .deal-ask { color: var(--ink); }
+.deal-sum { border-bottom: 0; color: var(--ink); }
+.deal-grid { max-height: 320px; overflow-y: auto; }
+.deal-cash { width: 110px; font-size: 15px; font-weight: 650; }
+.deal-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.deal-summary { font-size: 12px; color: var(--ink2); }
+.deal-fine { margin: 0; }

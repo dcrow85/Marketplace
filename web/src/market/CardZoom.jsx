@@ -1,7 +1,7 @@
 // The lightbox: cards at table size. This is a TCG — sometimes you just need to hold
 // the card up to the light before you trade for it. Facts ride under the art; the
 // scan line stays honest about what sample listings can and can't show.
-export default function CardZoom({ card, sub, witness, onClose }) {
+export default function CardZoom({ card, sub, witness, children, onClose }) {
   if (!card) return null
   return (
     <div className="zoom-overlay" role="dialog" aria-label={card.name_en} onClick={onClose}>
@@ -20,6 +20,7 @@ export default function CardZoom({ card, sub, witness, onClose }) {
               : '— no scans behind this listing: their word alone'}</div>
           )}
         </div>
+        {children && <div className="zoom-acts">{children}</div>}
         <button className="ghost sm zoom-close" onClick={onClose}>✕ close</button>
       </div>
     </div>
