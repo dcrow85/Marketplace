@@ -573,7 +573,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               return <span className="mono mk-ckwhisper" title="their side by asks and settlements, yours by settlements only — history, not an appraisal">⇄ your tradeables&rsquo; settlements ~{myTradeSum} USDC · ~{pct}% of this pile</span>
             })()}
             <span className="mk-ckacts">
-              <button className="primary mk-settle" onClick={() => setSettling(true)}>Settle up · {pile.length} →</button>
+              {pile.every((p) => p.mode === 'buy') && buysSum > 0 && (
+                <button className="primary mk-settle" onClick={() => {
+                  sendOffer(offersKeyFor(catalog.id, accountId), { to: open.id, want: pile.map((p) => ({ uid: p.uid })), give: [], cash: { side: 'from', amount: buysSum }, note: null })
+                  clearPile(pileKey, open.id)
+                  setSwapMsg(`paid their asks — ${buysSum} USDC for ${pile.length} card${pile.length === 1 ? '' : 's'} to ${handleFor(open.id)}. Watch Trades.`)
+                }}>Pay their asks · {buysSum} →</button>
+              )}
+              <button className={pile.every((p) => p.mode === 'buy') && buysSum > 0 ? 'ghost sm' : 'primary mk-settle'} onClick={() => setSettling(true)}>Settle up{pile.every((p) => p.mode === 'buy') && buysSum > 0 ? '' : ` · ${pile.length}`} →</button>
               <button className="ghost sm" onClick={() => clearPile(pileKey, open.id)}>clear</button>
             </span>
           </div>

@@ -55,6 +55,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Direct pay at asks (Crowley: "settle directly when paying the amount
+  they offer") — LIVE.** When the pile is all buys, the drawer grows a primary "Pay their asks · 157 →" that
+  sends the deal on the spot (Settle up demotes to secondary for hagglers); any ⇄-tagged card and the direct
+  button folds — trades need the room. Verified: two buys → one tap → "paid their asks — 157 USDC for 2 cards
+  to Sharp Sleever", pile cleared, persona accepted into escrow within seconds. Apex on the new bundle.
+  Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Pure buys stay pure (Crowley) — LIVE.** When the pile is all buys, the
   Settle page no longer shows your binder at all: just THEIR SIDE and THE CASH LINE, and the footer summary
   reads like a receipt ("2 cards · 18 USDC") instead of a trade ("N of theirs ⇄ 0 of yours"). Flip any card
