@@ -55,6 +55,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Pure buys stay pure (Crowley) — LIVE.** When the pile is all buys, the
+  Settle page no longer shows your binder at all: just THEIR SIDE and THE CASH LINE, and the footer summary
+  reads like a receipt ("2 cards · 18 USDC") instead of a trade ("N of theirs ⇄ 0 of yours"). Flip any card
+  to ⇄ and YOUR SIDE (with Anko's bar) appears; flip back and it folds. Verified both directions in preview;
+  apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **The drawer whisper (Crowley: "push it!") — LIVE.** The pile drawer now
   murmurs the coverage math BEFORE you enter the settle room: "⇄ your tradeables' settlements ~34 USDC ·
   ~80% of this pile" — their side priced by asks (buys) + settlements (trade-fors), your ⇄-marked cards by

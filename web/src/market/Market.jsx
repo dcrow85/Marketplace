@@ -199,8 +199,9 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
         </div>
       </div>
 
+      {trades.length > 0 && (
       <div className="stl-sec">
-        <div className="stl-label mono">your side{trades.length ? ' — they want something for the ⇄ cards' : ' — optional: cards can sweeten any deal'}</div>
+        <div className="stl-label mono">your side — they want something for the ⇄ cards</div>
         <div className="askbar stl-ask">
           <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
             alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />
@@ -229,6 +230,7 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
           {!myCards.length && <div className="empty">Nothing marked Have — cash can carry the whole deal.</div>}
         </div>
       </div>
+      )}
 
       <div className="stl-sec">
         <div className="stl-label mono">the cash line — one number squares the whole deal</div>
@@ -242,7 +244,9 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
       </div>
 
       <div className="stl-foot">
-        <span className="mono deal-summary">{pile.length} of theirs ⇄ {give.size} of yours{cash > 0 ? ` + ${cash} USDC` : ''}</span>
+        <span className="mono deal-summary">{trades.length || give.size
+          ? `${pile.length} of theirs ⇄ ${give.size} of yours${cash > 0 ? ` + ${cash} USDC` : ''}`
+          : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} USDC`}</span>
         <button className="primary stl-send" disabled={!canSend} onClick={send}>Send the deal to {handleFor(open.id)} →</button>
       </div>
       <p className="sc-note dim">A deal is a message, not a lock — cards and money only move through escrow. Their agent answers the whole basket at once.</p>
