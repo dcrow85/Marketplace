@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Settle room polish: scroll-to-top + ANKO runs your side (Crowley's
+  exact asks, incl. his two example calls) — LIVE, both halves.** (1) Opening Settle now starts at the top of
+  the page (you arrived somewhere new; act like it). (2) The your-side search box became Anko's bar — typing
+  still filters live, but asking him does real work via two vocabulary additions: **scope.duplicates**
+  (true when they say dupes/extras — resolved against the USER'S store copies, a dimension the catalog can't
+  see) and op **match_value** ("match the value of that Mizuki" / "make it even"): their side priced by asks
+  (buys) + recorded settlements (trades), YOUR candidates by settlements only, greedy closest-sum pick
+  PRESELECTS your give-cards, with the honest line ("Picked 1 of yours — settlements put them at ~34 against
+  their ~8. History, not an appraisal; adjust freely." / "None of your candidates have settlements on record —
+  nothing to match with."). Context override: on the Settle page ANY scope Anko returns is a lens on YOUR side
+  (the model sometimes says find_market for "my dupes for trade" — the room knows better); "✕ clear his lens"
+  restores. Probes 2/2 on Crowley's exact phrasings; preview verified (dupes lens → only the ×2 Mizuki;
+  match → preselection + overshoot honesty); prod parsing confirmed; apex on the new bundle. Surface lane.
+  No ask.
 - `[passive]` 2026-07-09 · Claude — **The SETTLE page (Crowley: pile is good, the deal needed its own room —
   "build your pile, settle on a new page") — LIVE.** The inline "Review the deal" expansion is gone; the pile
   drawer's button is now an unmissable primary "Settle up · 3 →" that swaps the whole view to a page built

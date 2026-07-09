@@ -137,9 +137,12 @@ def filter_system(data: dict) -> str:
             " - product_channel: booster | starter | promo | null\n\n"
             "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
             "action: a LIST of steps, IN ORDER. Each step:\n"
-            ' {"op": "mark_have" | "mark_want" | "unmark_have" | "unmark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade" | "find_market",\n'
+            ' {"op": "mark_have" | "mark_want" | "unmark_have" | "unmark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade" | "find_market" | "match_value",\n'
             '  "ask": number or null,  (per-card price if named; strip $ and units)\n'
-            '  "scope": {"rarity":.., "release_family":.., "product_channel":.., "star_alt":.., "category":.., "element":.., "set":.., "character":..}}\n'
+            '  "scope": {"rarity":.., "release_family":.., "product_channel":.., "star_alt":.., "category":.., "element":.., "set":.., "character":.., "duplicates":..}}\n'
+            "scope.duplicates: true when they say duplicates/dupes/extras/spares — cards they hold more than one copy of.\n"
+            "match_value is for BALANCING a trade ('match the value of that Mizuki', 'make my side even'): scope "
+            "optionally narrows which of THEIR OWN cards to offer; code does the matching from recorded settlements.\n"
             "'unmark'/'remove'/'clear' my haves -> unmark_have; my wants -> unmark_want (both also drop any "
             "listing on the card). "
             "find_market is for SHOPPING — 'I'd like to buy…', 'looking to trade for…', 'who's selling…': "
@@ -285,8 +288,8 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
-ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market"}
-SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails"}
+ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market", "match_value"}
+SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails", "duplicates"}
 
 
 def _valid_step(a, fallback_scope: dict) -> dict | None:
