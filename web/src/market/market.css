@@ -165,3 +165,8 @@
 .mkf-sub { font-size: 9.5px; color: var(--dim); padding: 0 8px; }
 .mkf-offer { margin: 4px 8px 0; font-size: 11px; color: var(--paper); background: var(--agent); border: 0; border-radius: 6px; padding: 8px 0; cursor: pointer; }
 .mkf-offer:hover { filter: brightness(1.08); }
+
+/* Anko at the show: his bar tops the market; the aisle dims what doesn't match */
+.mk-askbar { margin: 2px 0 4px; }
+.mk-dim { opacity: .35; }
+.mk-aisle { color: var(--agent); border: 0.5px solid var(--agent); border-radius: 5px; padding: 1px 7px; font-size: 10px; }

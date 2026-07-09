@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Anko at the card show (Crowley: tables give a card-show vibe — "but no
+  Anko?") — LIVE.** His ask bar (portrait, onibi-busy glow, "Ask Anko — who's selling…?") now tops ALL THREE
+  market views. Two answer modes, resolved client-side: SHOPPING calls (find_market) render the MarketFinds
+  tiles right in the market, one tap → seeded composer (composer now takes a cash seed from finds); BROWSE
+  calls become the AISLE — "ANKO · DOWN THE AISLE": every table gets a blue "N matches" badge, tables sort by
+  match count, zero-match tables dim to 35%, his commentary rides along. Refactor: `applyAgentFilter` →
+  shared `binder/agentFilter.js`; MarketFinds → own file, used by both rooms. Verified both modes in preview
+  (2 Benzai finds → composer; "water cards" → Curator 15 · Sleever 6 · Keeper 4 · Completionist 3 · desk 1);
+  apex on the new bundle. No backend change. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Art-led market + Anko shops (Crowley: "text isn't the right interface
   for TCG!" + agent buy/trade intents) — LIVE, both halves.** (1) IMAGES EVERYWHERE: market directory tables
   now fan their first five cards (overlapping thumbs + "+62"); the by-card page leads with the card's art;

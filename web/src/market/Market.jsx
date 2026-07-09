@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, catalogUrl, entryFor } from '../binder/collection.js'
 import { loadHidden, hiddenKeyFor } from './mockAgents.js'
+import { applyAgentFilter } from '../binder/agentFilter.js'
+import MarketFinds from './MarketFinds.jsx'
 import OfferComposer from './OfferComposer.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
@@ -43,14 +45,19 @@ function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onOffer }) {
   )
 }
 
-export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
+const API_BASE = import.meta.env.VITE_API_BASE || ''
+
+export default function Market({ accountId, agentName = 'Anko', catalog, focusUid, onClearFocus }) {
   const [data, setData] = useState(null)
   const [mkt, setMkt] = useState(null)
   const [sel, setSel] = useState(null) // seller id whose table is open
   const [wantsOnly, setWantsOnly] = useState(false)
   const [basket, setBasket] = useState(() => new Set()) // their cards you tapped, per table
-  const [composer, setComposer] = useState(null) // {seller, want:[uids]}
+  const [composer, setComposer] = useState(null) // {seller, want:[uids], cash?}
   const [swapMsg, setSwapMsg] = useState(null)
+  const [aq, setAq] = useState('')
+  const [abusy, setAbusy] = useState(false)
+  const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
   const [mockRev, setMockRev] = useState(0)
   useEffect(() => {
     const bump = () => setMockRev((r) => r + 1)
@@ -87,16 +94,81 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'have').map((c) => c.uid))
   }, [data, store])
 
-  const openComposer = (sellerId, uids) => setComposer({ seller: sellerId, want: uids })
+  const openComposer = (sellerId, uids, cash) => setComposer({ seller: sellerId, want: uids, cash: cash || null })
+  const askAnko = async () => {
+    const call = aq.trim()
+    if (!call || abusy) return
+    setAbusy(true)
+    try {
+      const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call, catalog: catalog.id }) })
+      setAres({ ok: r.ok, data: await r.json() })
+    } catch { setAres({ ok: false, data: { error: 'network' } }) }
+    finally { setAbusy(false); setAq('') }
+  }
   const onSent = (sellerId) => {
     setBasket(new Set())
     setSwapMsg(`offer sent to ${handleFor(sellerId)} — their agent is reading it. Watch Trades.`)
   }
 
+  const findStep = useMemo(() => {
+    if (!ares?.ok) return null
+    const a = ares.data?.action
+    const steps = Array.isArray(a) ? a : a ? [a] : []
+    return steps.find((st) => st.op === 'find_market') || null
+  }, [ares])
+  const finds = useMemo(() => {
+    if (!findStep || !data) return []
+    const scope = { ...(findStep.scope || {}) }
+    delete scope.owned
+    const uids = new Set(applyAgentFilter(data.cards, scope, {}).map((c) => c.uid))
+    const out = []
+    for (const sl of sellers) for (const l of sl.listings) {
+      if (!uids.has(l.uid)) continue
+      if (findStep.ask != null && l.ask > findStep.ask) continue
+      const c = byUid.get(l.uid)
+      if (c) out.push({ c, sellerId: sl.id, l })
+    }
+    return out.sort((a, b) => a.l.ask - b.l.ask).slice(0, 24)
+  }, [findStep, data, sellers, byUid])
+  // a plain browse call narrows the AISLE: which tables carry matches
+  const aisleMatch = useMemo(() => {
+    if (!ares?.ok || findStep || !data) return null
+    const f = ares.data?.filter
+    if (!f) return null
+    const scope = { ...f }
+    delete scope.owned
+    return new Set(applyAgentFilter(data.cards, scope, {}).map((c) => c.uid))
+  }, [ares, findStep, data])
+
   if (!data || !mkt) return <div className="empty">Opening the market…</div>
   if (!sellers.length) return <div className="empty">No tables in this catalog yet.</div>
 
   const open = sellers.find((s) => s.id === sel)
+  const ankoBar = (
+    <div className="askbar mk-askbar">
+      <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
+        alt="" title={`${agentName} — your agent at the show`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
+      <input value={aq} maxLength={280} placeholder={`Ask ${agentName} — who's selling…?`}
+        onChange={(e) => { setAq(e.target.value); if (ares) setAres(null) }}
+        onKeyDown={(e) => { if (e.key === 'Enter') askAnko() }} />
+      <button className="askbtn" onClick={askAnko} disabled={abusy || !aq.trim()}>{abusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
+    </div>
+  )
+  const ankoPanel = ares && (
+    !ares.ok
+      ? <div className="apanel"><div className="aoff">{agentName}&rsquo;s lamp is dark — couldn&rsquo;t reach him. Try again.</div></div>
+      : findStep
+        ? <MarketFinds agentName={agentName} reading={ares.data.filter?.reading} finds={finds} mode={findStep.mode || 'buy'}
+            onOpenOffer={({ seller, want, cash }) => { setAres(null); openComposer(seller, want, cash) }} onDismiss={() => setAres(null)} />
+        : aisleMatch
+          ? <div className="aprop"><span className="atag jud">{agentName} · down the aisle</span>
+              <div className="aprop-line">{aisleMatch.size ? <>Tables carrying matches are marked — the rest step back.</> : <>No table carries that right now.</>}</div>
+              {ares.data.filter?.reading && <div className="aprop-read dim">{ares.data.filter.reading}</div>}
+              {ares.data.result?.commentary && <div className="aprop-read">{ares.data.result.commentary}</div>}
+              <div className="aprop-acts"><button className="ghost sm" onClick={() => setAres(null)}>✕ done</button></div>
+            </div>
+          : null
+  )
 
   // ---- by-card focus: everyone asking on one card ----
   if (focusUid) {
@@ -105,6 +177,8 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     return (
       <div className="mk">
         <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {ankoBar}
+        {ankoPanel}
         {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
@@ -147,6 +221,8 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
     return (
       <div className="mk">
         <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {ankoBar}
+        {ankoPanel}
         {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
@@ -174,7 +250,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         </div>
         <div className="mk-tiles">
           {rows.map(({ l, c }) => (
-            <button key={c.uid} className={'ofr-tile' + (basket.has(c.uid) ? ' sel' : '')}
+            <button key={c.uid} className={'ofr-tile' + (basket.has(c.uid) ? ' sel' : '') + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}
               onClick={() => setBasket((p) => { const n = new Set(p); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })}>
               {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
               <span className="ofr-name">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span>
@@ -227,6 +303,8 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
   return (
     <div className="mk">
       <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+      {ankoBar}
+      {ankoPanel}
         {swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>}
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
@@ -237,12 +315,15 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         </div>
       </div>
       <div className="mk-grid">
-        {sellers.map((s) => {
+        {[...sellers].sort((a, b) => aisleMatch
+          ? b.listings.filter((l) => aisleMatch.has(l.uid)).length - a.listings.filter((l) => aisleMatch.has(l.uid)).length
+          : 0).map((s) => {
           const total = s.listings.reduce((t, { ask, copies }) => t + ask * (copies || 1), 0)
           const witnessed = s.listings.filter((l) => l.witness).length
           const wantsHere = s.listings.filter((l) => myWants.has(l.uid)).length
+          const aisleN = aisleMatch ? s.listings.filter((l) => aisleMatch.has(l.uid)).length : null
           return (
-            <button key={s.id} className="mk-table" onClick={() => setSel(s.id)}>
+            <button key={s.id} className={'mk-table' + (aisleN === 0 ? ' mk-dim' : '')} onClick={() => setSel(s.id)}>
               <div className="mk-seller">
                 <Avatar seed={s.id} size={34} />
                 <div>
@@ -255,6 +336,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
                 {s.listings.length > 5 && <span className="mono mk-more">+{s.listings.length - 5}</span>}
               </div>
               <div className="mk-tmeter mono">
+                {aisleN > 0 && <span className="mk-aisle">{aisleN} match{aisleN === 1 ? '' : 'es'}</span>}
                 <span>{s.listings.length} listed{(s.lots || []).length ? ` + ${s.lots.length} lot` : ''} · {total} USDC</span>
                 <span className={witnessed === s.listings.length ? 'mk-wit ok' : witnessed ? '' : 'mk-wit none'}>
                   {witnessed ? `${witnessed}/${s.listings.length} witnessed` : 'nothing witnessed'}

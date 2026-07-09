@@ -4,6 +4,8 @@ import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
 import { handleFor } from '../identity.js'
+import { applyAgentFilter } from './agentFilter.js'
+import MarketFinds from '../market/MarketFinds.jsx'
 import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
 import '../scan/scan.css'
 
@@ -101,35 +103,6 @@ function provBadge(c) {
   if (c.image_status === 'exact_source') return null // the default is unmarked — badge only exceptions
   if (c.image_status === 'provider_path') return <span className="prov pv-ref">ref</span>
   return null
-}
-
-// Client-side mirror of cairn_browse.apply_filter, so the grid narrows to EXACTLY the
-// agent's survivors and the count matches what it said ("cut to N candidates").
-function applyAgentFilter(cards, f, setById) {
-  let out = cards
-  if (f.release_family) out = out.filter((c) => (c.release_family || '').toLowerCase() === String(f.release_family).toLowerCase())
-  if (f.product_channel) {
-    const ch = String(f.product_channel).toLowerCase()
-    out = out.filter((c) => ch === 'starter'
-      ? String(c.product_channel || '').startsWith('starter_deck_')
-      : (c.product_channel || '').toLowerCase() === ch)
-  }
-  if (f.holo != null) out = out.filter((c) => !!c.holo === !!f.holo)
-  if (f.owned != null) out = out.filter((c) => !!c.owned === !!f.owned)
-  if (f.exclude_grails) out = out.filter((c) => (c.band_rank || 0) < 3)
-  if (f.category) out = out.filter((c) => (c.category || '').toLowerCase() === String(f.category).toLowerCase())
-  if (f.element) out = out.filter((c) => (c.element || '').toLowerCase() === String(f.element).toLowerCase())
-  if (f.star_alt != null) out = out.filter((c) => !!c.star_alt === !!f.star_alt)
-  if (f.rarity) {
-    const r = String(f.rarity).trim().toLowerCase()
-    const known = new Set(cards.map((c) => (c.rarity || '').trim().toLowerCase()))
-    out = known.has(r) // exact code — 'C' must not swallow 'UC'
-      ? out.filter((c) => (c.rarity || '').trim().toLowerCase() === r)
-      : out.filter((c) => (c.rarity || '').toLowerCase().includes(r))
-  }
-  if (f.set) { const s = String(f.set).toLowerCase(); out = out.filter((c) => (setById[c.set_id]?.label || '').toLowerCase().includes(s)) }
-  if (f.character) { const ch = String(f.character).toLowerCase(); out = out.filter((c) => (c.name_en || '').toLowerCase().includes(ch) || (c.name_ja || '').toLowerCase().includes(ch)) }
-  return out
 }
 
 function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk, onQuickSell }) {
@@ -598,34 +571,6 @@ function ActionBar({ agentName, plan, reading, done, onApply, onUndo, onDismiss 
             <button className="ghost sm" onClick={onDismiss}>cancel</button>
             {plan.steps.some((st) => st.op === 'list_for_sale' && st.ask == null && st.affected.length > 0) && <span className="dim aprop-note">no price named on a listing step — those cards list without an ask</span>}
           </div>}
-    </div>
-  )
-}
-
-// Anko went shopping: the find_market step resolved against the live tables. Cards
-// lead (this is a TCG), facts ride along (ask · witness), and every tile is one tap
-// from a seeded offer. He surfaces; you decide.
-function MarketFinds({ agentName, reading, finds, mode, onOpenOffer, onDismiss }) {
-  return (
-    <div className="aprop">
-      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · found {finds.length ? `${finds.length} on the market` : 'nothing'}</span>
-      {reading && <div className="aprop-read dim">{reading}</div>}
-      {finds.length
-        ? <div className="mkf-grid">
-            {finds.map(({ c, sellerId, l }, i) => (
-              <div key={i} className="mkf-tile">
-                {c.image ? <img src={c.image} alt={c.name_en} loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                <span className="mkf-name">{c.name_en}</span>
-                <span className="mono mkf-sub">{handleFor(sellerId)}</span>
-                <span className="mono mkf-sub">{l.ask} USDC · {l.witness ? `✓w·${l.witness}` : 'no scan'}</span>
-                <button className="mkf-offer mono" onClick={() => onOpenOffer({ seller: sellerId, want: [c.uid], cash: mode === 'buy' ? { side: 'from', amount: l.ask } : null })}>
-                  {mode === 'buy' ? `offer ${l.ask} →` : '⇄ offer →'}
-                </button>
-              </div>
-            ))}
-          </div>
-        : <div className="aprop-read">Nobody&rsquo;s selling that right now. Mark it as a Want and I&rsquo;ll keep the lamp on.</div>}
-      <div className="aprop-acts"><button className="ghost sm" onClick={onDismiss}>✕ done</button></div>
     </div>
   )
 }
