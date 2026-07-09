@@ -247,3 +247,16 @@
 .deal-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .deal-summary { font-size: 12px; color: var(--ink2); }
 .deal-fine { margin: 0; }
+
+/* the Settle page: its own room */
+.stl-sec { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.stl-label { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); }
+.stl-give { max-height: 380px; overflow-y: auto; }
+.stl-mode.on { color: var(--agent); border-color: var(--agent); }
+.stl-x { flex: 0 0 34px; }
+.stl-cashrow { display: flex; align-items: center; gap: 8px; }
+.stl-dollar { font-size: 16px; }
+.stl-cash { width: 130px; font-size: 18px; font-weight: 650; padding: 10px 12px; }
+.stl-foot { position: sticky; bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--bar); backdrop-filter: blur(8px); border: 0.5px solid var(--ink); border-radius: 12px; padding: 12px 16px; margin-top: 8px; }
+.stl-send { padding: 13px 24px; }
+.mk-settle { padding: 11px 20px; }

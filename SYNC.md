@@ -55,6 +55,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **The SETTLE page (Crowley: pile is good, the deal needed its own room —
+  "build your pile, settle on a new page") — LIVE.** The inline "Review the deal" expansion is gone; the pile
+  drawer's button is now an unmissable primary "Settle up · 3 →" that swaps the whole view to a page built
+  for the process: SETTLE UP header (avatar, "one deal with {handle}", ← back to the table) → THEIR SIDE
+  (pile as full card-art tiles: price stickers on buys, scan lines, [$ buy]/[⇄ trade] mode flips, ✕ puts a
+  card back) → YOUR SIDE (binder grid + search; labeled "they want something for the ⇄ cards" when trades
+  are tagged, "optional: cards can sweeten any deal" when not) → THE CASH LINE (big input, follows the buy
+  total until touched) → Anko's record line → sticky footer: summary + "Send the deal to {handle} →". Clean
+  on purpose: no ask bar, no aisle, nothing but the deal. Empty pile auto-returns to the table. Verified
+  end-to-end (pile 3 → settle → flip modes → give 1 → send → back at table with banner) — and Curator's
+  agent COUNTERED the previous test deal with the frame correctly flipped, so basket negotiation holds.
+  Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **THE PILE: one deal per table (Crowley's model, built) — LIVE.** The
   card-show insight made literal: you don't transact per card, you build a PILE and cut one deal. (1) buy·N /
   ⇄trade everywhere (tiles, the LIGHTBOX — which now has price + both buttons right under the art — the

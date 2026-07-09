@@ -43,10 +43,11 @@ function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
   )
 }
 
-// The checkout: your pile, itemized — buys at their asks, trade-fors with your side
-// picked inline, ONE editable cash line (prefilled to the buy total; haggle if you
-// dare, the seller's agent answers). One button sends the whole deal as one offer.
-function DealCheckout({ open, pile, byUid, data, store, mkt, catalog, accountId, onClose, onSent }) {
+// The Settle page: its own room, built for the process. You piled cards up at the
+// table; here you square the deal — their side with the art in front of you, your
+// side from your binder, one cash line, one send. Clean on purpose: no ask bar, no
+// aisle, nothing but the deal.
+function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, pileKey, onBack, onSent }) {
   const [give, setGive] = useState(() => new Set())
   const [qg, setQg] = useState('')
   const [cashEdit, setCashEdit] = useState(null) // null = follow the buy total
@@ -69,7 +70,7 @@ function DealCheckout({ open, pile, byUid, data, store, mkt, catalog, accountId,
     const sales = { ...(mkt?.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }
     const sum = (uids) => {
       let t = 0, known = 0
-      for (const uid of uids) { const s = sales[uid]?.[0]; if (s) { t += s.p; known++ } }
+      for (const uid of uids) { const x = sales[uid]?.[0]; if (x) { t += x.p; known++ } }
       return { t, known, n: uids.length }
     }
     const w = sum(pile.map((p) => p.uid)), g = sum([...give])
@@ -80,7 +81,7 @@ function DealCheckout({ open, pile, byUid, data, store, mkt, catalog, accountId,
     return [part(w, 'their side:'), part(g, 'yours:')].filter(Boolean).join(' · ')
   }, [mkt, pile, give, catalog])
 
-  const canSend = pile.length > 0 && (trades.length === 0 || give.size > 0 || cash > buysSum || cash > 0)
+  const canSend = pile.length > 0 && (trades.length === 0 || give.size > 0 || cash > 0)
   const send = () => {
     sendOffer(offersKeyFor(catalog.id, accountId), {
       to: open.id,
@@ -89,64 +90,82 @@ function DealCheckout({ open, pile, byUid, data, store, mkt, catalog, accountId,
       cash: cash > 0 ? { side: 'from', amount: cash } : null,
       note,
     })
-    clearPile(pileKeyFor(catalog.id, accountId), open.id)
+    clearPile(pileKey, open.id)
     onSent()
   }
 
-  const nm = (uid) => byUid.get(uid)?.name_en || uid
   return (
-    <div className="deal">
-      <div className="deal-head">
-        <span className="ek">The deal — one offer to {handleFor(open.id)}</span>
-        <button className="ghost sm" onClick={onClose}>collapse</button>
-      </div>
-      {buys.length > 0 && (
-        <div className="deal-sec">
-          <span className="mono deal-label">buying at their asks</span>
-          {buys.map((p) => (
-            <div key={p.uid} className="deal-row mono">{nm(p.uid)} <span className="deal-ask">{askOf(p.uid)} USDC</span></div>
-          ))}
-          <div className="deal-row mono deal-sum">asks total <b>{buysSum} USDC</b></div>
-        </div>
-      )}
-      {trades.length > 0 && (
-        <div className="deal-sec">
-          <span className="mono deal-label">trading for</span>
-          {trades.map((p) => (
-            <div key={p.uid} className="deal-row mono">{nm(p.uid)} <span className="dim">{scanLabel(open.listings.find((l) => l.uid === p.uid)?.witness)}</span></div>
-          ))}
-          <span className="mono deal-label">your side{myCards.some(({ e }) => e.trade) ? ' — open-to-trade first' : ''}</span>
-          {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}
-          <div className="ofr-grid deal-grid">
-            {myCards.filter(({ c }) => hit(c) || give.has(c.uid)).slice(0, 60).map(({ c, e }) => (
-              <button key={c.uid} className={'ofr-tile' + (give.has(c.uid) ? ' sel' : '')}
-                onClick={() => setGive((p) => { const n = new Set(p); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })}>
-                {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                <span className="ofr-name">{c.name_en}</span>
-                <span className="mono ofr-sub">{condStr(e)}{e.trade ? ' · ⇄' : ''}</span>
-                {give.has(c.uid) && <span className="ofr-check">✓</span>}
-              </button>
-            ))}
-            {!myCards.length && <div className="empty">Nothing marked Have — cash can carry the whole deal.</div>}
+    <div className="mk stl">
+      <div className="mk-head">
+        <div className="mk-seller">
+          <Avatar seed={open.id} size={40} />
+          <div>
+            <div className="ek">Settle up</div>
+            <div className="mk-handle">one deal with {handleFor(open.id)}</div>
           </div>
         </div>
-      )}
-      <div className="deal-sec">
-        <span className="mono deal-label">the cash line — one number squares the whole deal</span>
-        <div className="ofr-cash">
-          <span className="fpre">$</span>
-          <input className="ti num deal-cash" type="number" min="0" value={cash}
-            onChange={(e) => setCashEdit(e.target.value)} />
+        <button className="ghost sm" onClick={onBack}>← back to the table</button>
+      </div>
+
+      <div className="stl-sec">
+        <div className="stl-label mono">their side — your pile{buysSum > 0 ? ` · buys come to ${buysSum} USDC` : ''}</div>
+        <div className="ofr-grid">
+          {pile.map((p) => {
+            const c = byUid.get(p.uid)
+            if (!c) return null
+            const l = open.listings.find((x) => x.uid === p.uid)
+            return (
+              <div key={p.uid} className="ofr-tile stl-tile">
+                {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+                {p.mode === 'buy' && <span className="pricetag">{askOf(p.uid)} USDC</span>}
+                <span className="ofr-name">{c.name_en}</span>
+                <span className="mono ofr-sub">{scanLabel(l?.witness)}</span>
+                <span className="ofr-acts">
+                  <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
+                    onClick={() => toggleMode(pileKey, open.id, p.uid)}
+                    title="flip between buying at the ask and trading for it">
+                    {p.mode === 'buy' ? '$ buy' : '⇄ trade'}</button>
+                  <button className="ofr-tradebtn stl-x" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back on their table">✕</button>
+                </span>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      <div className="stl-sec">
+        <div className="stl-label mono">your side{trades.length ? ' — they want something for the ⇄ cards' : ' — optional: cards can sweeten any deal'}</div>
+        {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}
+        <div className="ofr-grid stl-give">
+          {myCards.filter(({ c }) => hit(c) || give.has(c.uid)).slice(0, 60).map(({ c, e }) => (
+            <button key={c.uid} className={'ofr-tile' + (give.has(c.uid) ? ' sel' : '')}
+              onClick={() => setGive((pr) => { const n = new Set(pr); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })}>
+              {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+              <span className="ofr-name">{c.name_en}</span>
+              <span className="mono ofr-sub">{condStr(e)}{e.trade ? ' · ⇄' : ''}</span>
+              {give.has(c.uid) && <span className="ofr-check">✓</span>}
+            </button>
+          ))}
+          {!myCards.length && <div className="empty">Nothing marked Have — cash can carry the whole deal.</div>}
+        </div>
+      </div>
+
+      <div className="stl-sec">
+        <div className="stl-label mono">the cash line — one number squares the whole deal</div>
+        <div className="stl-cashrow">
+          <span className="fpre stl-dollar">$</span>
+          <input className="ti num stl-cash" type="number" min="0" value={cash} onChange={(e) => setCashEdit(e.target.value)} />
           <span className="mono dim">USDC{cashEdit == null && buysSum > 0 ? ' · following the buy total' : ''}</span>
         </div>
         <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note} onChange={(e) => setNote(e.target.value)} />
         {recordLine && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine} — settlements are history, not an appraisal.</div>}
       </div>
-      <div className="deal-foot">
+
+      <div className="stl-foot">
         <span className="mono deal-summary">{pile.length} of theirs ⇄ {give.size} of yours{cash > 0 ? ` + ${cash} USDC` : ''}</span>
-        <button className="primary" disabled={!canSend} onClick={send}>Send the deal →</button>
+        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send the deal to {handleFor(open.id)} →</button>
       </div>
-      <p className="sc-note dim deal-fine">A deal is a message, not a lock — cards and money only move through escrow. Their agent answers the whole basket at once.</p>
+      <p className="sc-note dim">A deal is a message, not a lock — cards and money only move through escrow. Their agent answers the whole basket at once.</p>
     </div>
   )
 }
@@ -156,7 +175,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [mkt, setMkt] = useState(null)
   const [sel, setSel] = useState(null) // seller id whose table is open
   const [wantsOnly, setWantsOnly] = useState(false)
-  const [ckOpen, setCkOpen] = useState(false) // the deal checkout, expanded
+  const [settling, setSettling] = useState(false) // the Settle page, its own room
   const [swapMsg, setSwapMsg] = useState(null)
   const [zoom, setZoom] = useState(null) // {c, l, sellerId} — the card held up to the light
   const [aq, setAq] = useState('')
@@ -177,7 +196,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const store = useMemo(() => loadStore(storeKey), [storeKey, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
   const piles = useMemo(() => loadPiles(pileKey), [pileKey, pileRev]) // eslint-disable-line react-hooks/exhaustive-deps -- pileRev is the invalidation signal
 
-  useEffect(() => { setCkOpen(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, checkout folds
+  useEffect(() => { setSettling(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle folds
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- reset + hydrate on catalog switch */
     setData(null); setMkt(null); setSel(null)
@@ -336,6 +355,18 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     )
   }
 
+  // ---- the Settle page: its own room ----
+  if (open && settling) {
+    const pile = pileOf(open.id)
+    if (!pile.length) { setSettling(false); return null }
+    return (
+      <SettlePage open={open} pile={pile} byUid={byUid} data={data} store={store} mkt={mkt}
+        catalog={catalog} accountId={accountId} pileKey={pileKey}
+        onBack={() => setSettling(false)}
+        onSent={() => { setSettling(false); setSwapMsg(`the deal went to ${handleFor(open.id)} — their agent is reading it. Watch Trades.`) }} />
+    )
+  }
+
   // ---- one seller's table ----
   if (open) {
     const pile = pileOf(open.id)
@@ -424,12 +455,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             {swapBait.length > 0 && <div className="mk-swapnote dim">You hold {swapBait.length} card{swapBait.length === 1 ? '' : 's'} they want — offer them in a deal.</div>}
           </div>
         )}
-        {ckOpen && pile.length > 0 && (
-          <DealCheckout key={open.id} open={open} pile={pile} byUid={byUid} data={data} store={store} mkt={mkt}
-            catalog={catalog} accountId={accountId}
-            onClose={() => setCkOpen(false)}
-            onSent={() => { setCkOpen(false); setSwapMsg(`the deal went to ${handleFor(open.id)} — their agent is reading it. Watch Trades.`) }} />
-        )}
         {pile.length > 0 && (
           <div className="mk-checkout">
             <div className="mk-ckthumbs">
@@ -446,7 +471,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             </div>
             <span className="mono mk-cksum">your pile · {pile.length} card{pile.length === 1 ? '' : 's'}{buysSum > 0 ? ` · buys ${buysSum} USDC` : ''}</span>
             <span className="mk-ckacts">
-              {!ckOpen && <button className="primary" onClick={() => setCkOpen(true)}>Review the deal →</button>}
+              <button className="primary mk-settle" onClick={() => setSettling(true)}>Settle up · {pile.length} →</button>
               <button className="ghost sm" onClick={() => clearPile(pileKey, open.id)}>clear</button>
             </span>
           </div>
