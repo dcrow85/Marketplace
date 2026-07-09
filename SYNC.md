@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Card-show polish, Crowley's 7-item punch list — LIVE.** (1) MY TABLE is
+  a table now: avatar+handle header, art tiles with inline $-ask fields, ⇄ trade flags, and a "table sign"
+  input (140 chars, stored per account, honest placeholder: "a line buyers will read when publishing lands").
+  (2+4) BUY-AT-ASK is one tap: every market tile has labeled [buy 9] and [⇄ trade] buttons (tile tap still
+  baskets for multi-card offers); quickBuy sends the pure-cash offer at their ask instantly. (3) The cryptic
+  "✓w·4" became plain language everywhere — "✓ 3 scans" / "— no scans", tooltips carrying the witness-not-
+  proof line. (5) The composer grids grew SEARCH (their table + your binder, appears >8 cards; selected cards
+  stay visible through a filter). (6) Asks are PRICE STICKERS on the card art (mono, top-left, card-show
+  style) — market tiles + composer. (7) Borders unified: tiles 0.5px like the rest of the app, selection is
+  one clean 2px ring. Verified: table view, Fable's table with stickers+buttons, one-tap buy ("offer sent at
+  their ask — 3 USDC for Fire Storm") accepted into escrow by the desk. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Anko at the card show (Crowley: tables give a card-show vibe — "but no
   Anko?") — LIVE.** His ask bar (portrait, onibi-busy glow, "Ask Anko — who's selling…?") now tops ALL THREE
   market views. Two answer modes, resolved client-side: SHOPPING calls (find_market) render the MarketFinds

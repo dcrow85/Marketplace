@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, catalogUrl, entryFor } from '../binder/collection.js'
 import { loadHidden, hiddenKeyFor } from './mockAgents.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
+import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import MarketFinds from './MarketFinds.jsx'
 import OfferComposer from './OfferComposer.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
@@ -18,8 +19,8 @@ function Avatar({ seed, size = 26 }) {
 }
 
 function witnessCell(w) {
-  if (!w) return <span className="mono mk-wit none">— no scan</span>
-  return <span className="mono mk-wit ok">✓ witness ·{w}</span>
+  if (!w) return <span className="mono mk-wit none" title="nothing recorded — you'd be trading on their word alone">— no scans</span>
+  return <span className="mono mk-wit ok" title={`${w} pile scan${w === 1 ? '' : 's'} recorded — a witness, not proof`}>✓ {w} scan{w === 1 ? '' : 's'}</span>
 }
 
 function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onOffer }) {
@@ -95,6 +96,10 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   }, [data, store])
 
   const openComposer = (sellerId, uids, cash) => setComposer({ seller: sellerId, want: uids, cash: cash || null })
+  const quickBuy = (c, sellerId, l) => {
+    sendOffer(offersKeyFor(catalog.id, accountId), { to: sellerId, want: [{ uid: c.uid }], give: [], cash: { side: 'from', amount: l.ask }, note: null })
+    setSwapMsg(`offer sent at their ask — ${l.ask} USDC for ${c.name_en} to ${handleFor(sellerId)}. Watch Trades.`)
+  }
   const askAnko = async () => {
     const call = aq.trim()
     if (!call || abusy) return
@@ -250,13 +255,19 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         </div>
         <div className="mk-tiles">
           {rows.map(({ l, c }) => (
-            <button key={c.uid} className={'ofr-tile' + (basket.has(c.uid) ? ' sel' : '') + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}
+            <div key={c.uid} className={'ofr-tile' + (basket.has(c.uid) ? ' sel' : '') + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}
+              role="button" tabIndex={0} title="tap the card to add it to a multi-card offer"
               onClick={() => setBasket((p) => { const n = new Set(p); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })}>
               {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+              <span className="pricetag">{l.ask} USDC</span>
               <span className="ofr-name">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span>
-              <span className="mono ofr-sub">{l.ask} USDC · {l.witness ? `✓w·${l.witness}` : 'no scan'}</span>
+              <span className="mono ofr-sub">{l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : '— no scans'}</span>
+              <span className="ofr-acts">
+                <button className="ofr-buy" onClick={(ev) => { ev.stopPropagation(); quickBuy(c, open.id, l) }} title="send an offer at their ask — one tap">buy {l.ask}</button>
+                <button className="ofr-tradebtn" onClick={(ev) => { ev.stopPropagation(); openComposer(open.id, [c.uid]) }} title="offer your cards for it">⇄ trade</button>
+              </span>
               {basket.has(c.uid) && <span className="ofr-check">✓</span>}
-            </button>
+            </div>
           ))}
           {!rows.length && <div className="empty">Nothing on this table matches your wants.</div>}
         </div>

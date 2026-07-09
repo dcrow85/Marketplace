@@ -15,7 +15,7 @@ export default function MarketFinds({ agentName, reading, finds, mode, onOpenOff
                 {c.image ? <img src={c.image} alt={c.name_en} loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
                 <span className="mkf-name">{c.name_en}</span>
                 <span className="mono mkf-sub">{handleFor(sellerId)}</span>
-                <span className="mono mkf-sub">{l.ask} USDC · {l.witness ? `✓w·${l.witness}` : 'no scan'}</span>
+                <span className="mono mkf-sub">{l.ask} USDC · {l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}</span>
                 <button className="mkf-offer mono" onClick={() => onOpenOffer({ seller: sellerId, want: [c.uid], cash: mode === 'buy' ? { side: 'from', amount: l.ask } : null })}>
                   {mode === 'buy' ? `offer ${l.ask} →` : '⇄ offer →'}
                 </button>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, saveStore, catalogUrl, entryFor, condStr } from './collection.js'
+import { handleFor, avatarSVG } from '../identity.js'
 
 // Your table: a consignment ledger, not a filter. Just what you're offering — asks,
 // condition, evidence status, totals. Buyers meet it in the market and offer against it.
@@ -23,6 +24,14 @@ export default function SellPile({ accountId, catalog }) {
       .filter(({ e }) => e.stance === 'have' && (e.sell || e.trade))
   }, [data, store])
 
+  const noteKey = `cairn-table-note:${catalog.id}:${accountId || 'anon'}`
+  const [note, setNoteState] = useState('')
+  useEffect(() => {
+    /* eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate the table sign per account */
+    try { setNoteState(localStorage.getItem(noteKey) || '') } catch { setNoteState('') }
+  }, [noteKey])
+  const setNote = (v) => { setNoteState(v); try { localStorage.setItem(noteKey, v) } catch { /* ignore */ } }
+
   const setAsk = (uid, v) => {
     setStore((prev) => {
       const next = { ...prev, [uid]: { ...(prev[uid] || {}), ask: v } }
@@ -45,33 +54,34 @@ export default function SellPile({ accountId, catalog }) {
 
   return (
     <div className="sp">
-      <div className="sp-head">
+      <div className="sp-header">
+        <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(accountId, 40) }} />
         <div>
           <div className="ek">Your table</div>
-          <div className="sp-title">{totalCards} card{totalCards === 1 ? '' : 's'}
-            <span className="dim"> · {total} USDC asked{tradeN ? ` · ${tradeN} open to trade` : ''}{missing ? ` · ${missing} missing an ask` : ''}</span>
+          <div className="sp-title">{handleFor(accountId)}
+            <span className="dim"> · {totalCards} card{totalCards === 1 ? '' : 's'} · {total} USDC asked{tradeN ? ` · ${tradeN} open to trade` : ''}{missing ? ` · ${missing} missing an ask` : ''}</span>
           </div>
         </div>
       </div>
-      <div className="sp-rows">
+      <input className="sp-note" maxLength={140} placeholder="your table sign — a line buyers will read when publishing lands…"
+        value={note} onChange={(e) => setNote(e.target.value)} />
+      <div className="sp-tiles">
         {rows.map(({ c, e }) => (
-          <div key={c.uid} className="sp-row">
-            <span className="sp-name">{c.name_en || c.uid}
-              {(e.copies || 1) > 1 && <span className="mono dim"> ×{e.copies}</span>}
-              <span className="mono sp-num">{c.num}</span>
-            </span>
-            <span className="mono sp-cond">{condStr(e)}{e.trade ? ' · ⇄ trade' : ''}</span>
-            <span className="mono sp-wit">{(e.pile || []).length || e.photo_hash ? '✓ witness' : '—'}</span>
-            <span className="sp-ask">
+          <div key={c.uid} className="sp-tile">
+            {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+            {e.trade && <span className="sp-tradeflag">⇄ trade</span>}
+            <span className="sp-tname">{c.name_en || c.uid}{(e.copies || 1) > 1 ? ` ×${e.copies}` : ''}</span>
+            <span className="mono sp-tsub">{condStr(e)} · {(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}</span>
+            <span className="sp-task">
               <span className="fpre">$</span>
-              <input className="ti num" type="number" min="0" placeholder="ask"
+              <input type="number" min="0" placeholder="ask"
                 value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
             </span>
           </div>
         ))}
       </div>
       <p className="sc-note dim">Asks are per copy. Buyers see this table in the market and make offers against it —
-        cards, cash, or both.</p>
+        cards, cash, or both. The sign and the spread are yours to curate.</p>
     </div>
   )
 }
