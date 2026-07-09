@@ -141,3 +141,27 @@
 .ofl-baskets { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13px; }
 .ofl-side i { font-style: normal; font-size: 10px; margin-right: 5px; }
 .ofl-cash { font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--rule); border-radius: 5px; padding: 1px 7px; }
+
+/* ---- art everywhere: this is a TCG ---- */
+/* the directory: a fan of each table's cards */
+.mk-spread { display: flex; align-items: center; height: 64px; }
+.mk-spread img { width: 44px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 4px; border: 1px solid var(--rule); margin-right: -12px; box-shadow: 2px 0 6px rgba(0,0,0,.18); }
+.mk-spread .mk-more { margin-left: 20px; font-size: 10.5px; color: var(--dim); }
+/* the by-card page leads with the card */
+.mk-focushead { display: flex; align-items: center; gap: 14px; }
+.mk-focusart { width: 64px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 6px; border: 1px solid var(--rule); }
+/* hunting chips carry a face */
+.mk-hunt { display: inline-flex; align-items: center; gap: 6px; }
+.mk-hunt img { width: 20px; height: 28px; object-fit: cover; border-radius: 3px; }
+/* offer ledger: baskets are card chips */
+.ofl-side { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ofl-chip { display: inline-flex; align-items: center; gap: 5px; border: 0.5px solid var(--rule); border-radius: 6px; padding: 2px 8px 2px 2px; font-size: 12px; }
+.ofl-chip img { width: 26px; height: 36px; object-fit: cover; border-radius: 4px; }
+/* Anko's market finds: art-led tiles, one tap from an offer */
+.mkf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; margin-top: 10px; }
+.mkf-tile { display: flex; flex-direction: column; gap: 3px; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 9px; overflow: hidden; padding-bottom: 7px; }
+.mkf-tile img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; display: block; }
+.mkf-name { font-size: 11.5px; line-height: 1.3; padding: 3px 8px 0; }
+.mkf-sub { font-size: 9.5px; color: var(--dim); padding: 0 8px; }
+.mkf-offer { margin: 4px 8px 0; font-size: 11px; color: var(--paper); background: var(--agent); border: 0; border-radius: 6px; padding: 8px 0; cursor: pointer; }
+.mkf-offer:hover { filter: brightness(1.08); }

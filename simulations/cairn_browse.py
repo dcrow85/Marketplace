@@ -137,11 +137,14 @@ def filter_system(data: dict) -> str:
             " - product_channel: booster | starter | promo | null\n\n"
             "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
             "action: a LIST of steps, IN ORDER. Each step:\n"
-            ' {"op": "mark_have" | "mark_want" | "unmark_have" | "unmark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade",\n'
+            ' {"op": "mark_have" | "mark_want" | "unmark_have" | "unmark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade" | "find_market",\n'
             '  "ask": number or null,  (per-card price if named; strip $ and units)\n'
             '  "scope": {"rarity":.., "release_family":.., "product_channel":.., "star_alt":.., "category":.., "element":.., "set":.., "character":..}}\n'
             "'unmark'/'remove'/'clear' my haves -> unmark_have; my wants -> unmark_want (both also drop any "
             "listing on the card). "
+            "find_market is for SHOPPING — 'I'd like to buy…', 'looking to trade for…', 'who's selling…': "
+            'add "mode": "buy" or "trade", scope describes the card they want, ask = their max per-card '
+            "price if they named one. "
             "Steps run in order — a card marked have by step 1 can be listed by step 2. Scope carries ONLY what "
             "the collector said: 'all commons including alpha' -> {\"rarity\":\"C\"} with NO family key; "
             "'the rest' means the complement of the families already handled.\n"
@@ -282,7 +285,7 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
-ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade"}
+ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market"}
 SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails"}
 
 
@@ -301,7 +304,10 @@ def _valid_step(a, fallback_scope: dict) -> dict | None:
             ask = int(ask)
     raw = a.get("scope") if isinstance(a.get("scope"), dict) else fallback_scope
     scope = {k: v for k, v in raw.items() if k in SCOPE_KEYS and v is not None}
-    return {"op": a["op"], "ask": ask, "scope": scope}
+    step = {"op": a["op"], "ask": ask, "scope": scope}
+    if a["op"] == "find_market":
+        step["mode"] = a.get("mode") if a.get("mode") in ("buy", "trade") else "buy"
+    return step
 
 
 def valid_plan(a, f: dict) -> list[dict] | None:

@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Art-led market + Anko shops (Crowley: "text isn't the right interface
+  for TCG!" + agent buy/trade intents) — LIVE, both halves.** (1) IMAGES EVERYWHERE: market directory tables
+  now fan their first five cards (overlapping thumbs + "+62"); the by-card page leads with the card's art;
+  "they're hunting" chips carry faces; the offers ledger's baskets are card CHIPS (art + name), not name
+  lists; even the escrow form resolves its free-text card field against the catalog and shows the art
+  (num-first, then name match). (2) ANKO SHOPS: new `find_market` action op (mode buy|trade, optional max
+  ask, same scope dims) — "I'd like to buy a water leader" / "who's selling star alts under 100?" resolve
+  CLIENT-side against the live tables into a MarketFinds panel: art tiles, seller handle, ask · witness,
+  cheapest first, one tap opens the composer SEEDED (card + seller + cash prefilled at the ask for buy
+  mode). Honest empty: "Nobody's selling that right now. Mark it as a Want and I'll keep the lamp on."
+  Probes 3/3 (water leader → buy scope; trade for a gate → trade mode; star alts under 100 → ask ceiling);
+  preview end-to-end (found 2 Benzai — Completionist 17 USDC ✓w·4 vs Sleever 188 no-scan, tap → composer
+  "1 for 0 + 17 USDC"); prod parsing confirmed; apex on the new bundle. Composer seed state unified in App
+  (counters + agent finds share one mount). Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Trade sheets RETIRED from the UI (Crowley: seller pasting sheets is
   unintuitive) — LIVE.** The offer flow is now the only front door: every ⎘ copy-sheet button is gone (card
   modal, My table lot sheet, market listing rows, offers ledger), the escrow form's paste-a-sheet box +

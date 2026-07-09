@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useEscrowWallet } from './useEscrowWallet.js'
 import { OUTCOME, VALUE_CAP_USDC, addrUrl } from '../chain/config.js'
 import {
@@ -65,10 +65,31 @@ function LoadTrade({ onLoad }) {
 }
 
 // ---- Create / Decide-to-fund ----
+// Even the money form leads with the card: match the free-text card field against the
+// catalog and show the art when it resolves (by number first, then name).
+let _artCatalog = null
+function useCardArt(cardText) {
+  const [cards, setCards] = useState(_artCatalog)
+  useEffect(() => {
+    if (_artCatalog) return
+    fetch((import.meta.env.BASE_URL || '/') + 'catalogs/azuki-tcg.json')
+      .then((r) => r.json()).then((d) => { _artCatalog = d.cards || []; setCards(_artCatalog) }).catch(() => {})
+  }, [])
+  return useMemo(() => {
+    if (!cards || !cardText) return null
+    const t = cardText.toLowerCase()
+    const num = (t.match(/[a-z]{3}\d{2}-\d{3}[a-z]?/i) || [])[0]
+    let hit = num ? cards.find((c) => (c.num || '').toLowerCase() === num) : null
+    if (!hit) hit = cards.find((c) => c.name_en && t.includes(c.name_en.toLowerCase()))
+    return hit?.image || null
+  }, [cards, cardText])
+}
+
 function CreateTrade({ address, ready, getWalletClient, onCreated }) {
   const [f, setF] = useState({ card: '', seller: '', arbiter: '', amount: '', condition: 'Near Mint', days: '7' })
   const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }))
   const [bal, setBal] = useState(null)
+  const art = useCardArt(f.card)
   const [recWarn, setRecWarn] = useState(null)
   const { pending, error, run } = useAction()
 
@@ -115,7 +136,9 @@ function CreateTrade({ address, ready, getWalletClient, onCreated }) {
   return (
     <div className="decide">
       <div className="decide-card">
-        <div className="dc-frame"><div className="dc-art mono">{f.card || 'the card'}</div></div>
+        <div className="dc-frame">{art
+          ? <img className="dc-img" src={art} alt="" />
+          : <div className="dc-art mono">{f.card || 'the card'}</div>}</div>
       </div>
       <div className="decide-body">
         <div className="ek">Decide</div>

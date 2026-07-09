@@ -83,7 +83,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
   const [swapRev, setSwapRev] = useState(0)
-  const [counterSeed, setCounterSeed] = useState(null) // an incoming offer being countered
+  const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
   useEffect(() => {
     const bump = () => setSwapRev((r) => r + 1)
     window.addEventListener('cairn-offers', bump)
@@ -142,16 +142,17 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           </div>
         </div>
         {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
-          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }} />}
+          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
+          onOpenOffer={(seed) => setOfferSeed(seed)} />}
         {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
         {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
           focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
       </main>
-      {counterSeed && (
-        <OfferComposer accountId={accountId} catalog={catalog} seller={counterSeed.from}
-          initialWant={counterSeed.give.map((x) => x.uid)} initialGive={counterSeed.want.map((x) => x.uid)}
-          initialCash={counterSeed.cash ? { side: counterSeed.cash.side === 'to' ? 'from' : 'to', amount: counterSeed.cash.amount } : null} counterOf={counterSeed.id}
-          onClose={() => setCounterSeed(null)} />
+      {offerSeed && (
+        <OfferComposer accountId={accountId} catalog={catalog} seller={offerSeed.seller}
+          initialWant={offerSeed.want} initialGive={offerSeed.give}
+          initialCash={offerSeed.cash} counterOf={offerSeed.counterOf}
+          onClose={() => setOfferSeed(null)} />
       )}
       {tradesOpen && (
         <div className="sc-overlay" role="dialog" aria-label="Trades" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>
@@ -161,7 +162,10 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
               <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
-              <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setCounterSeed(o)} />
+              <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setOfferSeed({
+                seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
+                cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null, counterOf: o.id,
+              })} />
               <TradePanel openTradeId={openTrade} />
             </div>
           </div>

@@ -88,3 +88,6 @@
 /* the guided rail: one line that always names the next step / whose move it is */
 .guide { font-size: 13.5px; line-height: 1.5; color: var(--ink); background: var(--paper2); border-left: 2px solid var(--ink); border-radius: 0; padding: 9px 13px; margin: 2px 0 10px; }
 .nextmove { font-size: 14px; line-height: 1.55; color: var(--ink); background: var(--paper2); border-left: 2px solid var(--ink); border-radius: 0; padding: 10px 14px; margin: 0 0 14px; }
+
+/* the escrow form shows the card when the text resolves to one */
+.dc-img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; }

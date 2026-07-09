@@ -30,7 +30,15 @@ export default function Offers({ accountId, catalog, onCounter }) {
   const byUid = useMemo(() => new Map((data?.cards || []).map((c) => [c.uid, c])), [data])
 
   if (!offers.length || !data) return null
-  const nm = (x) => byUid.get(x.uid)?.name_en || x.uid
+  const chip = (x, i) => {
+    const c = byUid.get(x.uid)
+    return (
+      <span key={i} className="ofl-chip" title={c?.name_en || x.uid}>
+        {c?.image ? <img src={c.image} alt="" loading="lazy" /> : null}
+        <span>{c?.name_en || x.uid}</span>
+      </span>
+    )
+  }
 
   return (
     <div className="ofl">
@@ -50,9 +58,9 @@ export default function Offers({ accountId, catalog, onCounter }) {
               <span className={'mono ofl-st st-' + o.state}>{o.state.replace('_', ' ')}</span>
             </div>
             <div className="ofl-baskets">
-              <span className="ofl-side"><i className="mono dim">you get</i> {(o.dir === 'out' ? o.want : o.give).map(nm).join(', ') || '—'}</span>
+              <span className="ofl-side"><i className="mono dim">you get</i> {(o.dir === 'out' ? o.want : o.give).map(chip)}{(o.dir === 'out' ? o.want : o.give).length ? null : ' —'}</span>
               <span className="sw-arrow mono">⇄</span>
-              <span className="ofl-side"><i className="mono dim">you give</i> {(o.dir === 'out' ? o.give : o.want).map(nm).join(', ') || '—'}</span>
+              <span className="ofl-side"><i className="mono dim">you give</i> {(o.dir === 'out' ? o.give : o.want).map(chip)}{(o.dir === 'out' ? o.give : o.want).length ? null : ' —'}</span>
               {o.cash && <span className="mono ofl-cash">{(o.dir === 'out' ? o.cash.side === 'from' : o.cash.side === 'to') ? 'you' : 'they'} add {o.cash.amount} USDC</span>}
             </div>
             {o.response?.line && <div className="sw-say"><span className="mono dim">their agent</span> {o.response.line}</div>}

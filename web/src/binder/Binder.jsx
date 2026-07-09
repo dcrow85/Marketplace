@@ -602,6 +602,34 @@ function ActionBar({ agentName, plan, reading, done, onApply, onUndo, onDismiss 
   )
 }
 
+// Anko went shopping: the find_market step resolved against the live tables. Cards
+// lead (this is a TCG), facts ride along (ask · witness), and every tile is one tap
+// from a seeded offer. He surfaces; you decide.
+function MarketFinds({ agentName, reading, finds, mode, onOpenOffer, onDismiss }) {
+  return (
+    <div className="aprop">
+      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · found {finds.length ? `${finds.length} on the market` : 'nothing'}</span>
+      {reading && <div className="aprop-read dim">{reading}</div>}
+      {finds.length
+        ? <div className="mkf-grid">
+            {finds.map(({ c, sellerId, l }, i) => (
+              <div key={i} className="mkf-tile">
+                {c.image ? <img src={c.image} alt={c.name_en} loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+                <span className="mkf-name">{c.name_en}</span>
+                <span className="mono mkf-sub">{handleFor(sellerId)}</span>
+                <span className="mono mkf-sub">{l.ask} USDC · {l.witness ? `✓w·${l.witness}` : 'no scan'}</span>
+                <button className="mkf-offer mono" onClick={() => onOpenOffer({ seller: sellerId, want: [c.uid], cash: mode === 'buy' ? { side: 'from', amount: l.ask } : null })}>
+                  {mode === 'buy' ? `offer ${l.ask} →` : '⇄ offer →'}
+                </button>
+              </div>
+            ))}
+          </div>
+        : <div className="aprop-read">Nobody&rsquo;s selling that right now. Mark it as a Want and I&rsquo;ll keep the lamp on.</div>}
+      <div className="aprop-acts"><button className="ghost sm" onClick={onDismiss}>✕ done</button></div>
+    </div>
+  )
+}
+
 function AgentPanel({ res, agentName }) {
   if (!res.ok) {
     const off = res.data?.error === 'agent_offline'
@@ -693,7 +721,7 @@ function chipsFor() {
   ]
 }
 
-export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard }) {
+export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard, onOpenOffer }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
   const [store, setStore] = useState({})
@@ -869,9 +897,29 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const pickSet = useMemo(() => new Set(agentActive ? agentRes.data.result?.picks || [] : []), [agentRes, agentActive])
   // A plan resolves step by step against a DRAFT of your store, so step 2 sees what
   // step 1 changed ("mark commons have; list alpha commons at $2" works in one call).
+  const findStep = useMemo(() => {
+    if (!agentAction) return null
+    const steps = Array.isArray(agentAction.action) ? agentAction.action : [agentAction.action]
+    return steps.find((st) => st.op === 'find_market') || null
+  }, [agentAction])
+  const finds = useMemo(() => {
+    if (!findStep || !data || !mktEff) return []
+    const scope = { ...(findStep.scope || {}) }
+    delete scope.owned
+    const uids = new Set(applyAgentFilter(data.cards, scope, setById).map((c) => c.uid))
+    const out = []
+    for (const sl of mktEff.sellers) for (const l of sl.listings) {
+      if (!uids.has(l.uid)) continue
+      if (findStep.ask != null && l.ask > findStep.ask) continue
+      const c = data.cards.find((x) => x.uid === l.uid)
+      if (c) out.push({ c, sellerId: sl.id, l })
+    }
+    return out.sort((a, b) => a.l.ask - b.l.ask).slice(0, 24)
+  }, [findStep, data, mktEff, setById])
   const plan = useMemo(() => {
     if (!agentAction || !data) return null
-    const steps = Array.isArray(agentAction.action) ? agentAction.action : [agentAction.action]
+    const steps = (Array.isArray(agentAction.action) ? agentAction.action : [agentAction.action]).filter((st) => st.op !== 'find_market')
+    if (!steps.length) return null
     const draft = {}
     const eff = (c) => effStance(c, draft[c.uid] ? { [c.uid]: { ...(store[c.uid] || {}), ...draft[c.uid] } } : store)
     const resolved = steps.map((st) => {
@@ -1042,7 +1090,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           )}
         </div>
       </div>
-      {agentAction && plan && <ActionBar agentName={agentName} plan={plan} reading={agentAction.filter?.reading}
+      {agentAction && findStep && <MarketFinds agentName={agentName} reading={agentAction.filter?.reading}
+        finds={finds} mode={findStep.mode || 'buy'} onOpenOffer={(seed) => { clearAgent(); onOpenOffer && onOpenOffer(seed) }} onDismiss={clearAgent} />}
+      {agentAction && !findStep && plan && <ActionBar agentName={agentName} plan={plan} reading={agentAction.filter?.reading}
         done={actionDone} onApply={applyProposal} onUndo={undoProposal} onDismiss={clearAgent} />}
       {agentRes && !agentAction && <AgentPanel res={agentRes} agentName={agentName} />}
       {filtersOpen && (

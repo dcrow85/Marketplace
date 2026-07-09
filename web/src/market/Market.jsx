@@ -109,10 +109,13 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
         {composer && <OfferComposer accountId={accountId} catalog={catalog} seller={composer.seller} initialWant={composer.want}
           onClose={() => setComposer(null)} onSent={() => onSent(composer.seller)} />}
         <div className="mk-head">
-          <div>
-            <div className="ek">On the market</div>
-            <div className="mk-title">{c ? `${c.name_en} · ${c.num}` : focusUid}
-              <span className="dim"> · {asks.length} ask{asks.length === 1 ? '' : 's'}</span>
+          <div className="mk-focushead">
+            {c?.image && <img className="mk-focusart" src={c.image} alt="" />}
+            <div>
+              <div className="ek">On the market</div>
+              <div className="mk-title">{c ? `${c.name_en} · ${c.num}` : focusUid}
+                <span className="dim"> · {asks.length} ask{asks.length === 1 ? '' : 's'}</span>
+              </div>
             </div>
           </div>
           <button className="ghost sm" onClick={onClearFocus}>← all tables</button>
@@ -206,6 +209,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
             <div className="mk-huntrow">
               {theirWants.map((c) => (
                 <span key={c.uid} className={'mk-hunt mono' + (myHaves.has(c.uid) ? ' mk-swap' : '')}>
+                  {c.image && <img src={c.image} alt="" loading="lazy" />}
                   {c.name_en}{myHaves.has(c.uid) ? ' · you have it' : ''}
                 </span>
               ))}
@@ -245,6 +249,10 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
                   <div className="mk-handle">{handleFor(s.id)}</div>
                   <div className="mono dim mk-sub">{shortId(s.id)}</div>
                 </div>
+              </div>
+              <div className="mk-spread">
+                {s.listings.slice(0, 5).map((l) => { const c = byUid.get(l.uid); return c?.image ? <img key={l.uid} src={c.image} alt="" loading="lazy" /> : null })}
+                {s.listings.length > 5 && <span className="mono mk-more">+{s.listings.length - 5}</span>}
               </div>
               <div className="mk-tmeter mono">
                 <span>{s.listings.length} listed{(s.lots || []).length ? ` + ${s.lots.length} lot` : ''} · {total} USDC</span>
