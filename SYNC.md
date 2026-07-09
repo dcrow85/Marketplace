@@ -55,6 +55,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **OFFERS: the trade system revamped, Phase 1 (Crowley's spec: see a
+  collection → tap their cards → tap yours → add dollars → submit → they're alerted; counters native) — LIVE.**
+  The collapse: ONE object (`web/src/trade/offers.js`: want-basket · give-basket · optional cash leg either
+  way · note · counterOf) subsumes buy (empty give + cash) and swap (two baskets) — the old swap picker, buy
+  rail, Swaps.jsx/MockTrades.jsx/swaps.js are RETIRED (git rm). Seller tables became touchable collections
+  (card-image tiles, tap→basket, sticky "Make an offer →" bar); the composer is ONE screen (their cards ·
+  your binder trade-marked-first · cash direction toggle · note) with Anko quoting the RECORD per basket
+  ("their side: ~5 USDC across 2 of 2 cards — settlements are history, not an appraisal"). Offers ledger in
+  Trades: both directions, counter chains ("· counter" tag + superseded originals), settlement steps inline
+  (accepted→escrow→in transit→delivered→settled), accept/decline/counter on incoming (counter re-opens the
+  composer seeded with the offer flipped into MY frame). Personas negotiate BASKETS: rarity-rung sums, cash
+  at ~4 USDC/rung, per-persona slack/boot (Keeper counters small, Completionist stays cash-only, Sleever
+  takes 60%). **Two frame bugs caught in verify:** counter cash-side and settlement baskets weren't flipped
+  into the sender's frame ("they add 5" when I pay 5; settling an incoming offer would have moved cards
+  BACKWARDS) — fixed, offer fields are always sender-frame. **Engine hardened:** browsers throttle hidden-tab
+  timers, so ticks now CATCH UP all overdue transitions (dwells chain from due-time, hop-capped) + focus/
+  visibility wake — coming back fast-forwards the world, which is also the right semantics. Full loop
+  verified: 2-card basket + 1 card + $2 → Keeper counters +3 → accept → escrow 5 USDC held → settled →
+  Shiko out, Crewleader+Yojin in, notes carry the cash leg. Phase 2 = publish-binder + KV inbox relay (will
+  bundle the KV-token hardening); Phase 3 = signed intents + the two-sided settlement object (Codex seam,
+  already flagged). Surface lane. No ask.
 - `[passive]` 2026-07-08 · Claude — **unmark ops (Crowley hit the gap: "unmark all my haves and wants isn't
   working") — FIXED, both halves LIVE.** The action vocabulary had mark_have/mark_want but no reverse — the
   model literally couldn't express clearing a stance. Added `unmark_have` / `unmark_want` end to end: prompt

@@ -8,10 +8,10 @@ import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
 import SellPile from './binder/SellPile.jsx'
 import Market from './market/Market.jsx'
-import Swaps from './trade/Swaps.jsx'
-import MockTrades from './trade/MockTrades.jsx'
-import { swapKeyFor, loadSwaps } from './trade/swaps.js'
-import { startMockMarket, tradesKeyFor, loadTrades } from './market/mockAgents.js'
+import Offers from './trade/Offers.jsx'
+import OfferComposer from './market/OfferComposer.jsx'
+import { offersKeyFor, loadOffers, OFFER_OPEN, OFFER_SETTLING } from './trade/offers.js'
+import { startMockMarket } from './market/mockAgents.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -83,30 +83,32 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
   const [swapRev, setSwapRev] = useState(0)
+  const [counterSeed, setCounterSeed] = useState(null) // an incoming offer being countered
   useEffect(() => {
     const bump = () => setSwapRev((r) => r + 1)
-    window.addEventListener('cairn-swaps', bump)
-    window.addEventListener('cairn-mock', bump)
+    window.addEventListener('cairn-offers', bump)
     window.addEventListener('cairn-store', bump)
-    return () => { window.removeEventListener('cairn-swaps', bump); window.removeEventListener('cairn-mock', bump); window.removeEventListener('cairn-store', bump) }
+    return () => { window.removeEventListener('cairn-offers', bump); window.removeEventListener('cairn-store', bump) }
   }, [])
   useEffect(() => {
     let stop = () => {}
     let live = true
-    fetch((import.meta.env.BASE_URL || '/') + (catalog.path || 'catalog-sample.json'))
-      .then((r) => r.json())
-      .then((d) => {
-        if (!live) return
-        const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
-        stop = startMockMarket({ catalogId: catalog.id, accountId, cardName: (uid) => byUid.get(uid) })
-      }).catch(() => {})
+    const base = import.meta.env.BASE_URL || '/'
+    Promise.all([
+      fetch(base + (catalog.path || 'catalog-sample.json')).then((r) => r.json()),
+      fetch(base + 'market-sample.json').then((r) => r.json()).catch(() => null),
+    ]).then(([d, m]) => {
+      if (!live) return
+      const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
+      const asks = new Map()
+      if (m && m.catalog_id === catalog.id) for (const sl of m.sellers) for (const l of sl.listings) asks.set(sl.id + '|' + l.uid, l.ask)
+      stop = startMockMarket({ catalogId: catalog.id, accountId, byUid, askOf: (seller, uid) => asks.get(seller + '|' + uid) })
+    }).catch(() => {})
     return () => { live = false; stop() }
   }, [catalog, accountId])
-  const swapN = useMemo(() => {
-    const swaps = loadSwaps(swapKeyFor(catalog.id, accountId)).filter((sw) => sw.status !== 'settled' && sw.status !== 'declined').length
-    const trades = loadTrades(tradesKeyFor(catalog.id, accountId)).filter((t) => t.state !== 'settled' && t.state !== 'declined').length
-    return swaps + trades
-  }, [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
+  const swapN = useMemo(() => loadOffers(offersKeyFor(catalog.id, accountId))
+    .filter((o) => (o.dir === 'in' && OFFER_OPEN.includes(o.state)) || OFFER_SETTLING.includes(o.state)).length,
+  [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
   return (
     <div className="app">
       <nav className="nav">
@@ -145,6 +147,12 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
         {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
           focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
       </main>
+      {counterSeed && (
+        <OfferComposer accountId={accountId} catalog={catalog} seller={counterSeed.from}
+          initialWant={counterSeed.give.map((x) => x.uid)} initialGive={counterSeed.want.map((x) => x.uid)}
+          initialCash={counterSeed.cash ? { side: counterSeed.cash.side === 'to' ? 'from' : 'to', amount: counterSeed.cash.amount } : null} counterOf={counterSeed.id}
+          onClose={() => setCounterSeed(null)} />
+      )}
       {tradesOpen && (
         <div className="sc-overlay" role="dialog" aria-label="Trades" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>
           <div className="sc-sheet trades-sheet">
@@ -153,8 +161,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
               <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
-              <MockTrades accountId={accountId} catalog={catalog} />
-              <Swaps accountId={accountId} catalog={catalog} />
+              <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setCounterSeed(o)} />
               <TradePanel openTradeId={openTrade} />
             </div>
           </div>

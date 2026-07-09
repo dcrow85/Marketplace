@@ -99,3 +99,45 @@
 .sw-st.st-settled { color: var(--have); }
 .sw-st.st-declined { color: var(--signal); }
 .sw-boot { border-color: var(--ink); color: var(--ink); }
+
+/* ---- offers: tiles, composer, ledger ---- */
+/* a table you can touch: card tiles, tap = basket */
+.mk-tiles, .ofr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 10px; }
+.ofr-tile { position: relative; text-align: left; background: var(--paper); border: 1.5px solid var(--rule); border-radius: 9px; padding: 0 0 6px; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; gap: 4px; }
+.ofr-tile img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; display: block; }
+.ofr-noimg { width: 100%; aspect-ratio: 5 / 7; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim); padding: 6px; text-align: center; }
+.ofr-tile .ofr-name { font-size: 11.5px; line-height: 1.3; padding: 0 7px; }
+.ofr-tile .ofr-sub { font-size: 9.5px; color: var(--dim); padding: 0 7px; }
+.ofr-tile.sel { border-color: var(--ink); box-shadow: 0 0 0 1.5px var(--ink); }
+.ofr-check { position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 11px; display: flex; align-items: center; justify-content: center; }
+.mk-basketbar { position: sticky; bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--bar); backdrop-filter: blur(8px); border: 0.5px solid var(--ink); border-radius: 11px; padding: 10px 14px; font-size: 13.5px; }
+
+/* the composer: one screen, no wizard */
+.ofr { max-width: 640px; }
+.ofr-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 10px; border-bottom: 0.5px solid var(--rule); flex: none; }
+.ofr-title { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; margin-top: 3px; }
+.ofr-body { overflow-y: auto; padding: 6px 18px 12px; display: flex; flex-direction: column; gap: 10px; }
+.ofr-sec { font-size: 10.5px; letter-spacing: .07em; color: var(--dim); margin-top: 8px; text-transform: uppercase; }
+.ofr-cash { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ofr-cash .ti.num { width: 90px; }
+.ofr-note { width: 100%; }
+.ofr-anko { font-size: 12px; color: var(--ink2); line-height: 1.6; border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 8px; padding: 9px 12px; }
+.ofr-anko .atag { margin: 0 6px 0 0; }
+.ofr-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 18px; border-top: 0.5px solid var(--rule); flex: none; }
+.ofr-sum { font-size: 12px; color: var(--ink2); }
+.ofr-send { padding: 12px 26px; }
+.ofr-fine { padding: 0 18px 14px; margin: 0; }
+
+/* the ledger: every conversation, counters chained */
+.ofl { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
+.ofl-row { border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.ofl-row.done { border-color: var(--have); }
+.ofl-row.closed { opacity: .6; }
+.ofl-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.ofl-dir { font-size: 11px; color: var(--ink2); }
+.ofl-st { font-size: 11px; font-weight: 600; }
+.ofl-st.st-settled { color: var(--have); }
+.ofl-st.st-declined, .ofl-st.st-withdrawn { color: var(--signal); }
+.ofl-baskets { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13px; }
+.ofl-side i { font-style: normal; font-size: 10px; margin-right: 5px; }
+.ofl-cash { font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--rule); border-radius: 5px; padding: 1px 7px; }
