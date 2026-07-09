@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, catalogUrl, entryFor, condStr } from '../binder/collection.js'
-import { offersKeyFor, sendOffer, offerSheet } from '../trade/offers.js'
+import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { handleFor, avatarSVG } from '../identity.js'
 
@@ -125,7 +125,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           <button className="primary ofr-send" disabled={!canSend} onClick={doSend}>{counterOf ? 'Send counter' : 'Send offer'}</button>
         </div>
         <p className="sc-note dim ofr-fine">An offer is a message, not a lock — cards and money only move through escrow.
-          {' '}Sample sellers answer in your browser; a real trader gets the sheet.</p>
+          {' '}Sample sellers answer right here in your browser.</p>
       </div>
     </div>
   )

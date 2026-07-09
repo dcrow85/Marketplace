@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Trade sheets RETIRED from the UI (Crowley: seller pasting sheets is
+  unintuitive) — LIVE.** The offer flow is now the only front door: every ⎘ copy-sheet button is gone (card
+  modal, My table lot sheet, market listing rows, offers ledger), the escrow form's paste-a-sheet box +
+  parser are removed (guide now starts "name the card, exactly as you and the seller agreed"), and market
+  lots became "select the lot" (fills the offer basket) instead of a copyable sheet. Copy updated everywhere
+  ("Buyers see this table in the market and make offers against it — cards, cash, or both"). The plaintext
+  format itself survives in `offers.js` (offerSheet) as the drainer-resistant handoff for Phase 2's relay if
+  we want it — retired from the surface, not from the design. Verified: zero sheet/paste UI remnants in
+  binder, table, market, trades overlay; escrow form intact. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **OFFERS: the trade system revamped, Phase 1 (Crowley's spec: see a
   collection → tap their cards → tap yours → add dollars → submit → they're alerted; counters native) — LIVE.**
   The collapse: ONE object (`web/src/trade/offers.js`: want-basket · give-basket · optional cash leg either

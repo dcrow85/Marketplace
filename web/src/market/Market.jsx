@@ -20,43 +20,6 @@ function witnessCell(w) {
   return <span className="mono mk-wit ok">✓ witness ·{w}</span>
 }
 
-function sellerSheet(seller, c, l) {
-  return [
-    'CAIRN TRADE SHEET',
-    `card       ${c.name_en || c.uid} · ${c.num}`,
-    `condition  ${l.cond}`,
-    `ask        ${l.ask} USDC`,
-    `seller     ${seller.id}`,
-  ].join('\n')
-}
-
-function lotSheet(seller, lot, byUid) {
-  const total = lot.cards.reduce((s, x) => s + x.ask * (x.copies || 1), 0)
-  return [
-    'CAIRN TRADE SHEET',
-    `lot        ${lot.cards.reduce((s, x) => s + (x.copies || 1), 0)} cards · ${total} USDC`,
-    ...lot.cards.map((x) => {
-      const c = byUid.get(x.uid)
-      return `card       ${c?.name_en || x.uid} ×${x.copies || 1} · per lot · ${x.ask} USDC each`
-    }),
-    `seller     ${seller.id}`,
-  ].join('\n')
-}
-
-function CopySheet({ text, small }) {
-  const [ok, setOk] = useState(false)
-  const copy = async () => {
-    try { await navigator.clipboard.writeText(text) } catch { return }
-    setOk(true)
-    setTimeout(() => setOk(false), 2200)
-  }
-  return (
-    <button className={'sheetbtn mono' + (small ? ' mk-sm' : '')} onClick={copy}>
-      {ok ? '✓ copied' : '⎘ sheet'}
-    </button>
-  )
-}
-
 function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onOffer }) {
   return (
     <div className={'mk-row' + (mine ? ' mk-mine' : '')}>
@@ -75,7 +38,6 @@ function ListingRow({ seller, c, l, mine, showSeller, onOpenSeller, onOffer }) {
       <span className="mono mk-ask">{l.ask} USDC</span>
       <span className="mk-acts">
         {onOffer && <button className="sheetbtn mk-sm mk-buy" onClick={() => onOffer(c, seller)} title="cards, cash, or both — one composer">offer</button>}
-        <CopySheet text={sellerSheet(seller, c, l)} small />
       </span>
     </div>
   )
@@ -163,7 +125,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
             </div>
           : <div className="empty">Nobody is asking on this card right now.</div>}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; the witness column says only whether a scan is recorded
-          behind it. To buy: copy the sheet, open Trades, paste, add your arbiter, fund escrow.</p>
+          behind it. Tap <b>offer</b> — cards, cash, or both ride the same rail.</p>
       </div>
     )
   }
@@ -231,7 +193,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
             <div className="mk-lot" key={i}>
               <div className="mk-lothead">
                 <span className="mk-name">{lot.name}<span className="mono mk-num">{lot.cards.length} cards · {lotTotal} USDC</span></span>
-                <CopySheet text={lotSheet(open, lot, byUid)} />
+                <button className="sheetbtn mk-sm mono" onClick={() => setBasket(new Set(lot.cards.map((x) => x.uid)))}>select the lot</button>
               </div>
               <div className="mk-lotcards dim">{lot.cards.map((x) => byUid.get(x.uid)?.name_en || x.uid).join(' · ')}</div>
               {lot.note && <div className="mk-lotnote dim">{lot.note}</div>}
@@ -252,7 +214,7 @@ export default function Market({ accountId, catalog, focusUid, onClearFocus }) {
           </div>
         )}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; the witness column says only whether a scan is recorded
-          behind it. To buy: copy the sheet, open Trades, paste it, add your arbiter, fund escrow.</p>
+          behind it. Tap cards into a basket and make an offer — cards, cash, or both.</p>
       </div>
     )
   }

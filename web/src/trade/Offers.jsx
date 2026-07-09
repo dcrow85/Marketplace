@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { catalogUrl } from '../binder/collection.js'
-import { offersKeyFor, loadOffers, withdrawOffer, clearOffer, offerSheet, OFFER_SETTLING } from './offers.js'
+import { offersKeyFor, loadOffers, withdrawOffer, clearOffer, OFFER_SETTLING } from './offers.js'
 import { acceptIncoming, declineIncoming } from '../market/mockAgents.js'
 import { handleFor } from '../identity.js'
 
@@ -13,7 +13,6 @@ const FLOW_LABEL = { accepted: 'accepted', escrow_locked: 'escrow', in_transit: 
 export default function Offers({ accountId, catalog, onCounter }) {
   const [data, setData] = useState(null)
   const [rev, setRev] = useState(0)
-  const [copied, setCopied] = useState(null)
   const key = offersKeyFor(catalog.id, accountId)
 
   useEffect(() => {
@@ -32,10 +31,6 @@ export default function Offers({ accountId, catalog, onCounter }) {
 
   if (!offers.length || !data) return null
   const nm = (x) => byUid.get(x.uid)?.name_en || x.uid
-  const copy = async (o) => {
-    try { await navigator.clipboard.writeText(offerSheet({ offer: o, byUid, myId: accountId })) } catch { return }
-    setCopied(o.id); setTimeout(() => setCopied(null), 2200)
-  }
 
   return (
     <div className="ofl">
@@ -78,14 +73,14 @@ export default function Offers({ accountId, catalog, onCounter }) {
                 <button className="sheetbtn mk-sm mono" onClick={() => declineIncoming(key, o.id)}>✕ decline</button>
               </>}
               {o.dir === 'out' && open && <button className="sheetbtn mk-sm mono" onClick={() => withdrawOffer(key, o.id)}>✕ withdraw</button>}
-              <button className="sheetbtn mk-sm mono" onClick={() => copy(o)}>{copied === o.id ? '✓ copied' : '⎘ sheet'}</button>
               {!open && !OFFER_SETTLING.includes(o.state) && <button className="sheetbtn mk-sm mono" onClick={() => clearOffer(key, o.id)}>✕ clear</button>}
             </span>
           </div>
         )
       })}
       <p className="sc-note dim">An offer is a message, not a lock — settlement here is a rehearsal against personas in
-        your browser. The real rail is the same steps on escrow, with an arbiter named.</p>
+        your browser. When accounts land, offers reach real people the same way; the rail is the same steps on
+        escrow, with an arbiter named.</p>
     </div>
   )
 }

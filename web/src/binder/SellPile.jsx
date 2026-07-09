@@ -1,15 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, saveStore, catalogUrl, entryFor, condStr } from './collection.js'
-import { useEscrowWallet } from '../trade/useEscrowWallet.js'
 
-// The sell pile: a consignment ledger, not a filter. Just what you're selling — asks,
-// condition, evidence status, totals — and ONE lot sheet for the whole pile. Asks are
-// per copy; rows without an ask are called out and left off the sheet.
+// Your table: a consignment ledger, not a filter. Just what you're offering — asks,
+// condition, evidence status, totals. Buyers meet it in the market and offer against it.
 export default function SellPile({ accountId, catalog }) {
   const [data, setData] = useState(null)
   const [store, setStore] = useState({})
-  const [copied, setCopied] = useState(false)
-  const { address } = useEscrowWallet()
   const storeKey = storeKeyFor(catalog.id, accountId)
 
   useEffect(() => {
@@ -41,19 +37,6 @@ export default function SellPile({ accountId, catalog }) {
   const missing = rows.filter(({ e }) => e.sell && !(Number(e.ask) > 0)).length
   const tradeN = rows.filter(({ e }) => e.trade).length
 
-  const copyLotSheet = async () => {
-    const seller = address || accountId || ''
-    const lines = [
-      'CAIRN TRADE SHEET',
-      `lot        ${priced.reduce((s, { e }) => s + (e.copies || 1), 0)} cards · ${total} USDC`,
-      ...priced.map(({ c, e }) =>
-        `card       ${c.name_en || c.uid} ×${e.copies || 1} · ${condStr(e)} · ${e.ask} USDC each`),
-      seller ? `seller     ${seller}` : null,
-    ].filter(Boolean).join('\n')
-    try { await navigator.clipboard.writeText(lines) } catch { return }
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2400)
-  }
 
   if (!data) return <div className="empty">Opening your table…</div>
   if (!rows.length) {
@@ -69,9 +52,6 @@ export default function SellPile({ accountId, catalog }) {
             <span className="dim"> · {total} USDC asked{tradeN ? ` · ${tradeN} open to trade` : ''}{missing ? ` · ${missing} missing an ask` : ''}</span>
           </div>
         </div>
-        <button className="sheetbtn sp-copy mono" onClick={copyLotSheet} disabled={!priced.length}>
-          {copied ? '✓ copied. paste it to your buyer as text' : '⎘ Copy lot sheet'}
-        </button>
       </div>
       <div className="sp-rows">
         {rows.map(({ c, e }) => (
@@ -90,8 +70,8 @@ export default function SellPile({ accountId, catalog }) {
           </div>
         ))}
       </div>
-      <p className="sc-note dim">Asks are per copy. Rows without an ask stay out of the lot sheet. The sheet is plain
-        text: your buyer opens cairn.cards themselves, pastes it into Trades, and funds one escrow for the lot.</p>
+      <p className="sc-note dim">Asks are per copy. Buyers see this table in the market and make offers against it —
+        cards, cash, or both.</p>
     </div>
   )
 }
