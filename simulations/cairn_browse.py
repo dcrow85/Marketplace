@@ -80,9 +80,9 @@ CATALOG_PATHS = {
         ROOT / "web" / "dist" / "catalog-sample.json",
     ],
     "azuki-tcg": [
-        ROOT / "web" / "dist" / "catalogs" / "azuki-tcg.json",
         ROOT / "web" / "public" / "catalogs" / "azuki-tcg.json",
         ROOT / "data" / "azuki-tcg" / "ui" / "azuki-catalog-sample.json",
+        ROOT / "web" / "dist" / "catalogs" / "azuki-tcg.json",
     ],
 }
 _CATALOG_CACHE: dict[str, dict] = {}
@@ -119,10 +119,23 @@ def filter_system(data: dict) -> str:
     if profile.get("id") == "azuki-tcg":
         cats = " | ".join(data.get("ui", {}).get("category_chips") or ["Leader", "Gate", "Entity", "Weapon", "Spell", "IKZ"])
         elements = " | ".join(data.get("ui", {}).get("element_chips") or ["Neutral", "Water", "Lightning", "Earth", "Fire"])
+        world = data.get("azuki_world", {})
+        guide = world.get("world_guide", {})
+        lore_terms = " | ".join(item["term"] for item in guide.get("subtype_vocabulary", []))
+        themes = " | ".join(sorted({
+            theme
+            for card in data.get("cards", [])
+            for theme in card.get("azuki_world", {}).get("motifs", [])
+        }))
+        threads = " | ".join(item["id"] for item in guide.get("character_threads", []))
         return (
             "You translate a collector's loose browse CALL into a structured filter over an Azuki TCG "
             "catalog, using their standing COST FIELD. The catalog has NO dollar prices; it has rarity, "
             "star/alternate-art signals, and issue flags. Do not infer condition, authenticity, or market value.\n\n"
+            f"WORLD CONTEXT: {profile.get('azuki_world_context') or guide.get('agent_context') or ''}\n"
+            "Authority discipline: official card fields and official site facts are facts; setting cues and visual notes "
+            "are labelled card-art observations; character links may be declared catalog inferences. Never turn an art "
+            "cue into a canon event or treat every subtype as a political faction.\n\n"
             "Available filter dimensions (use only these):\n"
             " - star_alt: true | false | null   (for ★, alternate art, portrait rare, or star treatment)\n"
             " - holo: true | false | null       (same physical UI field as star_alt; prefer star_alt for Azuki)\n"
@@ -132,8 +145,14 @@ def filter_system(data: dict) -> str:
             " - character: a name substring, or null\n"
             f" - category: {cats} | null\n"
             f" - element: {elements} | null\n"
-            " - rarity: a rarity substring such as C, UC, SR, SR ★, L ★, IKZ ★, or null\n\n"
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"reading":"one line on how you read the call against the cost field"}'
+            " - rarity: a rarity substring such as C, UC, SR, SR ★, L ★, IKZ ★, or null\n"
+            " - plane: alley | garden | threshold | null (a labelled visual cue, not canon-location proof)\n"
+            f" - lore_term: one official card-vocabulary term, or null. Terms: {lore_terms}\n"
+            f" - theme: one catalog motif, or null. Motifs: {themes}\n"
+            f" - character_thread: one repeated identity thread, or null. Threads: {threads}\n"
+            " - lore: one exact, atomic substring expected in world metadata (for example 'Azuki', '187', or 'big brother'), "
+            "or null. Never put a paraphrase, sentence, or restatement of the request here; prefer the structured fields above.\n\n"
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"plane":..,"lore_term":..,"theme":..,"character_thread":..,"lore":..,"reading":"one line on how you read the call against the cost field"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
@@ -162,11 +181,35 @@ COMMENT_SYS = (
     " - 'value-tierN' or 'attention-tierN' = a catalogue attention band. NOT a grade, NOT centering, "
     "NOT a defect.\n"
     " - 'issues:...' means the catalog carries a source disagreement or review note. It is not proof the card is wrong.\n"
+    " - 'world-cue:...' is a confidence-labelled observation from card art, not proof of a canon location.\n"
+    " - 'thread:...' is a declared repeated-character thread. Read its attached authority before asserting identity.\n"
+    " - 'motifs:...' are search tags grounded in card fields plus reviewed art; they are not story events.\n"
+    "Call an official subtype a lore term or subtype, not a faction, unless an attached official source explicitly identifies it as one.\n"
+    "Use supplied lore summaries and visual notes to speak in Azuki vocabulary while preserving those boundaries.\n"
     "Do NOT infer condition, foil presence, surface, centering, authenticity, price, or defects from these flags — condition is "
     "unconfirmed and attention tier is not a price. Never SELL a card. Then pick up to 6 uids to "
     "surface first.\n\n"
     'Return ONLY JSON: {"commentary":"2-4 sentences", "picks":["uid",..], "caveat":"one honest limitation"}'
 )
+
+
+def world_search_text(card: dict) -> str:
+    world = card.get("azuki_world") or {}
+    parts = [
+        world.get("lore_summary") or "",
+        world.get("character_thread") or "",
+        world.get("variant_role") or "",
+        world.get("visual_note") or "",
+        (world.get("setting_cue") or {}).get("value") or "",
+        " ".join(world.get("official_subtypes") or []),
+        " ".join(world.get("motifs") or []),
+        " ".join(world.get("search_terms") or []),
+    ]
+    for connection in world.get("connections") or []:
+        parts.extend([connection.get("related_card_id") or "", connection.get("relation") or ""])
+    for ref in world.get("source_identity_refs") or []:
+        parts.extend([ref.get("collection") or "", ref.get("token_or_reference_id") or ""])
+    return " ".join(parts).casefold()
 
 
 def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
@@ -191,7 +234,47 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
         out = [c for c in out if s in setlabel.get(c["set_id"], "").lower()]
     if f.get("character"):
         ch = str(f["character"]).lower()
-        out = [c for c in out if ch in (c.get("name_en") or "").lower() or ch in (c.get("name_ja") or "").lower()]
+        out = [
+            c for c in out
+            if ch in (c.get("name_en") or "").lower()
+            or ch in (c.get("name_ja") or "").lower()
+            or ch in world_search_text(c)
+        ]
+    if f.get("plane"):
+        plane = str(f["plane"]).casefold()
+        plane_needles = {
+            "alley": ["alley"],
+            "garden": ["garden"],
+            "threshold": ["threshold", "gate"],
+        }.get(plane, [plane])
+        out = [
+            c for c in out
+            if any(
+                needle in ((c.get("azuki_world") or {}).get("setting_cue") or {}).get("value", "").casefold()
+                for needle in plane_needles
+            )
+        ]
+    if f.get("lore_term"):
+        term = str(f["lore_term"]).casefold()
+        out = [
+            c for c in out
+            if term in " ".join((c.get("azuki_world") or {}).get("official_subtypes") or []).casefold()
+        ]
+    if f.get("theme"):
+        theme = str(f["theme"]).casefold()
+        out = [
+            c for c in out
+            if theme in " ".join((c.get("azuki_world") or {}).get("motifs") or []).casefold()
+        ]
+    if f.get("character_thread"):
+        thread = str(f["character_thread"]).casefold()
+        out = [
+            c for c in out
+            if thread == str((c.get("azuki_world") or {}).get("character_thread") or "").casefold()
+        ]
+    if f.get("lore"):
+        lore = str(f["lore"]).casefold()
+        out = [c for c in out if lore in world_search_text(c)]
     return out
 
 
@@ -210,8 +293,20 @@ def brief(c: dict, setlabel: dict[str, str]) -> str:
         tags.append("issues:" + ",".join(severities))
     if not c.get("image"):
         tags.append("no-reference-photo")
+    world = c.get("azuki_world") or {}
+    cue = world.get("setting_cue") or {}
+    if cue.get("value"):
+        tags.append(f"world-cue:{cue['value']}[{cue.get('confidence', 'unrated')};observation]")
+    if world.get("character_thread"):
+        tags.append(f"thread:{world['character_thread']}")
+    if world.get("motifs"):
+        tags.append("motifs:" + ",".join(world["motifs"][:4]))
     tags.append("in-collection" if c["owned"] else "unowned")
-    return f"{c['uid']} · {c['num']} {nm(c)} · {setlabel.get(c['set_id'],'?')} · {c.get('category','')} · {c.get('rarity','')} · {' '.join(tags)}"
+    lore = world.get("lore_summary") or ""
+    visual = world.get("visual_note") or ""
+    context = " | ".join(part for part in [lore, visual] if part)
+    row = f"{c['uid']} · {c['num']} {nm(c)} · {setlabel.get(c['set_id'],'?')} · {c.get('category','')} · {c.get('rarity','')} · {' '.join(tags)}"
+    return row + (f" · {context}" if context else "")
 
 
 def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
@@ -237,23 +332,59 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
     return out
 
 
+def resolve_pick_uids(picks: list[str], pool: list[dict]) -> list[str]:
+    """Resolve model shorthand back to exact row UIDs without inventing rows."""
+    by_uid = {c["uid"]: c["uid"] for c in pool}
+    by_source = {
+        str(c["source_entry_id"]): c["uid"]
+        for c in pool
+        if c.get("source_entry_id")
+    }
+    by_num: dict[str, list[dict]] = {}
+    for card in pool:
+        by_num.setdefault(str(card.get("num") or ""), []).append(card)
+
+    resolved = []
+    for raw in picks:
+        value = str(raw)
+        uid = by_uid.get(value) or by_source.get(value)
+        if not uid and value in by_num:
+            candidates = by_num[value]
+            preferred = next(
+                (card for card in candidates if card.get("source_authority") == "official_gallery_api_fact"),
+                candidates[0],
+            )
+            uid = preferred["uid"]
+        if uid and uid not in resolved:
+            resolved.append(uid)
+    return resolved[:6]
+
+
 def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
-    f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 180)
+    f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 260)
     survivors = apply_filter(data["cards"], f, setlabel)
+    if not survivors and f.get("lore"):
+        fallback_filter = {**f, "lore": None}
+        fallback_survivors = apply_filter(data["cards"], fallback_filter, setlabel)
+        if fallback_survivors:
+            f["ignored_unmatched_lore"] = f["lore"]
+            f["lore"] = None
+            survivors = fallback_survivors
     pool = diverse_pool(survivors, cap)
     n_sets = len({c["set_id"] for c in survivors})
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','lore','ignored_unmatched_lore') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
     )
     c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
+    c["picks"] = resolve_pick_uids(c.get("picks") or [], pool)
     flags = commentary_flags(c.get("commentary", ""), c.get("caveat", ""))
     return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")), "filter": f, "n_survivors": len(survivors), "result": c, "overclaim_flags": flags}
 
@@ -271,7 +402,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','lore','ignored_unmatched_lore')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]

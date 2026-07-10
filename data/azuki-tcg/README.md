@@ -23,7 +23,7 @@ The directory now contains two sibling release files:
 
 It also contains a spreadsheet completion layer:
 
-- `spreadsheets/azuki_tcg_alpha_fields_completion.csv` is a 234-row
+- `spreadsheets/azuki_tcg_alpha_fields_completion.csv` is a 237-row
   Alpha-style spreadsheet for every official gallery entry. The first columns
   match the Alpha Master Sheet fields; trailing provenance columns preserve a
   unique row key, source entry ID, set, image URL, field source, missing-field
@@ -50,6 +50,25 @@ And it contains a user-photo observation layer:
   records their image hashes, gallery matches, and the printed/gallery ID-shape
   boundary.
 
+It also contains a provenance-separated Azuki world layer:
+
+- `source-snapshots/azuki_official_lore_sources_2026-07-10.json` records 34
+  concise claims from 9 official Azuki-owned web sources. Official site facts,
+  TCG rule facts, future announcements, Bobu governance context, card-art
+  observations, and catalog inferences have different authority labels.
+- `source-snapshots/azuki_card_art_visual_review_2026-07-10.json` anchors the
+  full visual pass: 237 official gallery images plus 100 Alpha Master Sheet
+  images, each with its image hash and labelled contact-sheet batch.
+- `lore/azuki_world_metadata.json` gives the agent a dual-world guide (Alley,
+  Garden, and the Gate threshold), four elemental domains, 85 official subtype
+  terms, 9 repeated-character threads, and per-card/per-variant search metadata.
+- `lore/azuki_world_metadata_audit.json` requires all 202 official card
+  identities, all 339 UI rows, and every one of the 337 image-bearing rows to
+  remain covered.
+- `scripts/build_azuki_world_metadata.py` regenerates and checks the layer. A
+  future gallery refresh with a new or changed image must receive a new explicit
+  visual-review snapshot before the check can pass.
+
 The catalog preserves source data as returned by each source, including
 variant entries, alternate-art entries, promo entries, starter deck entries,
 sheet rows, and source anomalies. It does not silently normalize source scars.
@@ -58,9 +77,9 @@ Current snapshot facts:
 
 Official gallery:
 
-- 234 official gallery entries
+- 237 official gallery entries
 - 202 unique `cardId` values
-- 27 `cardId` values with multiple gallery entries
+- 29 `cardId` values with multiple gallery entries
 - Sets surfaced by the endpoint: `Booster`, `Promo`, `Starter Deck 1`,
   `Starter Deck 2`, `Starter Deck 3`, `Starter Deck 4`
 
@@ -75,12 +94,12 @@ Alpha Master Sheet:
 
 Alpha-field completion spreadsheet:
 
-- 234 rows, one per official gallery entry
-- 234 unique row keys
-- 122 rows crosswalked to the Alpha Master Sheet by shared `cardId`
-- 112 rows completed from official gallery data
-- 110 official-only rows have illustrator credits filled by image view
-- 2 official-only rows remain in the image-review queue because the printed
+- 237 rows, one per official gallery entry
+- 237 unique row keys
+- 123 rows crosswalked to the Alpha Master Sheet by shared `cardId`
+- 114 rows completed from official gallery data
+- 109 official-only rows have illustrator credits filled by image view
+- 5 official-only rows remain in the image-review queue because the printed
   credit line is visible but too compressed/stylized to transcribe confidently
 
 Promo observation layer:
@@ -111,10 +130,10 @@ Star / alternate-art signal audit:
   variant markers, and exact image URL reuse across siblings.
 - `audits/azuki_tcg_star_alt_art_audit_2026_06_24_provenance.json` records the
   audit policy and counts.
-- Current findings: 50 rows in scope, 22 review rows, 5 high-severity rows.
-  The high-severity bucket includes one `★` row reusing a non-star image URL
-  (`STT04-01` Zero), four source/image card-ID disagreement rows, and the
-  completion-layer star-flattening pattern is separated as medium severity.
+- Current findings: 53 rows in scope, 19 review rows, and no high-severity
+  rows. The remaining 19 rows are medium-severity completion-layer
+  star-flattening comparisons; official source anomalies remain declared in
+  the release instead of suppressing their images.
 
 Authority boundary:
 
@@ -134,12 +153,20 @@ Authority boundary:
 - User-image portrait-alt observations likewise remain evidence rows. A matched
   gallery UID means the observed image aligns with a gallery row; it does not
   prove physical possession, condition, authenticity, or market value.
+- Lore-source claims do not turn image observations into canon events.
+- Alley/Garden setting cues are labelled visual interpretations with confidence,
+  not official location assignments for every illustration.
+- Official subtypes remain official vocabulary; the world layer does not call
+  every subtype a political faction.
 
 Rebuild:
 
 ```bash
 python3 scripts/build_azuki_tcg_catalog.py --check
 python3 scripts/audit_azuki_star_alt_art.py --check
+python3 scripts/build_azuki_world_metadata.py --check
+python3 scripts/export_azuki_catalog_for_ui.py --check
+python3 scripts/audit_azuki_world_agent.py
 ```
 
 Refresh from the live official endpoint and linked Alpha Master Sheet:

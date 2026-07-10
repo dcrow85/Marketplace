@@ -1,0 +1,139 @@
+{
+  "schema": "azuki_official_lore_source_snapshot_v0.1",
+  "retrieved": "2026-07-10",
+  "scope": "Official Azuki and Azuki TCG web material used to enrich the Cairn Azuki catalog with world context.",
+  "source_policy": {
+    "official_site_fact": "A concise paraphrase of material published on an Azuki-owned web property.",
+    "official_tcg_rule_fact": "A gameplay/world term defined by the official Azuki TCG rules.",
+    "official_card_fact": "A name, element, subtype, rule, flavor, or reference field carried by an official card source.",
+    "official_future_context": "An officially announced but not-yet-released story or set detail; never present it as an already published story event.",
+    "official_community_governance_context": "Material on the official Bobu governance site; proposal intent is not promoted to completed canon unless the page says it shipped.",
+    "card_art_observation": "A visible cue from the catalog image, useful for search but not automatically a canon claim.",
+    "catalog_inference": "A declared relationship inferred from names, subtypes, rules, flavor, or repeated character depiction."
+  },
+  "sources": [
+    {
+      "source_id": "azuki_tcg_home_2026_07_10",
+      "title": "Azuki TCG",
+      "url": "https://tcg.azuki.com/",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_site_fact",
+      "claims": [
+        "Gates Awakened asks players to choose Lightning, Water, Earth, or Fire and battle across the Garden and Alley.",
+        "Each player leads a faction through a Leader and the mystic power of a Gate.",
+        "The site presents every card as hand drawn by artists."
+      ]
+    },
+    {
+      "source_id": "azuki_tcg_how_to_play_2026_07_10",
+      "title": "How to Play",
+      "url": "https://tcg.azuki.com/how-to-play",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_tcg_rule_fact",
+      "claims": [
+        "The Garden is the front row, where combat and most interaction happen.",
+        "The Alley is the back row, where preparation happens.",
+        "A Gate portals an entity from the Alley into the Garden, and the Gate effect scales with the entity's Gate Power.",
+        "IKZ is accumulated and spent to play cards or activate abilities."
+      ]
+    },
+    {
+      "source_id": "azuki_tcg_game_rules_2026_07_10",
+      "title": "Azuki TCG Game Rules",
+      "url": "https://tcg.azuki.com/how-to-play/game",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_tcg_rule_fact",
+      "claims": [
+        "Leaders are permanent Garden cards and determine deck element.",
+        "Gates are permanent, match the Leader's element, and cannot be attacked or destroyed.",
+        "Entities may be played into either the Garden or Alley; weapons attach only in the Garden.",
+        "IKZ is a colorless resource, while IKZ tokens are single-use resources.",
+        "Neutral cards can be used with any elemental Leader."
+      ]
+    },
+    {
+      "source_id": "azuki_tcg_card_game_made_by_hand_2026_05_20",
+      "title": "A Card Game Made by Hand",
+      "url": "https://tcg.azuki.com/blog/019e47b7-5f32-722b-b1cf-6d0577bbcd44",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_site_fact",
+      "claims": [
+        "The TCG bridges Azuki IP and the developing manga with gameplay and physical card art.",
+        "The Alley world is contemporary and grounded in everyday life.",
+        "The Garden world is fantasy blending feudal Japan with Western fantasy.",
+        "Inside the Garden are four elemental domains, each with its own visual flavor.",
+        "Element playstyles draw from the identity, culture, and characteristics of their domains.",
+        "Card illustrations are designed to express gameplay actions and the feeling of the card.",
+        "The visual foundation is East-meets-West, line-art driven, cel-shaded anime art, with additional latitude for alternate and chase art.",
+        "Portrait Rare bean foil represents the transient energy of portal travel from the Alley to the Garden.",
+        "The Thunderclap alternate art depicts a Beanz in a powerful goddess's hand producing an outsized lightning clap.",
+        "Future Set 2 context includes Lightning Cloudreader monks, rain-soaked back alleys, blood-fueled Fire fury, and Earth groves that can nourish or punish."
+      ]
+    },
+    {
+      "source_id": "azuki_tcg_anime_expo_2026_06_29",
+      "title": "Azuki TCG is headed to Anime Expo 2026",
+      "url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_future_context",
+      "claims": [
+        "The cards introduced the world, while the announced AZUKI manga will expand where the story goes.",
+        "The first announced manga chapters are titled Sisters and Pact.",
+        "Shao is a character readers will meet through the manga.",
+        "The free global manga launch was announced for September 2026; this snapshot does not treat it as already released."
+      ]
+    },
+    {
+      "source_id": "azuki_gallery_api_2026_07_06",
+      "title": "Azuki TCG Card API",
+      "url": "https://tcg.azuki.com/api/cards",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_card_fact",
+      "claims": [
+        "The pinned API snapshot supplies official names, elements, categories, subtypes, rules text, rarity, sets, and image URLs for 237 gallery rows."
+      ]
+    },
+    {
+      "source_id": "azuki_bobu_home_2026_07_10",
+      "title": "Bobu the Bean Farmer",
+      "url": "https://bobu.azuki.com/",
+      "publisher": "Azuki Labs / Bobu governance",
+      "authority_label": "official_community_governance_context",
+      "claims": [
+        "Bobu presents himself as a sake-drinking bean farmer.",
+        "His site says he accidentally burned down a local tavern and frames his fractionalized community as participating in his decisions.",
+        "The persona emphasizes farming, drinking, resting, music, mishaps, and community-directed adventures."
+      ]
+    },
+    {
+      "source_id": "azuki_bobu_poloreoid_proposal",
+      "title": "Bobu Po-Lore-Oid community proposal",
+      "url": "https://bobu.azuki.com/proposals/should-we-approve-bobu-po-lore-oid-community-proposal-by-v1zhual",
+      "publisher": "Azuki Labs / Bobu governance",
+      "authority_label": "official_community_governance_context",
+      "claims": [
+        "The completed governance proposal planned a Chiru-vetted set of Bobu memory prompts and community art for an official canon-lore page.",
+        "Example proposal prompts connect Bobu with Yuki, Shao, the Alley, a dojo, an onsen, sloths, bean farming, and drinking games.",
+        "These examples record proposal intent; this snapshot does not promote them to published story events."
+      ]
+    },
+    {
+      "source_id": "azuki_elements_of_time_2026_07_10",
+      "title": "Azuki x H. Moser - Elements of Time",
+      "url": "https://h-moser.azuki.com/",
+      "publisher": "Azuki Labs and H. Moser & Cie.",
+      "authority_label": "official_site_fact",
+      "claims": [
+        "The Elementals world is organized around four domains: Earth, Water, Lightning, and Fire."
+      ]
+    }
+  ],
+  "not_claiming": [
+    "that every official card subtype is a political faction",
+    "that an image observation is a canon story event",
+    "that proposed Bobu memories were all published as canon",
+    "that announced manga chapters or Set 2 material are already released",
+    "that shared names or visual resemblance prove two depictions are the same person unless the relationship is labeled as an inference",
+    "physical-card authenticity, condition, possession, or market value"
+  ]
+}

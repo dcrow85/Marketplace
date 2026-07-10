@@ -35,6 +35,7 @@ REFERENCE_AUDIT = AZUKI / "audits" / "azuki_tcg_reference_image_audit_2026_06_25
 PROMO_OBS = AZUKI / "observations" / "azuki_tcg_user_photo_promo_observations_2026_06_24.csv"
 PORTRAIT_OBS = AZUKI / "observations" / "azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv"
 MANIFEST = AZUKI / "manifest.json"
+WORLD_METADATA = AZUKI / "lore" / "azuki_world_metadata.json"
 ALPHA_IMAGE_MANIFEST = AZUKI / "source-snapshots" / "alpha_master_sheet_image_manifest_2026-06-26.json"
 ALPHA_ASSET_DIR = WEB_PUBLIC_DIR / "assets" / "alpha"
 ALPHA_ASSET_WEB_PREFIX = "assets/alpha"
@@ -112,6 +113,35 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def world_metadata_view(
+    card: dict[str, Any],
+    identity_by_card_id: dict[str, dict[str, Any]],
+    variant_by_uid: dict[str, dict[str, Any]],
+    metadata_hash: str,
+) -> dict[str, Any]:
+    identity = identity_by_card_id.get(card.get("card_id") or card.get("num") or "", {})
+    variant = variant_by_uid.get(card["uid"], {})
+    return {
+        "lore_summary": identity.get("lore_summary") or variant.get("visual_note") or "",
+        "elemental_domain": identity.get("elemental_domain") or card.get("element") or "",
+        "official_subtypes": identity.get("official_subtypes") or card.get("subtypes") or [],
+        "subtype_semantics_boundary": identity.get("subtype_semantics_boundary") or "",
+        "subject_kind": identity.get("subject_kind") or "catalog-subject",
+        "setting_cue": variant.get("setting_cue") or identity.get("setting_cue") or {},
+        "motifs": variant.get("motifs") or identity.get("motifs") or [],
+        "character_thread": identity.get("character_thread"),
+        "connections": identity.get("connections") or [],
+        "source_identity_refs": identity.get("source_identity_refs") or [],
+        "variant_role": variant.get("variant_role") or "",
+        "visual_note": variant.get("visual_note") or "",
+        "visual_note_authority": variant.get("visual_note_authority") or "",
+        "visual_review": variant.get("visual_review"),
+        "search_terms": identity.get("search_terms") or [],
+        "authority_boundary": "Official site/card facts, declared catalog inference, and card-art observations remain separately labeled.",
+        "metadata_hash": metadata_hash,
+    }
 
 
 def column_number(ref: str) -> int:
@@ -782,6 +812,10 @@ def build_payload() -> dict[str, Any]:
     reference_rows = read_csv(REFERENCE_AUDIT)
     manifest = read_json(MANIFEST)
     manifest_hash = sha256(MANIFEST)
+    world_metadata = read_json(WORLD_METADATA)
+    world_metadata_hash = sha256(WORLD_METADATA)
+    world_identity_by_card_id = {card["card_id"]: card for card in world_metadata["cards"]}
+    world_variant_by_uid = {card["uid"]: card for card in world_metadata["variants"]}
 
     completion_by_uid = {r["ROW_KEY"]: r for r in completion_rows if r.get("ROW_KEY")}
     audit_by_uid = {r["UID"]: r for r in star_rows if r.get("UID")}
@@ -800,6 +834,14 @@ def build_payload() -> dict[str, Any]:
         if (row.get("card_id") or "") not in exact_alpha_card_ids
     )
     cards.extend(card_from_unmatched_observation(row, manifest_hash) for row in unmatched_observations)
+
+    for card in cards:
+        card["azuki_world"] = world_metadata_view(
+            card,
+            world_identity_by_card_id,
+            world_variant_by_uid,
+            world_metadata_hash,
+        )
 
     set_counts = Counter(c["set_id"] for c in cards)
     sets = []
@@ -844,7 +886,16 @@ def build_payload() -> dict[str, Any]:
             "label": "Azuki TCG",
             "subtitle": "Alpha rows, Gates Awakened rows, observations, and visible source scars.",
             "domain": "azuki_tcg",
+            "azuki_world_context": world_metadata["world_guide"]["agent_context"],
             "not_claiming": manifest.get("not_claiming", []),
+        },
+        "azuki_world": {
+            "schema": world_metadata["schema"],
+            "metadata_hash": world_metadata_hash,
+            "authority_legend": world_metadata["authority_legend"],
+            "world_guide": world_metadata["world_guide"],
+            "counts": world_metadata["counts"],
+            "not_claiming": world_metadata["not_claiming"],
         },
         "ui": {
             "holo_label": "★ Alt art",
@@ -861,7 +912,7 @@ def build_payload() -> dict[str, Any]:
             ],
             "category_chips": cats,
             "element_chips": elements,
-            "agent_placeholder": "show me star leaders with source issues…",
+            "agent_placeholder": "show me Watercrafting cards from the Garden…",
             "condition_options": [
                 ["any", "Any condition"],
                 ["nm", "Near Mint or better"],
@@ -889,6 +940,10 @@ def build_payload() -> dict[str, Any]:
             "product_channels": dict(sorted(Counter(c.get("product_channel") or "unknown" for c in cards).items())),
             "alpha_master_sheet_rows_added": sum(1 for c in cards if str(c.get("uid", "")).startswith("azuki_tcg_alpha_master_sheet:")),
             "gates_awakened_rows": sum(1 for c in cards if c.get("release_family") == "gates_awakened"),
+            "world_enriched_rows": sum(1 for c in cards if c.get("azuki_world")),
+            "world_image_reviewed_rows": sum(1 for c in cards if c.get("azuki_world", {}).get("visual_review")),
+            "world_character_threads": world_metadata["counts"]["character_threads"],
+            "world_claims": world_metadata["counts"]["world_claims"],
         },
         "manifest_total_rows": manifest.get("counts", {}).get("official_gallery", {}).get("gallery_entries"),
         "catalog_hash": manifest_hash,
@@ -898,6 +953,13 @@ def build_payload() -> dict[str, Any]:
             "completion_csv": {"path": str(COMPLETION.relative_to(ROOT)), "sha256": sha256(COMPLETION)},
             "star_audit": {"path": str(STAR_AUDIT.relative_to(ROOT)), "sha256": sha256(STAR_AUDIT)},
             "reference_image_audit": {"path": str(REFERENCE_AUDIT.relative_to(ROOT)), "sha256": sha256(REFERENCE_AUDIT)},
+            "world_metadata": {
+                "path": str(WORLD_METADATA.relative_to(ROOT)),
+                "sha256": world_metadata_hash,
+                "card_identities": world_metadata["counts"]["official_card_ids_enriched"],
+                "ui_variants": world_metadata["counts"]["ui_variants_enriched"],
+                "reviewed_images": world_metadata["counts"]["image_rows_reviewed"],
+            },
             "alpha_master_sheet_image_manifest": (
                 {
                     "path": str(ALPHA_IMAGE_MANIFEST.relative_to(ROOT)),

@@ -1,0 +1,29 @@
+{
+  "schema": "azuki_world_metadata_audit_v0.1",
+  "passed": true,
+  "checks": {
+    "all_official_card_ids_enriched": true,
+    "all_ui_rows_have_variant_metadata": true,
+    "all_image_rows_reviewed": true,
+    "review_image_refs_match_catalog": true,
+    "official_review_count_matches": true,
+    "alpha_review_count_matches": true
+  },
+  "counts": {
+    "official_world_sources": 9,
+    "world_claims": 34,
+    "official_card_ids_enriched": 202,
+    "ui_variants_enriched": 339,
+    "image_rows_reviewed": 337,
+    "official_subtype_terms": 85,
+    "character_threads": 9
+  },
+  "unreviewed_image_uids": [],
+  "not_claiming": [
+    "image observations are canon story events",
+    "official card subtypes are all political factions",
+    "shared names prove identity beyond the declared confidence label",
+    "future manga or Set 2 material is already released",
+    "physical-card authenticity, condition, possession, or market value"
+  ]
+}
