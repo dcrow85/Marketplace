@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **S/M/L now reaches the whole binder (Crowley: toggles dead on the main
+  binder) — LIVE.** Two holes: `.grid.gallery` outranked the scale override (specificity), and the DEFAULT
+  Pages layout is a fixed 3×3 that never read the var. Gallery now scales its minmax; Pages scales the PAGE
+  itself (max-width = tilescale × 860px, clamped to container, header/nav tracking) — so S gives a compact
+  centered binder page, L spreads to ~1050px. Verified in-browser at 1280px: Pages 671→1048, Standard cells
+  115→195, persistence ✓. Note: on narrow viewports everything correctly clamps to 100% (scale is a
+  preference, not an overflow). Apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Tables ARE binder cells now (Crowley: buttons messy; "consistency
   works with people's memory") — LIVE, verified IN-BROWSER again (preview restored via the base
   Claude_Browser server; the ephemeral Claude_Preview one was what died).** Seller-table tiles rebuilt on the

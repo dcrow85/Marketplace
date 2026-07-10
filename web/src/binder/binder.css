@@ -402,3 +402,9 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
 
 /* card-size preference: one scale var, every grid listens */
 .grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 146px), 1fr)); }
+
+/* S/M/L reaches every binder layout: gallery outranked the base override, and the
+   pocket page is a fixed 3×3 — so there, scale sizes the PAGE (and its pockets). */
+.grid.gallery { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 216px), 1fr)); }
+.bv-page { max-width: min(100%, calc(var(--tilescale, 1) * 860px)); margin-inline: auto; }
+.bv-head, .bv-nav { max-width: min(100%, calc(var(--tilescale, 1) * 860px)); margin-inline: auto; }
