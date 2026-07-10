@@ -55,6 +55,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **card_type dimension (Crowley: "find all Beanz" — Anko couldn't) — LIVE,
+  both halves.** The catalog's TYPE LINE (types + subtypes: Beanz ×16, Steelborn ×27, Black Jade, Scorchweaver,
+  Wavecaller, Dawnling, Blazerker, Elder…) was never in the filter schema. Added `card_type` end to end:
+  prompt (with tribe examples), SCOPE_KEYS, backend `apply_filter` + the frontend mirror (ci substring across
+  types∪subtypes). Probes 3/3: "find all Beanz" → 24 survivors, "Steelborn cards" → 27, and "who's selling
+  Beanz?" correctly becomes find_market scoped {card_type: Beanz} (the market finds path inherits the dim for
+  free). Prod confirmed. Tribal search is core TCG muscle memory — good catch. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Three cleanups (Crowley) — LIVE, in-browser verified.** (1) The drawer
   whisper stops saying "~1543% of this pile": past 100% it reads "your tradeables (~1713 USDC on record) more
   than cover this pile (~111)". (2) "Start a trade" retired from the trade panel — offers are the front door;

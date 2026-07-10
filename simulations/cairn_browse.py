@@ -133,6 +133,8 @@ def filter_system(data: dict) -> str:
             f" - category: {cats} | null\n"
             f" - element: {elements} | null\n"
             " - rarity: an EXACT rarity code — C (common), UC (uncommon), R (rare), SR, SR ★, SR ★★, L, L ★, G, G ★, IKZ, IKZ ★ — or null\n"
+            " - card_type: a tribe/type word from the card's TYPE LINE — e.g. Beanz, Steelborn, Black Jade, "
+            "Scorchweaver, Wavecaller, Dawnling, Blazerker, Elder — or null\n"
             " - release_family: alpha | gates_awakened | null   ('Alpha' vs 'Gates Awakened' printings)\n"
             " - product_channel: booster | starter | promo | null\n\n"
             "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
@@ -159,7 +161,7 @@ def filter_system(data: dict) -> str:
             "collector's own records and they confirm.\n"
             "sort: when they ask to ORDER listings ('sort highest to lowest cost', 'cheapest first') set "
             '"sort": "price_desc" or "price_asc" (top level, beside the filter dims); null otherwise.\n\n"'
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"sort":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"card_type":..,"sort":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
@@ -230,6 +232,9 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
         out = [c for c in out if (c.get("band_rank") or 0) < 3]  # band 3 = high-scrutiny holo grail
     if f.get("category"):
         out = [c for c in out if (c.get("category") or "").lower() == str(f["category"]).lower()]
+    if f.get("card_type"):
+        t = str(f["card_type"]).lower()
+        out = [c for c in out if any(t in (x or "").lower() for x in (c.get("types") or []) + (c.get("subtypes") or []))]
     if f.get("element"):
         out = [c for c in out if (c.get("element") or "").lower() == str(f["element"]).lower()]
     if f.get("rarity"):
@@ -291,7 +296,7 @@ def diverse_pool(cards: list[dict], cap: int) -> list[dict]:
 
 
 ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market", "match_value"}
-SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails", "duplicates"}
+SCOPE_KEYS = {"rarity", "release_family", "product_channel", "star_alt", "holo", "category", "element", "set", "character", "exclude_grails", "duplicates", "card_type"}
 
 
 def _valid_step(a, fallback_scope: dict) -> dict | None:
