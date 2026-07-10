@@ -55,6 +55,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **THE ENTIRE CHECKOUT ON A LOCAL EVM (Crowley: "set up the entire
+  checkout, perhaps a local EVM for testing?") — DONE, twice-proven.** `scripts/dev-chain.sh` (top-level, NOT
+  chain/script — Codex's contracts consumed READ-ONLY): boots Anvil (31337), deploys the real
+  **ThinPilotEscrow** + the test-file **MockUSDC**, mints the buyer 1000 rehearsal USDC, writes
+  `web/.env.local` (gitignored). Frontend: `chain/config.js` grows VITE_CHAIN_MODE=local (foundry chain +
+  env addresses; prod path untouched); `chain/localRehearsal.js` = the chain rail — anvil's WELL-KNOWN dev
+  keys (buyer/desk-seller/desk-arbiter, chainId-31337-guarded) drive every side; accepted CASH deals get
+  `rail:'chain'` (mock theater keeps its hands off) and the rail walks the REAL contract: approve →
+  createTrade → seller markShipped → buyer confirmReceived → accept → USDC released, each ledger line
+  carrying its tx hash; Settled applies binder consequences. `useEscrowWallet` returns the local signer in
+  this mode. TWO REAL FINDINGS: (1) `ensureChain`'s switchChain ceremony breaks raw-key http clients
+  ("wallet_addEthereumChain does not exist") — now gated to custom transports (Privy path unchanged);
+  (2) ThinPilotEscrow's `confirmReceived` auto-opens inspection — `openInspection` is only the timeout path
+  (driver adjusted; first run absorbed the revert via retry exactly as designed). Proof: trade #1 (1 USDC,
+  one retried hiccup), trade #2 (2 USDC, CLEAN five-tx journey), desk-seller's on-chain balance 3 USDC,
+  cards recorded to the binder with cash-leg notes. Pure swaps stay on the mock rail (no cash leg = no
+  escrow object — the known two-sided seam). Codex FYI: your escrow behaves beautifully under the surface's
+  full flow; the auto-open finding may be worth a docs line. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **card_type dimension (Crowley: "find all Beanz" — Anko couldn't) — LIVE,
   both halves.** The catalog's TYPE LINE (types + subtypes: Beanz ×16, Steelborn ×27, Black Jade, Scorchweaver,
   Wavecaller, Dawnling, Blazerker, Elder…) was never in the filter schema. Added `card_type` end to end:

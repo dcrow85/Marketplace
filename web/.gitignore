@@ -26,3 +26,6 @@ dist-ssr
 # Alpha card photos — build artifact, regenerate: azuki_sheet_image_extract.py <sheet.xlsx> web/public/assets/alpha
 web/public/assets/alpha/
 web/public/sample-alpha.jpg
+
+# local chain handshake (written by scripts/dev-chain.sh)
+.env.local

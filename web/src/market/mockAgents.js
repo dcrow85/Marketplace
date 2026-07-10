@@ -5,6 +5,7 @@
 // state, no funds move, and settlements are tagged mock wherever they surface.
 import { loadStore, saveStore } from '../binder/collection.js'
 import { loadOffers, saveOffers, OFFER_SETTLING } from '../trade/offers.js'
+import { IS_LOCAL_CHAIN } from '../chain/config.js'
 
 export const mockSalesKeyFor = (catalogId) => `cairn-mock-sales:${catalogId}`
 export const hiddenKeyFor = (catalogId, accountId) => `cairn-mock-hidden:${catalogId}:${accountId}`
@@ -97,7 +98,7 @@ function decide({ o, byUid, askOf }) {
   return { verdict: 'countered', cash: { side: 'from', amount: cashFrom + boot }, line: p.counter(boot) }
 }
 
-function settleOffer({ catalogId, accountId, o }) {
+export function settleOffer({ catalogId, accountId, o }) {
   const storeKey = accountId ? `cairn-cards:${catalogId}:${accountId}` : `cairn-cards:${catalogId}`
   const store = loadStore(storeKey)
   const next = { ...store }
@@ -183,8 +184,15 @@ export function startMockMarket({ catalogId, accountId, byUid, askOf }) {
         } else {
           o.state = d.verdict
           o.response = { line: d.line }
-          o.nextAt = d.verdict === 'accepted' ? o.nextAt + between(FLOW_DWELL) : null
+          if (d.verdict === 'accepted' && IS_LOCAL_CHAIN && o.cash && (o.dir === 'out' ? o.cash.side === 'from' : o.cash.side === 'to')) {
+            o.rail = 'chain' // the local EVM settles this one for real
+            o.nextAt = null
+          } else {
+            o.nextAt = d.verdict === 'accepted' ? o.nextAt + between(FLOW_DWELL) : null
+          }
         }
+      } else if (o.rail === 'chain') {
+        o.nextAt = null // the chain rail owns this one
       } else if (OFFER_SETTLING.includes(o.state)) {
         const i = FLOW.indexOf(o.state)
         o.state = FLOW[i + 1]
@@ -209,7 +217,12 @@ export function acceptIncoming(key, id) {
   const o = offers.find((x) => x.id === id)
   if (!o || o.dir !== 'in' || !['sent', 'seen'].includes(o.state)) return
   o.state = 'accepted'
-  o.nextAt = Date.now() + 1500
+  if (IS_LOCAL_CHAIN && o.cash && o.cash.side === 'to') {
+    o.rail = 'chain' // you pay, the local EVM settles it for real
+    o.nextAt = null
+  } else {
+    o.nextAt = Date.now() + 1500
+  }
   saveOffers(key, offers)
 }
 

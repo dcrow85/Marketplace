@@ -12,6 +12,7 @@ import Offers from './trade/Offers.jsx'
 import OfferComposer from './market/OfferComposer.jsx'
 import { offersKeyFor, loadOffers, OFFER_OPEN, OFFER_SETTLING } from './trade/offers.js'
 import { startMockMarket } from './market/mockAgents.js'
+import { startChainRail } from './chain/localRehearsal.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -118,7 +119,9 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
       const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
       const asks = new Map()
       if (m && m.catalog_id === catalog.id) for (const sl of m.sellers) for (const l of sl.listings) asks.set(sl.id + '|' + l.uid, l.ask)
-      stop = startMockMarket({ catalogId: catalog.id, accountId, byUid, askOf: (seller, uid) => asks.get(seller + '|' + uid) })
+      const stopMock = startMockMarket({ catalogId: catalog.id, accountId, byUid, askOf: (seller, uid) => asks.get(seller + '|' + uid) })
+      const stopChain = startChainRail({ catalogId: catalog.id, accountId, byUid })
+      stop = () => { stopMock(); stopChain() }
     }).catch(() => {})
     return () => { live = false; stop() }
   }, [catalog, accountId])

@@ -26,6 +26,9 @@ export function walletClientFrom(provider, account) {
 
 // Make sure the wallet is on Arbitrum Sepolia before a write (adds it if unknown).
 async function ensureChain(wc) {
+  // chain-switching is wallet-provider ceremony (Privy/injected); a raw key client
+  // over http (the local rehearsal rail) is born on its chain and can't answer it
+  if (wc.transport?.type !== 'custom') return
   try {
     await wc.switchChain({ id: CHAIN.id })
   } catch {
