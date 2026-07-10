@@ -55,6 +55,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **DE-FRANKENSTEINING PASS (Crowley: audit said mid-Frankenstein; "worth
+  it in spades") — DONE, four commits, every room verified in-browser after each phase.** (A) One data layer:
+  `lib/data.js` (useCatalog/useMarket/useByUid/fetchJson, module-cached — replaced 8 independent fetch+map
+  blocks) + `lib/store.js` (useBus — replaced 9 rev-counter/listener boilerplate blocks) + ONE stance reader
+  (collection.entryFor absorbed Binder's private effStance twin; Binder aliases it). (B) One art tile:
+  `components/MiniCard.jsx` replaced the ofr-tile + mkf-tile + sp-tile families (Settle grids, My table,
+  Anko's finds). (C) God files split: Binder.jsx 1135→503 (CardModal 351 · helpers 96 · agentPanels 69 ·
+  PocketPages 61 · Card · QuickSell as files); Market.jsx 692→468 + SettlePage 218. (D) BinderView.jsx
+  deleted (119 dead lines), 17 dead CSS rules purged (swap-era swp/mktline/mk-basketbar/mkf/ofr-tile…).
+  DEFERRED, noted honestly: OfferComposer still serves counters (unify onto the Settle surface when counters
+  get their pass); binder.css purge was conservative. The point of the timing: PublicBinder (collector
+  profiles, P1 next) becomes the FIRST consumer of MiniCard + the data hooks instead of a fourth renderer
+  generation. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **THE ENTIRE CHECKOUT ON A LOCAL EVM (Crowley: "set up the entire
   checkout, perhaps a local EVM for testing?") — DONE, twice-proven.** `scripts/dev-chain.sh` (top-level, NOT
   chain/script — Codex's contracts consumed READ-ONLY): boots Anvil (31337), deploys the real
