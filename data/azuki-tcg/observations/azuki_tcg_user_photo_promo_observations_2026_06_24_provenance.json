@@ -2,14 +2,15 @@
   "checks": {
     "all_observations_have_authority_label": true,
     "all_observations_have_printed_id": true,
+    "all_source_images_have_hashes": true,
     "matched_gallery_uids_exist": true,
-    "source_image_not_committed": true
+    "stored_source_images_match_hash": true
   },
   "counts": {
     "observed_cards_not_in_gallery_snapshot": 2,
-    "rows": 4,
+    "rows": 5,
     "source_conflicts": 1,
-    "unique_observation_ids": 4
+    "unique_observation_ids": 5
   },
   "csv_path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv",
   "name": "Azuki TCG User Photo Promo Observations",
@@ -18,21 +19,15 @@
     "market value",
     "seller possession beyond the single user-provided photo",
     "physical authenticity or condition",
-    "that the user photo should overwrite linked sheet or gallery fields"
+    "that the user photo should overwrite linked sheet or gallery fields",
+    "the tournament event, venue, date, recipient, or award path behind a visible WINNER treatment"
   ],
   "observed_cards_not_in_gallery_snapshot": [
     "AZP-005",
     "AZP-004"
   ],
-  "row_count": 4,
-  "schema": "azuki_tcg_promo_observation_provenance_v0.1",
-  "source": {
-    "date": "2026-06-24",
-    "kind": "user_provided_photo",
-    "note": "The source photo was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the user's physical-card image.",
-    "sha256": "59ff048dde6796c4720da70572f615b27ce95bf3f845020f5b42d26c05f7bf44",
-    "stored_in_repo": false
-  },
+  "row_count": 5,
+  "schema": "azuki_tcg_promo_observation_provenance_v0.2",
   "source_conflicts": [
     {
       "disposition": "preserve_as_source_conflict_not_silent_correction",
@@ -41,6 +36,37 @@
       "observation_id": "promo-photo-20260624-003",
       "observed_value": "Tomugi",
       "printed_id": "AZK01-028"
+    }
+  ],
+  "sources": [
+    {
+      "date": "2026-06-24",
+      "kind": "user_provided_photo",
+      "note": "The source photo was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the user's physical-card image.",
+      "public_path": "",
+      "repo_path": "",
+      "sha256": "59ff048dde6796c4720da70572f615b27ce95bf3f845020f5b42d26c05f7bf44",
+      "source_key": "promo-grid-20260624",
+      "stored_in_repo": false
+    },
+    {
+      "date": "2026-07-10",
+      "kind": "user_provided_photo",
+      "note": "The user supplied this photo specifically for inclusion as a catalogue reference. It remains user-photo evidence, not proof of authenticity, condition, event provenance, recipient, or official checklist inclusion.",
+      "official_gallery_check": {
+        "api_count": 237,
+        "checked": "2026-07-10",
+        "matching_source_entry_ids": [
+          "S1-AZK01-052_Yojin_E_UC_die"
+        ],
+        "url": "https://tcg.azuki.com/api/cards",
+        "winner_treatment_enumerated": false
+      },
+      "public_path": "assets/observations/yojin-tournament-winner-2026-07-10.png",
+      "repo_path": "web/public/assets/observations/yojin-tournament-winner-2026-07-10.png",
+      "sha256": "6d48141e27db990508f4d958c6e6e9f65c1dc19d59232be9ced0252f7cd90005",
+      "source_key": "yojin-winner-20260710",
+      "stored_in_repo": true
     }
   ]
 }

@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT))
 from simulations.cairn_browse import (  # noqa: E402
     apply_filter,
     brief,
+    exact_card_name_in_call,
     filter_system,
     resolve_pick_uids,
 )
@@ -62,6 +63,14 @@ def main() -> None:
     threshold = apply_filter(cards, {"plane": "threshold"}, set_labels)
     black_jade = apply_filter(cards, {"lore_term": "Black Jade"}, set_labels)
     shao = apply_filter(cards, {"character_thread": "shao"}, set_labels)
+    yojin_winner = next(
+        (
+            card
+            for card in cards
+            if card["uid"] == "azuki_tcg_observation:tournament-winner-photo-20260710-001"
+        ),
+        None,
+    )
 
     require(alley and garden and threshold, "one or more world-plane filters are empty")
     require(
@@ -71,6 +80,22 @@ def main() -> None:
     require(
         {card["name_en"] for card in shao} == {"Shao", "Shao's Perseverance", "Young Shao"},
         "Shao thread lost or gained an identity",
+    )
+    require(yojin_winner is not None, "Yojin WINNER observation row is missing")
+    require(
+        yojin_winner["source_authority"] == "user_photo_observation_not_official_gallery_fact"
+        and yojin_winner["image_status"] == "user_photo_observation"
+        and yojin_winner["azuki_world"]["variant_role"] == "user-observed-tournament-winner-treatment",
+        "Yojin WINNER row lost its observation authority, image, or variant role",
+    )
+    require(
+        "observed_variant_not_in_current_official_gallery_snapshot"
+        in {code for issue in yojin_winner["issues"] for code in issue.get("codes", [])},
+        "Yojin WINNER row no longer discloses its official-gallery boundary",
+    )
+    require(
+        exact_card_name_in_call("show me the Yojin tournament winner card", cards) == "Yojin",
+        "exact-name enforcement does not recognize Yojin",
     )
     require("world-cue:" in brief(garden[0], set_labels), "agent brief lost observation labels")
 

@@ -140,6 +140,12 @@ PROMO_OBSERVATION_EXTRA_COLUMNS = [
     "AUTHORITY_LABEL",
 ]
 
+PROMO_OBSERVATION_SOURCE_COLUMNS = [
+    "SOURCE_KEY",
+    "SOURCE_IMAGE_PUBLIC_PATH",
+    "DISPLAY_AS_DISTINCT_ROW",
+]
+
 # Image-view pass, 2026-06-23. These are deliberately not treated as official
 # gallery API facts: they are manual reads from the lower-left print line of
 # the source card images, used only to reduce blank spreadsheet fields.
@@ -264,12 +270,32 @@ IMAGE_REVIEW_QUEUE = {
     "S1-STT04-001AC_Zero_L_L-AAC_die": "Newly surfaced in the 2026-07-06 official API refresh; image credit line has not been manually reviewed yet.",
 }
 
-USER_PROMO_PHOTO_SOURCE = {
-    "kind": "user_provided_photo",
-    "date": "2026-06-24",
-    "sha256": "59ff048dde6796c4720da70572f615b27ce95bf3f845020f5b42d26c05f7bf44",
-    "stored_in_repo": False,
-    "note": "The source photo was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the user's physical-card image.",
+USER_PROMO_PHOTO_SOURCES = {
+    "promo-grid-20260624": {
+        "kind": "user_provided_photo",
+        "date": "2026-06-24",
+        "sha256": "59ff048dde6796c4720da70572f615b27ce95bf3f845020f5b42d26c05f7bf44",
+        "stored_in_repo": False,
+        "public_path": "",
+        "repo_path": "",
+        "note": "The source photo was provided in-session and is not committed to the public repository. The hash anchors the observation without publishing the user's physical-card image.",
+    },
+    "yojin-winner-20260710": {
+        "kind": "user_provided_photo",
+        "date": "2026-07-10",
+        "sha256": "6d48141e27db990508f4d958c6e6e9f65c1dc19d59232be9ced0252f7cd90005",
+        "stored_in_repo": True,
+        "public_path": "assets/observations/yojin-tournament-winner-2026-07-10.png",
+        "repo_path": "web/public/assets/observations/yojin-tournament-winner-2026-07-10.png",
+        "official_gallery_check": {
+            "checked": "2026-07-10",
+            "url": API_URL,
+            "api_count": 237,
+            "matching_source_entry_ids": ["S1-AZK01-052_Yojin_E_UC_die"],
+            "winner_treatment_enumerated": False,
+        },
+        "note": "The user supplied this photo specifically for inclusion as a catalogue reference. It remains user-photo evidence, not proof of authenticity, condition, event provenance, recipient, or official checklist inclusion.",
+    },
 }
 
 USER_PROMO_PHOTO_OBSERVATIONS = [
@@ -434,6 +460,49 @@ USER_PROMO_PHOTO_OBSERVATIONS = [
         "MATCHED_GALLERY_UIDS": [],
         "OBSERVATION_CONFIDENCE": "high",
         "OBSERVATION_NOTE": "Printed AZP-004 is not present in the current official gallery snapshot.",
+    },
+    {
+        "SOURCE_KEY": "yojin-winner-20260710",
+        "OBSERVATION_ID": "tournament-winner-photo-20260710-001",
+        "ID": "AZK01-052",
+        "PRINTED_ID": "AZK01-052",
+        "NORMALIZED_CARD_ID": "AZK01-052",
+        "IKZ COST": "5",
+        "NAME": "Yojin",
+        "ELEMENT": "Earth",
+        "TYPE": "Entity",
+        "SUBTYPE_1": "Earthwarden",
+        "SUBTYPE_2": "",
+        "SUBTYPE_3": "",
+        "GATE_PWR": "2",
+        "ATK": "2",
+        "HP": "4",
+        "PLUS_ATK": "",
+        "REF_IP": "Elementals",
+        "REF_ID": "17471",
+        "REF_IP2": "",
+        "REF_ID2": "",
+        "RARITY": "UC ★",
+        "ILLUSTRATOR": "Samuel Gildas",
+        "E_1": "Defender",
+        "E_1_TEXT": "If the number of entities in your Garden is less than the number of entities in your opponent's Garden, this card has Defender.",
+        "E_2": "",
+        "E_2_TEXT": "",
+        "F_TEXT": "",
+        "DEFINITION_TEXT": "If this card is in the Garden, you may tap it to redirect an attack to this card.",
+        "RULING_TEXT": "",
+        "STAMP": "WINNER visual stamp",
+        "IMG": "",
+        "ALT_IMG": "",
+        "PHYSICAL_LOCATION_IN_IMAGE": "single_card_front",
+        "OBSERVED_AZUKI_NUMBER": "Elemental #17471",
+        "OBSERVED_STAMP": "WINNER visual stamp",
+        "MATCHED_GALLERY_UIDS": [
+            "azuki_tcg_official_gallery:S1-AZK01-052_Yojin_E_UC_die",
+        ],
+        "DISPLAY_AS_DISTINCT_ROW": "true",
+        "OBSERVATION_CONFIDENCE": "high_for_visible_print_fields; user_asserted_tournament_status",
+        "OBSERVATION_NOTE": "User identifies this as a tournament-winner card. The photo visibly shows Yojin AZK01-052, a black WINNER treatment, and a star-marked UC line. The live official API on 2026-07-10 lists only the base UC Yojin, so this remains a distinct user-observed winner treatment rather than an official gallery variant.",
     },
 ]
 
@@ -1372,14 +1441,18 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
     gallery_uids = {card["uid"] for card in gallery_release["cards"]}
     rows: list[dict[str, Any]] = []
     for observation in USER_PROMO_PHOTO_OBSERVATIONS:
+        source_key = observation.get("SOURCE_KEY") or "promo-grid-20260624"
+        source = USER_PROMO_PHOTO_SOURCES[source_key]
         row = dict(observation)
+        row["SOURCE_KEY"] = source_key
         row["MATCHED_GALLERY_UIDS"] = "; ".join(row.get("MATCHED_GALLERY_UIDS") or [])
-        row["SOURCE_IMAGE_SHA256"] = USER_PROMO_PHOTO_SOURCE["sha256"]
-        row["SOURCE_IMAGE_STORED"] = str(USER_PROMO_PHOTO_SOURCE["stored_in_repo"]).lower()
+        row["SOURCE_IMAGE_SHA256"] = source["sha256"]
+        row["SOURCE_IMAGE_STORED"] = str(source["stored_in_repo"]).lower()
+        row["SOURCE_IMAGE_PUBLIC_PATH"] = source["public_path"]
         row["AUTHORITY_LABEL"] = "user_photo_observation_not_official_gallery_fact"
         rows.append(row)
 
-    columns = ALPHA_COLUMNS + PROMO_OBSERVATION_EXTRA_COLUMNS
+    columns = ALPHA_COLUMNS + PROMO_OBSERVATION_EXTRA_COLUMNS + PROMO_OBSERVATION_SOURCE_COLUMNS
     text = csv_text(rows, columns)
     missing_gallery_matches = [
         {
@@ -1406,11 +1479,22 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
             "disposition": "preserve_as_source_conflict_not_silent_correction",
         }
     ]
+    stored_source_images_match_hash = all(
+        not source["stored_in_repo"]
+        or (
+            (ROOT / source["repo_path"]).exists()
+            and sha256_bytes((ROOT / source["repo_path"]).read_bytes()) == source["sha256"]
+        )
+        for source in USER_PROMO_PHOTO_SOURCES.values()
+    )
     provenance = {
-        "schema": "azuki_tcg_promo_observation_provenance_v0.1",
+        "schema": "azuki_tcg_promo_observation_provenance_v0.2",
         "name": "Azuki TCG User Photo Promo Observations",
         "csv_path": f"data/azuki-tcg/observations/{PROMO_OBSERVATION_ID}.csv",
-        "source": USER_PROMO_PHOTO_SOURCE,
+        "sources": [
+            {"source_key": source_key, **source}
+            for source_key, source in sorted(USER_PROMO_PHOTO_SOURCES.items())
+        ],
         "row_count": len(rows),
         "counts": {
             "rows": len(rows),
@@ -1424,7 +1508,8 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
             "all_observations_have_printed_id": all(row["PRINTED_ID"] for row in rows),
             "all_observations_have_authority_label": all(row["AUTHORITY_LABEL"] for row in rows),
             "matched_gallery_uids_exist": not missing_gallery_matches,
-            "source_image_not_committed": USER_PROMO_PHOTO_SOURCE["stored_in_repo"] is False,
+            "all_source_images_have_hashes": all(source["sha256"] for source in USER_PROMO_PHOTO_SOURCES.values()),
+            "stored_source_images_match_hash": stored_source_images_match_hash,
         },
         "not_claiming": [
             "official checklist inclusion for observed printed IDs absent from the gallery snapshot",
@@ -1432,6 +1517,7 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
             "seller possession beyond the single user-provided photo",
             "physical authenticity or condition",
             "that the user photo should overwrite linked sheet or gallery fields",
+            "the tournament event, venue, date, recipient, or award path behind a visible WINNER treatment",
         ],
     }
     return text, provenance

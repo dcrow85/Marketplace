@@ -207,6 +207,12 @@ SPECIFIC_VISUAL_NOTES = {
     "STT04-014": "Suzuka variants show a fire-aligned shinobi amid talismans and flame effects.",
 }
 
+SPECIFIC_VARIANT_VISUAL_NOTES = {
+    "azuki_tcg_observation:tournament-winner-photo-20260710-001": (
+        "User-supplied Yojin card photo with a reflective star treatment and a large black WINNER stamp across the lower-right illustration; tournament context beyond the visible treatment is not established by the image."
+    ),
+}
+
 NOT_CLAIMING = [
     "image observations are canon story events",
     "official card subtypes are all political factions",
@@ -347,6 +353,8 @@ def card_lore_summary(card: dict[str, Any], cue: dict[str, str], motifs: list[st
 def variant_role(card: dict[str, Any]) -> str:
     rarity = str(card.get("rarity") or "")
     entry = str(card.get("source_entry_id") or "")
+    if (card.get("variant_group") or {}).get("variant_kind") == "user_observed_tournament_winner_treatment":
+        return "user-observed-tournament-winner-treatment"
     if "INV" in entry:
         return "invitational-or-event-treatment"
     if "★★" in rarity or "AAC" in entry:
@@ -357,6 +365,8 @@ def variant_role(card: dict[str, Any]) -> str:
 
 
 def visual_note(card: dict[str, Any], cue: dict[str, str]) -> str:
+    if card.get("uid") in SPECIFIC_VARIANT_VISUAL_NOTES:
+        return SPECIFIC_VARIANT_VISUAL_NOTES[card["uid"]]
     card_id = card.get("card_id") or card.get("num") or ""
     if card_id in SPECIFIC_VISUAL_NOTES:
         return SPECIFIC_VISUAL_NOTES[card_id]
@@ -369,20 +379,31 @@ def build_visual_review_snapshot(official_image_dir: Path) -> dict[str, Any]:
     ui = read_json(UI_CATALOG)
     official_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "exact_source"]
     alpha_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "alpha_master_sheet"]
+    observation_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "user_photo_observation"]
     official_position = {uid: index for index, uid in enumerate(official_order)}
     alpha_position = {uid: index for index, uid in enumerate(alpha_order)}
+    observation_position = {uid: index for index, uid in enumerate(observation_order)}
     rows = []
 
     for card in ui["cards"]:
         image = card.get("image") or ""
         if not image:
             continue
-        if image.startswith("http"):
+        if card.get("image_status") == "exact_source":
             path = official_image_dir / f"{card['source_entry_id']}.jpg"
             sheet = f"official_{official_position[card['uid']] // 20 + 1:02d}"
-        else:
+            review_status = "reviewed_in_labelled_contact_sheet"
+            review_method = "Manual visual pass over labelled 5x4 contact sheets generated from each source image; official sheets 01-12 and Alpha sheets 01-05."
+        elif card.get("image_status") == "alpha_master_sheet":
             path = ROOT / "web" / "public" / image
             sheet = f"alpha_{alpha_position[card['uid']] // 20 + 1:02d}"
+            review_status = "reviewed_in_labelled_contact_sheet"
+            review_method = "Manual visual pass over labelled 5x4 contact sheets generated from each source image; official sheets 01-12 and Alpha sheets 01-05."
+        else:
+            path = ROOT / "web" / "public" / image
+            sheet = f"observation_{observation_position[card['uid']] + 1:02d}"
+            review_status = "reviewed_at_original_resolution"
+            review_method = "Manual visual pass over the user-supplied image at original resolution."
         if not path.exists() or path.stat().st_size < 1000:
             raise FileNotFoundError(f"review image missing or too small: {path}")
         rows.append({
@@ -394,9 +415,9 @@ def build_visual_review_snapshot(official_image_dir: Path) -> dict[str, Any]:
             "image_sha256": sha256_file(path),
             "image_bytes": path.stat().st_size,
             "review_batch": sheet,
-            "review_status": "reviewed_in_labelled_contact_sheet",
+            "review_status": review_status,
             "reviewer": "Codex",
-            "review_method": "Manual visual pass over labelled 5x4 contact sheets generated from each source image; official sheets 01-12 and Alpha sheets 01-05.",
+            "review_method": review_method,
             "authority_label": "card_art_observation",
         })
 
@@ -409,6 +430,7 @@ def build_visual_review_snapshot(official_image_dir: Path) -> dict[str, Any]:
             "reviewed_images": len(rows),
             "official_gallery_images": len(official_order),
             "alpha_master_sheet_images": len(alpha_order),
+            "user_observation_images": len(observation_order),
         },
         "method_boundary": "Contact-sheet review supports high-level subjects, setting cues, motifs, and variant notes. It is not pixel-forensic review and does not establish canon, print identity, authenticity, condition, or possession.",
         "rows": rows,
@@ -592,6 +614,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
         ),
         "official_review_count_matches": review_source["counts"]["official_gallery_images"] == sum(1 for card in ui["cards"] if card.get("image_status") == "exact_source"),
         "alpha_review_count_matches": review_source["counts"]["alpha_master_sheet_images"] == sum(1 for card in ui["cards"] if card.get("image_status") == "alpha_master_sheet"),
+        "observation_review_count_matches": review_source["counts"].get("user_observation_images", 0) == sum(1 for card in ui["cards"] if card.get("image_status") == "user_photo_observation"),
     }
     passed = all(checks.values())
     payload = {

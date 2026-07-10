@@ -212,6 +212,18 @@ def world_search_text(card: dict) -> str:
     return " ".join(parts).casefold()
 
 
+def exact_card_name_in_call(call: str, cards: list[dict]) -> str | None:
+    """Return the longest explicit catalogue name in the call, if one exists."""
+    names = {
+        card.get("name_en") or card.get("name_ja") or ""
+        for card in cards
+    }
+    for name in sorted((name for name in names if len(name) >= 4), key=lambda value: (-len(value), value.casefold())):
+        if re.search(rf"(?<!\w){re.escape(name)}(?!\w)", call, flags=re.IGNORECASE):
+            return name
+    return None
+
+
 def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
     out = cards
     if f.get("holo") is not None:
@@ -365,6 +377,31 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     setlabel = data["_set_label"]
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
     f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 260)
+    exact_name = exact_card_name_in_call(call, data["cards"])
+    if exact_name:
+        parsed_name = str(f.get("character") or "")
+        if parsed_name.casefold() != exact_name.casefold():
+            for key in ("category", "lore_term", "theme", "character_thread", "lore"):
+                f[key] = None
+            f["overrode_model_identity"] = parsed_name or None
+            f["reading"] = (
+                f"Exact catalogue-name matching selected {exact_name} and rejected the model's "
+                f"{parsed_name or 'empty'} identity parse."
+            )
+        f["character"] = exact_name
+        f["deterministic_name_match"] = exact_name
+        exact_name_cards = [
+            card
+            for card in data["cards"]
+            if exact_name.casefold() == (card.get("name_en") or card.get("name_ja") or "").casefold()
+        ]
+        if "winner" in call.casefold() and any("winner" in world_search_text(card) for card in exact_name_cards):
+            f["lore"] = "winner"
+            f["deterministic_lore_match"] = "winner"
+            f["reading"] = (
+                f"Exact catalogue-name matching selected {exact_name}; the visible/user-observed winner tag "
+                "narrows the result without promoting tournament context to an official fact."
+            )
     survivors = apply_filter(data["cards"], f, setlabel)
     if not survivors and f.get("lore"):
         fallback_filter = {**f, "lore": None}
@@ -378,12 +415,31 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','lore','ignored_unmatched_lore') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','lore','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
     )
-    c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220) if pool else {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
+    if not pool:
+        c = {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
+    elif f.get("deterministic_name_match") and len(pool) == 1:
+        card = pool[0]
+        observed = card.get("source_authority") == "user_photo_observation_not_official_gallery_fact"
+        c = {
+            "commentary": (
+                f"Exact catalogue-name matching isolated {card.get('name_en') or card['uid']}"
+                + (f" with its {card.get('stamp')} treatment" if card.get("stamp") else "")
+                + ". The displayed fields and image come from the recorded catalogue row."
+            ),
+            "picks": [card["uid"]],
+            "caveat": (
+                "This is user-photo evidence linked to the official card identity; it does not establish official variant enumeration, tournament details, recipient, authenticity, condition, possession, or value."
+                if observed
+                else "Catalogue identity and source fields do not establish physical-card authenticity, condition, possession, or value."
+            ),
+        }
+    else:
+        c = call_model(MODEL, COMMENT_SYS, cuser, ENDPOINT, 220)
     c["picks"] = resolve_pick_uids(c.get("picks") or [], pool)
     flags = commentary_flags(c.get("commentary", ""), c.get("caveat", ""))
     return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")), "filter": f, "n_survivors": len(survivors), "result": c, "overclaim_flags": flags}
@@ -402,7 +458,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','lore','ignored_unmatched_lore')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','lore','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','overrode_model_identity')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]

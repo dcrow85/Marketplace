@@ -413,7 +413,7 @@ def completion_for(uid: str, by_uid: dict[str, dict[str, str]]) -> dict[str, str
 
 def observation_indexes(paths: list[Path]) -> tuple[dict[str, list[dict[str, str]]], list[dict[str, str]]]:
     by_uid: dict[str, list[dict[str, str]]] = defaultdict(list)
-    unmatched: list[dict[str, str]] = []
+    standalone: list[dict[str, str]] = []
     for path in paths:
         if not path.exists():
             continue
@@ -422,9 +422,10 @@ def observation_indexes(paths: list[Path]) -> tuple[dict[str, list[dict[str, str
             if matches:
                 for uid in matches:
                     by_uid[uid].append(row)
-            else:
-                unmatched.append(row)
-    return by_uid, unmatched
+            display_as_distinct = (row.get("DISPLAY_AS_DISTINCT_ROW") or "").strip().lower() in {"1", "true", "yes"}
+            if not matches or display_as_distinct:
+                standalone.append(row)
+    return by_uid, standalone
 
 
 def observation_note(row: dict[str, str]) -> dict[str, Any]:
@@ -437,6 +438,8 @@ def observation_note(row: dict[str, str]) -> dict[str, Any]:
         "location": row.get("PHYSICAL_LOCATION_IN_IMAGE") or "",
         "observed_azuki_number": row.get("OBSERVED_AZUKI_NUMBER") or "",
         "observed_stamp": row.get("OBSERVED_STAMP") or "",
+        "source_image_public_path": row.get("SOURCE_IMAGE_PUBLIC_PATH") or "",
+        "display_as_distinct_row": (row.get("DISPLAY_AS_DISTINCT_ROW") or "").strip().lower() in {"1", "true", "yes"},
         "note": row.get("OBSERVATION_NOTE") or "",
     }
 
@@ -709,6 +712,14 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
     subtypes = [row.get("SUBTYPE_1"), row.get("SUBTYPE_2"), row.get("SUBTYPE_3")]
     subtypes = [s for s in subtypes if s]
     uid = f"azuki_tcg_observation:{row.get('OBSERVATION_ID')}"
+    image = row.get("SOURCE_IMAGE_PUBLIC_PATH") or ""
+    has_public_image = bool(image) and (row.get("SOURCE_IMAGE_STORED") or "").strip().lower() == "true"
+    matched_gallery_uids = split_semis(row.get("MATCHED_GALLERY_UIDS"))
+    issue_code = (
+        "observed_variant_not_in_current_official_gallery_snapshot"
+        if matched_gallery_uids
+        else "not_in_current_official_gallery_snapshot"
+    )
     return {
         "uid": uid,
         "catalog_profile": "azuki-tcg",
@@ -732,10 +743,17 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
         "star_alt": has_star(rarity),
         "rarity": rarity,
         "band_rank": 3 if has_star(rarity) else 0,
-        "image": "",
-        "image_status": "user_observation_no_public_image",
-        "display_allowed": False,
-        "provenance": "User photo observation; source image hash recorded, image not committed.",
+        "image": image if has_public_image else "",
+        "image_status": "user_photo_observation" if has_public_image else "user_observation_no_public_image",
+        "display_allowed": has_public_image,
+        "provenance": (
+            "User-supplied photo retained as catalogue reference evidence; not official gallery art or proof of physical authenticity, condition, event provenance, recipient, or current possession."
+            if has_public_image
+            else "User photo observation; source image hash recorded, image not committed."
+        ),
+        "reference_image_policy": "display_user_observation_reference_image" if has_public_image else "no_public_observation_image",
+        "stamp_field_policy": "display_observed_stamp",
+        "suppressed_fields": [] if has_public_image else ["image"],
         "source_authority": row.get("AUTHORITY_LABEL") or "user_observation",
         "field_source": "user_observation_not_official_gallery_fact",
         "missing_alpha_fields": [],
@@ -768,22 +786,28 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
         "definition_text": row.get("DEFINITION_TEXT") or "",
         "ruling_text": row.get("RULING_TEXT") or "",
         "stamp": row.get("STAMP") or row.get("OBSERVED_STAMP") or "",
-        "variant_group": {},
+        "variant_group": {
+            "variant_kind": "user_observed_tournament_winner_treatment" if "winner" in (row.get("OBSERVED_STAMP") or "").lower() else "user_observed_variant",
+            "matched_gallery_uids": matched_gallery_uids,
+            "official_gallery_enumeration": False,
+        },
         "issues": [{
             "source": "user_observation_layer",
             "severity": "medium",
             "status": "observation_only",
-            "codes": ["not_in_current_official_gallery_snapshot"],
+            "codes": [issue_code],
             "recommended_action": "Review against future official gallery snapshots before promoting.",
             "notes": row.get("OBSERVATION_NOTE") or "",
         }],
         "observations": [observation_note(row)],
         "not_claiming": [
             "official gallery inclusion",
+            "official enumeration of this treatment as a distinct variant",
             "seller possession",
             "physical-card authenticity",
             "condition truth",
             "market value",
+            "tournament event, venue, date, recipient, or award path",
         ],
     }
 

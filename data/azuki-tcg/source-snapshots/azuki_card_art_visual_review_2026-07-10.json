@@ -4,9 +4,10 @@
   "source_catalog": "web/public/catalogs/azuki-tcg.json",
   "scope": "Every image-bearing row in the 2026-07-10 Cairn Azuki UI catalog.",
   "counts": {
-    "reviewed_images": 337,
+    "reviewed_images": 338,
     "official_gallery_images": 237,
-    "alpha_master_sheet_images": 100
+    "alpha_master_sheet_images": 100,
+    "user_observation_images": 1
   },
   "method_boundary": "Contact-sheet review supports high-level subjects, setting cues, motifs, and variant notes. It is not pixel-forensic review and does not establish canon, print identity, authenticity, condition, or possession.",
   "rows": [
@@ -4726,6 +4727,20 @@
       "review_status": "reviewed_in_labelled_contact_sheet",
       "reviewer": "Codex",
       "review_method": "Manual visual pass over labelled 5x4 contact sheets generated from each source image; official sheets 01-12 and Alpha sheets 01-05.",
+      "authority_label": "card_art_observation"
+    },
+    {
+      "uid": "azuki_tcg_observation:tournament-winner-photo-20260710-001",
+      "card_id": "AZK01-052",
+      "name": "Yojin",
+      "source_entry_id": "tournament-winner-photo-20260710-001",
+      "image_ref": "assets/observations/yojin-tournament-winner-2026-07-10.png",
+      "image_sha256": "6d48141e27db990508f4d958c6e6e9f65c1dc19d59232be9ced0252f7cd90005",
+      "image_bytes": 2225714,
+      "review_batch": "observation_01",
+      "review_status": "reviewed_at_original_resolution",
+      "reviewer": "Codex",
+      "review_method": "Manual visual pass over the user-supplied image at original resolution.",
       "authority_label": "card_art_observation"
     }
   ],

@@ -30,8 +30,9 @@
     "promo_observations": {
       "all_observations_have_authority_label": true,
       "all_observations_have_printed_id": true,
+      "all_source_images_have_hashes": true,
       "matched_gallery_uids_exist": true,
-      "source_image_not_committed": true
+      "stored_source_images_match_hash": true
     }
   },
   "counts": {
@@ -66,9 +67,9 @@
     },
     "promo_observations": {
       "observed_cards_not_in_gallery_snapshot": 2,
-      "rows": 4,
+      "rows": 5,
       "source_conflicts": 1,
-      "unique_observation_ids": 4
+      "unique_observation_ids": 5
     }
   },
   "not_claiming": [
