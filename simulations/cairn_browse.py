@@ -156,8 +156,10 @@ def filter_system(data: dict) -> str:
             '  {"op":"list_for_sale","ask":2,"scope":{"rarity":"C","release_family":"alpha"}},\n'
             '  {"op":"list_for_sale","ask":1,"scope":{"rarity":"C","release_family":"gates_awakened"}}]\n'
             "For browse calls, action is null. You only ever PROPOSE — code resolves the exact set from the "
-            "collector's own records and they confirm.\n\n"
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
+            "collector's own records and they confirm.\n"
+            "sort: when they ask to ORDER listings ('sort highest to lowest cost', 'cheapest first') set "
+            '"sort": "price_desc" or "price_asc" (top level, beside the filter dims); null otherwise.\n\n"'
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"sort":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "

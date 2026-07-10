@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Sort via Anko + hunting refolded (Crowley: sort didn't work; too much
+  in front of the collection) — LIVE, both halves.** (1) The schema simply had no sort vocabulary — added a
+  top-level `sort: price_desc | price_asc` to the filter JSON; on the table view Anko's sort re-orders the
+  tiles and banners it ("Anko sorted the table — highest asks first") WITHOUT the aisle panel when it's a
+  pure sort; a manual "price ⇅" chip sits by the meter for people who'd rather tap than type (cycles
+  desc→asc→off; Anko and the chip share one state). Probes 2/2 ("highest to lowest" → price_desc, "cheapest
+  first" → price_asc); prod confirmed. (2) "They're hunting" moved BELOW the collection and folds to one
+  dashed line ("⌕ they're hunting 8 cards — you hold 2 ✓ · view") that expands to the art row on tap — the
+  seller's spread now leads the page. Settle bar + aisle both exclude `sort` from scope handling. Static
+  verification (preview MCP still absent): lint ✓ build ✓ order greps ✓ (tiles line 525 → huntbar 545 →
+  lots 567). Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Table feel, four fixes (Crowley) — LIVE.** (1) buy/⇄ buttons became one
   crafted control: a joined segmented pair (buy = mount surface + weight, ⇄ = paper), quiet hover/active
   motion, in-pile state green — reads like the binder's own segs. (2) FOUND + FIXED why Anko's box didn't

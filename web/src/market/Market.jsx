@@ -106,7 +106,7 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
       const d = await r.json()
       const steps = Array.isArray(d.action) ? d.action : d.action ? [d.action] : []
       const scoped = steps.find((st) => st.scope && Object.keys(st.scope).length) || null
-      const scope = scoped ? scoped.scope : Object.fromEntries(Object.entries(d.filter || {}).filter(([k, v]) => v != null && !['reading', 'action', 'owned'].includes(k)))
+      const scope = scoped ? scoped.scope : Object.fromEntries(Object.entries(d.filter || {}).filter(([k, v]) => v != null && !['reading', 'action', 'owned', 'sort'].includes(k)))
       const wantsMatch = steps.some((st) => st.op === 'match_value')
       const nextScope = Object.keys(scope).length ? scope : null
       setAnkoScope(nextScope)
@@ -264,6 +264,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [aq, setAq] = useState('')
   const [abusy, setAbusy] = useState(false)
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
+  const [tableSort, setTableSort] = useState(null) // 'price_desc' | 'price_asc' | null
+  const [huntOpen, setHuntOpen] = useState(false)
   const [mockRev, setMockRev] = useState(0)
   const [pileRev, setPileRev] = useState(0)
   useEffect(() => {
@@ -279,7 +281,20 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const store = useMemo(() => loadStore(storeKey), [storeKey, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
   const piles = useMemo(() => loadPiles(pileKey), [pileKey, pileRev]) // eslint-disable-line react-hooks/exhaustive-deps -- pileRev is the invalidation signal
 
-  useEffect(() => { setSettling(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle folds
+  useEffect(() => { setSettling(false); setHuntOpen(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle + hunting fold
+  useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect -- Anko's sort is a view instruction, not a panel */
+    const srt = ares?.ok ? ares.data?.filter?.sort : null
+    if (srt === 'price_desc' || srt === 'price_asc') {
+      setTableSort(srt)
+      setSwapMsg(`${agentName} sorted the table — ${srt === 'price_desc' ? 'highest asks first' : 'lowest asks first'}.`)
+      const f = ares.data.filter || {}
+      const scopeKeys = Object.entries(f).filter(([k, v]) => v != null && !['reading', 'action', 'owned', 'sort'].includes(k))
+      const hasAction = Array.isArray(ares.data.action) ? ares.data.action.length : !!ares.data.action
+      if (!scopeKeys.length && !hasAction) setAres(null) // pure sort: no aisle panel needed
+    }
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [ares, agentName])
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- reset + hydrate on catalog switch */
     setData(null); setMkt(null); setSel(null)
@@ -352,6 +367,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     if (!f) return null
     const scope = { ...f }
     delete scope.owned
+    delete scope.sort
+    if (!Object.values(scope).some((v) => v != null && v !== false)) return null
     return new Set(applyAgentFilter(data.cards, scope, {}).map((c) => c.uid))
   }, [ares, findStep, data])
 
@@ -466,6 +483,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       .map((l) => ({ l, c: byUid.get(l.uid) }))
       .filter(({ c }) => c)
       .filter(({ c }) => !wantsOnly || myWants.has(c.uid))
+      .sort((a, b) => tableSort === 'price_desc' ? b.l.ask - a.l.ask : tableSort === 'price_asc' ? a.l.ask - b.l.ask : 0)
     const total = open.listings.reduce((s, { ask, copies }) => s + ask * (copies || 1), 0)
     const witnessed = open.listings.filter((l) => l.witness).length
     const wantsTheyHave = open.listings.filter((l) => myWants.has(l.uid)).length
@@ -500,24 +518,10 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               {wantsTheyHave} of your wants{wantsOnly ? ' ✕' : ' →'}
             </button>
           )}
+          <button className={'mk-sortbtn' + (tableSort ? ' on' : '')}
+            onClick={() => setTableSort(tableSort === 'price_desc' ? 'price_asc' : tableSort === 'price_asc' ? null : 'price_desc')}
+            title="sort by ask">price {tableSort === 'price_desc' ? '↓' : tableSort === 'price_asc' ? '↑' : '⇅'}</button>
         </div>
-        {theirWants.length > 0 && (
-          <div className="mk-hunting2">
-            <div className="mk-hunt2head">
-              <span className="ek">They&rsquo;re hunting</span>
-              {swapBait.length > 0 && <span className="mono mk-hunt2bait">you hold {swapBait.length} of these — lead with it</span>}
-            </div>
-            <div className="mk-hunt2row">
-              {theirWants.map((c) => (
-                <div key={c.uid} className={'mk-hunt2' + (myHaves.has(c.uid) ? ' mine' : '')}>
-                  {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                  <span className="mk-hunt2name">{c.name_en}</span>
-                  {myHaves.has(c.uid) && <span className="mono mk-hunt2have">✓ you have it</span>}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
         <div className="mk-tiles">
           {rows.map(({ l, c }) => {
             const p = inPile(open.id, c.uid)
@@ -536,6 +540,30 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           })}
           {!rows.length && <div className="empty">Nothing on this table matches your wants.</div>}
         </div>
+        {theirWants.length > 0 && (
+          !huntOpen
+            ? <button className="mk-huntbar mono" onClick={() => setHuntOpen(true)}>
+                ⌕ they&rsquo;re hunting {theirWants.length} card{theirWants.length === 1 ? '' : 's'}{swapBait.length ? ` — you hold ${swapBait.length} ✓` : ''} · view
+              </button>
+            : <div className="mk-hunting2">
+                <div className="mk-hunt2head">
+                  <span className="ek">They&rsquo;re hunting</span>
+                  <span>
+                    {swapBait.length > 0 && <span className="mono mk-hunt2bait">you hold {swapBait.length} of these — lead with it · </span>}
+                    <button className="stl-clear mono" onClick={() => setHuntOpen(false)}>fold</button>
+                  </span>
+                </div>
+                <div className="mk-hunt2row">
+                  {theirWants.map((c) => (
+                    <div key={c.uid} className={'mk-hunt2' + (myHaves.has(c.uid) ? ' mine' : '')}>
+                      {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+                      <span className="mk-hunt2name">{c.name_en}</span>
+                      {myHaves.has(c.uid) && <span className="mono mk-hunt2have">✓ you have it</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+        )}
         {(open.lots || []).map((lot, i) => {
           const lotTotal = lot.cards.reduce((s, x) => s + x.ask * (x.copies || 1), 0)
           return (
