@@ -279,3 +279,22 @@
 .mk-hunt2.mine img { border-color: var(--have); box-shadow: 0 0 0 1.5px var(--have); }
 .mk-hunt2name { font-size: 10px; line-height: 1.25; }
 .mk-hunt2have { font-size: 9px; color: var(--have); }
+
+/* buy/⇄ as one crafted control: joined pair, binder-register surfaces, quiet motion */
+.ofr-acts { display: flex; gap: 0; padding: 4px 7px 0; }
+.ofr-buy, .ofr-tradebtn { flex: 1; font-family: var(--mono); font-size: 11.5px; padding: 9px 0; cursor: pointer; border: 0.5px solid var(--rule); transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease; }
+.ofr-buy { color: var(--ink); background: var(--mount); border-radius: 8px 0 0 8px; font-weight: 650; }
+.ofr-tradebtn { color: var(--ink2); background: var(--paper); border-radius: 0 8px 8px 0; border-left-width: 0; }
+.ofr-buy:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ofr-tradebtn:hover { color: var(--ink); border-color: var(--ink); border-left-width: 0.5px; margin-left: -0.5px; }
+.ofr-buy:active, .ofr-tradebtn:active { transform: translateY(1px); }
+.ofr-buy.on, .ofr-tradebtn.on { background: var(--have); color: #fff; border-color: var(--have); }
+
+/* the bench: the binder's loveliness comes to the tables — cards sit ON a surface */
+.mk-tiles, .sp-tiles { background: #141310; border: 0.5px solid rgba(236,234,227,.14); border-radius: 12px; padding: 14px; }
+.mk-tiles .ofr-tile, .sp-tile { border-color: rgba(236,234,227,.18); }
+.mk-tiles .empty { color: #8a857a; }
+
+/* card-size preference applies here too */
+.mk-tiles, .ofr-grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 118px), 1fr)); }
+.sp-tiles { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 128px), 1fr)); }

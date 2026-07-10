@@ -51,6 +51,22 @@ function ThemeToggle() {
   )
 }
 
+const TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
+function applyTileScale(k) {
+  document.documentElement.style.setProperty('--tilescale', String(TILE_SCALES[k] || 1))
+}
+function SizePicker() {
+  const [sz, setSz] = useState(() => { try { return localStorage.getItem('cairn-tilescale') || 'm' } catch { return 'm' } })
+  useEffect(() => { applyTileScale(sz) }, [sz])
+  return (
+    <div className="sizepick mono" title="card size" role="radiogroup" aria-label="card size">
+      {Object.keys(TILE_SCALES).map((k) => (
+        <button key={k} className={sz === k ? 'on' : ''} onClick={() => { setSz(k); try { localStorage.setItem('cairn-tilescale', k) } catch { /* ignore */ } }}>{k.toUpperCase()}</button>
+      ))}
+    </div>
+  )
+}
+
 function Wordmark({ big }) {
   return (
     <span className={'wm' + (big ? ' big' : '')}>
@@ -138,6 +154,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             </div>
           )}
           <div className="bt-right">
+            <SizePicker />
             <div className="bsegs mono" role="tablist" aria-label="binder section">
               <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
               <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My table</button>

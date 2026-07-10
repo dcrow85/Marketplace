@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Table feel, four fixes (Crowley) — LIVE.** (1) buy/⇄ buttons became one
+  crafted control: a joined segmented pair (buy = mount surface + weight, ⇄ = paper), quiet hover/active
+  motion, in-pile state green — reads like the binder's own segs. (2) FOUND + FIXED why Anko's box didn't
+  stretch: `.askbar`'s flex layout was scoped under `.controls` (binder-only), so the market/settle bars
+  never grew — `.askbar` is now flex everywhere. (3) The binder's loveliness came to the tables: `.mk-tiles`
+  and My table's `.sp-tiles` sit on the BENCH (the binder-page #141310 surface, light-edge border, 12px
+  radius) — cards on a table, not floating in white. (4) CARD-SIZE preference: an S/M/L picker in the
+  bindertop sets one `--tilescale` var (0.78/1/1.3, remembered per browser) that every grid listens to —
+  binder standard grid, market tables, settle grids, My table. Static verification again (preview MCP still
+  absent): lint ✓ build ✓ var wiring greps ✓. Apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Three table fixes (Crowley) — LIVE.** (1) "They're hunting" PROMOTED:
   now a framed panel directly under the table meter (above their cards) with real card art at 76px, cards
   you hold ringed green with "✓ you have it", and a lead line when there's bait ("you hold 2 of these —

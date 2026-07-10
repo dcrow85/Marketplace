@@ -138,3 +138,9 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 
 /* the wordmark is the way home */
 .wmhome { background: transparent; border: 0; padding: 0; cursor: pointer; }
+
+/* card-size picker: small / medium / large, remembered */
+.sizepick { display: inline-flex; border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.sizepick button { font-family: var(--mono); font-size: 10.5px; color: var(--dim); background: transparent; border: 0; padding: 9px 11px; cursor: pointer; }
+.sizepick button + button { border-left: 0.5px solid var(--rule); }
+.sizepick button.on { color: var(--paper); background: var(--ink); }
