@@ -183,9 +183,8 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
             return (
               <div key={p.uid} className="ofr-tile stl-tile">
                 {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                {p.mode === 'buy' && <span className="pricetag">{askOf(p.uid)} USDC</span>}
                 <span className="ofr-name">{c.name_en}</span>
-                <span className="mono ofr-sub">{scanLabel(l?.witness)}</span>
+                <span className="mono ofr-sub">{p.mode === 'buy' ? `${askOf(p.uid)} USDC · ` : ''}{scanLabel(l?.witness)}</span>
                 <span className="ofr-acts">
                   <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
                     onClick={() => toggleMode(pileKey, open.id, p.uid)}
@@ -502,6 +501,23 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             </button>
           )}
         </div>
+        {theirWants.length > 0 && (
+          <div className="mk-hunting2">
+            <div className="mk-hunt2head">
+              <span className="ek">They&rsquo;re hunting</span>
+              {swapBait.length > 0 && <span className="mono mk-hunt2bait">you hold {swapBait.length} of these — lead with it</span>}
+            </div>
+            <div className="mk-hunt2row">
+              {theirWants.map((c) => (
+                <div key={c.uid} className={'mk-hunt2' + (myHaves.has(c.uid) ? ' mine' : '')}>
+                  {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+                  <span className="mk-hunt2name">{c.name_en}</span>
+                  {myHaves.has(c.uid) && <span className="mono mk-hunt2have">✓ you have it</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="mk-tiles">
           {rows.map(({ l, c }) => {
             const p = inPile(open.id, c.uid)
@@ -510,7 +526,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 role="button" tabIndex={0} title="tap the card to hold it up to the light"
                 onClick={() => setZoom({ c, l, sellerId: open.id })}>
                 {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                <span className="pricetag">{l.ask} USDC</span>
                 <span className="ofr-name">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span>
                 <span className="mono ofr-sub">{scanLabel(l.witness)}</span>
                 <PileButtons ask={l.ask} inPile={!!p} mode={p?.mode}
@@ -534,20 +549,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             </div>
           )
         })}
-        {theirWants.length > 0 && (
-          <div className="mk-hunting">
-            <span className="ek">They&rsquo;re hunting</span>
-            <div className="mk-huntrow">
-              {theirWants.map((c) => (
-                <span key={c.uid} className={'mk-hunt mono' + (myHaves.has(c.uid) ? ' mk-swap' : '')}>
-                  {c.image && <img src={c.image} alt="" loading="lazy" />}
-                  {c.name_en}{myHaves.has(c.uid) ? ' · you have it' : ''}
-                </span>
-              ))}
-            </div>
-            {swapBait.length > 0 && <div className="mk-swapnote dim">You hold {swapBait.length} card{swapBait.length === 1 ? '' : 's'} they want — offer them in a deal.</div>}
-          </div>
-        )}
         {pile.length > 0 && (
           <div className="mk-checkout">
             <div className="mk-ckthumbs">

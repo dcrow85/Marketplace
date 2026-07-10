@@ -268,3 +268,14 @@
 
 /* the drawer whisper: what your tradeables' history covers of this pile */
 .mk-ckwhisper { font-size: 10.5px; color: var(--agent); }
+
+/* they're hunting — promoted to eye level: the trade opening at this table */
+.mk-hunting2 { border: 0.5px solid var(--rule); border-radius: 11px; padding: 12px 14px; margin: 4px 0 6px; }
+.mk-hunt2head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 9px; }
+.mk-hunt2bait { font-size: 11px; color: var(--have); }
+.mk-hunt2row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; }
+.mk-hunt2 { flex: 0 0 76px; display: flex; flex-direction: column; gap: 3px; }
+.mk-hunt2 img { width: 76px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 6px; border: 0.5px solid var(--rule); }
+.mk-hunt2.mine img { border-color: var(--have); box-shadow: 0 0 0 1.5px var(--have); }
+.mk-hunt2name { font-size: 10px; line-height: 1.25; }
+.mk-hunt2have { font-size: 9px; color: var(--have); }

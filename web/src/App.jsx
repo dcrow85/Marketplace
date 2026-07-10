@@ -115,7 +115,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   return (
     <div className="app">
       <nav className="nav">
-        <Wordmark />
+        <button className="wmhome" onClick={() => { setBseg('binder'); setMarketFocus(null); setTradesOpen(false) }} title="back to your binder"><Wordmark /></button>
         <div className="navr mono">
           <button className={'tradesbtn nav-trades' + (needsYou ? ' needs-you' : '')} onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title={needsYou ? 'an offer is waiting on you' : 'your trades'}>
             <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>

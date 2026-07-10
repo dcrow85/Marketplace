@@ -135,3 +135,6 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .bsegs button { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0; padding: 9px 15px; cursor: pointer; }
 .bsegs button.on { color: var(--paper); background: var(--ink); }
 @media (pointer: coarse), (max-width: 640px) { .bsegs button { padding: 12px 16px; } }
+
+/* the wordmark is the way home */
+.wmhome { background: transparent; border: 0; padding: 0; cursor: pointer; }

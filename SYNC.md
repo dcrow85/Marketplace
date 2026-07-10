@@ -55,6 +55,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Three table fixes (Crowley) — LIVE.** (1) "They're hunting" PROMOTED:
+  now a framed panel directly under the table meter (above their cards) with real card art at 76px, cards
+  you hold ringed green with "✓ you have it", and a lead line when there's bait ("you hold 2 of these —
+  lead with it"). (2) Price stickers OFF the art everywhere — the buy button already says "buy · 9"; settle
+  tiles and the counter-composer fold the ask into the fact line instead. Card art is never obscured (same
+  rule as the old issueflag purge). (3) The cairn wordmark is now the way home — click it anywhere and you're
+  back at your binder (market focus cleared, trades overlay closed). NOTE: the browser-preview MCP dropped
+  mid-turn, so this round was verified statically (lint ✓ build ✓ zero pricetag uses in JSX ✓ hunting panel
+  ordered before the tile grid ✓) rather than driven in-browser. Apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Direct pay at asks (Crowley: "settle directly when paying the amount
   they offer") — LIVE.** When the pile is all buys, the drawer grows a primary "Pay their asks · 157 →" that
   sends the deal on the spot (Settle up demotes to secondary for hagglers); any ⇄-tagged card and the direct

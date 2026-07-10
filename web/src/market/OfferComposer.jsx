@@ -83,7 +83,6 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
   const tile = (c, sel, onTap, sub, price, witness) => (
     <button key={c.uid} className={'ofr-tile' + (sel ? ' sel' : '')} onClick={() => onTap(c.uid)}>
       {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-      {price != null && <span className="pricetag">{price} USDC</span>}
       <span className="zoombtn" role="button" tabIndex={0} title="enlarge"
         onClick={(ev) => { ev.stopPropagation(); setZoom({ c, sub, witness }) }}>⤢</span>
       <span className="ofr-name">{c.name_en}</span>
@@ -108,7 +107,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           {theirCards.length > 8 && <input className="ofr-search" placeholder="search their table…" value={qw} onChange={(e) => setQw(e.target.value)} />}
           <div className="ofr-grid">
             {theirCards.filter(({ c }) => hit(c, qw) || want.has(c.uid)).map(({ c, l }) =>
-              tile(c, want.has(c.uid), toggle(want, setWant), l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : '— no scans', l.ask, l.witness))}
+              tile(c, want.has(c.uid), toggle(want, setWant), `${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}`, null, l.witness))}
           </div>
           <div className="ofr-sec mono">you give — your binder{myCards.some(({ e }) => e.trade) ? ' (open-to-trade first)' : ''}</div>
           {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}
