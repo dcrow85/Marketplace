@@ -2,9 +2,9 @@
   "schema": "azuki_world_metadata_v0.1",
   "generated_from": {
     "lore_source_snapshot": "data/azuki-tcg/source-snapshots/azuki_official_lore_sources_2026-07-10.json",
-    "lore_source_sha256": "eaad3f04b0cb2ba15078c4797abd4ceca49feb82ed53d4b860cff75e5be7d905",
+    "lore_source_sha256": "0b6b6d9553ac108088468be5828367b3b29e531cfb460033a2ce36e77402ddc6",
     "visual_review_snapshot": "data/azuki-tcg/source-snapshots/azuki_card_art_visual_review_2026-07-10.json",
-    "visual_review_sha256": "20cd45a759404a62ed2cfbe06ef0db0f646fdb4a039ed6df0d94ed00261d96ab",
+    "visual_review_sha256": "3880f944ae8fbe987ead5ad962d140b1f5ace40cafa17bab8de73f0115dbd143",
     "official_gallery_release": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
     "official_gallery_sha256": "8ca6726f313c8b46d0f13fd5dab8b593d108d0abb1d02df634458dcb7627f249",
     "alpha_master_sheet_release": "data/azuki-tcg/releases/azuki_tcg_alpha_master_sheet.json",
@@ -14,6 +14,7 @@
     "official_site_fact": "A concise paraphrase of material published on an Azuki-owned web property.",
     "official_tcg_rule_fact": "A gameplay/world term defined by the official Azuki TCG rules.",
     "official_card_fact": "A name, element, subtype, rule, flavor, or reference field carried by an official card source.",
+    "official_event_context": "A dated program, location, activity, promo, or product detail published by Azuki for a named event; it does not establish an individual card's acquisition path unless the source says so.",
     "official_future_context": "An officially announced but not-yet-released story or set detail; never present it as an already published story event.",
     "official_community_governance_context": "Material on the official Bobu governance site; proposal intent is not promoted to completed canon unless the page says it shipped.",
     "card_art_observation": "A visible cue from the catalog image, useful for search but not automatically a canon claim.",
@@ -85,6 +86,28 @@
       "authority_label": "official_future_context",
       "release_status": "announced_not_yet_released_at_snapshot_date"
     },
+    "event_contexts": [
+      {
+        "event_id": "anime-expo-2026",
+        "name": "Anime Expo 2026",
+        "dates": "2026-07-02/2026-07-05",
+        "location": "Los Angeles Convention Center, West Hall",
+        "booth": "424",
+        "official_source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "program": [
+          "learn-to-play demos with chances at AX-exclusive cards while supplies lasted",
+          "Starter Deck Battles competing for AX cards while supplies lasted",
+          "stamped full-art AX promos including The Red Bean and Shao's Perseverance",
+          "live Gates Awakened pack rips",
+          "debut of a ten-card Special Card Collection in a premium display format",
+          "advance reading of AZUKI manga chapters Sisters and Pact",
+          "Arnold Tsang meet-and-greets and live drawing",
+          "Gates Awakened products, accessories, and selected Azuki merchandise"
+        ],
+        "authority_label": "official_event_context",
+        "distribution_boundary": "The official page identifies promo cards and activities but does not map the photographed AX WINNER Shao's Perseverance card to one exact booth activity or recipient."
+      }
+    ],
     "character_threads": [
       {
         "id": "benzai",
@@ -1140,6 +1163,62 @@
         "authority_label": "official_future_context"
       },
       {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:1",
+        "text": "Azuki TCG occupied West Hall Booth 424 at the Los Angeles Convention Center from July 2 through July 5, 2026.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:2",
+        "text": "Learn-to-play demo participants had a chance to receive AX-exclusive cards while supplies lasted.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:3",
+        "text": "Starter Deck Battle participants competed for AX cards while supplies lasted.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:4",
+        "text": "The named AX promos included stamped full-art versions of The Red Bean and Shao's Perseverance.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:5",
+        "text": "The booth hosted live Gates Awakened pack rips and sold booster products, starter decks, accessories, and selected Azuki merchandise.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:6",
+        "text": "The ten-card Special Card Collection debuted at the booth in a premium display format and was distinct from the separately described AX promo-card activities.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:7",
+        "text": "Attendees received an advance look at AZUKI manga chapters Sisters and Pact before the announced September 2026 global launch.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
+        "claim_id": "azuki_tcg_anime_expo_2026_event_program:8",
+        "text": "Arnold Tsang appeared for meet-and-greets and live drawing moments throughout the event.",
+        "source_id": "azuki_tcg_anime_expo_2026_event_program",
+        "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+        "authority_label": "official_event_context"
+      },
+      {
         "claim_id": "azuki_gallery_api_2026_07_06:1",
         "text": "The pinned API snapshot supplies official names, elements, categories, subtypes, rules text, rarity, sets, and image URLs for 237 gallery rows.",
         "source_id": "azuki_gallery_api_2026_07_06",
@@ -1201,6 +1280,7 @@
       "that an image observation is a canon story event",
       "that proposed Bobu memories were all published as canon",
       "that announced manga chapters or Set 2 material are already released",
+      "the exact activity, match, recipient, or quantity behind an AX WINNER card when the official event page does not specify it",
       "that shared names or visual resemblance prove two depictions are the same person unless the relationship is labeled as an inference",
       "physical-card authenticity, condition, possession, or market value",
       "image observations are canon story events",
@@ -1211,11 +1291,11 @@
     ]
   },
   "counts": {
-    "official_world_sources": 9,
-    "world_claims": 34,
+    "official_world_sources": 10,
+    "world_claims": 42,
     "official_card_ids_enriched": 202,
-    "ui_variants_enriched": 341,
-    "image_rows_reviewed": 339,
+    "ui_variants_enriched": 343,
+    "image_rows_reviewed": 341,
     "official_subtype_terms": 85,
     "character_threads": 9
   },
@@ -21288,7 +21368,7 @@
       "card_id": "AZP-004",
       "source_entry_id": "promo-photo-20260624-004",
       "image_ref": "",
-      "variant_role": "star-or-alternate-art",
+      "variant_role": "user-observed-variant",
       "setting_cue": {
         "value": "dual-world-or-unclear",
         "authority_label": "card_art_observation",
@@ -21307,7 +21387,7 @@
       "card_id": "AZP-005",
       "source_entry_id": "promo-photo-20260624-002",
       "image_ref": "",
-      "variant_role": "star-or-alternate-art",
+      "variant_role": "user-observed-variant",
       "setting_cue": {
         "value": "dual-world-or-unclear",
         "authority_label": "card_art_observation",
@@ -21345,6 +21425,60 @@
         "review_batch": "observation_02",
         "review_status": "reviewed_at_original_resolution",
         "image_sha256": "fd3015cfddfa4ced7f1f3cbb55e2e7618ee92c817906ababd9ff8879cdc15705",
+        "authority_label": "card_art_observation"
+      }
+    },
+    {
+      "uid": "azuki_tcg_observation:anime-expo-winner-photo-20260710-001",
+      "card_id": "STT02-017",
+      "source_entry_id": "anime-expo-winner-photo-20260710-001",
+      "image_ref": "assets/observations/shaos-perseverance-anime-expo-2026-winner.png",
+      "variant_role": "user-observed-anime-expo-winner-treatment",
+      "setting_cue": {
+        "value": "fantasy-garden-coded",
+        "authority_label": "card_art_observation",
+        "confidence": "medium",
+        "note": "Elemental, feudal-fantasy, wilderness, shrine, or creature cues align with the official description of the Garden world."
+      },
+      "motifs": [
+        "elemental-domain",
+        "object-or-action-focus",
+        "water-element"
+      ],
+      "visual_note": "User-supplied Shao's Perseverance full-art card photo showing Shao before a torii gate, a gold WINNER overlay, and visible AX / ANIME EXPO 2026 EXCLUSIVE marks; the exact booth activity that awarded it is unresolved.",
+      "visual_note_authority": "card_art_observation",
+      "visual_review": {
+        "reviewed": "2026-07-10",
+        "review_batch": "observation_03",
+        "review_status": "reviewed_at_original_resolution",
+        "image_sha256": "2d5db4a0d5145269806f9ed44b0e1c31662dd099a3e53f0fe042892bbf3f4649",
+        "authority_label": "card_art_observation"
+      }
+    },
+    {
+      "uid": "azuki_tcg_observation:tournament-winner-photo-20260710-003",
+      "card_id": "STT04-008",
+      "source_entry_id": "tournament-winner-photo-20260710-003",
+      "image_ref": "assets/observations/lady-emberheart-winner-2026-07-10.png",
+      "variant_role": "user-observed-winner-treatment",
+      "setting_cue": {
+        "value": "fantasy-garden-coded",
+        "authority_label": "card_art_observation",
+        "confidence": "medium",
+        "note": "Elemental, feudal-fantasy, wilderness, shrine, or creature cues align with the official description of the Garden world."
+      },
+      "motifs": [
+        "character-or-creature-focus",
+        "elemental-domain",
+        "fire-element"
+      ],
+      "visual_note": "User-supplied Lady Emberheart card photo with reflective star treatment, fox-fire and drifting-petal composition, and a large gold WINNER stamp; no Anime Expo mark is visible.",
+      "visual_note_authority": "card_art_observation",
+      "visual_review": {
+        "reviewed": "2026-07-10",
+        "review_batch": "observation_04",
+        "review_status": "reviewed_at_original_resolution",
+        "image_sha256": "49102cc3eabd412bb85903c700d4b2b1de6af70e9ffac38d2416929bee2b2638",
         "authority_label": "card_art_observation"
       }
     }

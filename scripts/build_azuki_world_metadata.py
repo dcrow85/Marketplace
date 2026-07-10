@@ -214,6 +214,12 @@ SPECIFIC_VARIANT_VISUAL_NOTES = {
     "azuki_tcg_observation:tournament-winner-photo-20260710-002": (
         "User-supplied Serene Fist, Misaki card photo with a reflective star treatment, curling water-dragon composition, and a large gold WINNER stamp; tournament context beyond the visible treatment is not established by the image."
     ),
+    "azuki_tcg_observation:anime-expo-winner-photo-20260710-001": (
+        "User-supplied Shao's Perseverance full-art card photo showing Shao before a torii gate, a gold WINNER overlay, and visible AX / ANIME EXPO 2026 EXCLUSIVE marks; the exact booth activity that awarded it is unresolved."
+    ),
+    "azuki_tcg_observation:tournament-winner-photo-20260710-003": (
+        "User-supplied Lady Emberheart card photo with reflective star treatment, fox-fire and drifting-petal composition, and a large gold WINNER stamp; no Anime Expo mark is visible."
+    ),
 }
 
 NOT_CLAIMING = [
@@ -356,8 +362,9 @@ def card_lore_summary(card: dict[str, Any], cue: dict[str, str], motifs: list[st
 def variant_role(card: dict[str, Any]) -> str:
     rarity = str(card.get("rarity") or "")
     entry = str(card.get("source_entry_id") or "")
-    if (card.get("variant_group") or {}).get("variant_kind") == "user_observed_tournament_winner_treatment":
-        return "user-observed-tournament-winner-treatment"
+    observed_kind = (card.get("variant_group") or {}).get("variant_kind") or ""
+    if observed_kind.startswith("user_observed_"):
+        return observed_kind.replace("_", "-")
     if "INV" in entry:
         return "invitational-or-event-treatment"
     if "★★" in rarity or "AAC" in entry:
@@ -587,6 +594,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "authority_label": "official_future_context",
             "release_status": "announced_not_yet_released_at_snapshot_date",
         },
+        "event_contexts": lore_source.get("event_contexts", []),
         "character_threads": [
             {"id": name, "card_ids": ids, "authority_label": "official_card_fact_plus_declared_catalog_inference"}
             for name, ids in sorted(CHARACTER_THREADS.items())

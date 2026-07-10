@@ -4,10 +4,10 @@
   "source_catalog": "web/public/catalogs/azuki-tcg.json",
   "scope": "Every image-bearing row in the 2026-07-10 Cairn Azuki UI catalog.",
   "counts": {
-    "reviewed_images": 339,
+    "reviewed_images": 341,
     "official_gallery_images": 237,
     "alpha_master_sheet_images": 100,
-    "user_observation_images": 2
+    "user_observation_images": 4
   },
   "method_boundary": "Contact-sheet review supports high-level subjects, setting cues, motifs, and variant notes. It is not pixel-forensic review and does not establish canon, print identity, authenticity, condition, or possession.",
   "rows": [
@@ -4752,6 +4752,34 @@
       "image_sha256": "fd3015cfddfa4ced7f1f3cbb55e2e7618ee92c817906ababd9ff8879cdc15705",
       "image_bytes": 1842451,
       "review_batch": "observation_02",
+      "review_status": "reviewed_at_original_resolution",
+      "reviewer": "Codex",
+      "review_method": "Manual visual pass over the user-supplied image at original resolution.",
+      "authority_label": "card_art_observation"
+    },
+    {
+      "uid": "azuki_tcg_observation:anime-expo-winner-photo-20260710-001",
+      "card_id": "STT02-017",
+      "name": "Shao's Perseverance",
+      "source_entry_id": "anime-expo-winner-photo-20260710-001",
+      "image_ref": "assets/observations/shaos-perseverance-anime-expo-2026-winner.png",
+      "image_sha256": "2d5db4a0d5145269806f9ed44b0e1c31662dd099a3e53f0fe042892bbf3f4649",
+      "image_bytes": 1508638,
+      "review_batch": "observation_03",
+      "review_status": "reviewed_at_original_resolution",
+      "reviewer": "Codex",
+      "review_method": "Manual visual pass over the user-supplied image at original resolution.",
+      "authority_label": "card_art_observation"
+    },
+    {
+      "uid": "azuki_tcg_observation:tournament-winner-photo-20260710-003",
+      "card_id": "STT04-008",
+      "name": "Lady Emberheart",
+      "source_entry_id": "tournament-winner-photo-20260710-003",
+      "image_ref": "assets/observations/lady-emberheart-winner-2026-07-10.png",
+      "image_sha256": "49102cc3eabd412bb85903c700d4b2b1de6af70e9ffac38d2416929bee2b2638",
+      "image_bytes": 3507537,
+      "review_batch": "observation_04",
       "review_status": "reviewed_at_original_resolution",
       "reviewer": "Codex",
       "review_method": "Manual visual pass over the user-supplied image at original resolution.",

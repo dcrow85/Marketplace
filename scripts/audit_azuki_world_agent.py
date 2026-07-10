@@ -57,12 +57,14 @@ def main() -> None:
     system_prompt = filter_system(data)
     require("card-art observations" in system_prompt, "authority boundary left the filter prompt")
     require("political faction" in system_prompt, "subtype boundary left the filter prompt")
+    require("Anime Expo 2026" in system_prompt, "event vocabulary left the filter prompt")
 
     alley = apply_filter(cards, {"plane": "alley"}, set_labels)
     garden = apply_filter(cards, {"plane": "garden"}, set_labels)
     threshold = apply_filter(cards, {"plane": "threshold"}, set_labels)
     black_jade = apply_filter(cards, {"lore_term": "Black Jade"}, set_labels)
     shao = apply_filter(cards, {"character_thread": "shao"}, set_labels)
+    anime_expo = apply_filter(cards, {"event": "Anime Expo 2026"}, set_labels)
     yojin_winner = next(
         (
             card
@@ -76,6 +78,22 @@ def main() -> None:
             card
             for card in cards
             if card["uid"] == "azuki_tcg_observation:tournament-winner-photo-20260710-002"
+        ),
+        None,
+    )
+    shao_ax_winner = next(
+        (
+            card
+            for card in cards
+            if card["uid"] == "azuki_tcg_observation:anime-expo-winner-photo-20260710-001"
+        ),
+        None,
+    )
+    emberheart_winner = next(
+        (
+            card
+            for card in cards
+            if card["uid"] == "azuki_tcg_observation:tournament-winner-photo-20260710-003"
         ),
         None,
     )
@@ -128,6 +146,35 @@ def main() -> None:
         exact_card_name_in_call("show Serene Fist, Misaki winner", cards) == "Serene Fist, Misaki",
         "exact-name enforcement does not recognize Serene Fist, Misaki",
     )
+    require(shao_ax_winner is not None, "Anime Expo Shao WINNER observation row is missing")
+    require(anime_expo == [shao_ax_winner], "Anime Expo event filter escaped the typed event row")
+    require(
+        shao_ax_winner["event_assertion"] == {
+            "event": "Anime Expo 2026",
+            "distribution": "given_out_at_event_exact_activity_unresolved",
+            "authority_label": "user_assertion_plus_visible_event_stamp_plus_official_event_context",
+            "official_context_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+            "catalog_disposition": "event_association_recorded_exact_award_activity_unresolved",
+        },
+        "Anime Expo Shao row lost its typed event boundary",
+    )
+    require(
+        shao_ax_winner["azuki_world"]["variant_role"] == "user-observed-anime-expo-winner-treatment"
+        and "event:Anime Expo 2026[" in brief(shao_ax_winner, set_labels),
+        "Anime Expo Shao row lost its event role or agent tag",
+    )
+    require(
+        exact_card_name_in_call("show Shao's Perseverance Anime Expo winner", cards) == "Shao's Perseverance",
+        "exact-name enforcement does not recognize Shao's Perseverance",
+    )
+    require(emberheart_winner is not None, "Lady Emberheart WINNER observation row is missing")
+    require(
+        emberheart_winner["azuki_world"]["variant_role"] == "user-observed-winner-treatment"
+        and emberheart_winner.get("event_assertion") is None
+        and emberheart_winner["illustrator"] == "Aflorane",
+        "Lady Emberheart row lost its non-AX winner boundary or artist credit",
+    )
+    require(len(guide.get("event_contexts", [])) == 1, "Anime Expo event context is missing or duplicated")
     require("world-cue:" in brief(garden[0], set_labels), "agent brief lost observation labels")
 
     official_shao = next(

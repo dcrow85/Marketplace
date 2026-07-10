@@ -8,9 +8,9 @@
   },
   "counts": {
     "observed_cards_not_in_gallery_snapshot": 2,
-    "rows": 6,
+    "rows": 8,
     "source_conflicts": 1,
-    "unique_observation_ids": 6
+    "unique_observation_ids": 8
   },
   "csv_path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv",
   "name": "Azuki TCG User Photo Promo Observations",
@@ -26,7 +26,7 @@
     "AZP-005",
     "AZP-004"
   ],
-  "row_count": 6,
+  "row_count": 8,
   "schema": "azuki_tcg_promo_observation_provenance_v0.2",
   "source_conflicts": [
     {
@@ -39,6 +39,25 @@
     }
   ],
   "sources": [
+    {
+      "date": "2026-07-10",
+      "kind": "user_provided_photo",
+      "note": "The user supplied this Lady Emberheart WINNER photo for catalogue inclusion. The image has no visible Anime Expo stamp, so the catalogue does not attach it to the Anime Expo event lane without additional evidence.",
+      "official_gallery_check": {
+        "api_count": 237,
+        "checked": "2026-07-10",
+        "matching_source_entry_ids": [
+          "S1-STT04-008_Lady-Emberheart_E_UC_die"
+        ],
+        "url": "https://tcg.azuki.com/api/cards",
+        "winner_treatment_enumerated": false
+      },
+      "public_path": "assets/observations/lady-emberheart-winner-2026-07-10.png",
+      "repo_path": "web/public/assets/observations/lady-emberheart-winner-2026-07-10.png",
+      "sha256": "49102cc3eabd412bb85903c700d4b2b1de6af70e9ffac38d2416929bee2b2638",
+      "source_key": "lady-emberheart-winner-20260710",
+      "stored_in_repo": true
+    },
     {
       "date": "2026-07-10",
       "kind": "user_provided_photo",
@@ -67,6 +86,32 @@
       "sha256": "59ff048dde6796c4720da70572f615b27ce95bf3f845020f5b42d26c05f7bf44",
       "source_key": "promo-grid-20260624",
       "stored_in_repo": false
+    },
+    {
+      "date": "2026-07-10",
+      "kind": "user_provided_photo",
+      "note": "The user supplied this real-card photo and says the card was given out at Anime Expo. The visible AX WINNER / ANIME EXPO 2026 EXCLUSIVE treatment and official event page support event association; the exact demo, Starter Deck Battle, match, recipient, and quantity remain unresolved.",
+      "official_event_context": {
+        "event": "Anime Expo 2026",
+        "exact_award_activity_identified": false,
+        "officially_named_promo": true,
+        "url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f"
+      },
+      "official_gallery_check": {
+        "anime_expo_winner_treatment_enumerated": false,
+        "api_count": 237,
+        "checked": "2026-07-10",
+        "matching_source_entry_ids": [
+          "S1-STT02-017_Shaos-Perseverance_S_SR_die",
+          "STT02-017A_Shaos-Perseverance_S_SR_die"
+        ],
+        "url": "https://tcg.azuki.com/api/cards"
+      },
+      "public_path": "assets/observations/shaos-perseverance-anime-expo-2026-winner.png",
+      "repo_path": "web/public/assets/observations/shaos-perseverance-anime-expo-2026-winner.png",
+      "sha256": "2d5db4a0d5145269806f9ed44b0e1c31662dd099a3e53f0fe042892bbf3f4649",
+      "source_key": "shao-perseverance-ax-winner-20260710",
+      "stored_in_repo": true
     },
     {
       "date": "2026-07-10",

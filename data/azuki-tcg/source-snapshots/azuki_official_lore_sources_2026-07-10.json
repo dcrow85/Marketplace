@@ -6,11 +6,34 @@
     "official_site_fact": "A concise paraphrase of material published on an Azuki-owned web property.",
     "official_tcg_rule_fact": "A gameplay/world term defined by the official Azuki TCG rules.",
     "official_card_fact": "A name, element, subtype, rule, flavor, or reference field carried by an official card source.",
+    "official_event_context": "A dated program, location, activity, promo, or product detail published by Azuki for a named event; it does not establish an individual card's acquisition path unless the source says so.",
     "official_future_context": "An officially announced but not-yet-released story or set detail; never present it as an already published story event.",
     "official_community_governance_context": "Material on the official Bobu governance site; proposal intent is not promoted to completed canon unless the page says it shipped.",
     "card_art_observation": "A visible cue from the catalog image, useful for search but not automatically a canon claim.",
     "catalog_inference": "A declared relationship inferred from names, subtypes, rules, flavor, or repeated character depiction."
   },
+  "event_contexts": [
+    {
+      "event_id": "anime-expo-2026",
+      "name": "Anime Expo 2026",
+      "dates": "2026-07-02/2026-07-05",
+      "location": "Los Angeles Convention Center, West Hall",
+      "booth": "424",
+      "official_source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+      "program": [
+        "learn-to-play demos with chances at AX-exclusive cards while supplies lasted",
+        "Starter Deck Battles competing for AX cards while supplies lasted",
+        "stamped full-art AX promos including The Red Bean and Shao's Perseverance",
+        "live Gates Awakened pack rips",
+        "debut of a ten-card Special Card Collection in a premium display format",
+        "advance reading of AZUKI manga chapters Sisters and Pact",
+        "Arnold Tsang meet-and-greets and live drawing",
+        "Gates Awakened products, accessories, and selected Azuki merchandise"
+      ],
+      "authority_label": "official_event_context",
+      "distribution_boundary": "The official page identifies promo cards and activities but does not map the photographed AX WINNER Shao's Perseverance card to one exact booth activity or recipient."
+    }
+  ],
   "sources": [
     {
       "source_id": "azuki_tcg_home_2026_07_10",
@@ -84,6 +107,23 @@
       ]
     },
     {
+      "source_id": "azuki_tcg_anime_expo_2026_event_program",
+      "title": "Azuki TCG at Anime Expo 2026 - event program and promos",
+      "url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+      "publisher": "Azuki Labs",
+      "authority_label": "official_event_context",
+      "claims": [
+        "Azuki TCG occupied West Hall Booth 424 at the Los Angeles Convention Center from July 2 through July 5, 2026.",
+        "Learn-to-play demo participants had a chance to receive AX-exclusive cards while supplies lasted.",
+        "Starter Deck Battle participants competed for AX cards while supplies lasted.",
+        "The named AX promos included stamped full-art versions of The Red Bean and Shao's Perseverance.",
+        "The booth hosted live Gates Awakened pack rips and sold booster products, starter decks, accessories, and selected Azuki merchandise.",
+        "The ten-card Special Card Collection debuted at the booth in a premium display format and was distinct from the separately described AX promo-card activities.",
+        "Attendees received an advance look at AZUKI manga chapters Sisters and Pact before the announced September 2026 global launch.",
+        "Arnold Tsang appeared for meet-and-greets and live drawing moments throughout the event."
+      ]
+    },
+    {
       "source_id": "azuki_gallery_api_2026_07_06",
       "title": "Azuki TCG Card API",
       "url": "https://tcg.azuki.com/api/cards",
@@ -133,6 +173,7 @@
     "that an image observation is a canon story event",
     "that proposed Bobu memories were all published as canon",
     "that announced manga chapters or Set 2 material are already released",
+    "the exact activity, match, recipient, or quantity behind an AX WINNER card when the official event page does not specify it",
     "that shared names or visual resemblance prove two depictions are the same person unless the relationship is labeled as an inference",
     "physical-card authenticity, condition, possession, or market value"
   ]

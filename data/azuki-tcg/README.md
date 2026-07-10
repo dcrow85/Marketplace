@@ -37,10 +37,10 @@ It also contains a spreadsheet completion layer:
 And it contains a user-photo observation layer:
 
 - `observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv`
-  records six promo/variant observations from three user-provided photo sources.
+  records eight promo/variant observations from five user-provided photo sources.
   The 2026-06-24 four-card source is not committed and is anchored only by its
-  SHA-256 hash. The user explicitly supplied the 2026-07-10 Yojin and Misaki
-  WINNER photos for catalogue display, so those exact images are retained under
+  SHA-256 hash. The user explicitly supplied four 2026-07-10 WINNER photos for
+  catalogue display, so those exact images are retained under
   `web/public/assets/observations/` with its hash recorded.
 - `observations/azuki_tcg_user_photo_promo_observations_2026_06_24_provenance.json`
   records the observation authority boundary, gallery matches, and conflicts.
@@ -54,19 +54,21 @@ And it contains a user-photo observation layer:
 
 It also contains a provenance-separated Azuki world layer:
 
-- `source-snapshots/azuki_official_lore_sources_2026-07-10.json` records 34
-  concise claims from 9 official Azuki-owned web sources. Official site facts,
+- `source-snapshots/azuki_official_lore_sources_2026-07-10.json` records 42
+  concise claims from 10 official Azuki-owned web sources. Official site facts,
   TCG rule facts, future announcements, Bobu governance context, card-art
-  observations, and catalog inferences have different authority labels.
+  observations, event context, and catalog inferences have different authority
+  labels. Its Anime Expo 2026 context records Booth 424's dated program while
+  leaving the exact AX WINNER award activity unresolved.
 - `source-snapshots/azuki_card_art_visual_review_2026-07-10.json` anchors the
   full visual pass: 237 official gallery images plus 100 Alpha Master Sheet
-  images and 2 user-observed WINNER images, each with its image hash and review
+  images and 4 user-observed WINNER images, each with its image hash and review
   batch.
 - `lore/azuki_world_metadata.json` gives the agent a dual-world guide (Alley,
   Garden, and the Gate threshold), four elemental domains, 85 official subtype
   terms, 9 repeated-character threads, and per-card/per-variant search metadata.
 - `lore/azuki_world_metadata_audit.json` requires all 202 official card
-  identities, all 341 UI rows, and every one of the 339 image-bearing rows to
+  identities, all 343 UI rows, and every one of the 341 image-bearing rows to
   remain covered.
 - `scripts/build_azuki_world_metadata.py` regenerates and checks the layer. A
   future gallery refresh with a new or changed image must receive a new explicit
@@ -107,7 +109,7 @@ Alpha-field completion spreadsheet:
 
 Promo observation layer:
 
-- 6 user-photo observation rows
+- 8 user-photo observation rows
 - 2 printed IDs not present in the current official gallery snapshot:
   `AZP-004`, `AZP-005`
 - 1 preserved source conflict: photo-observed `AZK01-028` illustrator reads
@@ -120,10 +122,19 @@ Promo observation layer:
   only base UC Yojin, so the row remains user-observed rather than an official
   checklist variant.
 - 1 distinct Serene Fist, Misaki observation: printed `STT02-008`, `UC ★`, a
-  visible gold `WINNER` treatment, and a credit read as `Aflorane` at medium
-  transcription confidence. The user marks the pictured card `confirmed_real`;
+  visible gold `WINNER` treatment, and an `Aflorane` credit corroborated by the
+  clearer Lady Emberheart photo. The user marks the pictured card `confirmed_real`;
   that status is retained as a user assertion rather than independent catalogue
   verification. The live gallery exposes only base UC Misaki.
+- 1 Anime Expo 2026 Shao's Perseverance observation: printed `STT02-017`, `SR`,
+  `Illus. Pandart Studio`, Azuki `#187`, and visible `AX WINNER / ANIME EXPO
+  2026 EXCLUSIVE` marks. The official event page names stamped full-art Shao's
+  Perseverance as an AX promo and describes demos and Starter Deck Battles for
+  AX cards, but does not identify this card's exact award activity. User-supplied
+  authenticity and event-distribution statuses remain typed assertions.
+- 1 distinct Lady Emberheart observation: printed `STT04-008`, `UC ★`, `Illus.
+  Aflorane`, and a gold `WINNER` treatment. No AX stamp is visible, so no Anime
+  Expo association is recorded.
 
 Portrait alternate observation layer:
 

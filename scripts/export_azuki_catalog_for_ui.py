@@ -440,8 +440,14 @@ def observation_note(row: dict[str, str]) -> dict[str, Any]:
         "observed_stamp": row.get("OBSERVED_STAMP") or "",
         "source_image_public_path": row.get("SOURCE_IMAGE_PUBLIC_PATH") or "",
         "display_as_distinct_row": (row.get("DISPLAY_AS_DISTINCT_ROW") or "").strip().lower() in {"1", "true", "yes"},
+        "observed_variant_kind": row.get("OBSERVED_VARIANT_KIND") or "",
+        "observed_foil_treatment": (row.get("OBSERVED_FOIL_TREATMENT") or "").strip().lower() in {"1", "true", "yes"},
         "user_asserted_authenticity": row.get("USER_ASSERTED_AUTHENTICITY") or "",
         "authenticity_authority": row.get("AUTHENTICITY_AUTHORITY") or "",
+        "observed_event": row.get("OBSERVED_EVENT") or "",
+        "event_distribution": row.get("EVENT_DISTRIBUTION") or "",
+        "event_authority": row.get("EVENT_AUTHORITY") or "",
+        "official_event_source_url": row.get("OFFICIAL_EVENT_SOURCE_URL") or "",
         "note": row.get("OBSERVATION_NOTE") or "",
     }
 
@@ -719,6 +725,9 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
     matched_gallery_uids = split_semis(row.get("MATCHED_GALLERY_UIDS"))
     user_asserted_authenticity = row.get("USER_ASSERTED_AUTHENTICITY") or ""
     authenticity_authority = row.get("AUTHENTICITY_AUTHORITY") or ""
+    observed_foil = (row.get("OBSERVED_FOIL_TREATMENT") or "").strip().lower() in {"1", "true", "yes"}
+    event_name = row.get("OBSERVED_EVENT") or ""
+    observed_variant_kind = row.get("OBSERVED_VARIANT_KIND") or ""
     issue_code = (
         "observed_variant_not_in_current_official_gallery_snapshot"
         if matched_gallery_uids
@@ -743,10 +752,10 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
         "element": element,
         "types": [v for v in [element, *subtypes] if v],
         "subtypes": subtypes,
-        "holo": has_star(rarity),
-        "star_alt": has_star(rarity),
+        "holo": has_star(rarity) or observed_foil,
+        "star_alt": has_star(rarity) or observed_foil,
         "rarity": rarity,
-        "band_rank": 3 if has_star(rarity) else 0,
+        "band_rank": 3 if has_star(rarity) or observed_foil else 0,
         "image": image if has_public_image else "",
         "image_status": "user_photo_observation" if has_public_image else "user_observation_no_public_image",
         "display_allowed": has_public_image,
@@ -791,7 +800,7 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
         "ruling_text": row.get("RULING_TEXT") or "",
         "stamp": row.get("STAMP") or row.get("OBSERVED_STAMP") or "",
         "variant_group": {
-            "variant_kind": "user_observed_tournament_winner_treatment" if "winner" in (row.get("OBSERVED_STAMP") or "").lower() else "user_observed_variant",
+            "variant_kind": observed_variant_kind or ("user_observed_tournament_winner_treatment" if "winner" in (row.get("OBSERVED_STAMP") or "").lower() else "user_observed_variant"),
             "matched_gallery_uids": matched_gallery_uids,
             "official_gallery_enumeration": False,
         },
@@ -809,6 +818,13 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
             "authority_label": authenticity_authority or "user_assertion",
             "catalog_disposition": "recorded_not_independently_verified",
         } if user_asserted_authenticity else None),
+        "event_assertion": ({
+            "event": event_name,
+            "distribution": row.get("EVENT_DISTRIBUTION") or "",
+            "authority_label": row.get("EVENT_AUTHORITY") or "user_assertion",
+            "official_context_url": row.get("OFFICIAL_EVENT_SOURCE_URL") or "",
+            "catalog_disposition": "event_association_recorded_exact_award_activity_unresolved",
+        } if event_name else None),
         "not_claiming": [
             "official gallery inclusion",
             "official enumeration of this treatment as a distinct variant",
@@ -816,7 +832,8 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
             "independent verification of physical-card authenticity beyond any recorded user assertion",
             "condition truth",
             "market value",
-            "tournament event, venue, date, recipient, or award path",
+            "tournament recipient or award path beyond any recorded event assertion",
+            "exact event activity or award path beyond the recorded event assertion and official context",
         ],
     }
 
