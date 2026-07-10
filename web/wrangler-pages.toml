@@ -1,0 +1,9 @@
+# Pages deploy config for the assembled site (copied into the staging dir as
+# wrangler.toml by the deploy ritual). The PILOT KV binding backs /api/store/*.
+name = "cairn"
+compatibility_date = "2026-01-01"
+pages_build_output_dir = "dist"
+
+[[kv_namespaces]]
+binding = "PILOT"
+id = "4c71eb9eddb34f8bb301872222abcdbd"

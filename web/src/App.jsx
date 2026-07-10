@@ -13,13 +13,17 @@ import OfferComposer from './market/OfferComposer.jsx'
 import { offersKeyFor, loadOffers, OFFER_OPEN, OFFER_SETTLING } from './trade/offers.js'
 import { startMockMarket } from './market/mockAgents.js'
 import { startChainRail } from './chain/localRehearsal.js'
+import { fetchInbox, isLiveAddr } from './live/pilotStore.js'
+import { mergeInbox } from './live/inbox.js'
 import { fetchJson } from './lib/data.js'
 import { useBus } from './lib/store.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
+// The mock id is a VALID address shape so the live-room plumbing (publish, inbox) can be
+// exercised from dev — recognizable as the coffee address, never a real wallet.
 const DEV_PREVIEW = import.meta.env.DEV && new URLSearchParams(window.location.search).has('preview')
-const MOCK_ID = '0xpreview0000000000000000000000000000dev1'
+const MOCK_ID = '0x0000000000000000000000000000000000c0ffee'
 const CATALOGS = [
   {
     id: 'azuki-tcg',
@@ -120,6 +124,18 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
     }).catch(() => {})
     return () => { live = false; stop() }
   }, [catalog, accountId])
+  // the live loop: poll your inbox on the room's KV and merge what arrived — offers
+  // from real people land in the same ledger the personas use
+  useEffect(() => {
+    if (!isLiveAddr(accountId)) return undefined
+    let stop = false
+    const tick = () => fetchInbox(accountId).then((box) => { if (box && !stop) mergeInbox(catalog.id, accountId, box) })
+    tick()
+    const iv = setInterval(tick, 45000)
+    const wake = () => tick()
+    window.addEventListener('focus', wake)
+    return () => { stop = true; clearInterval(iv); window.removeEventListener('focus', wake) }
+  }, [catalog, accountId])
   const { swapN, needsYou } = useBus(() => {
     const offers = loadOffers(offersKeyFor(catalog.id, accountId))
     const inOpen = offers.filter((o) => o.dir === 'in' && OFFER_OPEN.includes(o.state)).length
@@ -169,7 +185,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
       {offerSeed && (
         <OfferComposer accountId={accountId} catalog={catalog} seller={offerSeed.seller}
           initialWant={offerSeed.want} initialGive={offerSeed.give}
-          initialCash={offerSeed.cash} counterOf={offerSeed.counterOf}
+          initialCash={offerSeed.cash} counterOf={offerSeed.counterOf} live={offerSeed.live}
           onClose={() => setOfferSeed(null)} />
       )}
       {tradesOpen && (
@@ -182,7 +198,8 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             <div className="trades-body">
               <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setOfferSeed({
                 seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
-                cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null, counterOf: o.id,
+                cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
+                counterOf: o.id, live: o.live,
               })} />
               <TradePanel openTradeId={openTrade} />
             </div>

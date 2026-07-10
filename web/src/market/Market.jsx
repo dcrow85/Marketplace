@@ -3,6 +3,7 @@ import { storeKeyFor, loadStore, entryFor } from '../binder/collection.js'
 import { useCatalog, useMarket, useByUid } from '../lib/data.js'
 import { useBus } from '../lib/store.js'
 import { loadHidden, hiddenKeyFor, loadMockSales, mockSalesKeyFor } from './mockAgents.js'
+import { fetchProfiles, fetchProfile } from '../live/pilotStore.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile } from './pile.js'
@@ -29,6 +30,22 @@ function witnessCell(w) {
 }
 
 const scanLabel = (w) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : '— no scans'
+
+// A published page, read back as a table: the same seller shape the mock market uses,
+// so the pile, the deal, and the Settle room work unchanged. Everything on it is the
+// collector's own claim, carried from their page — so no green here, and no 'record'.
+const profileToSeller = (p) => ({
+  id: p.addr,
+  live: true,
+  joined: p.updated ? new Date(p.updated).toISOString().slice(0, 10) : null,
+  bio: p.sign || '',
+  listings: (p.table || []).filter((t) => t && t.uid).map((t) => ({
+    uid: t.uid, ask: Number(t.ask) || 0, cond: t.cond || 'their claim', witness: t.scans || 0, copies: t.copies || 1,
+  })),
+  wants: p.wants || [],
+  showcase: p.showcase || [],
+  recordStats: Array.isArray(p.record) ? p.record : [],
+})
 
 // buy · 9 / ⇄ trade — both just drop the card on your pile, tagged. Nothing sends.
 function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
@@ -87,6 +104,28 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const gone = new Set(hidden.map((h) => h.seller + '|' + h.uid))
     return mkt.sellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
   }, [mkt, catalog, accountId])
+  // the live room: pages real collectors published — refreshed on a slow clock
+  const [liveSellers, setLiveSellers] = useState([])
+  useEffect(() => {
+    let stop = false
+    const load = async () => {
+      const idx = await fetchProfiles()
+      if (!Array.isArray(idx) || stop) return
+      const mine = (accountId || '').toLowerCase()
+      const full = await Promise.all(idx.filter((e) => e.addr && e.addr !== mine).slice(0, 40).map((e) => fetchProfile(e.addr)))
+      if (stop) return
+      setLiveSellers(full.filter(Boolean).map(profileToSeller).filter((s) => s.listings.length || s.wants.length || s.showcase.length))
+    }
+    load()
+    const iv = setInterval(load, 90000)
+    return () => { stop = true; clearInterval(iv) }
+  }, [accountId, catalog])
+  const allSellers = useMemo(() => {
+    const hidden = loadHidden(hiddenKeyFor(catalog.id, accountId))
+    const gone = new Set(hidden.map((h) => h.seller + '|' + h.uid))
+    const lv = liveSellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
+    return [...lv, ...sellers]
+  }, [liveSellers, sellers, catalog, accountId])
   const myWants = useMemo(() => {
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'want').map((c) => c.uid))
@@ -129,14 +168,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     delete scope.owned
     const uids = new Set(applyAgentFilter(data.cards, scope, {}).map((c) => c.uid))
     const out = []
-    for (const sl of sellers) for (const l of sl.listings) {
+    for (const sl of allSellers) for (const l of sl.listings) {
       if (!uids.has(l.uid)) continue
       if (findStep.ask != null && l.ask > findStep.ask) continue
       const c = byUid.get(l.uid)
       if (c) out.push({ c, sellerId: sl.id, l })
     }
     return out.sort((a, b) => a.l.ask - b.l.ask).slice(0, 24)
-  }, [findStep, data, sellers, byUid])
+  }, [findStep, data, allSellers, byUid])
   // a plain browse call narrows the AISLE: which tables carry matches
   const aisleMatch = useMemo(() => {
     if (!ares?.ok || findStep || !data) return null
@@ -150,9 +189,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   }, [ares, findStep, data])
 
   if (!data || !mkt) return <div className="empty">Opening the market…</div>
-  if (!sellers.length) return <div className="empty">No tables in this catalog yet.</div>
+  if (!allSellers.length) return <div className="empty">No tables in this catalog yet.</div>
 
-  const open = sellers.find((s) => s.id === sel)
+  const open = allSellers.find((s) => s.id === sel)
   const pileOf = (sellerId) => piles[sellerId] || []
   const inPile = (sellerId, uid) => pileOf(sellerId).find((x) => x.uid === uid)
 
@@ -192,14 +231,21 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     </CardZoom>
   )
   const msgEl = swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>
+  const roomNote = (
+    <div className="mk-samplenote mono">{open?.live
+      ? <><span className="mk-livetag">● live</span> {handleFor(open.id)} is a real collector in the pilot — a deal here goes to their inbox.</>
+      : liveSellers.length
+        ? <>tables marked <span className="mk-livetag">● live</span> are real collectors — deals there reach a real inbox. the rest are sample sellers for shaping the browse.</>
+        : 'sample tables — mock sellers, for shaping the browse. nothing here is a real offer.'}</div>
+  )
 
   // ---- by-card focus: everyone asking on one card ----
   if (focusUid) {
     const c = byUid.get(focusUid)
-    const asks = sellers.flatMap((s) => s.listings.filter((l) => l.uid === focusUid).map((l) => ({ s, l })))
+    const asks = allSellers.flatMap((s) => s.listings.filter((l) => l.uid === focusUid).map((l) => ({ s, l })))
     return (
       <div className="mk">
-        <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {roomNote}
         {ankoBar}
         {ankoPanel}
         {msgEl}
@@ -269,7 +315,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const buysSum = pile.filter((p) => p.mode === 'buy').reduce((t, p) => t + (open.listings.find((l) => l.uid === p.uid)?.ask ?? 0), 0)
     return (
       <div className="mk">
-        <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+        {roomNote}
         {ankoBar}
         {ankoPanel}
         {msgEl}
@@ -278,14 +324,21 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           <div className="mk-seller">
             <Avatar seed={open.id} size={40} />
             <div>
-              <div className="mk-handle">{handleFor(open.id)}</div>
-              <div className="mono dim mk-sub">{shortId(open.id)} · at the market since {open.joined}</div>
+              <div className="mk-handle">{handleFor(open.id)}{open.live && <span className="mk-livetag mono"> ● live</span>}</div>
+              <div className="mono dim mk-sub">{shortId(open.id)} · {open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}</div>
             </div>
           </div>
           <button className="ghost sm" onClick={() => { setSel(null); setWantsOnly(false) }}>← all tables</button>
         </div>
         {open.bio && <p className="mk-bio">{open.bio}</p>}
-        {(open.record || open.joined) && (
+        {open.live
+          ? open.recordStats?.length > 0 && (
+            <div className="pf-record mono">
+              {open.recordStats.map((st, i) => <span key={i} className="pf-stat">{st.t}</span>)}
+              <span className="pf-stat dim">their page&rsquo;s tally — carried, not checked</span>
+            </div>
+          )
+          : (open.record || open.joined) && (
           <div className="pf-record mono">
             {open.record?.since && <span className="pf-stat">at the market since {open.record.since}</span>}
             {open.record?.settled > 0 && <span className="pf-stat rec">{open.record.settled} settled</span>}
@@ -406,9 +459,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             <span className="mk-ckacts">
               {pile.every((p) => p.mode === 'buy') && buysSum > 0 && (
                 <button className="primary mk-settle" onClick={() => {
-                  sendOffer(offersKeyFor(catalog.id, accountId), { to: open.id, want: pile.map((p) => ({ uid: p.uid })), give: [], cash: { side: 'from', amount: buysSum }, note: null })
+                  sendOffer(offersKeyFor(catalog.id, accountId), { to: open.id, want: pile.map((p) => ({ uid: p.uid })), give: [], cash: { side: 'from', amount: buysSum }, note: null, live: open.live, from: accountId, cat: catalog.id })
                   clearPile(pileKey, open.id)
-                  setSwapMsg(`paid their asks — ${buysSum} USDC for ${pile.length} card${pile.length === 1 ? '' : 's'} to ${handleFor(open.id)}. Watch Trades.`)
+                  setSwapMsg(open.live
+                    ? `paid their asks — the deal went to ${handleFor(open.id)}'s inbox. A real person answers this one; watch Trades.`
+                    : `paid their asks — ${buysSum} USDC for ${pile.length} card${pile.length === 1 ? '' : 's'} to ${handleFor(open.id)}. Watch Trades.`)
                 }}>Pay their asks · {buysSum} →</button>
               )}
               <button className={pile.every((p) => p.mode === 'buy') && buysSum > 0 ? 'ghost sm' : 'primary mk-settle'} onClick={() => setSettling(true)}>Settle up{pile.every((p) => p.mode === 'buy') && buysSum > 0 ? '' : ` · ${pile.length}`} →</button>
@@ -425,7 +480,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   // ---- the directory: all tables ----
   return (
     <div className="mk">
-      <div className="mk-samplenote mono">sample tables — mock sellers, for shaping the browse. nothing here is a real offer.</div>
+      {roomNote}
       {ankoBar}
       {ankoPanel}
       {msgEl}
@@ -433,13 +488,13 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       <div className="mk-head">
         <div>
           <div className="ek">The market</div>
-          <div className="mk-title">{sellers.length} tables open</div>
+          <div className="mk-title">{allSellers.length} tables open{liveSellers.length ? ` · ${liveSellers.length} live` : ''}</div>
         </div>
       </div>
       <div className="mk-grid">
-        {[...sellers].sort((a, b) => aisleMatch
+        {[...allSellers].sort((a, b) => ((b.live ? 1 : 0) - (a.live ? 1 : 0)) || (aisleMatch
           ? b.listings.filter((l) => aisleMatch.has(l.uid)).length - a.listings.filter((l) => aisleMatch.has(l.uid)).length
-          : 0).map((s) => {
+          : 0)).map((s) => {
           const total = s.listings.reduce((t, { ask, copies }) => t + ask * (copies || 1), 0)
           const witnessed = s.listings.filter((l) => l.witness).length
           const wantsHere = s.listings.filter((l) => myWants.has(l.uid)).length
@@ -450,8 +505,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <div className="mk-seller">
                 <Avatar seed={s.id} size={34} />
                 <div>
-                  <div className="mk-handle">{handleFor(s.id)}</div>
-                  <div className="mono dim mk-sub">{shortId(s.id)}</div>
+                  <div className="mk-handle">{handleFor(s.id)}{s.live && <span className="mk-livetag mono"> ● live</span>}</div>
+                  <div className="mono dim mk-sub">{shortId(s.id)}{s.live ? '' : ' · sample'}</div>
                 </div>
               </div>
               <div className="mk-spread">

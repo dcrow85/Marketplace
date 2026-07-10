@@ -126,6 +126,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       give: [...give].map((uid) => ({ uid })),
       cash: cash > 0 ? { side: 'from', amount: cash } : null,
       note,
+      live: open.live, from: accountId, cat: catalog.id,
     })
     clearPile(pileKey, open.id)
     onSent()
@@ -211,7 +212,8 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} USDC`}</span>
         <button className="primary stl-send" disabled={!canSend} onClick={send}>Send the deal to {handleFor(open.id)} →</button>
       </div>
-      <p className="sc-note dim">A deal is a message, not a lock — cards and money only move through escrow. Their agent answers the whole basket at once.</p>
+      <p className="sc-note dim">A deal is a message, not a lock — cards and money only move through escrow.
+        {open.live ? ` This is a live table: ${handleFor(open.id)} is a real collector, and the deal lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>
     </div>
   )
 }

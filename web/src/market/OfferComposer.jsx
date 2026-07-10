@@ -14,7 +14,7 @@ function Avatar({ seed, size = 22 }) {
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 
-export default function OfferComposer({ accountId, catalog, seller, initialWant, initialGive, initialCash, counterOf, onClose, onSent }) {
+export default function OfferComposer({ accountId, catalog, seller, initialWant, initialGive, initialCash, counterOf, live, onClose, onSent }) {
   const [data, setData] = useState(null)
   const [mkt, setMkt] = useState(null)
   const [want, setWant] = useState(() => new Set(initialWant || []))
@@ -37,8 +37,10 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
   const theirCards = useMemo(() => {
     if (!mkt) return []
     const sl = mkt.sellers.find((x) => x.id === seller)
-    return (sl?.listings || []).map((l) => ({ c: byUid.get(l.uid), l })).filter((x) => x.c)
-  }, [mkt, seller, byUid])
+    if (sl) return (sl.listings || []).map((l) => ({ c: byUid.get(l.uid), l })).filter((x) => x.c)
+    // a live counterpart isn't in the sample market — their side is the offer being countered
+    return [...(initialWant || [])].map((uid) => ({ c: byUid.get(uid), l: { ask: null, witness: null } })).filter((x) => x.c)
+  }, [mkt, seller, byUid, initialWant])
   const myCards = useMemo(() => {
     if (!data) return []
     const rows = data.cards.map((c) => ({ c, e: entryFor(c, store) })).filter(({ e }) => e.stance === 'have')
@@ -74,6 +76,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
       give: [...give].map((uid) => ({ uid })),
       cash: amt > 0 ? { side: cashSide, amount: amt } : null,
       note, counterOf,
+      live, from: accountId, cat: catalog.id,
     }
     sendOffer(offersKeyFor(catalog.id, accountId), offer)
     onSent && onSent()
@@ -107,7 +110,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           {theirCards.length > 8 && <input className="ofr-search" placeholder="search their table…" value={qw} onChange={(e) => setQw(e.target.value)} />}
           <div className="ofr-grid">
             {theirCards.filter(({ c }) => hit(c, qw) || want.has(c.uid)).map(({ c, l }) =>
-              tile(c, want.has(c.uid), toggle(want, setWant), `${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}`, null, l.witness))}
+              tile(c, want.has(c.uid), toggle(want, setWant), l.ask != null ? `${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}` : 'from the offer', null, l.witness))}
           </div>
           <div className="ofr-sec mono">you give — your binder{myCards.some(({ e }) => e.trade) ? ' (open-to-trade first)' : ''}</div>
           {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}

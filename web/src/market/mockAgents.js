@@ -6,6 +6,7 @@
 import { loadStore, saveStore } from '../binder/collection.js'
 import { loadOffers, saveOffers, OFFER_SETTLING } from '../trade/offers.js'
 import { IS_LOCAL_CHAIN } from '../chain/config.js'
+import { pushInbox, isLiveAddr } from '../live/pilotStore.js'
 
 export const mockSalesKeyFor = (catalogId) => `cairn-mock-sales:${catalogId}`
 export const hiddenKeyFor = (catalogId, accountId) => `cairn-mock-hidden:${catalogId}:${accountId}`
@@ -105,23 +106,26 @@ export function settleOffer({ catalogId, accountId, o }) {
   const other = o.dir === 'out' ? o.to : o.from
   const gets = o.dir === 'out' ? o.want : o.give
   const gives = o.dir === 'out' ? o.give : o.want
+  const word = o.live ? `live offer ${o.id} (pilot record, kept by each side)` : `mock offer ${o.id}`
   for (const w of gets) {
     const u = { ...(next[w.uid] || {}) }
     u.stance = 'have'
-    u.note = [(u.note || '').trim(), `acquired in mock offer ${o.id}${o.cash ? ` · cash leg ${o.cash.amount} USDC` : ''}`].filter(Boolean).join('\n')
+    u.note = [(u.note || '').trim(), `acquired in ${word}${o.cash ? ` · cash leg ${o.cash.amount} USDC` : ''}`].filter(Boolean).join('\n')
     next[w.uid] = u
   }
   for (const g of gives) {
     const u = { ...(next[g.uid] || {}) }
     u.stance = 'none'; u.sell = false; u.trade = false; u.grail = false
-    u.note = [(u.note || '').trim(), `traded away in mock offer ${o.id}`].filter(Boolean).join('\n')
+    u.note = [(u.note || '').trim(), `traded away in ${word}`].filter(Boolean).join('\n')
     next[g.uid] = u
   }
   saveStore(storeKey, next)
   const hk = hiddenKeyFor(catalogId, accountId)
   write(hk, [...loadHidden(hk), ...gets.map((w) => ({ seller: other, uid: w.uid }))])
-  // a price is only a recorded fact when the trade WAS a price: one card, cash, no basket
-  if (!gives.length && o.cash && gets.length === 1) {
+  // a price is only a recorded fact when the trade WAS a price: one card, cash, no
+  // basket — and live pilot prices stay OUT of the ledger until an escrow rail
+  // witnesses them (a self-recorded settlement is a claim, not a price fact)
+  if (!gives.length && o.cash && gets.length === 1 && !o.live) {
     const sk = mockSalesKeyFor(catalogId)
     const sales = loadMockSales(sk)
     sales[gets[0].uid] = [{ d: new Date().toISOString().slice(0, 10), p: o.cash.amount, cond: 'raw', wit: true, mock: true }, ...(sales[gets[0].uid] || [])]
@@ -139,6 +143,7 @@ export function startMockMarket({ catalogId, accountId, byUid, askOf }) {
     const offers = loadOffers(key)
     let changed = false
     for (const o of offers) {
+      if (o.live) continue // a live offer is a real person's — no persona touches it
       // catch-up loop: browsers throttle timers in hidden tabs, and a user can be gone
       // for hours — every transition that came due while we weren't ticking runs now.
       // One offer that throws must never stall the rest: it gets declined and skipped.
@@ -217,7 +222,14 @@ export function acceptIncoming(key, id) {
   const o = offers.find((x) => x.id === id)
   if (!o || o.dir !== 'in' || !['sent', 'seen'].includes(o.state)) return
   o.state = 'accepted'
-  if (IS_LOCAL_CHAIN && o.cash && o.cash.side === 'to') {
+  if (o.live) {
+    // a real deal now: no rehearsal timeline — cash settles by escrow, cards by mail,
+    // then each side records it settled. Tell their app the answer.
+    o.rail = 'escrow'
+    o.nextAt = null
+    o.log = [...(o.log || []), 'Accepted — this one is real. Square the cash by escrow, move the cards, then record it settled.']
+    if (isLiveAddr(o.from)) pushInbox(o.from, { id: o.id, type: 'response', state: 'accepted' })
+  } else if (IS_LOCAL_CHAIN && o.cash && o.cash.side === 'to') {
     o.rail = 'chain' // you pay, the local EVM settles it for real
     o.nextAt = null
   } else {
@@ -232,5 +244,6 @@ export function declineIncoming(key, id) {
   if (!o || o.dir !== 'in' || !['sent', 'seen'].includes(o.state)) return
   o.state = 'declined'
   o.nextAt = null
+  if (o.live && isLiveAddr(o.from)) pushInbox(o.from, { id: o.id, type: 'response', state: 'declined' })
   saveOffers(key, offers)
 }

@@ -55,6 +55,33 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-10 · Claude — **P2: THE LIVE ROOM (Crowley: "finish it and push for live
+  testing on cairn.cards") — LIVE on the apex, loop-drilled end to end.** Profiles + offers now
+  TRAVEL. Storage: Cloudflare Pages Function on cairn.cards itself (`web/functions/api/store/[[key]].js`)
+  over a new `PILOT` KV namespace (binding via `web/wrangler-pages.toml`; deploy stage now
+  wrangler.toml + functions/ + dist/). Surface: (1) **publish** — My page grew "Put it on the
+  board →" (snapshot: sign/showcase/table/wants/record; tombstone unpublish; auto-refresh per
+  visit); (2) **live tables** — the market merges the board above the samples (`● live` tags,
+  mocks say "sample"), a published page renders as a full table (masthead, front page, listings →
+  pile → Settle) with its record strip UNGREENED + captioned "their page's tally — carried, not
+  checked"; (3) **offers travel** — live deals push to the counterpart's KV inbox; a 45s poller
+  merges (seen-ledger survives clears; malformed shapes drop at the sanitizer); accept/decline/
+  counter/withdraw relay back; personas/chain-rail skip `o.live` entirely; (4) **the cash leg is
+  REAL** — an accepted live cash offer shows the payer "fund escrow · N USDC" (arbiter named
+  inline, pilot rule): approve + createTrade on ThinPilotEscrow, tradeId travels to the other
+  ledger, ship/receive/accept in the existing Escrow tab; (5) **record settled** — each side
+  records the card movement itself (binder notes say "pilot record, kept by each side"); live
+  prices STAY OUT of the sales ledger until an escrow rail witnesses them. Drill (dev browser vs
+  the real apex KV + local anvil): publish→board→unpublish ✓; buy at a live table → offer in
+  their inbox ✓; their accept → my ledger via poller ✓; fund → real on-chain trade #4, 12 USDC
+  held, tradeId relayed ✓; record settled → binder moved + relayed, no price fact written ✓;
+  incoming direction (their offer → my needs-you dot → accept relays) ✓; API guards (addr regex,
+  64KB/16KB caps, msg dedupe, tombstone) curl-drilled ✓. HONEST BOUNDARY (recorded, not hidden):
+  no signatures until P3 — any client can PUT any address's profile and POST any inbox; the
+  friends-cohort accepts this; profile pages carry claims, never green. FOR CODEX: (a) chain/
+  untouched — I reuse the existing ThinPilotEscrow client; the two-sided swap settlement object
+  remains your seam; (b) SECURITY: the Pages Function uses a native KV binding, so Railway's
+  CAIRN_KV_TOKEN (full CF token) is now unnecessary — recommend revoking it next backend pass.
 - `[passive]` 2026-07-09 · Claude — **COLLECTOR PROFILES P1 (the brainstorm built, on the clean base) —
   LIVE.** The unification thesis made real: a profile is the binder's public lens. (1) MY PAGE replaces "My
   table": masthead (avatar · handle · editable table sign) + THE RECORD STRIP — facts computed from records,
