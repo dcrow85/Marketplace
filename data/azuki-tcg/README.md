@@ -37,10 +37,10 @@ It also contains a spreadsheet completion layer:
 And it contains a user-photo observation layer:
 
 - `observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv`
-  records five promo/variant observations from two user-provided photo sources.
+  records six promo/variant observations from three user-provided photo sources.
   The 2026-06-24 four-card source is not committed and is anchored only by its
-  SHA-256 hash. The user explicitly supplied the 2026-07-10 Yojin WINNER photo
-  for catalogue display, so that exact image is retained under
+  SHA-256 hash. The user explicitly supplied the 2026-07-10 Yojin and Misaki
+  WINNER photos for catalogue display, so those exact images are retained under
   `web/public/assets/observations/` with its hash recorded.
 - `observations/azuki_tcg_user_photo_promo_observations_2026_06_24_provenance.json`
   records the observation authority boundary, gallery matches, and conflicts.
@@ -60,13 +60,13 @@ It also contains a provenance-separated Azuki world layer:
   observations, and catalog inferences have different authority labels.
 - `source-snapshots/azuki_card_art_visual_review_2026-07-10.json` anchors the
   full visual pass: 237 official gallery images plus 100 Alpha Master Sheet
-  images and 1 user-observed Yojin WINNER image, each with its image hash and
-  review batch.
+  images and 2 user-observed WINNER images, each with its image hash and review
+  batch.
 - `lore/azuki_world_metadata.json` gives the agent a dual-world guide (Alley,
   Garden, and the Gate threshold), four elemental domains, 85 official subtype
   terms, 9 repeated-character threads, and per-card/per-variant search metadata.
 - `lore/azuki_world_metadata_audit.json` requires all 202 official card
-  identities, all 340 UI rows, and every one of the 338 image-bearing rows to
+  identities, all 341 UI rows, and every one of the 339 image-bearing rows to
   remain covered.
 - `scripts/build_azuki_world_metadata.py` regenerates and checks the layer. A
   future gallery refresh with a new or changed image must receive a new explicit
@@ -107,7 +107,7 @@ Alpha-field completion spreadsheet:
 
 Promo observation layer:
 
-- 5 user-photo observation rows
+- 6 user-photo observation rows
 - 2 printed IDs not present in the current official gallery snapshot:
   `AZP-004`, `AZP-005`
 - 1 preserved source conflict: photo-observed `AZK01-028` illustrator reads
@@ -119,6 +119,11 @@ Promo observation layer:
   Gildas`, and a visible `WINNER` treatment. The 2026-07-10 live gallery exposes
   only base UC Yojin, so the row remains user-observed rather than an official
   checklist variant.
+- 1 distinct Serene Fist, Misaki observation: printed `STT02-008`, `UC ★`, a
+  visible gold `WINNER` treatment, and a credit read as `Aflorane` at medium
+  transcription confidence. The user marks the pictured card `confirmed_real`;
+  that status is retained as a user assertion rather than independent catalogue
+  verification. The live gallery exposes only base UC Misaki.
 
 Portrait alternate observation layer:
 

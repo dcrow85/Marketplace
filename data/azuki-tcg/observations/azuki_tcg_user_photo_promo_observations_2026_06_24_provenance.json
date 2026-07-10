@@ -8,9 +8,9 @@
   },
   "counts": {
     "observed_cards_not_in_gallery_snapshot": 2,
-    "rows": 5,
+    "rows": 6,
     "source_conflicts": 1,
-    "unique_observation_ids": 5
+    "unique_observation_ids": 6
   },
   "csv_path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv",
   "name": "Azuki TCG User Photo Promo Observations",
@@ -18,7 +18,7 @@
     "official checklist inclusion for observed printed IDs absent from the gallery snapshot",
     "market value",
     "seller possession beyond the single user-provided photo",
-    "physical authenticity or condition",
+    "independent verification of physical authenticity or condition beyond any explicitly recorded user assertion",
     "that the user photo should overwrite linked sheet or gallery fields",
     "the tournament event, venue, date, recipient, or award path behind a visible WINNER treatment"
   ],
@@ -26,7 +26,7 @@
     "AZP-005",
     "AZP-004"
   ],
-  "row_count": 5,
+  "row_count": 6,
   "schema": "azuki_tcg_promo_observation_provenance_v0.2",
   "source_conflicts": [
     {
@@ -39,6 +39,25 @@
     }
   ],
   "sources": [
+    {
+      "date": "2026-07-10",
+      "kind": "user_provided_photo",
+      "note": "The user supplied this photo for catalogue display and explicitly confirmed the pictured card as real. That authenticity status is retained as a user assertion, not independent verification by the image, model, catalogue, or official gallery.",
+      "official_gallery_check": {
+        "api_count": 237,
+        "checked": "2026-07-10",
+        "matching_source_entry_ids": [
+          "S1-STT02-008_Serene-Fist-Misaki_E_UC_die"
+        ],
+        "url": "https://tcg.azuki.com/api/cards",
+        "winner_treatment_enumerated": false
+      },
+      "public_path": "assets/observations/serene-fist-misaki-tournament-winner-2026-07-10.png",
+      "repo_path": "web/public/assets/observations/serene-fist-misaki-tournament-winner-2026-07-10.png",
+      "sha256": "fd3015cfddfa4ced7f1f3cbb55e2e7618ee92c817906ababd9ff8879cdc15705",
+      "source_key": "misaki-winner-20260710",
+      "stored_in_repo": true
+    },
     {
       "date": "2026-06-24",
       "kind": "user_provided_photo",

@@ -211,6 +211,9 @@ SPECIFIC_VARIANT_VISUAL_NOTES = {
     "azuki_tcg_observation:tournament-winner-photo-20260710-001": (
         "User-supplied Yojin card photo with a reflective star treatment and a large black WINNER stamp across the lower-right illustration; tournament context beyond the visible treatment is not established by the image."
     ),
+    "azuki_tcg_observation:tournament-winner-photo-20260710-002": (
+        "User-supplied Serene Fist, Misaki card photo with a reflective star treatment, curling water-dragon composition, and a large gold WINNER stamp; tournament context beyond the visible treatment is not established by the image."
+    ),
 }
 
 NOT_CLAIMING = [

@@ -4,10 +4,10 @@
   "source_catalog": "web/public/catalogs/azuki-tcg.json",
   "scope": "Every image-bearing row in the 2026-07-10 Cairn Azuki UI catalog.",
   "counts": {
-    "reviewed_images": 338,
+    "reviewed_images": 339,
     "official_gallery_images": 237,
     "alpha_master_sheet_images": 100,
-    "user_observation_images": 1
+    "user_observation_images": 2
   },
   "method_boundary": "Contact-sheet review supports high-level subjects, setting cues, motifs, and variant notes. It is not pixel-forensic review and does not establish canon, print identity, authenticity, condition, or possession.",
   "rows": [
@@ -4738,6 +4738,20 @@
       "image_sha256": "6d48141e27db990508f4d958c6e6e9f65c1dc19d59232be9ced0252f7cd90005",
       "image_bytes": 2225714,
       "review_batch": "observation_01",
+      "review_status": "reviewed_at_original_resolution",
+      "reviewer": "Codex",
+      "review_method": "Manual visual pass over the user-supplied image at original resolution.",
+      "authority_label": "card_art_observation"
+    },
+    {
+      "uid": "azuki_tcg_observation:tournament-winner-photo-20260710-002",
+      "card_id": "STT02-008",
+      "name": "Serene Fist, Misaki",
+      "source_entry_id": "tournament-winner-photo-20260710-002",
+      "image_ref": "assets/observations/serene-fist-misaki-tournament-winner-2026-07-10.png",
+      "image_sha256": "fd3015cfddfa4ced7f1f3cbb55e2e7618ee92c817906ababd9ff8879cdc15705",
+      "image_bytes": 1842451,
+      "review_batch": "observation_02",
       "review_status": "reviewed_at_original_resolution",
       "reviewer": "Codex",
       "review_method": "Manual visual pass over the user-supplied image at original resolution.",

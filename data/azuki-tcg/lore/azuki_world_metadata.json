@@ -4,7 +4,7 @@
     "lore_source_snapshot": "data/azuki-tcg/source-snapshots/azuki_official_lore_sources_2026-07-10.json",
     "lore_source_sha256": "eaad3f04b0cb2ba15078c4797abd4ceca49feb82ed53d4b860cff75e5be7d905",
     "visual_review_snapshot": "data/azuki-tcg/source-snapshots/azuki_card_art_visual_review_2026-07-10.json",
-    "visual_review_sha256": "09d9e7692f531c751ac27116960da4fe8da49870da9888503ada0d13f17b24a5",
+    "visual_review_sha256": "20cd45a759404a62ed2cfbe06ef0db0f646fdb4a039ed6df0d94ed00261d96ab",
     "official_gallery_release": "data/azuki-tcg/releases/azuki_tcg_official_gallery.json",
     "official_gallery_sha256": "8ca6726f313c8b46d0f13fd5dab8b593d108d0abb1d02df634458dcb7627f249",
     "alpha_master_sheet_release": "data/azuki-tcg/releases/azuki_tcg_alpha_master_sheet.json",
@@ -1214,8 +1214,8 @@
     "official_world_sources": 9,
     "world_claims": 34,
     "official_card_ids_enriched": 202,
-    "ui_variants_enriched": 340,
-    "image_rows_reviewed": 338,
+    "ui_variants_enriched": 341,
+    "image_rows_reviewed": 339,
     "official_subtype_terms": 85,
     "character_threads": 9
   },
@@ -21320,6 +21320,33 @@
       "visual_note": "Reviewed resource-symbol illustration for IKZ Token; strongest setting cue: dual-world-or-unclear.",
       "visual_note_authority": "card_art_observation",
       "visual_review": null
+    },
+    {
+      "uid": "azuki_tcg_observation:tournament-winner-photo-20260710-002",
+      "card_id": "STT02-008",
+      "source_entry_id": "tournament-winner-photo-20260710-002",
+      "image_ref": "assets/observations/serene-fist-misaki-tournament-winner-2026-07-10.png",
+      "variant_role": "user-observed-tournament-winner-treatment",
+      "setting_cue": {
+        "value": "fantasy-garden-coded",
+        "authority_label": "card_art_observation",
+        "confidence": "medium",
+        "note": "Elemental, feudal-fantasy, wilderness, shrine, or creature cues align with the official description of the Garden world."
+      },
+      "motifs": [
+        "character-or-creature-focus",
+        "elemental-domain",
+        "water-element"
+      ],
+      "visual_note": "User-supplied Serene Fist, Misaki card photo with a reflective star treatment, curling water-dragon composition, and a large gold WINNER stamp; tournament context beyond the visible treatment is not established by the image.",
+      "visual_note_authority": "card_art_observation",
+      "visual_review": {
+        "reviewed": "2026-07-10",
+        "review_batch": "observation_02",
+        "review_status": "reviewed_at_original_resolution",
+        "image_sha256": "fd3015cfddfa4ced7f1f3cbb55e2e7618ee92c817906ababd9ff8879cdc15705",
+        "authority_label": "card_art_observation"
+      }
     }
   ],
   "not_claiming": [

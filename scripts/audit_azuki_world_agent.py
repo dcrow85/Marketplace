@@ -71,6 +71,14 @@ def main() -> None:
         ),
         None,
     )
+    misaki_winner = next(
+        (
+            card
+            for card in cards
+            if card["uid"] == "azuki_tcg_observation:tournament-winner-photo-20260710-002"
+        ),
+        None,
+    )
 
     require(alley and garden and threshold, "one or more world-plane filters are empty")
     require(
@@ -96,6 +104,29 @@ def main() -> None:
     require(
         exact_card_name_in_call("show me the Yojin tournament winner card", cards) == "Yojin",
         "exact-name enforcement does not recognize Yojin",
+    )
+    require(misaki_winner is not None, "Misaki WINNER observation row is missing")
+    require(
+        misaki_winner["source_authority"] == "user_photo_observation_not_official_gallery_fact"
+        and misaki_winner["image_status"] == "user_photo_observation"
+        and misaki_winner["azuki_world"]["variant_role"] == "user-observed-tournament-winner-treatment",
+        "Misaki WINNER row lost its observation authority, image, or variant role",
+    )
+    require(
+        misaki_winner["authenticity_assertion"] == {
+            "status": "confirmed_real",
+            "authority_label": "user_assertion",
+            "catalog_disposition": "recorded_not_independently_verified",
+        },
+        "Misaki WINNER row lost the user-asserted authenticity boundary",
+    )
+    require(
+        "authenticity:user-confirmed[assertion]" in brief(misaki_winner, set_labels),
+        "Misaki agent brief lost the claimant-labelled authenticity status",
+    )
+    require(
+        exact_card_name_in_call("show Serene Fist, Misaki winner", cards) == "Serene Fist, Misaki",
+        "exact-name enforcement does not recognize Serene Fist, Misaki",
     )
     require("world-cue:" in brief(garden[0], set_labels), "agent brief lost observation labels")
 

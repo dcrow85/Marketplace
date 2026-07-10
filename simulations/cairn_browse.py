@@ -184,6 +184,7 @@ COMMENT_SYS = (
     " - 'world-cue:...' is a confidence-labelled observation from card art, not proof of a canon location.\n"
     " - 'thread:...' is a declared repeated-character thread. Read its attached authority before asserting identity.\n"
     " - 'motifs:...' are search tags grounded in card fields plus reviewed art; they are not story events.\n"
+    " - 'authenticity:user-confirmed[assertion]' records the user's own authenticity status; it is not independent verification by the image, model, catalogue, or official gallery.\n"
     "Call an official subtype a lore term or subtype, not a faction, unless an attached official source explicitly identifies it as one.\n"
     "Use supplied lore summaries and visual notes to speak in Azuki vocabulary while preserving those boundaries.\n"
     "Do NOT infer condition, foil presence, surface, centering, authenticity, price, or defects from these flags — condition is "
@@ -313,6 +314,8 @@ def brief(c: dict, setlabel: dict[str, str]) -> str:
         tags.append(f"thread:{world['character_thread']}")
     if world.get("motifs"):
         tags.append("motifs:" + ",".join(world["motifs"][:4]))
+    if (c.get("authenticity_assertion") or {}).get("status") == "confirmed_real":
+        tags.append("authenticity:user-confirmed[assertion]")
     tags.append("in-collection" if c["owned"] else "unowned")
     lore = world.get("lore_summary") or ""
     visual = world.get("visual_note") or ""
@@ -425,6 +428,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     elif f.get("deterministic_name_match") and len(pool) == 1:
         card = pool[0]
         observed = card.get("source_authority") == "user_photo_observation_not_official_gallery_fact"
+        user_confirmed = (card.get("authenticity_assertion") or {}).get("status") == "confirmed_real"
         c = {
             "commentary": (
                 f"Exact catalogue-name matching isolated {card.get('name_en') or card['uid']}"
@@ -433,7 +437,9 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             ),
             "picks": [card["uid"]],
             "caveat": (
-                "This is user-photo evidence linked to the official card identity; it does not establish official variant enumeration, tournament details, recipient, authenticity, condition, possession, or value."
+                "The user supplied a confirmed-real status; the catalogue records that claimant assertion without independently verifying authenticity. The photo also does not establish official variant enumeration, tournament details, recipient, condition, possession, or value."
+                if observed and user_confirmed
+                else "This is user-photo evidence linked to the official card identity; it does not establish official variant enumeration, tournament details, recipient, authenticity, condition, possession, or value."
                 if observed
                 else "Catalogue identity and source fields do not establish physical-card authenticity, condition, possession, or value."
             ),
