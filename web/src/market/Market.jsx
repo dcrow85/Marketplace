@@ -7,6 +7,7 @@ import { applyAgentFilter } from '../binder/agentFilter.js'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile } from './pile.js'
 import MarketFinds from './MarketFinds.jsx'
+import MiniCard from '../components/MiniCard.jsx'
 import CardZoom from './CardZoom.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
@@ -182,18 +183,15 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
             if (!c) return null
             const l = open.listings.find((x) => x.uid === p.uid)
             return (
-              <div key={p.uid} className="ofr-tile stl-tile">
-                {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                <span className="ofr-name">{c.name_en}</span>
-                <span className="mono ofr-sub">{p.mode === 'buy' ? `${askOf(p.uid)} USDC · ` : ''}{scanLabel(l?.witness)}</span>
-                <span className="ofr-acts">
+              <MiniCard key={p.uid} c={c}
+                sub={`${p.mode === 'buy' ? `${askOf(p.uid)} USDC · ` : ''}${scanLabel(l?.witness)}`}
+                actions={<span className="ofr-acts">
                   <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
                     onClick={() => toggleMode(pileKey, open.id, p.uid)}
                     title="flip between buying at the ask and trading for it">
                     {p.mode === 'buy' ? '$ buy' : '⇄ trade'}</button>
                   <button className="ofr-tradebtn stl-x" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back on their table">✕</button>
-                </span>
-              </div>
+                </span>} />
             )
           })}
         </div>
@@ -219,13 +217,8 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
         )}
         <div className="ofr-grid stl-give">
           {myCards.filter(({ c }) => hit(c) || give.has(c.uid)).slice(0, 60).map(({ c, e }) => (
-            <button key={c.uid} className={'ofr-tile' + (give.has(c.uid) ? ' sel' : '')}
-              onClick={() => setGive((pr) => { const n = new Set(pr); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })}>
-              {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-              <span className="ofr-name">{c.name_en}</span>
-              <span className="mono ofr-sub">{condStr(e)}{e.trade ? ' · ⇄' : ''}</span>
-              {give.has(c.uid) && <span className="ofr-check">✓</span>}
-            </button>
+            <MiniCard key={c.uid} c={c} sel={give.has(c.uid)} sub={condStr(e) + (e.trade ? ' · ⇄' : '')}
+              onTap={() => setGive((pr) => { const n = new Set(pr); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })} />
           ))}
           {!myCards.length && <div className="empty">Nothing marked Have — cash can carry the whole deal.</div>}
         </div>

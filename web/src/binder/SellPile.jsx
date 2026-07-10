@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { storeKeyFor, loadStore, saveStore, entryFor, condStr } from './collection.js'
 import { useCatalog } from '../lib/data.js'
 import { handleFor, avatarSVG } from '../identity.js'
+import MiniCard from '../components/MiniCard.jsx'
 
 // Your table: a consignment ledger, not a filter. Just what you're offering — asks,
 // condition, evidence status, totals. Buyers meet it in the market and offer against it.
@@ -65,17 +66,14 @@ export default function SellPile({ accountId, catalog }) {
         value={note} onChange={(e) => setNote(e.target.value)} />
       <div className="sp-tiles">
         {rows.map(({ c, e }) => (
-          <div key={c.uid} className="sp-tile">
-            {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-            {e.trade && <span className="sp-tradeflag">⇄ trade</span>}
-            <span className="sp-tname">{c.name_en || c.uid}{(e.copies || 1) > 1 ? ` ×${e.copies}` : ''}</span>
-            <span className="mono sp-tsub">{condStr(e)} · {(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}</span>
-            <span className="sp-task">
+          <MiniCard key={c.uid} c={c}
+            corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
+            sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
+            actions={<span className="sp-task">
               <span className="fpre">$</span>
               <input type="number" min="0" placeholder="ask"
                 value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
-            </span>
-          </div>
+            </span>} />
         ))}
       </div>
       <p className="sc-note dim">Asks are per copy. Buyers see this table in the market and make offers against it —
