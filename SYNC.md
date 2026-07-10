@@ -55,6 +55,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Tables ARE binder cells now (Crowley: buttons messy; "consistency
+  works with people's memory") — LIVE, verified IN-BROWSER again (preview restored via the base
+  Claude_Browser server; the ephemeral Claude_Preview one was what died).** Seller-table tiles rebuilt on the
+  binder's exact cell skeleton: seg bar ON TOP ([BUY · 2 | ⇄ TRADE] — same .stancebar/.seg classes as
+  Have/Want, same uppercase mono), full card art unobscured (tap = lightbox), binder caption below (cnum ·
+  name · scans left · ask right in the .cmeta slot). Pile state speaks binder: in-pile = the green s-have
+  ring + green meta + "✓ BUY" seg. The messy joined-pair buttons are gone from tables (they survive only in
+  the lightbox/focus rows); the sort control dresses as a binder .chip. The bench stays on My table (display
+  case) but market tables sit on paper like the binder's standard grid — resolving the caption-contrast issue
+  too. Verified light+dark in-browser: tap buy → ✓ BUY + ring + drawer count; sort chip; S/M/L scale applies
+  (shared .grid). Apex on the new bundle. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **Sort via Anko + hunting refolded (Crowley: sort didn't work; too much
   in front of the collection) — LIVE, both halves.** (1) The schema simply had no sort vocabulary — added a
   top-level `sort: price_desc | price_asc` to the filter JSON; on the table view Anko's sort re-orders the

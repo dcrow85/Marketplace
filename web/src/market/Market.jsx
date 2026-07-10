@@ -518,23 +518,35 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               {wantsTheyHave} of your wants{wantsOnly ? ' ✕' : ' →'}
             </button>
           )}
-          <button className={'mk-sortbtn' + (tableSort ? ' on' : '')}
+          <button className={'chip' + (tableSort ? ' on' : '')}
             onClick={() => setTableSort(tableSort === 'price_desc' ? 'price_asc' : tableSort === 'price_asc' ? null : 'price_desc')}
             title="sort by ask">price {tableSort === 'price_desc' ? '↓' : tableSort === 'price_asc' ? '↑' : '⇅'}</button>
         </div>
-        <div className="mk-tiles">
+        <div className="grid">
           {rows.map(({ l, c }) => {
             const p = inPile(open.id, c.uid)
             return (
-              <div key={c.uid} className={'ofr-tile' + (p ? ' sel' : '') + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}
-                role="button" tabIndex={0} title="tap the card to hold it up to the light"
-                onClick={() => setZoom({ c, l, sellerId: open.id })}>
-                {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
-                <span className="ofr-name">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span>
-                <span className="mono ofr-sub">{scanLabel(l.witness)}</span>
-                <PileButtons ask={l.ask} inPile={!!p} mode={p?.mode}
-                  onBuy={() => pickUp(open.id, c.uid, 'buy')}
-                  onTrade={() => pickUp(open.id, c.uid, 'trade')} />
+              <div key={c.uid} className={'cell' + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}>
+                <div className="stancebar">
+                  <button className={'seg sg-have' + (p?.mode === 'buy' ? ' on' : '')}
+                    title="into your pile at the ask — the deal sends when you finish the table"
+                    onClick={() => pickUp(open.id, c.uid, 'buy')}>{p?.mode === 'buy' ? '✓ buy' : `buy · ${l.ask}`}</button>
+                  <button className={'seg sg-want' + (p?.mode === 'trade' ? ' on' : '')}
+                    title="into your pile as a trade-for — you pick your side at settle"
+                    onClick={() => pickUp(open.id, c.uid, 'trade')}>{p?.mode === 'trade' ? '✓ trade' : '⇄ trade'}</button>
+                </div>
+                <div className={'card' + (p ? ' s-have' : '')} role="button" tabIndex={0} title="hold it up to the light"
+                  onClick={() => setZoom({ c, l, sellerId: open.id })}>
+                  <div className="face"><div className="ja">{c.name_en}</div></div>
+                  {c.image && <img src={c.image} alt={c.name_en} loading="lazy" decoding="async" />}
+                </div>
+                <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
+                  <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
+                  <div className="cap-sub">
+                    <span className="crom">{scanLabel(l.witness)}</span>
+                    <span className={'cmeta ' + (p ? 'm-have' : 'm-want')}>{l.ask} USDC</span>
+                  </div>
+                </div>
               </div>
             )
           })}
