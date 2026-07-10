@@ -55,6 +55,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **COLLECTOR PROFILES P1 (the brainstorm built, on the clean base) —
+  LIVE.** The unification thesis made real: a profile is the binder's public lens. (1) MY PAGE replaces "My
+  table": masthead (avatar · handle · editable table sign) + THE RECORD STRIP — facts computed from records,
+  never asserted ("11 held · ✓ 3 settled · ✓ every listing scanned · Gates 42/217"; green ONLY on recorded
+  facts) + THE FRONT PAGE (a bench pocket-page of up to 9 pinned cards — grails stand in until curated; a
+  MiniCard picker pins in tap order, `cairn-pins:` store) + your table (asks editable) + YOU'RE HUNTING
+  (wants, PUBLIC by Crowley's ruling — "the room can bring you deals"). SellPile retired, absorbed. (2)
+  SELLER PAGES become profiles: mock sellers gained `showcase` + `record` in market-sample.json; their market
+  page now opens with the record strip ("✓ 9 settled · ✓ every listing scanned") and THEIR front page above
+  the spread — same FrontPage component, public mode. Everything built as consumers of the refactor: MiniCard,
+  useCatalog/useBus, one stance reader — profiles added ~350 lines total across 4 small files (pins.js 20 ·
+  ProfileHeader 30 · FrontPage 70 · MyPage 130). P2 = publish (KV snapshot + /@handle + offers inbox, one
+  backend moment). Verified in-browser light+dark: pin flow (3 of 9, tap order), grail fallback, record math,
+  Completionist's page with receipts. Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **DE-FRANKENSTEINING PASS (Crowley: audit said mid-Frankenstein; "worth
   it in spades") — DONE, four commits, every room verified in-browser after each phase.** (A) One data layer:
   `lib/data.js` (useCatalog/useMarket/useByUid/fetchJson, module-cached — replaced 8 independent fetch+map

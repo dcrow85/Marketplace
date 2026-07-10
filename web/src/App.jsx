@@ -6,7 +6,7 @@ import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
-import SellPile from './binder/SellPile.jsx'
+import MyPage from './profile/MyPage.jsx'
 import Market from './market/Market.jsx'
 import Offers from './trade/Offers.jsx'
 import OfferComposer from './market/OfferComposer.jsx'
@@ -155,14 +155,14 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             <SizePicker />
             <div className="bsegs mono" role="tablist" aria-label="binder section">
               <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
-              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My table</button>
+              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My page</button>
               <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
             </div>
           </div>
         </div>
         {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
           onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }} />}
-        {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
+        {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} />}
         {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
           focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
       </main>

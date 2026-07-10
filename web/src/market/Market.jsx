@@ -8,6 +8,7 @@ import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile } from './pile.js'
 import MarketFinds from './MarketFinds.jsx'
 import SettlePage from './SettlePage.jsx'
+import FrontPage from '../profile/FrontPage.jsx'
 import CardZoom from './CardZoom.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
@@ -284,6 +285,16 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           <button className="ghost sm" onClick={() => { setSel(null); setWantsOnly(false) }}>← all tables</button>
         </div>
         {open.bio && <p className="mk-bio">{open.bio}</p>}
+        {(open.record || open.joined) && (
+          <div className="pf-record mono">
+            {open.record?.since && <span className="pf-stat">at the market since {open.record.since}</span>}
+            {open.record?.settled > 0 && <span className="pf-stat rec">{open.record.settled} settled</span>}
+            {witnessed > 0 && <span className={'pf-stat' + (witnessed === open.listings.length ? ' rec' : '')}>{witnessed === open.listings.length ? 'every listing scanned' : `${witnessed}/${open.listings.length} listings scanned`}</span>}
+          </div>
+        )}
+        {open.showcase?.length > 0 && (
+          <FrontPage uids={open.showcase} byUid={byUid} own={false} />
+        )}
         <div className="mk-meter mono">
           <span>{open.listings.length} listed · {total} USDC asked</span>
           <span className={witnessed === open.listings.length ? 'mk-wit ok' : witnessed ? '' : 'mk-wit none'}>

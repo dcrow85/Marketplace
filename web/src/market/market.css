@@ -299,3 +299,28 @@ button.minicard { cursor: pointer; }
 .minicard.sel { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink); }
 .minicard-check { position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 11px; display: flex; align-items: center; justify-content: center; }
 .minicard .ofr-acts { padding: 2px 7px 0; }
+
+/* ---- the collector profile: masthead, front page, hunt ---- */
+.pf { display: flex; flex-direction: column; gap: 16px; }
+.pf-head { display: flex; align-items: flex-start; gap: 14px; }
+.pf-av svg { border-radius: 10px; }
+.pf-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.pf-handle { font-size: 19px; font-weight: 650; color: var(--ink); letter-spacing: -.01em; }
+.pf-addr { font-size: 11px; font-weight: 400; }
+.pf-sign { width: 100%; max-width: 560px; font-size: 13.5px; color: var(--ink); background: transparent; border: 0; border-bottom: 0.5px dashed var(--rule); padding: 3px 1px 6px; outline: none; }
+.pf-sign:focus { border-bottom-color: var(--ink); border-bottom-style: solid; }
+.pf-signro { font-size: 13.5px; color: var(--ink2); }
+.pf-record { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: var(--dim); }
+.pf-stat.rec { color: var(--have); }
+.pf-stat.rec::before { content: '✓ '; }
+.pf-front { display: flex; flex-direction: column; gap: 8px; }
+.pf-fronthead, .pf-sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.pf-page { max-width: min(100%, calc(var(--tilescale, 1) * 620px)); }
+.pf-quiet { border-style: dotted; opacity: .35; }
+.pf-picker { max-width: 640px; }
+.pf-pickhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 10px; border-bottom: 0.5px solid var(--rule); flex: none; }
+.pf-picktitle { font-size: 13.5px; margin-top: 3px; }
+.pf-pickgrid { overflow-y: auto; padding: 12px 18px 18px; }
+.pf-huntrow { padding: 2px 0; }
+.pf-huntmore { align-self: center; }
+.pf-page { margin-inline: 0; }
