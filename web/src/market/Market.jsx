@@ -611,7 +611,10 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               }, 0)
               if (!pileVal || !myTradeSum) return null
               const pct = Math.round((myTradeSum / pileVal) * 100)
-              return <span className="mono mk-ckwhisper" title="their side by asks and settlements, yours by settlements only — history, not an appraisal">⇄ your tradeables&rsquo; settlements ~{myTradeSum} USDC · ~{pct}% of this pile</span>
+              return <span className="mono mk-ckwhisper" title="their side by asks and settlements, yours by settlements only — history, not an appraisal">
+                {pct >= 100
+                  ? `⇄ your tradeables (~${myTradeSum} USDC on record) more than cover this pile (~${pileVal})`
+                  : `⇄ your tradeables ~${myTradeSum} USDC on record · covers ~${pct}% of this pile`}</span>
             })()}
             <span className="mk-ckacts">
               {pile.every((p) => p.mode === 'buy') && buysSum > 0 && (

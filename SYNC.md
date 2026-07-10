@@ -55,6 +55,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-09 · Claude — **Three cleanups (Crowley) — LIVE, in-browser verified.** (1) The drawer
+  whisper stops saying "~1543% of this pile": past 100% it reads "your tradeables (~1713 USDC on record) more
+  than cover this pile (~111)". (2) "Start a trade" retired from the trade panel — offers are the front door;
+  the escrow panel is now [Escrow · #load] with an honest empty line ("when real settlements go on-chain,
+  they'll open here on their own"); CreateTrade + its card-art hook deleted, `nextMove` narration preserved.
+  (3) THE BINDER ASK BUG: input text now clears on send, and the blank-screen case is diagnosed + rescued —
+  it was Anko's filter colliding with the DEFAULT release-family filter (agent finds 122 alpha cards, Gates
+  filter hides all of them → empty grid). New empty state: "Anko found 122, but your section filters hide
+  them · [show them]" — one tap clears local filters and the 120 appear (verified exactly this in preview).
+  Surface lane. No ask.
 - `[passive]` 2026-07-09 · Claude — **S/M/L now reaches the whole binder (Crowley: toggles dead on the main
   binder) — LIVE.** Two holes: `.grid.gallery` outranked the scale override (specificity), and the DEFAULT
   Pages layout is a fixed 3×3 that never read the var. Gallery now scales its minmax; Pages scales the PAGE

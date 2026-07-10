@@ -994,7 +994,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   const refineCount = channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
-  const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ('') } }
+  const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ(''); setQuery('') } }
   const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
@@ -1100,7 +1100,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         </div>
       )}
       <section>
-        {!rows.length ? <div className="empty">no cards match.</div> : view === 'pages' ? (
+        {!rows.length ? (
+          agentActive && agentRes.data.n_survivors > 0
+            ? <div className="empty">{agentName} found {agentRes.data.n_survivors}, but your section filters hide them.{' '}
+                <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setStanceF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }}>show them</button></div>
+            : <div className="empty">no cards match.</div>
+        ) : view === 'pages' ? (
           <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setField={setField} askIndex={askIndex} onQuickSell={setSellPop} />
         ) : grouped ? (
           SETS.filter((s) => groups[s.id]).map((s) => (

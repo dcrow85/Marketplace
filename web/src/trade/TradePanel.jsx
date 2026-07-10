@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useEscrowWallet } from './useEscrowWallet.js'
-import { OUTCOME, VALUE_CAP_USDC, addrUrl } from '../chain/config.js'
+import { OUTCOME, addrUrl } from '../chain/config.js'
 import {
-  getTrade, usdcBalance, usdcAllowance, fromUsdc, toUsdc, hashText,
-  approveUsdc, createTrade, markShipped, confirmReceived, openInspection,
+  getTrade, fromUsdc, hashText,
+  markShipped, confirmReceived, openInspection,
   acceptTrade, settleByTimeout, disputeTrade, resolveTrade, confirmReturnCustody, cancelBeforeShip,
 } from '../chain/escrow.js'
 import { putRecord, getRecord } from './records.js'
@@ -25,31 +25,24 @@ function useAction() {
 
 export default function TradePanel({ openTradeId }) {
   const { address, ready, getWalletClient } = useEscrowWallet()
-  const [view, setView] = useState('create') // 'create' | 'detail'
   const [tradeId, setTradeId] = useState(null)
   useEffect(() => { // the ambient line can open a specific trade
-    if (openTradeId) { setTradeId(openTradeId); setView('detail') } // eslint-disable-line react-hooks/set-state-in-effect
+    if (openTradeId) setTradeId(openTradeId) // eslint-disable-line react-hooks/set-state-in-effect
   }, [openTradeId])
 
   return (
     <div className="tp">
       <div className="tp-head">
         <div className="tp-tabs">
-          <button className={view === 'create' ? 'on' : ''} onClick={() => setView('create')}>New trade</button>
-          <button className={view === 'detail' ? 'on' : ''} onClick={() => setView('detail')} disabled={!tradeId}>
-            {tradeId ? `Trade #${tradeId}` : 'Trade'}
-          </button>
-          <LoadTrade onLoad={(id) => { setTradeId(id); setView('detail') }} />
+          <button className="on" disabled>{tradeId ? `Trade #${tradeId}` : 'Escrow'}</button>
+          <LoadTrade onLoad={(id) => setTradeId(id)} />
         </div>
         <span className="tp-who mono">
           {ready ? <>signer <a href={addrUrl(address)} target="_blank" rel="noreferrer">{short(address)}</a></>
             : <span className="dim">no signer — sign in to act (reads work)</span>}
         </span>
       </div>
-      {view === 'create'
-        ? <CreateTrade address={address} ready={ready} getWalletClient={getWalletClient}
-            onCreated={(id) => { setTradeId(id); setView('detail') }} />
-        : <TradeDetail tradeId={tradeId} address={address} ready={ready} getWalletClient={getWalletClient} />}
+      <TradeDetail tradeId={tradeId} address={address} ready={ready} getWalletClient={getWalletClient} />
     </div>
   )
 }
@@ -65,124 +58,6 @@ function LoadTrade({ onLoad }) {
 }
 
 // ---- Create / Decide-to-fund ----
-// Even the money form leads with the card: match the free-text card field against the
-// catalog and show the art when it resolves (by number first, then name).
-let _artCatalog = null
-function useCardArt(cardText) {
-  const [cards, setCards] = useState(_artCatalog)
-  useEffect(() => {
-    if (_artCatalog) return
-    fetch((import.meta.env.BASE_URL || '/') + 'catalogs/azuki-tcg.json')
-      .then((r) => r.json()).then((d) => { _artCatalog = d.cards || []; setCards(_artCatalog) }).catch(() => {})
-  }, [])
-  return useMemo(() => {
-    if (!cards || !cardText) return null
-    const t = cardText.toLowerCase()
-    const num = (t.match(/[a-z]{3}\d{2}-\d{3}[a-z]?/i) || [])[0]
-    let hit = num ? cards.find((c) => (c.num || '').toLowerCase() === num) : null
-    if (!hit) hit = cards.find((c) => c.name_en && t.includes(c.name_en.toLowerCase()))
-    return hit?.image || null
-  }, [cards, cardText])
-}
-
-function CreateTrade({ address, ready, getWalletClient, onCreated }) {
-  const [f, setF] = useState({ card: '', seller: '', arbiter: '', amount: '', condition: 'Near Mint', days: '7' })
-  const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }))
-  const [bal, setBal] = useState(null)
-  const art = useCardArt(f.card)
-  const [recWarn, setRecWarn] = useState(null)
-  const { pending, error, run } = useAction()
-
-  useEffect(() => {
-    let live = true
-    if (address) usdcBalance(address).then((b) => live && setBal(b)).catch(() => {})
-    return () => { live = false }
-  }, [address])
-
-  const amt = Number(f.amount || 0)
-  const overCap = amt > VALUE_CAP_USDC
-  const lowBal = bal != null && amt > 0 && toUsdc(f.amount) > bal
-  const badAddr = (a) => a && !/^0x[a-fA-F0-9]{40}$/.test(a)
-  const guide = !f.card ? 'Step 1: name the card, exactly as you and the seller agreed.'
-    : (!f.seller || badAddr(f.seller)) ? 'Step 2: the seller\u2019s wallet address, exactly as they gave it to you.'
-    : (!f.arbiter || badAddr(f.arbiter)) ? 'Step 3: your arbiter. Someone who is neither of you and answers within a day or two.'
-    : !(amt > 0) ? 'Step 4: the amount you agreed, in USDC.'
-    : !ready ? 'Sign in to fund. Reads work without it; money needs a signer.'
-    : `Ready. Funding locks ${amt} USDC with the escrow until you accept or dispute. Expect two wallet confirmations: approve, then fund.`
-  const canSubmit = ready && f.card && f.seller && f.arbiter && amt > 0 && !overCap
-    && !badAddr(f.seller) && !badAddr(f.arbiter) && !eq(f.seller, address) && !eq(f.arbiter, address) && !eq(f.seller, f.arbiter)
-
-  const submit = async () => {
-    if (!canSubmit) return
-    try {
-      const wc = await getWalletClient()
-      const amountRaw = toUsdc(f.amount)
-      const allow = await usdcAllowance(address)
-      if (allow < amountRaw) await run('Approving USDC…', () => approveUsdc(wc, amountRaw))
-      const termsStr = JSON.stringify({ card: f.card, condition: f.condition, amount: f.amount, ...(f._lot ? { lot: f._lot } : {}) })
-      const termsHash = hashText(termsStr)
-      const cardRefHash = hashText(f.card)
-      const { tradeId } = await run('Funding escrow…', () => createTrade(wc, {
-        seller: f.seller, arbiter: f.arbiter, amountRaw, cardRefHash, termsHash,
-        inspectionWindow: Math.max(1, Number(f.days)) * 86400,
-      }))
-      // Persist the readable record so the seller + arbiter can read AND verify the terms.
-      const saved = (await Promise.all([putRecord(termsStr), putRecord(f.card)])).every(Boolean)
-      if (!saved) setRecWarn('Terms are on-chain, but the readable copy didn’t save — the arbiter won’t see them. Retry from the trade.')
-      if (tradeId) onCreated(tradeId)
-    } catch { /* surfaced by run() */ }
-  }
-
-  return (
-    <div className="decide">
-      <div className="decide-card">
-        <div className="dc-frame">{art
-          ? <img className="dc-img" src={art} alt="" />
-          : <div className="dc-art mono">{f.card || 'the card'}</div>}</div>
-      </div>
-      <div className="decide-body">
-        <div className="ek">Decide</div>
-        <h3>{amt > 0 && f.seller ? <>Buy <b>{f.card || 'this card'}</b> for <b>{amt} USDC</b>?</> : 'Start a trade'}</h3>
-        <p className="guide">{guide}</p>
-
-        <label>Card</label>
-        <input value={f.card} onChange={set('card')} placeholder="e.g. Penny · AZK01-001" />
-        <div className="row2">
-          <div><label>Condition claim <span className="tag judged">judged</span></label>
-            <input value={f.condition} onChange={set('condition')} /></div>
-          <div><label>Amount (USDC) <span className="dim">cap {VALUE_CAP_USDC}</span></label>
-            <input className="mono" value={f.amount} onChange={set('amount')} placeholder="0" inputMode="decimal" /></div>
-        </div>
-        <label>Seller wallet</label>
-        <input className="mono" value={f.seller} onChange={set('seller')} placeholder="0x… (seller wallet)" />
-        <div className="row2">
-          <div><label>Arbiter wallet</label>
-            <input className="mono" value={f.arbiter} onChange={set('arbiter')} placeholder="0x… (neutral)" /></div>
-          <div><label>Inspection window</label>
-            <input className="mono" value={f.days} onChange={set('days')} /><span className="suffix">days</span></div>
-        </div>
-
-        {overCap && <p className="warn">Over the {VALUE_CAP_USDC} USDC pilot cap.</p>}
-        {lowBal && <p className="warn">Your USDC balance is below this amount.</p>}
-        {eq(f.arbiter, address) && <p className="warn">The arbiter can&rsquo;t be you — you&rsquo;re the buyer (G5.1).</p>}
-        {bal != null && <p className="dim mono">your USDC: {fromUsdc(bal)}</p>}
-        {bal != null && bal === 0n && <p className="dim">No test USDC yet: faucet.circle.com, pick Arbitrum Sepolia. Gas needs a little Sepolia ETH too.</p>}
-
-        <p className="boundary">Cairn escrows the funds and records the claim <span className="tag enforced">enforced</span>.
-          It can&rsquo;t confirm the card is authentic or its grade — a witness, not proof.</p>
-
-        <button className="fund" disabled={!canSubmit || !!pending} onClick={submit}>
-          {pending || (ready ? 'Fund escrow' : 'Sign in to fund')}
-        </button>
-        {error && <p className="err mono">{error}</p>}
-        {recWarn && <p className="warn">{recWarn}</p>}
-      </div>
-    </div>
-  )
-}
-
-// The state machine narrates: whose move it is, what happens on silence. The chain
-// enforces this; the surface says it out loud so nobody has to infer it from buttons.
 function nextMove(t, role, tradeId) {
   const s = t.stateName
   const when = (secs) => { try { return new Date(Number(secs) * 1000).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }) } catch { return 'the deadline' } }
@@ -212,6 +87,7 @@ function nextMove(t, role, tradeId) {
 }
 
 // ---- Detail / status + role-aware actions ----
+
 function TradeDetail({ tradeId, address, ready, getWalletClient }) {
   const [t, setT] = useState(null)
   const [loadErr, setLoadErr] = useState(null)
@@ -227,7 +103,8 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
     refresh() // eslint-disable-line react-hooks/set-state-in-effect -- load trade state on mount / id change
   }, [refresh])
 
-  if (!tradeId) return <div className="empty">Load a trade by its number, or start one under New trade. If a trade needs you, the line above your binder says so.</div>
+  if (!tradeId) return <div className="empty">Escrow trades live here — load one by its number, or arrive from the ambient
+    line when one needs you. Deals start in the market; when real settlements go on-chain, they&rsquo;ll open here on their own.</div>
   if (loadErr) return <div className="empty">Couldn&rsquo;t load trade #{tradeId} ({loadErr})</div>
   if (!t) return <div className="empty">Loading trade #{tradeId}…</div>
 
