@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
-import { catalogUrl } from '../binder/collection.js'
 import { offersKeyFor, loadOffers, withdrawOffer, clearOffer, OFFER_SETTLING } from './offers.js'
 import { acceptIncoming, declineIncoming } from '../market/mockAgents.js'
+import { useCatalog, useByUid } from '../lib/data.js'
+import { useBus } from '../lib/store.js'
 import { handleFor } from '../identity.js'
 
 // The offers ledger: every conversation, both directions, counters chained. An
@@ -11,23 +11,10 @@ const FLOW = ['accepted', 'escrow_locked', 'in_transit', 'delivered', 'settled']
 const FLOW_LABEL = { accepted: 'accepted', escrow_locked: 'escrow', in_transit: 'in transit', delivered: 'delivered', settled: 'settled' }
 
 export default function Offers({ accountId, catalog, onCounter }) {
-  const [data, setData] = useState(null)
-  const [rev, setRev] = useState(0)
+  const data = useCatalog(catalog)
   const key = offersKeyFor(catalog.id, accountId)
-
-  useEffect(() => {
-    fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch(() => {})
-  }, [catalog])
-
-  useEffect(() => {
-    const bump = () => setRev((r) => r + 1)
-    window.addEventListener('cairn-offers', bump)
-    window.addEventListener('cairn-store', bump)
-    return () => { window.removeEventListener('cairn-offers', bump); window.removeEventListener('cairn-store', bump) }
-  }, [])
-
-  const offers = useMemo(() => loadOffers(key), [key, rev]) // eslint-disable-line react-hooks/exhaustive-deps -- rev is the invalidation signal
-  const byUid = useMemo(() => new Map((data?.cards || []).map((c) => [c.uid, c])), [data])
+  const offers = useBus(() => loadOffers(key), [key])
+  const byUid = useByUid(data)
 
   if (!offers.length || !data) return null
   const chip = (x, i) => {

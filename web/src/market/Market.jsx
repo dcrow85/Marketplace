@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
-import { storeKeyFor, loadStore, catalogUrl, entryFor, condStr } from '../binder/collection.js'
+import { storeKeyFor, loadStore, entryFor, condStr } from '../binder/collection.js'
+import { useCatalog, useMarket, useByUid } from '../lib/data.js'
+import { useBus } from '../lib/store.js'
 import { loadHidden, hiddenKeyFor, loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
@@ -13,7 +15,6 @@ import './market.css'
 // drop them on YOUR PILE tagged buy or trade, and finish each table with ONE deal —
 // buys, trade-fors, your side, and a single cash line, sent as one offer. Everything
 // shown is a CLAIM; the witness counts say what's recorded behind it.
-const MARKET_URL = (import.meta.env.BASE_URL || '/') + 'market-sample.json'
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 
 function Avatar({ seed, size = 26 }) {
@@ -254,8 +255,8 @@ function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, p
 }
 
 export default function Market({ accountId, agentName = 'Anko', catalog, focusUid, onClearFocus }) {
-  const [data, setData] = useState(null)
-  const [mkt, setMkt] = useState(null)
+  const data = useCatalog(catalog)
+  const mkt = useMarket(catalog)
   const [sel, setSel] = useState(null) // seller id whose table is open
   const [wantsOnly, setWantsOnly] = useState(false)
   const [settling, setSettling] = useState(false) // the Settle page, its own room
@@ -266,20 +267,10 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
   const [tableSort, setTableSort] = useState(null) // 'price_desc' | 'price_asc' | null
   const [huntOpen, setHuntOpen] = useState(false)
-  const [mockRev, setMockRev] = useState(0)
-  const [pileRev, setPileRev] = useState(0)
-  useEffect(() => {
-    const bump = () => setMockRev((r) => r + 1)
-    const pbump = () => setPileRev((r) => r + 1)
-    window.addEventListener('cairn-mock', bump)
-    window.addEventListener('cairn-store', bump)
-    window.addEventListener('cairn-pile', pbump)
-    return () => { window.removeEventListener('cairn-mock', bump); window.removeEventListener('cairn-store', bump); window.removeEventListener('cairn-pile', pbump) }
-  }, [])
   const storeKey = storeKeyFor(catalog.id, accountId)
   const pileKey = pileKeyFor(catalog.id, accountId)
-  const store = useMemo(() => loadStore(storeKey), [storeKey, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
-  const piles = useMemo(() => loadPiles(pileKey), [pileKey, pileRev]) // eslint-disable-line react-hooks/exhaustive-deps -- pileRev is the invalidation signal
+  const store = useBus(() => loadStore(storeKey), [storeKey])
+  const piles = useBus(() => loadPiles(pileKey), [pileKey])
 
   useEffect(() => { setSettling(false); setHuntOpen(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle + hunting fold
   useEffect(() => {
@@ -295,21 +286,15 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     }
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [ares, agentName])
-  useEffect(() => {
-    /* eslint-disable react-hooks/set-state-in-effect -- reset + hydrate on catalog switch */
-    setData(null); setMkt(null); setSel(null)
-    fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch(() => {})
-    fetch(MARKET_URL).then((r) => r.json()).then(setMkt).catch(() => {})
-    /* eslint-enable react-hooks/set-state-in-effect */
-  }, [catalog, storeKey])
+  useEffect(() => { setSel(null) }, [catalog]) // eslint-disable-line react-hooks/set-state-in-effect -- new catalog, no table open
 
-  const byUid = useMemo(() => new Map((data?.cards || []).map((c) => [c.uid, c])), [data])
-  const sellers = useMemo(() => {
-    if (!(mkt && mkt.catalog_id === catalog.id)) return []
+  const byUid = useByUid(data)
+  const sellers = useBus(() => {
+    if (!mkt) return []
     const hidden = loadHidden(hiddenKeyFor(catalog.id, accountId))
     const gone = new Set(hidden.map((h) => h.seller + '|' + h.uid))
     return mkt.sellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
-  }, [mkt, catalog, accountId, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
+  }, [mkt, catalog, accountId])
   const myWants = useMemo(() => {
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'want').map((c) => c.uid))
@@ -318,7 +303,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'have').map((c) => c.uid))
   }, [data, store])
-  const salesAll = useMemo(() => ({ ...(mkt?.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }), [mkt, catalog, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
+  const salesAll = useBus(() => ({ ...(mkt?.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }), [mkt, catalog])
   const myTradeSum = useMemo(() => {
     if (!data) return 0
     return data.cards.reduce((t, c) => {

@@ -1,21 +1,19 @@
 import { useEffect, useMemo, useState } from 'react'
-import { storeKeyFor, loadStore, saveStore, catalogUrl, entryFor, condStr } from './collection.js'
+import { storeKeyFor, loadStore, saveStore, entryFor, condStr } from './collection.js'
+import { useCatalog } from '../lib/data.js'
 import { handleFor, avatarSVG } from '../identity.js'
 
 // Your table: a consignment ledger, not a filter. Just what you're offering — asks,
 // condition, evidence status, totals. Buyers meet it in the market and offer against it.
 export default function SellPile({ accountId, catalog }) {
-  const [data, setData] = useState(null)
+  const data = useCatalog(catalog)
   const [store, setStore] = useState({})
   const storeKey = storeKeyFor(catalog.id, accountId)
 
   useEffect(() => {
-    /* eslint-disable react-hooks/set-state-in-effect -- reset + hydrate on catalog switch */
-    setData(null)
+    /* eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate per account */
     setStore(loadStore(storeKey))
-    fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch(() => {})
-    /* eslint-enable react-hooks/set-state-in-effect */
-  }, [catalog, storeKey])
+  }, [storeKey])
 
   const rows = useMemo(() => {
     if (!data) return []

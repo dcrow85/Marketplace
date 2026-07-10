@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { usePrivy } from '@privy-io/react-auth'
 import { handleFor, avatarSVG } from './identity.js'
 import MeetAnko from './agent/MeetAnko.jsx'
@@ -13,6 +13,8 @@ import OfferComposer from './market/OfferComposer.jsx'
 import { offersKeyFor, loadOffers, OFFER_OPEN, OFFER_SETTLING } from './trade/offers.js'
 import { startMockMarket } from './market/mockAgents.js'
 import { startChainRail } from './chain/localRehearsal.js'
+import { fetchJson } from './lib/data.js'
+import { useBus } from './lib/store.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -99,22 +101,15 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
-  const [swapRev, setSwapRev] = useState(0)
   const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
-  useEffect(() => {
-    const bump = () => setSwapRev((r) => r + 1)
-    window.addEventListener('cairn-offers', bump)
-    window.addEventListener('cairn-store', bump)
-    return () => { window.removeEventListener('cairn-offers', bump); window.removeEventListener('cairn-store', bump) }
-  }, [])
   useEffect(() => {
     let stop = () => {}
     let live = true
-    const base = import.meta.env.BASE_URL || '/'
     Promise.all([
-      fetch(base + (catalog.path || 'catalog-sample.json')).then((r) => r.json()),
-      fetch(base + 'market-sample.json').then((r) => r.json()).catch(() => null),
+      fetchJson(catalog.path || 'catalog-sample.json'),
+      fetchJson('market-sample.json'),
     ]).then(([d, m]) => {
+      if (!d) return
       if (!live) return
       const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
       const asks = new Map()
@@ -125,12 +120,12 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
     }).catch(() => {})
     return () => { live = false; stop() }
   }, [catalog, accountId])
-  const { swapN, needsYou } = useMemo(() => {
+  const { swapN, needsYou } = useBus(() => {
     const offers = loadOffers(offersKeyFor(catalog.id, accountId))
     const inOpen = offers.filter((o) => o.dir === 'in' && OFFER_OPEN.includes(o.state)).length
     const settling = offers.filter((o) => OFFER_SETTLING.includes(o.state)).length
     return { swapN: inOpen + settling, needsYou: inOpen > 0 }
-  }, [catalog, accountId, swapRev]) // eslint-disable-line react-hooks/exhaustive-deps -- swapRev is the invalidation signal
+  }, [catalog, accountId])
   return (
     <div className="app">
       <nav className="nav">

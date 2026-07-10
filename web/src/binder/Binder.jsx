@@ -3,6 +3,7 @@ import ScanCards from '../scan/ScanCards.jsx'
 import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
+import { entryFor as effStance } from './collection.js'
 import { handleFor } from '../identity.js'
 import { applyAgentFilter } from './agentFilter.js'
 import { pileKeyFor, addToPile } from '../market/pile.js'
@@ -35,18 +36,7 @@ function retryImg(e, src) {
   setTimeout(() => { t.src = src + (src.includes('?') ? '&' : '?') + 'r=' + n }, 500 * n)
 }
 
-function effStance(c, store) {
-  const u = store[c.uid] || {}
-  let st = u.stance != null ? u.stance : c.stance != null ? c.stance : c.owned ? 'have' : 'none'
-  let extra = u.extra !== undefined ? !!u.extra : c.stance === 'extra'
-  if (st === 'extra') { st = 'have'; extra = true }
-  if (st === 'wish') st = 'want'
-  if (!st) st = 'none'
-  const trade = u.trade !== undefined ? !!u.trade : extra
-  const sell = u.sell !== undefined ? !!u.sell : !!c.sell
-  const grail = u.grail !== undefined ? !!u.grail : !!c.grail
-  return { stance: st, extra, trade, sell, grail }
-}
+
 function wantActive(c, store) {
   const u = store[c.uid] || {}
   const cond = u.want_cond !== undefined ? u.want_cond : c.want_cond || 'any'
