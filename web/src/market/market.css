@@ -315,9 +315,17 @@ button.minicard { cursor: pointer; }
 .pf-stat.rec::before { content: '✓ '; }
 .pf-front { display: flex; flex-direction: column; gap: 8px; }
 .pf-fronthead, .pf-sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-.pf-page { max-width: min(100%, calc(var(--tilescale, 1) * 620px)); }
+/* the bench fills whatever screen it's on — pockets are fractional, so the nine
+   scale with the page instead of hiding at a fixed width */
+.pf-page { max-width: 100%; gap: clamp(8px, 1.6vw, 18px); padding: clamp(12px, 2vw, 22px); }
 .pf-quiet { border-style: dotted; opacity: .35; }
-.pf-picker { max-width: 640px; }
+.pf-picker { max-width: min(1020px, 94vw); }
+.pf-pickbar { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; padding: 12px 18px 0; flex: none; }
+.pf-pickbar input { flex: 1; min-width: 170px; font: inherit; font-size: 12.5px; padding: 6px 10px; border: 0.5px solid var(--rule); border-radius: 7px; background: transparent; color: var(--ink); }
+.pf-pickbar .chip { cursor: pointer; background: transparent; }
+.pf-pickbar .chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.pf-pickhead .qs-done { width: auto; flex: none; padding: 8px 18px; }
+.pf-pickgrid { grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 15vw, 170px), 1fr)); }
 .pf-pickhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 10px; border-bottom: 0.5px solid var(--rule); flex: none; }
 .pf-picktitle { font-size: 13.5px; margin-top: 3px; }
 .pf-pickgrid { overflow-y: auto; padding: 12px 18px 18px; }
@@ -330,10 +338,11 @@ button.minicard { cursor: pointer; }
 .mk-livetag { color: var(--agent, #4a6fa5); font-size: 10.5px; letter-spacing: 0.04em; }
 .pf-pubrow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: 2px 0 16px; font-size: 12px; }
 .pf-pubrow .pf-live { color: var(--agent, #4a6fa5); }
-.pf-pubbtn { font-size: 12.5px; padding: 6px 14px; }
+.pf-pubrow .pf-pubbtn { width: auto; flex: none; font-size: 12.5px; padding: 8px 16px; }
 .pf-puberr { color: var(--signal); font-size: 11.5px; }
 .ofl-live { color: var(--agent, #4a6fa5); }
 .ofl-liveleg { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; font-size: 11.5px; margin-top: 6px; padding: 7px 9px; border: 0.5px dashed var(--rule); border-radius: 7px; }
+.ofl-liveleg button { width: auto; flex: none; }
 .ofl-fund { display: inline-flex; align-items: center; gap: 6px; }
 .ofl-fund input { width: 230px; max-width: 46vw; font: inherit; font-size: 11px; padding: 4px 7px; border: 0.5px solid var(--rule); border-radius: 5px; background: transparent; color: var(--ink); }
 .ofl-err { color: var(--signal); font-size: 11px; }

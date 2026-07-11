@@ -1,13 +1,40 @@
 // The front page: a binder pocket page (the bench, 3×3) holding the nine cards this
 // collector leads with. Owner mode offers the empty pockets as invitations; public
 // mode shows only what's pinned. Reuses the pocket-page styles — it IS a binder page.
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import MiniCard from '../components/MiniCard.jsx'
+import { RARITY_LADDER } from '../binder/helpers.jsx'
+
+const PICK_SORTS = [
+  ['binder', 'binder order'],
+  ['rarity', 'chase first'],
+  ['name', 'name A–Z'],
+  ['num', 'by number'],
+  ['pinned', 'pinned first'],
+]
 
 export default function FrontPage({ uids, byUid, own, myHaves, onTogglePin, grailFallback }) {
   const [picking, setPicking] = useState(false)
+  const [q, setQ] = useState('')
+  const [sort, setSort] = useState('binder')
   const shown = uids.length ? uids : (grailFallback || [])
   const cards = shown.map((u) => byUid.get(u)).filter(Boolean).slice(0, 9)
+
+  const pickRows = useMemo(() => {
+    let rows = myHaves || []
+    const s = q.trim().toLowerCase()
+    if (s) rows = rows.filter((c) => ((c.name_en || '') + ' ' + (c.num || '')).toLowerCase().includes(s))
+    const rIdx = (c) => { const i = RARITY_LADDER.indexOf(c.rarity); return i === -1 ? -1 : i }
+    if (sort === 'rarity') rows = [...rows].sort((a, b) => rIdx(b) - rIdx(a))
+    else if (sort === 'name') rows = [...rows].sort((a, b) => (a.name_en || '').localeCompare(b.name_en || ''))
+    else if (sort === 'num') rows = [...rows].sort((a, b) => String(a.num || '').localeCompare(String(b.num || ''), undefined, { numeric: true }))
+    else if (sort === 'pinned') rows = [...rows].sort((a, b) => {
+      const ia = uids.indexOf(a.uid), ib = uids.indexOf(b.uid)
+      return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib)
+    })
+    return rows
+  }, [myHaves, q, sort, uids])
+
   if (!own && !cards.length) return null
 
   return (
@@ -48,13 +75,20 @@ export default function FrontPage({ uids, byUid, own, myHaves, onTogglePin, grai
               </div>
               <button className="primary qs-done" onClick={() => setPicking(false)}>done</button>
             </div>
+            <div className="pf-pickbar">
+              <input placeholder="search your haves — name or number…" value={q} onChange={(e) => setQ(e.target.value)} />
+              {PICK_SORTS.map(([k, label]) => (
+                <button key={k} className={'chip' + (sort === k ? ' on' : '')} onClick={() => setSort(k)}>{label}</button>
+              ))}
+            </div>
             <div className="ofr-grid pf-pickgrid">
-              {myHaves.map((c) => (
+              {pickRows.map((c) => (
                 <MiniCard key={c.uid} c={c} sel={uids.includes(c.uid)}
-                  sub={uids.includes(c.uid) ? `pinned · #${uids.indexOf(c.uid) + 1}` : null}
+                  sub={uids.includes(c.uid) ? `pinned · #${uids.indexOf(c.uid) + 1}` : (c.rarity || null)}
                   onTap={() => onTogglePin(c.uid)} />
               ))}
-              {!myHaves.length && <div className="empty">Mark cards as Have first — the front page draws from your binder.</div>}
+              {!pickRows.length && (myHaves || []).length > 0 && <div className="empty">Nothing matches — clear the search.</div>}
+              {!(myHaves || []).length && <div className="empty">Mark cards as Have first — the front page draws from your binder.</div>}
             </div>
           </div>
         </div>
