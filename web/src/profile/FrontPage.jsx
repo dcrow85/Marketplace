@@ -13,7 +13,7 @@ const PICK_SORTS = [
   ['pinned', 'pinned first'],
 ]
 
-export default function FrontPage({ uids, byUid, own, myHaves, onTogglePin, grailFallback }) {
+export default function FrontPage({ uids, byUid, own, myHaves, onTogglePin, grailFallback, onOpen }) {
   const [picking, setPicking] = useState(false)
   const [q, setQ] = useState('')
   const [sort, setSort] = useState('binder')
@@ -54,11 +54,13 @@ export default function FrontPage({ uids, byUid, own, myHaves, onTogglePin, grai
             if (!c) return own
               ? <button key={i} className="bv-pocket ghost" onClick={() => setPicking(true)}><span className="bv-gtxt">pin a card</span></button>
               : <div key={i} className="bv-pocket ghost pf-quiet" />
-            return (
-              <div key={c.uid} className="bv-pocket filled">
-                {c.image ? <img src={c.image} alt={c.name_en} loading="lazy" /> : <span className="bv-noimg">{c.name_en}</span>}
-              </div>
-            )
+            const face = c.image
+              ? <img src={c.image} alt={c.name_en} loading="lazy" />
+              : <span className="bv-noimg">{c.name_en}</span>
+            // your own front page stays a binder page: tap a card, mark it like anywhere else
+            return own && onOpen
+              ? <button key={c.uid} className="bv-pocket filled" onClick={() => onOpen(c.uid)} title="open — mark it like in the binder">{face}</button>
+              : <div key={c.uid} className="bv-pocket filled">{face}</div>
           })}
         </div>
       )}

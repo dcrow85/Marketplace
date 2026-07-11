@@ -7,19 +7,44 @@ import { offersKeyFor, loadOffers } from '../trade/offers.js'
 import { pinsKeyFor, loadPins, togglePin } from './pins.js'
 import { publishProfile, unpublishProfile, isLiveAddr } from '../live/pilotStore.js'
 import { handleFor } from '../identity.js'
-import { useCatalog, useByUid } from '../lib/data.js'
+import { useCatalog, useMarket, useByUid } from '../lib/data.js'
 import { useBus } from '../lib/store.js'
+import { loadMockSales, mockSalesKeyFor } from '../market/mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
 import ProfileHeader from './ProfileHeader.jsx'
 import FrontPage from './FrontPage.jsx'
+import CardModal from '../binder/CardModal.jsx'
 
 export default function MyPage({ accountId, catalog }) {
   const data = useCatalog(catalog)
+  const mkt = useMarket(catalog)
   const byUid = useByUid(data)
   const storeKey = storeKeyFor(catalog.id, accountId)
   const pinsKey = pinsKeyFor(catalog.id, accountId)
   const store = useBus(() => loadStore(storeKey), [storeKey])
   const pins = useBus(() => loadPins(pinsKey), [pinsKey])
+  const mockSales = useBus(() => loadMockSales(mockSalesKeyFor(catalog.id)), [catalog])
+  const [sel, setSel] = useState(null) // a card held open — the binder's modal, right here
+
+  // the binder's marking semantics, over the event-driven store: every page hears the
+  // change. Reads happen at WRITE time (like Binder's functional setStore) so two quick
+  // marks never clobber each other through a stale render snapshot.
+  const setById = useMemo(() => Object.fromEntries((data?.sets || []).map((s) => [s.id, s])), [data])
+  const setStance = (uid, st) => {
+    const c = byUid.get(uid)
+    if (!c) return
+    const prev = loadStore(storeKey)
+    const cur = entryFor(c, prev).stance
+    const u = { ...(prev[uid] || {}) }
+    u.stance = cur === st ? 'none' : st
+    if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false }
+    if (u.stance === 'none' || u.stance === 'pass') u.grail = false
+    saveStore(storeKey, { ...prev, [uid]: u })
+  }
+  const setField = (uid, key, value) => {
+    const prev = loadStore(storeKey)
+    saveStore(storeKey, { ...prev, [uid]: { ...(prev[uid] || {}), [key]: value } })
+  }
 
   const noteKey = `cairn-table-note:${catalog.id}:${accountId || 'anon'}`
   const [sign, setSignState] = useState('')
@@ -58,10 +83,7 @@ export default function MyPage({ accountId, catalog }) {
     return out
   }, [catalog, accountId, rows, data])
 
-  const setAsk = (uid, v) => {
-    const next = { ...store, [uid]: { ...(store[uid] || {}), ask: v } }
-    saveStore(storeKey, next)
-  }
+  const setAsk = (uid, v) => setField(uid, 'ask', v)
 
   // publishing: your page, put on the room's board — a snapshot you own and can pull.
   // Until it's signed (P3), the room carries it as YOUR claim; nothing here turns green
@@ -125,7 +147,8 @@ export default function MyPage({ accountId, catalog }) {
       <FrontPage uids={pins} byUid={byUid} own
         myHaves={rows.haves.map(({ c }) => c)}
         grailFallback={rows.grails.map(({ c }) => c.uid)}
-        onTogglePin={(uid) => togglePin(pinsKey, uid)} />
+        onTogglePin={(uid) => togglePin(pinsKey, uid)}
+        onOpen={setSel} />
 
       <div className="pf-sechead">
         <span className="ek">On your table</span>
@@ -134,10 +157,10 @@ export default function MyPage({ accountId, catalog }) {
       {rows.listed.length
         ? <div className="sp-tiles">
             {rows.listed.map(({ c, e }) => (
-              <MiniCard key={c.uid} c={c}
+              <MiniCard key={c.uid} c={c} onTap={() => setSel(c.uid)}
                 corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
                 sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
-                actions={<span className="sp-task">
+                actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
                   <span className="fpre">$</span>
                   <input type="number" min="0" placeholder="ask"
                     value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
@@ -153,10 +176,10 @@ export default function MyPage({ accountId, catalog }) {
       {rows.wants.length
         ? <div className="mk-hunt2row pf-huntrow">
             {rows.wants.slice(0, 18).map(({ c }) => (
-              <div key={c.uid} className="mk-hunt2">
+              <button key={c.uid} className="mk-hunt2 pf-huntopen" onClick={() => setSel(c.uid)} title="open — mark it like in the binder">
                 {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="minicard-noimg">{c.name_en}</span>}
                 <span className="mk-hunt2name">{c.name_en}</span>
-              </div>
+              </button>
             ))}
             {rows.wants.length > 18 && <span className="mono dim pf-huntmore">+{rows.wants.length - 18}</span>}
           </div>
@@ -165,6 +188,9 @@ export default function MyPage({ accountId, catalog }) {
       <p className="sc-note dim">This is your page exactly as the room reads it once it&rsquo;s on the board: the front page
         and your hunt show what you choose; the record strip only ever says what&rsquo;s recorded — and on other people&rsquo;s
         screens it stays your claim until signing lands.</p>
+      {sel && <CardModal key={sel} uid={sel} data={data} setById={setById} store={store}
+        setStance={setStance} setField={setField} agentName="Anko"
+        onClose={() => setSel(null)} market={mkt} mockSales={mockSales} />}
     </div>
   )
 }
