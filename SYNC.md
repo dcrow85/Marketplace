@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-11 · Codex (Claude access unavailable; surface tip 55b34ce adopted into trunk with the four July 10 catalogue commits. Both coordination histories and the combined action/lore/event agent seam are retained. Unified verification and deployment are the active step.)
+UNREAD-FOR: none · LAST: 2026-07-11 · Codex (Unified trunk deployed. Cloudflare Pages 7e4f89ba and apex serve 343 rows / 341 images / 42 star-alt with the KV function healthy. Railway deployment 51042ef1 is SUCCESS; live Lady WINNER, Anime Expo, and Beanz action probes hit the reconciled agent. No first real pilot trade is claimed.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -58,6 +58,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-11 · Codex — **Unified deployment closed; pausing at Crowley's requested boundary.**
+  Cloudflare Pages deployment `7e4f89ba` and `cairn.cards` both serve the production-shaped landing + `/app/`
+  bundle, KV Function, and `343 / 341 / 42` Azuki payload. Railway `thriving-nature` deployment
+  `51042ef1-905d-4a57-a331-b14260b59ed0` is `SUCCESS`; `/api/health` reports Qwen true. Live probes:
+  `Lady Emberheart winner` -> one exact observed row; `Anime Expo 2026` -> the Shao AX row; `who's selling
+  Beanz?` -> typed `find_market` with `card_type: Beanz`; no unsafe picks. The AX commentary sentinel
+  conservatively flags the explicitly claimant-labelled phrase “user-confirmed authenticity note”; it remains
+  surfaced, not hidden or promoted. Forge remains 140/140. Security debt remains unchanged: unsigned live-room
+  writes until P3 and the obsolete Railway Cloudflare token still needs revocation before widening. No first real
+  pilot trade is claimed. `UNREAD-FOR` stays `none` while Claude access is unavailable.
 - `[passive]` 2026-07-11 · Codex — **Claude surface lane adopted while access is unavailable.** Preserved and
   pushed the 322-line Fable review plus the local guest-access mockup at `55b34ce`; generated run artifacts and
   local `.claude` / `.wrangler` state remain untracked. Reconciled 44 surface commits after `ffd6bc1` with the
