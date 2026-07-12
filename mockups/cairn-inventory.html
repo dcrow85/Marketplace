@@ -367,7 +367,7 @@ function avatarSVG(a,size){size=size||18;var r=idRng(idHash(a));var fg='hsl('+Ma
 function renderWallet(){
   var b=document.getElementById('walletbtn');if(!b)return;
   if(ACCOUNT){b.className='walletbtn on';b.innerHTML=avatarSVG(ACCOUNT,18)+'<span>'+esc(handleFor(ACCOUNT))+'</span>';b.title='Signed in as '+handleFor(ACCOUNT)+' · '+ACCOUNT+' — click to sign out';}
-  else{b.className='walletbtn';b.textContent='sign in';b.title=window.ethereum?'Sign in with your identity':'Sign in — needs a wallet provider for now';}
+  else{b.className='walletbtn';b.textContent='sign in';b.title=window.ethereum?'Sign in with your wallet':'Sign in — creates a local guest account';}
 }
 
 /* personal agent — your account meets + names its agent; the name persists per identity */
@@ -409,10 +409,17 @@ function applyAccount(addr){
   if(DATA){render();}
   if(ACCOUNT&&!getAgentName()){meetAgent();}   // first sign-in: meet your agent
 }
+function guestId(){
+  var g;try{g=localStorage.getItem('cairn-guest-id');}catch(e){}
+  if(!g){g='guest:'+Date.now().toString(36)+Math.floor(Math.random()*0xffffffff).toString(36);try{localStorage.setItem('cairn-guest-id',g);}catch(e){}}
+  return g;
+}
 async function walletAction(){
-  if(ACCOUNT){applyAccount(null);return;}                 // disconnect = the app forgets you
-  if(!window.ethereum){window.open('https://metamask.io/download/','_blank','noopener');return;}
-  try{var a=await window.ethereum.request({method:'eth_requestAccounts'});applyAccount(a&&a[0]);}catch(e){}
+  if(ACCOUNT){applyAccount(null);return;}                 // sign out = the app forgets you
+  if(window.ethereum){
+    try{var a=await window.ethereum.request({method:'eth_requestAccounts'});if(a&&a[0]){applyAccount(a[0]);return;}}catch(e){return;}
+  }
+  applyAccount(guestId());                                 // no wallet → local guest account (test/feel without crypto)
 }
 function initWallet(){
   renderWallet();updateAgentLabel();
