@@ -1,16 +1,29 @@
 import { useState, useEffect } from 'react'
 import { usePrivy } from '@privy-io/react-auth'
-import { handleFor, avatarSVG, randomAgentName } from './identity.js'
+import { handleFor, avatarSVG } from './identity.js'
+import MeetAnko from './agent/MeetAnko.jsx'
 import Binder from './binder/Binder.jsx'
 import './binder/binder.css'
 import TradePanel from './trade/TradePanel.jsx'
 import Ambient from './ambient/Ambient.jsx'
-import SellPile from './binder/SellPile.jsx'
+import MyPage from './profile/MyPage.jsx'
+import Market from './market/Market.jsx'
+import Offers from './trade/Offers.jsx'
+import OfferComposer from './market/OfferComposer.jsx'
+import { offersKeyFor, loadOffers, OFFER_OPEN, OFFER_SETTLING } from './trade/offers.js'
+import { startMockMarket } from './market/mockAgents.js'
+import { startChainRail } from './chain/localRehearsal.js'
+import { fetchInbox, isLiveAddr } from './live/pilotStore.js'
+import { mergeInbox } from './live/inbox.js'
+import { fetchJson } from './lib/data.js'
+import { useBus } from './lib/store.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
+// The mock id is a VALID address shape so the live-room plumbing (publish, inbox) can be
+// exercised from dev — recognizable as the coffee address, never a real wallet.
 const DEV_PREVIEW = import.meta.env.DEV && new URLSearchParams(window.location.search).has('preview')
-const MOCK_ID = '0xpreview0000000000000000000000000000dev1'
+const MOCK_ID = '0x0000000000000000000000000000000000c0ffee'
 const CATALOGS = [
   {
     id: 'azuki-tcg',
@@ -19,13 +32,9 @@ const CATALOGS = [
     path: 'catalogs/azuki-tcg.json',
     note: 'Alpha, Gates Awakened, observations, and source scars.',
   },
-  {
-    id: 'japanese-pre-english',
-    label: 'Japanese pre-English',
-    title: 'Japanese pre-English catalog',
-    path: 'catalog-sample.json',
-    note: 'Pokemon launch-era and pre-English references.',
-  },
+  // Japanese pre-English (Pokemon) parked while the pilot focuses on Azuki — data and
+  // stores stay intact; restore by re-adding the entry:
+  // { id: 'japanese-pre-english', label: 'Japanese pre-English', title: 'Japanese pre-English catalog', path: 'catalog-sample.json', note: 'Pokemon launch-era and pre-English references.' },
 ]
 
 function catalogFromUrl() {
@@ -46,6 +55,22 @@ function ThemeToggle() {
       <svg className="moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z" /></svg>
       <svg className="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3" /><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2" /></svg>
     </button>
+  )
+}
+
+const TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
+function applyTileScale(k) {
+  document.documentElement.style.setProperty('--tilescale', String(TILE_SCALES[k] || 1))
+}
+function SizePicker() {
+  const [sz, setSz] = useState(() => { try { return localStorage.getItem('cairn-tilescale') || 'm' } catch { return 'm' } })
+  useEffect(() => { applyTileScale(sz) }, [sz])
+  return (
+    <div className="sizepick mono" title="card size" role="radiogroup" aria-label="card size">
+      {Object.keys(TILE_SCALES).map((k) => (
+        <button key={k} className={sz === k ? 'on' : ''} onClick={() => { setSz(k); try { localStorage.setItem('cairn-tilescale', k) } catch { /* ignore */ } }}>{k.toUpperCase()}</button>
+      ))}
+    </div>
   )
 }
 
@@ -74,81 +99,113 @@ function SignIn({ onLogin }) {
     </div>
   )
 }
-function MeetAgent({ accountId, onNamed }) {
-  const [name, setName] = useState('')
-  const seed = name.trim() || accountId || 'agent'
-  const go = () => onNamed(name.trim() || 'Cairn')
-  return (
-    <div className="gate">
-      <div className="meetcard">
-        <div className="meetav"><Avatar seed={seed} size={56} /></div>
-        <div className="ek agent">Your agent</div>
-        <p className="intro">
-          I read the catalog — not the cards. I&rsquo;ll show you what&rsquo;s recorded, flag what&rsquo;s
-          only claimed, and say plainly when something&rsquo;s just my judgment. I won&rsquo;t call a card
-          mint when I can&rsquo;t see it, and I&rsquo;ll never sell you anything. Give me a name and we&rsquo;ll
-          get to work.
-        </p>
-        <label className="ek2">Name your agent</label>
-        <div className="row">
-          <input value={name} maxLength={24} placeholder="…" autoFocus
-            onChange={(e) => setName(e.target.value)}
-            onKeyDown={(e) => { if (e.key === 'Enter' && name.trim()) go() }} />
-          <button className="ghost" onClick={() => setName(randomAgentName())}>surprise me</button>
-        </div>
-        <button className="primary" onClick={go}>{name.trim() ? `meet ${name.trim()}` : 'meet your agent'}</button>
-      </div>
-    </div>
-  )
-}
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
-  const [view, setView] = useState('binder') // 'binder' | 'trade'
-  const [bseg, setBseg] = useState('binder') // inside the binder: 'binder' | 'sale'
+  const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
+  const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
+  const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
+  const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
+  useEffect(() => {
+    let stop = () => {}
+    let live = true
+    Promise.all([
+      fetchJson(catalog.path || 'catalog-sample.json'),
+      fetchJson('market-sample.json'),
+    ]).then(([d, m]) => {
+      if (!d) return
+      if (!live) return
+      const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
+      const asks = new Map()
+      if (m && m.catalog_id === catalog.id) for (const sl of m.sellers) for (const l of sl.listings) asks.set(sl.id + '|' + l.uid, l.ask)
+      const stopMock = startMockMarket({ catalogId: catalog.id, accountId, byUid, askOf: (seller, uid) => asks.get(seller + '|' + uid) })
+      const stopChain = startChainRail({ catalogId: catalog.id, accountId, byUid })
+      stop = () => { stopMock(); stopChain() }
+    }).catch(() => {})
+    return () => { live = false; stop() }
+  }, [catalog, accountId])
+  // the live loop: poll your inbox on the room's KV and merge what arrived — offers
+  // from real people land in the same ledger the personas use
+  useEffect(() => {
+    if (!isLiveAddr(accountId)) return undefined
+    let stop = false
+    const tick = () => fetchInbox(accountId).then((box) => { if (box && !stop) mergeInbox(catalog.id, accountId, box) })
+    tick()
+    const iv = setInterval(tick, 45000)
+    const wake = () => tick()
+    window.addEventListener('focus', wake)
+    return () => { stop = true; clearInterval(iv); window.removeEventListener('focus', wake) }
+  }, [catalog, accountId])
+  const { swapN, needsYou } = useBus(() => {
+    const offers = loadOffers(offersKeyFor(catalog.id, accountId))
+    const inOpen = offers.filter((o) => o.dir === 'in' && OFFER_OPEN.includes(o.state)).length
+    const settling = offers.filter((o) => OFFER_SETTLING.includes(o.state)).length
+    return { swapN: inOpen + settling, needsYou: inOpen > 0 }
+  }, [catalog, accountId])
   return (
     <div className="app">
       <nav className="nav">
-        <Wordmark />
+        <button className="wmhome" onClick={() => { setBseg('binder'); setMarketFocus(null); setTradesOpen(false) }} title="back to your binder"><Wordmark /></button>
         <div className="navr mono">
+          <button className={'tradesbtn nav-trades' + (needsYou ? ' needs-you' : '')} onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title={needsYou ? 'an offer is waiting on you' : 'your trades'}>
+            <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
+            <span>Trades{swapN ? ` ·${swapN}` : ''}</span>
+            {needsYou && <i className="nav-dot" aria-hidden="true" />}
+          </button>
           <span className="chip"><Avatar seed={accountId} size={18} /> <span className="handle">{handleFor(accountId)}</span></span>
           <ThemeToggle />
           <button className="ghost sm" onClick={onSignOut}>sign out</button>
         </div>
       </nav>
-      <div className="viewnav" role="tablist" aria-label="view">
-        <button role="tab" aria-selected={view === 'binder'} className={view === 'binder' ? 'on' : ''} onClick={() => setView('binder')}>
-          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true"><rect x="2.5" y="1.5" width="11" height="13" rx="1.5" /><path d="M5.5 1.5v13" /><circle cx="4" cy="5" r="0.4" fill="currentColor" /><circle cx="4" cy="8" r="0.4" fill="currentColor" /><circle cx="4" cy="11" r="0.4" fill="currentColor" /></svg>
-          <span>Binder</span>
-        </button>
-        <button role="tab" aria-selected={view === 'trade'} className={view === 'trade' ? 'on' : ''} onClick={() => setView('trade')}>
-          <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
-          <span>Trades</span>
-        </button>
-      </div>
-      <Ambient onOpenTrade={(id) => { setOpenTrade(id); setView('trade') }} />
+      <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />
       <main className="main">
-        {view === 'binder' && (
-          <>
-            <div className="bindertop">
-              {CATALOGS.length > 1 && (
-                <div className="catalogpick" aria-label="catalog">
-                  {CATALOGS.map((c) => (
-                    <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
-                  ))}
-                </div>
-              )}
-              <div className="bsegs mono" role="tablist" aria-label="binder section">
-                <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
-                <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>For sale</button>
-              </div>
+        <div className="bindertop">
+          {CATALOGS.length > 1 && (
+            <div className="catalogpick" aria-label="catalog">
+              {CATALOGS.map((c) => (
+                <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
+              ))}
             </div>
-            {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog} />}
-            {bseg === 'sale' && <SellPile accountId={accountId} catalog={catalog} />}
-          </>
-        )}
-        {view === 'trade' && <TradePanel openTradeId={openTrade} />}
+          )}
+          <div className="bt-right">
+            <SizePicker />
+            <div className="bsegs mono" role="tablist" aria-label="binder section">
+              <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
+              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My page</button>
+              <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
+            </div>
+          </div>
+        </div>
+        {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
+          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }} />}
+        {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} />}
+        {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
+          focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
       </main>
+      {offerSeed && (
+        <OfferComposer accountId={accountId} catalog={catalog} seller={offerSeed.seller}
+          initialWant={offerSeed.want} initialGive={offerSeed.give}
+          initialCash={offerSeed.cash} counterOf={offerSeed.counterOf} live={offerSeed.live}
+          onClose={() => setOfferSeed(null)} />
+      )}
+      {tradesOpen && (
+        <div className="sc-overlay" role="dialog" aria-label="Trades" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>
+          <div className="sc-sheet trades-sheet">
+            <div className="trades-head">
+              <span className="ek">Trades</span>
+              <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
+            </div>
+            <div className="trades-body">
+              <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setOfferSeed({
+                seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
+                cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
+                counterOf: o.id, live: o.live,
+              })} />
+              <TradePanel openTradeId={openTrade} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -156,20 +213,23 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
 export default function App() {
   const { ready, authenticated, user, login, logout } = usePrivy()
   const accountId = DEV_PREVIEW ? MOCK_ID : (user?.wallet?.address || user?.id || '').toLowerCase()
-  const agentStoreKey = accountId ? `cairn-agent:${accountId}` : ''
-  const [agent, setAgent] = useState('')
+  // The house agent: one character, one voice, everyone's agent. Meeting him once
+  // replaces the old name-your-agent ritual (previously named agents migrate).
+  const metKey = accountId ? `cairn-met-anko:${accountId}` : ''
+  const [met, setMet] = useState(false)
   const [catalog, setCatalogState] = useState(catalogFromUrl)
+  const agent = 'Anko'
 
   useEffect(() => {
-    /* eslint-disable react-hooks/set-state-in-effect -- hydrate the persisted agent name for this account. */
-    if (!agentStoreKey) { setAgent(''); return }
-    try { setAgent(localStorage.getItem(agentStoreKey) || (DEV_PREVIEW ? 'Ledger' : '')) } catch { setAgent('') }
+    /* eslint-disable react-hooks/set-state-in-effect -- hydrate the met-Anko flag for this account. */
+    if (!metKey) { setMet(false); return }
+    try { setMet(!!localStorage.getItem(metKey)) } catch { setMet(false) }
     /* eslint-enable react-hooks/set-state-in-effect */
-  }, [agentStoreKey])
+  }, [metKey])
 
-  const nameAgent = (n) => {
-    try { localStorage.setItem(agentStoreKey, n) } catch { /* ignore */ }
-    setAgent(n)
+  const meetDone = () => {
+    try { localStorage.setItem(metKey, '1') } catch { /* ignore */ }
+    setMet(true)
   }
   const setCatalog = (c) => {
     setCatalogState(c)
@@ -178,14 +238,14 @@ export default function App() {
     u.searchParams.set('catalog', c.id)
     window.history.replaceState(null, '', u)
   }
-  const signOut = () => { if (DEV_PREVIEW) { setAgent(''); return } logout() }
+  const signOut = () => { if (DEV_PREVIEW) { try { localStorage.removeItem(metKey) } catch { /* ignore */ } setMet(false); return } logout() }
 
   if (DEV_PREVIEW) {
-    if (!agent) return <MeetAgent accountId={accountId} onNamed={nameAgent} />
+    if (!met) return <MeetAnko onDone={meetDone} />
     return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
   }
   if (!ready) return <Splash />
   if (!authenticated) return <SignIn onLogin={login} />
-  if (!agent) return <MeetAgent accountId={accountId} onNamed={nameAgent} />
+  if (!met) return <MeetAnko onDone={meetDone} />
   return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
 }

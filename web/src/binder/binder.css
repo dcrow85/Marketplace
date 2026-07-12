@@ -318,3 +318,93 @@ section { padding: 14px 0 70px; }
   .sp-ask { grid-column: 2; grid-row: 1 / span 2; }
 }
 button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: pointer; }
+
+/* one obvious listing switch (replaces Keep/Trade/Sell) */
+.listtog { width: 100%; margin-top: 10px; text-align: left; font-size: 13.5px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 12px 14px; cursor: pointer; }
+.listtog.on { border-color: var(--have); color: var(--have); background: transparent; }
+
+/* market context in the modal: availability (asks) + recorded settlements. Ledger
+   register — mono facts, green only on recorded evidence, no appraisal voice. */
+.mkb { margin-top: 14px; border: 0.5px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.mkb-head { display: flex; align-items: center; gap: 8px; }
+.mkb-title { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink2); }
+.mkb-sample { font-size: 10px; color: var(--dim); border: 0.5px dashed var(--rule); border-radius: 5px; padding: 1px 6px; }
+.mkb-browse { margin-left: auto; font-size: 11px; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mkb-browse:hover { text-decoration: underline; }
+.mkb-sec { font-size: 11px; color: var(--ink2); margin-top: 6px; }
+.mkb-row { display: grid; grid-template-columns: 1fr auto auto auto; align-items: baseline; gap: 10px; font-size: 12px; padding: 3px 0; }
+.mkb-who { font: inherit; text-align: left; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mkb-who:hover { text-decoration: underline; }
+.mkb-d { color: var(--dim); font-size: 11px; }
+.mkb-cond { color: var(--ink2); font-size: 11px; }
+.mkb-wit { color: var(--dim); font-size: 10.5px; }
+.mkb-wit.ok { color: var(--have); }
+.mkb-p { font-size: 12px; }
+.mkb-more { align-self: flex-start; font-size: 11px; color: var(--ink2); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mkb-more:hover { color: var(--ink); text-decoration: underline; }
+.mkb-note { font-size: 11px; color: var(--dim); line-height: 1.5; margin-top: 4px; }
+@media (max-width: 640px) { .mkb-cond { display: none; } .mkb-row { grid-template-columns: 1fr auto auto; } }
+
+/* two independent marks side by side — sale and trade are different offers */
+.listrow { display: flex; gap: 8px; margin-top: 10px; }
+.listrow .listtog { margin-top: 0; flex: 1; }
+.listhint { font-size: 11.5px; margin-top: 6px; line-height: 1.5; }
+
+/* quick marks on the card itself — the most that can happen on one page */
+.seg.sg-sell, .seg.sg-tradeq { flex: 0 0 34px; font-size: 12px; }
+.seg.sg-sell.on, .seg.sg-tradeq.on { color: var(--paper); background: var(--ink); }
+.cap-avail { font-size: 10px; color: var(--ink2); margin-top: 3px; }
+
+/* pockets: availability on the gaps, quick marks on what you hold */
+.bv-from { position: absolute; left: 6px; right: 6px; bottom: 6px; font-size: 9.5px; color: var(--ink2); text-align: center; }
+.bv-q { position: absolute; right: 5px; bottom: 5px; display: inline-flex; gap: 4px; }
+.bv-qb { width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; color: var(--ink2); background: color-mix(in srgb, var(--paper) 88%, transparent); border: 0.5px solid var(--rule); border-radius: 6px; cursor: pointer; }
+.bv-qb.on { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+@media (pointer: coarse) { .bv-qb { width: 32px; height: 32px; } }
+.bv-pocket.filled { cursor: pointer; } /* filled pockets are divs now (quick chips nest inside) */
+
+/* the $ pop-up: a listing's facts on one small sheet, market numbers above the ask */
+.qs { max-width: 430px; }
+.qs-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 8px; }
+.qs-title { font-size: 16px; font-weight: 600; margin-top: 2px; }
+.qs-done { padding: 9px 18px; }
+.qs-mkt { font-size: 11px; color: var(--ink2); padding: 0 18px 10px; border-bottom: 0.5px solid var(--rule); }
+.qs-body { padding: 12px 18px 4px; display: flex; flex-direction: column; gap: 2px; }
+.qs-foot { display: flex; justify-content: space-between; gap: 10px; padding: 10px 18px 16px; }
+
+/* price strip over card art needs its own backing */
+.bv-from.onart { left: 5px; right: auto; bottom: 5px; text-align: left; color: #DBD5C8; background: rgba(20,19,16,.74); padding: 2px 7px; border-radius: 5px; }
+
+/* the agent's bulk proposal: blue register (it's the agent talking), code-resolved set,
+   nothing writes until apply. */
+.aprop { margin: 16px 0; border: 0.5px solid var(--agent); border-radius: 10px; background: var(--agent-bg); padding: 12px 16px 14px; }
+.aprop-line { font-size: 14px; margin-top: 2px; }
+.aprop-read { font-size: 12px; margin-top: 4px; }
+.aprop-acts { display: flex; align-items: center; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.aprop-apply { font-family: var(--mono); font-size: 12.5px; color: var(--paper); background: var(--agent); border: 0; border-radius: 7px; padding: 10px 22px; cursor: pointer; }
+.aprop-apply:disabled { opacity: .5; cursor: default; }
+.aprop-done { font-size: 12px; color: var(--have); }
+.aprop-note { font-size: 11.5px; }
+
+/* Anko's face rides his own register tags */
+.anko-face { width: 16px; height: 16px; border-radius: 50%; object-fit: cover; vertical-align: -3px; margin-right: 5px; }
+
+/* Anko at his post — the ask bar is his domain. The portrait glows while his onibi reads. */
+.anko-search { flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid var(--rule); align-self: center; }
+.anko-search.busy { border-color: var(--agent); animation: anko-read 1.4s ease-in-out infinite; }
+@keyframes anko-read {
+  0%, 100% { box-shadow: 0 0 0 rgba(90,180,255,0); }
+  50% { box-shadow: 0 0 14px rgba(90,180,255,.65); }
+}
+
+/* the ask bar stretches wherever Anko stands (it was flex only inside .controls) */
+.askbar { display: flex; gap: 8px; align-items: center; }
+
+/* card-size preference: one scale var, every grid listens */
+.grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 146px), 1fr)); }
+
+/* S/M/L reaches every binder layout: gallery outranked the base override, and the
+   pocket page is a fixed 3×3 — so there, scale sizes the PAGE (and its pockets). */
+.grid.gallery { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 216px), 1fr)); }
+.bv-page { max-width: min(100%, calc(var(--tilescale, 1) * 860px)); margin-inline: auto; }
+.bv-head, .bv-nav { max-width: min(100%, calc(var(--tilescale, 1) * 860px)); margin-inline: auto; }

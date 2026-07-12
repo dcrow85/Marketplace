@@ -1,0 +1,60 @@
+import { useState, useEffect } from 'react'
+import { entryFor as effStance } from './collection.js'
+import { nm } from './helpers.jsx'
+
+// The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
+// pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
+// the agent, filters, and the scanner all operate on the binder itself.
+export default function PocketPages({ rows, store, userPhotos, onOpen, setField, askIndex, onQuickSell }) {
+  const [page, setPage] = useState(0)
+  useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
+  const pages = []
+  for (let i = 0; i < rows.length; i += 9) pages.push(rows.slice(i, i + 9))
+  const pg = pages[Math.min(page, pages.length - 1)] || []
+  const filled = pg.filter((c) => effStance(c, store).stance === 'have').length
+  return (
+    <div className="bv">
+      <div className="bv-head">
+        <div className="bv-title">Page {Math.min(page, pages.length - 1) + 1} of {pages.length}
+          <span className="dim"> · {filled} of {pg.length} pockets filled</span></div>
+        <div className="bv-comp mono">{rows.filter((c) => effStance(c, store).stance === 'have').length} / {rows.length}</div>
+      </div>
+      <div className="bv-page">
+        {pg.map((c) => {
+          const e = effStance(c, store)
+          const img = userPhotos[c.uid] || c.image
+          const fromAsk = askIndex ? askIndex.get(c.uid) : null
+          if (e.stance === 'have') {
+            return (
+              <div key={c.uid} className="bv-pocket filled" role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
+                onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
+                {img ? <img src={img} alt={nm(c)} loading="lazy" /> : <span className="bv-noimg">{nm(c)}</span>}
+                {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
+                {e.grail && <span className="bv-grail">★</span>}
+                {fromAsk != null && <span className="bv-from onart mono">from {fromAsk} USDC</span>}
+                <span className="bv-q">
+                  <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
+                    onClick={(ev) => { ev.stopPropagation(); const on = !e.sell; setField(c.uid, 'sell', on); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
+                  <button className={'bv-qb' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
+                    onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
+                </span>
+              </div>
+            )
+          }
+          return (
+            <button key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')} onClick={() => onOpen(c.uid)}>
+              <span className="mono bv-gnum">{c.num}</span>
+              <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
+              {fromAsk != null && <span className="bv-from mono">from {fromAsk} USDC</span>}
+            </button>
+          )
+        })}
+      </div>
+      <div className="bv-nav">
+        <button className="ghost sm" disabled={page <= 0} onClick={() => setPage((p) => p - 1)}>← page {page}</button>
+        <span className="dim bv-hint">every pocket opens the card — gaps included</span>
+        <button className="ghost sm" disabled={page >= pages.length - 1} onClick={() => setPage((p) => p + 1)}>page {page + 2} →</button>
+      </div>
+    </div>
+  )
+}

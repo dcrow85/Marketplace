@@ -1,0 +1,349 @@
+/* The market — other people's tables. Same forensic register as the ledger:
+   ink for claims, green ONLY for recorded evidence, no risk theater. */
+.mk { display: flex; flex-direction: column; gap: 14px; }
+.mk-samplenote { font-size: 11px; color: var(--dim); letter-spacing: .04em; border: 0.5px dashed var(--rule); border-radius: 8px; padding: 8px 12px; }
+.mk-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.mk-title { font-size: 17px; font-weight: 600; margin-top: 2px; }
+
+/* directory */
+.mk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+.mk-table { text-align: left; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 10px; padding: 14px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 9px; }
+.mk-table:hover { border-color: var(--ink); }
+.mk-seller { display: flex; align-items: center; gap: 10px; }
+.mk-handle { font-size: 14.5px; font-weight: 600; }
+.mk-sub { font-size: 11px; }
+.mk-tmeter { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11.5px; color: var(--ink2); }
+.mk-tbio { font-size: 12.5px; line-height: 1.45; }
+.mk-bio { font-size: 13.5px; color: var(--ink2); margin: -4px 0 0; }
+
+/* one table */
+.mk-meter { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 12px; color: var(--ink2); }
+.mk-wantsbtn { font: inherit; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 5px 10px; cursor: pointer; }
+.mk-wantsbtn.on { border-color: var(--ink); background: var(--mount); }
+.mk-rows { display: flex; flex-direction: column; }
+.mk-row { display: grid; grid-template-columns: 1fr auto auto auto auto; align-items: center; gap: 12px; padding: 9px 2px; border-bottom: 0.5px solid var(--rule); font-size: 13px; }
+.mk-row.mk-mine { background: color-mix(in srgb, var(--mount) 55%, transparent); }
+.mk-name { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.mk-num { font-size: 11px; color: var(--dim); }
+.mk-cond { font-size: 11.5px; color: var(--ink2); }
+.mk-wit { font-size: 11px; }
+.mk-wit.ok { color: var(--have); }
+.mk-wit.none { color: var(--dim); }
+.mk-ask { font-size: 12.5px; }
+.mk-who { display: inline-flex; align-items: center; gap: 8px; font: inherit; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
+.mk-who:hover { text-decoration: underline; }
+.mk-wantflag { font-family: var(--mono); font-size: 10px; color: var(--ink); border: 0.5px solid var(--ink); border-radius: 5px; padding: 1px 6px; }
+.sheetbtn.mk-sm { padding: 6px 10px; font-size: 11px; }
+
+/* lots */
+.mk-lot { border: 0.5px solid var(--rule); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 7px; }
+.mk-lothead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mk-lotcards { font-size: 12px; line-height: 1.5; }
+.mk-lotnote { font-size: 11.5px; }
+
+/* what they're hunting */
+.mk-hunting { display: flex; flex-direction: column; gap: 8px; border-top: 0.5px solid var(--rule); padding-top: 12px; }
+.mk-huntrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.mk-hunt { font-size: 11px; color: var(--dim); border: 0.5px solid var(--rule); border-radius: 6px; padding: 3px 8px; }
+.mk-hunt.mk-swap { color: var(--ink); border-color: var(--ink); }
+.mk-swapnote { font-size: 12px; }
+
+@media (max-width: 640px) {
+  .mk-row { grid-template-columns: 1fr auto auto auto; }
+  .mk-cond { display: none; }
+}
+
+/* swap proposal confirmation — one quiet dismissible line */
+.mk-swapmsg { text-align: left; font-size: 12px; color: var(--ink); background: var(--mount); border: 0.5px solid var(--rule); border-radius: 8px; padding: 9px 12px; cursor: pointer; }
+.mk-acts { display: inline-flex; gap: 6px; }
+
+/* the swap picker: your side of the trade */
+
+/* pending swaps in the Trades overlay */
+.sw { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
+.sw-head { display: flex; align-items: baseline; gap: 10px; }
+.sw-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; }
+.sw-pair { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; font-size: 13.5px; }
+.sw-card { display: inline-flex; align-items: baseline; gap: 6px; }
+.sw-arrow { color: var(--ink2); }
+.sw-who { font-size: 11px; color: var(--dim); }
+.sw-acts { display: inline-flex; gap: 6px; }
+
+/* mock trades + agent answers */
+.mt { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
+.mt-row { border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.mt-row.done { border-color: var(--have); }
+.mt-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.mt-steps { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 10.5px; color: var(--faint); }
+.mt-step.on { color: var(--ink2); }
+.mt-step.ok { color: var(--have); }
+.mt-step.dead { color: var(--signal); }
+.mt-log { display: flex; flex-direction: column; gap: 3px; }
+.mt-line { font-size: 12px; color: var(--ink2); }
+.mt-line .mono { font-size: 10px; margin-right: 6px; }
+.sw-say { font-size: 12px; color: var(--ink2); width: 100%; }
+.sw-say .mono { font-size: 10px; margin-right: 6px; }
+.sw-st { font-weight: 600; }
+.sw-st.st-settled { color: var(--have); }
+.sw-st.st-declined { color: var(--signal); }
+.sw-boot { border-color: var(--ink); color: var(--ink); }
+
+/* ---- offers: tiles, composer, ledger ---- */
+/* a table you can touch: card tiles, tap = basket */
+.mk-tiles, .ofr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 10px; }
+.ofr-tile { position: relative; text-align: left; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 9px; padding: 0 0 6px; cursor: pointer; overflow: hidden; display: flex; flex-direction: column; gap: 4px; }
+.ofr-tile img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; display: block; }
+.ofr-noimg { width: 100%; aspect-ratio: 5 / 7; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim); padding: 6px; text-align: center; }
+.ofr-tile .ofr-name { font-size: 11.5px; line-height: 1.3; padding: 0 7px; }
+.ofr-tile .ofr-sub { font-size: 9.5px; color: var(--dim); padding: 0 7px; }
+.ofr-tile.sel { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink); }
+.ofr-check { position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 11px; display: flex; align-items: center; justify-content: center; }
+
+/* the composer: one screen, no wizard */
+.ofr { max-width: 640px; }
+.ofr-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 10px; border-bottom: 0.5px solid var(--rule); flex: none; }
+.ofr-title { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; margin-top: 3px; }
+.ofr-body { overflow-y: auto; padding: 6px 18px 12px; display: flex; flex-direction: column; gap: 10px; }
+.ofr-sec { font-size: 10.5px; letter-spacing: .07em; color: var(--dim); margin-top: 8px; text-transform: uppercase; }
+.ofr-cash { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ofr-cash .ti.num { width: 90px; }
+.ofr-note { width: 100%; }
+.ofr-anko { font-size: 12px; color: var(--ink2); line-height: 1.6; border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 8px; padding: 9px 12px; }
+.ofr-anko .atag { margin: 0 6px 0 0; }
+.ofr-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 18px; border-top: 0.5px solid var(--rule); flex: none; }
+.ofr-sum { font-size: 12px; color: var(--ink2); }
+.ofr-send { padding: 12px 26px; }
+.ofr-fine { padding: 0 18px 14px; margin: 0; }
+
+/* the ledger: every conversation, counters chained */
+.ofl { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
+.ofl-row { border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.ofl-row.done { border-color: var(--have); }
+.ofl-row.closed { opacity: .6; }
+.ofl-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.ofl-dir { font-size: 11px; color: var(--ink2); }
+.ofl-st { font-size: 11px; font-weight: 600; }
+.ofl-st.st-settled { color: var(--have); }
+.ofl-st.st-declined, .ofl-st.st-withdrawn { color: var(--signal); }
+.ofl-baskets { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13px; }
+.ofl-side i { font-style: normal; font-size: 10px; margin-right: 5px; }
+.ofl-cash { font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--rule); border-radius: 5px; padding: 1px 7px; }
+
+/* ---- art everywhere: this is a TCG ---- */
+/* the directory: a fan of each table's cards */
+.mk-spread { display: flex; align-items: center; height: 64px; }
+.mk-spread img { width: 44px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 4px; border: 1px solid var(--rule); margin-right: -12px; box-shadow: 2px 0 6px rgba(0,0,0,.18); }
+.mk-spread .mk-more { margin-left: 20px; font-size: 10.5px; color: var(--dim); }
+/* the by-card page leads with the card */
+.mk-focushead { display: flex; align-items: center; gap: 14px; }
+.mk-focusart { width: 64px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 6px; border: 1px solid var(--rule); }
+/* hunting chips carry a face */
+.mk-hunt { display: inline-flex; align-items: center; gap: 6px; }
+.mk-hunt img { width: 20px; height: 28px; object-fit: cover; border-radius: 3px; }
+/* offer ledger: baskets are card chips */
+.ofl-side { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ofl-chip { display: inline-flex; align-items: center; gap: 5px; border: 0.5px solid var(--rule); border-radius: 6px; padding: 2px 8px 2px 2px; font-size: 12px; }
+.ofl-chip img { width: 26px; height: 36px; object-fit: cover; border-radius: 4px; }
+/* Anko's market finds: art-led tiles, one tap from an offer */
+.mkf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; margin-top: 10px; }
+.mkf-tile { display: flex; flex-direction: column; gap: 3px; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 9px; overflow: hidden; padding-bottom: 7px; }
+.mkf-tile img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; display: block; }
+.mkf-offer { margin: 4px 8px 0; font-size: 11px; color: var(--paper); background: var(--agent); border: 0; border-radius: 6px; padding: 8px 0; cursor: pointer; }
+.mkf-offer:hover { filter: brightness(1.08); }
+
+/* Anko at the show: his bar tops the market; the aisle dims what doesn't match */
+.mk-askbar { margin: 2px 0 4px; }
+.mk-dim { opacity: .35; }
+.mk-aisle { color: var(--agent); border: 0.5px solid var(--agent); border-radius: 5px; padding: 1px 7px; font-size: 10px; }
+
+/* ---- card-show polish: price stickers, plain scan language, obvious buy/trade ---- */
+.pricetag { position: absolute; top: 6px; left: 6px; font-family: var(--mono); font-size: 12px; font-weight: 650; color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, transparent); border: 0.5px solid var(--ink); border-radius: 6px; padding: 2px 8px; }
+.ofr-acts { display: flex; gap: 5px; padding: 2px 7px 0; }
+.ofr-buy { flex: 1; font-family: var(--mono); font-size: 11px; color: var(--paper); background: var(--ink); border: 0; border-radius: 6px; padding: 8px 0; cursor: pointer; }
+.ofr-tradebtn { flex: 1; font-family: var(--mono); font-size: 11px; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 6px; padding: 8px 0; cursor: pointer; }
+.ofr-tradebtn:hover, .ofr-buy:hover { filter: brightness(1.06); }
+.ofr-search { width: 100%; font-size: 13px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 8px; padding: 9px 12px; outline: none; margin-bottom: 2px; }
+.ofr-search:focus { border-color: var(--agent); }
+
+/* your table: tiles you curate, not rows you audit */
+.sp-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 12px; }
+.sp-tile { position: relative; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 9px; overflow: hidden; display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; }
+.sp-tile img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; display: block; }
+.sp-task { display: flex; align-items: center; gap: 4px; padding: 2px 8px 0; }
+.sp-task .fpre { font-size: 11px; }
+.sp-task input { width: 100%; font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 6px; padding: 6px 8px; outline: none; }
+.sp-task input:focus { border-color: var(--ink); }
+.sp-tradeflag { position: absolute; top: 6px; right: 6px; font-family: var(--mono); font-size: 10px; color: var(--paper); background: var(--ink); border-radius: 5px; padding: 2px 6px; }
+.sp-note { width: 100%; font-size: 13px; color: var(--ink); background: var(--paper); border: 0.5px dashed var(--rule); border-radius: 8px; padding: 9px 12px; outline: none; margin: 4px 0 10px; }
+.sp-note:focus { border-color: var(--ink); border-style: solid; }
+.sp-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+
+/* hold the card up to the light */
+.zoom-overlay { position: fixed; inset: 0; z-index: 90; background: rgba(12,11,9,.82); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+.zoom-body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: min(92vw, 460px); cursor: default; }
+.zoom-art { max-height: 72vh; max-width: 100%; border-radius: 14px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+.zoom-noimg { width: 300px; aspect-ratio: 5 / 7; display: flex; align-items: center; justify-content: center; color: #DBD5C8; border: 1px dashed rgba(236,234,227,.4); border-radius: 14px; }
+.zoom-facts { text-align: center; color: #DBD5C8; }
+.zoom-name { font-size: 17px; font-weight: 600; }
+.zoom-name .dim, .zoom-sub, .zoom-wit { color: #b7b1a4; }
+.zoom-sub { font-size: 11px; margin-top: 3px; }
+.zoom-wit { font-size: 11px; margin-top: 6px; color: #DBD5C8; }
+.zoom-close { color: #DBD5C8; border-color: rgba(236,234,227,.3); }
+.zoombtn { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, transparent); border: 0.5px solid var(--rule); border-radius: 6px; cursor: zoom-in; }
+.zoombtn:hover { border-color: var(--ink); }
+
+/* the checkout: mark everything you want, then decide once */
+.mk-checkout { position: sticky; bottom: 12px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: var(--bar); backdrop-filter: blur(8px); border: 0.5px solid var(--ink); border-radius: 12px; padding: 10px 14px; }
+.mk-ckthumbs { display: flex; }
+.mk-ckthumbs img { width: 34px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 4px; border: 1px solid var(--rule); margin-right: -9px; box-shadow: 2px 0 5px rgba(0,0,0,.2); }
+.mk-cksum { font-size: 12px; color: var(--ink2); margin-left: 10px; }
+.mk-ckacts { display: flex; gap: 7px; margin-left: auto; flex-wrap: wrap; }
+.mk-ckacts .ofr-buy, .mk-ckacts .ofr-tradebtn { flex: none; padding: 9px 14px; }
+
+/* trades at the top of the house: count always, oxblood ONLY when it needs you */
+.nav-trades { position: relative; }
+.nav-trades.needs-you { border-color: var(--signal); color: var(--signal); }
+.nav-dot { position: absolute; top: -3px; right: -3px; width: 9px; height: 9px; border-radius: 50%; background: var(--signal); }
+
+/* the pile + the deal */
+.ofr-buy.on, .ofr-tradebtn.on { background: var(--have); color: var(--paper); border-color: var(--have); }
+.mk-ckthumb { position: relative; margin-right: 4px; }
+.mk-ckthumb img { width: 40px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 5px; border: 1px solid var(--rule); display: block; }
+.mk-cktag { position: absolute; bottom: -5px; left: -4px; width: 18px; height: 18px; border-radius: 50%; font-size: 10px; color: var(--paper); background: var(--ink); border: 1px solid var(--paper); cursor: pointer; }
+.mk-cktag.tr { background: var(--agent); }
+.mk-ckx { position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; border-radius: 50%; font-size: 9px; color: var(--ink2); background: var(--paper); border: 0.5px solid var(--rule); cursor: pointer; }
+.mk-pilebadge { color: var(--paper); background: var(--ink); border-radius: 5px; padding: 1px 7px; font-size: 10px; }
+.zoom-acts { display: flex; gap: 8px; }
+.zoom-acts .ofr-buy, .zoom-acts .ofr-tradebtn { flex: none; padding: 10px 20px; font-size: 12px; }
+.mk-focusart { cursor: zoom-in; }
+.mkf-offer.done { background: var(--have); }
+
+.deal { border: 0.5px solid var(--ink); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+.deal-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.deal-sec { display: flex; flex-direction: column; gap: 6px; }
+.deal-label { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); }
+.deal-row { display: flex; justify-content: space-between; gap: 10px; font-size: 12.5px; color: var(--ink2); border-bottom: 0.5px solid var(--rule); padding: 5px 2px; }
+.deal-row .deal-ask { color: var(--ink); }
+.deal-sum { border-bottom: 0; color: var(--ink); }
+.deal-grid { max-height: 320px; overflow-y: auto; }
+.deal-cash { width: 110px; font-size: 15px; font-weight: 650; }
+.deal-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.deal-summary { font-size: 12px; color: var(--ink2); }
+.deal-fine { margin: 0; }
+
+/* the Settle page: its own room */
+.stl-sec { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.stl-label { font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--dim); }
+.stl-give { max-height: 380px; overflow-y: auto; }
+.stl-mode.on { color: var(--agent); border-color: var(--agent); }
+.stl-x { flex: 0 0 34px; }
+.stl-cashrow { display: flex; align-items: center; gap: 8px; }
+.stl-dollar { font-size: 16px; }
+.stl-cash { width: 130px; font-size: 18px; font-weight: 650; padding: 10px 12px; }
+.stl-foot { position: sticky; bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--bar); backdrop-filter: blur(8px); border: 0.5px solid var(--ink); border-radius: 12px; padding: 12px 16px; margin-top: 8px; }
+.stl-send { padding: 13px 24px; }
+.mk-settle { padding: 11px 20px; }
+
+/* Anko inside the settle room */
+.stl-ask { margin: 0; }
+.stl-ankoline { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 8px; padding: 8px 12px; }
+.stl-clear { font: inherit; color: var(--ink); background: transparent; border: 0; cursor: pointer; text-decoration: underline; }
+
+/* the drawer whisper: what your tradeables' history covers of this pile */
+.mk-ckwhisper { font-size: 10.5px; color: var(--agent); }
+
+/* they're hunting — promoted to eye level: the trade opening at this table */
+.mk-hunting2 { border: 0.5px solid var(--rule); border-radius: 11px; padding: 12px 14px; margin: 4px 0 6px; }
+.mk-hunt2head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 9px; }
+.mk-hunt2bait { font-size: 11px; color: var(--have); }
+.mk-hunt2row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; }
+.mk-hunt2 { flex: 0 0 76px; display: flex; flex-direction: column; gap: 3px; }
+.mk-hunt2 img { width: 76px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 6px; border: 0.5px solid var(--rule); }
+.mk-hunt2.mine img { border-color: var(--have); box-shadow: 0 0 0 1.5px var(--have); }
+.mk-hunt2name { font-size: 10px; line-height: 1.25; }
+.mk-hunt2have { font-size: 9px; color: var(--have); }
+
+/* buy/⇄ as one crafted control: joined pair, binder-register surfaces, quiet motion */
+.ofr-acts { display: flex; gap: 0; padding: 4px 7px 0; }
+.ofr-buy, .ofr-tradebtn { flex: 1; font-family: var(--mono); font-size: 11.5px; padding: 9px 0; cursor: pointer; border: 0.5px solid var(--rule); transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease; }
+.ofr-buy { color: var(--ink); background: var(--mount); border-radius: 8px 0 0 8px; font-weight: 650; }
+.ofr-tradebtn { color: var(--ink2); background: var(--paper); border-radius: 0 8px 8px 0; border-left-width: 0; }
+.ofr-buy:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ofr-tradebtn:hover { color: var(--ink); border-color: var(--ink); border-left-width: 0.5px; margin-left: -0.5px; }
+.ofr-buy:active, .ofr-tradebtn:active { transform: translateY(1px); }
+.ofr-buy.on, .ofr-tradebtn.on { background: var(--have); color: #fff; border-color: var(--have); }
+
+/* the bench: the binder's loveliness comes to the tables — cards sit ON a surface */
+.mk-tiles, .sp-tiles { background: #141310; border: 0.5px solid rgba(236,234,227,.14); border-radius: 12px; padding: 14px; }
+.mk-tiles .ofr-tile, .sp-tile { border-color: rgba(236,234,227,.18); }
+.mk-tiles .empty { color: #8a857a; }
+
+/* card-size preference applies here too */
+.mk-tiles, .ofr-grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 118px), 1fr)); }
+.sp-tiles { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 128px), 1fr)); }
+
+/* sort chip + the folded hunting bar (the collection leads; the hunt waits) */
+.mk-sortbtn { font-family: var(--mono); font-size: 11px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.mk-sortbtn.on { color: var(--ink); border-color: var(--ink); }
+.mk-huntbar { display: block; width: 100%; text-align: left; font-size: 12px; color: var(--ink2); background: transparent; border: 0.5px dashed var(--rule); border-radius: 9px; padding: 10px 14px; cursor: pointer; margin-top: 8px; }
+.mk-huntbar:hover { color: var(--ink); border-color: var(--ink); border-style: solid; }
+.mk-hunting2 { margin-top: 8px; }
+
+/* the one art-led tile (replaces ofr-tile / mkf-tile / sp-tile) */
+.minicard { position: relative; text-align: left; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 9px; padding: 0 0 7px; overflow: hidden; display: flex; flex-direction: column; gap: 4px; font: inherit; color: inherit; cursor: default; }
+button.minicard { cursor: pointer; }
+.minicard img { width: 100%; aspect-ratio: 5 / 7; object-fit: cover; display: block; }
+.minicard-noimg { width: 100%; aspect-ratio: 5 / 7; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim); padding: 6px; text-align: center; }
+.minicard-name { font-size: 11.5px; line-height: 1.3; padding: 0 8px; }
+.minicard-sub { font-size: 9.5px; color: var(--dim); padding: 0 8px; }
+.minicard.sel { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink); }
+.minicard-check { position: absolute; top: 5px; right: 5px; width: 20px; height: 20px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 11px; display: flex; align-items: center; justify-content: center; }
+.minicard .ofr-acts { padding: 2px 7px 0; }
+
+/* ---- the collector profile: masthead, front page, hunt ---- */
+.pf { display: flex; flex-direction: column; gap: 16px; }
+.pf-head { display: flex; align-items: flex-start; gap: 14px; }
+.pf-av svg { border-radius: 10px; }
+.pf-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.pf-handle { font-size: 19px; font-weight: 650; color: var(--ink); letter-spacing: -.01em; }
+.pf-addr { font-size: 11px; font-weight: 400; }
+.pf-sign { width: 100%; max-width: 560px; font-size: 13.5px; color: var(--ink); background: transparent; border: 0; border-bottom: 0.5px dashed var(--rule); padding: 3px 1px 6px; outline: none; }
+.pf-sign:focus { border-bottom-color: var(--ink); border-bottom-style: solid; }
+.pf-signro { font-size: 13.5px; color: var(--ink2); }
+.pf-record { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: var(--dim); }
+.pf-stat.rec { color: var(--have); }
+.pf-stat.rec::before { content: '✓ '; }
+.pf-front { display: flex; flex-direction: column; gap: 8px; }
+.pf-fronthead, .pf-sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+/* the bench fills whatever screen it's on — pockets are fractional, so the nine
+   scale with the page instead of hiding at a fixed width */
+.pf-page { max-width: 100%; gap: clamp(8px, 1.6vw, 18px); padding: clamp(12px, 2vw, 22px); }
+.pf-quiet { border-style: dotted; opacity: .35; }
+.pf-picker { max-width: min(1020px, 94vw); }
+.pf-pickbar { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; padding: 12px 18px 0; flex: none; }
+.pf-pickbar input { flex: 1; min-width: 170px; font: inherit; font-size: 12.5px; padding: 6px 10px; border: 0.5px solid var(--rule); border-radius: 7px; background: transparent; color: var(--ink); }
+.pf-pickbar .chip { cursor: pointer; background: transparent; }
+.pf-pickbar .chip.on { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.pf-pickhead .qs-done { width: auto; flex: none; padding: 8px 18px; }
+.pf-pickgrid { grid-template-columns: repeat(auto-fill, minmax(clamp(120px, 15vw, 170px), 1fr)); }
+.pf-pickhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding: 16px 18px 10px; border-bottom: 0.5px solid var(--rule); flex: none; }
+.pf-picktitle { font-size: 13.5px; margin-top: 3px; }
+.pf-pickgrid { overflow-y: auto; padding: 12px 18px 18px; }
+.pf-huntrow { padding: 2px 0; }
+button.pf-huntopen { font: inherit; color: inherit; background: transparent; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+.pf-huntmore { align-self: center; }
+.pf-page { margin-inline: 0; }
+
+/* ---- the live room: published pages + travelling offers ---- */
+/* ● live is a STATE tag, not a promise — ink-blue like the agent lane, never green */
+.mk-livetag { color: var(--agent, #4a6fa5); font-size: 10.5px; letter-spacing: 0.04em; }
+.pf-pubrow { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: 2px 0 16px; font-size: 12px; }
+.pf-pubrow .pf-live { color: var(--agent, #4a6fa5); }
+.pf-pubrow .pf-pubbtn { width: auto; flex: none; font-size: 12.5px; padding: 8px 16px; }
+.pf-puberr { color: var(--signal); font-size: 11.5px; }
+.ofl-live { color: var(--agent, #4a6fa5); }
+.ofl-liveleg { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; font-size: 11.5px; margin-top: 6px; padding: 7px 9px; border: 0.5px dashed var(--rule); border-radius: 7px; }
+.ofl-liveleg button { width: auto; flex: none; }
+.ofl-fund { display: inline-flex; align-items: center; gap: 6px; }
+.ofl-fund input { width: 230px; max-width: 46vw; font: inherit; font-size: 11px; padding: 4px 7px; border: 0.5px solid var(--rule); border-radius: 5px; background: transparent; color: var(--ink); }
+.ofl-err { color: var(--signal); font-size: 11px; }

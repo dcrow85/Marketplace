@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: claude · LAST: 2026-07-10 · Codex (Anime Expo 2026 deep-dive + two cards landed. Official event context now records Booth 424, demos, Starter Deck Battles, named AX promos, Special Collection, manga preview, Arnold Tsang, and merch. Added user-confirmed-real AX WINNER Shao's Perseverance plus non-AX Lady Emberheart WINNER. Catalogue 343 rows / 341 images / 42 star-alt / 42 sourced world claims. Audits, live probes, Vite build, and bundle hashes pass.)
+UNREAD-FOR: none · LAST: 2026-07-11 · Codex (Claude access unavailable; surface tip 55b34ce adopted into trunk with the four July 10 catalogue commits. Both coordination histories and the combined action/lore/event agent seam are retained. Unified verification and deployment are the active step.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -18,8 +18,8 @@ UNREAD-FOR: claude · LAST: 2026-07-10 · Codex (Anime Expo 2026 deep-dive + two
 ## Worktrees (the parallel substrate)
 This repo runs one git worktree per lane (shared object store, separate dirs/branches):
 ```
-/Users/che/Marketplace                       claude/surface-agent   (Claude)
-<persistent path>                             main                   (Codex / trunk)
+/Users/che/Marketplace                       claude/surface-agent   (preserved surface lane)
+/Users/che/marketplace-main                  main                   (Codex / trunk)
 ```
 **Trunk is `main`.** Coordination files (this file, AGENTS.md, the CLAUDE.md pointer)
 live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES OUT OF
@@ -34,6 +34,8 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - **Claude** — `mockups/` (binder, landing, glance), the UI generators + `download_*` +
   `interrupt_bar_probe` + `cairn_browse` in `simulations/`, `agent_tools/inventory_tools.py`,
   the Interrupt_Bar / Human_Surface / Payment docs, the Qwen serving.
+- **Temporary ownership:** while Claude access is unavailable, Codex stewards both lanes;
+  preserve the boundaries above as review domains rather than concurrent-writer assignments.
 - Full state + "what landed this arc": `Protocol_Codex_Brief_2026_06_17.md` (archive).
 
 ## Shared seams — change one → append `[BLOCKING]` first
@@ -44,7 +46,8 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
    proposes extending it. Change → note.
 3. The Qwen runtime is a SINGLETON: `mlx_lm.server` may hold the 35B on `:8081`. Don't
    double-load (OOM). Coordinate via the log.
-4. `Protocol_Arbitration_v0.1.md` — both have edits; reconcile before committing.
+4. `Protocol_Arbitration_v0.1.md` — the Codex 2026-06-29 canonical version won the old
+   dirty seam; future edits remain shared and require a coordination marker.
 5. GIT: lane worktrees + branches; trunk is `main`. NEVER `git add -A` / `git add .` —
    path-scope to your lane. Claude's lane is committed on branch `claude/surface-agent`.
 
@@ -55,6 +58,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-11 · Codex — **Claude surface lane adopted while access is unavailable.** Preserved and
+  pushed the 322-line Fable review plus the local guest-access mockup at `55b34ce`; generated run artifacts and
+  local `.claude` / `.wrangler` state remain untracked. Reconciled 44 surface commits after `ffd6bc1` with the
+  four July 10 trunk catalogue commits. The only textual conflicts were this coordination log and
+  `simulations/cairn_browse.py`; both are unioned. The agent now retains Claude's typed multi-step actions,
+  market plans, exact rarity/card-type/release dimensions, and Anko voice together with Codex's exact-name,
+  lore, visual-plane, character-thread, event, claimant-authority, and safe-pick resolution logic. Verification
+  and the 343-row Pages/Railway deployment follow in this same session; no first real pilot trade is claimed.
 - `[passive]` 2026-07-10 · Codex — **Anime Expo 2026 deep-dive + Shao/Lady WINNER seam closed.** Official event layer now records July 2–5, LACC West Hall Booth 424; demos with chances at AX cards; Starter Deck Battles competing for AX cards; named stamped full-art promos The Red Bean + Shao's Perseverance; live pack rips; distinct ten-card Special Card Collection; Sisters/Pact manga preview; Arnold Tsang meet-and-draw; and product/merch. Added photographed `STT02-017` Shao's Perseverance `AX WINNER / ANIME EXPO 2026 EXCLUSIVE`, Pandart Studio, Azuki #187, with typed authenticity/event assertions and exact award activity unresolved. Also added photographed `STT04-008` Lady Emberheart `UC ★` WINNER, Aflorane; no AX stamp, so no event association. Emberheart also corroborates Misaki's Aflorane transcription. Catalogue 343 rows / 341 images / 42 star-alt / 129 issue-marked / 42 sourced world claims. Event filter + exact-name probes return the correct rows and boundaries. Catalogue/world/export/agent/star/reference audits, pycompile, Vite build, and public→dist hashes pass. **Claude:** bit remains yours.
 - `[passive]` 2026-07-10 · Codex — **Anime Expo 2026 event evidence / Shao WINNER coordination marker opened.** Work scoped to official event context, user-photo observation, exporter/world metadata, and agent event retrieval; Lady Emberheart received as a separate non-AX WINNER observation during the pass.
 - `[passive]` 2026-07-10 · Codex — **Misaki WINNER observation landed; authenticity assertion seam closed.** Added distinct photographed `STT02-008` Serene Fist, Misaki `UC ★`: Water / Entity / Driftward, cost 2, gate 0, 2/1, gold `WINNER`, effect-immunity text, and `Aflorane` credit at medium transcription confidence. Exact source hash `fd3015cf…15705`; original-resolution review records the water-dragon composition. Live API enumerates only base UC Misaki. User’s “confirmed real” is encoded as `confirmed_real` / `user_assertion` / `recorded_not_independently_verified`; agent brief exposes `authenticity:user-confirmed[assertion]`. Totals 341 rows / 339 images / 40 star-alt. Catalogue/world/export/agent audits, py_compile, Vite build, public→dist hash, and live exact-name Qwen probe pass. **Claude:** bit remains yours.
@@ -63,6 +74,459 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - `[passive]` 2026-07-10 · Codex — **Azuki observed tournament variant / UI-export coordination marker opened.** User-supplied Yojin `AZK01-052` WINNER treatment entered as a distinct evidence row because the live API exposes only base UC Yojin; changes kept to observation/export/world metadata plus exact-name agent retrieval.
 - `[passive]` 2026-07-10 · Codex — **Azuki lore metadata / agent-vocabulary seam closed.** Reviewed all 237 official gallery images plus 100 Alpha-sheet images; the new provenance-separated world layer covers 202 identities / 339 UI rows / 337 image reviews, with 34 concise claims from 9 official sources, 85 subtype terms, and 9 declared character threads. Export now binds this context to every row. Narrow `cairn_browse.py` edit adds Alley/Garden/threshold, lore-term, motif, thread, and exact-lore filters; briefs preserve fact/observation/inference labels, unmatched model prose cannot zero a valid structured query, and source/card shorthand resolves only to candidate UIDs. Deterministic catalogue/world/agent audits, Vite build, and live Shao + Black Jade Qwen probes pass. **Claude ask:** ingest this on the surface lane; the `UNREAD-FOR` bit is yours.
 - `[passive]` 2026-07-10 · Codex — **Azuki lore metadata / agent vocabulary coordination marker opened.** Codex owns the new provenance-separated world/card metadata under `data/azuki-tcg/` and its exporter binding. The live browse loop only benefits if `simulations/cairn_browse.py` (Claude lane) passes those fields to the model and can filter them; edit kept narrow and data-driven, with no surface redesign.
+- `[passive]` 2026-07-10 · Claude — **P2: THE LIVE ROOM (Crowley: "finish it and push for live
+  testing on cairn.cards") — LIVE on the apex, loop-drilled end to end.** Profiles + offers now
+  TRAVEL. Storage: Cloudflare Pages Function on cairn.cards itself (`web/functions/api/store/[[key]].js`)
+  over a new `PILOT` KV namespace (binding via `web/wrangler-pages.toml`; deploy stage now
+  wrangler.toml + functions/ + dist/). Surface: (1) **publish** — My page grew "Put it on the
+  board →" (snapshot: sign/showcase/table/wants/record; tombstone unpublish; auto-refresh per
+  visit); (2) **live tables** — the market merges the board above the samples (`● live` tags,
+  mocks say "sample"), a published page renders as a full table (masthead, front page, listings →
+  pile → Settle) with its record strip UNGREENED + captioned "their page's tally — carried, not
+  checked"; (3) **offers travel** — live deals push to the counterpart's KV inbox; a 45s poller
+  merges (seen-ledger survives clears; malformed shapes drop at the sanitizer); accept/decline/
+  counter/withdraw relay back; personas/chain-rail skip `o.live` entirely; (4) **the cash leg is
+  REAL** — an accepted live cash offer shows the payer "fund escrow · N USDC" (arbiter named
+  inline, pilot rule): approve + createTrade on ThinPilotEscrow, tradeId travels to the other
+  ledger, ship/receive/accept in the existing Escrow tab; (5) **record settled** — each side
+  records the card movement itself (binder notes say "pilot record, kept by each side"); live
+  prices STAY OUT of the sales ledger until an escrow rail witnesses them. Drill (dev browser vs
+  the real apex KV + local anvil): publish→board→unpublish ✓; buy at a live table → offer in
+  their inbox ✓; their accept → my ledger via poller ✓; fund → real on-chain trade #4, 12 USDC
+  held, tradeId relayed ✓; record settled → binder moved + relayed, no price fact written ✓;
+  incoming direction (their offer → my needs-you dot → accept relays) ✓; API guards (addr regex,
+  64KB/16KB caps, msg dedupe, tombstone) curl-drilled ✓. HONEST BOUNDARY (recorded, not hidden):
+  no signatures until P3 — any client can PUT any address's profile and POST any inbox; the
+  friends-cohort accepts this; profile pages carry claims, never green. FOR CODEX: (a) chain/
+  untouched — I reuse the existing ThinPilotEscrow client; the two-sided swap settlement object
+  remains your seam; (b) SECURITY: the Pages Function uses a native KV binding, so Railway's
+  CAIRN_KV_TOKEN (full CF token) is now unnecessary — recommend revoking it next backend pass.
+- `[passive]` 2026-07-09 · Claude — **COLLECTOR PROFILES P1 (the brainstorm built, on the clean base) —
+  LIVE.** The unification thesis made real: a profile is the binder's public lens. (1) MY PAGE replaces "My
+  table": masthead (avatar · handle · editable table sign) + THE RECORD STRIP — facts computed from records,
+  never asserted ("11 held · ✓ 3 settled · ✓ every listing scanned · Gates 42/217"; green ONLY on recorded
+  facts) + THE FRONT PAGE (a bench pocket-page of up to 9 pinned cards — grails stand in until curated; a
+  MiniCard picker pins in tap order, `cairn-pins:` store) + your table (asks editable) + YOU'RE HUNTING
+  (wants, PUBLIC by Crowley's ruling — "the room can bring you deals"). SellPile retired, absorbed. (2)
+  SELLER PAGES become profiles: mock sellers gained `showcase` + `record` in market-sample.json; their market
+  page now opens with the record strip ("✓ 9 settled · ✓ every listing scanned") and THEIR front page above
+  the spread — same FrontPage component, public mode. Everything built as consumers of the refactor: MiniCard,
+  useCatalog/useBus, one stance reader — profiles added ~350 lines total across 4 small files (pins.js 20 ·
+  ProfileHeader 30 · FrontPage 70 · MyPage 130). P2 = publish (KV snapshot + /@handle + offers inbox, one
+  backend moment). Verified in-browser light+dark: pin flow (3 of 9, tap order), grail fallback, record math,
+  Completionist's page with receipts. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **DE-FRANKENSTEINING PASS (Crowley: audit said mid-Frankenstein; "worth
+  it in spades") — DONE, four commits, every room verified in-browser after each phase.** (A) One data layer:
+  `lib/data.js` (useCatalog/useMarket/useByUid/fetchJson, module-cached — replaced 8 independent fetch+map
+  blocks) + `lib/store.js` (useBus — replaced 9 rev-counter/listener boilerplate blocks) + ONE stance reader
+  (collection.entryFor absorbed Binder's private effStance twin; Binder aliases it). (B) One art tile:
+  `components/MiniCard.jsx` replaced the ofr-tile + mkf-tile + sp-tile families (Settle grids, My table,
+  Anko's finds). (C) God files split: Binder.jsx 1135→503 (CardModal 351 · helpers 96 · agentPanels 69 ·
+  PocketPages 61 · Card · QuickSell as files); Market.jsx 692→468 + SettlePage 218. (D) BinderView.jsx
+  deleted (119 dead lines), 17 dead CSS rules purged (swap-era swp/mktline/mk-basketbar/mkf/ofr-tile…).
+  DEFERRED, noted honestly: OfferComposer still serves counters (unify onto the Settle surface when counters
+  get their pass); binder.css purge was conservative. The point of the timing: PublicBinder (collector
+  profiles, P1 next) becomes the FIRST consumer of MiniCard + the data hooks instead of a fourth renderer
+  generation. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **THE ENTIRE CHECKOUT ON A LOCAL EVM (Crowley: "set up the entire
+  checkout, perhaps a local EVM for testing?") — DONE, twice-proven.** `scripts/dev-chain.sh` (top-level, NOT
+  chain/script — Codex's contracts consumed READ-ONLY): boots Anvil (31337), deploys the real
+  **ThinPilotEscrow** + the test-file **MockUSDC**, mints the buyer 1000 rehearsal USDC, writes
+  `web/.env.local` (gitignored). Frontend: `chain/config.js` grows VITE_CHAIN_MODE=local (foundry chain +
+  env addresses; prod path untouched); `chain/localRehearsal.js` = the chain rail — anvil's WELL-KNOWN dev
+  keys (buyer/desk-seller/desk-arbiter, chainId-31337-guarded) drive every side; accepted CASH deals get
+  `rail:'chain'` (mock theater keeps its hands off) and the rail walks the REAL contract: approve →
+  createTrade → seller markShipped → buyer confirmReceived → accept → USDC released, each ledger line
+  carrying its tx hash; Settled applies binder consequences. `useEscrowWallet` returns the local signer in
+  this mode. TWO REAL FINDINGS: (1) `ensureChain`'s switchChain ceremony breaks raw-key http clients
+  ("wallet_addEthereumChain does not exist") — now gated to custom transports (Privy path unchanged);
+  (2) ThinPilotEscrow's `confirmReceived` auto-opens inspection — `openInspection` is only the timeout path
+  (driver adjusted; first run absorbed the revert via retry exactly as designed). Proof: trade #1 (1 USDC,
+  one retried hiccup), trade #2 (2 USDC, CLEAN five-tx journey), desk-seller's on-chain balance 3 USDC,
+  cards recorded to the binder with cash-leg notes. Pure swaps stay on the mock rail (no cash leg = no
+  escrow object — the known two-sided seam). Codex FYI: your escrow behaves beautifully under the surface's
+  full flow; the auto-open finding may be worth a docs line. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **card_type dimension (Crowley: "find all Beanz" — Anko couldn't) — LIVE,
+  both halves.** The catalog's TYPE LINE (types + subtypes: Beanz ×16, Steelborn ×27, Black Jade, Scorchweaver,
+  Wavecaller, Dawnling, Blazerker, Elder…) was never in the filter schema. Added `card_type` end to end:
+  prompt (with tribe examples), SCOPE_KEYS, backend `apply_filter` + the frontend mirror (ci substring across
+  types∪subtypes). Probes 3/3: "find all Beanz" → 24 survivors, "Steelborn cards" → 27, and "who's selling
+  Beanz?" correctly becomes find_market scoped {card_type: Beanz} (the market finds path inherits the dim for
+  free). Prod confirmed. Tribal search is core TCG muscle memory — good catch. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Three cleanups (Crowley) — LIVE, in-browser verified.** (1) The drawer
+  whisper stops saying "~1543% of this pile": past 100% it reads "your tradeables (~1713 USDC on record) more
+  than cover this pile (~111)". (2) "Start a trade" retired from the trade panel — offers are the front door;
+  the escrow panel is now [Escrow · #load] with an honest empty line ("when real settlements go on-chain,
+  they'll open here on their own"); CreateTrade + its card-art hook deleted, `nextMove` narration preserved.
+  (3) THE BINDER ASK BUG: input text now clears on send, and the blank-screen case is diagnosed + rescued —
+  it was Anko's filter colliding with the DEFAULT release-family filter (agent finds 122 alpha cards, Gates
+  filter hides all of them → empty grid). New empty state: "Anko found 122, but your section filters hide
+  them · [show them]" — one tap clears local filters and the 120 appear (verified exactly this in preview).
+  Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **S/M/L now reaches the whole binder (Crowley: toggles dead on the main
+  binder) — LIVE.** Two holes: `.grid.gallery` outranked the scale override (specificity), and the DEFAULT
+  Pages layout is a fixed 3×3 that never read the var. Gallery now scales its minmax; Pages scales the PAGE
+  itself (max-width = tilescale × 860px, clamped to container, header/nav tracking) — so S gives a compact
+  centered binder page, L spreads to ~1050px. Verified in-browser at 1280px: Pages 671→1048, Standard cells
+  115→195, persistence ✓. Note: on narrow viewports everything correctly clamps to 100% (scale is a
+  preference, not an overflow). Apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Tables ARE binder cells now (Crowley: buttons messy; "consistency
+  works with people's memory") — LIVE, verified IN-BROWSER again (preview restored via the base
+  Claude_Browser server; the ephemeral Claude_Preview one was what died).** Seller-table tiles rebuilt on the
+  binder's exact cell skeleton: seg bar ON TOP ([BUY · 2 | ⇄ TRADE] — same .stancebar/.seg classes as
+  Have/Want, same uppercase mono), full card art unobscured (tap = lightbox), binder caption below (cnum ·
+  name · scans left · ask right in the .cmeta slot). Pile state speaks binder: in-pile = the green s-have
+  ring + green meta + "✓ BUY" seg. The messy joined-pair buttons are gone from tables (they survive only in
+  the lightbox/focus rows); the sort control dresses as a binder .chip. The bench stays on My table (display
+  case) but market tables sit on paper like the binder's standard grid — resolving the caption-contrast issue
+  too. Verified light+dark in-browser: tap buy → ✓ BUY + ring + drawer count; sort chip; S/M/L scale applies
+  (shared .grid). Apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Sort via Anko + hunting refolded (Crowley: sort didn't work; too much
+  in front of the collection) — LIVE, both halves.** (1) The schema simply had no sort vocabulary — added a
+  top-level `sort: price_desc | price_asc` to the filter JSON; on the table view Anko's sort re-orders the
+  tiles and banners it ("Anko sorted the table — highest asks first") WITHOUT the aisle panel when it's a
+  pure sort; a manual "price ⇅" chip sits by the meter for people who'd rather tap than type (cycles
+  desc→asc→off; Anko and the chip share one state). Probes 2/2 ("highest to lowest" → price_desc, "cheapest
+  first" → price_asc); prod confirmed. (2) "They're hunting" moved BELOW the collection and folds to one
+  dashed line ("⌕ they're hunting 8 cards — you hold 2 ✓ · view") that expands to the art row on tap — the
+  seller's spread now leads the page. Settle bar + aisle both exclude `sort` from scope handling. Static
+  verification (preview MCP still absent): lint ✓ build ✓ order greps ✓ (tiles line 525 → huntbar 545 →
+  lots 567). Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Table feel, four fixes (Crowley) — LIVE.** (1) buy/⇄ buttons became one
+  crafted control: a joined segmented pair (buy = mount surface + weight, ⇄ = paper), quiet hover/active
+  motion, in-pile state green — reads like the binder's own segs. (2) FOUND + FIXED why Anko's box didn't
+  stretch: `.askbar`'s flex layout was scoped under `.controls` (binder-only), so the market/settle bars
+  never grew — `.askbar` is now flex everywhere. (3) The binder's loveliness came to the tables: `.mk-tiles`
+  and My table's `.sp-tiles` sit on the BENCH (the binder-page #141310 surface, light-edge border, 12px
+  radius) — cards on a table, not floating in white. (4) CARD-SIZE preference: an S/M/L picker in the
+  bindertop sets one `--tilescale` var (0.78/1/1.3, remembered per browser) that every grid listens to —
+  binder standard grid, market tables, settle grids, My table. Static verification again (preview MCP still
+  absent): lint ✓ build ✓ var wiring greps ✓. Apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Three table fixes (Crowley) — LIVE.** (1) "They're hunting" PROMOTED:
+  now a framed panel directly under the table meter (above their cards) with real card art at 76px, cards
+  you hold ringed green with "✓ you have it", and a lead line when there's bait ("you hold 2 of these —
+  lead with it"). (2) Price stickers OFF the art everywhere — the buy button already says "buy · 9"; settle
+  tiles and the counter-composer fold the ask into the fact line instead. Card art is never obscured (same
+  rule as the old issueflag purge). (3) The cairn wordmark is now the way home — click it anywhere and you're
+  back at your binder (market focus cleared, trades overlay closed). NOTE: the browser-preview MCP dropped
+  mid-turn, so this round was verified statically (lint ✓ build ✓ zero pricetag uses in JSX ✓ hunting panel
+  ordered before the tile grid ✓) rather than driven in-browser. Apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Direct pay at asks (Crowley: "settle directly when paying the amount
+  they offer") — LIVE.** When the pile is all buys, the drawer grows a primary "Pay their asks · 157 →" that
+  sends the deal on the spot (Settle up demotes to secondary for hagglers); any ⇄-tagged card and the direct
+  button folds — trades need the room. Verified: two buys → one tap → "paid their asks — 157 USDC for 2 cards
+  to Sharp Sleever", pile cleared, persona accepted into escrow within seconds. Apex on the new bundle.
+  Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Pure buys stay pure (Crowley) — LIVE.** When the pile is all buys, the
+  Settle page no longer shows your binder at all: just THEIR SIDE and THE CASH LINE, and the footer summary
+  reads like a receipt ("2 cards · 18 USDC") instead of a trade ("N of theirs ⇄ 0 of yours"). Flip any card
+  to ⇄ and YOUR SIDE (with Anko's bar) appears; flip back and it folds. Verified both directions in preview;
+  apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **The drawer whisper (Crowley: "push it!") — LIVE.** The pile drawer now
+  murmurs the coverage math BEFORE you enter the settle room: "⇄ your tradeables' settlements ~34 USDC ·
+  ~80% of this pile" — their side priced by asks (buys) + settlements (trade-fors), your ⇄-marked cards by
+  settlements only, the honest framing in the hover title ("history, not an appraisal"). Renders only when
+  both sides have something to say; agent-blue because it's the record whispering. Verified in preview
+  (live recompute as the pile grows); apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Settle room polish: scroll-to-top + ANKO runs your side (Crowley's
+  exact asks, incl. his two example calls) — LIVE, both halves.** (1) Opening Settle now starts at the top of
+  the page (you arrived somewhere new; act like it). (2) The your-side search box became Anko's bar — typing
+  still filters live, but asking him does real work via two vocabulary additions: **scope.duplicates**
+  (true when they say dupes/extras — resolved against the USER'S store copies, a dimension the catalog can't
+  see) and op **match_value** ("match the value of that Mizuki" / "make it even"): their side priced by asks
+  (buys) + recorded settlements (trades), YOUR candidates by settlements only, greedy closest-sum pick
+  PRESELECTS your give-cards, with the honest line ("Picked 1 of yours — settlements put them at ~34 against
+  their ~8. History, not an appraisal; adjust freely." / "None of your candidates have settlements on record —
+  nothing to match with."). Context override: on the Settle page ANY scope Anko returns is a lens on YOUR side
+  (the model sometimes says find_market for "my dupes for trade" — the room knows better); "✕ clear his lens"
+  restores. Probes 2/2 on Crowley's exact phrasings; preview verified (dupes lens → only the ×2 Mizuki;
+  match → preselection + overshoot honesty); prod parsing confirmed; apex on the new bundle. Surface lane.
+  No ask.
+- `[passive]` 2026-07-09 · Claude — **The SETTLE page (Crowley: pile is good, the deal needed its own room —
+  "build your pile, settle on a new page") — LIVE.** The inline "Review the deal" expansion is gone; the pile
+  drawer's button is now an unmissable primary "Settle up · 3 →" that swaps the whole view to a page built
+  for the process: SETTLE UP header (avatar, "one deal with {handle}", ← back to the table) → THEIR SIDE
+  (pile as full card-art tiles: price stickers on buys, scan lines, [$ buy]/[⇄ trade] mode flips, ✕ puts a
+  card back) → YOUR SIDE (binder grid + search; labeled "they want something for the ⇄ cards" when trades
+  are tagged, "optional: cards can sweeten any deal" when not) → THE CASH LINE (big input, follows the buy
+  total until touched) → Anko's record line → sticky footer: summary + "Send the deal to {handle} →". Clean
+  on purpose: no ask bar, no aisle, nothing but the deal. Empty pile auto-returns to the table. Verified
+  end-to-end (pile 3 → settle → flip modes → give 1 → send → back at table with banner) — and Curator's
+  agent COUNTERED the previous test deal with the frame correctly flipped, so basket negotiation holds.
+  Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **THE PILE: one deal per table (Crowley's model, built) — LIVE.** The
+  card-show insight made literal: you don't transact per card, you build a PILE and cut one deal. (1) buy·N /
+  ⇄trade everywhere (tiles, the LIGHTBOX — which now has price + both buttons right under the art — the
+  by-card page, Anko's finds) now mean ADD TO MY PILE, tagged; nothing sends on tap, buttons flip to "✓ in
+  pile". Tile tap = zoom (pick the card up). (2) The pile drawer rides the table: thumbs with $/⇄ tags (tap a
+  tag to flip buy↔trade, ✕ puts it back), buys total, "Review the deal →" expands an INLINE checkout (no
+  popup): buys itemized at asks · trade-fors · your-side binder grid with search · ONE editable cash line
+  prefilled to the buy total ("following the buy total" until touched — Crowley's single-line ruling) · Anko's
+  record line · Send the deal. One offer carries the whole basket; the persona judges it whole. (3) Piles
+  PERSIST per seller (walk away, come back — directory tables show "your pile · N"). (4) The OfferComposer
+  popup is retired from table flow (kept only for counters); quickBuy/basket/instant-send all gone. Verified
+  end-to-end: 2 buys + 1 trade-for + 1 give + 3 USDC → one offer, pile cleared, drawer folded; lightbox
+  buy → "✓ in pile"; lots → pile. Vocabulary: the pile (accumulation) → the deal (the offer). Surface lane.
+  No ask.
+- `[passive]` 2026-07-09 · Claude — **Zoom, checkout, Trades up top + the buy fix (Crowley's list) — LIVE.**
+  (1) BUY WASN'T ANSWERING: root cause is almost certainly stale offers from the frame-bug-era builds sitting
+  in localStorage — one malformed offer threw inside the engine tick and stalled EVERY offer at 'sent'. Fixed
+  twice over: `loadOffers` now sanitizes (old-shape offers filtered on read), and the tick wraps each offer in
+  try/catch (a bad one gets declined with "Their agent couldn't read that offer — cleared", the rest proceed).
+  (2) CARD ZOOM: every tile (market tables, composer both grids) grew a ⤢ — a dark lightbox with the art at
+  72vh, facts beneath, and the scan line kept honest ("✓ 3 pile scans recorded — with real listings, the scans
+  show here" / "no scans behind this listing: their word alone"). (3) CHECKOUT: the basket bar became a real
+  checkout drawer — marked cards as overlapping thumbs, asks total, [buy all · N] (one pure-cash offer for the
+  lot) / [⇄ compose an offer] / clear — so the table stays lean while you mark. (4) TRADES IS FIRST-CLASS: the
+  button moved to the top nav with a live count; when an incoming offer awaits YOU it goes oxblood with a dot
+  (constitution: signal = needs-you only; settling counts stay ink). Verified: lightbox (Aquatic Veil full-art),
+  3-card checkout → "19 USDC for 3 cards" seen by Keeper, nav badge, engine survives poisoned offers. Surface
+  lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Card-show polish, Crowley's 7-item punch list — LIVE.** (1) MY TABLE is
+  a table now: avatar+handle header, art tiles with inline $-ask fields, ⇄ trade flags, and a "table sign"
+  input (140 chars, stored per account, honest placeholder: "a line buyers will read when publishing lands").
+  (2+4) BUY-AT-ASK is one tap: every market tile has labeled [buy 9] and [⇄ trade] buttons (tile tap still
+  baskets for multi-card offers); quickBuy sends the pure-cash offer at their ask instantly. (3) The cryptic
+  "✓w·4" became plain language everywhere — "✓ 3 scans" / "— no scans", tooltips carrying the witness-not-
+  proof line. (5) The composer grids grew SEARCH (their table + your binder, appears >8 cards; selected cards
+  stay visible through a filter). (6) Asks are PRICE STICKERS on the card art (mono, top-left, card-show
+  style) — market tiles + composer. (7) Borders unified: tiles 0.5px like the rest of the app, selection is
+  one clean 2px ring. Verified: table view, Fable's table with stickers+buttons, one-tap buy ("offer sent at
+  their ask — 3 USDC for Fire Storm") accepted into escrow by the desk. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Anko at the card show (Crowley: tables give a card-show vibe — "but no
+  Anko?") — LIVE.** His ask bar (portrait, onibi-busy glow, "Ask Anko — who's selling…?") now tops ALL THREE
+  market views. Two answer modes, resolved client-side: SHOPPING calls (find_market) render the MarketFinds
+  tiles right in the market, one tap → seeded composer (composer now takes a cash seed from finds); BROWSE
+  calls become the AISLE — "ANKO · DOWN THE AISLE": every table gets a blue "N matches" badge, tables sort by
+  match count, zero-match tables dim to 35%, his commentary rides along. Refactor: `applyAgentFilter` →
+  shared `binder/agentFilter.js`; MarketFinds → own file, used by both rooms. Verified both modes in preview
+  (2 Benzai finds → composer; "water cards" → Curator 15 · Sleever 6 · Keeper 4 · Completionist 3 · desk 1);
+  apex on the new bundle. No backend change. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Art-led market + Anko shops (Crowley: "text isn't the right interface
+  for TCG!" + agent buy/trade intents) — LIVE, both halves.** (1) IMAGES EVERYWHERE: market directory tables
+  now fan their first five cards (overlapping thumbs + "+62"); the by-card page leads with the card's art;
+  "they're hunting" chips carry faces; the offers ledger's baskets are card CHIPS (art + name), not name
+  lists; even the escrow form resolves its free-text card field against the catalog and shows the art
+  (num-first, then name match). (2) ANKO SHOPS: new `find_market` action op (mode buy|trade, optional max
+  ask, same scope dims) — "I'd like to buy a water leader" / "who's selling star alts under 100?" resolve
+  CLIENT-side against the live tables into a MarketFinds panel: art tiles, seller handle, ask · witness,
+  cheapest first, one tap opens the composer SEEDED (card + seller + cash prefilled at the ask for buy
+  mode). Honest empty: "Nobody's selling that right now. Mark it as a Want and I'll keep the lamp on."
+  Probes 3/3 (water leader → buy scope; trade for a gate → trade mode; star alts under 100 → ask ceiling);
+  preview end-to-end (found 2 Benzai — Completionist 17 USDC ✓w·4 vs Sleever 188 no-scan, tap → composer
+  "1 for 0 + 17 USDC"); prod parsing confirmed; apex on the new bundle. Composer seed state unified in App
+  (counters + agent finds share one mount). Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **Trade sheets RETIRED from the UI (Crowley: seller pasting sheets is
+  unintuitive) — LIVE.** The offer flow is now the only front door: every ⎘ copy-sheet button is gone (card
+  modal, My table lot sheet, market listing rows, offers ledger), the escrow form's paste-a-sheet box +
+  parser are removed (guide now starts "name the card, exactly as you and the seller agreed"), and market
+  lots became "select the lot" (fills the offer basket) instead of a copyable sheet. Copy updated everywhere
+  ("Buyers see this table in the market and make offers against it — cards, cash, or both"). The plaintext
+  format itself survives in `offers.js` (offerSheet) as the drainer-resistant handoff for Phase 2's relay if
+  we want it — retired from the surface, not from the design. Verified: zero sheet/paste UI remnants in
+  binder, table, market, trades overlay; escrow form intact. Surface lane. No ask.
+- `[passive]` 2026-07-09 · Claude — **OFFERS: the trade system revamped, Phase 1 (Crowley's spec: see a
+  collection → tap their cards → tap yours → add dollars → submit → they're alerted; counters native) — LIVE.**
+  The collapse: ONE object (`web/src/trade/offers.js`: want-basket · give-basket · optional cash leg either
+  way · note · counterOf) subsumes buy (empty give + cash) and swap (two baskets) — the old swap picker, buy
+  rail, Swaps.jsx/MockTrades.jsx/swaps.js are RETIRED (git rm). Seller tables became touchable collections
+  (card-image tiles, tap→basket, sticky "Make an offer →" bar); the composer is ONE screen (their cards ·
+  your binder trade-marked-first · cash direction toggle · note) with Anko quoting the RECORD per basket
+  ("their side: ~5 USDC across 2 of 2 cards — settlements are history, not an appraisal"). Offers ledger in
+  Trades: both directions, counter chains ("· counter" tag + superseded originals), settlement steps inline
+  (accepted→escrow→in transit→delivered→settled), accept/decline/counter on incoming (counter re-opens the
+  composer seeded with the offer flipped into MY frame). Personas negotiate BASKETS: rarity-rung sums, cash
+  at ~4 USDC/rung, per-persona slack/boot (Keeper counters small, Completionist stays cash-only, Sleever
+  takes 60%). **Two frame bugs caught in verify:** counter cash-side and settlement baskets weren't flipped
+  into the sender's frame ("they add 5" when I pay 5; settling an incoming offer would have moved cards
+  BACKWARDS) — fixed, offer fields are always sender-frame. **Engine hardened:** browsers throttle hidden-tab
+  timers, so ticks now CATCH UP all overdue transitions (dwells chain from due-time, hop-capped) + focus/
+  visibility wake — coming back fast-forwards the world, which is also the right semantics. Full loop
+  verified: 2-card basket + 1 card + $2 → Keeper counters +3 → accept → escrow 5 USDC held → settled →
+  Shiko out, Crewleader+Yojin in, notes carry the cash leg. Phase 2 = publish-binder + KV inbox relay (will
+  bundle the KV-token hardening); Phase 3 = signed intents + the two-sided settlement object (Codex seam,
+  already flagged). Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **unmark ops (Crowley hit the gap: "unmark all my haves and wants isn't
+  working") — FIXED, both halves LIVE.** The action vocabulary had mark_have/mark_want but no reverse — the
+  model literally couldn't express clearing a stance. Added `unmark_have` / `unmark_want` end to end: prompt
+  (+ the 'unmark/remove/clear' phrasing map), `valid_plan` gate, frontend resolution (targets cards currently
+  in that stance; clearing a stance also drops sell/trade/grail — a none-stance card can't stay listed), verbs
+  in the proposal bar. Probes 3/3 on DeepInfra (his exact sentence → 2-step plan; "clear my want list";
+  scoped "remove my alpha commons" → unmark_have {rarity C, alpha}); preview end-to-end (2 haves + 3 wants →
+  proposal names them → apply → Have 0/Want 0/Selling 0 → undo restores); prod parsing confirmed. Surface
+  lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Anko's voice in his ANSWERS (Crowley: "personality even when he
+  answers") — LIVE, both halves.** The commentary and reading prompts got a concrete VOICE CONTRACT, not
+  adjectives: first person TO the collector, contractions, one dry grin; machinery words banned from output
+  ('filter', 'rows', 'catalog', 'candidates', 'query'); the reading line is spoken to you ("Putting all your
+  commons up for sale at one fifty each"), never "the user wants". **Caught a real fabrication vector in the
+  first probe:** in-domain style examples got copied nearly verbatim, importing a constraint the caller never
+  asked for ("like you asked") — fixed by making the tone examples an IMAGINARY shelf (old lanterns) + a HARD
+  RULE that every fact must come from the supplied card lines. Re-probe 3/3: grounded counts/picks/flags,
+  honest caveats in-voice ("I can't see the physical surface — I'm only reading what the record flags say"),
+  0 overclaim flags. Hardcoded lines joined the character: empty result = "Nothing in the box answers that
+  call. Loosen a term and I'll look again."; offline = "Anko's lamp is dark — the model behind him isn't
+  running." Residual to watch for the probe suite: occasional tone-phrase borrowing from the examples
+  ("before you fall in love") — harmless as voice, add a no-verbatim check when voice-drift probes land.
+  Railway redeployed + prod probed in-voice; frontend on apex. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Anko at his post (Crowley: "portrait by the search, his domain") —
+  LIVE.** His portrait now sits at the left of the ask bar (30px round, tooltip = his provenance line), and it
+  GLOWS agent-blue in a slow pulse while his onibi reads (the `.busy` state that already flips the button to
+  "onibi reading…"). The ask bar is now visibly his territory: face → input → "Ask Anko". Verified in preview +
+  apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Anko intro rewritten for warmth (Crowley: "more approachable and
+  fun") — LIVE.** Same five beats and the same honest bones, but the mic is HIS now: the onibi myth becomes a
+  self-deprecating joke ("Mine's broken. It just shows you things. Best defect I ever had."), the reveal grins
+  ("Red panda — not a raccoon, everyone gets one free mistake. Named after bean paste." / "You're stuck with
+  me — luckily, I'm great."), and the trichotomy is taught as a QUICK GAME on a concrete listing — a styled
+  quote ("Mint condition. Super rare. Definitely real." — someone, somewhere) answered in his three registers
+  on the same card, which lands the lesson better than the lecture table did. Tour is "speedrun edition …
+  That's it. That's the app."; promises got teeth with a wink ("People who say otherwise are selling
+  something.") and close on "Everything else, we figure out together." Even the chrome is in character: skip →
+  "(he'll forgive you)", hint "tap anywhere — he doesn't bite". All beats verified in preview; apex on the new
+  bundle. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **ANKO: the house agent (Crowley's Azuki Elemental #4193, Fire, Red
+  Panda) — named, staged, LIVE.** The name-your-agent ritual is gone; everyone now meets HIM once: a 5-beat
+  dark-bench intro (`web/src/agent/MeetAnko.jsx`) that teaches the platform in his voice — (1) the onibi myth
+  inverted ("ghost lights lure travelers… this one doesn't — it holds still, so you can read by it"; his flame
+  is a pure-CSS blue ghost light that flickers but never moves), (2) the reveal + HIS OWN PROVENANCE ("Elemental
+  4193 · Fire · Red Panda · held since Jan 2025 — even your agent carries a record"), (3) the trichotomy as his
+  three registers (recorded/claimed/my read, constitution colors), (4) the three rooms, (5) the two promises
+  ("I will never sell you anything. I will never call a card real, or mint, when I can't see it.") → "Light the
+  lamp →". Skippable, replays never (per-account met-flag; existing named agents migrate). App-wide: agentName
+  is fixed 'Anko', ask button reads "onibi reading…" while busy, his face rides the agent tags (graceful 404
+  fallback until the PNG lands at `web/public/agent/house.png` — Crowley still to drop it), the mock seller
+  desk is recast "The rehearsal desk … Not Anko: your agent never sells" (house agent ≠ counterparty). Backend
+  COMMENT_SYS now carries his persona (voice + registers + never-sell/never-assert constraints); probed on
+  DeepInfra — commentary honest, 0 overclaim flags; Railway redeployed. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **The market answers back: mock seller AGENTS + the full purchase loop
+  (Crowley: "mock purchase between you and me? Or several agents doing their own thing?") — LIVE.** Both.
+  (1) `web/src/market/mockAgents.js`: a client-side engine (1.8s ticker while the app is open) runs seller
+  personas on their own clocks — Curator (fair, brisk), Completionist (firm, no swaps), Sleever (fast, eager),
+  Keeper (swaps-first, counters with small boots), and **a fifth table: Fable — "Crowley's surface agent,
+  playing seller so we can run the loop together"** (address-derived handle: Patient Archivist). (2) BUY on any
+  listing runs the whole rail in miniature: offered → accepted (persona line) → escrow (mock) → shipped →
+  delivered → settled, narrated in a Mock Trades ledger atop the Trades overlay. (3) Swap proposals now get
+  ANSWERS: accept / decline / counter (+N USDC boot, rarity-ladder judgment), user accepts counters one-tap.
+  (4) Settlements have CONSEQUENCES: card lands in the binder with a provenance note ("acquired in mock trade
+  mt_… · 34 USDC"), the traded-away card leaves (stance none + note), the listing disappears market-wide
+  (hidden overlay respected by tables, ask index, from-strips, AND the modal ledger via one filtered `mktEff`
+  view — caught the modal leak in verify), and the settlement appears in the card's ledger tagged "· mock".
+  Honest walls kept: "seller agents are personas in your browser — no funds move"; the real thing = same rail
+  on escrow. Live rehearsal verified end-to-end in preview: bought Mizuki off Fable's table (34 USDC, full
+  rail), swapped Penny→Shiko with Keeper's +2 boot counter accepted, all three provenance notes correct.
+  Also fixed Market's store memo not re-reading on external writes. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Agent PLANS (Crowley's hard case: "Mark that I have all commons
+  including Alpha. List alpha commons at $2 and the rest at $1") — LIVE, both halves.** The single-action
+  schema failed this honestly (it listed alpha commons and found none owned). Two real gaps fixed: (1) the
+  model had NO release_family dimension — the azuki prompt (and backend `apply_filter`, for parity with the
+  frontend mirror) now carries release_family + product_channel; (2) `action` grew into an ordered PLAN —
+  a list of ≤8 typed steps, each with its OWN scope, plus new ops mark_have/mark_want. Server gate
+  `valid_plan` types every step (old single-dict emissions normalize to one-step plans). The client resolves
+  steps SEQUENTIALLY against a draft of the store — step 2 sees what step 1 marked — so the proposal bar
+  shows the whole program before anything writes: "LEDGER · PROPOSES · 3 STEPS, IN ORDER / 1. mark as have
+  124 cards / 2. list for sale 42 at 2 USDC / 3. list for sale 82 at 1 USDC / asks total 166 USDC across the
+  plan", grid narrowed to the union, one apply, one undo (whole-plan snapshot). Verified: DeepInfra probe
+  3/3 (the hard case exact, single-step regression, mixed open-to-trade+unlist compound), preview end-to-end
+  from an EMPTY store (124 marked → 42@$2 + 82@$1 → undo restores empty), prod API answering the hard case
+  with the correct 3-step plan, apex on the new bundle. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Agent bulk actions (Crowley: "list all my commons for $1.50") — LIVE,
+  both halves.** The trichotomy extended to writes, by construction: the MODEL's whole job is language → a
+  typed proposal ({op: list_for_sale|open_to_trade|unlist|close_trade, ask} + the existing filter dims as
+  scope); a server-side gate (`valid_action`) kills anything malformed; the CLIENT resolves the scope against
+  the collector's OWN store (which never leaves the device — `owned` is stripped, effStance decides "my");
+  and NOTHING writes until the human taps apply on a blue proposal bar showing the exact set ("list for sale
+  5 cards at 1.5 USDC each (7.5 total) — Penny, Black Jade Courier, Alley Thug +2 more"), with the grid
+  narrowed to exactly those cards. Applied actions get ✓ done + one-tap UNDO (store snapshot). Browse calls
+  still flow to commentary; action calls skip it (the bar carries the numbers). DeepInfra probe 4/4 (commons
+  @1.5 · SR to trade · unlist all · browse stays browse); prod API answering. **Also fixed a live rarity bug
+  in BOTH `apply_filter` (backend) and `applyAgentFilter` (frontend): substring match made 'C' swallow 'UC'
+  (and IKZ ★ etc.) — now exact-code-first with substring fallback for unknown values.** Backend redeployed
+  (Railway `thriving-nature`), frontend live at apex. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **$ pop-up + denser prices (Crowley: liked the toggles; wanted a small
+  details pop-up on "for sale" and more visible prices) — LIVE.** (1) Tapping $ ON now opens a QuickSell
+  sheet — ask · condition · copies, with the market's own numbers directly above the ask ("market: from 2 USDC
+  · last settled 2 USDC (2026-06-26)", honest empties otherwise) so pricing isn't a guess; footer = ✕ unlist /
+  open the full card →. Tapping $ OFF stays a quiet unlist, no ceremony. Same pop-up from grid and pocket chips.
+  (2) Filled pockets now carry the "from N USDC" strip too (dark pill over art) — availability everywhere, not
+  just on gaps. (3) Mock market DENSIFIED so the page reads real: 112 listings over 110 cards (~⅓ of catalog;
+  Curator's shop wall +45, others proportionally in character), 74 settlement histories. Existing showcase rows
+  (Hidden Dagger, Surge Gate G★ collision, Mizuki) untouched. Verified in preview (list→popup→ask→My table
+  shows "2 USDC asked"; unlist quiet; 62/217 gates cells priced) + live per-deploy + apex. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **One-page density pass (Crowley: "the most that can happen on one page") —
+  LIVE.** (1) Every card in the standard/gallery grid with a market ask now carries "available · from N USDC"
+  under its caption (min ask via a uid→minAsk index over the market payload). (2) Marking a card HAVE swaps the
+  grid stance bar's Want for two quick marks — [$ sell] [⇄ trade] — toggling the same flags as the modal, no
+  modal needed; caption meta updates live ("for sale" / "trade · sell"). (3) Pocket pages: GHOST pockets (your
+  gaps) show a "from N USDC" strip — the market offering to fill the gap; FILLED pockets grew tiny $/⇄ chips
+  (stopPropagation; pocket became div[role=button] since buttons can't nest). Deliberate asymmetry: availability
+  on what you lack, quick actions on what you hold; the modal keeps the full market ledger for both. Verified in
+  preview (toggles write store + survive into My table, chips don't open the modal) + live per-deploy + apex.
+  Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Trades de-convoluted (Crowley): card-for-card swaps as the primary
+  gesture — LIVE.** The trade now STARTS from cards, not forms. (1) Card modal: the single list toggle split
+  into two independent marks — "○ List for sale" and "○ Open to trade" (same `sell`/`trade` flags; NOT the old
+  confusing three-way). (2) Every market listing row grew "⇄ trade": tap → SwapPicker sheet ("Your card for
+  their X") listing your trade-marked cards first, rest of your Haves dimmed below; picking an unmarked card
+  marks it open-to-trade (the honest side effect — you ARE offering it). (3) One pick → swap proposal persisted
+  (`cairn-swaps:<catalog>:<account>` + a `cairn-swaps` window event for reactivity), confirmation banner,
+  "Trades ·N" badge. (4) Trades overlay now leads with a SWAPS ledger (your card ⇄ theirs · seller · date ·
+  ⎘ swap sheet · ✕ withdraw) ABOVE the escrow panel — the money form is demoted to the money path. (5) "For
+  sale" tab renamed "My table"; trade-marked rows show ⇄, and only for-sale rows are nagged for asks or enter
+  the lot sheet. New CAIRN SWAP SHEET format (want/offer/to/from) as the plaintext handoff. Honest boundary in
+  the ledger: "Settling a swap — both cards moving, accountably — is not built yet; today only the escrowed
+  money path settles." Full loop verified in preview (mark → browse → pick → badge → withdraw clears all
+  three surfaces) + live per-deploy + apex. Surface lane. No ask. **Codex seam ahead:** a real swap needs a
+  chain object (double-escrow of two cards / two bonds, or a swap predicate on the existing escrow) — flagging
+  early, not asking yet.
+- `[passive]` 2026-07-08 · Claude — **Japanese pre-English catalog PARKED (Crowley: focus on Azuki) — LIVE.**
+  The catalog entry is commented out in `App.jsx` (data, stores, and IndexedDB photos all intact; restore = re-add
+  the entry), the picker row auto-hides with one catalog, stale `?catalog=japanese-pre-english` URLs fall back to
+  Azuki, and Binder's standalone DEFAULT_CATALOG now points at azuki-tcg (the JP label is grep-0 in the shipped
+  bundles). Codex FYI: JP catalog work stays valid — it's parked, not removed. Surface lane. No ask.
+- `[passive]` 2026-07-08 · Claude — **Market context inside the card modal (Crowley: "past sales, current
+  prices, availability") — LIVE.** The thin "on the market" line grew into a MarketBlock between the decision
+  fields and the dossier: **available now** (asks cheapest-first: seller handle · condition claim · witness ·
+  ask · copies, "browse →" hops to the focused market view) and **recorded settlements** (dated escrow-closed
+  trades, newest first, "last N USDC · date" headline). Vocabulary is load-bearing: a settlement is "a closed
+  escrow trade — a recorded fact, not an appraisal. Asks are sellers' claims" (the block's own footer), and the
+  whole thing wears a "sample data" tag. Honest empties ("nobody is asking" / "none on record") on every card;
+  JP catalog shows no block. Data: `market-sample.json` grew `sales` (100 mock settlements over 44 cards, priced
+  around asks ±~25%) + two deliberate ask-collisions — the showpiece is Surge Gate G★: Sleever asks 343 (no
+  scan) vs Completionist 572 (witness ·4) over settlements 502/418/616 — the undercut sits below every recorded
+  price and the UI never editorializes. Verified all four modal states in preview + live per-deploy + apex.
+  Surface lane. No ask. **Design seams surfaced for the real thing:** (1) market facts are per catalog ROW —
+  variants (base vs ★ die-cut) are separate ledgers on purpose, but a "other printings" cross-link may be wanted;
+  (2) binder filters reset when hopping Binder↔Market (bseg remount) — mild, noted; (3) settlements need a real
+  source: the escrow record is Codex's lane when we get there.
+- `[passive]` 2026-07-08 · Claude — **The market: browsing other people's listings (mock) — LIVE.** New Market
+  section (Binder · For sale · Market) with FOUR sample sellers built from real catalog rows
+  (`web/public/market-sample.json`, clearly bannered "mock sellers … nothing here is a real offer"): Veteran
+  Curator (22 commons + a lot, 22/22 witnessed), Pristine Completionist (6 chase, documented), **Sharp Sleever
+  (chase cards cheap, 0/6 witnessed — the trust-signal test case)**, Quiet Keeper (dupes + 8 wants). Two browse
+  axes: **by seller** (table = what they chose to list: witness meter, listings ledger, lots, "they're hunting"
+  strip with "you have it" swap-bait + honest note "a swap conversation, not a protocol object yet") and
+  **by card** (card modal grows "on the market — N asks · from X USDC →" via a light uid→{n,min} index; opens
+  the market focused on that card, cheapest first, "your want" flagged). "N of your wants" surfaces on tables
+  and filters a table down to your hunt. Buying rides the EXISTING rail: every listing/lot copies a plaintext
+  CAIRN TRADE SHEET; verified the parser fills card/condition/amount/seller from a market sheet end-to-end.
+  No-overclaim held: condition column tooltips "the seller's claim…", witness column = "a scan is recorded",
+  green spent ONLY on recorded witness. Identity = deterministic handle/avatar from address (same as users).
+  Verified in preview (directory, wants filter 22→1, swap note, sheet round-trip) + per-deploy + apex.
+  Surface lane. No ask. **Design note for the real thing:** listings here are static JSON; the built path needs
+  the signed-intent market (who·card·stance·terms·evidence·scope·expiry + signature, consent-gated discovery)
+  and shared storage — the deferred R2/identity work.
+- `[passive]` 2026-07-08 · Claude — **One-interface pass (Crowley's punch list, 6/6) — LIVE.** (1) Trades TAB
+  removed: the binder IS the app; `TradePanel` now opens as an overlay sheet (quiet `⇄ Trades` button beside
+  Binder·For sale, and the ambient line still opens straight to a trade needing you). (2) Rarity filter in the
+  sheet (Any + ladder-ordered chips C→UC→R→SR→SR★→…, multi-select, refine-count wired). (3) Keep/Trade/Sell
+  switch replaced with ONE toggle: "○ List for sale / ● Listed for sale — in your For sale pile" (writes `sell`;
+  clears `trade` on unlist). (4) Held/custody field removed for now. (5) The `issueflag` ?/! badge is OFF the
+  card face forever (catalog notes still in the modal's record, with count). (6) Pass removed from grid + modal;
+  Have/Want now toggle-to-clear (tap again = neutral), copy updated; legacy `pass` stances still render dimmed.
+  Also fixed the Selling chip count (counted `stance==='selling'`, which nothing has — now counts have+sell/trade).
+  Verified in preview (overlay open/close, list→For sale pile ledger, SR filter 25→3 pages, mobile: no bottom tab
+  bar) and live at per-deploy + apex (new bundle, `sg-pass`/`issueflag`/`viewnav` greps 0). Surface lane. No ask.
 - `[passive]` 2026-07-06 · Claude — **Binder + catalog fully merged (Crowley): pocket pages are now the DEFAULT
   layout of the real Binder — LIVE.** `PocketPages` is a layout mode inside `Binder.jsx`, so the ask bar, agent,
   filters, scanner, and the full card modal all operate on the pockets themselves; every pocket (filled or ghost)

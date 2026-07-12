@@ -1,0 +1,63 @@
+/* Meeting Anko — the dark bench register, always. The intro is forensic night no
+   matter the app theme: black bench, ink text, and ONE color — his onibi blue.
+   Green appears exactly once (the "recorded" tag), because that's the constitution. */
+.anko-gate { position: fixed; inset: 0; z-index: 100; background: #100f0d; color: #DBD5C8; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; cursor: pointer; overflow-y: auto; }
+.anko-skip { position: fixed; top: 18px; right: 20px; font-size: 12px; color: #8a857a; background: transparent; border: 0.5px solid rgba(236,234,227,.18); border-radius: 7px; padding: 8px 14px; cursor: pointer; }
+.anko-skip:hover { color: #DBD5C8; }
+
+.anko-stage { width: 100%; max-width: 560px; }
+.anko-beat { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; animation: anko-in .5s ease both; }
+@keyframes anko-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.anko-line { font-size: 16px; line-height: 1.65; margin: 0; max-width: 46ch; }
+.anko-line b { color: #9fe8ff; font-weight: 600; }
+.anko-line.dim { color: #8a857a; font-size: 14px; }
+.anko-turn { color: #9fe8ff; }
+.anko-name { font-size: 30px; font-weight: 650; margin: 4px 0 0; letter-spacing: -.01em; }
+.anko-prov { font-size: 10.5px; letter-spacing: .14em; color: #8a857a; border: 0.5px solid rgba(236,234,227,.16); border-radius: 6px; padding: 6px 12px; }
+
+/* the portrait — his art carries its own glow; we just frame it on the bench */
+.anko-portrait { width: min(58vw, 250px); aspect-ratio: 1; border-radius: 16px; overflow: hidden; border: 1px solid rgba(159,232,255,.25); box-shadow: 0 0 60px rgba(80,180,255,.14), 0 24px 60px rgba(0,0,0,.5); }
+.anko-portrait.sm { width: min(38vw, 150px); }
+.anko-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.anko-noimg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #171613; }
+.anko-mini { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(159,232,255,.3); }
+.anko-minirow { display: flex; align-items: center; gap: 12px; }
+
+/* the onibi — a small blue ghost flame, alive but still. It flickers; it does not move. */
+.onibi { position: relative; width: 34px; height: 48px; }
+.onibi.big { width: 56px; height: 84px; margin-bottom: 8px; }
+.onibi-core, .onibi-inner { position: absolute; inset: 0; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; }
+.onibi-core { background: radial-gradient(closest-side at 50% 62%, rgba(255,255,255,.95), #9fe8ff 32%, rgba(64,150,255,.42) 62%, transparent 78%); filter: blur(1.5px); animation: onibi-flick 1.7s ease-in-out infinite; box-shadow: 0 0 34px rgba(90,180,255,.5), 0 0 90px rgba(60,140,255,.25); }
+.onibi-inner { inset: 22% 26% 14%; background: radial-gradient(closest-side at 50% 68%, #fff, rgba(190,240,255,.85) 45%, transparent 75%); filter: blur(.8px); animation: onibi-flick 1.7s ease-in-out infinite .25s; }
+@keyframes onibi-flick {
+  0%, 100% { transform: scaleY(1) scaleX(1) rotate(0deg); opacity: 1; }
+  30% { transform: scaleY(1.07) scaleX(.95) rotate(-1.6deg); opacity: .92; }
+  55% { transform: scaleY(.94) scaleX(1.05) rotate(1.2deg); opacity: 1; }
+  75% { transform: scaleY(1.04) scaleX(.97) rotate(-.8deg); opacity: .95; }
+}
+
+/* the registers / rooms — his vocabulary, in the constitution's colors */
+.anko-regs { display: flex; flex-direction: column; gap: 10px; text-align: left; max-width: 460px; }
+.anko-reg { display: flex; align-items: baseline; gap: 12px; font-size: 14px; line-height: 1.55; }
+.anko-reg > span:last-child { color: #b7b1a4; }
+.anko-tag { flex: none; width: 76px; text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; border-radius: 5px; padding: 3px 0; }
+.anko-tag.rec { color: #5FA877; border: 0.5px solid #5FA877; }
+.anko-tag.clm { color: #DBD5C8; border: 0.5px solid rgba(236,234,227,.4); }
+.anko-tag.red { color: #9fe8ff; border: 0.5px solid #9fe8ff; }
+.anko-tag.room { color: #8a857a; border: 0.5px solid rgba(236,234,227,.25); }
+
+.anko-enter { margin-top: 10px; font-family: var(--mono); font-size: 14px; color: #100f0d; background: #9fe8ff; border: 0; border-radius: 9px; padding: 14px 30px; cursor: pointer; box-shadow: 0 0 40px rgba(90,180,255,.3); }
+.anko-enter:hover { background: #c3f1ff; }
+
+.anko-foot { position: fixed; bottom: 22px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; }
+.anko-dots { display: flex; gap: 8px; }
+.anko-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(236,234,227,.18); }
+.anko-dots i.on { background: #9fe8ff; }
+.anko-hint { font-size: 10.5px; letter-spacing: .12em; color: #8a857a; animation: anko-pulse 2.4s ease-in-out infinite; }
+@keyframes anko-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
+
+/* the somebody-else's-listing quote — the foil his registers answer */
+.anko-quote { font-size: 15px; line-height: 1.6; color: #DBD5C8; border-left: 2px solid rgba(236,234,227,.3); padding: 4px 0 4px 14px; font-style: italic; max-width: 42ch; text-align: left; }
+.anko-quote .mono { font-style: normal; font-size: 10.5px; margin-left: 8px; }
+.anko-line i { color: #DBD5C8; }

@@ -3,6 +3,8 @@
 // trade flow a signer when one exists, and reports `ready:false` when it doesn't.
 import { useWallets } from '@privy-io/react-auth'
 import { walletClientFrom } from '../chain/escrow.js'
+import { IS_LOCAL_CHAIN } from '../chain/config.js'
+import { LOCAL_ACTORS, localWalletClient } from '../chain/localRehearsal.js'
 
 export function useEscrowWallet() {
   const { wallets } = useWallets()
@@ -10,10 +12,13 @@ export function useEscrowWallet() {
   const wallet = wallets?.find((w) => w.walletClientType === 'privy') || wallets?.[0] || null
 
   async function getWalletClient() {
+    if (IS_LOCAL_CHAIN) return localWalletClient('buyer')
     if (!wallet) throw new Error('No wallet connected — sign in first.')
     const provider = await wallet.getEthereumProvider()
     return walletClientFrom(provider, wallet.address)
   }
 
+  // Local rehearsal: anvil account 0 is you, no Privy signature theater needed.
+  if (IS_LOCAL_CHAIN) return { address: LOCAL_ACTORS.buyer, ready: true, getWalletClient }
   return { address: wallet?.address || null, ready: !!wallet, getWalletClient }
 }

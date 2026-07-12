@@ -146,7 +146,11 @@ def filter_system(data: dict) -> str:
             " - character: a name substring, or null\n"
             f" - category: {cats} | null\n"
             f" - element: {elements} | null\n"
-            " - rarity: a rarity substring such as C, UC, SR, SR ★, L ★, IKZ ★, or null\n"
+            " - rarity: an EXACT rarity code — C (common), UC (uncommon), R (rare), SR, SR ★, SR ★★, L, L ★, G, G ★, IKZ, IKZ ★ — or null\n"
+            " - card_type: a tribe/type word from the card's TYPE LINE — e.g. Beanz, Steelborn, Black Jade, "
+            "Scorchweaver, Wavecaller, Dawnling, Blazerker, Elder — or null\n"
+            " - release_family: alpha | gates_awakened | null   ('Alpha' vs 'Gates Awakened' printings)\n"
+            " - product_channel: booster | starter | promo | null\n"
             " - plane: alley | garden | threshold | null (a labelled visual cue, not canon-location proof)\n"
             f" - lore_term: one official card-vocabulary term, or null. Terms: {lore_terms}\n"
             f" - theme: one catalog motif, or null. Motifs: {themes}\n"
@@ -154,7 +158,31 @@ def filter_system(data: dict) -> str:
             f" - event: one named event substring, or null. Events: {events}\n"
             " - lore: one exact, atomic substring expected in world metadata (for example 'Azuki', '187', or 'big brother'), "
             "or null. Never put a paraphrase, sentence, or restatement of the request here; prefer the structured fields above.\n\n"
-            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"plane":..,"lore_term":..,"theme":..,"character_thread":..,"event":..,"lore":..,"reading":"one line on how you read the call against the cost field"}'
+            "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
+            "action: a LIST of steps, IN ORDER. Each step:\n"
+            ' {"op": "mark_have" | "mark_want" | "unmark_have" | "unmark_want" | "list_for_sale" | "open_to_trade" | "unlist" | "close_trade" | "find_market" | "match_value",\n'
+            '  "ask": number or null,  (per-card price if named; strip $ and units)\n'
+            '  "scope": {"rarity":.., "release_family":.., "product_channel":.., "star_alt":.., "category":.., "element":.., "set":.., "character":.., "card_type":.., "plane":.., "lore_term":.., "theme":.., "character_thread":.., "event":.., "lore":.., "duplicates":..}}\n'
+            "scope.duplicates: true when they say duplicates/dupes/extras/spares — cards they hold more than one copy of.\n"
+            "match_value is for BALANCING a trade ('match the value of that Mizuki', 'make my side even'): scope "
+            "optionally narrows which of THEIR OWN cards to offer; code does the matching from recorded settlements.\n"
+            "'unmark'/'remove'/'clear' my haves -> unmark_have; my wants -> unmark_want (both also drop any "
+            "listing on the card). "
+            "find_market is for SHOPPING — 'I'd like to buy…', 'looking to trade for…', 'who's selling…': "
+            'add "mode": "buy" or "trade", scope describes the card they want, ask = their max per-card '
+            "price if they named one. "
+            "Steps run in order — a card marked have by step 1 can be listed by step 2. Scope carries ONLY what "
+            "the collector said: 'all commons including alpha' -> {\"rarity\":\"C\"} with NO family key; "
+            "'the rest' means the complement of the families already handled.\n"
+            "Example — 'mark that I have all commons including alpha; list alpha commons at $2 and the rest at $1' ->\n"
+            ' [{"op":"mark_have","ask":null,"scope":{"rarity":"C"}},\n'
+            '  {"op":"list_for_sale","ask":2,"scope":{"rarity":"C","release_family":"alpha"}},\n'
+            '  {"op":"list_for_sale","ask":1,"scope":{"rarity":"C","release_family":"gates_awakened"}}]\n'
+            "For browse calls, action is null. You only ever PROPOSE — code resolves the exact set from the "
+            "collector's own records and they confirm.\n"
+            "sort: when they ask to ORDER listings ('sort highest to lowest cost', 'cheapest first') set "
+            '"sort": "price_desc" or "price_asc" (top level, beside the filter dims); null otherwise.\n\n"'
+            'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"card_type":..,"plane":..,"lore_term":..,"theme":..,"character_thread":..,"event":..,"lore":..,"sort":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
         )
     return (
         "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
@@ -171,9 +199,26 @@ def filter_system(data: dict) -> str:
     )
 
 COMMENT_SYS = (
-    "You are a collector's browsing agent. A deterministic filter has ALREADY narrowed the catalog (you did "
-    "not see every row). Write a brief bit of commentary, in the collector's cost-field terms: what the "
-    "filter cut and why.\n\n"
+    "You are ANKO — the house agent of cairn.cards: Azuki Elemental #4193, Fire domain, a red panda in a "
+    "hoodie whose left eye burns with an onibi (the blue ghost light of the old stories — it shows, it never "
+    "leads). Voice: steady eyes, a grin in the phrasing; short sentences; warm but precise; a card-shop "
+    "regular who knows every card in the box and won't lie about a single one. You speak in three registers "
+    "and name them when it matters: RECORDED (the protocol saw it), CLAIMED (someone said it), MY READ "
+    "(your judgment, labeled as judgment). You never sell, never hype, never assert condition or "
+    "authenticity you cannot see.\n\n"
+    "A deterministic filter has ALREADY narrowed the catalog (you did not see every row).\n\n"
+    "Write 2-4 sentences the way ANKO talks: first person, TO the collector ('you'), contractions, short "
+    "sentences, one dry grin where it fits. NEVER narrate machinery — the words 'filter', 'rows', 'catalog', "
+    "'candidates', 'query' must not appear. Say what a shop kid would say across the counter: what's in front "
+    "of them, what stayed on the shelf and why, what you'd flip over first.\n"
+    "TONE ONLY — these two lines are about an IMAGINARY shelf that has nothing to do with this call; copy the "
+    "voice, never the words, and never import their facts:\n"
+    " - 'Seven of the old lanterns, none of the new. The paper one everybody sleeps on? That's the one I'd "
+    "pull first.'\n"
+    " - 'Three of these carry a note in the record — read those before you fall in love.'\n"
+    "HARD RULE: every fact in your sentences (counts, names, sets, flags, what was excluded) must come from "
+    "the card lines and filter given below — nothing else. If the collector didn't ask for a cut, don't claim "
+    "they did.\n\n"
     "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
     " - 'holo' = the card is holographic.\n"
     " - 'star-alt' = the catalog row carries a star/alternate-art signal.\n"
@@ -193,7 +238,7 @@ COMMENT_SYS = (
     "Do NOT infer condition, foil presence, surface, centering, authenticity, price, or defects from these flags — condition is "
     "unconfirmed and attention tier is not a price. Never SELL a card. Then pick up to 6 uids to "
     "surface first.\n\n"
-    'Return ONLY JSON: {"commentary":"2-4 sentences", "picks":["uid",..], "caveat":"one honest limitation"}'
+    'Return ONLY JSON: {"commentary":"2-4 sentences in Anko\'s voice", "picks":["uid",..], "caveat":"one honest limitation, said the way Anko would say it"}'
 )
 
 
@@ -237,6 +282,12 @@ def exact_card_name_in_call(call: str, cards: list[dict]) -> str | None:
 
 def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
     out = cards
+    if f.get("release_family"):
+        out = [c for c in out if (c.get("release_family") or "").lower() == str(f["release_family"]).lower()]
+    if f.get("product_channel"):
+        ch = str(f["product_channel"]).lower()
+        out = [c for c in out if str(c.get("product_channel") or "").startswith("starter_deck_")] if ch == "starter" \
+            else [c for c in out if (c.get("product_channel") or "").lower() == ch]
     if f.get("holo") is not None:
         out = [c for c in out if bool(c["holo"]) == bool(f["holo"])]
     if f.get("star_alt") is not None:
@@ -247,11 +298,18 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
         out = [c for c in out if (c.get("band_rank") or 0) < 3]  # band 3 = high-scrutiny holo grail
     if f.get("category"):
         out = [c for c in out if (c.get("category") or "").lower() == str(f["category"]).lower()]
+    if f.get("card_type"):
+        t = str(f["card_type"]).lower()
+        out = [c for c in out if any(t in (x or "").lower() for x in (c.get("types") or []) + (c.get("subtypes") or []))]
     if f.get("element"):
         out = [c for c in out if (c.get("element") or "").lower() == str(f["element"]).lower()]
     if f.get("rarity"):
-        r = str(f["rarity"]).lower()
-        out = [c for c in out if r in (c.get("rarity") or "").lower()]
+        r = str(f["rarity"]).strip().lower()
+        known = {(c.get("rarity") or "").strip().lower() for c in cards}
+        if r in known:  # exact code — 'c' must not swallow 'uc'
+            out = [c for c in out if (c.get("rarity") or "").strip().lower() == r]
+        else:
+            out = [c for c in out if r in (c.get("rarity") or "").lower()]
     if f.get("set"):
         s = str(f["set"]).lower()
         out = [c for c in out if s in setlabel.get(c["set_id"], "").lower()]
@@ -391,6 +449,51 @@ def resolve_pick_uids(picks: list[str], pool: list[dict]) -> list[str]:
     return resolved[:6]
 
 
+ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market", "match_value"}
+SCOPE_KEYS = {
+    "rarity", "release_family", "product_channel", "star_alt", "holo", "category",
+    "element", "set", "character", "exclude_grails", "duplicates", "card_type",
+    "plane", "lore_term", "theme", "character_thread", "event", "lore",
+}
+
+
+def _valid_step(a, fallback_scope: dict) -> dict | None:
+    if not isinstance(a, dict) or a.get("op") not in ACTION_OPS:
+        return None
+    ask = a.get("ask")
+    if ask is not None:
+        try:
+            ask = float(ask)
+        except (TypeError, ValueError):
+            return None
+        if not (0 <= ask < 1e9):
+            return None
+        if ask == int(ask):
+            ask = int(ask)
+    raw = a.get("scope") if isinstance(a.get("scope"), dict) else fallback_scope
+    scope = {k: v for k, v in raw.items() if k in SCOPE_KEYS and v is not None}
+    step = {"op": a["op"], "ask": ask, "scope": scope}
+    if a["op"] == "find_market":
+        step["mode"] = a.get("mode") if a.get("mode") in ("buy", "trade") else "buy"
+    return step
+
+
+def valid_plan(a, f: dict) -> list[dict] | None:
+    """The model PROPOSES; this gate types it. A plan is an ordered list of steps, each
+    with its own scope. Anything malformed dies here — the frontend only ever sees
+    well-formed steps it can resolve deterministically against the collector's store.
+    A bare dict (the old single-action shape) normalizes to a one-step plan scoped by
+    the top-level filter, so older model emissions stay valid."""
+    fallback = {k: v for k, v in (f or {}).items() if k in SCOPE_KEYS and v is not None}
+    if isinstance(a, dict):
+        st = _valid_step(a, fallback)
+        return [st] if st else None
+    if isinstance(a, list) and 0 < len(a) <= 8:
+        steps = [_valid_step(x, fallback) for x in a]
+        return steps if all(steps) else None
+    return None
+
+
 def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
@@ -427,6 +530,15 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             f["event"] = event_name
             f["deterministic_event_match"] = event_name
             break
+    action = valid_plan(f.get("action"), f) if isinstance(f, dict) else None
+    if action:
+        # Instruction, not a browse: the model's whole job was language -> typed action.
+        # The client resolves the scope against the collector's OWN store (which never
+        # leaves their device) and shows the exact set for confirmation. No commentary
+        # call — the proposal bar carries the numbers.
+        return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")),
+                "filter": f, "action": action,
+                "result": {"commentary": "", "picks": [], "caveat": ""}, "overclaim_flags": []}
     survivors = apply_filter(data["cards"], f, setlabel)
     if not survivors and f.get("lore"):
         fallback_filter = {**f, "lore": None}
@@ -440,7 +552,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','event','lore','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
@@ -490,7 +602,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','plane','lore_term','theme','character_thread','event','lore','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','overrode_model_identity')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','overrode_model_identity')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]
