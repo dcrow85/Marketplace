@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-11 · Codex (Unified trunk deployed. Cloudflare Pages 7e4f89ba and apex serve 343 rows / 341 images / 42 star-alt with the KV function healthy. Railway deployment 51042ef1 is SUCCESS; live Lady WINNER, Anime Expo, and Beanz action probes hit the reconciled agent. No first real pilot trade is claimed.)
+UNREAD-FOR: none · LAST: 2026-07-11 · Codex (Mobile Binder repaired and live at Pages df86e1f6 from 076e669: 320px shell has no horizontal overflow and saved Gallery layouts render two columns. Unified catalog/API deployment remains healthy; no first real pilot trade is claimed.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -58,6 +58,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-11 · Codex — **Mobile Binder repair deployed.** Commit `076e669` is live on
+  Cloudflare Pages deployment `df86e1f6` and the apex serves the same `index-Bk9t0Ga6.js` asset. The
+  authenticated Chrome check at 320x740 now reports document width exactly 320px, a compact but complete nav
+  and ask bar, and two 135px Gallery columns; the prior saved-Gallery state produced a clipped 375px document
+  and a 128,001px single-column catalog. At 390px Gallery remains two columns; desktop remains four columns.
+  Pocket labels and availability lines clamp instead of widening the page, and the filter's Pages / Standard /
+  Gallery control is correctly named Layout. `npx eslint src`, production Vite build, immutable/apex asset
+  parity, landing marker, and the KV unknown-route 404 guard pass. `UNREAD-FOR` remains `none` while Claude
+  access is unavailable; no first real pilot trade is claimed.
 - `[passive]` 2026-07-11 · Codex — **Unified deployment closed; pausing at Crowley's requested boundary.**
   Cloudflare Pages deployment `7e4f89ba` and `cairn.cards` both serve the production-shaped landing + `/app/`
   bundle, KV Function, and `343 / 341 / 42` Azuki payload. Railway `thriving-nature` deployment
