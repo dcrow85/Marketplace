@@ -61,6 +61,7 @@ function ThemeToggle() {
 const TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
 function applyTileScale(k) {
   document.documentElement.style.setProperty('--tilescale', String(TILE_SCALES[k] || 1))
+  document.documentElement.setAttribute('data-tile-size', k in TILE_SCALES ? k : 'm')
 }
 function SizePicker() {
   const [sz, setSz] = useState(() => { try { return localStorage.getItem('cairn-tilescale') || 'm' } catch { return 'm' } })
@@ -147,14 +148,17 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
       <nav className="nav">
         <button className="wmhome" onClick={() => { setBseg('binder'); setMarketFocus(null); setTradesOpen(false) }} title="back to your binder"><Wordmark /></button>
         <div className="navr mono">
-          <button className={'tradesbtn nav-trades' + (needsYou ? ' needs-you' : '')} onClick={() => { setOpenTrade(null); setTradesOpen(true) }} title={needsYou ? 'an offer is waiting on you' : 'your trades'}>
+          <button className={'tradesbtn nav-trades' + (needsYou ? ' needs-you' : '')} onClick={() => { setOpenTrade(null); setTradesOpen(true) }}
+            aria-label={swapN ? `Trades, ${swapN} active` : 'Trades'} title={needsYou ? 'an offer is waiting on you' : 'your trades'}>
             <svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 5h9M8.5 2l3 3-3 3" /><path d="M14 11H5M7.5 14l-3-3 3-3" /></svg>
-            <span>Trades{swapN ? ` ·${swapN}` : ''}</span>
+            <span className="nav-trades-label">Trades{swapN ? ` ·${swapN}` : ''}</span>
             {needsYou && <i className="nav-dot" aria-hidden="true" />}
           </button>
           <span className="chip"><Avatar seed={accountId} size={18} /> <span className="handle">{handleFor(accountId)}</span></span>
           <ThemeToggle />
-          <button className="ghost sm" onClick={onSignOut}>sign out</button>
+          <button className="ghost sm signoutbtn" onClick={onSignOut} aria-label="Sign out">
+            <span className="signout-full">sign out</span><span className="signout-short" aria-hidden="true">out</span>
+          </button>
         </div>
       </nav>
       <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />

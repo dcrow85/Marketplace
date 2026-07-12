@@ -449,7 +449,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
               <div className="fs-group"><label>Alt art</label><div className="fs-opts">
                 <button className={'fo' + (holoOnly ? ' on' : '')} onClick={() => setHoloOnly((v) => !v)}>{data.ui?.holo_label || '★ Alt art'}</button>
               </div></div>
-              <div className="fs-group"><label>Card size</label><div className="fs-opts">
+              <div className="fs-group"><label>Layout</label><div className="fs-opts">
                 <button className={'fo' + (view === 'pages' ? ' on' : '')} onClick={() => chooseView('pages')}>Pages</button>
                 <button className={'fo' + (view === 'standard' ? ' on' : '')} onClick={() => chooseView('standard')}>Standard</button>
                 <button className={'fo' + (view === 'gallery' ? ' on' : '')} onClick={() => chooseView('gallery')}>Gallery</button>
