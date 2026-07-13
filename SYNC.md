@@ -58,10 +58,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Privy/browser-wallet bootstrap]` 2026-07-13 · Codex — Repairing the production
-  black-screen failure seen when multiple wallet extensions inject providers. The page shell and
-  identity-first login must remain usable even when optional wallet discovery is unhealthy; testing
-  will be performed in the affected extension-enabled Chrome profile before deployment.
+- `[passive]` 2026-07-13 · Codex — **Extension-enabled apex recovery is live.** The affected Chrome
+  profile now renders Cairn and opens Privy's email / Google / Apple / passkey modal with MetaMask
+  and MyDoge enabled. Root causes were a stale four-hour HTML cache and extension interference with
+  the ES-module entry on the real dapp origin. Pages now sends no-store HTML plus immutable hashed
+  assets, the production entry is a self-contained classic bundle attached after extension injection,
+  and Privy's external-wallet/WalletConnect bootstraps are disabled because wallets belong at the
+  settlement decision, not authentication. Verified live on commit `1c46e17`, Pages deployment
+  `7aa12594`; catalogue and Cairn local-storage keys remain untouched.
 - `[BLOCKING: azuki special-collection export]` 2026-07-13 · Codex — Ingesting the user-supplied
   Anime Expo 2026 Special Collection Volume 01 evidence into the catalogue/export seam: ten
   collection treatments, product cover/display evidence, the reported $38 sale price as an
