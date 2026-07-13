@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/prepare-pages.mjs",
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/app/ --outDir dist/app",
+    "postbuild": "node scripts/assemble-pages.mjs",
+    "build:app": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -11,8 +11,10 @@ createRoot(document.getElementById('root')).render(
     <PrivyProvider
       appId={APP_ID}
       config={{
-        // Identity-first: email/social/passkey up front; a wallet is just one option.
-        loginMethods: ['email', 'google', 'apple', 'passkey', 'wallet'],
+        // Keep authentication identity-first. External wallet discovery is intentionally
+        // not part of bootstrap: competing injected providers must never prevent Cairn
+        // from loading. Wallets can be connected later, after authentication.
+        loginMethods: ['email', 'google', 'apple', 'passkey'],
         appearance: {
           theme: 'light',
           accentColor: '#2C5B8C',

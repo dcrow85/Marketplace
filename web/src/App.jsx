@@ -95,7 +95,7 @@ function SignIn({ onLogin }) {
         <Wordmark big />
         <p className="lead">Your collection, your terms, your agent.</p>
         <button className="primary" onClick={onLogin}>Sign in</button>
-        <div className="fine mono">email · google · apple · passkey · wallet — no crypto required</div>
+        <div className="fine mono">email · google · apple · passkey — no crypto required</div>
       </div>
     </div>
   )
