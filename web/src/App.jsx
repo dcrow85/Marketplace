@@ -175,7 +175,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             <SizePicker />
             <div className="bsegs mono" role="tablist" aria-label="binder section">
               <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
-              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My page</button>
+              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My Table</button>
               <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
             </div>
           </div>

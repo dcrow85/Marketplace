@@ -318,7 +318,10 @@ button.minicard { cursor: pointer; }
 .pf-stat.rec { color: var(--have); }
 .pf-stat.rec::before { content: '✓ '; }
 .pf-binder { display: flex; flex-direction: column; gap: 8px; }
-.pf-sechead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.pf-sechead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pf-sectiontitle { display: flex; align-items: baseline; gap: 10px; min-width: 0; flex-wrap: wrap; }
+.pf-listsearch { margin: 0; }
+.pf-sizepick { flex: none; }
 /* the bench fills whatever screen it's on — pockets are fractional, so the nine
    scale with the page instead of hiding at a fixed width */
 .pf-page { max-width: 100%; gap: clamp(8px, 1.6vw, 18px); padding: clamp(12px, 2vw, 22px); }

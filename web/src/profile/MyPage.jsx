@@ -14,6 +14,30 @@ import ProfileHeader from './ProfileHeader.jsx'
 import CardModal from '../binder/CardModal.jsx'
 import { retryImg } from '../binder/helpers.jsx'
 
+const TABLE_TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
+
+function loadSize(key, fallback) {
+  try {
+    const saved = localStorage.getItem(key)
+    return saved in TABLE_TILE_SCALES ? saved : fallback
+  } catch { return fallback }
+}
+
+function SectionSizePicker({ label, storageKey, size, onSize }) {
+  const choose = (next) => {
+    onSize(next)
+    try { localStorage.setItem(storageKey, next) } catch { /* ignore */ }
+  }
+  return (
+    <div className="sizepick mono pf-sizepick" title={`${label} card size`} role="radiogroup" aria-label={`${label} card size`}>
+      {Object.keys(TABLE_TILE_SCALES).map((key) => (
+        <button key={key} type="button" role="radio" aria-checked={size === key}
+          className={size === key ? 'on' : ''} onClick={() => choose(key)}>{key.toUpperCase()}</button>
+      ))}
+    </div>
+  )
+}
+
 export default function MyPage({ accountId, catalog }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
@@ -22,6 +46,11 @@ export default function MyPage({ accountId, catalog }) {
   const store = useBus(() => loadStore(storeKey), [storeKey])
   const mockSales = useBus(() => loadMockSales(mockSalesKeyFor(catalog.id)), [catalog])
   const [sel, setSel] = useState(null) // a card held open — the binder's modal, right here
+  const [query, setQuery] = useState('')
+  const displaySizeKey = `cairn-table-display-size:${catalog.id}:${accountId || 'anon'}`
+  const binderSizeKey = `cairn-table-binder-size:${catalog.id}:${accountId || 'anon'}`
+  const [displaySize, setDisplaySize] = useState(() => loadSize(displaySizeKey, 'l'))
+  const [binderSize, setBinderSize] = useState(() => loadSize(binderSizeKey, 'm'))
 
   // the binder's marking semantics, over the event-driven store: every page hears the
   // change. Reads happen at WRITE time (like Binder's functional setStore) so two quick
@@ -61,6 +90,19 @@ export default function MyPage({ accountId, catalog }) {
       wants: all.filter(({ e }) => e.stance === 'want'),
     }
   }, [data, store])
+
+  const listedRows = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    if (!q) return rows.listed
+    return rows.listed.filter(({ c }) => {
+      const haystack = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' +
+        (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' +
+        (c.release_family_label || '') + ' ' + (c.product_channel_label || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
+      return haystack.includes(q)
+    })
+  }, [query, rows.listed, setById])
+  const displayRows = useMemo(() => listedRows.filter(({ e }) => e.sell && e.display), [listedRows])
+  const binderRows = useMemo(() => listedRows.filter(({ e }) => !(e.sell && e.display)), [listedRows])
 
   // the record strip: computed, never asserted
   const stats = useBus(() => {
@@ -120,7 +162,7 @@ export default function MyPage({ accountId, catalog }) {
     publishProfile(accountId, buildSnapshot()).then((r) => { if (r?.ok) markPublished() })
   }, []) // eslint-disable-line react-hooks/exhaustive-deps -- on mount only, by design
 
-  if (!data) return <div className="empty">Opening your page…</div>
+  if (!data) return <div className="empty">Opening your table…</div>
 
   return (
     <div className="pf">
@@ -135,27 +177,30 @@ export default function MyPage({ accountId, catalog }) {
                 <button className="ghost sm" onClick={unpublish} disabled={pubBusy}>take it down</button>
               </>
             : <>
-                <span className="dim">your page is local-only — put it on the board and the room&rsquo;s market shows your table</span>
+                <span className="dim">your table is local-only — put it on the board and the room&rsquo;s market shows it</span>
                 <button className="primary pf-pubbtn" onClick={publish} disabled={pubBusy}>{pubBusy ? 'publishing…' : 'Put it on the board →'}</button>
               </>
-          : <span className="dim">publishing needs a wallet account — sign in with one and your page can go on the board</span>}
+          : <span className="dim">publishing needs a wallet account — sign in with one and your table can go on the board</span>}
         {pubErr && <span className="pf-puberr">couldn&rsquo;t reach the board — try again</span>}
       </div>
+      <input className="ofr-search pf-listsearch" type="search" value={query}
+        aria-label="Search my listed cards" placeholder="Search my listed cards…"
+        onChange={(event) => setQuery(event.target.value)} />
       <div className="pf-sechead">
-        <span className="ek">Display case</span>
-        <span className="mono dim">for-sale cards you lead with</span>
+        <span className="pf-sectiontitle"><span className="ek">Display case</span><span className="mono dim">for-sale cards you lead with</span></span>
+        <SectionSizePicker label="Display case" storageKey={displaySizeKey} size={displaySize} onSize={setDisplaySize} />
       </div>
-      {rows.display.length
-        ? <ListingTiles rows={rows.display} setSel={setSel} setAsk={setAsk} setField={setField} />
-        : <div className="empty">Your case is empty. Mark a for-sale card “Display” and it moves here.</div>}
+      {displayRows.length
+        ? <ListingTiles rows={displayRows} size={displaySize} setSel={setSel} setAsk={setAsk} setField={setField} />
+        : <div className="empty">{query ? 'No display cards match that search.' : 'Your case is empty. Star a for-sale card and it moves here.'}</div>}
 
       <div className="pf-sechead">
-        <span className="ek">Binder</span>
-        <span className="mono dim">{rows.listed.length ? `${rows.listed.length} listed · asks are per copy` : ''}</span>
+        <span className="pf-sectiontitle"><span className="ek">Binder</span><span className="mono dim">{rows.listed.length ? `${query ? `${listedRows.length} of ` : ''}${rows.listed.length} listed · asks are per copy` : ''}</span></span>
+        <SectionSizePicker label="Binder" storageKey={binderSizeKey} size={binderSize} onSize={setBinderSize} />
       </div>
-      {rows.listed.filter(({ e }) => !(e.sell && e.display)).length
-        ? <ListingTiles rows={rows.listed.filter(({ e }) => !(e.sell && e.display))} setSel={setSel} setAsk={setAsk} setField={setField} />
-        : <div className="empty">Nothing on your table. Open a card you Have and mark it “List for sale” or “Open to trade”.</div>}
+      {binderRows.length
+        ? <ListingTiles rows={binderRows} size={binderSize} setSel={setSel} setAsk={setAsk} setField={setField} />
+        : <div className="empty">{query ? 'No binder cards match that search.' : 'Nothing in your binder. Open a card you Have and mark it “List for sale” or “Open to trade”.'}</div>}
 
       <div className="pf-sechead">
         <span className="ek">You&rsquo;re hunting</span>
@@ -173,7 +218,7 @@ export default function MyPage({ accountId, catalog }) {
           </div>
         : <div className="empty">No wants yet — mark cards as Want and your hunt goes on the board.</div>}
 
-      <p className="sc-note dim">This is your page exactly as the room reads it once it&rsquo;s on the board: your display case, binder,
+      <p className="sc-note dim">This is your table exactly as the room reads it once it&rsquo;s on the board: your display case, binder,
         and your hunt show what you choose; the record strip only ever says what&rsquo;s recorded — and on other people&rsquo;s
         screens it stays your claim until signing lands.</p>
       {sel && <CardModal key={sel} uid={sel} data={data} setById={setById} store={store}
@@ -183,9 +228,9 @@ export default function MyPage({ accountId, catalog }) {
   )
 }
 
-function ListingTiles({ rows, setSel, setAsk, setField }) {
+function ListingTiles({ rows, size, setSel, setAsk, setField }) {
   return (
-    <div className="sp-tiles">
+    <div className="sp-tiles" style={{ '--tilescale': TABLE_TILE_SCALES[size] }}>
       {rows.map(({ c, e }) => (
         <MiniCard key={c.uid} c={c} onTap={() => setSel(c.uid)}
           corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
