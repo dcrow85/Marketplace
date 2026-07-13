@@ -10,6 +10,7 @@ photo unless the row can honestly cite that exact row image.
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import hashlib
 import json
@@ -34,6 +35,7 @@ STAR_AUDIT = AZUKI / "audits" / "azuki_tcg_star_alt_art_audit_2026_06_24.csv"
 REFERENCE_AUDIT = AZUKI / "audits" / "azuki_tcg_reference_image_audit_2026_06_25.csv"
 PROMO_OBS = AZUKI / "observations" / "azuki_tcg_user_photo_promo_observations_2026_06_24.csv"
 PORTRAIT_OBS = AZUKI / "observations" / "azuki_tcg_user_image_portrait_alt_observations_2026_06_24.csv"
+SPECIAL_COLLECTION = AZUKI / "observations" / "azuki_tcg_anime_expo_2026_special_collection.json"
 MANIFEST = AZUKI / "manifest.json"
 WORLD_METADATA = AZUKI / "lore" / "azuki_world_metadata.json"
 ALPHA_IMAGE_MANIFEST = AZUKI / "source-snapshots" / "alpha_master_sheet_image_manifest_2026-06-26.json"
@@ -69,6 +71,7 @@ PRODUCT_CHANNEL_LABEL = {
     "starter_deck_3": "Starter Deck 3",
     "starter_deck_4": "Starter Deck 4",
     "promo": "Promo",
+    "special_collection": "Special Collection",
     "token": "IKZ / Token",
     "observed": "Observed cards",
 }
@@ -79,6 +82,7 @@ PRODUCT_CHANNEL_ORDER = {
     "starter_deck_3": 12,
     "starter_deck_4": 13,
     "promo": 20,
+    "special_collection": 25,
     "token": 30,
     "observed": 40,
 }
@@ -343,12 +347,16 @@ def product_channel_from_alpha_card_id(card_id: str) -> str:
 
 def family_channel_set_id(release_family: str, product_channel: str) -> str:
     if release_family == "observed":
+        if product_channel == "special_collection":
+            return "azuki_observed_special_collection"
         return "azuki_observed"
     return f"azuki_{release_family}_{product_channel}"
 
 
 def set_label(release_family: str, product_channel: str) -> str:
     if release_family == "observed":
+        if product_channel == "special_collection":
+            return "Observed — Special Collection Vol. 01"
         return "Observed cards"
     return f"{RELEASE_FAMILY_LABEL[release_family]} — {PRODUCT_CHANNEL_LABEL[product_channel]}"
 
@@ -358,8 +366,9 @@ def source_set_label(release_family: str, product_channel: str) -> str:
 
 
 def sort_key_for_set_id(set_id: str) -> tuple[int, int, str]:
-    if set_id == "azuki_observed":
-        return (RELEASE_FAMILY_ORDER["observed"], PRODUCT_CHANNEL_ORDER["observed"], set_id)
+    if set_id.startswith("azuki_observed"):
+        channel = "special_collection" if set_id == "azuki_observed_special_collection" else "observed"
+        return (RELEASE_FAMILY_ORDER["observed"], PRODUCT_CHANNEL_ORDER[channel], set_id)
     for family in ("alpha", "gates_awakened"):
         prefix = f"azuki_{family}_"
         if set_id.startswith(prefix):
@@ -838,6 +847,160 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
     }
 
 
+def validate_special_collection(collection: dict[str, Any], official_by_uid: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    sources = {source["source_id"]: source for source in collection.get("source_images", [])}
+    if len(collection.get("card_treatments", [])) != 10:
+        raise ValueError("Special Collection Volume 01 must contain exactly ten observed treatments")
+    if len({row["card_id"] for row in collection["card_treatments"]}) != 10:
+        raise ValueError("Special Collection Volume 01 has duplicate card IDs")
+    for source in sources.values():
+        path = ROOT / source["repo_path"]
+        if not path.exists():
+            raise FileNotFoundError(f"Special Collection evidence image is missing: {path}")
+        if sha256(path) != source["sha256"]:
+            raise ValueError(f"Special Collection evidence hash drifted: {source['source_id']}")
+    for treatment in collection["card_treatments"]:
+        base_uid = treatment["base_gallery_uid"]
+        if base_uid not in official_by_uid:
+            raise ValueError(f"Special Collection base gallery row is missing: {base_uid}")
+        base = official_by_uid[base_uid]
+        if base.get("card_id") != treatment["card_id"] or base.get("name_en") != treatment["name"]:
+            raise ValueError(f"Special Collection base identity mismatch: {treatment['card_id']}")
+        source_id = treatment.get("image_source_id")
+        if source_id and source_id not in sources:
+            raise ValueError(f"Special Collection image source is missing: {source_id}")
+    return sources
+
+
+def card_from_special_collection_treatment(
+    base: dict[str, Any],
+    treatment: dict[str, Any],
+    collection: dict[str, Any],
+    sources: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    row = copy.deepcopy(base)
+    card_id = treatment["card_id"]
+    source = sources.get(treatment.get("image_source_id") or "")
+    display_source = source or sources["special-collection-volume-01-open-display"]
+    image = source["public_path"] if source else ""
+    observed_rarity = treatment["observed_rarity"]
+    illustrator_observation = treatment.get("illustrator_observation") or {}
+    collection_id = collection["collection_id"]
+    official_context = collection["official_context"]
+    observation_id = f"special-collection-volume-01-{card_id.lower()}"
+    uid = f"azuki_tcg_observation:{observation_id}"
+    membership_authority = "user_product_photo_observation"
+
+    row.update({
+        "uid": uid,
+        "row_id": uid,
+        "set_id": family_channel_set_id("observed", "special_collection"),
+        "release_family": "observed",
+        "release_family_label": RELEASE_FAMILY_LABEL["observed"],
+        "product_channel": "special_collection",
+        "product_channel_label": PRODUCT_CHANNEL_LABEL["special_collection"],
+        "source_set_label": set_label("observed", "special_collection"),
+        "holo": True,
+        "star_alt": True,
+        "rarity": observed_rarity,
+        "band_rank": 3,
+        "image": image,
+        "image_status": "user_photo_observation" if source else "user_observation_no_exact_card_image",
+        "display_allowed": bool(source),
+        "provenance": (
+            "User-supplied exact card-front photo retained as Special Collection reference evidence; official event context confirms a limited ten-card product, while the open-display photo supplies the observed checklist. This is not proof of authenticity, condition, possession, or market value."
+            if source
+            else "User-supplied open-display photo shows this Special Collection treatment, but no exact standalone card-front image was supplied; the Binder intentionally leaves its reference image blank."
+        ),
+        "reference_image_policy": "display_user_observation_reference_image" if source else "no_exact_card_reference_image",
+        "stamp_field_policy": "display_observed_special_collection_treatment",
+        "suppressed_fields": [] if source else ["image"],
+        "source_authority": collection["authority_label"],
+        "field_source": "official_gallery_base_fields_plus_user_special_collection_observation",
+        "alpha_crosswalk_scope": "",
+        "missing_alpha_fields": [],
+        "review_status": "observation_only",
+        "promo": {"sets": ["Special Collection Volume 01"], "collection_id": collection_id},
+        "source_entry_id": observation_id,
+        "illustrator": illustrator_observation.get("value") or "",
+        "stamp": "Special Collection Volume 01 star treatment",
+        "variant_group": {
+            "variant_kind": "user_observed_special_collection_treatment",
+            "matched_gallery_uids": [treatment["base_gallery_uid"]],
+            "official_gallery_enumeration": False,
+        },
+        "issues": [{
+            "source": "user_observation_layer",
+            "severity": "medium",
+            "status": "observation_only",
+            "codes": ["special_collection_treatment_not_in_current_official_gallery_snapshot"],
+            "recommended_action": "Review against future official gallery or product-checklist sources before promoting.",
+            "notes": official_context["card_checklist_boundary"],
+        }],
+        "observations": [{
+            "observation_id": observation_id,
+            "authority_label": collection["authority_label"],
+            "printed_id": card_id,
+            "normalized_card_id": card_id,
+            "confidence": "high_for_product_membership_and_visible_treatment",
+            "location": treatment["collection_position"],
+            "observed_azuki_number": "",
+            "observed_stamp": "star rarity treatment; no AX stamp observed",
+            "source_image_public_path": display_source["public_path"],
+            "source_image_sha256": display_source["sha256"],
+            "display_as_distinct_row": True,
+            "observed_variant_kind": "user_observed_special_collection_treatment",
+            "observed_foil_treatment": True,
+            "user_asserted_authenticity": "",
+            "authenticity_authority": "",
+            "observed_event": official_context["event"],
+            "event_distribution": "sold_as_special_collection_at_booth_while_supplies_lasted",
+            "event_authority": "official_event_context",
+            "official_event_source_url": official_context["source_url"],
+            "note": treatment["visual_note"],
+        }],
+        "authenticity_assertion": None,
+        "event_assertion": {
+            "event": official_context["event"],
+            "distribution": "sold_as_special_collection_at_booth_while_supplies_lasted",
+            "authority_label": "official_event_context",
+            "official_context_url": official_context["source_url"],
+            "catalog_disposition": "official_event_product_context",
+        },
+        "collection_assertion": {
+            "collection_id": collection_id,
+            "name": collection["name"],
+            "volume": "01",
+            "position": treatment["collection_position"],
+            "membership_authority": membership_authority,
+            "membership_evidence_image": sources["special-collection-volume-01-open-display"]["public_path"],
+            "official_context_url": official_context["source_url"],
+            "reported_sale_price": collection["user_assertions"]["reported_sale_price"],
+            "reported_availability": collection["user_assertions"]["reported_availability"],
+        },
+        "illustrator_observation": illustrator_observation or None,
+        "not_claiming": sorted(set((row.get("not_claiming") or []) + collection["not_claiming"])),
+    })
+    return row
+
+
+def special_collection_product_view(collection: dict[str, Any]) -> dict[str, Any]:
+    sources = {source["source_id"]: source for source in collection["source_images"]}
+    return {
+        "collection_id": collection["collection_id"],
+        "name": collection["name"],
+        "authority_label": collection["authority_label"],
+        "official_context": collection["official_context"],
+        "user_assertions": collection["user_assertions"],
+        "cover_image": sources["special-collection-volume-01-cover"]["public_path"],
+        "open_display_image": sources["special-collection-volume-01-open-display"]["public_path"],
+        "card_ids": [row["card_id"] for row in collection["card_treatments"]],
+        "card_names": [row["name"] for row in collection["card_treatments"]],
+        "related_ax_promo": collection["related_ax_promo"],
+        "not_claiming": collection["not_claiming"],
+    }
+
+
 def official_alpha_exact_alpha_sheet_card_ids(official_cards: list[dict[str, Any]]) -> set[str]:
     card_ids: set[str] = set()
     for card in official_cards:
@@ -862,6 +1025,7 @@ def build_payload() -> dict[str, Any]:
     reference_rows = read_csv(REFERENCE_AUDIT)
     manifest = read_json(MANIFEST)
     manifest_hash = sha256(MANIFEST)
+    special_collection = read_json(SPECIAL_COLLECTION)
     world_metadata = read_json(WORLD_METADATA)
     world_metadata_hash = sha256(WORLD_METADATA)
     world_identity_by_card_id = {card["card_id"]: card for card in world_metadata["cards"]}
@@ -877,6 +1041,17 @@ def build_payload() -> dict[str, Any]:
         card_from_official(card, completion_by_uid, audit_by_uid, reference_audit_by_uid, observations_by_uid, manifest_hash)
         for card in official_cards
     ]
+    official_ui_by_uid = {card["uid"]: card for card in cards}
+    special_collection_sources = validate_special_collection(special_collection, official_ui_by_uid)
+    cards.extend(
+        card_from_special_collection_treatment(
+            official_ui_by_uid[treatment["base_gallery_uid"]],
+            treatment,
+            special_collection,
+            special_collection_sources,
+        )
+        for treatment in special_collection["card_treatments"]
+    )
     exact_alpha_card_ids = official_alpha_exact_alpha_sheet_card_ids(official_cards)
     cards.extend(
         card_from_alpha_master(row, manifest_hash, alpha_images)
@@ -947,6 +1122,7 @@ def build_payload() -> dict[str, Any]:
             "counts": world_metadata["counts"],
             "not_claiming": world_metadata["not_claiming"],
         },
+        "observed_products": [special_collection_product_view(special_collection)],
         "ui": {
             "holo_label": "★ Alt art",
             "family_chips": [
@@ -958,6 +1134,7 @@ def build_payload() -> dict[str, Any]:
                 {"label": "Booster", "value": "booster"},
                 {"label": "Starter", "value": "starter"},
                 {"label": "Promo", "value": "promo"},
+                {"label": "Special Collection", "value": "special_collection"},
                 {"label": "Token", "value": "token"},
             ],
             "category_chips": cats,
@@ -985,7 +1162,8 @@ def build_payload() -> dict[str, Any]:
             "star_alt": sum(1 for c in cards if c.get("star_alt")),
             "issue_cards": len(issue_cards),
             "high_issue_cards": len(high_issue_cards),
-            "observation_only": sum(1 for c in cards if c.get("set_id") == "azuki_observed"),
+            "observation_only": sum(1 for c in cards if c.get("release_family") == "observed"),
+            "special_collection_observation_rows": sum(1 for c in cards if c.get("product_channel") == "special_collection"),
             "release_families": dict(sorted(Counter(c.get("release_family") or "unknown" for c in cards).items())),
             "product_channels": dict(sorted(Counter(c.get("product_channel") or "unknown" for c in cards).items())),
             "alpha_master_sheet_rows_added": sum(1 for c in cards if str(c.get("uid", "")).startswith("azuki_tcg_alpha_master_sheet:")),
@@ -1003,6 +1181,12 @@ def build_payload() -> dict[str, Any]:
             "completion_csv": {"path": str(COMPLETION.relative_to(ROOT)), "sha256": sha256(COMPLETION)},
             "star_audit": {"path": str(STAR_AUDIT.relative_to(ROOT)), "sha256": sha256(STAR_AUDIT)},
             "reference_image_audit": {"path": str(REFERENCE_AUDIT.relative_to(ROOT)), "sha256": sha256(REFERENCE_AUDIT)},
+            "anime_expo_2026_special_collection": {
+                "path": str(SPECIAL_COLLECTION.relative_to(ROOT)),
+                "sha256": sha256(SPECIAL_COLLECTION),
+                "card_treatments": len(special_collection["card_treatments"]),
+                "exact_card_images": sum(1 for row in special_collection["card_treatments"] if row.get("image_source_id")),
+            },
             "world_metadata": {
                 "path": str(WORLD_METADATA.relative_to(ROOT)),
                 "sha256": world_metadata_hash,

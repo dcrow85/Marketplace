@@ -36,6 +36,12 @@ function chipsFor() {
 
 function byUid(data, uid) { return (data?.cards || []).find((c) => c.uid === uid) || { uid } }
 
+function cardMatchesChannel(card, channel) {
+  return channel === 'starter'
+    ? String(card.product_channel || '').startsWith('starter_deck_')
+    : card.product_channel === channel
+}
+
 export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
@@ -306,8 +312,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       }
       if (familyF.size && !familyF.has(c.release_family)) return false
       if (channelF.size) {
-        const isStarter = String(c.product_channel || '').startsWith('starter_deck_')
-        if (!((channelF.has('starter') && isStarter) || channelF.has(c.product_channel))) return false
+        if (![...channelF].some((channel) => cardMatchesChannel(c, channel))) return false
       }
       if (catF.size && !catF.has(c.category)) return false
       if (elementF.size && !elementF.has(c.element)) return false
@@ -362,6 +367,19 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (!data) return <div className="empty">loading catalog…</div>
 
   const refineCount = channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
+  const chooseFamily = (family) => {
+    setFamilyF(family ? new Set([family]) : new Set())
+    if (family && channelF.size && !data.cards.some((c) => c.release_family === family && [...channelF].some((channel) => cardMatchesChannel(c, channel)))) {
+      setChannelF(new Set())
+    }
+  }
+  const chooseChannel = (channel) => {
+    const next = channelF.has(channel) ? '' : channel
+    setChannelF(next ? new Set([next]) : new Set())
+    if (next && familyF.size && !data.cards.some((c) => familyF.has(c.release_family) && cardMatchesChannel(c, next))) {
+      setFamilyF(new Set())
+    }
+  }
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
   const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ(''); setQuery('') } }
   const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop} />
@@ -418,14 +436,14 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
             <div className="fsheet-body">
               {FAMILIES.length > 0 && (
                 <div className="fs-group"><label>Release</label><div className="fs-opts">
-                  <button className={'fo' + (!familyF.size ? ' on' : '')} onClick={() => setFamilyF(new Set())}>All</button>
-                  {FAMILIES.map((f) => <button key={f.value} className={'fo' + (familyF.has(f.value) ? ' on' : '')} onClick={() => setFamilyF(new Set([f.value]))}>{f.label}</button>)}
+                  <button className={'fo' + (!familyF.size ? ' on' : '')} onClick={() => chooseFamily('')}>All</button>
+                  {FAMILIES.map((f) => <button key={f.value} className={'fo' + (familyF.has(f.value) ? ' on' : '')} onClick={() => chooseFamily(f.value)}>{f.label}</button>)}
                 </div></div>
               )}
               {CHANNELS.length > 0 && (
                 <div className="fs-group"><label>Product</label><div className="fs-opts">
                   <button className={'fo' + (!channelF.size ? ' on' : '')} onClick={() => setChannelF(new Set())}>Any</button>
-                  {CHANNELS.map((ch) => <button key={ch.value} className={'fo' + (channelF.has(ch.value) ? ' on' : '')} onClick={() => setChannelF(channelF.has(ch.value) ? new Set() : new Set([ch.value]))}>{ch.label}</button>)}
+                  {CHANNELS.map((ch) => <button key={ch.value} className={'fo' + (channelF.has(ch.value) ? ' on' : '')} onClick={() => chooseChannel(ch.value)}>{ch.label}</button>)}
                 </div></div>
               )}
               {CATS.length > 0 && (

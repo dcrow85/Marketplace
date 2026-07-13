@@ -85,7 +85,9 @@ export const PROV_LABEL = {
   provider_path: 'Provider-path reference image',
   no_rarity_reference: 'No Rarity reference image',
   no_reference_photo: 'No reference photo',
+  user_photo_observation: 'User-supplied reference photo',
   user_observation_no_public_image: 'User observation, no public image',
+  user_observation_no_exact_card_image: 'Collection observation, no exact card image',
 }
 export const mpill = (t, i) => t ? <span className="mpill" key={i}>{t}</span> : null
 

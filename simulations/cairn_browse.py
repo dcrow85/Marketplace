@@ -129,6 +129,7 @@ def filter_system(data: dict) -> str:
         }))
         threads = " | ".join(item["id"] for item in guide.get("character_threads", []))
         events = " | ".join(item["name"] for item in guide.get("event_contexts", []))
+        products = " | ".join(item["name"] for item in guide.get("product_contexts", []))
         return (
             "You translate a collector's loose browse CALL into a structured filter over an Azuki TCG "
             "catalog, using their standing COST FIELD. The catalog has NO dollar prices; it has rarity, "
@@ -150,12 +151,13 @@ def filter_system(data: dict) -> str:
             " - card_type: a tribe/type word from the card's TYPE LINE — e.g. Beanz, Steelborn, Black Jade, "
             "Scorchweaver, Wavecaller, Dawnling, Blazerker, Elder — or null\n"
             " - release_family: alpha | gates_awakened | null   ('Alpha' vs 'Gates Awakened' printings)\n"
-            " - product_channel: booster | starter | promo | null\n"
+            " - product_channel: booster | starter | promo | special_collection | null\n"
             " - plane: alley | garden | threshold | null (a labelled visual cue, not canon-location proof)\n"
             f" - lore_term: one official card-vocabulary term, or null. Terms: {lore_terms}\n"
             f" - theme: one catalog motif, or null. Motifs: {themes}\n"
             f" - character_thread: one repeated identity thread, or null. Threads: {threads}\n"
             f" - event: one named event substring, or null. Events: {events}\n"
+            f" - Special Collection product names resolve to product_channel=special_collection. Products: {products}\n"
             " - lore: one exact, atomic substring expected in world metadata (for example 'Azuki', '187', or 'big brother'), "
             "or null. Never put a paraphrase, sentence, or restatement of the request here; prefer the structured fields above.\n\n"
             "The call may instead be one or more INSTRUCTIONS about the collector's own cards. Then ALSO set "
@@ -233,6 +235,7 @@ COMMENT_SYS = (
     " - 'motifs:...' are search tags grounded in card fields plus reviewed art; they are not story events.\n"
     " - 'authenticity:user-confirmed[assertion]' records the user's own authenticity status; it is not independent verification by the image, model, catalogue, or official gallery.\n"
     " - 'event:...[authority]' records a typed event association. Preserve whether it is official context, visible-card evidence, user assertion, or a combination; do not invent a booth activity or recipient.\n"
+    " - 'collection:...[authority]' records observed product membership. It is not an official card-by-card checklist unless its attached authority says so.\n"
     "Call an official subtype a lore term or subtype, not a faction, unless an attached official source explicitly identifies it as one.\n"
     "Use supplied lore summaries and visual notes to speak in Azuki vocabulary while preserving those boundaries.\n"
     "Do NOT infer condition, foil presence, surface, centering, authenticity, price, or defects from these flags — condition is "
@@ -260,10 +263,15 @@ def world_search_text(card: dict) -> str:
     for ref in world.get("source_identity_refs") or []:
         parts.extend([ref.get("collection") or "", ref.get("token_or_reference_id") or ""])
     event = card.get("event_assertion") or {}
+    collection = card.get("collection_assertion") or {}
     parts.extend([
         event.get("event") or "",
         event.get("distribution") or "",
         event.get("authority_label") or "",
+        collection.get("collection_id") or "",
+        collection.get("name") or "",
+        collection.get("position") or "",
+        collection.get("membership_authority") or "",
     ])
     return " ".join(parts).casefold()
 
@@ -390,6 +398,9 @@ def brief(c: dict, setlabel: dict[str, str]) -> str:
     event = c.get("event_assertion") or {}
     if event.get("event"):
         tags.append(f"event:{event['event']}[{event.get('authority_label', 'unrated')}]")
+    collection = c.get("collection_assertion") or {}
+    if collection.get("name"):
+        tags.append(f"collection:{collection['name']}[{collection.get('membership_authority', 'unrated')}]")
     tags.append("in-collection" if c["owned"] else "unowned")
     lore = world.get("lore_summary") or ""
     visual = world.get("visual_note") or ""
@@ -530,6 +541,18 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             f["event"] = event_name
             f["deterministic_event_match"] = event_name
             break
+    for product_context in data.get("azuki_world", {}).get("world_guide", {}).get("product_contexts", []):
+        product_name = product_context.get("name") or ""
+        product_id = product_context.get("collection_id") or ""
+        call_folded = call.casefold()
+        if (
+            (product_name and product_name.casefold() in call_folded)
+            or (product_id and product_id.casefold() in call_folded)
+            or "special collection" in call_folded
+        ):
+            f["product_channel"] = "special_collection"
+            f["deterministic_product_match"] = product_name or product_id
+            break
     action = valid_plan(f.get("action"), f) if isinstance(f, dict) else None
     if action:
         # Instruction, not a browse: the model's whole job was language -> typed action.
@@ -552,7 +575,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
@@ -602,7 +625,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','overrode_model_identity')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]

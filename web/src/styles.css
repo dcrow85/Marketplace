@@ -150,7 +150,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
   .bt-right { width: 100%; gap: 6px; min-width: 0; }
   .sizepick button { padding-left: 7px; padding-right: 7px; }
   .bsegs { flex: 1; min-width: 0; }
-  .bsegs button { flex: 1; padding-left: 7px; padding-right: 7px; white-space: nowrap; }
+  .bsegs button { flex: 1; min-width: 0; padding-left: 4px; padding-right: 4px; font-size: 11px; white-space: nowrap; }
 }
 
 /* the wordmark is the way home */

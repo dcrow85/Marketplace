@@ -58,6 +58,7 @@ def main() -> None:
     require("card-art observations" in system_prompt, "authority boundary left the filter prompt")
     require("political faction" in system_prompt, "subtype boundary left the filter prompt")
     require("Anime Expo 2026" in system_prompt, "event vocabulary left the filter prompt")
+    require("special_collection" in system_prompt, "Special Collection product channel left the filter prompt")
 
     alley = apply_filter(cards, {"plane": "alley"}, set_labels)
     garden = apply_filter(cards, {"plane": "garden"}, set_labels)
@@ -65,6 +66,7 @@ def main() -> None:
     black_jade = apply_filter(cards, {"lore_term": "Black Jade"}, set_labels)
     shao = apply_filter(cards, {"character_thread": "shao"}, set_labels)
     anime_expo = apply_filter(cards, {"event": "Anime Expo 2026"}, set_labels)
+    special_collection = apply_filter(cards, {"product_channel": "special_collection"}, set_labels)
     yojin_winner = next(
         (
             card
@@ -147,7 +149,10 @@ def main() -> None:
         "exact-name enforcement does not recognize Serene Fist, Misaki",
     )
     require(shao_ax_winner is not None, "Anime Expo Shao WINNER observation row is missing")
-    require(anime_expo == [shao_ax_winner], "Anime Expo event filter escaped the typed event row")
+    require(
+        {card["uid"] for card in anime_expo} == {shao_ax_winner["uid"], *(card["uid"] for card in special_collection)},
+        "Anime Expo event filter escaped the typed event and Special Collection rows",
+    )
     require(
         shao_ax_winner["event_assertion"] == {
             "event": "Anime Expo 2026",
@@ -167,6 +172,51 @@ def main() -> None:
         exact_card_name_in_call("show Shao's Perseverance Anime Expo winner", cards) == "Shao's Perseverance",
         "exact-name enforcement does not recognize Shao's Perseverance",
     )
+    expected_special_ids = {
+        "AZK01-009", "AZK01-022", "AZK01-066", "AZK01-074", "AZK01-088",
+        "AZK01-108", "STT01-010", "STT01-014", "STT03-009", "STT04-009",
+    }
+    require(len(special_collection) == 10, "Special Collection does not resolve to exactly ten rows")
+    require(
+        {card["card_id"] for card in special_collection} == expected_special_ids,
+        "Special Collection checklist drifted",
+    )
+    require(
+        sum(bool(card.get("image")) for card in special_collection) == 8
+        and {
+            card["card_id"] for card in special_collection if not card.get("image")
+        } == {"AZK01-108", "STT01-010"},
+        "Special Collection exact-image boundary drifted",
+    )
+    require(
+        all(
+            card["azuki_world"]["variant_role"] == "user-observed-special-collection-treatment"
+            and card["collection_assertion"]["membership_authority"] == "user_product_photo_observation"
+            for card in special_collection
+        ),
+        "Special Collection rows lost their observed-treatment or checklist authority",
+    )
+    reported_price = special_collection[0]["collection_assertion"]["reported_sale_price"]
+    require(
+        reported_price == {
+            "amount": 38,
+            "currency": "USD",
+            "authority_label": "user_assertion",
+            "catalog_disposition": "recorded_not_independently_verified",
+        },
+        "Special Collection reported price lost its claimant boundary",
+    )
+    special_red_bean = next(card for card in special_collection if card["card_id"] == "AZK01-009")
+    require(
+        "AX" not in special_red_bean["stamp"]
+        and "no AX stamp observed" in special_red_bean["observations"][0]["observed_stamp"],
+        "Special Collection Red Bean was conflated with the AX-stamped promo",
+    )
+    require(
+        "collection:Azuki TCG Special Collection Volume 01[user_product_photo_observation]"
+        in brief(special_red_bean, set_labels),
+        "Special Collection agent brief lost its product-membership authority",
+    )
     require(emberheart_winner is not None, "Lady Emberheart WINNER observation row is missing")
     require(
         emberheart_winner["azuki_world"]["variant_role"] == "user-observed-winner-treatment"
@@ -175,6 +225,12 @@ def main() -> None:
         "Lady Emberheart row lost its non-AX winner boundary or artist credit",
     )
     require(len(guide.get("event_contexts", [])) == 1, "Anime Expo event context is missing or duplicated")
+    require(len(guide.get("product_contexts", [])) == 1, "Special Collection product context is missing or duplicated")
+    require(
+        guide["promo_contexts"][0]["image_status"] == "no_matching_ax_stamped_image_supplied"
+        and guide["promo_contexts"][0]["user_reported_distribution"]["authority_label"] == "user_assertion",
+        "AX Red Bean promo boundary drifted",
+    )
     require("world-cue:" in brief(garden[0], set_labels), "agent brief lost observation labels")
 
     official_shao = next(

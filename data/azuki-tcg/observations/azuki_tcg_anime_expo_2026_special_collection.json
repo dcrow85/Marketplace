@@ -1,0 +1,278 @@
+{
+  "schema": "azuki_tcg_observed_special_collection_v0.1",
+  "collection_id": "anime-expo-2026-special-collection-volume-01",
+  "name": "Azuki TCG Special Collection Volume 01",
+  "observed": "2026-07-13",
+  "authority_label": "official_event_context_plus_user_product_photo_observation",
+  "official_context": {
+    "event": "Anime Expo 2026",
+    "dates": "2026-07-02/2026-07-05",
+    "location": "Los Angeles Convention Center, West Hall",
+    "booth": "424",
+    "source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+    "authority_label": "official_event_context",
+    "claims": [
+      "The Special Card Collection debuted at Anime Expo 2026.",
+      "Azuki described it as a limited-edition collection of 10 unique cards in a premium display format.",
+      "It was available at Booth 424 while supplies lasted."
+    ],
+    "card_checklist_boundary": "The official event page gives the product size but does not publish the ten-card checklist. The names below are transcribed from the user-supplied open-display photo."
+  },
+  "user_assertions": {
+    "reported_sale_price": {
+      "amount": 38,
+      "currency": "USD",
+      "authority_label": "user_assertion",
+      "catalog_disposition": "recorded_not_independently_verified"
+    },
+    "reported_availability": {
+      "description": "sold at Anime Expo in limited quantities",
+      "authority_label": "user_assertion_plus_official_limited_while_supplies_last_context",
+      "catalog_disposition": "limited_availability_supported_exact_quantity_unresolved"
+    }
+  },
+  "source_images": [
+    {
+      "source_id": "special-collection-volume-01-cover",
+      "kind": "user_provided_product_photo",
+      "original_filename": "Special Edition Binder Cover.webp",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/cover.webp",
+      "public_path": "assets/observations/special-collection-vol-01/cover.webp",
+      "sha256": "d7c5ed1c781d48463cea58aa854b19377ce23f59460cfe7b98554b9f0be59eb0",
+      "width": 1200,
+      "height": 1600,
+      "display_role": "sealed_product_cover"
+    },
+    {
+      "source_id": "special-collection-volume-01-open-display",
+      "kind": "user_provided_product_photo",
+      "original_filename": "SpecialEditionBinder.webp",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/open-display.webp",
+      "public_path": "assets/observations/special-collection-vol-01/open-display.webp",
+      "sha256": "4951dd7c274b4d62a1c73ab842eb0ec723c5631b3ec236940d351a04a7b23c01",
+      "width": 1570,
+      "height": 1206,
+      "display_role": "open_product_and_card_membership_evidence"
+    },
+    {
+      "source_id": "special-collection-volume-01-the-red-bean",
+      "kind": "user_provided_card_photo",
+      "original_filename": "The_Red_Bean.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/the-red-bean.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/the-red-bean.jpg",
+      "sha256": "e3c36f9cf5666905b642acb37874ba54811fe13d3a72713043062caad00843c5",
+      "width": 1076,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-mirage-frog",
+      "kind": "user_provided_card_photo",
+      "original_filename": "Mirage_Frog.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/mirage-frog.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/mirage-frog.jpg",
+      "sha256": "4ab8ab69826c17ff1853ece9461aebb56bd91da20fe06c5377d802b65db3e76c",
+      "width": 1052,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-firestorm",
+      "kind": "user_provided_card_photo",
+      "original_filename": "firestorm.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/firestorm.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/firestorm.jpg",
+      "sha256": "d6bfd4f737460a46a62759e593a100994693073d01c8c9a2f6a1d2abc0bda4e3",
+      "width": 1064,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-gurugumi-vanguard",
+      "kind": "user_provided_card_photo",
+      "original_filename": "Gurugumi_Vanguard.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/gurugumi-vanguard.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/gurugumi-vanguard.jpg",
+      "sha256": "dc57483fe1dfbecc16f68b6713195f2f727d987cc7ebbe6f50006612fc7b1361",
+      "width": 1066,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-pulled-under",
+      "kind": "user_provided_card_photo",
+      "original_filename": "Pulled_Under.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/pulled-under.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/pulled-under.jpg",
+      "sha256": "f9b6a3789c72f77e80a9e91023b7ac014b1f26eb1cabdceff7e55636fa489049",
+      "width": 1040,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-tenshin",
+      "kind": "user_provided_card_photo",
+      "original_filename": "Tenshin.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/tenshin.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/tenshin.jpg",
+      "sha256": "1b31cddc6ca39b656ae84f4677ca73110629b60b12afd5460ffe805c685ff183",
+      "width": 1044,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-warding-totem",
+      "kind": "user_provided_card_photo",
+      "original_filename": "Warding_Totem.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/warding-totem.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/warding-totem.jpg",
+      "sha256": "3134f7acca08e4953b26f4f273ccbf6c13f36a191634aabc296892d6a714ed5f",
+      "width": 1066,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    },
+    {
+      "source_id": "special-collection-volume-01-cinderwake-ritualist",
+      "kind": "user_provided_card_photo",
+      "original_filename": "Cinderwake_Ritualist.jpg",
+      "repo_path": "web/public/assets/observations/special-collection-vol-01/cinderwake-ritualist.jpg",
+      "public_path": "assets/observations/special-collection-vol-01/cinderwake-ritualist.jpg",
+      "sha256": "c6c0b3bec27178909038953fa5272d91923a4026c8b6592869576c95023e1b2a",
+      "width": 1054,
+      "height": 1476,
+      "display_role": "exact_card_front"
+    }
+  ],
+  "card_treatments": [
+    {
+      "card_id": "AZK01-009",
+      "name": "The Red Bean",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-AZK01-009_The-Red-Bean_S_R_die",
+      "observed_rarity": "R ★",
+      "image_source_id": "special-collection-volume-01-the-red-bean",
+      "collection_position": "left_panel_top_left",
+      "illustrator_observation": {"value": "VinzyWei", "confidence": "high"},
+      "visual_note": "Full-art star treatment centered on a red bean suspended before a dark-haired character; no AX stamp is visible."
+    },
+    {
+      "card_id": "AZK01-022",
+      "name": "Mirage Frog",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-AZK01-022_Mirage-Frog_E_UC_die",
+      "observed_rarity": "UC ★",
+      "image_source_id": "special-collection-volume-01-mirage-frog",
+      "collection_position": "left_panel_upper_middle",
+      "illustrator_observation": {"value": "Mirgo", "confidence": "high"},
+      "visual_note": "Full-art star treatment with a pale frog suspended over concentric water rings and yellow lily pads."
+    },
+    {
+      "card_id": "AZK01-066",
+      "name": "Firestorm",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-AZK01-066_Firestorm_S_UC_die",
+      "observed_rarity": "UC ★",
+      "image_source_id": "special-collection-volume-01-firestorm",
+      "collection_position": "left_panel_upper_right",
+      "illustrator_observation": {"value": "Twisted Hand Studio", "confidence": "high"},
+      "visual_note": "Full-art star treatment showing a white-haired fire caster sweeping a circular blaze overhead."
+    },
+    {
+      "card_id": "AZK01-074",
+      "name": "Gurugumi Vanguard",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-AZK01-074_Gurugumi-Vanguard_E_UC_die",
+      "observed_rarity": "UC ★",
+      "image_source_id": "special-collection-volume-01-gurugumi-vanguard",
+      "collection_position": "right_panel_upper_left",
+      "illustrator_observation": {"value": "Zhongqi Li", "confidence": "high"},
+      "visual_note": "Full-art star treatment with the purple-haired Gurugumi fighter turning through a sweep of blades and petals."
+    },
+    {
+      "card_id": "AZK01-088",
+      "name": "Pulled Under",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-AZK01-088_Pulled-Under_S_R_die",
+      "observed_rarity": "R ★",
+      "image_source_id": "special-collection-volume-01-pulled-under",
+      "collection_position": "right_panel_upper_middle",
+      "illustrator_observation": {"value": "DKANGI", "confidence": "high"},
+      "visual_note": "Full-art star treatment looking down into a deep blue current as two figures are dragged beneath the surface."
+    },
+    {
+      "card_id": "AZK01-108",
+      "name": "Crushing Weight",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-AZK01-108_Crushing-Weight_S_R_die",
+      "observed_rarity": "R ★",
+      "image_source_id": null,
+      "collection_position": "right_panel_top_right",
+      "illustrator_observation": null,
+      "visual_note": "The open-display photo shows a distinct full-art star treatment in the collection; no exact standalone card photo was supplied."
+    },
+    {
+      "card_id": "STT01-010",
+      "name": "Indra",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-STT01-010_Indra_E_R_die",
+      "observed_rarity": "R ★",
+      "image_source_id": null,
+      "collection_position": "left_panel_bottom_left",
+      "illustrator_observation": null,
+      "visual_note": "The open-display photo shows a distinct full-art star treatment in the collection; no exact standalone card photo was supplied."
+    },
+    {
+      "card_id": "STT01-014",
+      "name": "Tenshin",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-STT01-014_Tenshin_W_C_die",
+      "observed_rarity": "C ★",
+      "image_source_id": "special-collection-volume-01-tenshin",
+      "collection_position": "left_panel_bottom_middle",
+      "illustrator_observation": {"value": "Nick Oji", "confidence": "high"},
+      "visual_note": "Full-art star treatment isolating the Tenshin blade and red tassel against a saturated red-orange field."
+    },
+    {
+      "card_id": "STT03-009",
+      "name": "Warding Totem",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-STT03-009_Warding-Totem_E_UC_die",
+      "observed_rarity": "UC ★",
+      "image_source_id": "special-collection-volume-01-warding-totem",
+      "collection_position": "right_panel_bottom_middle",
+      "illustrator_observation": null,
+      "visual_note": "Full-art star treatment centered on a smiling stone totem sheltering a sprout and several small figures."
+    },
+    {
+      "card_id": "STT04-009",
+      "name": "Cinderwake Ritualist",
+      "base_gallery_uid": "azuki_tcg_official_gallery:S1-STT04-009_Cinderwake-Ritualist_E_R_die",
+      "observed_rarity": "R ★",
+      "image_source_id": "special-collection-volume-01-cinderwake-ritualist",
+      "collection_position": "right_panel_bottom_right",
+      "illustrator_observation": {"value": "mujinflight", "confidence": "medium"},
+      "visual_note": "Full-art star treatment showing the ritualist seated with hands together amid warm firelight and trailing cords."
+    }
+  ],
+  "related_ax_promo": {
+    "card_id": "AZK01-009",
+    "name": "The Red Bean",
+    "treatment": "AX-stamped full art",
+    "existence_authority": "official_event_context",
+    "official_source_url": "https://tcg.azuki.com/blog/019f1597-e79c-7cce-bbd4-5508892e6c8f",
+    "live_gallery_check": {
+      "checked": "2026-07-13",
+      "url": "https://tcg.azuki.com/api/cards",
+      "api_count": 237,
+      "ax_treatment_enumerated": false
+    },
+    "image_status": "no_matching_ax_stamped_image_supplied",
+    "supplied_red_bean_image_disposition": "special_collection_member_not_ax_promo_no_ax_stamp_visible",
+    "user_reported_distribution": {
+      "description": "given to people who visited the Azuki table",
+      "authority_label": "user_assertion",
+      "catalog_disposition": "recorded_not_independently_verified"
+    },
+    "distribution_boundary": "Azuki's official event page says demo participants had a chance to receive AX-exclusive cards and Starter Deck Battle participants competed for AX cards while supplies lasted. It does not say every table visitor received The Red Bean."
+  },
+  "not_claiming": [
+    "an official card-by-card Special Collection checklist beyond the official ten-card count",
+    "independent verification of the reported $38 sale price",
+    "an exact production or sales quantity",
+    "that the Special Collection Red Bean photo depicts the separate AX-stamped promo",
+    "that every visitor received an AX promo",
+    "physical-card authenticity, condition, possession, or current market value",
+    "official gallery enumeration of the ten observed treatments"
+  ]
+}

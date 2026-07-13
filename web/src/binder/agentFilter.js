@@ -3,13 +3,15 @@
 function worldSearchText(c) {
   const w = c.azuki_world || {}
   const event = c.event_assertion || {}
+  const collection = c.collection_assertion || {}
   const connections = (w.connections || []).flatMap((x) => [x.related_card_id, x.relation])
   const refs = (w.source_identity_refs || []).flatMap((x) => [x.collection, x.token_or_reference_id])
   return [
     w.lore_summary, w.character_thread, w.variant_role, w.visual_note, c.stamp,
     w.setting_cue?.value, ...(w.official_subtypes || []), ...(w.motifs || []),
     ...(w.search_terms || []), ...connections, ...refs, event.event,
-    event.distribution, event.authority_label,
+    event.distribution, event.authority_label, collection.collection_id,
+    collection.name, collection.position, collection.membership_authority,
   ].filter(Boolean).join(' ').toLowerCase()
 }
 

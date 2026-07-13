@@ -17,6 +17,7 @@ import collections
 import hashlib
 import json
 import re
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -27,6 +28,7 @@ LORE_DIR = BASE / "lore"
 OFFICIAL = BASE / "releases" / "azuki_tcg_official_gallery.json"
 ALPHA = BASE / "releases" / "azuki_tcg_alpha_master_sheet.json"
 UI_CATALOG = ROOT / "web" / "public" / "catalogs" / "azuki-tcg.json"
+SPECIAL_COLLECTION = BASE / "observations" / "azuki_tcg_anime_expo_2026_special_collection.json"
 OUTPUT = LORE_DIR / "azuki_world_metadata.json"
 AUDIT = LORE_DIR / "azuki_world_metadata_audit.json"
 
@@ -374,7 +376,9 @@ def variant_role(card: dict[str, Any]) -> str:
     return "base-or-standard-art"
 
 
-def visual_note(card: dict[str, Any], cue: dict[str, str]) -> str:
+def visual_note(card: dict[str, Any], cue: dict[str, str], observed_notes: dict[str, str] | None = None) -> str:
+    if observed_notes and card.get("uid") in observed_notes:
+        return observed_notes[card["uid"]]
     if card.get("uid") in SPECIFIC_VARIANT_VISUAL_NOTES:
         return SPECIFIC_VARIANT_VISUAL_NOTES[card["uid"]]
     card_id = card.get("card_id") or card.get("num") or ""
@@ -385,8 +389,10 @@ def visual_note(card: dict[str, Any], cue: dict[str, str]) -> str:
     return f"Reviewed {kind} illustration for {name}; strongest setting cue: {cue['value']}."
 
 
-def build_visual_review_snapshot(official_image_dir: Path) -> dict[str, Any]:
+def build_visual_review_snapshot(official_image_dir: Path | None = None) -> dict[str, Any]:
     ui = read_json(UI_CATALOG)
+    prior_path = newest_snapshot(VISUAL_REVIEW_GLOB)
+    prior_by_uid = {row["uid"]: row for row in read_json(prior_path).get("rows", [])}
     official_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "exact_source"]
     alpha_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "alpha_master_sheet"]
     observation_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "user_photo_observation"]
@@ -400,7 +406,15 @@ def build_visual_review_snapshot(official_image_dir: Path) -> dict[str, Any]:
         if not image:
             continue
         if card.get("image_status") == "exact_source":
-            path = official_image_dir / f"{card['source_entry_id']}.jpg"
+            path = official_image_dir / f"{card['source_entry_id']}.jpg" if official_image_dir else None
+            if not path or not path.exists():
+                prior = prior_by_uid.get(card["uid"])
+                if not prior or prior.get("image_ref") != image:
+                    raise FileNotFoundError(
+                        f"official review image unavailable and no matching prior review exists: {card['uid']}"
+                    )
+                rows.append(prior)
+                continue
             sheet = f"official_{official_position[card['uid']] // 20 + 1:02d}"
             review_status = "reviewed_in_labelled_contact_sheet"
             review_method = "Manual visual pass over labelled 5x4 contact sheets generated from each source image; official sheets 01-12 and Alpha sheets 01-05."
@@ -433,9 +447,9 @@ def build_visual_review_snapshot(official_image_dir: Path) -> dict[str, Any]:
 
     return {
         "schema": "azuki_card_art_visual_review_snapshot_v0.1",
-        "reviewed": "2026-07-10",
+        "reviewed": date.today().isoformat(),
         "source_catalog": str(UI_CATALOG.relative_to(ROOT)),
-        "scope": "Every image-bearing row in the 2026-07-10 Cairn Azuki UI catalog.",
+        "scope": f"Every image-bearing row in the {date.today().isoformat()} Cairn Azuki UI catalog.",
         "counts": {
             "reviewed_images": len(rows),
             "official_gallery_images": len(official_order),
@@ -456,6 +470,11 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
     official = read_json(OFFICIAL)
     alpha = read_json(ALPHA)
     ui = read_json(UI_CATALOG)
+    special_collection = read_json(SPECIAL_COLLECTION)
+    special_visual_notes = {
+        f"azuki_tcg_observation:special-collection-volume-01-{row['card_id'].lower()}": row["visual_note"]
+        for row in special_collection["card_treatments"]
+    }
 
     alpha_by_id = {card["card_id"]: card for card in alpha["cards"]}
     official_by_id: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
@@ -546,7 +565,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "variant_role": variant_role(card),
             "setting_cue": cue,
             "motifs": motifs,
-            "visual_note": visual_note(card, cue),
+            "visual_note": visual_note(card, cue, special_visual_notes),
             "visual_note_authority": "card_art_observation",
             "visual_review": ({
                 "reviewed": review_source.get("reviewed"),
@@ -595,6 +614,25 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "release_status": "announced_not_yet_released_at_snapshot_date",
         },
         "event_contexts": lore_source.get("event_contexts", []),
+        "product_contexts": [{
+            "collection_id": special_collection["collection_id"],
+            "name": special_collection["name"],
+            "authority_label": special_collection["authority_label"],
+            "official_context": special_collection["official_context"],
+            "user_assertions": special_collection["user_assertions"],
+            "card_ids": [row["card_id"] for row in special_collection["card_treatments"]],
+            "card_names": [row["name"] for row in special_collection["card_treatments"]],
+            "cover_image": next(
+                row["public_path"] for row in special_collection["source_images"]
+                if row["display_role"] == "sealed_product_cover"
+            ),
+            "open_display_image": next(
+                row["public_path"] for row in special_collection["source_images"]
+                if row["display_role"] == "open_product_and_card_membership_evidence"
+            ),
+            "not_claiming": special_collection["not_claiming"],
+        }],
+        "promo_contexts": [special_collection["related_ax_promo"]],
         "character_threads": [
             {"id": name, "card_ids": ids, "authority_label": "official_card_fact_plus_declared_catalog_inference"}
             for name, ids in sorted(CHARACTER_THREADS.items())
@@ -639,6 +677,8 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "official_gallery_sha256": sha256_file(OFFICIAL),
             "alpha_master_sheet_release": str(ALPHA.relative_to(ROOT)),
             "alpha_master_sheet_sha256": sha256_file(ALPHA),
+            "anime_expo_2026_special_collection": str(SPECIAL_COLLECTION.relative_to(ROOT)),
+            "anime_expo_2026_special_collection_sha256": sha256_file(SPECIAL_COLLECTION),
         },
         "authority_legend": lore_source["source_policy"],
         "world_guide": world_guide,
@@ -650,6 +690,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "image_rows_reviewed": len(review_by_uid),
             "official_subtype_terms": len(subtype_counts),
             "character_threads": len(CHARACTER_THREADS),
+            "observed_product_contexts": 1,
         },
         "checks": checks,
         "cards": card_rows,
@@ -680,10 +721,9 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.record_visual_review:
-        if not args.official_image_dir:
-            parser.error("--record-visual-review requires --official-image-dir")
-        review = build_visual_review_snapshot(args.official_image_dir.expanduser())
-        review_path = BASE / "source-snapshots" / "azuki_card_art_visual_review_2026-07-10.json"
+        official_image_dir = args.official_image_dir.expanduser() if args.official_image_dir else None
+        review = build_visual_review_snapshot(official_image_dir)
+        review_path = BASE / "source-snapshots" / f"azuki_card_art_visual_review_{review['reviewed']}.json"
         write_json(review_path, review)
         print(f"wrote {review_path.relative_to(ROOT)} ({review['counts']['reviewed_images']} reviewed images)")
 
