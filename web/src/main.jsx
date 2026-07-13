@@ -10,9 +10,14 @@ const APP_ID = import.meta.env.VITE_PRIVY_APP_ID
 // bootstrap. A stale Privy token can otherwise keep the provider from mounting any
 // UI when injected wallets disagree. Cairn's collection keys are left untouched.
 try {
-  const recoveryKey = 'cairn-auth-bootstrap-2026-07-13'
+  const recoveryKey = 'cairn-auth-bootstrap-2026-07-13-v2'
   if (!localStorage.getItem(recoveryKey)) {
-    localStorage.removeItem('privy:token')
+    // Privy uses its own prefix; remove only its stale bootstrap/session records.
+    // Cairn collection, display, offer, and profile records use `cairn-*` keys.
+    for (let i = localStorage.length - 1; i >= 0; i -= 1) {
+      const key = localStorage.key(i)
+      if (key?.startsWith('privy:')) localStorage.removeItem(key)
+    }
     localStorage.setItem(recoveryKey, '1')
   }
 } catch { /* storage can be unavailable in locked-down browsers */ }
