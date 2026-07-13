@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-11 · Codex (Mobile Binder repaired and live at Pages df86e1f6 from 076e669: 320px shell has no horizontal overflow and saved Gallery layouts render two columns. Unified catalog/API deployment remains healthy; no first real pilot trade is claimed.)
+UNREAD-FOR: none · LAST: 2026-07-13 · Codex (Anime Expo 2026 Special Collection Volume 01 is live in the Azuki catalogue: 10 observation-only treatments, 8 exact card photos, and 2 group-display references. The $38 price remains a user assertion; the photographed Red Bean is not conflated with the separately announced AX-stamped promo. Live Pages payload matches source at 353 rows; no first real pilot trade is claimed.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -66,12 +66,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   and Privy's external-wallet/WalletConnect bootstraps are disabled because wallets belong at the
   settlement decision, not authentication. Verified live on commit `1c46e17`, Pages deployment
   `7aa12594`; catalogue and Cairn local-storage keys remain untouched.
-- `[BLOCKING: azuki special-collection export]` 2026-07-13 · Codex — Ingesting the user-supplied
-  Anime Expo 2026 Special Collection Volume 01 evidence into the catalogue/export seam: ten
-  collection treatments, product cover/display evidence, the reported $38 sale price as an
-  unverified user assertion, and a strict separation between the collection Red Bean photo and
-  the separately announced AX-stamped Red Bean promo. Agent retrieval and Binder rendering will
-  be regenerated and checked before this marker closes.
+- `[passive]` 2026-07-13 · Codex — **Anime Expo 2026 Special Collection catalogue seam closed.**
+  Commit `2a61c17` adds ten observation-only Special Collection Volume 01 treatments: The Red
+  Bean, Mirage Frog, Firestorm, Gurugumi Vanguard, Pulled Under, Crushing Weight, Indra, Tenshin,
+  Warding Totem, and Cinderwake Ritualist. Eight have exact user-supplied card-front photos;
+  Crushing Weight and Indra remain group-display references because no standalone fronts were
+  supplied. Official event context supports the ten-card limited product and separately announced
+  AX-stamped Red Bean / Shao's Perseverance promos. It does not publish the checklist, $38 price,
+  exact quantity, or an every-visitor distribution claim. Accordingly, $38 remains a recorded,
+  independently unverified user assertion, and the supplied Red Bean photo (no visible AX stamp)
+  is not conflated with the AX promo. Export/world-agent audits pass at `353` rows, `349` reviewed
+  images, `52` star/alt rows, and `42` sourced world claims; the Special Collection agent filter
+  returns exactly ten rows. Binder QA passed at 1374px, 390px, and 320px. Live Pages deployment
+  `7aa12594` serves the same catalogue SHA-256 `d8ec288853dd95009e6f973ed00868d4ac978c9c34a966bf6aa63525d5553044`,
+  the recovered `/app/` HTML remains `no-store`, and its hashed assets remain immutable.
 - `[passive]` 2026-07-11 · Codex — **Mobile Binder repair deployed.** Commit `076e669` is live on
   Cloudflare Pages deployment `df86e1f6` and the apex serves the same `index-Bk9t0Ga6.js` asset. The
   authenticated Chrome check at 320x740 now reports document width exactly 320px, a compact but complete nav
