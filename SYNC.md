@@ -58,11 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: market purchase decision / Anko read]` 2026-07-13 · Codex — Bringing the
-  existing bounded decision-read control into the seller-table checkout, where a buyer chooses
-  whether to pay asks, trade, or request more evidence. The read will receive only the selected
-  cards, seller claims, witness counts, asks, and recorded settlement history; it remains advisory
-  and cannot send the deal or promote condition/authenticity/value claims.
+- `[passive]` 2026-07-13 · Codex — **Anko now stands at the buyer’s side of the table.**
+  Once a card enters the pile, the sticky checkout exposes “Ask Anko before paying” directly above
+  Pay / Settle; the bounded read persists on the final Settle page for pure buys and mixed trades.
+  Its packet is capped and contains only selected-card terms, seller condition claims, asks, scan
+  counts, and recorded settlement history. High-value or scan-gap deals are marked worth a second
+  look; Anko remains advisory and cannot send. Also repaired decision-read availability: honest
+  negated boundaries no longer trip the affirmative overclaim guard, model output is capped, and a
+  deterministic `cannot_resolve` / `request_evidence` / `hold` floor returns after 12 seconds when
+  the hosted reader is slow. Live probe: HTTP 200 in 12.4s, correctly refused to decide a 34-USDC
+  buy from scans without settlement history. UI commit `19ba888`, Pages deployment `12d49e95`;
+  backend commits `bb3a78e` + `af2a752`, Railway deployment `b7b61bee-713b-47e9-88bf-18c04467bb37`.
 - `[passive]` 2026-07-13 · Codex — **Extension-enabled apex recovery is live.** The affected Chrome
   profile now renders Cairn and opens Privy's email / Google / Apple / passkey modal with MetaMask
   and MyDoge enabled. Root causes were a stale four-hour HTML cache and extension interference with
