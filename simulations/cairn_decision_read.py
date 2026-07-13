@@ -88,16 +88,72 @@ def _clean_read(raw: Any) -> dict[str, Any]:
     return out
 
 
+def _bounded_fallback(packet: dict[str, Any]) -> dict[str, Any]:
+    """Fast, legible floor when the hosted reader is slow or fails its claim guard."""
+    terms = packet["terms"]
+    evidence = packet["evidence"]
+    records = evidence.get("card_records") if isinstance(evidence.get("card_records"), list) else []
+    selected = int(terms.get("selected_card_count") or terms.get("you_receive_count") or len(records) or 0)
+    missing_scans = int(evidence.get("cards_without_recorded_scans") or 0)
+    recorded_sales = int(evidence.get("cards_with_recorded_settlements") or 0)
+    cash = terms.get("cash_usdc", terms.get("cash_at_current_asks_usdc", 0))
+    try:
+        cash = float(cash or 0)
+    except (TypeError, ValueError):
+        cash = 0
+
+    reasons: list[str] = []
+    if selected:
+        reasons.append(f"The packet covers {selected} selected card{'s' if selected != 1 else ''}.")
+    if missing_scans:
+        reasons.append(f"{missing_scans} selected card{'s have' if missing_scans != 1 else ' has'} no recorded scans in this packet.")
+    elif selected:
+        reasons.append("Every selected card has at least one recorded scan in this packet; a scan is a witness, not proof.")
+    if recorded_sales:
+        reasons.append(f"Recorded settlement history is present for {recorded_sales} selected card{'s' if recorded_sales != 1 else ''}.")
+    else:
+        reasons.append("No recorded settlement history is available here for a price comparison.")
+
+    if missing_scans:
+        lean = "request_evidence"
+        summary = "I would ask for more recorded evidence before sending this deal. The current packet has gaps at the cards themselves."
+    elif cash >= 500:
+        lean = "hold"
+        summary = "I would pause for a second look before sending this high-value deal. The record is useful, but it does not settle the human judgment."
+    else:
+        lean = "cannot_resolve"
+        summary = "I can’t tell you to pay or walk away from this record alone. The available scans and history do not resolve the whole buying decision."
+
+    return {
+        "schema": "cairn.decision_read.v0.1",
+        "lean": lean,
+        "summary": summary,
+        "reasons": reasons[:3],
+        "unknowns": [
+            "The card’s authenticity and present condition remain unestablished.",
+            "The seller’s possession and ability to deliver are not established by this packet.",
+            "Future value and price fairness remain human judgments.",
+        ],
+        "boundary": "This is an advisory read of the supplied record; it does not authenticate, grade, appraise, or move the deal.",
+        "authority": "advisory_only",
+        "source": "bounded_fallback",
+    }
+
+
 def decision_read(payload: Any) -> dict[str, Any]:
     packet = _clean_packet(payload)
-    raw = call_model(
-        MODEL,
-        SYSTEM,
-        "DECISION PACKET:\n" + json.dumps(packet, ensure_ascii=False),
-        ENDPOINT,
-        timeout=90,
-        max_tokens=260,
-    )
-    out = _clean_read(raw)
+    try:
+        raw = call_model(
+            MODEL,
+            SYSTEM,
+            "DECISION PACKET:\n" + json.dumps(packet, ensure_ascii=False),
+            ENDPOINT,
+            timeout=12,
+            max_tokens=260,
+        )
+        out = _clean_read(raw)
+        out["source"] = "model"
+    except Exception:  # hosted reader timeout / malformed or overclaiming output -> safe floor
+        out = _bounded_fallback(packet)
     out["decision_ref"] = packet["decision_ref"]
     return out
