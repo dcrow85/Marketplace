@@ -1,5 +1,9 @@
 /* Trade surface — restrained chrome; the card art + the one risk hue carry color. */
 .tp { margin-top: 18px; }
+.trade-tools { margin-top: 6px; }
+.trade-toolsbody { padding: 5px 0 10px; }
+.trade-toolsbody .tp-head { margin-bottom: 8px; }
+.trade-chain-decision { display: flex; flex-direction: column; gap: 7px; margin: 14px 0; padding: 11px 12px; border: 0.5px solid var(--rule); border-radius: 9px; }
 .tp-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .tp-tabs { display: flex; align-items: center; gap: 6px; }
 .tp-tabs button { font-family: var(--mono); font-size: 12px; color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 7px 12px; cursor: pointer; }

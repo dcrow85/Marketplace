@@ -10,6 +10,7 @@ import { useCatalog, useByUid } from '../lib/data.js'
 import { useBus } from '../lib/store.js'
 import { handleFor } from '../identity.js'
 import { retryImg } from '../binder/helpers.jsx'
+import AskAnko from './AskAnko.jsx'
 
 // The offers ledger: every conversation, both directions, counters chained. An
 // accepted offer walks the settlement steps right here; everything else shows its
@@ -20,7 +21,7 @@ const FLOW_LABEL = { accepted: 'accepted', escrow_locked: 'escrow', in_transit: 
 // The live leg: an accepted LIVE deal settles for real — the payer funds ThinPilotEscrow
 // (a non-party arbiter named first), the trade # travels to the other side's ledger, and
 // each party records the card movement themselves when the mail lands. No rehearsal here.
-function LiveLeg({ o, offersKey, catalogId, accountId }) {
+function LiveLeg({ o, offersKey, catalogId, accountId, decision, recommended }) {
   const { address, ready, getWalletClient } = useEscrowWallet()
   const [arb, setArb] = useState('')
   const [busy, setBusy] = useState(false)
@@ -49,12 +50,16 @@ function LiveLeg({ o, offersKey, catalogId, accountId }) {
   return (
     <div className="ofl-liveleg mono">
       {o.cash && !o.tradeId && payer && (
-        <span className="ofl-fund">
-          <input placeholder="arbiter 0x… — a non-party you both name" value={arb} onChange={(e) => setArb(e.target.value.trim())} />
-          <button className="sheetbtn mk-sm mono" disabled={!ready || busy} onClick={fund}
-            title={ready ? 'approve + fund on-chain — funds held until you accept or an arbiter rules' : 'no signer — sign in with a wallet to fund'}>
-            {busy ? 'funding…' : `fund escrow · ${o.cash.amount} USDC`}</button>
-        </span>
+        <>
+          <div className="ofl-decisionlabel mono">Your decision · choose a neutral arbiter and fund this trade</div>
+          <AskAnko decision={{ ...decision, decision_ref: `${o.id}:fund`, kind: 'fund_escrow', question: 'Should I fund this accepted trade through escrow with the arbiter I choose?' }} recommended={recommended} />
+          <span className="ofl-fund">
+            <input placeholder="arbiter 0x… — a non-party you both name" value={arb} onChange={(e) => setArb(e.target.value.trim())} />
+            <button className="sheetbtn mk-sm mono" disabled={!ready || busy} onClick={fund}
+              title={ready ? 'approve + fund on-chain — funds held until you accept or an arbiter rules' : 'no signer — sign in with a wallet to fund'}>
+              {busy ? 'funding…' : `fund escrow · ${o.cash.amount} USDC`}</button>
+          </span>
+        </>
       )}
       {o.cash && !o.tradeId && !payer && <span className="dim">cash leg: they fund escrow — the trade # lands here when they do</span>}
       {o.tradeId && <span>escrow trade <b>#{o.tradeId}</b> — load it in the Escrow tab below to ship / receive / accept</span>}
@@ -83,22 +88,43 @@ export default function Offers({ accountId, catalog, onCounter }) {
     )
   }
 
-  return (
-    <div className="ofl">
-      <div className="sw-head">
-        <span className="ek">Offers</span>
-        <span className="mono dim">{offers.length} · counters are just new offers, linked</span>
-      </div>
-      {offers.map((o) => {
+  const groupFor = (o) => {
+    const open = ['sent', 'seen'].includes(o.state)
+    if (o.dir === 'in' && open) return 'needs'
+    if (open || OFFER_SETTLING.includes(o.state)) return 'waiting'
+    return 'history'
+  }
+  const grouped = {
+    needs: offers.filter((o) => groupFor(o) === 'needs'),
+    waiting: offers.filter((o) => groupFor(o) === 'waiting'),
+    history: offers.filter((o) => groupFor(o) === 'history'),
+  }
+  const renderOffer = (o) => {
         const other = o.dir === 'out' ? o.to : o.from
         const open = ['sent', 'seen'].includes(o.state)
         const settling = OFFER_SETTLING.includes(o.state) || o.state === 'settled'
         const idx = FLOW.indexOf(o.state)
+        const getCards = (o.dir === 'out' ? o.want : o.give).map((x) => byUid.get(x.uid)).filter(Boolean)
+        const giveCards = (o.dir === 'out' ? o.give : o.want).map((x) => byUid.get(x.uid)).filter(Boolean)
+        const recommended = Number(o.cash?.amount || 0) >= 500 || [...getCards, ...giveCards].some((c) => Number(c.band_rank || 0) >= 3)
+        const decision = {
+          decision_ref: `${o.id}:${o.state}`,
+          kind: 'incoming_offer',
+          question: 'Should I accept, counter, or decline this offer?',
+          terms: {
+            direction: o.dir, state: o.state, live: !!o.live,
+            you_receive: getCards.map((c) => ({ uid: c.uid, name: c.name_en, number: c.num, attention_band: c.band_rank || null })),
+            you_give: giveCards.map((c) => ({ uid: c.uid, name: c.name_en, number: c.num, attention_band: c.band_rank || null })),
+            cash: o.cash || null,
+          },
+          principal_context: { recorded_policy: 'No signed trade policy is available to this interface.' },
+          evidence: { counterparty_statement: o.response?.line || null, scans_or_condition_evidence: 'not included in this offer packet' },
+        }
         return (
-          <div key={o.id} className={'ofl-row' + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
+          <div key={o.id} className={'ofl-row' + (o.dir === 'in' && open ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
             <div className="ofl-top">
               <span className="mono ofl-dir">{o.dir === 'out' ? '→ to' : '← from'} <b>{handleFor(other)}</b> · {o.at}{o.counterOf ? ' · counter' : ''}{o.live ? <span className="ofl-live"> · ● live</span> : ''}</span>
-              <span className={'mono ofl-st st-' + o.state}>{o.state.replace('_', ' ')}</span>
+              <span className={'mono ofl-st st-' + o.state}>{o.dir === 'in' && open ? 'needs your answer' : o.state.replace('_', ' ')}</span>
             </div>
             <div className="ofl-baskets">
               <span className="ofl-side"><i className="mono dim">you get</i> {(o.dir === 'out' ? o.want : o.give).map(chip)}{(o.dir === 'out' ? o.want : o.give).length ? null : ' —'}</span>
@@ -117,7 +143,11 @@ export default function Offers({ accountId, catalog, onCounter }) {
               </div>
             )}
             {(o.log || []).slice(-1).map((l, i) => <div key={i} className="mt-line"><span className="mono dim">rail</span> {l}</div>)}
-            <LiveLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} />
+            <LiveLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} decision={decision} recommended={recommended} />
+            {o.dir === 'in' && open && <>
+              <div className="ofl-decisionlabel mono">Your decision · accept, counter, or decline</div>
+              <AskAnko decision={decision} recommended={recommended} />
+            </>}
             <span className="sw-acts">
               {o.dir === 'in' && open && <>
                 <button className="sheetbtn mk-sm mono sw-boot" onClick={() => acceptIncoming(key, o.id)}>✓ accept</button>
@@ -129,10 +159,23 @@ export default function Offers({ accountId, catalog, onCounter }) {
             </span>
           </div>
         )
-      })}
-      <p className="sc-note dim">An offer is a message, not a lock. Offers to sample sellers settle as rehearsal in your
-        browser; a <b>● live</b> offer reached a real person&rsquo;s inbox — its cash moves only through escrow with an
-        arbiter named, and each side records the card movement themselves.</p>
+  }
+
+  return (
+    <div className="ofl">
+      <section className="trade-group needs">
+        <div className="trade-grouphead"><span className="ek">Needs you</span><span className="mono dim">{grouped.needs.length ? `${grouped.needs.length} decision${grouped.needs.length === 1 ? '' : 's'}` : 'nothing waiting on you'}</span></div>
+        {grouped.needs.map(renderOffer)}
+      </section>
+      {!!grouped.waiting.length && <details className="trade-fold">
+        <summary><span>Waiting</span><span className="mono">{grouped.waiting.length} · someone else has the next move</span></summary>
+        <div className="trade-foldbody">{grouped.waiting.map(renderOffer)}</div>
+      </details>}
+      {!!grouped.history.length && <details className="trade-fold">
+        <summary><span>History</span><span className="mono">{grouped.history.length} closed or completed</span></summary>
+        <div className="trade-foldbody">{grouped.history.map(renderOffer)}</div>
+      </details>}
+      <details className="trade-help"><summary>How offers work</summary><p className="sc-note dim">An offer is a message, not a lock. A <b>● live</b> offer reached a real person&rsquo;s inbox. Anko&rsquo;s read is advisory; accepting, funding, and recording the trade stay separate human actions.</p></details>
     </div>
   )
 }

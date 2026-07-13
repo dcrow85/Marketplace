@@ -5,6 +5,7 @@ Serves the binder (mockups/) statically and exposes a SMALL, deliberately narrow
 API so the live judged-layer agent can be poked from a browser:
 
   POST /api/browse   {"call": "<natural-language browse call>", "catalog": "azuki-tcg"}  -> browse() result
+  POST /api/decision-read {<bounded decision packet>}              -> advisory Anko read
   GET  /api/health                                               -> {"qwen": bool}
 
 Design constraints (this is the thing that gets exposed via the tunnel):
@@ -43,6 +44,7 @@ STATIC_DIR = MOCKUPS  # overridable via --static-dir (e.g. the built web/dist in
 import sys
 sys.path.insert(0, str(ROOT / "simulations"))
 from cairn_browse import browse, ENDPOINT  # noqa: E402  (reuse the proven loop)
+from cairn_decision_read import decision_read  # noqa: E402  (bounded, advisory decision read)
 from cairn_vision import read_photo, read_page  # noqa: E402  (photo-import vision read)
 from cairn_records import put_record, get_record  # noqa: E402  (content-addressed trade-record store)
 
@@ -134,6 +136,8 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             return
         if self.path == "/api/browse":
             self._post_browse()
+        elif self.path == "/api/decision-read":
+            self._post_decision_read()
         elif self.path == "/api/read":
             self._post_read()
         elif self.path == "/api/scan":
@@ -177,6 +181,29 @@ class BrowseHandler(SimpleHTTPRequestHandler):
                 result = browse(call, catalog=catalog)  # hosted endpoint scales; allow concurrent visitors
         except Exception as exc:  # noqa: BLE001 — never leak a stack trace to the demo
             self.send_json({"error": "browse_failed", "detail": type(exc).__name__}, status=502)
+            return
+        self.send_json(result)
+
+    def _post_decision_read(self) -> None:
+        payload = self._body(16_000)
+        if payload is None:
+            return
+        if not qwen_up():
+            self.send_json({"error": "agent_offline", "detail": "Anko is not available right now."}, status=503)
+            return
+        try:
+            if LOCAL_MODEL:
+                with _MODEL_LOCK:
+                    result = decision_read(payload)
+            else:
+                result = decision_read(payload)
+        except ValueError as exc:
+            code = str(exc)
+            status = 400 if code in {"bad_packet", "packet_too_large"} else 422
+            self.send_json({"error": code}, status=status)
+            return
+        except Exception as exc:  # noqa: BLE001 — no model/provider detail leaves the service
+            self.send_json({"error": "decision_read_failed", "detail": type(exc).__name__}, status=502)
             return
         self.send_json(result)
 

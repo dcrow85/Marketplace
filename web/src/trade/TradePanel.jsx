@@ -7,6 +7,7 @@ import {
   acceptTrade, settleByTimeout, disputeTrade, resolveTrade, confirmReturnCustody, cancelBeforeShip,
 } from '../chain/escrow.js'
 import { putRecord, getRecord } from './records.js'
+import AskAnko from './AskAnko.jsx'
 
 const short = (a) => (a ? a.slice(0, 6) + '…' + a.slice(-4) : '—')
 const errText = (e) => e?.shortMessage || e?.details || e?.message || String(e)
@@ -29,6 +30,19 @@ export default function TradePanel({ openTradeId }) {
   useEffect(() => { // the ambient line can open a specific trade
     if (openTradeId) setTradeId(openTradeId) // eslint-disable-line react-hooks/set-state-in-effect
   }, [openTradeId])
+
+  if (!tradeId) return (
+    <details className="trade-tools">
+      <summary><span>Escrow tools</span><span className="mono">load an existing on-chain trade</span></summary>
+      <div className="trade-toolsbody">
+        <div className="tp-head">
+          <div className="tp-tabs"><button className="on" disabled>Escrow</button><LoadTrade onLoad={(id) => setTradeId(id)} /></div>
+          <span className="tp-who mono">{ready ? <>signer <a href={addrUrl(address)} target="_blank" rel="noreferrer">{short(address)}</a></> : <span className="dim">no signer — sign in to act (reads work)</span>}</span>
+        </div>
+        <div className="empty">Load a trade by its number. Active escrow decisions opened from Cairn appear here automatically.</div>
+      </div>
+    </details>
+  )
 
   return (
     <div className="tp">
@@ -109,6 +123,21 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
   if (!t) return <div className="empty">Loading trade #{tradeId}…</div>
 
   const role = eq(address, t.buyer) ? 'buyer' : eq(address, t.seller) ? 'seller' : eq(address, t.arbiter) ? 'arbiter' : 'observer'
+  const amount = fromUsdc(t.usdcAmount)
+  const decisionPoint = role === 'buyer' && t.stateName === 'Funded'
+    ? { kind: 'cancel_or_wait', question: 'Should I cancel for a refund or wait for the seller to ship?' }
+    : role === 'buyer' && t.stateName === 'InspectionOpen'
+      ? { kind: 'accept_or_dispute', question: 'Should I accept the delivery and release funds, or open a dispute?' }
+      : role === 'arbiter' && t.stateName === 'Disputed'
+        ? { kind: 'arbiter_ruling', question: 'What recorded gaps should I examine before ruling for the buyer or seller?' }
+        : null
+  const ankoDecision = decisionPoint && {
+    decision_ref: `trade:${tradeId}:${t.stateName}`,
+    ...decisionPoint,
+    terms: { trade_id: tradeId, state: t.stateName, role, amount_usdc: amount, buyer: t.buyer, seller: t.seller, arbiter: t.arbiter, return_custody_confirmed: !!t.returnCustodyConfirmed },
+    principal_context: { recorded_policy: 'No signed trade policy is available to this interface.' },
+    evidence: { terms_hash: t.termsHash, tracking_hash: t.trackingHash, dispute_reason_hash: t.disputeReasonHash },
+  }
   const act = (label, fn) => async () => { try { const wc = await getWalletClient(); await run(label, () => fn(wc)); await refresh() } catch { /* surfaced */ } }
   // a function returning JSX (not a render-created component) — called inline below
   const actBtn = (label, on) => <button className="act" disabled={!ready || !!pending} onClick={on}>{label}</button>
@@ -121,7 +150,7 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
       </div>
       {nextMove(t, role, tradeId) && <p className="nextmove">{nextMove(t, role, tradeId)}</p>}
       <div className="d-grid mono">
-        <span>amount</span><span>{fromUsdc(t.usdcAmount)} USDC</span>
+        <span>amount</span><span>{amount} USDC</span>
         <span>buyer</span><span><a href={addrUrl(t.buyer)} target="_blank" rel="noreferrer">{short(t.buyer)}</a></span>
         <span>seller</span><span><a href={addrUrl(t.seller)} target="_blank" rel="noreferrer">{short(t.seller)}</a></span>
         <span>arbiter</span><span><a href={addrUrl(t.arbiter)} target="_blank" rel="noreferrer">{short(t.arbiter)}</a></span>
@@ -129,6 +158,11 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
       </div>
 
       <TradeRecord t={t} />
+
+      {ankoDecision && <div className="trade-chain-decision">
+        <div className="ofl-decisionlabel mono">Your decision · {decisionPoint.question}</div>
+        <AskAnko decision={ankoDecision} recommended={Number(amount) >= 500 || decisionPoint.kind === 'arbiter_ruling'} />
+      </div>}
 
       <div className="d-actions">
         {role === 'buyer' && t.stateName === 'Funded' && actBtn('Cancel (refund)', act('Cancelling…', (wc) => cancelBeforeShip(wc, tradeId)))}

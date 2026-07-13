@@ -119,6 +119,7 @@
 /* the ledger: every conversation, counters chained */
 .ofl { display: flex; flex-direction: column; gap: 8px; padding: 12px 0 16px; border-bottom: 0.5px solid var(--rule); margin-bottom: 14px; }
 .ofl-row { border: 0.5px solid var(--rule); border-radius: 9px; padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.ofl-row.needs-you { border-color: var(--ink); box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 12%, transparent); padding: 14px 15px; }
 .ofl-row.done { border-color: var(--have); }
 .ofl-row.closed { opacity: .6; }
 .ofl-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
@@ -129,6 +130,43 @@
 .ofl-baskets { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13px; }
 .ofl-side i { font-style: normal; font-size: 10px; margin-right: 5px; }
 .ofl-cash { font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--rule); border-radius: 5px; padding: 1px 7px; }
+.trade-group { display: flex; flex-direction: column; gap: 8px; }
+.trade-grouphead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.trade-group.needs { padding: 4px 0 10px; }
+.trade-fold, .trade-help, .trade-tools { border-top: 0.5px solid var(--rule); }
+.trade-fold > summary, .trade-tools > summary { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 13px 1px; cursor: pointer; font-size: 13px; }
+.trade-fold > summary::marker, .trade-tools > summary::marker { color: var(--dim); }
+.trade-fold > summary .mono, .trade-tools > summary .mono { color: var(--dim); font-size: 10.5px; }
+.trade-foldbody { display: flex; flex-direction: column; gap: 8px; padding: 0 0 12px; }
+.trade-help { font-size: 11px; color: var(--dim); }
+.trade-help > summary { cursor: pointer; padding: 9px 1px; }
+.trade-help .sc-note { margin: 2px 0 10px; }
+.ofl-decisionlabel { color: var(--ink); font-size: 10.5px; letter-spacing: .02em; margin-top: 3px; }
+.anko-askrow { display: flex; align-items: center; gap: 7px 10px; flex-wrap: wrap; }
+.anko-ask { display: inline-flex; align-items: center; gap: 7px; color: var(--agent); background: var(--agent-bg); border: 0.5px solid var(--agent); border-radius: 8px; padding: 8px 11px; cursor: pointer; font-size: 11px; }
+.anko-ask:hover:not(:disabled) { filter: brightness(1.06); }
+.anko-ask:disabled { opacity: .6; cursor: wait; }
+.anko-ask img, .anko-readwho img { width: 20px; height: 20px; object-fit: cover; border-radius: 50%; }
+.anko-ask.recommended::after { content: 'recommended'; font-size: 8px; text-transform: uppercase; letter-spacing: .07em; color: var(--paper); background: var(--agent); border-radius: 4px; padding: 2px 5px; }
+.anko-recommended { color: var(--dim); font-size: 9.5px; }
+.anko-readerr { color: var(--signal); font-size: 10px; }
+.anko-read { color: var(--ink2); background: var(--agent-bg); border: 0.5px solid var(--agent); border-radius: 10px; padding: 11px 13px; font-size: 12.5px; line-height: 1.5; }
+.anko-readhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.anko-readwho { display: inline-flex; align-items: center; gap: 7px; color: var(--agent); font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; }
+.anko-readwho i { font-style: normal; color: var(--dim); border-left: 0.5px solid var(--rule); padding-left: 7px; }
+.anko-hide { color: var(--dim); background: transparent; border: 0; cursor: pointer; padding: 4px; }
+.anko-lean { display: block; color: var(--ink); margin-top: 9px; font-size: 14px; }
+.anko-read p { margin: 5px 0; }
+.anko-readlist { display: grid; grid-template-columns: 82px 1fr; gap: 8px; margin-top: 8px; }
+.anko-readlist > span { color: var(--dim); font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; padding-top: 2px; }
+.anko-readlist ul { margin: 0; padding-left: 17px; }
+.anko-readlist li + li { margin-top: 3px; }
+.anko-readlist.unknown { border-top: 0.5px solid color-mix(in srgb, var(--agent) 25%, transparent); padding-top: 7px; }
+.anko-boundary { color: var(--dim); font-size: 9.5px; border-top: 0.5px solid color-mix(in srgb, var(--agent) 25%, transparent); padding-top: 7px; margin-top: 9px !important; }
+@media (max-width: 520px) {
+  .trade-fold > summary, .trade-tools > summary { align-items: flex-start; flex-direction: column; gap: 2px; }
+  .anko-readlist { grid-template-columns: 1fr; gap: 3px; }
+}
 
 /* ---- art everywhere: this is a TCG ---- */
 /* the directory: a fan of each table's cards */
