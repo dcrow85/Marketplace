@@ -40,7 +40,7 @@ export default function QuickSell({ c, store, setField, fromAsk, lastSale, onOpe
           <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
         </div>
         <div className="qs-foot">
-          <button className="ghost sm" onClick={() => { setField(c.uid, 'sell', false); onClose() }}>✕ unlist</button>
+          <button className="ghost sm" onClick={() => { setField(c.uid, 'sell', false); setField(c.uid, 'display', false); onClose() }}>✕ unlist</button>
           <button className="ghost sm" onClick={() => { onClose(); onOpenFull(c.uid) }}>open the full card →</button>
         </div>
       </div>

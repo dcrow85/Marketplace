@@ -34,7 +34,7 @@ export default function PocketPages({ rows, store, userPhotos, onOpen, setField,
                 {fromAsk != null && <span className="bv-from onart mono">from {fromAsk} USDC</span>}
                 <span className="bv-q">
                   <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
-                    onClick={(ev) => { ev.stopPropagation(); const on = !e.sell; setField(c.uid, 'sell', on); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
+                    onClick={(ev) => { ev.stopPropagation(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
                   <button className={'bv-qb' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
                     onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
                 </span>

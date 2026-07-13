@@ -151,7 +151,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       const cur = effStance(byUid(data, uid), prev).stance
       const u = { ...(prev[uid] || {}) }
       u.stance = cur === st ? 'none' : st
-      if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false }
+      if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false; u.display = false }
       if (u.stance === 'none' || u.stance === 'pass') u.grail = false
       const next = { ...prev, [uid]: u }
       try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
@@ -255,10 +255,10 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         const d = draft[c.uid] = draft[c.uid] || {}
         if (op === 'mark_have') d.stance = 'have'
         else if (op === 'mark_want') d.stance = 'want'
-        else if (op === 'unmark_have' || op === 'unmark_want') { d.stance = 'none'; d.sell = false; d.trade = false; d.grail = false }
+        else if (op === 'unmark_have' || op === 'unmark_want') { d.stance = 'none'; d.sell = false; d.trade = false; d.grail = false; d.display = false }
         else if (op === 'list_for_sale') { d.sell = true; if (st.ask != null) d.ask = String(st.ask) }
         else if (op === 'open_to_trade') d.trade = true
-        else if (op === 'unlist') d.sell = false
+        else if (op === 'unlist') { d.sell = false; d.display = false }
         else if (op === 'close_trade') d.trade = false
       }
       return { op, ask: st.ask, affected: base }

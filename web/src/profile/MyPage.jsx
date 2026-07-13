@@ -11,7 +11,6 @@ import { useBus } from '../lib/store.js'
 import { loadMockSales, mockSalesKeyFor } from '../market/mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
 import ProfileHeader from './ProfileHeader.jsx'
-import ProfileBinder from './ProfileBinder.jsx'
 import CardModal from '../binder/CardModal.jsx'
 
 export default function MyPage({ accountId, catalog }) {
@@ -34,7 +33,7 @@ export default function MyPage({ accountId, catalog }) {
     const cur = entryFor(c, prev).stance
     const u = { ...(prev[uid] || {}) }
     u.stance = cur === st ? 'none' : st
-    if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false }
+    if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false; u.display = false }
     if (u.stance === 'none' || u.stance === 'pass') u.grail = false
     saveStore(storeKey, { ...prev, [uid]: u })
   }
@@ -52,21 +51,15 @@ export default function MyPage({ accountId, catalog }) {
   const setSign = (v) => { setSignState(v); try { localStorage.setItem(noteKey, v) } catch { /* ignore */ } }
 
   const rows = useMemo(() => {
-    if (!data) return { haves: [], listed: [], wants: [], grails: [] }
+    if (!data) return { haves: [], listed: [], display: [], wants: [] }
     const all = data.cards.map((c) => ({ c, e: entryFor(c, store) }))
     return {
       haves: all.filter(({ e }) => e.stance === 'have'),
       listed: all.filter(({ e }) => e.stance === 'have' && (e.sell || e.trade)),
+      display: all.filter(({ e }) => e.stance === 'have' && e.sell && e.display),
       wants: all.filter(({ e }) => e.stance === 'want'),
-      grails: all.filter(({ e }) => e.grail && e.stance === 'have'),
     }
   }, [data, store])
-
-  // A grail is the only curation gesture. It moves to the front while the rest
-  // keep catalogue order, so page one is both the public lead and a real binder page.
-  const binderUids = useMemo(() => [...rows.haves]
-    .sort((a, b) => Number(b.e.grail) - Number(a.e.grail))
-    .map(({ c }) => c.uid), [rows.haves])
 
   // the record strip: computed, never asserted
   const stats = useBus(() => {
@@ -98,7 +91,7 @@ export default function MyPage({ accountId, catalog }) {
   const [pubErr, setPubErr] = useState(false)
   const buildSnapshot = () => ({
     v: 1, cat: catalog.id, sign, handle: handleFor(accountId),
-    showcase: binderUids.slice(0, 9),
+    showcase: rows.display.map(({ c }) => c.uid),
     table: rows.listed.map(({ c, e }) => ({
       uid: c.uid, ask: e.ask ? Number(e.ask) : null, trade: !!e.trade, sell: !!e.sell,
       cond: condStr(e), scans: (e.pile || []).length || (e.photo_hash ? 1 : 0), copies: e.copies || 1,
@@ -136,7 +129,7 @@ export default function MyPage({ accountId, catalog }) {
           ? pubAt
             ? <>
                 <span className="pf-live">● on the room&rsquo;s board</span>
-                <span className="dim">your table, first binder page, and hunt are public to the pilot · refreshed each visit</span>
+                <span className="dim">your display case, binder, and hunt are public to the pilot · refreshed each visit</span>
                 <button className="ghost sm" onClick={publish} disabled={pubBusy}>{pubBusy ? 'publishing…' : 'republish now'}</button>
                 <button className="ghost sm" onClick={unpublish} disabled={pubBusy}>take it down</button>
               </>
@@ -147,25 +140,20 @@ export default function MyPage({ accountId, catalog }) {
           : <span className="dim">publishing needs a wallet account — sign in with one and your page can go on the board</span>}
         {pubErr && <span className="pf-puberr">couldn&rsquo;t reach the board — try again</span>}
       </div>
-      <ProfileBinder uids={binderUids} byUid={byUid} own onOpen={setSel} />
+      <div className="pf-sechead">
+        <span className="ek">Display case</span>
+        <span className="mono dim">for-sale cards you lead with</span>
+      </div>
+      {rows.display.length
+        ? <ListingTiles rows={rows.display} setSel={setSel} setAsk={setAsk} setField={setField} />
+        : <div className="empty">Your case is empty. Mark a for-sale card “Display” and it moves here.</div>}
 
       <div className="pf-sechead">
-        <span className="ek">On your table</span>
+        <span className="ek">Binder</span>
         <span className="mono dim">{rows.listed.length ? `${rows.listed.length} listed · asks are per copy` : ''}</span>
       </div>
-      {rows.listed.length
-        ? <div className="sp-tiles">
-            {rows.listed.map(({ c, e }) => (
-              <MiniCard key={c.uid} c={c} onTap={() => setSel(c.uid)}
-                corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
-                sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
-                actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
-                  <span className="fpre">$</span>
-                  <input type="number" min="0" placeholder="ask"
-                    value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
-                </span>} />
-            ))}
-          </div>
+      {rows.listed.filter(({ e }) => !(e.sell && e.display)).length
+        ? <ListingTiles rows={rows.listed.filter(({ e }) => !(e.sell && e.display))} setSel={setSel} setAsk={setAsk} setField={setField} />
         : <div className="empty">Nothing on your table. Open a card you Have and mark it “List for sale” or “Open to trade”.</div>}
 
       <div className="pf-sechead">
@@ -184,12 +172,31 @@ export default function MyPage({ accountId, catalog }) {
           </div>
         : <div className="empty">No wants yet — mark cards as Want and your hunt goes on the board.</div>}
 
-      <p className="sc-note dim">This is your page exactly as the room reads it once it&rsquo;s on the board: your first binder page
+      <p className="sc-note dim">This is your page exactly as the room reads it once it&rsquo;s on the board: your display case, binder,
         and your hunt show what you choose; the record strip only ever says what&rsquo;s recorded — and on other people&rsquo;s
         screens it stays your claim until signing lands.</p>
       {sel && <CardModal key={sel} uid={sel} data={data} setById={setById} store={store}
         setStance={setStance} setField={setField} agentName="Anko"
         onClose={() => setSel(null)} market={mkt} mockSales={mockSales} />}
+    </div>
+  )
+}
+
+function ListingTiles({ rows, setSel, setAsk, setField }) {
+  return (
+    <div className="sp-tiles">
+      {rows.map(({ c, e }) => (
+        <MiniCard key={c.uid} c={c} onTap={() => setSel(c.uid)}
+          corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
+          sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
+          actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
+            {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
+              onClick={() => setField(c.uid, 'display', !e.display)}>{e.display ? 'in case' : 'display'}</button>}
+            <span className="fpre">$</span>
+            <input type="number" min="0" placeholder="ask"
+              value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
+          </span>} />
+      ))}
     </div>
   )
 }

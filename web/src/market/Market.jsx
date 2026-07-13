@@ -9,7 +9,6 @@ import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile } from './pile.js'
 import MarketFinds from './MarketFinds.jsx'
 import SettlePage from './SettlePage.jsx'
-import ProfileBinder from '../profile/ProfileBinder.jsx'
 import CardZoom from './CardZoom.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
@@ -313,6 +312,41 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const theirWants = (open.wants || []).map((u) => byUid.get(u)).filter(Boolean)
     const swapBait = theirWants.filter((c) => myHaves.has(c.uid))
     const buysSum = pile.filter((p) => p.mode === 'buy').reduce((t, p) => t + (open.listings.find((l) => l.uid === p.uid)?.ask ?? 0), 0)
+    const displayUids = new Set(open.showcase || [])
+    const displayRows = rows.filter(({ c }) => displayUids.has(c.uid))
+    const binderRows = rows.filter(({ c }) => !displayUids.has(c.uid))
+    const cardGrid = (sectionRows, emptyText) => (
+      <div className="grid">
+        {sectionRows.map(({ l, c }) => {
+          const p = inPile(open.id, c.uid)
+          return (
+            <div key={c.uid} className={'cell' + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}>
+              <div className="stancebar">
+                <button className={'seg sg-have' + (p?.mode === 'buy' ? ' on' : '')}
+                  title="into your pile at the ask — the deal sends when you finish the table"
+                  onClick={() => pickUp(open.id, c.uid, 'buy')}>{p?.mode === 'buy' ? '✓ buy' : `buy · ${l.ask}`}</button>
+                <button className={'seg sg-want' + (p?.mode === 'trade' ? ' on' : '')}
+                  title="into your pile as a trade-for — you pick your side at settle"
+                  onClick={() => pickUp(open.id, c.uid, 'trade')}>{p?.mode === 'trade' ? '✓ trade' : '⇄ trade'}</button>
+              </div>
+              <div className={'card' + (p ? ' s-have' : '')} role="button" tabIndex={0} title="hold it up to the light"
+                onClick={() => setZoom({ c, l, sellerId: open.id })}>
+                <div className="face"><div className="ja">{c.name_en}</div></div>
+                {c.image && <img src={c.image} alt={c.name_en} loading="lazy" decoding="async" />}
+              </div>
+              <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
+                <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
+                <div className="cap-sub">
+                  <span className="crom">{scanLabel(l.witness)}</span>
+                  <span className={'cmeta ' + (p ? 'm-have' : 'm-want')}>{l.ask} USDC</span>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+        {!sectionRows.length && <div className="empty">{emptyText}</div>}
+      </div>
+    )
     return (
       <div className="mk">
         {roomNote}
@@ -345,9 +379,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             {witnessed > 0 && <span className={'pf-stat' + (witnessed === open.listings.length ? ' rec' : '')}>{witnessed === open.listings.length ? 'every listing scanned' : `${witnessed}/${open.listings.length} listings scanned`}</span>}
           </div>
         )}
-        {open.showcase?.length > 0 && (
-          <ProfileBinder uids={open.showcase} byUid={byUid} own={false} />
-        )}
         <div className="mk-meter mono">
           <span>{open.listings.length} listed · {total} USDC asked</span>
           <span className={witnessed === open.listings.length ? 'mk-wit ok' : witnessed ? '' : 'mk-wit none'}>
@@ -362,36 +393,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             onClick={() => setTableSort(tableSort === 'price_desc' ? 'price_asc' : tableSort === 'price_asc' ? null : 'price_desc')}
             title="sort by ask">price {tableSort === 'price_desc' ? '↓' : tableSort === 'price_asc' ? '↑' : '⇅'}</button>
         </div>
-        <div className="grid">
-          {rows.map(({ l, c }) => {
-            const p = inPile(open.id, c.uid)
-            return (
-              <div key={c.uid} className={'cell' + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}>
-                <div className="stancebar">
-                  <button className={'seg sg-have' + (p?.mode === 'buy' ? ' on' : '')}
-                    title="into your pile at the ask — the deal sends when you finish the table"
-                    onClick={() => pickUp(open.id, c.uid, 'buy')}>{p?.mode === 'buy' ? '✓ buy' : `buy · ${l.ask}`}</button>
-                  <button className={'seg sg-want' + (p?.mode === 'trade' ? ' on' : '')}
-                    title="into your pile as a trade-for — you pick your side at settle"
-                    onClick={() => pickUp(open.id, c.uid, 'trade')}>{p?.mode === 'trade' ? '✓ trade' : '⇄ trade'}</button>
-                </div>
-                <div className={'card' + (p ? ' s-have' : '')} role="button" tabIndex={0} title="hold it up to the light"
-                  onClick={() => setZoom({ c, l, sellerId: open.id })}>
-                  <div className="face"><div className="ja">{c.name_en}</div></div>
-                  {c.image && <img src={c.image} alt={c.name_en} loading="lazy" decoding="async" />}
-                </div>
-                <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
-                  <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
-                  <div className="cap-sub">
-                    <span className="crom">{scanLabel(l.witness)}</span>
-                    <span className={'cmeta ' + (p ? 'm-have' : 'm-want')}>{l.ask} USDC</span>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-          {!rows.length && <div className="empty">Nothing on this table matches your wants.</div>}
-        </div>
+        {displayRows.length > 0 && <>
+          <div className="mk-sectionhead"><span className="ek">Display case</span><span className="mono dim">the cards they lead with</span></div>
+          {cardGrid(displayRows, '')}
+        </>}
+        <div className="mk-sectionhead"><span className="ek">Binder</span><span className="mono dim">everything else on their table</span></div>
+        {cardGrid(binderRows, displayRows.length ? 'Every matching card is in the display case.' : 'Nothing on this table matches your wants.')}
         {theirWants.length > 0 && (
           !huntOpen
             ? <button className="mk-huntbar mono" onClick={() => setHuntOpen(true)}>

@@ -138,6 +138,8 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
   const maxVal = u.want_max !== undefined ? u.want_max : (c.want_max || '')
   const dot = c.image_status === 'exact_source' ? 'lg-exact' : c.image_status === 'no_rarity_reference' ? 'lg-nr' : 'lg-ref'
   const issues = c.issues || []
+  const collection = c.collection_assertion || {}
+  const reportedPrice = collection.reported_sale_price || {}
   const norm = (t) => (t || '').replace(/\s+/g, ' ').trim()
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
     .filter((x) => !(c.card_text && x.label && norm(c.card_text).toLowerCase().includes(`[${x.label}]`.toLowerCase()))) // rules text already carries this labeled effect
@@ -235,13 +237,16 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
             <div className="m-fields">
               {e.stance === 'have' && <>
                 <div className="listrow">
-                  <button className={'listtog' + (e.sell ? ' on' : '')} onClick={() => setField(c.uid, 'sell', !e.sell)}>
+                  <button className={'listtog' + (e.sell ? ' on' : '')} onClick={() => { const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false) }}>
                     {e.sell ? '● For sale' : '○ List for sale'}
                   </button>
                   <button className={'listtog' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', !e.trade)}>
                     {e.trade ? '⇄ Open to trade' : '○ Open to trade'}
                   </button>
                 </div>
+                {e.sell && <button className={'displaytog' + (e.display ? ' on' : '')} onClick={() => setField(c.uid, 'display', !e.display)}>
+                  {e.display ? '● In your display case' : '○ Put in display case'}
+                </button>}
                 {(e.sell || e.trade) && <div className="listhint dim">{e.sell && e.trade ? 'On your table for sale or swap.'
                   : e.sell ? 'On your table — buyers copy your sheet and fund escrow.'
                   : 'On your table — a trader can offer one of their cards for it.'}</div>}
@@ -277,8 +282,10 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b> — or neither. Have records condition and copies; Want sets the terms your agent hunts to. Tap again to clear.</div>}
             </div>
             <MarketBlock c={c} market={market} mockSales={mockSales} onBrowseCard={onBrowseCard} />
-            {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text) && (
+            {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text || collection.name) && (
               <div className="dossier">
+                {collection.name && <div><b>Collection</b><span>{collection.name} · observed at {collection.position || 'unrecorded position'}</span></div>}
+                {reportedPrice.amount != null && <div><b>Event sale</b><span>{reportedPrice.amount} {reportedPrice.currency || 'USD'} · user-reported, not independently verified</span></div>}
                 {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
                 {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
                 {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}
@@ -298,6 +305,8 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                     ? 'The candidate image was suppressed by the catalogue audit. This row currently has no honest reference photo.'
                   : c.image_status === 'user_observation_no_public_image'
                     ? 'Observation row from a user-provided image. The image hash is recorded in the catalog layer, but the image itself is not published here.'
+                  : c.image_status === 'user_observation_no_exact_card_image'
+                    ? 'The open product display records this treatment, but no exact standalone card-front photo was supplied.'
                   : c.image
                     ? 'Reference witness — not seller evidence, authentication, or proof of a specific physical card.'
                     : 'No reference image has been sourced for this print yet.'}
@@ -314,6 +323,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                 <div>catalog {c.catalog_hash || '—'}</div>
                 <div>row {c.row_id ?? '—'}</div>
                 {c.source_entry_id && <div>source {c.source_entry_id}</div>}
+                {collection.collection_id && <div>collection {collection.collection_id} [{collection.membership_authority || 'unrated'}]</div>}
                 <div>image_status {c.image_status || '—'}</div>
                 {issues.map((i, idx) => <div key={idx}>note [{i.severity || 'info'}] {(i.codes || []).join(' ')}{i.notes ? ` · ${i.notes}` : (i.recommended_action ? ` · ${i.recommended_action}` : '')}</div>)}
                 <div className="br-b">identifiers as the catalog holds them — a record, not proof.</div>

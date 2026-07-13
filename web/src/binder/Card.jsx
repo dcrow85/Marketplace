@@ -14,7 +14,7 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
         <button className={'seg sg-have' + (have ? ' on' : '')} onClick={() => setStance(c.uid, have ? 'none' : 'have')}>Have</button>
         {have
           ? <>
-              <button className={'seg sg-sell' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'} onClick={() => { const on = !e.sell; setField(c.uid, 'sell', on); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
+              <button className={'seg sg-sell' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'} onClick={() => { const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
               <button className={'seg sg-tradeq' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'} onClick={() => setField(c.uid, 'trade', !e.trade)}>⇄</button>
             </>
           : <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>}
