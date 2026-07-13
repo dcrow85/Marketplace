@@ -34,7 +34,9 @@ createRoot(document.getElementById('root')).render(
         appearance: {
           theme: 'light',
           accentColor: '#2C5B8C',
-          walletChainType: 'ethereum-only',
+          // No wallet is part of authentication. This prevents Privy's bootstrap
+          // connector pass from reading the legacy `window.ethereum` singleton.
+          walletChainType: 'solana-only',
           // Do not auto-enumerate injected browser wallets during auth bootstrap.
           walletList: ['wallet_connect_qr'],
         },
