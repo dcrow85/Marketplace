@@ -36,8 +36,8 @@ createRoot(document.getElementById('root')).render(
           accentColor: '#2C5B8C',
           walletChainType: 'ethereum-only',
         },
-        // Courtyard's move: every user silently gets a self-custodial embedded wallet.
-        embeddedWallets: { createOnLogin: 'users-without-wallets' },
+        // Wallet provisioning belongs at the settlement decision, not page bootstrap.
+        // Keeping it out here prevents injected providers from blocking basic identity.
       }}
     >
       <App />
