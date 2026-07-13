@@ -174,8 +174,9 @@
 .sp-task .fpre { font-size: 11px; }
 .sp-task input { width: 100%; font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 6px; padding: 6px 8px; outline: none; }
 .sp-task input:focus { border-color: var(--ink); }
-.pf-displaybtn { flex: none; font-family: var(--mono); font-size: 9px; color: var(--dim); background: transparent; border: 0.5px dashed var(--rule); border-radius: 5px; padding: 6px 7px; cursor: pointer; }
-.pf-displaybtn.on { color: var(--paper); background: var(--ink); border-color: var(--ink); border-style: solid; }
+.pf-displaybtn { flex: none; width: 28px; height: 28px; display: grid; place-items: center; font-size: 17px; line-height: 1; color: var(--dim); background: transparent; border: 0; border-radius: 50%; padding: 0; cursor: pointer; }
+.pf-displaybtn:hover { color: var(--ink); background: var(--mount); }
+.pf-displaybtn.on { color: #C58A18; background: color-mix(in srgb, #FAC775 20%, transparent); }
 .sp-tradeflag { position: absolute; top: 6px; right: 6px; font-family: var(--mono); font-size: 10px; color: var(--paper); background: var(--ink); border-radius: 5px; padding: 2px 6px; }
 .sp-note { width: 100%; font-size: 13px; color: var(--ink); background: var(--paper); border: 0.5px dashed var(--rule); border-radius: 8px; padding: 9px 12px; outline: none; margin: 4px 0 10px; }
 .sp-note:focus { border-color: var(--ink); border-style: solid; }

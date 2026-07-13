@@ -12,6 +12,7 @@ import { loadMockSales, mockSalesKeyFor } from '../market/mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
 import ProfileHeader from './ProfileHeader.jsx'
 import CardModal from '../binder/CardModal.jsx'
+import { retryImg } from '../binder/helpers.jsx'
 
 export default function MyPage({ accountId, catalog }) {
   const data = useCatalog(catalog)
@@ -164,7 +165,7 @@ export default function MyPage({ accountId, catalog }) {
         ? <div className="mk-hunt2row pf-huntrow">
             {rows.wants.slice(0, 18).map(({ c }) => (
               <button key={c.uid} className="mk-hunt2 pf-huntopen" onClick={() => setSel(c.uid)} title="open — mark it like in the binder">
-                {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="minicard-noimg">{c.name_en}</span>}
+                {c.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : <span className="minicard-noimg">{c.name_en}</span>}
                 <span className="mk-hunt2name">{c.name_en}</span>
               </button>
             ))}
@@ -190,11 +191,10 @@ function ListingTiles({ rows, setSel, setAsk, setField }) {
           corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
           sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
           actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
-            {e.sell && <span className={'pf-displaybtn' + (e.display ? ' on' : '')} role="button" tabIndex={0}
-              onClick={() => setField(c.uid, 'display', !e.display)}
-              onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); setField(c.uid, 'display', !e.display) } }}>
-              {e.display ? 'in case' : 'display'}
-            </span>}
+            {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
+              aria-label={e.display ? 'Remove from display case' : 'Pin to display case'}
+              title={e.display ? 'Remove from display case' : 'Pin to display case'}
+              onClick={() => setField(c.uid, 'display', !e.display)}>{e.display ? '★' : '☆'}</button>}
             <span className="fpre">$</span>
             <input type="number" min="0" placeholder="ask"
               value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />

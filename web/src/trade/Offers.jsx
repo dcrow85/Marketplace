@@ -9,6 +9,7 @@ import { putRecord } from './records.js'
 import { useCatalog, useByUid } from '../lib/data.js'
 import { useBus } from '../lib/store.js'
 import { handleFor } from '../identity.js'
+import { retryImg } from '../binder/helpers.jsx'
 
 // The offers ledger: every conversation, both directions, counters chained. An
 // accepted offer walks the settlement steps right here; everything else shows its
@@ -76,7 +77,7 @@ export default function Offers({ accountId, catalog, onCounter }) {
     const c = byUid.get(x.uid)
     return (
       <span key={i} className="ofl-chip" title={c?.name_en || x.uid}>
-        {c?.image ? <img src={c.image} alt="" loading="lazy" /> : null}
+        {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
         <span>{c?.name_en || x.uid}</span>
       </span>
     )

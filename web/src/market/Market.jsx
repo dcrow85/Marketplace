@@ -5,6 +5,7 @@ import { useBus } from '../lib/store.js'
 import { loadHidden, hiddenKeyFor, loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { fetchProfiles, fetchProfile } from '../live/pilotStore.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
+import { retryImg } from '../binder/helpers.jsx'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile } from './pile.js'
 import MarketFinds from './MarketFinds.jsx'
@@ -251,7 +252,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {zoomEl}
         <div className="mk-head">
           <div className="mk-focushead">
-            {c?.image && <img className="mk-focusart" src={c.image} alt="" onClick={() => setZoom({ c, l: asks[0]?.l, sellerId: asks[0]?.s.id })} />}
+            {c?.image && <img className="mk-focusart" src={c.image} alt="" onError={(ev) => retryImg(ev, c.image)} onClick={() => setZoom({ c, l: asks[0]?.l, sellerId: asks[0]?.s.id })} />}
             <div>
               <div className="ek">On the market</div>
               <div className="mk-title">{c ? `${c.name_en} · ${c.num}` : focusUid}
@@ -332,7 +333,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <div className={'card' + (p ? ' s-have' : '')} role="button" tabIndex={0} title="hold it up to the light"
                 onClick={() => setZoom({ c, l, sellerId: open.id })}>
                 <div className="face"><div className="ja">{c.name_en}</div></div>
-                {c.image && <img src={c.image} alt={c.name_en} loading="lazy" decoding="async" />}
+                {c.image && <img src={c.image} alt={c.name_en} loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
               </div>
               <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
                 <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
@@ -415,7 +416,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 <div className="mk-hunt2row">
                   {theirWants.map((c) => (
                     <div key={c.uid} className={'mk-hunt2' + (myHaves.has(c.uid) ? ' mine' : '')}>
-                      {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+                      {c.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : <span className="ofr-noimg">{c.name_en}</span>}
                       <span className="mk-hunt2name">{c.name_en}</span>
                       {myHaves.has(c.uid) && <span className="mono mk-hunt2have">✓ you have it</span>}
                     </div>
@@ -443,7 +444,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 const c = byUid.get(p.uid)
                 return (
                   <span key={p.uid} className="mk-ckthumb" title={`${c?.name_en || p.uid} — tap the tag to flip buy/trade`}>
-                    {c?.image ? <img src={c.image} alt="" /> : null}
+                    {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
                     <button className={'mk-cktag mono' + (p.mode === 'trade' ? ' tr' : '')} onClick={() => toggleMode(pileKey, open.id, p.uid)}>{p.mode === 'buy' ? '$' : '⇄'}</button>
                     <button className="mk-ckx mono" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back">✕</button>
                   </span>
@@ -517,7 +518,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 </div>
               </div>
               <div className="mk-spread">
-                {s.listings.slice(0, 5).map((l) => { const c = byUid.get(l.uid); return c?.image ? <img key={l.uid} src={c.image} alt="" loading="lazy" /> : null })}
+                {s.listings.slice(0, 5).map((l) => { const c = byUid.get(l.uid); return c?.image ? <img key={l.uid} src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null })}
                 {s.listings.length > 5 && <span className="mono mk-more">+{s.listings.length - 5}</span>}
               </div>
               <div className="mk-tmeter mono">

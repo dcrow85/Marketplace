@@ -7,7 +7,7 @@ export default function CardZoom({ card, sub, witness, children, onClose }) {
     <div className="zoom-overlay" role="dialog" aria-label={card.name_en} onClick={onClose}>
       <div className="zoom-body" onClick={(e) => e.stopPropagation()}>
         {card.image
-          ? <img className="zoom-art" src={card.image} alt={card.name_en} />
+          ? <img className="zoom-art" src={card.image} alt={card.name_en} onError={(ev) => retryImg(ev, card.image)} />
           : <div className="zoom-noimg">{card.name_en}</div>}
         <div className="zoom-facts">
           <div className="zoom-name">{card.name_en}<span className="mono dim"> · {card.num}</span></div>
@@ -26,3 +26,4 @@ export default function CardZoom({ card, sub, witness, children, onClose }) {
     </div>
   )
 }
+import { retryImg } from '../binder/helpers.jsx'

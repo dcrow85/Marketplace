@@ -4,6 +4,7 @@ import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { handleFor, avatarSVG } from '../identity.js'
 import CardZoom from './CardZoom.jsx'
+import { retryImg } from '../binder/helpers.jsx'
 
 // The offer composer: everything on ONE screen — their cards, your cards, the cash
 // leg, and the send. No wizard. Anko's line quotes the RECORD (latest settlements per
@@ -85,7 +86,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
 
   const tile = (c, sel, onTap, sub, price, witness) => (
     <button key={c.uid} className={'ofr-tile' + (sel ? ' sel' : '')} onClick={() => onTap(c.uid)}>
-      {c.image ? <img src={c.image} alt="" loading="lazy" /> : <span className="ofr-noimg">{c.name_en}</span>}
+      {c.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : <span className="ofr-noimg">{c.name_en}</span>}
       <span className="zoombtn" role="button" tabIndex={0} title="enlarge"
         onClick={(ev) => { ev.stopPropagation(); setZoom({ c, sub, witness }) }}>⤢</span>
       <span className="ofr-name">{c.name_en}</span>

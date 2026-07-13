@@ -9,6 +9,7 @@ export function loadStore(storeKey) {
 
 export function saveStore(storeKey, store) {
   try { localStorage.setItem(storeKey, JSON.stringify(store)) } catch { /* ignore */ }
+  window.dispatchEvent(new CustomEvent('cairn-store'))
 }
 
 export function catalogUrl(catalog) {

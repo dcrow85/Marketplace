@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { entryFor as effStance } from './collection.js'
-import { nm } from './helpers.jsx'
+import { nm, retryImg } from './helpers.jsx'
 
 // The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
 // pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
@@ -28,7 +28,7 @@ export default function PocketPages({ rows, store, userPhotos, onOpen, setField,
             return (
               <div key={c.uid} className="bv-pocket filled" role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
                 onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
-                {img ? <img src={img} alt={nm(c)} loading="lazy" /> : <span className="bv-noimg">{nm(c)}</span>}
+                {img ? <img src={img} alt={nm(c)} loading="lazy" decoding="async" onError={userPhotos[c.uid] ? undefined : (ev) => retryImg(ev, c.image)} /> : <span className="bv-noimg">{nm(c)}</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
                 {e.grail && <span className="bv-grail">★</span>}
                 {fromAsk != null && <span className="bv-from onart mono">from {fromAsk} USDC</span>}
@@ -43,6 +43,7 @@ export default function PocketPages({ rows, store, userPhotos, onOpen, setField,
           }
           return (
             <button key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')} onClick={() => onOpen(c.uid)}>
+              {img && <img className="bv-ghostart" src={img} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
               <span className="mono bv-gnum">{c.num}</span>
               <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
               {fromAsk != null && <span className="bv-from mono">from {fromAsk} USDC</span>}

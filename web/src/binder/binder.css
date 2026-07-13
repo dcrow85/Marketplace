@@ -291,9 +291,12 @@ section { padding: 14px 0 70px; }
 .bv-grail { position: absolute; top: 6px; left: 6px; color: #FAC775; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
 .bv-sell { position: absolute; bottom: 6px; right: 6px; font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; color: #F0997B; background: rgba(13,12,16,.85); border: 0.5px solid rgba(240,153,123,.4); border-radius: 4px; padding: 1px 5px; }
 .bv-pocket.ghost { border: 1.5px dashed rgba(236,234,227,.22); background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; }
+.bv-ghostart { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .22; filter: saturate(.55); }
+.bv-pocket.ghost::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 35%, rgba(20,19,16,.82)); pointer-events: none; }
 .bv-pocket.ghost:hover { border-color: rgba(236,234,227,.45); }
-.bv-gnum { font-size: 11px; color: #6A675E; }
-.bv-gtxt { font-size: 11px; color: #8C897F; }
+.bv-gnum, .bv-gtxt, .bv-pocket.ghost .bv-from { position: relative; z-index: 1; }
+.bv-gnum { font-size: 11px; color: #B2AEA4; }
+.bv-gtxt { font-size: 11px; color: #D0CCC1; text-shadow: 0 1px 3px #141310; }
 .bv-pocket.ghost.wanted { border-style: solid; border-color: rgba(236,234,227,.4); cursor: default; }
 .bv-pocket.ghost.wanted .bv-gtxt { color: #DBD5C8; }
 .bv-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
