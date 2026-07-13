@@ -6,6 +6,17 @@ import './styles.css'
 
 const APP_ID = import.meta.env.VITE_PRIVY_APP_ID
 
+// One-time recovery for sessions created before wallet discovery was removed from
+// bootstrap. A stale Privy token can otherwise keep the provider from mounting any
+// UI when injected wallets disagree. Cairn's collection keys are left untouched.
+try {
+  const recoveryKey = 'cairn-auth-bootstrap-2026-07-13'
+  if (!localStorage.getItem(recoveryKey)) {
+    localStorage.removeItem('privy:token')
+    localStorage.setItem(recoveryKey, '1')
+  }
+} catch { /* storage can be unavailable in locked-down browsers */ }
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <PrivyProvider
