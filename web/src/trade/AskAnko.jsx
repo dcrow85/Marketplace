@@ -10,7 +10,7 @@ const LEAN_LABEL = {
   cannot_resolve: 'I can’t resolve this from what’s recorded',
 }
 
-export default function AskAnko({ decision, recommended = false }) {
+export default function AskAnko({ decision, recommended = false, label = 'Ask Anko' }) {
   const panelId = useId()
   const version = useMemo(() => JSON.stringify(decision), [decision])
   const [state, setState] = useState({ status: 'idle', read: null })
@@ -55,7 +55,7 @@ export default function AskAnko({ decision, recommended = false }) {
       <button type="button" className={'anko-ask mono' + (recommended ? ' recommended' : '')}
         aria-expanded="false" aria-controls={panelId} disabled={state.status === 'loading'} onClick={ask}>
         <img src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" />
-        {state.status === 'loading' ? 'Anko is reading…' : 'Ask Anko'}
+        {state.status === 'loading' ? 'Anko is reading…' : label}
       </button>
       {recommended && <span className="mono anko-recommended">worth a second look</span>}
       {state.status === 'error' && <span className="mono anko-readerr">Anko couldn&rsquo;t give a bounded read. Try again.</span>}

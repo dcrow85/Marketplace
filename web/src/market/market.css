@@ -241,6 +241,13 @@
 .mk-cksum { font-size: 12px; color: var(--ink2); margin-left: 10px; }
 .mk-ckacts { display: flex; gap: 7px; margin-left: auto; flex-wrap: wrap; }
 .mk-ckacts .ofr-buy, .mk-ckacts .ofr-tradebtn { flex: none; padding: 9px 14px; }
+.mk-buy-decision { flex: 1 1 280px; min-width: min(100%, 240px); display: flex; flex-direction: column; gap: 5px; }
+.mk-buy-decision .ofl-decisionlabel { margin: 0; }
+.mk-buy-decision .anko-read { max-height: min(46vh, 330px); overflow-y: auto; }
+@media (max-width: 700px) {
+  .mk-buy-decision { flex-basis: 100%; order: 5; }
+  .mk-ckacts { width: 100%; order: 6; margin-left: 0; }
+}
 
 /* trades at the top of the house: count always, oxblood ONLY when it needs you */
 .nav-trades { position: relative; }
@@ -285,6 +292,9 @@
 .stl-foot { position: sticky; bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: var(--bar); backdrop-filter: blur(8px); border: 0.5px solid var(--ink); border-radius: 12px; padding: 12px 16px; margin-top: 8px; }
 .stl-send { padding: 13px 24px; }
 .mk-settle { padding: 11px 20px; }
+.stl-senddecision { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; margin-top: 8px; padding: 11px 13px; border: 0.5px solid color-mix(in srgb, var(--agent) 55%, var(--rule)); border-radius: 10px; background: var(--agent-bg); }
+.stl-senddecision .ofl-decisionlabel { margin: 0; }
+.stl-senddecision .anko-read { width: 100%; background: var(--paper); }
 
 /* Anko inside the settle room */
 .stl-ask { margin: 0; }

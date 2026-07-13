@@ -11,6 +11,7 @@ import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile
 import MarketFinds from './MarketFinds.jsx'
 import SettlePage from './SettlePage.jsx'
 import CardZoom from './CardZoom.jsx'
+import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import './market.css'
 
@@ -313,6 +314,44 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const theirWants = (open.wants || []).map((u) => byUid.get(u)).filter(Boolean)
     const swapBait = theirWants.filter((c) => myHaves.has(c.uid))
     const buysSum = pile.filter((p) => p.mode === 'buy').reduce((t, p) => t + (open.listings.find((l) => l.uid === p.uid)?.ask ?? 0), 0)
+    const decisionPile = pile.slice(0, 24)
+    const purchaseDecision = pile.length > 0 ? {
+      decision_ref: `market:${catalog.id}:${open.id}:${pile.length}:${buysSum}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
+      kind: 'pre_purchase',
+      question: pile.every((p) => p.mode === 'buy')
+        ? 'Should I pay this seller’s asks now, or request more evidence first?'
+        : 'Should I send this buy/trade deal, revise it, or request more evidence first?',
+      terms: {
+        seller: open.id,
+        live_table: !!open.live,
+        cash_at_current_asks_usdc: buysSum,
+        selected_card_count: pile.length,
+        unitemized_card_count: Math.max(0, pile.length - decisionPile.length),
+        selected_cards: decisionPile.map((p) => {
+          const c = byUid.get(p.uid)
+          const l = open.listings.find((x) => x.uid === p.uid)
+          return {
+            uid: p.uid, name: c?.name_en || p.uid, number: c?.num || null,
+            mode: p.mode, ask_usdc: l?.ask ?? null, seller_condition_claim: l?.cond || null,
+          }
+        }),
+      },
+      principal_context: { recorded_policy: 'No signed buying or trade policy is available to this interface.' },
+      evidence: {
+        cards_without_recorded_scans: pile.filter((p) => !open.listings.find((l) => l.uid === p.uid)?.witness).length,
+        cards_with_recorded_settlements: pile.filter((p) => salesAll[p.uid]?.[0]?.p != null).length,
+        card_records: decisionPile.map((p) => {
+          const l = open.listings.find((x) => x.uid === p.uid)
+          return {
+            uid: p.uid,
+            recorded_scan_count: l?.witness || 0,
+            latest_recorded_settlement_usdc: salesAll[p.uid]?.[0]?.p ?? null,
+          }
+        }),
+        seller_record_claims: open.live ? (open.recordStats || []).map((x) => x.t) : (open.record || null),
+      },
+    } : null
+    const purchaseReadRecommended = buysSum >= 500 || pile.some((p) => !open.listings.find((l) => l.uid === p.uid)?.witness)
     const displayUids = new Set(open.showcase || [])
     const displayRows = rows.filter(({ c }) => displayUids.has(c.uid))
     const binderRows = rows.filter(({ c }) => !displayUids.has(c.uid))
@@ -464,6 +503,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                   ? `⇄ your tradeables (~${myTradeSum} USDC on record) more than cover this pile (~${pileVal})`
                   : `⇄ your tradeables ~${myTradeSum} USDC on record · covers ~${pct}% of this pile`}</span>
             })()}
+            <div className="mk-buy-decision">
+              <span className="ofl-decisionlabel mono">Before you send · this is your call</span>
+              <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
+                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before paying' : 'Ask Anko about this deal'} />
+            </div>
             <span className="mk-ckacts">
               {pile.every((p) => p.mode === 'buy') && buysSum > 0 && (
                 <button className="primary mk-settle" onClick={() => {

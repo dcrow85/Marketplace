@@ -5,6 +5,7 @@ import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { removeFromPile, toggleMode, clearPile } from './pile.js'
 import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
+import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE || ''
@@ -117,6 +118,46 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     return [part(w, 'their side:'), part(g, 'yours:')].filter(Boolean).join(' · ')
   }, [salesMap, pile, give])
 
+  const decisionPile = pile.slice(0, 24)
+  const decisionGive = [...give].slice(0, 24)
+  const sendDecision = {
+    decision_ref: `settle:${catalog.id}:${open.id}:${pile.length}:${give.size}:${cash}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
+    kind: 'pre_purchase',
+    question: trades.length
+      ? 'Should I send this buy/trade deal, revise it, or request more evidence first?'
+      : 'Should I pay this seller’s asks now, or request more evidence first?',
+    terms: {
+      seller: open.id,
+      live_table: !!open.live,
+      cash_usdc: cash,
+      you_receive_count: pile.length,
+      you_receive_unitemized_count: Math.max(0, pile.length - decisionPile.length),
+      you_receive: decisionPile.map((p) => {
+        const c = byUid.get(p.uid)
+        const l = open.listings.find((x) => x.uid === p.uid)
+        return { uid: p.uid, name: c?.name_en || p.uid, number: c?.num || null, mode: p.mode, ask_usdc: l?.ask ?? null, seller_condition_claim: l?.cond || null }
+      }),
+      you_give_count: give.size,
+      you_give_unitemized_count: Math.max(0, give.size - decisionGive.length),
+      you_give: decisionGive.map((uid) => {
+        const c = byUid.get(uid)
+        return { uid, name: c?.name_en || uid, number: c?.num || null }
+      }),
+    },
+    principal_context: { recorded_policy: 'No signed buying or trade policy is available to this interface.' },
+    evidence: {
+      cards_without_recorded_scans: pile.filter((p) => !open.listings.find((l) => l.uid === p.uid)?.witness).length,
+      cards_with_recorded_settlements: pile.filter((p) => salesMap[p.uid]?.[0]?.p != null).length,
+      card_records: decisionPile.map((p) => {
+        const l = open.listings.find((x) => x.uid === p.uid)
+        return { uid: p.uid, recorded_scan_count: l?.witness || 0, latest_recorded_settlement_usdc: salesMap[p.uid]?.[0]?.p ?? null }
+      }),
+      seller_record_claims: open.live ? (open.recordStats || []).map((x) => x.t) : (open.record || null),
+      deal_record_summary: recordLine,
+    },
+  }
+  const sendReadRecommended = cash >= 500 || pile.some((p) => !open.listings.find((l) => l.uid === p.uid)?.witness)
+
   const canSend = pile.length > 0 && (trades.length === 0 || give.size > 0 || cash > 0)
   const send = () => {
     sendOffer(offersKeyFor(catalog.id, accountId), {
@@ -203,6 +244,12 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         </div>
         <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note} onChange={(e) => setNote(e.target.value)} />
         {recordLine && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine} — settlements are history, not an appraisal.</div>}
+      </div>
+
+      <div className="stl-senddecision">
+        <span className="ofl-decisionlabel mono">Before you send · this is your call</span>
+        <AskAnko decision={sendDecision} recommended={sendReadRecommended}
+          label={trades.length ? 'Ask Anko about this deal' : 'Ask Anko before paying'} />
       </div>
 
       <div className="stl-foot">
