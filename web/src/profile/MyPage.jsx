@@ -190,8 +190,11 @@ function ListingTiles({ rows, setSel, setAsk, setField }) {
           corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
           sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
           actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
-            {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
-              onClick={() => setField(c.uid, 'display', !e.display)}>{e.display ? 'in case' : 'display'}</button>}
+            {e.sell && <span className={'pf-displaybtn' + (e.display ? ' on' : '')} role="button" tabIndex={0}
+              onClick={() => setField(c.uid, 'display', !e.display)}
+              onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); setField(c.uid, 'display', !e.display) } }}>
+              {e.display ? 'in case' : 'display'}
+            </span>}
             <span className="fpre">$</span>
             <input type="number" min="0" placeholder="ask"
               value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
