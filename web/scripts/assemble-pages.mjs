@@ -21,7 +21,7 @@ const deferred = html.replace(
   `<script>
     window.addEventListener('load', function () {
       var entry = document.createElement('script');
-      entry.type = 'module';
+      entry.defer = true;
       entry.src = '$1';
       entry.crossOrigin = '';
       document.head.appendChild(entry);

@@ -4,6 +4,8 @@
 // (validated on real photos: tables, sleeves, rotation, binder pages). The VLM is never
 // trusted for pixels; local CV is never trusted for names. If the worker isn't ready or
 // a card doesn't resolve, that card falls back to an edge-snapped box crop.
+import LocateWorker from './locate.worker.js?worker'
+
 const API_BASE = import.meta.env?.VITE_API_BASE || ''
 
 function loadImage(file) {
@@ -135,7 +137,7 @@ export function ensureLocateWorker() {
   if (_workerReady) return _workerReady
   _workerReady = new Promise((resolve) => {
     let w
-    try { w = new Worker(new URL('./locate.worker.js', import.meta.url)) } catch { resolve(null); return }
+    try { w = new LocateWorker() } catch { resolve(null); return }
     const url = new URL((import.meta.env.BASE_URL || '/') + 'vendor/opencv.js', self.location.origin).href
     const onReady = (e) => {
       if (!e.data || e.data.type !== 'ready') return

@@ -9,6 +9,15 @@ const BROWSE = 'http://127.0.0.1:8790'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        format: 'iife',
+        inlineDynamicImports: true,
+        name: 'CairnApp',
+      },
+    },
+  },
   server: {
     proxy: {
       '/api': BROWSE,
