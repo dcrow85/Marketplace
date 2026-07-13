@@ -1,10 +1,9 @@
 // My page: your binder's public lens, pointed at yourself — exactly what the room
-// sees. Front page (pride), table (deals), the hunt (wants, public by design), and
+// sees. Binder (grails first), table (deals), the hunt (wants, public by design), and
 // the record strip with facts computed from records. Absorbs the old SellPile.
 import { useMemo, useState, useEffect } from 'react'
 import { storeKeyFor, loadStore, saveStore, entryFor, condStr } from '../binder/collection.js'
 import { offersKeyFor, loadOffers } from '../trade/offers.js'
-import { pinsKeyFor, loadPins, togglePin } from './pins.js'
 import { publishProfile, unpublishProfile, isLiveAddr } from '../live/pilotStore.js'
 import { handleFor } from '../identity.js'
 import { useCatalog, useMarket, useByUid } from '../lib/data.js'
@@ -12,7 +11,7 @@ import { useBus } from '../lib/store.js'
 import { loadMockSales, mockSalesKeyFor } from '../market/mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
 import ProfileHeader from './ProfileHeader.jsx'
-import FrontPage from './FrontPage.jsx'
+import ProfileBinder from './ProfileBinder.jsx'
 import CardModal from '../binder/CardModal.jsx'
 
 export default function MyPage({ accountId, catalog }) {
@@ -20,9 +19,7 @@ export default function MyPage({ accountId, catalog }) {
   const mkt = useMarket(catalog)
   const byUid = useByUid(data)
   const storeKey = storeKeyFor(catalog.id, accountId)
-  const pinsKey = pinsKeyFor(catalog.id, accountId)
   const store = useBus(() => loadStore(storeKey), [storeKey])
-  const pins = useBus(() => loadPins(pinsKey), [pinsKey])
   const mockSales = useBus(() => loadMockSales(mockSalesKeyFor(catalog.id)), [catalog])
   const [sel, setSel] = useState(null) // a card held open — the binder's modal, right here
 
@@ -65,6 +62,12 @@ export default function MyPage({ accountId, catalog }) {
     }
   }, [data, store])
 
+  // A grail is the only curation gesture. It moves to the front while the rest
+  // keep catalogue order, so page one is both the public lead and a real binder page.
+  const binderUids = useMemo(() => [...rows.haves]
+    .sort((a, b) => Number(b.e.grail) - Number(a.e.grail))
+    .map(({ c }) => c.uid), [rows.haves])
+
   // the record strip: computed, never asserted
   const stats = useBus(() => {
     const offers = loadOffers(offersKeyFor(catalog.id, accountId))
@@ -95,7 +98,7 @@ export default function MyPage({ accountId, catalog }) {
   const [pubErr, setPubErr] = useState(false)
   const buildSnapshot = () => ({
     v: 1, cat: catalog.id, sign, handle: handleFor(accountId),
-    showcase: (pins.length ? pins : rows.grails.map(({ c }) => c.uid)).slice(0, 9),
+    showcase: binderUids.slice(0, 9),
     table: rows.listed.map(({ c, e }) => ({
       uid: c.uid, ask: e.ask ? Number(e.ask) : null, trade: !!e.trade, sell: !!e.sell,
       cond: condStr(e), scans: (e.pile || []).length || (e.photo_hash ? 1 : 0), copies: e.copies || 1,
@@ -133,7 +136,7 @@ export default function MyPage({ accountId, catalog }) {
           ? pubAt
             ? <>
                 <span className="pf-live">● on the room&rsquo;s board</span>
-                <span className="dim">your table, front page, and hunt are public to the pilot · refreshed each visit</span>
+                <span className="dim">your table, first binder page, and hunt are public to the pilot · refreshed each visit</span>
                 <button className="ghost sm" onClick={publish} disabled={pubBusy}>{pubBusy ? 'publishing…' : 'republish now'}</button>
                 <button className="ghost sm" onClick={unpublish} disabled={pubBusy}>take it down</button>
               </>
@@ -144,11 +147,7 @@ export default function MyPage({ accountId, catalog }) {
           : <span className="dim">publishing needs a wallet account — sign in with one and your page can go on the board</span>}
         {pubErr && <span className="pf-puberr">couldn&rsquo;t reach the board — try again</span>}
       </div>
-      <FrontPage uids={pins} byUid={byUid} own
-        myHaves={rows.haves.map(({ c }) => c)}
-        grailFallback={rows.grails.map(({ c }) => c.uid)}
-        onTogglePin={(uid) => togglePin(pinsKey, uid)}
-        onOpen={setSel} />
+      <ProfileBinder uids={binderUids} byUid={byUid} own onOpen={setSel} />
 
       <div className="pf-sechead">
         <span className="ek">On your table</span>
@@ -185,7 +184,7 @@ export default function MyPage({ accountId, catalog }) {
           </div>
         : <div className="empty">No wants yet — mark cards as Want and your hunt goes on the board.</div>}
 
-      <p className="sc-note dim">This is your page exactly as the room reads it once it&rsquo;s on the board: the front page
+      <p className="sc-note dim">This is your page exactly as the room reads it once it&rsquo;s on the board: your first binder page
         and your hunt show what you choose; the record strip only ever says what&rsquo;s recorded — and on other people&rsquo;s
         screens it stays your claim until signing lands.</p>
       {sel && <CardModal key={sel} uid={sel} data={data} setById={setById} store={store}
