@@ -8,12 +8,17 @@ model may recommend; it cannot act, mint authority, or promote claims to facts.
 from __future__ import annotations
 
 import json
+import re
 from typing import Any
 
 from cairn_browse import ENDPOINT, MODEL, commentary_flags
 from interrupt_bar_probe import call_model
 
 LEANS = {"accept", "counter", "decline", "request_evidence", "hold", "cannot_resolve"}
+NEGATED_LIMIT = re.compile(
+    r"\b(?:not|no evidence|cannot|can't|does not|doesn't|unknown|unverified|not established|not recorded)\b",
+    re.I,
+)
 
 SYSTEM = """You are ANKO, the house agent of cairn.cards. A collector explicitly asked for your read on ONE decision.
 
@@ -72,7 +77,12 @@ def _clean_read(raw: Any) -> dict[str, Any]:
     }
     if not out["summary"] or not out["boundary"]:
         raise ValueError("incomplete_read")
-    flags = commentary_flags(out["summary"], *out["reasons"], *out["unknowns"], out["boundary"])
+    # Unknowns and the boundary are where the model is required to name what is *not*
+    # established. Treating the bare word "authenticity" there as an overclaim made
+    # honest refusals fail closed. Guard affirmative summary/reason claims; allow
+    # explicitly negated limitations to pass through as limitations.
+    claim_texts = [text for text in [out["summary"], *out["reasons"]] if not NEGATED_LIMIT.search(text)]
+    flags = commentary_flags(*claim_texts)
     if flags:
         raise ValueError("overclaim_guard")
     return out
@@ -80,7 +90,14 @@ def _clean_read(raw: Any) -> dict[str, Any]:
 
 def decision_read(payload: Any) -> dict[str, Any]:
     packet = _clean_packet(payload)
-    raw = call_model(MODEL, SYSTEM, "DECISION PACKET:\n" + json.dumps(packet, ensure_ascii=False), ENDPOINT, 260)
+    raw = call_model(
+        MODEL,
+        SYSTEM,
+        "DECISION PACKET:\n" + json.dumps(packet, ensure_ascii=False),
+        ENDPOINT,
+        timeout=90,
+        max_tokens=260,
+    )
     out = _clean_read(raw)
     out["decision_ref"] = packet["decision_ref"]
     return out

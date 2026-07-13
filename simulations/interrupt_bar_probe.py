@@ -89,12 +89,12 @@ OVERCLAIM_PAT = re.compile(
 )
 
 
-def call_model(model: str, system: str, user: str, endpoint: str, timeout: int = 180) -> dict:
+def call_model(model: str, system: str, user: str, endpoint: str, timeout: int = 180, max_tokens: int = 800) -> dict:
     body = json.dumps({
         "model": model,
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
         "temperature": 0,
-        "max_tokens": 800,
+        "max_tokens": max_tokens,
         "stream": False,
         # Qwen3.6 is a thinking model; qualification ran thinking-disabled. Without
         # this the model can spend the whole token budget reasoning and return a
