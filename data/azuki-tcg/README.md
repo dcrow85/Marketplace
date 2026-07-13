@@ -133,8 +133,11 @@ Promo observation layer:
   AX cards, but does not identify this card's exact award activity. User-supplied
   authenticity and event-distribution statuses remain typed assertions.
 - 1 distinct Lady Emberheart observation: printed `STT04-008`, `UC ★`, `Illus.
-  Aflorane`, and a gold `WINNER` treatment. No AX stamp is visible, so no Anime
-  Expo association is recorded.
+  Aflorane`, and a gold `WINNER` treatment. Two independently hashed user photos
+  record the same visible treatment; the clearer sleeved image remains the display
+  reference and the second, unsleeved image is retained as corroborating evidence.
+  The catalogue does not infer that they depict the same physical copy. No AX stamp
+  is visible in either photo, so no Anime Expo association is recorded.
 
 Portrait alternate observation layer:
 

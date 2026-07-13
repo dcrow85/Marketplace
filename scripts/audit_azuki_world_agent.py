@@ -224,6 +224,29 @@ def main() -> None:
         and emberheart_winner["illustrator"] == "Aflorane",
         "Lady Emberheart row lost its non-AX winner boundary or artist credit",
     )
+    emberheart_observation = emberheart_winner["observations"][0]
+    require(
+        emberheart_observation["source_image_sha256"]
+        == "49102cc3eabd412bb85903c700d4b2b1de6af70e9ffac38d2416929bee2b2638"
+        and emberheart_observation["corroborating_sources"]
+        == [
+            {
+                "source_key": "lady-emberheart-winner-corroboration-20260713",
+                "source_image_public_path": "assets/observations/lady-emberheart-winner-corroboration-2026-07-13.jpg",
+                "source_image_sha256": "e16a9886e717c2d424ace0f0a089f55ad3d4b9983ae88cdcc56dabe24256512f",
+            }
+        ],
+        "Lady Emberheart row lost one of its two photo-source anchors",
+    )
+    require(
+        "that multiple source photos depict the same physical copy"
+        in emberheart_winner["not_claiming"],
+        "Lady Emberheart row lost its physical-copy identity boundary",
+    )
+    require(
+        "source-photos:2[observation]" in brief(emberheart_winner, set_labels),
+        "Lady Emberheart agent brief lost the corroborating-photo count",
+    )
     require(len(guide.get("event_contexts", [])) == 1, "Anime Expo event context is missing or duplicated")
     require(len(guide.get("product_contexts", [])) == 1, "Special Collection product context is missing or duplicated")
     require(

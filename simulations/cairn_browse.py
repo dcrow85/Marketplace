@@ -385,6 +385,20 @@ def brief(c: dict, setlabel: dict[str, str]) -> str:
         tags.append("issues:" + ",".join(severities))
     if not c.get("image"):
         tags.append("no-reference-photo")
+    source_photo_refs = {
+        ref
+        for observation in c.get("observations", [])
+        for ref in [
+            observation.get("source_image_public_path") or observation.get("source_image_sha256"),
+            *[
+                source.get("source_image_public_path") or source.get("source_image_sha256")
+                for source in observation.get("corroborating_sources", [])
+            ],
+        ]
+        if ref
+    }
+    if len(source_photo_refs) > 1:
+        tags.append(f"source-photos:{len(source_photo_refs)}[observation]")
     world = c.get("azuki_world") or {}
     cue = world.get("setting_cue") or {}
     if cue.get("value"):

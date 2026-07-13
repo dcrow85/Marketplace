@@ -140,6 +140,18 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
   const issues = c.issues || []
   const collection = c.collection_assertion || {}
   const reportedPrice = collection.reported_sale_price || {}
+  const referenceSourceRefs = new Set()
+  if (c.image_status === 'user_photo_observation') {
+    for (const observation of c.observations || []) {
+      const primary = observation.source_image_public_path || observation.source_image_sha256
+      if (primary) referenceSourceRefs.add(primary)
+      for (const source of observation.corroborating_sources || []) {
+        const ref = source.source_image_public_path || source.source_image_sha256
+        if (ref) referenceSourceRefs.add(ref)
+      }
+    }
+  }
+  const referenceSourceCount = referenceSourceRefs.size
   const norm = (t) => (t || '').replace(/\s+/g, ' ').trim()
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
     .filter((x) => !(c.card_text && x.label && norm(c.card_text).toLowerCase().includes(`[${x.label}]`.toLowerCase()))) // rules text already carries this labeled effect
@@ -310,6 +322,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                   : c.image
                     ? 'Reference witness — not seller evidence, authentication, or proof of a specific physical card.'
                     : 'No reference image has been sourced for this print yet.'}
+                {referenceSourceCount > 1 && <><br />{referenceSourceCount} user-supplied reference photos are recorded for this treatment; the clearest is displayed.</>}
                 {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
               </div>
             </div>
@@ -323,6 +336,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                 <div>catalog {c.catalog_hash || '—'}</div>
                 <div>row {c.row_id ?? '—'}</div>
                 {c.source_entry_id && <div>source {c.source_entry_id}</div>}
+                {referenceSourceCount > 0 && <div>reference_sources {referenceSourceCount} [user observations]</div>}
                 {collection.collection_id && <div>collection {collection.collection_id} [{collection.membership_authority || 'unrated'}]</div>}
                 <div>image_status {c.image_status || '—'}</div>
                 {issues.map((i, idx) => <div key={idx}>note [{i.severity || 'info'}] {(i.codes || []).join(' ')}{i.notes ? ` · ${i.notes}` : (i.recommended_action ? ` · ${i.recommended_action}` : '')}</div>)}

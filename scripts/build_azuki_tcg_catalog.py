@@ -143,6 +143,9 @@ PROMO_OBSERVATION_EXTRA_COLUMNS = [
 PROMO_OBSERVATION_SOURCE_COLUMNS = [
     "SOURCE_KEY",
     "SOURCE_IMAGE_PUBLIC_PATH",
+    "CORROBORATING_SOURCE_KEYS",
+    "CORROBORATING_SOURCE_IMAGE_PUBLIC_PATHS",
+    "CORROBORATING_SOURCE_IMAGE_SHA256S",
     "DISPLAY_AS_DISTINCT_ROW",
     "OBSERVED_VARIANT_KIND",
     "OBSERVED_FOIL_TREATMENT",
@@ -360,6 +363,23 @@ USER_PROMO_PHOTO_SOURCES = {
             "winner_treatment_enumerated": False,
         },
         "note": "The user supplied this Lady Emberheart WINNER photo for catalogue inclusion. The image has no visible Anime Expo stamp, so the catalogue does not attach it to the Anime Expo event lane without additional evidence.",
+    },
+    "lady-emberheart-winner-corroboration-20260713": {
+        "kind": "user_provided_corroborating_photo",
+        "date": "2026-07-13",
+        "sha256": "e16a9886e717c2d424ace0f0a089f55ad3d4b9983ae88cdcc56dabe24256512f",
+        "stored_in_repo": True,
+        "public_path": "assets/observations/lady-emberheart-winner-corroboration-2026-07-13.jpg",
+        "repo_path": "web/public/assets/observations/lady-emberheart-winner-corroboration-2026-07-13.jpg",
+        "official_gallery_check": {
+            "checked": "2026-07-13",
+            "url": API_URL,
+            "api_count": 237,
+            "matching_source_entry_ids": ["S1-STT04-008_Lady-Emberheart_E_UC_die"],
+            "winner_treatment_enumerated": False,
+        },
+        "corroborates_source_key": "lady-emberheart-winner-20260710",
+        "note": "A second user-supplied photo visibly matches the printed STT04-008 identity, Aflorane credit, star-marked UC line, and gold WINNER treatment. It was photographed unsleeved on a different background. The image corroborates the visible treatment but does not establish physical-copy identity, authenticity, tournament origin, recipient, condition, possession, or value.",
     },
 }
 
@@ -707,8 +727,11 @@ USER_PROMO_PHOTO_OBSERVATIONS = [
         ],
         "DISPLAY_AS_DISTINCT_ROW": "true",
         "OBSERVED_VARIANT_KIND": "user_observed_winner_treatment",
+        "CORROBORATING_SOURCE_KEYS": [
+            "lady-emberheart-winner-corroboration-20260713"
+        ],
         "OBSERVATION_CONFIDENCE": "high_for_visible_print_fields",
-        "OBSERVATION_NOTE": "The photo visibly shows Lady Emberheart STT04-008, a gold WINNER treatment, star-marked UC line, and clear Aflorane credit. The live official API on 2026-07-10 reports raw cardId STT04-08 while its source entry, image filename, and printed card identify STT04-008; the release layer normalizes to the printed identity. The API does not enumerate this WINNER treatment. No Anime Expo stamp is visible, so no AX event association is claimed.",
+        "OBSERVATION_NOTE": "Two user-supplied photos visibly show Lady Emberheart STT04-008, a gold WINNER treatment, star-marked UC line, and clear Aflorane credit. The 2026-07-13 live official API remains at 237 rows and reports only base Lady Emberheart (raw cardId STT04-08); its source entry, image filename, and both photographed prints identify STT04-008, so the release layer normalizes to the printed identity. The API does not enumerate this WINNER treatment. No Anime Expo stamp is visible in either photo, so no AX event association is claimed. The photos are not treated as proof of authenticity or as evidence that they depict the same physical copy.",
     },
 ]
 
@@ -1649,12 +1672,23 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
     for observation in USER_PROMO_PHOTO_OBSERVATIONS:
         source_key = observation.get("SOURCE_KEY") or "promo-grid-20260624"
         source = USER_PROMO_PHOTO_SOURCES[source_key]
+        corroborating_keys = observation.get("CORROBORATING_SOURCE_KEYS") or []
+        if isinstance(corroborating_keys, str):
+            corroborating_keys = [key.strip() for key in corroborating_keys.split(";") if key.strip()]
+        corroborating_sources = [USER_PROMO_PHOTO_SOURCES[key] for key in corroborating_keys]
         row = dict(observation)
         row["SOURCE_KEY"] = source_key
         row["MATCHED_GALLERY_UIDS"] = "; ".join(row.get("MATCHED_GALLERY_UIDS") or [])
         row["SOURCE_IMAGE_SHA256"] = source["sha256"]
         row["SOURCE_IMAGE_STORED"] = str(source["stored_in_repo"]).lower()
         row["SOURCE_IMAGE_PUBLIC_PATH"] = source["public_path"]
+        row["CORROBORATING_SOURCE_KEYS"] = "; ".join(corroborating_keys)
+        row["CORROBORATING_SOURCE_IMAGE_PUBLIC_PATHS"] = "; ".join(
+            item["public_path"] for item in corroborating_sources
+        )
+        row["CORROBORATING_SOURCE_IMAGE_SHA256S"] = "; ".join(
+            item["sha256"] for item in corroborating_sources
+        )
         row["AUTHORITY_LABEL"] = "user_photo_observation_not_official_gallery_fact"
         rows.append(row)
 
@@ -1704,11 +1738,20 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
         "row_count": len(rows),
         "counts": {
             "rows": len(rows),
+            "source_images": len(USER_PROMO_PHOTO_SOURCES),
             "unique_observation_ids": len({row["OBSERVATION_ID"] for row in rows}),
             "observed_cards_not_in_gallery_snapshot": len(not_in_gallery),
             "source_conflicts": len(source_conflicts),
         },
         "observed_cards_not_in_gallery_snapshot": not_in_gallery,
+        "corroborating_source_links": [
+            {
+                "observation_id": observation["OBSERVATION_ID"],
+                "source_keys": observation.get("CORROBORATING_SOURCE_KEYS") or [],
+            }
+            for observation in USER_PROMO_PHOTO_OBSERVATIONS
+            if observation.get("CORROBORATING_SOURCE_KEYS")
+        ],
         "source_conflicts": source_conflicts,
         "checks": {
             "all_observations_have_printed_id": all(row["PRINTED_ID"] for row in rows),
@@ -1720,7 +1763,8 @@ def build_promo_observations(gallery_release: dict[str, Any]) -> tuple[str, dict
         "not_claiming": [
             "official checklist inclusion for observed printed IDs absent from the gallery snapshot",
             "market value",
-            "seller possession beyond the single user-provided photo",
+            "seller possession or physical-copy identity beyond what any user-provided photo visibly records",
+            "that multiple photos of one treatment depict the same physical copy",
             "independent verification of physical authenticity or condition beyond any explicitly recorded user assertion",
             "that the user photo should overwrite linked sheet or gallery fields",
             "the tournament event, venue, date, recipient, or award path behind a visible WINNER treatment",

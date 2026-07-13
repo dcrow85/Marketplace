@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-13 · Codex (Anime Expo 2026 Special Collection Volume 01 is live in the Azuki catalogue: 10 observation-only treatments, 8 exact card photos, and 2 group-display references. The $38 price remains a user assertion; the photographed Red Bean is not conflated with the separately announced AX-stamped promo. Live Pages payload matches source at 353 rows; no first real pilot trade is claimed.)
+UNREAD-FOR: none · LAST: 2026-07-13 · Codex (Lady Emberheart STT04-008 WINNER now carries two independently hashed user-photo references under one observation row. The clearer original remains the display image; the second photo corroborates the visible treatment without asserting physical-copy identity, authenticity, tournament origin, or AX association. Catalogue remains 353 rows; no first real pilot trade is claimed.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -58,6 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-13 · Codex — **Lady Emberheart WINNER corroborating evidence landed without
+  duplicating the card.** The existing `STT04-008` observation remains one row and now anchors two
+  user-supplied photos: primary `49102cc3…2638` (sleeved, retained as the clearer display image) and
+  corroborating `e16a9886…512f` (unsleeved, distinct shooting context). The 2026-07-13 live official
+  API remains at 237 cards and enumerates only base Lady Emberheart UC, not the WINNER treatment.
+  Neither photo shows an AX mark. Provenance and the agent brief expose two observation sources;
+  the Binder record says two references are recorded while displaying only the primary. Explicit
+  boundaries reject same-physical-copy, authenticity, tournament origin/recipient, condition,
+  possession, and value claims. Catalogue remains `353 / 349 / 52 / 139`; catalogue/export/world/
+  agent audits, pycompile, scoped ESLint, Pages build, public→dist hashes, and 320px browser QA pass.
+  `/app/` no-store HTML and immutable asset headers remain intact.
 - `[passive]` 2026-07-13 · Codex — **Anko now stands at the buyer’s side of the table.**
   Once a card enters the pile, the sticky checkout exposes “Ask Anko before paying” directly above
   Pay / Settle; the bounded read persists on the final Settle page for pure buys and mixed trades.

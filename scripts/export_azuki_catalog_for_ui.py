@@ -438,6 +438,17 @@ def observation_indexes(paths: list[Path]) -> tuple[dict[str, list[dict[str, str
 
 
 def observation_note(row: dict[str, str]) -> dict[str, Any]:
+    corroborating_keys = split_semis(row.get("CORROBORATING_SOURCE_KEYS"))
+    corroborating_paths = split_semis(row.get("CORROBORATING_SOURCE_IMAGE_PUBLIC_PATHS"))
+    corroborating_hashes = split_semis(row.get("CORROBORATING_SOURCE_IMAGE_SHA256S"))
+    corroborating_sources = [
+        {
+            "source_key": source_key,
+            "source_image_public_path": corroborating_paths[index] if index < len(corroborating_paths) else "",
+            "source_image_sha256": corroborating_hashes[index] if index < len(corroborating_hashes) else "",
+        }
+        for index, source_key in enumerate(corroborating_keys)
+    ]
     return {
         "observation_id": row.get("OBSERVATION_ID") or "",
         "authority_label": row.get("AUTHORITY_LABEL") or "user_observation",
@@ -448,6 +459,8 @@ def observation_note(row: dict[str, str]) -> dict[str, Any]:
         "observed_azuki_number": row.get("OBSERVED_AZUKI_NUMBER") or "",
         "observed_stamp": row.get("OBSERVED_STAMP") or "",
         "source_image_public_path": row.get("SOURCE_IMAGE_PUBLIC_PATH") or "",
+        "source_image_sha256": row.get("SOURCE_IMAGE_SHA256") or "",
+        "corroborating_sources": corroborating_sources,
         "display_as_distinct_row": (row.get("DISPLAY_AS_DISTINCT_ROW") or "").strip().lower() in {"1", "true", "yes"},
         "observed_variant_kind": row.get("OBSERVED_VARIANT_KIND") or "",
         "observed_foil_treatment": (row.get("OBSERVED_FOIL_TREATMENT") or "").strip().lower() in {"1", "true", "yes"},
@@ -838,6 +851,7 @@ def card_from_unmatched_observation(row: dict[str, str], manifest_hash: str) -> 
             "official gallery inclusion",
             "official enumeration of this treatment as a distinct variant",
             "seller possession",
+            "that multiple source photos depict the same physical copy",
             "independent verification of physical-card authenticity beyond any recorded user assertion",
             "condition truth",
             "market value",

@@ -6,10 +6,19 @@
     "matched_gallery_uids_exist": true,
     "stored_source_images_match_hash": true
   },
+  "corroborating_source_links": [
+    {
+      "observation_id": "tournament-winner-photo-20260710-003",
+      "source_keys": [
+        "lady-emberheart-winner-corroboration-20260713"
+      ]
+    }
+  ],
   "counts": {
     "observed_cards_not_in_gallery_snapshot": 2,
     "rows": 8,
     "source_conflicts": 1,
+    "source_images": 6,
     "unique_observation_ids": 8
   },
   "csv_path": "data/azuki-tcg/observations/azuki_tcg_user_photo_promo_observations_2026_06_24.csv",
@@ -17,7 +26,8 @@
   "not_claiming": [
     "official checklist inclusion for observed printed IDs absent from the gallery snapshot",
     "market value",
-    "seller possession beyond the single user-provided photo",
+    "seller possession or physical-copy identity beyond what any user-provided photo visibly records",
+    "that multiple photos of one treatment depict the same physical copy",
     "independent verification of physical authenticity or condition beyond any explicitly recorded user assertion",
     "that the user photo should overwrite linked sheet or gallery fields",
     "the tournament event, venue, date, recipient, or award path behind a visible WINNER treatment"
@@ -56,6 +66,26 @@
       "repo_path": "web/public/assets/observations/lady-emberheart-winner-2026-07-10.png",
       "sha256": "49102cc3eabd412bb85903c700d4b2b1de6af70e9ffac38d2416929bee2b2638",
       "source_key": "lady-emberheart-winner-20260710",
+      "stored_in_repo": true
+    },
+    {
+      "corroborates_source_key": "lady-emberheart-winner-20260710",
+      "date": "2026-07-13",
+      "kind": "user_provided_corroborating_photo",
+      "note": "A second user-supplied photo visibly matches the printed STT04-008 identity, Aflorane credit, star-marked UC line, and gold WINNER treatment. It was photographed unsleeved on a different background. The image corroborates the visible treatment but does not establish physical-copy identity, authenticity, tournament origin, recipient, condition, possession, or value.",
+      "official_gallery_check": {
+        "api_count": 237,
+        "checked": "2026-07-13",
+        "matching_source_entry_ids": [
+          "S1-STT04-008_Lady-Emberheart_E_UC_die"
+        ],
+        "url": "https://tcg.azuki.com/api/cards",
+        "winner_treatment_enumerated": false
+      },
+      "public_path": "assets/observations/lady-emberheart-winner-corroboration-2026-07-13.jpg",
+      "repo_path": "web/public/assets/observations/lady-emberheart-winner-corroboration-2026-07-13.jpg",
+      "sha256": "e16a9886e717c2d424ace0f0a089f55ad3d4b9983ae88cdcc56dabe24256512f",
+      "source_key": "lady-emberheart-winner-corroboration-20260713",
       "stored_in_repo": true
     },
     {
