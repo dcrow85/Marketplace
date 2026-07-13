@@ -35,6 +35,8 @@ createRoot(document.getElementById('root')).render(
           theme: 'light',
           accentColor: '#2C5B8C',
           walletChainType: 'ethereum-only',
+          // Do not auto-enumerate injected browser wallets during auth bootstrap.
+          walletList: ['wallet_connect_qr'],
         },
         // Wallet provisioning belongs at the settlement decision, not page bootstrap.
         // Keeping it out here prevents injected providers from blocking basic identity.
