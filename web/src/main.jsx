@@ -34,11 +34,12 @@ createRoot(document.getElementById('root')).render(
         appearance: {
           theme: 'light',
           accentColor: '#2C5B8C',
-          // No wallet is part of authentication. This prevents Privy's bootstrap
-          // connector pass from reading the legacy `window.ethereum` singleton.
-          walletChainType: 'solana-only',
-          // Do not auto-enumerate injected browser wallets during auth bootstrap.
-          walletList: ['wallet_connect_qr'],
+        },
+        externalWallets: {
+          // Wallet connection is a settlement action in Cairn, never an auth action.
+          // Keep Privy's connector subsystem away from injected extension providers.
+          disableAllExternalWallets: true,
+          walletConnect: { enabled: false },
         },
         // Wallet provisioning belongs at the settlement decision, not page bootstrap.
         // Keeping it out here prevents injected providers from blocking basic identity.
