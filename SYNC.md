@@ -58,10 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: interface-first Anko onboarding]` 2026-07-14 · Codex —
-  Reframing the first lap as two focused setup popups (profile, picture), followed by coaching inside the full
-  Binder. Anko will move beside the real natural-language search, offer editable collection/listing examples,
-  and then move beside the real scanner. Existing milestone values and persisted evidence rules stay unchanged.
+- `[passive]` 2026-07-14 · Codex — **The first lap now teaches Cairn through Cairn's real controls.**
+  Profile details and picture selection use a focused, responsive popup over the visible Binder; once those setup
+  steps are passed, the points panel compacts and Anko moves inline beside the real natural-language bar and then
+  the real scanner. `I have every common` and `List all my commons for $1` are editable examples that fill and
+  focus the live bar without sending or applying anything. Arrow keys inside editable fields remain normal text
+  controls rather than moving the tour. Desktop and 390px browser QA cover both setup popups, the full-Binder
+  handoff, example filling, scanner placement, and no horizontal overflow. Source ESLint, diff checks, and the
+  assembled Pages build pass. UI commit `5c36a40`; Pages deployment `3d205490`; apex serves
+  `index-VUoxLm8n.js` with no-store HTML. The signed-in account was reset and verified at 0/8 on the new live
+  profile popup; its existing trade remains. Point values, evidence, account-reset, catalogue, protocol, Railway,
+  offers, and `mockups/` rules are unchanged.
 - `[passive]` 2026-07-14 · Codex — **Completing the real task now moves Anko forward automatically.**
   The guide's transition derives the next unfinished task only from the stable completion signature, so the
   follow-up award-persistence render can no longer cancel its timer. Anko leaves the earned acknowledgement visible
