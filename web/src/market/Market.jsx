@@ -6,13 +6,14 @@ import { loadHidden, hiddenKeyFor, loadMockSales, mockSalesKeyFor } from './mock
 import { fetchProfiles, fetchProfile } from '../live/pilotStore.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
 import { retryImg } from '../binder/helpers.jsx'
-import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { pileKeyFor, loadPiles, addToPile, removeFromPile, toggleMode, clearPile } from './pile.js'
 import MarketFinds from './MarketFinds.jsx'
 import SettlePage from './SettlePage.jsx'
+import BuyNow from './BuyNow.jsx'
 import CardZoom from './CardZoom.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
+import { IS_LOCAL_CHAIN } from '../chain/config.js'
 import './market.css'
 
 // The market: other people's tables, run like a card show. You pick cards up (zoom),
@@ -70,6 +71,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [sel, setSel] = useState(null) // seller id whose table is open
   const [wantsOnly, setWantsOnly] = useState(false)
   const [settling, setSettling] = useState(false) // the Settle page, its own room
+  const [buyingNow, setBuyingNow] = useState(false) // compact posted-ask checkout in the pile pane
   const [swapMsg, setSwapMsg] = useState(null)
   const [zoom, setZoom] = useState(null) // {c, l, sellerId} — the card held up to the light
   const [aq, setAq] = useState('')
@@ -83,7 +85,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const store = useBus(() => loadStore(storeKey), [storeKey])
   const piles = useBus(() => loadPiles(pileKey), [pileKey])
 
-  useEffect(() => { setSettling(false); setHuntOpen(false); setWitnessedOnly(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle + hunting fold
+  useEffect(() => { setSettling(false); setBuyingNow(false); setHuntOpen(false); setWitnessedOnly(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, checkout + hunting fold
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- Anko's sort is a view instruction, not a panel */
     const srt = ares?.ok ? ares.data?.filter?.sort : null
@@ -361,6 +363,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       },
     } : null
     const purchaseReadRecommended = buysSum >= 500 || pile.some((p) => !open.listings.find((l) => l.uid === p.uid)?.witness)
+    const canBuyNow = pile.every((p) => p.mode === 'buy') && buysSum > 0 && (open.live || IS_LOCAL_CHAIN)
     const displayUids = new Set(open.showcase || [])
     const displayRows = rows.filter(({ c }) => displayUids.has(c.uid))
     const binderRows = rows.filter(({ c }) => !displayUids.has(c.uid))
@@ -519,28 +522,29 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                   ? `⇄ your tradeables (~${myTradeSum} USDC on record) more than cover this pile (~${pileVal})`
                   : `⇄ your tradeables ~${myTradeSum} USDC on record · covers ~${pct}% of this pile`}</span>
             })()}
-            <div className="mk-buy-decision">
-              <span className="ofl-decisionlabel mono">Before you send · this is your call</span>
-              <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
-                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before sending' : 'Ask Anko about this offer'} />
-            </div>
-            <span className="mk-ckacts">
-              {pile.every((p) => p.mode === 'buy') && buysSum > 0 && (
-                <button className="primary mk-settle" onClick={() => {
-                  sendOffer(offersKeyFor(catalog.id, accountId), { to: open.id, want: pile.map((p) => ({ uid: p.uid })), give: [], cash: { side: 'from', amount: buysSum }, note: null, live: open.live, from: accountId, cat: catalog.id })
-                  clearPile(pileKey, open.id)
-                  setSwapMsg(open.live
-                    ? `offer sent at their asks to ${handleFor(open.id)}'s inbox. A real person answers this one; watch Trades.`
-                    : `offer sent at their asks — ${buysSum} USDC for ${pile.length} card${pile.length === 1 ? '' : 's'} to ${handleFor(open.id)}. Watch Trades.`)
-                }}>Send offer at asks · {buysSum} USDC →</button>
-              )}
-              <button className={pile.every((p) => p.mode === 'buy') && buysSum > 0 ? 'ghost sm' : 'primary mk-settle'} onClick={() => setSettling(true)}>Review / adjust offer{pile.every((p) => p.mode === 'buy') && buysSum > 0 ? '' : ` · ${pile.length}`} →</button>
-              <button className="ghost sm" onClick={() => clearPile(pileKey, open.id)}>clear</button>
-            </span>
+            {buyingNow && canBuyNow ? (
+              <BuyNow open={open} pile={pile} total={buysSum} catalog={catalog} accountId={accountId}
+                pileKey={pileKey} byUid={byUid} onBack={() => setBuyingNow(false)}
+                onFunded={(tradeId) => {
+                  setBuyingNow(false)
+                  setSwapMsg(`paid into escrow · trade #${tradeId}. ${handleFor(open.id)} has been notified; follow delivery in Trades.`)
+                }} />
+            ) : <>
+              <span className="mk-ckacts">
+                {canBuyNow && <button className="primary mk-settle" onClick={() => setBuyingNow(true)}>Buy now · {buysSum} USDC</button>}
+                <button className={canBuyNow ? 'ghost sm' : 'primary mk-settle'} onClick={() => setSettling(true)}>Make offer{pile.length > 1 ? ` · ${pile.length} cards` : ''}</button>
+                <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>clear</button>
+              </span>
+              <div className="mk-buy-decision">
+                <span className="ofl-decisionlabel mono">Want a second look?</span>
+                <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
+                  label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before buying' : 'Ask Anko about this offer'} />
+              </div>
+            </>}
           </div>
         )}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; scans say what&rsquo;s recorded behind it. Pick cards up,
-          tag them buy or trade, and finish the table with one offer. Sending an offer does not move cards or funds.</p>
+          tag them buy or trade, then Buy now at posted asks or Make offer. Buy now funds escrow; an offer moves no cards or funds.</p>
       </div>
     )
   }

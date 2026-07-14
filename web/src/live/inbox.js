@@ -27,7 +27,8 @@ export function mergeInbox(catalogId, accountId, box) {
       if (offers.some((o) => o.id === m.offer.id)) continue
       // stored exactly as authored, direction flipped: for dir 'in', the ledger reads
       // want/give from the author's frame already (same shape persona counters use)
-      offers.unshift({ ...m.offer, dir: 'in', live: true, from: m.offer.from, state: 'sent', nextAt: null, cat: undefined })
+      const arrivedState = m.offer.state === 'escrow_locked' && m.offer.tradeId != null ? 'escrow_locked' : 'sent'
+      offers.unshift({ ...m.offer, dir: 'in', live: true, from: m.offer.from, state: arrivedState, nextAt: null, cat: undefined })
       if (m.offer.counterOf) {
         const prev = offers.find((o) => o.id === m.offer.counterOf)
         if (prev && ['sent', 'seen'].includes(prev.state)) prev.state = 'countered'

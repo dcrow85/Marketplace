@@ -50,6 +50,26 @@ export function sendOffer(key, { to, want, give, cash, note, counterOf, live, fr
   return id
 }
 
+// Accepting a posted ask is not an offer round-trip: the buyer has already funded
+// escrow. Keep the same ledger shape, but enter it at escrow_locked and send one
+// complete event to the seller so no response can race ahead of the purchase record.
+export function recordFundedPurchase(key, { to, want, amount, live, from, cat, tradeId, txHash, rail = 'escrow' }) {
+  const offers = loadOffers(key)
+  const id = 'buy_' + Math.random().toString(36).slice(2, 10)
+  const o = {
+    id, dir: 'out', to, at: new Date().toISOString().slice(0, 10),
+    want, give: [], cash: { side: 'from', amount }, note: null,
+    state: 'escrow_locked', live: !!live, tradeId, rail,
+    log: [`posted ask accepted — ${amount} USDC funded in escrow · trade #${tradeId} · tx ${String(txHash || '').slice(0, 10)}…`],
+  }
+  offers.unshift(o)
+  saveOffers(key, offers)
+  if (live && isLiveAddr(to)) {
+    pushInbox(to, { id, type: 'offer', offer: { ...o, from: from || null, cat: cat || null } })
+  }
+  return id
+}
+
 export function setOfferState(key, id, state, extra) {
   const offers = loadOffers(key)
   const o = offers.find((x) => x.id === id)
