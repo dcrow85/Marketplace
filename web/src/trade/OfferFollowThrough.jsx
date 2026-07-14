@@ -16,7 +16,10 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
   const last = thread[thread.length - 1]
   const open = ['sent', 'seen'].includes(o.state)
   const needsEvidenceReply = open && last?.dir === 'in' && last.kind === 'request'
+  const awaitingEvidence = open && last?.dir === 'out' && last.kind === 'request'
   const canFollowRead = o.dir === 'in' && open && read
+  const readSuggestsEvidence = canFollowRead && REQUEST_LEANS.has(read.lean)
+  const canAskDirectly = open && !awaitingEvidence && !needsEvidenceReply && !draft && !readSuggestsEvidence
 
   const openRequest = () => setDraft({ kind: 'request', text: requestText(cardNames) })
   const openResponse = () => setDraft({ kind: 'response', text: '' })
@@ -46,10 +49,17 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
       {canFollowRead && (
         <div className="anko-followbar">
           <span className="mono">Follow Anko’s suggestion</span>
-          {REQUEST_LEANS.has(read.lean) && <button className="sheetbtn mk-sm mono" onClick={openRequest}>Ask for evidence →</button>}
+          {readSuggestsEvidence && <button className="sheetbtn mk-sm mono" onClick={openRequest}>Ask for evidence →</button>}
           {read.lean === 'counter' && <button className="sheetbtn mk-sm mono" onClick={onCounter}>Build a counter →</button>}
           {read.lean === 'accept' && <button className="sheetbtn mk-sm mono sw-boot" onClick={onAccept}>Accept offer →</button>}
           {read.lean === 'decline' && <button className="sheetbtn mk-sm mono" onClick={onDecline}>Decline offer →</button>}
+        </div>
+      )}
+
+      {canAskDirectly && (
+        <div className="ofl-askdirect">
+          <span className="mono">Need more information?</span>
+          <button className="ghost sm mono" onClick={openRequest}>Ask for evidence →</button>
         </div>
       )}
 
@@ -62,7 +72,7 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
 
       {draft && (
         <div className="ofl-evdraft">
-          <label className="mono">{draft.kind === 'request' ? 'Message to the offerer' : 'Your evidence response'}</label>
+          <label className="mono">{draft.kind === 'request' ? 'Message to the other collector' : 'Your evidence response'}</label>
           <textarea value={draft.text} maxLength={600} autoFocus
             placeholder={draft.kind === 'response' ? 'Describe the photos, scans, condition notes, or provenance you can provide…' : ''}
             onChange={(e) => setDraft({ ...draft, text: e.target.value })} />

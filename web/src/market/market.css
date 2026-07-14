@@ -169,6 +169,9 @@
 .anko-followbar > span { color: var(--agent); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; margin-right: auto; }
 .anko-followbar.needs-reply { border-left-color: var(--signal); }
 .anko-followbar.needs-reply > span { color: var(--signal); }
+.ofl-askdirect { display: flex; align-items: center; gap: 4px 8px; flex-wrap: wrap; padding: 1px 2px; }
+.ofl-askdirect > span { color: var(--dim); font-size: 9.5px; }
+.ofl-askdirect button { color: var(--agent); }
 .ofl-evidence { display: flex; flex-direction: column; gap: 6px; border: 0.5px solid var(--rule); border-radius: 9px; padding: 9px 11px; background: var(--paper2); }
 .ofl-evidencehead { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; color: var(--ink); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
 .ofl-evidencehead span { color: var(--dim); text-transform: none; letter-spacing: 0; }
