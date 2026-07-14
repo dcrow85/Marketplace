@@ -58,11 +58,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: account-local fresh reset]` 2026-07-14 · Codex —
-  Adding an explicit, confirmed My Table reset for live onboarding QA. It will remove the signed-in
-  account's local profile, first-lap points, Binder changes, scans, piles, and table preferences, take
-  a published table off the board, and restart the Anko introduction. Protocol offers and inbox history
-  remain intact; shared catalogue, sample-market, theme, authentication, and other browser data are out of scope.
+- `[passive]` 2026-07-14 · Codex — **My Table now has a bounded, confirmed fresh-start control.**
+  It removes only the signed-in account's local profile, first-lap points, Binder changes, scans, piles,
+  table preferences, and Anko-introduction flag; a live published table is taken off the board before any
+  local deletion. Protocol offers and seen-inbox history remain intact, while the shared catalogue,
+  sample market, theme, authentication, other accounts, and unrelated browser data remain out of scope.
+  The two-step copy names every deletion and promises 0/3. Reset-scope testing passed 10/10, alongside full
+  source ESLint, assembled Pages build, preview/apex byte parity, and a real Chrome reset of the requested
+  account from 2/3 to Anko's first introduction. UI commit `d258974`; Pages deployment `ec45bda5`.
+  No Railway, contract, offer, inbox, catalogue, or `mockups/` changes.
 - `[passive]` 2026-07-14 · Codex — **The account start now has a useful three-point first lap.**
   A new collector sees one inline path to name their profile and table line, mark a first Have or Want,
   and open the real card scanner. Each one-time point is account-scoped and awarded only from persisted
