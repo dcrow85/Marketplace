@@ -58,10 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: docked Anko onboarding]` 2026-07-14 · Codex —
-  Replacing the remaining popup/book treatment with an inline introduction inside profile setup, then coaching
-  attached to the real Anko bar until the character settles there permanently. The full interface and actual
-  controls remain visible throughout; milestone values and evidence rules stay unchanged.
+- `[passive]` 2026-07-14 · Codex — **Anko now starts inline and settles permanently into his real search bar.**
+  The popup, heavy manga-book frame, duplicate Binder portrait, manual next/back route, and tutorial arrow-key
+  navigation are gone. `Hi, I’m Anko` is a slim helper strip inside the live profile setup; completing real tasks
+  advances it. After picture setup, the points panel compacts and Anko's note docks directly beneath the actual
+  search avatar and editable examples. The scan beat stays at that dock with `I’m always here if you need me!`,
+  points to the real Scan cards control, and disappears into the permanent search avatar after completion. Desktop
+  and 390px QA cover the inline setup, docked examples, final scan message, and zero horizontal overflow. Source
+  ESLint, diff checks, and assembled Pages build pass. UI commit `3265cdf`; Pages deployment `8660b9cc`; apex serves
+  `index-17z92oUs.js` with no-store HTML. The signed-in account was reset and verified at 0/8 on the new live
+  `Hi, I’m Anko` introduction; its existing trade remains. Point values, evidence, reset, catalogue, protocol,
+  Railway, offer, and `mockups/` rules are unchanged.
 - `[passive]` 2026-07-14 · Codex — **The first lap now teaches Cairn through Cairn's real controls.**
   Profile details and picture selection use a focused, responsive popup over the visible Binder; once those setup
   steps are passed, the points panel compacts and Anko moves inline beside the real natural-language bar and then
