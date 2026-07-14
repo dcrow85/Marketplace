@@ -58,11 +58,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: first-lap profile picture + scan weight]` 2026-07-14 · Codex —
-  Expanding the new-account lap from three milestones / three points to four milestones / eight points:
-  profile details +1, profile picture +1, first Have/Want +1, and first recorded scan +5. The picture must
-  remain account-scoped, bounded for browser storage, removable, and visible in the collector's own identity
-  surfaces without weakening the distinction between a chosen image and recorded evidence.
+- `[passive]` 2026-07-14 · Codex — **The first lap now makes the first scan the meaningful milestone.**
+  The account path is four milestones / eight points: profile details +1, profile picture +1, first
+  Have/Want +1, and first recorded scan +5. Chosen pictures are cropped square, resized, account-scoped,
+  replaceable/removable on My Table, and carried as collector identity on published tables; they never count
+  as card evidence. Anko's manga guide and the bounded reset both use 0/8. The milestone probe passes 4/4,
+  full source ESLint and assembled Pages build pass, and desktop plus 390px browser QA cover the reset,
+  four-step guide, 0/8 handoff, and no horizontal overflow. Preview/apex bundle hashes match with no-store
+  HTML and immutable JS. UI commit `8279764`; Pages deployment `1e28a36e`. The signed-in live account was
+  reset again and left at the 0/8 Anko introduction; its existing trade remains. No Railway, contract,
+  offer, catalogue, or `mockups/` changes.
 - `[passive]` 2026-07-14 · Codex — **Anko now arrives inside the working interface.** The five-beat
   black lore gate is replaced by a skippable three-frame manga field guide over the visible Binder and
   first-lap tasks. Its panels map directly to Profile / Have-Want-Scan / Market-Trades, show the 0/3
