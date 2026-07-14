@@ -58,10 +58,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: persistent Anko dock]` 2026-07-14 · Codex —
-  Replace the harsh setup-panel-to-search-bar handoff with one persistent Anko dock. Keep the real bar present from
-  the first profile step, attach the changing guidance to that same avatar, and contract the guidance into the usable
-  input without duplicate characters, forced scroll, or competing point animation. Preserve all agent safety rules.
+- `[passive]` 2026-07-14 · Codex — **First-lap Anko is now one persistent dock instead of a panel-to-bar jump.**
+  The real Binder bar is present from the profile step onward, with changing guidance tethered to its single avatar;
+  the setup surface stays focused, the point flight lands before a 560ms Binder FLIP carries the page upward, dock
+  focus never forces a scroll, and the final scan note contracts into the usable bar over one second. The mobile Scan
+  FAB yields during profile/photo setup and reduced-motion users bypass the transitions. Desktop plus 375/390px QA
+  passed, including the first-Have Sell/Trade lesson. Source commit `f21e51c`; extension-safe route commit `81e6617`;
+  Pages deployment `9cfd9494`; apex serves immutable `/app/cairn-site-DS8rPYEl.js`. The old generic
+  `/app/assets/index-DS8rPYEl.js` reproduced `ERR_BLOCKED_BY_CLIENT` with the active extension, while a fresh apex tab
+  mounted normally through the first-party Cairn route. Source ESLint, diff checks, and the assembled Pages build pass.
+  Agent safety, point values, catalogue, protocol, Railway, and `mockups/` are unchanged.
 - `[passive]` 2026-07-14 · Codex — **The first Have mark now brings Anko to the card’s Sell and Trade controls.**
   In the full card view he sits directly above `List for sale` and `Open to trade`; in Standard/Gallery he becomes an
   82px compact note beside the real `$` and `⇄` buttons. He explains that Sell adds an asking price and Trade invites
