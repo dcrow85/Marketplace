@@ -3,7 +3,7 @@
 import { entryFor as effStance } from './collection.js'
 import { nm, retryImg, wantActive, capMeta, provBadge } from './helpers.jsx'
 
-export default function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk, onQuickSell }) {
+export default function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk, onQuickSell, haveActionsGuide, onUseHaveAction }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
@@ -14,11 +14,16 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
         <button className={'seg sg-have' + (have ? ' on' : '')} onClick={() => setStance(c.uid, have ? 'none' : 'have')}>Have</button>
         {have
           ? <>
-              <button className={'seg sg-sell' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'} onClick={() => { const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
-              <button className={'seg sg-tradeq' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'} onClick={() => setField(c.uid, 'trade', !e.trade)}>⇄</button>
+              <button className={'seg sg-sell' + (e.sell ? ' on' : '') + (haveActionsGuide ? ' anko-target' : '')}
+                aria-label={e.sell ? 'Remove sale listing' : 'Sell this card'} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
+                onClick={() => { onUseHaveAction?.(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
+              <button className={'seg sg-tradeq' + (e.trade ? ' on' : '') + (haveActionsGuide ? ' anko-target' : '')}
+                aria-label={e.trade ? 'Close this card to trades' : 'Trade this card'} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
+                onClick={() => { onUseHaveAction?.(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
             </>
           : <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>}
       </div>
+      {haveActionsGuide}
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
         <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{c.romaji || (c.name_is_en ? 'EN' : '')}</div></div>

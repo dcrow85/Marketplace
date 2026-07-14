@@ -46,6 +46,21 @@ const DONE_LINES = {
   scan: 'Scan recorded. Five points earned.',
 }
 
+export function HaveActionsLesson({ onDone, compact = false }) {
+  return (
+    <aside className={'anko-have-actions' + (compact ? ' compact' : '')} role="note" aria-label="Anko explains selling and trading">
+      <img src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(event) => { event.currentTarget.style.display = 'none' }} />
+      <div className="anko-have-copy">
+        <strong>{compact ? 'Sell or trade?' : 'You have it. Is it available?'}</strong>
+        <span>{compact
+          ? <><b>$ Sell</b> sets a price. <b>⇄ Trade</b> invites swaps. Either, both, or neither.</>
+          : <><b>$ Sell</b> adds an asking price. <b>⇄ Trade</b> invites collectors to offer a swap. Choose either, both, or neither.</>}</span>
+      </div>
+      <button type="button" onClick={onDone}>Got it</button>
+    </aside>
+  )
+}
+
 export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 'setup' }) {
   const [imgOk, setImgOk] = useState(true)
   const previousDone = useRef(Object.fromEntries(progress.milestones.map((item) => [item.id, item.done])))

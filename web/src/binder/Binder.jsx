@@ -14,6 +14,7 @@ import { applyAgentFilter } from './agentFilter.js'
 import { pileKeyFor, addToPile } from '../market/pile.js'
 import MarketFinds from '../market/MarketFinds.jsx'
 import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
+import { HaveActionsLesson } from '../agent/MeetAnko.jsx'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
@@ -83,12 +84,15 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const undoStore = useRef(null) // store snapshot from before the proposal applied
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [haveLessonUid, setHaveLessonUid] = useState(null)
   useScrollLock(filtersOpen)
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'pages' } catch { return 'pages' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
+  const haveLessonKey = `cairn-anko-have-actions:${accountId || 'anon'}`
   const [mkt, setMkt] = useState(null) // the market payload: sellers' asks + recorded settlements
   const [mockRev, setMockRev] = useState(0)
+  useEffect(() => { setHaveLessonUid(null) /* eslint-disable-line react-hooks/set-state-in-effect -- account changes reset transient coaching */ }, [haveLessonKey])
   useEffect(() => {
     const onStore = () => {
       try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { /* keep current */ }
@@ -194,9 +198,19 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       if (u.stance === 'none' || u.stance === 'pass') u.grail = false
       const next = { ...prev, [uid]: u }
       saveStore(storeKey, next)
+      if (u.stance === 'have') {
+        let seen = false
+        try { seen = !!localStorage.getItem(haveLessonKey) } catch { /* ignore */ }
+        if (!seen) {
+          try { localStorage.setItem(haveLessonKey, '1') } catch { /* ignore */ }
+          window.setTimeout(() => setHaveLessonUid(uid), 0)
+        }
+      } else if (uid === haveLessonUid) {
+        window.setTimeout(() => setHaveLessonUid(null), 0)
+      }
       return next
     })
-  }, [data, storeKey])
+  }, [data, storeKey, haveLessonKey, haveLessonUid])
 
   const setField = useCallback((uid, key, value) => {
     setStore((prev) => {
@@ -420,7 +434,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   }
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
   const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ(''); setQuery('') } }
-  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop} />
+  const dismissHaveLesson = () => setHaveLessonUid(null)
+  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop}
+    haveActionsGuide={haveLessonUid === c.uid ? <HaveActionsLesson compact onDone={dismissHaveLesson} /> : null} onUseHaveAction={dismissHaveLesson} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
 
@@ -455,7 +471,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         {directSearchMiss && <div className="searchhint mono" role="status">
           No direct card match. Keeping all cards in this view visible — ask {agentName} to understand the request.
         </div>}
-        {(onboardingStep === 'mark' || onboardingStep === 'scan') && onboardingGuide}
+        {(onboardingStep === 'mark' || onboardingStep === 'scan') && !haveLessonUid && onboardingGuide}
         <div className="chips">
           {CHIPS.map((ch, i) => (
             <button key={i} className={'chip' + (chipOn(ch) ? ' on' : '') + (chipOn(ch) && ch.acc ? ' acc' : '')} onClick={() => toggleChip(ch)}>
@@ -563,7 +579,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           lastSale={(mkt?.sales || {})[sellPop]?.[0] || null}
           onOpenFull={(uid) => setSelected(uid)} onClose={() => setSellPop(null)} /> : null
       })()}
-      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]} onClose={() => setSelected(null)} market={mktEff} mockSales={mockSales} onBrowseCard={onBrowseCard} />}
+      {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]}
+        haveActionsGuide={haveLessonUid === selected ? <HaveActionsLesson onDone={dismissHaveLesson} /> : null} onUseHaveAction={dismissHaveLesson}
+        onClose={() => { if (haveLessonUid === selected) dismissHaveLesson(); setSelected(null) }} market={mktEff} mockSales={mockSales} onBrowseCard={onBrowseCard} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
     </>
   )

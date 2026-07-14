@@ -105,7 +105,7 @@ export function MarketBlock({ c, market, mockSales, onBrowseCard }) {
   )
 }
 
-export default function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose, market, mockSales, onBrowseCard }) {
+export default function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose, market, mockSales, onBrowseCard, haveActionsGuide, onUseHaveAction }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
@@ -248,11 +248,14 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
             )}
             <div className="m-fields">
               {e.stance === 'have' && <>
+                {haveActionsGuide}
                 <div className="listrow">
-                  <button className={'listtog' + (e.sell ? ' on' : '')} onClick={() => { const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false) }}>
+                  <button className={'listtog' + (e.sell ? ' on' : '') + (haveActionsGuide ? ' anko-target' : '')}
+                    onClick={() => { onUseHaveAction?.(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false) }}>
                     {e.sell ? '● For sale' : '○ List for sale'}
                   </button>
-                  <button className={'listtog' + (e.trade ? ' on' : '')} onClick={() => setField(c.uid, 'trade', !e.trade)}>
+                  <button className={'listtog' + (e.trade ? ' on' : '') + (haveActionsGuide ? ' anko-target' : '')}
+                    onClick={() => { onUseHaveAction?.(); setField(c.uid, 'trade', !e.trade) }}>
                     {e.trade ? '⇄ Open to trade' : '○ Open to trade'}
                   </button>
                 </div>
