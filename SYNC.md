@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: persistent Anko dock]` 2026-07-14 · Codex —
+  Replace the harsh setup-panel-to-search-bar handoff with one persistent Anko dock. Keep the real bar present from
+  the first profile step, attach the changing guidance to that same avatar, and contract the guidance into the usable
+  input without duplicate characters, forced scroll, or competing point animation. Preserve all agent safety rules.
 - `[passive]` 2026-07-14 · Codex — **The first Have mark now brings Anko to the card’s Sell and Trade controls.**
   In the full card view he sits directly above `List for sale` and `Open to trade`; in Standard/Gallery he becomes an
   82px compact note beside the real `$` and `⇄` buttons. He explains that Sell adds an asking price and Trade invites
