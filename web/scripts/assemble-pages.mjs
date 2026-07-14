@@ -25,6 +25,7 @@ const deferred = html.replace(
     return `<script>
     window.addEventListener('load', function () {
       var entry = document.createElement('script');
+      entry.type = 'module';
       entry.defer = true;
       entry.src = '${src}?v=${version}';
       entry.crossOrigin = '';
