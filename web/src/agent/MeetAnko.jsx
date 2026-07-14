@@ -6,9 +6,9 @@ const IMG = (import.meta.env.BASE_URL || '/') + 'agent/house.png'
 const FRAMES = [
   {
     id: 'first-lap',
-    kicker: 'First lap · 3 points',
+    kicker: 'First lap · 8 points',
     line: 'I’m Anko. I stay here in the interface—usually beside the questions that matter.',
-    note: 'Name your table, mark a card, scan one. Each useful first earns a point.',
+    note: 'Profile +1, picture +1, first mark +1. Your first recorded scan is the big one: +5.',
   },
   {
     id: 'binder',
@@ -26,13 +26,14 @@ const FRAMES = [
 
 function FirstLapMini({ points }) {
   return (
-    <div className="anko-miniui lap" aria-label={`${points} of 3 first-lap points`}>
+    <div className="anko-miniui lap" aria-label={`${points} of 8 first-lap points`}>
       <div className="anko-mininav"><b>c(ai)rn</b><span>Binder</span><span>My Table</span><i>✦ {points}</i></div>
-      <div className="anko-minititle"><span>YOUR FIRST LAP</span><strong>{points}/3</strong></div>
+      <div className="anko-minititle"><span>YOUR FIRST LAP</span><strong>{points}/8</strong></div>
       <div className="anko-ministeps">
         <span><i>01</i><b>Profile</b><small>name your table</small><em>+1</em></span>
-        <span><i>02</i><b>First card</b><small>Have or Want</small><em>+1</em></span>
-        <span><i>03</i><b>Scan</b><small>add a witness</small><em>+1</em></span>
+        <span><i>02</i><b>Picture</b><small>show your face</small><em>+1</em></span>
+        <span><i>03</i><b>First card</b><small>Have or Want</small><em>+1</em></span>
+        <span><i>04</i><b>Scan</b><small>add a witness</small><em>+5</em></span>
       </div>
     </div>
   )

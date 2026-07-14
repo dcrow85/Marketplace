@@ -19,6 +19,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .dim { color: var(--dim); }
 .av { display: inline-flex; }
 .av svg { display: block; border-radius: 4px; background: var(--mount); }
+.av img { display: block; border-radius: 4px; object-fit: cover; background: var(--mount); }
 
 /* wordmark */
 .wm { font-family: var(--serif); font-size: 23px; color: var(--ink); letter-spacing: .2px; }
@@ -150,6 +151,10 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
   .nav-trades-label, .signout-full { display: none; }
   .signout-short { display: inline; }
   .signoutbtn { width: 44px; padding-left: 0; padding-right: 0; }
+  .bt-right { width: 100%; gap: 6px; min-width: 0; }
+  .sizepick button { padding-left: 7px; padding-right: 7px; }
+  .bsegs { flex: 1; min-width: 0; }
+  .bsegs button { flex: 1; min-width: 0; padding-left: 4px; padding-right: 4px; font-size: 11px; white-space: nowrap; }
 }
 @media (max-width: 360px) {
   .nav { padding-left: 12px; padding-right: 12px; }
@@ -159,10 +164,6 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
   .signout-short { display: inline; }
   .signoutbtn { padding-left: 9px; padding-right: 9px; }
   .nav .chip { width: 34px; padding-left: 6px; padding-right: 6px; justify-content: center; }
-  .bt-right { width: 100%; gap: 6px; min-width: 0; }
-  .sizepick button { padding-left: 7px; padding-right: 7px; }
-  .bsegs { flex: 1; min-width: 0; }
-  .bsegs button { flex: 1; min-width: 0; padding-left: 4px; padding-right: 4px; font-size: 11px; white-space: nowrap; }
 }
 
 /* the wordmark is the way home */

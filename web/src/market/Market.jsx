@@ -13,6 +13,7 @@ import BuyNow from './BuyNow.jsx'
 import CardZoom from './CardZoom.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
+import { cleanProfilePhoto } from '../profile/profilePhoto.js'
 import { IS_LOCAL_CHAIN } from '../chain/config.js'
 import './market.css'
 
@@ -22,7 +23,8 @@ import './market.css'
 // shown is a CLAIM; the witness counts say what's recorded behind it.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 
-function Avatar({ seed, size = 26 }) {
+function Avatar({ seed, size = 26, photo = '' }) {
+  if (photo) return <span className="av"><img src={photo} width={size} height={size} alt="" /></span>
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 
@@ -39,6 +41,7 @@ const scanLabel = (w) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : '— no scan
 const profileToSeller = (p) => ({
   id: p.addr,
   handle: typeof p.handle === 'string' ? p.handle.trim().slice(0, 32) : '',
+  photo: cleanProfilePhoto(p.photo),
   live: true,
   joined: p.updated ? new Date(p.updated).toISOString().slice(0, 10) : null,
   bio: p.sign || '',
@@ -280,7 +283,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               {asks.sort((a, b) => a.l.ask - b.l.ask).map(({ s, l }, i) => (
                 <div key={i} className={'mk-row' + (myWants.has(focusUid) ? ' mk-mine' : '')}>
                   <button className="mk-who" onClick={() => { onClearFocus(); setSel(s.id) }} title="visit their table">
-                    <Avatar seed={s.id} size={20} /><span>{sellerName(s)}</span>
+                    <Avatar seed={s.id} size={20} photo={s.photo} /><span>{sellerName(s)}</span>
                   </button>
                   <span className="mk-name">{myWants.has(focusUid) && <span className="mk-wantflag">your want</span>}</span>
                   <span className="mono mk-cond" title="the seller's claim — the protocol records it, it does not verify it">{l.cond}</span>
@@ -413,7 +416,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {zoomEl}
         <div className="mk-head">
           <div className="mk-seller">
-            <Avatar seed={open.id} size={40} />
+            <Avatar seed={open.id} size={40} photo={open.photo} />
             <div>
               <div className="mk-handle">{sellerName(open)}{open.live && <span className="mk-livetag mono"> ● live</span>}</div>
               <div className="mono dim mk-sub">{shortId(open.id)} · {open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}</div>
@@ -580,7 +583,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           return (
             <button key={s.id} className={'mk-table' + (aisleN === 0 ? ' mk-dim' : '')} onClick={() => setSel(s.id)}>
               <div className="mk-seller">
-                <Avatar seed={s.id} size={34} />
+                <Avatar seed={s.id} size={34} photo={s.photo} />
                 <div>
                   <div className="mk-handle">{sellerName(s)}{s.live && <span className="mk-livetag mono"> ● live</span>}</div>
                   <div className="mono dim mk-sub">{shortId(s.id)}{s.live ? '' : ' · sample'}</div>

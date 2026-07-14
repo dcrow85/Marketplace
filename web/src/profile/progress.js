@@ -5,8 +5,9 @@ import { profileComplete } from './profileStore.js'
 
 export const FIRST_LAP = [
   { id: 'profile', label: 'Create your profile', detail: 'Choose a collector name and a line for your table.', points: 1 },
+  { id: 'photo', label: 'Add a profile picture', detail: 'Put a face, card, or mark beside your table name.', points: 1 },
   { id: 'mark', label: 'Mark your first card', detail: 'Start with Have or Want. You can change it anytime.', points: 1 },
-  { id: 'scan', label: 'Scan your first card', detail: 'Keep a photo witness with the card record.', points: 1 },
+  { id: 'scan', label: 'Scan your first card', detail: 'Add the first photo witness to a card record.', points: 5 },
 ]
 
 const progressKeyFor = (accountId) => `cairn-points:${accountId || 'anon'}`
@@ -22,6 +23,7 @@ export function milestoneObservation(profile, store) {
   const entries = Object.values(store || {})
   return {
     profile: profileComplete(profile),
+    photo: !!profile?.photo,
     mark: entries.some((entry) => entry?.stance === 'have' || entry?.stance === 'want'),
     scan: entries.some((entry) => entry?.scanned || entry?.photo_hash || (entry?.pile || []).length),
   }
@@ -46,7 +48,7 @@ export function useMilestoneProgress(accountId, catalogId, profile) {
     const store = loadStore(storeKeyFor(catalogId, accountId))
     const awards = loadAwards(accountId)
     return { store, awards, seen: milestoneObservation(profile, store) }
-  }, [accountId, catalogId, profile?.name, profile?.sign])
+  }, [accountId, catalogId, profile?.name, profile?.sign, profile?.photo])
 
   useEffect(() => {
     saveNewAwards(accountId, snapshot.awards, snapshot.seen)

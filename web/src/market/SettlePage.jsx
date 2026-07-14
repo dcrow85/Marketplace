@@ -11,7 +11,8 @@ import { handleFor, avatarSVG } from '../identity.js'
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 const scanLabel = (w) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : '— no scans'
 
-function Avatar({ seed, size = 26 }) {
+function Avatar({ seed, size = 26, photo = '' }) {
+  if (photo) return <span className="av"><img src={photo} width={size} height={size} alt="" /></span>
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 // The Settle page: its own room, built for the process. You piled cards up at the
@@ -176,7 +177,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     <div className="mk stl">
       <div className="mk-head">
         <div className="mk-seller">
-          <Avatar seed={open.id} size={40} />
+          <Avatar seed={open.id} size={40} photo={open.photo} />
           <div>
             <div className="ek">Review offer</div>
             <div className="mk-handle">one offer to {open.handle || handleFor(open.id)}</div>

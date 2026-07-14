@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { loadStore, saveStore, storeKeyFor } from '../binder/collection.js'
 import { useCatalog } from '../lib/data.js'
 import { saveProfile } from './profileStore.js'
+import { prepareProfilePhoto } from './profilePhoto.js'
 import './onboarding.css'
 
 const cardName = (card) => card?.name_en || card?.name_ja || card?.uid || 'Untitled card'
@@ -12,6 +13,8 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const [name, setName] = useState(profile.name || '')
   const [sign, setSign] = useState(profile.sign || '')
   const [query, setQuery] = useState('')
+  const [photoBusy, setPhotoBusy] = useState(false)
+  const [photoError, setPhotoError] = useState('')
 
   const hits = useMemo(() => {
     const needle = query.trim().toLowerCase()
@@ -23,8 +26,21 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
 
   const save = () => {
     if (!name.trim() || !sign.trim()) return
-    saveProfile(accountId, { name, sign })
+    saveProfile(accountId, { ...profile, name, sign })
     setActive(null)
+  }
+  const choosePhoto = async (event) => {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file) return
+    setPhotoBusy(true); setPhotoError('')
+    try {
+      const photo = await prepareProfilePhoto(file)
+      saveProfile(accountId, { ...profile, photo })
+      setActive(null)
+    } catch (error) {
+      setPhotoError(error?.message || 'That picture could not be added.')
+    } finally { setPhotoBusy(false) }
   }
   const mark = (card, stance) => {
     const key = storeKeyFor(catalog.id, accountId)
@@ -40,7 +56,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
         <div>
           <span className="ek">Your first lap</span>
           <h1>Set up your table</h1>
-          <p>Three useful firsts. One point each.</p>
+          <p>Four useful firsts. Your first recorded scan earns five.</p>
         </div>
         <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
           <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
@@ -67,6 +83,18 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
           <label><span className="mono">Your table line</span><input maxLength={140} value={sign}
             placeholder="What do you collect, trade, or hunt?" onChange={(event) => setSign(event.target.value)} /></label>
           <button className="primary" disabled={!name.trim() || !sign.trim()} onClick={save}>Save profile · +1 point</button>
+        </div>
+      )}
+
+      {active === 'photo' && !progress.milestones.find((milestone) => milestone.id === 'photo')?.done && (
+        <div className="first-action first-photo">
+          <span className="first-photoempty" aria-hidden="true">＋</span>
+          <span><b>Add your profile picture</b><small>We crop it square and keep a small copy in this browser.</small></span>
+          <label className={'primary first-photobutton' + (photoBusy ? ' disabled' : '')}>
+            <input type="file" accept="image/*" disabled={photoBusy} onChange={choosePhoto} />
+            {photoBusy ? 'preparing picture…' : 'Choose picture · +1 point'}
+          </label>
+          {photoError && <span className="first-photoerror" role="alert">{photoError}</span>}
         </div>
       )}
 

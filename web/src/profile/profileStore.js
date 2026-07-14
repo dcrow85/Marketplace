@@ -1,3 +1,5 @@
+import { cleanProfilePhoto } from './profilePhoto.js'
+
 const profileKeyFor = (accountId) => `cairn-profile:${accountId || 'anon'}`
 
 const clean = (value, limit) => String(value || '').slice(0, limit)
@@ -6,18 +8,20 @@ export function loadProfile(accountId) {
   try {
     const saved = JSON.parse(localStorage.getItem(profileKeyFor(accountId)) || '{}')
     return {
-      v: 1,
+      v: 2,
       name: clean(saved?.name, 32),
       sign: clean(saved?.sign, 140),
+      photo: cleanProfilePhoto(saved?.photo),
     }
-  } catch { return { v: 1, name: '', sign: '' } }
+  } catch { return { v: 2, name: '', sign: '', photo: '' } }
 }
 
 export function saveProfile(accountId, profile) {
   const next = {
-    v: 1,
+    v: 2,
     name: clean(profile?.name, 32),
     sign: clean(profile?.sign, 140),
+    photo: cleanProfilePhoto(profile?.photo),
   }
   try { localStorage.setItem(profileKeyFor(accountId), JSON.stringify(next)) } catch { /* ignore */ }
   window.dispatchEvent(new CustomEvent('cairn-profile'))

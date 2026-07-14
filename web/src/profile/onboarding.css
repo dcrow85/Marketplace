@@ -7,7 +7,7 @@
 .first-score span { font-size: 11px; }
 .first-meter { height: 3px; margin: 16px 0; overflow: hidden; border-radius: 999px; background: var(--rule2); }
 .first-meter i { display: block; height: 100%; background: var(--agent); transition: width .25s ease; }
-.first-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.first-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .first-step { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: start; min-height: 76px; padding: 11px; text-align: left; color: var(--ink2); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 9px; cursor: pointer; }
 .first-step:hover, .first-step.open { border-color: var(--ink); }
 .first-step:disabled { cursor: default; opacity: .68; }
@@ -25,6 +25,15 @@
 .first-profile input, .first-cardpick > input { width: 100%; min-width: 0; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 10px 11px; outline: none; }
 .first-profile input:focus, .first-cardpick > input:focus { border-color: var(--ink); }
 .first-profile .primary { width: auto; padding-inline: 18px; white-space: nowrap; }
+.first-photo { display: grid; grid-template-columns: 46px minmax(180px, 1fr) auto; gap: 11px; align-items: center; }
+.first-photoempty { width: 46px; height: 46px; display: grid; place-items: center; color: var(--agent); border: 0.5px dashed var(--rule); border-radius: 12px; background: var(--mount); font-size: 20px; }
+.first-photo b, .first-photo small { display: block; }
+.first-photo b { color: var(--ink); font-size: 12.5px; }
+.first-photo small { margin-top: 2px; color: var(--dim); font-size: 10.5px; }
+.first-photobutton { width: auto; white-space: nowrap; }
+.first-photobutton input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.first-photobutton.disabled { opacity: .5; cursor: default; }
+.first-photoerror { grid-column: 2 / -1; color: var(--signal); font-size: 11px; }
 .first-cardpick { display: grid; gap: 7px; }
 .first-hit { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 9px; padding: 6px; border-top: 0.5px solid var(--rule2); }
 .first-hit img, .first-noimg { width: 34px; height: 47px; object-fit: cover; border-radius: 4px; background: var(--mount); }
@@ -44,6 +53,8 @@
   .first-step { min-height: 0; }
   .first-profile { grid-template-columns: 1fr; }
   .first-profile .primary { width: 100%; }
+  .first-photo { grid-template-columns: 46px 1fr; }
+  .first-photobutton { grid-column: 1 / -1; width: 100%; text-align: center; }
 }
 @media (max-width: 560px) {
   .first-lap { padding: 16px; margin-bottom: 18px; }

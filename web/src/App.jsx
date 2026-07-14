@@ -85,7 +85,8 @@ function Wordmark({ big }) {
     </span>
   )
 }
-function Avatar({ seed, size = 22 }) {
+function Avatar({ seed, size = 22, photo = '' }) {
+  if (photo) return <span className="av"><img src={photo} width={size} height={size} alt="" /></span>
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 function Splash() {
@@ -173,7 +174,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           <button className="chip profilechip" onClick={() => setBseg('sale')}
             aria-label={`Profile: ${publicName}, ${progress.points} point${progress.points === 1 ? '' : 's'}`}
             title="open your profile and table">
-            <Avatar seed={accountId} size={18} /> <span className="handle">{publicName}</span>
+            <Avatar seed={accountId} size={18} photo={profile.photo} /> <span className="handle">{publicName}</span>
             <span className="profile-points" aria-label={`${progress.points} point${progress.points === 1 ? '' : 's'}`}>✦ {progress.points}</span>
           </button>
           <ThemeToggle />

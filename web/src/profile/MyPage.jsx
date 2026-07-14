@@ -84,6 +84,7 @@ export default function MyPage({ accountId, catalog }) {
   }, [accountId, noteKey, profile])
   const setName = (name) => saveProfile(accountId, { ...profile, name })
   const setSign = (sign) => saveProfile(accountId, { ...profile, sign })
+  const setPhoto = (photo) => saveProfile(accountId, { ...profile, photo })
 
   const rows = useMemo(() => {
     if (!data) return { haves: [], listed: [], display: [], wants: [] }
@@ -141,7 +142,7 @@ export default function MyPage({ accountId, catalog }) {
   const [resetBusy, setResetBusy] = useState(false)
   const [resetErr, setResetErr] = useState(false)
   const buildSnapshot = () => ({
-    v: 1, cat: catalog.id, sign: profile.sign.trim(), handle: profile.name.trim() || handleFor(accountId),
+    v: 2, cat: catalog.id, sign: profile.sign.trim(), handle: profile.name.trim() || handleFor(accountId), photo: profile.photo,
     showcase: rows.display.map(({ c }) => c.uid),
     table: rows.listed.map(({ c, e }) => ({
       uid: c.uid, ask: e.ask ? Number(e.ask) : null, trade: !!e.trade, sell: !!e.sell,
@@ -184,7 +185,7 @@ export default function MyPage({ accountId, catalog }) {
   return (
     <div className="pf">
       <ProfileHeader accountId={accountId} name={profile.name} onName={setName}
-        sign={profile.sign} onSign={setSign} stats={stats} />
+        sign={profile.sign} onSign={setSign} photo={profile.photo} onPhoto={setPhoto} stats={stats} />
       <div className="pf-pubrow mono">
         {canPublish
           ? pubAt
@@ -210,7 +211,7 @@ export default function MyPage({ accountId, catalog }) {
               <span className="pf-resetacts">
                 <button className="ghost sm" onClick={() => setResetOpen(false)} disabled={resetBusy}>cancel</button>
                 <button className="ghost sm pf-resetconfirm" onClick={resetAccount} disabled={resetBusy}>
-                  {resetBusy ? 'resetting…' : 'Reset and start at 0/3'}
+                  {resetBusy ? 'resetting…' : 'Reset and start at 0/8'}
                 </button>
               </span>
             </>}
