@@ -58,6 +58,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: contextual Anko first-card guide]` 2026-07-14 · Codex —
+  Repairing the first-card point award and moving Anko from a fixed corner coach into the live task context.
+  Each onboarding step will position the guide beside its actual control; the card step will travel to the
+  card search/results and clearly acknowledge the first persisted Have or Want before advancing. No point
+  values, catalogue evidence, trade, offer, Railway, protocol, or `mockups/` rules are changing.
 - `[passive]` 2026-07-14 · Codex — **Anko's first-lap manga is now the working interface tour.**
   A new friendly, project-local Anko illustration sits in a compact coach beside the real four-step / eight-point
   path. Plain-English panels point to and focus the collector-name field, open the repaired profile-picture picker,
