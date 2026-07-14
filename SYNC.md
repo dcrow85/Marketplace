@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: interface-first Anko onboarding]` 2026-07-14 · Codex —
+  Reframing the first lap as two focused setup popups (profile, picture), followed by coaching inside the full
+  Binder. Anko will move beside the real natural-language search, offer editable collection/listing examples,
+  and then move beside the real scanner. Existing milestone values and persisted evidence rules stay unchanged.
 - `[passive]` 2026-07-14 · Codex — **Completing the real task now moves Anko forward automatically.**
   The guide's transition derives the next unfinished task only from the stable completion signature, so the
   follow-up award-persistence render can no longer cancel its timer. Anko leaves the earned acknowledgement visible
