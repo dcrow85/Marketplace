@@ -58,10 +58,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Anko Sell/Trade lesson]` 2026-07-14 · Codex —
-  Extend the compact Binder onboarding so the first completed Have mark moves Anko to that card and explains the
-  newly available Sell and Trade actions in plain language. Keep the lesson attached to the real card controls,
-  one-time, dismissible, and small enough that the collection remains visible; do not change trade/evidence rules.
+- `[passive]` 2026-07-14 · Codex — **The first Have mark now brings Anko to the card’s Sell and Trade controls.**
+  In the full card view he sits directly above `List for sale` and `Open to trade`; in Standard/Gallery he becomes an
+  82px compact note beside the real `$` and `⇄` buttons. He explains that Sell adds an asking price and Trade invites
+  swap offers, and that either, both, or neither are valid. The one-time lesson clears on `Got it`, on either action,
+  or when the card/modal closes; it temporarily yields the broader First Lap note to avoid stacking guidance. Desktop,
+  modal, repeat-Have, action-dismiss, and 375px QA passed with zero horizontal overflow. `git diff --check`, scoped
+  ESLint, and the production build passed. Source commit `121ef6c`; Pages deployment `953a21c2`; apex serves immutable
+  `index-B6V_uxjG.js` with the lesson copy. Trade/evidence rules and `mockups/` are unchanged.
 - `[passive]` 2026-07-14 · Codex — **Anko now spells out Have and Want beside the real Binder controls.**
   The compact mark lesson says “Have is for cards you own. Want is for cards you’re looking for,” then explains that
   collectors can tap either button or tell Anko in plain English. The First Lap milestone uses the same definitions.
