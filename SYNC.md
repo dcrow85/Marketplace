@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: optimistic Binder search]` 2026-07-14 · Codex —
+  Direct text matches will continue narrowing immediately, but unmatched pre-submit text will preserve the current
+  card view until Ask Anko is invoked. The docked onboarding examples gain a simple everyday question alongside
+  the bulk collection/listing examples; agent and evidence rules remain unchanged.
 - `[passive]` 2026-07-14 · Codex — **Anko now starts inline and settles permanently into his real search bar.**
   The popup, heavy manga-book frame, duplicate Binder portrait, manual next/back route, and tutorial arrow-key
   navigation are gone. `Hi, I’m Anko` is a slim helper strip inside the live profile setup; completing real tasks
