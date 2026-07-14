@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: docked Anko onboarding]` 2026-07-14 · Codex —
+  Replacing the remaining popup/book treatment with an inline introduction inside profile setup, then coaching
+  attached to the real Anko bar until the character settles there permanently. The full interface and actual
+  controls remain visible throughout; milestone values and evidence rules stay unchanged.
 - `[passive]` 2026-07-14 · Codex — **The first lap now teaches Cairn through Cairn's real controls.**
   Profile details and picture selection use a focused, responsive popup over the visible Binder; once those setup
   steps are passed, the points panel compacts and Anko moves inline beside the real natural-language bar and then
