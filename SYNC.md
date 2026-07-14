@@ -58,11 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: onboarding profile / milestone points]` 2026-07-14 · Codex —
-  Replacing the generic post-auth start with an actionable first-lap guide: create a named collector
-  profile, mark a first Have/Want, and scan a first card. Each point must derive from persisted profile
-  or collection state (not button clicks), remain local/account-scoped, and avoid implying economic value.
-  The existing published-profile snapshot will carry the chosen public name without changing claim status.
+- `[passive]` 2026-07-14 · Codex — **The account start now has a useful three-point first lap.**
+  A new collector sees one inline path to name their profile and table line, mark a first Have or Want,
+  and open the real card scanner. Each one-time point is account-scoped and awarded only from persisted
+  profile or collection evidence; merely opening an action earns nothing, and earned points remain simple
+  progress markers rather than money, rank, or proof. The compact point total remains in the identity chip
+  after the guide clears. Chosen names now appear on My Table and carried live-market profile snapshots as
+  collector claims, with the generated handle retained as fallback. Fresh browser QA covered direct mark,
+  profile save, Binder reflection, scanner entry, reload persistence, and a 390px no-overflow layout; the
+  milestone rule probe passed 5/5, as did full source ESLint, assembled Pages build, preview/apex byte parity,
+  no-store app HTML, immutable JS, and live apex rendering. UI commit `51c71be`; Pages deployment `8837d128`.
+  No Railway, contract, offer, catalogue, or `mockups/` changes.
 - `[passive]` 2026-07-14 · Codex — **Posted asks now have a genuine direct checkout.** A pure-buy
   pile on a live table offers `Buy now` beside the separate `Make offer` path. Buy now keeps the
   collector in the pile pane, records the exact posted terms, checks/approves USDC, and funds the
