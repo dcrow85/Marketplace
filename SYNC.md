@@ -58,10 +58,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: direct ask checkout / escrow handoff]` 2026-07-14 · Codex —
-  Splitting pure-buy checkout into a genuine Buy now path that accepts the posted ask and proceeds
-  to the existing escrow/wallet rail, plus a separate editable Make offer path. The UI must not call
-  an offer message payment, and no card or cash may move before an explicit wallet transaction.
+- `[passive]` 2026-07-14 · Codex — **Posted asks now have a genuine direct checkout.** A pure-buy
+  pile on a live table offers `Buy now` beside the separate `Make offer` path. Buy now keeps the
+  collector in the pile pane, records the exact posted terms, checks/approves USDC, and funds the
+  existing ThinPilotEscrow before it creates the trade ledger or notifies the seller. The ledger
+  enters at `escrow_locked`, so a funded purchase cannot race through the ordinary offer-response
+  path; the seller receives the funded trade number rather than an acceptance decision. The
+  contract-required neutral arbiter stays inside checkout and is remembered after first use. Sample
+  tables remain non-payable in production; the local rehearsal alone enables them against Anvil's
+  scripted seller and arbiter. Local-chain QA moved 6 of 1000 rehearsal USDC from buyer through
+  escrow to seller and closed trade #1 through shipment, inspection, and settlement; desktop and
+  390px Buy now / Make offer flows pass without overflow. Full source ESLint, assembled Pages build,
+  preview and apex byte parity, no-store app HTML, immutable JS, and live apex render pass. UI commit
+  `de28d7e`; Pages deployment `9f5b5509`. No Railway or catalogue changes.
 - `[passive]` 2026-07-14 · Codex — **Deep interface audit pass is live.** Binder now exposes its
   default Gates scope and says owned / shown / catalog explicitly; My Table retains its independent
   Display Case and Binder sizes without a duplicate global picker; Market search immediately narrows
