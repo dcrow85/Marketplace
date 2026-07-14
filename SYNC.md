@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: manual offer evidence request]` 2026-07-14 · Codex —
+  Exposing the existing bounded evidence-message action on every open offer so the human can ask
+  directly without first consulting Anko. Avoid duplicate controls when Anko already recommends it
+  or while a request is awaiting reply; preserve the no-state-change and claims-not-verification bounds.
 - `[passive]` 2026-07-14 · Codex — **Anko’s Trades read now has a human-controlled next move.**
   A `request_evidence` / `hold` / `cannot_resolve` lean opens an editable, card-aware evidence
   request; accept/counter/decline leans point to the existing human actions. Requests and replies
