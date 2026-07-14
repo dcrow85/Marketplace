@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: Anko Sell/Trade lesson]` 2026-07-14 · Codex —
+  Extend the compact Binder onboarding so the first completed Have mark moves Anko to that card and explains the
+  newly available Sell and Trade actions in plain language. Keep the lesson attached to the real card controls,
+  one-time, dismissible, and small enough that the collection remains visible; do not change trade/evidence rules.
 - `[passive]` 2026-07-14 · Codex — **Anko now spells out Have and Want beside the real Binder controls.**
   The compact mark lesson says “Have is for cards you own. Want is for cards you’re looking for,” then explains that
   collectors can tap either button or tell Anko in plain English. The First Lap milestone uses the same definitions.
