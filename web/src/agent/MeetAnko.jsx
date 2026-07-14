@@ -75,11 +75,22 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
     const justFinished = done[current.id] && !previousDone.current[current.id]
     previousDone.current = done
     if (!justFinished) return undefined
-    const laterOpen = progress.milestones.findIndex((item, index) => !item.done && index > frame)
-    const nextOpen = laterOpen >= 0 ? laterOpen : progress.milestones.findIndex((item) => !item.done)
+    const laterOpen = STEPS.findIndex((step, index) => index > frame && !done[step.id])
+    const nextOpen = laterOpen >= 0 ? laterOpen : STEPS.findIndex((step) => !done[step.id])
     const timer = window.setTimeout(() => nextOpen >= 0 ? onFrame(nextOpen) : onDone(), 900)
     return () => window.clearTimeout(timer)
-  }, [current.id, doneSignature, frame, onDone, onFrame, progress.milestones])
+  }, [current.id, doneSignature, frame, onDone, onFrame])
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      const target = document.querySelector(`[data-tour-target="${current.id}"]`)
+      if (!target) return
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      const focusable = target.matches('[data-tour-focus]') ? target : target.querySelector('[data-tour-focus]')
+      focusable?.focus({ preventScroll: true })
+    }, 180)
+    return () => window.clearTimeout(timer)
+  }, [current.id])
 
   const showTarget = () => {
     const target = document.querySelector(`[data-tour-target="${current.id}"]`)
