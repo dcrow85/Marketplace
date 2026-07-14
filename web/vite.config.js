@@ -15,6 +15,9 @@ export default defineConfig({
         format: 'iife',
         inlineDynamicImports: true,
         name: 'CairnApp',
+        // Keep the production entry visibly first-party. Some privacy extensions
+        // block generic /assets/index-<hash>.js URLs on the custom domain.
+        entryFileNames: 'cairn-site-[hash].js',
       },
     },
   },

@@ -9,3 +9,6 @@
 
 /app/assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/app/cairn-site-*.js
+  Cache-Control: public, max-age=31536000, immutable
