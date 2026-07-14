@@ -58,6 +58,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: account-local fresh reset]` 2026-07-14 · Codex —
+  Adding an explicit, confirmed My Table reset for live onboarding QA. It will remove the signed-in
+  account's local profile, first-lap points, Binder changes, scans, piles, and table preferences, take
+  a published table off the board, and restart the Anko introduction. Protocol offers and inbox history
+  remain intact; shared catalogue, sample-market, theme, authentication, and other browser data are out of scope.
 - `[passive]` 2026-07-14 · Codex — **The account start now has a useful three-point first lap.**
   A new collector sees one inline path to name their profile and table line, mark a first Have or Want,
   and open the real card scanner. Each one-time point is account-scoped and awarded only from persisted
