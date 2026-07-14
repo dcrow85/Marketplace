@@ -10,28 +10,17 @@ await Promise.all([
   copyFile(new URL('../pages-headers', import.meta.url), new URL('_headers', dist)),
 ])
 
-// Wallet extensions commonly finish injecting providers on `load`. Starting the
-// module earlier can race their page-world hooks on real dapp origins, leaving the
-// browser with an unexecuted entry module and an empty root. Let extensions settle,
-// then attach the exact hashed Vite entry without changing the application bundle.
-// Repeat the filename hash in the query so a brief custom-domain propagation race
-// cannot leave an immutable HTML fallback cached at the script URL.
+// Keep Vite's native module tag so the browser schedules the entry reliably while
+// wallet extensions finish their document-start injection. Repeat the filename
+// hash in the query so a brief custom-domain propagation race cannot leave an
+// immutable HTML fallback cached at the script URL.
 const appIndex = new URL('app/index.html', dist)
 const html = await readFile(appIndex, 'utf8')
 const deferred = html.replace(
   /<script type="module" crossorigin src="([^"]+)"><\/script>/,
   (_, src) => {
     const version = src.match(/\/([^/]+)\.js$/)?.[1] || 'app'
-    return `<script>
-    window.addEventListener('load', function () {
-      var entry = document.createElement('script');
-      entry.type = 'module';
-      entry.defer = true;
-      entry.src = '${src}?v=${version}';
-      entry.crossOrigin = '';
-      document.head.appendChild(entry);
-    }, { once: true });
-  </script>`
+    return `<script type="module" crossorigin src="${src}?v=${version}"></script>`
   },
 )
 if (deferred === html) throw new Error('Vite entry script was not found in app/index.html')
