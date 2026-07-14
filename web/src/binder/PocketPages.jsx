@@ -17,7 +17,7 @@ export default function PocketPages({ rows, store, userPhotos, onOpen, setField,
       <div className="bv-head">
         <div className="bv-title">Page {Math.min(page, pages.length - 1) + 1} of {pages.length}
           <span className="dim"> · {filled} of {pg.length} pockets filled</span></div>
-        <div className="bv-comp mono">{rows.filter((c) => effStance(c, store).stance === 'have').length} / {rows.length}</div>
+        <div className="bv-comp mono">{rows.filter((c) => effStance(c, store).stance === 'have').length} owned · {rows.length} shown</div>
       </div>
       <div className="bv-page">
         {pg.map((c) => {

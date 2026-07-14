@@ -55,7 +55,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 /* app shell */
 .nav { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 36px; background: var(--bar); backdrop-filter: blur(8px); border-bottom: 0.5px solid var(--rule2); }
 .navr { display: flex; align-items: center; gap: 14px; font-size: 12px; color: var(--dim); }
-.themebtn { background: transparent; border: 0.5px solid var(--rule); border-radius: 5px; width: 30px; height: 26px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink2); padding: 0; }
+.themebtn { flex: none; background: transparent; border: 0.5px solid var(--rule); border-radius: 5px; width: 30px; height: 26px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink2); padding: 0; }
 .themebtn:hover { color: var(--ink); }
 .themebtn svg { width: 14px; height: 14px; display: block; }
 .themebtn .sun { display: none; }
@@ -123,8 +123,11 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
   .mx { padding: 14px; top: 2px; right: 2px; }
   .lbx { padding: 14px; }
   .recopen { padding: 11px 14px; }
-  .themebtn { width: 40px; height: 36px; }
-  .ghost.sm { padding: 10px 13px; }
+  .themebtn { width: 44px; height: 44px; }
+  .ghost.sm { min-height: 44px; padding: 10px 13px; }
+  .sizepick button, .bsegs button { min-width: 44px; min-height: 44px; }
+  .askbtn, .anko-ask, .sheetbtn, .tradesbtn { min-height: 44px; }
+  .sc-x, .mx { min-width: 44px; min-height: 44px; }
   .tp-load input { width: 96px; padding: 10px 9px; }
   .ainput input, .askbar input, .row input, .decide-body input, .decide-body input.mono,
   .tp-load input, .ti, .sc-pick input, .act-row input { font-size: 16px; }

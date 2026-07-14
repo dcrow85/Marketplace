@@ -119,6 +119,9 @@ export default function Offers({ accountId, catalog, onCounter }) {
         const idx = FLOW.indexOf(o.state)
         const getCards = (o.dir === 'out' ? o.want : o.give).map((x) => byUid.get(x.uid)).filter(Boolean)
         const giveCards = (o.dir === 'out' ? o.give : o.want).map((x) => byUid.get(x.uid)).filter(Boolean)
+        const receiveItems = o.dir === 'out' ? o.want : o.give
+        const giveItems = o.dir === 'out' ? o.give : o.want
+        const cashFromYou = o.cash && (o.dir === 'out' ? o.cash.side === 'from' : o.cash.side === 'to')
         const recommended = Number(o.cash?.amount || 0) >= 500 || [...getCards, ...giveCards].some((c) => Number(c.band_rank || 0) >= 3)
         const evidenceRef = lastEvidence(o)?.id || 'none'
         const decision = {
@@ -147,11 +150,24 @@ export default function Offers({ accountId, catalog, onCounter }) {
               <span className="mono ofl-dir">{o.dir === 'out' ? '→ to' : '← from'} <b>{handleFor(other)}</b> · {o.at}{o.counterOf ? ' · counter' : ''}{o.live ? <span className="ofl-live"> · ● live</span> : ''}</span>
               <span className={'mono ofl-st st-' + o.state}>{needsEvidence ? 'evidence requested' : waitingEvidence ? 'awaiting evidence' : o.dir === 'in' && open ? 'needs your answer' : o.state.replace('_', ' ')}</span>
             </div>
-            <div className="ofl-baskets">
-              <span className="ofl-side"><i className="mono dim">you get</i> {(o.dir === 'out' ? o.want : o.give).map(chip)}{(o.dir === 'out' ? o.want : o.give).length ? null : ' —'}</span>
-              <span className="sw-arrow mono">⇄</span>
-              <span className="ofl-side"><i className="mono dim">you give</i> {(o.dir === 'out' ? o.give : o.want).map(chip)}{(o.dir === 'out' ? o.give : o.want).length ? null : ' —'}</span>
-              {o.cash && <span className="mono ofl-cash">{(o.dir === 'out' ? o.cash.side === 'from' : o.cash.side === 'to') ? 'you' : 'they'} add {o.cash.amount} USDC</span>}
+            <div className="ofl-terms">
+              <div className="ofl-term receive">
+                <span className="mono ofl-termlabel">You receive</span>
+                <div className="ofl-termitems">
+                  {receiveItems.map(chip)}
+                  {o.cash && !cashFromYou && <span className="mono ofl-cash">+ {o.cash.amount} USDC</span>}
+                  {!receiveItems.length && !(o.cash && !cashFromYou) && <span className="ofl-emptyterm">Nothing recorded</span>}
+                </div>
+              </div>
+              <span className="ofl-termjoin mono" aria-hidden="true">⇄</span>
+              <div className="ofl-term give">
+                <span className="mono ofl-termlabel">You give</span>
+                <div className="ofl-termitems">
+                  {giveItems.map(chip)}
+                  {o.cash && cashFromYou && <span className="mono ofl-cash">+ {o.cash.amount} USDC</span>}
+                  {!giveItems.length && !(o.cash && cashFromYou) && <span className="ofl-emptyterm">Nothing recorded</span>}
+                </div>
+              </div>
             </div>
             {o.response?.line && <div className="sw-say"><span className="mono dim">their agent</span> {o.response.line}</div>}
             {settling && (

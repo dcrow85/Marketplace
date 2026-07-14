@@ -7,7 +7,7 @@ export default function ProfileHeader({ accountId, sign, onSign, stats }) {
     <div className="pf-head">
       <span className="av pf-av" dangerouslySetInnerHTML={{ __html: avatarSVG(accountId, 52) }} />
       <div className="pf-who">
-        <div className="pf-handle">{handleFor(accountId)}<span className="mono dim pf-addr"> · {shortId(accountId)}</span></div>
+        <div className="pf-handle"><span>{handleFor(accountId)}</span><span className="mono dim pf-addr">{shortId(accountId)}</span></div>
         {onSign
           ? <input className="pf-sign" maxLength={140} placeholder="your table sign — one line the room will read…"
               value={sign} onChange={(e) => onSign(e.target.value)} />

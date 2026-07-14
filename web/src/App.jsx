@@ -139,9 +139,14 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   }, [catalog, accountId])
   const { swapN, needsYou } = useBus(() => {
     const offers = loadOffers(offersKeyFor(catalog.id, accountId))
-    const inOpen = offers.filter((o) => o.dir === 'in' && OFFER_OPEN.includes(o.state)).length
-    const settling = offers.filter((o) => OFFER_SETTLING.includes(o.state)).length
-    return { swapN: inOpen + settling, needsYou: inOpen > 0 }
+    const active = offers.filter((o) => OFFER_OPEN.includes(o.state) || OFFER_SETTLING.includes(o.state)).length
+    const needsDecision = offers.some((o) => o.dir === 'in' && OFFER_OPEN.includes(o.state))
+    const needsEvidence = offers.some((o) => {
+      const thread = Array.isArray(o.evidenceThread) ? o.evidenceThread : []
+      const last = thread[thread.length - 1]
+      return OFFER_OPEN.includes(o.state) && last?.dir === 'in' && last.kind === 'request'
+    })
+    return { swapN: active, needsYou: needsDecision || needsEvidence }
   }, [catalog, accountId])
   return (
     <div className="app">
@@ -172,7 +177,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             </div>
           )}
           <div className="bt-right">
-            <SizePicker />
+            {bseg === 'binder' && <SizePicker />}
             <div className="bsegs mono" role="tablist" aria-label="binder section">
               <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
               <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My Table</button>

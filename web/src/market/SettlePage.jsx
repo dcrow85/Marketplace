@@ -124,8 +124,8 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     decision_ref: `settle:${catalog.id}:${open.id}:${pile.length}:${give.size}:${cash}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
     kind: 'pre_purchase',
     question: trades.length
-      ? 'Should I send this buy/trade deal, revise it, or request more evidence first?'
-      : 'Should I pay this seller’s asks now, or request more evidence first?',
+      ? 'Should I send this buy/trade offer, revise it, or request more evidence first?'
+      : 'Should I send an offer at this seller’s asks, revise it, or request more evidence first?',
     terms: {
       seller: open.id,
       live_table: !!open.live,
@@ -178,8 +178,8 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         <div className="mk-seller">
           <Avatar seed={open.id} size={40} />
           <div>
-            <div className="ek">Settle up</div>
-            <div className="mk-handle">one deal with {handleFor(open.id)}</div>
+            <div className="ek">Review offer</div>
+            <div className="mk-handle">one offer to {handleFor(open.id)}</div>
           </div>
         </div>
         <button className="ghost sm" onClick={onBack}>← back to the table</button>
@@ -249,17 +249,17 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       <div className="stl-senddecision">
         <span className="ofl-decisionlabel mono">Before you send · this is your call</span>
         <AskAnko decision={sendDecision} recommended={sendReadRecommended}
-          label={trades.length ? 'Ask Anko about this deal' : 'Ask Anko before paying'} />
+          label={trades.length ? 'Ask Anko about this offer' : 'Ask Anko before sending'} />
       </div>
 
       <div className="stl-foot">
         <span className="mono deal-summary">{trades.length || give.size
           ? `${pile.length} of theirs ⇄ ${give.size} of yours${cash > 0 ? ` + ${cash} USDC` : ''}`
           : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} USDC`}</span>
-        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send the deal to {handleFor(open.id)} →</button>
+        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {handleFor(open.id)} →</button>
       </div>
-      <p className="sc-note dim">A deal is a message, not a lock — cards and money only move through escrow.
-        {open.live ? ` This is a live table: ${handleFor(open.id)} is a real collector, and the deal lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>
+      <p className="sc-note dim">An offer is a message, not a payment or lock — cards and money only move through escrow.
+        {open.live ? ` This is a live table: ${handleFor(open.id)} is a real collector, and the offer lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>
     </div>
   )
 }

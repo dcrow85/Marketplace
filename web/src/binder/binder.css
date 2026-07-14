@@ -211,6 +211,12 @@ section { padding: 14px 0 70px; }
 .provbox { margin: 16px 0 10px; border: 0.5px solid var(--rule); border-radius: 8px; padding: 11px 13px; background: var(--mount); }
 .provbox .pt { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--dim); display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
 .provbox .pb { font-size: 12.5px; color: var(--ink2); line-height: 1.5; }
+.card-more { margin: 14px 0 10px; border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.card-more > summary { display: flex; align-items: baseline; justify-content: space-between; gap: 5px 12px; flex-wrap: wrap; padding: 10px 12px; color: var(--ink2); cursor: pointer; font-size: 12px; }
+.card-more > summary::marker { color: var(--dim); }
+.card-more > summary small { color: var(--dim); font-size: 9.5px; }
+.card-morebody { display: flex; flex-direction: column; gap: 9px; padding: 0 10px 10px; }
+.card-more .dossier, .card-more .provbox { margin: 0; }
 .lgdot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex: none; }
 .lg-exact { background: var(--ink); } .lg-ref { background: var(--faint); } .lg-nr { background: transparent; border: 1px solid var(--ink); }
 /* open-the-record: Glance stays clean; machine forms live on the dark bench */
@@ -424,4 +430,6 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
   .bv-page { padding: 10px; gap: 7px; }
   .bv-gnum, .bv-gtxt { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
   .bv-gtxt { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+  .bv-ghostart { opacity: .3; }
+  .bv-gnum, .bv-gtxt { font-size: 12px; }
 }

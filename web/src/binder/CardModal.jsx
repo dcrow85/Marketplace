@@ -74,7 +74,7 @@ export function MarketBlock({ c, market, mockSales, onBrowseCard }) {
         <span className="mkb-title mono">market</span>
         <span className="mkb-sample mono">sample data</span>
         {asks.length > 0 && onBrowseCard && (
-          <button className="mkb-browse mono" onClick={() => onBrowseCard(c.uid)}>browse →</button>
+          <button className="mkb-browse mono" onClick={() => onBrowseCard(c.uid)}>See {asks.length} listing{asks.length === 1 ? '' : 's'} →</button>
         )}
       </div>
       <div className="mkb-sec mono">{asks.length
@@ -294,38 +294,43 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b> — or neither. Have records condition and copies; Want sets the terms your agent hunts to. Tap again to clear.</div>}
             </div>
             <MarketBlock c={c} market={market} mockSales={mockSales} onBrowseCard={onBrowseCard} />
-            {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text || collection.name) && (
-              <div className="dossier">
-                {collection.name && <div><b>Collection</b><span>{collection.name} · observed at {collection.position || 'unrecorded position'}</span></div>}
-                {reportedPrice.amount != null && <div><b>Event sale</b><span>{reportedPrice.amount} {reportedPrice.currency || 'USD'} · user-reported, not independently verified</span></div>}
-                {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
-                {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
-                {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}
-                {visibleEffects.map((fx, i) => (
-                  <div key={i}><b>{fx.label || 'Effect'}</b><span>{fx.text || 'Effect label only.'}</span></div>
-                ))}
-                {c.flavor_text && <div><b>Flavor</b><span>{c.flavor_text}</span></div>}
+            <details className="card-more">
+              <summary><span>Card details &amp; provenance</span><small className="mono">rules · illustrator · image source</small></summary>
+              <div className="card-morebody">
+                {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text || collection.name) && (
+                  <div className="dossier">
+                    {collection.name && <div><b>Collection</b><span>{collection.name} · observed at {collection.position || 'unrecorded position'}</span></div>}
+                    {reportedPrice.amount != null && <div><b>Event sale</b><span>{reportedPrice.amount} {reportedPrice.currency || 'USD'} · user-reported, not independently verified</span></div>}
+                    {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
+                    {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
+                    {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}
+                    {visibleEffects.map((fx, i) => (
+                      <div key={i}><b>{fx.label || 'Effect'}</b><span>{fx.text || 'Effect label only.'}</span></div>
+                    ))}
+                    {c.flavor_text && <div><b>Flavor</b><span>{c.flavor_text}</span></div>}
+                  </div>
+                )}
+                <div className="provbox">
+                  <div className="pt"><span className={'lgdot ' + dot} /> Image provenance</div>
+                  <div className="pb">
+                    <b>{c.image ? (PROV_LABEL[c.image_status] || 'Reference image') : 'No image on file'}.</b>{' '}
+                    {c.image_status === 'no_rarity_reference'
+                      ? 'Source-labeled No Rarity reference.'
+                      : c.image_status === 'no_reference_photo'
+                        ? 'The candidate image was suppressed by the catalogue audit. This row currently has no honest reference photo.'
+                        : c.image_status === 'user_observation_no_public_image'
+                          ? 'Observation row from a user-provided image. The image hash is recorded in the catalog layer, but the image itself is not published here.'
+                          : c.image_status === 'user_observation_no_exact_card_image'
+                            ? 'The open product display records this treatment, but no exact standalone card-front photo was supplied.'
+                            : c.image
+                              ? 'Reference witness — not seller evidence, authentication, or proof of a specific physical card.'
+                              : 'No reference image has been sourced for this print yet.'}
+                    {referenceSourceCount > 1 && <><br />{referenceSourceCount} user-supplied reference photos are recorded for this treatment; the clearest is displayed.</>}
+                    {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
+                  </div>
+                </div>
               </div>
-            )}
-            <div className="provbox">
-              <div className="pt"><span className={'lgdot ' + dot} /> Image provenance</div>
-              <div className="pb">
-                <b>{c.image ? (PROV_LABEL[c.image_status] || 'Reference image') : 'No image on file'}.</b>{' '}
-                {c.image_status === 'no_rarity_reference'
-                  ? 'Source-labeled No Rarity reference.'
-                  : c.image_status === 'no_reference_photo'
-                    ? 'The candidate image was suppressed by the catalogue audit. This row currently has no honest reference photo.'
-                  : c.image_status === 'user_observation_no_public_image'
-                    ? 'Observation row from a user-provided image. The image hash is recorded in the catalog layer, but the image itself is not published here.'
-                  : c.image_status === 'user_observation_no_exact_card_image'
-                    ? 'The open product display records this treatment, but no exact standalone card-front photo was supplied.'
-                  : c.image
-                    ? 'Reference witness — not seller evidence, authentication, or proof of a specific physical card.'
-                    : 'No reference image has been sourced for this print yet.'}
-                {referenceSourceCount > 1 && <><br />{referenceSourceCount} user-supplied reference photos are recorded for this treatment; the clearest is displayed.</>}
-                {c.name_is_en && <><br />Japanese print name not yet sourced; the provider’s English label is shown (marked EN).</>}
-              </div>
-            </div>
+            </details>
             {(u.pile || []).length > 0 && (
               <button className="recopen mono" onClick={() => openPile(u)}>▦ view in pile · the witness photo</button>
             )}

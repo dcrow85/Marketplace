@@ -366,7 +366,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
 
-  const refineCount = channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
+  const refineCount = familyF.size + channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
   const chooseFamily = (family) => {
     setFamilyF(family ? new Set([family]) : new Set())
     if (family && channelF.size && !data.cards.some((c) => c.release_family === family && [...channelF].some((channel) => cardMatchesChannel(c, channel)))) {
@@ -391,6 +391,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       <div className="tallies mono">
         <span><b className="t-have">{countStance('have')}</b> have</span>
         <span><b className="t-want">{countStance('want')}</b> want</span>
+        {rows.length !== data.summary.cards && <span><b>{rows.length}</b> shown</span>}
         <span><b>{data.summary.cards}</b> in catalog</span>
         <button className="scanbtn" onClick={() => setScanning(true)} aria-label="Scan cards to add">
           <svg className="scanico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -416,6 +417,11 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
               {ch.l}{ch.g === 'stance' ? <span className="ct"> {countStance(ch.v)}</span> : null}
             </button>
           ))}
+          {[...familyF].map((value) => {
+            const family = FAMILIES.find((item) => item.value === value)
+            return <button key={value} className="chip on scopechip" onClick={() => setFamilyF(new Set())}
+              title="remove release filter">{family?.label || value} ×</button>
+          })}
           {(FAMILIES.length || CHANNELS.length || CATS.length || ELEMENTS.length) > 0 && (
             <button className={'chip filterbtn' + (refineCount ? ' on' : '')} onClick={() => setFiltersOpen(true)} aria-label="Filters">
               ⚑ Filters{refineCount ? ` · ${refineCount}` : ''}

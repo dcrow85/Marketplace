@@ -48,14 +48,14 @@ const profileToSeller = (p) => ({
   recordStats: Array.isArray(p.record) ? p.record : [],
 })
 
-// buy · 9 / ⇄ trade — both just drop the card on your pile, tagged. Nothing sends.
+// buy · 9 USDC / ⇄ trade — both just drop the card on your pile, tagged. Nothing sends.
 function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
   return (
     <span className="ofr-acts">
       <button className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onBuy() }}
         title="into your pile at the ask — the deal sends when you finish the table">
-        {inPile && mode === 'buy' ? '✓ in pile' : `buy · ${ask}`}</button>
+        {inPile && mode === 'buy' ? '✓ in pile' : `buy · ${ask} USDC`}</button>
       <button className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onTrade() }}
         title="into your pile as a trade-for — you pick your side at checkout">
@@ -76,13 +76,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [abusy, setAbusy] = useState(false)
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
   const [tableSort, setTableSort] = useState(null) // 'price_desc' | 'price_asc' | null
+  const [witnessedOnly, setWitnessedOnly] = useState(false)
   const [huntOpen, setHuntOpen] = useState(false)
   const storeKey = storeKeyFor(catalog.id, accountId)
   const pileKey = pileKeyFor(catalog.id, accountId)
   const store = useBus(() => loadStore(storeKey), [storeKey])
   const piles = useBus(() => loadPiles(pileKey), [pileKey])
 
-  useEffect(() => { setSettling(false); setHuntOpen(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle + hunting fold
+  useEffect(() => { setSettling(false); setHuntOpen(false); setWitnessedOnly(false) }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, settle + hunting fold
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- Anko's sort is a view instruction, not a panel */
     const srt = ares?.ok ? ares.data?.filter?.sort : null
@@ -99,6 +100,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   useEffect(() => { setSel(null) }, [catalog]) // eslint-disable-line react-hooks/set-state-in-effect -- new catalog, no table open
 
   const byUid = useByUid(data)
+  const marketNeedle = aq.trim().toLowerCase()
+  const cardMatchesSearch = (c) => !marketNeedle || [c?.name_en, c?.name_ja, c?.romaji, c?.num, c?.element, c?.rarity]
+    .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
   const sellers = useBus(() => {
     if (!mkt) return []
     const hidden = loadHidden(hiddenKeyFor(catalog.id, accountId))
@@ -127,6 +131,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const lv = liveSellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
     return [...lv, ...sellers]
   }, [liveSellers, sellers, catalog, accountId])
+  const visibleTables = allSellers.filter((seller) => !marketNeedle || [handleFor(seller.id), seller.id, seller.bio]
+    .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
+    || seller.listings.some((listing) => cardMatchesSearch(byUid.get(listing.uid))))
   const myWants = useMemo(() => {
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'want').map((c) => c.uid))
@@ -200,7 +207,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     <div className="askbar mk-askbar">
       <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
         alt="" title={`${agentName} — your agent at the show`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
-      <input value={aq} maxLength={280} placeholder={`Ask ${agentName} — who's selling…?`}
+      <input value={aq} maxLength={280} placeholder={`Search cards or tables — or ask ${agentName}…`}
         onChange={(e) => { setAq(e.target.value); if (ares) setAres(null) }}
         onKeyDown={(e) => { if (e.key === 'Enter') askAnko() }} />
       <button className="askbtn" onClick={askAnko} disabled={abusy || !aq.trim()}>{abusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
@@ -296,7 +303,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       <SettlePage open={open} pile={pile} byUid={byUid} data={data} store={store} mkt={mkt}
         catalog={catalog} accountId={accountId} pileKey={pileKey} agentName={agentName}
         onBack={() => setSettling(false)}
-        onSent={() => { setSettling(false); setSwapMsg(`the deal went to ${handleFor(open.id)} — their agent is reading it. Watch Trades.`) }} />
+        onSent={() => { setSettling(false); setSwapMsg(`offer sent to ${handleFor(open.id)} — watch Trades for their response.`) }} />
     )
   }
 
@@ -306,7 +313,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const rows = open.listings
       .map((l) => ({ l, c: byUid.get(l.uid) }))
       .filter(({ c }) => c)
+      .filter(({ c }) => cardMatchesSearch(c))
       .filter(({ c }) => !wantsOnly || myWants.has(c.uid))
+      .filter(({ l }) => !witnessedOnly || l.witness)
       .sort((a, b) => tableSort === 'price_desc' ? b.l.ask - a.l.ask : tableSort === 'price_asc' ? a.l.ask - b.l.ask : 0)
     const total = open.listings.reduce((s, { ask, copies }) => s + ask * (copies || 1), 0)
     const witnessed = open.listings.filter((l) => l.witness).length
@@ -319,8 +328,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       decision_ref: `market:${catalog.id}:${open.id}:${pile.length}:${buysSum}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
       kind: 'pre_purchase',
       question: pile.every((p) => p.mode === 'buy')
-        ? 'Should I pay this seller’s asks now, or request more evidence first?'
-        : 'Should I send this buy/trade deal, revise it, or request more evidence first?',
+        ? 'Should I send an offer at this seller’s asks, revise it, or request more evidence first?'
+        : 'Should I send this buy/trade offer, revise it, or request more evidence first?',
       terms: {
         seller: open.id,
         live_table: !!open.live,
@@ -364,15 +373,17 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <div className="stancebar">
                 <button className={'seg sg-have' + (p?.mode === 'buy' ? ' on' : '')}
                   title="into your pile at the ask — the deal sends when you finish the table"
-                  onClick={() => pickUp(open.id, c.uid, 'buy')}>{p?.mode === 'buy' ? '✓ buy' : `buy · ${l.ask}`}</button>
+                  onClick={() => pickUp(open.id, c.uid, 'buy')}>{p?.mode === 'buy' ? '✓ buy' : `buy · ${l.ask} USDC`}</button>
                 <button className={'seg sg-want' + (p?.mode === 'trade' ? ' on' : '')}
                   title="into your pile as a trade-for — you pick your side at settle"
                   onClick={() => pickUp(open.id, c.uid, 'trade')}>{p?.mode === 'trade' ? '✓ trade' : '⇄ trade'}</button>
               </div>
               <div className={'card' + (p ? ' s-have' : '')} role="button" tabIndex={0} title="hold it up to the light"
+                aria-label={`${c.name_en} · ${c.num} · ${l.ask} USDC`}
+                onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoom({ c, l, sellerId: open.id }) } }}
                 onClick={() => setZoom({ c, l, sellerId: open.id })}>
                 <div className="face"><div className="ja">{c.name_en}</div></div>
-                {c.image && <img src={c.image} alt={c.name_en} loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
+                {c.image && <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
               </div>
               <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
                 <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
@@ -420,13 +431,18 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           </div>
         )}
         <div className="mk-meter mono">
-          <span>{open.listings.length} listed · {total} USDC asked</span>
+          <span>{rows.length === open.listings.length ? `${open.listings.length} listed` : `${rows.length} of ${open.listings.length} shown`} · {total} USDC asked</span>
           <span className={witnessed === open.listings.length ? 'mk-wit ok' : witnessed ? '' : 'mk-wit none'}>
             {witnessed} of {open.listings.length} witnessed
           </span>
           {wantsTheyHave > 0 && (
             <button className={'mk-wantsbtn' + (wantsOnly ? ' on' : '')} onClick={() => setWantsOnly(!wantsOnly)}>
               {wantsTheyHave} of your wants{wantsOnly ? ' ✕' : ' →'}
+            </button>
+          )}
+          {witnessed < open.listings.length && (
+            <button className={'mk-wantsbtn' + (witnessedOnly ? ' on' : '')} onClick={() => setWitnessedOnly(!witnessedOnly)}>
+              scanned only{witnessedOnly ? ' ✕' : ''}
             </button>
           )}
           <button className={'chip' + (tableSort ? ' on' : '')}
@@ -506,7 +522,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             <div className="mk-buy-decision">
               <span className="ofl-decisionlabel mono">Before you send · this is your call</span>
               <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
-                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before paying' : 'Ask Anko about this deal'} />
+                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before sending' : 'Ask Anko about this offer'} />
             </div>
             <span className="mk-ckacts">
               {pile.every((p) => p.mode === 'buy') && buysSum > 0 && (
@@ -514,17 +530,17 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                   sendOffer(offersKeyFor(catalog.id, accountId), { to: open.id, want: pile.map((p) => ({ uid: p.uid })), give: [], cash: { side: 'from', amount: buysSum }, note: null, live: open.live, from: accountId, cat: catalog.id })
                   clearPile(pileKey, open.id)
                   setSwapMsg(open.live
-                    ? `paid their asks — the deal went to ${handleFor(open.id)}'s inbox. A real person answers this one; watch Trades.`
-                    : `paid their asks — ${buysSum} USDC for ${pile.length} card${pile.length === 1 ? '' : 's'} to ${handleFor(open.id)}. Watch Trades.`)
-                }}>Pay their asks · {buysSum} →</button>
+                    ? `offer sent at their asks to ${handleFor(open.id)}'s inbox. A real person answers this one; watch Trades.`
+                    : `offer sent at their asks — ${buysSum} USDC for ${pile.length} card${pile.length === 1 ? '' : 's'} to ${handleFor(open.id)}. Watch Trades.`)
+                }}>Send offer at asks · {buysSum} USDC →</button>
               )}
-              <button className={pile.every((p) => p.mode === 'buy') && buysSum > 0 ? 'ghost sm' : 'primary mk-settle'} onClick={() => setSettling(true)}>Settle up{pile.every((p) => p.mode === 'buy') && buysSum > 0 ? '' : ` · ${pile.length}`} →</button>
+              <button className={pile.every((p) => p.mode === 'buy') && buysSum > 0 ? 'ghost sm' : 'primary mk-settle'} onClick={() => setSettling(true)}>Review / adjust offer{pile.every((p) => p.mode === 'buy') && buysSum > 0 ? '' : ` · ${pile.length}`} →</button>
               <button className="ghost sm" onClick={() => clearPile(pileKey, open.id)}>clear</button>
             </span>
           </div>
         )}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; scans say what&rsquo;s recorded behind it. Pick cards up,
-          tag them buy or trade, and finish the table with one deal.</p>
+          tag them buy or trade, and finish the table with one offer. Sending an offer does not move cards or funds.</p>
       </div>
     )
   }
@@ -540,13 +556,15 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       <div className="mk-head">
         <div>
           <div className="ek">The market</div>
-          <div className="mk-title">{allSellers.length} tables open{liveSellers.length ? ` · ${liveSellers.length} live` : ''}</div>
+          <div className="mk-title">{marketNeedle ? `${visibleTables.length} of ${allSellers.length} tables` : `${allSellers.length} tables open`}{liveSellers.length ? ` · ${liveSellers.length} live` : ''}</div>
         </div>
       </div>
       <div className="mk-grid">
-        {[...allSellers].sort((a, b) => ((b.live ? 1 : 0) - (a.live ? 1 : 0)) || (aisleMatch
-          ? b.listings.filter((l) => aisleMatch.has(l.uid)).length - a.listings.filter((l) => aisleMatch.has(l.uid)).length
+        {[...visibleTables].sort((a, b) => ((b.live ? 1 : 0) - (a.live ? 1 : 0)) || (aisleMatch
+        ? b.listings.filter((l) => aisleMatch.has(l.uid)).length - a.listings.filter((l) => aisleMatch.has(l.uid)).length
           : 0)).map((s) => {
+          const matchingListings = marketNeedle ? s.listings.filter((l) => cardMatchesSearch(byUid.get(l.uid))) : []
+          const previewListings = matchingListings.length ? matchingListings : s.listings
           const total = s.listings.reduce((t, { ask, copies }) => t + ask * (copies || 1), 0)
           const witnessed = s.listings.filter((l) => l.witness).length
           const wantsHere = s.listings.filter((l) => myWants.has(l.uid)).length
@@ -562,8 +580,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 </div>
               </div>
               <div className="mk-spread">
-                {s.listings.slice(0, 5).map((l) => { const c = byUid.get(l.uid); return c?.image ? <img key={l.uid} src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null })}
-                {s.listings.length > 5 && <span className="mono mk-more">+{s.listings.length - 5}</span>}
+                {previewListings.slice(0, 5).map((l) => { const c = byUid.get(l.uid); return c?.image ? <img key={l.uid} src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null })}
+                {previewListings.length > 5 && <span className="mono mk-more">+{previewListings.length - 5}</span>}
               </div>
               <div className="mk-tmeter mono">
                 {pileN > 0 && <span className="mk-pilebadge">your pile · {pileN}</span>}
@@ -578,6 +596,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             </button>
           )
         })}
+        {!visibleTables.length && <div className="empty">No table matches that search.</div>}
       </div>
       <p className="sc-note dim">A table is just what someone chose to list — their binder stays theirs. Witness counts
         say a scan is recorded, not that a card is real. You judge; escrow holds.</p>
