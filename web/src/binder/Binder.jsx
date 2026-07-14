@@ -423,7 +423,6 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <span className="scanbtn-label">Scan cards</span>
         </button>
       </div>
-      {onboardingStep === 'scan' && onboardingGuide}
       <div className="controls">
         <div className="askbar" data-tour-target={onboardingStep === 'mark' ? 'mark' : undefined}>
           <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
@@ -434,7 +433,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
             onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
           <button className="askbtn" onClick={ask} disabled={agentBusy || !query.trim()}>{agentBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
         </div>
-        {onboardingStep === 'mark' && onboardingGuide}
+        {(onboardingStep === 'mark' || onboardingStep === 'scan') && onboardingGuide}
         <div className="chips">
           {CHIPS.map((ch, i) => (
             <button key={i} className={'chip' + (chipOn(ch) ? ' on' : '') + (chipOn(ch) && ch.acc ? ' acc' : '')} onClick={() => toggleChip(ch)}>

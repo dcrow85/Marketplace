@@ -6,22 +6,22 @@ const IMG = (import.meta.env.BASE_URL || '/') + 'agent/anko-guide-v2.jpg'
 const STEPS = [
   {
     id: 'profile',
-    title: 'Name your table',
-    say: 'First, tell people who is at the table. Type your collector name, then add one short line about what you collect.',
+    title: 'Hi, I’m Anko',
+    say: 'I help you work with your collection in plain English. Let’s start with what people should call you at the table.',
     points: 1,
-    action: 'Point to the name field',
+    action: 'Start with your name',
   },
   {
     id: 'photo',
-    title: 'Choose your picture',
-    say: 'Pick a photo or image that feels like you. We crop it square, and you can change it later.',
+    title: 'Make the table yours',
+    say: 'Add a picture that feels like you. We crop it square, and you can change it any time.',
     points: 1,
     action: 'Choose a picture',
   },
   {
     id: 'mark',
-    title: 'Ask me about your cards',
-    say: 'Use the Anko bar in plain English. I will show you the change before anything happens.',
+    title: 'Ask me like a person',
+    say: 'This is my spot. Tell me about your cards in plain English—I’ll show you the change before anything happens.',
     points: 1,
     action: 'Focus the Anko bar',
     examples: [
@@ -31,10 +31,10 @@ const STEPS = [
   },
   {
     id: 'scan',
-    title: 'Scan one card',
-    say: 'Take a clear photo of one card, or choose one from your phone. Your first scan earns five points.',
+    title: 'I’m always here if you need me!',
+    say: 'I’m staying right here in the Anko bar. One last first: scan a card for five points whenever you’re ready.',
     points: 5,
-    action: 'Open the scanner',
+    action: 'Show me Scan cards',
   },
 ]
 
@@ -50,7 +50,6 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
   const previousDone = useRef(Object.fromEntries(progress.milestones.map((item) => [item.id, item.done])))
   const aligned = useRef(false)
   const current = STEPS[frame]
-  const last = frame === STEPS.length - 1
   const currentDone = !!progress.milestones.find((item) => item.id === current.id)?.done
   const firstOpen = progress.milestones.findIndex((item) => !item.done)
 
@@ -62,15 +61,11 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
 
   useEffect(() => {
     const onKey = (event) => {
-      const editing = event.target?.matches?.('input, textarea, select, [contenteditable="true"]')
-      if (editing && event.key !== 'Escape') return
       if (event.key === 'Escape') onDone()
-      if (event.key === 'ArrowRight') onFrame(Math.min(frame + 1, STEPS.length - 1))
-      if (event.key === 'ArrowLeft') onFrame(Math.max(frame - 1, 0))
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [frame, onDone, onFrame])
+  }, [onDone])
 
   const doneSignature = progress.milestones.map((item) => `${item.id}:${item.done}`).join('|')
   useEffect(() => {
@@ -113,7 +108,7 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
   }
 
   return (
-    <div className={`anko-guide anko-guide-${mode}`} role={mode === 'setup' ? 'dialog' : 'complementary'} aria-modal={mode === 'setup' ? 'false' : undefined} aria-labelledby="anko-guide-title">
+    <div className={`anko-guide anko-guide-${mode}`} role="complementary" aria-labelledby="anko-guide-title">
       <div className="anko-book">
         <div className="anko-booktop mono">
           <span>ANKO · YOUR FIRST LAP</span>
@@ -139,23 +134,6 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
             )}
             <button className="anko-showtarget" disabled={currentDone} onClick={showTarget}>{currentDone ? 'Done ✓' : `${current.action} ↓`}</button>
           </section>
-        </div>
-        <div className="anko-route" aria-label="First-lap points">
-          {STEPS.map((step, index) => {
-            const done = progress.milestones.find((item) => item.id === step.id)?.done
-            return (
-              <button key={step.id} className={(index === frame ? 'on ' : '') + (done ? 'done' : '')}
-                onClick={() => onFrame(index)} aria-label={`${step.title}, ${step.points} point${step.points === 1 ? '' : 's'}${done ? ', done' : ''}`}>
-                <span>{done ? '✓' : index + 1}</span><b>+{step.points}</b>
-              </button>
-            )
-          })}
-          <strong className="mono">= 8</strong>
-        </div>
-        <div className="anko-bookfoot">
-          <button className="ghost" disabled={frame === 0} onClick={() => onFrame(frame - 1)}>← back</button>
-          <span className="mono">Do the real step below. I&rsquo;ll keep up.</span>
-          <button className="ghost" onClick={() => last ? onDone() : onFrame(frame + 1)}>{last ? 'done →' : 'next →'}</button>
         </div>
       </div>
     </div>

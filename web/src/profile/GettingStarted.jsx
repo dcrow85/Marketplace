@@ -108,7 +108,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const shownActive = setupStep ? guidedStep : interfaceStep ? null : active
 
   return (
-    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (setupStep && guide ? ' first-lap-modal' : '') + (setupDone || interfaceStep ? ' first-lap-compact' : '')} aria-label="Getting started">
+    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (setupDone || interfaceStep ? ' first-lap-compact' : '')} aria-label="Getting started">
       {flight && (
         <span key={flight.key} className="point-flight" aria-live="polite"
           style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}
