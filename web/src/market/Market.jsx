@@ -38,6 +38,7 @@ const scanLabel = (w) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : '— no scan
 // collector's own claim, carried from their page — so no green here, and no 'record'.
 const profileToSeller = (p) => ({
   id: p.addr,
+  handle: typeof p.handle === 'string' ? p.handle.trim().slice(0, 32) : '',
   live: true,
   joined: p.updated ? new Date(p.updated).toISOString().slice(0, 10) : null,
   bio: p.sign || '',
@@ -48,6 +49,8 @@ const profileToSeller = (p) => ({
   showcase: p.showcase || [],
   recordStats: Array.isArray(p.record) ? p.record : [],
 })
+
+const sellerName = (seller) => seller?.handle || handleFor(seller?.id)
 
 // buy · 9 USDC / ⇄ trade — both just drop the card on your pile, tagged. Nothing sends.
 function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
@@ -133,7 +136,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const lv = liveSellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
     return [...lv, ...sellers]
   }, [liveSellers, sellers, catalog, accountId])
-  const visibleTables = allSellers.filter((seller) => !marketNeedle || [handleFor(seller.id), seller.id, seller.bio]
+  const visibleTables = allSellers.filter((seller) => !marketNeedle || [sellerName(seller), seller.id, seller.bio]
     .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
     || seller.listings.some((listing) => cardMatchesSearch(byUid.get(listing.uid))))
   const myWants = useMemo(() => {
@@ -243,7 +246,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const msgEl = swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>
   const roomNote = (
     <div className="mk-samplenote mono">{open?.live
-      ? <><span className="mk-livetag">● live</span> {handleFor(open.id)} is a real collector in the pilot — a deal here goes to their inbox.</>
+      ? <><span className="mk-livetag">● live</span> {sellerName(open)} is a real collector in the pilot — a deal here goes to their inbox.</>
       : liveSellers.length
         ? <>tables marked <span className="mk-livetag">● live</span> are real collectors — deals there reach a real inbox. the rest are sample sellers for shaping the browse.</>
         : 'sample tables — mock sellers, for shaping the browse. nothing here is a real offer.'}</div>
@@ -277,7 +280,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               {asks.sort((a, b) => a.l.ask - b.l.ask).map(({ s, l }, i) => (
                 <div key={i} className={'mk-row' + (myWants.has(focusUid) ? ' mk-mine' : '')}>
                   <button className="mk-who" onClick={() => { onClearFocus(); setSel(s.id) }} title="visit their table">
-                    <Avatar seed={s.id} size={20} /><span>{handleFor(s.id)}</span>
+                    <Avatar seed={s.id} size={20} /><span>{sellerName(s)}</span>
                   </button>
                   <span className="mk-name">{myWants.has(focusUid) && <span className="mk-wantflag">your want</span>}</span>
                   <span className="mono mk-cond" title="the seller's claim — the protocol records it, it does not verify it">{l.cond}</span>
@@ -285,8 +288,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                   <span className="mono mk-ask">{l.ask} USDC</span>
                   <PileButtons ask={l.ask}
                     inPile={!!inPile(s.id, focusUid)} mode={inPile(s.id, focusUid)?.mode}
-                    onBuy={() => { pickUp(s.id, focusUid, 'buy'); setSwapMsg(`in your pile at ${handleFor(s.id)}'s table — finish the deal there.`) }}
-                    onTrade={() => { pickUp(s.id, focusUid, 'trade'); setSwapMsg(`in your pile at ${handleFor(s.id)}'s table — finish the deal there.`) }} />
+                    onBuy={() => { pickUp(s.id, focusUid, 'buy'); setSwapMsg(`in your pile at ${sellerName(s)}'s table — finish the deal there.`) }}
+                    onTrade={() => { pickUp(s.id, focusUid, 'trade'); setSwapMsg(`in your pile at ${sellerName(s)}'s table — finish the deal there.`) }} />
                 </div>
               ))}
             </div>
@@ -305,7 +308,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       <SettlePage open={open} pile={pile} byUid={byUid} data={data} store={store} mkt={mkt}
         catalog={catalog} accountId={accountId} pileKey={pileKey} agentName={agentName}
         onBack={() => setSettling(false)}
-        onSent={() => { setSettling(false); setSwapMsg(`offer sent to ${handleFor(open.id)} — watch Trades for their response.`) }} />
+        onSent={() => { setSettling(false); setSwapMsg(`offer sent to ${sellerName(open)} — watch Trades for their response.`) }} />
     )
   }
 
@@ -412,7 +415,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           <div className="mk-seller">
             <Avatar seed={open.id} size={40} />
             <div>
-              <div className="mk-handle">{handleFor(open.id)}{open.live && <span className="mk-livetag mono"> ● live</span>}</div>
+              <div className="mk-handle">{sellerName(open)}{open.live && <span className="mk-livetag mono"> ● live</span>}</div>
               <div className="mono dim mk-sub">{shortId(open.id)} · {open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}</div>
             </div>
           </div>
@@ -527,7 +530,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 pileKey={pileKey} byUid={byUid} onBack={() => setBuyingNow(false)}
                 onFunded={(tradeId) => {
                   setBuyingNow(false)
-                  setSwapMsg(`paid into escrow · trade #${tradeId}. ${handleFor(open.id)} has been notified; follow delivery in Trades.`)
+                  setSwapMsg(`paid into escrow · trade #${tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
                 }} />
             ) : <>
               <span className="mk-ckacts">
@@ -579,7 +582,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <div className="mk-seller">
                 <Avatar seed={s.id} size={34} />
                 <div>
-                  <div className="mk-handle">{handleFor(s.id)}{s.live && <span className="mk-livetag mono"> ● live</span>}</div>
+                  <div className="mk-handle">{sellerName(s)}{s.live && <span className="mk-livetag mono"> ● live</span>}</div>
                   <div className="mono dim mk-sub">{shortId(s.id)}{s.live ? '' : ' · sample'}</div>
                 </div>
               </div>

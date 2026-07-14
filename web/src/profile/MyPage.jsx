@@ -13,6 +13,7 @@ import MiniCard from '../components/MiniCard.jsx'
 import ProfileHeader from './ProfileHeader.jsx'
 import CardModal from '../binder/CardModal.jsx'
 import { retryImg } from '../binder/helpers.jsx'
+import { loadProfile, saveProfile } from './profileStore.js'
 
 const TABLE_TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
 
@@ -72,13 +73,17 @@ export default function MyPage({ accountId, catalog }) {
     saveStore(storeKey, { ...prev, [uid]: { ...(prev[uid] || {}), [key]: value } })
   }
 
+  const profile = useBus(() => loadProfile(accountId), [accountId])
   const noteKey = `cairn-table-note:${catalog.id}:${accountId || 'anon'}`
-  const [sign, setSignState] = useState('')
   useEffect(() => {
-    /* eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate the sign per account */
-    try { setSignState(localStorage.getItem(noteKey) || '') } catch { setSignState('') }
-  }, [noteKey])
-  const setSign = (v) => { setSignState(v); try { localStorage.setItem(noteKey, v) } catch { /* ignore */ } }
+    if (profile.sign) return
+    try {
+      const oldSign = localStorage.getItem(noteKey) || ''
+      if (oldSign) saveProfile(accountId, { ...profile, sign: oldSign })
+    } catch { /* ignore old local sign */ }
+  }, [accountId, noteKey, profile])
+  const setName = (name) => saveProfile(accountId, { ...profile, name })
+  const setSign = (sign) => saveProfile(accountId, { ...profile, sign })
 
   const rows = useMemo(() => {
     if (!data) return { haves: [], listed: [], display: [], wants: [] }
@@ -133,7 +138,7 @@ export default function MyPage({ accountId, catalog }) {
   const [pubBusy, setPubBusy] = useState(false)
   const [pubErr, setPubErr] = useState(false)
   const buildSnapshot = () => ({
-    v: 1, cat: catalog.id, sign, handle: handleFor(accountId),
+    v: 1, cat: catalog.id, sign: profile.sign.trim(), handle: profile.name.trim() || handleFor(accountId),
     showcase: rows.display.map(({ c }) => c.uid),
     table: rows.listed.map(({ c, e }) => ({
       uid: c.uid, ask: e.ask ? Number(e.ask) : null, trade: !!e.trade, sell: !!e.sell,
@@ -166,7 +171,8 @@ export default function MyPage({ accountId, catalog }) {
 
   return (
     <div className="pf">
-      <ProfileHeader accountId={accountId} sign={sign} onSign={setSign} stats={stats} />
+      <ProfileHeader accountId={accountId} name={profile.name} onName={setName}
+        sign={profile.sign} onSign={setSign} stats={stats} />
       <div className="pf-pubrow mono">
         {canPublish
           ? pubAt

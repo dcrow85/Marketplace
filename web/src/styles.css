@@ -31,6 +31,7 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 .gatecard, .meetcard { background: var(--paper); border: 0.5px solid var(--rule); border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,.10); width: 100%; }
 .gatecard { max-width: 380px; padding: 38px 32px; text-align: center; }
 .gatecard .lead { font-family: var(--serif); font-size: 17px; color: var(--ink); margin: 18px 0 22px; }
+.gatecard .gate-eyebrow { margin-top: 20px; }
 .gatecard .fine { font-size: 11px; color: var(--dim); margin-top: 16px; letter-spacing: .02em; }
 
 .meetcard { max-width: 440px; padding: 30px 30px 26px; }
@@ -142,6 +143,14 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 
 /* Compact phones still get every command, but the chrome yields its labels before it
    makes the document wider than the viewport. */
+@media (max-width: 420px) {
+  .nav { padding-left: 12px; padding-right: 12px; }
+  .navr { gap: 5px; min-width: 0; }
+  .nav-trades { width: 44px; height: 44px; padding: 0; justify-content: center; }
+  .nav-trades-label, .signout-full { display: none; }
+  .signout-short { display: inline; }
+  .signoutbtn { width: 44px; padding-left: 0; padding-right: 0; }
+}
 @media (max-width: 360px) {
   .nav { padding-left: 12px; padding-right: 12px; }
   .navr { gap: 6px; min-width: 0; }

@@ -3,7 +3,7 @@
 // boilerplate that had been copy-pasted nine times.
 import { useEffect, useState } from 'react'
 
-const BUS = ['cairn-store', 'cairn-offers', 'cairn-mock', 'cairn-pile']
+const BUS = ['cairn-store', 'cairn-offers', 'cairn-mock', 'cairn-pile', 'cairn-profile', 'cairn-progress']
 
 export function readKey(key, fallback) {
   try {

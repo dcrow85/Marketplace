@@ -17,6 +17,9 @@ import { fetchInbox, isLiveAddr } from './live/pilotStore.js'
 import { mergeInbox } from './live/inbox.js'
 import { fetchJson } from './lib/data.js'
 import { useBus } from './lib/store.js'
+import { loadProfile } from './profile/profileStore.js'
+import { useMilestoneProgress } from './profile/progress.js'
+import GettingStarted from './profile/GettingStarted.jsx'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -93,8 +96,9 @@ function SignIn({ onLogin }) {
     <div className="gate">
       <div className="gatecard">
         <Wordmark big />
-        <p className="lead">Your collection, your terms, your agent.</p>
-        <button className="primary" onClick={onLogin}>Sign in</button>
+        <div className="ek gate-eyebrow">Your table starts here</div>
+        <p className="lead">Create your collector profile, add a first card, and bring your binder to the show.</p>
+        <button className="primary" onClick={onLogin}>Create profile or sign in</button>
         <div className="fine mono">email · google · apple · passkey — no crypto required</div>
       </div>
     </div>
@@ -107,6 +111,13 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
   const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
+  const profile = useBus(() => loadProfile(accountId), [accountId])
+  const progress = useMilestoneProgress(accountId, catalog.id, profile)
+  const publicName = profile.name.trim() || handleFor(accountId)
+  const openScanner = () => {
+    setBseg('binder')
+    window.setTimeout(() => window.dispatchEvent(new CustomEvent('cairn-open-scan')), 0)
+  }
   useEffect(() => {
     let stop = () => {}
     let live = true
@@ -159,7 +170,12 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
             <span className="nav-trades-label">Trades{swapN ? ` ·${swapN}` : ''}</span>
             {needsYou && <i className="nav-dot" aria-hidden="true" />}
           </button>
-          <span className="chip"><Avatar seed={accountId} size={18} /> <span className="handle">{handleFor(accountId)}</span></span>
+          <button className="chip profilechip" onClick={() => setBseg('sale')}
+            aria-label={`Profile: ${publicName}, ${progress.points} point${progress.points === 1 ? '' : 's'}`}
+            title="open your profile and table">
+            <Avatar seed={accountId} size={18} /> <span className="handle">{publicName}</span>
+            <span className="profile-points" aria-label={`${progress.points} point${progress.points === 1 ? '' : 's'}`}>✦ {progress.points}</span>
+          </button>
           <ThemeToggle />
           <button className="ghost sm signoutbtn" onClick={onSignOut} aria-label="Sign out">
             <span className="signout-full">sign out</span><span className="signout-short" aria-hidden="true">out</span>
@@ -168,6 +184,8 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
       </nav>
       <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />
       <main className="main">
+        <GettingStarted key={accountId} accountId={accountId}
+          catalog={catalog} profile={profile} progress={progress} onScan={openScanner} />
         <div className="bindertop">
           {CATALOGS.length > 1 && (
             <div className="catalogpick" aria-label="catalog">

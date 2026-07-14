@@ -179,7 +179,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           <Avatar seed={open.id} size={40} />
           <div>
             <div className="ek">Review offer</div>
-            <div className="mk-handle">one offer to {handleFor(open.id)}</div>
+            <div className="mk-handle">one offer to {open.handle || handleFor(open.id)}</div>
           </div>
         </div>
         <button className="ghost sm" onClick={onBack}>← back to the table</button>
@@ -256,10 +256,10 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         <span className="mono deal-summary">{trades.length || give.size
           ? `${pile.length} of theirs ⇄ ${give.size} of yours${cash > 0 ? ` + ${cash} USDC` : ''}`
           : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} USDC`}</span>
-        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {handleFor(open.id)} →</button>
+        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {open.handle || handleFor(open.id)} →</button>
       </div>
       <p className="sc-note dim">An offer is a message, not a payment or lock — cards and money only move through escrow.
-        {open.live ? ` This is a live table: ${handleFor(open.id)} is a real collector, and the offer lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>
+        {open.live ? ` This is a live table: ${open.handle || handleFor(open.id)} is a real collector, and the offer lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>
     </div>
   )
 }

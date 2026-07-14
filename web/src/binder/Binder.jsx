@@ -174,6 +174,11 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   }, [storeKey])
 
   const [scanning, setScanning] = useState(false)
+  useEffect(() => {
+    const open = () => setScanning(true)
+    window.addEventListener('cairn-open-scan', open)
+    return () => window.removeEventListener('cairn-open-scan', open)
+  }, [])
   // Scan-to-collection: tag each recognized card `have`, keep its photo locally as evidence.
   const commitScans = useCallback((scans) => {
     setStore((prev) => {

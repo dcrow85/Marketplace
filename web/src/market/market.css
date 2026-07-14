@@ -411,6 +411,8 @@ button.minicard { cursor: pointer; }
 .pf-av svg { border-radius: 10px; }
 .pf-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 .pf-handle { display: flex; align-items: baseline; gap: 5px 9px; flex-wrap: wrap; font-size: 19px; font-weight: 650; color: var(--ink); letter-spacing: -.01em; }
+.pf-name { width: min(320px, 100%); font: inherit; font-weight: inherit; letter-spacing: inherit; color: var(--ink); background: transparent; border: 0; border-bottom: 0.5px dashed var(--rule); padding: 0 1px 2px; outline: none; }
+.pf-name:focus { border-bottom-color: var(--ink); border-bottom-style: solid; }
 .pf-addr { white-space: nowrap; font-size: 11px; font-weight: 400; }
 .pf-sign { width: 100%; max-width: 560px; font-size: 13.5px; color: var(--ink); background: transparent; border: 0; border-bottom: 0.5px dashed var(--rule); padding: 3px 1px 6px; outline: none; }
 .pf-sign:focus { border-bottom-color: var(--ink); border-bottom-style: solid; }

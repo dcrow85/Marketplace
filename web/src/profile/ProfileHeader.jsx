@@ -2,12 +2,18 @@
 // computed from records, never self-asserted. Green marks recorded things only.
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 
-export default function ProfileHeader({ accountId, sign, onSign, stats }) {
+export default function ProfileHeader({ accountId, name, onName, sign, onSign, stats }) {
   return (
     <div className="pf-head">
       <span className="av pf-av" dangerouslySetInnerHTML={{ __html: avatarSVG(accountId, 52) }} />
       <div className="pf-who">
-        <div className="pf-handle"><span>{handleFor(accountId)}</span><span className="mono dim pf-addr">{shortId(accountId)}</span></div>
+        <div className="pf-handle">
+          {onName
+            ? <input className="pf-name" maxLength={32} aria-label="Collector name" placeholder={handleFor(accountId)}
+                value={name || ''} onChange={(e) => onName(e.target.value)} />
+            : <span>{name?.trim() || handleFor(accountId)}</span>}
+          <span className="mono dim pf-addr">{shortId(accountId)}</span>
+        </div>
         {onSign
           ? <input className="pf-sign" maxLength={140} placeholder="your table sign — one line the room will read…"
               value={sign} onChange={(e) => onSign(e.target.value)} />

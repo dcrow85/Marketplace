@@ -105,7 +105,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
       <div className="buy-nowhead">
         <div>
           <span className="ek">Buy now</span>
-          <div className="buy-nowtitle">{pile.length} card{pile.length === 1 ? '' : 's'} from {handleFor(open.id)}</div>
+          <div className="buy-nowtitle">{pile.length} card{pile.length === 1 ? '' : 's'} from {open.handle || handleFor(open.id)}</div>
         </div>
         <strong className="mono">{total} USDC</strong>
       </div>
