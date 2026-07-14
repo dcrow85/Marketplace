@@ -14,19 +14,24 @@ await Promise.all([
 // module earlier can race their page-world hooks on real dapp origins, leaving the
 // browser with an unexecuted entry module and an empty root. Let extensions settle,
 // then attach the exact hashed Vite entry without changing the application bundle.
+// Repeat the filename hash in the query so a brief custom-domain propagation race
+// cannot leave an immutable HTML fallback cached at the script URL.
 const appIndex = new URL('app/index.html', dist)
 const html = await readFile(appIndex, 'utf8')
 const deferred = html.replace(
   /<script type="module" crossorigin src="([^"]+)"><\/script>/,
-  `<script>
+  (_, src) => {
+    const version = src.match(/\/([^/]+)\.js$/)?.[1] || 'app'
+    return `<script>
     window.addEventListener('load', function () {
       var entry = document.createElement('script');
       entry.defer = true;
-      entry.src = '$1';
+      entry.src = '${src}?v=${version}';
       entry.crossOrigin = '';
       document.head.appendChild(entry);
     }, { once: true });
-  </script>`,
+  </script>`
+  },
 )
 if (deferred === html) throw new Error('Vite entry script was not found in app/index.html')
 await writeFile(appIndex, deferred)
