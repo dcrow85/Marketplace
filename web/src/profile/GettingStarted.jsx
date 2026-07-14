@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { loadStore, saveStore, storeKeyFor } from '../binder/collection.js'
 import { useCatalog } from '../lib/data.js'
 import { saveProfile } from './profileStore.js'
@@ -7,7 +7,7 @@ import './onboarding.css'
 
 const cardName = (card) => card?.name_en || card?.name_ja || card?.uid || 'Untitled card'
 
-export default function GettingStarted({ accountId, catalog, profile, progress, onScan }) {
+export default function GettingStarted({ accountId, catalog, profile, progress, onScan, guidedStep = null }) {
   const data = useCatalog(catalog)
   const [active, setActive] = useState(() => progress.milestones.find((milestone) => !milestone.done)?.id || null)
   const [name, setName] = useState(profile.name || '')
@@ -15,6 +15,13 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const [query, setQuery] = useState('')
   const [photoBusy, setPhotoBusy] = useState(false)
   const [photoError, setPhotoError] = useState('')
+  const [flight, setFlight] = useState(null)
+  const photoInput = useRef(null)
+  const flightLock = useRef(null)
+  const previousProgress = useRef({
+    points: progress.points,
+    done: Object.fromEntries(progress.milestones.map((milestone) => [milestone.id, milestone.done])),
+  })
 
   const hits = useMemo(() => {
     const needle = query.trim().toLowerCase()
@@ -22,10 +29,48 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     return data.cards.filter((card) => (`${card.num || ''} ${cardName(card)} ${card.romaji || ''}`).toLowerCase().includes(needle)).slice(0, 6)
   }, [data, query])
 
+  const doneSignature = progress.milestones.map((milestone) => `${milestone.id}:${milestone.done}`).join('|')
+  const startPointFlight = (milestoneId, gained) => {
+    flightLock.current = milestoneId
+    const source = document.querySelector(`[data-milestone-id="${milestoneId}"]`)?.getBoundingClientRect()
+    const target = document.querySelector('.profile-points')?.getBoundingClientRect()
+    if (!source || !target) return
+    const left = source.left + source.width / 2
+    const top = source.top + source.height / 2
+    setFlight({
+      key: `${milestoneId}-${progress.points}-${gained}`, gained, left, top,
+      dx: target.left + target.width / 2 - left,
+      dy: target.top + target.height / 2 - top,
+    })
+  }
+  useEffect(() => {
+    const previous = previousProgress.current
+    const done = Object.fromEntries(progress.milestones.map((milestone) => [milestone.id, milestone.done]))
+    const gained = progress.points - previous.points
+    const finished = progress.milestones.find((milestone) => milestone.done && !previous.done[milestone.id])
+    previousProgress.current = { points: progress.points, done }
+    if (gained <= 0 || !finished) return undefined
+    if (flightLock.current === finished.id) return undefined
+    window.requestAnimationFrame(() => {
+      const source = document.querySelector(`[data-milestone-id="${finished.id}"]`)?.getBoundingClientRect()
+      const target = document.querySelector('.profile-points')?.getBoundingClientRect()
+      if (!source || !target) return
+      const left = source.left + source.width / 2
+      const top = source.top + source.height / 2
+      setFlight({
+        key: Date.now(), gained, left, top,
+        dx: target.left + target.width / 2 - left,
+        dy: target.top + target.height / 2 - top,
+      })
+    })
+    return undefined
+  }, [doneSignature, progress.milestones, progress.points])
+
   if (progress.complete) return null
 
   const save = () => {
     if (!name.trim() || !sign.trim()) return
+    startPointFlight('profile', 1)
     saveProfile(accountId, { ...profile, name, sign })
     setActive(null)
   }
@@ -36,6 +81,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     setPhotoBusy(true); setPhotoError('')
     try {
       const photo = await prepareProfilePhoto(file)
+      startPointFlight('photo', 1)
       saveProfile(accountId, { ...profile, photo })
       setActive(null)
     } catch (error) {
@@ -45,13 +91,22 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const mark = (card, stance) => {
     const key = storeKeyFor(catalog.id, accountId)
     const store = loadStore(key)
+    startPointFlight('mark', 1)
     saveStore(key, { ...store, [card.uid]: { ...(store[card.uid] || {}), stance } })
     setQuery('')
     setActive(null)
   }
+  const shownActive = guidedStep && guidedStep !== 'scan' ? guidedStep : active
 
   return (
-    <section className="first-lap" aria-label="Getting started">
+    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '')} aria-label="Getting started">
+      {flight && (
+        <span key={flight.key} className="point-flight" aria-live="polite"
+          style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}
+          onAnimationEnd={(event) => { if (event.target === event.currentTarget) setFlight(null) }}>
+          <b>✦ +{flight.gained}</b><i>✦</i><i>✦</i><i>✦</i>
+        </span>
+      )}
       <div className="first-laphead">
         <div>
           <span className="ek">Your first lap</span>
@@ -66,9 +121,10 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
       <div className="first-steps">
         {progress.milestones.map((milestone) => (
           <button key={milestone.id} type="button"
-            className={'first-step' + (milestone.done ? ' done' : '') + (active === milestone.id ? ' open' : '')}
+            data-milestone-id={milestone.id} data-tour-target={milestone.id === 'scan' ? 'scan' : undefined}
+            className={'first-step' + (milestone.done ? ' done' : '') + (shownActive === milestone.id ? ' open' : '') + (guidedStep === milestone.id ? ' guided' : '')}
             disabled={milestone.done}
-            onClick={() => milestone.id === 'scan' ? onScan() : setActive(active === milestone.id ? null : milestone.id)}>
+            onClick={() => milestone.id === 'scan' ? onScan() : setActive(shownActive === milestone.id ? null : milestone.id)}>
             <span className="first-check" aria-hidden="true">{milestone.done ? '✓' : '○'}</span>
             <span><b>{milestone.label}</b><small>{milestone.detail}</small></span>
             <span className="mono first-point">+{milestone.points}</span>
@@ -76,9 +132,9 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
         ))}
       </div>
 
-      {active === 'profile' && !progress.milestones.find((milestone) => milestone.id === 'profile')?.done && (
-        <div className="first-action first-profile">
-          <label><span className="mono">Collector name</span><input autoFocus maxLength={32} value={name}
+      {shownActive === 'profile' && !progress.milestones.find((milestone) => milestone.id === 'profile')?.done && (
+        <div className="first-action first-profile" data-tour-target="profile">
+          <label>{guidedStep === 'profile' && <span className="first-field-arrow mono">Start here ↓</span>}<span className="mono">Collector name</span><input autoFocus data-tour-focus maxLength={32} value={name}
             placeholder="How the room should know you" onChange={(event) => setName(event.target.value)} /></label>
           <label><span className="mono">Your table line</span><input maxLength={140} value={sign}
             placeholder="What do you collect, trade, or hunt?" onChange={(event) => setSign(event.target.value)} /></label>
@@ -86,21 +142,22 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
         </div>
       )}
 
-      {active === 'photo' && !progress.milestones.find((milestone) => milestone.id === 'photo')?.done && (
+      {shownActive === 'photo' && !progress.milestones.find((milestone) => milestone.id === 'photo')?.done && (
         <div className="first-action first-photo">
           <span className="first-photoempty" aria-hidden="true">＋</span>
-          <span><b>Add your profile picture</b><small>We crop it square and keep a small copy in this browser.</small></span>
-          <label className={'primary first-photobutton' + (photoBusy ? ' disabled' : '')}>
-            <input type="file" accept="image/*" disabled={photoBusy} onChange={choosePhoto} />
+          <span><b>Add your profile picture</b><small>We make it square and keep it on this device.</small></span>
+          <input ref={photoInput} className="first-photoinput" type="file" accept="image/*" disabled={photoBusy} onChange={choosePhoto} />
+          <button type="button" data-tour-target="photo" data-tour-focus className="primary first-photobutton"
+            disabled={photoBusy} onClick={() => photoInput.current?.click()}>
             {photoBusy ? 'preparing picture…' : 'Choose picture · +1 point'}
-          </label>
+          </button>
           {photoError && <span className="first-photoerror" role="alert">{photoError}</span>}
         </div>
       )}
 
-      {active === 'mark' && !progress.milestones.find((milestone) => milestone.id === 'mark')?.done && (
-        <div className="first-action first-cardpick">
-          <input autoFocus type="search" value={query} placeholder="Find a card by name or number…"
+      {shownActive === 'mark' && !progress.milestones.find((milestone) => milestone.id === 'mark')?.done && (
+        <div className="first-action first-cardpick" data-tour-target="mark">
+          <input autoFocus data-tour-focus type="search" value={query} placeholder="Find a card by name or number…"
             aria-label="Find your first card" onChange={(event) => setQuery(event.target.value)} />
           {query.trim() && !hits.length && <div className="mono dim first-nohit">No matching card yet.</div>}
           {hits.map((card) => (

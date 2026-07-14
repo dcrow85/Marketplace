@@ -108,6 +108,7 @@ function SignIn({ onLogin }) {
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet, onMeet }) {
   const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
+  const [meetStep, setMeetStep] = useState(0)
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
@@ -175,7 +176,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
             aria-label={`Profile: ${publicName}, ${progress.points} point${progress.points === 1 ? '' : 's'}`}
             title="open your profile and table">
             <Avatar seed={accountId} size={18} photo={profile.photo} /> <span className="handle">{publicName}</span>
-            <span className="profile-points" aria-label={`${progress.points} point${progress.points === 1 ? '' : 's'}`}>✦ {progress.points}</span>
+            <span key={progress.points} className="profile-points points-bump" aria-label={`${progress.points} point${progress.points === 1 ? '' : 's'}`}>✦ {progress.points}</span>
           </button>
           <ThemeToggle />
           <button className="ghost sm signoutbtn" onClick={onSignOut} aria-label="Sign out">
@@ -186,7 +187,8 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />
       <main className="main">
         <GettingStarted key={accountId} accountId={accountId}
-          catalog={catalog} profile={profile} progress={progress} onScan={openScanner} />
+          catalog={catalog} profile={profile} progress={progress} onScan={openScanner}
+          guidedStep={showMeet ? ['profile', 'photo', 'mark', 'scan'][meetStep] : null} />
         <div className="bindertop">
           {CATALOGS.length > 1 && (
             <div className="catalogpick" aria-label="catalog">
@@ -234,7 +236,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           </div>
         </div>
       )}
-      {showMeet && <MeetAnko points={progress.points} onDone={onMeet} />}
+      {showMeet && <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} />}
     </div>
   )
 }

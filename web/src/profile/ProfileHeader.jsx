@@ -1,12 +1,13 @@
 // The collector's masthead: who they are, their sign, and the RECORD STRIP — facts
 // computed from records, never self-asserted. Green marks recorded things only.
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import { prepareProfilePhoto } from './profilePhoto.js'
 
 export default function ProfileHeader({ accountId, name, onName, sign, onSign, photo, onPhoto, stats }) {
   const [photoBusy, setPhotoBusy] = useState(false)
   const [photoError, setPhotoError] = useState('')
+  const photoInput = useRef(null)
   const choosePhoto = async (event) => {
     const file = event.target.files?.[0]
     event.target.value = ''
@@ -23,10 +24,9 @@ export default function ProfileHeader({ accountId, name, onName, sign, onSign, p
           ? <span className="av pf-av"><img src={photo} width="52" height="52" alt="Your profile" /></span>
           : <span className="av pf-av" dangerouslySetInnerHTML={{ __html: avatarSVG(accountId, 52) }} />}
         {onPhoto && <>
-          <label className={'pf-photochange mono' + (photoBusy ? ' busy' : '')} title="Change profile picture">
-            <input type="file" accept="image/*" disabled={photoBusy} onChange={choosePhoto} />
-            {photoBusy ? '…' : 'photo'}
-          </label>
+          <input ref={photoInput} className="pf-photoinput" type="file" accept="image/*" disabled={photoBusy} onChange={choosePhoto} />
+          <button className={'pf-photochange mono' + (photoBusy ? ' busy' : '')} title="Change profile picture"
+            disabled={photoBusy} onClick={() => photoInput.current?.click()}>{photoBusy ? '…' : 'photo'}</button>
           {photo && <button className="pf-photoremove" onClick={() => onPhoto('')} aria-label="Remove profile picture" title="Remove profile picture">×</button>}
         </>}
         {photoError && <span className="pf-photoerror" role="alert">{photoError}</span>}
