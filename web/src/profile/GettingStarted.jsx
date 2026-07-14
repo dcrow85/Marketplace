@@ -7,7 +7,7 @@ import './onboarding.css'
 
 const cardName = (card) => card?.name_en || card?.name_ja || card?.uid || 'Untitled card'
 
-export default function GettingStarted({ accountId, catalog, profile, progress, onScan, guidedStep = null, guide = null }) {
+export default function GettingStarted({ accountId, catalog, profile, progress, onScan, guidedStep = null }) {
   const data = useCatalog(catalog)
   const [active, setActive] = useState(() => progress.milestones.find((milestone) => !milestone.done)?.id || null)
   const [name, setName] = useState(profile.name || '')
@@ -44,7 +44,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     const left = source.left + source.width / 2
     const top = source.top + source.height / 2
     setFlight({
-      key: `${milestoneId}-${progress.points}-${gained}`, gained, left, top,
+      key: `${milestoneId}-${progress.points}-${gained}`, milestoneId, gained, left, top,
       dx: target.left + target.width / 2 - left,
       dy: target.top + target.height / 2 - top,
     })
@@ -64,7 +64,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
       const left = source.left + source.width / 2
       const top = source.top + source.height / 2
       setFlight({
-        key: Date.now(), gained, left, top,
+        key: Date.now(), milestoneId: finished.id, gained, left, top,
         dx: target.left + target.width / 2 - left,
         dy: target.top + target.height / 2 - top,
       })
@@ -105,8 +105,10 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const setupStep = guidedStep === 'profile' || guidedStep === 'photo'
   const interfaceStep = guidedStep === 'mark' || guidedStep === 'scan'
   const setupDone = progress.milestones.filter((milestone) => milestone.id === 'profile' || milestone.id === 'photo').every((milestone) => milestone.done)
-  const shownActive = setupStep ? guidedStep : interfaceStep ? null : active
-  const compact = setupDone || interfaceStep
+  const flightSetup = flight && (flight.milestoneId === 'profile' || flight.milestoneId === 'photo') ? flight.milestoneId : null
+  const shownActive = flightSetup || (setupStep ? guidedStep : interfaceStep ? null : active)
+  const compact = (setupDone || interfaceStep) && !flight
+  const focusedSetup = !compact && !!(setupStep || flightSetup)
   const nextMilestone = progress.milestones.find((milestone) => !milestone.done)
   const showNextMilestone = () => {
     if (!nextMilestone) return
@@ -119,13 +121,28 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     }
     setActive(nextMilestone.id)
   }
+  const finishPointFlight = () => {
+    const surface = document.querySelector('.binder-surface')
+    const before = surface?.getBoundingClientRect().top
+    setFlight(null)
+    if (!surface || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return
+    window.requestAnimationFrame(() => {
+      const after = surface.getBoundingClientRect().top
+      const distance = before - after
+      if (Math.abs(distance) < 2) return
+      surface.animate([
+        { transform: `translateY(${distance}px)` },
+        { transform: 'translateY(0)' },
+      ], { duration: 560, easing: 'cubic-bezier(.2,.75,.25,1)' })
+    })
+  }
 
   return (
-    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (compact ? ' first-lap-compact' : '')} aria-label="Getting started">
+    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (focusedSetup ? ' first-lap-focus' : '') + (compact ? ' first-lap-compact' : '')} aria-label="Getting started">
       {flight && (
         <span key={flight.key} className="point-flight" aria-live="polite"
           style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}
-          onAnimationEnd={(event) => { if (event.target === event.currentTarget) setFlight(null) }}>
+          onAnimationEnd={(event) => { if (event.target === event.currentTarget) finishPointFlight() }}>
           <b>✦ +{flight.gained}</b><i>✦</i><i>✦</i><i>✦</i>
         </span>
       )}
@@ -167,9 +184,9 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
         </div>
       </>}
 
-      {(shownActive || guide) && <div className={'first-workbench' + (guide ? ' with-anko' : '')} data-guide-step={guidedStep || undefined}>
+      {shownActive && <div className="first-workbench" data-guide-step={guidedStep || undefined}>
         <div className="first-action-column">
-        {shownActive === 'profile' && !progress.milestones.find((milestone) => milestone.id === 'profile')?.done && (
+        {shownActive === 'profile' && (!progress.milestones.find((milestone) => milestone.id === 'profile')?.done || flight?.milestoneId === 'profile') && (
           <div className="first-action first-profile" data-tour-target="profile">
           <label>{guidedStep === 'profile' && <span className="first-field-arrow mono">Start here ↓</span>}<span className="mono">Collector name</span><input autoFocus data-tour-focus maxLength={32} value={name}
             placeholder="How the room should know you" onChange={(event) => setName(event.target.value)} /></label>
@@ -179,7 +196,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
           </div>
         )}
 
-        {shownActive === 'photo' && !progress.milestones.find((milestone) => milestone.id === 'photo')?.done && (
+        {shownActive === 'photo' && (!progress.milestones.find((milestone) => milestone.id === 'photo')?.done || flight?.milestoneId === 'photo') && (
           <div className="first-action first-photo">
           <span className="first-photoempty" aria-hidden="true">＋</span>
           <span><b>Add your profile picture</b><small>We make it square and keep it on this device.</small></span>
@@ -215,7 +232,6 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
           </div>
         )}
         </div>
-        {guide}
       </div>}
       <p className="first-fine mono">Points are progress markers for now—not money, rank, or proof.</p>
     </section>

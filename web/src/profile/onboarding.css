@@ -1,4 +1,10 @@
 .first-lap { margin-bottom: 24px; padding: 20px; border: 0.5px solid var(--rule); border-radius: 12px; background: linear-gradient(135deg, var(--paper), var(--paper2)); box-shadow: 0 16px 50px rgba(0,0,0,.055); }
+.first-lap-focus { margin-bottom: 12px; padding: 14px 16px; box-shadow: none; }
+.first-lap-focus .first-laphead { align-items: center; }
+.first-lap-focus .first-laphead h1 { margin: 2px 0 0; font-size: 19px; }
+.first-lap-focus .first-laphead p, .first-lap-focus .first-steps { display: none; }
+.first-lap-focus .first-meter { margin: 9px 0; }
+.first-lap-focus .first-workbench { margin-top: 0; }
 .first-lap-compact { margin-bottom: 12px; padding: 8px 12px; box-shadow: none; }
 .first-lap-compact .first-fine { display: none; }
 .first-compactrow { min-height: 34px; display: grid; grid-template-columns: auto minmax(70px, 1fr) auto auto; align-items: center; gap: 12px; }

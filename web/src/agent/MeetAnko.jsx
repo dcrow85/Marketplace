@@ -46,6 +46,13 @@ const DONE_LINES = {
   scan: 'Scan recorded. Five points earned.',
 }
 
+const DOCK_LINES = {
+  profile: 'Start with your collector name and a line for your table. I’ll stay right here.',
+  photo: 'Add a picture that feels like you. You can change it whenever you like.',
+  mark: 'Have is for cards you own. Want is for cards you’re looking for.',
+  scan: 'That’s your table. I’m staying right here—scan one card whenever you’re ready.',
+}
+
 export function HaveActionsLesson({ onDone, compact = false }) {
   return (
     <aside className={'anko-have-actions' + (compact ? ' compact' : '')} role="note" aria-label="Anko explains selling and trading">
@@ -63,6 +70,7 @@ export function HaveActionsLesson({ onDone, compact = false }) {
 
 export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 'setup' }) {
   const [imgOk, setImgOk] = useState(true)
+  const [settling, setSettling] = useState(false)
   const previousDone = useRef(Object.fromEntries(progress.milestones.map((item) => [item.id, item.done])))
   const aligned = useRef(false)
   const current = STEPS[frame]
@@ -94,20 +102,28 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
     if (!justFinished) return undefined
     const laterOpen = STEPS.findIndex((step, index) => index > frame && !done[step.id])
     const nextOpen = laterOpen >= 0 ? laterOpen : STEPS.findIndex((step) => !done[step.id])
-    const timer = window.setTimeout(() => nextOpen >= 0 ? onFrame(nextOpen) : onDone(), 900)
-    return () => window.clearTimeout(timer)
+    const settleTimer = nextOpen < 0 ? window.setTimeout(() => setSettling(true), 0) : null
+    const timer = window.setTimeout(() => nextOpen >= 0 ? onFrame(nextOpen) : onDone(), nextOpen >= 0 ? 900 : 1050)
+    return () => { if (settleTimer) window.clearTimeout(settleTimer); window.clearTimeout(timer) }
   }, [current.id, doneSignature, frame, onDone, onFrame])
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
       const target = document.querySelector(`[data-tour-target="${current.id}"]`)
       if (!target) return
+      if (mode === 'dock') {
+        const rect = target.getBoundingClientRect()
+        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return
+        const focusable = target.matches('[data-tour-focus]') ? target : target.querySelector('[data-tour-focus]')
+        focusable?.focus({ preventScroll: true })
+        return
+      }
       target.scrollIntoView({ behavior: 'smooth', block: 'center' })
       const focusable = target.matches('[data-tour-focus]') ? target : target.querySelector('[data-tour-focus]')
       focusable?.focus({ preventScroll: true })
     }, 180)
     return () => window.clearTimeout(timer)
-  }, [current.id])
+  }, [current.id, mode])
 
   const showTarget = () => {
     const target = document.querySelector(`[data-tour-target="${current.id}"]`)
@@ -123,15 +139,13 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
     window.dispatchEvent(new CustomEvent('cairn-anko-prompt', { detail: { text } }))
   }
 
-  if (mode === 'binder') {
+  if (mode === 'binder' || mode === 'dock') {
     return (
-      <aside className="anko-guide anko-guide-binder" role="complementary" aria-label="Anko first-lap note">
+      <aside className={'anko-guide anko-guide-binder' + (mode === 'dock' ? ' anko-guide-dock' : '') + (settling ? ' settling' : '')} role="complementary" aria-label="Anko first-lap note">
         <div className={'anko-binder-note' + (currentDone ? ' earned' : '')}>
           <div className="anko-binder-copy">
             <strong>{current.title}</strong>
-            <span>{currentDone ? DONE_LINES[current.id] : current.id === 'mark'
-              ? 'Have is for cards you own. Want is for cards you’re looking for.'
-              : 'Scan one card when you’re ready for five points.'}</span>
+            <span>{currentDone ? DONE_LINES[current.id] : DOCK_LINES[current.id]}</span>
           </div>
           {!currentDone && current.examples && (
             <div className="anko-binder-examples" aria-label="Example requests">

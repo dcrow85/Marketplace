@@ -419,6 +419,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (!data) return <div className="empty">loading catalog…</div>
 
   const refineCount = familyF.size + channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
+  const dockSetup = onboardingStep === 'profile' || onboardingStep === 'photo'
   const chooseFamily = (family) => {
     setFamilyF(family ? new Set([family]) : new Set())
     if (family && channelF.size && !data.cards.some((c) => c.release_family === family && [...channelF].some((channel) => cardMatchesChannel(c, channel)))) {
@@ -447,7 +448,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         <span><b className="t-want">{countStance('want')}</b> want</span>
         {rows.length !== data.summary.cards && <span><b>{rows.length}</b> shown</span>}
         <span><b>{data.summary.cards}</b> in catalog</span>
-        <button className="scanbtn" data-tour-target={onboardingStep === 'scan' ? 'scan' : undefined}
+        <button className={'scanbtn' + (dockSetup ? ' anko-setup-hidden' : '')} data-tour-target={onboardingStep === 'scan' ? 'scan' : undefined}
           data-tour-focus={onboardingStep === 'scan' ? true : undefined}
           onClick={() => setScanning(true)} aria-label="Scan cards to add">
           <svg className="scanico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -459,19 +460,22 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         </button>
       </div>
       <div className="controls">
-        <div className="askbar" data-tour-target={onboardingStep === 'mark' ? 'mark' : undefined}>
+        <div className={'askbar' + (dockSetup ? ' anko-dock-setup' : '')} data-tour-target={onboardingStep === 'mark' ? 'mark' : undefined}>
           <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
             alt="" title={`${agentName} — Elemental 4193 · Fire · Red Panda`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input ref={askInput} data-tour-focus={onboardingStep === 'mark' ? true : undefined}
-            value={query} maxLength={280} placeholder={`Search or ask ${agentName}…`}
+            value={query} maxLength={280} disabled={dockSetup}
+            placeholder={onboardingStep === 'profile' ? `${agentName} is helping you set up your table…`
+              : onboardingStep === 'photo' ? 'Add your picture, then ask Anko anything…'
+                : `Search or ask ${agentName}…`}
             onChange={(e) => { const v = e.target.value; setQuery(v); if (agentRes) clearAgent(); setQ(v) }}
             onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
-          <button className="askbtn" onClick={ask} disabled={agentBusy || !query.trim()}>{agentBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
+          <button className="askbtn" onClick={ask} disabled={dockSetup || agentBusy || !query.trim()}>{agentBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
         </div>
         {directSearchMiss && <div className="searchhint mono" role="status">
           No direct card match. Keeping all cards in this view visible — ask {agentName} to understand the request.
         </div>}
-        {(onboardingStep === 'mark' || onboardingStep === 'scan') && !haveLessonUid && onboardingGuide}
+        {onboardingGuide && !haveLessonUid && onboardingGuide}
         <div className="chips">
           {CHIPS.map((ch, i) => (
             <button key={i} className={'chip' + (chipOn(ch) ? ' on' : '') + (chipOn(ch) && ch.acc ? ' acc' : '')} onClick={() => toggleChip(ch)}>

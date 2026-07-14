@@ -116,8 +116,6 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   const profile = useBus(() => loadProfile(accountId), [accountId])
   const progress = useMilestoneProgress(accountId, catalog.id, profile)
   const guidedStep = showMeet ? ['profile', 'photo', 'mark', 'scan'][meetStep] : null
-  const setupGuide = guidedStep === 'profile' || guidedStep === 'photo'
-  const binderGuide = guidedStep === 'mark' || guidedStep === 'scan'
   const publicName = profile.name.trim() || handleFor(accountId)
   const openScanner = () => {
     setBseg('binder')
@@ -191,9 +189,9 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       <main className="main">
         <GettingStarted key={accountId} accountId={accountId}
           catalog={catalog} profile={profile} progress={progress} onScan={openScanner}
-          guidedStep={guidedStep}
-          guide={setupGuide ? <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} mode="setup" /> : null} />
-        <div className="bindertop">
+          guidedStep={guidedStep} />
+        <div className="binder-surface">
+          <div className="bindertop">
           {CATALOGS.length > 1 && (
             <div className="catalogpick" aria-label="catalog">
               {CATALOGS.map((c) => (
@@ -209,14 +207,15 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
               <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
             </div>
           </div>
+          </div>
+          {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
+            onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
+            onboardingStep={guidedStep}
+            onboardingGuide={guidedStep ? <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} mode="dock" /> : null} />}
+          {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} />}
+          {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
+            focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
         </div>
-        {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
-          onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
-          onboardingStep={binderGuide ? guidedStep : null}
-          onboardingGuide={binderGuide ? <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} mode="binder" /> : null} />}
-        {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} />}
-        {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
-          focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
       </main>
       {offerSeed && (
         <OfferComposer accountId={accountId} catalog={catalog} seller={offerSeed.seller}
