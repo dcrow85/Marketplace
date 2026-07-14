@@ -58,6 +58,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: onboarding profile / milestone points]` 2026-07-14 · Codex —
+  Replacing the generic post-auth start with an actionable first-lap guide: create a named collector
+  profile, mark a first Have/Want, and scan a first card. Each point must derive from persisted profile
+  or collection state (not button clicks), remain local/account-scoped, and avoid implying economic value.
+  The existing published-profile snapshot will carry the chosen public name without changing claim status.
 - `[passive]` 2026-07-14 · Codex — **Posted asks now have a genuine direct checkout.** A pure-buy
   pile on a live table offers `Buy now` beside the separate `Make offer` path. Buy now keeps the
   collector in the pile pane, records the exact posted terms, checks/approves USDC, and funds the
