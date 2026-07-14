@@ -1,63 +1,107 @@
-/* Meeting Anko — the dark bench register, always. The intro is forensic night no
-   matter the app theme: black bench, ink text, and ONE color — his onibi blue.
-   Green appears exactly once (the "recorded" tag), because that's the constitution. */
-.anko-gate { position: fixed; inset: 0; z-index: 100; background: #100f0d; color: #DBD5C8; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; cursor: pointer; overflow-y: auto; }
-.anko-skip { position: fixed; top: 18px; right: 20px; font-size: 12px; color: #8a857a; background: transparent; border: 0.5px solid rgba(236,234,227,.18); border-radius: 7px; padding: 8px 14px; cursor: pointer; }
-.anko-skip:hover { color: #DBD5C8; }
-
-.anko-stage { width: 100%; max-width: 560px; }
-.anko-beat { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; animation: anko-in .5s ease both; }
-@keyframes anko-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-
-.anko-line { font-size: 16px; line-height: 1.65; margin: 0; max-width: 46ch; }
-.anko-line b { color: #9fe8ff; font-weight: 600; }
-.anko-line.dim { color: #8a857a; font-size: 14px; }
-.anko-turn { color: #9fe8ff; }
-.anko-name { font-size: 30px; font-weight: 650; margin: 4px 0 0; letter-spacing: -.01em; }
-.anko-prov { font-size: 10.5px; letter-spacing: .14em; color: #8a857a; border: 0.5px solid rgba(236,234,227,.16); border-radius: 6px; padding: 6px 12px; }
-
-/* the portrait — his art carries its own glow; we just frame it on the bench */
-.anko-portrait { width: min(58vw, 250px); aspect-ratio: 1; border-radius: 16px; overflow: hidden; border: 1px solid rgba(159,232,255,.25); box-shadow: 0 0 60px rgba(80,180,255,.14), 0 24px 60px rgba(0,0,0,.5); }
-.anko-portrait.sm { width: min(38vw, 150px); }
-.anko-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.anko-noimg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #171613; }
-.anko-mini { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(159,232,255,.3); }
-.anko-minirow { display: flex; align-items: center; gap: 12px; }
-
-/* the onibi — a small blue ghost flame, alive but still. It flickers; it does not move. */
-.onibi { position: relative; width: 34px; height: 48px; }
-.onibi.big { width: 56px; height: 84px; margin-bottom: 8px; }
-.onibi-core, .onibi-inner { position: absolute; inset: 0; border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; }
-.onibi-core { background: radial-gradient(closest-side at 50% 62%, rgba(255,255,255,.95), #9fe8ff 32%, rgba(64,150,255,.42) 62%, transparent 78%); filter: blur(1.5px); animation: onibi-flick 1.7s ease-in-out infinite; box-shadow: 0 0 34px rgba(90,180,255,.5), 0 0 90px rgba(60,140,255,.25); }
-.onibi-inner { inset: 22% 26% 14%; background: radial-gradient(closest-side at 50% 68%, #fff, rgba(190,240,255,.85) 45%, transparent 75%); filter: blur(.8px); animation: onibi-flick 1.7s ease-in-out infinite .25s; }
-@keyframes onibi-flick {
-  0%, 100% { transform: scaleY(1) scaleX(1) rotate(0deg); opacity: 1; }
-  30% { transform: scaleY(1.07) scaleX(.95) rotate(-1.6deg); opacity: .92; }
-  55% { transform: scaleY(.94) scaleX(1.05) rotate(1.2deg); opacity: 1; }
-  75% { transform: scaleY(1.04) scaleX(.97) rotate(-.8deg); opacity: .95; }
+/* Anko enters inside Cairn: a compact manga page over the working interface. */
+.anko-guide { position: fixed; inset: 0; z-index: 100; display: grid; place-items: end center; padding: 22px; overflow-y: auto; background: rgba(20,18,15,.46); backdrop-filter: blur(1.5px); }
+.anko-book { width: min(860px, 100%); color: #171513; background: #f4f0e6; border: 2px solid #171513; box-shadow: 8px 8px 0 #171513, 0 28px 80px rgba(0,0,0,.28); }
+.anko-book button { cursor: pointer; }
+.anko-booktop { min-height: 35px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 6px 10px 6px 14px; color: #5e5950; border-bottom: 2px solid #171513; font-size: 9.5px; letter-spacing: .09em; }
+.anko-booktop button { color: #5e5950; background: transparent; border: 0; font: inherit; }
+.anko-booktop button:hover { color: #171513; }
+.anko-comic { display: grid; grid-template-columns: 190px minmax(0, 1fr); min-height: 350px; animation: anko-panel-in .25s ease both; }
+@keyframes anko-panel-in { from { opacity: .25; transform: translateX(8px); } to { opacity: 1; transform: none; } }
+.anko-character { position: relative; min-height: 350px; overflow: hidden; border-right: 2px solid #171513; background: #d9d3c5; }
+.anko-character::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(#171513 0.7px, transparent .7px); background-size: 4px 4px; opacity: .16; pointer-events: none; }
+.anko-character img { position: absolute; z-index: 1; left: 50%; bottom: 25px; width: 210px; height: 310px; object-fit: cover; object-position: 50% 36%; transform: translateX(-50%); filter: saturate(.78) contrast(1.08); mix-blend-mode: multiply; }
+.anko-speedlines { position: absolute; inset: -40px; background: repeating-conic-gradient(from 15deg at 48% 62%, transparent 0 4deg, rgba(23,21,19,.14) 4.2deg 4.6deg); }
+.anko-who { position: absolute; z-index: 3; left: 10px; right: 10px; bottom: 10px; padding: 5px 7px; color: #f4f0e6; background: #171513; text-align: center; font-size: 9px; letter-spacing: .1em; }
+.anko-fallback { position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; font: 700 92px var(--serif); }
+.anko-page { min-width: 0; padding: 22px 24px 18px; display: grid; grid-template-columns: minmax(210px, .8fr) minmax(280px, 1.2fr); gap: 20px; align-items: stretch; }
+.anko-speech { position: relative; align-self: center; padding: 19px 20px; border: 2px solid #171513; border-radius: 34px 42px 38px 45px / 30px 34px 32px 38px; background: #fffdf6; }
+.anko-speech::before { content: ''; position: absolute; left: -18px; top: 42%; width: 30px; height: 22px; background: #fffdf6; border-left: 2px solid #171513; border-bottom: 2px solid #171513; transform: skew(-34deg) rotate(18deg); }
+.anko-speech > * { position: relative; z-index: 1; }
+.anko-speech > span { display: block; margin-bottom: 7px; color: #376a82; font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; }
+.anko-speech h1 { margin: 0; font-size: clamp(18px, 2.1vw, 25px); line-height: 1.12; letter-spacing: -.025em; }
+.anko-speech p { margin: 10px 0 0; color: #5e5950; font-size: 12px; line-height: 1.48; }
+.anko-interfaceframe { position: relative; min-width: 0; padding: 8px; border: 2px solid #171513; background: #fffdf6; box-shadow: 4px 4px 0 rgba(23,21,19,.22); transform: rotate(.65deg); }
+.anko-interfaceframe::after { content: ''; position: absolute; inset: 0; background: linear-gradient(125deg, transparent 68%, rgba(23,21,19,.06) 68% 69%, transparent 69%); pointer-events: none; }
+.anko-sfx { position: absolute; z-index: 3; right: -9px; bottom: -12px; color: #171513; font: 900 italic 20px var(--sans); letter-spacing: -.08em; transform: rotate(-8deg); text-shadow: 2px 2px #f4f0e6; }
+.anko-miniui { height: 100%; min-height: 284px; padding: 12px; color: #25221e; background: #f7f4ec; border: .5px solid #9e978a; font-size: 10px; }
+.anko-mininav { display: flex; align-items: center; gap: 9px; padding-bottom: 8px; border-bottom: 1px solid #302c27; font: 9px var(--mono); }
+.anko-mininav b { margin-right: auto; font: 650 13px var(--serif); }
+.anko-mininav i { color: #376a82; font-style: normal; }
+.anko-minititle { display: flex; justify-content: space-between; align-items: end; margin: 22px 2px 10px; color: #6d675d; font: 8px var(--mono); letter-spacing: .1em; }
+.anko-minititle strong { color: #171513; font: 600 26px var(--serif); letter-spacing: 0; }
+.anko-ministeps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.anko-ministeps > span { position: relative; min-height: 105px; padding: 9px 7px; border: 1px solid #9e978a; background: #fffdf6; }
+.anko-ministeps i, .anko-ministeps b, .anko-ministeps small, .anko-ministeps em { display: block; }
+.anko-ministeps i { color: #8e887d; font: 8px var(--mono); }
+.anko-ministeps b { margin-top: 17px; font-size: 11px; }
+.anko-ministeps small { margin-top: 3px; color: #777066; font-size: 8px; }
+.anko-ministeps em { position: absolute; right: 6px; bottom: 6px; color: #376a82; font: normal 8px var(--mono); }
+.anko-minicard { display: grid; grid-template-columns: 86px 1fr; gap: 12px; margin-top: 15px; padding: 10px; border: 1px solid #9e978a; background: #fffdf6; }
+.anko-cardart { aspect-ratio: 5 / 7; display: grid; place-items: center; color: #f4f0e6; background: repeating-linear-gradient(135deg, #28241f 0 6px, #403a32 6px 12px); text-align: center; font: 700 10px var(--mono); letter-spacing: .08em; }
+.anko-minicard small, .anko-minicard strong { display: block; }
+.anko-minicard small { color: #777066; font: 8px var(--mono); }
+.anko-minicard strong { margin-top: 5px; font-size: 13px; }
+.anko-minicard p { margin: 8px 0 0; color: #777066; font-size: 9px; line-height: 1.4; }
+.anko-miniactions { display: flex; gap: 6px; margin-top: 9px; }
+.anko-miniactions b { flex: 1; padding: 8px 5px; border: 1px solid #777066; background: #fffdf6; text-align: center; font: 8px var(--mono); }
+.anko-miniactions b.scan { color: #fffdf6; border-color: #376a82; background: #376a82; }
+.anko-flow { display: flex; align-items: center; justify-content: space-between; margin: 4px 0 10px; font: 8px var(--mono); letter-spacing: .05em; }
+.anko-flow i { color: #376a82; font-style: normal; }
+.anko-offer { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #9e978a; background: #fffdf6; }
+.anko-offer span { padding: 10px; }
+.anko-offer span + span { border-left: 1px solid #9e978a; }
+.anko-offer small, .anko-offer strong { display: block; }
+.anko-offer small { color: #777066; font: 8px var(--mono); }
+.anko-offer strong { margin-top: 4px; font-size: 13px; }
+.anko-readmini { display: flex; gap: 9px; margin-top: 9px; padding: 9px; color: #294f62; border: 1px solid #376a82; background: #eaf2f3; }
+.anko-readmini img { flex: none; width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+.anko-readmini b, .anko-readmini small { display: block; }
+.anko-readmini b { font: 8px var(--mono); text-transform: uppercase; }
+.anko-readmini small { margin-top: 4px; font-size: 9px; line-height: 1.35; }
+.anko-bookfoot { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 9px 12px 9px 16px; border-top: 2px solid #171513; }
+.anko-pagenum { display: flex; gap: 5px; }
+.anko-pagenum i { width: 22px; height: 22px; display: grid; place-items: center; color: #777066; border: 1px solid #9e978a; border-radius: 50%; font-style: normal; font-size: 9px; }
+.anko-pagenum i.on { color: #f4f0e6; border-color: #171513; background: #171513; }
+.anko-bookacts { display: flex; gap: 7px; }
+.anko-bookacts button { width: auto; min-height: 40px; }
+.anko-bookacts .primary { color: #f4f0e6; background: #171513; }
+@media (max-width: 720px) {
+  .anko-guide { place-items: end stretch; padding: 10px; }
+  .anko-book { box-shadow: 4px 4px 0 #171513; }
+  .anko-comic { grid-template-columns: 88px minmax(0, 1fr); min-height: 430px; }
+  .anko-character { min-height: 430px; }
+  .anko-character img { width: 150px; height: 280px; bottom: 34px; }
+  .anko-page { grid-template-columns: 1fr; padding: 14px; gap: 12px; }
+  .anko-speech { border-radius: 18px; padding: 13px 14px; }
+  .anko-speech::before { left: -13px; top: 30%; width: 22px; height: 16px; }
+  .anko-speech h1 { font-size: 18px; }
+  .anko-speech p { font-size: 11px; }
+  .anko-miniui { min-height: 215px; }
+  .anko-ministeps > span { min-height: 82px; }
+  .anko-ministeps b { margin-top: 9px; }
+  .anko-minicard { grid-template-columns: 60px 1fr; }
 }
-
-/* the registers / rooms — his vocabulary, in the constitution's colors */
-.anko-regs { display: flex; flex-direction: column; gap: 10px; text-align: left; max-width: 460px; }
-.anko-reg { display: flex; align-items: baseline; gap: 12px; font-size: 14px; line-height: 1.55; }
-.anko-reg > span:last-child { color: #b7b1a4; }
-.anko-tag { flex: none; width: 76px; text-align: center; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; border-radius: 5px; padding: 3px 0; }
-.anko-tag.rec { color: #5FA877; border: 0.5px solid #5FA877; }
-.anko-tag.clm { color: #DBD5C8; border: 0.5px solid rgba(236,234,227,.4); }
-.anko-tag.red { color: #9fe8ff; border: 0.5px solid #9fe8ff; }
-.anko-tag.room { color: #8a857a; border: 0.5px solid rgba(236,234,227,.25); }
-
-.anko-enter { margin-top: 10px; font-family: var(--mono); font-size: 14px; color: #100f0d; background: #9fe8ff; border: 0; border-radius: 9px; padding: 14px 30px; cursor: pointer; box-shadow: 0 0 40px rgba(90,180,255,.3); }
-.anko-enter:hover { background: #c3f1ff; }
-
-.anko-foot { position: fixed; bottom: 22px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; }
-.anko-dots { display: flex; gap: 8px; }
-.anko-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(236,234,227,.18); }
-.anko-dots i.on { background: #9fe8ff; }
-.anko-hint { font-size: 10.5px; letter-spacing: .12em; color: #8a857a; animation: anko-pulse 2.4s ease-in-out infinite; }
-@keyframes anko-pulse { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
-
-/* the somebody-else's-listing quote — the foil his registers answer */
-.anko-quote { font-size: 15px; line-height: 1.6; color: #DBD5C8; border-left: 2px solid rgba(236,234,227,.3); padding: 4px 0 4px 14px; font-style: italic; max-width: 42ch; text-align: left; }
-.anko-quote .mono { font-style: normal; font-size: 10.5px; margin-left: 8px; }
-.anko-line i { color: #DBD5C8; }
+@media (max-width: 440px) {
+  .anko-guide { padding: 0; place-items: stretch; }
+  .anko-book { width: 100%; min-height: 100%; border-width: 0; box-shadow: none; }
+  .anko-booktop { border-top: 2px solid #171513; }
+  .anko-comic { grid-template-columns: 68px minmax(0, 1fr); min-height: calc(100dvh - 95px); }
+  .anko-character { min-height: 100%; }
+  .anko-character img { width: 125px; height: 230px; bottom: 54px; }
+  .anko-who { font-size: 7px; padding-inline: 3px; }
+  .anko-page { padding: 10px; gap: 9px; align-content: center; }
+  .anko-speech { padding: 12px; }
+  .anko-speech h1 { font-size: 16px; }
+  .anko-speech p { margin-top: 6px; font-size: 10px; }
+  .anko-interfaceframe { padding: 5px; transform: none; }
+  .anko-miniui { min-height: 205px; padding: 8px; }
+  .anko-mininav { gap: 5px; }
+  .anko-mininav span { display: none; }
+  .anko-minititle { margin-top: 12px; }
+  .anko-ministeps { gap: 3px; }
+  .anko-ministeps > span { padding: 6px 4px; }
+  .anko-ministeps small { display: none; }
+  .anko-minicard { margin-top: 9px; }
+  .anko-bookfoot { position: fixed; z-index: 5; left: 0; right: 0; bottom: 0; width: 100%; box-sizing: border-box; background: #f4f0e6; }
+  .anko-bookacts button { min-height: 44px; padding-inline: 12px; }
+}

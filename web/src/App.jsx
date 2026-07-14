@@ -105,7 +105,7 @@ function SignIn({ onLogin }) {
   )
 }
 
-function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
+function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet, onMeet }) {
   const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
@@ -233,6 +233,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut }) {
           </div>
         </div>
       )}
+      {showMeet && <MeetAnko points={progress.points} onDone={onMeet} />}
     </div>
   )
 }
@@ -268,11 +269,11 @@ export default function App() {
   const signOut = () => { if (DEV_PREVIEW) { try { localStorage.removeItem(metKey) } catch { /* ignore */ } setMet(false); return } logout() }
 
   if (DEV_PREVIEW) {
-    if (!met) return <MeetAnko onDone={meetDone} />
-    return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
+    return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog}
+      onSignOut={signOut} showMeet={!met} onMeet={meetDone} />
   }
   if (!ready) return <Splash />
   if (!authenticated) return <SignIn onLogin={login} />
-  if (!met) return <MeetAnko onDone={meetDone} />
-  return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog} onSignOut={signOut} />
+  return <AuthedApp accountId={accountId} agent={agent} catalog={catalog} setCatalog={setCatalog}
+    onSignOut={signOut} showMeet={!met} onMeet={meetDone} />
 }
