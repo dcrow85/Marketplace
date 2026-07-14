@@ -106,9 +106,22 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const interfaceStep = guidedStep === 'mark' || guidedStep === 'scan'
   const setupDone = progress.milestones.filter((milestone) => milestone.id === 'profile' || milestone.id === 'photo').every((milestone) => milestone.done)
   const shownActive = setupStep ? guidedStep : interfaceStep ? null : active
+  const compact = setupDone || interfaceStep
+  const nextMilestone = progress.milestones.find((milestone) => !milestone.done)
+  const showNextMilestone = () => {
+    if (!nextMilestone) return
+    if (nextMilestone.id === 'scan') { onScan(); return }
+    if (nextMilestone.id === 'mark') {
+      const target = document.querySelector('.askbar input')
+      target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      target?.focus({ preventScroll: true })
+      return
+    }
+    setActive(nextMilestone.id)
+  }
 
   return (
-    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (setupDone || interfaceStep ? ' first-lap-compact' : '')} aria-label="Getting started">
+    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (compact ? ' first-lap-compact' : '')} aria-label="Getting started">
       {flight && (
         <span key={flight.key} className="point-flight" aria-live="polite"
           style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}
@@ -116,30 +129,43 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
           <b>✦ +{flight.gained}</b><i>✦</i><i>✦</i><i>✦</i>
         </span>
       )}
-      <div className="first-laphead">
-        <div>
-          <span className="ek">Your first lap</span>
-          <h1>Set up your table</h1>
-          <p>Four useful firsts. Your first recorded scan earns five.</p>
+      {compact ? (
+        <div className="first-compactrow">
+          <span className="ek">First lap</span>
+          <div className="first-compactmeter" aria-hidden="true"><i style={{ width: `${(progress.points / progress.total) * 100}%` }} /></div>
+          {nextMilestone && <button type="button" className="first-compactnext" data-milestone-id={nextMilestone.id} onClick={showNextMilestone}>
+            <span>Next</span><b>{nextMilestone.label}</b><small>+{nextMilestone.points}</small>
+          </button>}
+          <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
+            <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
+          </div>
         </div>
-        <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
-          <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
+      ) : <>
+        <div className="first-laphead">
+          <div>
+            <span className="ek">Your first lap</span>
+            <h1>Set up your table</h1>
+            <p>Four useful firsts. Your first recorded scan earns five.</p>
+          </div>
+          <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
+            <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
+          </div>
         </div>
-      </div>
-      <div className="first-meter" aria-hidden="true"><i style={{ width: `${(progress.points / progress.total) * 100}%` }} /></div>
-      <div className="first-steps">
-        {progress.milestones.map((milestone) => (
-          <button key={milestone.id} type="button"
-            data-milestone-id={milestone.id}
-            className={'first-step' + (milestone.done ? ' done' : '') + (shownActive === milestone.id ? ' open' : '') + (guidedStep === milestone.id ? ' guided' : '')}
-            disabled={milestone.done}
-            onClick={() => milestone.id === 'scan' ? onScan() : setActive(shownActive === milestone.id ? null : milestone.id)}>
-            <span className="first-check" aria-hidden="true">{milestone.done ? '✓' : '○'}</span>
-            <span><b>{milestone.label}</b><small>{milestone.detail}</small></span>
-            <span className="mono first-point">+{milestone.points}</span>
-          </button>
-        ))}
-      </div>
+        <div className="first-meter" aria-hidden="true"><i style={{ width: `${(progress.points / progress.total) * 100}%` }} /></div>
+        <div className="first-steps">
+          {progress.milestones.map((milestone) => (
+            <button key={milestone.id} type="button"
+              data-milestone-id={milestone.id}
+              className={'first-step' + (milestone.done ? ' done' : '') + (shownActive === milestone.id ? ' open' : '') + (guidedStep === milestone.id ? ' guided' : '')}
+              disabled={milestone.done}
+              onClick={() => milestone.id === 'scan' ? onScan() : setActive(shownActive === milestone.id ? null : milestone.id)}>
+              <span className="first-check" aria-hidden="true">{milestone.done ? '✓' : '○'}</span>
+              <span><b>{milestone.label}</b><small>{milestone.detail}</small></span>
+              <span className="mono first-point">+{milestone.points}</span>
+            </button>
+          ))}
+        </div>
+      </>}
 
       {(shownActive || guide) && <div className={'first-workbench' + (guide ? ' with-anko' : '')} data-guide-step={guidedStep || undefined}>
         <div className="first-action-column">

@@ -108,6 +108,27 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
     window.dispatchEvent(new CustomEvent('cairn-anko-prompt', { detail: { text } }))
   }
 
+  if (mode === 'binder') {
+    return (
+      <aside className="anko-guide anko-guide-binder" role="complementary" aria-label="Anko first-lap note">
+        <div className={'anko-binder-note' + (currentDone ? ' earned' : '')}>
+          <div className="anko-binder-copy">
+            <strong>{current.title}</strong>
+            <span>{currentDone ? DONE_LINES[current.id] : current.id === 'mark'
+              ? 'Say what you need. I’ll preview any change.'
+              : 'Scan one card when you’re ready for five points.'}</span>
+          </div>
+          {!currentDone && current.examples && (
+            <div className="anko-binder-examples" aria-label="Example requests">
+              {current.examples.map((example) => <button key={example.text} type="button" onClick={() => fillExample(example.text)}>{example.label}</button>)}
+            </div>
+          )}
+          <button className="anko-binder-skip" onClick={onDone} aria-label="Dismiss Anko's guide">×</button>
+        </div>
+      </aside>
+    )
+  }
+
   return (
     <div className={`anko-guide anko-guide-${mode}`} role="complementary" aria-labelledby="anko-guide-title">
       <div className="anko-book">
