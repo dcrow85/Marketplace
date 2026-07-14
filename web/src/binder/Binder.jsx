@@ -3,7 +3,7 @@ import ScanCards from '../scan/ScanCards.jsx'
 import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
 import { putPhoto, getPhoto } from '../scan/photoStore.js'
-import { entryFor as effStance } from './collection.js'
+import { entryFor as effStance, saveStore } from './collection.js'
 import Card from './Card.jsx'
 import CardModal from './CardModal.jsx'
 import QuickSell from './QuickSell.jsx'
@@ -160,7 +160,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       if (u.stance !== 'have') { u.extra = false; u.trade = false; u.sell = false; u.display = false }
       if (u.stance === 'none' || u.stance === 'pass') u.grail = false
       const next = { ...prev, [uid]: u }
-      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      saveStore(storeKey, next)
       return next
     })
   }, [data, storeKey])
@@ -168,7 +168,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const setField = useCallback((uid, key, value) => {
     setStore((prev) => {
       const next = { ...prev, [uid]: { ...(prev[uid] || {}), [key]: value } }
-      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      saveStore(storeKey, next)
       return next
     })
   }, [storeKey])
@@ -199,7 +199,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           ...(pile.length ? { pile } : {}),
         }
       }
-      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      saveStore(storeKey, next)
       return next
     })
     setUserPhotos((prev) => ({ ...prev, ...Object.fromEntries(scans.filter((s) => s.photo).map((s) => [s.uid, s.photo])) }))
@@ -282,7 +282,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       undoStore.current = prev
       const next = { ...prev }
       for (const [uid, d] of Object.entries(plan.draft)) next[uid] = { ...(next[uid] || {}), ...d }
-      try { localStorage.setItem(storeKey, JSON.stringify(next)) } catch { /* ignore */ }
+      saveStore(storeKey, next)
       return next
     })
     setActionDone({ n: Object.keys(plan.draft).length, steps: plan.steps.length })
@@ -292,7 +292,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     const prev = undoStore.current
     undoStore.current = null
     setStore(prev)
-    try { localStorage.setItem(storeKey, JSON.stringify(prev)) } catch { /* ignore */ }
+    saveStore(storeKey, prev)
     setActionDone(null)
   }
 

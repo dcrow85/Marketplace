@@ -34,11 +34,27 @@ const STEPS = [
   },
 ]
 
+const DONE_LINES = {
+  profile: 'Your table has a name. Nice.',
+  photo: 'There you are. Picture added.',
+  mark: 'Got it — your first card is in.',
+  scan: 'Scan recorded. Five points earned.',
+}
+
 export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
   const [imgOk, setImgOk] = useState(true)
   const previousDone = useRef(Object.fromEntries(progress.milestones.map((item) => [item.id, item.done])))
+  const aligned = useRef(false)
   const current = STEPS[frame]
   const last = frame === STEPS.length - 1
+  const currentDone = !!progress.milestones.find((item) => item.id === current.id)?.done
+  const firstOpen = progress.milestones.findIndex((item) => !item.done)
+
+  useEffect(() => {
+    if (aligned.current) return
+    aligned.current = true
+    if (currentDone && firstOpen >= 0 && firstOpen !== frame) onFrame(firstOpen)
+  }, [currentDone, firstOpen, frame, onFrame])
 
   useEffect(() => {
     const onKey = (event) => {
@@ -59,9 +75,11 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
     const justFinished = done[current.id] && !previousDone.current[current.id]
     previousDone.current = done
     if (!justFinished) return undefined
-    const timer = window.setTimeout(() => last ? onDone() : onFrame(frame + 1), 900)
+    const laterOpen = progress.milestones.findIndex((item, index) => !item.done && index > frame)
+    const nextOpen = laterOpen >= 0 ? laterOpen : progress.milestones.findIndex((item) => !item.done)
+    const timer = window.setTimeout(() => nextOpen >= 0 ? onFrame(nextOpen) : onDone(), 900)
     return () => window.clearTimeout(timer)
-  }, [current.id, doneSignature, frame, last, onDone, onFrame])
+  }, [current.id, doneSignature, frame, onDone, onFrame, progress.milestones])
 
   const showTarget = () => {
     const target = document.querySelector(`[data-tour-target="${current.id}"]`)
@@ -81,7 +99,7 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
           <span>{frame + 1} / {STEPS.length}</span>
           <button onClick={onDone} aria-label="Skip Anko's guide">skip ×</button>
         </div>
-        <div className="anko-coachbody" key={current.id}>
+        <div className={'anko-coachbody' + (currentDone ? ' earned' : '')} key={current.id}>
           <aside className="anko-character">
             {imgOk
               ? <img src={IMG} alt="Anko welcoming you to Cairn" onError={() => setImgOk(false)} />
@@ -90,8 +108,8 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
           <section className="anko-speech">
             <div className="anko-award mono"><b>+{current.points}</b><span>{current.points === 1 ? 'point' : 'points'}</span><i>you have {progress.points}/8</i></div>
             <h2 id="anko-guide-title">{current.title}</h2>
-            <p>{current.say}</p>
-            <button className="anko-showtarget" onClick={showTarget}>{current.action} ↓</button>
+            <p>{currentDone ? DONE_LINES[current.id] : current.say}</p>
+            <button className="anko-showtarget" disabled={currentDone} onClick={showTarget}>{currentDone ? 'Done ✓' : `${current.action} ↓`}</button>
           </section>
         </div>
         <div className="anko-route" aria-label="First-lap points">

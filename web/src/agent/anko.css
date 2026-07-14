@@ -1,64 +1,58 @@
-/* Anko is a coach beside the working page, not a gate in front of it. */
-.anko-guide { position: fixed; inset: 0; z-index: 100; pointer-events: none; }
-.anko-book { position: absolute; right: 18px; bottom: 18px; width: min(560px, calc(100vw - 36px)); color: #171513; background: #f6f0e4; border: 2px solid #171513; box-shadow: 7px 7px 0 #171513, 0 20px 60px rgba(0,0,0,.25); pointer-events: auto; }
+/* Anko travels with the live first-lap control instead of floating over the page. */
+.anko-guide { position: relative; z-index: 2; min-width: 0; animation: anko-arrive .28s ease both; }
+@keyframes anko-arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.anko-book { position: sticky; top: 12px; width: 100%; color: #171513; background: #f6f0e4; border: 2px solid #171513; box-shadow: 5px 5px 0 #171513; }
 .anko-book button { cursor: pointer; }
-.anko-booktop { min-height: 34px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 12px; padding: 6px 9px 6px 12px; color: #5e5950; border-bottom: 2px solid #171513; font-size: 9px; letter-spacing: .08em; }
+.anko-booktop { min-height: 30px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 9px; padding: 5px 7px 5px 9px; color: #5e5950; border-bottom: 2px solid #171513; font-size: 8px; letter-spacing: .07em; }
 .anko-booktop button { color: #5e5950; background: transparent; border: 0; font: inherit; }
 .anko-booktop button:hover { color: #171513; }
-.anko-coachbody { min-height: 218px; display: grid; grid-template-columns: 190px minmax(0, 1fr); animation: anko-panel-in .22s ease both; }
+.anko-coachbody { min-height: 164px; display: grid; grid-template-columns: 112px minmax(0, 1fr); animation: anko-panel-in .22s ease both; }
 @keyframes anko-panel-in { from { opacity: .3; transform: translateX(7px); } to { opacity: 1; transform: none; } }
 .anko-character { position: relative; min-width: 0; overflow: hidden; border-right: 2px solid #171513; background: #efe8da; }
 .anko-character::after { content: ''; position: absolute; inset: 0; background-image: radial-gradient(#171513 .65px, transparent .65px); background-size: 4px 4px; opacity: .08; pointer-events: none; }
-.anko-character img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 43% 43%; filter: saturate(.88) contrast(1.03); }
-.anko-fallback { position: absolute; inset: 0; display: grid; place-items: center; font: 700 80px var(--serif); }
-.anko-speech { position: relative; min-width: 0; padding: 17px 18px 15px; align-self: center; }
-.anko-speech::before { content: ''; position: absolute; left: -13px; top: 54px; width: 22px; height: 18px; background: #f6f0e4; border-left: 2px solid #171513; border-bottom: 2px solid #171513; transform: skew(-32deg) rotate(18deg); }
+.anko-character img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 43% 42%; filter: saturate(.88) contrast(1.03); }
+.anko-fallback { position: absolute; inset: 0; display: grid; place-items: center; font: 700 64px var(--serif); }
+.anko-speech { position: relative; min-width: 0; padding: 13px 13px 11px; align-self: center; }
+.anko-speech::before { content: ''; position: absolute; left: -10px; top: 43px; width: 17px; height: 14px; background: #f6f0e4; border-left: 2px solid #171513; border-bottom: 2px solid #171513; transform: skew(-32deg) rotate(18deg); }
 .anko-speech > * { position: relative; z-index: 1; }
-.anko-award { display: flex; align-items: baseline; gap: 5px; margin-bottom: 7px; color: #376a82; font-size: 9px; text-transform: uppercase; letter-spacing: .06em; }
-.anko-award b { font: 650 23px var(--serif); letter-spacing: 0; }
+.anko-award { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; color: #376a82; font-size: 8px; text-transform: uppercase; letter-spacing: .05em; }
+.anko-award b { font: 650 19px var(--serif); letter-spacing: 0; }
 .anko-award i { margin-left: auto; color: #5e5950; font-style: normal; text-transform: none; letter-spacing: 0; }
-.anko-speech h2 { margin: 0; font-size: 24px; line-height: 1.08; letter-spacing: -.025em; }
-.anko-speech p { margin: 8px 0 13px; color: #4f4a42; font-size: 13px; line-height: 1.45; }
-.anko-showtarget { width: 100%; min-height: 42px; color: #f6f0e4; background: #171513; border: 0; border-radius: 7px; font: 11px var(--mono); }
+.anko-speech h2 { margin: 0; font-size: 19px; line-height: 1.08; letter-spacing: -.025em; }
+.anko-speech p { margin: 6px 0 9px; color: #4f4a42; font-size: 11px; line-height: 1.4; }
+.anko-showtarget { width: 100%; min-height: 36px; color: #f6f0e4; background: #171513; border: 0; border-radius: 6px; font: 9.5px var(--mono); }
 .anko-showtarget:hover { background: #376a82; }
-.anko-route { display: grid; grid-template-columns: repeat(4, 46px) 1fr; align-items: center; gap: 6px; padding: 8px 12px; border-top: 2px solid #171513; }
-.anko-route button { height: 34px; display: grid; grid-template-columns: 15px 1fr; align-items: center; gap: 3px; padding: 3px 5px; color: #6d675d; background: #fffdf6; border: 1px solid #9e978a; font: 8px var(--mono); }
-.anko-route button span { width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; background: #e4ded2; }
+.anko-showtarget:disabled { color: #224e34; background: #dfeadf; cursor: default; }
+.anko-coachbody.earned { background: #f0f5eb; }
+.anko-coachbody.earned .anko-award { color: #2f6440; }
+.anko-route { display: grid; grid-template-columns: repeat(4, 40px) 1fr; align-items: center; gap: 5px; padding: 6px 8px; border-top: 2px solid #171513; }
+.anko-route button { height: 30px; display: grid; grid-template-columns: 13px 1fr; align-items: center; gap: 2px; padding: 3px 4px; color: #6d675d; background: #fffdf6; border: 1px solid #9e978a; font: 7.5px var(--mono); }
+.anko-route button span { width: 13px; height: 13px; display: grid; place-items: center; border-radius: 50%; background: #e4ded2; }
 .anko-route button b { color: #376a82; }
 .anko-route button.on { color: #f6f0e4; border-color: #171513; background: #171513; }
 .anko-route button.on span { color: #171513; background: #f6f0e4; }
 .anko-route button.done:not(.on) { border-color: #4f7b5d; color: #2f6440; background: #edf3eb; }
-.anko-route > strong { justify-self: end; font-size: 13px; }
-.anko-bookfoot { min-height: 48px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 9px; padding: 7px 9px; border-top: 1px solid #9e978a; }
-.anko-bookfoot .ghost { width: auto; min-height: 34px; padding: 6px 10px; color: #5e5950; border-color: #9e978a; }
+.anko-route > strong { justify-self: end; font-size: 11px; }
+.anko-bookfoot { min-height: 38px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 6px; padding: 4px 6px; border-top: 1px solid #9e978a; }
+.anko-bookfoot .ghost { width: auto; min-height: 30px; padding: 5px 7px; color: #5e5950; border-color: #9e978a; font-size: 8px; }
 .anko-bookfoot .ghost:disabled { opacity: .3; cursor: default; }
-.anko-bookfoot span { color: #6d675d; text-align: center; font-size: 8px; }
+.anko-bookfoot span { color: #6d675d; text-align: center; font-size: 7.5px; }
 
-@media (max-width: 760px) {
-  .anko-book { right: 10px; bottom: 10px; width: min(500px, calc(100vw - 20px)); box-shadow: 4px 4px 0 #171513; }
-  .anko-coachbody { grid-template-columns: 120px minmax(0, 1fr); min-height: 190px; }
-  .anko-speech { padding: 13px 14px 12px; }
-  .anko-speech h2 { font-size: 20px; }
-  .anko-speech p { font-size: 11.5px; }
+@media (max-width: 900px) {
+  .anko-book { position: relative; top: auto; box-shadow: 4px 4px 0 #171513; }
+  .anko-coachbody { grid-template-columns: 126px minmax(0, 1fr); }
 }
 
 @media (max-width: 440px) {
-  .anko-book { right: 0; bottom: 0; width: 100%; border-width: 2px 0 0; box-shadow: 0 -5px 0 rgba(23,21,19,.16); }
-  .anko-booktop { min-height: 30px; padding-block: 4px; }
-  .anko-coachbody { grid-template-columns: 88px minmax(0, 1fr); min-height: 152px; }
+  .anko-coachbody { grid-template-columns: 88px minmax(0, 1fr); min-height: 148px; }
   .anko-character img { object-position: 40% 42%; }
   .anko-speech { padding: 9px 10px 8px; }
-  .anko-speech::before { left: -10px; top: 44px; width: 17px; height: 14px; }
-  .anko-award { margin-bottom: 3px; }
-  .anko-award b { font-size: 18px; }
+  .anko-award b { font-size: 17px; }
   .anko-speech h2 { font-size: 17px; }
   .anko-speech p { margin: 5px 0 7px; font-size: 10px; line-height: 1.35; }
-  .anko-showtarget { min-height: 38px; font-size: 9px; }
-  .anko-route { grid-template-columns: repeat(4, 42px) 1fr; gap: 4px; padding: 6px 8px; }
-  .anko-route button { width: 42px; height: 30px; }
-  .anko-bookfoot { min-height: 42px; padding: 4px 7px; }
-  .anko-bookfoot .ghost { min-height: 34px; }
-  .anko-bookfoot span { display: none; }
+  .anko-route { grid-template-columns: repeat(4, 38px) 1fr; gap: 3px; padding: 5px 6px; }
+  .anko-route button { width: 38px; height: 28px; }
   .anko-bookfoot { grid-template-columns: 1fr 1fr; }
+  .anko-bookfoot span { display: none; }
   .anko-bookfoot .ghost:last-child { justify-self: end; }
 }

@@ -7,7 +7,7 @@ import './onboarding.css'
 
 const cardName = (card) => card?.name_en || card?.name_ja || card?.uid || 'Untitled card'
 
-export default function GettingStarted({ accountId, catalog, profile, progress, onScan, guidedStep = null }) {
+export default function GettingStarted({ accountId, catalog, profile, progress, onScan, guidedStep = null, guide = null }) {
   const data = useCatalog(catalog)
   const [active, setActive] = useState(() => progress.milestones.find((milestone) => !milestone.done)?.id || null)
   const [name, setName] = useState(profile.name || '')
@@ -26,7 +26,13 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const hits = useMemo(() => {
     const needle = query.trim().toLowerCase()
     if (!needle || !data) return []
-    return data.cards.filter((card) => (`${card.num || ''} ${cardName(card)} ${card.romaji || ''}`).toLowerCase().includes(needle)).slice(0, 6)
+    const unique = new Map()
+    for (const card of data.cards) {
+      if (!`${card.num || ''} ${cardName(card)} ${card.romaji || ''}`.toLowerCase().includes(needle)) continue
+      if (!unique.has(card.uid)) unique.set(card.uid, card)
+      if (unique.size === 6) break
+    }
+    return [...unique.values()]
   }, [data, query])
 
   const doneSignature = progress.milestones.map((milestone) => `${milestone.id}:${milestone.done}`).join('|')
@@ -96,7 +102,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     setQuery('')
     setActive(null)
   }
-  const shownActive = guidedStep && guidedStep !== 'scan' ? guidedStep : active
+  const shownActive = guidedStep || active
 
   return (
     <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '')} aria-label="Getting started">
@@ -121,7 +127,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
       <div className="first-steps">
         {progress.milestones.map((milestone) => (
           <button key={milestone.id} type="button"
-            data-milestone-id={milestone.id} data-tour-target={milestone.id === 'scan' ? 'scan' : undefined}
+            data-milestone-id={milestone.id}
             className={'first-step' + (milestone.done ? ' done' : '') + (shownActive === milestone.id ? ' open' : '') + (guidedStep === milestone.id ? ' guided' : '')}
             disabled={milestone.done}
             onClick={() => milestone.id === 'scan' ? onScan() : setActive(shownActive === milestone.id ? null : milestone.id)}>
@@ -132,18 +138,20 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
         ))}
       </div>
 
-      {shownActive === 'profile' && !progress.milestones.find((milestone) => milestone.id === 'profile')?.done && (
-        <div className="first-action first-profile" data-tour-target="profile">
+      {(shownActive || guide) && <div className={'first-workbench' + (guide ? ' with-anko' : '')} data-guide-step={guidedStep || undefined}>
+        <div className="first-action-column">
+        {shownActive === 'profile' && !progress.milestones.find((milestone) => milestone.id === 'profile')?.done && (
+          <div className="first-action first-profile" data-tour-target="profile">
           <label>{guidedStep === 'profile' && <span className="first-field-arrow mono">Start here ↓</span>}<span className="mono">Collector name</span><input autoFocus data-tour-focus maxLength={32} value={name}
             placeholder="How the room should know you" onChange={(event) => setName(event.target.value)} /></label>
           <label><span className="mono">Your table line</span><input maxLength={140} value={sign}
             placeholder="What do you collect, trade, or hunt?" onChange={(event) => setSign(event.target.value)} /></label>
           <button className="primary" disabled={!name.trim() || !sign.trim()} onClick={save}>Save profile · +1 point</button>
-        </div>
-      )}
+          </div>
+        )}
 
-      {shownActive === 'photo' && !progress.milestones.find((milestone) => milestone.id === 'photo')?.done && (
-        <div className="first-action first-photo">
+        {shownActive === 'photo' && !progress.milestones.find((milestone) => milestone.id === 'photo')?.done && (
+          <div className="first-action first-photo">
           <span className="first-photoempty" aria-hidden="true">＋</span>
           <span><b>Add your profile picture</b><small>We make it square and keep it on this device.</small></span>
           <input ref={photoInput} className="first-photoinput" type="file" accept="image/*" disabled={photoBusy} onChange={choosePhoto} />
@@ -152,11 +160,11 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
             {photoBusy ? 'preparing picture…' : 'Choose picture · +1 point'}
           </button>
           {photoError && <span className="first-photoerror" role="alert">{photoError}</span>}
-        </div>
-      )}
+          </div>
+        )}
 
-      {shownActive === 'mark' && !progress.milestones.find((milestone) => milestone.id === 'mark')?.done && (
-        <div className="first-action first-cardpick" data-tour-target="mark">
+        {shownActive === 'mark' && !progress.milestones.find((milestone) => milestone.id === 'mark')?.done && (
+          <div className="first-action first-cardpick" data-tour-target="mark">
           <input autoFocus data-tour-focus type="search" value={query} placeholder="Find a card by name or number…"
             aria-label="Find your first card" onChange={(event) => setQuery(event.target.value)} />
           {query.trim() && !hits.length && <div className="mono dim first-nohit">No matching card yet.</div>}
@@ -167,8 +175,19 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
               <span className="first-hitacts"><button onClick={() => mark(card, 'have')}>Have</button><button onClick={() => mark(card, 'want')}>Want</button></span>
             </div>
           ))}
+          </div>
+        )}
+
+        {shownActive === 'scan' && !progress.milestones.find((milestone) => milestone.id === 'scan')?.done && (
+          <div className="first-action first-scan">
+            <span className="first-scanmark" aria-hidden="true">⌗</span>
+            <span><b>Scan your first card</b><small>Take a clear photo or choose one from your phone. Nothing is uploaded automatically.</small></span>
+            <button type="button" data-tour-target="scan" data-tour-focus className="primary" onClick={onScan}>Open the scanner · +5 points</button>
+          </div>
+        )}
         </div>
-      )}
+        {guide}
+      </div>}
       <p className="first-fine mono">Points are progress markers for now—not money, rank, or proof.</p>
     </section>
   )

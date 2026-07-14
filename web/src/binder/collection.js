@@ -9,7 +9,9 @@ export function loadStore(storeKey) {
 
 export function saveStore(storeKey, store) {
   try { localStorage.setItem(storeKey, JSON.stringify(store)) } catch { /* ignore */ }
-  window.dispatchEvent(new CustomEvent('cairn-store'))
+  // Some callers persist from a functional React state update. Announce on the
+  // next microtask so progress subscribers never update while that render runs.
+  window.queueMicrotask(() => window.dispatchEvent(new CustomEvent('cairn-store')))
 }
 
 export function catalogUrl(catalog) {

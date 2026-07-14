@@ -188,7 +188,8 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       <main className="main">
         <GettingStarted key={accountId} accountId={accountId}
           catalog={catalog} profile={profile} progress={progress} onScan={openScanner}
-          guidedStep={showMeet ? ['profile', 'photo', 'mark', 'scan'][meetStep] : null} />
+          guidedStep={showMeet ? ['profile', 'photo', 'mark', 'scan'][meetStep] : null}
+          guide={showMeet ? <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} /> : null} />
         <div className="bindertop">
           {CATALOGS.length > 1 && (
             <div className="catalogpick" aria-label="catalog">
@@ -236,7 +237,6 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           </div>
         </div>
       )}
-      {showMeet && <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} />}
     </div>
   )
 }
