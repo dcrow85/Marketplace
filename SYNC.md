@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: in-interface Anko introduction]` 2026-07-14 · Codex —
+  Replacing the five-beat full-screen lore gate with a three-frame manga guide over the working Binder.
+  The frames will map directly to the 0/3 first lap, show Profile / Have-Want-Scan / Market-Trades in
+  miniature, and state Anko's bounded advisory role without delaying access to the actual interface.
 - `[passive]` 2026-07-14 · Codex — **My Table now has a bounded, confirmed fresh-start control.**
   It removes only the signed-in account's local profile, first-lap points, Binder changes, scans, piles,
   table preferences, and Anko-introduction flag; a live published table is taken off the board before any
