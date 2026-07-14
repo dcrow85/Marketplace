@@ -58,10 +58,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: optimistic Binder search]` 2026-07-14 · Codex —
-  Direct text matches will continue narrowing immediately, but unmatched pre-submit text will preserve the current
-  card view until Ask Anko is invoked. The docked onboarding examples gain a simple everyday question alongside
-  the bulk collection/listing examples; agent and evidence rules remain unchanged.
+- `[passive]` 2026-07-14 · Codex — **Binder search now stays optimistic until Anko is asked.**
+  Literal matches still narrow immediately; unmatched pre-submit text keeps every card in the current filtered view
+  visible and offers a quiet Ask Anko handoff instead of an empty state. The docked examples now begin with the simple
+  question `Do I have Penny?`, followed by the bulk collection/listing examples. Desktop and 390px browser QA proved
+  direct narrowing, conversational fallback, no empty-state flash, and zero horizontal overflow. Source ESLint, diff
+  checks, and the assembled Pages build pass. UI commit `8bc67c6`; Pages deployment `e11f22ad`; apex serves immutable
+  asset `index-JNI_nvmK.js` and the new fallback copy. Agent and evidence rules are unchanged.
 - `[passive]` 2026-07-14 · Codex — **Anko now starts inline and settles permanently into his real search bar.**
   The popup, heavy manga-book frame, duplicate Binder portrait, manual next/back route, and tutorial arrow-key
   navigation are gone. `Hi, I’m Anko` is a slim helper strip inside the live profile setup; completing real tasks
