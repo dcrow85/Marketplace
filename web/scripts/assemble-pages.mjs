@@ -20,7 +20,7 @@ const deferred = html.replace(
   /<script type="module" crossorigin src="([^"]+)"><\/script>/,
   (_, src) => {
     const version = src.match(/\/([^/]+)\.js$/)?.[1] || 'app'
-    return `<script type="module" crossorigin src="${src}?v=${version}"></script>`
+    return `<script type="module" crossorigin src="${src}?v=${version}-module"></script>`
   },
 )
 if (deferred === html) throw new Error('Vite entry script was not found in app/index.html')
