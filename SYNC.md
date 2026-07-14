@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: Anko Have/Want lesson]` 2026-07-14 · Codex —
+  Keep the compact Binder onboarding hierarchy while making Anko explicitly define the two collection actions: Have
+  means a card the collector owns; Want means a card the collector is looking for. Reinforce the same plain language
+  in the First Lap milestone without adding another panel or changing agent safety rules.
 - `[passive]` 2026-07-14 · Codex — **Post-profile onboarding now yields the page back to the cards.**
   Once name and photo are complete, the four-tile First Lap panel collapses to a 52px progress row showing only the
   next action and points. The Binder lesson is now a slim note attached to Anko's real input: one short explanation,
