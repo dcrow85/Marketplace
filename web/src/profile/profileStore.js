@@ -25,3 +25,19 @@ export function saveProfile(accountId, profile) {
 }
 
 export const profileComplete = (profile) => !!(profile?.name?.trim() && profile?.sign?.trim())
+
+// A deliberate first-run reset: clear only this account's local surface state.
+// Offers and seen-inbox history are protocol records, so they survive the reset.
+export function resetAccountLocal(accountId) {
+  if (!accountId) return
+  const suffix = `:${accountId}`
+  const preserved = ['cairn-offers:', 'cairn-inbox-seen:']
+  try {
+    for (let index = localStorage.length - 1; index >= 0; index -= 1) {
+      const key = localStorage.key(index)
+      if (!key?.startsWith('cairn-') || !key.endsWith(suffix)) continue
+      if (preserved.some((prefix) => key.startsWith(prefix))) continue
+      localStorage.removeItem(key)
+    }
+  } catch { /* ignore unavailable storage */ }
+}

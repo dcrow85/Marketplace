@@ -13,7 +13,7 @@ import MiniCard from '../components/MiniCard.jsx'
 import ProfileHeader from './ProfileHeader.jsx'
 import CardModal from '../binder/CardModal.jsx'
 import { retryImg } from '../binder/helpers.jsx'
-import { loadProfile, saveProfile } from './profileStore.js'
+import { loadProfile, resetAccountLocal, saveProfile } from './profileStore.js'
 
 const TABLE_TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
 
@@ -137,6 +137,9 @@ export default function MyPage({ accountId, catalog }) {
   const [pubAt, setPubAt] = useState(() => { try { return Number(localStorage.getItem(pubKey)) || 0 } catch { return 0 } })
   const [pubBusy, setPubBusy] = useState(false)
   const [pubErr, setPubErr] = useState(false)
+  const [resetOpen, setResetOpen] = useState(false)
+  const [resetBusy, setResetBusy] = useState(false)
+  const [resetErr, setResetErr] = useState(false)
   const buildSnapshot = () => ({
     v: 1, cat: catalog.id, sign: profile.sign.trim(), handle: profile.name.trim() || handleFor(accountId),
     showcase: rows.display.map(({ c }) => c.uid),
@@ -160,6 +163,15 @@ export default function MyPage({ accountId, catalog }) {
     await unpublishProfile(accountId)
     setPubAt(0); try { localStorage.removeItem(pubKey) } catch { /* ignore */ }
     setPubBusy(false)
+  }
+  const resetAccount = async () => {
+    setResetBusy(true); setResetErr(false)
+    if (canPublish) {
+      const result = await unpublishProfile(accountId)
+      if (!result?.ok) { setResetBusy(false); setResetErr(true); return }
+    }
+    resetAccountLocal(accountId)
+    window.location.reload()
   }
   // a published page stays fresh: republish quietly whenever you visit your page
   useEffect(() => {
@@ -188,6 +200,21 @@ export default function MyPage({ accountId, catalog }) {
               </>
           : <span className="dim">publishing needs a wallet account — sign in with one and your table can go on the board</span>}
         {pubErr && <span className="pf-puberr">couldn&rsquo;t reach the board — try again</span>}
+      </div>
+      <div className={'pf-reset mono' + (resetOpen ? ' open' : '')}>
+        {!resetOpen
+          ? <button className="ghost sm" onClick={() => setResetOpen(true)}>Start fresh…</button>
+          : <>
+              <span><b>Reset this account?</b> Profile, points, Binder changes, scans, and piles will be cleared.
+                Trades and offers stay in the record.</span>
+              <span className="pf-resetacts">
+                <button className="ghost sm" onClick={() => setResetOpen(false)} disabled={resetBusy}>cancel</button>
+                <button className="ghost sm pf-resetconfirm" onClick={resetAccount} disabled={resetBusy}>
+                  {resetBusy ? 'resetting…' : 'Reset and start at 0/3'}
+                </button>
+              </span>
+            </>}
+        {resetErr && <span className="pf-puberr">couldn&rsquo;t take your table off the board — nothing was reset</span>}
       </div>
       <input className="ofr-search pf-listsearch" type="search" value={query}
         aria-label="Search my listed cards" placeholder="Search my listed cards…"

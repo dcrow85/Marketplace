@@ -442,6 +442,11 @@ button.pf-huntopen { font: inherit; color: inherit; background: transparent; bor
 .pf-pubrow .pf-live { color: var(--agent, #4a6fa5); }
 .pf-pubrow .pf-pubbtn { width: auto; flex: none; font-size: 12.5px; padding: 8px 16px; }
 .pf-puberr { color: var(--signal); font-size: 11.5px; }
+.pf-reset { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin: -12px 0 2px; color: var(--dim); font-size: 10.5px; }
+.pf-reset.open { padding: 10px 12px; border: 0.5px solid var(--rule); border-radius: 8px; background: var(--paper2); }
+.pf-reset b { color: var(--ink); }
+.pf-resetacts { display: inline-flex; gap: 6px; margin-left: auto; }
+.pf-resetconfirm { color: var(--signal); border-color: color-mix(in srgb, var(--signal) 45%, var(--rule)); }
 .ofl-live { color: var(--agent, #4a6fa5); }
 .ofl-liveleg { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; font-size: 11.5px; margin-top: 6px; padding: 7px 9px; border: 0.5px dashed var(--rule); border-radius: 7px; }
 .ofl-liveleg button { width: auto; flex: none; }
