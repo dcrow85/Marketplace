@@ -20,10 +20,14 @@ const STEPS = [
   },
   {
     id: 'mark',
-    title: 'Add your first card',
-    say: 'Search for a card you know. Tap Have if it is yours, or Want if you are looking for it.',
+    title: 'Ask me about your cards',
+    say: 'Use the Anko bar in plain English. I will show you the change before anything happens.',
     points: 1,
-    action: 'Open the card search',
+    action: 'Focus the Anko bar',
+    examples: [
+      { label: '“I have every common.”', text: 'I have every common' },
+      { label: '“List all my commons for $1.”', text: 'List all my commons for $1' },
+    ],
   },
   {
     id: 'scan',
@@ -41,7 +45,7 @@ const DONE_LINES = {
   scan: 'Scan recorded. Five points earned.',
 }
 
-export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
+export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 'setup' }) {
   const [imgOk, setImgOk] = useState(true)
   const previousDone = useRef(Object.fromEntries(progress.milestones.map((item) => [item.id, item.done])))
   const aligned = useRef(false)
@@ -58,6 +62,8 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
 
   useEffect(() => {
     const onKey = (event) => {
+      const editing = event.target?.matches?.('input, textarea, select, [contenteditable="true"]')
+      if (editing && event.key !== 'Escape') return
       if (event.key === 'Escape') onDone()
       if (event.key === 'ArrowRight') onFrame(Math.min(frame + 1, STEPS.length - 1))
       if (event.key === 'ArrowLeft') onFrame(Math.max(frame - 1, 0))
@@ -102,8 +108,12 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
     }, 260)
   }
 
+  const fillExample = (text) => {
+    window.dispatchEvent(new CustomEvent('cairn-anko-prompt', { detail: { text } }))
+  }
+
   return (
-    <div className="anko-guide" role="dialog" aria-modal="false" aria-labelledby="anko-guide-title">
+    <div className={`anko-guide anko-guide-${mode}`} role={mode === 'setup' ? 'dialog' : 'complementary'} aria-modal={mode === 'setup' ? 'false' : undefined} aria-labelledby="anko-guide-title">
       <div className="anko-book">
         <div className="anko-booktop mono">
           <span>ANKO · YOUR FIRST LAP</span>
@@ -120,6 +130,13 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame }) {
             <div className="anko-award mono"><b>+{current.points}</b><span>{current.points === 1 ? 'point' : 'points'}</span><i>you have {progress.points}/8</i></div>
             <h2 id="anko-guide-title">{current.title}</h2>
             <p>{currentDone ? DONE_LINES[current.id] : current.say}</p>
+            {!currentDone && current.examples && (
+              <div className="anko-examples">
+                <span className="mono">Try an example — I&rsquo;ll put it in the real bar.</span>
+                {current.examples.map((example) => <button key={example.text} type="button" onClick={() => fillExample(example.text)}>{example.label}</button>)}
+                <small>Have every common? Just say so. List them all for $1? Yeah—I can do that.</small>
+              </div>
+            )}
             <button className="anko-showtarget" disabled={currentDone} onClick={showTarget}>{currentDone ? 'Done ✓' : `${current.action} ↓`}</button>
           </section>
         </div>

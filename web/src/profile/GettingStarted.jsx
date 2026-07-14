@@ -102,10 +102,13 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     setQuery('')
     setActive(null)
   }
-  const shownActive = guidedStep || active
+  const setupStep = guidedStep === 'profile' || guidedStep === 'photo'
+  const interfaceStep = guidedStep === 'mark' || guidedStep === 'scan'
+  const setupDone = progress.milestones.filter((milestone) => milestone.id === 'profile' || milestone.id === 'photo').every((milestone) => milestone.done)
+  const shownActive = setupStep ? guidedStep : interfaceStep ? null : active
 
   return (
-    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '')} aria-label="Getting started">
+    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (setupStep && guide ? ' first-lap-modal' : '') + (setupDone || interfaceStep ? ' first-lap-compact' : '')} aria-label="Getting started">
       {flight && (
         <span key={flight.key} className="point-flight" aria-live="polite"
           style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}

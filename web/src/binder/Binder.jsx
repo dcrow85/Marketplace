@@ -42,12 +42,13 @@ function cardMatchesChannel(card, channel) {
     : card.product_channel === channel
 }
 
-export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard }) {
+export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard, onboardingStep = null, onboardingGuide = null }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
   const [store, setStore] = useState({})
   const [q, setQ] = useState('')
   const [query, setQuery] = useState('') // the unified search/ask input text
+  const askInput = useRef(null)
   const [stanceF, setStanceF] = useState(() => new Set())
   const [familyF, setFamilyF] = useState(() => new Set())
   const [channelF, setChannelF] = useState(() => new Set())
@@ -79,6 +80,19 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     window.addEventListener('cairn-mock', onMock)
     return () => { window.removeEventListener('cairn-store', onStore); window.removeEventListener('cairn-mock', onMock) }
   }, [storeKey])
+  useEffect(() => {
+    const useExample = (event) => {
+      const text = String(event.detail?.text || '').trim()
+      if (!text) return
+      setQuery(text)
+      setQ(text)
+      setAgentRes(null)
+      setActionDone(null)
+      window.requestAnimationFrame(() => askInput.current?.focus())
+    }
+    window.addEventListener('cairn-anko-prompt', useExample)
+    return () => window.removeEventListener('cairn-anko-prompt', useExample)
+  }, [])
   const mockSales = useMemo(() => loadMockSales(mockSalesKeyFor(catalog.id)), [catalog, mockRev]) // eslint-disable-line react-hooks/exhaustive-deps -- mockRev is the invalidation signal
   // one filtered view of the market — listings you already bought (mock) are gone
   // everywhere: the ask index, the card modal's ledger, the from-ask strips.
@@ -398,7 +412,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         <span><b className="t-want">{countStance('want')}</b> want</span>
         {rows.length !== data.summary.cards && <span><b>{rows.length}</b> shown</span>}
         <span><b>{data.summary.cards}</b> in catalog</span>
-        <button className="scanbtn" onClick={() => setScanning(true)} aria-label="Scan cards to add">
+        <button className="scanbtn" data-tour-target={onboardingStep === 'scan' ? 'scan' : undefined}
+          data-tour-focus={onboardingStep === 'scan' ? true : undefined}
+          onClick={() => setScanning(true)} aria-label="Scan cards to add">
           <svg className="scanico" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M4 8.5V6.5A2.5 2.5 0 0 1 6.5 4H8.5" /><path d="M15.5 4H17.5A2.5 2.5 0 0 1 20 6.5V8.5" />
             <path d="M20 15.5V17.5A2.5 2.5 0 0 1 17.5 20H15.5" /><path d="M8.5 20H6.5A2.5 2.5 0 0 1 4 17.5V15.5" />
@@ -407,15 +423,18 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <span className="scanbtn-label">Scan cards</span>
         </button>
       </div>
+      {onboardingStep === 'scan' && onboardingGuide}
       <div className="controls">
-        <div className="askbar">
+        <div className="askbar" data-tour-target={onboardingStep === 'mark' ? 'mark' : undefined}>
           <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
             alt="" title={`${agentName} — Elemental 4193 · Fire · Red Panda`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
-          <input value={query} maxLength={280} placeholder={`Search or ask ${agentName}…`}
+          <input ref={askInput} data-tour-focus={onboardingStep === 'mark' ? true : undefined}
+            value={query} maxLength={280} placeholder={`Search or ask ${agentName}…`}
             onChange={(e) => { const v = e.target.value; setQuery(v); if (agentRes) clearAgent(); setQ(v) }}
             onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
           <button className="askbtn" onClick={ask} disabled={agentBusy || !query.trim()}>{agentBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
         </div>
+        {onboardingStep === 'mark' && onboardingGuide}
         <div className="chips">
           {CHIPS.map((ch, i) => (
             <button key={i} className={'chip' + (chipOn(ch) ? ' on' : '') + (chipOn(ch) && ch.acc ? ' acc' : '')} onClick={() => toggleChip(ch)}>
