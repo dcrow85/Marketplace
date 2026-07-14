@@ -33,6 +33,19 @@ export function mergeInbox(catalogId, accountId, box) {
         if (prev && ['sent', 'seen'].includes(prev.state)) prev.state = 'countered'
       }
       changed = true
+    } else if ((m.type === 'evidence_request' || m.type === 'evidence_response') && m.offerId && m.line) {
+      const o = offers.find((x) => x.id === m.offerId)
+      if (!o || !['sent', 'seen'].includes(o.state)) continue
+      const event = {
+        id: m.id,
+        kind: m.type === 'evidence_request' ? 'request' : 'response',
+        dir: 'in',
+        line: String(m.line).trim().slice(0, 600),
+        at: new Date(Number(m.at) || Date.now()).toISOString(),
+      }
+      if (!event.line) continue
+      o.evidenceThread = [...(Array.isArray(o.evidenceThread) ? o.evidenceThread : []), event].slice(-20)
+      changed = true
     } else if (m.type === 'response') {
       const o = offers.find((x) => x.id === m.id)
       if (!o || o.state === m.state) continue

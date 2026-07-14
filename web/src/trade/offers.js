@@ -58,6 +58,47 @@ export function setOfferState(key, id, state, extra) {
   saveOffers(key, offers)
 }
 
+const evidenceMessage = (kind, line, dir) => ({
+  id: 'ev_' + Math.random().toString(36).slice(2, 10),
+  kind,
+  dir,
+  line: String(line || '').trim().slice(0, 600),
+  at: new Date().toISOString(),
+})
+
+function appendEvidence(key, offerId, event) {
+  const offers = loadOffers(key)
+  const o = offers.find((x) => x.id === offerId)
+  if (!o || !event.line || !['sent', 'seen'].includes(o.state)) return null
+  o.evidenceThread = [...(Array.isArray(o.evidenceThread) ? o.evidenceThread : []), event].slice(-20)
+  saveOffers(key, offers)
+  return { o, event }
+}
+
+// Evidence questions stay inside the open offer. They are messages, not state
+// transitions: asking cannot accept, decline, fund, or otherwise move the deal.
+export function requestOfferEvidence(key, offerId, line) {
+  const appended = appendEvidence(key, offerId, evidenceMessage('request', line, 'out'))
+  if (!appended) return false
+  const { o, event } = appended
+  const other = o.dir === 'out' ? o.to : o.from
+  if (o.live && isLiveAddr(other)) {
+    pushInbox(other, { id: event.id, type: 'evidence_request', offerId: o.id, line: event.line })
+  }
+  return true
+}
+
+export function respondToOfferEvidence(key, offerId, line) {
+  const appended = appendEvidence(key, offerId, evidenceMessage('response', line, 'out'))
+  if (!appended) return false
+  const { o, event } = appended
+  const other = o.dir === 'out' ? o.to : o.from
+  if (o.live && isLiveAddr(other)) {
+    pushInbox(other, { id: event.id, type: 'evidence_response', offerId: o.id, line: event.line })
+  }
+  return true
+}
+
 export function withdrawOffer(key, id) {
   const offers = loadOffers(key)
   const o = offers.find((x) => x.id === id)

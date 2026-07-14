@@ -11,6 +11,7 @@ import { useBus } from '../lib/store.js'
 import { handleFor } from '../identity.js'
 import { retryImg } from '../binder/helpers.jsx'
 import AskAnko from './AskAnko.jsx'
+import OfferFollowThrough from './OfferFollowThrough.jsx'
 
 // The offers ledger: every conversation, both directions, counters chained. An
 // accepted offer walks the settlement steps right here; everything else shows its
@@ -72,6 +73,7 @@ function LiveLeg({ o, offersKey, catalogId, accountId, decision, recommended }) 
 }
 
 export default function Offers({ accountId, catalog, onCounter }) {
+  const [reads, setReads] = useState({})
   const data = useCatalog(catalog)
   const key = offersKeyFor(catalog.id, accountId)
   const offers = useBus(() => loadOffers(key), [key])
@@ -88,8 +90,19 @@ export default function Offers({ accountId, catalog, onCounter }) {
     )
   }
 
+  const lastEvidence = (o) => Array.isArray(o.evidenceThread) ? o.evidenceThread[o.evidenceThread.length - 1] : null
+  const evidenceNeedsYou = (o) => {
+    const last = lastEvidence(o)
+    return ['sent', 'seen'].includes(o.state) && last?.dir === 'in' && last.kind === 'request'
+  }
+  const awaitingEvidence = (o) => {
+    const last = lastEvidence(o)
+    return ['sent', 'seen'].includes(o.state) && last?.dir === 'out' && last.kind === 'request'
+  }
   const groupFor = (o) => {
     const open = ['sent', 'seen'].includes(o.state)
+    if (evidenceNeedsYou(o)) return 'needs'
+    if (awaitingEvidence(o)) return 'waiting'
     if (o.dir === 'in' && open) return 'needs'
     if (open || OFFER_SETTLING.includes(o.state)) return 'waiting'
     return 'history'
@@ -107,8 +120,9 @@ export default function Offers({ accountId, catalog, onCounter }) {
         const getCards = (o.dir === 'out' ? o.want : o.give).map((x) => byUid.get(x.uid)).filter(Boolean)
         const giveCards = (o.dir === 'out' ? o.give : o.want).map((x) => byUid.get(x.uid)).filter(Boolean)
         const recommended = Number(o.cash?.amount || 0) >= 500 || [...getCards, ...giveCards].some((c) => Number(c.band_rank || 0) >= 3)
+        const evidenceRef = lastEvidence(o)?.id || 'none'
         const decision = {
-          decision_ref: `${o.id}:${o.state}`,
+          decision_ref: `${o.id}:${o.state}:${evidenceRef}`,
           kind: 'incoming_offer',
           question: 'Should I accept, counter, or decline this offer?',
           terms: {
@@ -118,13 +132,20 @@ export default function Offers({ accountId, catalog, onCounter }) {
             cash: o.cash || null,
           },
           principal_context: { recorded_policy: 'No signed trade policy is available to this interface.' },
-          evidence: { counterparty_statement: o.response?.line || null, scans_or_condition_evidence: 'not included in this offer packet' },
+          evidence: {
+            counterparty_statement: o.response?.line || null,
+            scans_or_condition_evidence: 'not included in this offer packet',
+            evidence_messages: (o.evidenceThread || []).slice(-6).map(({ kind, dir, line }) => ({ kind, dir, line })),
+          },
         }
+        const currentRead = reads[o.id]?.decision_ref === decision.decision_ref ? reads[o.id] : null
+        const needsEvidence = evidenceNeedsYou(o)
+        const waitingEvidence = awaitingEvidence(o)
         return (
-          <div key={o.id} className={'ofl-row' + (o.dir === 'in' && open ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
+          <div key={o.id} className={'ofl-row' + (((o.dir === 'in' && open) && !waitingEvidence) || needsEvidence ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
             <div className="ofl-top">
               <span className="mono ofl-dir">{o.dir === 'out' ? '→ to' : '← from'} <b>{handleFor(other)}</b> · {o.at}{o.counterOf ? ' · counter' : ''}{o.live ? <span className="ofl-live"> · ● live</span> : ''}</span>
-              <span className={'mono ofl-st st-' + o.state}>{o.dir === 'in' && open ? 'needs your answer' : o.state.replace('_', ' ')}</span>
+              <span className={'mono ofl-st st-' + o.state}>{needsEvidence ? 'evidence requested' : waitingEvidence ? 'awaiting evidence' : o.dir === 'in' && open ? 'needs your answer' : o.state.replace('_', ' ')}</span>
             </div>
             <div className="ofl-baskets">
               <span className="ofl-side"><i className="mono dim">you get</i> {(o.dir === 'out' ? o.want : o.give).map(chip)}{(o.dir === 'out' ? o.want : o.give).length ? null : ' —'}</span>
@@ -146,8 +167,11 @@ export default function Offers({ accountId, catalog, onCounter }) {
             <LiveLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} decision={decision} recommended={recommended} />
             {o.dir === 'in' && open && <>
               <div className="ofl-decisionlabel mono">Your decision · accept, counter, or decline</div>
-              <AskAnko decision={decision} recommended={recommended} />
+              <AskAnko decision={decision} recommended={recommended}
+                onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
             </>}
+            <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
+              onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />
             <span className="sw-acts">
               {o.dir === 'in' && open && <>
                 <button className="sheetbtn mk-sm mono sw-boot" onClick={() => acceptIncoming(key, o.id)}>✓ accept</button>

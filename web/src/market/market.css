@@ -163,6 +163,26 @@
 .anko-readlist li + li { margin-top: 3px; }
 .anko-readlist.unknown { border-top: 0.5px solid color-mix(in srgb, var(--agent) 25%, transparent); padding-top: 7px; }
 .anko-boundary { color: var(--dim); font-size: 9.5px; border-top: 0.5px solid color-mix(in srgb, var(--agent) 25%, transparent); padding-top: 7px; margin-top: 9px !important; }
+.ofl-follow { display: flex; flex-direction: column; gap: 7px; }
+.ofl-follow:empty { display: none; }
+.anko-followbar { display: flex; align-items: center; gap: 8px 10px; flex-wrap: wrap; padding: 8px 10px; border-left: 2px solid var(--agent); background: var(--agent-bg); border-radius: 0 8px 8px 0; }
+.anko-followbar > span { color: var(--agent); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; margin-right: auto; }
+.anko-followbar.needs-reply { border-left-color: var(--signal); }
+.anko-followbar.needs-reply > span { color: var(--signal); }
+.ofl-evidence { display: flex; flex-direction: column; gap: 6px; border: 0.5px solid var(--rule); border-radius: 9px; padding: 9px 11px; background: var(--paper2); }
+.ofl-evidencehead { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; color: var(--ink); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
+.ofl-evidencehead span { color: var(--dim); text-transform: none; letter-spacing: 0; }
+.ofl-evmsg { border-left: 2px solid var(--rule); padding-left: 9px; }
+.ofl-evmsg.in { border-left-color: var(--agent); }
+.ofl-evmsg > span { color: var(--dim); font-size: 9.5px; text-transform: uppercase; }
+.ofl-evmsg p { margin: 2px 0 0; font-size: 12.5px; line-height: 1.45; }
+.ofl-evlocal { color: var(--dim); font-size: 9.5px; }
+.ofl-evdraft { display: flex; flex-direction: column; gap: 6px; border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 9px; padding: 10px 11px; }
+.ofl-evdraft label { color: var(--agent); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
+.ofl-evdraft textarea { width: 100%; min-height: 76px; resize: vertical; box-sizing: border-box; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 7px; padding: 8px 9px; font: inherit; font-size: 12.5px; line-height: 1.4; }
+.ofl-evdraft textarea:focus { outline: 1px solid var(--agent); border-color: var(--agent); }
+.ofl-evdraftacts { display: flex; gap: 7px; flex-wrap: wrap; }
+.ofl-evdraft > p { margin: 0; color: var(--dim); font-size: 9.5px; }
 @media (max-width: 520px) {
   .trade-fold > summary, .trade-tools > summary { align-items: flex-start; flex-direction: column; gap: 2px; }
   .anko-readlist { grid-template-columns: 1fr; gap: 3px; }

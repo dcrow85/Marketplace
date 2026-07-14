@@ -10,7 +10,7 @@ const LEAN_LABEL = {
   cannot_resolve: 'I can’t resolve this from what’s recorded',
 }
 
-export default function AskAnko({ decision, recommended = false, label = 'Ask Anko' }) {
+export default function AskAnko({ decision, recommended = false, label = 'Ask Anko', onRead }) {
   const panelId = useId()
   const version = useMemo(() => JSON.stringify(decision), [decision])
   const [state, setState] = useState({ status: 'idle', read: null })
@@ -20,6 +20,7 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
   }, [version])
 
   const ask = async () => {
+    onRead?.(null)
     setState({ status: 'loading', read: null })
     try {
       const response = await fetch(API_BASE + '/api/decision-read', {
@@ -28,7 +29,9 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
       const body = await response.json()
       if (!response.ok) throw new Error(body?.error || 'read_failed')
       setState({ status: 'done', read: body })
+      onRead?.(body)
     } catch {
+      onRead?.(null)
       setState({ status: 'error', read: null })
     }
   }
@@ -39,7 +42,7 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
       <section id={panelId} className="anko-read" aria-label="Anko’s read">
         <div className="anko-readhead">
           <span className="anko-readwho mono"><img src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" /> Anko&rsquo;s read <i>advisory</i></span>
-          <button type="button" className="anko-hide mono" onClick={() => setState({ status: 'idle', read: null })}>hide</button>
+          <button type="button" className="anko-hide mono" onClick={() => { onRead?.(null); setState({ status: 'idle', read: null }) }}>hide</button>
         </div>
         <strong className="anko-lean">{LEAN_LABEL[read.lean] || 'My read'}</strong>
         <p>{read.summary}</p>
