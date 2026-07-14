@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: direct ask checkout / escrow handoff]` 2026-07-14 · Codex —
+  Splitting pure-buy checkout into a genuine Buy now path that accepts the posted ask and proceeds
+  to the existing escrow/wallet rail, plus a separate editable Make offer path. The UI must not call
+  an offer message payment, and no card or cash may move before an explicit wallet transaction.
 - `[passive]` 2026-07-14 · Codex — **Deep interface audit pass is live.** Binder now exposes its
   default Gates scope and says owned / shown / catalog explicitly; My Table retains its independent
   Display Case and Binder sizes without a duplicate global picker; Market search immediately narrows
