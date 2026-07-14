@@ -58,12 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: interactive first-lap guide]` 2026-07-14 · Codex —
-  Reworking Anko's manga introduction from a separate explanation into an interactive coach over the real
-  four-step / eight-point first lap. The guide will use plain English, point directly at the live control,
-  let the collector act without dismissing it, animate earned points into the visible counter, rename the
-  ambiguous first-card step, repair the profile-picture picker, and use a new friendly project-local Anko
-  illustration without changing card evidence or award rules.
+- `[passive]` 2026-07-14 · Codex — **Anko's first-lap manga is now the working interface tour.**
+  A new friendly, project-local Anko illustration sits in a compact coach beside the real four-step / eight-point
+  path. Plain-English panels point to and focus the collector-name field, open the repaired profile-picture picker,
+  open the real card search with explicit Have / Want instructions, and open the scanner; completing the current
+  action advances Anko automatically. The four visible awards connect as `+1 +1 +1 +5 = 8`, and each earned token
+  flies from its completed task into the persistent nav counter. Desktop and 375px QA cover real card marking,
+  auto-advance, scanner entry, photo-control availability, target visibility, and no horizontal overflow. Full
+  source ESLint, assembled Pages build, and diff checks pass. UI commit `8ed8b30`; the Pages shell now retains its
+  native module entry and rotates the startup cache key after a broken deployment had cached an empty app root
+  (`6490f77`, `44352ba`). Extension-enabled Chrome renders the recovered apex on Pages deployment `4b216aed`.
+  No card evidence, point-award, protocol, Railway, catalogue, offer, or `mockups/` rules changed.
 - `[passive]` 2026-07-14 · Codex — **The first lap now makes the first scan the meaningful milestone.**
   The account path is four milestones / eight points: profile details +1, profile picture +1, first
   Have/Want +1, and first recorded scan +5. Chosen pictures are cropped square, resized, account-scoped,
