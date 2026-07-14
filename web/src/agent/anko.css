@@ -33,7 +33,7 @@
 .anko-guide-binder .anko-speech { padding: 9px 11px 10px; }
 .anko-guide-binder .anko-speech::before { display: none; }
 .anko-guide-binder .anko-booktop { min-height: 23px; padding-block: 3px; }
-.anko-examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; margin: 7px 0 8px; }
+.anko-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; margin: 7px 0 8px; }
 .anko-examples > span,
 .anko-examples > small { grid-column: 1 / -1; }
 .anko-examples > span { color: #5e5950; font-size: 7.5px; }

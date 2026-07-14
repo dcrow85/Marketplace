@@ -25,6 +25,7 @@ const STEPS = [
     points: 1,
     action: 'Focus the Anko bar',
     examples: [
+      { label: '“Do I have Penny?”', text: 'Do I have Penny?' },
       { label: '“I have every common.”', text: 'I have every common' },
       { label: '“List all my commons for $1.”', text: 'List all my commons for $1' },
     ],

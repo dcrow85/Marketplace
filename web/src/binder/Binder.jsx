@@ -42,6 +42,25 @@ function cardMatchesChannel(card, channel) {
     : card.product_channel === channel
 }
 
+function cardMatchesText(card, needle, setById) {
+  const q = String(needle || '').trim().toLowerCase()
+  if (!q) return true
+  const hay = [
+    card.num,
+    card.name_en,
+    card.romaji,
+    card.name_ja,
+    card.element,
+    card.rarity,
+    card.illustrator,
+    card.source_entry_id,
+    card.release_family_label,
+    card.product_channel_label,
+    setById[card.set_id]?.label,
+  ].filter(Boolean).join(' ').toLowerCase()
+  return hay.includes(q)
+}
+
 export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard, onboardingStep = null, onboardingGuide = null }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
@@ -323,7 +342,6 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     let base = data.cards
     if (agentActive) base = applyAgentFilter(base, agentRes.data.filter || {}, setById)
     if (agentAction && plan) { const ids = new Set(plan.steps.flatMap((st) => st.affected.map((c) => c.uid))); base = base.filter((c) => ids.has(c.uid)) }
-    const qq = q.trim().toLowerCase()
     base = base.filter((c) => {
       if (stanceF.size) {
         const e = effStance(c, store)
@@ -337,17 +355,18 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       if (elementF.size && !elementF.has(c.element)) return false
       if (rarityF.size && !rarityF.has(c.rarity)) return false
       if (holoOnly && !c.holo) return false
-      if (qq) {
-        const hay = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' + (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' + (c.release_family_label || '') + ' ' + (c.product_channel_label || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
-        if (hay.indexOf(qq) < 0) return false
-      }
       return true
     })
+    if (q.trim()) {
+      const directMatches = base.filter((c) => cardMatchesText(c, q, setById))
+      if (directMatches.length) base = directMatches
+    }
     if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
     return base.slice().sort(cmp)
   }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet, agentAction, plan])
 
-  const grouped = !q.trim() && !agentActive
+  const directSearchMiss = !!q.trim() && !!rows.length && !rows.some((card) => cardMatchesText(card, q, setById))
+  const grouped = (!q.trim() || directSearchMiss) && !agentActive
   const CHIPS = useMemo(() => chipsFor(), [])
   const CHANNELS = useMemo(() => data?.ui?.product_channel_chips || [], [data])
   const CATS = useMemo(() => data?.ui?.category_chips || [], [data])
@@ -433,6 +452,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
             onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
           <button className="askbtn" onClick={ask} disabled={agentBusy || !query.trim()}>{agentBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
         </div>
+        {directSearchMiss && <div className="searchhint mono" role="status">
+          No direct card match. Keeping all cards in this view visible — ask {agentName} to understand the request.
+        </div>}
         {(onboardingStep === 'mark' || onboardingStep === 'scan') && onboardingGuide}
         <div className="chips">
           {CHIPS.map((ch, i) => (

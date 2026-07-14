@@ -268,6 +268,11 @@ section { padding: 14px 0 70px; }
 .askbtn { white-space: nowrap; font-family: var(--mono); font-size: 12px; color: var(--paper); background: var(--agent); border: 0; border-radius: 9px; padding: 10px 14px; cursor: pointer; }
 .askbtn:hover:not(:disabled) { filter: brightness(1.07); }
 .askbtn:disabled { opacity: .45; cursor: default; }
+.searchhint { flex: 1 1 100%; margin: -8px 0 0 42px; color: var(--dim); font-size: 9px; line-height: 1.35; }
+
+@media (max-width: 440px) {
+  .searchhint { margin-left: 0; }
+}
 
 /* trade sheet (modal, sell/trade on) — a plaintext handoff, deliberately not a link */
 .sheetbtn { width: 100%; margin-top: 10px; font-size: 12px; color: var(--ink); background: var(--paper); border: 0.5px solid var(--ink); border-radius: 8px; padding: 11px 14px; cursor: pointer; }
