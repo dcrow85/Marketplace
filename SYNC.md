@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: Anko completion advance]` 2026-07-14 · Codex —
+  Repairing the contextual guide's completed-step transition: award persistence currently rerenders the same
+  completed milestone and cancels Anko's pending move. The transition will derive its next unfinished step from
+  the stable completion signature, survive the award write, and focus the next real control automatically.
 - `[passive]` 2026-07-14 · Codex — **Anko now travels with the active first-lap task, and Binder marks award reliably.**
   The guide is no longer a fixed corner overlay: desktop places a compact sticky Anko beside the live profile,
   picture, card-search, or scan control; phone layouts stack him immediately above that control. He aligns to
