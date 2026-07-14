@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: compact onboarding hierarchy]` 2026-07-14 · Codex —
+  Reduce the post-profile First Lap checklist to one actionable progress row and compress the Binder Anko lesson into
+  a small note attached to the real search bar. Preserve the full name/photo setup treatment, milestone behavior,
+  simple and bulk examples, and agent safety rules; no `mockups/` changes.
 - `[passive]` 2026-07-14 · Codex — **Binder search now stays optimistic until Anko is asked.**
   Literal matches still narrow immediately; unmatched pre-submit text keeps every card in the current filtered view
   visible and offers a quiet Ask Anko handoff instead of an empty state. The docked examples now begin with the simple
