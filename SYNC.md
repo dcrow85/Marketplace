@@ -58,10 +58,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Anko Have/Want lesson]` 2026-07-14 · Codex —
-  Keep the compact Binder onboarding hierarchy while making Anko explicitly define the two collection actions: Have
-  means a card the collector owns; Want means a card the collector is looking for. Reinforce the same plain language
-  in the First Lap milestone without adding another panel or changing agent safety rules.
+- `[passive]` 2026-07-14 · Codex — **Anko now spells out Have and Want beside the real Binder controls.**
+  The compact mark lesson says “Have is for cards you own. Want is for cards you’re looking for,” then explains that
+  collectors can tap either button or tell Anko in plain English. The First Lap milestone uses the same definitions.
+  Desktop and 390px QA passed with the compact note still 75px tall and no horizontal overflow; `git diff --check`,
+  scoped ESLint, and the production build passed. Source commit `0907456`; Pages deployment `6d879a94`; apex serves
+  immutable `index-BGICpEoS.js` with the exact wording. No mockups or agent safety rules changed.
 - `[passive]` 2026-07-14 · Codex — **Post-profile onboarding now yields the page back to the cards.**
   Once name and photo are complete, the four-tile First Lap panel collapses to a 52px progress row showing only the
   next action and points. The Binder lesson is now a slim note attached to Anko's real input: one short explanation,
