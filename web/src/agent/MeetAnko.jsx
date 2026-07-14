@@ -20,8 +20,8 @@ const STEPS = [
   },
   {
     id: 'mark',
-    title: 'Ask me like a person',
-    say: 'This is my spot. Tell me about your cards in plain English—I’ll show you the change before anything happens.',
+    title: 'Have or Want?',
+    say: 'Choose Have for cards you own. Choose Want for cards you’re looking for. You can tap the buttons or tell me in plain English.',
     points: 1,
     action: 'Focus the Anko bar',
     examples: [
@@ -115,7 +115,7 @@ export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 
           <div className="anko-binder-copy">
             <strong>{current.title}</strong>
             <span>{currentDone ? DONE_LINES[current.id] : current.id === 'mark'
-              ? 'Say what you need. I’ll preview any change.'
+              ? 'Have is for cards you own. Want is for cards you’re looking for.'
               : 'Scan one card when you’re ready for five points.'}</span>
           </div>
           {!currentDone && current.examples && (

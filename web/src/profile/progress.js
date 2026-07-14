@@ -6,7 +6,7 @@ import { profileComplete } from './profileStore.js'
 export const FIRST_LAP = [
   { id: 'profile', label: 'Create your profile', detail: 'Choose a collector name and a line for your table.', points: 1 },
   { id: 'photo', label: 'Add a profile picture', detail: 'Put a face, card, or mark beside your table name.', points: 1 },
-  { id: 'mark', label: 'Add your first card', detail: 'Search for a card, then choose Have or Want.', points: 1 },
+  { id: 'mark', label: 'Add your first card', detail: 'Choose Have for a card you own, or Want for one you’re looking for.', points: 1 },
   { id: 'scan', label: 'Scan your first card', detail: 'Add the first photo witness to a card record.', points: 5 },
 ]
 
