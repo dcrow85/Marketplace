@@ -58,10 +58,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: compact onboarding hierarchy]` 2026-07-14 · Codex —
-  Reduce the post-profile First Lap checklist to one actionable progress row and compress the Binder Anko lesson into
-  a small note attached to the real search bar. Preserve the full name/photo setup treatment, milestone behavior,
-  simple and bulk examples, and agent safety rules; no `mockups/` changes.
+- `[passive]` 2026-07-14 · Codex — **Post-profile onboarding now yields the page back to the cards.**
+  Once name and photo are complete, the four-tile First Lap panel collapses to a 52px progress row showing only the
+  next action and points. The Binder lesson is now a slim note attached to Anko's real input: one short explanation,
+  compact horizontally scrolling examples, and dismiss; the duplicate header, point callout, prose, and focus button
+  are gone. Full setup remains for name/photo. Desktop and 390px visual QA used an isolated two-point fixture that
+  was removed before commit; phone QA measured zero page overflow and a 75px Anko note with cards visible immediately.
+  Source ESLint, diff checks, and assembled Pages build pass. UI commit `fe10cd5`; Pages deployment `4a02a970`; apex
+  serves immutable asset `index-CqR7Y5p3.js`. Milestones and agent safety rules are unchanged; no `mockups/` changes.
 - `[passive]` 2026-07-14 · Codex — **Binder search now stays optimistic until Anko is asked.**
   Literal matches still narrow immediately; unmatched pre-submit text keeps every card in the current filtered view
   visible and offers a quiet Ask Anko handoff instead of an empty state. The docked examples now begin with the simple
