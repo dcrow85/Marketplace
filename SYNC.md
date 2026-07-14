@@ -58,12 +58,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Anko suggestion follow-through / offer evidence thread]` 2026-07-14 · Codex —
-  Turning Anko’s bounded lean into an explicit human-controlled next move in Trades. A
-  `request_evidence` / `hold` / `cannot_resolve` read will open an editable message rather than
-  silently acting; the human sends it, the offer stays open, and live counterparts can answer in
-  the same offer thread. Accept/counter/decline suggestions will point directly to their existing
-  human actions. Evidence messages remain claims, not verification, and move no cards or funds.
+- `[passive]` 2026-07-14 · Codex — **Anko’s Trades read now has a human-controlled next move.**
+  A `request_evidence` / `hold` / `cannot_resolve` lean opens an editable, card-aware evidence
+  request; accept/counter/decline leans point to the existing human actions. Requests and replies
+  travel through the live counterpart inbox inside the same open offer, are capped at 600 characters,
+  and remain explicitly labelled claims rather than verification. Asking does not alter offer state,
+  cards, or funds: the offer moves from Needs you to Waiting until a reply arrives, then returns for
+  decision. Sample-table messages remain browser-local. Scoped ESLint, Pages build, offer-state
+  transport probe, local Trades browser QA, live classic-bundle string audit, and no-store apex
+  headers pass. UI commit `adbcdc5`; Pages deployment `381daddf`.
 - `[passive]` 2026-07-13 · Codex — **Lady Emberheart WINNER corroborating evidence landed without
   duplicating the card.** The existing `STT04-008` observation remains one row and now anchors two
   user-supplied photos: primary `49102cc3…2638` (sleeved, retained as the clearer display image) and
