@@ -58,6 +58,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: first-lap profile picture + scan weight]` 2026-07-14 · Codex —
+  Expanding the new-account lap from three milestones / three points to four milestones / eight points:
+  profile details +1, profile picture +1, first Have/Want +1, and first recorded scan +5. The picture must
+  remain account-scoped, bounded for browser storage, removable, and visible in the collector's own identity
+  surfaces without weakening the distinction between a chosen image and recorded evidence.
 - `[passive]` 2026-07-14 · Codex — **Anko now arrives inside the working interface.** The five-beat
   black lore gate is replaced by a skippable three-frame manga field guide over the visible Binder and
   first-lap tasks. Its panels map directly to Profile / Have-Want-Scan / Market-Trades, show the 0/3
