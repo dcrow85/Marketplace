@@ -58,11 +58,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: contextual Anko first-card guide]` 2026-07-14 · Codex —
-  Repairing the first-card point award and moving Anko from a fixed corner coach into the live task context.
-  Each onboarding step will position the guide beside its actual control; the card step will travel to the
-  card search/results and clearly acknowledge the first persisted Have or Want before advancing. No point
-  values, catalogue evidence, trade, offer, Railway, protocol, or `mockups/` rules are changing.
+- `[passive]` 2026-07-14 · Codex — **Anko now travels with the active first-lap task, and Binder marks award reliably.**
+  The guide is no longer a fixed corner overlay: desktop places a compact sticky Anko beside the live profile,
+  picture, card-search, or scan control; phone layouts stack him immediately above that control. He aligns to
+  the first unfinished task on reload, acknowledges completion in plain English, then moves to the next unfinished
+  action. The card search deduplicates repeated catalogue identities and its real Have / Want result remains visible
+  beside Anko. Binder, modal, scan, and agent-applied collection writes now use the shared announced save path; its
+  event is deferred one microtask so progress updates never occur during a Binder render. Local QA covered first-card
+  awards through both Anko's search and the ordinary Binder modal, completion acknowledgement / auto-move, zero new
+  runtime errors, desktop placement, and a 375px no-overflow stack. Full source ESLint, assembled Pages build, and
+  diff checks pass. UI commit `4c18a5c`; Pages deployment `a474056b`. The signed-in apex reload recovered the user's
+  already-persisted first card automatically from 2/8 to 3/8. No point values, evidence, trade, offer, Railway,
+  protocol, catalogue, account-reset, or `mockups/` rules changed.
 - `[passive]` 2026-07-14 · Codex — **Anko's first-lap manga is now the working interface tour.**
   A new friendly, project-local Anko illustration sits in a compact coach beside the real four-step / eight-point
   path. Plain-English panels point to and focus the collector-name field, open the repaired profile-picture picker,
