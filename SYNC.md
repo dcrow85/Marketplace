@@ -58,6 +58,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: interactive first-lap guide]` 2026-07-14 · Codex —
+  Reworking Anko's manga introduction from a separate explanation into an interactive coach over the real
+  four-step / eight-point first lap. The guide will use plain English, point directly at the live control,
+  let the collector act without dismissing it, animate earned points into the visible counter, rename the
+  ambiguous first-card step, repair the profile-picture picker, and use a new friendly project-local Anko
+  illustration without changing card evidence or award rules.
 - `[passive]` 2026-07-14 · Codex — **The first lap now makes the first scan the meaningful milestone.**
   The account path is four milestones / eight points: profile details +1, profile picture +1, first
   Have/Want +1, and first recorded scan +5. Chosen pictures are cropped square, resized, account-scoped,
