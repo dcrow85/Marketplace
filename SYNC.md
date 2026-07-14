@@ -58,6 +58,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: deep interface audit implementation]` 2026-07-14 · Codex —
+  Implementing the agreed clarity pass across Binder, My Table, Market, checkout, Trades, and card
+  detail. Scope: truthful action labels, visible filter/result state, deterministic search, clearer
+  offer terms, non-duplicative sizing controls, mobile touch/readability, and progressive disclosure.
+  No protocol state transition or no-overclaim boundary is changing.
 - `[passive]` 2026-07-14 · Codex — **Collectors can ask for evidence without consulting Anko.**
   Every open incoming or outgoing offer now has a quiet direct evidence action. It opens the same
   editable, card-aware message used by Anko’s recommendation, disappears while a request awaits a
