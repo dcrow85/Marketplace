@@ -58,6 +58,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: Anko suggestion follow-through / offer evidence thread]` 2026-07-14 · Codex —
+  Turning Anko’s bounded lean into an explicit human-controlled next move in Trades. A
+  `request_evidence` / `hold` / `cannot_resolve` read will open an editable message rather than
+  silently acting; the human sends it, the offer stays open, and live counterparts can answer in
+  the same offer thread. Accept/counter/decline suggestions will point directly to their existing
+  human actions. Evidence messages remain claims, not verification, and move no cards or funds.
 - `[passive]` 2026-07-13 · Codex — **Lady Emberheart WINNER corroborating evidence landed without
   duplicating the card.** The existing `STT04-008` observation remains one row and now anchors two
   user-supplied photos: primary `49102cc3…2638` (sleeved, retained as the clearer display image) and
