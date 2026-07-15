@@ -310,7 +310,19 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const agentHasFilter = !agentAction && !!(agentRes?.ok && agentRes.data?.filter)
   const agentNoMatch = agentHasFilter && Number(agentRes.data.n_survivors || 0) === 0
   const agentActive = agentHasFilter && !agentNoMatch
-  const pickSet = useMemo(() => new Set(agentActive ? agentRes.data.result?.picks || [] : []), [agentRes, agentActive])
+  const pickList = useMemo(() => {
+    if (!agentRes?.ok) return []
+    const raw = Array.isArray(agentRes.data?.result?.picks) ? agentRes.data.result.picks : []
+    const seen = new Set()
+    return raw.filter((uid) => {
+      if (typeof uid !== 'string' || seen.has(uid)) return false
+      seen.add(uid)
+      return true
+    })
+  }, [agentRes])
+  const pickSet = useMemo(() => new Set(pickList), [pickList])
+  const pickRank = useMemo(() => new Map(pickList.map((uid, index) => [uid, index])), [pickList])
+  const agentCurating = pickList.length > 0
   // A plan resolves step by step against a DRAFT of your store, so step 2 sees what
   // step 1 changed ("mark commons have; list alpha commons at $2" works in one call).
   const findStep = useMemo(() => {
@@ -414,16 +426,21 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       if (holoOnly && !c.holo) return false
       return true
     })
-    if (q.trim()) {
+    if (q.trim() && !agentActive && !agentCurating) {
       const directMatches = base.filter((c) => cardMatchesText(c, q, setById))
       if (directMatches.length) base = directMatches
     }
-    if (agentActive) return base.slice().sort((a, b) => (pickSet.has(b.uid) - pickSet.has(a.uid)) || cmp(a, b))
+    if (agentCurating) return base.slice().sort((a, b) => {
+      const aRank = pickRank.get(a.uid)
+      const bRank = pickRank.get(b.uid)
+      if (aRank != null || bRank != null) return (aRank ?? Number.MAX_SAFE_INTEGER) - (bRank ?? Number.MAX_SAFE_INTEGER)
+      return cmp(a, b)
+    })
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, pickSet, agentAction, plan])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, agentCurating, pickRank, agentAction, plan])
 
   const directSearchMiss = !!q.trim() && !!rows.length && !rows.some((card) => cardMatchesText(card, q, setById))
-  const grouped = (!q.trim() || directSearchMiss) && !agentActive
+  const grouped = (!q.trim() || directSearchMiss) && !agentActive && !agentCurating
   const CHIPS = useMemo(() => chipsFor(), [])
   const CHANNELS = useMemo(() => data?.ui?.product_channel_chips || [], [data])
   const CATS = useMemo(() => data?.ui?.category_chips || [], [data])
@@ -601,9 +618,9 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           </div>
         </div>
       )}
-      {agentActive && (
+      {(agentActive || agentCurating) && !agentNoMatch && (
         <div className="agentband">
-          <span><b>{agentName}</b> narrowed {data.summary.cards} → <b>{agentRes.data.n_survivors}</b>{pickSet.size ? ` · ${pickSet.size} surfaced first ★` : ''}{agentClearedFilters ? ` · opened the whole Binder (cleared ${agentClearedFilters} filter${agentClearedFilters === 1 ? '' : 's'})` : ''}{rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>
+          <span>{agentActive ? <><b>{agentName}</b> narrowed {data.summary.cards} → <b>{agentRes.data.n_survivors}</b></> : <><b>{agentName}</b> kept the Binder open</>}{agentCurating ? ` · placed ${pickList.length} highlighted card${pickList.length === 1 ? '' : 's'} first, in his order ★` : ''}{agentClearedFilters ? ` · opened the whole Binder (cleared ${agentClearedFilters} filter${agentClearedFilters === 1 ? '' : 's'})` : ''}{agentActive && rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>
           <button className="ghost sm" onClick={clearAgent}>clear</button>
         </div>
       )}
@@ -622,6 +639,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         ) : view === 'pages' ? (
           <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setStance={setStance}
             setField={setField} askIndex={askIndex} onQuickSell={setSellPop} onboarding={onboardingStep === 'mark'}
+            pickSet={pickSet} focusKey={agentCurating ? agentRes : null}
             haveLessonUid={haveLessonUid}
             haveActionsGuide={haveLessonUid ? <HaveActionsLesson compact onDone={dismissHaveLesson} /> : null}
             onUseHaveAction={dismissHaveLesson}

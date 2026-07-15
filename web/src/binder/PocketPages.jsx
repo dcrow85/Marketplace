@@ -8,10 +8,10 @@ import { nm, retryImg } from './helpers.jsx'
 export default function PocketPages({
   rows, store, userPhotos, onOpen, setStance, setField, askIndex, onQuickSell,
   onboarding = false, haveLessonUid = null, haveActionsGuide = null, onUseHaveAction,
-  wantLessonUid = null, wantActionsGuide = null,
+  wantLessonUid = null, wantActionsGuide = null, pickSet = null, focusKey = '',
 }) {
   const [page, setPage] = useState(0)
-  useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
+  useEffect(() => { setPage(0) }, [rows.length, focusKey]) // eslint-disable-line react-hooks/set-state-in-effect -- filters or Anko's curation changed; back to page 1
   const pages = []
   for (let i = 0; i < rows.length; i += 9) pages.push(rows.slice(i, i + 9))
   const pg = pages[Math.min(page, pages.length - 1)] || []
@@ -35,11 +35,13 @@ export default function PocketPages({
           const e = effStance(c, store)
           const img = userPhotos[c.uid] || c.image
           const fromAsk = askIndex ? askIndex.get(c.uid) : null
+          const isPick = !!pickSet?.has(c.uid)
           if (e.stance === 'have') {
             return (
-              <div key={c.uid} className="bv-pocket filled" role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
+              <div key={c.uid} className={'bv-pocket filled' + (isPick ? ' is-pick' : '')} role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
                 onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
                 {img ? <img src={img} alt={nm(c)} loading="lazy" decoding="async" onError={userPhotos[c.uid] ? undefined : (ev) => retryImg(ev, c.image)} /> : <span className="bv-noimg">{nm(c)}</span>}
+                {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
                 {e.grail && <span className="bv-grail">★</span>}
                 {fromAsk != null && <span className="bv-from onart mono">from {fromAsk} USDC</span>}
@@ -53,10 +55,11 @@ export default function PocketPages({
             )
           }
           return (
-            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')}
+            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '') + (isPick ? ' is-pick' : '')}
               role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
               onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
               {img && <img className="bv-ghostart" src={img} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
+              {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
               <span className="mono bv-gnum">{c.num}</span>
               <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
               {fromAsk != null && <span className="bv-from mono">from {fromAsk} USDC</span>}

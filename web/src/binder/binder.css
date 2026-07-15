@@ -323,6 +323,9 @@ section { padding: 14px 0 70px; }
 .bv-have-guide { grid-column: 1 / -1; }
 .bv-pocket { position: relative; aspect-ratio: 5 / 7; border-radius: 7px; overflow: hidden; }
 .bv-pocket.filled { background: #1d1b22; border: 1px solid rgba(236,234,227,.12); }
+.bv-pocket.is-pick { border-color: var(--agent); box-shadow: 0 0 0 2px var(--agent); }
+.bv-pickflag { position: absolute; z-index: 4; top: 6px; left: 6px; font-size: 8.5px; line-height: 1; letter-spacing: .03em; color: #fff; background: var(--agent); border-radius: 4px; padding: 4px 5px; box-shadow: 0 1px 3px rgba(0,0,0,.28); }
+.bv-pocket.is-pick .bv-grail { top: 28px; }
 .bv-pocket.filled img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .bv-noimg { display: flex; align-items: center; justify-content: center; height: 100%; padding: 8px; font-size: 12px; color: #DBD5C8; text-align: center; }
 .bv-count { position: absolute; top: 6px; right: 6px; font-size: 11px; color: #ECEAE3; background: rgba(13,12,16,.85); border: 0.5px solid rgba(236,234,227,.25); border-radius: 5px; padding: 1px 6px; }
@@ -337,6 +340,7 @@ section { padding: 14px 0 70px; }
 .bv-gtxt { font-size: 11px; color: #D0CCC1; text-shadow: 0 1px 3px #141310; }
 .bv-pocket.ghost.wanted { border-style: solid; border-color: rgba(236,234,227,.4); cursor: default; }
 .bv-pocket.ghost.wanted .bv-gtxt { color: #DBD5C8; }
+.bv-pocket.ghost.is-pick, .bv-pocket.ghost.wanted.is-pick, .bv-pocket.ghost.is-pick:hover { border-color: var(--agent); }
 .bv-intent { position: absolute; z-index: 3; left: 8px; right: 8px; top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
 .bv-intent button { min-height: 32px; color: #f2eee5; background: rgba(18,19,21,.84); border: 1px solid rgba(242,238,229,.46); border-radius: 6px; font: 10px var(--mono); cursor: pointer; backdrop-filter: blur(6px); }
 .bv-intent button:hover, .bv-intent button:focus-visible { color: #fff; background: var(--agent); border-color: #fff; outline: none; }
