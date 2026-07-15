@@ -6,16 +6,20 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+import simulations.cairn_browse as cairn_browse_module  # noqa: E402
 from simulations.cairn_browse import (  # noqa: E402
     apply_filter,
     brief,
     community_notes_for_call,
     community_prompt_block,
+    deck_signal_prompt_block,
+    deterministic_deck_signal_result,
     exact_card_name_in_call,
     filter_system,
     resolve_pick_uids,
@@ -36,6 +40,7 @@ def main() -> None:
     set_labels = {item["id"]: item["label"] for item in data["sets"]}
     guide = data["azuki_world"]["world_guide"]
     community = data["azuki_world"]["community_knowledge"]
+    deck_signals = data["azuki_world"]["community_deck_signals"]
 
     image_cards = [card for card in cards if card.get("image")]
     require(len(cards) == data["summary"]["world_enriched_rows"], "not every row is enriched")
@@ -66,6 +71,11 @@ def main() -> None:
         "community knowledge hash drifted from its source-artifact record",
     )
     require(
+        data["azuki_world"]["community_deck_signals_hash"]
+        == data["source_artifacts"]["the_gate_community_deck_signals"]["sha256"],
+        "community deck-signal hash drifted from its source-artifact record",
+    )
+    require(
         len(community["claims"]) == data["summary"]["community_claims"]
         and len(community["archetypes"]) == data["summary"]["community_archetypes"]
         and len(community["sources"]) == data["summary"]["community_source_pages"],
@@ -79,6 +89,39 @@ def main() -> None:
     require(
         all(not claim["authority_label"].startswith("official") for claim in community["claims"]),
         "a The Gate claim was promoted to official authority",
+    )
+    require(
+        deck_signals["source"]["authority_label"] == "independent_community_source",
+        "The Gate deck signals lost their independent-community authority label",
+    )
+    require(
+        deck_signals["coverage"] == {
+            "public_or_author_published_decks": 105,
+            "complete_50_plus_leader_gate": 101,
+            "published_tournaments": 3,
+            "published_placements": 14,
+        },
+        "dated public deck coverage changed without a refreshed review",
+    )
+    recent_14d = deck_signals["recent_windows"]["14d"]
+    require(
+        recent_14d["public_record_count"] == 37
+        and recent_14d["deck_count"] == 36
+        and recent_14d["excluded_non_50_record_count"] == 1,
+        "14-day public-deck basis changed or lost its non-50 exclusion",
+    )
+    require(
+        sum(item["deck_count"] for item in recent_14d["leader_frequency"]) == 36
+        and sum(item["deck_count"] for item in recent_14d["element_frequency"]) == 36,
+        "14-day deck frequencies do not sum to their declared basis",
+    )
+    require(
+        deck_signals["engagement_availability"]["public_aggregate_available"] is False,
+        "unavailable engagement data was promoted into a popularity rank",
+    )
+    require(
+        "deck_cards" not in json.dumps(deck_signals),
+        "summary-only deck signal unexpectedly contains copied decklists",
     )
     conflicts = {
         item["id"]: item for item in community["official_rules_crosscheck"]["known_conflicts"]
@@ -101,6 +144,10 @@ def main() -> None:
         "The Gate is an independent community source" in system_prompt,
         "The Gate authority boundary left the filter prompt",
     )
+    require(
+        "Recent public-deck names" in system_prompt and "Mill Forge" in system_prompt,
+        "dated public-deck vocabulary left the filter prompt",
+    )
     shao_notes = {note["id"] for note in community_notes_for_call("How should Shao use responses?", data)}
     require("gate-shao-plan" in shao_notes, "Shao strategy retrieval missed The Gate guide")
     black_jade_notes = {
@@ -120,6 +167,81 @@ def main() -> None:
         and "Start of Turn Phase (Reset, start-of-turn Effects, Draw)" in rules_block
         and "The Gate's guide/report reads" in rules_block,
         "rules prompt lost its official precedence or community attribution",
+    )
+    popular_block = deck_signal_prompt_block(
+        "What popular new decks are people building right now?", data
+    )
+    require(
+        "37 public records; 36 records" in popular_block
+        and "Bobu / Stonehaven Gate (Earth): 9" in popular_block
+        and "Rengoku by Ronin Lotus" in popular_block
+        and "no usable public view/save/share aggregate" in popular_block
+        and "Separate dated tournament evidence" not in popular_block,
+        "popular/new deck retrieval lost its dated frequency basis or engagement boundary",
+    )
+    competitive_block = deck_signal_prompt_block(
+        "What decks are winning the current meta?", data
+    )
+    require(
+        "Separate dated tournament evidence" in competitive_block
+        and "2026-03-03 Azuki Online Pre-Season" in competitive_block
+        and "These events predate the July gallery window" in competitive_block
+        and "the current global meta" in competitive_block,
+        "competitive retrieval blurred dated placements into current meta",
+    )
+    mill_forge_block = deck_signal_prompt_block("Tell me about Mill Forge", data)
+    require(
+        "Named public record: Mill Forge by THECountBasie" in mill_forge_block
+        and "Raizan with Surge Gate" in mill_forge_block,
+        "exact recent deck-name retrieval missed its public summary",
+    )
+    model_reads = iter(
+        [
+            {"lore_term": "Forge", "action": None, "reading": "Misread deck name as a lore term."},
+            {
+                "commentary": "The Gate's dated public-gallery signal records Mill Forge as Raizan with Surge Gate.",
+                "picks": [],
+                "caveat": "That public record is not a win-rate or global-meta claim.",
+            },
+        ]
+    )
+    with patch.object(cairn_browse_module, "call_model", side_effect=lambda *_args, **_kwargs: next(model_reads)):
+        mill_forge_browse = cairn_browse_module.browse("Tell me about Mill Forge", catalog="azuki-tcg")
+    require(
+        mill_forge_browse["n_survivors"] == len(cards)
+        and mill_forge_browse["filter"]["lore_term"] is None
+        and mill_forge_browse["filter"]["ignored_unmatched_deck_filter"] == {"lore_term": "Forge"},
+        "named deck browse did not recover from a failed card-filter interpretation",
+    )
+    require(
+        "50 main cards plus Leader and Gate" in mill_forge_browse["result"]["commentary"]
+        and "full list, its print treatments, or its game plan" in mill_forge_browse["result"]["commentary"]
+        and "sixty" not in json.dumps(mill_forge_browse["result"]).casefold()
+        and "engine" not in json.dumps(mill_forge_browse["result"]).casefold(),
+        "named deck result invented a decklist shape or strategy",
+    )
+    require(
+        mill_forge_browse["result"]["picks"][:2] == [
+            "azuki_tcg_official_gallery:S1-STT01-001_Raizan_L_L_die",
+            "azuki_tcg_official_gallery:S1-STT01-002_Surge-Gate_G_G_die",
+        ],
+        "named deck result did not prefer base official Leader/Gate identities",
+    )
+    popular_result = deterministic_deck_signal_result(
+        "What popular new decks are people building right now?", data, cards
+    )
+    require(
+        popular_result is not None
+        and "Bobu / Stonehaven Gate at 9" in popular_result["commentary"]
+        and "Rengoku (Zero / Rushfire Gate)" in popular_result["commentary"]
+        and "Quicksand in 12" in popular_result["commentary"]
+        and "not copy count or an endorsement" in popular_result["commentary"]
+        and "no public view/save/share ranking was available" in popular_result["caveat"],
+        "deterministic popular-deck result lost its current signal or caveat",
+    )
+    require(
+        deck_signal_prompt_block("What does the Black Jade art imply?", data) == "",
+        "deck signals leaked into a non-deck lore question",
     )
 
     alley = apply_filter(cards, {"plane": "alley"}, set_labels)
@@ -340,6 +462,7 @@ def main() -> None:
         f"{len(cards)} enriched rows | {len(image_cards)} reviewed images | "
         f"{len(guide['claims'])} claims | {len(guide['character_threads'])} threads | "
         f"{len(community['claims'])} community claims | "
+        f"{recent_14d['public_record_count']}/{recent_14d['deck_count']} recent deck records/basis | "
         f"planes {len(alley)}/{len(garden)}/{len(threshold)}"
     )
 

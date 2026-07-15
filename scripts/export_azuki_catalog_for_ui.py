@@ -39,6 +39,7 @@ SPECIAL_COLLECTION = AZUKI / "observations" / "azuki_tcg_anime_expo_2026_special
 MANIFEST = AZUKI / "manifest.json"
 WORLD_METADATA = AZUKI / "lore" / "azuki_world_metadata.json"
 COMMUNITY_KNOWLEDGE_GLOB = "the_gate_community_knowledge_*.json"
+COMMUNITY_DECK_SIGNALS_GLOB = "the_gate_deck_signals_*.json"
 ALPHA_IMAGE_MANIFEST = AZUKI / "source-snapshots" / "alpha_master_sheet_image_manifest_2026-06-26.json"
 ALPHA_ASSET_DIR = WEB_PUBLIC_DIR / "assets" / "alpha"
 ALPHA_ASSET_WEB_PREFIX = "assets/alpha"
@@ -125,6 +126,15 @@ def newest_community_knowledge_snapshot() -> Path:
     if not snapshots:
         raise FileNotFoundError(
             f"no Azuki community knowledge snapshot matches {COMMUNITY_KNOWLEDGE_GLOB}"
+        )
+    return snapshots[-1]
+
+
+def newest_community_deck_signals_snapshot() -> Path:
+    snapshots = sorted((AZUKI / "source-snapshots").glob(COMMUNITY_DECK_SIGNALS_GLOB))
+    if not snapshots:
+        raise FileNotFoundError(
+            f"no Azuki community deck-signal snapshot matches {COMMUNITY_DECK_SIGNALS_GLOB}"
         )
     return snapshots[-1]
 
@@ -1055,6 +1065,9 @@ def build_payload() -> dict[str, Any]:
     community_knowledge_path = newest_community_knowledge_snapshot()
     community_knowledge = read_json(community_knowledge_path)
     community_knowledge_hash = sha256(community_knowledge_path)
+    community_deck_signals_path = newest_community_deck_signals_snapshot()
+    community_deck_signals = read_json(community_deck_signals_path)
+    community_deck_signals_hash = sha256(community_deck_signals_path)
     world_identity_by_card_id = {card["card_id"]: card for card in world_metadata["cards"]}
     world_variant_by_uid = {card["uid"]: card for card in world_metadata["variants"]}
 
@@ -1145,9 +1158,11 @@ def build_payload() -> dict[str, Any]:
             "schema": world_metadata["schema"],
             "metadata_hash": world_metadata_hash,
             "community_knowledge_hash": community_knowledge_hash,
+            "community_deck_signals_hash": community_deck_signals_hash,
             "authority_legend": world_metadata["authority_legend"],
             "world_guide": world_metadata["world_guide"],
             "community_knowledge": community_knowledge,
+            "community_deck_signals": community_deck_signals,
             "counts": world_metadata["counts"],
             "not_claiming": world_metadata["not_claiming"],
         },
@@ -1204,6 +1219,9 @@ def build_payload() -> dict[str, Any]:
             "community_claims": len(community_knowledge["claims"]),
             "community_archetypes": len(community_knowledge["archetypes"]),
             "community_source_pages": len(community_knowledge["sources"]),
+            "community_public_decks": community_deck_signals["coverage"]["public_or_author_published_decks"],
+            "community_recent_complete_decks_14d": community_deck_signals["recent_windows"]["14d"]["deck_count"],
+            "community_published_tournaments": community_deck_signals["coverage"]["published_tournaments"],
         },
         "manifest_total_rows": manifest.get("counts", {}).get("official_gallery", {}).get("gallery_entries"),
         "catalog_hash": manifest_hash,
@@ -1233,6 +1251,17 @@ def build_payload() -> dict[str, Any]:
                 "authority_label": community_knowledge["source"]["authority_label"],
                 "claims": len(community_knowledge["claims"]),
                 "archetypes": len(community_knowledge["archetypes"]),
+            },
+            "the_gate_community_deck_signals": {
+                "path": str(community_deck_signals_path.relative_to(ROOT)),
+                "sha256": community_deck_signals_hash,
+                "snapshot_date": community_deck_signals["snapshot_date"],
+                "captured_at": community_deck_signals["captured_at"],
+                "authority_label": community_deck_signals["source"]["authority_label"],
+                "public_decks": community_deck_signals["coverage"]["public_or_author_published_decks"],
+                "recent_complete_decks_14d": community_deck_signals["recent_windows"]["14d"]["deck_count"],
+                "published_tournaments": community_deck_signals["coverage"]["published_tournaments"],
+                "published_placements": community_deck_signals["coverage"]["published_placements"],
             },
             "alpha_master_sheet_image_manifest": (
                 {

@@ -175,6 +175,142 @@ def community_prompt_block(call: str, data: dict) -> str:
     return "\n".join(lines) + "\n\n"
 
 
+def named_deck_signals_for_call(call: str, data: dict) -> list[dict]:
+    signals = (data.get("azuki_world") or {}).get("community_deck_signals") or {}
+    folded = call.casefold()
+    named_decks: dict[str, dict] = {}
+    for deck in [
+        *(signals.get("homepage_recent_decks") or []),
+        *(signals.get("newest_decks") or []),
+    ]:
+        name = str(deck.get("name") or "").strip()
+        if name and name.casefold() != "my deck" and name.casefold() in folded:
+            named_decks[str(deck.get("url") or name)] = deck
+    return list(named_decks.values())
+
+
+def deck_signal_prompt_block(call: str, data: dict) -> str:
+    """Give deck questions dated public-gallery evidence with its limits attached."""
+    signals = (data.get("azuki_world") or {}).get("community_deck_signals") or {}
+    if not signals:
+        return ""
+    folded = call.casefold()
+    deck_terms = (
+        "deck", "build", "archetype", "meta", "popular", "trending", "what are people playing",
+        "what's hot", "whats hot", "winning", "tournament", "competitive", "recent list", "new list",
+    )
+    named_decks = named_deck_signals_for_call(call, data)
+    if not named_decks and not any(term in folded for term in deck_terms):
+        return ""
+
+    popularity_intent = any(
+        term in folded
+        for term in ("popular", "trending", "most played", "people playing", "what's hot", "whats hot", "common deck")
+    )
+    recent_intent = any(
+        term in folded
+        for term in ("new", "newest", "latest", "recent", "current", "emerging", "this week", "this month", "today")
+    )
+    competitive_intent = any(
+        term in folded
+        for term in ("winning", "winner", "top deck", "best deck", "competitive", "tournament", "placed", "placement", "meta")
+    )
+    window = (signals.get("recent_windows") or {}).get("14d") or {}
+    public_records = int(window.get("public_record_count") or window.get("deck_count") or 0)
+    analyzed = int(window.get("deck_count") or 0)
+    lines = [
+        "COMMUNITY DECK SIGNALS (The Gate, independent source; time-bound and not an official or global metagame ranking):",
+        f" - Snapshot captured {signals.get('captured_at') or signals.get('snapshot_date')}. "
+        f"The trailing 14-day window contains {public_records} public records; {analyzed} records with exactly "
+        "50 main cards plus Leader and Gate are the frequency basis.",
+    ]
+
+    families = window.get("leader_gate_frequency") or []
+    if families:
+        family_text = "; ".join(
+            f"{item['leader']} / {item['gate']} ({item['element']}): {item['deck_count']}"
+            for item in families[:6]
+        )
+        lines.append(f" - Frequent leader/gate pairs in those public submissions: {family_text}.")
+    elements = window.get("element_frequency") or []
+    if elements:
+        lines.append(
+            " - Element frequency in the same records: "
+            + ", ".join(f"{item['name']} {item['deck_count']}" for item in elements)
+            + "."
+        )
+    cards = window.get("common_card_inclusion") or []
+    if cards:
+        lines.append(
+            " - Frequently included gameplay cards (presence in a deck, not copies or endorsement): "
+            + ", ".join(f"{item['name']} {item['included_in_decks']}/{analyzed}" for item in cards[:8])
+            + "."
+        )
+
+    if recent_intent or popularity_intent:
+        newest = signals.get("newest_decks") or []
+        if newest:
+            lines.append(
+                " - Newest complete public records by created_at: "
+                + "; ".join(
+                    f"{item['name']} by {item['creator']} ({item['leader_family']} / {item['gate_family']}, "
+                    f"{str(item['created_at'])[:10]})"
+                    for item in newest[:6]
+                )
+                + "."
+            )
+        homepage = signals.get("homepage_recent_decks") or []
+        if homepage:
+            lines.append(
+                " - The homepage's updated-at recency slot at capture showed: "
+                + "; ".join(
+                    f"{item['name']} ({item['leader_family']} / {item['gate_family']})"
+                    for item in homepage
+                )
+                + ". That slot is not an engagement leaderboard."
+            )
+
+    for deck in named_decks:
+        lines.append(
+            f" - Named public record: {deck['name']} by {deck['creator']}, created {str(deck['created_at'])[:10]}, "
+            f"uses {deck['leader_family']} with {deck['gate_family']} ({deck['element']}); source {deck['url']}."
+        )
+
+    if competitive_intent:
+        winners = []
+        for event in signals.get("tournament_results") or []:
+            first = next(
+                (row for row in event.get("placements") or [] if row.get("placement") == 1 and row.get("deck")),
+                None,
+            )
+            if first:
+                deck = first["deck"]
+                winners.append(
+                    f"{event['date']} {event['name']} ({event.get('attendance') or 'unknown'} players): "
+                    f"{first['player']} won with {deck['leader_family']} / {deck['gate_family']}"
+                    + (f", {first['record']}" if first.get("record") else "")
+                )
+        if winners:
+            lines.append(
+                " - Separate dated tournament evidence: " + "; ".join(winners) + ". "
+                "These events predate the July gallery window and prove only their reported event results."
+            )
+
+    if popularity_intent:
+        lines.append(
+            " - Popularity boundary: no usable public view/save/share aggregate was available. Here, 'popular' can "
+            "only mean frequent among recent self-selected public submissions."
+        )
+    lines.append(
+        "Attribution rule: call this 'The Gate's dated public-gallery signal.' Say 'frequent in recent public "
+        "submissions,' not 'most played,' 'best,' 'win rate,' or 'the current global meta.' Keep tournament "
+        "results separate from recency and frequency. A named summary establishes only its displayed name, "
+        "creator, date, element, Leader, Gate, and exact-50 shape: do not invent its card list, print treatments, "
+        "strategy, or why a card is included, and never call it a 60-card deck."
+    )
+    return "\n".join(lines) + "\n\n"
+
+
 def filter_system(data: dict) -> str:
     profile = data.get("profile", {})
     if profile.get("id") == "azuki-tcg":
@@ -183,6 +319,7 @@ def filter_system(data: dict) -> str:
         world = data.get("azuki_world", {})
         guide = world.get("world_guide", {})
         community = world.get("community_knowledge", {})
+        deck_signals = world.get("community_deck_signals", {})
         lore_terms = " | ".join(item["term"] for item in guide.get("subtype_vocabulary", []))
         themes = " | ".join(sorted({
             theme
@@ -196,6 +333,9 @@ def filter_system(data: dict) -> str:
             f"{item['id']} ({item['element']}/{item['leader']}/{item['gate']})"
             for item in community.get("archetypes", [])
         )
+        recent_deck_names = " | ".join(
+            item.get("name", "") for item in deck_signals.get("newest_decks", [])[:12]
+        )
         return (
             "You translate a collector's loose browse CALL into a structured filter over an Azuki TCG "
             "catalog, using their standing COST FIELD. The catalog has NO dollar prices; it has rarity, "
@@ -206,6 +346,7 @@ def filter_system(data: dict) -> str:
             "cue into a canon event or treat every subtype as a political faction. The Gate is an independent community "
             "source: its strategy vocabulary can help interpret a call, but its analysis is not an official ruling or canon.\n"
             f"Community archetype vocabulary: {community_archetypes}\n\n"
+            f"Recent public-deck names (context labels only, not card identities or meta proof): {recent_deck_names}\n\n"
             "Available filter dimensions (use only these):\n"
             " - star_alt: true | false | null   (for ★, alternate art, portrait rare, or star treatment)\n"
             " - holo: true | false | null       (same physical UI field as star_alt; prefer star_alt for Azuki)\n"
@@ -287,8 +428,12 @@ COMMENT_SYS = (
     "pull first.'\n"
     " - 'Three of these carry a note in the record — read those before you fall in love.'\n"
     "HARD RULE: every fact in your sentences (counts, names, sets, flags, what was excluded) must come from "
-    "the card lines, filter, or an explicitly labelled COMMUNITY KNOWLEDGE / official rules cross-check block given below — nothing else. "
+    "the card lines, filter, or an explicitly labelled COMMUNITY KNOWLEDGE / COMMUNITY DECK SIGNAL / official rules cross-check block given below — nothing else. "
     "Community analysis must be attributed to its guide or report; it cannot become an official ruling, canon, or timeless meta claim. "
+    "A COMMUNITY DECK SIGNAL block describes public deck records, not the narrowed card candidates. Never turn its "
+    "record count into a player count, win rate, engagement rank, or global meta claim; picks may be empty for a deck-only answer. "
+    "A named deck summary does not expose its decklist or strategy. Do not infer its plan, engine, packages, or print "
+    "treatments from its Leader/Gate, and do not call an Azuki list a 60-card deck. "
     "If the collector didn't ask for a cut, don't claim "
     "they did.\n\n"
     "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
@@ -544,6 +689,132 @@ def resolve_pick_uids(picks: list[str], pool: list[dict]) -> list[str]:
     return resolved[:6]
 
 
+def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) -> dict | None:
+    """Render deck activity from the dated snapshot without model-added deck facts."""
+    if not deck_signal_prompt_block(call, data):
+        return None
+    signals = (data.get("azuki_world") or {}).get("community_deck_signals") or {}
+    folded = call.casefold()
+    named = named_deck_signals_for_call(call, data)
+    popularity_intent = any(
+        term in folded
+        for term in ("popular", "trending", "most played", "people playing", "what's hot", "whats hot", "common deck")
+    )
+    recent_intent = any(
+        term in folded
+        for term in ("new", "newest", "latest", "recent", "current", "emerging", "this week", "this month", "today")
+    )
+    competitive_intent = any(
+        term in folded
+        for term in ("winning", "winner", "top deck", "best deck", "competitive", "tournament", "placed", "placement", "meta")
+    )
+    window = (signals.get("recent_windows") or {}).get("14d") or {}
+    analyzed = int(window.get("deck_count") or 0)
+    sentences: list[str] = []
+    pick_names: list[str] = []
+
+    if named:
+        details = []
+        for deck in named[:2]:
+            details.append(
+                f"{deck['name']}, posted by {deck['creator']} on {str(deck['created_at'])[:10]}, "
+                f"is a {deck['element']} record with {deck['leader_family']} and {deck['gate_family']}"
+            )
+            pick_names.extend([deck["leader_family"], deck["gate_family"]])
+        sentences.append("The Gate's dated public record says " + "; ".join(details) + ".")
+        sentences.append(
+            "That's the recorded shape: 50 main cards plus Leader and Gate; this snapshot doesn't carry the "
+            "full list, its print treatments, or its game plan."
+        )
+    else:
+        families = window.get("leader_gate_frequency") or []
+        if families:
+            leaders = ", ".join(
+                f"{item['leader']} / {item['gate']} at {item['deck_count']}"
+                for item in families[:3]
+            )
+            sentences.append(
+                f"The Gate's dated public-gallery signal has {leaders} across {analyzed} recent records with "
+                "50 main cards plus Leader and Gate."
+            )
+            for item in families[:3]:
+                pick_names.extend([item["leader"], item["gate"]])
+
+    if (recent_intent or popularity_intent) and not named:
+        newest = signals.get("newest_decks") or []
+        if newest:
+            sentences.append(
+                "The newest complete records are "
+                + ", ".join(
+                    f"{item['name']} ({item['leader_family']} / {item['gate_family']})"
+                    for item in newest[:3]
+                )
+                + "."
+            )
+        common_cards = window.get("common_card_inclusion") or []
+        if common_cards:
+            sentences.append(
+                "Frequent card inclusions across the same records are "
+                + ", ".join(
+                    f"{item['name']} in {item['included_in_decks']}"
+                    for item in common_cards[:4]
+                )
+                + "; that's deck presence, not copy count or an endorsement."
+            )
+
+    if competitive_intent:
+        winners = []
+        winner_pick_names = []
+        for event in signals.get("tournament_results") or []:
+            first = next(
+                (row for row in event.get("placements") or [] if row.get("placement") == 1 and row.get("deck")),
+                None,
+            )
+            if not first:
+                continue
+            deck = first["deck"]
+            winners.append(
+                f"{event['date']}: {first['player']}, {deck['leader_family']} / {deck['gate_family']}"
+                + (f" ({first['record']})" if first.get("record") else "")
+            )
+            winner_pick_names.extend([deck["leader_family"], deck["gate_family"]])
+        if winners:
+            sentences.append("Its separate tournament winners are " + "; ".join(winners) + ".")
+            if not named:
+                pick_names = winner_pick_names
+
+    by_name: dict[str, list[dict]] = {}
+    for card in pool:
+        by_name.setdefault((card.get("name_en") or card.get("name_ja") or "").casefold(), []).append(card)
+    picks = []
+    for name in pick_names:
+        candidates = by_name.get(str(name).casefold()) or []
+        candidates.sort(
+            key=lambda card: (
+                card.get("source_authority") != "official_gallery_api_fact",
+                bool(card.get("star_alt")),
+                not str(card.get("product_channel") or "").startswith("starter_deck_"),
+                card.get("uid") or "",
+            )
+        )
+        if candidates and candidates[0]["uid"] not in picks:
+            picks.append(candidates[0]["uid"])
+        if len(picks) == 6:
+            break
+
+    caveat_parts = [f"Snapshot captured {signals.get('snapshot_date')}; public submissions are not a player census"]
+    if popularity_intent:
+        caveat_parts.append("no public view/save/share ranking was available")
+    if competitive_intent:
+        caveat_parts.append("the reported tournament results predate the July activity window")
+    caveat_parts.append("none of this establishes a current global meta or expected win rate")
+    return {
+        "commentary": " ".join(sentences),
+        "picks": picks,
+        "caveat": "; ".join(caveat_parts) + ".",
+    }
+
+
 ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market", "match_value"}
 SCOPE_KEYS = {
     "rarity", "release_family", "product_channel", "star_alt", "holo", "category",
@@ -646,6 +917,33 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
         return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")),
                 "filter": f, "action": action,
                 "result": {"commentary": "", "picks": [], "caveat": ""}, "overclaim_flags": []}
+    named_decks = named_deck_signals_for_call(call, data)
+    if named_decks:
+        ignored = {}
+        leader_names = {str(deck.get("leader_family") or "").casefold() for deck in named_decks}
+        for key in ("lore", "lore_term", "theme", "character_thread"):
+            if f.get(key) is not None:
+                ignored[key] = f.get(key)
+                f[key] = None
+        parsed_character = str(f.get("character") or "").casefold()
+        if parsed_character and parsed_character not in leader_names:
+            ignored["character"] = f.get("character")
+            f["character"] = None
+        if ignored:
+            f["ignored_unmatched_deck_filter"] = ignored
+        f["deterministic_deck_match"] = [deck["name"] for deck in named_decks]
+        f["reading"] = (
+            "Exact public-deck-name matching selected "
+            + ", ".join(deck["name"] for deck in named_decks)
+            + "; this is dated deck context, not a card-name or metagame claim."
+        )
+    community_context = community_prompt_block(call, data)
+    deck_signal_context = deck_signal_prompt_block(call, data)
+    if deck_signal_context and not named_decks:
+        f["reading"] = (
+            "You want a dated read of public deck activity; recent submissions, homepage visibility, and "
+            "tournament results stay separate."
+        )
     survivors = apply_filter(data["cards"], f, setlabel)
     if not survivors and f.get("lore"):
         fallback_filter = {**f, "lore": None}
@@ -654,20 +952,36 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             f["ignored_unmatched_lore"] = f["lore"]
             f["lore"] = None
             survivors = fallback_survivors
+    if not survivors and deck_signal_context:
+        context_only_keys = (
+            "holo", "star_alt", "owned", "exclude_grails", "set", "character", "category", "element",
+            "rarity", "release_family", "product_channel", "card_type", "plane", "lore_term", "theme",
+            "character_thread", "event", "lore",
+        )
+        ignored = {key: f.get(key) for key in context_only_keys if f.get(key) is not None}
+        fallback_filter = {**f, **{key: None for key in context_only_keys}}
+        fallback_survivors = apply_filter(data["cards"], fallback_filter, setlabel)
+        if fallback_survivors:
+            for key in context_only_keys:
+                f[key] = None
+            f["ignored_unmatched_deck_filter"] = ignored
+            survivors = fallback_survivors
     pool = diverse_pool(survivors, cap)
     n_sets = len({c["set_id"] for c in survivors})
-    community_context = community_prompt_block(call, data)
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
         + community_context
+        + deck_signal_context
         + f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
     )
     if not pool:
         c = {"commentary": "Nothing matched that call.", "picks": [], "caveat": ""}
+    elif deck_signal_result := deterministic_deck_signal_result(call, data, pool):
+        c = deck_signal_result
     elif f.get("deterministic_name_match") and len(pool) == 1:
         card = pool[0]
         observed = card.get("source_authority") == "user_photo_observation_not_official_gallery_fact"
@@ -711,7 +1025,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]

@@ -23,6 +23,7 @@
     "schema": "azuki_world_metadata_v0.1",
     "metadata_hash": "17b102ba1345ec52a9e13b7926ef637a58e613aa36a7159763c91a6e45d9ceee",
     "community_knowledge_hash": "3f283ad211977b7cf0a1e9ca2ceff1180165610a21ecd6a52f6cb7148249d838",
+    "community_deck_signals_hash": "745a87e534cea247eb744580dbe09a29cf43918170e16858694f4d42a50268d1",
     "authority_legend": {
       "official_site_fact": "A concise paraphrase of material published on an Azuki-owned web property.",
       "official_tcg_rule_fact": "A gameplay/world term defined by the official Azuki TCG rules.",
@@ -2136,6 +2137,1763 @@
         "The Gate's rules summaries override the official rule page"
       ]
     },
+    "community_deck_signals": {
+      "schema": "cairn.azuki.community_deck_signals.v1",
+      "snapshot_date": "2026-07-15",
+      "captured_at": "2026-07-15T17:05:27.898702Z",
+      "source": {
+        "id": "the-gate-ikz-public-decks",
+        "name": "The Gate",
+        "url": "https://thegateikz.com/",
+        "deck_gallery_url": "https://thegateikz.com/decks",
+        "tournaments_url": "https://thegateikz.com/tournaments",
+        "client_asset_url": "https://thegateikz.com/assets/index-INh2kOJM.js",
+        "authority_label": "independent_community_source",
+        "capture_method": "Anonymous read-only records requested through the same public data interface used by The Gate client.",
+        "copyright_boundary": "This artifact stores aggregate counts and compact deck summaries, not copied article text, card images, or full decklists."
+      },
+      "signal_definitions": {
+        "newest_public_records": "Public or author-published gallery records ordered by their created_at timestamp. A record may have been made public later.",
+        "homepage_recent": "The four public records The Gate homepage would select by most recent updated_at timestamp at capture time. This is visibility/recency, not engagement rank.",
+        "recent_public_frequency": "Counts among records with exactly 50 main cards plus one Leader and one Gate within an exact trailing created_at window. This is a self-selected public-submission signal, not a player-population estimate or a ruling that the list is otherwise legal.",
+        "common_card_inclusion": "Number of records in a window containing a gameplay card at least once, with print-treatment suffixes collapsed. It is not copy count, recommendation, or win rate.",
+        "tournament_result": "A dated placement attached to a published The Gate tournament record. It is competitive evidence for that event only.",
+        "popular_language_policy": "Anko may call a leader, gate, or card frequent in recent public submissions. He must not call it the global meta, most played, best, or proven from this signal alone."
+      },
+      "engagement_availability": {
+        "public_aggregate_available": false,
+        "note": "The public deck pages do not display aggregate view, save, or share counts, and anonymous reads did not provide a usable engagement aggregate at capture time. No engagement ranking is claimed."
+      },
+      "coverage": {
+        "public_or_author_published_decks": 105,
+        "complete_50_plus_leader_gate": 101,
+        "published_tournaments": 3,
+        "published_placements": 14
+      },
+      "all_time_public_gallery_context": {
+        "leader_frequency": [
+          {
+            "name": "Zero",
+            "deck_count": 22
+          },
+          {
+            "name": "Bobu",
+            "deck_count": 20
+          },
+          {
+            "name": "Raizan",
+            "deck_count": 19
+          },
+          {
+            "name": "Shao",
+            "deck_count": 17
+          },
+          {
+            "name": "Benzai the Sly",
+            "deck_count": 7
+          },
+          {
+            "name": "Frog, Merchant, Watercrafting",
+            "deck_count": 5
+          },
+          {
+            "name": "Goro Graveloth",
+            "deck_count": 4
+          },
+          {
+            "name": "Obsidian, Sloth",
+            "deck_count": 3
+          },
+          {
+            "name": "Cat, Steelborn",
+            "deck_count": 2
+          },
+          {
+            "name": "Loneflame, Red Panda",
+            "deck_count": 1
+          },
+          {
+            "name": "Piko of Thousand Blades",
+            "deck_count": 1
+          }
+        ],
+        "element_frequency": [
+          {
+            "name": "Water",
+            "deck_count": 29
+          },
+          {
+            "name": "Earth",
+            "deck_count": 27
+          },
+          {
+            "name": "Fire",
+            "deck_count": 23
+          },
+          {
+            "name": "Lightning",
+            "deck_count": 22
+          }
+        ],
+        "frequency_basis_decks": 101,
+        "note": "All-time gallery counts use records with exactly 50 main cards plus one Leader and one Gate. They do not establish current activity, unique players, or legality beyond that shape."
+      },
+      "homepage_recent_decks": [
+        {
+          "name": "Yellow stall????",
+          "url": "https://thegateikz.com/decks/my-deck-mrli077s",
+          "creator": "KarpADile",
+          "created_at": "2026-07-15T03:06:05.877208+00:00",
+          "updated_at": "2026-07-15T15:41:03.453771+00:00",
+          "leader": "Bobu",
+          "leader_family": "Bobu",
+          "gate": "Stonehaven Gate",
+          "gate_family": "Stonehaven Gate",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Rampin' n Crampin'",
+          "url": "https://thegateikz.com/decks/my-deck-mrgvgnsi",
+          "creator": "Frostic_",
+          "created_at": "2026-07-11T21:23:57.544701+00:00",
+          "updated_at": "2026-07-15T15:10:50.742045+00:00",
+          "leader": "Bobu",
+          "leader_family": "Bobu",
+          "gate": "Stonehaven Gate",
+          "gate_family": "Stonehaven Gate",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Mill Forge",
+          "url": "https://thegateikz.com/decks/wu-cha-gonna-call-mriwmlgj",
+          "creator": "THECountBasie",
+          "created_at": "2026-07-13T07:32:04.58926+00:00",
+          "updated_at": "2026-07-15T07:38:59.313085+00:00",
+          "leader": "Raizan",
+          "leader_family": "Raizan",
+          "gate": "Surge Gate",
+          "gate_family": "Surge Gate",
+          "element": "Lightning",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Whale Slap",
+          "url": "https://thegateikz.com/decks/whale-slap-mq7brsji",
+          "creator": "THECountBasie",
+          "created_at": "2026-06-10T00:23:06.909952+00:00",
+          "updated_at": "2026-07-15T05:32:54.54878+00:00",
+          "leader": "Goro Graveloth",
+          "leader_family": "Goro Graveloth",
+          "gate": "Gate of Devotion",
+          "gate_family": "Gate of Devotion",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        }
+      ],
+      "newest_decks": [
+        {
+          "name": "Rengoku",
+          "url": "https://thegateikz.com/decks/rengoku-mrlmc2x9",
+          "creator": "Ronin Lotus",
+          "created_at": "2026-07-15T05:07:18.324134+00:00",
+          "updated_at": "2026-07-15T05:07:18.324134+00:00",
+          "leader": "Zero (Leader)",
+          "leader_family": "Zero",
+          "gate": "Rushfire Gate",
+          "gate_family": "Rushfire Gate",
+          "element": "Fire",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "frog hog",
+          "url": "https://thegateikz.com/decks/frog-hog-mrllrvy5",
+          "creator": "lucky",
+          "created_at": "2026-07-15T04:51:36.563862+00:00",
+          "updated_at": "2026-07-15T04:56:19.123738+00:00",
+          "leader": "Frog, Merchant, Watercrafting",
+          "leader_family": "Frog, Merchant, Watercrafting",
+          "gate": "Gate of Echoed Waves",
+          "gate_family": "Gate of Echoed Waves",
+          "element": "Water",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Yellow stall????",
+          "url": "https://thegateikz.com/decks/my-deck-mrli077s",
+          "creator": "KarpADile",
+          "created_at": "2026-07-15T03:06:05.877208+00:00",
+          "updated_at": "2026-07-15T15:41:03.453771+00:00",
+          "leader": "Bobu",
+          "leader_family": "Bobu",
+          "gate": "Stonehaven Gate",
+          "gate_family": "Stonehaven Gate",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Its_Shao_Time",
+          "url": "https://thegateikz.com/decks/itsshaotime-mrl3g61o",
+          "creator": "Its_Shao_Time",
+          "created_at": "2026-07-14T20:18:36.475294+00:00",
+          "updated_at": "2026-07-14T20:18:36.475294+00:00",
+          "leader": "Shao",
+          "leader_family": "Shao",
+          "gate": "Gate of Echoed Waves",
+          "gate_family": "Gate of Echoed Waves",
+          "element": "Water",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "My Deck",
+          "url": "https://thegateikz.com/decks/my-deck-mrl1rx1q",
+          "creator": "CatCow",
+          "created_at": "2026-07-14T19:31:45.161501+00:00",
+          "updated_at": "2026-07-14T19:31:45.161501+00:00",
+          "leader": "Obsidian, Sloth",
+          "leader_family": "Obsidian, Sloth",
+          "gate": "Gate of Devotion",
+          "gate_family": "Gate of Devotion",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Angry Frog",
+          "url": "https://thegateikz.com/decks/angry-frog-mrkzcsjm",
+          "creator": "Zero_to_Hero",
+          "created_at": "2026-07-14T18:24:01.192874+00:00",
+          "updated_at": "2026-07-14T18:24:01.192874+00:00",
+          "leader": "Benzai the Sly",
+          "leader_family": "Benzai the Sly",
+          "gate": "Hydromancy Gate",
+          "gate_family": "Hydromancy Gate",
+          "element": "Water",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "EARTH CONTROL",
+          "url": "https://thegateikz.com/decks/earth-control-mrjufgt6",
+          "creator": "The white knight",
+          "created_at": "2026-07-13T23:18:19.276554+00:00",
+          "updated_at": "2026-07-14T01:20:44.445285+00:00",
+          "leader": "Bobu",
+          "leader_family": "Bobu",
+          "gate": "Stonehaven Gate",
+          "gate_family": "Stonehaven Gate",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Mill Forge",
+          "url": "https://thegateikz.com/decks/wu-cha-gonna-call-mriwmlgj",
+          "creator": "THECountBasie",
+          "created_at": "2026-07-13T07:32:04.58926+00:00",
+          "updated_at": "2026-07-15T07:38:59.313085+00:00",
+          "leader": "Raizan",
+          "leader_family": "Raizan",
+          "gate": "Surge Gate",
+          "gate_family": "Surge Gate",
+          "element": "Lightning",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Goro",
+          "url": "https://thegateikz.com/decks/goro-mribq5pm",
+          "creator": "apatti00",
+          "created_at": "2026-07-12T21:46:45.007519+00:00",
+          "updated_at": "2026-07-12T21:46:45.007519+00:00",
+          "leader": "Goro Graveloth",
+          "leader_family": "Goro Graveloth",
+          "gate": "Gate of Devotion",
+          "gate_family": "Gate of Devotion",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Piko Weapon swap",
+          "url": "https://thegateikz.com/decks/piko-weapon-swap-mri4o7vv",
+          "creator": "TCG.Time",
+          "created_at": "2026-07-12T18:29:32.956888+00:00",
+          "updated_at": "2026-07-12T18:29:32.956888+00:00",
+          "leader": "Cat, Steelborn",
+          "leader_family": "Cat, Steelborn",
+          "gate": "Stormchain Gate",
+          "gate_family": "Stormchain Gate",
+          "element": "Lightning",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Benzai's Tempo",
+          "url": "https://thegateikz.com/decks/benzais-tempo-mri3683w",
+          "creator": "Jct019",
+          "created_at": "2026-07-12T17:47:35.820087+00:00",
+          "updated_at": "2026-07-12T17:47:35.820087+00:00",
+          "leader": "Benzai the Sly",
+          "leader_family": "Benzai the Sly",
+          "gate": "Gate of Echoed Waves",
+          "gate_family": "Gate of Echoed Waves",
+          "element": "Water",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "HOT TAKE! V2",
+          "url": "https://thegateikz.com/decks/hot-take-v2-mri1afzm",
+          "creator": "TCG.Time",
+          "created_at": "2026-07-12T16:54:52.515264+00:00",
+          "updated_at": "2026-07-12T22:07:04.786612+00:00",
+          "leader": "Zero (Leader)",
+          "leader_family": "Zero",
+          "gate": "Ragefire Gate",
+          "gate_family": "Ragefire Gate",
+          "element": "Fire",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Water Primer",
+          "url": "https://thegateikz.com/decks/my-deck-mrhfsdvx",
+          "creator": "Crane",
+          "created_at": "2026-07-12T06:52:58.038788+00:00",
+          "updated_at": "2026-07-12T06:53:32.929022+00:00",
+          "leader": "Benzai the Sly",
+          "leader_family": "Benzai the Sly",
+          "gate": "Hydromancy Gate",
+          "gate_family": "Hydromancy Gate",
+          "element": "Water",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "My Deck",
+          "url": "https://thegateikz.com/decks/my-deck-mrhaqwpk",
+          "creator": "Glubglub",
+          "created_at": "2026-07-12T04:31:50.305184+00:00",
+          "updated_at": "2026-07-12T04:31:50.305184+00:00",
+          "leader": "Zero (Leader)",
+          "leader_family": "Zero",
+          "gate": "Rushfire Gate",
+          "gate_family": "Rushfire Gate",
+          "element": "Fire",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "Rampin' n Crampin'",
+          "url": "https://thegateikz.com/decks/my-deck-mrgvgnsi",
+          "creator": "Frostic_",
+          "created_at": "2026-07-11T21:23:57.544701+00:00",
+          "updated_at": "2026-07-15T15:10:50.742045+00:00",
+          "leader": "Bobu",
+          "leader_family": "Bobu",
+          "gate": "Stonehaven Gate",
+          "gate_family": "Stonehaven Gate",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        },
+        {
+          "name": "My Deck",
+          "url": "https://thegateikz.com/decks/my-deck-mrgqx0rj",
+          "creator": "J Chiu",
+          "created_at": "2026-07-11T19:16:42.876337+00:00",
+          "updated_at": "2026-07-11T19:25:37.387003+00:00",
+          "leader": "Bobu",
+          "leader_family": "Bobu",
+          "gate": "Stonehaven Gate",
+          "gate_family": "Stonehaven Gate",
+          "element": "Earth",
+          "main_card_count": 50,
+          "complete_50_plus_leader_gate": true
+        }
+      ],
+      "recent_windows": {
+        "7d": {
+          "days": 7,
+          "cutoff_at": "2026-07-08T17:05:27.898702Z",
+          "public_record_count": 21,
+          "deck_count": 21,
+          "frequency_basis": "Records with exactly 50 main cards plus one Leader and one Gate.",
+          "excluded_non_50_record_count": 0,
+          "leader_frequency": [
+            {
+              "name": "Benzai the Sly",
+              "deck_count": 5
+            },
+            {
+              "name": "Bobu",
+              "deck_count": 5
+            },
+            {
+              "name": "Zero",
+              "deck_count": 3
+            },
+            {
+              "name": "Frog, Merchant, Watercrafting",
+              "deck_count": 2
+            },
+            {
+              "name": "Raizan",
+              "deck_count": 2
+            },
+            {
+              "name": "Cat, Steelborn",
+              "deck_count": 1
+            },
+            {
+              "name": "Goro Graveloth",
+              "deck_count": 1
+            },
+            {
+              "name": "Obsidian, Sloth",
+              "deck_count": 1
+            },
+            {
+              "name": "Shao",
+              "deck_count": 1
+            }
+          ],
+          "gate_frequency": [
+            {
+              "name": "Gate of Echoed Waves",
+              "deck_count": 5
+            },
+            {
+              "name": "Stonehaven Gate",
+              "deck_count": 5
+            },
+            {
+              "name": "Hydromancy Gate",
+              "deck_count": 3
+            },
+            {
+              "name": "Gate of Devotion",
+              "deck_count": 2
+            },
+            {
+              "name": "Rushfire Gate",
+              "deck_count": 2
+            },
+            {
+              "name": "Surge Gate",
+              "deck_count": 2
+            },
+            {
+              "name": "Ragefire Gate",
+              "deck_count": 1
+            },
+            {
+              "name": "Stormchain Gate",
+              "deck_count": 1
+            }
+          ],
+          "element_frequency": [
+            {
+              "name": "Water",
+              "deck_count": 8
+            },
+            {
+              "name": "Earth",
+              "deck_count": 7
+            },
+            {
+              "name": "Fire",
+              "deck_count": 3
+            },
+            {
+              "name": "Lightning",
+              "deck_count": 3
+            }
+          ],
+          "leader_gate_frequency": [
+            {
+              "leader": "Bobu",
+              "gate": "Stonehaven Gate",
+              "element": "Earth",
+              "deck_count": 5,
+              "share_of_window": 0.238,
+              "example_deck_names": [
+                "Yellow stall????",
+                "EARTH CONTROL",
+                "Rampin' n Crampin'"
+              ]
+            },
+            {
+              "leader": "Benzai the Sly",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 3,
+              "share_of_window": 0.143,
+              "example_deck_names": [
+                "Benzai's Tempo",
+                "Pip tech Benzai",
+                "Benzai Discard"
+              ]
+            },
+            {
+              "leader": "Benzai the Sly",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 2,
+              "share_of_window": 0.095,
+              "example_deck_names": [
+                "Angry Frog",
+                "Water Primer"
+              ]
+            },
+            {
+              "leader": "Raizan",
+              "gate": "Surge Gate",
+              "element": "Lightning",
+              "deck_count": 2,
+              "share_of_window": 0.095,
+              "example_deck_names": [
+                "Mill Forge",
+                "⚡️ Troll Meta"
+              ]
+            },
+            {
+              "leader": "Zero",
+              "gate": "Rushfire Gate",
+              "element": "Fire",
+              "deck_count": 2,
+              "share_of_window": 0.095,
+              "example_deck_names": [
+                "Rengoku",
+                "My Deck"
+              ]
+            },
+            {
+              "leader": "Cat, Steelborn",
+              "gate": "Stormchain Gate",
+              "element": "Lightning",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "Piko Weapon swap"
+              ]
+            },
+            {
+              "leader": "Frog, Merchant, Watercrafting",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "frog hog"
+              ]
+            },
+            {
+              "leader": "Frog, Merchant, Watercrafting",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "Benzai Test"
+              ]
+            },
+            {
+              "leader": "Goro Graveloth",
+              "gate": "Gate of Devotion",
+              "element": "Earth",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "Goro"
+              ]
+            },
+            {
+              "leader": "Obsidian, Sloth",
+              "gate": "Gate of Devotion",
+              "element": "Earth",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "My Deck"
+              ]
+            },
+            {
+              "leader": "Shao",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "Its_Shao_Time"
+              ]
+            },
+            {
+              "leader": "Zero",
+              "gate": "Ragefire Gate",
+              "element": "Fire",
+              "deck_count": 1,
+              "share_of_window": 0.048,
+              "example_deck_names": [
+                "HOT TAKE! V2"
+              ]
+            }
+          ],
+          "common_card_inclusion": [
+            {
+              "name": "Benzai the Merchant",
+              "included_in_decks": 8,
+              "share_of_window": 0.381
+            },
+            {
+              "name": "Foamback Crab",
+              "included_in_decks": 7,
+              "share_of_window": 0.333
+            },
+            {
+              "name": "Mirage Frog",
+              "included_in_decks": 7,
+              "share_of_window": 0.333
+            },
+            {
+              "name": "Quicksand",
+              "included_in_decks": 7,
+              "share_of_window": 0.333
+            },
+            {
+              "name": "Shiko the Priestess",
+              "included_in_decks": 7,
+              "share_of_window": 0.333
+            },
+            {
+              "name": "Earthfury, Obsidian",
+              "included_in_decks": 6,
+              "share_of_window": 0.286
+            },
+            {
+              "name": "Mizuki",
+              "included_in_decks": 6,
+              "share_of_window": 0.286
+            },
+            {
+              "name": "Pip",
+              "included_in_decks": 6,
+              "share_of_window": 0.286
+            },
+            {
+              "name": "Sandcoil Python",
+              "included_in_decks": 6,
+              "share_of_window": 0.286
+            },
+            {
+              "name": "Stone Masked Ancient",
+              "included_in_decks": 6,
+              "share_of_window": 0.286
+            },
+            {
+              "name": "Sōryū no Rin",
+              "included_in_decks": 6,
+              "share_of_window": 0.286
+            },
+            {
+              "name": "Aya",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Black Jade Dagger",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Commune with Water",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Fumiko",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Gin and Tonika",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Hayabusa Itto",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Koyama Farm Plowman",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Mizuryuu's Torrent",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            },
+            {
+              "name": "Shroom Tender",
+              "included_in_decks": 5,
+              "share_of_window": 0.238
+            }
+          ]
+        },
+        "14d": {
+          "days": 14,
+          "cutoff_at": "2026-07-01T17:05:27.898702Z",
+          "public_record_count": 37,
+          "deck_count": 36,
+          "frequency_basis": "Records with exactly 50 main cards plus one Leader and one Gate.",
+          "excluded_non_50_record_count": 1,
+          "leader_frequency": [
+            {
+              "name": "Bobu",
+              "deck_count": 9
+            },
+            {
+              "name": "Benzai the Sly",
+              "deck_count": 7
+            },
+            {
+              "name": "Zero",
+              "deck_count": 7
+            },
+            {
+              "name": "Raizan",
+              "deck_count": 3
+            },
+            {
+              "name": "Cat, Steelborn",
+              "deck_count": 2
+            },
+            {
+              "name": "Frog, Merchant, Watercrafting",
+              "deck_count": 2
+            },
+            {
+              "name": "Obsidian, Sloth",
+              "deck_count": 2
+            },
+            {
+              "name": "Shao",
+              "deck_count": 2
+            },
+            {
+              "name": "Goro Graveloth",
+              "deck_count": 1
+            },
+            {
+              "name": "Loneflame, Red Panda",
+              "deck_count": 1
+            }
+          ],
+          "gate_frequency": [
+            {
+              "name": "Stonehaven Gate",
+              "deck_count": 9
+            },
+            {
+              "name": "Gate of Echoed Waves",
+              "deck_count": 7
+            },
+            {
+              "name": "Rushfire Gate",
+              "deck_count": 6
+            },
+            {
+              "name": "Hydromancy Gate",
+              "deck_count": 4
+            },
+            {
+              "name": "Surge Gate",
+              "deck_count": 4
+            },
+            {
+              "name": "Gate of Devotion",
+              "deck_count": 3
+            },
+            {
+              "name": "Ragefire Gate",
+              "deck_count": 2
+            },
+            {
+              "name": "Stormchain Gate",
+              "deck_count": 1
+            }
+          ],
+          "element_frequency": [
+            {
+              "name": "Earth",
+              "deck_count": 12
+            },
+            {
+              "name": "Water",
+              "deck_count": 11
+            },
+            {
+              "name": "Fire",
+              "deck_count": 8
+            },
+            {
+              "name": "Lightning",
+              "deck_count": 5
+            }
+          ],
+          "leader_gate_frequency": [
+            {
+              "leader": "Bobu",
+              "gate": "Stonehaven Gate",
+              "element": "Earth",
+              "deck_count": 9,
+              "share_of_window": 0.25,
+              "example_deck_names": [
+                "Yellow stall????",
+                "EARTH CONTROL",
+                "Rampin' n Crampin'"
+              ]
+            },
+            {
+              "leader": "Benzai the Sly",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 5,
+              "share_of_window": 0.139,
+              "example_deck_names": [
+                "Benzai's Tempo",
+                "Pip tech Benzai",
+                "Benzai Discard"
+              ]
+            },
+            {
+              "leader": "Zero",
+              "gate": "Rushfire Gate",
+              "element": "Fire",
+              "deck_count": 5,
+              "share_of_window": 0.139,
+              "example_deck_names": [
+                "Rengoku",
+                "My Deck",
+                "Adolla Burst"
+              ]
+            },
+            {
+              "leader": "Raizan",
+              "gate": "Surge Gate",
+              "element": "Lightning",
+              "deck_count": 3,
+              "share_of_window": 0.083,
+              "example_deck_names": [
+                "Mill Forge",
+                "⚡️ Troll Meta",
+                "bread&butter"
+              ]
+            },
+            {
+              "leader": "Benzai the Sly",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 2,
+              "share_of_window": 0.056,
+              "example_deck_names": [
+                "Angry Frog",
+                "Water Primer"
+              ]
+            },
+            {
+              "leader": "Obsidian, Sloth",
+              "gate": "Gate of Devotion",
+              "element": "Earth",
+              "deck_count": 2,
+              "share_of_window": 0.056,
+              "example_deck_names": [
+                "My Deck",
+                "Goro slow burn"
+              ]
+            },
+            {
+              "leader": "Zero",
+              "gate": "Ragefire Gate",
+              "element": "Fire",
+              "deck_count": 2,
+              "share_of_window": 0.056,
+              "example_deck_names": [
+                "HOT TAKE! V2",
+                "Black Jade"
+              ]
+            },
+            {
+              "leader": "Cat, Steelborn",
+              "gate": "Stormchain Gate",
+              "element": "Lightning",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "Piko Weapon swap"
+              ]
+            },
+            {
+              "leader": "Cat, Steelborn",
+              "gate": "Surge Gate",
+              "element": "Lightning",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "HAIL MARY"
+              ]
+            },
+            {
+              "leader": "Frog, Merchant, Watercrafting",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "frog hog"
+              ]
+            },
+            {
+              "leader": "Frog, Merchant, Watercrafting",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "Benzai Test"
+              ]
+            },
+            {
+              "leader": "Goro Graveloth",
+              "gate": "Gate of Devotion",
+              "element": "Earth",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "Goro"
+              ]
+            },
+            {
+              "leader": "Loneflame, Red Panda",
+              "gate": "Rushfire Gate",
+              "element": "Fire",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "Kagoro Rush"
+              ]
+            },
+            {
+              "leader": "Shao",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "Its_Shao_Time"
+              ]
+            },
+            {
+              "leader": "Shao",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.028,
+              "example_deck_names": [
+                "Concept"
+              ]
+            }
+          ],
+          "common_card_inclusion": [
+            {
+              "name": "Quicksand",
+              "included_in_decks": 12,
+              "share_of_window": 0.333
+            },
+            {
+              "name": "Benzai the Merchant",
+              "included_in_decks": 11,
+              "share_of_window": 0.306
+            },
+            {
+              "name": "Black Jade Dagger",
+              "included_in_decks": 11,
+              "share_of_window": 0.306
+            },
+            {
+              "name": "Stone Masked Ancient",
+              "included_in_decks": 11,
+              "share_of_window": 0.306
+            },
+            {
+              "name": "Mirage Frog",
+              "included_in_decks": 10,
+              "share_of_window": 0.278
+            },
+            {
+              "name": "Sandcoil Python",
+              "included_in_decks": 10,
+              "share_of_window": 0.278
+            },
+            {
+              "name": "Shiko the Priestess",
+              "included_in_decks": 10,
+              "share_of_window": 0.278
+            },
+            {
+              "name": "Foamback Crab",
+              "included_in_decks": 9,
+              "share_of_window": 0.25
+            },
+            {
+              "name": "Koyama Farm Plowman",
+              "included_in_decks": 9,
+              "share_of_window": 0.25
+            },
+            {
+              "name": "Sōryū no Rin",
+              "included_in_decks": 9,
+              "share_of_window": 0.25
+            },
+            {
+              "name": "Teb Fea",
+              "included_in_decks": 9,
+              "share_of_window": 0.25
+            },
+            {
+              "name": "Treetop Scout",
+              "included_in_decks": 9,
+              "share_of_window": 0.25
+            },
+            {
+              "name": "Earthfury, Obsidian",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Gin and Tonika",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Glass Blower, Hokuto",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Jar of Beans",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Mizuki",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Mizuryuu's Torrent",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Samurai",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            },
+            {
+              "name": "Sprout of Fortune",
+              "included_in_decks": 8,
+              "share_of_window": 0.222
+            }
+          ]
+        },
+        "30d": {
+          "days": 30,
+          "cutoff_at": "2026-06-15T17:05:27.898702Z",
+          "public_record_count": 48,
+          "deck_count": 47,
+          "frequency_basis": "Records with exactly 50 main cards plus one Leader and one Gate.",
+          "excluded_non_50_record_count": 1,
+          "leader_frequency": [
+            {
+              "name": "Bobu",
+              "deck_count": 13
+            },
+            {
+              "name": "Zero",
+              "deck_count": 8
+            },
+            {
+              "name": "Benzai the Sly",
+              "deck_count": 7
+            },
+            {
+              "name": "Raizan",
+              "deck_count": 4
+            },
+            {
+              "name": "Frog, Merchant, Watercrafting",
+              "deck_count": 3
+            },
+            {
+              "name": "Goro Graveloth",
+              "deck_count": 3
+            },
+            {
+              "name": "Shao",
+              "deck_count": 3
+            },
+            {
+              "name": "Cat, Steelborn",
+              "deck_count": 2
+            },
+            {
+              "name": "Obsidian, Sloth",
+              "deck_count": 2
+            },
+            {
+              "name": "Loneflame, Red Panda",
+              "deck_count": 1
+            },
+            {
+              "name": "Piko of Thousand Blades",
+              "deck_count": 1
+            }
+          ],
+          "gate_frequency": [
+            {
+              "name": "Stonehaven Gate",
+              "deck_count": 13
+            },
+            {
+              "name": "Gate of Echoed Waves",
+              "deck_count": 7
+            },
+            {
+              "name": "Hydromancy Gate",
+              "deck_count": 6
+            },
+            {
+              "name": "Rushfire Gate",
+              "deck_count": 6
+            },
+            {
+              "name": "Gate of Devotion",
+              "deck_count": 5
+            },
+            {
+              "name": "Surge Gate",
+              "deck_count": 5
+            },
+            {
+              "name": "Ragefire Gate",
+              "deck_count": 3
+            },
+            {
+              "name": "Stormchain Gate",
+              "deck_count": 2
+            }
+          ],
+          "element_frequency": [
+            {
+              "name": "Earth",
+              "deck_count": 18
+            },
+            {
+              "name": "Water",
+              "deck_count": 13
+            },
+            {
+              "name": "Fire",
+              "deck_count": 9
+            },
+            {
+              "name": "Lightning",
+              "deck_count": 7
+            }
+          ],
+          "leader_gate_frequency": [
+            {
+              "leader": "Bobu",
+              "gate": "Stonehaven Gate",
+              "element": "Earth",
+              "deck_count": 13,
+              "share_of_window": 0.277,
+              "example_deck_names": [
+                "Yellow stall????",
+                "EARTH CONTROL",
+                "Rampin' n Crampin'"
+              ]
+            },
+            {
+              "leader": "Benzai the Sly",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 5,
+              "share_of_window": 0.106,
+              "example_deck_names": [
+                "Benzai's Tempo",
+                "Pip tech Benzai",
+                "Benzai Discard"
+              ]
+            },
+            {
+              "leader": "Zero",
+              "gate": "Rushfire Gate",
+              "element": "Fire",
+              "deck_count": 5,
+              "share_of_window": 0.106,
+              "example_deck_names": [
+                "Rengoku",
+                "My Deck",
+                "Adolla Burst"
+              ]
+            },
+            {
+              "leader": "Raizan",
+              "gate": "Surge Gate",
+              "element": "Lightning",
+              "deck_count": 4,
+              "share_of_window": 0.085,
+              "example_deck_names": [
+                "Mill Forge",
+                "⚡️ Troll Meta",
+                "bread&butter"
+              ]
+            },
+            {
+              "leader": "Goro Graveloth",
+              "gate": "Gate of Devotion",
+              "element": "Earth",
+              "deck_count": 3,
+              "share_of_window": 0.064,
+              "example_deck_names": [
+                "Goro",
+                "EARTH 20260630",
+                "Goro earth deck"
+              ]
+            },
+            {
+              "leader": "Zero",
+              "gate": "Ragefire Gate",
+              "element": "Fire",
+              "deck_count": 3,
+              "share_of_window": 0.064,
+              "example_deck_names": [
+                "HOT TAKE! V2",
+                "Black Jade",
+                "Looking for fire"
+              ]
+            },
+            {
+              "leader": "Benzai the Sly",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 2,
+              "share_of_window": 0.043,
+              "example_deck_names": [
+                "Angry Frog",
+                "Water Primer"
+              ]
+            },
+            {
+              "leader": "Frog, Merchant, Watercrafting",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 2,
+              "share_of_window": 0.043,
+              "example_deck_names": [
+                "Benzai Test",
+                "Frogs"
+              ]
+            },
+            {
+              "leader": "Obsidian, Sloth",
+              "gate": "Gate of Devotion",
+              "element": "Earth",
+              "deck_count": 2,
+              "share_of_window": 0.043,
+              "example_deck_names": [
+                "My Deck",
+                "Goro slow burn"
+              ]
+            },
+            {
+              "leader": "Shao",
+              "gate": "Hydromancy Gate",
+              "element": "Water",
+              "deck_count": 2,
+              "share_of_window": 0.043,
+              "example_deck_names": [
+                "Concept",
+                "My Deck"
+              ]
+            },
+            {
+              "leader": "Cat, Steelborn",
+              "gate": "Stormchain Gate",
+              "element": "Lightning",
+              "deck_count": 1,
+              "share_of_window": 0.021,
+              "example_deck_names": [
+                "Piko Weapon swap"
+              ]
+            },
+            {
+              "leader": "Cat, Steelborn",
+              "gate": "Surge Gate",
+              "element": "Lightning",
+              "deck_count": 1,
+              "share_of_window": 0.021,
+              "example_deck_names": [
+                "HAIL MARY"
+              ]
+            },
+            {
+              "leader": "Frog, Merchant, Watercrafting",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.021,
+              "example_deck_names": [
+                "frog hog"
+              ]
+            },
+            {
+              "leader": "Loneflame, Red Panda",
+              "gate": "Rushfire Gate",
+              "element": "Fire",
+              "deck_count": 1,
+              "share_of_window": 0.021,
+              "example_deck_names": [
+                "Kagoro Rush"
+              ]
+            },
+            {
+              "leader": "Piko of Thousand Blades",
+              "gate": "Stormchain Gate",
+              "element": "Lightning",
+              "deck_count": 1,
+              "share_of_window": 0.021,
+              "example_deck_names": [
+                "Piko theory craft"
+              ]
+            },
+            {
+              "leader": "Shao",
+              "gate": "Gate of Echoed Waves",
+              "element": "Water",
+              "deck_count": 1,
+              "share_of_window": 0.021,
+              "example_deck_names": [
+                "Its_Shao_Time"
+              ]
+            }
+          ],
+          "common_card_inclusion": [
+            {
+              "name": "Quicksand",
+              "included_in_decks": 16,
+              "share_of_window": 0.34
+            },
+            {
+              "name": "Stone Masked Ancient",
+              "included_in_decks": 16,
+              "share_of_window": 0.34
+            },
+            {
+              "name": "Sandcoil Python",
+              "included_in_decks": 14,
+              "share_of_window": 0.298
+            },
+            {
+              "name": "Teb Fea",
+              "included_in_decks": 14,
+              "share_of_window": 0.298
+            },
+            {
+              "name": "Warding Totem",
+              "included_in_decks": 14,
+              "share_of_window": 0.298
+            },
+            {
+              "name": "Black Jade Dagger",
+              "included_in_decks": 13,
+              "share_of_window": 0.277
+            },
+            {
+              "name": "Earthfury, Obsidian",
+              "included_in_decks": 13,
+              "share_of_window": 0.277
+            },
+            {
+              "name": "Koyama Farm Plowman",
+              "included_in_decks": 13,
+              "share_of_window": 0.277
+            },
+            {
+              "name": "Shiko the Priestess",
+              "included_in_decks": 13,
+              "share_of_window": 0.277
+            },
+            {
+              "name": "Treetop Scout",
+              "included_in_decks": 13,
+              "share_of_window": 0.277
+            },
+            {
+              "name": "Benzai the Merchant",
+              "included_in_decks": 12,
+              "share_of_window": 0.255
+            },
+            {
+              "name": "Foamback Crab",
+              "included_in_decks": 11,
+              "share_of_window": 0.234
+            },
+            {
+              "name": "Jar of Beans",
+              "included_in_decks": 11,
+              "share_of_window": 0.234
+            },
+            {
+              "name": "Mirage Frog",
+              "included_in_decks": 11,
+              "share_of_window": 0.234
+            },
+            {
+              "name": "Sprout of Fortune",
+              "included_in_decks": 11,
+              "share_of_window": 0.234
+            },
+            {
+              "name": "Kale",
+              "included_in_decks": 10,
+              "share_of_window": 0.213
+            },
+            {
+              "name": "Miharu of the White Bloom",
+              "included_in_decks": 10,
+              "share_of_window": 0.213
+            },
+            {
+              "name": "Mizuryuu's Torrent",
+              "included_in_decks": 10,
+              "share_of_window": 0.213
+            },
+            {
+              "name": "Samurai",
+              "included_in_decks": 10,
+              "share_of_window": 0.213
+            },
+            {
+              "name": "Sōryū no Rin",
+              "included_in_decks": 10,
+              "share_of_window": 0.213
+            }
+          ]
+        }
+      },
+      "tournament_results": [
+        {
+          "name": "Azuki Online Pre-Season (Full Set 1)",
+          "url": "https://thegateikz.com/tournaments/azuki-online-pre-season-full-set-1",
+          "date": "2026-03-03",
+          "attendance": 9,
+          "placements": [
+            {
+              "placement": 1,
+              "player": "Tiny",
+              "record": "4-0",
+              "deck": {
+                "name": "Raizenv2",
+                "url": "https://thegateikz.com/decks/raizenv2-mm1g4tky",
+                "creator": "Tiny",
+                "created_at": "2026-02-25T02:59:47.011593+00:00",
+                "updated_at": "2026-03-04T03:44:11.26359+00:00",
+                "leader": "Raizan",
+                "leader_family": "Raizan",
+                "gate": "Surge Gate",
+                "gate_family": "Surge Gate",
+                "element": "Lightning",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 2,
+              "player": "yqbird",
+              "record": "3-1",
+              "deck": {
+                "name": "yq Earth 03/03/26",
+                "url": "https://thegateikz.com/decks/yq-earth-030326-mmcmq87j",
+                "creator": "The Gate",
+                "created_at": "2026-03-04T22:50:05.357233+00:00",
+                "updated_at": "2026-03-04T22:50:05.357233+00:00",
+                "leader": "Obsidian, Sloth",
+                "leader_family": "Obsidian, Sloth",
+                "gate": "Gate of Devotion",
+                "gate_family": "Gate of Devotion",
+                "element": "Earth",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 3,
+              "player": "Zhu",
+              "record": "3-1",
+              "deck": null
+            }
+          ]
+        },
+        {
+          "name": "Azuki Online Pre-Season #3",
+          "url": "https://thegateikz.com/tournaments/azuki-online-pre-season-3",
+          "date": "2026-03-01",
+          "attendance": 6,
+          "placements": [
+            {
+              "placement": 1,
+              "player": "Orpheus",
+              "record": "2-0",
+              "deck": {
+                "name": "My Deck",
+                "url": "https://thegateikz.com/decks/my-deck-mm9rpxx2",
+                "creator": "Orpheus",
+                "created_at": "2026-03-02T22:46:17.883421+00:00",
+                "updated_at": "2026-03-02T22:46:17.883421+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 2,
+              "player": "NAN",
+              "record": "1-1",
+              "deck": {
+                "name": "GENKI PRESEASON",
+                "url": "https://thegateikz.com/decks/genki-preseason-mm8iwjw0",
+                "creator": "NAN",
+                "created_at": "2026-03-02T01:51:43.207788+00:00",
+                "updated_at": "2026-03-02T01:51:43.207788+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 3,
+              "player": "JUN",
+              "record": "1-1",
+              "deck": {
+                "name": "⚡️:  3/1 :Genki 🥉",
+                "url": "https://thegateikz.com/decks/-31-genki-mm8j05w0",
+                "creator": "Jun",
+                "created_at": "2026-03-02T01:54:31.788747+00:00",
+                "updated_at": "2026-03-04T03:55:32.290653+00:00",
+                "leader": "Raizan (Alt Art)",
+                "leader_family": "Raizan",
+                "gate": "Surge Gate",
+                "gate_family": "Surge Gate",
+                "element": "Lightning",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            }
+          ]
+        },
+        {
+          "name": "Azuki TCG Invitational",
+          "url": "https://thegateikz.com/tournaments/azuki-tcg-invitational-2026",
+          "date": "2026-01-11",
+          "attendance": 64,
+          "placements": [
+            {
+              "placement": 1,
+              "player": "ducky",
+              "record": "5-1",
+              "deck": {
+                "name": "ducky",
+                "url": "https://thegateikz.com/decks/ducky-mkd9pgym",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:13:55.759987+00:00",
+                "updated_at": "2026-01-14T00:14:07.20901+00:00",
+                "leader": "Raizan",
+                "leader_family": "Raizan",
+                "gate": "Surge Gate",
+                "gate_family": "Surge Gate",
+                "element": "Lightning",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 2,
+              "player": "xell",
+              "record": "5-1",
+              "deck": {
+                "name": "xell",
+                "url": "https://thegateikz.com/decks/xell-mkd9o4t0",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:12:53.096392+00:00",
+                "updated_at": "2026-01-14T00:13:30.854136+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 3,
+              "player": "jerry",
+              "record": "6-0",
+              "deck": {
+                "name": "jerry",
+                "url": "https://thegateikz.com/decks/jerry-mkd9tc1y",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:16:55.828626+00:00",
+                "updated_at": "2026-01-14T00:40:41.357241+00:00",
+                "leader": "Raizan",
+                "leader_family": "Raizan",
+                "gate": "Surge Gate",
+                "gate_family": "Surge Gate",
+                "element": "Lightning",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 4,
+              "player": "dylhu",
+              "record": "5-1",
+              "deck": {
+                "name": "dylhu",
+                "url": "https://thegateikz.com/decks/dylhu-mkda9xis",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:29:50.541973+00:00",
+                "updated_at": "2026-01-14T00:40:43.100545+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 5,
+              "player": "toraoy",
+              "record": "5-1",
+              "deck": {
+                "name": "toraoy",
+                "url": "https://thegateikz.com/decks/toraoy-mkdaeblf",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:33:15.070948+00:00",
+                "updated_at": "2026-01-14T00:40:45.88236+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 6,
+              "player": "bfg",
+              "record": "4-2",
+              "deck": {
+                "name": "bfg",
+                "url": "https://thegateikz.com/decks/bfg-mkdal7lr",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:38:36.499542+00:00",
+                "updated_at": "2026-01-14T00:40:47.589578+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 7,
+              "player": "drewwskiee",
+              "record": "5-1",
+              "deck": {
+                "name": "drewwskiee",
+                "url": "https://thegateikz.com/decks/drewwskiee-mkdanmm6",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:40:29.624312+00:00",
+                "updated_at": "2026-01-14T00:40:49.049745+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            },
+            {
+              "placement": 8,
+              "player": "jackie",
+              "record": "5-1",
+              "deck": {
+                "name": "jackie",
+                "url": "https://thegateikz.com/decks/jackie-mkdabxt6",
+                "creator": "The Gate",
+                "created_at": "2026-01-14T00:31:24.335642+00:00",
+                "updated_at": "2026-01-14T00:40:44.603546+00:00",
+                "leader": "Zero (Leader)",
+                "leader_family": "Zero",
+                "gate": "Ragefire Gate",
+                "gate_family": "Ragefire Gate",
+                "element": "Fire",
+                "main_card_count": 50,
+                "complete_50_plus_leader_gate": true
+              }
+            }
+          ]
+        }
+      ],
+      "not_claiming": [
+        "This is not an official Azuki TCG source or deck ranking.",
+        "Public gallery frequency is not view, save, share, ownership, sales, attendance, or unique-player popularity.",
+        "A newly created or recently updated record is not necessarily a new archetype.",
+        "A deck name is user-authored and does not establish a canonical archetype label.",
+        "Tournament placements establish only the reported result at the named dated event, not a current global metagame or expected win rate.",
+        "The snapshot is time-bound and should be refreshed before making current claims after its capture date."
+      ]
+    },
     "counts": {
       "official_world_sources": 10,
       "world_claims": 42,
@@ -2612,7 +4370,10 @@
     "world_claims": 42,
     "community_claims": 14,
     "community_archetypes": 6,
-    "community_source_pages": 25
+    "community_source_pages": 25,
+    "community_public_decks": 105,
+    "community_recent_complete_decks_14d": 36,
+    "community_published_tournaments": 3
   },
   "manifest_total_rows": 237,
   "catalog_hash": "be68492a4d0b5b15dffb3d0b9526fab561d6114f99d99e246e40c633a7e96624",
@@ -2657,6 +4418,17 @@
       "authority_label": "independent_community_source",
       "claims": 14,
       "archetypes": 6
+    },
+    "the_gate_community_deck_signals": {
+      "path": "data/azuki-tcg/source-snapshots/the_gate_deck_signals_2026-07-15.json",
+      "sha256": "745a87e534cea247eb744580dbe09a29cf43918170e16858694f4d42a50268d1",
+      "snapshot_date": "2026-07-15",
+      "captured_at": "2026-07-15T17:05:27.898702Z",
+      "authority_label": "independent_community_source",
+      "public_decks": 105,
+      "recent_complete_decks_14d": 36,
+      "published_tournaments": 3,
+      "published_placements": 14
     },
     "alpha_master_sheet_image_manifest": {
       "path": "data/azuki-tcg/source-snapshots/alpha_master_sheet_image_manifest_2026-06-26.json",
