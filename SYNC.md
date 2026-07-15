@@ -58,6 +58,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-15 · Codex — **The first Want now lands somewhere useful.** Anko names the
+  marked card, confirms that it is on the Want list, then reappears beside the still-visible card with two clear
+  continuations: see that card's focused Market view or keep browsing. The Market route opens directly on its asks
+  and buy/trade controls. Desktop and 390px end-to-end browser checks pass with no console errors or horizontal
+  overflow; scoped ESLint, diff checks, and the assembled Pages build pass. Web onboarding source only.
 - `[passive]` 2026-07-15 · Codex — **Anko's first run now teaches Cairn through the real Binder.**
   The competing four-step tour is gone: Anko introduces himself beneath his permanent bar, creates the profile
   for one point, spells out Have and Want, and lets the collector search or use a plain-English example before

@@ -9,12 +9,12 @@ import CardModal from './CardModal.jsx'
 import QuickSell from './QuickSell.jsx'
 import PocketPages from './PocketPages.jsx'
 import { AgentPanel, ActionBar } from './agentPanels.jsx'
-import { rarityOrder } from './helpers.jsx'
+import { nm, rarityOrder } from './helpers.jsx'
 import { applyAgentFilter } from './agentFilter.js'
 import { pileKeyFor, addToPile } from '../market/pile.js'
 import MarketFinds from '../market/MarketFinds.jsx'
 import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
-import { HaveActionsLesson } from '../agent/MeetAnko.jsx'
+import { HaveActionsLesson, WantActionsLesson } from '../agent/MeetAnko.jsx'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
@@ -85,14 +85,21 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [userPhotos, setUserPhotos] = useState({}) // uid -> your scanned photo (from IndexedDB)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [haveLessonUid, setHaveLessonUid] = useState(null)
+  const [wantLessonUid, setWantLessonUid] = useState(null)
   useScrollLock(filtersOpen)
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'pages' } catch { return 'pages' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
   const haveLessonKey = `cairn-anko-have-actions:${accountId || 'anon'}`
+  const wantLessonKey = `cairn-anko-want-actions:${accountId || 'anon'}`
   const [mkt, setMkt] = useState(null) // the market payload: sellers' asks + recorded settlements
   const [mockRev, setMockRev] = useState(0)
-  useEffect(() => { setHaveLessonUid(null) /* eslint-disable-line react-hooks/set-state-in-effect -- account changes reset transient coaching */ }, [haveLessonKey])
+  useEffect(() => {
+    // Account changes reset transient coaching; the persistent seen flags remain account-scoped.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHaveLessonUid(null)
+    setWantLessonUid(null)
+  }, [haveLessonKey, wantLessonKey])
   useEffect(() => {
     const onStore = () => {
       try { setStore(JSON.parse(localStorage.getItem(storeKey) || 'null') || {}) } catch { /* keep current */ }
@@ -190,6 +197,10 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const SETS = useMemo(() => (data?.sets || []).slice().sort((a, b) => a.order - b.order), [data])
 
   const setStance = useCallback((uid, st) => {
+    if (onboardingStep === 'mark' && (st === 'have' || st === 'want')) {
+      const card = byUid(data, uid)
+      window.dispatchEvent(new CustomEvent('cairn-anko-marked', { detail: { name: nm(card), stance: st } }))
+    }
     setStore((prev) => {
       const cur = effStance(byUid(data, uid), prev).stance
       const u = { ...(prev[uid] || {}) }
@@ -207,12 +218,20 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           // reappears beside this card's real Sell and Trade controls.
           window.setTimeout(() => setHaveLessonUid(uid), onboardingStep === 'mark' ? 1250 : 0)
         }
+      } else if (u.stance === 'want') {
+        let seen = false
+        try { seen = !!localStorage.getItem(wantLessonKey) } catch { /* ignore */ }
+        if (!seen) {
+          try { localStorage.setItem(wantLessonKey, '1') } catch { /* ignore */ }
+          window.setTimeout(() => setWantLessonUid(uid), onboardingStep === 'mark' ? 1250 : 0)
+        }
       } else if (uid === haveLessonUid) {
         window.setTimeout(() => setHaveLessonUid(null), 0)
       }
+      if (u.stance !== 'want' && uid === wantLessonUid) window.setTimeout(() => setWantLessonUid(null), 0)
       return next
     })
-  }, [data, storeKey, haveLessonKey, haveLessonUid, onboardingStep])
+  }, [data, storeKey, haveLessonKey, wantLessonKey, haveLessonUid, wantLessonUid, onboardingStep])
 
   const setField = useCallback((uid, key, value) => {
     setStore((prev) => {
@@ -438,6 +457,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
   const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ(''); setQuery('') } }
   const dismissHaveLesson = () => setHaveLessonUid(null)
+  const dismissWantLesson = () => setWantLessonUid(null)
+  const wantLessonCard = wantLessonUid ? byUid(data, wantLessonUid) : null
   const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop}
     haveActionsGuide={haveLessonUid === c.uid ? <HaveActionsLesson compact onDone={dismissHaveLesson} /> : null} onUseHaveAction={dismissHaveLesson} />
   const groups = {}
@@ -568,7 +589,10 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
             setField={setField} askIndex={askIndex} onQuickSell={setSellPop} onboarding={onboardingStep === 'mark'}
             haveLessonUid={haveLessonUid}
             haveActionsGuide={haveLessonUid ? <HaveActionsLesson compact onDone={dismissHaveLesson} /> : null}
-            onUseHaveAction={dismissHaveLesson} />
+            onUseHaveAction={dismissHaveLesson}
+            wantLessonUid={wantLessonUid}
+            wantActionsGuide={wantLessonCard ? <WantActionsLesson compact cardName={nm(wantLessonCard)}
+              onMarket={() => { dismissWantLesson(); onBrowseCard?.(wantLessonUid) }} onDone={dismissWantLesson} /> : null} />
         ) : grouped ? (
           SETS.filter((s) => groups[s.id]).map((s) => (
             <div className="setblock" key={s.id}>

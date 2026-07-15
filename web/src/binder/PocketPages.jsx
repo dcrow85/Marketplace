@@ -8,6 +8,7 @@ import { nm, retryImg } from './helpers.jsx'
 export default function PocketPages({
   rows, store, userPhotos, onOpen, setStance, setField, askIndex, onQuickSell,
   onboarding = false, haveLessonUid = null, haveActionsGuide = null, onUseHaveAction,
+  wantLessonUid = null, wantActionsGuide = null,
 }) {
   const [page, setPage] = useState(0)
   useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
@@ -26,6 +27,9 @@ export default function PocketPages({
       <div className="bv-page">
         {haveActionsGuide && pg.some((card) => card.uid === haveLessonUid) && (
           <div className="bv-have-guide">{haveActionsGuide}</div>
+        )}
+        {wantActionsGuide && pg.some((card) => card.uid === wantLessonUid) && (
+          <div className="bv-have-guide">{wantActionsGuide}</div>
         )}
         {pg.map((c) => {
           const e = effStance(c, store)

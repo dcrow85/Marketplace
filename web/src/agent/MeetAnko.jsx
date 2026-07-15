@@ -19,13 +19,37 @@ export function HaveActionsLesson({ onDone, compact = false }) {
   )
 }
 
+export function WantActionsLesson({ cardName, onMarket, onDone, compact = false }) {
+  return (
+    <aside className={'anko-have-actions anko-want-actions' + (compact ? ' compact' : '')}
+      role="note" aria-label="Anko confirms a wanted card">
+      <img src={AVATAR} alt="" onError={(event) => { event.currentTarget.style.display = 'none' }} />
+      <div className="anko-have-copy">
+        <strong>{cardName} is under Want.</strong>
+        <span>I&rsquo;ll keep it in your hunt. The Market shows tables carrying a copy.</span>
+      </div>
+      <div className="anko-want-actions-buttons">
+        <button type="button" onClick={onMarket}>See on Market →</button>
+        <button type="button" onClick={onDone}>Keep browsing</button>
+      </div>
+    </aside>
+  )
+}
+
 export default function MeetAnko({ accountId, profile, progress, onDone }) {
   const [name, setName] = useState(profile.name || '')
   const [sign, setSign] = useState(profile.sign || '')
   const [reward, setReward] = useState(null)
+  const [markedCard, setMarkedCard] = useState(null)
   const profileDone = !!progress.milestones.find((item) => item.id === 'profile')?.done
   const markDone = !!progress.milestones.find((item) => item.id === 'mark')?.done
   const step = profileDone ? 'mark' : 'profile'
+
+  useEffect(() => {
+    const onMarked = (event) => setMarkedCard(event.detail || null)
+    window.addEventListener('cairn-anko-marked', onMarked)
+    return () => window.removeEventListener('cairn-anko-marked', onMarked)
+  }, [])
 
   useEffect(() => {
     if (!markDone) return undefined
@@ -73,9 +97,15 @@ export default function MeetAnko({ accountId, profile, progress, onDone }) {
 
       {markDone ? (
         <div className="anko-onboard-copy anko-onboard-home" aria-live="polite">
-          <h2 id="anko-onboard-title">Your first card is in.</h2>
-          <p>I&rsquo;m always here if you need me.</p>
-          <small className="mono">Ask from this bar anytime.</small>
+          <h2 id="anko-onboard-title">{markedCard?.stance === 'want'
+            ? `${markedCard.name || 'That card'} is on your Want list.`
+            : `${markedCard?.name || 'Your first card'} is in your Binder.`}</h2>
+          <p>{markedCard?.stance === 'want'
+            ? 'I’ll show you where to look for a copy.'
+            : 'I’m always here if you need me.'}</p>
+          <small className="mono">{markedCard?.stance === 'want'
+            ? 'Your next step is waiting beside the card.'
+            : 'Ask from this bar anytime.'}</small>
         </div>
       ) : step === 'profile' ? (
         <div className="anko-onboard-copy">
