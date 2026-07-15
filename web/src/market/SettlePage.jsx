@@ -212,7 +212,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       <div className="stl-sec">
         <div className="stl-label mono">your side — they want something for the ⇄ cards</div>
         <div className="askbar stl-ask">
-          <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
+          <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'}
             alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input value={qg} maxLength={280}
             placeholder={`search — or ask ${agentName}: \u201cmy alt-art dupes\u201d, \u201cmatch the value of their side\u201d`}

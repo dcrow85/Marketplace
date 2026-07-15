@@ -12,7 +12,7 @@ export function ActionBar({ agentName, plan, reading, done, onApply, onUndo, onD
   const total = Math.round(plan.steps.reduce((t, st) => t + (st.op === 'list_for_sale' && st.ask != null ? st.ask * st.affected.length : 0), 0) * 100) / 100
   return (
     <div className="aprop">
-      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · proposes{plan.steps.length > 1 ? ` · ${plan.steps.length} steps, in order` : ''}</span>
+      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · proposes{plan.steps.length > 1 ? ` · ${plan.steps.length} steps, in order` : ''}</span>
       {plan.steps.map((st, i) => {
         const n = st.affected.length
         const names = st.affected.slice(0, 3).map((c) => c.name_en || c.uid).join(', ')
@@ -59,7 +59,7 @@ export function AgentPanel({ res, agentName }) {
         {chips.length ? chips.map((k) => <span key={k} className="fc"><i>{k}</i>{String(f[k])}</span>) : <span className="fc faint">no filter — whole catalog</span>}
       </div>
       <div className="acut">cut to <b>{o.n_survivors}</b> candidates{f.reading ? <span className="aread"> · {f.reading}</span> : null}</div>
-      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · judged</span>
+      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · judged</span>
       <div className="acomm">{r.commentary}</div>
       {r.caveat && <div className="acav">⚠ {r.caveat}</div>}
       {flags.length > 0 && <div className="aflag">no-overclaim check flagged: <b>{flags.join(', ')}</b> — surfaced, not hidden.</div>}

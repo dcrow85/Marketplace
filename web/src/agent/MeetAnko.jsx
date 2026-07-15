@@ -56,7 +56,7 @@ const DOCK_LINES = {
 export function HaveActionsLesson({ onDone, compact = false }) {
   return (
     <aside className={'anko-have-actions' + (compact ? ' compact' : '')} role="note" aria-label="Anko explains selling and trading">
-      <img src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(event) => { event.currentTarget.style.display = 'none' }} />
+      <img src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" onError={(event) => { event.currentTarget.style.display = 'none' }} />
       <div className="anko-have-copy">
         <strong>{compact ? 'Sell or trade?' : 'You have it. Is it available?'}</strong>
         <span>{compact

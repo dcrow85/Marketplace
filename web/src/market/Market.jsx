@@ -213,7 +213,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
 
   const ankoBar = (
     <div className="askbar mk-askbar">
-      <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'}
+      <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'}
         alt="" title={`${agentName} — your agent at the show`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
       <input value={aq} maxLength={280} placeholder={`Search cards or tables — or ask ${agentName}…`}
         onChange={(e) => { setAq(e.target.value); if (ares) setAres(null) }}

@@ -9,7 +9,7 @@ export default function MarketFinds({ agentName, reading, finds, mode, onAddPile
   const [added, setAdded] = useState(() => new Set())
   return (
     <div className="aprop">
-      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · found {finds.length ? `${finds.length} on the market` : 'nothing'}</span>
+      <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · found {finds.length ? `${finds.length} on the market` : 'nothing'}</span>
       {reading && <div className="aprop-read dim">{reading}</div>}
       {finds.length
         ? <div className="mkf-grid">

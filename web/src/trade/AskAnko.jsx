@@ -41,7 +41,7 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
     return (
       <section id={panelId} className="anko-read" aria-label="Anko’s read">
         <div className="anko-readhead">
-          <span className="anko-readwho mono"><img src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" /> Anko&rsquo;s read <i>advisory</i></span>
+          <span className="anko-readwho mono"><img src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" /> Anko&rsquo;s read <i>advisory</i></span>
           <button type="button" className="anko-hide mono" onClick={() => { onRead?.(null); setState({ status: 'idle', read: null }) }}>hide</button>
         </div>
         <strong className="anko-lean">{LEAN_LABEL[read.lean] || 'My read'}</strong>
@@ -57,7 +57,7 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
     <div className="anko-askrow">
       <button type="button" className={'anko-ask mono' + (recommended ? ' recommended' : '')}
         aria-expanded="false" aria-controls={panelId} disabled={state.status === 'loading'} onClick={ask}>
-        <img src={(import.meta.env.BASE_URL || '/') + 'agent/house.png'} alt="" />
+        <img src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" />
         {state.status === 'loading' ? 'Anko is reading…' : label}
       </button>
       {recommended && <span className="mono anko-recommended">worth a second look</span>}
