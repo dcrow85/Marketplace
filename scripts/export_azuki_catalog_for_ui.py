@@ -38,6 +38,7 @@ PORTRAIT_OBS = AZUKI / "observations" / "azuki_tcg_user_image_portrait_alt_obser
 SPECIAL_COLLECTION = AZUKI / "observations" / "azuki_tcg_anime_expo_2026_special_collection.json"
 MANIFEST = AZUKI / "manifest.json"
 WORLD_METADATA = AZUKI / "lore" / "azuki_world_metadata.json"
+COMMUNITY_KNOWLEDGE_GLOB = "the_gate_community_knowledge_*.json"
 ALPHA_IMAGE_MANIFEST = AZUKI / "source-snapshots" / "alpha_master_sheet_image_manifest_2026-06-26.json"
 ALPHA_ASSET_DIR = WEB_PUBLIC_DIR / "assets" / "alpha"
 ALPHA_ASSET_WEB_PREFIX = "assets/alpha"
@@ -117,6 +118,15 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def newest_community_knowledge_snapshot() -> Path:
+    snapshots = sorted((AZUKI / "source-snapshots").glob(COMMUNITY_KNOWLEDGE_GLOB))
+    if not snapshots:
+        raise FileNotFoundError(
+            f"no Azuki community knowledge snapshot matches {COMMUNITY_KNOWLEDGE_GLOB}"
+        )
+    return snapshots[-1]
 
 
 def world_metadata_view(
@@ -1042,6 +1052,9 @@ def build_payload() -> dict[str, Any]:
     special_collection = read_json(SPECIAL_COLLECTION)
     world_metadata = read_json(WORLD_METADATA)
     world_metadata_hash = sha256(WORLD_METADATA)
+    community_knowledge_path = newest_community_knowledge_snapshot()
+    community_knowledge = read_json(community_knowledge_path)
+    community_knowledge_hash = sha256(community_knowledge_path)
     world_identity_by_card_id = {card["card_id"]: card for card in world_metadata["cards"]}
     world_variant_by_uid = {card["uid"]: card for card in world_metadata["variants"]}
 
@@ -1131,8 +1144,10 @@ def build_payload() -> dict[str, Any]:
         "azuki_world": {
             "schema": world_metadata["schema"],
             "metadata_hash": world_metadata_hash,
+            "community_knowledge_hash": community_knowledge_hash,
             "authority_legend": world_metadata["authority_legend"],
             "world_guide": world_metadata["world_guide"],
+            "community_knowledge": community_knowledge,
             "counts": world_metadata["counts"],
             "not_claiming": world_metadata["not_claiming"],
         },
@@ -1186,6 +1201,9 @@ def build_payload() -> dict[str, Any]:
             "world_image_reviewed_rows": sum(1 for c in cards if c.get("azuki_world", {}).get("visual_review")),
             "world_character_threads": world_metadata["counts"]["character_threads"],
             "world_claims": world_metadata["counts"]["world_claims"],
+            "community_claims": len(community_knowledge["claims"]),
+            "community_archetypes": len(community_knowledge["archetypes"]),
+            "community_source_pages": len(community_knowledge["sources"]),
         },
         "manifest_total_rows": manifest.get("counts", {}).get("official_gallery", {}).get("gallery_entries"),
         "catalog_hash": manifest_hash,
@@ -1207,6 +1225,14 @@ def build_payload() -> dict[str, Any]:
                 "card_identities": world_metadata["counts"]["official_card_ids_enriched"],
                 "ui_variants": world_metadata["counts"]["ui_variants_enriched"],
                 "reviewed_images": world_metadata["counts"]["image_rows_reviewed"],
+            },
+            "the_gate_community_knowledge": {
+                "path": str(community_knowledge_path.relative_to(ROOT)),
+                "sha256": community_knowledge_hash,
+                "snapshot_date": community_knowledge["snapshot_date"],
+                "authority_label": community_knowledge["source"]["authority_label"],
+                "claims": len(community_knowledge["claims"]),
+                "archetypes": len(community_knowledge["archetypes"]),
             },
             "alpha_master_sheet_image_manifest": (
                 {

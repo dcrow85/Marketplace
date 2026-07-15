@@ -64,11 +64,18 @@ It also contains a provenance-separated Azuki world layer:
   full visual pass: 237 official gallery images plus 100 Alpha Master Sheet
   images and 4 user-observed WINNER images, each with its image hash and review
   batch.
+- `source-snapshots/the_gate_community_knowledge_2026-07-15.json` maps The
+  Gate's public strategy hub as a separate independent-community layer: 16
+  published articles, 37 FAQ entries, 10 quick-rules items, 3 tournament
+  records, and 105 public decks at capture time. It stores original Cairn
+  summaries and links, not article bodies or decklists. Its strategy, event,
+  and lore reads remain attributed; its rules material never outranks the
+  current official Azuki TCG rule page.
 - `lore/azuki_world_metadata.json` gives the agent a dual-world guide (Alley,
   Garden, and the Gate threshold), four elemental domains, 85 official subtype
   terms, 9 repeated-character threads, and per-card/per-variant search metadata.
 - `lore/azuki_world_metadata_audit.json` requires all 202 official card
-  identities, all 343 UI rows, and every one of the 341 image-bearing rows to
+  identities, all 353 UI rows, and every one of the 349 image-bearing rows to
   remain covered.
 - `scripts/build_azuki_world_metadata.py` regenerates and checks the layer. A
   future gallery refresh with a new or changed image must receive a new explicit
@@ -184,6 +191,12 @@ Authority boundary:
   not official location assignments for every illustration.
 - Official subtypes remain official vocabulary; the world layer does not call
   every subtype a political faction.
+- The Gate remains an independent community source. Community deck tech,
+  tournament reports, public-deck counts, and lore interpretation do not become
+  official rules, current global metagame claims, or canon.
+- The 2026-07-15 cross-check keeps two source conflicts open: The Gate's quick
+  rules and FAQ disagree on turn order, and its FAQ overstates Alley-only entity
+  play. The agent must answer both from the current official Azuki TCG rules.
 
 Rebuild:
 

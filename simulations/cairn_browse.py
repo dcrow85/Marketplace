@@ -114,6 +114,67 @@ def load_catalog(catalog: str | None) -> dict:
     raise FileNotFoundError(f"No catalog payload found for {cid}")
 
 
+def community_notes_for_call(call: str, data: dict, limit: int = 4) -> list[dict]:
+    """Select a few dated community summaries without promoting them to card facts."""
+    knowledge = (data.get("azuki_world") or {}).get("community_knowledge") or {}
+    call_folded = call.casefold()
+    call_terms = set(re.findall(r"[a-z0-9]+", call_folded))
+    rules_question = any(
+        phrase in call_folded
+        for phrase in ("rule", "start of turn", "turn order", "resource phase", "untap", "when can", "can i play")
+    )
+    scored: list[tuple[int, str, dict]] = []
+    for claim in knowledge.get("claims") or []:
+        if rules_question and claim.get("claim_type") != "source_conflict":
+            continue
+        score = 0
+        for raw in [*(claim.get("keywords") or []), *(claim.get("topics") or [])]:
+            phrase = str(raw).strip().casefold()
+            if not phrase:
+                continue
+            words = re.findall(r"[a-z0-9]+", phrase)
+            if phrase in call_folded:
+                score += max(2, len(words) + 1)
+            elif len(words) == 1 and len(words[0]) >= 4 and words[0] in call_terms:
+                score += 1
+        if score:
+            scored.append((score, str(claim.get("id") or ""), claim))
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return [claim for _, _, claim in scored[:limit]]
+
+
+def community_prompt_block(call: str, data: dict) -> str:
+    knowledge = (data.get("azuki_world") or {}).get("community_knowledge") or {}
+    notes = community_notes_for_call(call, data)
+    if not knowledge or not notes:
+        return ""
+    sources = {source["id"]: source for source in knowledge.get("sources") or []}
+    lines = [
+        "COMMUNITY KNOWLEDGE (dated and attributed; not official rules, canon, or card facts):",
+    ]
+    for note in notes:
+        titles = [
+            sources[source_id]["title"]
+            for source_id in note.get("source_ids") or []
+            if source_id in sources
+        ]
+        lines.append(
+            f" - [{note.get('authority_label', 'community')}] {note.get('summary', '')} "
+            f"Source: {'; '.join(titles) or 'The Gate'}."
+        )
+    if any(note.get("claim_type") == "source_conflict" for note in notes):
+        crosscheck = knowledge.get("official_rules_crosscheck") or {}
+        lines.append(
+            " - [official Azuki TCG rules cross-check] "
+            + " ".join(item["summary"] for item in crosscheck.get("verified_baseline") or [])
+        )
+    lines.append(
+        "Attribution rule: say 'The Gate's guide/report reads...' for community analysis. "
+        "For rulings, lead with the official Azuki TCG rule; never flatten theory into canon or a dated result into today's global meta."
+    )
+    return "\n".join(lines) + "\n\n"
+
+
 def filter_system(data: dict) -> str:
     profile = data.get("profile", {})
     if profile.get("id") == "azuki-tcg":
@@ -121,6 +182,7 @@ def filter_system(data: dict) -> str:
         elements = " | ".join(data.get("ui", {}).get("element_chips") or ["Neutral", "Water", "Lightning", "Earth", "Fire"])
         world = data.get("azuki_world", {})
         guide = world.get("world_guide", {})
+        community = world.get("community_knowledge", {})
         lore_terms = " | ".join(item["term"] for item in guide.get("subtype_vocabulary", []))
         themes = " | ".join(sorted({
             theme
@@ -130,6 +192,10 @@ def filter_system(data: dict) -> str:
         threads = " | ".join(item["id"] for item in guide.get("character_threads", []))
         events = " | ".join(item["name"] for item in guide.get("event_contexts", []))
         products = " | ".join(item["name"] for item in guide.get("product_contexts", []))
+        community_archetypes = " | ".join(
+            f"{item['id']} ({item['element']}/{item['leader']}/{item['gate']})"
+            for item in community.get("archetypes", [])
+        )
         return (
             "You translate a collector's loose browse CALL into a structured filter over an Azuki TCG "
             "catalog, using their standing COST FIELD. The catalog has NO dollar prices; it has rarity, "
@@ -137,7 +203,9 @@ def filter_system(data: dict) -> str:
             f"WORLD CONTEXT: {profile.get('azuki_world_context') or guide.get('agent_context') or ''}\n"
             "Authority discipline: official card fields and official site facts are facts; setting cues and visual notes "
             "are labelled card-art observations; character links may be declared catalog inferences. Never turn an art "
-            "cue into a canon event or treat every subtype as a political faction.\n\n"
+            "cue into a canon event or treat every subtype as a political faction. The Gate is an independent community "
+            "source: its strategy vocabulary can help interpret a call, but its analysis is not an official ruling or canon.\n"
+            f"Community archetype vocabulary: {community_archetypes}\n\n"
             "Available filter dimensions (use only these):\n"
             " - star_alt: true | false | null   (for ★, alternate art, portrait rare, or star treatment)\n"
             " - holo: true | false | null       (same physical UI field as star_alt; prefer star_alt for Azuki)\n"
@@ -219,7 +287,9 @@ COMMENT_SYS = (
     "pull first.'\n"
     " - 'Three of these carry a note in the record — read those before you fall in love.'\n"
     "HARD RULE: every fact in your sentences (counts, names, sets, flags, what was excluded) must come from "
-    "the card lines and filter given below — nothing else. If the collector didn't ask for a cut, don't claim "
+    "the card lines, filter, or an explicitly labelled COMMUNITY KNOWLEDGE / official rules cross-check block given below — nothing else. "
+    "Community analysis must be attributed to its guide or report; it cannot become an official ruling, canon, or timeless meta claim. "
+    "If the collector didn't ask for a cut, don't claim "
     "they did.\n\n"
     "Each card row ends with flags. Read them EXACTLY as defined; never infer more:\n"
     " - 'holo' = the card is holographic.\n"
@@ -586,9 +656,11 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             survivors = fallback_survivors
     pool = diverse_pool(survivors, cap)
     n_sets = len({c["set_id"] for c in survivors})
+    community_context = community_prompt_block(call, data)
     cuser = (
         f"COST FIELD: {json.dumps(COST_FIELD)}\n\nThe collector called: \"{call}\"\n\n"
-        f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
+        + community_context
+        + f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
         f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")

@@ -14,6 +14,8 @@ sys.path.insert(0, str(ROOT))
 from simulations.cairn_browse import (  # noqa: E402
     apply_filter,
     brief,
+    community_notes_for_call,
+    community_prompt_block,
     exact_card_name_in_call,
     filter_system,
     resolve_pick_uids,
@@ -33,6 +35,7 @@ def main() -> None:
     cards = data["cards"]
     set_labels = {item["id"]: item["label"] for item in data["sets"]}
     guide = data["azuki_world"]["world_guide"]
+    community = data["azuki_world"]["community_knowledge"]
 
     image_cards = [card for card in cards if card.get("image")]
     require(len(cards) == data["summary"]["world_enriched_rows"], "not every row is enriched")
@@ -53,12 +56,71 @@ def main() -> None:
         len(guide["character_threads"]) == data["summary"]["world_character_threads"],
         "character-thread count drifted",
     )
+    require(
+        community["source"]["authority_label"] == "independent_community_source",
+        "The Gate lost its independent-community authority label",
+    )
+    require(
+        data["azuki_world"]["community_knowledge_hash"]
+        == data["source_artifacts"]["the_gate_community_knowledge"]["sha256"],
+        "community knowledge hash drifted from its source-artifact record",
+    )
+    require(
+        len(community["claims"]) == data["summary"]["community_claims"]
+        and len(community["archetypes"]) == data["summary"]["community_archetypes"]
+        and len(community["sources"]) == data["summary"]["community_source_pages"],
+        "community knowledge counts drifted from the generated summary",
+    )
+    source_ids = {source["id"] for source in community["sources"]}
+    require(
+        all(set(claim["source_ids"]) <= source_ids for claim in community["claims"]),
+        "a community claim references an unknown source",
+    )
+    require(
+        all(not claim["authority_label"].startswith("official") for claim in community["claims"]),
+        "a The Gate claim was promoted to official authority",
+    )
+    conflicts = {
+        item["id"]: item for item in community["official_rules_crosscheck"]["known_conflicts"]
+    }
+    require(
+        set(conflicts) == {
+            "gate-turn-order-conflict-2026-07-15",
+            "gate-alley-play-conflict-2026-07-15",
+        }
+        and all(item["status"] == "open_source_conflict" for item in conflicts.values()),
+        "The Gate rules conflicts disappeared or changed disposition without review",
+    )
 
     system_prompt = filter_system(data)
     require("card-art observations" in system_prompt, "authority boundary left the filter prompt")
     require("political faction" in system_prompt, "subtype boundary left the filter prompt")
     require("Anime Expo 2026" in system_prompt, "event vocabulary left the filter prompt")
     require("special_collection" in system_prompt, "Special Collection product channel left the filter prompt")
+    require(
+        "The Gate is an independent community source" in system_prompt,
+        "The Gate authority boundary left the filter prompt",
+    )
+    shao_notes = {note["id"] for note in community_notes_for_call("How should Shao use responses?", data)}
+    require("gate-shao-plan" in shao_notes, "Shao strategy retrieval missed The Gate guide")
+    black_jade_notes = {
+        note["id"] for note in community_notes_for_call("What does The Gate think about Black Jade lore?", data)
+    }
+    require(
+        "gate-black-jade-analysis" in black_jade_notes,
+        "Black Jade community-lore retrieval missed its source",
+    )
+    rules_notes = {
+        note["id"] for note in community_notes_for_call("What is the start of turn draw and ramp order?", data)
+    }
+    rules_block = community_prompt_block("What is the start of turn draw and ramp order?", data)
+    require("gate-rules-conflict" in rules_notes, "rules retrieval did not surface the known conflict")
+    require(
+        "official Azuki TCG rules cross-check" in rules_block
+        and "Start of Turn Phase (Reset, start-of-turn Effects, Draw)" in rules_block
+        and "The Gate's guide/report reads" in rules_block,
+        "rules prompt lost its official precedence or community attribution",
+    )
 
     alley = apply_filter(cards, {"plane": "alley"}, set_labels)
     garden = apply_filter(cards, {"plane": "garden"}, set_labels)
@@ -277,6 +339,7 @@ def main() -> None:
         "Azuki world-agent audit OK: "
         f"{len(cards)} enriched rows | {len(image_cards)} reviewed images | "
         f"{len(guide['claims'])} claims | {len(guide['character_threads'])} threads | "
+        f"{len(community['claims'])} community claims | "
         f"planes {len(alley)}/{len(garden)}/{len(threshold)}"
     )
 

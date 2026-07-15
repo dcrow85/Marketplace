@@ -1,0 +1,457 @@
+{
+  "schema": "cairn.azuki.community_knowledge.v1",
+  "snapshot_date": "2026-07-15",
+  "source": {
+    "id": "the-gate-ikz",
+    "name": "The Gate",
+    "url": "https://thegateikz.com/",
+    "authority_label": "independent_community_source",
+    "independence_statement": "The Gate describes itself as an independent fan-made community hub built by Azuki TCG players and says it is not affiliated with Azuki, Azuki TCG, or Azuki Labs.",
+    "capture_method": "Public pages plus anonymous read-only records used by the public site client.",
+    "copyright_boundary": "This snapshot keeps source metadata and original Cairn summaries. It does not reproduce article bodies, decklists, images, or author profiles."
+  },
+  "coverage": {
+    "published_articles": 16,
+    "faq_entries": 37,
+    "quick_rules_items": 10,
+    "published_tournaments": 3,
+    "published_placements": 14,
+    "public_decks": 105,
+    "deckbuilder_card_pool_entries": 213,
+    "coverage_note": "Counts describe the public site snapshot on 2026-07-15. They are not an official Azuki checklist or a complete census of play."
+  },
+  "sources": [
+    {
+      "id": "gate-home",
+      "title": "The Gate",
+      "url": "https://thegateikz.com/",
+      "source_type": "site_identity",
+      "published_on": null
+    },
+    {
+      "id": "gate-official-rules-reference",
+      "title": "Game Rules",
+      "url": "https://tcg.azuki.com/how-to-play/game",
+      "source_type": "official_rules_crosscheck",
+      "published_on": null
+    },
+    {
+      "id": "gate-welcome",
+      "title": "Welcome to The Gate",
+      "url": "https://thegateikz.com/articles/welcome-to-the-gate",
+      "source_type": "site_identity",
+      "published_on": "2025-12-17"
+    },
+    {
+      "id": "gate-alt-art-ikz",
+      "title": "Alt Art IKZ: Are They Even Worth It?",
+      "url": "https://thegateikz.com/articles/alt-art-ikz-are-they-even-worth-it",
+      "source_type": "community_card_opinion",
+      "published_on": "2025-12-11"
+    },
+    {
+      "id": "gate-call-for-writers",
+      "title": "Call for Writers - Join The Gate Team",
+      "url": "https://thegateikz.com/articles/call-for-writers-join-the-gate-team",
+      "source_type": "site_identity",
+      "published_on": "2025-12-17"
+    },
+    {
+      "id": "gate-deckbuilder-guide",
+      "title": "How to Use The Gate Deckbuilder",
+      "url": "https://thegateikz.com/articles/how-to-use-the-gate-deckbuilder",
+      "source_type": "community_tool_guide",
+      "published_on": "2025-12-17"
+    },
+    {
+      "id": "gate-deckbuilder-complete-guide",
+      "title": "The Complete Guide to The Gate's Deckbuilder",
+      "url": "https://thegateikz.com/articles/the-complete-guide-to-the-gate-s-deckbuilder",
+      "source_type": "community_tool_guide",
+      "published_on": "2025-12-17"
+    },
+    {
+      "id": "gate-introduction",
+      "title": "Introduction to Azuki TCG",
+      "url": "https://thegateikz.com/articles/introduction-to-azuki-tcg",
+      "source_type": "community_beginner_guide",
+      "published_on": "2025-12-17"
+    },
+    {
+      "id": "gate-first-tournament",
+      "title": "Your First Azuki TCG Tournament: Everything You Need to Know",
+      "url": "https://thegateikz.com/articles/your-first-azuki-tcg-tournament-everything-you-need-to-know",
+      "source_type": "community_tournament_guide",
+      "published_on": "2025-12-17"
+    },
+    {
+      "id": "gate-add-to-home-screen",
+      "title": "Add The Gate to Your Home Screen",
+      "url": "https://thegateikz.com/articles/add-the-gate-to-your-home-screen",
+      "source_type": "site_tooling",
+      "published_on": "2025-12-22"
+    },
+    {
+      "id": "gate-black-jade-lore",
+      "title": "Explore the Lore: The Black Jade",
+      "url": "https://thegateikz.com/articles/explore-the-lore-the-black-jade",
+      "source_type": "community_lore_analysis",
+      "published_on": "2026-01-05"
+    },
+    {
+      "id": "gate-shao-guide",
+      "title": "Aez's Shao Deck Guide, Q1 2026",
+      "url": "https://thegateikz.com/articles/aez-s-shao-deck-guide-q1-2026",
+      "source_type": "community_deck_tech",
+      "published_on": "2026-01-17"
+    },
+    {
+      "id": "gate-bobu-invitational",
+      "title": "Bobu's Rocky Invitational",
+      "url": "https://thegateikz.com/articles/bobu-s-rocky-invitational",
+      "source_type": "community_deck_tech",
+      "published_on": "2026-02-04"
+    },
+    {
+      "id": "gate-szerro-sligh",
+      "title": "Szerro Sligh",
+      "url": "https://thegateikz.com/articles/szerro-sligh",
+      "source_type": "community_deck_tech",
+      "published_on": "2026-03-11"
+    },
+    {
+      "id": "gate-nyc-recap",
+      "title": "Azuki TCG Tournament Recap - NYC",
+      "url": "https://thegateikz.com/articles/azuki-tcg-tournament-recap-nyc",
+      "source_type": "community_event_report",
+      "published_on": "2026-03-13"
+    },
+    {
+      "id": "gate-raizan-shao-lore",
+      "title": "Explore the Lore II: Raizan and Shao",
+      "url": "https://thegateikz.com/articles/explore-the-lore-ii-raizan-and-shao",
+      "source_type": "community_lore_analysis",
+      "published_on": "2026-03-13"
+    },
+    {
+      "id": "gate-beanz-guide",
+      "title": "Making Beanz Work (Maybe)?",
+      "url": "https://thegateikz.com/articles/making-beanz-work-maybe",
+      "source_type": "community_theorycraft",
+      "published_on": "2026-07-10"
+    },
+    {
+      "id": "gate-zero-midrange",
+      "title": "Every Point of Damage Matters",
+      "url": "https://thegateikz.com/articles/every-point-of-damage-matters",
+      "source_type": "community_deck_tech",
+      "published_on": "2026-07-12"
+    },
+    {
+      "id": "gate-faq",
+      "title": "Frequently Asked Questions",
+      "url": "https://thegateikz.com/faq",
+      "source_type": "community_rules_explanation",
+      "published_on": null
+    },
+    {
+      "id": "gate-rules",
+      "title": "Quick Rules",
+      "url": "https://thegateikz.com/rules",
+      "source_type": "community_rules_summary",
+      "published_on": null
+    },
+    {
+      "id": "gate-deckbuilder",
+      "title": "Deckbuilder",
+      "url": "https://thegateikz.com/deckbuilder",
+      "source_type": "community_tool",
+      "published_on": null
+    },
+    {
+      "id": "gate-decks",
+      "title": "Deck Gallery",
+      "url": "https://thegateikz.com/decks",
+      "source_type": "community_deck_index",
+      "published_on": null
+    },
+    {
+      "id": "gate-card-gallery",
+      "title": "Card Gallery",
+      "url": "https://thegateikz.com/card-gallery",
+      "source_type": "community_card_index",
+      "published_on": null
+    },
+    {
+      "id": "gate-learn",
+      "title": "Learn",
+      "url": "https://thegateikz.com/learn",
+      "source_type": "community_learning_index",
+      "published_on": null
+    },
+    {
+      "id": "gate-tournaments",
+      "title": "Tournaments",
+      "url": "https://thegateikz.com/tournaments",
+      "source_type": "community_event_index",
+      "published_on": null
+    }
+  ],
+  "official_rules_crosscheck": {
+    "authority_label": "official_azuki_tcg_rules",
+    "source_id": "gate-official-rules-reference",
+    "policy": "For a hard ruling, current official Azuki TCG rules outrank The Gate's FAQ, quick rules, deckbuilder copy, and articles.",
+    "verified_baseline": [
+      {
+        "topic": "turn_structure",
+        "summary": "The official sequence is Start of Turn Phase (Reset, start-of-turn Effects, Draw), then Resource Phase (gain 1 IKZ), then Main Phase, then End of Turn Phase."
+      },
+      {
+        "topic": "field_zones",
+        "summary": "The official rules allow entities to be played into either the Garden or the Alley; the Gate portals one entity from Alley to Garden when used."
+      },
+      {
+        "topic": "combat_response",
+        "summary": "Only the defending player receives the Response window after an attack is declared and When Attacking effects resolve."
+      },
+      {
+        "topic": "leader_and_entity_damage",
+        "summary": "Leader damage is permanent; entity stats reset at end of turn unless an active effect says otherwise."
+      }
+    ],
+    "known_conflicts": [
+      {
+        "id": "gate-turn-order-conflict-2026-07-15",
+        "topic": "turn_structure",
+        "status": "open_source_conflict",
+        "community_quick_rules_read": "Untap, Ramp, Draw, then Start of Turn effects.",
+        "community_faq_read": "Draw, Ramp, Untap, then Start of Turn effects.",
+        "official_read": "Reset, start-of-turn Effects, and Draw form the Start of Turn Phase; gaining IKZ follows in a separate Resource Phase.",
+        "agent_disposition": "State the official sequence and, when The Gate is the subject, note that its two summaries conflict. Do not blend the three sequences."
+      },
+      {
+        "id": "gate-alley-play-conflict-2026-07-15",
+        "topic": "field_zones",
+        "status": "open_source_conflict",
+        "community_faq_read": "Entities are normally played into the Alley and enter the Garden only through Gates or explicit card effects.",
+        "official_read": "Entities may be played into either the Garden or the Alley during the Main Phase.",
+        "agent_disposition": "Use the official rule. Treat the FAQ sentence as an inaccurate simplification until The Gate updates it."
+      }
+    ]
+  },
+  "archetypes": [
+    {
+      "id": "zero-rushfire-sligh",
+      "element": "Fire",
+      "leader": "Zero",
+      "gate": "Rushfire Gate",
+      "community_read": "A linear low-curve aggro/burn plan: deploy one-cost threats early, use Rushfire Gate for immediate pressure, then convert the remaining leader health into burn math.",
+      "source_ids": ["gate-szerro-sligh"],
+      "keywords": ["Zero", "Fire", "Rushfire Gate", "Sligh", "aggro", "burn", "one drops", "lethal math"]
+    },
+    {
+      "id": "zero-ragefire-midrange",
+      "element": "Fire",
+      "leader": "Zero",
+      "gate": "Ragefire Gate",
+      "community_read": "A slower Fire control/midrange branch: manage the Garden with flexible damage, preserve two-health utility bodies, and turn stabilization into a Firestorm or Suzuka swing turn.",
+      "source_ids": ["gate-zero-midrange"],
+      "keywords": ["Zero", "Fire", "Ragefire Gate", "midrange", "control", "Firestorm", "Suzuka", "sequencing"]
+    },
+    {
+      "id": "raizan-lightning-tempo",
+      "element": "Lightning",
+      "leader": "Raizan",
+      "gate": "Surge Gate",
+      "community_read": "Fast attack-dependent tempo: weapons, Charge, and frequent swings create pressure, while the attack requirement leaves room for defenders and response timing to matter.",
+      "source_ids": ["gate-raizan-shao-lore", "gate-bobu-invitational", "gate-nyc-recap"],
+      "keywords": ["Raizan", "Lightning", "Surge Gate", "tempo", "aggro", "weapons", "Charge"]
+    },
+    {
+      "id": "shao-hydromancy-synergy",
+      "element": "Water",
+      "leader": "Shao",
+      "gate": "Hydromancy Gate",
+      "community_read": "Synergy and board-control Water that uses Gate Power, searchers, bounce, prevention, and careful IKZ holds. The Q1 guide adds early pressure so the deck can survive a fast field rather than waiting for a pure control endgame.",
+      "source_ids": ["gate-shao-guide", "gate-raizan-shao-lore"],
+      "keywords": ["Shao", "Water", "Hydromancy Gate", "synergy", "control", "board", "response", "searchers", "bounce"]
+    },
+    {
+      "id": "bobu-earth-ramp",
+      "element": "Earth",
+      "leader": "Bobu",
+      "gate": "Stonehaven Gate",
+      "community_read": "Survive, force unfavorable attacks into defenders, and reach expensive Earth finishers. The Invitational report treats seven IKZ and Stone Masked Ancient as a decisive threshold, while warning that non-attack effect damage can bypass the defender plan.",
+      "source_ids": ["gate-bobu-invitational"],
+      "keywords": ["Bobu", "Earth", "Stonehaven Gate", "ramp", "defender", "survival", "Stone Masked Ancient"]
+    },
+    {
+      "id": "benzai-beanz-recall",
+      "element": "Water",
+      "leader": "Benzai the Sly",
+      "gate": "Gate of Echoed Waves",
+      "community_read": "An explicitly experimental Beanz/Neutral Water shell built around repeatable Healing Flutter access, recall value, and conditional Beanz synergies without making every card depend on the package.",
+      "source_ids": ["gate-beanz-guide"],
+      "keywords": ["Benzai", "Beanz", "Water", "Gate of Echoed Waves", "Healing Flutter", "recall", "neutral", "theorycraft"]
+    }
+  ],
+  "claims": [
+    {
+      "id": "gate-source-identity",
+      "claim_type": "source_identity",
+      "authority_label": "the_gate_self_description",
+      "summary": "The Gate is an independent, fan-made Azuki TCG community hub focused on strategy, deckbuilding, rules reference, tournament coverage, and community connection.",
+      "topics": ["The Gate", "community", "strategy hub"],
+      "keywords": ["The Gate", "site", "community", "friends", "resource"],
+      "source_ids": ["gate-home", "gate-welcome"]
+    },
+    {
+      "id": "gate-element-identities",
+      "claim_type": "community_gameplay_model",
+      "authority_label": "independent_community_summary",
+      "summary": "The Gate's beginner framing maps Fire to aggression and burn, Water to control and card advantage, Earth to defense and value, and Lightning to speed and combos. Later deck techs show that these are starting points, not hard deckbuilding limits.",
+      "topics": ["elements", "archetypes", "beginner"],
+      "keywords": ["Fire", "Water", "Earth", "Lightning", "elements", "playstyle", "beginner"],
+      "source_ids": ["gate-introduction", "gate-zero-midrange"]
+    },
+    {
+      "id": "gate-zero-sligh-plan",
+      "claim_type": "community_strategy",
+      "authority_label": "independent_community_deck_tech",
+      "summary": "Szerro's tournament-winning Fire read prioritizes a dense one-cost curve, early Rushfire Gate pressure, and continuous burn calculations, with Zero activations constrained by the deck's own self-damage.",
+      "topics": ["Zero", "Fire", "aggro", "burn"],
+      "keywords": ["Zero", "Fire", "Rushfire", "Sligh", "aggro", "burn", "one cost", "self damage"],
+      "source_ids": ["gate-szerro-sligh"]
+    },
+    {
+      "id": "gate-zero-midrange-plan",
+      "claim_type": "community_strategy",
+      "authority_label": "independent_community_deck_tech",
+      "summary": "The July Zero midrange guide rejects a pure race: it values flexible damage, two-health utility entities, board control, and sequencing toward Firestorm or Suzuka swing turns.",
+      "topics": ["Zero", "Fire", "midrange", "control"],
+      "keywords": ["Zero", "Fire", "midrange", "control", "Firestorm", "Suzuka", "damage", "sequence"],
+      "source_ids": ["gate-zero-midrange"]
+    },
+    {
+      "id": "gate-shao-plan",
+      "claim_type": "community_strategy",
+      "authority_label": "independent_community_deck_tech",
+      "summary": "Aez's Shao guide treats Water as a board-development and resource-efficiency deck: search for matchup tools, reuse Gate Power through Hydromancy, hold IKZ for responses when warranted, and know when declining an attack protects momentum.",
+      "topics": ["Shao", "Water", "Hydromancy", "responses"],
+      "keywords": ["Shao", "Water", "Hydromancy", "response", "search", "bounce", "mulligan", "when to attack"],
+      "source_ids": ["gate-shao-guide"]
+    },
+    {
+      "id": "gate-bobu-plan",
+      "claim_type": "community_strategy",
+      "authority_label": "independent_community_tournament_report",
+      "summary": "The Bobu Invitational report describes Earth as a survival-and-ramp deck that converts defenders into unfavorable opposing trades, then wins through high-cost threats; direct effect damage is identified as a major weakness because it can sidestep defenders.",
+      "topics": ["Bobu", "Earth", "Defender", "ramp"],
+      "keywords": ["Bobu", "Earth", "Defender", "ramp", "survive", "Stone Masked Ancient", "effect damage"],
+      "source_ids": ["gate-bobu-invitational"]
+    },
+    {
+      "id": "gate-beanz-theorycraft",
+      "claim_type": "community_theorycraft",
+      "authority_label": "independent_community_experiment",
+      "summary": "The Beanz article is deliberately exploratory: it proposes a Benzai/Gate of Echoed Waves Water shell that repeatedly accesses Healing Flutter and uses Neutral Beanz as a flexible package rather than an all-or-nothing tribal dependency.",
+      "topics": ["Beanz", "Benzai", "Water", "theorycraft"],
+      "keywords": ["Beanz", "Benzai", "Healing Flutter", "Echoed Waves", "neutral", "recall", "theory"],
+      "source_ids": ["gate-beanz-guide"]
+    },
+    {
+      "id": "gate-response-sequencing",
+      "claim_type": "community_strategy_principle",
+      "authority_label": "independent_community_deck_tech",
+      "summary": "The Shao guide repeatedly treats 'do not attack yet' as a real line: withholding an attack can deny the defending player a Response window, preserve a setup entity, or avoid enabling an unfavorable combat exchange.",
+      "topics": ["sequencing", "Response", "combat"],
+      "keywords": ["response", "attack", "combat", "sequence", "timing", "hold", "pass"],
+      "source_ids": ["gate-shao-guide"]
+    },
+    {
+      "id": "gate-nyc-meta-snapshot",
+      "claim_type": "dated_community_event_observation",
+      "authority_label": "independent_community_event_report",
+      "summary": "At the ten-player NYC event reported on March 13, Fire and Lightning were the most represented elements and speed-heavy decks occupied the top two places. This is one small event snapshot, not a timeless or global metagame ranking.",
+      "topics": ["NYC", "tournament", "meta", "Fire", "Lightning"],
+      "keywords": ["NYC", "tournament", "meta", "competitive", "Fire", "Lightning", "fast"],
+      "source_ids": ["gate-nyc-recap"]
+    },
+    {
+      "id": "gate-public-deck-sample",
+      "claim_type": "dated_community_dataset_observation",
+      "authority_label": "public_site_snapshot",
+      "summary": "The 2026-07-15 public deck gallery sample contains 105 decklists: 29 Earth, 29 Water, 25 Fire, and 22 Lightning by recorded Leader element. Public submissions are self-selected and do not establish win rate, legality, quality, ownership, or the current competitive meta.",
+      "topics": ["deck gallery", "public decks", "elements"],
+      "keywords": ["deck gallery", "public decks", "popular", "usage", "sample", "element"],
+      "source_ids": ["gate-decks"]
+    },
+    {
+      "id": "gate-black-jade-analysis",
+      "claim_type": "community_lore_interpretation",
+      "authority_label": "independent_community_lore_analysis",
+      "summary": "The Black Jade lore audit reads repeated card roles, weapon use, discard, sacrifice, and self-damage as signs of an organized hierarchy with expendability themes. The article explicitly labels the larger organizational conclusions as theory, not confirmed canon.",
+      "topics": ["Black Jade", "lore", "weapons", "sacrifice"],
+      "keywords": ["Black Jade", "lore", "hierarchy", "weapon", "sacrifice", "self damage", "theory"],
+      "source_ids": ["gate-black-jade-lore"]
+    },
+    {
+      "id": "gate-raizan-shao-analysis",
+      "claim_type": "community_lore_interpretation",
+      "authority_label": "independent_community_lore_analysis",
+      "summary": "The Raizan/Shao audit separates established story sources from card-mechanic interpretation: it sees Raizan's attack-heavy Lightning play and Shao's slower synergy plan as thematically cohesive, while treating sword corruption and empowerment ideas as fan theories.",
+      "topics": ["Raizan", "Shao", "Rei", "lore", "Ikazuchi"],
+      "keywords": ["Raizan", "Shao", "Rei", "Ikazuchi", "lore", "sisters", "corruption", "theory"],
+      "source_ids": ["gate-raizan-shao-lore"]
+    },
+    {
+      "id": "gate-tournament-readiness",
+      "claim_type": "community_tournament_guidance",
+      "authority_label": "independent_community_beginner_guide",
+      "summary": "The first-tournament guide emphasizes legal deck preparation, distinguishable sleeves, clear public-state communication, observed shuffling, result checking, and calling a judge rather than improvising a ruling. Event-specific policy should still be checked against the current official tournament rules.",
+      "topics": ["tournament", "beginner", "judge", "etiquette"],
+      "keywords": ["tournament", "first event", "judge", "sleeves", "shuffle", "etiquette", "competitive"],
+      "source_ids": ["gate-first-tournament"]
+    },
+    {
+      "id": "gate-rules-conflict",
+      "claim_type": "source_conflict",
+      "authority_label": "cairn_crosscheck_finding",
+      "summary": "The Gate's quick-rules and FAQ records disagree with each other and with the current official rules on turn sequence; the FAQ also overstates that entities normally enter only through the Alley. Use the official Azuki TCG rules for both rulings.",
+      "topics": ["rules", "turn structure", "Garden", "Alley"],
+      "keywords": ["rules", "turn", "untap", "reset", "draw", "ramp", "resource phase", "Garden", "Alley", "play entity"],
+      "source_ids": ["gate-rules", "gate-faq", "gate-official-rules-reference"]
+    }
+  ],
+  "agent_guidance": {
+    "retrieval_policy": "Retrieve only claims relevant to the collector's call. Keep their authority labels and source titles attached.",
+    "use_for": [
+      "community strategy vocabulary",
+      "dated matchup and tournament context",
+      "deckbuilding heuristics and sequencing questions",
+      "clearly attributed community lore analysis",
+      "finding a relevant The Gate article"
+    ],
+    "do_not_use_for": [
+      "overriding current official rules or errata",
+      "promoting fan theory to Azuki canon",
+      "claiming a dated result is the current global meta",
+      "claiming public decklists are legal, optimal, owned, or tournament tested",
+      "physical-card authenticity, condition, scarcity, possession, or value"
+    ],
+    "attribution_examples": [
+      "The Gate's Shao guide frames this as...",
+      "In The Gate's March NYC event report...",
+      "A community lore audit reads the pattern as theory..."
+    ],
+    "rules_answer_policy": "For a ruling, lead with the current official Azuki TCG rule. Mention The Gate only as a community explanation or to disclose a recorded conflict."
+  },
+  "not_claiming": [
+    "The Gate is an official Azuki or Azuki TCG publication",
+    "community deck tech is universally optimal or current",
+    "community lore interpretation is canon",
+    "public deck frequency is tournament metagame share",
+    "site counts remain unchanged after the snapshot date",
+    "The Gate's rules summaries override the official rule page"
+  ]
+}
