@@ -58,6 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-15 · Codex — **Anko searches no longer collapse the
+  Binder into an empty return.** A successful ask clears stale Binder section
+  and refinement filters in the same render as Anko's bounded result, and the
+  result bar says how many were cleared. If Anko's own filter finds zero, his
+  read stays visible while all 353 cards remain available. Local browser QA
+  proved the default Gates filter opened to all six Zero matches and an
+  impossible Water/Zero request kept the full Binder visible. Scoped ESLint,
+  diff checks, and the assembled Pages build pass. Source commit `46edb04`;
+  Pages deployment `19719e59`; apex serves `cairn-site-BnGMK9es.js` with
+  preview/apex HTML parity. No API, model, catalogue, account, or `mockups/`
+  changed; Anko remains on the requested DeepSeek-V4-Pro trial.
 - `[passive]` 2026-07-15 · Codex — **Anko is live on DeepSeek-V4-Pro for Che's
   hands-on trial.** Railway production now sets `CAIRN_MODEL_ID` to
   `deepseek-ai/DeepSeek-V4-Pro`; deployment `d24dc4e4-db2a-4434-acad-53e6f8f2c790`
