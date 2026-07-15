@@ -93,12 +93,23 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [huntOpen, setHuntOpen] = useState(false)
   const [offerCashSeed, setOfferCashSeed] = useState(null)
   const [offerNoteSeed, setOfferNoteSeed] = useState('')
+  const [pendingSellerFlow, setPendingSellerFlow] = useState(null)
   const storeKey = storeKeyFor(catalog.id, accountId)
   const pileKey = pileKeyFor(catalog.id, accountId)
   const store = useBus(() => loadStore(storeKey), [storeKey])
   const piles = useBus(() => loadPiles(pileKey), [pileKey])
 
   useEffect(() => { setSettling(false); setBuyingNow(false); setHuntOpen(false); setWitnessedOnly(false); setOfferCashSeed(null); setOfferNoteSeed('') }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, checkout + hunting fold
+  useEffect(() => {
+    if (!pendingSellerFlow || pendingSellerFlow.sellerId !== sel) return
+    /* eslint-disable react-hooks/set-state-in-effect -- a focused-card action lands only after its seller table becomes current */
+    setOfferCashSeed(pendingSellerFlow.cash ?? null)
+    setOfferNoteSeed(pendingSellerFlow.note || '')
+    setSettling(pendingSellerFlow.flow === 'offer')
+    setBuyingNow(pendingSellerFlow.flow === 'buy')
+    setPendingSellerFlow(null)
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [pendingSellerFlow, sel])
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- Anko's sort is a view instruction, not a panel */
     const srt = ares?.ok ? ares.data?.filter?.sort : null
@@ -174,6 +185,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   }, [data, store, salesAll])
 
   const pickUp = (sellerId, uid, mode) => addToPile(pileKey, sellerId, uid, mode)
+  const visitSellerPile = (sellerId, flow = 'table', cash = null, note = '') => {
+    setZoom(null)
+    setPendingSellerFlow({ sellerId, flow, cash, note })
+    onClearFocus?.()
+    setSel(sellerId)
+  }
   const askAnko = async () => {
     const call = aq.trim()
     if (!call || abusy) return
@@ -263,14 +280,55 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     principal_context: { recorded_policy: Number(zoom.l.ask) > SCAN_REQUEST_USDC ? 'A fresh scan is requested for listings over 10 USDC.' : 'A fresh scan is optional for listings at 10 USDC or less.' },
     evidence: { recorded_scan_count: zoom.l.witness || 0, latest_recorded_settlement_usdc: salesAll[zoom.c.uid]?.[0]?.p ?? null, stock_catalog_image_only: !zoom.l.witness },
   } : null
+  const chooseZoomPile = (mode, continueToPile = false) => {
+    if (!zoom?.l || !zoom.sellerId) return
+    const seller = allSellers.find((candidate) => candidate.id === zoom.sellerId)
+    pickUp(zoom.sellerId, zoom.c.uid, mode)
+    setSwapMsg(`${zoom.c.name_en} is in your pile at ${sellerName(seller)}'s table.`)
+    if (continueToPile) visitSellerPile(zoom.sellerId, mode === 'buy' ? 'buy' : 'table')
+    else setZoom(null)
+  }
+  const actionsForZoomRead = (read) => {
+    if (!zoom?.l || !zoom.sellerId) return []
+    const sellerId = zoom.sellerId
+    const uid = zoom.c.uid
+    const seller = allSellers.find((candidate) => candidate.id === sellerId)
+    const stagedPile = pileOf(sellerId).some((item) => item.uid === uid)
+      ? pileOf(sellerId).map((item) => item.uid === uid ? { ...item, mode: 'buy' } : item)
+      : [...pileOf(sellerId), { uid, mode: 'buy' }]
+    const suggestedCounter = Math.round(stagedPile.reduce((total, item) => {
+      const listing = seller?.listings.find((candidate) => candidate.uid === item.uid)
+      return total + (salesAll[item.uid]?.[0]?.p ?? (Number(listing?.ask) || 0) * .9)
+    }, 0) * 100) / 100
+    const stageAndVisit = (flow, cash = null, note = '') => {
+      pickUp(sellerId, uid, 'buy')
+      visitSellerPile(sellerId, flow, cash, note)
+    }
+    const keepBrowsing = { id: 'keep-browsing', label: 'Keep browsing', onSelect: () => setZoom(null) }
+    if (read.lean === 'accept') return [{
+      id: 'continue-buy', label: `Continue with buy · ${zoom.l.ask} USDC`, primary: true,
+      onSelect: () => stageAndVisit('buy'),
+    }, keepBrowsing]
+    if (read.lean === 'counter') return [{
+      id: 'counter-listing', kind: 'amount', label: stagedPile.length > 1 ? `Offer for all ${stagedPile.length} cards` : 'Make an offer at',
+      amount: suggestedCounter, confirmLabel: 'Open offer',
+      hint: 'A record-based starting point where one exists; otherwise 10% below the ask. You can edit it first.',
+      onConfirm: (amount) => stageAndVisit('offer', String(amount)),
+    }, keepBrowsing]
+    if (read.lean === 'request_evidence') return [{
+      id: 'request-listing-evidence', label: 'Ask the seller for fresh scans', primary: true,
+      onSelect: () => stageAndVisit('offer', null, `Before we settle, please add fresh front, back, corners, and holo-tilt photos for ${zoom.c.name_en}.`),
+    }, keepBrowsing]
+    return [keepBrowsing]
+  }
   const zoomEl = zoom && (
     <CardZoom card={zoom.c} sub={zoom.l ? `${zoom.l.ask} USDC · ${zoom.l.cond}` : null} witness={zoom.l ? zoom.l.witness : null}
-      ask={zoom.l?.ask} decision={zoomDecision} onClose={() => setZoom(null)}>
+      ask={zoom.l?.ask} decision={zoomDecision} actionsForRead={actionsForZoomRead} onClose={() => setZoom(null)}>
       {zoom.l && zoom.sellerId && (
         <PileButtons ask={zoom.l.ask}
           inPile={!!inPile(zoom.sellerId, zoom.c.uid)} mode={inPile(zoom.sellerId, zoom.c.uid)?.mode}
-          onBuy={() => pickUp(zoom.sellerId, zoom.c.uid, 'buy')}
-          onTrade={() => pickUp(zoom.sellerId, zoom.c.uid, 'trade')} />
+          onBuy={() => chooseZoomPile('buy')}
+          onTrade={() => chooseZoomPile('trade')} />
       )}
     </CardZoom>
   )
@@ -293,6 +351,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       if (focusSort === 'evidence') return (b.l.witness || 0) - (a.l.witness || 0) || a.l.ask - b.l.ask
       if (focusSort === 'copies') return (b.l.copies || 1) - (a.l.copies || 1) || a.l.ask - b.l.ask
       return a.l.ask - b.l.ask || sellerName(a.s).localeCompare(sellerName(b.s))
+    })
+    const focusedSellerPiles = sortedAsks.filter(({ s }) => !!inPile(s.id, focusUid)).map(({ s }) => {
+      const pile = pileOf(s.id)
+      const buys = pile.filter((item) => item.mode === 'buy').reduce((total, item) => total + (s.listings.find((listing) => listing.uid === item.uid)?.ask || 0), 0)
+      return { s, pile, buys }
     })
     return (
       <div className="mk">
@@ -342,6 +405,17 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               ))}
             </div>
           : <div className="empty">Nobody is asking on this card right now.</div>}
+        {focusedSellerPiles.map(({ s, pile, buys }) => (
+          <div className="mk-checkout mk-focus-pile" key={`pile:${s.id}`} aria-label={`Your pile at ${sellerName(s)}'s table`}>
+            <span className="mk-focus-pilecard">
+              {c?.image && <img src={c.image} alt="" />}
+              <span><b>{sellerName(s)}</b><small className="mono">your pile · {pile.length} card{pile.length === 1 ? '' : 's'}{buys ? ` · buys ${buys} USDC` : ''}</small></span>
+            </span>
+            <button className="primary mk-settle" onClick={() => visitSellerPile(s.id, pile.every((item) => item.mode === 'buy') ? 'buy' : 'table')}>
+              {pile.every((item) => item.mode === 'buy') ? 'Continue to buy →' : 'Review pile →'}
+            </button>
+          </div>
+        ))}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; the witness column says what&rsquo;s recorded behind it.
           Buy and trade both drop the card on your pile at that seller&rsquo;s table — one deal per table.</p>
       </div>
