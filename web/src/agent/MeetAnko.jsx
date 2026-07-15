@@ -1,62 +1,13 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { saveProfile } from '../profile/profileStore.js'
 import './anko.css'
 
-const IMG = (import.meta.env.BASE_URL || '/') + 'agent/anko-guide-v2.jpg'
-
-const STEPS = [
-  {
-    id: 'profile',
-    title: 'Hi, I’m Anko',
-    say: 'I help you work with your collection in plain English. Let’s start with what people should call you at the table.',
-    points: 1,
-    action: 'Start with your name',
-  },
-  {
-    id: 'photo',
-    title: 'Make the table yours',
-    say: 'Add a picture that feels like you. We crop it square, and you can change it any time.',
-    points: 1,
-    action: 'Choose a picture',
-  },
-  {
-    id: 'mark',
-    title: 'Have or Want?',
-    say: 'Choose Have for cards you own. Choose Want for cards you’re looking for. You can tap the buttons or tell me in plain English.',
-    points: 1,
-    action: 'Focus the Anko bar',
-    examples: [
-      { label: '“Do I have Penny?”', text: 'Do I have Penny?' },
-      { label: '“I have every common.”', text: 'I have every common' },
-      { label: '“List all my commons for $1.”', text: 'List all my commons for $1' },
-    ],
-  },
-  {
-    id: 'scan',
-    title: 'I’m always here if you need me!',
-    say: 'I’m staying right here in the Anko bar. One last first: scan a card for five points whenever you’re ready.',
-    points: 5,
-    action: 'Show me Scan cards',
-  },
-]
-
-const DONE_LINES = {
-  profile: 'Your table has a name. Nice.',
-  photo: 'There you are. Picture added.',
-  mark: 'Got it — your first card is in.',
-  scan: 'Scan recorded. Five points earned.',
-}
-
-const DOCK_LINES = {
-  profile: 'Start with your collector name and a line for your table. I’ll stay right here.',
-  photo: 'Add a picture that feels like you. You can change it whenever you like.',
-  mark: 'Have is for cards you own. Want is for cards you’re looking for.',
-  scan: 'That’s your table. I’m staying right here—scan one card whenever you’re ready.',
-}
+const AVATAR = (import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'
 
 export function HaveActionsLesson({ onDone, compact = false }) {
   return (
     <aside className={'anko-have-actions' + (compact ? ' compact' : '')} role="note" aria-label="Anko explains selling and trading">
-      <img src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" onError={(event) => { event.currentTarget.style.display = 'none' }} />
+      <img src={AVATAR} alt="" onError={(event) => { event.currentTarget.style.display = 'none' }} />
       <div className="anko-have-copy">
         <strong>{compact ? 'Sell or trade?' : 'You have it. Is it available?'}</strong>
         <span>{compact
@@ -68,125 +19,102 @@ export function HaveActionsLesson({ onDone, compact = false }) {
   )
 }
 
-export default function MeetAnko({ onDone, progress, frame = 0, onFrame, mode = 'setup' }) {
-  const [imgOk, setImgOk] = useState(true)
-  const [settling, setSettling] = useState(false)
-  const previousDone = useRef(Object.fromEntries(progress.milestones.map((item) => [item.id, item.done])))
-  const aligned = useRef(false)
-  const current = STEPS[frame]
-  const currentDone = !!progress.milestones.find((item) => item.id === current.id)?.done
-  const firstOpen = progress.milestones.findIndex((item) => !item.done)
+export default function MeetAnko({ accountId, profile, progress, onDone }) {
+  const [name, setName] = useState(profile.name || '')
+  const [sign, setSign] = useState(profile.sign || '')
+  const [reward, setReward] = useState(null)
+  const profileDone = !!progress.milestones.find((item) => item.id === 'profile')?.done
+  const markDone = !!progress.milestones.find((item) => item.id === 'mark')?.done
+  const step = profileDone ? 'mark' : 'profile'
 
   useEffect(() => {
-    if (aligned.current) return
-    aligned.current = true
-    if (currentDone && firstOpen >= 0 && firstOpen !== frame) onFrame(firstOpen)
-  }, [currentDone, firstOpen, frame, onFrame])
+    if (!markDone) return undefined
+    const timer = window.setTimeout(onDone, 1150)
+    return () => window.clearTimeout(timer)
+  }, [markDone, onDone])
 
   useEffect(() => {
     const onKey = (event) => {
-      if (event.key === 'Escape') onDone()
+      if (event.key === 'Escape' && !markDone) onDone()
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [onDone])
+  }, [markDone, onDone])
 
-  const doneSignature = progress.milestones.map((item) => `${item.id}:${item.done}`).join('|')
-  useEffect(() => {
-    const done = Object.fromEntries(doneSignature.split('|').map((item) => {
-      const [id, value] = item.split(':')
-      return [id, value === 'true']
-    }))
-    const justFinished = done[current.id] && !previousDone.current[current.id]
-    previousDone.current = done
-    if (!justFinished) return undefined
-    const laterOpen = STEPS.findIndex((step, index) => index > frame && !done[step.id])
-    const nextOpen = laterOpen >= 0 ? laterOpen : STEPS.findIndex((step) => !done[step.id])
-    const settleTimer = nextOpen < 0 ? window.setTimeout(() => setSettling(true), 0) : null
-    const timer = window.setTimeout(() => nextOpen >= 0 ? onFrame(nextOpen) : onDone(), nextOpen >= 0 ? 900 : 1050)
-    return () => { if (settleTimer) window.clearTimeout(settleTimer); window.clearTimeout(timer) }
-  }, [current.id, doneSignature, frame, onDone, onFrame])
-
-  useEffect(() => {
-    const timer = window.setTimeout(() => {
-      const target = document.querySelector(`[data-tour-target="${current.id}"]`)
-      if (!target) return
-      if (mode === 'dock') {
-        const rect = target.getBoundingClientRect()
-        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return
-        const focusable = target.matches('[data-tour-focus]') ? target : target.querySelector('[data-tour-focus]')
-        focusable?.focus({ preventScroll: true })
-        return
-      }
-      target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      const focusable = target.matches('[data-tour-focus]') ? target : target.querySelector('[data-tour-focus]')
-      focusable?.focus({ preventScroll: true })
-    }, 180)
-    return () => window.clearTimeout(timer)
-  }, [current.id, mode])
-
-  const showTarget = () => {
-    const target = document.querySelector(`[data-tour-target="${current.id}"]`)
-    if (!target) return
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    window.setTimeout(() => {
-      if (current.id === 'photo' || current.id === 'scan') target.click()
-      else target.querySelector('[data-tour-focus]')?.focus()
-    }, 260)
+  const introduce = (event) => {
+    event.preventDefault()
+    if (!name.trim() || !sign.trim()) return
+    const source = event.currentTarget.querySelector('button[type="submit"]')?.getBoundingClientRect()
+    const target = document.querySelector('.profile-points')?.getBoundingClientRect()
+    if (source && target) {
+      const left = source.left + source.width / 2
+      const top = source.top + source.height / 2
+      setReward({ left, top, dx: target.left + target.width / 2 - left, dy: target.top + target.height / 2 - top })
+    }
+    saveProfile(accountId, { ...profile, name: name.trim(), sign: sign.trim() })
   }
 
   const fillExample = (text) => {
     window.dispatchEvent(new CustomEvent('cairn-anko-prompt', { detail: { text } }))
   }
 
-  if (mode === 'binder' || mode === 'dock') {
-    return (
-      <aside className={'anko-guide anko-guide-binder' + (mode === 'dock' ? ' anko-guide-dock' : '') + (settling ? ' settling' : '')} role="complementary" aria-label="Anko first-lap note">
-        <div className={'anko-binder-note' + (currentDone ? ' earned' : '')}>
-          <div className="anko-binder-copy">
-            <strong>{current.title}</strong>
-            <span>{currentDone ? DONE_LINES[current.id] : DOCK_LINES[current.id]}</span>
-          </div>
-          {!currentDone && current.examples && (
-            <div className="anko-binder-examples" aria-label="Example requests">
-              {current.examples.map((example) => <button key={example.text} type="button" onClick={() => fillExample(example.text)}>{example.label}</button>)}
-            </div>
-          )}
-          <button className="anko-binder-skip" onClick={onDone} aria-label="Dismiss Anko's guide">×</button>
-        </div>
-      </aside>
-    )
-  }
-
   return (
-    <div className={`anko-guide anko-guide-${mode}`} role="complementary" aria-labelledby="anko-guide-title">
-      <div className="anko-book">
-        <div className="anko-booktop mono">
-          <span>ANKO · YOUR FIRST LAP</span>
-          <span>{frame + 1} / {STEPS.length}</span>
-          <button onClick={onDone} aria-label="Skip Anko's guide">skip ×</button>
-        </div>
-        <div className={'anko-coachbody' + (currentDone ? ' earned' : '')} key={current.id}>
-          <aside className="anko-character">
-            {imgOk
-              ? <img src={IMG} alt="Anko welcoming you to Cairn" onError={() => setImgOk(false)} />
-              : <span className="anko-fallback">A</span>}
-          </aside>
-          <section className="anko-speech">
-            <div className="anko-award mono"><b>+{current.points}</b><span>{current.points === 1 ? 'point' : 'points'}</span><i>you have {progress.points}/8</i></div>
-            <h2 id="anko-guide-title">{current.title}</h2>
-            <p>{currentDone ? DONE_LINES[current.id] : current.say}</p>
-            {!currentDone && current.examples && (
-              <div className="anko-examples">
-                <span className="mono">Try an example — I&rsquo;ll put it in the real bar.</span>
-                {current.examples.map((example) => <button key={example.text} type="button" onClick={() => fillExample(example.text)}>{example.label}</button>)}
-                <small>Have every common? Just say so. List them all for $1? Yeah—I can do that.</small>
-              </div>
-            )}
-            <button className="anko-showtarget" disabled={currentDone} onClick={showTarget}>{currentDone ? 'Done ✓' : `${current.action} ↓`}</button>
-          </section>
-        </div>
+    <aside className={'anko-onboard anko-onboard-' + step + (markDone ? ' settling' : '')}
+      data-milestone-id={step} role="complementary" aria-labelledby="anko-onboard-title">
+      {reward && <span className="point-flight" aria-live="polite"
+        style={{ left: reward.left, top: reward.top, '--point-dx': `${reward.dx}px`, '--point-dy': `${reward.dy}px` }}
+        onAnimationEnd={() => setReward(null)}>
+        <b>✦ +1</b><i>✦</i><i>✦</i><i>✦</i>
+      </span>}
+      <div className="anko-onboard-portrait">
+        <img src={AVATAR} alt="Anko, your Cairn collecting guide" />
+        <span className="mono">ANKO</span>
       </div>
-    </div>
+
+      {markDone ? (
+        <div className="anko-onboard-copy anko-onboard-home" aria-live="polite">
+          <h2 id="anko-onboard-title">Your first card is in.</h2>
+          <p>I&rsquo;m always here if you need me.</p>
+          <small className="mono">Ask from this bar anytime.</small>
+        </div>
+      ) : step === 'profile' ? (
+        <div className="anko-onboard-copy">
+          <span className="anko-kicker mono">YOUR CAIRN GUIDE</span>
+          <h2 id="anko-onboard-title">Hi, I&rsquo;m Anko.</h2>
+          <p>I know the cards on Cairn. I can help you organize, price, buy, and trade—and I&rsquo;ll show you every change before it happens.</p>
+          <form className="anko-intro-form" onSubmit={introduce}>
+            <label>
+              <span>What should I call you?</span>
+              <input autoFocus maxLength={32} value={name} placeholder="Collector name"
+                onChange={(event) => setName(event.target.value)} />
+            </label>
+            <label>
+              <span>What brings you to the table?</span>
+              <input maxLength={140} value={sign} placeholder="What you collect, trade, or hunt"
+                onChange={(event) => setSign(event.target.value)} />
+            </label>
+            <button className="primary" type="submit" disabled={!name.trim() || !sign.trim()}>
+              Good to meet you <small>· +1 point</small>
+            </button>
+          </form>
+        </div>
+      ) : (
+        <div className="anko-onboard-copy">
+          <span className="anko-kicker mono">GOOD TO MEET YOU, {profile.name}</span>
+          <h2 id="anko-onboard-title">Let&rsquo;s put one card in your Binder.</h2>
+          <div className="anko-terms" aria-label="Have and Want meanings">
+            <div><strong>Have</strong><span>A card you own.</span></div>
+            <div><strong>Want</strong><span>A card you&rsquo;re looking for.</span></div>
+          </div>
+          <p>Use the bar above to search by name, or ask me in plain English. Then choose Have or Want on the real card below.</p>
+          <div className="anko-first-prompts" aria-label="Example searches and requests">
+            <button type="button" onClick={() => fillExample('Penny')}>Find Penny</button>
+            <button type="button" onClick={() => fillExample('I have every common')}>I have every common</button>
+          </div>
+        </div>
+      )}
+
+      {!markDone && <button className="anko-onboard-skip mono" type="button" onClick={onDone}>Explore on my own</button>}
+    </aside>
   )
 }

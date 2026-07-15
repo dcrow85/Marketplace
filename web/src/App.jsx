@@ -108,14 +108,15 @@ function SignIn({ onLogin }) {
 
 function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet, onMeet }) {
   const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
-  const [meetStep, setMeetStep] = useState(0)
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
   const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
   const profile = useBus(() => loadProfile(accountId), [accountId])
   const progress = useMilestoneProgress(accountId, catalog.id, profile)
-  const guidedStep = showMeet ? ['profile', 'photo', 'mark', 'scan'][meetStep] : null
+  const guidedStep = showMeet
+    ? (progress.milestones.find((item) => item.id === 'profile')?.done ? 'mark' : 'profile')
+    : null
   const publicName = profile.name.trim() || handleFor(accountId)
   const openScanner = () => {
     setBseg('binder')
@@ -189,7 +190,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       <main className="main">
         <GettingStarted key={accountId} accountId={accountId}
           catalog={catalog} profile={profile} progress={progress} onScan={openScanner}
-          guidedStep={guidedStep} />
+          concealed={showMeet} />
         <div className="binder-surface">
           <div className="bindertop">
           {CATALOGS.length > 1 && (
@@ -211,7 +212,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
             onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
             onboardingStep={guidedStep}
-            onboardingGuide={guidedStep ? <MeetAnko progress={progress} frame={meetStep} onFrame={setMeetStep} onDone={onMeet} mode="dock" /> : null} />}
+            onboardingGuide={showMeet ? <MeetAnko accountId={accountId} profile={profile} progress={progress} onDone={onMeet} /> : null} />}
           {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} />}
           {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
             focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}

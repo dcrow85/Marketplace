@@ -7,9 +7,9 @@ import './onboarding.css'
 
 const cardName = (card) => card?.name_en || card?.name_ja || card?.uid || 'Untitled card'
 
-export default function GettingStarted({ accountId, catalog, profile, progress, onScan, guidedStep = null }) {
+export default function GettingStarted({ accountId, catalog, profile, progress, onScan, concealed = false }) {
   const data = useCatalog(catalog)
-  const [active, setActive] = useState(() => progress.milestones.find((milestone) => !milestone.done)?.id || null)
+  const [active, setActive] = useState(null)
   const [name, setName] = useState(profile.name || '')
   const [sign, setSign] = useState(profile.sign || '')
   const [query, setQuery] = useState('')
@@ -102,13 +102,8 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     setQuery('')
     setActive(null)
   }
-  const setupStep = guidedStep === 'profile' || guidedStep === 'photo'
-  const interfaceStep = guidedStep === 'mark' || guidedStep === 'scan'
-  const setupDone = progress.milestones.filter((milestone) => milestone.id === 'profile' || milestone.id === 'photo').every((milestone) => milestone.done)
   const flightSetup = flight && (flight.milestoneId === 'profile' || flight.milestoneId === 'photo') ? flight.milestoneId : null
-  const shownActive = flightSetup || (setupStep ? guidedStep : interfaceStep ? null : active)
-  const compact = (setupDone || interfaceStep) && !flight
-  const focusedSetup = !compact && !!(setupStep || flightSetup)
+  const shownActive = flightSetup || active
   const nextMilestone = progress.milestones.find((milestone) => !milestone.done)
   const showNextMilestone = () => {
     if (!nextMilestone) return
@@ -119,7 +114,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
       target?.focus({ preventScroll: true })
       return
     }
-    setActive(nextMilestone.id)
+    setActive((current) => current === nextMilestone.id ? null : nextMilestone.id)
   }
   const finishPointFlight = () => {
     const surface = document.querySelector('.binder-surface')
@@ -137,58 +132,35 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
     })
   }
 
-  return (
-    <section className={'first-lap' + (guidedStep ? ' first-lap-guided' : '') + (focusedSetup ? ' first-lap-focus' : '') + (compact ? ' first-lap-compact' : '')} aria-label="Getting started">
-      {flight && (
-        <span key={flight.key} className="point-flight" aria-live="polite"
-          style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}
-          onAnimationEnd={(event) => { if (event.target === event.currentTarget) finishPointFlight() }}>
-          <b>✦ +{flight.gained}</b><i>✦</i><i>✦</i><i>✦</i>
-        </span>
-      )}
-      {compact ? (
-        <div className="first-compactrow">
-          <span className="ek">First lap</span>
-          <div className="first-compactmeter" aria-hidden="true"><i style={{ width: `${(progress.points / progress.total) * 100}%` }} /></div>
-          {nextMilestone && <button type="button" className="first-compactnext" data-milestone-id={nextMilestone.id} onClick={showNextMilestone}>
-            <span>Next</span><b>{nextMilestone.label}</b><small>+{nextMilestone.points}</small>
-          </button>}
-          <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
-            <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
-          </div>
-        </div>
-      ) : <>
-        <div className="first-laphead">
-          <div>
-            <span className="ek">Your first lap</span>
-            <h1>Set up your table</h1>
-            <p>Four useful firsts. Your first recorded scan earns five.</p>
-          </div>
-          <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
-            <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
-          </div>
-        </div>
-        <div className="first-meter" aria-hidden="true"><i style={{ width: `${(progress.points / progress.total) * 100}%` }} /></div>
-        <div className="first-steps">
-          {progress.milestones.map((milestone) => (
-            <button key={milestone.id} type="button"
-              data-milestone-id={milestone.id}
-              className={'first-step' + (milestone.done ? ' done' : '') + (shownActive === milestone.id ? ' open' : '') + (guidedStep === milestone.id ? ' guided' : '')}
-              disabled={milestone.done}
-              onClick={() => milestone.id === 'scan' ? onScan() : setActive(shownActive === milestone.id ? null : milestone.id)}>
-              <span className="first-check" aria-hidden="true">{milestone.done ? '✓' : '○'}</span>
-              <span><b>{milestone.label}</b><small>{milestone.detail}</small></span>
-              <span className="mono first-point">+{milestone.points}</span>
-            </button>
-          ))}
-        </div>
-      </>}
+  const pointFlight = flight && (
+    <span key={flight.key} className="point-flight" aria-live="polite"
+      style={{ left: flight.left, top: flight.top, '--point-dx': `${flight.dx}px`, '--point-dy': `${flight.dy}px` }}
+      onAnimationEnd={(event) => { if (event.target === event.currentTarget) finishPointFlight() }}>
+      <b>✦ +{flight.gained}</b><i>✦</i><i>✦</i><i>✦</i>
+    </span>
+  )
 
-      {shownActive && <div className="first-workbench" data-guide-step={guidedStep || undefined}>
+  if (concealed) return pointFlight
+
+  return (
+    <section className="first-lap first-lap-compact" aria-label="Getting started">
+      {pointFlight}
+      <div className="first-compactrow">
+        <span className="ek">First lap</span>
+        <div className="first-compactmeter" aria-hidden="true"><i style={{ width: `${(progress.points / progress.total) * 100}%` }} /></div>
+        {nextMilestone && <button type="button" className="first-compactnext" data-milestone-id={nextMilestone.id} onClick={showNextMilestone}>
+          <span>Next</span><b>{nextMilestone.label}</b><small>+{nextMilestone.points}</small>
+        </button>}
+        <div className="first-score mono" aria-label={`${progress.points} of ${progress.total} points earned`}>
+          <strong>{progress.points}</strong><span>/ {progress.total} pts</span>
+        </div>
+      </div>
+
+      {shownActive && <div className="first-workbench">
         <div className="first-action-column">
         {shownActive === 'profile' && (!progress.milestones.find((milestone) => milestone.id === 'profile')?.done || flight?.milestoneId === 'profile') && (
           <div className="first-action first-profile" data-tour-target="profile">
-          <label>{guidedStep === 'profile' && <span className="first-field-arrow mono">Start here ↓</span>}<span className="mono">Collector name</span><input autoFocus data-tour-focus maxLength={32} value={name}
+          <label><span className="mono">Collector name</span><input autoFocus data-tour-focus maxLength={32} value={name}
             placeholder="How the room should know you" onChange={(event) => setName(event.target.value)} /></label>
           <label><span className="mono">Your table line</span><input maxLength={140} value={sign}
             placeholder="What do you collect, trade, or hunt?" onChange={(event) => setSign(event.target.value)} /></label>

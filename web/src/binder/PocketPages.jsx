@@ -5,13 +5,17 @@ import { nm, retryImg } from './helpers.jsx'
 // The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
 // pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
 // the agent, filters, and the scanner all operate on the binder itself.
-export default function PocketPages({ rows, store, userPhotos, onOpen, setField, askIndex, onQuickSell }) {
+export default function PocketPages({
+  rows, store, userPhotos, onOpen, setStance, setField, askIndex, onQuickSell,
+  onboarding = false, haveLessonUid = null, haveActionsGuide = null, onUseHaveAction,
+}) {
   const [page, setPage] = useState(0)
   useEffect(() => { setPage(0) }, [rows.length]) // eslint-disable-line react-hooks/set-state-in-effect -- filters changed; back to page 1
   const pages = []
   for (let i = 0; i < rows.length; i += 9) pages.push(rows.slice(i, i + 9))
   const pg = pages[Math.min(page, pages.length - 1)] || []
   const filled = pg.filter((c) => effStance(c, store).stance === 'have').length
+  const showIntent = onboarding && rows.length === 1
   return (
     <div className="bv">
       <div className="bv-head">
@@ -20,6 +24,9 @@ export default function PocketPages({ rows, store, userPhotos, onOpen, setField,
         <div className="bv-comp mono">{rows.filter((c) => effStance(c, store).stance === 'have').length} owned · {rows.length} shown</div>
       </div>
       <div className="bv-page">
+        {haveActionsGuide && pg.some((card) => card.uid === haveLessonUid) && (
+          <div className="bv-have-guide">{haveActionsGuide}</div>
+        )}
         {pg.map((c) => {
           const e = effStance(c, store)
           const img = userPhotos[c.uid] || c.image
@@ -34,20 +41,28 @@ export default function PocketPages({ rows, store, userPhotos, onOpen, setField,
                 {fromAsk != null && <span className="bv-from onart mono">from {fromAsk} USDC</span>}
                 <span className="bv-q">
                   <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
-                    onClick={(ev) => { ev.stopPropagation(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
+                    onClick={(ev) => { ev.stopPropagation(); onUseHaveAction?.(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
                   <button className={'bv-qb' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
-                    onClick={(ev) => { ev.stopPropagation(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
+                    onClick={(ev) => { ev.stopPropagation(); onUseHaveAction?.(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
                 </span>
               </div>
             )
           }
           return (
-            <button key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')} onClick={() => onOpen(c.uid)}>
+            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '')}
+              role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
+              onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
               {img && <img className="bv-ghostart" src={img} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
               <span className="mono bv-gnum">{c.num}</span>
               <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
               {fromAsk != null && <span className="bv-from mono">from {fromAsk} USDC</span>}
-            </button>
+              {showIntent && <span className="bv-intent" aria-label={`Mark ${nm(c)}`}>
+                <button type="button" onKeyDown={(ev) => ev.stopPropagation()}
+                  onClick={(ev) => { ev.stopPropagation(); setStance(c.uid, 'have') }}>Have</button>
+                <button type="button" onKeyDown={(ev) => ev.stopPropagation()}
+                  onClick={(ev) => { ev.stopPropagation(); setStance(c.uid, 'want') }}>Want</button>
+              </span>}
+            </div>
           )
         })}
       </div>

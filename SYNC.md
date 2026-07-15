@@ -58,6 +58,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-15 · Codex — **Anko's first run now teaches Cairn through the real Binder.**
+  The competing four-step tour is gone: Anko introduces himself beneath his permanent bar, creates the profile
+  for one point, spells out Have and Want, and lets the collector search or use a plain-English example before
+  choosing on the actual card. The first mark hands off gently to the compact First Lap and a readable Sell / Trade
+  lesson beside that card's controls. Desktop and 390px browser QA passed with no console errors or horizontal
+  overflow; scoped ESLint, diff checks, and the assembled Pages build pass. No catalogue, protocol, or `mockups/`
+  files changed in this lane.
+- `[passive]` 2026-07-15 · Codex — **The Gate now informs Anko as a dated independent-community source.**
+  A summary-only snapshot maps all 16 published articles plus the public FAQ, quick rules, deckbuilder, deck gallery,
+  card gallery, learning index, 3 tournament records, 14 placements, and a 105-deck public sample. Fourteen
+  claim-level strategy/lore notes and six archetypes retrieve by call with source attribution; current official Azuki
+  rules retain precedence. The audit pins two open source conflicts (turn sequence and Alley-only entity play), and
+  live Qwen probes answered Shao strategy with attribution and turn order from the official phase sequence. Catalogue
+  remains 353 rows / 349 images / 42 official-world claims; no Pages deploy and no active onboarding files changed.
 - `[passive]` 2026-07-15 · Codex — **Anko now has a distinct Cairn portrait and a readable first-Have lesson.**
   A new 512px paper/ink, slate-teal, cream, orange, and cyan red-panda portrait replaces the Azuki art crop across
   the Binder, Market, settlement, trade reads, and agent result panels; the old collectible-ID title is gone. On

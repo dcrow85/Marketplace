@@ -203,14 +203,16 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         try { seen = !!localStorage.getItem(haveLessonKey) } catch { /* ignore */ }
         if (!seen) {
           try { localStorage.setItem(haveLessonKey, '1') } catch { /* ignore */ }
-          window.setTimeout(() => setHaveLessonUid(uid), 0)
+          // During first run, let Anko finish his permanent-bar handoff before he
+          // reappears beside this card's real Sell and Trade controls.
+          window.setTimeout(() => setHaveLessonUid(uid), onboardingStep === 'mark' ? 1250 : 0)
         }
       } else if (uid === haveLessonUid) {
         window.setTimeout(() => setHaveLessonUid(null), 0)
       }
       return next
     })
-  }, [data, storeKey, haveLessonKey, haveLessonUid])
+  }, [data, storeKey, haveLessonKey, haveLessonUid, onboardingStep])
 
   const setField = useCallback((uid, key, value) => {
     setStore((prev) => {
@@ -419,7 +421,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (!data) return <div className="empty">loading catalog…</div>
 
   const refineCount = familyF.size + channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
-  const dockSetup = onboardingStep === 'profile' || onboardingStep === 'photo'
+  const dockSetup = onboardingStep === 'profile'
   const chooseFamily = (family) => {
     setFamilyF(family ? new Set([family]) : new Set())
     if (family && channelF.size && !data.cards.some((c) => c.release_family === family && [...channelF].some((channel) => cardMatchesChannel(c, channel)))) {
@@ -459,15 +461,13 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           <span className="scanbtn-label">Scan cards</span>
         </button>
       </div>
-      <div className="controls">
+      <div className={'controls' + (onboardingStep ? ' anko-onboarding-controls' : '')}>
         <div className={'askbar' + (dockSetup ? ' anko-dock-setup' : '')} data-tour-target={onboardingStep === 'mark' ? 'mark' : undefined}>
           <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'}
             alt="" title={`${agentName} — your Cairn collecting guide`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input ref={askInput} data-tour-focus={onboardingStep === 'mark' ? true : undefined}
             value={query} maxLength={280} disabled={dockSetup}
-            placeholder={onboardingStep === 'profile' ? `${agentName} is helping you set up your table…`
-              : onboardingStep === 'photo' ? 'Add your picture, then ask Anko anything…'
-                : `Search or ask ${agentName}…`}
+            placeholder={onboardingStep === 'profile' ? `${agentName} is meeting you here…` : `Search or ask ${agentName}…`}
             onChange={(e) => { const v = e.target.value; setQuery(v); if (agentRes) clearAgent(); setQ(v) }}
             onKeyDown={(e) => { if (e.key === 'Enter') ask() }} />
           <button className="askbtn" onClick={ask} disabled={dockSetup || agentBusy || !query.trim()}>{agentBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
@@ -564,7 +564,11 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
                 <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setStanceF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }}>show them</button></div>
             : <div className="empty">no cards match.</div>
         ) : view === 'pages' ? (
-          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setField={setField} askIndex={askIndex} onQuickSell={setSellPop} />
+          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setStance={setStance}
+            setField={setField} askIndex={askIndex} onQuickSell={setSellPop} onboarding={onboardingStep === 'mark'}
+            haveLessonUid={haveLessonUid}
+            haveActionsGuide={haveLessonUid ? <HaveActionsLesson compact onDone={dismissHaveLesson} /> : null}
+            onUseHaveAction={dismissHaveLesson} />
         ) : grouped ? (
           SETS.filter((s) => groups[s.id]).map((s) => (
             <div className="setblock" key={s.id}>
