@@ -1,7 +1,10 @@
+import AskAnko from '../trade/AskAnko.jsx'
+import { retryImg } from '../binder/helpers.jsx'
+
 // The lightbox: cards at table size. This is a TCG — sometimes you just need to hold
 // the card up to the light before you trade for it. Facts ride under the art; the
 // scan line stays honest about what sample listings can and can't show.
-export default function CardZoom({ card, sub, witness, children, onClose }) {
+export default function CardZoom({ card, sub, witness, ask = 0, decision = null, children, onClose }) {
   if (!card) return null
   return (
     <div className="zoom-overlay" role="dialog" aria-label={card.name_en} onClick={onClose}>
@@ -17,13 +20,17 @@ export default function CardZoom({ card, sub, witness, children, onClose }) {
           {witness != null && (
             <div className="mono zoom-wit">{witness
               ? `✓ ${witness} pile scan${witness === 1 ? '' : 's'} recorded — with real listings, the scans show here`
-              : '— no scans behind this listing: their word alone'}</div>
+              : Number(ask) > 10
+                ? 'scan requested at this ask — the stock image is not evidence of this copy'
+                : 'stock image only — a fresh scan is optional at this ask'}</div>
           )}
         </div>
+        {decision && <div className="zoom-anko">
+          <AskAnko decision={decision} recommended={Number(ask) > 10 && !witness} label="Ask Anko about this copy" />
+        </div>}
         {children && <div className="zoom-acts">{children}</div>}
         <button className="ghost sm zoom-close" onClick={onClose}>✕ close</button>
       </div>
     </div>
   )
 }
-import { retryImg } from '../binder/helpers.jsx'

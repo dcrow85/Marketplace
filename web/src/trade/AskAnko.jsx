@@ -10,7 +10,28 @@ const LEAN_LABEL = {
   cannot_resolve: 'I can’t resolve this from what’s recorded',
 }
 
-export default function AskAnko({ decision, recommended = false, label = 'Ask Anko', onRead }) {
+function ReadActions({ actions }) {
+  const [values, setValues] = useState({})
+  if (!actions?.length) return null
+  return <div className="anko-readactions" aria-label="Actions from Anko’s read">
+    {actions.map((action) => {
+      if (action.kind === 'amount') {
+        const value = values[action.id] ?? String(action.amount ?? '')
+        return <div className="anko-amountaction" key={action.id}>
+          <span className="mono">{action.label}</span>
+          <span className="anko-amountinput"><span>$</span><input type="number" min="0" step="0.01" value={value}
+            aria-label={`${action.label} amount`} onChange={(event) => setValues((prev) => ({ ...prev, [action.id]: event.target.value }))} /><i>USDC</i></span>
+          <button type="button" onClick={() => action.onConfirm?.(Math.max(0, Number(value) || 0))}>{action.confirmLabel || 'Use this'}</button>
+          {action.hint && <small>{action.hint}</small>}
+        </div>
+      }
+      return <button type="button" key={action.id} className={'anko-readaction' + (action.primary ? ' primary' : '')}
+        onClick={() => action.onSelect?.()}>{action.label}</button>
+    })}
+  </div>
+}
+
+export default function AskAnko({ decision, recommended = false, label = 'Ask Anko', onRead, actionsForRead }) {
   const panelId = useId()
   const version = useMemo(() => JSON.stringify(decision), [decision])
   const [state, setState] = useState({ status: 'idle', read: null })
@@ -49,6 +70,7 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
         {!!read.reasons?.length && <div className="anko-readlist"><span className="mono">why</span><ul>{read.reasons.map((reason, i) => <li key={i}>{reason}</li>)}</ul></div>}
         {!!read.unknowns?.length && <div className="anko-readlist unknown"><span className="mono">still unknown</span><ul>{read.unknowns.map((unknown, i) => <li key={i}>{unknown}</li>)}</ul></div>}
         <p className="anko-boundary mono">{read.boundary}</p>
+        <ReadActions actions={actionsForRead?.(read) || []} />
       </section>
     )
   }

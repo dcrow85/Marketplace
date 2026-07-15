@@ -9,7 +9,8 @@ import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE || ''
-const scanLabel = (w) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : '— no scans'
+const SCAN_REQUEST_USDC = 10
+const scanLabel = (w, ask) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : Number(ask) > SCAN_REQUEST_USDC ? 'scan requested' : 'stock photo · scan optional'
 
 function Avatar({ seed, size = 26, photo = '' }) {
   if (photo) return <span className="av"><img src={photo} width={size} height={size} alt="" /></span>
@@ -19,11 +20,11 @@ function Avatar({ seed, size = 26, photo = '' }) {
 // table; here you square the deal — their side with the art in front of you, your
 // side from your binder, one cash line, one send. Clean on purpose: no ask bar, no
 // aisle, nothing but the deal.
-export default function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, pileKey, agentName = 'Anko', onBack, onSent }) {
+export default function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, pileKey, agentName = 'Anko', initialCash = null, initialNote = '', onBack, onSent }) {
   const [give, setGive] = useState(() => new Set())
   const [qg, setQg] = useState('')
-  const [cashEdit, setCashEdit] = useState(null) // null = follow the buy total
-  const [note, setNote] = useState('')
+  const [cashEdit, setCashEdit] = useState(initialCash == null ? null : String(initialCash)) // null = follow the buy total
+  const [note, setNote] = useState(initialNote)
   const [abusy, setAbusy] = useState(false)
   const [ankoScope, setAnkoScope] = useState(null) // his lens on YOUR side
   const [ankoLine, setAnkoLine] = useState(null)
@@ -157,7 +158,28 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       deal_record_summary: recordLine,
     },
   }
-  const sendReadRecommended = cash >= 500 || pile.some((p) => !open.listings.find((l) => l.uid === p.uid)?.witness)
+  const sendReadRecommended = cash >= 500 || pile.some((p) => {
+    const listing = open.listings.find((l) => l.uid === p.uid)
+    return Number(listing?.ask) > SCAN_REQUEST_USDC && !listing?.witness
+  })
+  const counterStart = useMemo(() => {
+    const recordBased = pile.reduce((total, item) => total + (lastPrice(item.uid) ?? askOf(item.uid)), 0)
+    const belowCurrent = recordBased > 0 && recordBased < cash ? recordBased : cash * .9
+    return Math.round(Math.max(0, belowCurrent) * 100) / 100
+  }, [pile, cash, salesMap]) // eslint-disable-line react-hooks/exhaustive-deps -- lastPrice/askOf read these stable inputs
+  const actionsForSendRead = (read) => {
+    if (read.lean === 'counter') return [{
+      id: 'counter-cash', kind: 'amount', label: 'Try a counter at', amount: counterStart,
+      confirmLabel: 'Use in offer', hint: 'Prefilled from recorded settlements where available; otherwise 10% below the current cash line. Edit freely.',
+      onConfirm: (amount) => setCashEdit(String(amount)),
+    }]
+    if (read.lean === 'request_evidence') return [{
+      id: 'request-scan', label: 'Add a fresh-scan request', primary: true,
+      onSelect: () => setNote('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.'),
+    }]
+    if (read.lean === 'accept') return [{ id: 'keep-terms', label: 'Keep these terms', onSelect: () => setCashEdit(String(cash)) }]
+    return []
+  }
 
   const canSend = pile.length > 0 && (trades.length === 0 || give.size > 0 || cash > 0)
   const send = () => {
@@ -195,7 +217,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
             const l = open.listings.find((x) => x.uid === p.uid)
             return (
               <MiniCard key={p.uid} c={c}
-                sub={`${p.mode === 'buy' ? `${askOf(p.uid)} USDC · ` : ''}${scanLabel(l?.witness)}`}
+                sub={`${p.mode === 'buy' ? `${askOf(p.uid)} USDC · ` : ''}${scanLabel(l?.witness, l?.ask)}`}
                 actions={<span className="ofr-acts">
                   <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
                     onClick={() => toggleMode(pileKey, open.id, p.uid)}
@@ -250,7 +272,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       <div className="stl-senddecision">
         <span className="ofl-decisionlabel mono">Before you send · this is your call</span>
         <AskAnko decision={sendDecision} recommended={sendReadRecommended}
-          label={trades.length ? 'Ask Anko about this offer' : 'Ask Anko before sending'} />
+          label={trades.length ? 'Ask Anko about this offer' : 'Ask Anko before sending'} actionsForRead={actionsForSendRead} />
       </div>
 
       <div className="stl-foot">

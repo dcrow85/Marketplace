@@ -6,9 +6,10 @@
 .mk-title { font-size: 17px; font-weight: 600; margin-top: 2px; }
 
 /* directory */
-.mk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-.mk-table { text-align: left; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 10px; padding: 14px 16px; cursor: pointer; display: flex; flex-direction: column; gap: 9px; }
-.mk-table:hover { border-color: var(--ink); }
+.mk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.mk-table { text-align: left; color: var(--ink2); background: linear-gradient(145deg, color-mix(in srgb, var(--paper) 94%, var(--agent) 6%), var(--paper)); border: 0.5px solid var(--rule); border-radius: 14px; padding: 15px 16px 14px; cursor: pointer; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 8px 24px rgba(0,0,0,.08); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+.mk-table:hover { border-color: var(--agent); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(0,0,0,.14); }
+.mk-table.has-display { border-color: color-mix(in srgb, var(--agent) 40%, var(--rule)); }
 .mk-seller { display: flex; align-items: center; gap: 10px; }
 .mk-handle { font-size: 14.5px; font-weight: 600; }
 .mk-sub { font-size: 11px; }
@@ -38,6 +39,7 @@
 .mk-wit { font-size: 11px; }
 .mk-wit.ok { color: var(--have); }
 .mk-wit.none { color: var(--dim); }
+.mk-wit.requested { color: var(--agent); }
 .mk-ask { font-size: 12.5px; }
 .mk-who { display: inline-flex; align-items: center; gap: 8px; font: inherit; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
 .mk-who:hover { text-decoration: underline; }
@@ -180,6 +182,17 @@
 .ofl-follow { display: flex; flex-direction: column; gap: 7px; }
 .ofl-follow:empty { display: none; }
 .anko-followbar { display: flex; align-items: center; gap: 8px 10px; flex-wrap: wrap; padding: 8px 10px; border-left: 2px solid var(--agent); background: var(--agent-bg); border-radius: 0 8px 8px 0; }
+.anko-readactions { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: 10px; padding-top: 9px; border-top: .5px solid var(--rule); }
+.anko-readaction { width: auto; color: var(--agent); background: var(--agent-bg); border: .5px solid var(--agent); border-radius: 7px; padding: 8px 11px; font: 10.5px var(--mono); cursor: pointer; }
+.anko-readaction.primary { color: var(--paper); background: var(--agent); }
+.anko-amountaction { flex: 1 1 100%; display: grid; grid-template-columns: auto minmax(150px, 1fr) auto; align-items: center; gap: 7px; padding: 9px; background: var(--paper2); border-radius: 8px; }
+.anko-amountaction > span:first-child { color: var(--ink2); font-size: 10px; }
+.anko-amountinput { display: grid; grid-template-columns: auto minmax(60px, 1fr) auto; align-items: center; gap: 5px; color: var(--dim); }
+.anko-amountinput input { min-width: 0; width: 100%; color: var(--ink); background: var(--paper); border: .5px solid var(--agent); border-radius: 6px; padding: 7px 8px; font: 600 14px var(--mono); }
+.anko-amountinput i { font: normal 9px var(--mono); }
+.anko-amountaction > button { color: var(--paper); background: var(--agent); border: 0; border-radius: 6px; padding: 8px 10px; font: 10px var(--mono); cursor: pointer; }
+.anko-amountaction small { grid-column: 1 / -1; color: var(--dim); font-size: 9px; line-height: 1.35; }
+@media (max-width: 520px) { .anko-amountaction { grid-template-columns: 1fr; } }
 .anko-followbar > span { color: var(--agent); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; margin-right: auto; }
 .anko-followbar.needs-reply { border-left-color: var(--signal); }
 .anko-followbar.needs-reply > span { color: var(--signal); }
@@ -212,8 +225,11 @@
 
 /* ---- art everywhere: this is a TCG ---- */
 /* the directory: a fan of each table's cards */
-.mk-spread { display: flex; align-items: center; height: 64px; }
-.mk-spread img { width: 44px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 4px; border: 1px solid var(--rule); margin-right: -12px; box-shadow: 2px 0 6px rgba(0,0,0,.18); }
+.mk-spread { position: relative; display: flex; align-items: flex-end; min-height: 112px; padding: 25px 12px 10px; overflow: hidden; background: radial-gradient(circle at 35% 0%, #332f29, #151310 70%); border: .5px solid rgba(236,234,227,.12); border-radius: 10px; }
+.mk-spread img { width: 62px; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 5px; border: 1px solid rgba(236,234,227,.24); margin-right: -15px; box-shadow: 4px 3px 12px rgba(0,0,0,.48); transform: rotate(2deg); }
+.mk-spread img:nth-of-type(even) { transform: rotate(-2deg) translateY(3px); }
+.mk-spread img.lead { width: 69px; z-index: 2; transform: rotate(-1deg) translateY(-3px); }
+.mk-caseflag { position: absolute; top: 7px; left: 10px; color: #d9d3c6; font-size: 8.5px; letter-spacing: .08em; text-transform: uppercase; }
 .mk-spread .mk-more { margin-left: 20px; font-size: 10.5px; color: var(--dim); }
 /* the by-card page leads with the card */
 .mk-focushead { display: flex; align-items: center; gap: 14px; }
@@ -263,14 +279,16 @@
 
 /* hold the card up to the light */
 .zoom-overlay { position: fixed; inset: 0; z-index: 90; background: rgba(12,11,9,.82); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
-.zoom-body { display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: min(92vw, 460px); cursor: default; }
-.zoom-art { max-height: 72vh; max-width: 100%; border-radius: 14px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+.zoom-body { display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(92vw, 560px); max-height: 94vh; overflow-y: auto; padding: 3px 8px 10px; cursor: default; }
+.zoom-art { max-height: 62vh; max-width: 100%; border-radius: 14px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
 .zoom-noimg { width: 300px; aspect-ratio: 5 / 7; display: flex; align-items: center; justify-content: center; color: #DBD5C8; border: 1px dashed rgba(236,234,227,.4); border-radius: 14px; }
 .zoom-facts { text-align: center; color: #DBD5C8; }
 .zoom-name { font-size: 17px; font-weight: 600; }
 .zoom-name .dim, .zoom-sub, .zoom-wit { color: #b7b1a4; }
 .zoom-sub { font-size: 11px; margin-top: 3px; }
 .zoom-wit { font-size: 11px; margin-top: 6px; color: #DBD5C8; }
+.zoom-anko { width: 100%; color: var(--ink2); background: var(--paper); border: .5px solid rgba(236,234,227,.28); border-radius: 10px; padding: 10px; }
+.zoom-anko .anko-read { margin: 0; }
 .zoom-close { color: #DBD5C8; border-color: rgba(236,234,227,.3); }
 .zoombtn { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, transparent); border: 0.5px solid var(--rule); border-radius: 6px; cursor: zoom-in; }
 .zoombtn:hover { border-color: var(--ink); }
@@ -416,14 +434,20 @@ button.minicard { cursor: pointer; }
 /* ---- the collector profile: masthead, binder, hunt ---- */
 .pf { display: flex; flex-direction: column; gap: 16px; }
 .pf-head { display: flex; align-items: flex-start; gap: 14px; }
-.pf-photo { position: relative; flex: none; width: 58px; min-height: 72px; }
+.pf-photo { position: relative; flex: none; width: 112px; min-height: 86px; }
 .pf-av svg, .pf-av img { border-radius: 10px; }
-.pf-photochange { position: absolute; left: 0; top: 56px; width: 52px; padding: 0; color: var(--dim); text-align: center; font-size: 8px; background: transparent; border: 0; cursor: pointer; }
+.pf-photoactions { display: flex; align-items: flex-start; flex-direction: column; gap: 2px; margin-top: 5px; }
+.pf-photochange, .pf-photoremove { width: auto; padding: 0; color: var(--agent); text-align: left; font: inherit; font-size: 9px; background: transparent; border: 0; cursor: pointer; }
 .pf-photochange:hover { color: var(--ink); }
 .pf-photoinput { position: fixed; left: -10000px; width: 1px; height: 1px; opacity: 0; }
 .pf-photochange.busy { cursor: default; opacity: .55; }
-.pf-photoremove { position: absolute; top: -6px; right: 0; width: 18px; height: 18px; display: grid; place-items: center; padding: 0; color: var(--paper); border: 0; border-radius: 50%; background: var(--ink); font-size: 12px; cursor: pointer; }
-.pf-photoerror { position: absolute; z-index: 2; top: 76px; left: 0; width: 180px; padding: 5px 7px; color: var(--signal); background: var(--paper); border: .5px solid var(--rule); border-radius: 5px; font-size: 9px; }
+.pf-photoremove { color: var(--dim); }
+.pf-photoremove:hover { color: var(--signal); }
+.pf-photoconfirm { position: absolute; z-index: 5; top: 86px; left: 0; width: 210px; display: flex; align-items: center; flex-wrap: wrap; gap: 5px 8px; padding: 8px; color: var(--ink2); background: var(--paper); border: .5px solid var(--rule); border-radius: 7px; box-shadow: 0 8px 24px rgba(0,0,0,.2); font-size: 9.5px; }
+.pf-photoconfirm span { flex: 1 1 100%; }
+.pf-photoconfirm button { color: var(--ink); background: var(--mount); border: 0; border-radius: 5px; padding: 4px 7px; font: inherit; cursor: pointer; }
+.pf-photoconfirm button.danger { color: var(--paper); background: var(--signal); }
+.pf-photoerror { position: absolute; z-index: 6; top: 112px; left: 0; width: 210px; padding: 5px 7px; color: var(--signal); background: var(--paper); border: .5px solid var(--rule); border-radius: 5px; font-size: 9px; }
 .pf-who { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 .pf-handle { display: flex; align-items: baseline; gap: 5px 9px; flex-wrap: wrap; font-size: 19px; font-weight: 650; color: var(--ink); letter-spacing: -.01em; }
 .pf-name { width: min(320px, 100%); font: inherit; font-weight: inherit; letter-spacing: inherit; color: var(--ink); background: transparent; border: 0; border-bottom: 0.5px dashed var(--rule); padding: 0 1px 2px; outline: none; }
@@ -440,6 +464,20 @@ button.minicard { cursor: pointer; }
 .pf-sectiontitle { display: flex; align-items: baseline; gap: 10px; min-width: 0; flex-wrap: wrap; }
 .pf-listsearch { margin: 0; }
 .pf-sizepick { flex: none; }
+.pf-anko { display: flex; flex-direction: column; gap: 7px; margin: 2px 0 4px; }
+.pf-ankobar { width: 100%; }
+.pf-ankoclear { align-self: flex-end; }
+.pf-listingwrap { min-width: 0; border-radius: 10px; transition: opacity .14s ease, transform .14s ease; }
+.pf-listingwrap.dragging { opacity: .42; transform: scale(.98); }
+.pf-orderbar { display: flex; align-items: center; justify-content: space-between; min-height: 24px; padding: 0 3px 3px; color: #a7a197; font-size: 9px; }
+.pf-drag { cursor: grab; }
+.pf-drag:active { cursor: grabbing; }
+.pf-orderbar button { width: 23px; height: 21px; padding: 0; color: #d4cfc4; background: transparent; border: .5px solid rgba(236,234,227,.2); cursor: pointer; }
+.pf-orderbar button:first-child { border-radius: 5px 0 0 5px; }
+.pf-orderbar button:last-child { border-radius: 0 5px 5px 0; border-left: 0; }
+.pf-orderbar button:disabled { opacity: .25; cursor: default; }
+.pf-ankopick { position: absolute; z-index: 3; top: 6px; left: 6px; padding: 2px 5px; color: #fff; background: var(--agent); border-radius: 4px; font: 8px var(--mono); }
+.pf-scanrequest { flex: none; min-height: 30px; padding: 0 8px; color: var(--paper); background: var(--agent); border: 0; border-radius: 6px; font-size: 9px; cursor: pointer; }
 /* the bench fills whatever screen it's on — pockets are fractional, so the nine
    scale with the page instead of hiding at a fixed width */
 .pf-page { max-width: 100%; gap: clamp(8px, 1.6vw, 18px); padding: clamp(12px, 2vw, 22px); }

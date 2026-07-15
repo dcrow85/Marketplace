@@ -213,7 +213,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
             onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
             onboardingStep={guidedStep}
             onboardingGuide={showMeet ? <MeetAnko accountId={accountId} profile={profile} progress={progress} onDone={onMeet} /> : null} />}
-          {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} />}
+          {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} agentName={agent} onScan={openScanner} />}
           {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
             focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
         </div>

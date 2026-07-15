@@ -15,14 +15,24 @@ import CardModal from '../binder/CardModal.jsx'
 import { retryImg } from '../binder/helpers.jsx'
 import { loadProfile, resetAccountLocal, saveProfile } from './profileStore.js'
 import { deletePhotosWithPrefix } from '../scan/photoStore.js'
+import { AgentPanel } from '../binder/agentPanels.jsx'
 
 const TABLE_TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
+const API_BASE = import.meta.env.VITE_API_BASE || ''
+const SCAN_REQUEST_USDC = 10
 
 function loadSize(key, fallback) {
   try {
     const saved = localStorage.getItem(key)
     return saved in TABLE_TILE_SCALES ? saved : fallback
   } catch { return fallback }
+}
+
+function loadOrder(key) {
+  try {
+    const saved = JSON.parse(localStorage.getItem(key) || '[]')
+    return Array.isArray(saved) ? saved.filter((uid) => typeof uid === 'string') : []
+  } catch { return [] }
 }
 
 function SectionSizePicker({ label, storageKey, size, onSize }) {
@@ -40,7 +50,7 @@ function SectionSizePicker({ label, storageKey, size, onSize }) {
   )
 }
 
-export default function MyPage({ accountId, catalog }) {
+export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
   const byUid = useByUid(data)
@@ -51,8 +61,13 @@ export default function MyPage({ accountId, catalog }) {
   const [query, setQuery] = useState('')
   const displaySizeKey = `cairn-table-display-size:${catalog.id}:${accountId || 'anon'}`
   const binderSizeKey = `cairn-table-binder-size:${catalog.id}:${accountId || 'anon'}`
+  const displayOrderKey = `cairn-table-display-order:${catalog.id}:${accountId || 'anon'}`
   const [displaySize, setDisplaySize] = useState(() => loadSize(displaySizeKey, 'l'))
   const [binderSize, setBinderSize] = useState(() => loadSize(binderSizeKey, 'm'))
+  const [displayOrder, setDisplayOrder] = useState(() => loadOrder(displayOrderKey))
+  const [ankoQuery, setAnkoQuery] = useState('')
+  const [ankoBusy, setAnkoBusy] = useState(false)
+  const [ankoRes, setAnkoRes] = useState(null)
 
   // the binder's marking semantics, over the event-driven store: every page hears the
   // change. Reads happen at WRITE time (like Binder's functional setStore) so two quick
@@ -72,6 +87,25 @@ export default function MyPage({ accountId, catalog }) {
   const setField = (uid, key, value) => {
     const prev = loadStore(storeKey)
     saveStore(storeKey, { ...prev, [uid]: { ...(prev[uid] || {}), [key]: value } })
+  }
+  const saveDisplayOrder = (next) => {
+    const clean = [...new Set(next)]
+    setDisplayOrder(clean)
+    try { localStorage.setItem(displayOrderKey, JSON.stringify(clean)) } catch { /* ignore */ }
+  }
+  const setDisplay = (uid, value) => {
+    setField(uid, 'display', value)
+    if (value && !displayOrder.includes(uid)) saveDisplayOrder([...displayOrder, uid])
+  }
+  const askAnko = async () => {
+    const call = ankoQuery.trim()
+    if (!call || ankoBusy) return
+    setAnkoBusy(true)
+    try {
+      const response = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call, catalog: catalog.id }) })
+      setAnkoRes({ ok: response.ok, data: await response.json() })
+    } catch { setAnkoRes({ ok: false, data: { error: 'network' } }) }
+    finally { setAnkoBusy(false) }
   }
 
   const profile = useBus(() => loadProfile(accountId), [accountId])
@@ -97,30 +131,61 @@ export default function MyPage({ accountId, catalog }) {
       wants: all.filter(({ e }) => e.stance === 'want'),
     }
   }, [data, store])
+  const moveDisplay = (uid, beforeUid) => {
+    const current = rows.display.map(({ c }) => c.uid)
+    const ordered = [...displayOrder.filter((id) => current.includes(id)), ...current.filter((id) => !displayOrder.includes(id))]
+    const from = ordered.indexOf(uid)
+    if (from < 0) return
+    ordered.splice(from, 1)
+    const to = beforeUid ? ordered.indexOf(beforeUid) : ordered.length
+    ordered.splice(to < 0 ? ordered.length : to, 0, uid)
+    saveDisplayOrder(ordered)
+  }
+  const nudgeDisplay = (uid, delta) => {
+    const current = rows.display.map(({ c }) => c.uid)
+    const ordered = [...displayOrder.filter((id) => current.includes(id)), ...current.filter((id) => !displayOrder.includes(id))]
+    const from = ordered.indexOf(uid)
+    const to = Math.max(0, Math.min(ordered.length - 1, from + delta))
+    if (from < 0 || from === to) return
+    const [moved] = ordered.splice(from, 1)
+    ordered.splice(to, 0, moved)
+    saveDisplayOrder(ordered)
+  }
 
-  const listedRows = useMemo(() => {
+  const listingMatches = (c) => {
     const q = query.trim().toLowerCase()
-    if (!q) return rows.listed
-    return rows.listed.filter(({ c }) => {
-      const haystack = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' +
-        (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' +
-        (c.release_family_label || '') + ' ' + (c.product_channel_label || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
-      return haystack.includes(q)
-    })
-  }, [query, rows.listed, setById])
-  const displayRows = useMemo(() => listedRows.filter(({ e }) => e.sell && e.display), [listedRows])
-  const binderRows = useMemo(() => listedRows.filter(({ e }) => !(e.sell && e.display)), [listedRows])
+    if (!q) return true
+    const haystack = (c.num + ' ' + (c.name_en || '') + ' ' + (c.romaji || '') + ' ' + (c.name_ja || '') + ' ' +
+      (c.element || '') + ' ' + (c.rarity || '') + ' ' + (c.illustrator || '') + ' ' + (c.source_entry_id || '') + ' ' +
+      (c.release_family_label || '') + ' ' + (c.product_channel_label || '') + ' ' + (setById[c.set_id]?.label || '')).toLowerCase()
+    return haystack.includes(q)
+  }
+  const orderedDisplayRows = useMemo(() => {
+    const rank = new Map(displayOrder.map((uid, index) => [uid, index]))
+    return rows.display.slice().sort((a, b) => (rank.get(a.c.uid) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.c.uid) ?? Number.MAX_SAFE_INTEGER))
+  }, [rows.display, displayOrder])
+  const displayRows = orderedDisplayRows.filter(({ c }) => listingMatches(c))
+  const binderRows = rows.listed.filter(({ e }) => !(e.sell && e.display)).filter(({ c }) => listingMatches(c))
+  const listedRows = [...displayRows, ...binderRows]
+  const ankoPicks = useMemo(() => new Set(ankoRes?.ok && Array.isArray(ankoRes.data?.result?.picks) ? ankoRes.data.result.picks : []), [ankoRes])
 
   // the record strip: computed, never asserted
   const stats = useBus(() => {
     const offers = loadOffers(offersKeyFor(catalog.id, accountId))
     const settled = offers.filter((o) => o.state === 'settled').length
     const listed = rows.listed
-    const scanned = listed.filter(({ e }) => (e.pile || []).length || e.photo_hash).length
+    const scanRequested = listed.filter(({ e }) => Number(e.ask) > SCAN_REQUEST_USDC)
+    const scannedRequested = scanRequested.filter(({ e }) => (e.pile || []).length || e.photo_hash).length
     const out = []
     if (rows.haves.length) out.push({ t: `${rows.haves.length} held` })
     if (settled) out.push({ t: `${settled} settled`, rec: true })
-    if (listed.length) out.push({ t: scanned === listed.length && scanned > 0 ? 'every listing scanned' : `${scanned}/${listed.length} listings scanned`, rec: scanned > 0 })
+    if (scanRequested.length) out.push({
+      t: scannedRequested === scanRequested.length
+        ? 'every $10+ listing scanned'
+        : `${scannedRequested}/${scanRequested.length} $10+ listings scanned`,
+      rec: scannedRequested > 0,
+    })
+    else if (listed.length) out.push({ t: 'scans optional at current asks' })
     if (data) {
       const fam = data.cards.filter((c) => c.release_family === 'gates_awakened')
       const have = fam.filter((c) => entryFor(c, store).stance === 'have').length
@@ -144,7 +209,7 @@ export default function MyPage({ accountId, catalog }) {
   const [resetErr, setResetErr] = useState(false)
   const buildSnapshot = () => ({
     v: 2, cat: catalog.id, sign: profile.sign.trim(), handle: profile.name.trim() || handleFor(accountId), photo: profile.photo,
-    showcase: rows.display.map(({ c }) => c.uid),
+    showcase: orderedDisplayRows.map(({ c }) => c.uid),
     table: rows.listed.map(({ c, e }) => ({
       uid: c.uid, ask: e.ask ? Number(e.ask) : null, trade: !!e.trade, sell: !!e.sell,
       cond: condStr(e), scans: (e.pile || []).length || (e.photo_hash ? 1 : 0), copies: e.copies || 1,
@@ -188,6 +253,17 @@ export default function MyPage({ accountId, catalog }) {
     <div className="pf">
       <ProfileHeader accountId={accountId} name={profile.name} onName={setName}
         sign={profile.sign} onSign={setSign} photo={profile.photo} onPhoto={setPhoto} stats={stats} />
+      <div className="pf-anko">
+        <div className="askbar pf-ankobar">
+          <img className={'anko-search' + (ankoBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" />
+          <input value={ankoQuery} maxLength={280} placeholder={`Ask ${agentName} about cards, scans, or what to lead with…`}
+            onChange={(event) => { setAnkoQuery(event.target.value); if (ankoRes) setAnkoRes(null) }}
+            onKeyDown={(event) => { if (event.key === 'Enter') askAnko() }} />
+          <button className="askbtn" onClick={askAnko} disabled={ankoBusy || !ankoQuery.trim()}>{ankoBusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
+        </div>
+        {ankoRes && <><AgentPanel res={ankoRes} agentName={agentName} />
+          <button className="ghost sm pf-ankoclear" onClick={() => { setAnkoRes(null); setAnkoQuery('') }}>clear his read</button></>}
+      </div>
       <div className="pf-pubrow mono">
         {canPublish
           ? pubAt
@@ -227,7 +303,8 @@ export default function MyPage({ accountId, catalog }) {
         <SectionSizePicker label="Display case" storageKey={displaySizeKey} size={displaySize} onSize={setDisplaySize} />
       </div>
       {displayRows.length
-        ? <ListingTiles rows={displayRows} size={displaySize} setSel={setSel} setAsk={setAsk} setField={setField} />
+        ? <ListingTiles rows={displayRows} size={displaySize} setSel={setSel} setAsk={setAsk} setDisplay={setDisplay}
+            onMove={moveDisplay} onNudge={nudgeDisplay} reorderable ankoPicks={ankoPicks} onScan={onScan} />
         : <div className="empty">{query ? 'No display cards match that search.' : 'Your case is empty. Star a for-sale card and it moves here.'}</div>}
 
       <div className="pf-sechead">
@@ -235,7 +312,8 @@ export default function MyPage({ accountId, catalog }) {
         <SectionSizePicker label="Binder" storageKey={binderSizeKey} size={binderSize} onSize={setBinderSize} />
       </div>
       {binderRows.length
-        ? <ListingTiles rows={binderRows} size={binderSize} setSel={setSel} setAsk={setAsk} setField={setField} />
+        ? <ListingTiles rows={binderRows} size={binderSize} setSel={setSel} setAsk={setAsk} setDisplay={setDisplay}
+            ankoPicks={ankoPicks} onScan={onScan} />
         : <div className="empty">{query ? 'No binder cards match that search.' : 'Nothing in your binder. Open a card you Have and mark it “List for sale” or “Open to trade”.'}</div>}
 
       <div className="pf-sechead">
@@ -264,23 +342,37 @@ export default function MyPage({ accountId, catalog }) {
   )
 }
 
-function ListingTiles({ rows, size, setSel, setAsk, setField }) {
+function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = false, onMove, onNudge, ankoPicks, onScan }) {
+  const [dragging, setDragging] = useState(null)
   return (
     <div className="sp-tiles" style={{ '--tilescale': TABLE_TILE_SCALES[size] }}>
-      {rows.map(({ c, e }) => (
-        <MiniCard key={c.uid} c={c} onTap={() => setSel(c.uid)}
-          corner={e.trade ? <span className="sp-tradeflag">⇄ trade</span> : null}
-          sub={`${condStr(e)} · ${(e.pile || []).length || e.photo_hash ? '✓ scans on file' : 'no scans'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
+      {rows.map(({ c, e }, index) => {
+        const scanned = !!((e.pile || []).length || e.photo_hash)
+        const scanRequested = Number(e.ask) > SCAN_REQUEST_USDC && !scanned
+        return <div key={c.uid} className={'pf-listingwrap' + (dragging === c.uid ? ' dragging' : '')}
+          draggable={reorderable} onDragStart={() => setDragging(c.uid)} onDragEnd={() => setDragging(null)}
+          onDragOver={(event) => { if (reorderable) event.preventDefault() }}
+          onDrop={(event) => { event.preventDefault(); if (dragging && dragging !== c.uid) onMove?.(dragging, c.uid); setDragging(null) }}>
+        {reorderable && <div className="pf-orderbar mono">
+          <span className="pf-drag" title="Drag to reorder">⠿ drag</span>
+          <span><button disabled={index === 0} onClick={() => onNudge?.(c.uid, -1)} aria-label={`Move ${c.name_en} earlier`}>←</button>
+            <button disabled={index === rows.length - 1} onClick={() => onNudge?.(c.uid, 1)} aria-label={`Move ${c.name_en} later`}>→</button></span>
+        </div>}
+        <MiniCard c={c} onTap={() => setSel(c.uid)}
+          corner={<>{e.trade && <span className="sp-tradeflag">⇄ trade</span>}{ankoPicks?.has(c.uid) && <span className="pf-ankopick">★ Anko</span>}</>}
+          sub={`${condStr(e)} · ${scanned ? '✓ scans on file' : scanRequested ? 'scan requested at this ask' : 'stock photo okay at this ask'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
           actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
             {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
               aria-label={e.display ? 'Remove from display case' : 'Pin to display case'}
               title={e.display ? 'Remove from display case' : 'Pin to display case'}
-              onClick={() => setField(c.uid, 'display', !e.display)}>{e.display ? '★' : '☆'}</button>}
+              onClick={() => setDisplay(c.uid, !e.display)}>{e.display ? '★' : '☆'}</button>}
             <span className="fpre">$</span>
             <input type="number" min="0" placeholder="ask"
               value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
+            {scanRequested && <button className="pf-scanrequest mono" onClick={() => onScan?.(c.uid)}>Scan now</button>}
           </span>} />
-      ))}
+        </div>
+      })}
     </div>
   )
 }
