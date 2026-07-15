@@ -63,8 +63,9 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   for one point, spells out Have and Want, and lets the collector search or use a plain-English example before
   choosing on the actual card. The first mark hands off gently to the compact First Lap and a readable Sell / Trade
   lesson beside that card's controls. Desktop and 390px browser QA passed with no console errors or horizontal
-  overflow; scoped ESLint, diff checks, and the assembled Pages build pass. No catalogue, protocol, or `mockups/`
-  files changed in this lane.
+  overflow; scoped ESLint, diff checks, and the assembled Pages build pass. Commit `eb9f42d` is live on production
+  Pages deployment `b060b046`; the apex serves its `cairn-site-5R-tlTF_.js` bundle and returns HTTP 200 at `/app/`.
+  No catalogue, protocol, or `mockups/` files changed in this lane.
 - `[passive]` 2026-07-15 · Codex — **The Gate now informs Anko as a dated independent-community source.**
   A summary-only snapshot maps all 16 published articles plus the public FAQ, quick rules, deckbuilder, deck gallery,
   card gallery, learning index, 3 tournament records, 14 placements, and a 105-deck public sample. Fourteen
