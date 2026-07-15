@@ -13,14 +13,15 @@ export default function MarketFinds({ agentName, reading, finds, mode, onAddPile
       {reading && <div className="aprop-read dim">{reading}</div>}
       {finds.length
         ? <div className="mkf-grid">
-            {finds.map(({ c, sellerId, l }, i) => (
-              <MiniCard key={i} c={c}
-                sub={`${handleFor(sellerId)} · ${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}`}
-                actions={<button className={'mkf-offer mono' + (added.has(c.uid) ? ' done' : '')}
-                  onClick={() => { onAddPile({ seller: sellerId, uid: c.uid, mode }); setAdded((p) => new Set(p).add(c.uid)) }}>
-                  {added.has(c.uid) ? '✓ in your pile' : mode === 'buy' ? `pile · buy ${l.ask} →` : '⇄ pile · trade →'}
+            {finds.map(({ c, sellerId, tableName, l }) => {
+              const listingKey = `${sellerId}|${c.uid}`
+              return <MiniCard key={listingKey} c={c}
+                sub={`${tableName || handleFor(sellerId)} · ${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}`}
+                actions={<button className={'mkf-offer mono' + (added.has(listingKey) ? ' done' : '')}
+                  onClick={() => { onAddPile({ seller: sellerId, uid: c.uid, mode }); setAdded((p) => new Set(p).add(listingKey)) }}>
+                  {added.has(listingKey) ? '✓ in your pile' : mode === 'buy' ? `pile · buy ${l.ask} →` : '⇄ pile · trade →'}
                 </button>} />
-            ))}
+            })}
           </div>
         : <div className="aprop-read">Nobody&rsquo;s selling that right now. Mark it as a Want and I&rsquo;ll keep the lamp on.</div>}
       <div className="aprop-acts"><button className="ghost sm" onClick={onDismiss}>✕ done</button></div>

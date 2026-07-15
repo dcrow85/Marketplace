@@ -11,6 +11,7 @@ import MarketFinds from './MarketFinds.jsx'
 import SettlePage from './SettlePage.jsx'
 import BuyNow from './BuyNow.jsx'
 import CardZoom from './CardZoom.jsx'
+import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
@@ -142,6 +143,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const visibleTables = allSellers.filter((seller) => !marketNeedle || [sellerName(seller), seller.id, seller.bio]
     .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
     || seller.listings.some((listing) => cardMatchesSearch(byUid.get(listing.uid))))
+  const directFinds = marketNeedle
+    ? allSellers.flatMap((seller) => seller.listings
+      .map((l) => ({ c: byUid.get(l.uid), l, seller }))
+      .filter(({ c }) => c && cardMatchesSearch(c)))
+      .sort((a, b) => a.l.ask - b.l.ask || sellerName(a.seller).localeCompare(sellerName(b.seller)))
+    : []
   const myWants = useMemo(() => {
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'want').map((c) => c.uid))
@@ -169,7 +176,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call, catalog: catalog.id }) })
       setAres({ ok: r.ok, data: await r.json() })
     } catch { setAres({ ok: false, data: { error: 'network' } }) }
-    finally { setAbusy(false); setAq('') }
+    finally { setAbusy(false) }
   }
 
   const findStep = useMemo(() => {
@@ -190,7 +197,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       const c = byUid.get(l.uid)
       if (c) out.push({ c, sellerId: sl.id, l })
     }
-    return out.sort((a, b) => a.l.ask - b.l.ask).slice(0, 24)
+    return out.sort((a, b) => a.l.ask - b.l.ask).map((item) => ({ ...item, tableName: sellerName(allSellers.find((seller) => seller.id === item.sellerId)) }))
   }, [findStep, data, allSellers, byUid])
   // a plain browse call narrows the AISLE: which tables carry matches
   const aisleMatch = useMemo(() => {
@@ -203,6 +210,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     if (!Object.values(scope).some((v) => v != null && v !== false)) return null
     return new Set(applyAgentFilter(data.cards, scope, {}).map((c) => c.uid))
   }, [ares, findStep, data])
+  const aisleFinds = useMemo(() => {
+    if (!aisleMatch) return []
+    return allSellers.flatMap((seller) => seller.listings
+      .filter((l) => aisleMatch.has(l.uid))
+      .map((l) => ({ c: byUid.get(l.uid), sellerId: seller.id, tableName: sellerName(seller), l })))
+      .filter(({ c }) => c)
+      .sort((a, b) => a.l.ask - b.l.ask || a.tableName.localeCompare(b.tableName))
+  }, [aisleMatch, allSellers, byUid])
 
   if (!data || !mkt) return <div className="empty">Opening the market…</div>
   if (!allSellers.length) return <div className="empty">No tables in this catalog yet.</div>
@@ -226,14 +241,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       ? <div className="apanel"><div className="aoff">{agentName}&rsquo;s lamp is dark — couldn&rsquo;t reach him. Try again.</div></div>
       : findStep
         ? <MarketFinds agentName={agentName} reading={ares.data.filter?.reading} finds={finds} mode={findStep.mode || 'buy'}
-            onAddPile={({ seller, uid, mode }) => { pickUp(seller, uid, mode); setSel(seller) }} onDismiss={() => setAres(null)} />
+            onAddPile={({ seller, uid, mode }) => { pickUp(seller, uid, mode); setSwapMsg(`added to your pile at ${sellerName(allSellers.find((table) => table.id === seller))}'s table.`) }} onDismiss={() => setAres(null)} />
         : aisleMatch
-          ? <div className="aprop"><span className="atag jud">{agentName} · down the aisle</span>
-              <div className="aprop-line">{aisleMatch.size ? <>Tables carrying matches are marked — the rest step back.</> : <>No table carries that right now.</>}</div>
-              {ares.data.filter?.reading && <div className="aprop-read dim">{ares.data.filter.reading}</div>}
-              {ares.data.result?.commentary && <div className="aprop-read">{ares.data.result.commentary}</div>}
-              <div className="aprop-acts"><button className="ghost sm" onClick={() => setAres(null)}>✕ done</button></div>
-            </div>
+          ? <MarketFinds agentName={agentName} reading={ares.data.filter?.reading || ares.data.result?.commentary}
+              finds={aisleFinds} mode="buy"
+              onAddPile={({ seller, uid, mode }) => { pickUp(seller, uid, mode); setSwapMsg(`added to your pile at ${sellerName(allSellers.find((table) => table.id === seller))}'s table.`) }}
+              onDismiss={() => setAres(null)} />
           : null
   )
   const zoomEl = zoom && (
@@ -563,9 +576,37 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       {ankoPanel}
       {msgEl}
       {zoomEl}
+      {directFinds.length > 0 && (
+        <section className="mk-searchresults" aria-label={`Card listings matching ${aq.trim()}`}>
+          <div className="mk-searchhead">
+            <div>
+              <div className="ek">Across all tables</div>
+              <div className="mk-title">{directFinds.length} available card{directFinds.length === 1 ? '' : 's'} · {new Set(directFinds.map(({ seller }) => seller.id)).size} table{new Set(directFinds.map(({ seller }) => seller.id)).size === 1 ? '' : 's'}</div>
+            </div>
+            <span className="mono dim">&ldquo;{aq.trim()}&rdquo;</span>
+          </div>
+          <div className="mkf-grid mk-searchgrid">
+            {directFinds.map(({ c, l, seller }) => (
+              <MiniCard key={`${seller.id}|${l.uid}`} c={c}
+                sub={`${c.num} · ${l.ask} USDC · ${scanLabel(l.witness)}`}
+                onTap={() => setZoom({ c, l, sellerId: seller.id })}
+                actions={<>
+                  <button className="mk-resulttable" onClick={(ev) => { ev.stopPropagation(); setSel(seller.id) }} title={`visit ${sellerName(seller)}'s table`}>
+                    <Avatar seed={seller.id} size={18} photo={seller.photo} />
+                    <span>on <b>{sellerName(seller)}</b>{seller.live && <i className="mk-livetag mono"> ● live</i>}</span>
+                  </button>
+                  <PileButtons ask={l.ask}
+                    inPile={!!inPile(seller.id, c.uid)} mode={inPile(seller.id, c.uid)?.mode}
+                    onBuy={() => { pickUp(seller.id, c.uid, 'buy'); setSwapMsg(`in your pile at ${sellerName(seller)}'s table.`) }}
+                    onTrade={() => { pickUp(seller.id, c.uid, 'trade'); setSwapMsg(`in your pile at ${sellerName(seller)}'s table.`) }} />
+                </>} />
+            ))}
+          </div>
+        </section>
+      )}
       <div className="mk-head">
         <div>
-          <div className="ek">The market</div>
+          <div className="ek">{directFinds.length ? 'Tables carrying these cards' : 'The market'}</div>
           <div className="mk-title">{marketNeedle ? `${visibleTables.length} of ${allSellers.length} tables` : `${allSellers.length} tables open`}{liveSellers.length ? ` · ${liveSellers.length} live` : ''}</div>
         </div>
       </div>
