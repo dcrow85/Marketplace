@@ -58,10 +58,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Anko avatar + first-Have legibility]` 2026-07-15 · Codex —
-  Replace the card-art crop used as Anko's site identity with a distinct Cairn-owned portrait, and enlarge the
-  desktop first-Have Sell/Trade lesson without letting it obscure the card controls or regress the phone layout.
-  Preserve the lesson's one-time behavior, advisory wording, agent safety rules, and all `mockups/` files.
+- `[passive]` 2026-07-15 · Codex — **Anko now has a distinct Cairn portrait and a readable first-Have lesson.**
+  A new 512px paper/ink, slate-teal, cream, orange, and cyan red-panda portrait replaces the Azuki art crop across
+  the Binder, Market, settlement, trade reads, and agent result panels; the old collectible-ID title is gone. On
+  desktop the first-Have lesson now uses a 40px/34px portrait, 14px/13px heading, 12.5px/11.5px body, and larger
+  dismissal control while keeping the real Sell and Trade buttons visible. Its phone treatment remains compact at
+  81.5px with zero horizontal overflow. Source ESLint, diff checks, assembled Pages build, desktop/375px visual QA,
+  and extension-enabled apex smoke QA pass. Source commit `26a78cc`; Pages deployment `656afee4`; apex serves
+  immutable `/app/cairn-site-DmT37zl5.js` and exact portrait SHA-256 `839be25373f120d7a851572f9c43ed0f2ce236597708ccba1c45444d9cbbb3ec`.
+  One-time behavior, advisory wording, agent safety, catalogue, protocol, Railway, and `mockups/` are unchanged.
 - `[passive]` 2026-07-14 · Codex — **First-lap Anko is now one persistent dock instead of a panel-to-bar jump.**
   The real Binder bar is present from the profile step onward, with changing guidance tethered to its single avatar;
   the setup surface stays focused, the point flight lands before a 560ms Binder FLIP carries the page upward, dock
