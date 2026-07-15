@@ -58,6 +58,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-15 · Codex — **Anko is live on DeepSeek-V4-Pro for Che's
+  hands-on trial.** Railway production now sets `CAIRN_MODEL_ID` to
+  `deepseek-ai/DeepSeek-V4-Pro`; deployment `d24dc4e4-db2a-4434-acad-53e6f8f2c790`
+  is Online. A live Zero-deck request returned the correct six-card cut, explicit
+  Gate attribution, six picks, and zero overclaim flags in about nine seconds.
+  The existing DeepInfra endpoint/credential and non-thinking request path are
+  unchanged. Rollback is the prior `Qwen/Qwen3.6-35B-A3B` model ID. No frontend,
+  catalogue, API source, account data, Pages deployment, or `mockups/` changed.
 - `[passive]` 2026-07-15 · Codex — **Anko now connects first-card onboarding to strategy and clearer copy evidence.**
   The stale bulk-mark example is replaced by “Key cards in a Zero deck?”, with The Gate visibly identified whenever
   its independent community read informs the answer. Expanded cards now offer Front, Back, Corners, and Holo tilt
