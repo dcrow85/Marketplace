@@ -258,7 +258,16 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     return () => window.removeEventListener('cairn-open-scan', open)
   }, [])
   // Scan-to-collection: tag each recognized card `have`, keep its photo locally as evidence.
-  const commitScans = useCallback((scans) => {
+  const commitScans = useCallback(async (scans) => {
+    const writes = []
+    for (const s of scans) {
+      if (s.photo) writes.push(putPhoto(`${storeKey}:${s.uid}`, s.photo))
+      for (const view of ['back', 'corners', 'holo']) {
+        if (s.views?.[view]) writes.push(putPhoto(`${storeKey}:${s.uid}:${view}`, s.views[view]))
+      }
+      for (const frame of (s.pile || []).slice(0, 8)) writes.push(putPhoto(`frame:${hashText(frame.frame)}`, frame.frame))
+    }
+    await Promise.all(writes)
     setStore((prev) => {
       const next = { ...prev }
       for (const s of scans) {
@@ -267,7 +276,6 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         // Frames are content-addressed (keccak) and stored once in IndexedDB.
         const pile = (s.pile || []).slice(0, 8).map((p) => {
           const f = hashText(p.frame)
-          putPhoto(`frame:${f}`, p.frame).catch(() => {})
           return { f, q: p.quad }
         })
         next[s.uid] = {
@@ -281,7 +289,6 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       return next
     })
     setUserPhotos((prev) => ({ ...prev, ...Object.fromEntries(scans.filter((s) => s.photo).map((s) => [s.uid, s.photo])) }))
-    for (const s of scans) if (s.photo) putPhoto(`${storeKey}:${s.uid}`, s.photo).catch(() => {})
   }, [storeKey])
 
   const askAgent = useCallback(async (call, browseFilterCount = 0) => {

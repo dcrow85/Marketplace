@@ -5,6 +5,7 @@ import { entryFor as effStance } from './collection.js'
 import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
 import { getPhoto, putPhoto } from '../scan/photoStore.js'
+import { preparePhoto } from '../scan/preparePhoto.js'
 import { handleFor } from '../identity.js'
 import {
   nm, retryImg, wantActive, Frow, mpill, PROV_LABEL,
@@ -24,39 +25,6 @@ const PHOTO_VIEWS = [
   { id: 'corners', label: 'Corners', hint: 'edges and corner wear' },
   { id: 'holo', label: 'Holo tilt', hint: 'foil and surface angle' },
 ]
-
-function loadImage(file) {
-  return new Promise((resolve, reject) => {
-    const img = new Image()
-    img.onload = () => resolve(img)
-    img.onerror = reject
-    img.src = URL.createObjectURL(file)
-  })
-}
-// Render a chosen photo to a JPEG data URI bounded to a long-edge size.
-function renderJpeg(img, max, quality) {
-  const s = Math.min(1, max / Math.max(img.width, img.height))
-  const cv = document.createElement('canvas')
-  cv.width = Math.round(img.width * s); cv.height = Math.round(img.height * s)
-  cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height)
-  return cv.toDataURL('image/jpeg', quality)
-}
-// Sizes from one photo: a small READ copy (cheap vision call, never stored) and a high-res
-// INSPECTION copy (what a buyer zooms to judge condition — ~685 DPI on a card). A grid
-// THUMB joins here when storage is wired (so card lists stay fast).
-async function renderSizes(file) {
-  const img = await loadImage(file)
-  try {
-    return {
-      read: renderJpeg(img, 1000, 0.85),
-      full: renderJpeg(img, 2400, 0.9),
-    }
-  } finally {
-    URL.revokeObjectURL(img.src)
-  }
-}
-
-
 
 // Stance lives in chips; Product / Type / Element are collapsed into the filters sheet (see render).
 
@@ -178,7 +146,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
   const onPhoto = async (file) => {
     if (!file) return
     let imgs
-    try { imgs = await renderSizes(file) } catch { setRead({ error: 'bad_image' }); setImp('error'); return }
+    try { imgs = await preparePhoto(file) } catch { setRead({ error: 'bad_image' }); setImp('error'); return }
     setPhoto(imgs.full); setRead(null); setImp('reading')
     try {
       const expect = { name: c.name_en || nm(c), num: c.num, release: c.release_family }
@@ -205,7 +173,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
     if (view === 'front') { onPhoto(file); return }
     setEvidenceBusy(view); setEvidenceError('')
     try {
-      const imgs = await renderSizes(file)
+      const imgs = await preparePhoto(file)
       if (photoKey) await putPhoto(`${photoKey}:${view}`, imgs.full)
       setEvidencePhotos((prev) => ({ ...prev, [view]: imgs.full }))
     } catch {
