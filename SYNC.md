@@ -76,8 +76,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   card gallery, learning index, 3 tournament records, 14 placements, and a 105-deck public sample. Fourteen
   claim-level strategy/lore notes and six archetypes retrieve by call with source attribution; current official Azuki
   rules retain precedence. The audit pins two open source conflicts (turn sequence and Alley-only entity play), and
-  live Qwen probes answered Shao strategy with attribution and turn order from the official phase sequence. Catalogue
-  remains 353 rows / 349 images / 42 official-world claims; no Pages deploy and no active onboarding files changed.
+  live Qwen probes answered Shao strategy with attribution and turn order from the official phase sequence. Source
+  commit `19395e3`; Railway deployment `68c5e463-82eb-484d-a81a-061c6c7543ae` is healthy and returned both reads
+  with zero overclaim flags. Catalogue remains 353 rows / 349 images / 42 official-world claims; no Pages deploy and
+  no active onboarding files changed.
 - `[passive]` 2026-07-15 · Codex — **Anko now has a distinct Cairn portrait and a readable first-Have lesson.**
   A new 512px paper/ink, slate-teal, cream, orange, and cyan red-panda portrait replaces the Azuki art crop across
   the Binder, Market, settlement, trade reads, and agent result panels; the old collectible-ID title is gone. On
