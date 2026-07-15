@@ -78,6 +78,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [holoOnly, setHoloOnly] = useState(false)
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
+  const [agentClearedFilters, setAgentClearedFilters] = useState(0)
   const [selected, setSelected] = useState(null)
   const [sellPop, setSellPop] = useState(null) // uid being quick-listed via the $ mark
   const [actionDone, setActionDone] = useState(null) // last applied agent proposal
@@ -87,6 +88,15 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [haveLessonUid, setHaveLessonUid] = useState(null)
   const [wantLessonUid, setWantLessonUid] = useState(null)
   useScrollLock(filtersOpen)
+  const clearBrowseFilters = useCallback(() => {
+    setStanceF(new Set())
+    setFamilyF(new Set())
+    setChannelF(new Set())
+    setCatF(new Set())
+    setElementF(new Set())
+    setRarityF(new Set())
+    setHoloOnly(false)
+  }, [])
   const [view, setView] = useState(() => { try { return localStorage.getItem('cairn-view') || 'pages' } catch { return 'pages' } })
   const chooseView = (v) => { setView(v); try { localStorage.setItem('cairn-view', v) } catch { /* ignore */ } }
   const storeKey = accountId ? `cairn-cards:${catalog.id}:${accountId}` : `cairn-cards:${catalog.id}`
@@ -274,20 +284,25 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     for (const s of scans) if (s.photo) putPhoto(`${storeKey}:${s.uid}`, s.photo).catch(() => {})
   }, [storeKey])
 
-  const askAgent = useCallback(async (call) => {
+  const askAgent = useCallback(async (call, browseFilterCount = 0) => {
     setAgentBusy(true)
     setActionDone(null)
     undoStore.current = null
     try {
       const r = await fetch(API_BASE + '/api/browse', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ call, catalog: catalog.id }) })
-      setAgentRes({ ok: r.ok, data: await r.json() })
-    } catch { setAgentRes({ ok: false, data: { error: 'network' } }) }
+      const response = { ok: r.ok, data: await r.json() }
+      if (r.ok && browseFilterCount) clearBrowseFilters()
+      setAgentClearedFilters(r.ok ? browseFilterCount : 0)
+      setAgentRes(response)
+    } catch { setAgentClearedFilters(0); setAgentRes({ ok: false, data: { error: 'network' } }) }
     finally { setAgentBusy(false) }
-  }, [catalog.id])
-  const clearAgent = () => { setAgentRes(null); setActionDone(null); undoStore.current = null }
+  }, [catalog.id, clearBrowseFilters])
+  const clearAgent = () => { setAgentRes(null); setAgentClearedFilters(0); setActionDone(null); undoStore.current = null }
 
   const agentAction = agentRes?.ok && agentRes.data?.action ? agentRes.data : null
-  const agentActive = !agentAction && !!(agentRes?.ok && agentRes.data?.filter)
+  const agentHasFilter = !agentAction && !!(agentRes?.ok && agentRes.data?.filter)
+  const agentNoMatch = agentHasFilter && Number(agentRes.data.n_survivors || 0) === 0
+  const agentActive = agentHasFilter && !agentNoMatch
   const pickSet = useMemo(() => new Set(agentActive ? agentRes.data.result?.picks || [] : []), [agentRes, agentActive])
   // A plan resolves step by step against a DRAFT of your store, so step 2 sees what
   // step 1 changed ("mark commons have; list alpha commons at $2" works in one call).
@@ -419,7 +434,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     if (best && best.n > 0) setFamilyF(new Set([best.v]))
   }, [data])
   const toggleChip = (ch) => {
-    if (ch.g === 'all') { setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }
+    if (ch.g === 'all') clearBrowseFilters()
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
     else if (ch.g === 'family') setFamilyF((p) => toggle(p, ch.v))
     else if (ch.g === 'channel') setChannelF((p) => toggle(p, ch.v))
@@ -455,7 +470,14 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     }
   }
   // typing filters live (q); "Ask" sends the text to the agent and drops the substring filter
-  const ask = () => { const c = query.trim(); if (c && !agentBusy) { askAgent(c); setQ(''); setQuery('') } }
+  const ask = () => {
+    const c = query.trim()
+    if (!c || agentBusy) return
+    const browseFilterCount = stanceF.size + familyF.size + channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
+    askAgent(c, browseFilterCount)
+    setQ('')
+    setQuery('')
+  }
   const dismissHaveLesson = () => setHaveLessonUid(null)
   const dismissWantLesson = () => setWantLessonUid(null)
   const wantLessonCard = wantLessonUid ? byUid(data, wantLessonUid) : null
@@ -566,7 +588,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
               </div></div>
             </div>
             <div className="fsheet-actions">
-              <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }}>Clear all</button>
+              <button className="ghost sm" onClick={clearBrowseFilters}>Clear all</button>
               <button className="fs-done" onClick={() => setFiltersOpen(false)}>Done</button>
             </div>
           </div>
@@ -574,15 +596,21 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       )}
       {agentActive && (
         <div className="agentband">
-          <span><b>{agentName}</b> narrowed {data.summary.cards} → <b>{agentRes.data.n_survivors}</b>{pickSet.size ? ` · ${pickSet.size} surfaced first ★` : ''}{rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>
+          <span><b>{agentName}</b> narrowed {data.summary.cards} → <b>{agentRes.data.n_survivors}</b>{pickSet.size ? ` · ${pickSet.size} surfaced first ★` : ''}{agentClearedFilters ? ` · opened the whole Binder (cleared ${agentClearedFilters} filter${agentClearedFilters === 1 ? '' : 's'})` : ''}{rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>
           <button className="ghost sm" onClick={clearAgent}>clear</button>
+        </div>
+      )}
+      {agentNoMatch && (
+        <div className="agentband">
+          <span><b>{agentName}</b> didn&rsquo;t find a clean match, so the whole Binder is still open{agentClearedFilters ? ` · cleared ${agentClearedFilters} old filter${agentClearedFilters === 1 ? '' : 's'}` : ''}.</span>
+          <button className="ghost sm" onClick={clearAgent}>clear his read</button>
         </div>
       )}
       <section>
         {!rows.length ? (
           agentActive && agentRes.data.n_survivors > 0
             ? <div className="empty">{agentName} found {agentRes.data.n_survivors}, but your section filters hide them.{' '}
-                <button className="ghost sm" onClick={() => { setFamilyF(new Set()); setStanceF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false) }}>show them</button></div>
+                <button className="ghost sm" onClick={clearBrowseFilters}>show them</button></div>
             : <div className="empty">no cards match.</div>
         ) : view === 'pages' ? (
           <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setStance={setStance}
