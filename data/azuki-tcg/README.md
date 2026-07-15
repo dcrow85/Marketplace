@@ -71,13 +71,15 @@ It also contains a provenance-separated Azuki world layer:
   summaries and links, not article bodies or decklists. Its strategy, event,
   and lore reads remain attributed; its rules material never outranks the
   current official Azuki TCG rule page.
-- `source-snapshots/the_gate_deck_signals_2026-07-15.json` is the refreshable,
-  summary-only deck activity layer. At capture it separates 105 visible public
+- `source-snapshots/the_gate_deck_signals_2026-07-15.json` is the refreshable
+  deck activity and search layer. At capture it separates 105 visible public
   or author-published records from the 101 with exactly 50 main cards plus a
   Leader and Gate. Its trailing 14-day frequency basis is 36 complete-shaped
   records out of 37 visible records; its homepage recency slot and three dated
-  tournament reports remain separate signals. No full decklists or engagement
-  ranking are copied into the artifact.
+  tournament reports remain separate signals. A bounded search index stores
+  each public deck's name plus recorded Leader, Gate, and main-card names and
+  quantities so Anko can resolve deck calls. Card art, card text, article prose,
+  builder notes, and engagement rankings are not copied into the artifact.
 - `lore/azuki_world_metadata.json` gives the agent a dual-world guide (Alley,
   Garden, and the Gate threshold), four elemental domains, 85 official subtype
   terms, 9 repeated-character threads, and per-card/per-variant search metadata.
@@ -205,6 +207,9 @@ Authority boundary:
   `most played`, unless a future source provides a legible player-population
   measure. Newest-by-creation, homepage visibility by update time, card
   inclusion frequency, and dated tournament placement must not be blended.
+- A public deck search match establishes recorded list membership and quantity,
+  not a card's importance, a strategy claim, print treatment, recommendation,
+  legality beyond the recorded 50-plus-Leader-and-Gate shape, or win rate.
 - The 2026-07-15 cross-check keeps two source conflicts open: The Gate's quick
   rules and FAQ disagree on turn order, and its FAQ overstates Alley-only entity
   play. The agent must answer both from the current official Azuki TCG rules.

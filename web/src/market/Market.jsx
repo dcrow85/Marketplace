@@ -88,6 +88,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [abusy, setAbusy] = useState(false)
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
   const [tableSort, setTableSort] = useState(null) // 'price_desc' | 'price_asc' | null
+  const [focusSort, setFocusSort] = useState('price_asc') // every public copy of one card
   const [witnessedOnly, setWitnessedOnly] = useState(false)
   const [huntOpen, setHuntOpen] = useState(false)
   const [offerCashSeed, setOfferCashSeed] = useState(null)
@@ -286,6 +287,13 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   if (focusUid) {
     const c = byUid.get(focusUid)
     const asks = allSellers.flatMap((s) => s.listings.filter((l) => l.uid === focusUid).map((l) => ({ s, l })))
+    const totalCopies = asks.reduce((total, { l }) => total + Math.max(1, Number(l.copies) || 1), 0)
+    const sortedAsks = [...asks].sort((a, b) => {
+      if (focusSort === 'price_desc') return b.l.ask - a.l.ask || sellerName(a.s).localeCompare(sellerName(b.s))
+      if (focusSort === 'evidence') return (b.l.witness || 0) - (a.l.witness || 0) || a.l.ask - b.l.ask
+      if (focusSort === 'copies') return (b.l.copies || 1) - (a.l.copies || 1) || a.l.ask - b.l.ask
+      return a.l.ask - b.l.ask || sellerName(a.s).localeCompare(sellerName(b.s))
+    })
     return (
       <div className="mk">
         {roomNote}
@@ -293,28 +301,38 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {ankoPanel}
         {msgEl}
         {zoomEl}
-        <div className="mk-head">
+        <div className="mk-head mk-cardhead">
           <div className="mk-focushead">
             {c?.image && <img className="mk-focusart" src={c.image} alt="" onError={(ev) => retryImg(ev, c.image)} onClick={() => setZoom({ c, l: asks[0]?.l, sellerId: asks[0]?.s.id })} />}
             <div>
               <div className="ek">On the market</div>
               <div className="mk-title">{c ? `${c.name_en} · ${c.num}` : focusUid}
-                <span className="dim"> · {asks.length} ask{asks.length === 1 ? '' : 's'}</span>
+                <span className="dim"> · {totalCopies} public cop{totalCopies === 1 ? 'y' : 'ies'} · {asks.length} seller{asks.length === 1 ? '' : 's'}</span>
               </div>
             </div>
           </div>
           <button className="ghost sm" onClick={onClearFocus}>← all tables</button>
         </div>
+        {asks.length > 1 && <div className="mk-focus-tools" aria-label="Sort available copies">
+          <span className="mono dim">sort copies</span>
+          <button className={focusSort === 'price_asc' ? 'on' : ''} onClick={() => setFocusSort('price_asc')}>price low</button>
+          <button className={focusSort === 'price_desc' ? 'on' : ''} onClick={() => setFocusSort('price_desc')}>price high</button>
+          <button className={focusSort === 'evidence' ? 'on' : ''} onClick={() => setFocusSort('evidence')}>scans first</button>
+          <button className={focusSort === 'copies' ? 'on' : ''} onClick={() => setFocusSort('copies')}>most copies</button>
+        </div>}
         {asks.length
           ? <div className="mk-rows">
-              {asks.sort((a, b) => a.l.ask - b.l.ask).map(({ s, l }, i) => (
-                <div key={i} className={'mk-row' + (myWants.has(focusUid) ? ' mk-mine' : '')}>
+              {sortedAsks.map(({ s, l }, i) => (
+                <div key={`${s.id}:${focusUid}:${i}`} className={'mk-row mk-focus-row' + (myWants.has(focusUid) ? ' mk-mine' : '')}>
                   <button className="mk-who" onClick={() => { onClearFocus(); setSel(s.id) }} title="visit their table">
                     <Avatar seed={s.id} size={20} photo={s.photo} /><span>{sellerName(s)}</span>
                   </button>
-                  <span className="mk-name">{myWants.has(focusUid) && <span className="mk-wantflag">your want</span>}</span>
+                  <span className="mk-name">{myWants.has(focusUid) && <span className="mk-wantflag">your want</span>}
+                    <span className="mono mk-copycount">{Math.max(1, Number(l.copies) || 1)} cop{Math.max(1, Number(l.copies) || 1) === 1 ? 'y' : 'ies'}</span>
+                  </span>
                   <span className="mono mk-cond" title="the seller's claim — the protocol records it, it does not verify it">{l.cond}</span>
-                  {witnessCell(l.witness, l.ask)}
+                  <button className="mk-evidence" onClick={() => setZoom({ c, l, sellerId: s.id })}
+                    title="open this listing's card and evidence read">{witnessCell(l.witness, l.ask)}</button>
                   <span className="mono mk-ask">{l.ask} USDC</span>
                   <PileButtons ask={l.ask}
                     inPile={!!inPile(s.id, focusUid)} mode={inPile(s.id, focusUid)?.mode}

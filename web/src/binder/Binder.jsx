@@ -505,7 +505,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const dismissHaveLesson = () => setHaveLessonUid(null)
   const dismissWantLesson = () => setWantLessonUid(null)
   const wantLessonCard = wantLessonUid ? byUid(data, wantLessonUid) : null
-  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop}
+  const cardEl = (c, showSet) => <Card key={c.uid} c={c} store={store} setStance={setStance} setField={setField} showSet={showSet} setLabel={setById[c.set_id]?.label} pick={pickSet.has(c.uid)} onOpen={setSelected} onMarket={onBrowseCard} userPhoto={userPhotos[c.uid]} fromAsk={askIndex ? askIndex.get(c.uid) : null} onQuickSell={setSellPop}
     haveActionsGuide={haveLessonUid === c.uid ? <HaveActionsLesson compact onDone={dismissHaveLesson} /> : null} onUseHaveAction={dismissHaveLesson} />
   const groups = {}
   if (grouped) rows.forEach((c) => (groups[c.set_id] = groups[c.set_id] || []).push(c))
@@ -637,7 +637,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
                 <button className="ghost sm" onClick={clearBrowseFilters}>show them</button></div>
             : <div className="empty">no cards match.</div>
         ) : view === 'pages' ? (
-          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} setStance={setStance}
+          <PocketPages rows={rows} store={store} userPhotos={userPhotos} onOpen={setSelected} onMarket={onBrowseCard} setStance={setStance}
             setField={setField} askIndex={askIndex} onQuickSell={setSellPop} onboarding={onboardingStep === 'mark'}
             pickSet={pickSet} focusKey={agentCurating ? agentRes : null}
             haveLessonUid={haveLessonUid}

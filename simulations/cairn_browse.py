@@ -178,15 +178,89 @@ def community_prompt_block(call: str, data: dict) -> str:
 def named_deck_signals_for_call(call: str, data: dict) -> list[dict]:
     signals = (data.get("azuki_world") or {}).get("community_deck_signals") or {}
     folded = call.casefold()
+    has_deck_context = any(term in folded for term in ("deck", "build", "list", "archetype"))
+    if not has_deck_context and any(
+        term in folded for term in (" art", "lore", " card", "character", "story", "faction", "subtype")
+    ):
+        return []
     named_decks: dict[str, dict] = {}
-    for deck in [
-        *(signals.get("homepage_recent_decks") or []),
-        *(signals.get("newest_decks") or []),
-    ]:
+    decks = signals.get("deck_search_index") or [
+        *(signals.get("homepage_recent_decks") or []), *(signals.get("newest_decks") or []),
+    ]
+    for deck in sorted(decks, key=lambda item: -len(str(item.get("name") or ""))):
         name = str(deck.get("name") or "").strip()
         if name and name.casefold() != "my deck" and name.casefold() in folded:
             named_decks[str(deck.get("url") or name)] = deck
     return list(named_decks.values())
+
+
+def archetype_deck_signals_for_call(call: str, data: dict) -> list[dict]:
+    """Resolve plain-language deck families such as "a Zero deck" to public lists."""
+    if named_deck_signals_for_call(call, data):
+        return []
+    folded = call.casefold()
+    if not any(term in folded for term in ("deck", "build", "list", "archetype")):
+        return []
+    signals = (data.get("azuki_world") or {}).get("community_deck_signals") or {}
+    decks = [
+        deck for deck in signals.get("deck_search_index") or []
+        if deck.get("complete_50_plus_leader_gate")
+    ]
+    leaders = sorted({str(deck.get("leader_family") or "") for deck in decks}, key=len, reverse=True)
+    gates = sorted({str(deck.get("gate_family") or "") for deck in decks}, key=len, reverse=True)
+    leader = next((name for name in leaders if len(name) >= 3 and name.casefold() in folded), None)
+    gate = next((name for name in gates if len(name) >= 4 and name.casefold() in folded), None)
+    if not leader and not gate:
+        return []
+    return [
+        deck for deck in decks
+        if (not leader or str(deck.get("leader_family") or "").casefold() == leader.casefold())
+        and (not gate or str(deck.get("gate_family") or "").casefold() == gate.casefold())
+    ]
+
+
+def aggregate_deck_cards(decks: list[dict]) -> list[dict]:
+    """Rank factual card inclusion across public lists, without calling it strategy."""
+    inclusion: dict[str, int] = {}
+    copies: dict[str, int] = {}
+    labels: dict[str, str] = {}
+    for deck in decks:
+        seen: set[str] = set()
+        for card in deck.get("main_cards") or []:
+            name = str(card.get("name") or "").strip()
+            if not name:
+                continue
+            key = name.casefold()
+            labels.setdefault(key, name)
+            copies[key] = copies.get(key, 0) + int(card.get("quantity") or 0)
+            if key not in seen:
+                inclusion[key] = inclusion.get(key, 0) + 1
+                seen.add(key)
+    return [
+        {"name": labels[key], "included_in_decks": inclusion[key], "recorded_copies": copies[key]}
+        for key in sorted(inclusion, key=lambda item: (-inclusion[item], -copies[item], labels[item].casefold()))
+    ]
+
+
+def deck_card_names_for_call(call: str, data: dict) -> list[str]:
+    named = named_deck_signals_for_call(call, data)
+    decks = named or archetype_deck_signals_for_call(call, data)
+    if not decks:
+        return []
+    names: list[str] = []
+    for deck in decks:
+        for value in (deck.get("leader_family"), deck.get("gate_family")):
+            if value and value not in names:
+                names.append(str(value))
+    main_names = (
+        [str(card["name"]) for card in (decks[0].get("main_cards") or [])]
+        if named and len(decks) == 1
+        else [str(card["name"]) for card in aggregate_deck_cards(decks)[:24]]
+    )
+    for name in main_names:
+        if name not in names:
+            names.append(name)
+    return names
 
 
 def deck_signal_prompt_block(call: str, data: dict) -> str:
@@ -200,6 +274,7 @@ def deck_signal_prompt_block(call: str, data: dict) -> str:
         "what's hot", "whats hot", "winning", "tournament", "competitive", "recent list", "new list",
     )
     named_decks = named_deck_signals_for_call(call, data)
+    archetype_decks = archetype_deck_signals_for_call(call, data)
     if not named_decks and not any(term in folded for term in deck_terms):
         return ""
 
@@ -271,9 +346,26 @@ def deck_signal_prompt_block(call: str, data: dict) -> str:
             )
 
     for deck in named_decks:
+        cards = deck.get("main_cards") or []
         lines.append(
             f" - Named public record: {deck['name']} by {deck['creator']}, created {str(deck['created_at'])[:10]}, "
             f"uses {deck['leader_family']} with {deck['gate_family']} ({deck['element']}); source {deck['url']}."
+        )
+        if cards:
+            lines.append(
+                " - Recorded main deck (name and quantity only): "
+                + ", ".join(f"{item['quantity']} {item['name']}" for item in cards)
+                + "."
+            )
+    if archetype_decks:
+        leaders = sorted({str(deck.get('leader_family') or '') for deck in archetype_decks})
+        gates = sorted({str(deck.get('gate_family') or '') for deck in archetype_decks})
+        inclusions = aggregate_deck_cards(archetype_decks)
+        lines.append(
+            f" - Deck-family match: {len(archetype_decks)} complete public record(s) for "
+            f"{' / '.join(leaders)} with {' / '.join(gates)}. Frequently included cards: "
+            + ", ".join(f"{item['name']} {item['included_in_decks']}/{len(archetype_decks)}" for item in inclusions[:12])
+            + "."
         )
 
     if competitive_intent:
@@ -304,9 +396,9 @@ def deck_signal_prompt_block(call: str, data: dict) -> str:
     lines.append(
         "Attribution rule: call this 'The Gate's dated public-gallery signal.' Say 'frequent in recent public "
         "submissions,' not 'most played,' 'best,' 'win rate,' or 'the current global meta.' Keep tournament "
-        "results separate from recency and frequency. A named summary establishes only its displayed name, "
-        "creator, date, element, Leader, Gate, and exact-50 shape: do not invent its card list, print treatments, "
-        "strategy, or why a card is included, and never call it a 60-card deck."
+        "results separate from recency and frequency. The deck search index establishes only recorded names and "
+        "quantities in public builder records: do not infer print treatments, strategy, why a card is included, "
+        "or that frequency means quality, and never call it a 60-card deck."
     )
     return "\n".join(lines) + "\n\n"
 
@@ -505,6 +597,9 @@ def exact_card_name_in_call(call: str, cards: list[dict]) -> str | None:
 
 def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
     out = cards
+    if f.get("deck_card_names"):
+        names = {str(name).casefold() for name in f["deck_card_names"]}
+        out = [c for c in out if str(c.get("name_en") or c.get("name_ja") or "").casefold() in names]
     if f.get("release_family"):
         out = [c for c in out if (c.get("release_family") or "").lower() == str(f["release_family"]).lower()]
     if f.get("product_channel"):
@@ -696,6 +791,7 @@ def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) ->
     signals = (data.get("azuki_world") or {}).get("community_deck_signals") or {}
     folded = call.casefold()
     named = named_deck_signals_for_call(call, data)
+    archetype = archetype_deck_signals_for_call(call, data)
     popularity_intent = any(
         term in folded
         for term in ("popular", "trending", "most played", "people playing", "what's hot", "whats hot", "common deck")
@@ -721,11 +817,32 @@ def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) ->
                 f"is a {deck['element']} record with {deck['leader_family']} and {deck['gate_family']}"
             )
             pick_names.extend([deck["leader_family"], deck["gate_family"]])
+            pick_names.extend(str(card["name"]) for card in (deck.get("main_cards") or [])[:8])
         sentences.append("The Gate's dated public record says " + "; ".join(details) + ".")
+        recorded = named[0].get("main_cards") or []
+        if recorded:
+            sentences.append(
+                "Its highest-copy recorded entries are "
+                + ", ".join(f"{card['quantity']} {card['name']}" for card in recorded[:6])
+                + "; those are list facts, not a judgment about which cards matter most."
+            )
+    elif archetype:
+        inclusions = aggregate_deck_cards(archetype)
+        leaders = sorted({str(deck.get("leader_family") or "") for deck in archetype})
+        gates = sorted({str(deck.get("gate_family") or "") for deck in archetype})
         sentences.append(
-            "That's the recorded shape: 50 main cards plus Leader and Gate; this snapshot doesn't carry the "
-            "full list, its print treatments, or its game plan."
+            f"The Gate's dated search index has {len(archetype)} complete public {' / '.join(leaders)} deck records "
+            f"using {' / '.join(gates)}."
         )
+        if inclusions:
+            sentences.append(
+                "Frequently included cards across those records are "
+                + ", ".join(f"{item['name']} in {item['included_in_decks']}" for item in inclusions[:6])
+                + "; that is public-list frequency, not a claim that they are the best cards."
+            )
+        pick_names.extend(leaders)
+        pick_names.extend(gates)
+        pick_names.extend(str(item["name"]) for item in inclusions[:8])
     else:
         families = window.get("leader_gate_frequency") or []
         if families:
@@ -740,7 +857,7 @@ def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) ->
             for item in families[:3]:
                 pick_names.extend([item["leader"], item["gate"]])
 
-    if (recent_intent or popularity_intent) and not named:
+    if (recent_intent or popularity_intent) and not named and not archetype:
         newest = signals.get("newest_decks") or []
         if newest:
             sentences.append(
@@ -780,7 +897,7 @@ def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) ->
             winner_pick_names.extend([deck["leader_family"], deck["gate_family"]])
         if winners:
             sentences.append("Its separate tournament winners are " + "; ".join(winners) + ".")
-            if not named:
+            if not named and not archetype:
                 pick_names = winner_pick_names
 
     by_name: dict[str, list[dict]] = {}
@@ -918,28 +1035,32 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
                 "filter": f, "action": action,
                 "result": {"commentary": "", "picks": [], "caveat": ""}, "overclaim_flags": []}
     named_decks = named_deck_signals_for_call(call, data)
-    if named_decks:
+    archetype_decks = archetype_deck_signals_for_call(call, data)
+    deck_cards = deck_card_names_for_call(call, data)
+    if named_decks or archetype_decks:
         ignored = {}
-        leader_names = {str(deck.get("leader_family") or "").casefold() for deck in named_decks}
-        for key in ("lore", "lore_term", "theme", "character_thread"):
+        for key in (
+            "holo", "star_alt", "owned", "exclude_grails", "set", "character", "category", "element",
+            "rarity", "release_family", "product_channel", "card_type", "plane", "lore_term", "theme",
+            "character_thread", "event", "lore",
+        ):
             if f.get(key) is not None:
                 ignored[key] = f.get(key)
                 f[key] = None
-        parsed_character = str(f.get("character") or "").casefold()
-        if parsed_character and parsed_character not in leader_names:
-            ignored["character"] = f.get("character")
-            f["character"] = None
         if ignored:
             f["ignored_unmatched_deck_filter"] = ignored
-        f["deterministic_deck_match"] = [deck["name"] for deck in named_decks]
+        f["deck_card_names"] = deck_cards
+        f["deterministic_deck_match"] = [deck["name"] for deck in named_decks] or sorted({
+            f"{deck['leader_family']} / {deck['gate_family']}" for deck in archetype_decks
+        })
         f["reading"] = (
-            "Exact public-deck-name matching selected "
-            + ", ".join(deck["name"] for deck in named_decks)
-            + "; this is dated deck context, not a card-name or metagame claim."
-        )
+            ("Exact public-deck-name matching selected " + ", ".join(deck["name"] for deck in named_decks))
+            if named_decks
+            else f"Public deck-family matching found {len(archetype_decks)} complete record(s)"
+        ) + "; Anko is using recorded card membership, not guessing from the deck name."
     community_context = community_prompt_block(call, data)
     deck_signal_context = deck_signal_prompt_block(call, data)
-    if deck_signal_context and not named_decks:
+    if deck_signal_context and not named_decks and not archetype_decks:
         f["reading"] = (
             "You want a dated read of public deck activity; recent submissions, homepage visibility, and "
             "tournament results stay separate."

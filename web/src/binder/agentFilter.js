@@ -17,6 +17,10 @@ function worldSearchText(c) {
 
 export function applyAgentFilter(cards, f, setById) {
   let out = cards
+  if (Array.isArray(f.deck_card_names) && f.deck_card_names.length) {
+    const names = new Set(f.deck_card_names.map((name) => String(name).toLowerCase()))
+    out = out.filter((c) => names.has(String(c.name_en || c.name_ja || '').toLowerCase()))
+  }
   if (f.release_family) out = out.filter((c) => (c.release_family || '').toLowerCase() === String(f.release_family).toLowerCase())
   if (f.product_channel) {
     const ch = String(f.product_channel).toLowerCase()

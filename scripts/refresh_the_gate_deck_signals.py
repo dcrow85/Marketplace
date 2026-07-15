@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capture dated, summary-only public deck signals from The Gate.
+"""Capture dated public deck signals and a bounded card-membership search index.
 
 The public gallery is useful evidence of what builders are sharing. It is not a
 win-rate feed or a census of the global metagame. This script keeps that
@@ -25,8 +25,12 @@ ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT_DIR = ROOT / "data" / "azuki-tcg" / "source-snapshots"
 SNAPSHOT_GLOB = "the_gate_deck_signals_*.json"
 THE_GATE = "https://thegateikz.com/"
-SCHEMA = "cairn.azuki.community_deck_signals.v1"
+SCHEMA = "cairn.azuki.community_deck_signals.v2"
 WINDOW_DAYS = (7, 14, 30)
+CARD_NAME_ALIASES = {
+    "Fire Brand Renji": "Firebrand Renji",
+    "Lounge Siren, Saiko": "Lounge Siren, Saeko",
+}
 
 
 def fetch_text(url: str) -> str:
@@ -91,7 +95,8 @@ def parse_time(value: str) -> datetime:
 def canonical_name(value: str | None) -> str:
     name = str(value or "Unknown").strip()
     name = re.sub(r"\s*\([^)]*\)(?:\s*\d+)?\s*$", "", name).strip()
-    return name or "Unknown"
+    name = re.sub(r"\s+\d+$", "", name).strip()
+    return CARD_NAME_ALIASES.get(name, name) or "Unknown"
 
 
 def card_type(row: dict[str, Any]) -> str:
@@ -138,6 +143,32 @@ def summarize_deck(deck: dict[str, Any]) -> dict[str, Any]:
         "element": str(leader.get("element") or "unknown").title(),
         "main_card_count": main_count,
         "complete_50_plus_leader_gate": main_count == 50 and bool(leader) and bool(gate),
+    }
+
+
+def searchable_deck(deck: dict[str, Any]) -> dict[str, Any]:
+    """Keep only factual public-list membership needed to resolve a deck search.
+
+    Card art, rules text, notes, and copied page prose stay out of the artifact. Print
+    treatment suffixes collapse to the catalogue-facing family name, and duplicate
+    rows combine into one recorded quantity.
+    """
+    quantities: Counter[str] = Counter()
+    for row in deck.get("deck_cards") or []:
+        if not is_main_card(row):
+            continue
+        name = canonical_name((row.get("card") or {}).get("name"))
+        quantity = max(0, int(row.get("quantity") or 0))
+        if name != "Unknown" and quantity:
+            quantities[name] += quantity
+    return {
+        **summarize_deck(deck),
+        "main_cards": [
+            {"name": name, "quantity": quantity}
+            for name, quantity in sorted(
+                quantities.items(), key=lambda item: (-item[1], item[0].casefold())
+            )
+        ],
     }
 
 
@@ -317,7 +348,7 @@ def build_snapshot() -> dict[str, Any]:
             "client_asset_url": client_asset,
             "authority_label": "independent_community_source",
             "capture_method": "Anonymous read-only records requested through the same public data interface used by The Gate client.",
-            "copyright_boundary": "This artifact stores aggregate counts and compact deck summaries, not copied article text, card images, or full decklists.",
+            "copyright_boundary": "This artifact stores aggregate counts, compact deck summaries, and a factual public-deck search index of card names and quantities. It does not copy article text, card text, card images, or builder notes.",
         },
         "signal_definitions": {
             "newest_public_records": "Public or author-published gallery records ordered by their created_at timestamp. A record may have been made public later.",
@@ -326,6 +357,7 @@ def build_snapshot() -> dict[str, Any]:
             "common_card_inclusion": "Number of records in a window containing a gameplay card at least once, with print-treatment suffixes collapsed. It is not copy count, recommendation, or win rate.",
             "tournament_result": "A dated placement attached to a published The Gate tournament record. It is competitive evidence for that event only.",
             "popular_language_policy": "Anko may call a leader, gate, or card frequent in recent public submissions. He must not call it the global meta, most played, best, or proven from this signal alone.",
+            "deck_search_entry": "A public deck name plus its recorded Leader, Gate, and main-card names and quantities. This supports exact deck-name and archetype search; it is not strategic analysis or a recommendation.",
         },
         "engagement_availability": {
             "public_aggregate_available": False,
@@ -345,6 +377,7 @@ def build_snapshot() -> dict[str, Any]:
         },
         "homepage_recent_decks": [summarize_deck(deck) for deck in homepage_decks],
         "newest_decks": complete_summaries[:16],
+        "deck_search_index": [searchable_deck(deck) for deck in decks],
         "recent_windows": {
             f"{days}d": window_summary(decks, capture_at, days) for days in WINDOW_DAYS
         },
@@ -391,6 +424,17 @@ def validate_snapshot(snapshot: dict[str, Any]) -> None:
             raise ValueError(f"{key} card inclusion exceeds the window")
     if len(snapshot.get("homepage_recent_decks") or []) != 4:
         raise ValueError("homepage recent-deck signal no longer has four records")
+    search_index = snapshot.get("deck_search_index") or []
+    if len(search_index) != total:
+        raise ValueError("public deck search index does not cover every public record")
+    if any("deck_cards" in deck for deck in search_index):
+        raise ValueError("raw deck-card rows leaked into the bounded search index")
+    if any(
+        int(deck.get("main_card_count") or 0)
+        != sum(int(card.get("quantity") or 0) for card in deck.get("main_cards") or [])
+        for deck in search_index
+    ):
+        raise ValueError("a deck search entry lost or added main-card quantities")
     if not snapshot.get("tournament_results"):
         raise ValueError("published tournament evidence is missing")
     policy = json.dumps(snapshot.get("signal_definitions") or {}).casefold()

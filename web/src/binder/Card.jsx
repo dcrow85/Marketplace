@@ -3,7 +3,7 @@
 import { entryFor as effStance } from './collection.js'
 import { nm, retryImg, wantActive, capMeta, provBadge } from './helpers.jsx'
 
-export default function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, userPhoto, fromAsk, onQuickSell, haveActionsGuide, onUseHaveAction }) {
+export default function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, onMarket, userPhoto, fromAsk, onQuickSell, haveActionsGuide, onUseHaveAction }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
@@ -39,7 +39,10 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
           <span className="crom">{c.romaji || c.name_en || ''}{c.name_is_en && <span className="enmark">EN</span>}</span>
           <span className={'cmeta ' + meta.cls}>{meta.t}</span>
         </div>
-        {fromAsk != null && <div className="cap-avail mono">available · from {fromAsk} USDC</div>}
+        {fromAsk != null && <button type="button" className="cap-avail mono"
+          onClick={(ev) => { ev.stopPropagation(); onMarket?.(c.uid) }}>
+          available · from {fromAsk} USDC →
+        </button>}
       </div>
     </div>
   )

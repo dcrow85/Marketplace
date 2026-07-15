@@ -95,6 +95,10 @@ def main() -> None:
         "The Gate deck signals lost their independent-community authority label",
     )
     require(
+        deck_signals["schema"] == "cairn.azuki.community_deck_signals.v2",
+        "public deck search index schema changed without review",
+    )
+    require(
         deck_signals["coverage"] == {
             "public_or_author_published_decks": 105,
             "complete_50_plus_leader_gate": 101,
@@ -119,9 +123,16 @@ def main() -> None:
         deck_signals["engagement_availability"]["public_aggregate_available"] is False,
         "unavailable engagement data was promoted into a popularity rank",
     )
+    search_index = deck_signals["deck_search_index"]
+    require(len(search_index) == 105, "public deck search index lost gallery coverage")
     require(
-        "deck_cards" not in json.dumps(deck_signals),
-        "summary-only deck signal unexpectedly contains copied decklists",
+        "deck_cards" not in json.dumps(deck_signals)
+        and all(
+            int(deck["main_card_count"])
+            == sum(int(card["quantity"]) for card in deck.get("main_cards") or [])
+            for deck in search_index
+        ),
+        "bounded deck search data leaked raw rows or lost recorded quantities",
     )
     conflicts = {
         item["id"]: item for item in community["official_rules_crosscheck"]["known_conflicts"]
@@ -192,33 +203,30 @@ def main() -> None:
     mill_forge_block = deck_signal_prompt_block("Tell me about Mill Forge", data)
     require(
         "Named public record: Mill Forge by THECountBasie" in mill_forge_block
-        and "Raizan with Surge Gate" in mill_forge_block,
-        "exact recent deck-name retrieval missed its public summary",
+        and "Raizan with Surge Gate" in mill_forge_block
+        and "Recorded main deck (name and quantity only)" in mill_forge_block
+        and "4 Alpine Prowler" in mill_forge_block,
+        "exact deck-name retrieval missed its public list data",
     )
-    model_reads = iter(
-        [
-            {"lore_term": "Forge", "action": None, "reading": "Misread deck name as a lore term."},
-            {
-                "commentary": "The Gate's dated public-gallery signal records Mill Forge as Raizan with Surge Gate.",
-                "picks": [],
-                "caveat": "That public record is not a win-rate or global-meta claim.",
-            },
-        ]
-    )
-    with patch.object(cairn_browse_module, "call_model", side_effect=lambda *_args, **_kwargs: next(model_reads)):
+    with patch.object(
+        cairn_browse_module,
+        "call_model",
+        return_value={"lore_term": "Forge", "action": None, "reading": "Misread deck name as a lore term."},
+    ):
         mill_forge_browse = cairn_browse_module.browse("Tell me about Mill Forge", catalog="azuki-tcg")
     require(
-        mill_forge_browse["n_survivors"] == len(cards)
+        0 < mill_forge_browse["n_survivors"] < len(cards)
         and mill_forge_browse["filter"]["lore_term"] is None
-        and mill_forge_browse["filter"]["ignored_unmatched_deck_filter"] == {"lore_term": "Forge"},
-        "named deck browse did not recover from a failed card-filter interpretation",
+        and mill_forge_browse["filter"]["ignored_unmatched_deck_filter"] == {"lore_term": "Forge"}
+        and {"Raizan", "Surge Gate", "Alpine Prowler"} <= set(mill_forge_browse["filter"]["deck_card_names"]),
+        "named deck browse did not replace a failed model filter with recorded membership",
     )
     require(
-        "50 main cards plus Leader and Gate" in mill_forge_browse["result"]["commentary"]
-        and "full list, its print treatments, or its game plan" in mill_forge_browse["result"]["commentary"]
+        "highest-copy recorded entries" in mill_forge_browse["result"]["commentary"]
+        and "not a judgment about which cards matter most" in mill_forge_browse["result"]["commentary"]
         and "sixty" not in json.dumps(mill_forge_browse["result"]).casefold()
         and "engine" not in json.dumps(mill_forge_browse["result"]).casefold(),
-        "named deck result invented a decklist shape or strategy",
+        "named deck result lost recorded membership or invented strategy",
     )
     require(
         mill_forge_browse["result"]["picks"][:2] == [
@@ -226,6 +234,20 @@ def main() -> None:
             "azuki_tcg_official_gallery:S1-STT01-002_Surge-Gate_G_G_die",
         ],
         "named deck result did not prefer base official Leader/Gate identities",
+    )
+    with patch.object(
+        cairn_browse_module,
+        "call_model",
+        return_value={"character": "Zero", "action": None, "reading": "Read Zero as a card name."},
+    ):
+        zero_deck_browse = cairn_browse_module.browse("Key cards in a Zero deck", catalog="azuki-tcg")
+    require(
+        "22 complete public Zero deck records" in zero_deck_browse["result"]["commentary"]
+        and "Collateral Burst in 21" in zero_deck_browse["result"]["commentary"]
+        and zero_deck_browse["filter"]["character"] is None
+        and "Collateral Burst" in zero_deck_browse["filter"]["deck_card_names"]
+        and len(zero_deck_browse["result"]["picks"]) == 6,
+        "plain-language deck-family search did not resolve to recorded deck cards",
     )
     popular_result = deterministic_deck_signal_result(
         "What popular new decks are people building right now?", data, cards
