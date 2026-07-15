@@ -58,6 +58,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-15 · Codex — **Anko now has dated emerging-deck intelligence without a pretend meta.**
+  A reproducible, summary-only The Gate snapshot records 105 visible public or
+  author-published decks, 101 exact 50-main-card + Leader + Gate shapes, a
+  trailing window of 37 visible / 36 frequency-basis records, and 3 published
+  tournaments with 14 placements. Recent public submissions currently put
+  Bobu / Stonehaven at 9, Benzai / Echoed Waves at 5, and Zero / Rushfire at 5;
+  newest-by-creation, homepage updated-at visibility, card inclusion, and dated
+  tournament results remain separate. No public view/save/share aggregate was
+  available. Deck answers are assembled deterministically after live DeepSeek
+  twice invented details in a named-deck probe; Mill Forge now states only its
+  recorded creator/date/element/Leader/Gate/exact-50 shape and surfaces base
+  Raizan + Surge Gate. Full Azuki regeneration and agent audits pass; three
+  production probes return zero overclaim flags. Source commit `fd8dc22`;
+  Railway deployment `3861fb72-22e0-46f5-a82f-0595b82d729e`. Catalogue remains
+  353 rows; no Pages, account, collection, market, protocol, or `mockups/` change.
 - `[passive]` 2026-07-15 · Codex — **Anko searches no longer collapse the
   Binder into an empty return.** A successful ask clears stale Binder section
   and refinement filters in the same render as Anko's bounded result, and the
