@@ -32,3 +32,21 @@ export async function getPhoto(key) {
     g.onerror = () => reject(g.error)
   })
 }
+
+export async function deletePhotosWithPrefix(prefix) {
+  const db = await openDb()
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction(STORE, 'readwrite')
+    const store = tx.objectStore(STORE)
+    const cursor = store.openCursor()
+    cursor.onsuccess = () => {
+      const row = cursor.result
+      if (!row) return
+      if (String(row.key).startsWith(prefix)) row.delete()
+      row.continue()
+    }
+    cursor.onerror = () => reject(cursor.error)
+    tx.oncomplete = () => resolve()
+    tx.onerror = () => reject(tx.error)
+  })
+}

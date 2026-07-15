@@ -52,6 +52,7 @@ export function AgentPanel({ res, agentName }) {
   const dims = ['release_family', 'product_channel', 'holo', 'star_alt', 'owned', 'exclude_grails', 'set', 'character', 'category', 'element', 'rarity', 'card_type', 'plane', 'lore_term', 'theme', 'character_thread', 'event', 'lore']
   const chips = dims.filter((k) => f[k] != null && f[k] !== false)
   const flags = o.overclaim_flags || []
+  const gateRead = /\bThe Gate(?:'s)?\b/i.test(r.commentary || '')
   return (
     <div className="apanel">
       <span className="atag enf">enforced · code</span>
@@ -60,6 +61,11 @@ export function AgentPanel({ res, agentName }) {
       </div>
       <div className="acut">cut to <b>{o.n_survivors}</b> candidates{f.reading ? <span className="aread"> · {f.reading}</span> : null}</div>
       <span className="atag jud"><img className="anko-face" src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />{agentName} · judged</span>
+      {gateRead && <div className="asource" aria-label="Independent community source attribution">
+        <span className="mono">community strategy</span>
+        <b>The Gate</b>
+        <small>independent source · current Azuki rules take precedence</small>
+      </div>}
       <div className="acomm">{r.commentary}</div>
       {r.caveat && <div className="acav">⚠ {r.caveat}</div>}
       {flags.length > 0 && <div className="aflag">no-overclaim check flagged: <b>{flags.join(', ')}</b> — surfaced, not hidden.</div>}

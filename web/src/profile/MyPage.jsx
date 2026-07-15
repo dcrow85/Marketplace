@@ -14,6 +14,7 @@ import ProfileHeader from './ProfileHeader.jsx'
 import CardModal from '../binder/CardModal.jsx'
 import { retryImg } from '../binder/helpers.jsx'
 import { loadProfile, resetAccountLocal, saveProfile } from './profileStore.js'
+import { deletePhotosWithPrefix } from '../scan/photoStore.js'
 
 const TABLE_TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
 
@@ -171,6 +172,7 @@ export default function MyPage({ accountId, catalog }) {
       const result = await unpublishProfile(accountId)
       if (!result?.ok) { setResetBusy(false); setResetErr(true); return }
     }
+    await deletePhotosWithPrefix(`cairn-cards:${catalog.id}:${accountId}:`).catch(() => {})
     resetAccountLocal(accountId)
     window.location.reload()
   }

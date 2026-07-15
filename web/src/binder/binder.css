@@ -20,6 +20,10 @@
 .fc.faint { color: var(--dim); }
 .acut { font-family: var(--mono); font-size: 11.5px; color: var(--dim); } .acut b { color: var(--ink); } .aread { font-style: italic; }
 .acomm { font-family: var(--serif); font-size: 15.5px; line-height: 1.55; color: var(--ink); }
+.asource { display: grid; grid-template-columns: auto auto 1fr; align-items: baseline; gap: 5px 9px; width: fit-content; margin: 1px 0 9px; padding: 7px 9px; color: var(--ink2); background: color-mix(in srgb, var(--paper) 88%, #d3c28a 12%); border: .5px solid color-mix(in srgb, var(--rule) 72%, #a48735 28%); border-radius: 6px; }
+.asource span { color: #80671f; font-size: 8px; text-transform: uppercase; letter-spacing: .08em; }
+.asource b { color: var(--ink); font-size: 11px; }
+.asource small { color: var(--dim); font-size: 9px; }
 .acav { margin-top: 7px; font-family: var(--mono); font-size: 11.5px; color: #9A6B12; }
 .aflag { margin-top: 12px; padding: 9px 12px; border: 0.5px solid var(--signal); border-radius: 7px; background: rgba(176,56,28,.07); font-size: 12.5px; color: var(--signal); }
 .aoff { font-size: 13px; color: var(--dim); padding: 4px 0; }
@@ -135,6 +139,24 @@ section { padding: 14px 0 70px; }
 .addphoto:hover { background: rgba(44,91,140,.13); }
 .addphoto .apt { font-family: var(--mono); font-size: 12.5px; font-weight: 600; }
 .addphoto .aps { font-size: 11px; color: var(--dim); }
+.photo-evidence { display: grid; gap: 8px; width: 100%; margin-top: 10px; padding: 10px; border: .5px solid var(--rule); border-radius: 9px; background: var(--paper2); }
+.photo-evidence-head { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
+.photo-evidence-head > div { display: grid; gap: 2px; }
+.photo-evidence-head b { color: var(--ink); font-size: 11.5px; }
+.photo-evidence-head span { color: var(--dim); font-size: 9.5px; }
+.photo-evidence-head > strong { color: var(--agent); font-size: 9px; white-space: nowrap; }
+.photo-evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.photo-view { position: relative; min-width: 0; min-height: 54px; display: grid; grid-template-columns: 32px minmax(0,1fr); align-items: center; gap: 7px; padding: 6px; overflow: hidden; color: var(--ink2); background: var(--paper); border: .5px dashed var(--rule); border-radius: 7px; cursor: pointer; }
+.photo-view.filled { border-style: solid; border-color: color-mix(in srgb, var(--rule) 62%, var(--have) 38%); }
+.photo-view:hover, .photo-view:focus-within { border-color: var(--agent); }
+.photo-view > img { width: 32px; height: 42px; object-fit: cover; border-radius: 3px; }
+.photo-view-mark { display: grid; place-items: center; width: 32px; height: 42px; color: var(--agent); background: var(--agent-bg); border-radius: 3px; font-size: 16px; }
+.photo-view-copy { min-width: 0; display: grid; gap: 2px; }
+.photo-view-copy b { color: var(--ink); font-size: 10px; }
+.photo-view-copy small { color: var(--dim); font-size: 8px; line-height: 1.25; }
+.photo-view input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.photo-evidence > p { margin: 0; color: var(--dim); font-size: 8.5px; line-height: 1.4; }
+.photo-evidence-error { color: var(--signal); font-size: 9px; }
 .imprev { margin-top: 10px; border: 0.5px solid var(--agent); border-radius: 8px; padding: 11px 12px; background: var(--paper); }
 .imhd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
 .imtag { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .05em; color: var(--agent); border: 0.5px solid var(--agent); border-radius: 3px; padding: 1px 5px; }
@@ -233,7 +255,7 @@ section { padding: 14px 0 70px; }
   .mcols { grid-template-columns: 1fr; gap: 14px; }
   .mleft { max-width: 250px; margin: 0 auto; }
   .dossier div, .irow { grid-template-columns: 1fr; gap: 2px; }
-  .imprev, .addphoto, .contribnote { max-width: 250px; margin-left: auto; margin-right: auto; }
+  .imprev, .addphoto, .photo-evidence, .contribnote { max-width: 250px; margin-left: auto; margin-right: auto; }
 }
 
 /* your scanned photo, shown as the card image */

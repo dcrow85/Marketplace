@@ -612,6 +612,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
           onOpenFull={(uid) => setSelected(uid)} onClose={() => setSellPop(null)} /> : null
       })()}
       {selected && <CardModal key={selected} uid={selected} data={data} setById={setById} store={store} setStance={setStance} setField={setField} agentName={agentName} userPhoto={userPhotos[selected]}
+        photoKey={`${storeKey}:${selected}`}
+        onPhotoSaved={(uid, src) => setUserPhotos((prev) => ({ ...prev, [uid]: src }))}
         haveActionsGuide={haveLessonUid === selected ? <HaveActionsLesson onDone={dismissHaveLesson} /> : null} onUseHaveAction={dismissHaveLesson}
         onClose={() => { if (haveLessonUid === selected) dismissHaveLesson(); setSelected(null) }} market={mktEff} mockSales={mockSales} onBrowseCard={onBrowseCard} />}
       {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}

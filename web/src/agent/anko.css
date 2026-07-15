@@ -56,6 +56,9 @@
 .anko-first-prompts { display: flex; flex-wrap: wrap; gap: 7px; }
 .anko-first-prompts button { min-height: 32px; padding: 6px 10px; color: #314c59; background: transparent; border: .5px solid #91a9b4; border-radius: 999px; font: 9.5px var(--mono); cursor: pointer; }
 .anko-first-prompts button:hover, .anko-first-prompts button:focus-visible { color: var(--paper); background: var(--agent); border-color: var(--agent); outline: none; }
+.anko-first-prompts .anko-strategy-prompt { display: grid; gap: 1px; padding-inline: 12px; text-align: left; }
+.anko-strategy-prompt small { color: var(--dim); font: 7.5px var(--mono); }
+.anko-strategy-prompt:hover small, .anko-strategy-prompt:focus-visible small { color: inherit; opacity: .78; }
 
 .anko-onboard-home { align-self: center; }
 .anko-onboard-home p { margin: 4px 0 2px; font-size: 13px; }

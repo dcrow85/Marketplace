@@ -58,6 +58,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-15 · Codex — **Anko now connects first-card onboarding to strategy and clearer copy evidence.**
+  The stale bulk-mark example is replaced by “Key cards in a Zero deck?”, with The Gate visibly identified whenever
+  its independent community read informs the answer. Expanded cards now offer Front, Back, Corners, and Holo tilt
+  photo slots; an existing scan fills Front automatically, and the UI says plainly that more views improve evidence
+  without proving authenticity or condition. Fresh reset clears those account-scoped photos. Scoped ESLint, diff
+  checks, the assembled Pages build, desktop QA, and 390px QA pass; a live API probe returned The Gate's Zero read
+  with six candidates, three picks, and no overclaim flags. Web source and local photo storage only; no catalogue,
+  protocol, backend, or `mockups/` files changed.
 - `[passive]` 2026-07-15 · Codex — **The first Want now lands somewhere useful.** Anko names the
   marked card, confirms that it is on the Want list, then reappears beside the still-visible card with two clear
   continuations: see that card's focused Market view or keep browsing. The Market route opens directly on its asks

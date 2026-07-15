@@ -139,7 +139,11 @@ export default function MeetAnko({ accountId, profile, progress, onDone }) {
           <p>Use the bar above to search by name, or ask me in plain English. Then choose Have or Want on the real card below.</p>
           <div className="anko-first-prompts" aria-label="Example searches and requests">
             <button type="button" onClick={() => fillExample('Penny')}>Find Penny</button>
-            <button type="button" onClick={() => fillExample('I have every common')}>I have every common</button>
+            <button className="anko-strategy-prompt" type="button"
+              onClick={() => fillExample('What are the key cards in a Zero deck?')}>
+              <span>Key cards in a Zero deck?</span>
+              <small>The Gate · community strategy</small>
+            </button>
           </div>
         </div>
       )}

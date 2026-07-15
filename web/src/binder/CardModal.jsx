@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { entryFor as effStance } from './collection.js'
 import { hashText } from '../chain/escrow.js'
 import { useScrollLock } from '../useScrollLock.js'
-import { getPhoto } from '../scan/photoStore.js'
+import { getPhoto, putPhoto } from '../scan/photoStore.js'
 import { handleFor } from '../identity.js'
 import {
   nm, retryImg, wantActive, Frow, mpill, PROV_LABEL,
@@ -18,6 +18,12 @@ const API_BASE = import.meta.env.VITE_API_BASE || ''
 // session-only until persistent shared storage (R2 + the Catalog-Evidence record)
 // lands, and the modal note says so. Flip to false to hide the whole flow.
 const IMPORT_ON = true
+const PHOTO_VIEWS = [
+  { id: 'front', label: 'Front', hint: 'identity and surface' },
+  { id: 'back', label: 'Back', hint: 'wear and alignment' },
+  { id: 'corners', label: 'Corners', hint: 'edges and corner wear' },
+  { id: 'holo', label: 'Holo tilt', hint: 'foil and surface angle' },
+]
 
 function loadImage(file) {
   return new Promise((resolve, reject) => {
@@ -105,7 +111,7 @@ export function MarketBlock({ c, market, mockSales, onBrowseCard }) {
   )
 }
 
-export default function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, onClose, market, mockSales, onBrowseCard, haveActionsGuide, onUseHaveAction }) {
+export default function CardModal({ uid, data, setById, store, setStance, setField, agentName, userPhoto, photoKey, onPhotoSaved, onClose, market, mockSales, onBrowseCard, haveActionsGuide, onUseHaveAction }) {
   const [zoom, setZoom] = useState(false)  // fullscreen image view
   useScrollLock() // modal is mounted only while open
   const [recOpen, setRecOpen] = useState(false) // the dark-bench record (machine forms live there, not at glance)
@@ -122,6 +128,16 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
     const [imp, setImp] = useState('idle')   // photo-import: idle -> reading -> review -> added / error
   const [photo, setPhoto] = useState(null) // the high-res inspection copy shown in the modal
   const [read, setRead] = useState(null)   // the vision agent's read of it
+  const [evidencePhotos, setEvidencePhotos] = useState({})
+  const [evidenceBusy, setEvidenceBusy] = useState('')
+  const [evidenceError, setEvidenceError] = useState('')
+  useEffect(() => {
+    if (!photoKey) return undefined
+    let live = true
+    Promise.all(PHOTO_VIEWS.map(({ id }) => getPhoto(id === 'front' ? photoKey : `${photoKey}:${id}`).then((src) => [id, src]).catch(() => [id, null])))
+      .then((entries) => { if (live) setEvidencePhotos(Object.fromEntries(entries.filter(([, src]) => src))) })
+    return () => { live = false }
+  }, [photoKey])
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') { if (zoom) setZoom(false); else onClose() } }
     document.addEventListener('keydown', onKey)
@@ -156,7 +172,9 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
   const visibleEffects = (c.effects || []).filter((x) => x && (x.label || x.text))
     .filter((x) => !(c.card_text && x.label && norm(c.card_text).toLowerCase().includes(`[${x.label}]`.toLowerCase()))) // rules text already carries this labeled effect
     .filter((x) => !(x.text && c.card_text && norm(c.card_text).includes(norm(x.text).slice(0, 80)))) // or the verbatim text
-  const shownImg = (imp !== 'idle' && photo) ? photo : (userPhoto || c.image)
+  const frontPhoto = evidencePhotos.front || userPhoto || null
+  const shownImg = (imp !== 'idle' && photo) ? photo : (frontPhoto || c.image)
+  const evidenceCount = PHOTO_VIEWS.filter(({ id }) => id === 'front' ? frontPhoto : evidencePhotos[id]).length
   const onPhoto = async (file) => {
     if (!file) return
     let imgs
@@ -169,6 +187,32 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
       if (!r.ok || d.error) { setRead(d); setImp('error'); return }
       setRead(d); setImp('review')
     } catch (err) { setRead({ error: String(err) }); setImp('error') }
+  }
+  const saveFrontPhoto = async () => {
+    if (!photo) return
+    try {
+      if (photoKey) await putPhoto(photoKey, photo)
+      setEvidencePhotos((prev) => ({ ...prev, front: photo }))
+      onPhotoSaved?.(c.uid, photo)
+      setImp('added')
+    } catch (err) {
+      setRead({ error: String(err) })
+      setImp('error')
+    }
+  }
+  const onEvidencePhoto = async (view, file) => {
+    if (!file) return
+    if (view === 'front') { onPhoto(file); return }
+    setEvidenceBusy(view); setEvidenceError('')
+    try {
+      const imgs = await renderSizes(file)
+      if (photoKey) await putPhoto(`${photoKey}:${view}`, imgs.full)
+      setEvidencePhotos((prev) => ({ ...prev, [view]: imgs.full }))
+    } catch {
+      setEvidenceError(view)
+    } finally {
+      setEvidenceBusy('')
+    }
   }
   return (
     <>
@@ -183,15 +227,27 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
               {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
               {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
-              {imp === 'added' && <span className="contribbadge">collector photo · witness, not proof</span>}
+              {frontPhoto && <span className="contribbadge">your front · witness, not proof</span>}
             </div>
-            {IMPORT_ON && imp === 'idle' && (
-              <label className="addphoto">
-                <span className="apt">＋ Add your photo</span>
-                <span className="aps">{c.image ? 'add a photo of your copy' : 'no official pic yet — yours becomes the catalog’s first'}</span>
-                <input type="file" accept="image/*" capture="environment" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} />
-              </label>
-            )}
+            {IMPORT_ON && <div className="photo-evidence">
+              <div className="photo-evidence-head">
+                <div><b>Photos of your copy</b><span>{frontPhoto ? 'Your scan already fills the front.' : 'Add the views you have.'}</span></div>
+                <strong className="mono">{evidenceCount} / {PHOTO_VIEWS.length} views</strong>
+              </div>
+              <div className="photo-evidence-grid">
+                {PHOTO_VIEWS.map((view) => {
+                  const src = view.id === 'front' ? frontPhoto : evidencePhotos[view.id]
+                  const busy = evidenceBusy === view.id
+                  return <label className={'photo-view' + (src ? ' filled' : '')} key={view.id}>
+                    {src ? <img src={src} alt="" /> : <span className="photo-view-mark" aria-hidden="true">＋</span>}
+                    <span className="photo-view-copy"><b>{view.label}</b><small>{busy ? 'saving…' : src ? (view.id === 'front' && userPhoto ? 'scanned · tap to replace' : 'saved · tap to replace') : view.hint}</small></span>
+                    <input type="file" accept="image/*" capture="environment" onChange={(ev) => onEvidencePhoto(view.id, ev.target.files && ev.target.files[0])} />
+                  </label>
+                })}
+              </div>
+              {evidenceError && <div className="photo-evidence-error">Couldn&rsquo;t save that {evidenceError} view. Try another photo.</div>}
+              <p>More angles give Anko and buyers clearer evidence to inspect. They do not prove authenticity or condition.</p>
+            </div>}
             {imp === 'reading' && (
               <div className="imprev">
                 <div className="imhd"><span className="ek2 agent">{agentName} is reading your photo…</span></div>
@@ -210,7 +266,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                 {(read.red_flags || []).map((f, i) => <div className="imrow imflag" key={i}>⚑ {f}</div>)}
                 <div className="imcav">A collector&rsquo;s photo of one physical card — a witness, not proof of authenticity or condition.</div>
                 <div className="imact">
-                  <button className="btn-add" onClick={() => setImp('added')}>{read.matches_expected ? 'Looks right — add it' : 'Add it anyway'}</button>
+                  <button className="btn-add" onClick={saveFrontPhoto}>{read.matches_expected ? 'Looks right — save front' : 'Save it anyway'}</button>
                   <label className="btn-no">Try another<input type="file" accept="image/*" capture="environment" style={{ display: 'none' }} onChange={(ev) => onPhoto(ev.target.files && ev.target.files[0])} /></label>
                 </div>
               </div>
@@ -222,7 +278,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               </div>
             )}
             {imp === 'added' && (
-              <div className="contribnote">Added as <b>your</b> collector photo. <span className="imdim">(Saved to your view for now — shared, recorded storage is the next step.)</span></div>
+              <div className="contribnote">Front saved as <b>your</b> collector photo. <span className="imdim">Local to your view for now; shared recorded storage is the next step.</span></div>
             )}
           </div>
           <div className="mright">
