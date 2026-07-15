@@ -58,6 +58,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: Anko avatar + first-Have legibility]` 2026-07-15 · Codex —
+  Replace the card-art crop used as Anko's site identity with a distinct Cairn-owned portrait, and enlarge the
+  desktop first-Have Sell/Trade lesson without letting it obscure the card controls or regress the phone layout.
+  Preserve the lesson's one-time behavior, advisory wording, agent safety rules, and all `mockups/` files.
 - `[passive]` 2026-07-14 · Codex — **First-lap Anko is now one persistent dock instead of a panel-to-bar jump.**
   The real Binder bar is present from the profile step onward, with changing guidance tethered to its single avatar;
   the setup surface stays focused, the point flight lands before a 560ms Binder FLIP carries the page upward, dock
