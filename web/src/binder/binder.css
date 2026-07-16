@@ -342,6 +342,7 @@ section { padding: 14px 0 70px; }
 .bv-pickflag { position: absolute; z-index: 4; top: 6px; left: 6px; font-size: 8.5px; line-height: 1; letter-spacing: .03em; color: #fff; background: var(--agent); border-radius: 4px; padding: 4px 5px; box-shadow: 0 1px 3px rgba(0,0,0,.28); }
 .bv-pocket.is-pick .bv-grail { top: 28px; }
 .bv-pocket.filled img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bv-mobile-cardinfo, .bv-mobile-intent, .bv-qlabel { display: none; }
 .bv-noimg { display: flex; align-items: center; justify-content: center; height: 100%; padding: 8px; font-size: 12px; color: #DBD5C8; text-align: center; }
 .bv-count { position: absolute; top: 6px; right: 6px; font-size: 11px; color: #ECEAE3; background: rgba(13,12,16,.85); border: 0.5px solid rgba(236,234,227,.25); border-radius: 5px; padding: 1px 6px; }
 .bv-grail { position: absolute; top: 6px; left: 6px; color: #FAC775; font-size: 14px; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
@@ -472,7 +473,7 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
 .grid { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 146px), 1fr)); }
 
 /* S/M/L reaches every binder layout: gallery outranked the base override, and the
-   pocket page is a fixed 3×3 — so there, scale sizes the PAGE (and its pockets). */
+   desktop pocket page is a fixed 3×3 — so there, scale sizes the PAGE. */
 .grid.gallery { grid-template-columns: repeat(auto-fill, minmax(calc(var(--tilescale, 1) * 216px), 1fr)); }
 .bv-page { max-width: min(100%, calc(var(--tilescale, 1) * 860px)); margin-inline: auto; }
 .bv-head, .bv-nav { max-width: min(100%, calc(var(--tilescale, 1) * 860px)); margin-inline: auto; }
@@ -484,9 +485,100 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
   .grid, .grid.gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
   html[data-tile-size="l"] .grid,
   html[data-tile-size="l"] .grid.gallery { grid-template-columns: minmax(0, 1fr); max-width: 300px; margin-inline: auto; }
-  .bv-page { padding: 10px; gap: 7px; }
-  .bv-gnum, .bv-gtxt { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
-  .bv-gtxt { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
-  .bv-ghostart { opacity: .3; }
-  .bv-gnum, .bv-gtxt { font-size: 12px; }
+  .bv-page { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px; gap: 10px; }
+  html[data-tile-size="l"] .bv-page { grid-template-columns: minmax(0, 1fr); width: min(100%, 320px); }
+  .bv-pocket, .bv-pocket.ghost {
+    min-width: 0;
+    aspect-ratio: auto;
+    padding: 0;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--paper) 94%, #171419 6%);
+    border: .5px solid var(--rule);
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(0,0,0,.12);
+  }
+  .bv-pocket.filled img, .bv-pocket.ghost .bv-ghostart {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 7;
+    object-fit: cover;
+    opacity: 1;
+    filter: none;
+    border-bottom: .5px solid var(--rule2);
+  }
+  .bv-pocket.ghost:not(.wanted) .bv-ghostart { opacity: .72; filter: saturate(.72); }
+  .bv-pocket.ghost::after, .bv-gnum, .bv-gtxt { display: none; }
+  .bv-mobile-cardinfo {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 9px 9px 0;
+  }
+  .bv-mobile-kicker {
+    display: inline-flex;
+    max-width: 100%;
+    margin-bottom: 5px;
+    padding: 2px 6px;
+    overflow: hidden;
+    color: var(--ink2);
+    background: var(--mount);
+    border: .5px solid var(--rule);
+    border-radius: 5px;
+    font-size: 8.5px;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bv-mobile-name {
+    max-width: 100%;
+    min-height: 2.5em;
+    overflow: hidden;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .bv-mobile-sub { width: 100%; margin-top: 3px; overflow: hidden; color: var(--dim); font-size: 9.5px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
+  .bv-from, .bv-from.onart {
+    position: static;
+    display: block;
+    margin: 8px 8px 0;
+    padding: 6px 7px;
+    color: var(--agent);
+    background: transparent;
+    border: .5px solid var(--agent);
+    border-radius: 6px;
+    text-align: center;
+  }
+  .bv-q, .bv-mobile-intent {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+    margin-top: auto;
+    padding: 9px 8px 8px;
+  }
+  .bv-qb, .bv-mobile-intent button {
+    width: auto;
+    min-width: 0;
+    min-height: 44px;
+    color: var(--ink2);
+    background: var(--paper);
+    border: .5px solid var(--rule);
+    border-radius: 7px;
+    font: 10.5px var(--mono);
+    cursor: pointer;
+  }
+  .bv-qb.on, .bv-mobile-intent button.on { color: var(--paper); background: var(--have); border-color: var(--have); }
+  .bv-qicon { display: none; }
+  .bv-qlabel { display: inline; }
+  .bv-intent { display: none; }
 }

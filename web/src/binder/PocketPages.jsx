@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import { entryFor as effStance } from './collection.js'
 import { nm, retryImg } from './helpers.jsx'
 
-// The binder's pocket-page layout: the SAME filtered rows as the grid, shown as 3×3
-// pocket pages. Every pocket — filled or ghost — opens the full card modal, so search,
-// the agent, filters, and the scanner all operate on the binder itself.
+const releaseLabel = (card) => card.release_family_label || card.set_label || card.product_channel_label || ''
+
+// The binder's paged layout: the SAME filtered rows as the grid, nine cards at a
+// time. Desktop keeps the 3×3 pocket sheet; phones use the Market's card rhythm.
+// Every card opens the full modal, so search, Anko, filters, and scanning stay here.
 export default function PocketPages({
   rows, store, userPhotos, onOpen, onMarket, setStance, setField, askIndex, onQuickSell,
   onboarding = false, haveLessonUid = null, haveActionsGuide = null, onUseHaveAction,
@@ -44,15 +46,20 @@ export default function PocketPages({
                 {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
                 {e.grail && <span className="bv-grail">★</span>}
+                <span className="bv-mobile-cardinfo">
+                  {releaseLabel(c) && <span className="mono bv-mobile-kicker">{releaseLabel(c)}</span>}
+                  <span className="bv-mobile-name">{nm(c)}</span>
+                  <span className="mono bv-mobile-sub">{c.num} · Have{(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}</span>
+                </span>
                 {fromAsk != null && <button type="button" className="bv-from onart mono"
                   onClick={(ev) => { ev.stopPropagation(); onMarket?.(c.uid) }}>
                   available · from {fromAsk} USDC →
                 </button>}
                 <span className="bv-q">
                   <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
-                    onClick={(ev) => { ev.stopPropagation(); onUseHaveAction?.(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}>$</button>
+                    onClick={(ev) => { ev.stopPropagation(); onUseHaveAction?.(); const on = !e.sell; setField(c.uid, 'sell', on); if (!on) setField(c.uid, 'display', false); if (on && onQuickSell) onQuickSell(c.uid) }}><span className="bv-qicon">$</span><span className="bv-qlabel">{e.sell ? '✓ For sale' : 'Sell'}</span></button>
                   <button className={'bv-qb' + (e.trade ? ' on' : '')} title={e.trade ? 'open to trade — tap to close' : 'open to trade'}
-                    onClick={(ev) => { ev.stopPropagation(); onUseHaveAction?.(); setField(c.uid, 'trade', !e.trade) }}>⇄</button>
+                    onClick={(ev) => { ev.stopPropagation(); onUseHaveAction?.(); setField(c.uid, 'trade', !e.trade) }}><span className="bv-qicon">⇄</span><span className="bv-qlabel">{e.trade ? '✓ Trade' : 'Trade'}</span></button>
                 </span>
               </div>
             )
@@ -65,10 +72,21 @@ export default function PocketPages({
               {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
               <span className="mono bv-gnum">{c.num}</span>
               <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>
+              <span className="bv-mobile-cardinfo">
+                {releaseLabel(c) && <span className="mono bv-mobile-kicker">{releaseLabel(c)}</span>}
+                <span className="bv-mobile-name">{nm(c)}</span>
+                <span className="mono bv-mobile-sub">{c.num} · {e.stance === 'want' ? 'Want' : 'Not marked'}</span>
+              </span>
               {fromAsk != null && <button type="button" className="bv-from mono"
                 onClick={(ev) => { ev.stopPropagation(); onMarket?.(c.uid) }}>
                 available · from {fromAsk} USDC →
               </button>}
+              <span className="bv-mobile-intent" aria-label={`Mark ${nm(c)}`}>
+                <button type="button" className={e.stance === 'have' ? 'on' : ''}
+                  onClick={(ev) => { ev.stopPropagation(); setStance(c.uid, 'have') }}>Have</button>
+                <button type="button" className={e.stance === 'want' ? 'on' : ''}
+                  onClick={(ev) => { ev.stopPropagation(); setStance(c.uid, 'want') }}>Want</button>
+              </span>
               {showIntent && <span className="bv-intent" aria-label={`Mark ${nm(c)}`}>
                 <button type="button" onKeyDown={(ev) => ev.stopPropagation()}
                   onClick={(ev) => { ev.stopPropagation(); setStance(c.uid, 'have') }}>Have</button>
