@@ -28,7 +28,7 @@ function savedArbiter() {
 }
 
 function RailChoice({ active, disabled, title, eyebrow, children, onClick }) {
-  return <button type="button" className={'buy-rail' + (active ? ' on' : '')} disabled={disabled} onClick={onClick}>
+  return <button type="button" role="radio" aria-checked={active} className={'buy-rail' + (active ? ' on' : '')} disabled={disabled} onClick={onClick}>
     <span className="buy-radio" aria-hidden="true">{active ? '●' : '○'}</span>
     <span><b>{title}</b><small>{children}</small></span>
     <i className="mono">{eyebrow}</i>
@@ -54,6 +54,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
   const overCap = total > VALUE_CAP_USDC
   const sellerLabel = open.handle || handleFor(open.id)
   const paypalUrl = useMemo(() => payPalMeUrl(paypalHandle, total), [paypalHandle, total])
+  const amountLabel = rail === RAIL_PAYPAL ? `$${Number(total).toFixed(2)} USD` : `${total} USDC`
 
   const cards = () => pile.map((item) => {
     const card = byUid.get(item.uid)
@@ -153,90 +154,113 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
     <div className="buy-now">
       <div className="buy-nowhead">
         <div>
-          <span className="ek">Checkout</span>
-          <div className="buy-nowtitle">{pile.length} card{pile.length === 1 ? '' : 's'} from {sellerLabel}</div>
+          <span className="ek">Settle up</span>
+          <h2 className="buy-nowtitle">Review and pay</h2>
+          <p>Nothing is paid or sent just by opening this page.</p>
         </div>
-        <strong className="mono">{rail === RAIL_PAYPAL ? `$${Number(total).toFixed(2)} USD` : `${total} USDC`}</strong>
+        <span className="mono buy-checkoutkind">one table · one checkout</span>
       </div>
 
-      <div className="buy-order" aria-label="Cards in this checkout">
-        {pile.map((item) => {
-          const card = byUid.get(item.uid)
-          const listing = open.listings.find((entry) => entry.uid === item.uid)
-          return <div className="buy-orderitem" key={item.uid}>
-            {card?.image ? <img src={card.image} alt="" /> : <span className="buy-orderblank" aria-hidden="true" />}
-            <span><b>{card?.name_en || item.uid}</b><small className="mono">{card?.num || 'card'} · {listing?.cond || 'condition unlisted'}</small></span>
-            <strong className="mono">{listing?.ask ?? 0} USDC</strong>
-          </div>
-        })}
-      </div>
+      <div className="buy-checkoutgrid">
+        <div className="buy-checkoutmain">
+          <fieldset className="buy-methods">
+            <legend>1. Choose how to pay</legend>
+            <p>Selecting a method changes what happens next. You can switch until you take the final action.</p>
+            <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
+              <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow="recommended"
+                onClick={() => { setRail(RAIL_ESCROW); setPaypalOpened(false); setError(null) }}>
+                Cairn holds the money until the settlement path releases it.
+              </RailChoice>
+              {paypalAvailable && <RailChoice active={rail === RAIL_PAYPAL} title="PayPal" eyebrow="external"
+                onClick={() => { setRail(RAIL_PAYPAL); setError(null) }}>
+                Pay on PayPal. Cairn records the handoff but cannot control the payment.
+              </RailChoice>}
+            </div>
+          </fieldset>
 
-      <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
-        <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow="recommended"
-          onClick={() => { setRail(RAIL_ESCROW); setPaypalOpened(false); setError(null) }}>
-          The contract holds {total} USDC. {sellerLabel} receives nothing until the settlement path releases it.
-        </RailChoice>
-        {paypalAvailable && <RailChoice active={rail === RAIL_PAYPAL} title="PayPal" eyebrow="external"
-          onClick={() => { setRail(RAIL_PAYPAL); setError(null) }}>
-          Pay ${Number(total).toFixed(2)} USD to paypal.me/{paypalHandle}. PayPal handles payment and any eligible provider protection.
-        </RailChoice>}
-      </div>
+          <section className="buy-railpanel" aria-live="polite">
+            <div className="buy-sectiontitle">
+              <span>{rail === RAIL_PAYPAL && paypalOpened ? '2. Confirm what happened' : '2. Review what happens'}</span>
+              <b>{rail === RAIL_ESCROW ? 'Cairn Escrow' : 'PayPal'}</b>
+            </div>
+            {rail === RAIL_ESCROW ? <>
+              <div className="buy-outcomes">
+                <span><b>Today</b><small>Cairn&rsquo;s contract holds {total} USDC.</small></span>
+                <span><b>Seller receives</b><small>0 USDC now; release follows the settlement path.</small></span>
+                <span><b>If something goes wrong</b><small>The named Cairn arbiter can resolve the escrow.</small></span>
+              </div>
+              {!usesPresetArbiter && (
+                <label className="buy-arbiter">
+                  <span>Neutral arbiter</span>
+                  <input className="ti mono" value={arbiter} disabled={busy} placeholder="0x… · remembered for next time"
+                    onChange={(event) => setArbiter(event.target.value.trim())} />
+                </label>
+              )}
+              {usesPresetArbiter && <div className="mono buy-arbiterpreset">neutral arbiter · {shortId(arbiter)}</div>}
+              {!ready && paypalAvailable && <div className="buy-note">No escrow wallet is ready. Choose PayPal above or connect a settlement wallet.</div>}
+              {overCap && <div className="buy-error">Pilot escrow cap: {VALUE_CAP_USDC} USDC. PayPal remains available when the seller accepts it.</div>}
+              {error && <div className="buy-error" role="alert">{error}</div>}
+              <p className="buy-actionnote">Your next click funds escrow. It does not pay the seller directly.</p>
+              <div className="buy-nowactions">
+                <button className="primary buy-pay" disabled={busy || !ready || overCap || !escrowAvailable} onClick={fundEscrow}>
+                  {busy ? (phase || 'Working…') : `Fund ${total} USDC in Cairn Escrow`}
+                </button>
+              </div>
+            </> : !paypalOpened ? <>
+              <div className="buy-outcomes paypal">
+                <span><b>Today</b><small>You leave Cairn and pay on PayPal.</small></span>
+                <span><b>Seller receives</b><small>Payment in PayPal; they must confirm it there before shipping.</small></span>
+                <span><b>If something goes wrong</b><small>Use PayPal&rsquo;s Resolution Center. Cairn cannot reverse the payment.</small></span>
+              </div>
+              <div className="buy-paypal-callout">
+                <strong>Check the recipient before you continue.</strong>
+                <p>You are paying <b>paypal.me/{paypalHandle}</b>. Choose Goods &amp; Services if PayPal presents the choice. Eligibility and PayPal&rsquo;s terms apply.</p>
+                <span className="mono">Cairn reference · <b>{payRef}</b> <button type="button" onClick={copyRef}>{copied ? 'copied ✓' : 'copy'}</button></span>
+              </div>
+              {error && <div className="buy-error" role="alert">{error}</div>}
+              <p className="buy-actionnote">Your next click opens PayPal. No payment happens on Cairn.</p>
+              <div className="buy-nowactions">
+                <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · ${Number(total).toFixed(2)} USD ↗</button>
+              </div>
+            </> : <div className="buy-paypal-return">
+              <span className="ek">Back from PayPal?</span>
+              <h3>Tell Cairn only what happened</h3>
+              <p>Cairn cannot see the PayPal payment. Confirming below tells {sellerLabel} that <em>you report it sent</em>; they must verify receipt in PayPal.</p>
+              <label><span className="mono">PayPal transaction ID <i>optional</i></span>
+                <input className="ti mono" maxLength={80} value={providerRef} onChange={(event) => setProviderRef(event.target.value)} placeholder="Add the PayPal reference for the record" /></label>
+              {error && <div className="buy-error" role="alert">{error}</div>}
+              <div className="buy-nowactions">
+                <button className="primary buy-pay paypal" onClick={reportPayPalPayment}>I completed payment in PayPal</button>
+                <button className="ghost sm" onClick={() => setPaypalOpened(false)}>I didn&rsquo;t pay</button>
+              </div>
+              <p className="buy-fine">This records your statement; it does not verify payment or create Cairn escrow.</p>
+            </div>}
+          </section>
+        </div>
 
-      {rail === RAIL_ESCROW ? <>
-        <div className="buy-trust-receipt mono">
-          <span><b>Money</b> held by the escrow contract</span>
-          <span><b>Seller receives now</b> 0 USDC</span>
-          <span><b>Dispute route</b> named Cairn arbiter</span>
-          <span><b>Cairn can enforce release</b> yes</span>
-        </div>
-        {!usesPresetArbiter && (
-          <label className="buy-arbiter">
-            <span className="mono">Neutral arbiter</span>
-            <input className="ti mono" value={arbiter} disabled={busy} placeholder="0x… · remembered for next time"
-              onChange={(event) => setArbiter(event.target.value.trim())} />
-          </label>
-        )}
-        {usesPresetArbiter && <div className="mono buy-arbiterpreset">arbiter · {shortId(arbiter)}</div>}
-        <div className="buy-nowactions">
-          <button className="primary buy-pay" disabled={busy || !ready || overCap || !escrowAvailable} onClick={fundEscrow}>
-            {busy ? (phase || 'Working…') : `Fund ${total} USDC in escrow`}
-          </button>
-          <button className="ghost sm" disabled={busy} onClick={onBack}>cancel</button>
-        </div>
-        {!ready && paypalAvailable && <div className="buy-note">No escrow wallet is ready. PayPal is available above.</div>}
-        {overCap && <div className="buy-error">Pilot escrow cap: {VALUE_CAP_USDC} USDC. PayPal remains an external option if the seller accepts it.</div>}
-        <p className="buy-fine">This accepts the table&rsquo;s posted terms and funds escrow. It does not pay the seller directly.</p>
-      </> : <>
-        <div className="buy-trust-receipt mono paypal">
-          <span><b>Money</b> handled by PayPal</span>
-          <span><b>Payment type</b> choose Goods &amp; Services</span>
-          <span><b>Dispute route</b> PayPal Resolution Center</span>
-          <span><b>Cairn can reverse it</b> no</span>
-        </div>
-        {!paypalOpened ? <>
-          <div className="buy-paypal-callout">
-            <strong>You are leaving Cairn to pay {sellerLabel}.</strong>
-            <p>Check the recipient is <b>paypal.me/{paypalHandle}</b>. Choose Goods &amp; Services if PayPal presents the choice. Eligibility and PayPal&rsquo;s terms apply.</p>
-            <span className="mono">Cairn reference · <b>{payRef}</b> <button type="button" onClick={copyRef}>{copied ? 'copied ✓' : 'copy'}</button></span>
+        <aside className="buy-summary" aria-label="Order summary">
+          <div className="buy-summaryhead">
+            <div><span className="ek">Your pile</span><h3>{pile.length} card{pile.length === 1 ? '' : 's'}</h3></div>
+            <button type="button" onClick={onBack}>Change</button>
           </div>
-          <div className="buy-nowactions">
-            <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · ${Number(total).toFixed(2)} USD ↗</button>
-            <button className="ghost sm" onClick={onBack}>cancel</button>
+          <div className="buy-seller">Buying from <b>{sellerLabel}</b></div>
+          <div className="buy-order" aria-label="Cards in this checkout">
+            {pile.map((item) => {
+              const card = byUid.get(item.uid)
+              const listing = open.listings.find((entry) => entry.uid === item.uid)
+              return <div className="buy-orderitem" key={item.uid}>
+                {card?.image ? <img src={card.image} alt="" /> : <span className="buy-orderblank" aria-hidden="true" />}
+                <span><b>{card?.name_en || item.uid}</b><small className="mono">{card?.num || 'card'} · {listing?.cond || 'condition unlisted'}</small></span>
+                <strong className="mono">{listing?.ask ?? 0} USDC</strong>
+              </div>
+            })}
           </div>
-        </> : <div className="buy-paypal-return">
-          <span className="ek">Back from PayPal?</span>
-          <h3>Record only what happened</h3>
-          <p>Cairn cannot see the PayPal payment. Confirming below tells {sellerLabel} that <em>you report it sent</em>; they must check PayPal and confirm receipt separately.</p>
-          <label><span className="mono">PayPal transaction ID <i>optional</i></span>
-            <input className="ti mono" maxLength={80} value={providerRef} onChange={(event) => setProviderRef(event.target.value)} placeholder="Add the PayPal reference for the record" /></label>
-          <div className="buy-nowactions">
-            <button className="primary buy-pay paypal" onClick={reportPayPalPayment}>I completed payment in PayPal</button>
-            <button className="ghost sm" onClick={() => setPaypalOpened(false)}>I didn&rsquo;t pay</button>
-          </div>
-          <p className="buy-fine">This records your statement; it does not verify the payment or create Cairn escrow.</p>
-        </div>}
-      </>}
-      {error && <div className="buy-error" role="alert">{error}</div>}
+          <div className="buy-total"><span>Total due</span><strong>{amountLabel}</strong></div>
+          <p>{rail === RAIL_PAYPAL
+            ? `The table asks total ${total} USDC; this seller's PayPal fallback requests $${Number(total).toFixed(2)} USD.`
+            : 'At the table’s posted asks. Delivery and inspection continue in Trades.'}</p>
+        </aside>
+      </div>
     </div>
   )
 }

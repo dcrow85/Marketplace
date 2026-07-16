@@ -108,6 +108,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
 
   useEffect(() => { setSettling(false); setBuyingNow(false); setHuntOpen(false); setWitnessedOnly(false); setOfferCashSeed(null); setOfferNoteSeed('') }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, checkout + hunting fold
   useEffect(() => {
+    if (settling || buyingNow) window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [settling, buyingNow]) // checkout is a new room; always begin at its heading
+  useEffect(() => {
     if (!pendingSellerFlow || pendingSellerFlow.sellerId !== sel) return
     /* eslint-disable react-hooks/set-state-in-effect -- a focused-card action lands only after its seller table becomes current */
     setOfferCashSeed(pendingSellerFlow.cash ?? null)
@@ -192,6 +195,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   }, [data, store, salesAll])
 
   const pickUp = (sellerId, uid, mode) => addToPile(pileKey, sellerId, uid, mode)
+  const returnToPile = () => {
+    setSettling(false)
+    setBuyingNow(false)
+    window.requestAnimationFrame(() => document.getElementById('market-pile')?.scrollIntoView({ block: 'center' }))
+  }
   const visitSellerPile = (sellerId, flow = 'table', cash = null, note = '') => {
     setZoom(null)
     setEvidenceTip(null)
@@ -462,7 +470,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       <SettlePage open={open} pile={pile} byUid={byUid} data={data} store={store} mkt={mkt}
         catalog={catalog} accountId={accountId} pileKey={pileKey} agentName={agentName}
         initialCash={offerCashSeed} initialNote={offerNoteSeed}
-        onBack={() => setSettling(false)}
+        onBack={returnToPile}
         onSent={({ evidenceRequestIncluded } = {}) => {
           setSettling(false)
           setSwapMsg(evidenceRequestIncluded
@@ -542,9 +550,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     if (buyingNow && canBuyNow) {
       return (
         <div className="mk buy-room">
-          <button type="button" className="ghost sm buy-room-back" onClick={() => setBuyingNow(false)}>← back to pile</button>
+          <button type="button" className="ghost sm buy-room-back" onClick={returnToPile}>← back to pile</button>
           <BuyNow open={open} pile={pile} total={buysSum} catalog={catalog} accountId={accountId}
-            pileKey={pileKey} byUid={byUid} onBack={() => setBuyingNow(false)} onComplete={finishBuyNow} />
+            pileKey={pileKey} byUid={byUid} onBack={returnToPile} onComplete={finishBuyNow} />
         </div>
       )
     }
@@ -688,7 +696,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           )
         })}
         {pile.length > 0 && (
-          <div className="mk-checkout">
+          <div className="mk-checkout" id="market-pile">
             <div className="mk-ckthumbs">
               {pile.map((p) => {
                 const c = byUid.get(p.uid)
