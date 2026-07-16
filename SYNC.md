@@ -58,6 +58,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **Trades now use a familiar checkout summary
+  instead of the visually dense Deal Mat.** Each offer leads with the counterparty,
+  current status, `You receive`, `You give`, payment rail, amount, and the explicit
+  boundary that accepting terms does not make a payment. Incoming offers present one
+  dominant `Accept offer` action; counter and decline are quiet alternatives, while
+  Anko and evidence requests live under `Questions or help`. Outgoing offers retain a
+  tucked-away `Questions or updates` route for adding evidence requests, and message /
+  evidence history is collapsed under `Messages & updates`. Browser rehearsal covered
+  offer compose, sample counter, the simplified decision surface, help disclosure, and
+  acceptance; scoped ESLint, diff check, and the production build pass (same upstream
+  Privy/Rolldown annotation warnings only). Source `e094c38`; Pages `b4478f06`; apex
+  and `www` serve byte-identical `cairn-site-b05c64d92130.js`.
 - `[passive]` 2026-07-16 · Codex — **Trades now negotiate on a clean, evidence-aware
   Deal Mat.** Each offer pins `You receive` / `You give`, cash and payment rail, the
   current turn, and a chronological “On the mat” round history. Initial photo requests
