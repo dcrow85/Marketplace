@@ -58,6 +58,45 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **Cairn now has a rail-open checkout with
+  Escrow first and PayPal as an explicit bootstrap fallback.** Sellers can publish
+  an optional sanitized PayPal.Me handle from onboarding or My Table; buyers see
+  one posted-ask checkout and one offer surface with Cairn Escrow recommended and
+  PayPal clearly marked external. PayPal handoff records the buyer's report without
+  claiming verification, requires the seller to confirm receipt in PayPal before
+  shipping, then walks shipment, arrival, inspection, completion, or PayPal dispute
+  as separate human decisions. Cairn references, provider references, currencies,
+  table identities, custody, dispute route, and Cairn enforcement limits stay visible.
+  Two-party local Pages/KV QA passed from buyer payment report through seller confirm,
+  shipping, buyer arrival, and completion/dispute choice; desktop and 390px checkout,
+  scoped ESLint, payment helper/state checks, production build, and diff checks pass.
+  Source `ceb610b`; Pages `0481cef5`; apex, `www`, and preview serve byte-identical
+  bundle `71ac5843deb8`. This bootstrap uses seller-provided PayPal.Me links; embedded
+  multiparty PayPal remains gated on partner onboarding and production credentials.
+- `[BLOCKING: Black Jade Crewleader WINNER observation]` 2026-07-16 · Codex —
+  Adding the user-supplied STT01-008 card-front photo as a distinct observed
+  WINNER treatment and regenerating catalogue/lore/UI artifacts. No tournament,
+  authenticity, custody, possession, condition, recipient, or value claim.
+- `[passive]` 2026-07-16 · Codex — **The phone Binder now shares the Market's
+  card hierarchy.** Its nine-card pages render as full-bleed two-column tiles with
+  release, name, number, collection state, market availability, and 44px actions;
+  unmarked cards spell out `Have`/`Want`, while owned cards spell out `For sale`/
+  `Trade`. S/M remain two columns and L is the intentional single-card view;
+  desktop retains the physical 3×3 pocket sheet. QA passes at 390px and 320px
+  (two 118.5px columns at 320px, zero horizontal overflow), including owned and
+  unmarked states, scoped ESLint, production build, and diff checks. Source
+  `cfdd9d0`; Pages `0133f681`; preview, apex, and `www` serve byte-identical bundle
+  `314f6e3b0232`. Paging, onboarding, Anko ordering, collection, catalogue, market,
+  evidence, and protocol semantics remain unchanged.
+- `[passive]` 2026-07-16 · Codex — **My Table status labels no longer cover
+  card artwork.** `Trade` and the oxblood `Add photos` action now occupy a compact
+  information row directly below the image; the latter still opens the exact-card
+  scanner. Large and compact phone QA at 390px confirms both controls remain in
+  normal flow below the image with zero horizontal overflow. Scoped ESLint,
+  production build, diff check, and byte-identical preview/apex/`www` bundle checks
+  pass. Source `77f55bd`; Pages deployment `1e47e33e`; bundle `4d54c36dc24b`.
+  Presentation only; no listing, evidence-request, scanner, trade, collection,
+  catalogue, or protocol semantics changed.
 - `[passive]` 2026-07-16 · Codex — **All four new user-observed WINNER
   treatments are visible in the ordinary Binder path.** Binder now opens on all
   353 catalogue rows instead of silently preselecting the 217-row Gates family;
@@ -68,6 +107,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   production build, and byte-identical apex/`www`/preview checks pass. Source
   `130124f`; Pages `7cf29bc3`; bundle `547713a559fa`. Observation authority,
   authenticity, custody, event provenance, and evidence claims are unchanged.
+- `[passive]` 2026-07-16 · Codex — **Mobile cards now use Cairn's compact,
+  art-led two-column rhythm.** Binder, Market, offer grids, search results, and
+  My Table S/M keep release, name, facts, and actions in a consistent scan path;
+  My Table L remains the intentional single-card display view. Phone Buy labels
+  stay on one line and primary controls retain a 44px touch target. Responsive QA
+  passes at 390px and 320px (two 118.5px columns at 320px, no horizontal overflow),
+  with scoped ESLint, production build, and diff checks clean. Source `7653f96`;
+  Pages deployment `e1d95de8`; apex, `www`, and preview serve the byte-identical
+  `2d7c91be5311` bundle. Surface only; no collection, listing, offer, evidence,
+  catalogue, or protocol state changed.
 - `[passive]` 2026-07-16 · Codex — **Missing listing photos are now contextual,
   actionable, and quiet below the high-value threshold.** Unphotographed asks over
   10 USDC show owners `Add photos` and open the scanner on the exact card; buyers
