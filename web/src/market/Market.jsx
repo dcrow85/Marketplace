@@ -72,11 +72,11 @@ function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
       <button className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onBuy() }}
         title="into your pile at the ask — the deal sends when you finish the table">
-        {inPile && mode === 'buy' ? '✓ in pile' : <><span className="ofr-wide-label">buy · {ask} USDC</span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>
+        {inPile && mode === 'buy' ? '✓ In pile' : <><span className="ofr-wide-label">Buy · {ask} USDC</span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>
       <button className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onTrade() }}
         title="into your pile as a trade-for — you pick your side at checkout">
-        {inPile && mode === 'trade' ? '✓ trade' : '⇄ trade'}</button>
+        {inPile && mode === 'trade' ? '✓ Trade' : '⇄ Trade'}</button>
     </span>
   )
 }

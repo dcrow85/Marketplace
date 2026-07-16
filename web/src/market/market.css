@@ -564,15 +564,17 @@
 .mk-hunt2name { font-size: 10px; line-height: 1.25; }
 .mk-hunt2have { font-size: 9px; color: var(--have); }
 
-/* buy/⇄ as one crafted control: joined pair, binder-register surfaces, quiet motion */
+/* Buying is the money action: warm show-floor gold. Trade stays neutral so the
+   choice reads before the labels do, without turning either half into a banner. */
 .ofr-acts { display: flex; gap: 0; padding: 4px 7px 0; }
 .ofr-buy, .ofr-tradebtn { flex: 1; font-family: var(--mono); font-size: 11.5px; padding: 9px 0; cursor: pointer; border: 0.5px solid var(--rule); transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease; }
-.ofr-buy { color: var(--ink); background: var(--mount); border-radius: 8px 0 0 8px; font-weight: 650; }
+.ofr-buy { color: #211908; background: linear-gradient(180deg, #e5c76f, #cda347); border-color: #a77d2d; border-radius: 8px 0 0 8px; font-weight: 700; box-shadow: inset 0 1px 0 rgba(255,248,207,.48); }
 .ofr-tradebtn { color: var(--ink2); background: var(--paper); border-radius: 0 8px 8px 0; border-left-width: 0; }
-.ofr-buy:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ofr-buy:hover { color: #171104; background: linear-gradient(180deg, #efd98c, #d9ae4d); border-color: #e0bd69; box-shadow: inset 0 1px 0 rgba(255,251,224,.6), 0 3px 10px rgba(169,119,27,.22); }
 .ofr-tradebtn:hover { color: var(--ink); border-color: var(--ink); border-left-width: 0.5px; margin-left: -0.5px; }
 .ofr-buy:active, .ofr-tradebtn:active { transform: translateY(1px); }
-.ofr-buy.on, .ofr-tradebtn.on { background: var(--have); color: #fff; border-color: var(--have); }
+.ofr-buy.on { color: #171104; background: #d8b354; border-color: #f0d27f; box-shadow: inset 0 0 0 1px rgba(255,247,199,.34); }
+.ofr-tradebtn.on { background: var(--have); color: #fff; border-color: var(--have); }
 .ofr-phone-label { display: none; }
 
 /* the bench: the binder's loveliness comes to the tables — cards sit ON a surface */
