@@ -1,17 +1,17 @@
 {
   "schema": "azuki_card_art_visual_review_snapshot_v0.2",
   "snapshot_date": "2026-07-16",
-  "reviewed": "2026-07-13",
+  "reviewed": "2026-07-16",
   "source_catalog": "web/public/catalogs/azuki-tcg.json",
   "scope": "Every image-bearing row in the 2026-07-16 Cairn Azuki UI catalog; prior judgments are carried only across byte-identical images.",
   "counts": {
-    "reviewed_images": 349,
+    "reviewed_images": 350,
     "official_gallery_images": 237,
     "alpha_master_sheet_images": 100,
-    "user_observation_images": 12,
+    "user_observation_images": 13,
     "carried_forward_byte_identical": 349,
-    "image_ref_migrations": 100,
-    "newly_reviewed_images": 0
+    "image_ref_migrations": 0,
+    "newly_reviewed_images": 1
   },
   "review_continuity": "No art judgment was inferred from a path change. Existing reviews were carried forward only when the Cairn-hosted asset matched the prior SHA-256 and byte count.",
   "method_boundary": "Contact-sheet review supports high-level subjects, setting cues, motifs, and variant notes. It is not pixel-forensic review and does not establish canon, print identity, authenticity, condition, or possession.",
@@ -6540,6 +6540,20 @@
       "image_sha256": "6d48141e27db990508f4d958c6e6e9f65c1dc19d59232be9ced0252f7cd90005",
       "image_bytes": 2225714,
       "review_batch": "observation_09",
+      "review_status": "reviewed_at_original_resolution",
+      "reviewer": "Codex",
+      "review_method": "Manual visual pass over the user-supplied image at original resolution.",
+      "authority_label": "card_art_observation"
+    },
+    {
+      "uid": "azuki_tcg_observation:tournament-winner-photo-20260716-004",
+      "card_id": "STT01-008",
+      "name": "Black Jade Crewleader",
+      "source_entry_id": "tournament-winner-photo-20260716-004",
+      "image_ref": "assets/observations/black-jade-crewleader-winner-2026-07-16.png",
+      "image_sha256": "812863a58d10eee2233697ccf970e9206adebe9ab3741ec68cebe729318352cd",
+      "image_bytes": 2465352,
+      "review_batch": "observation_10",
       "review_status": "reviewed_at_original_resolution",
       "reviewer": "Codex",
       "review_method": "Manual visual pass over the user-supplied image at original resolution.",

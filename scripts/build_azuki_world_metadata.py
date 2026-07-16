@@ -222,6 +222,9 @@ SPECIFIC_VARIANT_VISUAL_NOTES = {
     "azuki_tcg_observation:tournament-winner-photo-20260710-003": (
         "User-supplied Lady Emberheart card photo with reflective star treatment, fox-fire and drifting-petal composition, and a large gold WINNER stamp; no Anime Expo mark is visible."
     ),
+    "azuki_tcg_observation:tournament-winner-photo-20260716-004": (
+        "User-supplied Black Jade Crewleader card-front photo with a reflective star treatment, neon alley action composition, and a large gold WINNER stamp; tournament context beyond the visible treatment is not established by the image."
+    ),
 }
 
 NOT_CLAIMING = [

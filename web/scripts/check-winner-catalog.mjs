@@ -9,6 +9,7 @@ const expected = [
   'azuki_tcg_observation:tournament-winner-photo-20260710-002',
   'azuki_tcg_observation:anime-expo-winner-photo-20260710-001',
   'azuki_tcg_observation:tournament-winner-photo-20260710-003',
+  'azuki_tcg_observation:tournament-winner-photo-20260716-004',
 ]
 
 assert.equal(initialFamilyFilter().size, 0, 'Binder must open on the complete catalogue')
