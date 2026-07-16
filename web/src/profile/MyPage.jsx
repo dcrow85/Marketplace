@@ -384,7 +384,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
 function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = false, onMove, onNudge, ankoPicks, onScan }) {
   const [dragging, setDragging] = useState(null)
   return (
-    <div className="sp-tiles" style={{ '--tilescale': TABLE_TILE_SCALES[size] }}>
+    <div className="sp-tiles" data-size={size} style={{ '--tilescale': TABLE_TILE_SCALES[size] }}>
       {rows.map(({ c, e }, index) => {
         const scanned = !!((e.pile || []).length || e.photo_hash)
         const scanRequested = Number(e.ask) > SCAN_REQUEST_USDC && !scanned
