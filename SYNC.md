@@ -58,6 +58,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **Settle Up now follows a researched,
+  conventional review-and-pay hierarchy.** A two-column desktop checkout pairs one
+  grouped payment decision with a sticky, editable pile summary; mobile becomes one
+  linear order-review → payment path. The total is the dominant price, long piles
+  scroll without hiding it, and only the selected rail expands. Plain `Today` /
+  `Seller receives` / `If something goes wrong` consequences replace the protocol
+  matrix; the final button names the exact action and amount, while PayPal makes its
+  external handoff explicit. Errors sit beside the blocked action. Checkout always
+  opens at its heading, and `Change` returns directly to the preserved pile. This
+  applies Baymard order-review/payment findings, Shopify simplicity/order-summary
+  guidance, Stripe payment-selection patterns, GOV.UK check-answers/action language,
+  PayPal handoff guidance, and W3C financial-error-prevention/form grouping.
+  Browser rehearsal passed one- and four-card checkout, semantic radio/fieldset
+  structure, total/action visibility, and round-trip pile editing; scoped ESLint,
+  diff check, and production build pass (same upstream Privy/Rolldown warnings only).
+  Source `f750805`; Pages `a3a7118d`; preview, apex, and `www` serve
+  `cairn-site-66bbe1b6b40f.js` with the same immutable ETag and byte length. No
+  payment, offer, settlement, chain, evidence, catalogue, or `mockups/` semantics.
 - `[passive]` 2026-07-16 · Codex — **The pile now finishes at one clear `Settle
   up` destination.** Posted-ask Buy piles leave the table for a dedicated checkout
   that keeps the exact cards, conditions, asks, total, payment rails, trust receipt,
