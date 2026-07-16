@@ -42,10 +42,10 @@ runs/**/*.mp4
 *-final.png
 *-first-touch.png
 
-# Public-repo safety: keep asset manifests/metadata, not raw local or scraped
-# image corpora. These can be restored locally or moved to controlled storage.
+# Public-repo safety: keep research corpora out of the public tree. Catalogue
+# reference images under web/public/assets are intentionally tracked so Cairn
+# never depends on a third-party image host at render time.
 datasets/no-rarity-lab/assets/
-web/public/assets/alpha/
 web/public/sample-alpha.jpg
 test-fixtures/
 screenshots/

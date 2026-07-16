@@ -221,14 +221,24 @@ python3 scripts/build_azuki_tcg_catalog.py --check
 python3 scripts/audit_azuki_star_alt_art.py --check
 python3 scripts/build_azuki_world_metadata.py --check
 python3 scripts/refresh_the_gate_deck_signals.py --check
+python3 scripts/vendor_azuki_catalog_images.py --check
 python3 scripts/export_azuki_catalog_for_ui.py --check
 python3 scripts/audit_azuki_world_agent.py
 ```
+
+Every non-empty UI `image` is a path under `web/public`; the exporter fails if
+that file is absent or if a render field points at an external host. Official
+gallery URLs remain in `upstream_image_url` and the dated image manifest only as
+refresh provenance. The mirrored official bytes and Alpha workbook exports are
+committed so clean Pages builds do not depend on Azuki's CDN or a local-only
+worktree cache.
 
 Refresh from the live official endpoint and linked Alpha Master Sheet:
 
 ```bash
 python3 scripts/build_azuki_tcg_catalog.py --refresh
+python3 scripts/vendor_azuki_catalog_images.py --refresh
+python3 scripts/export_azuki_catalog_for_ui.py
 ```
 
 Refresh the independent community deck signal, then regenerate the agent/UI

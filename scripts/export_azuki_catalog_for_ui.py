@@ -40,6 +40,7 @@ MANIFEST = AZUKI / "manifest.json"
 WORLD_METADATA = AZUKI / "lore" / "azuki_world_metadata.json"
 COMMUNITY_KNOWLEDGE_GLOB = "the_gate_community_knowledge_*.json"
 COMMUNITY_DECK_SIGNALS_GLOB = "the_gate_deck_signals_*.json"
+OFFICIAL_IMAGE_MANIFEST_GLOB = "azuki_official_gallery_image_manifest_*.json"
 ALPHA_IMAGE_MANIFEST = AZUKI / "source-snapshots" / "alpha_master_sheet_image_manifest_2026-06-26.json"
 ALPHA_ASSET_DIR = WEB_PUBLIC_DIR / "assets" / "alpha"
 ALPHA_ASSET_WEB_PREFIX = "assets/alpha"
@@ -137,6 +138,31 @@ def newest_community_deck_signals_snapshot() -> Path:
             f"no Azuki community deck-signal snapshot matches {COMMUNITY_DECK_SIGNALS_GLOB}"
         )
     return snapshots[-1]
+
+
+def newest_official_image_manifest() -> Path:
+    manifests = sorted((AZUKI / "source-snapshots").glob(OFFICIAL_IMAGE_MANIFEST_GLOB))
+    if not manifests:
+        raise FileNotFoundError(
+            f"no Azuki official image manifest matches {OFFICIAL_IMAGE_MANIFEST_GLOB}; "
+            "run scripts/vendor_azuki_catalog_images.py --refresh"
+        )
+    return manifests[-1]
+
+
+def official_image_index(manifest: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    images = manifest.get("images", [])
+    index = {row.get("source_url"): row for row in images if row.get("source_url")}
+    if len(index) != len(images):
+        raise ValueError("official image manifest contains duplicate or empty source URLs")
+    for source_url, row in index.items():
+        public_path = row.get("public_path") or ""
+        path = (WEB_PUBLIC_DIR / public_path).resolve()
+        if not public_path or not path.is_relative_to(WEB_PUBLIC_DIR.resolve()) or not path.is_file():
+            raise FileNotFoundError(f"Cairn-hosted official image is missing: {source_url} -> {path}")
+        if row.get("bytes") != path.stat().st_size or row.get("sha256") != sha256(path):
+            raise ValueError(f"Cairn-hosted official image integrity drifted: {public_path}")
+    return index
 
 
 def world_metadata_view(
@@ -273,11 +299,21 @@ def alpha_manifest_index(path: Path = ALPHA_IMAGE_MANIFEST) -> dict[str, str]:
     if not path.exists():
         return {}
     payload = read_json(path)
-    return {
-        row["card_id"]: row["image"]
-        for row in payload.get("images", [])
-        if row.get("card_id") and row.get("image")
-    }
+    images: dict[str, str] = {}
+    for row in payload.get("images", []):
+        card_id = row.get("card_id") or ""
+        image = row.get("image") or ""
+        if not card_id or not image:
+            continue
+        path = (WEB_PUBLIC_DIR / image).resolve()
+        if not path.is_relative_to(WEB_PUBLIC_DIR.resolve()) or not path.is_file():
+            raise FileNotFoundError(f"Cairn-hosted Alpha image is missing: {card_id} -> {path}")
+        if row.get("bytes") and row["bytes"] != path.stat().st_size:
+            raise ValueError(f"Cairn-hosted Alpha image size drifted: {card_id}")
+        if row.get("sha256") and row["sha256"] != sha256(path):
+            raise ValueError(f"Cairn-hosted Alpha image integrity drifted: {card_id}")
+        images[card_id] = image
+    return images
 
 
 def alpha_asset_index(asset_dir: Path = ALPHA_ASSET_DIR) -> dict[str, str]:
@@ -291,17 +327,23 @@ def alpha_asset_index(asset_dir: Path = ALPHA_ASSET_DIR) -> dict[str, str]:
 
 
 def alpha_master_sheet_image_index() -> dict[str, str]:
-    images = alpha_manifest_index()
-    images.update(alpha_asset_index())
-    return images
+    manifested = alpha_manifest_index()
+    assets = alpha_asset_index()
+    if ALPHA_IMAGE_MANIFEST.exists() and manifested != assets:
+        missing = sorted(set(manifested) - set(assets))
+        unmanifested = sorted(set(assets) - set(manifested))
+        raise ValueError(
+            f"Alpha image manifest coverage drifted; missing={missing}, unmanifested={unmanifested}"
+        )
+    return manifested or assets
 
 
 def write_alpha_image_manifest(images: dict[str, str], path: Path = ALPHA_IMAGE_MANIFEST) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "schema": "azuki_tcg_alpha_master_sheet_image_manifest_v0.1",
+        "schema": "azuki_tcg_alpha_master_sheet_image_manifest_v0.2",
         "authority_label": "linked_alpha_master_sheet_reference_image",
-        "asset_policy": "raw image files are gitignored build artifacts; regenerate from the embedded-image workbook export",
+        "asset_policy": "exact workbook image exports are committed and served by Cairn; regenerate from the embedded-image workbook export when the source changes",
         "not_claiming": [
             "seller possession",
             "physical-card authenticity",
@@ -309,7 +351,12 @@ def write_alpha_image_manifest(images: dict[str, str], path: Path = ALPHA_IMAGE_
             "per-physical-card evidence",
         ],
         "images": [
-            {"card_id": card_id, "image": image}
+            {
+                "card_id": card_id,
+                "image": image,
+                "bytes": (WEB_PUBLIC_DIR / image).stat().st_size,
+                "sha256": sha256(WEB_PUBLIC_DIR / image),
+            }
             for card_id, image in sorted(images.items())
         ],
     }
@@ -500,6 +547,7 @@ def card_from_official(
     audit_by_uid: dict[str, dict[str, str]],
     reference_audit_by_uid: dict[str, dict[str, str]],
     observations_by_uid: dict[str, list[dict[str, str]]],
+    official_images_by_url: dict[str, dict[str, Any]],
     manifest_hash: str,
 ) -> dict[str, Any]:
     uid = card["uid"]
@@ -543,12 +591,15 @@ def card_from_official(
     suppress_reference = ref_audit and ref_audit.get("REFERENCE_IMAGE_POLICY") == "suppress_reference_image"
     suppress_stamp = ref_audit and ref_audit.get("STAMP_FIELD_POLICY") == "suppress_inherited_alpha_stamp"
     original_image = card.get("image_url") or comp.get("IMAGE_URL") or ""
-    image = "" if suppress_reference else original_image
+    local_image = official_images_by_url.get(original_image)
+    if original_image and local_image is None:
+        raise ValueError(f"official image has no Cairn-hosted mirror: {original_image}")
+    image = "" if suppress_reference else (local_image or {}).get("public_path", "")
     image_status = "no_reference_photo" if suppress_reference else "exact_source"
     provenance = (
         "Reference image suppressed by reference-image audit; source row does not currently provide an exact photo for this catalog row."
         if suppress_reference
-        else "Official Azuki gallery image URL; not seller evidence or physical-card proof."
+        else "Cairn-hosted exact copy of the official Azuki gallery image; the upstream URL is retained as provenance, not seller evidence or physical-card proof."
     )
     stamp = "" if suppress_stamp else (comp.get("STAMP") or "")
     suppressed_fields = []
@@ -582,6 +633,7 @@ def card_from_official(
         "rarity": rarity,
         "band_rank": band_rank({"rarity": rarity}, audit),
         "image": image,
+        "upstream_image_url": original_image,
         "image_status": image_status,
         "display_allowed": not suppress_reference,
         "provenance": provenance,
@@ -646,7 +698,12 @@ def alpha_ref_ip(row: dict[str, Any]) -> list[str]:
     return out
 
 
-def card_from_alpha_master(row: dict[str, Any], manifest_hash: str, alpha_images: dict[str, str]) -> dict[str, Any]:
+def card_from_alpha_master(
+    row: dict[str, Any],
+    manifest_hash: str,
+    alpha_images: dict[str, str],
+    official_images_by_url: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
     card_id = row.get("card_id") or ""
     rarity = row.get("rarity") or ""
     element = row.get("element") or ""
@@ -689,6 +746,14 @@ def card_from_alpha_master(row: dict[str, Any], manifest_hash: str, alpha_images
         reference_image_policy = "no_source_image_in_alpha_master_sheet"
         suppressed_fields = ["image"]
         review_status = "alpha_master_sheet_row_no_reference_photo"
+    gallery_crosswalk = copy.deepcopy(row.get("gallery_crosswalk") or {})
+    for entry in gallery_crosswalk.get("matched_gallery_entries", []):
+        upstream_image_url = entry.get("image_url") or ""
+        local_image = official_images_by_url.get(upstream_image_url)
+        if upstream_image_url and local_image is None:
+            raise ValueError(f"Alpha gallery crosswalk has no Cairn-hosted mirror: {upstream_image_url}")
+        entry["upstream_image_url"] = upstream_image_url
+        entry["image_url"] = (local_image or {}).get("public_path", "")
     return {
         "uid": row["uid"],
         "catalog_profile": "azuki-tcg",
@@ -749,7 +814,7 @@ def card_from_alpha_master(row: dict[str, Any], manifest_hash: str, alpha_images
         "definition_text": row.get("definition_text") or "",
         "ruling_text": row.get("ruling_text") or "",
         "stamp": row.get("stamp") or "",
-        "variant_group": row.get("gallery_crosswalk") or {},
+        "variant_group": gallery_crosswalk,
         "issues": [],
         "observations": [],
         "not_claiming": sorted(set(not_claiming)),
@@ -939,6 +1004,7 @@ def card_from_special_collection_treatment(
         "rarity": observed_rarity,
         "band_rank": 3,
         "image": image,
+        "upstream_image_url": "",
         "image_status": "user_photo_observation" if source else "user_observation_no_exact_card_image",
         "display_allowed": bool(source),
         "provenance": (
@@ -1068,6 +1134,15 @@ def build_payload() -> dict[str, Any]:
     community_deck_signals_path = newest_community_deck_signals_snapshot()
     community_deck_signals = read_json(community_deck_signals_path)
     community_deck_signals_hash = sha256(community_deck_signals_path)
+    official_image_manifest_path = newest_official_image_manifest()
+    official_image_manifest = read_json(official_image_manifest_path)
+    official_image_manifest_hash = sha256(official_image_manifest_path)
+    official_images_by_url = official_image_index(official_image_manifest)
+    if official_image_manifest.get("source_release", {}).get("sha256") != sha256(OFFICIAL):
+        raise ValueError("official image manifest was built from a different gallery release")
+    official_source_urls = {card.get("image_url") for card in official_cards if card.get("image_url")}
+    if official_source_urls != set(official_images_by_url):
+        raise ValueError("official image manifest does not exactly cover the current gallery release")
     world_identity_by_card_id = {card["card_id"]: card for card in world_metadata["cards"]}
     world_variant_by_uid = {card["uid"]: card for card in world_metadata["variants"]}
 
@@ -1078,7 +1153,15 @@ def build_payload() -> dict[str, Any]:
     alpha_images = alpha_master_sheet_image_index()
 
     cards = [
-        card_from_official(card, completion_by_uid, audit_by_uid, reference_audit_by_uid, observations_by_uid, manifest_hash)
+        card_from_official(
+            card,
+            completion_by_uid,
+            audit_by_uid,
+            reference_audit_by_uid,
+            observations_by_uid,
+            official_images_by_url,
+            manifest_hash,
+        )
         for card in official_cards
     ]
     official_ui_by_uid = {card["uid"]: card for card in cards}
@@ -1094,11 +1177,36 @@ def build_payload() -> dict[str, Any]:
     )
     exact_alpha_card_ids = official_alpha_exact_alpha_sheet_card_ids(official_cards)
     cards.extend(
-        card_from_alpha_master(row, manifest_hash, alpha_images)
+        card_from_alpha_master(row, manifest_hash, alpha_images, official_images_by_url)
         for row in alpha_cards
         if (row.get("card_id") or "") not in exact_alpha_card_ids
     )
     cards.extend(card_from_unmatched_observation(row, manifest_hash) for row in unmatched_observations)
+
+    local_image_bytes = 0
+    local_image_paths: set[str] = set()
+    public_root = WEB_PUBLIC_DIR.resolve()
+    for card in cards:
+        image = card.get("image") or ""
+        if not image:
+            card["image_hosting"] = "none"
+            card["image_asset_sha256"] = ""
+            card["image_asset_bytes"] = 0
+            card.setdefault("upstream_image_url", "")
+            continue
+        if image.startswith(("http://", "https://", "/")):
+            raise ValueError(f"catalogue render image is not Cairn-local: {card['uid']} -> {image}")
+        image_path = (WEB_PUBLIC_DIR / image).resolve()
+        if not image_path.is_relative_to(public_root):
+            raise ValueError(f"catalogue render image escapes web/public: {card['uid']} -> {image}")
+        if not image_path.is_file():
+            raise FileNotFoundError(f"catalogue render image is missing: {card['uid']} -> {image_path}")
+        card["image_hosting"] = "cairn_public_asset"
+        card["image_asset_sha256"] = sha256(image_path)
+        card["image_asset_bytes"] = image_path.stat().st_size
+        card.setdefault("upstream_image_url", "")
+        local_image_paths.add(image)
+        local_image_bytes += image_path.stat().st_size
 
     for card in cards:
         card["azuki_world"] = world_metadata_view(
@@ -1196,6 +1304,11 @@ def build_payload() -> dict[str, Any]:
             "sets": len(sets),
             "cards": len(cards),
             "with_image": sum(1 for c in cards if c.get("image")),
+            "local_render_images": sum(1 for c in cards if c.get("image_hosting") == "cairn_public_asset"),
+            "remote_render_images": sum(1 for c in cards if str(c.get("image") or "").startswith(("http://", "https://"))),
+            "unique_local_image_assets": len(local_image_paths),
+            "local_render_image_bytes": local_image_bytes,
+            "official_gallery_local_assets": len(official_images_by_url),
             "exact_source": sum(1 for c in cards if c.get("image_status") == "exact_source"),
             "no_reference_photo": sum(1 for c in cards if c.get("image_status") == "no_reference_photo"),
             "alpha_master_sheet_images": sum(1 for c in cards if c.get("image_status") == "alpha_master_sheet"),
@@ -1227,6 +1340,13 @@ def build_payload() -> dict[str, Any]:
         "catalog_hash": manifest_hash,
         "source_artifacts": {
             "official_gallery": {"path": str(OFFICIAL.relative_to(ROOT)), "sha256": sha256(OFFICIAL)},
+            "official_gallery_image_manifest": {
+                "path": str(official_image_manifest_path.relative_to(ROOT)),
+                "sha256": official_image_manifest_hash,
+                "count": len(official_images_by_url),
+                "bytes": official_image_manifest.get("counts", {}).get("bytes", 0),
+                "hosting_policy": official_image_manifest.get("hosting_policy") or "",
+            },
             "alpha_master_sheet": {"path": str(ALPHA.relative_to(ROOT)), "sha256": sha256(ALPHA)},
             "completion_csv": {"path": str(COMPLETION.relative_to(ROOT)), "sha256": sha256(COMPLETION)},
             "star_audit": {"path": str(STAR_AUDIT.relative_to(ROOT)), "sha256": sha256(STAR_AUDIT)},

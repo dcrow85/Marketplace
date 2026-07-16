@@ -392,7 +392,8 @@ def visual_note(card: dict[str, Any], cue: dict[str, str], observed_notes: dict[
 def build_visual_review_snapshot(official_image_dir: Path | None = None) -> dict[str, Any]:
     ui = read_json(UI_CATALOG)
     prior_path = newest_snapshot(VISUAL_REVIEW_GLOB)
-    prior_by_uid = {row["uid"]: row for row in read_json(prior_path).get("rows", [])}
+    prior_source = read_json(prior_path)
+    prior_by_uid = {row["uid"]: row for row in prior_source.get("rows", [])}
     official_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "exact_source"]
     alpha_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "alpha_master_sheet"]
     observation_order = [card["uid"] for card in ui["cards"] if card.get("image_status") == "user_photo_observation"]
@@ -400,21 +401,40 @@ def build_visual_review_snapshot(official_image_dir: Path | None = None) -> dict
     alpha_position = {uid: index for index, uid in enumerate(alpha_order)}
     observation_position = {uid: index for index, uid in enumerate(observation_order)}
     rows = []
+    carried_forward = 0
+    image_ref_migrations = 0
+    newly_reviewed = 0
 
     for card in ui["cards"]:
         image = card.get("image") or ""
         if not image:
             continue
+        local_path = ROOT / "web" / "public" / image
+        prior = prior_by_uid.get(card["uid"])
+        if (
+            prior
+            and local_path.is_file()
+            and prior.get("image_sha256") == sha256_file(local_path)
+            and prior.get("image_bytes") == local_path.stat().st_size
+        ):
+            carried = dict(prior)
+            if prior.get("image_ref") != image:
+                carried["hosting_migration"] = {
+                    "from": prior.get("image_ref") or "",
+                    "to": image,
+                    "basis": "byte-identical SHA-256 and byte count; visual judgment carried forward",
+                }
+                carried["image_ref"] = image
+                image_ref_migrations += 1
+            rows.append(carried)
+            carried_forward += 1
+            continue
         if card.get("image_status") == "exact_source":
             path = official_image_dir / f"{card['source_entry_id']}.jpg" if official_image_dir else None
             if not path or not path.exists():
-                prior = prior_by_uid.get(card["uid"])
-                if not prior or prior.get("image_ref") != image:
-                    raise FileNotFoundError(
-                        f"official review image unavailable and no matching prior review exists: {card['uid']}"
-                    )
-                rows.append(prior)
-                continue
+                raise FileNotFoundError(
+                    f"official review image changed or is unreviewed: {card['uid']}"
+                )
             sheet = f"official_{official_position[card['uid']] // 20 + 1:02d}"
             review_status = "reviewed_in_labelled_contact_sheet"
             review_method = "Manual visual pass over labelled 5x4 contact sheets generated from each source image; official sheets 01-12 and Alpha sheets 01-05."
@@ -444,18 +464,27 @@ def build_visual_review_snapshot(official_image_dir: Path | None = None) -> dict
             "review_method": review_method,
             "authority_label": "card_art_observation",
         })
+        newly_reviewed += 1
 
     return {
-        "schema": "azuki_card_art_visual_review_snapshot_v0.1",
-        "reviewed": date.today().isoformat(),
+        "schema": "azuki_card_art_visual_review_snapshot_v0.2",
+        "snapshot_date": date.today().isoformat(),
+        "reviewed": date.today().isoformat() if newly_reviewed else prior_source.get("reviewed"),
         "source_catalog": str(UI_CATALOG.relative_to(ROOT)),
-        "scope": f"Every image-bearing row in the {date.today().isoformat()} Cairn Azuki UI catalog.",
+        "scope": f"Every image-bearing row in the {date.today().isoformat()} Cairn Azuki UI catalog; prior judgments are carried only across byte-identical images.",
         "counts": {
             "reviewed_images": len(rows),
             "official_gallery_images": len(official_order),
             "alpha_master_sheet_images": len(alpha_order),
             "user_observation_images": len(observation_order),
+            "carried_forward_byte_identical": carried_forward,
+            "image_ref_migrations": image_ref_migrations,
+            "newly_reviewed_images": newly_reviewed,
         },
+        "review_continuity": (
+            "No art judgment was inferred from a path change. Existing reviews were carried "
+            "forward only when the Cairn-hosted asset matched the prior SHA-256 and byte count."
+        ),
         "method_boundary": "Contact-sheet review supports high-level subjects, setting cues, motifs, and variant notes. It is not pixel-forensic review and does not establish canon, print identity, authenticity, condition, or possession.",
         "rows": rows,
         "not_claiming": NOT_CLAIMING,
@@ -723,7 +752,7 @@ def main() -> int:
     if args.record_visual_review:
         official_image_dir = args.official_image_dir.expanduser() if args.official_image_dir else None
         review = build_visual_review_snapshot(official_image_dir)
-        review_path = BASE / "source-snapshots" / f"azuki_card_art_visual_review_{review['reviewed']}.json"
+        review_path = BASE / "source-snapshots" / f"azuki_card_art_visual_review_{review.get('snapshot_date') or review['reviewed']}.json"
         write_json(review_path, review)
         print(f"wrote {review_path.relative_to(ROOT)} ({review['counts']['reviewed_images']} reviewed images)")
 
