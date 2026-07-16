@@ -58,6 +58,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **Market Buy actions now read as money.** The
+  joined Buy / Trade control uses a restrained show-floor gold gradient, dark legible
+  type, a gold selected state, and neutral Trade styling; labels are polished to
+  `Buy` / `Trade` capitalization on table cards and the expanded card view. Desktop
+  dark-mode browser QA, scoped ESLint, diff check, and production build pass (same
+  upstream Privy/Rolldown warnings only). Source `73ffed1`; Pages `c4e4548e`; apex
+  and `www` serve byte-identical `cairn-site-947371027c5a.js`.
 - `[passive]` 2026-07-16 · Codex — **Trades now use a familiar checkout summary
   instead of the visually dense Deal Mat.** Each offer leads with the counterparty,
   current status, `You receive`, `You give`, payment rail, amount, and the explicit
