@@ -37,7 +37,7 @@ function witnessCell(w) {
 
 function MissingPhotosButton({ card, ask, onOpen }) {
   if (Number(ask) <= SCAN_REQUEST_USDC) return null
-  const label = `Seller photos missing for ${card.name_en} at ${ask} USDC`
+  const label = `Seller photos needed for ${card.name_en} at ${ask} USDC`
   return <button type="button" className="mk-wit catalog mk-photo-warning"
     aria-label={label} title={`${label} — see what to do`}
     onClick={(event) => { event.stopPropagation(); onOpen() }}>!</button>
@@ -345,9 +345,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       visitSellerPile(evidenceTip.sellerId, 'offer', null,
         `Before we settle, please add fresh front, back, corners, and holo-tilt photos for ${evidenceTip.c.name_en}.`)
     }
-    return <section className="mk-photo-tip" role="dialog" aria-label={`Seller photos missing for ${evidenceTip.c.name_en}`}>
+    return <section className="mk-photo-tip" role="dialog" aria-label={`Seller photos needed for ${evidenceTip.c.name_en}`}>
       <button className="mk-photo-tipclose" type="button" onClick={() => setEvidenceTip(null)} aria-label="Close">✕</button>
-      <div className="mk-photo-tipflag mono"><span aria-hidden="true">!</span> Seller photos missing</div>
+      <div className="mk-photo-tipflag mono"><span aria-hidden="true">!</span> Seller photos needed</div>
       <strong>{evidenceTip.c.name_en} · {evidenceTip.l.ask} USDC</strong>
       <p>This listing shows catalogue art, not photos of the seller&rsquo;s copy. Ask for fresh views before deciding.</p>
       <div className="mk-photo-tipactions">

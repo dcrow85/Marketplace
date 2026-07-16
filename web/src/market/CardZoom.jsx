@@ -23,7 +23,7 @@ export default function CardZoom({ card, sub, witness, ask = 0, decision = null,
             <span>A witness to inspect, not proof of authenticity or condition.</span>
           </div>}
           {!witness && Number(ask) > 10 && <div className="zoom-evidence missing">
-            <b><span aria-hidden="true">!</span> Seller photos missing</b>
+            <b><span aria-hidden="true">!</span> Seller photos needed</b>
             <span>Catalogue art is not evidence of this copy.</span>
           </div>}
         </div>
