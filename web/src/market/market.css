@@ -308,18 +308,18 @@
 .sp-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
 
 /* hold the card up to the light */
-.zoom-overlay { position: fixed; inset: 0; z-index: 90; background: rgba(12,11,9,.82); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
-.zoom-body { display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(92vw, 560px); max-height: 94vh; overflow-y: auto; padding: 3px 8px 10px; cursor: default; }
-.zoom-art { max-height: 62vh; max-width: 100%; border-radius: 14px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+.zoom-overlay { position: fixed; inset: 0; z-index: 90; background: rgba(12,11,9,.82); backdrop-filter: blur(6px); display: flex; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 24px; cursor: zoom-out; }
+.zoom-body { position: relative; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 12px; width: min(92vw, 560px); min-height: calc(100dvh - 48px); padding: 3px 8px 24px; cursor: default; }
+.zoom-art { display: block; width: auto; height: auto; max-height: min(62dvh, 720px); max-width: 100%; object-fit: contain; border-radius: 14px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
 .zoom-noimg { width: 300px; aspect-ratio: 5 / 7; display: flex; align-items: center; justify-content: center; color: #DBD5C8; border: 1px dashed rgba(236,234,227,.4); border-radius: 14px; }
 .zoom-facts { text-align: center; color: #DBD5C8; }
 .zoom-name { font-size: 17px; font-weight: 600; }
 .zoom-name .dim, .zoom-sub, .zoom-wit { color: #b7b1a4; }
 .zoom-sub { font-size: 11px; margin-top: 3px; }
 .zoom-wit { font-size: 11px; margin-top: 6px; color: #DBD5C8; }
-.zoom-anko { width: 100%; color: var(--ink2); background: var(--paper); border: .5px solid rgba(236,234,227,.28); border-radius: 10px; padding: 10px; }
+.zoom-anko { box-sizing: border-box; width: 100%; color: var(--ink2); background: var(--paper); border: .5px solid rgba(236,234,227,.28); border-radius: 10px; padding: 10px; }
 .zoom-anko .anko-read { margin: 0; }
-.zoom-close { color: #DBD5C8; border-color: rgba(236,234,227,.3); }
+.zoom-close { position: sticky; top: 3px; z-index: 3; align-self: flex-end; flex: none; width: 34px; height: 34px; margin: 0 3px -46px 0; padding: 0; color: #DBD5C8; background: rgba(12,11,9,.78); border-color: rgba(236,234,227,.3); border-radius: 50%; backdrop-filter: blur(6px); }
 .zoombtn { position: absolute; top: 6px; right: 6px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--ink); background: color-mix(in srgb, var(--paper) 92%, transparent); border: 0.5px solid var(--rule); border-radius: 6px; cursor: zoom-in; }
 .zoombtn:hover { border-color: var(--ink); }
 
@@ -409,6 +409,16 @@
 .stl-ask { margin: 0; }
 .stl-ankoline { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 8px; padding: 8px 12px; }
 .stl-clear { font: inherit; color: var(--ink); background: transparent; border: 0; cursor: pointer; text-decoration: underline; }
+.minicard.stl-anko-pick { border-color: var(--agent); box-shadow: 0 0 0 2px var(--agent), 0 10px 24px color-mix(in srgb, var(--agent) 18%, transparent); background: color-mix(in srgb, var(--paper) 94%, var(--agent) 6%); }
+.stl-anko-badge { position: absolute; top: 6px; left: 6px; z-index: 2; color: var(--paper); background: var(--agent); border-radius: 5px; padding: 3px 6px; font-size: 9px; letter-spacing: .02em; }
+.minicard.stl-anko-pick .minicard-check { background: var(--agent); }
+
+@media (max-width: 560px) {
+  .zoom-overlay { padding: 12px; }
+  .zoom-body { width: min(100%, 460px); min-height: calc(100dvh - 24px); padding-inline: 0; }
+  .zoom-art { max-height: 58dvh; }
+  .zoom-anko, .zoom-acts { width: 100%; }
+}
 
 /* the drawer whisper: what your tradeables' history covers of this pile */
 .mk-ckwhisper { font-size: 10.5px; color: var(--agent); }

@@ -9,6 +9,7 @@ export default function CardZoom({ card, sub, witness, ask = 0, decision = null,
   return (
     <div className="zoom-overlay" role="dialog" aria-label={card.name_en} onClick={onClose}>
       <div className="zoom-body" onClick={(e) => e.stopPropagation()}>
+        <button className="ghost sm zoom-close" onClick={onClose} aria-label="Close card view">✕</button>
         {card.image
           ? <img className="zoom-art" src={card.image} alt={card.name_en} onError={(ev) => retryImg(ev, card.image)} />
           : <div className="zoom-noimg">{card.name_en}</div>}
@@ -30,7 +31,6 @@ export default function CardZoom({ card, sub, witness, ask = 0, decision = null,
             label="Ask Anko about this copy" actionsForRead={actionsForRead} />
         </div>}
         {children && <div className="zoom-acts">{children}</div>}
-        <button className="ghost sm zoom-close" onClick={onClose}>✕ close</button>
       </div>
     </div>
   )

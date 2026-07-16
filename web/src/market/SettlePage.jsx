@@ -28,6 +28,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const [abusy, setAbusy] = useState(false)
   const [ankoScope, setAnkoScope] = useState(null) // his lens on YOUR side
   const [ankoLine, setAnkoLine] = useState(null)
+  const [ankoPicks, setAnkoPicks] = useState(() => new Set()) // advice, distinct from the collector's final terms
   useEffect(() => { window.scrollTo({ top: 0 }) }, []) // a new room starts at its door
   const askOf = (uid) => open.listings.find((l) => l.uid === uid)?.ask ?? 0
   const buys = pile.filter((p) => p.mode === 'buy')
@@ -93,12 +94,17 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           if (dups) rows = rows.filter(({ c }) => ((store[c.uid] || {}).copies || 1) > 1)
         }
         const m = runMatch(rows)
-        if (m.none) setAnkoLine('None of your candidates have settlements on record — nothing to match with. Pick by eye; the record can\u2019t help here.')
+        if (m.none) {
+          setAnkoPicks(new Set())
+          setAnkoLine('None of your candidates have settlements on record — nothing to match with. Pick by eye; the record can\u2019t help here.')
+        }
         else {
           setGive(m.picked)
-          setAnkoLine(`Picked ${m.picked.size} of yours — settlements put them at ~${m.sum} against their ~${m.target}. History, not an appraisal; adjust freely.`)
+          setAnkoPicks(new Set(m.picked))
+          setAnkoLine(`I marked ${m.picked.size} card${m.picked.size === 1 ? '' : 's'} in blue — settlements put ${m.picked.size === 1 ? 'it' : 'them'} at ~${m.sum} against their ~${m.target}. History, not an appraisal; adjust freely.`)
         }
       } else {
+        setAnkoPicks(new Set())
         setAnkoLine(d.filter?.reading || 'Narrowed your side to what matches.')
       }
       setQg('')
@@ -245,14 +251,28 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         {(ankoLine || ankoScope) && (
           <div className="stl-ankoline mono">
             {ankoLine && <span>{ankoLine}</span>}
-            {ankoScope && <button className="stl-clear" onClick={() => { setAnkoScope(null); setAnkoLine(null) }}>✕ clear his lens</button>}
+            {(ankoScope || ankoPicks.size > 0) && <button className="stl-clear" onClick={() => { setAnkoScope(null); setAnkoLine(null); setAnkoPicks(new Set()) }}>✕ clear his lens</button>}
           </div>
         )}
         <div className="ofr-grid stl-give">
-          {myCards.filter(({ c }) => hit(c) || give.has(c.uid)).slice(0, 60).map(({ c, e }) => (
-            <MiniCard key={c.uid} c={c} sel={give.has(c.uid)} sub={condStr(e) + (e.trade ? ' · ⇄' : '')}
-              onTap={() => setGive((pr) => { const n = new Set(pr); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })} />
-          ))}
+          {myCards.filter(({ c }) => hit(c) || give.has(c.uid)).slice(0, 60).map(({ c, e }) => {
+            const isAnkoPick = ankoPicks.has(c.uid)
+            return <MiniCard key={c.uid} c={c} sel={give.has(c.uid)}
+              className={isAnkoPick ? 'stl-anko-pick' : ''}
+              corner={isAnkoPick ? <span className="stl-anko-badge mono">Anko pick</span> : null}
+              sub={condStr(e) + (e.trade ? ' · ⇄' : '')}
+              onTap={() => {
+                setGive((pr) => { const n = new Set(pr); if (n.has(c.uid)) n.delete(c.uid); else n.add(c.uid); return n })
+                if (isAnkoPick) {
+                  const remaining = new Set(ankoPicks)
+                  remaining.delete(c.uid)
+                  setAnkoPicks(remaining)
+                  setAnkoLine(remaining.size
+                    ? `You adjusted the match. ${remaining.size} blue card${remaining.size === 1 ? '' : 's'} ${remaining.size === 1 ? 'is' : 'are'} still from my suggestion; the offer itself is yours.`
+                    : 'You adjusted the match. No blue Anko picks remain; the offer below is yours.')
+                }
+              }} />
+          })}
           {!myCards.length && <div className="empty">Nothing marked Have — cash can carry the whole deal.</div>}
         </div>
       </div>
