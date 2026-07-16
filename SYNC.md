@@ -73,10 +73,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   Source `ceb610b`; Pages `0481cef5`; apex, `www`, and preview serve byte-identical
   bundle `71ac5843deb8`. This bootstrap uses seller-provided PayPal.Me links; embedded
   multiparty PayPal remains gated on partner onboarding and production credentials.
-- `[BLOCKING: Black Jade Crewleader WINNER observation]` 2026-07-16 · Codex —
-  Adding the user-supplied STT01-008 card-front photo as a distinct observed
-  WINNER treatment and regenerating catalogue/lore/UI artifacts. No tournament,
-  authenticity, custody, possession, condition, recipient, or value claim.
+- `[passive]` 2026-07-16 · Codex — **Black Jade Crewleader STT01-008 WINNER is
+  live in the catalogue.** Added the supplied card-front photo as a distinct,
+  searchable observed treatment; the original PNG is Cairn-hosted and anchored
+  at `812863a5…32cd`, with base-card stats/effect, Azuki #4, Twisted Hand Studio,
+  and original-resolution visual metadata. Catalogue now has 354 rows / 350
+  images; all five observed WINNER treatments pass the visibility/local-asset
+  guard. Source `c215258`; first Pages deployment `62b0134b`; active deployment
+  `0481cef5` (`ceb610b`) includes it and apex JSON/image hashes verify. No event,
+  tournament, authenticity, custody, possession, condition, recipient, or value
+  claim.
 - `[passive]` 2026-07-16 · Codex — **The phone Binder now shares the Market's
   card hierarchy.** Its nine-card pages render as full-bleed two-column tiles with
   release, name, number, collection state, market availability, and 44px actions;
