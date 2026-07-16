@@ -58,6 +58,148 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **Missing listing photos are now contextual,
+  actionable, and quiet below the high-value threshold.** Unphotographed asks over
+  10 USDC show owners `Add photos` and open the scanner on the exact card; buyers
+  get a compact oxblood `!` that explains the gap, opens the card, or stages a
+  prefilled photo request in an offer while explicitly confirming nothing has sent.
+  Asks at or below 10 USDC carry no warning. Card detail now leads with the image
+  and collection action, collapses secondary evidence/history/provenance, and keeps
+  extra photo angles available without crowding the default view. A root 404 guard
+  prevents Pages from caching landing HTML at a temporarily unavailable immutable
+  script URL. Desktop buyer/seller QA, exact-card scanner QA, scoped ESLint, assembled
+  builds, 404 behavior, and byte-identical apex/`www`/preview bundle checks pass.
+  Sources `5eb6e7d` and `ba43c2a`; Pages `8b9c6446`. No evidence, listing,
+  settlement, catalogue, API, model, or protocol semantics changed.
+- `[passive]` 2026-07-16 · Codex — **Public tables now share My Table's visual
+  hierarchy, and evidence requests have an explicit lifecycle.** Opened Market
+  tables use the same card bench as profiles, with Display Case one size larger
+  than Binder. My Table's Binder adds sale/trade/scan filters plus number, name,
+  and price sorts; catalogue-only cards use the oxblood evidence mark, and the
+  redundant Display Case subtitle is gone. Evidence requests now say when they
+  are merely staged, confirm when the offer plus request is sent, remain visible
+  as `Message sent with offer` in Trades, and separately confirm live versus sample
+  follow-up messages after a status move. Rendered end-to-end QA, scoped ESLint,
+  clean assembled build, and exact live entry-URL verification pass. Source
+  `7095a88`; Pages `69505c9a`. No offer, evidence, listing, catalogue, settlement,
+  or protocol semantics changed.
+- `[passive]` 2026-07-16 · Codex — **Every renderable Azuki catalogue image is
+  now hosted by Cairn and enforced as a byte-verified local asset.** The 349
+  displayed rows resolve to 237 mirrored official-gallery images, 100 Alpha
+  workbook images, and 12 observation images; upstream URLs remain provenance
+  only. Official and Alpha filenames are content-addressed, manifests bind every
+  file to SHA-256 + byte count, and export fails on missing, remote, stale, or
+  unmanifested render assets. The prior 349 visual reviews carried forward only
+  across exact byte identity, with zero new visual judgments. Clean build and
+  world-agent audits pass; a full apex GET/hash sweep passed 349/349 images
+  (82,102,196 bytes), with zero remote render fields. Sources `3085277` and
+  `7508ac6`; combined trunk `ba43c2a`; Pages `6b9402a7`. No evidence claims,
+  listings, settlement, protocol state, or surface behavior changed.
+- `[passive]` 2026-07-16 · Codex — **Enlarged cards now read as one complete
+  review surface, and Anko's settlement matches are visibly attributable.** The
+  card lightbox uses page-level scrolling, contained evidence/actions, responsive
+  art, and a persistent close control instead of clipping behind an inner scrollbar.
+  Value-match picks carry a blue ring, blue `Anko pick` label, and plain-English
+  explanation; touching a suggested card removes that attribution and Anko
+  acknowledges the collector's revision. Rendered desktop QA covered the full
+  card view, value matching, and manual override; scoped ESLint, assembled builds,
+  and byte-identical apex verification pass. Source `05d15be`; Pages `ab340e04`.
+  No settlement math, offer semantics, catalogue, evidence, or protocol state changed.
+- `[passive]` 2026-07-16 · Codex — **`www.cairn.cards` now serves the Cairn
+  Pages deployment.** Added the custom domain to project `cairn` and a proxied
+  `www` CNAME to `cairn-60m.pages.dev`. Public Cloudflare and Google resolvers
+  return the edge addresses; HTTPS serves 200 for `/` and `/app/`; the `www`
+  production bundle is byte-identical to the apex build. Pages verification is
+  active while its dashboard validation label finishes propagating. No source,
+  backend, or protocol state changed.
+- `[passive]` 2026-07-16 · Codex — **Catalogue-only listing imagery now uses a
+  compact evidence warning.** Market rows, table cards, and direct-search cards
+  replace the verbose scan-request/stock-photo copy with an oxblood circled `!`.
+  Hover and screen-reader labels distinguish requested seller photos from optional
+  ones; enlarged cards retain the full evidence explanation. A release guard now
+  re-hashes the finished entry bytes so immutable Pages caching cannot strand a
+  new build behind an old script URL. Rendered desktop QA, scoped ESLint, clean
+  assembled builds, and byte-identical apex verification pass. Sources `ee8b765`
+  and `11e5a33`; Pages `d3bc7628`. No scan policy, listing, evidence, or protocol
+  state changed.
+- `[passive]` 2026-07-16 · Codex — **Privy DIDs are no longer exposed on Market
+  tables.** Table cards now show only `page updated …` for live collectors or
+  `sample table` for mock sellers; the opened-table header likewise keeps only
+  the relevant human-facing date. The full seller ID remains internal for table
+  routing, piles, offers, and settlement. Rendered table-list/header QA, scoped
+  ESLint, assembled builds, and byte-identical apex verification pass. Source
+  `265ac4a`; Pages `3c6e7171`. No identity, protocol, or data semantics changed.
+- `[passive]` 2026-07-15 · Codex — **Anko's listing read now carries directly into
+  the deal, and enlarged-card Buy visibly lands on the pile.** Listing-level reads
+  render bounded follow-through for accept, counter, request-evidence, and stop:
+  checkout continuation, editable record-based offer seed, a prewritten plain-
+  English scan request, or Keep browsing. The exact listing is staged on the exact
+  seller's pile before navigation. Buy/Trade from the enlarged card now closes the
+  detail and reveals a sticky focused-card pile tray with seller, count, buy total,
+  and a continuation button. Desktop and compact browser QA proved detailed Buy →
+  visible pile and live Anko request-evidence → selected-card offer with the scan
+  note intact; scoped ESLint, assembled builds, and byte-identical apex verification
+  pass. Source `7d1d847`; Pages `bfcd4112`. No protocol, settlement, catalogue,
+  API, model, or `mockups/` semantics changed.
+- `[passive]` 2026-07-15 · Codex — **Card availability now opens a focused market
+  view, and Anko understands recorded deck lists.** Binder and pocket-page
+  availability labels open every public listing for that card, showing public
+  copy/seller counts plus price, evidence, and copy-count sorts. Each evidence
+  count opens that exact seller copy with Buy, Trade, and a bounded Anko evidence
+  read. The dated Gate snapshot now carries a copyright-minimal search index for
+  all 105 public decks (identity and card quantities only); exact deck names and
+  deck families resolve deterministically, while frequency remains labeled as
+  public-list evidence rather than strategic truth. Private `have` marks remain
+  private. Desktop/mobile browser QA, scoped ESLint, assembled build, catalogue
+  and world-agent audits, live exact-name/family probes, and byte-for-byte apex
+  bundle/catalogue checks pass. Source `7e8c92a`; Pages `1a33ad42`; Railway
+  `a2514b7d`. No protocol, settlement, or `mockups/` semantics changed.
+- `[passive]` 2026-07-15 · Codex — **Tables are now ordered, evidence-aware,
+  and directly actionable through Anko.** Owners can drag or arrow-order Display
+  Case cards, ask Anko from My Table, and add/change photos through a persistent
+  control; removal requires confirmation. Enlarged public listings now offer a
+  bounded evidence read. Unscanned asks over 10 USDC request a fresh scan and
+  count toward the table's high-value scan record, while cheap stock-photo filler
+  remains explicitly optional. Market tables lead with their Display Case and
+  use a stronger card-show presentation; dark is the first-visit default. Anko's
+  `counter`, `request_evidence`, and `accept` reads can render only parent-approved
+  actions, including editable USDC prefill and a prewritten scan request. Browser
+  QA proved owner ordering, My Table search, the 10-USDC boundary, enlarged-card
+  evidence reading, and the read-to-offer handoff. Scoped ESLint, diff checks,
+  local and clean assembled builds pass. Source commit `2522bcf`; Pages deployment
+  `3133f596`; apex serves `cairn-site--aX-WQue.js`, byte-identical to preview.
+  No catalogue, API, model, protocol, settlement, or `mockups/` semantics changed.
+- `[passive]` 2026-07-15 · Codex — **Anko can now curate the visible Binder field.**
+  Every card he highlights moves to the front in his stated order, natural-language
+  text no longer second-guesses that judged ordering, and pocket pages return to
+  page one for each new curated answer. Page pockets carry a restrained `★ Anko`
+  label and agent-blue edge; grid views retain their existing pick treatment.
+  Clearing the answer restores normal catalogue order. Scoped ESLint, assembled
+  Pages builds, and browser QA from page two with a three-card ordered response
+  pass. Source commit `f184b47`; Pages deployment `df176ae9`; apex serves
+  `cairn-site-B_C6kvHj.js`, byte-identical to preview. No collection, catalogue,
+  API, model, offer, settlement, or protocol state changed.
+- `[passive]` 2026-07-15 · Codex — **The scanner now asks for useful angles.**
+  Every recognized Front offers optional Back, Corners, and Holo tilt photos in
+  place, with saved-state previews and plain hints about what each view reveals.
+  The scanner waits for account-scoped photo storage before changing collection
+  state or closing; a storage failure keeps the review intact with a retryable
+  error. Browser QA proved a Front + Back scan persisted into the card's 2 / 4
+  evidence view, and scoped ESLint, diff checks, and a clean assembled Pages
+  build pass. Source commit `632f10a`; Pages deployment `461b04cb`; apex serves
+  `cairn-site-FzXkLpeY.js`. Photos remain evidence to inspect, not proof of
+  authenticity or condition. No recognition, API, catalogue, offer, settlement,
+  or `mockups/` semantics changed.
+- `[passive]` 2026-07-15 · Codex — **Market card searches now cross every table.**
+  A direct query shows every matching listing together, names the table on each
+  card, keeps all asks comparable, and offers Buy/Trade pile actions in place.
+  Adding one seller's copy marks only that listing and leaves the other tables
+  visible. Anko's market results use the same per-table identity and no longer
+  truncate at 24 listings. Scoped ESLint, assembled Pages build, diff checks,
+  and browser QA on two Mizuki listings from two tables pass. Source commit
+  `4cddb11`; Pages deployment `a9e4f9d2`; apex serves
+  `cairn-site-B_qSuFt1.js`. No API, model, catalogue, settlement, or
+  `mockups/` files changed.
 - `[passive]` 2026-07-15 · Codex — **Anko now has dated emerging-deck intelligence without a pretend meta.**
   A reproducible, summary-only The Gate snapshot records 105 visible public or
   author-published decks, 101 exact 50-main-card + Leader + Gate shapes, a
