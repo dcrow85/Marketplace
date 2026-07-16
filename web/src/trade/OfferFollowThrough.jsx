@@ -93,7 +93,7 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
 
       {evidenceAnswered && !draft && (
         <div className="anko-followbar evidence-answered">
-          <span className="mono">Their answer is on the mat · your move</span>
+          <span className="mono">Their answer is here · your move</span>
           <button className="sheetbtn mk-sm mono sw-boot" onClick={keepOfferOpen}>Keep offer as written →</button>
           {onCounter && <button className="sheetbtn mk-sm mono" onClick={onCounter}>Revise offer →</button>}
         </div>

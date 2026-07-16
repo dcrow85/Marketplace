@@ -12,7 +12,7 @@ import { handleFor } from '../identity.js'
 import { retryImg } from '../binder/helpers.jsx'
 import AskAnko from './AskAnko.jsx'
 import OfferFollowThrough from './OfferFollowThrough.jsx'
-import DealMat from './DealMat.jsx'
+import OfferSummary from './OfferSummary.jsx'
 import { paymentReference, payPalMeUrl, RAIL_PAYPAL } from '../payments/rails.js'
 
 // The offers ledger: every conversation, both directions, counters chained. An
@@ -253,26 +253,22 @@ export default function Offers({ accountId, catalog, onCounter, onScan }) {
         const answeredEvidence = evidenceAnswered(o)
         const otherName = (o.dir === 'out' ? o.toHandle : o.fromHandle) || handleFor(other)
         const dealStatus = needsEvidence
-          ? { label: 'Your move · photos requested', tone: 'your-move' }
+          ? { label: 'Photos requested', tone: 'your-move' }
           : answeredEvidence
-            ? { label: 'Evidence added · your move', tone: 'your-move' }
+            ? { label: 'New information', tone: 'your-move' }
             : waitingEvidence
               ? { label: 'Waiting for photos', tone: 'waiting' }
               : o.dir === 'in' && open
-                ? { label: 'Your move · answer offer', tone: 'your-move' }
+                ? { label: 'Response needed', tone: 'your-move' }
                 : o.dir === 'out' && open
-                  ? { label: `Waiting on ${otherName}`, tone: 'waiting' }
+                  ? { label: 'Awaiting response', tone: 'waiting' }
                   : o.state === 'accepted'
-                    ? { label: 'Terms agreed', tone: 'agreed' }
+                    ? { label: 'Terms accepted', tone: 'agreed' }
                     : { label: STATUS_LABEL[o.state] || o.state.replace('_', ' '), tone: o.state === 'settled' ? 'agreed' : 'closed' }
         return (
           <div key={o.id} className={'ofl-row' + (((o.dir === 'in' && open) && !waitingEvidence) || needsEvidence || answeredEvidence ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
-            <div className="ofl-topline mono">
-              <span>{o.dir === 'out' ? '→ to' : '← from'} <b>{otherName}</b> · {o.at}{o.live ? <span className="ofl-live"> · ● live</span> : ''}</span>
-              <span>{o.counterOf ? 'counter-offer' : 'offer'}</span>
-            </div>
-            <DealMat o={o} otherName={otherName} status={dealStatus} receiveItems={receiveItems} giveItems={giveItems}
-              cashFromYou={cashFromYou} renderChip={chip} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid} />
+            <OfferSummary o={o} otherName={otherName} status={dealStatus} receiveItems={receiveItems} giveItems={giveItems}
+              cashFromYou={cashFromYou} renderChip={chip} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid} open={open} />
             {settling && (
               <div className="mt-steps mono">
                 {flow.map((s, i) => (
@@ -285,25 +281,46 @@ export default function Offers({ accountId, catalog, onCounter, onScan }) {
             {(o.log || []).slice(-1).map((l, i) => <div key={i} className="mt-line"><span className="mono dim">rail</span> {l}</div>)}
             <LiveLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} decision={decision} recommended={recommended} />
             <PayPalLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} />
-            {o.dir === 'in' && open && !needsEvidence && <>
-              <div className="ofl-decisionlabel mono">Your decision · accept, counter, or decline</div>
-              <AskAnko decision={decision} recommended={recommended}
-                onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
-            </>}
-            <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
+            {(needsEvidence || answeredEvidence) && <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
               cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
-              onEvidenceSent={setEvidenceNotice}
-              onScan={onScan} showThread={false}
-              onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />
-            <span className="sw-acts">
-              {o.dir === 'in' && open && !needsEvidence && <>
-                <button className="sheetbtn mk-sm mono sw-boot" onClick={() => acceptIncoming(key, o.id)}>✓ accept</button>
-                <button className="sheetbtn mk-sm mono" onClick={() => onCounter && onCounter(o)}>⇄ counter</button>
-                <button className="sheetbtn mk-sm mono" onClick={() => declineIncoming(key, o.id)}>✕ decline</button>
-              </>}
-              {o.dir === 'out' && open && <button className="sheetbtn mk-sm mono" onClick={() => withdrawOffer(key, o.id)}>✕ withdraw</button>}
-              {!open && !OFFER_SETTLING.includes(o.state) && <button className="sheetbtn mk-sm mono" onClick={() => clearOffer(key, o.id)}>✕ clear</button>}
-            </span>
+              onEvidenceSent={setEvidenceNotice} onScan={onScan} showThread={false}
+              onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />}
+
+            {o.dir === 'in' && open && !needsEvidence && !answeredEvidence && <div className="checkout-actions">
+              <button className="checkout-primary" onClick={() => acceptIncoming(key, o.id)}>Accept offer</button>
+              <span className="checkout-secondary">
+                <button onClick={() => onCounter && onCounter(o)}>Make a counter</button>
+                <button onClick={() => declineIncoming(key, o.id)}>Decline</button>
+              </span>
+              <details className="checkout-help">
+                <summary>Questions or help</summary>
+                <div className="checkout-helpbody">
+                  <AskAnko decision={decision} recommended={recommended}
+                    onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
+                  <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
+                    cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
+                    onEvidenceSent={setEvidenceNotice} onScan={onScan} showThread={false}
+                    onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />
+                </div>
+              </details>
+            </div>}
+
+            {o.dir === 'out' && open && !answeredEvidence && !waitingEvidence && <details className="checkout-help standalone">
+              <summary>Questions or updates</summary>
+              <div className="checkout-helpbody">
+                <OfferFollowThrough o={o} offersKey={key} cardNames={getCards.map((c) => c.name_en)}
+                  cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
+                  onEvidenceSent={setEvidenceNotice} onScan={onScan} showThread={false}
+                  onCounter={() => onCounter?.(o)} />
+              </div>
+            </details>}
+
+            {o.dir === 'out' && open && !answeredEvidence && <div className="checkout-quietaction">
+              <button onClick={() => withdrawOffer(key, o.id)}>Withdraw offer</button>
+            </div>}
+            {!open && !OFFER_SETTLING.includes(o.state) && <div className="checkout-quietaction">
+              <button onClick={() => clearOffer(key, o.id)}>Clear from history</button>
+            </div>}
           </div>
         )
   }
