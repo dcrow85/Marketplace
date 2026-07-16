@@ -74,6 +74,7 @@ function LiveLeg({ o, offersKey, catalogId, accountId, decision, recommended }) 
 
 export default function Offers({ accountId, catalog, onCounter }) {
   const [reads, setReads] = useState({})
+  const [evidenceNotice, setEvidenceNotice] = useState(null)
   const data = useCatalog(catalog)
   const key = offersKeyFor(catalog.id, accountId)
   const offers = useBus(() => loadOffers(key), [key])
@@ -170,6 +171,10 @@ export default function Offers({ accountId, catalog, onCounter }) {
               </div>
             </div>
             {o.response?.line && <div className="sw-say"><span className="mono dim">their agent</span> {o.response.line}</div>}
+            {o.note && <div className="ofl-offernote">
+              <span className="mono">Message sent with offer</span>
+              <p>{o.note}</p>
+            </div>}
             {settling && (
               <div className="mt-steps mono">
                 {FLOW.map((s, i) => (
@@ -187,6 +192,7 @@ export default function Offers({ accountId, catalog, onCounter }) {
                 onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
             </>}
             <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
+              onEvidenceSent={setEvidenceNotice}
               onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />
             <span className="sw-acts">
               {o.dir === 'in' && open && <>
@@ -203,6 +209,10 @@ export default function Offers({ accountId, catalog, onCounter }) {
 
   return (
     <div className="ofl">
+      {evidenceNotice && <div className="ofl-evsent mono" role="status">
+        <span>✓ {evidenceNotice}</span>
+        <button onClick={() => setEvidenceNotice(null)} aria-label="Dismiss confirmation">✕</button>
+      </div>}
       <section className="trade-group needs">
         <div className="trade-grouphead"><span className="ek">Needs you</span><span className="mono dim">{grouped.needs.length ? `${grouped.needs.length} decision${grouped.needs.length === 1 ? '' : 's'}` : 'nothing waiting on you'}</span></div>
         {grouped.needs.map(renderOffer)}

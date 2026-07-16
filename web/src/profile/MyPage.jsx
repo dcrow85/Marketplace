@@ -50,6 +50,13 @@ function SectionSizePicker({ label, storageKey, size, onSize }) {
   )
 }
 
+function CatalogueImageMark({ requested }) {
+  const label = requested
+    ? 'Catalogue image only — fresh seller photos requested'
+    : 'Catalogue image only — fresh seller photos optional at this ask'
+  return <span className="mono mk-wit catalog" role="img" aria-label={label} title={label}>!</span>
+}
+
 export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
@@ -59,6 +66,8 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
   const mockSales = useBus(() => loadMockSales(mockSalesKeyFor(catalog.id)), [catalog])
   const [sel, setSel] = useState(null) // a card held open — the binder's modal, right here
   const [query, setQuery] = useState('')
+  const [binderFilter, setBinderFilter] = useState('all')
+  const [binderSort, setBinderSort] = useState('number')
   const displaySizeKey = `cairn-table-display-size:${catalog.id}:${accountId || 'anon'}`
   const binderSizeKey = `cairn-table-binder-size:${catalog.id}:${accountId || 'anon'}`
   const displayOrderKey = `cairn-table-display-order:${catalog.id}:${accountId || 'anon'}`
@@ -165,8 +174,20 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
     return rows.display.slice().sort((a, b) => (rank.get(a.c.uid) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.c.uid) ?? Number.MAX_SAFE_INTEGER))
   }, [rows.display, displayOrder])
   const displayRows = orderedDisplayRows.filter(({ c }) => listingMatches(c))
-  const binderRows = rows.listed.filter(({ e }) => !(e.sell && e.display)).filter(({ c }) => listingMatches(c))
-  const listedRows = [...displayRows, ...binderRows]
+  const binderBaseRows = rows.listed.filter(({ e }) => !(e.sell && e.display))
+  const binderRows = binderBaseRows.filter(({ c }) => listingMatches(c)).filter(({ e }) => {
+    const scanned = !!((e.pile || []).length || e.photo_hash)
+    if (binderFilter === 'sale') return !!e.sell
+    if (binderFilter === 'trade') return !!e.trade
+    if (binderFilter === 'scanned') return scanned
+    if (binderFilter === 'needs_scan') return Number(e.ask) > SCAN_REQUEST_USDC && !scanned
+    return true
+  }).sort((a, b) => {
+    if (binderSort === 'name') return (a.c.name_en || '').localeCompare(b.c.name_en || '')
+    if (binderSort === 'price_asc') return (Number(a.e.ask) || 0) - (Number(b.e.ask) || 0)
+    if (binderSort === 'price_desc') return (Number(b.e.ask) || 0) - (Number(a.e.ask) || 0)
+    return (a.c.num || '').localeCompare(b.c.num || '', undefined, { numeric: true })
+  })
   const ankoPicks = useMemo(() => new Set(ankoRes?.ok && Array.isArray(ankoRes.data?.result?.picks) ? ankoRes.data.result.picks : []), [ankoRes])
 
   // the record strip: computed, never asserted
@@ -299,7 +320,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
         aria-label="Search my listed cards" placeholder="Search my listed cards…"
         onChange={(event) => setQuery(event.target.value)} />
       <div className="pf-sechead">
-        <span className="pf-sectiontitle"><span className="ek">Display case</span><span className="mono dim">for-sale cards you lead with</span></span>
+        <span className="pf-sectiontitle"><span className="ek">Display case</span></span>
         <SectionSizePicker label="Display case" storageKey={displaySizeKey} size={displaySize} onSize={setDisplaySize} />
       </div>
       {displayRows.length
@@ -308,13 +329,29 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
         : <div className="empty">{query ? 'No display cards match that search.' : 'Your case is empty. Star a for-sale card and it moves here.'}</div>}
 
       <div className="pf-sechead">
-        <span className="pf-sectiontitle"><span className="ek">Binder</span><span className="mono dim">{rows.listed.length ? `${query ? `${listedRows.length} of ` : ''}${rows.listed.length} listed · asks are per copy` : ''}</span></span>
+        <span className="pf-sectiontitle"><span className="ek">Binder</span><span className="mono dim">{binderBaseRows.length ? `${query || binderFilter !== 'all' ? `${binderRows.length} of ` : ''}${binderBaseRows.length} listed · asks are per copy` : ''}</span></span>
         <SectionSizePicker label="Binder" storageKey={binderSizeKey} size={binderSize} onSize={setBinderSize} />
+      </div>
+      <div className="pf-listtools">
+        <div className="pf-filterchips mono" aria-label="Filter table binder">
+          {[
+            ['all', 'All'], ['sale', 'For sale'], ['trade', 'Trade'], ['scanned', 'Scanned'], ['needs_scan', 'Needs scan'],
+          ].map(([key, label]) => <button key={key} className={binderFilter === key ? 'on' : ''}
+            onClick={() => setBinderFilter(key)}>{label}</button>)}
+        </div>
+        <label className="pf-listsort mono">Sort
+          <select value={binderSort} onChange={(event) => setBinderSort(event.target.value)}>
+            <option value="number">Card number</option>
+            <option value="name">Name A–Z</option>
+            <option value="price_asc">Price low–high</option>
+            <option value="price_desc">Price high–low</option>
+          </select>
+        </label>
       </div>
       {binderRows.length
         ? <ListingTiles rows={binderRows} size={binderSize} setSel={setSel} setAsk={setAsk} setDisplay={setDisplay}
             ankoPicks={ankoPicks} onScan={onScan} />
-        : <div className="empty">{query ? 'No binder cards match that search.' : 'Nothing in your binder. Open a card you Have and mark it “List for sale” or “Open to trade”.'}</div>}
+        : <div className="empty">{query || binderFilter !== 'all' ? 'No binder cards match those controls.' : 'Nothing in your binder. Open a card you Have and mark it “List for sale” or “Open to trade”.'}</div>}
 
       <div className="pf-sechead">
         <span className="ek">You&rsquo;re hunting</span>
@@ -360,7 +397,7 @@ function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = fa
         </div>}
         <MiniCard c={c} onTap={() => setSel(c.uid)}
           corner={<>{e.trade && <span className="sp-tradeflag">⇄ trade</span>}{ankoPicks?.has(c.uid) && <span className="pf-ankopick">★ Anko</span>}</>}
-          sub={`${condStr(e)} · ${scanned ? '✓ scans on file' : scanRequested ? 'scan requested at this ask' : 'stock photo okay at this ask'}${(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}`}
+          sub={<>{condStr(e)} · {scanned ? <span className="mk-wit ok">✓ scans on file</span> : <CatalogueImageMark requested={scanRequested} />}{(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}</>}
           actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
             {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
               aria-label={e.display ? 'Remove from display case' : 'Pin to display case'}

@@ -25,6 +25,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const [qg, setQg] = useState('')
   const [cashEdit, setCashEdit] = useState(initialCash == null ? null : String(initialCash)) // null = follow the buy total
   const [note, setNote] = useState(initialNote)
+  const [evidenceRequestIncluded, setEvidenceRequestIncluded] = useState(() => /scan|photo|evidence/i.test(initialNote))
   const [abusy, setAbusy] = useState(false)
   const [ankoScope, setAnkoScope] = useState(null) // his lens on YOUR side
   const [ankoLine, setAnkoLine] = useState(null)
@@ -180,8 +181,11 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       onConfirm: (amount) => setCashEdit(String(amount)),
     }]
     if (read.lean === 'request_evidence') return [{
-      id: 'request-scan', label: 'Add a fresh-scan request', primary: true,
-      onSelect: () => setNote('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.'),
+      id: 'request-scan', label: 'Add scan request to offer', primary: true,
+      onSelect: () => {
+        setNote('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.')
+        setEvidenceRequestIncluded(true)
+      },
     }]
     if (read.lean === 'accept') return [{ id: 'keep-terms', label: 'Keep these terms', onSelect: () => setCashEdit(String(cash)) }]
     return []
@@ -198,7 +202,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       live: open.live, from: accountId, cat: catalog.id,
     })
     clearPile(pileKey, open.id)
-    onSent()
+    onSent({ evidenceRequestIncluded })
   }
 
   return (
@@ -285,7 +289,12 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           <input className="ti num stl-cash" type="number" min="0" value={cash} onChange={(e) => setCashEdit(e.target.value)} />
           <span className="mono dim">USDC{cashEdit == null && buysSum > 0 ? ' · following the buy total' : ''}</span>
         </div>
-        <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note} onChange={(e) => setNote(e.target.value)} />
+        <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note}
+          onChange={(e) => { setNote(e.target.value); setEvidenceRequestIncluded(/scan|photo|evidence/i.test(e.target.value)) }} />
+        {evidenceRequestIncluded && <div className="stl-requestincluded mono" role="status">
+          <span>✓ Evidence request added to this offer.</span>
+          <span>It sends when you press <b>Send offer</b> below — nothing has been sent yet.</span>
+        </div>}
         {recordLine && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine} — settlements are history, not an appraisal.</div>}
       </div>
 

@@ -28,6 +28,10 @@
 /* one table */
 .mk-meter { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 12px; color: var(--ink2); }
 .mk-sectionhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-top: 4px; }
+.mk-public-sechead { margin-top: 4px; }
+.mk-public-tiles { margin-bottom: 2px; }
+.mk-public-tiles .minicard-sub { display: flex; align-items: center; flex-wrap: wrap; gap: 3px; }
+.mk-public-want { position: absolute; z-index: 2; top: 6px; left: 6px; color: var(--paper); background: var(--agent); border-radius: 5px; padding: 3px 6px; font-size: 8.5px; }
 .mk-wantsbtn { font: inherit; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 5px 10px; cursor: pointer; }
 .mk-wantsbtn.on { border-color: var(--ink); background: var(--mount); }
 .mk-rows { display: flex; flex-direction: column; }
@@ -223,6 +227,11 @@
 .ofl-evmsg > span { color: var(--dim); font-size: 9.5px; text-transform: uppercase; }
 .ofl-evmsg p { margin: 2px 0 0; font-size: 12.5px; line-height: 1.45; }
 .ofl-evlocal { color: var(--dim); font-size: 9.5px; }
+.ofl-offernote { border-left: 2px solid var(--agent); padding: 5px 0 5px 9px; }
+.ofl-offernote > span { color: var(--agent); font-size: 9.5px; text-transform: uppercase; letter-spacing: .04em; }
+.ofl-offernote p { margin: 2px 0 0; color: var(--ink2); font-size: 12.5px; line-height: 1.45; }
+.ofl-evsent { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; color: var(--agent); background: var(--agent-bg); border: 0.5px solid var(--agent); border-radius: 8px; padding: 8px 10px; font-size: 10.5px; line-height: 1.4; }
+.ofl-evsent button { flex: none; color: inherit; background: transparent; border: 0; padding: 0; cursor: pointer; }
 .ofl-evdraft { display: flex; flex-direction: column; gap: 6px; border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 9px; padding: 10px 11px; }
 .ofl-evdraft label { color: var(--agent); font-size: 10px; text-transform: uppercase; letter-spacing: .05em; }
 .ofl-evdraft textarea { width: 100%; min-height: 76px; resize: vertical; box-sizing: border-box; color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 7px; padding: 8px 9px; font: inherit; font-size: 12.5px; line-height: 1.4; }
@@ -409,6 +418,8 @@
 .stl-ask { margin: 0; }
 .stl-ankoline { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 11.5px; color: var(--ink2); border: 0.5px solid var(--agent); background: var(--agent-bg); border-radius: 8px; padding: 8px 12px; }
 .stl-clear { font: inherit; color: var(--ink); background: transparent; border: 0; cursor: pointer; text-decoration: underline; }
+.stl-requestincluded { display: flex; align-items: center; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; color: var(--agent); background: var(--agent-bg); border: 0.5px solid var(--agent); border-radius: 8px; padding: 8px 10px; font-size: 10.5px; }
+.stl-requestincluded b { color: var(--ink); }
 .minicard.stl-anko-pick { border-color: var(--agent); box-shadow: 0 0 0 2px var(--agent), 0 10px 24px color-mix(in srgb, var(--agent) 18%, transparent); background: color-mix(in srgb, var(--paper) 94%, var(--agent) 6%); }
 .stl-anko-badge { position: absolute; top: 6px; left: 6px; z-index: 2; color: var(--paper); background: var(--agent); border-radius: 5px; padding: 3px 6px; font-size: 9px; letter-spacing: .02em; }
 .minicard.stl-anko-pick .minicard-check { background: var(--agent); }
@@ -503,6 +514,12 @@ button.minicard { cursor: pointer; }
 .pf-sechead { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .pf-sectiontitle { display: flex; align-items: baseline; gap: 10px; min-width: 0; flex-wrap: wrap; }
 .pf-listsearch { margin: 0; }
+.pf-listtools { display: flex; align-items: center; justify-content: space-between; gap: 8px 14px; flex-wrap: wrap; margin-top: -2px; }
+.pf-filterchips { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.pf-filterchips button { color: var(--dim); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 6px 10px; font: inherit; font-size: 10.5px; cursor: pointer; }
+.pf-filterchips button:hover, .pf-filterchips button.on { color: var(--ink); border-color: var(--ink); background: var(--mount); }
+.pf-listsort { display: flex; align-items: center; gap: 7px; color: var(--dim); font-size: 10.5px; }
+.pf-listsort select { color: var(--ink); background: var(--paper); border: 0.5px solid var(--rule); border-radius: 7px; padding: 6px 28px 6px 9px; font: inherit; font-size: 10.5px; }
 .pf-sizepick { flex: none; }
 .pf-anko { display: flex; flex-direction: column; gap: 7px; margin: 2px 0 4px; }
 .pf-ankobar { width: 100%; }

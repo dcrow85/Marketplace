@@ -10,7 +10,7 @@ function requestText(cardNames) {
   return `Could you add clear front and back photos, condition notes, and any provenance you have for ${subject}?`
 }
 
-export default function OfferFollowThrough({ o, offersKey, read, cardNames = [], onAccept, onCounter, onDecline }) {
+export default function OfferFollowThrough({ o, offersKey, read, cardNames = [], onAccept, onCounter, onDecline, onEvidenceSent }) {
   const [draft, setDraft] = useState(null)
   const thread = Array.isArray(o.evidenceThread) ? o.evidenceThread : []
   const last = thread[thread.length - 1]
@@ -28,7 +28,17 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
     const sent = draft.kind === 'request'
       ? requestOfferEvidence(offersKey, o.id, draft.text)
       : respondToOfferEvidence(offersKey, o.id, draft.text)
-    if (sent) setDraft(null)
+    if (sent) {
+      const notice = draft.kind === 'request'
+        ? o.live
+          ? 'Evidence request sent with this open offer. The offer is still waiting — it was not accepted or paid.'
+          : 'Sample evidence request recorded here. Nothing was sent to another collector.'
+        : o.live
+          ? 'Evidence response sent. The offer remains open.'
+          : 'Sample evidence response recorded here. Nothing was sent to another collector.'
+      onEvidenceSent?.(notice)
+      setDraft(null)
+    }
   }
 
   return (

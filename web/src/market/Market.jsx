@@ -432,7 +432,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         catalog={catalog} accountId={accountId} pileKey={pileKey} agentName={agentName}
         initialCash={offerCashSeed} initialNote={offerNoteSeed}
         onBack={() => setSettling(false)}
-        onSent={() => { setSettling(false); setSwapMsg(`offer sent to ${sellerName(open)} — watch Trades for their response.`) }} />
+        onSent={({ evidenceRequestIncluded } = {}) => {
+          setSettling(false)
+          setSwapMsg(evidenceRequestIncluded
+            ? `offer + evidence request sent to ${sellerName(open)} — watch Trades for their response.`
+            : `offer sent to ${sellerName(open)} — watch Trades for their response.`)
+        }} />
     )
   }
 
@@ -517,35 +522,18 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const displayRows = rows.filter(({ c }) => displayUids.has(c.uid))
       .sort((a, b) => (displayRank.get(a.c.uid) ?? Number.MAX_SAFE_INTEGER) - (displayRank.get(b.c.uid) ?? Number.MAX_SAFE_INTEGER))
     const binderRows = rows.filter(({ c }) => !displayUids.has(c.uid))
-    const cardGrid = (sectionRows, emptyText) => (
-      <div className="grid">
+    const cardGrid = (sectionRows, emptyText, section = 'binder') => (
+      <div className={`sp-tiles mk-public-tiles ${section}`} style={{ '--tilescale': section === 'display' ? 1.3 : 1 }}>
         {sectionRows.map(({ l, c }) => {
           const p = inPile(open.id, c.uid)
           return (
-            <div key={c.uid} className={'cell' + (aisleMatch && !aisleMatch.has(c.uid) ? ' mk-dim' : '')}>
-              <div className="stancebar">
-                <button className={'seg sg-have' + (p?.mode === 'buy' ? ' on' : '')}
-                  title="into your pile at the ask — the deal sends when you finish the table"
-                  onClick={() => pickUp(open.id, c.uid, 'buy')}>{p?.mode === 'buy' ? '✓ buy' : `buy · ${l.ask} USDC`}</button>
-                <button className={'seg sg-want' + (p?.mode === 'trade' ? ' on' : '')}
-                  title="into your pile as a trade-for — you pick your side at settle"
-                  onClick={() => pickUp(open.id, c.uid, 'trade')}>{p?.mode === 'trade' ? '✓ trade' : '⇄ trade'}</button>
-              </div>
-              <div className={'card' + (p ? ' s-have' : '')} role="button" tabIndex={0} title="hold it up to the light"
-                aria-label={`${c.name_en} · ${c.num} · ${l.ask} USDC`}
-                onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setZoom({ c, l, sellerId: open.id }) } }}
-                onClick={() => setZoom({ c, l, sellerId: open.id })}>
-                <div className="face"><div className="ja">{c.name_en}</div></div>
-                {c.image && <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
-              </div>
-              <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
-                <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
-                <div className="cap-sub">
-                  <span className="crom">{witnessCell(l.witness, l.ask)}</span>
-                  <span className={'cmeta ' + (p ? 'm-have' : 'm-want')}>{l.ask} USDC</span>
-                </div>
-              </div>
-            </div>
+            <MiniCard key={c.uid} c={c} dim={aisleMatch && !aisleMatch.has(c.uid)}
+              title="hold it up to the light" onTap={() => setZoom({ c, l, sellerId: open.id })}
+              corner={myWants.has(c.uid) ? <span className="mk-public-want mono">★ your want</span> : null}
+              sub={<>{c.num} · {l.cond || 'condition unlisted'} · {witnessCell(l.witness, l.ask)}</>}
+              actions={<PileButtons ask={l.ask} inPile={!!p} mode={p?.mode}
+                onBuy={() => pickUp(open.id, c.uid, 'buy')}
+                onTrade={() => pickUp(open.id, c.uid, 'trade')} />} />
           )
         })}
         {!sectionRows.length && <div className="empty">{emptyText}</div>}
@@ -605,11 +593,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             title="sort by ask">price {tableSort === 'price_desc' ? '↓' : tableSort === 'price_asc' ? '↑' : '⇅'}</button>
         </div>
         {displayRows.length > 0 && <>
-          <div className="mk-sectionhead"><span className="ek">Display case</span><span className="mono dim">the cards they lead with</span></div>
-          {cardGrid(displayRows, '')}
+          <div className="pf-sechead mk-public-sechead"><span className="pf-sectiontitle"><span className="ek">Display case</span></span></div>
+          {cardGrid(displayRows, '', 'display')}
         </>}
-        <div className="mk-sectionhead"><span className="ek">Binder</span><span className="mono dim">everything else on their table</span></div>
-        {cardGrid(binderRows, displayRows.length ? 'Every matching card is in the display case.' : 'Nothing on this table matches your wants.')}
+        <div className="pf-sechead mk-public-sechead"><span className="pf-sectiontitle"><span className="ek">Binder</span>
+          <span className="mono dim">{binderRows.length} listed · asks are per copy</span></span></div>
+        {cardGrid(binderRows, displayRows.length ? 'Every matching card is in the display case.' : 'Nothing on this table matches your wants.', 'binder')}
         {theirWants.length > 0 && (
           !huntOpen
             ? <button className="mk-huntbar mono" onClick={() => setHuntOpen(true)}>
