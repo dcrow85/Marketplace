@@ -284,7 +284,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
 
   return (
     <div className="pf">
-      <ProfileHeader accountId={accountId} name={profile.name} onName={setName}
+      <ProfileHeader key={accountId || 'anon'} accountId={accountId} name={profile.name} onName={setName}
         sign={profile.sign} onSign={setSign} photo={profile.photo} onPhoto={setPhoto}
         paypal={profile.paypal} onPayPal={setPayPal} stats={stats} />
       <div className="pf-anko">

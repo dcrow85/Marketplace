@@ -601,7 +601,18 @@ button.minicard { cursor: pointer; }
 /* ---- the collector profile: masthead, binder, hunt ---- */
 .pf { display: flex; flex-direction: column; gap: 16px; }
 .pf-head { display: flex; align-items: flex-start; gap: 14px; }
-.pf-payments { display: grid; grid-template-columns: minmax(180px, .55fr) minmax(320px, 1.45fr); gap: 12px 18px; padding: 13px 14px; border: .5px solid var(--rule); border-radius: 10px; background: var(--paper2); }
+.pf-payments { padding: 0; border: .5px solid var(--rule); border-radius: 10px; background: var(--paper2); overflow: hidden; }
+.pf-paysummary { width: 100%; min-height: 43px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 9px 13px; color: var(--ink); text-align: left; background: transparent; border: 0; cursor: pointer; }
+.pf-paysummary:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); }
+.pf-paystatus { min-width: 0; color: var(--dim); font-size: 9.5px; white-space: nowrap; overflow: hidden; }
+.pf-paydesktop { min-width: 0; display: flex; align-items: baseline; gap: 5px; overflow: hidden; }
+.pf-payphone { display: none; overflow: hidden; text-overflow: ellipsis; }
+.pf-paystatus b { color: var(--ink2); font-weight: 600; }
+.pf-paystatus span { overflow: hidden; text-overflow: ellipsis; }
+.pf-paystatus i { color: var(--faint); font-style: normal; }
+.pf-paymanage { color: var(--agent); font-size: 9.5px; }
+.pf-paymanage i { display: inline-block; width: 10px; font-style: normal; text-align: center; }
+.pf-paymentbody { display: grid; grid-template-columns: minmax(180px, .55fr) minmax(320px, 1.45fr); gap: 12px 18px; padding: 12px 14px 13px; border-top: .5px solid var(--rule); }
 .pf-payintro p { margin: 4px 0 0; color: var(--dim); font-size: 11px; line-height: 1.4; }
 .pf-railcards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .pf-railcard { min-width: 0; display: grid; grid-template-columns: 25px minmax(0, 1fr) auto; gap: 8px; align-items: start; padding: 9px 10px; color: var(--ink2); background: var(--paper); border: .5px solid var(--rule); border-radius: 8px; }
@@ -720,7 +731,10 @@ button.pf-huntopen { font: inherit; color: inherit; background: transparent; bor
 .ofl-fund input { width: 230px; max-width: 46vw; font: inherit; font-size: 11px; padding: 4px 7px; border: 0.5px solid var(--rule); border-radius: 5px; background: transparent; color: var(--ink); }
 .ofl-err { color: var(--signal); font-size: 11px; }
 @media (max-width: 700px) {
-  .pf-payments { grid-template-columns: minmax(0, 1fr); }
+  .pf-paysummary { grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; padding-inline: 11px; }
+  .pf-paydesktop { display: none; }
+  .pf-payphone { display: block; }
+  .pf-paymentbody { grid-template-columns: minmax(0, 1fr); padding-inline: 11px; }
   .pf-railcards { grid-template-columns: minmax(0, 1fr); }
   .stl-rails { grid-template-columns: minmax(0, 1fr); }
 }
