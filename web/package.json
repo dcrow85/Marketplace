@@ -9,6 +9,7 @@
     "build": "vite build --base=/app/ --outDir dist/app",
     "postbuild": "node scripts/assemble-pages.mjs",
     "build:app": "vite build",
+    "check:catalog": "node scripts/check-winner-catalog.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

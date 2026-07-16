@@ -15,6 +15,7 @@ import { pileKeyFor, addToPile } from '../market/pile.js'
 import MarketFinds from '../market/MarketFinds.jsx'
 import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
 import { HaveActionsLesson, WantActionsLesson } from '../agent/MeetAnko.jsx'
+import { cardMatchesText, initialFamilyFilter } from './catalogSearch.js'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
@@ -43,25 +44,6 @@ function cardMatchesChannel(card, channel) {
     : card.product_channel === channel
 }
 
-function cardMatchesText(card, needle, setById) {
-  const q = String(needle || '').trim().toLowerCase()
-  if (!q) return true
-  const hay = [
-    card.num,
-    card.name_en,
-    card.romaji,
-    card.name_ja,
-    card.element,
-    card.rarity,
-    card.illustrator,
-    card.source_entry_id,
-    card.release_family_label,
-    card.product_channel_label,
-    setById[card.set_id]?.label,
-  ].filter(Boolean).join(' ').toLowerCase()
-  return hay.includes(q)
-}
-
 export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG, onBrowseCard, onboardingStep = null, onboardingGuide = null }) {
   const [data, setData] = useState(null)
   const [err, setErr] = useState('')
@@ -70,7 +52,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [query, setQuery] = useState('') // the unified search/ask input text
   const askInput = useRef(null)
   const [stanceF, setStanceF] = useState(() => new Set())
-  const [familyF, setFamilyF] = useState(() => new Set())
+  const [familyF, setFamilyF] = useState(initialFamilyFilter)
   const [channelF, setChannelF] = useState(() => new Set())
   const [catF, setCatF] = useState(() => new Set())
   const [elementF, setElementF] = useState(() => new Set())
@@ -450,17 +432,6 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const CATS = useMemo(() => data?.ui?.category_chips || [], [data])
   const ELEMENTS = useMemo(() => data?.ui?.element_chips || [], [data])
   const FAMILIES = useMemo(() => data?.ui?.family_chips || [], [data])
-  // Open on the release family with the most card art, so AZUKI lands on Gates Awakened rather than
-  // Alpha's master-sheet-only rows (which have no individual photo). User can switch to All / Alpha freely.
-  useEffect(() => {
-    if (!data) return
-    const fams = data.ui?.family_chips || []
-    if (fams.length < 2) return
-    const best = fams.map((f) => ({ v: f.value, n: data.cards.filter((c) => c.release_family === f.value && c.image).length }))
-      .sort((a, b) => b.n - a.n)[0]
-    /* eslint-disable-next-line react-hooks/set-state-in-effect -- default the release view once per catalog load. */
-    if (best && best.n > 0) setFamilyF(new Set([best.v]))
-  }, [data])
   const toggleChip = (ch) => {
     if (ch.g === 'all') clearBrowseFilters()
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
