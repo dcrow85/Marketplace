@@ -398,7 +398,8 @@ function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = fa
             <button disabled={index === rows.length - 1} onClick={() => onNudge?.(c.uid, 1)} aria-label={`Move ${c.name_en} later`}>→</button></span>
         </div>}
         <MiniCard c={c} onTap={() => setSel(c.uid)}
-          corner={<>{e.trade && <span className="sp-tradeflag">⇄ trade</span>}{ankoPicks?.has(c.uid) && <span className="pf-ankopick">★ Anko</span>}{scanRequested && <AddPhotosAction card={c} onScan={onScan} />}</>}
+          corner={ankoPicks?.has(c.uid) ? <span className="pf-ankopick">★ Anko</span> : null}
+          status={(e.trade || scanRequested) ? <>{e.trade && <span className="sp-tradeflag">⇄ Trade</span>}{scanRequested && <AddPhotosAction card={c} onScan={onScan} />}</> : null}
           sub={<>{condStr(e)}{scanned ? <> · <span className="mk-wit ok">✓ photos</span></> : null}{(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}</>}
           actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
             {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
