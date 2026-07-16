@@ -58,6 +58,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **The editable profile now teaches payment rails once,
+  then gets out of the table's way.** A fresh account sees the full “How buyers can pay”
+  explanation on its first My Table visit. Returning visits collapse it to a 43px
+  `Payment options` row that keeps Cairn Escrow-first status and PayPal connection status
+  visible; `Manage` reopens the complete rail editor and disclosure. The seen marker is
+  account-scoped and is removed by the existing deliberate profile reset, so onboarding
+  remains repeatable without making the large panel permanent. Desktop component QA
+  confirmed first-open → return-collapsed → manual-reopen; phone CSS keeps the summary to
+  `Escrow first · PayPal ready/not added`. Scoped ESLint, diff check, and the production
+  build pass (same upstream Privy/Rolldown annotation warnings only). Source `fa0de5f`;
+  Pages `16ae28e4`; apex and `www` serve byte-identical bundle
+  `cairn-site-80976fb2f9bf.js` containing the compact payment surface.
 - `[passive]` 2026-07-16 · Codex — **Cairn now has a rail-open checkout with
   Escrow first and PayPal as an explicit bootstrap fallback.** Sellers can publish
   an optional sanitized PayPal.Me handle from onboarding or My Table; buyers see
