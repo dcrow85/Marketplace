@@ -58,6 +58,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **All four new user-observed WINNER
+  treatments are visible in the ordinary Binder path.** Binder now opens on all
+  353 catalogue rows instead of silently preselecting the 217-row Gates family;
+  `winner` searches treatment metadata and returns the two official WINNER rows
+  plus Yojin, Serene Fist Misaki, Shao's Perseverance, and Lady Emberheart with
+  their Cairn-hosted photos. The committed check locks all four observation UIDs,
+  local assets, and search visibility. Production Chrome, 390px QA, scoped ESLint,
+  production build, and byte-identical apex/`www`/preview checks pass. Source
+  `130124f`; Pages `7cf29bc3`; bundle `547713a559fa`. Observation authority,
+  authenticity, custody, event provenance, and evidence claims are unchanged.
 - `[passive]` 2026-07-16 · Codex — **Missing listing photos are now contextual,
   actionable, and quiet below the high-value threshold.** Unphotographed asks over
   10 USDC show owners `Add photos` and open the scanner on the exact card; buyers
