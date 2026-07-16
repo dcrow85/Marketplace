@@ -58,6 +58,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **The pile now finishes at one clear `Settle
+  up` destination.** Posted-ask Buy piles leave the table for a dedicated checkout
+  that keeps the exact cards, conditions, asks, total, payment rails, trust receipt,
+  and money-moving action visible; mixed Buy/Trade piles use the editable offer
+  checkout. `Make an offer` remains a quiet alternative for eligible Buy piles.
+  The joined gold Buy / neutral Trade control now has stable proportions and stacks
+  the desktop Buy price cleanly instead of warping with card width. Browser rehearsal
+  passed direct Buy and trade-pile routes, scoped ESLint, diff check, and the production
+  build (same upstream Privy/Rolldown warnings only). Source `a81cd7a`; Pages
+  `54956ca3`; preview, apex, and `www` serve `cairn-site-e0967ed17a7c.js` with the
+  same immutable ETag and byte length. No catalogue, evidence, payment-rail,
+  settlement, chain, or `mockups/` semantics changed.
 - `[passive]` 2026-07-16 · Codex — **Market Buy actions now read as money.** The
   joined Buy / Trade control uses a restrained show-floor gold gradient, dark legible
   type, a gold selected state, and neutral Trade styling; labels are polished to
