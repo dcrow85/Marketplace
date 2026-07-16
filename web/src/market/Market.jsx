@@ -31,13 +31,14 @@ function Avatar({ seed, size = 26, photo = '' }) {
 }
 
 function witnessCell(w, ask) {
-  if (!w) return Number(ask) > SCAN_REQUEST_USDC
-    ? <span className="mono mk-wit requested" title="a fresh scan is requested at this ask">scan requested</span>
-    : <span className="mono mk-wit none" title="stock photo only; a fresh scan is optional at this ask">stock photo</span>
+  if (!w) {
+    const label = Number(ask) > SCAN_REQUEST_USDC
+      ? 'Catalogue image only — fresh seller photos requested'
+      : 'Catalogue image only — fresh seller photos optional at this ask'
+    return <span className="mono mk-wit catalog" role="img" aria-label={label} title={label}>!</span>
+  }
   return <span className="mono mk-wit ok" title={`${w} pile scan${w === 1 ? '' : 's'} recorded — a witness, not proof`}>✓ {w} scan{w === 1 ? '' : 's'}</span>
 }
-
-const scanLabel = (w, ask) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : Number(ask) > SCAN_REQUEST_USDC ? 'scan requested' : 'stock photo · scan optional'
 
 // A published page, read back as a table: the same seller shape the mock market uses,
 // so the pile, the deal, and the Settle room work unchanged. Everything on it is the
@@ -540,7 +541,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <div className="caption" onClick={() => setZoom({ c, l, sellerId: open.id })}>
                 <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{c.name_en}{myWants.has(c.uid) ? ' ★' : ''}</span></div>
                 <div className="cap-sub">
-                  <span className="crom">{scanLabel(l.witness, l.ask)}</span>
+                  <span className="crom">{witnessCell(l.witness, l.ask)}</span>
                   <span className={'cmeta ' + (p ? 'm-have' : 'm-want')}>{l.ask} USDC</span>
                 </div>
               </div>
@@ -720,7 +721,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           <div className="mkf-grid mk-searchgrid">
             {directFinds.map(({ c, l, seller }) => (
               <MiniCard key={`${seller.id}|${l.uid}`} c={c}
-                sub={`${c.num} · ${l.ask} USDC · ${scanLabel(l.witness, l.ask)}`}
+                sub={<>{c.num} · {l.ask} USDC · {witnessCell(l.witness, l.ask)}</>}
                 onTap={() => setZoom({ c, l, sellerId: seller.id })}
                 actions={<>
                   <button className="mk-resulttable" onClick={(ev) => { ev.stopPropagation(); setSel(seller.id) }} title={`visit ${sellerName(seller)}'s table`}>

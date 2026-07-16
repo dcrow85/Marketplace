@@ -40,6 +40,7 @@
 .mk-wit.ok { color: var(--have); }
 .mk-wit.none { color: var(--dim); }
 .mk-wit.requested { color: var(--agent); }
+.mk-wit.catalog { display: inline-grid; place-items: center; width: 16px; height: 16px; box-sizing: border-box; color: var(--signal); border: 1.5px solid var(--signal); border-radius: 50%; font-size: 10px; font-weight: 800; line-height: 1; cursor: help; }
 .mk-ask { font-size: 12.5px; }
 .mk-who { display: inline-flex; align-items: center; gap: 8px; font: inherit; color: var(--ink); background: transparent; border: 0; padding: 0; cursor: pointer; }
 .mk-who:hover { text-decoration: underline; }
@@ -261,7 +262,8 @@
 .mk-focus-pilecard small { color: var(--dim); }
 .mk-copycount { display: inline-block; margin-left: 7px; color: var(--dim); font-size: 10px; }
 .mk-evidence { color: inherit; background: transparent; border: 0; padding: 5px 0; cursor: zoom-in; }
-.mk-evidence:hover .mk-wit, .mk-evidence:focus-visible .mk-wit { text-decoration: underline; }
+.mk-evidence:hover .mk-wit.ok, .mk-evidence:focus-visible .mk-wit.ok { text-decoration: underline; }
+.mk-evidence:hover .mk-wit.catalog, .mk-evidence:focus-visible .mk-wit.catalog { background: color-mix(in srgb, var(--signal) 12%, transparent); }
 /* hunting chips carry a face */
 .mk-hunt { display: inline-flex; align-items: center; gap: 6px; }
 .mk-hunt img { width: 20px; height: 28px; object-fit: cover; border-radius: 3px; }
