@@ -231,7 +231,8 @@ that file is absent or if a render field points at an external host. Official
 gallery URLs remain in `upstream_image_url` and the dated image manifest only as
 refresh provenance. The mirrored official bytes and Alpha workbook exports are
 committed so clean Pages builds do not depend on Azuki's CDN or a local-only
-worktree cache.
+worktree cache. Official and Alpha filenames carry a content-hash suffix so the
+immutable Pages asset policy cannot reuse a prior missing-file fallback.
 
 Refresh from the live official endpoint and linked Alpha Master Sheet:
 

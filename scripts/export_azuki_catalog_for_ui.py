@@ -290,9 +290,31 @@ def extract_alpha_master_sheet_images(workbook: Path, out_dir: Path = ALPHA_ASSE
                 if media_path not in names:
                     continue
                 ext = Path(media_path).suffix or ".jpg"
-                (out_dir / f"{card_id}{ext}").write_bytes(zf.read(media_path))
+                data = zf.read(media_path)
+                digest = hashlib.sha256(data).hexdigest()
+                (out_dir / f"{card_id}--{digest[:12]}{ext}").write_bytes(data)
                 total += 1
     return total
+
+
+def content_address_alpha_assets(asset_dir: Path = ALPHA_ASSET_DIR) -> int:
+    """Rename legacy Alpha assets so immutable URLs identify exact bytes."""
+    if not asset_dir.exists():
+        return 0
+    renamed = 0
+    for path in sorted(asset_dir.iterdir()):
+        if not path.is_file() or path.suffix.lower() not in IMAGE_EXTENSIONS:
+            continue
+        card_id = path.stem.split("--", 1)[0]
+        digest = sha256(path)
+        target = path.with_name(f"{card_id}--{digest[:12]}{path.suffix.lower()}")
+        if target == path:
+            continue
+        if target.exists() and sha256(target) != digest:
+            raise ValueError(f"Alpha content-address collision: {target}")
+        path.replace(target)
+        renamed += 1
+    return renamed
 
 
 def alpha_manifest_index(path: Path = ALPHA_IMAGE_MANIFEST) -> dict[str, str]:
@@ -322,7 +344,10 @@ def alpha_asset_index(asset_dir: Path = ALPHA_ASSET_DIR) -> dict[str, str]:
     images: dict[str, str] = {}
     for path in sorted(asset_dir.iterdir()):
         if path.is_file() and path.suffix.lower() in IMAGE_EXTENSIONS:
-            images[path.stem] = f"{ALPHA_ASSET_WEB_PREFIX}/{path.name}"
+            card_id = path.stem.split("--", 1)[0]
+            if card_id in images:
+                raise ValueError(f"multiple Alpha assets found for {card_id}")
+            images[card_id] = f"{ALPHA_ASSET_WEB_PREFIX}/{path.name}"
     return images
 
 
@@ -1432,6 +1457,9 @@ def main() -> int:
         print(f"extracted {total} Alpha Master Sheet images to {ALPHA_ASSET_DIR.relative_to(ROOT)}")
 
     if args.write_alpha_image_manifest:
+        renamed = content_address_alpha_assets()
+        if renamed:
+            print(f"content-addressed {renamed} Alpha Master Sheet images")
         manifest_path = write_alpha_image_manifest(alpha_asset_index())
         print(f"wrote {manifest_path.relative_to(ROOT)}")
 
