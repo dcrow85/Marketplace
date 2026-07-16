@@ -230,8 +230,12 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
   const [resetOpen, setResetOpen] = useState(false)
   const [resetBusy, setResetBusy] = useState(false)
   const [resetErr, setResetErr] = useState(false)
-  const buildSnapshot = () => ({
-    v: 2, cat: catalog.id, sign: profile.sign.trim(), handle: profile.name.trim() || handleFor(accountId), photo: profile.photo,
+  const buildSnapshot = (profileValue = profile) => ({
+    v: 3, cat: catalog.id, sign: profileValue.sign.trim(), handle: profileValue.name.trim() || handleFor(accountId), photo: profileValue.photo,
+    payment: {
+      escrow: { enabled: true, currency: 'USDC' },
+      paypal: profileValue.paypal ? { enabled: true, handle: profileValue.paypal, currency: 'USD', mode: 'paypal_me' } : null,
+    },
     showcase: orderedDisplayRows.map(({ c }) => c.uid),
     table: rows.listed.map(({ c, e }) => ({
       uid: c.uid, ask: e.ask ? Number(e.ask) : null, trade: !!e.trade, sell: !!e.sell,
@@ -241,6 +245,12 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
     record: stats,
   })
   const markPublished = () => { const t = Date.now(); setPubAt(t); try { localStorage.setItem(pubKey, String(t)) } catch { /* ignore */ } }
+  const setPayPal = (paypal) => {
+    const next = saveProfile(accountId, { ...profile, paypal })
+    if (canPublish && pubAt) {
+      publishProfile(accountId, buildSnapshot(next)).then((result) => { if (result?.ok) markPublished() })
+    }
+  }
   const publish = async () => {
     setPubBusy(true); setPubErr(false)
     const r = await publishProfile(accountId, buildSnapshot())
@@ -275,7 +285,8 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
   return (
     <div className="pf">
       <ProfileHeader accountId={accountId} name={profile.name} onName={setName}
-        sign={profile.sign} onSign={setSign} photo={profile.photo} onPhoto={setPhoto} stats={stats} />
+        sign={profile.sign} onSign={setSign} photo={profile.photo} onPhoto={setPhoto}
+        paypal={profile.paypal} onPayPal={setPayPal} stats={stats} />
       <div className="pf-anko">
         <div className="askbar pf-ankobar">
           <img className={'anko-search' + (ankoBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" />

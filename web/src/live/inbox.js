@@ -8,6 +8,7 @@ import { pushInbox, isLiveAddr } from './pilotStore.js'
 
 const seenKeyFor = (catalogId, accountId) => `cairn-inbox-seen:${catalogId}:${accountId}`
 const readSeen = (k) => { try { const a = JSON.parse(localStorage.getItem(k) || '[]'); return Array.isArray(a) ? a : [] } catch { return [] } }
+const ARRIVAL_STATES = new Set(['escrow_locked', 'payment_reported', 'payment_confirmed', 'in_transit', 'delivered', 'provider_disputed', 'settled'])
 
 export function mergeInbox(catalogId, accountId, box) {
   const key = offersKeyFor(catalogId, accountId)
@@ -27,7 +28,7 @@ export function mergeInbox(catalogId, accountId, box) {
       if (offers.some((o) => o.id === m.offer.id)) continue
       // stored exactly as authored, direction flipped: for dir 'in', the ledger reads
       // want/give from the author's frame already (same shape persona counters use)
-      const arrivedState = m.offer.state === 'escrow_locked' && m.offer.tradeId != null ? 'escrow_locked' : 'sent'
+      const arrivedState = ARRIVAL_STATES.has(m.offer.state) ? m.offer.state : 'sent'
       offers.unshift({ ...m.offer, dir: 'in', live: true, from: m.offer.from, state: arrivedState, nextAt: null, cat: undefined })
       if (m.offer.counterOf) {
         const prev = offers.find((o) => o.id === m.offer.counterOf)
@@ -66,12 +67,12 @@ export function mergeInbox(catalogId, accountId, box) {
 
 // Both parties press this when the physical exchange is done: it moves the cards in
 // YOUR binder, marks YOUR copy settled, and tells their app — each side keeps its own
-// record. The cash leg never settles here; that's escrow's job.
+// record. This never moves money: escrow and external providers own their own rails.
 export function recordSettledLive(catalogId, accountId, id) {
   const key = offersKeyFor(catalogId, accountId)
   const offers = loadOffers(key)
   const o = offers.find((x) => x.id === id)
-  if (!o || !o.live || !['accepted', 'escrow_locked', 'in_transit', 'delivered'].includes(o.state)) return
+  if (!o || !o.live || !['accepted', 'escrow_locked', 'payment_confirmed', 'in_transit', 'delivered'].includes(o.state)) return
   o.state = 'settled'
   o.nextAt = null
   o.log = [...(o.log || []), 'Recorded settled by you — your copy of the record. Theirs updates when their app hears it.']

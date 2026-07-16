@@ -25,8 +25,12 @@ import './trade/trade.css'
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
 // The mock id is a VALID address shape so the live-room plumbing (publish, inbox) can be
 // exercised from dev — recognizable as the coffee address, never a real wallet.
-const DEV_PREVIEW = import.meta.env.DEV && new URLSearchParams(window.location.search).has('preview')
-const MOCK_ID = '0x0000000000000000000000000000000000c0ffee'
+const PREVIEW_PARAMS = new URLSearchParams(window.location.search)
+const DEV_PREVIEW = import.meta.env.DEV && PREVIEW_PARAMS.has('preview')
+const PREVIEW_ID = PREVIEW_PARAMS.get('preview')
+const MOCK_ID = DEV_PREVIEW && /^0x[0-9a-fA-F]{40}$/.test(PREVIEW_ID || '')
+  ? PREVIEW_ID.toLowerCase()
+  : '0x0000000000000000000000000000000000c0ffee'
 const CATALOGS = [
   {
     id: 'azuki-tcg',
@@ -221,7 +225,8 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       {offerSeed && (
         <OfferComposer accountId={accountId} catalog={catalog} seller={offerSeed.seller}
           initialWant={offerSeed.want} initialGive={offerSeed.give}
-          initialCash={offerSeed.cash} counterOf={offerSeed.counterOf} live={offerSeed.live}
+          initialCash={offerSeed.cash} initialSettlement={offerSeed.settlement}
+          counterOf={offerSeed.counterOf} live={offerSeed.live}
           onClose={() => setOfferSeed(null)} />
       )}
       {tradesOpen && (
@@ -235,6 +240,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
               <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setOfferSeed({
                 seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
                 cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
+                settlement: o.settlement || null,
                 counterOf: o.id, live: o.live,
               })} />
               <TradePanel openTradeId={openTrade} />

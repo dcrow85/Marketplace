@@ -16,6 +16,7 @@ import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
 import { IS_LOCAL_CHAIN } from '../chain/config.js'
+import { sellerAcceptsPayPal } from '../payments/rails.js'
 import './market.css'
 
 // The market: other people's tables, run like a card show. You pick cards up (zoom),
@@ -59,6 +60,7 @@ const profileToSeller = (p) => ({
   wants: p.wants || [],
   showcase: p.showcase || [],
   recordStats: Array.isArray(p.record) ? p.record : [],
+  payment: p.payment && typeof p.payment === 'object' ? p.payment : null,
 })
 
 const sellerName = (seller) => seller?.handle || handleFor(seller?.id)
@@ -528,7 +530,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       const listing = open.listings.find((l) => l.uid === p.uid)
       return Number(listing?.ask) > SCAN_REQUEST_USDC && !listing?.witness
     })
-    const canBuyNow = pile.every((p) => p.mode === 'buy') && buysSum > 0 && (open.live || IS_LOCAL_CHAIN)
+    const canEscrowNow = open.live || IS_LOCAL_CHAIN
+    const canPayPalNow = open.live && sellerAcceptsPayPal(open)
+    const canBuyNow = pile.every((p) => p.mode === 'buy') && buysSum > 0 && (canEscrowNow || canPayPalNow)
     const suggestedPileCounter = Math.round(Math.max(0, pile.reduce((total, item) => {
       const listing = open.listings.find((candidate) => candidate.uid === item.uid)
       return total + (salesAll[item.uid]?.[0]?.p ?? (Number(listing?.ask) || 0) * .9)
@@ -582,7 +586,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             <Avatar seed={open.id} size={40} photo={open.photo} />
             <div>
               <div className="mk-handle">{sellerName(open)}{open.live && <span className="mk-livetag mono"> ● live</span>}</div>
-              <div className="mono dim mk-sub">{open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}</div>
+              <div className="mono dim mk-sub">{open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}
+                {sellerAcceptsPayPal(open) && <span className="mk-paypal-tag"> · PayPal</span>}</div>
             </div>
           </div>
           <button className="ghost sm" onClick={() => { setSel(null); setWantsOnly(false) }}>← all tables</button>
@@ -697,13 +702,15 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             {buyingNow && canBuyNow ? (
               <BuyNow open={open} pile={pile} total={buysSum} catalog={catalog} accountId={accountId}
                 pileKey={pileKey} byUid={byUid} onBack={() => setBuyingNow(false)}
-                onFunded={(tradeId) => {
+                onComplete={(result) => {
                   setBuyingNow(false)
-                  setSwapMsg(`paid into escrow · trade #${tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
+                  setSwapMsg(result.rail === 'paypal'
+                    ? `PayPal payment reported · ${result.paymentRef}. ${sellerName(open)} must confirm it in PayPal; follow the handoff in Trades.`
+                    : `funded in escrow · trade #${result.tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
                 }} />
             ) : <>
               <span className="mk-ckacts">
-                {canBuyNow && <button className="primary mk-settle" onClick={() => setBuyingNow(true)}>Buy now · {buysSum} USDC</button>}
+                {canBuyNow && <button className="primary mk-settle" onClick={() => setBuyingNow(true)}>Checkout · {buysSum}</button>}
                 <button className={canBuyNow ? 'ghost sm' : 'primary mk-settle'} onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Make offer{pile.length > 1 ? ` · ${pile.length} cards` : ''}</button>
                 <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>clear</button>
               </span>
@@ -716,7 +723,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           </div>
         )}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; scans say what&rsquo;s recorded behind it. Pick cards up,
-          tag them buy or trade, then Buy now at posted asks or Make offer. Buy now funds escrow; an offer moves no cards or funds.</p>
+          tag them buy or trade, then check out at posted asks or make an offer. Escrow is recommended; PayPal appears when that seller accepts it. An offer moves no cards or funds.</p>
       </div>
     )
   }
@@ -789,7 +796,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 <Avatar seed={s.id} size={34} photo={s.photo} />
                 <div>
                   <div className="mk-handle">{sellerName(s)}{s.live && <span className="mk-livetag mono"> ● live</span>}</div>
-                  <div className="mono dim mk-sub">{s.live ? `page updated ${s.joined}` : 'sample table'}</div>
+                  <div className="mono dim mk-sub">{s.live ? `page updated ${s.joined}` : 'sample table'}
+                    {sellerAcceptsPayPal(s) && <span className="mk-paypal-tag"> · PayPal</span>}</div>
                 </div>
               </div>
               <div className="mk-spread">
@@ -813,7 +821,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {!visibleTables.length && <div className="empty">No table matches that search.</div>}
       </div>
       <p className="sc-note dim">A table is just what someone chose to list — their binder stays theirs. Witness counts
-        say a scan is recorded, not that a card is real. You judge; escrow holds.</p>
+        say a scan is recorded, not that a card is real. Each checkout names who holds the money and what Cairn can enforce.</p>
     </div>
   )
 }

@@ -42,9 +42,12 @@
 .first-workbench.with-anko:has(.first-action-column:empty) { grid-template-columns: 1fr; }
 .first-action-column:empty { display: none; }
 .first-action { padding: 13px; border: 0.5px solid var(--rule); border-radius: 9px; background: var(--paper); }
-.first-profile { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(220px, 1.3fr) auto; gap: 9px; align-items: end; }
+.first-profile { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(200px, 1.1fr) minmax(180px, .9fr) auto; gap: 9px; align-items: end; }
 .first-profile label { display: grid; gap: 5px; }
 .first-profile label span { color: var(--dim); font-size: 10px; }
+.first-profile label span i { color: var(--faint); font-style: normal; }
+.first-profile label > small { color: var(--dim); font-size: 8.5px; line-height: 1.3; }
+.first-profile label > em { color: var(--signal); font-size: 8.5px; font-style: normal; line-height: 1.3; }
 .first-profile label .first-field-arrow { width: max-content; margin-bottom: -2px; color: var(--agent); font-size: 10px; font-weight: 650; animation: first-arrow-bob .8s ease-in-out infinite alternate; }
 @keyframes first-arrow-bob { to { transform: translateY(3px); } }
 .first-profile input, .first-cardpick > input { width: 100%; min-width: 0; color: var(--ink); background: transparent; border: 0.5px solid var(--rule); border-radius: 7px; padding: 10px 11px; outline: none; }
@@ -93,6 +96,8 @@
 @keyframes point-trail { from { opacity: .9; transform: translate(-50%, -50%) scale(1); } to { opacity: 0; transform: translate(-28px, 22px) scale(.2); } }
 @media (max-width: 900px) {
   .first-workbench.with-anko .anko-guide { order: -1; }
+  .first-profile { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .first-profile .primary { width: 100%; }
 }
 @media (max-width: 760px) {
   .first-steps { grid-template-columns: 1fr; }

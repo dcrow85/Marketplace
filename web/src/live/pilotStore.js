@@ -1,8 +1,8 @@
 // The live room: profiles + inboxes on cairn.cards' own KV (a Pages Function).
 // Same-origin in production; local dev talks to the live store so the room is one.
-const BASE = /cairn\.cards$|\.pages\.dev$/.test(window.location.hostname)
+const BASE = import.meta.env?.VITE_PILOT_STORE_BASE || (/cairn\.cards$|\.pages\.dev$/.test(window.location.hostname)
   ? '/api/store'
-  : 'https://cairn.cards/api/store'
+  : 'https://cairn.cards/api/store')
 
 const j = (r) => (r.ok ? r.json() : null)
 

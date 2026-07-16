@@ -3,6 +3,7 @@
 // CORS for local dev — NO signatures yet (that's P3; until then anyone could write any
 // profile, which the cohort accepts and the SYNC log records honestly).
 const ADDR = /^0x[0-9a-fA-F]{40}$/
+const PAYPAL_HANDLE = /^[A-Za-z0-9]{1,20}$/
 const cors = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET,PUT,POST,OPTIONS',
@@ -51,7 +52,14 @@ export async function onRequestPut({ params, env, request }) {
     await env.PILOT.put('profiles-index', JSON.stringify(idx.filter((e) => e.addr !== addr)))
     return json({ ok: true, removed: true })
   }
-  await env.PILOT.put(`p:${addr}`, JSON.stringify({ ...body, addr, updated: Date.now() }))
+  const paypalHandle = String(body.payment?.paypal?.handle || '')
+  const payment = {
+    escrow: { enabled: true, currency: 'USDC' },
+    paypal: PAYPAL_HANDLE.test(paypalHandle)
+      ? { enabled: true, handle: paypalHandle, currency: 'USD', mode: 'paypal_me' }
+      : null,
+  }
+  await env.PILOT.put(`p:${addr}`, JSON.stringify({ ...body, payment, addr, updated: Date.now() }))
   const entry = {
     addr, sign: String(body.sign || '').slice(0, 140),
     listed: (body.table || []).length, wants: (body.wants || []).length,

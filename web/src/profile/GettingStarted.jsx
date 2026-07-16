@@ -3,6 +3,7 @@ import { loadStore, saveStore, storeKeyFor } from '../binder/collection.js'
 import { useCatalog } from '../lib/data.js'
 import { saveProfile } from './profileStore.js'
 import { prepareProfilePhoto } from './profilePhoto.js'
+import { cleanPayPalHandle, payPalHandleError } from '../payments/rails.js'
 import './onboarding.css'
 
 const cardName = (card) => card?.name_en || card?.name_ja || card?.uid || 'Untitled card'
@@ -12,6 +13,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const [active, setActive] = useState(null)
   const [name, setName] = useState(profile.name || '')
   const [sign, setSign] = useState(profile.sign || '')
+  const [paypal, setPayPal] = useState(profile.paypal || '')
   const [query, setQuery] = useState('')
   const [photoBusy, setPhotoBusy] = useState(false)
   const [photoError, setPhotoError] = useState('')
@@ -77,7 +79,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
   const save = () => {
     if (!name.trim() || !sign.trim()) return
     startPointFlight('profile', 1)
-    saveProfile(accountId, { ...profile, name, sign })
+    saveProfile(accountId, { ...profile, name, sign, paypal: cleanPayPalHandle(paypal) })
     setActive(null)
   }
   const choosePhoto = async (event) => {
@@ -164,7 +166,12 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
             placeholder="How the room should know you" onChange={(event) => setName(event.target.value)} /></label>
           <label><span className="mono">Your table line</span><input maxLength={140} value={sign}
             placeholder="What do you collect, trade, or hunt?" onChange={(event) => setSign(event.target.value)} /></label>
-          <button className="primary" disabled={!name.trim() || !sign.trim()} onClick={save}>Save profile · +1 point</button>
+          <label><span className="mono">PayPal <i>optional</i></span><input maxLength={80} value={paypal}
+            autoCapitalize="none" autoCorrect="off" spellCheck="false" placeholder="PayPal.Me username or link"
+            onChange={(event) => setPayPal(event.target.value)} />
+            <small>Escrow stays first. This adds PayPal as a second checkout path; Cairn never sees your login.</small>
+            {payPalHandleError(paypal) && <em role="alert">{payPalHandleError(paypal)}</em>}</label>
+          <button className="primary" disabled={!name.trim() || !sign.trim() || !!payPalHandleError(paypal)} onClick={save}>Save profile · +1 point</button>
           </div>
         )}
 

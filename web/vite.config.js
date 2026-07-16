@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 // Catalog payloads are shipped from web/public so each catalog tab can load even
 // when the browse server is offline.
 const BROWSE = 'http://127.0.0.1:8790'
+const PILOT_STORE = globalThis.process?.env?.VITE_PILOT_STORE_PROXY || BROWSE
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -23,6 +24,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/api/store': PILOT_STORE,
       '/api': BROWSE,
       '/assets/cards': BROWSE,
     },

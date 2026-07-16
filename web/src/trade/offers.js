@@ -6,6 +6,7 @@
 // pushed to the counterpart's inbox on the room's KV; their app merges it into their
 // ledger and their responses come back the same way. Mock offers never leave the browser.
 import { pushInbox, isLiveAddr } from '../live/pilotStore.js'
+import { cleanPayPalHandle, paymentRailFor, railCurrency, RAIL_PAYPAL } from '../payments/rails.js'
 
 export const offersKeyFor = (catalogId, accountId) =>
   accountId ? `cairn-offers:${catalogId}:${accountId}` : `cairn-offers:${catalogId}`
@@ -27,12 +28,21 @@ export function saveOffers(key, offers) {
 }
 
 // dir 'out' = you sent it; dir 'in' = it arrived (a persona counter, or a live inbox).
-export function sendOffer(key, { to, want, give, cash, note, counterOf, live, from, cat }) {
+export function sendOffer(key, { to, toHandle, want, give, cash, note, counterOf, live, from, fromHandle, cat, settlement }) {
   const offers = loadOffers(key)
   const id = 'of_' + Math.random().toString(36).slice(2, 10)
+  const rail = paymentRailFor(settlement?.rail)
   const o = {
-    id, dir: 'out', to, at: new Date().toISOString().slice(0, 10),
+    id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    fromHandle: String(fromHandle || '').trim().slice(0, 32) || null,
+    at: new Date().toISOString().slice(0, 10),
     want, give, cash: cash && cash.amount > 0 ? cash : null,
+    settlement: cash && cash.amount > 0 ? {
+      rail,
+      currency: railCurrency(rail),
+      paypal_handle: rail === RAIL_PAYPAL ? cleanPayPalHandle(settlement?.paypal_handle) : null,
+      cairn_enforced: rail !== RAIL_PAYPAL,
+    } : null,
     note: (note || '').slice(0, 240) || null,
     counterOf: counterOf || null,
     state: 'sent',
@@ -50,16 +60,46 @@ export function sendOffer(key, { to, want, give, cash, note, counterOf, live, fr
   return id
 }
 
+// PayPal is an external rail. The buyer can report a provider payment, but Cairn
+// keeps that as a claim until the seller separately confirms receipt in PayPal.
+export function recordExternalPurchase(key, { to, toHandle, want, amount, live, from, cat, paypalHandle, paymentRef, providerRef }) {
+  const offers = loadOffers(key)
+  const id = 'buy_' + Math.random().toString(36).slice(2, 10)
+  const cleanHandle = cleanPayPalHandle(paypalHandle)
+  const numericAmount = Number(amount)
+  if (!cleanHandle || !(numericAmount > 0)) return null
+  const o = {
+    id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    at: new Date().toISOString().slice(0, 10),
+    want, give: [], cash: { side: 'from', amount: numericAmount }, note: null,
+    state: 'payment_reported', live: !!live, rail: RAIL_PAYPAL,
+    settlement: {
+      rail: RAIL_PAYPAL, currency: 'USD', paypal_handle: cleanHandle,
+      cairn_enforced: false, payment_ref: String(paymentRef || '').slice(0, 40),
+      provider_ref: String(providerRef || '').trim().slice(0, 80) || null,
+    },
+    log: [`Buyer reported ${numericAmount.toFixed(2)} USD sent through PayPal · ${String(paymentRef || '').slice(0, 40)} · not verified by Cairn`],
+  }
+  offers.unshift(o)
+  saveOffers(key, offers)
+  if (live && isLiveAddr(to)) {
+    pushInbox(to, { id, type: 'offer', offer: { ...o, from: from || null, cat: cat || null } })
+  }
+  return id
+}
+
 // Accepting a posted ask is not an offer round-trip: the buyer has already funded
 // escrow. Keep the same ledger shape, but enter it at escrow_locked and send one
 // complete event to the seller so no response can race ahead of the purchase record.
-export function recordFundedPurchase(key, { to, want, amount, live, from, cat, tradeId, txHash, rail = 'escrow' }) {
+export function recordFundedPurchase(key, { to, toHandle, want, amount, live, from, cat, tradeId, txHash, rail = 'escrow' }) {
   const offers = loadOffers(key)
   const id = 'buy_' + Math.random().toString(36).slice(2, 10)
   const o = {
-    id, dir: 'out', to, at: new Date().toISOString().slice(0, 10),
+    id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    at: new Date().toISOString().slice(0, 10),
     want, give: [], cash: { side: 'from', amount }, note: null,
     state: 'escrow_locked', live: !!live, tradeId, rail,
+    settlement: { rail: 'escrow', currency: 'USDC', cairn_enforced: true },
     log: [`posted ask accepted — ${amount} USDC funded in escrow · trade #${tradeId} · tx ${String(txHash || '').slice(0, 10)}…`],
   }
   offers.unshift(o)
@@ -135,7 +175,7 @@ export function clearOffer(key, id) {
 
 // states that still need somebody's attention (badge + ambient)
 export const OFFER_OPEN = ['sent', 'seen']
-export const OFFER_SETTLING = ['accepted', 'escrow_locked', 'in_transit', 'delivered']
+export const OFFER_SETTLING = ['accepted', 'escrow_locked', 'payment_reported', 'payment_confirmed', 'in_transit', 'delivered', 'provider_disputed']
 
 export function offerSheet({ offer, byUid, myId }) {
   const nm = (uid) => { const c = byUid.get(uid); return c ? `${c.name_en || uid} · ${c.num}` : uid }
@@ -143,7 +183,8 @@ export function offerSheet({ offer, byUid, myId }) {
     'CAIRN OFFER SHEET',
     ...offer.want.map((w) => `want       ${nm(w.uid)}`),
     ...offer.give.map((g) => `give       ${nm(g.uid)}`),
-    offer.cash ? `cash       ${offer.cash.amount} USDC · paid by ${offer.cash.side === 'from' ? 'me' : 'them'}` : null,
+    offer.cash ? `cash       ${offer.cash.amount} ${offer.settlement?.currency || 'USDC'} · paid by ${offer.cash.side === 'from' ? 'me' : 'them'}` : null,
+    offer.cash ? `rail       ${offer.settlement?.rail === RAIL_PAYPAL ? 'PayPal · external, not held by Cairn' : 'Cairn Escrow'}` : null,
     offer.note ? `note       ${offer.note}` : null,
     `to         ${offer.to}`,
     myId ? `from       ${myId}` : null,

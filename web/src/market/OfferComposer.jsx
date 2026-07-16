@@ -5,6 +5,7 @@ import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { handleFor, avatarSVG } from '../identity.js'
 import CardZoom from './CardZoom.jsx'
 import { retryImg } from '../binder/helpers.jsx'
+import { paymentRailFor, railCurrency, cleanPayPalHandle, RAIL_ESCROW, RAIL_PAYPAL } from '../payments/rails.js'
 
 // The offer composer: everything on ONE screen — their cards, your cards, the cash
 // leg, and the send. No wizard. Anko's line quotes the RECORD (latest settlements per
@@ -15,7 +16,7 @@ function Avatar({ seed, size = 22 }) {
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 
-export default function OfferComposer({ accountId, catalog, seller, initialWant, initialGive, initialCash, counterOf, live, onClose, onSent }) {
+export default function OfferComposer({ accountId, catalog, seller, initialWant, initialGive, initialCash, initialSettlement, counterOf, live, onClose, onSent }) {
   const [data, setData] = useState(null)
   const [mkt, setMkt] = useState(null)
   const [want, setWant] = useState(() => new Set(initialWant || []))
@@ -23,6 +24,9 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
   const [cashAmt, setCashAmt] = useState(initialCash ? String(initialCash.amount) : '')
   const [cashSide, setCashSide] = useState(initialCash?.side || 'from')
   const [note, setNote] = useState('')
+  const paypalHandle = cleanPayPalHandle(initialSettlement?.paypal_handle)
+  const [settlementRail, setSettlementRail] = useState(() => paymentRailFor(initialSettlement?.rail))
+  const settlementCurrency = railCurrency(settlementRail)
   const [zoom, setZoom] = useState(null)
   const [qw, setQw] = useState('') // search their side
   const [qg, setQg] = useState('') // search your binder
@@ -76,6 +80,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
       want: [...want].map((uid) => ({ uid })),
       give: [...give].map((uid) => ({ uid })),
       cash: amt > 0 ? { side: cashSide, amount: amt } : null,
+      settlement: { rail: settlementRail, paypal_handle: settlementRail === RAIL_PAYPAL ? paypalHandle : null },
       note, counterOf,
       live, from: accountId, cat: catalog.id,
     }
@@ -120,6 +125,14 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
             {!myCards.length && <div className="empty">Nothing marked Have yet — a pure cash offer works too.</div>}
           </div>
           <div className="ofr-sec mono">the balance</div>
+          {amt > 0 && <div className="stl-rails ofr-rails" role="radiogroup" aria-label="Proposed payment rail">
+            <button type="button" className={settlementRail === RAIL_ESCROW ? 'on' : ''} onClick={() => setSettlementRail(RAIL_ESCROW)}>
+              <b>Cairn Escrow</b><small>recommended</small>
+            </button>
+            {paypalHandle && <button type="button" className={settlementRail === RAIL_PAYPAL ? 'on' : ''} onClick={() => setSettlementRail(RAIL_PAYPAL)}>
+              <b>PayPal</b><small>external</small>
+            </button>}
+          </div>}
           <div className="ofr-cash">
             <div className="switch2">
               <button className={'sw' + (cashSide === 'from' ? ' on' : '')} onClick={() => setCashSide('from')}>I add cash</button>
@@ -127,18 +140,18 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
             </div>
             <span className="fpre">$</span>
             <input className="ti num" type="number" min="0" placeholder="0" value={cashAmt} onChange={(e) => setCashAmt(e.target.value)} />
-            <span className="mono dim">USDC</span>
+            <span className="mono dim">{settlementCurrency}</span>
           </div>
           <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note} onChange={(e) => setNote(e.target.value)} />
           {recordLine && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine} — settlements are history, not an appraisal.</div>}
         </div>
         <div className="ofr-foot">
           <div className="ofr-sum mono">
-            {want.size} for {give.size}{amt > 0 ? ` + ${amt} USDC (${cashSide === 'from' ? 'you' : 'they'} pay)` : ''}
+            {want.size} for {give.size}{amt > 0 ? ` + ${amt} ${settlementCurrency} (${cashSide === 'from' ? 'you' : 'they'} pay)` : ''}
           </div>
           <button className="primary ofr-send" disabled={!canSend} onClick={doSend}>{counterOf ? 'Send counter' : 'Send offer'}</button>
         </div>
-        <p className="sc-note dim ofr-fine">An offer is a message, not a lock — cards and money only move through escrow.
+        <p className="sc-note dim ofr-fine">An offer is a message, not a lock. It proposes {settlementRail === RAIL_PAYPAL ? 'PayPal; PayPal handles the money and Cairn records the terms' : 'Cairn Escrow; the contract holds funds after the payer funds it'}.
           {' '}Sample sellers answer right here in your browser.</p>
         {zoom && <CardZoom card={zoom.c} sub={zoom.sub} witness={zoom.witness} onClose={() => setZoom(null)} />}
       </div>

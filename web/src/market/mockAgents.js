@@ -184,6 +184,7 @@ export function startMockMarket({ catalogId, accountId, byUid, askOf }) {
             // d.cash says who pays in the ORIGINAL offer's frame; the counter is written
             // in the persona's frame, so the side flips ('you pay' stays you paying).
             cash: d.cash ? { side: d.cash.side === 'from' ? 'to' : 'from', amount: d.cash.amount } : null,
+            settlement: o.settlement || null,
             counterOf: o.id, state: 'sent', response: { line: d.line },
           })
         } else {
@@ -225,9 +226,11 @@ export function acceptIncoming(key, id) {
   if (o.live) {
     // a real deal now: no rehearsal timeline — cash settles by escrow, cards by mail,
     // then each side records it settled. Tell their app the answer.
-    o.rail = 'escrow'
+    o.rail = o.settlement?.rail || 'escrow'
     o.nextAt = null
-    o.log = [...(o.log || []), 'Accepted — this one is real. Square the cash by escrow, move the cards, then record it settled.']
+    o.log = [...(o.log || []), o.rail === 'paypal'
+      ? 'Accepted — PayPal is the agreed external rail. The payer acts in PayPal; Cairn records each party’s statement.'
+      : 'Accepted — this one is real. Square the cash by escrow, move the cards, then record it settled.']
     if (isLiveAddr(o.from)) pushInbox(o.from, { id: o.id, type: 'response', state: 'accepted' })
   } else if (IS_LOCAL_CHAIN && o.cash && o.cash.side === 'to') {
     o.rail = 'chain' // you pay, the local EVM settles it for real

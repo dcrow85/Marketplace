@@ -1,14 +1,18 @@
 // The collector's masthead: who they are, their sign, and the RECORD STRIP — facts
 // computed from records, never self-asserted. Green marks recorded things only.
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { handleFor, shortId, avatarSVG } from '../identity.js'
 import { prepareProfilePhoto } from './profilePhoto.js'
+import { cleanPayPalHandle, payPalHandleError } from '../payments/rails.js'
 
-export default function ProfileHeader({ accountId, name, onName, sign, onSign, photo, onPhoto, stats }) {
+export default function ProfileHeader({ accountId, name, onName, sign, onSign, photo, onPhoto, paypal = '', onPayPal, stats }) {
   const [photoBusy, setPhotoBusy] = useState(false)
   const [photoError, setPhotoError] = useState('')
   const [removeOpen, setRemoveOpen] = useState(false)
+  const [paypalDraft, setPayPalDraft] = useState(paypal)
+  const [paypalSaved, setPayPalSaved] = useState(false)
   const photoInput = useRef(null)
+  useEffect(() => { setPayPalDraft(paypal || '') }, [paypal]) // eslint-disable-line react-hooks/set-state-in-effect -- keep the editor aligned with account changes
   const choosePhoto = async (event) => {
     const file = event.target.files?.[0]
     event.target.value = ''
@@ -18,7 +22,16 @@ export default function ProfileHeader({ accountId, name, onName, sign, onSign, p
     catch (error) { setPhotoError(error?.message || 'Picture could not be changed.') }
     finally { setPhotoBusy(false) }
   }
-  return (
+  const paypalError = payPalHandleError(paypalDraft)
+  const savePayPal = () => {
+    if (paypalError) return
+    const next = cleanPayPalHandle(paypalDraft)
+    onPayPal?.(next)
+    setPayPalDraft(next)
+    setPayPalSaved(true)
+    window.setTimeout(() => setPayPalSaved(false), 1800)
+  }
+  return (<>
     <div className="pf-head">
       <div className="pf-photo">
         {photo
@@ -60,5 +73,36 @@ export default function ProfileHeader({ accountId, name, onName, sign, onSign, p
         )}
       </div>
     </div>
-  )
+    {onPayPal && <section className="pf-payments" aria-label="Payment methods">
+      <div className="pf-payintro">
+        <span className="ek">How buyers can pay</span>
+        <p>Escrow leads every checkout. Add PayPal as a second path for collectors who prefer it.</p>
+      </div>
+      <div className="pf-railcards">
+        <div className="pf-railcard primary-rail">
+          <span className="pf-railmark" aria-hidden="true">◇</span>
+          <span><b>Cairn Escrow</b><small>Recommended · the contract holds funds until settlement.</small></span>
+          <i className="mono">first</i>
+        </div>
+        <div className={'pf-railcard paypal-rail' + (paypal ? ' enabled' : '')}>
+          <span className="pf-railmark paypal-word" aria-hidden="true">P</span>
+          <label>
+            <b>PayPal</b>
+            <small>{paypal ? `paypal.me/${paypal} · available on your table` : 'Optional bootstrap payment path'}</small>
+            <span className="pf-paypaledit">
+              <input value={paypalDraft} maxLength={80} autoCapitalize="none" autoCorrect="off" spellCheck="false"
+                placeholder="PayPal.Me username or link" aria-label="PayPal.Me username or link"
+                onChange={(event) => { setPayPalDraft(event.target.value); setPayPalSaved(false) }}
+                onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); savePayPal() } }} />
+              <button type="button" disabled={!!paypalError || paypalDraft.trim() === paypal} onClick={savePayPal}>
+                {paypalSaved ? 'Saved ✓' : paypalDraft.trim() ? 'Save' : paypal ? 'Remove' : 'Add'}
+              </button>
+            </span>
+            {paypalError && <em role="alert">{paypalError}</em>}
+          </label>
+        </div>
+      </div>
+      <p className="pf-payboundary mono">PayPal handles the payment and any eligible provider protection; Cairn records the terms but cannot reverse PayPal funds. Never share your PayPal password. <a href="https://www.paypal.com/paypalme/" target="_blank" rel="noreferrer">Find or create your PayPal.Me link ↗</a></p>
+    </section>}
+  </>)
 }

@@ -7,6 +7,7 @@ import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
+import { railCurrency, sellerPayPalHandle, RAIL_ESCROW, RAIL_PAYPAL } from '../payments/rails.js'
 
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
@@ -30,6 +31,9 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const [ankoScope, setAnkoScope] = useState(null) // his lens on YOUR side
   const [ankoLine, setAnkoLine] = useState(null)
   const [ankoPicks, setAnkoPicks] = useState(() => new Set()) // advice, distinct from the collector's final terms
+  const paypalHandle = sellerPayPalHandle(open)
+  const [settlementRail, setSettlementRail] = useState(RAIL_ESCROW)
+  const settlementCurrency = railCurrency(settlementRail)
   useEffect(() => { window.scrollTo({ top: 0 }) }, []) // a new room starts at its door
   const askOf = (uid) => open.listings.find((l) => l.uid === uid)?.ask ?? 0
   const buys = pile.filter((p) => p.mode === 'buy')
@@ -130,7 +134,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const decisionPile = pile.slice(0, 24)
   const decisionGive = [...give].slice(0, 24)
   const sendDecision = {
-    decision_ref: `settle:${catalog.id}:${open.id}:${pile.length}:${give.size}:${cash}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
+    decision_ref: `settle:${catalog.id}:${open.id}:${pile.length}:${give.size}:${cash}:${settlementRail}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
     kind: 'pre_purchase',
     question: trades.length
       ? 'Should I send this buy/trade offer, revise it, or request more evidence first?'
@@ -138,7 +142,9 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     terms: {
       seller: open.id,
       live_table: !!open.live,
-      cash_usdc: cash,
+      cash_amount: cash,
+      cash_currency: settlementCurrency,
+      settlement_rail: settlementRail,
       you_receive_count: pile.length,
       you_receive_unitemized_count: Math.max(0, pile.length - decisionPile.length),
       you_receive: decisionPile.map((p) => {
@@ -195,10 +201,12 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const send = () => {
     sendOffer(offersKeyFor(catalog.id, accountId), {
       to: open.id,
+      toHandle: open.handle || handleFor(open.id),
       want: pile.map((p) => ({ uid: p.uid })),
       give: [...give].map((uid) => ({ uid })),
       cash: cash > 0 ? { side: 'from', amount: cash } : null,
       note,
+      settlement: { rail: settlementRail, paypal_handle: settlementRail === RAIL_PAYPAL ? paypalHandle : null },
       live: open.live, from: accountId, cat: catalog.id,
     })
     clearPile(pileKey, open.id)
@@ -219,7 +227,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       </div>
 
       <div className="stl-sec">
-        <div className="stl-label mono">their side — your pile{buysSum > 0 ? ` · buys come to ${buysSum} USDC` : ''}</div>
+        <div className="stl-label mono">their side — your pile{buysSum > 0 ? ` · listed asks total ${buysSum}` : ''}</div>
         <div className="ofr-grid">
           {pile.map((p) => {
             const c = byUid.get(p.uid)
@@ -227,7 +235,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
             const l = open.listings.find((x) => x.uid === p.uid)
             return (
               <MiniCard key={p.uid} c={c}
-                sub={`${p.mode === 'buy' ? `${askOf(p.uid)} USDC · ` : ''}${scanLabel(l?.witness, l?.ask)}`}
+                sub={`${p.mode === 'buy' ? `${askOf(p.uid)} ask · ` : ''}${scanLabel(l?.witness, l?.ask)}`}
                 actions={<span className="ofr-acts">
                   <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
                     onClick={() => toggleMode(pileKey, open.id, p.uid)}
@@ -284,10 +292,18 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
 
       <div className="stl-sec">
         <div className="stl-label mono">the cash line — one number squares the whole deal</div>
+        {cash > 0 && <div className="stl-rails" role="radiogroup" aria-label="Proposed payment rail">
+          <button type="button" className={settlementRail === RAIL_ESCROW ? 'on' : ''} onClick={() => setSettlementRail(RAIL_ESCROW)}>
+            <b>Cairn Escrow</b><small>recommended · funds held by contract</small>
+          </button>
+          {paypalHandle && <button type="button" className={settlementRail === RAIL_PAYPAL ? 'on' : ''} onClick={() => setSettlementRail(RAIL_PAYPAL)}>
+            <b>PayPal</b><small>external · paypal.me/{paypalHandle}</small>
+          </button>}
+        </div>}
         <div className="stl-cashrow">
           <span className="fpre stl-dollar">$</span>
           <input className="ti num stl-cash" type="number" min="0" value={cash} onChange={(e) => setCashEdit(e.target.value)} />
-          <span className="mono dim">USDC{cashEdit == null && buysSum > 0 ? ' · following the buy total' : ''}</span>
+          <span className="mono dim">{settlementCurrency}{cashEdit == null && buysSum > 0 ? ' · following the listed asks' : ''}</span>
         </div>
         <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note}
           onChange={(e) => { setNote(e.target.value); setEvidenceRequestIncluded(/scan|photo|evidence/i.test(e.target.value)) }} />
@@ -306,11 +322,11 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
 
       <div className="stl-foot">
         <span className="mono deal-summary">{trades.length || give.size
-          ? `${pile.length} of theirs ⇄ ${give.size} of yours${cash > 0 ? ` + ${cash} USDC` : ''}`
-          : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} USDC`}</span>
+          ? `${pile.length} of theirs ⇄ ${give.size} of yours${cash > 0 ? ` + ${cash} ${settlementCurrency}` : ''}`
+          : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} ${settlementCurrency}`}</span>
         <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {open.handle || handleFor(open.id)} →</button>
       </div>
-      <p className="sc-note dim">An offer is a message, not a payment or lock — cards and money only move through escrow.
+      <p className="sc-note dim">An offer is a message, not a payment or lock. It proposes {settlementRail === RAIL_PAYPAL ? 'PayPal, where PayPal handles the money and Cairn records the terms' : 'Cairn Escrow, where the contract can hold and release funds'}.
         {open.live ? ` This is a live table: ${open.handle || handleFor(open.id)} is a real collector, and the offer lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>
     </div>
   )

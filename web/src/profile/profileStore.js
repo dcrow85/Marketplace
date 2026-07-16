@@ -1,4 +1,5 @@
 import { cleanProfilePhoto } from './profilePhoto.js'
+import { cleanPayPalHandle } from '../payments/rails.js'
 
 const profileKeyFor = (accountId) => `cairn-profile:${accountId || 'anon'}`
 
@@ -8,20 +9,22 @@ export function loadProfile(accountId) {
   try {
     const saved = JSON.parse(localStorage.getItem(profileKeyFor(accountId)) || '{}')
     return {
-      v: 2,
+      v: 3,
       name: clean(saved?.name, 32),
       sign: clean(saved?.sign, 140),
       photo: cleanProfilePhoto(saved?.photo),
+      paypal: cleanPayPalHandle(saved?.paypal),
     }
-  } catch { return { v: 2, name: '', sign: '', photo: '' } }
+  } catch { return { v: 3, name: '', sign: '', photo: '', paypal: '' } }
 }
 
 export function saveProfile(accountId, profile) {
   const next = {
-    v: 2,
+    v: 3,
     name: clean(profile?.name, 32),
     sign: clean(profile?.sign, 140),
     photo: cleanProfilePhoto(profile?.photo),
+    paypal: cleanPayPalHandle(profile?.paypal),
   }
   try { localStorage.setItem(profileKeyFor(accountId), JSON.stringify(next)) } catch { /* ignore */ }
   window.dispatchEvent(new CustomEvent('cairn-profile'))
