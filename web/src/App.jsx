@@ -118,9 +118,9 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
     ? (progress.milestones.find((item) => item.id === 'profile')?.done ? 'mark' : 'profile')
     : null
   const publicName = profile.name.trim() || handleFor(accountId)
-  const openScanner = () => {
+  const openScanner = (uid = null) => {
     setBseg('binder')
-    window.setTimeout(() => window.dispatchEvent(new CustomEvent('cairn-open-scan')), 0)
+    window.setTimeout(() => window.dispatchEvent(new CustomEvent('cairn-open-scan', { detail: { uid } })), 0)
   }
   useEffect(() => {
     let stop = () => {}

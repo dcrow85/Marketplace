@@ -50,11 +50,13 @@ function SectionSizePicker({ label, storageKey, size, onSize }) {
   )
 }
 
-function CatalogueImageMark({ requested }) {
-  const label = requested
-    ? 'Catalogue image only — fresh seller photos requested'
-    : 'Catalogue image only — fresh seller photos optional at this ask'
-  return <span className="mono mk-wit catalog" role="img" aria-label={label} title={label}>!</span>
+function AddPhotosAction({ card, onScan }) {
+  return <button type="button" className="pf-photo-needed mono"
+    aria-label={`Add seller photos for ${card.name_en}`}
+    title="This $10+ listing needs photos of your copy"
+    onClick={(event) => { event.stopPropagation(); onScan?.(card.uid) }}>
+    <span aria-hidden="true">!</span> Add photos
+  </button>
 }
 
 export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan }) {
@@ -396,8 +398,8 @@ function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = fa
             <button disabled={index === rows.length - 1} onClick={() => onNudge?.(c.uid, 1)} aria-label={`Move ${c.name_en} later`}>→</button></span>
         </div>}
         <MiniCard c={c} onTap={() => setSel(c.uid)}
-          corner={<>{e.trade && <span className="sp-tradeflag">⇄ trade</span>}{ankoPicks?.has(c.uid) && <span className="pf-ankopick">★ Anko</span>}</>}
-          sub={<>{condStr(e)} · {scanned ? <span className="mk-wit ok">✓ scans on file</span> : <CatalogueImageMark requested={scanRequested} />}{(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}</>}
+          corner={<>{e.trade && <span className="sp-tradeflag">⇄ trade</span>}{ankoPicks?.has(c.uid) && <span className="pf-ankopick">★ Anko</span>}{scanRequested && <AddPhotosAction card={c} onScan={onScan} />}</>}
+          sub={<>{condStr(e)}{scanned ? <> · <span className="mk-wit ok">✓ photos</span></> : null}{(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}</>}
           actions={<span className="sp-task" onClick={(ev) => ev.stopPropagation()}>
             {e.sell && <button className={'pf-displaybtn' + (e.display ? ' on' : '')}
               aria-label={e.display ? 'Remove from display case' : 'Pin to display case'}
@@ -406,7 +408,6 @@ function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = fa
             <span className="fpre">$</span>
             <input type="number" min="0" placeholder="ask"
               value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
-            {scanRequested && <button className="pf-scanrequest mono" onClick={() => onScan?.(c.uid)}>Scan now</button>}
           </span>} />
         </div>
       })}

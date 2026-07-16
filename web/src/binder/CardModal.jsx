@@ -143,6 +143,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
   const frontPhoto = evidencePhotos.front || userPhoto || null
   const shownImg = (imp !== 'idle' && photo) ? photo : (frontPhoto || c.image)
   const evidenceCount = PHOTO_VIEWS.filter(({ id }) => id === 'front' ? frontPhoto : evidencePhotos[id]).length
+  const needsListingPhotos = e.stance === 'have' && e.sell && Number(u.ask) > 10 && evidenceCount === 0
   const onPhoto = async (file) => {
     if (!file) return
     let imgs
@@ -197,25 +198,30 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
               {frontPhoto && <span className="contribbadge">your front · witness, not proof</span>}
             </div>
-            {IMPORT_ON && <div className="photo-evidence">
-              <div className="photo-evidence-head">
-                <div><b>Photos of your copy</b><span>{frontPhoto ? 'Your scan already fills the front.' : 'Add the views you have.'}</span></div>
+            {IMPORT_ON && <details className={'photo-evidence card-evidence' + (needsListingPhotos ? ' needs-photos' : '')}
+              open={needsListingPhotos || undefined}>
+              <summary className="photo-evidence-head">
+                <div><b>{needsListingPhotos ? 'Seller photos needed' : 'Photos of your copy'}</b><span>{needsListingPhotos
+                  ? `This ${u.ask} USDC listing needs photos buyers can inspect.`
+                  : frontPhoto ? 'Your front photo is on file.' : 'Add views when they help describe your copy.'}</span></div>
                 <strong className="mono">{evidenceCount} / {PHOTO_VIEWS.length} views</strong>
+              </summary>
+              <div className="photo-evidence-body">
+                <div className="photo-evidence-grid">
+                  {PHOTO_VIEWS.map((view) => {
+                    const src = view.id === 'front' ? frontPhoto : evidencePhotos[view.id]
+                    const busy = evidenceBusy === view.id
+                    return <label className={'photo-view' + (src ? ' filled' : '')} key={view.id}>
+                      {src ? <img src={src} alt="" /> : <span className="photo-view-mark" aria-hidden="true">＋</span>}
+                      <span className="photo-view-copy"><b>{view.label}</b><small>{busy ? 'saving…' : src ? (view.id === 'front' && userPhoto ? 'scanned · tap to replace' : 'saved · tap to replace') : view.hint}</small></span>
+                      <input type="file" accept="image/*" capture="environment" onChange={(ev) => onEvidencePhoto(view.id, ev.target.files && ev.target.files[0])} />
+                    </label>
+                  })}
+                </div>
+                {evidenceError && <div className="photo-evidence-error">Couldn&rsquo;t save that {evidenceError} view. Try another photo.</div>}
+                <p>More angles give Anko and buyers clearer evidence to inspect. They do not prove authenticity or condition.</p>
               </div>
-              <div className="photo-evidence-grid">
-                {PHOTO_VIEWS.map((view) => {
-                  const src = view.id === 'front' ? frontPhoto : evidencePhotos[view.id]
-                  const busy = evidenceBusy === view.id
-                  return <label className={'photo-view' + (src ? ' filled' : '')} key={view.id}>
-                    {src ? <img src={src} alt="" /> : <span className="photo-view-mark" aria-hidden="true">＋</span>}
-                    <span className="photo-view-copy"><b>{view.label}</b><small>{busy ? 'saving…' : src ? (view.id === 'front' && userPhoto ? 'scanned · tap to replace' : 'saved · tap to replace') : view.hint}</small></span>
-                    <input type="file" accept="image/*" capture="environment" onChange={(ev) => onEvidencePhoto(view.id, ev.target.files && ev.target.files[0])} />
-                  </label>
-                })}
-              </div>
-              {evidenceError && <div className="photo-evidence-error">Couldn&rsquo;t save that {evidenceError} view. Try another photo.</div>}
-              <p>More angles give Anko and buyers clearer evidence to inspect. They do not prove authenticity or condition.</p>
-            </div>}
+            </details>}
             {imp === 'reading' && (
               <div className="imprev">
                 <div className="imhd"><span className="ek2 agent">{agentName} is reading your photo…</span></div>
@@ -258,9 +264,11 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {c.name_is_en && <span className="enmark">EN</span>}
             </div>
             <div className="m-attrs">
-              {[c.release_family_label, c.product_channel_label, c.category, types, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity, c.band_rank ? 'attention-tier ' + c.band_rank : '']
+              {[c.release_family_label, c.category, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity]
                 .map((t, i) => mpill(t, i))}
             </div>
+            <div className="m-actionblock">
+              <div className="m-sectionlabel mono">Your card</div>
             <div className="m-stance">
               <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'have' ? 'none' : 'have')}>Have</button>
               <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>
@@ -308,19 +316,29 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                   <Frow label="Ask"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="USDC" value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
                 )}
                 <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
-                <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
+                <details className="listing-notes">
+                  <summary>Listing notes</summary>
+                  <Frow label="Notes"><textarea className="ti" rows={2} placeholder="surface, provenance, anything to remember…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
+                </details>
               </>}
               {e.stance === 'want' && <>
                 <Frow label="Condition"><select className="ti" value={condVal} onChange={(ev) => setField(c.uid, 'want_cond', ev.target.value)}>{COND_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></Frow>
                 <Frow label="Max price"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="—" value={maxVal} onChange={(ev) => setField(c.uid, 'want_max', ev.target.value)} /></Frow>
-                <Frow label="Notes"><textarea className="ti" rows={2} placeholder="why you want it, deal terms…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
+                <details className="listing-notes">
+                  <summary>Hunt notes</summary>
+                  <Frow label="Notes"><textarea className="ti" rows={2} placeholder="why you want it, deal terms…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
+                </details>
                 <div className="fnote">{active
                   ? <><b>Active hunt.</b> {agentName} flags matches that meet your condition and budget.</>
                   : <><b>On your wishlist.</b> Set a condition or budget to make it an active hunt.</>}</div>
               </>}
               {e.stance === 'none' && <div className="fnote">Pick <b>Have</b> or <b>Want</b> — or neither. Have records condition and copies; Want sets the terms your agent hunts to. Tap again to clear.</div>}
             </div>
-            <MarketBlock c={c} market={market} mockSales={mockSales} onBrowseCard={onBrowseCard} />
+            </div>
+            {market && <details className="card-more market-more">
+              <summary><span>Market history</span><small className="mono">current asks · recorded settlements</small></summary>
+              <div className="card-morebody"><MarketBlock c={c} market={market} mockSales={mockSales} onBrowseCard={onBrowseCard} /></div>
+            </details>}
             <details className="card-more">
               <summary><span>Card details &amp; provenance</span><small className="mono">rules · illustrator · image source</small></summary>
               <div className="card-morebody">
@@ -328,6 +346,9 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                   <div className="dossier">
                     {collection.name && <div><b>Collection</b><span>{collection.name} · observed at {collection.position || 'unrecorded position'}</span></div>}
                     {reportedPrice.amount != null && <div><b>Event sale</b><span>{reportedPrice.amount} {reportedPrice.currency || 'USD'} · user-reported, not independently verified</span></div>}
+                    {c.product_channel_label && <div><b>Product</b><span>{c.product_channel_label}</span></div>}
+                    {types && <div><b>Type</b><span>{types}</span></div>}
+                    {c.band_rank && <div><b>Attention</b><span>tier {c.band_rank}</span></div>}
                     {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}
                     {c.stamp && <div><b>Stamp</b><span>{c.stamp}</span></div>}
                     {c.card_text && <div><b>Rules text</b><span>{c.card_text}</span></div>}

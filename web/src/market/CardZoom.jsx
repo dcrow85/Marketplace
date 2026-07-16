@@ -18,19 +18,21 @@ export default function CardZoom({ card, sub, witness, ask = 0, decision = null,
           <div className="mono zoom-sub">
             {[card.release_family_label, card.rarity, sub].filter(Boolean).join(' · ')}
           </div>
-          {witness != null && (
-            <div className="mono zoom-wit">{witness
-              ? `✓ ${witness} pile scan${witness === 1 ? '' : 's'} recorded — with real listings, the scans show here`
-              : Number(ask) > 10
-                ? 'scan requested at this ask — the stock image is not evidence of this copy'
-                : 'stock image only — a fresh scan is optional at this ask'}</div>
-          )}
+          {!!witness && <div className="zoom-evidence recorded">
+            <b>✓ {witness} seller photo{witness === 1 ? '' : 's'} recorded</b>
+            <span>A witness to inspect, not proof of authenticity or condition.</span>
+          </div>}
+          {!witness && Number(ask) > 10 && <div className="zoom-evidence missing">
+            <b><span aria-hidden="true">!</span> Seller photos missing</b>
+            <span>Catalogue art is not evidence of this copy.</span>
+          </div>}
         </div>
+        {children && <div className="zoom-acts">{children}</div>}
         {decision && <div className="zoom-anko">
+          <span className="zoom-secondlook mono">Want a second look?</span>
           <AskAnko decision={decision} recommended={Number(ask) > 10 && !witness}
             label="Ask Anko about this copy" actionsForRead={actionsForRead} />
         </div>}
-        {children && <div className="zoom-acts">{children}</div>}
       </div>
     </div>
   )

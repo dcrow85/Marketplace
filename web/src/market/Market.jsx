@@ -30,14 +30,17 @@ function Avatar({ seed, size = 26, photo = '' }) {
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 
-function witnessCell(w, ask) {
-  if (!w) {
-    const label = Number(ask) > SCAN_REQUEST_USDC
-      ? 'Catalogue image only — fresh seller photos requested'
-      : 'Catalogue image only — fresh seller photos optional at this ask'
-    return <span className="mono mk-wit catalog" role="img" aria-label={label} title={label}>!</span>
-  }
+function witnessCell(w) {
+  if (!w) return null
   return <span className="mono mk-wit ok" title={`${w} pile scan${w === 1 ? '' : 's'} recorded — a witness, not proof`}>✓ {w} scan{w === 1 ? '' : 's'}</span>
+}
+
+function MissingPhotosButton({ card, ask, onOpen }) {
+  if (Number(ask) <= SCAN_REQUEST_USDC) return null
+  const label = `Seller photos missing for ${card.name_en} at ${ask} USDC`
+  return <button type="button" className="mk-wit catalog mk-photo-warning"
+    aria-label={label} title={`${label} — see what to do`}
+    onClick={(event) => { event.stopPropagation(); onOpen() }}>!</button>
 }
 
 // A published page, read back as a table: the same seller shape the mock market uses,
@@ -85,6 +88,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [buyingNow, setBuyingNow] = useState(false) // compact posted-ask checkout in the pile pane
   const [swapMsg, setSwapMsg] = useState(null)
   const [zoom, setZoom] = useState(null) // {c, l, sellerId} — the card held up to the light
+  const [evidenceTip, setEvidenceTip] = useState(null) // high-value catalogue-only listing needing a next step
   const [aq, setAq] = useState('')
   const [abusy, setAbusy] = useState(false)
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
@@ -188,6 +192,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const pickUp = (sellerId, uid, mode) => addToPile(pileKey, sellerId, uid, mode)
   const visitSellerPile = (sellerId, flow = 'table', cash = null, note = '') => {
     setZoom(null)
+    setEvidenceTip(null)
     setPendingSellerFlow({ sellerId, flow, cash, note })
     onClearFocus?.()
     setSel(sellerId)
@@ -333,6 +338,26 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       )}
     </CardZoom>
   )
+  const evidenceTipEl = evidenceTip && (() => {
+    const seller = allSellers.find((candidate) => candidate.id === evidenceTip.sellerId)
+    const askForPhotos = () => {
+      pickUp(evidenceTip.sellerId, evidenceTip.c.uid, 'buy')
+      visitSellerPile(evidenceTip.sellerId, 'offer', null,
+        `Before we settle, please add fresh front, back, corners, and holo-tilt photos for ${evidenceTip.c.name_en}.`)
+    }
+    return <section className="mk-photo-tip" role="dialog" aria-label={`Seller photos missing for ${evidenceTip.c.name_en}`}>
+      <button className="mk-photo-tipclose" type="button" onClick={() => setEvidenceTip(null)} aria-label="Close">✕</button>
+      <div className="mk-photo-tipflag mono"><span aria-hidden="true">!</span> Seller photos missing</div>
+      <strong>{evidenceTip.c.name_en} · {evidenceTip.l.ask} USDC</strong>
+      <p>This listing shows catalogue art, not photos of the seller&rsquo;s copy. Ask for fresh views before deciding.</p>
+      <div className="mk-photo-tipactions">
+        <button className="primary" type="button" onClick={askForPhotos}>Ask for photos in offer →</button>
+        <button className="ghost" type="button" onClick={() => { setZoom(evidenceTip); setEvidenceTip(null) }}>View card</button>
+      </div>
+      <small className="mono">Nothing is sent until you review and send the offer.</small>
+      {seller && <small className="mono">Seller: {sellerName(seller)}</small>}
+    </section>
+  })()
   const msgEl = swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>
   const roomNote = (
     <div className="mk-samplenote mono">{open?.live
@@ -364,6 +389,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {ankoBar}
         {ankoPanel}
         {msgEl}
+        {evidenceTipEl}
         {zoomEl}
         <div className="mk-head mk-cardhead">
           <div className="mk-focushead">
@@ -395,8 +421,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                     <span className="mono mk-copycount">{Math.max(1, Number(l.copies) || 1)} cop{Math.max(1, Number(l.copies) || 1) === 1 ? 'y' : 'ies'}</span>
                   </span>
                   <span className="mono mk-cond" title="the seller's claim — the protocol records it, it does not verify it">{l.cond}</span>
-                  <button className="mk-evidence" onClick={() => setZoom({ c, l, sellerId: s.id })}
-                    title="open this listing's card and evidence read">{witnessCell(l.witness, l.ask)}</button>
+                  {l.witness
+                    ? <button className="mk-evidence" onClick={() => setZoom({ c, l, sellerId: s.id })}
+                        title="open this listing's card and evidence read">{witnessCell(l.witness)}</button>
+                    : <span className="mk-evidence-slot"><MissingPhotosButton card={c} ask={l.ask}
+                        onOpen={() => setEvidenceTip({ c, l, sellerId: s.id })} /></span>}
                   <span className="mono mk-ask">{l.ask} USDC</span>
                   <PileButtons ask={l.ask}
                     inPile={!!inPile(s.id, focusUid)} mode={inPile(s.id, focusUid)?.mode}
@@ -529,8 +558,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           return (
             <MiniCard key={c.uid} c={c} dim={aisleMatch && !aisleMatch.has(c.uid)}
               title="hold it up to the light" onTap={() => setZoom({ c, l, sellerId: open.id })}
-              corner={myWants.has(c.uid) ? <span className="mk-public-want mono">★ your want</span> : null}
-              sub={<>{c.num} · {l.cond || 'condition unlisted'} · {witnessCell(l.witness, l.ask)}</>}
+              corner={<>{myWants.has(c.uid) ? <span className="mk-public-want mono">★ your want</span> : null}
+                {!l.witness && <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: open.id })} />}</>}
+              sub={<>{c.num} · {l.cond || 'condition unlisted'}{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
               actions={<PileButtons ask={l.ask} inPile={!!p} mode={p?.mode}
                 onBuy={() => pickUp(open.id, c.uid, 'buy')}
                 onTrade={() => pickUp(open.id, c.uid, 'trade')} />} />
@@ -545,6 +575,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {ankoBar}
         {ankoPanel}
         {msgEl}
+        {evidenceTipEl}
         {zoomEl}
         <div className="mk-head">
           <div className="mk-seller">
@@ -697,6 +728,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       {ankoBar}
       {ankoPanel}
       {msgEl}
+      {evidenceTipEl}
       {zoomEl}
       {directFinds.length > 0 && (
         <section className="mk-searchresults" aria-label={`Card listings matching ${aq.trim()}`}>
@@ -710,7 +742,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           <div className="mkf-grid mk-searchgrid">
             {directFinds.map(({ c, l, seller }) => (
               <MiniCard key={`${seller.id}|${l.uid}`} c={c}
-                sub={<>{c.num} · {l.ask} USDC · {witnessCell(l.witness, l.ask)}</>}
+                corner={!l.witness ? <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: seller.id })} /> : null}
+                sub={<>{c.num} · {l.ask} USDC{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
                 onTap={() => setZoom({ c, l, sellerId: seller.id })}
                 actions={<>
                   <button className="mk-resulttable" onClick={(ev) => { ev.stopPropagation(); setSel(seller.id) }} title={`visit ${sellerName(seller)}'s table`}>

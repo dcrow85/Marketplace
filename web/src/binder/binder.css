@@ -117,10 +117,10 @@ section { padding: 14px 0 70px; }
 
 /* card detail modal — the full card view on click */
 .modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: flex-start; justify-content: center; padding: 48px 20px; overflow-y: auto; background: rgba(20,18,14,.46); backdrop-filter: blur(3px); }
-.sheet { position: relative; width: 100%; max-width: 720px; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 12px; box-shadow: 0 24px 60px rgba(20,18,14,.28); padding: 26px; }
+.sheet { position: relative; width: 100%; max-width: 860px; background: var(--paper); border: 0.5px solid var(--rule); border-radius: 12px; box-shadow: 0 24px 60px rgba(20,18,14,.28); padding: 26px; }
 .mx { position: absolute; top: 12px; right: 14px; font-family: var(--mono); font-size: 14px; color: var(--dim); background: transparent; border: 0; cursor: pointer; line-height: 1; padding: 4px; }
 .mx:hover { color: var(--ink); }
-.mcols { display: grid; grid-template-columns: minmax(0, 232px) 1fr; gap: 26px; }
+.mcols { display: grid; grid-template-columns: minmax(0, 270px) 1fr; gap: 30px; }
 .mleft { min-width: 0; }
 .mcard { position: relative; aspect-ratio: 63/88; border: 0.75px solid #6E6A60; background: var(--mount); border-radius: 6px; overflow: hidden; }
 .mcard.ghost { border-color: var(--rule); }
@@ -140,6 +140,12 @@ section { padding: 14px 0 70px; }
 .addphoto .apt { font-family: var(--mono); font-size: 12.5px; font-weight: 600; }
 .addphoto .aps { font-size: 11px; color: var(--dim); }
 .photo-evidence { display: grid; gap: 8px; width: 100%; margin-top: 10px; padding: 10px; border: .5px solid var(--rule); border-radius: 9px; background: var(--paper2); }
+.photo-evidence.needs-photos { border-color: var(--signal); background: color-mix(in srgb, var(--paper2) 94%, var(--signal) 6%); }
+.photo-evidence > summary { list-style: none; cursor: pointer; }
+.photo-evidence > summary::-webkit-details-marker { display: none; }
+.photo-evidence > summary::after { content: '›'; color: var(--dim); font-size: 14px; transform: rotate(90deg); transition: transform .14s ease; }
+.photo-evidence[open] > summary::after { transform: rotate(-90deg); }
+.photo-evidence-body { display: grid; gap: 8px; padding-top: 2px; }
 .photo-evidence-head { display: flex; align-items: start; justify-content: space-between; gap: 10px; }
 .photo-evidence-head > div { display: grid; gap: 2px; }
 .photo-evidence-head b { color: var(--ink); font-size: 11.5px; }
@@ -155,7 +161,7 @@ section { padding: 14px 0 70px; }
 .photo-view-copy b { color: var(--ink); font-size: 10px; }
 .photo-view-copy small { color: var(--dim); font-size: 8px; line-height: 1.25; }
 .photo-view input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.photo-evidence > p { margin: 0; color: var(--dim); font-size: 8.5px; line-height: 1.4; }
+.photo-evidence-body > p { margin: 0; color: var(--dim); font-size: 8.5px; line-height: 1.4; }
 .photo-evidence-error { color: var(--signal); font-size: 9px; }
 .imprev { margin-top: 10px; border: 0.5px solid var(--agent); border-radius: 8px; padding: 11px 12px; background: var(--paper); }
 .imhd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
@@ -211,6 +217,13 @@ section { padding: 14px 0 70px; }
 .switch2 .sw:hover { color: var(--ink); }
 .switch2 .sw.on { background: var(--ink); color: var(--paper); }
 .m-fields { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+.m-actionblock { margin-top: 14px; padding: 13px 14px 12px; border: .5px solid var(--rule); border-radius: 10px; background: var(--paper2); }
+.m-sectionlabel { color: var(--dim); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; }
+.m-actionblock .m-stance { margin-top: 9px; }
+.m-actionblock .m-fields { margin-bottom: 0; }
+.listing-notes { border-top: .5px solid var(--rule2); padding-top: 7px; }
+.listing-notes > summary { color: var(--dim); cursor: pointer; font: 10.5px var(--mono); }
+.listing-notes .frow { margin-top: 8px; }
 .frow { display: grid; grid-template-columns: 84px 1fr; align-items: start; gap: 10px; }
 .frow .flabel { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--dim); padding-top: 8px; }
 .frow .fbody { display: flex; align-items: center; gap: 6px; min-width: 0; flex-wrap: wrap; }
@@ -240,6 +253,8 @@ section { padding: 14px 0 70px; }
 .card-more > summary small { color: var(--dim); font-size: 9.5px; }
 .card-morebody { display: flex; flex-direction: column; gap: 9px; padding: 0 10px 10px; }
 .card-more .dossier, .card-more .provbox { margin: 0; }
+.card-more .mkb { margin: 0; }
+.market-more .card-morebody { padding-inline: 8px; }
 .lgdot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; flex: none; }
 .lg-exact { background: var(--ink); } .lg-ref { background: var(--faint); } .lg-nr { background: transparent; border: 1px solid var(--ink); }
 /* open-the-record: Glance stays clean; machine forms live on the dark bench */

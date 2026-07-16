@@ -30,7 +30,7 @@ function CardPicker({ cards, onPick }) {
   )
 }
 
-export default function ScanCards({ cards, onCommit, onClose }) {
+export default function ScanCards({ cards, targetCard = null, onCommit, onClose }) {
   const [items, setItems] = useState([]) // {id, status:'reading'|'matched'|'unmatched', photo, read, match}
   const [picking, setPicking] = useState(null) // item id currently being picked
   const [viewBusy, setViewBusy] = useState('')
@@ -39,13 +39,25 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   const [commitError, setCommitError] = useState(false)
   const idRef = useRef(0)
   useScrollLock() // overlay is mounted only while open
-  useEffect(() => { ensureLocateWorker() }, []) // warm the CV worker while the user frames the shot
+  useEffect(() => { if (!targetCard) ensureLocateWorker() }, [targetCard]) // warm CV only for a pile scan
 
   // Each photo → one card. While the read is in flight we show a "reading" placeholder,
   // then replace it with the recognized card.
   const addPhotos = async (fileList) => {
-    const files = [...(fileList || [])]
+    const files = [...(fileList || [])].slice(0, targetCard ? 1 : undefined)
     if (!files.length) return
+    if (targetCard) {
+      const file = files[0]
+      const pid = ++idRef.current
+      setItems([{ id: pid, status: 'reading', photo: null, read: null, match: targetCard }])
+      try {
+        const prepared = await preparePhoto(file)
+        setItems([{ id: pid, status: 'matched', photo: prepared.full, read: null, match: targetCard }])
+      } catch {
+        setItems([{ id: pid, status: 'unmatched', photo: null, read: null, match: targetCard }])
+      }
+      return
+    }
     let cursor = 0
     const worker = async () => {
       while (cursor < files.length) {
@@ -121,7 +133,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
   }
 
   const status = items.length === 0
-    ? 'point at one card, a page, or a spread'
+    ? (targetCard ? 'start with a clear photo of the front' : 'point at one card, a page, or a spread')
     : (reading && !matched.length ? 'reading your photo…'
       : `${uniq} recognized${dupes ? ` · ${dupes + uniq} copies` : ''}${reading ? ' · reading…' : ''}${needPick ? ` · ${needPick} need a pick` : ''}`)
 
@@ -130,7 +142,7 @@ export default function ScanCards({ cards, onCommit, onClose }) {
       <div className="sc-sheet">
         <div className="sc-head">
           <div>
-            <div className="ek">Scan into your collection</div>
+            <div className="ek">{targetCard ? `Add photos for ${cardName(targetCard)}` : 'Scan into your collection'}</div>
             <div className="sc-count mono">{status}</div>
           </div>
           <button className="sc-x" onClick={onClose} aria-label="Close">✕</button>
@@ -187,17 +199,21 @@ export default function ScanCards({ cards, onCommit, onClose }) {
         </div>
 
         <div className="sc-actions">
-          <label className="sc-cap-btn">＋ Scan<input type="file" accept="image/*" capture="environment" hidden onChange={(e) => { addPhotos(e.target.files); e.target.value = '' }} /></label>
-          <label className="sc-choose">Choose photos<input type="file" accept="image/*" multiple hidden onChange={(e) => { addPhotos(e.target.files); e.target.value = '' }} /></label>
+          <label className="sc-cap-btn">＋ {targetCard ? 'Take front photo' : 'Scan'}<input type="file" accept="image/*" capture="environment" hidden onChange={(e) => { addPhotos(e.target.files); e.target.value = '' }} /></label>
+          <label className="sc-choose">{targetCard ? 'Choose front photo' : 'Choose photos'}<input type="file" accept="image/*" multiple={!targetCard} hidden onChange={(e) => { addPhotos(e.target.files); e.target.value = '' }} /></label>
           <button className="sc-commit" disabled={!matched.length || committing} onClick={commit}>
-            {committing ? 'Saving photos…' : matched.length ? `Add ${uniq} to collection${dupes ? ` (${dupes + uniq} copies)` : ''}` : 'Add to collection'}
+            {committing ? 'Saving photos…' : targetCard
+              ? (matched.length ? 'Save listing photos' : 'Add a front photo')
+              : matched.length ? `Add ${uniq} to collection${dupes ? ` (${dupes + uniq} copies)` : ''}` : 'Add to collection'}
           </button>
         </div>
         {commitError && <div className="sc-commiterror" role="alert">Couldn&rsquo;t save those photos. Your review is still here—try again.</div>}
-        <p className="sc-note dim">
+        <p className="sc-note dim">{targetCard ? <>
+          This photo is going straight to <b>{cardName(targetCard)}</b>. Add the back, corners, or holo tilt after the front so buyers and Anko can inspect your copy.
+        </> : <>
           One card or many: every card in frame is read and cut out in one shot. Recognized cards are tagged <b>have</b>,
           each crop kept as the front. Other angles help Anko and buyers inspect your copy, but do not prove authenticity or condition. Fix any miss with “pick”.
-        </p>
+        </>}</p>
       </div>
     </div>
   )

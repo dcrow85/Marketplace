@@ -252,8 +252,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   }, [storeKey])
 
   const [scanning, setScanning] = useState(false)
+  const [scanTargetUid, setScanTargetUid] = useState(null)
   useEffect(() => {
-    const open = () => setScanning(true)
+    const open = (event) => {
+      setScanTargetUid(event.detail?.uid || null)
+      setScanning(true)
+    }
     window.addEventListener('cairn-open-scan', open)
     return () => window.removeEventListener('cairn-open-scan', open)
   }, [])
@@ -669,7 +673,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
         onPhotoSaved={(uid, src) => setUserPhotos((prev) => ({ ...prev, [uid]: src }))}
         haveActionsGuide={haveLessonUid === selected ? <HaveActionsLesson onDone={dismissHaveLesson} /> : null} onUseHaveAction={dismissHaveLesson}
         onClose={() => { if (haveLessonUid === selected) dismissHaveLesson(); setSelected(null) }} market={mktEff} mockSales={mockSales} onBrowseCard={onBrowseCard} />}
-      {scanning && <ScanCards cards={data.cards} onCommit={commitScans} onClose={() => setScanning(false)} />}
+      {scanning && <ScanCards cards={data.cards} targetCard={scanTargetUid ? byUid(data, scanTargetUid) : null}
+        onCommit={commitScans} onClose={() => { setScanning(false); setScanTargetUid(null) }} />}
     </>
   )
 }
