@@ -58,6 +58,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-16 · Codex — **Trades now negotiate on a clean, evidence-aware
+  Deal Mat.** Each offer pins `You receive` / `You give`, cash and payment rail, the
+  current turn, and a chronological “On the mat” round history. Initial photo requests
+  are no longer regex-detected notes: buyers choose the $10+ unscanned cards and exact
+  front/back/corners/holo-tilt views, then a sanitized typed evidence event travels in
+  the offer to the counterpart. Incoming requests suppress accept/counter/decline until
+  the seller answers; the seller can jump to the requested card in the scanner. An
+  incoming answer returns the decision to the buyer, who must explicitly keep the offer
+  as written, revise it, ask again, or withdraw before the seller gets the next move.
+  Sample sellers obey the same cadence and no longer auto-accept/ship through a pending
+  request. App attention badges now wake on evidence answers as well as requests.
+  Local browser rehearsal confirmed compose → attach → send receipt → seller answer →
+  buyer continuation, plus existing incoming, delivered-PayPal, and counter surfaces;
+  scoped ESLint, diff check, and the production build pass (same upstream
+  Privy/Rolldown annotation warnings only). Source `c69e840`; Pages `24073783`; apex and
+  `www` serve byte-identical `cairn-site-90e9743585a1.js`.
 - `[passive]` 2026-07-16 · Codex — **The editable profile now teaches payment rails once,
   then gets out of the table's way.** A fresh account sees the full “How buyers can pay”
   explanation on its first My Table visit. Returning visits collapse it to a 43px
