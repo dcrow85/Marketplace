@@ -13,7 +13,7 @@ import BuyNow from './BuyNow.jsx'
 import CardZoom from './CardZoom.jsx'
 import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
-import { handleFor, shortId, avatarSVG } from '../identity.js'
+import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
 import { IS_LOCAL_CHAIN } from '../chain/config.js'
 import './market.css'
@@ -562,7 +562,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             <Avatar seed={open.id} size={40} photo={open.photo} />
             <div>
               <div className="mk-handle">{sellerName(open)}{open.live && <span className="mk-livetag mono"> ● live</span>}</div>
-              <div className="mono dim mk-sub">{shortId(open.id)} · {open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}</div>
+              <div className="mono dim mk-sub">{open.live ? `page updated ${open.joined}` : `at the market since ${open.joined}`}</div>
             </div>
           </div>
           <button className="ghost sm" onClick={() => { setSel(null); setWantsOnly(false) }}>← all tables</button>
@@ -766,7 +766,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 <Avatar seed={s.id} size={34} photo={s.photo} />
                 <div>
                   <div className="mk-handle">{sellerName(s)}{s.live && <span className="mk-livetag mono"> ● live</span>}</div>
-                  <div className="mono dim mk-sub">{shortId(s.id)}{s.live ? '' : ' · sample'}</div>
+                  <div className="mono dim mk-sub">{s.live ? `page updated ${s.joined}` : 'sample table'}</div>
                 </div>
               </div>
               <div className="mk-spread">
