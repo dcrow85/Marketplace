@@ -68,12 +68,12 @@ const sellerName = (seller) => seller?.handle || handleFor(seller?.id)
 // buy · 9 USDC / ⇄ trade — both just drop the card on your pile, tagged. Nothing sends.
 function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
   return (
-    <span className="ofr-acts">
-      <button className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
+    <span className="ofr-acts ofr-pileacts">
+      <button type="button" className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onBuy() }}
         title="into your pile at the ask — the deal sends when you finish the table">
-        {inPile && mode === 'buy' ? '✓ In pile' : <><span className="ofr-wide-label">Buy · {ask} USDC</span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>
-      <button className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
+        {inPile && mode === 'buy' ? '✓ In pile' : <><span className="ofr-wide-label"><span>Buy</span><small>{ask} USDC</small></span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>
+      <button type="button" className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onTrade() }}
         title="into your pile as a trade-for — you pick your side at checkout">
         {inPile && mode === 'trade' ? '✓ Trade' : '⇄ Trade'}</button>
@@ -87,7 +87,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [sel, setSel] = useState(null) // seller id whose table is open
   const [wantsOnly, setWantsOnly] = useState(false)
   const [settling, setSettling] = useState(false) // the Settle page, its own room
-  const [buyingNow, setBuyingNow] = useState(false) // compact posted-ask checkout in the pile pane
+  const [buyingNow, setBuyingNow] = useState(false) // posted-ask checkout, in its own room
   const [swapMsg, setSwapMsg] = useState(null)
   const [zoom, setZoom] = useState(null) // {c, l, sellerId} — the card held up to the light
   const [evidenceTip, setEvidenceTip] = useState(null) // high-value catalogue-only listing needing a next step
@@ -444,7 +444,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <span><b>{sellerName(s)}</b><small className="mono">your pile · {pile.length} card{pile.length === 1 ? '' : 's'}{buys ? ` · buys ${buys} USDC` : ''}</small></span>
             </span>
             <button className="primary mk-settle" onClick={() => visitSellerPile(s.id, pile.every((item) => item.mode === 'buy') ? 'buy' : 'table')}>
-              {pile.every((item) => item.mode === 'buy') ? 'Continue to buy →' : 'Review pile →'}
+              Settle up →
             </button>
           </div>
         ))}
@@ -533,6 +533,21 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const canEscrowNow = open.live || IS_LOCAL_CHAIN
     const canPayPalNow = open.live && sellerAcceptsPayPal(open)
     const canBuyNow = pile.every((p) => p.mode === 'buy') && buysSum > 0 && (canEscrowNow || canPayPalNow)
+    const finishBuyNow = (result) => {
+      setBuyingNow(false)
+      setSwapMsg(result.rail === 'paypal'
+        ? `PayPal payment reported · ${result.paymentRef}. ${sellerName(open)} must confirm it in PayPal; follow the handoff in Trades.`
+        : `funded in escrow · trade #${result.tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
+    }
+    if (buyingNow && canBuyNow) {
+      return (
+        <div className="mk buy-room">
+          <button type="button" className="ghost sm buy-room-back" onClick={() => setBuyingNow(false)}>← back to pile</button>
+          <BuyNow open={open} pile={pile} total={buysSum} catalog={catalog} accountId={accountId}
+            pileKey={pileKey} byUid={byUid} onBack={() => setBuyingNow(false)} onComplete={finishBuyNow} />
+        </div>
+      )
+    }
     const suggestedPileCounter = Math.round(Math.max(0, pile.reduce((total, item) => {
       const listing = open.listings.find((candidate) => candidate.uid === item.uid)
       return total + (salesAll[item.uid]?.[0]?.p ?? (Number(listing?.ask) || 0) * .9)
@@ -547,7 +562,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         id: 'open-evidence-offer', label: 'Open offer with a scan request', primary: true,
         onSelect: () => { setOfferCashSeed(null); setOfferNoteSeed('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.'); setSettling(true) },
       }]
-      if (read.lean === 'accept' && canBuyNow) return [{ id: 'review-checkout', label: `Review checkout · ${buysSum} USDC`, primary: true, onSelect: () => setBuyingNow(true) }]
+      if (read.lean === 'accept' && canBuyNow) return [{ id: 'review-checkout', label: `Settle up · ${buysSum} USDC`, primary: true, onSelect: () => setBuyingNow(true) }]
       return []
     }
     const displayUids = new Set(open.showcase || [])
@@ -699,31 +714,23 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                   ? `⇄ your tradeables (~${myTradeSum} USDC on record) more than cover this pile (~${pileVal})`
                   : `⇄ your tradeables ~${myTradeSum} USDC on record · covers ~${pct}% of this pile`}</span>
             })()}
-            {buyingNow && canBuyNow ? (
-              <BuyNow open={open} pile={pile} total={buysSum} catalog={catalog} accountId={accountId}
-                pileKey={pileKey} byUid={byUid} onBack={() => setBuyingNow(false)}
-                onComplete={(result) => {
-                  setBuyingNow(false)
-                  setSwapMsg(result.rail === 'paypal'
-                    ? `PayPal payment reported · ${result.paymentRef}. ${sellerName(open)} must confirm it in PayPal; follow the handoff in Trades.`
-                    : `funded in escrow · trade #${result.tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
-                }} />
-            ) : <>
-              <span className="mk-ckacts">
-                {canBuyNow && <button className="primary mk-settle" onClick={() => setBuyingNow(true)}>Checkout · {buysSum}</button>}
-                <button className={canBuyNow ? 'ghost sm' : 'primary mk-settle'} onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Make offer{pile.length > 1 ? ` · ${pile.length} cards` : ''}</button>
-                <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>clear</button>
-              </span>
-              <div className="mk-buy-decision">
-                <span className="ofl-decisionlabel mono">Want a second look?</span>
-                <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
-                  label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before buying' : 'Ask Anko about this offer'} actionsForRead={actionsForPurchaseRead} />
-              </div>
-            </>}
+            <span className="mk-ckacts">
+              <button className="primary mk-settle" onClick={() => {
+                if (canBuyNow) setBuyingNow(true)
+                else { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }
+              }}>Settle up · {canBuyNow ? `${buysSum} USDC` : `${pile.length} card${pile.length === 1 ? '' : 's'}`}</button>
+              {canBuyNow && <button className="ghost sm" onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Make an offer</button>}
+              <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>clear</button>
+            </span>
+            <div className="mk-buy-decision">
+              <span className="ofl-decisionlabel mono">Want a second look?</span>
+              <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
+                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before buying' : 'Ask Anko about this offer'} actionsForRead={actionsForPurchaseRead} />
+            </div>
           </div>
         )}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; scans say what&rsquo;s recorded behind it. Pick cards up,
-          tag them buy or trade, then check out at posted asks or make an offer. Escrow is recommended; PayPal appears when that seller accepts it. An offer moves no cards or funds.</p>
+          tag them buy or trade, then settle up once the pile looks right. Escrow is recommended; PayPal appears when that seller accepts it. An offer moves no cards or funds.</p>
       </div>
     )
   }

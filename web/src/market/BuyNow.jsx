@@ -159,6 +159,18 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
         <strong className="mono">{rail === RAIL_PAYPAL ? `$${Number(total).toFixed(2)} USD` : `${total} USDC`}</strong>
       </div>
 
+      <div className="buy-order" aria-label="Cards in this checkout">
+        {pile.map((item) => {
+          const card = byUid.get(item.uid)
+          const listing = open.listings.find((entry) => entry.uid === item.uid)
+          return <div className="buy-orderitem" key={item.uid}>
+            {card?.image ? <img src={card.image} alt="" /> : <span className="buy-orderblank" aria-hidden="true" />}
+            <span><b>{card?.name_en || item.uid}</b><small className="mono">{card?.num || 'card'} · {listing?.cond || 'condition unlisted'}</small></span>
+            <strong className="mono">{listing?.ask ?? 0} USDC</strong>
+          </div>
+        })}
+      </div>
+
       <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
         <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow="recommended"
           onClick={() => { setRail(RAIL_ESCROW); setPaypalOpened(false); setError(null) }}>
