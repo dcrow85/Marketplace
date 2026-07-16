@@ -29,7 +29,16 @@ export function mergeInbox(catalogId, accountId, box) {
       // stored exactly as authored, direction flipped: for dir 'in', the ledger reads
       // want/give from the author's frame already (same shape persona counters use)
       const arrivedState = ARRIVAL_STATES.has(m.offer.state) ? m.offer.state : 'sent'
-      offers.unshift({ ...m.offer, dir: 'in', live: true, from: m.offer.from, state: arrivedState, nextAt: null, cat: undefined })
+      const arrivedEvidence = (Array.isArray(m.offer.evidenceThread) ? m.offer.evidenceThread : [])
+        .filter((event) => event && ['request', 'response'].includes(event.kind) && String(event.line || '').trim())
+        .slice(-20).map((event) => ({
+          id: String(event.id || '').slice(0, 48), kind: event.kind, dir: 'in',
+          line: String(event.line).trim().slice(0, 600), at: String(event.at || new Date().toISOString()).slice(0, 40),
+          cardUids: [...new Set((Array.isArray(event.cardUids) ? event.cardUids : []).map(String).filter(Boolean))].slice(0, 24),
+          views: [...new Set((Array.isArray(event.views) ? event.views : []).map(String).filter((view) => ['front', 'back', 'corners', 'holo_tilt'].includes(view)))],
+        }))
+      offers.unshift({ ...m.offer, dir: 'in', live: true, from: m.offer.from, state: arrivedState,
+        evidenceThread: arrivedEvidence, nextAt: null, cat: undefined })
       if (m.offer.counterOf) {
         const prev = offers.find((o) => o.id === m.offer.counterOf)
         if (prev && ['sent', 'seen'].includes(prev.state)) prev.state = 'countered'
@@ -44,6 +53,8 @@ export function mergeInbox(catalogId, accountId, box) {
         dir: 'in',
         line: String(m.line).trim().slice(0, 600),
         at: new Date(Number(m.at) || Date.now()).toISOString(),
+        cardUids: [...new Set((Array.isArray(m.cardUids) ? m.cardUids : []).map(String).filter(Boolean))].slice(0, 24),
+        views: [...new Set((Array.isArray(m.views) ? m.views : []).map(String).filter((view) => ['front', 'back', 'corners', 'holo_tilt'].includes(view)))],
       }
       if (!event.line) continue
       o.evidenceThread = [...(Array.isArray(o.evidenceThread) ? o.evidenceThread : []), event].slice(-20)

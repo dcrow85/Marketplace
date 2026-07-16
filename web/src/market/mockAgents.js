@@ -152,6 +152,10 @@ export function startMockMarket({ catalogId, accountId, byUid, askOf }) {
         if (['declined', 'withdrawn', 'settled', 'countered'].includes(o.state)) break
         const p = personaFor(o.dir === 'out' ? o.to : o.from)
         if (o.dir === 'out' && o.state === 'sent' && !o.nextAt) { o.nextAt = now + between(p.delay) / 2; changed = true; break }
+        const lastEvidence = Array.isArray(o.evidenceThread) ? o.evidenceThread[o.evidenceThread.length - 1] : null
+        if (o.dir === 'out' && o.state === 'seen' && lastEvidence?.dir === 'out' && !o.nextAt) {
+          o.nextAt = now + between(p.delay) / 2; changed = true; break
+        }
         if (!o.nextAt || o.nextAt > now) break
         step(o, p, now, offers)
         changed = true
@@ -172,6 +176,16 @@ export function startMockMarket({ catalogId, accountId, byUid, askOf }) {
         o.state = 'seen'
         o.nextAt = o.nextAt + between(p.delay) // chain from the due time so catch-up can hop
       } else if (o.dir === 'out' && o.state === 'seen') {
+        const lastEvidence = Array.isArray(o.evidenceThread) ? o.evidenceThread[o.evidenceThread.length - 1] : null
+        if (lastEvidence?.dir === 'out' && lastEvidence.kind === 'request') {
+          o.evidenceThread = [...o.evidenceThread, {
+            id: 'ev_' + Math.random().toString(36).slice(2, 10), kind: 'response', dir: 'in',
+            line: 'I don’t have fresh seller scans for those views yet. I’ll leave the offer open while you decide whether to keep it on the mat.',
+            cardUids: lastEvidence.cardUids || [], views: lastEvidence.views || [], at: new Date().toISOString(),
+          }].slice(-20)
+          o.nextAt = null
+          return
+        }
         const d = decide({ o, byUid, askOf })
         if (d.verdict === 'countered') {
           o.state = 'countered'

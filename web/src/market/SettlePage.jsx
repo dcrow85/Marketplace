@@ -12,6 +12,9 @@ import { railCurrency, sellerPayPalHandle, RAIL_ESCROW, RAIL_PAYPAL } from '../p
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
 const scanLabel = (w, ask) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : Number(ask) > SCAN_REQUEST_USDC ? 'scan requested' : 'stock photo · scan optional'
+const EVIDENCE_VIEWS = [
+  ['front', 'Front'], ['back', 'Back'], ['corners', 'Corners'], ['holo_tilt', 'Holo tilt'],
+]
 
 function Avatar({ seed, size = 26, photo = '' }) {
   if (photo) return <span className="av"><img src={photo} width={size} height={size} alt="" /></span>
@@ -22,11 +25,20 @@ function Avatar({ seed, size = 26, photo = '' }) {
 // side from your binder, one cash line, one send. Clean on purpose: no ask bar, no
 // aisle, nothing but the deal.
 export default function SettlePage({ open, pile, byUid, data, store, mkt, catalog, accountId, pileKey, agentName = 'Anko', initialCash = null, initialNote = '', onBack, onSent }) {
+  const initialEvidenceSeed = /scan|photo|evidence/i.test(initialNote)
   const [give, setGive] = useState(() => new Set())
   const [qg, setQg] = useState('')
   const [cashEdit, setCashEdit] = useState(initialCash == null ? null : String(initialCash)) // null = follow the buy total
-  const [note, setNote] = useState(initialNote)
-  const [evidenceRequestIncluded, setEvidenceRequestIncluded] = useState(() => /scan|photo|evidence/i.test(initialNote))
+  const [note, setNote] = useState(initialEvidenceSeed ? '' : initialNote)
+  const [evidenceRequest, setEvidenceRequest] = useState(() => {
+    if (!initialEvidenceSeed) return null
+    const cardUids = pile.filter((item) => {
+      const listing = open.listings.find((candidate) => candidate.uid === item.uid)
+      return Number(listing?.ask) > SCAN_REQUEST_USDC && !listing?.witness
+    }).map((item) => item.uid)
+    return cardUids.length ? { cardUids, views: EVIDENCE_VIEWS.map(([key]) => key) } : null
+  })
+  const [evidenceDraft, setEvidenceDraft] = useState(null)
   const [abusy, setAbusy] = useState(false)
   const [ankoScope, setAnkoScope] = useState(null) // his lens on YOUR side
   const [ankoLine, setAnkoLine] = useState(null)
@@ -40,6 +52,17 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const trades = pile.filter((p) => p.mode === 'trade')
   const buysSum = buys.reduce((t, p) => t + askOf(p.uid), 0)
   const cash = cashEdit == null ? buysSum : Math.max(0, Number(cashEdit) || 0)
+  const scanCandidates = pile.filter((item) => {
+    const listing = open.listings.find((candidate) => candidate.uid === item.uid)
+    return Number(listing?.ask) > SCAN_REQUEST_USDC && !listing?.witness
+  })
+  const defaultEvidenceRequest = () => ({ cardUids: scanCandidates.map((item) => item.uid), views: EVIDENCE_VIEWS.map(([key]) => key) })
+  const evidenceLine = (request = evidenceRequest) => {
+    if (!request?.cardUids?.length || !request?.views?.length) return ''
+    const cards = request.cardUids.map((uid) => byUid.get(uid)?.name_en || uid)
+    const views = request.views.map((view) => EVIDENCE_VIEWS.find(([key]) => key === view)?.[1].toLowerCase()).filter(Boolean)
+    return `Before we settle, please add clear ${views.join(', ')} photos for ${cards.join(', ')}.`
+  }
 
   const salesMap = useMemo(() => ({ ...(mkt?.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }), [mkt, catalog])
   const lastPrice = (uid) => salesMap[uid]?.[0]?.p ?? null
@@ -189,8 +212,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     if (read.lean === 'request_evidence') return [{
       id: 'request-scan', label: 'Add scan request to offer', primary: true,
       onSelect: () => {
-        setNote('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.')
-        setEvidenceRequestIncluded(true)
+        setEvidenceRequest(defaultEvidenceRequest())
       },
     }]
     if (read.lean === 'accept') return [{ id: 'keep-terms', label: 'Keep these terms', onSelect: () => setCashEdit(String(cash)) }]
@@ -199,6 +221,9 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
 
   const canSend = pile.length > 0 && (trades.length === 0 || give.size > 0 || cash > 0)
   const send = () => {
+    const pileUids = new Set(pile.map((item) => item.uid))
+    const request = evidenceRequest ? { ...evidenceRequest, cardUids: evidenceRequest.cardUids.filter((uid) => pileUids.has(uid)) } : null
+    const sendRequest = request?.cardUids.length && request.views.length ? { ...request, line: evidenceLine(request) } : null
     sendOffer(offersKeyFor(catalog.id, accountId), {
       to: open.id,
       toHandle: open.handle || handleFor(open.id),
@@ -206,11 +231,12 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       give: [...give].map((uid) => ({ uid })),
       cash: cash > 0 ? { side: 'from', amount: cash } : null,
       note,
+      evidenceRequest: sendRequest,
       settlement: { rail: settlementRail, paypal_handle: settlementRail === RAIL_PAYPAL ? paypalHandle : null },
       live: open.live, from: accountId, cat: catalog.id,
     })
     clearPile(pileKey, open.id)
-    onSent({ evidenceRequestIncluded })
+    onSent({ evidenceRequestIncluded: !!sendRequest })
   }
 
   return (
@@ -246,6 +272,44 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
             )
           })}
         </div>
+        {scanCandidates.length > 0 && <div className={'stl-evidencemove' + (evidenceRequest ? ' added' : '')}>
+          <div>
+            <span className="mono">{evidenceRequest ? 'Photo request on the mat' : 'Need a closer look?'}</span>
+            <p>{evidenceRequest
+              ? `${evidenceRequest.cardUids.map((uid) => byUid.get(uid)?.name_en || uid).join(', ')} · ${evidenceRequest.views.map((view) => EVIDENCE_VIEWS.find(([key]) => key === view)?.[1]).filter(Boolean).join(' · ')}`
+              : `Ask for specific views of the ${scanCandidates.length} $10+ card${scanCandidates.length === 1 ? '' : 's'} without seller scans.`}</p>
+          </div>
+          <span className="stl-evidencemoveacts">
+            <button className="sheetbtn mk-sm mono" onClick={() => setEvidenceDraft(evidenceRequest || defaultEvidenceRequest())}>{evidenceRequest ? 'Edit request' : 'Ask for photos'}</button>
+            {evidenceRequest && <button className="ghost sm mono" onClick={() => setEvidenceRequest(null)}>remove</button>}
+          </span>
+        </div>}
+        {evidenceDraft && <div className="stl-evidenceeditor">
+          <div className="stl-evidenceeditorhead"><span className="ek">Ask for photos</span><span className="mono">a message, not an acceptance</span></div>
+          <div className="stl-evidencecards mono">
+            {scanCandidates.map((item) => {
+              const card = byUid.get(item.uid)
+              const selected = evidenceDraft.cardUids.includes(item.uid)
+              return <button key={item.uid} className={selected ? 'on' : ''} onClick={() => setEvidenceDraft((draft) => ({ ...draft,
+                cardUids: selected ? draft.cardUids.filter((uid) => uid !== item.uid) : [...draft.cardUids, item.uid],
+              }))}>{selected ? '✓ ' : ''}{card?.name_en || item.uid}</button>
+            })}
+          </div>
+          <div className="stl-evidenceviews mono">
+            {EVIDENCE_VIEWS.map(([key, label]) => {
+              const selected = evidenceDraft.views.includes(key)
+              return <button key={key} className={selected ? 'on' : ''} onClick={() => setEvidenceDraft((draft) => ({ ...draft,
+                views: selected ? draft.views.filter((view) => view !== key) : [...draft.views, key],
+              }))}>{selected ? '✓ ' : ''}{label}</button>
+            })}
+          </div>
+          <p>{evidenceLine(evidenceDraft)}</p>
+          <div className="stl-evidenceeditoracts">
+            <button className="sheetbtn mk-sm mono" disabled={!evidenceDraft.cardUids.length || !evidenceDraft.views.length}
+              onClick={() => { setEvidenceRequest(evidenceDraft); setEvidenceDraft(null) }}>Add to offer</button>
+            <button className="ghost sm" onClick={() => setEvidenceDraft(null)}>cancel</button>
+          </div>
+        </div>}
       </div>
 
       {trades.length > 0 && (
@@ -306,8 +370,8 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           <span className="mono dim">{settlementCurrency}{cashEdit == null && buysSum > 0 ? ' · following the listed asks' : ''}</span>
         </div>
         <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note}
-          onChange={(e) => { setNote(e.target.value); setEvidenceRequestIncluded(/scan|photo|evidence/i.test(e.target.value)) }} />
-        {evidenceRequestIncluded && <div className="stl-requestincluded mono" role="status">
+          onChange={(e) => setNote(e.target.value)} />
+        {evidenceRequest && <div className="stl-requestincluded mono" role="status">
           <span>✓ Evidence request added to this offer.</span>
           <span>It sends when you press <b>Send offer</b> below — nothing has been sent yet.</span>
         </div>}

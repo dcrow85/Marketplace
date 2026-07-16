@@ -163,7 +163,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
     const needsEvidence = offers.some((o) => {
       const thread = Array.isArray(o.evidenceThread) ? o.evidenceThread : []
       const last = thread[thread.length - 1]
-      return OFFER_OPEN.includes(o.state) && last?.dir === 'in' && last.kind === 'request'
+      return OFFER_OPEN.includes(o.state) && last?.dir === 'in' && ['request', 'response'].includes(last.kind)
     })
     return { swapN: active, needsYou: needsDecision || needsEvidence }
   }, [catalog, accountId])
@@ -237,7 +237,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
               <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
-              <Offers accountId={accountId} catalog={catalog} onCounter={(o) => setOfferSeed({
+              <Offers accountId={accountId} catalog={catalog} onScan={(uid) => { setTradesOpen(false); openScanner(uid) }} onCounter={(o) => setOfferSeed({
                 seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
                 cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
                 settlement: o.settlement || null,

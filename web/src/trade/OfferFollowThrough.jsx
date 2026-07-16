@@ -10,24 +10,26 @@ function requestText(cardNames) {
   return `Could you add clear front and back photos, condition notes, and any provenance you have for ${subject}?`
 }
 
-export default function OfferFollowThrough({ o, offersKey, read, cardNames = [], onAccept, onCounter, onDecline, onEvidenceSent }) {
+export default function OfferFollowThrough({ o, offersKey, read, cardNames = [], cardUids = [], cardNameFor = (uid) => uid,
+  onAccept, onCounter, onDecline, onEvidenceSent, onScan, showThread = true }) {
   const [draft, setDraft] = useState(null)
   const thread = Array.isArray(o.evidenceThread) ? o.evidenceThread : []
   const last = thread[thread.length - 1]
   const open = ['sent', 'seen'].includes(o.state)
   const needsEvidenceReply = open && last?.dir === 'in' && last.kind === 'request'
   const awaitingEvidence = open && last?.dir === 'out' && last.kind === 'request'
+  const evidenceAnswered = open && last?.dir === 'in' && last.kind === 'response'
   const canFollowRead = o.dir === 'in' && open && read
   const readSuggestsEvidence = canFollowRead && REQUEST_LEANS.has(read.lean)
   const canAskDirectly = open && !awaitingEvidence && !needsEvidenceReply && !draft && !readSuggestsEvidence
 
-  const openRequest = () => setDraft({ kind: 'request', text: requestText(cardNames) })
-  const openResponse = () => setDraft({ kind: 'response', text: '' })
+  const openRequest = () => setDraft({ kind: 'request', text: requestText(cardNames), cardUids, views: ['front', 'back', 'corners', 'holo_tilt'] })
+  const openResponse = () => setDraft({ kind: 'response', text: 'I added the requested photos.', cardUids: last?.cardUids || [], views: last?.views || [] })
   const sendDraft = () => {
     if (!draft?.text.trim()) return
     const sent = draft.kind === 'request'
-      ? requestOfferEvidence(offersKey, o.id, draft.text)
-      : respondToOfferEvidence(offersKey, o.id, draft.text)
+      ? requestOfferEvidence(offersKey, o.id, draft.text, draft)
+      : respondToOfferEvidence(offersKey, o.id, draft.text, draft)
     if (sent) {
       const notice = draft.kind === 'request'
         ? o.live
@@ -40,10 +42,18 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
       setDraft(null)
     }
   }
+  const keepOfferOpen = () => {
+    const sent = respondToOfferEvidence(offersKey, o.id, 'Thanks — please consider the offer as written.', {
+      cardUids: last?.cardUids || [], views: last?.views || [],
+    })
+    if (sent) onEvidenceSent?.(o.live
+      ? 'Your reply was sent. The offer is unchanged and the other collector has the next move.'
+      : 'Your reply was recorded. The sample seller has the next move.')
+  }
 
   return (
     <div className="ofl-follow">
-      {thread.length > 0 && (
+      {showThread && thread.length > 0 && (
         <section className="ofl-evidence" aria-label="Evidence messages">
           <div className="ofl-evidencehead mono">Evidence thread <span>messages are claims, not verification</span></div>
           {thread.slice(-4).map((event) => (
@@ -76,7 +86,16 @@ export default function OfferFollowThrough({ o, offersKey, read, cardNames = [],
       {needsEvidenceReply && !draft && (
         <div className="anko-followbar needs-reply">
           <span className="mono">They asked for more evidence</span>
+          {onScan && (last.cardUids || []).slice(0, 3).map((uid) => <button key={uid} className="sheetbtn mk-sm mono" onClick={() => onScan(uid)}>Scan {cardNameFor(uid)} →</button>)}
           <button className="sheetbtn mk-sm mono" onClick={openResponse}>Respond with details →</button>
+        </div>
+      )}
+
+      {evidenceAnswered && !draft && (
+        <div className="anko-followbar evidence-answered">
+          <span className="mono">Their answer is on the mat · your move</span>
+          <button className="sheetbtn mk-sm mono sw-boot" onClick={keepOfferOpen}>Keep offer as written →</button>
+          {onCounter && <button className="sheetbtn mk-sm mono" onClick={onCounter}>Revise offer →</button>}
         </div>
       )}
 

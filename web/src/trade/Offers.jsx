@@ -12,6 +12,7 @@ import { handleFor } from '../identity.js'
 import { retryImg } from '../binder/helpers.jsx'
 import AskAnko from './AskAnko.jsx'
 import OfferFollowThrough from './OfferFollowThrough.jsx'
+import DealMat from './DealMat.jsx'
 import { paymentReference, payPalMeUrl, RAIL_PAYPAL } from '../payments/rails.js'
 
 // The offers ledger: every conversation, both directions, counters chained. An
@@ -164,7 +165,7 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
   </div>
 }
 
-export default function Offers({ accountId, catalog, onCounter }) {
+export default function Offers({ accountId, catalog, onCounter, onScan }) {
   const [reads, setReads] = useState({})
   const [evidenceNotice, setEvidenceNotice] = useState(null)
   const data = useCatalog(catalog)
@@ -192,6 +193,10 @@ export default function Offers({ accountId, catalog, onCounter }) {
     const last = lastEvidence(o)
     return ['sent', 'seen'].includes(o.state) && last?.dir === 'out' && last.kind === 'request'
   }
+  const evidenceAnswered = (o) => {
+    const last = lastEvidence(o)
+    return ['sent', 'seen'].includes(o.state) && last?.dir === 'in' && last.kind === 'response'
+  }
   const groupFor = (o) => {
     const open = ['sent', 'seen'].includes(o.state)
     const paypal = o.rail === RAIL_PAYPAL || o.settlement?.rail === RAIL_PAYPAL
@@ -200,6 +205,7 @@ export default function Offers({ accountId, catalog, onCounter }) {
     if (paypal && o.state === 'delivered') return o.dir === 'out' ? 'needs' : 'waiting'
     if (paypal && o.state === 'provider_disputed') return 'needs'
     if (evidenceNeedsYou(o)) return 'needs'
+    if (evidenceAnswered(o)) return 'needs'
     if (awaitingEvidence(o)) return 'waiting'
     if (o.dir === 'in' && open) return 'needs'
     if (open || OFFER_SETTLING.includes(o.state)) return 'waiting'
@@ -244,36 +250,29 @@ export default function Offers({ accountId, catalog, onCounter }) {
         const currentRead = reads[o.id]?.decision_ref === decision.decision_ref ? reads[o.id] : null
         const needsEvidence = evidenceNeedsYou(o)
         const waitingEvidence = awaitingEvidence(o)
+        const answeredEvidence = evidenceAnswered(o)
+        const otherName = (o.dir === 'out' ? o.toHandle : o.fromHandle) || handleFor(other)
+        const dealStatus = needsEvidence
+          ? { label: 'Your move · photos requested', tone: 'your-move' }
+          : answeredEvidence
+            ? { label: 'Evidence added · your move', tone: 'your-move' }
+            : waitingEvidence
+              ? { label: 'Waiting for photos', tone: 'waiting' }
+              : o.dir === 'in' && open
+                ? { label: 'Your move · answer offer', tone: 'your-move' }
+                : o.dir === 'out' && open
+                  ? { label: `Waiting on ${otherName}`, tone: 'waiting' }
+                  : o.state === 'accepted'
+                    ? { label: 'Terms agreed', tone: 'agreed' }
+                    : { label: STATUS_LABEL[o.state] || o.state.replace('_', ' '), tone: o.state === 'settled' ? 'agreed' : 'closed' }
         return (
-          <div key={o.id} className={'ofl-row' + (((o.dir === 'in' && open) && !waitingEvidence) || needsEvidence ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
-            <div className="ofl-top">
-              <span className="mono ofl-dir">{o.dir === 'out' ? '→ to' : '← from'} <b>{(o.dir === 'out' ? o.toHandle : o.fromHandle) || handleFor(other)}</b> · {o.at}{o.counterOf ? ' · counter' : ''}{o.live ? <span className="ofl-live"> · ● live</span> : ''}</span>
-              <span className={'mono ofl-st st-' + o.state}>{needsEvidence ? 'evidence requested' : waitingEvidence ? 'awaiting evidence' : o.dir === 'in' && open ? 'needs your answer' : STATUS_LABEL[o.state] || o.state.replace('_', ' ')}</span>
+          <div key={o.id} className={'ofl-row' + (((o.dir === 'in' && open) && !waitingEvidence) || needsEvidence || answeredEvidence ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
+            <div className="ofl-topline mono">
+              <span>{o.dir === 'out' ? '→ to' : '← from'} <b>{otherName}</b> · {o.at}{o.live ? <span className="ofl-live"> · ● live</span> : ''}</span>
+              <span>{o.counterOf ? 'counter-offer' : 'offer'}</span>
             </div>
-            <div className="ofl-terms">
-              <div className="ofl-term receive">
-                <span className="mono ofl-termlabel">You receive</span>
-                <div className="ofl-termitems">
-                  {receiveItems.map(chip)}
-                  {o.cash && !cashFromYou && <span className="mono ofl-cash">+ {o.cash.amount} {o.settlement?.currency || 'USDC'}</span>}
-                  {!receiveItems.length && !(o.cash && !cashFromYou) && <span className="ofl-emptyterm">Nothing recorded</span>}
-                </div>
-              </div>
-              <span className="ofl-termjoin mono" aria-hidden="true">⇄</span>
-              <div className="ofl-term give">
-                <span className="mono ofl-termlabel">You give</span>
-                <div className="ofl-termitems">
-                  {giveItems.map(chip)}
-                  {o.cash && cashFromYou && <span className="mono ofl-cash">+ {o.cash.amount} {o.settlement?.currency || 'USDC'}</span>}
-                  {!giveItems.length && !(o.cash && cashFromYou) && <span className="ofl-emptyterm">Nothing recorded</span>}
-                </div>
-              </div>
-            </div>
-            {o.response?.line && <div className="sw-say"><span className="mono dim">their agent</span> {o.response.line}</div>}
-            {o.note && <div className="ofl-offernote">
-              <span className="mono">Message sent with offer</span>
-              <p>{o.note}</p>
-            </div>}
+            <DealMat o={o} otherName={otherName} status={dealStatus} receiveItems={receiveItems} giveItems={giveItems}
+              cashFromYou={cashFromYou} renderChip={chip} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid} />
             {settling && (
               <div className="mt-steps mono">
                 {flow.map((s, i) => (
@@ -283,23 +282,21 @@ export default function Offers({ accountId, catalog, onCounter }) {
                 ))}
               </div>
             )}
-            {o.cash && <div className={'ofl-route mono ' + (paypal ? 'paypal' : 'escrow')}>
-              <b>{paypal ? 'PayPal' : 'Cairn Escrow'}</b>
-              <span>{paypal ? 'PayPal handles the money · Cairn records the agreement' : 'the escrow contract holds and releases the funds'}</span>
-            </div>}
             {(o.log || []).slice(-1).map((l, i) => <div key={i} className="mt-line"><span className="mono dim">rail</span> {l}</div>)}
             <LiveLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} decision={decision} recommended={recommended} />
             <PayPalLeg o={o} offersKey={key} catalogId={catalog.id} accountId={accountId} />
-            {o.dir === 'in' && open && <>
+            {o.dir === 'in' && open && !needsEvidence && <>
               <div className="ofl-decisionlabel mono">Your decision · accept, counter, or decline</div>
               <AskAnko decision={decision} recommended={recommended}
                 onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
             </>}
             <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
+              cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
               onEvidenceSent={setEvidenceNotice}
+              onScan={onScan} showThread={false}
               onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />
             <span className="sw-acts">
-              {o.dir === 'in' && open && <>
+              {o.dir === 'in' && open && !needsEvidence && <>
                 <button className="sheetbtn mk-sm mono sw-boot" onClick={() => acceptIncoming(key, o.id)}>✓ accept</button>
                 <button className="sheetbtn mk-sm mono" onClick={() => onCounter && onCounter(o)}>⇄ counter</button>
                 <button className="sheetbtn mk-sm mono" onClick={() => declineIncoming(key, o.id)}>✕ decline</button>

@@ -28,10 +28,13 @@ export function saveOffers(key, offers) {
 }
 
 // dir 'out' = you sent it; dir 'in' = it arrived (a persona counter, or a live inbox).
-export function sendOffer(key, { to, toHandle, want, give, cash, note, counterOf, live, from, fromHandle, cat, settlement }) {
+export function sendOffer(key, { to, toHandle, want, give, cash, note, evidenceRequest, counterOf, live, from, fromHandle, cat, settlement }) {
   const offers = loadOffers(key)
   const id = 'of_' + Math.random().toString(36).slice(2, 10)
   const rail = paymentRailFor(settlement?.rail)
+  const firstEvidence = evidenceRequest?.line
+    ? [evidenceMessage('request', evidenceRequest.line, 'out', evidenceRequest)]
+    : []
   const o = {
     id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
     fromHandle: String(fromHandle || '').trim().slice(0, 32) || null,
@@ -44,6 +47,7 @@ export function sendOffer(key, { to, toHandle, want, give, cash, note, counterOf
       cairn_enforced: rail !== RAIL_PAYPAL,
     } : null,
     note: (note || '').slice(0, 240) || null,
+    evidenceThread: firstEvidence,
     counterOf: counterOf || null,
     state: 'sent',
     live: !!live,
@@ -118,12 +122,18 @@ export function setOfferState(key, id, state, extra) {
   saveOffers(key, offers)
 }
 
-const evidenceMessage = (kind, line, dir) => ({
+const cleanEvidenceMeta = (meta = {}) => ({
+  cardUids: [...new Set((Array.isArray(meta.cardUids) ? meta.cardUids : []).map(String).filter(Boolean))].slice(0, 24),
+  views: [...new Set((Array.isArray(meta.views) ? meta.views : []).map(String).filter((view) => ['front', 'back', 'corners', 'holo_tilt'].includes(view)))],
+})
+
+const evidenceMessage = (kind, line, dir, meta = {}) => ({
   id: 'ev_' + Math.random().toString(36).slice(2, 10),
   kind,
   dir,
   line: String(line || '').trim().slice(0, 600),
   at: new Date().toISOString(),
+  ...cleanEvidenceMeta(meta),
 })
 
 function appendEvidence(key, offerId, event) {
@@ -137,24 +147,24 @@ function appendEvidence(key, offerId, event) {
 
 // Evidence questions stay inside the open offer. They are messages, not state
 // transitions: asking cannot accept, decline, fund, or otherwise move the deal.
-export function requestOfferEvidence(key, offerId, line) {
-  const appended = appendEvidence(key, offerId, evidenceMessage('request', line, 'out'))
+export function requestOfferEvidence(key, offerId, line, meta) {
+  const appended = appendEvidence(key, offerId, evidenceMessage('request', line, 'out', meta))
   if (!appended) return false
   const { o, event } = appended
   const other = o.dir === 'out' ? o.to : o.from
   if (o.live && isLiveAddr(other)) {
-    pushInbox(other, { id: event.id, type: 'evidence_request', offerId: o.id, line: event.line })
+    pushInbox(other, { id: event.id, type: 'evidence_request', offerId: o.id, line: event.line, cardUids: event.cardUids, views: event.views })
   }
   return true
 }
 
-export function respondToOfferEvidence(key, offerId, line) {
-  const appended = appendEvidence(key, offerId, evidenceMessage('response', line, 'out'))
+export function respondToOfferEvidence(key, offerId, line, meta) {
+  const appended = appendEvidence(key, offerId, evidenceMessage('response', line, 'out', meta))
   if (!appended) return false
   const { o, event } = appended
   const other = o.dir === 'out' ? o.to : o.from
   if (o.live && isLiveAddr(other)) {
-    pushInbox(other, { id: event.id, type: 'evidence_response', offerId: o.id, line: event.line })
+    pushInbox(other, { id: event.id, type: 'evidence_response', offerId: o.id, line: event.line, cardUids: event.cardUids, views: event.views })
   }
   return true
 }
