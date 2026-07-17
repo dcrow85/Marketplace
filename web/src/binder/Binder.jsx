@@ -505,7 +505,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       </div>
       <div className={'controls' + (onboardingStep ? ' anko-onboarding-controls' : '')}>
         <div className={'askbar' + (dockSetup ? ' anko-dock-setup' : '')} data-tour-target={onboardingStep === 'mark' ? 'mark' : undefined}>
-          <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'}
+          <img className={'anko-search' + (agentBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v3.png'}
             alt="" title={`${agentName} — your Cairn collecting guide`} onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input ref={askInput} data-tour-focus={onboardingStep === 'mark' ? true : undefined}
             value={query} maxLength={280} disabled={dockSetup}

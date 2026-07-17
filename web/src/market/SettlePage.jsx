@@ -323,7 +323,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           <strong className="mono">{give.size} selected</strong>
         </div>
         <div className="askbar stl-ask">
-          <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'}
+          <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v3.png'}
             alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input value={qg} maxLength={280}
             placeholder={`Search your binder — or ask ${agentName}: \u201cmatch this trade\u201d`}

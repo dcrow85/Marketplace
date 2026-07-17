@@ -289,7 +289,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
         paypal={profile.paypal} onPayPal={setPayPal} stats={stats} />
       <div className="pf-anko">
         <div className="askbar pf-ankobar">
-          <img className={'anko-search' + (ankoBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'} alt="" />
+          <img className={'anko-search' + (ankoBusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v3.png'} alt="" />
           <input value={ankoQuery} maxLength={280} placeholder={`Ask ${agentName} about cards, scans, or what to lead with…`}
             onChange={(event) => { setAnkoQuery(event.target.value); if (ankoRes) setAnkoRes(null) }}
             onKeyDown={(event) => { if (event.key === 'Enter') askAnko() }} />

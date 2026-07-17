@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { saveProfile } from '../profile/profileStore.js'
 import './anko.css'
 
-const AVATAR = (import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'
+const AVATAR = (import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v3.png'
 
 export function HaveActionsLesson({ onDone, compact = false }) {
   return (
