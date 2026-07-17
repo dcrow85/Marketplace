@@ -10,18 +10,21 @@ import { LOCAL_ACTORS, localWalletClient } from '../chain/localRehearsal.js'
 export function useEscrowWallet() {
   const { wallets, ready: walletsReady } = useWallets()
   const { createWallet } = useCreateWallet()
+  const [createdWallet, setCreatedWallet] = useState(null)
   const [creating, setCreating] = useState(false)
   const [createError, setCreateError] = useState('')
   // An explicitly created embedded wallet is the default; fall back to any connected one.
-  const wallet = wallets?.find((w) => w.walletClientType === 'privy') || wallets?.[0] || null
+  const discoveredWallet = wallets?.find((w) => w.walletClientType === 'privy') || wallets?.[0] || null
+  const wallet = createdWallet || discoveredWallet
 
   async function createSettlementWallet() {
     if (wallet) return wallet
-    if (!walletsReady) throw new Error('Wallet setup is still loading. Try again in a moment.')
     setCreating(true)
     setCreateError('')
     try {
-      return await createWallet()
+      const created = await createWallet()
+      setCreatedWallet(created)
+      return created
     } catch (err) {
       const message = (err?.message || 'The testnet wallet could not be created.').slice(0, 180)
       setCreateError(message)
@@ -45,7 +48,9 @@ export function useEscrowWallet() {
   }
   return {
     address: wallet?.address || null,
-    ready: walletsReady && !!wallet,
+    // External connector discovery is intentionally disabled and its global ready flag
+    // may stay false. A returned/discovered embedded wallet is independently usable.
+    ready: !!wallet,
     walletsReady,
     creating,
     createError,

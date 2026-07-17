@@ -51,7 +51,7 @@ function RailChoice({ active, disabled, title, eyebrow, children, onClick }) {
 
 export default function BuyNow({ open, pile, total, catalog, accountId, pileKey, byUid, onBack, onComplete }) {
   const {
-    address, ready, walletsReady, creating, createError,
+    address, ready, creating, createError,
     createSettlementWallet, getWalletClient,
   } = useEscrowWallet()
   const [arbiter, setArbiter] = useState(savedArbiter)
@@ -299,8 +299,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                   <span className={'buy-setupstate ' + (ready ? 'ok' : '')} aria-hidden="true">{ready ? '✓' : '1'}</span>
                   <span><b>{ready ? 'Testnet wallet ready' : 'Prepare your testnet wallet'}</b><small>Created only when you ask. It is not funded automatically.</small></span>
                 </div>
-                {!walletsReady ? <p className="buy-walletwait">Checking this account for a settlement wallet…</p>
-                  : !ready ? <>
+                {!ready ? <>
                     <button type="button" className="buy-walletcreate" disabled={creating} onClick={provisionWallet}>
                       {creating ? 'Creating testnet wallet…' : 'Create testnet wallet'}
                     </button>
@@ -350,7 +349,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
               {error && <div className="buy-error" role="alert">{error}</div>}
               <div className="buy-commit">
                 {!IS_LOCAL_CHAIN && <ul className="buy-prereqs" aria-label="Before Cairn can fund escrow">
-                  <li className={ready ? 'ok' : walletsReady ? 'missing' : 'pending'}><span>{ready ? '✓' : '○'}</span> Testnet wallet</li>
+                  <li className={ready ? 'ok' : 'missing'}><span>{ready ? '✓' : '○'}</span> Testnet wallet</li>
                   <li className={arbiterReady ? 'ok' : 'missing'}><span>{arbiterReady ? '✓' : '○'}</span> Neutral arbiter</li>
                   <li className={hasEnoughUsdc ? 'ok' : 'missing'}><span>{hasEnoughUsdc ? '✓' : '○'}</span> At least {total} test USDC</li>
                   <li className={hasGas ? 'ok' : 'missing'}><span>{hasGas ? '✓' : '○'}</span> Arbitrum Sepolia ETH for gas</li>
