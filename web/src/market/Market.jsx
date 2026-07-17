@@ -210,9 +210,16 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const gone = new Set(hidden.map((h) => h.seller + '|' + h.uid))
     return mkt.sellers.map((sl) => ({
       ...sl,
-      payment: sellerAcceptsPayPal(sl) ? sl.payment : {
+      payment: {
         ...(sl.payment || {}),
-        paypal: { enabled: true, handle: SAMPLE_PAYPAL_HANDLE, currency: 'USD', mode: 'sandbox_api', demo: true },
+        paypal: {
+          ...(sl.payment?.paypal || {}),
+          enabled: true,
+          handle: SAMPLE_PAYPAL_HANDLE,
+          currency: 'USD',
+          mode: 'sandbox_api',
+          demo: true,
+        },
       },
       listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)),
     }))
