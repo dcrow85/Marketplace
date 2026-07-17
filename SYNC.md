@@ -58,6 +58,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Accepting posted asks now always enters
+  checkout, never an offer merely because payment setup is incomplete.** All-buy
+  piles with unchanged asks read `Checkout · listed price · no seller reply` both at
+  a table and in Settle all, then open `Pay the listed price`; trades, changed price,
+  evidence requests, and other explicit term changes remain offers. This separates
+  agreement from rail availability without pretending a payment happened. Scoped
+  ESLint, diff check, and the assembled Pages build pass (existing Privy/Rolldown
+  annotation warnings only). Signed-in production replay of the exact reported case
+  changed Veteran Curator's one-card / 6 USDC path from `Send offer` to gold
+  `Pay 6 USDC`, then opened posted-ask checkout stating that no offer or seller reply
+  is needed; the three-card mixed buy/trade order remained `Review offer`. Source
+  `f220126`; Pages production `d20bfc51`; preview, apex, and `www` converge on
+  `cairn-site-be6c2a25fd81.js` at 5,350,526 bytes / ETag
+  `7f4d6b0de9160bcc10782a8da3e7c779`. No payment, offer, evidence request,
+  funding, chain action, or protocol-state change was sent.
 - `[passive]` 2026-07-17 · Codex — **Money now has one gold visual language, and
   piles from different tables have one honest Settle all stop.** Gold marks asks,
   totals, settlement values, cash lines, price inputs, and payment actions across
