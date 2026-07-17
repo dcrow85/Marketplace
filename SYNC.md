@@ -58,6 +58,29 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **PayPal is now a real, server-authoritative
+  sandbox checkout on sample tables, while live seller connection remains honestly
+  gated on PayPal marketplace approval and a signed Cairn account binding.** Cairn
+  creates Orders v2 from the live static catalogue, recalculates each sample ask on
+  the server, validates capture status/currency/amount before recording it, stores
+  order and deduped webhook state in `PILOT` KV, and never returns the client secret.
+  The inline PayPal button says `sandbox · no real money`; the manual PayPal.me rail
+  remains separately labeled and can never masquerade as an API-confirmed payment.
+  PayPal sandbox credentials are encrypted Cloudflare secrets, and the registered
+  `https://cairn.cards/api/paypal/webhook` subscribes to order approval, capture
+  completed/pending/refunded/reversed, and dispute created/resolved/updated. Live
+  `/api/paypal/config` reports `enabled: true`, `mode: sandbox`, `webhookReady: true`,
+  `partnerReady: false`. Signed-in production replay verified the saved multi-seller
+  pile through Veteran Curator's exact one-card / 6 USDC posted-ask checkout; PayPal
+  renders inside Cairn as `$6.00 sandbox USD` with PayPal's SDK button and a clear
+  API-confirmed boundary. A follow-up precedence fix ensures legacy sample metadata
+  cannot silently fall back to PayPal.me. Scoped ESLint, diff check, assembled build,
+  Pages Functions build, and server-authoritative 6 USD calculation pass (existing
+  Privy/Rolldown annotation warnings only). Sources `c45c2c8` + `43c9fa3`; Pages
+  production `e131b69c`; preview, apex, and `www` share
+  `cairn-site-ac7725a61010.js` at 5,362,478 bytes / ETag
+  `823296fe3791092722275b7e24390f13`. No PayPal order, approval, capture, real-money
+  payment, escrow funding, offer, evidence request, or protocol state was sent.
 - `[passive]` 2026-07-17 · Codex — **Checkout now shows PayPal as an explicit
   secondary rail and names the escrow rehearsal truth before either path can be
   mistaken for the other.** Sample sellers expose a clearly labeled
