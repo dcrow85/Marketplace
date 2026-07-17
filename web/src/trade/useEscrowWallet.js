@@ -1,15 +1,35 @@
 // Bridges Privy's wallet to a viem wallet client for escrow writes.
 // Login/onboarding polish (token-gate, PFP identity) is deferred — this just hands the
-// trade flow a signer when one exists, and reports `ready:false` when it doesn't.
-import { useWallets } from '@privy-io/react-auth'
+// trade flow a signer when one exists, and lets settlement explicitly create one.
+import { useState } from 'react'
+import { useCreateWallet, useWallets } from '@privy-io/react-auth'
 import { walletClientFrom } from '../chain/escrow.js'
 import { IS_LOCAL_CHAIN } from '../chain/config.js'
 import { LOCAL_ACTORS, localWalletClient } from '../chain/localRehearsal.js'
 
 export function useEscrowWallet() {
-  const { wallets } = useWallets()
-  // The embedded wallet (created on login) is the default; fall back to any connected one.
+  const { wallets, ready: walletsReady } = useWallets()
+  const { createWallet } = useCreateWallet()
+  const [creating, setCreating] = useState(false)
+  const [createError, setCreateError] = useState('')
+  // An explicitly created embedded wallet is the default; fall back to any connected one.
   const wallet = wallets?.find((w) => w.walletClientType === 'privy') || wallets?.[0] || null
+
+  async function createSettlementWallet() {
+    if (wallet) return wallet
+    if (!walletsReady) throw new Error('Wallet setup is still loading. Try again in a moment.')
+    setCreating(true)
+    setCreateError('')
+    try {
+      return await createWallet()
+    } catch (err) {
+      const message = (err?.message || 'The testnet wallet could not be created.').slice(0, 180)
+      setCreateError(message)
+      throw err
+    } finally {
+      setCreating(false)
+    }
+  }
 
   async function getWalletClient() {
     if (IS_LOCAL_CHAIN) return localWalletClient('buyer')
@@ -19,6 +39,17 @@ export function useEscrowWallet() {
   }
 
   // Local rehearsal: anvil account 0 is you, no Privy signature theater needed.
-  if (IS_LOCAL_CHAIN) return { address: LOCAL_ACTORS.buyer, ready: true, getWalletClient }
-  return { address: wallet?.address || null, ready: !!wallet, getWalletClient }
+  if (IS_LOCAL_CHAIN) return {
+    address: LOCAL_ACTORS.buyer, ready: true, walletsReady: true, creating: false,
+    createError: '', createSettlementWallet, getWalletClient,
+  }
+  return {
+    address: wallet?.address || null,
+    ready: walletsReady && !!wallet,
+    walletsReady,
+    creating,
+    createError,
+    createSettlementWallet,
+    getWalletClient,
+  }
 }

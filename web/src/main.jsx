@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { PrivyProvider } from '@privy-io/react-auth'
+import { arbitrumSepolia } from 'viem/chains'
 import App from './App.jsx'
 import './styles.css'
 
@@ -31,6 +32,8 @@ createRoot(document.getElementById('root')).render(
         // not part of bootstrap: competing injected providers must never prevent Cairn
         // from loading. Wallets can be connected later, after authentication.
         loginMethods: ['email', 'google', 'apple', 'passkey'],
+        supportedChains: [arbitrumSepolia],
+        defaultChain: arbitrumSepolia,
         appearance: {
           theme: 'light',
           accentColor: '#2C5B8C',
@@ -42,7 +45,12 @@ createRoot(document.getElementById('root')).render(
           walletConnect: { enabled: false },
         },
         // Wallet provisioning belongs at the settlement decision, not page bootstrap.
-        // Keeping it out here prevents injected providers from blocking basic identity.
+        // `off` keeps identity-first login intact while allowing the checkout's explicit
+        // "Create testnet wallet" action to provision one after the user chooses it.
+        embeddedWallets: {
+          ethereum: { createOnLogin: 'off' },
+          showWalletUIs: true,
+        },
       }}
     >
       <App />

@@ -1,13 +1,14 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useEscrowWallet } from '../trade/useEscrowWallet.js'
 import { offersKeyFor, recordExternalPurchase, recordFundedPurchase, recordPayPalCapture } from '../trade/offers.js'
 import { putRecord } from '../trade/records.js'
 import {
-  approveUsdc, createTrade, hashText, toUsdc, usdcAllowance,
+  approveUsdc, createTrade, fromNative, fromUsdc, hashText, nativeBalance,
+  toUsdc, usdcAllowance, usdcBalance,
 } from '../chain/escrow.js'
 import {
   addrUrl, CHAIN_LABEL, ESCROW_ADDRESS, IS_LOCAL_CHAIN, IS_TESTNET_CHAIN,
-  USDC_ADDRESS, VALUE_CAP_USDC,
+  PILOT_TEST_ARBITER, USDC_ADDRESS, VALUE_CAP_USDC,
 } from '../chain/config.js'
 import { LOCAL_ACTORS } from '../chain/localRehearsal.js'
 import { handleFor, shortId } from '../identity.js'
@@ -21,6 +22,15 @@ import PayPalSandboxButton from '../payments/PayPalSandboxButton.jsx'
 const DEFAULT_ARBITER = import.meta.env.VITE_DEFAULT_ARBITER || ''
 const ARBITER_KEY = 'cairn-checkout-arbiter'
 const isAddress = (value) => /^0x[0-9a-fA-F]{40}$/.test(value || '')
+const sameAddress = (a, b) => Boolean(a && b && a.toLowerCase() === b.toLowerCase())
+
+function nativeLabel(raw) {
+  if (raw == null) return '—'
+  const value = Number(fromNative(raw))
+  if (!value) return '0'
+  if (value < 0.00001) return '<0.00001'
+  return value.toFixed(5).replace(/0+$/, '').replace(/\.$/, '')
+}
 
 function savedArbiter() {
   if (IS_LOCAL_CHAIN) return LOCAL_ACTORS.arbiter
@@ -40,7 +50,10 @@ function RailChoice({ active, disabled, title, eyebrow, children, onClick }) {
 }
 
 export default function BuyNow({ open, pile, total, catalog, accountId, pileKey, byUid, onBack, onComplete }) {
-  const { address, ready, getWalletClient } = useEscrowWallet()
+  const {
+    address, ready, walletsReady, creating, createError,
+    createSettlementWallet, getWalletClient,
+  } = useEscrowWallet()
   const [arbiter, setArbiter] = useState(savedArbiter)
   const paypalHandle = sellerPayPalHandle(open)
   const paypalMode = sellerPayPalMode(open)
@@ -55,6 +68,9 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
   const [paypalOpened, setPaypalOpened] = useState(false)
   const [providerRef, setProviderRef] = useState('')
   const [copied, setCopied] = useState(false)
+  const [walletCopied, setWalletCopied] = useState(false)
+  const [balanceRefresh, setBalanceRefresh] = useState(0)
+  const [balances, setBalances] = useState({ address: null, usdc: null, native: null, loading: false, error: '' })
   const [payRef] = useState(() => paymentReference())
   const usesPresetArbiter = IS_LOCAL_CHAIN || isAddress(DEFAULT_ARBITER)
   const overCap = total > VALUE_CAP_USDC
@@ -76,6 +92,47 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
       recorded_scan_count: listing?.witness || 0,
     }
   }), [pile, byUid, open.listings])
+  const requiredUsdc = toUsdc(total)
+  const balancesCurrent = IS_LOCAL_CHAIN || (
+    ready && sameAddress(balances.address, address) && !balances.loading
+    && balances.usdc != null && balances.native != null
+  )
+  const hasEnoughUsdc = IS_LOCAL_CHAIN || (balancesCurrent && balances.usdc >= requiredUsdc)
+  const hasGas = IS_LOCAL_CHAIN || (balancesCurrent && balances.native > 0n)
+  const arbiterReady = isAddress(arbiter.trim())
+    && !sameAddress(arbiter.trim(), escrowSeller)
+    && !sameAddress(arbiter.trim(), address)
+  const canFund = ready && escrowAvailable && arbiterReady && !overCap && hasEnoughUsdc && hasGas
+
+  useEffect(() => {
+    if (IS_LOCAL_CHAIN || !address) return undefined
+    let cancelled = false
+    Promise.all([usdcBalance(address), nativeBalance(address)])
+      .then(([usdc, native]) => {
+        if (!cancelled) setBalances({ address, usdc, native, loading: false, error: '' })
+      })
+      .catch((err) => {
+        if (!cancelled) setBalances({
+          address, usdc: null, native: null, loading: false,
+          error: (err?.shortMessage || err?.message || 'Balances could not be checked.').slice(0, 160),
+        })
+      })
+    return () => { cancelled = true }
+  }, [address, balanceRefresh])
+
+  const provisionWallet = async () => {
+    setError(null)
+    try { await createSettlementWallet() } catch { /* the bounded error is shown beside the action */ }
+  }
+
+  const refreshWalletBalances = () => {
+    setBalances((current) => ({ ...current, loading: true, error: '' }))
+    setBalanceRefresh((value) => value + 1)
+  }
+
+  const copyWalletAddress = async () => {
+    try { await navigator.clipboard.writeText(address); setWalletCopied(true) } catch { setWalletCopied(false) }
+  }
 
   const fundEscrow = async () => {
     const chosenArbiter = arbiter.trim()
@@ -96,12 +153,22 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
         cards: cardTerms, total_usdc: total, arbiter: chosenArbiter, rail: RAIL_ESCROW,
         boundary: 'posted table terms accepted by buyer; listing and condition remain seller claims',
       })
+      const walletClient = await getWalletClient()
+      const amountRaw = toUsdc(total)
       if (!IS_LOCAL_CHAIN) {
+        setPhase('Checking testnet funds…')
+        const [availableUsdc, availableNative] = await Promise.all([
+          usdcBalance(address), nativeBalance(address),
+        ])
+        if (availableUsdc < amountRaw) {
+          throw new Error(`This wallet needs at least ${total} test USDC before Cairn can fund escrow.`)
+        }
+        if (availableNative <= 0n) {
+          throw new Error(`This wallet needs Arbitrum Sepolia ETH for network fees before Cairn can fund escrow.`)
+        }
         setPhase('Recording terms…')
         if (!await putRecord(terms)) throw new Error('Could not record the escrow terms. Funding was not started.')
       }
-      const walletClient = await getWalletClient()
-      const amountRaw = toUsdc(total)
       if (await usdcAllowance(address) < amountRaw) {
         setPhase(`Approve ${escrowCurrency} in your wallet…`)
         await approveUsdc(walletClient, amountRaw)
@@ -227,6 +294,43 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                 <span><b>Seller receives</b><small><strong className="money">0 {escrowCurrency}</strong> now; release follows the settlement path.</small></span>
                 <span><b>If something goes wrong</b><small>The named Cairn arbiter can resolve the escrow.</small></span>
               </div>
+              {!IS_LOCAL_CHAIN && <div className="buy-walletsetup">
+                <div className="buy-wallethead">
+                  <span className={'buy-setupstate ' + (ready ? 'ok' : '')} aria-hidden="true">{ready ? '✓' : '1'}</span>
+                  <span><b>{ready ? 'Testnet wallet ready' : 'Prepare your testnet wallet'}</b><small>Created only when you ask. It is not funded automatically.</small></span>
+                </div>
+                {!walletsReady ? <p className="buy-walletwait">Checking this account for a settlement wallet…</p>
+                  : !ready ? <>
+                    <button type="button" className="buy-walletcreate" disabled={creating} onClick={provisionWallet}>
+                      {creating ? 'Creating testnet wallet…' : 'Create testnet wallet'}
+                    </button>
+                    <p>This creates an embedded Ethereum wallet for this Cairn account on your explicit click. It does not add money, approve a token, or fund a trade.</p>
+                  </> : <>
+                    <div className="buy-walletaddress">
+                      <span><small>Your address</small><code>{address}</code></span>
+                      <button type="button" onClick={copyWalletAddress}>{walletCopied ? 'Copied ✓' : 'Copy'}</button>
+                    </div>
+                    <div className="buy-balances" aria-label="Testnet wallet balances">
+                      <span className={balancesCurrent && hasEnoughUsdc ? 'ok' : 'missing'}>
+                        <small>Test USDC</small><b className="mono money">{balancesCurrent ? fromUsdc(balances.usdc) : 'Checking…'}</b>
+                        <i>{hasEnoughUsdc ? 'enough for this order' : `need ${total}`}</i>
+                      </span>
+                      <span className={balancesCurrent && hasGas ? 'ok' : 'missing'}>
+                        <small>Network fee</small><b className="mono">{balancesCurrent ? `${nativeLabel(balances.native)} ETH` : 'Checking…'}</b>
+                        <i>{hasGas ? 'gas available' : 'need Sepolia ETH'}</i>
+                      </span>
+                    </div>
+                    <div className="buy-wallettools">
+                      <button type="button" disabled={balances.loading} onClick={refreshWalletBalances}>{balances.loading ? 'Checking…' : 'Refresh balances'}</button>
+                      {IS_TESTNET_CHAIN && <span>
+                        <a href="https://faucet.circle.com/" target="_blank" rel="noreferrer">Get test USDC ↗</a>
+                        <a href="https://portal.arbitrum.io/bridge?destinationChain=arbitrum-sepolia&settingsOpen=1&sourceChain=sepolia&tab=bridge" target="_blank" rel="noreferrer">Bridge Sepolia ETH for gas ↗</a>
+                      </span>}
+                    </div>
+                  </>}
+                {createError && <div className="buy-error" role="alert">{createError}</div>}
+                {balances.error && <div className="buy-error" role="alert">{balances.error}</div>}
+              </div>}
               {!usesPresetArbiter && (
                 <div className="buy-arbiterblock">
                   <label className="buy-arbiter">
@@ -235,20 +339,28 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                       onChange={(event) => setArbiter(event.target.value.trim())} />
                   </label>
                   <p>Use a reachable {CHAIN_LABEL} wallet controlled by someone other than the buyer or seller. That address decides a dispute, so Cairn never chooses it silently.</p>
+                  {IS_TESTNET_CHAIN && <div className="buy-arbiterchoice">
+                    <button type="button" disabled={busy} onClick={() => { setArbiter(PILOT_TEST_ARBITER); setError(null) }}>Use rehearsal address</button>
+                    <span><b>Contract deployer test address</b> · disposable rehearsal only · no response commitment. Use your own reachable neutral address for meaningful testing.</span>
+                  </div>}
                 </div>
               )}
               {usesPresetArbiter && <div className="mono buy-arbiterpreset">neutral arbiter · {shortId(arbiter)}</div>}
-              {!ready && paypalAvailable && <div className="buy-note">No {CHAIN_LABEL} wallet is ready. {paypalSandbox ? 'Choose PayPal Sandbox for a no-money checkout rehearsal' : 'Choose manual PayPal for a real external payment'}, or connect a wallet to rehearse escrow.</div>}
               {overCap && <div className="buy-error">Testnet escrow cap: {VALUE_CAP_USDC} {escrowCurrency}. PayPal remains a separate {paypalSandbox ? 'sandbox' : 'external'} option.</div>}
               {error && <div className="buy-error" role="alert">{error}</div>}
               <div className="buy-commit">
+                {!IS_LOCAL_CHAIN && <ul className="buy-prereqs" aria-label="Before Cairn can fund escrow">
+                  <li className={ready ? 'ok' : walletsReady ? 'missing' : 'pending'}><span>{ready ? '✓' : '○'}</span> Testnet wallet</li>
+                  <li className={arbiterReady ? 'ok' : 'missing'}><span>{arbiterReady ? '✓' : '○'}</span> Neutral arbiter</li>
+                  <li className={hasEnoughUsdc ? 'ok' : 'missing'}><span>{hasEnoughUsdc ? '✓' : '○'}</span> At least {total} test USDC</li>
+                  <li className={hasGas ? 'ok' : 'missing'}><span>{hasGas ? '✓' : '○'}</span> Arbitrum Sepolia ETH for gas</li>
+                </ul>}
                 <p className="buy-actionnote">Your next click may request two wallet confirmations: approve {escrowCurrency}, then fund escrow. It does not pay the seller directly.</p>
                 <div className="buy-nowactions">
-                  <button className="primary buy-pay" disabled={busy || !ready || overCap || !escrowAvailable} onClick={fundEscrow}>
+                  <button className="primary buy-pay" disabled={busy || !canFund} onClick={fundEscrow}>
                     {busy ? (phase || 'Working…') : `Fund ${total} ${escrowCurrency} on ${CHAIN_LABEL}`}
                   </button>
                 </div>
-                {IS_TESTNET_CHAIN && <p className="buy-testhelp">Need tokens? <a href="https://faucet.circle.com/" target="_blank" rel="noreferrer">Open Circle&rsquo;s testnet faucet ↗</a></p>}
               </div>
             </> : paypalSandbox ? <>
               <div className="buy-outcomes paypal">

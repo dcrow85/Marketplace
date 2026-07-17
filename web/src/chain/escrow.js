@@ -3,7 +3,7 @@
 // user's Privy EIP-1193 provider. This module is the only place that touches the chain.
 import {
   createPublicClient, createWalletClient, custom, http,
-  parseUnits, formatUnits, keccak256, toHex, parseEventLogs,
+  parseUnits, formatUnits, formatEther, keccak256, toHex, parseEventLogs,
 } from 'viem'
 import {
   CHAIN, RPC_URL, ESCROW_ADDRESS, USDC_ADDRESS, USDC_DECIMALS, STATE,
@@ -40,6 +40,7 @@ async function ensureChain(wc) {
 // ---- value + hash helpers ----
 export const toUsdc = (human) => parseUnits(String(human), USDC_DECIMALS) // "12.50" -> 12500000n
 export const fromUsdc = (raw) => formatUnits(raw, USDC_DECIMALS)
+export const fromNative = (raw) => formatEther(raw)
 export const hashText = (s) => keccak256(toHex(s)) // cardRef / terms / tracking / dispute-reason commitments
 
 // ---- reads ----
@@ -67,6 +68,9 @@ export async function getNextTradeId() {
 }
 export async function usdcBalance(account) {
   return publicClient.readContract({ address: USDC_ADDRESS, abi: erc20Abi, functionName: 'balanceOf', args: [account] })
+}
+export async function nativeBalance(account) {
+  return publicClient.getBalance({ address: account })
 }
 export async function usdcAllowance(account) {
   return publicClient.readContract({ address: USDC_ADDRESS, abi: erc20Abi, functionName: 'allowance', args: [account, ESCROW_ADDRESS] })

@@ -24,6 +24,11 @@ export const USDC_ADDRESS = IS_LOCAL_CHAIN
 export const USDC_DECIMALS = 6
 export const VALUE_CAP_USDC = 200 // contract-enforced ceiling, for display
 
+// Deployer address for disposable testnet rehearsal only. Cairn does not claim that
+// its controller is available, neutral in practice, or committed to resolve a dispute.
+// The checkout may offer it as an explicit opt-in; it must never be chosen silently.
+export const PILOT_TEST_ARBITER = '0x75183FCD01C60d744BC7100866576B83F92b1C3A'
+
 // Mirrors ThinPilotEscrow.State / .Outcome enums (index = on-chain uint8).
 export const STATE = [
   'None', 'Funded', 'Shipped', 'InspectionOpen', 'Settled', 'Disputed', 'Resolved', 'Cancelled',
