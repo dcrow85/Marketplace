@@ -58,6 +58,21 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Settle Up now has a deliberate visual
+  hierarchy instead of nested, near-identical dark cards.** The final amount is
+  visible before payment selection; numbered section markers and a blue checked
+  rail establish the reading order; consequences sit in one open comparison band;
+  and the money-moving action occupies a separate gold commitment shelf. The pile
+  is a warm, receipt-like sidebar with a stronger heading, larger total, simple row
+  dividers, and a restrained internal scrollbar for longer orders. Mobile linearizes
+  order review before payment with zero horizontal overflow; dark and light themes,
+  one- and four-card piles, scoped ESLint, diff check, and production build pass
+  (same upstream Privy/Rolldown warnings only). This applies Baymard visible-summary
+  and explicit-CTA research, NN/G scale/hierarchy/contrast guidance, Shopify's simple
+  high-contrast checkout guidance, and W3C contrast thresholds. Source `490f31d`;
+  Pages `ba724a6c`; preview, apex, and `www` serve byte-identical
+  `cairn-site-43949bce5877.js`. Surface-only; payment rails, offer/settlement state,
+  evidence, chain, catalogue, and protocol semantics are unchanged.
 - `[passive]` 2026-07-16 · Codex — **Settle Up now follows a researched,
   conventional review-and-pay hierarchy.** A two-column desktop checkout pairs one
   grouped payment decision with a sticky, editable pile summary; mobile becomes one
