@@ -4,8 +4,11 @@ const JSON_HEADERS = {
 }
 
 const ORDER_ID = /^[A-Z0-9]{8,32}$/
-const ACCOUNT_ID = /^0x[0-9a-fA-F]{40}$/
+const ADDRESS_ID = /^0x[0-9a-fA-F]{40}$/
+const PRIVY_ID = /^did:privy:[A-Za-z0-9._-]{8,160}$/
 const CAIRN_REF = /^CAIRN-[A-Z0-9-]{6,48}$/
+
+const validBuyerId = (value) => ADDRESS_ID.test(value) || PRIVY_ID.test(value)
 
 export const json = (data, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: JSON_HEADERS })
@@ -71,11 +74,11 @@ export async function resolveSampleOrder(request, body) {
   const sellerId = cleanText(body?.sellerId, 42).toLowerCase()
   const catalogId = cleanText(body?.catalogId, 80)
   const cairnReference = cleanText(body?.cairnReference, 64).toUpperCase()
-  const accountId = cleanText(body?.accountId, 42).toLowerCase()
+  const accountId = cleanText(body?.accountId, 180)
   const uids = [...new Set((Array.isArray(body?.items) ? body.items : []).map((item) => cleanText(item?.uid || item, 180)).filter(Boolean))]
-  if (!ACCOUNT_ID.test(sellerId) || !ACCOUNT_ID.test(accountId) || !CAIRN_REF.test(cairnReference)) {
-    return { error: 'The Cairn checkout reference is incomplete.' }
-  }
+  if (!ADDRESS_ID.test(sellerId)) return { error: 'This sample table is not payable in PayPal Sandbox.' }
+  if (!validBuyerId(accountId)) return { error: 'Sign in again before starting PayPal Sandbox.' }
+  if (!CAIRN_REF.test(cairnReference)) return { error: 'The Cairn checkout reference is incomplete.' }
   if (!catalogId || !uids.length || uids.length > 20) return { error: 'Choose between 1 and 20 listed cards.' }
 
   const marketUrl = new URL('/app/market-sample.json', request.url)
@@ -165,4 +168,3 @@ export const publicOrder = (record) => ({
   mode: 'sandbox',
   updated: record.updated || record.created || null,
 })
-
