@@ -58,6 +58,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Anko now reads as a composed manga market guide,
+  not a bright cereal mascot.** The new square portrait preserves his blue-black and
+  cream markings, cyan onibi, and black hoodie while replacing the wide eyes, broad grin,
+  cream halo, and scarf with a narrower gaze, restrained expression, low-key navy lighting,
+  and a small oxblood hoodie accent. It remains legible in a 48 px audit and is wired through
+  onboarding, Binder, Market, My Table, settlement, action panels, and trade advice; the v1
+  portrait remains untouched as a reversible fallback. Scoped ESLint, diff check, assembled
+  Pages build, and signed-in dark-mode production inspection pass (existing upstream
+  Privy/Rolldown annotation warnings only). Source `c21cdfa`; Pages production `2febd089`;
+  preview, apex, and `www` converge on `cairn-site-c2501f0ca813.js` at 5,370,920 bytes and
+  the 396,392-byte `anko-avatar-v3.png` (SHA-256 `9a2f5c5e…c45b7309`). Portrait generated
+  with the built-in image-generation path from the prior Anko avatar + guide references;
+  interface behavior, collection data, payments, offers, evidence, and protocol state are unchanged.
 - `[passive]` 2026-07-17 · Codex — **Arbitrum Sepolia checkout can now satisfy its
   own funding prerequisites without reintroducing extension collisions or creating
   a wallet silently.** Settlement offers an explicit `Create testnet wallet` action,
