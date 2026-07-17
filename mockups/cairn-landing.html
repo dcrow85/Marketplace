@@ -1,416 +1,678 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cairn: agentic trade for things that have to be real</title>
-<meta name="description" content="No marketplace can promise a card is real. Cairn admits it: an agent on the evidence, an escrow on the money, a record that outlives the trade. In pilot with the Azuki TCG.">
-<meta property="og:title" content="Cairn: agentic trade for things that have to be real">
-<meta property="og:description" content="No marketplace can promise a card is real. Cairn admits it, and builds for it.">
+<meta name="theme-color" content="#090a0e">
+<title>Cairn — bring your binder to life</title>
+<meta name="description" content="A card show built around your binder. Scan your Azuki TCG collection, set up your table, and make clear, evidence-aware deals with Anko beside you.">
+<meta property="og:title" content="Cairn — your card show, online">
+<meta property="og:description" content="Scan your binder. Set your table. Make a deal with Anko beside you.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://cairn.cards/app/assets/azuki/official/S1-STT01-001AX1_Raizan_L_INV26-WINNER_die--390dbdb00f39.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('cairn-theme');
+      document.documentElement.setAttribute('data-theme', saved || 'dark');
+    } catch (error) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
 <style>
-  :root{
-    /* light — stark white */
-    --paper:#FFFFFF; --paper2:#F3F2EE; --mount:#ECEAE3; --ink:#16140E; --ink2:#3B382F;
-    --dim:#85827A; --faint:#B4B1A7; --rule:rgba(20,18,14,.15); --rule2:rgba(20,18,14,.065);
-    --signal:#B0381C; --amber:#9A6212; --agent:#2C5B8C; --agent-bg:rgba(44,91,140,.055);
-    --bench:#141310; --bone:#DBD5C8; --bdim:#8B8579; --coolrule:rgba(219,213,200,.12);
-    --navbg:rgba(255,255,255,.85);
-    --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
-    --serif:"Spectral",Georgia,serif;
+  :root {
+    --paper: #f0ede5;
+    --paper-2: #e7e2d8;
+    --surface: #faf8f3;
+    --surface-strong: #ffffff;
+    --ink: #131416;
+    --ink-2: #3e3e3c;
+    --muted: #76736c;
+    --rule: rgba(24, 24, 22, .14);
+    --rule-soft: rgba(24, 24, 22, .08);
+    --glass: rgba(240, 237, 229, .82);
+    --blue: #3d6f9f;
+    --blue-bright: #5f91c3;
+    --blue-soft: rgba(61, 111, 159, .12);
+    --gold: #a77716;
+    --gold-bright: #d5a83d;
+    --gold-soft: rgba(167, 119, 22, .13);
+    --oxblood: #923d2d;
+    --green: #4e8964;
+    --shadow: 0 24px 70px rgba(34, 25, 12, .16);
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+    --serif: "Spectral", Georgia, serif;
   }
-  html[data-theme="dark"]{
-    /* dark — the bench */
-    --paper:#0E0D11; --paper2:#17161C; --mount:#23222A; --ink:#ECEAE3; --ink2:#C7C4B9;
-    --dim:#8C897F; --faint:#56534A; --rule:rgba(236,234,227,.15); --rule2:rgba(236,234,227,.07);
-    --signal:#D2654A; --amber:#C98A2E; --agent:#7BA7D6; --agent-bg:rgba(123,167,214,.09);
-    --bench:#1B1A21; --bone:#DBD5C8; --bdim:#8B8579; --coolrule:rgba(219,213,200,.12);
-    --navbg:rgba(14,13,17,.82);
+
+  html[data-theme="dark"] {
+    --paper: #090a0e;
+    --paper-2: #0d0f14;
+    --surface: #12141a;
+    --surface-strong: #181a21;
+    --ink: #f2efe7;
+    --ink-2: #c9c5bb;
+    --muted: #8e8b83;
+    --rule: rgba(242, 239, 231, .14);
+    --rule-soft: rgba(242, 239, 231, .075);
+    --glass: rgba(9, 10, 14, .82);
+    --blue: #78a8dc;
+    --blue-bright: #9bc6f2;
+    --blue-soft: rgba(120, 168, 220, .11);
+    --gold: #d7ad4b;
+    --gold-bright: #f0ca6b;
+    --gold-soft: rgba(215, 173, 75, .12);
+    --oxblood: #bd604a;
+    --green: #6bb185;
+    --shadow: 0 28px 90px rgba(0, 0, 0, .46);
   }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink2);font-family:var(--sans);
-    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1040px;margin:0 auto;padding:0 40px}
-  a{color:inherit}
-  .ek{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
 
-  /* nav */
-  nav{position:sticky;top:0;z-index:20;background:var(--navbg);backdrop-filter:blur(8px);
-    border-bottom:0.5px solid var(--rule2)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .mark{display:flex;align-items:center;gap:11px}
-  .mark .wm{font-family:var(--serif);font-size:23px;color:var(--ink);letter-spacing:.2px}
-  .mark .wm .pq{color:var(--faint)}
-  .wm .ai{color:var(--agent);font-weight:600}
-  .navr{display:flex;align-items:center;gap:24px;font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.02em}
-  .navr a{text-decoration:none}
-  .navr .go{padding:12px 2px;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:2px}
-  .mark svg,svg.cairn,.fm svg{stroke:var(--ink)}
-  .mark svg ellipse,.mark svg path,svg.cairn ellipse,svg.cairn path,.fm svg ellipse,.fm svg path{fill:var(--paper)}
-  .mark svg line,svg.cairn line{stroke:var(--faint)}
-  .themebtn{background:transparent;border:0.5px solid var(--rule);border-radius:5px;width:30px;height:26px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink2);padding:0}
-  .themebtn .ti{width:14px;height:14px;display:block}
-  .themebtn .sun{display:none}
-  html[data-theme="dark"] .themebtn .moon{display:none}
-  html[data-theme="dark"] .themebtn .sun{display:block}
-
-  /* hero */
-  .hero{padding:118px 0 96px}
-  .hero .cairn{margin-bottom:30px}
-  .hero .ek{margin-bottom:22px}
-  h1{font-weight:600;font-size:67px;line-height:1.02;letter-spacing:-.025em;color:var(--ink);margin:0;max-width:14ch}
-  h1 .q{color:var(--dim)}
-  .lede{font-size:19px;line-height:1.55;color:var(--ink2);max-width:60ch;margin:30px 0 0}
-  .cta{display:flex;align-items:center;gap:22px;margin-top:38px}
-  .btn{font-family:var(--sans);font-weight:500;font-size:15px;background:var(--ink);color:var(--paper);
-    border:0;border-radius:2px;padding:14px 22px;cursor:pointer;text-decoration:none;display:inline-block}
-  .btn-ghost{font-family:var(--mono);font-size:13px;color:var(--dim);text-decoration:none;letter-spacing:.04em}
-  .btn-ghost:hover{color:var(--ink)}
-
-  hr{border:0;border-top:0.5px solid var(--rule);margin:0}
-  section{padding:86px 0}
-
-  /* problem */
-  .problem .big{font-family:var(--serif);font-size:33px;line-height:1.32;color:var(--ink);max-width:24ch;margin:18px 0 0;font-weight:400}
-  .problem .big i{font-style:italic;color:var(--dim)}
-  .pbody{font-size:17px;line-height:1.6;color:var(--ink2);max-width:58ch;margin:22px 0 0}
-  .field{margin-top:28px;max-width:56ch;border-top:0.5px solid var(--rule)}
-  .field .fk{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);padding:13px 0 4px}
-  .frow{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:baseline;padding:8px 0;border-bottom:0.5px solid var(--rule2);font-size:14.5px}
-  .frow .fl{color:var(--ink2)}
-  .frow .fv{font-family:var(--mono);font-size:13px;color:var(--ink)}
-  .frow.zero .fl{color:var(--ink)}
-  .field .note{font-family:var(--mono);font-size:10px;color:var(--faint);padding-top:11px;letter-spacing:.02em;line-height:1.5}
-
-  /* the stack — the cairn */
-  .stacklede{font-weight:500;font-size:19px;color:var(--ink);letter-spacing:-.01em;margin:14px 0 0;max-width:46ch;line-height:1.45}
-  .stack{display:grid;grid-template-columns:170px 1fr;gap:50px;align-items:center;margin-top:34px}
-  .cairn{display:flex;justify-content:center}
-  .cairn svg{width:150px;height:auto}
-  .layers{display:flex;flex-direction:column}
-  .layer{padding:17px 0;border-top:0.5px solid var(--rule2)}
-  .layer:first-child{border-top:0;padding-top:0}
-  .lhead{display:flex;align-items:baseline;gap:11px;margin-bottom:5px}
-  .lhead h3{font-size:19px;font-weight:600;color:var(--ink);margin:0;letter-spacing:-.01em}
-  .ltag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;border:0.5px solid var(--rule);border-radius:3px;padding:2px 6px;color:var(--dim);flex:none}
-  .ltag.t-you{color:var(--ink);border-color:var(--ink2)}
-  .ltag.t-judged{color:var(--agent);border-color:var(--agent)}
-  .ltag.t-enforced{color:var(--ink);border-color:var(--ink)}
-  .layer p{margin:0;font-size:15px;color:var(--ink2);line-height:1.5}
-  .layer p .en{color:var(--dim)}
-  .layer p .unproven{color:var(--signal)}
-  .stacknote{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:26px;letter-spacing:.01em}
-  .dnote{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:13px}
-  .start .verdict{font-family:var(--serif);font-size:27px;line-height:1.35;color:var(--ink);margin:34px 0 0;font-weight:500}
-  @media(max-width:720px){.stack{grid-template-columns:1fr;gap:18px}.cairn{order:-1}.cairn svg{width:118px}}
-
-  /* artifact / specimen */
-  .show{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:center;margin-top:38px}
-  .spec{background:var(--paper2);border:0.5px solid var(--rule);padding:18px}
-  .spec .reg{position:relative}
-  .mount{position:relative;background:var(--mount);border:0.75px solid #6E6A60;padding:6px}
-  .mount img{width:100%;display:block;aspect-ratio:63/88;object-fit:cover}
-  .mount .tk{position:absolute;width:8px;height:8px;color:#6E6A60}
-  .mount .tk::before,.mount .tk::after{content:"";position:absolute;background:currentColor}
-  .mount .tk::before{left:3.5px;top:0;width:.75px;height:8px}.mount .tk::after{top:3.5px;left:0;height:.75px;width:8px}
-  .mount .tk.a{top:-1px;left:-1px}.mount .tk.b{top:-1px;right:-1px}.mount .tk.c{bottom:-1px;left:-1px}.mount .tk.d{bottom:-1px;right:-1px}
-  .spec .sn{font-weight:600;font-size:18px;color:var(--ink);margin:13px 0 1px;letter-spacing:-.01em}
-  .spec .ss{font-family:var(--mono);font-size:10.5px;color:var(--dim);letter-spacing:.02em}
-  .spec .sp{font-weight:600;font-size:19px;color:var(--ink);margin:10px 0 0}
-  .spec .sr{font-size:12.5px;color:var(--ink2);line-height:1.42;margin:8px 0 0}
-  .spec .flag{display:flex;gap:7px;font-size:11px;color:#6E4A11;background:rgba(178,106,25,.09);
-    border-left:2px solid var(--amber);padding:6px 9px;margin:11px 0 0;line-height:1.4}
-  .spec .flag .fi{color:var(--amber);font-size:8px;line-height:1.7}
-  html[data-theme="dark"] .spec .flag{color:#D9A24E;background:rgba(201,138,46,.12)}
-  .show .cap .ek{margin-bottom:14px}
-  .show .cap h2{font-size:30px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin:0 0 14px;line-height:1.1}
-  .show .cap p{font-size:16px;color:var(--ink2);max-width:46ch;margin:0 0 10px}
-  .show .cap .pt{font-family:var(--mono);font-size:12px;color:var(--dim);margin-top:16px;letter-spacing:.02em}
-
-  h2.lead{font-size:34px;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin:14px 0 0;max-width:20ch;line-height:1.08}
-  .lead2{font-size:18px;line-height:1.6;color:var(--ink2);max-width:62ch;margin:20px 0 0}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;border-top:0.5px solid var(--rule);padding-top:28px}
-  .two h4{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:0 0 9px}
-  .two p{font-size:15px;color:var(--ink2);line-height:1.55;margin:0;max-width:44ch}
-  .two .en{color:var(--dim)}
-
-  /* why an agent — the agent-blue gets the stage here */
-  .dive{margin-top:30px;background:var(--agent-bg);border:0.5px solid var(--rule2);border-left:2px solid var(--agent);
-    border-radius:0 3px 3px 0;padding:17px 22px;max-width:58ch}
-  .dive .dk{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--agent);margin-bottom:11px}
-  .dive ul{list-style:none;margin:0;padding:0;font-size:14px;line-height:1.5}
-  .dive li{display:flex;gap:11px;padding:3px 0;color:var(--ink2)}
-  .dive li .c{color:var(--agent);font-size:12px;flex:none}
-  .dive li b{font-weight:600;color:var(--ink)}
-  .dive .dist{margin-top:13px;padding-top:12px;border-top:0.5px solid var(--rule2);font-size:14px;color:var(--ink2)}
-  .dive .dist b{color:var(--ink);font-weight:600}
-  .scalar{font-size:17px;line-height:1.6;color:var(--ink2);max-width:60ch;margin:30px 0 0}
-  .scalar i{color:var(--dim)}
-
-  /* honest */
-  .honest p.body{font-size:17px;line-height:1.6;color:var(--ink2);max-width:60ch;margin:22px 0 0}
-  .trich{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px;border-top:0.5px solid var(--rule);padding-top:26px}
-  .trich h4{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:0 0 8px}
-  .trich p{font-size:14px;color:var(--ink2);line-height:1.5;margin:0}
-  .verdict{font-family:var(--serif);font-size:30px;color:var(--ink);margin:46px 0 0;font-weight:500}
-  .verdict .o{color:var(--signal)}
-  .verdict .ag{color:var(--agent)}
-
-  /* start */
-  .start{text-align:center;padding:100px 0 90px}
-  .start h2{font-size:42px;font-weight:600;letter-spacing:-.025em;color:var(--ink);margin:0 auto;max-width:18ch;line-height:1.08}
-  .start p{font-size:16px;color:var(--dim);margin:18px auto 0;max-width:48ch}
-  .start .cta{justify-content:center;margin-top:34px}
-
-  footer{border-top:0.5px solid var(--rule);padding:30px 0 40px}
-  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
-  footer .disc{font-family:var(--mono);font-size:10.5px;color:var(--faint);line-height:1.6;max-width:430px}
-  footer .fm{display:flex;align-items:center;gap:9px}
-  footer .fm .wm{font-family:var(--serif);font-size:17px;color:var(--ink)}
-  footer .fm .wm .pq{color:var(--faint)}
-
-  @media(max-width:760px){
-    .wrap{padding:0 24px}
-    h1{font-size:46px}
-    .show{grid-template-columns:1fr;gap:30px}
-    .step{grid-template-columns:40px 1fr;gap:14px}
-    .step p{grid-column:1/-1}
-    .trich{grid-template-columns:1fr;gap:20px}
-    .two{grid-template-columns:1fr;gap:22px}
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background:
+      radial-gradient(circle at 76% 4%, var(--blue-soft), transparent 24rem),
+      radial-gradient(circle at 18% 20%, var(--gold-soft), transparent 28rem),
+      var(--paper);
+    color: var(--ink-2);
+    font: 16px/1.55 var(--sans);
+    -webkit-font-smoothing: antialiased;
   }
-  /* phones: collapse the nav to wordmark + the primary CTA + theme toggle (the rest is one scroll away) */
-  @media(max-width:640px){
-    .navr{gap:16px}
-    .navr a:not(.go){display:none}
+  a { color: inherit; }
+  img { max-width: 100%; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  .wrap { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
+  .eyebrow {
+    margin: 0;
+    color: var(--blue);
+    font: 600 11px/1.35 var(--mono);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--rule-soft);
+    background: var(--glass);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+  .nav-inner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .stones { width: 27px; height: 35px; position: relative; flex: none; }
+  .stones i {
+    position: absolute;
+    left: 50%;
+    display: block;
+    border: 1px solid var(--muted);
+    background: var(--paper-2);
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+  .stones i:nth-child(1) { bottom: 1px; width: 25px; height: 10px; }
+  .stones i:nth-child(2) { bottom: 10px; width: 19px; height: 9px; transform: translateX(-50%) rotate(-4deg); }
+  .stones i:nth-child(3) { bottom: 18px; width: 14px; height: 8px; transform: translateX(-50%) rotate(5deg); }
+  .stones i:nth-child(4) { bottom: 25px; width: 8px; height: 7px; }
+  .wordmark { font: 500 25px/1 var(--serif); letter-spacing: .01em; }
+  .wordmark .ai { color: var(--blue); font-family: var(--sans); font-size: .82em; font-weight: 700; }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
+  .nav-links > a:not(.nav-cta) {
+    color: var(--muted);
+    font: 500 12px/1 var(--mono);
+    text-decoration: none;
+  }
+  .nav-links > a:hover { color: var(--ink); }
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink-2);
+    cursor: pointer;
+    font: 500 18px/1 var(--sans);
+  }
+  .nav-cta, .button {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+    border: 1px solid var(--ink);
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--paper) !important;
+    font: 600 13px/1 var(--mono);
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .nav-cta:hover, .button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 0, 0, .18); }
+  .button.gold { background: var(--gold-bright); border-color: var(--gold-bright); color: #19150c !important; }
+  .button.ghost { background: transparent; border-color: var(--rule); color: var(--ink) !important; }
+
+  .hero { min-height: calc(100vh - 72px); display: flex; align-items: center; padding: 76px 0 80px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, .94fr) minmax(500px, 1.06fr); gap: 54px; align-items: center; }
+  .pilot-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 24px;
+    color: var(--ink-2);
+    font: 500 11px/1.25 var(--mono);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .pilot-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(107, 177, 133, .1); }
+  h1 {
+    max-width: 9.2ch;
+    margin: 0;
+    color: var(--ink);
+    font-size: clamp(56px, 6.7vw, 96px);
+    font-weight: 600;
+    line-height: .96;
+    letter-spacing: -.055em;
+  }
+  h1 em { color: var(--gold); font-family: var(--serif); font-weight: 500; }
+  .hero-copy > p {
+    max-width: 54ch;
+    margin: 27px 0 0;
+    color: var(--ink-2);
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+  .hero-note { margin-top: 18px !important; color: var(--muted) !important; font: 11px/1.55 var(--mono) !important; }
+
+  .card-stage { position: relative; height: 600px; isolation: isolate; }
+  .card-stage::before {
+    content: "";
+    position: absolute;
+    inset: 13% 8% 10%;
+    z-index: -2;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--blue-soft), transparent 68%);
+    filter: blur(22px);
+  }
+  .card-stage::after {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 3%;
+    bottom: 5%;
+    height: 24%;
+    z-index: -1;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: linear-gradient(180deg, transparent, var(--gold-soft));
+    transform: perspective(320px) rotateX(68deg);
+    filter: blur(.2px);
+  }
+  .hero-card {
+    position: absolute;
+    width: 258px;
+    margin: 0;
+    aspect-ratio: 63 / 88;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .17);
+    border-radius: 5.8% / 4.2%;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    transform-origin: center 90%;
+    transition: transform .35s cubic-bezier(.2, .8, .2, 1), filter .35s ease;
+  }
+  .hero-card img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .hero-card:hover { z-index: 10; filter: saturate(1.08) brightness(1.04); }
+  .hero-card.raizan { left: 29%; top: 4%; z-index: 5; transform: rotate(-2deg); }
+  .hero-card.raizan:hover { transform: rotate(-2deg) translateY(-14px) scale(1.025); }
+  .hero-card.shao { right: 1%; top: 13%; z-index: 4; transform: rotate(10deg); }
+  .hero-card.shao:hover { transform: rotate(8deg) translateY(-14px) scale(1.025); }
+  .hero-card.mizuki { left: 1%; top: 18%; z-index: 3; transform: rotate(-11deg); }
+  .hero-card.mizuki:hover { transform: rotate(-9deg) translateY(-14px) scale(1.025); }
+  .hero-card.ikz { left: 20%; bottom: 1%; z-index: 2; width: 218px; transform: rotate(-17deg); }
+  .hero-card.ikz:hover { transform: rotate(-15deg) translateY(-12px) scale(1.025); }
+  .hero-card.zero { right: 8%; bottom: 0; z-index: 1; width: 222px; transform: rotate(16deg); }
+  .hero-card.zero:hover { transform: rotate(14deg) translateY(-12px) scale(1.025); }
+  .stage-label {
+    position: absolute;
+    right: 0;
+    bottom: 3%;
+    z-index: 12;
+    width: 180px;
+    padding: 11px 13px;
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    background: var(--glass);
+    color: var(--muted);
+    font: 10px/1.45 var(--mono);
+    backdrop-filter: blur(14px);
+  }
+  .stage-label strong { display: block; margin-bottom: 2px; color: var(--gold); font-size: 11px; }
+
+  .signal-strip { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--paper-2); }
+  .signals { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .signal { min-height: 104px; padding: 23px 25px; border-left: 1px solid var(--rule); }
+  .signal:last-child { border-right: 1px solid var(--rule); }
+  .signal strong { display: block; color: var(--ink); font-size: 22px; font-weight: 600; line-height: 1.15; }
+  .signal span { display: block; margin-top: 7px; color: var(--muted); font: 10px/1.45 var(--mono); letter-spacing: .04em; text-transform: uppercase; }
+
+  section { padding: 112px 0; }
+  .section-head { display: grid; grid-template-columns: minmax(0, .7fr) minmax(280px, .3fr); gap: 50px; align-items: end; }
+  h2 { max-width: 14ch; margin: 13px 0 0; color: var(--ink); font-size: clamp(40px, 5vw, 65px); line-height: 1; letter-spacing: -.045em; }
+  .section-intro { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.6; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; counter-reset: step; }
+  .step {
+    position: relative;
+    min-height: 290px;
+    padding: 26px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    background: linear-gradient(145deg, var(--surface-strong), var(--surface));
+  }
+  .step::after {
+    counter-increment: step;
+    content: "0" counter(step);
+    position: absolute;
+    right: 18px;
+    bottom: -24px;
+    color: var(--rule-soft);
+    font: 700 110px/1 var(--mono);
+    letter-spacing: -.08em;
+  }
+  .step-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--rule); border-radius: 12px; color: var(--blue); font: 600 20px/1 var(--mono); }
+  .step:nth-child(3) .step-icon { color: var(--gold); }
+  .step h3 { margin: 38px 0 10px; color: var(--ink); font-size: 24px; line-height: 1.1; }
+  .step p { position: relative; z-index: 1; margin: 0; max-width: 31ch; color: var(--muted); font-size: 15px; }
+  .step small { display: inline-block; margin-top: 18px; color: var(--blue); font: 10px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .step:nth-child(3) small { color: var(--gold); }
+
+  .anko-section { background: var(--paper-2); border-top: 1px solid var(--rule-soft); border-bottom: 1px solid var(--rule-soft); }
+  .anko-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: center; }
+  .anko-window {
+    position: relative;
+    min-height: 420px;
+    padding: 26px;
+    border: 1px solid var(--rule);
+    border-radius: 18px;
+    background:
+      linear-gradient(180deg, transparent, rgba(0, 0, 0, .14)),
+      var(--surface);
+    box-shadow: var(--shadow);
+  }
+  .anko-top { display: flex; align-items: center; gap: 14px; padding-bottom: 22px; border-bottom: 1px solid var(--rule); }
+  .anko-avatar { width: 62px; height: 62px; border: 1px solid var(--blue); border-radius: 16px; object-fit: cover; }
+  .anko-top strong { display: block; color: var(--ink); font-size: 18px; }
+  .anko-top span { display: block; margin-top: 3px; color: var(--blue); font: 10px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+  .anko-says { margin: 26px 0 20px; color: var(--ink); font-size: 19px; line-height: 1.45; }
+  .prompt-stack { display: grid; gap: 9px; }
+  .prompt {
+    width: 100%;
+    min-height: 47px;
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-2);
+    font: 12px/1.4 var(--mono);
+  }
+  .prompt::before { content: "→"; margin-right: 10px; color: var(--blue); }
+  .anko-copy h2 { max-width: 12ch; }
+  .anko-copy > p { max-width: 55ch; margin: 24px 0 0; color: var(--ink-2); font-size: 17px; }
+  .boundary-note { margin-top: 32px; padding: 18px 20px; border-left: 3px solid var(--blue); background: var(--blue-soft); color: var(--ink-2); font-size: 14px; }
+  .boundary-note strong { color: var(--ink); }
+
+  .gallery { padding-bottom: 124px; }
+  .card-wall { display: grid; grid-template-columns: repeat(6, 1fr); gap: 13px; margin-top: 48px; }
+  .catalog-card { min-width: 0; }
+  .catalog-card figure { margin: 0; }
+  .catalog-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 63 / 88;
+    object-fit: cover;
+    border: 1px solid var(--rule);
+    border-radius: 5.8% / 4.2%;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, .18);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .catalog-card:hover img { transform: translateY(-8px); box-shadow: 0 22px 48px rgba(0, 0, 0, .28); }
+  .catalog-card figcaption { padding: 12px 2px 0; }
+  .catalog-card strong { display: block; overflow: hidden; color: var(--ink); font-size: 13px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+  .catalog-card span { display: block; margin-top: 3px; color: var(--muted); font: 9px/1.3 var(--mono); text-transform: uppercase; }
+
+  .trust-section { border-top: 1px solid var(--rule); background: var(--surface); }
+  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 50px; overflow: hidden; border: 1px solid var(--rule); border-radius: 14px; background: var(--rule); }
+  .trust-card { min-height: 275px; padding: 28px; background: var(--paper); }
+  .trust-card .tag { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 600 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+  .trust-card .tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .trust-card:nth-child(2) .tag::before { background: var(--blue); }
+  .trust-card:nth-child(3) .tag::before { background: var(--oxblood); }
+  .trust-card h3 { margin: 45px 0 10px; color: var(--ink); font-size: 24px; }
+  .trust-card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .trust-verdict { max-width: 32ch; margin: 40px 0 0 auto; color: var(--ink); font: 500 clamp(23px, 3vw, 34px)/1.25 var(--serif); text-align: right; }
+  .trust-verdict em { color: var(--blue); }
+
+  .checkout-section { overflow: hidden; }
+  .checkout-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 80px; align-items: center; }
+  .checkout-copy h2 { max-width: 11ch; }
+  .checkout-copy p { max-width: 47ch; margin: 24px 0 0; color: var(--muted); }
+  .checkout-demo { position: relative; padding: 20px; border: 1px solid var(--rule); border-radius: 18px; background: var(--surface); box-shadow: var(--shadow); }
+  .checkout-demo::before { content: "SETTLE UP"; position: absolute; top: -26px; right: 4px; color: var(--muted); font: 10px/1 var(--mono); letter-spacing: .16em; }
+  .order-title { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 7px 4px 19px; border-bottom: 1px solid var(--rule); }
+  .order-title strong { color: var(--ink); font-size: 18px; }
+  .order-title span { color: var(--gold); font: 600 17px/1 var(--mono); }
+  .pay-row { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 20px 4px; border-bottom: 1px solid var(--rule-soft); }
+  .pay-row:last-of-type { border-bottom: 0; }
+  .pay-row strong { display: block; color: var(--ink); font-size: 15px; }
+  .pay-row p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+  .pay-badge { align-self: center; padding: 6px 9px; border: 1px solid var(--rule); border-radius: 6px; color: var(--blue); font: 9px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+  .pay-row.paypal .pay-badge { color: var(--gold); }
+  .checkout-button { width: 100%; min-height: 52px; margin-top: 16px; border: 0; border-radius: 9px; background: var(--gold-bright); color: #17130b; font: 600 14px/1 var(--mono); }
+  .checkout-button:disabled { opacity: 1; cursor: default; }
+  .demo-note { margin: 12px 3px 0; color: var(--muted); font: 9px/1.5 var(--mono); text-align: center; }
+
+  .final-cta { padding: 130px 0; border-top: 1px solid var(--rule); text-align: center; }
+  .final-cta h2 { max-width: 17ch; margin: 14px auto 0; }
+  .final-cta p { max-width: 52ch; margin: 24px auto 0; color: var(--muted); font-size: 17px; }
+  .final-cta .hero-actions { justify-content: center; }
+
+  footer { padding: 35px 0 45px; border-top: 1px solid var(--rule); }
+  .footer-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 15px; }
+  .footer-links a { color: var(--muted); font: 10px/1 var(--mono); text-decoration: none; text-transform: uppercase; }
+  .disclaimer { margin: 0; color: var(--muted); font: 9px/1.65 var(--mono); }
+
+  @media (max-width: 1040px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card-stage { transform: scale(.88); transform-origin: center; }
+    .card-wall { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .checkout-grid, .anko-grid { gap: 46px; }
+  }
+
+  @media (max-width: 820px) {
+    .wrap { width: min(100% - 40px, 680px); }
+    .nav-links > a:not(.nav-cta) { display: none; }
+    .nav-links { gap: 10px; }
+    .nav-cta { padding: 0 13px; }
+    .hero { min-height: auto; padding-top: 62px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-copy { position: relative; z-index: 3; }
+    h1 { max-width: 8.6ch; }
+    .card-stage { width: 620px; max-width: calc(100vw - 18px); height: 565px; margin: 16px auto -8px; transform: scale(.94); }
+    .section-head { grid-template-columns: 1fr; gap: 24px; }
+    .steps { grid-template-columns: 1fr; }
+    .step { min-height: 225px; }
+    .anko-grid, .checkout-grid { grid-template-columns: 1fr; }
+    .anko-copy { order: -1; }
+    .signals { grid-template-columns: 1fr 1fr; }
+    .signal:nth-child(2) { border-right: 1px solid var(--rule); }
+    .signal:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    .trust-grid { grid-template-columns: 1fr; }
+    .trust-card { min-height: 220px; }
+  }
+
+  @media (max-width: 560px) {
+    .wrap { width: min(100% - 28px, 500px); }
+    .nav-inner { min-height: 64px; }
+    .wordmark { font-size: 22px; }
+    .stones { transform: scale(.9); }
+    .nav-cta { min-height: 42px; font-size: 11px; }
+    .theme-toggle { width: 42px; height: 42px; }
+    .hero { padding: 48px 0 58px; }
+    h1 { font-size: clamp(51px, 15.7vw, 72px); }
+    .hero-copy > p { font-size: 16px; }
+    .button { flex: 1 1 160px; }
+    .card-stage { left: 50%; width: 400px; max-width: none; height: 420px; margin-left: -200px; transform: none; }
+    .hero-card { width: 190px; }
+    .hero-card.ikz, .hero-card.zero { width: 158px; }
+    .stage-label { right: 12px; bottom: 0; width: 154px; }
+    .signals { width: 100%; }
+    .signal { min-height: 90px; padding: 18px 15px; }
+    .signal strong { font-size: 18px; }
+    section { padding: 86px 0; }
+    h2 { font-size: 43px; }
+    .card-wall { grid-template-columns: repeat(2, 1fr); gap: 20px 11px; }
+    .catalog-card figcaption { padding-top: 9px; }
+    .anko-window { min-height: 0; padding: 18px; }
+    .anko-says { font-size: 17px; }
+    .trust-verdict { text-align: left; margin-left: 0; }
+    .checkout-demo { padding: 15px; }
+    .pay-row { grid-template-columns: 1fr; gap: 10px; }
+    .pay-badge { justify-self: start; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .final-cta { padding: 95px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   }
 </style>
-<script>(function(){try{var t=localStorage.getItem('cairn-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>
 <body>
-<!-- Cairn landing — served at /mockups/cairn-landing.html -->
-<nav>
-  <div class="wrap">
-    <span class="mark">
-      <svg width="30" height="38" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="2" aria-hidden="true">
-        <line x1="26" y1="130" x2="84" y2="130" stroke="#A9A28D" stroke-width="1.4"/>
-        <ellipse cx="55" cy="118" rx="33" ry="12.5" fill="#EAE3D4"/>
-        <ellipse cx="56" cy="96" rx="27" ry="11" fill="#EAE3D4" transform="rotate(-3 56 96)"/>
-        <ellipse cx="54" cy="77" rx="21.5" ry="9.6" fill="#EAE3D4" transform="rotate(4 54 77)"/>
-        <ellipse cx="55.5" cy="60" rx="16" ry="8.2" fill="#EAE3D4" transform="rotate(-3 55.5 60)"/>
-        <path d="M46 47 Q55 35 64 47 Q61 52 55 52.5 Q49 52 46 47 Z" fill="#EAE3D4"/>
-      </svg>
-      <span class="wm">c<span class="pq">(</span><span class="ai">ai</span><span class="pq">)</span>rn</span>
-    </span>
-    <span class="navr">
-      <a href="#how">how it works</a>
-      <a href="#see">what you see</a>
-      <a href="cairn-protocol.html">protocol</a>
-      <a href="/app/" class="go">open your binder</a>
-      <button class="themebtn" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle theme"><svg class="ti moon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6.3 1.7a6.4 6.4 0 1 0 8 8.1A5 5 0 0 1 6.3 1.7Z"/></svg><svg class="ti sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.7M8 13.3V15M1 8h1.7M13.3 8H15M3.1 3.1l1.2 1.2M11.7 11.7l1.2 1.2M12.9 3.1l-1.2 1.2M4.3 11.7l-1.2 1.2"/></svg></button>
-    </span>
+<nav class="site-nav" aria-label="Primary navigation">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Cairn home">
+      <span class="stones" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wordmark">c(<span class="ai">ai</span>)rn</span>
+    </a>
+    <div class="nav-links">
+      <a href="#floor">How it works</a>
+      <a href="#anko">Meet Anko</a>
+      <a href="#trust">Trust</a>
+      <a class="nav-cta" href="/app/">Open your binder <span aria-hidden="true">→</span></a>
+      <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch color theme" title="Switch color theme">◐</button>
+    </div>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <svg class="cairn" width="78" height="98" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="1.7" aria-hidden="true">
-      <line x1="24" y1="131" x2="86" y2="131" stroke="#A9A28D" stroke-width="1.1"/>
-      <ellipse cx="55" cy="118" rx="34" ry="13" fill="#EAE3D4"/>
-      <ellipse cx="56" cy="95.5" rx="28" ry="11.2" fill="#EAE3D4" transform="rotate(-3 56 95.5)"/>
-      <ellipse cx="54" cy="76" rx="22" ry="9.8" fill="#EAE3D4" transform="rotate(4 54 76)"/>
-      <ellipse cx="55.5" cy="58.5" rx="16.4" ry="8.4" fill="#EAE3D4" transform="rotate(-3 55.5 58.5)"/>
-      <path d="M45.5 45 Q55 32 64.5 45 Q61 50.5 55 51 Q49 50.5 45.5 45 Z" fill="#EAE3D4"/>
-    </svg>
-    <div class="ek">Agentic trade for things that have to be real</div>
-    <h1>No marketplace<br>can promise<br>a card is real.<br><span class="you">Cairn admits it.</span></h1>
-    <p class="lede">Through a screen, &ldquo;authentic&rdquo; is always someone&rsquo;s judgment. Cairn makes that judgment accountable: an agent on the evidence, an escrow on the money, a record that outlives the trade. Lies don&rsquo;t become impossible. They stop being free. In pilot now, with the Azuki TCG.</p>
-    <div class="cta">
-      <a href="/app/" class="btn">Open your binder</a>
-      <a href="#how" class="btn-ghost">see how it works ↓</a>
-    </div>
-  </div>
-</header>
-
-<hr>
-<section class="problem">
-  <div class="wrap">
-    <div class="ek">The problem</div>
-    <p class="big">Real money. Rarely refundable. And the truth arrives <i>after</i> the card does.</p>
-    <p class="pbody">Is it genuine? Is the grade honest? Will it ship at all? You trust everything at once. If any part is a lie, you learn too late. There is no undo.</p>
-    <p class="pbody">The usual fix is renting someone else's trust: a marketplace, an auction house, a grader. It works. It is also priced all over the map, and none of it tells you whether <i>this</i> seller is safe. Here is what trusting one $6,000 card can run:</p>
-    <div class="field">
-      <div class="fk">the cost of trusting one $6,000 card</div>
-      <div class="frow"><span class="fl">eBay</span><span class="fv">~13%</span></div>
-      <div class="frow"><span class="fl">TCGplayer</span><span class="fv">~4% here · ~13% on a common card</span></div>
-      <div class="frow"><span class="fl">an auction house</span><span class="fv">~20%</span></div>
-      <div class="frow"><span class="fl">PSA / CGC grading</span><span class="fv">~$100–150, plus weeks, plus mailing your card off</span></div>
-      <div class="frow zero"><span class="fl">a seller you already trust</span><span class="fv">nothing</span></div>
-      <div class="note">U.S. rates, early 2026. And that's just the money.</div>
-    </div>
-    <p class="pbody">Same card, wildly different cost. The cheapest is the one nobody sells you: a seller you already trust. So you overpay to feel safe, skip the check you needed, or jump and hope. Trust is the real price. Right now it is unpriced and unaccountable.</p>
-  </div>
-</section>
-
-<hr>
-<section class="why">
-  <div class="wrap">
-    <div class="ek">Why an agent</div>
-    <h2 class="lead">The agent does the part you'd hate.</h2>
-    <p class="lead2">Safety is clerical. Vetting a $6,000 trade with a stranger means cross-referencing them across their shop, their receipts, their eBay history; re-pulling comps; holding six dimensions of trust at once. Exhausting for you. Nothing for an agent.</p>
-    <div class="dive">
-      <div class="dk">your agent, on this seller</div>
-      <ul>
-        <li><span class="c">✓</span>controls <b>kantocards.jp</b>, domain signed</li>
-        <li><span class="c">✓</span>40 receipts on Cairn, none disputed</li>
-        <li><span class="c">✓</span>6 years on eBay · 1,400 feedback at 99.6%</li>
-        <li><span class="c">✓</span>Google Business listing matches the shop</li>
-        <li><span class="c">✓</span>3 prior Cairn trades, all settled clean</li>
-      </ul>
-      <div class="dist">→ one line for you: <b>"known shop, strong history."</b></div>
-      <div class="dnote">design target: today's pilot trades inside a circle you already trust</div>
-    </div>
-    <p class="scalar">Faced with all that, you want one number: <i>just tell me it's safe.</i> That number would be a lie. It hides every dimension it averaged, including the one that should stop you. So the agent holds the whole picture and hands you only what would change your mind.</p>
-    <p class="verdict">You want a number.<br>Your agent keeps the <span class="ag">vector</span>.</p>
-  </div>
-</section>
-
-<hr>
-<section id="how">
-  <div class="wrap">
-    <div class="ek">How it works</div>
-    <div class="stacklede">A trade is a cairn: each stone rests on the one below. You see the top stone. You can trace it down to the contract.</div>
-    <div class="stack">
-      <div class="cairn">
-        <svg viewBox="0 0 150 452" fill="none" aria-hidden="true">
-          <line x1="20" y1="414" x2="130" y2="414" stroke="var(--faint)" stroke-width="1"/>
-          <ellipse cx="75" cy="387" rx="55" ry="23" fill="var(--ink)" transform="rotate(-2 75 387)"/>
-          <ellipse cx="77" cy="263" rx="46" ry="20" fill="var(--ink2)" transform="rotate(3 77 263)"/>
-          <ellipse cx="73" cy="150" rx="37" ry="17" fill="var(--dim)" transform="rotate(-3 73 150)"/>
-          <ellipse cx="75" cy="45" rx="26" ry="13.5" fill="var(--paper)" stroke="var(--ink2)" stroke-width="1.3" transform="rotate(2 75 45)"/>
-        </svg>
+<main id="top">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="pilot-chip">The agentic card show · Azuki TCG pilot</div>
+        <h1>Bring your <em>binder.</em> Meet your market.</h1>
+        <p>Scan your collection, set up your table, and make a deal. Anko can search the floor and read the evidence. You stay in control of every card, offer, and payment.</p>
+        <div class="hero-actions">
+          <a class="button gold" href="/app/">Enter the card show <span aria-hidden="true">→</span></a>
+          <a class="button ghost" href="#floor">See how it works</a>
+        </div>
+        <p class="hero-note">Live product rehearsal · sample tables · no real-money escrow implied</p>
       </div>
-      <div class="layers">
-        <div class="layer">
-          <div class="lhead"><h3>Your glance</h3><span class="ltag t-you">you</span></div>
-          <p>One card, one honest read: what it is, who's selling, what it's worth, and <span class="unproven">the one thing still unproven</span>. You're interrupted only when something spends money or needs your eyes.</p>
-        </div>
-        <div class="layer">
-          <div class="lhead"><h3>The agent's read</h3><span class="ltag t-judged">judged</span></div>
-          <p>It reads your cards and the evidence, and ranks what it can and can't vouch for. Judgment, labeled as judgment, never dressed up as proof. <span class="en">Out-of-scope and overpriced offers never reach you.</span></p>
-        </div>
-        <div class="layer">
-          <div class="lhead"><h3>The evidence</h3><span class="ltag t-legible">legible</span></div>
-          <p>Every photo, scan, and claim, signed and pinned so it can't be quietly changed. <span class="en">A vector, never a verdict: readable, still yours or an arbiter's to weigh.</span></p>
-        </div>
-        <div class="layer">
-          <div class="lhead"><h3>The record</h3><span class="ltag t-enforced">enforced</span></div>
-          <p>The contract holds the money in escrow, locks the terms, and anchors every claim by hash. Accept on arrival and the funds release; if something's wrong, the claim is already on the record, with the evidence to compare. <span class="en">Nothing rests on the seller's word. Only on this, and it outlives the trade.</span></p>
-        </div>
+
+      <div class="card-stage" aria-label="A fan of official Azuki TCG catalogue artwork">
+        <figure class="hero-card mizuki">
+          <img src="/app/assets/azuki/official/STT02-013ASN_Mizuki_E_SR_die--44e6c78053f4.jpg" alt="Mizuki Super Rare official Azuki TCG catalogue art">
+        </figure>
+        <figure class="hero-card shao">
+          <img src="/app/assets/azuki/official/S1-STT02-001AX_Shao_L_INV26-TOP8_die--38a1e633eae2.jpg" alt="Shao Invitational Top 8 official Azuki TCG catalogue art">
+        </figure>
+        <figure class="hero-card zero">
+          <img src="/app/assets/azuki/official/S1-STT04-001AC_Zero_L_L-AAC_die--f94a300a4ee8.jpg" alt="Zero alternate art official Azuki TCG catalogue art">
+        </figure>
+        <figure class="hero-card ikz">
+          <img src="/app/assets/azuki/official/AZP-002_IKZ-_IKZ-Token-AX-Winner_Die--9aa033418526.jpg" alt="IKZ Token Winner official Azuki TCG catalogue art">
+        </figure>
+        <figure class="hero-card raizan">
+          <img src="/app/assets/azuki/official/S1-STT01-001AX1_Raizan_L_INV26-WINNER_die--390dbdb00f39.jpg" alt="Raizan Invitational Winner official Azuki TCG catalogue art">
+        </figure>
+        <div class="stage-label"><strong>Official gallery art</strong>Catalogue references—not proof of a seller's physical copy.</div>
       </div>
     </div>
-    <div class="stacknote">Lift any stone and the one beneath holds. A bad trade stays answerable for as long as the record does.</div>
-  </div>
-</section>
+  </header>
 
-<hr>
-<section id="see">
-  <div class="wrap">
-    <div class="show">
-      <div class="spec">
-        <div class="reg">
-          <div class="mount"><span class="tk a"></span><span class="tk b"></span><span class="tk c"></span><span class="tk d"></span><img src="assets/azuki-alpha-obv.jpg" alt="Lounge Siren, Saeko. Azuki TCG Alpha, from a collector's photo"></div>
+  <aside class="signal-strip" aria-label="Pilot status">
+    <div class="wrap signals">
+      <div class="signal"><strong>353</strong><span>Catalogue entries</span></div>
+      <div class="signal"><strong>5 sample</strong><span>Tables on the floor</span></div>
+      <div class="signal"><strong>Testnet</strong><span>Escrow rehearsal</span></div>
+      <div class="signal"><strong>Sandbox</strong><span>PayPal fallback</span></div>
+    </div>
+  </aside>
+
+  <section id="floor">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Walk the floor</p>
+          <h2>A card show, without the folding tables.</h2>
         </div>
-        <div class="sn">Lounge Siren, Saeko</div>
-        <div class="ss">AZK01-057 · Alpha · α stamp present</div>
-        <div class="sp">recorded <span style="font-family:var(--mono);font-size:11px;color:var(--dim);font-weight:400">· have · from your photo</span></div>
-        <div class="sr">Read from your binder photo: name and α stamp match the Alpha row. Recorded as a have. Your photo stays on file as the witness.</div>
-        <div class="flag"><span class="fi">▲</span><span>A witness, not proof. Condition stays yours to judge.</span></div>
+        <p class="section-intro">Cairn begins with the interface collectors already understand: a binder, a display case, other people's tables, and a pile you settle when the deal feels right.</p>
       </div>
-      <div class="cap">
-        <div class="ek">What you see</div>
-        <h2>One card. One honest read.</h2>
-        <p>No dashboards, no jargon. Point your camera at a card. The agent reads it, matches the row, and records what it saw. Your photo is the evidence.</p>
-        <p>And the part most marketplaces bury: what is <i>not</i> proven, named in plain language, before any money moves.</p>
-        <p class="pt">The full record sits one gesture away: identifiers, hashes, the trade itself.</p>
+      <div class="steps">
+        <article class="step">
+          <div class="step-icon" aria-hidden="true">⌁</div>
+          <h3>Scan your binder</h3>
+          <p>Add one card or a whole collection. Photos and angles stay attached to the copy they describe.</p>
+          <small>Your cards · your evidence</small>
+        </article>
+        <article class="step">
+          <div class="step-icon" aria-hidden="true">★</div>
+          <h3>Set your table</h3>
+          <p>Lead with a display case, keep the rest in your binder, and mark exactly what is for sale or trade.</p>
+          <small>Display · sell · trade</small>
+        </article>
+        <article class="step">
+          <div class="step-icon" aria-hidden="true">$</div>
+          <h3>Make a deal</h3>
+          <p>Pay the posted ask directly, or change the terms and make an offer. The difference is always obvious.</p>
+          <small>Money stays visible</small>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr>
-<section class="beyond">
-  <div class="wrap">
-    <div class="ek">Beyond one trade</div>
-    <h2 class="lead">The record outlives the trade.</h2>
-    <p class="lead2">A cairn is built one stone at a time. Every trade leaves a record: the images, the evidence, the provenance, the custody. It doesn't vanish when the deal closes. It accretes. A bad trade stays answerable for as long as it does.</p>
-    <div class="two">
-      <div><h4>Yours</h4><p>The record anchors to your wallet, not to Cairn. Your collection becomes a history you own and carry, trade to trade. <span class="en">Trading cards today. Anything that has to be real, next.</span></p></div>
-      <div><h4>A protocol, not a platform</h4><p>Cairn is designed as an open protocol, not a walled garden: evidence can come from anywhere, and the record is free to read. <span class="en">Bring your history in, take it out. By design, not by permission.</span></p></div>
+  <section class="anko-section" id="anko">
+    <div class="wrap anko-grid">
+      <div class="anko-window" aria-label="Examples of questions to ask Anko">
+        <div class="anko-top">
+          <img class="anko-avatar" src="/app/agent/anko-avatar-v3.png" alt="Anko, Cairn's market guide">
+          <div><strong>Anko</strong><span>Market guide · evidence reader</span></div>
+        </div>
+        <p class="anko-says">“Tell me what you're looking for. I can search the floor, compare copies, and show my work.”</p>
+        <div class="prompt-stack">
+          <div class="prompt">Do I have Penny?</div>
+          <div class="prompt">Show every Mizuki for sale.</div>
+          <div class="prompt">What evidence would change your read?</div>
+          <div class="prompt">Match the value on this trade.</div>
+        </div>
+      </div>
+      <div class="anko-copy">
+        <p class="eyebrow">Meet Anko</p>
+        <h2>The whole floor, in plain English.</h2>
+        <p>Anko can put the right cards at the top, find copies across every table, explain a trade, and ask for better evidence. His intelligence is an asset—not a hidden authority.</p>
+        <div class="boundary-note"><strong>Anko can recommend and prepare actions.</strong> He cannot spend, accept, or hand off your cards unless you give that authority explicitly.</div>
+        <div class="hero-actions"><a class="button ghost" href="/app/">Ask Anko in the Binder</a></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<hr>
-<section class="market">
-  <div class="wrap">
-    <div class="ek">Where it's headed</div>
-    <h2 class="lead">Cairn won't judge. It's built to host the judges.</h2>
-    <p class="lead2">Is the card authentic? Is the grade right? Who's at fault? A protocol can't answer those, so Cairn doesn't pretend to. It opens a market of ways to establish trust instead, human and machine, competing on price, turnaround, and a calibration record you can see: a shop in hand, an AI grade, an LLM ruling, a specialist, or the seller you already trust. Your agent maps them to your cost for this trade. You approve.</p>
-    <div class="two">
-      <div><h4>Verifiers</h4><p>Inspect, grade, and vouch, each for a stated scope, never a blanket "it's real." <span class="en">A shop in Osaka can put its standing behind a read for a buyer in Ohio. A witness, not proof: the one gap no protocol crosses.</span></p></div>
-      <div><h4>Arbiters</h4><p>Rule on a dispute from the record. <span class="en">An LLM baseline sits at the floor; a human expert is one tier up, when the value justifies it.</span></p></div>
+  <section class="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">The cards are the interface</p>
+          <h2>Let the collection do the talking.</h2>
+        </div>
+        <p class="section-intro">Search a character, a set, or a deck. See the cards first; open the evidence, price, and seller only when you need them.</p>
+      </div>
+      <div class="card-wall">
+        <article class="catalog-card"><figure><img loading="lazy" src="/app/assets/azuki/official/S1-AZK01-001_Penny_E_C_die--036fe2afeb6a.jpg" alt="Penny official Azuki TCG catalogue art"><figcaption><strong>Penny</strong><span>AZK01 · Common</span></figcaption></figure></article>
+        <article class="catalog-card"><figure><img loading="lazy" src="/app/assets/azuki/official/S1-AZK01-079A_Gin-and-Tonika_E_SR_die--5338384ddef1.jpg" alt="Gin and Tonika Super Rare official Azuki TCG catalogue art"><figcaption><strong>Gin and Tonika</strong><span>AZK01 · Super Rare</span></figcaption></figure></article>
+        <article class="catalog-card"><figure><img loading="lazy" src="/app/assets/azuki/official/AZK01-054A_Teb-Fea_E_SR_Die--c498d462f379.jpg" alt="Teb and Fea Super Rare official Azuki TCG catalogue art"><figcaption><strong>Teb &amp; Fea</strong><span>AZK01 · Super Rare</span></figcaption></figure></article>
+        <article class="catalog-card"><figure><img loading="lazy" src="/app/assets/azuki/official/AZK01-064A_Zero_E_SR_Die--aed7d90ee9b6.jpg" alt="Zero Super Rare official Azuki TCG catalogue art"><figcaption><strong>Zero</strong><span>AZK01 · Super Rare</span></figcaption></figure></article>
+        <article class="catalog-card"><figure><img loading="lazy" src="/app/assets/azuki/official/STT01-001A_Raizan_L_AA_Die--0e61ee4c3518.jpg" alt="Raizan alternate art official Azuki TCG catalogue art"><figcaption><strong>Raizan</strong><span>STT01 · Alternate Art</span></figcaption></figure></article>
+        <article class="catalog-card"><figure><img loading="lazy" src="/app/assets/azuki/official/STT02-013A_Mizuki_E_SR_die--2ad9dbc69138.jpg" alt="Mizuki Super Rare official Azuki TCG catalogue art"><figcaption><strong>Mizuki</strong><span>STT02 · Super Rare</span></figcaption></figure></article>
+      </div>
     </div>
-    <p class="lead2" style="margin-top:26px">For shops and specialists, that is a new income stream: paid for expertise, not just inventory. Every call lands on the record. A wrong one costs their standing. <span style="color:var(--dim)">The judgment market is designed, not yet open. Today's pilot runs on the locked record alone.</span></p>
-  </div>
-</section>
+  </section>
 
-<hr>
-<section class="honest">
-  <div class="wrap">
-    <div class="ek">The honest part</div>
-    <h2 class="lead">Here is exactly where our promises end.</h2>
-    <p class="body">Most marketplaces blur the line: &ldquo;protected,&rdquo; &ldquo;verified,&rdquo; &ldquo;guaranteed.&rdquo; Cairn draws it in ink. Every trade recorded, gated, accountable. Every fact wears its status, so a lie is attributable and consequential, not a surprise you eat alone.</p>
-    <div class="trich">
-      <div><h4>Enforced</h4><p>The contract holds it: the escrow, the terms, the state of the trade. Mechanical, not optional.</p></div>
-      <div><h4>Legible</h4><p>Signed and on the record: photos, shop proof, the route. Real evidence, still to be judged.</p></div>
-      <div><h4>Judged</h4><p>Left to people: is the card authentic, is the condition right. Your call, and the arrival's.</p></div>
+  <section class="trust-section" id="trust">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Trust, without theater</p>
+          <h2>Clear about what Cairn knows.</h2>
+        </div>
+        <p class="section-intro">A scan can add clarity. It cannot prove a physical card is authentic. Cairn keeps those boundaries visible instead of collapsing every kind of trust into one badge.</p>
+      </div>
+      <div class="trust-grid">
+        <article class="trust-card"><span class="tag">Enforced</span><h3>Terms &amp; state</h3><p>The agreed cards, money, permissions, and transaction state can be recorded and enforced by the chosen settlement path.</p></article>
+        <article class="trust-card"><span class="tag">Legible</span><h3>Evidence &amp; claims</h3><p>Photos, scans, requests, and seller statements stay attached to the copy they describe and remain available for review.</p></article>
+        <article class="trust-card"><span class="tag">Judged</span><h3>Authenticity &amp; condition</h3><p>People, agents, or arbiters still interpret off-chain physical facts. Cairn does not turn an image into certainty.</p></article>
+      </div>
+      <p class="trust-verdict">Cairn shows what it can protect—<em>and what it cannot.</em></p>
     </div>
-    <p class="verdict">Accountable<span class="o">,</span> not impossible.</p>
-  </div>
-</section>
+  </section>
 
-<hr>
-<section class="start" id="start">
-  <div class="wrap">
-    <h2>Bring your binder.</h2>
-    <p>Cairn is in pilot: real trades, small stakes, among people who already trust each other. Every trade lays a stone. The honesty is the whole point.</p>
-    <p class="verdict">Your agent reads.<br>The protocol holds.<br>You decide.</p>
-    <div class="cta">
-      <a href="/app/" class="btn">Open your binder</a>
-      <a href="cairn-protocol.html" class="btn-ghost">read the protocol →</a>
+  <section class="checkout-section">
+    <div class="wrap checkout-grid">
+      <div class="checkout-copy">
+        <p class="eyebrow">Settle with intent</p>
+        <h2>Checkout when it's a buy. A conversation when it isn't.</h2>
+        <p>Paying a seller's posted ask should feel like checkout. Changing price, cards, or evidence turns it into an offer. Cairn keeps that handoff unmistakable.</p>
+      </div>
+      <div class="checkout-demo" aria-label="Example checkout payment choices">
+        <div class="order-title"><strong>2 cards from Crowley</strong><span>14 USDC</span></div>
+        <div class="pay-row"><div><strong>Cairn Escrow</strong><p>Contract-backed testnet rehearsal with explicit terms.</p></div><span class="pay-badge">Preferred</span></div>
+        <div class="pay-row paypal"><div><strong>PayPal</strong><p>Familiar bootstrap fallback, currently exercised in sandbox.</p></div><span class="pay-badge">Fallback</span></div>
+        <button class="checkout-button" type="button" disabled>Pay 14 USDC</button>
+        <p class="demo-note">Product preview only · no payment is initiated here</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <p class="eyebrow">Your table is waiting</p>
+      <h2>Bring your binder. Put the good stuff up front.</h2>
+      <p>Start with one card, meet Anko, and see how an agentic card show should feel.</p>
+      <div class="hero-actions"><a class="button gold" href="/app/">Open Cairn <span aria-hidden="true">→</span></a><a class="button ghost" href="cairn-protocol.html">Read the protocol</a></div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <div class="wrap">
-    <span class="fm">
-      <svg width="22" height="28" viewBox="0 0 110 140" fill="none" stroke="#1A1813" stroke-width="2.4" aria-hidden="true">
-        <ellipse cx="55" cy="118" rx="33" ry="12.5" fill="#EAE3D4"/>
-        <ellipse cx="56" cy="96" rx="27" ry="11" fill="#EAE3D4" transform="rotate(-3 56 96)"/>
-        <ellipse cx="54" cy="77" rx="21.5" ry="9.6" fill="#EAE3D4" transform="rotate(4 54 77)"/>
-        <ellipse cx="55.5" cy="60" rx="16" ry="8.2" fill="#EAE3D4" transform="rotate(-3 55.5 60)"/>
-        <path d="M46 47 Q55 35 64 47 Q61 52 55 52.5 Q49 52 46 47 Z" fill="#EAE3D4"/>
-      </svg>
-      <span class="wm">c<span class="pq">(</span><span class="ai">ai</span><span class="pq">)</span>rn</span>
-    </span>
-    <div class="disc">Independent protocol, in pilot. Cairn records evidence, holds funds, and locks terms; it does not verify authenticity or condition, and a reference image is a witness, not proof. Not affiliated with, sponsored by, or endorsed by Chiru Labs (Azuki), Nintendo, or The Pokémon Company.</div>
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="#top"><span class="stones" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="wordmark">c(<span class="ai">ai</span>)rn</span></a>
+      <div class="footer-links"><a href="/app/">Binder</a><a href="/app/">Market</a><a href="cairn-protocol.html">Protocol</a></div>
+    </div>
+    <p class="disclaimer">Cairn is an independent prototype and is not affiliated with, endorsed by, or sponsored by Chiru Labs, Azuki, Nintendo, The Pokémon Company, or their affiliates. Azuki TCG names and official gallery images are used as catalogue references. They do not prove the identity, authenticity, condition, or ownership of any physical copy. Escrow references are testnet rehearsals and PayPal references are sandbox product work unless a live checkout says otherwise.</p>
   </div>
 </footer>
 
-<script>function toggleTheme(){var h=document.documentElement,dark=h.getAttribute('data-theme')==='dark',n=dark?'light':'dark';h.setAttribute('data-theme',n);try{localStorage.setItem('cairn-theme',n)}catch(e){}}</script>
+<script>
+  function toggleTheme() {
+    var root = document.documentElement;
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('cairn-theme', next); } catch (error) {}
+  }
+</script>
 </body>
 </html>
