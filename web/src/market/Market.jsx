@@ -15,7 +15,7 @@ import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
-import { sellerAcceptsPayPal } from '../payments/rails.js'
+import { cleanPayPalHandle, sellerAcceptsPayPal } from '../payments/rails.js'
 import './market.css'
 
 // The market: other people's tables, run like a card show. You pick cards up (zoom)
@@ -24,6 +24,7 @@ import './market.css'
 // shown is a CLAIM; the witness counts say what's recorded behind it.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
+const SAMPLE_PAYPAL_HANDLE = cleanPayPalHandle(import.meta.env.VITE_SAMPLE_PAYPAL_HANDLE) || 'CairnDemo'
 
 function Avatar({ seed, size = 26, photo = '' }) {
   if (photo) return <span className="av"><img src={photo} width={size} height={size} alt="" /></span>
@@ -207,7 +208,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     if (!mkt) return []
     const hidden = loadHidden(hiddenKeyFor(catalog.id, accountId))
     const gone = new Set(hidden.map((h) => h.seller + '|' + h.uid))
-    return mkt.sellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
+    return mkt.sellers.map((sl) => ({
+      ...sl,
+      payment: sellerAcceptsPayPal(sl) ? sl.payment : {
+        ...(sl.payment || {}),
+        paypal: { enabled: true, handle: SAMPLE_PAYPAL_HANDLE, currency: 'USD', mode: 'paypal_me', demo: true },
+      },
+      listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)),
+    }))
   }, [mkt, catalog, accountId])
   // the live room: pages real collectors published — refreshed on a slow clock
   const [liveSellers, setLiveSellers] = useState([])

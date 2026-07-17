@@ -5,7 +5,10 @@ import { putRecord } from '../trade/records.js'
 import {
   approveUsdc, createTrade, hashText, toUsdc, usdcAllowance,
 } from '../chain/escrow.js'
-import { IS_LOCAL_CHAIN, VALUE_CAP_USDC } from '../chain/config.js'
+import {
+  addrUrl, CHAIN_LABEL, ESCROW_ADDRESS, IS_LOCAL_CHAIN, IS_TESTNET_CHAIN,
+  USDC_ADDRESS, VALUE_CAP_USDC,
+} from '../chain/config.js'
 import { LOCAL_ACTORS } from '../chain/localRehearsal.js'
 import { handleFor, shortId } from '../identity.js'
 import { clearPile } from './pile.js'
@@ -54,7 +57,9 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
   const overCap = total > VALUE_CAP_USDC
   const sellerLabel = open.handle || handleFor(open.id)
   const paypalUrl = useMemo(() => payPalMeUrl(paypalHandle, total), [paypalHandle, total])
-  const amountLabel = rail === RAIL_PAYPAL ? `$${Number(total).toFixed(2)} USD` : `${total} USDC`
+  const escrowCurrency = IS_TESTNET_CHAIN ? 'test USDC' : 'USDC'
+  const amountLabel = rail === RAIL_PAYPAL ? `$${Number(total).toFixed(2)} USD` : `${total} ${escrowCurrency}`
+  const demoSeller = !open.live
 
   const cards = () => pile.map((item) => {
     const card = byUid.get(item.uid)
@@ -71,13 +76,13 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
   const fundEscrow = async () => {
     const chosenArbiter = arbiter.trim()
-    if (!ready) { setError('No checkout wallet is available for this account. Choose PayPal or connect a settlement wallet.'); return }
+    if (!ready) { setError(`No ${CHAIN_LABEL} wallet is available for this account. Choose PayPal or connect a settlement wallet.`); return }
     if (!isAddress(escrowSeller)) { setError('This table does not have a payable escrow address.'); return }
     if (!isAddress(chosenArbiter)) { setError('Choose a neutral arbiter address first.'); return }
     if ([escrowSeller, address].filter(Boolean).some((value) => value.toLowerCase() === chosenArbiter.toLowerCase())) {
       setError('The arbiter must be different from both buyer and seller.'); return
     }
-    if (overCap) { setError(`This pilot escrow is capped at ${VALUE_CAP_USDC} USDC.`); return }
+    if (overCap) { setError(`This pilot escrow is capped at ${VALUE_CAP_USDC} ${escrowCurrency}.`); return }
 
     setBusy(true); setError(null)
     try {
@@ -95,10 +100,10 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
       const walletClient = await getWalletClient()
       const amountRaw = toUsdc(total)
       if (await usdcAllowance(address) < amountRaw) {
-        setPhase('Approve USDC in your wallet…')
+        setPhase(`Approve ${escrowCurrency} in your wallet…`)
         await approveUsdc(walletClient, amountRaw)
       }
-      setPhase('Fund escrow in your wallet…')
+      setPhase(`Fund escrow on ${CHAIN_LABEL}…`)
       const { tradeId, hash } = await createTrade(walletClient, {
         seller: escrowSeller,
         arbiter: chosenArbiter,
@@ -165,19 +170,32 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
         </div>
       </div>
 
+      {IS_TESTNET_CHAIN && <div className="buy-environment" role="note">
+        <span className="mono buy-envtag">TESTNET</span>
+        <span><b>{CHAIN_LABEL} rehearsal</b><small>Cairn Escrow uses test USDC with no cash value. PayPal is a separate, real external USD payment.</small></span>
+        <span className="mono buy-envlinks">
+          <a href={addrUrl(ESCROW_ADDRESS)} target="_blank" rel="noreferrer">escrow ↗</a>
+          <a href={addrUrl(USDC_ADDRESS)} target="_blank" rel="noreferrer">test USDC ↗</a>
+        </span>
+      </div>}
+
       <div className="buy-checkoutgrid">
         <div className="buy-checkoutmain">
           <fieldset className="buy-methods">
             <legend><span className="buy-stepno">1</span> Payment</legend>
             <p>Your preferred method is already selected. Change it only if you want to.</p>
             <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
-              <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow="recommended"
+              <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow={IS_TESTNET_CHAIN ? 'testnet · recommended' : 'recommended'}
                 onClick={() => { setRail(RAIL_ESCROW); setPaypalOpened(false); setError(null) }}>
-                Cairn holds the money until the settlement path releases it.
+                {IS_TESTNET_CHAIN
+                  ? `${CHAIN_LABEL} holds test USDC until the settlement path releases it.`
+                  : 'Cairn holds the money until the settlement path releases it.'}
               </RailChoice>
-              {paypalAvailable && <RailChoice active={rail === RAIL_PAYPAL} title="PayPal" eyebrow="external"
+              {paypalAvailable && <RailChoice active={rail === RAIL_PAYPAL} title="PayPal" eyebrow="external · real USD"
                 onClick={() => { setRail(RAIL_PAYPAL); setError(null) }}>
-                Pay on PayPal. Cairn records the handoff but cannot control the payment.
+                {demoSeller
+                  ? `Preview the paypal.me/${paypalHandle} fallback. This sample table is not a real offer.`
+                  : 'Pay on PayPal. Cairn records the handoff but cannot control the payment.'}
               </RailChoice>}
             </div>
           </fieldset>
@@ -185,32 +203,36 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
           <section className="buy-railpanel" aria-live="polite">
             <div className="buy-sectiontitle">
               <h3><span className="buy-stepno">2</span>{rail === RAIL_PAYPAL && paypalOpened ? 'Confirm what happened' : 'Review what happens'}</h3>
-              <b>{rail === RAIL_ESCROW ? 'Cairn Escrow' : 'PayPal'}</b>
+              <b>{rail === RAIL_ESCROW ? `${CHAIN_LABEL} · ${escrowCurrency}` : 'PayPal · external USD'}</b>
             </div>
             {rail === RAIL_ESCROW ? <>
               <div className="buy-outcomes">
-                <span><b>Today</b><small>Cairn&rsquo;s contract holds <strong className="money">{total} USDC</strong>.</small></span>
-                <span><b>Seller receives</b><small><strong className="money">0 USDC</strong> now; release follows the settlement path.</small></span>
+                <span><b>Today</b><small>Cairn&rsquo;s {CHAIN_LABEL} contract holds <strong className="money">{total} {escrowCurrency}</strong>.</small></span>
+                <span><b>Seller receives</b><small><strong className="money">0 {escrowCurrency}</strong> now; release follows the settlement path.</small></span>
                 <span><b>If something goes wrong</b><small>The named Cairn arbiter can resolve the escrow.</small></span>
               </div>
               {!usesPresetArbiter && (
-                <label className="buy-arbiter">
-                  <span>Neutral arbiter</span>
-                  <input className="ti mono" value={arbiter} disabled={busy} placeholder="0x… · remembered for next time"
-                    onChange={(event) => setArbiter(event.target.value.trim())} />
-                </label>
+                <div className="buy-arbiterblock">
+                  <label className="buy-arbiter">
+                    <span>Neutral arbiter <small>required</small></span>
+                    <input className="ti mono" value={arbiter} disabled={busy} placeholder="0x… · remembered for next time"
+                      onChange={(event) => setArbiter(event.target.value.trim())} />
+                  </label>
+                  <p>Use a reachable {CHAIN_LABEL} wallet controlled by someone other than the buyer or seller. That address decides a dispute, so Cairn never chooses it silently.</p>
+                </div>
               )}
               {usesPresetArbiter && <div className="mono buy-arbiterpreset">neutral arbiter · {shortId(arbiter)}</div>}
-              {!ready && paypalAvailable && <div className="buy-note">No escrow wallet is ready. Choose PayPal above or connect a settlement wallet.</div>}
-              {overCap && <div className="buy-error">Pilot escrow cap: {VALUE_CAP_USDC} USDC. PayPal remains available when the seller accepts it.</div>}
+              {!ready && paypalAvailable && <div className="buy-note">No {CHAIN_LABEL} wallet is ready. Choose PayPal for a real external payment, or connect a wallet to rehearse escrow.</div>}
+              {overCap && <div className="buy-error">Testnet escrow cap: {VALUE_CAP_USDC} {escrowCurrency}. PayPal remains a separate external option.</div>}
               {error && <div className="buy-error" role="alert">{error}</div>}
               <div className="buy-commit">
-                <p className="buy-actionnote">Your next click funds escrow. It does not pay the seller directly.</p>
+                <p className="buy-actionnote">Your next click may request two wallet confirmations: approve {escrowCurrency}, then fund escrow. It does not pay the seller directly.</p>
                 <div className="buy-nowactions">
                   <button className="primary buy-pay" disabled={busy || !ready || overCap || !escrowAvailable} onClick={fundEscrow}>
-                    {busy ? (phase || 'Working…') : `Fund ${total} USDC in Cairn Escrow`}
+                    {busy ? (phase || 'Working…') : `Fund ${total} ${escrowCurrency} on ${CHAIN_LABEL}`}
                   </button>
                 </div>
+                {IS_TESTNET_CHAIN && <p className="buy-testhelp">Need tokens? <a href="https://faucet.circle.com/" target="_blank" rel="noreferrer">Open Circle&rsquo;s testnet faucet ↗</a></p>}
               </div>
             </> : !paypalOpened ? <>
               <div className="buy-outcomes paypal">
@@ -219,15 +241,15 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                 <span><b>If something goes wrong</b><small>Use PayPal&rsquo;s Resolution Center. Cairn cannot reverse the payment.</small></span>
               </div>
               <div className="buy-paypal-callout">
-                <strong>Check the recipient before you continue.</strong>
-                <p>You are paying <b>paypal.me/{paypalHandle}</b>. Choose Goods &amp; Services if PayPal presents the choice. Eligibility and PayPal&rsquo;s terms apply.</p>
+                <strong>{demoSeller ? 'Sample PayPal handoff — do not send real money.' : 'Check the recipient before you continue.'}</strong>
+                <p>You are opening <b>paypal.me/{paypalHandle}</b> for a real <b>${Number(total).toFixed(2)} USD</b> request. {demoSeller ? 'This table is only a checkout rehearsal.' : 'Choose Goods & Services if PayPal presents the choice. Eligibility and PayPal’s terms apply.'}</p>
                 <span className="mono">Cairn reference · <b>{payRef}</b> <button type="button" onClick={copyRef}>{copied ? 'copied ✓' : 'copy'}</button></span>
               </div>
               {error && <div className="buy-error" role="alert">{error}</div>}
               <div className="buy-commit paypal">
                 <p className="buy-actionnote">Your next click opens PayPal. No payment happens on Cairn.</p>
                 <div className="buy-nowactions">
-                  <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · <span className="money-on-action">${Number(total).toFixed(2)} USD</span> ↗</button>
+                  <button className="primary buy-pay paypal" onClick={openPayPal}>{demoSeller ? 'Preview PayPal handoff' : 'Continue to PayPal'} · <span className="money-on-action">${Number(total).toFixed(2)} USD</span> ↗</button>
                 </div>
               </div>
             </> : <div className="buy-paypal-return">
@@ -266,7 +288,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
           <div className="buy-total"><span>Total due</span><strong>{amountLabel}</strong></div>
           <p>{rail === RAIL_PAYPAL
             ? <>The table asks total <span className="money mono">{total} USDC</span>; this seller&rsquo;s PayPal fallback requests <span className="money mono">${Number(total).toFixed(2)} USD</span>.</>
-            : 'At the table’s posted asks. Delivery and inspection continue in Trades.'}</p>
+            : <>At the table&rsquo;s posted asks. {IS_TESTNET_CHAIN ? `${escrowCurrency} has no cash value; ` : ''}delivery and inspection continue in Trades.</>}</p>
         </aside>
       </div>
     </div>

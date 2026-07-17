@@ -9,6 +9,8 @@ export const CHAIN_MODE = import.meta.env.VITE_CHAIN_MODE || 'testnet'
 export const IS_LOCAL_CHAIN = CHAIN_MODE === 'local'
 
 export const CHAIN = IS_LOCAL_CHAIN ? foundry : arbitrumSepolia
+export const IS_TESTNET_CHAIN = CHAIN.testnet === true
+export const CHAIN_LABEL = CHAIN.name
 export const RPC_URL = IS_LOCAL_CHAIN ? 'http://127.0.0.1:8545' : 'https://sepolia-rollup.arbitrum.io/rpc'
 
 // ThinPilotEscrow — deployed + verified 2026-06-29 (cap 200 USDC, shipped-timeout 14d).
