@@ -58,6 +58,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **The Market pile and trade checkout now have
+  one clear reading order.** The sticky pile is split into contents, a gold primary
+  Settle action, and optional Anko help; card count, buy/trade split, and gold money
+  remain visible without competing. Trade composition now uses explicit blue
+  `Their side — You get` and green `Your side — You give` bands, followed by a
+  separate gold Cash band; the same language carries into offer summaries. Money
+  is gold throughout pile, offer, checkout total, line items, outcomes, and Anko
+  amount controls. Desktop and 390 px dark-mode live flows have zero horizontal
+  overflow; scoped ESLint, diff check, and production Pages build pass (existing
+  Privy/Rolldown annotation warnings only). Source `d8554c5`; Pages production
+  `a8927fcb`; preview, apex, and `www` converge on
+  `cairn-site-212d572d890f.js` at 5,339,550 bytes / ETag
+  `75421abf8ecee9d7042425b745fadb5c`. Surface-only: pile contents,
+  offer/payment state, evidence, chain, and protocol semantics are unchanged.
 - `[passive]` 2026-07-17 · Codex — **Settle Up now has a deliberate visual
   hierarchy instead of nested, near-identical dark cards.** The final amount is
   visible before payment selection; numbered section markers and a blue checked
