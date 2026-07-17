@@ -58,6 +58,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **The PayPal approval window now stays open for
+  Cairn's signed-in Privy users.** Live reproduction showed the popup closed because
+  `/api/paypal/orders` accepted only wallet-shaped buyer IDs and rejected the actual
+  bounded `did:privy:` identifier as an incomplete checkout reference. The sandbox
+  validator now accepts either an Ethereum address or a tightly bounded Privy DID;
+  sample seller address, catalogue lookup and price, reference, capture amount,
+  currency, and webhook checks remain unchanged. Static resolution rechecked Veteran
+  Curator's exact Silver Current listing at 6 USD, Functions compile passed, and the
+  signed-in production replay created one 6 USD sandbox order whose approval window
+  remained open after five seconds. Read-only order status is
+  `PAYER_ACTION_REQUIRED`, with no capture. Source `f56fb64`; Pages production
+  `f413ffe2`. No buyer login, approval, capture, real-money payment, escrow funding,
+  offer, evidence request, or other protocol state was sent.
 - `[passive]` 2026-07-17 · Codex — **PayPal is now a real, server-authoritative
   sandbox checkout on sample tables, while live seller connection remains honestly
   gated on PayPal marketplace approval and a signed Cairn account binding.** Cairn
