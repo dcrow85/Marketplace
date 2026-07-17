@@ -696,44 +696,50 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           )
         })}
         {pile.length > 0 && (
-          <div className="mk-checkout" id="market-pile">
-            <div className="mk-ckthumbs">
-              {pile.map((p) => {
-                const c = byUid.get(p.uid)
-                return (
-                  <span key={p.uid} className="mk-ckthumb" title={`${c?.name_en || p.uid} — tap the tag to flip buy/trade`}>
-                    {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
-                    <button className={'mk-cktag mono' + (p.mode === 'trade' ? ' tr' : '')} onClick={() => toggleMode(pileKey, open.id, p.uid)}>{p.mode === 'buy' ? '$' : '⇄'}</button>
-                    <button className="mk-ckx mono" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back">✕</button>
-                  </span>
-                )
-              })}
+          <div className="mk-checkout mk-pilebar" id="market-pile">
+            <div className="mk-ckpile">
+              <div className="mk-ckthumbs">
+                {pile.map((p) => {
+                  const c = byUid.get(p.uid)
+                  return (
+                    <span key={p.uid} className="mk-ckthumb" title={`${c?.name_en || p.uid} — tap the tag to flip buy/trade`}>
+                      {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
+                      <button className={'mk-cktag mono' + (p.mode === 'trade' ? ' tr' : '')} onClick={() => toggleMode(pileKey, open.id, p.uid)}>{p.mode === 'buy' ? '$' : '⇄'}</button>
+                      <button className="mk-ckx mono" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back">✕</button>
+                    </span>
+                  )
+                })}
+              </div>
+              <div className="mk-cksummary">
+                <span className="mono mk-ckeyebrow">Your pile</span>
+                <span className="mk-cksum"><strong>{pile.length} card{pile.length === 1 ? '' : 's'}</strong>
+                  {buysSum > 0 && <b className="mono mk-ckmoney">{buysSum} USDC</b>}</span>
+                <small>{pile.filter((p) => p.mode === 'buy').length} buy · {pile.filter((p) => p.mode === 'trade').length} trade</small>
+                {(() => {
+                  const pileVal = pile.reduce((t, p) => {
+                    const l = open.listings.find((x) => x.uid === p.uid)
+                    return t + (p.mode === 'buy' ? (l?.ask ?? 0) : (salesAll[p.uid]?.[0]?.p ?? l?.ask ?? 0))
+                  }, 0)
+                  if (!pileVal || !myTradeSum) return null
+                  const pct = Math.round((myTradeSum / pileVal) * 100)
+                  return <span className="mono mk-ckwhisper" title="their side by asks and settlements, yours by settlements only — history, not an appraisal">
+                    {pct >= 100 ? 'Your tradeable cards cover this pile on recorded history.' : `Recorded tradeables cover about ${pct}% of this pile.`}</span>
+                })()}
+              </div>
             </div>
-            <span className="mono mk-cksum">your pile · {pile.length} card{pile.length === 1 ? '' : 's'}{buysSum > 0 ? ` · buys ${buysSum} USDC` : ''}</span>
-            {(() => {
-              const pileVal = pile.reduce((t, p) => {
-                const l = open.listings.find((x) => x.uid === p.uid)
-                return t + (p.mode === 'buy' ? (l?.ask ?? 0) : (salesAll[p.uid]?.[0]?.p ?? l?.ask ?? 0))
-              }, 0)
-              if (!pileVal || !myTradeSum) return null
-              const pct = Math.round((myTradeSum / pileVal) * 100)
-              return <span className="mono mk-ckwhisper" title="their side by asks and settlements, yours by settlements only — history, not an appraisal">
-                {pct >= 100
-                  ? `⇄ your tradeables (~${myTradeSum} USDC on record) more than cover this pile (~${pileVal})`
-                  : `⇄ your tradeables ~${myTradeSum} USDC on record · covers ~${pct}% of this pile`}</span>
-            })()}
             <span className="mk-ckacts">
               <button className="primary mk-settle" onClick={() => {
                 if (canBuyNow) setBuyingNow(true)
                 else { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }
-              }}>Settle up · {canBuyNow ? `${buysSum} USDC` : `${pile.length} card${pile.length === 1 ? '' : 's'}`}</button>
-              {canBuyNow && <button className="ghost sm" onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Make an offer</button>}
-              <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>clear</button>
+              }}><span>Settle up</span><strong className={canBuyNow ? 'mono' : ''}>{canBuyNow ? `${buysSum} USDC` : `${pile.length} card${pile.length === 1 ? '' : 's'}`}</strong></button>
+              <span className="mk-cksecondary">
+                {canBuyNow && <button className="ghost sm" onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Offer instead</button>}
+                <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>Clear</button>
+              </span>
             </span>
             <div className="mk-buy-decision">
-              <span className="ofl-decisionlabel mono">Want a second look?</span>
               <AskAnko decision={purchaseDecision} recommended={purchaseReadRecommended}
-                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko before buying' : 'Ask Anko about this offer'} actionsForRead={actionsForPurchaseRead} />
+                label={pile.every((p) => p.mode === 'buy') ? 'Ask Anko' : 'Ask Anko about this trade'} actionsForRead={actionsForPurchaseRead} />
             </div>
           </div>
         )}

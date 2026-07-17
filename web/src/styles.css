@@ -2,6 +2,7 @@
   --paper: #FFFFFF; --paper2: #F3F2EE; --mount: #ECEAE3; --ink: #16140E; --ink2: #3B382F;
   --dim: #6C6960; --faint: #B4B1A7; --rule: rgba(20,18,14,.15); --rule2: rgba(20,18,14,.065);
   --signal: #B0381C; --agent: #2C5B8C; --agent-bg: rgba(44,91,140,.08); --have: #3E7D52;
+  --money: #8A5B00; --money-bg: rgba(205,163,71,.12);
   --bar: rgba(255,255,255,.9);
   --sans: "IBM Plex Sans", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
@@ -11,12 +12,14 @@
   --paper:#0E0D11; --paper2:#17161C; --mount:#23222A; --ink:#ECEAE3; --ink2:#C7C4B9;
   --dim:#8C897F; --faint:#56534A; --rule:rgba(236,234,227,.15); --rule2:rgba(236,234,227,.07);
   --signal:#D2654A; --agent:#7BA7D6; --agent-bg:rgba(123,167,214,.12); --have:#5FA877;
+  --money:#E0BD69; --money-bg:rgba(224,189,105,.12);
   --bar:rgba(14,13,17,.85);
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var(--sans); font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 .mono { font-family: var(--mono); }
 .dim { color: var(--dim); }
+.money { color: var(--money); font-style: normal; }
 .av { display: inline-flex; }
 .av svg { display: block; border-radius: 4px; background: var(--mount); }
 .av img { display: block; border-radius: 4px; object-fit: cover; background: var(--mount); }

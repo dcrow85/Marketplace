@@ -66,7 +66,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
     const part = (x, label) => x.n
       ? `${label} ${x.known ? `~${x.t} USDC across ${x.known} of ${x.n} card${x.n === 1 ? '' : 's'}` : `no settlements on record (${x.n} card${x.n === 1 ? '' : 's'})`}`
       : null
-    return [part(w, 'their side:'), part(g, 'yours:')].filter(Boolean).join(' · ')
+    return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean).join(' · ')
   }, [mkt, data, want, give, catalog])
 
   if (!data || !mkt) return null
@@ -112,19 +112,19 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           <button className="ghost sm" onClick={onClose}>✕</button>
         </div>
         <div className="ofr-body">
-          <div className="ofr-sec mono">you want — tap to change</div>
+          <div className="ofr-sec ofr-side theirs mono"><b>Their side</b><span>Cards you get · tap to change</span></div>
           {theirCards.length > 8 && <input className="ofr-search" placeholder="search their table…" value={qw} onChange={(e) => setQw(e.target.value)} />}
           <div className="ofr-grid">
             {theirCards.filter(({ c }) => hit(c, qw) || want.has(c.uid)).map(({ c, l }) =>
               tile(c, want.has(c.uid), toggle(want, setWant), l.ask != null ? `${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}` : 'from the offer', null, l.witness))}
           </div>
-          <div className="ofr-sec mono">you give — your binder{myCards.some(({ e }) => e.trade) ? ' (open-to-trade first)' : ''}</div>
+          <div className="ofr-sec ofr-side yours mono"><b>Your side</b><span>Cards you give{myCards.some(({ e }) => e.trade) ? ' · open-to-trade first' : ''}</span></div>
           {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}
           <div className="ofr-grid">
             {myCards.filter(({ c }) => hit(c, qg) || give.has(c.uid)).map(({ c, e }) => tile(c, give.has(c.uid), toggle(give, setGive), condStr(e) + (e.trade ? ' · ⇄' : '')))}
             {!myCards.length && <div className="empty">Nothing marked Have yet — a pure cash offer works too.</div>}
           </div>
-          <div className="ofr-sec mono">the balance</div>
+          <div className="ofr-sec mono">Cash</div>
           {amt > 0 && <div className="stl-rails ofr-rails" role="radiogroup" aria-label="Proposed payment rail">
             <button type="button" className={settlementRail === RAIL_ESCROW ? 'on' : ''} onClick={() => setSettlementRail(RAIL_ESCROW)}>
               <b>Cairn Escrow</b><small>recommended</small>
@@ -147,7 +147,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
         </div>
         <div className="ofr-foot">
           <div className="ofr-sum mono">
-            {want.size} for {give.size}{amt > 0 ? ` + ${amt} ${settlementCurrency} (${cashSide === 'from' ? 'you' : 'they'} pay)` : ''}
+            <b>Their side</b> {want.size} ⇄ <b>Your side</b> {give.size}{amt > 0 ? <> · <strong className="money">{amt} {settlementCurrency}</strong> ({cashSide === 'from' ? 'you' : 'they'} pay)</> : ''}
           </div>
           <button className="primary ofr-send" disabled={!canSend} onClick={doSend}>{counterOf ? 'Send counter' : 'Send offer'}</button>
         </div>

@@ -44,6 +44,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const [ankoLine, setAnkoLine] = useState(null)
   const [ankoPicks, setAnkoPicks] = useState(() => new Set()) // advice, distinct from the collector's final terms
   const paypalHandle = sellerPayPalHandle(open)
+  const sellerLabel = open.handle || handleFor(open.id)
   const [settlementRail, setSettlementRail] = useState(RAIL_ESCROW)
   const settlementCurrency = railCurrency(settlementRail)
   useEffect(() => { window.scrollTo({ top: 0 }) }, []) // a new room starts at its door
@@ -133,7 +134,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         }
       } else {
         setAnkoPicks(new Set())
-        setAnkoLine(d.filter?.reading || 'Narrowed your side to what matches.')
+        setAnkoLine(d.filter?.reading || 'Narrowed the cards you could give.')
       }
       setQg('')
     } catch { setAnkoLine('The lamp flickered \u2014 couldn\u2019t reach him. Try again.') }
@@ -151,7 +152,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     const part = (x, label) => x.n
       ? `${label} ${x.known ? `~${x.t} USDC across ${x.known} of ${x.n}` : `no settlements on record (${x.n})`}`
       : null
-    return [part(w, 'their side:'), part(g, 'yours:')].filter(Boolean).join(' · ')
+    return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean).join(' · ')
   }, [salesMap, pile, give])
 
   const decisionPile = pile.slice(0, 24)
@@ -253,7 +254,10 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       </div>
 
       <div className="stl-sec">
-        <div className="stl-label mono">their side — your pile{buysSum > 0 ? ` · listed asks total ${buysSum}` : ''}</div>
+        <div className="stl-sidehead theirs">
+          <span><b>Their side</b><small>You get these cards from {sellerLabel}</small></span>
+          {buysSum > 0 && <strong className="mono money">{buysSum} USDC at listed asks</strong>}
+        </div>
         <div className="ofr-grid">
           {pile.map((p) => {
             const c = byUid.get(p.uid)
@@ -314,12 +318,15 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
 
       {trades.length > 0 && (
       <div className="stl-sec">
-        <div className="stl-label mono">your side — they want something for the ⇄ cards</div>
+        <div className="stl-sidehead yours">
+          <span><b>Your side</b><small>Choose the cards you give</small></span>
+          <strong className="mono">{give.size} selected</strong>
+        </div>
         <div className="askbar stl-ask">
           <img className={'anko-search' + (abusy ? ' busy' : '')} src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v1.png'}
             alt="" onError={(e) => { e.currentTarget.style.display = 'none' }} />
           <input value={qg} maxLength={280}
-            placeholder={`search — or ask ${agentName}: \u201cmy alt-art dupes\u201d, \u201cmatch the value of their side\u201d`}
+            placeholder={`Search your binder — or ask ${agentName}: \u201cmatch this trade\u201d`}
             onChange={(e) => setQg(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') askAnko() }} />
           <button className="askbtn" onClick={askAnko} disabled={abusy || !qg.trim()}>{abusy ? 'onibi reading…' : `Ask ${agentName}`}</button>
@@ -355,7 +362,10 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       )}
 
       <div className="stl-sec">
-        <div className="stl-label mono">the cash line — one number squares the whole deal</div>
+        <div className="stl-sidehead cash">
+          <span><b>Cash</b><small>Add money only if it is part of the offer</small></span>
+          <strong className="mono money">{cash} {settlementCurrency}</strong>
+        </div>
         {cash > 0 && <div className="stl-rails" role="radiogroup" aria-label="Proposed payment rail">
           <button type="button" className={settlementRail === RAIL_ESCROW ? 'on' : ''} onClick={() => setSettlementRail(RAIL_ESCROW)}>
             <b>Cairn Escrow</b><small>recommended · funds held by contract</small>
@@ -385,10 +395,10 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       </div>
 
       <div className="stl-foot">
-        <span className="mono deal-summary">{trades.length || give.size
-          ? `${pile.length} of theirs ⇄ ${give.size} of yours${cash > 0 ? ` + ${cash} ${settlementCurrency}` : ''}`
-          : `${pile.length} card${pile.length === 1 ? '' : 's'} · ${cash} ${settlementCurrency}`}</span>
-        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {open.handle || handleFor(open.id)} →</button>
+        <span className="mono deal-summary"><b>Their side</b> {pile.length} card{pile.length === 1 ? '' : 's'}
+          {(trades.length || give.size) && <> ⇄ <b>Your side</b> {give.size} card{give.size === 1 ? '' : 's'}</>}
+          {cash > 0 && <> · <strong className="money">{cash} {settlementCurrency}</strong></>}</span>
+        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {sellerLabel} →</button>
       </div>
       <p className="sc-note dim">An offer is a message, not a payment or lock. It proposes {settlementRail === RAIL_PAYPAL ? 'PayPal, where PayPal handles the money and Cairn records the terms' : 'Cairn Escrow, where the contract can hold and release funds'}.
         {open.live ? ` This is a live table: ${open.handle || handleFor(open.id)} is a real collector, and the offer lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>

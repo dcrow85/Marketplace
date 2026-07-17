@@ -189,8 +189,8 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
             </div>
             {rail === RAIL_ESCROW ? <>
               <div className="buy-outcomes">
-                <span><b>Today</b><small>Cairn&rsquo;s contract holds {total} USDC.</small></span>
-                <span><b>Seller receives</b><small>0 USDC now; release follows the settlement path.</small></span>
+                <span><b>Today</b><small>Cairn&rsquo;s contract holds <strong className="money">{total} USDC</strong>.</small></span>
+                <span><b>Seller receives</b><small><strong className="money">0 USDC</strong> now; release follows the settlement path.</small></span>
                 <span><b>If something goes wrong</b><small>The named Cairn arbiter can resolve the escrow.</small></span>
               </div>
               {!usesPresetArbiter && (
