@@ -58,6 +58,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Money now has one gold visual language, and
+  piles from different tables have one honest Settle all stop.** Gold marks asks,
+  totals, settlement values, cash lines, price inputs, and payment actions across
+  Market, Binder, My Table, card detail, quick sell, offer, checkout, Trades, Anko,
+  and chain-facing trade surfaces. A persistent Market bag now totals selected
+  cards across tables and opens `Your market piles`, grouped into one order per
+  seller with its buy/trade split, listed-price total, and explicit Checkout or
+  Offer path. This is intentionally sequential and non-atomic: every seller order
+  is reviewed and finished separately; Cairn never merges payments, sends the next
+  order, or silently advances anything. Scoped ESLint, diff check, and the assembled
+  Pages build pass (existing Privy/Rolldown annotation warnings only). Signed-in
+  production QA with persisted multi-table piles passed at 1452 px and 390 px with
+  zero horizontal overflow; `5 cards at 3 tables`, `558 USDC`, compact `Settle all`,
+  three seller orders, gold table totals, and gold My Table price inputs all render
+  correctly. Source `06a1a26`, `087fb81`, `f44acc7`; Pages production `ad016af2`;
+  preview, apex, and `www` converge on `cairn-site-27eedae91c6b.js` at 5,350,576
+  bytes / ETag `6e2659563a4fa09a86eab3779d4a4706`. No offer, payment,
+  evidence request, funding, chain action, or protocol-state change was sent.
 - `[passive]` 2026-07-17 · Codex — **Paying the posted ask is now unmistakably
   checkout, not negotiation.** A payable all-buy pile says `Listed price · no
   seller reply`, leads with a gold `Checkout / Pay …` action, and names the optional
