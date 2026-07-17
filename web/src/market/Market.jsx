@@ -15,7 +15,6 @@ import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
-import { IS_LOCAL_CHAIN } from '../chain/config.js'
 import { sellerAcceptsPayPal } from '../payments/rails.js'
 import './market.css'
 
@@ -344,7 +343,10 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       : total, 0)
     return {
       seller, pile, buyCount, tradeCount, buyTotal,
-      canCheckout: pile.length > 0 && tradeCount === 0 && buyTotal > 0 && (seller.live || IS_LOCAL_CHAIN),
+      // Accepting unchanged posted asks is checkout even when the seller still
+      // needs to expose a usable payment rail. Missing payment setup must not
+      // silently turn a purchase into a negotiable offer.
+      canCheckout: pile.length > 0 && tradeCount === 0 && buyTotal > 0,
     }
   }).filter((order) => order.pile.length > 0)
   const marketBagCards = marketOrders.reduce((total, order) => total + order.pile.length, 0)
@@ -622,9 +624,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       const listing = open.listings.find((l) => l.uid === p.uid)
       return Number(listing?.ask) > SCAN_REQUEST_USDC && !listing?.witness
     })
-    const canEscrowNow = open.live || IS_LOCAL_CHAIN
-    const canPayPalNow = open.live && sellerAcceptsPayPal(open)
-    const canBuyNow = pile.every((p) => p.mode === 'buy') && buysSum > 0 && (canEscrowNow || canPayPalNow)
+    const canBuyNow = pile.length > 0 && pile.every((p) => p.mode === 'buy') && buysSum > 0
     const finishBuyNow = (result) => {
       setBuyingNow(false)
       setSwapMsg(result.rail === 'paypal'
