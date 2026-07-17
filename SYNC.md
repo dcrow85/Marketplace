@@ -58,6 +58,19 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Paying the posted ask is now unmistakably
+  checkout, not negotiation.** A payable all-buy pile says `Listed price · no
+  seller reply`, leads with a gold `Checkout / Pay …` action, and names the optional
+  escape hatch `Change terms`. Trade cards, a changed price, or evidence requests
+  instead say `Offer · seller reply required` and enter offer review. Checkout opens
+  as `Pay the listed price`, says no offer or seller reply is needed, and keeps the
+  preferred payment method preselected; Anko's accept action uses the same direct
+  checkout language. Scoped ESLint, diff check, and production Pages build pass
+  (existing Privy/Rolldown warnings only); the live immutable bundle contains all
+  fork copy. Source `e1040f7`; Pages `5b9f59cf`; preview, apex, and `www` serve
+  `cairn-site-80a91746ab81.js` at 5,339,827 bytes / ETag
+  `046c4632d85eb64708f0ddf60aa9a764`. Surface-only: payment rails, funding,
+  offers, evidence, chain, and protocol state are unchanged.
 - `[passive]` 2026-07-17 · Codex — **The Market pile and trade checkout now have
   one clear reading order.** The sticky pile is split into contents, a gold primary
   Settle action, and optional Anko help; card count, buy/trade split, and gold money
