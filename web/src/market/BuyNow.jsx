@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useEscrowWallet } from '../trade/useEscrowWallet.js'
-import { offersKeyFor, recordExternalPurchase, recordFundedPurchase } from '../trade/offers.js'
+import { offersKeyFor, recordExternalPurchase, recordFundedPurchase, recordPayPalCapture } from '../trade/offers.js'
 import { putRecord } from '../trade/records.js'
 import {
   approveUsdc, createTrade, hashText, toUsdc, usdcAllowance,
@@ -14,8 +14,9 @@ import { handleFor, shortId } from '../identity.js'
 import { clearPile } from './pile.js'
 import {
   paymentReference, payPalMeUrl, sellerAcceptsPayPal, sellerPayPalHandle,
-  RAIL_ESCROW, RAIL_PAYPAL,
+  sellerPayPalMode, RAIL_ESCROW, RAIL_PAYPAL,
 } from '../payments/rails.js'
+import PayPalSandboxButton from '../payments/PayPalSandboxButton.jsx'
 
 const DEFAULT_ARBITER = import.meta.env.VITE_DEFAULT_ARBITER || ''
 const ARBITER_KEY = 'cairn-checkout-arbiter'
@@ -42,6 +43,8 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
   const { address, ready, getWalletClient } = useEscrowWallet()
   const [arbiter, setArbiter] = useState(savedArbiter)
   const paypalHandle = sellerPayPalHandle(open)
+  const paypalMode = sellerPayPalMode(open)
+  const paypalSandbox = paypalMode === 'sandbox_api'
   const paypalAvailable = sellerAcceptsPayPal(open)
   const escrowSeller = IS_LOCAL_CHAIN ? LOCAL_ACTORS.seller : open.id
   const escrowAvailable = isAddress(escrowSeller)
@@ -58,10 +61,10 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
   const sellerLabel = open.handle || handleFor(open.id)
   const paypalUrl = useMemo(() => payPalMeUrl(paypalHandle, total), [paypalHandle, total])
   const escrowCurrency = IS_TESTNET_CHAIN ? 'test USDC' : 'USDC'
-  const amountLabel = rail === RAIL_PAYPAL ? `$${Number(total).toFixed(2)} USD` : `${total} ${escrowCurrency}`
-  const demoSeller = !open.live
-
-  const cards = () => pile.map((item) => {
+  const amountLabel = rail === RAIL_PAYPAL
+    ? `$${Number(total).toFixed(2)} ${paypalSandbox ? 'sandbox USD' : 'USD'}`
+    : `${total} ${escrowCurrency}`
+  const checkoutCards = useMemo(() => pile.map((item) => {
     const card = byUid.get(item.uid)
     const listing = open.listings.find((entry) => entry.uid === item.uid)
     return {
@@ -72,7 +75,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
       seller_condition_claim: listing?.cond || null,
       recorded_scan_count: listing?.witness || 0,
     }
-  })
+  }), [pile, byUid, open.listings])
 
   const fundEscrow = async () => {
     const chosenArbiter = arbiter.trim()
@@ -86,7 +89,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
     setBusy(true); setError(null)
     try {
-      const cardTerms = cards()
+      const cardTerms = checkoutCards
       const terms = JSON.stringify({
         kind: 'posted_ask_purchase', catalog: catalog.id,
         buyer: accountId, table: open.id, chain_seller: escrowSeller,
@@ -151,6 +154,19 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
     onComplete?.({ rail: RAIL_PAYPAL, id, paymentRef: payRef })
   }
 
+  const completePayPalSandbox = (capture) => {
+    const id = recordPayPalCapture(offersKeyFor(catalog.id, accountId), {
+      to: open.id, want: pile.map((item) => ({ uid: item.uid })), amount: total,
+      toHandle: sellerLabel, paymentRef: payRef, capture,
+    })
+    if (!id) { setError('PayPal confirmed the sandbox capture, but Cairn could not record it. Keep the PayPal order ID.'); return }
+    clearPile(pileKey, open.id)
+    onComplete?.({
+      rail: RAIL_PAYPAL, id, paymentRef: payRef, verified: true, sandbox: true,
+      orderId: capture.orderId, captureId: capture.captureId,
+    })
+  }
+
   const copyRef = async () => {
     try { await navigator.clipboard.writeText(payRef); setCopied(true) } catch { setCopied(false) }
   }
@@ -172,7 +188,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
       {IS_TESTNET_CHAIN && <div className="buy-environment" role="note">
         <span className="mono buy-envtag">TESTNET</span>
-        <span><b>{CHAIN_LABEL} rehearsal</b><small>Cairn Escrow uses test USDC with no cash value. PayPal is a separate, real external USD payment.</small></span>
+        <span><b>{CHAIN_LABEL} rehearsal</b><small>Cairn Escrow uses test USDC with no cash value. {paypalSandbox ? 'This sample table uses PayPal Sandbox, so neither rail moves real money.' : 'Manual PayPal is a separate, real external USD payment.'}</small></span>
         <span className="mono buy-envlinks">
           <a href={addrUrl(ESCROW_ADDRESS)} target="_blank" rel="noreferrer">escrow ↗</a>
           <a href={addrUrl(USDC_ADDRESS)} target="_blank" rel="noreferrer">test USDC ↗</a>
@@ -191,10 +207,10 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                   ? `${CHAIN_LABEL} holds test USDC until the settlement path releases it.`
                   : 'Cairn holds the money until the settlement path releases it.'}
               </RailChoice>
-              {paypalAvailable && <RailChoice active={rail === RAIL_PAYPAL} title="PayPal" eyebrow="external · real USD"
+              {paypalAvailable && <RailChoice active={rail === RAIL_PAYPAL} title="PayPal" eyebrow={paypalSandbox ? 'sandbox · no real money' : 'external · real USD'}
                 onClick={() => { setRail(RAIL_PAYPAL); setError(null) }}>
-                {demoSeller
-                  ? `Preview the paypal.me/${paypalHandle} fallback. This sample table is not a real offer.`
+                {paypalSandbox
+                  ? 'Approve inside Cairn with a PayPal sandbox buyer. PayPal confirms the result.'
                   : 'Pay on PayPal. Cairn records the handoff but cannot control the payment.'}
               </RailChoice>}
             </div>
@@ -203,7 +219,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
           <section className="buy-railpanel" aria-live="polite">
             <div className="buy-sectiontitle">
               <h3><span className="buy-stepno">2</span>{rail === RAIL_PAYPAL && paypalOpened ? 'Confirm what happened' : 'Review what happens'}</h3>
-              <b>{rail === RAIL_ESCROW ? `${CHAIN_LABEL} · ${escrowCurrency}` : 'PayPal · external USD'}</b>
+              <b>{rail === RAIL_ESCROW ? `${CHAIN_LABEL} · ${escrowCurrency}` : paypalSandbox ? 'PayPal Sandbox · test USD' : 'PayPal · external USD'}</b>
             </div>
             {rail === RAIL_ESCROW ? <>
               <div className="buy-outcomes">
@@ -222,8 +238,8 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                 </div>
               )}
               {usesPresetArbiter && <div className="mono buy-arbiterpreset">neutral arbiter · {shortId(arbiter)}</div>}
-              {!ready && paypalAvailable && <div className="buy-note">No {CHAIN_LABEL} wallet is ready. Choose PayPal for a real external payment, or connect a wallet to rehearse escrow.</div>}
-              {overCap && <div className="buy-error">Testnet escrow cap: {VALUE_CAP_USDC} {escrowCurrency}. PayPal remains a separate external option.</div>}
+              {!ready && paypalAvailable && <div className="buy-note">No {CHAIN_LABEL} wallet is ready. {paypalSandbox ? 'Choose PayPal Sandbox for a no-money checkout rehearsal' : 'Choose manual PayPal for a real external payment'}, or connect a wallet to rehearse escrow.</div>}
+              {overCap && <div className="buy-error">Testnet escrow cap: {VALUE_CAP_USDC} {escrowCurrency}. PayPal remains a separate {paypalSandbox ? 'sandbox' : 'external'} option.</div>}
               {error && <div className="buy-error" role="alert">{error}</div>}
               <div className="buy-commit">
                 <p className="buy-actionnote">Your next click may request two wallet confirmations: approve {escrowCurrency}, then fund escrow. It does not pay the seller directly.</p>
@@ -234,6 +250,23 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                 </div>
                 {IS_TESTNET_CHAIN && <p className="buy-testhelp">Need tokens? <a href="https://faucet.circle.com/" target="_blank" rel="noreferrer">Open Circle&rsquo;s testnet faucet ↗</a></p>}
               </div>
+            </> : paypalSandbox ? <>
+              <div className="buy-outcomes paypal">
+                <span><b>Today</b><small>PayPal opens a secure sandbox approval window without losing this checkout.</small></span>
+                <span><b>Seller receives</b><small><strong className="money">${Number(total).toFixed(2)} sandbox USD</strong> only; it has no cash value.</small></span>
+                <span><b>If something goes wrong</b><small>Nothing real moves. Cairn records only PayPal&rsquo;s API-confirmed sandbox result.</small></span>
+              </div>
+              <div className="buy-paypal-callout sandbox">
+                <strong>PayPal Sandbox rehearsal — no real money.</strong>
+                <p>Approve <b>${Number(total).toFixed(2)} sandbox USD</b> in PayPal&rsquo;s test window. Cairn creates the order server-side and will mark it paid only after PayPal reports a completed capture.</p>
+                <span className="mono">Cairn reference · <b>{payRef}</b> <button type="button" onClick={copyRef}>{copied ? 'copied ✓' : 'copy'}</button></span>
+              </div>
+              {error && <div className="buy-error" role="alert">{error}</div>}
+              <div className="buy-commit paypal sandbox">
+                <p className="buy-actionnote">The PayPal button opens a sandbox approval window. No real PayPal balance, card, or bank account is charged.</p>
+                <PayPalSandboxButton accountId={accountId} seller={open} catalog={catalog}
+                  cards={checkoutCards} cairnReference={payRef} onComplete={completePayPalSandbox} />
+              </div>
             </> : !paypalOpened ? <>
               <div className="buy-outcomes paypal">
                 <span><b>Today</b><small>You leave Cairn and pay on PayPal.</small></span>
@@ -241,15 +274,15 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                 <span><b>If something goes wrong</b><small>Use PayPal&rsquo;s Resolution Center. Cairn cannot reverse the payment.</small></span>
               </div>
               <div className="buy-paypal-callout">
-                <strong>{demoSeller ? 'Sample PayPal handoff — do not send real money.' : 'Check the recipient before you continue.'}</strong>
-                <p>You are opening <b>paypal.me/{paypalHandle}</b> for a real <b>${Number(total).toFixed(2)} USD</b> request. {demoSeller ? 'This table is only a checkout rehearsal.' : 'Choose Goods & Services if PayPal presents the choice. Eligibility and PayPal’s terms apply.'}</p>
+                <strong>Manual PayPal handoff — check the recipient.</strong>
+                <p>You are opening <b>paypal.me/{paypalHandle}</b> for a real <b>${Number(total).toFixed(2)} USD</b> request. Choose Goods &amp; Services if PayPal presents the choice. Eligibility and PayPal&rsquo;s terms apply.</p>
                 <span className="mono">Cairn reference · <b>{payRef}</b> <button type="button" onClick={copyRef}>{copied ? 'copied ✓' : 'copy'}</button></span>
               </div>
               {error && <div className="buy-error" role="alert">{error}</div>}
               <div className="buy-commit paypal">
                 <p className="buy-actionnote">Your next click opens PayPal. No payment happens on Cairn.</p>
                 <div className="buy-nowactions">
-                  <button className="primary buy-pay paypal" onClick={openPayPal}>{demoSeller ? 'Preview PayPal handoff' : 'Continue to PayPal'} · <span className="money-on-action">${Number(total).toFixed(2)} USD</span> ↗</button>
+                  <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to manual PayPal · <span className="money-on-action">${Number(total).toFixed(2)} USD</span> ↗</button>
                 </div>
               </div>
             </> : <div className="buy-paypal-return">
@@ -287,7 +320,9 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
           </div>
           <div className="buy-total"><span>Total due</span><strong>{amountLabel}</strong></div>
           <p>{rail === RAIL_PAYPAL
-            ? <>The table asks total <span className="money mono">{total} USDC</span>; this seller&rsquo;s PayPal fallback requests <span className="money mono">${Number(total).toFixed(2)} USD</span>.</>
+            ? paypalSandbox
+              ? <>The table asks total <span className="money mono">{total} USDC</span>; this rehearsal creates a <span className="money mono">${Number(total).toFixed(2)} sandbox USD</span> order with no cash value.</>
+              : <>The table asks total <span className="money mono">{total} USDC</span>; this seller&rsquo;s manual PayPal link requests <span className="money mono">${Number(total).toFixed(2)} USD</span>.</>
             : <>At the table&rsquo;s posted asks. {IS_TESTNET_CHAIN ? `${escrowCurrency} has no cash value; ` : ''}delivery and inspection continue in Trades.</>}</p>
         </aside>
       </div>

@@ -92,6 +92,37 @@ export function recordExternalPurchase(key, { to, toHandle, want, amount, live, 
   return id
 }
 
+// A PayPal API capture is stronger than a buyer statement but still belongs to an
+// external provider: PayPal reports the sandbox payment state; Cairn neither holds
+// nor reverses it. This path is sandbox-only until connected sellers are approved.
+export function recordPayPalCapture(key, { to, toHandle, want, amount, paymentRef, capture }) {
+  const offers = loadOffers(key)
+  const numericAmount = Number(amount)
+  if (!(numericAmount > 0) || capture?.mode !== 'sandbox' || capture?.status !== 'COMPLETED'
+      || capture?.captureStatus !== 'COMPLETED' || !capture?.orderId || !capture?.captureId) return null
+  if (Number(capture.amount) !== numericAmount || capture.currency !== 'USD') return null
+  const id = 'buy_' + Math.random().toString(36).slice(2, 10)
+  const o = {
+    id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    at: new Date().toISOString().slice(0, 10),
+    want, give: [], cash: { side: 'from', amount: numericAmount }, note: null,
+    state: 'payment_confirmed', live: false, rail: RAIL_PAYPAL,
+    settlement: {
+      rail: RAIL_PAYPAL, currency: 'USD', cairn_enforced: false,
+      environment: 'sandbox', provider_status: 'COMPLETED',
+      payment_ref: String(paymentRef || '').slice(0, 40),
+      provider_order_id: String(capture.orderId).slice(0, 40),
+      provider_ref: String(capture.captureId).slice(0, 40),
+      seller_protection: String(capture.sellerProtection || '').slice(0, 32) || null,
+      verified_by: 'paypal_capture_api',
+    },
+    log: [`PayPal Sandbox API reported ${numericAmount.toFixed(2)} USD capture COMPLETED · order ${String(capture.orderId).slice(0, 20)} · no real money value`],
+  }
+  offers.unshift(o)
+  saveOffers(key, offers)
+  return id
+}
+
 // Accepting a posted ask is not an offer round-trip: the buyer has already funded
 // escrow. Keep the same ledger shape, but enter it at escrow_locked and send one
 // complete event to the seller so no response can race ahead of the purchase record.

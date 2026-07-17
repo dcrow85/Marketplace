@@ -212,7 +212,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       ...sl,
       payment: sellerAcceptsPayPal(sl) ? sl.payment : {
         ...(sl.payment || {}),
-        paypal: { enabled: true, handle: SAMPLE_PAYPAL_HANDLE, currency: 'USD', mode: 'paypal_me', demo: true },
+        paypal: { enabled: true, handle: SAMPLE_PAYPAL_HANDLE, currency: 'USD', mode: 'sandbox_api', demo: true },
       },
       listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)),
     }))
@@ -636,7 +636,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     const finishBuyNow = (result) => {
       setBuyingNow(false)
       setSwapMsg(result.rail === 'paypal'
-        ? `PayPal payment reported · ${result.paymentRef}. ${sellerName(open)} must confirm it in PayPal; follow the handoff in Trades.`
+        ? result.verified && result.sandbox
+          ? `PayPal Sandbox confirmed the test capture · ${result.paymentRef}. No real money moved; the rehearsal is recorded in Trades.`
+          : `Manual PayPal payment reported · ${result.paymentRef}. ${sellerName(open)} must confirm it in PayPal; follow the handoff in Trades.`
         : `funded in escrow · trade #${result.tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
       if (returnToBag) {
         setReturnToBag(false)

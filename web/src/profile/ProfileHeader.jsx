@@ -95,15 +95,15 @@ export default function ProfileHeader({ accountId, name, onName, sign, onSign, p
       }}>
         <span className="ek">Payment options</span>
         <span className="pf-paystatus mono">
-          <span className="pf-paydesktop"><b>Cairn Escrow</b><span>first</span><i aria-hidden="true">·</i><b>PayPal</b><span>{paypal ? `paypal.me/${paypal}` : 'not added'}</span></span>
-          <span className="pf-payphone">Escrow first · PayPal {paypal ? 'ready' : 'not added'}</span>
+          <span className="pf-paydesktop"><b>Cairn Escrow</b><span>first</span><i aria-hidden="true">·</i><b>PayPal</b><span>{paypal ? 'manual link ready' : 'not connected'}</span></span>
+          <span className="pf-payphone">Escrow first · PayPal {paypal ? 'manual' : 'not connected'}</span>
         </span>
         <span className="pf-paymanage mono">{paymentsOpen ? 'Hide' : 'Manage'} <i aria-hidden="true">{paymentsOpen ? '↑' : '↓'}</i></span>
       </button>
       {paymentsOpen && <div className="pf-paymentbody">
         <div className="pf-payintro">
           <span className="ek">How buyers can pay</span>
-          <p>Escrow leads every checkout. Add PayPal as a second path for collectors who prefer it.</p>
+          <p>Escrow leads every checkout. PayPal Sandbox is integrated on sample tables; seller connection follows PayPal marketplace approval.</p>
         </div>
         <div className="pf-railcards">
           <div className="pf-railcard primary-rail">
@@ -111,11 +111,19 @@ export default function ProfileHeader({ accountId, name, onName, sign, onSign, p
             <span><b>Cairn Escrow</b><small>Recommended · the contract holds funds until settlement.</small></span>
             <i className="mono">first</i>
           </div>
-          <div className={'pf-railcard paypal-rail' + (paypal ? ' enabled' : '')}>
+          <div className="pf-railcard paypal-rail checkout-rail">
+            <span className="pf-railmark paypal-word" aria-hidden="true">P</span>
+            <span>
+              <b>PayPal Checkout</b>
+              <small>Sandbox ready on sample tables · server-created orders and API-confirmed captures</small>
+            </span>
+            <i className="mono">sandbox</i>
+          </div>
+          <div className={'pf-railcard paypal-rail manual-rail' + (paypal ? ' enabled' : '')}>
             <span className="pf-railmark paypal-word" aria-hidden="true">P</span>
             <label>
-              <b>PayPal</b>
-              <small>{paypal ? `paypal.me/${paypal} · available on your table` : 'Optional bootstrap payment path'}</small>
+              <b>Manual PayPal link</b>
+              <small>{paypal ? `paypal.me/${paypal} · buyer and seller must confirm it themselves` : 'Optional fallback until connected seller checkout is approved'}</small>
               <span className="pf-paypaledit">
                 <input value={paypalDraft} maxLength={80} autoCapitalize="none" autoCorrect="off" spellCheck="false"
                   placeholder="PayPal.Me username or link" aria-label="PayPal.Me username or link"
@@ -129,7 +137,7 @@ export default function ProfileHeader({ accountId, name, onName, sign, onSign, p
             </label>
           </div>
         </div>
-        <p className="pf-payboundary mono">PayPal handles the payment and any eligible provider protection; Cairn records the terms but cannot reverse PayPal funds. Never share your PayPal password. <a href="https://www.paypal.com/paypalme/" target="_blank" rel="noreferrer">Find or create your PayPal.Me link ↗</a></p>
+        <p className="pf-payboundary mono">Sandbox checkout moves no real money. A manual PayPal link is external and unverified by Cairn; PayPal controls the payment and any eligible protection. Never share your PayPal password. <a href="https://www.paypal.com/paypalme/" target="_blank" rel="noreferrer">Find or create your PayPal.Me link ↗</a></p>
       </div>}
     </section>}
   </>)

@@ -122,6 +122,8 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
   const other = o.dir === 'out' ? o.to : o.from
   const payer = o.cash && (o.dir === 'out' ? o.cash.side === 'from' : o.cash.side === 'to')
   const seller = !payer
+  const apiConfirmed = o.settlement?.verified_by === 'paypal_capture_api' && o.settlement?.provider_status === 'COMPLETED'
+  const sandbox = o.settlement?.environment === 'sandbox'
   if ((o.rail !== RAIL_PAYPAL && o.settlement?.rail !== RAIL_PAYPAL) || !['payment_reported', 'payment_confirmed', 'in_transit', 'delivered', 'provider_disputed'].includes(o.state)) return null
   const advance = (state, line, extra = {}) => {
     const log = [...(o.log || []), line]
@@ -129,7 +131,7 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
     if (o.live && isLiveAddr(other)) pushInbox(other, { id: o.id, type: 'response', state, line, extra })
   }
   return <div className="ofl-paypalleg">
-    <div className="ofl-railhead mono"><b>PayPal · external rail</b><span>Cairn does not hold or verify these funds.</span></div>
+    <div className="ofl-railhead mono"><b>PayPal{sandbox ? ' Sandbox' : ''} · external rail</b><span>{apiConfirmed ? 'PayPal API reported the capture; Cairn does not hold it.' : 'Cairn does not hold or verify these funds.'}</span></div>
     {o.state === 'payment_reported' && seller && <>
       <p>The buyer reports paying <span className="money mono">{o.cash?.amount} USD</span>. Check your own PayPal activity and recipient account before shipping.</p>
       {o.settlement?.payment_ref && <span className="mono">Cairn reference · {o.settlement.payment_ref}</span>}
@@ -141,11 +143,13 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
     </>}
     {o.state === 'payment_reported' && payer && <p>Waiting for the seller to check PayPal and separately confirm receipt. PayPal—not Cairn—controls the payment.</p>}
     {o.state === 'payment_confirmed' && seller && <>
-      <p>You confirmed the PayPal payment. Ship only to the address and under the conditions shown in your PayPal transaction.</p>
+      <p>{apiConfirmed ? `PayPal API reported this ${sandbox ? 'sandbox ' : ''}capture completed.` : 'You confirmed the PayPal payment.'} Ship only to the address and under the conditions shown in the PayPal transaction.</p>
       <span className="ofl-fund"><input placeholder="tracking number · optional" value={tracking} onChange={(event) => setTracking(event.target.value)} />
         <button className="sheetbtn mk-sm mono" onClick={() => advance('in_transit', tracking ? `Seller marked shipped · tracking ${tracking}` : 'Seller marked shipped · no tracking recorded', { tracking: tracking.trim().slice(0, 120) || null })}>Mark shipped</button></span>
     </>}
-    {o.state === 'payment_confirmed' && payer && <p>The seller confirmed receipt in PayPal. Waiting for shipment.</p>}
+    {o.state === 'payment_confirmed' && payer && <p>{apiConfirmed
+      ? <>PayPal API reported <span className="money mono">{o.cash?.amount} {sandbox ? 'sandbox ' : ''}USD</span> captured. {sandbox ? 'No real money moved; the rehearsal is waiting for mock shipment.' : 'Waiting for shipment.'}</>
+      : 'The seller confirmed receipt in PayPal. Waiting for shipment.'}</p>}
     {o.state === 'in_transit' && payer && <>
       <p>{o.tracking ? <>Seller reports shipped · tracking <b>{o.tracking}</b>.</> : 'Seller reports the cards shipped.'} Mark arrival only when the package is in hand.</p>
       <button className="sheetbtn mk-sm mono" onClick={() => advance('delivered', 'Buyer marked the cards arrived · condition and authenticity remain their judgment')}>The cards arrived</button>

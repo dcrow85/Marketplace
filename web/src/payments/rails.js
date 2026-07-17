@@ -38,8 +38,16 @@ export function sellerPayPalHandle(seller) {
   return cleanPayPalHandle(seller?.payment?.paypal?.handle || seller?.paypal?.handle || '')
 }
 
+export function sellerPayPalMode(seller) {
+  const paypal = seller?.payment?.paypal || seller?.paypal || null
+  if (!paypal?.enabled) return null
+  if (paypal.mode === 'sandbox_api') return 'sandbox_api'
+  if (paypal.mode === 'connected' && paypal.merchant_id) return 'connected'
+  return sellerPayPalHandle(seller) ? 'paypal_me' : null
+}
+
 export function sellerAcceptsPayPal(seller) {
-  return !!sellerPayPalHandle(seller)
+  return !!sellerPayPalMode(seller)
 }
 
 export function paymentReference(prefix = 'CAIRN') {

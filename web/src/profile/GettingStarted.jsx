@@ -166,7 +166,7 @@ export default function GettingStarted({ accountId, catalog, profile, progress, 
             placeholder="How the room should know you" onChange={(event) => setName(event.target.value)} /></label>
           <label><span className="mono">Your table line</span><input maxLength={140} value={sign}
             placeholder="What do you collect, trade, or hunt?" onChange={(event) => setSign(event.target.value)} /></label>
-          <label><span className="mono">PayPal <i>optional</i></span><input maxLength={80} value={paypal}
+          <label><span className="mono">Manual PayPal link <i>optional</i></span><input maxLength={80} value={paypal}
             autoCapitalize="none" autoCorrect="off" spellCheck="false" placeholder="PayPal.Me username or link"
             onChange={(event) => setPayPal(event.target.value)} />
             <small>Escrow stays first. This adds PayPal as a second checkout path; Cairn never sees your login.</small>
