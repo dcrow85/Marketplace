@@ -29,7 +29,7 @@ function savedArbiter() {
 
 function RailChoice({ active, disabled, title, eyebrow, children, onClick }) {
   return <button type="button" role="radio" aria-checked={active} className={'buy-rail' + (active ? ' on' : '')} disabled={disabled} onClick={onClick}>
-    <span className="buy-radio" aria-hidden="true">{active ? '●' : '○'}</span>
+    <span className="buy-radio" aria-hidden="true">{active ? '✓' : ''}</span>
     <span><b>{title}</b><small>{children}</small></span>
     <i className="mono">{eyebrow}</i>
   </button>
@@ -158,13 +158,17 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
           <h2 className="buy-nowtitle">Review and pay</h2>
           <p>Nothing is paid or sent just by opening this page.</p>
         </div>
-        <span className="mono buy-checkoutkind">one table · one checkout</span>
+        <div className="buy-headtotal">
+          <span>Total due</span>
+          <strong className="mono">{amountLabel}</strong>
+          <small>one table · {pile.length} card{pile.length === 1 ? '' : 's'}</small>
+        </div>
       </div>
 
       <div className="buy-checkoutgrid">
         <div className="buy-checkoutmain">
           <fieldset className="buy-methods">
-            <legend>1. Choose how to pay</legend>
+            <legend><span className="buy-stepno">1</span> Choose how to pay</legend>
             <p>Selecting a method changes what happens next. You can switch until you take the final action.</p>
             <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
               <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow="recommended"
@@ -180,7 +184,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
           <section className="buy-railpanel" aria-live="polite">
             <div className="buy-sectiontitle">
-              <span>{rail === RAIL_PAYPAL && paypalOpened ? '2. Confirm what happened' : '2. Review what happens'}</span>
+              <h3><span className="buy-stepno">2</span>{rail === RAIL_PAYPAL && paypalOpened ? 'Confirm what happened' : 'Review what happens'}</h3>
               <b>{rail === RAIL_ESCROW ? 'Cairn Escrow' : 'PayPal'}</b>
             </div>
             {rail === RAIL_ESCROW ? <>
@@ -200,11 +204,13 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
               {!ready && paypalAvailable && <div className="buy-note">No escrow wallet is ready. Choose PayPal above or connect a settlement wallet.</div>}
               {overCap && <div className="buy-error">Pilot escrow cap: {VALUE_CAP_USDC} USDC. PayPal remains available when the seller accepts it.</div>}
               {error && <div className="buy-error" role="alert">{error}</div>}
-              <p className="buy-actionnote">Your next click funds escrow. It does not pay the seller directly.</p>
-              <div className="buy-nowactions">
-                <button className="primary buy-pay" disabled={busy || !ready || overCap || !escrowAvailable} onClick={fundEscrow}>
-                  {busy ? (phase || 'Working…') : `Fund ${total} USDC in Cairn Escrow`}
-                </button>
+              <div className="buy-commit">
+                <p className="buy-actionnote">Your next click funds escrow. It does not pay the seller directly.</p>
+                <div className="buy-nowactions">
+                  <button className="primary buy-pay" disabled={busy || !ready || overCap || !escrowAvailable} onClick={fundEscrow}>
+                    {busy ? (phase || 'Working…') : `Fund ${total} USDC in Cairn Escrow`}
+                  </button>
+                </div>
               </div>
             </> : !paypalOpened ? <>
               <div className="buy-outcomes paypal">
@@ -218,9 +224,11 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
                 <span className="mono">Cairn reference · <b>{payRef}</b> <button type="button" onClick={copyRef}>{copied ? 'copied ✓' : 'copy'}</button></span>
               </div>
               {error && <div className="buy-error" role="alert">{error}</div>}
-              <p className="buy-actionnote">Your next click opens PayPal. No payment happens on Cairn.</p>
-              <div className="buy-nowactions">
-                <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · ${Number(total).toFixed(2)} USD ↗</button>
+              <div className="buy-commit paypal">
+                <p className="buy-actionnote">Your next click opens PayPal. No payment happens on Cairn.</p>
+                <div className="buy-nowactions">
+                  <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · ${Number(total).toFixed(2)} USD ↗</button>
+                </div>
               </div>
             </> : <div className="buy-paypal-return">
               <span className="ek">Back from PayPal?</span>
@@ -240,7 +248,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
         <aside className="buy-summary" aria-label="Order summary">
           <div className="buy-summaryhead">
-            <div><span className="ek">Your pile</span><h3>{pile.length} card{pile.length === 1 ? '' : 's'}</h3></div>
+            <div><span className="ek">Order summary</span><h3>Your pile · {pile.length} card{pile.length === 1 ? '' : 's'}</h3></div>
             <button type="button" onClick={onBack}>Change</button>
           </div>
           <div className="buy-seller">Buying from <b>{sellerLabel}</b></div>
