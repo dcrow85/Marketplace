@@ -58,6 +58,24 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Checkout now shows PayPal as an explicit
+  secondary rail and names the escrow rehearsal truth before either path can be
+  mistaken for the other.** Sample sellers expose a clearly labeled
+  `paypal.me/CairnDemo` preview; its panel says that PayPal is real external USD,
+  warns not to send money to the sample table, and never implies Cairn can reverse
+  the payment. Cairn Escrow now says Arbitrum Sepolia and `test USDC` throughout,
+  links the deployed escrow and token, explains the neutral arbiter's authority,
+  and stays disabled until both a wallet and independently chosen arbiter are ready.
+  Read-only RPC audit found chain ID 421614, 4,990 bytes of escrow code, matching
+  configured/contract USDC `0x75fa…4d`, 200 USDC cap, 14-day shipped timeout, and
+  `nextTradeId` still 1. Scoped ESLint, diff check, and assembled Pages build pass
+  (existing Privy/Rolldown annotation warnings only). Signed-in production replay
+  verified the exact Veteran Curator one-card / 6 USDC posted-ask checkout on
+  desktop and 390 px mobile: both rails are visible, money remains gold, and neither
+  view overflows horizontally. Source `e80d66d`; Pages production `b0a6c96f`;
+  preview, apex, and `www` converge on `cairn-site-1dcefd720c7f.js` at 5,353,849
+  bytes / ETag `437abcf48b06e5571b98a6b462967b14`. No PayPal handoff, payment,
+  approval, funding, offer, evidence request, or chain/protocol state was sent.
 - `[passive]` 2026-07-17 · Codex — **Accepting posted asks now always enters
   checkout, never an offer merely because payment setup is incomplete.** All-buy
   piles with unchanged asks read `Checkout · listed price · no seller reply` both at
