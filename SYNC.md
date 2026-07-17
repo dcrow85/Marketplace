@@ -58,6 +58,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **The root landing now opens like a card show,
+  not a protocol essay.** A dark-first, responsive hero fans five real official Azuki
+  catalogue images across the first viewport, then explains Cairn through Scan → Table →
+  Deal, Anko's bounded market guidance, a six-card gallery, enforced/legible/judged trust,
+  and checkout-versus-offer intent. Gold consistently carries money; blue carries Anko;
+  official art is explicitly labelled catalogue reference rather than physical-copy proof.
+  Static HTML/alt/asset validation (12 images), diff check, two assembled Pages builds,
+  immutable production asset probes, and preview/apex/`www` HTML convergence pass (existing
+  upstream Privy/Rolldown annotation warnings only). Source `4cb7bf8`; Pages production
+  `70ee50fc`; no catalogue rows, app behavior, payment execution, offer state, or protocol
+  semantics changed.
 - `[passive]` 2026-07-17 · Codex — **Anko now reads as a composed manga market guide,
   not a bright cereal mascot.** The new square portrait preserves his blue-black and
   cream markings, cyan onibi, and black hoodie while replacing the wide eyes, broad grin,
