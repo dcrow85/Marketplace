@@ -58,6 +58,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-17 · Codex — **Arbitrum Sepolia checkout can now satisfy its
+  own funding prerequisites without reintroducing extension collisions or creating
+  a wallet silently.** Settlement offers an explicit `Create testnet wallet` action,
+  retains the returned Privy embedded wallet independently of disabled connector
+  discovery, shows its address plus test-USDC and native-gas balances, links the Circle
+  faucet and official Arbitrum Sepolia bridge, and names all four requirements before
+  the gold Fund action can enable. A contract-deployer address is available only by
+  explicit click and is labeled disposable rehearsal-only with no response commitment;
+  Cairn still prefers a user-chosen reachable neutral arbiter. A fresh balance preflight
+  now happens before the terms record or either wallet write. Scoped ESLint, diff check,
+  production build, and read-only RPC checks pass (chain 421614; 4,990 escrow code bytes;
+  existing upstream Privy/Rolldown annotation warnings only). Signed-in production replay
+  of Veteran Curator's exact 6 test-USDC checkout verified the immediate wallet-creation action,
+  opt-in arbiter, four-item readiness checklist, and a disabled Fund action until wallet,
+  arbiter, token, and gas are present. Sources `bfd726e` + `49c0ef6`; Pages production
+  `d3f95635`; preview, apex, and `www` converge on `cairn-site-61f540199ded.js` at
+  5,370,920 bytes / ETag `0a5e61a89a4d02d6452a116af8566e8f`. No wallet was created;
+  no token approval, escrow funding, transaction, offer, evidence request, PayPal action,
+  or other protocol state was sent.
 - `[passive]` 2026-07-17 · Codex — **The PayPal approval window now stays open for
   Cairn's signed-in Privy users.** Live reproduction showed the popup closed because
   `/api/paypal/orders` accepted only wallet-shaped buyer IDs and rejected the actual
