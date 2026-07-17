@@ -19,9 +19,9 @@ import { IS_LOCAL_CHAIN } from '../chain/config.js'
 import { sellerAcceptsPayPal } from '../payments/rails.js'
 import './market.css'
 
-// The market: other people's tables, run like a card show. You pick cards up (zoom),
-// drop them on YOUR PILE tagged buy or trade, and finish each table with ONE deal —
-// buys, trade-fors, your side, and a single cash line, sent as one offer. Everything
+// The market: other people's tables, run like a card show. You pick cards up (zoom)
+// and drop them on YOUR PILE tagged buy or trade. A pile entirely at posted asks can
+// go straight to payment; changed prices and trade cards become one offer. Everything
 // shown is a CLAIM; the witness counts say what's recorded behind it.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
@@ -71,7 +71,7 @@ function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
     <span className="ofr-acts ofr-pileacts">
       <button type="button" className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onBuy() }}
-        title="into your pile at the ask — the deal sends when you finish the table">
+        title="into your pile at the ask — review and pay when the pile is ready">
         {inPile && mode === 'buy' ? '✓ In pile' : <><span className="ofr-wide-label"><span>Buy</span><small>{ask} USDC</small></span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>
       <button type="button" className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onTrade() }}
@@ -502,7 +502,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       decision_ref: `market:${catalog.id}:${open.id}:${pile.length}:${buysSum}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
       kind: 'pre_purchase',
       question: pile.every((p) => p.mode === 'buy')
-        ? 'Should I send an offer at this seller’s asks, revise it, or request more evidence first?'
+        ? 'Should I pay the posted asks now, change the terms, or request more evidence first?'
         : 'Should I send this buy/trade offer, revise it, or request more evidence first?',
       terms: {
         seller: open.id,
@@ -570,7 +570,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         id: 'open-evidence-offer', label: 'Open offer with a scan request', primary: true,
         onSelect: () => { setOfferCashSeed(null); setOfferNoteSeed('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.'); setSettling(true) },
       }]
-      if (read.lean === 'accept' && canBuyNow) return [{ id: 'review-checkout', label: `Settle up · ${buysSum} USDC`, primary: true, onSelect: () => setBuyingNow(true) }]
+      if (read.lean === 'accept' && canBuyNow) return [{ id: 'review-checkout', label: `Checkout · ${buysSum} USDC`, primary: true, onSelect: () => setBuyingNow(true) }]
       return []
     }
     const displayUids = new Set(open.showcase || [])
@@ -715,6 +715,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                 <span className="mk-cksum"><strong>{pile.length} card{pile.length === 1 ? '' : 's'}</strong>
                   {buysSum > 0 && <b className="mono mk-ckmoney">{buysSum} USDC</b>}</span>
                 <small>{pile.filter((p) => p.mode === 'buy').length} buy · {pile.filter((p) => p.mode === 'trade').length} trade</small>
+                <span className={'mono mk-ckpath' + (canBuyNow ? ' direct' : '')}>
+                  {canBuyNow ? 'Listed price · no seller reply' : 'Offer · seller reply required'}
+                </span>
                 {(() => {
                   const pileVal = pile.reduce((t, p) => {
                     const l = open.listings.find((x) => x.uid === p.uid)
@@ -731,9 +734,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <button className="primary mk-settle" onClick={() => {
                 if (canBuyNow) setBuyingNow(true)
                 else { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }
-              }}><span>Settle up</span><strong className={canBuyNow ? 'mono' : ''}>{canBuyNow ? `${buysSum} USDC` : `${pile.length} card${pile.length === 1 ? '' : 's'}`}</strong></button>
+              }}><span>{canBuyNow ? 'Checkout' : 'Review offer'}</span><strong className={canBuyNow ? 'mono' : ''}>{canBuyNow ? `Pay ${buysSum} USDC` : `${pile.length} card${pile.length === 1 ? '' : 's'}`}</strong></button>
               <span className="mk-cksecondary">
-                {canBuyNow && <button className="ghost sm" onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Offer instead</button>}
+                {canBuyNow && <button className="ghost sm" onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Change terms</button>}
                 <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>Clear</button>
               </span>
             </span>

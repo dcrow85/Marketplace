@@ -652,6 +652,8 @@
 .mk-pilebar .mk-cksum strong { font-size: 15px; white-space: nowrap; }
 .mk-ckmoney { color: var(--money); font-size: 13px; white-space: nowrap; }
 .mk-cksummary > small { color: var(--dim); font: 9.5px var(--mono); }
+.mk-ckpath { margin-top: 2px; color: var(--dim); font-size: 9px; line-height: 1.3; }
+.mk-ckpath.direct { color: var(--have); }
 .mk-pilebar .mk-ckwhisper { max-width: 44ch; margin-top: 2px; overflow: hidden; font-size: 9.5px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
 .mk-pilebar .mk-ckacts { min-width: 0; display: grid; grid-template-columns: minmax(190px, 1fr) auto; align-items: stretch; gap: 8px; margin: 0; }
 .mk-pilebar .mk-settle { min-width: 0; min-height: 54px; display: grid; place-content: center; gap: 1px; width: 100%; color: #211908; background: linear-gradient(180deg, #e5c76f, #cda347); border: 1px solid #a77d2d; border-radius: 9px; padding: 8px 18px; box-shadow: inset 0 1px 0 rgba(255,248,207,.48); }

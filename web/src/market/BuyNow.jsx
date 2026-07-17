@@ -154,9 +154,9 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
     <div className="buy-now">
       <div className="buy-nowhead">
         <div>
-          <span className="ek">Settle up</span>
-          <h2 className="buy-nowtitle">Review and pay</h2>
-          <p>Nothing is paid or sent just by opening this page.</p>
+          <span className="ek">Posted-ask checkout</span>
+          <h2 className="buy-nowtitle">Pay the listed price</h2>
+          <p>You&rsquo;re accepting this table&rsquo;s posted asks. No offer or seller reply is needed.</p>
         </div>
         <div className="buy-headtotal">
           <span>Total due</span>
@@ -168,8 +168,8 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
       <div className="buy-checkoutgrid">
         <div className="buy-checkoutmain">
           <fieldset className="buy-methods">
-            <legend><span className="buy-stepno">1</span> Choose how to pay</legend>
-            <p>Selecting a method changes what happens next. You can switch until you take the final action.</p>
+            <legend><span className="buy-stepno">1</span> Payment</legend>
+            <p>Your preferred method is already selected. Change it only if you want to.</p>
             <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
               <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow="recommended"
                 onClick={() => { setRail(RAIL_ESCROW); setPaypalOpened(false); setError(null) }}>

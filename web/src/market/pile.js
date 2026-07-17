@@ -1,6 +1,6 @@
 // Your pile: the cards you've picked up at each table, tagged buy or trade. Nothing
-// sends from here — the pile is accumulation; the DEAL (one offer per table) is the
-// finishing move. Piles persist per seller so you can walk away and come back.
+// sends from here. Posted-ask buys can continue to direct payment; changed prices or
+// trade cards continue as one offer. Piles persist so you can walk away and return.
 export const pileKeyFor = (catalogId, accountId) =>
   accountId ? `cairn-pile:${catalogId}:${accountId}` : `cairn-pile:${catalogId}`
 
