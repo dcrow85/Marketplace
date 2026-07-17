@@ -150,7 +150,7 @@ function TradeDetail({ tradeId, address, ready, getWalletClient }) {
       </div>
       {nextMove(t, role, tradeId) && <p className="nextmove">{nextMove(t, role, tradeId)}</p>}
       <div className="d-grid mono">
-        <span>amount</span><span>{amount} USDC</span>
+        <span>amount</span><span className="money">{amount} USDC</span>
         <span>buyer</span><span><a href={addrUrl(t.buyer)} target="_blank" rel="noreferrer">{short(t.buyer)}</a></span>
         <span>seller</span><span><a href={addrUrl(t.seller)} target="_blank" rel="noreferrer">{short(t.seller)}</a></span>
         <span>arbiter</span><span><a href={addrUrl(t.arbiter)} target="_blank" rel="noreferrer">{short(t.arbiter)}</a></span>
@@ -233,7 +233,7 @@ function TradeRecord({ t }) {
       {rec.terms.status !== 'unset' && (
         <div className="rec-row">
           <span className="rec-k">terms</span>
-          <span className="rec-v">{terms ? <>{terms.card} · {terms.condition} · <b>{terms.amount} USDC</b></> : (rec.terms.value || <span className="dim">—</span>)}</span>
+          <span className="rec-v">{terms ? <>{terms.card} · {terms.condition} · <b className="money">{terms.amount} USDC</b></> : (rec.terms.value || <span className="dim">—</span>)}</span>
           <RecBadge status={rec.terms.status} />
         </div>
       )}

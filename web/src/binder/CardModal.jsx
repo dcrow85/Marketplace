@@ -52,26 +52,26 @@ export function MarketBlock({ c, market, mockSales, onBrowseCard }) {
         )}
       </div>
       <div className="mkb-sec mono">{asks.length
-        ? `available now — ${asks.length} ask${asks.length === 1 ? '' : 's'} · ${copies} cop${copies === 1 ? 'y' : 'ies'} · from ${asks[0].l.ask} USDC`
+        ? <>available now — {asks.length} ask{asks.length === 1 ? '' : 's'} · {copies} cop{copies === 1 ? 'y' : 'ies'} · from <span className="money">{asks[0].l.ask} USDC</span></>
         : 'available now — nobody is asking'}</div>
       {asks.slice(0, 3).map(({ s, l }, i) => (
         <div className="mkb-row" key={i}>
           <button className="mkb-who" onClick={() => onBrowseCard && onBrowseCard(c.uid)} title="see it on the market">{handleFor(s.id)}</button>
           <span className="mono mkb-cond" title="the seller&rsquo;s claim">{l.cond}</span>
           <span className={'mono mkb-wit' + (l.witness ? ' ok' : '')}>{l.witness ? `✓ witness ·${l.witness}` : '— no scan'}</span>
-          <span className="mono mkb-p">{l.ask} USDC</span>
+          <span className="mono mkb-p money">{l.ask} USDC</span>
         </div>
       ))}
       {asks.length > 3 && <button className="mkb-more mono" onClick={() => onBrowseCard && onBrowseCard(c.uid)}>+ {asks.length - 3} more →</button>}
       <div className="mkb-sec mono" title="trades that closed through escrow — recorded, not appraised">{sales.length
-        ? `recorded settlements — last ${sales[0].p} USDC · ${sales[0].d}`
+        ? <>recorded settlements — last <span className="money">{sales[0].p} USDC</span> · {sales[0].d}</>
         : 'recorded settlements — none on record'}</div>
       {sales.slice(0, 4).map((x, i) => (
         <div className="mkb-row sale" key={i}>
           <span className="mono mkb-d">{x.d}{x.mock ? ' · mock' : ''}</span>
           <span className="mono mkb-cond">{x.cond}</span>
           <span className={'mono mkb-wit' + (x.wit ? ' ok' : '')}>{x.wit ? '✓ witnessed' : '—'}</span>
-          <span className="mono mkb-p">{x.p} USDC</span>
+          <span className="mono mkb-p money">{x.p} USDC</span>
         </div>
       ))}
       <div className="mkb-note">A settlement is a closed escrow trade — a recorded fact, not an appraisal. Asks are sellers&rsquo; claims.</div>
@@ -202,7 +202,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               open={needsListingPhotos || undefined}>
               <summary className="photo-evidence-head">
                 <div><b>{needsListingPhotos ? 'Seller photos needed' : 'Photos of your copy'}</b><span>{needsListingPhotos
-                  ? `This ${u.ask} USDC listing needs photos buyers can inspect.`
+                  ? <>This <span className="money mono">{u.ask} USDC</span> listing needs photos buyers can inspect.</>
                   : frontPhoto ? 'Your front photo is on file.' : 'Add views when they help describe your copy.'}</span></div>
                 <strong className="mono">{evidenceCount} / {PHOTO_VIEWS.length} views</strong>
               </summary>
@@ -313,7 +313,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                   </select>
                 </Frow>
                 {(e.trade || e.sell) && (
-                  <Frow label="Ask"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="USDC" value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
+                  <Frow label="Ask"><span className="fpre money">$</span><input className="ti num money-input" type="number" min="0" placeholder="USDC" value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
                 )}
                 <Frow label="Copies"><input className="ti num" type="number" min="1" value={u.copies || 1} onChange={(ev) => setField(c.uid, 'copies', Math.max(1, parseInt(ev.target.value || '1', 10)))} /></Frow>
                 <details className="listing-notes">
@@ -323,7 +323,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               </>}
               {e.stance === 'want' && <>
                 <Frow label="Condition"><select className="ti" value={condVal} onChange={(ev) => setField(c.uid, 'want_cond', ev.target.value)}>{COND_OPTS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</select></Frow>
-                <Frow label="Max price"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="—" value={maxVal} onChange={(ev) => setField(c.uid, 'want_max', ev.target.value)} /></Frow>
+                <Frow label="Max price"><span className="fpre money">$</span><input className="ti num money-input" type="number" min="0" placeholder="—" value={maxVal} onChange={(ev) => setField(c.uid, 'want_max', ev.target.value)} /></Frow>
                 <details className="listing-notes">
                   <summary>Hunt notes</summary>
                   <Frow label="Notes"><textarea className="ti" rows={2} placeholder="why you want it, deal terms…" value={u.note || ''} onChange={(ev) => setField(c.uid, 'note', ev.target.value)} /></Frow>
@@ -345,7 +345,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                 {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text || collection.name) && (
                   <div className="dossier">
                     {collection.name && <div><b>Collection</b><span>{collection.name} · observed at {collection.position || 'unrecorded position'}</span></div>}
-                    {reportedPrice.amount != null && <div><b>Event sale</b><span>{reportedPrice.amount} {reportedPrice.currency || 'USD'} · user-reported, not independently verified</span></div>}
+                    {reportedPrice.amount != null && <div><b>Event sale</b><span><span className="money mono">{reportedPrice.amount} {reportedPrice.currency || 'USD'}</span> · user-reported, not independently verified</span></div>}
                     {c.product_channel_label && <div><b>Product</b><span>{c.product_channel_label}</span></div>}
                     {types && <div><b>Type</b><span>{types}</span></div>}
                     {c.band_rank && <div><b>Attention</b><span>tier {c.band_rank}</span></div>}

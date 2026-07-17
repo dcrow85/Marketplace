@@ -417,8 +417,8 @@ function ListingTiles({ rows, size, setSel, setAsk, setDisplay, reorderable = fa
               aria-label={e.display ? 'Remove from display case' : 'Pin to display case'}
               title={e.display ? 'Remove from display case' : 'Pin to display case'}
               onClick={() => setDisplay(c.uid, !e.display)}>{e.display ? '★' : '☆'}</button>}
-            <span className="fpre">$</span>
-            <input type="number" min="0" placeholder="ask"
+            <span className="fpre money">$</span>
+            <input className="money-input" type="number" min="0" placeholder="ask"
               value={e.ask || ''} onChange={(ev) => setAsk(c.uid, ev.target.value)} />
           </span>} />
         </div>

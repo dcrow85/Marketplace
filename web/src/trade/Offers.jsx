@@ -81,7 +81,7 @@ function LiveLeg({ o, offersKey, catalogId, accountId, decision, recommended }) 
           <button className="sheetbtn mk-sm mono" disabled={!paypalUrl} onClick={() => {
             const tab = window.open(paypalUrl, '_blank')
             if (tab) { tab.opener = null; setPaypalOpened(true) } else setErr('Your browser blocked the PayPal tab.')
-          }}>Continue to PayPal · {o.cash.amount} USD ↗</button>
+          }}>Continue to PayPal · <span className="money">{o.cash.amount} USD</span> ↗</button>
           <span>reference · <b>{paymentRef}</b></span>
         </div>
       )}
@@ -102,7 +102,7 @@ function LiveLeg({ o, offersKey, catalogId, accountId, decision, recommended }) 
             <input placeholder="arbiter 0x… — a non-party you both name" value={arb} onChange={(e) => setArb(e.target.value.trim())} />
             <button className="sheetbtn mk-sm mono" disabled={!ready || busy} onClick={fund}
               title={ready ? 'approve + fund on-chain — funds held until you accept or an arbiter rules' : 'no signer — sign in with a wallet to fund'}>
-              {busy ? 'funding…' : `fund escrow · ${o.cash.amount} USDC`}</button>
+              {busy ? 'funding…' : <>fund escrow · <span className="money">{o.cash.amount} USDC</span></>}</button>
           </span>
         </>
       )}
@@ -131,7 +131,7 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
   return <div className="ofl-paypalleg">
     <div className="ofl-railhead mono"><b>PayPal · external rail</b><span>Cairn does not hold or verify these funds.</span></div>
     {o.state === 'payment_reported' && seller && <>
-      <p>The buyer reports paying {o.cash?.amount} USD. Check your own PayPal activity and recipient account before shipping.</p>
+      <p>The buyer reports paying <span className="money mono">{o.cash?.amount} USD</span>. Check your own PayPal activity and recipient account before shipping.</p>
       {o.settlement?.payment_ref && <span className="mono">Cairn reference · {o.settlement.payment_ref}</span>}
       {o.settlement?.provider_ref && <span className="mono">Buyer supplied PayPal reference · {o.settlement.provider_ref}</span>}
       <span className="sw-acts">

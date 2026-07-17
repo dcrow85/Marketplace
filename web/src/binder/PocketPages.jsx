@@ -53,7 +53,7 @@ export default function PocketPages({
                 </span>
                 {fromAsk != null && <button type="button" className="bv-from onart mono"
                   onClick={(ev) => { ev.stopPropagation(); onMarket?.(c.uid) }}>
-                  available · from {fromAsk} USDC →
+                  available · from <span className="money">{fromAsk} USDC</span> →
                 </button>}
                 <span className="bv-q">
                   <button className={'bv-qb' + (e.sell ? ' on' : '')} title={e.sell ? 'listed for sale — tap to unlist' : 'list for sale'}
@@ -79,7 +79,7 @@ export default function PocketPages({
               </span>
               {fromAsk != null && <button type="button" className="bv-from mono"
                 onClick={(ev) => { ev.stopPropagation(); onMarket?.(c.uid) }}>
-                available · from {fromAsk} USDC →
+                available · from <span className="money">{fromAsk} USDC</span> →
               </button>}
               <span className="bv-mobile-intent" aria-label={`Mark ${nm(c)}`}>
                 <button type="button" className={e.stance === 'have' ? 'on' : ''}

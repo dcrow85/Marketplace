@@ -10,6 +10,11 @@ const LEAN_LABEL = {
   cannot_resolve: 'I can’t resolve this from what’s recorded',
 }
 
+function MoneyLabel({ children }) {
+  return String(children || '').split(/(\$?\d+(?:\.\d+)?\s*(?:USDC|USD))/gi).map((part, index) =>
+    /(?:USDC|USD)$/i.test(part) ? <span className="money" key={index}>{part}</span> : part)
+}
+
 function ReadActions({ actions }) {
   const [values, setValues] = useState({})
   if (!actions?.length) return null
@@ -26,7 +31,7 @@ function ReadActions({ actions }) {
         </div>
       }
       return <button type="button" key={action.id} className={'anko-readaction' + (action.primary ? ' primary' : '')}
-        onClick={() => action.onSelect?.()}>{action.label}</button>
+        onClick={() => action.onSelect?.()}><MoneyLabel>{action.label}</MoneyLabel></button>
     })}
   </div>
 }

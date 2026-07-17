@@ -17,11 +17,11 @@ export default function QuickSell({ c, store, setField, fromAsk, lastSale, onOpe
           <button className="primary qs-done" onClick={onClose}>done</button>
         </div>
         <div className="qs-mkt mono">
-          {fromAsk != null ? `market: from ${fromAsk} USDC` : 'market: nobody else is asking'}
-          {lastSale ? ` · last settled ${lastSale.p} USDC (${lastSale.d})` : ' · no settlements on record'}
+          {fromAsk != null ? <>market: from <span className="money">{fromAsk} USDC</span></> : 'market: nobody else is asking'}
+          {lastSale ? <> · last settled <span className="money">{lastSale.p} USDC</span> ({lastSale.d})</> : ' · no settlements on record'}
         </div>
         <div className="qs-body">
-          <Frow label="Ask"><span className="fpre">$</span><input className="ti num" type="number" min="0" placeholder="USDC" autoFocus value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
+          <Frow label="Ask"><span className="fpre money">$</span><input className="ti num money-input" type="number" min="0" placeholder="USDC" autoFocus value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
           <Frow label="Condition">
             <select className="ti condtype" value={ct} onChange={(ev) => { setField(c.uid, 'cond_type', ev.target.value); setField(c.uid, 'cond_grade', ''); setField(c.uid, 'cond_grader', '') }}>
               {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}

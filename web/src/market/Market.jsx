@@ -81,6 +81,69 @@ function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
   )
 }
 
+function MarketBagBar({ orders, cardCount, cashTotal, onOpen }) {
+  if (!orders.length) return null
+  return <aside className="mk-bagbar" aria-label="Piles across the market">
+    <span className="mk-bagbarcopy">
+      <span className="mono mk-bageyebrow">Across the market</span>
+      <strong>{cardCount} card{cardCount === 1 ? '' : 's'} at {orders.length} table{orders.length === 1 ? '' : 's'}</strong>
+      {cashTotal > 0 && <small><span className="money mono">{cashTotal} USDC</span> in listed-price buys</small>}
+    </span>
+    <button type="button" className="primary mk-bagopen" onClick={onOpen}>
+      {orders.length > 1 ? 'Settle all' : 'Settle pile'} <span aria-hidden="true">→</span>
+    </button>
+  </aside>
+}
+
+function MarketBag({ orders, cardCount, cashTotal, byUid, onBack, onOpenOrder }) {
+  return <div className="mk mk-bagroom">
+    <div className="mk-head mk-baghead">
+      <div>
+        <div className="ek">Settle all</div>
+        <div className="mk-title">Your market piles</div>
+      </div>
+      <button type="button" className="ghost sm" onClick={onBack}>← keep browsing</button>
+    </div>
+    {orders.length ? <>
+      <div className="mk-bagsummary">
+        <span><b>{orders.length}</b><small>seller order{orders.length === 1 ? '' : 's'}</small></span>
+        <span><b>{cardCount}</b><small>card{cardCount === 1 ? '' : 's'}</small></span>
+        <span className="cash"><b className="money mono">{cashTotal} USDC</b><small>listed-price buys</small></span>
+      </div>
+      <p className="mk-bagtruth">One clear stop, separate checkouts. Review and finish each seller order on its own—Cairn never combines payments or silently sends the next one.</p>
+      <div className="mk-bagorders">
+        {orders.map((order) => <section className="mk-bagorder" key={order.seller.id}>
+          <div className="mk-bagidentity">
+            <Avatar seed={order.seller.id} size={34} photo={order.seller.photo} />
+            <span><strong>{sellerName(order.seller)}</strong><small>{order.seller.live ? '● live table' : 'sample table'}</small></span>
+          </div>
+          <div className="mk-bagthumbs" aria-label={`${order.pile.length} selected cards`}>
+            {order.pile.slice(0, 5).map((item) => {
+              const card = byUid.get(item.uid)
+              return card?.image ? <img key={item.uid} src={card.image} alt={card.name_en || ''} /> : null
+            })}
+            {order.pile.length > 5 && <span className="mono">+{order.pile.length - 5}</span>}
+          </div>
+          <div className="mk-bagterms">
+            <span><b>{order.pile.length} card{order.pile.length === 1 ? '' : 's'}</b><small>{order.buyCount} buy · {order.tradeCount} trade</small></span>
+            {order.buyTotal > 0 && <strong className="money mono">{order.buyTotal} USDC</strong>}
+          </div>
+          <div className={'mk-bagpath ' + (order.canCheckout ? 'direct' : 'offer')}>
+            <b>{order.canCheckout ? 'Checkout' : 'Offer'}</b>
+            <small>{order.canCheckout ? 'listed price · no seller reply' : 'review terms · seller reply required'}</small>
+          </div>
+          <button type="button" className={order.canCheckout ? 'primary mk-baggo money-action' : 'ghost mk-baggo'}
+            onClick={() => onOpenOrder(order)}>{order.canCheckout ? `Pay ${order.buyTotal} USDC` : 'Review offer'} →</button>
+        </section>)}
+      </div>
+    </> : <div className="mk-bagempty">
+      <strong>Every pile is clear.</strong>
+      <p>There is nothing else waiting to settle.</p>
+      <button type="button" className="primary" onClick={onBack}>Back to the market</button>
+    </div>}
+  </div>
+}
+
 export default function Market({ accountId, agentName = 'Anko', catalog, focusUid, onClearFocus }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
@@ -101,6 +164,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [offerCashSeed, setOfferCashSeed] = useState(null)
   const [offerNoteSeed, setOfferNoteSeed] = useState('')
   const [pendingSellerFlow, setPendingSellerFlow] = useState(null)
+  const [bagOpen, setBagOpen] = useState(false)
+  const [returnToBag, setReturnToBag] = useState(false)
   const storeKey = storeKeyFor(catalog.id, accountId)
   const pileKey = pileKeyFor(catalog.id, accountId)
   const store = useBus(() => loadStore(storeKey), [storeKey])
@@ -133,7 +198,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     }
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [ares, agentName])
-  useEffect(() => { setSel(null) }, [catalog]) // eslint-disable-line react-hooks/set-state-in-effect -- new catalog, no table open
+  useEffect(() => { setSel(null); setBagOpen(false); setReturnToBag(false) }, [catalog]) // eslint-disable-line react-hooks/set-state-in-effect -- new catalog, no table or market bag open
 
   const byUid = useByUid(data)
   const marketNeedle = aq.trim().toLowerCase()
@@ -198,6 +263,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const returnToPile = () => {
     setSettling(false)
     setBuyingNow(false)
+    if (returnToBag) {
+      setReturnToBag(false)
+      setSel(null)
+      setBagOpen(true)
+      return
+    }
     window.requestAnimationFrame(() => document.getElementById('market-pile')?.scrollIntoView({ block: 'center' }))
   }
   const visitSellerPile = (sellerId, flow = 'table', cash = null, note = '') => {
@@ -264,6 +335,29 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const open = allSellers.find((s) => s.id === sel)
   const pileOf = (sellerId) => piles[sellerId] || []
   const inPile = (sellerId, uid) => pileOf(sellerId).find((x) => x.uid === uid)
+  const marketOrders = allSellers.map((seller) => {
+    const pile = pileOf(seller.id)
+    const buyCount = pile.filter((item) => item.mode === 'buy').length
+    const tradeCount = pile.length - buyCount
+    const buyTotal = pile.reduce((total, item) => item.mode === 'buy'
+      ? total + (Number(seller.listings.find((listing) => listing.uid === item.uid)?.ask) || 0)
+      : total, 0)
+    return {
+      seller, pile, buyCount, tradeCount, buyTotal,
+      canCheckout: pile.length > 0 && tradeCount === 0 && buyTotal > 0 && (seller.live || IS_LOCAL_CHAIN),
+    }
+  }).filter((order) => order.pile.length > 0)
+  const marketBagCards = marketOrders.reduce((total, order) => total + order.pile.length, 0)
+  const marketBagCash = marketOrders.reduce((total, order) => total + order.buyTotal, 0)
+  const openBagOrder = (order) => {
+    setBagOpen(false)
+    setReturnToBag(true)
+    visitSellerPile(order.seller.id, order.canCheckout ? 'buy' : 'offer')
+  }
+  const bagBar = <MarketBagBar orders={marketOrders} cardCount={marketBagCards} cashTotal={marketBagCash} onOpen={() => setBagOpen(true)} />
+
+  if (bagOpen) return <MarketBag orders={marketOrders} cardCount={marketBagCards} cashTotal={marketBagCash}
+    byUid={byUid} onBack={() => setBagOpen(false)} onOpenOrder={openBagOrder} />
 
   const ankoBar = (
     <div className="askbar mk-askbar">
@@ -338,7 +432,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     return [keepBrowsing]
   }
   const zoomEl = zoom && (
-    <CardZoom card={zoom.c} sub={zoom.l ? `${zoom.l.ask} USDC · ${zoom.l.cond}` : null} witness={zoom.l ? zoom.l.witness : null}
+    <CardZoom card={zoom.c} sub={zoom.l ? <><span className="money mono">{zoom.l.ask} USDC</span> · {zoom.l.cond}</> : null} witness={zoom.l ? zoom.l.witness : null}
       ask={zoom.l?.ask} decision={zoomDecision} actionsForRead={actionsForZoomRead} onClose={() => setZoom(null)}>
       {zoom.l && zoom.sellerId && (
         <PileButtons ask={zoom.l.ask}
@@ -358,7 +452,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
     return <section className="mk-photo-tip" role="dialog" aria-label={`Seller photos needed for ${evidenceTip.c.name_en}`}>
       <button className="mk-photo-tipclose" type="button" onClick={() => setEvidenceTip(null)} aria-label="Close">✕</button>
       <div className="mk-photo-tipflag mono"><span aria-hidden="true">!</span> Seller photos needed</div>
-      <strong>{evidenceTip.c.name_en} · {evidenceTip.l.ask} USDC</strong>
+      <strong>{evidenceTip.c.name_en} · <span className="money mono">{evidenceTip.l.ask} USDC</span></strong>
       <p>This listing shows catalogue art, not photos of the seller&rsquo;s copy. Ask for fresh views before deciding.</p>
       <div className="mk-photo-tipactions">
         <button className="primary" type="button" onClick={askForPhotos}>Ask for photos in offer →</button>
@@ -388,11 +482,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       if (focusSort === 'copies') return (b.l.copies || 1) - (a.l.copies || 1) || a.l.ask - b.l.ask
       return a.l.ask - b.l.ask || sellerName(a.s).localeCompare(sellerName(b.s))
     })
-    const focusedSellerPiles = sortedAsks.filter(({ s }) => !!inPile(s.id, focusUid)).map(({ s }) => {
-      const pile = pileOf(s.id)
-      const buys = pile.filter((item) => item.mode === 'buy').reduce((total, item) => total + (s.listings.find((listing) => listing.uid === item.uid)?.ask || 0), 0)
-      return { s, pile, buys }
-    })
     return (
       <div className="mk">
         {roomNote}
@@ -401,6 +490,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         {msgEl}
         {evidenceTipEl}
         {zoomEl}
+        {bagBar}
         <div className="mk-head mk-cardhead">
           <div className="mk-focushead">
             {c?.image && <img className="mk-focusart" src={c.image} alt="" onError={(ev) => retryImg(ev, c.image)} onClick={() => setZoom({ c, l: asks[0]?.l, sellerId: asks[0]?.s.id })} />}
@@ -445,17 +535,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               ))}
             </div>
           : <div className="empty">Nobody is asking on this card right now.</div>}
-        {focusedSellerPiles.map(({ s, pile, buys }) => (
-          <div className="mk-checkout mk-focus-pile" key={`pile:${s.id}`} aria-label={`Your pile at ${sellerName(s)}'s table`}>
-            <span className="mk-focus-pilecard">
-              {c?.image && <img src={c.image} alt="" />}
-              <span><b>{sellerName(s)}</b><small className="mono">your pile · {pile.length} card{pile.length === 1 ? '' : 's'}{buys ? ` · buys ${buys} USDC` : ''}</small></span>
-            </span>
-            <button className="primary mk-settle" onClick={() => visitSellerPile(s.id, pile.every((item) => item.mode === 'buy') ? 'buy' : 'table')}>
-              Settle up →
-            </button>
-          </div>
-        ))}
         <p className="sc-note dim">Condition is the seller&rsquo;s claim; the witness column says what&rsquo;s recorded behind it.
           Buy and trade both drop the card on your pile at that seller&rsquo;s table — one deal per table.</p>
       </div>
@@ -476,6 +555,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           setSwapMsg(evidenceRequestIncluded
             ? `offer + evidence request sent to ${sellerName(open)} — watch Trades for their response.`
             : `offer sent to ${sellerName(open)} — watch Trades for their response.`)
+          if (returnToBag) {
+            setReturnToBag(false)
+            setSel(null)
+            setBagOpen(true)
+          }
         }} />
     )
   }
@@ -546,6 +630,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       setSwapMsg(result.rail === 'paypal'
         ? `PayPal payment reported · ${result.paymentRef}. ${sellerName(open)} must confirm it in PayPal; follow the handoff in Trades.`
         : `funded in escrow · trade #${result.tradeId}. ${sellerName(open)} has been notified; follow delivery in Trades.`)
+      if (returnToBag) {
+        setReturnToBag(false)
+        setSel(null)
+        setBagOpen(true)
+      }
     }
     if (buyingNow && canBuyNow) {
       return (
@@ -633,7 +722,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           </div>
         )}
         <div className="mk-meter mono">
-          <span>{rows.length === open.listings.length ? `${open.listings.length} listed` : `${rows.length} of ${open.listings.length} shown`} · {total} USDC asked</span>
+          <span>{rows.length === open.listings.length ? `${open.listings.length} listed` : `${rows.length} of ${open.listings.length} shown`} · <b className="money">{total} USDC asked</b></span>
           <span className={scanRequested.length && requestedScanned === scanRequested.length ? 'mk-wit ok' : requestedScanned ? '' : 'mk-wit none'}>
             {scanRequested.length ? `${requestedScanned} of ${scanRequested.length} requested scans` : 'scans optional at these asks'}
           </span>
@@ -687,7 +776,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           return (
             <div className="mk-lot" key={i}>
               <div className="mk-lothead">
-                <span className="mk-name">{lot.name}<span className="mono mk-num">{lot.cards.length} cards · {lotTotal} USDC</span></span>
+                <span className="mk-name">{lot.name}<span className="mono mk-num">{lot.cards.length} cards · <b className="money">{lotTotal} USDC</b></span></span>
                 <button className="sheetbtn mk-sm mono" onClick={() => lot.cards.forEach((x) => pickUp(open.id, x.uid, 'buy'))}>lot → pile</button>
               </div>
               <div className="mk-lotcards dim">{lot.cards.map((x) => byUid.get(x.uid)?.name_en || x.uid).join(' · ')}</div>
@@ -761,6 +850,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       {msgEl}
       {evidenceTipEl}
       {zoomEl}
+      {bagBar}
       {directFinds.length > 0 && (
         <section className="mk-searchresults" aria-label={`Card listings matching ${aq.trim()}`}>
           <div className="mk-searchhead">
@@ -774,7 +864,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
             {directFinds.map(({ c, l, seller }) => (
               <MiniCard key={`${seller.id}|${l.uid}`} c={c}
                 corner={!l.witness ? <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: seller.id })} /> : null}
-                sub={<>{c.num} · {l.ask} USDC{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
+                sub={<>{c.num} · <span className="money mono">{l.ask} USDC</span>{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
                 onTap={() => setZoom({ c, l, sellerId: seller.id })}
                 actions={<>
                   <button className="mk-resulttable" onClick={(ev) => { ev.stopPropagation(); setSel(seller.id) }} title={`visit ${sellerName(seller)}'s table`}>
@@ -832,7 +922,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <div className="mk-tmeter mono">
                 {pileN > 0 && <span className="mk-pilebadge">your pile · {pileN}</span>}
                 {aisleN > 0 && <span className="mk-aisle">{aisleN} match{aisleN === 1 ? '' : 'es'}</span>}
-                <span>{s.listings.length} listed{(s.lots || []).length ? ` + ${s.lots.length} lot` : ''} · {total} USDC</span>
+                <span>{s.listings.length} listed{(s.lots || []).length ? ` + ${s.lots.length} lot` : ''} · <b className="money">{total} USDC</b></span>
                 <span className={scanRequested.length && requestedScanned === scanRequested.length ? 'mk-wit ok' : requestedScanned ? '' : 'mk-wit none'}>
                   {scanRequested.length ? `${requestedScanned}/${scanRequested.length} requested scans` : 'scans optional'}
                 </span>

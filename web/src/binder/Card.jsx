@@ -41,7 +41,7 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
         </div>
         {fromAsk != null && <button type="button" className="cap-avail mono"
           onClick={(ev) => { ev.stopPropagation(); onMarket?.(c.uid) }}>
-          available · from {fromAsk} USDC →
+          available · from <span className="money">{fromAsk} USDC</span> →
         </button>}
       </div>
     </div>

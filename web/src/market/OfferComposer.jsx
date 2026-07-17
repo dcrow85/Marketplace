@@ -63,10 +63,10 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
     }
     const w = sum([...want]), g = sum([...give])
     if (!w.n && !g.n) return null
-    const part = (x, label) => x.n
-      ? `${label} ${x.known ? `~${x.t} USDC across ${x.known} of ${x.n} card${x.n === 1 ? '' : 's'}` : `no settlements on record (${x.n} card${x.n === 1 ? '' : 's'})`}`
-      : null
-    return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean).join(' · ')
+    const part = (x, label) => x.n ? <span key={label}>{label} {x.known
+      ? <><b className="money mono">~{x.t} USDC</b> across {x.known} of {x.n} card{x.n === 1 ? '' : 's'}</>
+      : <>no settlements on record ({x.n} card{x.n === 1 ? '' : 's'})</>}</span> : null
+    return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean)
   }, [mkt, data, want, give, catalog])
 
   if (!data || !mkt) return null
@@ -116,7 +116,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           {theirCards.length > 8 && <input className="ofr-search" placeholder="search their table…" value={qw} onChange={(e) => setQw(e.target.value)} />}
           <div className="ofr-grid">
             {theirCards.filter(({ c }) => hit(c, qw) || want.has(c.uid)).map(({ c, l }) =>
-              tile(c, want.has(c.uid), toggle(want, setWant), l.ask != null ? `${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}` : 'from the offer', null, l.witness))}
+              tile(c, want.has(c.uid), toggle(want, setWant), l.ask != null ? <><span className="money mono">{l.ask} USDC</span> · {l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}</> : 'from the offer', null, l.witness))}
           </div>
           <div className="ofr-sec ofr-side yours mono"><b>Your side</b><span>Cards you give{myCards.some(({ e }) => e.trade) ? ' · open-to-trade first' : ''}</span></div>
           {myCards.length > 8 && <input className="ofr-search" placeholder="search your binder…" value={qg} onChange={(e) => setQg(e.target.value)} />}
@@ -143,7 +143,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
             <span className="mono dim">{settlementCurrency}</span>
           </div>
           <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note} onChange={(e) => setNote(e.target.value)} />
-          {recordLine && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine} — settlements are history, not an appraisal.</div>}
+          {recordLine?.length > 0 && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine.map((part, index) => <span key={index}>{index > 0 && ' · '}{part}</span>)} — settlements are history, not an appraisal.</div>}
         </div>
         <div className="ofr-foot">
           <div className="ofr-sum mono">

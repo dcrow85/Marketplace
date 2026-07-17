@@ -16,10 +16,10 @@ export default function MarketFinds({ agentName, reading, finds, mode, onAddPile
             {finds.map(({ c, sellerId, tableName, l }) => {
               const listingKey = `${sellerId}|${c.uid}`
               return <MiniCard key={listingKey} c={c}
-                sub={`${tableName || handleFor(sellerId)} · ${l.ask} USDC · ${l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}`}
+                sub={<>{tableName || handleFor(sellerId)} · <span className="money mono">{l.ask} USDC</span> · {l.witness ? `✓ ${l.witness} scan${l.witness === 1 ? '' : 's'}` : 'no scans'}</>}
                 actions={<button className={'mkf-offer mono' + (added.has(listingKey) ? ' done' : '')}
                   onClick={() => { onAddPile({ seller: sellerId, uid: c.uid, mode }); setAdded((p) => new Set(p).add(listingKey)) }}>
-                  {added.has(listingKey) ? '✓ in your pile' : mode === 'buy' ? `pile · buy ${l.ask} →` : '⇄ pile · trade →'}
+                  {added.has(listingKey) ? '✓ in your pile' : mode === 'buy' ? <>pile · buy <span className="money">{l.ask}</span> →</> : '⇄ pile · trade →'}
                 </button>} />
             })}
           </div>

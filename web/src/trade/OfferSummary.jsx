@@ -55,7 +55,7 @@ export default function OfferSummary({ o, otherName, status, receiveItems, giveI
         <section className="checkout-payment" aria-label="Payment summary">
           <span><small>Payment</small><b>{o.cash ? railName : 'No cash payment'}</b></span>
           {o.cash && <span className="checkout-paymentamount">
-            <b>{o.cash.amount} {currency}</b>
+            <b className="money">{o.cash.amount} {currency}</b>
             <small>{cashFromYou ? 'you pay' : 'you receive'}</small>
           </span>}
           {o.cash && <p>{paypal ? 'Handled outside Cairn through PayPal.' : 'Held by Cairn Escrow after terms are accepted.'}</p>}

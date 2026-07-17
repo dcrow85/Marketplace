@@ -227,7 +227,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
               <div className="buy-commit paypal">
                 <p className="buy-actionnote">Your next click opens PayPal. No payment happens on Cairn.</p>
                 <div className="buy-nowactions">
-                  <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · ${Number(total).toFixed(2)} USD ↗</button>
+                  <button className="primary buy-pay paypal" onClick={openPayPal}>Continue to PayPal · <span className="money-on-action">${Number(total).toFixed(2)} USD</span> ↗</button>
                 </div>
               </div>
             </> : <div className="buy-paypal-return">
@@ -259,13 +259,13 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
               return <div className="buy-orderitem" key={item.uid}>
                 {card?.image ? <img src={card.image} alt="" /> : <span className="buy-orderblank" aria-hidden="true" />}
                 <span><b>{card?.name_en || item.uid}</b><small className="mono">{card?.num || 'card'} · {listing?.cond || 'condition unlisted'}</small></span>
-                <strong className="mono">{listing?.ask ?? 0} USDC</strong>
+                <strong className="mono money">{listing?.ask ?? 0} USDC</strong>
               </div>
             })}
           </div>
           <div className="buy-total"><span>Total due</span><strong>{amountLabel}</strong></div>
           <p>{rail === RAIL_PAYPAL
-            ? `The table asks total ${total} USDC; this seller's PayPal fallback requests $${Number(total).toFixed(2)} USD.`
+            ? <>The table asks total <span className="money mono">{total} USDC</span>; this seller&rsquo;s PayPal fallback requests <span className="money mono">${Number(total).toFixed(2)} USD</span>.</>
             : 'At the table’s posted asks. Delivery and inspection continue in Trades.'}</p>
         </aside>
       </div>

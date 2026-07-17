@@ -149,10 +149,10 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     }
     const w = sum(pile.map((p) => p.uid)), g = sum([...give])
     if (!w.n && !g.n) return null
-    const part = (x, label) => x.n
-      ? `${label} ${x.known ? `~${x.t} USDC across ${x.known} of ${x.n}` : `no settlements on record (${x.n})`}`
-      : null
-    return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean).join(' · ')
+    const part = (x, label) => x.n ? <span key={label}>{label} {x.known
+      ? <><b className="money mono">~{x.t} USDC</b> across {x.known} of {x.n}</>
+      : <>no settlements on record ({x.n})</>}</span> : null
+    return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean)
   }, [salesMap, pile, give])
 
   const decisionPile = pile.slice(0, 24)
@@ -265,7 +265,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
             const l = open.listings.find((x) => x.uid === p.uid)
             return (
               <MiniCard key={p.uid} c={c}
-                sub={`${p.mode === 'buy' ? `${askOf(p.uid)} ask · ` : ''}${scanLabel(l?.witness, l?.ask)}`}
+                sub={<>{p.mode === 'buy' ? <><span className="money mono">{askOf(p.uid)} USDC ask</span> · </> : null}{scanLabel(l?.witness, l?.ask)}</>}
                 actions={<span className="ofr-acts">
                   <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
                     onClick={() => toggleMode(pileKey, open.id, p.uid)}
@@ -385,7 +385,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           <span>✓ Evidence request added to this offer.</span>
           <span>It sends when you press <b>Send offer</b> below — nothing has been sent yet.</span>
         </div>}
-        {recordLine && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine} — settlements are history, not an appraisal.</div>}
+        {recordLine?.length > 0 && <div className="ofr-anko"><span className="atag jud">Anko · the record</span> {recordLine.map((part, index) => <span key={index}>{index > 0 && ' · '}{part}</span>)} — settlements are history, not an appraisal.</div>}
       </div>
 
       <div className="stl-senddecision">

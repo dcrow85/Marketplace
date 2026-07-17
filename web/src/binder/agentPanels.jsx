@@ -20,13 +20,13 @@ export function ActionBar({ agentName, plan, reading, done, onApply, onUndo, onD
           <div className="aprop-line" key={i}>
             {plan.steps.length > 1 && <span className="mono dim">{i + 1}. </span>}
             {ACTION_VERB[st.op]} <b>{n}</b> card{n === 1 ? '' : 's'}
-            {st.ask != null && n > 0 && <> at <b>{st.ask} USDC</b> each</>}
+            {st.ask != null && n > 0 && <> at <b className="money">{st.ask} USDC</b> each</>}
             {n > 0 ? <span className="dim"> — {names}{n > 3 ? ` +${n - 3} more` : ''}</span>
               : <span className="dim"> — nothing to change</span>}
           </div>
         )
       })}
-      {total > 0 && <div className="aprop-read">asks total <b>{total} USDC</b> across the plan</div>}
+      {total > 0 && <div className="aprop-read">asks total <b className="money">{total} USDC</b> across the plan</div>}
       {reading && <div className="aprop-read dim">{reading}</div>}
       {done
         ? <div className="aprop-acts">

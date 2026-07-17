@@ -668,11 +668,62 @@
 .mk-pilebar .mk-buy-decision .anko-ask { min-height: 44px; white-space: nowrap; }
 .mk-pilebar .mk-buy-decision .anko-recommended { display: none; }
 .mk-pilebar .mk-buy-decision .anko-read { max-height: min(46vh, 330px); overflow-y: auto; }
+
+/* Cross-table bag: one destination, one separately reviewable order per seller. */
+.mk-bagbar { position: fixed; z-index: 18; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); width: min(760px, calc(100vw - 34px)); min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 18px; transform: translateX(-50%); padding: 11px 12px 11px 16px; color: var(--ink2); background: color-mix(in srgb, var(--paper) 94%, transparent); border: 1px solid color-mix(in srgb, var(--money) 58%, var(--rule)); border-top: 3px solid var(--money); border-radius: 14px; box-shadow: 0 18px 52px rgba(0,0,0,.34); backdrop-filter: blur(14px); }
+.mk-bagbarcopy { min-width: 0; display: grid; gap: 1px; }
+.mk-bageyebrow { color: var(--dim); font-size: 8.5px; letter-spacing: .09em; text-transform: uppercase; }
+.mk-bagbarcopy strong { overflow: hidden; color: var(--ink); font-size: 14px; line-height: 1.25; text-overflow: ellipsis; white-space: nowrap; }
+.mk-bagbarcopy small { color: var(--dim); font-size: 9.5px; }
+.mk-bagopen, .money-action { color: #211908; background: linear-gradient(180deg, #e5c76f, #cda347); border: 1px solid #a77d2d; box-shadow: inset 0 1px 0 rgba(255,248,207,.48); }
+.mk-bagopen { flex: none; min-width: 142px; min-height: 44px; font-weight: 750; }
+.mk-bagroom { box-sizing: border-box; width: min(100%, 1080px); margin-inline: auto; gap: 20px; }
+.mk-baghead { padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.mk-bagsummary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--paper2); border: 1px solid var(--rule); border-top: 3px solid var(--money); border-radius: 11px; }
+.mk-bagsummary > span { min-width: 0; display: grid; justify-items: center; gap: 1px; padding: 15px; border-right: 1px solid var(--rule); }
+.mk-bagsummary > span:last-child { border-right: 0; }
+.mk-bagsummary b { color: var(--ink); font-size: 22px; line-height: 1.15; }
+.mk-bagsummary small { color: var(--dim); font-size: 9.5px; text-align: center; }
+.mk-bagtruth { max-width: 76ch; margin: -5px 0 0; color: var(--ink2); font-size: 12px; }
+.mk-bagorders { display: grid; gap: 10px; }
+.mk-bagorder { display: grid; grid-template-columns: minmax(155px, .8fr) minmax(130px, .8fr) minmax(145px, .7fr) minmax(190px, 1fr) auto; align-items: center; gap: 14px; padding: 13px 14px; background: var(--paper2); border: 1px solid var(--rule); border-radius: 11px; }
+.mk-bagidentity { min-width: 0; display: flex; align-items: center; gap: 9px; }
+.mk-bagidentity > span { min-width: 0; display: grid; gap: 1px; }
+.mk-bagidentity strong { overflow: hidden; color: var(--ink); font-size: 13px; text-overflow: ellipsis; white-space: nowrap; }
+.mk-bagidentity small { color: var(--dim); font: 9px var(--mono); }
+.mk-bagthumbs { min-width: 0; display: flex; align-items: center; padding-left: 5px; }
+.mk-bagthumbs img { width: 34px; aspect-ratio: 5 / 7; object-fit: cover; margin-left: -6px; border: 1px solid var(--rule); border-radius: 4px; box-shadow: 2px 0 6px rgba(0,0,0,.2); }
+.mk-bagthumbs > span { margin-left: 6px; color: var(--dim); font-size: 9px; }
+.mk-bagterms { min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mk-bagterms > span { display: grid; gap: 1px; }
+.mk-bagterms b { color: var(--ink); font-size: 12px; }
+.mk-bagterms small { color: var(--dim); font: 9px var(--mono); }
+.mk-bagterms > strong { font-size: 12px; white-space: nowrap; }
+.mk-bagpath { min-width: 0; display: grid; gap: 1px; padding: 7px 9px; background: var(--paper); border-left: 4px solid var(--have); border-radius: 0 7px 7px 0; }
+.mk-bagpath.offer { border-left-color: var(--agent); }
+.mk-bagpath b { color: var(--ink); font-size: 11px; }
+.mk-bagpath small { overflow: hidden; color: var(--dim); font-size: 8.5px; text-overflow: ellipsis; white-space: nowrap; }
+.mk-baggo { min-width: 120px; min-height: 42px; padding-inline: 13px; white-space: nowrap; }
+.mk-bagempty { display: grid; justify-items: start; gap: 7px; padding: 28px; background: var(--paper2); border: 1px solid var(--rule); border-radius: 11px; }
+.mk-bagempty strong { color: var(--ink); font-size: 20px; }
+.mk-bagempty p { margin: 0 0 8px; color: var(--dim); }
 @media (max-width: 940px) {
   .mk-pilebar { grid-template-columns: minmax(0, 1fr) minmax(250px, 360px); }
   .mk-pilebar .mk-buy-decision { grid-column: 1 / -1; padding: 9px 0 0; border-top: 1px solid var(--rule); border-left: 0; }
 }
 @media (max-width: 640px) {
+  .mk-bagbar { width: calc(100vw - 24px); min-height: 64px; gap: 10px; padding: 9px 9px 9px 12px; }
+  .mk-bagbarcopy strong { font-size: 12px; }
+  .mk-bagopen { min-width: 112px; min-height: 42px; padding-inline: 10px; }
+  .mk-bagsummary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mk-bagsummary > span { padding: 11px 5px; }
+  .mk-bagsummary b { font-size: 16px; }
+  .mk-bagorder { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+  .mk-bagidentity { grid-column: 1; }
+  .mk-bagthumbs { grid-column: 2; grid-row: 1; justify-content: flex-end; }
+  .mk-bagterms, .mk-bagpath, .mk-baggo { grid-column: 1 / -1; }
+  .mk-bagpath small { white-space: normal; }
+  .mk-baggo { width: 100%; }
   .mk-pilebar { position: sticky; bottom: 8px; grid-template-columns: minmax(0, 1fr); gap: 11px; padding: 11px; }
   .mk-ckpile { align-items: flex-start; }
   .mk-pilebar .mk-ckthumbs { max-width: 45%; }
