@@ -58,6 +58,20 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-19 · Codex — **Cairn now has one product-quality finish
+  system from sign-in through settlement.** Density, elevation, radii, typography,
+  focus rings, press feedback, selected cards, sticky mobile room controls, card/table
+  hover, Anko registers, Trades decisions, scanner sheets, pile docks, and checkout rails
+  share a single restrained rhythm; money remains gold, Anko blue, and human attention
+  oxblood. A bespoke 1200×630 share card carries the same dark-bench language with blank
+  unprinted sleeves; the first generated draft was rejected because it reinterpreted
+  catalogue art and was not shipped. Scoped ESLint, diff check, two assembled Pages builds,
+  exact social-image inspection, immutable bundle/asset probes, and preview/apex/`www`
+  HTML+bundle convergence pass (existing upstream Privy/Rolldown annotation warnings only).
+  Source `ce256a4`; Pages production `a4456dbd`; bundle
+  `cairn-site-917791e12f19.js` is 5,388,949 bytes / ETag
+  `c86753023874d2ffbc20c7bb5d697e39`. Catalogue data, profile state, offers,
+  evidence, payment execution, chain state, and protocol semantics are unchanged.
 - `[passive]` 2026-07-17 · Codex — **The root landing now opens like a card show,
   not a protocol essay.** A dark-first, responsive hero fans five real official Azuki
   catalogue images across the first viewport, then explains Cairn through Scan → Table →
