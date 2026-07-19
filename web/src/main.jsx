@@ -4,6 +4,7 @@ import { PrivyProvider } from '@privy-io/react-auth'
 import { arbitrumSepolia } from 'viem/chains'
 import App from './App.jsx'
 import './styles.css'
+import './polish.css'
 
 const APP_ID = import.meta.env.VITE_PRIVY_APP_ID
 
