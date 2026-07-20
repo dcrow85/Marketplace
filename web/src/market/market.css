@@ -578,8 +578,8 @@
 @media (max-width: 760px) {
   .buy-room .buy-now { padding: 8px 0 24px; }
   .buy-checkoutgrid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .buy-summary { position: static; grid-row: 1; }
-  .buy-checkoutmain { grid-row: 2; }
+  .buy-checkoutmain { grid-row: 1; }
+  .buy-summary { position: static; grid-row: 2; }
 }
 @media (max-width: 560px) {
   .buy-nowhead { display: grid; justify-content: stretch; gap: 16px; }
@@ -587,6 +587,7 @@
   .buy-nowtitle { font-size: 26px; }
   .buy-headtotal { flex-basis: auto; width: 100%; }
   .buy-environment { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .buy-environment small { display: none; }
   .buy-envlinks { grid-column: 2; flex-wrap: wrap; white-space: normal; }
   .buy-methods > p { margin-left: 0; }
   .buy-rail { grid-template-columns: 22px minmax(0, 1fr); }
