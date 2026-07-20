@@ -28,6 +28,7 @@ import {
 import {
   acceptEnvelopeOperation,
   consumeContinuationDisclosure,
+  idempotencyRecordKey,
   operationFingerprint,
   validateCapabilitiesResponse,
   validateDataGrant,
@@ -1080,7 +1081,7 @@ test("idempotency records are typed and replay precedes changed new-work state",
   assert.equal(missingResult.context.usedNonces.has(missingResult.envelope.nonce), false);
 
   const malformedState = makeEnvelopeCase();
-  const stateKey = `${malformedState.context.authorityNamespace}|${malformedState.envelope.idempotency_key}`;
+  const stateKey = idempotencyRecordKey(malformedState.context.authorityNamespace, malformedState.envelope.idempotency_key);
   malformedState.context.idempotencyRecords.set(stateKey, { fingerprint: malformedState.envelope.operation_fingerprint });
   const malformed = acceptEnvelopeOperation(malformedState.envelope, malformedState.context, ref("cairn.action_preparation_receipt.v0.1", 710));
   assert.equal(malformed.accepted, false);
@@ -1106,6 +1107,38 @@ test("idempotency records are typed and replay precedes changed new-work state",
   const rejected = acceptEnvelopeOperation(invalidTransport, replayCase.context);
   assert.equal(rejected.accepted, false);
   assert.ok(rejected.failures.includes("signature_invalid"));
+});
+
+test("idempotency state keys preserve the exact namespace and key tuple", () => {
+  const { envelope, context } = makeEnvelopeCase();
+  const sharedRecords = new Map();
+  context.idempotencyRecords = sharedRecords;
+
+  const firstDraft = structuredClone(envelope);
+  firstDraft.idempotency_key = "beta|1234567890123456";
+  const firstEnvelope = bindAndSign(firstDraft, AGENT_KEY);
+  context.authorityNamespace = "alpha";
+  const firstResult = ref("cairn.action_preparation_receipt.v0.1", 720);
+  const first = acceptEnvelopeOperation(firstEnvelope, context, firstResult);
+  assert.equal(first.accepted, true);
+  assert.equal(first.replayed, false);
+
+  const secondDraft = structuredClone(firstDraft);
+  secondDraft.message_id = uuid(721);
+  secondDraft.nonce = "fixture-nonce-00000721";
+  secondDraft.idempotency_key = "1234567890123456";
+  const secondEnvelope = bindAndSign(secondDraft, AGENT_KEY);
+  context.authorityNamespace = "alpha|beta";
+  const secondResult = ref("cairn.action_preparation_receipt.v0.1", 722);
+  const second = acceptEnvelopeOperation(secondEnvelope, context, secondResult);
+  assert.equal(second.accepted, true);
+  assert.equal(second.replayed, false);
+  assert.deepEqual(second.result_ref, secondResult);
+  assert.equal(sharedRecords.size, 2);
+  assert.notEqual(
+    idempotencyRecordKey("alpha", "beta|1234567890123456"),
+    idempotencyRecordKey("alpha|beta", "1234567890123456")
+  );
 });
 
 test("DataGrant schema rejects empty field scopes and audiences", () => {
@@ -1174,6 +1207,15 @@ test("resolved key timestamps require the exact protocol UTC representation", ()
     const keys = new Map([...keyResolver.entries()].map(([id, key]) => [id, { ...key }]));
     keys.get(AGENT_KEY.key_id).not_before = timestamp;
     assert.ok(validateSignedObject(envelope, { ...context, keyResolver: keys }).includes("signing_key_validity_invalid"), timestamp);
+  }
+});
+
+test("signed-object timestamps require the exact RFC 3339 UTC separator", () => {
+  for (const timestamp of ["2026-07-20 16:00:00Z", "2026-07-20t16:00:00z", "2026-07-20T16:00:00+00:00"]) {
+    const proposal = makeProposal();
+    proposal.created_at = timestamp;
+    const validate = ajv.getSchema(schemaFor(proposal).$id);
+    assert.equal(validate(proposal), false, timestamp);
   }
 });
 

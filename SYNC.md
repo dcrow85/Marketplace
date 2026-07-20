@@ -74,12 +74,15 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   Frozen commit `b0654a9` passed 30 authored controls but correctly failed its
   context-free re-audit on seven residual P1s and four P2s. Frozen commit
   `a916400` passed 40 authored controls but correctly failed the next cold audit
-  on three P1s and five P2s. The third remediation candidate now has 17 JSON
-  schemas (12 signed object families), an exact 10-operation proposal-only
-  registry and capabilities response, 49/49 authored controls, 26/26 killed
-  implementation-guard mutants, zero dependency vulnerabilities, and
-  deterministic bundle hash
-  `sha-256:38bbe5e23cf8fc0eb36bc18aa1c1f64f0f0a6972f94b4cd8fd38f005b07166df`.
+  on three P1s and five P2s. Frozen commit `64f9d98` then passed 49 authored
+  controls and killed 26 mutants but correctly failed on one P1 delimiter-key
+  namespace collision plus one P2 timestamp-grammar gap. The fourth remediation
+  candidate now has 17 JSON schemas (12 signed object families), an exact
+  10-operation proposal-only registry and capabilities response, canonical
+  structural idempotency tuple keys, exact UTC timestamps, 51/51 authored
+  controls, 28/28 killed implementation-guard mutants, zero dependency
+  vulnerabilities, and deterministic bundle hash
+  `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
   Its typed reservation-state input remains a local validation contract, not an
   authoritative service. This marker stays blocking until a fresh verifier
   audits the next frozen commit and every finding receives one disposition.

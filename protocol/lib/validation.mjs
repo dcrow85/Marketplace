@@ -267,6 +267,12 @@ function idempotencyRecordIsValid(record, context) {
   return Boolean(validate?.(record));
 }
 
+export function idempotencyRecordKey(authorityNamespace, idempotencyKey) {
+  if (typeof authorityNamespace !== "string" || authorityNamespace.length === 0) throw new TypeError("authority namespace required");
+  if (typeof idempotencyKey !== "string" || idempotencyKey.length === 0) throw new TypeError("idempotency key required");
+  return canonicalText([authorityNamespace, idempotencyKey]);
+}
+
 export function validateCapabilitiesResponse(response, context = {}) {
   try {
     const validate = context.ajv?.getSchema(`${OPERATION_BODIES_ID}capabilitiesResponse`);
@@ -362,10 +368,10 @@ function validateEnvelopeOperationUnsafe(envelope, context = {}) {
   const { operation, bodySchema, bodyIsValid } = transport;
   if (!operation || !bodyIsValid || failures.includes("body_schema_mismatch")) return unique(failures);
   if (bodySchema) failures.push(...validateSignedObject(envelope.body, context).map((code) => `body_${code}`));
-  const idempotencyRecordKey = envelope.idempotency_key && context.authorityNamespace
-    ? `${context.authorityNamespace}|${envelope.idempotency_key}`
+  const idempotencyStateKey = envelope.idempotency_key && context.authorityNamespace
+    ? idempotencyRecordKey(context.authorityNamespace, envelope.idempotency_key)
     : null;
-  const priorRecord = idempotencyRecordKey && context.idempotencyRecords?.get(idempotencyRecordKey);
+  const priorRecord = idempotencyStateKey && context.idempotencyRecords?.get(idempotencyStateKey);
   if (priorRecord !== undefined) {
     if (!idempotencyRecordIsValid(priorRecord, context)) failures.push("idempotency_record_invalid");
     else if (priorRecord.fingerprint !== envelope.operation_fingerprint) failures.push("idempotency_conflict");
@@ -469,7 +475,7 @@ export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null
     const transport = validateEnvelopeTransportUnsafe(envelope, context);
     if (transport.failures.length) return { accepted: false, failures: transport.failures };
     if (envelope.idempotency_key) {
-      const key = `${context.authorityNamespace}|${envelope.idempotency_key}`;
+      const key = idempotencyRecordKey(context.authorityNamespace, envelope.idempotency_key);
       const prior = context.idempotencyRecords.get(key);
       if (prior !== undefined) {
         if (!idempotencyRecordIsValid(prior, context)) {
@@ -494,7 +500,7 @@ export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null
       if (!idempotencyRecordIsValid(record, context)) {
         return { accepted: false, failures: ["idempotency_result_ref_required"] };
       }
-      const key = `${context.authorityNamespace}|${envelope.idempotency_key}`;
+      const key = idempotencyRecordKey(context.authorityNamespace, envelope.idempotency_key);
       context.idempotencyRecords.set(key, record);
     }
     context.usedNonces.add(envelope.nonce);

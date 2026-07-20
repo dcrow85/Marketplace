@@ -41,6 +41,8 @@ one-shot consumption primitives are reference validation controls, not an
 authoritative concurrent service. They require
 complete current key/controller records and typed authoritative replay,
 idempotency, DataGrant-state, and disclosure-reservation stores from the caller.
+Idempotency stores must key the canonical two-member namespace/key tuple; joined
+delimiter strings are not protocol-compatible.
 
 ## Commands
 

@@ -358,6 +358,12 @@ idempotency key, and `operation_fingerprint`. The receiver stores:
 (authority_namespace, idempotency_key) → operation_fingerprint + result reference
 ```
 
+The tuple is a structural key. When a byte/string store requires serialization,
+v0.1 encodes it as RFC 8785/JCS of the two-element array
+`[authority_namespace, idempotency_key]`; delimiter-joined text is forbidden
+because delimiters may occur in either member and collapse distinct authority
+namespaces onto one record.
+
 Same key plus same fingerprint returns the original result. Same key plus a
 different fingerprint returns `idempotency_conflict`. `operation_fingerprint`
 excludes volatile envelope fields and hashes the exact capability, principal,
@@ -4027,3 +4033,7 @@ not promote any functional profile; every profile remains an unclaimed target.
   state schema; required exact UTC key timestamps; and defined `write_object` as
   non-authorizing principal-signed intent storage. These are local validation and
   mutation controls, not a shared service or conformance claim.
+- **v0.1 machine-adjunct tuple-key hardening, 2026-07-20:** replaced ambiguous
+  delimiter-joined idempotency state keys with canonical structural tuple keys
+  and tightened every signed-object timestamp to the exact RFC 3339 UTC grammar;
+  direct regression and implementation-mutation controls cover both findings.

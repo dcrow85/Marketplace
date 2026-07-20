@@ -104,6 +104,14 @@ export const SECURITY_MUTANTS = [
     test: "idempotency records are typed and replay precedes changed new-work state"
   },
   {
+    id: "idempotency-tuple-key-encoding",
+    finding: "idempotency-namespace-confusion",
+    file: "lib/validation.mjs",
+    search: "  return canonicalText([authorityNamespace, idempotencyKey]);",
+    replace: "  return `${authorityNamespace}|${idempotencyKey}`;",
+    test: "idempotency state keys preserve the exact namespace and key tuple"
+  },
+  {
     id: "capabilities-schema-exact-slot",
     finding: "exact-capabilities-surface",
     file: "schemas/operation-bodies.schema.json",
@@ -198,6 +206,14 @@ export const SECURITY_MUTANTS = [
     search: 'function isProtocolTimestamp(value) {\n  if (typeof value !== "string") return false;\n  const match = PROTOCOL_TIMESTAMP.exec(value);\n  if (!match) return false;\n  const parsed = instant(value);\n  if (!Number.isFinite(parsed)) return false;\n  const date = new Date(parsed);\n  return date.getUTCFullYear() === Number(match[1]) &&\n    date.getUTCMonth() + 1 === Number(match[2]) &&\n    date.getUTCDate() === Number(match[3]) &&\n    date.getUTCHours() === Number(match[4]) &&\n    date.getUTCMinutes() === Number(match[5]) &&\n    date.getUTCSeconds() === Number(match[6]);\n}',
     replace: 'function isProtocolTimestamp(value) {\n  return Number.isFinite(instant(value));\n}',
     test: "resolved key timestamps require the exact protocol UTC representation"
+  },
+  {
+    id: "signed-object-exact-utc-schema",
+    finding: "strict-object-timestamps",
+    file: "schemas/common.schema.json",
+    jsonPointer: "/$defs/timestamp/pattern",
+    value: "Z$",
+    test: "signed-object timestamps require the exact RFC 3339 UTC separator"
   },
   {
     id: "write-object-non-authorizing",
