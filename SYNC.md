@@ -58,22 +58,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: proposal-foundation-reference-service]` 2026-07-20 · Codex —
-  **The separately auditable proposal-only reference-service candidate is ready
-  to freeze.** It exposes only the exact ten audited foundation operations, uses
-  injected authenticated principal/actor/authority namespaces and caller-owned
-  typed stores, binds grants/idempotency to the exact runtime, atomically consumes
-  disclosures, preserves object/ref/URI/ACL and replay-result bindings, and ends
+- `[passive]` 2026-07-20 · Codex —
+  **The separately auditable proposal-only reference service is frozen and its
+  independent gate is closed.** It exposes only the exact ten audited foundation
+  operations, uses injected authenticated principal/actor/authority namespaces
+  and caller-owned typed stores, binds grants/idempotency to the exact runtime,
+  atomically consumes disclosures, preserves object/ref/URI/ACL and replay-result
+  bindings, and ends
   `action.prepare` at a signed `external_effect: false` receipt. Strict HTTP,
   historical-proof/lifecycle separation, closed key-state vocabulary, and explicit
   signing-key failure statuses are directly mutation-controlled. The full local
   gate passes 83/83 authored controls and 75/75 killed mutants; 22 strict JSON
   sources and the deterministic bundle remain byte-identical at
   `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`;
-  dependency audit reports zero vulnerabilities. No authorize, execute, payment,
+  dependency audit reports zero vulnerabilities. Frozen commit `1711a56` then
+  passed a fresh context-free read-only review with zero P0/P1/material P2; the
+  verifier reproduced 83/83 tests, 75/75 killed mutants, the exact ten-operation
+  surface, unchanged bundle hash, zero dependency vulnerabilities, and a clean
+  worktree. No authorize, execute, payment,
   release, waiver, continuation delivery, live deployment, functional-profile,
-  or conformance claim is in scope. This marker stays blocking until the frozen
-  commit passes a fresh context-free read-only audit.
+  or conformance claim is made. The service remains an injected-authentication,
+  in-memory reference composition, not a production or conformance service.
 - `[passive]` 2026-07-20 · Codex —
   **Remediating every finding from the frozen blind audit of commit `4dba62c`
   before any reference service exists.** Scope remains `protocol/`, its agent-
