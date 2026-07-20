@@ -492,7 +492,7 @@ function makeEnvelopeCase(effect = makeEffect(), proposal = makeProposal(effect)
     schema: "cairn.data_grant.v0.1",
     grant_id: uuid(61),
     principal_id: fixture.principal_id,
-    recipient: fixture.agent_identity.agent_provider_id,
+    recipient: fixture.agent_identity.runtime_instance_key_id,
     resource_scopes: [proposalRef, ...proposal.resource_refs].map((objectRef) => ({
       resource_kind: "object",
       ref: objectRef,
@@ -501,7 +501,7 @@ function makeEnvelopeCase(effect = makeEffect(), proposal = makeProposal(effect)
     })),
     uses: ["derive"],
     purpose: "action_preparation",
-    audience: [fixture.agent_identity.agent_provider_id],
+    audience: [fixture.agent_identity.runtime_instance_key_id],
     maximum_disclosures: 2,
     retention: { expires_at: EXPIRES, deletion_terms: "Delete when the operation expires." },
     revocation_nonce: 2,
@@ -742,6 +742,22 @@ test("unknown critical envelope extensions fail closed", () => {
   const { envelope, context } = makeEnvelopeCase();
   envelope.critical_extensions = ["https://malicious.example/authority-upgrade"];
   assert.ok(validateEnvelopeOperation(envelope, context).includes("critical_extension_unknown"));
+});
+
+test("envelope grants and idempotency fingerprints bind the exact runtime, not only its provider", () => {
+  const { envelope, context } = makeEnvelopeCase();
+  const grantKey = [...context.dataGrantsByRef.keys()][0];
+  const providerWideGrant = structuredClone(context.dataGrantsByRef.get(grantKey));
+  providerWideGrant.recipient = fixture.agent_identity.agent_provider_id;
+  providerWideGrant.audience = [fixture.agent_identity.agent_provider_id];
+  context.dataGrantsByRef.set(grantKey, bindAndSign(providerWideGrant, PRINCIPAL_KEY));
+  const failures = validateEnvelopeOperation(envelope, context);
+  assert.ok(failures.includes("grant_recipient_mismatch"));
+  assert.ok(failures.includes("grant_audience_mismatch"));
+
+  const otherRuntime = structuredClone(envelope);
+  otherRuntime.sender.runtime_key_id = "https://agent.example/keys/runtime-2";
+  assert.notEqual(operationFingerprint(otherRuntime), operationFingerprint(envelope));
 });
 
 test("continuation bundle carries context but binds no transferable authority", () => {
@@ -1289,17 +1305,46 @@ test("expired ActionProposals fail signed-object and envelope admission", () => 
 test("same-fingerprint retry returns the original result instead of accepting new work", () => {
   const { envelope, context } = makeEnvelopeCase();
   const originalResult = ref("cairn.action_preparation_receipt.v0.1", 700);
-  const first = acceptEnvelopeOperation(envelope, context, originalResult);
+  let firstFactoryCalls = 0;
+  const first = acceptEnvelopeOperation(envelope, context, () => {
+    firstFactoryCalls += 1;
+    return originalResult;
+  });
   assert.equal(first.replayed, false);
+  assert.equal(firstFactoryCalls, 1);
 
   const retry = structuredClone(envelope);
   retry.message_id = uuid(701);
   retry.nonce = "fixture-nonce-00000701";
   const signedRetry = bindAndSign(retry, AGENT_KEY);
-  const second = acceptEnvelopeOperation(signedRetry, context, ref("cairn.action_preparation_receipt.v0.1", 702));
+  let replayFactoryCalls = 0;
+  const second = acceptEnvelopeOperation(signedRetry, context, () => {
+    replayFactoryCalls += 1;
+    throw new Error("replay must not invoke new work");
+  });
   assert.equal(second.accepted, true);
   assert.equal(second.replayed, true);
   assert.deepEqual(second.result_ref, originalResult);
+  assert.equal(replayFactoryCalls, 0);
+});
+
+test("operation preflight runs after validation but before result creation", () => {
+  const { envelope, context } = makeEnvelopeCase();
+  let factoryCalls = 0;
+  const denied = acceptEnvelopeOperation(
+    envelope,
+    context,
+    () => {
+      factoryCalls += 1;
+      return ref("cairn.action_preparation_receipt.v0.1", 703);
+    },
+    () => ["service_authority_mismatch"]
+  );
+  assert.equal(denied.accepted, false);
+  assert.deepEqual(denied.failures, ["service_authority_mismatch"]);
+  assert.equal(factoryCalls, 0);
+  assert.equal(context.usedNonces.size, 0);
+  assert.equal(context.idempotencyRecords.size, 0);
 });
 
 test("preparation binds expected deal head and proposal signer to the claimed agent", () => {

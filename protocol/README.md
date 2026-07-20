@@ -17,7 +17,10 @@ already exists.
 - a deterministic content-addressed bundle builder;
 - executable admission/consumption validators and mutation-controlled tests for
   authority laundering, effect-ID forks, continuation leakage, schema drift,
-  object resolution, replay, and hash/signature behavior.
+  object resolution, replay, and hash/signature behavior; and
+- a separately bounded in-memory reference service and HTTP handler for composing
+  the exact ten proposal-foundation operations without adding an authority or
+  consequential action surface.
 
 The capability response is closed over the exact ten registered operation names
 and current bundle hash. `write_object` is likewise closed to `intent.put` of an
@@ -32,10 +35,13 @@ private continuation-delivery operation.
 
 ## What is not included
 
-There is no network service, database, reservation ledger, executor, payment
-integration, or contract change in this package. `conformance_claims` is
-intentionally empty. Passing these tests establishes only that this source bundle
-is internally consistent and that the named negative fixtures are rejected.
+There is no production server, durable/shared database, reservation ledger,
+executor, payment integration, or contract change in this package. The reference
+HTTP handler has injected authentication and deterministic in-memory state only;
+it is not deployed and does not establish service conformance.
+`conformance_claims` is intentionally empty. Passing these tests establishes only
+that this source bundle and bounded reference composition are internally
+consistent and that the named negative fixtures are rejected.
 The typed continuation-reservation state schema plus in-memory acceptance and
 one-shot consumption primitives are reference validation controls, not an
 authoritative concurrent service. They require
@@ -57,6 +63,9 @@ npm run check
 `npm run build` writes `dist/cairn-protocol-bundle-v0.1.json` deterministically.
 The Python source check rejects duplicate JSON member names before Node parses any
 schema or registry file.
+
+See [`reference-service/README.md`](reference-service/README.md) for the injected
+identity/store contract and the explicit non-production boundary.
 
 ## Source-of-truth rule
 

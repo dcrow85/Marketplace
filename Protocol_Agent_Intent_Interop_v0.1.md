@@ -350,6 +350,15 @@ unknown critical extension, invalid audience, or unresolved/revoked signing key.
 Key validity does not establish legal identity; the result remains labeled
 `key_control_confirmed`, not `person_verified`.
 
+That current-key requirement governs live transport and new authority use. An
+immutable historical action or receipt remains cryptographically verifiable after
+key rotation when the resolver retains the public key, validity interval, and an
+exact revocation time proving that `signed_at` preceded revocation. Historical
+proof verification does not make an expired object current and does not permit a
+revoked key to sign a new envelope, proposal, action, or receipt. Resolved signing
+key status is a closed `active | revoked` vocabulary in both modes; an unknown
+status fails closed rather than acquiring historical meaning by omission.
+
 Nonce replay and operation retry are distinct. A transport retry uses a new
 `message_id`, nonce, timestamps, and signature but the same authority namespace,
 idempotency key, and `operation_fingerprint`. The receiver stores:
@@ -366,9 +375,13 @@ namespaces onto one record.
 
 Same key plus same fingerprint returns the original result. Same key plus a
 different fingerprint returns `idempotency_conflict`. `operation_fingerprint`
-excludes volatile envelope fields and hashes the exact capability, principal,
-receiver/payee, deal head, terms/cart, copies, rail, amounts, evidence, and expected
-effect.
+excludes volatile envelope fields and hashes the exact message type, principal,
+sender actor, sender runtime key (including explicit `null`), audience, subject and
+authorization references, body schema/hash, and critical extensions. A provider id
+alone is not an agent identity and MUST NOT collapse two runtime keys into the same
+idempotent operation. Consequential body fields additionally bind the exact
+capability, receiver/payee, deal head, terms/cart, copies, rail, amounts, evidence,
+and expected effect.
 
 ## 5. Principal-owned persistence
 
@@ -549,6 +562,12 @@ purpose, and field paths. URI-only scope is allowed only for a public immutable
 artifact whose digest is pinned by the referring object. A service endpoint grant
 authorizes retrieval, not mutation; mutation still requires its own capability and
 action authority.
+
+For a runtime-signed `CairnEnvelope`, `DataGrant.recipient` and the matching
+audience member MUST equal `sender.runtime_key_id`, not merely the runtime's shared
+agent-provider id. Only a direct human/principal envelope whose runtime key is
+explicitly `null` falls back to `sender.actor_id`. This prevents one provider
+session from spending another session's grant.
 
 `write_object` is the foundation profile's narrow storage permission. It applies
 only to `intent.put` with an exact principal-signed `cairn.active_intent.v0.1`

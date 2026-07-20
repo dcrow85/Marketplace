@@ -63,7 +63,7 @@ function schemaForObject(object, schemasByObjectId) {
   return resolve(schemasByObjectId, object?.schema);
 }
 
-function validateKeyRecord(key, expectedKeyId, now) {
+function validateKeyRecord(key, expectedKeyId, now, historicalAt = null) {
   const failures = [];
   const required = ["key_id", "key_type", "public_key", "controller", "status", "not_before", "expires_at", "revocation_time"];
   if (key === null || typeof key !== "object" || Array.isArray(key)) return ["signing_key_record_invalid"];
@@ -71,19 +71,35 @@ function validateKeyRecord(key, expectedKeyId, now) {
   if (key.key_id !== expectedKeyId) failures.push("signing_key_id_mismatch");
   if (key.key_type !== "Ed25519") failures.push("signing_key_type_mismatch");
   if (typeof key.controller !== "string" || key.controller.length === 0) failures.push("signing_key_controller_missing");
-  if (key.status !== "active") failures.push("signing_key_inactive");
+  if (key.status !== "active" && key.status !== "revoked") failures.push("signing_key_status_invalid");
+  if (historicalAt === null && key.status !== "active") failures.push("signing_key_inactive");
+  if (historicalAt !== null && key.status === "revoked" && key.revocation_time === null) {
+    failures.push("signing_key_history_incomplete");
+  }
   if (
     !isProtocolTimestamp(key.not_before) ||
     !isProtocolTimestamp(key.expires_at) ||
     instant(key.not_before) >= instant(key.expires_at) ||
     (key.revocation_time !== null && !isProtocolTimestamp(key.revocation_time))
   ) failures.push("signing_key_validity_invalid");
-  if (!currentAt(now, key.not_before, key.expires_at)) failures.push("signing_key_not_current");
-  if (key.revocation_time !== null && nowInstant(now) >= instant(key.revocation_time)) failures.push("signing_key_revoked");
+  const evaluationTime = historicalAt ?? now;
+  if (!currentAt(evaluationTime, key.not_before, key.expires_at)) {
+    failures.push(historicalAt === null ? "signing_key_not_current" : "signing_key_not_valid_at_signature");
+  }
+  if (key.revocation_time !== null && nowInstant(evaluationTime) >= instant(key.revocation_time)) {
+    failures.push(historicalAt === null ? "signing_key_revoked" : "signing_key_revoked_at_signature");
+  }
   return failures;
 }
 
-function validateSignedObjectUnsafe(object, { ajv, schemasByObjectId, keyResolver, now } = {}) {
+function validateSignedObjectUnsafe(object, {
+  ajv,
+  schemasByObjectId,
+  keyResolver,
+  now,
+  historicalKeyProof = false,
+  historicalObjectLifecycle = false
+} = {}) {
   const failures = [];
   const schema = schemaForObject(object, schemasByObjectId);
   if (!schema) return ["object_schema_unknown"];
@@ -108,7 +124,12 @@ function validateSignedObjectUnsafe(object, { ajv, schemasByObjectId, keyResolve
       failures.push("signing_key_unknown");
       continue;
     }
-    failures.push(...validateKeyRecord(key, signature.key_id, now));
+    failures.push(...validateKeyRecord(
+      key,
+      signature.key_id,
+      now,
+      historicalKeyProof === true ? signature.signed_at : null
+    ));
     if (!currentAt(signature.signed_at, key.not_before, key.expires_at)) {
       failures.push("signature_outside_key_validity");
     }
@@ -126,7 +147,11 @@ function validateSignedObjectUnsafe(object, { ajv, schemasByObjectId, keyResolve
   }
   const objectStart = object?.issued_at ?? object?.created_at ?? null;
   if (typeof objectStart === "string" && instant(objectStart) > nowInstant(now)) failures.push("object_not_yet_valid");
-  if (typeof object?.expires_at === "string" && nowInstant(now) >= instant(object.expires_at)) failures.push("object_expired");
+  if (
+    historicalObjectLifecycle !== true &&
+    typeof object?.expires_at === "string" &&
+    nowInstant(now) >= instant(object.expires_at)
+  ) failures.push("object_expired");
   return unique(failures);
 }
 
@@ -251,6 +276,7 @@ export function operationFingerprint(envelope) {
     message_type: envelope.message_type,
     principal_id: envelope.principal_id,
     sender_actor_id: envelope.sender.actor_id,
+    sender_runtime_key_id: envelope.sender.runtime_key_id,
     audience: sortedStrings(envelope.audience),
     subject_refs: sortedRefs(envelope.subject_refs),
     authorization_refs: sortedRefs(envelope.authorization_refs),
@@ -340,7 +366,9 @@ function validateEnvelopeTransportUnsafe(envelope, context = {}) {
     const senderKey = resolve(context.keyResolver, envelope.signature?.key_id);
     if (context.runtimeBinding) failures.push("runtime_binding_unexpected");
     if (!senderKey || senderKey.controller !== envelope.sender?.actor_id) failures.push("direct_sender_signer_mismatch");
-    if (operation.mutating && envelope.sender?.actor_id !== envelope.principal_id) failures.push("direct_sender_principal_mismatch");
+    if (envelope.principal_id !== null && envelope.sender?.actor_id !== envelope.principal_id) {
+      failures.push("direct_sender_principal_mismatch");
+    }
   } else if (envelope.sender?.runtime_key_id !== envelope.signature?.key_id) {
     failures.push("envelope_signer_runtime_key_mismatch");
   } else if (!context.runtimeBinding) {
@@ -371,7 +399,9 @@ function validateEnvelopeOperationUnsafe(envelope, context = {}) {
   const idempotencyStateKey = envelope.idempotency_key && context.authorityNamespace
     ? idempotencyRecordKey(context.authorityNamespace, envelope.idempotency_key)
     : null;
-  const priorRecord = idempotencyStateKey && context.idempotencyRecords?.get(idempotencyStateKey);
+  const priorRecord = idempotencyStateKey === null
+    ? undefined
+    : context.idempotencyRecords?.get(idempotencyStateKey);
   if (priorRecord !== undefined) {
     if (!idempotencyRecordIsValid(priorRecord, context)) failures.push("idempotency_record_invalid");
     else if (priorRecord.fingerprint !== envelope.operation_fingerprint) failures.push("idempotency_conflict");
@@ -442,7 +472,7 @@ function validateEnvelopeOperationUnsafe(envelope, context = {}) {
         ...context,
         grantRef,
         principalId: envelope.principal_id,
-        recipient: envelope.sender.actor_id,
+        recipient: envelope.sender.runtime_key_id ?? envelope.sender.actor_id,
         purpose: operation.grant_purpose,
         use: operation.grant_use,
         resources
@@ -470,7 +500,7 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   }
 }
 
-export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null) {
+export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null, preflight = null) {
   try {
     const transport = validateEnvelopeTransportUnsafe(envelope, context);
     if (transport.failures.length) return { accepted: false, failures: transport.failures };
@@ -495,13 +525,33 @@ export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null
     }
     const failures = validateEnvelopeOperation(envelope, context);
     if (failures.length) return { accepted: false, failures };
+    if (preflight !== null) {
+      if (typeof preflight !== "function") return { accepted: false, failures: ["operation_preflight_invalid"] };
+      let preflightFailures;
+      try {
+        preflightFailures = preflight();
+      } catch {
+        return { accepted: false, failures: ["operation_preflight_unavailable"] };
+      }
+      if (!Array.isArray(preflightFailures) || preflightFailures.some((code) => typeof code !== "string" || code.length === 0)) {
+        return { accepted: false, failures: ["operation_preflight_invalid"] };
+      }
+      if (preflightFailures.length) return { accepted: false, failures: unique(preflightFailures) };
+    }
     if (envelope.idempotency_key) {
-      const record = { fingerprint: envelope.operation_fingerprint, result_ref: resultRef };
+      let resolvedResultRef;
+      try {
+        resolvedResultRef = typeof resultRef === "function" ? resultRef() : resultRef;
+      } catch {
+        return { accepted: false, failures: ["operation_result_unavailable"] };
+      }
+      const record = { fingerprint: envelope.operation_fingerprint, result_ref: resolvedResultRef };
       if (!idempotencyRecordIsValid(record, context)) {
         return { accepted: false, failures: ["idempotency_result_ref_required"] };
       }
       const key = idempotencyRecordKey(context.authorityNamespace, envelope.idempotency_key);
       context.idempotencyRecords.set(key, record);
+      resultRef = resolvedResultRef;
     }
     context.usedNonces.add(envelope.nonce);
     return { accepted: true, replayed: false, result_ref: resultRef, failures: [] };

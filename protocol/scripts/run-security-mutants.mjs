@@ -85,7 +85,7 @@ for (const mutant of SECURITY_MUTANTS) {
       "--test",
       "--test-reporter=tap",
       `--test-name-pattern=^${mutant.test.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`,
-      "tests/foundation.test.mjs"
+      mutant.testFile ?? "tests/foundation.test.mjs"
     ], candidate);
     const output = combined(testResult);
     const title = mutant.test.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

@@ -58,7 +58,23 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: agent-protocol-cold-audit-remediation]` 2026-07-20 · Codex —
+- `[BLOCKING: proposal-foundation-reference-service]` 2026-07-20 · Codex —
+  **The separately auditable proposal-only reference-service candidate is ready
+  to freeze.** It exposes only the exact ten audited foundation operations, uses
+  injected authenticated principal/actor/authority namespaces and caller-owned
+  typed stores, binds grants/idempotency to the exact runtime, atomically consumes
+  disclosures, preserves object/ref/URI/ACL and replay-result bindings, and ends
+  `action.prepare` at a signed `external_effect: false` receipt. Strict HTTP,
+  historical-proof/lifecycle separation, closed key-state vocabulary, and explicit
+  signing-key failure statuses are directly mutation-controlled. The full local
+  gate passes 83/83 authored controls and 75/75 killed mutants; 22 strict JSON
+  sources and the deterministic bundle remain byte-identical at
+  `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`;
+  dependency audit reports zero vulnerabilities. No authorize, execute, payment,
+  release, waiver, continuation delivery, live deployment, functional-profile,
+  or conformance claim is in scope. This marker stays blocking until the frozen
+  commit passes a fresh context-free read-only audit.
+- `[passive]` 2026-07-20 · Codex —
   **Remediating every finding from the frozen blind audit of commit `4dba62c`
   before any reference service exists.** Scope remains `protocol/`, its agent-
   neutral spec/index cross-links, and this ledger: complete envelope/request/
@@ -84,8 +100,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   vulnerabilities, and deterministic bundle hash
   `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
   Its typed reservation-state input remains a local validation contract, not an
-  authoritative service. This marker stays blocking until a fresh verifier
-  audits the next frozen commit and every finding receives one disposition.
+  authoritative service. Frozen commit `e653556` passed a fresh context-free
+  audit with zero P0/P1/material P2; the verifier reproduced 51/51 authored
+  controls, 28/28 killed mutants, deterministic bundle hash
+  `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`,
+  byte-identical output, and zero dependency vulnerabilities. This closes the
+  proposal-foundation prerequisite only; no service/conformance claim is implied.
 - `[passive]` 2026-07-20 · Codex — **The first machine-readable Cairn Core slice
   is locally built and mutation-tested at the proposal-only boundary.** New
   `protocol/` source contains 16 JSON Schemas (12 signed object families), an
