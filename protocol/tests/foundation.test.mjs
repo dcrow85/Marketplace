@@ -16,6 +16,7 @@ import {
   assertIJson,
   objectRefFor,
   objectHash,
+  sameObjectRef,
   semanticHash,
   signatureInput,
   utf8Sorted,
@@ -27,11 +28,13 @@ import {
   acceptEnvelopeOperation,
   consumeContinuationDisclosure,
   operationFingerprint,
+  validateDataGrant,
   validateContinuationBinding,
   validateEnvelopeOperation,
   validatePreparationReceipt,
   validateProposalEffectBinding,
   validateResolvedObjectResponse,
+  validateRuntimeBinding,
   validateSignedObject
 } from "../lib/validation.mjs";
 import { createAjv, readJson } from "../lib/schemas.mjs";
@@ -57,10 +60,12 @@ function testKey(key_id, controller) {
   const { publicKey, privateKey } = generateKeyPairSync("ed25519");
   return {
     key_id,
+    key_type: "Ed25519",
     controller,
     status: "active",
     not_before: "2026-07-20T15:00:00Z",
     expires_at: "2026-07-20T18:00:00Z",
+    revocation_time: null,
     public_key: publicKey.export({ format: "jwk" }).x,
     privateKey
   };
@@ -961,6 +966,167 @@ test("proposal-foundation registry surface is exact, not merely a denylist", () 
   const weakened = structuredClone(sources);
   weakened.registry.operations[2].grant_use = "read_local";
   assert.throws(() => auditSources(weakened), /exact proposal-foundation surface/);
+});
+
+test("authoritative DataGrant state requires typed counters and fails closed", () => {
+  for (const malformed of [undefined, "1", Number.NaN, -1]) {
+    const { grant, authorization, context } = makeContinuation();
+    const grantRef = authorization.data_grant_refs[0];
+    const state = [...context.grantStatesByRef.values()][0];
+    if (malformed === undefined) delete state.remaining_disclosures;
+    else state.remaining_disclosures = malformed;
+    const failures = validateDataGrant(grant, {
+      ...context,
+      grantRef,
+      principalId: fixture.principal_id,
+      recipient: AGENT_KEY.key_id,
+      purpose: "agent_continuation",
+      use: "read_local",
+      resources: []
+    });
+    assert.ok(failures.includes("grant_state_invalid"), String(malformed));
+  }
+});
+
+test("resolved signing keys require complete identity, status, validity, and revocation metadata", () => {
+  const { envelope, context, runtimeBinding } = makeEnvelopeCase();
+  const incompleteKeys = new Map([...keyResolver.entries()].map(([id, key]) => [id, { ...key }]));
+  for (const field of ["controller", "status", "not_before", "expires_at", "revocation_time"]) {
+    delete incompleteKeys.get(AGENT_KEY.key_id)[field];
+  }
+  delete incompleteKeys.get(PROVIDER_KEY.key_id).controller;
+  const incompleteContext = { ...context, keyResolver: incompleteKeys };
+  assert.ok(validateSignedObject(envelope, incompleteContext).includes("signing_key_record_incomplete"));
+  assert.ok(validateRuntimeBinding(runtimeBinding, incompleteContext).includes("runtime_provider_signer_mismatch"));
+  assert.ok(validateEnvelopeOperation(envelope, incompleteContext).length > 0);
+});
+
+test("action preparation grants must cover the resolved effect descriptor independently", () => {
+  const effect = makeEffect();
+  const proposal = makeProposal(effect);
+  proposal.resource_refs = proposal.resource_refs.filter((objectRef) => !sameObjectRef(objectRef, proposal.effect_descriptor_ref));
+  const rebound = bindAndSign(proposal, AGENT_KEY);
+  const { envelope, context } = makeEnvelopeCase(effect, rebound);
+  const failures = validateEnvelopeOperation(envelope, context);
+  assert.ok(failures.includes("effect_descriptor_resource_ref_missing"));
+  assert.ok(failures.includes("resource_uri_missing") || failures.includes("grant_resource_scope_mismatch"));
+});
+
+test("expired ActionProposals fail signed-object and envelope admission", () => {
+  const effect = makeEffect();
+  const proposal = makeProposal(effect);
+  proposal.expires_at = "2026-07-20T16:15:00Z";
+  const expired = bindAndSign(proposal, AGENT_KEY);
+  assert.ok(validateSignedObject(expired, validationContext()).includes("object_expired"));
+  const { envelope, context } = makeEnvelopeCase(effect, expired);
+  assert.ok(validateEnvelopeOperation(envelope, context).includes("body_object_expired"));
+});
+
+test("same-fingerprint retry returns the original result instead of accepting new work", () => {
+  const { envelope, context } = makeEnvelopeCase();
+  const originalResult = ref("cairn.action_preparation_receipt.v0.1", 700);
+  const first = acceptEnvelopeOperation(envelope, context, originalResult);
+  assert.equal(first.replayed, false);
+
+  const retry = structuredClone(envelope);
+  retry.message_id = uuid(701);
+  retry.nonce = "fixture-nonce-00000701";
+  const signedRetry = bindAndSign(retry, AGENT_KEY);
+  const second = acceptEnvelopeOperation(signedRetry, context, ref("cairn.action_preparation_receipt.v0.1", 702));
+  assert.equal(second.accepted, true);
+  assert.equal(second.replayed, true);
+  assert.deepEqual(second.result_ref, originalResult);
+});
+
+test("preparation binds expected deal head and proposal signer to the claimed agent", () => {
+  const proposal = makeProposal();
+  const changedAction = makeDraftAction(proposal);
+  changedAction.expected_deal_head_hash = HASH_B;
+  const action = bindAndSign(changedAction, SERVICE_KEY);
+  const receipt = makePreparationReceipt(action, proposal);
+  const context = validationContext({ action, proposal, expectedAgentIdentity: fixture.agent_identity });
+  assert.ok(validatePreparationReceipt(receipt, context).includes("action_proposal_semantics_mismatch"));
+
+  const wrongSigner = makeProposal();
+  wrongSigner.agent_signature = signature(PRINCIPAL_KEY);
+  const signedByPrincipal = bindAndSign(wrongSigner, PRINCIPAL_KEY);
+  const matchingAction = makeDraftAction(signedByPrincipal);
+  const matchingReceipt = makePreparationReceipt(matchingAction, signedByPrincipal);
+  const signerFailures = validatePreparationReceipt(matchingReceipt, validationContext({
+    action: matchingAction,
+    proposal: signedByPrincipal,
+    expectedAgentIdentity: fixture.agent_identity
+  }));
+  assert.ok(signerFailures.includes("preparation_agent_key_mismatch"));
+  assert.ok(signerFailures.includes("preparation_agent_controller_mismatch"));
+});
+
+test("unknown-schema authorization objects fail closed without throwing", () => {
+  const { envelope, context } = makeEnvelopeCase();
+  const grantKey = [...context.dataGrantsByRef.keys()][0];
+  context.dataGrantsByRef.set(grantKey, { schema: "cairn.unknown.v0.1" });
+  let failures;
+  assert.doesNotThrow(() => { failures = validateEnvelopeOperation(envelope, context); });
+  assert.ok(failures.includes("authorization_grant_schema_unknown"));
+});
+
+test("source audit pins full annotation paths, not only their root properties", () => {
+  const mutated = structuredClone(sources);
+  const proposalSchema = mutated.schemas.find(({ document }) => document["x-cairn-object-schema"] === "cairn.action_proposal.v0.1").document;
+  proposalSchema["x-cairn-signature-pointers"] = ["/agent_signature/missing"];
+  proposalSchema["x-cairn-hash-exclusion-pointers"] = [
+    "/agent_signature/missing/signed_hash",
+    "/agent_signature/missing/value"
+  ];
+  assert.throws(() => auditSources(mutated), /exact signed-object annotation profile/);
+});
+
+test("I-JSON arrays reject properties that canonical JSON would omit", () => {
+  const value = [];
+  Object.defineProperty(value, "4294967295", { value: "unhashed", enumerable: true });
+  assert.throws(() => canonicalText(value), /array has non-JSON members/);
+});
+
+test("direct-principal preparation is coherent without inventing an agent runtime", () => {
+  const effect = makeEffect();
+  const proposalDraft = makeProposal(effect);
+  proposalDraft.agent_identity = null;
+  proposalDraft.agent_signature = signature(PRINCIPAL_KEY);
+  const proposal = bindAndSign(proposalDraft, PRINCIPAL_KEY);
+  const action = makeDraftAction(proposal);
+  const receiptDraft = makePreparationReceipt(action, proposal);
+  receiptDraft.prepared_by_agent = null;
+  const receipt = bindAndSign(receiptDraft, SERVICE_KEY);
+  assertSchemaValid(receipt);
+  assert.deepEqual(validatePreparationReceipt(receipt, validationContext({
+    action,
+    proposal,
+    expectedAgentIdentity: null
+  })), []);
+
+  const envelopeCase = makeEnvelopeCase(effect, proposal);
+  const grantDraft = structuredClone(envelopeCase.grant);
+  grantDraft.recipient = fixture.principal_id;
+  grantDraft.audience = [fixture.principal_id];
+  const grant = bindAndSign(grantDraft, PRINCIPAL_KEY);
+  const grantRef = objectRefFor(grant, schemaFor(grant));
+  const grantKey = `${grantRef.schema}|${grantRef.object_id}|${grantRef.object_hash}`;
+  const envelopeDraft = structuredClone(envelopeCase.envelope);
+  envelopeDraft.sender = { actor_id: fixture.principal_id, runtime_key_id: null };
+  envelopeDraft.authorization_refs = [grantRef];
+  envelopeDraft.signature = signature(PRINCIPAL_KEY);
+  envelopeDraft.operation_fingerprint = operationFingerprint(envelopeDraft);
+  const envelope = bindAndSign(envelopeDraft, PRINCIPAL_KEY);
+  const context = {
+    ...envelopeCase.context,
+    runtimeBinding: null,
+    authorityNamespace: `${fixture.principal_id}|action.prepare`,
+    dataGrantsByRef: new Map([[grantKey, grant]]),
+    grantStatesByRef: new Map([[grantKey, { status: "active", revocation_nonce: 2, remaining_disclosures: 2 }]]),
+    usedNonces: new Set(),
+    idempotencyRecords: new Map()
+  };
+  assert.deepEqual(validateEnvelopeOperation(envelope, context), []);
 });
 
 test("duplicate members and floating-point source are rejected before Node parsing", () => {

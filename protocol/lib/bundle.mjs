@@ -2,7 +2,11 @@ import { readdir } from "node:fs/promises";
 import path from "node:path";
 
 import { canonicalHash, canonicalText } from "./core.mjs";
-import { EXACT_FOUNDATION_OPERATION_TUPLES, operationTuple } from "./foundation-profile.mjs";
+import {
+  EXACT_FOUNDATION_OPERATION_TUPLES,
+  SIGNED_OBJECT_ANNOTATIONS,
+  operationTuple
+} from "./foundation-profile.mjs";
 import { createAjv, loadSchemas, readJson, requireValid } from "./schemas.mjs";
 
 export async function loadSources(root) {
@@ -66,6 +70,23 @@ export function auditSources({ manifest, registry, schemas }) {
     ]);
     if (canonicalText(hashExclusionPointers) !== canonicalText(expectedHashExclusions)) {
       throw new Error(`${name} must hash signature metadata and exclude only signed_hash/value`);
+    }
+    const expectedAnnotations = SIGNED_OBJECT_ANNOTATIONS[objectSchema];
+    const actualAnnotations = [
+      idPointer,
+      selfHashPointer,
+      signaturePointers[0],
+      document["x-cairn-equal-non-null-pointers"] ?? [],
+      document["x-cairn-semantic-hash"] ?? null,
+      document["x-cairn-body-hash"] ?? null
+    ];
+    if (!expectedAnnotations || canonicalText(actualAnnotations) !== canonicalText(expectedAnnotations)) {
+      throw new Error(`${name} differs from the exact signed-object annotation profile`);
+    }
+    if (signaturePointers.length !== 1) throw new Error(`${name} must declare exactly one foundation signature`);
+    const signatureRoot = signaturePointers[0].slice(1);
+    if (document.properties?.[signatureRoot]?.$ref !== "common.schema.json#/$defs/signature") {
+      throw new Error(`${name}: signature pointer must resolve to the common Signature schema`);
     }
     const exclusionPointers = [selfHashPointer, ...hashExclusionPointers];
     if (new Set(exclusionPointers).size !== exclusionPointers.length) {

@@ -2033,7 +2033,7 @@ cairn.action_preparation_receipt.v0.1:
   state_before: draft
   state_after: prepared
   prepared_for_principal: <principal>
-  prepared_by_agent: <full agent identity>
+  prepared_by_agent: <full agent identity, or null for principal-direct preparation>
   external_effect: false
 
 cairn.disclosure_receipt.v0.1:
@@ -2183,6 +2183,13 @@ cairn.final_deal_receipt.v0.1:
   finalized_at: <time>
   not_claiming: [physical_authenticity, legal_finality_beyond_named_policy]
 ```
+
+For principal-direct preparation, `ActionProposal.agent_identity` and
+`ActionPreparationReceipt.prepared_by_agent` are both null, and the proposal key
+controller is the principal. For agent preparation, the proposal signing key is
+the claimed runtime key and its controller is the claimed agent provider. In both
+branches the action and proposal MUST match on principal, capability, effect ID,
+and expected deal-head hash.
 
 The signed reservation object proves only the reservation snapshot; each change
 uses `cairn.reservation_event_receipt.v0.1`. A separate receiver receipt is
@@ -3981,3 +3988,9 @@ not promote any functional profile; every profile remains an unclaimed target.
   validators; authenticated signature metadata; pinned the exact ten-operation
   foundation surface; and kept private continuation delivery outside the registry
   until an authoritative one-shot ledger exists.
+- **v0.1 machine-adjunct re-audit hardening, 2026-07-20:** made resolved key
+  records and authoritative grant counters total, covered the independently
+  resolved effect descriptor, enforced object expiry and preparation deal-head /
+  signer identity, returned stored results for identical idempotent retries,
+  supported the principal-direct preparation branch, and closed annotation,
+  unknown-schema, and array-property failure modes found by frozen re-audit.

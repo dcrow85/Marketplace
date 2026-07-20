@@ -32,7 +32,9 @@ integration, or contract change in this package. `conformance_claims` is
 intentionally empty. Passing these tests establishes only that this source bundle
 is internally consistent and that the named negative fixtures are rejected.
 The in-memory acceptance and one-shot consumption primitives are reference
-validation controls, not an authoritative concurrent service.
+validation controls, not an authoritative concurrent service. They require
+complete current key/controller records and typed authoritative replay,
+idempotency, DataGrant-state, and disclosure-reservation stores from the caller.
 
 ## Commands
 

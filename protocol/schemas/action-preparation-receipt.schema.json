@@ -34,7 +34,12 @@
     "state_before": { "const": "draft" },
     "state_after": { "const": "prepared" },
     "prepared_for_principal": { "$ref": "common.schema.json#/$defs/principalId" },
-    "prepared_by_agent": { "$ref": "common.schema.json#/$defs/agentIdentity" },
+    "prepared_by_agent": {
+      "anyOf": [
+        { "$ref": "common.schema.json#/$defs/agentIdentity" },
+        { "type": "null" }
+      ]
+    },
     "external_effect": { "const": false },
     "issued_at": { "$ref": "common.schema.json#/$defs/timestamp" },
     "issuer": { "$ref": "common.schema.json#/$defs/actorId" },

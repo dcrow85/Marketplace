@@ -41,18 +41,32 @@ export function assertIJson(value, path = "$", seen = new WeakSet()) {
   if (Array.isArray(value)) {
     for (let index = 0; index < value.length; index += 1) {
       if (!Object.hasOwn(value, index)) throw new TypeError(`${path}[${index}]: sparse arrays are not JSON`);
-      assertIJson(value[index], `${path}[${index}]`, seen);
+      const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+      if (!descriptor?.enumerable || !Object.hasOwn(descriptor, "value")) {
+        throw new TypeError(`${path}[${index}]: array has non-JSON members`);
+      }
+      assertIJson(descriptor.value, `${path}[${index}]`, seen);
     }
-    const nonIndexKeys = Object.keys(value).filter((key) => !/^(?:0|[1-9][0-9]*)$/.test(key));
+    const nonIndexKeys = Reflect.ownKeys(value).filter((key) => {
+      if (key === "length") return false;
+      if (typeof key !== "string" || !Object.getOwnPropertyDescriptor(value, key)?.enumerable) return true;
+      if (!/^(?:0|[1-9][0-9]*)$/.test(key)) return true;
+      const index = Number(key);
+      return !Number.isSafeInteger(index) || index < 0 || index >= 4294967295 || String(index) !== key;
+    });
     if (nonIndexKeys.length) throw new TypeError(`${path}: array has non-JSON members`);
   } else {
     const prototype = Object.getPrototypeOf(value);
     if (prototype !== Object.prototype && prototype !== null) {
       throw new TypeError(`${path}: non-plain object is not JSON data`);
     }
-    for (const [key, item] of Object.entries(value)) {
+    for (const key of Reflect.ownKeys(value)) {
+      const descriptor = Object.getOwnPropertyDescriptor(value, key);
+      if (typeof key !== "string" || !descriptor?.enumerable || !Object.hasOwn(descriptor, "value")) {
+        throw new TypeError(`${path}: object has non-JSON members`);
+      }
       assertUnicodeScalarString(key, `${path}.<key>`);
-      assertIJson(item, `${path}.${key}`, seen);
+      assertIJson(descriptor.value, `${path}.${key}`, seen);
     }
   }
   seen.delete(value);

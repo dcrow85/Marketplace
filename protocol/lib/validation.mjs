@@ -46,8 +46,23 @@ function schemaForObject(object, schemasByObjectId) {
   return resolve(schemasByObjectId, object?.schema);
 }
 
-function validationError(validate, code) {
-  return validate && validate.errors ? code : code;
+function validateKeyRecord(key, expectedKeyId, now) {
+  const failures = [];
+  const required = ["key_id", "key_type", "public_key", "controller", "status", "not_before", "expires_at", "revocation_time"];
+  if (required.some((field) => !Object.hasOwn(key, field))) failures.push("signing_key_record_incomplete");
+  if (key.key_id !== expectedKeyId) failures.push("signing_key_id_mismatch");
+  if (key.key_type !== "Ed25519") failures.push("signing_key_type_mismatch");
+  if (typeof key.controller !== "string" || key.controller.length === 0) failures.push("signing_key_controller_missing");
+  if (key.status !== "active") failures.push("signing_key_inactive");
+  if (
+    !Number.isFinite(instant(key.not_before)) ||
+    !Number.isFinite(instant(key.expires_at)) ||
+    instant(key.not_before) >= instant(key.expires_at) ||
+    (key.revocation_time !== null && !Number.isFinite(instant(key.revocation_time)))
+  ) failures.push("signing_key_validity_invalid");
+  if (!currentAt(now, key.not_before, key.expires_at)) failures.push("signing_key_not_current");
+  if (key.revocation_time !== null && nowInstant(now) >= instant(key.revocation_time)) failures.push("signing_key_revoked");
+  return failures;
 }
 
 export function validateSignedObject(object, { ajv, schemasByObjectId, keyResolver, now } = {}) {
@@ -55,7 +70,7 @@ export function validateSignedObject(object, { ajv, schemasByObjectId, keyResolv
   const schema = schemaForObject(object, schemasByObjectId);
   if (!schema) return ["object_schema_unknown"];
   const validate = ajv?.getSchema(schema.$id);
-  if (!validate || !validate(object)) failures.push(validationError(validate, "object_schema_invalid"));
+  if (!validate || !validate(object)) failures.push("object_schema_invalid");
   try {
     failures.push(...verifyObjectBindings(object, schema));
   } catch {
@@ -75,15 +90,8 @@ export function validateSignedObject(object, { ajv, schemasByObjectId, keyResolv
       failures.push("signing_key_unknown");
       continue;
     }
-    if (key.status && key.status !== "active") failures.push("signing_key_inactive");
-    if (key.not_before && key.expires_at && !currentAt(now, key.not_before, key.expires_at)) {
-      failures.push("signing_key_not_current");
-    }
-    if (
-      key.not_before &&
-      key.expires_at &&
-      !currentAt(signature.signed_at, key.not_before, key.expires_at)
-    ) {
+    failures.push(...validateKeyRecord(key, signature.key_id, now));
+    if (!currentAt(signature.signed_at, key.not_before, key.expires_at)) {
       failures.push("signature_outside_key_validity");
     }
     if (instant(signature.signed_at) > nowInstant(now)) failures.push("signature_from_future");
@@ -98,6 +106,9 @@ export function validateSignedObject(object, { ajv, schemasByObjectId, keyResolv
       failures.push("signature_invalid");
     }
   }
+  const objectStart = object?.issued_at ?? object?.created_at ?? null;
+  if (typeof objectStart === "string" && instant(objectStart) > nowInstant(now)) failures.push("object_not_yet_valid");
+  if (typeof object?.expires_at === "string" && nowInstant(now) >= instant(object.expires_at)) failures.push("object_expired");
   return unique(failures);
 }
 
@@ -113,17 +124,14 @@ export function validateRuntimeBinding(binding, context = {}) {
   const runtimeKey = resolve(context.keyResolver, binding?.runtime_public_key?.key_id);
   if (!runtimeKey) failures.push("runtime_public_key_unresolved");
   else {
+    failures.push(...validateKeyRecord(runtimeKey, binding?.runtime_public_key?.key_id, context.now));
     if (runtimeKey.public_key !== binding?.runtime_public_key?.public_key) failures.push("runtime_public_key_material_mismatch");
-    if (runtimeKey.status && runtimeKey.status !== "active") failures.push("runtime_resolved_key_inactive");
-    if (runtimeKey.not_before && runtimeKey.expires_at && !currentAt(context.now, runtimeKey.not_before, runtimeKey.expires_at)) {
-      failures.push("runtime_resolved_key_not_current");
-    }
-    if (runtimeKey.controller && runtimeKey.controller !== binding?.agent_identity?.agent_provider_id) {
+    if (runtimeKey.controller !== binding?.agent_identity?.agent_provider_id) {
       failures.push("runtime_key_controller_mismatch");
     }
   }
   const providerKey = resolve(context.keyResolver, binding?.provider_signature?.key_id);
-  if (providerKey?.controller && providerKey.controller !== binding?.agent_identity?.agent_provider_id) {
+  if (!providerKey || providerKey.controller !== binding?.agent_identity?.agent_provider_id) {
     failures.push("runtime_provider_signer_mismatch");
   }
   return unique(failures);
@@ -143,7 +151,7 @@ export function validateDataGrant(grant, context = {}) {
   if (grant?.purpose !== context.purpose) failures.push("grant_purpose_mismatch");
   if (!grant?.uses?.includes(context.use)) failures.push("grant_use_missing");
   if (!grant?.audience?.includes(context.recipient)) failures.push("grant_audience_mismatch");
-  if (grant?.maximum_disclosures < 1) failures.push("grant_disclosures_exhausted");
+  if (!Number.isSafeInteger(grant?.maximum_disclosures) || grant.maximum_disclosures < 1) failures.push("grant_disclosures_exhausted");
   if (!currentAt(context.now, grant?.issued_at, grant?.expires_at)) failures.push("grant_not_current");
   if (grant?.retention?.expires_at && instant(grant.retention.expires_at) > instant(grant.expires_at)) {
     failures.push("grant_retention_exceeds_grant");
@@ -156,10 +164,15 @@ export function validateDataGrant(grant, context = {}) {
   const state = resolve(context.grantStatesByRef, objectRefKey(context.grantRef ?? {}));
   if (!state) failures.push("grant_state_missing");
   else {
+    if (
+      !Number.isSafeInteger(state.revocation_nonce) ||
+      !Number.isSafeInteger(state.remaining_disclosures) ||
+      state.remaining_disclosures < 0
+    ) failures.push("grant_state_invalid");
     if (state.status !== "active") failures.push("grant_revoked_or_inactive");
     if (state.revocation_nonce !== grant.revocation_nonce) failures.push("grant_revocation_nonce_mismatch");
-    if (state.remaining_disclosures < 1) failures.push("grant_disclosures_exhausted");
-    if (state.remaining_disclosures > grant.maximum_disclosures) failures.push("grant_disclosure_state_invalid");
+    if (!Number.isSafeInteger(state.remaining_disclosures) || state.remaining_disclosures < 1) failures.push("grant_disclosures_exhausted");
+    if (Number.isSafeInteger(state.remaining_disclosures) && state.remaining_disclosures > grant.maximum_disclosures) failures.push("grant_disclosure_state_invalid");
   }
   for (const resource of context.resources ?? []) {
     if (!grant?.resource_scopes?.some((scope) => resourceCovered(scope, resource))) {
@@ -205,7 +218,11 @@ function operationResources(envelope, context, bodySchema) {
     const bodyRef = objectRefFor(envelope.body, bodySchema);
     resources.push({ resource_kind: "object", ref: bodyRef, retrieval_uri: resourceUri(bodyRef, context), field_paths: [""] });
     if (envelope.message_type === "action.prepare") {
-      for (const ref of envelope.body.resource_refs ?? []) {
+      const refs = [...(envelope.body.resource_refs ?? [])];
+      if (envelope.body.effect_descriptor_ref && !refs.some((ref) => sameObjectRef(ref, envelope.body.effect_descriptor_ref))) {
+        refs.push(envelope.body.effect_descriptor_ref);
+      }
+      for (const ref of refs) {
         resources.push({ resource_kind: "object", ref, retrieval_uri: resourceUri(ref, context), field_paths: [""] });
       }
     }
@@ -242,13 +259,21 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   const idempotencyRecordKey = envelope.idempotency_key && context.authorityNamespace
     ? `${context.authorityNamespace}|${envelope.idempotency_key}`
     : null;
-  const priorFingerprint = idempotencyRecordKey && context.idempotencyRecords?.get(idempotencyRecordKey);
+  const priorRecord = idempotencyRecordKey && context.idempotencyRecords?.get(idempotencyRecordKey);
+  const priorFingerprint = typeof priorRecord === "string" ? priorRecord : priorRecord?.fingerprint;
   if (priorFingerprint && priorFingerprint !== envelope.operation_fingerprint) failures.push("idempotency_conflict");
   if ((envelope.critical_extensions?.length ?? 0) > 0) failures.push("critical_extension_unknown");
 
-  if (envelope.sender?.runtime_key_id !== envelope.signature?.key_id) failures.push("envelope_signer_runtime_key_mismatch");
-  if (!context.runtimeBinding) failures.push("runtime_binding_required");
-  else {
+  if (envelope.sender?.runtime_key_id === null) {
+    const senderKey = resolve(context.keyResolver, envelope.signature?.key_id);
+    if (context.runtimeBinding) failures.push("runtime_binding_unexpected");
+    if (!senderKey || senderKey.controller !== envelope.sender?.actor_id) failures.push("direct_sender_signer_mismatch");
+    if (operation.mutating && envelope.sender?.actor_id !== envelope.principal_id) failures.push("direct_sender_principal_mismatch");
+  } else if (envelope.sender?.runtime_key_id !== envelope.signature?.key_id) {
+    failures.push("envelope_signer_runtime_key_mismatch");
+  } else if (!context.runtimeBinding) {
+    failures.push("runtime_binding_required");
+  } else {
     failures.push(...validateRuntimeBinding(context.runtimeBinding, context));
     if (context.runtimeBinding.agent_identity?.runtime_instance_key_id !== envelope.sender?.runtime_key_id) {
       failures.push("runtime_binding_key_mismatch");
@@ -268,9 +293,20 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   }
   if (envelope.message_type === "action.prepare") {
     const identity = envelope.body?.agent_identity;
-    if (!identity || !canonicalEqual(identity, context.runtimeBinding?.agent_identity)) failures.push("proposal_runtime_identity_mismatch");
-    if (envelope.body?.agent_signature?.key_id !== envelope.sender?.runtime_key_id) failures.push("proposal_signer_runtime_key_mismatch");
+    if (identity === null) {
+      const proposalKey = resolve(context.keyResolver, envelope.body?.agent_signature?.key_id);
+      if (envelope.sender?.runtime_key_id !== null || context.runtimeBinding) failures.push("direct_proposal_runtime_present");
+      if (!proposalKey || proposalKey.controller !== envelope.principal_id) failures.push("direct_proposal_signer_mismatch");
+    } else {
+      if (!canonicalEqual(identity, context.runtimeBinding?.agent_identity)) failures.push("proposal_runtime_identity_mismatch");
+      if (envelope.body?.agent_signature?.key_id !== envelope.sender?.runtime_key_id) failures.push("proposal_signer_runtime_key_mismatch");
+      const proposalKey = resolve(context.keyResolver, envelope.body?.agent_signature?.key_id);
+      if (!proposalKey || proposalKey.controller !== identity?.agent_provider_id) failures.push("proposal_signer_controller_mismatch");
+    }
     const descriptorRef = envelope.body?.effect_descriptor_ref;
+    if (!envelope.body?.resource_refs?.some((ref) => sameObjectRef(ref, descriptorRef))) {
+      failures.push("effect_descriptor_resource_ref_missing");
+    }
     const descriptor = descriptorRef && resolve(context.effectDescriptorsByRef, objectRefKey(descriptorRef));
     if (!descriptor) failures.push("effect_descriptor_unresolved");
     else {
@@ -295,8 +331,17 @@ export function validateEnvelopeOperation(envelope, context = {}) {
         failures.push("authorization_grant_unresolved");
         continue;
       }
-      if (!sameObjectRef(grantRef, objectRefFor(grant, schemaForObject(grant, context.schemasByObjectId)))) {
-        failures.push("authorization_grant_ref_mismatch");
+      const grantSchema = schemaForObject(grant, context.schemasByObjectId);
+      if (!grantSchema) {
+        failures.push("authorization_grant_schema_unknown");
+        continue;
+      }
+      try {
+        if (!sameObjectRef(grantRef, objectRefFor(grant, grantSchema))) {
+          failures.push("authorization_grant_ref_mismatch");
+        }
+      } catch {
+        failures.push("authorization_grant_ref_invalid");
       }
       failures.push(...validateSignedObject(grant, context).map((code) => `grant_${code}`));
       const grantFailures = validateDataGrant(grant, {
@@ -323,17 +368,24 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   return unique(failures);
 }
 
-export function acceptEnvelopeOperation(envelope, context = {}) {
+export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null) {
   const failures = validateEnvelopeOperation(envelope, context);
   if (failures.length) return { accepted: false, failures };
-  context.usedNonces?.add(envelope.nonce);
+  context.usedNonces.add(envelope.nonce);
   if (envelope.idempotency_key) {
-    context.idempotencyRecords.set(
-      `${context.authorityNamespace}|${envelope.idempotency_key}`,
-      envelope.operation_fingerprint
-    );
+    const key = `${context.authorityNamespace}|${envelope.idempotency_key}`;
+    const prior = context.idempotencyRecords.get(key);
+    if (prior) {
+      return {
+        accepted: true,
+        replayed: true,
+        result_ref: typeof prior === "string" ? null : prior.result_ref,
+        failures: []
+      };
+    }
+    context.idempotencyRecords.set(key, { fingerprint: envelope.operation_fingerprint, result_ref: resultRef });
   }
-  return { accepted: true, failures: [] };
+  return { accepted: true, replayed: false, result_ref: resultRef, failures: [] };
 }
 
 function continuationResources(bundle) {
@@ -562,13 +614,30 @@ export function validatePreparationReceipt(receipt, context = {}) {
   })) failures.push("receipt_proposal_ref_mismatch");
   if (!sameObjectRef(action?.action_proposal_ref, receipt?.action_proposal_ref)) failures.push("action_proposal_ref_mismatch");
   if (receipt?.prepared_for_principal !== action?.principal_id || action?.principal_id !== proposal?.principal_id) failures.push("preparation_principal_mismatch");
+  if (!Object.hasOwn(context, "expectedAgentIdentity")) failures.push("expected_agent_identity_required");
   if (!canonicalEqual(receipt?.prepared_by_agent, proposal?.agent_identity) || !canonicalEqual(receipt?.prepared_by_agent, expectedAgentIdentity)) {
     failures.push("preparation_agent_mismatch");
+  }
+  const proposalKey = resolve(context.keyResolver, proposal?.agent_signature?.key_id);
+  if (proposal?.agent_identity === null) {
+    if (receipt?.prepared_by_agent !== null) failures.push("direct_preparation_agent_mismatch");
+    if (!proposalKey || proposalKey.controller !== proposal?.principal_id) failures.push("direct_preparation_signer_mismatch");
+  } else {
+    if (proposal?.agent_signature?.key_id !== proposal?.agent_identity?.runtime_instance_key_id) {
+      failures.push("preparation_agent_key_mismatch");
+    }
+    if (!proposalKey || proposalKey.controller !== proposal?.agent_identity?.agent_provider_id) {
+      failures.push("preparation_agent_controller_mismatch");
+    }
   }
   if (receipt?.state_before !== "draft" || receipt?.state_after !== "prepared" || receipt?.external_effect !== false) failures.push("preparation_state_mismatch");
   if (action?.current_state !== "draft" || action?.state_version !== 0) failures.push("action_not_draft");
   if (action?.authorization_ref !== null || action?.reservation_refs?.length || action?.gate_result_ref !== null) failures.push("action_authority_present");
-  if (action?.capability !== proposal?.capability || action?.effect_id !== proposal?.effect_id) failures.push("action_proposal_semantics_mismatch");
+  if (
+    action?.capability !== proposal?.capability ||
+    action?.effect_id !== proposal?.effect_id ||
+    action?.expected_deal_head_hash !== proposal?.expected_deal_head_hash
+  ) failures.push("action_proposal_semantics_mismatch");
   const issuerKey = resolve(context.keyResolver, receipt?.issuer_signature?.key_id);
   if (!issuerKey || issuerKey.controller !== receipt?.issuer) failures.push("receipt_issuer_signer_mismatch");
   return unique(failures);
