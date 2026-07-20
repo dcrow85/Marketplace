@@ -90,7 +90,7 @@ function MarketBagBar({ orders, cardCount, cashTotal, onOpen }) {
       {cashTotal > 0 && <small><span className="money mono">{cashTotal} USDC</span> in listed-price buys</small>}
     </span>
     <button type="button" className="primary mk-bagopen" onClick={onOpen}>
-      {orders.length > 1 ? 'Settle all' : 'Settle pile'} <span aria-hidden="true">→</span>
+      {orders.length > 1 ? 'Review all piles' : 'Settle pile'} <span aria-hidden="true">→</span>
     </button>
   </aside>
 }
@@ -99,7 +99,7 @@ function MarketBag({ orders, cardCount, cashTotal, byUid, onBack, onOpenOrder })
   return <div className="mk mk-bagroom">
     <div className="mk-head mk-baghead">
       <div>
-        <div className="ek">Settle all</div>
+        <div className="ek">Review all piles</div>
         <div className="mk-title">Your market piles</div>
       </div>
       <button type="button" className="ghost sm" onClick={onBack}>← keep browsing</button>
@@ -172,6 +172,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const piles = useBus(() => loadPiles(pileKey), [pileKey])
 
   useEffect(() => { setSettling(false); setBuyingNow(false); setHuntOpen(false); setWitnessedOnly(false); setOfferCashSeed(null); setOfferNoteSeed('') }, [sel]) // eslint-disable-line react-hooks/set-state-in-effect -- new table, checkout + hunting fold
+  useEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }) }, [sel]) // a new table or the directory always begins at its identity/header
   useEffect(() => {
     if (settling || buyingNow) window.scrollTo({ top: 0, behavior: 'auto' })
   }, [settling, buyingNow]) // checkout is a new room; always begin at its heading
@@ -479,7 +480,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       {seller && <small className="mono">Seller: {sellerName(seller)}</small>}
     </section>
   })()
-  const msgEl = swapMsg && <button className="mk-swapmsg mono" onClick={() => setSwapMsg(null)}>{swapMsg} ✕</button>
+  const msgEl = swapMsg && <div className="mk-swapmsg mono" role="status"><span>{swapMsg}</span><button type="button" onClick={() => setSwapMsg(null)} aria-label="Dismiss update">✕</button></div>
   const roomNote = (
     <div className="mk-samplenote mono">{open?.live
       ? <><span className="mk-livetag">● live</span> {sellerName(open)} is a real collector in the pilot — a deal here goes to their inbox.</>
@@ -569,9 +570,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         onBack={returnToPile}
         onSent={({ evidenceRequestIncluded } = {}) => {
           setSettling(false)
-          setSwapMsg(evidenceRequestIncluded
-            ? `offer + evidence request sent to ${sellerName(open)} — watch Trades for their response.`
-            : `offer sent to ${sellerName(open)} — watch Trades for their response.`)
+          setSwapMsg(open.live
+            ? `${evidenceRequestIncluded ? 'Offer and photo request' : 'Offer'} saved here. Live delivery is not confirmed yet; follow it in Trades.`
+            : `${evidenceRequestIncluded ? 'Offer and photo request' : 'Offer'} saved. This sample seller answers locally in Trades.`)
           if (returnToBag) {
             setReturnToBag(false)
             setSel(null)
@@ -674,7 +675,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       }]
       if (read.lean === 'request_evidence') return [{
         id: 'open-evidence-offer', label: 'Open offer with a scan request', primary: true,
-        onSelect: () => { setOfferCashSeed(null); setOfferNoteSeed('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the $10+ cards without scans.'); setSettling(true) },
+        onSelect: () => { setOfferCashSeed(null); setOfferNoteSeed('Before we settle, please add fresh front, back, corners, and holo-tilt photos for the cards over $10 without scans.'); setSettling(true) },
       }]
       if (read.lean === 'accept' && canBuyNow) return [{ id: 'review-checkout', label: `Checkout · ${buysSum} USDC`, primary: true, onSelect: () => setBuyingNow(true) }]
       return []
@@ -731,10 +732,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           )
           : (open.record || open.joined) && (
           <div className="pf-record mono">
-            {open.record?.since && <span className="pf-stat">at the market since {open.record.since}</span>}
             {open.record?.settled > 0 && <span className="pf-stat rec">{open.record.settled} settled</span>}
             {scanRequested.length > 0
-              ? <span className={'pf-stat' + (requestedScanned === scanRequested.length ? ' rec' : '')}>{requestedScanned === scanRequested.length ? 'every $10+ listing scanned' : `${requestedScanned}/${scanRequested.length} $10+ listings scanned`}</span>
+              ? <span className={'pf-stat' + (requestedScanned === scanRequested.length ? ' rec' : '')}>{requestedScanned === scanRequested.length ? 'every listing over $10 scanned' : `${requestedScanned}/${scanRequested.length} listings over $10 scanned`}</span>
               : <span className="pf-stat dim">scans optional at current asks</span>}
           </div>
         )}
@@ -810,8 +810,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
                   return (
                     <span key={p.uid} className="mk-ckthumb" title={`${c?.name_en || p.uid} — tap the tag to flip buy/trade`}>
                       {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
-                      <button className={'mk-cktag mono' + (p.mode === 'trade' ? ' tr' : '')} onClick={() => toggleMode(pileKey, open.id, p.uid)}>{p.mode === 'buy' ? '$' : '⇄'}</button>
-                      <button className="mk-ckx mono" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back">✕</button>
+                      <button className={'mk-cktag mono' + (p.mode === 'trade' ? ' tr' : '')} aria-label={`${c?.name_en || p.uid}: ${p.mode === 'buy' ? 'buying at the ask; switch to trade' : 'trading; switch to buy at the ask'}`} aria-pressed={p.mode === 'trade'} onClick={() => toggleMode(pileKey, open.id, p.uid)}>{p.mode === 'buy' ? '$' : '⇄'}</button>
+                      <button className="mk-ckx mono" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back" aria-label={`Remove ${c?.name_en || p.uid} from pile`}>✕</button>
                     </span>
                   )
                 })}

@@ -266,7 +266,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
         <div className="buy-checkoutmain">
           <fieldset className="buy-methods">
             <legend><span className="buy-stepno">1</span> Payment</legend>
-            <p>Your preferred method is already selected. Change it only if you want to.</p>
+            <p>Cairn Escrow is selected when available. Choose PayPal if you prefer its protection and the seller accepts it.</p>
             <div className="buy-rails" role="radiogroup" aria-label="Choose how to pay">
               <RailChoice active={rail === RAIL_ESCROW} disabled={!escrowAvailable || overCap} title="Cairn Escrow" eyebrow={IS_TESTNET_CHAIN ? 'testnet · recommended' : 'recommended'}
                 onClick={() => { setRail(RAIL_ESCROW); setPaypalOpened(false); setError(null) }}>

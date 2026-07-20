@@ -169,7 +169,7 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
   </div>
 }
 
-export default function Offers({ accountId, catalog, onCounter, onScan }) {
+export default function Offers({ accountId, catalog, onCounter, onScan, onBrowseMarket }) {
   const [reads, setReads] = useState({})
   const [evidenceNotice, setEvidenceNotice] = useState(null)
   const data = useCatalog(catalog)
@@ -177,7 +177,13 @@ export default function Offers({ accountId, catalog, onCounter, onScan }) {
   const offers = useBus(() => loadOffers(key), [key])
   const byUid = useByUid(data)
 
-  if (!offers.length || !data) return null
+  if (!data) return null
+  if (!offers.length) return <div className="trades-empty">
+    <span className="ek">No active trades</span>
+    <strong>Your trade desk is clear.</strong>
+    <p>Offers, photo replies, and payment steps will collect here.</p>
+    <button type="button" className="primary" onClick={onBrowseMarket}>Browse the market →</button>
+  </div>
   const chip = (x, i) => {
     const c = byUid.get(x.uid)
     return (
@@ -296,11 +302,15 @@ export default function Offers({ accountId, catalog, onCounter, onScan }) {
                 <button onClick={() => onCounter && onCounter(o)}>Make a counter</button>
                 <button onClick={() => declineIncoming(key, o.id)}>Decline</button>
               </span>
+              {recommended && <div className="checkout-anko">
+                <AskAnko decision={decision} recommended
+                  onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
+              </div>}
               <details className="checkout-help">
                 <summary>Questions or help</summary>
                 <div className="checkout-helpbody">
-                  <AskAnko decision={decision} recommended={recommended}
-                    onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />
+                  {!recommended && <AskAnko decision={decision}
+                    onRead={(read) => setReads((previous) => ({ ...previous, [o.id]: read }))} />}
                   <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
                     cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
                     onEvidenceSent={setEvidenceNotice} onScan={onScan} showThread={false}

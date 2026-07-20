@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { usePrivy } from '@privy-io/react-auth'
 import { handleFor, avatarSVG } from './identity.js'
 import MeetAnko from './agent/MeetAnko.jsx'
@@ -76,7 +76,7 @@ function SizePicker() {
   return (
     <div className="sizepick mono" title="card size" role="radiogroup" aria-label="card size">
       {Object.keys(TILE_SCALES).map((k) => (
-        <button key={k} className={sz === k ? 'on' : ''} onClick={() => { setSz(k); try { localStorage.setItem('cairn-tilescale', k) } catch { /* ignore */ } }}>{k.toUpperCase()}</button>
+        <button key={k} role="radio" aria-checked={sz === k} className={sz === k ? 'on' : ''} onClick={() => { setSz(k); try { localStorage.setItem('cairn-tilescale', k) } catch { /* ignore */ } }}>{k.toUpperCase()}</button>
       ))}
     </div>
   )
@@ -116,6 +116,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
   const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
   const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
+  const tradesCloseRef = useRef(null)
   const profile = useBus(() => loadProfile(accountId), [accountId])
   const progress = useMilestoneProgress(accountId, catalog.id, profile)
   const guidedStep = showMeet
@@ -126,6 +127,20 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
     setBseg('binder')
     window.setTimeout(() => window.dispatchEvent(new CustomEvent('cairn-open-scan', { detail: { uid } })), 0)
   }
+  const visit = (next) => {
+    if (next === 'market') setMarketFocus(null)
+    setBseg(next)
+    setTradesOpen(false)
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }))
+  }
+  useEffect(() => {
+    if (!tradesOpen) return undefined
+    const previous = document.activeElement
+    tradesCloseRef.current?.focus()
+    const onKeyDown = (event) => { if (event.key === 'Escape') setTradesOpen(false) }
+    window.addEventListener('keydown', onKeyDown)
+    return () => { window.removeEventListener('keydown', onKeyDown); previous?.focus?.() }
+  }, [tradesOpen])
   useEffect(() => {
     let stop = () => {}
     let live = true
@@ -170,7 +185,21 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   return (
     <div className="app">
       <nav className="nav">
-        <button className="wmhome" onClick={() => { setBseg('binder'); setMarketFocus(null); setTradesOpen(false) }} title="back to your binder"><Wordmark /></button>
+        <button className="wmhome" onClick={() => visit('binder')} aria-label="Cairn home"><Wordmark /></button>
+        <div className="appnav" aria-label="Primary">
+          <button type="button" aria-current={bseg === 'binder' ? 'page' : undefined} className={bseg === 'binder' ? 'on' : ''} onClick={() => visit('binder')}>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4.25h5.25c.97 0 1.75.78 1.75 1.75v9.75c0-.97-.78-1.75-1.75-1.75H3V4.25Z" /><path d="M17 4.25h-5.25c-.97 0-1.75.78-1.75 1.75v9.75c0-.97.78-1.75 1.75-1.75H17V4.25Z" /></svg>
+            <span>Binder</span>
+          </button>
+          <button type="button" aria-current={bseg === 'market' ? 'page' : undefined} className={bseg === 'market' ? 'on' : ''} onClick={() => visit('market')}>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8h14M4.25 8v7.75h11.5V8M3.25 4.25h13.5L17.75 8H2.25l1-3.75Z" /><path d="M7.5 15.75v-4h5v4" /></svg>
+            <span>Market</span>
+          </button>
+          <button type="button" aria-current={bseg === 'sale' ? 'page' : undefined} className={bseg === 'sale' ? 'on' : ''} onClick={() => visit('sale')}>
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.25 5.25h11.5v10.5H4.25z" /><path d="m7 5.25.65-2h4.7l.65 2M7 5.25h6M7 9h6M7 12h4" /></svg>
+            <span>My table</span>
+          </button>
+        </div>
         <div className="navr mono">
           <button className={'tradesbtn nav-trades' + (needsYou ? ' needs-you' : '')} onClick={() => { setOpenTrade(null); setTradesOpen(true) }}
             aria-label={swapN ? `Trades, ${swapN} active` : 'Trades'} title={needsYou ? 'an offer is waiting on you' : 'your trades'}>
@@ -178,7 +207,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
             <span className="nav-trades-label">Trades{swapN ? ` ·${swapN}` : ''}</span>
             {needsYou && <i className="nav-dot" aria-hidden="true" />}
           </button>
-          <button className="chip profilechip" onClick={() => setBseg('sale')}
+          <button className="chip profilechip" onClick={() => visit('sale')}
             aria-label={`Profile: ${publicName}, ${progress.points} point${progress.points === 1 ? '' : 's'}`}
             title="open your profile and table">
             <Avatar seed={accountId} size={18} photo={profile.photo} /> <span className="handle">{publicName}</span>
@@ -196,7 +225,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           catalog={catalog} profile={profile} progress={progress} onScan={openScanner}
           concealed={showMeet} />
         <div className="binder-surface">
-          <div className="bindertop">
+          {CATALOGS.length > 1 && <div className="bindertop">
           {CATALOGS.length > 1 && (
             <div className="catalogpick" aria-label="catalog">
               {CATALOGS.map((c) => (
@@ -204,19 +233,12 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
               ))}
             </div>
           )}
-          <div className="bt-right">
-            {bseg === 'binder' && <SizePicker />}
-            <div className="bsegs mono" role="tablist" aria-label="binder section">
-              <button role="tab" aria-selected={bseg === 'binder'} className={bseg === 'binder' ? 'on' : ''} onClick={() => setBseg('binder')}>Binder</button>
-              <button role="tab" aria-selected={bseg === 'sale'} className={bseg === 'sale' ? 'on' : ''} onClick={() => setBseg('sale')}>My Table</button>
-              <button role="tab" aria-selected={bseg === 'market'} className={bseg === 'market' ? 'on' : ''} onClick={() => { setMarketFocus(null); setBseg('market') }}>Market</button>
-            </div>
-          </div>
-          </div>
+          </div>}
           {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
             onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
             onboardingStep={guidedStep}
-            onboardingGuide={showMeet ? <MeetAnko accountId={accountId} profile={profile} progress={progress} onDone={onMeet} /> : null} />}
+            onboardingGuide={showMeet ? <MeetAnko accountId={accountId} profile={profile} progress={progress} onDone={onMeet} /> : null}
+            toolbar={<SizePicker />} />}
           {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} agentName={agent} onScan={openScanner} />}
           {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
             focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
@@ -230,14 +252,14 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           onClose={() => setOfferSeed(null)} />
       )}
       {tradesOpen && (
-        <div className="sc-overlay" role="dialog" aria-label="Trades" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>
+        <div className="sc-overlay" role="dialog" aria-modal="true" aria-labelledby="trades-title" onClick={(e) => { if (e.target === e.currentTarget) setTradesOpen(false) }}>
           <div className="sc-sheet trades-sheet">
             <div className="trades-head">
-              <span className="ek">Trades</span>
-              <button className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
+              <span className="ek" id="trades-title">Trades</span>
+              <button ref={tradesCloseRef} className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
-              <Offers accountId={accountId} catalog={catalog} onScan={(uid) => { setTradesOpen(false); openScanner(uid) }} onCounter={(o) => setOfferSeed({
+              <Offers accountId={accountId} catalog={catalog} onBrowseMarket={() => visit('market')} onScan={(uid) => { setTradesOpen(false); openScanner(uid) }} onCounter={(o) => setOfferSeed({
                 seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
                 cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
                 settlement: o.settlement || null,

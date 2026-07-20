@@ -10,9 +10,8 @@ export default function MiniCard({ c, sel, dim, sub, corner, status, actions, on
   return (
     <Tag className={'minicard' + (sel ? ' sel' : '') + (dim ? ' mk-dim' : '') + (className ? ` ${className}` : '')}
       onClick={onTap} title={title}
-      {...(interactiveDiv
-        ? { role: 'button', tabIndex: 0, onKeyDown: (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); onTap() } } }
-        : onTap ? {} : { role: 'group' })}>
+      {...(interactiveDiv ? { role: 'group' } : onTap ? {} : { role: 'group' })}>
+      {interactiveDiv && <button type="button" className="minicard-view" onClick={onTap} aria-label={`View ${c.name_en || c.uid} details`} />}
       {c.image ? <img src={c.image} alt={c.name_en || ''} loading="lazy" decoding="async" onError={(e) => retryImg(e, c.image)} /> : <span className="minicard-noimg">{c.name_en || c.uid}</span>}
       {corner}
       {status && <span className="minicard-statusrow">{status}</span>}

@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useRef, useState } from 'react'
 
 const API_BASE = import.meta.env.VITE_API_BASE || ''
 const LEAN_LABEL = {
@@ -11,8 +11,8 @@ const LEAN_LABEL = {
 }
 
 function MoneyLabel({ children }) {
-  return String(children || '').split(/(\$?\d+(?:\.\d+)?\s*(?:USDC|USD))/gi).map((part, index) =>
-    /(?:USDC|USD)$/i.test(part) ? <span className="money" key={index}>{part}</span> : part)
+  return String(children || '').split(/(\$\d+(?:\.\d+)?|\d+(?:\.\d+)?\s*(?:USDC|USD))/gi).map((part, index) =>
+    /(?:^\$|USDC$|USD$)/i.test(part) ? <span className="money" key={index}>{part}</span> : part)
 }
 
 function ReadActions({ actions }) {
@@ -38,12 +38,16 @@ function ReadActions({ actions }) {
 
 export default function AskAnko({ decision, recommended = false, label = 'Ask Anko', onRead, actionsForRead }) {
   const panelId = useId()
+  const readRef = useRef(null)
   const version = useMemo(() => JSON.stringify(decision), [decision])
   const [state, setState] = useState({ status: 'idle', read: null })
   useEffect(() => {
     /* eslint-disable-next-line react-hooks/set-state-in-effect -- a changed decision invalidates its old read */
     setState({ status: 'idle', read: null })
   }, [version])
+  useEffect(() => {
+    if (state.status === 'done') readRef.current?.focus()
+  }, [state.status])
 
   const ask = async () => {
     onRead?.(null)
@@ -65,16 +69,16 @@ export default function AskAnko({ decision, recommended = false, label = 'Ask An
   if (state.status === 'done' && state.read) {
     const read = state.read
     return (
-      <section id={panelId} className="anko-read" aria-label="Anko’s read">
+      <section ref={readRef} tabIndex="-1" id={panelId} className="anko-read" role="region" aria-live="polite" aria-label="Anko’s read">
         <div className="anko-readhead">
           <span className="anko-readwho mono"><img src={(import.meta.env.BASE_URL || '/') + 'agent/anko-avatar-v3.png'} alt="" /> Anko&rsquo;s read <i>advisory</i></span>
           <button type="button" className="anko-hide mono" onClick={() => { onRead?.(null); setState({ status: 'idle', read: null }) }}>hide</button>
         </div>
         <strong className="anko-lean">{LEAN_LABEL[read.lean] || 'My read'}</strong>
-        <p>{read.summary}</p>
-        {!!read.reasons?.length && <div className="anko-readlist"><span className="mono">why</span><ul>{read.reasons.map((reason, i) => <li key={i}>{reason}</li>)}</ul></div>}
-        {!!read.unknowns?.length && <div className="anko-readlist unknown"><span className="mono">still unknown</span><ul>{read.unknowns.map((unknown, i) => <li key={i}>{unknown}</li>)}</ul></div>}
-        <p className="anko-boundary mono">{read.boundary}</p>
+        <p><MoneyLabel>{read.summary}</MoneyLabel></p>
+        {!!read.reasons?.length && <div className="anko-readlist"><span className="mono">why</span><ul>{read.reasons.map((reason, i) => <li key={i}><MoneyLabel>{reason}</MoneyLabel></li>)}</ul></div>}
+        {!!read.unknowns?.length && <div className="anko-readlist unknown"><span className="mono">still unknown</span><ul>{read.unknowns.map((unknown, i) => <li key={i}><MoneyLabel>{unknown}</MoneyLabel></li>)}</ul></div>}
+        <p className="anko-boundary mono"><MoneyLabel>{read.boundary}</MoneyLabel></p>
         <ReadActions actions={actionsForRead?.(read) || []} />
       </section>
     )

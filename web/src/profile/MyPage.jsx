@@ -53,7 +53,7 @@ function SectionSizePicker({ label, storageKey, size, onSize }) {
 function AddPhotosAction({ card, onScan }) {
   return <button type="button" className="pf-photo-needed mono"
     aria-label={`Add seller photos for ${card.name_en}`}
-    title="This $10+ listing needs photos of your copy"
+    title="This listing over $10 needs photos of your copy"
     onClick={(event) => { event.stopPropagation(); onScan?.(card.uid) }}>
     <span aria-hidden="true">!</span> Add photos
   </button>
@@ -204,8 +204,8 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
     if (settled) out.push({ t: `${settled} settled`, rec: true })
     if (scanRequested.length) out.push({
       t: scannedRequested === scanRequested.length
-        ? 'every $10+ listing scanned'
-        : `${scannedRequested}/${scanRequested.length} $10+ listings scanned`,
+        ? 'every listing over $10 scanned'
+        : `${scannedRequested}/${scanRequested.length} listings over $10 scanned`,
       rec: scannedRequested > 0,
     })
     else if (listed.length) out.push({ t: 'scans optional at current asks' })

@@ -46,7 +46,7 @@ export default function Ambient({ onOpenTrade }) {
         if (needs.length === 1) setLine({ text: `One trade needs you — ${needs[0].needs}.`, tradeId: needs[0].id })
         else if (needs.length > 1) setLine({ text: `${needs.length} trades need you — start with #${needs[0].id}: ${needs[0].needs}.`, tradeId: needs[0].id })
         else if (track > 0) setLine({ text: `${track === 1 ? 'One trade' : track + ' trades'} on track. Nothing needs you.` })
-        else setLine({ text: 'Nothing needs you.' })
+        else setLine(null)
       } catch { if (live) setLine(null) } // ambient stays silent rather than alarming on a read hiccup
     })()
     return () => { live = false }

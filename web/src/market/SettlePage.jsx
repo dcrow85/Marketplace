@@ -158,7 +158,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const decisionPile = pile.slice(0, 24)
   const decisionGive = [...give].slice(0, 24)
   const sendDecision = {
-    decision_ref: `settle:${catalog.id}:${open.id}:${pile.length}:${give.size}:${cash}:${settlementRail}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
+    decision_ref: `settle:${catalog.id}:${open.id}:${pile.length}:${give.size}:${cash}:${settlementRail}:${evidenceRequest?.cardUids?.join(',') || 'no-request'}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
     kind: 'pre_purchase',
     question: trades.length
       ? 'Should I send this buy/trade offer, revise it, or request more evidence first?'
@@ -191,8 +191,15 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         const l = open.listings.find((x) => x.uid === p.uid)
         return { uid: p.uid, recorded_scan_count: l?.witness || 0, latest_recorded_settlement_usdc: salesMap[p.uid]?.[0]?.p ?? null }
       }),
+      pending_photo_request: evidenceRequest ? {
+        cards: evidenceRequest.cardUids.map((uid) => byUid.get(uid)?.name_en || uid),
+        views: evidenceRequest.views,
+      } : null,
       seller_record_claims: open.live ? (open.recordStats || []).map((x) => x.t) : (open.record || null),
-      deal_record_summary: recordLine,
+      deal_record_summary: {
+        cards_you_receive_with_recorded_settlements: pile.filter((p) => salesMap[p.uid]?.[0]?.p != null).length,
+        cards_you_give_with_recorded_settlements: [...give].filter((uid) => salesMap[uid]?.[0]?.p != null).length,
+      },
     },
   }
   const sendReadRecommended = cash >= 500 || pile.some((p) => {
@@ -210,17 +217,20 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       confirmLabel: 'Use in offer', hint: 'Prefilled from recorded settlements where available; otherwise 10% below the current cash line. Edit freely.',
       onConfirm: (amount) => setCashEdit(String(amount)),
     }]
-    if (read.lean === 'request_evidence') return [{
+    if (read.lean === 'request_evidence' && !evidenceRequest) return [{
       id: 'request-scan', label: 'Add scan request to offer', primary: true,
       onSelect: () => {
         setEvidenceRequest(defaultEvidenceRequest())
       },
     }]
+    if (read.lean === 'request_evidence' && evidenceRequest) return [{
+      id: 'review-scan-request', label: 'Photo request already added', onSelect: () => setEvidenceDraft(evidenceRequest),
+    }]
     if (read.lean === 'accept') return [{ id: 'keep-terms', label: 'Keep these terms', onSelect: () => setCashEdit(String(cash)) }]
     return []
   }
 
-  const canSend = pile.length > 0 && (trades.length === 0 || give.size > 0 || cash > 0)
+  const canSend = pile.length > 0 && (give.size > 0 || cash > 0)
   const send = () => {
     const pileUids = new Set(pile.map((item) => item.uid))
     const request = evidenceRequest ? { ...evidenceRequest, cardUids: evidenceRequest.cardUids.filter((uid) => pileUids.has(uid)) } : null
@@ -281,7 +291,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
             <span className="mono">{evidenceRequest ? 'Photo request on the mat' : 'Need a closer look?'}</span>
             <p>{evidenceRequest
               ? `${evidenceRequest.cardUids.map((uid) => byUid.get(uid)?.name_en || uid).join(', ')} · ${evidenceRequest.views.map((view) => EVIDENCE_VIEWS.find(([key]) => key === view)?.[1]).filter(Boolean).join(' · ')}`
-              : `Ask for specific views of the ${scanCandidates.length} $10+ card${scanCandidates.length === 1 ? '' : 's'} without seller scans.`}</p>
+              : `Ask for specific views of the ${scanCandidates.length} card${scanCandidates.length === 1 ? '' : 's'} over $10 without seller scans.`}</p>
           </div>
           <span className="stl-evidencemoveacts">
             <button className="sheetbtn mk-sm mono" onClick={() => setEvidenceDraft(evidenceRequest || defaultEvidenceRequest())}>{evidenceRequest ? 'Edit request' : 'Ask for photos'}</button>
@@ -367,16 +377,16 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
           <strong className="mono money">{cash} {settlementCurrency}</strong>
         </div>
         {cash > 0 && <div className="stl-rails" role="radiogroup" aria-label="Proposed payment rail">
-          <button type="button" className={settlementRail === RAIL_ESCROW ? 'on' : ''} onClick={() => setSettlementRail(RAIL_ESCROW)}>
+          <button type="button" role="radio" aria-checked={settlementRail === RAIL_ESCROW} className={settlementRail === RAIL_ESCROW ? 'on' : ''} onClick={() => setSettlementRail(RAIL_ESCROW)}>
             <b>Cairn Escrow</b><small>recommended · funds held by contract</small>
           </button>
-          {paypalHandle && <button type="button" className={settlementRail === RAIL_PAYPAL ? 'on' : ''} onClick={() => setSettlementRail(RAIL_PAYPAL)}>
+          {paypalHandle && <button type="button" role="radio" aria-checked={settlementRail === RAIL_PAYPAL} className={settlementRail === RAIL_PAYPAL ? 'on' : ''} onClick={() => setSettlementRail(RAIL_PAYPAL)}>
             <b>PayPal</b><small>external · paypal.me/{paypalHandle}</small>
           </button>}
         </div>}
         <div className="stl-cashrow">
           <span className="fpre stl-dollar">$</span>
-          <input className="ti num stl-cash" type="number" min="0" value={cash} onChange={(e) => setCashEdit(e.target.value)} />
+          <input className="ti num stl-cash" type="number" min="0" value={cash} aria-label={`Cash in ${settlementCurrency}`} onChange={(e) => setCashEdit(e.target.value)} />
           <span className="mono dim">{settlementCurrency}{cashEdit == null && buysSum > 0 ? ' · following the listed asks' : ''}</span>
         </div>
         <input className="ti ofr-note" maxLength={240} placeholder="a note, if words help the numbers…" value={note}
@@ -395,8 +405,8 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       </div>
 
       <div className="stl-foot">
-        <span className="mono deal-summary"><b>Their side</b> {pile.length} card{pile.length === 1 ? '' : 's'}
-          {(trades.length || give.size) && <> ⇄ <b>Your side</b> {give.size} card{give.size === 1 ? '' : 's'}</>}
+        <span className="mono deal-summary"><b>You get</b> {pile.length} card{pile.length === 1 ? '' : 's'}
+          {(trades.length > 0 || give.size > 0) && <> ⇄ <b>You give</b> {give.size} card{give.size === 1 ? '' : 's'}</>}
           {cash > 0 && <> · <strong className="money">{cash} {settlementCurrency}</strong></>}</span>
         <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {sellerLabel} →</button>
       </div>

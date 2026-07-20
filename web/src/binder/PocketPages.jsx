@@ -40,8 +40,8 @@ export default function PocketPages({
           const isPick = !!pickSet?.has(c.uid)
           if (e.stance === 'have') {
             return (
-              <div key={c.uid} className={'bv-pocket filled' + (isPick ? ' is-pick' : '')} role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
-                onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
+              <div key={c.uid} className={'bv-pocket filled' + (isPick ? ' is-pick' : '')}>
+                <button type="button" className="bv-open" onClick={() => onOpen(c.uid)} aria-label={`Open ${nm(c)}`} />
                 {img ? <img src={img} alt={nm(c)} loading="lazy" decoding="async" onError={userPhotos[c.uid] ? undefined : (ev) => retryImg(ev, c.image)} /> : <span className="bv-noimg">{nm(c)}</span>}
                 {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
@@ -65,9 +65,8 @@ export default function PocketPages({
             )
           }
           return (
-            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '') + (isPick ? ' is-pick' : '')}
-              role="button" tabIndex={0} onClick={() => onOpen(c.uid)}
-              onKeyDown={(ev) => { if (ev.key === 'Enter' || ev.key === ' ') onOpen(c.uid) }}>
+            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '') + (isPick ? ' is-pick' : '')}>
+              <button type="button" className="bv-open" onClick={() => onOpen(c.uid)} aria-label={`Open ${nm(c)}`} />
               {img && <img className="bv-ghostart" src={img} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
               {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
               <span className="mono bv-gnum">{c.num}</span>
