@@ -263,6 +263,9 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {(c.romaji || c.name_en) && nm(c) !== (c.romaji || c.name_en) ? <span> · {c.romaji || c.name_en}</span> : null}
               {c.name_is_en && <span className="enmark">EN</span>}
             </div>
+            {onBrowseCard && <button type="button" className="cardpage-link mono" onClick={() => { onClose(); onBrowseCard(c.uid) }}>
+              Open full card page <span>market · details · copies</span> →
+            </button>}
             <div className="m-attrs">
               {[c.release_family_label, c.category, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity]
                 .map((t, i) => mpill(t, i))}

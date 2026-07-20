@@ -59,7 +59,7 @@ function AddPhotosAction({ card, onScan }) {
   </button>
 }
 
-export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan }) {
+export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan, onBrowseCard }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
   const byUid = useByUid(data)
@@ -79,6 +79,10 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
   const [ankoQuery, setAnkoQuery] = useState('')
   const [ankoBusy, setAnkoBusy] = useState(false)
   const [ankoRes, setAnkoRes] = useState(null)
+  const openCard = (uid) => {
+    if (onBrowseCard) onBrowseCard(uid)
+    else setSel(uid)
+  }
 
   // the binder's marking semantics, over the event-driven store: every page hears the
   // change. Reads happen at WRITE time (like Binder's functional setStore) so two quick
@@ -337,7 +341,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
         <SectionSizePicker label="Display case" storageKey={displaySizeKey} size={displaySize} onSize={setDisplaySize} />
       </div>
       {displayRows.length
-        ? <ListingTiles rows={displayRows} size={displaySize} setSel={setSel} setAsk={setAsk} setDisplay={setDisplay}
+        ? <ListingTiles rows={displayRows} size={displaySize} setSel={openCard} setAsk={setAsk} setDisplay={setDisplay}
             onMove={moveDisplay} onNudge={nudgeDisplay} reorderable ankoPicks={ankoPicks} onScan={onScan} />
         : <div className="empty">{query ? 'No display cards match that search.' : 'Your case is empty. Star a for-sale card and it moves here.'}</div>}
 
@@ -362,7 +366,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
         </label>
       </div>
       {binderRows.length
-        ? <ListingTiles rows={binderRows} size={binderSize} setSel={setSel} setAsk={setAsk} setDisplay={setDisplay}
+        ? <ListingTiles rows={binderRows} size={binderSize} setSel={openCard} setAsk={setAsk} setDisplay={setDisplay}
             ankoPicks={ankoPicks} onScan={onScan} />
         : <div className="empty">{query || binderFilter !== 'all' ? 'No binder cards match those controls.' : 'Nothing in your binder. Open a card you Have and mark it “List for sale” or “Open to trade”.'}</div>}
 
@@ -373,7 +377,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
       {rows.wants.length
         ? <div className="mk-hunt2row pf-huntrow">
             {rows.wants.slice(0, 18).map(({ c }) => (
-              <button key={c.uid} className="mk-hunt2 pf-huntopen" onClick={() => setSel(c.uid)} title="open — mark it like in the binder">
+              <button key={c.uid} className="mk-hunt2 pf-huntopen" onClick={() => openCard(c.uid)} title="open card page">
                 {c.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : <span className="minicard-noimg">{c.name_en}</span>}
                 <span className="mk-hunt2name">{c.name_en}</span>
               </button>
@@ -387,7 +391,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan 
         screens it stays your claim until signing lands.</p>
       {sel && <CardModal key={sel} uid={sel} data={data} setById={setById} store={store}
         setStance={setStance} setField={setField} agentName="Anko"
-        onClose={() => setSel(null)} market={mkt} mockSales={mockSales} />}
+        onClose={() => setSel(null)} market={mkt} mockSales={mockSales} onBrowseCard={onBrowseCard} />}
     </div>
   )
 }

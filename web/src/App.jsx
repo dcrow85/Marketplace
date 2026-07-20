@@ -20,6 +20,7 @@ import { useBus } from './lib/store.js'
 import { loadProfile } from './profile/profileStore.js'
 import { useMilestoneProgress } from './profile/progress.js'
 import GettingStarted from './profile/GettingStarted.jsx'
+import { cardPath, cardSlugFromPath } from './cards/cardRoute.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -47,6 +48,16 @@ const CATALOGS = [
 function catalogFromUrl() {
   const wanted = new URLSearchParams(window.location.search).get('catalog')
   return CATALOGS.find((c) => c.id === wanted) || CATALOGS[0]
+}
+
+function cardRouteFromUrl() {
+  const slug = cardSlugFromPath()
+  if (!slug) return null
+  return { slug, sellerId: new URLSearchParams(window.location.search).get('seller') || null }
+}
+
+function appRootPath() {
+  return (import.meta.env.BASE_URL || '/app/').replace(/\/?$/, '/')
 }
 
 function toggleTheme() {
@@ -114,7 +125,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
-  const [marketFocus, setMarketFocus] = useState(null) // card uid the binder asked the market about
+  const [cardRoute, setCardRoute] = useState(cardRouteFromUrl) // one durable page for the card and every public copy
   const [offerSeed, setOfferSeed] = useState(null) // composer seed: a counter, or Anko's market find
   const tradesCloseRef = useRef(null)
   const profile = useBus(() => loadProfile(accountId), [accountId])
@@ -127,12 +138,52 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
     setBseg('binder')
     window.setTimeout(() => window.dispatchEvent(new CustomEvent('cairn-open-scan', { detail: { uid } })), 0)
   }
+  const openCard = (uid, { sellerId = null } = {}) => {
+    const url = new URL(window.location.href)
+    url.pathname = cardPath(uid)
+    url.searchParams.set('catalog', catalog.id)
+    if (sellerId) url.searchParams.set('seller', sellerId)
+    else url.searchParams.delete('seller')
+    const next = { slug: cardSlugFromPath(url.pathname), sellerId }
+    window.history.pushState({ cairnCard: true }, '', url)
+    setCardRoute(next)
+    setBseg('market')
+    setTradesOpen(false)
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }))
+  }
+  const closeCard = () => {
+    const url = new URL(window.location.href)
+    url.pathname = appRootPath()
+    url.searchParams.delete('seller')
+    url.searchParams.set('catalog', catalog.id)
+    window.history.pushState({ cairnRoom: 'market' }, '', url)
+    setCardRoute(null)
+    setBseg('market')
+    window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }))
+  }
   const visit = (next) => {
-    if (next === 'market') setMarketFocus(null)
+    if (cardRoute) {
+      const url = new URL(window.location.href)
+      url.pathname = appRootPath()
+      url.searchParams.delete('seller')
+      url.searchParams.set('catalog', catalog.id)
+      window.history.pushState({ cairnRoom: next }, '', url)
+      setCardRoute(null)
+    }
     setBseg(next)
     setTradesOpen(false)
     window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }))
   }
+  useEffect(() => {
+    const onPopState = () => {
+      const next = cardRouteFromUrl()
+      setCardRoute(next)
+      if (next) setBseg('market')
+      window.requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }))
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
   useEffect(() => {
     if (!tradesOpen) return undefined
     const previous = document.activeElement
@@ -191,7 +242,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4.25h5.25c.97 0 1.75.78 1.75 1.75v9.75c0-.97-.78-1.75-1.75-1.75H3V4.25Z" /><path d="M17 4.25h-5.25c-.97 0-1.75.78-1.75 1.75v9.75c0-.97.78-1.75 1.75-1.75H17V4.25Z" /></svg>
             <span>Binder</span>
           </button>
-          <button type="button" aria-current={bseg === 'market' ? 'page' : undefined} className={bseg === 'market' ? 'on' : ''} onClick={() => visit('market')}>
+          <button type="button" aria-current={bseg === 'market' || cardRoute ? 'page' : undefined} className={bseg === 'market' || cardRoute ? 'on' : ''} onClick={() => visit('market')}>
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8h14M4.25 8v7.75h11.5V8M3.25 4.25h13.5L17.75 8H2.25l1-3.75Z" /><path d="M7.5 15.75v-4h5v4" /></svg>
             <span>Market</span>
           </button>
@@ -221,9 +272,9 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       </nav>
       <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />
       <main className="main">
-        <GettingStarted key={accountId} accountId={accountId}
+        {!cardRoute && <GettingStarted key={accountId} accountId={accountId}
           catalog={catalog} profile={profile} progress={progress} onScan={openScanner}
-          concealed={showMeet} />
+          concealed={showMeet} />}
         <div className="binder-surface">
           {CATALOGS.length > 1 && <div className="bindertop">
           {CATALOGS.length > 1 && (
@@ -234,14 +285,15 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
             </div>
           )}
           </div>}
-          {bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
-            onBrowseCard={(uid) => { setMarketFocus(uid); setBseg('market') }}
+          {!cardRoute && bseg === 'binder' && <Binder accountId={accountId} agentName={agent} catalog={catalog}
+            onBrowseCard={openCard}
             onboardingStep={guidedStep}
             onboardingGuide={showMeet ? <MeetAnko accountId={accountId} profile={profile} progress={progress} onDone={onMeet} /> : null}
             toolbar={<SizePicker />} />}
-          {bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} agentName={agent} onScan={openScanner} />}
-          {bseg === 'market' && <Market accountId={accountId} catalog={catalog}
-            focusUid={marketFocus} onClearFocus={() => setMarketFocus(null)} />}
+          {!cardRoute && bseg === 'sale' && <MyPage accountId={accountId} catalog={catalog} agentName={agent} onScan={openScanner} onBrowseCard={openCard} />}
+          {(cardRoute || bseg === 'market') && <Market accountId={accountId} catalog={catalog}
+            focusSlug={cardRoute?.slug || null} focusSellerId={cardRoute?.sellerId || null}
+            onOpenCard={openCard} onClearFocus={closeCard} />}
         </div>
       </main>
       {offerSeed && (

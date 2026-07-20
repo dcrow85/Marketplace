@@ -7,6 +7,9 @@
 /app/index.html
   Cache-Control: no-cache, no-store, must-revalidate
 
+/app/cards/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /app/assets/*
   Cache-Control: public, max-age=31536000, immutable
 

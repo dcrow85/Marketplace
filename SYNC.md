@@ -58,6 +58,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-19 · Codex — **Canonical per-card pages now unify card identity,
+  seller copies, evidence, Anko, collection stance, market record, and the existing pile →
+  posted-ask checkout path.** Binder detail, My Table, public Tables, and cross-market results
+  share the same durable `/app/cards/<exact-catalogue-entry>/` route. Every current catalogue
+  row gets a static Pages entry at build time; nested routes resolve card art against the app
+  base and remain no-store. Desktop and 390px visual checks covered exact images, recorded
+  scans, an oxblood high-value missing-photo state, zero horizontal overflow, a non-colliding
+  mobile purchase dock, and a direct 5 test-USDC handoff to the existing Escrow/PayPal checkout.
+  No catalogue row, evidence claim, offer/payment execution rule, chain state, or `mockups/`
+  semantic changed; scoped ESLint, catalogue audit, assembled build, and 354-route count pass.
 - `[passive]` 2026-07-19 · Codex — **A three-angle desktop, mobile, and
   trust/accessibility audit now reaches cleanly from Binder through Market, pile,
   offer review, and posted-ask checkout.** One persistent primary navigation replaces

@@ -40,3 +40,17 @@ const deferred = html.replace(
   },
 )
 await writeFile(appIndex, deferred)
+
+// Cloudflare Pages serves static files before Functions. Give every catalogue row
+// a durable, shareable route while keeping the app's single client bundle. The
+// client resolves this readable slug back to the exact UID, so distinct printings
+// and observations never collapse merely because their card numbers match.
+const cardSlug = (uid) => String(uid).trim().toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+const catalogue = JSON.parse(await readFile(new URL('../public/catalogs/azuki-tcg.json', import.meta.url), 'utf8'))
+await Promise.all((catalogue.cards || []).map(async (card) => {
+  const route = new URL(`app/cards/${cardSlug(card.uid)}/`, dist)
+  await mkdir(route, { recursive: true })
+  await writeFile(new URL('index.html', route), deferred)
+}))

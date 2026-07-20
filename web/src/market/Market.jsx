@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { storeKeyFor, loadStore, entryFor } from '../binder/collection.js'
+import { storeKeyFor, loadStore, saveStore, entryFor } from '../binder/collection.js'
 import { useCatalog, useMarket, useByUid } from '../lib/data.js'
 import { useBus } from '../lib/store.js'
 import { loadHidden, hiddenKeyFor, loadMockSales, mockSalesKeyFor } from './mockAgents.js'
@@ -11,11 +11,13 @@ import MarketFinds from './MarketFinds.jsx'
 import SettlePage from './SettlePage.jsx'
 import BuyNow from './BuyNow.jsx'
 import CardZoom from './CardZoom.jsx'
+import CardPage from './CardPage.jsx'
 import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
 import { cleanPayPalHandle, sellerAcceptsPayPal } from '../payments/rails.js'
+import { cardFromSlug } from '../cards/cardRoute.js'
 import './market.css'
 
 // The market: other people's tables, run like a card show. You pick cards up (zoom)
@@ -144,7 +146,7 @@ function MarketBag({ orders, cardCount, cashTotal, byUid, onBack, onOpenOrder })
   </div>
 }
 
-export default function Market({ accountId, agentName = 'Anko', catalog, focusUid, onClearFocus }) {
+export default function Market({ accountId, agentName = 'Anko', catalog, focusSlug, focusSellerId, onClearFocus, onOpenCard }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
   const [sel, setSel] = useState(null) // seller id whose table is open
@@ -158,7 +160,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   const [abusy, setAbusy] = useState(false)
   const [ares, setAres] = useState(null) // Anko's market answer: find tiles or a table-narrowing filter
   const [tableSort, setTableSort] = useState(null) // 'price_desc' | 'price_asc' | null
-  const [focusSort, setFocusSort] = useState('price_asc') // every public copy of one card
   const [witnessedOnly, setWitnessedOnly] = useState(false)
   const [huntOpen, setHuntOpen] = useState(false)
   const [offerCashSeed, setOfferCashSeed] = useState(null)
@@ -202,6 +203,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   useEffect(() => { setSel(null); setBagOpen(false); setReturnToBag(false) }, [catalog]) // eslint-disable-line react-hooks/set-state-in-effect -- new catalog, no table or market bag open
 
   const byUid = useByUid(data)
+  const focusCard = cardFromSlug(data?.cards, focusSlug)
+  const focusUid = focusCard?.uid || null
   const marketNeedle = aq.trim().toLowerCase()
   const cardMatchesSearch = (c) => !marketNeedle || [c?.name_en, c?.name_ja, c?.romaji, c?.num, c?.element, c?.rarity]
     .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
@@ -275,6 +278,25 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
   }, [data, store, salesAll])
 
   const pickUp = (sellerId, uid, mode) => addToPile(pileKey, sellerId, uid, mode)
+  const openCardPage = (c, l, sellerId) => {
+    if (onOpenCard) onOpenCard(c.uid, { sellerId })
+    else setZoom({ c, l, sellerId })
+  }
+  const changeMyStance = (uid, nextStance) => {
+    const c = byUid.get(uid)
+    if (!c) return
+    const prev = loadStore(storeKey)
+    const current = entryFor(c, prev).stance
+    const user = { ...(prev[uid] || {}), stance: current === nextStance ? 'none' : nextStance }
+    if (user.stance !== 'have') {
+      user.extra = false
+      user.trade = false
+      user.sell = false
+      user.display = false
+    }
+    if (user.stance === 'none') user.grail = false
+    saveStore(storeKey, { ...prev, [uid]: user })
+  }
   const returnToPile = () => {
     setSettling(false)
     setBuyingNow(false)
@@ -474,7 +496,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
       <p>This listing shows catalogue art, not photos of the seller&rsquo;s copy. Ask for fresh views before deciding.</p>
       <div className="mk-photo-tipactions">
         <button className="primary" type="button" onClick={askForPhotos}>Ask for photos in offer →</button>
-        <button className="ghost" type="button" onClick={() => { setZoom(evidenceTip); setEvidenceTip(null) }}>View card</button>
+        <button className="ghost" type="button" onClick={() => { openCardPage(evidenceTip.c, evidenceTip.l, evidenceTip.sellerId); setEvidenceTip(null) }}>View card</button>
       </div>
       <small className="mono">Nothing is sent until you review and send the offer.</small>
       {seller && <small className="mono">Seller: {sellerName(seller)}</small>}
@@ -489,74 +511,20 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
         : 'sample tables — mock sellers, for shaping the browse. nothing here is a real offer.'}</div>
   )
 
-  // ---- by-card focus: everyone asking on one card ----
-  if (focusUid) {
-    const c = byUid.get(focusUid)
-    const asks = allSellers.flatMap((s) => s.listings.filter((l) => l.uid === focusUid).map((l) => ({ s, l })))
-    const totalCopies = asks.reduce((total, { l }) => total + Math.max(1, Number(l.copies) || 1), 0)
-    const sortedAsks = [...asks].sort((a, b) => {
-      if (focusSort === 'price_desc') return b.l.ask - a.l.ask || sellerName(a.s).localeCompare(sellerName(b.s))
-      if (focusSort === 'evidence') return (b.l.witness || 0) - (a.l.witness || 0) || a.l.ask - b.l.ask
-      if (focusSort === 'copies') return (b.l.copies || 1) - (a.l.copies || 1) || a.l.ask - b.l.ask
-      return a.l.ask - b.l.ask || sellerName(a.s).localeCompare(sellerName(b.s))
-    })
-    return (
-      <div className="mk">
-        {roomNote}
-        {ankoBar}
-        {ankoPanel}
-        {msgEl}
-        {evidenceTipEl}
-        {zoomEl}
-        {bagBar}
-        <div className="mk-head mk-cardhead">
-          <div className="mk-focushead">
-            {c?.image && <img className="mk-focusart" src={c.image} alt="" onError={(ev) => retryImg(ev, c.image)} onClick={() => setZoom({ c, l: asks[0]?.l, sellerId: asks[0]?.s.id })} />}
-            <div>
-              <div className="ek">On the market</div>
-              <div className="mk-title">{c ? `${c.name_en} · ${c.num}` : focusUid}
-                <span className="dim"> · {totalCopies} public cop{totalCopies === 1 ? 'y' : 'ies'} · {asks.length} seller{asks.length === 1 ? '' : 's'}</span>
-              </div>
-            </div>
-          </div>
-          <button className="ghost sm" onClick={onClearFocus}>← all tables</button>
-        </div>
-        {asks.length > 1 && <div className="mk-focus-tools" aria-label="Sort available copies">
-          <span className="mono dim">sort copies</span>
-          <button className={focusSort === 'price_asc' ? 'on' : ''} onClick={() => setFocusSort('price_asc')}>price low</button>
-          <button className={focusSort === 'price_desc' ? 'on' : ''} onClick={() => setFocusSort('price_desc')}>price high</button>
-          <button className={focusSort === 'evidence' ? 'on' : ''} onClick={() => setFocusSort('evidence')}>scans first</button>
-          <button className={focusSort === 'copies' ? 'on' : ''} onClick={() => setFocusSort('copies')}>most copies</button>
-        </div>}
-        {asks.length
-          ? <div className="mk-rows">
-              {sortedAsks.map(({ s, l }, i) => (
-                <div key={`${s.id}:${focusUid}:${i}`} className={'mk-row mk-focus-row' + (myWants.has(focusUid) ? ' mk-mine' : '')}>
-                  <button className="mk-who" onClick={() => { onClearFocus(); setSel(s.id) }} title="visit their table">
-                    <Avatar seed={s.id} size={20} photo={s.photo} /><span>{sellerName(s)}</span>
-                  </button>
-                  <span className="mk-name">{myWants.has(focusUid) && <span className="mk-wantflag">your want</span>}
-                    <span className="mono mk-copycount">{Math.max(1, Number(l.copies) || 1)} cop{Math.max(1, Number(l.copies) || 1) === 1 ? 'y' : 'ies'}</span>
-                  </span>
-                  <span className="mono mk-cond" title="the seller's claim — the protocol records it, it does not verify it">{l.cond}</span>
-                  {l.witness
-                    ? <button className="mk-evidence" onClick={() => setZoom({ c, l, sellerId: s.id })}
-                        title="open this listing's card and evidence read">{witnessCell(l.witness)}</button>
-                    : <span className="mk-evidence-slot"><MissingPhotosButton card={c} ask={l.ask}
-                        onOpen={() => setEvidenceTip({ c, l, sellerId: s.id })} /></span>}
-                  <span className="mono mk-ask">{l.ask} USDC</span>
-                  <PileButtons ask={l.ask}
-                    inPile={!!inPile(s.id, focusUid)} mode={inPile(s.id, focusUid)?.mode}
-                    onBuy={() => { pickUp(s.id, focusUid, 'buy'); setSwapMsg(`in your pile at ${sellerName(s)}'s table — finish the deal there.`) }}
-                    onTrade={() => { pickUp(s.id, focusUid, 'trade'); setSwapMsg(`in your pile at ${sellerName(s)}'s table — finish the deal there.`) }} />
-                </div>
-              ))}
-            </div>
-          : <div className="empty">Nobody is asking on this card right now.</div>}
-        <p className="sc-note dim">Condition is the seller&rsquo;s claim; the witness column says what&rsquo;s recorded behind it.
-          Buy and trade both drop the card on your pile at that seller&rsquo;s table — one deal per table.</p>
-      </div>
-    )
+  // ---- canonical card page: card identity first, then each physical seller copy ----
+  if (focusSlug) {
+    if (!focusCard) return <div className="cp-empty"><strong>Card page not found.</strong><p>This catalogue does not contain that card route.</p><button onClick={onClearFocus}>Back to the market</button></div>
+    const asks = allSellers.flatMap((seller) => seller.listings
+      .filter((listing) => listing.uid === focusUid)
+      .map((listing) => ({ s: seller, l: listing })))
+    return <CardPage key={focusUid} card={focusCard} listings={asks} sales={salesAll[focusUid] || []}
+      myEntry={entryFor(focusCard, store)} initialSellerId={focusSellerId} agentName={agentName}
+      roomNote={roomNote} sellerName={sellerName} inPile={inPile}
+      onPickUp={(sellerId, uid, mode) => {
+        pickUp(sellerId, uid, mode)
+        setSwapMsg(`${focusCard.name_en} is in your pile at ${sellerName(allSellers.find((seller) => seller.id === sellerId))}'s table.`)
+      }}
+      onVisitSeller={visitSellerPile} onBack={onClearFocus} onChangeStance={changeMyStance} />
   }
 
   // ---- the Settle page: its own room ----
@@ -691,7 +659,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
           const p = inPile(open.id, c.uid)
           return (
             <MiniCard key={c.uid} c={c} dim={aisleMatch && !aisleMatch.has(c.uid)}
-              title="hold it up to the light" onTap={() => setZoom({ c, l, sellerId: open.id })}
+              title="open card page" onTap={() => openCardPage(c, l, open.id)}
               corner={<>{myWants.has(c.uid) ? <span className="mk-public-want mono">★ your want</span> : null}
                 {!l.witness && <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: open.id })} />}</>}
               sub={<>{c.num} · {l.cond || 'condition unlisted'}{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
@@ -882,7 +850,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusUi
               <MiniCard key={`${seller.id}|${l.uid}`} c={c}
                 corner={!l.witness ? <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: seller.id })} /> : null}
                 sub={<>{c.num} · <span className="money mono">{l.ask} USDC</span>{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
-                onTap={() => setZoom({ c, l, sellerId: seller.id })}
+                onTap={() => openCardPage(c, l, seller.id)}
                 actions={<>
                   <button className="mk-resulttable" onClick={(ev) => { ev.stopPropagation(); setSel(seller.id) }} title={`visit ${sellerName(seller)}'s table`}>
                     <Avatar seed={seller.id} size={18} photo={seller.photo} />
