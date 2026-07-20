@@ -58,6 +58,26 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-19 · Codex — **A three-angle desktop, mobile, and
+  trust/accessibility audit now reaches cleanly from Binder through Market, pile,
+  offer review, and posted-ask checkout.** One persistent primary navigation replaces
+  the duplicate room switcher; phone navigation, Scan, pile, and market-bag controls
+  no longer escape or collide with their viewport. Card and Binder pockets use
+  separate detail/actions controls, card detail is a named modal, Trades has a real
+  empty state and human decisions use oxblood rather than Anko blue, and light-mode
+  money/Have/dim tokens now meet the intended contrast floor. The audit also fixed a
+  settlement black screen caused by JSX entering Anko's JSON packet, `[object Object]`
+  card facts, the visible `card0` footer bug, zero-value offer submission, duplicated
+  evidence suggestions, hidden high-value Anko help, and an overlay hit-test that
+  opened a card instead of `Change terms`. Paying a posted ask still goes directly to
+  checkout with Escrow and PayPal; on phones payment choices now appear before the
+  order summary while onboarding/navigation step aside for the focused task. Scoped
+  ESLint, diff check, two assembled Pages builds, desktop/390 px browser journeys, and
+  preview/apex/`www` convergence pass (existing upstream Privy/Rolldown annotation
+  warnings only). Sources `fe2483d`, `73912ee`; Pages production `940155cd`; bundle
+  `cairn-site-fd9c9141e943.js` is 5,397,670 bytes / ETag
+  `d76367676e54b5f84751894be4d2c493`. No offer, evidence request, payment, funding,
+  chain action, profile, catalogue, or protocol state was sent or changed.
 - `[passive]` 2026-07-19 · Codex — **Cairn now has one product-quality finish
   system from sign-in through settlement.** Density, elevation, radii, typography,
   focus rings, press feedback, selected cards, sticky mobile room controls, card/table
