@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/agent-judgment.schema.json",
+  "title": "Cairn agent judgment v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "x-cairn-object-schema": "cairn.agent_judgment.v0.1",
+  "x-cairn-self-hash-pointer": "/judgment_hash",
+  "x-cairn-signature-pointers": ["/issuer_signature"],
+  "required": [
+    "schema",
+    "judgment_id",
+    "agent_identity",
+    "principal_id",
+    "purpose",
+    "input_refs",
+    "observations",
+    "inferences",
+    "recommendation",
+    "alternatives",
+    "unknowns",
+    "stale_if",
+    "authority_label",
+    "created_at",
+    "expires_at",
+    "judgment_hash",
+    "issuer_signature",
+    "not_claiming"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.agent_judgment.v0.1" },
+    "judgment_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+    "agent_identity": { "$ref": "common.schema.json#/$defs/agentIdentity" },
+    "principal_id": { "$ref": "common.schema.json#/$defs/principalId" },
+    "purpose": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+    "input_refs": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1024,
+      "items": { "$ref": "common.schema.json#/$defs/objectRef" },
+      "uniqueItems": true
+    },
+    "observations": {
+      "type": "array",
+      "maxItems": 512,
+      "items": { "$ref": "#/$defs/sourcedStatement" }
+    },
+    "inferences": {
+      "type": "array",
+      "maxItems": 512,
+      "items": { "$ref": "#/$defs/inference" }
+    },
+    "recommendation": { "$ref": "#/$defs/recommendation" },
+    "alternatives": {
+      "type": "array",
+      "maxItems": 64,
+      "items": { "$ref": "#/$defs/recommendation" }
+    },
+    "unknowns": {
+      "type": "array",
+      "maxItems": 256,
+      "items": { "$ref": "#/$defs/unknown" }
+    },
+    "stale_if": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "x-cairn-unique-by": "field",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "expected"],
+        "properties": {
+          "field": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}_hash$" },
+          "expected": { "$ref": "common.schema.json#/$defs/sha256" }
+        }
+      }
+    },
+    "authority_label": { "const": "judged" },
+    "created_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common.schema.json#/$defs/nullableTimestamp" },
+    "judgment_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "issuer_signature": { "$ref": "common.schema.json#/$defs/signature" },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        { "const": "authority_to_act" },
+        { "const": "physical_truth" },
+        { "const": "future_market_outcome" }
+      ],
+      "items": false
+    }
+  },
+  "$defs": {
+    "sourcedStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "statement", "source_refs"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+        "statement": { "type": "string", "minLength": 1, "maxLength": 2048 },
+        "source_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/objectRef" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "inference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "statement", "based_on", "confidence_basis"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+        "statement": { "type": "string", "minLength": 1, "maxLength": 2048 },
+        "based_on": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+          "uniqueItems": true
+        },
+        "confidence_basis": { "type": "string", "minLength": 1, "maxLength": 1024 }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "summary", "proposed_capability"],
+      "properties": {
+        "kind": { "enum": ["next_step", "abstain"] },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 2048 },
+        "proposed_capability": {
+          "anyOf": [
+            { "$ref": "common.schema.json#/$defs/capability" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "description", "blocking_capabilities"],
+      "properties": {
+        "code": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+        "description": { "type": "string", "minLength": 1, "maxLength": 2048 },
+        "blocking_capabilities": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/capability" },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

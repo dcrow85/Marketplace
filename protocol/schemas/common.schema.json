@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/common.schema.json",
+  "title": "Cairn common protocol types v0.1",
+  "x-cairn-kind": "common-definitions",
+  "$defs": {
+    "uuidUrn": {
+      "type": "string",
+      "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha-256:[0-9a-f]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "principalId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "actorId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "schemaId": {
+      "type": "string",
+      "pattern": "^cairn\\.[a-z0-9_]+\\.v0\\.1$"
+    },
+    "httpsUri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "objectRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "object_id", "object_hash"],
+      "properties": {
+        "schema": { "$ref": "#/$defs/schemaId" },
+        "object_id": { "$ref": "#/$defs/uuidUrn" },
+        "object_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "key_id", "signed_hash", "signed_at", "value"],
+      "properties": {
+        "profile": { "const": "cairn-ed25519-v0.1" },
+        "key_id": { "type": "string", "format": "uri-reference", "minLength": 1 },
+        "signed_hash": { "$ref": "#/$defs/sha256" },
+        "signed_at": { "$ref": "#/$defs/timestamp" },
+        "value": { "type": "string", "pattern": "^[A-Za-z0-9_-]{86}$" }
+      }
+    },
+    "money": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount_minor", "asset"],
+      "properties": {
+        "amount_minor": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "asset": {
+          "type": "string",
+          "pattern": "^[A-Z0-9][A-Z0-9._:-]{1,31}$"
+        }
+      }
+    },
+    "agentIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_provider_id",
+        "agent_product_id",
+        "runtime_instance_key_id",
+        "model_id_and_version",
+        "policy_hash",
+        "toolset_hash",
+        "session_id"
+      ],
+      "properties": {
+        "agent_provider_id": { "$ref": "#/$defs/actorId" },
+        "agent_product_id": { "$ref": "#/$defs/actorId" },
+        "runtime_instance_key_id": { "type": "string", "format": "uri-reference" },
+        "model_id_and_version": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "policy_hash": { "$ref": "#/$defs/sha256" },
+        "toolset_hash": { "$ref": "#/$defs/sha256" },
+        "session_id": { "type": "string", "minLength": 1, "maxLength": 256 }
+      }
+    },
+    "capability": {
+      "enum": [
+        "read_projection",
+        "disclose_projection",
+        "recommend",
+        "prepare",
+        "send_message",
+        "request_evidence",
+        "publish_listing",
+        "send_nonbinding_offer",
+        "send_bindable_offer",
+        "send_counteroffer",
+        "reserve_inventory",
+        "accept_terms",
+        "prepare_payment_instruction",
+        "authorize_payment",
+        "fund_escrow",
+        "mark_shipped",
+        "confirm_receipt",
+        "accept_inspection",
+        "release_escrow",
+        "request_adjustment",
+        "authorize_refund",
+        "open_dispute",
+        "waive_right",
+        "rule_dispute"
+      ]
+    },
+    "authorizedRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "retrieval_uri", "data_grant_ref"],
+      "properties": {
+        "ref": { "$ref": "#/$defs/objectRef" },
+        "retrieval_uri": { "$ref": "#/$defs/httpsUri" },
+        "data_grant_ref": {
+          "anyOf": [
+            { "$ref": "#/$defs/objectRef" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "privateAuthorizedRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "retrieval_uri", "data_grant_ref"],
+      "properties": {
+        "ref": { "$ref": "#/$defs/objectRef" },
+        "retrieval_uri": { "$ref": "#/$defs/httpsUri" },
+        "data_grant_ref": { "$ref": "#/$defs/objectRef" }
+      }
+    },
+    "notClaiming": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+      "uniqueItems": true
+    },
+    "nullableObjectRef": {
+      "anyOf": [
+        { "$ref": "#/$defs/objectRef" },
+        { "type": "null" }
+      ]
+    },
+    "nullableSha256": {
+      "anyOf": [
+        { "$ref": "#/$defs/sha256" },
+        { "type": "null" }
+      ]
+    },
+    "nullableTimestamp": {
+      "anyOf": [
+        { "$ref": "#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    },
+    "nullableUuidUrn": {
+      "anyOf": [
+        { "$ref": "#/$defs/uuidUrn" },
+        { "type": "null" }
+      ]
+    }
+  }
+}

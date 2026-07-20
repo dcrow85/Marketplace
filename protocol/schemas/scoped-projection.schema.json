@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/scoped-projection.schema.json",
+  "title": "Cairn scoped projection v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "x-cairn-object-schema": "cairn.scoped_projection.v0.1",
+  "x-cairn-self-hash-pointer": "/projection_hash",
+  "x-cairn-signature-pointers": ["/issuer_signature"],
+  "required": [
+    "schema",
+    "projection_id",
+    "principal_id",
+    "source_refs",
+    "purpose",
+    "audience",
+    "data_uses",
+    "disclosed_fields",
+    "redacted_fields",
+    "disclosure_authority_ref",
+    "derived_at",
+    "expires_at",
+    "projection_hash",
+    "issuer_signature",
+    "not_claiming"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.scoped_projection.v0.1" },
+    "projection_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+    "principal_id": { "$ref": "common.schema.json#/$defs/principalId" },
+    "source_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_version_hash", "intent_id", "intent_revision", "claim_ids"],
+      "properties": {
+        "profile_version_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+        "intent_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+        "intent_revision": { "type": "integer", "minimum": 1 },
+        "claim_ids": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 256 }, "uniqueItems": true }
+      }
+    },
+    "purpose": { "enum": ["search", "recommend", "negotiate", "checkout", "fulfillment", "dispute"] },
+    "audience": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/actorId" }, "uniqueItems": true },
+    "data_uses": { "type": "array", "minItems": 1, "items": { "enum": ["read_local", "derive"] }, "uniqueItems": true },
+    "disclosed_fields": { "type": "array", "items": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" }, "uniqueItems": true },
+    "redacted_fields": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" }, "uniqueItems": true },
+    "disclosure_authority_ref": { "$ref": "common.schema.json#/$defs/nullableObjectRef" },
+    "derived_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "projection_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "issuer_signature": { "$ref": "common.schema.json#/$defs/signature" },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "prefixItems": [{ "const": "authority_to_act" }],
+      "items": false
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "cairn.canonicalization_vectors.v0.1",
+  "profile": "rfc8785-jcs-sha256",
+  "vectors": [
+    {
+      "name": "member_order",
+      "input": { "z": 1, "a": "cards" },
+      "canonical": "{\"a\":\"cards\",\"z\":1}",
+      "hash": "sha-256:824f1c0b246d1e307ee2d1640b7261bd8d2e306f5b2e0430d0a501468480eff4"
+    },
+    {
+      "name": "unicode_and_nested_members",
+      "input": { "message": "Anko 🦊", "nested": { "b": true, "a": null } },
+      "canonical": "{\"message\":\"Anko 🦊\",\"nested\":{\"a\":null,\"b\":true}}",
+      "hash": "sha-256:e36a39a3d722f77c5a2fef290084836acd850700c31de7c49a517e9963456272"
+    },
+    {
+      "name": "semantic_money_map",
+      "input": {
+        "principal_id": "did:example:collector",
+        "capability": "prepare",
+        "amounts_by_role": {
+          "quoted_total": { "amount_minor": 1200, "asset": "USD" },
+          "shipping": { "amount_minor": 0, "asset": "USD" }
+        },
+        "copy_ids": ["copy-a", "copy-b"]
+      },
+      "canonical": "{\"amounts_by_role\":{\"quoted_total\":{\"amount_minor\":1200,\"asset\":\"USD\"},\"shipping\":{\"amount_minor\":0,\"asset\":\"USD\"}},\"capability\":\"prepare\",\"copy_ids\":[\"copy-a\",\"copy-b\"],\"principal_id\":\"did:example:collector\"}",
+      "hash": "sha-256:ba4f4356b022ce5cd2fbc9268c98d655ef4261f4199e6d260d7bc181767915d7"
+    }
+  ]
+}

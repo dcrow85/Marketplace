@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/machine-bundle-manifest.schema.json",
+  "title": "Cairn machine bundle source manifest v0.1",
+  "x-cairn-kind": "manifest-schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "bundle_id",
+    "protocol_version",
+    "profile",
+    "schema_dialect",
+    "hash_profile",
+    "signature_profile",
+    "operation_registry",
+    "conformance_claims",
+    "not_claiming"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.machine_bundle_manifest.v0.1" },
+    "bundle_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+    "protocol_version": { "const": "0.1" },
+    "profile": { "const": "cairn-proposal-foundation-v0.1" },
+    "schema_dialect": { "const": "https://json-schema.org/draft/2020-12/schema" },
+    "hash_profile": { "const": "rfc8785-jcs-sha256" },
+    "signature_profile": { "const": "cairn-ed25519-v0.1" },
+    "operation_registry": { "const": "operations/registry.json" },
+    "conformance_claims": { "type": "array", "maxItems": 0 },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "prefixItems": [
+        { "const": "advisor_conformance" },
+        { "const": "supervised_actor_conformance" },
+        { "const": "delegated_actor_conformance" },
+        { "const": "settlement_conformance" },
+        { "const": "release_conformance" },
+        { "const": "runtime_service_exists" },
+        { "const": "external_effects" }
+      ],
+      "items": false
+    }
+  }
+}

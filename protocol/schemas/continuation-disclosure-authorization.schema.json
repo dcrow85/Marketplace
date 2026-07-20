@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/continuation-disclosure-authorization.schema.json",
+  "title": "Cairn continuation disclosure authorization v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "x-cairn-object-schema": "cairn.continuation_disclosure_authorization.v0.1",
+  "x-cairn-self-hash-pointer": "/authorization_hash",
+  "x-cairn-signature-pointers": ["/principal_signature"],
+  "required": [
+    "schema",
+    "authorization_id",
+    "principal_id",
+    "recipient_runtime_binding_ref",
+    "recipient_runtime_binding_hash",
+    "bundle_hash",
+    "data_grant_refs",
+    "purpose",
+    "one_shot",
+    "issued_at",
+    "expires_at",
+    "authorization_hash",
+    "principal_signature",
+    "not_claiming"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.continuation_disclosure_authorization.v0.1" },
+    "authorization_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+    "principal_id": { "$ref": "common.schema.json#/$defs/principalId" },
+    "recipient_runtime_binding_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
+    "recipient_runtime_binding_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "bundle_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "data_grant_refs": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4096,
+      "items": { "$ref": "common.schema.json#/$defs/objectRef" },
+      "uniqueItems": true
+    },
+    "purpose": { "const": "agent_continuation" },
+    "one_shot": { "const": true },
+    "issued_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "authorization_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "principal_signature": { "$ref": "common.schema.json#/$defs/signature" },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        { "const": "authority_transfer" },
+        { "const": "mandate_transfer" }
+      ],
+      "items": false
+    }
+  }
+}

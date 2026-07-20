@@ -6,6 +6,8 @@
 > each module is canonical for its own lane; this just indexes them).
 > Updated 2026-07-02 after chain reconciliation restored the A1–A4
 > `MarketplaceEscrow` hardening and added trunk CI.
+> Updated 2026-07-19 with the additive, agent-neutral intent/delegation/
+> interoperability design; it is audited design, not runtime conformance.
 > Supersedes [`Claude_Fable5_Protocol_Rundown.md`](Claude_Fable5_Protocol_Rundown.md).
 > The adversarially-reviewed single front-door is [`Protocol_Consolidated_Spec_v0.2.md`](Protocol_Consolidated_Spec_v0.2.md);
 > read it next for the gate machinery.
@@ -80,6 +82,14 @@ spendability bypass, wall-bundle, evidence manifest).
 - **[Agent API v0.1](Protocol_Agent_API_v0.1.md)** — trade actions, not packet internals.
   Two memory currencies: `trajectory_capacity` (can't move funds) vs `assembly_placement`
   (spendable only at a named gate).
+- **[Agent-Neutral Intent, Delegation & Interoperability v0.1](Protocol_Agent_Intent_Interop_v0.1.md)**
+  — principal-custodied intent, replaceable/BYO agents, capability-specific grants,
+  exact-copy evidence, deal continuity, serializable reservations, receiver-backed
+  action receipts, and HTTP/MCP/A2A bindings. It keeps Anko as a reference agent,
+  never a privileged protocol actor. Its first [machine-readable proposal
+  foundation](protocol/) now carries schemas, a no-effect operation registry,
+  canonical hash/signature vectors, and mutation controls; services, complete
+  profiles, independent verification, and runtime conformance remain unbuilt.
 - **Catalog / card-reference** — [Card Reference Layer v0.1](Pokemon_Card_Reference_Layer_v0.1.md):
   the `CardReferenceCandidate` packet (identity + comparison image + `not_claiming`).
   **"Catalog match ≠ authentication"** (the G6 wall).
@@ -177,6 +187,7 @@ Surface code: `mockups/`, `web/` (Vite/React/Privy app at `/app/`), `simulations
 | Boundary | [Architecture Boundary v0.1](Protocol_Architecture_Boundary_v0.1.md) · [Bootstrap v0.1](Protocol_Bootstrap_v0.1.md) | current |
 | Spine | [`chain/`](chain/) — 4 contracts + drills | **built, 140 tests green + CI count guard** |
 | Legible | [Legibility v0.1](Protocol_Legibility_v0.1.md) · [Walls v0.1](Protocol_Walls_v0.1.md) · [Agent API v0.1](Protocol_Agent_API_v0.1.md) | designed |
+| Agent boundary | [Agent-Neutral Intent, Delegation & Interoperability v0.1](Protocol_Agent_Intent_Interop_v0.1.md) · [`protocol/` machine adjunct](protocol/) | audited design + proposal-only machine foundation; no runtime conformance claim |
 | Catalog | [Card Reference v0.1](Pokemon_Card_Reference_Layer_v0.1.md) · [Lineage v0.1](Protocol_Catalog_Lineage_v0.1.md) | designed + drills |
 | Judged | [Verifier v0.4](Protocol_Verifier_v0.4.md) | designed |
 | Judged | [Judgment Independence v0.3](Protocol_Judgment_Independence_v0.3.md) | floor-path on-chain |

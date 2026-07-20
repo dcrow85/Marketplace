@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/operation-registry.schema.json",
+  "title": "Cairn operation registry v0.1",
+  "x-cairn-kind": "registry-schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "protocol_version", "profile", "operations", "not_claiming"],
+  "properties": {
+    "schema": { "const": "cairn.operation_registry.v0.1" },
+    "protocol_version": { "const": "0.1" },
+    "profile": { "const": "cairn-proposal-foundation-v0.1" },
+    "operations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "mutating",
+          "consequence",
+          "request_schema",
+          "response_schema",
+          "data_grant_required",
+          "authorization_requirement",
+          "authority_effect",
+          "implementation_status"
+        ],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$" },
+          "mutating": { "type": "boolean" },
+          "consequence": { "enum": ["public_read", "private_read", "private_state_write", "preparation_only"] },
+          "request_schema": { "type": "string", "format": "uri" },
+          "response_schema": { "type": "string", "format": "uri" },
+          "data_grant_required": { "type": "boolean" },
+          "authorization_requirement": {
+            "enum": [
+              "none",
+              "data_grant",
+              "principal_signature_and_data_grant",
+              "data_grant_and_signed_proposal",
+              "continuation_disclosure_authorization"
+            ]
+          },
+          "authority_effect": {
+            "enum": ["none", "records_principal_signed_intent_only"]
+          },
+          "implementation_status": { "const": "schema_only" }
+        }
+      }
+    },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        { "const": "service_implementation" },
+        { "const": "external_effect" },
+        { "const": "conformance" }
+      ],
+      "items": false
+    }
+  }
+}

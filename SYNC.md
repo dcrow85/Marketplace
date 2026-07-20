@@ -58,6 +58,34 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[passive]` 2026-07-20 · Codex — **The first machine-readable Cairn Core slice
+  is locally built and mutation-tested at the proposal-only boundary.** New
+  `protocol/` source contains 16 JSON Schemas (12 signed object families), an
+  11-operation registry with no authorize/execute/payment/release/waiver path,
+  RFC 8785/JCS SHA-256 and Ed25519 vectors, strict duplicate-member/I-JSON source
+  checks, deterministic bundle tooling, and 18 executable controls. The generated
+  bundle is `sha-256:62a8cd2774c1a71e4359246e3365ec4c3c638d5abf3f4b805be8623d1f8aedb9`;
+  dependency audit reports zero known vulnerabilities. `action.prepare` ends at
+  a signed receipt whose schema fixes `external_effect: false`; continuation
+  transfers a granted context graph, never a mandate. This closes the local build
+  marker, not the author != verifier gate: no Advisor, Supervised, Delegated,
+  Settlement, Release, OpenAPI, MCP, A2A, service, or production conformance is
+  claimed. No `mockups/`, live UI, catalogue, runtime, Cloudflare/Railway, payment,
+  profile/offer, or contract state changed.
+- `[passive]` 2026-07-19 · Codex — **The additive, agent-neutral Cairn protocol now
+  holds durable principal intent while treating Anko and every BYO runtime as a
+  replaceable interpreter, never the source of authority.** The 3,900+ line design
+  specifies typed profile/intent projections, exact-copy evidence, bounded mandates,
+  one-shot authorizations, seller/buyer/effect reservations, deterministic gates,
+  append-only deal/action/receipt chains, crash-safe reconciliation, rail-specific
+  payment truth, disclosure-safe continuation bundles, and HTTP/MCP/A2A bindings.
+  One independent design round plus seven frozen artifact review rounds dispositioned architecture, adversarial-
+  security, recovery, and interoperability findings; the final two independent
+  closure checks reported no blocker/high residual. This is still design only:
+  JSON Schema/OpenAPI/MCP/A2A artifacts, authoritative services, provider adapters,
+  executable mutation tests, BYO replacement, and conformance reports are not built.
+  No judged head, contract, runtime, catalogue, payment rail, deployment, profile,
+  offer, or `mockups/` state changed.
 - `[passive]` 2026-07-19 · Codex — **Canonical per-card pages now unify card identity,
   seller copies, evidence, Anko, collection stance, market record, and the existing pile →
   posted-ask checkout path.** Binder detail, My Table, public Tables, and cross-market results

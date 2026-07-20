@@ -1,0 +1,20 @@
+{
+  "schema": "cairn.proposal_only_fixture.v0.1",
+  "principal_id": "did:example:collector",
+  "agent_identity": {
+    "agent_provider_id": "did:web:agent.example",
+    "agent_product_id": "anko-proof-of-concept",
+    "runtime_instance_key_id": "https://agent.example/keys/runtime-7",
+    "model_id_and_version": "fixture-model-1",
+    "policy_hash": "sha-256:1111111111111111111111111111111111111111111111111111111111111111",
+    "toolset_hash": "sha-256:2222222222222222222222222222222222222222222222222222222222222222",
+    "session_id": "fixture-session-7"
+  },
+  "signature": {
+    "profile": "cairn-ed25519-v0.1",
+    "key_id": "https://agent.example/keys/runtime-7",
+    "signed_hash": "sha-256:0000000000000000000000000000000000000000000000000000000000000000",
+    "signed_at": "2026-07-20T16:00:00Z",
+    "value": "u5hBH3dnx-_oKVaVS_vqeXIenOoM9qOzvNv4TNQSiuuPLI3MV_WVVJXwGx0uea8AmQrbG7YGaSMVtfR-qf7jDQ"
+  }
+}

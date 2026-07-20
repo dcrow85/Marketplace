@@ -1,0 +1,20 @@
+{
+  "schema": "cairn.machine_bundle_manifest.v0.1",
+  "bundle_id": "urn:uuid:7cf645af-fd37-4b1c-90df-97f775e5d871",
+  "protocol_version": "0.1",
+  "profile": "cairn-proposal-foundation-v0.1",
+  "schema_dialect": "https://json-schema.org/draft/2020-12/schema",
+  "hash_profile": "rfc8785-jcs-sha256",
+  "signature_profile": "cairn-ed25519-v0.1",
+  "operation_registry": "operations/registry.json",
+  "conformance_claims": [],
+  "not_claiming": [
+    "advisor_conformance",
+    "supervised_actor_conformance",
+    "delegated_actor_conformance",
+    "settlement_conformance",
+    "release_conformance",
+    "runtime_service_exists",
+    "external_effects"
+  ]
+}

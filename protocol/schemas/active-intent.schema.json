@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/active-intent.schema.json",
+  "title": "Cairn active intent v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "x-cairn-object-schema": "cairn.active_intent.v0.1",
+  "x-cairn-self-hash-pointer": "/intent_hash",
+  "x-cairn-signature-pointers": ["/principal_signature"],
+  "required": [
+    "schema",
+    "intent_id",
+    "principal_id",
+    "revision",
+    "supersedes_revision",
+    "intent_type",
+    "domain",
+    "targets",
+    "stance",
+    "constraints",
+    "attention_contract",
+    "privacy",
+    "agent_posture",
+    "source_claim_ids",
+    "initial_status",
+    "created_at",
+    "expires_at",
+    "profile_version_hash",
+    "intent_hash",
+    "principal_signature",
+    "consent_receipt_ref",
+    "not_claiming"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.active_intent.v0.1" },
+    "intent_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+    "principal_id": { "$ref": "common.schema.json#/$defs/principalId" },
+    "revision": { "type": "integer", "minimum": 1, "maximum": 2147483647 },
+    "supersedes_revision": {
+      "anyOf": [
+        { "type": "integer", "minimum": 1, "maximum": 2147483647 },
+        { "type": "null" }
+      ]
+    },
+    "intent_type": {
+      "enum": ["acquire", "sell", "trade", "list", "watch", "inspect", "complete_set", "build_deck"]
+    },
+    "domain": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,63}$" },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 512,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["catalog_ref", "exact_copy_required", "quantity", "substitution_policy"],
+        "properties": {
+          "catalog_ref": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["catalog_hash", "row_id"],
+            "properties": {
+              "catalog_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+              "row_id": { "type": "string", "minLength": 1, "maxLength": 256 }
+            }
+          },
+          "exact_copy_required": { "type": "boolean" },
+          "quantity": { "type": "integer", "minimum": 1, "maximum": 10000 },
+          "substitution_policy": { "enum": ["exact_print", "listed_variants", "ask_principal"] }
+        }
+      }
+    },
+    "stance": { "enum": ["want", "have", "have_extra", "sell", "trade"] },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "condition_floor",
+        "total_budget",
+        "per_item_budget",
+        "fees_included_in_budget",
+        "evidence_policy_ref",
+        "allowed_sellers",
+        "blocked_sellers",
+        "geography",
+        "shipping_requirements",
+        "allowed_rails",
+        "deadline",
+        "substitutions_require_confirmation"
+      ],
+      "properties": {
+        "condition_floor": {
+          "anyOf": [
+            { "type": "string", "minLength": 1, "maxLength": 128 },
+            { "type": "null" }
+          ]
+        },
+        "total_budget": { "anyOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
+        "per_item_budget": { "anyOf": [{ "$ref": "common.schema.json#/$defs/money" }, { "type": "null" }] },
+        "fees_included_in_budget": { "type": "boolean" },
+        "evidence_policy_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
+        "allowed_sellers": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/principalId" }, "uniqueItems": true },
+        "blocked_sellers": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/principalId" }, "uniqueItems": true },
+        "geography": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 128 }, "uniqueItems": true },
+        "shipping_requirements": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 256 }, "uniqueItems": true },
+        "allowed_rails": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9_.:-]{1,63}$" }, "uniqueItems": true },
+        "deadline": { "$ref": "common.schema.json#/$defs/nullableTimestamp" },
+        "substitutions_require_confirmation": { "type": "boolean" }
+      }
+    },
+    "attention_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["interrupt_budget", "reserved_judgments", "default_if_unavailable"],
+      "properties": {
+        "interrupt_budget": { "type": "integer", "minimum": 0, "maximum": 1000 },
+        "reserved_judgments": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+          "uniqueItems": true
+        },
+        "default_if_unavailable": {
+          "enum": ["wait", "hold", "expire", "decline", "cancel_if_not_submitted", "release_never_submitted_local_hold"]
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["disclosure_policy", "never_disclose"],
+      "properties": {
+        "disclosure_policy": { "const": "minimum_necessary" },
+        "never_disclose": {
+          "type": "array",
+          "items": { "enum": ["total_budget", "urgency", "private_holdings", "negotiation_strategy"] },
+          "uniqueItems": true
+        }
+      }
+    },
+    "agent_posture": { "enum": ["proposal_only", "supervised_actions", "mandate_allowed"] },
+    "source_claim_ids": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 256 }, "uniqueItems": true },
+    "initial_status": { "enum": ["draft", "active"] },
+    "created_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common.schema.json#/$defs/nullableTimestamp" },
+    "profile_version_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "intent_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "principal_signature": { "$ref": "common.schema.json#/$defs/signature" },
+    "consent_receipt_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        { "const": "market_availability" },
+        { "const": "authority_to_spend" },
+        { "const": "authority_to_disclose_private_constraints" }
+      ],
+      "items": false
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@cairn/protocol-foundation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 scripts/check-json-sources.py && node scripts/build-bundle.mjs",
+    "check": "python3 scripts/check-json-sources.py && node scripts/check-bundle.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "canonicalize": "3.0.0"
+  }
+}

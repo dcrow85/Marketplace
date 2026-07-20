@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/schemas/v0.1/action-proposal.schema.json",
+  "title": "Cairn action proposal v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "x-cairn-object-schema": "cairn.action_proposal.v0.1",
+  "x-cairn-self-hash-pointer": "/action_proposal_hash",
+  "x-cairn-signature-pointers": ["/agent_signature"],
+  "required": [
+    "schema",
+    "action_proposal_id",
+    "principal_id",
+    "agent_identity",
+    "capability",
+    "deal_id",
+    "expected_deal_head_hash",
+    "target",
+    "ultimate_effect_recipient",
+    "resource_refs",
+    "inputs_hash",
+    "terms_or_cart_hash",
+    "evidence_snapshot_hash",
+    "amounts",
+    "rail",
+    "requested_execution_mode",
+    "authority_candidate_ref",
+    "effect_descriptor_ref",
+    "effect_id",
+    "unknowns",
+    "not_claiming",
+    "created_at",
+    "expires_at",
+    "action_proposal_hash",
+    "agent_signature"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.action_proposal.v0.1" },
+    "action_proposal_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
+    "principal_id": { "$ref": "common.schema.json#/$defs/principalId" },
+    "agent_identity": {
+      "anyOf": [
+        { "$ref": "common.schema.json#/$defs/agentIdentity" },
+        { "type": "null" }
+      ]
+    },
+    "capability": { "$ref": "common.schema.json#/$defs/capability" },
+    "deal_id": { "$ref": "common.schema.json#/$defs/nullableUuidUrn" },
+    "expected_deal_head_hash": { "$ref": "common.schema.json#/$defs/nullableSha256" },
+    "target": { "$ref": "common.schema.json#/$defs/actorId" },
+    "ultimate_effect_recipient": {
+      "anyOf": [
+        { "type": "string", "minLength": 1, "maxLength": 512 },
+        { "type": "null" }
+      ]
+    },
+    "resource_refs": {
+      "type": "array",
+      "maxItems": 4096,
+      "items": { "$ref": "common.schema.json#/$defs/objectRef" },
+      "uniqueItems": true
+    },
+    "inputs_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "terms_or_cart_hash": { "$ref": "common.schema.json#/$defs/nullableSha256" },
+    "evidence_snapshot_hash": { "$ref": "common.schema.json#/$defs/nullableSha256" },
+    "amounts": {
+      "type": "array",
+      "maxItems": 64,
+      "x-cairn-unique-by": "role",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "money"],
+        "properties": {
+          "role": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,63}$" },
+          "money": { "$ref": "common.schema.json#/$defs/money" }
+        }
+      }
+    },
+    "rail": {
+      "anyOf": [
+        { "type": "string", "pattern": "^[a-z][a-z0-9_.:-]{1,127}$" },
+        { "type": "null" }
+      ]
+    },
+    "requested_execution_mode": { "enum": ["supervised", "preauthorized"] },
+    "authority_candidate_ref": { "$ref": "common.schema.json#/$defs/nullableObjectRef" },
+    "effect_descriptor_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
+    "effect_id": { "$ref": "common.schema.json#/$defs/sha256" },
+    "unknowns": {
+      "type": "array",
+      "maxItems": 256,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "description", "blocking_capabilities"],
+        "properties": {
+          "code": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+          "description": { "type": "string", "minLength": 1, "maxLength": 2048 },
+          "blocking_capabilities": {
+            "type": "array",
+            "items": { "$ref": "common.schema.json#/$defs/capability" },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        { "const": "authority_to_act" },
+        { "const": "external_effect" }
+      ],
+      "items": false
+    },
+    "created_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "expires_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "action_proposal_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "agent_signature": { "$ref": "common.schema.json#/$defs/signature" }
+  }
+}
