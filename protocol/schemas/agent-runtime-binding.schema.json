@@ -5,8 +5,11 @@
   "type": "object",
   "additionalProperties": false,
   "x-cairn-object-schema": "cairn.agent_runtime_binding.v0.1",
+  "x-cairn-object-id-pointer": "/runtime_binding_id",
   "x-cairn-self-hash-pointer": "/runtime_binding_hash",
   "x-cairn-signature-pointers": ["/provider_signature"],
+  "x-cairn-hash-exclusion-pointers": ["/provider_signature/signed_hash", "/provider_signature/value"],
+  "x-cairn-equal-non-null-pointers": [["/agent_identity/runtime_instance_key_id", "/runtime_public_key/key_id"]],
   "required": [
     "schema",
     "runtime_binding_id",
@@ -30,7 +33,7 @@
       "properties": {
         "profile": { "const": "cairn-ed25519-v0.1" },
         "key_id": { "type": "string", "format": "uri-reference", "minLength": 1 },
-        "public_key": { "type": "string", "pattern": "^[A-Za-z0-9_-]{43}$" }
+        "public_key": { "type": "string", "format": "cairn-ed25519-public-key" }
       }
     },
     "key_status": { "enum": ["active", "suspended", "revoked", "expired"] },

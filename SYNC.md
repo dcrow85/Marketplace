@@ -58,6 +58,25 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: agent-protocol-cold-audit-remediation]` 2026-07-20 · Codex —
+  **Remediating every finding from the frozen blind audit of commit `4dba62c`
+  before any reference service exists.** Scope remains `protocol/`, its agent-
+  neutral spec/index cross-links, and this ledger: complete envelope/request/
+  authorization validation, exact continuation grant coverage and consumable
+  disclosure, runtime/signer identity binding, full proposal/effect and resolved-
+  object/ref binding, preparation-receipt consistency, runtime I-JSON and
+  canonical base64url, signature-metadata authentication, exact operation-surface
+  pinning, total schema-keyword failure behavior, and one direct mutation control
+  per blind finding. After local controls pass, freeze a new commit and give it
+  to a new context-free read-only verifier. No `mockups/`, UI, catalogue, live
+  runtime, payment rail, Cloudflare/Railway state, profile/offer data, or contract
+  change is in scope; no service or conformance claim may precede the re-audit.
+  The remediation candidate now has 12 signed object schemas, an exact
+  10-operation proposal-only registry, 30/30 passing controls, zero dependency
+  vulnerabilities, and deterministic bundle hash
+  `sha-256:86bc7597682e9c16be59d3fee762d236fccb364368e1c3917d28c7611d62ef2d`.
+  This marker stays blocking until a new context-free verifier audits the frozen
+  commit and every finding receives one disposition.
 - `[passive]` 2026-07-20 · Codex — **The first machine-readable Cairn Core slice
   is locally built and mutation-tested at the proposal-only boundary.** New
   `protocol/` source contains 16 JSON Schemas (12 signed object families), an

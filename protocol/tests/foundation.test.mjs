@@ -1,26 +1,39 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
+import { generateKeyPairSync, sign as signBytes } from "node:crypto";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { buildBundle, loadSources } from "../lib/bundle.mjs";
+import { auditSources, buildBundle, loadSources } from "../lib/bundle.mjs";
 import {
   bindObjectHash,
   bodyHash,
   canonicalHash,
   canonicalText,
+  assertIJson,
+  objectRefFor,
   objectHash,
   semanticHash,
   signatureInput,
-  validateContinuationBinding,
-  validateEnvelopeOperation,
-  validateProposalEffectBinding,
+  utf8Sorted,
+  valueAtPointer,
   verifyEd25519,
   verifyObjectBindings
 } from "../lib/core.mjs";
+import {
+  acceptEnvelopeOperation,
+  consumeContinuationDisclosure,
+  operationFingerprint,
+  validateContinuationBinding,
+  validateEnvelopeOperation,
+  validatePreparationReceipt,
+  validateProposalEffectBinding,
+  validateResolvedObjectResponse,
+  validateSignedObject
+} from "../lib/validation.mjs";
 import { createAjv, readJson } from "../lib/schemas.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -40,12 +53,37 @@ const HASH_B = `sha-256:${"b".repeat(64)}`;
 const CREATED = "2026-07-20T16:00:00Z";
 const EXPIRES = "2026-07-20T17:00:00Z";
 
+function testKey(key_id, controller) {
+  const { publicKey, privateKey } = generateKeyPairSync("ed25519");
+  return {
+    key_id,
+    controller,
+    status: "active",
+    not_before: "2026-07-20T15:00:00Z",
+    expires_at: "2026-07-20T18:00:00Z",
+    public_key: publicKey.export({ format: "jwk" }).x,
+    privateKey
+  };
+}
+
+const AGENT_KEY = testKey(fixture.agent_identity.runtime_instance_key_id, fixture.agent_identity.agent_provider_id);
+const PROVIDER_KEY = testKey("https://agent.example/keys/provider-1", fixture.agent_identity.agent_provider_id);
+const PRINCIPAL_KEY = testKey("did:example:collector#key-1", fixture.principal_id);
+const SERVICE_KEY = testKey("https://objects.example/keys/service-1", "cairn:action-service");
+const keyResolver = new Map([AGENT_KEY, PROVIDER_KEY, PRINCIPAL_KEY, SERVICE_KEY].map((key) => [key.key_id, key]));
+
 function uuid(number) {
   return `urn:uuid:00000000-0000-4000-8000-${String(number).padStart(12, "0")}`;
 }
 
-function signature() {
-  return structuredClone(fixture.signature);
+function signature(key = AGENT_KEY) {
+  return {
+    profile: "cairn-ed25519-v0.1",
+    key_id: key.key_id,
+    signed_hash: ZERO_HASH,
+    signed_at: CREATED,
+    value: "A".repeat(86)
+  };
 }
 
 function ref(schema, number, object_hash = HASH_A) {
@@ -56,6 +94,25 @@ function schemaFor(object) {
   const schema = schemaByObjectId.get(object.schema);
   assert.ok(schema, `missing schema for ${object.schema}`);
   return schema;
+}
+
+function bindAndSign(object, key) {
+  const schema = schemaFor(object);
+  const bound = bindObjectHash(object, schema);
+  const pointer = schema["x-cairn-signature-pointers"][0];
+  const proof = valueAtPointer(bound, pointer);
+  proof.value = signBytes(null, signatureInput(object.schema, proof.signed_hash), key.privateKey).toString("base64url");
+  return bound;
+}
+
+function validationContext(extra = {}) {
+  return {
+    ajv,
+    schemasByObjectId: schemaByObjectId,
+    keyResolver,
+    now: "2026-07-20T16:30:00Z",
+    ...extra
+  };
 }
 
 function assertSchemaValid(object) {
@@ -83,12 +140,12 @@ function makeEffect(overrides = {}) {
     },
     effect_id: ZERO_HASH,
     descriptor_hash: ZERO_HASH,
-    descriptor_issuer_signature: signature(),
+    descriptor_issuer_signature: signature(SERVICE_KEY),
     not_claiming: ["receiver_effect", "authority_to_act", "global_exactly_once"],
     ...overrides
   };
   effect.effect_id = semanticHash(effect, schema);
-  return bindObjectHash(effect, schema);
+  return bindAndSign(effect, SERVICE_KEY);
 }
 
 function makeProposal(effect = makeEffect()) {
@@ -100,14 +157,18 @@ function makeProposal(effect = makeEffect()) {
     capability: "prepare",
     deal_id: null,
     expected_deal_head_hash: null,
-    target: "cairn:action-service",
+    target: effect.executor_target,
     ultimate_effect_recipient: null,
+    ultimate_effect_account_commitment: null,
+    effect_operation_kind: effect.effect_semantics.operation_kind,
+    effect_provider_id: effect.effect_semantics.provider_id,
+    copy_ids: structuredClone(effect.effect_semantics.copy_ids),
     resource_refs: [
       ref("cairn.active_intent.v0.1", 10),
       ref("cairn.effect_descriptor.v0.1", 20, effect.descriptor_hash)
     ],
     inputs_hash: HASH_A,
-    terms_or_cart_hash: null,
+    terms_or_cart_hash: effect.effect_semantics.closed_terms_or_cart_hash,
     evidence_snapshot_hash: null,
     amounts: [],
     rail: null,
@@ -120,9 +181,9 @@ function makeProposal(effect = makeEffect()) {
     created_at: CREATED,
     expires_at: EXPIRES,
     action_proposal_hash: ZERO_HASH,
-    agent_signature: signature()
+    agent_signature: signature(AGENT_KEY)
   };
-  return bindObjectHash(proposal, schemaFor(proposal));
+  return bindAndSign(proposal, AGENT_KEY);
 }
 
 function makeDraftAction(proposal = makeProposal()) {
@@ -146,10 +207,10 @@ function makeDraftAction(proposal = makeProposal()) {
     created_at: CREATED,
     updated_at: CREATED,
     action_hash: ZERO_HASH,
-    action_service_signature: signature(),
+    action_service_signature: signature(SERVICE_KEY),
     not_claiming: ["receiver_effect_before_confirmation"]
   };
-  return bindObjectHash(action, schemaFor(action));
+  return bindAndSign(action, SERVICE_KEY);
 }
 
 function makePreparationReceipt(action = makeDraftAction(), proposal = makeProposal()) {
@@ -167,10 +228,10 @@ function makePreparationReceipt(action = makeDraftAction(), proposal = makePropo
     issuer: "cairn:action-service",
     prior_receipt_or_event_hash: null,
     receipt_hash: ZERO_HASH,
-    issuer_signature: signature(),
+    issuer_signature: signature(SERVICE_KEY),
     not_claiming: ["authority_to_act", "external_effect"]
   };
-  return bindObjectHash(receipt, schemaFor(receipt));
+  return bindAndSign(receipt, SERVICE_KEY);
 }
 
 function makeJudgment() {
@@ -216,25 +277,77 @@ function makeJudgment() {
     created_at: CREATED,
     expires_at: EXPIRES,
     judgment_hash: ZERO_HASH,
-    issuer_signature: signature(),
+    issuer_signature: signature(AGENT_KEY),
     not_claiming: ["authority_to_act", "physical_truth", "future_market_outcome"]
   };
-  return bindObjectHash(judgment, schemaFor(judgment));
+  return bindAndSign(judgment, AGENT_KEY);
 }
 
 function makeContinuation() {
-  const grantRef = ref("cairn.data_grant.v0.1", 40, HASH_B);
-  const runtimeRef = ref("cairn.agent_runtime_binding.v0.1", 41, HASH_A);
-  const privateEntry = (objectRef, suffix) => ({
+  const runtime = bindAndSign({
+    schema: "cairn.agent_runtime_binding.v0.1",
+    runtime_binding_id: uuid(41),
+    agent_identity: structuredClone(fixture.agent_identity),
+    runtime_public_key: {
+      profile: "cairn-ed25519-v0.1",
+      key_id: AGENT_KEY.key_id,
+      public_key: AGENT_KEY.public_key
+    },
+    key_status: "active",
+    not_before: "2026-07-20T15:00:00Z",
+    expires_at: "2026-07-20T18:00:00Z",
+    runtime_binding_hash: ZERO_HASH,
+    provider_signature: signature(PROVIDER_KEY),
+    not_claiming: ["model_or_policy_attestation", "principal_authority", "personhood"]
+  }, PROVIDER_KEY);
+  const runtimeRef = objectRefFor(runtime, schemaFor(runtime));
+  const intentRef = ref("cairn.active_intent.v0.1", 10);
+  const controlRef = ref("cairn.intent_control_event.v0.1", 45);
+  const grantHeadRef = ref("cairn.data_grant.v0.1", 40);
+  const unknownRef = ref("cairn.unknown.v0.1", 46);
+  const privateEntry = (objectRef, suffix, dataGrantRef = null) => ({
     ref: objectRef,
     retrieval_uri: `https://objects.example/${suffix}`,
-    data_grant_ref: grantRef
+    data_grant_ref: dataGrantRef
   });
+  const unboundResources = [
+    { ...privateEntry(runtimeRef, "runtime-binding"), resource_kind: "runtime_binding" },
+    { ...privateEntry(intentRef, "intent"), resource_kind: "object" },
+    { ...privateEntry(controlRef, "intent-head"), resource_kind: "control_head" },
+    { ...privateEntry(grantHeadRef, "grant-head"), resource_kind: "grant_head" },
+    { ...privateEntry(unknownRef, "unknown"), resource_kind: "object" }
+  ];
+  const grant = bindAndSign({
+    schema: "cairn.data_grant.v0.1",
+    grant_id: uuid(40),
+    principal_id: fixture.principal_id,
+    recipient: AGENT_KEY.key_id,
+    resource_scopes: unboundResources.map(({ resource_kind, ref: objectRef, retrieval_uri }) => ({
+      resource_kind,
+      ref: objectRef,
+      retrieval_uri,
+      field_paths: [""]
+    })),
+    uses: ["read_local"],
+    purpose: "agent_continuation",
+    audience: [AGENT_KEY.key_id],
+    maximum_disclosures: 1,
+    retention: { expires_at: EXPIRES, deletion_terms: "Delete when this continuation expires." },
+    revocation_nonce: 7,
+    disclosure_ledger_namespace: "fixture-continuations",
+    issued_at: CREATED,
+    expires_at: EXPIRES,
+    grant_hash: ZERO_HASH,
+    principal_signature: signature(PRINCIPAL_KEY),
+    not_claiming: ["external_deletion_enforced"]
+  }, PRINCIPAL_KEY);
+  const grantRef = objectRefFor(grant, schemaFor(grant));
+  const withGrant = (entry) => ({ ...entry, data_grant_ref: grantRef });
   const bundle = {
     schema: "cairn.continuation_bundle.v0.1",
     bundle_id: uuid(42),
     principal_id: fixture.principal_id,
-    recipient_runtime_binding: privateEntry(runtimeRef, "runtime-binding"),
+    recipient_runtime_binding: withGrant(privateEntry(runtimeRef, "runtime-binding")),
     schema_bundle: {
       ref: ref("cairn.machine_bundle.v0.1", 43),
       retrieval_uri: "https://cairn.cards/protocol/v0.1/bundle.json",
@@ -247,49 +360,136 @@ function makeContinuation() {
     },
     items: [
       {
-        ...privateEntry(ref("cairn.active_intent.v0.1", 10), "intent"),
+        ...withGrant(privateEntry(intentRef, "intent")),
         required_for: "state"
       }
     ],
     current_intent_control_heads: [
-      privateEntry(ref("cairn.intent_control_event.v0.1", 45), "intent-head")
+      withGrant(privateEntry(controlRef, "intent-head"))
     ],
     current_deal_heads: [],
     current_action_reservation_service_refs: [],
     current_grant_status_and_revocation_refs: [
-      privateEntry(ref("cairn.data_grant.v0.1", 40, HASH_B), "grant-head")
+      withGrant(privateEntry(grantHeadRef, "grant-head"))
     ],
     unresolved_unknown_refs: [
-      privateEntry(ref("cairn.unknown.v0.1", 46), "unknown")
+      withGrant(privateEntry(unknownRef, "unknown"))
     ],
     issued_at: CREATED,
     expires_at: EXPIRES,
     bundle_hash: ZERO_HASH,
-    issuer_signature: signature(),
+    issuer_signature: signature(SERVICE_KEY),
     not_claiming: ["authority_transfer"]
   };
-  const boundBundle = bindObjectHash(bundle, schemaFor(bundle));
+  const boundBundle = bindAndSign(bundle, SERVICE_KEY);
+  const deliveryEnvelopeHash = HASH_B;
   const authorization = {
     schema: "cairn.continuation_disclosure_authorization.v0.1",
     authorization_id: uuid(47),
     principal_id: fixture.principal_id,
+    recipient_actor_id: AGENT_KEY.key_id,
     recipient_runtime_binding_ref: runtimeRef,
     recipient_runtime_binding_hash: runtimeRef.object_hash,
     bundle_hash: boundBundle.bundle_hash,
+    delivery_envelope_hash: deliveryEnvelopeHash,
+    disclosure_reservation: {
+      ledger_namespace: "fixture-continuations",
+      reservation_id: uuid(48),
+      fencing_token: 3,
+      principal_revocation_nonce: 11,
+      single_use_nonce: "fixture-disclosure-nonce-0001"
+    },
     data_grant_refs: [grantRef],
     purpose: "agent_continuation",
     one_shot: true,
     issued_at: CREATED,
     expires_at: EXPIRES,
     authorization_hash: ZERO_HASH,
-    principal_signature: signature(),
+    principal_signature: signature(PRINCIPAL_KEY),
     not_claiming: ["authority_transfer", "mandate_transfer"]
   };
-  return { bundle: boundBundle, authorization: bindObjectHash(authorization, schemaFor(authorization)) };
+  const boundAuthorization = bindAndSign(authorization, PRINCIPAL_KEY);
+  const disclosureLedger = new Map([["fixture-continuations|urn:uuid:00000000-0000-4000-8000-000000000048", {
+    status: "active",
+    fencing_token: 3,
+    single_use_nonce: "fixture-disclosure-nonce-0001",
+    authorization_hash: boundAuthorization.authorization_hash,
+    bundle_hash: boundBundle.bundle_hash,
+    runtime_binding_hash: runtime.runtime_binding_hash,
+    delivery_envelope_hash: deliveryEnvelopeHash,
+    principal_revocation_nonce: 11,
+    expires_at: EXPIRES
+  }]]);
+  const grantStatesByRef = new Map([[`${grantRef.schema}|${grantRef.object_id}|${grantRef.object_hash}`, {
+    status: "active",
+    revocation_nonce: 7,
+    remaining_disclosures: 1
+  }]]);
+  const publicRefsByRef = new Map([
+    [`${boundBundle.schema_bundle.ref.schema}|${boundBundle.schema_bundle.ref.object_id}|${boundBundle.schema_bundle.ref.object_hash}`, boundBundle.schema_bundle.retrieval_uri],
+    [`${boundBundle.object_service_manifest.ref.schema}|${boundBundle.object_service_manifest.ref.object_id}|${boundBundle.object_service_manifest.ref.object_hash}`, boundBundle.object_service_manifest.retrieval_uri]
+  ]);
+  const context = validationContext({
+    runtimeBinding: runtime,
+    dataGrantsByRef: new Map([[`${grantRef.schema}|${grantRef.object_id}|${grantRef.object_hash}`, grant]]),
+    grantStatesByRef,
+    publicRefsByRef,
+    disclosureLedger,
+    principalRevocationNonce: 11,
+    deliveryEnvelopeHash
+  });
+  return { bundle: boundBundle, authorization: boundAuthorization, runtime, grant, context };
 }
 
-function makeEnvelope(proposal = makeProposal()) {
+function makeRuntimeBinding() {
+  return bindAndSign({
+    schema: "cairn.agent_runtime_binding.v0.1",
+    runtime_binding_id: uuid(60),
+    agent_identity: structuredClone(fixture.agent_identity),
+    runtime_public_key: { profile: "cairn-ed25519-v0.1", key_id: AGENT_KEY.key_id, public_key: AGENT_KEY.public_key },
+    key_status: "active",
+    not_before: "2026-07-20T15:00:00Z",
+    expires_at: "2026-07-20T18:00:00Z",
+    runtime_binding_hash: ZERO_HASH,
+    provider_signature: signature(PROVIDER_KEY),
+    not_claiming: ["model_or_policy_attestation", "principal_authority", "personhood"]
+  }, PROVIDER_KEY);
+}
+
+function makeEnvelopeCase(effect = makeEffect(), proposal = makeProposal(effect)) {
   const operation = registry.operations.find(({ name }) => name === "action.prepare");
+  const runtimeBinding = makeRuntimeBinding();
+  const proposalRef = objectRefFor(proposal, schemaFor(proposal));
+  const resourceUrisByRef = new Map();
+  for (const [index, objectRef] of [proposalRef, ...proposal.resource_refs].entries()) {
+    resourceUrisByRef.set(`${objectRef.schema}|${objectRef.object_id}|${objectRef.object_hash}`, `https://objects.example/action-resource-${index}`);
+  }
+  const grant = bindAndSign({
+    schema: "cairn.data_grant.v0.1",
+    grant_id: uuid(61),
+    principal_id: fixture.principal_id,
+    recipient: fixture.agent_identity.agent_provider_id,
+    resource_scopes: [proposalRef, ...proposal.resource_refs].map((objectRef) => ({
+      resource_kind: "object",
+      ref: objectRef,
+      retrieval_uri: resourceUrisByRef.get(`${objectRef.schema}|${objectRef.object_id}|${objectRef.object_hash}`),
+      field_paths: [""]
+    })),
+    uses: ["derive"],
+    purpose: "action_preparation",
+    audience: [fixture.agent_identity.agent_provider_id],
+    maximum_disclosures: 2,
+    retention: { expires_at: EXPIRES, deletion_terms: "Delete when the operation expires." },
+    revocation_nonce: 2,
+    disclosure_ledger_namespace: "fixture-envelope-grants",
+    issued_at: CREATED,
+    expires_at: EXPIRES,
+    grant_hash: ZERO_HASH,
+    principal_signature: signature(PRINCIPAL_KEY),
+    not_claiming: ["external_deletion_enforced"]
+  }, PRINCIPAL_KEY);
+  const grantRef = objectRefFor(grant, schemaFor(grant));
+  const descriptorKey = `${proposal.effect_descriptor_ref.schema}|${proposal.effect_descriptor_ref.object_id}|${proposal.effect_descriptor_ref.object_hash}`;
   const envelope = {
     schema: "cairn.envelope.v0.1",
     protocol_version: "0.1",
@@ -303,19 +503,35 @@ function makeEnvelope(proposal = makeProposal()) {
     },
     principal_id: fixture.principal_id,
     audience: ["cairn:action-service"],
-    subject_refs: [ref("cairn.action_proposal.v0.1", 21, proposal.action_proposal_hash)],
+    subject_refs: [proposalRef],
+    authorization_refs: [grantRef],
     nonce: "fixture-nonce-00000001",
     idempotency_key: "fixture-idempotency-0001",
-    operation_fingerprint: HASH_A,
+    operation_fingerprint: ZERO_HASH,
     critical_extensions: [],
     body_schema: operation.request_schema,
     body: proposal,
     body_hash: canonicalHash(proposal),
     trace: { parent_message_id: null, correlation_id: "fixture-workflow-1" },
     envelope_hash: ZERO_HASH,
-    signature: signature()
+    signature: signature(AGENT_KEY)
   };
-  return bindObjectHash(envelope, schemaFor(envelope));
+  envelope.operation_fingerprint = operationFingerprint(envelope);
+  const bound = bindAndSign(envelope, AGENT_KEY);
+  const grantKey = `${grantRef.schema}|${grantRef.object_id}|${grantRef.object_hash}`;
+  const context = validationContext({
+    registry,
+    expectedAudience: "cairn:action-service",
+    authorityNamespace: `${fixture.principal_id}|action.prepare`,
+    runtimeBinding,
+    dataGrantsByRef: new Map([[grantKey, grant]]),
+    grantStatesByRef: new Map([[grantKey, { status: "active", revocation_nonce: 2, remaining_disclosures: 2 }]]),
+    effectDescriptorsByRef: new Map([[descriptorKey, effect]]),
+    resourceUrisByRef,
+    usedNonces: new Set(),
+    idempotencyRecords: new Map()
+  });
+  return { envelope: bound, context, grant, runtimeBinding };
 }
 
 test("all schemas and registered operation references compile", () => {
@@ -360,13 +576,16 @@ test("Ed25519 vector verifies only for the bound domain, schema, and hash", asyn
   );
 });
 
-test("signed-object hash excludes only declared hash and signature fields", () => {
+test("signed-object hash authenticates signature metadata and excludes only proof bytes", () => {
   const proposal = makeProposal();
   assertSchemaValid(proposal);
   assert.deepEqual(verifyObjectBindings(proposal, schemaFor(proposal)), []);
   const changedProof = structuredClone(proposal);
   changedProof.agent_signature.value = "A".repeat(86);
   assert.equal(objectHash(changedProof, schemaFor(proposal)), proposal.action_proposal_hash);
+  changedProof.agent_signature.key_id = "https://agent.example/keys/substitute";
+  assert.notEqual(objectHash(changedProof, schemaFor(proposal)), proposal.action_proposal_hash);
+  changedProof.agent_signature.key_id = proposal.agent_signature.key_id;
   changedProof.target = "cairn:different-target";
   assert.notEqual(objectHash(changedProof, schemaFor(proposal)), proposal.action_proposal_hash);
 });
@@ -394,7 +613,8 @@ test("proposal and effect descriptor must agree across every typed binding", () 
   const forked = structuredClone(proposal);
   forked.effect_id = HASH_B;
   forked.effect_descriptor_ref.object_hash = HASH_B;
-  assert.deepEqual(validateProposalEffectBinding(forked, effect), ["effect_descriptor_hash_mismatch", "effect_id_mismatch"]);
+  assert.ok(validateProposalEffectBinding(forked, effect).includes("effect_descriptor_ref_mismatch"));
+  assert.ok(validateProposalEffectBinding(forked, effect).includes("effect_id_mismatch"));
 });
 
 test("effect copy order, duplicate copies, and semantic forks fail", () => {
@@ -466,20 +686,20 @@ test("operation registry exposes preparation but no authorization or execution",
   assert.equal(prepare.authority_effect, "none");
   assert.equal(prepare.authorization_requirement, "data_grant_and_signed_proposal");
   assert.equal(prepare.implementation_status, "schema_only");
-  assert.equal(
-    registry.operations.find(({ name }) => name === "continuation.get").authorization_requirement,
-    "continuation_disclosure_authorization"
-  );
+  assert.equal(registry.operations.length, 10);
+  assert.equal(registry.operations.some(({ name }) => name === "continuation.get"), false);
   assert.equal(registry.operations.some(({ name }) => /authorize|execute|dispatch|pay|release|waive|issue/.test(name)), false);
   assert.deepEqual(sources.manifest.conformance_claims, []);
 });
 
 test("envelope binds its body and enforces mutation idempotency", () => {
-  const envelope = makeEnvelope();
+  const { envelope, context } = makeEnvelopeCase();
   assertSchemaValid(envelope);
   assert.equal(bodyHash(envelope, schemaFor(envelope)), envelope.body_hash);
   assert.deepEqual(verifyObjectBindings(envelope, schemaFor(envelope)), []);
-  assert.deepEqual(validateEnvelopeOperation(envelope, registry), []);
+  assert.deepEqual(validateEnvelopeOperation(envelope, context), []);
+  assert.equal(acceptEnvelopeOperation(envelope, context).accepted, true);
+  assert.ok(validateEnvelopeOperation(envelope, context).includes("nonce_replay"));
 
   const mutatedBody = structuredClone(envelope);
   mutatedBody.body.target = "cairn:different-target";
@@ -487,24 +707,24 @@ test("envelope binds its body and enforces mutation idempotency", () => {
 
   const noIdempotency = structuredClone(envelope);
   noIdempotency.idempotency_key = null;
-  assert.ok(validateEnvelopeOperation(noIdempotency, registry).includes("idempotency_key_required"));
+  assert.ok(validateEnvelopeOperation(noIdempotency, context).includes("idempotency_key_required"));
 
   const wrongSchema = structuredClone(envelope);
   wrongSchema.body_schema = registry.operations.find(({ name }) => name === "intent.get").request_schema;
-  assert.ok(validateEnvelopeOperation(wrongSchema, registry).includes("body_schema_mismatch"));
+  assert.ok(validateEnvelopeOperation(wrongSchema, context).includes("body_schema_mismatch"));
 });
 
 test("unknown critical envelope extensions fail closed", () => {
-  const envelope = makeEnvelope();
+  const { envelope, context } = makeEnvelopeCase();
   envelope.critical_extensions = ["https://malicious.example/authority-upgrade"];
-  assert.ok(validateEnvelopeOperation(envelope, registry).includes("critical_extension_unknown"));
+  assert.ok(validateEnvelopeOperation(envelope, context).includes("critical_extension_unknown"));
 });
 
 test("continuation bundle carries context but binds no transferable authority", () => {
-  const { bundle, authorization } = makeContinuation();
+  const { bundle, authorization, context } = makeContinuation();
   assertSchemaValid(bundle);
   assertSchemaValid(authorization);
-  assert.deepEqual(validateContinuationBinding(bundle, authorization), []);
+  assert.deepEqual(validateContinuationBinding(bundle, authorization, context), []);
   assert.deepEqual(bundle.not_claiming, ["authority_transfer"]);
 
   const embeddedAuthorization = structuredClone(bundle);
@@ -513,18 +733,234 @@ test("continuation bundle carries context but binds no transferable authority", 
 });
 
 test("continuation runtime swap and grant-graph expansion fail", () => {
-  const { bundle, authorization } = makeContinuation();
+  const { bundle, authorization, context } = makeContinuation();
   const wrongRuntime = structuredClone(authorization);
   wrongRuntime.recipient_runtime_binding_hash = HASH_B;
-  assert.ok(validateContinuationBinding(bundle, wrongRuntime).includes("runtime_binding_hash_mismatch"));
+  assert.ok(validateContinuationBinding(bundle, wrongRuntime, context).includes("runtime_binding_hash_mismatch"));
 
   const missingGrant = structuredClone(authorization);
   missingGrant.data_grant_refs = [];
-  assert.ok(validateContinuationBinding(bundle, missingGrant).includes("data_grant_graph_exceeded"));
+  assert.ok(validateContinuationBinding(bundle, missingGrant, context).includes("data_grant_graph_mismatch"));
 
   const inlineUnknown = structuredClone(bundle);
   inlineUnknown.unresolved_unknown_refs[0].private_budget = { amount_minor: 9999, asset: "USD" };
   assert.equal(ajv.getSchema(schemaFor(bundle).$id)(inlineUnknown), false);
+});
+
+test("continuation enforces recipient, purpose, URI, whole-object scope, and disclosure count", () => {
+  const recipientCase = makeContinuation();
+  recipientCase.authorization.recipient_actor_id = "https://agent.example/keys/wrong-runtime";
+  assert.ok(validateContinuationBinding(recipientCase.bundle, recipientCase.authorization, recipientCase.context).includes("recipient_actor_mismatch"));
+
+  const purposeCase = makeContinuation();
+  purposeCase.grant.purpose = "unrelated_read";
+  const purposeKey = [...purposeCase.context.dataGrantsByRef.keys()][0];
+  purposeCase.context.dataGrantsByRef.set(purposeKey, bindAndSign(purposeCase.grant, PRINCIPAL_KEY));
+  assert.ok(validateContinuationBinding(purposeCase.bundle, purposeCase.authorization, purposeCase.context).includes("grant_purpose_mismatch"));
+
+  const uriCase = makeContinuation();
+  uriCase.bundle.items[0].retrieval_uri = "https://objects.example/substituted-intent";
+  assert.ok(validateContinuationBinding(uriCase.bundle, uriCase.authorization, uriCase.context).includes("grant_resource_scope_mismatch"));
+
+  const fieldCase = makeContinuation();
+  fieldCase.grant.resource_scopes[0].field_paths = ["/runtime_binding_id"];
+  const fieldKey = [...fieldCase.context.dataGrantsByRef.keys()][0];
+  fieldCase.context.dataGrantsByRef.set(fieldKey, bindAndSign(fieldCase.grant, PRINCIPAL_KEY));
+  assert.ok(validateContinuationBinding(fieldCase.bundle, fieldCase.authorization, fieldCase.context).includes("grant_resource_scope_mismatch"));
+
+  const countCase = makeContinuation();
+  countCase.grant.maximum_disclosures = 0;
+  const countKey = [...countCase.context.dataGrantsByRef.keys()][0];
+  countCase.context.dataGrantsByRef.set(countKey, bindAndSign(countCase.grant, PRINCIPAL_KEY));
+  assert.ok(validateContinuationBinding(countCase.bundle, countCase.authorization, countCase.context).includes("grant_disclosures_exhausted"));
+
+  const publicCase = makeContinuation();
+  publicCase.bundle.schema_bundle.retrieval_uri = "https://evil.example/substitute.json";
+  assert.ok(validateContinuationBinding(publicCase.bundle, publicCase.authorization, publicCase.context).includes("public_resource_binding_mismatch"));
+});
+
+test("continuation disclosure reservation is consumed exactly once", () => {
+  const { bundle, authorization, context } = makeContinuation();
+  assert.deepEqual(consumeContinuationDisclosure(bundle, authorization, context), { consumed: true, failures: [] });
+  assert.equal([...context.grantStatesByRef.values()][0].remaining_disclosures, 0);
+  const replay = consumeContinuationDisclosure(bundle, authorization, context);
+  assert.equal(replay.consumed, false);
+  assert.ok(replay.failures.includes("disclosure_reservation_consumed"));
+});
+
+test("continuation reservation binds delivery, fence, revocation, and grant ledger", () => {
+  const cases = [
+    ["delivery_envelope_hash_mismatch", ({ context }) => { context.deliveryEnvelopeHash = HASH_A; }],
+    ["disclosure_fencing_token_mismatch", ({ context }) => { [...context.disclosureLedger.values()][0].fencing_token = 4; }],
+    ["principal_revocation_nonce_mismatch", ({ context }) => { context.principalRevocationNonce = 12; }],
+    ["grant_disclosure_ledger_mismatch", ({ grant, context }) => {
+      grant.disclosure_ledger_namespace = "other-ledger";
+      context.dataGrantsByRef.set([...context.dataGrantsByRef.keys()][0], bindAndSign(grant, PRINCIPAL_KEY));
+    }]
+  ];
+  for (const [expected, mutate] of cases) {
+    const value = makeContinuation();
+    mutate(value);
+    assert.ok(validateContinuationBinding(value.bundle, value.authorization, value.context).includes(expected), expected);
+  }
+});
+
+test("envelope rejects independent mutations at every operation boundary", () => {
+  const mutate = (change) => {
+    const value = makeEnvelopeCase();
+    change(value);
+    return validateEnvelopeOperation(value.envelope, value.context);
+  };
+  assert.ok(mutate(({ envelope }) => { envelope.body.extra = true; }).includes("body_schema_invalid"));
+  assert.ok(mutate(({ envelope }) => { envelope.body.principal_id = "did:example:other"; }).includes("body_principal_mismatch"));
+  assert.ok(mutate(({ envelope }) => { envelope.sender.actor_id = "did:web:other-agent.example"; }).includes("runtime_binding_sender_mismatch"));
+  assert.ok(mutate(({ envelope }) => { envelope.sender.runtime_key_id = PRINCIPAL_KEY.key_id; }).includes("envelope_signer_runtime_key_mismatch"));
+  assert.ok(mutate(({ envelope }) => { envelope.audience = ["cairn:wrong-service"]; }).includes("audience_mismatch"));
+  assert.ok(mutate(({ envelope }) => { envelope.expires_at = "2026-07-20T16:00:01Z"; }).includes("envelope_not_current"));
+  assert.ok(mutate(({ envelope }) => { envelope.operation_fingerprint = HASH_A; }).includes("operation_fingerprint_mismatch"));
+  assert.ok(mutate(({ envelope }) => { envelope.authorization_refs = []; }).includes("authorization_ref_required"));
+  assert.ok(mutate(({ envelope }) => { envelope.subject_refs = []; }).includes("body_subject_ref_missing"));
+  assert.ok(mutate(({ envelope }) => { envelope.body.target = "cairn:substituted-executor"; }).includes("effect_target_mismatch"));
+  assert.ok(mutate(({ context }) => { context.effectDescriptorsByRef.clear(); }).includes("effect_descriptor_unresolved"));
+});
+
+test("idempotency admission rejects the same key with a changed operation fingerprint", () => {
+  const { envelope, context } = makeEnvelopeCase();
+  assert.equal(acceptEnvelopeOperation(envelope, context).accepted, true);
+  const conflicting = structuredClone(envelope);
+  conflicting.nonce = "fixture-nonce-00000002";
+  conflicting.operation_fingerprint = HASH_B;
+  const rebound = bindAndSign(conflicting, AGENT_KEY);
+  assert.ok(validateEnvelopeOperation(rebound, context).includes("idempotency_conflict"));
+});
+
+test("runtime binding cross-binds identity, public key, provider, and envelope signer", () => {
+  const { runtimeBinding } = makeEnvelopeCase();
+  assert.deepEqual(validateSignedObject(runtimeBinding, validationContext()), []);
+
+  const keySwap = structuredClone(runtimeBinding);
+  keySwap.agent_identity.runtime_instance_key_id = PRINCIPAL_KEY.key_id;
+  const keySwapSigned = bindAndSign(keySwap, PROVIDER_KEY);
+  assert.equal(ajv.getSchema(schemaFor(keySwapSigned).$id)(keySwapSigned), false);
+
+  const materialSwap = structuredClone(runtimeBinding);
+  materialSwap.runtime_public_key.public_key = PRINCIPAL_KEY.public_key;
+  const materialSwapSigned = bindAndSign(materialSwap, PROVIDER_KEY);
+  assert.ok(validateEnvelopeOperation(makeEnvelopeCase().envelope, {
+    ...makeEnvelopeCase().context,
+    runtimeBinding: materialSwapSigned
+  }).includes("runtime_public_key_material_mismatch"));
+
+  const providerSwap = structuredClone(runtimeBinding);
+  providerSwap.agent_identity.agent_provider_id = "did:web:other-provider.example";
+  const providerSwapSigned = bindAndSign(providerSwap, PROVIDER_KEY);
+  const { envelope, context } = makeEnvelopeCase();
+  context.runtimeBinding = providerSwapSigned;
+  assert.ok(validateEnvelopeOperation(envelope, context).includes("runtime_provider_signer_mismatch"));
+});
+
+test("proposal and effect binding rejects every consequential field substitution", () => {
+  const effect = makeEffect();
+  const cases = [
+    ["effect_descriptor_ref", (p) => { p.effect_descriptor_ref.object_id = uuid(999); }],
+    ["effect_id", (p) => { p.effect_id = HASH_B; }],
+    ["effect_principal", (p) => { p.principal_id = "did:example:other"; }],
+    ["effect_capability", (p) => { p.capability = "recommend"; }],
+    ["effect_target", (p) => { p.target = "cairn:other-executor"; }],
+    ["effect_operation_kind", (p) => { p.effect_operation_kind = "other_operation"; }],
+    ["effect_provider", (p) => { p.effect_provider_id = "cairn:other-provider"; }],
+    ["effect_recipient", (p) => { p.ultimate_effect_recipient = "did:example:receiver"; }],
+    ["effect_account_commitment", (p) => { p.ultimate_effect_account_commitment = HASH_B; }],
+    ["effect_deal", (p) => { p.deal_id = uuid(998); }],
+    ["effect_terms", (p) => { p.terms_or_cart_hash = HASH_B; }],
+    ["effect_copy_ids", (p) => { p.copy_ids = ["copy-a"]; }],
+    ["effect_rail", (p) => { p.rail = "paypal"; }],
+    ["effect_amounts", (p) => { p.amounts = [{ role: "quoted_total", money: { amount_minor: 1, asset: "USD" } }]; }]
+  ];
+  for (const [prefix, change] of cases) {
+    const proposal = makeProposal(effect);
+    change(proposal);
+    assert.ok(validateProposalEffectBinding(proposal, effect).some((code) => code.startsWith(prefix)), prefix);
+  }
+});
+
+test("resolved objects are bound to requested ref, schema, hash, and retrieval URI", () => {
+  const object = makeProposal();
+  const expectedRef = objectRefFor(object, schemaFor(object));
+  const expectedUri = "https://objects.example/proposal-21";
+  const response = { ref: expectedRef, retrieval_uri: expectedUri, object };
+  const context = validationContext({ expectedRef, expectedUri });
+  assert.deepEqual(validateResolvedObjectResponse(response, context), []);
+
+  const wrongRef = structuredClone(response);
+  wrongRef.ref.object_hash = HASH_B;
+  assert.ok(validateResolvedObjectResponse(wrongRef, context).includes("resolved_ref_mismatch"));
+  const wrongUri = structuredClone(response);
+  wrongUri.retrieval_uri = "https://evil.example/object";
+  assert.ok(validateResolvedObjectResponse(wrongUri, context).includes("resolved_uri_mismatch"));
+  const wrongObject = structuredClone(response);
+  wrongObject.object.target = "cairn:substituted-target";
+  assert.ok(validateResolvedObjectResponse(wrongObject, context).includes("resolved_object_binding_mismatch"));
+});
+
+test("preparation receipt cross-checks action, proposal, principal, agent, and draft-only state", () => {
+  const proposal = makeProposal();
+  const action = makeDraftAction(proposal);
+  const receipt = makePreparationReceipt(action, proposal);
+  const context = validationContext({ action, proposal, expectedAgentIdentity: fixture.agent_identity });
+  assert.deepEqual(validatePreparationReceipt(receipt, context), []);
+  const wrong = structuredClone(receipt);
+  wrong.action_ref.object_hash = HASH_B;
+  wrong.prepared_for_principal = "did:example:other";
+  assert.ok(validatePreparationReceipt(wrong, context).includes("receipt_action_ref_mismatch"));
+  assert.ok(validatePreparationReceipt(wrong, context).includes("preparation_principal_mismatch"));
+  const authority = structuredClone(action);
+  authority.authorization_ref = ref("cairn.authorization.v0.1", 901);
+  assert.ok(validatePreparationReceipt(receipt, { ...context, action: authority }).includes("action_authority_present"));
+});
+
+test("runtime canonicalization rejects non-I-JSON and noncanonical proof encodings", async () => {
+  assert.throws(() => assertIJson({ bad: Number.NaN }), /non-finite/);
+  assert.throws(() => canonicalText({ bad: "\ud800" }), /unpaired high surrogate/);
+  assert.throws(() => canonicalText({ bad: 9007199254740992 }), /interoperable I-JSON range/);
+  assert.equal(verifyEd25519({
+    schemaId: "cairn.action_proposal.v0.1",
+    objectHash: HASH_A,
+    publicKey: `${AGENT_KEY.public_key}=`,
+    signature: "A".repeat(86)
+  }), false);
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+  const noncanonicalKey = `${AGENT_KEY.public_key.slice(0, -1)}${alphabet[alphabet.indexOf(AGENT_KEY.public_key.at(-1)) + 1]}`;
+  const vector = (await readJson(path.join(root, "vectors", "ed25519-vectors.json"))).vectors[0];
+  const noncanonicalSignature = `${vector.signature.slice(0, -1)}${alphabet[alphabet.indexOf(vector.signature.at(-1)) + 1]}`;
+  assert.equal(Buffer.from(noncanonicalKey, "base64url").equals(Buffer.from(AGENT_KEY.public_key, "base64url")), true);
+  assert.equal(Buffer.from(noncanonicalSignature, "base64url").equals(Buffer.from(vector.signature, "base64url")), true);
+  assert.equal(verifyEd25519({
+    schemaId: vector.schema_id,
+    objectHash: vector.object_hash,
+    publicKey: vector.public_key,
+    signature: noncanonicalSignature
+  }), false);
+  const runtime = makeRuntimeBinding();
+  runtime.runtime_public_key.public_key = `${AGENT_KEY.public_key}=`;
+  assert.equal(ajv.getSchema(schemaFor(runtime).$id)(runtime), false);
+});
+
+test("array annotations fail closed on malformed element types", () => {
+  assert.equal(utf8Sorted(["copy-a", 7]), false);
+  const effect = makeEffect();
+  effect.effect_semantics.copy_ids = ["copy-a", 7];
+  assert.doesNotThrow(() => ajv.getSchema(schemaFor(effect).$id)(effect));
+  assert.equal(ajv.getSchema(schemaFor(effect).$id)(effect), false);
+});
+
+test("proposal-foundation registry surface is exact, not merely a denylist", () => {
+  const changed = structuredClone(sources);
+  changed.registry.operations.push({ ...changed.registry.operations[0], name: "harmless.extra" });
+  assert.throws(() => auditSources(changed), /exact proposal-foundation surface/);
+  const weakened = structuredClone(sources);
+  weakened.registry.operations[2].grant_use = "read_local";
+  assert.throws(() => auditSources(weakened), /exact proposal-foundation surface/);
 });
 
 test("duplicate members and floating-point source are rejected before Node parsing", () => {

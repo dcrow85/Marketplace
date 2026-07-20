@@ -15,14 +15,15 @@ already exists.
 - deterministic RFC 8785/JCS SHA-256 object hashing;
 - Ed25519 verification vectors for the Cairn domain-separated signature input;
 - a deterministic content-addressed bundle builder;
-- mutation-controlled tests for authority laundering, effect-ID forks,
-  continuation leakage, schema drift, and hash/signature behavior.
+- executable admission/consumption validators and mutation-controlled tests for
+  authority laundering, effect-ID forks, continuation leakage, schema drift,
+  object resolution, replay, and hash/signature behavior.
 
-The registry currently names eleven operations. Only `intent.put` and
+The registry currently names exactly ten operations. Only `intent.put` and
 `action.prepare` are mutations; the latter ends at a signed preparation receipt
 whose schema fixes `external_effect` to `false`. There is deliberately no
-authorize, execute, dispatch, payment, release, waiver, or disclosure-issuance
-operation.
+authorize, execute, dispatch, payment, release, waiver, disclosure-issuance, or
+private continuation-delivery operation.
 
 ## What is not included
 
@@ -30,6 +31,8 @@ There is no network service, database, reservation ledger, executor, payment
 integration, or contract change in this package. `conformance_claims` is
 intentionally empty. Passing these tests establishes only that this source bundle
 is internally consistent and that the named negative fixtures are rejected.
+The in-memory acceptance and one-shot consumption primitives are reference
+validation controls, not an authoritative concurrent service.
 
 ## Commands
 
@@ -49,10 +52,13 @@ schema or registry file.
 The files under `schemas/`, `operations/`, and `vectors/` are authoritative for
 this foundation slice. Generated files under `dist/` must never be hand-edited.
 An implementation must validate an instance against its exact `$id`, recompute
-its object hash using the schema's `x-cairn-*` exclusion pointers, and preserve
-the protocol's `not_claiming` boundary.
+its object hash using the schema's `x-cairn-*` annotations, resolve and verify its
+current signer, and preserve the protocol's `not_claiming` boundary. Signature
+profile, key ID, and signing time are authenticated hash material; only
+`signed_hash` and proof bytes are excluded to break the signing cycle.
 
 `operations/registry.json` also names the exact authorization prerequisite for
-each operation. A DataGrant does not become action authority, and
-`continuation.get` requires the adjacent one-shot continuation disclosure
-authorization rather than treating a portable bundle as a transferred mandate.
+each operation, including its DataGrant purpose and use. A DataGrant does not
+become action authority. Continuation objects and their one-shot validation are
+defined, but `continuation.get` is intentionally not advertised until an
+authoritative reservation/consumption ledger can make disclosure atomic.

@@ -24,6 +24,8 @@
           "response_schema",
           "data_grant_required",
           "authorization_requirement",
+          "grant_purpose",
+          "grant_use",
           "authority_effect",
           "implementation_status"
         ],
@@ -41,6 +43,18 @@
               "principal_signature_and_data_grant",
               "data_grant_and_signed_proposal",
               "continuation_disclosure_authorization"
+            ]
+          },
+          "grant_purpose": {
+            "anyOf": [
+              { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
+              { "type": "null" }
+            ]
+          },
+          "grant_use": {
+            "anyOf": [
+              { "enum": ["read_local", "derive", "disclose_to_audience", "retain_until_expiry", "write_object"] },
+              { "type": "null" }
             ]
           },
           "authority_effect": {

@@ -5,8 +5,10 @@
   "type": "object",
   "additionalProperties": false,
   "x-cairn-object-schema": "cairn.action_proposal.v0.1",
+  "x-cairn-object-id-pointer": "/action_proposal_id",
   "x-cairn-self-hash-pointer": "/action_proposal_hash",
   "x-cairn-signature-pointers": ["/agent_signature"],
+  "x-cairn-hash-exclusion-pointers": ["/agent_signature/signed_hash", "/agent_signature/value"],
   "required": [
     "schema",
     "action_proposal_id",
@@ -17,6 +19,10 @@
     "expected_deal_head_hash",
     "target",
     "ultimate_effect_recipient",
+    "ultimate_effect_account_commitment",
+    "effect_operation_kind",
+    "effect_provider_id",
+    "copy_ids",
     "resource_refs",
     "inputs_hash",
     "terms_or_cart_hash",
@@ -53,6 +59,16 @@
         { "type": "string", "minLength": 1, "maxLength": 512 },
         { "type": "null" }
       ]
+    },
+    "ultimate_effect_account_commitment": { "$ref": "common.schema.json#/$defs/nullableSha256" },
+    "effect_operation_kind": { "type": "string", "pattern": "^[a-z][a-z0-9_.:-]{1,127}$" },
+    "effect_provider_id": { "$ref": "common.schema.json#/$defs/actorId" },
+    "copy_ids": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "type": "string", "minLength": 1, "maxLength": 256 },
+      "uniqueItems": true,
+      "x-cairn-utf8-sorted": true
     },
     "resource_refs": {
       "type": "array",

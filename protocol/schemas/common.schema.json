@@ -55,7 +55,7 @@
         "key_id": { "type": "string", "format": "uri-reference", "minLength": 1 },
         "signed_hash": { "$ref": "#/$defs/sha256" },
         "signed_at": { "$ref": "#/$defs/timestamp" },
-        "value": { "type": "string", "pattern": "^[A-Za-z0-9_-]{86}$" }
+        "value": { "type": "string", "format": "cairn-ed25519-signature" }
       }
     },
     "money": {

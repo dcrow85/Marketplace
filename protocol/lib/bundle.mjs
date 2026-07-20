@@ -2,6 +2,7 @@ import { readdir } from "node:fs/promises";
 import path from "node:path";
 
 import { canonicalHash, canonicalText } from "./core.mjs";
+import { EXACT_FOUNDATION_OPERATION_TUPLES, operationTuple } from "./foundation-profile.mjs";
 import { createAjv, loadSchemas, readJson, requireValid } from "./schemas.mjs";
 
 export async function loadSources(root) {
@@ -52,20 +53,46 @@ export function auditSources({ manifest, registry, schemas }) {
     if (document.additionalProperties !== false) {
       throw new Error(`${name} must reject undeclared top-level fields`);
     }
-    const exclusionPointers = [
-      document["x-cairn-self-hash-pointer"],
-      ...document["x-cairn-signature-pointers"]
-    ];
-    if (new Set(exclusionPointers).size !== exclusionPointers.length) {
-      throw new Error(`${name} repeats a hash/signature exclusion pointer`);
+    const idPointer = document["x-cairn-object-id-pointer"];
+    const selfHashPointer = document["x-cairn-self-hash-pointer"];
+    const signaturePointers = document["x-cairn-signature-pointers"];
+    const hashExclusionPointers = document["x-cairn-hash-exclusion-pointers"];
+    if (typeof idPointer !== "string" || !Array.isArray(signaturePointers) || !Array.isArray(hashExclusionPointers)) {
+      throw new Error(`${name} lacks complete signed-object annotations`);
     }
-    for (const pointer of exclusionPointers) {
+    const expectedHashExclusions = signaturePointers.flatMap((pointer) => [
+      `${pointer}/signed_hash`,
+      `${pointer}/value`
+    ]);
+    if (canonicalText(hashExclusionPointers) !== canonicalText(expectedHashExclusions)) {
+      throw new Error(`${name} must hash signature metadata and exclude only signed_hash/value`);
+    }
+    const exclusionPointers = [selfHashPointer, ...hashExclusionPointers];
+    if (new Set(exclusionPointers).size !== exclusionPointers.length) {
+      throw new Error(`${name} repeats a hash exclusion pointer`);
+    }
+    for (const pointer of [idPointer, selfHashPointer, ...signaturePointers, ...hashExclusionPointers]) {
       if (typeof pointer !== "string" || !pointer.startsWith("/")) {
         throw new Error(`${name} has an invalid Cairn exclusion pointer`);
       }
       const rootProperty = pointer.slice(1).split("/", 1)[0].replaceAll("~1", "/").replaceAll("~0", "~");
       if (!document.properties?.[rootProperty] || !document.required?.includes(rootProperty)) {
         throw new Error(`${name}: exclusion pointer ${pointer} is not a required declared property`);
+      }
+    }
+    const idRoot = idPointer.slice(1).split("/", 1)[0];
+    if (!document.properties?.[idRoot] || !document.required?.includes(idRoot)) {
+      throw new Error(`${name}: object id pointer must name a required property`);
+    }
+    for (const pair of document["x-cairn-equal-non-null-pointers"] ?? []) {
+      if (!Array.isArray(pair) || pair.length !== 2 || pair.some((pointer) => typeof pointer !== "string" || !pointer.startsWith("/"))) {
+        throw new Error(`${name}: invalid equality-pointer annotation`);
+      }
+      for (const pointer of pair) {
+        const rootProperty = pointer.slice(1).split("/", 1)[0].replaceAll("~1", "/").replaceAll("~0", "~");
+        if (!document.properties?.[rootProperty] || !document.required?.includes(rootProperty)) {
+          throw new Error(`${name}: equality pointer ${pointer} is not rooted in a required property`);
+        }
       }
     }
     for (const ruleName of ["x-cairn-semantic-hash", "x-cairn-body-hash"]) {
@@ -86,6 +113,10 @@ export function auditSources({ manifest, registry, schemas }) {
   }
   if (manifest.conformance_claims.length !== 0) throw new Error("foundation may not claim conformance");
   if (new Set(operationNames).size !== operationNames.length) throw new Error("operation names must be unique");
+  const actualOperationTuples = registry.operations.map(operationTuple);
+  if (canonicalText(actualOperationTuples) !== canonicalText(EXACT_FOUNDATION_OPERATION_TUPLES)) {
+    throw new Error("operation registry differs from the exact proposal-foundation surface");
+  }
   for (const operation of registry.operations) {
     if (!ajv.getSchema(operation.request_schema)) throw new Error(`${operation.name}: request schema does not resolve`);
     if (!ajv.getSchema(operation.response_schema)) throw new Error(`${operation.name}: response schema does not resolve`);
@@ -94,12 +125,6 @@ export function auditSources({ manifest, registry, schemas }) {
     }
     if (operation.data_grant_required === (operation.authorization_requirement === "none")) {
       throw new Error(`${operation.name}: grant flag and authorization requirement disagree`);
-    }
-    if (
-      operation.name === "continuation.get" &&
-      operation.authorization_requirement !== "continuation_disclosure_authorization"
-    ) {
-      throw new Error("continuation.get must require its one-shot disclosure authorization");
     }
     if (/authorize|execute|dispatch|pay|release|waive|issue/.test(operation.name)) {
       throw new Error(`${operation.name}: consequential operation is outside the foundation profile`);

@@ -4,7 +4,7 @@ import path from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
-import { utf8Sorted } from "./core.mjs";
+import { isCanonicalBase64Url, utf8Sorted, valueAtPointer } from "./core.mjs";
 
 export async function readJson(file) {
   return JSON.parse(await readFile(file, "utf8"));
@@ -19,12 +19,16 @@ export async function loadSchemas(root) {
 export function createAjv(schemas = []) {
   const ajv = new Ajv2020({ allErrors: true, strict: true, validateFormats: true });
   addFormats(ajv);
+  ajv.addFormat("cairn-ed25519-public-key", (value) => isCanonicalBase64Url(value, 32));
+  ajv.addFormat("cairn-ed25519-signature", (value) => isCanonicalBase64Url(value, 64));
 
   for (const keyword of [
     "x-cairn-kind",
     "x-cairn-object-schema",
+    "x-cairn-object-id-pointer",
     "x-cairn-self-hash-pointer",
     "x-cairn-signature-pointers",
+    "x-cairn-hash-exclusion-pointers",
     "x-cairn-semantic-hash",
     "x-cairn-body-hash"
   ]) {
@@ -40,7 +44,25 @@ export function createAjv(schemas = []) {
     keyword: "x-cairn-unique-by",
     type: "array",
     schemaType: "string",
-    validate: (field, data) => new Set(data.map((item) => item?.[field])).size === data.length
+    validate: (field, data) =>
+      data.every((item) => item !== null && typeof item === "object" && Object.hasOwn(item, field)) &&
+      new Set(data.map((item) => item[field])).size === data.length
+  });
+  ajv.addKeyword({
+    keyword: "x-cairn-equal-non-null-pointers",
+    type: "object",
+    schemaType: "array",
+    validate: (pairs, data) => {
+      try {
+        return pairs.every(([left, right]) => {
+          const leftValue = valueAtPointer(data, left);
+          const rightValue = valueAtPointer(data, right);
+          return leftValue === null || rightValue === null || leftValue === rightValue;
+        });
+      } catch {
+        return false;
+      }
+    }
   });
 
   for (const { document } of schemas) ajv.addSchema(document);

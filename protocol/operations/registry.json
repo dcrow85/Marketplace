@@ -11,6 +11,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/capabilitiesResponse",
       "data_grant_required": false,
       "authorization_requirement": "none",
+      "grant_purpose": null,
+      "grant_use": null,
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -22,6 +24,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/agent-runtime-binding.schema.json",
       "data_grant_required": false,
       "authorization_requirement": "none",
+      "grant_purpose": null,
+      "grant_use": null,
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -33,6 +37,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/storedObjectResponse",
       "data_grant_required": true,
       "authorization_requirement": "principal_signature_and_data_grant",
+      "grant_purpose": "intent_storage",
+      "grant_use": "write_object",
       "authority_effect": "records_principal_signed_intent_only",
       "implementation_status": "schema_only"
     },
@@ -44,6 +50,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/active-intent.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
+      "grant_purpose": "intent_read",
+      "grant_use": "read_local",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -55,6 +63,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/data-grant.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
+      "grant_purpose": "grant_read",
+      "grant_use": "read_local",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -66,6 +76,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/scoped-projection.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
+      "grant_purpose": "projection_read",
+      "grant_use": "read_local",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -77,6 +89,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/resolvedObjectResponse",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
+      "grant_purpose": "object_resolution",
+      "grant_use": "read_local",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -88,6 +102,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-preparation-receipt.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant_and_signed_proposal",
+      "grant_purpose": "action_preparation",
+      "grant_use": "derive",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -99,6 +115,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-record.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
+      "grant_purpose": "action_read",
+      "grant_use": "read_local",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     },
@@ -110,17 +128,8 @@
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-preparation-receipt.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
-      "authority_effect": "none",
-      "implementation_status": "schema_only"
-    },
-    {
-      "name": "continuation.get",
-      "mutating": false,
-      "consequence": "private_read",
-      "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
-      "response_schema": "https://cairn.cards/protocol/schemas/v0.1/continuation-bundle.schema.json",
-      "data_grant_required": true,
-      "authorization_requirement": "continuation_disclosure_authorization",
+      "grant_purpose": "receipt_read",
+      "grant_use": "read_local",
       "authority_effect": "none",
       "implementation_status": "schema_only"
     }

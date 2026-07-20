@@ -5,8 +5,10 @@
   "type": "object",
   "additionalProperties": false,
   "x-cairn-object-schema": "cairn.action_preparation_receipt.v0.1",
+  "x-cairn-object-id-pointer": "/receipt_id",
   "x-cairn-self-hash-pointer": "/receipt_hash",
   "x-cairn-signature-pointers": ["/issuer_signature"],
+  "x-cairn-hash-exclusion-pointers": ["/issuer_signature/signed_hash", "/issuer_signature/value"],
   "required": [
     "schema",
     "receipt_id",

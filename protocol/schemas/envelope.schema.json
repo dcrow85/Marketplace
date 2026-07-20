@@ -5,8 +5,11 @@
   "type": "object",
   "additionalProperties": false,
   "x-cairn-object-schema": "cairn.envelope.v0.1",
+  "x-cairn-object-id-pointer": "/message_id",
   "x-cairn-self-hash-pointer": "/envelope_hash",
   "x-cairn-signature-pointers": ["/signature"],
+  "x-cairn-hash-exclusion-pointers": ["/signature/signed_hash", "/signature/value"],
+  "x-cairn-equal-non-null-pointers": [["/sender/runtime_key_id", "/signature/key_id"]],
   "x-cairn-body-hash": { "source_pointer": "/body", "target_pointer": "/body_hash" },
   "required": [
     "schema",
@@ -19,6 +22,7 @@
     "principal_id",
     "audience",
     "subject_refs",
+    "authorization_refs",
     "nonce",
     "idempotency_key",
     "operation_fingerprint",
@@ -45,8 +49,7 @@
         "object.resolve",
         "action.prepare",
         "action.get",
-        "receipt.get",
-        "continuation.get"
+        "receipt.get"
       ]
     },
     "created_at": { "$ref": "common.schema.json#/$defs/timestamp" },
@@ -79,6 +82,12 @@
       "uniqueItems": true
     },
     "subject_refs": {
+      "type": "array",
+      "maxItems": 1024,
+      "items": { "$ref": "common.schema.json#/$defs/objectRef" },
+      "uniqueItems": true
+    },
+    "authorization_refs": {
       "type": "array",
       "maxItems": 1024,
       "items": { "$ref": "common.schema.json#/$defs/objectRef" },

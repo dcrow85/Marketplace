@@ -6,7 +6,60 @@ const HASH_PREFIX = "sha-256:";
 const DOMAIN = "cairn-object-v0.1";
 const ED25519_SPKI_PREFIX = Buffer.from("302a300506032b6570032100", "hex");
 
+function assertUnicodeScalarString(value, path) {
+  for (let index = 0; index < value.length; index += 1) {
+    const code = value.charCodeAt(index);
+    if (code >= 0xd800 && code <= 0xdbff) {
+      const next = value.charCodeAt(index + 1);
+      if (!(next >= 0xdc00 && next <= 0xdfff)) {
+        throw new TypeError(`${path}: unpaired high surrogate is not I-JSON`);
+      }
+      index += 1;
+    } else if (code >= 0xdc00 && code <= 0xdfff) {
+      throw new TypeError(`${path}: unpaired low surrogate is not I-JSON`);
+    }
+  }
+}
+
+export function assertIJson(value, path = "$", seen = new WeakSet()) {
+  if (value === null || typeof value === "boolean") return;
+  if (typeof value === "string") {
+    assertUnicodeScalarString(value, path);
+    return;
+  }
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) throw new TypeError(`${path}: non-finite number is not I-JSON`);
+    if (Number.isInteger(value) && !Number.isSafeInteger(value)) {
+      throw new TypeError(`${path}: integer is outside the interoperable I-JSON range`);
+    }
+    return;
+  }
+  if (typeof value !== "object") throw new TypeError(`${path}: ${typeof value} is not JSON data`);
+  if (seen.has(value)) throw new TypeError(`${path}: cyclic data is not JSON`);
+  seen.add(value);
+
+  if (Array.isArray(value)) {
+    for (let index = 0; index < value.length; index += 1) {
+      if (!Object.hasOwn(value, index)) throw new TypeError(`${path}[${index}]: sparse arrays are not JSON`);
+      assertIJson(value[index], `${path}[${index}]`, seen);
+    }
+    const nonIndexKeys = Object.keys(value).filter((key) => !/^(?:0|[1-9][0-9]*)$/.test(key));
+    if (nonIndexKeys.length) throw new TypeError(`${path}: array has non-JSON members`);
+  } else {
+    const prototype = Object.getPrototypeOf(value);
+    if (prototype !== Object.prototype && prototype !== null) {
+      throw new TypeError(`${path}: non-plain object is not JSON data`);
+    }
+    for (const [key, item] of Object.entries(value)) {
+      assertUnicodeScalarString(key, `${path}.<key>`);
+      assertIJson(item, `${path}.${key}`, seen);
+    }
+  }
+  seen.delete(value);
+}
+
 export function canonicalText(value) {
+  assertIJson(value);
   const encoded = canonicalize(value);
   if (typeof encoded !== "string") {
     throw new TypeError("value cannot be represented by RFC 8785/JCS");
@@ -87,13 +140,19 @@ export function objectHash(object, schema) {
   const expectedSchema = schema["x-cairn-object-schema"];
   const selfHashPointer = schema["x-cairn-self-hash-pointer"];
   const signaturePointers = schema["x-cairn-signature-pointers"];
-  if (!expectedSchema || !selfHashPointer || !Array.isArray(signaturePointers)) {
+  const exclusionPointers = schema["x-cairn-hash-exclusion-pointers"];
+  if (
+    !expectedSchema ||
+    !selfHashPointer ||
+    !Array.isArray(signaturePointers) ||
+    !Array.isArray(exclusionPointers)
+  ) {
     throw new TypeError("schema does not declare the Cairn signed-object annotations");
   }
   if (object.schema !== expectedSchema) {
     throw new TypeError(`object schema ${object.schema} does not match ${expectedSchema}`);
   }
-  return canonicalHash(withoutPointers(object, [selfHashPointer, ...signaturePointers]));
+  return canonicalHash(withoutPointers(object, [selfHashPointer, ...exclusionPointers]));
 }
 
 export function bindObjectHash(object, schema) {
@@ -123,9 +182,27 @@ export function signatureInput(schemaId, objectHashValue) {
   return Buffer.from(`${DOMAIN}\n${schemaId}\n${objectHashValue}`, "ascii");
 }
 
+export function decodeCanonicalBase64Url(value, expectedLength) {
+  if (typeof value !== "string" || !/^[A-Za-z0-9_-]+$/.test(value)) {
+    throw new TypeError("value is not unpadded base64url");
+  }
+  const bytes = Buffer.from(value, "base64url");
+  if (bytes.length !== expectedLength) throw new TypeError(`decoded value must be ${expectedLength} bytes`);
+  if (bytes.toString("base64url") !== value) throw new TypeError("base64url encoding is not canonical");
+  return bytes;
+}
+
+export function isCanonicalBase64Url(value, expectedLength) {
+  try {
+    decodeCanonicalBase64Url(value, expectedLength);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export function rawEd25519PublicKeyToKeyObject(publicKey) {
-  const raw = Buffer.from(publicKey, "base64url");
-  if (raw.length !== 32) throw new TypeError("Ed25519 public key must be 32 bytes");
+  const raw = decodeCanonicalBase64Url(publicKey, 32);
   return createPublicKey({
     key: Buffer.concat([ED25519_SPKI_PREFIX, raw]),
     format: "der",
@@ -134,17 +211,21 @@ export function rawEd25519PublicKeyToKeyObject(publicKey) {
 }
 
 export function verifyEd25519({ schemaId, objectHash: objectHashValue, publicKey, signature }) {
-  const signatureBytes = Buffer.from(signature, "base64url");
-  if (signatureBytes.length !== 64) return false;
-  return verify(
-    null,
-    signatureInput(schemaId, objectHashValue),
-    rawEd25519PublicKeyToKeyObject(publicKey),
-    signatureBytes
-  );
+  try {
+    const signatureBytes = decodeCanonicalBase64Url(signature, 64);
+    return verify(
+      null,
+      signatureInput(schemaId, objectHashValue),
+      rawEd25519PublicKeyToKeyObject(publicKey),
+      signatureBytes
+    );
+  } catch {
+    return false;
+  }
 }
 
 export function utf8Sorted(values) {
+  if (!Array.isArray(values) || values.some((value) => typeof value !== "string")) return false;
   for (let index = 1; index < values.length; index += 1) {
     if (Buffer.compare(Buffer.from(values[index - 1], "utf8"), Buffer.from(values[index], "utf8")) >= 0) {
       return false;
@@ -179,62 +260,26 @@ export function verifyObjectBindings(object, schema) {
   return failures;
 }
 
-export function validateContinuationBinding(bundle, authorization) {
-  const failures = [];
-  if (authorization.principal_id !== bundle.principal_id) failures.push("principal_mismatch");
-  if (authorization.bundle_hash !== bundle.bundle_hash) failures.push("bundle_hash_mismatch");
-  if (authorization.recipient_runtime_binding_hash !== bundle.recipient_runtime_binding.ref.object_hash) {
-    failures.push("runtime_binding_hash_mismatch");
-  }
-  if (
-    authorization.recipient_runtime_binding_ref.object_id !== bundle.recipient_runtime_binding.ref.object_id ||
-    authorization.recipient_runtime_binding_ref.object_hash !== bundle.recipient_runtime_binding.ref.object_hash
-  ) {
-    failures.push("runtime_binding_ref_mismatch");
-  }
-
-  const allowedGrants = new Set(authorization.data_grant_refs.map((ref) => `${ref.object_id}|${ref.object_hash}`));
-  const privateRefs = [
-    bundle.recipient_runtime_binding,
-    ...bundle.items,
-    ...bundle.current_intent_control_heads,
-    ...bundle.current_deal_heads,
-    ...bundle.current_action_reservation_service_refs,
-    ...bundle.current_grant_status_and_revocation_refs,
-    ...bundle.unresolved_unknown_refs
-  ];
-  for (const entry of privateRefs) {
-    const key = `${entry.data_grant_ref.object_id}|${entry.data_grant_ref.object_hash}`;
-    if (!allowedGrants.has(key)) failures.push("data_grant_graph_exceeded");
-  }
-  return [...new Set(failures)];
+export function objectRefKey(ref) {
+  return `${ref.schema}|${ref.object_id}|${ref.object_hash}`;
 }
 
-export function validateEnvelopeOperation(envelope, registry, supportedCriticalExtensions = new Set()) {
-  const failures = [];
-  const operation = registry.operations.find(({ name }) => name === envelope.message_type);
-  if (!operation) return ["operation_unknown"];
-  if (envelope.body_schema !== operation.request_schema) failures.push("body_schema_mismatch");
-  if (operation.mutating && !envelope.idempotency_key) failures.push("idempotency_key_required");
-  for (const extension of envelope.critical_extensions) {
-    if (!supportedCriticalExtensions.has(extension)) failures.push("critical_extension_unknown");
-  }
-  return [...new Set(failures)];
+export function sameObjectRef(left, right) {
+  return Boolean(
+    left &&
+      right &&
+      left.schema === right.schema &&
+      left.object_id === right.object_id &&
+      left.object_hash === right.object_hash
+  );
 }
 
-export function validateProposalEffectBinding(proposal, effect) {
-  const failures = [];
-  if (proposal.effect_descriptor_ref.schema !== effect.schema) failures.push("effect_descriptor_schema_mismatch");
-  if (proposal.effect_descriptor_ref.object_id !== effect.effect_descriptor_id) failures.push("effect_descriptor_id_mismatch");
-  if (proposal.effect_descriptor_ref.object_hash !== effect.descriptor_hash) failures.push("effect_descriptor_hash_mismatch");
-  if (proposal.effect_id !== effect.effect_id) failures.push("effect_id_mismatch");
-  if (proposal.principal_id !== effect.effect_semantics.principal_id) failures.push("effect_principal_mismatch");
-  if (proposal.capability !== effect.effect_semantics.capability) failures.push("effect_capability_mismatch");
-  if (proposal.rail !== effect.effect_semantics.rail) failures.push("effect_rail_mismatch");
-
-  const proposalAmounts = Object.fromEntries(proposal.amounts.map(({ role, money }) => [role, money]));
-  if (canonicalText(proposalAmounts) !== canonicalText(effect.effect_semantics.amounts_by_role)) {
-    failures.push("effect_amounts_mismatch");
-  }
-  return failures;
+export function objectRefFor(object, schema) {
+  const idPointer = schema["x-cairn-object-id-pointer"];
+  if (!idPointer) throw new TypeError("schema does not declare x-cairn-object-id-pointer");
+  return {
+    schema: object.schema,
+    object_id: valueAtPointer(object, idPointer),
+    object_hash: valueAtPointer(object, schema["x-cairn-self-hash-pointer"])
+  };
 }

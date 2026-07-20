@@ -254,18 +254,22 @@ policy actually ran.
 
 ### 4.2 Common object hash, reference, and signature
 
-Every schema MUST name exactly one self-hash field and all signature/proof fields.
+Every schema MUST name exactly one self-hash field, one object-ID field, and all
+signature/proof fields.
 For every signed Cairn object:
 
 1. `hash_material` is the object with only its schema-declared self-hash JSON
-   Pointer and schema-declared signature/proof JSON Pointers removed. No field is excluded
-   merely because an implementation considers it transport metadata.
+   Pointer and the `signed_hash` plus proof-value members at each exact
+   schema-declared signature pointer removed. Signature profile, key ID, signing
+   time, and every other member remain authenticated. No field is excluded merely
+   because an implementation considers it transport metadata.
 2. Referenced-object hashes remain in `hash_material`.
 3. `object_hash = SHA-256(RFC8785-JCS(hash_material))`.
 4. A signature signs the ASCII domain-separated value
    `cairn-object-v0.1\n<schema>\n<object_hash>`.
-5. Adding or replacing a proof at a schema-declared excluded JSON Pointer does not
-   change `object_hash`; a nested proof is included unless its exact pointer is named.
+5. Adding or replacing only proof bytes and their cyclic `signed_hash` does not
+   change `object_hash`; changing signature metadata does. A nested proof member is
+   included unless its exact pointer is named.
 6. EVM profiles derive a separate EIP-712 typed-data digest from named fields in
    `hash_material`; EIP-191 is not a typed-data substitute.
 
@@ -314,6 +318,7 @@ sender:
 principal_id: <principal whose authority is relevant, if any>
 audience: [<intended actor/service ids>]
 subject_refs: [<intent, deal, copy, proposal, or action ids>]
+authorization_refs: [<exact DataGrant or other authorization ObjectRefs>]
 nonce: <single-use random value>
 idempotency_key: <required for mutations>
 operation_fingerprint: sha-256:<canonical authoritative operation fields>
@@ -334,10 +339,11 @@ signature:
 ```
 
 For `CairnEnvelope`, `body_hash = SHA-256(JCS(body))`. Its `hash_material` contains
-every envelope member except `envelope_hash` and the complete top-level `signature`
-member. In particular, sender, principal, audience, subjects, timestamps, nonce,
-idempotency key, operation fingerprint, critical extensions, body schema/hash, and
-trace are all signed.
+every envelope member except `envelope_hash`, `signature.signed_hash`, and
+`signature.value`. In particular, signature profile/key/time, sender, principal,
+audience, subjects, authorization references, timestamps, nonce, idempotency key,
+operation fingerprint, critical extensions, body schema/hash, and trace are all
+signed.
 
 The recipient MUST reject an expired envelope, exact replayed nonce, body-hash mismatch,
 unknown critical extension, invalid audience, or unresolved/revoked signing key.
@@ -1424,6 +1430,10 @@ deal_id: <deal or null>
 expected_deal_head_hash: sha-256:<hex or null>
 target: <recipient, service, contract, or provider>
 ultimate_effect_recipient: <counterparty/payee/account/copy owner or null>
+ultimate_effect_account_commitment: sha-256:<hex or null>
+effect_operation_kind: <receiver operation>
+effect_provider_id: <provider/service/contract>
+copy_ids: []
 resource_refs: []
 inputs_hash: sha-256:<hex>
 terms_or_cart_hash: sha-256:<hex or null>
@@ -3934,6 +3944,12 @@ machine adjunct now closes only the dependency-contained proposal-foundation
 portion of that gap; authoritative services, full profile artifacts, and an
 independent implementation verification remain release gates.
 
+The proposal-foundation adjunct advertises an exact ten-operation subset of the
+full §20.1 target surface. It deliberately omits `continuation.get`: the bundle,
+authorization, and one-shot mutation controls are testable locally, but private
+delivery MUST NOT be advertised until a shared authoritative disclosure ledger
+can reserve and consume the exact bundle/runtime/delivery binding atomically.
+
 ### 30.5 Hardening bar
 
 The prose-design bar is complete:
@@ -3960,3 +3976,8 @@ not promote any functional profile; every profile remains an unclaimed target.
 - **v0.1 machine adjunct, 2026-07-20:** added the proposal-only `protocol/`
   schemas, registry, deterministic bundle, cryptographic vectors, and local
   mutation controls without changing the normative runtime/conformance status.
+- **v0.1 machine-adjunct hardening, 2026-07-20:** added full signed-envelope,
+  runtime, DataGrant, continuation, effect, receipt, and resolved-object binding
+  validators; authenticated signature metadata; pinned the exact ten-operation
+  foundation surface; and kept private continuation delivery outside the registry
+  until an authoritative one-shot ledger exists.
