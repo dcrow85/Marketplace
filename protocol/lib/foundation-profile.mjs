@@ -1,4 +1,10 @@
-export const FOUNDATION_OPERATIONS = Object.freeze([
+function deepFreeze(value) {
+  if (value === null || typeof value !== "object" || Object.isFrozen(value)) return value;
+  for (const member of Object.values(value)) deepFreeze(member);
+  return Object.freeze(value);
+}
+
+export const FOUNDATION_OPERATIONS = deepFreeze([
   ["capabilities.get", false, "public_read", "emptyRequest", "capabilitiesResponse", false, "none", null, null, "none"],
   ["runtime_binding.get", false, "public_read", "objectRefRequest", "agent-runtime-binding.schema.json", false, "none", null, null, "none"],
   ["intent.put", true, "private_state_write", "active-intent.schema.json", "storedObjectResponse", true, "principal_signature_and_data_grant", "intent_storage", "write_object", "records_principal_signed_intent_only"],
@@ -9,7 +15,20 @@ export const FOUNDATION_OPERATIONS = Object.freeze([
   ["action.prepare", true, "preparation_only", "action-proposal.schema.json", "action-preparation-receipt.schema.json", true, "data_grant_and_signed_proposal", "action_preparation", "derive", "none"],
   ["action.get", false, "private_read", "objectRefRequest", "action-record.schema.json", true, "data_grant", "action_read", "read_local", "none"],
   ["receipt.get", false, "private_read", "objectRefRequest", "action-preparation-receipt.schema.json", true, "data_grant", "receipt_read", "read_local", "none"]
-].map(Object.freeze));
+]);
+
+export const FOUNDATION_DATA_GRANT_USES = deepFreeze({
+  read_local: { action_authority: false },
+  derive: { action_authority: false },
+  disclose_to_audience: { action_authority: false },
+  retain_until_expiry: { action_authority: false },
+  write_object: {
+    operation: "intent.put",
+    object_schema: "cairn.active_intent.v0.1",
+    authority_effect: "records_principal_signed_intent_only",
+    action_authority: false
+  }
+});
 
 const BODY_ROOT = "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/";
 const SCHEMA_ROOT = "https://cairn.cards/protocol/schemas/v0.1/";
@@ -34,7 +53,7 @@ export function operationTuple(operation) {
   ];
 }
 
-export const EXACT_FOUNDATION_OPERATION_TUPLES = Object.freeze(
+export const EXACT_FOUNDATION_OPERATION_TUPLES = deepFreeze(
   FOUNDATION_OPERATIONS.map(([name, mutating, consequence, request, response, grant, authorization, purpose, use, authority]) =>
     Object.freeze([
       name,
@@ -52,7 +71,7 @@ export const EXACT_FOUNDATION_OPERATION_TUPLES = Object.freeze(
   )
 );
 
-export const SIGNED_OBJECT_ANNOTATIONS = Object.freeze({
+export const SIGNED_OBJECT_ANNOTATIONS = deepFreeze({
   "cairn.action_preparation_receipt.v0.1": ["/receipt_id", "/receipt_hash", "/issuer_signature", [], null, null],
   "cairn.action_proposal.v0.1": ["/action_proposal_id", "/action_proposal_hash", "/agent_signature", [], null, null],
   "cairn.action_record.v0.1": ["/action_id", "/action_hash", "/action_service_signature", [], null, null],

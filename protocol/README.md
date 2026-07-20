@@ -8,7 +8,7 @@ already exists.
 
 ## What is included
 
-- JSON Schema 2020-12 definitions for the common signed-object primitives,
+- 17 JSON Schema 2020-12 definitions for the common signed-object primitives,
   envelope, runtime binding, intent, projection, data grant, judgment, effect
   descriptor, action preparation, and agent-continuation objects;
 - an operation registry for the proposal-only read/prepare surface;
@@ -18,6 +18,11 @@ already exists.
 - executable admission/consumption validators and mutation-controlled tests for
   authority laundering, effect-ID forks, continuation leakage, schema drift,
   object resolution, replay, and hash/signature behavior.
+
+The capability response is closed over the exact ten registered operation names
+and current bundle hash. `write_object` is likewise closed to `intent.put` of an
+exact principal-signed ActiveIntent; it is storage permission, never action
+authority.
 
 The registry currently names exactly ten operations. Only `intent.put` and
 `action.prepare` are mutations; the latter ends at a signed preparation receipt
@@ -31,8 +36,9 @@ There is no network service, database, reservation ledger, executor, payment
 integration, or contract change in this package. `conformance_claims` is
 intentionally empty. Passing these tests establishes only that this source bundle
 is internally consistent and that the named negative fixtures are rejected.
-The in-memory acceptance and one-shot consumption primitives are reference
-validation controls, not an authoritative concurrent service. They require
+The typed continuation-reservation state schema plus in-memory acceptance and
+one-shot consumption primitives are reference validation controls, not an
+authoritative concurrent service. They require
 complete current key/controller records and typed authoritative replay,
 idempotency, DataGrant-state, and disclosure-reservation stores from the caller.
 
@@ -42,6 +48,7 @@ idempotency, DataGrant-state, and disclosure-reservation stores from the caller.
 cd protocol
 npm install
 npm test
+npm run test:mutations
 npm run check
 ```
 
@@ -61,6 +68,7 @@ profile, key ID, and signing time are authenticated hash material; only
 
 `operations/registry.json` also names the exact authorization prerequisite for
 each operation, including its DataGrant purpose and use. A DataGrant does not
-become action authority. Continuation objects and their one-shot validation are
-defined, but `continuation.get` is intentionally not advertised until an
-authoritative reservation/consumption ledger can make disclosure atomic.
+become action authority. Continuation objects, the closed authoritative-state
+input contract, and their one-shot local validation are defined, but
+`continuation.get` is intentionally not advertised until an authoritative
+reservation/consumption ledger can make disclosure atomic.

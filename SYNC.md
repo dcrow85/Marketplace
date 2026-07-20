@@ -72,13 +72,17 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   runtime, payment rail, Cloudflare/Railway state, profile/offer data, or contract
   change is in scope; no service or conformance claim may precede the re-audit.
   Frozen commit `b0654a9` passed 30 authored controls but correctly failed its
-  context-free re-audit on seven residual P1s and four P2s. The second
-  remediation candidate now has 12 signed object schemas, an exact 10-operation
-  proposal-only registry, 40/40 passing controls, zero dependency
-  vulnerabilities, and deterministic bundle hash
-  `sha-256:5c4142bbd5ee40aca34dc504b1a2f5253676a54e453a535fe87ee87901c37db2`.
-  This marker stays blocking until another fresh verifier audits the next frozen
-  commit and every finding receives one disposition.
+  context-free re-audit on seven residual P1s and four P2s. Frozen commit
+  `a916400` passed 40 authored controls but correctly failed the next cold audit
+  on three P1s and five P2s. The third remediation candidate now has 17 JSON
+  schemas (12 signed object families), an exact 10-operation proposal-only
+  registry and capabilities response, 49/49 authored controls, 26/26 killed
+  implementation-guard mutants, zero dependency vulnerabilities, and
+  deterministic bundle hash
+  `sha-256:38bbe5e23cf8fc0eb36bc18aa1c1f64f0f0a6972f94b4cd8fd38f005b07166df`.
+  Its typed reservation-state input remains a local validation contract, not an
+  authoritative service. This marker stays blocking until a fresh verifier
+  audits the next frozen commit and every finding receives one disposition.
 - `[passive]` 2026-07-20 · Codex — **The first machine-readable Cairn Core slice
   is locally built and mutation-tested at the proposal-only boundary.** New
   `protocol/` source contains 16 JSON Schemas (12 signed object families), an

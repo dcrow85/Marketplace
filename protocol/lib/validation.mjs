@@ -25,6 +25,23 @@ function instant(value) {
   return Number.isFinite(result) ? result : Number.NaN;
 }
 
+const PROTOCOL_TIMESTAMP = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?Z$/;
+
+function isProtocolTimestamp(value) {
+  if (typeof value !== "string") return false;
+  const match = PROTOCOL_TIMESTAMP.exec(value);
+  if (!match) return false;
+  const parsed = instant(value);
+  if (!Number.isFinite(parsed)) return false;
+  const date = new Date(parsed);
+  return date.getUTCFullYear() === Number(match[1]) &&
+    date.getUTCMonth() + 1 === Number(match[2]) &&
+    date.getUTCDate() === Number(match[3]) &&
+    date.getUTCHours() === Number(match[4]) &&
+    date.getUTCMinutes() === Number(match[5]) &&
+    date.getUTCSeconds() === Number(match[6]);
+}
+
 function nowInstant(now) {
   return instant(now ?? new Date().toISOString());
 }
@@ -49,28 +66,29 @@ function schemaForObject(object, schemasByObjectId) {
 function validateKeyRecord(key, expectedKeyId, now) {
   const failures = [];
   const required = ["key_id", "key_type", "public_key", "controller", "status", "not_before", "expires_at", "revocation_time"];
+  if (key === null || typeof key !== "object" || Array.isArray(key)) return ["signing_key_record_invalid"];
   if (required.some((field) => !Object.hasOwn(key, field))) failures.push("signing_key_record_incomplete");
   if (key.key_id !== expectedKeyId) failures.push("signing_key_id_mismatch");
   if (key.key_type !== "Ed25519") failures.push("signing_key_type_mismatch");
   if (typeof key.controller !== "string" || key.controller.length === 0) failures.push("signing_key_controller_missing");
   if (key.status !== "active") failures.push("signing_key_inactive");
   if (
-    !Number.isFinite(instant(key.not_before)) ||
-    !Number.isFinite(instant(key.expires_at)) ||
+    !isProtocolTimestamp(key.not_before) ||
+    !isProtocolTimestamp(key.expires_at) ||
     instant(key.not_before) >= instant(key.expires_at) ||
-    (key.revocation_time !== null && !Number.isFinite(instant(key.revocation_time)))
+    (key.revocation_time !== null && !isProtocolTimestamp(key.revocation_time))
   ) failures.push("signing_key_validity_invalid");
   if (!currentAt(now, key.not_before, key.expires_at)) failures.push("signing_key_not_current");
   if (key.revocation_time !== null && nowInstant(now) >= instant(key.revocation_time)) failures.push("signing_key_revoked");
   return failures;
 }
 
-export function validateSignedObject(object, { ajv, schemasByObjectId, keyResolver, now } = {}) {
+function validateSignedObjectUnsafe(object, { ajv, schemasByObjectId, keyResolver, now } = {}) {
   const failures = [];
   const schema = schemaForObject(object, schemasByObjectId);
   if (!schema) return ["object_schema_unknown"];
   const validate = ajv?.getSchema(schema.$id);
-  if (!validate || !validate(object)) failures.push("object_schema_invalid");
+  if (!validate || !validate(object)) return ["object_schema_invalid"];
   try {
     failures.push(...verifyObjectBindings(object, schema));
   } catch {
@@ -112,8 +130,19 @@ export function validateSignedObject(object, { ajv, schemasByObjectId, keyResolv
   return unique(failures);
 }
 
-export function validateRuntimeBinding(binding, context = {}) {
+export function validateSignedObject(object, context = {}) {
+  try {
+    return validateSignedObjectUnsafe(object, context);
+  } catch {
+    return ["signed_object_malformed"];
+  }
+}
+
+function validateRuntimeBindingUnsafe(binding, context = {}) {
   const failures = validateSignedObject(binding, context);
+  if (failures.includes("object_schema_invalid") || failures.includes("object_schema_unknown")) {
+    return unique([...failures, "runtime_binding_malformed"]);
+  }
   if (binding?.key_status !== "active") failures.push("runtime_key_inactive");
   if (binding?.not_before && binding?.expires_at && !currentAt(context.now, binding.not_before, binding.expires_at)) {
     failures.push("runtime_binding_not_current");
@@ -137,20 +166,35 @@ export function validateRuntimeBinding(binding, context = {}) {
   return unique(failures);
 }
 
+export function validateRuntimeBinding(binding, context = {}) {
+  try {
+    return validateRuntimeBindingUnsafe(binding, context);
+  } catch {
+    return ["runtime_binding_malformed"];
+  }
+}
+
 function resourceCovered(scope, resource) {
+  if (!scope || !resource || !Array.isArray(scope.field_paths) || !Array.isArray(resource.field_paths)) return false;
+  if (scope.field_paths.length === 0 || resource.field_paths.length === 0) return false;
   if (scope.resource_kind !== resource.resource_kind) return false;
   if (!sameObjectRef(scope.ref, resource.ref) && !(scope.ref === null && resource.ref === null)) return false;
   if (scope.retrieval_uri !== resource.retrieval_uri) return false;
   return resource.field_paths.every((field) => scope.field_paths.includes("") || scope.field_paths.includes(field));
 }
 
-export function validateDataGrant(grant, context = {}) {
+function validateDataGrantUnsafe(grant, context = {}) {
   const failures = [];
   if (grant?.principal_id !== context.principalId) failures.push("grant_principal_mismatch");
   if (grant?.recipient !== context.recipient) failures.push("grant_recipient_mismatch");
   if (grant?.purpose !== context.purpose) failures.push("grant_purpose_mismatch");
   if (!grant?.uses?.includes(context.use)) failures.push("grant_use_missing");
   if (!grant?.audience?.includes(context.recipient)) failures.push("grant_audience_mismatch");
+  if (!Array.isArray(grant?.audience) || grant.audience.length === 0) failures.push("grant_audience_empty");
+  if (!Array.isArray(grant?.resource_scopes) || grant.resource_scopes.length === 0) failures.push("grant_resource_scope_empty");
+  else if (grant.resource_scopes.some((scope) => !Array.isArray(scope?.field_paths) || scope.field_paths.length === 0)) {
+    failures.push("grant_field_scope_empty");
+  }
   if (!Number.isSafeInteger(grant?.maximum_disclosures) || grant.maximum_disclosures < 1) failures.push("grant_disclosures_exhausted");
   if (!currentAt(context.now, grant?.issued_at, grant?.expires_at)) failures.push("grant_not_current");
   if (grant?.retention?.expires_at && instant(grant.retention.expires_at) > instant(grant.expires_at)) {
@@ -182,6 +226,14 @@ export function validateDataGrant(grant, context = {}) {
   return unique(failures);
 }
 
+export function validateDataGrant(grant, context = {}) {
+  try {
+    return validateDataGrantUnsafe(grant, context);
+  } catch {
+    return ["data_grant_malformed"];
+  }
+}
+
 function sortedRefs(refs) {
   return [...(refs ?? [])]
     .map(objectRefKey)
@@ -208,6 +260,26 @@ export function operationFingerprint(envelope) {
   });
 }
 
+const OPERATION_BODIES_ID = "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/";
+
+function idempotencyRecordIsValid(record, context) {
+  const validate = context.ajv?.getSchema(`${OPERATION_BODIES_ID}idempotencyRecord`);
+  return Boolean(validate?.(record));
+}
+
+export function validateCapabilitiesResponse(response, context = {}) {
+  try {
+    const validate = context.ajv?.getSchema(`${OPERATION_BODIES_ID}capabilitiesResponse`);
+    if (!validate || !validate(response)) return ["capabilities_response_schema_invalid"];
+    const operations = context.registry?.operations?.map(({ name }) => name);
+    if (!operations || !canonicalEqual(response.operations, operations)) return ["capabilities_operation_surface_mismatch"];
+    if (!context.bundleHash || response.bundle_hash !== context.bundleHash) return ["capabilities_bundle_hash_mismatch"];
+    return [];
+  } catch {
+    return ["capabilities_response_malformed"];
+  }
+}
+
 function resourceUri(ref, context) {
   return resolve(context.resourceUrisByRef, objectRefKey(ref));
 }
@@ -232,17 +304,17 @@ function operationResources(envelope, context, bodySchema) {
   return resources;
 }
 
-export function validateEnvelopeOperation(envelope, context = {}) {
+function validateEnvelopeTransportUnsafe(envelope, context = {}) {
   const failures = validateSignedObject(envelope, context);
+  if (failures.includes("object_schema_invalid") || failures.includes("object_schema_unknown") || failures.includes("signed_object_malformed")) {
+    return { failures: unique([...failures, "envelope_malformed"]), operation: null, bodySchema: null };
+  }
   const operation = context.registry?.operations?.find(({ name }) => name === envelope?.message_type);
-  if (!operation) return unique([...failures, "operation_unknown"]);
+  if (!operation) return { failures: unique([...failures, "operation_unknown"]), operation: null, bodySchema: null };
   if (envelope.body_schema !== operation.request_schema) failures.push("body_schema_mismatch");
   const bodyValidate = context.ajv?.getSchema(operation.request_schema);
   const bodyIsValid = Boolean(bodyValidate?.(envelope.body));
   if (!bodyIsValid) failures.push("body_schema_invalid");
-  const bodySchema = schemaForObject(envelope.body, context.schemasByObjectId);
-  if (bodySchema) failures.push(...validateSignedObject(envelope.body, context).map((code) => `body_${code}`));
-
   try {
     if (envelope.operation_fingerprint !== operationFingerprint(envelope)) failures.push("operation_fingerprint_mismatch");
   } catch {
@@ -256,12 +328,6 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   if (operation.mutating && !envelope.idempotency_key) failures.push("idempotency_key_required");
   if (operation.mutating && !context.authorityNamespace) failures.push("authority_namespace_required");
   if (operation.mutating && !context.idempotencyRecords?.get) failures.push("idempotency_state_required");
-  const idempotencyRecordKey = envelope.idempotency_key && context.authorityNamespace
-    ? `${context.authorityNamespace}|${envelope.idempotency_key}`
-    : null;
-  const priorRecord = idempotencyRecordKey && context.idempotencyRecords?.get(idempotencyRecordKey);
-  const priorFingerprint = typeof priorRecord === "string" ? priorRecord : priorRecord?.fingerprint;
-  if (priorFingerprint && priorFingerprint !== envelope.operation_fingerprint) failures.push("idempotency_conflict");
   if ((envelope.critical_extensions?.length ?? 0) > 0) failures.push("critical_extension_unknown");
 
   if (envelope.sender?.runtime_key_id === null) {
@@ -281,6 +347,28 @@ export function validateEnvelopeOperation(envelope, context = {}) {
     if (context.runtimeBinding.agent_identity?.agent_provider_id !== envelope.sender?.actor_id) {
       failures.push("runtime_binding_sender_mismatch");
     }
+  }
+  return {
+    failures: unique(failures),
+    operation,
+    bodySchema: schemaForObject(envelope.body, context.schemasByObjectId),
+    bodyIsValid
+  };
+}
+
+function validateEnvelopeOperationUnsafe(envelope, context = {}) {
+  const transport = validateEnvelopeTransportUnsafe(envelope, context);
+  const failures = [...transport.failures];
+  const { operation, bodySchema, bodyIsValid } = transport;
+  if (!operation || !bodyIsValid || failures.includes("body_schema_mismatch")) return unique(failures);
+  if (bodySchema) failures.push(...validateSignedObject(envelope.body, context).map((code) => `body_${code}`));
+  const idempotencyRecordKey = envelope.idempotency_key && context.authorityNamespace
+    ? `${context.authorityNamespace}|${envelope.idempotency_key}`
+    : null;
+  const priorRecord = idempotencyRecordKey && context.idempotencyRecords?.get(idempotencyRecordKey);
+  if (priorRecord !== undefined) {
+    if (!idempotencyRecordIsValid(priorRecord, context)) failures.push("idempotency_record_invalid");
+    else if (priorRecord.fingerprint !== envelope.operation_fingerprint) failures.push("idempotency_conflict");
   }
   if (envelope.body?.principal_id && envelope.body.principal_id !== envelope.principal_id) failures.push("body_principal_mismatch");
   if (bodySchema && bodyIsValid) {
@@ -368,24 +456,55 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   return unique(failures);
 }
 
-export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null) {
-  const failures = validateEnvelopeOperation(envelope, context);
-  if (failures.length) return { accepted: false, failures };
-  context.usedNonces.add(envelope.nonce);
-  if (envelope.idempotency_key) {
-    const key = `${context.authorityNamespace}|${envelope.idempotency_key}`;
-    const prior = context.idempotencyRecords.get(key);
-    if (prior) {
-      return {
-        accepted: true,
-        replayed: true,
-        result_ref: typeof prior === "string" ? null : prior.result_ref,
-        failures: []
-      };
-    }
-    context.idempotencyRecords.set(key, { fingerprint: envelope.operation_fingerprint, result_ref: resultRef });
+export function validateEnvelopeOperation(envelope, context = {}) {
+  try {
+    return validateEnvelopeOperationUnsafe(envelope, context);
+  } catch {
+    return ["envelope_operation_malformed"];
   }
-  return { accepted: true, replayed: false, result_ref: resultRef, failures: [] };
+}
+
+export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null) {
+  try {
+    const transport = validateEnvelopeTransportUnsafe(envelope, context);
+    if (transport.failures.length) return { accepted: false, failures: transport.failures };
+    if (envelope.idempotency_key) {
+      const key = `${context.authorityNamespace}|${envelope.idempotency_key}`;
+      const prior = context.idempotencyRecords.get(key);
+      if (prior !== undefined) {
+        if (!idempotencyRecordIsValid(prior, context)) {
+          return { accepted: false, failures: ["idempotency_record_invalid"] };
+        }
+        if (prior.fingerprint !== envelope.operation_fingerprint) {
+          return { accepted: false, failures: ["idempotency_conflict"] };
+        }
+        context.usedNonces.add(envelope.nonce);
+        return {
+          accepted: true,
+          replayed: true,
+          result_ref: prior.result_ref,
+          failures: []
+        };
+      }
+    }
+    const failures = validateEnvelopeOperation(envelope, context);
+    if (failures.length) return { accepted: false, failures };
+    if (envelope.idempotency_key) {
+      const record = { fingerprint: envelope.operation_fingerprint, result_ref: resultRef };
+      if (!idempotencyRecordIsValid(record, context)) {
+        return { accepted: false, failures: ["idempotency_result_ref_required"] };
+      }
+      const key = `${context.authorityNamespace}|${envelope.idempotency_key}`;
+      context.idempotencyRecords.set(key, record);
+    }
+    context.usedNonces.add(envelope.nonce);
+    return { accepted: true, replayed: false, result_ref: resultRef, failures: [] };
+  } catch {
+    return {
+      accepted: false,
+      failures: ["envelope_acceptance_malformed"]
+    };
+  }
 }
 
 function continuationResources(bundle) {
@@ -408,17 +527,36 @@ export function continuationReservationKey(authorization) {
   return `${reservation.ledger_namespace}|${reservation.reservation_id}`;
 }
 
-export function validateContinuationBinding(bundle, authorization, context = {}) {
+function validateContinuationBindingUnsafe(bundle, authorization, context = {}) {
+  const bundleFailures = validateSignedObject(bundle, context);
+  const authorizationFailures = validateSignedObject(authorization, context);
   const failures = [
-    ...validateSignedObject(bundle, context).map((code) => `bundle_${code}`),
-    ...validateSignedObject(authorization, context).map((code) => `authorization_${code}`)
+    ...bundleFailures.map((code) => `bundle_${code}`),
+    ...authorizationFailures.map((code) => `authorization_${code}`)
   ];
+  if (
+    bundleFailures.some((code) => ["object_schema_invalid", "object_schema_unknown", "signed_object_malformed"].includes(code)) ||
+    authorizationFailures.some((code) => ["object_schema_invalid", "object_schema_unknown", "signed_object_malformed"].includes(code))
+  ) return unique([...failures, "continuation_input_malformed"]);
   if (bundle.principal_id !== authorization.principal_id) failures.push("principal_mismatch");
   const authorizationKey = resolve(context.keyResolver, authorization?.principal_signature?.key_id);
   if (!authorizationKey || authorizationKey.controller !== authorization?.principal_id) {
     failures.push("authorization_principal_signer_mismatch");
   }
-  if (bundle.bundle_hash !== authorization.bundle_hash) failures.push("bundle_hash_mismatch");
+  const bundleSchema = schemaForObject(bundle, context.schemasByObjectId);
+  const authorizationSchema = schemaForObject(authorization, context.schemasByObjectId);
+  let exactBundleRef;
+  let exactAuthorizationRef;
+  try {
+    exactBundleRef = objectRefFor(bundle, bundleSchema);
+    exactAuthorizationRef = objectRefFor(authorization, authorizationSchema);
+    if (!sameObjectRef(exactBundleRef, authorization.bundle_ref)) failures.push("bundle_ref_mismatch");
+  } catch {
+    failures.push("continuation_object_ref_invalid");
+  }
+  if (bundle.bundle_hash !== authorization.bundle_hash || authorization.bundle_ref.object_hash !== authorization.bundle_hash) {
+    failures.push("bundle_hash_mismatch");
+  }
   if (!currentAt(context.now, bundle?.issued_at, bundle?.expires_at)) failures.push("continuation_bundle_not_current");
   if (instant(authorization?.expires_at) > instant(bundle?.expires_at)) failures.push("continuation_authorization_exceeds_bundle");
   if (!sameObjectRef(bundle.recipient_runtime_binding.ref, authorization.recipient_runtime_binding_ref)) {
@@ -467,6 +605,10 @@ export function validateContinuationBinding(bundle, authorization, context = {})
       continue;
     }
     const grantSchema = schemaForObject(grant, context.schemasByObjectId);
+    if (!grantSchema) {
+      failures.push("data_grant_schema_unknown");
+      continue;
+    }
     try {
       if (!sameObjectRef(resource.data_grant_ref, objectRefFor(grant, grantSchema))) failures.push("data_grant_ref_mismatch");
     } catch {
@@ -499,12 +641,27 @@ export function validateContinuationBinding(bundle, authorization, context = {})
   const reservation = resolve(context.disclosureLedger, continuationReservationKey(authorization));
   if (!reservation) failures.push("disclosure_reservation_missing");
   else {
-    if (reservation.status !== "active") failures.push("disclosure_reservation_consumed");
+    const stateValidate = context.ajv?.getSchema(
+      "https://cairn.cards/protocol/schemas/v0.1/continuation-disclosure-reservation-state.schema.json"
+    );
+    if (!stateValidate || !stateValidate(reservation)) {
+      failures.push("disclosure_reservation_state_invalid");
+      return unique(failures);
+    }
+    if (reservation.state !== "active") failures.push("disclosure_reservation_not_active");
+    if (reservation.ledger_namespace !== authorization.disclosure_reservation.ledger_namespace) failures.push("disclosure_ledger_namespace_mismatch");
+    if (reservation.reservation_id !== authorization.disclosure_reservation.reservation_id) failures.push("disclosure_reservation_id_mismatch");
+    if (reservation.principal_id !== authorization.principal_id) failures.push("disclosure_principal_mismatch");
     if (reservation.fencing_token !== authorization.disclosure_reservation.fencing_token) failures.push("disclosure_fencing_token_mismatch");
     if (reservation.single_use_nonce !== authorization.disclosure_reservation.single_use_nonce) failures.push("disclosure_nonce_mismatch");
+    if (!sameObjectRef(reservation.authorization_ref, exactAuthorizationRef)) failures.push("disclosure_authorization_ref_mismatch");
     if (reservation.authorization_hash !== authorization.authorization_hash) failures.push("disclosure_authorization_hash_mismatch");
+    if (!sameObjectRef(reservation.bundle_ref, exactBundleRef)) failures.push("disclosure_bundle_ref_mismatch");
     if (reservation.bundle_hash !== bundle.bundle_hash) failures.push("disclosure_bundle_hash_mismatch");
+    if (reservation.recipient_actor_id !== authorization.recipient_actor_id) failures.push("disclosure_recipient_mismatch");
+    if (!sameObjectRef(reservation.runtime_binding_ref, authorization.recipient_runtime_binding_ref)) failures.push("disclosure_runtime_ref_mismatch");
     if (reservation.runtime_binding_hash !== authorization.recipient_runtime_binding_hash) failures.push("disclosure_runtime_hash_mismatch");
+    if (!canonicalEqual(sortedRefs(reservation.data_grant_refs), sortedRefs(authorization.data_grant_refs))) failures.push("disclosure_grant_graph_mismatch");
     if (reservation.delivery_envelope_hash !== authorization.delivery_envelope_hash) failures.push("disclosure_delivery_hash_mismatch");
     if (reservation.principal_revocation_nonce !== authorization.disclosure_reservation.principal_revocation_nonce) {
       failures.push("disclosure_revocation_nonce_mismatch");
@@ -512,38 +669,60 @@ export function validateContinuationBinding(bundle, authorization, context = {})
     if (reservation.expires_at !== authorization.expires_at || !currentAt(context.now, authorization.issued_at, reservation.expires_at)) {
       failures.push("disclosure_reservation_not_current");
     }
+    if (reservation.created_at !== authorization.issued_at || reservation.reserved_count !== 1) {
+      failures.push("disclosure_reservation_terms_mismatch");
+    }
   }
   return unique(failures);
 }
 
-export function consumeContinuationDisclosure(bundle, authorization, context = {}) {
-  const failures = validateContinuationBinding(bundle, authorization, context);
-  if (failures.length) return { consumed: false, failures };
-  const key = continuationReservationKey(authorization);
-  const reservation = resolve(context.disclosureLedger, key);
-  context.disclosureLedger.set(key, {
-    ...reservation,
-    status: "consumed",
-    consumed_at: context.now
-  });
-  for (const grantRef of authorization.data_grant_refs) {
-    const grantKey = objectRefKey(grantRef);
-    const state = resolve(context.grantStatesByRef, grantKey);
-    context.grantStatesByRef.set(grantKey, {
-      ...state,
-      remaining_disclosures: state.remaining_disclosures - 1
-    });
+export function validateContinuationBinding(bundle, authorization, context = {}) {
+  try {
+    return validateContinuationBindingUnsafe(bundle, authorization, context);
+  } catch {
+    return ["continuation_binding_malformed"];
   }
-  return { consumed: true, failures: [] };
+}
+
+export function consumeContinuationDisclosure(bundle, authorization, context = {}) {
+  try {
+    const failures = validateContinuationBinding(bundle, authorization, context);
+    if (failures.length) return { consumed: false, failures };
+    const key = continuationReservationKey(authorization);
+    const reservation = resolve(context.disclosureLedger, key);
+    context.disclosureLedger.set(key, {
+      ...reservation,
+      state: "consumed",
+      ledger_sequence: reservation.ledger_sequence + 1,
+      consumed_at: context.now
+    });
+    for (const grantRef of authorization.data_grant_refs) {
+      const grantKey = objectRefKey(grantRef);
+      const state = resolve(context.grantStatesByRef, grantKey);
+      context.grantStatesByRef.set(grantKey, {
+        ...state,
+        remaining_disclosures: state.remaining_disclosures - 1
+      });
+    }
+    return { consumed: true, failures: [] };
+  } catch {
+    return { consumed: false, failures: ["continuation_consumption_malformed"] };
+  }
 }
 
 function amountMap(proposal) {
   return Object.fromEntries((proposal.amounts ?? []).map(({ role, money }) => [role, money]));
 }
 
-export function validateProposalEffectBinding(proposal, descriptor) {
+function validateProposalEffectBindingUnsafe(proposal, descriptor) {
   const effect = descriptor?.effect_semantics;
   const failures = [];
+  if (!proposal || typeof proposal !== "object" || !descriptor || typeof descriptor !== "object" || !effect || typeof effect !== "object") {
+    return ["proposal_effect_input_malformed"];
+  }
+  if (!Array.isArray(proposal.amounts) || proposal.amounts.some((item) => !item || typeof item !== "object")) {
+    return ["proposal_effect_input_malformed"];
+  }
   if (!sameObjectRef(proposal.effect_descriptor_ref, {
     schema: descriptor?.schema,
     object_id: descriptor?.effect_descriptor_id,
@@ -569,12 +748,20 @@ export function validateProposalEffectBinding(proposal, descriptor) {
   return unique(failures);
 }
 
-export function validateResolvedObjectResponse(response, context = {}) {
+export function validateProposalEffectBinding(proposal, descriptor) {
+  try {
+    return validateProposalEffectBindingUnsafe(proposal, descriptor);
+  } catch {
+    return ["proposal_effect_input_malformed"];
+  }
+}
+
+function validateResolvedObjectResponseUnsafe(response, context = {}) {
   const failures = [];
   const validate = context.ajv?.getSchema(
     "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/resolvedObjectResponse"
   );
-  if (!validate || !validate(response)) failures.push("resolved_response_schema_invalid");
+  if (!validate || !validate(response)) return ["resolved_response_schema_invalid"];
   if (!sameObjectRef(response?.ref, context.expectedRef)) failures.push("resolved_ref_mismatch");
   if (response?.retrieval_uri !== context.expectedUri) failures.push("resolved_uri_mismatch");
   const schema = schemaForObject(response?.object, context.schemasByObjectId);
@@ -595,13 +782,28 @@ export function validateResolvedObjectResponse(response, context = {}) {
   return unique(failures);
 }
 
-export function validatePreparationReceipt(receipt, context = {}) {
+export function validateResolvedObjectResponse(response, context = {}) {
+  try {
+    return validateResolvedObjectResponseUnsafe(response, context);
+  } catch {
+    return ["resolved_response_malformed"];
+  }
+}
+
+function validatePreparationReceiptUnsafe(receipt, context = {}) {
   const { action, proposal, expectedAgentIdentity } = context;
+  const receiptFailures = validateSignedObject(receipt, context);
+  const actionFailures = validateSignedObject(action, context);
+  const proposalFailures = validateSignedObject(proposal, context);
   const failures = [
-    ...validateSignedObject(receipt, context).map((code) => `receipt_${code}`),
-    ...validateSignedObject(action, context).map((code) => `action_${code}`),
-    ...validateSignedObject(proposal, context).map((code) => `proposal_${code}`)
+    ...receiptFailures.map((code) => `receipt_${code}`),
+    ...actionFailures.map((code) => `action_${code}`),
+    ...proposalFailures.map((code) => `proposal_${code}`)
   ];
+  if ([receiptFailures, actionFailures, proposalFailures].some((codes) =>
+    codes.some((code) => ["object_schema_invalid", "object_schema_unknown", "signed_object_malformed"].includes(code)))) {
+    return unique([...failures, "preparation_input_malformed"]);
+  }
   if (!sameObjectRef(receipt?.action_ref, {
     schema: action?.schema,
     object_id: action?.action_id,
@@ -641,4 +843,12 @@ export function validatePreparationReceipt(receipt, context = {}) {
   const issuerKey = resolve(context.keyResolver, receipt?.issuer_signature?.key_id);
   if (!issuerKey || issuerKey.controller !== receipt?.issuer) failures.push("receipt_issuer_signer_mismatch");
   return unique(failures);
+}
+
+export function validatePreparationReceipt(receipt, context = {}) {
+  try {
+    return validatePreparationReceiptUnsafe(receipt, context);
+  } catch {
+    return ["preparation_input_malformed"];
+  }
 }

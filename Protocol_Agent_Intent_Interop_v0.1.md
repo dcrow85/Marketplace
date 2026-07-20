@@ -521,10 +521,10 @@ resource_scopes:
                    control_head | grant_head | service_endpoint
     ref: <ObjectRef; required except for a URI-only public schema artifact>
     retrieval_uri: <authorized HTTPS URI or immutable public URI>
-    field_paths: []
-uses: [read_local, derive, disclose_to_audience, retain_until_expiry]
+    field_paths: [<one or more JSON Pointer scopes; "" means the whole resource>]
+uses: [read_local, derive, disclose_to_audience, retain_until_expiry, write_object]
 purpose: <purpose>
-audience: []
+audience: [<one or more exact recipients>]
 maximum_disclosures: <integer>
 retention: {expires_at: <time>, deletion_terms: <terms>}
 revocation_nonce: <integer>
@@ -544,6 +544,11 @@ artifact whose digest is pinned by the referring object. A service endpoint gran
 authorizes retrieval, not mutation; mutation still requires its own capability and
 action authority.
 
+`write_object` is the foundation profile's narrow storage permission. It applies
+only to `intent.put` with an exact principal-signed `cairn.active_intent.v0.1`
+body. It records that already-signed object and grants no proposal, acceptance,
+payment, release, waiver, or other action authority.
+
 A one-shot disclosure uses a separate, non-reusable object:
 
 ```yaml
@@ -552,7 +557,7 @@ authorization_id: urn:uuid:<uuid>
 principal_id: <principal>
 data_grant_ref: <ObjectRef>
 projection_ref: <ObjectRef>
-field_paths: []
+field_paths: [<one or more JSON Pointer scopes>]
 recipient: <exact audience>
 recipient_encryption_key_ref: <key or null>
 purpose: <purpose>
@@ -573,44 +578,61 @@ bundle and recipient runtime can be authorized without overloading a projection:
 schema: cairn.continuation_disclosure_authorization.v0.1
 authorization_id: urn:uuid:<uuid>
 principal_id: <principal>
-data_grant_ref: <ObjectRef>
-continuation_bundle_ref: <ObjectRef>
-continuation_bundle_hash: sha-256:<hex>
-recipient: <exact agent principal>
+recipient_actor_id: <exact receiving runtime actor/key id>
 recipient_runtime_binding_ref: <ObjectRef>
 recipient_runtime_binding_hash: sha-256:<hex>
-purpose: agent_replacement | agent_continuation | recovery
+bundle_ref: <ObjectRef>
+bundle_hash: sha-256:<hex>
 delivery_envelope_hash: sha-256:<hex>
-principal_revocation_nonce: <integer>
+disclosure_reservation:
+  ledger_namespace: <authoritative namespace>
+  reservation_id: urn:uuid:<uuid>
+  fencing_token: <integer>
+  principal_revocation_nonce: <integer>
+  single_use_nonce: <unguessable value>
+data_grant_refs: [<one or more exact ObjectRefs covering the complete graph>]
+purpose: agent_continuation
+one_shot: true
 issued_at: <time>
 expires_at: <time>
 authorization_hash: sha-256:<hex>
 principal_signature: <Signature>
-not_claiming: [authority_transfer, receiver_read_payload, external_deletion_enforced]
+not_claiming: [authority_transfer, mandate_transfer]
+```
+
+For the proposal-foundation machine profile, the signed
+`disclosure_reservation` member is a handle into this closed authoritative state
+record. It is validation state, not a signed receipt and not evidence that a
+shared ledger service has been built:
+
+```yaml
+schema: cairn.continuation_disclosure_reservation_state.v0.1
+ledger_namespace: <authoritative namespace>
+reservation_id: urn:uuid:<uuid>
+ledger_sequence: <monotonic integer>
+principal_id: <principal>
+state: active | consumed | released | expired
+fencing_token: <integer>
+single_use_nonce: <same value as the authorization handle>
+authorization_ref: <exact continuation authorization ObjectRef>
+authorization_hash: sha-256:<same authorization hash>
+bundle_ref: <exact ContinuationBundle ObjectRef>
+bundle_hash: sha-256:<same bundle hash>
+recipient_actor_id: <exact receiving runtime actor/key id>
+runtime_binding_ref: <exact runtime-binding ObjectRef>
+runtime_binding_hash: sha-256:<same runtime-binding hash>
+delivery_envelope_hash: sha-256:<hex>
+principal_revocation_nonce: <same current principal nonce>
+data_grant_refs: [<the exact authorization grant set>]
+reserved_count: 1
+created_at: <time>
+expires_at: <time>
+consumed_at: <time only when consumed; otherwise null>
 ```
 
 Issuing either disclosure-authorization schema MUST atomically reserve one
-disclosure in the grant's authoritative namespace:
-
-```yaml
-schema: cairn.disclosure_reservation.v0.1
-reservation_id: urn:uuid:<uuid>
-principal_id: <principal>
-data_grant_ref: <ObjectRef>
-disclosure_authorization_ref: <ObjectRef>
-delivery_envelope_hash: sha-256:<hex>
-ledger_sequence: <integer>
-fencing_token: <integer>
-reserved_count: 1
-state: active | consumed | released | expired
-created_at: <time>
-expires_at: <time>
-reservation_hash: sha-256:<hex>
-authority_service_signature: <Signature>
-not_claiming: [recipient_deletion_enforced]
-```
-
-Grant count reservation, remaining-count update, and fence issuance are one
+disclosure in each grant's authoritative namespace. Grant count reservation,
+remaining-count update, and fence issuance are one
 serializable transaction shared by all agents. Delivery atomically consumes the
 current fence and emits a `ReservationEventReceipt`; unknown delivery holds the
 count until reconciliation. Empty field/audience sets deny disclosure. The
@@ -618,10 +640,11 @@ authorization is consumed on one
 matching delivery-envelope hash and cannot be replayed with new payload bytes. A
 profile store may issue a projection or continuation bundle only while a current
 data grant explicitly authorizes that projection, recipient, purpose, and disclosure.
-`disclosure_authorization_ref` accepts either authorization schema above. For a
-continuation, the reservation and delivery validator MUST also match the bundle
-hash and recipient runtime-binding hash; a generic projection authorization cannot
-authorize a continuation bundle.
+For a continuation, the reservation and delivery validator MUST match the exact
+authorization ref/hash, bundle ref/hash, recipient actor, runtime-binding
+ref/hash, delivery hash, grant-ref set, principal revocation nonce, fence, nonce,
+and expiry. A generic projection authorization cannot authorize a continuation
+bundle.
 
 ## 6. Exact-copy and evidence objects
 
@@ -2772,10 +2795,12 @@ not_claiming: [authority_transfer]
 
 The bundle transfers context, not authority. Its one-shot
 `ContinuationDisclosureAuthorization` is an adjacent object that binds the
-complete `bundle_hash` and exact recipient runtime-binding hash; it is not included
+complete `bundle_ref` and `bundle_hash`, `recipient_actor_id`, and exact recipient
+runtime-binding ref/hash; it is not included
 inside the bundle and therefore creates no hash cycle. Every non-public top-level
 reference, head, service reference, and item carries its own retrieval URI and
-exact DataGrant reference. The continuation authorization's grant MUST cover each
+exact DataGrant reference. The continuation authorization's `data_grant_refs`
+set MUST cover each
 of those resource triples for this recipient and purpose. Agent B retrieves from
 the named service, verifies each `ObjectRef.object_hash`, and rejects any object,
 URI, field, head, or service omitted from the grant. The schema bundle must resolve
@@ -2798,8 +2823,8 @@ This is a release-blocking conformance test:
 5. Disable Anko and revoke its resource grant.
 6. Give Agent B only discovery documents and a `ContinuationBundle`: no private
    Anko prompt, chat transcript, database access, or privileged endpoint. Issue the
-   exact DataGrant/ContinuationDisclosureAuthorization bound to Agent B's runtime
-   and complete bundle hash.
+   exact DataGrant/ContinuationDisclosureAuthorization bound to Agent B's
+   `recipient_actor_id`, runtime-binding ref/hash, and complete bundle ref/hash.
 7. Agent B resolves every item through the signed service manifest and
    `object.resolve`, verifies schema/content hashes and current control/grant heads,
    and reproduces the current deal state, sources, unknowns, and legal next
@@ -3994,3 +4019,11 @@ not promote any functional profile; every profile remains an unclaimed target.
   signer identity, returned stored results for identical idempotent retries,
   supported the principal-direct preparation branch, and closed annotation,
   unknown-schema, and array-property failure modes found by frozen re-audit.
+- **v0.1 machine-adjunct cold-audit hardening, 2026-07-20:** made every exported
+  validation boundary total and fail-closed; authenticated a fresh transport
+  before typed idempotent result reuse; pinned capabilities to the exact registry
+  and bundle; required non-empty grant scopes; recursively froze annotation
+  expectations; aligned continuation authorization with a closed authoritative
+  state schema; required exact UTC key timestamps; and defined `write_object` as
+  non-authorizing principal-signed intent storage. These are local validation and
+  mutation controls, not a shared service or conformance claim.

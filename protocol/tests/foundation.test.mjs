@@ -8,6 +8,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { auditSources, buildBundle, loadSources } from "../lib/bundle.mjs";
+import { FOUNDATION_DATA_GRANT_USES, SIGNED_OBJECT_ANNOTATIONS } from "../lib/foundation-profile.mjs";
 import {
   bindObjectHash,
   bodyHash,
@@ -28,6 +29,7 @@ import {
   acceptEnvelopeOperation,
   consumeContinuationDisclosure,
   operationFingerprint,
+  validateCapabilitiesResponse,
   validateDataGrant,
   validateContinuationBinding,
   validateEnvelopeOperation,
@@ -387,6 +389,7 @@ function makeContinuation() {
     not_claiming: ["authority_transfer"]
   };
   const boundBundle = bindAndSign(bundle, SERVICE_KEY);
+  const bundleRef = objectRefFor(boundBundle, schemaFor(boundBundle));
   const deliveryEnvelopeHash = HASH_B;
   const authorization = {
     schema: "cairn.continuation_disclosure_authorization.v0.1",
@@ -395,6 +398,7 @@ function makeContinuation() {
     recipient_actor_id: AGENT_KEY.key_id,
     recipient_runtime_binding_ref: runtimeRef,
     recipient_runtime_binding_hash: runtimeRef.object_hash,
+    bundle_ref: bundleRef,
     bundle_hash: boundBundle.bundle_hash,
     delivery_envelope_hash: deliveryEnvelopeHash,
     disclosure_reservation: {
@@ -414,16 +418,30 @@ function makeContinuation() {
     not_claiming: ["authority_transfer", "mandate_transfer"]
   };
   const boundAuthorization = bindAndSign(authorization, PRINCIPAL_KEY);
+  const authorizationRef = objectRefFor(boundAuthorization, schemaFor(boundAuthorization));
   const disclosureLedger = new Map([["fixture-continuations|urn:uuid:00000000-0000-4000-8000-000000000048", {
-    status: "active",
+    schema: "cairn.continuation_disclosure_reservation_state.v0.1",
+    ledger_namespace: "fixture-continuations",
+    reservation_id: uuid(48),
+    ledger_sequence: 1,
+    principal_id: fixture.principal_id,
+    state: "active",
     fencing_token: 3,
     single_use_nonce: "fixture-disclosure-nonce-0001",
+    authorization_ref: authorizationRef,
     authorization_hash: boundAuthorization.authorization_hash,
+    bundle_ref: bundleRef,
     bundle_hash: boundBundle.bundle_hash,
+    recipient_actor_id: AGENT_KEY.key_id,
+    runtime_binding_ref: runtimeRef,
     runtime_binding_hash: runtime.runtime_binding_hash,
     delivery_envelope_hash: deliveryEnvelopeHash,
     principal_revocation_nonce: 11,
-    expires_at: EXPIRES
+    data_grant_refs: [grantRef],
+    reserved_count: 1,
+    created_at: CREATED,
+    expires_at: EXPIRES,
+    consumed_at: null
   }]]);
   const grantStatesByRef = new Map([[`${grantRef.schema}|${grantRef.object_id}|${grantRef.object_hash}`, {
     status: "active",
@@ -703,7 +721,7 @@ test("envelope binds its body and enforces mutation idempotency", () => {
   assert.equal(bodyHash(envelope, schemaFor(envelope)), envelope.body_hash);
   assert.deepEqual(verifyObjectBindings(envelope, schemaFor(envelope)), []);
   assert.deepEqual(validateEnvelopeOperation(envelope, context), []);
-  assert.equal(acceptEnvelopeOperation(envelope, context).accepted, true);
+  assert.equal(acceptEnvelopeOperation(envelope, context, ref("cairn.action_preparation_receipt.v0.1", 600)).accepted, true);
   assert.ok(validateEnvelopeOperation(envelope, context).includes("nonce_replay"));
 
   const mutatedBody = structuredClone(envelope);
@@ -744,7 +762,7 @@ test("continuation runtime swap and grant-graph expansion fail", () => {
   assert.ok(validateContinuationBinding(bundle, wrongRuntime, context).includes("runtime_binding_hash_mismatch"));
 
   const missingGrant = structuredClone(authorization);
-  missingGrant.data_grant_refs = [];
+  missingGrant.data_grant_refs = [ref("cairn.data_grant.v0.1", 999)];
   assert.ok(validateContinuationBinding(bundle, missingGrant, context).includes("data_grant_graph_mismatch"));
 
   const inlineUnknown = structuredClone(bundle);
@@ -790,7 +808,7 @@ test("continuation disclosure reservation is consumed exactly once", () => {
   assert.equal([...context.grantStatesByRef.values()][0].remaining_disclosures, 0);
   const replay = consumeContinuationDisclosure(bundle, authorization, context);
   assert.equal(replay.consumed, false);
-  assert.ok(replay.failures.includes("disclosure_reservation_consumed"));
+  assert.ok(replay.failures.includes("disclosure_reservation_not_active"));
 });
 
 test("continuation reservation binds delivery, fence, revocation, and grant ledger", () => {
@@ -819,7 +837,7 @@ test("envelope rejects independent mutations at every operation boundary", () =>
   assert.ok(mutate(({ envelope }) => { envelope.body.extra = true; }).includes("body_schema_invalid"));
   assert.ok(mutate(({ envelope }) => { envelope.body.principal_id = "did:example:other"; }).includes("body_principal_mismatch"));
   assert.ok(mutate(({ envelope }) => { envelope.sender.actor_id = "did:web:other-agent.example"; }).includes("runtime_binding_sender_mismatch"));
-  assert.ok(mutate(({ envelope }) => { envelope.sender.runtime_key_id = PRINCIPAL_KEY.key_id; }).includes("envelope_signer_runtime_key_mismatch"));
+  assert.ok(mutate(({ envelope }) => { envelope.sender.runtime_key_id = PRINCIPAL_KEY.key_id; }).includes("envelope_malformed"));
   assert.ok(mutate(({ envelope }) => { envelope.audience = ["cairn:wrong-service"]; }).includes("audience_mismatch"));
   assert.ok(mutate(({ envelope }) => { envelope.expires_at = "2026-07-20T16:00:01Z"; }).includes("envelope_not_current"));
   assert.ok(mutate(({ envelope }) => { envelope.operation_fingerprint = HASH_A; }).includes("operation_fingerprint_mismatch"));
@@ -831,7 +849,7 @@ test("envelope rejects independent mutations at every operation boundary", () =>
 
 test("idempotency admission rejects the same key with a changed operation fingerprint", () => {
   const { envelope, context } = makeEnvelopeCase();
-  assert.equal(acceptEnvelopeOperation(envelope, context).accepted, true);
+  assert.equal(acceptEnvelopeOperation(envelope, context, ref("cairn.action_preparation_receipt.v0.1", 601)).accepted, true);
   const conflicting = structuredClone(envelope);
   conflicting.nonce = "fixture-nonce-00000002";
   conflicting.operation_fingerprint = HASH_B;
@@ -965,7 +983,211 @@ test("proposal-foundation registry surface is exact, not merely a denylist", () 
   assert.throws(() => auditSources(changed), /exact proposal-foundation surface/);
   const weakened = structuredClone(sources);
   weakened.registry.operations[2].grant_use = "read_local";
-  assert.throws(() => auditSources(weakened), /exact proposal-foundation surface/);
+  assert.throws(() => auditSources(weakened), /exact proposal-foundation surface|write_object/);
+});
+
+test("capabilities response pins the exact operation surface and bundle", async () => {
+  const { bundle } = await buildBundle(root);
+  const response = {
+    protocol_version: "0.1",
+    profile: "cairn-proposal-foundation-v0.1",
+    bundle_hash: bundle.bundle_hash,
+    operations: registry.operations.map(({ name }) => name)
+  };
+  const schemaValidate = ajv.getSchema(
+    "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/capabilitiesResponse"
+  );
+  assert.equal(schemaValidate(response), true);
+  assert.deepEqual(validateCapabilitiesResponse(response, { ajv, registry, bundleHash: bundle.bundle_hash }), []);
+
+  const wrongOperation = structuredClone(response);
+  wrongOperation.operations[0] = "harmless.extra";
+  assert.equal(schemaValidate(wrongOperation), false);
+  const driftedRegistry = structuredClone(registry);
+  driftedRegistry.operations[0].name = "harmless.extra";
+  assert.ok(validateCapabilitiesResponse(response, { ajv, registry: driftedRegistry, bundleHash: bundle.bundle_hash })
+    .includes("capabilities_operation_surface_mismatch"));
+  assert.ok(validateCapabilitiesResponse(response, { ajv, registry, bundleHash: HASH_A })
+    .includes("capabilities_bundle_hash_mismatch"));
+});
+
+test("all exported validation boundaries return stable failures for malformed input", () => {
+  const poison = new Proxy({}, { get() { throw new TypeError("hostile resolver value"); } });
+  const runtimePoison = new Proxy(makeRuntimeBinding(), {
+    get(target, property, receiver) {
+      if (property === "key_status") throw new TypeError("hostile runtime value");
+      return Reflect.get(target, property, receiver);
+    }
+  });
+  const grantValue = makeContinuation();
+  const grantPoison = new Proxy(grantValue.grant, {
+    get(target, property, receiver) {
+      if (property === "principal_id") throw new TypeError("hostile grant value");
+      return Reflect.get(target, property, receiver);
+    }
+  });
+  const envelopeValue = makeEnvelopeCase();
+  Object.defineProperty(envelopeValue.context, "registry", { get() { throw new TypeError("hostile registry"); } });
+  const continuationValue = makeContinuation();
+  Object.defineProperty(continuationValue.context, "disclosureLedger", { get() { throw new TypeError("hostile ledger"); } });
+  const effectPoison = new Proxy(makeProposal(), {
+    get(target, property, receiver) {
+      if (property === "amounts") throw new TypeError("hostile amount list");
+      return Reflect.get(target, property, receiver);
+    }
+  });
+  const resolvedObject = makeProposal();
+  const resolvedRef = objectRefFor(resolvedObject, schemaFor(resolvedObject));
+  const resolvedContext = validationContext({ expectedUri: "https://objects.example/proposal" });
+  Object.defineProperty(resolvedContext, "expectedRef", { get() { throw new TypeError("hostile expected ref"); } });
+  const preparationContext = validationContext();
+  Object.defineProperty(preparationContext, "action", { get() { throw new TypeError("hostile action"); } });
+  const malformedCalls = [
+    () => validateSignedObject(poison, validationContext()),
+    () => validateRuntimeBinding(runtimePoison, validationContext()),
+    () => validateDataGrant(grantPoison, grantValue.context),
+    () => validateEnvelopeOperation(envelopeValue.envelope, envelopeValue.context),
+    () => validateContinuationBinding(continuationValue.bundle, continuationValue.authorization, continuationValue.context),
+    () => validateProposalEffectBinding(effectPoison, makeEffect()),
+    () => validateResolvedObjectResponse({ ref: resolvedRef, retrieval_uri: "https://objects.example/proposal", object: resolvedObject }, resolvedContext),
+    () => validatePreparationReceipt(null, preparationContext),
+    () => validateCapabilitiesResponse(poison, { ajv, registry, bundleHash: HASH_A }),
+    () => validateSignedObject({ schema: "cairn.envelope.v0.1" }, validationContext()),
+    () => validateRuntimeBinding({ schema: "cairn.agent_runtime_binding.v0.1" }, validationContext()),
+    () => validateDataGrant(null, validationContext()),
+    () => validateEnvelopeOperation({ schema: "cairn.envelope.v0.1" }, validationContext({ registry })),
+    () => validateContinuationBinding(null, null, validationContext()),
+    () => validateProposalEffectBinding({ amounts: [null] }, {}),
+    () => validateResolvedObjectResponse(null, validationContext()),
+    () => validatePreparationReceipt(null, validationContext({ action: null, proposal: null })),
+    () => acceptEnvelopeOperation(null, {}),
+    () => consumeContinuationDisclosure(null, null, {})
+  ];
+  for (const call of malformedCalls) {
+    let result;
+    assert.doesNotThrow(() => { result = call(); });
+    const failures = Array.isArray(result) ? result : result.failures;
+    assert.ok(Array.isArray(failures) && failures.length > 0);
+    assert.ok(failures.every((code) => typeof code === "string" && code.length > 0));
+  }
+});
+
+test("idempotency records are typed and replay precedes changed new-work state", () => {
+  const missingResult = makeEnvelopeCase();
+  const missing = acceptEnvelopeOperation(missingResult.envelope, missingResult.context);
+  assert.equal(missing.accepted, false);
+  assert.ok(missing.failures.includes("idempotency_result_ref_required"));
+  assert.equal(missingResult.context.usedNonces.has(missingResult.envelope.nonce), false);
+
+  const malformedState = makeEnvelopeCase();
+  const stateKey = `${malformedState.context.authorityNamespace}|${malformedState.envelope.idempotency_key}`;
+  malformedState.context.idempotencyRecords.set(stateKey, { fingerprint: malformedState.envelope.operation_fingerprint });
+  const malformed = acceptEnvelopeOperation(malformedState.envelope, malformedState.context, ref("cairn.action_preparation_receipt.v0.1", 710));
+  assert.equal(malformed.accepted, false);
+  assert.ok(malformed.failures.includes("idempotency_record_invalid"));
+
+  const replayCase = makeEnvelopeCase();
+  const originalResult = ref("cairn.action_preparation_receipt.v0.1", 711);
+  assert.equal(acceptEnvelopeOperation(replayCase.envelope, replayCase.context, originalResult).accepted, true);
+  [...replayCase.context.grantStatesByRef.values()][0].status = "revoked";
+  const retry = structuredClone(replayCase.envelope);
+  retry.message_id = uuid(712);
+  retry.nonce = "fixture-nonce-00000712";
+  const signedRetry = bindAndSign(retry, AGENT_KEY);
+  const replay = acceptEnvelopeOperation(signedRetry, replayCase.context, ref("cairn.action_preparation_receipt.v0.1", 713));
+  assert.equal(replay.accepted, true);
+  assert.equal(replay.replayed, true);
+  assert.deepEqual(replay.result_ref, originalResult);
+
+  const invalidTransport = structuredClone(signedRetry);
+  invalidTransport.message_id = uuid(714);
+  invalidTransport.nonce = "fixture-nonce-00000714";
+  invalidTransport.signature.value = `${invalidTransport.signature.value[0] === "A" ? "B" : "A"}${invalidTransport.signature.value.slice(1)}`;
+  const rejected = acceptEnvelopeOperation(invalidTransport, replayCase.context);
+  assert.equal(rejected.accepted, false);
+  assert.ok(rejected.failures.includes("signature_invalid"));
+});
+
+test("DataGrant schema rejects empty field scopes and audiences", () => {
+  const fieldCase = makeContinuation().grant;
+  fieldCase.resource_scopes[0].field_paths = [];
+  const validate = ajv.getSchema(schemaFor(fieldCase).$id);
+  assert.equal(validate(fieldCase), false);
+
+  const audienceCase = makeContinuation().grant;
+  audienceCase.audience = [];
+  assert.equal(validate(audienceCase), false);
+});
+
+test("DataGrant validator rejects empty field scopes and audiences", () => {
+  const { grant, authorization, context } = makeContinuation();
+  grant.resource_scopes[0].field_paths = [];
+  grant.audience = [];
+  const failures = validateDataGrant(grant, {
+    ...context,
+    grantRef: authorization.data_grant_refs[0],
+    principalId: fixture.principal_id,
+    recipient: AGENT_KEY.key_id,
+    purpose: "agent_continuation",
+    use: "read_local",
+    resources: []
+  });
+  assert.ok(failures.includes("grant_field_scope_empty"));
+  assert.ok(failures.includes("grant_audience_empty"));
+});
+
+test("foundation annotation profile is recursively immutable", () => {
+  const nested = SIGNED_OBJECT_ANNOTATIONS["cairn.agent_runtime_binding.v0.1"][3][0];
+  assert.equal(Object.isFrozen(SIGNED_OBJECT_ANNOTATIONS), true);
+  assert.equal(Object.isFrozen(nested), true);
+  assert.throws(() => { nested[0] = "/substituted"; }, TypeError);
+  assert.equal(nested[0], "/agent_identity/runtime_instance_key_id");
+});
+
+test("continuation reservation state has one closed vocabulary and exact graph bindings", () => {
+  const valid = makeContinuation();
+  const state = [...valid.context.disclosureLedger.values()][0];
+  const stateValidate = ajv.getSchema(
+    "https://cairn.cards/protocol/schemas/v0.1/continuation-disclosure-reservation-state.schema.json"
+  );
+  assert.equal(stateValidate(state), true, JSON.stringify(stateValidate.errors));
+
+  const malformed = makeContinuation();
+  delete [...malformed.context.disclosureLedger.values()][0].ledger_sequence;
+  assert.ok(validateContinuationBinding(malformed.bundle, malformed.authorization, malformed.context)
+    .includes("disclosure_reservation_state_invalid"));
+
+  const wrongBundle = makeContinuation();
+  wrongBundle.authorization.bundle_ref.object_id = uuid(799);
+  assert.ok(validateContinuationBinding(wrongBundle.bundle, wrongBundle.authorization, wrongBundle.context)
+    .includes("bundle_ref_mismatch"));
+
+  const wrongStateGraph = makeContinuation();
+  [...wrongStateGraph.context.disclosureLedger.values()][0].data_grant_refs = [ref("cairn.data_grant.v0.1", 798)];
+  assert.ok(validateContinuationBinding(wrongStateGraph.bundle, wrongStateGraph.authorization, wrongStateGraph.context)
+    .includes("disclosure_grant_graph_mismatch"));
+});
+
+test("resolved key timestamps require the exact protocol UTC representation", () => {
+  for (const timestamp of ["2026-07-20T15:00:00+00:00", "2026-07-20t15:00:00z", "2026-07-20", "2026-02-30T15:00:00Z"]) {
+    const { envelope, context } = makeEnvelopeCase();
+    const keys = new Map([...keyResolver.entries()].map(([id, key]) => [id, { ...key }]));
+    keys.get(AGENT_KEY.key_id).not_before = timestamp;
+    assert.ok(validateSignedObject(envelope, { ...context, keyResolver: keys }).includes("signing_key_validity_invalid"), timestamp);
+  }
+});
+
+test("write_object is a non-authorizing exact intent-storage use", () => {
+  assert.deepEqual(FOUNDATION_DATA_GRANT_USES.write_object, {
+    operation: "intent.put",
+    object_schema: "cairn.active_intent.v0.1",
+    authority_effect: "records_principal_signed_intent_only",
+    action_authority: false
+  });
+  const operation = registry.operations.find(({ name }) => name === FOUNDATION_DATA_GRANT_USES.write_object.operation);
+  assert.equal(operation.grant_use, "write_object");
+  assert.equal(operation.request_schema.endsWith("/active-intent.schema.json"), true);
+  assert.equal(operation.authority_effect, FOUNDATION_DATA_GRANT_USES.write_object.authority_effect);
 });
 
 test("authoritative DataGrant state requires typed counters and fails closed", () => {

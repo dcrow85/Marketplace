@@ -46,6 +46,7 @@
           "retrieval_uri": { "$ref": "common.schema.json#/$defs/httpsUri" },
           "field_paths": {
             "type": "array",
+            "minItems": 1,
             "items": {
               "anyOf": [
                 { "const": "" },
@@ -59,7 +60,7 @@
     },
     "uses": { "type": "array", "minItems": 1, "items": { "enum": ["read_local", "derive", "disclose_to_audience", "retain_until_expiry", "write_object"] }, "uniqueItems": true },
     "purpose": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" },
-    "audience": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/actorId" }, "uniqueItems": true },
+    "audience": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/actorId" }, "uniqueItems": true },
     "maximum_disclosures": { "type": "integer", "minimum": 0, "maximum": 2147483647 },
     "retention": {
       "type": "object",

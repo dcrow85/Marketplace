@@ -16,6 +16,7 @@
     "recipient_actor_id",
     "recipient_runtime_binding_ref",
     "recipient_runtime_binding_hash",
+    "bundle_ref",
     "bundle_hash",
     "delivery_envelope_hash",
     "disclosure_reservation",
@@ -35,6 +36,7 @@
     "recipient_actor_id": { "$ref": "common.schema.json#/$defs/actorId" },
     "recipient_runtime_binding_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
     "recipient_runtime_binding_hash": { "$ref": "common.schema.json#/$defs/sha256" },
+    "bundle_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
     "bundle_hash": { "$ref": "common.schema.json#/$defs/sha256" },
     "delivery_envelope_hash": { "$ref": "common.schema.json#/$defs/sha256" },
     "disclosure_reservation": {

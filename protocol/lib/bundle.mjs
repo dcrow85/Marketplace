@@ -4,6 +4,7 @@ import path from "node:path";
 import { canonicalHash, canonicalText } from "./core.mjs";
 import {
   EXACT_FOUNDATION_OPERATION_TUPLES,
+  FOUNDATION_DATA_GRANT_USES,
   SIGNED_OBJECT_ANNOTATIONS,
   operationTuple
 } from "./foundation-profile.mjs";
@@ -129,6 +130,21 @@ export function auditSources({ manifest, registry, schemas }) {
   }
 
   const operationNames = registry.operations.map(({ name }) => name);
+  const dataGrantSchema = schemas.find(({ document }) => document["x-cairn-object-schema"] === "cairn.data_grant.v0.1")?.document;
+  const grantUses = dataGrantSchema?.properties?.uses?.items?.enum;
+  if (!Array.isArray(grantUses) || canonicalText(grantUses) !== canonicalText(Object.keys(FOUNDATION_DATA_GRANT_USES))) {
+    throw new Error("DataGrant uses differ from the exact foundation vocabulary");
+  }
+  const intentPut = registry.operations.find(({ name }) => name === FOUNDATION_DATA_GRANT_USES.write_object.operation);
+  if (
+    !intentPut ||
+    intentPut.request_schema !== "https://cairn.cards/protocol/schemas/v0.1/active-intent.schema.json" ||
+    intentPut.grant_use !== "write_object" ||
+    intentPut.authority_effect !== FOUNDATION_DATA_GRANT_USES.write_object.authority_effect ||
+    FOUNDATION_DATA_GRANT_USES.write_object.action_authority !== false
+  ) {
+    throw new Error("write_object must store only the principal-signed foundation intent");
+  }
   if (registry.protocol_version !== manifest.protocol_version || registry.profile !== manifest.profile) {
     throw new Error("manifest and operation registry profile differ");
   }
