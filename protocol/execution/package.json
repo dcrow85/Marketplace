@@ -1,0 +1,18 @@
+{
+  "name": "@cairn/supervised-execution-schema-phase1",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "canonicalize": "3.0.0"
+  },
+  "scripts": {
+    "build": "python3 ../scripts/check-json-sources.py manifest.json && node scripts/build-bundle.mjs",
+    "check": "node scripts/check-bundle.mjs",
+    "test:unit": "npm run build && node --test tests/*.test.mjs",
+    "test:mutations": "node scripts/run-mutants.mjs",
+    "test": "npm run test:unit && npm run test:mutations"
+  }
+}

@@ -67,6 +67,11 @@ schema or registry file.
 See [`reference-service/README.md`](reference-service/README.md) for the injected
 identity/store contract and the explicit non-production boundary.
 
+The separately namespaced Phase 1 supervised-execution schema candidate lives in
+[`execution/`](execution/). It pins this proposal bundle as an immutable
+dependency and advertises only schema-only, read-only inspection operations. It
+does not widen this package or add an executor.
+
 ## Source-of-truth rule
 
 The files under `schemas/`, `operations/`, and `vectors/` are authoritative for
