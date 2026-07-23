@@ -62,6 +62,11 @@ delimiter strings are not protocol-compatible.
 
 ## Commands
 
+Release verification is intentionally fail-closed on one exact executable
+toolchain: Node `24.15.0`, npm `11.12.1`, and `python3` `3.14.4`. The profile is
+machine-pinned in the kernel manifest and package metadata, and the checker
+executes each version command before reading or generating release state.
+
 ```bash
 cd protocol
 npm ci
@@ -72,8 +77,8 @@ npm run release:verify
 `dist/cairn-minimum-trust-kernel-v0.1.json` deterministically.
 The Python source check rejects duplicate JSON member names before Node parses any
 schema or registry file. The minimum-kernel check additionally pins the exact
-bundle and registry hashes, operation list, object-store and access-state
-effects, conditional BYO prerequisites, rejected execution profile,
+executable toolchain, bundle and registry hashes, operation list, object-store
+and access-state effects, conditional BYO prerequisites, rejected execution profile,
 prerequisites for expansion, source commitments, package closure, and
 non-claims. The release schema closes structure and the exact 53 source names;
 the verifier separately recomputes all commitment values and the release

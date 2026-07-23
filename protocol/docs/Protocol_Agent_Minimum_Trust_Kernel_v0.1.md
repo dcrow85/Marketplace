@@ -171,6 +171,12 @@ authority, the rejected execution profile is re-admitted, or the non-claims
 weaken. `npm run build` remains a deterministic generator; generation alone is
 not a release check.
 
+The executable release-verification profile is exactly Node `24.15.0`, npm
+`11.12.1`, and `python3` `3.14.4`. Package metadata and the kernel manifest carry
+that same closed profile, and the release checker observes and compares all
+three tools before it trusts source checks, tests, generation, or packaging.
+A missing or different executable fails closed.
+
 The generated
 `protocol/dist/cairn-minimum-trust-kernel-v0.1.json` content-addresses the closed
 manifest, foundation hashes, foundation bundle bytes, active source tree,

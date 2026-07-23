@@ -12,7 +12,9 @@ import { FOUNDATION_DATA_GRANT_USES, SIGNED_OBJECT_ANNOTATIONS } from "../lib/fo
 import {
   auditMinimumTrustKernel,
   buildMinimumTrustKernelRelease,
+  observeMinimumKernelVerificationToolchain,
   validateMinimumKernelPackedPaths,
+  validateMinimumKernelVerificationToolchain,
   verifyMinimumTrustKernelRelease
 } from "../lib/minimum-kernel.mjs";
 import {
@@ -84,6 +86,41 @@ test("minimum trust kernel pins the exact proposal-only release boundary", async
   assert.ok(result.manifest.not_claiming.includes("transport_binding_conformance"));
   assert.ok(result.manifest.not_claiming.includes("raw_runtime_private_key_transfer"));
   assert.ok(result.manifest.not_claiming.includes("release_authenticity_without_external_pin"));
+});
+
+test("release verification pins and enforces the exact executable toolchain", async () => {
+  const expected = {
+    node: "24.15.0",
+    npm: "11.12.1",
+    python3: "3.14.4"
+  };
+  const packageDocument = await readJson(path.join(root, "package.json"));
+  const shrinkwrap = await readJson(path.join(root, "npm-shrinkwrap.json"));
+  const manifest = await readJson(path.join(root, "minimum-trust-kernel.json"));
+
+  assert.deepEqual(packageDocument.engines, { node: expected.node, npm: expected.npm });
+  assert.deepEqual(shrinkwrap.packages[""].engines, packageDocument.engines);
+  assert.equal(packageDocument.packageManager, `npm@${expected.npm}`);
+  assert.deepEqual(packageDocument.devEngines, {
+    runtime: { name: "node", version: expected.node, onFail: "error" },
+    packageManager: { name: "npm", version: expected.npm, onFail: "error" }
+  });
+  assert.deepEqual(packageDocument.cairnVerificationToolchain, expected);
+  assert.deepEqual(manifest.verification_toolchain, expected);
+  assert.deepEqual(observeMinimumKernelVerificationToolchain(), expected);
+  assert.deepEqual(validateMinimumKernelVerificationToolchain(expected), []);
+
+  for (const name of Object.keys(expected)) {
+    const mismatched = { ...expected, [name]: "0.0.0" };
+    assert.deepEqual(
+      validateMinimumKernelVerificationToolchain(mismatched),
+      ["verification_toolchain_mismatch"]
+    );
+  }
+  assert.deepEqual(
+    validateMinimumKernelVerificationToolchain({ ...expected, shell: "untrusted" }),
+    ["verification_toolchain_mismatch"]
+  );
 });
 
 test("release schema closes shape and names while the verifier authenticates values and self-hash", async () => {

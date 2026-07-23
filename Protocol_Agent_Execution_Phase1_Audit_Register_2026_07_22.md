@@ -6,22 +6,28 @@ Status: rejected and superseded by scope removal; no execution/read release cand
 Final rejected freeze: `c5646a0104664f7edf2a453450a2ec5d5d2eb82c`
 Supersession amendment: 2026-07-23
 Rejected-freeze prose dependency SHA-256: `246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b`
-Replacement prose dependency SHA-256: `b140ddf830af1060e522cf5795dc6d66d86ac9371f785a7efc91c7f1c46d48e8`
-Replacement internal bundle hash: `sha-256:609f940251e0b02cf938ba900b6dfd68d44037d5c1e7259c12a95a0877411aec`
-Replacement operation-registry hash: `sha-256:7e96e469bd07fd70b963c4903356218f20be20a6da1644fa13c655f5901caf1e`
+Final rejected execution prose dependency SHA-256: `b140ddf830af1060e522cf5795dc6d66d86ac9371f785a7efc91c7f1c46d48e8`
+Final rejected execution internal bundle hash: `sha-256:609f940251e0b02cf938ba900b6dfd68d44037d5c1e7259c12a95a0877411aec`
+Final rejected execution operation-registry hash: `sha-256:7e96e469bd07fd70b963c4903356218f20be20a6da1644fa13c655f5901caf1e`
 
-## Claim boundary
+## Rejected execution artifact claim boundary
 
-This is a schema-only, read-only Phase 1 candidate. It contains no authority
+The rejected artifact was a schema-only, read-only Phase 1 candidate. It
+contained no authority
 writer, executor, network review, provider adapter, outbox, payment, escrow
 release, waiver, dispute, server, database, UI, or deployment. Its empty
 `conformance_claims` array and every registry row state that boundary directly.
 
-The package pins and does not widen the proposal foundation:
+The rejected package pinned and did not widen its then-current proposal
+foundation:
 
 - base profile: `cairn-proposal-foundation-v0.1`;
 - base bundle: `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`;
 - base registry: `sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b`.
+
+Every use below of “current candidate,” “replacement,” or “pending” is
+time-local to its dated audit round unless the terminal authoritative
+supersession says otherwise.
 
 ## Replacement containment target
 
@@ -823,14 +829,15 @@ yet make its smallest claims mechanically exact.
 | P2R45-X-001 | P2 | Rejected execution code remained too easy to package, import, or mistake for an active build target | accepted_and_fixed | Root package allowlist excludes it, runtime imports are scanned, a closed rejection marker forbids advertisement/deployment/reference-service use, and reproduction instructions point only to the rejected archive |
 | P2R45-T-001 | P2 | Direct mutation coverage was incomplete for the new release and semantic controls | accepted_and_fixed | Focused mutants now exercise projection binding, state effects, draft-only preparation, closed manifests, BYO prerequisites, package/runtime exclusion, source commitment, and stale release bytes |
 
-The local replacement passes 90/90 authored controls and kills 101/101 direct
+The then-local Round-45 replacement passed 90/90 authored controls and killed 101/101 direct
 security mutants. Its foundation bundle and registry remain respectively
 `sha-256:4eb3862fd13659131731f1202aecc62617044682bc7c0ce9e5cd2420061b3a85`
 and
 `sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d`.
 A replacement containing commit, disposable clean-archive replay, exact package
-inspection, and three fresh cold exact-commit reviews remain pending. No
-execution reference service is authorized.
+inspection, and three fresh cold exact-commit reviews were still pending at
+that round. The later rounds below supersede those values. No execution
+reference service was or is authorized.
 
 ### Round 45 clean-replay rejection
 
@@ -862,7 +869,7 @@ rejected that exact commit.
 | P2R46-S-001 | P2 | A validly signed projection with future `derived_at` was accepted | accepted_and_fixed | Signed-object currentness includes `derived_at`; the regression proves rejection without nonce or grant-budget consumption |
 | P2R46-S-002 | P2 | Full semantic validation before ownership preflight let cross-principal callers distinguish existing private objects from absent refs | accepted_and_fixed | Access preflight occurs after fresh transport/idempotent replay but before object semantics; foreign correct, wrong-purpose, wrong-use, and absent reads collapse to the same private 404 |
 
-The working replacement passes 97/97 authored controls and kills 116/116 direct
+The then-working Round-46 replacement passed 97/97 authored controls and killed 116/116 direct
 security mutants. `release:verify` additionally installs and tests the extracted
 package from its own shrinkwrap, rebuilds both generated artifacts byte-for-byte,
 requires pack/build/repack convergence, and confirms zero rejected execution
@@ -879,9 +886,44 @@ adds self-contained `files` exclusions for recursive `__pycache__`, `.pyc`, and
 test plus direct mutant create transient compiler files and require them to stay
 out of the pack.
 
-The current foundation bundle and registry are respectively
+The then-current Round-46 foundation bundle and registry were respectively
 `sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24`
 and
 `sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d`.
-A containing commit, clean-archive replay, and three new exact-commit cold reviews
-remain required; no execution reference service is authorized.
+A containing commit, clean-archive replay, and three new exact-commit cold
+reviews were required at that round. Those values and pending markers are
+historical, not the active release head; no execution reference service is
+authorized.
+
+## Current authoritative supersession — 2026-07-23
+
+Every round above is historical. The only active candidate is the proposal-only
+`cairn-proposal-foundation-v0.1` minimum trust kernel: nine exact operations,
+two bounded object-store writes, seven disclosure-budget consumers, no action
+authority, no external effect, and no conformance claim. Its unchanged
+foundation bundle is
+`sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb`;
+its registry is
+`sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe`.
+
+Minimum-kernel freezes
+`fc5ff28469f8b30182b251e5df8eecbfe6a4a2eb`,
+`915ea25c5fbdb686d5028093aa4adc073ac5695b`,
+`705d627a16c6eb7ce612dc9990153afa983d17ea`, and
+`7f1cdf6e966cf4441ad38c5379cdd994dca185d8` are rejected history. The last two
+independently reproduced the previous 101/101 controls, 134/134 mutants, and
+55-file package
+`sha-256:bef5888e5b4f090fc5e66075a0095f0baf33e795d47b99c5dbe634547d33effd`,
+but active-document drift and an incompletely pinned executable verification
+toolchain prevented closure.
+
+The post-`7f1cdf6` replacement pins and runtime-enforces Node `24.15.0`, npm
+`11.12.1`, and Python `3.14.4`. Locally it passes 102/102 authored controls,
+kills 139/139 direct mutants, and packs exactly 55 files at
+`sha-256:d726c2d58882f8a0f606123c9e50ef19bb3957a1a530200e2eb3f959b1d0b6fb`.
+Its generated release is
+`sha-256:577979ec046ecff0561452dcd678ea308b6e89c5979946b3948b48e496869414`.
+These are working-tree facts, not an accepted release. A containing commit,
+disposable clean-archive replay, and fresh exact-commit independent reviews
+remain required. No execution/read profile, execution reference service,
+payment, settlement, deployment, or runtime conformance is authorized.

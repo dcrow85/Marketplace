@@ -8,6 +8,7 @@
     "kernel_id",
     "profile",
     "release_status",
+    "verification_toolchain",
     "foundation_bundle_hash",
     "operation_registry_hash",
     "included_operations",
@@ -25,6 +26,13 @@
     "kernel_id": { "const": "cairn-agent-minimum-trust-kernel-v0.1" },
     "profile": { "const": "cairn-proposal-foundation-v0.1" },
     "release_status": { "const": "active_narrowed_candidate" },
+    "verification_toolchain": {
+      "const": {
+        "node": "24.15.0",
+        "npm": "11.12.1",
+        "python3": "3.14.4"
+      }
+    },
     "foundation_bundle_hash": {
       "const": "sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb"
     },

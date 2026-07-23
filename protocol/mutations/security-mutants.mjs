@@ -207,6 +207,42 @@ export const SECURITY_MUTANTS = [
     expectedOutput: "minimum kernel package manager differs"
   },
   {
+    id: "minimum-kernel-manifest-python-toolchain-pin",
+    finding: "executable-release-toolchain-profile",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/verification_toolchain/python3",
+    value: "3.13.0",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-package-python-toolchain-pin",
+    finding: "executable-release-toolchain-profile",
+    file: "package.json",
+    jsonPointer: "/cairnVerificationToolchain/python3",
+    value: "3.13.0",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel package verification toolchain differs"
+  },
+  {
+    id: "minimum-kernel-package-dev-engine-pin",
+    finding: "executable-release-toolchain-profile",
+    file: "package.json",
+    jsonPointer: "/devEngines/packageManager/version",
+    value: "11.11.0",
+    expectedStage: "kernel",
+    expectedOutput: "Invalid devEngines.packageManager"
+  },
+  {
+    id: "minimum-kernel-python-self-version-pin",
+    finding: "executable-release-toolchain-profile",
+    file: "scripts/check-json-sources.py",
+    search: 'EXPECTED_PYTHON_VERSION = "3.14.4"',
+    replace: 'EXPECTED_PYTHON_VERSION = "3.13.0"',
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel executable verification toolchain differs"
+  },
+  {
     id: "minimum-kernel-node-engine-pin",
     finding: "clean-package-toolchain-profile",
     file: "package.json",
@@ -223,6 +259,14 @@ export const SECURITY_MUTANTS = [
     value: ">=8",
     expectedStage: "kernel",
     expectedOutput: "minimum kernel shrinkwrap engine range differs"
+  },
+  {
+    id: "minimum-kernel-runtime-toolchain-enforcement",
+    finding: "executable-release-toolchain-profile",
+    file: "lib/minimum-kernel.mjs",
+    search: '  return canonicalText(observed) === canonicalText(EXPECTED_VERIFICATION_TOOLCHAIN)\n    ? []\n    : ["verification_toolchain_mismatch"];',
+    replace: "  return [];",
+    test: "release verification pins and enforces the exact executable toolchain"
   },
   {
     id: "minimum-kernel-runtime-import-exclusion",

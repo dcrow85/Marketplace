@@ -25,5 +25,7 @@ disposition; commit in focused, path-scoped units (never `git add -A`).
 ## Canonical docs (read before a lane)
 `Protocol_Architecture_Boundary_v0.1.md` (on/off-chain boundary, read first) ·
 `Protocol_Audit_Findings_Ledger.md` · `Marketplace_Protocol_Full_Spec.md` ·
-`Protocol_Walls_v0.1.md` · `Protocol_Codex_Brief_2026_06_17.md` (current state) ·
+`Protocol_Walls_v0.1.md` · `Protocol_Agent_Minimum_Trust_Kernel_v0.1.md` +
+`Protocol_Agent_Minimum_Trust_Kernel_Release_Pin_v0.1.json` (current agent boundary) ·
+`Protocol_Codex_Brief_2026_06_17.md` (historical lane-state archive) ·
 `Protocol_Codex_Brief_2026_06_12.md` (canonical for your owed Lane-1/2 work).

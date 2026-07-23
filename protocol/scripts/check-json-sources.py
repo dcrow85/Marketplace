@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import platform
 import sys
 from pathlib import Path
 from typing import Any
@@ -20,6 +21,7 @@ DEFAULT_SOURCE_ROOTS = [
     ROOT / "vectors",
 ]
 MAX_IJSON_INTEGER = 9_007_199_254_740_991
+EXPECTED_PYTHON_VERSION = "3.14.4"
 
 
 class DuplicateMember(ValueError):
@@ -65,6 +67,13 @@ def files() -> list[Path]:
 
 
 def main() -> int:
+    if platform.python_version() != EXPECTED_PYTHON_VERSION:
+        print(
+            "minimum kernel executable verification toolchain differs: "
+            f"expected python3 {EXPECTED_PYTHON_VERSION}, observed {platform.python_version()}",
+            file=sys.stderr,
+        )
+        return 1
     checked = 0
     for path in files():
         try:

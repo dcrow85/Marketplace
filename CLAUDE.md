@@ -6,8 +6,9 @@
 > 3. check `SYNC.md`'s `UNREAD-FOR` line; if it names `claude`, read the new handshake
 >    entries, act, then clear the bit.
 >
-> Everything below is LEGACY orientation (2026-05-20). `SYNC.md` + the dated Codex
-> Briefs (`Protocol_Codex_Brief_2026_06_17.md`) are current; the rest is history.
+> `SYNC.md` is current. Dated Codex briefs, including
+> `Protocol_Codex_Brief_2026_06_17.md`, and everything below are historical
+> orientation.
 
 source: Codex local session
 destination: Claude Code

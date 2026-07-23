@@ -58,6 +58,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+
+Handshake entries are append-only, time-local snapshots. Only the newest
+non-superseded entry for a seam controls current work; words such as “current,”
+“remains,” “passes,” or “pending” in an older entry do not override a newer
+supersession or closure.
+
 - `[BLOCKING: agent minimum trust kernel release]` 2026-07-23 · Codex —
   **The 29-operation supervised-execution/read candidate is rejected and removed
   from the active release gate.** Exact freeze
@@ -177,9 +183,38 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   release review also reproduced every package, pollution-rejection,
   recomputation, and external-pin control, and rejected only the same two active
   prose discrepancies.
+  Corrected freeze `7f1cdf6e966cf4441ad38c5379cdd994dca185d8`
+  is also rejected. Its exact clean replay passed 101/101 controls, killed
+  134/134 mutants, packed the same 55 files at the same pinned hash, and reported
+  zero vulnerabilities. A fresh blind interoperability reader found one further
+  material prose ambiguity:
+  `Protocol_Agent_Execution_Change_Audit_Register_2026_07_21.md` still described
+  its 2026-07-21 execution-prose closure and old `d84dd…` baseline as current.
+  The replacement preserves every audit row but labels the register, its
+  remediation column, fixed-hash round, old baseline, and closure gate as
+  superseded historical research. The blind release reader found one additional
+  active-document fork at the end of the Phase-1 audit register and one
+  executable-toolchain reproducibility gap: the package invoked `python3` while
+  only advertising Node/npm ranges and did not assert the tools actually in use.
+  Both are accepted. The replacement makes every older audit entry explicitly
+  time-local, adds a terminal authoritative supersession, and pins and
+  runtime-enforces Node `24.15.0`, npm `11.12.1`, and Python `3.14.4` in the
+  package, shrinkwrap, kernel manifest/schema, Python preflight, and repository
+  external pin. Direct mutants cover manifest, package, npm dev-engine, Python
+  self-check, Node/npm engine, shrinkwrap, and runtime comparison drift.
+  The unfrozen replacement passes 102/102 authored controls, kills 139/139
+  mutants, packs the same exact 53 committed sources plus two generated files
+  at
+  `sha-256:d726c2d58882f8a0f606123c9e50ef19bb3957a1a530200e2eb3f959b1d0b6fb`,
+  and generates release
+  `sha-256:577979ec046ecff0561452dcd678ea308b6e89c5979946b3948b48e496869414`.
+  A containing commit, clean-archive replay, and fresh exact-commit reviews
+  remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
-- `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
+- `[passive: superseded Phase 1 execution research]` 2026-07-22 · Codex —
+  **Historical checkpoint only; superseded by the minimum-trust-kernel entry
+  immediately above. No execution replacement or freeze is pending.**
   **Exact freeze `420fa52ecdcab696f3de3b04bda89326992e5ed4` is rejected
   alongside `4d62c0f`, `dd12269c`, `ebd10f4`, `26b7016`, `0b98fff`,
   `393b87f`, and `902abec`. Round 43 reproduced every advertised control before

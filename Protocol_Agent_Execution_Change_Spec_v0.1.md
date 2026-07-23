@@ -124,7 +124,7 @@ protocol_version: "0.1"
 profile_id: <new separately frozen execution profile>
 base_bundle_hash: sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb
 base_operation_registry_hash: sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe
-base_release_hash: sha-256:9b6c2c1842659bb1e94085cf07ec4d0b160133b455f0c0c943623dc014476cc3
+base_release_hash: sha-256:577979ec046ecff0561452dcd678ea308b6e89c5979946b3948b48e496869414
 execution_bundle_hash: sha-256:<frozen execution bundle hash>
 operation_registry_hash: sha-256:<frozen execution registry hash>
 ```

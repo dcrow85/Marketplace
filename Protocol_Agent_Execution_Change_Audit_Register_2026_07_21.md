@@ -2,8 +2,15 @@
 
 Artifact: `Protocol_Agent_Execution_Change_Spec_v0.1.md`
 Draft audited: initial 637-line 2026-07-21 candidate
-Status: fixed-hash prose-design closure complete; implementation not authorized
+Status: historical fixed-hash prose-design closure, later superseded and rejected by scope removal; no execution profile or implementation is active or authorized
 Author: Codex/Kepler
+
+> **Supersession notice.** This register proves only that the execution prose
+> reached its historical audit gate on 2026-07-21. The execution candidate and
+> its ten-operation `d84dd…` proposal baseline were later superseded by the
+> active nine-operation minimum trust kernel. Nothing in this register is a
+> current compatibility baseline, release candidate, conformance claim, or
+> instruction to build.
 
 ## Review chairs
 
@@ -17,7 +24,7 @@ has one disposition.
 
 ## Findings and dispositions
 
-| ID | Sev. | Consolidated finding | Disposition | Remediation in current candidate |
+| ID | Sev. | Consolidated finding | Disposition | Remediation in historical candidate |
 |---|---:|---|---|---|
 | AE-001 | P1 | Review, taint, compartment, control, and policy choices were not carried through authorization, gate, redemption, action, and receipt | accepted_and_fixed | Added immutable `ExecutionBindingSet`; required complete v0.2 chain schemas and deletion/substitution mutants |
 | AE-002 | P1 | Connection embedded mandate refs while mandate embedded connection ref, creating an immutable hash cycle | accepted_and_fixed | Connection has no reverse grant/mandate refs; discovery is a private server-owned index; authority points one way |
@@ -781,7 +788,7 @@ and remediated in candidate
 |---|---:|---|---|---|
 | AE-361 | P1 | CheckoutTermsSuccessorReceipt required both draining roles, required the commit-time draining basis to remain current, and accepted only an ordinary consume receipt, so mixed drain cleanup or clean rotation before local import stranded the Cairn obligation | accepted_and_fixed | Made seller/copy authority bases independently discriminated at external commit, enumerated all three consume receipt causes, added current authority heads plus complete consecutive history at local settlement, allowed asynchronous terminal-truth recording after lifecycle advance, and forced payment blocked whenever the commit basis is non-active or no longer exact-current; applied the same historical-basis rule to release completion and ordinary-deal terminal imports |
 
-## Closure round thirty-eight — fixed-hash closure
+## Historical closure round thirty-eight — fixed-hash prose closure
 
 One fresh context-blind commerce reviewer and one informed full-regression
 reviewer independently audited exact artifact SHA-256
@@ -791,16 +798,16 @@ edits. Neither found a P0, P1, or material P2. The informed reviewer replayed
 AE-001 through AE-361, with particular attention to the final authority,
 trust, inventory, checkout, lifecycle, race, and writer-operation repairs.
 
-Mechanical closure reproduced 197 unique schema declarations and 345 unique
-operation declarations, with no duplicate schema IDs, duplicate operation IDs,
-missing backticked operation references, or duplicate headings. `git diff
---check` passed. The unchanged proposal-only baseline passed 83/83 authored
+Historical mechanical closure reproduced 197 unique schema declarations and
+345 unique operation declarations, with no duplicate schema IDs, duplicate
+operation IDs, missing backticked operation references, or duplicate headings.
+`git diff --check` passed. The then-current proposal-only baseline passed 83/83 authored
 controls and killed 75/75 security mutants across 22 strict JSON sources, 12
-object schemas, and the frozen ten-operation surface; its internal deterministic
-bundle hash remained
+object schemas, and the then-frozen ten-operation surface; its historical
+internal deterministic bundle hash remained
 `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
 
-## Rejected false positives
+## Historical rejected false positives
 
 - Missing live provider adapters is deliberate phasing, not a current claim.
 - Human-reserved release, waiver, dispute, and arbitration are deliberate
@@ -812,9 +819,9 @@ bundle hash remained
 - Repeating an ObjectRef and expected semantic hash is allowed when validators
   require exact equality; redundancy itself is not authority.
 
-## Closure gate
+## Historical closure gate
 
-The register closes only after:
+The historical register closed only after:
 
 1. one new context-blind read-only audit of the remediated artifact;
 2. one informed replay against the baseline and every AE row;
@@ -824,7 +831,9 @@ The register closes only after:
 5. an explicit statement that prose closure does not authorize an execution
    service or conformance claim.
 
-These gates are satisfied for the exact spec hash above as of 2026-07-21. This
-closes the prose-design audit only. It does not create a machine-readable v0.2
-bundle, authorize construction or deployment of an execution service, establish
-provider or payment authority, or support a Cairn conformance claim.
+These gates were satisfied for the exact spec hash above on 2026-07-21. That
+historical closure was later superseded when the execution candidate was
+rejected and removed from the active release gate. It does not create a
+machine-readable v0.2 bundle, authorize construction or deployment of an
+execution service, establish provider or payment authority, support a Cairn
+conformance claim, or supersede the active nine-operation kernel.

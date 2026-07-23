@@ -12,8 +12,25 @@ const EXPECTED_KERNEL_ID = "cairn-agent-minimum-trust-kernel-v0.1";
 const EXPECTED_STATUS = "active_narrowed_candidate";
 const EXPECTED_PACKAGE_MANAGER = "npm@11.12.1";
 const EXPECTED_ENGINES = {
-  node: ">=24.15.0 <25",
-  npm: ">=10.9.2 <12"
+  node: "24.15.0",
+  npm: "11.12.1"
+};
+const EXPECTED_DEV_ENGINES = {
+  runtime: {
+    name: "node",
+    version: "24.15.0",
+    onFail: "error"
+  },
+  packageManager: {
+    name: "npm",
+    version: "11.12.1",
+    onFail: "error"
+  }
+};
+const EXPECTED_VERIFICATION_TOOLCHAIN = {
+  node: "24.15.0",
+  npm: "11.12.1",
+  python3: "3.14.4"
 };
 const EXPECTED_MUTATIONS = [
   {
@@ -104,6 +121,42 @@ const EXACT_GENERATED_ARTIFACTS = [
 
 function exact(actual, expected, message) {
   if (canonicalText(actual) !== canonicalText(expected)) throw new Error(message);
+}
+
+function executableVersion(command, args, pattern) {
+  const result = spawnSync(command, args, { encoding: "utf8" });
+  if (result.error || result.status !== 0) {
+    const detail = result.error?.message || result.stderr || result.stdout || `exit ${result.status}`;
+    throw new Error(`minimum kernel verification tool unavailable: ${command}: ${String(detail).trim()}`);
+  }
+  const output = `${result.stdout || ""}\n${result.stderr || ""}`.trim();
+  const match = output.match(pattern);
+  if (!match) throw new Error(`minimum kernel verification tool version unreadable: ${command}`);
+  return match[1];
+}
+
+export function observeMinimumKernelVerificationToolchain() {
+  return {
+    node: process.versions.node,
+    npm: executableVersion("npm", ["--version"], /^([0-9]+\.[0-9]+\.[0-9]+)$/),
+    python3: executableVersion("python3", ["--version"], /^Python ([0-9]+\.[0-9]+\.[0-9]+)$/)
+  };
+}
+
+export function validateMinimumKernelVerificationToolchain(observed) {
+  return canonicalText(observed) === canonicalText(EXPECTED_VERIFICATION_TOOLCHAIN)
+    ? []
+    : ["verification_toolchain_mismatch"];
+}
+
+function requireExactVerificationToolchain() {
+  const observed = observeMinimumKernelVerificationToolchain();
+  if (validateMinimumKernelVerificationToolchain(observed).length) {
+    throw new Error(
+      `minimum kernel executable verification toolchain differs: expected ` +
+      `${canonicalText(EXPECTED_VERIFICATION_TOOLCHAIN)}, observed ${canonicalText(observed)}`
+    );
+  }
 }
 
 function uniqueStrings(value, label) {
@@ -245,6 +298,12 @@ async function auditExecutionExclusion(root, manifest, ajv) {
   if (packageDocument.packageManager !== EXPECTED_PACKAGE_MANAGER) {
     throw new Error("minimum kernel package manager differs");
   }
+  exact(
+    packageDocument.cairnVerificationToolchain,
+    EXPECTED_VERIFICATION_TOOLCHAIN,
+    "minimum kernel package verification toolchain differs"
+  );
+  exact(packageDocument.devEngines, EXPECTED_DEV_ENGINES, "minimum kernel package dev-engine policy differs");
   exact(packageDocument.engines, EXPECTED_ENGINES, "minimum kernel engine range differs");
   const shrinkwrap = await readJson(path.join(root, "npm-shrinkwrap.json"));
   exact(shrinkwrap.packages?.[""]?.engines, EXPECTED_ENGINES, "minimum kernel shrinkwrap engine range differs");
@@ -263,6 +322,7 @@ async function auditExecutionExclusion(root, manifest, ajv) {
 }
 
 export async function auditMinimumTrustKernel(root) {
+  requireExactVerificationToolchain();
   requireStrictJson(root);
   const manifest = await readJson(path.join(root, "minimum-trust-kernel.json"));
   const releaseSchemaDocuments = await releaseSchemas(root);
@@ -285,6 +345,11 @@ export async function auditMinimumTrustKernel(root) {
   if (manifest.schema !== EXPECTED_SCHEMA) throw new Error("minimum kernel schema identifier differs");
   if (manifest.kernel_id !== EXPECTED_KERNEL_ID) throw new Error("minimum kernel identifier differs");
   if (manifest.release_status !== EXPECTED_STATUS) throw new Error("minimum kernel release status differs");
+  exact(
+    manifest.verification_toolchain,
+    EXPECTED_VERIFICATION_TOOLCHAIN,
+    "minimum kernel verification toolchain differs"
+  );
   if (manifest.profile !== registry.profile || manifest.profile !== bundle.manifest.profile) {
     throw new Error("minimum kernel profile differs from the foundation");
   }
