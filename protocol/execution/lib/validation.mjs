@@ -241,11 +241,11 @@ export function validateExactObjectRead(operationName, request, responseObject, 
     }
     const currentRead = CURRENT_EXACT_READ_OPERATIONS.has(operationName);
     const objectContext = currentRead
-      ? {
-          ...context,
+      ? deriveEvidenceContext(context, {
           now: responseObject.retrieved_at ?? context.now ?? null,
+          evidenceSnapshotAt: responseObject.retrieved_at ?? context.now ?? null,
           requireDependencySignatures: true
-        }
+        })
       : historicalEvidenceContext(
         context,
         historicalObjectInstant(returnedObject, responseObject.retrieved_at ?? context.now ?? null),
@@ -479,9 +479,9 @@ function mandateBindingFailures(mandate, commitment, binding, context = {}) {
   const connection = resolveObject(context.objectResolver, binding.connection_state_head_ref);
   if (!connection || connection.schema !== "cairn.agent_connection_state_head.v0.1" ||
       !exactRef(binding.connection_state_head_ref, connection, context) ||
-      validateConnectionStateHead(connection, {
-        ...context, requireCurrentConnection: !isHistoricalEvidence(context)
-      }).length ||
+      validateConnectionStateHead(connection, deriveEvidenceContext(context, {
+        requireCurrentConnection: !isHistoricalEvidence(context)
+      })).length ||
       connection.state !== "active" ||
       connection.principal_id !== mandate.principal_id ||
       !sameObjectRef(connection.connection_authorization_ref, mandate.agent.connection_authorization_ref) ||
@@ -873,8 +873,8 @@ function validateResolvedSignedObject(object, context = {}) {
       if (context.requireCurrentKeyEligibility === true && now === null) {
         failures.push("signature_evaluation_time_required");
       }
-      if (isHistoricalEvidence(context) && Number.isFinite(evidenceSnapshotAt) &&
-          Number.isFinite(signedAt) && signedAt > evidenceSnapshotAt) {
+      if (Number.isFinite(evidenceSnapshotAt) && Number.isFinite(signedAt) &&
+          signedAt > evidenceSnapshotAt) {
         failures.push("signature_from_future");
       }
       if (key.status === "revoked" && key.revocation_time === null) failures.push("signature_key_history_incomplete");
@@ -1101,13 +1101,12 @@ export function validateExecutionControlStateHead(value, context = {}) {
     }
     if (!map || map.schema !== "cairn.enumerable_map_root.v0.1" ||
         !exactRef(value.scoped_control_map_ref, map, context) ||
-        validateEnumerableMapRoot(map, {
-          ...context,
+        validateEnumerableMapRoot(map, deriveEvidenceContext(context, {
           expectedMapDomain: "scoped_execution_control",
           expectedMapKey: executionControlMapKey(
             value.principal_id, value.authority_namespace, value.control_namespace_generation
           )
-        }).length ||
+        })).length ||
         (context.requireDependencySignatures === true && validateResolvedSignedObject(map, context).length) ||
         value.scoped_control_map_hash !== map.map_hash ||
         value.scoped_control_head_count !== map.entry_count ||
@@ -1273,13 +1272,12 @@ export function validateExecutionControlReceipt(value, context = {}) {
     const afterMap = resolveObject(context.objectResolver, value.after_scoped_control_map_ref);
     const validControlMap = (map, head) => Boolean(head) && map?.schema === "cairn.enumerable_map_root.v0.1" &&
       exactRef(head.scoped_control_map_ref, map, context) &&
-      validateEnumerableMapRoot(map, {
-        ...context,
+      validateEnumerableMapRoot(map, deriveEvidenceContext(context, {
         expectedMapDomain: "scoped_execution_control",
         expectedMapKey: executionControlMapKey(
           head.principal_id, head.authority_namespace, head.control_namespace_generation
         )
-      }).length === 0 &&
+      })).length === 0 &&
       (context.requireDependencySignatures !== true || validateResolvedSignedObject(map, context).length === 0) &&
       head.scoped_control_map_hash === map.map_hash &&
       head.scoped_control_head_count === map.entry_count &&
@@ -1403,13 +1401,13 @@ export function validateExecutionControlReceipt(value, context = {}) {
         leafBefore === null ? null : {
           entry_object_ref: value.scoped_leaf_before_ref,
           entry_object_hash: value.scoped_leaf_before_hash
-        }, { ...context, expectedEntryKey: leafAfter?.scoped_control_leaf_key }
+        }, deriveEvidenceContext(context, { expectedEntryKey: leafAfter?.scoped_control_leaf_key })
       );
       const afterProof = afterMap === null ? null : validateEnumerableMapPathProof(
         value.after_change_proof, afterMap, "membership", {
           entry_object_ref: value.scoped_leaf_after_ref,
           entry_object_hash: value.scoped_leaf_after_hash
-        }, { ...context, expectedEntryKey: leafAfter?.scoped_control_leaf_key }
+        }, deriveEvidenceContext(context, { expectedEntryKey: leafAfter?.scoped_control_leaf_key })
       );
       const proofValid = beforeProof !== null && afterProof !== null &&
         beforeProof.failures.length === 0 && afterProof.failures.length === 0 &&
@@ -1488,9 +1486,9 @@ export function validateExecutionControlReceipt(value, context = {}) {
       if (!outstandingHead ||
           outstandingHead.schema !== "cairn.connection_outstanding_action_index_state_head.v0.1" ||
           !exactRef(value.outstanding_action_index_head_ref, outstandingHead, context) ||
-          validateConnectionOutstandingIndexHead(outstandingHead, {
-            ...context, expectedConnectionStateId: connectionAfter?.connection_state_id
-          }).length ||
+          validateConnectionOutstandingIndexHead(outstandingHead, deriveEvidenceContext(context, {
+            expectedConnectionStateId: connectionAfter?.connection_state_id
+          })).length ||
           (context.requireDependencySignatures === true &&
             validateResolvedSignedObject(outstandingHead, context).length) ||
           !sameObjectRef(resolveCurrentHead(context, value.outstanding_action_index_head_ref, value.committed_at),
@@ -2876,12 +2874,14 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
     const expectedMapKey = receiverOutstandingMapKey(after.receiver_sequence_epoch_selector_key);
     if (!beforeMap || beforeMap.schema !== "cairn.enumerable_map_root.v0.1" ||
         !exactRef(value.outstanding_stream_map_before_ref, beforeMap, context) ||
-        validateEnumerableMapRoot(beforeMap, { ...context, expectedMapDomain: "receiver_outstanding_stream",
-          expectedMapKey }).length ||
+        validateEnumerableMapRoot(beforeMap, deriveEvidenceContext(context, {
+          expectedMapDomain: "receiver_outstanding_stream", expectedMapKey
+        })).length ||
         !afterMap || afterMap.schema !== "cairn.enumerable_map_root.v0.1" ||
         !exactRef(value.outstanding_stream_map_after_ref, afterMap, context) ||
-        validateEnumerableMapRoot(afterMap, { ...context, expectedMapDomain: "receiver_outstanding_stream",
-          expectedMapKey }).length ||
+        validateEnumerableMapRoot(afterMap, deriveEvidenceContext(context, {
+          expectedMapDomain: "receiver_outstanding_stream", expectedMapKey
+        })).length ||
         !sameObjectRef(selectorBefore?.outstanding_stream_map_ref, value.outstanding_stream_map_before_ref) ||
         selectorBefore?.outstanding_stream_map_hash !== beforeMap?.map_hash ||
         !sameObjectRef(selectorAfter?.outstanding_stream_map_ref, value.outstanding_stream_map_after_ref) ||
@@ -2891,12 +2891,12 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
     const beforeProof = validateEnumerableMapPathProof(value.before_change_proof, beforeMap,
       before === null ? "nonmembership" : "membership",
       before === null ? null : { entry_object_ref: value.entry_before_ref, entry_object_hash: value.entry_before_hash },
-      { ...context, expectedEntryKey: value.outstanding_stream_key });
+      deriveEvidenceContext(context, { expectedEntryKey: value.outstanding_stream_key }));
     const afterProof = validateEnumerableMapPathProof(value.after_change_proof, afterMap,
       value.after_current_map_membership ? "membership" : "nonmembership",
       value.after_current_map_membership
         ? { entry_object_ref: value.entry_after_ref, entry_object_hash: value.entry_after_hash } : null,
-      { ...context, expectedEntryKey: value.outstanding_stream_key });
+      deriveEvidenceContext(context, { expectedEntryKey: value.outstanding_stream_key }));
     if (beforeProof.failures.length || afterProof.failures.length ||
         canonicalHash(beforeProof.frontier) !== canonicalHash(afterProof.frontier)) {
       failures.push("receiver_outstanding_transition_map_proof_mismatch");
@@ -3108,7 +3108,9 @@ export function validateEnumerableMapPathProof(proof, root, expectedClaim, expec
       const reference = pathRefs[index];
       const node = resolveObject(context.objectResolver, reference);
       if (!node || node.schema !== "cairn.enumerable_map_node.v0.1" || !exactRef(reference, node, context) ||
-          validateEnumerableMapNode(node, { ...context, expectedMapDomain: root.map_domain }).length) {
+          validateEnumerableMapNode(node, deriveEvidenceContext(context, {
+            expectedMapDomain: root.map_domain
+          })).length) {
         return { failures: unique([...failures, "enumerable_map_proof_node_mismatch"]), frontier };
       }
       const terminal = index === pathRefs.length - 1;
@@ -3192,12 +3194,11 @@ export function validateConnectionOutstandingIndexHead(value, context = {}) {
         (context.requireDependencySignatures === true && validateResolvedSignedObject(mapRoot, context).length)) {
       failures.push("connection_outstanding_map_ref_mismatch");
     } else {
-      failures.push(...validateEnumerableMapRoot(mapRoot, {
-        ...context,
+      failures.push(...validateEnumerableMapRoot(mapRoot, deriveEvidenceContext(context, {
         expectedMapDomain: "connection_outstanding_action",
         expectedMapKey: connectionOutstandingMapKey(value.outstanding_action_index_key),
         expectedConnectionStateId: value.connection_state_id
-      }).map((code) => `connection_outstanding_map_${code}`));
+      })).map((code) => `connection_outstanding_map_${code}`));
       if (value.outstanding_action_map_hash !== mapRoot.map_hash ||
           value.outstanding_action_count !== mapRoot.entry_count ||
           value.outstanding_action_root !== mapRoot.entries_root) {
@@ -3246,23 +3247,23 @@ export function validateConnectionOutstandingIndexTransitionReceipt(value, conte
       resolveObject(context.objectResolver, value.changed_entry_after_ref);
     const exactChangedEntry = (reference, entry) => entry?.schema === "cairn.connection_outstanding_action_entry.v0.1" &&
       exactRef(reference, entry, context) && entry.outstanding_action_key === value.changed_action_key &&
-      validateConnectionOutstandingActionEntry(entry, {
-        ...context, expectedConnectionStateId: after.connection_state_id
-      }).length === 0;
+      validateConnectionOutstandingActionEntry(entry, deriveEvidenceContext(context, {
+        expectedConnectionStateId: after.connection_state_id
+      })).length === 0;
     const beforeProof = value.before_change_proof === null || beforeMap === null ? null :
       validateEnumerableMapPathProof(value.before_change_proof, beforeMap,
         value.changed_entry_before_ref === null ? "nonmembership" : "membership",
         value.changed_entry_before_ref === null ? null : {
           entry_object_ref: value.changed_entry_before_ref,
           entry_object_hash: value.changed_entry_before_hash
-        }, { ...context, expectedEntryKey: value.changed_action_key });
+        }, deriveEvidenceContext(context, { expectedEntryKey: value.changed_action_key }));
     const afterProof = value.after_change_proof === null ? null :
       validateEnumerableMapPathProof(value.after_change_proof, afterMap,
         value.changed_entry_after_ref === null ? "nonmembership" : "membership",
         value.changed_entry_after_ref === null ? null : {
           entry_object_ref: value.changed_entry_after_ref,
           entry_object_hash: value.changed_entry_after_hash
-        }, { ...context, expectedEntryKey: value.changed_action_key });
+        }, deriveEvidenceContext(context, { expectedEntryKey: value.changed_action_key }));
     const proofsValid = beforeProof !== null && afterProof !== null &&
       beforeProof.failures.length === 0 && afterProof.failures.length === 0 &&
       canonicalHash(beforeProof.frontier) === canonicalHash(afterProof.frontier);
@@ -3317,9 +3318,10 @@ export function validateConnectionOutstandingIndexTransitionReceipt(value, conte
         actionTransition.execution_binding_set_hash === action?.execution_binding_set_hash &&
         actionBinding?.schema === "cairn.execution_binding_set.v0.1" &&
         exactRef(actionTransition.execution_binding_set_ref, actionBinding, context) &&
-        validateActionReceipt(actionTransition, beforeActionState, afterActionState, actionBinding, {
-          ...context, action
-        }).length === 0;
+        validateActionReceipt(
+          actionTransition, beforeActionState, afterActionState, actionBinding,
+          deriveEvidenceContext(context, { action })
+        ).length === 0;
       if (before === null || !mapsChanged || before.state !== after.state ||
           after.outstanding_action_count !== before.outstanding_action_count ||
           afterMap?.revision !== beforeMap?.revision + 1 || value.changed_action_key === null ||
@@ -3403,7 +3405,7 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
       (isHistoricalEvidence(context) ? context.historicalEvidenceAt : context.now) ?? null;
     const receiptContext = isHistoricalEvidence(context)
       ? historicalEvidenceContext(context, semanticInstant)
-      : { ...context, now: semanticInstant };
+      : deriveEvidenceContext(context, { now: semanticInstant });
     const resolveAtReceipt = (resolver, reference) =>
       resolveObject(resolver, reference, semanticInstant);
     const failures = validatePhase1Object(receipt, receiptContext);
@@ -3823,7 +3825,7 @@ export function validateCompartmentStateHead(value, context = {}) {
     for (const [reference, hash, count, entriesRoot, mapDomain] of manifestChecks) {
       const manifest = resolveObject(context.objectResolver, reference);
       const mapFailures = manifest ? validateEnumerableMapRoot(
-        manifest, { ...context, expectedMapDomain: mapDomain }
+        manifest, deriveEvidenceContext(context, { expectedMapDomain: mapDomain })
       ) : [];
       if (mapFailures.includes("phase1_external_accounting_leaf_unsupported")) {
         failures.push("phase1_external_accounting_leaf_unsupported");
@@ -4552,7 +4554,9 @@ export function validateLineageActivationReceipt(value, graph, context = {}) {
     if (!before || !after || before.state !== "provisional" || after.state !== "active") {
       return ["lineage_activation_context_invalid"];
     }
-    failures.push(...validateLineageStateTransition(before, after, { ...context, lineageCommitment: commitment })
+    failures.push(...validateLineageStateTransition(
+      before, after, deriveEvidenceContext(context, { lineageCommitment: commitment })
+    )
       .map((code) => `lineage_activation_transition_${code}`));
     if (value.next_activation_fence !== value.expected_activation_fence + 1) {
       failures.push("lineage_activation_receipt_fence_invalid");
@@ -4568,9 +4572,10 @@ export function validateLineageActivationReceipt(value, graph, context = {}) {
     failures.push(...validateLineageCommitment(commitment, context).map((code) => `lineage_activation_commitment_${code}`));
     failures.push(...validateBindingSet(binding, context).map((code) => `lineage_activation_binding_${code}`));
     failures.push(...validateActionRecord(preparedAction, context).map((code) => `lineage_activation_action_${code}`));
-    failures.push(...validateAuthorityReservation(reservation, preparedAction, binding, {
-      ...context, lineageCommitment: commitment, authority
-    }).map((code) => `lineage_activation_reservation_${code}`));
+    failures.push(...validateAuthorityReservation(
+      reservation, preparedAction, binding,
+      deriveEvidenceContext(context, { lineageCommitment: commitment, authority })
+    ).map((code) => `lineage_activation_reservation_${code}`));
     if (authority.schema === "cairn.agent_mandate.v0.3") {
       failures.push(...validateMandate(authority, context).map((code) => `lineage_activation_authority_${code}`));
       failures.push(...mandateBindingFailures(authority, commitment, binding, context)
@@ -4765,7 +4770,9 @@ export function validateBindingSet(value, context = {}) {
         if (!authorization || authorization.schema !== "cairn.agent_connection_authorization.v0.1" ||
             !exactRef(value.connection_authorization_ref, authorization, context) ||
             validateResolvedSignedObject(authorization, context).length ||
-            validateConnectionAuthorization(authorization, { ...context, runtimeBinding: runtime }).length ||
+            validateConnectionAuthorization(
+              authorization, deriveEvidenceContext(context, { runtimeBinding: runtime })
+            ).length ||
             authorization.principal_id !== value.principal_id ||
             !sameObjectRef(authorization.agent_runtime_binding_ref, value.agent_runtime_binding_ref)) {
           failures.push("binding_connection_authorization_graph_mismatch");
@@ -4773,10 +4780,10 @@ export function validateBindingSet(value, context = {}) {
         if (!connection || connection.schema !== "cairn.agent_connection_state_head.v0.1" ||
             !exactRef(value.connection_state_head_ref, connection, context) ||
             validateResolvedSignedObject(connection, context).length ||
-            validateConnectionStateHead(connection, {
-              ...context, runtimeBinding: runtime, connectionAuthorization: authorization,
+            validateConnectionStateHead(connection, deriveEvidenceContext(context, {
+              runtimeBinding: runtime, connectionAuthorization: authorization,
               requireCurrentConnection: !isHistoricalEvidence(context)
-            }).length || connection.state !== "active" || connection.principal_id !== value.principal_id ||
+            })).length || connection.state !== "active" || connection.principal_id !== value.principal_id ||
             !sameObjectRef(resolveCurrentHead(
               context, value.connection_state_head_ref, capturedHeadInstant
             ), value.connection_state_head_ref) ||
@@ -4941,7 +4948,9 @@ export function validateBindingSet(value, context = {}) {
       if (!current || current.schema !== "cairn.data_grant_state_head.v0.1" ||
           !exactRef(head.current_state_head_ref, current, context) ||
           validateResolvedSignedObject(current, context).length ||
-          validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||
+          validateDataGrantStateHead(
+            current, deriveEvidenceContext(context, { requireDependencySignatures: true })
+          ).length ||
           !sameObjectRef(resolveCurrentHead(
             context, head.current_state_head_ref, capturedHeadInstant
           ), head.current_state_head_ref) ||
@@ -5655,12 +5664,11 @@ function gateDependencyGraph(request, binding, context = {}) {
   const evidenceRefs = [];
   const roleStates = new Map();
   const evaluationAt = Date.parse(context.gateEvaluationTime ?? request?.requested_at);
-  const dependencyContext = {
-    ...context,
+  const dependencyContext = deriveEvidenceContext(context, {
     now: Number.isFinite(evaluationAt) ? new Date(evaluationAt).toISOString().replace(".000Z", "Z") : context.now,
     requireDependencySignatures: true,
     requireCurrentKeyEligibility: true
-  };
+  });
   for (const { role, reference } of gateDependencyRoleEntries(request, binding)) {
     const roleState = roleStates.get(role) ?? { authenticationFailures: [], eligible: true, evidenceRefs: [] };
     roleState.evidenceRefs.push(reference);
@@ -5770,10 +5778,10 @@ export function evaluateGateChecks(request, binding, authority, confirmation, co
     if (!reservation || !preparedAction ||
         validateResolvedSignedObject(reservation, context).length ||
         validateResolvedSignedObject(preparedAction, context).length ||
-        validateAuthorityReservation(reservation, preparedAction, binding, {
-          ...context, authority, lineageCommitment: context.lineageCommitment ??
+        validateAuthorityReservation(reservation, preparedAction, binding, deriveEvidenceContext(context, {
+          authority, lineageCommitment: context.lineageCommitment ??
             resolveObject(context.objectResolver, binding?.lineage_commitment_ref)
-        }).length) {
+        })).length) {
       reservationFailures.push("reservation_invalid");
     }
   }
@@ -5930,13 +5938,12 @@ export function validateGateRequest(value, binding, authority, confirmation, con
       value.requested_at;
     const liveContext = isHistoricalEvidence(context)
       ? historicalEvidenceContext(context, gateEvaluationTime)
-      : {
-          ...context,
+      : deriveEvidenceContext(context, {
           now: gateEvaluationTime,
           gateEvaluationTime,
           requireDependencySignatures: true,
           requireCurrentKeyEligibility: true
-        };
+        });
     const failures = validatePhase1Object(value, liveContext);
     if (failures.length) return failures;
     failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);
@@ -6033,15 +6040,14 @@ export function validateGateRequest(value, binding, authority, confirmation, con
 
 export function validateGateResult(value, context = {}) {
   try {
-    const evaluationBase = {
-      ...context,
+    const evaluationBase = deriveEvidenceContext(context, {
       now: value?.evaluated_at,
       gateEvaluationTime: value?.evaluated_at,
       confirmationEvaluationTime: value?.evaluated_at,
       authorityServiceTime: Date.parse(value?.evaluated_at),
       requireDependencySignatures: true,
       requireCurrentKeyEligibility: true
-    };
+    });
     const evaluationContext = isHistoricalEvidence(context)
       ? historicalEvidenceContext(evaluationBase, value?.evaluated_at)
       : evaluationBase;
@@ -6432,7 +6438,9 @@ export function validateActivityListResponse(request, response, context = {}) {
       if (stateFilter.size > 0 && !stateFilter.has(summary.state)) {
         failures.push("activity_list_state_filter_mismatch");
       }
-      if (context.principalId !== undefined && summary.principal_id !== context.principalId) {
+      if (typeof context.principalId !== "string" || context.principalId.length === 0) {
+        failures.push("activity_list_principal_scope_unresolved");
+      } else if (summary.principal_id !== context.principalId) {
         failures.push("activity_list_principal_scope_mismatch");
       }
       const itemContext = historicalEvidenceContext(

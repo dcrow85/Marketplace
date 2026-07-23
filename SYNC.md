@@ -59,26 +59,30 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **Exact freeze `dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373` is rejected
-  alongside `ebd10f4`, `26b7016`, `0b98fff`, `393b87f`, and `902abec`.
-  Round 41 found one P1 and seven material P2 classes in historical provenance,
-  signed snapshot anchoring, dependency closure, time separation, historical
-  BindingSet currentness, joint-peer recursion, activity-list semantics, and
-  evidence-snapshot bounds. All are accepted and remediated in the working
-  replacement. It passes 32/32 authored controls and kills 480/480 unique
-  exact-once direct mutants both locally and in a disposable lockfile-only
-  clean install; byte-identical artifacts were reproduced. The unchanged base
-  reproduced 83/83 controls and 75/75 mutants, and both dependency audits found
-  zero production vulnerabilities. Replacement freeze and three fresh exact-
-  commit reviews remain pending. Reference-service
-  construction is blocked.**
+  **Exact freeze `4d62c0fd2d46b5eb182706ea07ce94d3af97798f` is rejected
+  alongside `dd12269c`, `ebd10f4`, `26b7016`, `0b98fff`, `393b87f`, and
+  `902abec`. Round 42 reproduced every advertised control before finding three
+  material P2 gaps: nested DataGrant validation lost private historical
+  provenance through object spread, and `activity.list` did not require an
+  authenticated principal scope; current exact reads also admitted proofs
+  created after retrieval. All are accepted and remediated. The working
+  replacement passes 32/32 authored controls and kills all 483 unique exact-once
+  direct mutants locally and after a disposable clean install. The clean replay
+  also reproduces the unchanged 83/83 plus 75/75 proposal baseline, byte-identical
+  generated artifacts, and zero production dependency vulnerabilities.
+  Replacement freeze and three fresh exact-commit reviews remain pending.
+  Reference-service construction is blocked.**
   Historical mode and joint-peer recursion are now module-private object-
   identity capabilities that caller properties, symbols, and Proxies cannot
   forge. Proof keys resolve at signature time, eligibility at semantic time,
   and historical proof availability is bounded by the authenticated evidence
   snapshot. `ActionGet` uses signed `ExecutionActionView.assembled_at` and
   requires envelope `retrieved_at` equality. Historical BindingSet validation
-  checks captured connection and DataGrant heads at signed `created_at`.
+  checks captured connection and DataGrant heads at signed `created_at`; every
+  nested override uses the private provenance-preserving derivation path.
+  Missing activity principal scope now fails closed rather than weakening
+  cross-principal isolation. Current and historical exact reads both bind proof
+  availability to their authenticated retrieval snapshot.
   Exact outstanding/activity reads authenticate signed map entries and the
   bounded action/state/binding/lineage graph. `execution.activity.list` now has
   a required retrieval snapshot, deterministic cursor, principal/filter/page/
@@ -93,10 +97,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   `phase1_authenticated_resolution_unsupported` until a separately frozen
   rooted-proof profile exists.
   Replacement prose is pinned at
-  `423b023c7d274bb83c57dda5bb36a939080f6c90802c3b1b59b5662899a99f05`;
+  `246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b`;
   internal bundle
-  `sha-256:d025d89b8f2408de3f0470b51fe4e0604d7509280b37195abc4f949c015e071b`;
-  registry `sha-256:0b6c9919ef127b48a652e32967c94e33033b519639ce1062877f211f22144d0d`.
+  `sha-256:dd363875cfaf22f0e1c488787b681362c212a5086060eb1fdca7aca0731bac5b`;
+  registry `sha-256:cd49a2c6ae75caa91ee1e6daac0a9aa333bd72142a17fe75566bddbda490edea`.
   The next freeze will be identified by its containing commit, never by a self-
   referential future SHA. No executor, provider/network review, authorization
   redemption, outbox, payment, release, waiver, UI, catalogue, profile, offer,

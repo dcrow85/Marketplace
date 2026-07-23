@@ -3,7 +3,7 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "423b023c7d274bb83c57dda5bb36a939080f6c90802c3b1b59b5662899a99f05";',
+    search: 'export const SPEC_SHA256 = "246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b";',
     replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
@@ -1024,7 +1024,7 @@ export const PHASE1_MUTANTS = [
     id: "lineage-activation-transition-composition",
     finding: "lineage-activation-receipt-skips-head-transition-validation",
     file: "lib/validation.mjs",
-    search: '    failures.push(...validateLineageStateTransition(before, after, { ...context, lineageCommitment: commitment })\n      .map((code) => `lineage_activation_transition_${code}`));',
+    search: '    failures.push(...validateLineageStateTransition(\n      before, after, deriveEvidenceContext(context, { lineageCommitment: commitment })\n    )\n      .map((code) => `lineage_activation_transition_${code}`));',
     replace: '    failures.push(...[]);',
     test: "control receipts and lineage heads enforce closed state unions"
   },
@@ -2245,7 +2245,7 @@ export const PHASE1_MUTANTS = [
     id: "connection-update-full-action-receipt",
     finding: "connection-action-head-update-skips-full-action-receipt-validation",
     file: "lib/validation.mjs",
-    search: '        validateActionReceipt(actionTransition, beforeActionState, afterActionState, actionBinding, {\n          ...context, action\n        }).length === 0;',
+    search: '        validateActionReceipt(\n          actionTransition, beforeActionState, afterActionState, actionBinding,\n          deriveEvidenceContext(context, { action })\n        ).length === 0;',
     replace: '        true;',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
@@ -2381,9 +2381,17 @@ export const PHASE1_MUTANTS = [
     id: "binding-data-grant-head-signature",
     finding: "binding-accepts-unauthenticated-data-grant-head",
     file: "lib/validation.mjs",
-    search: '          validateResolvedSignedObject(current, context).length ||\n          validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||',
-    replace: '          validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||',
+    search: '          validateResolvedSignedObject(current, context).length ||\n          validateDataGrantStateHead(\n            current, deriveEvidenceContext(context, { requireDependencySignatures: true })\n          ).length ||',
+    replace: '          validateDataGrantStateHead(\n            current, deriveEvidenceContext(context, { requireDependencySignatures: true })\n          ).length ||',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-historical-data-grant-provenance",
+    finding: "nested-validator-reconstructs-context-without-private-provenance",
+    file: "lib/validation.mjs",
+    search: '          validateDataGrantStateHead(\n            current, deriveEvidenceContext(context, { requireDependencySignatures: true })\n          ).length ||',
+    replace: '          validateDataGrantStateHead(\n            current, { ...context, requireDependencySignatures: true }\n          ).length ||',
+    test: "Phase 1 pins the fixed prose and byte-stable proposal dependencies"
   },
   {
     id: "binding-runtime-signature",
@@ -2397,8 +2405,8 @@ export const PHASE1_MUTANTS = [
     id: "binding-connection-authorization-signature",
     finding: "binding-accepts-unauthenticated-connection-authorization",
     file: "lib/validation.mjs",
-    search: '            validateResolvedSignedObject(authorization, context).length ||\n            validateConnectionAuthorization(authorization, { ...context, runtimeBinding: runtime }).length ||',
-    replace: '            validateConnectionAuthorization(authorization, { ...context, runtimeBinding: runtime }).length ||',
+    search: '            validateResolvedSignedObject(authorization, context).length ||\n            validateConnectionAuthorization(\n              authorization, deriveEvidenceContext(context, { runtimeBinding: runtime })\n            ).length ||',
+    replace: '            validateConnectionAuthorization(\n              authorization, deriveEvidenceContext(context, { runtimeBinding: runtime })\n            ).length ||',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
   {
@@ -3007,7 +3015,7 @@ export const PHASE1_MUTANTS = [
     id: "control-head-map-validation",
     finding: "control-head-accepts-unvalidated-scoped-map",
     file: "lib/validation.mjs",
-    search: '        validateEnumerableMapRoot(map, {\n          ...context,\n          expectedMapDomain: "scoped_execution_control",\n          expectedMapKey: executionControlMapKey(\n            value.principal_id, value.authority_namespace, value.control_namespace_generation\n          )\n        }).length ||',
+    search: '        validateEnumerableMapRoot(map, deriveEvidenceContext(context, {\n          expectedMapDomain: "scoped_execution_control",\n          expectedMapKey: executionControlMapKey(\n            value.principal_id, value.authority_namespace, value.control_namespace_generation\n          )\n        })).length ||',
     replace: '        false ||',
     test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
   },
@@ -3615,9 +3623,17 @@ export const PHASE1_MUTANTS = [
     id: "exact-read-dependency-signatures-required",
     finding: "current-exact-read-trusts-unsigned-dependencies",
     file: "lib/validation.mjs",
-    search: '          now: responseObject.retrieved_at ?? context.now ?? null,\n          requireDependencySignatures: true',
-    replace: '          now: responseObject.retrieved_at ?? context.now ?? null,\n          requireDependencySignatures: false',
+    search: '          evidenceSnapshotAt: responseObject.retrieved_at ?? context.now ?? null,\n          requireDependencySignatures: true',
+    replace: '          evidenceSnapshotAt: responseObject.retrieved_at ?? context.now ?? null,\n          requireDependencySignatures: false',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "current-exact-read-evidence-snapshot",
+    finding: "current-exact-read-accepts-proof-created-after-retrieval",
+    file: "lib/validation.mjs",
+    search: '          now: responseObject.retrieved_at ?? context.now ?? null,\n          evidenceSnapshotAt: responseObject.retrieved_at ?? context.now ?? null,',
+    replace: '          now: responseObject.retrieved_at ?? context.now ?? null,\n          evidenceSnapshotAt: null,',
+    test: "exact reads authenticate returned bytes and reject stale mutable heads"
   },
   {
     id: "exact-read-evidence-snapshot-bound",
@@ -3631,7 +3647,7 @@ export const PHASE1_MUTANTS = [
     id: "historical-evidence-future-signature",
     finding: "historical-snapshot-contains-later-signature",
     file: "lib/validation.mjs",
-    search: '      if (isHistoricalEvidence(context) && Number.isFinite(evidenceSnapshotAt) &&\n          Number.isFinite(signedAt) && signedAt > evidenceSnapshotAt) {\n        failures.push("signature_from_future");\n      }',
+    search: '      if (Number.isFinite(evidenceSnapshotAt) && Number.isFinite(signedAt) &&\n          signedAt > evidenceSnapshotAt) {\n        failures.push("signature_from_future");\n      }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -3799,8 +3815,16 @@ export const PHASE1_MUTANTS = [
     id: "activity-list-principal-scope",
     finding: "activity-list-leaks-another-principal",
     file: "lib/validation.mjs",
-    search: '      if (context.principalId !== undefined && summary.principal_id !== context.principalId) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
-    replace: '',
+    search: '      } else if (summary.principal_id !== context.principalId) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
+    replace: '      } else if (false) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-principal-required",
+    finding: "activity-list-accepts-an-unauthenticated-principal-scope",
+    file: "lib/validation.mjs",
+    search: '      if (typeof context.principalId !== "string" || context.principalId.length === 0) {\n        failures.push("activity_list_principal_scope_unresolved");\n      }',
+    replace: '      if (false) {\n        failures.push("activity_list_principal_scope_unresolved");\n      }',
     test: "activity surfaces are privacy-minimized projections of exact action state"
   },
   {

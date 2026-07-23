@@ -12598,8 +12598,8 @@ equality is legal at the profile's one-second precision.
 
 This document authorizes no execution service beyond Phase 0. The Phase-1
 schema-only bundle requires a separately frozen machine bundle and mutation
-audit before any service implementation. The post-Round-41 replacement passes
-32/32 authored controls and registers 480 exact-once direct mutants locally;
+audit before any service implementation. The post-Round-42 replacement passes
+32/32 authored controls and registers 483 exact-once direct mutants locally;
 those results do not become closure until the full mutation and clean-install
 replays pass and are reproduced from the frozen containing commit by the fresh
 review gate. Phase 2 requires that Phase-1 closure plus proof that
@@ -12713,6 +12713,43 @@ those numbers are not a release claim until the complete mutation suite,
 disposable clean install, proposal-baseline replay, replacement containing
 commit, and three fresh exact-commit reviews all pass. Reference-service
 construction remains blocked.
+
+### 14.4 Phase-1 derived-context and principal-scope amendment after rejected freeze 4d62c0f
+
+Exact freeze
+`4d62c0fd2d46b5eb182706ea07ce94d3af97798f` is rejected history. Its
+Round-42 informed and blind exact-commit reviews reproduced every advertised
+package and baseline control, then found three material P2 correctness gaps.
+All are accepted and remediated in the replacement candidate:
+
+1. Private provenance survives every derived validator context. A validator
+   MUST derive overrides through the private provenance-preserving constructor;
+   object spread or any other caller-visible reconstruction MUST NOT be used to
+   enter a nested semantic validator. This applies to DataGrant predecessor
+   chains, connection authorization, maps and path proofs, lineage transitions,
+   receiver streams, and all future nested historical validation. A historical
+   BindingSet therefore rejects a captured DataGrant predecessor whose proof was
+   created after the authenticated evidence snapshot.
+2. `execution.activity.list` requires an authenticated principal scope in its
+   validation context. Missing, empty, or non-string scope fails as
+   `activity_list_principal_scope_unresolved`; a signed item for another
+   principal fails as `activity_list_principal_scope_mismatch`. The unconditional
+   Phase-1 authenticated-resolution sentinel remains present, so neither result
+   implies that a caller-supplied principal value authenticates access.
+3. Every exact read binds proof availability to its authenticated retrieval
+   snapshot, including operations that promise a current head. A current read
+   uses `retrieved_at` for live currentness and as `evidenceSnapshotAt`; a valid
+   object whose proof was created later fails `object_read_signature_from_future`.
+   This snapshot rule does not convert a current read into historical mode and
+   does not permit a historical resolver to replace live currentness.
+
+The three new weakenings have isolated direct mutation controls, bringing the
+candidate catalogue to 483 unique exact-once mutants. The structural boundary
+is unchanged: 29 schema-only read operations, no mutation or external effect,
+and no service or conformance authorization. This replacement again requires a
+complete local replay, disposable clean install, containing-commit freeze, and
+three fresh exact-commit reviews. Reference-service construction remains
+blocked.
 
 ## 15. Audit protocol
 

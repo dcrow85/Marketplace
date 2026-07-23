@@ -738,6 +738,9 @@ function compartmentStateFixture() {
 }
 
 test("Phase 1 pins the fixed prose and byte-stable proposal dependencies", async () => {
+  const validationSource = await readFile(new URL("../lib/validation.mjs", import.meta.url), "utf8");
+  assert.equal([...validationSource.matchAll(/\.\.\.context/g)].length, 2,
+    "nested validator contexts must use the private provenance-preserving derivation helper");
   assert.equal(sources.manifest.audited_prose_spec_sha256, SPEC_SHA256);
   assert.equal(sources.manifest.base_bundle_hash, BASE_BUNDLE_HASH);
   assert.equal(sources.manifest.base_operation_registry_hash, BASE_REGISTRY_HASH);
@@ -1128,6 +1131,24 @@ test("exact reads authenticate returned bytes and reject stale mutable heads", (
   assert.deepEqual(validateExactObjectRead(
     "execution.control.get", { ref: controlRef }, response, signedContext
   ), ["phase1_authenticated_resolution_unsupported"]);
+
+  const lateSignedControl = make("cairn.scoped_execution_control_leaf_state_head.v0.1", {
+    ...control,
+    authority_service_signature: {
+      ...control.authority_service_signature,
+      signed_at: "2026-07-22T10:00:01Z"
+    }
+  });
+  const lateControlRef = refFor(lateSignedControl);
+  const lateControlContext = signedReadContext(lateSignedControl, {
+    ...context,
+    currentHeadResolver: currentHeadResolverFor([lateControlRef])
+  }, lateSignedControl.principal_id);
+  assert.ok(validateExactObjectRead(
+    "execution.control.get", { ref: lateControlRef }, {
+      ref: lateControlRef, object: lateSignedControl, retrieved_at: "2026-07-22T10:00:00Z"
+    }, lateControlContext
+  ).includes("object_read_signature_from_future"));
 
   const corrupted = structuredClone(control);
   corrupted.authority_service_signature.value = "A".repeat(86);
@@ -6560,6 +6581,47 @@ test("binding sets separate direct principals from connected runtimes and bind t
   assert.ok(observedHistoricalGrantTimes.every(
     (instant) => instant === dataGrantBinding.created_at
   ));
+  const lateSignedGrantPredecessor = make("cairn.data_grant_state_head.v0.1", {
+    ...dataGrantState,
+    authority_service_signature: {
+      ...dataGrantState.authority_service_signature,
+      signed_at: "2026-07-22T12:00:01Z"
+    }
+  });
+  const latePredecessorGrantState = make("cairn.data_grant_state_head.v0.1", {
+    ...dataGrantState,
+    sequence: 1,
+    previous_state_hash: lateSignedGrantPredecessor.state_hash,
+    state: "active",
+    remaining_reads: dataGrantState.remaining_reads - 1,
+    updated_at: dataGrantBinding.created_at
+  });
+  const latePredecessorBinding = make("cairn.execution_binding_set.v0.1", {
+    ...dataGrantBinding,
+    data_grant_state_heads: [dataGrantHead(
+      dataGrantRef, refFor(latePredecessorGrantState),
+      latePredecessorGrantState.revocation_nonce, dataGrant
+    )]
+  });
+  const latePredecessorContext = signedReadContext([
+    latePredecessorBinding, runtime, authorization, connection, dataGrant,
+    lateSignedGrantPredecessor, latePredecessorGrantState
+  ], {
+    ...dataGrantContext,
+    objectResolver: new Map(dataGrantContext.objectResolver)
+      .set(refFor(lateSignedGrantPredecessor).object_hash, lateSignedGrantPredecessor)
+      .set(refFor(latePredecessorGrantState).object_hash, latePredecessorGrantState),
+    currentHeadHistoryResolver: currentHeadResolverFor([
+      refFor(connection), refFor(latePredecessorGrantState)
+    ]),
+    statePredecessorResolver: (reference) => sameObjectRef(
+      reference, refFor(lateSignedGrantPredecessor)
+    ) ? lateSignedGrantPredecessor : null
+  }, value.principal_id);
+  assert.ok(validateExactObjectRead(
+    "execution.binding_set.get", { ref: refFor(latePredecessorBinding) },
+    latePredecessorBinding, latePredecessorContext
+  ).includes("object_read_binding_data_grant_current_head_mismatch"));
   const foreignGrantRef = { ...dataGrantRef, object_id: "foreign-data-grant" };
   const crossGrantState = make("cairn.data_grant_state_head.v0.1", {
     ...dataGrantState, data_grant_ref: foreignGrantRef
@@ -9319,6 +9381,11 @@ test("activity surfaces are privacy-minimized projections of exact action state"
     activityListRequest, activityListResponse,
     { ...activityListContext, principalId: "did:example:foreign-principal" }
   ).includes("activity_list_principal_scope_mismatch"));
+  const { principalId: omittedPrincipalId, ...activityListWithoutPrincipal } = activityListContext;
+  assert.equal(omittedPrincipalId, action.principal_id);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse, activityListWithoutPrincipal
+  ).includes("activity_list_principal_scope_unresolved"));
   assert.ok(validateActivityListResponse(
     activityListRequest, activityListResponse,
     { ...activityListContext, currentHeadHistoryResolver: null }
