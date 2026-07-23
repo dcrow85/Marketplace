@@ -64,6 +64,26 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service ninth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `d945532cdbbebf092546587085a9bbec119b7423`
+  is not a pass. All three clean-archive blind auditors rejected it. The
+  response-schema rollback is now validator-caused and exact, and the global
+  sequence inventory is complete, but the dependency/root fixture still
+  hand-authors an incomplete set rather than deriving every runtime-binding,
+  validation-key, nonce, idempotency, object, URI, ACL, grant, and grant-state
+  access from the frozen callback. The composite transaction also commits only
+  a reduced unsigned observation while a different signed replay/history is
+  built beside it, and the six foreign interleaving rows are unsigned invalid
+  stubs. The closed schema additionally admits
+  `accepted_failure + replayed:true`, and validator identity is not yet bound
+  strongly enough to distinguish the registered response contract from a
+  substitute. Remediation makes the probe the sole producer of observed
+  dependencies and durable signed observations/history, makes the checker an
+  independent consumer, validates every foreign row through the same verifier,
+  closes the replay/outcome matrix, and adds direct controls for untracked
+  access and validator substitution. `protocol/` and `mockups/` remain
+  untouched; no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service eighth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `b0692e228db1632a493fd4d23be16fb2ef79a4e3`
   is not a pass despite one blind acceptance. A second blind auditor found two

@@ -1181,6 +1181,7 @@
                     "type": "string",
                     "pattern": "^[a-z][a-z0-9_]{1,95}$"
                   },
+                  "replayed": { "const": false },
                   "response_schema": { "type": "null" },
                   "returned_refs": { "type": "array", "maxItems": 0 },
                   "grant_effects": { "type": "array", "maxItems": 0 }
@@ -1194,6 +1195,7 @@
               },
               "then": {
                 "properties": {
+                  "outcome": { "const": "success" },
                   "nonce_disposition": { "const": "replay_fresh_nonce" },
                   "grant_effects": { "type": "array", "maxItems": 0 },
                   "idempotency": {

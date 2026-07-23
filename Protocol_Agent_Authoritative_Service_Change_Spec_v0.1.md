@@ -1,8 +1,8 @@
 # Cairn authoritative store and signed service-observation change spec v0.1
 
-**Status:** three cold-audit rounds rejected frozen candidates `b86ceae`,
-`8c06892`, and `3394747`; every P1/material-P2 finding is accepted for
-remediation. This revised local design is not independently re-audited,
+**Status:** four cold-audit rounds rejected frozen candidates `b86ceae`,
+`8c06892`, `3394747`, and `d945532`; every P1/material-P2 finding is accepted
+for remediation. This revised local design is not independently re-audited,
 implemented, or conforming.
 
 **Depends on:** the independently audited proposal-only BYO checkpoint at
@@ -733,7 +733,7 @@ Phase A freezes one machine-readable external contract:
 path:
   simulations/authoritative-service/authoritative-service.schema.json
 canonical JCS hash:
-  sha-256:68f6834019e0de9f693b550221f158e44c40c33c7894fa95ee7c86096fe13e55
+  sha-256:3e91dd55310f35703a94d88b7bd75d226c72dded81bdb16dfd7a072a25470980
 ```
 
 Its nine independently addressable entry points are:
@@ -785,7 +785,21 @@ exact pre/post-draft snapshots and `{commit,value}` before a final composite
 commit decision. The callback receives only the frozen store shape; rich
 idempotency metadata, exact object-byte/identity truth, owner projections,
 global and owner histories, observation material, and persistence counters stay
-wrapper-owned.
+wrapper-owned. The interposer records every callback access to the frozen Maps,
+Sets, and validation-key resolver with ordered presence and value hashes. That
+one trace is the sole source for the transaction's dependency rows and aliases:
+an unsupported access, unconsumed access, missing required store/index surface,
+or noncontiguous trace fails the transaction rather than allowing the wrapper
+to hand-author an incomplete dependency set.
+
+The same wrapper transaction constructs, signs, and persists the actual origin
+and replay observations, dependency and scope commits, operational versions,
+repository ACL rows, validator binding, envelope index, and rich idempotency
+origin link. The checker consumes those exact durable artifacts; it does not
+fabricate a second signed history from a reduced probe result. Every unrelated
+commit used to test global interleaving is itself a schema-valid, self-hashed,
+service-key-signed observation with a complete repository row, dependency
+commit, scope mapping, and envelope index.
 
 The probe executes twelve independent real `intent.put` transactions after an
 actual committed origin: one successful fresh-envelope replay, one
@@ -805,11 +819,16 @@ The grant case captures the actual post-staging
 response-schema fault, the actual frozen callback first returns its valid
 result; the post-callback fault hook deletes the required `ref` from the exact
 boundary value, the real registry validator rejects that value, and the outer
-transaction preserves that malformed raw kernel result while rolling back. The
-checker validates every local-result branch and proves the twelve callback
-traces are distinct. The deterministic composite
+transaction preserves that malformed raw kernel result while rolling back.
+That validator is bound to the exact frozen bundle hash, registered operation
+contract, canonical source-schema bytes, and source-schema hash. Direct boundary
+controls accept the registered body and reject a missing `ref`, missing
+`receipt_ref`, extra property, and malformed nested object ref, preventing a
+weaker substitute validator from satisfying the control. The checker validates
+every local-result branch and proves the twelve callback traces are distinct.
+The deterministic composite
 report is pinned at
-`sha-256:1b8e9671e5036877fe18780319cffd70a8a86ae44585647342406e27f953bafa`;
+`sha-256:edcfafa01017260a9a29c2b3b48d71f2dcccf0fd4b64539f734fc8cd0d35022f`;
 fresh process executions must reproduce it exactly.
 
 Origin verification begins from the actual signed envelope, authenticated
@@ -1085,7 +1104,8 @@ The schema fixes that ordered `not_claiming` set exactly; additions, omissions,
 reordering, or generic substitutions fail.
 
 The machine schema also closes the replay tuple, not merely its individual
-field types. `replayed:true` requires
+field types. `accepted_failure` requires `replayed:false`; `replayed:true`
+requires `outcome:success`,
 `nonce_disposition:replay_fresh_nonce`, zero grant effects,
 `idempotency.disposition:replayed`, a non-null structural-key commitment,
 original result hash, original observation ref, and original owner scope
@@ -1391,7 +1411,7 @@ The first executable drill MUST include at least these independent controls:
 | AS-27 | duplicate, partial, forked, restarted, or concurrent genesis import | one sealed exact genesis or complete rollback |
 | AS-28 | state-root row omitted/reordered/duplicated/history-altered | recomputed historical root rejects |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
-| AS-30 | corrupt replay object/ACL, malformed response, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; the malformed boundary value itself fails the real registry response validator and becomes the exact preserved local kernel result; corrupt/unreconstructible and wrapper failures retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
+| AS-30 | corrupt replay object/ACL, malformed response, substitute/weakened response validator, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; the malformed boundary value itself fails the validator bound to the frozen bundle, registered operation, and canonical source schema, with valid/missing-field/extra-field/malformed-ref controls proving its boundary; that value becomes the exact preserved local kernel result; corrupt/unreconstructible and wrapper failures retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
 | AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval, arbitrary fractional boundary error, or altered/unsorted key-profile chain | independently re-bound schema/profile/observation trust probes reject while exact lower-bound and pre-expiry fractional positives pass |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
 | AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
@@ -1399,11 +1419,11 @@ The first executable drill MUST include at least these independent controls:
 | AS-35 | header/caller/raw namespace/tenant changes across two operations or raw namespace appears in an observation/result | stable receiver binding is enforced; changed commitment rejects; raw value never serializes |
 | AS-36 | two previously unseen owners perform their first operations concurrently after genesis | both use before `0`/after `1` in separate owner chains; no owner sequence-zero row or cross-owner ancestry appears |
 | AS-37 | every row of the closed outcome/commit matrix is fault-injected, including local-kernel versus HTTP-failure hashing | disposition, exact canonical kernel-result hash, observation presence, nonce, sequence, object, idempotency, and grant deltas match §7/§8.1 exactly |
-| AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, changed row column, wrong self-hash/signature exclusion, outcome swap, kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
-| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash, misclassifies singleton `["index"]`, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; positive and borrowed/false-absence negatives cover all eleven admitted aliases, every base row is validated through its table-specific projection, and the singleton base-key positive passes |
+| AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, `accepted_failure` claiming replay, replay claiming a non-success outcome, changed row column, wrong self-hash/signature exclusion, outcome swap, kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
+| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash, misclassifies singleton `["index"]`, or any required frozen callback Map/Set/resolver access is omitted, unsupported, or left unconsumed | the ordered callback trace is the sole dependency producer; exact origin/replay store-and-index surfaces, nonce absence/insertion, grant read/update, idempotency absence/insertion or replay-read, validation keys, runtime binding, and joined object/ACL/URI accesses are pinned; schema/semantic manifest/root verification changes or the transaction fails |
 | AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
 | AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/identity/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict remains the frozen `commit:false` outcome; each result/identity/ACL corruption captures its own actual frozen `commit:true` outcome but the outer integrity decision rolls back the staged nonce and sidecar; no raw result is rewritten |
-| AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; the same exact-history verifier accepts a complete six-foreign-commit interleaving without changing owner projection/root bytes, but rejects any missing intermediate global commit or false owner-to-global mapping |
+| AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; dependency artifacts contain neither raw secret; the same exact-history verifier accepts a complete six-foreign-commit interleaving made only of independently valid signed observations and complete commits without changing owner projection/root bytes, but rejects any invalid foreign signature/artifact, missing intermediate global commit, or false owner-to-global mapping |
 
 Every accepted audit finding receives either a code/schema/test remediation or a
 documented rejection/deferral. No finding may be closed only by prose if a direct
