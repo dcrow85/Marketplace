@@ -64,6 +64,23 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive]` 2026-07-23 · Codex —
+  **The BYO replacement checkpoint is independently closed at exact commit
+  `5216424`.** Two final cold audits returned PASS with zero
+  P0/P1/material-P2 findings; a third conformance audit passed the identical
+  executable blobs at parent `e406987`. Clean archives reproduced 3/3 focused
+  tests, 18/18 direct probes, raw report
+  `7f6eee25b27a8274a79fa82e182493597ab759242e21fcfab653baa428d32d12`,
+  canonical report
+  `sha-256:93823dcb3bb650523e89e78df9d6f9597502541beabcb41ab13da2a8638b3632`,
+  102/102 kernel tests, and 139/139 killed mutants. The reviewed `protocol/`
+  tree remains exactly `85dd8250adb20e6e954b914e11bfd13b9d9d9896`. This
+  proves only the bounded local proposal-only replacement checkpoint: no
+  production service, authenticated transport, continuation delivery,
+  authority, execution, payment, settlement, or external effect. The next seam
+  is authoritative atomic stores plus signed service observations; no push or
+  deploy occurred.
+
 - `[BLOCKING: BYO replacement boundary inventory]` 2026-07-23 · Codex —
   Third cold audit of exact commit `e406987` produced two independent PASS
   verdicts with zero P0/P1/material P2 findings and one reproducibility-lane P2

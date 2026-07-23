@@ -1,8 +1,7 @@
 # Cairn BYO-agent replacement drill v0.1
 
-**Status:** three cold-audit rounds found and remediated material P2 evidence
-and release-boundary gaps; the next local candidate awaits repeat independent
-verification
+**Status:** independently verified local proposal-only checkpoint at exact commit
+`5216424cf3790b1d6389b02d292c603492f17f8b`; not production conformance
 
 **Kernel under test:** `cairn-proposal-foundation-v0.1`
 
@@ -129,7 +128,11 @@ node --test simulations/protocol_byo_agent_replacement.test.mjs
 ```
 
 The JSON form is the machine-readable evidence. A passing local report is still
-only a candidate until a separate verifier audits a frozen commit.
+only a candidate until a separate verifier audits a frozen commit. Two final
+independent audits passed exact checkpoint `5216424` with zero
+P0/P1/material-P2 findings. A third independent conformance audit passed the
+same executable blobs at parent `e406987`; `5216424` changed only this document
+and `SYNC.md`.
 
 ## Next threshold
 
