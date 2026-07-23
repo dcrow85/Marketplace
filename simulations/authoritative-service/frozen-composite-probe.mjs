@@ -22,6 +22,10 @@ import {
   verifyObjectBindings
 } from "../../protocol/lib/core.mjs";
 import { createAjv } from "../../protocol/lib/schemas.mjs";
+import {
+  operationFingerprint,
+  validateSignedObject
+} from "../../protocol/lib/validation.mjs";
 import { loadReferenceFoundation } from "../../protocol/reference-service/service.mjs";
 import { MemoryReferenceStores } from "../../protocol/reference-service/state.mjs";
 
@@ -635,7 +639,8 @@ function verifyIdempotencyEnvelopeBinding(
       commitment &&
     richRow.authority_namespace ===
       receiverAuthentication.authority_namespace_raw &&
-    richRow.idempotency_key === envelope.idempotency_key;
+    richRow.idempotency_key === envelope.idempotency_key &&
+    richRow.operation_fingerprint === envelope.operation_fingerprint;
 }
 
 function projectionKey(projection) {
@@ -806,6 +811,34 @@ function queryCommitment(contract, context, hostContextHash) {
   });
 }
 
+function requestOperationFingerprintMatches(envelope) {
+  try {
+    return envelope.operation_fingerprint === operationFingerprint(envelope);
+  } catch {
+    return false;
+  }
+}
+
+function deriveObservationOwner(observation) {
+  const principalId = observation.request.principal_id;
+  if (principalId !== null) {
+    return {
+      owner_kind: "principal",
+      owner_id: principalId
+    };
+  }
+  if (![
+    "capabilities.get",
+    "runtime_binding.get"
+  ].includes(observation.request.operation_contract.operation)) {
+    return null;
+  }
+  return {
+    owner_kind: "actor",
+    owner_id: observation.request.actor_id
+  };
+}
+
 function receiverStableBinding(record) {
   return canonicalText([
     record.account_tenant_commitment,
@@ -826,7 +859,7 @@ function receiverAuthenticationFitsHistory(sidecar, candidate) {
     if (
       record.account_tenant_commitment ===
         candidate.account_tenant_commitment &&
-      record.authority_namespace_raw !== candidate.authority_namespace_raw
+      receiverStableBinding(record) !== receiverStableBinding(candidate)
     ) {
       return false;
     }
@@ -838,6 +871,29 @@ function receiverAuthenticationFitsHistory(sidecar, candidate) {
     }
   }
   return true;
+}
+
+function signedObjectKeyResolver(currentVersions) {
+  return new Map(
+    [...currentVersions.values()]
+      .filter(({ table }) => table === "validation_keys")
+      .map(({ columns }) => [columns.key_id, columns])
+  );
+}
+
+function verifySignedObjectWitness(
+  value,
+  currentVersions,
+  observedAt
+) {
+  return validateSignedObject(value, {
+    ajv: FROZEN_FOUNDATION.ajv,
+    schemasByObjectId: FROZEN_FOUNDATION.schemasByObjectId,
+    keyResolver: signedObjectKeyResolver(currentVersions),
+    now: observedAt,
+    historicalKeyProof: true,
+    historicalObjectLifecycle: true
+  }).length === 0;
 }
 
 function registeredResponseValidatorBinding(foundation, operation) {
@@ -919,6 +975,17 @@ export function verifyCompositeHistory(sidecar) {
       return false;
     }
     if (
+      !Array.isArray(sidecar.dependency_rows) ||
+      sidecar.dependency_rows.some(
+        ({ global_sequence: sequence }) =>
+          !Number.isSafeInteger(sequence) ||
+          sequence < 1 ||
+          sequence > sidecar.global_sequence
+      )
+    ) {
+      return false;
+    }
+    if (
       !sidecar.operational_versions.every((version) =>
         verifyOperationalVersionRecord(version, sidecar.global_sequence)
       ) ||
@@ -942,7 +1009,7 @@ export function verifyCompositeHistory(sidecar) {
       ])
     );
     if (new Set(versionKeys).size !== versionKeys.length) return false;
-    const receiverNamespaceByAccount = new Map();
+    const receiverBindingByAccount = new Map();
     const receiverBindingByHandle = new Map();
     for (
       let globalSequence = 0;
@@ -1038,6 +1105,7 @@ export function verifyCompositeHistory(sidecar) {
         receiverAuthentication === undefined
           ? null
           : frozenAuthenticationFromReceiver(receiverAuthentication);
+      const derivedOwner = deriveObservationOwner(observation);
       if (
         !durableObservation ||
         !validationBinding ||
@@ -1060,6 +1128,7 @@ export function verifyCompositeHistory(sidecar) {
         requestEnvelope.message_id !== observation.request.message_id ||
         requestEnvelope.message_type !==
           observation.request.operation_contract.operation ||
+        !requestOperationFingerprintMatches(requestEnvelope) ||
         requestEnvelope.body_hash !== observation.request.body_hash ||
         canonicalText(requestEnvelope.subject_refs) !==
           canonicalText(observation.request.subject_refs) ||
@@ -1136,6 +1205,9 @@ export function verifyCompositeHistory(sidecar) {
         repositoryRow.principal_id !== observation.request.principal_id ||
         repositoryRow.owner_kind !== observation.access.owner_kind ||
         repositoryRow.owner_id !== observation.access.owner_id ||
+        !derivedOwner ||
+        observation.access.owner_kind !== derivedOwner.owner_kind ||
+        observation.access.owner_id !== derivedOwner.owner_id ||
         repositoryRow.visibility !== observation.access.visibility ||
         repositoryRow.scope_sequence !==
           observation.transaction.scope_sequence_after ||
@@ -1158,28 +1230,17 @@ export function verifyCompositeHistory(sidecar) {
       ) {
         return false;
       }
-      const priorNamespace = receiverNamespaceByAccount.get(
+      const receiverBinding = receiverStableBinding(receiverAuthentication);
+      const priorAccountBinding = receiverBindingByAccount.get(
         receiverAuthentication.account_tenant_commitment
       );
-      const receiverBinding = canonicalText([
-        receiverAuthentication.account_tenant_commitment,
-        receiverAuthentication.principal_id,
-        receiverAuthentication.actor_id,
-        receiverAuthentication.runtime_key_id,
-        receiverAuthentication.authority_namespace_raw,
-        receiverAuthentication.trust_profile_id,
-        receiverAuthentication.trust_profile_hash,
-        receiverAuthentication.authentication_evidence_commitment,
-        receiverAuthentication.assertion_level
-      ]);
       const priorBinding = receiverBindingByHandle.get(
         receiverAuthentication.authentication_handle
       );
       if (
         (
-          priorNamespace !== undefined &&
-          priorNamespace !==
-            receiverAuthentication.authority_namespace_raw
+          priorAccountBinding !== undefined &&
+          priorAccountBinding !== receiverBinding
         ) ||
         (
           priorBinding !== undefined &&
@@ -1188,9 +1249,9 @@ export function verifyCompositeHistory(sidecar) {
       ) {
         return false;
       }
-      receiverNamespaceByAccount.set(
+      receiverBindingByAccount.set(
         receiverAuthentication.account_tenant_commitment,
-        receiverAuthentication.authority_namespace_raw
+        receiverBinding
       );
       receiverBindingByHandle.set(
         receiverAuthentication.authentication_handle,
@@ -2596,6 +2657,11 @@ function verifyAccessTraceValueBindings({
         if (
           !runtimeProjection ||
           !schema ||
+          !verifySignedObjectWitness(
+            value,
+            currentVersions,
+            observation.observed_at
+          ) ||
           canonicalText(objectRefFor(value, schema)) !==
             canonicalText(runtimeProjection.columns.ref)
         ) {
@@ -2622,6 +2688,11 @@ function verifyAccessTraceValueBindings({
         if (
           !grantProjection ||
           !schema ||
+          !verifySignedObjectWitness(
+            value,
+            currentVersions,
+            observation.observed_at
+          ) ||
           canonicalText(objectRefFor(value, schema)) !==
             canonicalText(grantProjection.columns.ref)
         ) {
@@ -2667,6 +2738,11 @@ function verifyAccessTraceValueBindings({
         if (
           !resultProjection ||
           !schema ||
+          !verifySignedObjectWitness(
+            value,
+            currentVersions,
+            observation.observed_at
+          ) ||
           canonicalText(objectRefFor(value, schema)) !==
             canonicalText(resultProjection.columns.ref)
         ) {
@@ -4685,6 +4761,60 @@ export async function runCompositeProbe() {
         trace.events_commitment;
     });
   };
+  {
+    const changedEnvelope = structuredClone(origin.envelope);
+    changedEnvelope.operation_fingerprint = `sha-256:${"6".repeat(64)}`;
+    const rejected =
+      requestOperationFingerprintMatches(changedEnvelope) === false;
+    assert.equal(rejected, true, "request_operation_fingerprint");
+    signedHistoryMutationControls.request_operation_fingerprint = rejected;
+  }
+  {
+    const originObservation = JSON.parse(
+      origin.stores.sidecar.observation_repository[0]
+        .canonical_observation_bytes
+    );
+    const changedObservation = structuredClone(originObservation);
+    changedObservation.access.owner_kind = "actor";
+    changedObservation.access.owner_id =
+      changedObservation.request.actor_id;
+    const derivedOwner = deriveObservationOwner(changedObservation);
+    const rejected = derivedOwner === null ||
+      changedObservation.access.owner_kind !== derivedOwner.owner_kind ||
+      changedObservation.access.owner_id !== derivedOwner.owner_id;
+    assert.equal(rejected, true, "owner_derivation_actor_for_principal");
+    signedHistoryMutationControls.owner_derivation_actor_for_principal =
+      rejected;
+  }
+  {
+    const changedObject = structuredClone(origin.originObject.value);
+    changedObject.constraints.geography = ["substituted-region"];
+    const currentVersions = new Map(
+      origin.stores.sidecar.current_projections.map((projection) => [
+        projectionKey(projection),
+        projection
+      ])
+    );
+    const rejected = verifySignedObjectWitness(
+      changedObject,
+      currentVersions,
+      COMPOSITE_FIXTURE.now
+    ) === false;
+    assert.equal(rejected, true, "trace_signed_object_binding");
+    signedHistoryMutationControls.trace_signed_object_binding = rejected;
+  }
+  for (const [caseId, sequence] of [
+    ["dependency_sequence_negative", -1],
+    ["dependency_sequence_zero", 0],
+    ["dependency_sequence_future", origin.stores.sidecar.global_sequence + 1]
+  ]) {
+    rejectHistoryMutation(caseId, origin.stores.sidecar, (sidecar) => {
+      sidecar.dependency_rows.push({
+        ...structuredClone(sidecar.dependency_rows[0]),
+        global_sequence: sequence
+      });
+    });
+  }
   rejectHistoryMutation(
     "request_envelope_signature_value",
     origin.stores.sidecar,
@@ -4767,6 +4897,43 @@ export async function runCompositeProbe() {
       (sidecar) => rewriteOriginTrace(sidecar, mutate)
     );
   }
+  rejectHistoryMutation(
+    "trace_signed_object_binding_history",
+    origin.stores.sidecar,
+    (sidecar) => {
+      const trace = sidecar.access_traces.find(
+        ({ global_sequence: sequence }) => sequence === 1
+      );
+      assert.ok(trace);
+      const write = trace.events.find(
+        (event) =>
+          event.store === "objectsByRef" &&
+          event.method === "set" &&
+          event.after_present
+      );
+      assert.ok(write?.after_value?.constraints);
+      write.after_value.constraints.geography = ["substituted-region"];
+      write.after_hash = canonicalHash(write.after_value);
+      trace.events_commitment = canonicalHash(trace.events);
+      const observation = replaceSignedObservation(
+        sidecar,
+        1,
+        (draft) => {
+          draft.transaction.access_trace_commitment =
+            trace.events_commitment;
+        }
+      );
+      const richRow = sidecar.rich_idempotency_rows.find(
+        ({ origin_global_commit_sequence: sequence }) => sequence === 1
+      );
+      assert.ok(richRow);
+      richRow.origin_observation_ref = {
+        artifact_schema: observation.schema,
+        artifact_id: observation.observation_id,
+        artifact_hash: observation.observation_hash
+      };
+    }
+  );
   rejectHistoryMutation(
     "trace_write_before_value_and_hash_substitution",
     multiOriginSidecar,
@@ -5649,6 +5816,59 @@ export async function runCompositeProbe() {
     receiverStabilityBaselineSidecar
   );
 
+  const receiverContextEnvelope =
+    receiverStabilityScenario.helpers.freshTransport(
+      receiverStabilityScenario.envelope,
+      60
+    );
+  const receiverContextRecord = receiverAuthenticationRecord(
+    receiverStabilityScenario.authentication,
+    receiverContextEnvelope
+  );
+  receiverContextRecord.authentication_handle =
+    `${receiverContextRecord.authentication_handle}|rotated`;
+  receiverContextRecord.trust_profile_id =
+    "cairn:fixture:rotated-host-auth";
+  receiverContextRecord.trust_profile_hash = canonicalHash([
+    "cairn-composite-rotated-host-trust-profile-v0.1"
+  ]);
+  assert.equal(
+    validateReceiverAuthenticationRecord(receiverContextRecord),
+    true
+  );
+  const receiverContextAuthentication =
+    frozenAuthenticationFromReceiver(receiverContextRecord);
+  receiverStabilityScenario.stores.setContext({
+    case_id: "receiver_context_stability_preflight",
+    phase: "replay",
+    envelope: receiverContextEnvelope,
+    authentication: receiverContextAuthentication,
+    receiver_authentication: receiverContextRecord
+  });
+  const receiverContextRaw =
+    receiverStabilityScenario.harness.service.handleEnvelope(
+      receiverContextEnvelope,
+      receiverContextAuthentication
+    );
+  const receiverContextTrace =
+    receiverStabilityScenario.stores.traces.at(-1);
+  assert.equal(
+    receiverContextRaw.code,
+    "receiver_authentication_invalid"
+  );
+  assert.equal(receiverContextTrace.callback_commit, null);
+  assert.equal(receiverContextTrace.callback_value, null);
+  assert.deepEqual(receiverContextTrace.callback_access_trace, []);
+  assert.equal(receiverContextTrace.wrapper_failure.stage, "preflight");
+  assert.deepEqual(
+    receiverContextTrace.kernel_after,
+    receiverStabilityBaselineKernel
+  );
+  assert.deepEqual(
+    receiverContextTrace.sidecar_after,
+    receiverStabilityBaselineSidecar
+  );
+
   const preflightFaults = {};
   for (const kind of [
     "rich_row_corrupt",
@@ -5796,6 +6016,88 @@ export async function runCompositeProbe() {
     ).scope_state_commitment_after,
     isolatedOriginRoot
   );
+  rejectHistoryMutation(
+    "owner_derivation_history",
+    interleavedScenario.stores.sidecar,
+    (sidecar) => {
+      const globalSequence = 2;
+      const repositoryRow = sidecar.observation_repository.find(
+        ({ global_commit_sequence: sequence }) =>
+          sequence === globalSequence
+      );
+      assert.ok(repositoryRow);
+      const originalObservation = JSON.parse(
+        repositoryRow.canonical_observation_bytes
+      );
+      const actorId = originalObservation.request.actor_id;
+      const currentVersions = new Map();
+      for (const version of sidecar.operational_versions
+        .filter(
+          ({ valid_from_global_sequence: sequence }) =>
+            sequence <= globalSequence
+        )
+        .sort(
+          (left, right) =>
+            left.valid_from_global_sequence -
+              right.valid_from_global_sequence ||
+            compareUtf8(
+              canonicalText([left.table, left.structural_key]),
+              canonicalText([right.table, right.structural_key])
+            )
+        )) {
+        currentVersions.set(
+          canonicalText([version.table, version.structural_key]),
+          JSON.parse(version.canonical_row_bytes)
+        );
+      }
+      const dependencyKeys = new Set(
+        sidecar.dependency_rows
+          .filter(
+            ({ global_sequence: sequence }) => sequence === globalSequence
+          )
+          .map(({ entry_key: entryKey }) => entryKey)
+          .filter((entryKey) => currentVersions.has(entryKey))
+      );
+      const ownerProjections = [...currentVersions.entries()]
+        .filter(([entryKey]) => dependencyKeys.has(entryKey))
+        .map(([, projection]) => projection)
+        .filter((projection) => {
+          const projectionOwner =
+            projection.columns.owner_id ?? projection.columns.principal_id;
+          return projectionOwner === undefined ||
+            projectionOwner === actorId;
+        });
+      const actorRoot = ownerScopeCommitment(
+        "actor",
+        actorId,
+        originalObservation.transaction.scope_sequence_after,
+        ownerProjections
+      );
+      replaceSignedObservation(sidecar, globalSequence, (observation) => {
+        observation.access.owner_kind = "actor";
+        observation.access.owner_id = actorId;
+        observation.transaction.scope_state_commitment_after = actorRoot;
+      });
+      const scopeCommit = sidecar.scope_commits.find(
+        ({ global_sequence: sequence }) => sequence === globalSequence
+      );
+      const snapshot = sidecar.operational_snapshots.find(
+        ({ global_sequence: sequence }) => sequence === globalSequence
+      );
+      assert.ok(scopeCommit);
+      assert.ok(snapshot);
+      scopeCommit.owner_kind = "actor";
+      scopeCommit.owner_id = actorId;
+      scopeCommit.scope_state_commitment_after = actorRoot;
+      snapshot.scope_state_commitment = actorRoot;
+      delete sidecar.owner_sequences[ownerSequenceKey(
+        "principal",
+        originalObservation.request.principal_id
+      )];
+      sidecar.owner_sequences[ownerSequenceKey("actor", actorId)] =
+        originalObservation.transaction.scope_sequence_after;
+    }
+  );
   const foreignHistoryMutationControls = {};
   for (const [caseId, mutate] of [
     ["foreign_owner_counter", (sidecar) => {
@@ -5894,6 +6196,10 @@ export async function runCompositeProbe() {
       raw: structuredClone(receiverStabilityRaw),
       trace: receiverStabilityTrace
     },
+    receiver_context_stability_failure: {
+      raw: structuredClone(receiverContextRaw),
+      trace: receiverContextTrace
+    },
     preflight_faults: preflightFaults,
     interleaved_history: {
       isolated_origin_root: isolatedOriginRoot,
@@ -5919,7 +6225,7 @@ if (
       Object.keys(report.unexpected_wrapper_faults).length +
       Object.keys(report.preflight_faults).length +
       report.interleaved_history.foreign_traces.length +
-      6
+      7
     }\n`
   );
   process.stdout.write(

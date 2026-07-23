@@ -52,7 +52,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:4fce83bfd0545c6bce5dee28f4f3d029583b057289c03118a03d59d7dfefb268";
+  "sha-256:78b87fdfcdd88f7f4ad3add023811f0310980ebeffbd68522fbfc2b08df535d6";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -3194,6 +3194,9 @@ assert.equal(
 const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "alias_noncanonical_attempted_key",
   "dependency_access_kind_substitution",
+  "dependency_sequence_future",
+  "dependency_sequence_negative",
+  "dependency_sequence_zero",
   "false_absent_hidden_identity_fork",
   "frozen_duplicate_row",
   "frozen_extra_field",
@@ -3215,9 +3218,12 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "host_trust_profile_id",
   "operational_version_future_sequence",
   "owner_counter_substitution",
+  "owner_derivation_actor_for_principal",
+  "owner_derivation_history",
   "receiver_operation_qualified_namespace",
   "request_envelope_signature_signed_hash",
   "request_envelope_signature_value",
+  "request_operation_fingerprint",
   "request_query_commitment",
   "rich_actor_id",
   "rich_authority_namespace",
@@ -3244,6 +3250,8 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trace_key_substitution",
   "trace_presence_substitution",
   "trace_remove_one_event",
+  "trace_signed_object_binding",
+  "trace_signed_object_binding_history",
   "trace_value_and_hash_substitution",
   "trace_write_before_value_and_hash_substitution",
   "transaction_kind_genesis_as_operation",
@@ -3512,6 +3520,26 @@ assert.deepEqual(actualReceiverFailure.trace.callback_access_trace, []);
 assertCompositeRollback(
   "receiver_stability_preflight",
   actualReceiverFailure.trace,
+  {
+    callbackCommit: null,
+    wrapperCode: "receiver_authentication_invalid"
+  }
+);
+
+const actualReceiverContextFailure =
+  compositeProbe.receiver_context_stability_failure;
+assert.equal(
+  actualReceiverContextFailure.raw.code,
+  "receiver_authentication_invalid"
+);
+assert.equal(actualReceiverContextFailure.trace.callback_value, null);
+assert.deepEqual(
+  actualReceiverContextFailure.trace.callback_access_trace,
+  []
+);
+assertCompositeRollback(
+  "receiver_context_stability_preflight",
+  actualReceiverContextFailure.trace,
   {
     callbackCommit: null,
     wrapperCode: "receiver_authentication_invalid"

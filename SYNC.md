@@ -64,6 +64,22 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service fourteenth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `44a9ad9495693c418779dc7eb27b8f29e1cbca12`
+  is rejected by all three usable fixed-commit reviewers. Accepted findings:
+  signed-object trace witnesses retained declared refs without independently
+  rechecking their schema, self-hash, signature-hash, and signature proof;
+  dependency rows outside committed operation sequences were ignored; rotating
+  an opaque receiver handle bypassed complete account/trust stability; signed
+  access and repository rows could agree on an owner not independently derived
+  from the request; and the stored request operation fingerprint was carried
+  rather than recalculated and bound to its rich origin. Fourteenth-pass
+  remediation closes all five with named direct controls, adds a real
+  rotated-handle/trust-profile preflight rollback, and produces 32 cases at
+  `sha-256:78b87fdfcdd88f7f4ad3add023811f0310980ebeffbd68522fbfc2b08df535d6`.
+  It remains under review; `protocol/` and `mockups/` remain untouched and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service thirteenth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `035ca82b0537e084eded3b773cef33f1df0cc4a1`
   is rejected by all three usable clean-archive reviewers. Accepted findings:
