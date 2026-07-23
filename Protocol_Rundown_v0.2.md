@@ -87,9 +87,12 @@ spendability bypass, wall-bundle, evidence manifest).
   exact-copy evidence, deal continuity, serializable reservations, receiver-backed
   action receipts, and HTTP/MCP/A2A bindings. It keeps Anko as a reference agent,
   never a privileged protocol actor. Its first [machine-readable proposal
-  foundation](protocol/) now carries schemas, a no-effect operation registry,
-  canonical hash/signature vectors, and mutation controls; services, complete
-  profiles, independent verification, and runtime conformance remain unbuilt.
+  foundation](protocol/) is now the active [minimum trust
+  kernel](Protocol_Agent_Minimum_Trust_Kernel_v0.1.md): ten exact operations,
+  two bounded local writes, canonical hash/signature vectors, and no authority
+  to act. The larger supervised-execution candidate is rejected research.
+  Production services, authenticated service observations, consequential
+  profiles, and runtime conformance remain unbuilt.
 - **Catalog / card-reference** — [Card Reference Layer v0.1](Pokemon_Card_Reference_Layer_v0.1.md):
   the `CardReferenceCandidate` packet (identity + comparison image + `not_claiming`).
   **"Catalog match ≠ authentication"** (the G6 wall).
@@ -187,7 +190,7 @@ Surface code: `mockups/`, `web/` (Vite/React/Privy app at `/app/`), `simulations
 | Boundary | [Architecture Boundary v0.1](Protocol_Architecture_Boundary_v0.1.md) · [Bootstrap v0.1](Protocol_Bootstrap_v0.1.md) | current |
 | Spine | [`chain/`](chain/) — 4 contracts + drills | **built, 140 tests green + CI count guard** |
 | Legible | [Legibility v0.1](Protocol_Legibility_v0.1.md) · [Walls v0.1](Protocol_Walls_v0.1.md) · [Agent API v0.1](Protocol_Agent_API_v0.1.md) | designed |
-| Agent boundary | [Agent-Neutral Intent, Delegation & Interoperability v0.1](Protocol_Agent_Intent_Interop_v0.1.md) · [`protocol/` machine adjunct](protocol/) | audited design + proposal-only machine foundation; no runtime conformance claim |
+| Agent boundary | [Agent-Neutral Intent, Delegation & Interoperability v0.1](Protocol_Agent_Intent_Interop_v0.1.md) · [Minimum Trust Kernel v0.1](Protocol_Agent_Minimum_Trust_Kernel_v0.1.md) · [`protocol/`](protocol/) | narrowed proposal-only machine candidate; execution bundle rejected; no runtime conformance claim |
 | Catalog | [Card Reference v0.1](Pokemon_Card_Reference_Layer_v0.1.md) · [Lineage v0.1](Protocol_Catalog_Lineage_v0.1.md) | designed + drills |
 | Judged | [Verifier v0.4](Protocol_Verifier_v0.4.md) | designed |
 | Judged | [Judgment Independence v0.3](Protocol_Judgment_Independence_v0.3.md) | floor-path on-chain |

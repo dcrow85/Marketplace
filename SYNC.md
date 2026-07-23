@@ -58,6 +58,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
+- `[BLOCKING: agent minimum trust kernel release]` 2026-07-23 · Codex —
+  **The 29-operation supervised-execution/read candidate is rejected and removed
+  from the active release gate.** Exact freeze
+  `c5646a0104664f7edf2a453450a2ec5d5d2eb82c` reproduced its advertised controls
+  but did not survive independent architectural review: retrieval time was not
+  authenticated in 21 exact getters; activity reads did not fully close
+  action/state/lineage/predecessor/receipt dependencies; future-effective heads
+  remained possible; generic base-object reads skipped foundation semantic
+  dispatch; cursors/cross-page snapshots were unauthenticated; and provenance
+  enforcement relied on naming conventions. These findings are
+  `accepted_by_scope_removal`, not fixed.
+  The narrowed candidate is `cairn-proposal-foundation-v0.1`: ten exact
+  operations, only `intent.put` and `action.prepare` as local writes, no action
+  authority, no external effects, and no conformance claim. A machine release
+  manifest now pins the exact bundle/registry/surface/non-claims and keeps
+  `cairn-supervised-execution-v0.1` excluded. Execution reference-service work
+  remains blocked until a signed service observation profile authenticates
+  service identity, retrieval time, query/page scope, returned heads, and
+  cross-page continuity and then survives a new frozen independent audit.
+  The narrowed working tree passes 84/84 authored controls, kills 79/79
+  exact mutation controls, reproduces the unchanged internal foundation hash,
+  and passes the machine kernel release check; a frozen containing commit,
+  disposable clean replay, and independent exact-commit reviews remain pending.
+  No UI, catalogue, profile, offer, payment, contract, deployment, or live state
+  is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
   **Exact freeze `420fa52ecdcab696f3de3b04bda89326992e5ed4` is rejected
   alongside `4d62c0f`, `dd12269c`, `ebd10f4`, `26b7016`, `0b98fff`,

@@ -77,6 +77,24 @@ for (const mutant of SECURITY_MUTANTS) {
       }
       continue;
     }
+    if (mutant.expectedStage === "kernel") {
+      if (build.status !== 0) {
+        failures.push(`${mutant.id}: invalid kernel mutant; build failed\n${buildOutput}`);
+        continue;
+      }
+      const kernel = run("node", ["scripts/check-minimum-kernel.mjs"], candidate);
+      const kernelOutput = combined(kernel);
+      if (
+        kernel.status !== 0 &&
+        !/SyntaxError|Unexpected token/.test(kernelOutput) &&
+        kernelOutput.includes(mutant.expectedOutput)
+      ) {
+        process.stdout.write(`KILLED ${mutant.id} at kernel release check\n`);
+      } else {
+        failures.push(`${mutant.id}: expected minimum-kernel release kill\n${kernelOutput}`);
+      }
+      continue;
+    }
     if (build.status !== 0) {
       failures.push(`${mutant.id}: invalid mutant; build failed\n${buildOutput}`);
       continue;

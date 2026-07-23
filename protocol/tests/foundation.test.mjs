@@ -9,6 +9,7 @@ import { fileURLToPath } from "node:url";
 
 import { auditSources, buildBundle, loadSources } from "../lib/bundle.mjs";
 import { FOUNDATION_DATA_GRANT_USES, SIGNED_OBJECT_ANNOTATIONS } from "../lib/foundation-profile.mjs";
+import { auditMinimumTrustKernel } from "../lib/minimum-kernel.mjs";
 import {
   bindObjectHash,
   bodyHash,
@@ -58,6 +59,15 @@ const HASH_A = `sha-256:${"a".repeat(64)}`;
 const HASH_B = `sha-256:${"b".repeat(64)}`;
 const CREATED = "2026-07-20T16:00:00Z";
 const EXPIRES = "2026-07-20T17:00:00Z";
+
+test("minimum trust kernel pins the exact proposal-only release boundary", async () => {
+  const result = await auditMinimumTrustKernel(root);
+  assert.equal(result.kernelId, "cairn-agent-minimum-trust-kernel-v0.1");
+  assert.equal(result.operationCount, 10);
+  assert.equal(result.mutationCount, 2);
+  assert.equal(result.bundleHash, "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c");
+  assert.equal(result.registryHash, "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b");
+});
 
 function testKey(key_id, controller) {
   const { publicKey, privateKey } = generateKeyPairSync("ed25519");

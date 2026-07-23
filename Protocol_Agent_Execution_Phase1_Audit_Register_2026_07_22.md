@@ -2,8 +2,9 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: exact freeze `420fa52ecdcab696f3de3b04bda89326992e5ed4` rejected; Round-43 remediations pass local and clean 32/32 authored controls plus 485/485 exact-once direct mutants, pending replacement freeze and three-reviewer verification
-Round-43 amendment: 2026-07-22
+Status: rejected and superseded by scope removal; no execution/read release candidate is active
+Final rejected freeze: `c5646a0104664f7edf2a453450a2ec5d5d2eb82c`
+Supersession amendment: 2026-07-23
 Rejected-freeze prose dependency SHA-256: `246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b`
 Replacement prose dependency SHA-256: `b140ddf830af1060e522cf5795dc6d66d86ac9371f785a7efc91c7f1c46d48e8`
 Replacement internal bundle hash: `sha-256:609f940251e0b02cf938ba900b6dfd68d44037d5c1e7259c12a95a0877411aec`
@@ -751,9 +752,10 @@ pending. Reference-service construction remains blocked.
 | P1M-007 | P2 | Hand-authored JSON could contain duplicate members before JavaScript parsing | accepted_and_fixed | Phase 1 build now runs the existing strict duplicate-member/I-JSON source checker over its manifest |
 | P1M-008 | P2 | Duplicate declarative object fields or schema URIs could be overwritten during generation | accepted_and_fixed | Catalog construction rejects duplicate field names and bundle audit rejects duplicate schema URIs/object IDs |
 
-## Independent closure gate
+## Historical independent closure gate — superseded
 
-This register remains open until a reviewer who did not author the candidate:
+Before scope removal, this register would have remained open until a reviewer
+who did not author the candidate:
 
 1. verifies the replacement containing-commit hash, bundle hash, registry hash,
    and repinned prose hash before and after a read-only review;
@@ -772,6 +774,32 @@ The candidate bundle additionally commits by SHA-256 to every semantic package
 source: shared core validation, strict-JSON preflight, README, manifest,
 package metadata and lock, every library module, all three local scripts, the
 test suite, and the direct-mutant catalogue. Editing semantic validator code
-without changing the internal candidate hash is therefore a tested build
-failure, not an accepted review condition. Reference-service construction
-remains blocked until this gate accepts the exact containing commit.
+without changing the internal candidate hash was therefore a tested build
+failure, not an accepted review condition. This gate is now superseded by scope
+removal and cannot accept the execution candidate.
+
+## Supersession — minimum trust kernel
+
+Exact freeze `c5646a0104664f7edf2a453450a2ec5d5d2eb82c` is rejected. Its
+technical controls were reproducible, but fresh review found material
+architecture-level gaps:
+
+| ID | Sev. | Finding | Disposition |
+|---|---:|---|---|
+| P2R44-O-001 | P2 | Twenty-one exact getters had no in-band authenticated retrieval time and fell back to caller context | accepted_by_scope_removal |
+| P2R44-G-001 | P2 | Activity summary/detail did not completely bind action, state, lineage, predecessor, and receipt dependencies | accepted_by_scope_removal |
+| P2R44-T-001 | P2 | Activity pages could admit future-effective current heads | accepted_by_scope_removal |
+| P2R44-B-001 | P2 | The generic base-object getter did not dispatch foundation semantic validators | accepted_by_scope_removal |
+| P2R44-C-001 | P2 | Incoming cursors and cross-page snapshots were not service-authenticated | accepted_by_scope_removal |
+| P2R44-P-001 | P2 | Context-provenance enforcement depended on a naming convention rather than a structural invariant | accepted_by_scope_removal |
+
+`accepted_by_scope_removal` does not mean fixed or accepted. It means the entire
+29-operation execution/read profile has been removed from the active release
+gate and retained only as rejected research evidence. Its historical tests,
+mutants, and hashes remain useful audit records but are not conformance evidence.
+
+The active candidate is now the proposal-only
+[`Protocol_Agent_Minimum_Trust_Kernel_v0.1.md`](Protocol_Agent_Minimum_Trust_Kernel_v0.1.md),
+machine-pinned by `protocol/minimum-trust-kernel.json`. Reopening an
+execution/read profile requires an independently audited signed service
+observation primitive. Building an execution reference service remains blocked.

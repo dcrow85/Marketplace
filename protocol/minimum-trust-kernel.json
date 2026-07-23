@@ -1,0 +1,64 @@
+{
+  "schema": "cairn.minimum_trust_kernel_manifest.v0.1",
+  "kernel_id": "cairn-agent-minimum-trust-kernel-v0.1",
+  "profile": "cairn-proposal-foundation-v0.1",
+  "release_status": "active_narrowed_candidate",
+  "foundation_bundle_hash": "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c",
+  "operation_registry_hash": "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b",
+  "included_operations": [
+    "capabilities.get",
+    "runtime_binding.get",
+    "intent.put",
+    "intent.get",
+    "data_grant.get",
+    "projection.get",
+    "object.resolve",
+    "action.prepare",
+    "action.get",
+    "receipt.get"
+  ],
+  "allowed_local_mutations": [
+    {
+      "operation": "intent.put",
+      "authority_effect": "records_principal_signed_intent_only"
+    },
+    {
+      "operation": "action.prepare",
+      "authority_effect": "none"
+    }
+  ],
+  "forbidden_operation_terms": [
+    "authorize",
+    "execute",
+    "dispatch",
+    "pay",
+    "payment",
+    "settle",
+    "release",
+    "waive",
+    "issue"
+  ],
+  "excluded_profiles": [
+    "cairn-supervised-execution-v0.1"
+  ],
+  "next_profile_requires": [
+    "signed_service_read_snapshot",
+    "authenticated_service_key_profile",
+    "exact_dependency_semantics",
+    "independent_frozen_review"
+  ],
+  "conformance_claims": [],
+  "not_claiming": [
+    "production_service",
+    "runtime_conformance",
+    "authority_to_act",
+    "external_effect",
+    "authorization",
+    "execution",
+    "payment",
+    "settlement",
+    "release",
+    "waiver",
+    "authenticated_service_observation"
+  ]
+}

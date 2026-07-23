@@ -6,6 +6,12 @@ It makes the proposal-only object boundary executable without implying that a
 live Cairn service, authority ledger, payment adapter, or conformance profile
 already exists.
 
+It is also the active
+[minimum trust kernel](../Protocol_Agent_Minimum_Trust_Kernel_v0.1.md). The
+machine-enforced release boundary is
+[`minimum-trust-kernel.json`](minimum-trust-kernel.json): ten exact operations,
+two bounded local writes, and no authority to act.
+
 ## What is included
 
 - 17 JSON Schema 2020-12 definitions for the common signed-object primitives,
@@ -62,15 +68,19 @@ npm run check
 
 `npm run build` writes `dist/cairn-protocol-bundle-v0.1.json` deterministically.
 The Python source check rejects duplicate JSON member names before Node parses any
-schema or registry file.
+schema or registry file. The minimum-kernel check additionally pins the exact
+bundle and registry hashes, operation list, two local mutations, rejected
+execution profile, prerequisites for expansion, and non-claims.
 
 See [`reference-service/README.md`](reference-service/README.md) for the injected
 identity/store contract and the explicit non-production boundary.
 
-The separately namespaced Phase 1 supervised-execution schema candidate lives in
-[`execution/`](execution/). It pins this proposal bundle as an immutable
-dependency and advertises only schema-only, read-only inspection operations. It
-does not widen this package or add an executor.
+The separately namespaced Phase 1 supervised-execution research artifact lives
+in [`execution/`](execution/). It is
+[rejected](execution/REJECTED.md), is not advertised by this package, and is
+retained only as falsification evidence. No execution/read profile may re-enter
+the release gate before a separately specified signed service observation
+primitive survives independent review.
 
 ## Source-of-truth rule
 

@@ -1,5 +1,41 @@
 export const SECURITY_MUTANTS = [
   {
+    id: "minimum-kernel-bundle-pin",
+    finding: "minimum-kernel-release-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/foundation_bundle_hash",
+    value: "sha-256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel foundation bundle hash differs"
+  },
+  {
+    id: "minimum-kernel-operation-surface",
+    finding: "minimum-kernel-release-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/included_operations/9",
+    value: "action.execute",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel operation surface differs"
+  },
+  {
+    id: "minimum-kernel-mutation-boundary",
+    finding: "minimum-kernel-release-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/allowed_local_mutations/1/authority_effect",
+    value: "records_execution_authority",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel allowed mutation boundary differs"
+  },
+  {
+    id: "minimum-kernel-execution-exclusion",
+    finding: "minimum-kernel-release-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/excluded_profiles/0",
+    value: "cairn-supervised-execution-v0.2",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel excluded profiles differ"
+  },
+  {
     id: "total-signed-object-boundary",
     finding: "validators-total-fail-closed",
     file: "lib/validation.mjs",
