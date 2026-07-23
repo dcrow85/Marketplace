@@ -64,6 +64,24 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service tenth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `3ecf396a3ff2d1b8532a2542a0b6b8cfc8d41ad5`
+  is rejected by all three clean-archive blind auditors. Accepted P1s: durable
+  verification binds only broad access-method shape, not exact trace
+  key/presence/value evidence to dependency artifacts; actual owner counters
+  and interleaving ancestry are incomplete; service trust metadata and rich
+  idempotency rows are under-verified; alias attempted keys violate the JCS
+  tuple contract; rich-row integrity is checked after instead of before the
+  frozen callback; the origin observation omits its actual grant decrement;
+  and observation/persistence/commit faults are labels instead of caught thrown
+  failures preserving the callback result. The material transaction-kind
+  closure finding is also accepted. Remediation adds signed exact-trace
+  commitment and independent trace/dependency reconstruction, canonical alias
+  encoding, complete owner/rich/trust verification, callback-zero preflight,
+  signed grant arithmetic, actual transaction-owned foreign interleaving, real
+  caught fault hooks, and direct mutations for every finding. `protocol/` and
+  `mockups/` remain untouched; no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service ninth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `d945532cdbbebf092546587085a9bbec119b7423`
   is not a pass. All three clean-archive blind auditors rejected it. The

@@ -1025,6 +1025,7 @@
             "snapshot_id",
             "scope_sequence_before",
             "scope_sequence_after",
+            "access_trace_commitment",
             "dependency_set_commitment",
             "scope_state_commitment_after",
             "committed"
@@ -1042,6 +1043,7 @@
               "minimum": 1,
               "maximum": 9007199254740991
             },
+            "access_trace_commitment": { "$ref": "#/$defs/sha256" },
             "dependency_set_commitment": { "$ref": "#/$defs/sha256" },
             "scope_state_commitment_after": { "$ref": "#/$defs/sha256" },
             "committed": { "const": true }

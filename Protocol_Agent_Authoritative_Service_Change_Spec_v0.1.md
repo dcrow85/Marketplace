@@ -1,9 +1,10 @@
 # Cairn authoritative store and signed service-observation change spec v0.1
 
-**Status:** four cold-audit rounds rejected frozen candidates `b86ceae`,
-`8c06892`, `3394747`, and `d945532`; every P1/material-P2 finding is accepted
-for remediation. This revised local design is not independently re-audited,
-implemented, or conforming.
+**Status:** the ninth frozen candidate,
+`3ecf396a3ff2d1b8532a2542a0b6b8cfc8d41ad5`, was rejected in the tenth
+audit cycle. This working tree contains tenth-pass remediation under review.
+It is not independently re-audited, implemented as a durable SQLite service,
+or conforming.
 
 **Depends on:** the independently audited proposal-only BYO checkpoint at
 `5216424` and the unchanged nine-operation kernel tree
@@ -87,6 +88,14 @@ the frozen transaction callback. The transaction:
     record; and
 12. commits all changes together or rolls all of them back.
 
+Before enabling callback-access recording or invoking the frozen callback, the
+interposer compares the complete live frozen two-field idempotency map with its
+exact durable snapshot. For the requested receiver-private database key, either
+both rows are absent or exactly one frozen row and one rich row must agree with
+the already verified sidecar history. A mismatch returns
+`idempotency_integrity_invalid` with `kernel:null`, an empty callback trace,
+unchanged kernel/sidecar snapshots, and no callback invocation.
+
 The adapter preserves the frozen callback's accepted-envelope semantics:
 
 - rich-row self/history/owner mismatch discovered by the adapter preflight:
@@ -168,10 +177,13 @@ the same structural key and operation fingerprint.
   plus `authoritative_integrity_invalid` and rolls the composite transaction
   back with no nonce, sequence, dependency, observation, or repository delta.
 
-The wrapper compares a stored fingerprint with the original observation/history
-to establish row integrity. It does not compare that fingerprint with the new
-request during rich-row preflight; the unchanged frozen callback owns that
-request-conflict decision.
+The wrapper compares the stored rich row and frozen row with the origin
+observation, repository, owner/global mapping, projection, version, and origin
+dependency to establish row integrity. It does not compare that fingerprint
+with the new request during rich-row preflight; the unchanged frozen callback
+owns that request-conflict decision. The Phase-A sidecar does not retain the
+original signed envelope bytes and therefore does not independently recompute
+the original operation fingerprint from those bytes.
 
 ### 4.4 Commit ordering
 
@@ -187,6 +199,18 @@ Each observation instead records an owner-scoped sequence and root:
 - `scope_state_commitment_after`: the deterministic commitment to the exact
   operational read/write dependency set observed for that owner in this
   transaction after the staged change.
+
+The owner counter key is typed:
+
+```text
+owner_sequence_key = JCS([owner_kind, owner_id])
+```
+
+Principal and actor namespaces therefore cannot collide even when their text
+IDs match. Verification groups scope commits by that typed key, rejects
+duplicate owner/scope pairs, requires each owner chain to begin at
+`previous_scope_sequence:0`, advance contiguously by one in global-commit
+order, and equal the stored typed counter map exactly.
 
 The commitment preimage is the domain-separated JCS array:
 
@@ -282,8 +306,11 @@ bounded retry and return service unavailable without state change.
 
 ## 5. Authoritative store model
 
-All textual structural keys use JCS arrays. Delimiter-joined compound keys are
-forbidden.
+All authoritative textual structural and attempted keys use JCS arrays.
+Delimiter-joined keys remain an unchanged implementation detail of the frozen
+in-memory Maps, but are never persisted as authoritative structural or
+attempted keys. The adapter converts a raw frozen object-ref key to
+`JCS([schema, object_id, object_hash])` before constructing a dependency entry.
 
 The base-row key functions are closed:
 
@@ -291,10 +318,10 @@ The base-row key functions are closed:
 |---|---|
 | `objects` | `JCS([schema, object_id, object_hash])` |
 | `runtime_bindings` | `JCS([runtime_key_id])` |
-| `data_grants` | `JCS([grant_ref_key])` |
-| `effect_descriptors` | `JCS([effect_ref_key])` |
+| `data_grants` | `JCS([schema, object_id, object_hash])` |
+| `effect_descriptors` | `JCS([schema, object_id, object_hash])` |
 | `validation_keys` | `JCS([key_id])` |
-| `grant_state` | `JCS([grant_ref_key])` |
+| `grant_state` | `JCS([schema, object_id, object_hash])` |
 | `used_nonces` | `JCS([nonce])` |
 | `idempotency_records` database lookup | `JCS([authority_namespace, idempotency_key])` |
 | `idempotency_records` committed/versioned projection | `JCS([structural_key_commitment])` |
@@ -609,6 +636,19 @@ observation_ref_key
 access_kind)` is append-only and is populated only by instrumented store reads
 and writes. Its closed sorted manifest hashes to `dependency_set_commitment`.
 
+`access_trace(global_commit_sequence, envelope_hash, events_commitment,
+ordered_events)` is also append-only, where:
+
+```text
+events_commitment = SHA-256(UTF8(JCS(ordered_events)))
+```
+
+The signed observation carries the same `access_trace_commitment`. Verification
+requires equality among the stored ordered event bytes, stored commitment, and
+signed commitment, then reconstructs the exact admitted dependency-entry-key
+inventory for `intent.put` origin, `intent.put` replay, and
+`capabilities.get`.
+
 The frozen in-memory names map to authoritative rows exactly:
 
 | frozen access | authoritative source | exact `index_name` |
@@ -638,6 +678,11 @@ The alias-to-table relation and attempted-key shape are also closed:
 | `grant_state` | `grant_state_ref` | `[schema, object_id, object_hash]` |
 | `used_nonces` | `nonce` | `[nonce]` |
 | `idempotency_records` | `authority_idempotency` | `[structural_key_commitment]` |
+
+The third member of every alias structural key is itself canonical JCS array
+text. Scalar aliases use singleton arrays; object-ref aliases use the exact
+three-member ref tuple; identity aliases use the exact two- or three-member
+identity tuple; idempotency uses the singleton opaque-commitment tuple.
 
 No other map, index, cache, resolver, or direct SQL read may influence
 validation, result construction, or verification. Every access passes one
@@ -701,6 +746,17 @@ recomputes every `entry_key`, coalescing result, alias key, absent sentinel,
 present row hash, strict ordering, and dependency self-hash before accepting a
 root.
 
+The current Phase-A verifier pins event order, store, method, key, presence
+transition, and the recorder's before/after hash invariants. It does not claim
+that every event value hash is independently cross-bound to an operational
+projection hash; complete trace-value provenance remains a Phase-B control.
+
+Non-genesis `service_commits.transaction_kind` admits only
+`service_operation` and `replay`. `replay` is required exactly when the signed
+observation has `result.replayed:true`; every non-replayed observation requires
+`service_operation`. Unknown kinds and kind/result disagreement fail history
+verification.
+
 The observation is constructed after sequence allocation and operational
 versioning, then its ref is inserted into both commit rows in the same
 transaction. Commit rows and observation refs are outside the operational state
@@ -733,8 +789,11 @@ Phase A freezes one machine-readable external contract:
 path:
   simulations/authoritative-service/authoritative-service.schema.json
 canonical JCS hash:
-  sha-256:3e91dd55310f35703a94d88b7bd75d226c72dded81bdb16dfd7a072a25470980
+  sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9
 ```
+
+This revision adds the required
+`serviceObservation.transaction.access_trace_commitment`.
 
 Its nine independently addressable entry points are:
 
@@ -794,14 +853,11 @@ to hand-author an incomplete dependency set.
 
 The same wrapper transaction constructs, signs, and persists the actual origin
 and replay observations, dependency and scope commits, operational versions,
-repository ACL rows, validator binding, envelope index, and rich idempotency
-origin link. The checker consumes those exact durable artifacts; it does not
-fabricate a second signed history from a reduced probe result. Every unrelated
-commit used to test global interleaving is itself a schema-valid, self-hashed,
-service-key-signed observation with a complete repository row, dependency
-commit, scope mapping, and envelope index.
+repository ACL rows, validator binding, access trace, envelope index, and rich
+idempotency origin link. The checker consumes those exact durable artifacts; it
+does not fabricate a second signed history from a reduced probe result.
 
-The probe executes twelve independent real `intent.put` transactions after an
+The probe executes twelve independent real `intent.put` branches after an
 actual committed origin: one successful fresh-envelope replay, one
 changed-fingerprint conflict, five separately injected result-object/ACL replay
 faults, four post-callback response-schema/observation/persistence/commit fault
@@ -825,10 +881,39 @@ contract, canonical source-schema bytes, and source-schema hash. Direct boundary
 controls accept the registered body and reject a missing `ref`, missing
 `receipt_ref`, extra property, and malformed nested object ref, preventing a
 weaker substitute validator from satisfying the control. The checker validates
-every local-result branch and proves the twelve callback traces are distinct.
-The deterministic composite
-report is pinned at
-`sha-256:edcfafa01017260a9a29c2b3b48d71f2dcccf0fd4b64539f734fc8cd0d35022f`;
+every local-result branch and proves the twelve `intent.put` traces are
+distinct.
+
+Observation, persistence, and final-commit controls throw
+`CompositeStageFault` at distinct wrapper boundaries. Observation fails before
+signing; persistence fails after observation construction/accounting but before
+durable sidecar rows are appended; commit fails after the complete staged
+sidecar and commit accounting, immediately before publication. The transaction
+catches each thrown fault after the actual frozen callback, preserves its exact
+value in `local_result.kernel`, derives the wrapper stage/code internally, and
+publishes neither draft. These are real deterministic thrown-and-caught test
+hooks, not simulated failures from an Ed25519 provider, SQLite statement,
+filesystem, or database commit; crash durability remains Phase B.
+
+Six additional replay attempts corrupt the rich row, duplicate it, remove or
+add a live frozen row, or change the live frozen fingerprint/result ref. Every
+case returns `idempotency_integrity_invalid` at preflight with no callback
+invocation, no access trace, `kernel:null`, and identical before/after state.
+A coherent new request with a different fingerprint instead reaches the real
+frozen callback and remains its exact `commit:false` conflict.
+
+A separate interleaving scenario commits one actual `intent.put` origin at
+global sequence one and then six actual signed `capabilities.get` callbacks for
+six distinct foreign principals through the same `CompositeReferenceStores`,
+kernel state, resolver, transaction wrapper, signer, and sidecar. Those calls
+occupy global sequences two through seven and each creates its own nonce, typed
+owner sequence one, dependency history, signed observation, repository row,
+validator binding, access trace, and service/scope commit. They share the same
+frozen actor/runtime and validation-key fixtures; they are not independent
+service identities or runtime trust domains.
+
+The deterministic composite report is pinned at
+`sha-256:74865da929b36cded844ca06096963098ddc39a93dd495fa24f6d5efe2428323`;
 fresh process executions must reproduce it exactly.
 
 Origin verification begins from the actual signed envelope, authenticated
@@ -839,10 +924,12 @@ dependency rows/commits, service commits, owner commits, observation repository
 rows, and envelope indexes. Negative controls add both duplicate and extra rows,
 claim an absent alias while its typed base is present, change every repository
 ownership field, alter object bytes/revision, break all replay-origin links, and
-map owner sequence one across six complete unrelated global commits. That
-interleaved case is accepted by the same exact-history verifier as the ordinary
-origin; deleting any intermediate global commit or changing the owner-to-global
-mapping is rejected. A second exact verifier starts from the actual committed
+directly mutate the actual seven-owner sidecar. The same composite verifier
+accepts the complete sidecar containing the origin followed by six real foreign
+commits and confirms that the already committed origin scope root remains
+unchanged. Wrong foreign owner counters, transaction kinds, repository bytes or
+hashes, service refs, scope mappings, dependency commitments, and access traces
+are rejected. A second exact verifier starts from the actual committed
 replay observation and checks its fresh envelope/nonce, scope sequence/root,
 service/scope commit ancestry, repository ACL, dependency inventory, returned
 result, and immutable origin result/observation links. The first owner row is
@@ -1023,6 +1110,7 @@ transaction:
   snapshot_id: <opaque unique snapshot id>
   scope_sequence_before: 41
   scope_sequence_after: 42
+  access_trace_commitment: sha-256:<JCS ordered callback access events>
   dependency_set_commitment: sha-256:<exact instrumented read/write set>
   scope_state_commitment_after: sha-256:<exact dependency-row post-state commitment>
   committed: true
@@ -1100,6 +1188,9 @@ not_claiming:
   - release_authenticity_without_external_pin
 ```
 
+The signed artifact commits to the operator-private ordered access trace without
+publishing that trace itself.
+
 The schema fixes that ordered `not_claiming` set exactly; additions, omissions,
 reordering, or generic substitutions fail.
 
@@ -1115,6 +1206,21 @@ sequence. `replayed:false` requires `nonce_disposition:newly_reserved`, forbids
 `replayed` require a non-null one. Semantic verification then resolves the
 replay's original result/ref/sequence through the exact origin repository and
 commit history rather than trusting those signed fields alone.
+
+The actual origin observation signs one grant effect. Verification requires one
+effect per base `grant_state` dependency marked
+`read_present_write_update`, requires that grant in `authorization_refs`,
+resolves before/after operational versions, verifies both version hashes and
+the dependency's after hash, preserves status/revocation nonce, and enforces
+state-version `+1` and remaining-disclosure `-1`. Replay signs zero grant
+effects. Independently re-signed mutations to the effect ref, arithmetic,
+version, or inventory are rejected.
+
+For the first in-memory origin, the probe reconstructs the sequence-zero before
+projection by applying the inverse one-step arithmetic to the final callback
+state. It therefore proves internally consistent signed arithmetic and version
+history, not independently observed pre-callback grant provenance. Phase B must
+capture the exact mutable grant value before callback execution.
 
 ### 6.3 Exact query commitment
 
@@ -1182,6 +1288,15 @@ MUST:
 - use the internal scope-commit mapping to reconstruct every recorded dependency
   row at the mapped global sequence and recompute the transaction-scope root; and
 - require matching append-only scope/global commit rows and observation ref.
+
+The Phase-A composite verifier resolves an actual closed, self-hashed service
+key profile whose bundle hash equals the frozen kernel bundle. It validates the
+current key's controller, unique/sorted membership, active/unrevoked state,
+finite lifecycle interval, observation time, signature key, public key,
+service/store/profile scope, signed hash, and signed time. Re-bound wrong
+controller, revoked, expired, missing-current, non-current signer, and
+self-hash mutants reject. The in-memory sidecar pins this configured profile;
+persisting and traversing a historical profile chain remains Phase B.
 
 Historical verification may preserve a key that was valid at `observed_at`.
 Historical proof does not make an expired returned object or grant current.
@@ -1379,6 +1494,11 @@ composite-commit decision.
 ## 9. Required race and mutation controls
 
 The first executable drill MUST include at least these independent controls:
+“Required” does not mean every row is demonstrated by the Phase-A composite
+report. Races, real database faults, independently captured grant-before state,
+complete trace-value cross-binding, and crash durability remain Phase-B work.
+The Phase-A evidence is limited to the positive and direct-negative controls
+described above.
 
 | ID | Concurrent or mutated case | Required result |
 |---|---|---|
