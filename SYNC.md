@@ -64,6 +64,31 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive]` 2026-07-23 · Codex —
+  **The bounded BYO-agent replacement candidate is implemented and the active
+  blocker below is closed at `a0bb44a`.** The drill lives outside `protocol/` in
+  `simulations/protocol_byo_agent_replacement{,.test}.mjs`, with a plain-language
+  boundary in `Protocol_Agent_BYO_Replacement_Drill_v0.1.md`. Two separately
+  operated providers use distinct runtime keys and newly issued exact-runtime
+  grants. After Agent A records and reads one principal-signed intent, Agent B
+  cannot borrow A's grant or idempotency record; A is revoked; and B recovers
+  the byte-identical intent from a principal-signed context packet before
+  stopping at a no-transition, no-effect draft. Runtime/grant swaps, packet
+  tampering, post-revocation A use, and `action.execute` all fail.
+  Clean-archive replay passes 3/3 authored tests and 18/18 direct probes at
+  report
+  `sha-256:fe8458626fde5df0147e042b1f3c8be6953253b12e57df8163a140315e9142c5`.
+  The full kernel gate remains 102/102 controls, 139/139 killed mutants, and the
+  exact 55-file package
+  `sha-256:d726c2d58882f8a0f606123c9e50ef19bb3957a1a530200e2eb3f959b1d0b6fb`.
+  The reviewed `protocol/` tree is byte-identical at
+  `85dd8250adb20e6e954b914e11bfd13b9d9d9896`. This is authored local candidate
+  evidence, not independent verification, production conformance, grant
+  issuance, continuation delivery, action authority, execution, payment, or an
+  external effect. Next threshold: an author-independent cold audit of this
+  frozen candidate, then authoritative atomic nonce/idempotency/object/DataGrant
+  stores plus a signed service-observation profile. No push or deploy occurred.
+
 - `[BLOCKING: BYO-agent replacement conformance harness]` 2026-07-23 · Codex —
   Building the next protocol experiment outside `protocol/` so the reviewed
   nine-operation proposal kernel at `977e0ac` remains byte-for-byte fixed. The
