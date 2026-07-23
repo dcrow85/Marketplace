@@ -64,6 +64,20 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: BYO replacement second audit remediation]` 2026-07-23 · Codex —
+  Frozen candidate `8837315` completed a second independent cold audit with zero
+  P0/P1 findings but four accepted material P2 gaps: preparation widened B from
+  its projection to whole-intent derive scope; worker modes used a property-name
+  denylist rather than closed input shapes; the worker did not compare the
+  runtime binding's embedded public key to its own fixed key; and resume-grant
+  validation allowed extra uses and resources. Remediation stays outside the
+  frozen `protocol/` kernel: proposals and prepare grants now reference the
+  projection instead of the private intent, each mode has an exact top-level
+  shape, runtime validation pins B's actual key material, and grants require
+  exact use and resource sets. Direct mutation controls cover every finding. A
+  new frozen candidate and third independent audit are required; no push or
+  deploy is in scope.
+
 - `[BLOCKING: BYO replacement audit remediation]` 2026-07-23 · Codex —
   Exact candidate `a0bb44a` reproduced, but its first independent cold audit is
   not a pass. Accepted material P2 findings: A and B are cryptographically

@@ -819,6 +819,17 @@ export async function runReplacementDrill() {
   const normalResumeContainsAgentA = agentAMarkers.some((marker) =>
     normalResumeInputText.includes(marker)
   );
+  const extraContextInput = structuredClone(normalResumeInput);
+  extraContextInput.legacy_context = {
+    identity: identityA.agent_provider_id,
+    runtime: runtimeA.keyId,
+    opaque: "renamed Agent A material"
+  };
+  const extraContextWorker = runAgentBWorker(extraContextInput);
+  const substitutedUriInput = structuredClone(normalResumeInput);
+  substitutedUriInput.runtime_binding.retrieval_uri =
+    "https://reference.cairn.cards/cairn/0.1/objects/did%3Aweb%3Aanko.example";
+  const substitutedUriWorker = runAgentBWorker(substitutedUriInput);
   const normalResumeWorker = runAgentBWorker(normalResumeInput);
   recordProbe(
     probes,
@@ -826,6 +837,12 @@ export async function runReplacementDrill() {
     normalResumeWorker.ok === true &&
       normalResumeWorker.output.forbidden_input_paths.length === 0 &&
       normalResumeContainsAgentA === false &&
+      extraContextWorker.ok === false &&
+      /unknown or missing fields/.test(extraContextWorker.stderr) &&
+      substitutedUriWorker.ok === false &&
+      /runtime-binding identity mismatch/.test(
+        substitutedUriWorker.stderr
+      ) &&
       canonicalText(normalResumeWorker.output.accepted_input_keys) ===
         canonicalText(Object.keys(normalResumeInput).sort()),
     {
@@ -837,6 +854,10 @@ export async function runReplacementDrill() {
       serialized_input_hash: canonicalHash(normalResumeInput),
       serialized_input_contains_agent_a_marker:
         normalResumeContainsAgentA,
+      renamed_extra_context_status: extraContextWorker.status,
+      renamed_extra_context_error: extraContextWorker.stderr,
+      substituted_uri_status: substitutedUriWorker.status,
+      substituted_uri_error: substitutedUriWorker.stderr,
       context_grant_signer: readGrantB.principal_signature.key_id,
       context_grant_ref: readGrantBRef
     }
@@ -849,16 +870,49 @@ export async function runReplacementDrill() {
     retrieval_uri: service.objectUri(bindingARef)
   };
   const swappedRuntimeWorker = runAgentBWorker(swappedRuntimeInput);
+  const substitutedKeyBindingDraft = structuredClone(bindingB);
+  substitutedKeyBindingDraft.runtime_public_key.public_key =
+    runtimeA.record.public_key;
+  substitutedKeyBindingDraft.runtime_binding_hash = ZERO_HASH;
+  substitutedKeyBindingDraft.provider_signature = signature(providerB);
+  const substitutedKeyBinding = bindAndSign(
+    foundation,
+    substitutedKeyBindingDraft,
+    providerB
+  );
+  const substitutedKeyRuntimeInput = structuredClone(normalResumeInput);
+  substitutedKeyRuntimeInput.runtime_binding = {
+    object: substitutedKeyBinding,
+    ref: objectRefFor(
+      substitutedKeyBinding,
+      schemaFor(foundation, substitutedKeyBinding)
+    ),
+    retrieval_uri: service.objectUri(
+      objectRefFor(
+        substitutedKeyBinding,
+        schemaFor(foundation, substitutedKeyBinding)
+      )
+    )
+  };
+  const substitutedKeyRuntimeWorker = runAgentBWorker(
+    substitutedKeyRuntimeInput
+  );
   recordProbe(
     probes,
     "isolated_agent_b_rejects_runtime_swap",
     swappedRuntimeWorker.ok === false &&
       /signing_key_unknown|controller mismatch|identity mismatch/.test(
         swappedRuntimeWorker.stderr
+      ) &&
+      substitutedKeyRuntimeWorker.ok === false &&
+      /runtime_public_key_material_mismatch|runtime-binding identity mismatch/.test(
+        substitutedKeyRuntimeWorker.stderr
       ),
     {
       worker_status: swappedRuntimeWorker.status,
-      error: swappedRuntimeWorker.stderr
+      error: swappedRuntimeWorker.stderr,
+      substituted_key_worker_status: substitutedKeyRuntimeWorker.status,
+      substituted_key_error: substitutedKeyRuntimeWorker.stderr
     }
   );
 
@@ -900,18 +954,39 @@ export async function runReplacementDrill() {
     schemaFor(foundation, nonPrincipalGrant)
   );
   const nonPrincipalGrantWorker = runAgentBWorker(nonPrincipalGrantInput);
+  const expandedGrant = makeGrant(foundation, service, principal, {
+    grantNumber: 233,
+    recipient: runtimeB.keyId,
+    resources: [{ ref: projectionBRef }, { ref: intentRef }],
+    uses: ["read_local", "derive"],
+    purpose: "projection_read",
+    maximumDisclosures: 1
+  });
+  const expandedGrantInput = structuredClone(normalResumeInput);
+  expandedGrantInput.context_grant = expandedGrant;
+  expandedGrantInput.context_grant_ref = objectRefFor(
+    expandedGrant,
+    schemaFor(foundation, expandedGrant)
+  );
+  const expandedGrantWorker = runAgentBWorker(expandedGrantInput);
   recordProbe(
     probes,
     "isolated_agent_b_rejects_tampered_or_nonprincipal_context",
     tamperedGrantWorker.ok === false &&
       /signed object invalid/.test(tamperedGrantWorker.stderr) &&
       nonPrincipalGrantWorker.ok === false &&
-      /controller mismatch/.test(nonPrincipalGrantWorker.stderr),
+      /controller mismatch/.test(nonPrincipalGrantWorker.stderr) &&
+      expandedGrantWorker.ok === false &&
+      /principal\/runtime\/purpose\/use mismatch|one whole-object ScopedProjection grant required/.test(
+        expandedGrantWorker.stderr
+      ),
     {
       tampered_worker_status: tamperedGrantWorker.status,
       tampered_error: tamperedGrantWorker.stderr,
       nonprincipal_worker_status: nonPrincipalGrantWorker.status,
-      nonprincipal_error: nonPrincipalGrantWorker.stderr
+      nonprincipal_error: nonPrincipalGrantWorker.stderr,
+      expanded_grant_worker_status: expandedGrantWorker.status,
+      expanded_grant_error: expandedGrantWorker.stderr
     }
   );
 
@@ -1032,7 +1107,7 @@ export async function runReplacementDrill() {
     recipient: runtimeB.keyId,
     resources: [
       { ref: proposalBRef },
-      { ref: intentRef },
+      { ref: projectionBRef },
       { ref: effectRef }
     ],
     uses: ["derive"],
@@ -1128,17 +1203,29 @@ export async function runReplacementDrill() {
     !sameObjectRef(writeGrantARef, readGrantBRef) &&
     !sameObjectRef(readGrantARef, readGrantBRef) &&
     !sameObjectRef(readGrantARef, prepareGrantBRef);
+  const agentBNormalGrantsContainPrivateIntentScope = [
+    ...readGrantB.resource_scopes,
+    ...prepareGrantB.resource_scopes
+  ].some(({ ref }) => sameObjectRef(ref, intentRef));
   recordProbe(
     probes,
     "agent_b_uses_new_principal_issued_grants",
     grantRefsAreDistinct &&
       readGrantB.recipient === runtimeB.keyId &&
-      prepareGrantB.recipient === runtimeB.keyId,
+      prepareGrantB.recipient === runtimeB.keyId &&
+      readGrantB.resource_scopes.length === 1 &&
+      agentBNormalGrantsContainPrivateIntentScope === false,
     {
       agent_a_write_grant_ref: writeGrantARef,
       agent_a_read_grant_ref: readGrantARef,
       agent_b_read_grant_ref: readGrantBRef,
-      agent_b_prepare_grant_ref: prepareGrantBRef
+      agent_b_prepare_grant_ref: prepareGrantBRef,
+      agent_b_read_scope_refs:
+        readGrantB.resource_scopes.map(({ ref }) => ref),
+      agent_b_prepare_scope_refs:
+        prepareGrantB.resource_scopes.map(({ ref }) => ref),
+      agent_b_normal_grants_contain_private_intent_scope:
+        agentBNormalGrantsContainPrivateIntentScope
     }
   );
 

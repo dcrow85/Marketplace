@@ -27,12 +27,14 @@ import {
   canonicalHash,
   canonicalText,
   objectRefFor,
+  objectRefKey,
   sameObjectRef,
   signatureInput,
   valueAtPointer
 } from "../protocol/lib/core.mjs";
 import {
   operationFingerprint,
+  validateRuntimeBinding,
   validateSignedObject
 } from "../protocol/lib/validation.mjs";
 import { loadReferenceFoundation } from "../protocol/reference-service/service.mjs";
@@ -218,10 +220,36 @@ function validateGrant(
     grant.recipient !== RUNTIME_B_KEY_ID ||
     canonicalText(grant.audience) !== canonicalText([RUNTIME_B_KEY_ID]) ||
     grant.purpose !== purpose ||
-    !grant.uses.includes(use)
+    canonicalText(grant.uses) !== canonicalText([use])
   ) {
     throw new TypeError("DataGrant principal/runtime/purpose/use mismatch");
   }
+}
+
+function requireExactKeys(value, expectedKeys, label) {
+  if (
+    value === null ||
+    typeof value !== "object" ||
+    Array.isArray(value) ||
+    canonicalText(Object.keys(value).sort()) !==
+      canonicalText([...expectedKeys].sort())
+  ) {
+    throw new TypeError(`${label} has unknown or missing fields`);
+  }
+}
+
+function requireExactObjectRef(ref, label) {
+  requireExactKeys(
+    ref,
+    ["schema", "object_id", "object_hash"],
+    label
+  );
+}
+
+function exactObjectUri(ref) {
+  return `https://reference.cairn.cards/cairn/0.1/objects/${encodeURIComponent(
+    objectRefKey(ref)
+  )}`;
 }
 
 function makeEnvelope(
@@ -303,15 +331,49 @@ function projectionScope(grant) {
       ref?.schema === "cairn.scoped_projection.v0.1"
   );
   if (
+    grant.resource_scopes.length !== 1 ||
     candidates.length !== 1 ||
-    canonicalText(candidates[0].field_paths) !== canonicalText([""])
+    canonicalText(candidates[0].field_paths) !== canonicalText([""]) ||
+    candidates[0].retrieval_uri !== exactObjectUri(candidates[0].ref)
   ) {
     throw new TypeError("one whole-object ScopedProjection grant required");
   }
   return candidates[0];
 }
 
+function requireExactWholeObjectScopes(grant, expectedRefs) {
+  if (grant.resource_scopes.length !== expectedRefs.length) {
+    throw new TypeError("DataGrant resource scope set mismatch");
+  }
+  const unmatched = [...grant.resource_scopes];
+  for (const expectedRef of expectedRefs) {
+    const matchIndex = unmatched.findIndex(
+      ({ resource_kind, ref, retrieval_uri, field_paths }) =>
+        resource_kind === "object" &&
+        sameObjectRef(ref, expectedRef) &&
+        canonicalText(field_paths) === canonicalText([""]) &&
+        retrieval_uri === exactObjectUri(expectedRef)
+    );
+    if (matchIndex < 0) {
+      throw new TypeError("DataGrant resource scope set mismatch");
+    }
+    unmatched.splice(matchIndex, 1);
+  }
+}
+
 function resumeRequests(foundation, runtime, input, keyResolver) {
+  requireExactKeys(
+    input,
+    ["mode", "runtime_binding", "context_grant", "context_grant_ref"],
+    "resume input"
+  );
+  requireExactKeys(
+    input.runtime_binding,
+    ["object", "ref", "retrieval_uri"],
+    "runtime binding input"
+  );
+  requireExactObjectRef(input.runtime_binding.ref, "runtime binding ref");
+  requireExactObjectRef(input.context_grant_ref, "context grant ref");
   const forbidden = forbiddenNormalInputKeys(input);
   if (forbidden.length) {
     throw new TypeError(`forbidden normal Agent B input: ${forbidden.join(",")}`);
@@ -322,16 +384,34 @@ function resumeRequests(foundation, runtime, input, keyResolver) {
     PROVIDER_B_ID,
     keyResolver
   );
+  const bindingFailures = validateRuntimeBinding(
+    input.runtime_binding.object,
+    {
+      ajv: foundation.ajv,
+      schemasByObjectId: foundation.schemasByObjectId,
+      keyResolver,
+      now: NOW
+    }
+  );
+  if (bindingFailures.length) {
+    throw new TypeError(
+      `Agent B runtime binding invalid: ${bindingFailures.join(",")}`
+    );
+  }
   const exactRuntimeRef = objectRefFor(
     input.runtime_binding.object,
     schemaFor(foundation, input.runtime_binding.object)
   );
   if (
     !sameObjectRef(exactRuntimeRef, input.runtime_binding.ref) ||
+    input.runtime_binding.retrieval_uri !==
+      exactObjectUri(input.runtime_binding.ref) ||
     input.runtime_binding.object.agent_identity.runtime_instance_key_id !==
       RUNTIME_B_KEY_ID ||
     input.runtime_binding.object.agent_identity.agent_provider_id !==
-      PROVIDER_B_ID
+      PROVIDER_B_ID ||
+    input.runtime_binding.object.runtime_public_key.public_key !==
+      runtime.keyRecord.public_key
   ) {
     throw new TypeError("Agent B runtime-binding identity mismatch");
   }
@@ -372,6 +452,12 @@ function resumeRequests(foundation, runtime, input, keyResolver) {
 }
 
 function makeProposal(foundation, runtime, input, keyResolver) {
+  requireExactKeys(
+    input,
+    ["mode", "projection", "effect", "intent_ref"],
+    "proposal input"
+  );
+  requireExactObjectRef(input.intent_ref, "proposal intent ref");
   if (forbiddenNormalInputKeys(input).length) {
     throw new TypeError("forbidden normal Agent B proposal input");
   }
@@ -389,6 +475,10 @@ function makeProposal(foundation, runtime, input, keyResolver) {
   );
   const projection = input.projection;
   const intentRef = input.intent_ref;
+  const projectionRef = objectRefFor(
+    projection,
+    schemaFor(foundation, projection)
+  );
   const sourceEntry = projection.payload.entries.find(
     ({ output_path }) => output_path === "/targets"
   );
@@ -419,7 +509,7 @@ function makeProposal(foundation, runtime, input, keyResolver) {
     effect_operation_kind: input.effect.effect_semantics.operation_kind,
     effect_provider_id: input.effect.effect_semantics.provider_id,
     copy_ids: structuredClone(input.effect.effect_semantics.copy_ids),
-    resource_refs: [intentRef, effectRef],
+    resource_refs: [projectionRef, effectRef],
     inputs_hash: canonicalHash({
       intent_ref: intentRef,
       projection_hash: projection.projection_hash,
@@ -453,6 +543,12 @@ function makeProposal(foundation, runtime, input, keyResolver) {
 }
 
 function prepareRequest(foundation, runtime, input, keyResolver) {
+  requireExactKeys(
+    input,
+    ["mode", "proposal", "prepare_grant", "prepare_grant_ref"],
+    "prepare input"
+  );
+  requireExactObjectRef(input.prepare_grant_ref, "prepare grant ref");
   if (forbiddenNormalInputKeys(input).length) {
     throw new TypeError("forbidden normal Agent B prepare input");
   }
@@ -473,10 +569,10 @@ function prepareRequest(foundation, runtime, input, keyResolver) {
     input.proposal,
     schemaFor(foundation, input.proposal)
   );
-  const covered = input.prepare_grant.resource_scopes.some(
-    ({ ref }) => ref && sameObjectRef(ref, proposalRef)
+  requireExactWholeObjectScopes(
+    input.prepare_grant,
+    [proposalRef, ...input.proposal.resource_refs]
   );
-  if (!covered) throw new TypeError("prepare grant does not cover proposal");
   return {
     mode: "prepare",
     accepted_input_keys: Object.keys(input).sort(),

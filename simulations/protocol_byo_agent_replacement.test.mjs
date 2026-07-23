@@ -7,7 +7,7 @@ import {
 } from "./protocol_byo_agent_replacement.mjs";
 
 const EXPECTED_REPORT_HASH =
-  "sha-256:8ded6d7f158023a5ba4e76a5d9b4d6515eeb0d81982be09fc5dcc550715f9ece";
+  "sha-256:93823dcb3bb650523e89e78df9d6f9597502541beabcb41ab13da2a8638b3632";
 
 test("an isolated replacement process recovers a bounded projection of the same principal-held intent", async () => {
   const report = await runReplacementDrill();
@@ -50,6 +50,26 @@ test("an isolated replacement process recovers a bounded projection of the same 
     contextProbe.evidence.serialized_input_contains_agent_a_marker,
     false
   );
+  assert.match(
+    contextProbe.evidence.renamed_extra_context_error,
+    /unknown or missing fields/
+  );
+  assert.match(
+    contextProbe.evidence.substituted_uri_error,
+    /runtime-binding identity mismatch/
+  );
+  assert.deepEqual(report.scenario.agent_b.proposal_input_names, [
+    "effect",
+    "intent_ref",
+    "mode",
+    "projection"
+  ]);
+  assert.deepEqual(report.scenario.agent_b.prepare_input_names, [
+    "mode",
+    "prepare_grant",
+    "prepare_grant_ref",
+    "proposal"
+  ]);
   assert.equal(
     report.scenario.agent_b.explicitly_absent_inputs.includes("agent_a_private_key"),
     true
@@ -100,6 +120,11 @@ test("every named replacement attack fails at the intended boundary", async () =
     probes.get("isolated_agent_b_rejects_runtime_swap").passed,
     true
   );
+  assert.match(
+    probes.get("isolated_agent_b_rejects_runtime_swap").evidence
+      .substituted_key_error,
+    /runtime_public_key_material_mismatch|runtime-binding identity mismatch/
+  );
   assert.equal(
     probes.get("isolated_agent_b_rejects_agent_a_grant_swap").passed,
     true
@@ -114,6 +139,11 @@ test("every named replacement attack fails at the intended boundary", async () =
       .evidence.nonprincipal_error,
     /controller mismatch/
   );
+  assert.match(
+    probes.get("isolated_agent_b_rejects_tampered_or_nonprincipal_context")
+      .evidence.expanded_grant_error,
+    /principal\/runtime\/purpose\/use mismatch|one whole-object ScopedProjection grant required/
+  );
   assert.equal(
     probes.get("disconnected_agent_a_cannot_make_new_requests").evidence.failures
       .includes("signing_key_revoked"),
@@ -123,6 +153,20 @@ test("every named replacement attack fails at the intended boundary", async () =
     probes.get("agent_b_cannot_execute_or_pay").evidence,
     { status: 400, code: "operation_unknown" }
   );
+  const grantProbe = probes.get("agent_b_uses_new_principal_issued_grants");
+  assert.equal(
+    grantProbe.evidence.agent_b_normal_grants_contain_private_intent_scope,
+    false
+  );
+  assert.deepEqual(grantProbe.evidence.agent_b_read_scope_refs, [
+    report.scenario.projection_ref
+  ]);
+  for (const scopeRef of [
+    ...grantProbe.evidence.agent_b_read_scope_refs,
+    ...grantProbe.evidence.agent_b_prepare_scope_refs
+  ]) {
+    assert.notDeepEqual(scopeRef, report.scenario.intent_ref);
+  }
 });
 
 test("replacement ends at a legible no-authority, no-effect draft", async () => {
