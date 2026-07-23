@@ -3,7 +3,7 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b";',
+    search: 'export const SPEC_SHA256 = "b140ddf830af1060e522cf5795dc6d66d86ac9371f785a7efc91c7f1c46d48e8";',
     replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
@@ -2021,7 +2021,7 @@ export const PHASE1_MUTANTS = [
     id: "connection-event-outstanding-map-semantics",
     finding: "connection-event-skips-index-to-map-commitment-validation",
     file: "lib/validation.mjs",
-    search: '      failures.push(...validateConnectionOutstandingIndexHead(indexAfter, {\n        ...receiptContext,\n        outstandingActionMap: indexAfterMap,\n        expectedConnectionStateId: after.connection_state_id\n      }).map((code) => `connection_after_${code}`));',
+    search: '      failures.push(...validateConnectionOutstandingIndexHead(indexAfter, deriveEvidenceContext(receiptContext, {\n        outstandingActionMap: indexAfterMap,\n        expectedConnectionStateId: after.connection_state_id\n      })).map((code) => `connection_after_${code}`));',
     replace: '',
     test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
   },
@@ -2391,6 +2391,14 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '          validateDataGrantStateHead(\n            current, deriveEvidenceContext(context, { requireDependencySignatures: true })\n          ).length ||',
     replace: '          validateDataGrantStateHead(\n            current, { ...context, requireDependencySignatures: true }\n          ).length ||',
+    test: "Phase 1 pins the fixed prose and byte-stable proposal dependencies"
+  },
+  {
+    id: "connection-receipt-context-provenance",
+    finding: "connection-receipt-nested-validator-loses-private-provenance",
+    file: "lib/validation.mjs",
+    search: '      validateEnumerableMapRoot(map, deriveEvidenceContext(receiptContext, {\n',
+    replace: '      validateEnumerableMapRoot(map, ({ ...receiptContext,\n',
     test: "Phase 1 pins the fixed prose and byte-stable proposal dependencies"
   },
   {
@@ -3636,6 +3644,14 @@ export const PHASE1_MUTANTS = [
     test: "exact reads authenticate returned bytes and reject stale mutable heads"
   },
   {
+    id: "exact-read-effective-time-snapshot",
+    finding: "exact-read-returns-object-effective-after-retrieval",
+    file: "lib/validation.mjs",
+    search: '    if (Number.isFinite(evidenceSnapshotAt) && Number.isFinite(objectEffectiveAt) &&\n        objectEffectiveAt > evidenceSnapshotAt) {\n      failures.push("object_read_effective_time_after_snapshot");\n    }',
+    replace: '',
+    test: "exact reads authenticate returned bytes and reject stale mutable heads"
+  },
+  {
     id: "exact-read-evidence-snapshot-bound",
     finding: "exact-read-accepts-proof-created-after-retrieval",
     file: "lib/validation.mjs",
@@ -3815,16 +3831,16 @@ export const PHASE1_MUTANTS = [
     id: "activity-list-principal-scope",
     finding: "activity-list-leaks-another-principal",
     file: "lib/validation.mjs",
-    search: '      } else if (summary.principal_id !== context.principalId) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
-    replace: '      } else if (false) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
+    search: '      if (typeof context.principalId === "string" && context.principalId.length > 0 &&\n          summary.principal_id !== context.principalId) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
+    replace: '      if (false) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
     test: "activity surfaces are privacy-minimized projections of exact action state"
   },
   {
     id: "activity-list-principal-required",
     finding: "activity-list-accepts-an-unauthenticated-principal-scope",
     file: "lib/validation.mjs",
-    search: '      if (typeof context.principalId !== "string" || context.principalId.length === 0) {\n        failures.push("activity_list_principal_scope_unresolved");\n      }',
-    replace: '      if (false) {\n        failures.push("activity_list_principal_scope_unresolved");\n      }',
+    search: '    if (typeof context.principalId !== "string" || context.principalId.length === 0) {\n      failures.push("activity_list_principal_scope_unresolved");\n    }',
+    replace: '    if (false) {\n      failures.push("activity_list_principal_scope_unresolved");\n    }',
     test: "activity surfaces are privacy-minimized projections of exact action state"
   },
   {

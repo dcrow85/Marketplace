@@ -36,19 +36,24 @@ reference service.
   instant; and a historical read rejects proof created after its authenticated
   retrieval snapshot. A later revocation or head advance does not rewrite
   earlier evidence. Every exact read also rejects a proof created after its
-  authenticated retrieval snapshot, including current-head reads. Action reads
+  authenticated retrieval snapshot, including current-head reads. The returned
+  object's protocol semantic instant must also be at or before that snapshot;
+  a pre-signed but future-effective current head is rejected. Action reads
   use signed `ExecutionActionView.assembled_at`
   (which must equal the response `retrieved_at`), gate evidence uses
   `evaluated_at`, BindingSet captured-head currentness uses `created_at`, and
   joint receipts use `committed_at`. Missing historical key, policy, or head
   resolution fails closed without a live-state fallback. Historical mode and
   peer-recursion provenance are private object-identity capabilities that a
-  caller field, symbol, or Proxy cannot forge. Every nested validator context
-  is derived through the same private provenance-preserving constructor;
+  caller field, symbol, or Proxy cannot forge. Every nested validator context,
+  including aliases such as `receiptContext`, is derived through the same
+  private provenance-preserving constructor; only the two private constructors
+  may spread a context-bearing object;
 - activity list, summary, and detail are privacy-minimized projections over
   only prepared, authorized, reserved, cancelled, definitive-failure, and
   quarantined states. Activity pages carry an authenticated retrieval snapshot,
-  deterministic cursor, mandatory principal scope and filter checks,
+  deterministic cursor, mandatory page-level principal scope (including empty
+  pages) and filter checks,
   current-head checks, and
   signed bounded action/binding/lineage dependencies. They cannot disclose gate
   eligibility, receiver confirmation/finality, spend state, or an effect result;
@@ -90,9 +95,10 @@ locally verified rooted-proof profile exists. Low-level helpers prove only
 structure, cryptographic math against supplied material, and conditional graph
 consistency; they are not authorizers.
 
-Exact freezes `dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373` and
-`4d62c0fd2d46b5eb182706ea07ce94d3af97798f` are rejected. The post-Round-42
-replacement passes 32/32 authored controls and registers 483 exact-once direct
+Exact freezes `dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373`,
+`4d62c0fd2d46b5eb182706ea07ce94d3af97798f`, and
+`420fa52ecdcab696f3de3b04bda89326992e5ed4` are rejected. The post-Round-43
+replacement passes 32/32 authored controls and registers 485 exact-once direct
 mutants locally. These results describe the current candidate bytes; they are
 not closure until the complete mutation and clean-install replays pass, the
 replacement is frozen in a containing commit, and fresh blind and informed

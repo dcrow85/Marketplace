@@ -59,15 +59,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **Exact freeze `4d62c0fd2d46b5eb182706ea07ce94d3af97798f` is rejected
-  alongside `dd12269c`, `ebd10f4`, `26b7016`, `0b98fff`, `393b87f`, and
-  `902abec`. Round 42 reproduced every advertised control before finding three
-  material P2 gaps: nested DataGrant validation lost private historical
-  provenance through object spread, and `activity.list` did not require an
-  authenticated principal scope; current exact reads also admitted proofs
-  created after retrieval. All are accepted and remediated. The working
-  replacement passes 32/32 authored controls and kills all 483 unique exact-once
-  direct mutants locally and after a disposable clean install. The clean replay
+  **Exact freeze `420fa52ecdcab696f3de3b04bda89326992e5ed4` is rejected
+  alongside `4d62c0f`, `dd12269c`, `ebd10f4`, `26b7016`, `0b98fff`,
+  `393b87f`, and `902abec`. Round 43 reproduced every advertised control before
+  finding three material P2 gaps: empty activity pages bypassed mandatory
+  principal scope, current exact reads admitted future-effective heads when
+  their proof was pre-signed, and the source-wide provenance invariant missed
+  three aliased `{...receiptContext}` reconstructions. All are accepted and
+  remediated. The working replacement passes 32/32 authored controls and kills
+  all 485 unique exact-once direct mutants locally and after a disposable clean
+  install, including all four new or changed focused controls. The clean replay
   also reproduces the unchanged 83/83 plus 75/75 proposal baseline, byte-identical
   generated artifacts, and zero production dependency vulnerabilities.
   Replacement freeze and three fresh exact-commit reviews remain pending.
@@ -79,10 +80,11 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   snapshot. `ActionGet` uses signed `ExecutionActionView.assembled_at` and
   requires envelope `retrieved_at` equality. Historical BindingSet validation
   checks captured connection and DataGrant heads at signed `created_at`; every
-  nested override uses the private provenance-preserving derivation path.
-  Missing activity principal scope now fails closed rather than weakening
-  cross-principal isolation. Current and historical exact reads both bind proof
-  availability to their authenticated retrieval snapshot.
+  nested override—including a context-bearing alias—uses the private
+  provenance-preserving derivation path. Missing activity principal scope now
+  fails closed at the page boundary even when the page is empty. Current and
+  historical exact reads bind both proof availability and the returned object's
+  protocol semantic instant to their authenticated retrieval snapshot.
   Exact outstanding/activity reads authenticate signed map entries and the
   bounded action/state/binding/lineage graph. `execution.activity.list` now has
   a required retrieval snapshot, deterministic cursor, principal/filter/page/
@@ -97,10 +99,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   `phase1_authenticated_resolution_unsupported` until a separately frozen
   rooted-proof profile exists.
   Replacement prose is pinned at
-  `246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b`;
+  `b140ddf830af1060e522cf5795dc6d66d86ac9371f785a7efc91c7f1c46d48e8`;
   internal bundle
-  `sha-256:dd363875cfaf22f0e1c488787b681362c212a5086060eb1fdca7aca0731bac5b`;
-  registry `sha-256:cd49a2c6ae75caa91ee1e6daac0a9aa333bd72142a17fe75566bddbda490edea`.
+  `sha-256:609f940251e0b02cf938ba900b6dfd68d44037d5c1e7259c12a95a0877411aec`;
+  registry `sha-256:7e96e469bd07fd70b963c4903356218f20be20a6da1644fa13c655f5901caf1e`.
   The next freeze will be identified by its containing commit, never by a self-
   referential future SHA. No executor, provider/network review, authorization
   redemption, outbox, payment, release, waiver, UI, catalogue, profile, offer,

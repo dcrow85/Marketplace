@@ -12751,6 +12751,43 @@ complete local replay, disposable clean install, containing-commit freeze, and
 three fresh exact-commit reviews. Reference-service construction remains
 blocked.
 
+### 14.5 Phase-1 empty-page, effective-time, and provenance amendment after rejected freeze 420fa52
+
+Exact freeze
+`420fa52ecdcab696f3de3b04bda89326992e5ed4` is rejected history. Its
+Round-43 informed exact-commit reviewer reproduced every advertised package,
+baseline, clean-install, hash, and containment result before finding three
+material P2 correctness gaps. All are accepted and remediated in the
+replacement candidate:
+
+1. `execution.activity.list` authenticates principal scope at the page boundary,
+   before iterating items. A valid empty page cannot skip the check; missing,
+   empty, or non-string principal scope always fails
+   `activity_list_principal_scope_unresolved`. Per-item equality remains a
+   separate check when a principal is present.
+2. Every exact read binds the returned object's protocol semantic instant to
+   the evidence snapshot as well as binding its proof time. A current head with
+   `updated_at` later than `retrieved_at` fails
+   `object_read_effective_time_after_snapshot` even when its proof was created
+   earlier. Historical immutable objects use their type's protocol event instant
+   under the same upper bound. Proof availability and object effectiveness are
+   distinct relations and both must hold.
+3. The private-provenance source invariant covers object-spread reconstruction
+   from every context-bearing identifier, not only a variable literally named
+   `context`. The only permitted context spreads are inside the two private
+   constructors. Connection-receipt map and outstanding-index validation now
+   derives from `receiptContext` through the private helper, so historical and
+   peer provenance cannot be dropped by aliasing a context variable.
+
+The empty-page case is controlled by the mandatory-principal mutant; the
+effective-time relation and aliased receipt-context relation each add an
+isolated direct mutant. The replacement catalogue therefore contains 485
+unique exact-once mutants. The structural boundary remains 29 schema-only read
+operations with no mutation, external effect, authorization success, service,
+or conformance claim. Complete local and clean replay, a new containing-commit
+freeze, and three fresh exact-commit reviews are required again. Reference-
+service construction remains blocked.
+
 ## 15. Audit protocol
 
 The author cannot be the only verifier. Every finding receives one disposition:
@@ -12771,7 +12808,7 @@ P0 permits unauthorized/unbounded effect or corrupts authoritative history. P1
 permits wrong recipient/amount/scope, budget/duplicate/revocation bypass, false
 receiver finality, or material disclosure. P2 creates likely interoperability,
 recovery, UX, or audit forks. P3 is editorial/hardening. No closure claim is
-made while the Round-39 remediation is pending a fresh containing-commit freeze
+made while the current remediation is pending a fresh containing-commit freeze
 and three-reviewer gate. A deferred P2 names owner, trigger,
 safe interim behavior, and fail-closed basis.
 

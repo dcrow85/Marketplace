@@ -254,6 +254,12 @@ export function validateExactObjectRead(operationName, request, responseObject, 
     const failures = schema["x-cairn-source-spec-sha256"] === undefined
       ? resolvedObjectShapeFailures(returnedObject, objectContext, "object_read_response")
       : validatePhase1Object(returnedObject, objectContext);
+    const evidenceSnapshotAt = protocolTime(responseObject.retrieved_at ?? context.now ?? null);
+    const objectEffectiveAt = protocolTime(historicalObjectInstant(returnedObject, null));
+    if (Number.isFinite(evidenceSnapshotAt) && Number.isFinite(objectEffectiveAt) &&
+        objectEffectiveAt > evidenceSnapshotAt) {
+      failures.push("object_read_effective_time_after_snapshot");
+    }
     if ((schema["x-cairn-signature-pointers"] ?? []).length > 0) {
       failures.push(...validateResolvedSignedObject(returnedObject, objectContext)
         .map((code) => `object_read_${code}`));
@@ -3469,13 +3475,12 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
     if (!indexBeforeValid || !indexAfterValid) failures.push("connection_outstanding_index_head_mismatch");
     const validAggregateMap = (map, head) => Boolean(head) &&
       exactResolved(head.scoped_control_map_ref, map, "cairn.enumerable_map_root.v0.1") &&
-      validateEnumerableMapRoot(map, {
-        ...receiptContext,
+      validateEnumerableMapRoot(map, deriveEvidenceContext(receiptContext, {
         expectedMapDomain: "scoped_execution_control",
         expectedMapKey: executionControlMapKey(
           head.principal_id, head.authority_namespace, head.control_namespace_generation
         )
-      }).length === 0 &&
+      })).length === 0 &&
       head.scoped_control_map_hash === map.map_hash &&
       head.scoped_control_head_count === map.entry_count &&
       head.scoped_control_heads_root === map.entries_root;
@@ -3484,18 +3489,16 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
       failures.push("connection_aggregate_control_map_mismatch");
     }
     if (indexBeforeValid && indexBefore !== null) {
-      failures.push(...validateConnectionOutstandingIndexHead(indexBefore, {
-        ...receiptContext,
+      failures.push(...validateConnectionOutstandingIndexHead(indexBefore, deriveEvidenceContext(receiptContext, {
         outstandingActionMap: indexBeforeMap,
         expectedConnectionStateId: before?.connection_state_id ?? after.connection_state_id
-      }).map((code) => `connection_before_${code}`));
+      })).map((code) => `connection_before_${code}`));
     }
     if (indexAfterValid) {
-      failures.push(...validateConnectionOutstandingIndexHead(indexAfter, {
-        ...receiptContext,
+      failures.push(...validateConnectionOutstandingIndexHead(indexAfter, deriveEvidenceContext(receiptContext, {
         outstandingActionMap: indexAfterMap,
         expectedConnectionStateId: after.connection_state_id
-      }).map((code) => `connection_after_${code}`));
+      })).map((code) => `connection_after_${code}`));
     }
     if (aggregateBeforeValid && aggregateAfterValid) {
       const immutable = ["principal_id", "authority_namespace", "control_namespace_generation"];
@@ -6432,15 +6435,17 @@ export function validateActivityListResponse(request, response, context = {}) {
     const retrievedAt = protocolTime(response.retrieved_at);
     const activityIds = new Set();
     const stateFilter = new Set(request.state_filter);
+    if (typeof context.principalId !== "string" || context.principalId.length === 0) {
+      failures.push("activity_list_principal_scope_unresolved");
+    }
     for (const summary of response.items) {
       if (activityIds.has(summary.activity_id)) failures.push("activity_list_duplicate_activity");
       activityIds.add(summary.activity_id);
       if (stateFilter.size > 0 && !stateFilter.has(summary.state)) {
         failures.push("activity_list_state_filter_mismatch");
       }
-      if (typeof context.principalId !== "string" || context.principalId.length === 0) {
-        failures.push("activity_list_principal_scope_unresolved");
-      } else if (summary.principal_id !== context.principalId) {
+      if (typeof context.principalId === "string" && context.principalId.length > 0 &&
+          summary.principal_id !== context.principalId) {
         failures.push("activity_list_principal_scope_mismatch");
       }
       const itemContext = historicalEvidenceContext(

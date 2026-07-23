@@ -739,8 +739,10 @@ function compartmentStateFixture() {
 
 test("Phase 1 pins the fixed prose and byte-stable proposal dependencies", async () => {
   const validationSource = await readFile(new URL("../lib/validation.mjs", import.meta.url), "utf8");
-  assert.equal([...validationSource.matchAll(/\.\.\.context/g)].length, 2,
-    "nested validator contexts must use the private provenance-preserving derivation helper");
+  assert.equal([
+    ...validationSource.matchAll(/\{\s*\.\.\.(?:[A-Za-z_$][A-Za-z0-9_$]*)?[Cc]ontext\b/g)
+  ].length, 2,
+  "only the two private context constructors may spread a context-bearing object");
   assert.equal(sources.manifest.audited_prose_spec_sha256, SPEC_SHA256);
   assert.equal(sources.manifest.base_bundle_hash, BASE_BUNDLE_HASH);
   assert.equal(sources.manifest.base_operation_registry_hash, BASE_REGISTRY_HASH);
@@ -1149,6 +1151,25 @@ test("exact reads authenticate returned bytes and reject stale mutable heads", (
       ref: lateControlRef, object: lateSignedControl, retrieved_at: "2026-07-22T10:00:00Z"
     }, lateControlContext
   ).includes("object_read_signature_from_future"));
+
+  const futureEffectiveControl = make("cairn.scoped_execution_control_leaf_state_head.v0.1", {
+    ...control,
+    updated_at: "2026-07-22T10:00:01Z",
+    authority_service_signature: {
+      ...control.authority_service_signature,
+      signed_at: "2026-07-22T10:00:00Z"
+    }
+  });
+  const futureEffectiveRef = refFor(futureEffectiveControl);
+  const futureEffectiveContext = signedReadContext(futureEffectiveControl, {
+    ...context,
+    currentHeadResolver: currentHeadResolverFor([futureEffectiveRef])
+  }, futureEffectiveControl.principal_id);
+  assert.ok(validateExactObjectRead(
+    "execution.control.get", { ref: futureEffectiveRef }, {
+      ref: futureEffectiveRef, object: futureEffectiveControl, retrieved_at: "2026-07-22T10:00:00Z"
+    }, futureEffectiveContext
+  ).includes("object_read_effective_time_after_snapshot"));
 
   const corrupted = structuredClone(control);
   corrupted.authority_service_signature.value = "A".repeat(86);
@@ -9385,6 +9406,11 @@ test("activity surfaces are privacy-minimized projections of exact action state"
   assert.equal(omittedPrincipalId, action.principal_id);
   assert.ok(validateActivityListResponse(
     activityListRequest, activityListResponse, activityListWithoutPrincipal
+  ).includes("activity_list_principal_scope_unresolved"));
+  assert.ok(validateActivityListResponse(
+    { ...activityListRequest, state_filter: [] },
+    { ...activityListResponse, items: [], total_disclosed: 0 },
+    activityListWithoutPrincipal
   ).includes("activity_list_principal_scope_unresolved"));
   assert.ok(validateActivityListResponse(
     activityListRequest, activityListResponse,

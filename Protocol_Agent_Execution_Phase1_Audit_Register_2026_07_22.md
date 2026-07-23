@@ -2,12 +2,12 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: exact freeze `4d62c0fd2d46b5eb182706ea07ce94d3af97798f` rejected; Round-42 remediations pass local and clean 32/32 authored controls plus 483/483 exact-once direct mutants, pending replacement freeze and three-reviewer verification
-Round-42 amendment: 2026-07-22
-Rejected-freeze prose dependency SHA-256: `423b023c7d274bb83c57dda5bb36a939080f6c90802c3b1b59b5662899a99f05`
-Replacement prose dependency SHA-256: `246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b`
-Replacement internal bundle hash: `sha-256:dd363875cfaf22f0e1c488787b681362c212a5086060eb1fdca7aca0731bac5b`
-Replacement operation-registry hash: `sha-256:cd49a2c6ae75caa91ee1e6daac0a9aa333bd72142a17fe75566bddbda490edea`
+Status: exact freeze `420fa52ecdcab696f3de3b04bda89326992e5ed4` rejected; Round-43 remediations pass local and clean 32/32 authored controls plus 485/485 exact-once direct mutants, pending replacement freeze and three-reviewer verification
+Round-43 amendment: 2026-07-22
+Rejected-freeze prose dependency SHA-256: `246f1a38c0cad54cf606659e5ec0979b042fbb92a2be3327b80fe7c4b0ad8c9b`
+Replacement prose dependency SHA-256: `b140ddf830af1060e522cf5795dc6d66d86ac9371f785a7efc91c7f1c46d48e8`
+Replacement internal bundle hash: `sha-256:609f940251e0b02cf938ba900b6dfd68d44037d5c1e7259c12a95a0877411aec`
+Replacement operation-registry hash: `sha-256:7e96e469bd07fd70b963c4903356218f20be20a6da1644fa13c655f5901caf1e`
 
 ## Claim boundary
 
@@ -598,10 +598,11 @@ RedemptionReceipt is absent, and recovery is structurally forbidden.
 ActionState and ActionReceipt expose no gate-allowed or post-redemption branch;
 ActionReceipt effect, receiver, and exposure fields are empty/null-only.
 
-The current replacement passes 32/32 authored controls and registers 483
-unique exact-once direct mutants. Its focused Round-42 tranche kills all three
-new or changed controls; the complete mutation, clean-install, proposal-baseline,
-and dependency-audit replays remain pending at this ledger point.
+The current replacement passes 32/32 authored controls and kills all 485
+unique exact-once direct mutants locally and after a disposable clean install.
+Its focused Round-43 tranche kills all four new or changed controls; the clean
+replay also reproduces the unchanged 83/83 plus 75/75 proposal baseline,
+byte-identical artifacts, and zero production dependency vulnerabilities.
 Reference-service work is blocked pending those replays and the frozen review
 gate.
 
@@ -702,6 +703,41 @@ Both clean dependency audits found zero known production vulnerabilities. A
 replacement containing-commit hash and three fresh exact-commit reviews remain
 pending. Reference-service construction remains blocked.
 
+## Independent audit round 43 — rejected freeze and remediation ledger
+
+Exact freeze `420fa52ecdcab696f3de3b04bda89326992e5ed4` is rejected. Its
+informed exact-commit reviewer reproduced 32/32 authored controls, 483/483
+mutants, the unchanged 83/83 plus 75/75 proposal baseline, exact hashes and
+containment counts, byte-identical clean-install artifacts, and zero dependency
+vulnerabilities before finding the three material P2 gaps below. Three attempted
+blind lanes were stopped by an automated classifier without a technical verdict;
+those null results are not counted as reviews. All findings are
+`accepted_and_fixed`; that disposition records implementation, not closure.
+
+| ID | Report | Sev. | Independent finding | Disposition | Replacement remediation | Verification |
+|---|---|---:|---|---|---|---|
+| P2R43-P-001 | informed release | P2 | Mandatory `activity.list` principal scope was checked only inside the item loop, so an empty page bypassed it | accepted_and_fixed | Principal presence is validated once at the page boundary before iteration; per-item equality remains separate | empty-page authored counterexample passed; mandatory-principal mutant killed |
+| P2R43-T-001 | informed release | P2 | A current exact read could return a head whose `updated_at` followed `retrieved_at` when its proof had been pre-signed | accepted_and_fixed | Exact reads bind the object's protocol semantic instant independently of proof time and reject it after the evidence snapshot | future-effective current-head counterexample passed; direct mutant killed |
+| P2R43-C-001 | informed release | P2 | The claimed source-wide provenance invariant counted only literal `...context` and missed three `{...receiptContext}` nested reconstructions | accepted_and_fixed | The source invariant covers every context-bearing object-spread alias; receipt map and outstanding-index paths use the private derivation helper | source invariant passed with only two private constructors; aliased-context mutant killed |
+
+The replacement retains 50 schema documents, 46 object schemas, and 29
+schema-only read operations. It passes 32/32 authored controls and kills all
+485 unique exact-once direct mutants locally and after a disposable
+`npm ci --ignore-scripts`; all four new or changed focused controls are killed.
+The clean replay reproduced byte-identical execution bundle and registry files
+with SHA-256
+`d6b005c86eaaddc38f168164b62bdbd4374800940363a67aa21b180510dc554e` and
+`ef926b5d69a6f3c79b6f0c6efd13c832533ca782da04fb13c3c7ae8154732689`.
+Their internal canonical hashes are respectively
+`609f940251e0b02cf938ba900b6dfd68d44037d5c1e7259c12a95a0877411aec` and
+`7e96e469bd07fd70b963c4903356218f20be20a6da1644fa13c655f5901caf1e`.
+The unchanged proposal baseline reproduced 83/83 authored controls, 75/75
+mutants, and base bundle file SHA-256
+`d97af006b86c1d3c7ae4597c01976a8c1185e366e9cc58d5646f0a2680fae70e`.
+Both clean dependency audits found zero known production vulnerabilities. A
+replacement containing-commit hash and three fresh exact-commit reviews remain
+pending. Reference-service construction remains blocked.
+
 ## Local remediation ledger
 
 | ID | Sev. | Finding | Disposition | Remediation |
@@ -721,7 +757,7 @@ This register remains open until a reviewer who did not author the candidate:
 
 1. verifies the replacement containing-commit hash, bundle hash, registry hash,
    and repinned prose hash before and after a read-only review;
-2. reproduces 32/32 authored controls and 483/483 direct mutants, with every
+2. reproduces 32/32 authored controls and 485/485 direct mutants, with every
    mutation anchor matching exactly once;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
