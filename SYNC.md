@@ -59,31 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **Every accepted P1/material-P2 finding through the round-26 targeted cold
-  audit and round-28 prose/code audit is remediated; local closure is green and
-  the replacement is ready for exact-commit freeze and a fresh three-reviewer
-  gate.**
+  **Every accepted P1/material-P2 finding through round 32 is remediated; local
+  closure is green and the replacement is ready for exact-commit freeze and a
+  fresh three-reviewer gate.**
   Candidate internal hash is
-  `sha-256:c68afaf5e0d88c562a44b57bbd51e4976346f36221e778786498de6212d3f2c8`
+  `sha-256:86aa6c7ebce831205d8d0c66edc8580b7f0c9696391d3470c255d098270c4679`
   and registry hash is
-  `sha-256:66e22edf41ad5650d0d1fcf069a0cd264480db82708e86608e586a1edc1f4ccf`.
+  `sha-256:20b8da602b6e3a3625b18e5742560c8f4cf077cd08c98bf2f209119988a96e5e`.
   The audited prose hash is
-  `c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4`.
-  It contains 42 closed signed-object schemas, one content-addressed map-node
-  schema, and 33 schema-only read operations, with zero mutation, external-
-  effect, or authority-effect rows. Local controls pass 27/27 and kill 299/299
-  direct mutants. The frozen proposal baseline separately remains 83/83 with
+  `e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015`.
+  It contains 43 closed signed-object schemas, one content-addressed map-node
+  schema, four support documents, and 34 schema-only read operations, with zero
+  mutation, external-effect, or authority-effect rows. Local controls pass
+  30/30 and kill 330/330 direct mutants. The frozen proposal baseline separately remains 83/83 with
   75/75 mutants killed at bundle hash
   `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
-  This replacement closes authoritative GateRequest dependency projection,
-  exact connection runtime/authorization/current-head semantics and mandate
-  interval containment, exact two-domain enumerable map leaves/proofs, full
-  ActionReceipt validation on connection updates, and the complete six-cause
-  receiver lifecycle. Receiver terminal evidence, release plans, identity/trust/
-  future/stream/connection transitions, deterministic completion, and every
-  exact read now fail closed on unresolved or substituted dependencies. The
-  completion keyset and connection/stream successor seams are directly mutation
-  controlled.
+  This replacement closes authenticated/current exact reads; current nonce and
+  reserved-judgment policy; exact runtime/authorization/connection/DataGrant
+  graphs; signed DataGrant lifecycle; ordered gates; signed control successors;
+  three-domain compartment manifests and economic deltas; and receiver identity,
+  one-slot consumption, stream successor, and terminal-completion assignment
+  closure. Every new boundary has a direct killed mutant.
   No executor, provider/network review, authorization redemption, outbox,
   payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
   or live state change is created or authorized. The reference service remains
@@ -95,7 +91,7 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   prose-design closure and was subsequently field-hardened during Phase 1.**
   The prior closure hash `a30de7da1af5a9f2497ec26f3dd4f552a6640fdb1e13c4b03f2c76479cccd386`
   was intentionally superseded; the exact current prose SHA-256 is
-  `c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4`.
+  `e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015`.
   Before the field-hardening reopen, the original artifact had:
   38 audit rounds dispositioned AE-001 through AE-361, then one fresh
   context-blind reviewer and one informed full-regression reviewer independently

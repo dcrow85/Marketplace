@@ -12,6 +12,14 @@ const MAX_CANONICAL_STRING_BYTES = 65_536;
 const MAX_URI_OR_OBJECT_REF_BYTES = 4_096;
 const MAX_JSON_NESTING_DEPTH = 32;
 const MAX_PROPERTIES_PER_OBJECT = 512;
+const CURRENT_EXACT_READ_OPERATIONS = new Set([
+  "execution.control.get",
+  "execution.connection_state.get",
+  "execution.data_grant_state.get",
+  "execution.connection_outstanding_action_index.get",
+  "execution.compartment_state.get",
+  "execution.lineage_state.get"
+]);
 
 export const IMPLEMENTED_PHASE1_INVARIANTS = new Set([
   "connection_event_union", "control_target_union", "recovery_signature_union", "scoped_control_target_union",
@@ -182,9 +190,19 @@ export function validateExactObjectRead(operationName, request, responseObject, 
       return ["object_read_request_ref_mismatch"];
     }
     const failures = schema["x-cairn-source-spec-sha256"] === undefined
-      ? verifyObjectBindings(returnedObject, schema)
+      ? resolvedObjectShapeFailures(returnedObject, context, "object_read_response")
       : validatePhase1Object(returnedObject, context);
-    failures.push(...intrinsicObjectFailures(returnedObject, context)
+    if ((schema["x-cairn-signature-pointers"] ?? []).length > 0) {
+      failures.push(...validateResolvedSignedObject(returnedObject, context)
+        .map((code) => `object_read_${code}`));
+    }
+    if (CURRENT_EXACT_READ_OPERATIONS.has(operationName) &&
+        !sameObjectRef(resolveCurrentHead(context, returnedRef), returnedRef)) {
+      failures.push("object_read_current_head_mismatch");
+    }
+    failures.push(...intrinsicObjectFailures(returnedObject, {
+      ...context, requireDependencySignatures: true, historicalRead: true
+    })
       .map((code) => `object_read_${code}`));
     if (operationName === "execution.enumerable_map.get") {
       failures.push(...validateEnumerableMapReadRequest(request, returnedObject, context)
@@ -229,6 +247,8 @@ function intrinsicObjectFailures(object, context) {
       return validateConnectionAuthorization(object, context);
     case "cairn.agent_connection_state_head.v0.1":
       return validateConnectionStateHead(object, context);
+    case "cairn.data_grant_state_head.v0.1":
+      return validateDataGrantStateHead(object, context);
     case "cairn.enumerable_map_node.v0.1": return validateEnumerableMapNode(object, context);
     case "cairn.enumerable_map_root.v0.1": return validateEnumerableMapRoot(object, context);
     case "cairn.connection_outstanding_action_entry.v0.1":
@@ -246,6 +266,7 @@ function intrinsicObjectFailures(object, context) {
     case "cairn.connection_outstanding_action_index_transition_receipt.v0.1":
       return validateConnectionOutstandingIndexTransitionReceipt(object, context);
     case "cairn.execution_control_authorization.v0.1": return validateControlAuthorization(object, context);
+    case "cairn.execution_control_receipt.v0.1": return validateExecutionControlReceipt(object, context);
     case "cairn.connection_state_event_receipt.v0.1": return validateConnectionEvent(
       object,
       context.connectionBefore ?? resolveObject(context.objectResolver, object.connection_before_head_ref),
@@ -254,8 +275,12 @@ function intrinsicObjectFailures(object, context) {
     );
     case "cairn.scoped_execution_control_leaf_state_head.v0.1": return validateScopedControlLeaf(object, context);
     case "cairn.agent_execution_compartment.v0.1": return validateCompartmentDefinition(object, context);
+    case "cairn.compartment_state_head.v0.1": return validateCompartmentStateHead(object, context);
+    case "cairn.compartment_state_transition_receipt.v0.1":
+      return validateCompartmentStateTransitionReceipt(object, context);
     case "cairn.agent_mandate.v0.3": return validateMandate(object, context);
     case "cairn.lineage_commitment.v0.1": return validateLineageCommitment(object, context);
+    case "cairn.lineage_state_head.v0.1": return validateLineageStateHead(object, context);
     case "cairn.lineage_activation_receipt.v0.1": {
       const graph = context.lineageActivationGraph ??
         context.lineageActivationGraphResolver?.get?.(object.receipt_hash);
@@ -431,8 +456,7 @@ export function validateActionGetResponse(request, response, context = {}) {
       ...(response.confirmation_receipt === null ? [] : [["confirmation_receipt", response.confirmation_receipt]]),
       ...(response.gate_request === null ? [] : [["gate_request", response.gate_request]]),
       ...(response.gate_result === null ? [] : [["gate_result", response.gate_result]])
-    ]) failures.push(...validatePhase1Object(object, context).map((code) => `action_get_${name}_${code}`));
-    if (failures.length) return unique(failures);
+    ]) failures.push(...validateResolvedSignedObject(object, context).map((code) => `action_get_${name}_${code}`));
     if (!sameObjectRef(request.ref, response.ref) || !exactRef(response.ref, response.view, context) ||
         !exactRef(response.view.action_record_ref, response.action_record, context) ||
         !exactRef(response.view.current_action_state_head_ref, response.current_action_state_head, context) ||
@@ -440,6 +464,21 @@ export function validateActionGetResponse(request, response, context = {}) {
         !exactRef(response.view.current_activity_detail_ref, response.current_activity_detail, context) ||
         !exactRef(response.current_action_state_head.action_ref, response.action_record, context)) {
       failures.push("action_get_embedded_ref_mismatch");
+    }
+    for (const [name, reference] of [
+      ["action_state", response.view.current_action_state_head_ref],
+      ["lineage_state", response.view.current_lineage_state_head_ref],
+      ["activity_detail", response.view.current_activity_detail_ref]
+    ]) {
+      if (!sameObjectRef(resolveCurrentHead(context, reference), reference)) {
+        failures.push(`action_get_current_${name}_mismatch`);
+      }
+    }
+    if (validateLineageStateHead(response.current_lineage_state_head, {
+      ...context, requireDependencySignatures: true,
+      lineageCommitment: response.lineage_commitment
+    }).length) {
+      failures.push("action_get_current_lineage_state_invalid");
     }
     if (response.current_action_state_head.action_id !== response.action_record.action_id) {
       failures.push("action_get_action_id_mismatch");
@@ -667,11 +706,15 @@ function expectedControllerFor(object, pointer, proof, context) {
   return context.expectedControllersByPointer?.[pointer] ?? null;
 }
 
-export function validatePhase1SignedObject(object, context = {}) {
+function validateResolvedSignedObject(object, context = {}) {
   try {
-    const failures = validatePhase1Object(object, context);
+    const schema = schemaForResolvedObject(object, context);
+    const failures = schema?.["x-cairn-source-spec-sha256"] === undefined
+      ? resolvedObjectShapeFailures(object, context, "signed_object")
+      : validatePhase1Object(object, context);
     if (failures.length) return failures;
-    const schema = schemaFor(object, context);
+    if (!schema || !Array.isArray(schema["x-cairn-signature-pointers"]) ||
+        schema["x-cairn-signature-pointers"].length === 0) return ["signed_object_signature_profile_missing"];
     for (const pointer of schema["x-cairn-signature-pointers"]) {
       const proof = valueAtPointer(object, pointer);
       const key = resolveKey(context.keyResolver, proof.key_id);
@@ -709,8 +752,15 @@ export function validatePhase1SignedObject(object, context = {}) {
     }
     return unique(failures);
   } catch {
-    return ["phase1_signed_object_malformed"];
+    return ["signed_object_malformed"];
   }
+}
+
+export function validatePhase1SignedObject(object, context = {}) {
+  if (!schemaFor(object, context)) return ["phase1_signed_object_schema_unknown"];
+  return validateResolvedSignedObject(object, context).map((code) =>
+    code === "signed_object_malformed" ? "phase1_signed_object_malformed" : code
+  );
 }
 
 function objectRef(object, context) {
@@ -834,6 +884,81 @@ export function validateScopedControlLeaf(value, context = {}) {
   }
 }
 
+export function validateExecutionControlReceipt(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    failures.push(...refHashPairFailures(value, [
+      ["control_authorization_ref", "control_authorization_hash"],
+      ["control_namespace_ref", "control_namespace_hash"],
+      ["prior_control_namespace_ref", "prior_control_namespace_hash"],
+      ["prior_revoked_control_head_ref", "prior_revoked_control_head_hash"],
+      ["before_control_head_ref", "before_control_head_hash"],
+      ["after_control_head_ref", "after_control_head_hash"],
+      ["before_scoped_control_map_ref", "before_scoped_control_map_hash"],
+      ["after_scoped_control_map_ref", "after_scoped_control_map_hash"],
+      ["scoped_leaf_before_ref", "scoped_leaf_before_hash"],
+      ["scoped_leaf_after_ref", "scoped_leaf_after_hash"],
+      ["connection_state_event_receipt_ref", "connection_state_event_receipt_hash"],
+      ["recovery_grant_transition_receipt_ref", "recovery_grant_transition_receipt_hash"],
+      ["outstanding_action_index_head_ref", "outstanding_action_index_head_hash"]
+    ], "execution_control_receipt_ref_hash_mismatch"));
+    const authorizationBasis = value.authorization_basis_kind === "control_authorization";
+    if (authorizationBasis !== (value.control_authorization_ref !== null) ||
+        authorizationBasis === (value.control_namespace_ref !== null)) {
+      failures.push("execution_control_receipt_authority_union_mismatch");
+    }
+    const scoped = value.cause === "scoped_control";
+    const jointConnection = value.cause === "connection_joint_control";
+    const scopedLeafCause = scoped || jointConnection;
+    if (scopedLeafCause !== (value.scoped_leaf_after_ref !== null) ||
+        (jointConnection && value.scoped_leaf_before_ref === null) ||
+        (!scopedLeafCause && (value.scoped_leaf_before_ref !== null || value.scoped_leaf_after_ref !== null)) ||
+        jointConnection !== (value.connection_state_event_receipt_ref !== null)) {
+      failures.push("execution_control_receipt_cause_union_mismatch");
+    }
+    const before = value.before_control_head_ref === null ? null :
+      resolveObject(context.objectResolver, value.before_control_head_ref);
+    const after = resolveObject(context.objectResolver, value.after_control_head_ref);
+    if ((before !== null && (!exactRef(value.before_control_head_ref, before, context) ||
+        validatePhase1Object(before, context).length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(before, context).length))) || !after ||
+        !exactRef(value.after_control_head_ref, after, context) || validatePhase1Object(after, context).length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(after, context).length) ||
+        (before === null && value.cause !== "namespace_genesis") ||
+        (before !== null && (after.sequence !== before.sequence + 1 ||
+          after.previous_head_hash !== before.head_hash || after.principal_id !== before.principal_id ||
+          after.principal_id !== value.principal_id))) {
+      failures.push("execution_control_receipt_head_transition_mismatch");
+    }
+    if (scopedLeafCause) {
+      const leafBefore = value.scoped_leaf_before_ref === null ? null :
+        resolveObject(context.objectResolver, value.scoped_leaf_before_ref);
+      const leafAfter = resolveObject(context.objectResolver, value.scoped_leaf_after_ref);
+      if ((leafBefore !== null && (!exactRef(value.scoped_leaf_before_ref, leafBefore, context) ||
+          validateScopedControlLeaf(leafBefore, context).length ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(leafBefore, context).length))) ||
+          !leafAfter || !exactRef(value.scoped_leaf_after_ref, leafAfter, context) ||
+          validateScopedControlLeaf(leafAfter, context).length ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(leafAfter, context).length) ||
+          (leafBefore !== null && (leafAfter.sequence !== leafBefore.sequence + 1 ||
+            leafAfter.previous_state_hash !== leafBefore.head_hash ||
+            leafAfter.scoped_control_leaf_key !== leafBefore.scoped_control_leaf_key ||
+            leafAfter.principal_id !== leafBefore.principal_id))) {
+        failures.push("execution_control_receipt_scoped_leaf_transition_mismatch");
+      }
+    }
+    const committedAt = Date.parse(value.committed_at);
+    const signedAt = Date.parse(value.authority_service_signature?.signed_at);
+    if (![committedAt, signedAt].every(Number.isFinite) || signedAt < committedAt) {
+      failures.push("execution_control_receipt_chronology_invalid");
+    }
+    return unique(failures);
+  } catch {
+    return ["execution_control_receipt_malformed"];
+  }
+}
+
 export function connectionOutstandingMapKey(outstandingActionIndexKey) {
   return canonicalHash({
     schema: "cairn.enumerable_map_key_preimage.v0.1",
@@ -861,6 +986,9 @@ export function validateConnectionAuthorization(value, context = {}) {
       failures.push("connection_authorization_runtime_unresolved");
     } else {
       failures.push(...resolvedObjectShapeFailures(runtime, context, "connection_authorization_runtime"));
+      if (context.requireDependencySignatures === true && validateResolvedSignedObject(runtime, context).length) {
+        failures.push("connection_authorization_runtime_signature_invalid");
+      }
       const runtimeSchema = context.baseSchemasByObjectId?.get(runtime.schema);
       if (!runtimeSchema || !sameObjectRef(value.agent_runtime_binding_ref, objectRefFor(runtime, runtimeSchema))) {
         failures.push("connection_authorization_runtime_ref_mismatch");
@@ -894,6 +1022,7 @@ export function validateConnectionStateHead(value, context = {}) {
       resolveObject(context.objectResolver, value.connection_authorization_ref);
     if (!authorization || authorization.schema !== "cairn.agent_connection_authorization.v0.1" ||
         !exactRef(value.connection_authorization_ref, authorization, context) ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(authorization, context).length) ||
         validateConnectionAuthorization(authorization, context).length ||
         value.connection_authorization_hash !== authorization.authorization_hash ||
         value.principal_id !== authorization.principal_id ||
@@ -911,6 +1040,76 @@ export function validateConnectionStateHead(value, context = {}) {
     return unique(failures);
   } catch {
     return ["connection_state_head_malformed"];
+  }
+}
+
+const DATA_GRANT_STATE_EDGES = new Map([
+  ["active", new Set(["active", "paused", "exhausted", "revoked", "expired"])],
+  ["paused", new Set(["active", "revoked", "expired"])],
+  ["exhausted", new Set(["revoked", "expired"])],
+  ["revoked", new Set()],
+  ["expired", new Set()]
+]);
+
+export function validateDataGrantStateHead(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    const grant = resolveObject(context.objectResolver, value.data_grant_ref);
+    const grantSchema = schemaForResolvedObject(grant, context);
+    if (!grant || grant.schema !== "cairn.data_grant.v0.1" || !grantSchema ||
+        !sameObjectRef(value.data_grant_ref, objectRefFor(grant, grantSchema)) ||
+        resolvedObjectShapeFailures(grant, context, "data_grant_state_grant").length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(grant, context).length) ||
+        grant.principal_id !== value.principal_id || value.expires_at !== grant.expires_at ||
+        value.revocation_nonce < grant.revocation_nonce) {
+      failures.push("data_grant_state_grant_mismatch");
+    }
+    if (value.sequence === 0) {
+      if (value.previous_state_hash !== null || value.state !== "active" ||
+          value.revocation_nonce !== grant?.revocation_nonce ||
+          value.remaining_reads !== grant?.maximum_disclosures || value.remaining_reads < 1) {
+        failures.push("data_grant_state_genesis_mismatch");
+      }
+    } else {
+      const predecessorRef = {
+        schema: value.schema, object_id: value.data_grant_state_id, object_hash: value.previous_state_hash
+      };
+      const predecessor = typeof context.statePredecessorResolver === "function"
+        ? context.statePredecessorResolver(predecessorRef) : resolveObject(context.objectResolver, predecessorRef);
+      if (!predecessor || !exactRef(predecessorRef, predecessor, context) ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(predecessor, context).length) ||
+          predecessor.data_grant_state_id !== value.data_grant_state_id ||
+          predecessor.principal_id !== value.principal_id ||
+          !sameObjectRef(predecessor.data_grant_ref, value.data_grant_ref) ||
+          value.sequence !== predecessor.sequence + 1 || value.revocation_nonce < predecessor.revocation_nonce ||
+          value.remaining_reads > predecessor.remaining_reads ||
+          !DATA_GRANT_STATE_EDGES.get(predecessor.state)?.has(value.state) ||
+          value.maximum_response_bytes !== predecessor.maximum_response_bytes ||
+          value.maximum_response_items !== predecessor.maximum_response_items ||
+          canonicalHash(value.query_bound) !== canonicalHash(predecessor.query_bound) ||
+          value.expires_at !== predecessor.expires_at ||
+          Date.parse(value.updated_at) < Date.parse(predecessor.updated_at)) {
+        failures.push("data_grant_state_predecessor_mismatch");
+      }
+      const isReadDecrement = predecessor?.state === "active" && value.state === "active";
+      const isFinalRead = predecessor?.state === "active" && value.state === "exhausted";
+      const isControlTransition = predecessor && value.state !== predecessor.state && !isFinalRead;
+      if ((isReadDecrement && (value.remaining_reads !== predecessor.remaining_reads - 1 ||
+          value.revocation_nonce !== predecessor.revocation_nonce)) ||
+          (isFinalRead && (predecessor.remaining_reads !== 1 || value.remaining_reads !== 0 ||
+            value.revocation_nonce !== predecessor.revocation_nonce)) ||
+          (isControlTransition && (value.remaining_reads !== predecessor.remaining_reads ||
+            value.revocation_nonce !== predecessor.revocation_nonce + 1))) {
+        failures.push("data_grant_state_transition_mismatch");
+      }
+    }
+    if (Date.parse(value.updated_at) >= Date.parse(value.expires_at)) {
+      failures.push("data_grant_state_interval_mismatch");
+    }
+    return unique(failures);
+  } catch {
+    return ["data_grant_state_head_malformed"];
   }
 }
 
@@ -979,17 +1178,46 @@ function inspectEnumerableMapNode(node, context, mapDomain) {
         schema: "cairn.receiver_outstanding_stream_entry.v0.1",
         keyField: "outstanding_stream_key",
         validate: validateReceiverOutstandingStreamEntry
+      }],
+      ["compartment_active_reservation", {
+        entryKind: "compartment_active_reservation",
+        schema: "cairn.current_reservation_index_entry.v0.1",
+        keyField: "reservation_index_key",
+        hashField: "entry_hash",
+        external: true
+      }],
+      ["compartment_economic_atom", {
+        entryKind: "compartment_economic_atom",
+        schema: "cairn.current_economic_atom.v0.1",
+        keyField: "atom_id",
+        hashField: "atom_hash",
+        external: true
+      }],
+      ["compartment_confirmed_event", {
+        entryKind: "compartment_confirmed_event",
+        schema: "cairn.confirmed_economic_event_entry.v0.1",
+        keyField: "confirmed_event_key",
+        hashField: "event_hash",
+        external: true
       }]
     ]).get(mapDomain);
     const entryObject = resolveObject(context.objectResolver, leaf?.entry_object_ref);
+    const exactEntry = domainProfile?.external === true
+      ? exactExternalObject(
+        leaf?.entry_object_ref, entryObject, domainProfile.schema, context,
+        domainProfile.hashField, [domainProfile.keyField]
+      )
+      : exactRef(leaf?.entry_object_ref, entryObject, context);
+    const validEntry = domainProfile?.external === true
+      ? exactEntry
+      : domainProfile?.validate(entryObject, context).length === 0;
     if (!isObject(leaf) || node.branch_children.length !== 0 || node.subtree_entry_count !== 1 ||
         node.path_prefix_nibbles !== keyHex || leaf.entry_object_hash !== leaf.entry_object_ref?.object_hash ||
         !domainProfile || leaf.entry_kind !== domainProfile.entryKind ||
         leaf.entry_object_ref?.schema !== domainProfile.schema ||
-        !entryObject || entryObject.schema !== domainProfile.schema ||
-        !exactRef(leaf.entry_object_ref, entryObject, context) ||
+        !entryObject || entryObject.schema !== domainProfile.schema || !exactEntry ||
         entryObject[domainProfile.keyField] !== leaf.entry_key ||
-        domainProfile.validate(entryObject, context).length !== 0 ||
+        !validEntry ||
         node.entries_root !== enumerableMapLeafEntriesRoot(mapDomain, leaf)) {
       failures.push("map_node_leaf_union_mismatch");
     }
@@ -1163,11 +1391,19 @@ export function validateReceiverOutstandingStreamEntry(value, context = {}) {
     const eventAssignment = resolveObject(context.objectResolver, value.event_id_slot_assignment_ref);
     const sequenceAssignment = resolveObject(context.objectResolver, value.sequence_slot_assignment_ref);
     if (!exactExternalObject(value.event_id_slot_assignment_ref, eventAssignment,
-      "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["assignment_key"]) ||
+      "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["slot_assignment_id"]) ||
         !exactExternalObject(value.sequence_slot_assignment_ref, sequenceAssignment,
-          "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["assignment_key"]) ||
-        eventAssignment.assigned_identity_epoch !== value.assigned_identity_epoch ||
-        sequenceAssignment.assigned_identity_epoch !== value.assigned_identity_epoch) {
+          "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["slot_assignment_id"]) ||
+        eventAssignment.epoch !== value.assigned_identity_epoch ||
+        sequenceAssignment.epoch !== value.assigned_identity_epoch ||
+        eventAssignment.slot_kind !== "receiver_event_id" || sequenceAssignment.slot_kind !== "receiver_sequence" ||
+        eventAssignment.state !== "reserved" || sequenceAssignment.state !== "reserved" ||
+        !sameObjectRef(eventAssignment.action_ref, value.action_ref) ||
+        !sameObjectRef(sequenceAssignment.action_ref, value.action_ref) ||
+        eventAssignment.effect_id !== value.effect_id || sequenceAssignment.effect_id !== value.effect_id ||
+        eventAssignment.lineage_id !== value.lineage_id || sequenceAssignment.lineage_id !== value.lineage_id ||
+        eventAssignment.stream_closure_or_horizon_rule_hash !== value.authenticated_closure_or_horizon_rule_hash ||
+        sequenceAssignment.stream_closure_or_horizon_rule_hash !== value.authenticated_closure_or_horizon_rule_hash) {
       failures.push("receiver_outstanding_entry_slot_assignment_mismatch");
     }
     const trustManifest = resolveObject(context.objectResolver, value.trust_epoch_assignment_manifest_ref);
@@ -1182,9 +1418,10 @@ export function validateReceiverOutstandingStreamEntry(value, context = {}) {
     if (value.current_receiver_stream_head_ref !== null) {
       const stream = resolveObject(context.objectResolver, value.current_receiver_stream_head_ref);
       if (!exactExternalObject(value.current_receiver_stream_head_ref, stream,
-        "cairn.receiver_event_stream_state_head.v0.1", context, "state_hash", ["receiver_event_stream_key"]) ||
+        "cairn.receiver_event_stream_state_head.v0.1", context, "head_hash", ["receiver_event_stream_key"]) ||
           stream.receiver_event_stream_key !== value.current_receiver_stream_head_ref.object_id ||
           !sameObjectRef(stream.action_ref, value.action_ref) || stream.effect_id !== value.effect_id ||
+          stream.precommitted_client_reference !== value.precommitted_client_reference ||
           !sameObjectRef(stream.finality_transition_profile_ref, value.finality_transition_profile_ref) ||
           stream.finality_transition_profile_hash !== value.finality_transition_profile_hash) {
         failures.push("receiver_outstanding_entry_stream_binding_mismatch");
@@ -1273,6 +1510,187 @@ export function receiverTerminalCompletionKey(plan) {
     schema: "cairn.receiver_terminal_release_completion_key_preimage.v0.1",
     terminal_release_plan_key: plan.terminal_release_plan_key
   });
+}
+
+const RECEIVER_IDENTITY_TRANSITION_CAUSES = new Map([
+  ["reservation_registered", { receiptCause: "reserved_entry_added", assignmentState: "reserved", before: false,
+    membership: true, consumption: "reserve" }],
+  ["authenticated_event_observed", { receiptCause: "reserved_entry_consumed",
+    before: true, consumption: "consume_one" }],
+  ["authenticated_stream_closed", { receiptCause: "authenticated_stream_closure_release",
+    assignmentState: "released_on_authenticated_closure", before: true, membership: false,
+    consumption: "release" }],
+  ["authenticated_irreversible_horizon", { receiptCause: "authenticated_irreversible_horizon_release",
+    assignmentState: "released_on_authenticated_horizon", before: true, membership: false,
+    consumption: "release" }],
+  ["fenced_non_submission", { receiptCause: "fenced_non_submission_release",
+    assignmentState: "released_on_fenced_non_submission", before: true, membership: false,
+    consumption: "release" }]
+]);
+
+function boundedAssignmentTransitionFailures(transition, expectedAssignmentRefs, receiverCause,
+  authorityTransactionId, evidenceRef, context) {
+  const profile = RECEIVER_IDENTITY_TRANSITION_CAUSES.get(receiverCause);
+  const failures = [];
+  if (!profile || transition.cause !== profile.receiptCause ||
+      transition.authority_transaction_id !== authorityTransactionId ||
+      !Array.isArray(transition.reservation_assignment_transitions) ||
+      transition.reservation_assignment_transitions_root !==
+        canonicalHash(transition.reservation_assignment_transitions) ||
+      canonicalHash(transition.terminal_release_evidence_ref) !==
+        canonicalHash(["authenticated_stream_closed", "authenticated_irreversible_horizon", "fenced_non_submission"]
+          .includes(receiverCause) ? evidenceRef : null) ||
+      transition.terminal_release_evidence_hash !==
+        (["authenticated_stream_closed", "authenticated_irreversible_horizon", "fenced_non_submission"]
+          .includes(receiverCause) ? evidenceRef?.object_hash ?? null : null)) {
+    failures.push("bounded_assignment_transition_header_mismatch");
+    return failures;
+  }
+  const matchedRefs = [];
+  for (const item of transition.reservation_assignment_transitions) {
+    const beforeRef = item.assignment_before_ref;
+    const afterRef = item.assignment_after_ref;
+    if ((beforeRef === null) !== !profile.before ||
+        item.assignment_before_hash !== (beforeRef?.object_hash ?? null) ||
+        item.assignment_after_hash !== afterRef?.object_hash) {
+      failures.push("bounded_assignment_transition_shape_mismatch");
+      continue;
+    }
+    const assignmentRef = profile.before ? beforeRef : afterRef;
+    const assignmentBefore = profile.before ? resolveObject(context.objectResolver, beforeRef) : null;
+    const assignmentAfter = resolveObject(context.objectResolver, afterRef);
+    const beforeExact = !profile.before || exactExternalObject(beforeRef, assignmentBefore,
+      "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["slot_assignment_id"]);
+    const afterExact = exactExternalObject(afterRef, assignmentAfter,
+      "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["slot_assignment_id"]);
+    if (!beforeExact) {
+      failures.push("bounded_assignment_transition_before_assignment_mismatch");
+    }
+    if (!afterExact) {
+      failures.push("bounded_assignment_transition_after_assignment_mismatch");
+    }
+    if (beforeExact && afterExact && profile.before && ["slot_assignment_id", "directory_key", "epoch", "action_ref", "effect_id", "lineage_id",
+      "slot_kind", "reserved_slots", "stream_closure_or_horizon_rule_hash"].some((field) =>
+      canonicalHash(assignmentBefore?.[field]) !== canonicalHash(assignmentAfter?.[field]))) {
+      failures.push("bounded_assignment_transition_assignment_mismatch");
+    }
+    if (afterExact && profile.consumption === "reserve" &&
+        (assignmentAfter?.state !== "reserved" || assignmentAfter?.consumed_slots !== 0 ||
+         item.after_map_membership !== true)) {
+      failures.push("bounded_assignment_transition_consumption_mismatch");
+    } else if (beforeExact && afterExact && profile.consumption === "consume_one") {
+      const expectedConsumed = assignmentBefore?.consumed_slots + 1;
+      const fullyConsumed = expectedConsumed === assignmentBefore?.reserved_slots;
+      if (!Number.isInteger(expectedConsumed) || expectedConsumed > assignmentBefore?.reserved_slots ||
+          assignmentAfter?.consumed_slots !== expectedConsumed ||
+          assignmentAfter?.state !== (fullyConsumed ? "fully_consumed" : "reserved") ||
+          item.after_map_membership !== !fullyConsumed) {
+        failures.push("bounded_assignment_transition_consumption_mismatch");
+      }
+    } else if (beforeExact && afterExact && profile.consumption === "release" &&
+        (assignmentAfter?.state !== profile.assignmentState ||
+         assignmentAfter?.consumed_slots !== assignmentBefore?.consumed_slots ||
+         item.after_map_membership !== false)) {
+      failures.push("bounded_assignment_transition_consumption_mismatch");
+    }
+    matchedRefs.push(assignmentRef);
+  }
+  if (canonicalHash(sortedUniqueRefs(matchedRefs)) !== canonicalHash(sortedUniqueRefs(expectedAssignmentRefs)) ||
+      matchedRefs.length !== expectedAssignmentRefs.length) {
+    failures.push("bounded_assignment_transition_set_mismatch");
+  }
+  return unique(failures);
+}
+
+function exactBoundedIdentityTransition(reference, expectedAssignmentRefs, receiverCause,
+  authorityTransactionId, evidenceRef, context) {
+  const transition = resolveObject(context.objectResolver, reference);
+  if (!exactExternalObject(reference, transition, "cairn.bounded_index_epoch_transition_receipt.v0.1",
+    context, "receipt_hash", ["receipt_hash"])) {
+    return { transition, failures: ["bounded_identity_transition_unresolved"] };
+  }
+  return {
+    transition,
+    failures: boundedAssignmentTransitionFailures(transition, expectedAssignmentRefs, receiverCause,
+      authorityTransactionId, evidenceRef, context)
+  };
+}
+
+function receiverEventIdentityTransitionFailures(reference, entry, scopeBefore, scopeAfter,
+  authorityTransactionId, context) {
+  const receipt = resolveObject(context.objectResolver, reference);
+  const failures = [];
+  if (!exactExternalObject(reference, receipt, "cairn.receiver_event_identity_binding_receipt.v0.1",
+    context, "receipt_hash", ["receipt_hash"])) {
+    return ["receiver_event_identity_binding_receipt_unresolved"];
+  }
+  const pairs = [
+    ["binding_core_ref", "binding_core_hash"],
+    ["identity_scope_index_before_head_ref", "identity_scope_index_before_head_hash"],
+    ["identity_scope_index_after_head_ref", "identity_scope_index_after_head_hash"],
+    ["identity_epoch_directory_before_head_ref", "identity_epoch_directory_before_head_hash"],
+    ["identity_epoch_directory_after_head_ref", "identity_epoch_directory_after_head_hash"],
+    ["assigned_identity_epoch_before_head_ref", "assigned_identity_epoch_before_head_hash"],
+    ["assigned_identity_epoch_after_head_ref", "assigned_identity_epoch_after_head_hash"],
+    ["event_id_slot_assignment_before_ref", "event_id_slot_assignment_before_hash"],
+    ["event_id_slot_assignment_after_ref", "event_id_slot_assignment_after_hash"],
+    ["sequence_slot_assignment_before_ref", "sequence_slot_assignment_before_hash"],
+    ["sequence_slot_assignment_after_ref", "sequence_slot_assignment_after_hash"],
+    ["event_id_identity_head_ref", "event_id_identity_head_hash"],
+    ["provider_sequence_identity_head_ref", "provider_sequence_identity_head_hash"]
+  ];
+  if (refHashPairFailures(receipt, pairs, "receiver_event_identity_ref_hash_mismatch").length ||
+      receipt.authority_transaction_id !== authorityTransactionId ||
+      !sameObjectRef(receipt.identity_scope_index_before_head_ref,
+        { schema: scopeBefore?.schema, object_id: scopeBefore?.identity_scope_index_key,
+          object_hash: scopeBefore?.head_hash }) ||
+      !sameObjectRef(receipt.identity_scope_index_after_head_ref,
+        { schema: scopeAfter?.schema, object_id: scopeAfter?.identity_scope_index_key,
+          object_hash: scopeAfter?.head_hash }) ||
+      !sameObjectRef(receipt.identity_epoch_directory_before_head_ref, scopeBefore?.index_epoch_directory_head_ref) ||
+      receipt.identity_epoch_directory_before_head_hash !== scopeBefore?.index_epoch_directory_head_hash ||
+      !sameObjectRef(receipt.identity_epoch_directory_after_head_ref, scopeAfter?.index_epoch_directory_head_ref) ||
+      receipt.identity_epoch_directory_after_head_hash !== scopeAfter?.index_epoch_directory_head_hash ||
+      !sameObjectRef(receipt.assigned_identity_epoch_before_head_ref,
+        scopeBefore?.accepting_index_epoch_state_head_ref) ||
+      receipt.assigned_identity_epoch_before_head_hash !== scopeBefore?.accepting_index_epoch_state_head_hash ||
+      !sameObjectRef(receipt.assigned_identity_epoch_after_head_ref,
+        scopeAfter?.accepting_index_epoch_state_head_ref) ||
+      receipt.assigned_identity_epoch_after_head_hash !== scopeAfter?.accepting_index_epoch_state_head_hash ||
+      !sameObjectRef(receipt.event_id_slot_assignment_before_ref, entry.event_id_slot_assignment_ref) ||
+      receipt.event_id_slot_assignment_before_hash !== entry.event_id_slot_assignment_hash ||
+      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, entry.sequence_slot_assignment_ref) ||
+      receipt.sequence_slot_assignment_before_hash !== entry.sequence_slot_assignment_hash) {
+    failures.push("receiver_event_identity_binding_receipt_mismatch");
+  }
+  const transitions = [
+    {
+      assignment_before_ref: receipt.event_id_slot_assignment_before_ref,
+      assignment_before_hash: receipt.event_id_slot_assignment_before_hash,
+      assignment_after_ref: receipt.event_id_slot_assignment_after_ref,
+      assignment_after_hash: receipt.event_id_slot_assignment_after_hash,
+      after_map_membership: resolveObject(context.objectResolver,
+        receipt.event_id_slot_assignment_after_ref)?.state === "reserved"
+    },
+    {
+      assignment_before_ref: receipt.sequence_slot_assignment_before_ref,
+      assignment_before_hash: receipt.sequence_slot_assignment_before_hash,
+      assignment_after_ref: receipt.sequence_slot_assignment_after_ref,
+      assignment_after_hash: receipt.sequence_slot_assignment_after_hash,
+      after_map_membership: resolveObject(context.objectResolver,
+        receipt.sequence_slot_assignment_after_ref)?.state === "reserved"
+    }
+  ];
+  failures.push(...boundedAssignmentTransitionFailures({
+    cause: "reserved_entry_consumed",
+    authority_transaction_id: authorityTransactionId,
+    reservation_assignment_transitions: transitions,
+    reservation_assignment_transitions_root: canonicalHash(transitions),
+    terminal_release_evidence_ref: null,
+    terminal_release_evidence_hash: null
+  }, [entry.event_id_slot_assignment_ref, entry.sequence_slot_assignment_ref],
+  "authenticated_event_observed", authorityTransactionId, null, context));
+  return unique(failures);
 }
 
 export function receiverTerminalPlanToReceiptKeysetEqualityHash(plan, completion) {
@@ -1395,14 +1813,25 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
         value.authority_transaction_id !== receiverTransition.authority_transaction_id) {
       failures.push("receiver_terminal_completion_plan_mismatch");
     }
+    const identityTransitionGroups = new Map();
     for (const item of value.identity_epoch_transition_receipts) {
       const assignment = resolveObject(context.objectResolver, item.assignment_ref);
-      const transition = resolveObject(context.objectResolver, item.transition_receipt_ref);
       if (!exactExternalObject(item.assignment_ref, assignment,
-        "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["assignment_key"]) ||
-          !exactExternalObject(item.transition_receipt_ref, transition,
-            "cairn.bounded_index_epoch_transition_receipt.v0.1", context, "receipt_hash",
-            ["receipt_id", "receipt_hash"]) || !sameObjectRef(transition.assignment_ref, item.assignment_ref)) {
+        "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["slot_assignment_id"]) ||
+          item.assignment_hash !== item.assignment_ref.object_hash ||
+          item.transition_receipt_hash !== item.transition_receipt_ref.object_hash) {
+        failures.push("receiver_terminal_completion_identity_transition_mismatch");
+      }
+      const groupKey = canonicalText(item.transition_receipt_ref);
+      const group = identityTransitionGroups.get(groupKey) ?? {
+        ref: item.transition_receipt_ref, assignments: []
+      };
+      group.assignments.push(item.assignment_ref);
+      identityTransitionGroups.set(groupKey, group);
+    }
+    for (const group of identityTransitionGroups.values()) {
+      if (exactBoundedIdentityTransition(group.ref, group.assignments, plan.release_cause,
+        value.authority_transaction_id, plan.terminal_release_evidence_ref, context).failures.length) {
         failures.push("receiver_terminal_completion_identity_transition_mismatch");
       }
     }
@@ -1425,13 +1854,30 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
         const transition = resolveObject(context.objectResolver, entry.entry_object_ref);
         if (!exactExternalObject(entry.entry_object_ref, transition,
           "cairn.bounded_index_epoch_transition_receipt.v0.1", context, "receipt_hash",
-          ["receipt_id", "receipt_hash"]) || !transition.assignment_ref) {
+          ["receipt_hash"]) || !Array.isArray(transition.reservation_assignment_transitions)) {
           failures.push("receiver_terminal_completion_trust_transition_mismatch");
-        } else transitionAssignments.push(transition.assignment_ref);
+        } else {
+          const refs = transition.reservation_assignment_transitions.map(({ assignment_before_ref }) => assignment_before_ref);
+          if (refs.some((reference) => reference === null) ||
+              boundedAssignmentTransitionFailures(transition, refs, plan.release_cause,
+                value.authority_transaction_id, plan.terminal_release_evidence_ref, context).length) {
+            failures.push("receiver_terminal_completion_trust_transition_mismatch");
+          }
+          transitionAssignments.push(...refs);
+        }
       }
-      if (canonicalHash(sortedUniqueRefs(transitionAssignments)) !== canonicalHash(sortedUniqueRefs(
-        trustAssignmentManifest.sorted_entries.map(({ entry_object_ref }) => entry_object_ref)
-      ))) failures.push("receiver_terminal_completion_trust_transition_mismatch");
+      const trustAssignmentRefs = trustAssignmentManifest.sorted_entries.map(({ entry_object_ref }) => entry_object_ref);
+      for (const reference of trustAssignmentRefs) {
+        const assignment = resolveObject(context.objectResolver, reference);
+        if (!exactExternalObject(reference, assignment, "cairn.bounded_index_slot_assignment.v0.1",
+          context, "assignment_hash", ["slot_assignment_id"]) || assignment.slot_kind !== "trust_assertion") {
+          failures.push("receiver_terminal_completion_trust_transition_mismatch");
+        }
+      }
+      if (transitionAssignments.length !== trustAssignmentRefs.length ||
+          canonicalHash(sortedUniqueRefs(transitionAssignments)) !== canonicalHash(sortedUniqueRefs(trustAssignmentRefs))) {
+        failures.push("receiver_terminal_completion_trust_transition_mismatch");
+      }
     }
     const futureRequired = plan.future_dependency_assignment_ref !== null;
     if (futureRequired !== (value.future_dependency_transition_receipt_ref !== null)) {
@@ -1440,9 +1886,33 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
       const futureTransition = resolveObject(context.objectResolver, value.future_dependency_transition_receipt_ref);
       if (!exactExternalObject(value.future_dependency_transition_receipt_ref, futureTransition,
         "cairn.future_dependency_capacity_transition_receipt.v0.1", context, "receipt_hash",
-        ["receipt_id", "receipt_hash"]) ||
-          !sameObjectRef(futureTransition.assignment_ref, plan.future_dependency_assignment_ref)) {
+        ["receipt_hash"]) ||
+          futureTransition.cause !== RECEIVER_IDENTITY_TRANSITION_CAUSES.get(plan.release_cause)?.receiptCause ||
+          !sameObjectRef(futureTransition.before_head_ref, plan.future_dependency_pool_state_head_ref) ||
+          futureTransition.before_head_hash !== plan.future_dependency_pool_state_head_hash ||
+          !sameObjectRef(futureTransition.assignment_before_ref, plan.future_dependency_assignment_ref) ||
+          futureTransition.assignment_before_hash !== plan.future_dependency_assignment_hash ||
+          !sameObjectRef(futureTransition.release_or_repair_evidence_ref, plan.terminal_release_evidence_ref) ||
+          futureTransition.release_or_repair_evidence_hash !== plan.terminal_release_evidence_hash ||
+          futureTransition.authority_transaction_id !== value.authority_transaction_id) {
         failures.push("receiver_terminal_completion_future_union_mismatch");
+      } else {
+        const beforeAssignment = resolveObject(context.objectResolver, futureTransition.assignment_before_ref);
+        const afterAssignment = resolveObject(context.objectResolver, futureTransition.assignment_after_ref);
+        const expectedState = new Map([
+          ["authenticated_stream_closed", "released_on_authenticated_closure"],
+          ["authenticated_irreversible_horizon", "released_on_authenticated_horizon"],
+          ["fenced_non_submission", "released_on_fenced_non_submission"]
+        ]).get(plan.release_cause);
+        if (!exactExternalObject(futureTransition.assignment_before_ref, beforeAssignment,
+          "cairn.future_dependency_assignment.v0.1", context, "assignment_hash", ["assignment_id"]) ||
+            !exactExternalObject(futureTransition.assignment_after_ref, afterAssignment,
+              "cairn.future_dependency_assignment.v0.1", context, "assignment_hash", ["assignment_id"]) ||
+            afterAssignment.state !== expectedState ||
+            ["assignment_id", "pool_key", "action_ref", "effect_id", "lineage_id", "reserved_slots"].some((field) =>
+              canonicalHash(beforeAssignment?.[field]) !== canonicalHash(afterAssignment?.[field]))) {
+          failures.push("receiver_terminal_completion_future_union_mismatch");
+        }
       }
     }
     const closure = plan.release_cause === "authenticated_stream_closed";
@@ -1464,7 +1934,7 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
     } else if (horizon) {
       const unchangedStream = resolveObject(context.objectResolver, value.unchanged_receiver_stream_head_ref);
       if (!exactExternalObject(value.unchanged_receiver_stream_head_ref, unchangedStream,
-        "cairn.receiver_event_stream_state_head.v0.1", context, "state_hash", ["receiver_event_stream_key"]) ||
+        "cairn.receiver_event_stream_state_head.v0.1", context, "head_hash", ["receiver_event_stream_key"]) ||
           !sameObjectRef(value.unchanged_receiver_stream_head_ref, plan.receiver_stream_before_head_ref) ||
           !sameObjectRef(value.unchanged_receiver_stream_head_ref,
             receiverTransition.unchanged_receiver_stream_head_ref)) {
@@ -1481,8 +1951,18 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
     }
     const committedAt = Date.parse(value.committed_at);
     const signedAt = Date.parse(value.authority_service_signature?.signed_at);
+    const childTransitionRefs = [
+      ...value.identity_epoch_transition_receipts.map(({ transition_receipt_ref }) => transition_receipt_ref),
+      ...(trustTransitionManifest?.sorted_entries ?? []).map(({ entry_object_ref }) => entry_object_ref),
+      value.future_dependency_transition_receipt_ref,
+      value.receiver_stream_transition_receipt_ref
+    ].filter((reference) => reference !== null);
+    const childTransitionTimes = [...new Map(childTransitionRefs.map((reference) => [
+      canonicalText(reference), resolveObject(context.objectResolver, reference)
+    ])).values()].map((object) => Date.parse(object?.committed_at));
     const dependencyTimes = [Date.parse(plan.issued_at), Date.parse(receiverTransition.committed_at),
-      ...(connectionTransition === null ? [] : [Date.parse(connectionTransition.committed_at)])];
+      ...(connectionTransition === null ? [] : [Date.parse(connectionTransition.committed_at)]),
+      ...childTransitionTimes];
     if (![committedAt, signedAt, ...dependencyTimes].every(Number.isFinite) ||
         dependencyTimes.some((time) => time > committedAt) || signedAt < committedAt) {
       failures.push("receiver_terminal_completion_chronology_invalid");
@@ -1572,11 +2052,18 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
         selectorAfter.receiver_sequence_epoch_selector_key !== after.receiver_sequence_epoch_selector_key ||
         selectorAfter.sequence !== selectorBefore.sequence + 1 || selectorAfter.previous_state_hash !== selectorBefore.head_hash ||
         !exactExternalObject(value.assigned_identity_scope_before_head_ref, scopeBefore,
-          "cairn.receiver_event_identity_index_state_head.v0.1", context, "state_hash", ["identity_scope_index_key"]) ||
+          "cairn.receiver_event_identity_index_state_head.v0.1", context, "head_hash", ["identity_scope_index_key"]) ||
         !exactExternalObject(value.assigned_identity_scope_after_head_ref, scopeAfter,
-          "cairn.receiver_event_identity_index_state_head.v0.1", context, "state_hash", ["identity_scope_index_key"]) ||
+          "cairn.receiver_event_identity_index_state_head.v0.1", context, "head_hash", ["identity_scope_index_key"]) ||
         scopeBefore.identity_scope_index_key !== after.identity_scope_index_key ||
-        scopeAfter.identity_scope_index_key !== after.identity_scope_index_key) {
+        scopeAfter.identity_scope_index_key !== after.identity_scope_index_key ||
+        scopeBefore.receiver_sequence_epoch_selector_key !== after.receiver_sequence_epoch_selector_key ||
+        scopeAfter.receiver_sequence_epoch_selector_key !== after.receiver_sequence_epoch_selector_key ||
+        scopeBefore.state !== "active" || scopeAfter.state !== "active" ||
+        (value.cause === "handoff_bound"
+          ? !sameObjectRef(value.assigned_identity_scope_before_head_ref, value.assigned_identity_scope_after_head_ref)
+          : (scopeAfter.sequence !== scopeBefore.sequence + 1 ||
+            scopeAfter.previous_state_hash !== scopeBefore.head_hash))) {
       failures.push("receiver_outstanding_transition_selector_scope_mismatch");
     }
     const beforeMap = resolveObject(context.objectResolver, value.outstanding_stream_map_before_ref);
@@ -1638,12 +2125,15 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
       const streamBefore = resolveObject(context.objectResolver, before?.current_receiver_stream_head_ref);
       const streamAfter = resolveObject(context.objectResolver, after.current_receiver_stream_head_ref);
       if (!exactExternalObject(before?.current_receiver_stream_head_ref, streamBefore,
-        "cairn.receiver_event_stream_state_head.v0.1", context, "state_hash", ["receiver_event_stream_key"]) ||
+        "cairn.receiver_event_stream_state_head.v0.1", context, "head_hash", ["receiver_event_stream_key"]) ||
           !exactExternalObject(after.current_receiver_stream_head_ref, streamAfter,
-            "cairn.receiver_event_stream_state_head.v0.1", context, "state_hash", ["receiver_event_stream_key"]) ||
-          streamAfter.receiver_event_stream_key !== streamBefore.receiver_event_stream_key ||
+            "cairn.receiver_event_stream_state_head.v0.1", context, "head_hash", ["receiver_event_stream_key"]) ||
+          ["receiver_event_stream_key", "receiver_id", "receiver_account_or_contract_scope", "operation_kind",
+            "action_ref", "effect_id", "precommitted_client_reference", "finality_transition_profile_ref",
+            "finality_transition_profile_hash"].some((field) =>
+            canonicalHash(streamAfter?.[field]) !== canonicalHash(streamBefore?.[field])) ||
           streamAfter.sequence !== streamBefore.sequence + 1 ||
-          streamAfter.previous_state_hash !== streamBefore.state_hash) {
+          streamAfter.previous_state_hash !== streamBefore.head_hash) {
         failures.push("receiver_outstanding_transition_event_stream_successor_mismatch");
       }
     } else if (terminal) {
@@ -1671,17 +2161,33 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
     if (value.cause === "handoff_bound") {
       const unchangedScope = resolveObject(context.objectResolver, value.unchanged_assigned_identity_epoch_head_ref);
       if (!exactExternalObject(value.unchanged_assigned_identity_epoch_head_ref, unchangedScope,
-        "cairn.receiver_event_identity_index_state_head.v0.1", context, "state_hash", ["identity_scope_index_key"]) ||
+        "cairn.receiver_event_identity_index_state_head.v0.1", context, "head_hash", ["identity_scope_index_key"]) ||
           !sameObjectRef(value.unchanged_assigned_identity_epoch_head_ref,
-            value.assigned_identity_scope_before_head_ref)) {
+            value.assigned_identity_scope_before_head_ref) ||
+          !sameObjectRef(value.unchanged_assigned_identity_epoch_head_ref,
+            value.assigned_identity_scope_after_head_ref)) {
         failures.push("receiver_outstanding_transition_assigned_epoch_union_mismatch");
       }
-    } else {
-      const identityTransition = resolveObject(context.objectResolver, value.identity_epoch_transition_receipt_ref);
-      if (!exactExternalObject(value.identity_epoch_transition_receipt_ref, identityTransition,
-        "cairn.bounded_index_epoch_transition_receipt.v0.1", context, "receipt_hash",
-        ["receipt_id", "receipt_hash"])) {
+    } else if (value.cause === "authenticated_event_observed") {
+      if (receiverEventIdentityTransitionFailures(value.identity_epoch_transition_receipt_ref,
+        after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {
         failures.push("receiver_outstanding_transition_identity_transition_mismatch");
+      }
+    } else {
+      const identityResult = exactBoundedIdentityTransition(value.identity_epoch_transition_receipt_ref,
+        [after.event_id_slot_assignment_ref, after.sequence_slot_assignment_ref], value.cause,
+        value.authority_transaction_id, terminal ? value.terminal_release_evidence_ref : null, context);
+      const identityTransition = identityResult.transition;
+      if (identityResult.failures.length ||
+          !sameObjectRef(identityTransition?.before_directory_head_ref, scopeBefore?.index_epoch_directory_head_ref) ||
+          identityTransition?.before_directory_head_hash !== scopeBefore?.index_epoch_directory_head_hash ||
+          identityTransition?.before_directory_head_hash !== identityTransition?.before_directory_head_ref?.object_hash ||
+          !sameObjectRef(identityTransition?.after_directory_head_ref, scopeAfter?.index_epoch_directory_head_ref) ||
+          identityTransition?.after_directory_head_hash !== scopeAfter?.index_epoch_directory_head_hash ||
+          identityTransition?.after_directory_head_hash !== identityTransition?.after_directory_head_ref?.object_hash) {
+        failures.push("receiver_outstanding_transition_identity_transition_mismatch");
+        failures.push(...identityResult.failures.map((code) =>
+          `receiver_outstanding_transition_identity_transition_${code}`));
       }
     }
     if (value.cause === "authenticated_stream_closed") {
@@ -1697,7 +2203,7 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
       if (value.receiver_stream_transition_receipt_ref !== null ||
           !sameObjectRef(value.unchanged_receiver_stream_head_ref, before?.current_receiver_stream_head_ref) ||
           !exactExternalObject(value.unchanged_receiver_stream_head_ref, unchangedStream,
-            "cairn.receiver_event_stream_state_head.v0.1", context, "state_hash", ["receiver_event_stream_key"])) {
+            "cairn.receiver_event_stream_state_head.v0.1", context, "head_hash", ["receiver_event_stream_key"])) {
         failures.push("receiver_outstanding_transition_horizon_union_mismatch");
       }
     } else if (value.receiver_stream_transition_receipt_ref !== null ||
@@ -2443,6 +2949,260 @@ export function validateCompartmentDefinition(value, context = {}) {
   }
 }
 
+export function validateCompartmentStateHead(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    if ((value.sequence === 0) !== (value.previous_state_hash === null) ||
+        (value.state === "frozen") !== (value.pre_freeze_state !== null)) {
+      failures.push("compartment_state_union_mismatch");
+    }
+    const compartment = resolveObject(context.objectResolver, value.compartment_ref);
+    if (!compartment || !exactRef(value.compartment_ref, compartment, context) ||
+        validateCompartmentDefinition(compartment, context).length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(compartment, context).length) ||
+        value.economic_resource_key !== compartment.economic_resource_key ||
+        value.compartment_control_key !== compartment.compartment_control_key ||
+        value.authority_ledger_namespace !== compartment.authority_ledger_namespace) {
+      failures.push("compartment_state_definition_mismatch");
+    }
+    const manifestChecks = [
+      [value.active_reservation_manifest_ref, value.active_reservation_manifest_hash,
+        value.active_reservation_count, value.active_reservations_root, "compartment_active_reservation"],
+      [value.current_economic_atom_manifest_ref, value.current_economic_atom_manifest_hash,
+        value.current_economic_atom_count, null, "compartment_economic_atom"],
+      [value.confirmed_event_manifest_ref, value.confirmed_event_manifest_hash,
+        value.confirmed_event_count, null, "compartment_confirmed_event"]
+    ];
+    for (const [reference, hash, count, entriesRoot, mapDomain] of manifestChecks) {
+      const manifest = resolveObject(context.objectResolver, reference);
+      if (!manifest || manifest.schema !== "cairn.enumerable_map_root.v0.1" ||
+          !exactRef(reference, manifest, context) || hash !== manifest.map_hash ||
+          validateEnumerableMapRoot(manifest, { ...context, expectedMapDomain: mapDomain }).length ||
+          manifest.entry_count !== count ||
+          (entriesRoot !== null && manifest.entries_root !== entriesRoot) ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(manifest, context).length)) {
+        failures.push("compartment_state_manifest_mismatch");
+      }
+    }
+    const accountingAsset = compartment?.accounting_asset;
+    for (const money of [value.receiver_backed_available, value.cairn_reserved, value.confirmed_spent,
+      value.confirmed_refunded, value.confirmed_reversal_loss, value.outstanding_reversal_exposure,
+      value.quarantine_exposure].filter((item) => item !== null)) {
+      if (money.asset !== accountingAsset) failures.push("compartment_state_asset_mismatch");
+    }
+    if (value.sequence === 0) {
+      if (value.fencing_token !== 0) failures.push("compartment_state_genesis_mismatch");
+    } else {
+      const predecessorRef = {
+        schema: value.schema, object_id: value.compartment_state_id,
+        object_hash: value.previous_state_hash
+      };
+      const predecessor = typeof context.statePredecessorResolver === "function"
+        ? context.statePredecessorResolver(predecessorRef) : resolveObject(context.objectResolver, predecessorRef);
+      if (!predecessor || !exactRef(predecessorRef, predecessor, context) ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(predecessor, context).length) ||
+          predecessor.compartment_state_id !== value.compartment_state_id ||
+          !sameObjectRef(predecessor.compartment_ref, value.compartment_ref) ||
+          predecessor.economic_resource_key !== value.economic_resource_key ||
+          predecessor.compartment_control_key !== value.compartment_control_key ||
+          predecessor.authority_ledger_namespace !== value.authority_ledger_namespace ||
+          value.sequence !== predecessor.sequence + 1 || value.fencing_token < predecessor.fencing_token ||
+          Date.parse(value.observed_at) < Date.parse(predecessor.observed_at)) {
+        failures.push("compartment_state_predecessor_mismatch");
+      }
+    }
+    return unique(failures);
+  } catch {
+    return ["compartment_state_head_malformed"];
+  }
+}
+
+export function validateCompartmentStateTransitionReceipt(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    failures.push(...refHashPairFailures(value, [
+      ["economic_mutation_cause_core_ref", "economic_mutation_cause_core_hash"],
+      ["before_head_ref", "before_head_hash"], ["after_head_ref", "after_head_hash"],
+      ["reservation_manifest_before_ref", "reservation_manifest_before_hash"],
+      ["reservation_manifest_after_ref", "reservation_manifest_after_hash"],
+      ["economic_atom_manifest_before_ref", "economic_atom_manifest_before_hash"],
+      ["economic_atom_manifest_after_ref", "economic_atom_manifest_after_hash"],
+      ["confirmed_event_manifest_before_ref", "confirmed_event_manifest_before_hash"],
+      ["confirmed_event_manifest_after_ref", "confirmed_event_manifest_after_hash"],
+      ["economic_atom_delta_manifest_ref", "economic_atom_delta_manifest_hash"]
+    ], "compartment_transition_ref_hash_mismatch"));
+    const before = value.before_head_ref === null ? null : resolveObject(context.objectResolver, value.before_head_ref);
+    const after = resolveObject(context.objectResolver, value.after_head_ref);
+    if ((before === null) !== (value.cause === "onboard") ||
+        (before !== null && (!exactRef(value.before_head_ref, before, context) ||
+          validateCompartmentStateHead(before, context).length)) ||
+        !after || !exactRef(value.after_head_ref, after, context) ||
+        validateCompartmentStateHead(after, context).length || after.compartment_control_key !== value.compartment_control_key ||
+        (before === null ? (after.sequence !== 0 || after.previous_state_hash !== null) :
+          (after.sequence !== before.sequence + 1 || after.previous_state_hash !== before.state_hash ||
+           after.compartment_control_key !== before.compartment_control_key ||
+           after.compartment_state_id !== before.compartment_state_id ||
+           !sameObjectRef(after.compartment_ref, before.compartment_ref) ||
+           after.economic_resource_key !== before.economic_resource_key ||
+           after.authority_ledger_namespace !== before.authority_ledger_namespace))) {
+      failures.push("compartment_transition_head_mismatch");
+    }
+    const causeCore = resolveObject(context.objectResolver, value.economic_mutation_cause_core_ref);
+    const expectedCoreCause = value.cause === "onboard" ? "compartment_onboarded" : value.cause;
+    if (!exactExternalObject(value.economic_mutation_cause_core_ref, causeCore,
+      "cairn.economic_mutation_cause_core.v0.1", context, "core_hash", ["economic_mutation_id"]) ||
+        causeCore.cause_kind !== expectedCoreCause ||
+        causeCore.economic_resource_key !== after?.economic_resource_key ||
+        causeCore.authority_transaction_id !== value.authority_transaction_id ||
+        canonicalHash(causeCore.before_compartment_heads ?? []) !== canonicalHash(before === null ? [] : [{
+          compartment_control_key: before.compartment_control_key,
+          head_ref: value.before_head_ref,
+          head_hash: value.before_head_hash
+        }])) {
+      failures.push("compartment_transition_cause_core_mismatch");
+    }
+    const deltaManifest = resolveObject(context.objectResolver, value.economic_atom_delta_manifest_ref);
+    if (!deltaManifest || deltaManifest.schema !== "cairn.enumerable_transition_manifest.v0.1" ||
+        !exactRef(value.economic_atom_delta_manifest_ref, deltaManifest, context) ||
+        validateTransitionManifest(deltaManifest, context).length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(deltaManifest, context).length) ||
+        deltaManifest.manifest_kind !== "compartment_economic_atom_deltas" ||
+        !sameObjectRef(deltaManifest.subject_ref, value.economic_mutation_cause_core_ref) ||
+        deltaManifest.subject_hash !== value.economic_mutation_cause_core_hash ||
+        deltaManifest.authority_transaction_id !== value.authority_transaction_id) {
+      failures.push("compartment_transition_delta_manifest_mismatch");
+    }
+    const deltaEntries = [];
+    if (deltaManifest?.manifest_kind === "compartment_economic_atom_deltas") {
+      for (const manifestEntry of deltaManifest.sorted_entries) {
+        const delta = resolveObject(context.objectResolver, manifestEntry.entry_object_ref);
+        if (manifestEntry.entry_kind !== "economic_atom_delta" ||
+            !exactExternalObject(
+              manifestEntry.entry_object_ref, delta, "cairn.economic_atom_delta_entry.v0.1",
+              context, "entry_hash", ["atom_id"]
+            ) || manifestEntry.entry_object_hash !== delta?.entry_hash ||
+            delta.economic_resource_key !== after?.economic_resource_key ||
+            delta.compartment_control_key !== value.compartment_control_key ||
+            !sameObjectRef(delta.economic_mutation_cause_core_ref, value.economic_mutation_cause_core_ref) ||
+            delta.economic_mutation_cause_core_hash !== value.economic_mutation_cause_core_hash ||
+            delta.authority_transaction_id !== value.authority_transaction_id ||
+            delta.amount?.asset !== compartmentAssetForState(after, context)) {
+          failures.push("compartment_transition_delta_entry_mismatch");
+        } else deltaEntries.push(delta);
+      }
+      const semanticDeltas = deltaEntries.map(({ atom_id, before_class, after_class, amount: deltaAmount }) => ({
+        atom_id, before_class, after_class, amount: deltaAmount
+      }));
+      if (causeCore?.proposed_semantic_atom_deltas_root !== canonicalHash(semanticDeltas)) {
+        failures.push("compartment_transition_cause_delta_root_mismatch");
+      }
+    }
+    const headManifestPairs = [
+      ["reservation_manifest", "active_reservation_manifest_ref", "active_reservation_manifest_hash"],
+      ["economic_atom_manifest", "current_economic_atom_manifest_ref", "current_economic_atom_manifest_hash"],
+      ["confirmed_event_manifest", "confirmed_event_manifest_ref", "confirmed_event_manifest_hash"]
+    ];
+    for (const [prefix, refField, hashField] of headManifestPairs) {
+      const beforeRef = value[`${prefix}_before_ref`];
+      const beforeHash = value[`${prefix}_before_hash`];
+      const afterRef = value[`${prefix}_after_ref`];
+      const afterHash = value[`${prefix}_after_hash`];
+      if ((before === null
+        ? beforeRef !== null || beforeHash !== null
+        : !sameObjectRef(beforeRef, before[refField]) || beforeHash !== before[hashField]) ||
+          !sameObjectRef(afterRef, after?.[refField]) || afterHash !== after?.[hashField]) {
+        failures.push("compartment_transition_manifest_projection_mismatch");
+      }
+    }
+    const ordinary = new Set(["reservation_hold", "reservation_release", "role_transfer",
+      "receiver_debit", "refund", "reversal"]);
+    const restrictive = new Set(["unexpected_reversal", "unexpected_cancellation_charge",
+      "trust_quarantine", "historical_incident_overlay_add"]);
+    if ((value.cause === "onboard" && (before !== null || !["pending", "active"].includes(after?.state))) ||
+        (ordinary.has(value.cause) &&
+          (!before || !["active", "exhausted"].includes(before.state) ||
+           !["active", "exhausted"].includes(after?.state))) ||
+        (restrictive.has(value.cause) &&
+          (!before || after?.state !== "frozen" ||
+           (value.cause === "historical_incident_overlay_add" && before.state !== "closed"))) ||
+        (value.cause === "remediation" &&
+          (before?.state !== "frozen" || !["frozen", "active", "closed"].includes(after?.state))) ||
+        (["close", "expire"].includes(value.cause) && (!before || after?.state !== "closed"))) {
+      failures.push("compartment_transition_cause_state_mismatch");
+    }
+    if (before !== null) {
+      const beforeReserved = amount(before.cairn_reserved);
+      const afterReserved = amount(after?.cairn_reserved);
+      const monotonicChecks = new Map([
+        ["reservation_hold", afterReserved >= beforeReserved],
+        ["reservation_release", afterReserved <= beforeReserved],
+        ["receiver_debit", afterReserved <= beforeReserved &&
+          amount(after?.confirmed_spent) >= amount(before.confirmed_spent)],
+        ["refund", amount(after?.confirmed_refunded) >= amount(before.confirmed_refunded)],
+        ["reversal", amount(after?.outstanding_reversal_exposure) >= amount(before.outstanding_reversal_exposure)],
+        ["unexpected_reversal", amount(after?.quarantine_exposure) >= amount(before.quarantine_exposure)],
+        ["unexpected_cancellation_charge", amount(after?.quarantine_exposure) >= amount(before.quarantine_exposure)],
+        ["trust_quarantine", amount(after?.quarantine_exposure) >= amount(before.quarantine_exposure)]
+      ]);
+      if (monotonicChecks.has(value.cause) && monotonicChecks.get(value.cause) !== true) {
+        failures.push("compartment_transition_economic_direction_mismatch");
+      }
+      const classField = new Map([
+        ["reserved", "cairn_reserved"], ["confirmed_debit", "confirmed_spent"],
+        ["confirmed_refund", "confirmed_refunded"], ["confirmed_reversal", "confirmed_reversal_loss"],
+        ["active_reversal", "outstanding_reversal_exposure"], ["quarantine_hold", "quarantine_exposure"]
+      ]);
+      const projectedDeltas = new Map([...new Set(classField.values())].map((field) => [field, 0]));
+      for (const delta of deltaEntries) {
+        const beforeField = classField.get(delta.before_class);
+        const afterField = classField.get(delta.after_class);
+        if (beforeField) projectedDeltas.set(beforeField, projectedDeltas.get(beforeField) - amount(delta.amount));
+        if (afterField) projectedDeltas.set(afterField, projectedDeltas.get(afterField) + amount(delta.amount));
+      }
+      if ([...projectedDeltas].some(([field, expectedDelta]) =>
+        amount(after?.[field]) - amount(before[field]) !== expectedDelta)) {
+        failures.push("compartment_transition_economic_projection_mismatch");
+      }
+      const causeDeltaAllowed = new Map([
+        ["reservation_hold", (delta) => delta.after_class === "reserved" &&
+          ["absent", "released"].includes(delta.before_class)],
+        ["reservation_release", (delta) => delta.before_class === "reserved" && delta.after_class === "released"],
+        ["receiver_debit", (delta) => delta.before_class === "reserved" && delta.after_class === "confirmed_debit"],
+        ["refund", (delta) => delta.after_class === "confirmed_refund"],
+        ["reversal", (delta) => ["active_reversal", "confirmed_reversal"].includes(delta.after_class)],
+        ["unexpected_reversal", (delta) => delta.after_class === "quarantine_hold"],
+        ["unexpected_cancellation_charge", (delta) => delta.after_class === "quarantine_hold"],
+        ["trust_quarantine", (delta) => delta.after_class === "quarantine_hold"]
+      ]).get(value.cause);
+      if ((causeDeltaAllowed && (deltaEntries.length === 0 || deltaEntries.some((delta) => !causeDeltaAllowed(delta)))) ||
+          (["onboard", "close", "expire"].includes(value.cause) && deltaEntries.length !== 0)) {
+        failures.push("compartment_transition_cause_delta_mismatch");
+      }
+      if (["close", "expire"].includes(value.cause) &&
+          (after?.active_reservation_count !== 0 || after?.current_economic_atom_count !== 0 ||
+           afterReserved !== 0 || amount(after?.outstanding_reversal_exposure) !== 0 ||
+           amount(after?.quarantine_exposure) !== 0)) {
+        failures.push("compartment_transition_close_not_empty");
+      }
+    }
+    const committedAt = Date.parse(value.committed_at);
+    const signedAt = Date.parse(value.authority_service_signature?.signed_at);
+    if (![committedAt, signedAt].every(Number.isFinite) || signedAt < committedAt) {
+      failures.push("compartment_transition_chronology_invalid");
+    }
+    return unique(failures);
+  } catch {
+    return ["compartment_state_transition_receipt_malformed"];
+  }
+}
+
+function compartmentAssetForState(state, context) {
+  const compartment = state ? resolveObject(context.objectResolver, state.compartment_ref) : null;
+  return compartment?.accounting_asset ?? null;
+}
+
 function financialMoneyValues(financial) {
   return [financial.per_action_limit, financial.aggregate_limit, financial.outstanding_exposure_limit,
     financial.fee_limit, financial.tax_limit, financial.shipping_limit, financial.price_corridor.minimum,
@@ -2461,6 +3221,9 @@ export function validateMandate(value, context = {}) {
       failures.push("mandate_runtime_unresolved");
     } else {
       failures.push(...resolvedObjectShapeFailures(runtime, context, "mandate_runtime"));
+      if (context.requireDependencySignatures === true && validateResolvedSignedObject(runtime, context).length) {
+        failures.push("mandate_runtime_signature_invalid");
+      }
       if (!sameObjectRef(value.agent.runtime_binding_ref, objectRefFor(runtime,
         context.baseSchemasByObjectId?.get(runtime.schema)))) failures.push("mandate_runtime_ref_mismatch");
       if (runtime.agent_identity?.agent_provider_id !== value.agent.provider_id ||
@@ -2469,6 +3232,8 @@ export function validateMandate(value, context = {}) {
       }
     }
     if (!connectionAuthorization || connectionAuthorization.schema !== "cairn.agent_connection_authorization.v0.1" ||
+        (context.requireDependencySignatures === true &&
+          validateResolvedSignedObject(connectionAuthorization, context).length) ||
         validateConnectionAuthorization(connectionAuthorization, context).length ||
         !exactRef(value.agent.connection_authorization_ref, connectionAuthorization, context) ||
         connectionAuthorization.principal_id !== value.principal_id ||
@@ -2606,6 +3371,10 @@ export function validateLineageStateTransition(before, after, context = {}) {
           !exactRef(after.commitment_ref, commitment, context) || validateLineageCommitment(commitment, context).length) {
         failures.push("lineage_state_genesis_commitment_unresolved");
       } else {
+        if (context.requireDependencySignatures === true &&
+            validateResolvedSignedObject(commitment, context).length) {
+          failures.push("lineage_state_genesis_commitment_signature_invalid");
+        }
         for (const field of ["principal_occurrence_id", "principal_authorized_lineage_id", "action_control_key", "attempt_sequence", "commitment_generation"]) {
           if (after[field] !== commitment[field]) failures.push("lineage_state_genesis_commitment_mismatch");
         }
@@ -2649,6 +3418,31 @@ export function validateLineageStateTransition(before, after, context = {}) {
     return unique(failures);
   } catch {
     return ["lineage_state_transition_malformed"];
+  }
+}
+
+export function validateLineageStateHead(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    if (value.sequence === 0) {
+      return validateLineageStateTransition(null, value, context);
+    }
+    if (value.previous_state_hash === null) return ["lineage_state_predecessor_unresolved"];
+    const beforeRef = {
+      schema: value.schema,
+      object_id: value.principal_authorized_lineage_id,
+      object_hash: value.previous_state_hash
+    };
+    const before = typeof context.statePredecessorResolver === "function"
+      ? context.statePredecessorResolver(beforeRef) : resolveObject(context.objectResolver, beforeRef);
+    if (!before || !exactRef(beforeRef, before, context) ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(before, context).length)) {
+      return ["lineage_state_predecessor_unresolved"];
+    }
+    return validateLineageStateTransition(before, value, context);
+  } catch {
+    return ["lineage_state_head_malformed"];
   }
 }
 
@@ -2838,7 +3632,54 @@ export function validateBindingSet(value, context = {}) {
     }
     const runtimeFields = [value.agent_runtime_binding_ref, value.connection_authorization_ref, value.connection_state_head_ref];
     if (value.actor_branch === "agent_runtime") {
-      if (runtimeFields.some(isNull)) failures.push("binding_agent_branch_incomplete");
+      if (runtimeFields.some(isNull)) {
+        failures.push("binding_agent_branch_incomplete");
+      } else {
+        const runtime = context.runtimeBinding ?? resolveObject(context.objectResolver, value.agent_runtime_binding_ref);
+        const authorization = context.connectionAuthorization ??
+          resolveObject(context.objectResolver, value.connection_authorization_ref);
+        const connection = context.connectionStateHead ??
+          resolveObject(context.objectResolver, value.connection_state_head_ref);
+        const runtimeSchema = schemaForResolvedObject(runtime, context);
+        if (!runtime || runtime.schema !== "cairn.agent_runtime_binding.v0.1" || !runtimeSchema ||
+            !sameObjectRef(value.agent_runtime_binding_ref, objectRefFor(runtime, runtimeSchema)) ||
+            validateResolvedSignedObject(runtime, context).length || runtime.key_status !== "active") {
+          failures.push("binding_runtime_graph_mismatch");
+        }
+        if (!authorization || authorization.schema !== "cairn.agent_connection_authorization.v0.1" ||
+            !exactRef(value.connection_authorization_ref, authorization, context) ||
+            validateResolvedSignedObject(authorization, context).length ||
+            validateConnectionAuthorization(authorization, { ...context, runtimeBinding: runtime }).length ||
+            authorization.principal_id !== value.principal_id ||
+            !sameObjectRef(authorization.agent_runtime_binding_ref, value.agent_runtime_binding_ref)) {
+          failures.push("binding_connection_authorization_graph_mismatch");
+        }
+        if (!connection || connection.schema !== "cairn.agent_connection_state_head.v0.1" ||
+            !exactRef(value.connection_state_head_ref, connection, context) ||
+            validateResolvedSignedObject(connection, context).length ||
+            validateConnectionStateHead(connection, {
+              ...context, runtimeBinding: runtime, connectionAuthorization: authorization,
+              requireCurrentConnection: true
+            }).length || connection.state !== "active" || connection.principal_id !== value.principal_id ||
+            !sameObjectRef(connection.agent_runtime_binding_ref, value.agent_runtime_binding_ref) ||
+            !sameObjectRef(connection.connection_authorization_ref, value.connection_authorization_ref)) {
+          failures.push("binding_connection_state_graph_mismatch");
+        }
+        const createdAt = Date.parse(value.created_at);
+        const expiresAt = Date.parse(value.expires_at);
+        const runtimeStartsAt = Date.parse(runtime?.not_before);
+        const runtimeExpiresAt = Date.parse(runtime?.expires_at);
+        const authorizationStartsAt = Date.parse(authorization?.not_before);
+        const authorizationExpiresAt = Date.parse(authorization?.expires_at);
+        const connectionUpdatedAt = Date.parse(connection?.updated_at);
+        if (![createdAt, expiresAt, runtimeStartsAt, runtimeExpiresAt,
+          authorizationStartsAt, authorizationExpiresAt, connectionUpdatedAt].every(Number.isFinite) ||
+            createdAt >= expiresAt || connectionUpdatedAt > createdAt ||
+            runtimeStartsAt > createdAt || runtimeExpiresAt < expiresAt ||
+            authorizationStartsAt > createdAt || authorizationExpiresAt < expiresAt) {
+          failures.push("binding_runtime_graph_interval_mismatch");
+        }
+      }
     } else if (runtimeFields.some((item) => item !== null)) failures.push("binding_principal_branch_leaks_runtime");
     const cancellation = value.capability === "cancel_receiver_action";
     if (cancellation !== (value.cancellation_context !== null)) failures.push("binding_cancellation_union_mismatch");
@@ -2956,7 +3797,10 @@ export function validateBindingSet(value, context = {}) {
     for (const head of value.data_grant_state_heads) {
       const current = resolveObject(context.objectResolver, head.current_state_head_ref);
       if (!current || current.schema !== "cairn.data_grant_state_head.v0.1" ||
-          head.current_state_head_ref.schema !== current.schema || head.current_state_head_ref.object_hash !== current.state_hash ||
+          !exactRef(head.current_state_head_ref, current, context) ||
+          validateResolvedSignedObject(current, context).length ||
+          validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||
+          !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref) ||
           !sameObjectRef(current.data_grant_ref, head.data_grant_ref) || current.revocation_nonce !== head.revocation_nonce) {
         failures.push("binding_data_grant_current_head_mismatch");
       }
@@ -3102,6 +3946,20 @@ export function validateActionAuthorization(value, binding, context = {}) {
       ["fulfillment_attempt_core_ref", "fulfillment_attempt_core_hash"],
       ["explicit_scope_selection_proof_ref", "explicit_scope_selection_proof_hash"]
     ], "authorization_ref_hash_mismatch"));
+    if (context.historicalRead !== true) {
+      const currentPrincipalRevocationNonce = typeof context.principalRevocationNonceResolver === "function"
+        ? context.principalRevocationNonceResolver(value.principal_id) : context.principalRevocationNonce;
+      if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||
+          value.principal_revocation_nonce !== currentPrincipalRevocationNonce) {
+        failures.push("authorization_principal_revocation_nonce_mismatch");
+      }
+      const requiredReservedJudgments = typeof context.reservedJudgmentsResolver === "function"
+        ? context.reservedJudgmentsResolver(value.principal_id, binding) : context.requiredReservedJudgments;
+      if (!Array.isArray(requiredReservedJudgments) ||
+          canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {
+        failures.push("authorization_reserved_judgments_mismatch");
+      }
+    }
     if (!binding || !exactRef(value.execution_binding_set_ref, binding, context) || value.execution_binding_set_hash !== binding.binding_set_hash) {
       failures.push("authorization_binding_mismatch");
     } else {
@@ -3160,6 +4018,14 @@ export function validateCancellationAuthorization(value, binding, context = {}) 
     if (failures.length) return failures;
     failures.push(...refHashPairFailures(value, CANCELLATION_AUTHORIZATION_REF_HASH_PAIRS,
       "cancellation_authorization_ref_hash_mismatch"));
+    if (context.historicalRead !== true) {
+      const currentPrincipalRevocationNonce = typeof context.principalRevocationNonceResolver === "function"
+        ? context.principalRevocationNonceResolver(value.principal_id) : context.principalRevocationNonce;
+      if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||
+          value.principal_revocation_nonce !== currentPrincipalRevocationNonce) {
+        failures.push("cancellation_principal_revocation_nonce_mismatch");
+      }
+    }
     const continuity = value.cancellation_credential_continuity_receipt_ref !== null;
     const exactCredential = value.original_credential_instance_key === value.cancellation_credential_instance_key &&
       value.original_executor_credential_binding_current_head_hash === value.cancellation_executor_credential_binding_head_hash;
@@ -3678,8 +4544,8 @@ export function validateGateResult(value, context = {}) {
       failures.push("gate_result_request_binding_mismatch");
     }
     const expectedHeads = gateRequiredHeadRefs(gateRequest, binding);
-    const actualCodes = value.check_results.map(({ code }) => code).sort();
-    const expectedCodes = [...PHASE1_GATE_CHECK_CODES].sort();
+    const actualCodes = value.check_results.map(({ code }) => code);
+    const expectedCodes = [...PHASE1_GATE_CHECK_CODES];
     if (canonicalHash(value.evaluated_head_refs) !== canonicalHash(expectedHeads) ||
         value.evaluated_nonce_and_fence_root !== gateEvaluatedHeadRoot(expectedHeads) ||
         value.business_state_root !== gateBusinessStateRoot(gateRequest?.current_business_state_head_refs ?? []) ||

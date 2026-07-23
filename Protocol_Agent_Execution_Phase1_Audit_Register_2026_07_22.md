@@ -2,10 +2,10 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: rounds 1–20 findings remediated; replacement candidate awaiting commit freeze and repeat independent gate
-Prose dependency SHA-256: `8ac6dfde66326ba235350b63e6e3b570f9bebf9b1df4c43166af31c3e9974df6`
-Candidate internal bundle hash: `sha-256:4bd027570e2915ac6ab96b4e558c9d0a7b89a6967254de82d8fa90a7975ba2be`
-Candidate operation-registry hash: `sha-256:c8b92158cfe1146a9a03d8d4f33a6f4556f602738bc6574d5e0f5a8588162d86`
+Status: rounds 1–32 findings remediated; replacement candidate awaiting exact-commit freeze and fresh three-reviewer gate
+Prose dependency SHA-256: `e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015`
+Candidate internal bundle hash: `sha-256:86aa6c7ebce831205d8d0c66edc8580b7f0c9696391d3470c255d098270c4679`
+Candidate operation-registry hash: `sha-256:20b8da602b6e3a3625b18e5742560c8f4cf077cd08c98bf2f209119988a96e5e`
 
 ## Claim boundary
 
@@ -22,14 +22,14 @@ The package pins and does not widen the proposal foundation:
 
 ## Candidate contents
 
-- 43 JSON Schema documents in the bundle, including 38 closed signed-object
+- 48 JSON Schema documents in the bundle, including 43 closed signed-object
   schemas and one content-addressed enumerable-map node schema;
 - all nine closed execution-chain versions required by §7.2 of the prose spec,
   including `CancellationAuthorization`;
 - connection, execution-control, compartment, confirmation, mandate v0.3,
   binding-set, lineage, activity-summary, activity-detail, and action-view
   objects;
-- 29 separately namespaced registry operations, all present in the audited prose
+- 34 separately namespaced registry operations, all present in the audited prose
   operation list;
 - zero mutating operations, zero external-effect operations, and zero authority
   effects;
@@ -48,7 +48,7 @@ The package pins and does not widen the proposal foundation:
 
 ## Local authored controls
 
-The current local suite passes 27/27 controls:
+The current local suite passes 30/30 controls:
 
 1. fixed prose and proposal dependency pins;
 2. deterministic bundle and registry bytes;
@@ -84,11 +84,18 @@ The current local suite passes 27/27 controls:
 25. privacy-minimized activity-to-action/current-state binding;
 26. generated-file byte identity; and
 27. complete mandate business-tuple projection, activation chronology, exact
-    gate-request semantics, and exact redemption action/read closure.
+    gate-request semantics, and exact redemption action/read closure;
+28. cryptographically authenticated exact reads with mutable-head currentness
+    and historical/current-policy separation;
+29. exact compartment definition/map/predecessor/asset state and cause/delta/
+    economic/closure/chronology transition semantics; and
+30. exact runtime/connection/DataGrant binding graphs, current revocation nonce
+    and reserved-judgment policy, ordered gates, and receiver assignment
+    consumption/completion closure.
 
 ## Direct mutation controls
 
-The package kills 267/267 direct mutants. Covered failure families are:
+The package kills 330/330 direct mutants. Covered failure families are:
 
 - prose, base-bundle, and base-registry drift;
 - accidentally mutating or effectful operation advertisement;
@@ -417,13 +424,45 @@ files.
 | P1R20-002 | P1 | The index head, outstanding entry, index-transition receipt, and map dependencies required by semantic validation were unreachable through the 25-operation read surface | accepted_and_fixed | Added four prose-named schema-only reads with exact response schemas; sensitive heads use audit-control access, detailed entries/receipts use audit-detail access, and map reads inherit the owning index ACL through a bounded parent/ancestor path |
 | P2R20-003 | P2 | The initial remediation draft recursively traversed an unbounded trie, overconstrained nonempty terminal seal, and left non-connection transition causes underclosed | accepted_and_fixed | Root reads are O(1), node reads validate only a bounded path of at most 64 ancestors, nonempty active→sealed is valid for later drain, and the six transition families have distinct count/revision/entry/evidence/state matrices |
 
-The current replacement is the exact candidate hash at the top of this
-register. It has 43 schemas: 38 closed signed-object families, one
-content-addressed map-node family, and four bundle/registry/common documents.
-It exposes 29 schema-only read operations, passes 27/27 authored controls, and
-kills 267/267 direct mutants. Closure remains open until the candidate is frozen
-in a commit and fresh blind semantic, informed regression, and blind release
-reviewers all report against that exact commit and byte set.
+That round-20 replacement was superseded by the rounds below.
+
+## Independent audit rounds 21–28
+
+Successive informed and context-blind semantic reviews rejected the
+pre-freeze candidate family through commit `91d92a3`. Reviewers made no
+candidate edits. Their P1 findings were accepted and remediated:
+
+| ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
+|---|---:|---|---|---|
+| P1R21-001 | P1 | Exact object reads authenticated shape and self-hash but not always the returned signature, intrinsic semantics, dependency signatures, or mutable current head | accepted_and_fixed | Every exact getter authenticates the returned signed bytes, dispatches intrinsic validation with signed dependencies, and applies currentness only to the closed mutable-head operation set; historical authority reads deliberately do not re-evaluate later nonce/judgment policy |
+| P1R22-001 | P1 | Agent-runtime bindings could name coherent but unsigned, stale, cross-wired, pre-creation, or shorter-lived runtime/connection objects | accepted_and_fixed | BindingSet resolves exact signed runtime, connection authorization, and current active connection head, binds principal and refs, and contains its complete interval inside both signed dependencies |
+| P1R23-001 | P1 | Live one-shot authority could be replayed after principal revocation or a reserved-judgment policy change; a resolver failure could degrade to a permissive default | accepted_and_fixed | Current authorization and cancellation checks require a resolved exact revocation nonce; action authorization additionally requires the exact current reserved-judgment vector. Historical reads preserve signed history without restoring eligibility |
+| P1R24-001 | P1 | Composite `action.get` could contain unsigned or stale embedded heads and an invalid lineage/activity graph | accepted_and_fixed | The composite read authenticates every embedded signed object, resolves all three current heads, validates lineage/action/activity/authority/reservation/gate closure, and rejects substituted lineage predecessors |
+| P1R25-001 | P1 | Control receipts did not independently prove signed aggregate/scoped successors, exact sequence/predecessor, or chronology | accepted_and_fixed | Receipt validation resolves and authenticates both aggregate heads and scoped leaves, requires exact successors and stable identity, and orders commit/signature time; isolated mutants cover signature and sequence checks |
+| P1R26-001 | P1 | Compartment heads named reservation/economic/event manifests whose domains were not machine-representable, and transition receipts did not close economic deltas | accepted_and_fixed | Added three closed map domains and exact external leaf profiles; state heads bind definition, manifests, asset, predecessor, and fence. Transitions bind exact cause, typed delta manifest/entries/root, money projection, cause/class rules, empty close, and chronology |
+| P1R27-001 | P1 | Receiver event and terminal completion paths could confuse assignment epochs, partial consumption, receipt families, scope successors, or the planned assignment set | accepted_and_fixed | Receiver event transitions bind exact identity scope and consume one reserved slot; completion groups exact assignment refs by exact transition, proves complete identity/trust sets, and shares the terminal authority transaction across child receipts |
+| P1R28-001 | P1 | The prose left current-vs-historical read behavior, action-authority policy inputs, and terminal completion identity insufficiently explicit | accepted_and_fixed | The fixed prose now names the current getter set, authenticated dependency behavior, current policy inputs, and exact composite terminal identity fields without adding a service or mutation surface |
+
+## Independent audit rounds 29–32 and local mutation replay
+
+The final pre-freeze cold reviews found one additional machine-closure defect
+and five stale/ambiguous mutation anchors. All were accepted. No reviewer
+modified generated artifacts or deployed state.
+
+| ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
+|---|---:|---|---|---|
+| P1R29-001 | P1 | `ExecutionBindingSet` required a current DataGrant state object that the machine bundle did not define, making nonempty runtime grant graphs impossible | accepted_and_fixed | Added signed `DataGrantStateHead`, its exact current getter, closed query/count union, exact base-grant/signature/current-head binding, and a closed successor graph |
+| P1R30-001 | P1 | DataGrant successor semantics allowed skipped read decrements, control transitions without a nonce advance, and ambiguous zero-read terminal states | accepted_and_fixed | Genesis equals the issued positive count; active reads decrement exactly one; final read is exactly `1→0 exhausted`; pause/resume/revoke/expiry preserve count and advance nonce; exhausted may revoke/expire while preserving zero |
+| P1R31-001 | P1 | Some receiver/control/DataGrant counterexamples were rejected upstream for a different defect, leaving the intended predicate unproved | accepted_and_fixed | Fixtures now isolate each invariant: signed skipped control heads, unauthenticated control heads/leaves, a DataGrant cross-wire at the state validator, receiver immutable drift that remains intrinsically valid, and a completion-only wrong assignment transition |
+| P2R32-001 | P2 | Eight mutation anchors no longer matched exactly after remediation, and the first replay exposed seven surviving controls | accepted_and_fixed | Every anchor now matches exactly once; the seven survivors were dispositioned as masked-fixture gaps, corrected, and the complete suite now kills 330/330 direct mutants |
+
+The current pre-freeze candidate is the exact bundle and registry hash at the
+top of this register. It has 48 schema documents: 43 signed object families,
+one content-addressed map-node family, and four bundle/registry/common
+documents. It exposes 34 schema-only read operations, passes 30/30 authored
+test groups, and kills 330/330 direct mutants. Closure remains open until these
+exact bytes are frozen in a commit and fresh blind semantic, blind mutation/
+receiver, and informed release reviewers all accept that commit.
 
 ## Local remediation ledger
 
@@ -443,7 +482,7 @@ reviewers all report against that exact commit and byte set.
 This register remains open until a reviewer who did not author the candidate:
 
 1. verifies the candidate hash before and after a read-only review;
-2. reproduces all 27 authored controls and 267 killed mutants;
+2. reproduces all 30 authored controls and 330 killed mutants;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
 4. audits field closure against the fixed prose, especially the execution-chain

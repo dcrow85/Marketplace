@@ -77,13 +77,29 @@ export const PHASE1_OBJECTS = Object.freeze([
       ["accepted_at", time], ["updated_at", time], ["state_hash", hash], ["authority_service_signature", sig]
     ]
   }),
+  signed({
+    file: "data-grant-state-head.schema.json",
+    schema: "cairn.data_grant_state_head.v0.1",
+    id: "data_grant_state_id",
+    hash: "state_hash",
+    signatures: ["authority_service_signature"],
+    entries: [
+      ["data_grant_state_id", "uuid"], ["principal_id", str], ["data_grant_ref", ref],
+      ["sequence", uint], ["previous_state_hash", nhash],
+      ["state", "enum:active|paused|exhausted|revoked|expired"], ["revocation_nonce", uint],
+      ["remaining_reads", uint], ["maximum_response_bytes", "positive"],
+      ["maximum_response_items", "positive"], ["query_bound", "queryBound"],
+      ["expires_at", time], ["updated_at", time], ["state_hash", hash],
+      ["authority_service_signature", sig]
+    ]
+  }),
   contentAddressed({
     file: "enumerable-map-node.schema.json",
     schema: "cairn.enumerable_map_node.v0.1",
     id: "node_hash",
     hash: "node_hash",
     entries: [
-      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream"],
+      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event"],
       ["node_kind", "enum:empty|leaf|branch"],
       ["path_prefix_nibbles", "hexNibbles"], ["leaf_entry", "nenumerableMapLeafEntry"],
       ["branch_children", "enumerableMapBranchChildren"], ["subtree_entry_count", uint],
@@ -99,7 +115,7 @@ export const PHASE1_OBJECTS = Object.freeze([
     hash: "map_hash",
     signatures: ["issuing_authority_signature"],
     entries: [
-      ["map_key", hash], ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream"],
+      ["map_key", hash], ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event"],
       ["revision", uint], ["root_node_ref", ref], ["root_node_hash", hash],
       ["entry_count", uint], ["entries_root", hash], ["map_hash", hash],
       ["issuing_authority_id", str], ["issuing_authority_signature", sig]

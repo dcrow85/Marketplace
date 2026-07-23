@@ -98,6 +98,16 @@ function commonSchema() {
     amount_minor: { type: "integer", minimum: 0, maximum: 9007199254740991 },
     asset: { type: "string", pattern: "^[A-Z0-9][A-Z0-9._:-]{0,31}$" }
   });
+  const queryBound = closed({
+    kind: { enum: ["temporal", "non_temporal"] },
+    maximum_range_seconds: nullable({ $ref: "#/$defs/positive" }),
+    maximum_keys_or_partitions: nullable({ $ref: "#/$defs/positive" })
+  }, undefined, { oneOf: [
+    { properties: { kind: { const: "temporal" }, maximum_range_seconds: { not: { type: "null" } },
+      maximum_keys_or_partitions: { type: "null" } } },
+    { properties: { kind: { const: "non_temporal" }, maximum_range_seconds: { type: "null" },
+      maximum_keys_or_partitions: { not: { type: "null" } } } }
+  ] });
   const lineagePolicy = closed({
     issuance: { const: "authority_service_derived" },
     principal_occurrence_nonce: { type: "string", minLength: 16, maxLength: 256 },
@@ -209,7 +219,10 @@ function commonSchema() {
   });
   const enumerableMapLeafEntry = closed({
     entry_key: hash(),
-    entry_kind: { enum: ["connection_outstanding_action", "receiver_outstanding_stream"] },
+    entry_kind: { enum: [
+      "connection_outstanding_action", "receiver_outstanding_stream", "compartment_active_reservation",
+      "compartment_economic_atom", "compartment_confirmed_event"
+    ] },
     entry_object_ref: ref(),
     entry_object_hash: hash()
   });
@@ -254,6 +267,7 @@ function commonSchema() {
       objectRef, signature, money: moneyDef, lineagePolicy, scopeBinding,
       mandateAgent: closed({ provider_id: { type: "string", minLength: 1 }, product_id: { type: "string", minLength: 1 }, runtime_binding_ref: ref(), connection_authorization_ref: ref() }),
       mandateConstraints, disclosure, cancellationContext, originalOperationLocator, transitionManifestEntry,
+      queryBound,
       enumerableMapLeafEntry, enumerableMapBranchChild, enumerableMapPathProof, identityTransitionReceipt,
       sellerInventoryContext,
       grantHead: closed({ data_grant_ref: ref(), current_state_head_ref: ref(), revocation_nonce: { $ref: "#/$defs/uint" } }),
@@ -303,6 +317,7 @@ function schemaForType(type) {
   if (type === "scopeBindings") return array({ $ref: `${COMMON}#/$defs/scopeBinding` }, { minItems: 1, maxItems: 64 });
   if (type === "mandateConstraints") return { $ref: `${COMMON}#/$defs/mandateConstraints` };
   if (type === "grantHeads") return array({ $ref: `${COMMON}#/$defs/grantHead` }, { maxItems: 32, uniqueItems: true });
+  if (type === "queryBound") return { $ref: `${COMMON}#/$defs/queryBound` };
   if (type === "disclosures") return array({ $ref: `${COMMON}#/$defs/disclosure` }, { maxItems: 32, uniqueItems: true });
   if (type === "ncancellationContext") return nullable({ $ref: `${COMMON}#/$defs/cancellationContext` });
   if (type === "nsellerInventoryContext") return nullable({ $ref: `${COMMON}#/$defs/sellerInventoryContext` });
@@ -362,6 +377,15 @@ function actionStateBranch(state, { nonnull = [], nulls = [], reservations = nul
 }
 
 function localSemantics(schemaId) {
+  if (schemaId === "cairn.data_grant_state_head.v0.1") {
+    return [{ oneOf: [
+      { properties: { state: { const: "exhausted" }, remaining_reads: { const: 0 } } },
+      { properties: { state: { enum: ["active", "paused"] },
+        remaining_reads: { $ref: `${COMMON}#/$defs/positive` } } },
+      { properties: { state: { enum: ["revoked", "expired"] },
+        remaining_reads: { $ref: `${COMMON}#/$defs/uint` } } }
+    ] }];
+  }
   if (schemaId === "cairn.execution_control_authorization.v0.1") {
     const recovery = ["recovery_grant_ref", "recovery_grant_state_head_ref", "recovery_grant_state_head_hash", "recovery_use_idempotency_nonce"];
     return [{

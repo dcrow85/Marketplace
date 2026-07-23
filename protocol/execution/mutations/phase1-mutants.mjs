@@ -3,8 +3,8 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4";',
-    replace: 'export const SPEC_SHA256 = "d9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4";',
+    search: 'export const SPEC_SHA256 = "e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015";',
+    replace: 'export const SPEC_SHA256 = "f12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
   },
@@ -548,8 +548,8 @@ export const PHASE1_MUTANTS = [
     id: "binding-set-grant-current-head-hash",
     finding: "binding-set-stale-grant-head-ref",
     file: "lib/validation.mjs",
-    search: '          head.current_state_head_ref.schema !== current.schema || head.current_state_head_ref.object_hash !== current.state_hash ||',
-    replace: '          head.current_state_head_ref.schema !== current.schema || false ||',
+    search: '          !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref) ||',
+    replace: '          false ||',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
   {
@@ -1408,7 +1408,7 @@ export const PHASE1_MUTANTS = [
     id: "object-get-intrinsic-semantic-validation",
     finding: "exact-object-read-stops-at-shape-validation",
     file: "lib/validation.mjs",
-    search: '    failures.push(...intrinsicObjectFailures(returnedObject, context)\n      .map((code) => `object_read_${code}`));',
+    search: '    failures.push(...intrinsicObjectFailures(returnedObject, {\n      ...context, requireDependencySignatures: true, historicalRead: true\n    })\n      .map((code) => `object_read_${code}`));',
     replace: '    failures.push(...[]);',
     test: "read surfaces close every execution family and bind object requests to returned identity"
   },
@@ -2213,7 +2213,7 @@ export const PHASE1_MUTANTS = [
     id: "enumerable-map-leaf-resolution",
     finding: "enumerable-map-leaf-accepts-unresolved-entry",
     file: "lib/validation.mjs",
-    search: '        !entryObject || entryObject.schema !== domainProfile.schema ||\n        !exactRef(leaf.entry_object_ref, entryObject, context) ||\n        entryObject[domainProfile.keyField] !== leaf.entry_key ||\n        domainProfile.validate(entryObject, context).length !== 0 ||',
+    search: '        !entryObject || entryObject.schema !== domainProfile.schema || !exactEntry ||',
     replace: '        false ||',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
@@ -2221,8 +2221,8 @@ export const PHASE1_MUTANTS = [
     id: "enumerable-map-leaf-key-binding",
     finding: "enumerable-map-leaf-does-not-bind-key-to-entry",
     file: "lib/validation.mjs",
-    search: '        entryObject[domainProfile.keyField] !== leaf.entry_key ||\n        domainProfile.validate(entryObject, context).length !== 0 ||',
-    replace: '        domainProfile.validate(entryObject, context).length !== 0 ||',
+    search: '        entryObject[domainProfile.keyField] !== leaf.entry_key ||\n        !validEntry ||',
+    replace: '        !validEntry ||',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
@@ -2333,8 +2333,8 @@ export const PHASE1_MUTANTS = [
     id: "receiver-terminal-completion-identity-transitions",
     finding: "receiver-terminal-completion-does-not-resolve-identity-transitions",
     file: "lib/validation.mjs",
-    search: '        failures.push("receiver_terminal_completion_identity_transition_mismatch");',
-    replace: '',
+    search: '      if (exactBoundedIdentityTransition(group.ref, group.assignments, plan.release_cause,\n        value.authority_transaction_id, plan.terminal_release_evidence_ref, context).failures.length) {\n        failures.push("receiver_terminal_completion_identity_transition_mismatch");\n      }',
+    replace: '      if (false) {\n        failures.push("receiver_terminal_completion_identity_transition_mismatch");\n      }',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
@@ -2389,15 +2389,15 @@ export const PHASE1_MUTANTS = [
     id: "receiver-terminal-completion-identity-assignment-binding",
     finding: "terminal-identity-transition-does-not-bind-its-assignment",
     file: "lib/validation.mjs",
-    search: '            ["receipt_id", "receipt_hash"]) || !sameObjectRef(transition.assignment_ref, item.assignment_ref)) {',
-    replace: '            ["receipt_id", "receipt_hash"])) {',
+    search: '  if (canonicalHash(sortedUniqueRefs(matchedRefs)) !== canonicalHash(sortedUniqueRefs(expectedAssignmentRefs)) ||\n      matchedRefs.length !== expectedAssignmentRefs.length) {',
+    replace: '  if (false) {',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
     id: "receiver-terminal-completion-trust-assignment-set",
     finding: "terminal-trust-transitions-do-not-cover-the-planned-assignment-set",
     file: "lib/validation.mjs",
-    search: '      if (canonicalHash(sortedUniqueRefs(transitionAssignments)) !== canonicalHash(sortedUniqueRefs(\n        trustAssignmentManifest.sorted_entries.map(({ entry_object_ref }) => entry_object_ref)\n      ))) failures.push("receiver_terminal_completion_trust_transition_mismatch");',
+    search: '      if (transitionAssignments.length !== trustAssignmentRefs.length ||\n          canonicalHash(sortedUniqueRefs(transitionAssignments)) !== canonicalHash(sortedUniqueRefs(trustAssignmentRefs))) {\n        failures.push("receiver_terminal_completion_trust_transition_mismatch");\n      }',
     replace: '',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
@@ -2416,5 +2416,253 @@ export const PHASE1_MUTANTS = [
     search: '        failures.push("receiver_outstanding_transition_event_stream_successor_mismatch");',
     replace: '',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-returned-signature",
+    finding: "exact-read-accepts-unauthenticated-returned-bytes",
+    file: "lib/validation.mjs",
+    search: '    if ((schema["x-cairn-signature-pointers"] ?? []).length > 0) {\n      failures.push(...validateResolvedSignedObject(returnedObject, context)\n        .map((code) => `object_read_${code}`));\n    }',
+    replace: '',
+    test: "exact reads authenticate returned bytes and reject stale mutable heads"
+  },
+  {
+    id: "exact-read-mutable-currentness",
+    finding: "exact-read-returns-stale-mutable-head",
+    file: "lib/validation.mjs",
+    search: '    if (CURRENT_EXACT_READ_OPERATIONS.has(operationName) &&\n        !sameObjectRef(resolveCurrentHead(context, returnedRef), returnedRef)) {\n      failures.push("object_read_current_head_mismatch");\n    }',
+    replace: '',
+    test: "exact reads authenticate returned bytes and reject stale mutable heads"
+  },
+  {
+    id: "exact-read-historical-authority-semantics",
+    finding: "historical-read-incorrectly-requires-current-authority-policy",
+    file: "lib/validation.mjs",
+    search: '      ...context, requireDependencySignatures: true, historicalRead: true',
+    replace: '      ...context, requireDependencySignatures: true, historicalRead: false',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "data-grant-state-operation-currentness",
+    finding: "data-grant-state-get-is-not-a-current-head-read",
+    file: "lib/validation.mjs",
+    search: '  "execution.data_grant_state.get",',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "data-grant-state-base-grant-binding",
+    finding: "data-grant-state-can-cross-wire-a-base-grant",
+    file: "lib/validation.mjs",
+    search: '        !sameObjectRef(value.data_grant_ref, objectRefFor(grant, grantSchema)) ||',
+    replace: '        false ||',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "data-grant-state-genesis-count",
+    finding: "data-grant-state-genesis-does-not-bind-issued-read-count",
+    file: "lib/validation.mjs",
+    search: '          value.remaining_reads !== grant?.maximum_disclosures || value.remaining_reads < 1) {',
+    replace: '          false) {',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "data-grant-state-predecessor-chain",
+    finding: "data-grant-state-accepts-skipped-predecessor",
+    file: "lib/validation.mjs",
+    search: '          value.sequence !== predecessor.sequence + 1 || value.revocation_nonce < predecessor.revocation_nonce ||',
+    replace: '          false || value.revocation_nonce < predecessor.revocation_nonce ||',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "data-grant-state-transition-accounting",
+    finding: "data-grant-state-allows-skipped-reads-or-unversioned-control",
+    file: "lib/validation.mjs",
+    search: '      if ((isReadDecrement && (value.remaining_reads !== predecessor.remaining_reads - 1 ||\n          value.revocation_nonce !== predecessor.revocation_nonce)) ||\n          (isFinalRead && (predecessor.remaining_reads !== 1 || value.remaining_reads !== 0 ||\n            value.revocation_nonce !== predecessor.revocation_nonce)) ||\n          (isControlTransition && (value.remaining_reads !== predecessor.remaining_reads ||\n            value.revocation_nonce !== predecessor.revocation_nonce + 1))) {\n        failures.push("data_grant_state_transition_mismatch");\n      }',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-data-grant-head-signature",
+    finding: "binding-accepts-unauthenticated-data-grant-head",
+    file: "lib/validation.mjs",
+    search: '          validateResolvedSignedObject(current, context).length ||\n          validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||',
+    replace: '          validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-runtime-signature",
+    finding: "binding-accepts-unauthenticated-runtime",
+    file: "lib/validation.mjs",
+    search: '            validateResolvedSignedObject(runtime, context).length || runtime.key_status !== "active") {',
+    replace: '            runtime.key_status !== "active") {',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-connection-authorization-signature",
+    finding: "binding-accepts-unauthenticated-connection-authorization",
+    file: "lib/validation.mjs",
+    search: '            validateResolvedSignedObject(authorization, context).length ||\n            validateConnectionAuthorization(authorization, { ...context, runtimeBinding: runtime }).length ||',
+    replace: '            validateConnectionAuthorization(authorization, { ...context, runtimeBinding: runtime }).length ||',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-runtime-authorization-interval",
+    finding: "binding-outlives-runtime-or-connection-authorization",
+    file: "lib/validation.mjs",
+    search: '        if (![createdAt, expiresAt, runtimeStartsAt, runtimeExpiresAt,\n          authorizationStartsAt, authorizationExpiresAt, connectionUpdatedAt].every(Number.isFinite) ||\n            createdAt >= expiresAt || connectionUpdatedAt > createdAt ||\n            runtimeStartsAt > createdAt || runtimeExpiresAt < expiresAt ||\n            authorizationStartsAt > createdAt || authorizationExpiresAt < expiresAt) {\n          failures.push("binding_runtime_graph_interval_mismatch");\n        }',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "control-receipt-head-signatures",
+    finding: "control-receipt-trusts-unsigned-head-transition",
+    file: "lib/validation.mjs",
+    search: '        (context.requireDependencySignatures === true && validateResolvedSignedObject(after, context).length) ||',
+    replace: '        false ||',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-leaf-signatures",
+    finding: "control-receipt-trusts-unsigned-scoped-leaf",
+    file: "lib/validation.mjs",
+    search: '          (context.requireDependencySignatures === true && validateResolvedSignedObject(leafAfter, context).length) ||',
+    replace: '          false ||',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-head-successor",
+    finding: "control-receipt-accepts-skipped-head-sequence",
+    file: "lib/validation.mjs",
+    search: '        (before !== null && (after.sequence !== before.sequence + 1 ||\n          after.previous_head_hash !== before.head_hash || after.principal_id !== before.principal_id ||',
+    replace: '        (before !== null && (false ||\n          after.previous_head_hash !== before.head_hash || after.principal_id !== before.principal_id ||',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "action-get-embedded-signatures",
+    finding: "action-get-trusts-unsigned-embedded-objects",
+    file: "lib/validation.mjs",
+    search: '    ]) failures.push(...validateResolvedSignedObject(object, context).map((code) => `action_get_${name}_${code}`));',
+    replace: '    ]) failures.push(...[]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "action-get-current-heads",
+    finding: "action-get-returns-stale-composite-heads",
+    file: "lib/validation.mjs",
+    search: '      if (!sameObjectRef(resolveCurrentHead(context, reference), reference)) {\n        failures.push(`action_get_current_${name}_mismatch`);\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "action-get-lineage-head-semantics",
+    finding: "action-get-skips-current-lineage-validation",
+    file: "lib/validation.mjs",
+    search: '    if (validateLineageStateHead(response.current_lineage_state_head, {\n      ...context, requireDependencySignatures: true,\n      lineageCommitment: response.lineage_commitment\n    }).length) {\n      failures.push("action_get_current_lineage_state_invalid");\n    }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "action-authorization-current-revocation-nonce",
+    finding: "authorization-ignores-current-principal-revocation-nonce",
+    file: "lib/validation.mjs",
+    search: '      if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||\n          value.principal_revocation_nonce !== currentPrincipalRevocationNonce) {\n        failures.push("authorization_principal_revocation_nonce_mismatch");\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "action-authorization-current-reserved-judgments",
+    finding: "authorization-ignores-current-reserved-judgment-set",
+    file: "lib/validation.mjs",
+    search: '      if (!Array.isArray(requiredReservedJudgments) ||\n          canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {\n        failures.push("authorization_reserved_judgments_mismatch");\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "cancellation-authorization-current-revocation-nonce",
+    finding: "cancellation-ignores-current-principal-revocation-nonce",
+    file: "lib/validation.mjs",
+    search: '      if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||\n          value.principal_revocation_nonce !== currentPrincipalRevocationNonce) {\n        failures.push("cancellation_principal_revocation_nonce_mismatch");\n      }',
+    replace: '',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "gate-result-check-order",
+    finding: "gate-result-treats-ordered-check-vector-as-a-set",
+    file: "lib/validation.mjs",
+    search: '    if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||',
+    replace: '    if (canonicalHash([...actualCodes].sort()) !== canonicalHash([...expectedCodes].sort()) ||',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "receiver-event-identity-transition",
+    finding: "authenticated-event-skips-identity-scope-and-assignment-consumption",
+    file: "lib/validation.mjs",
+    search: '      if (receiverEventIdentityTransitionFailures(value.identity_epoch_transition_receipt_ref,\n        after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {\n        failures.push("receiver_outstanding_transition_identity_transition_mismatch");\n      }',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "compartment-map-domains-closed",
+    finding: "compartment-state-map-domains-not-machine-representable",
+    file: "lib/objects.mjs",
+    search: '      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event"],\n      ["node_kind", "enum:empty|leaf|branch"],',
+    replace: '      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream"],\n      ["node_kind", "enum:empty|leaf|branch"],',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-state-definition-binding",
+    finding: "compartment-state-can-detach-from-definition",
+    file: "lib/validation.mjs",
+    search: '      failures.push("compartment_state_definition_mismatch");',
+    replace: '',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-state-asset-binding",
+    finding: "compartment-state-allows-cross-asset-ledger-values",
+    file: "lib/validation.mjs",
+    search: '      if (money.asset !== accountingAsset) failures.push("compartment_state_asset_mismatch");',
+    replace: '',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-state-predecessor",
+    finding: "compartment-state-accepts-skipped-predecessor",
+    file: "lib/validation.mjs",
+    search: '          value.sequence !== predecessor.sequence + 1 || value.fencing_token < predecessor.fencing_token ||',
+    replace: '          false || value.fencing_token < predecessor.fencing_token ||',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-transition-manifest-projection",
+    finding: "compartment-transition-does-not-project-head-manifests",
+    file: "lib/validation.mjs",
+    search: '        failures.push("compartment_transition_manifest_projection_mismatch");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "compartment-transition-nonempty-cause-delta",
+    finding: "compartment-hold-allows-empty-economic-delta",
+    file: "lib/validation.mjs",
+    search: '        failures.push("compartment_transition_cause_delta_mismatch");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "compartment-transition-close-empty",
+    finding: "compartment-closes-with-live-economic-state",
+    file: "lib/validation.mjs",
+    search: '        failures.push("compartment_transition_close_not_empty");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "compartment-transition-chronology",
+    finding: "compartment-transition-signature-predates-commit",
+    file: "lib/validation.mjs",
+    search: '      failures.push("compartment_transition_chronology_invalid");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
   }
 ];

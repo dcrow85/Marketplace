@@ -6,7 +6,7 @@ function deepFreeze(value) {
 
 export const PROFILE_ID = "cairn-supervised-execution-v0.1";
 export const RELEASE_PHASE = "phase_1_schema_only";
-export const SPEC_SHA256 = "c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4";
+export const SPEC_SHA256 = "e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015";
 export const BASE_BUNDLE_HASH = "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c";
 export const BASE_REGISTRY_HASH = "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b";
 
@@ -94,12 +94,13 @@ export const PHASE1_OPERATIONS = deepFreeze([
   read("execution.enumerable_map.get", "enumerableMapObjectResponse", "inherited_parent_private_or_audit_acl", "enumerableMapReadRequest"),
   read("execution.connection_authorization.get", "agent-connection-authorization.schema.json", "owner_or_exact_runtime_audit_control_grant"),
   read("execution.connection_state.get", "agent-connection-state-head.schema.json", "owner_or_exact_runtime_audit_control_grant"),
+  read("execution.data_grant_state.get", "data-grant-state-head.schema.json", "owner_or_exact_runtime_data_grant"),
   read("execution.connection_outstanding_action_index.get", "connection-outstanding-action-index-state-head.schema.json", "owner_or_exact_runtime_audit_control_grant"),
   read("execution.connection_outstanding_action_entry.get", "connection-outstanding-action-entry.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.connection_outstanding_action_index_transition_receipt.get", "connection-outstanding-action-index-transition-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.receiver_outstanding_stream_entry.get", "receiver-outstanding-stream-entry.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.receiver_outstanding_stream_transition_receipt.get", "receiver-outstanding-stream-transition-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
-  read("execution.receiver_terminal_release_plan.get", "receiver-terminal-release-plan-core.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
+  read("execution.receiver_terminal_release_plan_core.get", "receiver-terminal-release-plan-core.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.receiver_terminal_release_completion_receipt.get", "receiver-terminal-release-completion-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.connection_state_event_receipt.get", "connection-state-event-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.control_namespace.get", "execution-control-namespace.schema.json", "owner_or_exact_runtime_audit_control_grant"),

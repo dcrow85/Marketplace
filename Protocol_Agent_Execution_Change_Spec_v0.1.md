@@ -501,6 +501,7 @@ Data access and outbound disclosure each have their own online state:
 
 ```yaml
 schema: cairn.data_grant_state_head.v0.1
+data_grant_state_id: urn:uuid:<uuid>
 principal_id: <principal>
 data_grant_ref: <ObjectRef>
 sequence: <monotonic integer>
@@ -4320,6 +4321,29 @@ receipt_hash: sha-256:<hex>
 authority_service_signature: <Signature>
 ```
 
+For `receiver_event_identity`, each authenticated receiver event spends exactly
+one previously reserved `receiver_event_id` slot and exactly one previously
+reserved `receiver_sequence` slot for the same action/effect/lineage. The two
+assignment successors are committed atomically in one
+`BoundedIndexEpochTransitionReceipt`: each before assignment is the exact
+current map member, each successor preserves immutable identity and
+`reserved_slots`, and each `consumed_slots` value is exactly its predecessor
+plus one. One-sided consumption, a jump larger than one, assignment migration to
+the accepting epoch, or reuse of either consumed position is invalid.
+
+For an intermediate nonterminal event, both successor assignments remain map
+members with `state: reserved` and `consumed_slots < reserved_slots`; the stream
+retains the exact successor refs for the next event. Exhausting either
+assignment while the stream remains nonterminal is an unreserved-event
+fail-stop, not implicit capacity or a partially consumed event. A terminal
+authenticated event still consumes the same one-plus-one pair; its single
+atomic receipt may also release remaining reserved capacity under the exact
+authenticated closure cause. An independently authenticated irreversible
+horizon consumes no receiver event or sequence position and may release the
+remaining reservations under its horizon cause. Only a terminal cause may
+remove those assignment map memberships or move them to a terminal release
+state.
+
 ```yaml
 schema: cairn.future_dependency_capacity_pool_core.v0.1
 pool_key: sha-256:<provider domain/account/source scope>
@@ -6403,8 +6427,8 @@ inheritance—for these versions:
 
 | Object | Required execution-profile additions |
 |---|---|
-| `cairn.action_authorization.v0.2` | exact `execution_binding_set_ref/hash`, warning acknowledgements, lineage commitment, effect, confirmation policy/nonce, short expiry, principal nonce |
-| `cairn.cancellation_authorization.v0.1` | exact cancellation binding set, original action/effect/locator/account/state, new cancellation effect, finality profile, confirmation policy/nonce, warnings, short expiry |
+| `cairn.action_authorization.v0.2` | exact `execution_binding_set_ref/hash`, warning acknowledgements, exact reserved-judgment decisions, lineage commitment, effect, confirmation policy/nonce, short expiry, principal nonce |
+| `cairn.cancellation_authorization.v0.1` | exact cancellation binding set, original action/effect/locator/account/state, new cancellation effect, finality profile, confirmation policy/nonce, warnings, short expiry, principal nonce |
 | `cairn.authority_reservation.v0.2` | chosen prepared action, action-control key, binding set, authority basis, lineage commitment and expected/next fence, discriminated ledger commits, universal obligation core/state for financial branches, economic-resource exposure before/after head, exact branch-stage seller-inventory context (ordinary held, paired-checkout prepared, readiness-refreshed checkout held, or adopted consumed) plus matching global copy-lease root/receipt, every before/after head and fence, full exposure vector, exact source-read receipts, active disclosure fences and current DataGrant heads/nonces |
 | `cairn.gate_request.v0.2` | binding set, current healthy execution-integrity head, authority, confirmation receipt plus current assurance/verifier lifecycle heads, reservation receipts, action-control key, current control/connection/compartment/economic-resource/grant/obligation/deal/listing/market heads, current external provider-identity heads plus eligible trust overlays, current global seller-copy lease set for every inventory action, executor/finality/accounting/channel policies, exact current receiver-sequence epoch selector for every not-yet-handed-off external effect, checkout readiness for terms, and checkout head/terms receipt for payment |
 | `cairn.gate_result.v0.2` | exact request/binding hashes, evaluated heads/nonces/fences/business-state/checkout dependency, checks, short expiry, single-use result ID |
@@ -6480,6 +6504,37 @@ authorization_hash: sha-256:<hex>
 principal_signature: <Signature>
 not_claiming: [execution_complete, receiver_acceptance]
 ```
+
+For either one-shot authorization branch, the signed
+`principal_revocation_nonce` is an eligibility fence, not historical metadata.
+At authorization admission, reservation, gate, redemption, and handoff, the
+authority service resolves the principal's authoritative current nonce and
+requires integer equality with the signed value. The caller, a cached
+authorization projection, or the nonce captured by an earlier gate result is
+not an authoritative resolver. A missing resolver, missing/forked current
+nonce, non-integer value, or lower or higher mismatch denies. A later nonce
+increment therefore invalidates every not-yet-used authorization before any
+bytes or credentials can leave Cairn.
+
+At each of those boundaries, the authority service derives the complete required
+reserved-judgment decision set from the exact BindingSet, review, capability,
+and applicable current policy heads. For ActionAuthorization, the signed
+`reserved_judgments_decided` array MUST be sorted by ascending UTF-8 byte order
+of each item's RFC 8785 JCS encoding, duplicate-free under that byte equality,
+and set-equal to the authority-derived set. CancellationAuthorization
+intentionally has no `reserved_judgments_decided` field; its gate MUST instead
+resolve the exact GateRequest → cancellation BindingSet → review graph, derive
+the set again from that graph and current policies, and require the request
+context to prove that same complete set. It MUST NOT read, synthesize, or infer a
+cancellation-authorization field. In either branch, missing, extra, substituted,
+or unresolved decisions deny, and an unavailable judgment-policy or graph
+resolver cannot be treated as an empty set. These nonce and judgment checks
+determine current usability only. An immutable historical getter may still
+return an old authorization after
+revocation when its ObjectRef, canonical bytes, hash, and principal signature
+verify using authenticated key/lifecycle history at the signed time; it MUST be
+returned only under response semantics that are explicitly historical and MUST
+NOT be represented as currently authorized or eligible for execution.
 
 Every other v0.2 object repeats and cross-checks the binding-set ref/hash; a
 different hash anywhere denies. `ActionAuthorization` warning codes must equal
@@ -6880,7 +6935,10 @@ The gate evaluates in this exact fail-closed order:
 5. global and scoped execution-control head and freeze state;
 6. lifecycle of runtime when present, connection when present, DataGrants,
    authority, compartment, policies, and keys;
-7. all pause epochs and revocation nonces;
+7. all pause epochs and revocation nonces, including fresh authoritative
+   resolution and exact equality of the current principal nonce for either
+   one-shot authorization branch; unavailable, forked, stale, lower, or higher
+   nonce state denies;
 8. exact capability and one closed authority branch: supervised ordinary action
    requires one exact v0.2 ActionAuthorization; preauthorized action requires one
    current v0.3 AgentMandate; `cancel_receiver_action` requires one exact
@@ -6901,7 +6959,13 @@ The gate evaluates in this exact fail-closed order:
    obligation adoption receipt;
 11. review, quote, taint, accounting, and finality signatures, policy hashes,
     warnings, unknowns, source paths, event order, and expiry;
-12. reserved judgments and required human/warning decisions;
+12. the authority-derived complete reserved-judgment set and required human/
+    warning decisions; ActionAuthorization's signed
+    `reserved_judgments_decided` array is JCS-byte-sorted, unique under JCS-byte
+    equality, and set-equal, while cancellation proves the same completeness
+    through its exact GateRequest → BindingSet → review graph and never through a
+    CancellationAuthorization field; any missing resolver, unknown judgment,
+    omission, addition, duplicate, or substitution denies;
 13. all action/window/aggregate/outstanding/cost/rate limits;
 14. compartment definition, protection attestation, unique current resource-cap
     selector, current compartment and economic-resource exposure heads, exact
@@ -7382,10 +7446,13 @@ roots. Proof frontiers outside this key are identical. The cause matrix is:
 - `handoff_bound`: reserved→handed_off, membership retained, exact unchanged
   assigned-identity head, and no identity transition receipt;
 - `authenticated_event_observed`: handed_off→handed_off, membership retained,
-  exact identity and receiver-stream successors;
+  exact receiver-stream successor, and one atomic identity-epoch transition
+  receipt whose two transitions consume exactly one event-ID slot and one
+  sequence slot; both intermediate assignments remain reserved map members;
 - each terminal cause: matching terminal after entry, membership→nonmembership,
-  map count -1, exact cause evidence and release plan, and one identity
-  transition receipt;
+  map count -1, exact cause evidence and release plan, and one atomic identity
+  transition receipt containing both event-ID and sequence assignment
+  transitions;
 - closure requires the exact receiver-stream transition; irreversible horizon
   requires the exact unchanged receiver-stream head; fenced non-submission
   forbids both.
@@ -7437,12 +7504,13 @@ terminal_release_plan_core_hash: sha-256:<hex>
 terminal_release_evidence_ref: <same ObjectRef>
 terminal_release_evidence_hash: sha-256:<hex>
 identity_epoch_transition_receipts:
-  - assignment_ref: <event-ID or sequence assignment ObjectRef>
-    assignment_hash: sha-256:<hex>
+  - assignment_ref: <pre-transition event-ID or sequence assignment ObjectRef>
+    assignment_hash: sha-256:<same pre-transition assignment hash>
     transition_receipt_ref: <BoundedIndexEpochTransitionReceipt ObjectRef>
     transition_receipt_hash: sha-256:<hex>
-identity_transition_count: 2
-identity_transition_root: sha-256:<canonical exact pair>
+identity_transition_count: 2 # assignment-item count; receipt refs may be equal
+identity_transition_root: sha-256:<canonical exact set keyed by
+                                  (transition_receipt_ref, assignment_ref)>
 trust_epoch_transition_manifest_ref: <enumerable_transition_manifest ObjectRef>
 trust_epoch_transition_manifest_hash: sha-256:<hex>
 trust_epoch_transition_count: <exactly plan trust assignment count>
@@ -7458,7 +7526,8 @@ receiver_outstanding_stream_transition_receipt_hash: sha-256:<hex>
 connection_outstanding_action_transition_receipt_ref: <ObjectRef or null iff plan connection entry null>
 connection_outstanding_action_transition_receipt_hash: sha-256:<hex or null>
 completed_transition_kind_set_root: sha-256:<cause-derived set equal to plan expected set root>
-plan_to_receipt_keyset_equality_proof_hash: sha-256:<every planned assignment has exactly one receipt>
+plan_to_receipt_keyset_equality_proof_hash: sha-256:<every planned assignment has
+                                                    exactly one keyed item>
 authority_transaction_id: <same plan/transition transaction>
 committed_at: <authority-service time>
 receipt_hash: sha-256:<hex>
@@ -7474,7 +7543,18 @@ irreversible receiver-authenticated horizon first freezes the exact enumerable
 release plan, then terminalizes the entry and removes it from the current map
 while releasing only that entry's unused assignments. Every terminal child
 receipt binds the same plan and transaction. The completion receipt is created
-after those one-way child receipts and proves exact assignment-key equality plus
+after those one-way child receipts and contains exactly two identity items, one
+for the plan's event-ID assignment and one for its sequence assignment. Item
+uniqueness and plan equality are keyed by
+`(transition_receipt_ref, assignment_ref)`, not by receipt ref alone; each
+`assignment_ref/hash` is explicitly the pre-transition assignment identity from
+the plan. Both items MAY name one atomic BoundedIndexEpochTransitionReceipt. A
+shared receipt MUST contain exactly the two matching before assignments and
+their exact successors in its canonical `reservation_assignment_transitions`,
+under the same `authority_transaction_id`; two wrappers around one assignment, a
+third assignment, or two non-atomic transitions deny. Thus the value `2` in
+`identity_transition_count` counts assignment items, not distinct receipts. The
+completion also proves exact assignment-key equality plus
 the complete cause-derived identity, trust, future-pool, receiver-stream-or-
 unchanged-stream, outstanding-stream, and connection set. It is stored under its deterministic
 `completion_key`; restart resolves that key from the plan and cannot rely on a
@@ -8119,6 +8199,14 @@ and scoped executor. The binding set fixes adapter target/version, credential
 audience, current control heads, taint/review results, idempotency semantics,
 original locator/state/account, and an applicability-matched cancellation-
 finality profile. Request acknowledgement is never cancellation confirmation.
+The fresh current-principal-nonce rule above applies unchanged to
+CancellationAuthorization at authorization admission, reservation, gate,
+redemption, and cancellation-request handoff. Its reserved-judgment completeness
+is enforced only through the exact cancellation GateRequest → BindingSet →
+review graph and current policy resolution; CancellationAuthorization has no
+`reserved_judgments_decided` field and cannot inherit or synthesize one from the
+original action. A historical valid signature on either authorization does not
+make the cancellation currently eligible.
 The authorization, BindingSet cancellation context, reservation, deterministic
 gate result, redemption receipt, cancellation action binding, and outbox handoff
 each repeat—or content-addressedly bind—the exact original binding core/head,
@@ -10375,13 +10463,36 @@ their map never becomes a public incident oracle.
 Every exact read first binds the request ref to the returned schema, object
 identity, canonical hash, signature, resource bounds, registry response family,
 and ACL. It then dispatches the returned schema's specialized semantic validator
-with the exact dependency graph. This applies equally to connection
-authorization/state, enumerable roots/nodes, connection outstanding entries and
-transitions, receiver outstanding entries/transitions, terminal release plans
-and completions, and all other execution families. A missing current-head
-resolver, object resolver, external-release verifier, or required dependency is
-a denial. No getter may degrade to schema-only acceptance because its dependency
-graph was omitted.
+with the exact dependency graph. Every returned-object binding and every
+resolved graph edge MUST use an exact ObjectRef tuple
+`(schema, object_id, object_hash)`; the resolved object MUST match all three
+components, its canonical bytes MUST
+recompute the named hash, and every signed object MUST have a valid signature by
+the schema-appropriate signer. A bare hash, schema-only object, unresolved edge,
+or internally coherent alien object cannot satisfy a dependency.
+
+An operation whose contract promises current state also performs an
+authoritative current-head comparison; dependency validity alone is
+insufficient. At minimum, `execution.connection_state.get`,
+`execution.connection_outstanding_action_index.get`,
+`execution.compartment_state.get`, and `execution.lineage_state.get` require the
+returned head ObjectRef to equal the resolver's current head exactly.
+`execution.action.get` additionally requires the exact ObjectRefs binding its
+returned `current_action_state_head`, `current_lineage_state_head`, and
+`current_activity_detail` objects to equal their respective authoritative current
+heads. Any other operation declared current by the registry applies the same
+rule. A missing/forked current-head result or unavailable resolver denies.
+Immutable historical-object and receipt getters need not equal a later current
+head unless their registry contract promises current state; they still verify
+the complete exact graph and signatures at the authenticated signing time and
+must not promote historical validity into current eligibility.
+
+These rules apply equally to connection authorization/state, enumerable roots/
+nodes, connection outstanding entries and transitions, receiver outstanding
+entries/transitions, terminal release plans and completions, and all other
+execution families. A missing object resolver, external-release verifier, or
+required dependency is a denial. No getter may degrade to schema-only acceptance
+because its dependency graph was omitted.
 
 ### 11.1 Closed state-writer map
 
@@ -11905,8 +12016,11 @@ receipt ref, or hidden lifecycle writer fails.
 
 Epoch/capacity mutants fill one trust or receiver-identity epoch while an action
 retains a reversal tail, then admit unrelated work, roll over, and deliver the
-late event. The event must consume its draining-epoch reservations. Releasing
-tail slots at business finality, sealing an epoch with live reservations,
+late event. Each authenticated event must atomically increment exactly one
+draining-epoch event-ID assignment slot and one draining-epoch sequence
+assignment slot; an intermediate successor remains reserved and present in its
+assigned epoch. Releasing tail slots at business finality, sealing an epoch with
+live reservations,
 assigning two actions one slot, rejecting the late event for capacity, or moving
 the assignment to the new epoch fails. Historical source reauthentication must
 atomically transfer its pre-reserved future-dependency slot; discovering a new
@@ -11934,10 +12048,15 @@ map entry. A business-final event, timer, or unrelated stream may not release it
 For a horizon-only profile, import one typed AuthenticatedIrreversibleHorizonReceipt
 and freeze one ReceiverTerminalReleasePlanCore enumerating the paired identity,
 complete trust, optional future-pool, current receiver-stream head, and connection
-assignments. Require
-the deterministic ReceiverTerminalReleaseCompletionReceipt to prove one typed
-transition per releasable planned key under the same transaction while proving
-the receiver-stream head byte-identical. A fabricated horizon stream transition,
+assignments. Require the deterministic
+ReceiverTerminalReleaseCompletionReceipt to prove one typed item per releasable
+planned key under the same transaction while proving the receiver-stream head
+byte-identical. The two identity items share one atomic
+BoundedIndexEpochTransitionReceipt, while uniqueness is over
+`(transition_receipt_ref, assignment_ref)` and each assignment ref is the
+pre-transition identity; that receipt must contain both exact assignment
+transitions. Requiring two distinct receipt refs,
+accepting duplicate assignment keys, a fabricated horizon stream transition,
 or an omitted unchanged-stream proof fails. Omit one trust assignment,
 future slot, child receipt, or completion receipt; mismatch its count/root/kind
 set; use local time/business finality; or release different assignments—the drain
