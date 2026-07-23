@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { bindObjectHash, canonicalHash, canonicalText, objectRefFor, sha256, signatureInput, valueAtPointer } from "../lib/core.mjs";
+import { bindObjectHash, canonicalHash, canonicalText, objectRefFor, sameObjectRef, sha256, signatureInput, valueAtPointer } from "../lib/core.mjs";
 import {
   auditPhase1Sources,
   buildPhase1Bundle,
@@ -19,6 +19,20 @@ import { BASE_BUNDLE_HASH, BASE_REGISTRY_HASH, PHASE1_OPERATIONS, PROFILE_ID, SP
 import {
   connectionOutstandingActionKey,
   connectionOutstandingMapKey,
+  enumerableMapBranchEntriesRoot,
+  enumerableMapEmptyEntriesRoot,
+  enumerableMapLeafEntriesRoot,
+  gateBusinessStateRoot,
+  gateCheckoutDependencyRoot,
+  gateEvaluatedHeadRoot,
+  gateRequiredHeadRefs,
+  PHASE1_GATE_CHECK_CODES,
+  receiverOutstandingMapKey,
+  receiverOutstandingStreamKey,
+  receiverTerminalCompletionKey,
+  receiverTerminalPlanToReceiptKeysetEqualityHash,
+  receiverTerminalReleasePlanKey,
+  receiverTerminalTransitionKindSetRoot,
   validateActionStateTransition,
   validateActionAuthorization,
   validateActionRecord,
@@ -32,11 +46,18 @@ import {
   validateCompartmentDefinition,
   confirmationChallengeHash,
   validateConnectionEvent,
+  validateConnectionAuthorization,
+  validateConnectionStateHead,
   validateConnectionOutstandingActionEntry,
   validateConnectionOutstandingIndexHead,
   validateConnectionOutstandingIndexTransitionReceipt,
+  validateReceiverOutstandingStreamEntry,
+  validateReceiverOutstandingStreamTransitionReceipt,
+  validateReceiverTerminalReleasePlan,
+  validateReceiverTerminalReleaseCompletion,
   validateControlAuthorization,
   validateEnumerableMapNode,
+  validateEnumerableMapPathProof,
   validateEnumerableMapRoot,
   validateExecutionRedemptionReceipt,
   validateExecutionConfirmation,
@@ -84,7 +105,8 @@ const context = {
   baseSchemasByObjectId,
   bundleHash: built.bundle.bundle_hash,
   registryHash: audit.operationRegistryHash,
-  baseBundleHash: BASE_BUNDLE_HASH
+  baseBundleHash: BASE_BUNDLE_HASH,
+  objectResolver: new Map()
 };
 
 function decodePointerToken(token) {
@@ -146,12 +168,34 @@ function make(schemaId, overrides = {}) {
   });
   if (schemaId === "cairn.enumerable_map_node.v0.1") Object.assign(object, {
     node_kind: "empty", path_prefix_nibbles: "", leaf_entry: null,
-    branch_children: [], subtree_entry_count: 0
+    branch_children: [], subtree_entry_count: 0,
+    entries_root: enumerableMapEmptyEntriesRoot("connection_outstanding_action")
   });
   if (schemaId === "cairn.connection_outstanding_action_entry.v0.1") Object.assign(object, {
     receiver_event_stream_key: null, finality_transition_profile_ref: null,
     finality_transition_profile_hash: null, sequence: 0, previous_entry_hash: null, state: "reserved"
   });
+  if (schemaId === "cairn.connection_outstanding_action_index_transition_receipt.v0.1") Object.assign(object, {
+    before_change_proof: null, after_change_proof: null,
+    action_transition_receipt_ref: null, action_transition_receipt_hash: null
+  });
+  if (schemaId === "cairn.receiver_outstanding_stream_entry.v0.1") Object.assign(object, {
+    sequence: 0, previous_entry_hash: null, state: "reserved",
+    current_receiver_stream_head_ref: null, current_receiver_stream_head_hash: null
+  });
+  if (schemaId === "cairn.receiver_outstanding_stream_transition_receipt.v0.1") Object.assign(object, {
+    before_change_proof: null, after_change_proof: null
+  });
+  if (schemaId === "cairn.receiver_terminal_release_completion_receipt.v0.1") {
+    const [firstAssignment, secondAssignment, firstTransition, secondTransition] =
+      distinctRefs(4, "terminal-completion-identity");
+    object.identity_epoch_transition_receipts = [
+      { assignment_ref: firstAssignment, assignment_hash: firstAssignment.object_hash,
+        transition_receipt_ref: firstTransition, transition_receipt_hash: firstTransition.object_hash },
+      { assignment_ref: secondAssignment, assignment_hash: secondAssignment.object_hash,
+        transition_receipt_ref: secondTransition, transition_receipt_hash: secondTransition.object_hash }
+    ];
+  }
   if (schemaId === "cairn.execution_control_receipt.v0.1") Object.assign(object, {
     cause: "global_control", authorization_basis_kind: "control_authorization",
     control_namespace_ref: null, control_namespace_hash: null, prior_control_namespace_ref: null,
@@ -253,6 +297,40 @@ function make(schemaId, overrides = {}) {
 
 function refFor(object) {
   return objectRefFor(object, schemasByObjectId.get(object.schema));
+}
+
+function mapPathProof(map, terminalNode, entryKey, claim, absenceKind = null, ancestorNodes = []) {
+  return {
+    claim,
+    map_root_ref: refFor(map),
+    map_root_hash: map.map_hash,
+    entry_key: entryKey,
+    ancestor_node_refs: ancestorNodes.map(refFor),
+    terminal_node_ref: refFor(terminalNode),
+    terminal_node_hash: terminalNode.node_hash,
+    absence_kind: absenceKind
+  };
+}
+
+function currentHeadResolverFor(refs) {
+  return new Map(refs.map((reference) => [
+    canonicalText({ schema: reference.schema, object_id: reference.object_id }), reference
+  ]));
+}
+
+function expectedGateDependencyProjectionFor(request) {
+  const fields = [
+    "execution_integrity_state_head_ref", "confirmation_assurance_policy_lifecycle_head_ref",
+    "confirmation_verifier_profile_lifecycle_head_ref", "reservation_receipt_refs",
+    "current_control_head_refs", "current_connection_head_ref", "current_compartment_head_ref",
+    "current_economic_resource_head_ref", "current_data_grant_head_refs",
+    "current_business_state_head_refs", "current_provider_identity_head_refs",
+    "current_provider_identity_trust_overlay_head_refs", "current_seller_copy_lease_heads_root",
+    "policy_refs", "executor_policy_ref", "receiver_finality_profile_ref", "accounting_policy_ref",
+    "receiver_channel_policy_ref", "receiver_sequence_epoch_selector_ref", "checkout_dependency_refs",
+    "checkout_readiness_receipt_ref", "checkout_group_state_head_ref", "checkout_terms_receipt_ref"
+  ];
+  return Object.fromEntries(fields.map((field) => [field, structuredClone(request[field])]));
 }
 
 function confirmationPolicyFixture(capability, lifecycleRef) {
@@ -372,6 +450,23 @@ function validMandate(overrides = {}) {
   mandate.constraints.expires_at = "2026-07-23T10:00:00Z";
   mandate.issued_at = "2026-07-22T10:00:00Z";
   mandate.scope_bindings[0].asset = "USD";
+  const runtimeSchema = baseSchemasByObjectId.get("cairn.agent_runtime_binding.v0.1");
+  const runtime = sampleFor(runtimeSchema);
+  runtime.agent_identity.agent_provider_id = mandate.agent.provider_id;
+  runtime.agent_identity.agent_product_id = mandate.agent.product_id;
+  runtime.runtime_public_key.public_key = "A".repeat(43);
+  runtime.not_before = "2026-07-22T09:00:00Z";
+  runtime.expires_at = "2026-07-24T10:00:00Z";
+  const boundRuntime = bindObjectHash(runtime, runtimeSchema);
+  const runtimeRef = objectRefFor(boundRuntime, runtimeSchema);
+  const connection = make("cairn.agent_connection_authorization.v0.1", {
+    principal_id: mandate.principal_id, agent_runtime_binding_ref: runtimeRef,
+    not_before: "2026-07-22T09:00:00Z", expires_at: "2026-07-24T10:00:00Z"
+  });
+  mandate.agent.runtime_binding_ref = runtimeRef;
+  mandate.agent.connection_authorization_ref = refFor(connection);
+  context.objectResolver.set(runtimeRef.object_hash, boundRuntime);
+  context.objectResolver.set(refFor(connection).object_hash, connection);
   Object.assign(mandate, overrides);
   return bindObjectHash(mandate, schemasByObjectId.get(mandate.schema));
 }
@@ -461,8 +556,8 @@ test("Phase 1 bundle and registry are deterministic", async () => {
 });
 
 test("Phase 1 exposes only the exact read-only non-effectful registry", () => {
-  assert.equal(audit.objectSchemaCount, 39);
-  assert.equal(audit.operationCount, 29);
+  assert.equal(audit.objectSchemaCount, 43);
+  assert.equal(audit.operationCount, 33);
   assert.deepEqual(sources.registry.operations.map(({ name }) => name), PHASE1_OPERATIONS.map(({ name }) => name));
   assert.ok(sources.registry.operations.every((operation) =>
     operation.name.startsWith("execution.") && !operation.mutating && !operation.external_effect &&
@@ -630,7 +725,7 @@ test("generic read responses are typed and bind the exact returned object", () =
     "https://cairn.cards/protocol/execution/schemas/v0.1/confirmation-assurance-policy.schema.json",
     "https://cairn.cards/protocol/execution/schemas/v0.1/confirmation-verifier-profile.schema.json"
   ]);
-  assert.equal(alternatives("receiptObjectResponse").length, 9);
+  assert.equal(alternatives("receiptObjectResponse").length, 11);
   assert.deepEqual(validateBaseObjectResponse(receiptResponse, context), ["base_object_response_schema_invalid"]);
   assert.deepEqual(validatePolicyObjectResponse(receiptResponse, context), ["policy_object_response_schema_invalid"]);
   assert.deepEqual(validateReceiptObjectResponse(policyResponse, context), ["receipt_object_response_schema_invalid"]);
@@ -729,7 +824,7 @@ test("resource limits are byte-based, aggregate, depth-bounded, and applied befo
 });
 
 test("every Phase 1 object schema admits a bound closed specimen and rejects extensions", () => {
-  assert.equal(PHASE1_OBJECTS.length, 39);
+  assert.equal(PHASE1_OBJECTS.length, 43);
   for (const profile of PHASE1_OBJECTS) {
     const schema = schemasByObjectId.get(profile.schema);
     const validate = audit.ajv.getSchema(schema.$id);
@@ -1140,7 +1235,7 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
   const outstandingActionMap = make("cairn.enumerable_map_root.v0.1", {
     map_key: connectionOutstandingMapKey(before.outstanding_action_index_key),
     root_node_ref: refFor(emptyOutstandingNode), root_node_hash: emptyOutstandingNode.node_hash,
-    revision: 0, entry_count: 0, entries_root: canonicalHash([])
+    revision: 0, entry_count: 0, entries_root: enumerableMapEmptyEntriesRoot("connection_outstanding_action")
   });
   const outstandingIndexBefore = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
     outstanding_action_index_key: before.outstanding_action_index_key,
@@ -1324,15 +1419,57 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     effect_id: `sha-256:${"b".repeat(64)}`,
     lineage_id: `sha-256:${"3".repeat(64)}`
   }), "sha-256:96ec7041d55cd6250600035dc66c923ed04f6bac16a9c195c8b9f70ff4cf2c39");
+  assert.equal(enumerableMapEmptyEntriesRoot("connection_outstanding_action"),
+    "sha-256:ff9f0a9011c8fa97f0feb4cc467b7fa5874215554d59bb7fa63a1d82a5596c0d");
+  const goldenLeafA = {
+    entry_key: `sha-256:${"1".repeat(64)}`, entry_kind: "connection_outstanding_action",
+    entry_object_ref: { schema: "cairn.connection_outstanding_action_entry.v0.1", object_id: "entry-a",
+      object_hash: `sha-256:${"a".repeat(64)}` }, entry_object_hash: `sha-256:${"a".repeat(64)}`
+  };
+  const goldenLeafB = {
+    entry_key: `sha-256:${"2".repeat(64)}`, entry_kind: "connection_outstanding_action",
+    entry_object_ref: { schema: "cairn.connection_outstanding_action_entry.v0.1", object_id: "entry-b",
+      object_hash: `sha-256:${"b".repeat(64)}` }, entry_object_hash: `sha-256:${"b".repeat(64)}`
+  };
+  assert.equal(enumerableMapLeafEntriesRoot("connection_outstanding_action", goldenLeafA),
+    "sha-256:cb737d3f57d155e016518d0cee1132ea0a869926bc70c2706ec7a100244a3e0b");
+  assert.equal(enumerableMapBranchEntriesRoot("connection_outstanding_action", "", 2, [
+    { nibble: "1", child_path_prefix_nibbles: "1".repeat(64), child_node_hash: `sha-256:${"c".repeat(64)}`,
+      child_subtree_entry_count: 1, child_entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", goldenLeafA) },
+    { nibble: "2", child_path_prefix_nibbles: "2".repeat(64), child_node_hash: `sha-256:${"d".repeat(64)}`,
+      child_subtree_entry_count: 1, child_entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", goldenLeafB) }
+  ]), "sha-256:98604d20fe3717186da39f08802805664f8eb6ea933a24b2d1186ef7d2e61d13");
+  const bindingSeed = make("cairn.execution_binding_set.v0.1", {
+    execution_bundle_hash: built.bundle.bundle_hash,
+    operation_registry_hash: audit.operationRegistryHash,
+    actor_branch: "principal_direct", agent_runtime_binding_ref: null,
+    connection_authorization_ref: null, connection_state_head_ref: null,
+    cancellation_context: null, capability: "request_evidence",
+    created_at: "2026-07-22T10:00:00Z", expires_at: "2026-07-22T10:05:00Z"
+  });
   const lineage = make("cairn.lineage_commitment.v0.1", {
-    principal_authorized_lineage_id: `sha-256:${"3".repeat(64)}`
+    principal_id: bindingSeed.principal_id,
+    principal_occurrence_id: bindingSeed.principal_occurrence_id,
+    principal_authorized_lineage_id: `sha-256:${"3".repeat(64)}`,
+    action_control_key: bindingSeed.action_control_key,
+    action_proposal_hash: bindingSeed.action_proposal_hash,
+    effect_id: bindingSeed.effect_id, prior_lineage_state: "none", prior_lineage_receipt_ref: null
+  });
+  const binding = make("cairn.execution_binding_set.v0.1", {
+    ...bindingSeed, principal_authorized_lineage_id: lineage.principal_authorized_lineage_id,
+    lineage_commitment_ref: refFor(lineage), lineage_commitment_hash: lineage.commitment_hash
   });
   const action = make("cairn.action_record.v0.2", {
-    lineage_commitment_ref: refFor(lineage), lineage_commitment_hash: lineage.commitment_hash
+    principal_id: binding.principal_id, execution_binding_set_ref: refFor(binding),
+    execution_binding_set_hash: binding.binding_set_hash,
+    lineage_commitment_ref: refFor(lineage), lineage_commitment_hash: lineage.commitment_hash,
+    action_proposal_ref: binding.action_proposal_ref, action_proposal_hash: binding.action_proposal_hash,
+    effect_descriptor_ref: binding.effect_descriptor_ref, effect_id: binding.effect_id,
+    capability: binding.capability
   });
   const actionState = make("cairn.action_state_head.v0.1", {
     action_id: action.action_id, action_ref: refFor(action), sequence: 0,
-    previous_state_hash: null, state: "prepared"
+    previous_state_hash: null, state: "reserved"
   });
   const finalityProfileRef = distinctRefs(1, "outstanding-finality-profile")[0];
   const entrySeed = make("cairn.connection_outstanding_action_entry.v0.1", {
@@ -1352,13 +1489,14 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     entry_object_ref: refFor(entry), entry_object_hash: entry.entry_hash
   };
   const leaf = make("cairn.enumerable_map_node.v0.1", {
-    node_kind: "leaf", path_prefix_nibbles: entry.outstanding_action_key.slice(8, 10),
-    leaf_entry: leafEntry, branch_children: [], subtree_entry_count: 1
+    node_kind: "leaf", path_prefix_nibbles: entry.outstanding_action_key.slice(8),
+    leaf_entry: leafEntry, branch_children: [], subtree_entry_count: 1,
+    entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", leafEntry)
   });
   const map = make("cairn.enumerable_map_root.v0.1", {
     map_key: connectionOutstandingMapKey(indexKey), revision: 1,
     root_node_ref: refFor(leaf), root_node_hash: leaf.node_hash,
-    entry_count: 1, entries_root: canonicalHash([leafEntry])
+    entry_count: 1, entries_root: leaf.entries_root
   });
   const index = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
     outstanding_action_index_key: indexKey, connection_state_id: connectionStateId,
@@ -1366,13 +1504,106 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     outstanding_action_map_ref: refFor(map), outstanding_action_map_hash: map.map_hash,
     outstanding_action_count: 1, outstanding_action_root: map.entries_root, state: "active"
   });
-  const objects = [lineage, action, actionState, entry, leaf, map, index];
+  const objects = [lineage, binding, action, actionState, entry, leaf, map, index];
   const mapContext = {
     ...context, parentAccessAuthorized: true,
     objectResolver: new Map(objects.map((object) => [refFor(object).object_hash, object]))
   };
+  let secondAction;
+  let secondEntry;
+  for (let attempt = 1; attempt < 64; attempt += 1) {
+    const candidateAction = make("cairn.action_record.v0.2", {
+      ...action, action_id: `sha-256:${attempt.toString(16).padStart(64, "0")}`,
+      effect_id: `sha-256:${(attempt + 64).toString(16).padStart(64, "0")}`
+    });
+    const candidateState = make("cairn.action_state_head.v0.1", {
+      ...actionState, action_id: candidateAction.action_id, action_ref: refFor(candidateAction)
+    });
+    const candidateSeed = make("cairn.connection_outstanding_action_entry.v0.1", {
+      ...entry, action_ref: refFor(candidateAction), effect_id: candidateAction.effect_id,
+      current_action_state_head_ref: refFor(candidateState), current_action_state_head_hash: candidateState.state_hash
+    });
+    const candidateEntry = make("cairn.connection_outstanding_action_entry.v0.1", {
+      ...candidateSeed, outstanding_action_key: connectionOutstandingActionKey(candidateSeed)
+    });
+    if (candidateEntry.outstanding_action_key[8] !== entry.outstanding_action_key[8]) {
+      secondAction = candidateAction;
+      secondEntry = candidateEntry;
+      mapContext.objectResolver.set(refFor(candidateAction).object_hash, candidateAction);
+      mapContext.objectResolver.set(refFor(candidateState).object_hash, candidateState);
+      mapContext.objectResolver.set(refFor(candidateEntry).object_hash, candidateEntry);
+      break;
+    }
+  }
+  assert.ok(secondEntry);
+  const secondLeafEntry = {
+    entry_key: secondEntry.outstanding_action_key, entry_kind: "connection_outstanding_action",
+    entry_object_ref: refFor(secondEntry), entry_object_hash: secondEntry.entry_hash
+  };
+  const secondLeaf = make("cairn.enumerable_map_node.v0.1", {
+    node_kind: "leaf", path_prefix_nibbles: secondEntry.outstanding_action_key.slice(8),
+    leaf_entry: secondLeafEntry, branch_children: [], subtree_entry_count: 1,
+    entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", secondLeafEntry)
+  });
+  mapContext.objectResolver.set(refFor(secondLeaf).object_hash, secondLeaf);
+  const branchChildren = [leaf, secondLeaf].map((child) => ({
+    nibble: child.path_prefix_nibbles[0], child_path_prefix_nibbles: child.path_prefix_nibbles,
+    child_node_ref: refFor(child), child_node_hash: child.node_hash,
+    child_subtree_entry_count: child.subtree_entry_count, child_entries_root: child.entries_root
+  })).sort((left, right) => left.nibble.localeCompare(right.nibble));
+  const branch = make("cairn.enumerable_map_node.v0.1", {
+    node_kind: "branch", path_prefix_nibbles: "", leaf_entry: null, branch_children: branchChildren,
+    subtree_entry_count: 2,
+    entries_root: enumerableMapBranchEntriesRoot("connection_outstanding_action", "", 2, branchChildren)
+  });
+  mapContext.objectResolver.set(refFor(branch).object_hash, branch);
+  const branchMap = make("cairn.enumerable_map_root.v0.1", {
+    map_key: connectionOutstandingMapKey(indexKey), revision: 2,
+    root_node_ref: refFor(branch), root_node_hash: branch.node_hash,
+    entry_count: 2, entries_root: branch.entries_root
+  });
+  mapContext.objectResolver.set(refFor(branchMap).object_hash, branchMap);
+  assert.deepEqual(validateEnumerableMapNode(branch, mapContext), []);
+  const branchMembershipProof = mapPathProof(branchMap, leaf, entry.outstanding_action_key,
+    "membership", null, [branch]);
+  assert.deepEqual(validateEnumerableMapPathProof(branchMembershipProof, branchMap, "membership", {
+    entry_object_ref: refFor(entry), entry_object_hash: entry.entry_hash
+  }, { ...mapContext, expectedEntryKey: entry.outstanding_action_key }).failures, []);
+  const wrongProofKey = { ...branchMembershipProof, entry_key: secondEntry.outstanding_action_key };
+  assert.ok(validateEnumerableMapPathProof(wrongProofKey, branchMap, "membership", {
+    entry_object_ref: refFor(entry), entry_object_hash: entry.entry_hash
+  }, { ...mapContext, expectedEntryKey: entry.outstanding_action_key }).failures
+    .includes("enumerable_map_proof_binding_mismatch"));
+  const forgedChildSummary = structuredClone(branchChildren);
+  forgedChildSummary.find(({ child_node_ref }) => sameObjectRef(child_node_ref, refFor(leaf)))
+    .child_entries_root = `sha-256:${"f".repeat(64)}`;
+  const forgedBranch = make("cairn.enumerable_map_node.v0.1", {
+    ...branch, branch_children: forgedChildSummary,
+    entries_root: enumerableMapBranchEntriesRoot("connection_outstanding_action", "", 2, forgedChildSummary)
+  });
+  const forgedBranchMap = make("cairn.enumerable_map_root.v0.1", {
+    ...branchMap, root_node_ref: refFor(forgedBranch), root_node_hash: forgedBranch.node_hash,
+    entries_root: forgedBranch.entries_root
+  });
+  mapContext.objectResolver.set(refFor(forgedBranch).object_hash, forgedBranch);
+  mapContext.objectResolver.set(refFor(forgedBranchMap).object_hash, forgedBranchMap);
+  const forgedProof = mapPathProof(forgedBranchMap, leaf, entry.outstanding_action_key,
+    "membership", null, [forgedBranch]);
+  assert.ok(validateEnumerableMapPathProof(forgedProof, forgedBranchMap, "membership", {
+    entry_object_ref: refFor(entry), entry_object_hash: entry.entry_hash
+  }, { ...mapContext, expectedEntryKey: entry.outstanding_action_key }).failures
+    .includes("enumerable_map_proof_child_summary_mismatch"));
   assert.deepEqual(validateConnectionOutstandingActionEntry(entry, mapContext), []);
   assert.deepEqual(validateEnumerableMapNode(leaf, mapContext), []);
+  const unresolvedLeafContext = { ...mapContext, objectResolver: new Map(mapContext.objectResolver) };
+  unresolvedLeafContext.objectResolver.delete(refFor(entry).object_hash);
+  assert.ok(validateEnumerableMapNode(leaf, unresolvedLeafContext).includes("map_node_leaf_union_mismatch"));
+  const reboundLeafEntry = { ...leafEntry, entry_key: `sha-256:${"6".repeat(64)}` };
+  const reboundLeaf = make("cairn.enumerable_map_node.v0.1", {
+    ...leaf, path_prefix_nibbles: reboundLeafEntry.entry_key.slice(8), leaf_entry: reboundLeafEntry,
+    entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", reboundLeafEntry)
+  });
+  assert.ok(validateEnumerableMapNode(reboundLeaf, mapContext).includes("map_node_leaf_union_mismatch"));
   assert.deepEqual(validateEnumerableMapRoot(map, {
     ...mapContext, expectedMapKey: connectionOutstandingMapKey(indexKey),
     expectedMapDomain: "connection_outstanding_action"
@@ -1406,7 +1637,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   const emptyMap = make("cairn.enumerable_map_root.v0.1", {
     map_key: connectionOutstandingMapKey(indexKey), revision: 0,
     root_node_ref: refFor(emptyNode), root_node_hash: emptyNode.node_hash,
-    entry_count: 0, entries_root: canonicalHash([])
+    entry_count: 0, entries_root: emptyNode.entries_root
   });
   const emptyIndex = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
     outstanding_action_index_key: indexKey, connection_state_id: connectionStateId,
@@ -1426,6 +1657,10 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     changed_action_key: entry.outstanding_action_key,
     changed_entry_before_ref: null, changed_entry_before_hash: null,
     changed_entry_after_ref: refFor(entry), changed_entry_after_hash: entry.entry_hash,
+    before_change_proof: mapPathProof(emptyMap, emptyNode, entry.outstanding_action_key,
+      "nonmembership", "empty_root"),
+    after_change_proof: mapPathProof(map, leaf, entry.outstanding_action_key, "membership"),
+    action_transition_receipt_ref: null, action_transition_receipt_hash: null,
     terminal_evidence_ref: null, terminal_evidence_hash: null,
     authority_transaction_id: "reserve-outstanding-action", committed_at: reservedIndex.updated_at
   });
@@ -1449,16 +1684,36 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.ok(validateConnectionOutstandingIndexTransitionReceipt(badReservationReceipt, badReservationContext)
     .includes("outstanding_index_transition_reservation_union_mismatch"));
 
-  const handedOffState = make("cairn.action_state_head.v0.1", {
+  const updatedActionStateSeed = make("cairn.action_state_head.v0.1", {
     action_id: action.action_id, action_ref: refFor(action), sequence: 1,
-    previous_state_hash: actionState.state_hash, state: "authorized"
+    previous_state_hash: actionState.state_hash, state: "gate_allowed"
   });
-  const streamKey = `sha-256:${"5".repeat(64)}`;
+  const actionLineageState = make("cairn.lineage_state_head.v0.1", {
+    principal_occurrence_id: lineage.principal_occurrence_id,
+    principal_authorized_lineage_id: lineage.principal_authorized_lineage_id,
+    action_control_key: lineage.action_control_key,
+    attempt_sequence: lineage.attempt_sequence,
+    commitment_generation: lineage.commitment_generation,
+    commitment_ref: refFor(lineage), state: "active",
+    activated_action_ref: refFor(action), activation_receipt_ref: actionState.lineage_activation_receipt_ref,
+    activation_transaction_id: "outstanding-action-activation",
+    next_state_commitment_hash: `sha-256:${"7".repeat(64)}`
+  });
+  const actionTransition = make("cairn.action_receipt.v0.2", {
+    action_ref: refFor(action), execution_binding_set_ref: action.execution_binding_set_ref,
+    execution_binding_set_hash: action.execution_binding_set_hash, effect_id: action.effect_id,
+    lineage_state_head_ref: refFor(actionLineageState),
+    state_before: "reserved", state_after: "gate_allowed",
+    prior_action_receipt_ref: actionState.prior_transition_receipt_ref
+  });
+  const updatedActionState = make("cairn.action_state_head.v0.1", {
+    ...updatedActionStateSeed, prior_transition_receipt_ref: refFor(actionTransition)
+  });
   const updatedEntrySeed = make("cairn.connection_outstanding_action_entry.v0.1", {
-    ...entry, current_action_state_head_ref: refFor(handedOffState),
-    current_action_state_head_hash: handedOffState.state_hash,
-    receiver_event_stream_key: streamKey, sequence: 1, previous_entry_hash: entry.entry_hash,
-    state: "handed_off"
+    ...entry, current_action_state_head_ref: refFor(updatedActionState),
+    current_action_state_head_hash: updatedActionState.state_hash,
+    receiver_event_stream_key: null, sequence: 1, previous_entry_hash: entry.entry_hash,
+    state: "reserved"
   });
   const updatedEntry = make("cairn.connection_outstanding_action_entry.v0.1", {
     ...updatedEntrySeed, outstanding_action_key: connectionOutstandingActionKey(updatedEntrySeed)
@@ -1467,11 +1722,12 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     ...leafEntry, entry_object_ref: refFor(updatedEntry), entry_object_hash: updatedEntry.entry_hash
   };
   const updatedLeaf = make("cairn.enumerable_map_node.v0.1", {
-    ...leaf, leaf_entry: updatedLeafEntry
+    ...leaf, leaf_entry: updatedLeafEntry,
+    entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", updatedLeafEntry)
   });
   const updatedMap = make("cairn.enumerable_map_root.v0.1", {
     ...map, revision: 2, root_node_ref: refFor(updatedLeaf), root_node_hash: updatedLeaf.node_hash,
-    entries_root: canonicalHash([updatedLeafEntry])
+    entries_root: updatedLeaf.entries_root
   });
   const updatedIndex = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
     ...reservedIndex, sequence: 2, previous_state_hash: reservedIndex.head_hash,
@@ -1486,15 +1742,70 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     after_action_map_ref: refFor(updatedMap), after_action_map_hash: updatedMap.map_hash,
     changed_entry_before_ref: refFor(entry), changed_entry_before_hash: entry.entry_hash,
     changed_entry_after_ref: refFor(updatedEntry), changed_entry_after_hash: updatedEntry.entry_hash,
+    before_change_proof: mapPathProof(map, leaf, entry.outstanding_action_key, "membership"),
+    after_change_proof: mapPathProof(updatedMap, updatedLeaf, entry.outstanding_action_key, "membership"),
+    action_transition_receipt_ref: refFor(actionTransition),
+    action_transition_receipt_hash: actionTransition.receipt_hash,
     authority_transaction_id: "update-outstanding-action", committed_at: updatedIndex.updated_at
   });
-  const updateObjects = [...objects, emptyNode, emptyMap, emptyIndex, reservedIndex, handedOffState,
-    updatedEntry, updatedLeaf, updatedMap, updatedIndex, updateReceipt];
+  const updateObjects = [...objects, emptyNode, emptyMap, emptyIndex, reservedIndex, actionLineageState, actionTransition,
+    updatedActionState, updatedEntry, updatedLeaf, updatedMap, updatedIndex, updateReceipt];
   const updateContext = {
     ...mapContext,
     objectResolver: new Map(updateObjects.map((object) => [refFor(object).object_hash, object]))
   };
+  assert.deepEqual(validateActionReceipt(
+    actionTransition, actionState, updatedActionState, binding, { ...updateContext, action }
+  ), []);
+  const skippedPriorActionReceipt = make("cairn.action_receipt.v0.2", {
+    ...actionTransition, prior_action_receipt_ref: null
+  });
+  assert.ok(validateActionReceipt(
+    skippedPriorActionReceipt, actionState, updatedActionState, binding, { ...updateContext, action }
+  ).includes("action_receipt_prior_chain_mismatch"));
   assert.deepEqual(validateConnectionOutstandingIndexTransitionReceipt(updateReceipt, updateContext), []);
+  const forgedUpdatedActionState = make("cairn.action_state_head.v0.1", {
+    ...updatedActionState, prior_transition_receipt_ref: refFor(skippedPriorActionReceipt)
+  });
+  const forgedUpdatedEntrySeed = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...updatedEntry, current_action_state_head_ref: refFor(forgedUpdatedActionState),
+    current_action_state_head_hash: forgedUpdatedActionState.state_hash
+  });
+  const forgedUpdatedEntry = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...forgedUpdatedEntrySeed, outstanding_action_key: connectionOutstandingActionKey(forgedUpdatedEntrySeed)
+  });
+  const forgedUpdatedLeafEntry = {
+    ...leafEntry, entry_object_ref: refFor(forgedUpdatedEntry), entry_object_hash: forgedUpdatedEntry.entry_hash
+  };
+  const forgedUpdatedLeaf = make("cairn.enumerable_map_node.v0.1", {
+    ...leaf, leaf_entry: forgedUpdatedLeafEntry,
+    entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", forgedUpdatedLeafEntry)
+  });
+  const forgedUpdatedMap = make("cairn.enumerable_map_root.v0.1", {
+    ...updatedMap, root_node_ref: refFor(forgedUpdatedLeaf), root_node_hash: forgedUpdatedLeaf.node_hash,
+    entries_root: forgedUpdatedLeaf.entries_root
+  });
+  const forgedUpdatedIndex = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
+    ...updatedIndex, outstanding_action_map_ref: refFor(forgedUpdatedMap),
+    outstanding_action_map_hash: forgedUpdatedMap.map_hash, outstanding_action_root: forgedUpdatedMap.entries_root
+  });
+  const forgedUpdateReceipt = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
+    ...updateReceipt, after_head_ref: refFor(forgedUpdatedIndex), after_head_hash: forgedUpdatedIndex.head_hash,
+    after_action_map_ref: refFor(forgedUpdatedMap), after_action_map_hash: forgedUpdatedMap.map_hash,
+    changed_entry_after_ref: refFor(forgedUpdatedEntry), changed_entry_after_hash: forgedUpdatedEntry.entry_hash,
+    after_change_proof: mapPathProof(forgedUpdatedMap, forgedUpdatedLeaf,
+      forgedUpdatedEntry.outstanding_action_key, "membership"),
+    action_transition_receipt_ref: refFor(skippedPriorActionReceipt),
+    action_transition_receipt_hash: skippedPriorActionReceipt.receipt_hash
+  });
+  const forgedUpdateContext = {
+    ...updateContext,
+    objectResolver: new Map([...updateObjects, skippedPriorActionReceipt, forgedUpdatedActionState,
+      forgedUpdatedEntry, forgedUpdatedLeaf, forgedUpdatedMap, forgedUpdatedIndex, forgedUpdateReceipt]
+      .map((object) => [refFor(object).object_hash, object]))
+  };
+  assert.ok(validateConnectionOutstandingIndexTransitionReceipt(forgedUpdateReceipt, forgedUpdateContext)
+    .includes("outstanding_index_transition_update_union_mismatch"));
   const skippedEntrySequence = make("cairn.connection_outstanding_action_entry.v0.1", {
     ...updatedEntry, sequence: 2
   });
@@ -1518,7 +1829,176 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     outstanding_action_map_ref: refFor(drainedMap), outstanding_action_map_hash: drainedMap.map_hash,
     outstanding_action_count: 0, outstanding_action_root: drainedMap.entries_root
   });
-  const terminalEvidence = distinctRefs(1, "fenced-non-submission-evidence")[0];
+  const fencedEvidence = {
+    schema: "cairn.fenced_non_submission_receipt.v0.1",
+    receipt_id: "fenced-outstanding-action",
+    receipt_hash: `sha-256:${"6".repeat(64)}`,
+    action_ref: refFor(action), effect_id: action.effect_id,
+    lineage_id: lineage.principal_authorized_lineage_id
+  };
+  const fencedEvidenceRef = {
+    schema: fencedEvidence.schema, object_id: fencedEvidence.receipt_id,
+    object_hash: fencedEvidence.receipt_hash
+  };
+  const selectorKey = `sha-256:${"8".repeat(64)}`;
+  const identityScopeKey = `sha-256:${"9".repeat(64)}`;
+  const eventAssignment = {
+    schema: "cairn.bounded_index_slot_assignment.v0.1", assignment_key: "event-assignment",
+    assignment_hash: `sha-256:${"a".repeat(64)}`, assigned_identity_epoch: 0
+  };
+  const sequenceAssignment = {
+    schema: "cairn.bounded_index_slot_assignment.v0.1", assignment_key: "sequence-assignment",
+    assignment_hash: `sha-256:${"b".repeat(64)}`, assigned_identity_epoch: 0
+  };
+  const eventAssignmentRef = {
+    schema: eventAssignment.schema, object_id: eventAssignment.assignment_key,
+    object_hash: eventAssignment.assignment_hash
+  };
+  const sequenceAssignmentRef = {
+    schema: sequenceAssignment.schema, object_id: sequenceAssignment.assignment_key,
+    object_hash: sequenceAssignment.assignment_hash
+  };
+  const trustEntryBase = {
+    entry_kind: "bounded_index_slot_assignment", entry_object_ref: eventAssignmentRef,
+    entry_object_hash: eventAssignmentRef.object_hash
+  };
+  const trustEntry = { ...trustEntryBase, entry_key: transitionManifestEntryKey(trustEntryBase) };
+  const trustManifest = make("cairn.enumerable_transition_manifest.v0.1", {
+    manifest_kind: "receiver_trust_slot_assignments", entry_count: 1,
+    sorted_entries: [trustEntry], entries_root: canonicalHash([trustEntry])
+  });
+  const receiverEntrySeed = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    receiver_sequence_epoch_selector_key: selectorKey, identity_scope_index_key: identityScopeKey,
+    action_ref: refFor(action), effect_id: action.effect_id,
+    lineage_id: lineage.principal_authorized_lineage_id,
+    precommitted_client_reference: "outstanding-client-reference",
+    assigned_identity_epoch: 0, event_id_slot_assignment_ref: eventAssignmentRef,
+    event_id_slot_assignment_hash: eventAssignmentRef.object_hash,
+    sequence_slot_assignment_ref: sequenceAssignmentRef,
+    sequence_slot_assignment_hash: sequenceAssignmentRef.object_hash,
+    trust_epoch_assignment_manifest_ref: refFor(trustManifest),
+    trust_epoch_assignment_manifest_hash: trustManifest.manifest_hash,
+    trust_epoch_assignment_count: 1, trust_epoch_assignments_root: trustManifest.entries_root,
+    future_dependency_pool_state_head_ref: null, future_dependency_pool_state_head_hash: null,
+    future_dependency_assignment_ref: null, future_dependency_assignment_hash: null,
+    connection_outstanding_action_key: updatedEntry.outstanding_action_key,
+    connection_outstanding_action_entry_ref: refFor(updatedEntry),
+    connection_outstanding_action_entry_hash: updatedEntry.entry_hash,
+    finality_transition_profile_ref: finalityProfileRef,
+    finality_transition_profile_hash: finalityProfileRef.object_hash,
+    sequence: 0, previous_entry_hash: null, state: "reserved",
+    current_receiver_stream_head_ref: null, current_receiver_stream_head_hash: null
+  });
+  const receiverEntryBefore = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntrySeed, outstanding_stream_key: receiverOutstandingStreamKey(receiverEntrySeed)
+  });
+  const receiverEntryAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryBefore, sequence: 1, previous_entry_hash: receiverEntryBefore.entry_hash,
+    state: "fenced_non_submission"
+  });
+  const receiverLeafEntry = {
+    entry_key: receiverEntryBefore.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
+    entry_object_ref: refFor(receiverEntryBefore), entry_object_hash: receiverEntryBefore.entry_hash
+  };
+  const receiverLeaf = make("cairn.enumerable_map_node.v0.1", {
+    map_domain: "receiver_outstanding_stream", node_kind: "leaf",
+    path_prefix_nibbles: receiverEntryBefore.outstanding_stream_key.slice(8), leaf_entry: receiverLeafEntry,
+    branch_children: [], subtree_entry_count: 1,
+    entries_root: enumerableMapLeafEntriesRoot("receiver_outstanding_stream", receiverLeafEntry)
+  });
+  const receiverMapBefore = make("cairn.enumerable_map_root.v0.1", {
+    map_domain: "receiver_outstanding_stream", map_key: receiverOutstandingMapKey(selectorKey), revision: 0,
+    root_node_ref: refFor(receiverLeaf), root_node_hash: receiverLeaf.node_hash,
+    entry_count: 1, entries_root: receiverLeaf.entries_root
+  });
+  const receiverEmptyNode = make("cairn.enumerable_map_node.v0.1", {
+    map_domain: "receiver_outstanding_stream", entries_root: enumerableMapEmptyEntriesRoot("receiver_outstanding_stream")
+  });
+  const receiverMapAfter = make("cairn.enumerable_map_root.v0.1", {
+    map_domain: "receiver_outstanding_stream", map_key: receiverOutstandingMapKey(selectorKey), revision: 1,
+    root_node_ref: refFor(receiverEmptyNode), root_node_hash: receiverEmptyNode.node_hash,
+    entry_count: 0, entries_root: receiverEmptyNode.entries_root
+  });
+  const selectorBefore = {
+    schema: "cairn.receiver_sequence_epoch_selector_state_head.v0.1",
+    receiver_sequence_epoch_selector_key: selectorKey, sequence: 0, previous_state_hash: null,
+    outstanding_stream_map_ref: refFor(receiverMapBefore), outstanding_stream_map_hash: receiverMapBefore.map_hash,
+    head_hash: `sha-256:${"c".repeat(64)}`
+  };
+  const selectorAfter = {
+    ...selectorBefore, sequence: 1, previous_state_hash: selectorBefore.head_hash,
+    outstanding_stream_map_ref: refFor(receiverMapAfter), outstanding_stream_map_hash: receiverMapAfter.map_hash,
+    head_hash: `sha-256:${"d".repeat(64)}`
+  };
+  const selectorBeforeRef = { schema: selectorBefore.schema, object_id: selectorKey, object_hash: selectorBefore.head_hash };
+  const selectorAfterRef = { schema: selectorAfter.schema, object_id: selectorKey, object_hash: selectorAfter.head_hash };
+  const identityScope = {
+    schema: "cairn.receiver_event_identity_index_state_head.v0.1",
+    identity_scope_index_key: identityScopeKey, state_hash: `sha-256:${"e".repeat(64)}`
+  };
+  const identityScopeRef = {
+    schema: identityScope.schema, object_id: identityScopeKey, object_hash: identityScope.state_hash
+  };
+  const identityTransition = {
+    schema: "cairn.bounded_index_epoch_transition_receipt.v0.1", receipt_id: "identity-transition",
+    receipt_hash: `sha-256:${"f".repeat(64)}`, assignment_ref: eventAssignmentRef
+  };
+  const identityTransitionRef = {
+    schema: identityTransition.schema, object_id: identityTransition.receipt_id,
+    object_hash: identityTransition.receipt_hash
+  };
+  const releasePlanSeed = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+    release_cause: "fenced_non_submission", terminal_release_evidence_ref: fencedEvidenceRef,
+    terminal_release_evidence_hash: fencedEvidenceRef.object_hash,
+    receiver_outstanding_stream_entry_ref: refFor(receiverEntryBefore),
+    receiver_outstanding_stream_entry_hash: receiverEntryBefore.entry_hash,
+    event_id_slot_assignment_ref: eventAssignmentRef, event_id_slot_assignment_hash: eventAssignmentRef.object_hash,
+    sequence_slot_assignment_ref: sequenceAssignmentRef, sequence_slot_assignment_hash: sequenceAssignmentRef.object_hash,
+    trust_epoch_assignment_manifest_ref: refFor(trustManifest),
+    trust_epoch_assignment_manifest_hash: trustManifest.manifest_hash, trust_epoch_assignment_count: 1,
+    future_dependency_pool_state_head_ref: receiverEntryBefore.future_dependency_pool_state_head_ref,
+    future_dependency_pool_state_head_hash: receiverEntryBefore.future_dependency_pool_state_head_hash,
+    future_dependency_assignment_ref: receiverEntryBefore.future_dependency_assignment_ref,
+    future_dependency_assignment_hash: receiverEntryBefore.future_dependency_assignment_hash,
+    receiver_stream_before_head_ref: null, receiver_stream_before_head_hash: null,
+    connection_outstanding_action_entry_ref: refFor(updatedEntry),
+    connection_outstanding_action_entry_hash: updatedEntry.entry_hash,
+    authority_transaction_id: "remove-outstanding-action"
+  });
+  const releasePlan = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+    ...releasePlanSeed, terminal_release_plan_key: receiverTerminalReleasePlanKey(releasePlanSeed, receiverEntryBefore),
+    expected_transition_kind_set_root: receiverTerminalTransitionKindSetRoot(releasePlanSeed, receiverEntryBefore)
+  });
+  const receiverTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    outstanding_stream_key: receiverEntryBefore.outstanding_stream_key,
+    epoch_selector_before_head_ref: selectorBeforeRef, epoch_selector_before_head_hash: selectorBeforeRef.object_hash,
+    epoch_selector_after_head_ref: selectorAfterRef, epoch_selector_after_head_hash: selectorAfterRef.object_hash,
+    assigned_identity_scope_before_head_ref: identityScopeRef,
+    assigned_identity_scope_before_head_hash: identityScopeRef.object_hash,
+    assigned_identity_scope_after_head_ref: identityScopeRef,
+    assigned_identity_scope_after_head_hash: identityScopeRef.object_hash,
+    outstanding_stream_map_before_ref: refFor(receiverMapBefore),
+    outstanding_stream_map_before_hash: receiverMapBefore.map_hash,
+    outstanding_stream_map_after_ref: refFor(receiverMapAfter),
+    outstanding_stream_map_after_hash: receiverMapAfter.map_hash,
+    before_change_proof: mapPathProof(receiverMapBefore, receiverLeaf,
+      receiverEntryBefore.outstanding_stream_key, "membership"),
+    after_change_proof: mapPathProof(receiverMapAfter, receiverEmptyNode,
+      receiverEntryBefore.outstanding_stream_key, "nonmembership", "empty_root"),
+    cause: "fenced_non_submission", entry_before_ref: refFor(receiverEntryBefore),
+    entry_before_hash: receiverEntryBefore.entry_hash, entry_after_ref: refFor(receiverEntryAfter),
+    entry_after_hash: receiverEntryAfter.entry_hash, after_current_map_membership: false,
+    identity_epoch_transition_receipt_ref: identityTransitionRef,
+    identity_epoch_transition_receipt_hash: identityTransitionRef.object_hash,
+    unchanged_assigned_identity_epoch_head_ref: null, unchanged_assigned_identity_epoch_head_hash: null,
+    terminal_release_evidence_ref: fencedEvidenceRef,
+    terminal_release_evidence_hash: fencedEvidenceRef.object_hash,
+    terminal_release_plan_core_ref: refFor(releasePlan),
+    terminal_release_plan_core_hash: releasePlan.plan_hash,
+    receiver_stream_transition_receipt_ref: null, receiver_stream_transition_receipt_hash: null,
+    unchanged_receiver_stream_head_ref: null, unchanged_receiver_stream_head_hash: null,
+    authority_transaction_id: "remove-outstanding-action", committed_at: drainedIndex.updated_at
+  });
   const removalReceipt = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
     ...updateReceipt, cause: "fenced_non_submission_removed",
     before_head_ref: refFor(updatedIndex), before_head_hash: updatedIndex.head_hash,
@@ -1527,15 +2007,807 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     after_action_map_ref: refFor(drainedMap), after_action_map_hash: drainedMap.map_hash,
     changed_entry_before_ref: refFor(updatedEntry), changed_entry_before_hash: updatedEntry.entry_hash,
     changed_entry_after_ref: null, changed_entry_after_hash: null,
-    terminal_evidence_ref: terminalEvidence, terminal_evidence_hash: terminalEvidence.object_hash,
+    before_change_proof: mapPathProof(updatedMap, updatedLeaf, updatedEntry.outstanding_action_key, "membership"),
+    after_change_proof: mapPathProof(drainedMap, emptyNode, updatedEntry.outstanding_action_key,
+      "nonmembership", "empty_root"),
+    action_transition_receipt_ref: null, action_transition_receipt_hash: null,
+    terminal_evidence_ref: refFor(receiverTransition), terminal_evidence_hash: receiverTransition.receipt_hash,
     authority_transaction_id: "remove-outstanding-action", committed_at: drainedIndex.updated_at
   });
   const removalContext = {
     ...updateContext,
-    objectResolver: new Map([...updateObjects, drainedMap, drainedIndex, removalReceipt]
-      .map((object) => [refFor(object).object_hash, object]))
+    externalObjectVerifier: () => true,
+    objectResolver: new Map([
+      ...[...updateObjects, drainedMap, drainedIndex, trustManifest, receiverEntryBefore, receiverEntryAfter,
+        receiverLeaf, receiverMapBefore, receiverEmptyNode, receiverMapAfter, releasePlan,
+        receiverTransition, removalReceipt].map((object) => [refFor(object).object_hash, object]),
+      ...[fencedEvidence, eventAssignment, sequenceAssignment, selectorBefore, selectorAfter,
+        identityScope, identityTransition].map((object) => [
+          object.receipt_hash ?? object.assignment_hash ?? object.head_hash ?? object.state_hash, object
+        ])
+    ])
   };
+  assert.deepEqual(validateReceiverOutstandingStreamEntry(receiverEntryBefore, removalContext), []);
+  assert.ok(validateReceiverOutstandingStreamEntry(receiverEntryBefore, {
+    ...removalContext, externalObjectVerifier: () => false
+  }).includes("receiver_outstanding_entry_slot_assignment_mismatch"));
+  assert.deepEqual(validateReceiverTerminalReleasePlan(releasePlan, removalContext), []);
+  assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(receiverTransition, removalContext), []);
   assert.deepEqual(validateConnectionOutstandingIndexTransitionReceipt(removalReceipt, removalContext), []);
+  const missingSlotContext = { ...removalContext, objectResolver: new Map(removalContext.objectResolver) };
+  missingSlotContext.objectResolver.delete(eventAssignmentRef.object_hash);
+  assert.ok(validateReceiverOutstandingStreamEntry(receiverEntryBefore, missingSlotContext)
+    .includes("receiver_outstanding_entry_slot_assignment_mismatch"));
+  const missingTrustContext = { ...removalContext, objectResolver: new Map(removalContext.objectResolver) };
+  missingTrustContext.objectResolver.delete(refFor(trustManifest).object_hash);
+  assert.ok(validateReceiverOutstandingStreamEntry(receiverEntryBefore, missingTrustContext)
+    .includes("receiver_outstanding_entry_trust_manifest_mismatch"));
+  const wrongPlanRoot = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+    ...releasePlan, expected_transition_kind_set_root: `sha-256:${"7".repeat(64)}`
+  });
+  assert.ok(validateReceiverTerminalReleasePlan(wrongPlanRoot, removalContext)
+    .includes("receiver_terminal_plan_transition_kind_set_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.receiver_terminal_release_plan.get", { ref: refFor(wrongPlanRoot) },
+    wrongPlanRoot, removalContext
+  ).includes("object_read_receiver_terminal_plan_transition_kind_set_mismatch"));
+  const wrongPlanTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...receiverTransition, terminal_release_plan_core_ref: refFor(wrongPlanRoot),
+    terminal_release_plan_core_hash: wrongPlanRoot.plan_hash
+  });
+  const wrongPlanTransitionContext = {
+    ...removalContext,
+    objectResolver: new Map([...removalContext.objectResolver, [refFor(wrongPlanRoot).object_hash, wrongPlanRoot]])
+  };
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(wrongPlanTransition, wrongPlanTransitionContext)
+    .includes("receiver_outstanding_transition_terminal_union_mismatch"));
+  const alteredRuleAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryAfter, authenticated_closure_or_horizon_rule_hash: `sha-256:${"7".repeat(64)}`
+  });
+  const alteredRuleTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...receiverTransition, entry_after_ref: refFor(alteredRuleAfter), entry_after_hash: alteredRuleAfter.entry_hash
+  });
+  const alteredRuleContext = {
+    ...removalContext,
+    objectResolver: new Map([...removalContext.objectResolver,
+      [refFor(alteredRuleAfter).object_hash, alteredRuleAfter]])
+  };
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(alteredRuleTransition, alteredRuleContext)
+    .includes("receiver_outstanding_transition_sequence_mismatch"));
+  const secondIdentityTransition = {
+    ...identityTransition, receipt_id: "identity-transition-2", receipt_hash: `sha-256:${"0".repeat(63)}1`,
+    assignment_ref: sequenceAssignmentRef
+  };
+  const secondIdentityTransitionRef = {
+    schema: secondIdentityTransition.schema, object_id: secondIdentityTransition.receipt_id,
+    object_hash: secondIdentityTransition.receipt_hash
+  };
+  const trustTransitionEntryBase = {
+    entry_kind: "bounded_index_epoch_transition_receipt", entry_object_ref: identityTransitionRef,
+    entry_object_hash: identityTransitionRef.object_hash
+  };
+  const trustTransitionEntry = {
+    ...trustTransitionEntryBase, entry_key: transitionManifestEntryKey(trustTransitionEntryBase)
+  };
+  const trustTransitionManifest = make("cairn.enumerable_transition_manifest.v0.1", {
+    manifest_kind: "receiver_trust_epoch_transitions", entry_count: 1,
+    sorted_entries: [trustTransitionEntry], entries_root: canonicalHash([trustTransitionEntry])
+  });
+  const identityTransitionReceipts = [
+    { assignment_ref: eventAssignmentRef, assignment_hash: eventAssignmentRef.object_hash,
+      transition_receipt_ref: identityTransitionRef, transition_receipt_hash: identityTransitionRef.object_hash },
+    { assignment_ref: sequenceAssignmentRef, assignment_hash: sequenceAssignmentRef.object_hash,
+      transition_receipt_ref: secondIdentityTransitionRef,
+      transition_receipt_hash: secondIdentityTransitionRef.object_hash }
+  ];
+  const completionSeed = make("cairn.receiver_terminal_release_completion_receipt.v0.1", {
+    terminal_release_plan_core_ref: refFor(releasePlan), terminal_release_plan_core_hash: releasePlan.plan_hash,
+    terminal_release_evidence_ref: fencedEvidenceRef, terminal_release_evidence_hash: fencedEvidenceRef.object_hash,
+    identity_epoch_transition_receipts: identityTransitionReceipts, identity_transition_count: 2,
+    identity_transition_root: canonicalHash(identityTransitionReceipts),
+    trust_epoch_transition_manifest_ref: refFor(trustTransitionManifest),
+    trust_epoch_transition_manifest_hash: trustTransitionManifest.manifest_hash,
+    trust_epoch_transition_count: 1, trust_epoch_transition_root: trustTransitionManifest.entries_root,
+    future_dependency_transition_receipt_ref: null, future_dependency_transition_receipt_hash: null,
+    receiver_stream_transition_receipt_ref: null, receiver_stream_transition_receipt_hash: null,
+    unchanged_receiver_stream_head_ref: null, unchanged_receiver_stream_head_hash: null,
+    receiver_outstanding_stream_transition_receipt_ref: refFor(receiverTransition),
+    receiver_outstanding_stream_transition_receipt_hash: receiverTransition.receipt_hash,
+    connection_outstanding_action_transition_receipt_ref: refFor(removalReceipt),
+    connection_outstanding_action_transition_receipt_hash: removalReceipt.receipt_hash,
+    completed_transition_kind_set_root: releasePlan.expected_transition_kind_set_root,
+    authority_transaction_id: releasePlan.authority_transaction_id,
+    committed_at: removalReceipt.committed_at
+  });
+  const completion = make("cairn.receiver_terminal_release_completion_receipt.v0.1", {
+    ...completionSeed, completion_key: receiverTerminalCompletionKey(releasePlan),
+    plan_to_receipt_keyset_equality_proof_hash:
+      receiverTerminalPlanToReceiptKeysetEqualityHash(releasePlan, completionSeed)
+  });
+  const completionContext = {
+    ...removalContext,
+    objectResolver: new Map([
+      ...removalContext.objectResolver,
+      [refFor(trustTransitionManifest).object_hash, trustTransitionManifest],
+      [secondIdentityTransitionRef.object_hash, secondIdentityTransition],
+      [refFor(completion).object_hash, completion]
+    ])
+  };
+  assert.deepEqual(validateReceiverTerminalReleaseCompletion(completion, completionContext), []);
+  const wrongKeysetProof = make("cairn.receiver_terminal_release_completion_receipt.v0.1", {
+    ...completion, plan_to_receipt_keyset_equality_proof_hash: `sha-256:${"7".repeat(64)}`
+  });
+  assert.ok(validateReceiverTerminalReleaseCompletion(wrongKeysetProof, completionContext)
+    .includes("receiver_terminal_completion_plan_mismatch"));
+  const missingIdentityCompletionContext = {
+    ...completionContext, objectResolver: new Map(completionContext.objectResolver)
+  };
+  missingIdentityCompletionContext.objectResolver.delete(secondIdentityTransitionRef.object_hash);
+  assert.ok(validateReceiverTerminalReleaseCompletion(completion, missingIdentityCompletionContext)
+    .includes("receiver_terminal_completion_identity_transition_mismatch"));
+  const reboundIdentityCompletionContext = {
+    ...completionContext,
+    objectResolver: new Map(completionContext.objectResolver).set(secondIdentityTransitionRef.object_hash, {
+      ...secondIdentityTransition, assignment_ref: eventAssignmentRef
+    })
+  };
+  assert.ok(validateReceiverTerminalReleaseCompletion(completion, reboundIdentityCompletionContext)
+    .includes("receiver_terminal_completion_identity_transition_mismatch"));
+  const foreignAssignment = {
+    ...sequenceAssignment, assignment_key: "foreign-sequence-assignment",
+    assignment_hash: `sha-256:${"0".repeat(63)}2`
+  };
+  const foreignAssignmentRef = {
+    schema: foreignAssignment.schema, object_id: foreignAssignment.assignment_key,
+    object_hash: foreignAssignment.assignment_hash
+  };
+  const foreignIdentityTransition = {
+    ...secondIdentityTransition, receipt_id: "foreign-identity-transition",
+    receipt_hash: `sha-256:${"0".repeat(63)}3`, assignment_ref: foreignAssignmentRef
+  };
+  const foreignIdentityTransitionRef = {
+    schema: foreignIdentityTransition.schema, object_id: foreignIdentityTransition.receipt_id,
+    object_hash: foreignIdentityTransition.receipt_hash
+  };
+  const foreignIdentityReceipts = [identityTransitionReceipts[0], {
+    assignment_ref: foreignAssignmentRef, assignment_hash: foreignAssignmentRef.object_hash,
+    transition_receipt_ref: foreignIdentityTransitionRef,
+    transition_receipt_hash: foreignIdentityTransitionRef.object_hash
+  }];
+  const foreignIdentitySeed = {
+    ...completion, identity_epoch_transition_receipts: foreignIdentityReceipts,
+    identity_transition_root: canonicalHash(foreignIdentityReceipts)
+  };
+  const foreignIdentityCompletion = make("cairn.receiver_terminal_release_completion_receipt.v0.1", {
+    ...foreignIdentitySeed,
+    plan_to_receipt_keyset_equality_proof_hash:
+      receiverTerminalPlanToReceiptKeysetEqualityHash(releasePlan, foreignIdentitySeed)
+  });
+  const foreignIdentityContext = {
+    ...completionContext,
+    objectResolver: new Map([
+      ...completionContext.objectResolver,
+      [foreignAssignmentRef.object_hash, foreignAssignment],
+      [foreignIdentityTransitionRef.object_hash, foreignIdentityTransition]
+    ])
+  };
+  assert.ok(validateReceiverTerminalReleaseCompletion(foreignIdentityCompletion, foreignIdentityContext)
+    .includes("receiver_terminal_completion_plan_mismatch"));
+  const wrongTrustTransition = {
+    ...identityTransition, receipt_id: "wrong-trust-transition",
+    receipt_hash: `sha-256:${"0".repeat(63)}4`, assignment_ref: sequenceAssignmentRef
+  };
+  const wrongTrustTransitionRef = {
+    schema: wrongTrustTransition.schema, object_id: wrongTrustTransition.receipt_id,
+    object_hash: wrongTrustTransition.receipt_hash
+  };
+  const wrongTrustEntryBase = {
+    entry_kind: "bounded_index_epoch_transition_receipt", entry_object_ref: wrongTrustTransitionRef,
+    entry_object_hash: wrongTrustTransitionRef.object_hash
+  };
+  const wrongTrustEntry = {
+    ...wrongTrustEntryBase, entry_key: transitionManifestEntryKey(wrongTrustEntryBase)
+  };
+  const wrongTrustManifest = make("cairn.enumerable_transition_manifest.v0.1", {
+    manifest_kind: "receiver_trust_epoch_transitions", entry_count: 1,
+    sorted_entries: [wrongTrustEntry], entries_root: canonicalHash([wrongTrustEntry])
+  });
+  const wrongTrustSeed = {
+    ...completion, trust_epoch_transition_manifest_ref: refFor(wrongTrustManifest),
+    trust_epoch_transition_manifest_hash: wrongTrustManifest.manifest_hash,
+    trust_epoch_transition_root: wrongTrustManifest.entries_root
+  };
+  const wrongTrustCompletion = make("cairn.receiver_terminal_release_completion_receipt.v0.1", {
+    ...wrongTrustSeed,
+    plan_to_receipt_keyset_equality_proof_hash:
+      receiverTerminalPlanToReceiptKeysetEqualityHash(releasePlan, wrongTrustSeed)
+  });
+  const wrongTrustContext = {
+    ...completionContext,
+    objectResolver: new Map([
+      ...completionContext.objectResolver,
+      [refFor(wrongTrustManifest).object_hash, wrongTrustManifest],
+      [wrongTrustTransitionRef.object_hash, wrongTrustTransition]
+    ])
+  };
+  assert.ok(validateReceiverTerminalReleaseCompletion(wrongTrustCompletion, wrongTrustContext)
+    .includes("receiver_terminal_completion_trust_transition_mismatch"));
+  const wrongCompletionRoot = make("cairn.receiver_terminal_release_completion_receipt.v0.1", {
+    ...completion, completed_transition_kind_set_root: `sha-256:${"7".repeat(64)}`
+  });
+  assert.ok(validateReceiverTerminalReleaseCompletion(wrongCompletionRoot, completionContext)
+    .includes("receiver_terminal_completion_plan_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.receiver_terminal_release_completion_receipt.get",
+    { ref: refFor(wrongCompletionRoot) }, wrongCompletionRoot, completionContext
+  ).includes("object_read_receiver_terminal_completion_plan_mismatch"));
+  assert.deepEqual(validateExactObjectRead(
+    "execution.receiver_terminal_release_completion_receipt.get",
+    { ref: refFor(completion) }, completion, completionContext
+  ), []);
+  const receiverActionState = make("cairn.action_state_head.v0.1", {
+    action_id: action.action_id, action_ref: refFor(action), sequence: 2,
+    previous_state_hash: updatedActionState.state_hash, state: "acknowledged",
+    authority_ref: updatedActionState.authority_ref,
+    lineage_activation_receipt_ref: updatedActionState.lineage_activation_receipt_ref,
+    reservation_refs: updatedActionState.reservation_refs,
+    gate_result_ref: updatedActionState.gate_result_ref
+  });
+  const receiverStreamKey = `sha-256:${"6".repeat(64)}`;
+  const receiverCurrentEntrySeed = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...updatedEntry, current_action_state_head_ref: refFor(receiverActionState),
+    current_action_state_head_hash: receiverActionState.state_hash,
+    receiver_event_stream_key: receiverStreamKey, sequence: 2,
+    previous_entry_hash: updatedEntry.entry_hash, state: "receiver_state_current"
+  });
+  const receiverCurrentEntry = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...receiverCurrentEntrySeed, outstanding_action_key: connectionOutstandingActionKey(receiverCurrentEntrySeed)
+  });
+  const receiverWrongConnectionStateSeed = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryBefore, connection_outstanding_action_key: receiverCurrentEntry.outstanding_action_key,
+    connection_outstanding_action_entry_ref: refFor(receiverCurrentEntry),
+    connection_outstanding_action_entry_hash: receiverCurrentEntry.entry_hash
+  });
+  const receiverWrongConnectionState = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverWrongConnectionStateSeed,
+    outstanding_stream_key: receiverOutstandingStreamKey(receiverWrongConnectionStateSeed)
+  });
+  const wrongConnectionStateContext = {
+    ...removalContext,
+    objectResolver: new Map([
+      ...removalContext.objectResolver,
+      [refFor(receiverActionState).object_hash, receiverActionState],
+      [refFor(receiverCurrentEntry).object_hash, receiverCurrentEntry]
+    ])
+  };
+  assert.ok(validateReceiverOutstandingStreamEntry(receiverWrongConnectionState, wrongConnectionStateContext)
+    .includes("receiver_outstanding_entry_connection_state_mismatch"));
+  const receiverStream = {
+    schema: "cairn.receiver_event_stream_state_head.v0.1",
+    receiver_event_stream_key: receiverStreamKey, action_ref: refFor(action), effect_id: action.effect_id,
+    finality_transition_profile_ref: finalityProfileRef,
+    finality_transition_profile_hash: finalityProfileRef.object_hash,
+    sequence: 0, previous_state_hash: null,
+    state_hash: `sha-256:${"1".repeat(63)}2`
+  };
+  const receiverStreamRef = {
+    schema: receiverStream.schema, object_id: receiverStreamKey, object_hash: receiverStream.state_hash
+  };
+  const reservationEmptyMap = make("cairn.enumerable_map_root.v0.1", {
+    ...receiverMapAfter, revision: 40
+  });
+  const reservationLeafMap = make("cairn.enumerable_map_root.v0.1", {
+    ...receiverMapBefore, revision: 41
+  });
+  const reservationSelectorBefore = {
+    ...selectorBefore, sequence: 40, previous_state_hash: `sha-256:${"2".repeat(64)}`,
+    outstanding_stream_map_ref: refFor(reservationEmptyMap),
+    outstanding_stream_map_hash: reservationEmptyMap.map_hash,
+    head_hash: `sha-256:${"2".repeat(63)}1`
+  };
+  const reservationSelectorAfter = {
+    ...reservationSelectorBefore, sequence: 41, previous_state_hash: reservationSelectorBefore.head_hash,
+    outstanding_stream_map_ref: refFor(reservationLeafMap),
+    outstanding_stream_map_hash: reservationLeafMap.map_hash,
+    head_hash: `sha-256:${"2".repeat(63)}2`
+  };
+  const reservationSelectorBeforeRef = {
+    schema: reservationSelectorBefore.schema, object_id: selectorKey,
+    object_hash: reservationSelectorBefore.head_hash
+  };
+  const reservationSelectorAfterRef = {
+    schema: reservationSelectorAfter.schema, object_id: selectorKey,
+    object_hash: reservationSelectorAfter.head_hash
+  };
+  const receiverReservationTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...receiverTransition, cause: "reservation_registered",
+    epoch_selector_before_head_ref: reservationSelectorBeforeRef,
+    epoch_selector_before_head_hash: reservationSelectorBeforeRef.object_hash,
+    epoch_selector_after_head_ref: reservationSelectorAfterRef,
+    epoch_selector_after_head_hash: reservationSelectorAfterRef.object_hash,
+    outstanding_stream_map_before_ref: refFor(reservationEmptyMap),
+    outstanding_stream_map_before_hash: reservationEmptyMap.map_hash,
+    outstanding_stream_map_after_ref: refFor(reservationLeafMap),
+    outstanding_stream_map_after_hash: reservationLeafMap.map_hash,
+    before_change_proof: mapPathProof(reservationEmptyMap, receiverEmptyNode,
+      receiverEntryBefore.outstanding_stream_key, "nonmembership", "empty_root"),
+    after_change_proof: mapPathProof(reservationLeafMap, receiverLeaf,
+      receiverEntryBefore.outstanding_stream_key, "membership"),
+    entry_before_ref: null, entry_before_hash: null,
+    entry_after_ref: refFor(receiverEntryBefore), entry_after_hash: receiverEntryBefore.entry_hash,
+    after_current_map_membership: true,
+    terminal_release_evidence_ref: null, terminal_release_evidence_hash: null,
+    terminal_release_plan_core_ref: null, terminal_release_plan_core_hash: null,
+    receiver_stream_transition_receipt_ref: null, receiver_stream_transition_receipt_hash: null,
+    unchanged_receiver_stream_head_ref: null, unchanged_receiver_stream_head_hash: null,
+    authority_transaction_id: "receiver-reservation"
+  });
+  const reservationReceiverContext = {
+    ...removalContext,
+    objectResolver: new Map([
+      ...removalContext.objectResolver,
+      [refFor(reservationEmptyMap).object_hash, reservationEmptyMap],
+      [refFor(reservationLeafMap).object_hash, reservationLeafMap],
+      [reservationSelectorBeforeRef.object_hash, reservationSelectorBefore],
+      [reservationSelectorAfterRef.object_hash, reservationSelectorAfter]
+    ])
+  };
+  assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(
+    receiverReservationTransition, reservationReceiverContext
+  ), []);
+
+  const submittedActionState = make("cairn.action_state_head.v0.1", {
+    action_id: action.action_id, action_ref: refFor(action), sequence: 2,
+    previous_state_hash: updatedActionState.state_hash, state: "submitted"
+  });
+  const handedConnectionSeed = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...updatedEntry, current_action_state_head_ref: refFor(submittedActionState),
+    current_action_state_head_hash: submittedActionState.state_hash,
+    receiver_event_stream_key: receiverStreamKey, sequence: updatedEntry.sequence + 1,
+    previous_entry_hash: updatedEntry.entry_hash, state: "handed_off"
+  });
+  const handedConnectionEntry = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...handedConnectionSeed, outstanding_action_key: connectionOutstandingActionKey(handedConnectionSeed)
+  });
+  const handedReceiverSeed = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryBefore, connection_outstanding_action_key: handedConnectionEntry.outstanding_action_key,
+    connection_outstanding_action_entry_ref: refFor(handedConnectionEntry),
+    connection_outstanding_action_entry_hash: handedConnectionEntry.entry_hash,
+    current_receiver_stream_head_ref: receiverStreamRef,
+    current_receiver_stream_head_hash: receiverStreamRef.object_hash,
+    sequence: 1, previous_entry_hash: receiverEntryBefore.entry_hash, state: "handed_off"
+  });
+  const handedReceiverEntry = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...handedReceiverSeed, outstanding_stream_key: receiverOutstandingStreamKey(handedReceiverSeed)
+  });
+  const handedLeafEntry = {
+    entry_key: handedReceiverEntry.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
+    entry_object_ref: refFor(handedReceiverEntry), entry_object_hash: handedReceiverEntry.entry_hash
+  };
+  const handedLeaf = make("cairn.enumerable_map_node.v0.1", {
+    map_domain: "receiver_outstanding_stream", node_kind: "leaf",
+    path_prefix_nibbles: handedReceiverEntry.outstanding_stream_key.slice(8), leaf_entry: handedLeafEntry,
+    branch_children: [], subtree_entry_count: 1,
+    entries_root: enumerableMapLeafEntriesRoot("receiver_outstanding_stream", handedLeafEntry)
+  });
+  const handedMap = make("cairn.enumerable_map_root.v0.1", {
+    map_domain: "receiver_outstanding_stream", map_key: receiverOutstandingMapKey(selectorKey), revision: 1,
+    root_node_ref: refFor(handedLeaf), root_node_hash: handedLeaf.node_hash,
+    entry_count: 1, entries_root: handedLeaf.entries_root
+  });
+  const handoffSelectorBefore = {
+    ...selectorBefore, sequence: 50, previous_state_hash: `sha-256:${"3".repeat(64)}`,
+    outstanding_stream_map_ref: refFor(receiverMapBefore),
+    outstanding_stream_map_hash: receiverMapBefore.map_hash,
+    head_hash: `sha-256:${"3".repeat(63)}1`
+  };
+  const handoffSelectorAfter = {
+    ...handoffSelectorBefore, sequence: 51, previous_state_hash: handoffSelectorBefore.head_hash,
+    outstanding_stream_map_ref: refFor(handedMap), outstanding_stream_map_hash: handedMap.map_hash,
+    head_hash: `sha-256:${"3".repeat(63)}2`
+  };
+  const handoffSelectorBeforeRef = {
+    schema: handoffSelectorBefore.schema, object_id: selectorKey, object_hash: handoffSelectorBefore.head_hash
+  };
+  const handoffSelectorAfterRef = {
+    schema: handoffSelectorAfter.schema, object_id: selectorKey, object_hash: handoffSelectorAfter.head_hash
+  };
+  const handoffTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...receiverTransition, cause: "handoff_bound",
+    epoch_selector_before_head_ref: handoffSelectorBeforeRef,
+    epoch_selector_before_head_hash: handoffSelectorBeforeRef.object_hash,
+    epoch_selector_after_head_ref: handoffSelectorAfterRef,
+    epoch_selector_after_head_hash: handoffSelectorAfterRef.object_hash,
+    outstanding_stream_map_before_ref: refFor(receiverMapBefore),
+    outstanding_stream_map_before_hash: receiverMapBefore.map_hash,
+    outstanding_stream_map_after_ref: refFor(handedMap), outstanding_stream_map_after_hash: handedMap.map_hash,
+    before_change_proof: mapPathProof(receiverMapBefore, receiverLeaf,
+      receiverEntryBefore.outstanding_stream_key, "membership"),
+    after_change_proof: mapPathProof(handedMap, handedLeaf,
+      handedReceiverEntry.outstanding_stream_key, "membership"),
+    entry_before_ref: refFor(receiverEntryBefore), entry_before_hash: receiverEntryBefore.entry_hash,
+    entry_after_ref: refFor(handedReceiverEntry), entry_after_hash: handedReceiverEntry.entry_hash,
+    after_current_map_membership: true,
+    identity_epoch_transition_receipt_ref: null, identity_epoch_transition_receipt_hash: null,
+    unchanged_assigned_identity_epoch_head_ref: identityScopeRef,
+    unchanged_assigned_identity_epoch_head_hash: identityScopeRef.object_hash,
+    terminal_release_evidence_ref: null, terminal_release_evidence_hash: null,
+    terminal_release_plan_core_ref: null, terminal_release_plan_core_hash: null,
+    receiver_stream_transition_receipt_ref: null, receiver_stream_transition_receipt_hash: null,
+    unchanged_receiver_stream_head_ref: null, unchanged_receiver_stream_head_hash: null,
+    authority_transaction_id: "receiver-handoff"
+  });
+  const handoffContext = {
+    ...removalContext,
+    objectResolver: new Map([
+      ...removalContext.objectResolver,
+      ...[submittedActionState, handedConnectionEntry, handedReceiverEntry, handedLeaf, handedMap]
+        .map((object) => [refFor(object).object_hash, object]),
+      [receiverStreamRef.object_hash, receiverStream],
+      [handoffSelectorBeforeRef.object_hash, handoffSelectorBefore],
+      [handoffSelectorAfterRef.object_hash, handoffSelectorAfter]
+    ])
+  };
+  assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(handoffTransition, handoffContext), []);
+  const skippedHandedConnection = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...handedConnectionEntry, sequence: handedConnectionEntry.sequence + 1,
+    previous_entry_hash: updatedEntry.entry_hash
+  });
+  const skippedHandedReceiverSeed = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...handedReceiverEntry,
+    connection_outstanding_action_entry_ref: refFor(skippedHandedConnection),
+    connection_outstanding_action_entry_hash: skippedHandedConnection.entry_hash
+  });
+  const skippedHandedReceiver = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...skippedHandedReceiverSeed,
+    outstanding_stream_key: receiverOutstandingStreamKey(skippedHandedReceiverSeed)
+  });
+  const skippedHandoff = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...handoffTransition, entry_after_ref: refFor(skippedHandedReceiver),
+    entry_after_hash: skippedHandedReceiver.entry_hash
+  });
+  const skippedHandoffContext = {
+    ...handoffContext,
+    objectResolver: new Map([
+      ...handoffContext.objectResolver,
+      [refFor(skippedHandedConnection).object_hash, skippedHandedConnection],
+      [refFor(skippedHandedReceiver).object_hash, skippedHandedReceiver]
+    ])
+  };
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(skippedHandoff, skippedHandoffContext)
+    .includes("receiver_outstanding_transition_connection_successor_mismatch"));
+
+  const receiverStreamSuccessor = {
+    ...receiverStream, sequence: 1, previous_state_hash: receiverStream.state_hash,
+    state_hash: `sha-256:${"6".repeat(63)}1`
+  };
+  const receiverStreamSuccessorRef = {
+    schema: receiverStreamSuccessor.schema, object_id: receiverStreamKey,
+    object_hash: receiverStreamSuccessor.state_hash
+  };
+  const eventReceiverEntry = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...handedReceiverEntry, sequence: 2, previous_entry_hash: handedReceiverEntry.entry_hash,
+    current_receiver_stream_head_ref: receiverStreamSuccessorRef,
+    current_receiver_stream_head_hash: receiverStreamSuccessorRef.object_hash
+  });
+  const eventLeafEntry = {
+    entry_key: eventReceiverEntry.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
+    entry_object_ref: refFor(eventReceiverEntry), entry_object_hash: eventReceiverEntry.entry_hash
+  };
+  const eventLeaf = make("cairn.enumerable_map_node.v0.1", {
+    ...handedLeaf, leaf_entry: eventLeafEntry,
+    entries_root: enumerableMapLeafEntriesRoot("receiver_outstanding_stream", eventLeafEntry)
+  });
+  const eventMap = make("cairn.enumerable_map_root.v0.1", {
+    ...handedMap, revision: 2, root_node_ref: refFor(eventLeaf), root_node_hash: eventLeaf.node_hash,
+    entries_root: eventLeaf.entries_root
+  });
+  const eventSelectorAfter = {
+    ...handoffSelectorAfter, sequence: 52, previous_state_hash: handoffSelectorAfter.head_hash,
+    outstanding_stream_map_ref: refFor(eventMap), outstanding_stream_map_hash: eventMap.map_hash,
+    head_hash: `sha-256:${"3".repeat(63)}4`
+  };
+  const eventSelectorAfterRef = {
+    schema: eventSelectorAfter.schema, object_id: selectorKey, object_hash: eventSelectorAfter.head_hash
+  };
+  const eventTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...handoffTransition, cause: "authenticated_event_observed",
+    epoch_selector_before_head_ref: handoffSelectorAfterRef,
+    epoch_selector_before_head_hash: handoffSelectorAfterRef.object_hash,
+    epoch_selector_after_head_ref: eventSelectorAfterRef,
+    epoch_selector_after_head_hash: eventSelectorAfterRef.object_hash,
+    outstanding_stream_map_before_ref: refFor(handedMap), outstanding_stream_map_before_hash: handedMap.map_hash,
+    outstanding_stream_map_after_ref: refFor(eventMap), outstanding_stream_map_after_hash: eventMap.map_hash,
+    before_change_proof: mapPathProof(handedMap, handedLeaf,
+      handedReceiverEntry.outstanding_stream_key, "membership"),
+    after_change_proof: mapPathProof(eventMap, eventLeaf,
+      eventReceiverEntry.outstanding_stream_key, "membership"),
+    entry_before_ref: refFor(handedReceiverEntry), entry_before_hash: handedReceiverEntry.entry_hash,
+    entry_after_ref: refFor(eventReceiverEntry), entry_after_hash: eventReceiverEntry.entry_hash,
+    identity_epoch_transition_receipt_ref: identityTransitionRef,
+    identity_epoch_transition_receipt_hash: identityTransitionRef.object_hash,
+    unchanged_assigned_identity_epoch_head_ref: null, unchanged_assigned_identity_epoch_head_hash: null,
+    authority_transaction_id: "receiver-event"
+  });
+  const eventContext = {
+    ...handoffContext,
+    objectResolver: new Map([
+      ...handoffContext.objectResolver,
+      ...[eventReceiverEntry, eventLeaf, eventMap].map((object) => [refFor(object).object_hash, object]),
+      [receiverStreamSuccessorRef.object_hash, receiverStreamSuccessor],
+      [eventSelectorAfterRef.object_hash, eventSelectorAfter]
+    ])
+  };
+  assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(eventTransition, eventContext), []);
+  const skippedStreamSuccessor = { ...receiverStreamSuccessor, sequence: 2 };
+  const skippedStreamContext = {
+    ...eventContext,
+    objectResolver: new Map(eventContext.objectResolver)
+      .set(receiverStreamSuccessorRef.object_hash, skippedStreamSuccessor)
+  };
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(eventTransition, skippedStreamContext)
+    .includes("receiver_outstanding_transition_event_stream_successor_mismatch"));
+
+  const terminalReceiverFixture = (cause, discriminator) => {
+    const terminalEvidence = cause === "authenticated_stream_closed" ? {
+      schema: "cairn.receiver_event_stream_transition_receipt.v0.1",
+      receiver_event_stream_key: receiverStreamKey,
+      receipt_hash: `sha-256:${discriminator.repeat(64)}`
+    } : {
+      schema: "cairn.authenticated_irreversible_horizon_receipt.v0.1",
+      action_ref: refFor(action), effect_id: action.effect_id,
+      lineage_id: lineage.principal_authorized_lineage_id,
+      receiver_finality_profile_ref: finalityProfileRef,
+      receiver_finality_profile_hash: finalityProfileRef.object_hash,
+      receipt_hash: `sha-256:${discriminator.repeat(64)}`
+    };
+    const terminalEvidenceRef = {
+      schema: terminalEvidence.schema,
+      object_id: cause === "authenticated_stream_closed" ? receiverStreamKey : terminalEvidence.receipt_hash,
+      object_hash: terminalEvidence.receipt_hash
+    };
+    const beforeSeed = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+      ...receiverEntryBefore, connection_outstanding_action_key: receiverCurrentEntry.outstanding_action_key,
+      connection_outstanding_action_entry_ref: refFor(receiverCurrentEntry),
+      connection_outstanding_action_entry_hash: receiverCurrentEntry.entry_hash,
+      sequence: 0, previous_entry_hash: null, state: "handed_off",
+      current_receiver_stream_head_ref: receiverStreamRef,
+      current_receiver_stream_head_hash: receiverStreamRef.object_hash
+    });
+    const receiverBefore = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+      ...beforeSeed, outstanding_stream_key: receiverOutstandingStreamKey(beforeSeed)
+    });
+    const receiverAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+      ...receiverBefore, sequence: 1, previous_entry_hash: receiverBefore.entry_hash, state: cause
+    });
+    const receiverLeafValue = {
+      entry_key: receiverBefore.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
+      entry_object_ref: refFor(receiverBefore), entry_object_hash: receiverBefore.entry_hash
+    };
+    const receiverBeforeNode = make("cairn.enumerable_map_node.v0.1", {
+      map_domain: "receiver_outstanding_stream", node_kind: "leaf",
+      path_prefix_nibbles: receiverBefore.outstanding_stream_key.slice(8), leaf_entry: receiverLeafValue,
+      branch_children: [], subtree_entry_count: 1,
+      entries_root: enumerableMapLeafEntriesRoot("receiver_outstanding_stream", receiverLeafValue)
+    });
+    const receiverBeforeMap = make("cairn.enumerable_map_root.v0.1", {
+      map_domain: "receiver_outstanding_stream", map_key: receiverOutstandingMapKey(selectorKey), revision: 20,
+      root_node_ref: refFor(receiverBeforeNode), root_node_hash: receiverBeforeNode.node_hash,
+      entry_count: 1, entries_root: receiverBeforeNode.entries_root
+    });
+    const receiverAfterMap = make("cairn.enumerable_map_root.v0.1", {
+      map_domain: "receiver_outstanding_stream", map_key: receiverOutstandingMapKey(selectorKey), revision: 21,
+      root_node_ref: refFor(receiverEmptyNode), root_node_hash: receiverEmptyNode.node_hash,
+      entry_count: 0, entries_root: receiverEmptyNode.entries_root
+    });
+    const selectorBeforeObject = {
+      ...selectorBefore, sequence: 20, previous_state_hash: `sha-256:${"2".repeat(64)}`,
+      outstanding_stream_map_ref: refFor(receiverBeforeMap), outstanding_stream_map_hash: receiverBeforeMap.map_hash,
+      head_hash: `sha-256:${discriminator.repeat(63)}1`
+    };
+    const selectorAfterObject = {
+      ...selectorBeforeObject, sequence: 21, previous_state_hash: selectorBeforeObject.head_hash,
+      outstanding_stream_map_ref: refFor(receiverAfterMap), outstanding_stream_map_hash: receiverAfterMap.map_hash,
+      head_hash: `sha-256:${discriminator.repeat(63)}2`
+    };
+    const selectorBeforeObjectRef = {
+      schema: selectorBeforeObject.schema, object_id: selectorKey, object_hash: selectorBeforeObject.head_hash
+    };
+    const selectorAfterObjectRef = {
+      schema: selectorAfterObject.schema, object_id: selectorKey, object_hash: selectorAfterObject.head_hash
+    };
+    const planSeed = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+      ...releasePlanSeed, release_cause: cause, terminal_release_evidence_ref: terminalEvidenceRef,
+      terminal_release_evidence_hash: terminalEvidenceRef.object_hash,
+      receiver_outstanding_stream_entry_ref: refFor(receiverBefore),
+      receiver_outstanding_stream_entry_hash: receiverBefore.entry_hash,
+      receiver_stream_before_head_ref: receiverStreamRef,
+      receiver_stream_before_head_hash: receiverStreamRef.object_hash,
+      connection_outstanding_action_entry_ref: refFor(receiverCurrentEntry),
+      connection_outstanding_action_entry_hash: receiverCurrentEntry.entry_hash,
+      authority_transaction_id: `${cause}-transaction`
+    });
+    const plan = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+      ...planSeed, terminal_release_plan_key: receiverTerminalReleasePlanKey(planSeed, receiverBefore),
+      expected_transition_kind_set_root: receiverTerminalTransitionKindSetRoot(planSeed, receiverBefore)
+    });
+    const transition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+      ...receiverTransition, outstanding_stream_key: receiverBefore.outstanding_stream_key, cause,
+      epoch_selector_before_head_ref: selectorBeforeObjectRef,
+      epoch_selector_before_head_hash: selectorBeforeObjectRef.object_hash,
+      epoch_selector_after_head_ref: selectorAfterObjectRef,
+      epoch_selector_after_head_hash: selectorAfterObjectRef.object_hash,
+      outstanding_stream_map_before_ref: refFor(receiverBeforeMap),
+      outstanding_stream_map_before_hash: receiverBeforeMap.map_hash,
+      outstanding_stream_map_after_ref: refFor(receiverAfterMap),
+      outstanding_stream_map_after_hash: receiverAfterMap.map_hash,
+      before_change_proof: mapPathProof(receiverBeforeMap, receiverBeforeNode,
+        receiverBefore.outstanding_stream_key, "membership"),
+      after_change_proof: mapPathProof(receiverAfterMap, receiverEmptyNode,
+        receiverBefore.outstanding_stream_key, "nonmembership", "empty_root"),
+      entry_before_ref: refFor(receiverBefore), entry_before_hash: receiverBefore.entry_hash,
+      entry_after_ref: refFor(receiverAfter), entry_after_hash: receiverAfter.entry_hash,
+      terminal_release_evidence_ref: terminalEvidenceRef,
+      terminal_release_evidence_hash: terminalEvidenceRef.object_hash,
+      terminal_release_plan_core_ref: refFor(plan), terminal_release_plan_core_hash: plan.plan_hash,
+      receiver_stream_transition_receipt_ref: cause === "authenticated_stream_closed" ? terminalEvidenceRef : null,
+      receiver_stream_transition_receipt_hash: cause === "authenticated_stream_closed" ? terminalEvidenceRef.object_hash : null,
+      unchanged_receiver_stream_head_ref: cause === "authenticated_irreversible_horizon" ? receiverStreamRef : null,
+      unchanged_receiver_stream_head_hash: cause === "authenticated_irreversible_horizon" ? receiverStreamRef.object_hash : null,
+      authority_transaction_id: `${cause}-transaction`
+    });
+    const connectionLeafValue = {
+      entry_key: receiverCurrentEntry.outstanding_action_key, entry_kind: "connection_outstanding_action",
+      entry_object_ref: refFor(receiverCurrentEntry), entry_object_hash: receiverCurrentEntry.entry_hash
+    };
+    const connectionNode = make("cairn.enumerable_map_node.v0.1", {
+      node_kind: "leaf", path_prefix_nibbles: receiverCurrentEntry.outstanding_action_key.slice(8),
+      leaf_entry: connectionLeafValue, branch_children: [], subtree_entry_count: 1,
+      entries_root: enumerableMapLeafEntriesRoot("connection_outstanding_action", connectionLeafValue)
+    });
+    const connectionMapBefore = make("cairn.enumerable_map_root.v0.1", {
+      map_key: connectionOutstandingMapKey(indexKey), revision: 30,
+      root_node_ref: refFor(connectionNode), root_node_hash: connectionNode.node_hash,
+      entry_count: 1, entries_root: connectionNode.entries_root
+    });
+    const connectionMapAfter = make("cairn.enumerable_map_root.v0.1", {
+      ...emptyMap, revision: 31
+    });
+    const connectionIndexBefore = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
+      ...updatedIndex, sequence: 30, previous_state_hash: `sha-256:${"3".repeat(64)}`,
+      outstanding_action_map_ref: refFor(connectionMapBefore), outstanding_action_map_hash: connectionMapBefore.map_hash,
+      outstanding_action_count: 1, outstanding_action_root: connectionMapBefore.entries_root
+    });
+    const connectionIndexAfter = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
+      ...connectionIndexBefore, sequence: 31, previous_state_hash: connectionIndexBefore.head_hash,
+      outstanding_action_map_ref: refFor(connectionMapAfter), outstanding_action_map_hash: connectionMapAfter.map_hash,
+      outstanding_action_count: 0, outstanding_action_root: connectionMapAfter.entries_root
+    });
+    const connectionCause = cause === "authenticated_stream_closed"
+      ? "authenticated_stream_closed_removed" : "authenticated_irreversible_horizon_removed";
+    const connectionReceipt = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
+      ...removalReceipt, cause: connectionCause,
+      before_head_ref: refFor(connectionIndexBefore), before_head_hash: connectionIndexBefore.head_hash,
+      after_head_ref: refFor(connectionIndexAfter), after_head_hash: connectionIndexAfter.head_hash,
+      before_action_map_ref: refFor(connectionMapBefore), before_action_map_hash: connectionMapBefore.map_hash,
+      after_action_map_ref: refFor(connectionMapAfter), after_action_map_hash: connectionMapAfter.map_hash,
+      changed_action_key: receiverCurrentEntry.outstanding_action_key,
+      changed_entry_before_ref: refFor(receiverCurrentEntry), changed_entry_before_hash: receiverCurrentEntry.entry_hash,
+      before_change_proof: mapPathProof(connectionMapBefore, connectionNode,
+        receiverCurrentEntry.outstanding_action_key, "membership"),
+      after_change_proof: mapPathProof(connectionMapAfter, emptyNode,
+        receiverCurrentEntry.outstanding_action_key, "nonmembership", "empty_root"),
+      terminal_evidence_ref: refFor(transition), terminal_evidence_hash: transition.receipt_hash,
+      authority_transaction_id: `${cause}-transaction`, committed_at: connectionIndexAfter.updated_at
+    });
+    const allObjects = [receiverActionState, receiverCurrentEntry, receiverBefore, receiverAfter,
+      receiverBeforeNode, receiverBeforeMap, receiverAfterMap, plan, transition, connectionNode,
+      connectionMapBefore, connectionMapAfter, connectionIndexBefore, connectionIndexAfter, connectionReceipt];
+    const externalObjects = [receiverStream, terminalEvidence, selectorBeforeObject, selectorAfterObject];
+    const fixtureContext = {
+      ...removalContext,
+      objectResolver: new Map([
+        ...removalContext.objectResolver,
+        ...allObjects.map((object) => [refFor(object).object_hash, object]),
+        ...externalObjects.map((object) => [object.receipt_hash ?? object.head_hash ?? object.state_hash, object])
+      ])
+    };
+    return { transition, connectionReceipt, receiverBefore, receiverAfter,
+      receiverCurrentEntry, terminalEvidence, terminalEvidenceRef, context: fixtureContext };
+  };
+  for (const [cause, discriminator] of [
+    ["authenticated_stream_closed", "4"], ["authenticated_irreversible_horizon", "5"]
+  ]) {
+    const fixture = terminalReceiverFixture(cause, discriminator);
+    assert.deepEqual(validateConnectionOutstandingActionEntry(
+      fixture.receiverCurrentEntry, fixture.context
+    ), [], `${cause}:connection`);
+    assert.deepEqual(validateReceiverOutstandingStreamEntry(fixture.receiverBefore, fixture.context), [], `${cause}:before`);
+    assert.deepEqual(validateReceiverOutstandingStreamEntry(fixture.receiverAfter, fixture.context), [], `${cause}:after`);
+    assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(fixture.transition, fixture.context), [], cause);
+    assert.deepEqual(validateConnectionOutstandingIndexTransitionReceipt(
+      fixture.connectionReceipt, fixture.context
+    ), [], cause);
+    const missingSelectorContext = {
+      ...fixture.context, objectResolver: new Map(fixture.context.objectResolver)
+    };
+    missingSelectorContext.objectResolver.delete(fixture.transition.epoch_selector_before_head_ref.object_hash);
+    assert.ok(validateReceiverOutstandingStreamTransitionReceipt(
+      fixture.transition, missingSelectorContext
+    ).includes("receiver_outstanding_transition_selector_scope_mismatch"));
+    const missingIdentityTransitionContext = {
+      ...fixture.context, objectResolver: new Map(fixture.context.objectResolver)
+    };
+    missingIdentityTransitionContext.objectResolver.delete(
+      fixture.transition.identity_epoch_transition_receipt_ref.object_hash
+    );
+    assert.ok(validateReceiverOutstandingStreamTransitionReceipt(
+      fixture.transition, missingIdentityTransitionContext
+    ).includes("receiver_outstanding_transition_identity_transition_mismatch"));
+    const alteredEvidence = cause === "authenticated_stream_closed"
+      ? { ...fixture.terminalEvidence, receiver_event_stream_key: `sha-256:${"7".repeat(64)}` }
+      : { ...fixture.terminalEvidence,
+        receiver_finality_profile_hash: `sha-256:${"7".repeat(64)}` };
+    const alteredEvidenceContext = {
+      ...fixture.context,
+      objectResolver: new Map(fixture.context.objectResolver)
+        .set(fixture.terminalEvidenceRef.object_hash, alteredEvidence)
+    };
+    assert.ok(validateReceiverOutstandingStreamTransitionReceipt(
+      fixture.transition, alteredEvidenceContext
+    ).some((code) => code.includes("terminal")), `${cause}:altered evidence`);
+  }
+  const reboundReceiverKey = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryBefore, precommitted_client_reference: "rebound-client-reference"
+  });
+  assert.ok(validateReceiverOutstandingStreamEntry(reboundReceiverKey, removalContext)
+    .includes("receiver_outstanding_entry_key_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.receiver_outstanding_stream_entry.get", { ref: refFor(reboundReceiverKey) },
+    reboundReceiverKey, removalContext
+  ).includes("object_read_receiver_outstanding_entry_key_mismatch"));
+  const hollowEvidence = { schema: fencedEvidence.schema, receipt_id: fencedEvidence.receipt_id,
+    receipt_hash: fencedEvidence.receipt_hash };
+  const hollowEvidenceContext = {
+    ...removalContext,
+    objectResolver: new Map(removalContext.objectResolver).set(fencedEvidenceRef.object_hash, hollowEvidence)
+  };
+  assert.ok(validateReceiverTerminalReleasePlan(releasePlan, hollowEvidenceContext)
+    .includes("receiver_outstanding_terminal_evidence_mismatch"));
+  const wrongEvidenceIdRef = { ...fencedEvidenceRef, object_id: "other-fenced-receipt" };
+  const wrongEvidenceIdPlanSeed = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+    ...releasePlan, terminal_release_evidence_ref: wrongEvidenceIdRef
+  });
+  const wrongEvidenceIdPlan = make("cairn.receiver_terminal_release_plan_core.v0.1", {
+    ...wrongEvidenceIdPlanSeed,
+    terminal_release_plan_key: receiverTerminalReleasePlanKey(wrongEvidenceIdPlanSeed, receiverEntryBefore)
+  });
+  assert.ok(validateReceiverTerminalReleasePlan(wrongEvidenceIdPlan, removalContext)
+    .includes("receiver_outstanding_terminal_evidence_mismatch"));
+  const unresolvedPlanContext = {
+    ...removalContext, objectResolver: new Map(removalContext.objectResolver)
+  };
+  unresolvedPlanContext.objectResolver.delete(refFor(releasePlan).object_hash);
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(receiverTransition, unresolvedPlanContext)
+    .includes("receiver_outstanding_transition_terminal_union_mismatch"));
+  const reboundReceiverAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryAfter, precommitted_client_reference: "changed-after-reference"
+  });
+  const reboundReceiverTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...receiverTransition, entry_after_ref: refFor(reboundReceiverAfter),
+    entry_after_hash: reboundReceiverAfter.entry_hash
+  });
+  const reboundReceiverContext = {
+    ...removalContext,
+    objectResolver: new Map([...removalContext.objectResolver,
+      [refFor(reboundReceiverAfter).object_hash, reboundReceiverAfter]])
+  };
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(reboundReceiverTransition, reboundReceiverContext)
+    .includes("receiver_outstanding_transition_entry_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.receiver_outstanding_stream_transition_receipt.get",
+    { ref: refFor(reboundReceiverTransition) }, reboundReceiverTransition, reboundReceiverContext
+  ).includes("object_read_receiver_outstanding_transition_entry_mismatch"));
   const missingTerminalEvidence = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
     ...removalReceipt, terminal_evidence_ref: null, terminal_evidence_hash: null
   });
@@ -1647,7 +2919,86 @@ test("compartment limits are single-asset and ordered", () => {
 });
 
 test("mandate v0.3 keeps financial and nonfinancial authority branches disjoint", () => {
-  assert.deepEqual(validateMandate(validMandate(), context), []);
+  const valid = validMandate();
+  assert.deepEqual(validateMandate(valid, context), []);
+  const crossAsset = structuredClone(valid);
+  crossAsset.constraints.financial.fee_limit.asset = "EUR";
+  const reboundCrossAsset = bindObjectHash(crossAsset, schemasByObjectId.get(crossAsset.schema));
+  assert.ok(validateMandate(reboundCrossAsset, context).includes("mandate_financial_asset_mismatch"));
+  const connectionAuthorization = context.objectResolver.get(valid.agent.connection_authorization_ref.object_hash);
+  const runtime = context.objectResolver.get(valid.agent.runtime_binding_ref.object_hash);
+  assert.deepEqual(validateConnectionAuthorization(connectionAuthorization, context), []);
+  const unresolvedAuthorizationContext = { ...context, objectResolver: new Map() };
+  assert.ok(validateConnectionAuthorization(connectionAuthorization, unresolvedAuthorizationContext)
+    .includes("connection_authorization_runtime_unresolved"));
+  assert.ok(validateExactObjectRead(
+    "execution.connection_authorization.get", { ref: refFor(connectionAuthorization) },
+    connectionAuthorization, unresolvedAuthorizationContext
+  ).includes("object_read_connection_authorization_runtime_unresolved"));
+  const connectionState = make("cairn.agent_connection_state_head.v0.1", {
+    principal_id: valid.principal_id,
+    connection_authorization_ref: refFor(connectionAuthorization),
+    connection_authorization_hash: connectionAuthorization.authorization_hash,
+    agent_runtime_binding_ref: valid.agent.runtime_binding_ref,
+    sequence: 0, previous_state_hash: null,
+    accepted_at: "2026-07-22T09:00:00Z", updated_at: "2026-07-22T09:00:00Z", state: "active"
+  });
+  const connectionStateContext = {
+    ...context,
+    objectResolver: new Map([
+      [refFor(connectionAuthorization).object_hash, connectionAuthorization],
+      [valid.agent.runtime_binding_ref.object_hash, runtime],
+      [refFor(connectionState).object_hash, connectionState]
+    ]),
+    currentHeadResolver: currentHeadResolverFor([refFor(connectionState)]),
+    requireCurrentConnection: true
+  };
+  assert.deepEqual(validateConnectionStateHead(connectionState, connectionStateContext), []);
+  const staleConnectionRef = { ...refFor(connectionState), object_hash: `sha-256:${"9".repeat(64)}` };
+  const staleConnectionContext = {
+    ...connectionStateContext, currentHeadResolver: currentHeadResolverFor([staleConnectionRef])
+  };
+  assert.ok(validateConnectionStateHead(connectionState, staleConnectionContext)
+    .includes("connection_state_not_current"));
+  assert.ok(validateExactObjectRead(
+    "execution.connection_state.get", { ref: refFor(connectionState) }, connectionState, staleConnectionContext
+  ).includes("object_read_connection_state_not_current"));
+  const underboundedAuthorization = make("cairn.agent_connection_authorization.v0.1", {
+    ...connectionAuthorization, not_before: "2026-07-22T08:00:00Z"
+  });
+  const underboundedMandate = make("cairn.agent_mandate.v0.3", {
+    ...valid, agent: { ...valid.agent, connection_authorization_ref: refFor(underboundedAuthorization) }
+  });
+  const underboundedContext = {
+    ...context,
+    objectResolver: new Map([
+      ...context.objectResolver,
+      [refFor(underboundedAuthorization).object_hash, underboundedAuthorization]
+    ])
+  };
+  assert.ok(validateMandate(underboundedMandate, underboundedContext)
+    .includes("mandate_connection_authorization_mismatch"));
+  assert.ok(validateMandate(valid, { ...context, objectResolver: new Map() })
+    .includes("mandate_runtime_unresolved"));
+  assert.ok(validateExactObjectRead("execution.mandate.get", { ref: refFor(valid) }, valid, {
+    ...context, objectResolver: new Map()
+  }).includes("object_read_mandate_runtime_unresolved"));
+  const expiringAuthorization = make("cairn.agent_connection_authorization.v0.1", {
+    principal_id: valid.principal_id, agent_runtime_binding_ref: valid.agent.runtime_binding_ref,
+    not_before: "2026-07-22T09:00:00Z", expires_at: "2026-07-22T10:00:30Z"
+  });
+  const expiredConnectionMandate = make("cairn.agent_mandate.v0.3", {
+    ...valid, agent: { ...valid.agent, connection_authorization_ref: refFor(expiringAuthorization) }
+  });
+  const expiredConnectionContext = {
+    ...context,
+    objectResolver: new Map([
+      ...context.objectResolver,
+      [refFor(expiringAuthorization).object_hash, expiringAuthorization]
+    ])
+  };
+  assert.ok(validateMandate(expiredConnectionMandate, expiredConnectionContext)
+    .includes("mandate_runtime_connection_interval_mismatch"));
   const both = validMandate();
   both.constraints.nonfinancial = { maximum_payload_bytes: 1, allowed_audiences: ["a"] };
   const rebound = bindObjectHash(both, schemasByObjectId.get(both.schema));
@@ -2021,6 +3372,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   ).includes("confirmation_challenge_mismatch"));
   const gateRequest = make("cairn.gate_request.v0.2", {
     principal_id: binding.principal_id, execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
+    execution_integrity_state_head_ref: binding.execution_integrity_state_head_ref,
     authority_basis_ref: refFor(authorization), confirmation_receipt_ref: refFor(confirmation),
     confirmation_assurance_policy_lifecycle_head_ref: confirmationFixture.policyLifecycleRef,
     confirmation_assurance_policy_lifecycle_head_hash: confirmationFixture.policyLifecycleRef.object_hash,
@@ -2030,17 +3382,52 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
       refFor(confirmationFixture.policy), confirmationFixture.policyLifecycleRef,
       refFor(confirmationFixture.verifierProfile), confirmationFixture.verifierLifecycleRef
     ],
+    current_control_head_refs: [binding.execution_control_state_head_ref],
+    current_connection_head_ref: null, current_compartment_head_ref: null,
+    current_economic_resource_head_ref: null,
+    current_data_grant_head_refs: binding.data_grant_state_heads.map(({ current_state_head_ref }) => current_state_head_ref),
+    current_business_state_head_refs: [], current_provider_identity_head_refs: [],
+    current_provider_identity_trust_overlay_head_refs: [], current_seller_copy_lease_heads_root: null,
+    receiver_finality_profile_ref: binding.receiver_finality_profile_ref,
+    accounting_policy_ref: binding.accounting_policy_ref,
+    receiver_channel_policy_ref: binding.receiver_channel_policy_ref,
+    receiver_sequence_epoch_selector_ref: binding.receiver_sequence_epoch_selector_state_head_ref,
+    checkout_dependency_refs: [],
     action_control_key: binding.action_control_key, checkout_readiness_receipt_ref: null,
     checkout_group_state_head_ref: null, checkout_terms_receipt_ref: null
   });
-  assert.deepEqual(validateGateRequest(gateRequest, binding, authorization, confirmation, confirmationContext), []);
+  const gateRequestContext = {
+    ...confirmationContext,
+    expectedGateDependencyProjection: expectedGateDependencyProjectionFor(gateRequest),
+    currentHeadResolver: currentHeadResolverFor(gateRequiredHeadRefs(gateRequest, binding))
+  };
+  assert.deepEqual(validateGateRequest(gateRequest, binding, authorization, confirmation, gateRequestContext), []);
+  assert.ok(validateGateRequest(gateRequest, binding, authorization, confirmation, {
+    ...gateRequestContext, expectedGateDependencyProjection: null
+  }).includes("gate_request_required_dependency_projection_unresolved"));
+  const unrelatedBusinessHead = distinctRefs(1, "unrelated-gate-business-head")[0];
+  const selfSelectedGateRequest = make("cairn.gate_request.v0.2", {
+    ...gateRequest,
+    current_business_state_head_refs: [...gateRequest.current_business_state_head_refs, unrelatedBusinessHead]
+  });
+  assert.ok(validateGateRequest(selfSelectedGateRequest, binding, authorization, confirmation, {
+    ...gateRequestContext,
+    currentHeadResolver: currentHeadResolverFor(gateRequiredHeadRefs(selfSelectedGateRequest, binding))
+  }).includes("gate_request_dependency_projection_mismatch:current_business_state_head_refs"));
+  const staleCurrentHeadResolver = currentHeadResolverFor(gateRequiredHeadRefs(gateRequest, binding));
+  const staleControl = { ...binding.execution_control_state_head_ref,
+    object_hash: `sha-256:${"f".repeat(64)}` };
+  staleCurrentHeadResolver.set(canonicalText({ schema: staleControl.schema, object_id: staleControl.object_id }), staleControl);
+  assert.ok(validateGateRequest(gateRequest, binding, authorization, confirmation, {
+    ...gateRequestContext, currentHeadResolver: staleCurrentHeadResolver
+  }).includes("gate_request_current_head_set_mismatch"));
   const gateLifecycleHashDrift = make("cairn.gate_request.v0.2", {
     ...gateRequest, confirmation_assurance_policy_lifecycle_head_hash: `sha-256:${"9".repeat(64)}`
   });
-  assert.ok(validateGateRequest(gateLifecycleHashDrift, binding, authorization, confirmation, confirmationContext)
+  assert.ok(validateGateRequest(gateLifecycleHashDrift, binding, authorization, confirmation, gateRequestContext)
     .includes("phase1_ref_hash_mismatch"));
   const wrongGateBinding = make("cairn.gate_request.v0.2", { ...gateRequest, action_control_key: `sha-256:${"9".repeat(64)}` });
-  assert.ok(validateGateRequest(wrongGateBinding, binding, authorization, confirmation, confirmationContext).includes("gate_request_binding_mismatch"));
+  assert.ok(validateGateRequest(wrongGateBinding, binding, authorization, confirmation, gateRequestContext).includes("gate_request_binding_mismatch"));
   const genericRef = sampleFor(resolveRef("https://cairn.cards/protocol/execution/schemas/v0.1/common.schema.json#/$defs/objectRef", schemasById.values().next().value).schema);
   const pairedWithoutAcknowledgement = make("cairn.action_authorization.v0.2", {
     checkout_group_core_ref: genericRef, checkout_group_core_hash: genericRef.object_hash, checkout_role: "terms_acceptance",
@@ -2088,10 +3475,24 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   const allowedGate = make("cairn.gate_result.v0.2", {
     gate_request_ref: refFor(gateRequest), gate_request_hash: gateRequest.request_hash,
     execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
-    decision: "allow", check_results: [{ code: "CHECK_OK", decision: "pass", evidence_refs: [] }]
+    decision: "allow",
+    evaluated_head_refs: gateRequiredHeadRefs(gateRequest, binding),
+    evaluated_nonce_and_fence_root: gateEvaluatedHeadRoot(gateRequiredHeadRefs(gateRequest, binding)),
+    business_state_root: gateBusinessStateRoot(gateRequest.current_business_state_head_refs),
+    checkout_dependency_root: gateCheckoutDependencyRoot(gateRequest),
+    check_results: PHASE1_GATE_CHECK_CODES.map((code) => ({ code, decision: "pass", evidence_refs: [] }))
   });
-  const gateContext = { ...confirmationContext, gateRequest, binding, authority: authorization, confirmation };
+  const gateContext = { ...gateRequestContext, gateRequest, binding, authority: authorization, confirmation };
   assert.deepEqual(validateGateResult(allowedGate, gateContext), []);
+  const missingGateCheck = make("cairn.gate_result.v0.2", {
+    ...allowedGate, check_results: allowedGate.check_results.slice(1)
+  });
+  assert.ok(validateGateResult(missingGateCheck, gateContext).includes("gate_result_check_set_mismatch"));
+  const alteredGateHeadRoot = make("cairn.gate_result.v0.2", {
+    ...allowedGate, business_state_root: `sha-256:${"f".repeat(64)}`
+  });
+  assert.ok(validateGateResult(alteredGateHeadRoot, gateContext)
+    .includes("gate_result_complete_head_commitment_mismatch"));
   const misboundGate = make("cairn.gate_result.v0.2", {
     ...allowedGate, gate_request_hash: `sha-256:${"9".repeat(64)}`
   });
@@ -2737,8 +4138,64 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     authority_basis: null
   };
   assert.deepEqual(validateActionGetResponse({ ref: refFor(preparedView) }, preparedResponse, context), []);
+  const mandateAgentSeed = sampleFor(schemasByObjectId.get("cairn.agent_mandate.v0.3")).agent;
+  const mandateRuntimeSchema = baseSchemasByObjectId.get("cairn.agent_runtime_binding.v0.1");
+  const mandateRuntimeSeed = sampleFor(mandateRuntimeSchema);
+  mandateRuntimeSeed.agent_identity.agent_provider_id = mandateAgentSeed.provider_id;
+  mandateRuntimeSeed.agent_identity.agent_product_id = mandateAgentSeed.product_id;
+  mandateRuntimeSeed.runtime_public_key.public_key = "A".repeat(43);
+  mandateRuntimeSeed.not_before = "2026-07-22T09:00:00Z";
+  mandateRuntimeSeed.expires_at = "2026-07-23T10:00:00Z";
+  const mandateRuntime = bindObjectHash(mandateRuntimeSeed, mandateRuntimeSchema);
+  const mandateRuntimeRef = objectRefFor(mandateRuntime, mandateRuntimeSchema);
+  const mandateConnectionAuthorization = make("cairn.agent_connection_authorization.v0.1", {
+    principal_id: binding.principal_id, agent_runtime_binding_ref: mandateRuntimeRef,
+    not_before: "2026-07-22T09:00:00Z", expires_at: "2026-07-23T10:00:00Z"
+  });
+  const mandateConnectionState = make("cairn.agent_connection_state_head.v0.1", {
+    principal_id: binding.principal_id,
+    connection_authorization_ref: refFor(mandateConnectionAuthorization),
+    connection_authorization_hash: mandateConnectionAuthorization.authorization_hash,
+    agent_runtime_binding_ref: mandateRuntimeRef, state: "active",
+    sequence: 0, previous_state_hash: null,
+    accepted_at: "2026-07-22T09:30:00Z", updated_at: "2026-07-22T10:00:00Z"
+  });
+  confirmationContext.currentHeadResolver = currentHeadResolverFor([refFor(mandateConnectionState)]);
+  for (const [reference, object] of [
+    [mandateRuntimeRef, mandateRuntime],
+    [refFor(mandateConnectionAuthorization), mandateConnectionAuthorization],
+    [refFor(mandateConnectionState), mandateConnectionState]
+  ]) context.objectResolver.set(reference.object_hash, object);
+  assert.deepEqual(validateConnectionAuthorization(mandateConnectionAuthorization, confirmationContext), []);
+  assert.deepEqual(validateConnectionStateHead(mandateConnectionState, confirmationContext), []);
+  const staleConnectionHead = { ...refFor(mandateConnectionState), object_hash: `sha-256:${"7".repeat(64)}` };
+  assert.ok(validateConnectionStateHead(mandateConnectionState, {
+    ...confirmationContext, requireCurrentConnection: true,
+    currentHeadResolver: currentHeadResolverFor([staleConnectionHead])
+  }).includes("connection_state_not_current"));
+  assert.deepEqual(validateExactObjectRead(
+    "execution.connection_authorization.get",
+    { ref: refFor(mandateConnectionAuthorization) }, mandateConnectionAuthorization, confirmationContext
+  ), []);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_authorization.get",
+    { ref: refFor(mandateConnectionAuthorization) }, mandateConnectionAuthorization,
+    { ...confirmationContext, objectResolver: new Map() }
+  ).includes("object_read_connection_authorization_runtime_unresolved"));
+  assert.deepEqual(validateExactObjectRead(
+    "execution.connection_state.get", { ref: refFor(mandateConnectionState) },
+    mandateConnectionState, confirmationContext
+  ), []);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_state.get", { ref: refFor(mandateConnectionState) }, mandateConnectionState,
+    { ...confirmationContext, objectResolver: new Map([[mandateRuntimeRef.object_hash, mandateRuntime]]) }
+  ).includes("object_read_connection_state_authorization_binding_mismatch"));
   const mandateSeed = make("cairn.agent_mandate.v0.3", {
     principal_id: binding.principal_id, capability: binding.capability,
+    agent: {
+      ...mandateAgentSeed, runtime_binding_ref: mandateRuntimeRef,
+      connection_authorization_ref: refFor(mandateConnectionAuthorization)
+    },
     required_confirmation_assurance_policy_ref: binding.confirmation_assurance_policy_ref,
     issued_at: "2026-07-22T10:00:00Z"
   });
@@ -2798,7 +4255,10 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     const mandateBinding = make("cairn.execution_binding_set.v0.1", {
       ...binding, lineage_commitment_ref: refFor(commitment),
       lineage_commitment_hash: commitment.commitment_hash,
-      canonical_business_tuple_hash: commitment.canonical_business_tuple_hash
+      canonical_business_tuple_hash: commitment.canonical_business_tuple_hash,
+      actor_branch: "agent_runtime", agent_runtime_binding_ref: mandateRuntimeRef,
+      connection_authorization_ref: refFor(mandateConnectionAuthorization),
+      connection_state_head_ref: refFor(mandateConnectionState)
     });
     const mandateAction = make("cairn.action_record.v0.2", {
       ...preparedAction, execution_binding_set_ref: refFor(mandateBinding),
@@ -3152,19 +4612,37 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     reservation_receipt_refs: [refFor(activationReservation)], checkout_readiness_receipt_ref: null,
     checkout_group_state_head_ref: null, checkout_terms_receipt_ref: null
   });
+  const compositeGateHeadRefs = gateRequiredHeadRefs(compositeGateRequest, binding);
+  const compositeGateContext = {
+    ...confirmationContext,
+    expectedGateDependencyProjection: expectedGateDependencyProjectionFor(compositeGateRequest),
+    currentHeadResolver: currentHeadResolverFor(compositeGateHeadRefs)
+  };
   const deniedCompositeGate = make("cairn.gate_result.v0.2", {
     gate_request_ref: refFor(compositeGateRequest), gate_request_hash: compositeGateRequest.request_hash,
     execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
-    decision: "deny", check_results: [{ code: "CHECK_DENIED", decision: "deny", evidence_refs: [] }]
+    decision: "deny",
+    evaluated_head_refs: compositeGateHeadRefs,
+    evaluated_nonce_and_fence_root: gateEvaluatedHeadRoot(compositeGateHeadRefs),
+    business_state_root: gateBusinessStateRoot(compositeGateRequest.current_business_state_head_refs),
+    checkout_dependency_root: gateCheckoutDependencyRoot(compositeGateRequest),
+    check_results: PHASE1_GATE_CHECK_CODES.map((code, index) => ({
+      code, decision: index === 0 ? "deny" : "pass", evidence_refs: []
+    }))
   });
   assert.deepEqual(validateActionGetResponse({ ref: refFor(reservedView) }, {
     ...reservedResponse, confirmation_receipt: confirmation,
     gate_request: compositeGateRequest, gate_result: deniedCompositeGate
-  }, confirmationContext), []);
+  }, compositeGateContext), []);
   const allowedCompositeGate = make("cairn.gate_result.v0.2", {
     gate_request_ref: refFor(compositeGateRequest), gate_request_hash: compositeGateRequest.request_hash,
     execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
-    decision: "allow", check_results: [{ code: "CHECK_OK", decision: "pass", evidence_refs: [] }]
+    decision: "allow",
+    evaluated_head_refs: compositeGateHeadRefs,
+    evaluated_nonce_and_fence_root: gateEvaluatedHeadRoot(compositeGateHeadRefs),
+    business_state_root: gateBusinessStateRoot(compositeGateRequest.current_business_state_head_refs),
+    checkout_dependency_root: gateCheckoutDependencyRoot(compositeGateRequest),
+    check_results: PHASE1_GATE_CHECK_CODES.map((code) => ({ code, decision: "pass", evidence_refs: [] }))
   });
   const gateAllowedState = make("cairn.action_state_head.v0.1", {
     ...reservedActionState, sequence: reservedActionState.sequence + 1,
@@ -3191,7 +4669,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   assert.deepEqual(validatePhase1Object(gateAllowedActivity, context), []);
   assert.deepEqual(validatePhase1Object(allowedCompositeGate, context), []);
   assert.deepEqual(validateActionGetResponse(
-    { ref: refFor(gateAllowedView) }, gateAllowedResponse, confirmationContext
+    { ref: refFor(gateAllowedView) }, gateAllowedResponse, compositeGateContext
   ), []);
   const deniedAsAllowedState = make("cairn.action_state_head.v0.1", {
     ...gateAllowedState, gate_result_ref: refFor(deniedCompositeGate)
@@ -3211,7 +4689,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     ...gateAllowedResponse, ref: refFor(deniedAsAllowedView), view: deniedAsAllowedView,
     current_action_state_head: deniedAsAllowedState, current_activity_detail: deniedAsAllowedActivity,
     gate_result: deniedCompositeGate
-  }, confirmationContext).includes("action_get_gate_decision_state_mismatch"));
+  }, compositeGateContext).includes("action_get_gate_decision_state_mismatch"));
   const alienGraphReservation = make("cairn.authority_reservation.v0.2", {
     ...activationReservation, prepared_action_ref: refFor(inventoryPreparedAction)
   });
@@ -3335,6 +4813,7 @@ test("cancellation authority is an exact projection of one binding and one gate 
   const request = make("cairn.gate_request.v0.2", {
     principal_id: binding.principal_id, execution_binding_set_ref: refFor(binding),
     execution_binding_set_hash: binding.binding_set_hash, authority_basis_ref: refFor(authorization),
+    execution_integrity_state_head_ref: binding.execution_integrity_state_head_ref,
     confirmation_receipt_ref: refFor(confirmation), action_control_key: binding.action_control_key,
     confirmation_assurance_policy_lifecycle_head_ref: cancellationConfirmationFixture.policyLifecycleRef,
     confirmation_assurance_policy_lifecycle_head_hash: cancellationConfirmationFixture.policyLifecycleRef.object_hash,
@@ -3344,14 +4823,29 @@ test("cancellation authority is an exact projection of one binding and one gate 
       refFor(cancellationConfirmationFixture.policy), cancellationConfirmationFixture.policyLifecycleRef,
       refFor(cancellationConfirmationFixture.verifierProfile), cancellationConfirmationFixture.verifierLifecycleRef
     ],
+    current_control_head_refs: [binding.execution_control_state_head_ref],
+    current_connection_head_ref: null, current_compartment_head_ref: null,
+    current_economic_resource_head_ref: null,
+    current_data_grant_head_refs: binding.data_grant_state_heads.map(({ current_state_head_ref }) => current_state_head_ref),
+    current_business_state_head_refs: [], current_provider_identity_head_refs: [],
+    current_provider_identity_trust_overlay_head_refs: [], current_seller_copy_lease_heads_root: null,
     receiver_finality_profile_ref: finalityRef,
+    accounting_policy_ref: binding.accounting_policy_ref,
+    receiver_channel_policy_ref: binding.receiver_channel_policy_ref,
+    receiver_sequence_epoch_selector_ref: binding.receiver_sequence_epoch_selector_state_head_ref,
+    checkout_dependency_refs: [],
     checkout_readiness_receipt_ref: null, checkout_group_state_head_ref: null, checkout_terms_receipt_ref: null
   });
-  assert.deepEqual(validateGateRequest(request, binding, authorization, confirmation, cancellationGateContext), []);
+  const cancellationRequestContext = {
+    ...cancellationGateContext,
+    expectedGateDependencyProjection: expectedGateDependencyProjectionFor(request),
+    currentHeadResolver: currentHeadResolverFor(gateRequiredHeadRefs(request, binding))
+  };
+  assert.deepEqual(validateGateRequest(request, binding, authorization, confirmation, cancellationRequestContext), []);
   const alienGate = make("cairn.gate_request.v0.2", {
     ...request, receiver_finality_profile_ref: distinctRefs(1, "alien-finality-profile")[0]
   });
-  assert.ok(validateGateRequest(alienGate, binding, authorization, confirmation, cancellationGateContext)
+  assert.ok(validateGateRequest(alienGate, binding, authorization, confirmation, cancellationRequestContext)
     .includes("gate_request_cancellation_authority_mismatch"));
 });
 

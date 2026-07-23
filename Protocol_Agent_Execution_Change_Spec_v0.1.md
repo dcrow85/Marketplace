@@ -389,6 +389,11 @@ changed_entry_before_ref: <ObjectRef or null for genesis/new reservation/snapsho
 changed_entry_before_hash: sha-256:<hex or null>
 changed_entry_after_ref: <ObjectRef or null for terminal removal/snapshot>
 changed_entry_after_hash: sha-256:<hex or null>
+before_change_proof: <closed enumerable-map membership/nonmembership proof or null
+                      exactly for genesis/restriction snapshot/terminal seal>
+after_change_proof: <matching proof under the successor root or null under the same union>
+action_transition_receipt_ref: <exact cairn.action_receipt.v0.2 ObjectRef iff action_head_updated>
+action_transition_receipt_hash: sha-256:<hex or null under the same union>
 terminal_evidence_ref: <ObjectRef or null unless terminal removal>
 terminal_evidence_hash: sha-256:<hex or null>
 authority_transaction_id: <same reservation/event/control transaction>
@@ -446,6 +451,18 @@ authenticated receiver evidence can reconcile and remove existing work; once
 empty it remains an empty sealed tombstone. Every terminal-removal cause carries
 its exact fenced, closure, or irreversible-horizon proof and commits in the same
 action/stream/assignment transaction.
+
+Every named map change carries before/after path proofs under the exact signed
+roots. The unchanged frontier commitments must be byte-equal, so only
+`changed_action_key` can differ. Reservation proves nonmembership→membership;
+head update proves membership→membership; terminal removal proves
+membership→nonmembership. An `action_head_updated` receipt resolves the exact
+ActionRecord, before/after ActionStateHeads, BindingSet, and ActionReceipt and
+runs the complete ActionReceipt validator, including its prior-receipt, lineage,
+policy, exposure, checkout, and receiver rules. Selected field comparisons are
+not a substitute. A terminal removal resolves and validates the exact receiver
+outstanding transition and requires the same connection entry, cause,
+transaction, and commit time.
 
 There is one connection-head writer:
 the authority-internal `execution.connection_state.transition`. A principal
@@ -2643,7 +2660,7 @@ not the transaction-sized transition manifest:
 schema: cairn.enumerable_map_node.v0.1
 map_domain: <closed consumer/domain string>
 node_kind: empty | leaf | branch
-path_prefix_nibbles: <canonical even-length lowercase hex prefix>
+path_prefix_nibbles: <canonical lowercase 0..64-nibble prefix>
 leaf_entry: <null unless leaf>
   entry_key: sha-256:<full 256-bit key>
   entry_kind: trust_index | receiver_identity | reservation_assignment |
@@ -2662,9 +2679,13 @@ leaf_entry: <null unless leaf>
   entry_object_hash: sha-256:<hex>
 branch_children: # null unless branch; sorted unique nibble, at most 16
   - nibble: <0..f>
+    child_path_prefix_nibbles: <canonical child prefix beginning with parent prefix+nibble>
     child_node_ref: <content-addressed ObjectRef>
     child_node_hash: sha-256:<hex>
+    child_subtree_entry_count: <positive checked uint64>
+    child_entries_root: sha-256:<hex>
 subtree_entry_count: <checked uint64>
+entries_root: sha-256:<canonical subtree commitment>
 node_hash: sha-256:<hex>
 ```
 
@@ -2693,6 +2714,24 @@ cursor, ACL, and expiry. A complete scan ends only at the canonical end cursor.
 Thus the root is enumerable after restart without imposing a lifetime entry cap.
 The owning state transition signs the new root; there is no generic map mutation
 operation and an auxiliary database index has no authority.
+
+The execution overlay admits exactly two enumerable-map domains:
+`connection_outstanding_action` and `receiver_outstanding_stream`. A leaf must
+resolve its exact content-addressed entry object, bind `entry_key` to the
+entry's independently derived key, match the domain's one admitted schema/kind,
+and pass that entry's full semantic validator. Missing objects deny. The empty
+root is `SHA-256(JCS({schema:cairn.enumerable_map_empty_entries_preimage.v0.1,
+map_domain}))`. A leaf root commits domain, key, kind, and exact object ref/hash.
+A branch root commits domain, its compressed prefix, summed count, and the
+sorted unique child tuple `(nibble, child prefix, child node hash, child count,
+child entries root)`. An opened child must exactly equal its committed summary.
+
+A path proof is a closed tuple of claim, exact map-root ref/hash, entry key,
+ordered ancestor refs, terminal-node ref/hash, and a cause-specific absence kind.
+Membership ends at the exact matching leaf. Nonmembership ends only at the
+canonical empty root, a different leaf key, a compressed-prefix mismatch, or a
+missing child. Update receipts compare the before/after proof frontiers and
+require every sibling commitment outside the named path to remain identical.
 
 The `entry_kind` registry is closed. Each row fixes the entry-key preimage,
 admitted object schema, owning map domain, and only signing authority; a generic
@@ -5796,6 +5835,17 @@ expiring that connection kills use of the mandate. A later connection—even for
 the same runtime—cannot revive it; the principal must sign a new mandate naming
 the new connection authorization.
 
+Mandate validation resolves the exact signed `AgentRuntimeBinding` and exact
+`AgentConnectionAuthorization`; schema-only or caller-supplied lookalikes deny.
+The runtime provider/product must equal the mandate agent tuple, the connection
+authorization must bind that same runtime and principal, and the entire mandate
+`constraints.not_before .. constraints.expires_at` interval must be contained in
+both the runtime and connection-authorization intervals. Gate evaluation time
+must fall inside all three intervals. The exact current AgentConnectionStateHead
+must resolve through the current-head authority, be active, and bind the same
+principal, runtime, and authorization. A stale but signed active head is not
+current authority.
+
 v0.2 remains proposal/supervised-only under this execution profile. No adapter
 can derive v0.3 connection/resource, compartment, review, taint, or finality
 bindings from absent v0.2 fields. Delegated execution therefore always requires a
@@ -6290,6 +6340,16 @@ binding_set_hash: sha-256:<hex>
 binding_service_signature: <Signature>
 ```
 
+The actor branch is closed. `principal_direct` requires all runtime,
+connection-authorization, and connection-state refs to be null. `agent_runtime`
+requires all three, resolves the exact signed runtime and authorization objects,
+and resolves `connection_state_head_ref` as the exact current active head—not
+merely a schema-valid historical head. That head must bind the same principal,
+runtime, and authorization, and the binding interval must be contained in their
+validity intervals. The DataGrant head set is likewise an exact projection of
+the grant set: every grant has one current head, no duplicate or extra head is
+accepted, and every current ref is independently resolved.
+
 The schema uses a closed effect-context union. `cancel_receiver_action` requires
 the complete cancellation context and forbids checkout fields. Ordinary actions
 require `cancellation_context:null`. Checkout roles require a non-null matching
@@ -6774,6 +6834,33 @@ Staleness creates a new object; it never edits an existing receipt.
 
 ## 8. Deterministic execution gate
 
+Before evaluating checks, the authority service derives an authoritative
+`expectedGateDependencyProjection` from the exact BindingSet, action,
+reservations, confirmation, post-reservation state transitions, provider
+identity/lifecycle graph, inventory graph, and capability policy registry. It is
+never copied from GateRequest. GateRequest must equal that projection field for
+field: reservation receipts; control, DataGrant, business, provider-identity,
+trust-overlay, policy, and checkout sets; integrity and confirmation lifecycle
+heads; connection, compartment, and economic-resource heads; seller-copy root;
+executor, finality, accounting, channel, and selector policies/heads; and
+checkout readiness/group/terms refs. Arrays compare as sorted unique exact
+ObjectRef sets, rejecting both omissions and extras. Scalars compare as exact
+refs or exact nulls. Every mutable projected ref must independently resolve as
+the current head. If the trusted projection or any dependency graph is
+unavailable, validation denies; it never falls back to the request-selected set.
+
+GateResult contains exactly these 19 check codes, in this order, with no missing,
+duplicate, or extra code:
+`SCHEMA_SIGNATURE`, `EXECUTION_RELEASE`, `AUTHENTICATION_BRANCH`,
+`DATA_GRANTS_DISCLOSURES`, `EXECUTION_CONTROLS`, `LIFECYCLES_KEYS`,
+`NONCES_FENCES`, `AUTHORITY_CONFIRMATION`, `BINDING_EQUALITY`,
+`BUSINESS_DEPENDENCIES`, `REVIEWS_POLICIES`, `RESERVED_JUDGMENTS`, `LIMITS`,
+`ECONOMIC_EXPOSURE`, `RESERVATION_FENCES`, `DUPLICATE_EFFECT_LINEAGE`,
+`EXECUTOR_TARGET`, `DOMAIN_POLICY`, and `ATOMIC_PRECONDITIONS`. `allow` requires
+all 19 to pass; `deny` requires at least one deny. The evaluated-head,
+business-state, and checkout roots are recomputed from the same authoritative
+projection rather than from an independently supplied set.
+
 The gate evaluates in this exact fail-closed order:
 
 1. parse, I-JSON, schema, canonicalization, hash, and signature;
@@ -7242,6 +7329,8 @@ outstanding_stream_map_before_ref: <enumerable_map_root ObjectRef>
 outstanding_stream_map_before_hash: sha-256:<hex>
 outstanding_stream_map_after_ref: <enumerable_map_root ObjectRef>
 outstanding_stream_map_after_hash: sha-256:<hex>
+before_change_proof: <closed membership/nonmembership proof under before map>
+after_change_proof: <closed membership/nonmembership proof under after map>
 entry_before_ref: <ObjectRef or null only for reservation>
 entry_before_hash: sha-256:<hex or null>
 entry_after_ref: <terminal/current ObjectRef>
@@ -7265,6 +7354,49 @@ committed_at: <authority-service time>
 receipt_hash: sha-256:<hex>
 authority_service_signature: <Signature>
 ```
+
+Receiver-entry identity is derived, not caller-selected:
+`outstanding_stream_key = SHA-256(JCS(selector key, action ref, effect id,
+lineage id, precommitted client reference))`. Validation resolves the exact
+event-ID and sequence slot assignments, exact trust assignment manifest/count/
+root, optional future-dependency pair, current receiver stream, and—when the
+agent-runtime branch created the action—the exact connection outstanding entry.
+The three connection fields are all null only for principal-direct execution;
+otherwise all are non-null. Their lifecycle matrix is closed: receiver
+`reserved` pairs with connection `reserved`; `handed_off` pairs with
+`handed_off|receiver_state_current`; authenticated closure/horizon pair only
+with `receiver_state_current`; fenced pre-submission pairs only with `reserved`.
+
+Every receiver transition resolves exact before/after entries, selector heads,
+assigned-scope heads, receiver-domain map roots, and both path proofs. Immutable
+identity, assignments, finality, optional future dependency, and optional
+connection stable key/action/effect/lineage cannot drift; sequence and previous
+hash advance exactly. The connection entry ref/hash may change only to its exact
+sequence/previous-hash successor, and `handoff_bound` requires the reserved→
+handed-off connection successor. The
+selector is one exact successor and its before/after map refs equal the named
+roots. Proof frontiers outside this key are identical. The cause matrix is:
+
+- `reservation_registered`: null before, reserved sequence-0 after,
+  nonmembership→membership, map count +1;
+- `handoff_bound`: reserved→handed_off, membership retained, exact unchanged
+  assigned-identity head, and no identity transition receipt;
+- `authenticated_event_observed`: handed_off→handed_off, membership retained,
+  exact identity and receiver-stream successors;
+- each terminal cause: matching terminal after entry, membership→nonmembership,
+  map count -1, exact cause evidence and release plan, and one identity
+  transition receipt;
+- closure requires the exact receiver-stream transition; irreversible horizon
+  requires the exact unchanged receiver-stream head; fenced non-submission
+  forbids both.
+
+Cause evidence is an exact, independently verified external object: schema,
+object identity, hash, signature/release validation, and required fields all
+match. Fenced evidence binds action/effect/lineage; closure evidence binds the
+exact current receiver stream key; horizon evidence binds action/effect/lineage
+and finality profile. The implementation receives these external families only
+through a fail-closed pinned-release verifier; an absent verifier or unresolved
+object denies.
 
 ```yaml
 schema: cairn.receiver_terminal_release_plan_core.v0.1
@@ -7362,6 +7494,22 @@ unchanged current stream head while the horizon receipt releases only the
 outstanding/capacity layers. Pre-handoff non-submission carries neither. The
 plan's expected kind set is derived from that cause, so a horizon completion
 that demands or fabricates a stream transition is invalid.
+
+Plan validation derives its deterministic key and exact transition-kind root,
+then requires every assignment, trust manifest, future dependency, receiver
+stream, connection entry, evidence, cause, and transaction to equal the
+nonterminal entry. Completion validation resolves the exact plan, receiver-map
+transition, both unique identity transitions, trust transition manifest,
+optional future transition, cause-selected stream dependency, and optional
+connection-map transition. Counts and canonical roots, deterministic completion
+key, transaction ID, and completed kind-set root must all agree. Each referenced
+child runs its full semantic validator. A completion with a plausible hash but
+an unresolved child is invalid.
+The completion also recomputes `plan_to_receipt_keyset_equality_proof_hash` from
+the plan key, the exact event/sequence assignment pair, trust assignment and
+transition manifests, optional future pair, cause-selected stream pair, and
+optional connection pair. Each identity/trust/future transition names the exact
+assignment it releases; foreign but otherwise valid transitions deny.
 
 ```yaml
 schema: cairn.receiver_event_identity_scope_import_receipt.v0.1
@@ -10223,6 +10371,17 @@ are authority-internal. Trust snapshot partition/completion operations are trust
 coordinator-only and require the current global fail-stop/barrier head. Integrity
 resolution entries are readable only through stopped-recovery/audit authority;
 their map never becomes a public incident oracle.
+
+Every exact read first binds the request ref to the returned schema, object
+identity, canonical hash, signature, resource bounds, registry response family,
+and ACL. It then dispatches the returned schema's specialized semantic validator
+with the exact dependency graph. This applies equally to connection
+authorization/state, enumerable roots/nodes, connection outstanding entries and
+transitions, receiver outstanding entries/transitions, terminal release plans
+and completions, and all other execution families. A missing current-head
+resolver, object resolver, external-release verifier, or required dependency is
+a denial. No getter may degrade to schema-only acceptance because its dependency
+graph was omitted.
 
 ### 11.1 Closed state-writer map
 

@@ -59,32 +59,43 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **Every accepted P1/material-P2 finding through audit round 20 is remediated;
-  the replacement is ready for commit freeze and a fresh three-reviewer gate.**
+  **Every accepted P1/material-P2 finding through the round-26 targeted cold
+  audit and round-28 prose/code audit is remediated; local closure is green and
+  the replacement is ready for exact-commit freeze and a fresh three-reviewer
+  gate.**
   Candidate internal hash is
-  `sha-256:4bd027570e2915ac6ab96b4e558c9d0a7b89a6967254de82d8fa90a7975ba2be`
+  `sha-256:c68afaf5e0d88c562a44b57bbd51e4976346f36221e778786498de6212d3f2c8`
   and registry hash is
-  `sha-256:c8b92158cfe1146a9a03d8d4f33a6f4556f602738bc6574d5e0f5a8588162d86`.
-  It contains 38 closed signed-object schemas, one content-addressed map-node
-  schema, and 29 schema-only read operations, with zero mutation, external-
-  effect, or authority-effect rows. Local controls pass 27/27 and kill 267/267
+  `sha-256:66e22edf41ad5650d0d1fcf069a0cd264480db82708e86608e586a1edc1f4ccf`.
+  The audited prose hash is
+  `c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4`.
+  It contains 42 closed signed-object schemas, one content-addressed map-node
+  schema, and 33 schema-only read operations, with zero mutation, external-
+  effect, or authority-effect rows. Local controls pass 27/27 and kill 299/299
   direct mutants. The frozen proposal baseline separately remains 83/83 with
   75/75 mutants killed at bundle hash
   `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
-  Round 20 closed the outstanding-index map/count/root and read-reachability gap
-  with exact signed roots, derived keys, bounded parent-authorized node paths,
-  and a closed transition matrix that permits nonempty seal followed by drain.
+  This replacement closes authoritative GateRequest dependency projection,
+  exact connection runtime/authorization/current-head semantics and mandate
+  interval containment, exact two-domain enumerable map leaves/proofs, full
+  ActionReceipt validation on connection updates, and the complete six-cause
+  receiver lifecycle. Receiver terminal evidence, release plans, identity/trust/
+  future/stream/connection transitions, deterministic completion, and every
+  exact read now fail closed on unresolved or substituted dependencies. The
+  completion keyset and connection/stream successor seams are directly mutation
+  controlled.
   No executor, provider/network review, authorization redemption, outbox,
   payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
-  or live state change is created or authorized. Do not mark closed or claim
-  conformance until the committed exact bytes pass fresh blind semantic,
-  informed regression, and blind release reviews.
+  or live state change is created or authorized. The reference service remains
+  blocked. Do not mark closed or claim conformance until the committed exact
+  bytes pass fresh blind semantic, informed regression, and blind release
+  reviews with zero P0/P1/material P2.
 - `[passive]` 2026-07-21 · Codex —
   **The Robinhood-informed Cairn agent-execution change spec completed
   prose-design closure and was subsequently field-hardened during Phase 1.**
   The prior closure hash `a30de7da1af5a9f2497ec26f3dd4f552a6640fdb1e13c4b03f2c76479cccd386`
   was intentionally superseded; the exact current prose SHA-256 is
-  `8ac6dfde66326ba235350b63e6e3b570f9bebf9b1df4c43166af31c3e9974df6`.
+  `c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4`.
   Before the field-hardening reopen, the original artifact had:
   38 audit rounds dispositioned AE-001 through AE-361, then one fresh
   context-blind reviewer and one informed full-regression reviewer independently

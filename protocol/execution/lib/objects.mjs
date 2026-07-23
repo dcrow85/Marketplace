@@ -83,10 +83,11 @@ export const PHASE1_OBJECTS = Object.freeze([
     id: "node_hash",
     hash: "node_hash",
     entries: [
-      ["map_domain", "const:connection_outstanding_action"],
+      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream"],
       ["node_kind", "enum:empty|leaf|branch"],
       ["path_prefix_nibbles", "hexNibbles"], ["leaf_entry", "nenumerableMapLeafEntry"],
       ["branch_children", "enumerableMapBranchChildren"], ["subtree_entry_count", uint],
+      ["entries_root", hash],
       ["node_hash", hash]
     ],
     invariants: ["enumerable_map_node_union"]
@@ -98,7 +99,7 @@ export const PHASE1_OBJECTS = Object.freeze([
     hash: "map_hash",
     signatures: ["issuing_authority_signature"],
     entries: [
-      ["map_key", hash], ["map_domain", "const:connection_outstanding_action"],
+      ["map_key", hash], ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream"],
       ["revision", uint], ["root_node_ref", ref], ["root_node_hash", hash],
       ["entry_count", uint], ["entries_root", hash], ["map_hash", hash],
       ["issuing_authority_id", str], ["issuing_authority_signature", sig]
@@ -150,10 +151,120 @@ export const PHASE1_OBJECTS = Object.freeze([
       ["after_action_map_ref", ref], ["after_action_map_hash", hash], ["changed_action_key", nhash],
       ["changed_entry_before_ref", nref], ["changed_entry_before_hash", nhash],
       ["changed_entry_after_ref", nref], ["changed_entry_after_hash", nhash],
+      ["before_change_proof", "nenumerableMapPathProof"],
+      ["after_change_proof", "nenumerableMapPathProof"],
+      ["action_transition_receipt_ref", nref], ["action_transition_receipt_hash", nhash],
       ["terminal_evidence_ref", nref], ["terminal_evidence_hash", nhash],
       ["authority_transaction_id", str], ["committed_at", time], ["receipt_hash", hash],
       ["authority_service_signature", sig]
     ]
+  }),
+  signed({
+    file: "receiver-outstanding-stream-entry.schema.json",
+    schema: "cairn.receiver_outstanding_stream_entry.v0.1",
+    id: "outstanding_stream_key",
+    hash: "entry_hash",
+    signatures: ["authority_service_signature"],
+    entries: [
+      ["outstanding_stream_key", hash], ["receiver_sequence_epoch_selector_key", hash],
+      ["identity_scope_index_key", hash], ["action_ref", ref], ["effect_id", hash],
+      ["lineage_id", hash], ["precommitted_client_reference", str],
+      ["assigned_identity_epoch", uint], ["event_id_slot_assignment_ref", ref],
+      ["event_id_slot_assignment_hash", hash], ["sequence_slot_assignment_ref", ref],
+      ["sequence_slot_assignment_hash", hash], ["trust_epoch_assignment_manifest_ref", ref],
+      ["trust_epoch_assignment_manifest_hash", hash], ["trust_epoch_assignment_count", "positive"],
+      ["trust_epoch_assignments_root", hash], ["future_dependency_pool_state_head_ref", nref],
+      ["future_dependency_pool_state_head_hash", nhash], ["future_dependency_assignment_ref", nref],
+      ["future_dependency_assignment_hash", nhash], ["connection_outstanding_action_key", nhash],
+      ["connection_outstanding_action_entry_ref", nref], ["connection_outstanding_action_entry_hash", nhash],
+      ["finality_transition_profile_ref", ref], ["finality_transition_profile_hash", hash],
+      ["authenticated_closure_or_horizon_rule_hash", hash], ["sequence", uint],
+      ["previous_entry_hash", nhash],
+      ["state", "enum:reserved|handed_off|authenticated_stream_closed|authenticated_irreversible_horizon|fenced_non_submission"],
+      ["current_receiver_stream_head_ref", nref], ["current_receiver_stream_head_hash", nhash],
+      ["entry_hash", hash], ["authority_service_signature", sig]
+    ],
+    invariants: ["receiver_outstanding_stream_entry_union"]
+  }),
+  signed({
+    file: "receiver-outstanding-stream-transition-receipt.schema.json",
+    schema: "cairn.receiver_outstanding_stream_transition_receipt.v0.1",
+    id: "receipt_hash",
+    hash: "receipt_hash",
+    signatures: ["authority_service_signature"],
+    entries: [
+      ["outstanding_stream_key", hash],
+      ["cause", "enum:reservation_registered|handoff_bound|authenticated_event_observed|authenticated_stream_closed|authenticated_irreversible_horizon|fenced_non_submission"],
+      ["epoch_selector_before_head_ref", ref], ["epoch_selector_before_head_hash", hash],
+      ["epoch_selector_after_head_ref", ref], ["epoch_selector_after_head_hash", hash],
+      ["assigned_identity_scope_before_head_ref", ref], ["assigned_identity_scope_before_head_hash", hash],
+      ["assigned_identity_scope_after_head_ref", ref], ["assigned_identity_scope_after_head_hash", hash],
+      ["outstanding_stream_map_before_ref", ref], ["outstanding_stream_map_before_hash", hash],
+      ["outstanding_stream_map_after_ref", ref], ["outstanding_stream_map_after_hash", hash],
+      ["before_change_proof", "nenumerableMapPathProof"],
+      ["after_change_proof", "nenumerableMapPathProof"],
+      ["entry_before_ref", nref], ["entry_before_hash", nhash],
+      ["entry_after_ref", ref], ["entry_after_hash", hash], ["after_current_map_membership", bool],
+      ["identity_epoch_transition_receipt_ref", nref], ["identity_epoch_transition_receipt_hash", nhash],
+      ["unchanged_assigned_identity_epoch_head_ref", nref], ["unchanged_assigned_identity_epoch_head_hash", nhash],
+      ["terminal_release_evidence_ref", nref], ["terminal_release_evidence_hash", nhash],
+      ["terminal_release_plan_core_ref", nref], ["terminal_release_plan_core_hash", nhash],
+      ["receiver_stream_transition_receipt_ref", nref], ["receiver_stream_transition_receipt_hash", nhash],
+      ["unchanged_receiver_stream_head_ref", nref], ["unchanged_receiver_stream_head_hash", nhash],
+      ["authority_transaction_id", str], ["committed_at", time], ["receipt_hash", hash],
+      ["authority_service_signature", sig]
+    ],
+    invariants: ["receiver_outstanding_stream_transition_union"]
+  }),
+  signed({
+    file: "receiver-terminal-release-plan-core.schema.json",
+    schema: "cairn.receiver_terminal_release_plan_core.v0.1",
+    id: "terminal_release_plan_key",
+    hash: "plan_hash",
+    signatures: ["authority_service_signature"],
+    entries: [
+      ["terminal_release_plan_key", hash],
+      ["release_cause", "enum:authenticated_stream_closed|authenticated_irreversible_horizon|fenced_non_submission"],
+      ["terminal_release_evidence_ref", ref], ["terminal_release_evidence_hash", hash],
+      ["receiver_outstanding_stream_entry_ref", ref], ["receiver_outstanding_stream_entry_hash", hash],
+      ["event_id_slot_assignment_ref", ref], ["event_id_slot_assignment_hash", hash],
+      ["sequence_slot_assignment_ref", ref], ["sequence_slot_assignment_hash", hash],
+      ["trust_epoch_assignment_manifest_ref", ref], ["trust_epoch_assignment_manifest_hash", hash],
+      ["trust_epoch_assignment_count", "positive"], ["future_dependency_pool_state_head_ref", nref],
+      ["future_dependency_pool_state_head_hash", nhash], ["future_dependency_assignment_ref", nref],
+      ["future_dependency_assignment_hash", nhash], ["receiver_stream_before_head_ref", nref],
+      ["receiver_stream_before_head_hash", nhash], ["connection_outstanding_action_entry_ref", nref],
+      ["connection_outstanding_action_entry_hash", nhash], ["expected_transition_kind_set_root", hash],
+      ["authority_transaction_id", str], ["issued_at", time], ["plan_hash", hash],
+      ["authority_service_signature", sig]
+    ],
+    invariants: ["receiver_terminal_release_plan_exact_binding"]
+  }),
+  signed({
+    file: "receiver-terminal-release-completion-receipt.schema.json",
+    schema: "cairn.receiver_terminal_release_completion_receipt.v0.1",
+    id: "completion_key",
+    hash: "receipt_hash",
+    signatures: ["authority_service_signature"],
+    entries: [
+      ["completion_key", hash], ["terminal_release_plan_core_ref", ref],
+      ["terminal_release_plan_core_hash", hash], ["terminal_release_evidence_ref", ref],
+      ["terminal_release_evidence_hash", hash], ["identity_epoch_transition_receipts", "identityTransitionReceipts"],
+      ["identity_transition_count", "constint:2"], ["identity_transition_root", hash],
+      ["trust_epoch_transition_manifest_ref", ref], ["trust_epoch_transition_manifest_hash", hash],
+      ["trust_epoch_transition_count", "positive"], ["trust_epoch_transition_root", hash],
+      ["future_dependency_transition_receipt_ref", nref], ["future_dependency_transition_receipt_hash", nhash],
+      ["receiver_stream_transition_receipt_ref", nref], ["receiver_stream_transition_receipt_hash", nhash],
+      ["unchanged_receiver_stream_head_ref", nref], ["unchanged_receiver_stream_head_hash", nhash],
+      ["receiver_outstanding_stream_transition_receipt_ref", ref],
+      ["receiver_outstanding_stream_transition_receipt_hash", hash],
+      ["connection_outstanding_action_transition_receipt_ref", nref],
+      ["connection_outstanding_action_transition_receipt_hash", nhash],
+      ["completed_transition_kind_set_root", hash], ["plan_to_receipt_keyset_equality_proof_hash", hash],
+      ["authority_transaction_id", str], ["committed_at", time], ["receipt_hash", hash],
+      ["authority_service_signature", sig]
+    ],
+    invariants: ["receiver_terminal_release_completion_exact_binding"]
   }),
   signed({
     file: "connection-state-event-receipt.schema.json",
@@ -732,7 +843,7 @@ function executionChainProfiles() {
     ], ["gate_request_exact_dependencies"]),
     base("gate-result-v0.2.schema.json", "cairn.gate_result.v0.2", "gate_result_id", "result_hash", "gate_service_signature", [
       ["gate_result_id", "uuid"], ["gate_request_ref", ref], ["gate_request_hash", hash], ["execution_binding_set_ref", ref],
-      ["execution_binding_set_hash", hash], ["decision", "enum:allow|deny"], ["evaluated_head_refs", "refs32"],
+      ["execution_binding_set_hash", hash], ["decision", "enum:allow|deny"], ["evaluated_head_refs", refs],
       ["evaluated_nonce_and_fence_root", hash], ["business_state_root", hash], ["checkout_dependency_root", hash],
       ["check_results", "checkResults"], ["single_use_result_id", hash], ["evaluated_at", time], ["expires_at", time],
       ["result_hash", hash], ["gate_service_signature", sig]

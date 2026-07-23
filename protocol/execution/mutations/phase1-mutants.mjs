@@ -3,8 +3,8 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "8ac6dfde66326ba235350b63e6e3b570f9bebf9b1df4c43166af31c3e9974df6";',
-    replace: 'export const SPEC_SHA256 = "9ac6dfde66326ba235350b63e6e3b570f9bebf9b1df4c43166af31c3e9974df6";',
+    search: 'export const SPEC_SHA256 = "c9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4";',
+    replace: 'export const SPEC_SHA256 = "d9f66cdce5a507eabcd35a40008feaf9a6dd7ed797451df060297c2dde41aac4";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
   },
@@ -180,8 +180,7 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '        if (monies.some((item) => item.asset !== constraints.financial.accounting_asset)) failures.push("mandate_financial_asset_mismatch");',
     replace: '        if (false) failures.push("mandate_financial_asset_mismatch");',
-    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint",
-    auxiliaryMutation: "mandate-asset-fixture"
+    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint"
   },
   {
     id: "lineage-authority-union",
@@ -373,8 +372,8 @@ export const PHASE1_MUTANTS = [
     id: "redemption-allow-only",
     finding: "redemption-denied-gate",
     file: "lib/validation.mjs",
-    search: '    if (!gateResult || gateResult.decision !== "allow" ||\n        validateGateResult(gateResult, { ...context, gateRequest, binding }).length ||',
-    replace: '    if (!gateResult || false ||\n        validateGateResult(gateResult, { ...context, gateRequest, binding }).length ||',
+    search: '    if (!gateResult || gateResult.decision !== "allow" ||\n        validateGateResult(gateResult, { ...context, gateRequest, binding }).length ||\n        !exactRef(value.gate_result_ref, gateResult, context) || value.gate_result_hash !== gateResult.result_hash) {',
+    replace: '    if (false) {',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -1249,7 +1248,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-mandate-semantic-binding",
     finding: "standalone-gate-skips-selected-mandate-scope-closure",
     file: "lib/validation.mjs",
-    search: '        failures.push(...mandateBindingFailures(authority, commitment, binding)\n          .map((code) => `gate_request_${code}`));',
+    search: '        failures.push(...mandateBindingFailures(authority, commitment, binding, context)\n          .map((code) => `gate_request_${code}`));',
     replace: '        failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1313,7 +1312,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-mandate-semantic-binding",
     finding: "preauthorized-action-read-carries-alien-mandate-semantics",
     file: "lib/validation.mjs",
-    search: '        failures.push(...mandateBindingFailures(\n          response.authority_basis, response.lineage_commitment, response.execution_binding_set\n        ).map((code) => `action_get_${code}`));',
+    search: '        failures.push(...mandateBindingFailures(\n          response.authority_basis, response.lineage_commitment, response.execution_binding_set, context\n        ).map((code) => `action_get_${code}`));',
     replace: '        failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2070,8 +2069,8 @@ export const PHASE1_MUTANTS = [
     id: "enumerable-map-root-node-count",
     finding: "signed-map-root-count-does-not-match-root-node",
     file: "lib/validation.mjs",
-    search: '    if (value.entry_count !== rootNode.subtree_entry_count ||\n',
-    replace: '    if (false ||\n',
+    search: '    if (value.entry_count !== rootNode.subtree_entry_count || value.entries_root !== rootNode.entries_root ||',
+    replace: '    if (false || value.entries_root !== rootNode.entries_root ||',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
@@ -2159,6 +2158,262 @@ export const PHASE1_MUTANTS = [
     finding: "terminal-seal-can-change-or-drain-the-map",
     file: "lib/validation.mjs",
     search: '        failures.push("outstanding_index_transition_terminal_seal_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-connection-authorization-semantics",
+    finding: "connection-authorization-read-skips-runtime-and-interval-validation",
+    file: "lib/validation.mjs",
+    search: '    case "cairn.agent_connection_authorization.v0.1":\n      return validateConnectionAuthorization(object, context);',
+    replace: '    case "cairn.agent_connection_authorization.v0.1": return [];',
+    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint"
+  },
+  {
+    id: "exact-read-connection-state-semantics",
+    finding: "connection-state-read-skips-authorization-and-current-head-validation",
+    file: "lib/validation.mjs",
+    search: '    case "cairn.agent_connection_state_head.v0.1":\n      return validateConnectionStateHead(object, context);',
+    replace: '    case "cairn.agent_connection_state_head.v0.1": return [];',
+    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint"
+  },
+  {
+    id: "connection-authorization-runtime-resolution",
+    finding: "connection-authorization-accepts-unresolved-runtime",
+    file: "lib/validation.mjs",
+    search: '    if (!runtime || runtime.schema !== "cairn.agent_runtime_binding.v0.1") {\n      failures.push("connection_authorization_runtime_unresolved");',
+    replace: '    if (false) {\n      failures.push("connection_authorization_runtime_unresolved");',
+    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint"
+  },
+  {
+    id: "connection-state-current-head",
+    finding: "connection-state-current-read-accepts-stale-head",
+    file: "lib/validation.mjs",
+    search: '    if (context.requireCurrentConnection === true &&\n        !sameObjectRef(resolveCurrentHead(context, objectRef(value, context)), objectRef(value, context))) {',
+    replace: '    if (false) {',
+    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint"
+  },
+  {
+    id: "mandate-connection-authorization-semantics",
+    finding: "mandate-skips-connection-authorization-semantic-validation",
+    file: "lib/validation.mjs",
+    search: '        validateConnectionAuthorization(connectionAuthorization, context).length ||\n        !exactRef(value.agent.connection_authorization_ref, connectionAuthorization, context) ||',
+    replace: '        !exactRef(value.agent.connection_authorization_ref, connectionAuthorization, context) ||',
+    test: "mandate v0.3 keeps financial and nonfinancial authority branches disjoint"
+  },
+  {
+    id: "gate-authoritative-dependency-projection",
+    finding: "gate-request-self-selects-required-dependencies",
+    file: "lib/validation.mjs",
+    search: '  if (!projection || typeof projection !== "object" || Array.isArray(projection)) {\n    return ["gate_request_required_dependency_projection_unresolved"];\n  }',
+    replace: '  if (false) {\n    return ["gate_request_required_dependency_projection_unresolved"];\n  }',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "enumerable-map-leaf-resolution",
+    finding: "enumerable-map-leaf-accepts-unresolved-entry",
+    file: "lib/validation.mjs",
+    search: '        !entryObject || entryObject.schema !== domainProfile.schema ||\n        !exactRef(leaf.entry_object_ref, entryObject, context) ||\n        entryObject[domainProfile.keyField] !== leaf.entry_key ||\n        domainProfile.validate(entryObject, context).length !== 0 ||',
+    replace: '        false ||',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "enumerable-map-leaf-key-binding",
+    finding: "enumerable-map-leaf-does-not-bind-key-to-entry",
+    file: "lib/validation.mjs",
+    search: '        entryObject[domainProfile.keyField] !== leaf.entry_key ||\n        domainProfile.validate(entryObject, context).length !== 0 ||',
+    replace: '        domainProfile.validate(entryObject, context).length !== 0 ||',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "enumerable-map-receiver-domain",
+    finding: "receiver-outstanding-map-domain-is-not-closed",
+    file: "lib/validation.mjs",
+    search: '      ["receiver_outstanding_stream", {\n        entryKind: "receiver_outstanding_stream",\n        schema: "cairn.receiver_outstanding_stream_entry.v0.1",\n        keyField: "outstanding_stream_key",\n        validate: validateReceiverOutstandingStreamEntry\n      }]',
+    replace: '      ["receiver_outstanding_stream_disabled", {\n        entryKind: "receiver_outstanding_stream",\n        schema: "cairn.receiver_outstanding_stream_entry.v0.1",\n        keyField: "outstanding_stream_key",\n        validate: validateReceiverOutstandingStreamEntry\n      }]',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "external-exact-object-verifier",
+    finding: "external-dependency-bypasses-release-verifier",
+    file: "lib/validation.mjs",
+    search: '  return typeof context.externalObjectVerifier === "function" &&\n    context.externalObjectVerifier({ reference, object, expectedSchema }) === true;',
+    replace: '  return true;',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-outstanding-derived-key",
+    finding: "receiver-entry-key-is-caller-selected",
+    file: "lib/validation.mjs",
+    search: '    if (value.outstanding_stream_key !== receiverOutstandingStreamKey(value)) {\n      failures.push("receiver_outstanding_entry_key_mismatch");\n    }',
+    replace: '    if (false) {\n      failures.push("receiver_outstanding_entry_key_mismatch");\n    }',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-outstanding-slot-assignments",
+    finding: "receiver-entry-does-not-close-event-and-sequence-slots",
+    file: "lib/validation.mjs",
+    search: '      failures.push("receiver_outstanding_entry_slot_assignment_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-outstanding-trust-manifest",
+    finding: "receiver-entry-does-not-close-trust-assignment-set",
+    file: "lib/validation.mjs",
+    search: '      failures.push("receiver_outstanding_entry_trust_manifest_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-outstanding-connection-lifecycle",
+    finding: "receiver-entry-accepts-impossible-connection-state",
+    file: "lib/validation.mjs",
+    search: '        failures.push("receiver_outstanding_entry_connection_state_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-evidence-closure",
+    finding: "receiver-terminal-evidence-is-not-exactly-resolved",
+    file: "lib/validation.mjs",
+    search: '      !exactExternalObject(reference, source, profile.schema, context, profile.hash, profile.ids)) {',
+    replace: '      false) {',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-plan-transition-set",
+    finding: "receiver-terminal-plan-omits-required-release-transitions",
+    file: "lib/validation.mjs",
+    search: '    if (value.expected_transition_kind_set_root !== receiverTerminalTransitionKindSetRoot(value, entry)) {\n      failures.push("receiver_terminal_plan_transition_kind_set_mismatch");\n    }',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-transition-immutable-identity",
+    finding: "receiver-transition-allows-identity-drift",
+    file: "lib/validation.mjs",
+    search: '        (before !== null && (immutableFields.some((field) =>\n          canonicalHash(before[field]) !== canonicalHash(after[field])) ||',
+    replace: '        (before !== null && (false ||',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-transition-selector-scope",
+    finding: "receiver-transition-skips-selector-and-scope-successors",
+    file: "lib/validation.mjs",
+    search: '      failures.push("receiver_outstanding_transition_selector_scope_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-transition-terminal-plan",
+    finding: "receiver-transition-does-not-require-exact-release-plan",
+    file: "lib/validation.mjs",
+    search: '          !plan || plan.schema !== "cairn.receiver_terminal_release_plan_core.v0.1" ||\n          !exactRef(value.terminal_release_plan_core_ref, plan, context) ||\n          validateReceiverTerminalReleasePlan(plan, context).length ||\n          !sameObjectRef(plan.receiver_outstanding_stream_entry_ref, value.entry_before_ref) ||\n          !sameObjectRef(plan.terminal_release_evidence_ref, value.terminal_release_evidence_ref) ||\n          plan.authority_transaction_id !== value.authority_transaction_id || plan.release_cause !== value.cause)',
+    replace: '          false)',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "connection-update-full-action-receipt",
+    finding: "connection-action-head-update-skips-full-action-receipt-validation",
+    file: "lib/validation.mjs",
+    search: '        validateActionReceipt(actionTransition, beforeActionState, afterActionState, actionBinding, {\n          ...context, action\n        }).length === 0;',
+    replace: '        true;',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-completion-plan-root",
+    finding: "receiver-terminal-completion-does-not-bind-plan-roots",
+    file: "lib/validation.mjs",
+    search: '        value.completed_transition_kind_set_root !== plan.expected_transition_kind_set_root ||',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-completion-identity-transitions",
+    finding: "receiver-terminal-completion-does-not-resolve-identity-transitions",
+    file: "lib/validation.mjs",
+    search: '        failures.push("receiver_terminal_completion_identity_transition_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-receiver-entry-semantics",
+    finding: "receiver-entry-read-skips-semantic-validation",
+    file: "lib/validation.mjs",
+    search: '    case "cairn.receiver_outstanding_stream_entry.v0.1":\n      return validateReceiverOutstandingStreamEntry(object, context);',
+    replace: '    case "cairn.receiver_outstanding_stream_entry.v0.1": return [];',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-receiver-transition-semantics",
+    finding: "receiver-transition-read-skips-semantic-validation",
+    file: "lib/validation.mjs",
+    search: '    case "cairn.receiver_outstanding_stream_transition_receipt.v0.1":\n      return validateReceiverOutstandingStreamTransitionReceipt(object, context);',
+    replace: '    case "cairn.receiver_outstanding_stream_transition_receipt.v0.1": return [];',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-terminal-plan-semantics",
+    finding: "terminal-release-plan-read-skips-semantic-validation",
+    file: "lib/validation.mjs",
+    search: '    case "cairn.receiver_terminal_release_plan_core.v0.1":\n      return validateReceiverTerminalReleasePlan(object, context);',
+    replace: '    case "cairn.receiver_terminal_release_plan_core.v0.1": return [];',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-terminal-completion-semantics",
+    finding: "terminal-release-completion-read-skips-semantic-validation",
+    file: "lib/validation.mjs",
+    search: '    case "cairn.receiver_terminal_release_completion_receipt.v0.1":\n      return validateReceiverTerminalReleaseCompletion(object, context);',
+    replace: '    case "cairn.receiver_terminal_release_completion_receipt.v0.1": return [];',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-completion-identity-assignment-set",
+    finding: "terminal-completion-substitutes-foreign-identity-assignment",
+    file: "lib/validation.mjs",
+    search: '        canonicalHash(sortedUniqueRefs(value.identity_epoch_transition_receipts.map(({ assignment_ref }) => assignment_ref))) !==\n          canonicalHash(sortedUniqueRefs([plan.event_id_slot_assignment_ref, plan.sequence_slot_assignment_ref])) ||',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-completion-keyset-proof",
+    finding: "terminal-completion-does-not-recompute-plan-receipt-keyset-commitment",
+    file: "lib/validation.mjs",
+    search: '        value.plan_to_receipt_keyset_equality_proof_hash !==\n          receiverTerminalPlanToReceiptKeysetEqualityHash(plan, value) ||',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-completion-identity-assignment-binding",
+    finding: "terminal-identity-transition-does-not-bind-its-assignment",
+    file: "lib/validation.mjs",
+    search: '            ["receipt_id", "receipt_hash"]) || !sameObjectRef(transition.assignment_ref, item.assignment_ref)) {',
+    replace: '            ["receipt_id", "receipt_hash"])) {',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-terminal-completion-trust-assignment-set",
+    finding: "terminal-trust-transitions-do-not-cover-the-planned-assignment-set",
+    file: "lib/validation.mjs",
+    search: '      if (canonicalHash(sortedUniqueRefs(transitionAssignments)) !== canonicalHash(sortedUniqueRefs(\n        trustAssignmentManifest.sorted_entries.map(({ entry_object_ref }) => entry_object_ref)\n      ))) failures.push("receiver_terminal_completion_trust_transition_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-handoff-connection-successor",
+    finding: "receiver-handoff-skips-connection-entry-successor",
+    file: "lib/validation.mjs",
+    search: '        failures.push("receiver_outstanding_transition_connection_successor_mismatch");',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-event-stream-successor",
+    finding: "authenticated-receiver-event-skips-stream-successor",
+    file: "lib/validation.mjs",
+    search: '        failures.push("receiver_outstanding_transition_event_stream_successor_mismatch");',
     replace: '',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   }

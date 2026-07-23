@@ -68,6 +68,8 @@ const POLICY_RESPONSE_SCHEMA_IDS = new Set([
 const RECEIPT_RESPONSE_SCHEMA_IDS = new Set([
   "cairn.connection_state_event_receipt.v0.1",
   "cairn.connection_outstanding_action_index_transition_receipt.v0.1",
+  "cairn.receiver_outstanding_stream_transition_receipt.v0.1",
+  "cairn.receiver_terminal_release_completion_receipt.v0.1",
   "cairn.execution_control_receipt.v0.1",
   "cairn.compartment_state_transition_receipt.v0.1",
   "cairn.confirmation_receipt.v0.1",
@@ -207,14 +209,33 @@ function commonSchema() {
   });
   const enumerableMapLeafEntry = closed({
     entry_key: hash(),
-    entry_kind: { const: "connection_outstanding_action" },
+    entry_kind: { enum: ["connection_outstanding_action", "receiver_outstanding_stream"] },
     entry_object_ref: ref(),
     entry_object_hash: hash()
   });
   const enumerableMapBranchChild = closed({
     nibble: { type: "string", pattern: "^[0-9a-f]$" },
+    child_path_prefix_nibbles: { type: "string", pattern: "^[0-9a-f]{1,64}$", maxLength: 64 },
     child_node_ref: ref(),
-    child_node_hash: hash()
+    child_node_hash: hash(),
+    child_subtree_entry_count: { $ref: "#/$defs/positive" },
+    child_entries_root: hash()
+  });
+  const enumerableMapPathProof = closed({
+    claim: { enum: ["membership", "nonmembership"] },
+    map_root_ref: ref(), map_root_hash: hash(), entry_key: hash(),
+    ancestor_node_refs: refArray(0, 64), terminal_node_ref: ref(), terminal_node_hash: hash(),
+    absence_kind: nullable({ enum: ["empty_root", "leaf_key_mismatch", "compressed_prefix_mismatch", "missing_child"] })
+  }, undefined, { allOf: [
+    {
+      if: { properties: { claim: { const: "membership" } } },
+      then: { properties: { absence_kind: { type: "null" } } },
+      else: { properties: { absence_kind: { not: { type: "null" } } } }
+    }
+  ] });
+  const identityTransitionReceipt = closed({
+    assignment_ref: ref(), assignment_hash: hash(),
+    transition_receipt_ref: ref(), transition_receipt_hash: hash()
   });
   const sellerInventoryContext = closed({
     kind: { enum: ["ordinary_held", "checkout_prepared", "checkout_held", "adopted_consumed"] },
@@ -233,7 +254,8 @@ function commonSchema() {
       objectRef, signature, money: moneyDef, lineagePolicy, scopeBinding,
       mandateAgent: closed({ provider_id: { type: "string", minLength: 1 }, product_id: { type: "string", minLength: 1 }, runtime_binding_ref: ref(), connection_authorization_ref: ref() }),
       mandateConstraints, disclosure, cancellationContext, originalOperationLocator, transitionManifestEntry,
-      enumerableMapLeafEntry, enumerableMapBranchChild, sellerInventoryContext,
+      enumerableMapLeafEntry, enumerableMapBranchChild, enumerableMapPathProof, identityTransitionReceipt,
+      sellerInventoryContext,
       grantHead: closed({ data_grant_ref: ref(), current_state_head_ref: ref(), revocation_nonce: { $ref: "#/$defs/uint" } }),
       checkResult: closed({ code: { type: "string", pattern: "^[A-Z0-9_]+$" }, decision: { enum: ["pass", "deny"] }, evidence_refs: refArray() })
     }
@@ -294,9 +316,13 @@ function schemaForType(type) {
     "x-cairn-max-utf8-bytes": 64
   };
   if (type === "nenumerableMapLeafEntry") return nullable({ $ref: `${COMMON}#/$defs/enumerableMapLeafEntry` });
+  if (type === "nenumerableMapPathProof") return nullable({ $ref: `${COMMON}#/$defs/enumerableMapPathProof` });
   if (type === "enumerableMapBranchChildren") return array({ $ref: `${COMMON}#/$defs/enumerableMapBranchChild` }, {
     maxItems: 16, uniqueItems: true, "x-cairn-unique-by": "nibble"
   });
+  if (type === "identityTransitionReceipts") return array({
+    $ref: `${COMMON}#/$defs/identityTransitionReceipt`
+  }, { minItems: 2, maxItems: 2, uniqueItems: true, "x-cairn-unique-by": "assignment_hash" });
   if (type === "actionState") return { enum: ACTION_STATES };
   if (type === "constnull") return { type: "null" };
   if (type === "constemptyarray") return { type: "array", maxItems: 0 };

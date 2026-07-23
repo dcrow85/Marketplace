@@ -11,10 +11,11 @@ reference service.
   compartment, confirmation, mandate v0.3, binding, lineage, and the closed
   execution-chain versions required by the prose design;
 - exact frozen resource bounds, typed enumerable transition manifests, a
-  bounded-path content-addressed outstanding-action map, and both ordinary and
+  bounded-path content-addressed connection-action and receiver-stream maps,
+  terminal receiver release plan/completion objects, and both ordinary and
   cancellation one-shot authorization schemas;
 - a separately namespaced, read-only Phase 1 operation registry;
-- 29 closed operation-specific compatibility envelopes binding protocol,
+- 33 closed operation-specific compatibility envelopes binding protocol,
   execution profile, frozen proposal bundle, execution bundle, operation
   registry, exact operation, and exact request-body family before dispatch;
 - location-bound JCS commitments for every request envelope, request body, and
@@ -54,6 +55,18 @@ reference service.
   derived domain key, count, and entries commitment; exact index, entry,
   transition-receipt, map-root, and bounded ancestor-path node reads invoke the
   same semantic validators without recursively scanning an unbounded trie;
+- authoritative GateRequest dependency projection rejects both omitted and
+  request-invented reservation, control, grant, business, provider, policy,
+  inventory, and checkout dependencies; current heads resolve independently and
+  GateResult carries the exact closed 19-check code set;
+- connection authorization/state exact reads resolve runtime and authorization
+  graphs, enforce current-head authority and validity intervals, and mandate
+  validity is contained by both runtime and connection authorization;
+- receiver-stream entry keys are derived; slot/trust/future/stream/connection
+  dependencies are exact; receiver map transitions carry before/after proofs
+  and immutable-frontier checks; all three terminal causes require exact
+  evidence, release plans, identity/trust/stream/connection children, and a
+  deterministic completion receipt;
 - request-bound composite action reads that close the exact action, current
   state, binding, commitment, authority branch, lineage, private activity
   detail, authority reservations, and gate chain rather than merely checking
@@ -76,7 +89,7 @@ reference service.
 - direct mutation controls for namespace, dependency, authority, target-union,
   limit, connection, chain, compatibility-envelope, registry-metadata,
   package-isolation, and read-only-surface failures. The current suite kills all
-  267 declared direct mutants.
+  299 declared direct mutants.
 
 ## Excluded
 
