@@ -7,8 +7,8 @@
  * This is intentionally outside protocol/. It composes the frozen nine-operation
  * reference service without changing that kernel or claiming production
  * conformance. Test keys are deterministic fixtures whose private material stays
- * inside signing-capability closures and is never placed in the resolver, handoff,
- * trace, or report.
+ * inside signing-capability closures and is never placed in the resolver,
+ * serialized Agent B input, trace, or report.
  */
 
 import {
@@ -18,6 +18,7 @@ import {
   sign as signBytes
 } from "node:crypto";
 import { realpathSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -33,8 +34,7 @@ import {
   valueAtPointer
 } from "../protocol/lib/core.mjs";
 import {
-  operationFingerprint,
-  validateSignedObject
+  operationFingerprint
 } from "../protocol/lib/validation.mjs";
 import {
   createReferenceSeeder,
@@ -49,6 +49,7 @@ import { MemoryReferenceStores } from "../protocol/reference-service/state.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const PROTOCOL_ROOT = path.resolve(HERE, "../protocol");
+const AGENT_B_WORKER = path.resolve(HERE, "protocol_byo_agent_b_worker.mjs");
 
 const PRINCIPAL_ID = "did:example:cairn-collector";
 const SERVICE_ID = "cairn:action-service";
@@ -145,6 +146,37 @@ function bindAndSign(foundation, object, capability) {
     .sign(signatureInput(bound.schema, proof.signed_hash))
     .toString("base64url");
   return bound;
+}
+
+function runAgentBWorker(input) {
+  const result = spawnSync(process.execPath, [AGENT_B_WORKER], {
+    input: JSON.stringify(input),
+    encoding: "utf8",
+    maxBuffer: 4 * 1024 * 1024
+  });
+  if (result.status !== 0) {
+    return {
+      ok: false,
+      status: result.status,
+      stderr: result.stderr.trim(),
+      output: null
+    };
+  }
+  try {
+    return {
+      ok: true,
+      status: result.status,
+      stderr: result.stderr.trim(),
+      output: JSON.parse(result.stdout)
+    };
+  } catch {
+    return {
+      ok: false,
+      status: result.status,
+      stderr: "Agent B worker returned malformed JSON",
+      output: null
+    };
+  }
 }
 
 function makeAgentIdentity({
@@ -258,6 +290,52 @@ function makeIntent(foundation, principalCapability) {
       "authority_to_disclose_private_constraints"
     ]
   }, principalCapability);
+}
+
+function makeProjection(
+  foundation,
+  serviceCapability,
+  { projectionNumber, recipient, intent }
+) {
+  const intentRef = objectRefFor(intent, schemaFor(foundation, intent));
+  return bindAndSign(foundation, {
+    schema: "cairn.scoped_projection.v0.1",
+    projection_id: uuid(projectionNumber),
+    principal_id: PRINCIPAL_ID,
+    source_refs: {
+      profile_version_hash: intent.profile_version_hash,
+      intent_id: intent.intent_id,
+      intent_revision: intent.revision,
+      claim_ids: structuredClone(intent.source_claim_ids)
+    },
+    purpose: "search",
+    audience: [recipient],
+    data_uses: ["read_local"],
+    disclosed_fields: ["/targets"],
+    payload: {
+      schema: "cairn.scoped_projection_payload.v0.1",
+      entries: [{
+        output_path: "/targets",
+        source_ref: intentRef,
+        source_path: "/targets",
+        derivation: "exact_copy",
+        value: structuredClone(intent.targets)
+      }]
+    },
+    redacted_fields: [
+      "/constraints/total_budget",
+      "/privacy/never_disclose"
+    ],
+    disclosure_authority_ref: null,
+    derived_at: CREATED,
+    expires_at: EXPIRES,
+    projection_hash: ZERO_HASH,
+    issuer_signature: signature(serviceCapability),
+    not_claiming: [
+      "authority_to_act",
+      "source_value_independently_verified"
+    ]
+  }, serviceCapability);
 }
 
 function makeGrant(
@@ -381,151 +459,6 @@ function makeEffectDescriptor(foundation, objectIssuerCapability, intentRef) {
   };
   effect.effect_id = semanticHash(effect, schema);
   return bindAndSign(foundation, effect, objectIssuerCapability);
-}
-
-function makeProposal(
-  foundation,
-  { agentIdentity, agentCapability, effect, intentRef }
-) {
-  const effectRef = objectRefFor(effect, schemaFor(foundation, effect));
-  return bindAndSign(foundation, {
-    schema: "cairn.action_proposal.v0.1",
-    action_proposal_id: uuid(301),
-    principal_id: PRINCIPAL_ID,
-    agent_identity: structuredClone(agentIdentity),
-    capability: "prepare",
-    deal_id: null,
-    expected_deal_head_hash: null,
-    target: effect.executor_target,
-    ultimate_effect_recipient: null,
-    ultimate_effect_account_commitment: null,
-    effect_operation_kind: effect.effect_semantics.operation_kind,
-    effect_provider_id: effect.effect_semantics.provider_id,
-    copy_ids: structuredClone(effect.effect_semantics.copy_ids),
-    resource_refs: [intentRef, effectRef],
-    inputs_hash: canonicalHash({
-      intent_ref: intentRef,
-      purpose: "resume_principal_held_intent"
-    }),
-    terms_or_cart_hash: effect.effect_semantics.closed_terms_or_cart_hash,
-    evidence_snapshot_hash: null,
-    amounts: [],
-    rail: null,
-    requested_execution_mode: "supervised",
-    authority_candidate_ref: null,
-    effect_descriptor_ref: effectRef,
-    effect_id: effect.effect_id,
-    unknowns: [{
-      code: "seller_copy_not_selected",
-      description: "The replacement agent has not selected a seller copy.",
-      blocking_capabilities: ["accept_terms"]
-    }],
-    not_claiming: ["authority_to_act", "external_effect"],
-    created_at: CREATED,
-    expires_at: EXPIRES,
-    action_proposal_hash: ZERO_HASH,
-    agent_signature: signature(agentCapability)
-  }, agentCapability);
-}
-
-function makeAuthenticatedHandoffBundle(
-  foundation,
-  {
-    principalCapability,
-    runtimeRef,
-    runtimeUri,
-    grantRef,
-    intentRef,
-    intentUri,
-    bundleHash
-  }
-) {
-  return bindAndSign(foundation, {
-    schema: "cairn.continuation_bundle.v0.1",
-    bundle_id: uuid(250),
-    principal_id: PRINCIPAL_ID,
-    recipient_runtime_binding: {
-      ref: runtimeRef,
-      retrieval_uri: runtimeUri,
-      data_grant_ref: grantRef
-    },
-    schema_bundle: {
-      ref: {
-        schema: "cairn.machine_bundle_manifest.v0.1",
-        object_id: uuid(251),
-        object_hash: bundleHash
-      },
-      retrieval_uri: "https://cairn.cards/protocol/v0.1/bundle.json",
-      data_grant_ref: null
-    },
-    object_service_manifest: {
-      ref: {
-        schema: "cairn.object_service_manifest.v0.1",
-        object_id: uuid(252),
-        object_hash: canonicalHash({
-          service: "cairn:reference-service",
-          profile: "cairn-proposal-foundation-v0.1"
-        })
-      },
-      retrieval_uri: "https://reference.cairn.cards/.well-known/cairn.json",
-      data_grant_ref: null
-    },
-    items: [{
-      ref: intentRef,
-      retrieval_uri: intentUri,
-      data_grant_ref: grantRef,
-      required_for: "state"
-    }],
-    current_intent_control_heads: [],
-    current_deal_heads: [],
-    current_action_reservation_service_refs: [],
-    current_grant_status_and_revocation_refs: [],
-    unresolved_unknown_refs: [],
-    issued_at: CREATED,
-    expires_at: EXPIRES,
-    bundle_hash: ZERO_HASH,
-    issuer_signature: signature(principalCapability),
-    not_claiming: ["authority_transfer"]
-  }, principalCapability);
-}
-
-function handoffFailures(
-  foundation,
-  {
-    bundle,
-    expectedRuntime,
-    expectedGrantRef,
-    expectedIntentRef,
-    expectedIntentUri,
-    keyResolver
-  }
-) {
-  const failures = validateSignedObject(bundle, {
-    ajv: foundation.ajv,
-    schemasByObjectId: foundation.schemasByObjectId,
-    keyResolver,
-    now: NOW
-  }).map((failure) => `bundle_${failure}`);
-  const runtimeRef = objectRefFor(expectedRuntime, schemaFor(foundation, expectedRuntime));
-  if (!sameObjectRef(bundle.recipient_runtime_binding.ref, runtimeRef)) {
-    failures.push("recipient_runtime_binding_mismatch");
-  }
-  if (!sameObjectRef(bundle.recipient_runtime_binding.data_grant_ref, expectedGrantRef)) {
-    failures.push("recipient_grant_mismatch");
-  }
-  if (bundle.items.length !== 1 || !sameObjectRef(bundle.items[0].ref, expectedIntentRef)) {
-    failures.push("intent_ref_mismatch");
-  }
-  if (bundle.items[0]?.retrieval_uri !== expectedIntentUri) {
-    failures.push("intent_uri_mismatch");
-  }
-  if (!sameObjectRef(bundle.items[0]?.data_grant_ref, expectedGrantRef)) {
-    failures.push("intent_grant_mismatch");
-  }
-  if (canonicalText(bundle.not_claiming) !== canonicalText(["authority_transfer"])) {
-    failures.push("authority_transfer_nonclaim_missing");
-  }
-  return [...new Set(failures)];
 }
 
 function recordProbe(probes, id, passed, evidence) {
@@ -690,7 +623,6 @@ export async function runReplacementDrill() {
 
   const intent = makeIntent(foundation, principal);
   const intentRef = objectRefFor(intent, schemaFor(foundation, intent));
-  const intentUri = service.objectUri(intentRef);
 
   const writeGrantA = makeGrant(foundation, service, principal, {
     grantNumber: 120,
@@ -738,12 +670,18 @@ export async function runReplacementDrill() {
     }
   );
 
+  const projectionA = makeProjection(foundation, serviceSigner, {
+    projectionNumber: 125,
+    recipient: runtimeA.keyId,
+    intent
+  });
+  const projectionARef = seeder.seedObject(projectionA);
   const readGrantA = makeGrant(foundation, service, principal, {
     grantNumber: 130,
     recipient: runtimeA.keyId,
-    resources: [{ ref: intentRef }],
+    resources: [{ ref: projectionARef }],
     uses: ["read_local"],
-    purpose: "intent_read",
+    purpose: "projection_read",
     maximumDisclosures: 2
   });
   const readGrantARef = seeder.seedObject(readGrantA, {
@@ -754,8 +692,13 @@ export async function runReplacementDrill() {
     }
   });
   const readA = service.handleEnvelope(makeEnvelope(foundation, {
-    operationName: "intent.get",
-    body: { ref: intentRef, retrieval_uri: intentUri },
+    operationName: "projection.get",
+    body: {
+      ref: projectionARef,
+      retrieval_uri: service.objectUri(projectionARef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
     senderIdentity: identityA,
     senderCapability: runtimeA,
     messageNumber: 131,
@@ -767,17 +710,26 @@ export async function runReplacementDrill() {
   });
   recordProbe(
     probes,
-    "agent_a_reads_exact_principal_intent",
-    readA.ok === true && canonicalText(readA.body) === canonicalText(intent),
+    "agent_a_reads_privacy_bounded_intent_projection",
+    readA.ok === true &&
+      sameObjectRef(readA.body.payload.entries[0].source_ref, intentRef) &&
+      readA.body.redacted_fields.includes("/constraints/total_budget"),
     {
       status: readA.status,
-      intent_hash: readA.body?.intent_hash ?? null
+      source_intent_ref: readA.body?.payload?.entries?.[0]?.source_ref ?? null,
+      disclosed_fields: readA.body?.disclosed_fields ?? null,
+      redacted_fields: readA.body?.redacted_fields ?? null
     }
   );
 
   const wrongGrantByB = service.handleEnvelope(makeEnvelope(foundation, {
-    operationName: "intent.get",
-    body: { ref: intentRef, retrieval_uri: intentUri },
+    operationName: "projection.get",
+    body: {
+      ref: projectionARef,
+      retrieval_uri: service.objectUri(projectionARef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
     senderIdentity: identityB,
     senderCapability: runtimeB,
     messageNumber: 221,
@@ -826,15 +778,18 @@ export async function runReplacementDrill() {
     }
   );
 
+  const projectionB = makeProjection(foundation, serviceSigner, {
+    projectionNumber: 225,
+    recipient: runtimeB.keyId,
+    intent
+  });
+  const projectionBRef = seeder.seedObject(projectionB);
   const readGrantB = makeGrant(foundation, service, principal, {
     grantNumber: 230,
     recipient: runtimeB.keyId,
-    resources: [
-      { resourceKind: "runtime_binding", ref: bindingBRef },
-      { ref: intentRef }
-    ],
+    resources: [{ ref: projectionBRef }],
     uses: ["read_local"],
-    purpose: "intent_read",
+    purpose: "projection_read",
     maximumDisclosures: 1
   });
   const readGrantBRef = seeder.seedObject(readGrantB, {
@@ -844,93 +799,120 @@ export async function runReplacementDrill() {
       remaining_disclosures: 1
     }
   });
-
-  const handoffBundle = makeAuthenticatedHandoffBundle(foundation, {
-    principalCapability: principal,
-    runtimeRef: bindingBRef,
-    runtimeUri: service.objectUri(bindingBRef),
-    grantRef: readGrantBRef,
-    intentRef,
-    intentUri,
-    bundleHash: capabilities.bundle_hash
-  });
-  const validHandoffFailures = handoffFailures(foundation, {
-    bundle: handoffBundle,
-    expectedRuntime: bindingB,
-    expectedGrantRef: readGrantBRef,
-    expectedIntentRef: intentRef,
-    expectedIntentUri: intentUri,
-    keyResolver
-  });
+  const normalResumeInput = {
+    mode: "resume",
+    runtime_binding: {
+      object: bindingB,
+      ref: bindingBRef,
+      retrieval_uri: service.objectUri(bindingBRef)
+    },
+    context_grant: readGrantB,
+    context_grant_ref: readGrantBRef
+  };
+  const agentAMarkers = [
+    identityA.agent_provider_id,
+    runtimeA.keyId,
+    objectRefKey(writeGrantARef),
+    objectRefKey(readGrantARef)
+  ];
+  const normalResumeInputText = JSON.stringify(normalResumeInput);
+  const normalResumeContainsAgentA = agentAMarkers.some((marker) =>
+    normalResumeInputText.includes(marker)
+  );
+  const normalResumeWorker = runAgentBWorker(normalResumeInput);
   recordProbe(
     probes,
-    "principal_authenticates_replacement_context_packet",
-    validHandoffFailures.length === 0,
+    "isolated_agent_b_accepts_only_principal_signed_b_context",
+    normalResumeWorker.ok === true &&
+      normalResumeWorker.output.forbidden_input_paths.length === 0 &&
+      normalResumeContainsAgentA === false &&
+      canonicalText(normalResumeWorker.output.accepted_input_keys) ===
+        canonicalText(Object.keys(normalResumeInput).sort()),
     {
-      bundle_hash: handoffBundle.bundle_hash,
-      issuer_key_id: handoffBundle.issuer_signature.key_id,
-      failures: validHandoffFailures,
-      not_claiming: handoffBundle.not_claiming
+      worker_status: normalResumeWorker.status,
+      accepted_input_keys:
+        normalResumeWorker.output?.accepted_input_keys ?? null,
+      forbidden_input_paths:
+        normalResumeWorker.output?.forbidden_input_paths ?? null,
+      serialized_input_hash: canonicalHash(normalResumeInput),
+      serialized_input_contains_agent_a_marker:
+        normalResumeContainsAgentA,
+      context_grant_signer: readGrantB.principal_signature.key_id,
+      context_grant_ref: readGrantBRef
     }
   );
 
-  const swappedRuntimeDraft = structuredClone(handoffBundle);
-  swappedRuntimeDraft.recipient_runtime_binding.ref = bindingARef;
-  swappedRuntimeDraft.bundle_hash = ZERO_HASH;
-  swappedRuntimeDraft.issuer_signature = signature(principal);
-  const swappedRuntimeBundle = bindAndSign(foundation, swappedRuntimeDraft, principal);
-  const swappedRuntimeFailures = handoffFailures(foundation, {
-    bundle: swappedRuntimeBundle,
-    expectedRuntime: bindingB,
-    expectedGrantRef: readGrantBRef,
-    expectedIntentRef: intentRef,
-    expectedIntentUri: intentUri,
-    keyResolver
-  });
+  const swappedRuntimeInput = structuredClone(normalResumeInput);
+  swappedRuntimeInput.runtime_binding = {
+    object: bindingA,
+    ref: bindingARef,
+    retrieval_uri: service.objectUri(bindingARef)
+  };
+  const swappedRuntimeWorker = runAgentBWorker(swappedRuntimeInput);
   recordProbe(
     probes,
-    "handoff_runtime_swap_is_rejected",
-    swappedRuntimeFailures.includes("recipient_runtime_binding_mismatch"),
-    swappedRuntimeFailures
+    "isolated_agent_b_rejects_runtime_swap",
+    swappedRuntimeWorker.ok === false &&
+      /signing_key_unknown|controller mismatch|identity mismatch/.test(
+        swappedRuntimeWorker.stderr
+      ),
+    {
+      worker_status: swappedRuntimeWorker.status,
+      error: swappedRuntimeWorker.stderr
+    }
   );
 
-  const swappedGrantDraft = structuredClone(handoffBundle);
-  swappedGrantDraft.items[0].data_grant_ref = readGrantARef;
-  swappedGrantDraft.bundle_hash = ZERO_HASH;
-  swappedGrantDraft.issuer_signature = signature(principal);
-  const swappedGrantBundle = bindAndSign(foundation, swappedGrantDraft, principal);
-  const swappedGrantFailures = handoffFailures(foundation, {
-    bundle: swappedGrantBundle,
-    expectedRuntime: bindingB,
-    expectedGrantRef: readGrantBRef,
-    expectedIntentRef: intentRef,
-    expectedIntentUri: intentUri,
-    keyResolver
-  });
+  const swappedGrantInput = structuredClone(normalResumeInput);
+  swappedGrantInput.context_grant = readGrantA;
+  swappedGrantInput.context_grant_ref = readGrantARef;
+  const swappedGrantWorker = runAgentBWorker(swappedGrantInput);
   recordProbe(
     probes,
-    "handoff_grant_swap_is_rejected",
-    swappedGrantFailures.includes("intent_grant_mismatch"),
-    swappedGrantFailures
+    "isolated_agent_b_rejects_agent_a_grant_swap",
+    swappedGrantWorker.ok === false &&
+      /principal\/runtime\/purpose\/use mismatch/.test(
+        swappedGrantWorker.stderr
+      ),
+    {
+      worker_status: swappedGrantWorker.status,
+      error: swappedGrantWorker.stderr
+    }
   );
 
-  const signatureTamper = structuredClone(handoffBundle);
-  signatureTamper.items[0].retrieval_uri =
+  const tamperedGrant = structuredClone(readGrantB);
+  tamperedGrant.resource_scopes[0].retrieval_uri =
     "https://reference.cairn.cards/cairn/0.1/objects/substituted";
-  const signatureTamperFailures = handoffFailures(foundation, {
-    bundle: signatureTamper,
-    expectedRuntime: bindingB,
-    expectedGrantRef: readGrantBRef,
-    expectedIntentRef: intentRef,
-    expectedIntentUri: intentUri,
-    keyResolver
-  });
+  const tamperedGrantInput = structuredClone(normalResumeInput);
+  tamperedGrantInput.context_grant = tamperedGrant;
+  const tamperedGrantWorker = runAgentBWorker(tamperedGrantInput);
+  const nonPrincipalGrantDraft = structuredClone(readGrantB);
+  nonPrincipalGrantDraft.grant_hash = ZERO_HASH;
+  nonPrincipalGrantDraft.principal_signature = signature(runtimeB);
+  const nonPrincipalGrant = bindAndSign(
+    foundation,
+    nonPrincipalGrantDraft,
+    runtimeB
+  );
+  const nonPrincipalGrantInput = structuredClone(normalResumeInput);
+  nonPrincipalGrantInput.context_grant = nonPrincipalGrant;
+  nonPrincipalGrantInput.context_grant_ref = objectRefFor(
+    nonPrincipalGrant,
+    schemaFor(foundation, nonPrincipalGrant)
+  );
+  const nonPrincipalGrantWorker = runAgentBWorker(nonPrincipalGrantInput);
   recordProbe(
     probes,
-    "handoff_byte_tamper_is_rejected",
-    signatureTamperFailures.includes("bundle_object_hash_mismatch") ||
-      signatureTamperFailures.includes("bundle_signature_invalid"),
-    signatureTamperFailures
+    "isolated_agent_b_rejects_tampered_or_nonprincipal_context",
+    tamperedGrantWorker.ok === false &&
+      /signed object invalid/.test(tamperedGrantWorker.stderr) &&
+      nonPrincipalGrantWorker.ok === false &&
+      /controller mismatch/.test(nonPrincipalGrantWorker.stderr),
+    {
+      tampered_worker_status: tamperedGrantWorker.status,
+      tampered_error: tamperedGrantWorker.stderr,
+      nonprincipal_worker_status: nonPrincipalGrantWorker.status,
+      nonprincipal_error: nonPrincipalGrantWorker.stderr
+    }
   );
 
   stores.grantStatesByRef.get(objectRefKey(readGrantARef)).status = "revoked";
@@ -938,8 +920,13 @@ export async function runReplacementDrill() {
   revokedRuntimeARecord.status = "revoked";
   revokedRuntimeARecord.revocation_time = REVOKED_AT;
   const disconnectedA = service.handleEnvelope(makeEnvelope(foundation, {
-    operationName: "intent.get",
-    body: { ref: intentRef, retrieval_uri: intentUri },
+    operationName: "projection.get",
+    body: {
+      ref: projectionARef,
+      retrieval_uri: service.objectUri(projectionARef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
     senderIdentity: identityA,
     senderCapability: runtimeA,
     messageNumber: 141,
@@ -961,13 +948,6 @@ export async function runReplacementDrill() {
     }
   );
 
-  const agentBInputs = Object.freeze([
-    "public_capabilities",
-    "principal_signed_context_packet",
-    "agent_b_runtime_signing_capability_handle",
-    "agent_b_exact_runtime_data_grant_ref",
-    "reference_service_endpoint"
-  ]);
   const forbiddenAgentBInputs = Object.freeze([
     "agent_a_private_key",
     "agent_a_prompt",
@@ -978,69 +958,74 @@ export async function runReplacementDrill() {
     "action_authority"
   ]);
 
-  const resolvedBindingB = service.handleEnvelope(makeEnvelope(foundation, {
-    operationName: "runtime_binding.get",
-    body: {
-      ref: handoffBundle.recipient_runtime_binding.ref,
-      retrieval_uri: handoffBundle.recipient_runtime_binding.retrieval_uri
-    },
-    senderIdentity: identityB,
-    senderCapability: runtimeB,
-    messageNumber: 231,
-    nonce: "byo-replacement-nonce-0231"
-  }), {
-    principalId: PRINCIPAL_ID,
-    actorId: identityB.agent_provider_id
-  });
+  const resolvedBindingB = service.handleEnvelope(
+    normalResumeWorker.output.runtime_request,
+    {
+      principalId: PRINCIPAL_ID,
+      actorId: identityB.agent_provider_id
+    }
+  );
+  const resumedByB = service.handleEnvelope(
+    normalResumeWorker.output.projection_request,
+    {
+      principalId: PRINCIPAL_ID,
+      actorId: identityB.agent_provider_id
+    }
+  );
   recordProbe(
     probes,
-    "agent_b_resolves_its_own_runtime_binding",
+    "agent_b_process_resolves_its_own_runtime_binding",
     resolvedBindingB.ok === true &&
       canonicalText(resolvedBindingB.body) === canonicalText(bindingB),
     {
       status: resolvedBindingB.status,
-      runtime_binding_hash: resolvedBindingB.body?.runtime_binding_hash ?? null
+      runtime_binding_hash:
+        resolvedBindingB.body?.runtime_binding_hash ?? null,
+      worker_mode: normalResumeWorker.output.mode
     }
   );
 
-  const resumedByB = service.handleEnvelope(makeEnvelope(foundation, {
-    operationName: "intent.get",
-    body: {
-      ref: handoffBundle.items[0].ref,
-      retrieval_uri: handoffBundle.items[0].retrieval_uri
-    },
-    senderIdentity: identityB,
-    senderCapability: runtimeB,
-    messageNumber: 232,
-    nonce: "byo-replacement-nonce-0232",
-    authorizationRefs: [handoffBundle.items[0].data_grant_ref]
-  }), {
-    principalId: PRINCIPAL_ID,
-    actorId: identityB.agent_provider_id
-  });
+  const resumedSourceRef =
+    resumedByB.body?.payload?.entries?.[0]?.source_ref ?? null;
+  const projectedBudgetBytes = JSON.stringify(
+    resumedByB.body?.payload ?? null
+  );
   recordProbe(
     probes,
-    "agent_b_recovers_same_principal_held_intent",
+    "agent_b_process_recovers_same_intent_ref_through_bounded_projection",
     resumedByB.ok === true &&
-      canonicalText(resumedByB.body) === canonicalText(intent) &&
-      resumedByB.body.intent_hash === readA.body.intent_hash,
+      sameObjectRef(resumedSourceRef, intentRef) &&
+      resumedByB.body.audience.includes(runtimeB.keyId) &&
+      resumedByB.body.redacted_fields.includes(
+        "/constraints/total_budget"
+      ) &&
+      !projectedBudgetBytes.includes('"amount_minor":1200') &&
+      canonicalText(resumedByB.body.payload.entries[0].value) ===
+        canonicalText(intent.targets),
     {
       status: resumedByB.status,
-      agent_a_intent_hash: readA.body?.intent_hash ?? null,
-      agent_b_intent_hash: resumedByB.body?.intent_hash ?? null,
-      exact_object_match: resumedByB.ok === true &&
-        canonicalText(resumedByB.body) === canonicalText(intent)
+      source_intent_ref: resumedSourceRef,
+      expected_intent_ref: intentRef,
+      disclosed_fields: resumedByB.body?.disclosed_fields ?? null,
+      redacted_fields: resumedByB.body?.redacted_fields ?? null,
+      private_budget_present_in_payload:
+        projectedBudgetBytes.includes('"amount_minor":1200')
     }
   );
 
   const effect = makeEffectDescriptor(foundation, objectIssuer, intentRef);
   const effectRef = seeder.seedObject(effect);
-  const proposalB = makeProposal(foundation, {
-    agentIdentity: identityB,
-    agentCapability: runtimeB,
+  const proposalWorkerInput = {
+    mode: "proposal",
+    projection: resumedByB.body,
     effect,
-    intentRef
-  });
+    intent_ref: intentRef
+  };
+  const proposalWorker = runAgentBWorker(proposalWorkerInput);
+  if (!proposalWorker.ok) {
+    throw new Error(`isolated Agent B proposal failed: ${proposalWorker.stderr}`);
+  }
+  const proposalB = proposalWorker.output.proposal;
   const proposalBRef = objectRefFor(proposalB, schemaFor(foundation, proposalB));
   const prepareGrantB = makeGrant(foundation, service, principal, {
     grantNumber: 240,
@@ -1061,21 +1046,32 @@ export async function runReplacementDrill() {
       remaining_disclosures: 1
     }
   });
-  const preparedByB = service.handleEnvelope(makeEnvelope(foundation, {
-    operationName: "action.prepare",
-    body: proposalB,
-    senderIdentity: identityB,
-    senderCapability: runtimeB,
-    messageNumber: 241,
-    nonce: "byo-replacement-nonce-0241",
-    subjectRefs: [proposalBRef],
-    authorizationRefs: [prepareGrantBRef],
-    idempotencyKey: "byo-agent-b-prepare-idempotency-0001"
-  }), {
-    principalId: PRINCIPAL_ID,
-    actorId: identityB.agent_provider_id,
-    authorityNamespace: `${PRINCIPAL_ID}|action.prepare`
-  });
+  const prepareWorkerInput = {
+    mode: "prepare",
+    proposal: proposalB,
+    prepare_grant: prepareGrantB,
+    prepare_grant_ref: prepareGrantBRef
+  };
+  const prepareWorker = runAgentBWorker(prepareWorkerInput);
+  if (!prepareWorker.ok) {
+    throw new Error(`isolated Agent B prepare failed: ${prepareWorker.stderr}`);
+  }
+  const normalAgentBInputText = JSON.stringify([
+    normalResumeInput,
+    proposalWorkerInput,
+    prepareWorkerInput
+  ]);
+  const normalAgentBInputsContainAgentA = agentAMarkers.some((marker) =>
+    normalAgentBInputText.includes(marker)
+  );
+  const preparedByB = service.handleEnvelope(
+    prepareWorker.output.prepare_request,
+    {
+      principalId: PRINCIPAL_ID,
+      actorId: identityB.agent_provider_id,
+      authorityNamespace: `${PRINCIPAL_ID}|action.prepare`
+    }
+  );
   recordProbe(
     probes,
     "agent_b_resumes_only_to_a_no_effect_draft",
@@ -1083,6 +1079,7 @@ export async function runReplacementDrill() {
       preparedByB.body.action_state === "draft" &&
       preparedByB.body.action_state_transition === false &&
       preparedByB.body.external_effect === false &&
+      normalAgentBInputsContainAgentA === false &&
       canonicalText(preparedByB.body.not_claiming) ===
         canonicalText(["authority_to_act", "external_effect"]),
     {
@@ -1091,7 +1088,18 @@ export async function runReplacementDrill() {
       action_state_transition:
         preparedByB.body?.action_state_transition ?? null,
       external_effect: preparedByB.body?.external_effect ?? null,
-      not_claiming: preparedByB.body?.not_claiming ?? null
+      not_claiming: preparedByB.body?.not_claiming ?? null,
+      proposal_worker_input_keys:
+        proposalWorker.output.accepted_input_keys,
+      prepare_worker_input_keys:
+        prepareWorker.output.accepted_input_keys,
+      all_normal_worker_inputs_hash: canonicalHash([
+        normalResumeInput,
+        proposalWorkerInput,
+        prepareWorkerInput
+      ]),
+      all_normal_worker_inputs_contain_agent_a_marker:
+        normalAgentBInputsContainAgentA
     }
   );
 
@@ -1160,21 +1168,27 @@ export async function runReplacementDrill() {
         provider_id: identityB.agent_provider_id,
         runtime_key_id: runtimeB.keyId,
         public_key_fingerprint: runtimeB.publicFingerprint,
-        input_names: agentBInputs,
+        process_boundary: "separate_node_process_with_serialized_json",
+        resume_input_names:
+          normalResumeWorker.output.accepted_input_keys,
+        proposal_input_names:
+          proposalWorker.output.accepted_input_keys,
+        prepare_input_names:
+          prepareWorker.output.accepted_input_keys,
         explicitly_absent_inputs: forbiddenAgentBInputs,
-        final_status: "read_same_intent_and_prepare_no_effect_draft"
+        final_status:
+          "read_bounded_projection_of_same_intent_and_prepare_no_effect_draft"
       },
       intent_ref: intentRef,
-      context_packet_ref: objectRefFor(
-        handoffBundle,
-        schemaFor(foundation, handoffBundle)
-      )
+      context_grant_ref: readGrantBRef,
+      projection_ref: projectionBRef
     },
     probes,
     boundaries: {
       deterministic_fixture_keys_only: true,
+      agent_b_separate_process_boundary: true,
       private_key_material_exported: false,
-      agent_a_hidden_memory_used_by_agent_b: false,
+      agent_a_marker_present_in_serialized_b_inputs: false,
       authority_transferred: false,
       consequential_operation_available: false,
       external_effect_observed: false
@@ -1184,6 +1198,7 @@ export async function runReplacementDrill() {
       "runtime_conformance",
       "agent_onboarding",
       "grant_issuance",
+      "authenticated_context_transport",
       "continuation_delivery",
       "authenticated_service_observation",
       "transport_binding_conformance",
@@ -1218,8 +1233,8 @@ function humanSummary(report) {
   return [
     `BYO-agent replacement drill: ${report.result}`,
     `${passed}/${total} direct probes passed`,
-    `Agent B recovered intent ${report.scenario.intent_ref.object_hash}`,
-    "Agent B received new runtime-bound grants, not Agent A's key, grant, hidden memory, or authority.",
+    `Agent B recovered a bounded projection of intent ${report.scenario.intent_ref.object_hash}`,
+    "Agent B ran in a separate process with a new runtime-bound grant; injected Agent A material was rejected.",
     "The furthest permitted step was a signed draft with action_state_transition=false and external_effect=false.",
     "This is local candidate evidence, not production conformance or execution."
   ].join("\n");

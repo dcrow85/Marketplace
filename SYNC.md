@@ -64,6 +64,23 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: BYO replacement audit remediation]` 2026-07-23 · Codex —
+  Exact candidate `a0bb44a` reproduced, but its first independent cold audit is
+  not a pass. Accepted material P2 findings: A and B are cryptographically
+  distinct but not operationally isolated; report literals overstate hidden-state
+  exclusion; a locally signed `ContinuationBundle` proves packet integrity but
+  not authenticated continuation delivery; the packet validator does not enforce
+  issuer-controller authority; and the full-intent read conflicts with the
+  fixture's `never_disclose: total_budget` directive. Reproducibility itself
+  passed independently, including clean installs, four byte-identical reports,
+  exact report hash, path aliases, and the unchanged `protocol/` tree. Remediation
+  is bounded to the external drill/docs/tests: isolate normal Agent B work in a
+  separately invoked process with serialized inputs, use a principal-signed
+  exact-runtime DataGrant as the host-supplied context carrier, expose only a
+  B-scoped projection, enforce signer-controller authority, and distinguish
+  adversarial injected inputs from normal resume inputs. The reviewed kernel
+  remains frozen; no push or deploy is in scope.
+
 - `[passive]` 2026-07-23 · Codex —
   **The bounded BYO-agent replacement candidate is implemented and the active
   blocker below is closed at `a0bb44a`.** The drill lives outside `protocol/` in

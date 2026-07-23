@@ -7,9 +7,9 @@ import {
 } from "./protocol_byo_agent_replacement.mjs";
 
 const EXPECTED_REPORT_HASH =
-  "sha-256:fe8458626fde5df0147e042b1f3c8be6953253b12e57df8163a140315e9142c5";
+  "sha-256:8ded6d7f158023a5ba4e76a5d9b4d6515eeb0d81982be09fc5dcc550715f9ece";
 
-test("a separately keyed and granted agent recovers the same principal-held intent", async () => {
+test("an isolated replacement process recovers a bounded projection of the same principal-held intent", async () => {
   const report = await runReplacementDrill();
   assert.equal(report.result, "local_candidate_pass");
   assert.equal(report.report_hash, EXPECTED_REPORT_HASH);
@@ -33,6 +33,24 @@ test("a separately keyed and granted agent recovers the same principal-held inte
     report.scenario.agent_b.public_key_fingerprint
   );
   assert.equal(
+    report.scenario.agent_b.process_boundary,
+    "separate_node_process_with_serialized_json"
+  );
+  assert.deepEqual(report.scenario.agent_b.resume_input_names, [
+    "context_grant",
+    "context_grant_ref",
+    "mode",
+    "runtime_binding"
+  ]);
+  const contextProbe = report.probes.find(
+    ({ id }) =>
+      id === "isolated_agent_b_accepts_only_principal_signed_b_context"
+  );
+  assert.equal(
+    contextProbe.evidence.serialized_input_contains_agent_a_marker,
+    false
+  );
+  assert.equal(
     report.scenario.agent_b.explicitly_absent_inputs.includes("agent_a_private_key"),
     true
   );
@@ -44,6 +62,17 @@ test("a separately keyed and granted agent recovers the same principal-held inte
     report.scenario.agent_b.explicitly_absent_inputs.includes("action_authority"),
     true
   );
+  const projectionProbe = report.probes.find(
+    ({ id }) =>
+      id ===
+      "agent_b_process_recovers_same_intent_ref_through_bounded_projection"
+  );
+  assert.equal(projectionProbe.passed, true);
+  assert.equal(
+    projectionProbe.evidence.private_budget_present_in_payload,
+    false
+  );
+  assert.deepEqual(projectionProbe.evidence.disclosed_fields, ["/targets"]);
 });
 
 test("every named replacement attack fails at the intended boundary", async () => {
@@ -67,9 +96,24 @@ test("every named replacement attack fails at the intended boundary", async () =
     true
   );
 
-  assert.equal(probes.get("handoff_runtime_swap_is_rejected").passed, true);
-  assert.equal(probes.get("handoff_grant_swap_is_rejected").passed, true);
-  assert.equal(probes.get("handoff_byte_tamper_is_rejected").passed, true);
+  assert.equal(
+    probes.get("isolated_agent_b_rejects_runtime_swap").passed,
+    true
+  );
+  assert.equal(
+    probes.get("isolated_agent_b_rejects_agent_a_grant_swap").passed,
+    true
+  );
+  assert.equal(
+    probes.get("isolated_agent_b_rejects_tampered_or_nonprincipal_context")
+      .passed,
+    true
+  );
+  assert.match(
+    probes.get("isolated_agent_b_rejects_tampered_or_nonprincipal_context")
+      .evidence.nonprincipal_error,
+    /controller mismatch/
+  );
   assert.equal(
     probes.get("disconnected_agent_a_cannot_make_new_requests").evidence.failures
       .includes("signing_key_revoked"),
@@ -97,13 +141,18 @@ test("replacement ends at a legible no-authority, no-effect draft", async () => 
   ]);
   assert.deepEqual(report.boundaries, {
     deterministic_fixture_keys_only: true,
+    agent_b_separate_process_boundary: true,
     private_key_material_exported: false,
-    agent_a_hidden_memory_used_by_agent_b: false,
+    agent_a_marker_present_in_serialized_b_inputs: false,
     authority_transferred: false,
     consequential_operation_available: false,
     external_effect_observed: false
   });
   assert.equal(report.not_claiming.includes("runtime_conformance"), true);
+  assert.equal(
+    report.not_claiming.includes("authenticated_context_transport"),
+    true
+  );
   assert.equal(report.not_claiming.includes("continuation_delivery"), true);
   assert.equal(report.not_claiming.includes("independent_verification"), true);
   assert.equal(/BEGIN [A-Z ]*PRIVATE KEY/.test(JSON.stringify(report)), false);
