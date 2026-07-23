@@ -65,28 +65,35 @@ result passing in SQLite does not by itself claim the PostgreSQL mapping passes.
 ### 4.1 One envelope, one serializable transaction
 
 Every signed operation runs in one database transaction at serializable
-isolation. The transaction:
+isolation. The outer wrapper owns the store adapter. That adapter begins the
+transaction and validates any existing rich idempotency row before it invokes
+the frozen transaction callback. The transaction:
 
 1. reads the service clock once;
-2. resolves the exact current runtime, object, ACL, grant, nonce, and idempotency
+2. validates the receiver-private idempotency row, its version/history, and its
+   owner-scope-to-global mapping when the raw lookup finds one;
+3. resolves the exact current runtime, object, ACL, grant, nonce, and idempotency
    state required by the operation;
-3. validates the envelope and operation against that single snapshot;
-4. reserves the nonce;
-5. creates or resolves the exact idempotent result where applicable;
-6. applies object and grant-counter changes;
-7. allocates the next global internal commit sequence and the next owner-scoped
+4. validates the envelope and operation against that single snapshot;
+5. reserves the nonce;
+6. creates or resolves the exact idempotent result where applicable;
+7. applies object and grant-counter changes;
+8. allocates the next global internal commit sequence and the next owner-scoped
    sequence;
-8. materializes versioned operational rows and computes the exact non-recursive
+9. materializes versioned operational rows and computes the exact non-recursive
    owner-scoped state commitment;
-9. constructs and signs the service observation from those staged facts;
-10. persists the result, observation, version rows, and append-only commit
+10. constructs and signs the service observation from those staged facts;
+11. persists the result, observation, version rows, and append-only commit
     record; and
-11. commits all changes together or rolls all of them back.
+12. commits all changes together or rolls all of them back.
 
 The adapter preserves the frozen callback's accepted-envelope semantics:
 
+- rich-row self/history/owner mismatch discovered by the adapter preflight:
+  do not invoke the frozen callback, roll back completely, and return a
+  wrapper-origin failure with `kernel:null`;
 - pre-admission rejection or callback `commit:false`: complete rollback and a
-  non-observed failure result;
+  non-observed failure carrying the exact callback result;
 - callback `commit:true` with a 2xx result: commit the full success state and a
   success observation;
 - callback `commit:true` with a non-2xx result: commit exactly the newly accepted
@@ -95,7 +102,14 @@ The adapter preserves the frozen callback's accepted-envelope semantics:
   grant decrement, runtime binding, DataGrant, effect descriptor, or validation
   key; and
 - signer, observation, persistence, or database commit-call failure: complete
-  rollback because no verifiable commit artifact can be completed.
+  rollback because no verifiable commit artifact can be completed; if the
+  callback already returned, preserve that exact result in `kernel` and report
+  the infrastructure problem separately in `wrapper_failure`.
+
+The wrapper never rewrites, relabels, or replaces a frozen callback result.
+A rich-row mismatch is distinguished from a legitimate new request whose
+fingerprint differs: a coherent stored row plus a changed request reaches the
+frozen callback and remains its exact `idempotency_conflict`.
 
 Grant-consumption failure remains callback `commit:false` and rolls back.
 Corrupt replay-result and post-admission read-result failures preserve the
@@ -136,8 +150,18 @@ the same structural key and operation fingerprint.
   grant again, and create a new replay observation for this envelope and commit;
 - same key + different fingerprint: return `idempotency_conflict` and commit
   nothing; and
-- corrupt, missing, wrong-operation, wrong-owner, or wrong-result replay state:
-  fail closed as service unavailable and do not perform new work.
+- internally corrupt, missing-history, wrong-operation, or wrong-owner rich row:
+  wrapper preflight fails before the frozen callback, commits nothing, and
+  returns `idempotency_integrity_invalid`; and
+- a coherent row whose referenced result object or ACL is missing/corrupt:
+  the frozen callback has already admitted the fresh nonce and returns
+  `commit:true`/`idempotency_result_unavailable`; commit only that nonce,
+  history, and one private `accepted_failure` observation.
+
+The wrapper compares a stored fingerprint with the original observation/history
+to establish row integrity. It does not compare that fingerprint with the new
+request during rich-row preflight; the unchanged frozen callback owns that
+request-conflict decision.
 
 ### 4.4 Commit ordering
 
@@ -191,13 +215,16 @@ The committed row bytes use these closed owner-visible column projections:
 | `validation_keys` | key ID, controller, type, public key, status, validity, revocation time, profile revision |
 | `grant_state` | grant ref, status, revocation nonce, remaining disclosures, state version, owner scope sequence |
 | `used_nonces` | nonce, envelope hash, operation, owner, owner scope sequence |
-| `idempotency_records` | structural-key hash, operation/fingerprint, principal, actor, runtime key, result ref/hash, origin and creation global/scope sequences |
+| `idempotency_records` | opaque structural-key commitment, operation/fingerprint, principal, actor, runtime key, result ref/hash, origin and creation owner-scope sequences |
 
 Global sequences, global roots, observation/commit refs, signatures, raw
 authentication evidence, raw authority namespace, and raw idempotency key never
-enter these row bytes. Idempotency origin/creation global sequences are
-operator-side integrity inputs inside the private row/root; they are never
-serialized in an observation or returned to a caller.
+enter these row bytes. Idempotency origin/creation global sequences remain only
+in the operator-private durable row and are cross-checked through
+`scope_commits(owner, scope_sequence) -> global_commit_sequence`; they are
+excluded from every owner-visible projection and root. Consequently, inserting
+any number of unrelated tenants' commits cannot change an otherwise identical
+owner projection/root input.
 
 The machine schema at
 `simulations/authoritative-service/authoritative-service.schema.json#/$defs/operationalRowProjection`
@@ -259,12 +286,30 @@ The base-row key functions are closed:
 | `validation_keys` | `JCS([key_id])` |
 | `grant_state` | `JCS([grant_ref_key])` |
 | `used_nonces` | `JCS([nonce])` |
-| `idempotency_records` | `JCS([authority_namespace, idempotency_key])` |
+| `idempotency_records` database lookup | `JCS([authority_namespace, idempotency_key])` |
+| `idempotency_records` committed/versioned projection | `JCS([structural_key_commitment])` |
 
 The raw authority namespace therefore participates in the receiver-private
-database key but is represented in committed owner-visible columns only by
-`SHA-256(structural_key)`. No derived hash is accepted as a substitute input to
-the frozen validator.
+database key. Its owner-visible opaque key is exactly:
+
+```text
+structural_key_commitment =
+  HMAC-SHA-256(
+    store_projection_secret,
+    UTF8(JCS([
+      "cairn-idempotency-row-key-v0.1",
+      store_id,
+      database_lookup_key
+    ]))
+  )
+```
+
+The sealed store owns a random 256-bit `store_projection_secret`; only its
+commitment is in genesis. Neither the projection's top-level
+`structural_key` nor its columns, dependency entry, canonical bytes, or history
+contains the raw namespace/idempotency key, and a caller cannot test guessed
+raw tuples without that secret. No commitment is accepted as a substitute input
+to the frozen validator.
 
 ### 5.1 `service_meta`
 
@@ -277,6 +322,7 @@ bundle_hash                  exact active bundle hash
 commit_sequence              nonnegative integer
 genesis_manifest_hash        exact sealed bootstrap manifest
 genesis_state_root           exact sequence-zero operational root
+private_projection_key_commitment
 created_at                   service time
 ```
 
@@ -289,7 +335,8 @@ The trusted local bootstrap is one atomic sequence-zero import, not an ordinary
 service operation. A closed `GenesisManifest` commits the runtime bindings,
 DataGrants and initial counters, effect descriptors, scoped projections, service
 key profile, complete validation-key resolver manifest/history,
-store/profile/bundle, and canonical object/ACL bindings needed by the drill.
+store/profile/bundle, the private projection-key commitment, and canonical
+object/ACL bindings needed by the drill.
 
 The store cannot serve requests until genesis is sealed. Exact duplicate import
 returns the existing genesis result. A different manifest, partial import,
@@ -315,6 +362,7 @@ The genesis root preimage is:
   bundle_hash,
   service_key_profile_hash,
   validation_key_manifest_hash,
+  private_projection_key_commitment,
   sorted([table_name, structural_key, canonical_row_hash])
 ]
 ```
@@ -456,13 +504,17 @@ created_scope_sequence
 
 `operation_name` is exactly `intent.put | action.prepare`; no read or
 consequential name is admitted to this table.
-`structural_key_hash` is exactly `SHA-256(UTF8(structural_key))`.
+`structural_key_commitment` is exactly the store-keyed HMAC defined at the start
+of §5; the committed projection's top-level structural key is
+`JCS([structural_key_commitment])`, not the receiver-private lookup key.
 `kernel_result_hash` is exactly the canonical frozen local result hash defined
 in §7. The full
-operation, owner/runtime, result, hash, and origin/creation sequence projection
-is versioned and dependency-bound whenever the wrapper decides whether a replay
-is safe. Only `authority_namespace` and `idempotency_key` remain receiver-private
-raw columns.
+operation, owner/runtime, result, hash, and origin/creation owner-scope sequence
+projection is versioned and dependency-bound whenever the wrapper decides
+whether a replay is safe. The global sequences, `authority_namespace`, and
+`idempotency_key` remain receiver/operator-private raw columns. The wrapper
+validates the two global columns against the private `scope_commits` mapping
+before invoking the frozen callback, but none enters an owner root.
 
 The row is insert-only. A replay may read it but never rewrite its fingerprint,
 operation, owner, result, response, or origin sequence.
@@ -546,6 +598,20 @@ The frozen in-memory names map to authoritative rows exactly:
 | `usedNonces` | `used_nonces` | `nonce` |
 | `keyResolver.get` | `validation_keys` | `key_id` |
 
+The alias-to-table relation and attempted-key shape are also closed:
+
+| table | admitted alias | exact attempted-key tuple |
+|---|---|---|
+| `objects` | `primary_ref`, `uri_by_ref`, `access_by_ref` | `[schema, object_id, object_hash]` |
+| `objects` | `identity_key` | `[schema, object_id]`; ActiveIntent alone uses `[schema, object_id, revision]` |
+| `runtime_bindings` | `runtime_key_id` | `[runtime_key_id]` |
+| `data_grants` | `grant_ref` | `[schema, object_id, object_hash]` |
+| `effect_descriptors` | `effect_ref` | `[schema, object_id, object_hash]` |
+| `validation_keys` | `key_id` | `[key_id]` |
+| `grant_state` | `grant_state_ref` | `[schema, object_id, object_hash]` |
+| `used_nonces` | `nonce` | `[nonce]` |
+| `idempotency_records` | `authority_idempotency` | `[structural_key_commitment]` |
+
 No other map, index, cache, resolver, or direct SQL read may influence
 validation, result construction, or verification. Every access passes one
 instrumentation method before it returns data. The closed `access_kind` enum is:
@@ -578,10 +644,18 @@ SHA-256(JCS([
 For an alias lookup, `index_name` and the attempted alias key are included in a
 second dependency entry whose structural key is
 `JCS(["index", index_name, canonical_attempted_key])`; a present alias also
-records the resolved base row. This prevents a missing identity, URI, runtime,
+records the resolved non-alias base row. An authoritative alias-resolution
+record maps the alias `entry_key` to that base `entry_key`; both entries must
+appear in the same manifest, have the same table and base-row hash, and the
+base structural key must be independently derived from its closed row
+projection. Alias entries are read-only. Base writes use only the base key.
+This prevents a missing identity, URI, runtime,
 grant, idempotency tuple, nonce, or key from being silently borrowed from
 another snapshot. Any uninstrumented read/write, unknown alias, unknown
 `access_kind`, or dependency-table omission is a hard transaction failure.
+For `authority_idempotency` only, `canonical_attempted_key` is
+`JCS([structural_key_commitment])`; the raw lookup tuple never enters the
+dependency manifest.
 Each entry also carries
 `entry_key = JCS([table_name, structural_key])`. One transaction may contain
 only one coalesced entry per `entry_key`; duplicates are schema-invalid. The
@@ -623,7 +697,7 @@ Phase A freezes one machine-readable external contract:
 path:
   simulations/authoritative-service/authoritative-service.schema.json
 canonical JCS hash:
-  sha-256:225a6e85866b98937b91f77a265c7a8a7aa3c6d38022ea043a3b0720f47297fd
+  sha-256:5539a4e85be08847a669df6b3b68015ec7af26025d49b6d2c41563b1ba191436
 ```
 
 Its nine independently addressable entry points are:
@@ -657,18 +731,21 @@ kernel/observation cross-field equality. It pins the fixture public key and the
 profile, key-manifest, host-context, dependency, genesis-manifest/genesis-state,
 success-observation, and accepted-failure observation hashes/signatures.
 Independent negatives cover
-unknown fields, noncanonical/duplicate/missing-current keys, nonzero owner
-genesis, duplicated/reordered/wrong-absent/wrong-present dependencies,
-consequential operations, every rich idempotency integrity-field hash,
-outcome swaps, and kernel-result mismatch. The prose examples below are
-explanatory only; if they differ, the frozen machine schema wins.
+unknown fields, noncanonical/duplicate/missing-current and arbitrary-fraction
+key lifecycles, nonzero owner genesis, cross-table/malformed/duplicated/
+reordered/wrong-absent/wrong-present dependencies plus a positive present
+alias, consequential operations, every rich idempotency integrity field against
+authoritative truth, raw-key/global-sequence privacy, wrapper/frozen-result
+separation, actual frozen replay paths, outcome swaps, and kernel-result
+mismatch. The prose examples below are explanatory only; if they differ, the
+frozen machine schema wins.
 
 Exact RFC 8785/JCS text and SHA-256 results for a committed row, absent lookup,
-receiver authority namespace, query commitment with real registry URIs, first
+receiver authority-namespace HMAC preimage, query commitment with real registry URIs, first
 owner-scoped root, and accepted-failure kernel result are
 frozen in
 `simulations/authoritative-service/canonical-vectors.json` at canonical hash
-`sha-256:18fb8a5b2fd2a05f1b95dd2f0de4c1fb1be46295ab49f2162c2dc3440152d4e0`.
+`sha-256:a272c1e9caf3bdaa3c814a012ed7adc3a091d00c6dbc08e16585f731d9938b6c`.
 The checker recomputes every vector and validates all entrypoint fixtures
 through both their named definitions and the bundle's top-level union.
 
@@ -711,6 +788,12 @@ The profile key array has unique IDs and strict UTF-8 key-ID order.
 controlled by the exact service ID, and current within its required finite
 `not_before`/`expires_at` interval. Schema validation rejects null expiry and
 noncanonical Ed25519 encodings before lifecycle verification.
+Lifecycle comparison preserves arbitrary fractional precision: compare the
+fixed UTC whole-second prefixes, remove trailing zeroes from the fractional
+parts, right-pad the remaining fractions to equal width, then compare. Thus
+`...00Z`, `...00.0Z`, and `...00.000Z` are the same instant. Every key requires
+`not_before < expires_at`; currentness is exactly
+`not_before <= observed_at < expires_at`.
 
 This proves locally configured service-key control, not authenticated service
 discovery, production identity, DNS control, or transport identity.
@@ -738,19 +821,24 @@ assertion_level = host_asserted
 The namespace commitment is exactly:
 
 ```text
-SHA-256(JCS([
-  "cairn-authority-namespace-v0.1",
-  account_tenant_commitment,
-  authority_namespace_raw
-]))
+HMAC-SHA-256(
+  receiver_binding_secret,
+  UTF8(JCS([
+    "cairn-authority-namespace-v0.1",
+    account_tenant_commitment,
+    authority_namespace_raw
+  ]))
+)
 ```
 
 The callback MUST return one stable, operation-independent raw namespace for an
-authenticated account/tenant. The adapter recomputes the commitment and looks up
-the receiver-private account/namespace binding before every mutation. The raw
-value is routed only to the frozen `authentication.authorityNamespace` field and
-the structural idempotency-key derivation; it is never serialized into the
-observation or local result.
+authenticated account/tenant. The receiver owns a random 256-bit binding secret;
+the adapter recomputes the commitment and looks up the receiver-private
+account/namespace binding before every mutation. The secret and raw value never
+enter a caller artifact, so the commitment is not a public offline dictionary
+oracle for guessable tenant names. The raw value is routed only to the frozen
+`authentication.authorityNamespace` field and the database idempotency-key
+derivation; it is never serialized into the observation or local result.
 
 The record is created by the receiver, not accepted from an envelope, header,
 query, or caller-selected authentication object. The observation binds the
@@ -847,7 +935,7 @@ result:
       remaining_before: 2
       remaining_after: 1
   idempotency:
-    structural_key_hash: sha-256:<hash or null>
+    structural_key_commitment: sha-256:<opaque HMAC or null>
     disposition: not_applicable | created | replayed
     original_result_hash: sha-256:<hash or null>
     original_observation_ref: <external observation ref or null>
@@ -1009,6 +1097,7 @@ success:
     status: 200
     body: <byte-identical frozen-kernel response body>
     replayed: false
+  wrapper_failure: null
   service_observation: <signed success observation>
 
 accepted_failure:
@@ -1019,18 +1108,27 @@ accepted_failure:
     status: <non-2xx>
     code: <stable frozen failure code>
     failures: []
+  wrapper_failure: null
   service_observation: <signed accepted_failure observation>
 
 rolled_back_failure:
   schema: cairn.local_observed_result.v0.1
   disposition: rolled_back_failure
-  kernel:
-    ok: false
+  kernel: <exact frozen result if callback ran, otherwise null>
+  wrapper_failure: <following closed object or null>
+  # when non-null:
     status: <non-2xx>
-    code: <stable wrapper/frozen failure code>
+    code: <stable wrapper/infrastructure failure code>
     failures: []
+    stage: preflight | observation | persistence | commit | retry
   service_observation: null
 ```
+
+For `rolled_back_failure`, at least one of `kernel` and `wrapper_failure` is
+non-null. A normal callback `commit:false` has the exact failure in `kernel` and
+`wrapper_failure:null`; a preflight veto has `kernel:null`; and infrastructure
+failure after a callback preserves both the unchanged callback result and a
+separate wrapper failure.
 
 For either committed branch:
 
@@ -1038,11 +1136,12 @@ For either committed branch:
 kernel_result_hash = SHA-256(UTF8(JCS(kernel)))
 ```
 
-Here `kernel` is the exact local frozen result object:
+Whenever non-null, `kernel` is the exact local frozen result object:
 `{ok:true,status,body,replayed}` or
 `{ok:false,status,code,failures}`. It is not the HTTP adapter's separate
 `{error,failures}` transport body and never hashes headers, framing, or an
-invented wrapper body. A rolled-back result has no observation/hash.
+invented wrapper body. `wrapper_failure` is never substituted for it. A
+rolled-back result has no observation/hash.
 
 This wrapper is not a protocol object, operation body, or HTTP media profile. The
 inner kernel body remains byte/schema-identical. Observations are stored only in
@@ -1085,9 +1184,9 @@ AS-19 uses an operator/test-only repository method
 `loadObservationForAudit(ref, authenticatedOwnerContext)`. It is not exposed by
 the raw/wrapped service, HTTP, or protocol operation surface.
 
-Pre-transaction authentication/operation rejection, bounded retry exhaustion,
-and transaction/signer/persistence rollback use `rolled_back_failure`. A
-post-admission callback result with `commit:true` uses
+Pre-transaction authentication/operation rejection, rich-row preflight veto,
+bounded retry exhaustion, and transaction/signer/persistence rollback use
+`rolled_back_failure`. A post-admission callback result with `commit:true` uses
 `committed_accepted_failure`. The external schema fixes which fields exist in
 each branch and rejects a missing/unexpected observation.
 
@@ -1101,6 +1200,7 @@ matrix, and the local-result schema admits only the named branch:
 | stage/result | authoritative delta | local disposition | observation |
 |---|---|---|---|
 | receiver authentication, owner derivation, operation lookup, or context rejection before transaction | none | `rolled_back_failure` | null |
+| receiver-private rich-idempotency preflight fails before frozen callback | none; callback not invoked | `rolled_back_failure` with `kernel:null` and wrapper failure | null |
 | callback `commit:false`, including admission, access preflight, prepared-result binding, or grant consumption rejection | none | `rolled_back_failure` | null |
 | callback `commit:true`, 2xx | exact callback success effects plus nonce/history/commit | `committed_success` | signed `success` |
 | callback `commit:true`, non-2xx | exactly the nonce/history/commit effects enumerated in §4.1 | `committed_accepted_failure` | signed `accepted_failure` |
@@ -1109,11 +1209,14 @@ matrix, and the local-result schema admits only the named branch:
 | process loss after durable commit but before local return | committed row remains; delivery unknown | recovery exposes the already committed branch to the owner-only audit seam | already stored |
 
 `operation_unknown` and authentication mismatch occur before the database
-transaction. Corrupt/missing/wrong-owner replay state is different: the
-envelope has already passed admission and reserved its fresh nonce, so the
-frozen callback returns `commit:true`/`idempotency_result_unavailable`; the
-wrapper must commit the exact `accepted_failure` row described above. No adapter
-may rewrite the callback's `commit` flag based only on HTTP status.
+transaction. Internally corrupt rich replay rows fail adapter preflight before
+the frozen callback. By contrast, a coherent rich row whose referenced result
+object or ACL is unavailable reaches the frozen callback after admission and
+returns `commit:true`/`idempotency_result_unavailable`; the wrapper commits the
+exact `accepted_failure` row described above. A valid rich row plus a different
+new-request fingerprint also reaches the callback and remains its exact
+`commit:false`/`idempotency_conflict`. No adapter may rewrite the callback's
+result or `commit` flag based only on HTTP status.
 
 - Foreign private objects remain indistinguishable from absent objects.
 - Detailed store, constraint, or signature failures are not returned to an
@@ -1155,7 +1258,7 @@ The first executable drill MUST include at least these independent controls:
 | AS-12 | re-signed service/profile/bundle/store/key/controller/time mutation | trust-profile verifier rejects |
 | AS-13 | re-signed scope sequence/root lacks exact history/commit rows | historical-root verifier rejects |
 | AS-14 | re-signed grant before/after arithmetic mutation | grant/history verifier rejects |
-| AS-15 | any committed idempotency integrity field points to wrong operation/fingerprint/owner/runtime/result/hash/origin after valid admission | full wrapper-integrity row hash/root changes; exactly one fresh nonce/sequence/private `accepted_failure` observation; no object, idempotency, grant, or result mutation |
+| AS-15 | a coherent rich idempotency row passes preflight but its referenced result object or ACL is missing/corrupt after valid admission | unchanged frozen callback returns `commit:true`/`idempotency_result_unavailable`; exactly one fresh nonce/sequence/private `accepted_failure` observation; no object, idempotency, grant, or result mutation |
 | AS-16 | process dies before database commit | no partial nonce/grant/object/observation state |
 | AS-17 | process dies after commit but before response | committed state remains; delivery remains unknown |
 | AS-18 | opaque cursor or pagination claim appears | schema/verifier rejects for this profile |
@@ -1166,12 +1269,12 @@ The first executable drill MUST include at least these independent controls:
 | AS-23 | caller/header substitutes authority namespace or host-auth context | wrapper rejects; no idempotency/state change |
 | AS-24 | nested/reused/mismatched process context | adapter rejects before transaction |
 | AS-25 | durable idempotency metadata enters frozen two-field validator view | closed validator projection test rejects extra fields |
-| AS-26 | validator replay/write attempts to erase or mutate any full wrapper-integrity idempotency field | immutable durable row and its version/root remain exact while the kernel still sees only two fields |
+| AS-26 | validator replay/write attempts to erase or mutate any full wrapper-integrity idempotency field | immutable durable row and its version/root remain exact while the kernel still sees only two fields; every owner-visible field is independently compared with authoritative request/auth/result/history truth |
 | AS-27 | duplicate, partial, forked, restarted, or concurrent genesis import | one sealed exact genesis or complete rollback |
 | AS-28 | state-root row omitted/reordered/duplicated/history-altered | recomputed historical root rejects |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
 | AS-30 | corrupt replay object, response schema, grant consumption, observation persistence, or commit call | each case matches §8.1 exactly: accepted failures retain only the enumerated nonce/history/observation delta; callback `commit:false` and wrapper/commit failures retain zero delta |
-| AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key or altered/unsorted key-profile chain | schema/profile/observation trust verification rejects |
+| AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval, arbitrary fractional boundary error, or altered/unsorted key-profile chain | independently re-bound schema/profile/observation trust probes reject while exact lower-bound and pre-expiry fractional positives pass |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
 | AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
 | AS-34 | signed access and repository columns agree but owner was derived from actor instead of non-null principal, or principal instead of actor for a permitted principal-less read | independent owner derivation rejects with `observation_owner_mismatch` |
@@ -1179,8 +1282,10 @@ The first executable drill MUST include at least these independent controls:
 | AS-36 | two previously unseen owners perform their first operations concurrently after genesis | both use before `0`/after `1` in separate owner chains; no owner sequence-zero row or cross-owner ancestry appears |
 | AS-37 | every row of the closed outcome/commit matrix is fault-injected, including local-kernel versus HTTP-failure hashing | disposition, exact canonical kernel-result hash, observation presence, nonce, sequence, object, idempotency, and grant deltas match §7/§8.1 exactly |
 | AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, changed row column, wrong self-hash/signature exclusion, outcome swap, kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
-| AS-39 | dependency alias is omitted, absent lookup becomes present during a race, entry is duplicated/reordered/uncoalesced, absent sentinel/present hash is wrong, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; no borrowed negative read passes |
+| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, absent lookup becomes present during a race, present alias lacks its exact base row, entry is duplicated/reordered/uncoalesced, attempted-key shape/absent sentinel/present hash is wrong, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; the normative present-alias fixture passes and no borrowed negative read passes |
 | AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
+| AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict executes the actual frozen `commit:false` path with no nonce; result/ACL corruption executes the actual frozen accepted-failure path with a fresh nonce; no raw result is rewritten |
+| AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; owner projection/root bytes contain no raw tuple or global counter and stay identical; operator-private scope-to-global reconstruction still detects a false mapping |
 
 Every accepted audit finding receives either a code/schema/test remediation or a
 documented rejection/deferral. No finding may be closed only by prose if a direct
@@ -1206,7 +1311,9 @@ The executable drill pins:
 
 AS-11 through AS-14 and AS-21/28/31/32/34/38/40 use independently re-hashed and
 fixture-service-key-signed mutants so generic signature failure cannot satisfy
-the intended semantic control. Each asserts its named stable failure code.
+the intended semantic control. AS-31/41/42 independently re-bind every mutated
+profile/row/manifest and use the actual frozen replay paths where applicable.
+Each asserts its named stable failure code.
 
 The machine report is
 `cairn.authoritative_service_drill_report.v0.1`, uses only deterministic values,
@@ -1237,7 +1344,7 @@ Outside `protocol/`:
    observation construction, repository ACL, and historical verifier;
 7. run separately invoked workers against one database file with deterministic
    race barriers and crash hooks; and
-8. implement AS-01 through AS-40.
+8. implement AS-01 through AS-42.
 
 The adapter MAY subclass the current memory store only to satisfy the frozen
 composition boundary. Its transaction semantics MUST come from the database,

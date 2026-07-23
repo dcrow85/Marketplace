@@ -549,7 +549,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "structural_key_hash",
+        "structural_key_commitment",
         "operation_name",
         "operation_fingerprint",
         "principal_id",
@@ -557,13 +557,11 @@
         "runtime_key_id",
         "result_ref",
         "kernel_result_hash",
-        "origin_global_commit_sequence",
         "origin_scope_sequence",
-        "created_global_commit_sequence",
         "created_scope_sequence"
       ],
       "properties": {
-        "structural_key_hash": { "$ref": "#/$defs/sha256" },
+        "structural_key_commitment": { "$ref": "#/$defs/sha256" },
         "operation_name": { "$ref": "#/$defs/idempotentMutationOperation" },
         "operation_fingerprint": { "$ref": "#/$defs/sha256" },
         "principal_id": { "$ref": "#/$defs/identifier" },
@@ -576,17 +574,7 @@
         },
         "result_ref": { "$ref": "#/$defs/objectRef" },
         "kernel_result_hash": { "$ref": "#/$defs/sha256" },
-        "origin_global_commit_sequence": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 9007199254740991
-        },
         "origin_scope_sequence": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 9007199254740991
-        },
-        "created_global_commit_sequence": {
           "type": "integer",
           "minimum": 1,
           "maximum": 9007199254740991
@@ -770,6 +758,7 @@
         "store_id",
         "kernel_profile",
         "bundle_hash",
+        "private_projection_key_commitment",
         "service_key_profile_ref",
         "validation_key_manifest_ref",
         "initial_rows"
@@ -781,6 +770,7 @@
         "store_id": { "$ref": "#/$defs/uuidUrn" },
         "kernel_profile": { "const": "cairn-proposal-foundation-v0.1" },
         "bundle_hash": { "$ref": "#/$defs/sha256" },
+        "private_projection_key_commitment": { "$ref": "#/$defs/sha256" },
         "service_key_profile_ref": { "$ref": "#/$defs/externalArtifactRef" },
         "validation_key_manifest_ref": { "$ref": "#/$defs/externalArtifactRef" },
         "initial_rows": {
@@ -1126,14 +1116,14 @@
               "type": "object",
               "additionalProperties": false,
               "required": [
-                "structural_key_hash",
+                "structural_key_commitment",
                 "disposition",
                 "original_result_hash",
                 "original_observation_ref",
                 "original_scope_sequence"
               ],
               "properties": {
-                "structural_key_hash": { "$ref": "#/$defs/nullableSha256" },
+                "structural_key_commitment": { "$ref": "#/$defs/nullableSha256" },
                 "disposition": {
                   "enum": ["not_applicable", "created", "replayed"]
                 },
@@ -1256,6 +1246,39 @@
         }
       }
     },
+    "wrapperFailure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "code", "failures", "stage"],
+      "properties": {
+        "status": {
+          "type": "integer",
+          "minimum": 300,
+          "maximum": 599
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{1,95}$"
+        },
+        "failures": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,95}$"
+          }
+        },
+        "stage": {
+          "enum": [
+            "preflight",
+            "observation",
+            "persistence",
+            "commit",
+            "retry"
+          ]
+        }
+      }
+    },
     "localObservedResult": {
       "oneOf": [
         {
@@ -1265,12 +1288,14 @@
             "schema",
             "disposition",
             "kernel",
+            "wrapper_failure",
             "service_observation"
           ],
           "properties": {
             "schema": { "const": "cairn.local_observed_result.v0.1" },
             "disposition": { "const": "committed_success" },
             "kernel": { "$ref": "#/$defs/kernelSuccess" },
+            "wrapper_failure": { "type": "null" },
             "service_observation": {
               "allOf": [
                 { "$ref": "#/$defs/serviceObservation" },
@@ -1298,12 +1323,14 @@
             "schema",
             "disposition",
             "kernel",
+            "wrapper_failure",
             "service_observation"
           ],
           "properties": {
             "schema": { "const": "cairn.local_observed_result.v0.1" },
             "disposition": { "const": "committed_accepted_failure" },
             "kernel": { "$ref": "#/$defs/kernelFailure" },
+            "wrapper_failure": { "type": "null" },
             "service_observation": {
               "allOf": [
                 { "$ref": "#/$defs/serviceObservation" },
@@ -1331,13 +1358,33 @@
             "schema",
             "disposition",
             "kernel",
+            "wrapper_failure",
             "service_observation"
           ],
           "properties": {
             "schema": { "const": "cairn.local_observed_result.v0.1" },
             "disposition": { "const": "rolled_back_failure" },
-            "kernel": { "$ref": "#/$defs/kernelFailure" },
+            "kernel": {
+              "oneOf": [
+                { "$ref": "#/$defs/kernelSuccess" },
+                { "$ref": "#/$defs/kernelFailure" },
+                { "type": "null" }
+              ]
+            },
+            "wrapper_failure": {
+              "oneOf": [
+                { "$ref": "#/$defs/wrapperFailure" },
+                { "type": "null" }
+              ]
+            },
             "service_observation": { "type": "null" }
+          },
+          "not": {
+            "properties": {
+              "kernel": { "type": "null" },
+              "wrapper_failure": { "type": "null" }
+            },
+            "required": ["kernel", "wrapper_failure"]
           }
         }
       ]

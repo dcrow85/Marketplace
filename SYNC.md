@@ -64,6 +64,22 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service fourth audit remediation]` 2026-07-23 · Codex —
+  Exact candidate `54b1a72` is not a pass. Three clean-archive auditors found
+  no protocol drift but accepted an impossible all-fields accepted-failure
+  replay rule, owner-root leakage of enumerable global commit positions, raw
+  idempotency/namespace dictionary oracles, fractional timestamp comparison
+  errors, cross-table/base-key dependency normalization gaps, and incomplete
+  semantic controls for rich idempotency fields. Remediation splits wrapper
+  preflight from unchanged frozen callback outcomes, preserves raw results in a
+  separate closed wrapper union, removes global counters/raw tuples from owner
+  projections, uses receiver/store-keyed HMAC commitments, performs
+  arbitrary-precision UTC lifecycle checks, machine-pins exact table aliases
+  and present-base resolution, and adds direct AS-41/42 plus actual frozen
+  replay-path controls. A new frozen candidate must repeat independent blind
+  audit before reference-service implementation; `protocol/` remains untouched
+  and no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service third audit remediation]` 2026-07-23 · Codex —
   Exact candidate `3394747` is not a pass. Three clean-archive auditors found
   no protocol drift but accepted two P1s and material P2s: the observation
