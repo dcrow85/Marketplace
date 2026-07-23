@@ -64,6 +64,22 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service audit remediation]` 2026-07-23 · Codex —
+  Exact design candidate `b86ceae` is not a pass. Three cold auditors found no
+  kernel drift but accepted blocking findings: replay reused an observation that
+  could not bind its fresh nonce/commit; the state root recursively included its
+  own observation and lacked reconstructible history; public observations leaked
+  request/global metadata while ACL was unsigned; generic object identity,
+  database retry/durability, genesis import, rich-to-frozen idempotency projection,
+  wrapper/context/host-auth seams, service-key history, failure rollback,
+  sidecar routing, exact nonclaims, and deterministic race/crash controls were
+  underspecified. The revised spec gives each finding a direct design and
+  AS-series control: fresh replay observations, a non-circular instrumented
+  transaction-scope root with append-only versions/commits, private signed ACLs,
+  fixed key/auth profiles, sealed genesis, exact DB behavior, closed local
+  wrapper, and AS-01..AS-32. No implementation begins until a new frozen design
+  passes repeat independent audit; `protocol/` remains untouched.
+
 - `[BLOCKING: authoritative store + signed observation design]` 2026-07-23 · Codex —
   The independently audited BYO checkpoint permits the next threshold. This lane
   now owns a new external change spec for authoritative atomic nonce,
