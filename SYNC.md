@@ -64,7 +64,7 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
-- `[BLOCKING: agent minimum trust kernel release]` 2026-07-23 · Codex —
+- `[passive]` 2026-07-23 · Codex —
   **The 29-operation supervised-execution/read candidate is rejected and removed
   from the active release gate.** Exact freeze
   `c5646a0104664f7edf2a453450a2ec5d5d2eb82c` reproduced its advertised controls
@@ -217,8 +217,17 @@ supersession or closure.
   The correction says only that Git identifies the containing freeze candidate;
   it does not claim the commit is absent or try to embed its own future SHA.
   Because the protocol subtree is unchanged, the clean release and behavioral
-  results remain exact for these bytes; the containing documentation commit
-  still requires a fresh cold orientation review.
+  results remain exact for these bytes. Corrected freeze
+  `eb61037bb66c181973b8c9363a612014634ad2e4` then passed a fresh
+  context-blind orientation review with zero P0/P1/material P2. A separate delta
+  reviewer proved its `protocol/` tree and external release-pin blob
+  byte-identical to `0d7d60e`, so the independent release and behavioral PASS
+  results carry exactly. The minimum-trust-kernel release gate is closed at
+  `eb61037`: nine operations, two bounded writes, seven grant-budget consumers,
+  102/102 controls, 139/139 killed mutants, 53 committed sources, 55 packaged
+  files, exact three-tool verification, and zero known production dependency
+  vulnerabilities. This authorizes no execution/read expansion or production
+  service.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[passive: superseded Phase 1 execution research]` 2026-07-22 · Codex —

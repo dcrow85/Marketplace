@@ -927,8 +927,12 @@ Freeze `0d7d60e7c7050845599a521de801d9a25e41ff9c` passed independent
 release and behavioral review but is rejected because two current documents
 incorrectly described its already committed bytes as still awaiting a
 containing commit. These facts therefore do not by themselves make an accepted
-release. The containing commit carrying the corrected prose is the next freeze
-candidate and is identified externally by Git rather than self-referential
-prose. A fresh exact-commit orientation review remains required. No
-execution/read profile, execution reference service, payment, settlement,
-deployment, or runtime conformance is authorized.
+release. Corrected freeze
+`eb61037bb66c181973b8c9363a612014634ad2e4` has a byte-identical
+`protocol/` tree and external release-pin blob. A fresh context-blind
+orientation reviewer and a separate exact-delta reviewer returned PASS with
+zero P0/P1/material P2. The minimum-trust-kernel release gate is therefore
+closed at `eb61037`; the exact release, package, toolchain, counts, and
+nonclaims above are the accepted proposal-only artifact boundary. No
+execution/read profile, production service, payment, settlement, deployment,
+or runtime conformance is authorized.
