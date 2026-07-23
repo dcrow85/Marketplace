@@ -116,20 +116,6 @@
       "implementation_status": "schema_only"
     },
     {
-      "name": "action.get",
-      "object_store_mutating": false,
-      "access_state_effects": ["consume_grant_disclosure_budget"],
-      "consequence": "private_read",
-      "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
-      "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-record.schema.json",
-      "data_grant_required": true,
-      "authorization_requirement": "data_grant",
-      "grant_purpose": "action_read",
-      "grant_use": "read_local",
-      "authority_effect": "none",
-      "implementation_status": "schema_only"
-    },
-    {
       "name": "receipt.get",
       "object_store_mutating": false,
       "access_state_effects": ["consume_grant_disclosure_budget"],

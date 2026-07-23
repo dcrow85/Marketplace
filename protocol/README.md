@@ -9,8 +9,8 @@ already exists.
 It is also the active
 [minimum trust kernel](docs/Protocol_Agent_Minimum_Trust_Kernel_v0.1.md). The
 machine-enforced release boundary is
-[`minimum-trust-kernel.json`](minimum-trust-kernel.json): ten exact operations,
-two object-store writes, eight explicit disclosure-budget consumers, and no
+[`minimum-trust-kernel.json`](minimum-trust-kernel.json): nine exact operations,
+two object-store writes, seven explicit disclosure-budget consumers, and no
 authority to act.
 
 ## What is included
@@ -26,15 +26,15 @@ authority to act.
   authority laundering, effect-ID forks, continuation leakage, schema drift,
   object resolution, replay, and hash/signature behavior; and
 - a separately bounded in-memory reference service and HTTP handler for composing
-  the exact ten proposal-foundation operations without adding an authority or
+  the exact nine proposal-foundation operations without adding an authority or
   consequential action surface.
 
-The capability response is closed over the exact ten registered operation names
+The capability response is closed over the exact nine registered operation names
 and current bundle hash. `write_object` is likewise closed to `intent.put` of an
 exact principal-signed ActiveIntent; it is storage permission, never action
 authority.
 
-The registry currently names exactly ten operations. Only `intent.put` and
+The registry currently names exactly nine operations. Only `intent.put` and
 `action.prepare` create protocol objects/results; the latter stores a draft
 ActionRecord and ends at a signed preparation receipt whose schema fixes both
 `action_state_transition` and `external_effect` to `false`. Every signed envelope

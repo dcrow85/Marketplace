@@ -439,7 +439,7 @@ function freshTransport(envelope, number) {
   return bindAndSign(retry, AGENT_KEY);
 }
 
-function makeHarness({ serviceSigner, idFactory } = {}) {
+function makeHarness({ serviceSigner, idFactory, resolver = keyResolver } = {}) {
   const stores = new MemoryReferenceStores();
   let generatedIds = 0;
   let generatedSignatures = 0;
@@ -451,7 +451,7 @@ function makeHarness({ serviceSigner, idFactory } = {}) {
   const service = createReferenceService({
     foundation,
     stores,
-    keyResolver,
+    keyResolver: resolver,
     expectedAudience: SERVICE_ID,
     issuer: SERVICE_ID,
     issuerKeyId: SERVICE_KEY_ID,
@@ -459,7 +459,7 @@ function makeHarness({ serviceSigner, idFactory } = {}) {
     idFactory: idFactory ?? (() => uuid(800 + (++generatedIds))),
     signObject
   });
-  const seeder = createReferenceSeeder({ foundation, stores, keyResolver, clock: () => NOW });
+  const seeder = createReferenceSeeder({ foundation, stores, keyResolver: resolver, clock: () => NOW });
   const runtime = makeRuntimeBinding();
   const effect = makeEffect();
   const proposal = makeProposal(effect);
@@ -497,7 +497,7 @@ function makeHarness({ serviceSigner, idFactory } = {}) {
   };
 }
 
-test("reference service advertises the exact proposal-only ten-operation surface", () => {
+test("reference service advertises the exact proposal-only nine-operation surface", () => {
   const value = makeHarness();
   const { service } = value;
   const expected = [
@@ -509,12 +509,12 @@ test("reference service advertises the exact proposal-only ten-operation surface
     "projection.get",
     "object.resolve",
     "action.prepare",
-    "action.get",
     "receipt.get"
   ];
   assert.deepEqual(service.capabilities().operations, expected);
   assert.deepEqual(service.registry.operations.map(({ name }) => name), expected);
-  assert.equal(service.registry.operations.length, 10);
+  assert.equal(service.registry.operations.length, 9);
+  assert.equal(service.registry.operations.some(({ name }) => name === "action.get"), false);
   assert.equal(
     expected.some((name) => /authorize|execute|dispatch|pay|settle|release|waive|deliver/.test(name)),
     false
@@ -541,7 +541,7 @@ test("reference service advertises the exact proposal-only ten-operation surface
   const originalMutating = foundation.registry.operations[2].object_store_mutating;
   foundation.registry.operations[2].object_store_mutating = false;
   assert.equal(service.registry.operations[2].object_store_mutating, true, "caller registry mutation must not alter service policy");
-  assert.equal(service.capabilities().operations.length, 10);
+  assert.equal(service.capabilities().operations.length, 9);
   foundation.registry.operations[2].object_store_mutating = originalMutating;
   assert.throws(() => { service.registry.operations[2].object_store_mutating = false; }, TypeError);
 
@@ -985,8 +985,8 @@ test("service access preflight runs before IDs or signatures", () => {
   });
   const result = value.service.handleEnvelope(value.envelope, value.authentication);
   assert.equal(result.ok, false);
-  assert.equal(result.status, 403);
-  assert.ok(result.failures.includes("proposal_resource_authority_mismatch"));
+  assert.equal(result.status, 404);
+  assert.deepEqual(result.failures, ["object_not_found"]);
   assert.equal(value.generatedIds(), 0);
   assert.equal(value.generatedSignatures(), 0);
   assert.equal(value.stores.usedNonces.size, 0);
@@ -997,9 +997,32 @@ test("service access preflight runs before IDs or signatures", () => {
   unresolved.stores.objectsByRef.delete(objectRefKey(unresolvedEffectRef));
   const missing = unresolved.service.handleEnvelope(unresolved.envelope, unresolved.authentication);
   assert.equal(missing.ok, false);
-  assert.ok(missing.failures.includes("proposal_resource_unresolved"));
+  assert.equal(missing.status, 404);
+  assert.deepEqual(missing.failures, ["object_not_found"]);
   assert.equal(unresolved.generatedIds(), 0);
   assert.equal(unresolved.generatedSignatures(), 0);
+
+  const varied = structuredClone(value.proposal);
+  varied.target = "cairn:executor:semantic-oracle-probe";
+  varied.action_proposal_hash = ZERO_HASH;
+  varied.agent_signature = signature(AGENT_KEY);
+  const variedProposal = bindAndSign(varied, AGENT_KEY);
+  const variedResult = value.service.handleEnvelope(makeEnvelope({
+    operationName: "action.prepare",
+    body: variedProposal,
+    subjectRefs: [objectRefFor(variedProposal, schemaFor(variedProposal))],
+    authorizationRefs: [value.grantRef],
+    messageNumber: 178,
+    nonce: "reference-nonce-00000178",
+    idempotencyKey: "reference-idempotency-0178"
+  }), value.authentication);
+  assert.equal(variedResult.ok, false);
+  assert.equal(variedResult.status, 404);
+  assert.deepEqual(variedResult.failures, ["object_not_found"]);
+  assert.equal(value.generatedIds(), 0);
+  assert.equal(value.generatedSignatures(), 0);
+  assert.equal(value.stores.usedNonces.size, 0);
+  assert.equal(value.stores.idempotencyRecords.size, 0);
 });
 
 test("a preparation factory failure rolls the transaction back closed", () => {
@@ -1062,8 +1085,6 @@ test("every private read operation resolves an owned exact object and consumes i
   const value = makeHarness();
   const prepared = value.service.handleEnvelope(value.envelope, value.authentication);
   assert.equal(prepared.ok, true);
-  const action = value.stores.objectsByRef.get(objectRefKey(prepared.body.action_ref));
-
   const intent = makeActiveIntent();
   const intentRef = objectRefFor(intent, schemaFor(intent));
   const intentWriteGrant = makeIntentGrant(value.service, intent);
@@ -1091,7 +1112,6 @@ test("every private read operation resolves an owned exact object and consumes i
     ["data_grant.get", "grant_read", value.grant, value.grantRef],
     ["projection.get", "projection_read", projection, projectionRef],
     ["object.resolve", "object_resolution", value.effect, objectRefFor(value.effect, schemaFor(value.effect))],
-    ["action.get", "action_read", action, prepared.body.action_ref],
     ["receipt.get", "receipt_read", prepared.body, objectRefFor(prepared.body, schemaFor(prepared.body))]
   ];
 
@@ -1127,6 +1147,40 @@ test("every private read operation resolves an owned exact object and consumes i
     }
     assert.equal(value.stores.grantStatesByRef.get(objectRefKey(readGrantRef)).remaining_disclosures, 0);
   }
+});
+
+test("generic object resolution cannot return an ActionRecord", () => {
+  const value = makeHarness();
+  const prepared = value.service.handleEnvelope(value.envelope, value.authentication);
+  assert.equal(prepared.ok, true, JSON.stringify(prepared));
+  const action = [...value.stores.objectsByRef.values()]
+    .find(({ schema }) => schema === "cairn.action_record.v0.1");
+  assert.ok(action);
+  const actionRef = objectRefFor(action, schemaFor(action));
+  const grant = makeReadGrant(value.service, {
+    ref: actionRef,
+    purpose: "object_resolution",
+    grantNumber: 179,
+    maximumDisclosures: 1
+  });
+  const grantRef = value.seeder.seedObject(grant, {
+    grantState: { status: "active", revocation_nonce: 179, remaining_disclosures: 1 }
+  });
+  const request = makeEnvelope({
+    operationName: "object.resolve",
+    body: {
+      ref: actionRef,
+      retrieval_uri: value.service.objectUri(actionRef)
+    },
+    authorizationRefs: [grantRef],
+    messageNumber: 180,
+    nonce: "reference-nonce-00000180"
+  });
+  const result = value.service.handleEnvelope(request, value.authentication);
+  assert.equal(result.ok, false);
+  assert.equal(result.code, "operation_rejected");
+  assert.ok(result.failures.includes("action_record_specialized_operation_required"));
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(grantRef)).remaining_disclosures, 1);
 });
 
 test("projection.get enforces exact audience, purpose, uses, and one covering grant", () => {
@@ -1657,6 +1711,35 @@ test("runtime_binding.get resolves only the registered ref at its exact URI", ()
   }), value.authentication);
   assert.equal(poisoned.ok, false);
   assert.equal(poisoned.code, "resolved_object_invalid");
+});
+
+test("runtime_binding.get requires the embedded runtime key to remain current", () => {
+  const resolver = new Map(keyResolver);
+  const value = makeHarness({ resolver });
+  const secondRuntime = makeRuntimeBinding(176, SECOND_AGENT_IDENTITY, SECOND_AGENT_KEY);
+  value.seeder.seedObject(secondRuntime);
+  resolver.set(AGENT_KEY_ID, {
+    ...AGENT_KEY,
+    status: "revoked",
+    revocation_time: "2026-07-20T16:20:00Z"
+  });
+  const result = value.service.handleEnvelope(makeEnvelope({
+    operationName: "runtime_binding.get",
+    body: {
+      ref: value.runtimeRef,
+      retrieval_uri: value.service.objectUri(value.runtimeRef)
+    },
+    messageNumber: 177,
+    nonce: "reference-nonce-00000177",
+    senderIdentity: SECOND_AGENT_IDENTITY,
+    senderKey: SECOND_AGENT_KEY
+  }), {
+    principalId: PRINCIPAL_ID,
+    actorId: AGENT_PROVIDER_ID
+  });
+  assert.equal(result.ok, false);
+  assert.equal(result.code, "resolved_object_invalid");
+  assert.ok(result.failures.includes("signing_key_revoked"));
 });
 
 test("returned bodies cannot alias committed in-memory state", () => {

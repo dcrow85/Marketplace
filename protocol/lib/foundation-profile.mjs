@@ -13,7 +13,6 @@ export const FOUNDATION_OPERATIONS = deepFreeze([
   ["projection.get", false, ["consume_grant_disclosure_budget"], "private_read", "projectionGetRequest", "scoped-projection.schema.json", true, "data_grant", "projection_read", "read_local", "none"],
   ["object.resolve", false, ["consume_grant_disclosure_budget"], "private_read", "objectRefRequest", "resolvedObjectResponse", true, "data_grant", "object_resolution", "read_local", "none"],
   ["action.prepare", true, ["consume_grant_disclosure_budget"], "preparation_only", "action-proposal.schema.json", "action-preparation-receipt.schema.json", true, "data_grant_and_signed_proposal", "action_preparation", "derive", "none"],
-  ["action.get", false, ["consume_grant_disclosure_budget"], "private_read", "objectRefRequest", "action-record.schema.json", true, "data_grant", "action_read", "read_local", "none"],
   ["receipt.get", false, ["consume_grant_disclosure_budget"], "private_read", "objectRefRequest", "action-preparation-receipt.schema.json", true, "data_grant", "receipt_read", "read_local", "none"]
 ]);
 

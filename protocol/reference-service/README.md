@@ -1,6 +1,6 @@
 # Cairn proposal-foundation reference service
 
-This directory is a deliberately small executable composition of the exact ten
+This directory is a deliberately small executable composition of the exact nine
 operations in `protocol/operations/registry.json`. It demonstrates the audited
 envelope, object, grant, replay, and preparation boundaries. It is not a
 production server, authority service, payment rail, shared disclosure ledger, or
@@ -13,7 +13,7 @@ The service exposes only:
 ```text
 capabilities.get  runtime_binding.get  intent.put  intent.get
 data_grant.get    projection.get       object.resolve
-action.prepare    action.get           receipt.get
+action.prepare    receipt.get
 ```
 
 `action.prepare` atomically stores the validated ActionProposal, a draft
@@ -48,7 +48,7 @@ binds them one-for-one to output paths and exact-copy source references, forbids
 disclosed/redacted path overlap, and cannot be future-derived. Private ownership
 is checked before object semantics so an unauthorized caller cannot use detailed
 validation failures to distinguish an existing foreign object from an absent
-one. `object.resolve` cannot return a ScopedProjection.
+one. `object.resolve` cannot return a ScopedProjection or an ActionRecord.
 
 `createReferenceSeeder` is a trusted import/bootstrap helper, not a network
 operation. It accepts only runtime bindings, DataGrants, effect descriptors, and
@@ -90,6 +90,6 @@ resolved signing-key record is reported as service unavailable; a well-formed
 key that lacks current authority is denied. Neither falls through to the generic
 semantic-error status.
 
-The tests exercise all ten operations plus independent negative controls. The
+The tests exercise all nine operations plus independent negative controls. The
 security-mutant runner makes each material guard fail in isolation and requires
 the named regression test to kill it.

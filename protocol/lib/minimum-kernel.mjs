@@ -43,6 +43,7 @@ const REQUIRED_BYO_PREREQUISITES = [
   "principal_bound_exact_runtime_data_grants_and_state",
   "authenticated_object_ref_and_uri_handoff",
   "signing_key_resolution_profile",
+  "authenticated_runtime_signing_capability_bound_to_preprovisioned_runtime_key",
   "available_authenticated_proposal_foundation_service_endpoint_and_transport_profile"
 ];
 const REQUIRED_NON_CLAIMS = [
@@ -62,7 +63,8 @@ const REQUIRED_NON_CLAIMS = [
   "object_reference_discovery",
   "continuation_delivery",
   "service_availability",
-  "transport_binding_conformance"
+  "transport_binding_conformance",
+  "raw_runtime_private_key_transfer"
 ];
 const EXPECTED_PACKAGE_FILES = [
   "README.md",

@@ -2871,6 +2871,9 @@ This is a release-blocking conformance test:
    Anko prompt, chat transcript, database access, or privileged endpoint. Issue the
    exact DataGrant/ContinuationDisclosureAuthorization bound to Agent B's
    `recipient_actor_id`, runtime-binding ref/hash, and complete bundle ref/hash.
+   Provision an authenticated signing capability bound to Agent B's runtime key;
+   verification metadata alone is insufficient, and the test MUST NOT require
+   transfer of the raw runtime private key.
 7. Agent B resolves every item through the signed service manifest and
    `object.resolve`, verifies schema/content hashes and current control/grant heads,
    and reproduces the current deal state, sources, unknowns, and legal next

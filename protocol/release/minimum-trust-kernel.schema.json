@@ -26,10 +26,10 @@
     "profile": { "const": "cairn-proposal-foundation-v0.1" },
     "release_status": { "const": "active_narrowed_candidate" },
     "foundation_bundle_hash": {
-      "const": "sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24"
+      "const": "sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb"
     },
     "operation_registry_hash": {
-      "const": "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d"
+      "const": "sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe"
     },
     "included_operations": {
       "const": [
@@ -41,7 +41,6 @@
         "projection.get",
         "object.resolve",
         "action.prepare",
-        "action.get",
         "receipt.get"
       ]
     },
@@ -108,12 +107,6 @@
           "signed_envelope_effects": ["consume_replay_nonce", "write_idempotency_record"]
         },
         {
-          "operation": "action.get",
-          "object_store_mutating": false,
-          "access_state_effects": ["consume_grant_disclosure_budget"],
-          "signed_envelope_effects": ["consume_replay_nonce"]
-        },
-        {
           "operation": "receipt.get",
           "object_store_mutating": false,
           "access_state_effects": ["consume_grant_disclosure_budget"],
@@ -127,6 +120,7 @@
         "principal_bound_exact_runtime_data_grants_and_state",
         "authenticated_object_ref_and_uri_handoff",
         "signing_key_resolution_profile",
+        "authenticated_runtime_signing_capability_bound_to_preprovisioned_runtime_key",
         "available_authenticated_proposal_foundation_service_endpoint_and_transport_profile"
       ]
     },
@@ -173,7 +167,8 @@
         "object_reference_discovery",
         "continuation_delivery",
         "service_availability",
-        "transport_binding_conformance"
+        "transport_binding_conformance",
+        "raw_runtime_private_key_transfer"
       ]
     }
   }

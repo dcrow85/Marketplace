@@ -18,20 +18,74 @@
       "$ref": "https://cairn.cards/protocol/release/minimum-trust-kernel.schema.json"
     },
     "foundation_bundle_hash": {
-      "const": "sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24"
+      "const": "sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb"
     },
     "operation_registry_hash": {
-      "const": "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d"
+      "const": "sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe"
     },
     "foundation_bundle_file_hash": {
-      "const": "sha-256:1e7fde88dbe22eeaffcb50493a28c7b4834137c4346de78f25b4116c7ee75a7e"
+      "const": "sha-256:4b99c5c8ce4aacc7195ad9d599e201aa6caf5313cacc8432e26f78d326662e1d"
     },
     "source_commitments": {
       "type": "object",
-      "minProperties": 1,
+      "minProperties": 53,
+      "maxProperties": 53,
       "propertyNames": {
-        "type": "string",
-        "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$)).+$"
+        "enum": [
+          "README.md",
+          "docs/Agent_Proposal_Authority_Boundary_v0.1.md",
+          "docs/Protocol_Agent_Minimum_Trust_Kernel_v0.1.md",
+          "fixtures/proposal-only-identities.json",
+          "lib/bundle.mjs",
+          "lib/core.mjs",
+          "lib/foundation-profile.mjs",
+          "lib/minimum-kernel.mjs",
+          "lib/schemas.mjs",
+          "lib/validation.mjs",
+          "manifest.json",
+          "minimum-trust-kernel.json",
+          "mutations/security-mutants.mjs",
+          "npm-shrinkwrap.json",
+          "operations/registry.json",
+          "package.json",
+          "reference-service/README.md",
+          "reference-service/http.mjs",
+          "reference-service/service.mjs",
+          "reference-service/signer.mjs",
+          "reference-service/state.mjs",
+          "release/minimum-trust-kernel-release.schema.json",
+          "release/minimum-trust-kernel.schema.json",
+          "release/rejected-profile-marker.schema.json",
+          "release/rejected-profiles/cairn-supervised-execution-v0.1.json",
+          "schemas/action-preparation-receipt.schema.json",
+          "schemas/action-proposal.schema.json",
+          "schemas/action-record.schema.json",
+          "schemas/active-intent.schema.json",
+          "schemas/agent-judgment.schema.json",
+          "schemas/agent-runtime-binding.schema.json",
+          "schemas/common.schema.json",
+          "schemas/continuation-bundle.schema.json",
+          "schemas/continuation-disclosure-authorization.schema.json",
+          "schemas/continuation-disclosure-reservation-state.schema.json",
+          "schemas/data-grant.schema.json",
+          "schemas/effect-descriptor.schema.json",
+          "schemas/envelope.schema.json",
+          "schemas/machine-bundle-manifest.schema.json",
+          "schemas/operation-bodies.schema.json",
+          "schemas/operation-registry.schema.json",
+          "schemas/scoped-projection.schema.json",
+          "scripts/build-bundle.mjs",
+          "scripts/build-minimum-kernel.mjs",
+          "scripts/check-bundle.mjs",
+          "scripts/check-json-sources.py",
+          "scripts/check-minimum-kernel.mjs",
+          "scripts/check-packed-package.mjs",
+          "scripts/run-security-mutants.mjs",
+          "tests/foundation.test.mjs",
+          "tests/reference-service.test.mjs",
+          "vectors/canonicalization-vectors.json",
+          "vectors/ed25519-vectors.json"
+        ]
       },
       "additionalProperties": {
         "type": "string",

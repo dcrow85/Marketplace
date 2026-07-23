@@ -63,17 +63,21 @@ const EXPIRES = "2026-07-20T17:00:00Z";
 test("minimum trust kernel pins the exact proposal-only release boundary", async () => {
   const result = await auditMinimumTrustKernel(root);
   assert.equal(result.manifest.kernel_id, "cairn-agent-minimum-trust-kernel-v0.1");
-  assert.equal(result.operationCount, 10);
+  assert.equal(result.operationCount, 9);
   assert.equal(result.objectStoreMutationCount, 2);
-  assert.equal(result.grantConsumerCount, 8);
-  assert.equal(result.bundleHash, "sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24");
-  assert.equal(result.registryHash, "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d");
-  assert.equal(result.manifest.byo_prerequisites.length, 5);
+  assert.equal(result.grantConsumerCount, 7);
+  assert.equal(result.bundleHash, "sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb");
+  assert.equal(result.registryHash, "sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe");
+  assert.equal(result.manifest.byo_prerequisites.length, 6);
   assert.ok(result.manifest.byo_prerequisites.includes(
     "available_authenticated_proposal_foundation_service_endpoint_and_transport_profile"
   ));
+  assert.ok(result.manifest.byo_prerequisites.includes(
+    "authenticated_runtime_signing_capability_bound_to_preprovisioned_runtime_key"
+  ));
   assert.ok(result.manifest.not_claiming.includes("service_availability"));
   assert.ok(result.manifest.not_claiming.includes("transport_binding_conformance"));
+  assert.ok(result.manifest.not_claiming.includes("raw_runtime_private_key_transfer"));
 });
 
 test("minimum trust kernel release schemas close the portable machine boundary", async () => {
@@ -95,7 +99,7 @@ test("minimum trust kernel release schemas close the portable machine boundary",
   assert.equal(validateRelease(release), true, JSON.stringify(validateRelease.errors));
 
   const widened = structuredClone(manifest);
-  widened.included_operations[9] = "action.execute";
+  widened.included_operations[8] = "action.execute";
   assert.equal(validateManifest(widened), false);
   const authority = structuredClone(manifest);
   authority.allowed_object_store_mutations[1].authority_effect = "full_external_authority";
@@ -110,6 +114,23 @@ test("minimum trust kernel release schemas close the portable machine boundary",
   const missingRelease = structuredClone(release);
   delete missingRelease.source_commitments;
   assert.equal(validateRelease(missingRelease), false);
+  const commitmentNames = Object.keys(release.source_commitments);
+  assert.equal(commitmentNames.length, 53);
+  const truncatedRelease = structuredClone(release);
+  truncatedRelease.source_commitments = {
+    [commitmentNames[0]]: release.source_commitments[commitmentNames[0]]
+  };
+  assert.equal(validateRelease(truncatedRelease), false);
+  const substitutedRelease = structuredClone(release);
+  const replaced = commitmentNames[0];
+  substitutedRelease.source_commitments["nonexistent/source.mjs"] =
+    substitutedRelease.source_commitments[replaced];
+  delete substitutedRelease.source_commitments[replaced];
+  assert.equal(validateRelease(substitutedRelease), false);
+  const expandedRelease = structuredClone(release);
+  expandedRelease.source_commitments["nonexistent/source.mjs"] =
+    release.source_commitments[commitmentNames[0]];
+  assert.equal(validateRelease(expandedRelease), false);
 });
 
 test("packaged proposal boundary preserves ActionProposal no-authority labels", () => {
@@ -773,7 +794,8 @@ test("operation registry exposes preparation but no authorization or execution",
   assert.equal(prepare.authority_effect, "none");
   assert.equal(prepare.authorization_requirement, "data_grant_and_signed_proposal");
   assert.equal(prepare.implementation_status, "schema_only");
-  assert.equal(registry.operations.length, 10);
+  assert.equal(registry.operations.length, 9);
+  assert.equal(registry.operations.some(({ name }) => name === "action.get"), false);
   assert.equal(registry.operations.some(({ name }) => name === "continuation.get"), false);
   assert.equal(registry.operations.some(({ name }) => /authorize|execute|dispatch|pay|release|waive|issue/.test(name)), false);
   assert.deepEqual(sources.manifest.conformance_claims, []);
@@ -794,7 +816,6 @@ test("operation registry distinguishes object writes from access-state effects",
     "projection.get",
     "object.resolve",
     "action.prepare",
-    "action.get",
     "receipt.get"
   ]);
   for (const operation of registry.operations) {

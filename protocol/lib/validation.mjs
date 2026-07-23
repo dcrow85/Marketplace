@@ -459,6 +459,7 @@ function validateEnvelopeOperationUnsafe(envelope, context = {}) {
   if (operation.name === "object.resolve") {
     const object = resolve(context.objectsByRef, objectRefKey(envelope.body.ref));
     if (object?.schema === "cairn.scoped_projection.v0.1") failures.push("projection_specialized_operation_required");
+    if (object?.schema === "cairn.action_record.v0.1") failures.push("action_record_specialized_operation_required");
   }
   if (envelope.message_type === "action.prepare") {
     const identity = envelope.body?.agent_identity;

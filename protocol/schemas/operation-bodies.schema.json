@@ -38,8 +38,8 @@
         "bundle_hash": { "$ref": "common.schema.json#/$defs/sha256" },
         "operations": {
           "type": "array",
-          "minItems": 10,
-          "maxItems": 10,
+          "minItems": 9,
+          "maxItems": 9,
           "prefixItems": [
             { "const": "capabilities.get" },
             { "const": "runtime_binding.get" },
@@ -49,7 +49,6 @@
             { "const": "projection.get" },
             { "const": "object.resolve" },
             { "const": "action.prepare" },
-            { "const": "action.get" },
             { "const": "receipt.get" }
           ],
           "items": false

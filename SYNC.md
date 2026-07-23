@@ -106,10 +106,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   signed only field names rather than disclosed values, future-derived
   projections were accepted, and semantic validation preceded private-object
   ownership checks.
-  The working replacement is now self-contained under `protocol/`: it packages
+  The replacement became self-contained under `protocol/`: it packages
   `npm-shrinkwrap.json`, packs only into temporary directories, tests/rebuilds/
   repacks itself, closes the release envelope and manifest to exact constants,
-  pins five BYO prerequisites plus service/transport non-claims, packages an
+  pins BYO prerequisites plus service/transport non-claims, packages an
   explicit proposal-authority boundary, signs bounded exact-copy projection
   values, rejects future derivation, and performs private access preflight before
   object semantics. Containing freeze `b0ab625` is rejected by clean package
@@ -118,10 +118,35 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   passed their internal gates, but their package bytes differed. The package
   allowlist now carries explicit recursive `__pycache__`, `.pyc`, and `.pyo`
   exclusions; the package checker rejects transient compiler files; and a
-  direct test/mutant creates those files and requires their absence. The working
-  replacement passes 97/97 authored controls, kills 116/116 direct mutants, and
-  now packs 55 files in the dirty tree. A new containing commit, disposable
-  clean replay, and three fresh exact-commit reviews remain pending.
+  direct test/mutant creates those files and requires their absence. Freeze
+  `fc5ff28469f8b30182b251e5df8eecbfe6a4a2eb` then passed the full local and
+  clean-package replay—97/97 authored controls, 116/116 killed mutants, 55
+  packaged files, and zero production vulnerabilities—but is rejected by three
+  fresh exact-commit reviews. They found five accepted gaps: `action.get` and
+  generic action resolution could return an execution-looking ActionRecord;
+  the BYO prerequisites omitted access to the runtime signing capability; the
+  portable release schema admitted a truncated or substituted source inventory;
+  `action.prepare` compared foreign private EffectDescriptor semantics before
+  ACL denial; and `runtime_binding.get` could report an active binding after its
+  authoritative runtime key was revoked.
+  The current replacement removes `action.get`, blocks ActionRecords from generic
+  resolution, adds a sixth authenticated runtime-signing prerequisite while
+  disclaiming raw private-key transfer, closes the release schema over exactly
+  53 source paths, performs every preparation resource ACL check before semantic
+  resolution with one indistinguishable not-found result, and requires current
+  specialized runtime-binding validation on reads. Each finding has a direct
+  mutation control. The working tree passes 99/99 authored controls, kills
+  124/124 mutants, packs exactly 55 files at
+  `sha-256:72f04662971816c409508d80cd344c5ad72bcd48370c6cccd36524a7a0c7bcd2`,
+  excludes every execution file, and reports zero production vulnerabilities.
+  The bundle is
+  `sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb`;
+  registry
+  `sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe`;
+  current generated release
+  `sha-256:be95b6ef5bd1a6d43911dc0e467d7aad292e8b5f80dfc4b8837d1ce8f13cbe64`.
+  A containing commit, two disposable clean replays, and fresh exact-commit
+  reviews remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —

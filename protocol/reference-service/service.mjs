@@ -144,7 +144,7 @@ function publicAccess() {
 }
 
 function readAccessFailure(operation, envelope, draft) {
-  if (!["runtime_binding.get", "intent.get", "data_grant.get", "projection.get", "object.resolve", "action.get", "receipt.get"].includes(operation.name)) {
+  if (!["runtime_binding.get", "intent.get", "data_grant.get", "projection.get", "object.resolve", "receipt.get"].includes(operation.name)) {
     return null;
   }
   const access = draft.accessByRef.get(objectRefKey(envelope.body.ref));
@@ -156,15 +156,20 @@ function readAccessFailure(operation, envelope, draft) {
     : "object_not_found";
 }
 
-function preparationAccessFailure(envelope, draft, context) {
+function preparationAccessFailure(envelope, draft) {
   if (envelope.message_type !== "action.prepare") return null;
-  for (const ref of envelope.body.resource_refs ?? []) {
+  const refs = [...(envelope.body?.resource_refs ?? [])];
+  if (envelope.body?.effect_descriptor_ref) refs.push(envelope.body.effect_descriptor_ref);
+  const seen = new Set();
+  for (const ref of refs) {
     const key = objectRefKey(ref);
+    if (seen.has(key)) continue;
+    seen.add(key);
     const access = draft.accessByRef.get(key);
-    if (!resolvedStoredObject(ref, draft, context)) return "proposal_resource_unresolved";
     if (access?.visibility !== "public" && !(access?.visibility === "private" && access.principal_id === envelope.principal_id)) {
-      return "proposal_resource_authority_mismatch";
+      return "object_not_found";
     }
+    if (!draft.objectsByRef.has(key) || !draft.urisByRef.has(key)) return "object_not_found";
   }
   return null;
 }
@@ -237,11 +242,20 @@ function exactResponseObject(operation, body, draft, context) {
     expectedUri: body.retrieval_uri
   });
   if (bindingFailures.length) return failure(statusForFailures(bindingFailures), "resolved_object_invalid", bindingFailures);
-  if (operation.name === "object.resolve") return responseBody(operation, resolved, context, 200, false);
   const responseSchema = context.schemasById.get(operation.response_schema);
-  if (!responseSchema || responseSchema["x-cairn-object-schema"] !== object.schema) {
+  if (
+    operation.name !== "object.resolve" &&
+    (!responseSchema || responseSchema["x-cairn-object-schema"] !== object.schema)
+  ) {
     return failure(422, "response_schema_mismatch");
   }
+  if (operation.name === "runtime_binding.get") {
+    const currentBindingFailures = validateRuntimeBinding(object, context);
+    if (currentBindingFailures.length) {
+      return failure(statusForFailures(currentBindingFailures), "resolved_object_invalid", currentBindingFailures);
+    }
+  }
+  if (operation.name === "object.resolve") return responseBody(operation, resolved, context, 200, false);
   return responseBody(operation, object, context, 200, false);
 }
 
@@ -514,18 +528,15 @@ export function createReferenceService({
           };
         }
         const accessPreflight = () => {
-          const accessFailure = readAccessFailure(operation, envelope, draft);
+          const accessFailure = readAccessFailure(operation, envelope, draft) ??
+            preparationAccessFailure(envelope, draft);
           return accessFailure ? [accessFailure] : [];
-        };
-        const workPreflight = () => {
-          const preparationFailure = preparationAccessFailure(envelope, draft, context);
-          return preparationFailure ? [preparationFailure] : [];
         };
         const admission = acceptEnvelopeOperation(
           envelope,
           context,
           resultRefFactory,
-          workPreflight,
+          null,
           accessPreflight
         );
         if (!admission.accepted) {

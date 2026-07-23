@@ -26,10 +26,10 @@ This is the smallest useful protocol promise:
 The active kernel is the deterministic `cairn-proposal-foundation-v0.1` bundle:
 
 - bundle hash:
-  `sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24`;
+  `sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb`;
 - operation-registry hash:
-  `sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d`;
-- ten exact operations;
+  `sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe`;
+- nine exact operations;
 - two object-store writes with every access-state effect separately declared;
   and
 - no conformance claim.
@@ -44,8 +44,7 @@ The exact operations are:
 6. `projection.get`
 7. `object.resolve`
 8. `action.prepare`
-9. `action.get`
-10. `receipt.get`
+9. `receipt.get`
 
 Only these operations create protocol objects/results:
 
@@ -59,7 +58,7 @@ Neither operation is permission to perform the proposed action.
 
 `object_store_mutating:false` does not mean side-effect-free. Every accepted
 signed envelope consumes replay-nonce state. Every successful DataGrant-covered
-operation—including the six private reads—atomically consumes disclosure budget.
+operation—including the five private reads—atomically consumes disclosure budget.
 The two object-store writes also write idempotency records. These effects are
 closed per operation in the machine manifest.
 
@@ -67,7 +66,7 @@ closed per operation in the machine manifest.
 
 The machine checks establish internal consistency of the exact source bundle,
 its signed-object rules, its operation boundary, and its named negative
-controls. The in-memory reference composition shows that the ten operations can
+controls. The in-memory reference composition shows that the nine operations can
 be composed without adding an execution surface.
 
 They do not establish:
@@ -84,14 +83,16 @@ They do not establish:
 ## 4. Bring-your-own-agent contract
 
 Anko is one possible reader and proposer, not a privileged protocol actor.
-Given all five host-supplied preconditions below—and only where an available
+Given all six host-supplied preconditions below—and only where an available
 service implements the exact pinned bundle; this is not a deployment, discovery,
 or conformance claim—another agent can use the proposal-foundation surface:
 
 - a pre-provisioned authenticated runtime binding;
 - principal-bound DataGrants and active grant state for that exact runtime;
-- an authenticated handoff of exact ObjectRefs and HTTPS retrieval URIs; and
-- an available signing-key resolution profile; and
+- an authenticated handoff of exact ObjectRefs and HTTPS retrieval URIs;
+- an available signing-key resolution profile;
+- an authenticated runtime signing capability bound to the pre-provisioned
+  runtime key, without requiring transfer of its raw private key; and
 - an available authenticated proposal-foundation service endpoint whose
   transport profile and capability response bind the exact kernel profile and
   bundle hash.
@@ -118,8 +119,9 @@ provisioning is still required to replace an agent.
 purpose and intended use; the projection must admit the exact runtime (or direct
 principal), that purpose, local reading, and the intended use; and one covering
 DataGrant must carry every required use. Generic `object.resolve` cannot return a
-ScopedProjection and bypass those checks. A declared purpose is attributable
-intent, not proof of the recipient's later behavior. A projection carries its
+ScopedProjection or ActionRecord: projections require the purpose-bound read
+operation, and ActionRecords are not readable in this kernel. A declared purpose
+is attributable intent, not proof of the recipient's later behavior. A projection carries its
 bounded disclosed values inside the signed payload, binds every output path to an
 exact source ObjectRef and source path, and forbids overlap between disclosed and
 redacted paths. That provenance does not independently verify the source value.
@@ -164,7 +166,7 @@ feature.
 The active release boundary is
 [`minimum-trust-kernel.json`](../minimum-trust-kernel.json).
 `npm run check`, the unit suite, and the mutation suite fail if the foundation
-hashes drift, the ten-operation surface changes, either local mutation gains
+hashes drift, the nine-operation surface changes, either local mutation gains
 authority, the rejected execution profile is re-admitted, or the non-claims
 weaken. `npm run build` remains a deterministic generator; generation alone is
 not a release check.

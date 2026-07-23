@@ -12,8 +12,17 @@ export const SECURITY_MUTANTS = [
     id: "minimum-kernel-operation-surface",
     finding: "minimum-kernel-release-boundary",
     file: "minimum-trust-kernel.json",
-    jsonPointer: "/included_operations/9",
+    jsonPointer: "/included_operations/8",
     value: "action.execute",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-action-read-exclusion",
+    finding: "proposal-only-action-record-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/included_operations/8",
+    value: "action.get",
     expectedStage: "kernel",
     expectedOutput: "minimum trust kernel manifest:"
   },
@@ -54,10 +63,19 @@ export const SECURITY_MUTANTS = [
     expectedOutput: "minimum trust kernel manifest:"
   },
   {
-    id: "minimum-kernel-service-endpoint-prerequisite",
+    id: "minimum-kernel-runtime-signing-prerequisite",
     finding: "conditional-byo-agent-boundary",
     file: "minimum-trust-kernel.json",
     jsonPointer: "/byo_prerequisites/4",
+    value: "runtime_signature_verification_only",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-service-endpoint-prerequisite",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/byo_prerequisites/5",
     value: "implicit_local_service",
     expectedStage: "kernel",
     expectedOutput: "minimum trust kernel manifest:"
@@ -86,6 +104,15 @@ export const SECURITY_MUTANTS = [
     file: "minimum-trust-kernel.json",
     jsonPointer: "/not_claiming/16",
     value: "transport_profile_conforming",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-raw-runtime-key-transfer-nonclaim",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/not_claiming/17",
+    value: "raw_runtime_private_key_transfer_available",
     expectedStage: "kernel",
     expectedOutput: "minimum trust kernel manifest:"
   },
@@ -211,6 +238,22 @@ export const SECURITY_MUTANTS = [
     test: "minimum trust kernel release schemas close the portable machine boundary"
   },
   {
+    id: "minimum-kernel-release-source-count-floor",
+    finding: "portable-exact-source-inventory",
+    file: "release/minimum-trust-kernel-release.schema.json",
+    jsonPointer: "/properties/source_commitments/minProperties",
+    value: 1,
+    test: "minimum trust kernel release schemas close the portable machine boundary"
+  },
+  {
+    id: "minimum-kernel-release-source-name-set",
+    finding: "portable-exact-source-inventory",
+    file: "release/minimum-trust-kernel-release.schema.json",
+    jsonPointer: "/properties/source_commitments/propertyNames/enum/0",
+    value: "nonexistent/source.mjs",
+    test: "minimum trust kernel release schemas close the portable machine boundary"
+  },
+  {
     id: "action-proposal-prose-no-authority-labels",
     finding: "machine-prose-authority-parity",
     file: "docs/Agent_Proposal_Authority_Boundary_v0.1.md",
@@ -270,6 +313,15 @@ export const SECURITY_MUTANTS = [
     search: '    if (object?.schema === "cairn.scoped_projection.v0.1") failures.push("projection_specialized_operation_required");',
     replace: '    if (false) failures.push("projection_specialized_operation_required");',
     test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "action-record-generic-resolution-block",
+    finding: "proposal-only-action-record-boundary",
+    file: "lib/validation.mjs",
+    search: '    if (object?.schema === "cairn.action_record.v0.1") failures.push("action_record_specialized_operation_required");',
+    replace: '    if (false) failures.push("action_record_specialized_operation_required");',
+    test: "generic object resolution cannot return an ActionRecord",
     testFile: "tests/reference-service.test.mjs"
   },
   {
@@ -746,11 +798,29 @@ export const SECURITY_MUTANTS = [
   },
   {
     id: "service-preparation-owner",
-    finding: "proposal-resource-authority",
+    finding: "proposal-resource-semantic-oracle",
     file: "reference-service/service.mjs",
     search: "    if (access?.visibility !== \"public\" && !(access?.visibility === \"private\" && access.principal_id === envelope.principal_id)) {",
     replace: "    if (access?.visibility !== \"public\" && access?.visibility !== \"private\") {",
     test: "service access preflight runs before IDs or signatures",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "service-preparation-access-preflight",
+    finding: "proposal-resource-semantic-oracle",
+    file: "reference-service/service.mjs",
+    search: "          const accessFailure = readAccessFailure(operation, envelope, draft) ??\n            preparationAccessFailure(envelope, draft);",
+    replace: "          const accessFailure = readAccessFailure(operation, envelope, draft);",
+    test: "service access preflight runs before IDs or signatures",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "service-runtime-binding-currentness",
+    finding: "current-runtime-binding-read",
+    file: "reference-service/service.mjs",
+    search: "    const currentBindingFailures = validateRuntimeBinding(object, context);",
+    replace: "    const currentBindingFailures = [];",
+    test: "runtime_binding.get requires the embedded runtime key to remain current",
     testFile: "tests/reference-service.test.mjs"
   },
   {
@@ -775,7 +845,7 @@ export const SECURITY_MUTANTS = [
     id: "service-response-schema-binding",
     finding: "operation-response-type-binding",
     file: "reference-service/service.mjs",
-    search: "  if (!responseSchema || responseSchema[\"x-cairn-object-schema\"] !== object.schema) {",
+    search: "  if (\n    operation.name !== \"object.resolve\" &&\n    (!responseSchema || responseSchema[\"x-cairn-object-schema\"] !== object.schema)\n  ) {",
     replace: "  if (false) {",
     test: "response types remain operation-specific even under corrupted access metadata",
     testFile: "tests/reference-service.test.mjs"
@@ -813,7 +883,7 @@ export const SECURITY_MUTANTS = [
     file: "reference-service/service.mjs",
     search: "  const registry = trustedFoundation.registry;",
     replace: "  const registry = foundation.registry;",
-    test: "reference service advertises the exact proposal-only ten-operation surface",
+    test: "reference service advertises the exact proposal-only nine-operation surface",
     testFile: "tests/reference-service.test.mjs"
   },
   {
@@ -822,7 +892,7 @@ export const SECURITY_MUTANTS = [
     file: "reference-service/service.mjs",
     search: "  const ajv = trustedFoundation.ajv;",
     replace: "  const ajv = foundation.ajv;",
-    test: "reference service advertises the exact proposal-only ten-operation surface",
+    test: "reference service advertises the exact proposal-only nine-operation surface",
     testFile: "tests/reference-service.test.mjs"
   },
   {
@@ -831,7 +901,7 @@ export const SECURITY_MUTANTS = [
     file: "reference-service/service.mjs",
     search: "    registry,\n    capabilities,",
     replace: "    registry,\n    stores,\n    capabilities,",
-    test: "reference service advertises the exact proposal-only ten-operation surface",
+    test: "reference service advertises the exact proposal-only nine-operation surface",
     testFile: "tests/reference-service.test.mjs"
   },
   {
@@ -903,7 +973,7 @@ export const SECURITY_MUTANTS = [
     file: "reference-service/service.mjs",
     search: "        if (operation.name === \"capabilities.get\") {",
     replace: "        if (false) {",
-    test: "reference service advertises the exact proposal-only ten-operation surface",
+    test: "reference service advertises the exact proposal-only nine-operation surface",
     testFile: "tests/reference-service.test.mjs"
   },
   {
