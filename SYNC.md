@@ -202,14 +202,23 @@ supersession or closure.
   package, shrinkwrap, kernel manifest/schema, Python preflight, and repository
   external pin. Direct mutants cover manifest, package, npm dev-engine, Python
   self-check, Node/npm engine, shrinkwrap, and runtime comparison drift.
-  The unfrozen replacement passes 102/102 authored controls, kills 139/139
+  The replacement passes 102/102 authored controls, kills 139/139
   mutants, packs the same exact 53 committed sources plus two generated files
   at
   `sha-256:d726c2d58882f8a0f606123c9e50ef19bb3957a1a530200e2eb3f959b1d0b6fb`,
   and generates release
   `sha-256:577979ec046ecff0561452dcd678ea308b6e89c5979946b3948b48e496869414`.
-  A containing commit, clean-archive replay, and fresh exact-commit reviews
-  remain pending.
+  Freeze `0d7d60e7c7050845599a521de801d9a25e41ff9c` reproduced the
+  full release cleanly. The independent release and behavioral reviews passed
+  with zero P0/P1/material P2, but the independent orientation review found one
+  material self-reference error: this entry still called the now-committed
+  bytes “unfrozen,” and the terminal audit register still called them
+  working-tree facts awaiting a containing commit. That freeze is rejected.
+  The correction says only that Git identifies the containing freeze candidate;
+  it does not claim the commit is absent or try to embed its own future SHA.
+  Because the protocol subtree is unchanged, the clean release and behavioral
+  results remain exact for these bytes; the containing documentation commit
+  still requires a fresh cold orientation review.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[passive: superseded Phase 1 execution research]` 2026-07-22 · Codex —

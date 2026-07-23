@@ -923,7 +923,12 @@ kills 139/139 direct mutants, and packs exactly 55 files at
 `sha-256:d726c2d58882f8a0f606123c9e50ef19bb3957a1a530200e2eb3f959b1d0b6fb`.
 Its generated release is
 `sha-256:577979ec046ecff0561452dcd678ea308b6e89c5979946b3948b48e496869414`.
-These are working-tree facts, not an accepted release. A containing commit,
-disposable clean-archive replay, and fresh exact-commit independent reviews
-remain required. No execution/read profile, execution reference service,
-payment, settlement, deployment, or runtime conformance is authorized.
+Freeze `0d7d60e7c7050845599a521de801d9a25e41ff9c` passed independent
+release and behavioral review but is rejected because two current documents
+incorrectly described its already committed bytes as still awaiting a
+containing commit. These facts therefore do not by themselves make an accepted
+release. The containing commit carrying the corrected prose is the next freeze
+candidate and is identified externally by Git rather than self-referential
+prose. A fresh exact-commit orientation review remains required. No
+execution/read profile, execution reference service, payment, settlement,
+deployment, or runtime conformance is authorized.
