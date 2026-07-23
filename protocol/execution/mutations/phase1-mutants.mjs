@@ -3,8 +3,8 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015";',
-    replace: 'export const SPEC_SHA256 = "f12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015";',
+    search: 'export const SPEC_SHA256 = "3d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
+    replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
   },
@@ -1176,7 +1176,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-reservation-full-validation",
     finding: "action-read-reservation-skips-fence-semantics",
     file: "lib/validation.mjs",
-    search: '      failures.push(...validateAuthorityReservation(\n        reservation, response.action_record, response.execution_binding_set,\n        { ...context, lineageCommitment: response.lineage_commitment, authority: response.authority_basis }\n      ).map((code) => `action_get_reservation_${code}`));',
+    search: '      failures.push(...validateAuthorityReservation(\n        reservation, response.action_record, response.execution_binding_set,\n        { ...historicalEvidenceContext, lineageCommitment: response.lineage_commitment,\n          authority: response.authority_basis }\n      ).map((code) => `action_get_reservation_${code}`));',
     replace: '      failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2597,7 +2597,7 @@ export const PHASE1_MUTANTS = [
     id: "receiver-event-identity-transition",
     finding: "authenticated-event-skips-identity-scope-and-assignment-consumption",
     file: "lib/validation.mjs",
-    search: '      if (receiverEventIdentityTransitionFailures(value.identity_epoch_transition_receipt_ref,\n        after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {\n        failures.push("receiver_outstanding_transition_identity_transition_mismatch");\n      }',
+    search: '      if (receiverEventIdentityTransitionFailures(value.identity_epoch_transition_receipt_ref,\n        before, after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {\n        failures.push("receiver_outstanding_transition_identity_transition_mismatch");\n      }',
     replace: '',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
@@ -2662,6 +2662,158 @@ export const PHASE1_MUTANTS = [
     finding: "compartment-transition-signature-predates-commit",
     file: "lib/validation.mjs",
     search: '      failures.push("compartment_transition_chronology_invalid");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "gate-result-request-dependency-signature",
+    finding: "gate-result-trusts-an-unsigned-request-dependency",
+    file: "lib/validation.mjs",
+    search: '    if (gateRequest && context.requireDependencySignatures === true &&\n        validateResolvedSignedObject(gateRequest, context).length) {\n      failures.push("gate_result_request_signature_invalid");\n    }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-request-binding-dependency-signature",
+    finding: "gate-request-trusts-an-unsigned-binding-dependency",
+    file: "lib/validation.mjs",
+    search: '      if (binding && validateResolvedSignedObject(binding, context).length) {\n        failures.push("gate_request_binding_signature_invalid");\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-request-authority-dependency-signature",
+    finding: "gate-request-trusts-an-unsigned-authority-dependency",
+    file: "lib/validation.mjs",
+    search: '      if (authority && validateResolvedSignedObject(authority, context).length) {\n        failures.push("gate_request_authority_signature_invalid");\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-request-confirmation-dependency-signature",
+    finding: "gate-request-trusts-an-unsigned-confirmation-dependency",
+    file: "lib/validation.mjs",
+    search: '      if (confirmation && validateResolvedSignedObject(confirmation, context).length) {\n        failures.push("gate_request_confirmation_signature_invalid");\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "binding-data-grant-principal-closure",
+    finding: "binding-accepts-a-foreign-principal-data-grant",
+    file: "lib/validation.mjs",
+    search: '      if (!grant || grant.schema !== "cairn.data_grant.v0.1" || !grantSchema ||\n          !sameObjectRef(head.data_grant_ref, objectRefFor(grant, grantSchema)) ||\n          validateResolvedSignedObject(grant, context).length ||\n          grant.principal_id !== value.principal_id || current?.principal_id !== value.principal_id) {\n        failures.push("binding_data_grant_principal_mismatch");\n      }',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-data-grant-runtime-recipient",
+    finding: "binding-accepts-a-grant-for-another-runtime",
+    file: "lib/validation.mjs",
+    search: '      if (value.actor_branch === "agent_runtime" && grant &&\n          (grant.recipient !== (context.runtimeBinding ??\n            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id ||\n           !grant.audience?.includes((context.runtimeBinding ??\n            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id))) {\n        failures.push("binding_data_grant_runtime_recipient_mismatch");\n      }',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "cancellation-current-reserved-judgments",
+    finding: "cancellation-ignores-current-reserved-judgments",
+    file: "lib/validation.mjs",
+    search: '      if (!Array.isArray(requiredReservedJudgments) ||\n          canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {\n        failures.push("cancellation_reserved_judgments_mismatch");\n      }',
+    replace: '',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "control-receipt-authorization-resolution",
+    finding: "control-receipt-does-not-resolve-its-authority",
+    file: "lib/validation.mjs",
+    search: '        failures.push("execution_control_receipt_authorization_unresolved");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-map-binding",
+    finding: "control-receipt-does-not-bind-the-committed-map-transition",
+    file: "lib/validation.mjs",
+    search: '      failures.push("execution_control_receipt_map_binding_mismatch");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "action-get-historical-authority-evidence",
+    finding: "historical-action-read-requires-current-authority-state",
+    file: "lib/validation.mjs",
+    search: '    const historicalEvidenceContext = {\n      ...context, historicalRead: true, requireDependencySignatures: true\n    };',
+    replace: '    const historicalEvidenceContext = {\n      ...context, historicalRead: false, requireDependencySignatures: true\n    };',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "receiver-terminal-closure-consumes-event",
+    finding: "authenticated-closure-releases-without-consuming-the-closing-event",
+    file: "lib/validation.mjs",
+    search: '    consumption: "consume_one_and_release" }],',
+    replace: '    consumption: "release" }],',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-event-successor-entry-refs",
+    finding: "receiver-event-receipt-does-not-bind-successor-assignment-refs",
+    file: "lib/validation.mjs",
+    search: '      !sameObjectRef(receipt.event_id_slot_assignment_after_ref, afterEntry?.event_id_slot_assignment_ref) ||\n      receipt.event_id_slot_assignment_after_hash !== afterEntry?.event_id_slot_assignment_hash ||\n      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, beforeEntry?.sequence_slot_assignment_ref) ||\n      receipt.sequence_slot_assignment_before_hash !== beforeEntry?.sequence_slot_assignment_hash ||\n      !sameObjectRef(receipt.sequence_slot_assignment_after_ref, afterEntry?.sequence_slot_assignment_ref) ||\n      receipt.sequence_slot_assignment_after_hash !== afterEntry?.sequence_slot_assignment_hash) {',
+    replace: '      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, beforeEntry?.sequence_slot_assignment_ref) ||\n      receipt.sequence_slot_assignment_before_hash !== beforeEntry?.sequence_slot_assignment_hash) {',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-assignment-refs-may-advance",
+    finding: "receiver-transition-falsely-freezes-assignment-successor-refs",
+    file: "lib/validation.mjs",
+    search: '      "outstanding_stream_key", "receiver_sequence_epoch_selector_key", "identity_scope_index_key",',
+    replace: '      "outstanding_stream_key", "receiver_sequence_epoch_selector_key", "identity_scope_index_key",\n      "event_id_slot_assignment_ref", "event_id_slot_assignment_hash", "sequence_slot_assignment_ref", "sequence_slot_assignment_hash",',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "data-grant-expiry-boundary",
+    finding: "expired-data-grant-state-rejects-the-expiry-boundary",
+    file: "lib/validation.mjs",
+    search: '    if (value.state === "expired" ? updatedAt < expiresAt : updatedAt >= expiresAt) {',
+    replace: '    if (updatedAt >= expiresAt) {',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "enumerable-map-recursive-descendants",
+    finding: "enumerable-map-validation-skips-branch-descendants",
+    file: "lib/validation.mjs",
+    search: '      for (const child of node.branch_children) visit(child.child_node_ref, child);',
+    replace: '      for (const child of node.branch_children) void child;',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-atom-accounting-derived",
+    finding: "compartment-balances-are-not-derived-from-the-atom-map",
+    file: "lib/validation.mjs",
+    search: '          failures.push("compartment_state_atom_accounting_mismatch", `compartment_state_atom_accounting_mismatch:${ledgerClass}`);',
+    replace: '',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-outstanding-limit",
+    finding: "compartment-accepts-outstanding-exposure-above-its-limit",
+    file: "lib/validation.mjs",
+    search: '        failures.push("compartment_state_outstanding_limit_exceeded");',
+    replace: '',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "compartment-atom-delta-keyset",
+    finding: "compartment-transition-delta-does-not-cover-the-exact-map-diff",
+    file: "lib/validation.mjs",
+    search: '        failures.push("compartment_transition_atom_delta_keyset_mismatch");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "compartment-confirmed-event-diff",
+    finding: "compartment-transition-accepts-an-unexplained-confirmed-event",
+    file: "lib/validation.mjs",
+    search: '        failures.push("compartment_transition_confirmed_event_diff_mismatch");',
     replace: '',
     test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
   }

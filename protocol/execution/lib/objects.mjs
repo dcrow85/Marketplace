@@ -825,7 +825,8 @@ function executionChainProfiles() {
       ["cancellation_credential_continuity_receipt_hash", nhash], ["original_operation_locator", "originalOperationLocator"],
       ["expected_original_state", "enum:submitted|acknowledged|accepted|unknown"],
       ["authorized_cancel_state_set", "exactset:submitted|acknowledged|accepted|unknown"], ["cancellation_operation_kind", str],
-      ["acknowledged_warning_codes", strs], ["required_confirmation_assurance_policy_ref", ref],
+      ["acknowledged_warning_codes", strs], ["reserved_judgments_decided", strs],
+      ["required_confirmation_assurance_policy_ref", ref],
       ["confirmation_nonce", str], ["principal_revocation_nonce", uint], ["expires_at", time],
       ["authorization_hash", hash], ["principal_signature", sig],
       ["not_claiming", "exactset:cancellation_available|cancellation_effective|original_effect_undone"]

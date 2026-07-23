@@ -444,6 +444,9 @@ export function validateActionGetResponse(request, response, context = {}) {
     if (!requestValidate || !requestValidate(request)) return ["action_get_request_schema_invalid"];
     if (!validate || !validate(response)) return ["action_get_response_schema_invalid"];
     const failures = [];
+    const historicalEvidenceContext = {
+      ...context, historicalRead: true, requireDependencySignatures: true
+    };
     for (const [name, object] of [
       ["view", response.view], ["action_record", response.action_record],
       ["execution_binding_set", response.execution_binding_set],
@@ -559,10 +562,14 @@ export function validateActionGetResponse(request, response, context = {}) {
     } else if (response.authority_basis?.schema === "cairn.agent_mandate.v0.3") {
       failures.push(...validateMandate(response.authority_basis, context).map((code) => `action_get_authority_${code}`));
     } else if (response.authority_basis?.schema === "cairn.action_authorization.v0.2") {
-      failures.push(...validateActionAuthorization(response.authority_basis, response.execution_binding_set, context)
+      failures.push(...validateActionAuthorization(
+        response.authority_basis, response.execution_binding_set, historicalEvidenceContext
+      )
         .map((code) => `action_get_authority_${code}`));
     } else if (response.authority_basis?.schema === "cairn.cancellation_authorization.v0.1") {
-      failures.push(...validateCancellationAuthorization(response.authority_basis, response.execution_binding_set, context)
+      failures.push(...validateCancellationAuthorization(
+        response.authority_basis, response.execution_binding_set, historicalEvidenceContext
+      )
         .map((code) => `action_get_authority_${code}`));
     }
     if (response.authority_basis !== null) {
@@ -608,7 +615,8 @@ export function validateActionGetResponse(request, response, context = {}) {
       }
       failures.push(...validateAuthorityReservation(
         reservation, response.action_record, response.execution_binding_set,
-        { ...context, lineageCommitment: response.lineage_commitment, authority: response.authority_basis }
+        { ...historicalEvidenceContext, lineageCommitment: response.lineage_commitment,
+          authority: response.authority_basis }
       ).map((code) => `action_get_reservation_${code}`));
     }
     const currentReceiptProjection = [
@@ -633,10 +641,12 @@ export function validateActionGetResponse(request, response, context = {}) {
     } else if (gatePairPresent) {
       failures.push(...validateGateRequest(
         response.gate_request, response.execution_binding_set, response.authority_basis,
-        response.confirmation_receipt, { ...context, lineageCommitment: response.lineage_commitment }
+        response.confirmation_receipt,
+        { ...historicalEvidenceContext, lineageCommitment: response.lineage_commitment }
       ).map((code) => `action_get_gate_request_${code}`));
       failures.push(...validateGateResult(response.gate_result, {
-        ...context, gateRequest: response.gate_request, binding: response.execution_binding_set,
+        ...historicalEvidenceContext, gateRequest: response.gate_request,
+        binding: response.execution_binding_set,
         authority: response.authority_basis, confirmation: response.confirmation_receipt,
         lineageCommitment: response.lineage_commitment
       }).map((code) => `action_get_gate_result_${code}`));
@@ -659,7 +669,7 @@ export function validateActionGetResponse(request, response, context = {}) {
     } else if (issuanceConfirmationPresent) {
       failures.push(...validateExecutionConfirmation(
         response.confirmation_receipt, response.authority_basis, response.execution_binding_set, null,
-        { ...context, confirmationEvaluationTime: response.retrieved_at }
+        { ...historicalEvidenceContext, confirmationEvaluationTime: response.retrieved_at }
       ).map((code) => `action_get_confirmation_${code}`));
     } else if (expectedGate !== null) {
       failures.push("action_get_gate_pair_mismatch");
@@ -931,6 +941,57 @@ export function validateExecutionControlReceipt(value, context = {}) {
           after.principal_id !== value.principal_id))) {
       failures.push("execution_control_receipt_head_transition_mismatch");
     }
+    if ((before === null
+      ? value.before_scoped_control_map_ref !== null || value.before_scoped_control_map_hash !== null
+      : !sameObjectRef(value.before_scoped_control_map_ref, before.scoped_control_map_ref) ||
+        value.before_scoped_control_map_hash !== before.scoped_control_map_hash) ||
+        !sameObjectRef(value.after_scoped_control_map_ref, after?.scoped_control_map_ref) ||
+        value.after_scoped_control_map_hash !== after?.scoped_control_map_hash) {
+      failures.push("execution_control_receipt_map_binding_mismatch");
+    }
+    if (authorizationBasis) {
+      const authorization = context.controlAuthorization ??
+        resolveObject(context.objectResolver, value.control_authorization_ref);
+      if (!authorization || authorization.schema !== "cairn.execution_control_authorization.v0.1" ||
+          !exactRef(value.control_authorization_ref, authorization, context)) {
+        failures.push("execution_control_receipt_authorization_unresolved");
+      } else {
+        if (context.requireDependencySignatures === true && validateResolvedSignedObject(authorization, context).length) {
+          failures.push("execution_control_receipt_authorization_signature_invalid");
+        }
+        if (validateControlAuthorization(authorization, context).length ||
+            authorization.principal_id !== value.principal_id ||
+            authorization.expected_control_head_hash !== before?.head_hash ||
+            Date.parse(authorization.requested_at) > Date.parse(value.committed_at) ||
+            Date.parse(value.committed_at) >= Date.parse(authorization.expires_at)) {
+          failures.push("execution_control_receipt_authorization_mismatch");
+        }
+        const expectedState = new Map([
+          ["pause", "paused"], ["resume", "active"], ["revoke", "revoked"],
+          ["freeze_new_redemptions", "frozen_new_redemptions"]
+        ]).get(authorization.control_action);
+        const transitionedState = authorization.scope === "all_agents"
+          ? after?.global_state
+          : resolveObject(context.objectResolver, value.scoped_leaf_after_ref)?.state;
+        if (expectedState === undefined || transitionedState !== expectedState) {
+          failures.push("execution_control_receipt_authorized_transition_mismatch");
+        }
+      }
+    } else {
+      const namespace = resolveObject(context.objectResolver, value.control_namespace_ref);
+      if (!namespace || namespace.schema !== "cairn.execution_control_namespace.v0.1" ||
+          !exactRef(value.control_namespace_ref, namespace, context) ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(namespace, context).length) ||
+          namespace.principal_id !== value.principal_id ||
+          namespace.generation !== after?.control_namespace_generation ||
+          !sameObjectRef(after?.control_namespace_ref, value.control_namespace_ref) ||
+          (value.cause === "namespace_genesis" &&
+            (namespace.generation !== 0 || namespace.prior_namespace_ref !== null || before !== null)) ||
+          (value.cause === "namespace_rotation" &&
+            (!sameObjectRef(namespace.prior_namespace_ref, value.prior_control_namespace_ref) || before === null))) {
+        failures.push("execution_control_receipt_namespace_basis_mismatch");
+      }
+    }
     if (scopedLeafCause) {
       const leafBefore = value.scoped_leaf_before_ref === null ? null :
         resolveObject(context.objectResolver, value.scoped_leaf_before_ref);
@@ -1104,7 +1165,9 @@ export function validateDataGrantStateHead(value, context = {}) {
         failures.push("data_grant_state_transition_mismatch");
       }
     }
-    if (Date.parse(value.updated_at) >= Date.parse(value.expires_at)) {
+    const updatedAt = Date.parse(value.updated_at);
+    const expiresAt = Date.parse(value.expires_at);
+    if (value.state === "expired" ? updatedAt < expiresAt : updatedAt >= expiresAt) {
       failures.push("data_grant_state_interval_mismatch");
     }
     return unique(failures);
@@ -1243,6 +1306,74 @@ function inspectEnumerableMapNode(node, context, mapDomain) {
     }
   } else failures.push("map_node_kind_invalid");
   return unique(failures);
+}
+
+function resolveEnumerableMapEntries(mapRoot, mapDomain, context = {}) {
+  const failures = [];
+  const entries = [];
+  const seenNodes = new Set();
+  const seenKeys = new Set();
+  const visit = (reference, expected = null) => {
+    const node = resolveObject(context.objectResolver, reference);
+    const nodeKey = canonicalText(reference);
+    if (seenNodes.has(nodeKey)) {
+      failures.push("enumerable_map_cycle_detected");
+      return;
+    }
+    seenNodes.add(nodeKey);
+    if (!node || node.schema !== "cairn.enumerable_map_node.v0.1" ||
+        !exactRef(reference, node, context) || inspectEnumerableMapNode(node, context, mapDomain).length) {
+      failures.push("enumerable_map_descendant_invalid");
+      return;
+    }
+    if (expected && (node.path_prefix_nibbles !== expected.child_path_prefix_nibbles ||
+        node.subtree_entry_count !== expected.child_subtree_entry_count ||
+        node.entries_root !== expected.child_entries_root || node.node_hash !== expected.child_node_hash)) {
+      failures.push("enumerable_map_child_commitment_mismatch");
+    }
+    if (node.node_kind === "leaf") {
+      if (seenKeys.has(node.leaf_entry.entry_key)) failures.push("enumerable_map_duplicate_entry_key");
+      seenKeys.add(node.leaf_entry.entry_key);
+      entries.push({
+        leaf: node.leaf_entry,
+        object: resolveObject(context.objectResolver, node.leaf_entry.entry_object_ref)
+      });
+    } else if (node.node_kind === "branch") {
+      for (const child of node.branch_children) visit(child.child_node_ref, child);
+    }
+  };
+  visit(mapRoot.root_node_ref);
+  if (entries.length !== mapRoot.entry_count) failures.push("enumerable_map_resolved_count_mismatch");
+  return { entries, failures: unique(failures) };
+}
+
+function compartmentSubsetRoot(subsetKind, entries) {
+  return canonicalHash({
+    schema: "cairn.compartment_accounting_subset_root_preimage.v0.1",
+    subset_kind: subsetKind,
+    entry_refs: entries.map(({ leaf }) => leaf.entry_object_ref)
+      .sort((left, right) => canonicalText(left).localeCompare(canonicalText(right)))
+  });
+}
+
+export function compartmentEconomicAtomSubsetRoot(ledgerClass, entries) {
+  return compartmentSubsetRoot(`economic_atom:${ledgerClass}`,
+    entries.filter(({ object }) => object?.ledger_class === ledgerClass));
+}
+
+export function compartmentConfirmedEventSubsetRoot(eventKind, entries) {
+  return compartmentSubsetRoot(`confirmed_event:${eventKind}`,
+    entries.filter(({ object }) => object?.event_kind === eventKind));
+}
+
+function checkedAmountSum(entries) {
+  let total = 0;
+  for (const entry of entries) {
+    const value = entry.object?.amount?.amount_minor;
+    if (!Number.isSafeInteger(value) || value < 0 || !Number.isSafeInteger(total + value)) return null;
+    total += value;
+  }
+  return total;
 }
 
 export function validateEnumerableMapNode(node, context = {}) {
@@ -1390,6 +1521,11 @@ export function validateReceiverOutstandingStreamEntry(value, context = {}) {
     }
     const eventAssignment = resolveObject(context.objectResolver, value.event_id_slot_assignment_ref);
     const sequenceAssignment = resolveObject(context.objectResolver, value.sequence_slot_assignment_ref);
+    const expectedAssignmentState = new Map([
+      ["authenticated_stream_closed", "released_on_authenticated_closure"],
+      ["authenticated_irreversible_horizon", "released_on_authenticated_horizon"],
+      ["fenced_non_submission", "released_on_fenced_non_submission"]
+    ]).get(value.state) ?? "reserved";
     if (!exactExternalObject(value.event_id_slot_assignment_ref, eventAssignment,
       "cairn.bounded_index_slot_assignment.v0.1", context, "assignment_hash", ["slot_assignment_id"]) ||
         !exactExternalObject(value.sequence_slot_assignment_ref, sequenceAssignment,
@@ -1397,7 +1533,7 @@ export function validateReceiverOutstandingStreamEntry(value, context = {}) {
         eventAssignment.epoch !== value.assigned_identity_epoch ||
         sequenceAssignment.epoch !== value.assigned_identity_epoch ||
         eventAssignment.slot_kind !== "receiver_event_id" || sequenceAssignment.slot_kind !== "receiver_sequence" ||
-        eventAssignment.state !== "reserved" || sequenceAssignment.state !== "reserved" ||
+        eventAssignment.state !== expectedAssignmentState || sequenceAssignment.state !== expectedAssignmentState ||
         !sameObjectRef(eventAssignment.action_ref, value.action_ref) ||
         !sameObjectRef(sequenceAssignment.action_ref, value.action_ref) ||
         eventAssignment.effect_id !== value.effect_id || sequenceAssignment.effect_id !== value.effect_id ||
@@ -1519,7 +1655,7 @@ const RECEIVER_IDENTITY_TRANSITION_CAUSES = new Map([
     before: true, consumption: "consume_one" }],
   ["authenticated_stream_closed", { receiptCause: "authenticated_stream_closure_release",
     assignmentState: "released_on_authenticated_closure", before: true, membership: false,
-    consumption: "release" }],
+    consumption: "consume_one_and_release" }],
   ["authenticated_irreversible_horizon", { receiptCause: "authenticated_irreversible_horizon_release",
     assignmentState: "released_on_authenticated_horizon", before: true, membership: false,
     consumption: "release" }],
@@ -1580,11 +1716,16 @@ function boundedAssignmentTransitionFailures(transition, expectedAssignmentRefs,
       failures.push("bounded_assignment_transition_consumption_mismatch");
     } else if (beforeExact && afterExact && profile.consumption === "consume_one") {
       const expectedConsumed = assignmentBefore?.consumed_slots + 1;
-      const fullyConsumed = expectedConsumed === assignmentBefore?.reserved_slots;
+      if (!Number.isInteger(expectedConsumed) || expectedConsumed >= assignmentBefore?.reserved_slots ||
+          assignmentAfter?.consumed_slots !== expectedConsumed ||
+          assignmentAfter?.state !== "reserved" || item.after_map_membership !== true) {
+        failures.push("bounded_assignment_transition_consumption_mismatch");
+      }
+    } else if (beforeExact && afterExact && profile.consumption === "consume_one_and_release") {
+      const expectedConsumed = assignmentBefore?.consumed_slots + 1;
       if (!Number.isInteger(expectedConsumed) || expectedConsumed > assignmentBefore?.reserved_slots ||
           assignmentAfter?.consumed_slots !== expectedConsumed ||
-          assignmentAfter?.state !== (fullyConsumed ? "fully_consumed" : "reserved") ||
-          item.after_map_membership !== !fullyConsumed) {
+          assignmentAfter?.state !== profile.assignmentState || item.after_map_membership !== false) {
         failures.push("bounded_assignment_transition_consumption_mismatch");
       }
     } else if (beforeExact && afterExact && profile.consumption === "release" &&
@@ -1616,7 +1757,7 @@ function exactBoundedIdentityTransition(reference, expectedAssignmentRefs, recei
   };
 }
 
-function receiverEventIdentityTransitionFailures(reference, entry, scopeBefore, scopeAfter,
+function receiverEventIdentityTransitionFailures(reference, beforeEntry, afterEntry, scopeBefore, scopeAfter,
   authorityTransactionId, context) {
   const receipt = resolveObject(context.objectResolver, reference);
   const failures = [];
@@ -1657,10 +1798,14 @@ function receiverEventIdentityTransitionFailures(reference, entry, scopeBefore, 
       !sameObjectRef(receipt.assigned_identity_epoch_after_head_ref,
         scopeAfter?.accepting_index_epoch_state_head_ref) ||
       receipt.assigned_identity_epoch_after_head_hash !== scopeAfter?.accepting_index_epoch_state_head_hash ||
-      !sameObjectRef(receipt.event_id_slot_assignment_before_ref, entry.event_id_slot_assignment_ref) ||
-      receipt.event_id_slot_assignment_before_hash !== entry.event_id_slot_assignment_hash ||
-      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, entry.sequence_slot_assignment_ref) ||
-      receipt.sequence_slot_assignment_before_hash !== entry.sequence_slot_assignment_hash) {
+      !sameObjectRef(receipt.event_id_slot_assignment_before_ref, beforeEntry?.event_id_slot_assignment_ref) ||
+      receipt.event_id_slot_assignment_before_hash !== beforeEntry?.event_id_slot_assignment_hash ||
+      !sameObjectRef(receipt.event_id_slot_assignment_after_ref, afterEntry?.event_id_slot_assignment_ref) ||
+      receipt.event_id_slot_assignment_after_hash !== afterEntry?.event_id_slot_assignment_hash ||
+      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, beforeEntry?.sequence_slot_assignment_ref) ||
+      receipt.sequence_slot_assignment_before_hash !== beforeEntry?.sequence_slot_assignment_hash ||
+      !sameObjectRef(receipt.sequence_slot_assignment_after_ref, afterEntry?.sequence_slot_assignment_ref) ||
+      receipt.sequence_slot_assignment_after_hash !== afterEntry?.sequence_slot_assignment_hash) {
     failures.push("receiver_event_identity_binding_receipt_mismatch");
   }
   const transitions = [
@@ -1688,7 +1833,7 @@ function receiverEventIdentityTransitionFailures(reference, entry, scopeBefore, 
     reservation_assignment_transitions_root: canonicalHash(transitions),
     terminal_release_evidence_ref: null,
     terminal_release_evidence_hash: null
-  }, [entry.event_id_slot_assignment_ref, entry.sequence_slot_assignment_ref],
+  }, [beforeEntry.event_id_slot_assignment_ref, beforeEntry.sequence_slot_assignment_ref],
   "authenticated_event_observed", authorityTransactionId, null, context));
   return unique(failures);
 }
@@ -1988,8 +2133,7 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
     const immutableFields = [
       "outstanding_stream_key", "receiver_sequence_epoch_selector_key", "identity_scope_index_key",
       "action_ref", "effect_id", "lineage_id", "precommitted_client_reference", "assigned_identity_epoch",
-      "event_id_slot_assignment_ref", "event_id_slot_assignment_hash", "sequence_slot_assignment_ref",
-      "sequence_slot_assignment_hash", "trust_epoch_assignment_manifest_ref", "trust_epoch_assignment_manifest_hash",
+      "trust_epoch_assignment_manifest_ref", "trust_epoch_assignment_manifest_hash",
       "trust_epoch_assignment_count", "trust_epoch_assignments_root", "future_dependency_pool_state_head_ref",
       "future_dependency_pool_state_head_hash", "future_dependency_assignment_ref", "future_dependency_assignment_hash",
       "connection_outstanding_action_key", "finality_transition_profile_ref",
@@ -2001,6 +2145,12 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
           canonicalHash(before[field]) !== canonicalHash(after[field])) ||
           after.sequence !== before.sequence + 1 || after.previous_entry_hash !== before.entry_hash))) {
       failures.push("receiver_outstanding_transition_sequence_mismatch");
+    }
+    if (["reservation_registered", "handoff_bound"].includes(value.cause) && before !== null &&
+        ["event_id_slot_assignment_ref", "event_id_slot_assignment_hash", "sequence_slot_assignment_ref",
+          "sequence_slot_assignment_hash"].some((field) =>
+          canonicalHash(before[field]) !== canonicalHash(after[field]))) {
+      failures.push("receiver_outstanding_transition_assignment_successor_mismatch");
     }
     if (before !== null) {
       const beforeConnection = before.connection_outstanding_action_entry_ref === null ? null :
@@ -2170,15 +2320,29 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
       }
     } else if (value.cause === "authenticated_event_observed") {
       if (receiverEventIdentityTransitionFailures(value.identity_epoch_transition_receipt_ref,
-        after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {
+        before, after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {
         failures.push("receiver_outstanding_transition_identity_transition_mismatch");
       }
     } else {
+      const expectedIdentityAssignmentRefs = before === null
+        ? [after.event_id_slot_assignment_ref, after.sequence_slot_assignment_ref]
+        : [before.event_id_slot_assignment_ref, before.sequence_slot_assignment_ref];
       const identityResult = exactBoundedIdentityTransition(value.identity_epoch_transition_receipt_ref,
-        [after.event_id_slot_assignment_ref, after.sequence_slot_assignment_ref], value.cause,
+        expectedIdentityAssignmentRefs, value.cause,
         value.authority_transaction_id, terminal ? value.terminal_release_evidence_ref : null, context);
       const identityTransition = identityResult.transition;
+      const transitionBeforeRefs = identityTransition?.reservation_assignment_transitions?.map(
+        ({ assignment_before_ref }) => assignment_before_ref
+      ) ?? [];
+      const transitionAfterRefs = identityTransition?.reservation_assignment_transitions?.map(
+        ({ assignment_after_ref }) => assignment_after_ref
+      ) ?? [];
       if (identityResult.failures.length ||
+          (before !== null && canonicalHash(sortedUniqueRefs(transitionBeforeRefs)) !==
+            canonicalHash(sortedUniqueRefs(expectedIdentityAssignmentRefs))) ||
+          canonicalHash(sortedUniqueRefs(transitionAfterRefs)) !== canonicalHash(sortedUniqueRefs([
+            after.event_id_slot_assignment_ref, after.sequence_slot_assignment_ref
+          ])) ||
           !sameObjectRef(identityTransition?.before_directory_head_ref, scopeBefore?.index_epoch_directory_head_ref) ||
           identityTransition?.before_directory_head_hash !== scopeBefore?.index_epoch_directory_head_hash ||
           identityTransition?.before_directory_head_hash !== identityTransition?.before_directory_head_ref?.object_hash ||
@@ -2237,6 +2401,7 @@ export function validateEnumerableMapRoot(value, context = {}) {
       return unique(failures);
     }
     failures.push(...inspectEnumerableMapNode(rootNode, context, expectedDomain));
+    failures.push(...resolveEnumerableMapEntries(value, expectedDomain, context).failures);
     if (value.entry_count !== rootNode.subtree_entry_count || value.entries_root !== rootNode.entries_root ||
         (value.entry_count === 0 && rootNode.node_kind !== "empty") ||
         (value.entry_count > 0 && rootNode.node_kind === "empty")) {
@@ -2974,6 +3139,7 @@ export function validateCompartmentStateHead(value, context = {}) {
       [value.confirmed_event_manifest_ref, value.confirmed_event_manifest_hash,
         value.confirmed_event_count, null, "compartment_confirmed_event"]
     ];
+    const resolvedMaps = new Map();
     for (const [reference, hash, count, entriesRoot, mapDomain] of manifestChecks) {
       const manifest = resolveObject(context.objectResolver, reference);
       if (!manifest || manifest.schema !== "cairn.enumerable_map_root.v0.1" ||
@@ -2983,6 +3149,8 @@ export function validateCompartmentStateHead(value, context = {}) {
           (entriesRoot !== null && manifest.entries_root !== entriesRoot) ||
           (context.requireDependencySignatures === true && validateResolvedSignedObject(manifest, context).length)) {
         failures.push("compartment_state_manifest_mismatch");
+      } else {
+        resolvedMaps.set(mapDomain, manifest);
       }
     }
     const accountingAsset = compartment?.accounting_asset;
@@ -2990,6 +3158,61 @@ export function validateCompartmentStateHead(value, context = {}) {
       value.confirmed_refunded, value.confirmed_reversal_loss, value.outstanding_reversal_exposure,
       value.quarantine_exposure].filter((item) => item !== null)) {
       if (money.asset !== accountingAsset) failures.push("compartment_state_asset_mismatch");
+    }
+    const atomMap = resolvedMaps.get("compartment_economic_atom");
+    const eventMap = resolvedMaps.get("compartment_confirmed_event");
+    const atomResolution = atomMap
+      ? resolveEnumerableMapEntries(atomMap, "compartment_economic_atom", context)
+      : { entries: [], failures: ["compartment_state_atom_map_unresolved"] };
+    const eventResolution = eventMap
+      ? resolveEnumerableMapEntries(eventMap, "compartment_confirmed_event", context)
+      : { entries: [], failures: ["compartment_state_event_map_unresolved"] };
+    if (atomResolution.failures.length || eventResolution.failures.length) {
+      failures.push("compartment_state_accounting_map_unresolved");
+    } else {
+      const atomEntries = atomResolution.entries;
+      const eventEntries = eventResolution.entries;
+      if (atomEntries.some(({ object }) => object?.economic_resource_key !== value.economic_resource_key ||
+          object?.compartment_control_key !== value.compartment_control_key ||
+          object?.amount?.asset !== accountingAsset) ||
+          eventEntries.some(({ object }) => object?.economic_resource_key !== value.economic_resource_key ||
+          object?.compartment_control_key !== value.compartment_control_key ||
+          object?.amount?.asset !== accountingAsset)) {
+        failures.push("compartment_state_accounting_entry_mismatch");
+      }
+      const atomClasses = new Map([
+        ["reserved", ["cairn_reserved", "active_hold_atoms_root"]],
+        ["active_reversal", ["outstanding_reversal_exposure", "active_reversal_atoms_root"]],
+        ["quarantine_hold", ["quarantine_exposure", "quarantine_hold_atoms_root"]]
+      ]);
+      for (const [ledgerClass, [amountField, rootField]] of atomClasses) {
+        const subset = atomEntries.filter(({ object }) => object?.ledger_class === ledgerClass);
+        const total = checkedAmountSum(subset);
+        if (total === null || amount(value[amountField]) !== total ||
+            value[rootField] !== compartmentEconomicAtomSubsetRoot(ledgerClass, atomEntries)) {
+          failures.push("compartment_state_atom_accounting_mismatch", `compartment_state_atom_accounting_mismatch:${ledgerClass}`);
+        }
+      }
+      const eventKinds = new Map([
+        ["confirmed_debit", ["confirmed_spent", "confirmed_spend_events_root"]],
+        ["confirmed_refund", ["confirmed_refunded", "confirmed_refund_events_root"]],
+        ["confirmed_reversal", ["confirmed_reversal_loss", "confirmed_reversal_events_root"]]
+      ]);
+      for (const [eventKind, [amountField, rootField]] of eventKinds) {
+        const subset = eventEntries.filter(({ object }) => object?.event_kind === eventKind);
+        const total = checkedAmountSum(subset);
+        if (total === null || amount(value[amountField]) !== total ||
+            value[rootField] !== compartmentConfirmedEventSubsetRoot(eventKind, eventEntries)) {
+          failures.push("compartment_state_event_accounting_mismatch", `compartment_state_event_accounting_mismatch:${eventKind}`);
+        }
+      }
+      const outstanding = amount(value.cairn_reserved) + amount(value.outstanding_reversal_exposure) +
+        amount(value.quarantine_exposure);
+      if (!Number.isSafeInteger(outstanding) || outstanding < 0 ||
+          (value.state !== "frozen" && (outstanding > amount(compartment?.outstanding_exposure_limit) ||
+            outstanding > amount(compartment?.configured_ceiling)))) {
+        failures.push("compartment_state_outstanding_limit_exceeded");
+      }
     }
     if (value.sequence === 0) {
       if (value.fencing_token !== 0) failures.push("compartment_state_genesis_mismatch");
@@ -3099,6 +3322,76 @@ export function validateCompartmentStateTransitionReceipt(value, context = {}) {
         failures.push("compartment_transition_cause_delta_root_mismatch");
       }
     }
+    const resolveSnapshot = (reference, domain) => {
+      if (reference === null) return { entries: new Map(), failures: [] };
+      const root = resolveObject(context.objectResolver, reference);
+      if (!root || root.schema !== "cairn.enumerable_map_root.v0.1" || !exactRef(reference, root, context)) {
+        return { entries: new Map(), failures: ["root_unresolved"] };
+      }
+      const resolved = resolveEnumerableMapEntries(root, domain, context);
+      return {
+        entries: new Map(resolved.entries.map((entry) => [entry.leaf.entry_key, entry])),
+        failures: resolved.failures
+      };
+    };
+    const atomBeforeSnapshot = resolveSnapshot(value.economic_atom_manifest_before_ref, "compartment_economic_atom");
+    const atomAfterSnapshot = resolveSnapshot(value.economic_atom_manifest_after_ref, "compartment_economic_atom");
+    if (atomBeforeSnapshot.failures.length || atomAfterSnapshot.failures.length) {
+      failures.push("compartment_transition_atom_map_unresolved");
+    } else {
+      const changedAtomKeys = [...new Set([
+        ...atomBeforeSnapshot.entries.keys(), ...atomAfterSnapshot.entries.keys()
+      ])].filter((key) => atomBeforeSnapshot.entries.get(key)?.leaf.entry_object_hash !==
+        atomAfterSnapshot.entries.get(key)?.leaf.entry_object_hash).sort();
+      const deltaByAtom = new Map();
+      for (const delta of deltaEntries) {
+        if (deltaByAtom.has(delta.atom_id)) failures.push("compartment_transition_duplicate_atom_delta");
+        deltaByAtom.set(delta.atom_id, delta);
+      }
+      if (canonicalHash(changedAtomKeys) !== canonicalHash([...deltaByAtom.keys()].sort())) {
+        failures.push("compartment_transition_atom_delta_keyset_mismatch");
+      }
+      for (const atomId of changedAtomKeys) {
+        const beforeAtom = atomBeforeSnapshot.entries.get(atomId)?.object ?? null;
+        const afterAtom = atomAfterSnapshot.entries.get(atomId)?.object ?? null;
+        const delta = deltaByAtom.get(atomId);
+        const amountObject = beforeAtom?.amount ?? afterAtom?.amount;
+        if (!delta || delta.before_class !== (beforeAtom?.ledger_class ?? "absent") ||
+            delta.after_class !== (afterAtom?.ledger_class ?? "absent") ||
+            canonicalHash(delta.amount) !== canonicalHash(amountObject) ||
+            (beforeAtom && afterAtom && (["atom_id", "economic_resource_key", "compartment_control_key",
+              "obligation_or_reservation_id", "component_id", "reservation_fence"].some((field) =>
+              canonicalHash(beforeAtom[field]) !== canonicalHash(afterAtom[field])) ||
+              canonicalHash(beforeAtom.amount) !== canonicalHash(afterAtom.amount)))) {
+          failures.push("compartment_transition_atom_delta_mismatch");
+        }
+      }
+    }
+    const eventBeforeSnapshot = resolveSnapshot(value.confirmed_event_manifest_before_ref, "compartment_confirmed_event");
+    const eventAfterSnapshot = resolveSnapshot(value.confirmed_event_manifest_after_ref, "compartment_confirmed_event");
+    if (eventBeforeSnapshot.failures.length || eventAfterSnapshot.failures.length) {
+      failures.push("compartment_transition_event_map_unresolved");
+    } else {
+      const insertedEvents = [];
+      let invalidEventChange = false;
+      for (const [key, beforeEntry] of eventBeforeSnapshot.entries) {
+        const afterEntry = eventAfterSnapshot.entries.get(key);
+        if (!afterEntry || afterEntry.leaf.entry_object_hash !== beforeEntry.leaf.entry_object_hash) invalidEventChange = true;
+      }
+      for (const [key, afterEntry] of eventAfterSnapshot.entries) {
+        if (!eventBeforeSnapshot.entries.has(key)) insertedEvents.push(afterEntry);
+      }
+      const expectedEventKind = new Map([
+        ["receiver_debit", "confirmed_debit"], ["refund", "confirmed_refund"],
+        ["reversal", "confirmed_reversal"]
+      ]).get(value.cause);
+      if (invalidEventChange ||
+          (expectedEventKind === undefined && insertedEvents.length !== 0) ||
+          (expectedEventKind !== undefined &&
+            (insertedEvents.length === 0 || insertedEvents.some(({ object }) => object?.event_kind !== expectedEventKind)))) {
+        failures.push("compartment_transition_confirmed_event_diff_mismatch");
+      }
+    }
     const headManifestPairs = [
       ["reservation_manifest", "active_reservation_manifest_ref", "active_reservation_manifest_hash"],
       ["economic_atom_manifest", "current_economic_atom_manifest_ref", "current_economic_atom_manifest_hash"],
@@ -3179,6 +3472,10 @@ export function validateCompartmentStateTransitionReceipt(value, context = {}) {
       if ((causeDeltaAllowed && (deltaEntries.length === 0 || deltaEntries.some((delta) => !causeDeltaAllowed(delta)))) ||
           (["onboard", "close", "expire"].includes(value.cause) && deltaEntries.length !== 0)) {
         failures.push("compartment_transition_cause_delta_mismatch");
+      }
+      if (value.cause === "reservation_hold" && after?.receiver_backed_available !== null &&
+          amount(after.receiver_backed_available) < afterReserved) {
+        failures.push("compartment_transition_receiver_backing_exceeded");
       }
       if (["close", "expire"].includes(value.cause) &&
           (after?.active_reservation_count !== 0 || after?.current_economic_atom_count !== 0 ||
@@ -3795,7 +4092,22 @@ export function validateBindingSet(value, context = {}) {
     const grantHeadSet = value.data_grant_state_heads.map(({ data_grant_ref }) => canonicalHash(data_grant_ref)).sort();
     if (canonicalHash(grantRefSet) !== canonicalHash(grantHeadSet)) failures.push("binding_data_grant_head_set_mismatch");
     for (const head of value.data_grant_state_heads) {
+      const grant = resolveObject(context.objectResolver, head.data_grant_ref);
+      const grantSchema = schemaForResolvedObject(grant, context);
       const current = resolveObject(context.objectResolver, head.current_state_head_ref);
+      if (!grant || grant.schema !== "cairn.data_grant.v0.1" || !grantSchema ||
+          !sameObjectRef(head.data_grant_ref, objectRefFor(grant, grantSchema)) ||
+          validateResolvedSignedObject(grant, context).length ||
+          grant.principal_id !== value.principal_id || current?.principal_id !== value.principal_id) {
+        failures.push("binding_data_grant_principal_mismatch");
+      }
+      if (value.actor_branch === "agent_runtime" && grant &&
+          (grant.recipient !== (context.runtimeBinding ??
+            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id ||
+           !grant.audience?.includes((context.runtimeBinding ??
+            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id))) {
+        failures.push("binding_data_grant_runtime_recipient_mismatch");
+      }
       if (!current || current.schema !== "cairn.data_grant_state_head.v0.1" ||
           !exactRef(head.current_state_head_ref, current, context) ||
           validateResolvedSignedObject(current, context).length ||
@@ -4024,6 +4336,12 @@ export function validateCancellationAuthorization(value, binding, context = {}) 
       if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||
           value.principal_revocation_nonce !== currentPrincipalRevocationNonce) {
         failures.push("cancellation_principal_revocation_nonce_mismatch");
+      }
+      const requiredReservedJudgments = typeof context.reservedJudgmentsResolver === "function"
+        ? context.reservedJudgmentsResolver(value.principal_id, binding) : context.requiredReservedJudgments;
+      if (!Array.isArray(requiredReservedJudgments) ||
+          canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {
+        failures.push("cancellation_reserved_judgments_mismatch");
       }
     }
     const continuity = value.cancellation_credential_continuity_receipt_ref !== null;
@@ -4436,6 +4754,17 @@ export function validateGateRequest(value, binding, authority, confirmation, con
     ], "gate_request_ref_hash_mismatch"));
     if (!binding || !exactRef(value.execution_binding_set_ref, binding, context) || value.execution_binding_set_hash !== binding.binding_set_hash ||
         value.principal_id !== binding.principal_id || value.action_control_key !== binding.action_control_key) failures.push("gate_request_binding_mismatch");
+    if (context.requireDependencySignatures === true) {
+      if (binding && validateResolvedSignedObject(binding, context).length) {
+        failures.push("gate_request_binding_signature_invalid");
+      }
+      if (authority && validateResolvedSignedObject(authority, context).length) {
+        failures.push("gate_request_authority_signature_invalid");
+      }
+      if (confirmation && validateResolvedSignedObject(confirmation, context).length) {
+        failures.push("gate_request_confirmation_signature_invalid");
+      }
+    }
     failures.push(...gateDependencyProjectionFailures(value, binding, {
       ...context, authority, confirmation
     }));
@@ -4488,6 +4817,9 @@ export function validateGateRequest(value, binding, authority, confirmation, con
       if (!commitment || !exactRef(binding?.lineage_commitment_ref, commitment, context)) {
         failures.push("gate_request_mandate_commitment_unresolved");
       } else {
+        if (context.requireDependencySignatures === true && validateResolvedSignedObject(commitment, context).length) {
+          failures.push("gate_request_lineage_commitment_signature_invalid");
+        }
         failures.push(...mandateBindingFailures(authority, commitment, binding, context)
           .map((code) => `gate_request_${code}`));
       }
@@ -4525,6 +4857,10 @@ export function validateGateResult(value, context = {}) {
         validatePhase1Object(gateRequest, context).length || !exactRef(value.gate_request_ref, gateRequest, context) ||
         value.gate_request_hash !== gateRequest.request_hash) {
       failures.push("gate_result_request_mismatch");
+    }
+    if (gateRequest && context.requireDependencySignatures === true &&
+        validateResolvedSignedObject(gateRequest, context).length) {
+      failures.push("gate_result_request_signature_invalid");
     }
     if (!binding || binding.schema !== "cairn.execution_binding_set.v0.1" ||
         validateBindingSet(binding, context).length || !exactRef(value.execution_binding_set_ref, binding, context) ||

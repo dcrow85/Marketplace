@@ -2,10 +2,10 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: rounds 1–32 findings remediated; replacement candidate awaiting exact-commit freeze and fresh three-reviewer gate
-Prose dependency SHA-256: `e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015`
-Candidate internal bundle hash: `sha-256:86aa6c7ebce831205d8d0c66edc8580b7f0c9696391d3470c255d098270c4679`
-Candidate operation-registry hash: `sha-256:20b8da602b6e3a3625b18e5742560c8f4cf077cd08c98bf2f209119988a96e5e`
+Status: rounds 1–35 findings remediated; replacement candidate frozen for a fresh exact-commit three-reviewer gate
+Prose dependency SHA-256: `3d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764`
+Candidate internal bundle hash: `sha-256:098b1c75096d0c9af4ebc794aa414ada5b704744a8f9d95d55e72ff77b4e082e`
+Candidate operation-registry hash: `sha-256:4cf66e2b5cf428617c8df1cb3ad3e1b46fc405a5efb44a3fd075f9d011fe9a96`
 
 ## Claim boundary
 
@@ -36,7 +36,7 @@ The package pins and does not widen the proposal foundation:
 - strict I-JSON source checking for the hand-authored manifest, RFC 8785/JCS
   bundle hashing, strict signed-object annotations, and Ed25519 validation; and
 - three closed generic-read response families: exactly 12 pinned proposal
-  objects for `base_object.get`, two policy objects for `policy.get`, and nine
+  objects for `base_object.get`, two policy objects for `policy.get`, and 11
   receipt objects for `receipt.get`, with exact returned-ref and sibling
   ref/hash validation;
 - deterministic high-risk validators for exact release, controller, connection,
@@ -54,7 +54,7 @@ The current local suite passes 30/30 controls:
 2. deterministic bundle and registry bytes;
 3. exact read-only/non-effectful registry surface;
 4. typed, endpoint-family-closed, request-bound generic and composite action
-   read responses with all 39 Phase 1 object families reachable;
+   read responses with all 44 Phase 1 object families reachable;
 5. byte-based request/object/string/ref, depth, property, per-array, and
    aggregate-array resource ceilings;
 6. valid bound specimen plus extension rejection for every object schema;
@@ -95,7 +95,7 @@ The current local suite passes 30/30 controls:
 
 ## Direct mutation controls
 
-The package kills 330/330 direct mutants. Covered failure families are:
+The package kills 349/349 direct mutants. Covered failure families are:
 
 - prose, base-bundle, and base-registry drift;
 - accidentally mutating or effectful operation advertisement;
@@ -443,7 +443,7 @@ candidate edits. Their P1 findings were accepted and remediated:
 | P1R27-001 | P1 | Receiver event and terminal completion paths could confuse assignment epochs, partial consumption, receipt families, scope successors, or the planned assignment set | accepted_and_fixed | Receiver event transitions bind exact identity scope and consume one reserved slot; completion groups exact assignment refs by exact transition, proves complete identity/trust sets, and shares the terminal authority transaction across child receipts |
 | P1R28-001 | P1 | The prose left current-vs-historical read behavior, action-authority policy inputs, and terminal completion identity insufficiently explicit | accepted_and_fixed | The fixed prose now names the current getter set, authenticated dependency behavior, current policy inputs, and exact composite terminal identity fields without adding a service or mutation surface |
 
-## Independent audit rounds 29–32 and local mutation replay
+## Independent audit rounds 29–35 and local mutation replay
 
 The final pre-freeze cold reviews found one additional machine-closure defect
 and five stale/ambiguous mutation anchors. All were accepted. No reviewer
@@ -456,13 +456,30 @@ modified generated artifacts or deployed state.
 | P1R31-001 | P1 | Some receiver/control/DataGrant counterexamples were rejected upstream for a different defect, leaving the intended predicate unproved | accepted_and_fixed | Fixtures now isolate each invariant: signed skipped control heads, unauthenticated control heads/leaves, a DataGrant cross-wire at the state validator, receiver immutable drift that remains intrinsically valid, and a completion-only wrong assignment transition |
 | P2R32-001 | P2 | Eight mutation anchors no longer matched exactly after remediation, and the first replay exposed seven surviving controls | accepted_and_fixed | Every anchor now matches exactly once; the seven survivors were dispositioned as masked-fixture gaps, corrected, and the complete suite now kills 330/330 direct mutants |
 
-The current pre-freeze candidate is the exact bundle and registry hash at the
+The first frozen replacement, commit `0b98fffb8e9dd59b465e178a9fad9c30c9ca3a4a`,
+was then rejected by two context-blind reviewers and one informed release
+reviewer. The rejected bytes are not the current candidate. Every finding was
+accepted and remediated before preparing this replacement freeze:
+
+| ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
+|---|---:|---|---|---|
+| P1R33-001 | P1 | An exact GateResult read authenticated the result but did not authenticate its exact GateRequest dependency | accepted_and_fixed | GateResult now verifies the resolved GateRequest signature whenever dependency signatures are required; GateRequest independently authenticates its binding, authority, confirmation, and mandate-lineage dependency graph |
+| P1R33-002 | P1 | A BindingSet could carry a valid foreign-principal DataGrant graph or a grant addressed to another runtime | accepted_and_fixed | Binding validation resolves the signed base grant and current head, closes principal identity across the graph, and requires the exact runtime-instance recipient and audience for agent-runtime bindings |
+| P1R33-003 | P1 | Cancellation authority did not bind the current reserved-judgment vector | accepted_and_fixed | CancellationAuthorization now carries and validates the exact current `reserved_judgments_decided` vector alongside the principal revocation nonce |
+| P1R33-004 | P1 | ExecutionControlReceipt did not independently resolve its authority basis or prove the exact control-map transition | accepted_and_fixed | Receipt validation now authenticates and semantically validates the exact control authorization, expected prior head, time window, authorized successor state, namespace basis, and before/after scoped-map projection |
+| P2R33-005 | P2 | A historical ActionGet could become unreadable after later nonce or judgment-policy drift | accepted_and_fixed | Composite historical evidence is validated with authenticated dependencies but without reapplying present-day eligibility policy; live redemption eligibility remains current-state checked |
+| P1R34-001 | P1 | Authenticated receiver events and closure did not require the entry to advance to exact successor assignments or consume the closing event | accepted_and_fixed | Nonterminal events bind before and after assignment refs, consume exactly one while capacity remains, and update the entry to both exact successors; authenticated closure consumes exactly one and then releases, while horizon/fence release preserves consumption |
+| P1R34-002 | P1 | Compartment balances, roots, exposure limits, and delta manifests were not recomputed from complete committed map trees | accepted_and_fixed | Recursive map resolution derives all economic-atom and confirmed-event subsets, balances, roots, and exposure; transitions require the exact changed-atom keyset, exact semantic values, append-only event diff, and cause-specific event kinds |
+| P2R34-003 | P2 | DataGrant expiry-state timing rejected the exact expiry boundary | accepted_and_fixed | Nonexpired states require `updated_at < expires_at`; `expired` requires `updated_at >= expires_at`, including equality |
+| P2R35-001 | P2 | Release documentation retained obsolete hashes, object/receipt family counts, mutation totals, and pre-freeze wording | accepted_and_fixed | This register, the package README, and the coordination marker now state the exact 44-object/34-operation/349-control candidate and distinguish the rejected freeze from the pending replacement |
+
+The current replacement candidate is the exact bundle and registry hash at the
 top of this register. It has 48 schema documents: 43 signed object families,
 one content-addressed map-node family, and four bundle/registry/common
 documents. It exposes 34 schema-only read operations, passes 30/30 authored
-test groups, and kills 330/330 direct mutants. Closure remains open until these
-exact bytes are frozen in a commit and fresh blind semantic, blind mutation/
-receiver, and informed release reviewers all accept that commit.
+test groups, and kills 349/349 direct mutants. These exact bytes are frozen;
+closure remains open until fresh blind semantic, blind mutation/receiver, and
+informed release reviewers all accept the frozen commit.
 
 ## Local remediation ledger
 
@@ -482,7 +499,7 @@ receiver, and informed release reviewers all accept that commit.
 This register remains open until a reviewer who did not author the candidate:
 
 1. verifies the candidate hash before and after a read-only review;
-2. reproduces all 30 authored controls and 330 killed mutants;
+2. reproduces all 30 authored controls and 349 killed mutants;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
 4. audits field closure against the fixed prose, especially the execution-chain

@@ -64,17 +64,22 @@ reference service.
   validity is contained by both runtime and connection authorization;
 - DataGrant state is a first-class signed current-head chain: genesis binds the
   issued grant/count, reads decrement exactly once, pause/resume/revoke/expiry
-  advance the revocation nonce, and bindings resolve the exact signed current
-  grant head rather than trusting a caller-supplied tuple;
+  advance the revocation nonce, the `expired` state begins at the exact expiry
+  boundary, and bindings resolve the exact signed current grant and principal/
+  runtime recipient graph rather than trusting a caller-supplied tuple;
 - receiver-stream entry keys are derived; slot/trust/future/stream/connection
   dependencies are exact; receiver map transitions carry before/after proofs
-  and immutable-frontier checks; all three terminal causes require exact
+  and immutable-frontier checks; authenticated events advance both assignment
+  successors and consume exactly one slot, authenticated closure consumes its
+  final event before release, and all three terminal causes require exact
   evidence, release plans, identity/trust/stream/connection children, and a
   deterministic completion receipt;
 - compartment state now resolves exact typed reservation, economic-atom, and
-  confirmed-event maps; transition receipts bind the exact cause core, manifest
-  projections, semantic atom deltas, money-class projection, closure emptiness,
-  predecessor, asset, transaction, and signature chronology;
+  confirmed-event map trees; balances, exposure ceilings, and subset roots are
+  recomputed from their leaves, while transition receipts bind the exact map
+  diff, cause core, manifest projections, semantic atom deltas, confirmed-event
+  insertions, money-class projection, closure emptiness, predecessor, asset,
+  transaction, and signature chronology;
 - request-bound composite action reads that close the exact action, current
   state, binding, commitment, authority branch, lineage, private activity
   detail, authority reservations, and gate chain rather than merely checking
@@ -97,7 +102,7 @@ reference service.
 - direct mutation controls for namespace, dependency, authority, target-union,
   limit, connection, chain, compatibility-envelope, registry-metadata,
   package-isolation, and read-only-surface failures. The current suite kills all
-  330 declared direct mutants.
+  349 declared direct mutants.
 
 ## Excluded
 

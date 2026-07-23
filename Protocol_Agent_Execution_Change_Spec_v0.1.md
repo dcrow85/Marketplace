@@ -544,7 +544,10 @@ revoked | expired`; `paused → active | revoked | expired`; and `exhausted →
 revoked | expired`. Exhausted preserves zero reads but is not immune to principal
 revocation or authority-time expiry; either successor advances sequence/nonce and
 immediately blocks a not-yet-handed-off disclosure. Revoked and expired are
-terminal.
+terminal. An `expired` successor is valid only when `updated_at >= expires_at`;
+every other state is valid only when `updated_at < expires_at`. Authority-time
+expiry before that boundary and any non-expired successor at or after it are
+invalid.
 
 Every private read emits the unique signed provenance object below. The service
 allocates `read_fence` serializably under the grant; no two receipts may name the
@@ -1571,6 +1574,20 @@ obligation.current_exposure_amount =
   sum(active reversal atoms keyed to that obligation) +
   sum(quarantine hold atoms keyed to that obligation)
 ```
+
+Each accounting subset root above is the RFC 8785/SHA-256 hash of
+`{schema: cairn.compartment_accounting_subset_root_preimage.v0.1,
+subset_kind, entry_refs}`, where `entry_refs` is the complete exact ObjectRef set
+for that ledger class or confirmed-event kind, sorted by canonical ObjectRef
+bytes. The domain-separated `subset_kind` is `economic_atom:<ledger class>` or
+`confirmed_event:<event kind>`. The authority walks the complete committed
+enumerable-map tree, rejects unresolved descendants, cycles, duplicate keys, or
+child-summary drift, and recomputes every subset root, money total, and
+outstanding limit from those exact entries. Every compartment transition also
+requires the economic-atom delta manifest to equal the exact before/after atom
+map diff one-for-one; an added, removed, changed, omitted, or extra atom is
+invalid even when aggregate money happens to match. Confirmed-event entries are
+append-only and their event kind must match the transition cause.
 
 `active_reservations_root` commits the reservation records whose economic atoms
 are exactly `active_hold_atoms_root`; a missing, extra, duplicated, or differently
@@ -8175,6 +8192,7 @@ expected_original_state: submitted | acknowledged | accepted | unknown
 authorized_cancel_state_set: [submitted, acknowledged, accepted, unknown]
 cancellation_operation_kind: <exact receiver operation>
 acknowledged_warning_codes: []
+reserved_judgments_decided: []
 required_confirmation_assurance_policy_ref: <ObjectRef>
 confirmation_nonce: <fresh principal-selected nonce>
 principal_revocation_nonce: <integer>

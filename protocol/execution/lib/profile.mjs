@@ -6,7 +6,7 @@ function deepFreeze(value) {
 
 export const PROFILE_ID = "cairn-supervised-execution-v0.1";
 export const RELEASE_PHASE = "phase_1_schema_only";
-export const SPEC_SHA256 = "e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015";
+export const SPEC_SHA256 = "3d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";
 export const BASE_BUNDLE_HASH = "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c";
 export const BASE_REGISTRY_HASH = "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b";
 

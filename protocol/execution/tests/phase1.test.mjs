@@ -46,6 +46,8 @@ import {
   validateCompartmentDefinition,
   validateCompartmentStateHead,
   validateCompartmentStateTransitionReceipt,
+  compartmentEconomicAtomSubsetRoot,
+  compartmentConfirmedEventSubsetRoot,
   confirmationChallengeHash,
   validateConnectionEvent,
   validateConnectionAuthorization,
@@ -593,6 +595,48 @@ function emptyEnumerableMap(domain, name) {
   return { node, map };
 }
 
+function stubExternalSignature(signedHash) {
+  return {
+    profile: "cairn-ed25519-v0.1", key_id: "cairn:test:external-authority",
+    signed_hash: signedHash, value: "A".repeat(86), signed_at: "2026-07-22T10:01:00Z"
+  };
+}
+
+function enumerableMapForExternalEntries(domain, name, entryKind, values) {
+  const leaves = values.map(({ entryKey, entryObject, entryRef }) => {
+    const leafEntry = {
+      entry_key: entryKey, entry_kind: entryKind,
+      entry_object_ref: entryRef, entry_object_hash: entryRef.object_hash
+    };
+    const node = make("cairn.enumerable_map_node.v0.1", {
+      map_domain: domain, node_kind: "leaf", path_prefix_nibbles: entryKey.slice(8),
+      leaf_entry: leafEntry, branch_children: [], subtree_entry_count: 1,
+      entries_root: enumerableMapLeafEntriesRoot(domain, leafEntry)
+    });
+    return { leaf: leafEntry, object: entryObject, node };
+  }).sort((left, right) => left.leaf.entry_key.localeCompare(right.leaf.entry_key));
+  const rootNode = leaves.length === 1 ? leaves[0].node : make("cairn.enumerable_map_node.v0.1", {
+    map_domain: domain, node_kind: "branch", path_prefix_nibbles: "", leaf_entry: null,
+    branch_children: leaves.map(({ node }) => ({
+      nibble: node.path_prefix_nibbles[0], child_path_prefix_nibbles: node.path_prefix_nibbles,
+      child_node_ref: refFor(node), child_node_hash: node.node_hash,
+      child_subtree_entry_count: node.subtree_entry_count, child_entries_root: node.entries_root
+    })),
+    subtree_entry_count: leaves.length,
+    entries_root: enumerableMapBranchEntriesRoot(domain, "", leaves.length, leaves.map(({ node }) => ({
+      nibble: node.path_prefix_nibbles[0], child_path_prefix_nibbles: node.path_prefix_nibbles,
+      child_node_ref: refFor(node), child_node_hash: node.node_hash,
+      child_subtree_entry_count: node.subtree_entry_count, child_entries_root: node.entries_root
+    })))
+  });
+  const map = make("cairn.enumerable_map_root.v0.1", {
+    map_key: canonicalHash({ schema: "cairn.test_map_key.v0.1", name }), map_domain: domain,
+    revision: 1, root_node_ref: refFor(rootNode), root_node_hash: rootNode.node_hash,
+    entry_count: leaves.length, entries_root: rootNode.entries_root
+  });
+  return { leaves, nodes: [...leaves.map(({ node }) => node), rootNode], map };
+}
+
 function compartmentStateFixture() {
   const money = (amount_minor) => ({ amount_minor, asset: "USD" });
   const compartment = validCompartment();
@@ -620,6 +664,12 @@ function compartmentStateFixture() {
     receiver_backed_available: money(10000), cairn_reserved: money(0), confirmed_spent: money(0),
     confirmed_refunded: money(0), confirmed_reversal_loss: money(0),
     outstanding_reversal_exposure: money(0), quarantine_exposure: money(0),
+    active_hold_atoms_root: compartmentEconomicAtomSubsetRoot("reserved", []),
+    active_reversal_atoms_root: compartmentEconomicAtomSubsetRoot("active_reversal", []),
+    quarantine_hold_atoms_root: compartmentEconomicAtomSubsetRoot("quarantine_hold", []),
+    confirmed_spend_events_root: compartmentConfirmedEventSubsetRoot("confirmed_debit", []),
+    confirmed_refund_events_root: compartmentConfirmedEventSubsetRoot("confirmed_refund", []),
+    confirmed_reversal_events_root: compartmentConfirmedEventSubsetRoot("confirmed_reversal", []),
     observed_at: "2026-07-22T10:00:00Z"
   });
   const objects = [compartment, reservations.node, reservations.map, atoms.node, atoms.map, events.node, events.map, state];
@@ -1060,9 +1110,10 @@ test("explicit prose schemas retain exact fields and every array is release-boun
   assert.ok(!("confirmation_policy_ref" in authorization.fields));
   assert.ok(!("issued_at" in authorization.fields));
   const cancellation = PHASE1_OBJECTS.find(({ schema }) => schema === "cairn.cancellation_authorization.v0.1");
-  assert.equal(Object.keys(cancellation.fields).length, 59);
+  assert.equal(Object.keys(cancellation.fields).length, 60);
   for (const field of ["authorization_mode", "restrictive_control_head_ref", "original_outbox_handoff_receipt_ref",
     "cancellation_credential_continuity_receipt_ref", "original_operation_locator", "authorized_cancel_state_set",
+    "reserved_judgments_decided",
     "required_confirmation_assurance_policy_ref"]) assert.ok(field in cancellation.fields, field);
   const walk = (value) => {
     if (!value || typeof value !== "object") return;
@@ -1523,10 +1574,24 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
     objectResolver: new Map(connectionObjects.map((object) => [refFor(object).object_hash, object]))
   };
   const signedControlContext = signedReadContext(
-    [aggregateBefore, aggregateAfter, leafBefore, leafAfter, controlReceipt],
+    [aggregateBefore, aggregateAfter, leafBefore, leafAfter, control, controlReceipt],
     { ...connectionContext, requireDependencySignatures: true }, before.principal_id
   );
   assert.deepEqual(validateExecutionControlReceipt(controlReceipt, signedControlContext), []);
+  const missingControlAuthorizationContext = {
+    ...signedControlContext, controlAuthorization: undefined,
+    objectResolver: new Map(signedControlContext.objectResolver)
+  };
+  missingControlAuthorizationContext.objectResolver.delete(refFor(control).object_hash);
+  assert.ok(validateExecutionControlReceipt(controlReceipt, missingControlAuthorizationContext)
+    .includes("execution_control_receipt_authorization_unresolved"));
+  const mapDriftControlReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...controlReceipt,
+    after_scoped_control_map_ref: aggregateBefore.scoped_control_map_ref,
+    after_scoped_control_map_hash: aggregateBefore.scoped_control_map_hash
+  });
+  assert.ok(validateExecutionControlReceipt(mapDriftControlReceipt, signedControlContext)
+    .includes("execution_control_receipt_map_binding_mismatch"));
   const invalidAggregateSignature = structuredClone(aggregateAfter);
   invalidAggregateSignature.authority_service_signature.value = "A".repeat(86);
   assert.ok(validateExecutionControlReceipt(controlReceipt, {
@@ -2164,10 +2229,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   const receiverEntryBefore = make("cairn.receiver_outstanding_stream_entry.v0.1", {
     ...receiverEntrySeed, outstanding_stream_key: receiverOutstandingStreamKey(receiverEntrySeed)
   });
-  const receiverEntryAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
-    ...receiverEntryBefore, sequence: 1, previous_entry_hash: receiverEntryBefore.entry_hash,
-    state: "fenced_non_submission"
-  });
+  let receiverEntryAfter;
   const receiverLeafEntry = {
     entry_key: receiverEntryBefore.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
     entry_object_ref: refFor(receiverEntryBefore), entry_object_hash: receiverEntryBefore.entry_hash
@@ -2255,6 +2317,14 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     schema: sequenceAssignmentAfter.schema, object_id: sequenceAssignmentAfter.slot_assignment_id,
     object_hash: sequenceAssignmentAfter.assignment_hash
   };
+  receiverEntryAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryBefore, sequence: 1, previous_entry_hash: receiverEntryBefore.entry_hash,
+    event_id_slot_assignment_ref: eventAssignmentAfterRef,
+    event_id_slot_assignment_hash: eventAssignmentAfterRef.object_hash,
+    sequence_slot_assignment_ref: sequenceAssignmentAfterRef,
+    sequence_slot_assignment_hash: sequenceAssignmentAfterRef.object_hash,
+    state: "fenced_non_submission"
+  });
   const trustAssignmentAfterRef = {
     schema: trustAssignmentAfter.schema, object_id: trustAssignmentAfter.slot_assignment_id,
     object_hash: trustAssignmentAfter.assignment_hash
@@ -2936,6 +3006,24 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.ok(validateReceiverOutstandingStreamTransitionReceipt(skippedHandoff, skippedHandoffContext)
     .includes("receiver_outstanding_transition_connection_successor_mismatch"));
 
+  const eventAssignmentConsumed = {
+    ...eventAssignment, consumed_slots: 1, state: "reserved",
+    assignment_hash: `sha-256:${"6".repeat(63)}2`,
+    authority_service_signature: externalSignature(`sha-256:${"6".repeat(63)}2`)
+  };
+  const sequenceAssignmentConsumed = {
+    ...sequenceAssignment, consumed_slots: 1, state: "reserved",
+    assignment_hash: `sha-256:${"6".repeat(63)}3`,
+    authority_service_signature: externalSignature(`sha-256:${"6".repeat(63)}3`)
+  };
+  const eventAssignmentConsumedRef = {
+    schema: eventAssignmentConsumed.schema, object_id: eventAssignmentConsumed.slot_assignment_id,
+    object_hash: eventAssignmentConsumed.assignment_hash
+  };
+  const sequenceAssignmentConsumedRef = {
+    schema: sequenceAssignmentConsumed.schema, object_id: sequenceAssignmentConsumed.slot_assignment_id,
+    object_hash: sequenceAssignmentConsumed.assignment_hash
+  };
   const receiverStreamSuccessor = {
     ...receiverStream, sequence: 1, previous_state_hash: receiverStream.head_hash,
     head_hash: `sha-256:${"6".repeat(63)}1`
@@ -2946,6 +3034,10 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   };
   const eventReceiverEntry = make("cairn.receiver_outstanding_stream_entry.v0.1", {
     ...handedReceiverEntry, sequence: 2, previous_entry_hash: handedReceiverEntry.entry_hash,
+    event_id_slot_assignment_ref: eventAssignmentConsumedRef,
+    event_id_slot_assignment_hash: eventAssignmentConsumedRef.object_hash,
+    sequence_slot_assignment_ref: sequenceAssignmentConsumedRef,
+    sequence_slot_assignment_hash: sequenceAssignmentConsumedRef.object_hash,
     current_receiver_stream_head_ref: receiverStreamSuccessorRef,
     current_receiver_stream_head_hash: receiverStreamSuccessorRef.object_hash
   });
@@ -2968,24 +3060,6 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   };
   const eventSelectorAfterRef = {
     schema: eventSelectorAfter.schema, object_id: selectorKey, object_hash: eventSelectorAfter.head_hash
-  };
-  const eventAssignmentConsumed = {
-    ...eventAssignment, consumed_slots: 1, state: "reserved",
-    assignment_hash: `sha-256:${"6".repeat(63)}2`,
-    authority_service_signature: externalSignature(`sha-256:${"6".repeat(63)}2`)
-  };
-  const sequenceAssignmentConsumed = {
-    ...sequenceAssignment, consumed_slots: 1, state: "reserved",
-    assignment_hash: `sha-256:${"6".repeat(63)}3`,
-    authority_service_signature: externalSignature(`sha-256:${"6".repeat(63)}3`)
-  };
-  const eventAssignmentConsumedRef = {
-    schema: eventAssignmentConsumed.schema, object_id: eventAssignmentConsumed.slot_assignment_id,
-    object_hash: eventAssignmentConsumed.assignment_hash
-  };
-  const sequenceAssignmentConsumedRef = {
-    schema: sequenceAssignmentConsumed.schema, object_id: sequenceAssignmentConsumed.slot_assignment_id,
-    object_hash: sequenceAssignmentConsumed.assignment_hash
   };
   const eventBindingReceipt = {
     schema: "cairn.receiver_event_identity_binding_receipt.v0.1",
@@ -3068,6 +3142,55 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     ])
   };
   assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(eventTransition, eventContext), []);
+  const staleSuccessorEntry = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...eventReceiverEntry,
+    event_id_slot_assignment_ref: eventAssignmentRef,
+    event_id_slot_assignment_hash: eventAssignmentRef.object_hash,
+    sequence_slot_assignment_ref: sequenceAssignmentRef,
+    sequence_slot_assignment_hash: sequenceAssignmentRef.object_hash
+  });
+  const staleSuccessorLeafEntry = {
+    entry_key: staleSuccessorEntry.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
+    entry_object_ref: refFor(staleSuccessorEntry), entry_object_hash: staleSuccessorEntry.entry_hash
+  };
+  const staleSuccessorLeaf = make("cairn.enumerable_map_node.v0.1", {
+    ...eventLeaf, leaf_entry: staleSuccessorLeafEntry,
+    entries_root: enumerableMapLeafEntriesRoot("receiver_outstanding_stream", staleSuccessorLeafEntry)
+  });
+  const staleSuccessorMap = make("cairn.enumerable_map_root.v0.1", {
+    ...eventMap, root_node_ref: refFor(staleSuccessorLeaf), root_node_hash: staleSuccessorLeaf.node_hash,
+    entries_root: staleSuccessorLeaf.entries_root
+  });
+  const staleSuccessorSelector = {
+    ...eventSelectorAfter, outstanding_stream_map_ref: refFor(staleSuccessorMap),
+    outstanding_stream_map_hash: staleSuccessorMap.map_hash,
+    head_hash: `sha-256:${"6".repeat(63)}4`
+  };
+  const staleSuccessorSelectorRef = {
+    schema: staleSuccessorSelector.schema, object_id: selectorKey,
+    object_hash: staleSuccessorSelector.head_hash
+  };
+  const staleSuccessorTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
+    ...eventTransition,
+    epoch_selector_after_head_ref: staleSuccessorSelectorRef,
+    epoch_selector_after_head_hash: staleSuccessorSelectorRef.object_hash,
+    outstanding_stream_map_after_ref: refFor(staleSuccessorMap),
+    outstanding_stream_map_after_hash: staleSuccessorMap.map_hash,
+    after_change_proof: mapPathProof(staleSuccessorMap, staleSuccessorLeaf,
+      staleSuccessorEntry.outstanding_stream_key, "membership"),
+    entry_after_ref: refFor(staleSuccessorEntry), entry_after_hash: staleSuccessorEntry.entry_hash
+  });
+  const staleSuccessorContext = {
+    ...eventContext,
+    objectResolver: new Map(eventContext.objectResolver)
+      .set(refFor(staleSuccessorEntry).object_hash, staleSuccessorEntry)
+      .set(refFor(staleSuccessorLeaf).object_hash, staleSuccessorLeaf)
+      .set(refFor(staleSuccessorMap).object_hash, staleSuccessorMap)
+      .set(staleSuccessorSelectorRef.object_hash, staleSuccessorSelector)
+  };
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(
+    staleSuccessorTransition, staleSuccessorContext
+  ).includes("receiver_outstanding_transition_identity_transition_mismatch"));
   const wrongEpochAssignment = { ...eventAssignment, epoch: eventAssignment.epoch + 1 };
   const wrongEpochContext = {
     ...eventContext,
@@ -3083,7 +3206,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
       .set(eventAssignmentConsumedRef.object_hash, prematurelyConsumedAssignment)
   };
   assert.ok(validateReceiverOutstandingStreamTransitionReceipt(eventTransition, prematurelyConsumedContext)
-    .includes("receiver_outstanding_transition_identity_transition_mismatch"));
+    .includes("receiver_outstanding_transition_entry_mismatch"));
   const wrongScopeBindingReceipt = {
     ...eventBindingReceipt,
     identity_scope_index_after_head_ref: identityScopeRef,
@@ -3154,9 +3277,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     const receiverBefore = make("cairn.receiver_outstanding_stream_entry.v0.1", {
       ...beforeSeed, outstanding_stream_key: receiverOutstandingStreamKey(beforeSeed)
     });
-    const receiverAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
-      ...receiverBefore, sequence: 1, previous_entry_hash: receiverBefore.entry_hash, state: cause
-    });
+    let receiverAfter;
     const receiverLeafValue = {
       entry_key: receiverBefore.outstanding_stream_key, entry_kind: "receiver_outstanding_stream",
       entry_object_ref: refFor(receiverBefore), entry_object_hash: receiverBefore.entry_hash
@@ -3211,10 +3332,12 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     const terminalAssignmentState = cause === "authenticated_stream_closed"
       ? "released_on_authenticated_closure" : "released_on_authenticated_horizon";
     const terminalEventAssignmentAfter = releasedAssignment(
-      eventAssignment, terminalAssignmentState, `sha-256:${discriminator.repeat(62)}a3`
+      { ...eventAssignment, consumed_slots: cause === "authenticated_stream_closed" ? 1 : 0 },
+      terminalAssignmentState, `sha-256:${discriminator.repeat(62)}a3`
     );
     const terminalSequenceAssignmentAfter = releasedAssignment(
-      sequenceAssignment, terminalAssignmentState, `sha-256:${discriminator.repeat(62)}b4`
+      { ...sequenceAssignment, consumed_slots: cause === "authenticated_stream_closed" ? 1 : 0 },
+      terminalAssignmentState, `sha-256:${discriminator.repeat(62)}b4`
     );
     const terminalEventAssignmentAfterRef = {
       schema: terminalEventAssignmentAfter.schema, object_id: terminalEventAssignmentAfter.slot_assignment_id,
@@ -3224,6 +3347,14 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
       schema: terminalSequenceAssignmentAfter.schema, object_id: terminalSequenceAssignmentAfter.slot_assignment_id,
       object_hash: terminalSequenceAssignmentAfter.assignment_hash
     };
+    receiverAfter = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+      ...receiverBefore, sequence: 1, previous_entry_hash: receiverBefore.entry_hash,
+      event_id_slot_assignment_ref: terminalEventAssignmentAfterRef,
+      event_id_slot_assignment_hash: terminalEventAssignmentAfterRef.object_hash,
+      sequence_slot_assignment_ref: terminalSequenceAssignmentAfterRef,
+      sequence_slot_assignment_hash: terminalSequenceAssignmentAfterRef.object_hash,
+      state: cause
+    });
     const terminalAssignmentTransitions = [
       [eventAssignmentRef, terminalEventAssignmentAfterRef],
       [sequenceAssignmentRef, terminalSequenceAssignmentAfterRef]
@@ -3365,6 +3496,19 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
       }), true, `${cause}:assignment-after-closed`);
     }
     assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(fixture.transition, fixture.context), [], cause);
+    if (cause === "authenticated_stream_closed") {
+      const afterRef = fixture.terminalIdentityTransition.reservation_assignment_transitions[0].assignment_after_ref;
+      const unchangedConsumption = {
+        ...fixture.context.objectResolver.get(afterRef.object_hash), consumed_slots: 0
+      };
+      const unchangedConsumptionContext = {
+        ...fixture.context,
+        objectResolver: new Map(fixture.context.objectResolver).set(afterRef.object_hash, unchangedConsumption)
+      };
+      assert.ok(validateReceiverOutstandingStreamTransitionReceipt(
+        fixture.transition, unchangedConsumptionContext
+      ).includes("receiver_outstanding_transition_identity_transition_mismatch"));
+    }
     assert.deepEqual(validateConnectionOutstandingIndexTransitionReceipt(
       fixture.connectionReceipt, fixture.context
     ), [], cause);
@@ -3583,6 +3727,82 @@ test("compartment state heads bind definitions, typed manifests, assets, and pre
   });
   assert.ok(validateCompartmentStateHead(wrongAsset, signedContext)
     .includes("compartment_state_asset_mismatch"));
+  const nonzeroEmptyMapState = make("cairn.compartment_state_head.v0.1", {
+    ...fixture.state, cairn_reserved: { amount_minor: 1, asset: "USD" }
+  });
+  assert.ok(validateCompartmentStateHead(nonzeroEmptyMapState, signedContext)
+    .includes("compartment_state_atom_accounting_mismatch"));
+
+  const atomCauseRef = {
+    schema: "cairn.economic_mutation_cause_core.v0.1", object_id: "accounting-state-fixture",
+    object_hash: `sha-256:${"9".repeat(64)}`
+  };
+  const atomFor = (atomId, ledgerClass, amountMinor, atomHash) => ({
+    schema: "cairn.current_economic_atom.v0.1", atom_id: atomId,
+    economic_resource_key: fixture.state.economic_resource_key,
+    compartment_control_key: fixture.state.compartment_control_key,
+    obligation_or_reservation_id: `sha-256:${"1".repeat(64)}`,
+    component_role: ledgerClass === "active_reversal" ? "reversal" : "item",
+    component_id: `sha-256:${"2".repeat(64)}`, reservation_fence: 1,
+    ledger_class: ledgerClass, amount: { amount_minor: amountMinor, asset: "USD" },
+    economic_mutation_cause_core_ref: atomCauseRef,
+    economic_mutation_cause_core_hash: atomCauseRef.object_hash,
+    atom_hash: atomHash, authority_service_signature: stubExternalSignature(atomHash)
+  });
+  const reservedAtom = atomFor(`sha-256:${"a".repeat(64)}`, "reserved", 40, `sha-256:${"3".repeat(64)}`);
+  const reversalAtom = atomFor(`sha-256:${"b".repeat(64)}`, "active_reversal", 10, `sha-256:${"4".repeat(64)}`);
+  const atomValues = [reservedAtom, reversalAtom].map((entryObject) => ({
+    entryKey: entryObject.atom_id, entryObject,
+    entryRef: { schema: entryObject.schema, object_id: entryObject.atom_id, object_hash: entryObject.atom_hash }
+  }));
+  const atomMapFixture = enumerableMapForExternalEntries(
+    "compartment_economic_atom", "accounting-branch-atoms", "compartment_economic_atom", atomValues
+  );
+  const accountedState = make("cairn.compartment_state_head.v0.1", {
+    ...fixture.state,
+    current_economic_atom_manifest_ref: refFor(atomMapFixture.map),
+    current_economic_atom_manifest_hash: atomMapFixture.map.map_hash,
+    current_economic_atom_count: 2,
+    cairn_reserved: { amount_minor: 40, asset: "USD" },
+    outstanding_reversal_exposure: { amount_minor: 10, asset: "USD" },
+    active_hold_atoms_root: compartmentEconomicAtomSubsetRoot("reserved", atomMapFixture.leaves),
+    active_reversal_atoms_root: compartmentEconomicAtomSubsetRoot("active_reversal", atomMapFixture.leaves),
+    quarantine_hold_atoms_root: compartmentEconomicAtomSubsetRoot("quarantine_hold", atomMapFixture.leaves)
+  });
+  const accountedContext = {
+    ...fixture.context,
+    objectResolver: new Map([
+      ...fixture.context.objectResolver,
+      ...atomMapFixture.nodes.map((object) => [refFor(object).object_hash, object]),
+      [refFor(atomMapFixture.map).object_hash, atomMapFixture.map],
+      ...atomValues.map(({ entryRef, entryObject }) => [entryRef.object_hash, entryObject])
+    ])
+  };
+  assert.deepEqual(validateCompartmentStateHead(accountedState, accountedContext), []);
+  const wrongDerivedAmount = make("cairn.compartment_state_head.v0.1", {
+    ...accountedState, cairn_reserved: { amount_minor: 41, asset: "USD" }
+  });
+  assert.ok(validateCompartmentStateHead(wrongDerivedAmount, accountedContext)
+    .includes("compartment_state_atom_accounting_mismatch"));
+  const limitedCompartment = make("cairn.agent_execution_compartment.v0.1", {
+    ...fixture.compartment,
+    per_action_ceiling: { amount_minor: 45, asset: "USD" },
+    outstanding_exposure_limit: { amount_minor: 45, asset: "USD" }
+  });
+  const overLimitState = make("cairn.compartment_state_head.v0.1", {
+    ...accountedState, compartment_ref: refFor(limitedCompartment)
+  });
+  const overLimitContext = {
+    ...accountedContext,
+    objectResolver: new Map(accountedContext.objectResolver)
+      .set(refFor(limitedCompartment).object_hash, limitedCompartment)
+  };
+  assert.ok(validateCompartmentStateHead(overLimitState, overLimitContext)
+    .includes("compartment_state_outstanding_limit_exceeded"));
+  const missingAtomNodeContext = { ...accountedContext, objectResolver: new Map(accountedContext.objectResolver) };
+  missingAtomNodeContext.objectResolver.delete(refFor(atomMapFixture.nodes[0]).object_hash);
+  assert.ok(validateCompartmentStateHead(accountedState, missingAtomNodeContext)
+    .includes("compartment_state_manifest_mismatch"));
 
   const successor = make("cairn.compartment_state_head.v0.1", {
     ...fixture.state, sequence: 1, previous_state_hash: fixture.state.state_hash,
@@ -3675,6 +3895,179 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     requireDependencySignatures: true
   }, fixture.compartment.principal_id);
   assert.deepEqual(validateCompartmentStateTransitionReceipt(transition, transitionContext), []);
+
+  const holdCauseRef = {
+    schema: "cairn.economic_mutation_cause_core.v0.1", object_id: "economic-mutation-map-hold-1",
+    object_hash: `sha-256:${"7".repeat(64)}`
+  };
+  const heldAtom = {
+    schema: "cairn.current_economic_atom.v0.1", atom_id: `sha-256:${"a".repeat(64)}`,
+    economic_resource_key: fixture.state.economic_resource_key,
+    compartment_control_key: fixture.state.compartment_control_key,
+    obligation_or_reservation_id: `sha-256:${"8".repeat(64)}`,
+    component_role: "item", component_id: `sha-256:${"9".repeat(64)}`,
+    reservation_fence: 1, ledger_class: "reserved", amount: { amount_minor: 100, asset: "USD" },
+    economic_mutation_cause_core_ref: holdCauseRef,
+    economic_mutation_cause_core_hash: holdCauseRef.object_hash,
+    atom_hash: `sha-256:${"a".repeat(63)}1`,
+    authority_service_signature: stubExternalSignature(`sha-256:${"a".repeat(63)}1`)
+  };
+  const heldAtomRef = {
+    schema: heldAtom.schema, object_id: heldAtom.atom_id, object_hash: heldAtom.atom_hash
+  };
+  const heldAtomMap = enumerableMapForExternalEntries(
+    "compartment_economic_atom", "held-atom-map", "compartment_economic_atom",
+    [{ entryKey: heldAtom.atom_id, entryObject: heldAtom, entryRef: heldAtomRef }]
+  );
+  const holdDelta = {
+    schema: "cairn.economic_atom_delta_entry.v0.1",
+    economic_resource_key: fixture.state.economic_resource_key,
+    compartment_control_key: fixture.state.compartment_control_key,
+    obligation_or_reservation_id: heldAtom.obligation_or_reservation_id,
+    atom_id: heldAtom.atom_id, before_class: "absent", after_class: "reserved",
+    amount: heldAtom.amount, economic_mutation_cause_core_ref: holdCauseRef,
+    economic_mutation_cause_core_hash: holdCauseRef.object_hash,
+    authority_transaction_id: "compartment-map-hold-1", entry_hash: `sha-256:${"b".repeat(64)}`,
+    authority_service_signature: stubExternalSignature(`sha-256:${"b".repeat(64)}`)
+  };
+  const holdDeltaRef = {
+    schema: holdDelta.schema, object_id: holdDelta.atom_id, object_hash: holdDelta.entry_hash
+  };
+  const holdManifestEntrySeed = {
+    entry_kind: "economic_atom_delta", entry_object_ref: holdDeltaRef,
+    entry_object_hash: holdDeltaRef.object_hash
+  };
+  const holdManifestEntry = {
+    ...holdManifestEntrySeed, entry_key: transitionManifestEntryKey(holdManifestEntrySeed)
+  };
+  const mapHoldCause = {
+    schema: holdCauseRef.schema, economic_mutation_id: holdCauseRef.object_id,
+    cause_kind: "reservation_hold", economic_resource_key: fixture.state.economic_resource_key,
+    before_compartment_heads: [{
+      compartment_control_key: fixture.state.compartment_control_key,
+      head_ref: refFor(fixture.state), head_hash: fixture.state.state_hash
+    }],
+    proposed_semantic_atom_deltas_root: canonicalHash([{
+      atom_id: holdDelta.atom_id, before_class: holdDelta.before_class,
+      after_class: holdDelta.after_class, amount: holdDelta.amount
+    }]),
+    authority_transaction_id: holdDelta.authority_transaction_id,
+    core_hash: holdCauseRef.object_hash
+  };
+  const mapHoldManifest = make("cairn.enumerable_transition_manifest.v0.1", {
+    manifest_kind: "compartment_economic_atom_deltas", subject_ref: holdCauseRef,
+    subject_hash: holdCauseRef.object_hash, authority_transaction_id: holdDelta.authority_transaction_id,
+    entry_count: 1, sorted_entries: [holdManifestEntry], entries_root: canonicalHash([holdManifestEntry])
+  });
+  const heldState = make("cairn.compartment_state_head.v0.1", {
+    ...fixture.state, sequence: 1, previous_state_hash: fixture.state.state_hash,
+    fencing_token: 1, observed_at: "2026-07-22T10:01:00Z",
+    current_economic_atom_manifest_ref: refFor(heldAtomMap.map),
+    current_economic_atom_manifest_hash: heldAtomMap.map.map_hash, current_economic_atom_count: 1,
+    cairn_reserved: { amount_minor: 100, asset: "USD" },
+    active_hold_atoms_root: compartmentEconomicAtomSubsetRoot("reserved", heldAtomMap.leaves)
+  });
+  const mapHoldReceipt = make("cairn.compartment_state_transition_receipt.v0.1", {
+    ...transition, cause: "reservation_hold",
+    economic_mutation_cause_core_ref: holdCauseRef,
+    economic_mutation_cause_core_hash: holdCauseRef.object_hash,
+    after_head_ref: refFor(heldState), after_head_hash: heldState.state_hash,
+    economic_atom_manifest_after_ref: refFor(heldAtomMap.map),
+    economic_atom_manifest_after_hash: heldAtomMap.map.map_hash,
+    economic_atom_delta_manifest_ref: refFor(mapHoldManifest),
+    economic_atom_delta_manifest_hash: mapHoldManifest.manifest_hash,
+    authority_transaction_id: holdDelta.authority_transaction_id
+  });
+  const mapHoldContext = {
+    ...transitionContext, requireDependencySignatures: false,
+    objectResolver: new Map([
+      ...transitionContext.objectResolver,
+      ...heldAtomMap.nodes.map((object) => [refFor(object).object_hash, object]),
+      [refFor(heldAtomMap.map).object_hash, heldAtomMap.map], [heldAtomRef.object_hash, heldAtom],
+      [holdDeltaRef.object_hash, holdDelta], [holdCauseRef.object_hash, mapHoldCause],
+      [refFor(mapHoldManifest).object_hash, mapHoldManifest], [refFor(heldState).object_hash, heldState]
+    ])
+  };
+  assert.deepEqual(validateCompartmentStateTransitionReceipt(mapHoldReceipt, mapHoldContext), []);
+  const unchangedAtomMapHold = make("cairn.compartment_state_transition_receipt.v0.1", {
+    ...mapHoldReceipt,
+    economic_atom_manifest_after_ref: fixture.state.current_economic_atom_manifest_ref,
+    economic_atom_manifest_after_hash: fixture.state.current_economic_atom_manifest_hash
+  });
+  assert.ok(validateCompartmentStateTransitionReceipt(unchangedAtomMapHold, mapHoldContext)
+    .includes("compartment_transition_manifest_projection_mismatch"));
+  const missingDeltaCauseRef = {
+    ...holdCauseRef, object_id: "economic-mutation-map-hold-missing-delta",
+    object_hash: `sha-256:${"d".repeat(64)}`
+  };
+  const missingDeltaCause = {
+    ...mapHoldCause, economic_mutation_id: missingDeltaCauseRef.object_id,
+    proposed_semantic_atom_deltas_root: canonicalHash([]),
+    core_hash: missingDeltaCauseRef.object_hash
+  };
+  const missingDeltaManifest = make("cairn.enumerable_transition_manifest.v0.1", {
+    ...mapHoldManifest, subject_ref: missingDeltaCauseRef, subject_hash: missingDeltaCauseRef.object_hash,
+    entry_count: 0, sorted_entries: [], entries_root: canonicalHash([])
+  });
+  const missingDeltaReceipt = make("cairn.compartment_state_transition_receipt.v0.1", {
+    ...mapHoldReceipt, economic_mutation_cause_core_ref: missingDeltaCauseRef,
+    economic_mutation_cause_core_hash: missingDeltaCauseRef.object_hash,
+    economic_atom_delta_manifest_ref: refFor(missingDeltaManifest),
+    economic_atom_delta_manifest_hash: missingDeltaManifest.manifest_hash
+  });
+  const missingDeltaContext = {
+    ...mapHoldContext,
+    objectResolver: new Map(mapHoldContext.objectResolver)
+      .set(missingDeltaCauseRef.object_hash, missingDeltaCause)
+      .set(refFor(missingDeltaManifest).object_hash, missingDeltaManifest)
+  };
+  assert.ok(validateCompartmentStateTransitionReceipt(missingDeltaReceipt, missingDeltaContext)
+    .includes("compartment_transition_atom_delta_keyset_mismatch"));
+  const unexpectedEvent = {
+    schema: "cairn.confirmed_economic_event_entry.v0.1",
+    confirmed_event_key: `sha-256:${"e".repeat(64)}`,
+    economic_resource_key: fixture.state.economic_resource_key,
+    compartment_control_key: fixture.state.compartment_control_key,
+    event_kind: "confirmed_debit", receiver_event_import_ref: distinctRefs(1, "confirmed-event-import")[0],
+    receiver_event_import_hash: null, obligation_exposure_id: `sha-256:${"f".repeat(64)}`,
+    component_ids_root: `sha-256:${"1".repeat(64)}`,
+    amount: { amount_minor: 50, asset: "USD" }, accounting_policy_ref: distinctRefs(1, "accounting-policy")[0],
+    accounting_policy_hash: null, event_hash: `sha-256:${"2".repeat(64)}`,
+    authority_service_signature: stubExternalSignature(`sha-256:${"2".repeat(64)}`)
+  };
+  unexpectedEvent.receiver_event_import_hash = unexpectedEvent.receiver_event_import_ref.object_hash;
+  unexpectedEvent.accounting_policy_hash = unexpectedEvent.accounting_policy_ref.object_hash;
+  const unexpectedEventRef = {
+    schema: unexpectedEvent.schema, object_id: unexpectedEvent.confirmed_event_key,
+    object_hash: unexpectedEvent.event_hash
+  };
+  const unexpectedEventMap = enumerableMapForExternalEntries(
+    "compartment_confirmed_event", "unexpected-confirmed-event", "compartment_confirmed_event",
+    [{ entryKey: unexpectedEvent.confirmed_event_key, entryObject: unexpectedEvent, entryRef: unexpectedEventRef }]
+  );
+  const unexpectedEventState = make("cairn.compartment_state_head.v0.1", {
+    ...after, confirmed_event_manifest_ref: refFor(unexpectedEventMap.map),
+    confirmed_event_manifest_hash: unexpectedEventMap.map.map_hash, confirmed_event_count: 1,
+    confirmed_spent: { amount_minor: 50, asset: "USD" },
+    confirmed_spend_events_root: compartmentConfirmedEventSubsetRoot("confirmed_debit", unexpectedEventMap.leaves)
+  });
+  const unexpectedEventTransition = make("cairn.compartment_state_transition_receipt.v0.1", {
+    ...transition, after_head_ref: refFor(unexpectedEventState), after_head_hash: unexpectedEventState.state_hash,
+    confirmed_event_manifest_after_ref: refFor(unexpectedEventMap.map),
+    confirmed_event_manifest_after_hash: unexpectedEventMap.map.map_hash
+  });
+  const unexpectedEventContext = {
+    ...transitionContext, requireDependencySignatures: false,
+    objectResolver: new Map([
+      ...transitionContext.objectResolver,
+      ...unexpectedEventMap.nodes.map((object) => [refFor(object).object_hash, object]),
+      [refFor(unexpectedEventMap.map).object_hash, unexpectedEventMap.map],
+      [unexpectedEventRef.object_hash, unexpectedEvent],
+      [refFor(unexpectedEventState).object_hash, unexpectedEventState]
+    ])
+  };
+  assert.ok(validateCompartmentStateTransitionReceipt(unexpectedEventTransition, unexpectedEventContext)
+    .includes("compartment_transition_confirmed_event_diff_mismatch"));
 
   const badProjection = make("cairn.compartment_state_transition_receipt.v0.1", {
     ...transition,
@@ -3984,6 +4377,8 @@ test("binding sets separate direct principals from connected runtimes and bind t
   const dataGrantSchema = baseSchemasByObjectId.get("cairn.data_grant.v0.1");
   const dataGrantSeed = sampleFor(dataGrantSchema);
   dataGrantSeed.principal_id = value.principal_id;
+  dataGrantSeed.recipient = runtime.agent_identity.runtime_instance_key_id;
+  dataGrantSeed.audience = [runtime.agent_identity.runtime_instance_key_id];
   dataGrantSeed.purpose = "read";
   dataGrantSeed.maximum_disclosures = 3;
   dataGrantSeed.issued_at = "2026-07-22T09:00:00Z";
@@ -4022,6 +4417,54 @@ test("binding sets separate direct principals from connected runtimes and bind t
   assert.ok(validateDataGrantStateHead(mismatchedGrantGenesis, dataGrantContext)
     .includes("data_grant_state_genesis_mismatch"));
   assert.deepEqual(validateBindingSet(dataGrantBinding, dataGrantContext), []);
+  const foreignGrantSeed = structuredClone(dataGrant);
+  foreignGrantSeed.grant_id = "foreign-principal-data-grant";
+  foreignGrantSeed.principal_id = "did:example:foreign-data-grant-principal";
+  const foreignGrant = bindObjectHash(foreignGrantSeed, dataGrantSchema);
+  const foreignPrincipalGrantRef = objectRefFor(foreignGrant, dataGrantSchema);
+  const foreignGrantState = make("cairn.data_grant_state_head.v0.1", {
+    ...dataGrantState, data_grant_state_id: "00000000-0000-4000-8000-000000000099",
+    principal_id: foreignGrant.principal_id, data_grant_ref: foreignPrincipalGrantRef,
+    revocation_nonce: foreignGrant.revocation_nonce, expires_at: foreignGrant.expires_at
+  });
+  const foreignGrantBinding = make("cairn.execution_binding_set.v0.1", {
+    ...dataGrantBinding, data_grant_refs: [foreignPrincipalGrantRef],
+    data_grant_state_heads: [{ data_grant_ref: foreignPrincipalGrantRef,
+      current_state_head_ref: refFor(foreignGrantState), revocation_nonce: foreignGrantState.revocation_nonce }]
+  });
+  const foreignGrantContext = signedReadContext([foreignGrant, foreignGrantState], {
+    ...dataGrantContext,
+    objectResolver: new Map(dataGrantContext.objectResolver)
+      .set(foreignPrincipalGrantRef.object_hash, foreignGrant)
+      .set(refFor(foreignGrantState).object_hash, foreignGrantState),
+    currentHeadResolver: currentHeadResolverFor([refFor(connection), refFor(foreignGrantState)])
+  }, foreignGrant.principal_id);
+  assert.ok(validateBindingSet(foreignGrantBinding, foreignGrantContext)
+    .includes("binding_data_grant_principal_mismatch"));
+  const wrongRecipientGrantSeed = structuredClone(dataGrant);
+  wrongRecipientGrantSeed.grant_id = "wrong-runtime-recipient-data-grant";
+  wrongRecipientGrantSeed.recipient = "did:example:provider-wide-agent";
+  wrongRecipientGrantSeed.audience = ["did:example:provider-wide-agent"];
+  const wrongRecipientGrant = bindObjectHash(wrongRecipientGrantSeed, dataGrantSchema);
+  const wrongRecipientGrantRef = objectRefFor(wrongRecipientGrant, dataGrantSchema);
+  const wrongRecipientGrantState = make("cairn.data_grant_state_head.v0.1", {
+    ...dataGrantState, data_grant_state_id: "00000000-0000-4000-8000-000000000098",
+    data_grant_ref: wrongRecipientGrantRef
+  });
+  const wrongRecipientBinding = make("cairn.execution_binding_set.v0.1", {
+    ...dataGrantBinding, data_grant_refs: [wrongRecipientGrantRef],
+    data_grant_state_heads: [{ data_grant_ref: wrongRecipientGrantRef,
+      current_state_head_ref: refFor(wrongRecipientGrantState), revocation_nonce: wrongRecipientGrantState.revocation_nonce }]
+  });
+  const wrongRecipientContext = signedReadContext([wrongRecipientGrant, wrongRecipientGrantState], {
+    ...dataGrantContext,
+    objectResolver: new Map(dataGrantContext.objectResolver)
+      .set(wrongRecipientGrantRef.object_hash, wrongRecipientGrant)
+      .set(refFor(wrongRecipientGrantState).object_hash, wrongRecipientGrantState),
+    currentHeadResolver: currentHeadResolverFor([refFor(connection), refFor(wrongRecipientGrantState)])
+  }, value.principal_id);
+  assert.ok(validateBindingSet(wrongRecipientBinding, wrongRecipientContext)
+    .includes("binding_data_grant_runtime_recipient_mismatch"));
   assert.deepEqual(validateExactObjectRead(
     "execution.data_grant_state.get", { ref: refFor(dataGrantState) }, dataGrantState, dataGrantContext
   ), []);
@@ -4039,6 +4482,18 @@ test("binding sets separate direct principals from connected runtimes and bind t
     }, value.principal_id
   );
   assert.deepEqual(validateDataGrantStateHead(decrementedGrantState, grantTransitionContext), []);
+  const expiredGrantState = make("cairn.data_grant_state_head.v0.1", {
+    ...dataGrantState, sequence: 1, previous_state_hash: dataGrantState.state_hash,
+    state: "expired", remaining_reads: dataGrantState.remaining_reads,
+    revocation_nonce: dataGrantState.revocation_nonce + 1,
+    updated_at: dataGrantState.expires_at
+  });
+  assert.deepEqual(validateDataGrantStateHead(expiredGrantState, grantTransitionContext), []);
+  const earlyExpiredGrantState = make("cairn.data_grant_state_head.v0.1", {
+    ...expiredGrantState, updated_at: "2026-07-22T10:59:59Z"
+  });
+  assert.ok(validateDataGrantStateHead(earlyExpiredGrantState, grantTransitionContext)
+    .includes("data_grant_state_interval_mismatch"));
   const skippedGrantRead = make("cairn.data_grant_state_head.v0.1", {
     ...decrementedGrantState, sequence: 2
   });
@@ -4513,6 +4968,28 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   });
   const gateContext = { ...gateRequestContext, gateRequest, binding, authority: authorization, confirmation };
   assert.deepEqual(validateGateResult(allowedGate, gateContext), []);
+  const signedGateContext = signedReadContext(
+    [allowedGate, gateRequest, binding, authorization, confirmation],
+    { ...gateContext, requireDependencySignatures: true }, binding.principal_id
+  );
+  assert.deepEqual(validateGateResult(allowedGate, signedGateContext), []);
+  const unsignedGateRequestDependency = structuredClone(gateRequest);
+  unsignedGateRequestDependency.gate_service_signature.value = "A".repeat(86);
+  assert.ok(validateGateResult(allowedGate, {
+    ...signedGateContext, gateRequest: unsignedGateRequestDependency
+  }).includes("gate_result_request_signature_invalid"));
+  const unsignedBindingDependency = structuredClone(binding);
+  unsignedBindingDependency.binding_service_signature.value = "A".repeat(86);
+  assert.ok(validateGateRequest(gateRequest, unsignedBindingDependency, authorization, confirmation, signedGateContext)
+    .includes("gate_request_binding_signature_invalid"));
+  const unsignedAuthorityDependency = structuredClone(authorization);
+  unsignedAuthorityDependency.principal_signature.value = "A".repeat(86);
+  assert.ok(validateGateRequest(gateRequest, binding, unsignedAuthorityDependency, confirmation, signedGateContext)
+    .includes("gate_request_authority_signature_invalid"));
+  const unsignedConfirmationDependency = structuredClone(confirmation);
+  unsignedConfirmationDependency.verifier_signature.value = "A".repeat(86);
+  assert.ok(validateGateRequest(gateRequest, binding, authorization, unsignedConfirmationDependency, signedGateContext)
+    .includes("gate_request_confirmation_signature_invalid"));
   const missingGateCheck = make("cairn.gate_result.v0.2", {
     ...allowedGate, check_results: allowedGate.check_results.slice(1)
   });
@@ -4621,7 +5098,10 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     "execution.receipt.get", { ref: refFor(redemption) }, {
       ref: refFor(redemption), object: redemption, retrieved_at: "2026-07-22T10:03:30Z"
     },
-    signedReadContext(redemption, { ...redemptionContext, gateResult: allowedGate })
+    signedReadContext(
+      [redemption, allowedGate, gateRequest, binding, authorization, confirmation],
+      { ...redemptionContext, gateResult: allowedGate }, binding.principal_id
+    )
   ), []);
   assert.ok(validateExactObjectRead(
     "execution.receipt.get", { ref: refFor(lateRedemption) }, {
@@ -5158,6 +5638,10 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   const actionRequest = { ref: refFor(actionView) };
   const signedCompositeContext = signedActionGetContext(actionResponse);
   assert.deepEqual(validateActionGetResponse(actionRequest, actionResponse, signedCompositeContext), []);
+  assert.deepEqual(validateActionGetResponse(actionRequest, actionResponse, {
+    ...signedCompositeContext, principalRevocationNonce: authorization.principal_revocation_nonce + 1,
+    requiredReservedJudgments: ["new_judgment_after_authorization"]
+  }), []);
   const staleActionStateRef = {
     ...refFor(afterAction), object_hash: `sha-256:${"8".repeat(64)}`
   };
@@ -5854,6 +6338,9 @@ test("cancellation authority is an exact projection of one binding and one gate 
     expires_at: "2026-07-22T10:05:00Z"
   });
   assert.deepEqual(validateCancellationAuthorization(authorization, binding, cancellationValidationContext), []);
+  assert.ok(validateCancellationAuthorization(authorization, binding, {
+    ...cancellationValidationContext, requiredReservedJudgments: ["evidence_review"]
+  }).includes("cancellation_reserved_judgments_mismatch"));
   assert.ok(validateCancellationAuthorization(authorization, binding, {
     ...cancellationValidationContext, principalRevocationNonce: authorization.principal_revocation_nonce + 1
   }).includes("cancellation_principal_revocation_nonce_mismatch"));

@@ -59,27 +59,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **Every accepted P1/material-P2 finding through round 32 is remediated; local
-  closure is green and the replacement is ready for exact-commit freeze and a
-  fresh three-reviewer gate.**
+  **The first freeze `0b98fff` was rejected; every accepted P1/material-P2
+  finding through round 35 is now remediated, local closure is green, and the
+  replacement is frozen for a fresh exact-commit three-reviewer gate.**
   Candidate internal hash is
-  `sha-256:86aa6c7ebce831205d8d0c66edc8580b7f0c9696391d3470c255d098270c4679`
+  `sha-256:098b1c75096d0c9af4ebc794aa414ada5b704744a8f9d95d55e72ff77b4e082e`
   and registry hash is
-  `sha-256:20b8da602b6e3a3625b18e5742560c8f4cf077cd08c98bf2f209119988a96e5e`.
+  `sha-256:4cf66e2b5cf428617c8df1cb3ad3e1b46fc405a5efb44a3fd075f9d011fe9a96`.
   The audited prose hash is
-  `e12356cd3609c217d6d9004206dd323807993e4a5deb5f774845371311ed2015`.
+  `3d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764`.
   It contains 43 closed signed-object schemas, one content-addressed map-node
   schema, four support documents, and 34 schema-only read operations, with zero
   mutation, external-effect, or authority-effect rows. Local controls pass
-  30/30 and kill 330/330 direct mutants. The frozen proposal baseline separately remains 83/83 with
-  75/75 mutants killed at bundle hash
+  30/30 and kill 349/349 direct mutants. The frozen proposal baseline separately
+  remains 83/83 with 75/75 mutants killed at bundle hash
   `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
-  This replacement closes authenticated/current exact reads; current nonce and
-  reserved-judgment policy; exact runtime/authorization/connection/DataGrant
-  graphs; signed DataGrant lifecycle; ordered gates; signed control successors;
-  three-domain compartment manifests and economic deltas; and receiver identity,
-  one-slot consumption, stream successor, and terminal-completion assignment
-  closure. Every new boundary has a direct killed mutant.
+  This replacement additionally closes GateRequest dependency signatures;
+  runtime-recipient/principal DataGrant closure; cancellation judgment policy;
+  control-receipt authority/map projection; historical ActionGet eligibility
+  separation; exact receiver assignment successors and closure consumption;
+  recursive compartment accounting/map diffs; and the DataGrant expiry boundary.
+  Every new boundary has a direct killed mutant.
   No executor, provider/network review, authorization redemption, outbox,
   payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
   or live state change is created or authorized. The reference service remains
