@@ -15,14 +15,15 @@
           },
           "schema_id": "cairn.active_intent.v0.1",
           "object_hash": "sha-256:0000000000000000000000000000000000000000000000000000000000000000",
+          "identity_key": "[\"cairn.active_intent.v0.1\",\"urn:uuid:00000000-0000-4000-8000-000000000101\",1]",
           "retrieval_uri": "https://cairn.invalid/objects/101",
           "visibility": "private",
           "principal_id": "principal:alice",
           "owner_scope_sequence": 1
         }
       },
-      "canonical_text": "{\"columns\":{\"object_hash\":\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\",\"owner_scope_sequence\":1,\"principal_id\":\"principal:alice\",\"ref\":{\"object_hash\":\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\",\"object_id\":\"urn:uuid:00000000-0000-4000-8000-000000000101\",\"schema\":\"cairn.active_intent.v0.1\"},\"retrieval_uri\":\"https://cairn.invalid/objects/101\",\"schema_id\":\"cairn.active_intent.v0.1\",\"visibility\":\"private\"},\"schema\":\"cairn.authoritative_row_projection.v0.1\",\"structural_key\":\"[\\\"cairn.active_intent.v0.1\\\",\\\"urn:uuid:00000000-0000-4000-8000-000000000101\\\",\\\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\\\"]\",\"table\":\"objects\"}",
-      "canonical_hash": "sha-256:b946f2cb391f379c5834affa12c36b1b5109a7ff461aba20fc98464cbf97911b"
+      "canonical_text": "{\"columns\":{\"identity_key\":\"[\\\"cairn.active_intent.v0.1\\\",\\\"urn:uuid:00000000-0000-4000-8000-000000000101\\\",1]\",\"object_hash\":\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\",\"owner_scope_sequence\":1,\"principal_id\":\"principal:alice\",\"ref\":{\"object_hash\":\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\",\"object_id\":\"urn:uuid:00000000-0000-4000-8000-000000000101\",\"schema\":\"cairn.active_intent.v0.1\"},\"retrieval_uri\":\"https://cairn.invalid/objects/101\",\"schema_id\":\"cairn.active_intent.v0.1\",\"visibility\":\"private\"},\"schema\":\"cairn.authoritative_row_projection.v0.1\",\"structural_key\":\"[\\\"cairn.active_intent.v0.1\\\",\\\"urn:uuid:00000000-0000-4000-8000-000000000101\\\",\\\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\\\"]\",\"table\":\"objects\"}",
+      "canonical_hash": "sha-256:fe1895b7d3647cbde329f43e6447b111745b38200ff98f05b20e7a80f4823093"
     },
     {
       "id": "absent_runtime_binding_row",

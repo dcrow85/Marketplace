@@ -32,8 +32,17 @@ const SPEC_PATH = new URL(
 );
 const VECTORS_PATH = new URL("./canonical-vectors.json", import.meta.url);
 const REGISTRY_PATH = new URL("../../protocol/operations/registry.json", import.meta.url);
-const EXPECTED_SCHEMA_HASH = "sha-256:5539a4e85be08847a669df6b3b68015ec7af26025d49b6d2c41563b1ba191436";
-const EXPECTED_VECTORS_HASH = "sha-256:a272c1e9caf3bdaa3c814a012ed7adc3a091d00c6dbc08e16585f731d9938b6c";
+const FROZEN_SERVICE_PATH = new URL(
+  "../../protocol/reference-service/service.mjs",
+  import.meta.url
+);
+const FROZEN_CAPTURE_PATH = fileURLToPath(
+  new URL("./capture-frozen-transactions.mjs", import.meta.url)
+);
+const FROZEN_TEST_PATH = "protocol/tests/reference-service.test.mjs";
+const REPOSITORY_ROOT = fileURLToPath(new URL("../..", import.meta.url));
+const EXPECTED_SCHEMA_HASH = "sha-256:0b80ffc51b9180b1f292e9596958c6d8e7310c85f7deeec706b4e49b9f1c0cee";
+const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -145,18 +154,46 @@ const EXPECTED_FIXTURE = {
   validation_manifest_hash: "sha-256:5fe6e62dfe489cc14a114389d59c9082b7bb8cb98aea81bb5f5145b0db65569c",
   host_context_hash: "sha-256:3d2f4ac44133bda4869b93a0ff8739cfe377123c7867b7f25d66061e4de7e253",
   dependency_manifest_hash: "sha-256:ffb2b754677e87ab68c6619c065e5fc323088ca2737f24b92346e09fe77a8379",
-  genesis_manifest_hash: "sha-256:ca3c5240563ce44eabe1e507ce5a8e6a4db6e932f2ee0f14794cced18f0248ce",
-  genesis_state_root: "sha-256:79ef0e28166332ff7e974edf07df5df0c1583fa8651984a70e52dac87adff7c1",
+  genesis_manifest_hash: "sha-256:e7e4a2dc6d7e6ba03dfcc916c77f1ffa828d934fd5150e2fd5c3cfead2b529d0",
+  genesis_state_root: "sha-256:b2c01c4c3440f1ef44682f7216036fe3d6e1061a62ed4a5073b06ce3d6c47c08",
   success_observation_hash: "sha-256:885fc906ef4ff965f05cfcb57c418a33084f4dd0abf8e9db4eff8d0e2d7f1bb5",
   success_observation_signature: "jzIWigzSnG1AqzU45j4piDlEOkTMK8mh7mjeRForXCKtMZrPcyqvKIIWWSNxLF-qJj2Dd3Kt0dkTTuXvUBTXAw",
   accepted_failure_observation_hash: "sha-256:eb74e980c4412f48b5163388621afc8cc2dfcc3ce667b4fa0a4acbaa768ea84a",
   accepted_failure_observation_signature: "qlp7vWRkjfhhWsyEvgURJTn0jGfph-862ak9mmyLdvAQwjcNUMXggv7xhw3NLBE-PcDdKfQlkU-Pf3ZW-R5eAQ"
 };
 
+function runFrozenTransactionProbe(testName) {
+  const control = spawnSync(
+    process.execPath,
+    [
+      "--import",
+      FROZEN_CAPTURE_PATH,
+      "--test",
+      "--test-name-pattern",
+      `^${testName}$`,
+      FROZEN_TEST_PATH
+    ],
+    {
+      cwd: REPOSITORY_ROOT,
+      encoding: "utf8"
+    }
+  );
+  assert.equal(control.status, 0, `${control.stdout}\n${control.stderr}`);
+  assert.equal(
+    control.stdout.includes(testName),
+    true,
+    `actual frozen replay control did not execute: ${testName}`
+  );
+  return [...control.stdout.matchAll(/CAIRN_FROZEN_TX=(\{.*\})/g)].map(
+    ([, record]) => JSON.parse(record)
+  );
+}
+
 const schema = JSON.parse(await readFile(SCHEMA_PATH, "utf8"));
 const spec = await readFile(SPEC_PATH, "utf8");
 const vectors = JSON.parse(await readFile(VECTORS_PATH, "utf8"));
 const registry = JSON.parse(await readFile(REGISTRY_PATH, "utf8"));
+const frozenServiceSource = await readFile(FROZEN_SERVICE_PATH, "utf8");
 const ajv = createAjv();
 const validateBundle = ajv.compile(schema);
 
@@ -205,6 +242,11 @@ assert.equal(
   }),
   false,
   "consequential operation escaped the exact registry contract"
+);
+assert.match(
+  frozenServiceSource,
+  /if \(!object \|\| resultAccess\?\.visibility !== "private" \|\| resultAccess\.principal_id !== envelope\.principal_id\) \{\s+return \{ commit: true, value: failure\(503, "idempotency_result_unavailable"\) \};\s+\}/,
+  "frozen result-object/ACL replay branch changed"
 );
 
 const observation = schema.$defs.serviceObservation;
@@ -606,6 +648,35 @@ assert.notEqual(
   authorityNamespaceCommitmentFor("tenant:guessed"),
   authorityNamespaceCommitment
 );
+const originalMutationReceiverAuthenticationRecord = {
+  ...receiverAuthenticationRecord,
+  authentication_handle: "auth:fixture-mutation",
+  principal_id: "principal:alice"
+};
+validateDefinition(
+  "receiverAuthenticationRecord",
+  originalMutationReceiverAuthenticationRecord
+);
+const originalMutationHostContext = bindExternal({
+  schema: "cairn.host_authentication_context.v0.1",
+  context_hash: ZERO_HASH,
+  account_tenant_commitment:
+    originalMutationReceiverAuthenticationRecord.account_tenant_commitment,
+  principal_id: originalMutationReceiverAuthenticationRecord.principal_id,
+  actor_id: originalMutationReceiverAuthenticationRecord.actor_id,
+  runtime_key_id: originalMutationReceiverAuthenticationRecord.runtime_key_id,
+  authority_namespace_commitment:
+    originalMutationReceiverAuthenticationRecord.authority_namespace_commitment,
+  trust_profile_id:
+    originalMutationReceiverAuthenticationRecord.trust_profile_id,
+  trust_profile_hash:
+    originalMutationReceiverAuthenticationRecord.trust_profile_hash,
+  authentication_evidence_commitment:
+    originalMutationReceiverAuthenticationRecord.authentication_evidence_commitment,
+  assertion_level:
+    originalMutationReceiverAuthenticationRecord.assertion_level
+}, "hostAuthenticationContext");
+validateDefinition("hostAuthenticationContext", originalMutationHostContext);
 
 const attemptedRuntimeKey = canonicalText(["did:key:runtime-missing"]);
 const absentStructuralKey = canonicalText([
@@ -695,48 +766,155 @@ function singletonHashAttemptedKeyIsValid(tuple) {
     /^sha-256:[0-9a-f]{64}$/.test(tuple[0]);
 }
 
+const ROW_PROJECTION_DEFINITIONS = {
+  objects: "objectRowProjection",
+  runtime_bindings: "runtimeBindingRowProjection",
+  data_grants: "dataGrantRowProjection",
+  effect_descriptors: "effectDescriptorRowProjection",
+  validation_keys: "validationKeyRowProjection",
+  grant_state: "grantStateRowProjection",
+  used_nonces: "usedNonceRowProjection",
+  idempotency_records: "idempotencyRowProjection"
+};
+const ROW_PROJECTION_VALIDATORS = Object.fromEntries(
+  Object.entries(ROW_PROJECTION_DEFINITIONS).map(([table, definition]) => [
+    table,
+    ajv.compile({ "$ref": `${schema.$id}#/$defs/${definition}` })
+  ])
+);
+
+function objectIdentityIsCoherent(projection) {
+  const identity = parseCanonicalArray(projection.columns.identity_key);
+  return identityAttemptedKeyIsValid(identity) &&
+    identity[0] === projection.columns.ref.schema &&
+    identity[1] === projection.columns.ref.object_id;
+}
+
 const TABLE_RULES = {
   objects: {
+    validateProjection: ROW_PROJECTION_VALIDATORS.objects,
     aliases: {
-      primary_ref: objectRefAttemptedKeyIsValid,
-      identity_key: identityAttemptedKeyIsValid,
-      uri_by_ref: objectRefAttemptedKeyIsValid,
-      access_by_ref: objectRefAttemptedKeyIsValid
+      primary_ref: {
+        valid: objectRefAttemptedKeyIsValid,
+        expected: (projection) =>
+          objectRefStructuralKey(projection.columns.ref)
+      },
+      identity_key: {
+        valid: identityAttemptedKeyIsValid,
+        expected: (projection) => projection.columns.identity_key
+      },
+      uri_by_ref: {
+        valid: objectRefAttemptedKeyIsValid,
+        expected: (projection) =>
+          objectRefStructuralKey(projection.columns.ref)
+      },
+      access_by_ref: {
+        valid: objectRefAttemptedKeyIsValid,
+        expected: (projection) =>
+          objectRefStructuralKey(projection.columns.ref)
+      }
     },
     baseKey(projection) {
       assert.equal(projection.columns.schema_id, projection.columns.ref.schema);
       assert.equal(projection.columns.object_hash, projection.columns.ref.object_hash);
+      assert.equal(objectIdentityIsCoherent(projection), true);
       return objectRefStructuralKey(projection.columns.ref);
     }
   },
   runtime_bindings: {
-    aliases: { runtime_key_id: singletonStringAttemptedKeyIsValid },
-    baseKey: (projection) =>
-      canonicalText([projection.columns.runtime_key_id])
+    validateProjection: ROW_PROJECTION_VALIDATORS.runtime_bindings,
+    aliases: {
+      runtime_key_id: {
+        valid: singletonStringAttemptedKeyIsValid,
+        expected: (projection) =>
+          canonicalText([projection.columns.runtime_key_id])
+      }
+    },
+    baseKey(projection) {
+      assert.equal(
+        projection.columns.ref.schema,
+        "cairn.agent_runtime_binding.v0.1"
+      );
+      return canonicalText([projection.columns.runtime_key_id]);
+    }
   },
   data_grants: {
-    aliases: { grant_ref: objectRefAttemptedKeyIsValid },
-    baseKey: (projection) => objectRefStructuralKey(projection.columns.ref)
+    validateProjection: ROW_PROJECTION_VALIDATORS.data_grants,
+    aliases: {
+      grant_ref: {
+        valid: objectRefAttemptedKeyIsValid,
+        expected: (projection) =>
+          objectRefStructuralKey(projection.columns.ref)
+      }
+    },
+    baseKey(projection) {
+      assert.equal(projection.columns.ref.schema, "cairn.data_grant.v0.1");
+      return objectRefStructuralKey(projection.columns.ref);
+    }
   },
   effect_descriptors: {
-    aliases: { effect_ref: objectRefAttemptedKeyIsValid },
-    baseKey: (projection) => objectRefStructuralKey(projection.columns.ref)
+    validateProjection: ROW_PROJECTION_VALIDATORS.effect_descriptors,
+    aliases: {
+      effect_ref: {
+        valid: objectRefAttemptedKeyIsValid,
+        expected: (projection) =>
+          objectRefStructuralKey(projection.columns.ref)
+      }
+    },
+    baseKey(projection) {
+      assert.equal(
+        projection.columns.ref.schema,
+        "cairn.effect_descriptor.v0.1"
+      );
+      return objectRefStructuralKey(projection.columns.ref);
+    }
   },
   validation_keys: {
-    aliases: { key_id: singletonStringAttemptedKeyIsValid },
+    validateProjection: ROW_PROJECTION_VALIDATORS.validation_keys,
+    aliases: {
+      key_id: {
+        valid: singletonStringAttemptedKeyIsValid,
+        expected: (projection) => canonicalText([projection.columns.key_id])
+      }
+    },
     baseKey: (projection) => canonicalText([projection.columns.key_id])
   },
   grant_state: {
-    aliases: { grant_state_ref: objectRefAttemptedKeyIsValid },
-    baseKey: (projection) =>
-      objectRefStructuralKey(projection.columns.grant_ref)
+    validateProjection: ROW_PROJECTION_VALIDATORS.grant_state,
+    aliases: {
+      grant_state_ref: {
+        valid: objectRefAttemptedKeyIsValid,
+        expected: (projection) =>
+          objectRefStructuralKey(projection.columns.grant_ref)
+      }
+    },
+    baseKey(projection) {
+      assert.equal(
+        projection.columns.grant_ref.schema,
+        "cairn.data_grant.v0.1"
+      );
+      return objectRefStructuralKey(projection.columns.grant_ref);
+    }
   },
   used_nonces: {
-    aliases: { nonce: singletonStringAttemptedKeyIsValid },
+    validateProjection: ROW_PROJECTION_VALIDATORS.used_nonces,
+    aliases: {
+      nonce: {
+        valid: singletonStringAttemptedKeyIsValid,
+        expected: (projection) => canonicalText([projection.columns.nonce])
+      }
+    },
     baseKey: (projection) => canonicalText([projection.columns.nonce])
   },
   idempotency_records: {
-    aliases: { authority_idempotency: singletonHashAttemptedKeyIsValid },
+    validateProjection: ROW_PROJECTION_VALIDATORS.idempotency_records,
+    aliases: {
+      authority_idempotency: {
+        valid: singletonHashAttemptedKeyIsValid,
+        expected: (projection) =>
+          canonicalText([projection.columns.structural_key_commitment])
+      }
+    },
     baseKey(projection) {
       const key = parseCanonicalArray(projection.structural_key);
       assert.deepEqual(key, [projection.columns.structural_key_commitment]);
@@ -744,6 +922,23 @@ const TABLE_RULES = {
     }
   }
 };
+
+function decodeDependencyStructuralKey(text) {
+  const tuple = parseCanonicalArray(text);
+  if (
+    tuple.length === 3 &&
+    tuple[0] === "index" &&
+    typeof tuple[1] === "string" &&
+    typeof tuple[2] === "string"
+  ) {
+    return {
+      kind: "alias",
+      indexName: tuple[1],
+      attemptedKeyText: tuple[2]
+    };
+  }
+  return { kind: "base", tuple };
+}
 
 function dependencyManifestIsCoherent(
   manifest,
@@ -763,7 +958,8 @@ function dependencyManifestIsCoherent(
     for (const entry of manifest.entries) {
       const rule = TABLE_RULES[entry.table_name];
       if (!rule) return false;
-      const parsedStructuralKey = parseCanonicalArray(entry.structural_key);
+      const decodedStructuralKey =
+        decodeDependencyStructuralKey(entry.structural_key);
       if (entry.entry_key !== canonicalText([entry.table_name, entry.structural_key])) {
         return false;
       }
@@ -773,18 +969,14 @@ function dependencyManifestIsCoherent(
       ) return false;
       prior = entry.entry_key;
 
-      const isAlias = parsedStructuralKey[0] === "index";
-      if (isAlias) {
+      if (decodedStructuralKey.kind === "alias") {
+        const attemptedKey = parseCanonicalArray(
+          decodedStructuralKey.attemptedKeyText
+        );
+        const aliasRule = rule.aliases[decodedStructuralKey.indexName];
         if (
-          parsedStructuralKey.length !== 3 ||
-          typeof parsedStructuralKey[1] !== "string" ||
-          typeof parsedStructuralKey[2] !== "string"
-        ) return false;
-        const attemptedKey = parseCanonicalArray(parsedStructuralKey[2]);
-        const attemptedKeyValidator = rule.aliases[parsedStructuralKey[1]];
-        if (
-          !attemptedKeyValidator ||
-          !attemptedKeyValidator(attemptedKey) ||
+          !aliasRule ||
+          !aliasRule.valid(attemptedKey) ||
           !["read_present", "read_absent"].includes(entry.access_kind)
         ) return false;
         if (entry.access_kind === "read_absent") {
@@ -792,8 +984,8 @@ function dependencyManifestIsCoherent(
           const expectedAbsentHash = canonicalHash([
             "cairn-authoritative-absent-row-v0.1",
             entry.table_name,
-            parsedStructuralKey[1],
-            parsedStructuralKey[2]
+            decodedStructuralKey.indexName,
+            decodedStructuralKey.attemptedKeyText
           ]);
           if (entry.canonical_row_hash !== expectedAbsentHash) return false;
           continue;
@@ -806,9 +998,12 @@ function dependencyManifestIsCoherent(
           !baseEntry ||
           !projection ||
           baseEntry.table_name !== entry.table_name ||
-          parseCanonicalArray(baseEntry.structural_key)[0] === "index" ||
+          decodeDependencyStructuralKey(baseEntry.structural_key).kind !== "base" ||
+          !rule.validateProjection(projection) ||
           projection.table !== entry.table_name ||
           rule.baseKey(projection) !== baseEntry.structural_key ||
+          aliasRule.expected(projection) !==
+            decodedStructuralKey.attemptedKeyText ||
           canonicalHash(projection) !== entry.canonical_row_hash ||
           canonicalHash(projection) !== baseEntry.canonical_row_hash
         ) return false;
@@ -819,6 +1014,7 @@ function dependencyManifestIsCoherent(
       const projection = presentRows.get(entry.entry_key);
       if (
         !projection ||
+        !rule.validateProjection(projection) ||
         projection.table !== entry.table_name ||
         rule.baseKey(projection) !== entry.structural_key ||
         canonicalHash(projection) !== entry.canonical_row_hash
@@ -915,6 +1111,42 @@ assert.equal(
   false,
   "present alias without authoritative resolution accepted"
 );
+const borrowedRef = {
+  ...rowVector.value.columns.ref,
+  object_id: "urn:uuid:00000000-0000-4000-8000-000000000102"
+};
+const borrowedAttemptedKey = objectRefStructuralKey(borrowedRef);
+const borrowedAliasStructuralKey = canonicalText([
+  "index",
+  "primary_ref",
+  borrowedAttemptedKey
+]);
+const borrowedAliasEntry = {
+  ...presentAliasEntry,
+  entry_key: canonicalText(["objects", borrowedAliasStructuralKey]),
+  structural_key: borrowedAliasStructuralKey
+};
+const borrowedAliasManifest = bindExternal({
+  schema: "cairn.dependency_manifest.v0.1",
+  entries: [presentDependencyEntry, borrowedAliasEntry].sort((left, right) =>
+    Buffer.compare(
+      Buffer.from(left.entry_key, "utf8"),
+      Buffer.from(right.entry_key, "utf8")
+    )
+  ),
+  dependency_set_commitment: ZERO_HASH
+}, "dependencyManifest");
+assert.equal(
+  dependencyManifestIsCoherent(
+    borrowedAliasManifest,
+    presentRows,
+    new Map([
+      [borrowedAliasEntry.entry_key, presentDependencyEntry.entry_key]
+    ])
+  ),
+  false,
+  "valid-shaped alias borrowed an unrelated base row"
+);
 const wrongTableAlias = structuredClone(dependencyManifest);
 wrongTableAlias.entries[0].table_name = "objects";
 wrongTableAlias.entries[0].entry_key = canonicalText([
@@ -950,6 +1182,74 @@ assert.equal(
   ),
   false,
   "underived base structural key accepted"
+);
+const wrongTypedGrantProjection = {
+  ...structuredClone(rowVector.value),
+  table: "data_grants"
+};
+const wrongTypedGrantEntry = {
+  entry_key: canonicalText([
+    "data_grants",
+    wrongTypedGrantProjection.structural_key
+  ]),
+  table_name: "data_grants",
+  structural_key: wrongTypedGrantProjection.structural_key,
+  access_kind: "read_present",
+  canonical_row_hash: canonicalHash(wrongTypedGrantProjection)
+};
+const wrongTypedGrantManifest = bindExternal({
+  schema: "cairn.dependency_manifest.v0.1",
+  entries: [wrongTypedGrantEntry],
+  dependency_set_commitment: ZERO_HASH
+}, "dependencyManifest");
+assert.equal(
+  dependencyManifestIsCoherent(
+    wrongTypedGrantManifest,
+    new Map([
+      [wrongTypedGrantEntry.entry_key, wrongTypedGrantProjection]
+    ])
+  ),
+  false,
+  "foreign object row was accepted as a DataGrant row"
+);
+const literalIndexNonceProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "used_nonces",
+  structural_key: canonicalText(["index"]),
+  columns: {
+    nonce: "index",
+    envelope_hash: `sha-256:${"3".repeat(64)}`,
+    operation: "capabilities.get",
+    owner_kind: "actor",
+    owner_id: "agent:anko",
+    owner_scope_sequence: 1
+  }
+};
+validateDefinition("usedNonceRowProjection", literalIndexNonceProjection);
+const literalIndexNonceEntry = {
+  entry_key: canonicalText([
+    "used_nonces",
+    literalIndexNonceProjection.structural_key
+  ]),
+  table_name: "used_nonces",
+  structural_key: literalIndexNonceProjection.structural_key,
+  access_kind: "read_present",
+  canonical_row_hash: canonicalHash(literalIndexNonceProjection)
+};
+const literalIndexNonceManifest = bindExternal({
+  schema: "cairn.dependency_manifest.v0.1",
+  entries: [literalIndexNonceEntry],
+  dependency_set_commitment: ZERO_HASH
+}, "dependencyManifest");
+assert.equal(
+  dependencyManifestIsCoherent(
+    literalIndexNonceManifest,
+    new Map([
+      [literalIndexNonceEntry.entry_key, literalIndexNonceProjection]
+    ])
+  ),
+  true,
+  "literal singleton base key 'index' was misclassified as an alias"
 );
 const wrongAliasHash = structuredClone(presentAliasManifest);
 const wrongAliasHashEntry = wrongAliasHash.entries.find(
@@ -1024,10 +1324,10 @@ const referenceService = createReferenceService({
 });
 const capabilitiesBody = referenceService.capabilities();
 const capabilityContract = registryContracts[0];
-const actionPrepareContract = registryContracts.find(
-  ({ operation }) => operation === "action.prepare"
+const intentPutContract = registryContracts.find(
+  ({ operation }) => operation === "intent.put"
 );
-assert.ok(actionPrepareContract);
+assert.ok(intentPutContract);
 const kernelSuccess = {
   ok: true,
   status: 200,
@@ -1040,6 +1340,66 @@ const kernelAcceptedFailure = {
   code: "idempotency_result_unavailable",
   failures: ["idempotency_result_unavailable"]
 };
+const originalMutationKernelSuccess = {
+  ok: true,
+  status: 201,
+  body: {
+    ref: rowVector.value.columns.ref,
+    receipt_ref: null
+  },
+  replayed: false
+};
+const frozenConflictTransactions = runFrozenTransactionProbe(
+  "a changed fingerprint cannot reuse a committed idempotency key"
+);
+const actualFrozenConflict = frozenConflictTransactions.findLast(
+  ({ value }) => value?.failures?.includes("idempotency_conflict")
+);
+assert.ok(actualFrozenConflict, "actual frozen idempotency conflict missing");
+assert.equal(actualFrozenConflict.commit, false);
+assert.ok(actualFrozenConflict.callback_before);
+assert.ok(actualFrozenConflict.callback_after);
+assert.deepEqual(actualFrozenConflict.after, actualFrozenConflict.before);
+
+const frozenCorruptResultTransactions = runFrozenTransactionProbe(
+  "replay fails closed when its stored exact result binding is corrupt"
+);
+const actualFrozenCorruptResult = frozenCorruptResultTransactions.findLast(
+  ({ value }) => value?.code === "idempotency_result_unavailable"
+);
+assert.ok(actualFrozenCorruptResult, "actual frozen corrupt replay missing");
+assert.equal(actualFrozenCorruptResult.commit, true);
+assert.equal(
+  actualFrozenCorruptResult.callback_after.used_nonces.length,
+  actualFrozenCorruptResult.callback_before.used_nonces.length + 1
+);
+for (const name of Object.keys(actualFrozenCorruptResult.callback_before.maps)) {
+  assert.deepEqual(
+    actualFrozenCorruptResult.callback_after.maps[name],
+    actualFrozenCorruptResult.callback_before.maps[name],
+    `actual frozen corrupt replay changed ${name}`
+  );
+}
+assert.deepEqual(
+  actualFrozenCorruptResult.after,
+  actualFrozenCorruptResult.callback_after
+);
+const frozenGrantExhaustionTransactions = runFrozenTransactionProbe(
+  "grant disclosures are consumed once per successful new operation and never on replay"
+);
+const actualFrozenGrantExhaustion =
+  frozenGrantExhaustionTransactions.findLast(
+    ({ value }) =>
+      value?.failures?.includes("grant_disclosures_exhausted")
+  );
+assert.ok(actualFrozenGrantExhaustion, "actual frozen grant exhaustion missing");
+assert.equal(actualFrozenGrantExhaustion.commit, false);
+assert.ok(actualFrozenGrantExhaustion.callback_before);
+assert.ok(actualFrozenGrantExhaustion.callback_after);
+assert.deepEqual(
+  actualFrozenGrantExhaustion.after,
+  actualFrozenGrantExhaustion.before
+);
 const idempotencyDatabaseLookupKey = canonicalText([
   authorityNamespaceRaw,
   "idem-1"
@@ -1055,20 +1415,38 @@ function idempotencyStructuralKeyCommitment(databaseLookupKey) {
 }
 const idempotencyStructuralKeyCommitmentValue =
   idempotencyStructuralKeyCommitment(idempotencyDatabaseLookupKey);
-const idempotencyOperatorRow = {
-  authority_namespace: authorityNamespaceRaw,
+const originalMutationFacts = {
+  authority_namespace:
+    originalMutationReceiverAuthenticationRecord.authority_namespace_raw,
   idempotency_key: "idem-1",
-  operation_name: "intent.put",
+  operation_name: intentPutContract.operation,
   operation_fingerprint: `sha-256:${"4".repeat(64)}`,
   principal_id: "principal:alice",
-  actor_id: "agent:anko",
-  runtime_key_id: null,
-  result_ref: rowVector.value.columns.ref,
-  kernel_result_hash: canonicalHash(kernelSuccess),
-  origin_global_commit_sequence: 41,
+  actor_id: originalMutationReceiverAuthenticationRecord.actor_id,
+  runtime_key_id: originalMutationReceiverAuthenticationRecord.runtime_key_id,
+  result_ref: structuredClone(rowVector.value.columns.ref),
+  kernel_result_hash: canonicalHash(originalMutationKernelSuccess),
+  origin_global_commit_sequence: 1,
   origin_scope_sequence: 1,
-  created_global_commit_sequence: 41,
+  created_global_commit_sequence: 1,
   created_scope_sequence: 1
+};
+const idempotencyOperatorRow = {
+  authority_namespace: originalMutationFacts.authority_namespace,
+  idempotency_key: originalMutationFacts.idempotency_key,
+  operation_name: originalMutationFacts.operation_name,
+  operation_fingerprint: originalMutationFacts.operation_fingerprint,
+  principal_id: originalMutationFacts.principal_id,
+  actor_id: originalMutationFacts.actor_id,
+  runtime_key_id: originalMutationFacts.runtime_key_id,
+  result_ref: structuredClone(originalMutationFacts.result_ref),
+  kernel_result_hash: originalMutationFacts.kernel_result_hash,
+  origin_global_commit_sequence:
+    originalMutationFacts.origin_global_commit_sequence,
+  origin_scope_sequence: originalMutationFacts.origin_scope_sequence,
+  created_global_commit_sequence:
+    originalMutationFacts.created_global_commit_sequence,
+  created_scope_sequence: originalMutationFacts.created_scope_sequence
 };
 
 function projectIdempotencyOwnerRow(row) {
@@ -1100,6 +1478,203 @@ function projectIdempotencyOwnerRow(row) {
 const idempotencyIntegrityProjection =
   projectIdempotencyOwnerRow(idempotencyOperatorRow);
 validateDefinition("operationalRowProjection", idempotencyIntegrityProjection);
+
+function fixtureRef(schemaId, suffix, hashDigit) {
+  return {
+    schema: schemaId,
+    object_id:
+      `urn:uuid:00000000-0000-4000-8000-${String(suffix).padStart(12, "0")}`,
+    object_hash: `sha-256:${String(hashDigit).repeat(64)}`
+  };
+}
+
+const runtimeBindingProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "runtime_bindings",
+  structural_key: canonicalText(["did:key:runtime-fixture"]),
+  columns: {
+    runtime_key_id: "did:key:runtime-fixture",
+    ref: fixtureRef("cairn.agent_runtime_binding.v0.1", 201, 1)
+  }
+};
+const dataGrantProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "data_grants",
+  structural_key: objectRefStructuralKey(
+    fixtureRef("cairn.data_grant.v0.1", 202, 2)
+  ),
+  columns: {
+    ref: fixtureRef("cairn.data_grant.v0.1", 202, 2)
+  }
+};
+const effectDescriptorProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "effect_descriptors",
+  structural_key: objectRefStructuralKey(
+    fixtureRef("cairn.effect_descriptor.v0.1", 203, 3)
+  ),
+  columns: {
+    ref: fixtureRef("cairn.effect_descriptor.v0.1", 203, 3)
+  }
+};
+const validationKeyProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "validation_keys",
+  structural_key: canonicalText([fixtureKeyRecord.key_id]),
+  columns: structuredClone(fixtureKeyRecord)
+};
+const grantStateRef = fixtureRef("cairn.data_grant.v0.1", 204, 4);
+const grantStateProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "grant_state",
+  structural_key: objectRefStructuralKey(grantStateRef),
+  columns: {
+    grant_ref: grantStateRef,
+    status: "active",
+    revocation_nonce: 1,
+    remaining_disclosures: 1,
+    state_version: 0,
+    owner_scope_sequence: 1
+  }
+};
+const usedNonceProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "used_nonces",
+  structural_key: canonicalText(["nonce:fixture"]),
+  columns: {
+    nonce: "nonce:fixture",
+    envelope_hash: `sha-256:${"5".repeat(64)}`,
+    operation: "intent.put",
+    owner_kind: "principal",
+    owner_id: "principal:alice",
+    owner_scope_sequence: 1
+  }
+};
+for (const projection of [
+  runtimeBindingProjection,
+  dataGrantProjection,
+  effectDescriptorProjection,
+  validationKeyProjection,
+  grantStateProjection,
+  usedNonceProjection
+]) {
+  validateDefinition("operationalRowProjection", projection);
+}
+
+const presentAliasCases = [
+  ["objects", "primary_ref", rowVector.value,
+    objectRefStructuralKey(rowVector.value.columns.ref)],
+  ["objects", "identity_key", rowVector.value,
+    rowVector.value.columns.identity_key],
+  ["objects", "uri_by_ref", rowVector.value,
+    objectRefStructuralKey(rowVector.value.columns.ref)],
+  ["objects", "access_by_ref", rowVector.value,
+    objectRefStructuralKey(rowVector.value.columns.ref)],
+  ["runtime_bindings", "runtime_key_id", runtimeBindingProjection,
+    runtimeBindingProjection.structural_key],
+  ["data_grants", "grant_ref", dataGrantProjection,
+    dataGrantProjection.structural_key],
+  ["effect_descriptors", "effect_ref", effectDescriptorProjection,
+    effectDescriptorProjection.structural_key],
+  ["validation_keys", "key_id", validationKeyProjection,
+    validationKeyProjection.structural_key],
+  ["grant_state", "grant_state_ref", grantStateProjection,
+    grantStateProjection.structural_key],
+  ["used_nonces", "nonce", usedNonceProjection,
+    usedNonceProjection.structural_key],
+  ["idempotency_records", "authority_idempotency",
+    idempotencyIntegrityProjection,
+    idempotencyIntegrityProjection.structural_key]
+];
+assert.equal(presentAliasCases.length, 11);
+for (const [table, indexName, projection, attemptedKey] of presentAliasCases) {
+  const baseEntry = {
+    entry_key: canonicalText([table, projection.structural_key]),
+    table_name: table,
+    structural_key: projection.structural_key,
+    access_kind: "read_present",
+    canonical_row_hash: canonicalHash(projection)
+  };
+  const aliasStructuralKey = canonicalText([
+    "index",
+    indexName,
+    attemptedKey
+  ]);
+  const aliasEntry = {
+    entry_key: canonicalText([table, aliasStructuralKey]),
+    table_name: table,
+    structural_key: aliasStructuralKey,
+    access_kind: "read_present",
+    canonical_row_hash: canonicalHash(projection)
+  };
+  const manifest = bindExternal({
+    schema: "cairn.dependency_manifest.v0.1",
+    entries: [baseEntry, aliasEntry].sort((left, right) =>
+      Buffer.compare(
+        Buffer.from(left.entry_key, "utf8"),
+        Buffer.from(right.entry_key, "utf8")
+      )
+    ),
+    dependency_set_commitment: ZERO_HASH
+  }, "dependencyManifest");
+  const rows = new Map([[baseEntry.entry_key, projection]]);
+  const resolution = new Map([[aliasEntry.entry_key, baseEntry.entry_key]]);
+  assert.equal(
+    dependencyManifestIsCoherent(manifest, rows, resolution),
+    true,
+    `valid present alias rejected: ${table}.${indexName}`
+  );
+
+  const attemptedTuple = parseCanonicalArray(attemptedKey);
+  const borrowedTuple = structuredClone(attemptedTuple);
+  if (objectRefAttemptedKeyIsValid(attemptedTuple)) {
+    borrowedTuple[1] = "urn:uuid:00000000-0000-4000-8000-000000000299";
+  } else {
+    borrowedTuple[borrowedTuple.length - 1] =
+      typeof borrowedTuple.at(-1) === "number"
+        ? borrowedTuple.at(-1) + 1
+        : `${borrowedTuple.at(-1)}-other`;
+  }
+  if (indexName === "authority_idempotency") {
+    borrowedTuple[0] = `sha-256:${"f".repeat(64)}`;
+  }
+  const borrowedAttemptedKeyText = canonicalText(borrowedTuple);
+  assert.equal(
+    TABLE_RULES[table].aliases[indexName].valid(borrowedTuple),
+    true,
+    `borrowed fixture invalid for ${table}.${indexName}`
+  );
+  const borrowedStructuralKey = canonicalText([
+    "index",
+    indexName,
+    borrowedAttemptedKeyText
+  ]);
+  const borrowedEntry = {
+    ...aliasEntry,
+    entry_key: canonicalText([table, borrowedStructuralKey]),
+    structural_key: borrowedStructuralKey
+  };
+  const borrowedManifest = bindExternal({
+    schema: "cairn.dependency_manifest.v0.1",
+    entries: [baseEntry, borrowedEntry].sort((left, right) =>
+      Buffer.compare(
+        Buffer.from(left.entry_key, "utf8"),
+        Buffer.from(right.entry_key, "utf8")
+      )
+    ),
+    dependency_set_commitment: ZERO_HASH
+  }, "dependencyManifest");
+  assert.equal(
+    dependencyManifestIsCoherent(
+      borrowedManifest,
+      rows,
+      new Map([[borrowedEntry.entry_key, baseEntry.entry_key]])
+    ),
+    false,
+    `borrowed present alias accepted: ${table}.${indexName}`
+  );
+}
+
 assert.equal(
   idempotencyIntegrityProjection.structural_key,
   canonicalText([idempotencyStructuralKeyCommitmentValue])
@@ -1168,9 +1743,28 @@ const frozenIdempotencyView = {
 assert.deepEqual(Object.keys(frozenIdempotencyView), ["fingerprint", "result_ref"]);
 
 const privateScopeCommitMap = new Map([
-  ["principal:alice:1", 41]
+  [
+    `${originalMutationFacts.principal_id}:${originalMutationFacts.origin_scope_sequence}`,
+    originalMutationFacts.origin_global_commit_sequence
+  ]
 ]);
-const idempotencyIntegrityTruth = structuredClone(idempotencyOperatorRow);
+const idempotencyIntegrityTruth = {
+  authority_namespace: originalMutationFacts.authority_namespace,
+  idempotency_key: originalMutationFacts.idempotency_key,
+  operation_name: originalMutationFacts.operation_name,
+  operation_fingerprint: originalMutationFacts.operation_fingerprint,
+  principal_id: originalMutationFacts.principal_id,
+  actor_id: originalMutationFacts.actor_id,
+  runtime_key_id: originalMutationFacts.runtime_key_id,
+  result_ref: structuredClone(originalMutationFacts.result_ref),
+  kernel_result_hash: originalMutationFacts.kernel_result_hash,
+  origin_global_commit_sequence:
+    originalMutationFacts.origin_global_commit_sequence,
+  origin_scope_sequence: originalMutationFacts.origin_scope_sequence,
+  created_global_commit_sequence:
+    originalMutationFacts.created_global_commit_sequence,
+  created_scope_sequence: originalMutationFacts.created_scope_sequence
+};
 
 function idempotencyOperatorRowIsCoherent(operatorRow, truth) {
   return canonicalText(operatorRow) === canonicalText(truth) &&
@@ -1290,10 +1884,143 @@ assert.equal(
   "operator-private global sequence escaped its private scope-commit cross-check"
 );
 
+function dependencyEntryForProjection(projection, accessKind) {
+  return {
+    entry_key: canonicalText([projection.table, projection.structural_key]),
+    table_name: projection.table,
+    structural_key: projection.structural_key,
+    access_kind: accessKind,
+    canonical_row_hash: canonicalHash(projection)
+  };
+}
+
+function aliasDependencyEntry({
+  table,
+  indexName,
+  attemptedKey,
+  accessKind,
+  canonicalRowHash = null
+}) {
+  const structuralKey = canonicalText([
+    "index",
+    indexName,
+    attemptedKey
+  ]);
+  return {
+    entry_key: canonicalText([table, structuralKey]),
+    table_name: table,
+    structural_key: structuralKey,
+    access_kind: accessKind,
+    canonical_row_hash: canonicalRowHash ?? canonicalHash([
+      "cairn-authoritative-absent-row-v0.1",
+      table,
+      indexName,
+      attemptedKey
+    ])
+  };
+}
+
+function committedDependencyManifest(entries) {
+  return bindExternal({
+    schema: "cairn.dependency_manifest.v0.1",
+    entries: structuredClone(entries).sort((left, right) =>
+      Buffer.compare(
+        Buffer.from(left.entry_key, "utf8"),
+        Buffer.from(right.entry_key, "utf8")
+      )
+    ),
+    dependency_set_commitment: ZERO_HASH
+  }, "dependencyManifest");
+}
+
+function ownerScopeCommitment({
+  ownerKind,
+  ownerId,
+  scopeSequence,
+  projections
+}) {
+  const committedRows = projections.map((projection) => [
+    projection.table,
+    projection.structural_key,
+    canonicalHash(projection)
+  ]).sort((left, right) => {
+    const tableOrder = Buffer.compare(
+      Buffer.from(left[0], "utf8"),
+      Buffer.from(right[0], "utf8")
+    );
+    return tableOrder || Buffer.compare(
+      Buffer.from(left[1], "utf8"),
+      Buffer.from(right[1], "utf8")
+    );
+  });
+  return canonicalHash([
+    "cairn-reference-owner-state-v0.1",
+    SERVICE_ID,
+    STORE_ID,
+    ownerKind,
+    ownerId,
+    scopeSequence,
+    committedRows
+  ]);
+}
+
+const ORIGINAL_ENVELOPE_HASH = `sha-256:${"6".repeat(64)}`;
+const ORIGINAL_SNAPSHOT_ID =
+  "urn:uuid:00000000-0000-4000-8000-000000000028";
+const originalNonceProjection = {
+  schema: "cairn.authoritative_row_projection.v0.1",
+  table: "used_nonces",
+  structural_key: canonicalText(["nonce:original"]),
+  columns: {
+    nonce: "nonce:original",
+    envelope_hash: ORIGINAL_ENVELOPE_HASH,
+    operation: intentPutContract.operation,
+    owner_kind: "principal",
+    owner_id: originalMutationFacts.principal_id,
+    owner_scope_sequence: 1
+  }
+};
+validateDefinition("operationalRowProjection", originalNonceProjection);
+const originalMutationCommittedProjections = [
+  structuredClone(rowVector.value),
+  structuredClone(idempotencyIntegrityProjection),
+  structuredClone(originalNonceProjection)
+];
+const originalMutationDependencyManifest = committedDependencyManifest([
+  dependencyEntryForProjection(rowVector.value, "write_insert"),
+  dependencyEntryForProjection(idempotencyIntegrityProjection, "write_insert"),
+  dependencyEntryForProjection(originalNonceProjection, "write_insert"),
+  aliasDependencyEntry({
+    table: "idempotency_records",
+    indexName: "authority_idempotency",
+    attemptedKey: canonicalText([
+      idempotencyStructuralKeyCommitmentValue
+    ]),
+    accessKind: "read_absent"
+  })
+]);
+assert.equal(
+  dependencyManifestIsCoherent(
+    originalMutationDependencyManifest,
+    new Map(originalMutationCommittedProjections.map((projection) => [
+      canonicalText([projection.table, projection.structural_key]),
+      projection
+    ]))
+  ),
+  true
+);
+const originalMutationScopeCommitment = ownerScopeCommitment({
+  ownerKind: "principal",
+  ownerId: originalMutationFacts.principal_id,
+  scopeSequence: 1,
+  projections: originalMutationCommittedProjections
+});
+
 function queryCommitmentFor(contract, {
   principalId = null,
   actorId = "agent:anko",
-  runtimeKeyId = null
+  runtimeKeyId = null,
+  hostContextHash = hostContext.context_hash
 } = {}) {
   return canonicalHash({
     operation_contract: contract,
@@ -1303,7 +2030,7 @@ function queryCommitmentFor(contract, {
     body_hash: canonicalHash({}),
     subject_refs: [],
     authorization_refs: [],
-    host_authentication_context_hash: hostContext.context_hash,
+    host_authentication_context_hash: hostContextHash,
     declared_purpose: null,
     intended_use: null,
     filters: [],
@@ -1326,6 +2053,12 @@ function signedObservation({
   ownerKind = "actor",
   ownerId = actorId,
   nonceDisposition = "newly_reserved",
+  hostAuthenticationContext = hostContext,
+  returnedRefs = [],
+  envelopeHash = `sha-256:${"1".repeat(64)}`,
+  messageId = "urn:uuid:00000000-0000-4000-8000-000000000020",
+  dependencySetCommitment = dependencyManifest.dependency_set_commitment,
+  scopeStateCommitmentAfter = `sha-256:${String(scopeAfter).repeat(64)}`,
   idempotency = {
     structural_key_commitment: null,
     disposition: "not_applicable",
@@ -1356,8 +2089,8 @@ function signedObservation({
       owner_id: ownerId
     },
     request: {
-      envelope_hash: `sha-256:${"1".repeat(64)}`,
-      message_id: "urn:uuid:00000000-0000-4000-8000-000000000020",
+      envelope_hash: envelopeHash,
+      message_id: messageId,
       operation_contract: contract,
       principal_id: principalId,
       actor_id: actorId,
@@ -1368,9 +2101,10 @@ function signedObservation({
       query_commitment: queryCommitmentFor(contract, {
         principalId,
         actorId,
-        runtimeKeyId
+        runtimeKeyId,
+        hostContextHash: hostAuthenticationContext.context_hash
       }),
-      host_authentication_context_hash: hostContext.context_hash
+      host_authentication_context_hash: hostAuthenticationContext.context_hash
     },
     observed_at: NOW,
     transaction: {
@@ -1378,8 +2112,8 @@ function signedObservation({
       snapshot_id: snapshotId,
       scope_sequence_before: scopeBefore,
       scope_sequence_after: scopeAfter,
-      dependency_set_commitment: dependencyManifest.dependency_set_commitment,
-      scope_state_commitment_after: `sha-256:${String(scopeAfter).repeat(64)}`,
+      dependency_set_commitment: dependencySetCommitment,
+      scope_state_commitment_after: scopeStateCommitmentAfter,
       committed: true
     },
     result: {
@@ -1390,7 +2124,7 @@ function signedObservation({
       replayed: kernel.ok ? kernel.replayed : false,
       response_schema: kernel.ok ? contract.response_schema : null,
       kernel_result_hash: canonicalHash(kernel),
-      returned_refs: [],
+      returned_refs: returnedRefs,
       relevant_heads: [],
       nonce_disposition: nonceDisposition,
       grant_effects: [],
@@ -1437,36 +2171,241 @@ const acceptedFailureObservation = signedObservation({
   kernel: kernelAcceptedFailure,
   outcome: "accepted_failure"
 });
-const replayAcceptedFailureObservation = signedObservation({
-  observationId: "urn:uuid:00000000-0000-4000-8000-000000000025",
-  snapshotId: "urn:uuid:00000000-0000-4000-8000-000000000026",
-  scopeBefore: 1,
-  scopeAfter: 2,
-  kernel: kernelAcceptedFailure,
-  outcome: "accepted_failure",
-  contract: actionPrepareContract,
-  principalId: "principal:alice",
+const originalMutationObservation = signedObservation({
+  observationId: "urn:uuid:00000000-0000-4000-8000-000000000027",
+  snapshotId: ORIGINAL_SNAPSHOT_ID,
+  scopeBefore: 0,
+  scopeAfter: 1,
+  kernel: originalMutationKernelSuccess,
+  outcome: "success",
+  contract: intentPutContract,
+  principalId: originalMutationFacts.principal_id,
+  actorId: originalMutationFacts.actor_id,
+  runtimeKeyId: originalMutationFacts.runtime_key_id,
   ownerKind: "principal",
-  ownerId: "principal:alice",
-  nonceDisposition: "replay_fresh_nonce",
+  ownerId: originalMutationFacts.principal_id,
+  hostAuthenticationContext: originalMutationHostContext,
+  returnedRefs: [originalMutationFacts.result_ref],
+  envelopeHash: ORIGINAL_ENVELOPE_HASH,
+  dependencySetCommitment:
+    originalMutationDependencyManifest.dependency_set_commitment,
+  scopeStateCommitmentAfter: originalMutationScopeCommitment,
   idempotency: {
     structural_key_commitment: idempotencyStructuralKeyCommitmentValue,
-    disposition: "replayed",
-    original_result_hash: idempotencyOperatorRow.kernel_result_hash,
-    original_observation_ref: {
-      artifact_schema: "cairn.service_observation.v0.1",
-      artifact_id: "urn:uuid:00000000-0000-4000-8000-000000000027",
-      artifact_hash: `sha-256:${"9".repeat(64)}`
-    },
-    original_scope_sequence: 1
+    disposition: "created",
+    original_result_hash: null,
+    original_observation_ref: null,
+    original_scope_sequence: null
   }
 });
+function uuidForControl(number) {
+  return `urn:uuid:00000000-0000-4000-8000-${String(number).padStart(12, "0")}`;
+}
+
+function replayCaseArtifacts(caseId, ordinal) {
+  const envelopeHash = canonicalHash([
+    "cairn-authoritative-replay-control-v0.1",
+    caseId
+  ]);
+  const nonceProjection = {
+    schema: "cairn.authoritative_row_projection.v0.1",
+    table: "used_nonces",
+    structural_key: canonicalText([`nonce:${caseId}`]),
+    columns: {
+      nonce: `nonce:${caseId}`,
+      envelope_hash: envelopeHash,
+      operation: intentPutContract.operation,
+      owner_kind: "principal",
+      owner_id: originalMutationFacts.principal_id,
+      owner_scope_sequence: 2
+    }
+  };
+  validateDefinition("operationalRowProjection", nonceProjection);
+
+  let objectProjection = null;
+  if (
+    caseId !== "missing_result_object" &&
+    caseId !== "corrupt_result_binding"
+  ) {
+    objectProjection = structuredClone(rowVector.value);
+    if (caseId === "public_result_acl") {
+      objectProjection.columns.visibility = "public";
+      objectProjection.columns.principal_id = null;
+    } else if (caseId === "foreign_result_acl") {
+      objectProjection.columns.principal_id = "principal:mallory";
+    }
+    validateDefinition("operationalRowProjection", objectProjection);
+  }
+
+  const dependencies = [
+    dependencyEntryForProjection(
+      idempotencyIntegrityProjection,
+      "read_present"
+    ),
+    aliasDependencyEntry({
+      table: "idempotency_records",
+      indexName: "authority_idempotency",
+      attemptedKey: canonicalText([
+        idempotencyStructuralKeyCommitmentValue
+      ]),
+      accessKind: "read_present",
+      canonicalRowHash: canonicalHash(idempotencyIntegrityProjection)
+    }),
+    dependencyEntryForProjection(nonceProjection, "write_insert")
+  ];
+  const presentRows = new Map([
+    [
+      canonicalText([
+        idempotencyIntegrityProjection.table,
+        idempotencyIntegrityProjection.structural_key
+      ]),
+      idempotencyIntegrityProjection
+    ],
+    [
+      canonicalText([
+        nonceProjection.table,
+        nonceProjection.structural_key
+      ]),
+      nonceProjection
+    ]
+  ]);
+  const aliasResolutions = new Map();
+  const idempotencyBaseEntryKey = canonicalText([
+    idempotencyIntegrityProjection.table,
+    idempotencyIntegrityProjection.structural_key
+  ]);
+  const idempotencyAliasEntry = dependencies[1];
+  aliasResolutions.set(
+    idempotencyAliasEntry.entry_key,
+    idempotencyBaseEntryKey
+  );
+
+  const objectAttemptedKey = objectRefStructuralKey(
+    originalMutationFacts.result_ref
+  );
+  if (!objectProjection) {
+    dependencies.push(aliasDependencyEntry({
+      table: "objects",
+      indexName: "primary_ref",
+      attemptedKey: objectAttemptedKey,
+      accessKind: "read_absent"
+    }));
+  } else {
+    const objectBaseEntry = dependencyEntryForProjection(
+      objectProjection,
+      "read_present"
+    );
+    dependencies.push(objectBaseEntry);
+    presentRows.set(objectBaseEntry.entry_key, objectProjection);
+    const primaryAliasEntry = aliasDependencyEntry({
+      table: "objects",
+      indexName: "primary_ref",
+      attemptedKey: objectAttemptedKey,
+      accessKind: "read_present",
+      canonicalRowHash: canonicalHash(objectProjection)
+    });
+    dependencies.push(primaryAliasEntry);
+    aliasResolutions.set(primaryAliasEntry.entry_key, objectBaseEntry.entry_key);
+    const accessAliasEntry = aliasDependencyEntry({
+      table: "objects",
+      indexName: "access_by_ref",
+      attemptedKey: objectAttemptedKey,
+      accessKind: caseId === "missing_result_acl"
+        ? "read_absent"
+        : "read_present",
+      canonicalRowHash: caseId === "missing_result_acl"
+        ? null
+        : canonicalHash(objectProjection)
+    });
+    dependencies.push(accessAliasEntry);
+    if (caseId !== "missing_result_acl") {
+      aliasResolutions.set(
+        accessAliasEntry.entry_key,
+        objectBaseEntry.entry_key
+      );
+    }
+  }
+
+  const transactionDependencyManifest =
+    committedDependencyManifest(dependencies);
+  assert.equal(
+    dependencyManifestIsCoherent(
+      transactionDependencyManifest,
+      presentRows,
+      aliasResolutions
+    ),
+    true,
+    `incoherent replay dependency truth: ${caseId}`
+  );
+  const transactionProjections = [
+    structuredClone(idempotencyIntegrityProjection),
+    structuredClone(nonceProjection),
+    ...(objectProjection ? [structuredClone(objectProjection)] : [])
+  ];
+  const scopeStateCommitmentAfter = ownerScopeCommitment({
+    ownerKind: "principal",
+    ownerId: originalMutationFacts.principal_id,
+    scopeSequence: 2,
+    projections: transactionProjections
+  });
+  const observation = signedObservation({
+    observationId: uuidForControl(ordinal),
+    snapshotId: uuidForControl(ordinal + 1),
+    scopeBefore: 1,
+    scopeAfter: 2,
+    kernel: kernelAcceptedFailure,
+    outcome: "accepted_failure",
+    contract: intentPutContract,
+    principalId: originalMutationFacts.principal_id,
+    actorId: originalMutationFacts.actor_id,
+    runtimeKeyId: originalMutationFacts.runtime_key_id,
+    ownerKind: "principal",
+    ownerId: originalMutationFacts.principal_id,
+    nonceDisposition: "replay_fresh_nonce",
+    hostAuthenticationContext: originalMutationHostContext,
+    envelopeHash,
+    messageId: uuidForControl(ordinal + 2),
+    dependencySetCommitment:
+      transactionDependencyManifest.dependency_set_commitment,
+    scopeStateCommitmentAfter,
+    idempotency: {
+      structural_key_commitment: idempotencyStructuralKeyCommitmentValue,
+      disposition: "replayed",
+      original_result_hash: idempotencyOperatorRow.kernel_result_hash,
+      original_observation_ref: {
+        artifact_schema: "cairn.service_observation.v0.1",
+        artifact_id: originalMutationObservation.observation_id,
+        artifact_hash: originalMutationObservation.observation_hash
+      },
+      original_scope_sequence: 1
+    }
+  });
+  validateDefinition("serviceObservation", observation);
+  return {
+    observation,
+    transactionDependencyManifest,
+    transactionProjections,
+    nonceProjection
+  };
+}
+
+const replayControlArtifacts = new Map([
+  ["missing_result_object", replayCaseArtifacts("missing_result_object", 31)],
+  ["missing_result_acl", replayCaseArtifacts("missing_result_acl", 41)],
+  ["public_result_acl", replayCaseArtifacts("public_result_acl", 51)],
+  ["foreign_result_acl", replayCaseArtifacts("foreign_result_acl", 61)],
+  ["corrupt_result_binding", replayCaseArtifacts("corrupt_result_binding", 71)]
+]);
+const replayAcceptedFailureObservation =
+  replayControlArtifacts.get("missing_result_acl").observation;
 validateDefinition("serviceObservation", successObservation);
 validateDefinition("serviceObservation", acceptedFailureObservation);
+validateDefinition("serviceObservation", originalMutationObservation);
 validateDefinition("serviceObservation", replayAcceptedFailureObservation);
 for (const signed of [
   successObservation,
   acceptedFailureObservation,
+  originalMutationObservation,
   replayAcceptedFailureObservation
 ]) {
   assert.equal(
@@ -1483,6 +2422,38 @@ for (const signed of [
     true
   );
 }
+assert.equal(
+  originalMutationObservation.request.operation_contract.operation,
+  idempotencyIntegrityTruth.operation_name
+);
+assert.equal(
+  originalMutationObservation.request.principal_id,
+  idempotencyIntegrityTruth.principal_id
+);
+assert.equal(
+  originalMutationObservation.request.actor_id,
+  idempotencyIntegrityTruth.actor_id
+);
+assert.equal(
+  originalMutationObservation.request.runtime_key_id,
+  idempotencyIntegrityTruth.runtime_key_id
+);
+assert.equal(
+  originalMutationObservation.request.host_authentication_context_hash,
+  originalMutationHostContext.context_hash
+);
+assert.deepEqual(
+  originalMutationObservation.result.returned_refs,
+  [idempotencyIntegrityTruth.result_ref]
+);
+assert.equal(
+  originalMutationObservation.result.kernel_result_hash,
+  idempotencyIntegrityTruth.kernel_result_hash
+);
+assert.equal(
+  originalMutationObservation.transaction.scope_sequence_after,
+  idempotencyIntegrityTruth.origin_scope_sequence
+);
 
 const localSuccess = {
   schema: "cairn.local_observed_result.v0.1",
@@ -1516,8 +2487,14 @@ for (const result of [localSuccess, localAcceptedFailure, localRolledBackFailure
 
 function localResultIsCoherent(result) {
   if (result.disposition === "rolled_back_failure") {
-    return result.service_observation === null &&
-      (result.kernel !== null || result.wrapper_failure !== null);
+    if (result.service_observation !== null) return false;
+    if (result.wrapper_failure === null) return result.kernel?.ok === false;
+    if (["preflight", "retry"].includes(result.wrapper_failure.stage)) {
+      return result.kernel === null;
+    }
+    return ["observation", "persistence", "commit"].includes(
+      result.wrapper_failure.stage
+    ) && result.kernel !== null;
   }
   const observed = result.service_observation;
   if (!observed || result.wrapper_failure !== null) return false;
@@ -1552,6 +2529,61 @@ const validateLocalResult = ajv.compile({
   "$ref": `${schema.$id}#/$defs/localObservedResult`
 });
 assert.equal(validateLocalResult(swappedObservation), false, "outcome branch swap accepted");
+const impossibleRollbackSuccess = {
+  schema: "cairn.local_observed_result.v0.1",
+  disposition: "rolled_back_failure",
+  kernel: kernelSuccess,
+  wrapper_failure: null,
+  service_observation: null
+};
+assert.equal(
+  validateLocalResult(impossibleRollbackSuccess),
+  false,
+  "successful callback rolled back without an infrastructure failure"
+);
+assert.equal(localResultIsCoherent(impossibleRollbackSuccess), false);
+for (const invalidRollback of [
+  {
+    ...structuredClone(localRolledBackFailure),
+    kernel: kernelAcceptedFailure
+  },
+  {
+    ...structuredClone(localRolledBackFailure),
+    wrapper_failure: {
+      status: 503,
+      code: "observation_failed",
+      failures: ["observation_failed"],
+      stage: "observation"
+    }
+  }
+]) {
+  assert.equal(
+    validateLocalResult(invalidRollback),
+    false,
+    "rolled-back failure crossed its stage/kernel branch"
+  );
+  assert.equal(localResultIsCoherent(invalidRollback), false);
+}
+for (const kernel of [kernelSuccess, kernelAcceptedFailure]) {
+  const postCallbackRollback = {
+    schema: "cairn.local_observed_result.v0.1",
+    disposition: "rolled_back_failure",
+    kernel,
+    wrapper_failure: {
+      status: 503,
+      code: "commit_failed",
+      failures: ["commit_failed"],
+      stage: "commit"
+    },
+    service_observation: null
+  };
+  assert.equal(
+    validateLocalResult(postCallbackRollback),
+    true,
+    JSON.stringify(validateLocalResult.errors)
+  );
+  assert.equal(localResultIsCoherent(postCallbackRollback), true);
+}
 
 const wrapperIntegrityFailure = {
   status: 503,
@@ -1560,31 +2592,68 @@ const wrapperIntegrityFailure = {
   stage: "preflight"
 };
 
+function observationRefKeyFor(observation) {
+  return canonicalText([
+    observation.schema,
+    observation.observation_id,
+    observation.observation_hash
+  ]);
+}
+
+function operationalVersionFor(projection, globalSequence) {
+  const ownerKind = projection.columns.owner_kind ??
+    (projection.columns.principal_id ? "principal" : "service");
+  const ownerId = projection.columns.owner_id ??
+    projection.columns.principal_id ??
+    SERVICE_ID;
+  return {
+    table: projection.table,
+    structural_key: projection.structural_key,
+    visibility: projection.columns.visibility ?? "private",
+    owner_kind: ownerKind,
+    owner_id: ownerId,
+    valid_from_global_sequence: globalSequence,
+    canonical_row_bytes: canonicalText(projection),
+    canonical_row_hash: canonicalHash(projection)
+  };
+}
+
 function runWrapperStoreHarness({
   initialState,
   preflight,
   frozenCallback,
   observation = null,
-  wrapperFailure = null
+  transactionDependencyManifest = null,
+  transactionProjections = [],
+  preflightFailure = wrapperIntegrityFailure,
+  wrapperFailure = null,
+  caseId = "unspecified"
 }) {
   const state = structuredClone(initialState);
   const before = canonicalText(state);
+  const beforeHash = canonicalHash(state);
   let callbackCalls = 0;
   let callbackResult = null;
   let result;
 
-  if (!preflight(state)) {
+  if (!preflight(state.authoritative)) {
     result = {
       schema: "cairn.local_observed_result.v0.1",
       disposition: "rolled_back_failure",
       kernel: null,
-      wrapper_failure: wrapperIntegrityFailure,
+      wrapper_failure: preflightFailure,
       service_observation: null
     };
   } else {
-    const draft = structuredClone(state);
+    const kernelDraft = structuredClone(state.kernel);
+    assert.equal("idempotency_row" in kernelDraft, false);
+    assert.equal("operational_versions" in kernelDraft, false);
+    assert.deepEqual(
+      Object.keys(kernelDraft.idempotency_records[0]).sort(),
+      ["fingerprint", "result_ref"]
+    );
     callbackCalls += 1;
-    callbackResult = frozenCallback(draft);
+    callbackResult = frozenCallback(kernelDraft);
     assert.equal(typeof callbackResult.commit, "boolean");
     if (!callbackResult.commit) {
       result = {
@@ -1604,10 +2673,114 @@ function runWrapperStoreHarness({
       };
     } else {
       assert.ok(observation);
-      draft.scope_sequence += 1;
-      draft.observation_ids.push(observation.observation_id);
-      for (const key of Object.keys(state)) delete state[key];
-      Object.assign(state, structuredClone(draft));
+      assert.ok(transactionDependencyManifest);
+      assert.equal(
+        validateDependencyManifestSchema(transactionDependencyManifest),
+        true,
+        `invalid transaction dependency manifest: ${caseId}`
+      );
+      assert.equal(
+        observation.transaction.dependency_set_commitment,
+        transactionDependencyManifest.dependency_set_commitment
+      );
+      assert.equal(
+        observation.transaction.scope_state_commitment_after,
+        ownerScopeCommitment({
+          ownerKind: observation.access.owner_kind,
+          ownerId: observation.access.owner_id,
+          scopeSequence:
+            observation.transaction.scope_sequence_after,
+          projections: transactionProjections
+        })
+      );
+      const authoritativeDraft = structuredClone(state.authoritative);
+      kernelDraft.idempotency_records = [{
+        fingerprint:
+          authoritativeDraft.idempotency_row.operation_fingerprint,
+        result_ref: structuredClone(
+          authoritativeDraft.idempotency_row.result_ref
+        )
+      }];
+      authoritativeDraft.global_sequence += 1;
+      authoritativeDraft.scope_sequence += 1;
+      const globalSequence = authoritativeDraft.global_sequence;
+      const scopeSequence = authoritativeDraft.scope_sequence;
+      assert.equal(
+        observation.transaction.scope_sequence_before,
+        scopeSequence - 1
+      );
+      assert.equal(
+        observation.transaction.scope_sequence_after,
+        scopeSequence
+      );
+      const newlyVersionedRows = transactionProjections.filter(
+        (projection) =>
+          projection.table === "used_nonces" &&
+          projection.columns.nonce === kernelDraft.used_nonces.at(-1)
+      );
+      assert.equal(
+        newlyVersionedRows.length,
+        1,
+        `accepted transaction must version its exact fresh nonce: ${caseId}`
+      );
+      authoritativeDraft.operational_versions.push(
+        operationalVersionFor(newlyVersionedRows[0], globalSequence)
+      );
+      authoritativeDraft.dependency_rows.push(
+        ...transactionDependencyManifest.entries.map((entry) => ({
+          global_sequence: globalSequence,
+          ...structuredClone(entry)
+        }))
+      );
+      authoritativeDraft.dependency_set_commitment =
+        transactionDependencyManifest.dependency_set_commitment;
+      authoritativeDraft.dependency_commits.push({
+        global_sequence: globalSequence,
+        dependency_set_commitment:
+          transactionDependencyManifest.dependency_set_commitment
+      });
+      const observationRefKey = observationRefKeyFor(observation);
+      authoritativeDraft.service_commits.push({
+        global_sequence: globalSequence,
+        previous_global_sequence: globalSequence - 1,
+        transaction_kind: "replay",
+        committed_at: observation.observed_at,
+        observation_ref_key: observationRefKey
+      });
+      authoritativeDraft.scope_commits.push({
+        owner_kind: observation.access.owner_kind,
+        owner_id: observation.access.owner_id,
+        scope_sequence: scopeSequence,
+        previous_scope_sequence: scopeSequence - 1,
+        global_sequence: globalSequence,
+        scope_state_commitment_after:
+          observation.transaction.scope_state_commitment_after,
+        dependency_set_commitment:
+          authoritativeDraft.dependency_set_commitment,
+        snapshot_id: observation.transaction.snapshot_id,
+        observation_ref_key: observationRefKey
+      });
+      authoritativeDraft.observation_repository.push({
+        observation_ref_key: observationRefKey,
+        observation_id: observation.observation_id,
+        observation_hash: observation.observation_hash,
+        request_envelope_hash: observation.request.envelope_hash,
+        canonical_observation_bytes: canonicalText(observation),
+        principal_id: observation.request.principal_id,
+        owner_kind: observation.access.owner_kind,
+        owner_id: observation.access.owner_id,
+        visibility: observation.access.visibility,
+        global_commit_sequence: globalSequence,
+        scope_sequence: scopeSequence
+      });
+      authoritativeDraft.observation_by_envelope[
+        observation.request.envelope_hash
+      ] = observation.observation_id;
+      authoritativeDraft.counters.signer_calls += 1;
+      authoritativeDraft.counters.persistence_calls += 1;
+      authoritativeDraft.counters.commit_calls += 1;
+      state.kernel = structuredClone(kernelDraft);
+      state.authoritative = authoritativeDraft;
       result = {
         schema: "cairn.local_observed_result.v0.1",
         disposition: callbackResult.value.ok
@@ -1623,58 +2796,466 @@ function runWrapperStoreHarness({
   validateDefinition("localObservedResult", result);
   assert.equal(localResultIsCoherent(result), true);
   return {
+    caseId,
     result,
     callbackCalls,
     callbackCommit: callbackResult?.commit ?? null,
     before,
     after: canonicalText(state),
+    beforeHash,
+    afterHash: canonicalHash(state),
     state
   };
 }
 
-const wrapperHarnessBaseState = {
-  used_nonces: ["nonce:original"],
-  scope_sequence: 1,
-  observation_ids: ["urn:uuid:00000000-0000-4000-8000-000000000027"],
-  objects: ["object:original-result"],
-  idempotency_row: structuredClone(idempotencyOperatorRow),
-  grant_remaining: 7,
-  result_object_available: true,
-  result_acl_valid: true
-};
-const coherentRichRow = (state) =>
-  idempotencyOperatorRowIsCoherent(
-    state.idempotency_row,
-    idempotencyIntegrityTruth
-  );
-
-const richMismatchState = structuredClone(wrapperHarnessBaseState);
-richMismatchState.idempotency_row.actor_id = "agent:mallory";
-const richMismatchRun = runWrapperStoreHarness({
-  initialState: richMismatchState,
-  preflight: coherentRichRow,
-  frozenCallback: () => {
-    throw new Error("rich mismatch invoked frozen callback");
-  }
+const ORIGINAL_OBSERVATION_REF_KEY =
+  observationRefKeyFor(originalMutationObservation);
+const GENESIS_SNAPSHOT_ID =
+  "urn:uuid:00000000-0000-4000-8000-000000000029";
+const genesisScopeCommitment = ownerScopeCommitment({
+  ownerKind: "principal",
+  ownerId: originalMutationFacts.principal_id,
+  scopeSequence: 0,
+  projections: []
 });
-assert.equal(richMismatchRun.callbackCalls, 0);
-assert.equal(richMismatchRun.callbackCommit, null);
-assert.equal(richMismatchRun.before, richMismatchRun.after);
-assert.equal(richMismatchRun.result.kernel, null);
-assert.equal(richMismatchRun.result.service_observation, null);
+const wrapperHarnessBaseState = {
+  kernel: {
+    objects: [{
+      ref: structuredClone(idempotencyIntegrityTruth.result_ref),
+      object_hash: idempotencyIntegrityTruth.result_ref.object_hash
+    }],
+    access_rows: [{
+      ref: structuredClone(idempotencyIntegrityTruth.result_ref),
+      visibility: "private",
+      principal_id: idempotencyIntegrityTruth.principal_id
+    }],
+    runtime_bindings: [],
+    data_grants: [],
+    grant_states: [{ grant: "grant:fixture", remaining_disclosures: 7 }],
+    effect_descriptors: [],
+    validation_keys: [structuredClone(fixtureKeyRecord)],
+    used_nonces: ["nonce:original"],
+    idempotency_records: [structuredClone(frozenIdempotencyView)]
+  },
+  authoritative: {
+    global_sequence: 1,
+    scope_sequence: 1,
+    idempotency_row: structuredClone(idempotencyOperatorRow),
+    idempotency_projection: structuredClone(idempotencyIntegrityProjection),
+    idempotency_row_hash: canonicalHash(idempotencyIntegrityProjection),
+    operational_versions: originalMutationCommittedProjections.map(
+      (projection) => operationalVersionFor(projection, 1)
+    ),
+    dependency_rows: originalMutationDependencyManifest.entries.map(
+      (entry) => ({
+        global_sequence: 1,
+        ...structuredClone(entry)
+      })
+    ),
+    dependency_set_commitment:
+      originalMutationDependencyManifest.dependency_set_commitment,
+    dependency_commits: [
+      {
+        global_sequence: 0,
+        dependency_set_commitment: ZERO_HASH
+      },
+      {
+        global_sequence: 1,
+        dependency_set_commitment:
+          originalMutationDependencyManifest.dependency_set_commitment
+      }
+    ],
+    service_commits: [
+      {
+        global_sequence: 0,
+        previous_global_sequence: null,
+        transaction_kind: "genesis",
+        committed_at: NOW,
+        observation_ref_key: null
+      },
+      {
+        global_sequence: 1,
+        previous_global_sequence: 0,
+        transaction_kind: "service_operation",
+        committed_at: originalMutationObservation.observed_at,
+        observation_ref_key: ORIGINAL_OBSERVATION_REF_KEY
+      }
+    ],
+    scope_commits: [
+      {
+        owner_kind: "principal",
+        owner_id: idempotencyIntegrityTruth.principal_id,
+        scope_sequence: 0,
+        previous_scope_sequence: null,
+        global_sequence: 0,
+        scope_state_commitment_after: genesisScopeCommitment,
+        dependency_set_commitment: ZERO_HASH,
+        snapshot_id: GENESIS_SNAPSHOT_ID,
+        observation_ref_key: null
+      },
+      {
+        owner_kind: "principal",
+        owner_id: idempotencyIntegrityTruth.principal_id,
+        scope_sequence: 1,
+        previous_scope_sequence: 0,
+        global_sequence: 1,
+        scope_state_commitment_after: originalMutationScopeCommitment,
+        dependency_set_commitment:
+          originalMutationDependencyManifest.dependency_set_commitment,
+        snapshot_id: ORIGINAL_SNAPSHOT_ID,
+        observation_ref_key: ORIGINAL_OBSERVATION_REF_KEY
+      }
+    ],
+    observation_repository: [{
+      observation_ref_key: ORIGINAL_OBSERVATION_REF_KEY,
+      observation_id: originalMutationObservation.observation_id,
+      observation_hash: originalMutationObservation.observation_hash,
+      request_envelope_hash:
+        originalMutationObservation.request.envelope_hash,
+      canonical_observation_bytes:
+        canonicalText(originalMutationObservation),
+      principal_id: originalMutationObservation.request.principal_id,
+      owner_kind: "principal",
+      owner_id: idempotencyIntegrityTruth.principal_id,
+      visibility: "private",
+      global_commit_sequence: 1,
+      scope_sequence: 1
+    }],
+    observation_by_envelope: {
+      [originalMutationObservation.request.envelope_hash]:
+        originalMutationObservation.observation_id
+    },
+    counters: {
+      result_construction_calls: 1,
+      work_calls: 1,
+      charge_calls: 1,
+      signer_calls: 1,
+      persistence_calls: 1,
+      commit_calls: 1
+    }
+  }
+};
+function coherentRichHistory(authoritative) {
+  const row = authoritative.idempotency_row;
+  const originServiceCommit = authoritative.service_commits.find(
+    ({ global_sequence }) =>
+      global_sequence === row.origin_global_commit_sequence
+  );
+  const originScopeCommit = authoritative.scope_commits.find(
+    ({ scope_sequence }) =>
+      scope_sequence === row.origin_scope_sequence
+  );
+  const originObservation = authoritative.observation_repository.find(
+    ({ observation_ref_key }) =>
+      observation_ref_key === originServiceCommit?.observation_ref_key
+  );
+  const originDependencyRows = authoritative.dependency_rows
+    .filter(({ global_sequence }) =>
+      global_sequence === row.origin_global_commit_sequence
+    )
+    .map(({ global_sequence: _globalSequence, ...entry }) => entry);
+  const reconstructedDependencyManifest =
+    committedDependencyManifest(originDependencyRows);
+  const originDependencyCommit = authoritative.dependency_commits.find(
+    ({ global_sequence }) =>
+      global_sequence === row.origin_global_commit_sequence
+  );
+  const versionsAreExact = originalMutationCommittedProjections.every(
+    (projection) => {
+      const expectedVersion = operationalVersionFor(
+        projection,
+        row.origin_global_commit_sequence
+      );
+      return authoritative.operational_versions.some(
+        (version) =>
+          canonicalText(version) === canonicalText(expectedVersion)
+      );
+    }
+  );
+  const serviceChainIsComplete =
+    authoritative.service_commits.length >= 2 &&
+    authoritative.service_commits[0].global_sequence === 0 &&
+    authoritative.service_commits[0].previous_global_sequence === null &&
+    authoritative.service_commits.every((commit, index) =>
+      index === 0 ||
+      commit.previous_global_sequence ===
+        authoritative.service_commits[index - 1].global_sequence
+    );
+  const scopeChainIsComplete =
+    authoritative.scope_commits.length >= 2 &&
+    authoritative.scope_commits[0].scope_sequence === 0 &&
+    authoritative.scope_commits[0].previous_scope_sequence === null &&
+    authoritative.scope_commits.every((commit, index) =>
+      index === 0 ||
+      commit.previous_scope_sequence ===
+        authoritative.scope_commits[index - 1].scope_sequence
+    );
+  return idempotencyOperatorRowIsCoherent(row, idempotencyIntegrityTruth) &&
+    canonicalText(authoritative.idempotency_projection) ===
+      canonicalText(idempotencyIntegrityProjection) &&
+    authoritative.idempotency_row_hash ===
+      canonicalHash(authoritative.idempotency_projection) &&
+    versionsAreExact &&
+    serviceChainIsComplete &&
+    scopeChainIsComplete &&
+    reconstructedDependencyManifest.dependency_set_commitment ===
+      originalMutationDependencyManifest.dependency_set_commitment &&
+    originDependencyCommit?.dependency_set_commitment ===
+      reconstructedDependencyManifest.dependency_set_commitment &&
+    originScopeCommit?.global_sequence ===
+      row.origin_global_commit_sequence &&
+    originScopeCommit?.scope_state_commitment_after ===
+      originalMutationObservation.transaction.scope_state_commitment_after &&
+    originScopeCommit?.dependency_set_commitment ===
+      originalMutationObservation.transaction.dependency_set_commitment &&
+    originScopeCommit?.snapshot_id ===
+      originalMutationObservation.transaction.snapshot_id &&
+    originScopeCommit?.observation_ref_key ===
+      ORIGINAL_OBSERVATION_REF_KEY &&
+    originServiceCommit?.observation_ref_key ===
+      ORIGINAL_OBSERVATION_REF_KEY &&
+    originObservation?.observation_hash ===
+      originalMutationObservation.observation_hash &&
+    originObservation?.canonical_observation_bytes ===
+      canonicalText(originalMutationObservation) &&
+    originObservation?.request_envelope_hash ===
+      originalMutationObservation.request.envelope_hash &&
+    originObservation?.global_commit_sequence ===
+      row.origin_global_commit_sequence &&
+    originObservation?.scope_sequence === row.origin_scope_sequence &&
+    authoritative.observation_by_envelope[
+      originalMutationObservation.request.envelope_hash
+    ] === originalMutationObservation.observation_id &&
+    authoritative.global_sequence ===
+      authoritative.service_commits.at(-1).global_sequence &&
+    authoritative.scope_sequence ===
+      authoritative.scope_commits.at(-1).scope_sequence;
+}
+
+function acceptedCommitHistoryIsCoherent(
+  authoritative,
+  observation,
+  transactionDependencyManifest,
+  transactionProjections
+) {
+  const globalSequence = observation.transaction.scope_sequence_after;
+  const scopeSequence = observation.transaction.scope_sequence_after;
+  const observationRefKey = observationRefKeyFor(observation);
+  const serviceCommit = authoritative.service_commits.at(-1);
+  const scopeCommit = authoritative.scope_commits.at(-1);
+  const observationRow = authoritative.observation_repository.at(-1);
+  const dependencyRows = authoritative.dependency_rows
+    .filter((row) => row.global_sequence === globalSequence)
+    .map(({ global_sequence: _globalSequence, ...entry }) => entry);
+  const reconstructedManifest = committedDependencyManifest(dependencyRows);
+  const dependencyCommit = authoritative.dependency_commits.at(-1);
+  const freshNonceProjection = transactionProjections.find(
+    (projection) =>
+      projection.table === "used_nonces" &&
+      projection.columns.owner_scope_sequence === scopeSequence
+  );
+  const freshNonceVersion = authoritative.operational_versions.at(-1);
+  return globalSequence === authoritative.global_sequence &&
+    scopeSequence === authoritative.scope_sequence &&
+    canonicalText(reconstructedManifest) ===
+      canonicalText(transactionDependencyManifest) &&
+    dependencyCommit.global_sequence === globalSequence &&
+    dependencyCommit.dependency_set_commitment ===
+      observation.transaction.dependency_set_commitment &&
+    serviceCommit.global_sequence === globalSequence &&
+    serviceCommit.previous_global_sequence === globalSequence - 1 &&
+    serviceCommit.transaction_kind === "replay" &&
+    serviceCommit.observation_ref_key === observationRefKey &&
+    scopeCommit.scope_sequence === scopeSequence &&
+    scopeCommit.previous_scope_sequence === scopeSequence - 1 &&
+    scopeCommit.global_sequence === globalSequence &&
+    scopeCommit.scope_state_commitment_after ===
+      observation.transaction.scope_state_commitment_after &&
+    scopeCommit.dependency_set_commitment ===
+      observation.transaction.dependency_set_commitment &&
+    scopeCommit.snapshot_id === observation.transaction.snapshot_id &&
+    scopeCommit.observation_ref_key === observationRefKey &&
+    observationRow.observation_ref_key === observationRefKey &&
+    observationRow.observation_hash === observation.observation_hash &&
+    observationRow.request_envelope_hash ===
+      observation.request.envelope_hash &&
+    observationRow.canonical_observation_bytes === canonicalText(observation) &&
+    observationRow.visibility === "private" &&
+    observationRow.global_commit_sequence === globalSequence &&
+    observationRow.scope_sequence === scopeSequence &&
+    authoritative.observation_by_envelope[
+      observation.request.envelope_hash
+    ] === observation.observation_id &&
+    Boolean(freshNonceProjection) &&
+    canonicalText(freshNonceVersion) === canonicalText(
+      operationalVersionFor(freshNonceProjection, globalSequence)
+    );
+}
+
+function rebindRichCandidateState(state, candidateRow) {
+  const candidateProjection = projectIdempotencyOwnerRow(candidateRow);
+  validateDefinition("operationalRowProjection", candidateProjection);
+  state.authoritative.idempotency_row = structuredClone(candidateRow);
+  state.authoritative.idempotency_projection =
+    structuredClone(candidateProjection);
+  state.authoritative.idempotency_row_hash =
+    canonicalHash(candidateProjection);
+  const versionIndex = state.authoritative.operational_versions.findIndex(
+    (version) =>
+      version.table === "idempotency_records" &&
+      version.valid_from_global_sequence === 1
+  );
+  state.authoritative.operational_versions[versionIndex] =
+    operationalVersionFor(candidateProjection, 1);
+
+  const retainedOriginDependencies = state.authoritative.dependency_rows
+    .filter((row) =>
+      row.global_sequence === 1 &&
+      row.table_name !== "idempotency_records"
+    )
+    .map(({ global_sequence: _globalSequence, ...entry }) => entry);
+  const candidateDependencies = committedDependencyManifest([
+    ...retainedOriginDependencies,
+    dependencyEntryForProjection(candidateProjection, "write_insert"),
+    aliasDependencyEntry({
+      table: "idempotency_records",
+      indexName: "authority_idempotency",
+      attemptedKey: canonicalText([
+        candidateProjection.columns.structural_key_commitment
+      ]),
+      accessKind: "read_absent"
+    })
+  ]);
+  state.authoritative.dependency_rows = [
+    ...state.authoritative.dependency_rows.filter(
+      (row) => row.global_sequence !== 1
+    ),
+    ...candidateDependencies.entries.map((entry) => ({
+      global_sequence: 1,
+      ...entry
+    }))
+  ];
+  state.authoritative.dependency_set_commitment =
+    candidateDependencies.dependency_set_commitment;
+  state.authoritative.dependency_commits.find(
+    (commit) => commit.global_sequence === 1
+  ).dependency_set_commitment =
+    candidateDependencies.dependency_set_commitment;
+  const originScopeCommit = state.authoritative.scope_commits.find(
+    (commit) => commit.scope_sequence === 1
+  );
+  originScopeCommit.dependency_set_commitment =
+    candidateDependencies.dependency_set_commitment;
+  originScopeCommit.scope_state_commitment_after = ownerScopeCommitment({
+    ownerKind: "principal",
+    ownerId: originalMutationFacts.principal_id,
+    scopeSequence: 1,
+    projections: [
+      rowVector.value,
+      candidateProjection,
+      originalNonceProjection
+    ]
+  });
+}
+
+function assertPreflightVeto(initialState, caseId) {
+  const run = runWrapperStoreHarness({
+    initialState,
+    preflight: coherentRichHistory,
+    frozenCallback: () => {
+      throw new Error(`${caseId} invoked frozen callback`);
+    },
+    caseId
+  });
+  assert.equal(run.callbackCalls, 0, caseId);
+  assert.equal(run.callbackCommit, null, caseId);
+  assert.equal(run.before, run.after, caseId);
+  assert.equal(run.beforeHash, run.afterHash, caseId);
+  assert.equal(run.result.kernel, null, caseId);
+  assert.equal(run.result.wrapper_failure.stage, "preflight", caseId);
+  assert.equal(run.result.service_observation, null, caseId);
+}
+
+for (const [field, value] of idempotencyOperatorRowMutations) {
+  const candidateState = structuredClone(wrapperHarnessBaseState);
+  const candidateRow = structuredClone(idempotencyOperatorRow);
+  candidateRow[field] = structuredClone(value);
+  rebindRichCandidateState(candidateState, candidateRow);
+  assertPreflightVeto(candidateState, `rich_row_${field}`);
+}
+
+const richHistoryMutationControls = [
+  ["projection_hash", (state) => {
+    state.authoritative.idempotency_row_hash = `sha-256:${"a".repeat(64)}`;
+  }],
+  ["version_bytes", (state) => {
+    state.authoritative.operational_versions.find(
+      (version) => version.table === "idempotency_records"
+    ).canonical_row_bytes = canonicalText({ changed: true });
+  }],
+  ["version_hash", (state) => {
+    state.authoritative.operational_versions.find(
+      (version) => version.table === "idempotency_records"
+    ).canonical_row_hash = `sha-256:${"b".repeat(64)}`;
+  }],
+  ["version_sequence", (state) => {
+    state.authoritative.operational_versions.find(
+      (version) => version.table === "idempotency_records"
+    ).valid_from_global_sequence = 2;
+  }],
+  ["dependency_commitment", (state) => {
+    state.authoritative.dependency_commits.find(
+      (commit) => commit.global_sequence === 1
+    ).dependency_set_commitment = `sha-256:${"c".repeat(64)}`;
+  }],
+  ["origin_observation_bytes", (state) => {
+    state.authoritative.observation_repository[0]
+      .canonical_observation_bytes = canonicalText({ changed: true });
+  }],
+  ["origin_observation_hash", (state) => {
+    state.authoritative.observation_repository[0].observation_hash =
+      `sha-256:${"d".repeat(64)}`;
+  }],
+  ["scope_global_mapping", (state) => {
+    state.authoritative.scope_commits.find(
+      (commit) => commit.scope_sequence === 1
+    ).global_sequence = 2;
+  }],
+  ["scope_root", (state) => {
+    state.authoritative.scope_commits.find(
+      (commit) => commit.scope_sequence === 1
+    ).scope_state_commitment_after = `sha-256:${"e".repeat(64)}`;
+  }],
+  ["service_commit_ancestry", (state) => {
+    state.authoritative.service_commits.find(
+      (commit) => commit.global_sequence === 1
+    ).previous_global_sequence = 1;
+  }],
+  ["scope_commit_ancestry", (state) => {
+    state.authoritative.scope_commits.find(
+      (commit) => commit.scope_sequence === 1
+    ).previous_scope_sequence = 1;
+  }],
+  ["observation_envelope_index", (state) => {
+    state.authoritative.observation_by_envelope[
+      originalMutationObservation.request.envelope_hash
+    ] = uuidForControl(999);
+  }]
+];
+for (const [caseId, mutate] of richHistoryMutationControls) {
+  const candidateState = structuredClone(wrapperHarnessBaseState);
+  mutate(candidateState);
+  assertPreflightVeto(candidateState, `rich_history_${caseId}`);
+}
 
 const fingerprintConflictRun = runWrapperStoreHarness({
   initialState: wrapperHarnessBaseState,
-  preflight: coherentRichRow,
+  preflight: coherentRichHistory,
   frozenCallback: () => ({
-    commit: false,
-    value: {
-      ok: false,
-      status: 409,
-      code: "operation_rejected",
-      failures: ["idempotency_conflict"]
-    }
-  })
+    commit: actualFrozenConflict.commit,
+    value: structuredClone(actualFrozenConflict.value)
+  }),
+  caseId: "actual_frozen_fingerprint_conflict"
 });
 assert.equal(fingerprintConflictRun.callbackCalls, 1);
 assert.equal(fingerprintConflictRun.callbackCommit, false);
@@ -1682,53 +3263,317 @@ assert.equal(fingerprintConflictRun.before, fingerprintConflictRun.after);
 assert.equal(fingerprintConflictRun.result.wrapper_failure, null);
 assert.equal(fingerprintConflictRun.result.service_observation, null);
 
-const missingResultState = structuredClone(wrapperHarnessBaseState);
-missingResultState.result_object_available = false;
-const acceptedFailureRun = runWrapperStoreHarness({
-  initialState: missingResultState,
-  preflight: coherentRichRow,
-  frozenCallback: (draft) => {
-    assert.equal(draft.result_object_available, false);
-    draft.used_nonces.push("nonce:corrupt-replay");
-    return { commit: true, value: kernelAcceptedFailure };
-  },
-  observation: replayAcceptedFailureObservation
+const grantExhaustionRun = runWrapperStoreHarness({
+  initialState: wrapperHarnessBaseState,
+  preflight: coherentRichHistory,
+  frozenCallback: () => ({
+    commit: actualFrozenGrantExhaustion.commit,
+    value: structuredClone(actualFrozenGrantExhaustion.value)
+  }),
+  caseId: "actual_frozen_grant_exhaustion"
 });
-assert.equal(acceptedFailureRun.callbackCalls, 1);
-assert.equal(acceptedFailureRun.callbackCommit, true);
-assert.equal(
-  acceptedFailureRun.result.disposition,
-  "committed_accepted_failure"
-);
+assert.equal(grantExhaustionRun.callbackCalls, 1);
+assert.equal(grantExhaustionRun.callbackCommit, false);
+assert.equal(grantExhaustionRun.before, grantExhaustionRun.after);
 assert.deepEqual(
-  acceptedFailureRun.state.used_nonces,
-  [...missingResultState.used_nonces, "nonce:corrupt-replay"]
+  grantExhaustionRun.result.kernel,
+  actualFrozenGrantExhaustion.value
 );
-assert.equal(acceptedFailureRun.state.scope_sequence, 2);
+assert.equal(grantExhaustionRun.result.wrapper_failure, null);
+assert.equal(grantExhaustionRun.result.service_observation, null);
+
+const retryExhaustionFailure = {
+  status: 503,
+  code: "retry_exhausted",
+  failures: ["retry_exhausted"],
+  stage: "retry"
+};
+const retryExhaustionRun = runWrapperStoreHarness({
+  initialState: wrapperHarnessBaseState,
+  preflight: () => false,
+  preflightFailure: retryExhaustionFailure,
+  frozenCallback: () => {
+    throw new Error("retry exhaustion invoked frozen callback");
+  },
+  caseId: "retry_exhaustion"
+});
+assert.equal(retryExhaustionRun.callbackCalls, 0);
+assert.equal(retryExhaustionRun.before, retryExhaustionRun.after);
+assert.equal(retryExhaustionRun.result.kernel, null);
 assert.deepEqual(
-  acceptedFailureRun.state.observation_ids,
-  [
-    ...missingResultState.observation_ids,
-    replayAcceptedFailureObservation.observation_id
-  ]
+  retryExhaustionRun.result.wrapper_failure,
+  retryExhaustionFailure
 );
-assert.deepEqual(acceptedFailureRun.state.objects, missingResultState.objects);
-assert.deepEqual(
-  acceptedFailureRun.state.idempotency_row,
-  missingResultState.idempotency_row
-);
-assert.equal(
-  acceptedFailureRun.state.grant_remaining,
-  missingResultState.grant_remaining
-);
-assert.equal(
-  acceptedFailureRun.result.service_observation.result.nonce_disposition,
-  "replay_fresh_nonce"
-);
-assert.equal(
-  acceptedFailureRun.result.service_observation.result.idempotency.disposition,
-  "replayed"
-);
+
+const postCallbackFailureRuns = new Map();
+for (const stage of ["observation", "persistence", "commit"]) {
+  const wrapperFailure = {
+    status: 503,
+    code: `${stage}_failed`,
+    failures: [`${stage}_failed`],
+    stage
+  };
+  const failureRun = runWrapperStoreHarness({
+    initialState: wrapperHarnessBaseState,
+    preflight: coherentRichHistory,
+    frozenCallback: (kernelDraft) => {
+      kernelDraft.used_nonces.push(
+        replayControlArtifacts.get("missing_result_acl")
+          .nonceProjection.columns.nonce
+      );
+      return {
+        commit: actualFrozenCorruptResult.commit,
+        value: structuredClone(actualFrozenCorruptResult.value)
+      };
+    },
+    wrapperFailure,
+    caseId: `${stage}_rollback`
+  });
+  assert.equal(failureRun.callbackCalls, 1, stage);
+  assert.equal(failureRun.callbackCommit, true, stage);
+  assert.equal(failureRun.before, failureRun.after, stage);
+  assert.equal(failureRun.beforeHash, failureRun.afterHash, stage);
+  assert.deepEqual(failureRun.result.kernel, actualFrozenCorruptResult.value);
+  assert.deepEqual(failureRun.result.wrapper_failure, wrapperFailure);
+  assert.equal(failureRun.result.service_observation, null);
+  postCallbackFailureRuns.set(stage, failureRun);
+}
+
+const replayFaultCases = [
+  ["missing_result_object", (state) => {
+    state.kernel.objects = [];
+  }],
+  ["corrupt_result_binding", (state) => {
+    state.kernel.objects[0].object_hash = `sha-256:${"f".repeat(64)}`;
+  }],
+  ["missing_result_acl", (state) => {
+    state.kernel.access_rows = [];
+  }],
+  ["public_result_acl", (state) => {
+    state.kernel.access_rows[0].visibility = "public";
+  }],
+  ["foreign_result_acl", (state) => {
+    state.kernel.access_rows[0].principal_id = "principal:mallory";
+  }]
+];
+for (const [caseId, injectFault] of replayFaultCases) {
+  const replayControl = replayControlArtifacts.get(caseId);
+  assert.ok(replayControl);
+  const faultedState = structuredClone(wrapperHarnessBaseState);
+  injectFault(faultedState);
+  const baseline = structuredClone(faultedState);
+  const acceptedFailureRun = runWrapperStoreHarness({
+    initialState: faultedState,
+    preflight: coherentRichHistory,
+    frozenCallback: (kernelDraft) => {
+      assert.equal("idempotency_row" in kernelDraft, false);
+      kernelDraft.used_nonces.push(
+        replayControl.nonceProjection.columns.nonce
+      );
+      return {
+        commit: actualFrozenCorruptResult.commit,
+        value: structuredClone(actualFrozenCorruptResult.value)
+      };
+    },
+    observation: replayControl.observation,
+    transactionDependencyManifest:
+      replayControl.transactionDependencyManifest,
+    transactionProjections: replayControl.transactionProjections,
+    caseId
+  });
+  assert.equal(acceptedFailureRun.callbackCalls, 1);
+  assert.equal(acceptedFailureRun.callbackCommit, true);
+  assert.equal(
+    canonicalText(acceptedFailureRun.result.kernel),
+    canonicalText(actualFrozenCorruptResult.value)
+  );
+  assert.equal(
+    acceptedFailureRun.result.disposition,
+    "committed_accepted_failure"
+  );
+  assert.deepEqual(
+    acceptedFailureRun.state.kernel.used_nonces,
+    [
+      ...baseline.kernel.used_nonces,
+      replayControl.nonceProjection.columns.nonce
+    ]
+  );
+  for (const key of [
+    "objects",
+    "access_rows",
+    "runtime_bindings",
+    "data_grants",
+    "grant_states",
+    "effect_descriptors",
+    "validation_keys"
+  ]) {
+    assert.deepEqual(
+      acceptedFailureRun.state.kernel[key],
+      baseline.kernel[key],
+      `${caseId} changed kernel ${key}`
+    );
+  }
+  assert.deepEqual(
+    acceptedFailureRun.state.authoritative.idempotency_row,
+    baseline.authoritative.idempotency_row
+  );
+  assert.deepEqual(
+    acceptedFailureRun.state.authoritative.idempotency_projection,
+    baseline.authoritative.idempotency_projection
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.global_sequence,
+    baseline.authoritative.global_sequence + 1
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.scope_sequence,
+    baseline.authoritative.scope_sequence + 1
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.service_commits.length,
+    baseline.authoritative.service_commits.length + 1
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.scope_commits.length,
+    baseline.authoritative.scope_commits.length + 1
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.observation_repository.length,
+    baseline.authoritative.observation_repository.length + 1
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.operational_versions.length,
+    baseline.authoritative.operational_versions.length + 1
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.dependency_rows.length,
+    baseline.authoritative.dependency_rows.length +
+      replayControl.transactionDependencyManifest.entries.length
+  );
+  assert.equal(
+    acceptedFailureRun.state.authoritative.dependency_commits.length,
+    baseline.authoritative.dependency_commits.length + 1
+  );
+  for (const counter of [
+    "result_construction_calls",
+    "work_calls",
+    "charge_calls"
+  ]) {
+    assert.equal(
+      acceptedFailureRun.state.authoritative.counters[counter],
+      baseline.authoritative.counters[counter],
+      `${caseId} changed ${counter}`
+    );
+  }
+  for (const counter of [
+    "signer_calls",
+    "persistence_calls",
+    "commit_calls"
+  ]) {
+    assert.equal(
+      acceptedFailureRun.state.authoritative.counters[counter],
+      baseline.authoritative.counters[counter] + 1,
+      `${caseId} did not stage ${counter}`
+    );
+  }
+  assert.equal(
+    acceptedFailureRun.result.service_observation.result.nonce_disposition,
+    "replay_fresh_nonce"
+  );
+  assert.equal(
+    acceptedFailureRun.result.service_observation.result.idempotency.disposition,
+    "replayed"
+  );
+  assert.equal(
+    acceptedCommitHistoryIsCoherent(
+      acceptedFailureRun.state.authoritative,
+      replayControl.observation,
+      replayControl.transactionDependencyManifest,
+      replayControl.transactionProjections
+    ),
+    true,
+    `${caseId} committed an incoherent replay history`
+  );
+}
+
+const projectionMutationReplay =
+  replayControlArtifacts.get("missing_result_acl");
+for (const [stage, failureRun] of postCallbackFailureRuns) {
+  const recoveredRun = runWrapperStoreHarness({
+    initialState: failureRun.state,
+    preflight: coherentRichHistory,
+    frozenCallback: (kernelDraft) => {
+      kernelDraft.used_nonces.push(
+        projectionMutationReplay.nonceProjection.columns.nonce
+      );
+      return {
+        commit: actualFrozenCorruptResult.commit,
+        value: structuredClone(actualFrozenCorruptResult.value)
+      };
+    },
+    observation: projectionMutationReplay.observation,
+    transactionDependencyManifest:
+      projectionMutationReplay.transactionDependencyManifest,
+    transactionProjections:
+      projectionMutationReplay.transactionProjections,
+    caseId: `${stage}_sequence_reuse`
+  });
+  assert.equal(
+    recoveredRun.state.authoritative.global_sequence,
+    wrapperHarnessBaseState.authoritative.global_sequence + 1,
+    `${stage} rollback left a hidden global-sequence gap`
+  );
+  assert.equal(
+    recoveredRun.state.authoritative.scope_sequence,
+    wrapperHarnessBaseState.authoritative.scope_sequence + 1,
+    `${stage} rollback left a hidden owner-sequence gap`
+  );
+}
+for (const mutation of ["set", "delete", "clear"]) {
+  const mutationRun = runWrapperStoreHarness({
+    initialState: wrapperHarnessBaseState,
+    preflight: coherentRichHistory,
+    frozenCallback: (kernelDraft) => {
+      if (mutation === "set") {
+        kernelDraft.idempotency_records[0] = {
+          fingerprint: `sha-256:${"f".repeat(64)}`,
+          result_ref: structuredClone(rowVector.value.columns.ref),
+          actor_id: "agent:mallory"
+        };
+      } else if (mutation === "delete") {
+        delete kernelDraft.idempotency_records[0];
+      } else {
+        kernelDraft.idempotency_records = [];
+      }
+      kernelDraft.used_nonces.push(
+        projectionMutationReplay.nonceProjection.columns.nonce
+      );
+      return {
+        commit: actualFrozenCorruptResult.commit,
+        value: structuredClone(actualFrozenCorruptResult.value)
+      };
+    },
+    observation: projectionMutationReplay.observation,
+    transactionDependencyManifest:
+      projectionMutationReplay.transactionDependencyManifest,
+    transactionProjections:
+      projectionMutationReplay.transactionProjections,
+    caseId: `frozen_projection_${mutation}`
+  });
+  assert.deepEqual(
+    mutationRun.state.authoritative.idempotency_row,
+    wrapperHarnessBaseState.authoritative.idempotency_row
+  );
+  assert.deepEqual(
+    mutationRun.state.authoritative.idempotency_projection,
+    wrapperHarnessBaseState.authoritative.idempotency_projection
+  );
+  assert.deepEqual(
+    mutationRun.state.kernel.idempotency_records,
+    [frozenIdempotencyView],
+    `frozen projection ${mutation} escaped adapter reconstruction`
+  );
+}
 
 for (const artifact of [
   serviceProfile,
@@ -1789,35 +3634,6 @@ assert.deepEqual(
 );
 assert.equal(canonicalHash(schema), EXPECTED_SCHEMA_HASH);
 assert.equal(canonicalHash(vectors), EXPECTED_VECTORS_HASH);
-
-const frozenReplayPathControl = spawnSync(
-  process.execPath,
-  [
-    "--test",
-    "--test-name-pattern",
-    "a changed fingerprint cannot reuse|replay fails closed when its stored exact result binding is corrupt",
-    "protocol/tests/reference-service.test.mjs"
-  ],
-  {
-    cwd: fileURLToPath(new URL("../..", import.meta.url)),
-    encoding: "utf8"
-  }
-);
-assert.equal(
-  frozenReplayPathControl.status,
-  0,
-  `${frozenReplayPathControl.stdout}\n${frozenReplayPathControl.stderr}`
-);
-for (const testName of [
-  "a changed fingerprint cannot reuse a committed idempotency key",
-  "replay fails closed when its stored exact result binding is corrupt"
-]) {
-  assert.equal(
-    frozenReplayPathControl.stdout.includes(testName),
-    true,
-    `actual frozen replay control did not execute: ${testName}`
-  );
-}
 
 console.log(`authoritative_design_schema_defs=${EXPECTED_DEFS.length}`);
 console.log(`authoritative_design_entrypoints=${EXPECTED_ENTRYPOINTS.length}`);

@@ -436,6 +436,7 @@
         "ref",
         "schema_id",
         "object_hash",
+        "identity_key",
         "retrieval_uri",
         "visibility",
         "principal_id",
@@ -445,6 +446,7 @@
         "ref": { "$ref": "#/$defs/objectRef" },
         "schema_id": { "$ref": "#/$defs/schemaId" },
         "object_hash": { "$ref": "#/$defs/sha256" },
+        "identity_key": { "$ref": "#/$defs/structuralKey" },
         "retrieval_uri": {
           "type": "string",
           "format": "uri",
@@ -1364,28 +1366,57 @@
           "properties": {
             "schema": { "const": "cairn.local_observed_result.v0.1" },
             "disposition": { "const": "rolled_back_failure" },
-            "kernel": {
-              "oneOf": [
-                { "$ref": "#/$defs/kernelSuccess" },
-                { "$ref": "#/$defs/kernelFailure" },
-                { "type": "null" }
-              ]
-            },
-            "wrapper_failure": {
-              "oneOf": [
-                { "$ref": "#/$defs/wrapperFailure" },
-                { "type": "null" }
-              ]
-            },
+            "kernel": {},
+            "wrapper_failure": {},
             "service_observation": { "type": "null" }
           },
-          "not": {
-            "properties": {
-              "kernel": { "type": "null" },
-              "wrapper_failure": { "type": "null" }
+          "oneOf": [
+            {
+              "properties": {
+                "kernel": { "$ref": "#/$defs/kernelFailure" },
+                "wrapper_failure": { "type": "null" }
+              }
             },
-            "required": ["kernel", "wrapper_failure"]
-          }
+            {
+              "properties": {
+                "kernel": { "type": "null" },
+                "wrapper_failure": {
+                  "allOf": [
+                    { "$ref": "#/$defs/wrapperFailure" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "stage": { "enum": ["preflight", "retry"] }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "kernel": {
+                  "oneOf": [
+                    { "$ref": "#/$defs/kernelSuccess" },
+                    { "$ref": "#/$defs/kernelFailure" }
+                  ]
+                },
+                "wrapper_failure": {
+                  "allOf": [
+                    { "$ref": "#/$defs/wrapperFailure" },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "stage": {
+                          "enum": ["observation", "persistence", "commit"]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       ]
     }

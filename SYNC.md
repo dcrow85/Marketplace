@@ -64,6 +64,26 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service sixth audit remediation]` 2026-07-23 · Codex —
+  Exact candidate `abd6deb` is not a pass. Three clean-archive auditors found
+  no frozen-protocol drift but accepted material gaps in the executable design:
+  the checker supplied hard-coded callback outcomes instead of capturing the
+  real frozen transaction callback before commit; the rich idempotency
+  “independent truth” and origin history were internally inconsistent and
+  omitted complete ACL/version/dependency/commit/observation persistence state;
+  result/ACL faults and callback set/delete/clear mutations were not directly
+  controlled; present aliases accepted a well-shaped key from the wrong typed
+  base row and misclassified singleton `["index"]`; and the rollback schema
+  admitted a successful callback with no infrastructure failure. Remediation
+  adds a preload that captures exact frozen `{commit,value}` outcomes, keeps the
+  rich row outside the callback, reconstructs coherent genesis-to-origin and
+  accepted-failure histories from authenticated request/result/observation
+  facts, covers all four result/ACL faults plus set/delete/clear, binds all
+  eleven aliases to table-specific projections and exact attempted keys, and
+  closes rollback into three stage-specific branches. A new candidate must
+  repeat independent blind audit; `protocol/` remains untouched and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service fifth audit remediation]` 2026-07-23 · Codex —
   Exact candidate `9937acb` is not a pass. One blind reviewer found a stale
   §5.8 sentence that contradicted the pre-callback rich-row veto and found the
