@@ -12,6 +12,9 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE_ROOTS = [
     ROOT / "manifest.json",
+    ROOT / "minimum-trust-kernel.json",
+    ROOT / "release",
+    ROOT / "execution" / "rejection.json",
     ROOT / "schemas",
     ROOT / "operations",
     ROOT / "fixtures",

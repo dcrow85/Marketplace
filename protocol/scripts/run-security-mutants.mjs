@@ -53,11 +53,22 @@ function combined(result) {
 function copyProtocol(destination) {
   cpSync(root, destination, {
     recursive: true,
-    filter: (source) => !["node_modules", "dist"].includes(path.basename(source))
+    filter: (source) => path.basename(source) !== "node_modules"
   });
+  for (const name of [
+    "Protocol_Agent_Intent_Interop_v0.1.md",
+    "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
+  ]) {
+    cpSync(path.resolve(root, "..", name), path.resolve(destination, "..", name));
+  }
   const modules = path.join(root, "node_modules");
   if (!lstatSync(modules).isDirectory()) throw new Error("node_modules is required; run npm install first");
   symlinkSync(modules, path.join(destination, "node_modules"), "dir");
+}
+
+const baseline = run("npm", ["run", "check"], root);
+if (baseline.status !== 0) {
+  throw new Error(`security mutation baseline failed:\n${combined(baseline)}`);
 }
 
 const failures = [];
@@ -67,7 +78,8 @@ for (const mutant of SECURITY_MUTANTS) {
   try {
     copyProtocol(candidate);
     applyMutant(candidate, mutant);
-    const build = run("npm", ["run", "build"], candidate);
+    const buildScript = mutant.expectedStage === "kernel" ? "build" : "build:foundation";
+    const build = run("npm", ["run", buildScript], candidate);
     const buildOutput = combined(build);
     if (mutant.expectedStage === "build") {
       if (build.status !== 0 && !/SyntaxError|Unexpected token/.test(buildOutput) && buildOutput.includes(mutant.expectedOutput)) {
@@ -78,20 +90,14 @@ for (const mutant of SECURITY_MUTANTS) {
       continue;
     }
     if (mutant.expectedStage === "kernel") {
-      if (build.status !== 0) {
-        failures.push(`${mutant.id}: invalid kernel mutant; build failed\n${buildOutput}`);
-        continue;
-      }
-      const kernel = run("node", ["scripts/check-minimum-kernel.mjs"], candidate);
-      const kernelOutput = combined(kernel);
       if (
-        kernel.status !== 0 &&
-        !/SyntaxError|Unexpected token/.test(kernelOutput) &&
-        kernelOutput.includes(mutant.expectedOutput)
+        build.status !== 0 &&
+        !/SyntaxError|Unexpected token/.test(buildOutput) &&
+        buildOutput.includes(mutant.expectedOutput)
       ) {
         process.stdout.write(`KILLED ${mutant.id} at kernel release check\n`);
       } else {
-        failures.push(`${mutant.id}: expected minimum-kernel release kill\n${kernelOutput}`);
+        failures.push(`${mutant.id}: expected minimum-kernel release kill\n${buildOutput}`);
       }
       continue;
     }

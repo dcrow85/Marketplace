@@ -1,0 +1,15 @@
+{
+  "schema": "cairn.rejected_profile_marker.v0.1",
+  "profile": "cairn-supervised-execution-v0.1",
+  "status": "rejected_research_only",
+  "final_rejected_commit": "c5646a0104664f7edf2a453450a2ec5d5d2eb82c",
+  "advertised": false,
+  "deployable": false,
+  "reference_service_allowed": false,
+  "reopen_requires": [
+    "signed_service_read_snapshot",
+    "authenticated_service_key_profile",
+    "exact_dependency_semantics",
+    "independent_frozen_review"
+  ]
+}

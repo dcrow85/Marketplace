@@ -17,9 +17,11 @@ action.prepare    action.get           receipt.get
 ```
 
 `action.prepare` atomically stores the validated ActionProposal, a draft
-ActionRecord, and an ActionPreparationReceipt whose `external_effect` is fixed to
-`false`. There is no route or dispatcher for authorize, execute, dispatch, pay,
-settle, release, waive, or private continuation delivery.
+ActionRecord, and an ActionPreparationReceipt that records
+`action_state_transition:false` and `external_effect:false`. It is a
+preparation/storage receipt, not a draft-to-prepared action transition. There is
+no route or dispatcher for authorize, execute, dispatch, pay, settle, release,
+waive, or private continuation delivery.
 
 ## Injected trust boundaries
 
@@ -37,6 +39,11 @@ object. Every successful new grant-covered operation decrements all supplied,
 validated grant counters in the same transaction. Idempotent replay authenticates
 fresh transport, returns the original operation-bound result, and neither runs
 the result factory nor consumes the grant again.
+
+`projection.get` additionally binds the signed request's declared purpose and
+intended use to the stored projection, requires its audience to contain the exact
+runtime key (or direct principal), and requires one covering DataGrant to carry
+all required uses. `object.resolve` cannot return a ScopedProjection.
 
 `createReferenceSeeder` is a trusted import/bootstrap helper, not a network
 operation. It accepts only runtime bindings, DataGrants, effect descriptors, and

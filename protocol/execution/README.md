@@ -1,6 +1,10 @@
 # Cairn supervised execution — Phase 1 schema bundle
 
-This package is the first machine-readable translation of
+Status: `rejected_research_only`. This directory is historical falsification
+evidence, not an advertised, deployable, or reference-service-eligible profile.
+The closed machine marker is [`rejection.json`](rejection.json).
+
+This package was the first machine-readable translation of
 `Protocol_Agent_Execution_Change_Spec_v0.1.md`. It is a separate overlay on the
 byte-stable proposal foundation. It does not widen the proposal registry or
 reference service.
@@ -97,12 +101,10 @@ consistency; they are not authorizers.
 
 Exact freezes `dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373`,
 `4d62c0fd2d46b5eb182706ea07ce94d3af97798f`, and
-`420fa52ecdcab696f3de3b04bda89326992e5ed4` are rejected. The post-Round-43
-replacement passes 32/32 authored controls and registers 485 exact-once direct
-mutants locally. These results describe the current candidate bytes; they are
-not closure until the complete mutation and clean-install replays pass, the
-replacement is frozen in a containing commit, and fresh blind and informed
-reviewers reproduce the result.
+`420fa52ecdcab696f3de3b04bda89326992e5ed4`, and final candidate freeze
+`c5646a0104664f7edf2a453450a2ec5d5d2eb82c` are rejected. Historical controls
+and hashes describe those rejected bytes only. They are retained for audit and
+do not provide a current re-entry or closure gate.
 
 ## Excluded
 
@@ -115,18 +117,19 @@ artifact. It does not authenticate caller-supplied resolver state. There is no
 valid Phase-1 `allow`, gate-allowed/post-redemption action transition,
 redemption, recovery-control, nonempty disclosure, external-accounting,
 external-protection, or financial-execution path. A
-reference service remains blocked until the narrowed artifact is frozen in its
-containing commit and passes fresh blind and informed verification.
+reference service is forbidden for this profile. Reopening requires the four
+prerequisites in `rejection.json`, beginning with a signed service read snapshot,
+and a new profile, frozen artifact, and independent review.
 
-## Commands
+## Historical reproduction
 
-```bash
-cd protocol/execution
-npm test
-npm run check
-npm run test:mutations
-```
+The package's old build and test commands are reproducible only from the exact
+rejected archive at
+`c5646a0104664f7edf2a453450a2ec5d5d2eb82c`. They intentionally fail against
+the active proposal foundation because its pinned dependency has changed.
+Do not rebuild or repin this historical artifact in the active tree.
 
-`npm run build` writes `dist/cairn-supervised-execution-phase1-v0.1.json` and
-`dist/operation-registry-phase1-v0.1.json`. Generated files must not be edited by
-hand.
+At that rejected commit, `npm run build` writes
+`dist/cairn-supervised-execution-phase1-v0.1.json` and
+`dist/operation-registry-phase1-v0.1.json`. Those generated files remain
+historical evidence and must not be edited by hand.

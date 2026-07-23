@@ -5,7 +5,8 @@
   "operations": [
     {
       "name": "capabilities.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": [],
       "consequence": "public_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/emptyRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/capabilitiesResponse",
@@ -18,7 +19,8 @@
     },
     {
       "name": "runtime_binding.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": [],
       "consequence": "public_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/agent-runtime-binding.schema.json",
@@ -31,7 +33,8 @@
     },
     {
       "name": "intent.put",
-      "mutating": true,
+      "object_store_mutating": true,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_state_write",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/active-intent.schema.json",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/storedObjectResponse",
@@ -44,7 +47,8 @@
     },
     {
       "name": "intent.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/active-intent.schema.json",
@@ -57,7 +61,8 @@
     },
     {
       "name": "data_grant.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/data-grant.schema.json",
@@ -70,9 +75,10 @@
     },
     {
       "name": "projection.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_read",
-      "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
+      "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/projectionGetRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/scoped-projection.schema.json",
       "data_grant_required": true,
       "authorization_requirement": "data_grant",
@@ -83,7 +89,8 @@
     },
     {
       "name": "object.resolve",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/resolvedObjectResponse",
@@ -96,7 +103,8 @@
     },
     {
       "name": "action.prepare",
-      "mutating": true,
+      "object_store_mutating": true,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "preparation_only",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/action-proposal.schema.json",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-preparation-receipt.schema.json",
@@ -109,7 +117,8 @@
     },
     {
       "name": "action.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-record.schema.json",
@@ -122,7 +131,8 @@
     },
     {
       "name": "receipt.get",
-      "mutating": false,
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
       "consequence": "private_read",
       "request_schema": "https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/objectRefRequest",
       "response_schema": "https://cairn.cards/protocol/schemas/v0.1/action-preparation-receipt.schema.json",

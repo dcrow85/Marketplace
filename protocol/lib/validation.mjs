@@ -213,7 +213,16 @@ function validateDataGrantUnsafe(grant, context = {}) {
   if (grant?.principal_id !== context.principalId) failures.push("grant_principal_mismatch");
   if (grant?.recipient !== context.recipient) failures.push("grant_recipient_mismatch");
   if (grant?.purpose !== context.purpose) failures.push("grant_purpose_mismatch");
-  if (!grant?.uses?.includes(context.use)) failures.push("grant_use_missing");
+  const requiredUses = context.requiredUses ?? [context.use];
+  if (
+    !Array.isArray(requiredUses) ||
+    requiredUses.length === 0 ||
+    requiredUses.some((use) => typeof use !== "string" || use.length === 0)
+  ) {
+    failures.push("grant_required_uses_invalid");
+  } else if (requiredUses.some((use) => !grant?.uses?.includes(use))) {
+    failures.push("grant_use_missing");
+  }
   if (!grant?.audience?.includes(context.recipient)) failures.push("grant_audience_mismatch");
   if (!Array.isArray(grant?.audience) || grant.audience.length === 0) failures.push("grant_audience_empty");
   if (!Array.isArray(grant?.resource_scopes) || grant.resource_scopes.length === 0) failures.push("grant_resource_scope_empty");
@@ -357,9 +366,9 @@ function validateEnvelopeTransportUnsafe(envelope, context = {}) {
   else if (!envelope.audience?.includes(context.expectedAudience)) failures.push("audience_mismatch");
   if (!context.usedNonces?.has) failures.push("replay_state_required");
   else if (context.usedNonces.has(envelope.nonce)) failures.push("nonce_replay");
-  if (operation.mutating && !envelope.idempotency_key) failures.push("idempotency_key_required");
-  if (operation.mutating && !context.authorityNamespace) failures.push("authority_namespace_required");
-  if (operation.mutating && !context.idempotencyRecords?.get) failures.push("idempotency_state_required");
+  if (operation.object_store_mutating && !envelope.idempotency_key) failures.push("idempotency_key_required");
+  if (operation.object_store_mutating && !context.authorityNamespace) failures.push("authority_namespace_required");
+  if (operation.object_store_mutating && !context.idempotencyRecords?.get) failures.push("idempotency_state_required");
   if ((envelope.critical_extensions?.length ?? 0) > 0) failures.push("critical_extension_unknown");
 
   if (envelope.sender?.runtime_key_id === null) {
@@ -414,6 +423,32 @@ function validateEnvelopeOperationUnsafe(envelope, context = {}) {
     } catch {
       failures.push("body_subject_ref_invalid");
     }
+  }
+  if (operation.name === "projection.get") {
+    const projection = resolve(context.objectsByRef, objectRefKey(envelope.body.ref));
+    const recipient = envelope.sender.runtime_key_id ?? envelope.sender.actor_id;
+    if (!projection) {
+      failures.push("projection_unresolved");
+    } else {
+      failures.push(...validateSignedObject(projection, context).map((code) => `projection_${code}`));
+      let exactRef = false;
+      try {
+        const projectionSchema = schemaForObject(projection, context.schemasByObjectId);
+        exactRef = Boolean(projectionSchema && sameObjectRef(envelope.body.ref, objectRefFor(projection, projectionSchema)));
+      } catch {
+        exactRef = false;
+      }
+      if (!exactRef || projection.schema !== "cairn.scoped_projection.v0.1") failures.push("projection_ref_mismatch");
+      if (projection.principal_id !== envelope.principal_id) failures.push("projection_principal_mismatch");
+      if (!projection.audience?.includes(recipient)) failures.push("projection_audience_mismatch");
+      if (projection.purpose !== envelope.body.declared_purpose) failures.push("projection_purpose_mismatch");
+      if (!projection.data_uses?.includes("read_local")) failures.push("projection_read_use_missing");
+      if (!projection.data_uses?.includes(envelope.body.intended_use)) failures.push("projection_intended_use_missing");
+    }
+  }
+  if (operation.name === "object.resolve") {
+    const object = resolve(context.objectsByRef, objectRefKey(envelope.body.ref));
+    if (object?.schema === "cairn.scoped_projection.v0.1") failures.push("projection_specialized_operation_required");
   }
   if (envelope.message_type === "action.prepare") {
     const identity = envelope.body?.agent_identity;
@@ -475,6 +510,9 @@ function validateEnvelopeOperationUnsafe(envelope, context = {}) {
         recipient: envelope.sender.runtime_key_id ?? envelope.sender.actor_id,
         purpose: operation.grant_purpose,
         use: operation.grant_use,
+        requiredUses: operation.name === "projection.get"
+          ? [...new Set([operation.grant_use, envelope.body.intended_use])]
+          : [operation.grant_use],
         resources
       });
       if (grantFailures.length === 0) coveringGrant = true;
@@ -888,7 +926,12 @@ function validatePreparationReceiptUnsafe(receipt, context = {}) {
       failures.push("preparation_agent_controller_mismatch");
     }
   }
-  if (receipt?.state_before !== "draft" || receipt?.state_after !== "prepared" || receipt?.external_effect !== false) failures.push("preparation_state_mismatch");
+  if (
+    receipt?.preparation_status !== "recorded" ||
+    receipt?.action_state !== "draft" ||
+    receipt?.action_state_transition !== false ||
+    receipt?.external_effect !== false
+  ) failures.push("preparation_state_mismatch");
   if (action?.current_state !== "draft" || action?.state_version !== 0) failures.push("action_not_draft");
   if (action?.authorization_ref !== null || action?.reservation_refs?.length || action?.gate_result_ref !== null) failures.push("action_authority_present");
   if (

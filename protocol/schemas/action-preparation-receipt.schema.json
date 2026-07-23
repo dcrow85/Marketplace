@@ -14,8 +14,9 @@
     "receipt_id",
     "action_ref",
     "action_proposal_ref",
-    "state_before",
-    "state_after",
+    "preparation_status",
+    "action_state",
+    "action_state_transition",
     "prepared_for_principal",
     "prepared_by_agent",
     "external_effect",
@@ -31,8 +32,9 @@
     "receipt_id": { "$ref": "common.schema.json#/$defs/uuidUrn" },
     "action_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
     "action_proposal_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
-    "state_before": { "const": "draft" },
-    "state_after": { "const": "prepared" },
+    "preparation_status": { "const": "recorded" },
+    "action_state": { "const": "draft" },
+    "action_state_transition": { "const": false },
     "prepared_for_principal": { "$ref": "common.schema.json#/$defs/principalId" },
     "prepared_by_agent": {
       "anyOf": [

@@ -18,7 +18,8 @@
         "additionalProperties": false,
         "required": [
           "name",
-          "mutating",
+          "object_store_mutating",
+          "access_state_effects",
           "consequence",
           "request_schema",
           "response_schema",
@@ -31,7 +32,17 @@
         ],
         "properties": {
           "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)+$" },
-          "mutating": { "type": "boolean" },
+          "object_store_mutating": {
+            "type": "boolean",
+            "description": "Whether the operation creates or changes a protocol object/result. This field does not describe replay-nonce or DataGrant disclosure-budget effects."
+          },
+          "access_state_effects": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 1,
+            "items": { "const": "consume_grant_disclosure_budget" },
+            "uniqueItems": true
+          },
           "consequence": { "enum": ["public_read", "private_read", "private_state_write", "preparation_only"] },
           "request_schema": { "type": "string", "format": "uri" },
           "response_schema": { "type": "string", "format": "uri" },

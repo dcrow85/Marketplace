@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/release/minimum-trust-kernel.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "kernel_id",
+    "profile",
+    "release_status",
+    "foundation_bundle_hash",
+    "operation_registry_hash",
+    "included_operations",
+    "allowed_object_store_mutations",
+    "operation_state_effects",
+    "byo_prerequisites",
+    "forbidden_operation_terms",
+    "excluded_profiles",
+    "next_profile_requires",
+    "conformance_claims",
+    "not_claiming"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.minimum_trust_kernel_manifest.v0.1" },
+    "kernel_id": { "const": "cairn-agent-minimum-trust-kernel-v0.1" },
+    "profile": { "const": "cairn-proposal-foundation-v0.1" },
+    "release_status": { "const": "active_narrowed_candidate" },
+    "foundation_bundle_hash": { "type": "string", "pattern": "^sha-256:[0-9a-f]{64}$" },
+    "operation_registry_hash": { "type": "string", "pattern": "^sha-256:[0-9a-f]{64}$" },
+    "included_operations": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "allowed_object_store_mutations": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["operation", "authority_effect"],
+        "properties": {
+          "operation": { "type": "string" },
+          "authority_effect": { "type": "string" }
+        }
+      }
+    },
+    "operation_state_effects": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["operation", "object_store_mutating", "access_state_effects", "signed_envelope_effects"],
+        "properties": {
+          "operation": { "type": "string" },
+          "object_store_mutating": { "type": "boolean" },
+          "access_state_effects": {
+            "type": "array",
+            "maxItems": 1,
+            "items": { "const": "consume_grant_disclosure_budget" },
+            "uniqueItems": true
+          },
+          "signed_envelope_effects": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 2,
+            "items": { "enum": ["consume_replay_nonce", "write_idempotency_record"] },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "byo_prerequisites": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "forbidden_operation_terms": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "excluded_profiles": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "prefixItems": [{ "const": "cairn-supervised-execution-v0.1" }],
+      "items": false
+    },
+    "next_profile_requires": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "conformance_claims": { "type": "array", "maxItems": 0 },
+    "not_claiming": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  }
+}

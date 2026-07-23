@@ -151,7 +151,7 @@ export function createReferenceHttpHandler({ service, authenticateRequest, maxim
     }
 
     const operation = service.registry.operations.find(({ name }) => name === envelope?.message_type);
-    if (operation?.mutating && request.headers["idempotency-key"] !== envelope.idempotency_key) {
+    if (operation?.object_store_mutating && request.headers["idempotency-key"] !== envelope.idempotency_key) {
       send(response, 400, { error: "idempotency_header_mismatch" }, service.profileLink);
       return;
     }

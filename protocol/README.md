@@ -10,7 +10,8 @@ It is also the active
 [minimum trust kernel](../Protocol_Agent_Minimum_Trust_Kernel_v0.1.md). The
 machine-enforced release boundary is
 [`minimum-trust-kernel.json`](minimum-trust-kernel.json): ten exact operations,
-two bounded local writes, and no authority to act.
+two object-store writes, eight explicit disclosure-budget consumers, and no
+authority to act.
 
 ## What is included
 
@@ -34,8 +35,11 @@ exact principal-signed ActiveIntent; it is storage permission, never action
 authority.
 
 The registry currently names exactly ten operations. Only `intent.put` and
-`action.prepare` are mutations; the latter ends at a signed preparation receipt
-whose schema fixes `external_effect` to `false`. There is deliberately no
+`action.prepare` create protocol objects/results; the latter stores a draft
+ActionRecord and ends at a signed preparation receipt whose schema fixes both
+`action_state_transition` and `external_effect` to `false`. Every signed envelope
+also consumes replay-nonce state, and every DataGrant-covered operation consumes
+disclosure budget as declared in `access_state_effects`. There is deliberately no
 authorize, execute, dispatch, payment, release, waiver, disclosure-issuance, or
 private continuation-delivery operation.
 
@@ -66,11 +70,14 @@ npm run test:mutations
 npm run check
 ```
 
-`npm run build` writes `dist/cairn-protocol-bundle-v0.1.json` deterministically.
+`npm run build` writes `dist/cairn-protocol-bundle-v0.1.json` and
+`dist/cairn-minimum-trust-kernel-v0.1.json` deterministically.
 The Python source check rejects duplicate JSON member names before Node parses any
 schema or registry file. The minimum-kernel check additionally pins the exact
-bundle and registry hashes, operation list, two local mutations, rejected
-execution profile, prerequisites for expansion, and non-claims.
+bundle and registry hashes, operation list, object-store and access-state
+effects, conditional BYO prerequisites, rejected execution profile,
+prerequisites for expansion, source commitments, package closure, and
+non-claims.
 
 See [`reference-service/README.md`](reference-service/README.md) for the injected
 identity/store contract and the explicit non-production boundary.

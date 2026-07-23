@@ -77,10 +77,22 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   remains blocked until a signed service observation profile authenticates
   service identity, retrieval time, query/page scope, returned heads, and
   cross-page continuity and then survives a new frozen independent audit.
-  The narrowed working tree passes 84/84 authored controls, kills 79/79
-  exact mutation controls, reproduces the unchanged internal foundation hash,
-  and passes the machine kernel release check; a frozen containing commit,
-  disposable clean replay, and independent exact-commit reviews remain pending.
+  First narrowed freeze
+  `46421a44c60aa351cd0894cf9e8b46691073141a` is rejected. Three fresh cold
+  reviews found: hidden nonce/grant state effects behind `mutating:false`;
+  projection reads that did not bind audience, purpose, and intended use;
+  a preparation receipt that could be read as an action transition; conditional
+  BYO-agent prerequisites that were not machine-pinned; a release manifest and
+  rejection marker that were not closed enough; incomplete source/package
+  exclusion of the rejected execution profile; and missing direct mutants.
+  The current replacement makes object-store writes and access-state effects
+  separate closed fields, purpose-binds `projection.get`, records preparation as
+  a draft with `action_state_transition:false`, closes the release and rejection
+  schemas, pins BYO prerequisites/non-claims, source-commits the generated
+  release artifact, and mechanically excludes the execution tree from the
+  package and runtime graph. It passes 88/88 authored controls and kills 99/99
+  exact mutation controls. A replacement containing commit, disposable clean
+  replay, and three fresh exact-commit reviews remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —

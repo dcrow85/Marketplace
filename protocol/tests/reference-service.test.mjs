@@ -241,7 +241,7 @@ function makeActiveIntent({ revision = 1, supersedesRevision = null, stance = "w
   }, PRINCIPAL_KEY);
 }
 
-function makeProjection(expiresAt = EXPIRES) {
+function makeProjection(expiresAt = EXPIRES, overrides = {}) {
   return bindAndSign({
     schema: "cairn.scoped_projection.v0.1",
     projection_id: uuid(33),
@@ -260,6 +260,7 @@ function makeProjection(expiresAt = EXPIRES) {
     disclosure_authority_ref: null,
     derived_at: CREATED,
     expires_at: expiresAt,
+    ...overrides,
     projection_hash: ZERO_HASH,
     issuer_signature: signature(SERVICE_KEY),
     not_claiming: ["authority_to_act"]
@@ -328,22 +329,24 @@ function makeReadGrant(service, {
   principalId = PRINCIPAL_ID,
   principalKey = PRINCIPAL_KEY,
   grantNumber = 63,
-  maximumDisclosures = 2
+  maximumDisclosures = 2,
+  recipient = AGENT_KEY_ID,
+  uses = ["read_local"]
 }) {
   return bindAndSign({
     schema: "cairn.data_grant.v0.1",
     grant_id: uuid(grantNumber),
     principal_id: principalId,
-    recipient: AGENT_KEY_ID,
+    recipient,
     resource_scopes: [{
       resource_kind: "object",
       ref,
       retrieval_uri: service.objectUri(ref),
       field_paths: [""]
     }],
-    uses: ["read_local"],
+    uses,
     purpose,
-    audience: [AGENT_KEY_ID],
+    audience: [recipient],
     maximum_disclosures: maximumDisclosures,
     retention: { expires_at: EXPIRES, deletion_terms: "Delete when the read grant expires." },
     revocation_nonce: grantNumber,
@@ -386,7 +389,7 @@ function makeEnvelope({
     subject_refs: subjectRefs,
     authorization_refs: authorizationRefs,
     nonce,
-    idempotency_key: idempotencyKey ?? (operation.mutating ? "reference-idempotency-0001" : null),
+    idempotency_key: idempotencyKey ?? (operation.object_store_mutating ? "reference-idempotency-0001" : null),
     operation_fingerprint: ZERO_HASH,
     critical_extensions: [],
     body_schema: operation.request_schema,
@@ -518,12 +521,12 @@ test("reference service advertises the exact proposal-only ten-operation surface
   assert.equal(response.ok, true, JSON.stringify(response));
   assert.deepEqual(response.body, service.capabilities());
 
-  const originalMutating = foundation.registry.operations[2].mutating;
-  foundation.registry.operations[2].mutating = false;
-  assert.equal(service.registry.operations[2].mutating, true, "caller registry mutation must not alter service policy");
+  const originalMutating = foundation.registry.operations[2].object_store_mutating;
+  foundation.registry.operations[2].object_store_mutating = false;
+  assert.equal(service.registry.operations[2].object_store_mutating, true, "caller registry mutation must not alter service policy");
   assert.equal(service.capabilities().operations.length, 10);
-  foundation.registry.operations[2].mutating = originalMutating;
-  assert.throws(() => { service.registry.operations[2].mutating = false; }, TypeError);
+  foundation.registry.operations[2].object_store_mutating = originalMutating;
+  assert.throws(() => { service.registry.operations[2].object_store_mutating = false; }, TypeError);
 
   const runtimeSchema = foundation.schemasByObjectId.get("cairn.agent_runtime_binding.v0.1");
   foundation.ajv.removeSchema(runtimeSchema.$id);
@@ -565,6 +568,9 @@ test("action.prepare creates only a draft action and an explicit no-effect recei
   assert.equal(result.status, 201);
   assert.equal(result.replayed, false);
   assert.equal(result.body.schema, "cairn.action_preparation_receipt.v0.1");
+  assert.equal(result.body.preparation_status, "recorded");
+  assert.equal(result.body.action_state, "draft");
+  assert.equal(result.body.action_state_transition, false);
   assert.equal(result.body.external_effect, false);
   assert.deepEqual(result.body.not_claiming, ["authority_to_act", "external_effect"]);
 
@@ -1083,9 +1089,14 @@ test("every private read operation resolves an owned exact object and consumes i
     const readGrantRef = value.seeder.seedObject(readGrant, {
       grantState: { status: "active", revocation_nonce: grantNumber, remaining_disclosures: 1 }
     });
+    const readBody = { ref, retrieval_uri: value.service.objectUri(ref) };
+    if (operationName === "projection.get") {
+      readBody.declared_purpose = projection.purpose;
+      readBody.intended_use = "read_local";
+    }
     const envelope = makeEnvelope({
       operationName,
-      body: { ref, retrieval_uri: value.service.objectUri(ref) },
+      body: readBody,
       authorizationRefs: [readGrantRef],
       messageNumber: 130 + index,
       nonce: `reference-nonce-00000${130 + index}`
@@ -1099,6 +1110,217 @@ test("every private read operation resolves an owned exact object and consumes i
     }
     assert.equal(value.stores.grantStatesByRef.get(objectRefKey(readGrantRef)).remaining_disclosures, 0);
   }
+});
+
+test("projection.get enforces exact audience, purpose, uses, and one covering grant", () => {
+  const value = makeHarness();
+  const projection = makeProjection(EXPIRES, {
+    projection_id: uuid(170),
+    data_uses: ["read_local", "derive"]
+  });
+  const projectionRef = value.seeder.seedObject(projection);
+  const grant = makeReadGrant(value.service, {
+    ref: projectionRef,
+    purpose: "projection_read",
+    grantNumber: 150,
+    maximumDisclosures: 3,
+    uses: ["read_local", "derive"]
+  });
+  const grantRef = value.seeder.seedObject(grant, {
+    grantState: { status: "active", revocation_nonce: 150, remaining_disclosures: 3 }
+  });
+  const request = (number, declaredPurpose, intendedUse, authorizationRefs = [grantRef]) => makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: projectionRef,
+      retrieval_uri: value.service.objectUri(projectionRef),
+      declared_purpose: declaredPurpose,
+      intended_use: intendedUse
+    },
+    authorizationRefs,
+    messageNumber: number,
+    nonce: `reference-nonce-00000${number}`
+  });
+
+  const read = value.service.handleEnvelope(request(151, "search", "read_local"), value.authentication);
+  assert.equal(read.ok, true, JSON.stringify(read));
+  assert.deepEqual(read.body, projection);
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(grantRef)).remaining_disclosures, 2);
+
+  const purposeMismatch = request(152, "checkout", "read_local");
+  const purposeResult = value.service.handleEnvelope(purposeMismatch, value.authentication);
+  assert.equal(purposeResult.ok, false);
+  assert.ok(purposeResult.failures.includes("projection_purpose_mismatch"));
+  assert.equal(value.stores.usedNonces.has(purposeMismatch.nonce), false);
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(grantRef)).remaining_disclosures, 2);
+
+  const readOnlyGrant = makeReadGrant(value.service, {
+    ref: projectionRef,
+    purpose: "projection_read",
+    grantNumber: 153,
+    maximumDisclosures: 1
+  });
+  const readOnlyGrantRef = value.seeder.seedObject(readOnlyGrant, {
+    grantState: { status: "active", revocation_nonce: 153, remaining_disclosures: 1 }
+  });
+  const missingGrantUse = request(154, "search", "derive", [readOnlyGrantRef]);
+  const missingGrantUseResult = value.service.handleEnvelope(missingGrantUse, value.authentication);
+  assert.equal(missingGrantUseResult.ok, false);
+  assert.ok(missingGrantUseResult.failures.includes("grant_use_missing"));
+  assert.equal(value.stores.usedNonces.has(missingGrantUse.nonce), false);
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(readOnlyGrantRef)).remaining_disclosures, 1);
+
+  const projectionWithoutDerive = makeProjection(EXPIRES, { projection_id: uuid(171) });
+  const projectionWithoutDeriveRef = value.seeder.seedObject(projectionWithoutDerive);
+  const broadGrant = makeReadGrant(value.service, {
+    ref: projectionWithoutDeriveRef,
+    purpose: "projection_read",
+    grantNumber: 162,
+    maximumDisclosures: 1,
+    uses: ["read_local", "derive"]
+  });
+  const broadGrantRef = value.seeder.seedObject(broadGrant, {
+    grantState: { status: "active", revocation_nonce: 162, remaining_disclosures: 1 }
+  });
+  const projectionUseRequest = makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: projectionWithoutDeriveRef,
+      retrieval_uri: value.service.objectUri(projectionWithoutDeriveRef),
+      declared_purpose: "search",
+      intended_use: "derive"
+    },
+    authorizationRefs: [broadGrantRef],
+    messageNumber: 163,
+    nonce: "reference-nonce-00000163"
+  });
+  const projectionUseResult = value.service.handleEnvelope(projectionUseRequest, value.authentication);
+  assert.equal(projectionUseResult.ok, false);
+  assert.ok(projectionUseResult.failures.includes("projection_intended_use_missing"));
+
+  const projectionWithoutRead = makeProjection(EXPIRES, {
+    projection_id: uuid(172),
+    data_uses: ["derive"]
+  });
+  const projectionWithoutReadRef = value.seeder.seedObject(projectionWithoutRead);
+  const withoutReadGrant = makeReadGrant(value.service, {
+    ref: projectionWithoutReadRef,
+    purpose: "projection_read",
+    grantNumber: 164,
+    maximumDisclosures: 1,
+    uses: ["read_local", "derive"]
+  });
+  const withoutReadGrantRef = value.seeder.seedObject(withoutReadGrant, {
+    grantState: { status: "active", revocation_nonce: 164, remaining_disclosures: 1 }
+  });
+  const readUseRequest = makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: projectionWithoutReadRef,
+      retrieval_uri: value.service.objectUri(projectionWithoutReadRef),
+      declared_purpose: "search",
+      intended_use: "derive"
+    },
+    authorizationRefs: [withoutReadGrantRef],
+    messageNumber: 165,
+    nonce: "reference-nonce-00000165"
+  });
+  const readUseResult = value.service.handleEnvelope(readUseRequest, value.authentication);
+  assert.equal(readUseResult.ok, false);
+  assert.ok(readUseResult.failures.includes("projection_read_use_missing"));
+
+  const derive = value.service.handleEnvelope(request(155, "search", "derive"), value.authentication);
+  assert.equal(derive.ok, true, JSON.stringify(derive));
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(grantRef)).remaining_disclosures, 1);
+
+  const genericGrant = makeReadGrant(value.service, {
+    ref: projectionRef,
+    purpose: "object_resolution",
+    grantNumber: 156,
+    maximumDisclosures: 1
+  });
+  const genericGrantRef = value.seeder.seedObject(genericGrant, {
+    grantState: { status: "active", revocation_nonce: 156, remaining_disclosures: 1 }
+  });
+  const genericRequest = makeEnvelope({
+    operationName: "object.resolve",
+    body: { ref: projectionRef, retrieval_uri: value.service.objectUri(projectionRef) },
+    authorizationRefs: [genericGrantRef],
+    messageNumber: 157,
+    nonce: "reference-nonce-00000157"
+  });
+  const genericResult = value.service.handleEnvelope(genericRequest, value.authentication);
+  assert.equal(genericResult.ok, false);
+  assert.ok(genericResult.failures.includes("projection_specialized_operation_required"));
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(genericGrantRef)).remaining_disclosures, 1);
+
+  const providerOnlyProjection = makeProjection(EXPIRES, {
+    projection_id: uuid(173),
+    audience: [AGENT_PROVIDER_ID]
+  });
+  const providerOnlyRef = value.seeder.seedObject(providerOnlyProjection);
+  const providerGrant = makeReadGrant(value.service, {
+    ref: providerOnlyRef,
+    purpose: "projection_read",
+    grantNumber: 158,
+    maximumDisclosures: 1
+  });
+  const providerGrantRef = value.seeder.seedObject(providerGrant, {
+    grantState: { status: "active", revocation_nonce: 158, remaining_disclosures: 1 }
+  });
+  const providerRequest = makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: providerOnlyRef,
+      retrieval_uri: value.service.objectUri(providerOnlyRef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
+    authorizationRefs: [providerGrantRef],
+    messageNumber: 159,
+    nonce: "reference-nonce-00000159"
+  });
+  const providerResult = value.service.handleEnvelope(providerRequest, value.authentication);
+  assert.equal(providerResult.ok, false);
+  assert.ok(providerResult.failures.includes("projection_audience_mismatch"));
+
+  const directProjection = makeProjection(EXPIRES, {
+    projection_id: uuid(174),
+    audience: [PRINCIPAL_ID]
+  });
+  const directRef = value.seeder.seedObject(directProjection);
+  const directGrant = makeReadGrant(value.service, {
+    ref: directRef,
+    purpose: "projection_read",
+    grantNumber: 160,
+    maximumDisclosures: 1,
+    recipient: PRINCIPAL_ID
+  });
+  const directGrantRef = value.seeder.seedObject(directGrant, {
+    grantState: { status: "active", revocation_nonce: 160, remaining_disclosures: 1 }
+  });
+  const directRequest = makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: directRef,
+      retrieval_uri: value.service.objectUri(directRef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
+    authorizationRefs: [directGrantRef],
+    messageNumber: 161,
+    nonce: "reference-nonce-00000161",
+    senderIdentity: {
+      agent_provider_id: PRINCIPAL_ID,
+      runtime_instance_key_id: null
+    },
+    senderKey: PRINCIPAL_KEY
+  });
+  const directResult = value.service.handleEnvelope(directRequest, {
+    principalId: PRINCIPAL_ID,
+    actorId: PRINCIPAL_ID
+  });
+  assert.equal(directResult.ok, true, JSON.stringify(directResult));
 });
 
 test("replay fails closed when its stored exact result binding is corrupt", () => {
@@ -1223,13 +1445,19 @@ test("historical key verification does not revive an expired private object", ()
   });
   const result = value.service.handleEnvelope(makeEnvelope({
     operationName: "projection.get",
-    body: { ref: projectionRef, retrieval_uri: value.service.objectUri(projectionRef) },
+    body: {
+      ref: projectionRef,
+      retrieval_uri: value.service.objectUri(projectionRef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
     authorizationRefs: [readGrantRef],
     messageNumber: 146,
     nonce: "reference-nonce-00000146"
   }), value.authentication);
   assert.equal(result.ok, false);
-  assert.equal(result.code, "resolved_object_invalid");
+  assert.equal(result.code, "operation_rejected");
+  assert.ok(result.failures.includes("projection_object_expired"));
   assert.equal(value.stores.grantStatesByRef.get(objectRefKey(readGrantRef)).remaining_disclosures, 1);
 });
 

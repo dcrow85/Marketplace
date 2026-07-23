@@ -17,6 +17,17 @@
         "retrieval_uri": { "$ref": "common.schema.json#/$defs/httpsUri" }
       }
     },
+    "projectionGetRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "retrieval_uri", "declared_purpose", "intended_use"],
+      "properties": {
+        "ref": { "$ref": "common.schema.json#/$defs/objectRef" },
+        "retrieval_uri": { "$ref": "common.schema.json#/$defs/httpsUri" },
+        "declared_purpose": { "$ref": "common.schema.json#/$defs/projectionPurpose" },
+        "intended_use": { "$ref": "common.schema.json#/$defs/projectionDataUse" }
+      }
+    },
     "capabilitiesResponse": {
       "type": "object",
       "additionalProperties": false,

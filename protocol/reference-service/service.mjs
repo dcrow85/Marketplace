@@ -169,7 +169,13 @@ function preparationAccessFailure(envelope, draft, context) {
   return null;
 }
 
-function consumeAuthorizationGrants(draft, envelope) {
+function consumeGrantDisclosureBudget(draft, envelope, operation) {
+  if (
+    !operation.data_grant_required ||
+    !operation.access_state_effects?.includes("consume_grant_disclosure_budget")
+  ) {
+    return false;
+  }
   const keys = [...new Set((envelope.authorization_refs ?? []).map(objectRefKey))]
     .sort((left, right) => Buffer.compare(Buffer.from(left, "utf8"), Buffer.from(right, "utf8")));
   for (const key of keys) {
@@ -400,6 +406,7 @@ export function createReferenceService({
       authorityNamespace,
       runtimeBinding: runtimeKeyId === null ? null : draft.runtimeBindingsByKey.get(runtimeKeyId),
       dataGrantsByRef: draft.dataGrantsByRef,
+      objectsByRef: draft.objectsByRef,
       grantStatesByRef: draft.grantStatesByRef,
       effectDescriptorsByRef: draft.effectDescriptorsByRef,
       resourceUrisByRef: { get: (key) => draft.urisByRef.get(key) ?? objectUriForKey(baseUrl, key) },
@@ -446,8 +453,9 @@ export function createReferenceService({
       receipt_id: idFactory("receipt", envelope),
       action_ref: objectRefFor(action, schemasByObjectId.get(action.schema)),
       action_proposal_ref: action.action_proposal_ref,
-      state_before: "draft",
-      state_after: "prepared",
+      preparation_status: "recorded",
+      action_state: "draft",
+      action_state_transition: false,
       prepared_for_principal: proposal.principal_id,
       prepared_by_agent: proposal.agent_identity,
       external_effect: false,
@@ -489,7 +497,7 @@ export function createReferenceService({
     }
     const operation = operationByName.get(envelope?.message_type);
     if (!operation) return failure(400, "operation_unknown");
-    if (operation.mutating && (typeof authentication.authorityNamespace !== "string" || authentication.authorityNamespace.length === 0)) {
+    if (operation.object_store_mutating && (typeof authentication.authorityNamespace !== "string" || authentication.authorityNamespace.length === 0)) {
       return failure(403, "authenticated_authority_namespace_required");
     }
     try {
@@ -514,7 +522,7 @@ export function createReferenceService({
           return { commit: false, value: failure(statusForFailures(admission.failures), "operation_rejected", admission.failures) };
         }
 
-        if (operation.mutating && admission.replayed) {
+        if (operation.object_store_mutating && admission.replayed) {
           const resultAccess = draft.accessByRef.get(objectRefKey(admission.result_ref));
           const object = resolvedStoredObject(admission.result_ref, draft, context, { allowExpired: true });
           if (!object || resultAccess?.visibility !== "private" || resultAccess.principal_id !== envelope.principal_id) {
@@ -568,7 +576,7 @@ export function createReferenceService({
             schemasByObjectId
           );
           const result = responseBody(operation, { ref, receipt_ref: null }, context, 201, false);
-          const grantsConsumed = result.ok && consumeAuthorizationGrants(draft, envelope);
+          const grantsConsumed = result.ok && consumeGrantDisclosureBudget(draft, envelope, operation);
           return { commit: grantsConsumed, value: grantsConsumed ? result : failure(503, "grant_consumption_failed") };
         }
         if (operation.name === "action.prepare") {
@@ -603,13 +611,13 @@ export function createReferenceService({
             return { commit: false, value: failure(503, "prepared_result_binding_failed") };
           }
           const result = responseBody(operation, staged.receipt, context, 201, false);
-          const grantsConsumed = result.ok && consumeAuthorizationGrants(draft, envelope);
+          const grantsConsumed = result.ok && consumeGrantDisclosureBudget(draft, envelope, operation);
           return { commit: grantsConsumed, value: grantsConsumed ? result : failure(503, "grant_consumption_failed") };
         }
 
         const result = exactResponseObject(operation, envelope.body, draft, context);
         if (!result.ok || !operation.data_grant_required) return { commit: true, value: result };
-        const grantsConsumed = consumeAuthorizationGrants(draft, envelope);
+        const grantsConsumed = consumeGrantDisclosureBudget(draft, envelope, operation);
         return { commit: grantsConsumed, value: grantsConsumed ? result : failure(503, "grant_consumption_failed") };
       });
     } catch {

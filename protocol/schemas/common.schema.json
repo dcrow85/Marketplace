@@ -27,6 +27,12 @@
       "minLength": 1,
       "maxLength": 256
     },
+    "projectionPurpose": {
+      "enum": ["search", "recommend", "negotiate", "checkout", "fulfillment", "dispute"]
+    },
+    "projectionDataUse": {
+      "enum": ["read_local", "derive"]
+    },
     "schemaId": {
       "type": "string",
       "pattern": "^cairn\\.[a-z0-9_]+\\.v0\\.1$"

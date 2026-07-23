@@ -41,9 +41,9 @@
         "claim_ids": { "type": "array", "items": { "type": "string", "minLength": 1, "maxLength": 256 }, "uniqueItems": true }
       }
     },
-    "purpose": { "enum": ["search", "recommend", "negotiate", "checkout", "fulfillment", "dispute"] },
+    "purpose": { "$ref": "common.schema.json#/$defs/projectionPurpose" },
     "audience": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/actorId" }, "uniqueItems": true },
-    "data_uses": { "type": "array", "minItems": 1, "items": { "enum": ["read_local", "derive"] }, "uniqueItems": true },
+    "data_uses": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/projectionDataUse" }, "uniqueItems": true },
     "disclosed_fields": { "type": "array", "items": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" }, "uniqueItems": true },
     "redacted_fields": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" }, "uniqueItems": true },
     "disclosure_authority_ref": { "$ref": "common.schema.json#/$defs/nullableObjectRef" },

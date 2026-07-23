@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
 import { generateKeyPairSync, sign as signBytes } from "node:crypto";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -62,11 +62,12 @@ const EXPIRES = "2026-07-20T17:00:00Z";
 
 test("minimum trust kernel pins the exact proposal-only release boundary", async () => {
   const result = await auditMinimumTrustKernel(root);
-  assert.equal(result.kernelId, "cairn-agent-minimum-trust-kernel-v0.1");
+  assert.equal(result.manifest.kernel_id, "cairn-agent-minimum-trust-kernel-v0.1");
   assert.equal(result.operationCount, 10);
-  assert.equal(result.mutationCount, 2);
-  assert.equal(result.bundleHash, "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c");
-  assert.equal(result.registryHash, "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b");
+  assert.equal(result.objectStoreMutationCount, 2);
+  assert.equal(result.grantConsumerCount, 8);
+  assert.equal(result.bundleHash, "sha-256:4eb3862fd13659131731f1202aecc62617044682bc7c0ce9e5cd2420061b3a85");
+  assert.equal(result.registryHash, "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d");
 });
 
 function testKey(key_id, controller) {
@@ -237,8 +238,9 @@ function makePreparationReceipt(action = makeDraftAction(), proposal = makePropo
     receipt_id: uuid(23),
     action_ref: ref("cairn.action_record.v0.1", 22, action.action_hash),
     action_proposal_ref: ref("cairn.action_proposal.v0.1", 21, proposal.action_proposal_hash),
-    state_before: "draft",
-    state_after: "prepared",
+    preparation_status: "recorded",
+    action_state: "draft",
+    action_state_transition: false,
     prepared_for_principal: fixture.principal_id,
     prepared_by_agent: structuredClone(fixture.agent_identity),
     external_effect: false,
@@ -705,8 +707,9 @@ test("preparation receipt is explicit that nothing was sent", () => {
   const receipt = makePreparationReceipt(action, proposal);
   assertSchemaValid(action);
   assertSchemaValid(receipt);
-  assert.equal(receipt.state_before, "draft");
-  assert.equal(receipt.state_after, "prepared");
+  assert.equal(receipt.preparation_status, "recorded");
+  assert.equal(receipt.action_state, "draft");
+  assert.equal(receipt.action_state_transition, false);
   assert.equal(receipt.external_effect, false);
 
   const falseClaim = structuredClone(receipt);
@@ -724,6 +727,33 @@ test("operation registry exposes preparation but no authorization or execution",
   assert.equal(registry.operations.some(({ name }) => name === "continuation.get"), false);
   assert.equal(registry.operations.some(({ name }) => /authorize|execute|dispatch|pay|release|waive|issue/.test(name)), false);
   assert.deepEqual(sources.manifest.conformance_claims, []);
+});
+
+test("operation registry distinguishes object writes from access-state effects", () => {
+  const objectWrites = registry.operations
+    .filter(({ object_store_mutating }) => object_store_mutating)
+    .map(({ name }) => name);
+  assert.deepEqual(objectWrites, ["intent.put", "action.prepare"]);
+  const grantConsumers = registry.operations
+    .filter(({ access_state_effects }) => access_state_effects.includes("consume_grant_disclosure_budget"))
+    .map(({ name }) => name);
+  assert.deepEqual(grantConsumers, [
+    "intent.put",
+    "intent.get",
+    "data_grant.get",
+    "projection.get",
+    "object.resolve",
+    "action.prepare",
+    "action.get",
+    "receipt.get"
+  ]);
+  for (const operation of registry.operations) {
+    assert.equal(
+      operation.data_grant_required,
+      operation.access_state_effects.includes("consume_grant_disclosure_budget"),
+      operation.name
+    );
+  }
 });
 
 test("envelope binds its body and enforces mutation idempotency", () => {
@@ -967,6 +997,20 @@ test("preparation receipt cross-checks action, proposal, principal, agent, and d
   const authority = structuredClone(action);
   authority.authorization_ref = ref("cairn.authorization.v0.1", 901);
   assert.ok(validatePreparationReceipt(receipt, { ...context, action: authority }).includes("action_authority_present"));
+  const advanced = structuredClone(action);
+  advanced.current_state = "prepared";
+  advanced.state_version = 1;
+  const signedAdvanced = bindAndSign(advanced, SERVICE_KEY);
+  assert.ok(validatePreparationReceipt(receipt, { ...context, action: signedAdvanced }).includes("action_not_draft"));
+});
+
+test("historical key proof does not suppress object expiry", () => {
+  const proposal = makeProposal();
+  const failures = validateSignedObject(proposal, validationContext({
+    now: "2026-07-20T17:30:00Z",
+    historicalKeyProof: true
+  }));
+  assert.ok(failures.includes("object_expired"));
 });
 
 test("runtime canonicalization rejects non-I-JSON and noncanonical proof encodings", async () => {
@@ -1481,6 +1525,35 @@ test("machine bundle is deterministic and self-addressed", async () => {
   const parsed = JSON.parse(disk);
   const { bundle_hash, ...unsigned } = parsed;
   assert.equal(bundle_hash, canonicalHash(unsigned));
+});
+
+test("kernel release check rejects a stale generated artifact", () => {
+  const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-kernel-release-"));
+  const candidate = path.join(parent, "protocol");
+  try {
+    cpSync(root, candidate, {
+      recursive: true,
+      filter: (source) => path.basename(source) !== "node_modules"
+    });
+    symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
+    for (const name of [
+      "Protocol_Agent_Intent_Interop_v0.1.md",
+      "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
+    ]) {
+      cpSync(path.resolve(root, "..", name), path.join(parent, name));
+    }
+    const releasePath = path.join(candidate, "dist", "cairn-minimum-trust-kernel-v0.1.json");
+    const release = readFileSync(releasePath, "utf8");
+    writeFileSync(releasePath, release.replace("cairn.minimum_trust_kernel_release.v0.1", "cairn.stale_release.v0.1"));
+    const result = spawnSync("node", ["scripts/check-minimum-kernel.mjs"], {
+      cwd: candidate,
+      encoding: "utf8"
+    });
+    assert.notEqual(result.status, 0);
+    assert.match(`${result.stdout}\n${result.stderr}`, /generated minimum trust kernel release differs from source/);
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
+  }
 });
 
 test("package-level check passes against generated source", () => {

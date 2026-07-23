@@ -1,6 +1,9 @@
 # Supervised execution Phase 1 — rejected research artifact
 
 `cairn-supervised-execution-v0.1` is not an active Cairn release candidate.
+Its machine status is `rejected_research_only` in
+[`rejection.json`](rejection.json): it is not advertised, deployable, or
+reference-service-eligible.
 
 Every frozen form, including exact commit
 `c5646a0104664f7edf2a453450a2ec5d5d2eb82c`, was rejected by independent

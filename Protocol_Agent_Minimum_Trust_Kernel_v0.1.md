@@ -26,11 +26,12 @@ This is the smallest useful protocol promise:
 The active kernel is the deterministic `cairn-proposal-foundation-v0.1` bundle:
 
 - bundle hash:
-  `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`;
+  `sha-256:4eb3862fd13659131731f1202aecc62617044682bc7c0ce9e5cd2420061b3a85`;
 - operation-registry hash:
-  `sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b`;
+  `sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d`;
 - ten exact operations;
-- two local-state mutations; and
+- two object-store writes with every access-state effect separately declared;
+  and
 - no conformance claim.
 
 The exact operations are:
@@ -46,14 +47,21 @@ The exact operations are:
 9. `action.get`
 10. `receipt.get`
 
-Only these local writes exist:
+Only these operations create protocol objects/results:
 
 - `intent.put` records the exact principal-signed ActiveIntent. Its authority
   effect is `records_principal_signed_intent_only`.
-- `action.prepare` records proposal/preparation state. Its authority effect is
-  `none`, and its receipt fixes `external_effect` to `false`.
+- `action.prepare` stores the proposal, a draft ActionRecord, and a preparation
+  receipt. Its authority effect is `none`; the receipt records
+  `action_state_transition:false` and fixes `external_effect` to `false`.
 
 Neither operation is permission to perform the proposed action.
+
+`object_store_mutating:false` does not mean side-effect-free. Every accepted
+signed envelope consumes replay-nonce state. Every successful DataGrant-covered
+operation—including the six private reads—atomically consumes disclosure budget.
+The two object-store writes also write idempotency records. These effects are
+closed per operation in the machine manifest.
 
 ## 3. What the kernel proves—and does not
 
@@ -76,7 +84,14 @@ They do not establish:
 ## 4. Bring-your-own-agent contract
 
 Anko is one possible reader and proposer, not a privileged protocol actor.
-Another agent can:
+Given all four preconditions below, another agent can:
+
+- a pre-provisioned authenticated runtime binding;
+- principal-bound DataGrants and active grant state for that exact runtime;
+- an authenticated handoff of exact ObjectRefs and HTTPS retrieval URIs; and
+- an available signing-key resolution profile.
+
+The agent can then:
 
 1. discover the exact kernel capabilities;
 2. read a principal's signed intent and permitted projections;
@@ -87,6 +102,19 @@ Another agent can:
 The agent cannot convert familiarity, confidence, urgency, a recommendation, or
 a DataGrant into authority. A future consequential action requires a separate,
 explicitly designed authority profile.
+
+The envelope and object formats are interface-agnostic; agent onboarding is not.
+This kernel does not standardize runtime provisioning, grant issuance, object-ref
+discovery, or continuation delivery. `createReferenceSeeder` is a trusted local
+bootstrap helper, not an interoperability operation. Host-specific authenticated
+provisioning is still required to replace an agent.
+
+`projection.get` is purpose-bound: its signed request states the projection
+purpose and intended use; the projection must admit the exact runtime (or direct
+principal), that purpose, local reading, and the intended use; and one covering
+DataGrant must carry every required use. Generic `object.resolve` cannot return a
+ScopedProjection and bypass those checks. A declared purpose is attributable
+intent, not proof of the recipient's later behavior.
 
 ## 5. Rejected execution candidate
 
@@ -132,6 +160,13 @@ hashes drift, the ten-operation surface changes, either local mutation gains
 authority, the rejected execution profile is re-admitted, or the non-claims
 weaken. `npm run build` remains a deterministic generator; generation alone is
 not a release check.
+
+The generated
+`protocol/dist/cairn-minimum-trust-kernel-v0.1.json` content-addresses the closed
+manifest, foundation hashes, foundation bundle bytes, active source tree,
+reference composition, tests, mutants, release schemas, canonical kernel prose,
+and execution rejection markers. The package allowlist and runtime source check
+exclude the rejected execution tree.
 
 Any expansion requires a new profile name, new machine artifact, frozen commit,
 and independent review. It must not silently widen this kernel.

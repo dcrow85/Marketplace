@@ -1935,9 +1935,12 @@ The receipt chain is authoritative and noncircular. An `ActionReceipt.action_ref
 references the pre-transition ActionRecord hash. After the receipt is signed, the
 next materialized ActionRecord sets `previous_action_ref` to that prior snapshot and
 `last_transition_receipt_ref` to the completed receipt. A receipt never references
-the resulting ActionRecord. Preparation/authorization receipts are typed
-`ActionReceipt` specializations or supplementary consent receipts referencing the
-authoritative transition; they do not create a second state chain.
+the resulting ActionRecord. Authorization receipts are typed `ActionReceipt`
+specializations or supplementary consent receipts referencing the authoritative
+transition; they do not create a second state chain. The proposal-foundation
+`ActionPreparationReceipt` is narrower: it records validated proposal/draft
+storage with `action_state_transition:false`. It does not claim a `draft →
+prepared` ActionRecord transition.
 
 ### 12.2 `ScopedExecutor`
 
@@ -2078,8 +2081,9 @@ cairn.action_authorization_receipt.v0.1:
 cairn.action_preparation_receipt.v0.1:
   action_ref: <ObjectRef>
   action_proposal_ref: <ObjectRef>
-  state_before: draft
-  state_after: prepared
+  preparation_status: recorded
+  action_state: draft
+  action_state_transition: false
   prepared_for_principal: <principal>
   prepared_by_agent: <full agent identity, or null for principal-direct preparation>
   external_effect: false

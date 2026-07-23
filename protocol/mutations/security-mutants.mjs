@@ -21,10 +21,10 @@ export const SECURITY_MUTANTS = [
     id: "minimum-kernel-mutation-boundary",
     finding: "minimum-kernel-release-boundary",
     file: "minimum-trust-kernel.json",
-    jsonPointer: "/allowed_local_mutations/1/authority_effect",
+    jsonPointer: "/allowed_object_store_mutations/1/authority_effect",
     value: "records_execution_authority",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel allowed mutation boundary differs"
+    expectedOutput: "minimum kernel allowed object-store mutation boundary differs"
   },
   {
     id: "minimum-kernel-execution-exclusion",
@@ -33,7 +33,185 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/excluded_profiles/0",
     value: "cairn-supervised-execution-v0.2",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel excluded profiles differ"
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-state-effect-matrix",
+    finding: "explicit-operation-state-effects",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/operation_state_effects/3/access_state_effects",
+    value: [],
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel operation state effects differ"
+  },
+  {
+    id: "minimum-kernel-byo-prerequisite",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/byo_prerequisites/2",
+    value: "implicit_object_discovery",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel BYO prerequisites differ"
+  },
+  {
+    id: "minimum-kernel-nonclaim",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/not_claiming/14",
+    value: "continuation_delivery_available",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel non-claims differ"
+  },
+  {
+    id: "minimum-kernel-forbidden-terms",
+    finding: "minimum-kernel-release-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/forbidden_operation_terms/8",
+    value: "launch",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel forbidden operation terms differ"
+  },
+  {
+    id: "minimum-kernel-conformance-claim",
+    finding: "minimum-kernel-release-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/conformance_claims",
+    value: ["production"],
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-unknown-field",
+    finding: "closed-release-manifest",
+    file: "minimum-trust-kernel.json",
+    search: '  "schema": "cairn.minimum_trust_kernel_manifest.v0.1",\n',
+    replace: '  "schema": "cairn.minimum_trust_kernel_manifest.v0.1",\n  "production_service": true,\n',
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-duplicate-field",
+    finding: "strict-release-manifest",
+    file: "minimum-trust-kernel.json",
+    search: '  "not_claiming": [\n',
+    replace: '  "not_claiming": [],\n  "not_claiming": [\n',
+    expectedStage: "kernel",
+    expectedOutput: "duplicate member"
+  },
+  {
+    id: "minimum-kernel-rejection-marker",
+    finding: "mechanical-execution-exclusion",
+    file: "execution/rejection.json",
+    jsonPointer: "/advertised",
+    value: true,
+    expectedStage: "kernel",
+    expectedOutput: "execution rejection marker:"
+  },
+  {
+    id: "minimum-kernel-package-exclusion",
+    finding: "mechanical-execution-exclusion",
+    file: "package.json",
+    jsonPointer: "/files/1",
+    value: "execution",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel package file allowlist differs"
+  },
+  {
+    id: "minimum-kernel-runtime-import-exclusion",
+    finding: "mechanical-execution-exclusion",
+    file: "reference-service/service.mjs",
+    search: 'import { buildBundle } from "../lib/bundle.mjs";',
+    replace: 'import { buildBundle } from "../lib/bundle.mjs";\nimport "../execution/lib/core.mjs";',
+    expectedStage: "kernel",
+    expectedOutput: "active runtime reaches rejected execution source"
+  },
+  {
+    id: "minimum-kernel-generated-release-byte-check",
+    finding: "source-committed-generated-release",
+    file: "scripts/check-minimum-kernel.mjs",
+    search: 'if (actual !== bytes) throw new Error("generated minimum trust kernel release differs from source; run npm run build");',
+    replace: "// mutant accepts a stale generated release",
+    test: "kernel release check rejects a stale generated artifact"
+  },
+  {
+    id: "projection-exact-audience",
+    finding: "projection-purpose-audience-use-enforcement",
+    file: "lib/validation.mjs",
+    search: '      if (!projection.audience?.includes(recipient)) failures.push("projection_audience_mismatch");',
+    replace: '      if (false) failures.push("projection_audience_mismatch");',
+    test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-purpose-binding",
+    finding: "projection-purpose-audience-use-enforcement",
+    file: "lib/validation.mjs",
+    search: '      if (projection.purpose !== envelope.body.declared_purpose) failures.push("projection_purpose_mismatch");',
+    replace: '      if (false) failures.push("projection_purpose_mismatch");',
+    test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-intended-use-binding",
+    finding: "projection-purpose-audience-use-enforcement",
+    file: "lib/validation.mjs",
+    search: '      if (!projection.data_uses?.includes(envelope.body.intended_use)) failures.push("projection_intended_use_missing");',
+    replace: '      if (false) failures.push("projection_intended_use_missing");',
+    test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-read-use-binding",
+    finding: "projection-purpose-audience-use-enforcement",
+    file: "lib/validation.mjs",
+    search: '      if (!projection.data_uses?.includes("read_local")) failures.push("projection_read_use_missing");',
+    replace: '      if (false) failures.push("projection_read_use_missing");',
+    test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-same-grant-use-binding",
+    finding: "projection-purpose-audience-use-enforcement",
+    file: "lib/validation.mjs",
+    search: "        requiredUses: operation.name === \"projection.get\"\n          ? [...new Set([operation.grant_use, envelope.body.intended_use])]\n          : [operation.grant_use],",
+    replace: "        requiredUses: [operation.grant_use],",
+    test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-generic-resolution-block",
+    finding: "projection-purpose-audience-use-enforcement",
+    file: "lib/validation.mjs",
+    search: '    if (object?.schema === "cairn.scoped_projection.v0.1") failures.push("projection_specialized_operation_required");',
+    replace: '    if (false) failures.push("projection_specialized_operation_required");',
+    test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "grant-budget-effect-declaration",
+    finding: "explicit-operation-state-effects",
+    file: "reference-service/service.mjs",
+    search: '    !operation.access_state_effects?.includes("consume_grant_disclosure_budget")',
+    replace: "    true",
+    test: "every private read operation resolves an owned exact object and consumes its read grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "preparation-no-action-transition",
+    finding: "coherent-preparation-state",
+    file: "reference-service/service.mjs",
+    search: "      action_state_transition: false,",
+    replace: "      action_state_transition: true,",
+    test: "action.prepare creates only a draft action and an explicit no-effect receipt",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "preparation-draft-action-binding",
+    finding: "coherent-preparation-state",
+    file: "lib/validation.mjs",
+    search: '  if (action?.current_state !== "draft" || action?.state_version !== 0) failures.push("action_not_draft");',
+    replace: "  if (false) failures.push(\"action_not_draft\");",
+    test: "preparation receipt cross-checks action, proposal, principal, agent, and draft-only state"
   },
   {
     id: "total-signed-object-boundary",
@@ -290,7 +468,7 @@ export const SECURITY_MUTANTS = [
     finding: "provider-runtime-collapse",
     file: "lib/validation.mjs",
     search: "    if (envelope.principal_id !== null && envelope.sender?.actor_id !== envelope.principal_id) {",
-    replace: "    if (operation.mutating && envelope.sender?.actor_id !== envelope.principal_id) {",
+    replace: "    if (operation.object_store_mutating && envelope.sender?.actor_id !== envelope.principal_id) {",
     test: "a provider cannot drop the runtime key and reuse a provider-wide private-read grant",
     testFile: "tests/reference-service.test.mjs"
   },
@@ -350,7 +528,7 @@ export const SECURITY_MUTANTS = [
     id: "service-auth-authority-namespace",
     finding: "authenticated-authority-namespace",
     file: "reference-service/service.mjs",
-    search: "    if (operation.mutating && (typeof authentication.authorityNamespace !== \"string\" || authentication.authorityNamespace.length === 0)) {",
+    search: "    if (operation.object_store_mutating && (typeof authentication.authorityNamespace !== \"string\" || authentication.authorityNamespace.length === 0)) {",
     replace: "    if (false) {",
     test: "authentication and validation failures leave nonce, idempotency, and result state untouched",
     testFile: "tests/reference-service.test.mjs"
@@ -386,8 +564,8 @@ export const SECURITY_MUTANTS = [
     id: "service-replay-branch",
     finding: "idempotent-replay-purity",
     file: "reference-service/service.mjs",
-    search: "        if (operation.mutating && admission.replayed) {",
-    replace: "        if (false && operation.mutating && admission.replayed) {",
+    search: "        if (operation.object_store_mutating && admission.replayed) {",
+    replace: "        if (false && operation.object_store_mutating && admission.replayed) {",
     test: "fresh-envelope replay returns the original result before changed new-work state",
     testFile: "tests/reference-service.test.mjs"
   },
@@ -404,8 +582,8 @@ export const SECURITY_MUTANTS = [
     id: "service-grant-replay-charge",
     finding: "replay-disclosure-charge",
     file: "reference-service/service.mjs",
-    search: "        if (operation.mutating && admission.replayed) {\n          const resultAccess",
-    replace: "        if (operation.mutating && admission.replayed) {\n          for (const ref of envelope.authorization_refs) draft.grantStatesByRef.get(objectRefKey(ref)).remaining_disclosures -= 1;\n          const resultAccess",
+    search: "        if (operation.object_store_mutating && admission.replayed) {\n          const resultAccess",
+    replace: "        if (operation.object_store_mutating && admission.replayed) {\n          for (const ref of envelope.authorization_refs) draft.grantStatesByRef.get(objectRefKey(ref)).remaining_disclosures -= 1;\n          const resultAccess",
     test: "fresh-envelope replay returns the original result before changed new-work state",
     testFile: "tests/reference-service.test.mjs"
   },
@@ -611,7 +789,7 @@ export const SECURITY_MUTANTS = [
     id: "http-idempotency-header-binding",
     finding: "transport-idempotency-boundary",
     file: "reference-service/http.mjs",
-    search: "    if (operation?.mutating && request.headers[\"idempotency-key\"] !== envelope.idempotency_key) {",
+    search: "    if (operation?.object_store_mutating && request.headers[\"idempotency-key\"] !== envelope.idempotency_key) {",
     replace: "    if (false) {",
     test: "HTTP facade keeps capabilities public and enforces route, media, version, and idempotency boundaries",
     testFile: "tests/reference-service.test.mjs"
@@ -667,8 +845,7 @@ export const SECURITY_MUTANTS = [
     file: "lib/validation.mjs",
     search: "    historicalObjectLifecycle !== true &&",
     replace: "    historicalKeyProof !== true &&",
-    test: "historical key verification does not revive an expired private object",
-    testFile: "tests/reference-service.test.mjs"
+    test: "historical key proof does not suppress object expiry"
   },
   {
     id: "active-intent-revision-identity",

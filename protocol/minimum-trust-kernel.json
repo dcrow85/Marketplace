@@ -3,8 +3,8 @@
   "kernel_id": "cairn-agent-minimum-trust-kernel-v0.1",
   "profile": "cairn-proposal-foundation-v0.1",
   "release_status": "active_narrowed_candidate",
-  "foundation_bundle_hash": "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c",
-  "operation_registry_hash": "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b",
+  "foundation_bundle_hash": "sha-256:4eb3862fd13659131731f1202aecc62617044682bc7c0ce9e5cd2420061b3a85",
+  "operation_registry_hash": "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d",
   "included_operations": [
     "capabilities.get",
     "runtime_binding.get",
@@ -17,7 +17,7 @@
     "action.get",
     "receipt.get"
   ],
-  "allowed_local_mutations": [
+  "allowed_object_store_mutations": [
     {
       "operation": "intent.put",
       "authority_effect": "records_principal_signed_intent_only"
@@ -26,6 +26,74 @@
       "operation": "action.prepare",
       "authority_effect": "none"
     }
+  ],
+  "operation_state_effects": [
+    {
+      "operation": "capabilities.get",
+      "object_store_mutating": false,
+      "access_state_effects": [],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "runtime_binding.get",
+      "object_store_mutating": false,
+      "access_state_effects": [],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "intent.put",
+      "object_store_mutating": true,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce", "write_idempotency_record"]
+    },
+    {
+      "operation": "intent.get",
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "data_grant.get",
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "projection.get",
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "object.resolve",
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "action.prepare",
+      "object_store_mutating": true,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce", "write_idempotency_record"]
+    },
+    {
+      "operation": "action.get",
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    },
+    {
+      "operation": "receipt.get",
+      "object_store_mutating": false,
+      "access_state_effects": ["consume_grant_disclosure_budget"],
+      "signed_envelope_effects": ["consume_replay_nonce"]
+    }
+  ],
+  "byo_prerequisites": [
+    "preprovisioned_authenticated_runtime_binding",
+    "principal_bound_exact_runtime_data_grants_and_state",
+    "authenticated_object_ref_and_uri_handoff",
+    "signing_key_resolution_profile"
   ],
   "forbidden_operation_terms": [
     "authorize",
@@ -59,6 +127,10 @@
     "settlement",
     "release",
     "waiver",
-    "authenticated_service_observation"
+    "authenticated_service_observation",
+    "agent_onboarding",
+    "grant_issuance",
+    "object_reference_discovery",
+    "continuation_delivery"
   ]
 }
