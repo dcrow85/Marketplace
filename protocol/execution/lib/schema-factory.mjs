@@ -58,6 +58,14 @@ const ACTION_STATES = [
   "finalized",
   "quarantined"
 ];
+const PHASE1_ACTIVITY_STATES = [
+  "prepared",
+  "authorized",
+  "reserved",
+  "cancelled",
+  "definitive_failure",
+  "quarantined"
+];
 const FINANCIAL_CAPABILITIES = ["submit_bindable_offer", "submit_counteroffer", "accept_terms", "authorize_payment", "fund_escrow"];
 
 const POLICY_RESPONSE_SCHEMA_IDS = new Set([
@@ -356,6 +364,7 @@ function schemaForType(type) {
   if (type.startsWith("const:")) return { const: type.slice(6) };
   if (type.startsWith("constint:")) return { const: Number(type.slice(9)) };
   if (type === "capability") return { enum: CAPABILITIES };
+  if (type === "phase1ActivityState") return { enum: PHASE1_ACTIVITY_STATES };
   if (type === "mandateCapability") return { enum: CAPABILITIES.filter((value) => value !== "cancel_receiver_action") };
   if (type === "actionAuthorizationCapability") return { enum: CAPABILITIES.filter((value) => value !== "cancel_receiver_action") };
   if (type === "nonEmptyRefs") return refArray(1);
@@ -763,7 +772,7 @@ function operationBodiesSchema(baseObjectSchemaUris) {
     activityListRequest: closed({
       cursor: nullable({ type: "string", minLength: 1, maxLength: 1024 }),
       page_size: { type: "integer", minimum: 1, maximum: 100 },
-      state_filter: array({ enum: ACTION_STATES }, { uniqueItems: true })
+      state_filter: array({ enum: PHASE1_ACTIVITY_STATES }, { uniqueItems: true })
     })
   };
   const requestEnvelopes = Object.fromEntries(PHASE1_OPERATIONS.map((operation) => [

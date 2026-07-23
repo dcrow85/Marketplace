@@ -25,12 +25,32 @@ const AUTHENTICATED_RESOLUTION_UNSUPPORTED = "phase1_authenticated_resolution_un
 // live authority paths cannot be relaxed with a caller-supplied boolean flag.
 const HISTORICAL_EVIDENCE = Symbol("cairnHistoricalEvidence");
 const isHistoricalEvidence = (context) => context?.[HISTORICAL_EVIDENCE] === true;
-const historicalEvidenceContext = (context, at = null) => ({
-  ...context,
-  [HISTORICAL_EVIDENCE]: true,
-  requireDependencySignatures: true,
-  historicalEvidenceAt: at
-});
+const historicalEvidenceContext = (context, at = null) => {
+  const semanticInstant = at ?? context?.historicalEvidenceAt ?? context?.now ?? null;
+  return {
+    ...context,
+    [HISTORICAL_EVIDENCE]: true,
+    requireDependencySignatures: true,
+    historicalEvidenceAt: semanticInstant,
+    now: semanticInstant
+  };
+};
+
+function historicalObjectInstant(object, fallback = null) {
+  for (const field of [
+    "evaluated_at", "committed_at", "activated_at", "reserved_at", "verified_at",
+    "issued_at", "created_at", "updated_at", "accepted_at", "requested_at"
+  ]) {
+    if (typeof object?.[field] === "string") return object[field];
+  }
+  for (const value of Object.values(object ?? {})) {
+    if (isObject(value) && value.profile === "cairn-ed25519-v0.1" &&
+        typeof value.signed_at === "string") {
+      return value.signed_at;
+    }
+  }
+  return fallback;
+}
 
 export const IMPLEMENTED_PHASE1_INVARIANTS = new Set([
   "connection_event_union", "control_target_union", "recovery_signature_union", "scoped_control_target_union",
@@ -200,18 +220,27 @@ export function validateExactObjectRead(operationName, request, responseObject, 
     if (!schema || !sameObjectRef(request.ref, returnedRef) || !sameObjectRef(returnedRef, objectRefFor(returnedObject, schema))) {
       return ["object_read_request_ref_mismatch"];
     }
+    const currentRead = CURRENT_EXACT_READ_OPERATIONS.has(operationName);
+    const objectContext = currentRead
+      ? { ...context, now: responseObject.retrieved_at ?? context.now ?? null }
+      : historicalEvidenceContext(
+        context,
+        historicalObjectInstant(returnedObject, responseObject.retrieved_at ?? context.now ?? null)
+      );
     const failures = schema["x-cairn-source-spec-sha256"] === undefined
-      ? resolvedObjectShapeFailures(returnedObject, context, "object_read_response")
-      : validatePhase1Object(returnedObject, context);
+      ? resolvedObjectShapeFailures(returnedObject, objectContext, "object_read_response")
+      : validatePhase1Object(returnedObject, objectContext);
     if ((schema["x-cairn-signature-pointers"] ?? []).length > 0) {
-      failures.push(...validateResolvedSignedObject(returnedObject, context)
+      failures.push(...validateResolvedSignedObject(returnedObject, objectContext)
         .map((code) => `object_read_${code}`));
     }
-    if (CURRENT_EXACT_READ_OPERATIONS.has(operationName) &&
-        !sameObjectRef(resolveCurrentHead(context, returnedRef), returnedRef)) {
+    if (currentRead &&
+        !sameObjectRef(resolveCurrentHead(
+          objectContext, returnedRef, responseObject.retrieved_at ?? context.now ?? null
+        ), returnedRef)) {
       failures.push("object_read_current_head_mismatch");
     }
-    failures.push(...intrinsicObjectFailures(returnedObject, historicalEvidenceContext(context))
+    failures.push(...intrinsicObjectFailures(returnedObject, objectContext)
       .map((code) => `object_read_${code}`));
     failures.push(...resourceBoundFailures(returnedObject, { objectRoot: true }).map((code) => `object_read_${code}`));
     // Phase 1 has no frozen key/current-head/access-control proof root. These
@@ -323,6 +352,15 @@ function intrinsicObjectFailures(object, context) {
     }
     case "cairn.gate_result.v0.2": return validateGateResult(object, context);
     case "cairn.action_record.v0.2": return validateActionRecord(object, context);
+    case "cairn.execution_activity_detail.v0.1": {
+      const action = context.action ?? resolveObject(context.objectResolver, object.action_ref);
+      const state = context.actionState ?? resolveObject(context.objectResolver, object.action_state_head_ref);
+      const binding = context.binding ?? context.executionBindingSet ??
+        resolveObject(context.objectResolver, object.binding_set_ref);
+      const lineageState = context.lineageStateHead ??
+        resolveObject(context.objectResolver, object.lineage_state_head_ref);
+      return validateActivityDetail(object, action, state, binding, lineageState, context);
+    }
     case "cairn.action_receipt.v0.2": {
       const graph = context.actionReceiptGraph ?? context.actionReceiptGraphResolver?.get?.(object.receipt_hash);
       return graph ? validateActionReceipt(object, graph.before, graph.after, graph.binding, context)
@@ -464,7 +502,16 @@ export function validateActionGetResponse(request, response, context = {}) {
       ...(response.confirmation_receipt === null ? [] : [["confirmation_receipt", response.confirmation_receipt]]),
       ...(response.gate_request === null ? [] : [["gate_request", response.gate_request]]),
       ...(response.gate_result === null ? [] : [["gate_result", response.gate_result]])
-    ]) failures.push(...validateResolvedSignedObject(object, context).map((code) => `action_get_${name}_${code}`));
+    ]) {
+      const embeddedAt = ["gate_request", "gate_result"].includes(name)
+        ? response.gate_result?.evaluated_at ?? historicalObjectInstant(object, response.retrieved_at)
+        : ["view", "current_action_state_head", "current_lineage_state_head", "current_activity_detail"].includes(name)
+          ? response.retrieved_at
+          : historicalObjectInstant(object, response.retrieved_at);
+      failures.push(...validateResolvedSignedObject(
+        object, historicalEvidenceContext(context, embeddedAt)
+      ).map((code) => `action_get_${name}_${code}`));
+    }
     if (!sameObjectRef(request.ref, response.ref) || !exactRef(response.ref, response.view, context) ||
         !exactRef(response.view.action_record_ref, response.action_record, context) ||
         !exactRef(response.view.current_action_state_head_ref, response.current_action_state_head, context) ||
@@ -510,12 +557,12 @@ export function validateActionGetResponse(request, response, context = {}) {
       ["lineage_state", response.view.current_lineage_state_head_ref],
       ["activity_detail", response.view.current_activity_detail_ref]
     ]) {
-      if (!sameObjectRef(resolveCurrentHead(context, reference), reference)) {
+      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference), reference)) {
         failures.push(`action_get_current_${name}_mismatch`);
       }
     }
     if (validateLineageStateHead(response.current_lineage_state_head, {
-      ...context, requireDependencySignatures: true,
+      ...evidenceContext, requireDependencySignatures: true,
       lineageCommitment: response.lineage_commitment
     }).length) {
       failures.push("action_get_current_lineage_state_invalid");
@@ -728,9 +775,9 @@ function resolveKey(resolver, keyId, evaluationTime = null) {
   return null;
 }
 
-function resolveObject(resolver, reference) {
+function resolveObject(resolver, reference, evaluationTime = null) {
   if (resolver instanceof Map) return resolver.get(reference?.object_hash) ?? resolver.get(reference?.object_id);
-  if (typeof resolver === "function") return resolver(reference);
+  if (typeof resolver === "function") return resolver(reference, evaluationTime);
   return null;
 }
 
@@ -767,9 +814,12 @@ function validateResolvedSignedObject(object, context = {}) {
     if (failures.length) return failures;
     if (!schema || !Array.isArray(schema["x-cairn-signature-pointers"]) ||
         schema["x-cairn-signature-pointers"].length === 0) return ["signed_object_signature_profile_missing"];
+    const evaluationTime = isHistoricalEvidence(context)
+      ? context.historicalEvidenceAt
+      : context.gateEvaluationTime ?? context.now ?? null;
     for (const pointer of schema["x-cairn-signature-pointers"]) {
       const proof = valueAtPointer(object, pointer);
-      const key = resolveKey(context.keyResolver, proof.key_id, context.now ?? null);
+      const key = resolveKey(context.keyResolver, proof.key_id, evaluationTime);
       if (!key) {
         failures.push("signature_key_unresolved");
         continue;
@@ -784,7 +834,7 @@ function validateResolvedSignedObject(object, context = {}) {
       const keyNotBefore = protocolTime(key.not_before);
       const keyExpiresAt = protocolTime(key.expires_at);
       const keyRevokedAt = key.revocation_time === null ? null : protocolTime(key.revocation_time);
-      const now = protocolTime(context.now);
+      const now = protocolTime(evaluationTime);
       if (now === null) failures.push("signature_evaluation_time_required");
       else if (signedAt !== null && signedAt > now) failures.push("signature_from_future");
       if (key.status === "revoked" && key.revocation_time === null) failures.push("signature_key_history_incomplete");
@@ -2375,6 +2425,32 @@ export function receiverTerminalPlanToReceiptKeysetEqualityHash(plan, completion
   });
 }
 
+export function receiverOutstandingClosureCorrelationFailures(value, streamTransition) {
+  const failures = [];
+  if (!sameObjectRef(value?.receiver_stream_transition_receipt_ref, value?.terminal_release_evidence_ref)) {
+    failures.push("receiver_outstanding_transition_closure_evidence_mismatch");
+  }
+  if (streamTransition?.authority_transaction_id !== value?.authority_transaction_id) {
+    failures.push("receiver_outstanding_transition_closure_transaction_mismatch");
+  }
+  if (streamTransition?.committed_at !== value?.committed_at) {
+    failures.push("receiver_outstanding_transition_closure_commit_mismatch");
+  }
+  return failures;
+}
+
+export function receiverTerminalCompletionClosureCorrelationFailures(value, plan, receiverTransition) {
+  const failures = [];
+  if (!sameObjectRef(value?.receiver_stream_transition_receipt_ref, plan?.terminal_release_evidence_ref)) {
+    failures.push("receiver_terminal_completion_plan_closure_evidence_mismatch");
+  }
+  if (!sameObjectRef(value?.receiver_stream_transition_receipt_ref,
+    receiverTransition?.receiver_stream_transition_receipt_ref)) {
+    failures.push("receiver_terminal_completion_receiver_closure_evidence_mismatch");
+  }
+  return failures;
+}
+
 export function validateReceiverTerminalReleasePlan(value, context = {}) {
   try {
     const failures = validatePhase1Object(value, context);
@@ -2590,11 +2666,12 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
       const streamTransition = resolveObject(context.objectResolver, value.receiver_stream_transition_receipt_ref);
       if (!exactExternalObject(value.receiver_stream_transition_receipt_ref, streamTransition,
         "cairn.receiver_event_stream_transition_receipt.v0.1", context, "receipt_hash",
-        ["receiver_event_stream_key", "receipt_hash"]) ||
-          !sameObjectRef(value.receiver_stream_transition_receipt_ref,
-            receiverTransition.receiver_stream_transition_receipt_ref)) {
+        ["receiver_event_stream_key", "receipt_hash"])) {
         failures.push("receiver_terminal_completion_stream_union_mismatch");
       }
+      failures.push(...receiverTerminalCompletionClosureCorrelationFailures(
+        value, plan, receiverTransition
+      ));
     } else if (horizon) {
       const unchangedStream = resolveObject(context.objectResolver, value.unchanged_receiver_stream_head_ref);
       if (!exactExternalObject(value.unchanged_receiver_stream_head_ref, unchangedStream,
@@ -2881,6 +2958,7 @@ export function validateReceiverOutstandingStreamTransitionReceipt(value, contex
           streamTransition.receiver_event_stream_key !== before?.current_receiver_stream_head_ref?.object_id) {
         failures.push("receiver_outstanding_transition_closure_union_mismatch");
       }
+      failures.push(...receiverOutstandingClosureCorrelationFailures(value, streamTransition));
     } else if (value.cause === "authenticated_irreversible_horizon") {
       const unchangedStream = resolveObject(context.objectResolver, value.unchanged_receiver_stream_head_ref);
       if (value.receiver_stream_transition_receipt_ref !== null ||
@@ -3261,24 +3339,54 @@ export function validateConnectionOutstandingIndexTransitionReceipt(value, conte
 
 export function validateConnectionEvent(receipt, before, after, context = {}) {
   try {
-    const failures = validatePhase1Object(receipt, context);
-    failures.push(...validatePhase1Object(after, context).map((code) => `after_${code}`));
-    if (before !== null) failures.push(...validatePhase1Object(before, context).map((code) => `before_${code}`));
+    const semanticInstant = receipt?.committed_at ??
+      (isHistoricalEvidence(context) ? context.historicalEvidenceAt : context.now) ?? null;
+    const receiptContext = isHistoricalEvidence(context)
+      ? historicalEvidenceContext(context, semanticInstant)
+      : { ...context, now: semanticInstant };
+    const resolveAtReceipt = (resolver, reference) =>
+      resolveObject(resolver, reference, semanticInstant);
+    const failures = validatePhase1Object(receipt, receiptContext);
+    failures.push(...validatePhase1Object(after, receiptContext).map((code) => `after_${code}`));
+    if (before !== null) {
+      failures.push(...validatePhase1Object(before, receiptContext).map((code) => `before_${code}`));
+    }
     if (failures.length) return unique(failures);
+    if (receiptContext.requireDependencySignatures === true) {
+      if (validateResolvedSignedObject(receipt, receiptContext).length) {
+        failures.push("connection_receipt_signature_invalid");
+      }
+      if (validateResolvedSignedObject(after, receiptContext).length) {
+        failures.push("connection_after_signature_invalid");
+      }
+      if (before !== null && validateResolvedSignedObject(before, receiptContext).length) {
+        failures.push("connection_before_signature_invalid");
+      }
+    }
     const exactResolved = (reference, object, schema) => object?.schema === schema &&
-      exactRef(reference, object, context) && validatePhase1Object(object, context).length === 0;
+      exactRef(reference, object, receiptContext) &&
+      validatePhase1Object(object, receiptContext).length === 0 &&
+      (receiptContext.requireDependencySignatures !== true ||
+        validateResolvedSignedObject(object, receiptContext).length === 0);
     const aggregateBefore = context.aggregateControlBefore ??
-      resolveObject(context.objectResolver, receipt.aggregate_control_before_head_ref);
+      resolveAtReceipt(context.objectResolver, receipt.aggregate_control_before_head_ref);
     const aggregateAfter = context.aggregateControlAfter ??
-      resolveObject(context.objectResolver, receipt.aggregate_control_after_head_ref);
+      resolveAtReceipt(context.objectResolver, receipt.aggregate_control_after_head_ref);
     const indexBefore = receipt.outstanding_action_index_before_head_ref === null ? null :
-      (context.outstandingIndexBefore ?? resolveObject(context.objectResolver, receipt.outstanding_action_index_before_head_ref));
+      (context.outstandingIndexBefore ??
+        resolveAtReceipt(context.objectResolver, receipt.outstanding_action_index_before_head_ref));
     const indexAfter = context.outstandingIndexAfter ??
-      resolveObject(context.objectResolver, receipt.outstanding_action_index_after_head_ref);
+      resolveAtReceipt(context.objectResolver, receipt.outstanding_action_index_after_head_ref);
     const indexBeforeMap = indexBefore === null ? null :
-      (context.outstandingActionMapBefore ?? resolveObject(context.objectResolver, indexBefore?.outstanding_action_map_ref));
+      (context.outstandingActionMapBefore ??
+        resolveAtReceipt(context.objectResolver, indexBefore?.outstanding_action_map_ref));
     const indexAfterMap = context.outstandingActionMapAfter ??
-      resolveObject(context.objectResolver, indexAfter?.outstanding_action_map_ref);
+      resolveAtReceipt(context.objectResolver, indexAfter?.outstanding_action_map_ref);
+    const aggregateBeforeMap = aggregateBefore === null ? null :
+      (context.aggregateControlMapBefore ??
+        resolveAtReceipt(context.objectResolver, aggregateBefore?.scoped_control_map_ref));
+    const aggregateAfterMap = context.aggregateControlMapAfter ??
+      resolveAtReceipt(context.objectResolver, aggregateAfter?.scoped_control_map_ref);
     const aggregateBeforeValid = exactResolved(
       receipt.aggregate_control_before_head_ref, aggregateBefore, "cairn.execution_control_state_head.v0.1"
     );
@@ -3297,16 +3405,32 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
     );
     if (!aggregateBeforeValid || !aggregateAfterValid) failures.push("connection_aggregate_control_head_mismatch");
     if (!indexBeforeValid || !indexAfterValid) failures.push("connection_outstanding_index_head_mismatch");
+    const validAggregateMap = (map, head) => Boolean(head) &&
+      exactResolved(head.scoped_control_map_ref, map, "cairn.enumerable_map_root.v0.1") &&
+      validateEnumerableMapRoot(map, {
+        ...receiptContext,
+        expectedMapDomain: "scoped_execution_control",
+        expectedMapKey: executionControlMapKey(
+          head.principal_id, head.authority_namespace, head.control_namespace_generation
+        )
+      }).length === 0 &&
+      head.scoped_control_map_hash === map.map_hash &&
+      head.scoped_control_head_count === map.entry_count &&
+      head.scoped_control_heads_root === map.entries_root;
+    if (!validAggregateMap(aggregateBeforeMap, aggregateBefore) ||
+        !validAggregateMap(aggregateAfterMap, aggregateAfter)) {
+      failures.push("connection_aggregate_control_map_mismatch");
+    }
     if (indexBeforeValid && indexBefore !== null) {
       failures.push(...validateConnectionOutstandingIndexHead(indexBefore, {
-        ...context,
+        ...receiptContext,
         outstandingActionMap: indexBeforeMap,
         expectedConnectionStateId: before?.connection_state_id ?? after.connection_state_id
       }).map((code) => `connection_before_${code}`));
     }
     if (indexAfterValid) {
       failures.push(...validateConnectionOutstandingIndexHead(indexAfter, {
-        ...context,
+        ...receiptContext,
         outstandingActionMap: indexAfterMap,
         expectedConnectionStateId: after.connection_state_id
       }).map((code) => `connection_after_${code}`));
@@ -3427,11 +3551,11 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
       if ((receipt.cause === "principal_control") !== controlPresent) failures.push("connection_control_basis_mismatch");
       if (receipt.cause === "principal_control") {
         const controlAuthorization = context.controlAuthorization ??
-          resolveObject(context.objectResolver, receipt.principal_control_authorization_ref);
+          resolveAtReceipt(context.objectResolver, receipt.principal_control_authorization_ref);
         if (!exactResolved(
           receipt.principal_control_authorization_ref, controlAuthorization,
           "cairn.execution_control_authorization.v0.1"
-        ) || validateControlAuthorization(controlAuthorization, context).length ||
+        ) || validateControlAuthorization(controlAuthorization, receiptContext).length ||
             controlAuthorization.principal_id !== after.principal_id || controlAuthorization.scope !== "connection" ||
             controlAuthorization.target_kind !== "object_ref" ||
             !sameObjectRef(controlAuthorization.target_ref, after.connection_authorization_ref) ||
@@ -3443,13 +3567,16 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
           failures.push("connection_control_authorization_mismatch");
         }
         const controlReceipt = context.controlReceipt ??
-          resolveObject(context.connectionControlReceiptResolver, objectRef(receipt, context));
+          resolveAtReceipt(context.connectionControlReceiptResolver, objectRef(receipt, receiptContext));
         if (!controlReceipt || controlReceipt.schema !== "cairn.execution_control_receipt.v0.1" ||
-            validatePhase1Object(controlReceipt, context).length || controlReceipt.cause !== "connection_joint_control" ||
-            !exactRef(controlReceipt.connection_state_event_receipt_ref, receipt, context) ||
-            !exactRef(controlReceipt.control_authorization_ref, controlAuthorization, context) ||
-            !exactRef(controlReceipt.before_control_head_ref, aggregateBefore, context) ||
-            !exactRef(controlReceipt.after_control_head_ref, aggregateAfter, context) ||
+            validatePhase1Object(controlReceipt, receiptContext).length ||
+            (receiptContext.requireDependencySignatures === true &&
+              validateResolvedSignedObject(controlReceipt, receiptContext).length) ||
+            controlReceipt.cause !== "connection_joint_control" ||
+            !exactRef(controlReceipt.connection_state_event_receipt_ref, receipt, receiptContext) ||
+            !exactRef(controlReceipt.control_authorization_ref, controlAuthorization, receiptContext) ||
+            !exactRef(controlReceipt.before_control_head_ref, aggregateBefore, receiptContext) ||
+            !exactRef(controlReceipt.after_control_head_ref, aggregateAfter, receiptContext) ||
             !sameObjectRef(controlReceipt.before_scoped_control_map_ref, aggregateBefore?.scoped_control_map_ref) ||
             controlReceipt.before_scoped_control_map_hash !== aggregateBefore?.scoped_control_map_hash ||
             !sameObjectRef(controlReceipt.after_scoped_control_map_ref, aggregateAfter?.scoped_control_map_ref) ||
@@ -3460,11 +3587,11 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
             controlReceipt.committed_at !== receipt.committed_at) {
           failures.push("connection_joint_control_receipt_mismatch");
         } else {
-          const leafBefore = resolveObject(context.objectResolver, controlReceipt.scoped_leaf_before_ref);
-          const leafAfter = resolveObject(context.objectResolver, controlReceipt.scoped_leaf_after_ref);
+          const leafBefore = resolveAtReceipt(context.objectResolver, controlReceipt.scoped_leaf_before_ref);
+          const leafAfter = resolveAtReceipt(context.objectResolver, controlReceipt.scoped_leaf_after_ref);
           failures.push(...jointConnectionControlPairFailures(
             controlReceipt, receipt, controlAuthorization, before, after,
-            leafBefore, leafAfter, indexAfter, context
+            leafBefore, leafAfter, indexAfter, receiptContext
           ).map((code) => `connection_${code}`));
           if (!exactResolved(
             controlReceipt.scoped_leaf_before_ref, leafBefore,
@@ -3492,6 +3619,12 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
             if (!actionMatches) failures.push("connection_control_action_edge_mismatch");
           }
         }
+        if (!sameObjectRef(resolveCurrentHead(
+          receiptContext, receipt.outstanding_action_index_after_head_ref, receipt.committed_at
+        ), receipt.outstanding_action_index_after_head_ref)) {
+          failures.push("connection_joint_control_current_outstanding_head_mismatch");
+        }
+        failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);
       }
       if (["revoked", "expired"].includes(before?.state)) failures.push("connection_terminal_reactivation");
       if (receipt.cause === "authority_time_expiry") {
@@ -3515,7 +3648,10 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
       !sameObjectRef(receipt.outstanding_action_index_before_head_ref, receipt.outstanding_action_index_after_head_ref);
     if (indexChangedForReceipt) {
       const indexTransition = context.outstandingIndexTransitionReceipt ??
-        resolveObject(context.outstandingIndexTransitionResolver, receipt.outstanding_action_index_after_head_ref);
+        resolveAtReceipt(
+          context.outstandingIndexTransitionResolver,
+          receipt.outstanding_action_index_after_head_ref
+        );
       const expectedCause = receipt.cause === "authorization_genesis"
         ? "connection_genesis"
         : (["revoked", "expired"].includes(after.state)
@@ -3526,13 +3662,15 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
       ];
       if (!indexTransition ||
           indexTransition.schema !== "cairn.connection_outstanding_action_index_transition_receipt.v0.1" ||
-          validatePhase1Object(indexTransition, context).length ||
-          validateConnectionOutstandingIndexTransitionReceipt(indexTransition, context).length ||
+          validatePhase1Object(indexTransition, receiptContext).length ||
+          (receiptContext.requireDependencySignatures === true &&
+            validateResolvedSignedObject(indexTransition, receiptContext).length) ||
+          validateConnectionOutstandingIndexTransitionReceipt(indexTransition, receiptContext).length ||
           indexTransition.outstanding_action_index_key !== after.outstanding_action_index_key ||
           indexTransition.cause !== expectedCause ||
           canonicalHash(indexTransition.before_head_ref) !== canonicalHash(receipt.outstanding_action_index_before_head_ref) ||
           canonicalHash(indexTransition.before_head_hash) !== canonicalHash(receipt.outstanding_action_index_before_head_hash) ||
-          !exactRef(indexTransition.after_head_ref, indexAfter, context) ||
+          !exactRef(indexTransition.after_head_ref, indexAfter, receiptContext) ||
           canonicalHash(indexTransition.before_action_map_ref) !== canonicalHash(indexBefore?.outstanding_action_map_ref ?? null) ||
           canonicalHash(indexTransition.before_action_map_hash) !== canonicalHash(indexBefore?.outstanding_action_map_hash ?? null) ||
           !sameObjectRef(indexTransition.after_action_map_ref, indexAfter?.outstanding_action_map_ref) ||
@@ -5095,10 +5233,10 @@ export function confirmationChallengeHash(authority, binding, confirmation) {
 
 function currentPolicyLifecycleFailures(reference, immutablePolicyRef, policyKind, evaluationTime, context) {
   const resolver = isHistoricalEvidence(context)
-    ? context.policyLifecycleHistoryResolver ?? context.currentPolicyLifecycleResolver
+    ? context.policyLifecycleHistoryResolver
     : context.currentPolicyLifecycleResolver;
   let current = null;
-  if (typeof resolver === "function") current = resolver(immutablePolicyRef, policyKind);
+  if (typeof resolver === "function") current = resolver(immutablePolicyRef, policyKind, evaluationTime);
   else if (resolver instanceof Map) {
     current = resolver.get(`${policyKind}:${canonicalText(immutablePolicyRef)}`) ?? null;
   }
@@ -5697,18 +5835,30 @@ export function gateCheckoutDependencyRoot(request) {
 }
 
 function resolveCurrentHead(context, reference, evaluationTime = context.gateEvaluationTime ?? context.now) {
-  if (typeof context.currentHeadResolver === "function") return context.currentHeadResolver(reference, evaluationTime);
-  if (context.currentHeadResolver instanceof Map) {
-    return context.currentHeadResolver.get(canonicalText({ schema: reference.schema, object_id: reference.object_id })) ?? null;
+  const resolver = isHistoricalEvidence(context)
+    ? context.currentHeadHistoryResolver
+    : context.currentHeadResolver;
+  if (typeof resolver === "function") return resolver(reference, evaluationTime);
+  if (resolver instanceof Map) {
+    return resolver.get(canonicalText({ schema: reference.schema, object_id: reference.object_id })) ?? null;
   }
   return null;
 }
 
 export function validateGateRequest(value, binding, authority, confirmation, context = {}) {
   try {
+    const gateEvaluationTime = context.gateEvaluationTime ??
+      (isHistoricalEvidence(context) ? context.historicalEvidenceAt : context.now) ??
+      value.requested_at;
     const liveContext = isHistoricalEvidence(context)
-      ? context
-      : { ...context, requireDependencySignatures: true, requireCurrentKeyEligibility: true };
+      ? historicalEvidenceContext(context, gateEvaluationTime)
+      : {
+          ...context,
+          now: gateEvaluationTime,
+          gateEvaluationTime,
+          requireDependencySignatures: true,
+          requireCurrentKeyEligibility: true
+        };
     const failures = validatePhase1Object(value, liveContext);
     if (failures.length) return failures;
     failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);
@@ -5734,8 +5884,8 @@ export function validateGateRequest(value, binding, authority, confirmation, con
     }
     failures.push(...gateDependencyProjectionFailures(value, binding, authority, confirmation, liveContext));
     const requiredHeadRefs = gateRequiredHeadRefs(value, binding);
-    if (!isHistoricalEvidence(context) && (requiredHeadRefs.length > 128 || requiredHeadRefs.some((reference) =>
-      !sameObjectRef(resolveCurrentHead(liveContext, reference), reference)))) {
+    if (requiredHeadRefs.length > 128 || requiredHeadRefs.some((reference) =>
+      !sameObjectRef(resolveCurrentHead(liveContext, reference, gateEvaluationTime), reference))) {
       failures.push("gate_request_current_head_set_mismatch");
     }
     const dependencyGraph = gateDependencyGraph(value, binding, liveContext);
@@ -5805,10 +5955,22 @@ export function validateGateRequest(value, binding, authority, confirmation, con
 
 export function validateGateResult(value, context = {}) {
   try {
-    const failures = validatePhase1Object(value, context);
+    const evaluationBase = {
+      ...context,
+      now: value?.evaluated_at,
+      gateEvaluationTime: value?.evaluated_at,
+      confirmationEvaluationTime: value?.evaluated_at,
+      authorityServiceTime: Date.parse(value?.evaluated_at),
+      requireDependencySignatures: true,
+      requireCurrentKeyEligibility: true
+    };
+    const evaluationContext = isHistoricalEvidence(context)
+      ? historicalEvidenceContext(evaluationBase, value?.evaluated_at)
+      : evaluationBase;
+    const failures = validatePhase1Object(value, evaluationContext);
     if (failures.length) return failures;
     failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);
-    if (validateResolvedSignedObject(value, context).length) {
+    if (validateResolvedSignedObject(value, evaluationContext).length) {
       failures.push("gate_result_signature_invalid");
     }
     failures.push(...refHashPairFailures(value, [
@@ -5824,25 +5986,18 @@ export function validateGateResult(value, context = {}) {
       resolveObject(context.objectResolver, gateRequest?.confirmation_receipt_ref);
     const lineageCommitment = context.lineageCommitment ??
       resolveObject(context.objectResolver, binding?.lineage_commitment_ref);
-    const evaluationContext = {
-      ...context,
-      now: value.evaluated_at,
-      gateEvaluationTime: value.evaluated_at,
-      confirmationEvaluationTime: value.evaluated_at,
-      authorityServiceTime: Date.parse(value.evaluated_at),
-      requireDependencySignatures: true,
-      requireCurrentKeyEligibility: true
-    };
     if (!gateRequest || gateRequest.schema !== "cairn.gate_request.v0.2" ||
-        validatePhase1Object(gateRequest, context).length || !exactRef(value.gate_request_ref, gateRequest, context) ||
+        validatePhase1Object(gateRequest, evaluationContext).length ||
+        !exactRef(value.gate_request_ref, gateRequest, evaluationContext) ||
         value.gate_request_hash !== gateRequest.request_hash) {
       failures.push("gate_result_request_mismatch");
     }
-    if (gateRequest && validateResolvedSignedObject(gateRequest, context).length) {
+    if (gateRequest && validateResolvedSignedObject(gateRequest, evaluationContext).length) {
       failures.push("gate_result_request_signature_invalid");
     }
     if (!binding || binding.schema !== "cairn.execution_binding_set.v0.1" ||
-        validateBindingSet(binding, context).length || !exactRef(value.execution_binding_set_ref, binding, context) ||
+        validateBindingSet(binding, evaluationContext).length ||
+        !exactRef(value.execution_binding_set_ref, binding, evaluationContext) ||
         value.execution_binding_set_hash !== binding.binding_set_hash) {
       failures.push("gate_result_binding_mismatch");
     }
@@ -6002,6 +6157,21 @@ export function validateActionReceipt(value, before, after, binding, context = {
       failures.push("action_receipt_prior_chain_mismatch");
     }
     if (binding && value.effect_id !== binding.effect_id) failures.push("action_receipt_effect_mismatch");
+    const issuedAt = Date.parse(value.issued_at);
+    const receiptSignedAt = Date.parse(value.action_service_signature?.signed_at);
+    const beforeUpdatedAt = Date.parse(before?.updated_at);
+    const beforeSignedAt = Date.parse(before?.action_service_signature?.signed_at);
+    const afterUpdatedAt = Date.parse(after?.updated_at);
+    const afterSignedAt = Date.parse(after?.action_service_signature?.signed_at);
+    if (![issuedAt, receiptSignedAt, beforeUpdatedAt, beforeSignedAt, afterUpdatedAt, afterSignedAt]
+      .every(Number.isFinite) ||
+        beforeUpdatedAt > issuedAt ||
+        beforeSignedAt > issuedAt ||
+        afterUpdatedAt !== issuedAt ||
+        receiptSignedAt < issuedAt ||
+        afterSignedAt < receiptSignedAt) {
+      failures.push("action_receipt_chronology_invalid");
+    }
     failures.push(...validateActionStateTransition(before, after, context).map((code) => `action_receipt_${code}`));
     return unique(failures);
   } catch {
@@ -6044,6 +6214,16 @@ export function validateActionStateTransition(before, after, context = {}) {
         if (canonicalHash(before.reservation_refs) !== canonicalHash(after.reservation_refs)) failures.push("action_state_terminal_prefix_drift");
       }
     }
+    const afterUpdatedAt = Date.parse(after.updated_at);
+    const afterSignedAt = Date.parse(after.action_service_signature?.signed_at);
+    const beforeUpdatedAt = before === null ? afterUpdatedAt : Date.parse(before.updated_at);
+    const beforeSignedAt = before === null ? afterUpdatedAt : Date.parse(before.action_service_signature?.signed_at);
+    if (![beforeUpdatedAt, beforeSignedAt, afterUpdatedAt, afterSignedAt].every(Number.isFinite) ||
+        beforeUpdatedAt > afterUpdatedAt ||
+        beforeSignedAt > afterUpdatedAt ||
+        afterSignedAt < afterUpdatedAt) {
+      failures.push("action_state_chronology_invalid");
+    }
     return unique(failures);
   } catch {
     return ["action_state_transition_malformed"];
@@ -6061,6 +6241,30 @@ export function validateActivitySummary(summary, action, state, context = {}) {
     return unique(failures);
   } catch {
     return ["activity_summary_malformed"];
+  }
+}
+
+export function validateActivityDetail(detail, action, state, binding, lineageState, context = {}) {
+  try {
+    const failures = validatePhase1Object(detail, context);
+    failures.push(...validatePhase1Object(action, context).map((code) => `action_${code}`));
+    failures.push(...validatePhase1Object(state, context).map((code) => `state_${code}`));
+    failures.push(...validatePhase1Object(binding, context).map((code) => `binding_${code}`));
+    failures.push(...validatePhase1Object(lineageState, context).map((code) => `lineage_state_${code}`));
+    if (failures.length) return unique(failures);
+    if (!exactRef(detail.action_ref, action, context) ||
+        !exactRef(detail.action_state_head_ref, state, context) ||
+        !exactRef(detail.binding_set_ref, binding, context) ||
+        !exactRef(detail.lineage_state_head_ref, lineageState, context)) {
+      failures.push("activity_detail_binding_mismatch");
+    }
+    if (detail.principal_id !== action.principal_id || detail.state !== state.state ||
+        !sameObjectRef(action.execution_binding_set_ref, detail.binding_set_ref)) {
+      failures.push("activity_detail_semantics_mismatch");
+    }
+    return unique(failures);
+  } catch {
+    return ["activity_detail_malformed"];
   }
 }
 

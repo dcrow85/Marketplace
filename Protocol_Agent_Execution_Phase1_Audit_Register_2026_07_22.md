@@ -2,12 +2,12 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: exact freeze `26b701609583ec7e518526b0ae78aed46c10fc19` rejected; Round-39 remediations pass local 31/31 authored controls and 419/419 exact-once direct mutants, pending containing-commit freeze and three-reviewer verification
-Round-39 amendment: 2026-07-23
-Rejected-freeze prose dependency SHA-256: `3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec`
-Replacement prose dependency SHA-256: `2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb`
-Replacement internal bundle hash: `sha-256:6efd61d6413dc106abab1fcf663e3fa6c1f51ce771767ada5ce2afb5b90e4c1d`
-Replacement operation-registry hash: `sha-256:18b9b4595f058669d2f4b639ae4d5266634487cf8f92b15d1129aab69859bccd`
+Status: exact freeze `ebd10f4302e73846e73a3a38860581d9fba21c69` rejected; Round-40 remediations pass local 32/32 authored controls and 445/445 exact-once direct mutants, pending replacement freeze and three-reviewer verification
+Round-40 amendment: 2026-07-23
+Rejected-freeze prose dependency SHA-256: `2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb`
+Replacement prose dependency SHA-256: `33f08aa78f569ffeff7854c4aaeb2486621b611f8431d68b39d5ca255aff3375`
+Replacement internal bundle hash: `sha-256:01616dab27c6e4d1193f2ebdf8265b6bb33ebad681c946bf973085960608e15d`
+Replacement operation-registry hash: `sha-256:2e655d5d3ad9aee3e87bbe3a3cfe163c8746c09466ed8b6e7f495e92e9349fa3`
 
 ## Claim boundary
 
@@ -605,6 +605,33 @@ proposal baseline also reproduces 83/83 authored controls and 75/75 killed
 mutants; both package dependency audits report zero known vulnerabilities.
 Reference-service work is blocked pending the frozen-review gate.
 
+## Independent audit round 40 — rejected freeze and remediation ledger
+
+Exact freeze `ebd10f4302e73846e73a3a38860581d9fba21c69` is rejected.
+Its informed regression, blind authority, and blind semantic/state reviewers
+reported no P0 or P1 defect, but found the five material P2 classes below. All
+reviewers were read-only. Every finding is `accepted_and_fixed`; that
+disposition records implementation, not closure.
+
+| ID | Report | Sev. | Independent finding | Disposition | Replacement remediation | Verification |
+|---|---|---:|---|---|---|---|
+| P2R40-A-001 | blind authority/privacy | P2 | Activity surfaces could expose authority-adjacent gate, receiver-finality, or spend/effect state, and exact detail reads lacked their own intrinsic semantic dispatch | accepted_and_fixed | Activity is restricted to six non-effectful states; summary/detail/list carry null receiver and exposure truth and forbid gate/effect states; exact detail invokes the intrinsic validator | pending frozen replay |
+| P2R40-H-001 | blind historical semantics | P2 | Historical action and gate reads did not carry one authenticated semantic instant through every key, policy, and current-head lookup, and a missing historical resolver could fall back to live state | accepted_and_fixed | Action uses `retrieved_at`, gate uses `evaluated_at`, and joint receipts use `committed_at`; dedicated history resolvers are mandatory in historical mode and live fallback is forbidden | pending frozen replay |
+| P2R40-C-001 | informed chronology | P2 | ActionState and ActionReceipt chronology left independent predecessor/successor update and signature comparisons underconstrained | accepted_and_fixed | Added the complete predecessor-update/signature, successor-update/signature, issue/commit, and receipt-signature partial order with same-second equality | pending frozen replay |
+| P2R40-R-001 | blind receiver closure | P2 | Validly signed receiver closure objects could cross-wire the closure evidence, authority transaction, commit instant, release plan, or receiver transition | accepted_and_fixed | Pure relational validators bind the exact closure evidence, transaction, commit, plan, and receiver transition; each correlation edge has an isolated counterexample | pending frozen replay |
+| P2R40-J-001 | informed joint-control parity | P2 | The connection direction of the shared joint relation did not authenticate and validate the same complete dependency graph as the control direction, and parity lacked direct mutation controls | accepted_and_fixed | Both directions authenticate aggregate/scoped heads and maps, index transition, authorization, control receipt/leaves, and commit-time outstanding head; both fail closed with the same unsupported result until rooted resolution exists | pending frozen replay |
+
+The replacement retains 50 schema documents, 46 object schemas, and 29
+schema-only read operations. It passes 32/32 authored controls and kills
+445/445 exact-once direct mutants both in place and after a disposable
+`npm ci --ignore-scripts`. The clean replay reproduced byte-identical files:
+bundle file SHA-256
+`12068b56c30e31ef7d53c433e60e61ff1e5abac8f7aac06d19d533262d3e3e54`
+and registry file SHA-256
+`5ffc71aa45f6294c6b83e819079dd2a892f1607c1cd8b449b8cc1bfa5fe79e45`.
+The replacement containing-commit hash and fresh reviews remain pending.
+Reference-service construction remains blocked.
+
 ## Local remediation ledger
 
 | ID | Sev. | Finding | Disposition | Remediation |
@@ -624,8 +651,8 @@ This register remains open until a reviewer who did not author the candidate:
 
 1. verifies the replacement containing-commit hash, bundle hash, registry hash,
    and repinned prose hash before and after a read-only review;
-2. reproduces the new authored-control and direct-mutant totals reported by the
-   completed Round-39 rerun, with every mutation anchor matching exactly once;
+2. reproduces 32/32 authored controls and 445/445 direct mutants, with every
+   mutation anchor matching exactly once;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
 4. audits the exact 29-operation, 46-object, 50-document containment surface,

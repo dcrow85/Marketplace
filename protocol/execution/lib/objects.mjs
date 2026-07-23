@@ -739,7 +739,7 @@ export const PHASE1_OBJECTS = Object.freeze([
     entries: [
       ["activity_id", hash], ["principal_id", str], ["action_ref", ref], ["action_state_head_ref", ref],
       ["capability", "capability"], ["execution_mode", "enum:supervised|preauthorized"],
-      ["state", "actionState"], ["display_amount", nmoney], ["counterparty_label", nstr],
+      ["state", "phase1ActivityState"], ["display_amount", nmoney], ["counterparty_label", nstr],
       ["requires_human_decision", bool], ["decision_code", nstr], ["updated_at", time],
       ["summary_hash", hash], ["activity_service_signature", sig],
       ["not_claiming", "exactset:receiver_finality_without_receipt|physical_card_truth|hidden_authority"]
@@ -754,9 +754,8 @@ export const PHASE1_OBJECTS = Object.freeze([
     entries: [
       ["activity_id", hash], ["principal_id", str], ["action_ref", ref], ["action_state_head_ref", ref],
       ["binding_set_ref", ref], ["lineage_state_head_ref", ref], ["authority_basis_ref", nref],
-      ["current_receipt_refs", refs], ["state", "actionState"], ["human_decision_codes", strs],
-      ["receiver_truth_status", "enum:not_handed_off|pending|unknown|confirmed|quarantined"],
-      ["exposure_status", "enum:none|reserved|spent|reversal_risk|quarantined|released"],
+      ["current_receipt_refs", refs], ["state", "phase1ActivityState"], ["human_decision_codes", strs],
+      ["receiver_truth_status", "const:not_handed_off"], ["exposure_status", "const:none"],
       ["updated_at", time], ["detail_hash", hash], ["activity_service_signature", sig],
       ["not_claiming", "exactset:receiver_finality_without_receipt|physical_card_truth|automatic_release_authority"]
     ]

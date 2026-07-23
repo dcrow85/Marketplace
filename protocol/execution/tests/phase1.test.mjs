@@ -34,6 +34,8 @@ import {
   receiverOutstandingMapKey,
   receiverOutstandingStreamKey,
   receiverTerminalCompletionKey,
+  receiverOutstandingClosureCorrelationFailures,
+  receiverTerminalCompletionClosureCorrelationFailures,
   receiverTerminalPlanToReceiptKeysetEqualityHash,
   receiverTerminalReleasePlanKey,
   receiverTerminalTransitionKindSetRoot,
@@ -41,6 +43,7 @@ import {
   validateActionAuthorization,
   validateActionRecord,
   validateActionReceipt,
+  validateActivityDetail,
   validateActivitySummary,
   validateAuthorityReservation,
   validateBaseObjectResponse,
@@ -193,6 +196,7 @@ function signedActionGetContext(response, baseContext = context) {
     }
     return null;
   };
+  const currentHeadHistoryResolver = baseContext.currentHeadHistoryResolver ?? currentHeadResolver;
   return signedReadContext([
     response.view,
     response.action_record,
@@ -206,7 +210,7 @@ function signedActionGetContext(response, baseContext = context) {
     ...(response.confirmation_receipt === null ? [] : [response.confirmation_receipt]),
     ...(response.gate_request === null ? [] : [response.gate_request]),
     ...(response.gate_result === null ? [] : [response.gate_result])
-  ], { ...baseContext, currentHeadResolver }, response.action_record.principal_id);
+  ], { ...baseContext, currentHeadResolver, currentHeadHistoryResolver }, response.action_record.principal_id);
 }
 
 function decodePointerToken(token) {
@@ -1903,7 +1907,25 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
   }, before.principal_id);
   assert.ok(validateExecutionControlReceipt(skippedControlReceipt, skippedControlContext)
     .includes("execution_control_receipt_head_transition_mismatch"));
-  assert.deepEqual(validateConnectionEvent(receipt, before, after, connectionContext), []);
+  assert.deepEqual(validateConnectionEvent(receipt, before, after, connectionContext),
+    ["phase1_authenticated_resolution_unsupported"]);
+  const signedConnectionContext = signedReadContext(connectionObjects, {
+    ...connectionContext, requireDependencySignatures: true
+  }, before.principal_id);
+  const invalidConnectionAggregateFailures = validateConnectionEvent(receipt, before, after, {
+    ...signedConnectionContext,
+    objectResolver: new Map(signedConnectionContext.objectResolver)
+      .set(refFor(aggregateAfter).object_hash, invalidAggregateSignature)
+  });
+  assert.ok(invalidConnectionAggregateFailures.includes("connection_aggregate_control_head_mismatch"),
+    JSON.stringify(invalidConnectionAggregateFailures));
+  const staleJointOutstandingRef = {
+    ...refFor(outstandingIndexAfter), object_hash: `sha-256:${"4".repeat(64)}`
+  };
+  assert.ok(validateConnectionEvent(receipt, before, after, {
+    ...connectionContext,
+    currentHeadResolver: currentHeadResolverFor([staleJointOutstandingRef])
+  }).includes("connection_joint_control_current_outstanding_head_mismatch"));
   const forgedIndexAfter = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
     ...outstandingIndexAfter, outstanding_action_root: `sha-256:${"9".repeat(64)}`
   });
@@ -1958,8 +1980,12 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_state_event_receipt.get", { ref: refFor(receipt) },
     receipt,
-    signedReadContext(receipt, { ...connectionContext, connectionBefore: before, connectionAfter: after })
-  ), ["phase1_authenticated_resolution_unsupported"]);
+    signedReadContext([...connectionObjects, receipt, before, after], {
+      ...connectionContext, connectionBefore: before, connectionAfter: after,
+      currentHeadHistoryResolver: (reference) => reference
+    }, before.principal_id)
+  ), ["object_read_phase1_authenticated_resolution_unsupported",
+    "phase1_authenticated_resolution_unsupported"]);
   const impossibleChronology = make("cairn.connection_state_event_receipt.v0.1", {
     ...receipt, committed_at: "2026-07-21T10:00:00Z"
   });
@@ -4369,6 +4395,8 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     const terminalEvidence = cause === "authenticated_stream_closed" ? {
       schema: "cairn.receiver_event_stream_transition_receipt.v0.1",
       receiver_event_stream_key: receiverStreamKey,
+      authority_transaction_id: `${cause}-transaction`,
+      committed_at: "2026-07-22T10:00:00Z",
       receipt_hash: `sha-256:${discriminator.repeat(64)}`
     } : {
       schema: "cairn.authenticated_irreversible_horizon_receipt.v0.1",
@@ -4593,7 +4621,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
       ])
     };
     return { transition, terminalIdentityTransition, connectionReceipt, receiverBefore, receiverAfter,
-      receiverCurrentEntry, terminalEvidence, terminalEvidenceRef, context: fixtureContext };
+      receiverCurrentEntry, terminalEvidence, terminalEvidenceRef, plan, context: fixtureContext };
   };
   for (const [cause, discriminator] of [
     ["authenticated_stream_closed", "4"], ["authenticated_irreversible_horizon", "5"]
@@ -4800,6 +4828,42 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     "execution.connection_outstanding_action_entry.get", { ref: refFor(wrongEntry) }, wrongEntry, mapContext
   ).includes("object_read_outstanding_action_entry_key_mismatch"));
   }
+});
+
+test("receiver closure evidence is transaction-correlated", () => {
+  const [closureRef, otherClosureRef] = distinctRefs(2, "receiver-closure-correlation");
+  const transition = {
+    receiver_stream_transition_receipt_ref: closureRef,
+    terminal_release_evidence_ref: closureRef,
+    authority_transaction_id: "receiver-closure-transaction",
+    committed_at: "2026-07-22T10:00:00Z"
+  };
+  const streamTransition = {
+    authority_transaction_id: transition.authority_transaction_id,
+    committed_at: transition.committed_at
+  };
+  assert.deepEqual(receiverOutstandingClosureCorrelationFailures(transition, streamTransition), []);
+  assert.deepEqual(receiverOutstandingClosureCorrelationFailures({
+    ...transition, receiver_stream_transition_receipt_ref: otherClosureRef
+  }, streamTransition), ["receiver_outstanding_transition_closure_evidence_mismatch"]);
+  assert.deepEqual(receiverOutstandingClosureCorrelationFailures(transition, {
+    ...streamTransition, authority_transaction_id: "different-transaction"
+  }), ["receiver_outstanding_transition_closure_transaction_mismatch"]);
+  assert.deepEqual(receiverOutstandingClosureCorrelationFailures(transition, {
+    ...streamTransition, committed_at: "2026-07-22T10:00:01Z"
+  }), ["receiver_outstanding_transition_closure_commit_mismatch"]);
+
+  const plan = { terminal_release_evidence_ref: closureRef };
+  const receiverTransition = { receiver_stream_transition_receipt_ref: closureRef };
+  assert.deepEqual(receiverTerminalCompletionClosureCorrelationFailures(
+    transition, plan, receiverTransition
+  ), []);
+  assert.deepEqual(receiverTerminalCompletionClosureCorrelationFailures(
+    transition, { terminal_release_evidence_ref: otherClosureRef }, receiverTransition
+  ), ["receiver_terminal_completion_plan_closure_evidence_mismatch"]);
+  assert.deepEqual(receiverTerminalCompletionClosureCorrelationFailures(
+    transition, plan, { receiver_stream_transition_receipt_ref: otherClosureRef }
+  ), ["receiver_terminal_completion_receiver_closure_evidence_mismatch"]);
 });
 
 test("compartment limits are single-asset and ordered", () => {
@@ -6670,7 +6734,8 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     ...context,
     confirmationPolicy: confirmationFixture.policy,
     confirmationVerifierProfile: confirmationFixture.verifierProfile,
-    currentPolicyLifecycleResolver: confirmationFixture.currentPolicyLifecycleResolver
+    currentPolicyLifecycleResolver: confirmationFixture.currentPolicyLifecycleResolver,
+    policyLifecycleHistoryResolver: confirmationFixture.currentPolicyLifecycleResolver
   }, binding.principal_id);
   assert.deepEqual(validateExecutionConfirmation(
     confirmation, authorization, binding, null,
@@ -7619,6 +7684,81 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     lineageCommitment: reservationCommitment
   };
   assert.deepEqual(validateActionReceipt(actionReceipt, beforeAction, afterAction, binding, actionReceiptContext), []);
+  const chronologyFixture = ({
+    beforeUpdatedAt = "2026-07-22T10:00:00Z",
+    beforeSignedAt = "2026-07-22T10:00:00Z",
+    issuedAt = "2026-07-22T10:00:00Z",
+    receiptSignedAt = "2026-07-22T10:00:00Z",
+    afterUpdatedAt = "2026-07-22T10:00:00Z",
+    afterSignedAt = "2026-07-22T10:00:00Z"
+  } = {}) => {
+    const predecessor = make("cairn.action_state_head.v0.1", {
+      ...beforeAction, updated_at: beforeUpdatedAt,
+      action_service_signature: { ...beforeAction.action_service_signature, signed_at: beforeSignedAt }
+    });
+    const receipt = make("cairn.action_receipt.v0.2", {
+      ...actionReceipt, issued_at: issuedAt,
+      action_service_signature: { ...actionReceipt.action_service_signature, signed_at: receiptSignedAt }
+    });
+    const successor = make("cairn.action_state_head.v0.1", {
+      ...afterAction, previous_state_hash: predecessor.state_hash,
+      prior_transition_receipt_ref: refFor(receipt), updated_at: afterUpdatedAt,
+      action_service_signature: { ...afterAction.action_service_signature, signed_at: afterSignedAt }
+    });
+    return { predecessor, receipt, successor };
+  };
+  for (const invalid of [
+    { beforeUpdatedAt: "2026-07-22T10:00:01Z" },
+    { beforeSignedAt: "2026-07-22T10:00:01Z" },
+    { afterUpdatedAt: "2026-07-22T10:00:01Z", afterSignedAt: "2026-07-22T10:00:01Z" },
+    { receiptSignedAt: "2026-07-22T09:59:59Z" },
+    { afterSignedAt: "2026-07-22T09:59:59Z" }
+  ]) {
+    const specimen = chronologyFixture(invalid);
+    assert.ok(validateActionReceipt(
+      specimen.receipt, specimen.predecessor, specimen.successor, binding, actionReceiptContext
+    ).includes("action_receipt_chronology_invalid"), JSON.stringify(invalid));
+  }
+  const stateTimeRegression = chronologyFixture({
+    beforeUpdatedAt: "2026-07-22T10:00:01Z", beforeSignedAt: "2026-07-22T10:00:00Z",
+    issuedAt: "2026-07-22T10:00:02Z", receiptSignedAt: "2026-07-22T10:00:02Z",
+    afterUpdatedAt: "2026-07-22T10:00:00Z", afterSignedAt: "2026-07-22T10:00:02Z"
+  });
+  assert.ok(validateActionStateTransition(
+    stateTimeRegression.predecessor, stateTimeRegression.successor, context
+  ).includes("action_state_chronology_invalid"));
+  const stateLatePredecessorSignature = chronologyFixture({
+    beforeUpdatedAt: "2026-07-22T10:00:00Z", beforeSignedAt: "2026-07-22T10:00:01Z",
+    issuedAt: "2026-07-22T10:00:02Z", receiptSignedAt: "2026-07-22T10:00:02Z",
+    afterUpdatedAt: "2026-07-22T10:00:00Z", afterSignedAt: "2026-07-22T10:00:02Z"
+  });
+  assert.ok(validateActionStateTransition(
+    stateLatePredecessorSignature.predecessor, stateLatePredecessorSignature.successor, context
+  ).includes("action_state_chronology_invalid"));
+  const statePrematureSuccessorSignature = chronologyFixture({
+    beforeUpdatedAt: "2026-07-22T10:00:00Z", beforeSignedAt: "2026-07-22T10:00:00Z",
+    issuedAt: "2026-07-22T10:00:01Z", receiptSignedAt: "2026-07-22T10:00:01Z",
+    afterUpdatedAt: "2026-07-22T10:00:01Z", afterSignedAt: "2026-07-22T10:00:00Z"
+  });
+  assert.ok(validateActionStateTransition(
+    statePrematureSuccessorSignature.predecessor, statePrematureSuccessorSignature.successor, context
+  ).includes("action_state_chronology_invalid"));
+  const latePredecessorSignature = chronologyFixture({
+    beforeSignedAt: "2026-07-22T10:00:01Z", issuedAt: "2026-07-22T10:00:02Z",
+    receiptSignedAt: "2026-07-22T10:00:02Z", afterUpdatedAt: "2026-07-22T10:00:02Z",
+    afterSignedAt: "2026-07-22T10:00:02Z"
+  });
+  assert.deepEqual(validateActionStateTransition(
+    latePredecessorSignature.predecessor, latePredecessorSignature.successor, context
+  ), []);
+  const successorSignedBeforeReceipt = chronologyFixture({
+    issuedAt: "2026-07-22T10:00:00Z", receiptSignedAt: "2026-07-22T10:00:01Z",
+    afterUpdatedAt: "2026-07-22T10:00:00Z", afterSignedAt: "2026-07-22T10:00:00Z"
+  });
+  assert.ok(validateActionReceipt(
+    successorSignedBeforeReceipt.receipt, successorSignedBeforeReceipt.predecessor,
+    successorSignedBeforeReceipt.successor, binding, actionReceiptContext
+  ).includes("action_receipt_chronology_invalid"));
   const tamperedLineageDependency = { ...activationBefore, updated_at: "2026-07-22T10:03:00Z" };
   assert.ok(validateActionReceipt(
     actionReceipt, beforeAction, afterAction, binding,
@@ -7711,8 +7851,44 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     actionRequest, actionResponse, signedCompositeContext
   );
   assert.ok(actionResponseFailures.includes("phase1_authenticated_resolution_unsupported"));
+  assert.equal(actionResponseFailures.some((code) => code.startsWith("action_get_current_")), false,
+    JSON.stringify(actionResponseFailures));
   assert.equal(actionResponseFailures.includes("action_get_authority_mismatch"), false);
   assert.equal(actionResponseFailures.includes("action_get_authority_branch_mismatch"), false);
+  const observedActionHistoryTimes = [];
+  const historicalHeadResolver = signedCompositeContext.currentHeadHistoryResolver;
+  const observedKeyTimes = [];
+  const historicalKeyResolver = signedCompositeContext.keyResolver;
+  const observedHistoricalActionFailures = validateActionGetResponse(actionRequest, actionResponse, {
+    ...signedCompositeContext,
+    currentHeadHistoryResolver: (reference, evaluationTime) => {
+      observedActionHistoryTimes.push(evaluationTime);
+      return historicalHeadResolver(reference, evaluationTime);
+    },
+    keyResolver: (keyId, evaluationTime) => {
+      observedKeyTimes.push(evaluationTime);
+      return historicalKeyResolver.get(keyId) ?? null;
+    }
+  });
+  assert.ok(observedHistoricalActionFailures.includes("phase1_authenticated_resolution_unsupported"));
+  assert.ok(observedActionHistoryTimes.length >= 3);
+  assert.ok(observedActionHistoryTimes.every((instant) => instant === actionResponse.retrieved_at));
+  assert.ok(observedKeyTimes.includes(actionResponse.retrieved_at));
+  const liveOnlyHistoryFailures = validateActionGetResponse(actionRequest, actionResponse, {
+    ...signedCompositeContext, currentHeadHistoryResolver: null,
+    currentHeadResolver: (reference) => reference
+  });
+  assert.ok(liveOnlyHistoryFailures.includes("action_get_current_action_state_mismatch"));
+  const laterHeadAdvanceFailures = validateActionGetResponse(actionRequest, actionResponse, {
+    ...signedCompositeContext,
+    currentHeadResolver: currentHeadResolverFor([
+      { ...refFor(afterAction), object_hash: `sha-256:${"7".repeat(64)}` },
+      { ...refFor(activationBefore), object_hash: `sha-256:${"6".repeat(64)}` },
+      { ...refFor(activityDetail), object_hash: `sha-256:${"5".repeat(64)}` }
+    ])
+  });
+  assert.equal(laterHeadAdvanceFailures.some((code) => code.startsWith("action_get_current_")), false,
+    JSON.stringify(laterHeadAdvanceFailures));
   const wrongActionPredecessor = make("cairn.action_state_head.v0.1", {
     ...beforeAction, action_id: `sha-256:${"d".repeat(64)}`
   });
@@ -7735,7 +7911,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   };
   assert.ok(validateActionGetResponse(actionRequest, actionResponse, {
     ...signedCompositeContext,
-    currentHeadResolver: currentHeadResolverFor([
+    currentHeadHistoryResolver: currentHeadResolverFor([
       staleActionStateRef, refFor(activationBefore), refFor(activityDetail)
     ])
   }).includes("action_get_current_action_state_mismatch"));
@@ -7951,10 +8127,26 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     mandateIssuanceConfirmationFailures.includes("confirmation_binding_branch_mismatch"),
     false
   );
-  assert.ok(validateActionGetResponse(
-    mandateGraph.request, mandateGraph.response,
-    signedActionGetContext(mandateGraph.response, signedMandateConnectionContext)
-  ).includes("phase1_authenticated_resolution_unsupported"));
+  const mandateReadContext = signedActionGetContext(
+    mandateGraph.response, signedMandateConnectionContext
+  );
+  const mandateReadFailures = validateActionGetResponse(
+    mandateGraph.request, mandateGraph.response, mandateReadContext
+  );
+  assert.ok(mandateReadFailures.includes("phase1_authenticated_resolution_unsupported"));
+  assert.equal(mandateReadFailures.includes(
+    "action_get_confirmation_confirmation_lifecycle_current_active_mismatch"
+  ), false, JSON.stringify(mandateReadFailures));
+  const missingPolicyHistoryFailures = validateActionGetResponse(
+    mandateGraph.request, mandateGraph.response, {
+      ...mandateReadContext,
+      policyLifecycleHistoryResolver: null,
+      currentPolicyLifecycleResolver: confirmationFixture.currentPolicyLifecycleResolver
+    }
+  );
+  assert.ok(missingPolicyHistoryFailures.includes(
+    "action_get_confirmation_confirmation_lifecycle_current_active_mismatch"
+  ), JSON.stringify(missingPolicyHistoryFailures));
   const tupleDriftBinding = make("cairn.execution_binding_set.v0.1", {
     ...mandateGraph.response.execution_binding_set,
     canonical_business_tuple_hash: `sha-256:${"c".repeat(64)}`
@@ -8753,8 +8945,16 @@ test("transition manifests remain intrinsically typed while their direct getter 
   ), ["object_read_operation_invalid"]);
 });
 
-test("activity summaries are privacy-minimized projections of exact action state", () => {
-  const action = make("cairn.action_record.v0.2");
+test("activity surfaces are privacy-minimized projections of exact action state", () => {
+  const activityListValidate = context.ajv.getSchema(
+    "https://cairn.cards/protocol/execution/schemas/v0.1/operation-bodies.schema.json#/$defs/activityListRequest"
+  );
+  assert.equal(activityListValidate({ cursor: null, page_size: 25, state_filter: ["reserved"] }), true);
+  assert.equal(activityListValidate({ cursor: null, page_size: 25, state_filter: ["gate_allowed"] }), false);
+  const binding = make("cairn.execution_binding_set.v0.1");
+  const action = make("cairn.action_record.v0.2", {
+    execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash
+  });
   const state = make("cairn.action_state_head.v0.1", {
     action_id: action.action_id, action_ref: refFor(action), sequence: 0, previous_state_hash: null, state: "prepared"
   });
@@ -8763,8 +8963,44 @@ test("activity summaries are privacy-minimized projections of exact action state
     capability: action.capability, state: state.state
   });
   assert.deepEqual(validateActivitySummary(summary, action, state, context), []);
-  const lie = make("cairn.execution_activity_summary.v0.1", { ...summary, state: "finalized" });
+  const lie = make("cairn.execution_activity_summary.v0.1", { ...summary, state: "reserved" });
   assert.ok(validateActivitySummary(lie, action, state, context).includes("activity_semantics_mismatch"));
+  const forbiddenSummary = make("cairn.execution_activity_summary.v0.1", { ...summary, state: "gate_allowed" });
+  assert.ok(validateActivitySummary(forbiddenSummary, action, state, context).includes("phase1_object_schema_invalid"));
+
+  const lineageState = make("cairn.lineage_state_head.v0.1");
+  const detail = make("cairn.execution_activity_detail.v0.1", {
+    action_ref: refFor(action), action_state_head_ref: refFor(state), binding_set_ref: refFor(binding),
+    lineage_state_head_ref: refFor(lineageState), principal_id: action.principal_id, state: state.state,
+    receiver_truth_status: "not_handed_off", exposure_status: "none"
+  });
+  assert.deepEqual(validateActivityDetail(detail, action, state, binding, lineageState, context), []);
+  const detailLie = make("cairn.execution_activity_detail.v0.1", { ...detail, state: "reserved" });
+  assert.ok(validateActivityDetail(detailLie, action, state, binding, lineageState, context)
+    .includes("activity_detail_semantics_mismatch"));
+  const detailReadContext = signedReadContext(
+    [detailLie, action, state, binding, lineageState],
+    {
+      ...context,
+      objectResolver: new Map([
+        [refFor(action).object_hash, action], [refFor(state).object_hash, state],
+        [refFor(binding).object_hash, binding], [refFor(lineageState).object_hash, lineageState]
+      ])
+    },
+    action.principal_id
+  );
+  assert.ok(validateExactObjectRead(
+    "execution.activity.detail.get", { ref: refFor(detailLie) }, detailLie, detailReadContext
+  ).includes("object_read_activity_detail_semantics_mismatch"));
+  for (const forbidden of [
+    { state: "gate_allowed" },
+    { receiver_truth_status: "receiver_confirmed" },
+    { exposure_status: "spent" }
+  ]) {
+    const specimen = make("cairn.execution_activity_detail.v0.1", { ...detail, ...forbidden });
+    assert.ok(validateActivityDetail(specimen, action, state, binding, lineageState, context)
+      .includes("phase1_object_schema_invalid"));
+  }
 });
 
 test("generated files are byte-identical to the current deterministic source", async () => {

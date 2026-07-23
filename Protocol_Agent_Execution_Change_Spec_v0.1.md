@@ -12598,10 +12598,10 @@ equality is legal at the profile's one-second precision.
 
 This document authorizes no execution service beyond Phase 0. The Phase-1
 schema-only bundle requires a separately frozen machine bundle and mutation
-audit before any service implementation. The narrowed Round-39 replacement
-passes 31/31 authored controls and kills 419/419 exact-once direct mutants
-locally; those results do not become closure until reproduced from the frozen
-containing commit by the fresh review gate. Phase 2 requires that Phase-1 closure plus proof that
+audit before any service implementation. The post-Round-40 replacement passes
+32/32 authored controls and kills 445/445 exact-once direct mutants locally;
+those results do not become closure until reproduced from the frozen containing
+commit by the fresh review gate. Phase 2 requires that Phase-1 closure plus proof that
 review is pure and makes no network disclosure/effect. Each later phase requires
 its own frozen artifact, independent audit, mutations, and exit evidence. This
 document does not authorize an execution service or Phase 5. A schema-valid
@@ -12609,6 +12609,53 @@ Phase-1 object is never evidence that an authority service accepted it, and no
 caller or agent can promote the read-only profile into a writer or authenticated
 reader by supplying a callback, resolver, Boolean, key map, or self-selected
 root.
+
+### 14.2 Phase-1 evidence amendment after rejected freeze ebd10f4
+
+Exact freeze
+`ebd10f4302e73846e73a3a38860581d9fba21c69` is rejected history. Three
+Round-40 read-only reviews found no P0 or P1 defect, but found five material P2
+classes. All five are accepted and remediated in the replacement candidate:
+
+1. Activity is a privacy-minimized projection, not an alternate authority
+   surface. Summary, detail, and list expose only `prepared`, `authorized`,
+   `reserved`, `cancelled`, `definitive_failure`, and `quarantined`. They cannot
+   disclose or imply `gate_allowed`, receiver confirmation/finality, spent
+   exposure, redemption, or an external effect. Exact activity-detail reads
+   invoke the same intrinsic relation rather than relying on schema shape.
+2. Historical reads carry one semantic instant through every key, policy, and
+   current-head dependency. `ActionGet` uses authenticated `retrieved_at`,
+   GateResult uses `evaluated_at`, and historical joint receipts use
+   `committed_at`. A historical resolver is mandatory in historical mode; the
+   validator never falls back to a live-only resolver. A later key revocation,
+   policy transition, or head advance therefore cannot rewrite authenticated
+   earlier evidence, while missing history fails closed.
+3. Action chronology is a closed relation. A predecessor's update and
+   signature cannot follow its successor's update; the successor signature
+   cannot precede the successor update. For a receipt, predecessor update and
+   signature cannot follow issuance, the successor update equals issuance, the
+   receipt signature cannot precede issuance, and the successor signature
+   cannot precede the receipt signature. Equality remains legal at one-second
+   precision.
+4. Authenticated receiver closure is transaction-correlated. The outstanding
+   stream transition must name the exact closure evidence reference, authority
+   transaction, and commit instant. Terminal completion must name the same
+   closure evidence in both its release plan and receiver transition. A validly
+   signed but cross-wired closure is invalid.
+5. The shared connection/control relation is symmetric and complete from both
+   receipt directions. It authenticates every dependency, binds aggregate and
+   scoped before/after heads and maps, validates the index transition and
+   control authorization, and proves the exact outstanding-index head current
+   at commit. Until a rooted authenticated-resolution profile exists, both
+   directions return `phase1_authenticated_resolution_unsupported`; neither
+   direction can appear stronger than the other.
+
+Each independent comparison and correlation edge above has an exact-once direct
+mutation control. These local results are candidate evidence only. The rejected
+freeze remains rejected even though its package was reproducible; the
+replacement still requires a new containing-commit freeze and fresh blind and
+informed review before Phase-1 closure. Reference-service construction remains
+blocked.
 
 ## 15. Audit protocol
 

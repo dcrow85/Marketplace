@@ -33,7 +33,20 @@ reference service.
 - historical signature and current-head evaluation parameterized by the
   semantic instant. Historical evidence uses its recorded evaluation or commit
   time; a later revocation or head advance does not rewrite earlier evidence.
-  Live currentness remains a different question;
+  Action reads use their authenticated retrieval instant, gate evidence uses
+  `evaluated_at`, and joint receipts use `committed_at`; missing historical key,
+  policy, or head resolution fails closed without a live-state fallback. Live
+  currentness remains a different question;
+- activity list, summary, and detail are privacy-minimized projections over
+  only prepared, authorized, reserved, cancelled, definitive-failure, and
+  quarantined states. They cannot disclose gate eligibility, receiver
+  confirmation/finality, spend state, or an effect result;
+- action-state and action-receipt chronology independently orders predecessor
+  update/signature, successor update/signature, commit, and receipt signature,
+  while permitting same-second equality at the profile precision;
+- authenticated receiver closure binds the exact closure evidence reference,
+  authority transaction, commit instant, terminal release plan, and receiver
+  transition; and
 - 19 closed gate check codes. Ten, including `EXECUTION_CONTROLS`, are
   unsupported and always deny until their complete authenticated evaluators
   exist;
@@ -66,10 +79,10 @@ locally verified rooted-proof profile exists. Low-level helpers prove only
 structure, cryptographic math against supplied material, and conditional graph
 consistency; they are not authorizers.
 
-The narrowed Round-39 replacement passes 31/31 authored controls and kills
-419/419 exact-once direct mutants locally. These results describe the current
-candidate bytes; they are not closure until reproduced from the exact frozen
-containing commit by fresh blind and informed reviewers.
+The post-Round-40 replacement passes 32/32 authored controls and kills 445/445
+exact-once direct mutants locally. These results describe the current candidate
+bytes; they are not closure until reproduced from the exact frozen containing
+commit by fresh blind and informed reviewers.
 
 ## Excluded
 

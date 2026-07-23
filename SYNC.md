@@ -59,21 +59,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-23 · Codex —
-  **The additional exact freeze
-  `26b701609583ec7e518526b0ae78aed46c10fc19` is rejected alongside
-  `0b98fff`, `393b87f`, and `902abec`. Round 39's informed regression, blind
-  authority, and blind state/transition reviews found one P1 plus four material
-  P2 informed defects, five blind-authority P2 defects, and six blind-state P1
-  defects. All are accepted and remediated in the working replacement, which
-  passes 31/31 authored controls and kills 419/419 exact-once direct mutants;
-  containing-commit freeze and fresh review remain pending. Reference-service
-  construction remains blocked.**
-  The rejected `26b7016` bytes reproduced bundle
-  `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`,
-  registry
-  `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`,
-  31/31 local groups, and 390/390 mutants. Those are rejected-freeze facts, not
-  evidence for the replacement.
+  **Exact freeze `ebd10f4302e73846e73a3a38860581d9fba21c69` is rejected
+  alongside `26b7016`, `0b98fff`, `393b87f`, and `902abec`. Round 40 found no
+  P0/P1 but found five material P2 classes: activity disclosure, incomplete
+  historical/as-of resolution, action chronology, receiver-closure
+  correlation, and asymmetric joint-control verification. All are accepted and
+  remediated in the working replacement, which passes 32/32 authored controls
+  and kills 445/445 exact-once direct mutants. Replacement freeze and three
+  fresh reviews remain pending; reference-service construction is blocked.**
+  Earlier rejected-freeze hashes and reproduced totals remain recorded in the
+  Phase-1 audit register as history, not evidence for this replacement.
   The narrowed target has 45 signed-object schemas, one content-addressed
   map-node schema, four support documents, 46 object schemas total, and 29
   schema-only read operations. The five removed getters are standalone
@@ -85,9 +80,12 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   gate predicate. Maps/manifests remain internal vocabulary, while
   provisional-terminal and compartment-transition receipts are absent from
   `receipt.get`.
-  A targeted blind-authority follow-up also removed the contradictory
-  `gate_allowed` and post-redemption ActionState/ActionReceipt paths and made
-  ActionReceipt effect, receiver, and exposure fields structurally empty/null.
+  Activity surfaces now expose only six non-effectful states and cannot imply a
+  gate, receiver-finality, spend, or effect result. Historical action, gate,
+  key, policy, and head resolution carries the exact authenticated semantic
+  instant without a live fallback. Action chronology and receiver closure are
+  transaction-correlated, and both directions of the shared joint-control
+  relation authenticate the same complete dependency graph.
   Caller resolvers, key maps, current-head/role callbacks, Boolean ACL, and
   external-verifier callbacks are conditional inputs and never establish
   authenticated authority. High-level authenticated read/gate/action/
@@ -97,14 +95,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   one shared joint-control pair relation, intrinsic namespace/aggregate/action
   chain checks, and complete causal control chronology.
   Replacement prose is pinned at
-  `2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb`;
-  bundle `sha-256:6efd61d6413dc106abab1fcf663e3fa6c1f51ce771767ada5ce2afb5b90e4c1d`;
-  registry `sha-256:18b9b4595f058669d2f4b639ae4d5266634487cf8f92b15d1129aab69859bccd`;
-  local controls 31/31; exact-once direct mutants 419/419. A disposable fresh
-  install reproduces those totals and byte-identical generated outputs. The
-  unchanged proposal baseline reproduces 83/83 controls and 75/75 mutants; both
-  dependency audits report zero vulnerabilities. The next freeze will be
-  identified by its containing commit, never by a self-referential future SHA.
+  `33f08aa78f569ffeff7854c4aaeb2486621b611f8431d68b39d5ca255aff3375`;
+  internal bundle
+  `sha-256:01616dab27c6e4d1193f2ebdf8265b6bb33ebad681c946bf973085960608e15d`;
+  registry `sha-256:2e655d5d3ad9aee3e87bbe3a3cfe163c8746c09466ed8b6e7f495e92e9349fa3`;
+  local controls 32/32; exact-once direct mutants 445/445. A disposable clean
+  install reproduced both totals and byte-identical generated files. The
+  unchanged proposal baseline reproduced 83/83 controls and 75/75 mutants; the
+  clean execution install reported zero vulnerabilities. The next freeze will
+  be identified by its containing commit, never by a self-referential future
+  SHA.
   No executor, provider/network review, authorization redemption, outbox,
   payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
   or live state change is created or authorized. The reference service remains
