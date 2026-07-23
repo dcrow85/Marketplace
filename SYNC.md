@@ -58,59 +58,52 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-23 · Codex —
-  **Exact freeze `ebd10f4302e73846e73a3a38860581d9fba21c69` is rejected
-  alongside `26b7016`, `0b98fff`, `393b87f`, and `902abec`. Round 40 found no
-  P0/P1 but found five material P2 classes: activity disclosure, incomplete
-  historical/as-of resolution, action chronology, receiver-closure
-  correlation, and asymmetric joint-control verification. All are accepted and
-  remediated in the working replacement, which passes 32/32 authored controls
-  and kills 445/445 exact-once direct mutants. Replacement freeze and three
-  fresh reviews remain pending; reference-service construction is blocked.**
-  Earlier rejected-freeze hashes and reproduced totals remain recorded in the
-  Phase-1 audit register as history, not evidence for this replacement.
-  The narrowed target has 45 signed-object schemas, one content-addressed
-  map-node schema, four support documents, 46 object schemas total, and 29
-  schema-only read operations. The five removed getters are standalone
-  transition manifest, enumerable map, compartment, compartment state, and
-  compartment transition. GateResult is structurally deny-only;
-  RedemptionReceipt is absent; recovery is structurally forbidden; nonempty
-  disclosures, external accounting, protection attestations, and financial
-  external truth are unavailable; `EXECUTION_CONTROLS` is the tenth unsupported
-  gate predicate. Maps/manifests remain internal vocabulary, while
-  provisional-terminal and compartment-transition receipts are absent from
-  `receipt.get`.
-  Activity surfaces now expose only six non-effectful states and cannot imply a
-  gate, receiver-finality, spend, or effect result. Historical action, gate,
-  key, policy, and head resolution carries the exact authenticated semantic
-  instant without a live fallback. Action chronology and receiver closure are
-  transaction-correlated, and both directions of the shared joint-control
-  relation authenticate the same complete dependency graph.
-  Caller resolvers, key maps, current-head/role callbacks, Boolean ACL, and
-  external-verifier callbacks are conditional inputs and never establish
-  authenticated authority. High-level authenticated read/gate/action/
-  cancellation/joint paths return
-  `phase1_authenticated_resolution_unsupported` until a frozen rooted-proof
-  profile exists. Retained semantics include true as-of key/head evaluation,
-  one shared joint-control pair relation, intrinsic namespace/aggregate/action
-  chain checks, and complete causal control chronology.
+- `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
+  **Exact freeze `dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373` is rejected
+  alongside `ebd10f4`, `26b7016`, `0b98fff`, `393b87f`, and `902abec`.
+  Round 41 found one P1 and seven material P2 classes in historical provenance,
+  signed snapshot anchoring, dependency closure, time separation, historical
+  BindingSet currentness, joint-peer recursion, activity-list semantics, and
+  evidence-snapshot bounds. All are accepted and remediated in the working
+  replacement. It passes 32/32 authored controls and kills 480/480 unique
+  exact-once direct mutants both locally and in a disposable lockfile-only
+  clean install; byte-identical artifacts were reproduced. The unchanged base
+  reproduced 83/83 controls and 75/75 mutants, and both dependency audits found
+  zero production vulnerabilities. Replacement freeze and three fresh exact-
+  commit reviews remain pending. Reference-service
+  construction is blocked.**
+  Historical mode and joint-peer recursion are now module-private object-
+  identity capabilities that caller properties, symbols, and Proxies cannot
+  forge. Proof keys resolve at signature time, eligibility at semantic time,
+  and historical proof availability is bounded by the authenticated evidence
+  snapshot. `ActionGet` uses signed `ExecutionActionView.assembled_at` and
+  requires envelope `retrieved_at` equality. Historical BindingSet validation
+  checks captured connection and DataGrant heads at signed `created_at`.
+  Exact outstanding/activity reads authenticate signed map entries and the
+  bounded action/state/binding/lineage graph. `execution.activity.list` now has
+  a required retrieval snapshot, deterministic cursor, principal/filter/page/
+  duplicate checks, and signed item/current-head validation.
+  The containment boundary is unchanged: 45 signed-object schemas, one map-node
+  schema, four support documents, 46 object schemas total, and 29 schema-only
+  read operations. GateResult remains deny-only; RedemptionReceipt is absent;
+  recovery, nonempty disclosures, external accounting, protection attestations,
+  and financial truth remain unavailable. Caller resolvers and callbacks are
+  conditional inputs only; high-level authenticated read/gate/action/
+  cancellation/joint paths still return
+  `phase1_authenticated_resolution_unsupported` until a separately frozen
+  rooted-proof profile exists.
   Replacement prose is pinned at
-  `33f08aa78f569ffeff7854c4aaeb2486621b611f8431d68b39d5ca255aff3375`;
+  `423b023c7d274bb83c57dda5bb36a939080f6c90802c3b1b59b5662899a99f05`;
   internal bundle
-  `sha-256:01616dab27c6e4d1193f2ebdf8265b6bb33ebad681c946bf973085960608e15d`;
-  registry `sha-256:2e655d5d3ad9aee3e87bbe3a3cfe163c8746c09466ed8b6e7f495e92e9349fa3`;
-  local controls 32/32; exact-once direct mutants 445/445. A disposable clean
-  install reproduced both totals and byte-identical generated files. The
-  unchanged proposal baseline reproduced 83/83 controls and 75/75 mutants; the
-  clean execution install reported zero vulnerabilities. The next freeze will
-  be identified by its containing commit, never by a self-referential future
-  SHA.
-  No executor, provider/network review, authorization redemption, outbox,
-  payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
-  or live state change is created or authorized. The reference service remains
-  blocked. Do not mark closed or claim conformance until the committed exact
-  bytes pass fresh blind semantic, informed regression, and blind release
-  reviews with zero P0/P1/material P2.
+  `sha-256:d025d89b8f2408de3f0470b51fe4e0604d7509280b37195abc4f949c015e071b`;
+  registry `sha-256:0b6c9919ef127b48a652e32967c94e33033b519639ce1062877f211f22144d0d`.
+  The next freeze will be identified by its containing commit, never by a self-
+  referential future SHA. No executor, provider/network review, authorization
+  redemption, outbox, payment, release, waiver, UI, catalogue, profile, offer,
+  contract, deployment, or live state change is created or authorized. Do not
+  mark closed or claim conformance until the committed exact bytes pass the
+  full local and clean replays plus fresh blind semantic, informed regression,
+  and blind release reviews with zero P0/P1/material P2.
 - `[passive]` 2026-07-21 · Codex —
   **The Robinhood-informed Cairn agent-execution change spec completed
   prose-design closure and was subsequently field-hardened during Phase 1.**

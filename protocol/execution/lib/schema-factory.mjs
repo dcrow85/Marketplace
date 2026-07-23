@@ -837,6 +837,7 @@ function operationBodiesSchema(baseObjectSchemaUris) {
         items: array({ $ref: `${EXECUTION_SCHEMA_ROOT}execution-activity-summary.schema.json` }, { maxItems: 100 }),
         next_cursor: nullable({ type: "string", minLength: 1, maxLength: 1024 }),
         total_disclosed: { $ref: `${COMMON}#/$defs/uint` },
+        retrieved_at: { $ref: `${COMMON}#/$defs/timestamp` },
         omitted_fields: { type: "array", prefixItems: [
           { const: "payee_accounts" }, { const: "private_budgets" }, { const: "evidence" },
           { const: "contact_shipping" }, { const: "full_warning_text" }, { const: "other_agent_authority" }

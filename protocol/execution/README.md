@@ -30,17 +30,24 @@ reference service.
 - intrinsic namespace, aggregate-control, and action-state predecessor checks;
   a shared joint connection/control pair check; and one causal chronology for
   authorization, namespace, predecessor, successor, commit, and receipt times;
-- historical signature and current-head evaluation parameterized by the
-  semantic instant. Historical evidence uses its recorded evaluation or commit
-  time; a later revocation or head advance does not rewrite earlier evidence.
-  Action reads use their authenticated retrieval instant, gate evidence uses
-  `evaluated_at`, and joint receipts use `committed_at`; missing historical key,
-  policy, or head resolution fails closed without a live-state fallback. Live
-  currentness remains a different question;
+- historical signature and current-head evaluation parameterized by separate
+  proof, semantic, and evidence-snapshot instants. A signature key is resolved
+  at `proof.signed_at`; current eligibility is resolved at the object's semantic
+  instant; and a historical read rejects proof created after its authenticated
+  retrieval snapshot. A later revocation or head advance does not rewrite
+  earlier evidence. Action reads use signed `ExecutionActionView.assembled_at`
+  (which must equal the response `retrieved_at`), gate evidence uses
+  `evaluated_at`, BindingSet captured-head currentness uses `created_at`, and
+  joint receipts use `committed_at`. Missing historical key, policy, or head
+  resolution fails closed without a live-state fallback. Historical mode and
+  peer-recursion provenance are private object-identity capabilities that a
+  caller field, symbol, or Proxy cannot forge;
 - activity list, summary, and detail are privacy-minimized projections over
   only prepared, authorized, reserved, cancelled, definitive-failure, and
-  quarantined states. They cannot disclose gate eligibility, receiver
-  confirmation/finality, spend state, or an effect result;
+  quarantined states. Activity pages carry an authenticated retrieval snapshot,
+  deterministic cursor, principal and filter checks, current-head checks, and
+  signed bounded action/binding/lineage dependencies. They cannot disclose gate
+  eligibility, receiver confirmation/finality, spend state, or an effect result;
 - action-state and action-receipt chronology independently orders predecessor
   update/signature, successor update/signature, commit, and receipt signature,
   while permitting same-second equality at the profile precision;
@@ -79,10 +86,12 @@ locally verified rooted-proof profile exists. Low-level helpers prove only
 structure, cryptographic math against supplied material, and conditional graph
 consistency; they are not authorizers.
 
-The post-Round-40 replacement passes 32/32 authored controls and kills 445/445
+Exact freeze `dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373` is rejected. The
+post-Round-41 replacement passes 32/32 authored controls and kills 480/480
 exact-once direct mutants locally. These results describe the current candidate
-bytes; they are not closure until reproduced from the exact frozen containing
-commit by fresh blind and informed reviewers.
+bytes; they are not closure until the clean-install replay passes, the
+replacement is frozen in a containing commit, and fresh blind and informed
+reviewers reproduce the result.
 
 ## Excluded
 

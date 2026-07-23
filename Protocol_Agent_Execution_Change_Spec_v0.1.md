@@ -12598,10 +12598,11 @@ equality is legal at the profile's one-second precision.
 
 This document authorizes no execution service beyond Phase 0. The Phase-1
 schema-only bundle requires a separately frozen machine bundle and mutation
-audit before any service implementation. The post-Round-40 replacement passes
-32/32 authored controls and kills 445/445 exact-once direct mutants locally;
-those results do not become closure until reproduced from the frozen containing
-commit by the fresh review gate. Phase 2 requires that Phase-1 closure plus proof that
+audit before any service implementation. The post-Round-41 replacement passes
+32/32 authored controls and registers 480 exact-once direct mutants locally;
+those results do not become closure until the full mutation and clean-install
+replays pass and are reproduced from the frozen containing commit by the fresh
+review gate. Phase 2 requires that Phase-1 closure plus proof that
 review is pure and makes no network disclosure/effect. Each later phase requires
 its own frozen artifact, independent audit, mutations, and exit evidence. This
 document does not authorize an execution service or Phase 5. A schema-valid
@@ -12623,9 +12624,10 @@ classes. All five are accepted and remediated in the replacement candidate:
    disclose or imply `gate_allowed`, receiver confirmation/finality, spent
    exposure, redemption, or an external effect. Exact activity-detail reads
    invoke the same intrinsic relation rather than relying on schema shape.
-2. Historical reads carry one semantic instant through every key, policy, and
-   current-head dependency. `ActionGet` uses authenticated `retrieved_at`,
-   GateResult uses `evaluated_at`, and historical joint receipts use
+2. Historical reads carry an authenticated semantic instant through every key,
+   policy, and current-head dependency. `ActionGet` uses signed
+   `ExecutionActionView.assembled_at`, which must equal the response
+   `retrieved_at`; GateResult uses `evaluated_at`, and historical joint receipts use
    `committed_at`. A historical resolver is mandatory in historical mode; the
    validator never falls back to a live-only resolver. A later key revocation,
    policy transition, or head advance therefore cannot rewrite authenticated
@@ -12656,6 +12658,61 @@ freeze remains rejected even though its package was reproducible; the
 replacement still requires a new containing-commit freeze and fresh blind and
 informed review before Phase-1 closure. Reference-service construction remains
 blocked.
+
+### 14.3 Phase-1 provenance and bounded-read amendment after rejected freeze dd12269
+
+Exact freeze
+`dd12269c5a5dd8b2d6e69a6e579d9bc48a16f373` is rejected history. The
+Round-41 blind authority and semantic reviews found one P1 and seven material
+P2 classes in the historical-evidence and composite-read boundary. All are
+accepted and remediated in the replacement candidate:
+
+1. Historical-evidence mode is held only in module-private object-identity
+   provenance. It cannot be created by a caller field, exported symbol,
+   inherited property, or Proxy. Derived validator contexts retain provenance
+   only when their source context was privately registered.
+2. Proof validity, semantic eligibility, and evidence availability are separate
+   instants. The signing key is resolved at `proof.signed_at`; current
+   eligibility is resolved at the object's semantic event time; and an
+   authenticated historical read rejects a proof whose signature follows its
+   evidence snapshot. A delayed receipt signature is valid when it follows the
+   event but does not follow the authenticated retrieval snapshot.
+3. `execution.action.get` takes its snapshot only from the signed
+   `ExecutionActionView.assembled_at`. The unsigned response envelope
+   `retrieved_at` must equal that instant. Embedded signatures, histories, and
+   current-head comparisons are all evaluated at the same signed snapshot, and
+   a caller-supplied evaluation time cannot override it.
+4. A historical BindingSet proves that both its captured connection head and
+   captured DataGrant head were current at signed `created_at`. A missing
+   historical resolver, stale head, or signature produced after the evidence
+   snapshot fails closed.
+5. Exact high-level reads authenticate every bounded dependency they rely on.
+   An outstanding-index read authenticates its signed map root and each
+   enumerable signed entry. Outstanding and activity entries authenticate the
+   action, action state, ExecutionBindingSet, and LineageCommitment edges rather
+   than accepting an internally coherent unsigned or alien subgraph.
+6. The joint connection/control relation performs the same complete peer
+   semantic validation in both directions. Its recursion guard is private
+   object-identity provenance; caller fields and Proxies cannot suppress the
+   peer validator.
+7. `execution.activity.list` is a deterministic authenticated snapshot page.
+   The response requires `retrieved_at`; its cursor is derived from the prior
+   cursor, requested page/filter, retrieval instant, and final activity identity.
+   It rejects duplicate identities, principal or state-filter drift, page/total
+   inconsistencies, missing historical/current-head evidence, late signatures,
+   and invalid signed action/binding/lineage dependencies.
+8. The structural Phase-1 boundary is unchanged. All 29 operations remain
+   schema-only and read-only; the high-level authenticated paths still return
+   `phase1_authenticated_resolution_unsupported`. No passing helper, resolver,
+   map, cursor, or signed dependency authorizes mutation, execution, payment,
+   disclosure, or conformance.
+
+Every distinct weakening above has an exact-once direct mutation control. The
+candidate registers 480 unique mutants and passes 32 authored controls locally;
+those numbers are not a release claim until the complete mutation suite,
+disposable clean install, proposal-baseline replay, replacement containing
+commit, and three fresh exact-commit reviews all pass. Reference-service
+construction remains blocked.
 
 ## 15. Audit protocol
 

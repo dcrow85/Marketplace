@@ -3,7 +3,7 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "33f08aa78f569ffeff7854c4aaeb2486621b611f8431d68b39d5ca255aff3375";',
+    search: 'export const SPEC_SHA256 = "423b023c7d274bb83c57dda5bb36a939080f6c90802c3b1b59b5662899a99f05";',
     replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
@@ -307,8 +307,8 @@ export const PHASE1_MUTANTS = [
     id: "signature-historical-validity",
     finding: "revocation-does-not-rewrite-history",
     file: "lib/validation.mjs",
-    search: '      if (context.requireCurrentKeyEligibility === true &&\n          (now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (key.status === "revoked" && keyRevokedAt === null) ||\n           (keyRevokedAt !== null && now >= keyRevokedAt))) {',
-    replace: '      if (key.status !== "active" || (context.requireCurrentKeyEligibility === true &&\n          (now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (key.status === "revoked" && keyRevokedAt === null) ||\n           (keyRevokedAt !== null && now >= keyRevokedAt)))) {',
+    search: '      if (key.status === "revoked" && key.revocation_time === null) failures.push("signature_key_history_incomplete");',
+    replace: '      if (key.status !== "active") failures.push("signature_key_history_incomplete");',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
@@ -380,16 +380,16 @@ export const PHASE1_MUTANTS = [
     id: "signature-evaluation-time-required",
     finding: "signature-validation-needs-protocol-time",
     file: "lib/validation.mjs",
-    search: '      if (now === null) failures.push("signature_evaluation_time_required");',
-    replace: '      if (false) failures.push("signature_evaluation_time_required");',
+    search: '      if (context.requireCurrentKeyEligibility === true && now === null) {\n        failures.push("signature_evaluation_time_required");\n      }',
+    replace: '      if (false) {\n        failures.push("signature_evaluation_time_required");\n      }',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
     id: "signature-future-time",
-    finding: "future-signature-acceptance",
+    finding: "legal-delayed-signature-rejected-by-generic-validator",
     file: "lib/validation.mjs",
-    search: '      else if (signedAt !== null && signedAt > now) failures.push("signature_from_future");',
-    replace: '      else if (false) failures.push("signature_from_future");',
+    search: '      const now = protocolTime(eligibilityTime);',
+    replace: '      const now = protocolTime(eligibilityTime);\n      if (signedAt !== null && signedAt > now) failures.push("signature_from_future");',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
@@ -476,8 +476,8 @@ export const PHASE1_MUTANTS = [
     id: "signature-current-temporal-eligibility",
     finding: "current-key-eligibility-ignores-time",
     file: "lib/validation.mjs",
-    search: '      if (context.requireCurrentKeyEligibility === true &&\n          (now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (key.status === "revoked" && keyRevokedAt === null) ||\n           (keyRevokedAt !== null && now >= keyRevokedAt))) {',
-    replace: '      if (context.requireCurrentKeyEligibility === true &&\n          (key.status === "revoked" && keyRevokedAt === null)) {',
+    search: '           now === null || now < currentKeyNotBefore || now >= currentKeyExpiresAt ||',
+    replace: '           now === null ||',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
@@ -548,7 +548,7 @@ export const PHASE1_MUTANTS = [
     id: "binding-set-grant-current-head-hash",
     finding: "binding-set-stale-grant-head-ref",
     file: "lib/validation.mjs",
-    search: '          (!isHistoricalEvidence(context) &&\n            !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref)) ||',
+    search: '          !sameObjectRef(resolveCurrentHead(\n            context, head.current_state_head_ref, capturedHeadInstant\n          ), head.current_state_head_ref) ||',
     replace: '          false ||',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
@@ -1136,7 +1136,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-reservation-full-validation",
     finding: "action-read-reservation-skips-fence-semantics",
     file: "lib/validation.mjs",
-    search: '      failures.push(...validateAuthorityReservation(\n        reservation, response.action_record, response.execution_binding_set,\n        { ...evidenceContext, lineageCommitment: response.lineage_commitment,\n          authority: response.authority_basis }\n      ).map((code) => `action_get_reservation_${code}`));',
+    search: '      failures.push(...validateAuthorityReservation(\n        reservation, response.action_record, response.execution_binding_set,\n        deriveEvidenceContext(evidenceContext, {\n          lineageCommitment: response.lineage_commitment,\n          authority: response.authority_basis\n        })\n      ).map((code) => `action_get_reservation_${code}`));',
     replace: '      failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1812,7 +1812,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-result-gate-request-semantics",
     finding: "gate-result-skips-authority-and-confirmation-semantics",
     file: "lib/validation.mjs",
-    search: '    if (gateRequest && binding) {\n      failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {\n        ...evaluationContext, lineageCommitment\n      }).map((code) => `gate_result_${code}`));\n    }',
+    search: '    if (gateRequest && binding) {\n      failures.push(...validateGateRequest(\n        gateRequest, binding, authority, confirmation,\n        deriveEvidenceContext(evaluationContext, { lineageCommitment })\n      ).map((code) => `gate_result_${code}`));\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1981,7 +1981,7 @@ export const PHASE1_MUTANTS = [
     id: "outstanding-map-root-resolution",
     finding: "outstanding-index-accepts-an-unresolved-map-root",
     file: "lib/validation.mjs",
-    search: '    if (!mapRoot || mapRoot.schema !== "cairn.enumerable_map_root.v0.1" ||\n        !exactRef(value.outstanding_action_map_ref, mapRoot, context)) {',
+    search: '    if (!mapRoot || mapRoot.schema !== "cairn.enumerable_map_root.v0.1" ||\n        !exactRef(value.outstanding_action_map_ref, mapRoot, context) ||\n        (context.requireDependencySignatures === true && validateResolvedSignedObject(mapRoot, context).length)) {',
     replace: '    if (false) {',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
@@ -2437,7 +2437,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-embedded-signatures",
     finding: "action-get-trusts-unsigned-embedded-objects",
     file: "lib/validation.mjs",
-    search: '      failures.push(...validateResolvedSignedObject(\n        object, historicalEvidenceContext(context, embeddedAt)\n      ).map((code) => `action_get_${name}_${code}`));',
+    search: '      failures.push(...validateResolvedSignedObject(\n        object, evidenceContext\n      ).map((code) => `action_get_${name}_${code}`));',
     replace: '      failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2445,7 +2445,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-current-heads",
     finding: "action-get-returns-stale-composite-heads",
     file: "lib/validation.mjs",
-    search: '      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference), reference)) {\n        failures.push(`action_get_current_${name}_mismatch`);\n      }',
+    search: '      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference, snapshotInstant), reference)) {\n        failures.push(`action_get_current_${name}_mismatch`);\n      }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2453,7 +2453,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-lineage-head-semantics",
     finding: "action-get-skips-current-lineage-validation",
     file: "lib/validation.mjs",
-    search: '    if (validateLineageStateHead(response.current_lineage_state_head, {\n      ...evidenceContext, requireDependencySignatures: true,\n      lineageCommitment: response.lineage_commitment\n    }).length) {\n      failures.push("action_get_current_lineage_state_invalid");\n    }',
+    search: '    if (validateLineageStateHead(\n      response.current_lineage_state_head,\n      deriveEvidenceContext(evidenceContext, {\n        requireDependencySignatures: true,\n        lineageCommitment: response.lineage_commitment\n      })\n    ).length) {\n      failures.push("action_get_current_lineage_state_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2605,7 +2605,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-historical-authority-evidence",
     finding: "historical-action-read-requires-current-authority-state",
     file: "lib/validation.mjs",
-    search: '    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
+    search: '    const evidenceContext = historicalEvidenceContext(context, snapshotInstant, snapshotInstant);',
     replace: '    const evidenceContext = context;',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2805,7 +2805,7 @@ export const PHASE1_MUTANTS = [
     id: "signature-key-resolver-evaluation-time",
     finding: "key-resolver-does-not-receive-evaluation-time",
     file: "lib/validation.mjs",
-    search: '      const key = resolveKey(context.keyResolver, proof.key_id, evaluationTime);',
+    search: '      const key = resolveKey(context.keyResolver, proof.key_id, proof.signed_at);',
     replace: '      const key = resolveKey(context.keyResolver, proof.key_id);',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
@@ -2845,7 +2845,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-wrapper-updated-before-evaluation",
     finding: "post-evaluation-wrapper-backfills-gate",
     file: "lib/validation.mjs",
-    search: '        (Number.isFinite(evaluationAt) && Date.parse(value.updated_at) > evaluationAt)) {',
+    search: '        (Number.isFinite(evaluationAt) &&\n          (Date.parse(value.updated_at) > evaluationAt ||\n           Date.parse(value.authority_service_signature?.signed_at) > evaluationAt))) {',
     replace: '        false) {',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2959,8 +2959,8 @@ export const PHASE1_MUTANTS = [
     id: "authenticated-resolution-action-get-boundary",
     finding: "action-get-claims-authentication-from-caller-resolvers",
     file: "lib/validation.mjs",
-    search: '    const failures = [AUTHENTICATED_RESOLUTION_UNSUPPORTED];\n    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
-    replace: '    const failures = [];\n    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
+    search: '    const failures = [AUTHENTICATED_RESOLUTION_UNSUPPORTED];\n    const snapshotInstant = response.view.assembled_at;',
+    replace: '    const failures = [];\n    const snapshotInstant = response.view.assembled_at;',
     test: "read surfaces close every execution family and bind object requests to returned identity"
   },
   {
@@ -3439,7 +3439,7 @@ export const PHASE1_MUTANTS = [
     id: "historical-action-get-retrieval-instant",
     finding: "action-get-resolves-history-at-caller-now",
     file: "lib/validation.mjs",
-    search: '    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
+    search: '    const evidenceContext = historicalEvidenceContext(context, snapshotInstant, snapshotInstant);',
     replace: '    const evidenceContext = historicalEvidenceContext(context, context.now);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -3586,5 +3586,285 @@ export const PHASE1_MUTANTS = [
     search: '        failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n      }\n      if (["revoked", "expired"].includes(before?.state))',
     replace: '      }\n      if (["revoked", "expired"].includes(before?.state))',
     test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "historical-provenance-proxy-spoof",
+    finding: "caller-proxy-forges-historical-evidence-mode",
+    file: "lib/validation.mjs",
+    search: 'const isHistoricalEvidence = (context) => isObject(context) && HISTORICAL_EVIDENCE_CONTEXTS.has(context);',
+    replace: 'const CALLER_HISTORY_MARKER = Symbol("caller-history");\nconst isHistoricalEvidence = (context) => isObject(context) && (HISTORICAL_EVIDENCE_CONTEXTS.has(context) || context[CALLER_HISTORY_MARKER] === true);',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "historical-context-private-registration",
+    finding: "internally-created-history-context-loses-provenance",
+    file: "lib/validation.mjs",
+    search: '  HISTORICAL_EVIDENCE_CONTEXTS.add(historicalContext);\n  return historicalContext;',
+    replace: '  return historicalContext;',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "historical-derived-context-private-registration",
+    finding: "nested-historical-validation-falls-back-to-live-state",
+    file: "lib/validation.mjs",
+    search: '  if (isHistoricalEvidence(context)) HISTORICAL_EVIDENCE_CONTEXTS.add(derived);',
+    replace: '  if (false) HISTORICAL_EVIDENCE_CONTEXTS.add(derived);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "exact-read-dependency-signatures-required",
+    finding: "current-exact-read-trusts-unsigned-dependencies",
+    file: "lib/validation.mjs",
+    search: '          now: responseObject.retrieved_at ?? context.now ?? null,\n          requireDependencySignatures: true',
+    replace: '          now: responseObject.retrieved_at ?? context.now ?? null,\n          requireDependencySignatures: false',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "exact-read-evidence-snapshot-bound",
+    finding: "exact-read-accepts-proof-created-after-retrieval",
+    file: "lib/validation.mjs",
+    search: '        historicalObjectInstant(returnedObject, responseObject.retrieved_at ?? context.now ?? null),\n        responseObject.retrieved_at ?? context.now ?? null',
+    replace: '        historicalObjectInstant(returnedObject, responseObject.retrieved_at ?? context.now ?? null),\n        null',
+    test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
+  },
+  {
+    id: "historical-evidence-future-signature",
+    finding: "historical-snapshot-contains-later-signature",
+    file: "lib/validation.mjs",
+    search: '      if (isHistoricalEvidence(context) && Number.isFinite(evidenceSnapshotAt) &&\n          Number.isFinite(signedAt) && signedAt > evidenceSnapshotAt) {\n        failures.push("signature_from_future");\n      }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "signature-current-key-resolver-separated",
+    finding: "current-key-eligibility-reuses-historical-key-record",
+    file: "lib/validation.mjs",
+    search: '      const currentKey = context.requireCurrentKeyEligibility === true\n        ? resolveKey(context.keyResolver, proof.key_id, eligibilityTime)\n        : null;',
+    replace: '      const currentKey = context.requireCurrentKeyEligibility === true ? key : null;',
+    test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
+  },
+  {
+    id: "action-get-snapshot-time-binding",
+    finding: "action-get-envelope-time-rebinds-signed-snapshot",
+    file: "lib/validation.mjs",
+    search: '    if (response.retrieved_at !== snapshotInstant) {\n      failures.push("action_get_snapshot_time_mismatch");\n    }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "action-get-snapshot-anchor",
+    finding: "action-get-history-uses-unsigned-envelope-time",
+    file: "lib/validation.mjs",
+    search: '    const snapshotInstant = response.view.assembled_at;',
+    replace: '    const snapshotInstant = response.retrieved_at;',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "action-get-current-head-snapshot-instant",
+    finding: "action-get-current-head-history-uses-envelope-time",
+    file: "lib/validation.mjs",
+    search: '      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference, snapshotInstant), reference)) {',
+    replace: '      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference, response.retrieved_at), reference)) {',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "binding-historical-connection-currentness",
+    finding: "historical-binding-captures-stale-connection-head",
+    file: "lib/validation.mjs",
+    search: '            !sameObjectRef(resolveCurrentHead(\n              context, value.connection_state_head_ref, capturedHeadInstant\n            ), value.connection_state_head_ref) ||',
+    replace: '            false ||',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "enumerable-map-leaf-entry-signature",
+    finding: "signed-map-root-trusts-unsigned-leaf-entry",
+    file: "lib/validation.mjs",
+    search: '    const authenticatedEntry = domainProfile?.external === true ||\n      context.requireDependencySignatures !== true ||\n      validateResolvedSignedObject(entryObject, context).length === 0;',
+    replace: '    const authenticatedEntry = true;',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "outstanding-entry-action-signature",
+    finding: "outstanding-entry-trusts-unsigned-action",
+    file: "lib/validation.mjs",
+    search: '        (context.requireDependencySignatures === true && validateResolvedSignedObject(action, context).length) ||',
+    replace: '        false ||',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "outstanding-entry-state-signature",
+    finding: "outstanding-entry-trusts-unsigned-action-state",
+    file: "lib/validation.mjs",
+    search: '        (context.requireDependencySignatures === true && validateResolvedSignedObject(actionState, context).length) ||',
+    replace: '        false ||',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "activity-detail-state-dependency-signature",
+    finding: "activity-detail-trusts-unsigned-state-dependency",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));\n      failures.push(...validateResolvedSignedObject(binding, context).map((code) => `binding_${code}`));',
+    replace: '      failures.push(...[]);\n      failures.push(...validateResolvedSignedObject(binding, context).map((code) => `binding_${code}`));',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-authenticated-boundary",
+    finding: "activity-list-claims-authenticated-resolution",
+    file: "lib/validation.mjs",
+    search: '    const failures = [AUTHENTICATED_RESOLUTION_UNSUPPORTED];\n    if (response.items.length > request.page_size || response.total_disclosed < response.items.length) {',
+    replace: '    const failures = [];\n    if (response.items.length > request.page_size || response.total_disclosed < response.items.length) {',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-page-projection",
+    finding: "activity-list-page-size-or-total-unbound",
+    file: "lib/validation.mjs",
+    search: '    if (response.items.length > request.page_size || response.total_disclosed < response.items.length) {\n      failures.push("activity_list_page_projection_mismatch");\n    }',
+    replace: '',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-duplicate-identity",
+    finding: "activity-list-repeats-one-activity",
+    file: "lib/validation.mjs",
+    search: '      if (activityIds.has(summary.activity_id)) failures.push("activity_list_duplicate_activity");',
+    replace: '      if (false) failures.push("activity_list_duplicate_activity");',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-filter-binding",
+    finding: "activity-list-ignores-requested-state-filter",
+    file: "lib/validation.mjs",
+    search: '      if (stateFilter.size > 0 && !stateFilter.has(summary.state)) {\n        failures.push("activity_list_state_filter_mismatch");\n      }',
+    replace: '',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-item-graph",
+    finding: "activity-list-trusts-false-or-unsigned-item-projection",
+    file: "lib/validation.mjs",
+    search: '      if (!Number.isFinite(retrievedAt) || Date.parse(summary.updated_at) > retrievedAt ||\n          !action || !state ||\n          validateActivitySummary(summary, action, state, itemContext).length ||\n          !sameObjectRef(resolveCurrentHead(\n            itemContext, summary.action_state_head_ref, response.retrieved_at\n          ), summary.action_state_head_ref)) {\n        failures.push("activity_list_item_graph_mismatch");\n      }',
+    replace: '',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "joint-peer-private-recursion-guard",
+    finding: "caller-disables-joint-peer-validation",
+    file: "lib/validation.mjs",
+    search: 'const isJointPeerValidationContext = (context) =>\n  isObject(context) && JOINT_PEER_VALIDATION_CONTEXTS.has(context);',
+    replace: 'const isJointPeerValidationContext = (context) =>\n  isObject(context) && (JOINT_PEER_VALIDATION_CONTEXTS.has(context) || context.skipJointPeerValidation === true);',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "joint-control-validates-connection-peer",
+    finding: "control-side-skips-connection-peer-semantics",
+    file: "lib/validation.mjs",
+    search: '      if (connectionReceipt && !isJointPeerValidationContext(context)) {\n        const peerFailures = validateConnectionEvent(\n          connectionReceipt, connectionBefore, connectionAfter,\n          jointPeerValidationContext(context, { controlReceipt: value })\n        ).filter((code) => code !== AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n        failures.push(...peerFailures.map((code) => `execution_control_receipt_peer_connection_${code}`));\n      }',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "joint-connection-validates-control-peer",
+    finding: "connection-side-skips-control-peer-semantics",
+    file: "lib/validation.mjs",
+    search: '          if (!isJointPeerValidationContext(receiptContext)) {\n            const peerFailures = validateExecutionControlReceipt(\n              controlReceipt,\n              jointPeerValidationContext(receiptContext, { connectionReceipt: receipt })\n            ).filter((code) => code !== AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n            failures.push(...peerFailures.map((code) => `connection_peer_control_${code}`));\n          }',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "activity-list-response-snapshot-field",
+    finding: "activity-list-response-has-no-retrieval-snapshot",
+    file: "lib/schema-factory.mjs",
+    search: '        total_disclosed: { $ref: `${COMMON}#/$defs/uint` },\n        retrieved_at: { $ref: `${COMMON}#/$defs/timestamp` },',
+    replace: '        total_disclosed: { $ref: `${COMMON}#/$defs/uint` },',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-cursor-binding",
+    finding: "activity-list-cursor-is-unbound",
+    file: "lib/validation.mjs",
+    search: '    if (response.next_cursor !== activityListNextCursor(request, response)) {\n      failures.push("activity_list_cursor_mismatch");\n    }',
+    replace: '',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-evidence-snapshot",
+    finding: "activity-list-accepts-item-signed-after-retrieval",
+    file: "lib/validation.mjs",
+    search: '      const itemContext = historicalEvidenceContext(\n        context, response.retrieved_at, response.retrieved_at\n      );',
+    replace: '      const itemContext = historicalEvidenceContext(\n        context, response.retrieved_at, null\n      );',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-list-principal-scope",
+    finding: "activity-list-leaks-another-principal",
+    file: "lib/validation.mjs",
+    search: '      if (context.principalId !== undefined && summary.principal_id !== context.principalId) {\n        failures.push("activity_list_principal_scope_mismatch");\n      }',
+    replace: '',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "action-dependency-binding-signature",
+    finding: "action-graph-trusts-unsigned-binding",
+    file: "lib/validation.mjs",
+    search: '      (context.requireDependencySignatures === true &&\n        validateResolvedSignedObject(binding, context).length)) {',
+    replace: '      false) {',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "action-dependency-lineage-signature",
+    finding: "action-graph-trusts-unsigned-lineage",
+    file: "lib/validation.mjs",
+    search: '      (context.requireDependencySignatures === true &&\n        validateResolvedSignedObject(lineage, context).length)) {',
+    replace: '      false) {',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "outstanding-entry-action-dependency-graph",
+    finding: "outstanding-entry-skips-action-transitive-dependencies",
+    file: "lib/validation.mjs",
+    search: '        (context.requireDependencySignatures === true && actionDependencyGraphFailures(action, context).length) ||',
+    replace: '        false ||',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "activity-summary-signature",
+    finding: "activity-list-trusts-unsigned-summary",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...validateResolvedSignedObject(summary, context).map((code) => `summary_${code}`));\n      failures.push(...validateResolvedSignedObject(action, context).map((code) => `action_${code}`));',
+    replace: '      failures.push(...[]);\n      failures.push(...validateResolvedSignedObject(action, context).map((code) => `action_${code}`));',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-summary-action-signature",
+    finding: "activity-list-trusts-unsigned-action",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...validateResolvedSignedObject(action, context).map((code) => `action_${code}`));\n      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));\n      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));',
+    replace: '      failures.push(...[]);\n      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));\n      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-summary-action-dependency-graph",
+    finding: "activity-list-skips-action-transitive-dependencies",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));\n      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));\n    }\n    if (failures.length) return unique(failures);\n    if (!exactRef(summary.action_ref, action, context)',
+    replace: '      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));\n    }\n    if (failures.length) return unique(failures);\n    if (!exactRef(summary.action_ref, action, context)',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-detail-binding-signature",
+    finding: "activity-detail-trusts-unsigned-binding",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...validateResolvedSignedObject(binding, context).map((code) => `binding_${code}`));\n      failures.push(...validateResolvedSignedObject(lineageState, context).map((code) => `lineage_state_${code}`));',
+    replace: '      failures.push(...[]);\n      failures.push(...validateResolvedSignedObject(lineageState, context).map((code) => `lineage_state_${code}`));',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
+  },
+  {
+    id: "activity-detail-lineage-state-signature",
+    finding: "activity-detail-trusts-unsigned-lineage-state",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...validateResolvedSignedObject(lineageState, context).map((code) => `lineage_state_${code}`));\n      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));',
+    replace: '      failures.push(...[]);\n      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));',
+    test: "activity surfaces are privacy-minimized projections of exact action state"
   }
 ];

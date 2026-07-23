@@ -20,20 +20,39 @@ const CURRENT_EXACT_READ_OPERATIONS = new Set([
   "execution.lineage_state.get"
 ]);
 const AUTHENTICATED_RESOLUTION_UNSUPPORTED = "phase1_authenticated_resolution_unsupported";
-// Historical-evidence mode is deliberately unforgeable by library callers. Only
-// immutable read assemblers in this module receive the symbol-bearing context;
-// live authority paths cannot be relaxed with a caller-supplied boolean flag.
-const HISTORICAL_EVIDENCE = Symbol("cairnHistoricalEvidence");
-const isHistoricalEvidence = (context) => context?.[HISTORICAL_EVIDENCE] === true;
-const historicalEvidenceContext = (context, at = null) => {
+// Historical-evidence provenance is deliberately unforgeable by library
+// callers. WeakSet membership is an identity fact and cannot be synthesized by
+// a Proxy get trap, symbol reflection, a copied property, or a caller Boolean.
+const HISTORICAL_EVIDENCE_CONTEXTS = new WeakSet();
+const JOINT_PEER_VALIDATION_CONTEXTS = new WeakSet();
+const isHistoricalEvidence = (context) => isObject(context) && HISTORICAL_EVIDENCE_CONTEXTS.has(context);
+const isJointPeerValidationContext = (context) =>
+  isObject(context) && JOINT_PEER_VALIDATION_CONTEXTS.has(context);
+const historicalEvidenceContext = (context, at = null, evidenceSnapshotAt = undefined) => {
   const semanticInstant = at ?? context?.historicalEvidenceAt ?? context?.now ?? null;
-  return {
+  const historicalContext = {
     ...context,
-    [HISTORICAL_EVIDENCE]: true,
     requireDependencySignatures: true,
     historicalEvidenceAt: semanticInstant,
-    now: semanticInstant
+    evidenceSnapshotAt: evidenceSnapshotAt === undefined
+      ? context?.evidenceSnapshotAt ?? null
+      : evidenceSnapshotAt,
+    now: semanticInstant,
+    gateEvaluationTime: semanticInstant,
+    confirmationEvaluationTime: semanticInstant
   };
+  HISTORICAL_EVIDENCE_CONTEXTS.add(historicalContext);
+  return historicalContext;
+};
+const deriveEvidenceContext = (context, overrides = {}) => {
+  const derived = { ...context, ...overrides };
+  if (isHistoricalEvidence(context)) HISTORICAL_EVIDENCE_CONTEXTS.add(derived);
+  return derived;
+};
+const jointPeerValidationContext = (context, overrides = {}) => {
+  const derived = deriveEvidenceContext(context, overrides);
+  JOINT_PEER_VALIDATION_CONTEXTS.add(derived);
+  return derived;
 };
 
 function historicalObjectInstant(object, fallback = null) {
@@ -222,10 +241,15 @@ export function validateExactObjectRead(operationName, request, responseObject, 
     }
     const currentRead = CURRENT_EXACT_READ_OPERATIONS.has(operationName);
     const objectContext = currentRead
-      ? { ...context, now: responseObject.retrieved_at ?? context.now ?? null }
+      ? {
+          ...context,
+          now: responseObject.retrieved_at ?? context.now ?? null,
+          requireDependencySignatures: true
+        }
       : historicalEvidenceContext(
         context,
-        historicalObjectInstant(returnedObject, responseObject.retrieved_at ?? context.now ?? null)
+        historicalObjectInstant(returnedObject, responseObject.retrieved_at ?? context.now ?? null),
+        responseObject.retrieved_at ?? context.now ?? null
       );
     const failures = schema["x-cairn-source-spec-sha256"] === undefined
       ? resolvedObjectShapeFailures(returnedObject, objectContext, "object_read_response")
@@ -489,7 +513,11 @@ export function validateActionGetResponse(request, response, context = {}) {
     if (!requestValidate || !requestValidate(request)) return ["action_get_request_schema_invalid"];
     if (!validate || !validate(response)) return ["action_get_response_schema_invalid"];
     const failures = [AUTHENTICATED_RESOLUTION_UNSUPPORTED];
-    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);
+    const snapshotInstant = response.view.assembled_at;
+    if (response.retrieved_at !== snapshotInstant) {
+      failures.push("action_get_snapshot_time_mismatch");
+    }
+    const evidenceContext = historicalEvidenceContext(context, snapshotInstant, snapshotInstant);
     for (const [name, object] of [
       ["view", response.view], ["action_record", response.action_record],
       ["execution_binding_set", response.execution_binding_set],
@@ -503,13 +531,8 @@ export function validateActionGetResponse(request, response, context = {}) {
       ...(response.gate_request === null ? [] : [["gate_request", response.gate_request]]),
       ...(response.gate_result === null ? [] : [["gate_result", response.gate_result]])
     ]) {
-      const embeddedAt = ["gate_request", "gate_result"].includes(name)
-        ? response.gate_result?.evaluated_at ?? historicalObjectInstant(object, response.retrieved_at)
-        : ["view", "current_action_state_head", "current_lineage_state_head", "current_activity_detail"].includes(name)
-          ? response.retrieved_at
-          : historicalObjectInstant(object, response.retrieved_at);
       failures.push(...validateResolvedSignedObject(
-        object, historicalEvidenceContext(context, embeddedAt)
+        object, evidenceContext
       ).map((code) => `action_get_${name}_${code}`));
     }
     if (!sameObjectRef(request.ref, response.ref) || !exactRef(response.ref, response.view, context) ||
@@ -545,9 +568,9 @@ export function validateActionGetResponse(request, response, context = {}) {
           validateActionReceipt(
             transitionReceipt, actionStateBefore, response.current_action_state_head,
             response.execution_binding_set,
-            { ...evidenceContext, action: response.action_record,
+            deriveEvidenceContext(evidenceContext, { action: response.action_record,
               lineageCommitment: response.lineage_commitment,
-              lineageStateHead: response.current_lineage_state_head }
+              lineageStateHead: response.current_lineage_state_head })
           ).length) {
         failures.push("action_get_action_state_chain_unresolved");
       }
@@ -557,14 +580,17 @@ export function validateActionGetResponse(request, response, context = {}) {
       ["lineage_state", response.view.current_lineage_state_head_ref],
       ["activity_detail", response.view.current_activity_detail_ref]
     ]) {
-      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference), reference)) {
+      if (!sameObjectRef(resolveCurrentHead(evidenceContext, reference, snapshotInstant), reference)) {
         failures.push(`action_get_current_${name}_mismatch`);
       }
     }
-    if (validateLineageStateHead(response.current_lineage_state_head, {
-      ...evidenceContext, requireDependencySignatures: true,
-      lineageCommitment: response.lineage_commitment
-    }).length) {
+    if (validateLineageStateHead(
+      response.current_lineage_state_head,
+      deriveEvidenceContext(evidenceContext, {
+        requireDependencySignatures: true,
+        lineageCommitment: response.lineage_commitment
+      })
+    ).length) {
       failures.push("action_get_current_lineage_state_invalid");
     }
     if (response.current_action_state_head.action_id !== response.action_record.action_id) {
@@ -701,8 +727,10 @@ export function validateActionGetResponse(request, response, context = {}) {
       }
       failures.push(...validateAuthorityReservation(
         reservation, response.action_record, response.execution_binding_set,
-        { ...evidenceContext, lineageCommitment: response.lineage_commitment,
-          authority: response.authority_basis }
+        deriveEvidenceContext(evidenceContext, {
+          lineageCommitment: response.lineage_commitment,
+          authority: response.authority_basis
+        })
       ).map((code) => `action_get_reservation_${code}`));
     }
     const currentReceiptProjection = [
@@ -728,20 +756,19 @@ export function validateActionGetResponse(request, response, context = {}) {
       failures.push(...validateGateRequest(
         response.gate_request, response.execution_binding_set, response.authority_basis,
         response.confirmation_receipt,
-        {
-          ...evidenceContext,
+        deriveEvidenceContext(evidenceContext, {
           lineageCommitment: response.lineage_commitment,
           gateEvaluationTime: response.gate_result.evaluated_at,
           confirmationEvaluationTime: response.gate_result.evaluated_at,
           authorityServiceTime: Date.parse(response.gate_result.evaluated_at)
-        }
+        })
       ).map((code) => `action_get_gate_request_${code}`));
-      failures.push(...validateGateResult(response.gate_result, {
-        ...evidenceContext, gateRequest: response.gate_request,
+      failures.push(...validateGateResult(response.gate_result, deriveEvidenceContext(evidenceContext, {
+        gateRequest: response.gate_request,
         binding: response.execution_binding_set,
         authority: response.authority_basis, confirmation: response.confirmation_receipt,
         lineageCommitment: response.lineage_commitment
-      }).map((code) => `action_get_gate_result_${code}`));
+      })).map((code) => `action_get_gate_result_${code}`));
       if (!exactRef(response.gate_result.gate_request_ref, response.gate_request, context) ||
           !sameObjectRef(response.gate_result.execution_binding_set_ref, response.action_record.execution_binding_set_ref) ||
           !sameObjectRef(response.gate_request.execution_binding_set_ref, response.action_record.execution_binding_set_ref) ||
@@ -758,7 +785,7 @@ export function validateActionGetResponse(request, response, context = {}) {
     } else if (issuanceConfirmationPresent) {
       failures.push(...validateExecutionConfirmation(
         response.confirmation_receipt, response.authority_basis, response.execution_binding_set, null,
-        { ...evidenceContext, confirmationEvaluationTime: response.retrieved_at }
+        deriveEvidenceContext(evidenceContext, { confirmationEvaluationTime: snapshotInstant })
       ).map((code) => `action_get_confirmation_${code}`));
     } else if (expectedGate !== null) {
       failures.push("action_get_gate_pair_mismatch");
@@ -814,12 +841,12 @@ function validateResolvedSignedObject(object, context = {}) {
     if (failures.length) return failures;
     if (!schema || !Array.isArray(schema["x-cairn-signature-pointers"]) ||
         schema["x-cairn-signature-pointers"].length === 0) return ["signed_object_signature_profile_missing"];
-    const evaluationTime = isHistoricalEvidence(context)
+    const eligibilityTime = isHistoricalEvidence(context)
       ? context.historicalEvidenceAt
       : context.gateEvaluationTime ?? context.now ?? null;
     for (const pointer of schema["x-cairn-signature-pointers"]) {
       const proof = valueAtPointer(object, pointer);
-      const key = resolveKey(context.keyResolver, proof.key_id, evaluationTime);
+      const key = resolveKey(context.keyResolver, proof.key_id, proof.signed_at);
       if (!key) {
         failures.push("signature_key_unresolved");
         continue;
@@ -834,18 +861,34 @@ function validateResolvedSignedObject(object, context = {}) {
       const keyNotBefore = protocolTime(key.not_before);
       const keyExpiresAt = protocolTime(key.expires_at);
       const keyRevokedAt = key.revocation_time === null ? null : protocolTime(key.revocation_time);
-      const now = protocolTime(evaluationTime);
-      if (now === null) failures.push("signature_evaluation_time_required");
-      else if (signedAt !== null && signedAt > now) failures.push("signature_from_future");
+      const now = protocolTime(eligibilityTime);
+      const evidenceSnapshotAt = protocolTime(context.evidenceSnapshotAt);
+      const currentKey = context.requireCurrentKeyEligibility === true
+        ? resolveKey(context.keyResolver, proof.key_id, eligibilityTime)
+        : null;
+      const currentKeyNotBefore = protocolTime(currentKey?.not_before);
+      const currentKeyExpiresAt = protocolTime(currentKey?.expires_at);
+      const currentKeyRevokedAt = currentKey?.revocation_time === null
+        ? null : protocolTime(currentKey?.revocation_time);
+      if (context.requireCurrentKeyEligibility === true && now === null) {
+        failures.push("signature_evaluation_time_required");
+      }
+      if (isHistoricalEvidence(context) && Number.isFinite(evidenceSnapshotAt) &&
+          Number.isFinite(signedAt) && signedAt > evidenceSnapshotAt) {
+        failures.push("signature_from_future");
+      }
       if (key.status === "revoked" && key.revocation_time === null) failures.push("signature_key_history_incomplete");
       if (!Number.isFinite(signedAt) || !Number.isFinite(keyNotBefore) || !Number.isFinite(keyExpiresAt) ||
           keyNotBefore >= keyExpiresAt || (keyRevokedAt !== null && !Number.isFinite(keyRevokedAt)) ||
           signedAt < keyNotBefore || signedAt >= keyExpiresAt ||
           (keyRevokedAt !== null && signedAt >= keyRevokedAt)) failures.push("signature_key_not_valid_at_signing");
       if (context.requireCurrentKeyEligibility === true &&
-          (now === null || now < keyNotBefore || now >= keyExpiresAt ||
-           (key.status === "revoked" && keyRevokedAt === null) ||
-           (keyRevokedAt !== null && now >= keyRevokedAt))) {
+          (!isObject(currentKey) || currentKey.key_id !== proof.key_id || currentKey.key_type !== "Ed25519" ||
+           !KEY_STATUSES.has(currentKey.status) || !Number.isFinite(currentKeyNotBefore) ||
+           !Number.isFinite(currentKeyExpiresAt) || currentKeyNotBefore >= currentKeyExpiresAt ||
+           now === null || now < currentKeyNotBefore || now >= currentKeyExpiresAt ||
+           (currentKey.status === "revoked" && currentKeyRevokedAt === null) ||
+           (currentKeyRevokedAt !== null && (!Number.isFinite(currentKeyRevokedAt) || now >= currentKeyRevokedAt)))) {
         failures.push("signature_key_not_currently_eligible");
       }
       const expectedController = expectedControllerFor(object, pointer, proof, context);
@@ -1435,6 +1478,13 @@ export function validateExecutionControlReceipt(value, context = {}) {
           connectionReceipt.committed_at !== value.committed_at) {
         failures.push("execution_control_receipt_connection_dependency_invalid");
       }
+      if (connectionReceipt && !isJointPeerValidationContext(context)) {
+        const peerFailures = validateConnectionEvent(
+          connectionReceipt, connectionBefore, connectionAfter,
+          jointPeerValidationContext(context, { controlReceipt: value })
+        ).filter((code) => code !== AUTHENTICATED_RESOLUTION_UNSUPPORTED);
+        failures.push(...peerFailures.map((code) => `execution_control_receipt_peer_connection_${code}`));
+      }
       if (!outstandingHead ||
           outstandingHead.schema !== "cairn.connection_outstanding_action_index_state_head.v0.1" ||
           !exactRef(value.outstanding_action_index_head_ref, outstandingHead, context) ||
@@ -1781,13 +1831,16 @@ function inspectEnumerableMapNode(node, context, mapDomain) {
     const validEntry = domainProfile?.external === true
       ? exactEntry
       : domainProfile?.validate(entryObject, context).length === 0;
+    const authenticatedEntry = domainProfile?.external === true ||
+      context.requireDependencySignatures !== true ||
+      validateResolvedSignedObject(entryObject, context).length === 0;
     if (!isObject(leaf) || node.branch_children.length !== 0 || node.subtree_entry_count !== 1 ||
         node.path_prefix_nibbles !== keyHex || leaf.entry_object_hash !== leaf.entry_object_ref?.object_hash ||
         !domainProfile || leaf.entry_kind !== domainProfile.entryKind ||
         leaf.entry_object_ref?.schema !== domainProfile.schema ||
         !entryObject || entryObject.schema !== domainProfile.schema || !exactEntry ||
         entryObject[domainProfile.keyField] !== leaf.entry_key ||
-        !validEntry ||
+        !validEntry || !authenticatedEntry ||
         node.entries_root !== enumerableMapLeafEntriesRoot(mapDomain, leaf)) {
       failures.push("map_node_leaf_union_mismatch");
     }
@@ -1933,9 +1986,13 @@ export function validateConnectionOutstandingActionEntry(value, context = {}) {
     const action = resolveObject(context.objectResolver, value.action_ref);
     const actionState = resolveObject(context.objectResolver, value.current_action_state_head_ref);
     if (!action || action.schema !== "cairn.action_record.v0.2" || !exactRef(value.action_ref, action, context) ||
+        validateActionRecord(action, context).length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(action, context).length) ||
+        (context.requireDependencySignatures === true && actionDependencyGraphFailures(action, context).length) ||
         action.effect_id !== value.effect_id || !actionState || actionState.schema !== "cairn.action_state_head.v0.1" ||
         !exactRef(value.current_action_state_head_ref, actionState, context) ||
         validatePhase1Object(actionState, context).length ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(actionState, context).length) ||
         actionState.action_id !== action.action_id || !sameObjectRef(actionState.action_ref, value.action_ref)) {
       failures.push("outstanding_action_entry_action_chain_mismatch");
     } else {
@@ -1950,6 +2007,8 @@ export function validateConnectionOutstandingActionEntry(value, context = {}) {
       const lineage = resolveObject(context.objectResolver, action.lineage_commitment_ref);
       if (!lineage || lineage.schema !== "cairn.lineage_commitment.v0.1" ||
           !exactRef(action.lineage_commitment_ref, lineage, context) ||
+          validateLineageCommitment(lineage, context).length ||
+          (context.requireDependencySignatures === true && validateResolvedSignedObject(lineage, context).length) ||
           lineage.principal_authorized_lineage_id !== value.lineage_id) {
         failures.push("outstanding_action_entry_lineage_mismatch");
       }
@@ -3129,7 +3188,8 @@ export function validateConnectionOutstandingIndexHead(value, context = {}) {
     }
     const mapRoot = context.outstandingActionMap ?? resolveObject(context.objectResolver, value.outstanding_action_map_ref);
     if (!mapRoot || mapRoot.schema !== "cairn.enumerable_map_root.v0.1" ||
-        !exactRef(value.outstanding_action_map_ref, mapRoot, context)) {
+        !exactRef(value.outstanding_action_map_ref, mapRoot, context) ||
+        (context.requireDependencySignatures === true && validateResolvedSignedObject(mapRoot, context).length)) {
       failures.push("connection_outstanding_map_ref_mismatch");
     } else {
       failures.push(...validateEnumerableMapRoot(mapRoot, {
@@ -3587,6 +3647,13 @@ export function validateConnectionEvent(receipt, before, after, context = {}) {
             controlReceipt.committed_at !== receipt.committed_at) {
           failures.push("connection_joint_control_receipt_mismatch");
         } else {
+          if (!isJointPeerValidationContext(receiptContext)) {
+            const peerFailures = validateExecutionControlReceipt(
+              controlReceipt,
+              jointPeerValidationContext(receiptContext, { connectionReceipt: receipt })
+            ).filter((code) => code !== AUTHENTICATED_RESOLUTION_UNSUPPORTED);
+            failures.push(...peerFailures.map((code) => `connection_peer_control_${code}`));
+          }
           const leafBefore = resolveAtReceipt(context.objectResolver, controlReceipt.scoped_leaf_before_ref);
           const leafAfter = resolveAtReceipt(context.objectResolver, controlReceipt.scoped_leaf_after_ref);
           failures.push(...jointConnectionControlPairFailures(
@@ -4670,6 +4737,9 @@ export function validateBindingSet(value, context = {}) {
   try {
     const failures = validatePhase1Object(value, context);
     if (failures.length) return failures;
+    const capturedHeadInstant = isHistoricalEvidence(context)
+      ? value.created_at
+      : context.gateEvaluationTime ?? context.now ?? value.created_at;
     if (value.profile_id !== PROFILE_ID || value.execution_bundle_hash !== context.bundleHash || value.operation_registry_hash !== context.registryHash) {
       failures.push("binding_release_mismatch");
     }
@@ -4707,6 +4777,9 @@ export function validateBindingSet(value, context = {}) {
               ...context, runtimeBinding: runtime, connectionAuthorization: authorization,
               requireCurrentConnection: !isHistoricalEvidence(context)
             }).length || connection.state !== "active" || connection.principal_id !== value.principal_id ||
+            !sameObjectRef(resolveCurrentHead(
+              context, value.connection_state_head_ref, capturedHeadInstant
+            ), value.connection_state_head_ref) ||
             !sameObjectRef(connection.agent_runtime_binding_ref, value.agent_runtime_binding_ref) ||
             !sameObjectRef(connection.connection_authorization_ref, value.connection_authorization_ref)) {
           failures.push("binding_connection_state_graph_mismatch");
@@ -4869,8 +4942,9 @@ export function validateBindingSet(value, context = {}) {
           !exactRef(head.current_state_head_ref, current, context) ||
           validateResolvedSignedObject(current, context).length ||
           validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||
-          (!isHistoricalEvidence(context) &&
-            !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref)) ||
+          !sameObjectRef(resolveCurrentHead(
+            context, head.current_state_head_ref, capturedHeadInstant
+          ), head.current_state_head_ref) ||
           !sameObjectRef(current.data_grant_ref, head.data_grant_ref) || current.revocation_nonce !== head.revocation_nonce) {
         failures.push("binding_data_grant_current_head_mismatch");
       }
@@ -5445,7 +5519,9 @@ export function validateGateDependencyStateHead(value, context = {}) {
         Date.parse(value.valid_from) >= Date.parse(value.valid_until) ||
         Date.parse(value.updated_at) < Date.parse(value.valid_from) ||
         Date.parse(value.updated_at) >= Date.parse(value.valid_until) ||
-        (Number.isFinite(evaluationAt) && Date.parse(value.updated_at) > evaluationAt)) {
+        (Number.isFinite(evaluationAt) &&
+          (Date.parse(value.updated_at) > evaluationAt ||
+           Date.parse(value.authority_service_signature?.signed_at) > evaluationAt))) {
       failures.push("gate_dependency_state_semantics_invalid");
     }
     if (!source || !exactRef(value.source_ref, source, context) ||
@@ -5453,6 +5529,8 @@ export function validateGateDependencyStateHead(value, context = {}) {
         validateGateDependencyAttestation(source, context).length ||
         source.principal_id !== value.principal_id ||
         source.dependency_role !== value.dependency_role || source.state !== value.state ||
+        (Number.isFinite(evaluationAt) &&
+          Date.parse(source.issuing_authority_signature?.signed_at) > evaluationAt) ||
         value.dependency_key !== gateDependencyKey(
           value.principal_id, value.dependency_role, source.subject_ref
         ) || Date.parse(value.valid_from) < Date.parse(source.valid_from) ||
@@ -6002,9 +6080,10 @@ export function validateGateResult(value, context = {}) {
       failures.push("gate_result_binding_mismatch");
     }
     if (gateRequest && binding) {
-      failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {
-        ...evaluationContext, lineageCommitment
-      }).map((code) => `gate_result_${code}`));
+      failures.push(...validateGateRequest(
+        gateRequest, binding, authority, confirmation,
+        deriveEvidenceContext(evaluationContext, { lineageCommitment })
+      ).map((code) => `gate_result_${code}`));
     }
     if (gateRequest && binding &&
         (!exactRef(gateRequest.execution_binding_set_ref, binding, context) ||
@@ -6026,7 +6105,8 @@ export function validateGateResult(value, context = {}) {
       failures.push("gate_result_complete_head_commitment_mismatch");
     }
     const expectedCheckResults = evaluateGateChecks(
-      gateRequest, binding, authority, confirmation, { ...evaluationContext, lineageCommitment }
+      gateRequest, binding, authority, confirmation,
+      deriveEvidenceContext(evaluationContext, { lineageCommitment })
     );
     const expectedDecision = expectedCheckResults.every(({ decision }) => decision === "pass") ? "allow" : "deny";
     if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||
@@ -6081,6 +6161,36 @@ export function validateActionRecord(value, context = {}) {
   } catch {
     return ["action_record_malformed"];
   }
+}
+
+function actionDependencyGraphFailures(action, context = {}) {
+  const binding = resolveObject(context.objectResolver, action?.execution_binding_set_ref);
+  const lineage = resolveObject(context.objectResolver, action?.lineage_commitment_ref);
+  const failures = [];
+  if (!binding || binding.schema !== "cairn.execution_binding_set.v0.1" ||
+      !exactRef(action?.execution_binding_set_ref, binding, context) ||
+      action.execution_binding_set_hash !== binding.binding_set_hash ||
+      (context.requireDependencySignatures === true &&
+        validateResolvedSignedObject(binding, context).length)) {
+    failures.push("action_dependency_binding_mismatch");
+  }
+  if (!lineage || lineage.schema !== "cairn.lineage_commitment.v0.1" ||
+      !exactRef(action?.lineage_commitment_ref, lineage, context) ||
+      action.lineage_commitment_hash !== lineage.commitment_hash ||
+      (context.requireDependencySignatures === true &&
+        validateResolvedSignedObject(lineage, context).length)) {
+    failures.push("action_dependency_lineage_mismatch");
+  }
+  if (binding && lineage &&
+      (binding.principal_id !== action.principal_id || lineage.principal_id !== action.principal_id ||
+       !sameObjectRef(binding.lineage_commitment_ref, action.lineage_commitment_ref) ||
+       binding.lineage_commitment_hash !== action.lineage_commitment_hash ||
+       !sameObjectRef(binding.action_proposal_ref, action.action_proposal_ref) ||
+       binding.action_proposal_hash !== action.action_proposal_hash ||
+       binding.effect_id !== action.effect_id || lineage.effect_id !== action.effect_id)) {
+    failures.push("action_dependency_semantics_mismatch");
+  }
+  return failures;
 }
 
 export function validateActionReceipt(value, before, after, binding, context = {}) {
@@ -6235,6 +6345,12 @@ export function validateActivitySummary(summary, action, state, context = {}) {
     const failures = validatePhase1Object(summary, context);
     failures.push(...validatePhase1Object(action, context).map((code) => `action_${code}`));
     failures.push(...validatePhase1Object(state, context).map((code) => `state_${code}`));
+    if (context.requireDependencySignatures === true) {
+      failures.push(...validateResolvedSignedObject(summary, context).map((code) => `summary_${code}`));
+      failures.push(...validateResolvedSignedObject(action, context).map((code) => `action_${code}`));
+      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));
+      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));
+    }
     if (failures.length) return unique(failures);
     if (!exactRef(summary.action_ref, action, context) || !exactRef(summary.action_state_head_ref, state, context)) failures.push("activity_action_binding_mismatch");
     if (summary.principal_id !== action.principal_id || summary.capability !== action.capability || summary.state !== state.state) failures.push("activity_semantics_mismatch");
@@ -6251,6 +6367,14 @@ export function validateActivityDetail(detail, action, state, binding, lineageSt
     failures.push(...validatePhase1Object(state, context).map((code) => `state_${code}`));
     failures.push(...validatePhase1Object(binding, context).map((code) => `binding_${code}`));
     failures.push(...validatePhase1Object(lineageState, context).map((code) => `lineage_state_${code}`));
+    if (context.requireDependencySignatures === true) {
+      failures.push(...validateResolvedSignedObject(detail, context).map((code) => `detail_${code}`));
+      failures.push(...validateResolvedSignedObject(action, context).map((code) => `action_${code}`));
+      failures.push(...validateResolvedSignedObject(state, context).map((code) => `state_${code}`));
+      failures.push(...validateResolvedSignedObject(binding, context).map((code) => `binding_${code}`));
+      failures.push(...validateResolvedSignedObject(lineageState, context).map((code) => `lineage_state_${code}`));
+      failures.push(...actionDependencyGraphFailures(action, context).map((code) => `action_${code}`));
+    }
     if (failures.length) return unique(failures);
     if (!exactRef(detail.action_ref, action, context) ||
         !exactRef(detail.action_state_head_ref, state, context) ||
@@ -6265,6 +6389,69 @@ export function validateActivityDetail(detail, action, state, binding, lineageSt
     return unique(failures);
   } catch {
     return ["activity_detail_malformed"];
+  }
+}
+
+export function activityListNextCursor(request, response) {
+  if (!isObject(request) || !isObject(response) || !Array.isArray(response.items) ||
+      response.items.length === 0 || response.items.length < request.page_size ||
+      response.total_disclosed <= response.items.length) return null;
+  return canonicalHash({
+    schema: "cairn.execution_activity_list_cursor_preimage.v0.1",
+    prior_cursor: request.cursor,
+    page_size: request.page_size,
+    state_filter: request.state_filter,
+    retrieved_at: response.retrieved_at,
+    last_activity_id: response.items.at(-1).activity_id
+  });
+}
+
+export function validateActivityListResponse(request, response, context = {}) {
+  try {
+    const requestValidate = context.ajv?.getSchema(
+      "https://cairn.cards/protocol/execution/schemas/v0.1/operation-bodies.schema.json#/$defs/activityListRequest"
+    );
+    const responseValidate = context.ajv?.getSchema(
+      "https://cairn.cards/protocol/execution/schemas/v0.1/operation-bodies.schema.json#/$defs/activityListResponse"
+    );
+    if (!requestValidate || !requestValidate(request)) return ["activity_list_request_schema_invalid"];
+    if (!responseValidate || !responseValidate(response)) return ["activity_list_response_schema_invalid"];
+    const failures = [AUTHENTICATED_RESOLUTION_UNSUPPORTED];
+    if (response.items.length > request.page_size || response.total_disclosed < response.items.length) {
+      failures.push("activity_list_page_projection_mismatch");
+    }
+    if (response.next_cursor !== activityListNextCursor(request, response)) {
+      failures.push("activity_list_cursor_mismatch");
+    }
+    const retrievedAt = protocolTime(response.retrieved_at);
+    const activityIds = new Set();
+    const stateFilter = new Set(request.state_filter);
+    for (const summary of response.items) {
+      if (activityIds.has(summary.activity_id)) failures.push("activity_list_duplicate_activity");
+      activityIds.add(summary.activity_id);
+      if (stateFilter.size > 0 && !stateFilter.has(summary.state)) {
+        failures.push("activity_list_state_filter_mismatch");
+      }
+      if (context.principalId !== undefined && summary.principal_id !== context.principalId) {
+        failures.push("activity_list_principal_scope_mismatch");
+      }
+      const itemContext = historicalEvidenceContext(
+        context, response.retrieved_at, response.retrieved_at
+      );
+      const action = resolveObject(context.objectResolver, summary.action_ref, response.retrieved_at);
+      const state = resolveObject(context.objectResolver, summary.action_state_head_ref, response.retrieved_at);
+      if (!Number.isFinite(retrievedAt) || Date.parse(summary.updated_at) > retrievedAt ||
+          !action || !state ||
+          validateActivitySummary(summary, action, state, itemContext).length ||
+          !sameObjectRef(resolveCurrentHead(
+            itemContext, summary.action_state_head_ref, response.retrieved_at
+          ), summary.action_state_head_ref)) {
+        failures.push("activity_list_item_graph_mismatch");
+      }
+    }
+    return unique(failures);
+  } catch {
+    return ["activity_list_response_malformed"];
   }
 }
 

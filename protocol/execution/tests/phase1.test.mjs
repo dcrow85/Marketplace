@@ -43,7 +43,9 @@ import {
   validateActionAuthorization,
   validateActionRecord,
   validateActionReceipt,
+  activityListNextCursor,
   validateActivityDetail,
+  validateActivityListResponse,
   validateActivitySummary,
   validateAuthorityReservation,
   validateBaseObjectResponse,
@@ -143,13 +145,21 @@ function signedReadContext(objects, baseContext = context, controller = null) {
   const derivedController = controller ?? values.find((object) => typeof object?.principal_id === "string")?.principal_id ??
     "cairn:test:read-authority";
   const keyIds = new Set();
+  const controllersByKeyId = new Map();
   const expectedControllersByPointer = { ...(baseContext.expectedControllersByPointer ?? {}) };
   for (const object of values) {
     const schema = schemasByObjectId.get(object?.schema) ?? baseSchemasByObjectId.get(object?.schema);
     for (const pointer of schema?.["x-cairn-signature-pointers"] ?? []) {
       const proof = valueAtPointer(object, pointer);
       keyIds.add(proof.key_id);
-      expectedControllersByPointer[pointer] = derivedController;
+      const proofController = pointer === "/issuing_authority_signature"
+        ? object.issuing_authority_id
+        : ["/principal_signature", "/principal_acceptance_signature",
+          "/principal_high_assurance_signature", "/principal_or_recovery_signature"].includes(pointer)
+          ? object.principal_id
+          : derivedController;
+      controllersByKeyId.set(proof.key_id, proofController);
+      expectedControllersByPointer[pointer] = proofController;
       proof.value = signBytes(null, signatureInput(object.schema, proof.signed_hash),
         readSigningKeyPair.privateKey).toString("base64url");
     }
@@ -160,7 +170,7 @@ function signedReadContext(objects, baseContext = context, controller = null) {
     key_id: keyId,
     key_type: "Ed25519",
     public_key: readSigningKeyPair.publicKey.export({ format: "jwk" }).x,
-    controller: derivedController,
+    controller: controllersByKeyId.get(keyId),
     status: "active",
     not_before: "2026-01-01T00:00:00Z",
     expires_at: "2027-01-01T00:00:00Z",
@@ -1221,8 +1231,9 @@ test("Phase 1 signed objects derive controllers and separate historical validity
   const object = sampleFor(schemasByObjectId.get("cairn.agent_connection_authorization.v0.1"));
   object.not_before = "2026-07-22T09:00:00Z";
   object.expires_at = "2026-07-22T11:00:00Z";
+  if (Object.hasOwn(object, "issued_at")) object.issued_at = "2026-07-22T10:00:00Z";
   object.principal_signature.key_id = "did:example:collector#phase1";
-  object.principal_signature.signed_at = "2026-07-22T10:00:00Z";
+  object.principal_signature.signed_at = "2026-07-22T10:00:01Z";
   const bound = bindObjectHash(object, schemasByObjectId.get(object.schema));
   const proof = valueAtPointer(bound, "/principal_signature");
   proof.value = signBytes(null, signatureInput(bound.schema, proof.signed_hash), privateKey).toString("base64url");
@@ -1271,7 +1282,10 @@ test("Phase 1 signed objects derive controllers and separate historical validity
   };
   assert.deepEqual(validatePhase1SignedObject(bound, functionResolverContext),
     ["phase1_authenticated_resolution_unsupported"]);
-  assert.deepEqual(resolverEvaluationTimes, [[key.key_id, signedContext.now]]);
+  assert.deepEqual(resolverEvaluationTimes, [
+    [key.key_id, bound.principal_signature.signed_at],
+    [key.key_id, signedContext.now]
+  ]);
   const currentlyExpired = { ...key, expires_at: "2026-07-22T10:30:00Z" };
   assert.ok(validatePhase1SignedObject(bound, {
     ...signedContext, now: "2026-07-22T11:00:00Z", keyResolver: new Map([[key.key_id, currentlyExpired]]),
@@ -1282,12 +1296,46 @@ test("Phase 1 signed objects derive controllers and separate historical validity
     ...signedContext, now: "2026-07-22T11:00:00Z", keyResolver: new Map([[key.key_id, currentlyRevoked]]),
     requireCurrentKeyEligibility: true
   }).includes("signature_key_not_currently_eligible"));
+  const splitResolverTimes = [];
   assert.ok(validatePhase1SignedObject(bound, {
+    ...signedContext,
+    now: "2026-07-22T11:00:00Z",
+    requireCurrentKeyEligibility: true,
+    keyResolver: (keyId, evaluationTime) => {
+      splitResolverTimes.push([keyId, evaluationTime]);
+      return evaluationTime === bound.principal_signature.signed_at ? key : currentlyRevoked;
+    }
+  }).includes("signature_key_not_currently_eligible"));
+  assert.deepEqual(splitResolverTimes, [
+    [key.key_id, bound.principal_signature.signed_at],
+    [key.key_id, "2026-07-22T11:00:00Z"]
+  ]);
+  assert.equal(validatePhase1SignedObject(bound, {
     ...signedContext, now: "2026-07-22T09:59:59Z"
-  }).includes("signature_from_future"));
+  }).includes("signature_from_future"), false);
+  const delayedExactReadFailures = validateExactObjectRead(
+    "execution.connection_authorization.get", { ref: refFor(bound) }, bound, signedContext
+  );
+  assert.equal(delayedExactReadFailures.includes("object_read_signature_from_future"), false);
+  const afterSnapshotSeed = structuredClone(bound);
+  afterSnapshotSeed.principal_signature.signed_at = "2026-07-22T10:01:01Z";
+  const afterSnapshot = bindObjectHash(afterSnapshotSeed, schemasByObjectId.get(bound.schema));
+  afterSnapshot.principal_signature.value = signBytes(
+    null,
+    signatureInput(afterSnapshot.schema, afterSnapshot.principal_signature.signed_hash),
+    privateKey
+  ).toString("base64url");
+  assert.ok(validateExactObjectRead(
+    "execution.connection_authorization.get", { ref: refFor(afterSnapshot) }, afterSnapshot,
+    signedContext
+  ).includes("object_read_signature_from_future"));
   const { now: ignoredNow, ...withoutEvaluationTime } = signedContext;
   assert.equal(ignoredNow, "2026-07-22T10:01:00Z");
-  assert.ok(validatePhase1SignedObject(bound, withoutEvaluationTime).includes("signature_evaluation_time_required"));
+  assert.equal(validatePhase1SignedObject(bound, withoutEvaluationTime)
+    .includes("signature_evaluation_time_required"), false);
+  assert.ok(validatePhase1SignedObject(bound, {
+    ...withoutEvaluationTime, requireCurrentKeyEligibility: true
+  }).includes("signature_evaluation_time_required"));
   const malformedKeyFailures = validatePhase1SignedObject(bound, {
     ...signedContext, keyResolver: new Map([[key.key_id, { ...key, key_id: "did:example:other", key_type: "RSA", status: "mystery" }]])
   });
@@ -1737,8 +1785,9 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
     objectResolver: new Map(connectionObjects.map((object) => [refFor(object).object_hash, object]))
   };
   const signedControlContext = signedReadContext(
-    [aggregateBefore, aggregateAfter, controlMapBefore, controlMapAfter,
-      leafBefore, leafAfter, control, receipt, outstandingIndexAfter, controlReceipt],
+    [before, after, aggregateBefore, aggregateAfter, controlMapBefore, controlMapAfter,
+      outstandingActionMap, outstandingIndexBefore, outstandingIndexAfter,
+      outstandingIndexTransition, leafBefore, leafAfter, control, receipt, controlReceipt],
     { ...connectionContext, requireDependencySignatures: true }, before.principal_id
   );
   assert.deepEqual(validateConnectionOutstandingIndexHead(
@@ -1746,6 +1795,44 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
   ), []);
   assert.deepEqual(validateExecutionControlReceipt(controlReceipt, signedControlContext),
     ["phase1_authenticated_resolution_unsupported"]);
+  const peerSequenceDriftReceipt = make("cairn.connection_state_event_receipt.v0.1", {
+    ...receipt, expected_connection_sequence_before: receipt.expected_connection_sequence_before + 7
+  });
+  const controlForPeerSequenceDrift = make("cairn.execution_control_receipt.v0.1", {
+    ...controlReceipt,
+    connection_state_event_receipt_ref: refFor(peerSequenceDriftReceipt),
+    connection_state_event_receipt_hash: peerSequenceDriftReceipt.receipt_hash
+  });
+  const peerSequenceDriftContext = signedReadContext(
+    [peerSequenceDriftReceipt, controlForPeerSequenceDrift], {
+      ...signedControlContext,
+      skipJointPeerValidation: true,
+      controlReceipt: controlForPeerSequenceDrift,
+      objectResolver: new Map(signedControlContext.objectResolver)
+        .set(refFor(peerSequenceDriftReceipt).object_hash, peerSequenceDriftReceipt)
+        .set(refFor(controlForPeerSequenceDrift).object_hash, controlForPeerSequenceDrift)
+    }, before.principal_id
+  );
+  assert.ok(validateExecutionControlReceipt(
+    controlForPeerSequenceDrift, peerSequenceDriftContext
+  ).includes("execution_control_receipt_peer_connection_connection_sequence_mismatch"));
+  const peerMapProofDriftControl = make("cairn.execution_control_receipt.v0.1", {
+    ...controlReceipt,
+    after_change_proof: {
+      ...controlReceipt.after_change_proof,
+      entry_key: `sha-256:${"f".repeat(64)}`
+    }
+  });
+  const peerMapProofDriftContext = signedReadContext([peerMapProofDriftControl], {
+    ...signedControlContext,
+    skipJointPeerValidation: true,
+    controlReceipt: peerMapProofDriftControl,
+    objectResolver: new Map(signedControlContext.objectResolver)
+      .set(refFor(peerMapProofDriftControl).object_hash, peerMapProofDriftControl)
+  }, before.principal_id);
+  assert.ok(validateConnectionEvent(
+    receipt, before, after, peerMapProofDriftContext
+  ).includes("connection_peer_control_execution_control_receipt_map_proof_mismatch"));
   const unresolvedControlAuthorizationContext = {
     ...signedControlContext,
     controlAuthorization: { schema: "cairn.unresolved_control_authorization.v0.1" }
@@ -2653,6 +2740,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   });
   const map = make("cairn.enumerable_map_root.v0.1", {
     map_key: connectionOutstandingMapKey(indexKey), revision: 1,
+    issuing_authority_id: binding.principal_id,
     root_node_ref: refFor(leaf), root_node_hash: leaf.node_hash,
     entry_count: 1, entries_root: leaf.entries_root
   });
@@ -2769,14 +2857,74 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.deepEqual(validateConnectionOutstandingIndexHead(index, mapContext), []);
   assert.ok(validateConnectionOutstandingIndexHead(index, context)
     .includes("connection_outstanding_map_ref_mismatch"));
+  const signedIndexReadContext = signedReadContext(
+    [index, map, leaf, entry, action, actionState, lineage, binding], mapContext
+  );
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_outstanding_action_index.get", { ref: refFor(index) }, index,
-    signedReadContext(index, mapContext)
+    signedIndexReadContext
   ), ["phase1_authenticated_resolution_unsupported"]);
+  const signedEntryReadContext = signedReadContext(
+    [entry, action, actionState, lineage, binding], mapContext
+  );
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_outstanding_action_entry.get", { ref: refFor(entry) }, entry,
-    signedReadContext(entry, mapContext)
+    signedEntryReadContext
   ), ["phase1_authenticated_resolution_unsupported"]);
+  const corruptSignedMap = structuredClone(map);
+  corruptSignedMap.issuing_authority_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_index.get", { ref: refFor(index) }, index, {
+      ...signedIndexReadContext,
+      objectResolver: new Map(signedIndexReadContext.objectResolver)
+        .set(refFor(map).object_hash, corruptSignedMap)
+    }
+  ).includes("object_read_connection_outstanding_map_ref_mismatch"));
+  const corruptSignedActionState = structuredClone(actionState);
+  corruptSignedActionState.action_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_entry.get", { ref: refFor(entry) }, entry, {
+      ...signedEntryReadContext,
+      objectResolver: new Map(signedEntryReadContext.objectResolver)
+        .set(refFor(actionState).object_hash, corruptSignedActionState)
+    }
+  ).includes("object_read_outstanding_action_entry_action_chain_mismatch"));
+  const corruptSignedAction = structuredClone(action);
+  corruptSignedAction.action_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_entry.get", { ref: refFor(entry) }, entry, {
+      ...signedEntryReadContext,
+      objectResolver: new Map(signedEntryReadContext.objectResolver)
+        .set(refFor(action).object_hash, corruptSignedAction)
+    }
+  ).includes("object_read_outstanding_action_entry_action_chain_mismatch"));
+  const corruptSignedLineage = structuredClone(lineage);
+  corruptSignedLineage.authority_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_entry.get", { ref: refFor(entry) }, entry, {
+      ...signedEntryReadContext,
+      objectResolver: new Map(signedEntryReadContext.objectResolver)
+        .set(refFor(lineage).object_hash, corruptSignedLineage)
+    }
+  ).includes("object_read_outstanding_action_entry_action_chain_mismatch"));
+  const corruptSignedBinding = structuredClone(binding);
+  corruptSignedBinding.binding_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_entry.get", { ref: refFor(entry) }, entry, {
+      ...signedEntryReadContext,
+      objectResolver: new Map(signedEntryReadContext.objectResolver)
+        .set(refFor(binding).object_hash, corruptSignedBinding)
+    }
+  ).includes("object_read_outstanding_action_entry_action_chain_mismatch"));
+  const corruptSignedEntry = structuredClone(entry);
+  corruptSignedEntry.authority_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_index.get", { ref: refFor(index) }, index, {
+      ...signedIndexReadContext,
+      objectResolver: new Map(signedIndexReadContext.objectResolver)
+        .set(refFor(entry).object_hash, corruptSignedEntry)
+    }
+  ).includes("object_read_connection_outstanding_map_map_node_leaf_union_mismatch"));
   const liveWrongIndexCount = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
     ...index, outstanding_action_count: 0
   });
@@ -2791,7 +2939,9 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     "execution.connection_outstanding_action_index.get",
     { ref: refFor(liveWrongIndexRoot) },
     liveWrongIndexRoot,
-    signedReadContext(liveWrongIndexRoot, mapContext)
+    signedReadContext(
+      [liveWrongIndexRoot, map, leaf, entry, action, actionState, lineage, binding], mapContext
+    )
   ).includes("object_read_connection_outstanding_map_commitment_mismatch"));
   const liveWrongMapNodeCount = make("cairn.enumerable_map_root.v0.1", {
     ...map, entry_count: map.entry_count + 1
@@ -2807,7 +2957,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     "execution.connection_outstanding_action_entry.get",
     { ref: refFor(liveWrongEntryKey) },
     liveWrongEntryKey,
-    signedReadContext(liveWrongEntryKey, mapContext)
+    signedReadContext([liveWrongEntryKey, action, actionState, lineage, binding], mapContext)
   ).includes("object_read_outstanding_action_entry_key_mismatch"));
   const rootResponse = { ref: refFor(map), object: map, retrieved_at: "2026-07-22T10:00:00Z" };
   const rootRequest = {
@@ -6044,6 +6194,32 @@ test("binding sets separate direct principals from connected runtimes and bind t
   assert.ok(validateBindingSet(value, {
     ...graphContext, currentHeadResolver: currentHeadResolverFor([staleConnectionRef])
   }).includes("binding_connection_state_graph_mismatch"));
+  const proxyStaleConnectionContext = new Proxy({
+    ...graphContext, currentHeadResolver: currentHeadResolverFor([staleConnectionRef])
+  }, {
+    get(target, property, receiver) {
+      return typeof property === "symbol" ? true : Reflect.get(target, property, receiver);
+    }
+  });
+  assert.ok(validateBindingSet(value, proxyStaleConnectionContext)
+    .includes("binding_connection_state_graph_mismatch"));
+  const observedHistoricalConnectionTimes = [];
+  const historicalBindingContext = signedReadContext([value, runtime, authorization, connection], {
+    ...graphContext,
+    currentHeadHistoryResolver: (reference, evaluationTime) => {
+      observedHistoricalConnectionTimes.push(evaluationTime);
+      return reference;
+    }
+  }, value.principal_id);
+  assert.ok(validateExactObjectRead(
+    "execution.binding_set.get", { ref: refFor(value) }, value, historicalBindingContext
+  ).includes("phase1_authenticated_resolution_unsupported"));
+  assert.ok(observedHistoricalConnectionTimes.length > 0);
+  assert.ok(observedHistoricalConnectionTimes.every((instant) => instant === value.created_at));
+  assert.ok(validateExactObjectRead(
+    "execution.binding_set.get", { ref: refFor(value) }, value,
+    { ...historicalBindingContext, currentHeadHistoryResolver: null }
+  ).includes("object_read_binding_connection_state_graph_mismatch"));
   const beforeConnection = make("cairn.execution_binding_set.v0.1", {
     ...value, created_at: "2026-07-22T09:00:00Z"
   });
@@ -6356,6 +6532,34 @@ test("binding sets separate direct principals from connected runtimes and bind t
     ...dataGrantContext,
     currentHeadResolver: currentHeadResolverFor([refFor(connection), staleGrantStateRef])
   }).includes("binding_data_grant_current_head_mismatch"));
+  const proxyStaleGrantContext = new Proxy({
+    ...dataGrantContext,
+    currentHeadResolver: currentHeadResolverFor([refFor(connection), staleGrantStateRef])
+  }, {
+    get(target, property, receiver) {
+      return typeof property === "symbol" ? true : Reflect.get(target, property, receiver);
+    }
+  });
+  assert.ok(validateBindingSet(dataGrantBinding, proxyStaleGrantContext)
+    .includes("binding_data_grant_current_head_mismatch"));
+  const observedHistoricalGrantTimes = [];
+  const historicalGrantBindingContext = signedReadContext(
+    [dataGrantBinding, runtime, authorization, connection, dataGrant, dataGrantState], {
+      ...dataGrantContext,
+      currentHeadHistoryResolver: (reference, evaluationTime) => {
+        observedHistoricalGrantTimes.push(evaluationTime);
+        return reference;
+      }
+    }, value.principal_id
+  );
+  assert.ok(validateExactObjectRead(
+    "execution.binding_set.get", { ref: refFor(dataGrantBinding) },
+    dataGrantBinding, historicalGrantBindingContext
+  ).includes("phase1_authenticated_resolution_unsupported"));
+  assert.ok(observedHistoricalGrantTimes.length >= 2);
+  assert.ok(observedHistoricalGrantTimes.every(
+    (instant) => instant === dataGrantBinding.created_at
+  ));
   const foreignGrantRef = { ...dataGrantRef, object_id: "foreign-data-grant" };
   const crossGrantState = make("cairn.data_grant_state_head.v0.1", {
     ...dataGrantState, data_grant_ref: foreignGrantRef
@@ -6690,6 +6894,18 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   assert.ok(validateActionAuthorization(authorization, binding, {
     ...context, principalRevocationNonce: 1
   }).includes("authorization_principal_revocation_nonce_mismatch"));
+  const proxyAuthorizationContext = new Proxy({
+    ...context, principalRevocationNonce: 1,
+    requiredReservedJudgments: ["evidence_review"]
+  }, {
+    get(target, property, receiver) {
+      return typeof property === "symbol" ? true : Reflect.get(target, property, receiver);
+    }
+  });
+  assert.ok(validateActionAuthorization(authorization, binding, proxyAuthorizationContext)
+    .includes("authorization_principal_revocation_nonce_mismatch"));
+  assert.ok(validateActionAuthorization(authorization, binding, proxyAuthorizationContext)
+    .includes("authorization_reserved_judgments_mismatch"));
   assert.ok(validateActionAuthorization(authorization, binding, {
     ...context, requiredReservedJudgments: ["evidence_review"]
   }).includes("authorization_reserved_judgments_mismatch"));
@@ -7843,7 +8059,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     current_action_state_head: afterAction, current_lineage_state_head: activationBefore,
     current_activity_detail: activityDetail, authority_basis: authorization, authority_reservations: [],
     confirmation_receipt: null, gate_request: null, gate_result: null,
-    retrieved_at: "2026-07-22T10:03:00Z"
+    retrieved_at: actionView.assembled_at
   };
   const actionRequest = { ref: refFor(actionView) };
   const signedCompositeContext = signedActionGetContext(actionResponse);
@@ -7861,6 +8077,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   const historicalKeyResolver = signedCompositeContext.keyResolver;
   const observedHistoricalActionFailures = validateActionGetResponse(actionRequest, actionResponse, {
     ...signedCompositeContext,
+    gateEvaluationTime: "2026-07-22T09:00:00Z",
     currentHeadHistoryResolver: (reference, evaluationTime) => {
       observedActionHistoryTimes.push(evaluationTime);
       return historicalHeadResolver(reference, evaluationTime);
@@ -7872,8 +8089,40 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   });
   assert.ok(observedHistoricalActionFailures.includes("phase1_authenticated_resolution_unsupported"));
   assert.ok(observedActionHistoryTimes.length >= 3);
-  assert.ok(observedActionHistoryTimes.every((instant) => instant === actionResponse.retrieved_at));
-  assert.ok(observedKeyTimes.includes(actionResponse.retrieved_at));
+  assert.ok(observedActionHistoryTimes.every((instant) => instant === actionView.assembled_at));
+  assert.ok(observedKeyTimes.every((instant) => instant === "2026-07-22T10:00:00Z"));
+  const tamperedRetrievalHistoryTimes = [];
+  const tamperedRetrievalFailures = validateActionGetResponse(actionRequest, {
+    ...actionResponse, retrieved_at: "2026-07-22T10:03:00Z"
+  }, {
+    ...signedCompositeContext,
+    currentHeadHistoryResolver: (reference, evaluationTime) => {
+      tamperedRetrievalHistoryTimes.push(evaluationTime);
+      return historicalHeadResolver(reference, evaluationTime);
+    }
+  });
+  assert.ok(tamperedRetrievalFailures.includes("action_get_snapshot_time_mismatch"));
+  assert.ok(tamperedRetrievalHistoryTimes.length >= 3);
+  assert.ok(tamperedRetrievalHistoryTimes.every(
+    (instant) => instant === actionView.assembled_at
+  ));
+  const lateSignedActionView = make("cairn.execution_action_view.v0.1", {
+    ...actionView,
+    activity_service_signature: {
+      ...actionView.activity_service_signature,
+      signed_at: "2026-07-22T10:00:01Z"
+    }
+  });
+  const lateSignedActionResponse = {
+    ...actionResponse,
+    ref: refFor(lateSignedActionView),
+    view: lateSignedActionView,
+    retrieved_at: lateSignedActionView.assembled_at
+  };
+  assert.ok(validateActionGetResponse(
+    { ref: refFor(lateSignedActionView) }, lateSignedActionResponse,
+    signedActionGetContext(lateSignedActionResponse)
+  ).includes("action_get_view_signature_from_future"));
   const liveOnlyHistoryFailures = validateActionGetResponse(actionRequest, actionResponse, {
     ...signedCompositeContext, currentHeadHistoryResolver: null,
     currentHeadResolver: (reference) => reference
@@ -8747,6 +8996,16 @@ test("cancellation authority is an exact projection of one binding and one gate 
     ...signedOriginalContext,
     currentHeadResolver: currentHeadResolverFor([staleOriginalStateRef])
   }).includes("binding_cancellation_original_action_state_not_current"));
+  const proxyCancellationBindingContext = new Proxy({
+    ...signedOriginalContext,
+    currentHeadResolver: currentHeadResolverFor([staleOriginalStateRef])
+  }, {
+    get(target, property, receiver) {
+      return typeof property === "symbol" ? true : Reflect.get(target, property, receiver);
+    }
+  });
+  assert.ok(validateBindingSet(binding, proxyCancellationBindingContext)
+    .includes("binding_cancellation_original_action_state_not_current"));
   const authorization = make("cairn.cancellation_authorization.v0.1", {
     ...seed, execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
     required_confirmation_assurance_policy_ref: binding.confirmation_assurance_policy_ref,
@@ -8788,6 +9047,47 @@ test("cancellation authority is an exact projection of one binding and one gate 
   assert.ok(validateCancellationAuthorization(authorization, binding, {
     ...signedOriginalContext, principalRevocationNonce: authorization.principal_revocation_nonce + 1
   }).includes("cancellation_principal_revocation_nonce_mismatch"));
+  const proxyCancellationContext = new Proxy({
+    ...signedOriginalContext,
+    principalRevocationNonce: authorization.principal_revocation_nonce + 1,
+    currentHeadResolver: currentHeadResolverFor([staleOriginalStateRef]),
+    cancellationReservedJudgmentsResolver: (_principalId, resolvedBinding) => ({
+      binding_ref: refFor(resolvedBinding),
+      review_ref: resolvedBinding.execution_review_receipt_ref,
+      review_hash: resolvedBinding.review_hash,
+      current_policy_hash: resolvedBinding.review_policy_hash,
+      decisions: ["evidence_review"]
+    })
+  }, {
+    get(target, property, receiver) {
+      return typeof property === "symbol" ? true : Reflect.get(target, property, receiver);
+    }
+  });
+  const proxyCancellationFailures = validateCancellationAuthorization(
+    authorization, binding, proxyCancellationContext
+  );
+  for (const code of [
+    "phase1_authenticated_resolution_unsupported",
+    "cancellation_principal_revocation_nonce_mismatch",
+    "cancellation_reserved_judgments_mismatch",
+    "cancellation_original_action_state_not_current"
+  ]) assert.ok(proxyCancellationFailures.includes(code), proxyCancellationFailures.join(","));
+  const proxyUnresolvedJudgmentsContext = new Proxy({
+    ...signedOriginalContext,
+    principalRevocationNonce: authorization.principal_revocation_nonce + 1,
+    currentHeadResolver: currentHeadResolverFor([staleOriginalStateRef]),
+    cancellationReservedJudgmentsResolver: null
+  }, {
+    get(target, property, receiver) {
+      return typeof property === "symbol" ? true : Reflect.get(target, property, receiver);
+    }
+  });
+  const proxyUnresolvedJudgmentFailures = validateCancellationAuthorization(
+    authorization, binding, proxyUnresolvedJudgmentsContext
+  );
+  assert.ok(proxyUnresolvedJudgmentFailures.includes(
+    "cancellation_reserved_judgment_graph_unresolved"
+  ));
   assert.ok(validateCancellationAuthorization(authorization, binding, {
     ...signedOriginalContext, principalRevocationNonce: undefined
   }).includes("cancellation_principal_revocation_nonce_mismatch"));
@@ -8951,9 +9251,30 @@ test("activity surfaces are privacy-minimized projections of exact action state"
   );
   assert.equal(activityListValidate({ cursor: null, page_size: 25, state_filter: ["reserved"] }), true);
   assert.equal(activityListValidate({ cursor: null, page_size: 25, state_filter: ["gate_allowed"] }), false);
-  const binding = make("cairn.execution_binding_set.v0.1");
+  const bindingSeed = make("cairn.execution_binding_set.v0.1");
+  const activityLineage = make("cairn.lineage_commitment.v0.1", {
+    principal_id: bindingSeed.principal_id,
+    principal_occurrence_id: bindingSeed.principal_occurrence_id,
+    principal_authorized_lineage_id: bindingSeed.principal_authorized_lineage_id,
+    action_control_key: bindingSeed.action_control_key,
+    action_proposal_hash: bindingSeed.action_proposal_hash,
+    effect_id: bindingSeed.effect_id
+  });
+  const binding = make("cairn.execution_binding_set.v0.1", {
+    ...bindingSeed,
+    lineage_commitment_ref: refFor(activityLineage),
+    lineage_commitment_hash: activityLineage.commitment_hash
+  });
   const action = make("cairn.action_record.v0.2", {
-    execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash
+    principal_id: binding.principal_id,
+    execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
+    lineage_commitment_ref: refFor(activityLineage),
+    lineage_commitment_hash: activityLineage.commitment_hash,
+    action_proposal_ref: binding.action_proposal_ref,
+    action_proposal_hash: binding.action_proposal_hash,
+    effect_descriptor_ref: binding.effect_descriptor_ref,
+    effect_id: binding.effect_id,
+    capability: binding.capability
   });
   const state = make("cairn.action_state_head.v0.1", {
     action_id: action.action_id, action_ref: refFor(action), sequence: 0, previous_state_hash: null, state: "prepared"
@@ -8963,12 +9284,150 @@ test("activity surfaces are privacy-minimized projections of exact action state"
     capability: action.capability, state: state.state
   });
   assert.deepEqual(validateActivitySummary(summary, action, state, context), []);
+  const activityListRequest = { cursor: null, page_size: 25, state_filter: [state.state] };
+  const activityListResponse = {
+    items: [summary], next_cursor: null, total_disclosed: 1,
+    retrieved_at: summary.updated_at,
+    omitted_fields: [
+      "payee_accounts", "private_budgets", "evidence", "contact_shipping",
+      "full_warning_text", "other_agent_authority"
+    ]
+  };
+  const activityListContext = signedReadContext(
+    [summary, action, state, binding, activityLineage], {
+    ...context,
+    principalId: action.principal_id,
+    objectResolver: new Map([
+      [refFor(action).object_hash, action], [refFor(state).object_hash, state],
+      [refFor(binding).object_hash, binding],
+      [refFor(activityLineage).object_hash, activityLineage]
+    ]),
+    currentHeadHistoryResolver: currentHeadResolverFor([refFor(state)])
+  }, action.principal_id);
+  assert.deepEqual(validateActivityListResponse(
+    activityListRequest, activityListResponse, activityListContext
+  ), ["phase1_authenticated_resolution_unsupported"]);
+  assert.deepEqual(validateActivityListResponse(
+    { ...activityListRequest, page_size: 0 }, activityListResponse, activityListContext
+  ), ["activity_list_request_schema_invalid"]);
+  const { retrieved_at: omittedListSnapshot, ...listWithoutSnapshot } = activityListResponse;
+  assert.equal(omittedListSnapshot, summary.updated_at);
+  assert.deepEqual(validateActivityListResponse(
+    activityListRequest, listWithoutSnapshot, activityListContext
+  ), ["activity_list_response_schema_invalid"]);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse,
+    { ...activityListContext, principalId: "did:example:foreign-principal" }
+  ).includes("activity_list_principal_scope_mismatch"));
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse,
+    { ...activityListContext, currentHeadHistoryResolver: null }
+  ).includes("activity_list_item_graph_mismatch"));
+  assert.ok(validateActivityListResponse(
+    { ...activityListRequest, state_filter: ["reserved"] },
+    activityListResponse, activityListContext
+  ).includes("activity_list_state_filter_mismatch"));
+  assert.ok(validateActivityListResponse(
+    activityListRequest,
+    { ...activityListResponse, items: [summary, summary], total_disclosed: 2 },
+    activityListContext
+  ).includes("activity_list_duplicate_activity"));
+  assert.ok(validateActivityListResponse(
+    { ...activityListRequest, page_size: 1 },
+    { ...activityListResponse, items: [summary, summary], total_disclosed: 2 },
+    activityListContext
+  ).includes("activity_list_page_projection_mismatch"));
+  assert.ok(validateActivityListResponse(
+    activityListRequest, { ...activityListResponse, total_disclosed: 0 }, activityListContext
+  ).includes("activity_list_page_projection_mismatch"));
+  const cursorRequest = { ...activityListRequest, page_size: 1 };
+  const cursorResponseSeed = { ...activityListResponse, total_disclosed: 2 };
+  const expectedNextCursor = activityListNextCursor(cursorRequest, cursorResponseSeed);
+  assert.equal(typeof expectedNextCursor, "string");
+  assert.ok(validateActivityListResponse(
+    cursorRequest, cursorResponseSeed, activityListContext
+  ).includes("activity_list_cursor_mismatch"));
+  assert.deepEqual(validateActivityListResponse(
+    cursorRequest, { ...cursorResponseSeed, next_cursor: expectedNextCursor }, activityListContext
+  ), ["phase1_authenticated_resolution_unsupported"]);
+  const corruptListSummary = structuredClone(summary);
+  corruptListSummary.activity_service_signature.value = "A".repeat(86);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, { ...activityListResponse, items: [corruptListSummary] },
+    activityListContext
+  ).includes("activity_list_item_graph_mismatch"));
+  const lateListSummary = make("cairn.execution_activity_summary.v0.1", {
+    ...summary,
+    activity_service_signature: {
+      ...summary.activity_service_signature,
+      signed_at: "2026-07-22T10:00:01Z"
+    }
+  });
+  const lateListContext = signedReadContext([lateListSummary], {
+    ...activityListContext,
+    objectResolver: new Map(activityListContext.objectResolver)
+  }, action.principal_id);
+  assert.ok(validateActivityListResponse(
+    activityListRequest,
+    { ...activityListResponse, items: [lateListSummary] }, lateListContext
+  ).includes("activity_list_item_graph_mismatch"));
+  const corruptListState = structuredClone(state);
+  corruptListState.action_service_signature.value = "A".repeat(86);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse, {
+      ...activityListContext,
+      objectResolver: new Map(activityListContext.objectResolver)
+        .set(refFor(state).object_hash, corruptListState)
+    }
+  ).includes("activity_list_item_graph_mismatch"));
+  const corruptListAction = structuredClone(action);
+  corruptListAction.action_service_signature.value = "A".repeat(86);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse, {
+      ...activityListContext,
+      objectResolver: new Map(activityListContext.objectResolver)
+        .set(refFor(action).object_hash, corruptListAction)
+    }
+  ).includes("activity_list_item_graph_mismatch"));
+  const corruptListBinding = structuredClone(binding);
+  corruptListBinding.binding_service_signature.value = "A".repeat(86);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse, {
+      ...activityListContext,
+      objectResolver: new Map(activityListContext.objectResolver)
+        .set(refFor(binding).object_hash, corruptListBinding)
+    }
+  ).includes("activity_list_item_graph_mismatch"));
+  const corruptListLineage = structuredClone(activityLineage);
+  corruptListLineage.authority_service_signature.value = "A".repeat(86);
+  assert.ok(validateActivityListResponse(
+    activityListRequest, activityListResponse, {
+      ...activityListContext,
+      objectResolver: new Map(activityListContext.objectResolver)
+        .set(refFor(activityLineage).object_hash, corruptListLineage)
+    }
+  ).includes("activity_list_item_graph_mismatch"));
   const lie = make("cairn.execution_activity_summary.v0.1", { ...summary, state: "reserved" });
   assert.ok(validateActivitySummary(lie, action, state, context).includes("activity_semantics_mismatch"));
+  const lieListContext = signedReadContext([lie], {
+    ...activityListContext,
+    objectResolver: new Map(activityListContext.objectResolver)
+  }, action.principal_id);
+  assert.ok(validateActivityListResponse(
+    { ...activityListRequest, state_filter: [] },
+    { ...activityListResponse, items: [lie] }, lieListContext
+  ).includes("activity_list_item_graph_mismatch"));
   const forbiddenSummary = make("cairn.execution_activity_summary.v0.1", { ...summary, state: "gate_allowed" });
   assert.ok(validateActivitySummary(forbiddenSummary, action, state, context).includes("phase1_object_schema_invalid"));
 
-  const lineageState = make("cairn.lineage_state_head.v0.1");
+  const lineageState = make("cairn.lineage_state_head.v0.1", {
+    principal_occurrence_id: activityLineage.principal_occurrence_id,
+    principal_authorized_lineage_id: activityLineage.principal_authorized_lineage_id,
+    action_control_key: activityLineage.action_control_key,
+    attempt_sequence: activityLineage.attempt_sequence,
+    commitment_generation: activityLineage.commitment_generation,
+    commitment_ref: refFor(activityLineage)
+  });
   const detail = make("cairn.execution_activity_detail.v0.1", {
     action_ref: refFor(action), action_state_head_ref: refFor(state), binding_set_ref: refFor(binding),
     lineage_state_head_ref: refFor(lineageState), principal_id: action.principal_id, state: state.state,
@@ -8979,12 +9438,13 @@ test("activity surfaces are privacy-minimized projections of exact action state"
   assert.ok(validateActivityDetail(detailLie, action, state, binding, lineageState, context)
     .includes("activity_detail_semantics_mismatch"));
   const detailReadContext = signedReadContext(
-    [detailLie, action, state, binding, lineageState],
+    [detailLie, action, state, binding, lineageState, activityLineage],
     {
       ...context,
       objectResolver: new Map([
         [refFor(action).object_hash, action], [refFor(state).object_hash, state],
-        [refFor(binding).object_hash, binding], [refFor(lineageState).object_hash, lineageState]
+        [refFor(binding).object_hash, binding], [refFor(lineageState).object_hash, lineageState],
+        [refFor(activityLineage).object_hash, activityLineage]
       ])
     },
     action.principal_id
@@ -8992,6 +9452,61 @@ test("activity surfaces are privacy-minimized projections of exact action state"
   assert.ok(validateExactObjectRead(
     "execution.activity.detail.get", { ref: refFor(detailLie) }, detailLie, detailReadContext
   ).includes("object_read_activity_detail_semantics_mismatch"));
+  const signedDetailReadContext = signedReadContext(
+    [detail, action, state, binding, lineageState, activityLineage], {
+      ...context,
+      objectResolver: new Map([
+        [refFor(action).object_hash, action], [refFor(state).object_hash, state],
+        [refFor(binding).object_hash, binding], [refFor(lineageState).object_hash, lineageState],
+        [refFor(activityLineage).object_hash, activityLineage]
+      ])
+    }, action.principal_id
+  );
+  const corruptDetailState = structuredClone(state);
+  corruptDetailState.action_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.activity.detail.get", { ref: refFor(detail) }, detail, {
+      ...signedDetailReadContext,
+      objectResolver: new Map(signedDetailReadContext.objectResolver)
+        .set(refFor(state).object_hash, corruptDetailState)
+    }
+  ).includes("object_read_state_signature_invalid"));
+  const corruptDetailAction = structuredClone(action);
+  corruptDetailAction.action_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.activity.detail.get", { ref: refFor(detail) }, detail, {
+      ...signedDetailReadContext,
+      objectResolver: new Map(signedDetailReadContext.objectResolver)
+        .set(refFor(action).object_hash, corruptDetailAction)
+    }
+  ).includes("object_read_action_signature_invalid"));
+  const corruptDetailBinding = structuredClone(binding);
+  corruptDetailBinding.binding_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.activity.detail.get", { ref: refFor(detail) }, detail, {
+      ...signedDetailReadContext,
+      objectResolver: new Map(signedDetailReadContext.objectResolver)
+        .set(refFor(binding).object_hash, corruptDetailBinding)
+    }
+  ).includes("object_read_binding_signature_invalid"));
+  const corruptDetailLineageState = structuredClone(lineageState);
+  corruptDetailLineageState.authority_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.activity.detail.get", { ref: refFor(detail) }, detail, {
+      ...signedDetailReadContext,
+      objectResolver: new Map(signedDetailReadContext.objectResolver)
+        .set(refFor(lineageState).object_hash, corruptDetailLineageState)
+    }
+  ).includes("object_read_lineage_state_signature_invalid"));
+  const corruptDetailLineage = structuredClone(activityLineage);
+  corruptDetailLineage.authority_service_signature.value = "A".repeat(86);
+  assert.ok(validateExactObjectRead(
+    "execution.activity.detail.get", { ref: refFor(detail) }, detail, {
+      ...signedDetailReadContext,
+      objectResolver: new Map(signedDetailReadContext.objectResolver)
+        .set(refFor(activityLineage).object_hash, corruptDetailLineage)
+    }
+  ).includes("object_read_action_action_dependency_lineage_mismatch"));
   for (const forbidden of [
     { state: "gate_allowed" },
     { receiver_truth_status: "receiver_confirmed" },
