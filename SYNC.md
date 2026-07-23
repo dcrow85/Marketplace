@@ -64,6 +64,16 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative store + signed observation design]` 2026-07-23 · Codex —
+  The independently audited BYO checkpoint permits the next threshold. This lane
+  now owns a new external change spec for authoritative atomic nonce,
+  idempotency, object-identity/ACL, runtime-binding, and DataGrant state plus a
+  signed single-read service-observation sidecar. The exact nine-operation
+  `protocol/` tree stays frozen: no new operation, execution verb, authority,
+  payment, continuation-delivery, production, push, or deploy claim. The first
+  implementation target will be a durable local reference store and observation
+  drill outside `protocol/`, only after the spec receives independent audit.
+
 - `[passive]` 2026-07-23 · Codex —
   **The BYO replacement checkpoint is independently closed at exact commit
   `5216424`.** Two final cold audits returned PASS with zero
