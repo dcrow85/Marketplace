@@ -2,10 +2,12 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: rounds 1–38 findings remediated; replacement candidate pending exact freeze and three-reviewer gate
-Prose dependency SHA-256: `3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec`
-Candidate internal bundle hash: `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`
-Candidate operation-registry hash: `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`
+Status: exact freeze `26b701609583ec7e518526b0ae78aed46c10fc19` rejected; Round-39 remediations pass local 31/31 authored controls and 419/419 exact-once direct mutants, pending containing-commit freeze and three-reviewer verification
+Round-39 amendment: 2026-07-23
+Rejected-freeze prose dependency SHA-256: `3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec`
+Replacement prose dependency SHA-256: `2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb`
+Replacement internal bundle hash: `sha-256:6efd61d6413dc106abab1fcf663e3fa6c1f51ce771767ada5ce2afb5b90e4c1d`
+Replacement operation-registry hash: `sha-256:18b9b4595f058669d2f4b639ae4d5266634487cf8f92b15d1129aab69859bccd`
 
 ## Claim boundary
 
@@ -20,35 +22,50 @@ The package pins and does not widen the proposal foundation:
 - base bundle: `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`;
 - base registry: `sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b`.
 
-## Candidate contents
+## Replacement containment target
 
-- 51 JSON Schema documents in the bundle, including 46 closed signed-object
-  schemas and one content-addressed enumerable-map node schema;
+- 50 JSON Schema documents: 45 closed signed-object schemas, one
+  content-addressed enumerable-map node schema, and four support documents;
 - all nine closed execution-chain versions required by §7.2 of the prose spec,
   including `CancellationAuthorization`;
 - connection, execution-control, compartment, confirmation, mandate v0.3,
   binding-set, lineage, activity-summary, activity-detail, and action-view
   objects;
-- 34 separately namespaced registry operations, all present in the audited prose
-  operation list;
+- 46 structural object schemas and 29 separately namespaced schema-only read
+  operations;
+- no standalone map, transition-manifest, compartment, compartment-state, or
+  compartment-transition getter;
+- structurally deny-only GateResult, no RedemptionReceipt schema, and
+  structurally forbidden recovery-bearing control branches;
+- maps and transition manifests retained as internal dependency vocabulary;
+  provisional-terminal and compartment-transition receipts are excluded from
+  `receipt.get`;
+- nonempty disclosures, external accounting leaves, protection attestations,
+  and financial external truth are unavailable;
+- ten unsupported gate predicates, including `EXECUTION_CONTROLS`, always deny;
 - zero mutating operations, zero external-effect operations, and zero authority
   effects;
 - strict I-JSON source checking for the hand-authored manifest, RFC 8785/JCS
-  bundle hashing, strict signed-object annotations, and Ed25519 validation; and
-- three closed generic-read response families: exactly 12 pinned proposal
-  objects for `base_object.get`, two policy objects for `policy.get`, and 11
-  receipt objects for `receipt.get`, with exact returned-ref and sibling
-  ref/hash validation;
-- deterministic high-risk validators for exact release, controller, connection,
-  control-target, provider-enforced compartment limits, capability-specific
-  mandate/binding branches, declared sibling ref/hash equality, closed control-
-  receipt and lineage-state unions, monotonic lineage fences, aggregate inline-
-  entry bounds, exact reservation inventory preservation, prefix-preserving
-  early-terminal action state, manifest key/issuer derivation, and activity-state bindings.
+  bundle hashing, strict signed-object annotations, and Ed25519 signature math;
+  and
+- conditional intrinsic checks for namespace and aggregate-control chains,
+  action-state predecessors, the shared joint connection/control pair,
+  true-as-of key/head evaluation, and causal control chronology.
 
-## Local authored controls
+Caller resolvers, key maps, current-head callbacks, role callbacks, Boolean ACL
+flags, and external verifier callbacks are conditional inputs and never
+establish authenticated authority. High-level authenticated reads, gates,
+composite action validation, live cancellation, and joint-control currentness
+return `phase1_authenticated_resolution_unsupported` until a separately frozen
+rooted-proof profile exists. Low-level helpers are structural or conditional
+consistency checks, not authorizers.
 
-The current local suite passes 31/31 controls:
+## Rejected-freeze local authored controls
+
+The rejected `26b7016` freeze reported 31/31 authored controls. Those totals are
+not evidence for the narrowed replacement. Round-39 tests are changing and the
+replacement unit total is pending a complete rerun. This list records the
+rejected freeze's intended coverage for audit history:
 
 1. fixed prose and proposal dependency pins;
 2. deterministic bundle and registry bytes;
@@ -97,9 +114,12 @@ The current local suite passes 31/31 controls:
     cancellation state, exact execution-control/namespace transitions,
     reservation provenance, and confirmed-event correlation.
 
-## Direct mutation controls
+## Rejected-freeze direct mutation controls
 
-The package kills 390/390 direct mutants. Covered failure families are:
+The rejected freeze killed 390/390 declared direct mutants. The replacement
+adds and retires controls; its exact total is pending a full exact-once catalogue
+check and rerun. The following coverage narrative is retained as rejected-freeze
+history, not a green claim for the replacement:
 
 - prose, base-bundle, and base-registry drift;
 - accidentally mutating or effectful operation advertisement;
@@ -521,22 +541,69 @@ history, not the current candidate. No reviewer edited candidate files.
 
 | ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
 |---|---:|---|---|---|
-| P1R38-001 | P1 | Several of the 19 gate predicates remained shallow projections of missing or caller-shaped roles, yet the partial machine could still represent an `allow` result and redemption | accepted_and_fixed | Phase 1 is now explicitly deny-only: missing roles deny, nine predicates without authoritative evaluators always deny, every `allow` GateResult is rejected, every redemption is unsupported, and direct mutants protect each boundary |
+| P1R38-001 | P1 | Several of the 19 gate predicates remained shallow projections of missing or caller-shaped roles, yet the partial machine could still represent an `allow` result and redemption | accepted_and_fixed | The Round-38 replacement made nine predicates deny and rejected allow/redemption at specialized validators; Round 39 further makes GateResult structurally deny-only, removes RedemptionReceipt, and adds `EXECUTION_CONTROLS` as the tenth unsupported predicate |
 | P1R38-002 | P1 | Cancellation did not unconditionally authenticate the original action/state or prove that the original state remained current; gate attestations, wrappers, signatures, and current-head resolution could be evaluated after the claimed gate instant | accepted_and_fixed | Original action and state signatures are always required, live cancellation requires the exact current state, source/wrapper/signature chronology is bounded by `evaluated_at`, and the current-head resolver receives the recorded evaluation time |
 | P1R38-003 | P1 | An inline disclosure could make an exhausted DataGrant head eligible as a forged final-read shortcut | accepted_and_fixed | BindingSet requires a current `active` head with positive reads; exhausted heads remain historical only, including when named by an inline disclosure |
 | P1R38-004 | P1 | Global/scoped control transitions, recovery use, namespace rotation, scoped target identity, and connection/outstanding-index authority were not one closed machine | accepted_and_fixed | Added derived scoped keys, one exact transition matrix, virtual scoped genesis, global/scoped separation, exact generation rotation, connection-only outstanding-index binding, and fail-closed unsupported recovery |
 | P1R38-005 | P1 | Compartment transitions could rewrite reservation provenance or insert confirmed events without exact obligation/component/amount correlation to the atom deltas | accepted_and_fixed | Reservation identity is immutable, every reservation change requires its matching reserved-class delta, and each confirmed group requires one exact domain-separated event with checked amount and no extras |
 | P2R38-006 | P2 | The release claim treated a lockfile/package-local install as byte verification of the installed transitive dependency tree | accepted_and_fixed | Claims are narrowed to exact lockfile/source commitments plus a disposable clean `npm ci --ignore-scripts` replay; no arbitrary installed-tree byte attestation is claimed |
-| P2R38-007 | P2 | Prose and release docs lagged the machine on grant-head commitments, final-read behavior, recovery availability, control unions, and candidate/count evidence | accepted_and_fixed | The fixed prose, package README, coordination marker, and this register now state the exact deny-only Phase-1 boundary and 31/31 plus 390/390 local controls |
+| P2R38-007 | P2 | Prose and release docs lagged the machine on grant-head commitments, final-read behavior, recovery availability, control unions, and candidate/count evidence | accepted_and_fixed | Round-38 documents recorded the then-current 31/31 and 390/390 evidence; Round 39 marks those as rejected-freeze history and records replacement-local 31/31 and 419/419 evidence pending frozen replay |
 
-The current replacement candidate is the exact bundle and registry hash at the
-top of this register. It has 51 schema documents: 46 signed object families,
-one content-addressed map-node family, and four bundle/registry/common
-documents. It exposes 34 schema-only read operations, passes 31/31 authored
-test groups, and kills 390/390 direct mutants. The unchanged proposal baseline
-passes 83/83 and kills 75/75 mutants. These bytes are prepared for a new exact
-freeze; closure remains open until fresh blind semantic, blind state/mutation,
-and informed release reviewers all accept that commit.
+The fourth exact freeze, commit
+`26b701609583ec7e518526b0ae78aed46c10fc19`, was rejected by the Round-39
+informed regression, context-blind authority, and context-blind
+state/transition audits. The informed reviewer independently reproduced its
+bundle `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`,
+registry `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`,
+31/31 authored controls, 390/390 killed direct mutants, clean install,
+byte-identical build, unchanged proposal 83/83 controls and 75/75 mutants, and
+clean exact-commit worktree. Those results establish reproducibility, not
+semantic acceptance.
+
+## Independent audit round 39 — rejected freeze and remediation ledger
+
+All three reviewers were read-only. Every finding below is accepted. The
+remediation disposition is `accepted_and_fixed`; the working replacement passes
+31/31 authored controls and kills 419/419 exact-once direct mutants. Closure
+remains pending until the containing commit is frozen and those results are
+reproduced by fresh reviewers. “Fixed” therefore records implementation
+disposition, not closure.
+
+| ID | Report | Sev. | Independent finding | Disposition | Replacement remediation | Verification |
+|---|---|---:|---|---|---|---|
+| P1R39-I-001 | informed regression | P1 | Joint control validated the connection receipt's presence/signature/correlation but did not invoke the complete connection action/leaf/state relation | accepted_and_fixed | One shared non-recursive joint-pair validator is invoked from both receipt directions and binds authorization target, transaction, commit, aggregate, scoped leaf, connection transition, and index head | pending |
+| P2R39-I-002 | informed regression | P2 | Historical signature eligibility used the latest key status and rejected evidence evaluated before a later revocation | accepted_and_fixed | Key resolution takes the semantic evaluation instant; signing-time validity and as-of eligibility are distinct, and missing authenticated history fails closed | pending |
+| P2R39-I-003 | informed regression | P2 | A historical joint receipt compared its index head with retrieval-time currentness, so later legitimate advancement invalidated old evidence | accepted_and_fixed | Current-head resolution takes `committed_at` for historical receipts and live time for live reads; no latest-head fallback is permitted | pending |
+| P2R39-I-004 | informed regression | P2 | Control tests/mutants did not exhaust the global/scoped/joint transition matrix, and only one of the unsupported gate predicates had an isolated mutant | accepted_and_fixed | Replacement controls cover every control edge and each of 19 gate predicates plus each of ten unsupported guards with exact-once mutation anchors | pending |
+| P2R39-I-005 | informed regression | P2 | Release register and coordination state described the exact frozen commit as still awaiting freeze | accepted_and_fixed | Documents distinguish rejected `26b7016`, locally verified replacement evidence, and a future containing-commit freeze without a self-referential hash | pending |
+| P2R39-A-001 | blind authority | P2 | External protection was accepted from a shallow stub, while bundled confirmation policy/profile signatures were not cryptographically consumed | accepted_and_fixed | Compartment/protection and financial external truth are unavailable; compartment getters are removed; bundled policy/profile dependencies require signed validation | pending |
+| P2R39-A-002 | blind authority | P2 | Exact-read dispatch omitted aggregate-control, namespace, and current action-state chain semantics | accepted_and_fixed | Intrinsic namespace/aggregate validators and the exact action predecessor chain are required by retained composite reads | pending |
+| P2R39-A-003 | blind authority | P2 | Standalone transition-manifest reads authenticated structure/key IDs and a Boolean ACL rather than a signed access decision | accepted_and_fixed | Standalone manifest getter and request family are removed; manifests remain internal typed commitments and their signatures are checked when reached | pending |
+| P2R39-A-004 | blind authority | P2 | Generic structural validation admitted an `allow` GateResult and RedemptionReceipt although specialized paths denied them | accepted_and_fixed | GateResult is structurally deny-only; RedemptionReceipt is removed; action-state redemption refs and recovery branches are structurally null | pending |
+| P2R39-A-005 | blind authority | P2 | The generic map getter advertised multiple owner domains but authenticated only one hard-coded parent shape | accepted_and_fixed | Standalone map getter and request/response family are removed; maps remain internal content-addressed dependency structures | pending |
+| P2R39-A-006 | targeted blind authority follow-up | P2 | Deny-only GateResult coexisted with a structurally valid `gate_allowed` ActionState and ActionReceipt edges into removed post-redemption states; the receipt also retained effect-bearing fields | accepted_and_fixed | Removed `gate_allowed` and every post-redemption action branch; ActionReceipt is limited to preparatory/reservation/cancellation/failure/quarantine edges and structurally empty/null effect, receiver, and exposure fields | pending |
+| P1R39-S-001 | blind state/transition | P1 | Caller-authored key/controller/current-head/role data and always-true verifiers could establish apparent authenticated success | accepted_and_fixed | Raw resolvers and callbacks are conditional only; high-level authenticated paths return `phase1_authenticated_resolution_unsupported` until a frozen rooted-proof profile exists | pending |
+| P1R39-S-002 | blind state/transition | P1 | Gate control evaluation saw the aggregate head but could omit an applicable revoked or frozen scoped leaf | accepted_and_fixed | `EXECUTION_CONTROLS` becomes the tenth unsupported check and always denies; aggregate evidence is not presented as proof of scoped state | pending |
+| P1R39-S-003 | blind state/transition | P1 | Disclosure entries were projected but their authorization, source-read consumption, reservation, and successor graph were not validated | accepted_and_fixed | Phase-1 binding disclosures are structurally empty-only; nonempty values fail schema validation before semantic dispatch | pending |
+| P1R39-S-004 | blind state/transition | P1 | Reservation, economic-atom, and confirmed-event map leaves could be blessed by a Boolean external callback | accepted_and_fixed | Nonempty leaves in all three external accounting domains return stable unsupported before any external callback | pending |
+| P1R39-S-005 | blind state/transition | P1 | Control authorization, namespace, predecessor, successor, commit, and receipt signatures lacked one complete causal chronology | accepted_and_fixed | One ordered-time relation covers all retained control branches, including legal same-second equality | pending |
+| P1R39-S-006 | blind state/transition | P1 | `LineageProvisionalTerminalReceipt` was reachable through `receipt.get` without intrinsic cause/state, predecessor, absence-proof, commitment, and chronology validation | accepted_and_fixed | The family is excluded from `receipt.get` and retained only as future structural vocabulary | pending |
+
+The agreed replacement target contains 50 schema documents: 45 signed object
+families, one content-addressed map-node family, and four support documents. It
+contains 46 object schemas and exposes 29 schema-only read operations. Five
+standalone getters are removed; `receipt.get` also excludes provisional-terminal
+and compartment-transition receipts. GateResult is structurally deny-only,
+RedemptionReceipt is absent, and recovery is structurally forbidden.
+ActionState and ActionReceipt expose no gate-allowed or post-redemption branch;
+ActionReceipt effect, receiver, and exposure fields are empty/null-only.
+
+The replacement passes 31/31 authored controls and kills 419/419 exact-once
+direct mutants locally. A disposable fresh `npm ci --ignore-scripts` replay
+reproduces both totals and byte-identical bundle/registry outputs. The unchanged
+proposal baseline also reproduces 83/83 authored controls and 75/75 killed
+mutants; both package dependency audits report zero known vulnerabilities.
+Reference-service work is blocked pending the frozen-review gate.
 
 ## Local remediation ledger
 
@@ -555,12 +622,14 @@ and informed release reviewers all accept that commit.
 
 This register remains open until a reviewer who did not author the candidate:
 
-1. verifies the candidate hash before and after a read-only review;
-2. reproduces all 31 authored controls and 390 killed mutants;
+1. verifies the replacement containing-commit hash, bundle hash, registry hash,
+   and repinned prose hash before and after a read-only review;
+2. reproduces the new authored-control and direct-mutant totals reported by the
+   completed Round-39 rerun, with every mutation anchor matching exactly once;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
-4. audits field closure against the fixed prose, especially the execution-chain
-   objects and binding-set unions;
+4. audits the exact 29-operation, 46-object, 50-document containment surface,
+   its removed generic-response families, and its structural deny boundaries;
 5. reports zero open P0/P1 and no material unowned P2; and
 6. confirms explicitly that machine-bundle closure would still not authorize an
    execution service, mutation endpoint, payment, deployment, or conformance
@@ -571,4 +640,5 @@ source: shared core validation, strict-JSON preflight, README, manifest,
 package metadata and lock, every library module, all three local scripts, the
 test suite, and the direct-mutant catalogue. Editing semantic validator code
 without changing the internal candidate hash is therefore a tested build
-failure, not an accepted review condition.
+failure, not an accepted review condition. Reference-service construction
+remains blocked until this gate accepts the exact containing commit.

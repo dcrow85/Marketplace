@@ -3,7 +3,7 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec";',
+    search: 'export const SPEC_SHA256 = "2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb";',
     replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
@@ -127,12 +127,12 @@ export const PHASE1_MUTANTS = [
     test: "control authorization enforces the exact target and recovery unions"
   },
   {
-    id: "control-recovery-no-resume",
-    finding: "recovery-authority-widening",
+    id: "recovery-authorization-schema-nonnull",
+    finding: "phase1-recovery-authorization-schema-reopened",
     file: "lib/schema-factory.mjs",
-    search: '        control_action: { enum: ["pause", "freeze_new_redemptions", "revoke"] },',
-    replace: '        control_action: { enum: ["pause", "resume", "freeze_new_redemptions", "revoke"] },',
-    test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
+    search: '      ...nullProperties(recovery),\n      reason_code: { enum: ["user_requested", "suspected_compromise", "policy_violation", "administrative_hold"] }',
+    replace: '      ...nonNullProperties(recovery),\n      reason_code: { enum: ["user_requested", "suspected_compromise", "policy_violation", "administrative_hold"] }',
+    test: "control authorization enforces the exact target and recovery unions"
   },
   {
     id: "connection-sequence",
@@ -264,19 +264,19 @@ export const PHASE1_MUTANTS = [
     expectedOutput: "array lacks the release-bound maxItems"
   },
   {
-    id: "transition-manifest-private-acl",
-    finding: "transition-manifest-disclosure",
+    id: "removed-transition-manifest-getter-reintroduced",
+    finding: "deny-only-registry-reopens-transition-manifest-read",
     file: "lib/profile.mjs",
-    search: '  read("execution.transition_manifest.get", "enumerable-transition-manifest.schema.json", "inherited_parent_private_or_audit_acl", "transitionManifestRequest"),',
-    replace: '  read("execution.transition_manifest.get", "enumerable-transition-manifest.schema.json", "public", "objectRefRequest"),',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    search: '  read("execution.execution_resource_bounds_profile.get", "execution-resource-bounds-profile.schema.json", "public"),',
+    replace: '  read("execution.execution_resource_bounds_profile.get", "execution-resource-bounds-profile.schema.json", "public"),\n  read("execution.transition_manifest.get", "enumerable-transition-manifest.schema.json", "inherited_parent_private_or_audit_acl"),',
+    test: "operation envelopes and registry metadata close compatibility before dispatch"
   },
   {
-    id: "gate-allow-all-checks",
-    finding: "inert-gate-invariant",
+    id: "gate-result-schema-deny-witness-removed",
+    finding: "gate-result-structural-deny-weakened",
     file: "lib/schema-factory.mjs",
-    search: '      if: { properties: { decision: { const: "allow" } } },',
-    replace: '      if: { properties: { decision: { const: "never" } } },',
+    search: '        contains: { type: "object", properties: { decision: { const: "deny" } }, required: ["decision"] }',
+    replace: '        contains: { type: "object", properties: { decision: { enum: ["pass", "deny"] } }, required: ["decision"] }',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -307,8 +307,8 @@ export const PHASE1_MUTANTS = [
     id: "signature-historical-validity",
     finding: "revocation-does-not-rewrite-history",
     file: "lib/validation.mjs",
-    search: '      if (context.requireCurrentKeyEligibility === true &&\n          (key.status !== "active" || now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (keyRevokedAt !== null && now >= keyRevokedAt))) failures.push("signature_key_not_currently_eligible");',
-    replace: '      if (key.status !== "active") failures.push("signature_key_not_currently_eligible");',
+    search: '      if (context.requireCurrentKeyEligibility === true &&\n          (now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (key.status === "revoked" && keyRevokedAt === null) ||\n           (keyRevokedAt !== null && now >= keyRevokedAt))) {',
+    replace: '      if (key.status !== "active" || (context.requireCurrentKeyEligibility === true &&\n          (now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (key.status === "revoked" && keyRevokedAt === null) ||\n           (keyRevokedAt !== null && now >= keyRevokedAt)))) {',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
@@ -333,15 +333,15 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '      if (!permitted?.has(entry.entry_kind)) failures.push("transition_manifest_kind_matrix_invalid");',
     replace: '      if (false) failures.push("transition_manifest_kind_matrix_invalid");',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    test: "transition manifests remain intrinsically typed while their direct getter is absent"
   },
   {
-    id: "transition-manifest-parent-acl",
-    finding: "transition-manifest-parent-authority",
+    id: "intrinsic-control-namespace-dispatch",
+    finding: "control-namespace-skips-intrinsic-validation",
     file: "lib/validation.mjs",
-    search: '    if (context.parentAccessAuthorized !== true) failures.push("transition_manifest_parent_acl_denied");',
-    replace: '    if (false) failures.push("transition_manifest_parent_acl_denied");',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    search: '    case "cairn.execution_control_namespace.v0.1": return validateExecutionControlNamespace(object, context);',
+    replace: '    case "cairn.execution_control_namespace.v0.1": return [];',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
   },
   {
     id: "reservation-lineage-fence",
@@ -369,12 +369,12 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "redemption-allow-only",
-    finding: "redemption-denied-gate",
-    file: "lib/validation.mjs",
-    search: '    if (!gateResult || gateResult.decision !== "allow" ||\n        validateGateResult(gateResult, { ...context, gateRequest, binding }).length ||\n        !exactRef(value.gate_result_ref, gateResult, context) || value.gate_result_hash !== gateResult.result_hash) {',
-    replace: '    if (false) {',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+    id: "recovery-receipt-schema-nonnull",
+    finding: "phase1-recovery-receipt-schema-reopened",
+    file: "lib/schema-factory.mjs",
+    search: '      { properties: nullProperties(recovery) }',
+    replace: '      { properties: nonNullProperties(recovery) }',
+    test: "control receipts and lineage heads enforce closed state unions"
   },
   {
     id: "signature-evaluation-time-required",
@@ -476,8 +476,8 @@ export const PHASE1_MUTANTS = [
     id: "signature-current-temporal-eligibility",
     finding: "current-key-eligibility-ignores-time",
     file: "lib/validation.mjs",
-    search: '      if (context.requireCurrentKeyEligibility === true &&\n          (key.status !== "active" || now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (keyRevokedAt !== null && now >= keyRevokedAt))) failures.push("signature_key_not_currently_eligible");',
-    replace: '      if (context.requireCurrentKeyEligibility === true && key.status !== "active") failures.push("signature_key_not_currently_eligible");',
+    search: '      if (context.requireCurrentKeyEligibility === true &&\n          (now === null || now < keyNotBefore || now >= keyExpiresAt ||\n           (key.status === "revoked" && keyRevokedAt === null) ||\n           (keyRevokedAt !== null && now >= keyRevokedAt))) {',
+    replace: '      if (context.requireCurrentKeyEligibility === true &&\n          (key.status === "revoked" && keyRevokedAt === null)) {',
     test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
@@ -537,12 +537,12 @@ export const PHASE1_MUTANTS = [
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
   {
-    id: "transition-manifest-parent-subject-domain",
-    finding: "manifest-parent-subject-domain-drift",
-    file: "lib/validation.mjs",
-    search: '      manifest.manifest_kind === manifestKind && sameObjectRef(manifest.subject_ref, parent[subjectRefField]) &&',
-    replace: '      manifest.manifest_kind === manifestKind && true &&',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    id: "removed-compartment-getter-reintroduced",
+    finding: "deny-only-registry-reopens-compartment-read",
+    file: "lib/profile.mjs",
+    search: '  read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),',
+    replace: '  read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),\n  read("execution.compartment.get", "agent-execution-compartment.schema.json", "owner_or_exact_runtime_audit_control_grant"),',
+    test: "operation envelopes and registry metadata close compatibility before dispatch"
   },
   {
     id: "binding-set-grant-current-head-hash",
@@ -553,12 +553,12 @@ export const PHASE1_MUTANTS = [
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
   {
-    id: "transition-manifest-economic-cause-schema",
-    finding: "manifest-parent-untyped-economic-cause",
-    file: "lib/validation.mjs",
-    search: '        parent.economic_mutation_cause_core_ref.schema !== "cairn.economic_mutation_cause_core.v0.1") {',
-    replace: '        false) {',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    id: "removed-compartment-state-getter-reintroduced",
+    finding: "deny-only-registry-reopens-compartment-state-read",
+    file: "lib/profile.mjs",
+    search: '  read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),',
+    replace: '  read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),\n  read("execution.compartment_state.get", "compartment-state-head.schema.json", "owner_or_exact_runtime_audit_control_grant"),',
+    test: "operation envelopes and registry metadata close compatibility before dispatch"
   },
   {
     id: "transition-manifest-lifecycle-schema-vocabulary",
@@ -566,7 +566,7 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '          !LIFECYCLE_TRANSITION_RECEIPT_SCHEMAS.has(entry.entry_object_ref.schema)) {',
     replace: '          !entry.entry_object_ref.schema.endsWith("_transition_receipt.v0.1")) {',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    test: "transition manifests remain intrinsically typed while their direct getter is absent"
   },
   {
     id: "compartment-enforced-cap",
@@ -649,11 +649,11 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "action-terminal-prefix-schema",
-    finding: "early-terminal-state-schema-contradiction",
+    id: "action-redemption-reference-reopened",
+    finding: "removed-redemption-schema-remains-reachable-from-action-state",
     file: "lib/schema-factory.mjs",
-    search: '      ...["cancelled", "definitive_failure", "quarantined"].flatMap(terminalBranches),',
-    replace: '      ...["cancelled", "definitive_failure", "quarantined"].map((state) =>\n        actionStateBranch(state, { nonnull: later, reservations: "nonempty" })),',
+    search: '      { properties: { redemption_receipt_ref: { type: "null" } } },',
+    replace: '      { properties: { redemption_receipt_ref: ref() } },',
     test: "action state is append-only and receiver states require receiver evidence"
   },
   {
@@ -670,23 +670,23 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '      if (entry.entry_key !== transitionManifestEntryKey(entry)) failures.push("transition_manifest_entry_key_mismatch");',
     replace: '      if (false) failures.push("transition_manifest_entry_key_mismatch");',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    test: "transition manifests remain intrinsically typed while their direct getter is absent"
   },
   {
-    id: "transition-manifest-parent-authority-key",
-    finding: "manifest-signed-by-different-authority-key-than-parent",
-    file: "lib/validation.mjs",
-    search: '    if (parentAuthorityKeyId === null || manifestAuthorityKeyId !== parentAuthorityKeyId) {',
-    replace: '    if (false) {',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    id: "removed-compartment-transition-getter-reintroduced",
+    finding: "deny-only-registry-reopens-compartment-transition-read",
+    file: "lib/profile.mjs",
+    search: '  read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),',
+    replace: '  read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),\n  read("execution.compartment_state_transition_receipt.get", "compartment-state-transition-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),',
+    test: "operation envelopes and registry metadata close compatibility before dispatch"
   },
   {
-    id: "transition-manifest-issuer-controller",
-    finding: "manifest-issuer-id-not-key-controller",
-    file: "lib/validation.mjs",
-    search: '    if (!manifestAuthorityKey || manifestAuthorityKey.controller !== manifest.issuing_authority_id) {',
-    replace: '    if (false) {',
-    test: "transition manifests are typed, complete, sorted, and readable only through an authorized naming parent"
+    id: "receipt-union-compartment-transition-reintroduced",
+    finding: "removed-compartment-receipt-remains-generic-readable",
+    file: "lib/schema-factory.mjs",
+    search: '  "cairn.connection_state_event_receipt.v0.1",',
+    replace: '  "cairn.connection_state_event_receipt.v0.1",\n  "cairn.compartment_state_transition_receipt.v0.1",',
+    test: "generic read responses are typed and bind the exact returned object"
   },
   {
     id: "refs32-exact-bound",
@@ -737,36 +737,12 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "binding-disclosure-ref-hash-recursion",
-    finding: "nested-disclosure-ref-hash-drift",
-    file: "lib/validation.mjs",
-    search: '    for (const disclosure of value.disclosures) {\n      failures.push(...refHashPairFailures(disclosure, DISCLOSURE_REF_HASH_PAIRS, "binding_disclosure_ref_hash_mismatch"));\n    }',
-    replace: '    for (const disclosure of []) {\n      failures.push(...refHashPairFailures(disclosure, DISCLOSURE_REF_HASH_PAIRS, "binding_disclosure_ref_hash_mismatch"));\n    }',
-    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
-  },
-  {
     id: "binding-cancellation-context-ref-hash-recursion",
     finding: "nested-cancellation-context-ref-hash-drift",
     file: "lib/validation.mjs",
     search: '    if (value.cancellation_context !== null) {\n      failures.push(...refHashPairFailures(value.cancellation_context, CANCELLATION_CONTEXT_REF_HASH_PAIRS,\n        "binding_cancellation_ref_hash_mismatch"));\n    }',
     replace: '    if (false) {\n      failures.push(...refHashPairFailures(value.cancellation_context, CANCELLATION_CONTEXT_REF_HASH_PAIRS,\n        "binding_cancellation_ref_hash_mismatch"));\n    }',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
-  },
-  {
-    id: "terminal-post-handoff-receiver-evidence",
-    finding: "post-handoff-terminal-without-receiver-evidence",
-    file: "lib/validation.mjs",
-    search: '        if (["submitted", "acknowledged", "unknown", "finalized"].includes(before.state) && after.receiver_receipt_ref === null) {',
-    replace: '        if (false) {',
-    test: "action state is append-only and receiver states require receiver evidence"
-  },
-  {
-    id: "action-receiver-evidence-monotonic",
-    finding: "receiver-evidence-erased-on-later-state",
-    file: "lib/validation.mjs",
-    search: '      if (before.receiver_receipt_ref !== null && after.receiver_receipt_ref === null) failures.push("action_state_receiver_evidence_erased");',
-    replace: '      if (false) failures.push("action_state_receiver_evidence_erased");',
-    test: "action state is append-only and receiver states require receiver evidence"
   },
   {
     id: "base-object-response-closed-union",
@@ -815,22 +791,6 @@ export const PHASE1_MUTANTS = [
     search: '      receiptObjectResponse: responseEnvelope(executionSchemaUris(RECEIPT_RESPONSE_SCHEMA_IDS)),',
     replace: '      receiptObjectResponse: responseEnvelope([...executionSchemaUris(RECEIPT_RESPONSE_SCHEMA_IDS), ...executionSchemaUris(POLICY_RESPONSE_SCHEMA_IDS)]),',
     test: "generic read responses are typed and bind the exact returned object"
-  },
-  {
-    id: "namespace-control-recovery-evidence-forbidden",
-    finding: "namespace-control-receipt-accepts-recovery-transition-evidence",
-    file: "lib/schema-factory.mjs",
-    search: '          ...nullProperties([...authorization, ...priorNamespace, ...before, ...leafBefore, ...leafAfter, ...connection, ...outstanding, ...recovery])',
-    replace: '          ...nullProperties([...authorization, ...priorNamespace, ...before, ...leafBefore, ...leafAfter, ...connection, ...outstanding])',
-    test: "control receipts and lineage heads enforce closed state unions"
-  },
-  {
-    id: "namespace-rotation-recovery-evidence-forbidden",
-    finding: "namespace-rotation-receipt-accepts-recovery-transition-evidence",
-    file: "lib/schema-factory.mjs",
-    search: '          ...nullProperties([...authorization, ...leafBefore, ...leafAfter, ...connection, ...outstanding, ...recovery])',
-    replace: '          ...nullProperties([...authorization, ...leafBefore, ...leafAfter, ...connection, ...outstanding])',
-    test: "control receipts and lineage heads enforce closed state unions"
   },
   {
     id: "lineage-fencing-token-monotonic",
@@ -1272,8 +1232,8 @@ export const PHASE1_MUTANTS = [
     id: "confirmation-assurance-policy-binding",
     finding: "confirmation-receipt-substitutes-an-alien-assurance-policy",
     file: "lib/validation.mjs",
-    search: '    if (!policy || policy.schema !== "cairn.confirmation_assurance_policy.v0.1" ||\n        validatePhase1Object(policy, context).length || !exactRef(confirmation.assurance_policy_ref, policy, context) ||\n        !sameObjectRef(confirmation.assurance_policy_ref, binding.confirmation_assurance_policy_ref) ||\n        confirmation.assurance_policy_hash !== binding.confirmation_assurance_policy_hash ||\n        !sameObjectRef(confirmation.assurance_policy_ref, authority?.required_confirmation_assurance_policy_ref)) {\n      failures.push("confirmation_assurance_policy_mismatch");\n    }',
-    replace: '    if (false) {\n      failures.push("confirmation_assurance_policy_mismatch");\n    }',
+    search: '        validateResolvedSignedObject(policy, context).length || !exactRef(confirmation.assurance_policy_ref, policy, context) ||',
+    replace: '        validatePhase1Object(policy, context).length || !exactRef(confirmation.assurance_policy_ref, policy, context) ||',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -1322,14 +1282,6 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '    failures.push(...actionLineageStateFailures(\n      response.current_action_state_head, response.current_lineage_state_head\n    ).map((code) => `action_get_${code}`));',
     replace: '    failures.push(...[]);',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
-  },
-  {
-    id: "action-get-gate-decision-state-binding",
-    finding: "gate-allowed-action-read-carries-deny-result",
-    file: "lib/validation.mjs",
-    search: '      } else if (!exactRef(expectedGate, response.gate_result, context) || response.gate_result.decision !== "allow") {',
-    replace: '      } else if (false) {',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -1498,14 +1450,6 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '          value.receiver_id !== binding.ultimate_receiver || !sameObjectRef(value.lineage_commitment_ref, binding.lineage_commitment_ref) ||',
     replace: '          false || !sameObjectRef(value.lineage_commitment_ref, binding.lineage_commitment_ref) ||',
-    test: "cancellation authority is an exact projection of one binding and one gate chain"
-  },
-  {
-    id: "cancellation-gate-finality-binding",
-    finding: "cancellation-gate-cross-wires-finality-profile",
-    file: "lib/validation.mjs",
-    search: '          !sameObjectRef(value.receiver_finality_profile_ref, binding.receiver_finality_profile_ref) ||\n          !sameObjectRef(value.receiver_finality_profile_ref, binding.cancellation_context?.cancellation_finality_profile_ref)) {',
-    replace: '          false || false) {',
     test: "cancellation authority is an exact projection of one binding and one gate chain"
   },
   {
@@ -1817,52 +1761,44 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "redemption-validates-gate-semantics",
-    finding: "redemption-accepts-semantically-invalid-gate",
-    file: "lib/validation.mjs",
-    search: '        validateGateResult(gateResult, { ...context, gateRequest, binding }).length ||\n',
-    replace: '',
+    id: "binding-disclosure-profile-cap-reopened",
+    finding: "resource-profile-allows-disclosures",
+    file: "lib/objects.mjs",
+    search: '["max_binding_set_disclosures", "constint:0"]',
+    replace: '["max_binding_set_disclosures", "constint:32"]',
+    test: "compartment limits are single-asset and ordered"
+  },
+  {
+    id: "binding-disclosure-schema-cap-reopened",
+    finding: "binding-schema-allows-nonempty-disclosures",
+    file: "lib/schema-factory.mjs",
+    search: '  if (type === "disclosures") return array({ $ref: `${COMMON}#/$defs/disclosure` }, { maxItems: 0, uniqueItems: true });',
+    replace: '  if (type === "disclosures") return array({ $ref: `${COMMON}#/$defs/disclosure` }, { maxItems: 32, uniqueItems: true });',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "gate-result-object-decision-reopened",
+    finding: "gate-result-object-allows-pass",
+    file: "lib/objects.mjs",
+    search: '["execution_binding_set_hash", hash], ["decision", "const:deny"], ["evaluated_head_refs", refs],',
+    replace: '["execution_binding_set_hash", hash], ["decision", "enum:pass|deny"], ["evaluated_head_refs", refs],',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "redemption-exact-action",
-    finding: "redemption-cross-wires-action",
+    id: "confirmation-verifier-signature-binding",
+    finding: "confirmation-verifier-profile-signature-skipped",
     file: "lib/validation.mjs",
-    search: '    if (!action || action.schema !== "cairn.action_record.v0.2" || validateActionRecord(action, context).length ||\n        !exactRef(value.action_ref, action, context)) {',
-    replace: '    if (false) {',
+    search: '        validateResolvedSignedObject(verifierProfile, context).length ||',
+    replace: '        validatePhase1Object(verifierProfile, context).length ||',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "redemption-gate-lifetime",
-    finding: "redemption-occurs-at-or-after-gate-expiry",
+    id: "intrinsic-control-state-head-dispatch",
+    finding: "control-state-head-skips-intrinsic-validation",
     file: "lib/validation.mjs",
-    search: '    if (![evaluatedAt, gateExpiresAt, gateSignedAt, redeemedAt, receiptSignedAt,\n      bindingCreatedAt, bindingSignedAt, bindingExpiresAt, actionCreatedAt, actionSignedAt].every(Number.isFinite) ||\n        redeemedAt < evaluatedAt || redeemedAt >= gateExpiresAt || gateSignedAt > redeemedAt ||\n        bindingCreatedAt > redeemedAt || bindingSignedAt > redeemedAt || redeemedAt >= bindingExpiresAt ||\n        actionCreatedAt > redeemedAt || actionSignedAt > redeemedAt || receiptSignedAt < redeemedAt) {',
-    replace: '    if (false) {',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
-  },
-  {
-    id: "redemption-evaluated-head-projection",
-    finding: "redemption-rebinds-gate-evaluated-heads",
-    file: "lib/validation.mjs",
-    search: '    if (gateResult && canonicalHash(value.evaluated_current_head_refs) !== canonicalHash(gateResult.evaluated_head_refs)) {',
-    replace: '    if (false) {',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
-  },
-  {
-    id: "redemption-checkout-dependency-projection",
-    finding: "redemption-rebinds-checkout-dependencies",
-    file: "lib/validation.mjs",
-    search: '    if (!gateRequest || canonicalHash(value.checkout_dependency_refs) !== canonicalHash(gateRequest.checkout_dependency_refs)) {',
-    replace: '    if (false) {',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
-  },
-  {
-    id: "exact-read-redemption-semantics",
-    finding: "receipt-read-skips-redemption-semantic-validation",
-    file: "lib/validation.mjs",
-    search: '    case "cairn.execution_redemption_receipt.v0.2": return validateExecutionRedemptionReceipt(\n      object,\n      context.gateResult ?? resolveObject(context.objectResolver, object.gate_result_ref),\n      context.binding ?? context.executionBindingSet ?? resolveObject(context.objectResolver, object.execution_binding_set_ref),\n      context\n    );',
-    replace: '    case "cairn.execution_redemption_receipt.v0.2": return [];',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+    search: '    case "cairn.execution_control_state_head.v0.1": return validateExecutionControlStateHead(object, context);',
+    replace: '    case "cairn.execution_control_state_head.v0.1": return [];',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
   },
   {
     id: "lineage-activation-causal-order",
@@ -1986,12 +1922,12 @@ export const PHASE1_MUTANTS = [
     expectedOutput: "invalid object/signature annotations"
   },
   {
-    id: "registry-enumerable-map-getter",
-    finding: "outstanding-map-dependency-is-not-retrievable",
+    id: "removed-enumerable-map-getter-reintroduced",
+    finding: "deny-only-registry-reopens-map-read",
     file: "lib/profile.mjs",
-    search: '  read("execution.enumerable_map.get", "enumerableMapObjectResponse", "inherited_parent_private_or_audit_acl", "enumerableMapReadRequest"),\n',
-    replace: '',
-    test: "Phase 1 exposes only the exact read-only non-effectful registry"
+    search: '  read("execution.execution_resource_bounds_profile.get", "execution-resource-bounds-profile.schema.json", "public"),',
+    replace: '  read("execution.execution_resource_bounds_profile.get", "execution-resource-bounds-profile.schema.json", "public"),\n  read("execution.enumerable_map.get", "controlObjectResponse", "inherited_parent_private_or_audit_acl"),',
+    test: "operation envelopes and registry metadata close compatibility before dispatch"
   },
   {
     id: "registry-outstanding-index-getter",
@@ -2018,12 +1954,12 @@ export const PHASE1_MUTANTS = [
     test: "Phase 1 exposes only the exact read-only non-effectful registry"
   },
   {
-    id: "registry-enumerable-map-parent-acl",
-    finding: "map-node-read-is-not-attributable-to-an-owning-parent",
-    file: "lib/profile.mjs",
-    search: '  read("execution.enumerable_map.get", "enumerableMapObjectResponse", "inherited_parent_private_or_audit_acl", "enumerableMapReadRequest"),',
-    replace: '  read("execution.enumerable_map.get", "enumerableMapObjectResponse", "owner_or_exact_runtime_audit_control_grant"),',
-    test: "operation envelopes and registry metadata close compatibility before dispatch"
+    id: "receipt-union-provisional-terminal-reintroduced",
+    finding: "removed-provisional-receipt-remains-generic-readable",
+    file: "lib/schema-factory.mjs",
+    search: '  "cairn.lineage_activation_receipt.v0.1",',
+    replace: '  "cairn.lineage_activation_receipt.v0.1",\n  "cairn.lineage_provisional_terminal_receipt.v0.1",',
+    test: "generic read responses are typed and bind the exact returned object"
   },
   {
     id: "outstanding-map-key-domain",
@@ -2111,14 +2047,6 @@ export const PHASE1_MUTANTS = [
     file: "lib/validation.mjs",
     search: '    case "cairn.connection_outstanding_action_index_transition_receipt.v0.1":\n      return validateConnectionOutstandingIndexTransitionReceipt(object, context);',
     replace: '    case "cairn.connection_outstanding_action_index_transition_receipt.v0.1": return [];',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
-    id: "enumerable-map-read-parent-acl",
-    finding: "map-read-does-not-enforce-owning-parent-acl",
-    file: "lib/validation.mjs",
-    search: '    if (context.parentAccessAuthorized !== true) return ["enumerable_map_read_parent_acl_denied"];',
-    replace: '',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
@@ -2386,22 +2314,6 @@ export const PHASE1_MUTANTS = [
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
-    id: "receiver-handoff-connection-successor",
-    finding: "receiver-handoff-skips-connection-entry-successor",
-    file: "lib/validation.mjs",
-    search: '        failures.push("receiver_outstanding_transition_connection_successor_mismatch");',
-    replace: '',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
-    id: "receiver-event-stream-successor",
-    finding: "authenticated-receiver-event-skips-stream-successor",
-    file: "lib/validation.mjs",
-    search: '        failures.push("receiver_outstanding_transition_event_stream_successor_mismatch");',
-    replace: '',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
     id: "exact-read-returned-signature",
     finding: "exact-read-accepts-unauthenticated-returned-bytes",
     file: "lib/validation.mjs",
@@ -2578,14 +2490,6 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "receiver-event-identity-transition",
-    finding: "authenticated-event-skips-identity-scope-and-assignment-consumption",
-    file: "lib/validation.mjs",
-    search: '      if (receiverEventIdentityTransitionFailures(value.identity_epoch_transition_receipt_ref,\n        before, after, scopeBefore, scopeAfter, value.authority_transaction_id, context).length) {\n        failures.push("receiver_outstanding_transition_identity_transition_mismatch");\n      }',
-    replace: '',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
     id: "compartment-map-domains-closed",
     finding: "compartment-state-map-domains-not-machine-representable",
     file: "lib/objects.mjs",
@@ -2622,30 +2526,6 @@ export const PHASE1_MUTANTS = [
     finding: "compartment-transition-does-not-project-head-manifests",
     file: "lib/validation.mjs",
     search: '        failures.push("compartment_transition_manifest_projection_mismatch");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
-    id: "compartment-transition-nonempty-cause-delta",
-    finding: "compartment-hold-allows-empty-economic-delta",
-    file: "lib/validation.mjs",
-    search: '        failures.push("compartment_transition_cause_delta_mismatch");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
-    id: "compartment-transition-close-empty",
-    finding: "compartment-closes-with-live-economic-state",
-    file: "lib/validation.mjs",
-    search: '        failures.push("compartment_transition_close_not_empty");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
-    id: "compartment-transition-chronology",
-    finding: "compartment-transition-signature-predates-commit",
-    file: "lib/validation.mjs",
-    search: '      failures.push("compartment_transition_chronology_invalid");',
     replace: '',
     test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
   },
@@ -2730,22 +2610,6 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "receiver-terminal-closure-consumes-event",
-    finding: "authenticated-closure-releases-without-consuming-the-closing-event",
-    file: "lib/validation.mjs",
-    search: '    consumption: "consume_one_and_release" }],',
-    replace: '    consumption: "release" }],',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
-    id: "receiver-event-successor-entry-refs",
-    finding: "receiver-event-receipt-does-not-bind-successor-assignment-refs",
-    file: "lib/validation.mjs",
-    search: '      !sameObjectRef(receipt.event_id_slot_assignment_after_ref, afterEntry?.event_id_slot_assignment_ref) ||\n      receipt.event_id_slot_assignment_after_hash !== afterEntry?.event_id_slot_assignment_hash ||\n      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, beforeEntry?.sequence_slot_assignment_ref) ||\n      receipt.sequence_slot_assignment_before_hash !== beforeEntry?.sequence_slot_assignment_hash ||\n      !sameObjectRef(receipt.sequence_slot_assignment_after_ref, afterEntry?.sequence_slot_assignment_ref) ||\n      receipt.sequence_slot_assignment_after_hash !== afterEntry?.sequence_slot_assignment_hash) {',
-    replace: '      !sameObjectRef(receipt.sequence_slot_assignment_before_ref, beforeEntry?.sequence_slot_assignment_ref) ||\n      receipt.sequence_slot_assignment_before_hash !== beforeEntry?.sequence_slot_assignment_hash) {',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
     id: "receiver-assignment-refs-may-advance",
     finding: "receiver-transition-falsely-freezes-assignment-successor-refs",
     file: "lib/validation.mjs",
@@ -2776,30 +2640,6 @@ export const PHASE1_MUTANTS = [
     search: '          failures.push("compartment_state_atom_accounting_mismatch", `compartment_state_atom_accounting_mismatch:${ledgerClass}`);',
     replace: '',
     test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
-  },
-  {
-    id: "compartment-outstanding-limit",
-    finding: "compartment-accepts-outstanding-exposure-above-its-limit",
-    file: "lib/validation.mjs",
-    search: '        failures.push("compartment_state_outstanding_limit_exceeded");',
-    replace: '',
-    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
-  },
-  {
-    id: "compartment-atom-delta-keyset",
-    finding: "compartment-transition-delta-does-not-cover-the-exact-map-diff",
-    file: "lib/validation.mjs",
-    search: '        failures.push("compartment_transition_atom_delta_keyset_mismatch");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
-    id: "compartment-confirmed-event-diff",
-    finding: "compartment-transition-accepts-an-unexplained-confirmed-event",
-    file: "lib/validation.mjs",
-    search: '        failures.push("compartment_transition_confirmed_event_diff_mismatch");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
   },
   {
     id: "cancellation-original-action-signature",
@@ -2922,27 +2762,11 @@ export const PHASE1_MUTANTS = [
     test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
   },
   {
-    id: "compartment-reservation-atom-closure",
-    finding: "active-reservations-not-closed-over-held-atoms",
-    file: "lib/validation.mjs",
-    search: '      if (reservationClosureMismatch) {\n        failures.push("compartment_state_reservation_atom_closure_mismatch");\n      }',
-    replace: '',
-    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
-  },
-  {
     id: "receiver-terminal-single-identity-transition",
     finding: "terminal-release-allows-split-identity-transitions",
     file: "lib/validation.mjs",
     search: '    if (identityTransitionRefs.length !== 1 ||\n        !sameObjectRef(identityTransitionRefs[0], receiverTransition.identity_epoch_transition_receipt_ref)) {\n      failures.push("receiver_terminal_completion_identity_transition_atomicity_mismatch");\n    }',
     replace: '',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
-    id: "receiver-event-draining-assigned-epoch",
-    finding: "late-event-rejects-valid-draining-epoch",
-    file: "lib/validation.mjs",
-    search: '      : assignedEpoch < scopeBefore?.accepting_index_epoch &&\n        scopeBefore?.accepting_index_epoch === scopeAfter?.accepting_index_epoch &&\n        assignedEpochBefore.state === "draining" &&',
-    replace: '      : false &&',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
@@ -2978,20 +2802,12 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "phase1-gate-allow-remains-unavailable",
-    finding: "phase1-partial-gate-authorizes-execution",
+    id: "signature-key-resolver-evaluation-time",
+    finding: "key-resolver-does-not-receive-evaluation-time",
     file: "lib/validation.mjs",
-    search: '    if (value.decision === "allow") failures.push("phase1_gate_allow_unsupported");',
-    replace: '',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
-  },
-  {
-    id: "phase1-redemption-remains-unavailable",
-    finding: "phase1-partial-redemption-authorizes-execution",
-    file: "lib/validation.mjs",
-    search: '    failures.push("phase1_redemption_unsupported");',
-    replace: '',
-    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+    search: '      const key = resolveKey(context.keyResolver, proof.key_id, context.now ?? null);',
+    replace: '      const key = resolveKey(context.keyResolver, proof.key_id);',
+    test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
   },
   {
     id: "gate-role-evidence-required",
@@ -3002,11 +2818,11 @@ export const PHASE1_MUTANTS = [
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
-    id: "phase1-unimplemented-reserved-judgments-deny",
-    finding: "caller-supplied-judgment-wrapper-passes-an-unimplemented-check",
+    id: "phase1-unsupported-execution-controls-deny",
+    finding: "execution-controls-check-passes-without-external-truth",
     file: "lib/validation.mjs",
-    search: '    "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",',
-    replace: '    "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "LIMITS",',
+    search: '    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",',
+    replace: '    "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -3058,14 +2874,6 @@ export const PHASE1_MUTANTS = [
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
   {
-    id: "phase1-recovery-control-unavailable",
-    finding: "partial-recovery-graph-authorizes-control",
-    file: "lib/validation.mjs",
-    search: '    if (recovery.every((item) => item !== null)) {\n      failures.push("phase1_recovery_control_unsupported");\n    }',
-    replace: '',
-    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
-  },
-  {
     id: "scoped-control-key-derived",
     finding: "scoped-control-key-aliases-different-target",
     file: "lib/validation.mjs",
@@ -3114,35 +2922,461 @@ export const PHASE1_MUTANTS = [
     test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
   },
   {
-    id: "reservation-provenance-immutable",
-    finding: "reservation-index-rewrites-authority-provenance",
-    file: "lib/validation.mjs",
-    search: '          failures.push("compartment_transition_reservation_provenance_mismatch");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
-    id: "reservation-change-has-economic-cause",
-    finding: "reservation-index-changes-without-atom-delta",
-    file: "lib/validation.mjs",
-    search: '          failures.push("compartment_transition_reservation_change_unexplained");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
-    id: "confirmed-event-correlates-exact-components",
-    finding: "confirmed-event-does-not-match-atom-components",
-    file: "lib/validation.mjs",
-    search: '          failures.push("compartment_transition_confirmed_event_correlation_mismatch");',
-    replace: '',
-    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
-  },
-  {
     id: "confirmed-event-component-root-domain",
     finding: "confirmed-event-component-root-is-not-domain-separated",
     file: "lib/validation.mjs",
     search: '    schema: "cairn.confirmed_economic_event_component_set_preimage.v0.1",',
     replace: '    schema: "cairn.confirmed_economic_event_component_set_preimage.v0.0",',
     test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "removed-redemption-object-schema-reintroduced",
+    finding: "removed-redemption-object-family-restored",
+    file: "lib/objects.mjs",
+    search: '    base("action-receipt-v0.2.schema.json", "cairn.action_receipt.v0.2", "receipt_id", "receipt_hash", "action_service_signature", [',
+    replace: '    base("execution-redemption-receipt-v0.2.schema.json", "cairn.execution_redemption_receipt.v0.2", "redemption_id", "receipt_hash", "authority_service_signature", [\n      ["redemption_id", "uuid"], ["action_ref", ref], ["execution_binding_set_ref", ref], ["execution_binding_set_hash", hash],\n      ["gate_result_ref", ref], ["gate_result_hash", hash], ["consumed_authority_fence_refs", "refs32"],\n      ["consumed_inventory_fence_refs", "refs64"], ["obligation_exposure_transfer_ref", nref], ["disclosure_delivery_reservation_refs", "refs32"],\n      ["evaluated_current_head_refs", "refs32"], ["checkout_dependency_refs", "refs32"], ["terms_fence_pending_head_ref", nref],\n      ["redeemed_state_commitment_hash", nhash], ["effect_lease_ref", ref], ["outbox_claim_ref", ref],\n      ["redeemed_at", time], ["receipt_hash", hash], ["authority_service_signature", sig]\n    ], ["redemption_exact_gate_and_fences"]),\n    base("action-receipt-v0.2.schema.json", "cairn.action_receipt.v0.2", "receipt_id", "receipt_hash", "action_service_signature", [',
+    expectedStage: "build",
+    expectedOutput: "invariant redemption_exact_gate_and_fences has no bundled validator",
+    test: "every Phase 1 object schema admits a bound closed specimen and rejects extensions"
+  },
+  {
+    id: "receipt-union-redemption-reintroduced",
+    finding: "removed-redemption-receipt-replaces-supported-receipt",
+    file: "lib/schema-factory.mjs",
+    search: '  "cairn.lineage_activation_receipt.v0.1",\n  "cairn.action_receipt.v0.2"',
+    replace: '  "cairn.lineage_activation_receipt.v0.1",\n  "cairn.execution_redemption_receipt.v0.2"',
+    test: "generic read responses are typed and bind the exact returned object"
+  },
+  {
+    id: "authenticated-resolution-exact-read-boundary",
+    finding: "exact-read-claims-authentication-from-caller-resolvers",
+    file: "lib/validation.mjs",
+    search: '    failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n    return unique(failures);',
+    replace: '    return unique(failures);',
+    test: "exact reads authenticate returned bytes and reject stale mutable heads"
+  },
+  {
+    id: "authenticated-resolution-action-get-boundary",
+    finding: "action-get-claims-authentication-from-caller-resolvers",
+    file: "lib/validation.mjs",
+    search: '    const failures = [AUTHENTICATED_RESOLUTION_UNSUPPORTED];\n    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
+    replace: '    const failures = [];\n    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
+    test: "read surfaces close every execution family and bind object requests to returned identity"
+  },
+  {
+    id: "authenticated-resolution-signed-object-boundary",
+    finding: "public-signed-object-validation-claims-authenticated-resolution",
+    file: "lib/validation.mjs",
+    search: '  ), AUTHENTICATED_RESOLUTION_UNSUPPORTED]);\n}',
+    replace: '  )]);\n}',
+    test: "Phase 1 signed objects derive controllers and separate historical validity from current eligibility"
+  },
+  {
+    id: "authenticated-resolution-cancellation-boundary",
+    finding: "live-cancellation-claims-authentication-from-caller-resolvers",
+    file: "lib/validation.mjs",
+    search: '    if (!isHistoricalEvidence(context)) {\n      failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n      const currentPrincipalRevocationNonce',
+    replace: '    if (!isHistoricalEvidence(context)) {\n      const currentPrincipalRevocationNonce',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "authenticated-resolution-gate-request-boundary",
+    finding: "gate-request-claims-authentication-from-caller-resolvers",
+    file: "lib/validation.mjs",
+    search: '    const failures = validatePhase1Object(value, liveContext);\n    if (failures.length) return failures;\n    failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n    if (validateResolvedSignedObject(value, liveContext).length)',
+    replace: '    const failures = validatePhase1Object(value, liveContext);\n    if (failures.length) return failures;\n    if (validateResolvedSignedObject(value, liveContext).length)',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "authenticated-resolution-gate-result-boundary",
+    finding: "gate-result-claims-authentication-from-caller-resolvers",
+    file: "lib/validation.mjs",
+    search: '    const failures = validatePhase1Object(value, context);\n    if (failures.length) return failures;\n    failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n    if (validateResolvedSignedObject(value, context).length) {\n      failures.push("gate_result_signature_invalid");',
+    replace: '    const failures = validatePhase1Object(value, context);\n    if (failures.length) return failures;\n    if (validateResolvedSignedObject(value, context).length) {\n      failures.push("gate_result_signature_invalid");',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "authenticated-resolution-joint-control-boundary",
+    finding: "joint-control-claims-authentication-from-caller-resolvers",
+    file: "lib/validation.mjs",
+    search: '      ));\n      failures.push(AUTHENTICATED_RESOLUTION_UNSUPPORTED);\n    }\n    const committedAt',
+    replace: '      ));\n    }\n    const committedAt',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-head-map-validation",
+    finding: "control-head-accepts-unvalidated-scoped-map",
+    file: "lib/validation.mjs",
+    search: '        validateEnumerableMapRoot(map, {\n          ...context,\n          expectedMapDomain: "scoped_execution_control",\n          expectedMapKey: executionControlMapKey(\n            value.principal_id, value.authority_namespace, value.control_namespace_generation\n          )\n        }).length ||',
+    replace: '        false ||',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-head-predecessor-validation",
+    finding: "control-head-accepts-invalid-predecessor",
+    file: "lib/validation.mjs",
+    search: '        failures.push("execution_control_head_predecessor_mismatch");\n      }\n    }\n    return unique(failures);',
+    replace: '      }\n    }\n    return unique(failures);',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-namespace-predecessor-validation",
+    finding: "control-namespace-accepts-invalid-rotation-predecessor",
+    file: "lib/validation.mjs",
+    search: '        failures.push("control_namespace_predecessor_mismatch");\n      }\n    }\n    return unique(failures);',
+    replace: '      }\n    }\n    return unique(failures);',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "action-state-predecessor-dispatch",
+    finding: "action-state-dispatch-drops-predecessor",
+    file: "lib/validation.mjs",
+    search: '    failures.push(...validateActionStateTransition(\n      actionStateBefore, response.current_action_state_head, evidenceContext\n    ).map((code) => `action_get_action_state_${code}`));',
+    replace: '    failures.push(...validateActionStateTransition(\n      null, response.current_action_state_head, evidenceContext\n    ).map((code) => `action_get_action_state_${code}`));',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "joint-control-receipt-pair-validation",
+    finding: "control-receipt-skips-joint-pair-validation",
+    file: "lib/validation.mjs",
+    search: '      failures.push(...jointConnectionControlPairFailures(\n        value, connectionReceipt, authorization, connectionBefore, connectionAfter,\n        jointLeafBefore, jointLeafAfter, outstandingHead, context\n      ));',
+    replace: '      failures.push(...[]);',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "joint-connection-receipt-pair-validation",
+    finding: "connection-receipt-skips-joint-pair-validation",
+    file: "lib/validation.mjs",
+    search: '          failures.push(...jointConnectionControlPairFailures(\n            controlReceipt, receipt, controlAuthorization, before, after,\n            leafBefore, leafAfter, indexAfter, context\n          ).map((code) => `connection_${code}`));',
+    replace: '          failures.push(...[]);',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "joint-control-current-head-evaluation-time",
+    finding: "joint-control-current-head-is-resolved-without-commit-time",
+    file: "lib/validation.mjs",
+    search: '          !sameObjectRef(resolveCurrentHead(context, value.outstanding_action_index_head_ref, value.committed_at),',
+    replace: '          !sameObjectRef(resolveCurrentHead(context, value.outstanding_action_index_head_ref),',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "external-accounting-active-reservation-supported",
+    finding: "external-active-reservation-leaf-treated-as-authenticated",
+    file: "lib/validation.mjs",
+    search: '      "compartment_active_reservation", "compartment_economic_atom", "compartment_confirmed_event"',
+    replace: '      "compartment_economic_atom", "compartment_confirmed_event"',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "external-accounting-economic-atom-supported",
+    finding: "external-economic-atom-leaf-treated-as-authenticated",
+    file: "lib/validation.mjs",
+    search: '      "compartment_active_reservation", "compartment_economic_atom", "compartment_confirmed_event"',
+    replace: '      "compartment_active_reservation", "compartment_confirmed_event"',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "external-accounting-confirmed-event-supported",
+    finding: "external-confirmed-event-leaf-treated-as-authenticated",
+    file: "lib/validation.mjs",
+    search: '      "compartment_active_reservation", "compartment_economic_atom", "compartment_confirmed_event"',
+    replace: '      "compartment_active_reservation", "compartment_economic_atom"',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "external-protection-attestation-supported",
+    finding: "external-protection-attestation-treated-as-authenticated",
+    file: "lib/validation.mjs",
+    search: '    failures.push("phase1_external_protection_attestation_unsupported");\n    if (Date.parse(value.not_before) >= Date.parse(value.expires_at))',
+    replace: '    if (Date.parse(value.not_before) >= Date.parse(value.expires_at))',
+    test: "compartment limits are single-asset and ordered"
+  },
+  {
+    id: "financial-external-truth-supported",
+    finding: "financial-binding-treated-as-externally-authenticated",
+    file: "lib/validation.mjs",
+    search: '    if (FINANCIAL_CAPABILITIES.has(value.capability)) {\n      failures.push("phase1_financial_external_truth_unsupported");\n    }',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "control-transition-pause-from-active",
+    finding: "valid-pause-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["pause", beforeState === "active" && afterState === "paused" &&',
+    replace: '    ["pause", beforeState === "paused" && afterState === "paused" &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-freeze-from-active",
+    finding: "valid-freeze-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["freeze_new_redemptions", beforeState === "active" && afterState === "frozen_new_redemptions" &&',
+    replace: '    ["freeze_new_redemptions", beforeState === "paused" && afterState === "frozen_new_redemptions" &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-resume-from-paused",
+    finding: "valid-paused-resume-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["resume", ["paused", "frozen_new_redemptions"].includes(beforeState) && afterState === "active" &&',
+    replace: '    ["resume", ["frozen_new_redemptions"].includes(beforeState) && afterState === "active" &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-resume-from-frozen",
+    finding: "valid-frozen-resume-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["resume", ["paused", "frozen_new_redemptions"].includes(beforeState) && afterState === "active" &&',
+    replace: '    ["resume", ["paused"].includes(beforeState) && afterState === "active" &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-revoke-from-active",
+    finding: "valid-active-revoke-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["revoke", ["active", "paused", "frozen_new_redemptions"].includes(beforeState) &&',
+    replace: '    ["revoke", ["paused", "frozen_new_redemptions"].includes(beforeState) &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-revoke-from-paused",
+    finding: "valid-paused-revoke-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["revoke", ["active", "paused", "frozen_new_redemptions"].includes(beforeState) &&',
+    replace: '    ["revoke", ["active", "frozen_new_redemptions"].includes(beforeState) &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-revoke-from-frozen",
+    finding: "valid-frozen-revoke-transition-rejected",
+    file: "lib/validation.mjs",
+    search: '    ["revoke", ["active", "paused", "frozen_new_redemptions"].includes(beforeState) &&',
+    replace: '    ["revoke", ["active", "paused"].includes(beforeState) &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-transition-terminal-reactivation",
+    finding: "revoked-control-can-resume",
+    file: "lib/validation.mjs",
+    search: '    ["resume", ["paused", "frozen_new_redemptions"].includes(beforeState) && afterState === "active" &&',
+    replace: '    ["resume", ["paused", "frozen_new_redemptions", "revoked"].includes(beforeState) && afterState === "active" &&',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "scoped-control-transition-matrix-dispatch",
+    finding: "scoped-control-skips-transition-matrix",
+    file: "lib/validation.mjs",
+    search: '      if (authorizationBasis && (!leafAfter || controlTransitionFailures(\n        authorization?.control_action,\n        transitionBefore.state, transitionBefore.pause_epoch, transitionBefore.revocation_nonce,\n        leafAfter.state, leafAfter.pause_epoch, leafAfter.revocation_nonce\n      ).length)) {',
+    replace: '      if (authorizationBasis && !leafAfter) {',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "global-control-transition-matrix-dispatch",
+    finding: "global-control-skips-transition-matrix",
+    file: "lib/validation.mjs",
+    search: '    if (value.cause === "global_control" && authorizationBasis && before && after &&\n        controlTransitionFailures(\n          authorization?.control_action,\n          before.global_state, before.global_pause_epoch, before.global_revocation_nonce,\n          after.global_state, after.global_pause_epoch, after.global_revocation_nonce\n        ).length) {',
+    replace: '    if (false) {',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-chronology-authorization-before-commit",
+    finding: "late-control-authorization-is-accepted",
+    file: "lib/validation.mjs",
+    search: '        [...authorizationTimes, ...namespaceTimes, ...beforeTimes].some((instant) => instant > committedAt) ||',
+    replace: '        [...namespaceTimes, ...beforeTimes].some((instant) => instant > committedAt) ||',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-chronology-namespace-before-commit",
+    finding: "late-control-namespace-is-accepted",
+    file: "lib/validation.mjs",
+    search: '        [...authorizationTimes, ...namespaceTimes, ...beforeTimes].some((instant) => instant > committedAt) ||',
+    replace: '        [...authorizationTimes, ...beforeTimes].some((instant) => instant > committedAt) ||',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-chronology-before-state-before-commit",
+    finding: "future-predecessor-is-accepted",
+    file: "lib/validation.mjs",
+    search: '        [...authorizationTimes, ...namespaceTimes, ...beforeTimes].some((instant) => instant > committedAt) ||',
+    replace: '        [...authorizationTimes, ...namespaceTimes].some((instant) => instant > committedAt) ||',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-chronology-after-effective-at-commit",
+    finding: "control-after-state-effective-time-drifts-from-commit",
+    file: "lib/validation.mjs",
+    search: '        [...authorizationTimes, ...namespaceTimes, ...beforeTimes].some((instant) => instant > committedAt) ||\n        afterEffectiveTimes.some((instant) => instant !== committedAt) ||',
+    replace: '        [...authorizationTimes, ...namespaceTimes, ...beforeTimes].some((instant) => instant > committedAt) ||\n        false ||',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-chronology-after-signature-window",
+    finding: "control-after-signature-falls-outside-commit-window",
+    file: "lib/validation.mjs",
+    search: '        afterSignatureTimes.some((instant) => instant < committedAt || instant > signedAt) ||',
+    replace: '        false ||',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "control-chronology-receipt-signature-after-commit",
+    finding: "control-receipt-is-signed-before-commit",
+    file: "lib/validation.mjs",
+    search: '        afterSignatureTimes.some((instant) => instant < committedAt || instant > signedAt) ||\n        signedAt < committedAt) {',
+    replace: '        false ||\n        false) {',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "phase1-unsupported-business-dependencies-deny",
+    finding: "business-dependencies-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-reviews-policies-deny",
+    finding: "reviews-policies-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-reserved-judgments-deny",
+    finding: "reserved-judgments-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-limits-deny",
+    finding: "limits-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '      decision: pass && !phase1UnsupportedChecks.has(code) ? "pass" : "deny",',
+    replace: '      decision: code === "LIMITS" ? "pass" : (pass && !phase1UnsupportedChecks.has(code) ? "pass" : "deny"),',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-economic-exposure-deny",
+    finding: "economic-exposure-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '      decision: pass && !phase1UnsupportedChecks.has(code) ? "pass" : "deny",',
+    replace: '      decision: code === "ECONOMIC_EXPOSURE" ? "pass" : (pass && !phase1UnsupportedChecks.has(code) ? "pass" : "deny"),',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-duplicate-effect-lineage-deny",
+    finding: "duplicate-effect-lineage-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-executor-target-deny",
+    finding: "executor-target-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-domain-policy-deny",
+    finding: "domain-policy-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "ATOMIC_PRECONDITIONS"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unsupported-atomic-preconditions-deny",
+    finding: "atomic-preconditions-check-passes-without-external-truth",
+    file: "lib/validation.mjs",
+    search: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"\n  ]);',
+    replace: '  const phase1UnsupportedChecks = new Set([\n    "EXECUTION_CONTROLS", "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",\n    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",\n    "DOMAIN_POLICY"\n  ]);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "deny-only-action-state-gate-allowed-reintroduced",
+    finding: "deny-only-profile-advertises-gate-allowed-action-state",
+    file: "lib/schema-factory.mjs",
+    search: '      actionStateBranch("reserved", { nonnull: ["authority_ref", "lineage_activation_receipt_ref"], nulls: ["gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),\n      ...["cancelled", "definitive_failure", "quarantined"].flatMap(terminalBranches)',
+    replace: '      actionStateBranch("reserved", { nonnull: ["authority_ref", "lineage_activation_receipt_ref"], nulls: ["gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),\n      actionStateBranch("gate_allowed", { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref"], nulls: ["redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),\n      ...["cancelled", "definitive_failure", "quarantined"].flatMap(terminalBranches)',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-redemption-edge-reintroduced",
+    finding: "deny-only-profile-advertises-post-redemption-action-transition",
+    file: "lib/schema-factory.mjs",
+    search: '      ["reserved", ["cancelled", "definitive_failure"]],\n      ["cancelled", ["quarantined"]], ["definitive_failure", ["quarantined"]]',
+    replace: '      ["reserved", ["cancelled", "definitive_failure"]],\n      ["gate_allowed", ["redemption_committed"]],\n      ["cancelled", ["quarantined"]], ["definitive_failure", ["quarantined"]]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-disclosures-reopened",
+    finding: "deny-only-action-receipt-admits-disclosure-effects",
+    file: "lib/objects.mjs",
+    search: '["disclosure_receipt_refs", "constemptyarray"]',
+    replace: '["disclosure_receipt_refs", "refs32"]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-obligations-reopened",
+    finding: "deny-only-action-receipt-admits-obligation-effects",
+    file: "lib/objects.mjs",
+    search: '["obligation_transition_refs", "constemptyarray"]',
+    replace: '["obligation_transition_refs", "refs64"]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-checkout-reopened",
+    finding: "deny-only-action-receipt-admits-checkout-effects",
+    file: "lib/objects.mjs",
+    search: '["checkout_transition_refs", "constemptyarray"]',
+    replace: '["checkout_transition_refs", "refs64"]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-receiver-effects-reopened",
+    finding: "deny-only-action-receipt-admits-receiver-effects",
+    file: "lib/objects.mjs",
+    search: '["receiver_import_receipt_ref", "constnull"],\n      ["receiver_assertion_trust_state_head_ref", "constnull"]',
+    replace: '["receiver_import_receipt_ref", nref],\n      ["receiver_assertion_trust_state_head_ref", nref]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-exposure-before-reopened",
+    finding: "deny-only-action-receipt-admits-prior-exposure",
+    file: "lib/objects.mjs",
+    search: '["exposure_before", "constnull"]',
+    replace: '["exposure_before", nmoney]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-exposure-reserved-reopened",
+    finding: "deny-only-action-receipt-admits-reserved-exposure",
+    file: "lib/objects.mjs",
+    search: '["exposure_reserved", "constnull"]',
+    replace: '["exposure_reserved", nmoney]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-exposure-spent-reopened",
+    finding: "deny-only-action-receipt-admits-spent-exposure",
+    file: "lib/objects.mjs",
+    search: '["exposure_spent", "constnull"]',
+    replace: '["exposure_spent", nmoney]',
+    test: "action state is append-only and receiver states require receiver evidence"
+  },
+  {
+    id: "deny-only-action-receipt-exposure-remaining-reopened",
+    finding: "deny-only-action-receipt-admits-remaining-exposure",
+    file: "lib/objects.mjs",
+    search: '["exposure_remaining", "constnull"]',
+    replace: '["exposure_remaining", nmoney]',
+    test: "action state is append-only and receiver states require receiver evidence"
   }
 ];

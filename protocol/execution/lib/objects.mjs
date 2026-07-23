@@ -498,7 +498,7 @@ export const PHASE1_OBJECTS = Object.freeze([
       ["max_money_windows_per_principal", "constint:32"], ["max_rate_windows_per_mandate", "constint:32"],
       ["max_money_windows_per_mandate", "constint:32"], ["max_scoped_control_heads_per_action", "constint:64"],
       ["max_scope_bindings_per_mandate", "constint:64"], ["max_binding_set_grants", "constint:32"],
-      ["max_binding_set_disclosures", "constint:32"], ["max_inventory_copies_per_action", "constint:64"],
+      ["max_binding_set_disclosures", "constint:0"], ["max_inventory_copies_per_action", "constint:64"],
       ["max_checkout_lines", "constint:64"], ["max_mandatory_obligation_components", "constint:64"],
       ["max_incremental_cost_components_per_attempt", "constint:64"], ["max_field_paths_per_disclosure", "constint:128"],
       ["max_intent_refs_per_mandate", "constint:64"], ["max_capability_scopes_per_mandate", "constint:64"],
@@ -894,11 +894,11 @@ function executionChainProfiles() {
     ], ["gate_request_exact_dependencies"]),
     base("gate-result-v0.2.schema.json", "cairn.gate_result.v0.2", "gate_result_id", "result_hash", "gate_service_signature", [
       ["gate_result_id", "uuid"], ["gate_request_ref", ref], ["gate_request_hash", hash], ["execution_binding_set_ref", ref],
-      ["execution_binding_set_hash", hash], ["decision", "enum:allow|deny"], ["evaluated_head_refs", refs],
+      ["execution_binding_set_hash", hash], ["decision", "const:deny"], ["evaluated_head_refs", refs],
       ["evaluated_nonce_and_fence_root", hash], ["business_state_root", hash], ["checkout_dependency_root", hash],
       ["check_results", "checkResults"], ["single_use_result_id", hash], ["evaluated_at", time], ["expires_at", time],
       ["result_hash", hash], ["gate_service_signature", sig]
-    ], ["gate_allow_all_checks"]),
+    ], ["gate_deny_only"]),
     base("action-record-v0.2.schema.json", "cairn.action_record.v0.2", "action_id", "action_hash", "action_service_signature", [
       ["action_id", hash], ["principal_id", str], ["execution_binding_set_ref", ref], ["execution_binding_set_hash", hash],
       ["lineage_commitment_ref", ref], ["lineage_commitment_hash", hash], ["action_proposal_ref", ref], ["action_proposal_hash", hash],
@@ -914,20 +914,12 @@ function executionChainProfiles() {
       ["redemption_receipt_ref", nref], ["outbox_state_head_ref", nref], ["receiver_receipt_ref", nref],
       ["prior_transition_receipt_ref", nref], ["updated_at", time], ["state_hash", hash], ["action_service_signature", sig]
     ], ["action_state_ref_union"]),
-    base("execution-redemption-receipt-v0.2.schema.json", "cairn.execution_redemption_receipt.v0.2", "redemption_id", "receipt_hash", "authority_service_signature", [
-      ["redemption_id", "uuid"], ["action_ref", ref], ["execution_binding_set_ref", ref], ["execution_binding_set_hash", hash],
-      ["gate_result_ref", ref], ["gate_result_hash", hash], ["consumed_authority_fence_refs", "refs32"],
-      ["consumed_inventory_fence_refs", "refs64"], ["obligation_exposure_transfer_ref", nref], ["disclosure_delivery_reservation_refs", "refs32"],
-      ["evaluated_current_head_refs", "refs32"], ["checkout_dependency_refs", "refs32"], ["terms_fence_pending_head_ref", nref],
-      ["redeemed_state_commitment_hash", nhash], ["effect_lease_ref", ref], ["outbox_claim_ref", ref],
-      ["redeemed_at", time], ["receipt_hash", hash], ["authority_service_signature", sig]
-    ], ["redemption_exact_gate_and_fences"]),
     base("action-receipt-v0.2.schema.json", "cairn.action_receipt.v0.2", "receipt_id", "receipt_hash", "action_service_signature", [
       ["receipt_id", "uuid"], ["action_ref", ref], ["execution_binding_set_ref", ref], ["execution_binding_set_hash", hash],
-      ["lineage_state_head_ref", ref], ["effect_id", hash], ["policy_refs", "refs32"], ["disclosure_receipt_refs", "refs32"],
-      ["obligation_transition_refs", "refs64"], ["checkout_transition_refs", "refs64"], ["receiver_import_receipt_ref", nref],
-      ["receiver_assertion_trust_state_head_ref", nref], ["exposure_before", nmoney], ["exposure_reserved", nmoney],
-      ["exposure_spent", nmoney], ["exposure_remaining", nmoney], ["state_before", "actionState"],
+      ["lineage_state_head_ref", ref], ["effect_id", hash], ["policy_refs", "refs32"], ["disclosure_receipt_refs", "constemptyarray"],
+      ["obligation_transition_refs", "constemptyarray"], ["checkout_transition_refs", "constemptyarray"], ["receiver_import_receipt_ref", "constnull"],
+      ["receiver_assertion_trust_state_head_ref", "constnull"], ["exposure_before", "constnull"], ["exposure_reserved", "constnull"],
+      ["exposure_spent", "constnull"], ["exposure_remaining", "constnull"], ["state_before", "actionState"],
       ["state_after", "actionState"], ["prior_action_receipt_ref", nref], ["issued_at", time], ["receipt_hash", hash],
       ["action_service_signature", sig], ["not_claiming", "exactset:physical_card_truth|receiver_finality_without_receipt"]
     ], ["action_receipt_transition"])

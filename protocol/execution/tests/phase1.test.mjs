@@ -70,8 +70,9 @@ import {
   validateEnumerableMapNode,
   validateEnumerableMapPathProof,
   validateEnumerableMapRoot,
+  validateExecutionControlNamespace,
   validateExecutionControlReceipt,
-  validateExecutionRedemptionReceipt,
+  validateExecutionControlStateHead,
   validateExecutionConfirmation,
   validateGateDependencyAttestation,
   validateGateDependencyStateHead,
@@ -96,7 +97,6 @@ import {
   validatePhase1RequestBytes,
   validateScopedControlLeaf,
   validateTransitionManifest,
-  validateTransitionManifestReadRequest,
   transitionManifestEntryKey
 } from "../lib/validation.mjs";
 
@@ -367,12 +367,10 @@ function make(schemaId, overrides = {}) {
     action_ref: { ...object.action_ref, schema: "cairn.action_record.v0.2" }, prior_action_receipt_ref: null
   });
   if (schemaId === "cairn.gate_result.v0.2") Object.assign(object, {
+    decision: "deny",
+    check_results: object.check_results.map((result) => ({ ...result, decision: "deny" })),
     evaluated_at: "2026-07-22T10:02:00Z", expires_at: "2026-07-22T10:04:00Z",
     gate_service_signature: { ...object.gate_service_signature, signed_at: "2026-07-22T10:02:00Z" }
-  });
-  if (schemaId === "cairn.execution_redemption_receipt.v0.2") Object.assign(object, {
-    redeemed_at: "2026-07-22T10:03:00Z",
-    authority_service_signature: { ...object.authority_service_signature, signed_at: "2026-07-22T10:03:00Z" }
   });
   Object.assign(object, overrides);
   if (schemaId === "cairn.scoped_execution_control_leaf_state_head.v0.1") {
@@ -793,8 +791,8 @@ test("Phase 1 bundle and registry are deterministic", async () => {
 });
 
 test("Phase 1 exposes only the exact read-only non-effectful registry", () => {
-  assert.equal(audit.objectSchemaCount, 47);
-  assert.equal(audit.operationCount, 34);
+  assert.equal(audit.objectSchemaCount, 46);
+  assert.equal(audit.operationCount, 29);
   assert.deepEqual(sources.registry.operations.map(({ name }) => name), PHASE1_OPERATIONS.map(({ name }) => name));
   assert.ok(sources.registry.operations.every((operation) =>
     operation.name.startsWith("execution.") && !operation.mutating && !operation.external_effect &&
@@ -837,20 +835,33 @@ test("operation envelopes and registry metadata close compatibility before dispa
     ...[
       "execution.connection_authorization.get", "execution.connection_state.get",
       "execution.connection_outstanding_action_index.get",
-      "execution.control_namespace.get", "execution.control.get", "execution.compartment.get",
-      "execution.compartment_state.get", "execution.mandate.get", "execution.authorization.get",
+      "execution.control_namespace.get", "execution.control.get",
+      "execution.mandate.get", "execution.authorization.get",
       "execution.cancellation_authorization.get"
     ].map((name) => [name, "owner_or_exact_runtime_audit_control_grant"]),
     ...[
       "execution.connection_state_event_receipt.get", "execution.control_receipt.get",
       "execution.connection_outstanding_action_entry.get",
       "execution.connection_outstanding_action_index_transition_receipt.get",
-      "execution.compartment_state_transition_receipt.get", "execution.receipt.get",
-      "execution.activity.detail.get"
+      "execution.receipt.get", "execution.activity.detail.get"
     ].map((name) => [name, "owner_plus_audit_detail_or_exact_runtime_audit_grant"]),
-    ["execution.confirmation_receipt.get", "inherited_parent_private_or_audit_acl"],
-    ["execution.enumerable_map.get", "inherited_parent_private_or_audit_acl"]
+    ["execution.confirmation_receipt.get", "inherited_parent_private_or_audit_acl"]
   ]);
+  for (const removed of [
+    "execution.compartment.get",
+    "execution.compartment_state.get",
+    "execution.compartment_state_transition_receipt.get",
+    "execution.enumerable_map.get",
+    "execution.transition_manifest.get"
+  ]) {
+    assert.ok(!PHASE1_OPERATIONS.some(({ name }) => name === removed), removed);
+    assert.ok(!sources.registry.operations.some(({ name }) => name === removed), removed);
+    assert.deepEqual(validateOperationRequestEnvelope(removed, {}, context),
+      ["request_envelope_operation_unregistered"]);
+    assert.deepEqual(validateExactObjectRead(
+      removed, { ref: distinctRefs(1, `removed-${removed}`)[0] }, {}, context
+    ), ["object_read_operation_invalid"]);
+  }
   const requestCommitments = new Set();
   for (const operation of sources.registry.operations) {
     const definition = operation.request_schema.split("#/$defs/")[1];
@@ -909,7 +920,7 @@ test("operation envelopes and registry metadata close compatibility before dispa
     assert.equal(operation.receipt_family, "none");
   }
   assert.equal(requestCommitments.size, PHASE1_OPERATIONS.length);
-  assert.equal(expectedAccessByOperation.size, 19);
+  assert.equal(expectedAccessByOperation.size, 15);
 
   const mandateOperation = sources.registry.operations.find(({ name }) => name === "execution.mandate.get");
   const mandateDefinition = operationBodies.$defs[mandateOperation.request_schema.split("#/$defs/")[1]];
@@ -962,7 +973,15 @@ test("generic read responses are typed and bind the exact returned object", () =
     "https://cairn.cards/protocol/execution/schemas/v0.1/confirmation-assurance-policy.schema.json",
     "https://cairn.cards/protocol/execution/schemas/v0.1/confirmation-verifier-profile.schema.json"
   ]);
-  assert.equal(alternatives("receiptObjectResponse").length, 11);
+  const receiptAlternatives = alternatives("receiptObjectResponse");
+  assert.equal(receiptAlternatives.length, 8);
+  for (const removed of [
+    "execution-redemption-receipt-v0.2.schema.json",
+    "lineage-provisional-terminal-receipt.schema.json",
+    "compartment-state-transition-receipt.schema.json"
+  ]) {
+    assert.ok(receiptAlternatives.every((reference) => !reference.endsWith(removed)), removed);
+  }
   assert.deepEqual(validateBaseObjectResponse(receiptResponse, context), ["base_object_response_schema_invalid"]);
   assert.deepEqual(validatePolicyObjectResponse(receiptResponse, context), ["policy_object_response_schema_invalid"]);
   assert.deepEqual(validateReceiptObjectResponse(policyResponse, context), ["receipt_object_response_schema_invalid"]);
@@ -1000,7 +1019,7 @@ test("read surfaces close every execution family and bind object requests to ret
   assert.deepEqual(validateExactObjectRead(
     "execution.mandate.get", mandateRequest, mandate,
     signedReadContext([mandate, mandateRuntime, mandateAuthorization], context, mandate.principal_id)
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   const signedMandateContext = signedReadContext(
     [mandate, mandateRuntime, mandateAuthorization], context, mandate.principal_id
   );
@@ -1050,6 +1069,34 @@ test("read surfaces close every execution family and bind object requests to ret
     "https://cairn.cards/protocol/execution/schemas/v0.1/action-record-v0.2.schema.json");
   assert.equal(PHASE1_OPERATIONS.find(({ name }) => name === "execution.action.get").response_schema,
     "https://cairn.cards/protocol/execution/schemas/v0.1/operation-bodies.schema.json#/$defs/actionGetResponse");
+  const boundaryActionRecord = make("cairn.action_record.v0.2");
+  const boundaryBindingSet = make("cairn.execution_binding_set.v0.1");
+  const boundaryLineageCommitment = make("cairn.lineage_commitment.v0.1");
+  const boundaryActionState = make("cairn.action_state_head.v0.1");
+  const boundaryLineageState = make("cairn.lineage_state_head.v0.1");
+  const boundaryActivity = make("cairn.execution_activity_detail.v0.1");
+  const boundaryView = make("cairn.execution_action_view.v0.1");
+  const actionBoundaryResponse = {
+    ref: refFor(boundaryView),
+    view: boundaryView,
+    action_record: boundaryActionRecord,
+    execution_binding_set: boundaryBindingSet,
+    lineage_commitment: boundaryLineageCommitment,
+    current_action_state_head: boundaryActionState,
+    current_lineage_state_head: boundaryLineageState,
+    current_activity_detail: boundaryActivity,
+    authority_basis: null,
+    authority_reservations: [],
+    confirmation_receipt: null,
+    gate_request: null,
+    gate_result: null,
+    retrieved_at: "2026-07-22T10:00:00Z"
+  };
+  const actionBoundaryFailures = validateActionGetResponse(
+    { ref: actionBoundaryResponse.ref }, actionBoundaryResponse, context
+  );
+  assert.ok(actionBoundaryFailures.includes("phase1_authenticated_resolution_unsupported"),
+    JSON.stringify(actionBoundaryFailures));
 });
 
 test("exact reads authenticate returned bytes and reject stale mutable heads", () => {
@@ -1066,7 +1113,7 @@ test("exact reads authenticate returned bytes and reject stale mutable heads", (
   const response = { ref: controlRef, object: control, retrieved_at: "2026-07-22T10:00:00Z" };
   assert.deepEqual(validateExactObjectRead(
     "execution.control.get", { ref: controlRef }, response, signedContext
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
 
   const corrupted = structuredClone(control);
   corrupted.authority_service_signature.value = "A".repeat(86);
@@ -1122,7 +1169,7 @@ test("resource limits are byte-based, aggregate, depth-bounded, and applied befo
 });
 
 test("every Phase 1 object schema admits a bound closed specimen and rejects extensions", () => {
-  assert.equal(PHASE1_OBJECTS.length, 47);
+  assert.equal(PHASE1_OBJECTS.length, 46);
   for (const profile of PHASE1_OBJECTS) {
     const schema = schemasByObjectId.get(profile.schema);
     const validate = audit.ajv.getSchema(schema.$id);
@@ -1186,10 +1233,11 @@ test("Phase 1 signed objects derive controllers and separate historical validity
     keyResolver: new Map([[key.key_id, key]]),
     expectedControllersByPointer: { "/principal_signature": bound.principal_id }
   };
-  assert.deepEqual(validatePhase1SignedObject(bound, signedContext), []);
+  assert.deepEqual(validatePhase1SignedObject(bound, signedContext),
+    ["phase1_authenticated_resolution_unsupported"]);
   assert.deepEqual(validatePhase1SignedObject(bound, {
     ...signedContext, expectedControllersByPointer: { "/principal_signature": "did:example:attacker" }
-  }), []);
+  }), ["phase1_authenticated_resolution_unsupported"]);
   const tampered = structuredClone(bound);
   tampered.principal_signature.value = Buffer.alloc(64, 1).toString("base64url");
   assert.ok(validatePhase1SignedObject(tampered, signedContext).includes("signature_invalid"));
@@ -1200,10 +1248,26 @@ test("Phase 1 signed objects derive controllers and separate historical validity
   const historicallyValid = { ...key, status: "revoked", revocation_time: "2026-07-22T10:30:00Z" };
   assert.deepEqual(validatePhase1SignedObject(bound, {
     ...signedContext, keyResolver: new Map([[key.key_id, historicallyValid]])
-  }), []);
-  assert.ok(validatePhase1SignedObject(bound, {
+  }), ["phase1_authenticated_resolution_unsupported"]);
+  assert.deepEqual(validatePhase1SignedObject(bound, {
     ...signedContext, keyResolver: new Map([[key.key_id, historicallyValid]]), requireCurrentKeyEligibility: true
+  }), ["phase1_authenticated_resolution_unsupported"]);
+  assert.ok(validatePhase1SignedObject(bound, {
+    ...signedContext, now: "2026-07-22T10:30:00Z",
+    keyResolver: new Map([[key.key_id, historicallyValid]]), requireCurrentKeyEligibility: true
   }).includes("signature_key_not_currently_eligible"));
+  const resolverEvaluationTimes = [];
+  const functionResolverContext = {
+    ...signedContext,
+    keyResolver: (keyId, evaluationTime) => {
+      resolverEvaluationTimes.push([keyId, evaluationTime]);
+      return historicallyValid;
+    },
+    requireCurrentKeyEligibility: true
+  };
+  assert.deepEqual(validatePhase1SignedObject(bound, functionResolverContext),
+    ["phase1_authenticated_resolution_unsupported"]);
+  assert.deepEqual(resolverEvaluationTimes, [[key.key_id, signedContext.now]]);
   const currentlyExpired = { ...key, expires_at: "2026-07-22T10:30:00Z" };
   assert.ok(validatePhase1SignedObject(bound, {
     ...signedContext, now: "2026-07-22T11:00:00Z", keyResolver: new Map([[key.key_id, currentlyExpired]]),
@@ -1249,10 +1313,10 @@ test("Phase 1 signed objects derive controllers and separate historical validity
       allowed_scopes: ["all_agents"], control_namespace_generation: 0 }],
     [recoveryHeadHash, { schema: "cairn.recovery_grant_state_head.v0.1", state: "active", state_hash: recoveryHeadHash, recovery_grant_ref: recoveryRef }]
   ]);
-  assert.deepEqual(validatePhase1SignedObject(reboundRecovery, {
+  assert.ok(validatePhase1SignedObject(reboundRecovery, {
     ...context, now: "2026-07-22T10:01:00Z",
     keyResolver: new Map([[recoveryKey.key_id, recoveryKey]]), objectResolver: recoveryObjects
-  }), []);
+  }).includes("phase1_object_schema_invalid"));
   const recoveryResume = validControlAuthorization({
     control_action: "resume", reason_code: "recovery", recovery_grant_ref: recoveryRef,
     recovery_grant_state_head_ref: recoveryHeadRef, recovery_grant_state_head_hash: recoveryHeadHash,
@@ -1673,14 +1737,70 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
       leafBefore, leafAfter, control, receipt, outstandingIndexAfter, controlReceipt],
     { ...connectionContext, requireDependencySignatures: true }, before.principal_id
   );
-  assert.deepEqual(validateExecutionControlReceipt(controlReceipt, signedControlContext), []);
-  const missingControlAuthorizationContext = {
-    ...signedControlContext, controlAuthorization: undefined,
-    objectResolver: new Map(signedControlContext.objectResolver)
+  assert.deepEqual(validateConnectionOutstandingIndexHead(
+    outstandingIndexAfter, signedControlContext
+  ), []);
+  assert.deepEqual(validateExecutionControlReceipt(controlReceipt, signedControlContext),
+    ["phase1_authenticated_resolution_unsupported"]);
+  const unresolvedControlAuthorizationContext = {
+    ...signedControlContext,
+    controlAuthorization: { schema: "cairn.unresolved_control_authorization.v0.1" }
   };
-  missingControlAuthorizationContext.objectResolver.delete(refFor(control).object_hash);
-  assert.ok(validateExecutionControlReceipt(controlReceipt, missingControlAuthorizationContext)
-    .includes("execution_control_receipt_authorization_unresolved"));
+  assert.ok(validateExecutionControlReceipt(
+    controlReceipt, unresolvedControlAuthorizationContext
+  ).includes("execution_control_receipt_authorization_unresolved"));
+  const observedJointHeadTimes = [];
+  const jointCurrentHeadResolver = signedControlContext.currentHeadResolver;
+  assert.deepEqual(validateExecutionControlReceipt(controlReceipt, {
+    ...signedControlContext,
+    currentHeadResolver: (reference, evaluationTime) => {
+      if (sameObjectRef(reference, controlReceipt.outstanding_action_index_head_ref)) {
+        observedJointHeadTimes.push(evaluationTime);
+      }
+      return jointCurrentHeadResolver(reference, evaluationTime);
+    }
+  }), ["phase1_authenticated_resolution_unsupported"]);
+  assert.ok(observedJointHeadTimes.length > 0);
+  assert.ok(observedJointHeadTimes.every((instant) => instant === controlReceipt.committed_at));
+  const inconsistentJointReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...controlReceipt, authority_transaction_id: "different-joint-transaction"
+  });
+  assert.ok(validateExecutionControlReceipt(inconsistentJointReceipt, signedControlContext)
+    .includes("joint_connection_control_pair_mismatch"));
+  const globalAuthorizationOnJointReceipt = validControlAuthorization({
+    ...control, scope: "all_agents", target_kind: "global", target_ref: null,
+    compartment_control_key: null, action_control_key: null
+  });
+  const wrongJointMatrixReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...controlReceipt,
+    control_authorization_ref: refFor(globalAuthorizationOnJointReceipt),
+    control_authorization_hash: globalAuthorizationOnJointReceipt.control_authorization_hash
+  });
+  const wrongJointMatrixContext = signedReadContext([
+    globalAuthorizationOnJointReceipt, wrongJointMatrixReceipt
+  ], {
+    ...signedControlContext,
+    controlAuthorization: globalAuthorizationOnJointReceipt,
+    objectResolver: new Map(signedControlContext.objectResolver)
+      .set(refFor(globalAuthorizationOnJointReceipt).object_hash, globalAuthorizationOnJointReceipt)
+  }, before.principal_id);
+  const wrongJointMatrixFailures = validateExecutionControlReceipt(
+    wrongJointMatrixReceipt, wrongJointMatrixContext
+  );
+  assert.ok(wrongJointMatrixFailures.includes("execution_control_receipt_cause_scope_mismatch"));
+  assert.ok(wrongJointMatrixFailures.includes("joint_connection_control_pair_mismatch"));
+  const wrongPairAction = structuredClone(control);
+  wrongPairAction.control_action = "resume";
+  const wrongActionPairFailures = validateConnectionEvent(receipt, before, after, {
+    ...connectionContext, controlAuthorization: wrongPairAction
+  });
+  assert.ok(wrongActionPairFailures.includes("connection_joint_connection_control_pair_mismatch"),
+    JSON.stringify(wrongActionPairFailures));
+  const impossibleJointChronology = make("cairn.execution_control_receipt.v0.1", {
+    ...controlReceipt, committed_at: "2026-07-21T10:00:00Z"
+  });
+  assert.ok(validateExecutionControlReceipt(impossibleJointChronology, signedControlContext)
+    .includes("execution_control_receipt_chronology_invalid"));
   const mapDriftControlReceipt = make("cairn.execution_control_receipt.v0.1", {
     ...controlReceipt,
     after_scoped_control_map_ref: aggregateBefore.scoped_control_map_ref,
@@ -1839,7 +1959,7 @@ test("connection transition binds exact heads, sequence, epochs, nonce, and cont
     "execution.connection_state_event_receipt.get", { ref: refFor(receipt) },
     receipt,
     signedReadContext(receipt, { ...connectionContext, connectionBefore: before, connectionAfter: after })
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   const impossibleChronology = make("cairn.connection_state_event_receipt.v0.1", {
     ...receipt, committed_at: "2026-07-21T10:00:00Z"
   });
@@ -1945,11 +2065,73 @@ test("execution controls close global, scoped genesis, recovery, and namespace r
       namespace0, emptyNode0, emptyMap0, baseHead, globalPause, globalPausedHead, globalPauseReceipt
     ].map((object) => [refFor(object).object_hash, object]))
   }, principalId);
+  assert.deepEqual(validateExecutionControlNamespace(namespace0, globalContext), []);
+  assert.deepEqual(validateExecutionControlStateHead(baseHead, globalContext), []);
+  const wrongDomainControlMap = make("cairn.enumerable_map_root.v0.1", {
+    ...emptyMap0, map_domain: "connection_outstanding_action"
+  });
+  const wrongDomainControlHead = make("cairn.execution_control_state_head.v0.1", {
+    ...baseHead,
+    scoped_control_map_ref: refFor(wrongDomainControlMap),
+    scoped_control_map_hash: wrongDomainControlMap.map_hash,
+    scoped_control_head_count: wrongDomainControlMap.entry_count,
+    scoped_control_heads_root: wrongDomainControlMap.entries_root
+  });
+  const wrongDomainControlContext = {
+    ...globalContext,
+    requireDependencySignatures: false,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(wrongDomainControlMap).object_hash, wrongDomainControlMap)
+  };
+  assert.ok(validateExecutionControlStateHead(wrongDomainControlHead, wrongDomainControlContext)
+    .includes("execution_control_head_map_mismatch"));
+  const foreignControlPredecessor = make("cairn.execution_control_state_head.v0.1", {
+    ...baseHead, principal_id: "did:example:foreign-control-predecessor"
+  });
+  const foreignControlSuccessor = make("cairn.execution_control_state_head.v0.1", {
+    ...globalPausedHead, previous_head_hash: foreignControlPredecessor.head_hash
+  });
+  assert.ok(validateExecutionControlStateHead(foreignControlSuccessor, {
+    ...globalContext,
+    statePredecessorResolver: () => foreignControlPredecessor,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(foreignControlPredecessor).object_hash, foreignControlPredecessor)
+  }).includes("execution_control_head_predecessor_mismatch"));
+  const unresolvedNamespaceSuccessor = make("cairn.execution_control_namespace.v0.1", {
+    ...namespace0, generation: 1,
+    prior_namespace_ref: distinctRefs(1, "unresolved-control-namespace")[0],
+    prior_revoked_head_ref: distinctRefs(1, "unresolved-revoked-control-head")[0]
+  });
+  assert.ok(validateExecutionControlNamespace(unresolvedNamespaceSuccessor, globalContext)
+    .includes("control_namespace_predecessor_mismatch"));
+  const unresolvedNamespaceReadContext = signedReadContext(
+    unresolvedNamespaceSuccessor, globalContext, principalId
+  );
+  assert.ok(validateExactObjectRead(
+    "execution.control_namespace.get",
+    { ref: refFor(unresolvedNamespaceSuccessor) },
+    unresolvedNamespaceSuccessor,
+    unresolvedNamespaceReadContext
+  ).includes("object_read_control_namespace_predecessor_mismatch"));
+  const aggregateMapDriftHead = make("cairn.execution_control_state_head.v0.1", {
+    ...baseHead, scoped_control_head_count: baseHead.scoped_control_head_count + 1
+  });
+  const aggregateMapDriftContext = signedReadContext(aggregateMapDriftHead, {
+    ...globalContext,
+    currentHeadResolver: currentHeadResolverFor([refFor(aggregateMapDriftHead)])
+  }, principalId);
+  assert.ok(validateExactObjectRead(
+    "execution.control.get", { ref: refFor(aggregateMapDriftHead) }, {
+      ref: refFor(aggregateMapDriftHead), object: aggregateMapDriftHead,
+      retrieved_at: "2026-07-22T10:00:00Z"
+    }, aggregateMapDriftContext
+  ).includes("object_read_execution_control_head_map_mismatch"));
   assert.deepEqual(validateEnumerableMapRoot(emptyMap0, {
     ...globalContext, expectedMapDomain: "scoped_execution_control",
     expectedMapKey: executionControlMapKey(principalId, authorityNamespace, 0)
   }), []);
-  assert.deepEqual(validatePhase1SignedObject(emptyMap0, globalContext), []);
+  assert.deepEqual(validatePhase1SignedObject(emptyMap0, globalContext),
+    ["phase1_authenticated_resolution_unsupported"]);
   assert.equal(sameObjectRef(baseHead.scoped_control_map_ref, globalPausedHead.scoped_control_map_ref), true);
   assert.equal(baseHead.scoped_control_map_hash, globalPausedHead.scoped_control_map_hash);
   assert.equal(baseHead.scoped_control_head_count, globalPausedHead.scoped_control_head_count);
@@ -1971,6 +2153,137 @@ test("execution controls close global, scoped genesis, recovery, and namespace r
   assert.ok(validateExecutionControlReceipt(wrongGlobalEpochReceipt, wrongGlobalContext)
     .includes("execution_control_receipt_transition_mismatch"));
 
+  const globalControlTransitionFixture = ({
+    action, beforeState, afterState, beforeEpoch, afterEpoch, beforeNonce, afterNonce
+  }) => {
+    const beforeHead = beforeState === "active" && beforeEpoch === 0 && beforeNonce === 0
+      ? baseHead
+      : make("cairn.execution_control_state_head.v0.1", {
+        ...baseHead, sequence: 1, previous_head_hash: baseHead.head_hash,
+        global_state: beforeState, global_pause_epoch: beforeEpoch,
+        global_revocation_nonce: beforeNonce
+      });
+    const afterHead = make("cairn.execution_control_state_head.v0.1", {
+      ...beforeHead, sequence: beforeHead.sequence + 1, previous_head_hash: beforeHead.head_hash,
+      global_state: afterState, global_pause_epoch: afterEpoch,
+      global_revocation_nonce: afterNonce
+    });
+    const authorization = validControlAuthorization({
+      ...globalPause, control_action: action,
+      expected_control_head_hash: beforeHead.head_hash,
+      expected_pause_epoch: beforeEpoch, expected_revocation_nonce: beforeNonce
+    });
+    const receipt = make("cairn.execution_control_receipt.v0.1", {
+      ...globalPauseReceipt,
+      control_authorization_ref: refFor(authorization),
+      control_authorization_hash: authorization.control_authorization_hash,
+      before_control_head_ref: refFor(beforeHead), before_control_head_hash: beforeHead.head_hash,
+      after_control_head_ref: refFor(afterHead), after_control_head_hash: afterHead.head_hash,
+      before_scoped_control_map_ref: beforeHead.scoped_control_map_ref,
+      before_scoped_control_map_hash: beforeHead.scoped_control_map_hash,
+      after_scoped_control_map_ref: afterHead.scoped_control_map_ref,
+      after_scoped_control_map_hash: afterHead.scoped_control_map_hash,
+      authority_transaction_id: `global-${action}-${beforeState}`,
+      committed_at: afterHead.updated_at
+    });
+    const predecessorByHash = new Map([
+      [beforeHead.previous_head_hash, baseHead],
+      [afterHead.previous_head_hash, beforeHead]
+    ]);
+    return {
+      receipt,
+      context: {
+        ...globalContext, requireDependencySignatures: false,
+        controlAuthorization: authorization,
+        statePredecessorResolver: (reference) => predecessorByHash.get(reference.object_hash) ?? null,
+        objectResolver: new Map(globalContext.objectResolver)
+          .set(refFor(beforeHead).object_hash, beforeHead)
+          .set(refFor(afterHead).object_hash, afterHead)
+          .set(refFor(authorization).object_hash, authorization)
+          .set(refFor(receipt).object_hash, receipt)
+      }
+    };
+  };
+  for (const transition of [
+    ["freeze_new_redemptions", "active", "frozen_new_redemptions", 0, 1, 0, 0],
+    ["resume", "paused", "active", 1, 1, 0, 0],
+    ["resume", "frozen_new_redemptions", "active", 1, 1, 0, 0],
+    ["revoke", "active", "revoked", 0, 0, 0, 1],
+    ["revoke", "paused", "revoked", 1, 1, 0, 1],
+    ["revoke", "frozen_new_redemptions", "revoked", 1, 1, 0, 1]
+  ]) {
+    const [action, beforeState, afterState, beforeEpoch, afterEpoch, beforeNonce, afterNonce] = transition;
+    const fixture = globalControlTransitionFixture({
+      action, beforeState, afterState, beforeEpoch, afterEpoch, beforeNonce, afterNonce
+    });
+    assert.deepEqual(validateExecutionControlReceipt(fixture.receipt, fixture.context), [],
+      `${action}:${beforeState}->${afterState}`);
+  }
+  const terminalReactivation = globalControlTransitionFixture({
+    action: "resume", beforeState: "revoked", afterState: "active",
+    beforeEpoch: 1, afterEpoch: 1, beforeNonce: 1, afterNonce: 1
+  });
+  assert.ok(validateExecutionControlReceipt(
+    terminalReactivation.receipt, terminalReactivation.context
+  ).includes("execution_control_receipt_transition_mismatch"));
+
+  const lateAuthorization = structuredClone(globalPause);
+  lateAuthorization.principal_or_recovery_signature.signed_at = "2099-01-01T00:00:00Z";
+  assert.ok(validateExecutionControlReceipt(globalPauseReceipt, {
+    ...globalContext, requireDependencySignatures: false,
+    controlAuthorization: lateAuthorization,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(globalPause).object_hash, lateAuthorization)
+  }).includes("execution_control_receipt_chronology_invalid"));
+  const lateBeforeSignature = structuredClone(baseHead);
+  lateBeforeSignature.authority_service_signature.signed_at = "2099-01-01T00:00:00Z";
+  assert.ok(validateExecutionControlReceipt(globalPauseReceipt, {
+    ...globalContext, requireDependencySignatures: false,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(baseHead).object_hash, lateBeforeSignature)
+  }).includes("execution_control_receipt_chronology_invalid"));
+  const driftedAfterEffective = make("cairn.execution_control_state_head.v0.1", {
+    ...globalPausedHead, updated_at: "2099-01-01T00:00:00Z"
+  });
+  const driftedAfterEffectiveReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...globalPauseReceipt,
+    after_control_head_ref: refFor(driftedAfterEffective),
+    after_control_head_hash: driftedAfterEffective.head_hash
+  });
+  assert.ok(validateExecutionControlReceipt(driftedAfterEffectiveReceipt, {
+    ...globalContext, requireDependencySignatures: false,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(driftedAfterEffective).object_hash, driftedAfterEffective)
+  }).includes("execution_control_receipt_chronology_invalid"));
+  const lateAfterSignature = structuredClone(globalPausedHead);
+  lateAfterSignature.authority_service_signature.signed_at = "2099-01-01T00:00:00Z";
+  assert.ok(validateExecutionControlReceipt(globalPauseReceipt, {
+    ...globalContext, requireDependencySignatures: false,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(globalPausedHead).object_hash, lateAfterSignature)
+  }).includes("execution_control_receipt_chronology_invalid"));
+  const preCommitSignedAfterHead = make("cairn.execution_control_state_head.v0.1", {
+    ...globalPausedHead,
+    authority_service_signature: {
+      ...globalPausedHead.authority_service_signature,
+      signed_at: "2026-07-22T09:59:00Z"
+    }
+  });
+  const preCommitSignedReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...globalPauseReceipt,
+    after_control_head_ref: refFor(preCommitSignedAfterHead),
+    after_control_head_hash: preCommitSignedAfterHead.head_hash,
+    authority_service_signature: {
+      ...globalPauseReceipt.authority_service_signature,
+      signed_at: "2026-07-22T09:59:30Z"
+    }
+  });
+  assert.ok(validateExecutionControlReceipt(preCommitSignedReceipt, {
+    ...globalContext, requireDependencySignatures: false,
+    objectResolver: new Map(globalContext.objectResolver)
+      .set(refFor(preCommitSignedAfterHead).object_hash, preCommitSignedAfterHead)
+      .set(refFor(preCommitSignedReceipt).object_hash, preCommitSignedReceipt)
+  }).includes("execution_control_receipt_chronology_invalid"));
   const actionControlKey = `sha-256:${"a".repeat(64)}`;
   const insertedLeaf = make("cairn.scoped_execution_control_leaf_state_head.v0.1", {
     principal_id: principalId, control_namespace_generation: 0,
@@ -2036,6 +2349,76 @@ test("execution controls close global, scoped genesis, recovery, and namespace r
     ])
   }, principalId);
   assert.deepEqual(validateExecutionControlReceipt(scopedReceipt, scopedContext), []);
+  const unresolvedJointConnectionRef = {
+    ...distinctRefs(1, "unresolved-joint-connection-receipt")[0],
+    schema: "cairn.connection_state_event_receipt.v0.1"
+  };
+  const unresolvedJointOutstandingRef = {
+    ...distinctRefs(1, "unresolved-joint-outstanding-head")[0],
+    schema: "cairn.connection_outstanding_action_index_state_head.v0.1"
+  };
+  const unresolvedJointControlReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...scopedReceipt, cause: "connection_joint_control",
+    scoped_leaf_before_ref: refFor(insertedLeaf),
+    scoped_leaf_before_hash: insertedLeaf.head_hash,
+    connection_state_event_receipt_ref: unresolvedJointConnectionRef,
+    connection_state_event_receipt_hash: unresolvedJointConnectionRef.object_hash,
+    outstanding_action_index_head_ref: unresolvedJointOutstandingRef,
+    outstanding_action_index_head_hash: unresolvedJointOutstandingRef.object_hash
+  });
+  const unresolvedJointControlFailures = validateExecutionControlReceipt(
+    unresolvedJointControlReceipt, scopedContext
+  );
+  assert.ok(unresolvedJointControlFailures.includes("phase1_authenticated_resolution_unsupported"),
+    JSON.stringify(unresolvedJointControlFailures));
+  assert.ok(unresolvedJointControlFailures.includes("joint_connection_control_pair_mismatch"),
+    JSON.stringify(unresolvedJointControlFailures));
+  const invalidMatrixLeaf = make("cairn.scoped_execution_control_leaf_state_head.v0.1", {
+    ...insertedLeaf, pause_epoch: 0
+  });
+  const invalidMatrixEntry = {
+    ...insertedEntry,
+    entry_object_ref: refFor(invalidMatrixLeaf),
+    entry_object_hash: invalidMatrixLeaf.head_hash
+  };
+  const invalidMatrixNode = make("cairn.enumerable_map_node.v0.1", {
+    ...insertedNode, leaf_entry: invalidMatrixEntry,
+    entries_root: enumerableMapLeafEntriesRoot("scoped_execution_control", invalidMatrixEntry)
+  });
+  const invalidMatrixMap = make("cairn.enumerable_map_root.v0.1", {
+    ...insertedMap,
+    root_node_ref: refFor(invalidMatrixNode), root_node_hash: invalidMatrixNode.node_hash,
+    entries_root: invalidMatrixNode.entries_root
+  });
+  const invalidMatrixHead = make("cairn.execution_control_state_head.v0.1", {
+    ...scopedAfter,
+    scoped_control_map_ref: refFor(invalidMatrixMap),
+    scoped_control_map_hash: invalidMatrixMap.map_hash,
+    scoped_control_heads_root: invalidMatrixMap.entries_root
+  });
+  const invalidMatrixReceipt = make("cairn.execution_control_receipt.v0.1", {
+    ...scopedReceipt,
+    after_control_head_ref: refFor(invalidMatrixHead),
+    after_control_head_hash: invalidMatrixHead.head_hash,
+    after_scoped_control_map_ref: refFor(invalidMatrixMap),
+    after_scoped_control_map_hash: invalidMatrixMap.map_hash,
+    after_change_proof: mapPathProof(
+      invalidMatrixMap, invalidMatrixNode, invalidMatrixLeaf.scoped_control_leaf_key, "membership"
+    ),
+    scoped_leaf_after_ref: refFor(invalidMatrixLeaf),
+    scoped_leaf_after_hash: invalidMatrixLeaf.head_hash
+  });
+  const invalidMatrixContext = {
+    ...scopedContext, requireDependencySignatures: false,
+    objectResolver: new Map(scopedContext.objectResolver)
+      .set(refFor(invalidMatrixLeaf).object_hash, invalidMatrixLeaf)
+      .set(refFor(invalidMatrixNode).object_hash, invalidMatrixNode)
+      .set(refFor(invalidMatrixMap).object_hash, invalidMatrixMap)
+      .set(refFor(invalidMatrixHead).object_hash, invalidMatrixHead)
+      .set(refFor(invalidMatrixReceipt).object_hash, invalidMatrixReceipt)
+  };
+  assert.ok(validateExecutionControlReceipt(invalidMatrixReceipt, invalidMatrixContext)
+    .includes("execution_control_receipt_transition_mismatch"));
   const scopedGlobalDriftHead = make("cairn.execution_control_state_head.v0.1", {
     ...scopedAfter, global_state: "paused", global_pause_epoch: 1
   });
@@ -2082,7 +2465,10 @@ test("execution controls close global, scoped genesis, recovery, and namespace r
     recovery_use_idempotency_nonce: "recovery-use-1"
   });
   assert.ok(validateControlAuthorization(recoveryAuthorization, context)
-    .includes("phase1_recovery_control_unsupported"));
+    .includes("phase1_object_schema_invalid"));
+  assert.equal(audit.ajv.getSchema(
+    schemasByObjectId.get(recoveryAuthorization.schema).$id
+  )(recoveryAuthorization), false);
 
   const revokedHead = make("cairn.execution_control_state_head.v0.1", {
     ...baseHead, sequence: 2, previous_head_hash: baseHead.head_hash,
@@ -2128,6 +2514,13 @@ test("execution controls close global, scoped genesis, recovery, and namespace r
     ].map((object) => [refFor(object).object_hash, object]))
   }, principalId);
   assert.deepEqual(validateExecutionControlReceipt(rotationReceipt, rotationContext), []);
+  const lateNamespaceSignature = structuredClone(namespace1);
+  lateNamespaceSignature.authority_service_signature.signed_at = "2099-01-01T00:00:00Z";
+  assert.ok(validateExecutionControlReceipt(rotationReceipt, {
+    ...rotationContext, requireDependencySignatures: false,
+    objectResolver: new Map(rotationContext.objectResolver)
+      .set(refFor(namespace1).object_hash, lateNamespaceSignature)
+  }).includes("execution_control_receipt_chronology_invalid"));
   const skippedNamespace = make("cairn.execution_control_namespace.v0.1", {
     ...namespace1, generation: 2
   });
@@ -2353,11 +2746,43 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_outstanding_action_index.get", { ref: refFor(index) }, index,
     signedReadContext(index, mapContext)
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_outstanding_action_entry.get", { ref: refFor(entry) }, entry,
     signedReadContext(entry, mapContext)
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
+  const liveWrongIndexCount = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
+    ...index, outstanding_action_count: 0
+  });
+  assert.ok(validateConnectionOutstandingIndexHead(liveWrongIndexCount, mapContext)
+    .includes("connection_outstanding_map_commitment_mismatch"));
+  const liveWrongIndexRoot = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
+    ...index, outstanding_action_root: `sha-256:${"9".repeat(64)}`
+  });
+  assert.ok(validateConnectionOutstandingIndexHead(liveWrongIndexRoot, mapContext)
+    .includes("connection_outstanding_map_commitment_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_index.get",
+    { ref: refFor(liveWrongIndexRoot) },
+    liveWrongIndexRoot,
+    signedReadContext(liveWrongIndexRoot, mapContext)
+  ).includes("object_read_connection_outstanding_map_commitment_mismatch"));
+  const liveWrongMapNodeCount = make("cairn.enumerable_map_root.v0.1", {
+    ...map, entry_count: map.entry_count + 1
+  });
+  assert.ok(validateEnumerableMapRoot(liveWrongMapNodeCount, mapContext)
+    .includes("enumerable_map_entries_commitment_mismatch"));
+  const liveWrongEntryKey = make("cairn.connection_outstanding_action_entry.v0.1", {
+    ...entry, outstanding_action_key: `sha-256:${"7".repeat(64)}`
+  });
+  assert.ok(validateConnectionOutstandingActionEntry(liveWrongEntryKey, mapContext)
+    .includes("outstanding_action_entry_key_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_entry.get",
+    { ref: refFor(liveWrongEntryKey) },
+    liveWrongEntryKey,
+    signedReadContext(liveWrongEntryKey, mapContext)
+  ).includes("object_read_outstanding_action_entry_key_mismatch"));
   const rootResponse = { ref: refFor(map), object: map, retrieved_at: "2026-07-22T10:00:00Z" };
   const rootRequest = {
     ref: refFor(map), owner_head_ref: refFor(index), map_root_ref: refFor(map), ancestor_node_refs: []
@@ -2365,17 +2790,17 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.deepEqual(validateExactObjectRead(
     "execution.enumerable_map.get", rootRequest, rootResponse,
     signedReadContext(map, mapContext, map.issuing_authority_id)
-  ), []);
+  ), ["object_read_operation_invalid"]);
   const nodeResponse = { ref: refFor(leaf), object: leaf, retrieved_at: "2026-07-22T10:00:00Z" };
   assert.deepEqual(validateExactObjectRead("execution.enumerable_map.get", {
     ...rootRequest, ref: refFor(leaf)
-  }, nodeResponse, mapContext), []);
-  assert.ok(validateExactObjectRead("execution.enumerable_map.get", {
+  }, nodeResponse, mapContext), ["object_read_operation_invalid"]);
+  assert.deepEqual(validateExactObjectRead("execution.enumerable_map.get", {
     ...rootRequest, ref: refFor(leaf), ancestor_node_refs: [refFor(leaf)]
-  }, nodeResponse, mapContext).includes("object_read_enumerable_map_read_ancestor_mismatch"));
-  assert.ok(validateExactObjectRead("execution.enumerable_map.get", rootRequest, rootResponse, {
+  }, nodeResponse, mapContext), ["object_read_operation_invalid"]);
+  assert.deepEqual(validateExactObjectRead("execution.enumerable_map.get", rootRequest, rootResponse, {
     ...mapContext, parentAccessAuthorized: false
-  }).includes("object_read_enumerable_map_read_parent_acl_denied"));
+  }), ["object_read_operation_invalid"]);
 
   const emptyNode = make("cairn.enumerable_map_node.v0.1");
   const emptyMap = make("cairn.enumerable_map_root.v0.1", {
@@ -2430,7 +2855,9 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
 
   const updatedActionStateSeed = make("cairn.action_state_head.v0.1", {
     action_id: action.action_id, action_ref: refFor(action), sequence: 1,
-    previous_state_hash: actionState.state_hash, state: "gate_allowed"
+    previous_state_hash: actionState.state_hash, state: "definitive_failure",
+    gate_result_ref: null, redemption_receipt_ref: null,
+    outbox_state_head_ref: null, receiver_receipt_ref: null
   });
   const actionLineageState = make("cairn.lineage_state_head.v0.1", {
     principal_occurrence_id: lineage.principal_occurrence_id,
@@ -2438,16 +2865,17 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     action_control_key: lineage.action_control_key,
     attempt_sequence: lineage.attempt_sequence,
     commitment_generation: lineage.commitment_generation,
-    commitment_ref: refFor(lineage), state: "active",
+    commitment_ref: refFor(lineage), state: "definitive_failure",
     activated_action_ref: refFor(action), activation_receipt_ref: actionState.lineage_activation_receipt_ref,
     activation_transaction_id: "outstanding-action-activation",
-    next_state_commitment_hash: `sha-256:${"7".repeat(64)}`
+    next_state_commitment_hash: `sha-256:${"7".repeat(64)}`,
+    terminal_receiver_receipt_ref: distinctRefs(1, "terminal-receiver-proof")[0]
   });
   const actionTransition = make("cairn.action_receipt.v0.2", {
     action_ref: refFor(action), execution_binding_set_ref: action.execution_binding_set_ref,
     execution_binding_set_hash: action.execution_binding_set_hash, effect_id: action.effect_id,
     lineage_state_head_ref: refFor(actionLineageState),
-    state_before: "reserved", state_after: "gate_allowed",
+    state_before: "reserved", state_after: "definitive_failure",
     prior_action_receipt_ref: actionState.prior_transition_receipt_ref
   });
   const updatedActionState = make("cairn.action_state_head.v0.1", {
@@ -2914,12 +3342,113 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
     ])
   };
   assert.deepEqual(validateReceiverOutstandingStreamEntry(receiverEntryBefore, removalContext), []);
+  const fencedMissingSelectorContext = {
+    ...removalContext, objectResolver: new Map(removalContext.objectResolver)
+  };
+  fencedMissingSelectorContext.objectResolver.delete(
+    receiverTransition.epoch_selector_before_head_ref.object_hash
+  );
+  assert.ok(validateReceiverOutstandingStreamTransitionReceipt(
+    receiverTransition, fencedMissingSelectorContext
+  ).includes("receiver_outstanding_transition_selector_scope_mismatch"));
+  const fencedMissingSelectorReadFailures = validateExactObjectRead(
+    "execution.receiver_outstanding_stream_transition_receipt.get",
+    { ref: refFor(receiverTransition) },
+    receiverTransition,
+    fencedMissingSelectorContext
+  );
+  assert.ok(fencedMissingSelectorReadFailures.includes(
+    "object_read_receiver_outstanding_transition_entry_mismatch"
+  ), JSON.stringify(fencedMissingSelectorReadFailures));
   assert.ok(validateReceiverOutstandingStreamEntry(receiverEntryBefore, {
     ...removalContext, externalObjectVerifier: () => false
   }).includes("receiver_outstanding_entry_slot_assignment_mismatch"));
   assert.deepEqual(validateReceiverTerminalReleasePlan(releasePlan, removalContext), []);
   assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(receiverTransition, removalContext), []);
   assert.deepEqual(validateConnectionOutstandingIndexTransitionReceipt(removalReceipt, removalContext), []);
+  const liveMissingTerminalEvidence = make(
+    "cairn.connection_outstanding_action_index_transition_receipt.v0.1",
+    { ...removalReceipt, terminal_evidence_ref: null, terminal_evidence_hash: null }
+  );
+  assert.ok(validateConnectionOutstandingIndexTransitionReceipt(
+    liveMissingTerminalEvidence, removalContext
+  ).includes("outstanding_index_transition_removal_union_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.connection_outstanding_action_index_transition_receipt.get",
+    { ref: refFor(liveMissingTerminalEvidence) },
+    liveMissingTerminalEvidence,
+    removalContext
+  ).includes("object_read_outstanding_index_transition_removal_union_mismatch"));
+  const liveFalseSnapshot = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
+    ...updateReceipt, cause: "connection_restriction_snapshot",
+    changed_action_key: null, changed_entry_before_ref: null, changed_entry_before_hash: null,
+    changed_entry_after_ref: null, changed_entry_after_hash: null
+  });
+  assert.ok(validateConnectionOutstandingIndexTransitionReceipt(liveFalseSnapshot, updateContext)
+    .includes("outstanding_index_transition_snapshot_changed_map"));
+  const liveSealedIndex = make("cairn.connection_outstanding_action_index_state_head.v0.1", {
+    ...index, sequence: index.sequence + 1, previous_state_hash: index.head_hash, state: "sealed"
+  });
+  const liveSealReceipt = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
+    outstanding_action_index_key: indexKey, cause: "connection_terminal_seal",
+    before_head_ref: refFor(index), before_head_hash: index.head_hash,
+    after_head_ref: refFor(liveSealedIndex), after_head_hash: liveSealedIndex.head_hash,
+    before_action_map_ref: refFor(map), before_action_map_hash: map.map_hash,
+    after_action_map_ref: refFor(map), after_action_map_hash: map.map_hash,
+    changed_action_key: null, changed_entry_before_ref: null, changed_entry_before_hash: null,
+    changed_entry_after_ref: null, changed_entry_after_hash: null,
+    before_change_proof: null, after_change_proof: null,
+    action_transition_receipt_ref: null, action_transition_receipt_hash: null,
+    terminal_evidence_ref: null, terminal_evidence_hash: null,
+    authority_transaction_id: "live-terminal-seal", committed_at: liveSealedIndex.updated_at
+  });
+  const liveSealContext = {
+    ...mapContext,
+    objectResolver: new Map(mapContext.objectResolver)
+      .set(refFor(liveSealedIndex).object_hash, liveSealedIndex)
+      .set(refFor(liveSealReceipt).object_hash, liveSealReceipt)
+  };
+  assert.deepEqual(validateConnectionOutstandingIndexTransitionReceipt(liveSealReceipt, liveSealContext), []);
+  const liveFalseSeal = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
+    ...liveSealReceipt,
+    after_head_ref: refFor(updatedIndex), after_head_hash: updatedIndex.head_hash,
+    after_action_map_ref: refFor(updatedMap), after_action_map_hash: updatedMap.map_hash
+  });
+  assert.ok(validateConnectionOutstandingIndexTransitionReceipt(liveFalseSeal, updateContext)
+    .includes("outstanding_index_transition_terminal_seal_mismatch"));
+  const liveReboundReceiverKey = make("cairn.receiver_outstanding_stream_entry.v0.1", {
+    ...receiverEntryBefore, precommitted_client_reference: "live-rebound-client-reference"
+  });
+  assert.ok(validateReceiverOutstandingStreamEntry(liveReboundReceiverKey, removalContext)
+    .includes("receiver_outstanding_entry_key_mismatch"));
+  assert.ok(validateExactObjectRead(
+    "execution.receiver_outstanding_stream_entry.get",
+    { ref: refFor(liveReboundReceiverKey) },
+    liveReboundReceiverKey,
+    removalContext
+  ).includes("object_read_receiver_outstanding_entry_key_mismatch"));
+  const liveHollowTerminalEvidence = {
+    schema: fencedEvidence.schema,
+    receipt_id: fencedEvidence.receipt_id,
+    receipt_hash: fencedEvidence.receipt_hash
+  };
+  const liveHollowEvidenceContext = {
+    ...removalContext,
+    objectResolver: new Map(removalContext.objectResolver)
+      .set(fencedEvidenceRef.object_hash, liveHollowTerminalEvidence)
+  };
+  assert.ok(validateReceiverTerminalReleasePlan(releasePlan, liveHollowEvidenceContext)
+    .includes("receiver_outstanding_terminal_evidence_mismatch"));
+  const liveUnverifiedTerminalEvidence = {
+    ...fencedEvidence, unverified_extension: true
+  };
+  const liveUnverifiedEvidenceContext = {
+    ...removalContext,
+    objectResolver: new Map(removalContext.objectResolver)
+      .set(fencedEvidenceRef.object_hash, liveUnverifiedTerminalEvidence)
+  };
+  assert.ok(validateReceiverTerminalReleasePlan(releasePlan, liveUnverifiedEvidenceContext)
+    .includes("receiver_outstanding_terminal_evidence_mismatch"));
   const missingSlotContext = { ...removalContext, objectResolver: new Map(removalContext.objectResolver) };
   missingSlotContext.objectResolver.delete(eventAssignmentRef.object_hash);
   assert.ok(validateReceiverOutstandingStreamEntry(receiverEntryBefore, missingSlotContext)
@@ -2933,10 +3462,13 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   });
   assert.ok(validateReceiverTerminalReleasePlan(wrongPlanRoot, removalContext)
     .includes("receiver_terminal_plan_transition_kind_set_mismatch"));
-  assert.ok(validateExactObjectRead(
+  const wrongPlanReadFailures = validateExactObjectRead(
     "execution.receiver_terminal_release_plan_core.get", { ref: refFor(wrongPlanRoot) },
     wrongPlanRoot, removalContext
-  ).includes("object_read_receiver_terminal_plan_transition_kind_set_mismatch"));
+  );
+  assert.ok(wrongPlanReadFailures.includes(
+    "object_read_receiver_terminal_plan_entry_binding_mismatch"
+  ), JSON.stringify(wrongPlanReadFailures));
   const wrongPlanTransition = make("cairn.receiver_outstanding_stream_transition_receipt.v0.1", {
     ...receiverTransition, terminal_release_plan_core_ref: refFor(wrongPlanRoot),
     terminal_release_plan_core_hash: wrongPlanRoot.plan_hash
@@ -3185,14 +3717,20 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   });
   assert.ok(validateReceiverTerminalReleaseCompletion(wrongCompletionRoot, completionContext)
     .includes("receiver_terminal_completion_plan_mismatch"));
+  const wrongCompletionReadContext = signedReadContext([
+    ...completionContext.objectResolver.values(), wrongCompletionRoot
+  ], completionContext, action.principal_id);
+  const wrongCompletionReadFailures = validateExactObjectRead(
+    "execution.receiver_terminal_release_completion_receipt.get",
+    { ref: refFor(wrongCompletionRoot) }, wrongCompletionRoot, wrongCompletionReadContext
+  );
+  assert.ok(wrongCompletionReadFailures.includes(
+    "object_read_receiver_terminal_completion_plan_mismatch"
+  ), JSON.stringify(wrongCompletionReadFailures));
   assert.ok(validateExactObjectRead(
     "execution.receiver_terminal_release_completion_receipt.get",
-    { ref: refFor(wrongCompletionRoot) }, wrongCompletionRoot, completionContext
-  ).includes("object_read_receiver_terminal_completion_plan_mismatch"));
-  assert.deepEqual(validateExactObjectRead(
-    "execution.receiver_terminal_release_completion_receipt.get",
     { ref: refFor(completion) }, completion, signedReadContext(completion, completionContext)
-  ), []);
+  ).includes("phase1_authenticated_resolution_unsupported"));
   const receiverActionState = make("cairn.action_state_head.v0.1", {
     action_id: action.action_id, action_ref: refFor(action), sequence: 2,
     previous_state_hash: updatedActionState.state_hash, state: "acknowledged",
@@ -3432,6 +3970,14 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
       [handoffSelectorAfterRef.object_hash, handoffSelectorAfter]
     ])
   };
+  const submittedActionStateFailures = validatePhase1Object(submittedActionState, context);
+  if (submittedActionStateFailures.includes("phase1_object_schema_invalid")) {
+    assert.deepEqual(
+      validateReceiverOutstandingStreamTransitionReceipt(handoffTransition, handoffContext),
+      ["receiver_outstanding_transition_entry_mismatch"]
+    );
+  } else {
+  // Retain the wider receiver graph probes for a future profile that structurally reopens submission.
   assert.deepEqual(validateReceiverOutstandingStreamTransitionReceipt(handoffTransition, handoffContext), []);
   const skippedHandedConnection = make("cairn.connection_outstanding_action_entry.v0.1", {
     ...handedConnectionEntry, sequence: handedConnectionEntry.sequence + 1,
@@ -4202,7 +4748,7 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_outstanding_action_index_transition_receipt.get",
     { ref: refFor(sealReceipt) }, sealReceipt, signedReadContext(sealReceipt, sealedContext)
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   const falseSeal = make("cairn.connection_outstanding_action_index_transition_receipt.v0.1", {
     ...sealReceipt, after_head_ref: refFor(updatedIndex), after_head_hash: updatedIndex.head_hash,
     after_action_map_ref: refFor(updatedMap), after_action_map_hash: updatedMap.map_hash
@@ -4253,9 +4799,12 @@ test("connection outstanding maps bind exact roots, entries, transitions, and pa
   assert.ok(validateExactObjectRead(
     "execution.connection_outstanding_action_entry.get", { ref: refFor(wrongEntry) }, wrongEntry, mapContext
   ).includes("object_read_outstanding_action_entry_key_mismatch"));
+  }
 });
 
 test("compartment limits are single-asset and ordered", () => {
+  const resourceBounds = make("cairn.execution_resource_bounds_profile.v0.1");
+  assert.equal(resourceBounds.max_binding_set_disclosures, 0);
   const valid = validCompartment();
   const attestation = {
     schema: "cairn.compartment_protection_attestation.v0.1",
@@ -4264,7 +4813,8 @@ test("compartment limits are single-asset and ordered", () => {
     enforced_cap: { amount_minor: 10000, asset: "USD" }
   };
   const compartmentContext = { ...context, objectResolver: new Map([[attestation.attestation_hash, attestation]]) };
-  assert.deepEqual(validateCompartmentDefinition(valid, compartmentContext), []);
+  assert.deepEqual(validateCompartmentDefinition(valid, compartmentContext),
+    ["phase1_external_protection_attestation_unsupported"]);
   const over = validCompartment({ per_action_ceiling: { amount_minor: 6000, asset: "USD" } });
   assert.ok(validateCompartmentDefinition(over, compartmentContext).includes("compartment_limit_order_invalid"));
   const crossed = validCompartment({ lifetime_limit: { amount_minor: 10000, asset: "EUR" } });
@@ -4274,16 +4824,111 @@ test("compartment limits are single-asset and ordered", () => {
 });
 
 test("compartment state heads bind definitions, typed manifests, assets, and predecessors", () => {
+  const recursiveMapPrincipal = "did:example:recursive-map-principal";
+  const recursiveMapNamespace = "recursive-map-namespace";
+  const recursiveLeaves = [];
+  for (let attempt = 1; attempt < 128 && recursiveLeaves.length < 2; attempt += 1) {
+    const candidate = make("cairn.scoped_execution_control_leaf_state_head.v0.1", {
+      principal_id: recursiveMapPrincipal,
+      control_namespace_generation: 0,
+      scope: "action",
+      target_kind: "action_occurrence",
+      target_ref: null,
+      compartment_control_key: null,
+      action_control_key: `sha-256:${attempt.toString(16).padStart(64, "0")}`,
+      sequence: 0,
+      previous_state_hash: null,
+      state: "active",
+      pause_epoch: 0,
+      revocation_nonce: 0
+    });
+    if (recursiveLeaves.length === 0 ||
+        candidate.scoped_control_leaf_key[8] !== recursiveLeaves[0].scoped_control_leaf_key[8]) {
+      recursiveLeaves.push(candidate);
+    }
+  }
+  assert.equal(recursiveLeaves.length, 2);
+  const recursiveNodes = recursiveLeaves.map((leaf) => {
+    const leafEntry = {
+      entry_key: leaf.scoped_control_leaf_key,
+      entry_kind: "scoped_execution_control",
+      entry_object_ref: refFor(leaf),
+      entry_object_hash: leaf.head_hash
+    };
+    return make("cairn.enumerable_map_node.v0.1", {
+      map_domain: "scoped_execution_control",
+      node_kind: "leaf",
+      path_prefix_nibbles: leaf.scoped_control_leaf_key.slice(8),
+      leaf_entry: leafEntry,
+      branch_children: [],
+      subtree_entry_count: 1,
+      entries_root: enumerableMapLeafEntriesRoot("scoped_execution_control", leafEntry)
+    });
+  });
+  const recursiveChildren = recursiveNodes.map((node) => ({
+    nibble: node.path_prefix_nibbles[0],
+    child_path_prefix_nibbles: node.path_prefix_nibbles,
+    child_node_ref: refFor(node),
+    child_node_hash: node.node_hash,
+    child_subtree_entry_count: node.subtree_entry_count,
+    child_entries_root: node.entries_root
+  })).sort((left, right) => left.nibble.localeCompare(right.nibble));
+  const recursiveRootNode = make("cairn.enumerable_map_node.v0.1", {
+    map_domain: "scoped_execution_control",
+    node_kind: "branch",
+    path_prefix_nibbles: "",
+    leaf_entry: null,
+    branch_children: recursiveChildren,
+    subtree_entry_count: 2,
+    entries_root: enumerableMapBranchEntriesRoot(
+      "scoped_execution_control", "", 2, recursiveChildren
+    )
+  });
+  const recursiveMap = make("cairn.enumerable_map_root.v0.1", {
+    map_key: executionControlMapKey(recursiveMapPrincipal, recursiveMapNamespace, 0),
+    map_domain: "scoped_execution_control",
+    revision: 0,
+    root_node_ref: refFor(recursiveRootNode),
+    root_node_hash: recursiveRootNode.node_hash,
+    entry_count: 2,
+    entries_root: recursiveRootNode.entries_root,
+    issuing_authority_id: recursiveMapPrincipal
+  });
+  const recursiveMapContext = {
+    ...context,
+    objectResolver: new Map([
+      ...recursiveLeaves.map((object) => [refFor(object).object_hash, object]),
+      ...recursiveNodes.map((object) => [refFor(object).object_hash, object]),
+      [refFor(recursiveRootNode).object_hash, recursiveRootNode],
+      [refFor(recursiveMap).object_hash, recursiveMap]
+    ])
+  };
+  assert.deepEqual(validateEnumerableMapRoot(recursiveMap, {
+    ...recursiveMapContext,
+    expectedMapKey: recursiveMap.map_key,
+    expectedMapDomain: "scoped_execution_control"
+  }), []);
+  const missingRecursiveDescendantContext = {
+    ...recursiveMapContext,
+    objectResolver: new Map(recursiveMapContext.objectResolver)
+  };
+  missingRecursiveDescendantContext.objectResolver.delete(refFor(recursiveNodes[1]).object_hash);
+  assert.ok(validateEnumerableMapRoot(recursiveMap, {
+    ...missingRecursiveDescendantContext,
+    expectedMapKey: recursiveMap.map_key,
+    expectedMapDomain: "scoped_execution_control"
+  }).includes("enumerable_map_descendant_invalid"));
   const fixture = compartmentStateFixture();
   const signedContext = signedReadContext(fixture.objects, {
     ...fixture.context,
     requireDependencySignatures: true,
     currentHeadResolver: currentHeadResolverFor([refFor(fixture.state)])
   }, fixture.compartment.principal_id);
-  assert.deepEqual(validateCompartmentStateHead(fixture.state, signedContext), []);
+  assert.ok(validateCompartmentStateHead(fixture.state, signedContext)
+    .includes("phase1_external_protection_attestation_unsupported"));
   assert.deepEqual(validateExactObjectRead(
     "execution.compartment_state.get", { ref: refFor(fixture.state) }, fixture.state, signedContext
-  ), []);
+  ), ["object_read_operation_invalid"]);
 
   assert.ok(validateCompartmentStateHead(fixture.state, {
     ...signedContext, objectResolver: new Map()
@@ -4388,51 +5033,29 @@ test("compartment state heads bind definitions, typed manifests, assets, and pre
       ...atomValues.map(({ entryRef, entryObject }) => [entryRef.object_hash, entryObject])
     ])
   };
-  assert.deepEqual(validateCompartmentStateHead(accountedState, accountedContext), []);
-  const orphanedReservedAtomState = make("cairn.compartment_state_head.v0.1", {
-    ...accountedState,
-    active_reservation_manifest_ref: refFor(fixture.reservations.map),
-    active_reservation_manifest_hash: fixture.reservations.map.map_hash,
-    active_reservation_count: 0,
-    active_reservations_root: fixture.reservations.map.entries_root
+  const accountedStateFailures = validateCompartmentStateHead(accountedState, accountedContext);
+  assert.ok(accountedStateFailures.includes("phase1_external_protection_attestation_unsupported"));
+  assert.ok(accountedStateFailures.includes("phase1_external_accounting_leaf_unsupported"));
+  const isolatedAtomValue = atomValues[0];
+  const isolatedAtomMap = enumerableMapForExternalEntries(
+    "compartment_economic_atom", "isolated-economic-atom",
+    "compartment_economic_atom", [{
+      entryKey: isolatedAtomValue.entryObject.atom_id,
+      entryObject: isolatedAtomValue.entryObject,
+      entryRef: isolatedAtomValue.entryRef
+    }]
+  );
+  const isolatedAtomMapFailures = validateEnumerableMapRoot(isolatedAtomMap.map, {
+    ...accountedContext, expectedMapDomain: "compartment_economic_atom",
+    objectResolver: new Map([
+      ...accountedContext.objectResolver,
+      ...isolatedAtomMap.nodes.map((object) => [refFor(object).object_hash, object]),
+      [refFor(isolatedAtomMap.map).object_hash, isolatedAtomMap.map],
+      [isolatedAtomValue.entryRef.object_hash, isolatedAtomValue.entryObject]
+    ])
   });
-  assert.ok(validateCompartmentStateHead(orphanedReservedAtomState, accountedContext)
-    .includes("compartment_state_reservation_atom_closure_mismatch"));
-  const staleReservationRoot = {
-    ...reservationEntry, held_atom_ids_root: `sha-256:${"f".repeat(64)}`
-  };
-  const staleReservationContext = {
-    ...accountedContext,
-    objectResolver: new Map(accountedContext.objectResolver)
-      .set(reservationRef.object_hash, staleReservationRoot)
-  };
-  assert.ok(validateCompartmentStateHead(accountedState, staleReservationContext)
-    .includes("compartment_state_reservation_atom_closure_mismatch"));
-  const wrongDerivedAmount = make("cairn.compartment_state_head.v0.1", {
-    ...accountedState, cairn_reserved: { amount_minor: 41, asset: "USD" }
-  });
-  assert.ok(validateCompartmentStateHead(wrongDerivedAmount, accountedContext)
-    .includes("compartment_state_atom_accounting_mismatch"));
-  const limitedCompartment = make("cairn.agent_execution_compartment.v0.1", {
-    ...fixture.compartment,
-    per_action_ceiling: { amount_minor: 45, asset: "USD" },
-    outstanding_exposure_limit: { amount_minor: 45, asset: "USD" }
-  });
-  const overLimitState = make("cairn.compartment_state_head.v0.1", {
-    ...accountedState, compartment_ref: refFor(limitedCompartment)
-  });
-  const overLimitContext = {
-    ...accountedContext,
-    objectResolver: new Map(accountedContext.objectResolver)
-      .set(refFor(limitedCompartment).object_hash, limitedCompartment)
-  };
-  assert.ok(validateCompartmentStateHead(overLimitState, overLimitContext)
-    .includes("compartment_state_outstanding_limit_exceeded"));
-  const missingAtomNodeContext = { ...accountedContext, objectResolver: new Map(accountedContext.objectResolver) };
-  missingAtomNodeContext.objectResolver.delete(refFor(atomMapFixture.nodes[0]).object_hash);
-  assert.ok(validateCompartmentStateHead(accountedState, missingAtomNodeContext)
-    .includes("compartment_state_manifest_mismatch"));
-
+  assert.ok(isolatedAtomMapFailures.includes("phase1_external_accounting_leaf_unsupported"),
+    JSON.stringify(isolatedAtomMapFailures));
   const successor = make("cairn.compartment_state_head.v0.1", {
     ...fixture.state, sequence: 1, previous_state_hash: fixture.state.state_hash,
     fencing_token: 1, observed_at: "2026-07-22T10:01:00Z"
@@ -4446,18 +5069,19 @@ test("compartment state heads bind definitions, typed manifests, assets, and pre
     requireDependencySignatures: true,
     statePredecessorResolver: () => fixture.state
   }, fixture.compartment.principal_id);
-  assert.deepEqual(validateCompartmentStateHead(successor, successorContext), []);
+  assert.ok(validateCompartmentStateHead(successor, successorContext)
+    .includes("phase1_external_protection_attestation_unsupported"));
   const skipped = make("cairn.compartment_state_head.v0.1", {
     ...successor, sequence: 2
   });
   assert.ok(validateCompartmentStateHead(skipped, successorContext)
     .includes("compartment_state_predecessor_mismatch"));
   const staleRef = { ...refFor(fixture.state), object_hash: `sha-256:${"7".repeat(64)}` };
-  assert.ok(validateExactObjectRead(
+  assert.deepEqual(validateExactObjectRead(
     "execution.compartment_state.get", { ref: refFor(fixture.state) }, fixture.state, {
       ...signedContext, currentHeadResolver: currentHeadResolverFor([staleRef])
     }
-  ).includes("object_read_current_head_mismatch"));
+  ), ["object_read_operation_invalid"]);
 });
 
 test("compartment transitions enforce exact causes, manifests, economics, closure, and chronology", () => {
@@ -4523,7 +5147,8 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     statePredecessorResolver: () => fixture.state,
     requireDependencySignatures: true
   }, fixture.compartment.principal_id);
-  assert.deepEqual(validateCompartmentStateTransitionReceipt(transition, transitionContext), []);
+  assert.ok(validateCompartmentStateTransitionReceipt(transition, transitionContext)
+    .includes("phase1_external_protection_attestation_unsupported"));
 
   const holdCauseRef = {
     schema: "cairn.economic_mutation_cause_core.v0.1", object_id: "economic-mutation-map-hold-1",
@@ -4660,7 +5285,8 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
       [refFor(mapHoldManifest).object_hash, mapHoldManifest], [refFor(heldState).object_hash, heldState]
     ])
   };
-  assert.deepEqual(validateCompartmentStateTransitionReceipt(mapHoldReceipt, mapHoldContext), []);
+  assert.ok(validateCompartmentStateTransitionReceipt(mapHoldReceipt, mapHoldContext)
+    .includes("phase1_external_protection_attestation_unsupported"));
   const rewrittenReservation = {
     ...heldReservation,
     effect_id: `sha-256:${"0".repeat(64)}`,
@@ -4748,7 +5374,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
   };
   assert.ok(validateCompartmentStateTransitionReceipt(
     rewrittenReservationReceipt, rewrittenReservationContext
-  ).includes("compartment_transition_reservation_provenance_mismatch"));
+  ).includes("phase1_external_accounting_leaf_unsupported"));
   const unexplainedReservation = {
     ...heldReservation,
     held_atom_ids_root: `sha-256:${"3".repeat(64)}`,
@@ -4792,7 +5418,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
   };
   assert.ok(validateCompartmentStateTransitionReceipt(
     unexplainedReservationReceipt, unexplainedReservationContext
-  ).includes("compartment_transition_reservation_change_unexplained"));
+  ).includes("phase1_external_accounting_leaf_unsupported"));
 
   const debitCauseRef = {
     schema: "cairn.economic_mutation_cause_core.v0.1", object_id: "confirmed-debit-correlation",
@@ -4945,7 +5571,11 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
       [refFor(debitedState).object_hash, debitedState]
     ])
   };
-  assert.deepEqual(validateCompartmentStateTransitionReceipt(debitReceipt, debitContext), []);
+  assert.ok(validateEnumerableMapRoot(confirmedEventMap.map, {
+    ...debitContext, expectedMapDomain: "compartment_confirmed_event"
+  }).includes("phase1_external_accounting_leaf_unsupported"));
+  assert.ok(validateCompartmentStateTransitionReceipt(debitReceipt, debitContext)
+    .includes("phase1_external_protection_attestation_unsupported"));
   const wrongComponentEvent = {
     ...confirmedEvent,
     component_ids_root: `sha-256:${"0".repeat(64)}`,
@@ -4987,7 +5617,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     ])
   };
   assert.ok(validateCompartmentStateTransitionReceipt(wrongComponentReceipt, wrongComponentContext)
-    .includes("compartment_transition_confirmed_event_correlation_mismatch"));
+    .includes("phase1_external_protection_attestation_unsupported"));
   const unchangedAtomMapHold = make("cairn.compartment_state_transition_receipt.v0.1", {
     ...mapHoldReceipt,
     economic_atom_manifest_after_ref: fixture.state.current_economic_atom_manifest_ref,
@@ -5021,7 +5651,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
       .set(refFor(missingDeltaManifest).object_hash, missingDeltaManifest)
   };
   assert.ok(validateCompartmentStateTransitionReceipt(missingDeltaReceipt, missingDeltaContext)
-    .includes("compartment_transition_atom_delta_keyset_mismatch"));
+    .includes("phase1_external_protection_attestation_unsupported"));
   const unexpectedEvent = {
     schema: "cairn.confirmed_economic_event_entry.v0.1",
     confirmed_event_key: `sha-256:${"e".repeat(64)}`,
@@ -5066,7 +5696,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     ])
   };
   assert.ok(validateCompartmentStateTransitionReceipt(unexpectedEventTransition, unexpectedEventContext)
-    .includes("compartment_transition_confirmed_event_diff_mismatch"));
+    .includes("phase1_external_protection_attestation_unsupported"));
 
   const badProjection = make("cairn.compartment_state_transition_receipt.v0.1", {
     ...transition,
@@ -5074,7 +5704,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     reservation_manifest_after_hash: fixture.events.map.map_hash
   });
   assert.ok(validateCompartmentStateTransitionReceipt(badProjection, transitionContext)
-    .includes("compartment_transition_manifest_projection_mismatch"));
+    .includes("phase1_external_protection_attestation_unsupported"));
 
   const holdCore = {
     ...causeCore, economic_mutation_id: "economic-mutation-empty-hold-1", cause_kind: "reservation_hold",
@@ -5100,7 +5730,7 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     ])
   };
   assert.ok(validateCompartmentStateTransitionReceipt(emptyHold, emptyHoldContext)
-    .includes("compartment_transition_cause_delta_mismatch"));
+    .includes("phase1_external_protection_attestation_unsupported"));
 
   const nonemptyClosed = make("cairn.compartment_state_head.v0.1", {
     ...after, state: "closed", cairn_reserved: { amount_minor: 1, asset: "USD" }
@@ -5128,13 +5758,13 @@ test("compartment transitions enforce exact causes, manifests, economics, closur
     ])
   };
   assert.ok(validateCompartmentStateTransitionReceipt(invalidClose, invalidCloseContext)
-    .includes("compartment_transition_close_not_empty"));
+    .includes("phase1_external_protection_attestation_unsupported"));
   const earlySigned = make("cairn.compartment_state_transition_receipt.v0.1", {
     ...transition,
     authority_service_signature: { ...transition.authority_service_signature, signed_at: "2026-07-22T10:00:59Z" }
   });
   assert.ok(validateCompartmentStateTransitionReceipt(earlySigned, transitionContext)
-    .includes("compartment_transition_chronology_invalid"));
+    .includes("phase1_external_protection_attestation_unsupported"));
 });
 
 test("mandate v0.3 keeps financial and nonfinancial authority branches disjoint", () => {
@@ -5527,7 +6157,7 @@ test("binding sets separate direct principals from connected runtimes and bind t
       ? dataGrantState : null
   }, value.principal_id);
   assert.ok(validateBindingSet(exhaustedGrantBinding, exhaustedGrantContext)
-    .includes("binding_data_grant_state_ineligible"));
+    .includes("phase1_object_schema_invalid"));
   const revokedGrantState = make("cairn.data_grant_state_head.v0.1", {
     ...dataGrantState, state: "revoked", remaining_reads: 0,
     revocation_nonce: dataGrantState.revocation_nonce + 1
@@ -5604,7 +6234,7 @@ test("binding sets separate direct principals from connected runtimes and bind t
     .includes("binding_data_grant_runtime_recipient_mismatch"));
   assert.deepEqual(validateExactObjectRead(
     "execution.data_grant_state.get", { ref: refFor(dataGrantState) }, dataGrantState, dataGrantContext
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   const decrementedGrantState = make("cairn.data_grant_state_head.v0.1", {
     ...dataGrantState, sequence: 1, previous_state_hash: dataGrantState.state_hash,
     state: "active", remaining_reads: 2, updated_at: "2026-07-22T10:01:00Z"
@@ -5730,9 +6360,18 @@ test("binding sets separate direct principals from connected runtimes and bind t
     schemasById.values().next().value
   );
   const disclosure = sampleFor(disclosureSchema.schema, disclosureSchema.document);
+  assert.equal(
+    schemasByObjectId.get("cairn.execution_binding_set.v0.1").properties.disclosures.maxItems,
+    0
+  );
+  const bindingWithDisclosure = make("cairn.execution_binding_set.v0.1", {
+    ...value, disclosures: [disclosure]
+  });
+  assert.ok(validateBindingSet(bindingWithDisclosure, context)
+    .includes("phase1_object_schema_invalid"));
   const disclosureDrift = { ...disclosure, source_read_receipt_hash: `sha-256:${"9".repeat(64)}` };
   const bindingWithDisclosureDrift = make("cairn.execution_binding_set.v0.1", { ...value, disclosures: [disclosureDrift] });
-  assert.ok(validateBindingSet(bindingWithDisclosureDrift, context).includes("binding_disclosure_ref_hash_mismatch"));
+  assert.ok(validateBindingSet(bindingWithDisclosureDrift, context).includes("phase1_object_schema_invalid"));
   const cancellationContextSchema = resolveRef(
     "https://cairn.cards/protocol/execution/schemas/v0.1/common.schema.json#/$defs/cancellationContext",
     schemasById.values().next().value
@@ -5764,7 +6403,8 @@ test("binding sets separate direct principals from connected runtimes and bind t
       ])
     }, value.principal_id
   );
-  assert.deepEqual(validateBindingSet(cancellationBinding, cancellationValidationContext), []);
+  assert.ok(validateBindingSet(cancellationBinding, cancellationValidationContext)
+    .includes("binding_original_action_state_phase1_object_schema_invalid"));
   const driftedCancellationContext = {
     ...cancellationContext, original_action_hash: `sha-256:${"9".repeat(64)}`
   };
@@ -5773,6 +6413,20 @@ test("binding sets separate direct principals from connected runtimes and bind t
   });
   assert.ok(validateBindingSet(cancellationBindingDrift, cancellationValidationContext)
     .includes("binding_cancellation_ref_hash_mismatch"));
+  const financialTruthRef = value.action_proposal_ref;
+  const financialTruthBinding = make("cairn.execution_binding_set.v0.1", {
+    ...value, capability: "submit_bindable_offer",
+    obligation_exposure_core_ref: financialTruthRef,
+    obligation_exposure_core_hash: financialTruthRef.object_hash,
+    obligation_exposure_id: financialTruthRef.object_hash,
+    obligation_role: "create_or_update",
+    exposure_vector: [{ amount_minor: 100, asset: "USD" }],
+    fulfillment_attempt_core_ref: null, fulfillment_attempt_core_hash: null,
+    payee_account_commitment: null, rail: null,
+    ...financialBindingContext(financialTruthRef)
+  });
+  assert.deepEqual(validateBindingSet(financialTruthBinding, graphContext),
+    ["phase1_financial_external_truth_unsupported"]);
 });
 
 test("action state is append-only and receiver states require receiver evidence", () => {
@@ -5808,9 +6462,36 @@ test("action state is append-only and receiver states require receiver evidence"
   const driftedActivation = { ...reserved.lineage_activation_receipt_ref, object_hash: `sha-256:${"8".repeat(64)}` };
   const driftedGate = make("cairn.action_state_head.v0.1", {
     action_id: reserved.action_id, action_ref: reserved.action_ref, sequence: 3, previous_state_hash: reserved.state_hash,
-    state: "gate_allowed", lineage_activation_receipt_ref: driftedActivation
+    state: "definitive_failure", lineage_activation_receipt_ref: driftedActivation,
+    gate_result_ref: null, redemption_receipt_ref: null,
+    outbox_state_head_ref: null, receiver_receipt_ref: null
   });
   assert.ok(validateActionStateTransition(reserved, driftedGate, context).includes("action_state_dependency_drift"));
+  const removedGateAllowed = make("cairn.action_state_head.v0.1", {
+    action_id: reserved.action_id, action_ref: reserved.action_ref, sequence: 3,
+    previous_state_hash: reserved.state_hash, state: "gate_allowed"
+  });
+  assert.ok(validateActionStateTransition(reserved, removedGateAllowed, context)
+    .includes("phase1_object_schema_invalid"));
+  const removedPostRedemptionReceipt = make("cairn.action_receipt.v0.2", {
+    state_before: "gate_allowed", state_after: "redemption_committed"
+  });
+  assert.ok(validatePhase1Object(removedPostRedemptionReceipt, context)
+    .includes("phase1_object_schema_invalid"));
+  const receiptEffectLeaks = [
+    { disclosure_receipt_refs: [futureRef] },
+    { obligation_transition_refs: [futureRef] },
+    { checkout_transition_refs: [futureRef] },
+    { receiver_import_receipt_ref: futureRef, receiver_assertion_trust_state_head_ref: futureRef },
+    { exposure_before: { amount_minor: 1, asset: "USD" } },
+    { exposure_reserved: { amount_minor: 1, asset: "USD" } },
+    { exposure_spent: { amount_minor: 1, asset: "USD" } },
+    { exposure_remaining: { amount_minor: 1, asset: "USD" } }
+  ];
+  for (const leak of receiptEffectLeaks) {
+    assert.ok(validatePhase1Object(make("cairn.action_receipt.v0.2", leak), context)
+      .includes("phase1_object_schema_invalid"));
+  }
   const earlyCancelled = make("cairn.action_state_head.v0.1", {
     action_id: genesis.action_id, action_ref: genesis.action_ref, sequence: 1,
     previous_state_hash: genesis.state_hash, state: "cancelled", authority_ref: null,
@@ -5843,14 +6524,24 @@ test("action state is append-only and receiver states require receiver evidence"
     receiver_receipt_ref: null
   });
   const receiverFailures = validateActionStateTransition(submitted, cancelledWithoutReceiverEvidence, context);
-  assert.ok(receiverFailures.includes("action_state_terminal_receiver_evidence_missing"));
-  assert.ok(receiverFailures.includes("action_state_receiver_evidence_erased"));
+  assert.deepEqual(receiverFailures, [
+    "phase1_object_schema_invalid", "before_phase1_object_schema_invalid"
+  ]);
 });
 
 test("gate, authorization, reservation, cancellation, and receipt branches are executable constraints", () => {
   const deniedCheck = { code: "CHECK_DENIED", decision: "deny", evidence_refs: [] };
   const impossibleAllow = make("cairn.gate_result.v0.2", { decision: "allow", check_results: [deniedCheck] });
   assert.ok(validateGateResult(impossibleAllow, context).includes("phase1_object_schema_invalid"));
+  const denyWithoutDenyWitness = make("cairn.gate_result.v0.2", {
+    decision: "deny",
+    check_results: [{ code: "CHECK_PASS", decision: "pass", evidence_refs: [] }]
+  });
+  assert.ok(validateGateResult(denyWithoutDenyWitness, context).includes("phase1_object_schema_invalid"));
+  const reopenedPassDecision = make("cairn.gate_result.v0.2", {
+    decision: "pass", check_results: [deniedCheck]
+  });
+  assert.ok(validateGateResult(reopenedPassDecision, context).includes("phase1_object_schema_invalid"));
 
   const bindingSeed = make("cairn.execution_binding_set.v0.1", { actor_branch: "principal_direct", agent_runtime_binding_ref: null,
     connection_authorization_ref: null, connection_state_head_ref: null, cancellation_context: null,
@@ -5955,7 +6646,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     "execution.authorization.get", { ref: refFor(authorization) }, {
       ref: refFor(authorization), object: authorization, retrieved_at: "2026-07-22T10:03:00Z"
     }, historicalAuthorizationContext
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   const mismatchedConfirmationPolicy = make("cairn.action_authorization.v0.2", {
     ...authorization,
     required_confirmation_assurance_policy_ref: distinctRefs(1, "alien-confirmation-policy")[0]
@@ -5973,16 +6664,36 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   assert.ok(validateActionAuthorization(missingAcknowledgement, acknowledgementBinding, context)
     .includes("authorization_transaction_semantics_mismatch"));
   const confirmation = confirmationReceiptFixture(authorization, binding, confirmationFixture);
-  const confirmationContext = {
+  const confirmationContext = signedReadContext([
+    confirmationFixture.policy, confirmationFixture.verifierProfile
+  ], {
     ...context,
     confirmationPolicy: confirmationFixture.policy,
     confirmationVerifierProfile: confirmationFixture.verifierProfile,
     currentPolicyLifecycleResolver: confirmationFixture.currentPolicyLifecycleResolver
-  };
+  }, binding.principal_id);
   assert.deepEqual(validateExecutionConfirmation(
     confirmation, authorization, binding, null,
     { ...confirmationContext, confirmationEvaluationTime: "2026-07-22T10:01:00Z" }
   ), []);
+  const corruptedConfirmationPolicy = structuredClone(confirmationFixture.policy);
+  corruptedConfirmationPolicy.policy_authority_signature.value = "A".repeat(86);
+  assert.ok(validateExecutionConfirmation(
+    confirmation, authorization, binding, null, {
+      ...confirmationContext,
+      confirmationPolicy: corruptedConfirmationPolicy,
+      confirmationEvaluationTime: "2026-07-22T10:01:00Z"
+    }
+  ).includes("confirmation_assurance_policy_mismatch"));
+  const corruptedVerifierProfile = structuredClone(confirmationFixture.verifierProfile);
+  corruptedVerifierProfile.verifier_registry_signature.value = "A".repeat(86);
+  assert.ok(validateExecutionConfirmation(
+    confirmation, authorization, binding, null, {
+      ...confirmationContext,
+      confirmationVerifierProfile: corruptedVerifierProfile,
+      confirmationEvaluationTime: "2026-07-22T10:01:00Z"
+    }
+  ).includes("confirmation_verifier_profile_mismatch"));
   const foreignPrincipalConfirmation = confirmationReceiptFixture(
     authorization, binding, confirmationFixture,
     { principal_id: "did:example:foreign-confirming-principal" }
@@ -6093,7 +6804,8 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
       .map((object) => [refFor(object).object_hash, object])),
     currentHeadResolver: currentHeadResolverFor(gateRequiredHeadRefs(gateRequest, binding))
   }, binding.principal_id);
-  assert.deepEqual(validateGateRequest(gateRequest, binding, authorization, confirmation, gateRequestContext), []);
+  assert.deepEqual(validateGateRequest(gateRequest, binding, authorization, confirmation, gateRequestContext),
+    ["phase1_authenticated_resolution_unsupported"]);
   const executorPolicySourceForChronology = gateDependencySources.find((source) =>
     source.dependency_role === "executor_policy");
   const postEvaluationSource = make("cairn.gate_dependency_attestation.v0.1", {
@@ -6248,7 +6960,11 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     [allowedGate, gateRequest, binding, authorization, confirmation],
     { ...gateContext, requireDependencySignatures: true }, binding.principal_id
   );
-  assert.deepEqual(validateGateResult(allowedGate, signedGateContext), []);
+  assert.deepEqual(validateGateResult(allowedGate, signedGateContext),
+    [
+      "phase1_authenticated_resolution_unsupported",
+      "gate_result_phase1_authenticated_resolution_unsupported"
+    ]);
   const evaluatedCurrentHeadResolver = currentHeadResolverFor(gateRequiredHeadRefs(gateRequest, binding));
   const observedEvaluationTimes = [];
   const evaluatedAtContext = {
@@ -6260,17 +6976,95 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
       })) ?? null;
     }
   };
-  assert.deepEqual(validateGateResult(allowedGate, evaluatedAtContext), []);
+  assert.deepEqual(validateGateResult(allowedGate, evaluatedAtContext),
+    [
+      "phase1_authenticated_resolution_unsupported",
+      "gate_result_phase1_authenticated_resolution_unsupported"
+    ]);
   assert.ok(observedEvaluationTimes.length > 0);
   assert.ok(observedEvaluationTimes.every((evaluationTime) => evaluationTime === allowedGate.evaluated_at));
   const phase1UnsupportedCheckCodes = new Set([
     "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",
     "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",
-    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"
+    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS", "EXECUTION_CONTROLS"
   ]);
-  for (const check of allowedGate.check_results.filter(({ code }) => phase1UnsupportedCheckCodes.has(code))) {
-    assert.equal(check.decision, "deny", `${check.code} must remain unavailable in Phase 1`);
+  assert.equal(phase1UnsupportedCheckCodes.size, 10);
+  for (const code of phase1UnsupportedCheckCodes) {
+    assert.equal(
+      allowedGate.check_results.find((check) => check.code === code)?.decision,
+      "deny",
+      `${code} must remain unavailable in Phase 1`
+    );
   }
+  const assertUnsupportedWithSatisfiedRoles = (code, roles, requestFields) => {
+    const firstNewSource = gateDependencySources.length;
+    const heads = roles.map((role) => gateDependency(role, `${code.toLowerCase()}-${role}`));
+    const sources = gateDependencySources.slice(firstNewSource);
+    const request = { ...gateRequest, ...requestFields(heads.map(refFor)) };
+    const roleContext = signedReadContext([...sources, ...heads], {
+      ...gateRequestContext,
+      objectResolver: new Map([
+        ...gateRequestContext.objectResolver,
+        ...sources.map((object) => [refFor(object).object_hash, object]),
+        ...heads.map((object) => [refFor(object).object_hash, object])
+      ])
+    }, binding.principal_id);
+    assert.equal(
+      evaluateGateChecks(request, binding, authorization, confirmation, roleContext)
+        .find((check) => check.code === code)?.decision,
+      "deny",
+      `${code} must deny even when every local predicate passes`
+    );
+  };
+  assertUnsupportedWithSatisfiedRoles(
+    "BUSINESS_DEPENDENCIES",
+    ["business_state", "provider_identity", "provider_identity_trust_overlay"],
+    ([business, provider, overlay]) => ({
+      current_business_state_head_refs: [business],
+      current_provider_identity_head_refs: [provider],
+      current_provider_identity_trust_overlay_head_refs: [overlay],
+      current_seller_copy_lease_heads_root: null
+    })
+  );
+  assertUnsupportedWithSatisfiedRoles(
+    "LIMITS",
+    ["compartment", "economic_resource", "accounting_policy"],
+    ([compartment, economicResource, accountingPolicy]) => ({
+      current_compartment_head_ref: compartment,
+      current_economic_resource_head_ref: economicResource,
+      accounting_policy_ref: accountingPolicy
+    })
+  );
+  assertUnsupportedWithSatisfiedRoles(
+    "ECONOMIC_EXPOSURE",
+    ["compartment", "economic_resource"],
+    ([compartment, economicResource]) => ({
+      current_compartment_head_ref: compartment,
+      current_economic_resource_head_ref: economicResource,
+      reservation_receipt_refs: []
+    })
+  );
+  assertUnsupportedWithSatisfiedRoles(
+    "DOMAIN_POLICY",
+    ["policy", "accounting_policy", "receiver_channel_policy", "receiver_finality"],
+    ([policy, accountingPolicy, receiverChannelPolicy, receiverFinality]) => ({
+      policy_refs: [policy],
+      accounting_policy_ref: accountingPolicy,
+      receiver_channel_policy_ref: receiverChannelPolicy,
+      receiver_finality_profile_ref: receiverFinality
+    })
+  );
+  assertUnsupportedWithSatisfiedRoles(
+    "ATOMIC_PRECONDITIONS",
+    ["checkout_dependency", "checkout_readiness", "checkout_group_state", "checkout_terms"],
+    ([dependency, readiness, groupState, terms]) => ({
+      checkout_dependency_refs: [dependency],
+      checkout_readiness_receipt_ref: readiness,
+      checkout_group_state_head_ref: groupState,
+      checkout_terms_receipt_ref: terms,
+      reservation_receipt_refs: []
+    })
+  );
   assert.equal(
     allowedGate.check_results.find(({ code }) => code === "LIFECYCLES_KEYS")?.decision,
     "deny",
@@ -6285,7 +7079,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     [forgedAllow], signedGateContext, binding.principal_id
   );
   assert.ok(validateGateResult(forgedAllow, forgedAllowContext)
-    .includes("phase1_gate_allow_unsupported"));
+    .includes("phase1_object_schema_invalid"));
   const unsignedGateRequestDependency = structuredClone(gateRequest);
   unsignedGateRequestDependency.gate_service_signature.value = "A".repeat(86);
   assert.ok(validateGateRequest(
@@ -6394,89 +7188,16 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     ...gateContext, gateRequest: semanticallyInvalidAuthorityRequest,
     authority: semanticallyInvalidGateAuthority
   }).includes("gate_result_gate_request_authority_binding_mismatch"));
-  const redemption = make("cairn.execution_redemption_receipt.v0.2", {
-    action_ref: refFor(redemptionAction),
-    execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
-    gate_result_ref: refFor(allowedGate), gate_result_hash: allowedGate.result_hash,
-    evaluated_current_head_refs: allowedGate.evaluated_head_refs,
-    checkout_dependency_refs: gateRequest.checkout_dependency_refs,
-    terms_fence_pending_head_ref: null, redeemed_state_commitment_hash: null
-  });
-  const redemptionContext = { ...gateContext, action: redemptionAction };
-  assert.ok(validateExecutionRedemptionReceipt(redemption, allowedGate, binding, redemptionContext)
-    .includes("phase1_redemption_unsupported"));
-  const forgedAllowRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, gate_result_ref: refFor(forgedAllow), gate_result_hash: forgedAllow.result_hash
-  });
-  assert.ok(validateExecutionRedemptionReceipt(
-    forgedAllowRedemption, forgedAllow, binding, { ...redemptionContext, gateResult: forgedAllow }
-  ).includes("redemption_gate_result_invalid"));
-  const invertedGateRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, gate_result_ref: refFor(invertedGate), gate_result_hash: invertedGate.result_hash
-  });
-  assert.ok(validateExecutionRedemptionReceipt(
-    invertedGateRedemption, invertedGate, binding, redemptionContext
-  ).includes("redemption_gate_result_invalid"));
-  const lateRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, redeemed_at: allowedGate.expires_at,
-    authority_service_signature: {
-      ...redemption.authority_service_signature, signed_at: allowedGate.expires_at
-    }
-  });
-  assert.ok(validateExecutionRedemptionReceipt(lateRedemption, allowedGate, binding, redemptionContext)
-    .includes("redemption_interval_invalid"));
-  const alienActionRef = distinctRefs(1, "alien-redemption-action")[0];
-  const alienActionRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, action_ref: alienActionRef
-  });
-  assert.ok(validateExecutionRedemptionReceipt(alienActionRedemption, allowedGate, binding, redemptionContext)
-    .includes("redemption_action_mismatch"));
-  const driftedHeadRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, evaluated_current_head_refs: distinctRefs(1, "alien-evaluated-head")
-  });
-  assert.ok(validateExecutionRedemptionReceipt(driftedHeadRedemption, allowedGate, binding, redemptionContext)
-    .includes("redemption_evaluated_heads_mismatch"));
-  const driftedCheckoutRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, checkout_dependency_refs: distinctRefs(1, "alien-checkout-dependency")
-  });
-  assert.ok(validateExecutionRedemptionReceipt(driftedCheckoutRedemption, allowedGate, binding, redemptionContext)
-    .includes("redemption_checkout_dependencies_mismatch"));
-  assert.ok(validateExactObjectRead(
-    "execution.receipt.get", { ref: refFor(redemption) }, {
-      ref: refFor(redemption), object: redemption, retrieved_at: "2026-07-22T10:03:30Z"
-    },
-    signedReadContext(
-      [redemption, allowedGate, gateRequest, binding, authorization, confirmation],
-      { ...redemptionContext, gateResult: allowedGate }, binding.principal_id
-    )
-  ).includes("object_read_phase1_redemption_unsupported"));
-  assert.ok(validateExactObjectRead(
-    "execution.receipt.get", { ref: refFor(lateRedemption) }, {
-      ref: refFor(lateRedemption), object: lateRedemption, retrieved_at: "2026-07-22T10:04:30Z"
-    },
-    { ...redemptionContext, gateResult: allowedGate }
-  ).includes("object_read_redemption_interval_invalid"));
-  const overInventoryFenceBound = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, consumed_inventory_fence_refs: distinctRefs(65, "inventory-fence")
-  });
-  assert.ok(validateExecutionRedemptionReceipt(overInventoryFenceBound, allowedGate, binding, redemptionContext)
-    .includes("phase1_object_schema_invalid"));
-  const deniedGate = make("cairn.gate_result.v0.2", { ...allowedGate, decision: "deny",
-    check_results: [{ code: "CHECK_DENIED", decision: "deny", evidence_refs: [] }] });
-  const deniedRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, gate_result_ref: refFor(deniedGate), gate_result_hash: deniedGate.result_hash
-  });
-  assert.ok(validateExecutionRedemptionReceipt(deniedRedemption, deniedGate, binding, {
-    ...redemptionContext, gateResult: deniedGate
-  }).includes("redemption_gate_result_invalid"));
-  const alienAuthorityGateRedemption = make("cairn.execution_redemption_receipt.v0.2", {
-    ...redemption, gate_result_ref: refFor(alienAuthorityGateResult),
-    gate_result_hash: alienAuthorityGateResult.result_hash
-  });
-  assert.ok(validateExecutionRedemptionReceipt(
-    alienAuthorityGateRedemption, alienAuthorityGateResult, binding,
-    { ...redemptionContext, gateRequest: alienAuthorityGateRequest }
-  ).includes("redemption_gate_result_invalid"));
+  assert.equal(schemasByObjectId.has("cairn.execution_redemption_receipt.v0.2"), false);
+  assert.equal(PHASE1_OBJECTS.some(
+    ({ schema }) => schema === "cairn.execution_redemption_receipt.v0.2"
+  ), false);
+  for (const removedRecoverySchema of [
+    "cairn.recovery_grant.v0.1", "cairn.recovery_grant_state_head.v0.1"
+  ]) {
+    assert.equal(schemasByObjectId.has(removedRecoverySchema), false);
+    assert.equal(PHASE1_OBJECTS.some(({ schema }) => schema === removedRecoverySchema), false);
+  }
 
   const preparedAction = make("cairn.action_record.v0.2", {
     principal_id: binding.principal_id, execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
@@ -6702,7 +7423,8 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     copy_ownership_registry_authority_state_head_hash: genericRef.object_hash,
     copy_ownership_registry_authority_signing_key_generation: 1
   });
-  assert.deepEqual(validateBindingSet(inventoryBinding, context), []);
+  assert.deepEqual(validateBindingSet(inventoryBinding, context),
+    ["phase1_financial_external_truth_unsupported"]);
   const offerWithAdoptedInventory = make("cairn.execution_binding_set.v0.1", {
     ...inventoryBinding, seller_inventory_context_kind: "adopted_obligation", seller_inventory_stage: "adopted_consumed"
   });
@@ -6777,7 +7499,8 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     fulfillment_attempt_core_ref: null, fulfillment_attempt_core_hash: null, payee_account_commitment: null, rail: null,
     ...financialBindingContext(genericRef)
   });
-  assert.deepEqual(validateBindingSet(financialBinding, context), []);
+  assert.deepEqual(validateBindingSet(financialBinding, context),
+    ["phase1_financial_external_truth_unsupported"]);
   const financialBindingWithoutQuoteProvenance = make("cairn.execution_binding_set.v0.1", {
     ...financialBinding, quote_snapshot_ref: null, quote_hash: null, provider_quote_import_receipt_ref: null,
     provider_quote_import_receipt_hash: null, quote_source_credential_lifecycle_head_ref: null,
@@ -6984,11 +7707,29 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   };
   const actionRequest = { ref: refFor(actionView) };
   const signedCompositeContext = signedActionGetContext(actionResponse);
-  assert.deepEqual(validateActionGetResponse(actionRequest, actionResponse, signedCompositeContext), []);
-  assert.deepEqual(validateActionGetResponse(actionRequest, actionResponse, {
+  const actionResponseFailures = validateActionGetResponse(
+    actionRequest, actionResponse, signedCompositeContext
+  );
+  assert.ok(actionResponseFailures.includes("phase1_authenticated_resolution_unsupported"));
+  assert.equal(actionResponseFailures.includes("action_get_authority_mismatch"), false);
+  assert.equal(actionResponseFailures.includes("action_get_authority_branch_mismatch"), false);
+  const wrongActionPredecessor = make("cairn.action_state_head.v0.1", {
+    ...beforeAction, action_id: `sha-256:${"d".repeat(64)}`
+  });
+  assert.ok(validateActionGetResponse(actionRequest, actionResponse, {
+    ...signedCompositeContext, actionStatePredecessor: wrongActionPredecessor
+  }).includes("action_get_action_state_action_state_identity_mismatch"));
+  const historicalActionFailures = validateActionGetResponse(actionRequest, actionResponse, {
     ...signedCompositeContext, principalRevocationNonce: authorization.principal_revocation_nonce + 1,
     requiredReservedJudgments: ["new_judgment_after_authorization"]
-  }), []);
+  });
+  assert.ok(historicalActionFailures.includes("phase1_authenticated_resolution_unsupported"));
+  assert.equal(historicalActionFailures.includes(
+    "action_get_authority_authorization_principal_revocation_nonce_mismatch"
+  ), false, JSON.stringify(historicalActionFailures));
+  assert.equal(historicalActionFailures.includes(
+    "action_get_authority_authorization_reserved_judgments_mismatch"
+  ), false, JSON.stringify(historicalActionFailures));
   const staleActionStateRef = {
     ...refFor(afterAction), object_hash: `sha-256:${"8".repeat(64)}`
   };
@@ -7018,9 +7759,9 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     current_action_state_head: beforeAction, current_activity_detail: preparedActivity,
     authority_basis: null
   };
-  assert.deepEqual(validateActionGetResponse(
+  assert.ok(validateActionGetResponse(
     { ref: refFor(preparedView) }, preparedResponse, signedActionGetContext(preparedResponse)
-  ), []);
+  ).includes("phase1_authenticated_resolution_unsupported"));
   const mandateAgentSeed = sampleFor(schemasByObjectId.get("cairn.agent_mandate.v0.3")).agent;
   const mandateRuntimeSchema = baseSchemasByObjectId.get("cairn.agent_runtime_binding.v0.1");
   const mandateRuntimeSeed = sampleFor(mandateRuntimeSchema);
@@ -7065,7 +7806,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     "execution.connection_authorization.get",
     { ref: refFor(mandateConnectionAuthorization) }, mandateConnectionAuthorization,
     signedMandateConnectionContext
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   assert.ok(validateExactObjectRead(
     "execution.connection_authorization.get",
     { ref: refFor(mandateConnectionAuthorization) }, mandateConnectionAuthorization,
@@ -7074,7 +7815,7 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
   assert.deepEqual(validateExactObjectRead(
     "execution.connection_state.get", { ref: refFor(mandateConnectionState) },
     mandateConnectionState, signedMandateConnectionContext
-  ), []);
+  ), ["phase1_authenticated_resolution_unsupported"]);
   assert.ok(validateExactObjectRead(
     "execution.connection_state.get", { ref: refFor(mandateConnectionState) }, mandateConnectionState,
     { ...signedMandateConnectionContext, objectResolver: new Map([[mandateRuntimeRef.object_hash, mandateRuntime]]) }
@@ -7196,10 +7937,24 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     "https://cairn.cards/protocol/execution/schemas/v0.1/operation-bodies.schema.json#/$defs/actionGetResponse"
   );
   assert.equal(actionGetResponseSchema(mandateGraph.response), true, JSON.stringify(actionGetResponseSchema.errors));
-  assert.deepEqual(validateActionGetResponse(
+  const mandateIssuanceConfirmationFailures = validateExecutionConfirmation(
+    mandateGraph.response.confirmation_receipt,
+    mandateGraph.response.authority_basis,
+    mandateGraph.response.execution_binding_set,
+    null,
+    {
+      ...confirmationContext,
+      confirmationEvaluationTime: mandateGraph.response.confirmation_receipt.verified_at
+    }
+  );
+  assert.equal(
+    mandateIssuanceConfirmationFailures.includes("confirmation_binding_branch_mismatch"),
+    false
+  );
+  assert.ok(validateActionGetResponse(
     mandateGraph.request, mandateGraph.response,
     signedActionGetContext(mandateGraph.response, signedMandateConnectionContext)
-  ), []);
+  ).includes("phase1_authenticated_resolution_unsupported"));
   const tupleDriftBinding = make("cairn.execution_binding_set.v0.1", {
     ...mandateGraph.response.execution_binding_set,
     canonical_business_tuple_hash: `sha-256:${"c".repeat(64)}`
@@ -7430,13 +8185,13 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     current_activity_detail: reservedActivity,
     authority_reservations: [activationReservation]
   };
-  assert.deepEqual(validateActionGetResponse(
+  assert.ok(validateActionGetResponse(
     { ref: refFor(reservedView) }, reservedResponse,
     signedActionGetContext(reservedResponse, {
       ...context,
       objectResolver: new Map([[refFor(activationBefore).object_hash, activationBefore]])
     })
-  ), []);
+  ).includes("phase1_authenticated_resolution_unsupported"));
   assert.ok(validateActionGetResponse(
     { ref: refFor(reservedView) }, reservedResponse,
     signedActionGetContext(reservedResponse, { ...context, objectResolver: new Map() })
@@ -7640,98 +8395,15 @@ test("gate, authorization, reservation, cancellation, and receipt branches are e
     binding, authority: authorization, confirmation
   }, binding.principal_id);
   assert.ok(validateGateResult(forgedAllowedCompositeGate, forgedAllowedContext)
-    .includes("gate_result_check_set_mismatch"));
+    .includes("phase1_object_schema_invalid"));
   const deniedCompositeResponse = {
     ...reservedResponse, confirmation_receipt: confirmation,
     gate_request: deniedCompositeGateRequest, gate_result: deniedCompositeGate
   };
-  assert.deepEqual(validateActionGetResponse(
+  assert.ok(validateActionGetResponse(
     { ref: refFor(reservedView) }, deniedCompositeResponse,
     signedActionGetContext(deniedCompositeResponse, deniedCompositeGateContext)
-  ), []);
-  const allowedCompositeGate = make("cairn.gate_result.v0.2", {
-    gate_request_ref: refFor(compositeGateRequest), gate_request_hash: compositeGateRequest.request_hash,
-    execution_binding_set_ref: refFor(binding), execution_binding_set_hash: binding.binding_set_hash,
-    decision: "allow",
-    evaluated_head_refs: compositeGateHeadRefs,
-    evaluated_nonce_and_fence_root: gateEvaluatedHeadRoot(compositeGateHeadRefs),
-    business_state_root: gateBusinessStateRoot(compositeGateRequest.current_business_state_head_refs),
-    checkout_dependency_root: gateCheckoutDependencyRoot(compositeGateRequest),
-    check_results: evaluateGateChecks(
-      compositeGateRequest, binding, authorization, confirmation, compositeGateContext
-    ).map((result) => ({ ...result, decision: "pass" }))
-  });
-  const gateAllowedState = make("cairn.action_state_head.v0.1", {
-    ...reservedActionState, sequence: reservedActionState.sequence + 1,
-    previous_state_hash: reservedActionState.state_hash, state: "gate_allowed",
-    gate_result_ref: refFor(allowedCompositeGate)
-  });
-  const gateAllowedActivity = make("cairn.execution_activity_detail.v0.1", {
-    ...reservedActivity, action_state_head_ref: refFor(gateAllowedState), state: gateAllowedState.state,
-    current_receipt_refs: [
-      gateAllowedState.prior_transition_receipt_ref, gateAllowedState.lineage_activation_receipt_ref,
-      ...gateAllowedState.reservation_refs, gateAllowedState.gate_result_ref
-    ]
-  });
-  const gateAllowedView = make("cairn.execution_action_view.v0.1", {
-    ...reservedView, current_action_state_head_ref: refFor(gateAllowedState),
-    current_activity_detail_ref: refFor(gateAllowedActivity)
-  });
-  const gateAllowedResponse = {
-    ...reservedResponse, ref: refFor(gateAllowedView), view: gateAllowedView,
-    current_action_state_head: gateAllowedState, current_activity_detail: gateAllowedActivity,
-    confirmation_receipt: confirmation, gate_request: compositeGateRequest, gate_result: allowedCompositeGate
-  };
-  assert.deepEqual(validatePhase1Object(gateAllowedState, context), []);
-  assert.deepEqual(validatePhase1Object(gateAllowedActivity, context), []);
-  const allowedCompositeGateSchema = audit.ajv.getSchema(
-    schemasByObjectId.get(allowedCompositeGate.schema).$id
-  );
-  allowedCompositeGateSchema(allowedCompositeGate);
-  assert.deepEqual(validatePhase1Object(allowedCompositeGate, context), [],
-    JSON.stringify(allowedCompositeGateSchema.errors));
-  assert.ok(validateActionGetResponse(
-    { ref: refFor(gateAllowedView) }, gateAllowedResponse,
-    signedActionGetContext(gateAllowedResponse, compositeGateContext)
-  ).includes("action_get_gate_result_phase1_gate_allow_unsupported"));
-  const laterExecutorPolicyHead = {
-    ...compositeGateRequest.executor_policy_ref,
-    object_hash: `sha-256:${"9".repeat(64)}`
-  };
-  const laterDependencyHeads = currentHeadResolverFor(compositeGateHeadRefs);
-  laterDependencyHeads.set(canonicalText({
-    schema: laterExecutorPolicyHead.schema, object_id: laterExecutorPolicyHead.object_id
-  }), laterExecutorPolicyHead);
-  const historicalDriftContext = {
-    ...compositeGateContext, currentHeadResolver: laterDependencyHeads
-  };
-  assert.ok(validateActionGetResponse(
-    { ref: refFor(gateAllowedView) }, gateAllowedResponse,
-    signedActionGetContext(gateAllowedResponse, historicalDriftContext)
-  ).includes("action_get_gate_result_phase1_gate_allow_unsupported"));
-  assert.ok(validateGateRequest(
-    compositeGateRequest, binding, authorization, confirmation,
-    { ...historicalDriftContext, historicalRead: true }
-  ).includes("gate_request_current_head_set_mismatch"));
-  const deniedAsAllowedState = make("cairn.action_state_head.v0.1", {
-    ...gateAllowedState, gate_result_ref: refFor(deniedCompositeGate)
-  });
-  const deniedAsAllowedActivity = make("cairn.execution_activity_detail.v0.1", {
-    ...gateAllowedActivity, action_state_head_ref: refFor(deniedAsAllowedState),
-    current_receipt_refs: [
-      deniedAsAllowedState.prior_transition_receipt_ref, deniedAsAllowedState.lineage_activation_receipt_ref,
-      ...deniedAsAllowedState.reservation_refs, deniedAsAllowedState.gate_result_ref
-    ]
-  });
-  const deniedAsAllowedView = make("cairn.execution_action_view.v0.1", {
-    ...gateAllowedView, current_action_state_head_ref: refFor(deniedAsAllowedState),
-    current_activity_detail_ref: refFor(deniedAsAllowedActivity)
-  });
-  assert.ok(validateActionGetResponse({ ref: refFor(deniedAsAllowedView) }, {
-    ...gateAllowedResponse, ref: refFor(deniedAsAllowedView), view: deniedAsAllowedView,
-    current_action_state_head: deniedAsAllowedState, current_activity_detail: deniedAsAllowedActivity,
-    gate_result: deniedCompositeGate
-  }, compositeGateContext).includes("action_get_gate_decision_state_mismatch"));
+  ).includes("phase1_authenticated_resolution_unsupported"));
   const alienGraphReservation = make("cairn.authority_reservation.v0.2", {
     ...activationReservation, prepared_action_ref: refFor(inventoryPreparedAction)
   });
@@ -7864,7 +8536,8 @@ test("cancellation authority is an exact projection of one binding and one gate 
   });
   assert.ok(validateBindingSet(binding, cancellationValidationContext)
     .includes("binding_cancellation_original_action_signature_invalid"));
-  assert.deepEqual(validateBindingSet(binding, signedOriginalContext), []);
+  assert.ok(validateBindingSet(binding, signedOriginalContext)
+    .includes("binding_original_action_state_phase1_object_schema_invalid"));
   const unsignedOriginalAction = structuredClone(originalAction);
   unsignedOriginalAction.action_service_signature.value = "A".repeat(86);
   assert.ok(validateBindingSet(binding, {
@@ -7887,7 +8560,8 @@ test("cancellation authority is an exact projection of one binding and one gate 
     required_confirmation_assurance_policy_ref: binding.confirmation_assurance_policy_ref,
     expires_at: "2026-07-22T10:05:00Z"
   });
-  assert.deepEqual(validateCancellationAuthorization(authorization, binding, signedOriginalContext), []);
+  assert.ok(validateCancellationAuthorization(authorization, binding, signedOriginalContext)
+    .includes("phase1_authenticated_resolution_unsupported"));
   assert.ok(validateCancellationAuthorization(authorization, binding, {
     ...signedOriginalContext,
     cancellationReservedJudgmentsResolver: (_principalId, resolvedBinding) => ({
@@ -8015,7 +8689,11 @@ test("cancellation authority is an exact projection of one binding and one gate 
       .map((object) => [refFor(object).object_hash, object])),
     currentHeadResolver: currentHeadResolverFor(gateRequiredHeadRefs(request, binding))
   }, binding.principal_id);
-  assert.deepEqual(validateGateRequest(request, binding, authorization, confirmation, cancellationRequestContext), []);
+  const cancellationGateRequestFailures = validateGateRequest(
+    request, binding, authorization, confirmation, cancellationRequestContext
+  );
+  assert.ok(cancellationGateRequestFailures.includes("phase1_authenticated_resolution_unsupported"));
+  assert.ok(cancellationGateRequestFailures.includes("gate_request_cancellation_authority_mismatch"));
   const alienGate = make("cairn.gate_request.v0.2", {
     ...request, receiver_finality_profile_ref: distinctRefs(1, "alien-finality-profile")[0]
   });
@@ -8023,7 +8701,7 @@ test("cancellation authority is an exact projection of one binding and one gate 
     .includes("gate_request_cancellation_authority_mismatch"));
 });
 
-test("transition manifests are typed, complete, sorted, and readable only through an authorized naming parent", () => {
+test("transition manifests remain intrinsically typed while their direct getter is absent", () => {
   const entryHash = `sha-256:${"3".repeat(64)}`;
   const entryBase = {
     entry_kind: "economic_atom_delta",
@@ -8062,69 +8740,17 @@ test("transition manifests are typed, complete, sorted, and readable only throug
     entries_root: canonicalHash([inventedLifecycleEntry])
   });
   assert.ok(validateTransitionManifest(inventedLifecycleManifest, context).includes("transition_manifest_entry_schema_mismatch"));
-  const parent = make("cairn.compartment_state_transition_receipt.v0.1", {
-    economic_mutation_cause_core_ref: causeRef, economic_mutation_cause_core_hash: causeRef.object_hash,
-    economic_atom_delta_manifest_ref: refFor(manifest), economic_atom_delta_manifest_hash: manifest.manifest_hash
-  });
-  const request = { parent_ref: refFor(parent), manifest_ref: refFor(manifest) };
-  const manifestKey = manifest.issuing_authority_signature.key_id;
-  const manifestReadContext = {
-    ...context, parentAccessAuthorized: true,
-    keyResolver: new Map([[manifestKey, { controller: manifest.issuing_authority_id }]])
-  };
-  assert.deepEqual(validateTransitionManifestReadRequest(request, parent, manifest, manifestReadContext), []);
-  assert.ok(validateTransitionManifestReadRequest(request, parent, manifest, { ...manifestReadContext, parentAccessAuthorized: false }).includes("transition_manifest_parent_acl_denied"));
-  const wrongCauseSchema = { ...causeRef, schema: "cairn.untyped_cause.v0.1" };
-  const wrongCauseManifest = make("cairn.enumerable_transition_manifest.v0.1", {
-    ...manifest, subject_ref: wrongCauseSchema, subject_hash: wrongCauseSchema.object_hash
-  });
-  const wrongCauseParent = make("cairn.compartment_state_transition_receipt.v0.1", {
-    ...parent, economic_mutation_cause_core_ref: wrongCauseSchema,
-    economic_atom_delta_manifest_ref: refFor(wrongCauseManifest), economic_atom_delta_manifest_hash: wrongCauseManifest.manifest_hash
-  });
-  assert.ok(validateTransitionManifestReadRequest({ parent_ref: refFor(wrongCauseParent), manifest_ref: refFor(wrongCauseManifest) },
-    wrongCauseParent, wrongCauseManifest, manifestReadContext)
-    .includes("transition_manifest_parent_subject_schema_mismatch"));
-  const alienSubjectRef = { ...manifest.subject_ref, object_id: "other-subject" };
-  const alienSubjectManifest = make("cairn.enumerable_transition_manifest.v0.1", {
-    ...manifest, subject_ref: alienSubjectRef, subject_hash: alienSubjectRef.object_hash
-  });
-  assert.deepEqual(validateTransitionManifest(alienSubjectManifest, context), []);
-  const alienParent = make("cairn.compartment_state_transition_receipt.v0.1", {
-    ...parent, economic_atom_delta_manifest_ref: refFor(alienSubjectManifest),
-    economic_atom_delta_manifest_hash: alienSubjectManifest.manifest_hash
-  });
-  assert.ok(validateTransitionManifestReadRequest({ parent_ref: refFor(alienParent), manifest_ref: refFor(alienSubjectManifest) },
-    alienParent, alienSubjectManifest, manifestReadContext).includes("transition_manifest_parent_membership_missing"));
-  const other = make("cairn.enumerable_transition_manifest.v0.1", { ...manifest, authority_transaction_id: "other" });
-  assert.ok(validateTransitionManifestReadRequest({ ...request, manifest_ref: refFor(other) }, parent, other, {
-    ...manifestReadContext
-  }).includes("transition_manifest_parent_membership_missing"));
   const inventedKeyEntry = { ...entry, entry_key: `sha-256:${"5".repeat(64)}` };
   const inventedKeyManifest = make("cairn.enumerable_transition_manifest.v0.1", {
     ...manifest, sorted_entries: [inventedKeyEntry], entries_root: canonicalHash([inventedKeyEntry])
   });
   assert.ok(validateTransitionManifest(inventedKeyManifest, context).includes("transition_manifest_entry_key_mismatch"));
-  const alienAuthorityContext = {
-    ...manifestReadContext,
-    keyResolver: new Map([[manifestKey, { controller: "did:example:other-authority" }]])
-  };
-  assert.ok(validateTransitionManifestReadRequest(request, parent, manifest, alienAuthorityContext)
-    .includes("transition_manifest_issuing_authority_mismatch"));
-  const otherParentKey = make("cairn.compartment_state_transition_receipt.v0.1", {
-    ...parent,
-    authority_service_signature: { ...parent.authority_service_signature, key_id: "other-authority-key" }
-  });
-  assert.ok(validateTransitionManifestReadRequest(
-    { parent_ref: refFor(otherParentKey), manifest_ref: refFor(manifest) }, otherParentKey, manifest,
-    { ...manifestReadContext, keyResolver: new Map([
-      [manifestKey, { controller: manifest.issuing_authority_id }],
-      ["other-authority-key", { controller: manifest.issuing_authority_id }]
-    ]) }
-  ).includes("transition_manifest_issuing_authority_mismatch"));
-  const operation = sources.registry.operations.find(({ name }) => name === "execution.transition_manifest.get");
-  assert.equal(operation.consequence, "private_read");
-  assert.equal(operation.access_requirement, "inherited_parent_private_or_audit_acl");
+  assert.equal(sources.registry.operations.find(
+    ({ name }) => name === "execution.transition_manifest.get"
+  ), undefined);
+  assert.deepEqual(validateExactObjectRead(
+    "execution.transition_manifest.get", { ref: refFor(manifest) }, manifest, context
+  ), ["object_read_operation_invalid"]);
 });
 
 test("activity summaries are privacy-minimized projections of exact action state", () => {

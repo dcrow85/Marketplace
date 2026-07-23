@@ -57,8 +57,19 @@ function output(result) {
   return `${result.stdout ?? ""}\n${result.stderr ?? ""}`;
 }
 
+const requestedIds = new Set((process.env.CAIRN_MUTANT_IDS ?? "")
+  .split(",").map((value) => value.trim()).filter(Boolean));
+const selectedMutants = requestedIds.size === 0
+  ? PHASE1_MUTANTS
+  : PHASE1_MUTANTS.filter(({ id }) => requestedIds.has(id));
+if (selectedMutants.length !== (requestedIds.size || PHASE1_MUTANTS.length)) {
+  const known = new Set(PHASE1_MUTANTS.map(({ id }) => id));
+  const unknown = [...requestedIds].filter((id) => !known.has(id));
+  throw new Error(`unknown Phase 1 mutant ids: ${unknown.join(",")}`);
+}
+
 const failures = [];
-for (const mutant of PHASE1_MUTANTS) {
+for (const mutant of selectedMutants) {
   const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-execution-mutant-"));
   const candidateRepository = path.join(parent, "marketplace-main");
   const candidateProtocol = path.join(candidateRepository, "protocol");
@@ -104,4 +115,4 @@ for (const mutant of PHASE1_MUTANTS) {
 }
 
 if (failures.length) throw new Error(`Phase 1 mutation controls failed:\n${failures.join("\n")}`);
-process.stdout.write(`Phase 1 mutation controls passed: ${PHASE1_MUTANTS.length}/${PHASE1_MUTANTS.length} mutants killed\n`);
+process.stdout.write(`Phase 1 mutation controls passed: ${selectedMutants.length}/${selectedMutants.length} mutants killed\n`);

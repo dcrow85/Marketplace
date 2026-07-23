@@ -58,32 +58,53 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 - Commit in focused, path-scoped units; report before/after test counts + ledger rows moved.
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
-- `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **The freezes `0b98fff`, `393b87f`, and `902abec` were rejected. Every accepted
-  P1/material-P2 finding through the round-38 audits is now remediated; the next exact freeze and fresh
-  three-reviewer gate are pending. Reference-service construction remains
-  blocked.**
-  Candidate internal hash is
-  `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`
-  and registry hash is
-  `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`.
-  The audited prose hash is
-  `3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec`.
-  It contains 46 closed signed-object schemas, one content-addressed map-node
-  schema, four support documents, and 34 schema-only read operations, with zero
-  mutation, external-effect, or authority-effect rows. Local controls pass
-  31/31 and kill 390/390 direct mutants. The frozen proposal baseline separately
-  remains 83/83 with 75/75 mutants killed at bundle hash
-  `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
-  This replacement additionally closes signed cancellation dependencies and
-  currentness; exact DataGrant contracts/liveness without an exhausted-final-read
-  bypass; global/scoped control transitions and namespace rotation; reservation
-  provenance and confirmed-event correlation; terminal identity atomicity;
-  caller-inaccessible historical mode; signed complete gate manifests; mandatory
-  gate signatures; and trusted evaluation-time chronology. Nine unimplemented
-  predicate families, every `allow`, authorization redemption, and recovery are
-  denied in this schema-only phase. Every new boundary is isolated by a direct
-  killed mutant.
+- `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-23 · Codex —
+  **The additional exact freeze
+  `26b701609583ec7e518526b0ae78aed46c10fc19` is rejected alongside
+  `0b98fff`, `393b87f`, and `902abec`. Round 39's informed regression, blind
+  authority, and blind state/transition reviews found one P1 plus four material
+  P2 informed defects, five blind-authority P2 defects, and six blind-state P1
+  defects. All are accepted and remediated in the working replacement, which
+  passes 31/31 authored controls and kills 419/419 exact-once direct mutants;
+  containing-commit freeze and fresh review remain pending. Reference-service
+  construction remains blocked.**
+  The rejected `26b7016` bytes reproduced bundle
+  `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`,
+  registry
+  `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`,
+  31/31 local groups, and 390/390 mutants. Those are rejected-freeze facts, not
+  evidence for the replacement.
+  The narrowed target has 45 signed-object schemas, one content-addressed
+  map-node schema, four support documents, 46 object schemas total, and 29
+  schema-only read operations. The five removed getters are standalone
+  transition manifest, enumerable map, compartment, compartment state, and
+  compartment transition. GateResult is structurally deny-only;
+  RedemptionReceipt is absent; recovery is structurally forbidden; nonempty
+  disclosures, external accounting, protection attestations, and financial
+  external truth are unavailable; `EXECUTION_CONTROLS` is the tenth unsupported
+  gate predicate. Maps/manifests remain internal vocabulary, while
+  provisional-terminal and compartment-transition receipts are absent from
+  `receipt.get`.
+  A targeted blind-authority follow-up also removed the contradictory
+  `gate_allowed` and post-redemption ActionState/ActionReceipt paths and made
+  ActionReceipt effect, receiver, and exposure fields structurally empty/null.
+  Caller resolvers, key maps, current-head/role callbacks, Boolean ACL, and
+  external-verifier callbacks are conditional inputs and never establish
+  authenticated authority. High-level authenticated read/gate/action/
+  cancellation/joint paths return
+  `phase1_authenticated_resolution_unsupported` until a frozen rooted-proof
+  profile exists. Retained semantics include true as-of key/head evaluation,
+  one shared joint-control pair relation, intrinsic namespace/aggregate/action
+  chain checks, and complete causal control chronology.
+  Replacement prose is pinned at
+  `2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb`;
+  bundle `sha-256:6efd61d6413dc106abab1fcf663e3fa6c1f51ce771767ada5ce2afb5b90e4c1d`;
+  registry `sha-256:18b9b4595f058669d2f4b639ae4d5266634487cf8f92b15d1129aab69859bccd`;
+  local controls 31/31; exact-once direct mutants 419/419. A disposable fresh
+  install reproduces those totals and byte-identical generated outputs. The
+  unchanged proposal baseline reproduces 83/83 controls and 75/75 mutants; both
+  dependency audits report zero vulnerabilities. The next freeze will be
+  identified by its containing commit, never by a self-referential future SHA.
   No executor, provider/network review, authorization redemption, outbox,
   payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
   or live state change is created or authorized. The reference service remains

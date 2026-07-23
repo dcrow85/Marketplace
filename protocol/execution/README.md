@@ -7,112 +7,69 @@ reference service.
 
 ## Included
 
-- strict JSON Schema 2020-12 objects for connection, execution control,
-  compartment, confirmation, mandate v0.3, binding, lineage, and the closed
-  execution-chain versions required by the prose design;
-- exact frozen resource bounds, typed enumerable transition manifests, a
-  bounded-path content-addressed connection-action and receiver-stream maps,
-  terminal receiver release plan/completion objects, and both ordinary and
-  cancellation one-shot authorization schemas;
-- a separately namespaced, read-only Phase 1 operation registry;
-- 34 closed operation-specific compatibility envelopes binding protocol,
-  execution profile, frozen proposal bundle, execution bundle, operation
-  registry, exact operation, and exact request-body family before dispatch;
-- location-bound JCS commitments for every request envelope, request body, and
-  response schema, plus closed registry metadata for authentication, DataGrant,
-  disclosure, authority, idempotency, receipt, and caller-class prerequisites;
-- parent-bound private/audit access for transition manifests and enumerable map
-  nodes rather than a public object-reference oracle;
-- exact audit/control access for sensitive authority and state heads,
-  audit-detail access for detailed receipts, and authority-parent ACL inheritance
-  for confirmation receipts;
-- closed, endpoint-specific generic-read envelopes: the base getter resolves
-  only the 12 pinned proposal objects, while policy and receipt getters resolve
-  only their exact Phase 1 families; every returned ref and declared sibling
-  ref/hash pair is checked against the bound object;
-- exact dependency pins to the proposal bundle and registry, shared core
-  validator and strict-JSON preflight bytes, a package-local byte-identical core
-  whose parity to the frozen shared core is enforced, plus an exact npm lockfile
-  and clean `npm ci --ignore-scripts` release replay; this does not claim that an
-  arbitrary pre-existing `node_modules` tree is byte-attested;
-- deterministic JCS bundle generation;
-- exact SHA-256 commitments for every authored package source, validator, test,
-  mutation control, and build/check script included in the audit candidate;
-- structural and cross-object validators for controller derivation, historical
-  signature validity, recovery restriction, connection lifecycle, transition
-  manifests, capability-specific mandate/binding closure, declared top-level
-  and nested sibling ref/hash equality, provider-enforced compartment caps,
-  closed control-receipt and lineage-state unions, authorization, reservation,
-  gate, redemption, aggregate inline-entry bounds, monotonic lineage fencing,
-  complete mandate business-tuple projection, dependency-availability and causal
-  chronology, complete gate-request semantics, gate lifetime, exact redemption
-  action identity, and redemption head/checkout-dependency projection,
-  exact seller-inventory preservation, and prefix-preserving early-terminal
-  action state;
-- exact connection-event resolution of the signed aggregate-control and
-  outstanding-action-index heads, control authorization, joint control receipt,
-  scoped leaf, index transition receipt, transaction identity, and service-time
-  chronology; each index resolves its exact signed map root and matches its
-  derived domain key, count, and entries commitment; exact index, entry,
-  transition-receipt, map-root, and bounded ancestor-path node reads invoke the
-  same semantic validators without recursively scanning an unbounded trie;
-- authoritative GateRequest dependency projection is a complete signed manifest
-  bound to the exact principal, binding, authority, confirmation, and dependency
-  sets; non-native dependencies resolve through role-authorized signed
-  attestations and predecessor-closed state heads whose active genesis and legal
-  subject-preserving successor graph are exact; GateResult derives 19 distinct
-  predicates and their smallest evaluated evidence sets rather than trusting
-  caller-selected outcomes; nine predicates without complete authoritative
-  evaluators deny in Phase 1, missing roles deny, and every `allow` GateResult is
-  rejected, so the schema-only profile has no execution-authorizing gate path;
-- connection authorization/state exact reads resolve runtime and authorization
-  graphs, enforce current-head authority and validity intervals, and mandate
-  validity is contained by both runtime and connection authorization;
-- DataGrant state is a first-class signed current-head chain: genesis binds the
-  issued grant/count, reads decrement exactly once, pause/resume/revoke/expiry
-  advance the revocation nonce, the `expired` state begins at the exact expiry
-  boundary, and bindings enforce the signed purpose/use/scope/audience contract,
-  exact runtime recipient, contained lifetime, and current active nonzero head;
-  an exhausted head remains historical evidence and no inline final-read
-  disclosure can restore BindingSet eligibility;
-- receiver-stream entry keys are derived; slot/trust/future/stream/connection
-  dependencies are exact; receiver map transitions carry before/after proofs
-  and immutable-frontier checks; authenticated events advance both assignment
-  successors and consume exactly one slot, authenticated closure consumes its
-  final event before release, and all three terminal causes require exact
-  evidence, release plans, identity/trust/stream/connection children, and a
-  deterministic completion receipt;
-- compartment state now resolves exact typed reservation, economic-atom, and
-  confirmed-event map trees; balances, exposure ceilings, and subset roots are
-  recomputed from their leaves, while transition receipts bind the exact map
-  diff, cause core, manifest projections, semantic atom deltas, confirmed-event
-  insertions, immutable reservation provenance, reservation-change causes,
-  exact obligation/component/asset/amount event correlation, money-class
-  projection, closure emptiness, predecessor, asset, transaction, and signature
-  chronology;
-- request-bound composite action reads that close the exact action, current
-  state, binding, commitment, authority branch, lineage, private activity
-  detail, authority reservations, and gate chain rather than merely checking
-  each embedded object's shape; prepared supervised/cancellation actions remain
-  readable before one-shot authority exists, preauthorized reads bind the exact
-  mandate business tuple and its issuance confirmation in every preauthorized
-  state, and every live/terminal action state admits only its exact lineage-state
-  family, activation receipt, and provisional fence; confirmation receipts
-  close principal, authority, branch-specific binding, assurance policy,
-  verifier, authoritative current-active lifecycle, relying party, challenge,
-  presence/verification, freshness, and authority-issuance chronology;
-  denied gates remain readable as signed attempts while the current action
-  stays `reserved`, never mislabeled `gate_allowed`;
-- a frozen domain-separated lineage-activation commitment preimage and golden
-  hash vector, activation within every authority/reservation/binding/commitment
-  validity window, exact cancellation occurrence binding, economic predecessor
-  preservation, action-receipt action-ID/binding/lineage-identity closure, and
-  intrinsic semantic validation of every exact object read and resolved receipt
-  dependency;
-- direct mutation controls for namespace, dependency, authority, target-union,
-  limit, connection, chain, compatibility-envelope, registry-metadata,
-  package-isolation, and read-only-surface failures. The current suite kills all
-  390 declared direct mutants across 31 authored test groups.
+- 50 strict JSON Schema 2020-12 documents: 45 closed signed-object schemas, one
+  content-addressed enumerable-map node schema, and four common/bundle/registry
+  support documents;
+- a separately namespaced registry of 29 schema-only read operations with zero
+  mutation, external-effect, or authority-effect rows;
+- closed compatibility envelopes binding protocol version, execution profile,
+  frozen proposal bundle, execution bundle, registry, exact operation, and
+  request-body family before dispatch;
+- exact dependency pins, deterministic JCS generation, strict I-JSON source
+  checking, authored-source commitments, an exact lockfile, and a disposable
+  `npm ci --ignore-scripts` replay boundary. This does not attest an arbitrary
+  pre-existing installed dependency tree;
+- structurally deny-only `GateResult`; no `RedemptionReceipt` schema; no
+  `gate_allowed` or post-redemption ActionState/ActionReceipt branch; empty-only
+  ActionReceipt disclosure/obligation/checkout effects; null-only receiver and
+  economic-exposure fields; and structurally forbidden recovery-bearing
+  control branches;
+- conditional structural and cross-object checks for signed connection,
+  execution-control, DataGrant, mandate, binding, lineage, receiver, activity,
+  confirmation, and action evidence;
+- intrinsic namespace, aggregate-control, and action-state predecessor checks;
+  a shared joint connection/control pair check; and one causal chronology for
+  authorization, namespace, predecessor, successor, commit, and receipt times;
+- historical signature and current-head evaluation parameterized by the
+  semantic instant. Historical evidence uses its recorded evaluation or commit
+  time; a later revocation or head advance does not rewrite earlier evidence.
+  Live currentness remains a different question;
+- 19 closed gate check codes. Ten, including `EXECUTION_CONTROLS`, are
+  unsupported and always deny until their complete authenticated evaluators
+  exist;
+- empty-only outbound disclosure bindings and empty-only external accounting
+  map semantics. Nonempty disclosures, reservation/economic/confirmed-event
+  leaves, external protection attestations, and financial external truth are
+  explicitly unavailable in this phase;
+- typed enumerable maps and transition manifests retained as bounded internal
+  dependency vocabulary. Phase 1 exposes no standalone map or manifest getter;
+- `LineageProvisionalTerminalReceipt` and
+  `CompartmentStateTransitionReceipt` retained as future structural vocabulary
+  but excluded from the generic `receipt.get` response family; and
+- the frozen proposal baseline remains a separate artifact and is not widened.
+
+The removed Phase-1 getters are:
+
+- `execution.transition_manifest.get`;
+- `execution.enumerable_map.get`;
+- `execution.compartment.get`;
+- `execution.compartment_state.get`; and
+- `execution.compartment_state_transition_receipt.get`.
+
+Caller-supplied object resolvers, key maps, current-head callbacks, role
+callbacks, Boolean ACL flags, and external-verifier callbacks are conditional
+inputs only. They never establish authenticated authority. High-level
+authenticated reads, gates, composite action validation, live cancellation,
+and joint-control currentness return
+`phase1_authenticated_resolution_unsupported` until a separately frozen,
+locally verified rooted-proof profile exists. Low-level helpers prove only
+structure, cryptographic math against supplied material, and conditional graph
+consistency; they are not authorizers.
+
+The narrowed Round-39 replacement passes 31/31 authored controls and kills
+419/419 exact-once direct mutants locally. These results describe the current
+candidate bytes; they are not closure until reproduced from the exact frozen
+containing commit by fresh blind and informed reviewers.
 
 ## Excluded
 
@@ -120,10 +77,13 @@ There is no authority writer, executor, outbox, provider call, network review,
 payment, escrow release, waiver, dispute, UI, server, database, or deployment.
 Every registry operation has `mutating:false`, `external_effect:false`, and
 `implementation_status:"schema_only"`. Passing the package controls establishes
-only deterministic internal consistency for this frozen Phase 1 artifact.
-There is no valid Phase-1 `allow`, redemption, recovery-control, or exhausted-
-grant execution path; those shapes fail closed until separately frozen writers
-and their audit evidence exist.
+only deterministic structural and conditional consistency for this Phase 1
+artifact. It does not authenticate caller-supplied resolver state. There is no
+valid Phase-1 `allow`, gate-allowed/post-redemption action transition,
+redemption, recovery-control, nonempty disclosure, external-accounting,
+external-protection, or financial-execution path. A
+reference service remains blocked until the narrowed artifact is frozen in its
+containing commit and passes fresh blind and informed verification.
 
 ## Commands
 

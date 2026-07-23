@@ -71,11 +71,8 @@ const RECEIPT_RESPONSE_SCHEMA_IDS = new Set([
   "cairn.receiver_outstanding_stream_transition_receipt.v0.1",
   "cairn.receiver_terminal_release_completion_receipt.v0.1",
   "cairn.execution_control_receipt.v0.1",
-  "cairn.compartment_state_transition_receipt.v0.1",
   "cairn.confirmation_receipt.v0.1",
   "cairn.lineage_activation_receipt.v0.1",
-  "cairn.lineage_provisional_terminal_receipt.v0.1",
-  "cairn.execution_redemption_receipt.v0.2",
   "cairn.action_receipt.v0.2"
 ]);
 
@@ -325,7 +322,7 @@ function schemaForType(type) {
   if (type === "mandateConstraints") return { $ref: `${COMMON}#/$defs/mandateConstraints` };
   if (type === "grantHeads") return array({ $ref: `${COMMON}#/$defs/grantHead` }, { maxItems: 32, uniqueItems: true });
   if (type === "queryBound") return { $ref: `${COMMON}#/$defs/queryBound` };
-  if (type === "disclosures") return array({ $ref: `${COMMON}#/$defs/disclosure` }, { maxItems: 32, uniqueItems: true });
+  if (type === "disclosures") return array({ $ref: `${COMMON}#/$defs/disclosure` }, { maxItems: 0, uniqueItems: true });
   if (type === "ncancellationContext") return nullable({ $ref: `${COMMON}#/$defs/cancellationContext` });
   if (type === "nsellerInventoryContext") return nullable({ $ref: `${COMMON}#/$defs/sellerInventoryContext` });
   if (type === "checkResults") return array({ $ref: `${COMMON}#/$defs/checkResult` }, { minItems: 1, uniqueItems: true });
@@ -395,16 +392,10 @@ function localSemantics(schemaId) {
   }
   if (schemaId === "cairn.execution_control_authorization.v0.1") {
     const recovery = ["recovery_grant_ref", "recovery_grant_state_head_ref", "recovery_grant_state_head_hash", "recovery_use_idempotency_nonce"];
-    return [{
-      if: { properties: { recovery_grant_ref: { type: "null" } } },
-      then: { properties: nullProperties(recovery) },
-      else: { properties: {
-        ...nonNullProperties(recovery),
-        control_action: { enum: ["pause", "freeze_new_redemptions", "revoke"] },
-        scope: { enum: ["all_agents", "connection", "runtime", "mandate", "compartment"] },
-        reason_code: { const: "recovery" }
-      } }
-    }];
+    return [{ properties: {
+      ...nullProperties(recovery),
+      reason_code: { enum: ["user_requested", "suspected_compromise", "policy_violation", "administrative_hold"] }
+    } }];
   }
   if (schemaId === "cairn.execution_control_namespace.v0.1") {
     return [{
@@ -455,7 +446,7 @@ function localSemantics(schemaId) {
           ...nullProperties([...authorization, ...leafBefore, ...leafAfter, ...connection, ...outstanding, ...recovery])
         } }
       ] },
-      { oneOf: [{ properties: nullProperties(recovery) }, { properties: nonNullProperties(recovery) }] }
+      { properties: nullProperties(recovery) }
     ];
   }
   if (schemaId === "cairn.action_authorization.v0.2") {
@@ -667,50 +658,38 @@ function localSemantics(schemaId) {
     ];
   }
   if (schemaId === "cairn.gate_result.v0.2") {
-    return [{
-      if: { properties: { decision: { const: "allow" } } },
-      then: { properties: { check_results: { type: "array", minItems: 1, maxItems: 128, items: {
-        allOf: [{ $ref: `${COMMON}#/$defs/checkResult` }, { type: "object", properties: { decision: { const: "pass" } } }]
-      } } } },
-      else: { properties: { check_results: { type: "array", maxItems: 128, contains: { type: "object", properties: { decision: { const: "deny" } }, required: ["decision"] } } } }
-    }];
+    return [{ properties: {
+      check_results: {
+        type: "array",
+        minItems: 1,
+        maxItems: 128,
+        contains: { type: "object", properties: { decision: { const: "deny" } }, required: ["decision"] }
+      }
+    } }];
   }
   if (schemaId === "cairn.action_state_head.v0.1") {
     const later = ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"];
     const terminalBranches = (state) => [
       actionStateBranch(state, { nulls: later, reservations: "empty" }),
       actionStateBranch(state, { nonnull: ["authority_ref"], nulls: ["lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "empty" }),
-      actionStateBranch(state, { nonnull: ["authority_ref", "lineage_activation_receipt_ref"], nulls: ["gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),
-      actionStateBranch(state, { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref"], nulls: ["redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),
-      actionStateBranch(state, { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref"], nulls: ["receiver_receipt_ref"], reservations: "nonempty" }),
-      actionStateBranch(state, { nonnull: later, reservations: "nonempty" })
+      actionStateBranch(state, { nonnull: ["authority_ref", "lineage_activation_receipt_ref"], nulls: ["gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" })
     ];
     return [
       { properties: { action_ref: { allOf: [ref(), { type: "object", properties: { schema: { const: "cairn.action_record.v0.2" } } }] } } },
+      { properties: { redemption_receipt_ref: { type: "null" } } },
       { oneOf: [
       actionStateBranch("prepared", { nulls: later, reservations: "empty", prior: "null" }),
       actionStateBranch("authorized", { nonnull: ["authority_ref"], nulls: ["lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "empty" }),
       actionStateBranch("reserved", { nonnull: ["authority_ref", "lineage_activation_receipt_ref"], nulls: ["gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),
-      actionStateBranch("gate_allowed", { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref"], nulls: ["redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" }),
-      actionStateBranch("redemption_committed", { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref"], nulls: ["receiver_receipt_ref"], reservations: "nonempty" }),
-      actionStateBranch("pending_handoff", { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref"], nulls: ["receiver_receipt_ref"], reservations: "nonempty" }),
-      ...["submitted", "acknowledged", "finalized"].map((state) =>
-        actionStateBranch(state, { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref", "receiver_receipt_ref"], reservations: "nonempty" })),
-      ...["cancelled", "definitive_failure", "quarantined"].flatMap(terminalBranches),
-      actionStateBranch("unknown", { nonnull: ["authority_ref", "lineage_activation_receipt_ref", "gate_result_ref", "redemption_receipt_ref", "outbox_state_head_ref"], reservations: "nonempty" })
+      ...["cancelled", "definitive_failure", "quarantined"].flatMap(terminalBranches)
       ] }
     ];
   }
   if (schemaId === "cairn.action_receipt.v0.2") {
     const edges = new Map([
       ["prepared", ["authorized", "reserved", "cancelled"]], ["authorized", ["reserved", "cancelled"]],
-      ["reserved", ["gate_allowed", "cancelled", "definitive_failure"]], ["gate_allowed", ["redemption_committed", "cancelled"]],
-      ["redemption_committed", ["pending_handoff", "definitive_failure", "unknown"]],
-      ["pending_handoff", ["submitted", "unknown", "definitive_failure"]],
-      ["submitted", ["acknowledged", "unknown", "cancelled", "definitive_failure"]],
-      ["acknowledged", ["finalized", "unknown", "cancelled", "definitive_failure", "quarantined"]],
-      ["unknown", ["submitted", "acknowledged", "finalized", "cancelled", "definitive_failure", "quarantined"]],
-      ["finalized", ["quarantined"]], ["cancelled", ["quarantined"]], ["definitive_failure", ["quarantined"]]
+      ["reserved", ["cancelled", "definitive_failure"]],
+      ["cancelled", ["quarantined"]], ["definitive_failure", ["quarantined"]]
     ]);
     const pairs = [...edges].flatMap(([before, afters]) => afters.map((after) => ({
       properties: { state_before: { const: before }, state_after: { const: after } }
@@ -781,16 +760,6 @@ function operationBodiesSchema(baseObjectSchemaUris) {
   const requestBodies = {
     emptyRequest: closed({}),
     objectRefRequest: closed({ ref: ref() }),
-    transitionManifestRequest: closed({
-      manifest_ref: ref(),
-      parent_ref: ref()
-    }),
-    enumerableMapReadRequest: closed({
-      ref: ref(),
-      owner_head_ref: ref(),
-      map_root_ref: ref(),
-      ancestor_node_refs: refArray(0, 64)
-    }),
     activityListRequest: closed({
       cursor: nullable({ type: "string", minLength: 1, maxLength: 1024 }),
       page_size: { type: "integer", minimum: 1, maximum: 100 },
@@ -819,10 +788,6 @@ function operationBodiesSchema(baseObjectSchemaUris) {
       baseObjectResponse: responseEnvelope(baseObjectSchemaUris),
       policyObjectResponse: responseEnvelope(executionSchemaUris(POLICY_RESPONSE_SCHEMA_IDS)),
       receiptObjectResponse: responseEnvelope(executionSchemaUris(RECEIPT_RESPONSE_SCHEMA_IDS)),
-      enumerableMapObjectResponse: responseEnvelope(executionSchemaUris(new Set([
-        "cairn.enumerable_map_node.v0.1",
-        "cairn.enumerable_map_root.v0.1"
-      ]))),
       authorizationObjectResponse: responseEnvelope(executionSchemaUris(new Set([
         "cairn.action_authorization.v0.2",
         "cairn.cancellation_authorization.v0.1",

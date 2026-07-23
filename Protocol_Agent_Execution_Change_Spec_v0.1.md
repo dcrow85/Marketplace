@@ -1,7 +1,8 @@
 # Cairn Agent Execution Change Specification v0.1
 
-Status: prose-design closure candidate; not implementation-authorizing
+Status: prose design with a locally verified narrowed Phase-1 containment profile pending an exact containing-commit freeze and fresh three-reviewer verification; not implementation-authorizing
 Date: 2026-07-21
+Containment amendment: 2026-07-23
 Change class: additive; no existing machine operation is widened
 Baseline: `Protocol_Agent_Intent_Interop_v0.1.md`, frozen proposal foundation
 `e653556`, and frozen proposal-only service `1711a56`
@@ -12513,10 +12514,12 @@ hashes differ and neither runtime may continue the other's live chain.
 - **Phase 0:** preserve proposal-only bytes; separate execution package/profile.
 - **Phase 1:** closed machine schemas/registry for connection, compartment,
   mandate v0.3, control, binding set, chain objects, consent receipts, and
-  read-only activity; no executor or network review. All 34 operations are
-  schema-only reads. No GateResult can validate as `allow`, every redemption
-  receipt is `phase1_redemption_unsupported`, recovery-bearing controls are
-  unsupported, and exhausted DataGrant heads cannot make a BindingSet eligible.
+  read-only activity; no executor or network review. The narrowed profile has
+  29 schema-only reads, 46 object schemas in 50 schema documents, and no
+  standalone map, transition-manifest, or compartment getter. `GateResult` is
+  structurally deny-only, `RedemptionReceipt` is absent, recovery-bearing
+  controls are structurally forbidden, and exhausted DataGrant heads cannot
+  make a BindingSet eligible.
 - **Phase 2:** pure review, taint, staleness, and UI over local terms, fixtures,
   sandbox fixtures, or previously authorized/imported quote snapshots; every
   receipt fixes `external_effect:false`. A live provider quote/review that
@@ -12532,14 +12535,80 @@ hashes differ and neither runtime may continue the other's live chain.
 - **Phase 6:** broader commerce only after empirical evidence; release/waiver/
   dispute remains a separate decision.
 
-This document recommends only Phase 0 after prose audit. Phase 1 requires a
-separately frozen machine bundle and mutation audit before implementation. Phase
-2 requires that Phase-1 closure plus proof that review is pure and makes no
-network disclosure/effect. Each later phase requires its own frozen artifact,
-independent audit, mutations, and exit evidence. This document does not authorize
-an execution service or Phase 5. A schema-valid Phase-1 object is never evidence
-that an authority service accepted it, and no caller or agent can promote the
-read-only profile into a writer by supplying a callback or resolver.
+### 14.1 Phase-1 containment amendment after rejected freeze 26b7016
+
+Exact freeze
+`26b701609583ec7e518526b0ae78aed46c10fc19` is rejected history. The
+Round-39 informed regression, blind authority, and blind state/transition audits
+showed that shape, hash, signature math, and caller-provided lookup results had
+been combined into authority claims that the schema-only artifact could not
+independently authenticate. The replacement profile therefore narrows before a
+reference service is built:
+
+1. These five operations are absent:
+   `execution.transition_manifest.get`, `execution.enumerable_map.get`,
+   `execution.compartment.get`, `execution.compartment_state.get`, and
+   `execution.compartment_state_transition_receipt.get`. Maps and transition
+   manifests remain bounded internal dependency vocabulary.
+2. `GateResult.decision` is structurally `deny`; `RedemptionReceipt` is absent;
+   recovery fields are structurally null. `ActionState` has no `gate_allowed`
+   or post-redemption branch, and `ActionReceipt` admits only preparatory,
+   reservation, cancellation, failure, and quarantine transitions with empty
+   disclosure/obligation/checkout effects, null receiver evidence, and null
+   economic exposure. `LineageProvisionalTerminalReceipt` and
+   `CompartmentStateTransitionReceipt` are not members of `receipt.get`.
+3. Nonempty outbound disclosures, nonempty external accounting maps, external
+   protection claims, and financial external truth are unavailable.
+4. `EXECUTION_CONTROLS` joins the unsupported gate set. Ten of the 19 checks
+   therefore deny without representing an authenticated pass.
+5. Caller-supplied object resolvers, key maps, current-head callbacks, role
+   callbacks, Boolean ACL values, and external-verifier callbacks are
+   conditional inputs. They cannot establish authenticated authority.
+   High-level authenticated reads, gate evaluation, composite action
+   validation, live cancellation, and joint-control currentness return
+   `phase1_authenticated_resolution_unsupported` until a separately frozen
+   rooted-proof profile can be verified locally. A caller-created flag, brand,
+   key, or root does not cross that boundary.
+6. Low-level helpers are structural or conditional consistency checks. An empty
+   failure list from one is not an authorization, currentness proof, access
+   decision, or conformance result.
+
+Historical and live evaluation are distinct. Key resolution and current-head
+resolution take the semantic evaluation instant. A historical gate uses
+`evaluated_at`; a historical control or connection receipt uses `committed_at`;
+a live current read uses its live evaluation time. A key revoked after the
+historical instant remains eligible at that instant, and a head advanced later
+does not invalidate a receipt that proved the prior head current at commit.
+Missing authenticated history fails closed; it never falls back to the latest
+record.
+
+Joint connection/control validation uses one shared pair relation invoked from
+both receipt directions. It binds the same authorization target, transaction,
+commit time, aggregate transition, scoped leaf action/state, connection
+transition, and outstanding-index head as of commit. Namespace and aggregate
+control exact reads run intrinsic generation, predecessor, map-root,
+epoch/nonce, and identity checks. Composite action reads run the intrinsic
+current action-state predecessor chain.
+
+One causal chronology applies across the retained control paths:
+authorization and namespace signatures do not follow commit; predecessor
+updates/signatures do not follow commit; successor updates equal commit;
+successor signatures fall between commit and the receipt signature. Timestamp
+equality is legal at the profile's one-second precision.
+
+This document authorizes no execution service beyond Phase 0. The Phase-1
+schema-only bundle requires a separately frozen machine bundle and mutation
+audit before any service implementation. The narrowed Round-39 replacement
+passes 31/31 authored controls and kills 419/419 exact-once direct mutants
+locally; those results do not become closure until reproduced from the frozen
+containing commit by the fresh review gate. Phase 2 requires that Phase-1 closure plus proof that
+review is pure and makes no network disclosure/effect. Each later phase requires
+its own frozen artifact, independent audit, mutations, and exit evidence. This
+document does not authorize an execution service or Phase 5. A schema-valid
+Phase-1 object is never evidence that an authority service accepted it, and no
+caller or agent can promote the read-only profile into a writer or authenticated
+reader by supplying a callback, resolver, Boolean, key map, or self-selected
+root.
 
 ## 15. Audit protocol
 
@@ -12560,8 +12629,10 @@ closure review; and author replay.
 P0 permits unauthorized/unbounded effect or corrupts authoritative history. P1
 permits wrong recipient/amount/scope, budget/duplicate/revocation bypass, false
 receiver finality, or material disclosure. P2 creates likely interoperability,
-recovery, UX, or audit forks. P3 is editorial/hardening. No P0/P1 remains; a
-deferred P2 names owner, trigger, safe interim behavior, and fail-closed basis.
+recovery, UX, or audit forks. P3 is editorial/hardening. No closure claim is
+made while the Round-39 remediation is pending a fresh containing-commit freeze
+and three-reviewer gate. A deferred P2 names owner, trigger,
+safe interim behavior, and fail-closed basis.
 
 ## 16. Weakest point and serious alternative
 

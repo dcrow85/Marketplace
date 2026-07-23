@@ -6,7 +6,7 @@ function deepFreeze(value) {
 
 export const PROFILE_ID = "cairn-supervised-execution-v0.1";
 export const RELEASE_PHASE = "phase_1_schema_only";
-export const SPEC_SHA256 = "3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec";
+export const SPEC_SHA256 = "2f34aaa4bc38a2e8eb5930a4634f5f22e09f895335e5eea7666028442c7481cb";
 export const BASE_BUNDLE_HASH = "sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c";
 export const BASE_REGISTRY_HASH = "sha-256:218e990a8cf2e768e9cda8886001488fb0c37496b3cfa64c21d2d922e4e9075b";
 
@@ -90,8 +90,6 @@ export const PHASE1_OPERATIONS = deepFreeze([
   read("execution.capabilities.get", "capabilitiesResponse", "public", "emptyRequest"),
   read("execution.base_object.get", "baseObjectResponse"),
   read("execution.execution_resource_bounds_profile.get", "execution-resource-bounds-profile.schema.json", "public"),
-  read("execution.transition_manifest.get", "enumerable-transition-manifest.schema.json", "inherited_parent_private_or_audit_acl", "transitionManifestRequest"),
-  read("execution.enumerable_map.get", "enumerableMapObjectResponse", "inherited_parent_private_or_audit_acl", "enumerableMapReadRequest"),
   read("execution.connection_authorization.get", "agent-connection-authorization.schema.json", "owner_or_exact_runtime_audit_control_grant"),
   read("execution.connection_state.get", "agent-connection-state-head.schema.json", "owner_or_exact_runtime_audit_control_grant"),
   read("execution.data_grant_state.get", "data-grant-state-head.schema.json", "owner_or_exact_runtime_data_grant"),
@@ -106,9 +104,6 @@ export const PHASE1_OPERATIONS = deepFreeze([
   read("execution.control_namespace.get", "execution-control-namespace.schema.json", "owner_or_exact_runtime_audit_control_grant"),
   read("execution.control.get", "controlObjectResponse", "owner_or_exact_runtime_audit_control_grant"),
   read("execution.control_receipt.get", "execution-control-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
-  read("execution.compartment.get", "agent-execution-compartment.schema.json", "owner_or_exact_runtime_audit_control_grant"),
-  read("execution.compartment_state.get", "compartment-state-head.schema.json", "owner_or_exact_runtime_audit_control_grant"),
-  read("execution.compartment_state_transition_receipt.get", "compartment-state-transition-receipt.schema.json", "owner_plus_audit_detail_or_exact_runtime_audit_grant"),
   read("execution.policy.get", "policyObjectResponse"),
   read("execution.confirmation_receipt.get", "confirmation-receipt.schema.json", "inherited_parent_private_or_audit_acl"),
   read("execution.mandate.get", "agent-mandate-v0.3.schema.json", "owner_or_exact_runtime_audit_control_grant"),
