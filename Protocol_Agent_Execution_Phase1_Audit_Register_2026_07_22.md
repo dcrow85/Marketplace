@@ -823,7 +823,7 @@ yet make its smallest claims mechanically exact.
 | P2R45-X-001 | P2 | Rejected execution code remained too easy to package, import, or mistake for an active build target | accepted_and_fixed | Root package allowlist excludes it, runtime imports are scanned, a closed rejection marker forbids advertisement/deployment/reference-service use, and reproduction instructions point only to the rejected archive |
 | P2R45-T-001 | P2 | Direct mutation coverage was incomplete for the new release and semantic controls | accepted_and_fixed | Focused mutants now exercise projection binding, state effects, draft-only preparation, closed manifests, BYO prerequisites, package/runtime exclusion, source commitment, and stale release bytes |
 
-The local replacement passes 88/88 authored controls and kills 99/99 direct
+The local replacement passes 90/90 authored controls and kills 101/101 direct
 security mutants. Its foundation bundle and registry remain respectively
 `sha-256:4eb3862fd13659131731f1202aecc62617044682bc7c0ce9e5cd2420061b3a85`
 and
@@ -831,3 +831,13 @@ and
 A replacement containing commit, disposable clean-archive replay, exact package
 inspection, and three fresh cold exact-commit reviews remain pending. No
 execution reference service is authorized.
+
+### Round 45 clean-replay rejection
+
+Replacement freeze `1276c3eb495317893136678377360422a534242f` is rejected
+before independent review. Its generated release source commitment included a
+local `scripts/__pycache__/` bytecode artifact that is not present in a clean
+Git archive, so the archive correctly failed the byte-for-byte release check.
+The source collector now excludes Python compiler caches, and a direct mutant
+creates such a cache and requires it to remain outside the release commitment.
+A new containing commit and clean replay are pending.

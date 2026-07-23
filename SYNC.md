@@ -90,9 +90,13 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   a draft with `action_state_transition:false`, closes the release and rejection
   schemas, pins BYO prerequisites/non-claims, source-commits the generated
   release artifact, and mechanically excludes the execution tree from the
-  package and runtime graph. It passes 88/88 authored controls and kills 99/99
-  exact mutation controls. A replacement containing commit, disposable clean
-  replay, and three fresh exact-commit reviews remain pending.
+  package and runtime graph. It passes 90/90 authored controls and kills 101/101
+  exact mutation controls. First replacement freeze
+  `1276c3eb495317893136678377360422a534242f` is rejected by clean replay:
+  a local Python bytecode cache entered the generated source commitment but is
+  absent from a Git archive. The replacement now excludes and directly tests
+  transient compiler caches. A new containing commit, disposable clean replay,
+  and three fresh exact-commit reviews remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —

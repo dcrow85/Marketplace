@@ -134,6 +134,22 @@ export const SECURITY_MUTANTS = [
     test: "kernel release check rejects a stale generated artifact"
   },
   {
+    id: "minimum-kernel-transient-cache-exclusion",
+    finding: "clean-archive-release-reproducibility",
+    file: "lib/minimum-kernel.mjs",
+    search: '    if (entry.name === "__pycache__") continue;',
+    replace: "    // mutant commits transient compiler caches",
+    test: "kernel release source commitments exclude transient compiler cache directories"
+  },
+  {
+    id: "minimum-kernel-transient-bytecode-exclusion",
+    finding: "clean-archive-release-reproducibility",
+    file: "lib/minimum-kernel.mjs",
+    search: '      if (/\\.py[co]$/.test(entry.name)) continue;',
+    replace: "      // mutant commits standalone compiler bytecode",
+    test: "kernel release source commitments exclude standalone compiler bytecode"
+  },
+  {
     id: "projection-exact-audience",
     finding: "projection-purpose-audience-use-enforcement",
     file: "lib/validation.mjs",

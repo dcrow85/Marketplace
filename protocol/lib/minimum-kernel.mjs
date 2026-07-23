@@ -134,13 +134,17 @@ async function sourceFiles(directory, prefix = "") {
   const entries = await readdir(directory, { withFileTypes: true });
   const files = [];
   for (const entry of entries.sort((left, right) => left.name.localeCompare(right.name, "en"))) {
+    if (entry.name === "__pycache__") continue;
     if (["dist", "execution", "node_modules"].includes(entry.name) && prefix === "") continue;
     const absolute = path.join(directory, entry.name);
     const relative = prefix ? `${prefix}/${entry.name}` : entry.name;
     const metadata = await lstat(absolute);
     if (metadata.isSymbolicLink()) throw new Error(`minimum kernel source may not be a symlink: ${relative}`);
     if (metadata.isDirectory()) files.push(...await sourceFiles(absolute, relative));
-    else if (metadata.isFile()) files.push({ absolute, relative });
+    else if (metadata.isFile()) {
+      if (/\.py[co]$/.test(entry.name)) continue;
+      files.push({ absolute, relative });
+    }
     else throw new Error(`unsupported minimum kernel source type: ${relative}`);
   }
   return files;

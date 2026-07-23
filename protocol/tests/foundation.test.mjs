@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
 import { generateKeyPairSync, sign as signBytes } from "node:crypto";
-import { cpSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -9,7 +9,7 @@ import { fileURLToPath } from "node:url";
 
 import { auditSources, buildBundle, loadSources } from "../lib/bundle.mjs";
 import { FOUNDATION_DATA_GRANT_USES, SIGNED_OBJECT_ANNOTATIONS } from "../lib/foundation-profile.mjs";
-import { auditMinimumTrustKernel } from "../lib/minimum-kernel.mjs";
+import { auditMinimumTrustKernel, buildMinimumTrustKernelRelease } from "../lib/minimum-kernel.mjs";
 import {
   bindObjectHash,
   bodyHash,
@@ -1551,6 +1551,60 @@ test("kernel release check rejects a stale generated artifact", () => {
     });
     assert.notEqual(result.status, 0);
     assert.match(`${result.stdout}\n${result.stderr}`, /generated minimum trust kernel release differs from source/);
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
+  }
+});
+
+test("kernel release source commitments exclude transient compiler cache directories", async () => {
+  const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-kernel-cache-"));
+  const candidate = path.join(parent, "protocol");
+  try {
+    cpSync(root, candidate, {
+      recursive: true,
+      filter: (source) => path.basename(source) !== "node_modules"
+    });
+    symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
+    for (const name of [
+      "Protocol_Agent_Intent_Interop_v0.1.md",
+      "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
+    ]) {
+      cpSync(path.resolve(root, "..", name), path.join(parent, name));
+    }
+    const cache = path.join(candidate, "scripts", "__pycache__");
+    mkdirSync(cache, { recursive: true });
+    writeFileSync(path.join(cache, "transient.cache"), "not a release source");
+    const { release } = await buildMinimumTrustKernelRelease(candidate);
+    assert.equal(
+      Object.keys(release.source_commitments).some((name) => name.includes("__pycache__")),
+      false
+    );
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
+  }
+});
+
+test("kernel release source commitments exclude standalone compiler bytecode", async () => {
+  const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-kernel-bytecode-"));
+  const candidate = path.join(parent, "protocol");
+  try {
+    cpSync(root, candidate, {
+      recursive: true,
+      filter: (source) => path.basename(source) !== "node_modules"
+    });
+    symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
+    for (const name of [
+      "Protocol_Agent_Intent_Interop_v0.1.md",
+      "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
+    ]) {
+      cpSync(path.resolve(root, "..", name), path.join(parent, name));
+    }
+    writeFileSync(path.join(candidate, "scripts", "transient.pyc"), "not a release source");
+    const { release } = await buildMinimumTrustKernelRelease(candidate);
+    assert.equal(
+      Object.keys(release.source_commitments).some((name) => name.endsWith(".pyc")),
+      false
+    );
   } finally {
     rmSync(parent, { recursive: true, force: true });
   }
