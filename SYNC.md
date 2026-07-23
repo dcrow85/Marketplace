@@ -64,6 +64,17 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: BYO-agent replacement conformance harness]` 2026-07-23 · Codex —
+  Building the next protocol experiment outside `protocol/` so the reviewed
+  nine-operation proposal kernel at `977e0ac` remains byte-for-byte fixed. The
+  bounded claim under test is that a second, independently keyed and granted
+  agent runtime can recover the same principal-held intent without inheriting
+  the first runtime's private key, grant, idempotency record, hidden memory, or
+  action authority. The harness will publish deterministic local evidence and
+  negative probes only; it will not claim production conformance, execution, or
+  an external effect. No Pages, Railway, catalogue, or `mockups/` work is in
+  scope.
+
 - `[passive]` 2026-07-23 · Codex —
   **The 29-operation supervised-execution/read candidate is rejected and removed
   from the active release gate.** Exact freeze
