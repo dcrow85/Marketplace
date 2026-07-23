@@ -733,7 +733,7 @@ Phase A freezes one machine-readable external contract:
 path:
   simulations/authoritative-service/authoritative-service.schema.json
 canonical JCS hash:
-  sha-256:0b80ffc51b9180b1f292e9596958c6d8e7310c85f7deeec706b4e49b9f1c0cee
+  sha-256:68f6834019e0de9f693b550221f158e44c40c33c7894fa95ee7c86096fe13e55
 ```
 
 Its nine independently addressable entry points are:
@@ -787,24 +787,29 @@ idempotency metadata, exact object-byte/identity truth, owner projections,
 global and owner histories, observation material, and persistence counters stay
 wrapper-owned.
 
-The probe executes eleven independent real `intent.put` transactions after an
-actual committed origin: one changed-fingerprint conflict, five separately
-injected result-object/ACL replay faults, four post-callback
-response-schema/observation/persistence/commit fault boundaries, and one
-grant-consumption failure injected after new idempotency staging. Each replay
-corruption captures the unchanged frozen
+The probe executes twelve independent real `intent.put` transactions after an
+actual committed origin: one successful fresh-envelope replay, one
+changed-fingerprint conflict, five separately injected result-object/ACL replay
+faults, four post-callback response-schema/observation/persistence/commit fault
+boundaries, and one grant-consumption failure injected after new idempotency
+staging. The successful replay commits a second nonce, owner/global sequence,
+scope root, replay observation, and repository row while retaining the original
+result and charge. Each replay corruption captures the unchanged frozen
 `commit:true`/`idempotency_result_unavailable` outcome, but the outer transaction
 then rejects the unreconstructible observation and restores both kernel and
 sidecar to their exact faulted baselines. The changed-fingerprint case captures
 the actual `commit:false`/`idempotency_conflict` path with no nonce. Each wrapper
 fault likewise preserves the actual callback result while rolling back exactly.
-The grant case captures
-the actual post-staging `commit:false`/`grant_consumption_failed` result and
-rolls back. The checker validates every local-result branch, proves the eleven
-callback traces are distinct, and separately sends a malformed response
-through the real frozen response-schema validator. The deterministic composite
+The grant case captures the actual post-staging
+`commit:false`/`grant_consumption_failed` result and rolls back. For the
+response-schema fault, the actual frozen callback first returns its valid
+result; the post-callback fault hook deletes the required `ref` from the exact
+boundary value, the real registry validator rejects that value, and the outer
+transaction preserves that malformed raw kernel result while rolling back. The
+checker validates every local-result branch and proves the twelve callback
+traces are distinct. The deterministic composite
 report is pinned at
-`sha-256:ad9606d70f5f58601a7c1ae214cc063217e6e35a64abd344e3965df8f0f8b0b8`;
+`sha-256:1b8e9671e5036877fe18780319cffd70a8a86ae44585647342406e27f953bafa`;
 fresh process executions must reproduce it exactly.
 
 Origin verification begins from the actual signed envelope, authenticated
@@ -815,7 +820,13 @@ dependency rows/commits, service commits, owner commits, observation repository
 rows, and envelope indexes. Negative controls add both duplicate and extra rows,
 claim an absent alias while its typed base is present, change every repository
 ownership field, alter object bytes/revision, break all replay-origin links, and
-map owner sequence one across unrelated global commits. The first owner row is
+map owner sequence one across six complete unrelated global commits. That
+interleaved case is accepted by the same exact-history verifier as the ordinary
+origin; deleting any intermediate global commit or changing the owner-to-global
+mapping is rejected. A second exact verifier starts from the actual committed
+replay observation and checks its fresh envelope/nonce, scope sequence/root,
+service/scope commit ancestry, repository ACL, dependency inventory, returned
+result, and immutable origin result/observation links. The first owner row is
 sequence one with previous zero; only the global service chain has a sequence
 zero genesis row.
 
@@ -1072,6 +1083,18 @@ not_claiming:
 
 The schema fixes that ordered `not_claiming` set exactly; additions, omissions,
 reordering, or generic substitutions fail.
+
+The machine schema also closes the replay tuple, not merely its individual
+field types. `replayed:true` requires
+`nonce_disposition:replay_fresh_nonce`, zero grant effects,
+`idempotency.disposition:replayed`, a non-null structural-key commitment,
+original result hash, original observation ref, and original owner scope
+sequence. `replayed:false` requires `nonce_disposition:newly_reserved`, forbids
+`disposition:replayed`, and requires all three origin-link fields to be null.
+`not_applicable` requires a null structural-key commitment; `created` and
+`replayed` require a non-null one. Semantic verification then resolves the
+replay's original result/ref/sequence through the exact origin repository and
+commit history rather than trusting those signed fields alone.
 
 ### 6.3 Exact query commitment
 
@@ -1340,7 +1363,7 @@ The first executable drill MUST include at least these independent controls:
 | ID | Concurrent or mutated case | Required result |
 |---|---|---|
 | AS-01 | two processes submit the same fresh nonce | exactly one commit; one `nonce_replay` |
-| AS-02 | same idempotency tuple + same fingerprint + fresh nonces | two nonces, observations, and sequences; one result construction/charge; replay observation binds original result/observation |
+| AS-02 | same idempotency tuple + same fingerprint + fresh nonces | an actual second `intent.put` callback commits a second nonce, observation, global/owner sequence, dependency history, and repository ACL with no second result construction/charge; the closed schema and exact replay-history verifier bind the fresh envelope and every original result/ref/scope link |
 | AS-03 | same idempotency tuple + different fingerprint | original remains; second `idempotency_conflict`; no second work |
 | AS-04 | two reads race for one remaining disclosure | exactly one response/observation; counter ends at zero |
 | AS-05 | multi-grant read where one counter is exhausted | no grant changes; no nonce reservation; no observation |
@@ -1368,7 +1391,7 @@ The first executable drill MUST include at least these independent controls:
 | AS-27 | duplicate, partial, forked, restarted, or concurrent genesis import | one sealed exact genesis or complete rollback |
 | AS-28 | state-root row omitted/reordered/duplicated/history-altered | recomputed historical root rejects |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
-| AS-30 | corrupt replay object/ACL, malformed response, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; response validation uses the real frozen response schema; corrupt/unreconstructible and wrapper failures preserve the raw callback result but retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
+| AS-30 | corrupt replay object/ACL, malformed response, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; the malformed boundary value itself fails the real registry response validator and becomes the exact preserved local kernel result; corrupt/unreconstructible and wrapper failures retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
 | AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval, arbitrary fractional boundary error, or altered/unsorted key-profile chain | independently re-bound schema/profile/observation trust probes reject while exact lower-bound and pre-expiry fractional positives pass |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
 | AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
@@ -1380,7 +1403,7 @@ The first executable drill MUST include at least these independent controls:
 | AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash, misclassifies singleton `["index"]`, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; positive and borrowed/false-absence negatives cover all eleven admitted aliases, every base row is validated through its table-specific projection, and the singleton base-key positive passes |
 | AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
 | AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/identity/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict remains the frozen `commit:false` outcome; each result/identity/ACL corruption captures its own actual frozen `commit:true` outcome but the outer integrity decision rolls back the staged nonce and sidecar; no raw result is rewritten |
-| AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; owner projection/root bytes contain no raw tuple or global counter and stay identical; operator-private scope-to-global reconstruction still detects a false mapping |
+| AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; the same exact-history verifier accepts a complete six-foreign-commit interleaving without changing owner projection/root bytes, but rejects any missing intermediate global commit or false owner-to-global mapping |
 
 Every accepted audit finding receives either a code/schema/test remediation or a
 documented rejection/deferral. No finding may be closed only by prose if a direct

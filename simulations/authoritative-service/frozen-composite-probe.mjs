@@ -175,10 +175,16 @@ class CompositeReferenceStores extends MemoryReferenceStores {
     this.context = null;
     this.traces = [];
     this.compositeActive = false;
+    this.responseValidator = null;
   }
 
   setContext(context) {
     this.context = structuredClone(context);
+  }
+
+  setResponseValidator(validate) {
+    assert.equal(typeof validate, "function");
+    this.responseValidator = validate;
   }
 
   injectReplayFault(kind) {
@@ -244,12 +250,31 @@ class CompositeReferenceStores extends MemoryReferenceStores {
     }
 
     let callbackOutcome = null;
+    let frozenCallbackOutcome = null;
     let stagedSidecar = structuredClone(this.sidecar);
     try {
       const callbackBefore = kernelSnapshot(kernelDraft);
-      callbackOutcome = work(kernelDraft);
-      if (callbackOutcome && typeof callbackOutcome.then === "function") {
+      frozenCallbackOutcome = work(kernelDraft);
+      if (
+        frozenCallbackOutcome &&
+        typeof frozenCallbackOutcome.then === "function"
+      ) {
         throw new TypeError("reference transactions must be synchronous");
+      }
+      callbackOutcome = frozenCallbackOutcome;
+      let responseValidation = null;
+      if (context.response_schema_mutation === "delete_ref") {
+        assert.equal(typeof this.responseValidator, "function");
+        callbackOutcome = structuredClone(frozenCallbackOutcome);
+        delete callbackOutcome.value.body.ref;
+        const accepted = this.responseValidator(callbackOutcome.value.body);
+        responseValidation = {
+          schema: context.response_schema,
+          mutation: context.response_schema_mutation,
+          accepted,
+          errors: structuredClone(this.responseValidator.errors ?? [])
+        };
+        assert.equal(accepted, false);
       }
       const callbackAfter = kernelSnapshot(kernelDraft);
       stagedSidecar.counters.callback_calls += 1;
@@ -262,16 +287,21 @@ class CompositeReferenceStores extends MemoryReferenceStores {
         );
       }
 
-      const wrapperFailure = context.wrapper_failure ?? (
-        context.integrity_fault
+      const wrapperFailure = responseValidation?.accepted === false
+        ? {
+            status: 503,
+            code: "response_schema_failed",
+            failures: ["response_schema_failed"],
+            stage: "observation"
+          }
+        : context.wrapper_failure ?? (context.integrity_fault
           ? {
               status: 503,
               code: "authoritative_integrity_invalid",
               failures: ["authoritative_integrity_invalid"],
               stage: "observation"
             }
-          : null
-      );
+          : null);
       const finalCommit =
         callbackOutcome?.commit !== false && wrapperFailure === null;
       if (finalCommit) {
@@ -315,7 +345,10 @@ class CompositeReferenceStores extends MemoryReferenceStores {
         callback_before: callbackBefore,
         callback_after: callbackAfter,
         callback_commit: callbackOutcome?.commit ?? null,
+        frozen_callback_value:
+          structuredClone(frozenCallbackOutcome?.value ?? null),
         callback_value: structuredClone(callbackOutcome?.value ?? null),
+        response_validation: responseValidation,
         staged_sidecar: sidecarSnapshot(stagedSidecar),
         final_commit: finalCommit,
         wrapper_failure: structuredClone(wrapperFailure),
@@ -409,7 +442,8 @@ export {
   bindAndSign,
   operationFingerprint,
   signature,
-  AGENT_KEY
+  AGENT_KEY,
+  foundation
 };
 `;
     const encoded = Buffer.from(source, "utf8").toString("base64");
@@ -455,6 +489,13 @@ async function buildIntentScenario(caseId = "origin") {
     ...harness.authentication,
     authorityNamespace: `${harness.authentication.principalId}|intent.put`
   };
+  const operation = helpers.foundation.registry.operations.find(
+    ({ name }) => name === envelope.message_type
+  );
+  assert.ok(operation);
+  stores.setResponseValidator(
+    helpers.foundation.ajv.getSchema(operation.response_schema)
+  );
   stores.setContext({
     case_id: `${caseId}:origin`,
     phase: "origin",
@@ -543,6 +584,37 @@ export async function runCompositeProbe() {
   assert.deepEqual(conflictTrace.kernel_after, conflictKernelBaseline);
   assert.deepEqual(conflictTrace.sidecar_after, conflictSidecarBaseline);
 
+  const replayScenario = await buildIntentScenario("successful_replay");
+  const successfulReplayEnvelope = replayScenario.helpers.freshTransport(
+    replayScenario.envelope,
+    59
+  );
+  replayScenario.stores.setContext({
+    case_id: "successful_replay",
+    phase: "replay",
+    envelope: successfulReplayEnvelope,
+    authentication: replayScenario.authentication
+  });
+  const successfulReplayRaw =
+    replayScenario.harness.service.handleEnvelope(
+      successfulReplayEnvelope,
+      replayScenario.authentication
+    );
+  const successfulReplayTrace = replayScenario.stores.traces.at(-1);
+  assert.equal(successfulReplayRaw.ok, true);
+  assert.equal(successfulReplayRaw.replayed, true);
+  assert.equal(successfulReplayTrace.callback_commit, true);
+  assert.equal(successfulReplayTrace.final_commit, true);
+  assert.equal(replayScenario.stores.sidecar.global_sequence, 2);
+  assert.deepEqual(
+    replayScenario.stores.sidecar.scope_commits.map((commit) => [
+      commit.scope_sequence,
+      commit.previous_scope_sequence,
+      commit.global_sequence
+    ]),
+    [[1, 0, 1], [2, 1, 2]]
+  );
+
   const replayFaults = {};
   for (const kind of [
     "missing_result_object",
@@ -593,20 +665,26 @@ export async function runCompositeProbe() {
       scenario.envelope,
       56
     );
-    const wrapperStage =
-      stage === "response_schema" ? "observation" : stage;
-    scenario.stores.setContext({
+    const context = {
       case_id: `${stage}_failure`,
       phase: "replay",
       envelope: replayEnvelope,
-      authentication: scenario.authentication,
-      wrapper_failure: {
+      authentication: scenario.authentication
+    };
+    if (stage === "response_schema") {
+      context.response_schema = scenario.helpers.foundation.registry.operations
+        .find(({ name }) => name === replayEnvelope.message_type)
+        .response_schema;
+      context.response_schema_mutation = "delete_ref";
+    } else {
+      context.wrapper_failure = {
         status: 503,
         code: `${stage}_failed`,
         failures: [`${stage}_failed`],
-        stage: wrapperStage
-      }
-    });
+        stage
+      };
+    }
+    scenario.stores.setContext(context);
     const raw = scenario.harness.service.handleEnvelope(
       replayEnvelope,
       scenario.authentication
@@ -616,6 +694,11 @@ export async function runCompositeProbe() {
     assert.equal(trace.final_commit, false, stage);
     assert.deepEqual(trace.kernel_after, baselineKernel, stage);
     assert.deepEqual(trace.sidecar_after, baselineSidecar, stage);
+    if (stage === "response_schema") {
+      assert.equal(trace.response_validation.accepted, false);
+      assert.equal(Object.hasOwn(raw.body, "ref"), false);
+      assert.equal(Object.hasOwn(trace.frozen_callback_value.body, "ref"), true);
+    }
     wrapperFaults[stage] = { raw: structuredClone(raw), trace };
   }
 
@@ -651,6 +734,12 @@ export async function runCompositeProbe() {
       raw: structuredClone(conflictRaw),
       trace: conflictTrace
     },
+    successful_replay: {
+      envelope: structuredClone(successfulReplayEnvelope),
+      raw: structuredClone(successfulReplayRaw),
+      trace: successfulReplayTrace,
+      sidecar: structuredClone(replayScenario.stores.sidecar)
+    },
     replay_faults: replayFaults,
     wrapper_faults: wrapperFaults,
     grant_consumption_failure: {
@@ -672,7 +761,7 @@ if (
     `composite_probe_cases=${
       Object.keys(report.replay_faults).length +
       Object.keys(report.wrapper_faults).length +
-      2
+      3
     }\n`
   );
   process.stdout.write(

@@ -64,6 +64,23 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service eighth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `b0692e228db1632a493fd4d23be16fb2ef79a4e3`
+  is not a pass despite one blind acceptance. A second blind auditor found two
+  P1s and one material P2: the interleaving fixture omitted global commits one
+  through six instead of proving a complete foreign history through the same
+  verifier; no actual signed replay observation was checked against its fresh
+  envelope, repository row, and origin links; and the response-schema rollback
+  injected a failure label while the malformed AJV control ran separately. The
+  third audit produced no usable evidence because its review tool failed.
+  Remediation now builds the complete six-foreign-commit history and sends it
+  through the exact origin verifier, commits and verifies a real second
+  `intent.put` replay across schema/repository/dependency/global/owner history,
+  and mutates the actual callback boundary value so the real registered
+  response validator causes the rollback. A new exact candidate must reproduce
+  from two clean archives and pass all three repeat blind audits; `protocol/`
+  and `mockups/` remain untouched, and no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service seventh audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `058f009` is not a pass. Three clean-archive blind
   auditors confirmed frozen-kernel immutability and the eleven present-alias

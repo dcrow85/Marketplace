@@ -1186,6 +1186,106 @@
                   "grant_effects": { "type": "array", "maxItems": 0 }
                 }
               }
+            },
+            {
+              "if": {
+                "properties": { "replayed": { "const": true } },
+                "required": ["replayed"]
+              },
+              "then": {
+                "properties": {
+                  "nonce_disposition": { "const": "replay_fresh_nonce" },
+                  "grant_effects": { "type": "array", "maxItems": 0 },
+                  "idempotency": {
+                    "type": "object",
+                    "properties": {
+                      "structural_key_commitment": { "$ref": "#/$defs/sha256" },
+                      "disposition": { "const": "replayed" },
+                      "original_result_hash": { "$ref": "#/$defs/sha256" },
+                      "original_observation_ref": {
+                        "$ref": "#/$defs/externalArtifactRef"
+                      },
+                      "original_scope_sequence": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 9007199254740991
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": { "replayed": { "const": false } },
+                "required": ["replayed"]
+              },
+              "then": {
+                "properties": {
+                  "nonce_disposition": { "const": "newly_reserved" },
+                  "idempotency": {
+                    "type": "object",
+                    "properties": {
+                      "disposition": {
+                        "enum": ["not_applicable", "created"]
+                      },
+                      "original_result_hash": { "type": "null" },
+                      "original_observation_ref": { "type": "null" },
+                      "original_scope_sequence": { "type": "null" }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "idempotency": {
+                    "type": "object",
+                    "properties": {
+                      "disposition": { "const": "not_applicable" }
+                    },
+                    "required": ["disposition"]
+                  }
+                },
+                "required": ["idempotency"]
+              },
+              "then": {
+                "properties": {
+                  "idempotency": {
+                    "type": "object",
+                    "properties": {
+                      "structural_key_commitment": { "type": "null" }
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "idempotency": {
+                    "type": "object",
+                    "properties": {
+                      "disposition": {
+                        "enum": ["created", "replayed"]
+                      }
+                    },
+                    "required": ["disposition"]
+                  }
+                },
+                "required": ["idempotency"]
+              },
+              "then": {
+                "properties": {
+                  "idempotency": {
+                    "type": "object",
+                    "properties": {
+                      "structural_key_commitment": { "$ref": "#/$defs/sha256" }
+                    }
+                  }
+                }
+              }
             }
           ]
         },
