@@ -10,6 +10,11 @@ import { createAjv, readJson, requireValid } from "./schemas.mjs";
 const EXPECTED_SCHEMA = "cairn.minimum_trust_kernel_manifest.v0.1";
 const EXPECTED_KERNEL_ID = "cairn-agent-minimum-trust-kernel-v0.1";
 const EXPECTED_STATUS = "active_narrowed_candidate";
+const EXPECTED_PACKAGE_MANAGER = "npm@11.12.1";
+const EXPECTED_ENGINES = {
+  node: ">=24.15.0 <25",
+  npm: ">=10.9.2 <12"
+};
 const EXPECTED_MUTATIONS = [
   {
     operation: "intent.put",
@@ -64,7 +69,8 @@ const REQUIRED_NON_CLAIMS = [
   "continuation_delivery",
   "service_availability",
   "transport_binding_conformance",
-  "raw_runtime_private_key_transfer"
+  "raw_runtime_private_key_transfer",
+  "release_authenticity_without_external_pin"
 ];
 const EXPECTED_PACKAGE_FILES = [
   "README.md",
@@ -91,6 +97,10 @@ const EXPECTED_PACKAGE_FILES = [
 const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter(
   (name) => name !== "dist" && !name.startsWith("!")
 );
+const EXACT_GENERATED_ARTIFACTS = [
+  "dist/cairn-minimum-trust-kernel-v0.1.json",
+  "dist/cairn-protocol-bundle-v0.1.json"
+];
 
 function exact(actual, expected, message) {
   if (canonicalText(actual) !== canonicalText(expected)) throw new Error(message);
@@ -101,6 +111,35 @@ function uniqueStrings(value, label) {
     throw new Error(`${label} must be a nonempty-string array`);
   }
   if (new Set(value).size !== value.length) throw new Error(`${label} must not contain duplicates`);
+}
+
+export function validateMinimumKernelPackedPaths(paths, release) {
+  const failures = [];
+  if (
+    !Array.isArray(paths) ||
+    paths.some((pathname) => typeof pathname !== "string" || pathname.length === 0) ||
+    new Set(paths).size !== paths.length
+  ) {
+    return ["packed_path_list_invalid"];
+  }
+  if (paths.some((pathname) => pathname.split("/").includes("execution"))) {
+    failures.push("packed_execution_path_forbidden");
+  }
+  if (paths.some((pathname) =>
+    pathname.split("/").includes("__pycache__") || /\.py[co]$/.test(pathname)
+  )) {
+    failures.push("packed_transient_compiler_file");
+  }
+  const commitments = release?.source_commitments;
+  if (commitments === null || typeof commitments !== "object" || Array.isArray(commitments)) {
+    failures.push("packed_release_commitments_invalid");
+  } else {
+    const expected = [...Object.keys(commitments), ...EXACT_GENERATED_ARTIFACTS]
+      .sort((left, right) => left.localeCompare(right, "en"));
+    const actual = [...paths].sort((left, right) => left.localeCompare(right, "en"));
+    if (canonicalText(actual) !== canonicalText(expected)) failures.push("packed_inventory_mismatch");
+  }
+  return [...new Set(failures)];
 }
 
 function requireStrictJson(root) {
@@ -203,6 +242,12 @@ async function auditExecutionExclusion(root, manifest, ajv) {
 
   const packageDocument = await readJson(path.join(root, "package.json"));
   exact(packageDocument.files, EXPECTED_PACKAGE_FILES, "minimum kernel package file allowlist differs");
+  if (packageDocument.packageManager !== EXPECTED_PACKAGE_MANAGER) {
+    throw new Error("minimum kernel package manager differs");
+  }
+  exact(packageDocument.engines, EXPECTED_ENGINES, "minimum kernel engine range differs");
+  const shrinkwrap = await readJson(path.join(root, "npm-shrinkwrap.json"));
+  exact(shrinkwrap.packages?.[""]?.engines, EXPECTED_ENGINES, "minimum kernel shrinkwrap engine range differs");
   if (packageDocument.files.some((entry) => entry === "execution" || entry.startsWith("execution/"))) {
     throw new Error("rejected execution tree is present in package allowlist");
   }
@@ -330,4 +375,45 @@ export async function buildMinimumTrustKernelRelease(root) {
     bytes: `${canonicalText(release)}\n`,
     audit
   };
+}
+
+export async function verifyMinimumTrustKernelRelease(
+  root,
+  candidate,
+  { expectedReleaseHash = null } = {}
+) {
+  const failures = [];
+  if (expectedReleaseHash === null) failures.push("release_external_pin_required");
+  else if (!/^sha-256:[0-9a-f]{64}$/.test(expectedReleaseHash)) failures.push("release_external_pin_invalid");
+  else if (candidate?.release_hash !== expectedReleaseHash) failures.push("release_external_pin_mismatch");
+
+  let schemaValid = false;
+  try {
+    const ajv = createAjv(await releaseSchemas(root));
+    const validate = ajv.getSchema(
+      "https://cairn.cards/protocol/release/minimum-trust-kernel-release.schema.json"
+    );
+    schemaValid = Boolean(validate && validate(candidate));
+  } catch {
+    schemaValid = false;
+  }
+  if (!schemaValid) failures.push("release_schema_invalid");
+
+  try {
+    const { release_hash: claimedHash, ...unsigned } = candidate;
+    if (canonicalHash(unsigned) !== claimedHash) failures.push("release_self_hash_mismatch");
+  } catch {
+    failures.push("release_self_hash_mismatch");
+  }
+
+  try {
+    const { release: expected } = await buildMinimumTrustKernelRelease(root);
+    if (canonicalText(candidate?.source_commitments) !== canonicalText(expected.source_commitments)) {
+      failures.push("release_source_commitments_mismatch");
+    }
+    if (canonicalText(candidate) !== canonicalText(expected)) failures.push("release_content_mismatch");
+  } catch {
+    failures.push("release_source_verification_unavailable");
+  }
+  return [...new Set(failures)];
 }

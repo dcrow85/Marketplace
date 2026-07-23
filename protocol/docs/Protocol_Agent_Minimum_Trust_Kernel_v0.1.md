@@ -176,7 +176,17 @@ The generated
 manifest, foundation hashes, foundation bundle bytes, active source tree,
 reference composition, tests, mutants, release schemas, canonical kernel prose,
 and execution rejection markers. The package allowlist and runtime source check
-exclude the rejected execution tree.
+exclude the rejected execution tree. Packaging is closed to those exact 53
+source paths plus the two named generated artifacts; an `execution` path segment
+is forbidden at any depth.
+
+The release JSON Schema closes structure and the exact source-path set. Hash
+values and `release_hash` are authenticated by
+`verifyMinimumTrustKernelRelease`, which recomputes every source hash and the
+self-hash from the supplied source tree. A portable consumer MUST also obtain
+the expected `release_hash` from a trusted external pin; a self-address alone
+does not authenticate its publisher. The machine manifest explicitly disclaims
+release authenticity without that external pin.
 
 Any expansion requires a new profile name, new machine artifact, frozen commit,
 and independent review. It must not silently widen this kernel.

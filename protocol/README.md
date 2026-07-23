@@ -75,11 +75,16 @@ schema or registry file. The minimum-kernel check additionally pins the exact
 bundle and registry hashes, operation list, object-store and access-state
 effects, conditional BYO prerequisites, rejected execution profile,
 prerequisites for expansion, source commitments, package closure, and
-non-claims.
+non-claims. The release schema closes structure and the exact 53 source names;
+the verifier separately recomputes all commitment values and the release
+self-hash, and requires a caller-supplied trusted release-hash pin for portable
+publisher authenticity.
 `release:verify` also packs into a temporary directory, installs from the
 included `npm-shrinkwrap.json`, runs the packed package's advertised tests,
 rebuilds both artifacts byte-identically, confirms the rejected execution tree
-is absent, and requires a second pack to converge to the same archive hash.
+is absent at every path depth, requires the package to contain exactly the 53
+committed sources plus two generated artifacts, and requires a second pack to
+converge to the same archive hash.
 
 See [`reference-service/README.md`](reference-service/README.md) for the injected
 identity/store contract and the explicit non-production boundary.

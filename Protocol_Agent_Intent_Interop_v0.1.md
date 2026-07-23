@@ -4025,11 +4025,19 @@ machine adjunct now closes only the dependency-contained proposal-foundation
 portion of that gap; authoritative services, full profile artifacts, and an
 independent implementation verification remain release gates.
 
-The proposal-foundation adjunct advertises an exact ten-operation subset of the
+The proposal-foundation adjunct advertises an exact nine-operation subset of the
 full §20.1 target surface. It deliberately omits `continuation.get`: the bundle,
 authorization, and one-shot mutation controls are testable locally, but private
 delivery MUST NOT be advertised until a shared authoritative disclosure ledger
 can reserve and consume the exact bundle/runtime/delivery binding atomically.
+
+Each frozen repository candidate publishes
+[`Protocol_Agent_Minimum_Trust_Kernel_Release_Pin_v0.1.json`](Protocol_Agent_Minimum_Trust_Kernel_Release_Pin_v0.1.json)
+outside the package. That record pins the release self-hash, generated file,
+foundation, registry, exact package archive, file counts, and toolchain profile
+without creating a self-referential package hash. A consumer still must trust or
+authenticate the Git commit (or an equivalent signed channel); the pin does not
+authenticate its own publisher.
 
 ### 30.5 Hardening bar
 
@@ -4059,9 +4067,15 @@ not promote any functional profile; every profile remains an unclaimed target.
   mutation controls without changing the normative runtime/conformance status.
 - **v0.1 machine-adjunct hardening, 2026-07-20:** added full signed-envelope,
   runtime, DataGrant, continuation, effect, receipt, and resolved-object binding
-  validators; authenticated signature metadata; pinned the exact ten-operation
-  foundation surface; and kept private continuation delivery outside the registry
-  until an authoritative one-shot ledger exists.
+  validators; authenticated signature metadata; pinned the then-exact
+  ten-operation foundation surface; and kept private continuation delivery
+  outside the registry until an authoritative one-shot ledger exists.
+- **v0.1 minimum-kernel hardening, 2026-07-23:** narrowed the active proposal
+  foundation to nine operations by removing `action.get`, excluded ActionRecords
+  from generic resolution, made runtime signing capability an explicit BYO
+  prerequisite without claiming raw private-key transfer, closed the portable
+  release schema over the exact source inventory, and placed private preparation
+  ACL checks before semantic resolution.
 - **v0.1 machine-adjunct re-audit hardening, 2026-07-20:** made resolved key
   records and authoritative grant counters total, covered the independently
   resolved effect descriptor, enforced object expiry and preparation deal-head /

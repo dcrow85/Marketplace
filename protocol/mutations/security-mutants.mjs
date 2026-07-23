@@ -117,6 +117,15 @@ export const SECURITY_MUTANTS = [
     expectedOutput: "minimum trust kernel manifest:"
   },
   {
+    id: "minimum-kernel-external-release-pin-nonclaim",
+    finding: "portable-release-authenticity-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/not_claiming/18",
+    value: "release_authentic_without_external_pin",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
     id: "minimum-kernel-forbidden-terms",
     finding: "minimum-kernel-release-boundary",
     file: "minimum-trust-kernel.json",
@@ -189,6 +198,33 @@ export const SECURITY_MUTANTS = [
     expectedOutput: "minimum kernel package file allowlist differs"
   },
   {
+    id: "minimum-kernel-package-manager-pin",
+    finding: "clean-package-toolchain-profile",
+    file: "package.json",
+    jsonPointer: "/packageManager",
+    value: "npm@12.0.0",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel package manager differs"
+  },
+  {
+    id: "minimum-kernel-node-engine-pin",
+    finding: "clean-package-toolchain-profile",
+    file: "package.json",
+    jsonPointer: "/engines/node",
+    value: ">=20",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel engine range differs"
+  },
+  {
+    id: "minimum-kernel-shrinkwrap-engine-pin",
+    finding: "clean-package-toolchain-profile",
+    file: "npm-shrinkwrap.json",
+    jsonPointer: "/packages//engines/npm",
+    value: ">=8",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel shrinkwrap engine range differs"
+  },
+  {
     id: "minimum-kernel-runtime-import-exclusion",
     finding: "mechanical-execution-exclusion",
     file: "reference-service/service.mjs",
@@ -230,12 +266,28 @@ export const SECURITY_MUTANTS = [
     test: "kernel release source commitments ignore package archives"
   },
   {
+    id: "minimum-kernel-exact-packed-inventory",
+    finding: "exact-packed-source-and-generated-inventory",
+    file: "lib/minimum-kernel.mjs",
+    search: '    if (canonicalText(actual) !== canonicalText(expected)) failures.push("packed_inventory_mismatch");',
+    replace: '    if (false) failures.push("packed_inventory_mismatch");',
+    test: "packed inventory is exactly the committed sources plus two generated artifacts"
+  },
+  {
+    id: "minimum-kernel-nested-execution-exclusion",
+    finding: "exact-packed-source-and-generated-inventory",
+    file: "lib/minimum-kernel.mjs",
+    search: '  if (paths.some((pathname) => pathname.split("/").includes("execution"))) {',
+    replace: '  if (false) {',
+    test: "packed inventory rejects an execution path segment at any depth"
+  },
+  {
     id: "minimum-kernel-release-envelope-closure",
     finding: "portable-closed-release-schema",
     file: "release/minimum-trust-kernel-release.schema.json",
     jsonPointer: "/additionalProperties",
     value: true,
-    test: "minimum trust kernel release schemas close the portable machine boundary"
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
   },
   {
     id: "minimum-kernel-release-source-count-floor",
@@ -243,7 +295,7 @@ export const SECURITY_MUTANTS = [
     file: "release/minimum-trust-kernel-release.schema.json",
     jsonPointer: "/properties/source_commitments/minProperties",
     value: 1,
-    test: "minimum trust kernel release schemas close the portable machine boundary"
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
   },
   {
     id: "minimum-kernel-release-source-name-set",
@@ -251,7 +303,39 @@ export const SECURITY_MUTANTS = [
     file: "release/minimum-trust-kernel-release.schema.json",
     jsonPointer: "/properties/source_commitments/propertyNames/enum/0",
     value: "nonexistent/source.mjs",
-    test: "minimum trust kernel release schemas close the portable machine boundary"
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
+  },
+  {
+    id: "minimum-kernel-release-source-value-verification",
+    finding: "portable-release-value-authentication",
+    file: "lib/minimum-kernel.mjs",
+    search: '      failures.push("release_source_commitments_mismatch");',
+    replace: '      // mutant accepts substituted source commitment values',
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
+  },
+  {
+    id: "minimum-kernel-release-self-hash-verification",
+    finding: "portable-release-value-authentication",
+    file: "lib/minimum-kernel.mjs",
+    search: '    if (canonicalHash(unsigned) !== claimedHash) failures.push("release_self_hash_mismatch");',
+    replace: '    if (false) failures.push("release_self_hash_mismatch");',
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
+  },
+  {
+    id: "minimum-kernel-release-external-pin-required",
+    finding: "portable-release-authenticity-boundary",
+    file: "lib/minimum-kernel.mjs",
+    search: '  if (expectedReleaseHash === null) failures.push("release_external_pin_required");',
+    replace: '  if (false) failures.push("release_external_pin_required");',
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
+  },
+  {
+    id: "minimum-kernel-release-external-pin-binding",
+    finding: "portable-release-authenticity-boundary",
+    file: "lib/minimum-kernel.mjs",
+    search: '  else if (candidate?.release_hash !== expectedReleaseHash) failures.push("release_external_pin_mismatch");',
+    replace: '  else if (false) failures.push("release_external_pin_mismatch");',
+    test: "release schema closes shape and names while the verifier authenticates values and self-hash"
   },
   {
     id: "action-proposal-prose-no-authority-labels",

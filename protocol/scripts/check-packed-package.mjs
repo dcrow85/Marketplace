@@ -5,26 +5,9 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { validateMinimumKernelPackedPaths } from "../lib/minimum-kernel.mjs";
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const allowedTopLevel = new Set([
-  "README.md",
-  "docs",
-  "dist",
-  "fixtures",
-  "lib",
-  "manifest.json",
-  "minimum-trust-kernel.json",
-  "mutations",
-  "npm-shrinkwrap.json",
-  "operations",
-  "package.json",
-  "reference-service",
-  "release",
-  "schemas",
-  "scripts",
-  "tests",
-  "vectors"
-]);
 
 function run(command, args, cwd) {
   const result = spawnSync(command, args, { cwd, encoding: "utf8", timeout: 120_000 });
@@ -42,14 +25,14 @@ function pack(directory, destination) {
   const output = run("npm", ["pack", "--json", "--pack-destination", destination], directory);
   const report = JSON.parse(output)[0];
   const paths = report.files.map(({ path: pathname }) => pathname);
-  const unexpected = paths.filter((pathname) => !allowedTopLevel.has(pathname.split("/")[0]));
-  if (unexpected.length) throw new Error(`packed package contains unexpected files: ${unexpected.join(", ")}`);
-  const transient = paths.filter((pathname) =>
-    pathname.split("/").includes("__pycache__") || /\.py[co]$/.test(pathname)
-  );
-  if (transient.length) throw new Error(`packed package contains transient compiler files: ${transient.join(", ")}`);
-  if (paths.some((pathname) => pathname === "execution" || pathname.startsWith("execution/"))) {
-    throw new Error("packed package contains rejected execution implementation");
+  const release = JSON.parse(readFileSync(path.join(
+    directory,
+    "dist",
+    "cairn-minimum-trust-kernel-v0.1.json"
+  ), "utf8"));
+  const inventoryFailures = validateMinimumKernelPackedPaths(paths, release);
+  if (inventoryFailures.length) {
+    throw new Error(`packed package inventory invalid: ${inventoryFailures.join(", ")}`);
   }
   if (!paths.includes("npm-shrinkwrap.json")) throw new Error("packed package omits npm-shrinkwrap.json");
   for (const required of ["package.json", "minimum-trust-kernel.json", "dist/cairn-minimum-trust-kernel-v0.1.json"]) {

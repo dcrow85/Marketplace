@@ -129,22 +129,40 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   `action.prepare` compared foreign private EffectDescriptor semantics before
   ACL denial; and `runtime_binding.get` could report an active binding after its
   authoritative runtime key was revoked.
-  The current replacement removes `action.get`, blocks ActionRecords from generic
-  resolution, adds a sixth authenticated runtime-signing prerequisite while
+  Freeze `915ea25c5fbdb686d5028093aa4adc073ac5695b` removes `action.get`,
+  blocks ActionRecords from generic resolution, adds a sixth authenticated
+  runtime-signing prerequisite while
   disclaiming raw private-key transfer, closes the release schema over exactly
   53 source paths, performs every preparation resource ACL check before semantic
   resolution with one indistinguishable not-found result, and requires current
   specialized runtime-binding validation on reads. Each finding has a direct
-  mutation control. The working tree passes 99/99 authored controls, kills
-  124/124 mutants, packs exactly 55 files at
-  `sha-256:72f04662971816c409508d80cd344c5ad72bcd48370c6cccd36524a7a0c7bcd2`,
-  excludes every execution file, and reports zero production vulnerabilities.
-  The bundle is
+  mutation control. It passes 99/99 authored controls, kills 124/124 mutants,
+  and two clean archives converge on 55 files at
+  `sha-256:128d0a1dc0fb4d0e03552ecb30596c7753c601306ce0a5a0d246212e808166f6`
+  with zero vulnerabilities. It is nevertheless rejected. The semantic reviewer
+  returned clean, but the interoperability reviewer found two stale active
+  ten-operation descriptions, and the release reviewer found that arbitrary
+  `dist/` files—including nested execution paths—could enter the package, the
+  release schema alone did not authenticate commitment values or self-hash, and
+  the pending ledger carried the pre-freeze rather than clean-freeze archive hash.
+  All are accepted.
+  The current replacement closes the packed artifact to exactly 53 committed
+  sources plus two named generated files, forbids an `execution` segment at any
+  path depth, distinguishes schema shape/name closure from recomputed value and
+  self-hash verification, requires a trusted external release-hash pin, adds an
+  explicit authenticity nonclaim, pins the npm/engine profile, publishes a
+  non-self-referential repository release-pin record, and corrects the root
+  protocol prose. Direct controls cover every new boundary. The working tree
+  passes 101/101 authored controls, kills 134/134 mutants, packs exactly 55 files
+  at
+  `sha-256:bef5888e5b4f090fc5e66075a0095f0baf33e795d47b99c5dbe634547d33effd`,
+  excludes every execution path, and reports zero production vulnerabilities.
+  The unchanged bundle is
   `sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb`;
   registry
   `sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe`;
   current generated release
-  `sha-256:be95b6ef5bd1a6d43911dc0e467d7aad292e8b5f80dfc4b8837d1ce8f13cbe64`.
+  `sha-256:9b6c2c1842659bb1e94085cf07ec4d0b160133b455f0c0c943623dc014476cc3`.
   A containing commit, two disposable clean replays, and fresh exact-commit
   reviews remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state

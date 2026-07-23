@@ -1,0 +1,23 @@
+{
+  "schema": "cairn.minimum_trust_kernel_external_release_pin.v0.1",
+  "profile": "cairn-proposal-foundation-v0.1",
+  "release_hash": "sha-256:9b6c2c1842659bb1e94085cf07ec4d0b160133b455f0c0c943623dc014476cc3",
+  "generated_release_file_hash": "sha-256:ed3c7e1251b5f220d585d4c0a626b0b995ffaac9e391a0b84e4544c11809be11",
+  "foundation_bundle_hash": "sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb",
+  "foundation_bundle_file_hash": "sha-256:4b99c5c8ce4aacc7195ad9d599e201aa6caf5313cacc8432e26f78d326662e1d",
+  "operation_registry_hash": "sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe",
+  "package_archive_hash": "sha-256:bef5888e5b4f090fc5e66075a0095f0baf33e795d47b99c5dbe634547d33effd",
+  "package_file_count": 55,
+  "source_commitment_count": 53,
+  "package_manager": "npm@11.12.1",
+  "engine_profile": {
+    "node": ">=24.15.0 <25",
+    "npm": ">=10.9.2 <12"
+  },
+  "not_claiming": [
+    "publisher_authenticity_without_trusted_git_or_signature_verification",
+    "registry_publication",
+    "production_service",
+    "runtime_conformance"
+  ]
+}

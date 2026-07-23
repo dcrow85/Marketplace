@@ -9,7 +9,12 @@ import { fileURLToPath } from "node:url";
 
 import { auditSources, buildBundle, loadSources } from "../lib/bundle.mjs";
 import { FOUNDATION_DATA_GRANT_USES, SIGNED_OBJECT_ANNOTATIONS } from "../lib/foundation-profile.mjs";
-import { auditMinimumTrustKernel, buildMinimumTrustKernelRelease } from "../lib/minimum-kernel.mjs";
+import {
+  auditMinimumTrustKernel,
+  buildMinimumTrustKernelRelease,
+  validateMinimumKernelPackedPaths,
+  verifyMinimumTrustKernelRelease
+} from "../lib/minimum-kernel.mjs";
 import {
   bindObjectHash,
   bodyHash,
@@ -78,9 +83,10 @@ test("minimum trust kernel pins the exact proposal-only release boundary", async
   assert.ok(result.manifest.not_claiming.includes("service_availability"));
   assert.ok(result.manifest.not_claiming.includes("transport_binding_conformance"));
   assert.ok(result.manifest.not_claiming.includes("raw_runtime_private_key_transfer"));
+  assert.ok(result.manifest.not_claiming.includes("release_authenticity_without_external_pin"));
 });
 
-test("minimum trust kernel release schemas close the portable machine boundary", async () => {
+test("release schema closes shape and names while the verifier authenticates values and self-hash", async () => {
   const releaseDocuments = await Promise.all([
     "minimum-trust-kernel.schema.json",
     "minimum-trust-kernel-release.schema.json",
@@ -131,6 +137,31 @@ test("minimum trust kernel release schemas close the portable machine boundary",
   expandedRelease.source_commitments["nonexistent/source.mjs"] =
     release.source_commitments[commitmentNames[0]];
   assert.equal(validateRelease(expandedRelease), false);
+
+  const substitutedValue = structuredClone(release);
+  substitutedValue.source_commitments[commitmentNames[0]] = HASH_A;
+  const { release_hash: ignoredHash, ...substitutedUnsigned } = substitutedValue;
+  void ignoredHash;
+  substitutedValue.release_hash = canonicalHash(substitutedUnsigned);
+  assert.equal(validateRelease(substitutedValue), true, JSON.stringify(validateRelease.errors));
+  const substitutedFailures = await verifyMinimumTrustKernelRelease(root, substitutedValue, {
+    expectedReleaseHash: release.release_hash
+  });
+  assert.ok(substitutedFailures.includes("release_source_commitments_mismatch"));
+  assert.ok(substitutedFailures.includes("release_external_pin_mismatch"));
+  assert.equal(substitutedFailures.includes("release_self_hash_mismatch"), false);
+
+  const substitutedSelfHash = structuredClone(release);
+  substitutedSelfHash.release_hash = HASH_A;
+  assert.equal(validateRelease(substitutedSelfHash), true, JSON.stringify(validateRelease.errors));
+  const selfHashFailures = await verifyMinimumTrustKernelRelease(root, substitutedSelfHash, {
+    expectedReleaseHash: release.release_hash
+  });
+  assert.ok(selfHashFailures.includes("release_self_hash_mismatch"));
+  assert.ok(selfHashFailures.includes("release_external_pin_mismatch"));
+
+  const unpinnedFailures = await verifyMinimumTrustKernelRelease(root, release);
+  assert.ok(unpinnedFailures.includes("release_external_pin_required"));
 });
 
 test("packaged proposal boundary preserves ActionProposal no-authority labels", () => {
@@ -1609,7 +1640,7 @@ test("kernel release check rejects a stale generated artifact", () => {
     symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
     const releasePath = path.join(candidate, "dist", "cairn-minimum-trust-kernel-v0.1.json");
     const release = readFileSync(releasePath, "utf8");
-    writeFileSync(releasePath, release.replace("cairn.minimum_trust_kernel_release.v0.1", "cairn.stale_release.v0.1"));
+    writeFileSync(releasePath, `${release}\n`);
     const result = spawnSync("node", ["scripts/check-minimum-kernel.mjs"], {
       cwd: candidate,
       encoding: "utf8"
@@ -1688,6 +1719,34 @@ test("packed inventory excludes transient compiler artifacts", () => {
   } finally {
     rmSync(parent, { recursive: true, force: true });
   }
+});
+
+test("packed inventory is exactly the committed sources plus two generated artifacts", async () => {
+  const release = await readJson(path.join(root, "dist", "cairn-minimum-trust-kernel-v0.1.json"));
+  const exactPaths = [
+    ...Object.keys(release.source_commitments),
+    "dist/cairn-minimum-trust-kernel-v0.1.json",
+    "dist/cairn-protocol-bundle-v0.1.json"
+  ];
+  assert.deepEqual(validateMinimumKernelPackedPaths(exactPaths, release), []);
+  assert.ok(validateMinimumKernelPackedPaths(
+    [...exactPaths, "dist/uncommitted-extra.mjs"],
+    release
+  ).includes("packed_inventory_mismatch"));
+});
+
+test("packed inventory rejects an execution path segment at any depth", async () => {
+  const release = await readJson(path.join(root, "dist", "cairn-minimum-trust-kernel-v0.1.json"));
+  const exactPaths = [
+    ...Object.keys(release.source_commitments),
+    "dist/cairn-minimum-trust-kernel-v0.1.json",
+    "dist/cairn-protocol-bundle-v0.1.json"
+  ];
+  const failures = validateMinimumKernelPackedPaths(
+    [...exactPaths, "dist/execution/rejected-core.mjs"],
+    release
+  );
+  assert.ok(failures.includes("packed_execution_path_forbidden"));
 });
 
 test("kernel release source commitments ignore package archives", async () => {
