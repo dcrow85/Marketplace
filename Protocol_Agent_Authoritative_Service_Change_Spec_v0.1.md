@@ -96,11 +96,18 @@ The adapter preserves the frozen callback's accepted-envelope semantics:
   non-observed failure carrying the exact callback result;
 - callback `commit:true` with a 2xx result: commit the full success state and a
   success observation;
-- callback `commit:true` with a non-2xx result: commit exactly the newly accepted
-  nonce, owner/global sequence, dependency/version records, commit rows, and one
-  private signed `accepted_failure` observation—no new object, idempotency row,
-  grant decrement, runtime binding, DataGrant, effect descriptor, or validation
-  key; and
+- callback `commit:true` with a non-2xx result: commit an `accepted_failure`
+  only when the wrapper can independently reconstruct a complete, exact
+  dependency/version history and sign an honest observation; that branch
+  commits exactly the newly accepted nonce, owner/global sequence,
+  dependency/version records, commit rows, and one private signed observation,
+  with no new object, idempotency row, grant decrement, runtime binding,
+  DataGrant, effect descriptor, or validation key;
+- callback `commit:true` whose referenced result object, canonical bytes,
+  schema-derived identity, URI, or ACL cannot be reconstructed exactly:
+  preserve the callback's raw result in `kernel`, report
+  `authoritative_integrity_invalid` separately as an observation-stage wrapper
+  failure, and roll the whole composite transaction back; and
 - signer, observation, persistence, or database commit-call failure: complete
   rollback because no verifiable commit artifact can be completed; if the
   callback already returned, preserve that exact result in `kernel` and report
@@ -112,10 +119,11 @@ fingerprint differs: a coherent stored row plus a changed request reaches the
 frozen callback and remains its exact `idempotency_conflict`.
 
 Grant-consumption failure remains callback `commit:false` and rolls back.
-Corrupt replay-result and post-admission read-result failures preserve the
-frozen accepted-envelope nonce effect but create no new object, idempotency, or
-grant effect. Database lock/serialization failures follow §4.5 and commit
-nothing if retries exhaust.
+Corrupt replay-result and post-admission read-result failures can mutate the
+frozen transaction draft, including staging a nonce, but the outer composite
+transaction commits none of that draft because it cannot produce a truthful
+root and observation. Database lock/serialization failures follow §4.5 and
+commit nothing if retries exhaust.
 
 ### 4.2 Accepted reads are state changes
 
@@ -153,10 +161,12 @@ the same structural key and operation fingerprint.
 - internally corrupt, missing-history, wrong-operation, or wrong-owner rich row:
   wrapper preflight fails before the frozen callback, commits nothing, and
   returns `idempotency_integrity_invalid`; and
-- a coherent row whose referenced result object or ACL is missing/corrupt:
-  the frozen callback has already admitted the fresh nonce and returns
-  `commit:true`/`idempotency_result_unavailable`; commit only that nonce,
-  history, and one private `accepted_failure` observation.
+- a coherent row whose referenced result object, canonical identity binding,
+  URI, or ACL is missing/corrupt: the frozen callback stages the fresh nonce and
+  returns `commit:true`/`idempotency_result_unavailable`, but the wrapper cannot
+  derive an honest dependency root; it therefore returns the raw kernel failure
+  plus `authoritative_integrity_invalid` and rolls the composite transaction
+  back with no nonce, sequence, dependency, observation, or repository delta.
 
 The wrapper compares a stored fingerprint with the original observation/history
 to establish row integrity. It does not compare that fingerprint with the new
@@ -388,6 +398,15 @@ created_global_commit_sequence
 created_scope_sequence
 ```
 
+`identity_key` is derived from `canonical_object_bytes`, never trusted as an
+independent projected string. The verifier resolves the frozen schema's
+`x-cairn-object-id-pointer` against the canonical value. For
+`cairn.active_intent.v0.1` the exact tuple is
+`JCS([schema, value_at_id_pointer, revision])`; for every admitted family the
+schema-defined immutable identity tuple is re-derived. The primary ref, object
+hash, identity alias, URI alias, and ACL alias must all resolve to the same
+canonical bytes and row version.
+
 Required constraints:
 
 - `(schema, object_id, object_hash)` is unique;
@@ -531,9 +550,11 @@ only those two closed fields, combines them atomically with receiver-owned
 request/auth/result metadata, and inserts the durable row. A validator replay
 cannot erase or rewrite the richer columns. The wrapper separately validates
 the full integrity projection before it invokes the frozen callback. A rich-row
-mismatch therefore has zero delta and `kernel:null`. Only a coherent row whose
-referenced result object or ACL later fails the unchanged frozen replay path can
-reserve the nonce and follow the signed `accepted_failure` branch.
+mismatch therefore has zero delta and `kernel:null`. If a coherent row reaches
+the unchanged frozen replay path but its result object, identity, URI, or ACL
+cannot be reconstructed, the raw callback failure is preserved while the outer
+composite transaction rolls back; no signed observation is invented from
+unreconstructible state.
 
 ### 5.9 Version and commit history
 
@@ -553,8 +574,12 @@ PK(table_name, structural_key, valid_from_global_sequence)
 
 An update inserts the next version and never edits the prior version.
 Reconstruction selects the row with the greatest `valid_from_global_sequence`
-not exceeding the internal global sequence named by `scope_commits`. Omission,
-duplicate version keys, or row-hash mismatch fails verification.
+not exceeding the internal global sequence named by `scope_commits`. The
+verifier compares the exact closed inventory: an omitted, duplicate, or extra
+operational version, dependency row/commit, service commit, scope commit,
+observation row, or envelope index fails even if every expected row is also
+present. Canonical object bytes independently re-derive every object ref and
+identity alias; a self-consistent but false projected identity fails.
 
 `service_commits` is operator-private and append-only:
 
@@ -655,7 +680,11 @@ independently derived from that same typed base-row projection; a merely
 well-shaped key is not enough. Only an exact three-member
 `["index", index_name, canonical_attempted_key]` tuple is an alias marker, so a
 legitimate base structural key such as `["index"]` remains a base key. Alias
-entries are read-only. Base writes use only the base key.
+entries are read-only. An absent alias is valid only if no typed base row in the
+transaction snapshot derives that attempted key; a matching present base plus
+an absent alias is a contradiction and fails even when both hashes are
+self-consistent. A `write_insert` may follow a proven pre-write absence in the
+same transaction. Base writes use only the base key.
 This prevents a missing identity, URI, runtime,
 grant, idempotency tuple, nonce, or key from being silently borrowed from
 another snapshot. Any uninstrumented read/write, unknown alias, unknown
@@ -748,26 +777,47 @@ wrapper/frozen-result separation, actual frozen replay paths, outcome swaps,
 and kernel-result mismatch. The prose examples below are explanatory only; if
 they differ, the frozen machine schema wins.
 
-The executable wrapper/store harness preloads
-`capture-frozen-transactions.mjs` into the unmodified frozen protocol tests and
-captures each real transaction callback's exact pre/post-draft snapshots and
-`{commit,value}` before the frozen store applies it. The integration harness
-gives that callback only the
-closed two-field idempotency projection; the rich row, its exact owner
-projection/hash/version, full dependency history, genesis-to-origin
-service/scope chains, private observation bytes/ACL/index, and persistence
-counters remain wrapper-owned. It reconstructs and validates the original
-mutation from authenticated request facts, the exact callback result, signed
-origin observation, and append-only history rather than cloning the candidate
-row. Complete before/after state proves rich-row corruption invokes no callback
-and has zero delta; a valid-row fingerprint conflict uses the captured frozen
-`commit:false` result with no nonce; and five result-object/ACL faults use the
-captured frozen `commit:true` failure while committing exactly one fresh nonce,
-typed version, closed dependency manifest, global/scope commit, private signed
-observation, and repository index. Object, rich idempotency, and grant state
-remain unchanged. Set/delete/clear attempts against the callback's two-field
-view are discarded and reconstructed from the immutable rich row. Every
-emitted local-result branch is validated through the full external union.
+The executable integration harness in
+`simulations/authoritative-service/frozen-composite-probe.mjs` loads the
+unchanged frozen `intent.put` service and store helpers in memory, interposes one
+outer transaction around the real frozen callback, and captures that callback's
+exact pre/post-draft snapshots and `{commit,value}` before a final composite
+commit decision. The callback receives only the frozen store shape; rich
+idempotency metadata, exact object-byte/identity truth, owner projections,
+global and owner histories, observation material, and persistence counters stay
+wrapper-owned.
+
+The probe executes eleven independent real `intent.put` transactions after an
+actual committed origin: one changed-fingerprint conflict, five separately
+injected result-object/ACL replay faults, four post-callback
+response-schema/observation/persistence/commit fault boundaries, and one
+grant-consumption failure injected after new idempotency staging. Each replay
+corruption captures the unchanged frozen
+`commit:true`/`idempotency_result_unavailable` outcome, but the outer transaction
+then rejects the unreconstructible observation and restores both kernel and
+sidecar to their exact faulted baselines. The changed-fingerprint case captures
+the actual `commit:false`/`idempotency_conflict` path with no nonce. Each wrapper
+fault likewise preserves the actual callback result while rolling back exactly.
+The grant case captures
+the actual post-staging `commit:false`/`grant_consumption_failed` result and
+rolls back. The checker validates every local-result branch, proves the eleven
+callback traces are distinct, and separately sends a malformed response
+through the real frozen response-schema validator. The deterministic composite
+report is pinned at
+`sha-256:ad9606d70f5f58601a7c1ae214cc063217e6e35a64abd344e3965df8f0f8b0b8`;
+fresh process executions must reproduce it exactly.
+
+Origin verification begins from the actual signed envelope, authenticated
+principal/actor/runtime and receiver namespace, actual callback result, actual
+canonical object bytes, actual schema-derived identity/URI/ACL, and actual
+global/scope mapping. It requires exact unique inventories for versions,
+dependency rows/commits, service commits, owner commits, observation repository
+rows, and envelope indexes. Negative controls add both duplicate and extra rows,
+claim an absent alias while its typed base is present, change every repository
+ownership field, alter object bytes/revision, break all replay-origin links, and
+map owner sequence one across unrelated global commits. The first owner row is
+sequence one with previous zero; only the global service chain has a sequence
+zero genesis row.
 
 Exact RFC 8785/JCS text and SHA-256 results for a committed row, absent lookup,
 receiver authority-namespace HMAC preimage, query commitment with real registry URIs, first
@@ -1224,8 +1274,13 @@ the raw/wrapped service, HTTP, or protocol operation surface.
 Pre-transaction authentication/operation rejection, rich-row preflight veto,
 bounded retry exhaustion, and transaction/signer/persistence rollback use
 `rolled_back_failure`. A post-admission callback result with `commit:true` uses
-`committed_accepted_failure`. The external schema fixes which fields exist in
-each branch and rejects a missing/unexpected observation.
+`committed_accepted_failure` only if an exact dependency/version history and
+truthful signed observation can be completed. If post-callback integrity,
+response validation, observation construction, persistence, or commit fails,
+the raw callback result remains in `kernel`, the infrastructure failure is
+separate in `wrapper_failure`, and the composite transaction rolls back. The
+external schema fixes which fields exist in each branch and rejects a
+missing/unexpected observation.
 
 ## 8. Failure and privacy rules
 
@@ -1240,20 +1295,23 @@ matrix, and the local-result schema admits only the named branch:
 | receiver-private rich-idempotency preflight fails before frozen callback | none; callback not invoked | `rolled_back_failure` with `kernel:null` and wrapper failure | null |
 | callback `commit:false`, including admission, access preflight, prepared-result binding, or grant consumption rejection | none | `rolled_back_failure` | null |
 | callback `commit:true`, 2xx | exact callback success effects plus nonce/history/commit | `committed_success` | signed `success` |
-| callback `commit:true`, non-2xx | exactly the nonce/history/commit effects enumerated in §4.1 | `committed_accepted_failure` | signed `accepted_failure` |
+| callback `commit:true`, non-2xx, and exact dependencies/history remain reconstructible | exactly the nonce/history/commit effects enumerated in §4.1 | `committed_accepted_failure` | signed `accepted_failure` |
+| callback `commit:true`, but result object/identity/URI/ACL or other required observation truth is missing or corrupt | none; the staged callback draft, nonce, and sidecar all roll back | `rolled_back_failure` with raw callback result in `kernel` and `authoritative_integrity_invalid` in `wrapper_failure` | null |
 | signer, observation construction, persistence, or database commit-call failure | none, including no nonce or sequence | `rolled_back_failure` | null |
 | bounded retry exhaustion | none | `rolled_back_failure` | null |
 | process loss after durable commit but before local return | committed row remains; delivery unknown | recovery exposes the already committed branch to the owner-only audit seam | already stored |
 
 `operation_unknown` and authentication mismatch occur before the database
 transaction. Internally corrupt rich replay rows fail adapter preflight before
-the frozen callback. By contrast, a coherent rich row whose referenced result
-object or ACL is unavailable reaches the frozen callback after admission and
-returns `commit:true`/`idempotency_result_unavailable`; the wrapper commits the
-exact `accepted_failure` row described above. A valid rich row plus a different
-new-request fingerprint also reaches the callback and remains its exact
-`commit:false`/`idempotency_conflict`. No adapter may rewrite the callback's
-result or `commit` flag based only on HTTP status.
+the frozen callback. A coherent rich row whose referenced result object,
+identity, URI, or ACL is unavailable still reaches the callback after admission
+and returns `commit:true`/`idempotency_result_unavailable`; the outer
+transaction preserves that raw result but rolls the staged nonce and all
+sidecar work back because no truthful observation can be signed. A valid rich
+row plus a different new-request fingerprint also reaches the callback and
+remains its exact `commit:false`/`idempotency_conflict`. The adapter never
+rewrites the callback's result or `commit` flag; it makes a separate final
+composite-commit decision.
 
 - Foreign private objects remain indistinguishable from absent objects.
 - Detailed store, constraint, or signature failures are not returned to an
@@ -1295,7 +1353,7 @@ The first executable drill MUST include at least these independent controls:
 | AS-12 | re-signed service/profile/bundle/store/key/controller/time mutation | trust-profile verifier rejects |
 | AS-13 | re-signed scope sequence/root lacks exact history/commit rows | historical-root verifier rejects |
 | AS-14 | re-signed grant before/after arithmetic mutation | grant/history verifier rejects |
-| AS-15 | a coherent rich idempotency row passes preflight but its referenced result object is missing or hash-incoherent, or its ACL is missing, public, or owned by another principal after valid admission | the captured unchanged frozen callback returns `commit:true`/`idempotency_result_unavailable`; each fault has its own exact dependency manifest/root and commits exactly one fresh nonce/version, global/scope sequence, private `accepted_failure` observation/repository row, and no object, idempotency, grant, or result mutation |
+| AS-15 | a coherent rich idempotency row passes preflight but its referenced result object is missing or hash/identity-incoherent, or its ACL is missing, public, or owned by another principal after valid admission | five independent actual `intent.put` callbacks each return the unchanged `commit:true`/`idempotency_result_unavailable`; each outer composite transaction preserves that raw kernel result, reports `authoritative_integrity_invalid`, and restores kernel and sidecar exactly to its separately faulted baseline with no nonce, sequence, dependency, observation, or repository delta |
 | AS-16 | process dies before database commit | no partial nonce/grant/object/observation state |
 | AS-17 | process dies after commit but before response | committed state remains; delivery remains unknown |
 | AS-18 | opaque cursor or pagination claim appears | schema/verifier rejects for this profile |
@@ -1310,7 +1368,7 @@ The first executable drill MUST include at least these independent controls:
 | AS-27 | duplicate, partial, forked, restarted, or concurrent genesis import | one sealed exact genesis or complete rollback |
 | AS-28 | state-root row omitted/reordered/duplicated/history-altered | recomputed historical root rejects |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
-| AS-30 | corrupt replay object, response schema, grant consumption, observation persistence, or commit call | each case matches §8.1 exactly: accepted failures retain only the enumerated nonce/history/observation delta; callback `commit:false` and wrapper/commit failures retain zero delta |
+| AS-30 | corrupt replay object/ACL, malformed response, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; response validation uses the real frozen response schema; corrupt/unreconstructible and wrapper failures preserve the raw callback result but retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
 | AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval, arbitrary fractional boundary error, or altered/unsorted key-profile chain | independently re-bound schema/profile/observation trust probes reject while exact lower-bound and pre-expiry fractional positives pass |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
 | AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
@@ -1319,9 +1377,9 @@ The first executable drill MUST include at least these independent controls:
 | AS-36 | two previously unseen owners perform their first operations concurrently after genesis | both use before `0`/after `1` in separate owner chains; no owner sequence-zero row or cross-owner ancestry appears |
 | AS-37 | every row of the closed outcome/commit matrix is fault-injected, including local-kernel versus HTTP-failure hashing | disposition, exact canonical kernel-result hash, observation presence, nonce, sequence, object, idempotency, and grant deltas match §7/§8.1 exactly |
 | AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, changed row column, wrong self-hash/signature exclusion, outcome swap, kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
-| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, absent lookup becomes present during a race, present alias lacks its exact base row, entry is duplicated/reordered/uncoalesced, attempted-key shape/absent sentinel/present hash is wrong, singleton `["index"]` is misclassified, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; positive and borrowed-negative controls cover all eleven admitted aliases, every base row is validated through its table-specific projection, and the singleton base-key positive passes |
+| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash, misclassifies singleton `["index"]`, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; positive and borrowed/false-absence negatives cover all eleven admitted aliases, every base row is validated through its table-specific projection, and the singleton base-key positive passes |
 | AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
-| AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict consumes the exact captured frozen `commit:false` callback outcome with no nonce; each result/ACL corruption consumes the exact captured frozen `commit:true` outcome with one fresh nonce and a coherent complete history; no raw result is rewritten |
+| AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/identity/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict remains the frozen `commit:false` outcome; each result/identity/ACL corruption captures its own actual frozen `commit:true` outcome but the outer integrity decision rolls back the staged nonce and sidecar; no raw result is rewritten |
 | AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; owner projection/root bytes contain no raw tuple or global counter and stay identical; operator-private scope-to-global reconstruction still detects a false mapping |
 
 Every accepted audit finding receives either a code/schema/test remediation or a
@@ -1336,9 +1394,10 @@ The executable drill pins:
 - deterministic fixture keys derived from named public test seeds;
 - injected clock values and UUID/observation/snapshot ID factories;
 - exact kernel/profile/bundle/key-profile hashes;
-- the `capture-frozen-transactions.mjs` preload and exact frozen test names for
-  callback-level `commit:false` conflict/grant-exhaustion and `commit:true`
-  corrupt-result paths;
+- the in-memory `frozen-composite-probe.mjs` interposer around the unchanged
+  frozen `intent.put` service for actual callback-level `commit:false`
+  fingerprint conflict/post-staging grant failure and five independent
+  `commit:true` corrupt-result/ACL paths;
 - child-process `ready` barriers and one parent `release` event for each race;
 - a ten-second per-child timeout and forced cleanup;
 - stable fault hooks:

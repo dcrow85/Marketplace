@@ -64,6 +64,28 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service seventh audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `058f009` is not a pass. Three clean-archive blind
+  auditors confirmed frozen-kernel immutability and the eleven present-alias
+  positives, but found one owner sequence-zero row, false absent aliases,
+  non-exact history inventories, collapsed global/owner sequences,
+  hand-authored origin/identity truth, and synthetic or mismatched-operation
+  fault captures. Most importantly, the candidate tried to sign and commit an
+  accepted failure when corrupt result/ACL state made an honest root
+  unreconstructible. Remediation replaces the preload/synthetic harness with a
+  real outer composite-transaction interposer around the unchanged frozen
+  `intent.put` callback. Eleven independent paths now capture actual origin,
+  fingerprint conflict, five result/ACL corruptions, four post-callback
+  boundaries, and post-staging grant consumption. Corrupt callbacks preserve
+  their raw `commit:true` failure but the outer integrity decision restores the
+  faulted kernel/sidecar baseline exactly. Origin facts derive from the actual
+  signed envelope, authentication, callback result, canonical object bytes,
+  schema identity, URI/ACL, and separate global/owner histories. Exact/duplicate/
+  extra inventory, false-absence, replay-link, repository-owner, interleaving,
+  and response-validator controls are direct. A new exact candidate must repeat
+  all three blind audits; `protocol/` and `mockups/` remain untouched, and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service sixth audit remediation]` 2026-07-23 · Codex —
   Exact candidate `abd6deb` is not a pass. Three clean-archive auditors found
   no frozen-protocol drift but accepted material gaps in the executable design:
