@@ -26,6 +26,7 @@ import {
 import { MemoryReferenceStores } from "../../protocol/reference-service/state.mjs";
 import {
   COMPOSITE_FIXTURE,
+  SERVICE_KEY_PROFILE_CHAIN,
   SERVICE_KEY_PROFILE,
   SERVICE_OBSERVATION_PUBLIC_KEY,
   compositeObservationRefKey,
@@ -33,6 +34,7 @@ import {
   verifyCompositeArtifactBinding,
   verifyCompositeHistory,
   verifyCompositeObservation,
+  verifyServiceKeyProfileChain,
   verifyServiceKeyProfile
 } from "./frozen-composite-probe.mjs";
 
@@ -50,7 +52,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:74865da929b36cded844ca06096963098ddc39a93dd495fa24f6d5efe2428323";
+  "sha-256:e679a87fb64e7c26a62f20483731c97aeef9c443ceb68ad4de062ea74e174a91";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -209,6 +211,15 @@ assert.equal(
   verifyServiceKeyProfile(SERVICE_KEY_PROFILE, COMPOSITE_FIXTURE.now),
   true,
   "composite service key profile is not independently coherent"
+);
+assert.equal(
+  verifyServiceKeyProfileChain(
+    SERVICE_KEY_PROFILE_CHAIN,
+    COMPOSITE_FIXTURE.now,
+    SERVICE_KEY_PROFILE.profile_hash
+  ),
+  true,
+  "composite service key profile chain is not independently coherent"
 );
 assert.equal(
   SERVICE_KEY_PROFILE.profile_hash,
@@ -2748,15 +2759,39 @@ assert.equal(
 );
 assert.equal(
   originalMutationObservation.request.host_authentication_context_hash,
-  canonicalHash({
+  compositeProbe.origin.sidecar.host_authentication_contexts[0]
+    .context.context_hash
+);
+assert.deepEqual(
+  compositeProbe.origin.sidecar.host_authentication_contexts[0].context,
+  {
+    schema: "cairn.host_authentication_context.v0.1",
+    context_hash:
+      originalMutationObservation.request.host_authentication_context_hash,
+    account_tenant_commitment:
+      compositeProbe.origin.authentication.account_tenant_commitment,
     principal_id: compositeProbe.origin.authentication.principalId,
     actor_id: compositeProbe.origin.authentication.actorId,
     runtime_key_id: compositeProbe.origin.envelope.sender.runtime_key_id,
-    authority_namespace_commitment: canonicalHash([
-      "cairn-authority-namespace-v0.1",
-      compositeProbe.origin.authentication.authorityNamespace
-    ])
-  })
+    authority_namespace_commitment:
+      compositeProbe.origin.authentication.authority_namespace_commitment,
+    trust_profile_id:
+      compositeProbe.origin.authentication.trust_profile_id,
+    trust_profile_hash:
+      compositeProbe.origin.authentication.trust_profile_hash,
+    authentication_evidence_commitment:
+      compositeProbe.origin.authentication
+        .authentication_evidence_commitment,
+    assertion_level:
+      compositeProbe.origin.authentication.assertion_level
+  }
+);
+assert.equal(
+  canonicalText(
+    compositeProbe.origin.sidecar.host_authentication_contexts[0].context
+  ).includes(compositeProbe.origin.authentication.authorityNamespace),
+  false,
+  "raw authority namespace leaked into the durable host context"
 );
 assert.equal(
   originalMutationObservation.request.envelope_hash,
@@ -3050,6 +3085,35 @@ assert.deepEqual(
   [[1, 0, 1], [2, 1, 2]]
 );
 assert.equal(
+  verifyCompositeHistory(compositeProbe.multi_idempotency.sidecar),
+  true,
+  "two-key idempotency history failed independent verification"
+);
+assert.equal(
+  compositeProbe.multi_idempotency.sidecar.rich_idempotency_rows.length,
+  2
+);
+assert.equal(
+  compositeProbe.multi_idempotency.second_origin.raw.replayed,
+  false
+);
+assert.equal(
+  compositeProbe.multi_idempotency.second_replay.raw.replayed,
+  true
+);
+const multiIdempotencyRows =
+  compositeProbe.multi_idempotency.sidecar.rich_idempotency_rows;
+assert.notEqual(
+  multiIdempotencyRows[0].idempotency_key,
+  multiIdempotencyRows[1].idempotency_key
+);
+assert.deepEqual(
+  compositeProbe.multi_idempotency.second_replay.trace.local_result
+    .service_observation.result.idempotency.original_observation_ref,
+  multiIdempotencyRows[1].origin_observation_ref,
+  "the second key replay selected the wrong origin row"
+);
+assert.equal(
   compositeProbe.durable_artifact_controls.origin_bound,
   true
 );
@@ -3083,6 +3147,8 @@ assert.equal(
 );
 const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "alias_noncanonical_attempted_key",
+  "dependency_access_kind_substitution",
+  "false_absent_hidden_identity_fork",
   "frozen_duplicate_row",
   "frozen_extra_field",
   "frozen_fingerprint",
@@ -3118,6 +3184,7 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trace_key_substitution",
   "trace_presence_substitution",
   "trace_remove_one_event",
+  "trace_value_and_hash_substitution",
   "transaction_kind_genesis_as_operation",
   "transaction_kind_open_value",
   "transaction_kind_origin_as_genesis",
@@ -3146,8 +3213,13 @@ const EXPECTED_FOREIGN_HISTORY_MUTATIONS = [
   "foreign_transaction_kind"
 ];
 const EXPECTED_SERVICE_PROFILE_MUTATIONS = [
+  "profile_chain_fork",
+  "profile_chain_link",
+  "profile_chain_order",
+  "profile_chain_rollback",
   "profile_expired_key",
   "profile_missing_current_key",
+  "profile_noncurrent_interval",
   "profile_noncurrent_signing_key",
   "profile_revoked_key",
   "profile_self_hash",
@@ -3319,6 +3391,24 @@ for (const stage of EXPECTED_WRAPPER_FAULTS) {
       canonicalText(trace.callback_value)
     );
   }
+}
+
+assert.deepEqual(
+  Object.keys(compositeProbe.unexpected_wrapper_faults),
+  ["observation", "persistence", "commit"]
+);
+for (const stage of ["observation", "persistence", "commit"]) {
+  const { trace } = compositeProbe.unexpected_wrapper_faults[stage];
+  assert.equal(trace.callback_value.ok, true, stage);
+  assertCompositeRollback(`unexpected_${stage}`, trace, {
+    callbackCommit: true,
+    wrapperCode: `${stage}_failed`
+  });
+  assert.notEqual(
+    trace.wrapper_failure.code,
+    "reference_service_failure",
+    `unexpected ${stage} exception collapsed to a generic failure`
+  );
 }
 
 const actualGrantFailure = compositeProbe.grant_consumption_failure;

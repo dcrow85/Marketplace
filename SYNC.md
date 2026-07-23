@@ -64,6 +64,25 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service eleventh audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `5e6e579a9fa7412b73d285a0f19910368e4413f2`
+  is rejected by all three usable clean-archive reviewers. Accepted findings:
+  signed callback traces did not cross-bind their value witnesses or exact
+  access kinds to authoritative projections; the host-auth digest omitted
+  account/tenant, trust, evidence, and assertion facts and used an unstable
+  operation-qualified namespace; rich idempotency replay could select the first
+  fingerprint-matching row instead of the exact signed structural key;
+  historical service-key profiles lacked a verified link/order/fork/rollback
+  chain and all-key interval checks; unexpected post-callback exceptions could
+  collapse into the frozen service's generic failure; and a false-absent alias
+  could hide its matching typed base row from the dependency manifest.
+  Remediation adds exact before/after trace witnesses and cross-binding, exact
+  access-kind inventories, the full closed host context plus stable receiver
+  HMAC namespace, a real two-idempotency-row origin/replay path, a two-profile
+  chain with direct negative controls, bounded classification/rollback of
+  untyped exceptions, and a hidden-fork mutation. `protocol/` and `mockups/`
+  remain untouched; no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service tenth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `3ecf396a3ff2d1b8532a2542a0b6b8cfc8d41ad5`
   is rejected by all three clean-archive blind auditors. Accepted P1s: durable
