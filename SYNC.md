@@ -64,6 +64,20 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service fifth audit remediation]` 2026-07-23 · Codex —
+  Exact candidate `9937acb` is not a pass. One blind reviewer found a stale
+  §5.8 sentence that contradicted the pre-callback rich-row veto and found the
+  AS-15/26/41 checker controls too synthetic: committed branches were not all
+  schema-validated, durable-row mutations lacked independent truth, and the
+  frozen corrupt-replay tests did not themselves assert wrapper deltas.
+  Remediation removes the contradictory disposition, compares every durable
+  idempotency field with independent request/auth/result/history truth, and
+  adds a complete executable wrapper/store harness that records callback count,
+  raw `commit`, nonce/sequence/observation deltas, and unchanged object/
+  idempotency/grant state while invoking the exact frozen conflict and
+  result-object-loss paths. A new candidate must repeat independent blind audit;
+  `protocol/` remains untouched and no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service fourth audit remediation]` 2026-07-23 · Codex —
   Exact candidate `54b1a72` is not a pass. Three clean-archive auditors found
   no protocol drift but accepted an impossible all-fields accepted-failure

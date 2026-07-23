@@ -530,8 +530,10 @@ into `draft.idempotencyRecords`. On a new validator write, the adapter accepts
 only those two closed fields, combines them atomically with receiver-owned
 request/auth/result metadata, and inserts the durable row. A validator replay
 cannot erase or rewrite the richer columns. The wrapper separately validates
-the full integrity projection before it accepts the kernel replay; a mismatch
-after nonce admission follows the signed `accepted_failure` branch.
+the full integrity projection before it invokes the frozen callback. A rich-row
+mismatch therefore has zero delta and `kernel:null`. Only a coherent row whose
+referenced result object or ACL later fails the unchanged frozen replay path can
+reserve the nonce and follow the signed `accepted_failure` branch.
 
 ### 5.9 Version and commit history
 
@@ -739,6 +741,16 @@ authoritative truth, raw-key/global-sequence privacy, wrapper/frozen-result
 separation, actual frozen replay paths, outcome swaps, and kernel-result
 mismatch. The prose examples below are explanatory only; if they differ, the
 frozen machine schema wins.
+
+The executable wrapper/store harness uses independent rich-row truth, records
+the frozen callback invocation count and `commit` value, and compares complete
+before/after state. It proves rich-row corruption invokes no callback and has
+zero delta; a valid-row fingerprint conflict invokes the actual frozen
+`commit:false` path with no nonce; and coherent-row result-object loss invokes
+the actual frozen failure path while the integration harness commits exactly
+one fresh nonce, owner sequence, and signed replay observation with unchanged
+object, idempotency, and grant state. Every emitted local-result branch is
+validated through the full external union.
 
 Exact RFC 8785/JCS text and SHA-256 results for a committed row, absent lookup,
 receiver authority-namespace HMAC preimage, query commitment with real registry URIs, first

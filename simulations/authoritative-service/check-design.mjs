@@ -1024,6 +1024,10 @@ const referenceService = createReferenceService({
 });
 const capabilitiesBody = referenceService.capabilities();
 const capabilityContract = registryContracts[0];
+const actionPrepareContract = registryContracts.find(
+  ({ operation }) => operation === "action.prepare"
+);
+assert.ok(actionPrepareContract);
 const kernelSuccess = {
   ok: true,
   status: 200,
@@ -1166,17 +1170,28 @@ assert.deepEqual(Object.keys(frozenIdempotencyView), ["fingerprint", "result_ref
 const privateScopeCommitMap = new Map([
   ["principal:alice:1", 41]
 ]);
-function idempotencyProjectionIsCoherent(projection, operatorRow) {
+const idempotencyIntegrityTruth = structuredClone(idempotencyOperatorRow);
+
+function idempotencyOperatorRowIsCoherent(operatorRow, truth) {
+  return canonicalText(operatorRow) === canonicalText(truth) &&
+    privateScopeCommitMap.get(
+      `${operatorRow.principal_id}:${operatorRow.origin_scope_sequence}`
+    ) === operatorRow.origin_global_commit_sequence &&
+    privateScopeCommitMap.get(
+      `${operatorRow.principal_id}:${operatorRow.created_scope_sequence}`
+    ) === operatorRow.created_global_commit_sequence;
+}
+
+function idempotencyProjectionIsCoherent(
+  projection,
+  operatorRow,
+  truth = idempotencyIntegrityTruth
+) {
   try {
     validateDefinition("operationalRowProjection", projection);
     const expected = projectIdempotencyOwnerRow(operatorRow);
-    return canonicalText(projection) === canonicalText(expected) &&
-      privateScopeCommitMap.get(
-        `${operatorRow.principal_id}:${operatorRow.origin_scope_sequence}`
-      ) === operatorRow.origin_global_commit_sequence &&
-      privateScopeCommitMap.get(
-        `${operatorRow.principal_id}:${operatorRow.created_scope_sequence}`
-      ) === operatorRow.created_global_commit_sequence;
+    return idempotencyOperatorRowIsCoherent(operatorRow, truth) &&
+      canonicalText(projection) === canonicalText(expected);
   } catch {
     return false;
   }
@@ -1222,6 +1237,40 @@ for (const [field, value] of idempotencyProjectionMutations) {
   );
 }
 
+const idempotencyOperatorRowMutations = [
+  ["authority_namespace", "tenant:mallory"],
+  ["idempotency_key", "idem-other"],
+  ["operation_name", "action.prepare"],
+  ["operation_fingerprint", `sha-256:${"6".repeat(64)}`],
+  ["principal_id", "principal:mallory"],
+  ["actor_id", "agent:mallory"],
+  ["runtime_key_id", "did:key:runtime-other"],
+  ["result_ref", {
+    ...rowVector.value.columns.ref,
+    object_hash: `sha-256:${"7".repeat(64)}`
+  }],
+  ["kernel_result_hash", `sha-256:${"8".repeat(64)}`],
+  ["origin_global_commit_sequence", 42],
+  ["origin_scope_sequence", 2],
+  ["created_global_commit_sequence", 42],
+  ["created_scope_sequence", 2]
+];
+for (const [field, value] of idempotencyOperatorRowMutations) {
+  const mutatedOperatorRow = structuredClone(idempotencyOperatorRow);
+  mutatedOperatorRow[field] = value;
+  const reboundProjection = projectIdempotencyOwnerRow(mutatedOperatorRow);
+  validateDefinition("operationalRowProjection", reboundProjection);
+  assert.equal(
+    idempotencyProjectionIsCoherent(
+      reboundProjection,
+      mutatedOperatorRow,
+      idempotencyIntegrityTruth
+    ),
+    false,
+    `durable idempotency mutation escaped independent truth: ${field}`
+  );
+}
+
 const foreignCommitOperatorRow = {
   ...idempotencyOperatorRow,
   origin_global_commit_sequence: 9001,
@@ -1241,92 +1290,16 @@ assert.equal(
   "operator-private global sequence escaped its private scope-commit cross-check"
 );
 
-function classifyWrapperResult({
-  preflightOk = true,
-  callbackInvoked = true,
-  callback = null,
-  wrapperFailure = null
-}) {
-  if (!preflightOk) {
-    assert.equal(callbackInvoked, false);
-    return {
-      schema: "cairn.local_observed_result.v0.1",
-      disposition: "rolled_back_failure",
-      kernel: null,
-      wrapper_failure: wrapperFailure,
-      service_observation: null
-    };
-  }
-  assert.equal(callbackInvoked, true);
-  assert.ok(callback);
-  if (wrapperFailure) {
-    return {
-      schema: "cairn.local_observed_result.v0.1",
-      disposition: "rolled_back_failure",
-      kernel: callback.value,
-      wrapper_failure: wrapperFailure,
-      service_observation: null
-    };
-  }
-  if (!callback.commit) {
-    return {
-      schema: "cairn.local_observed_result.v0.1",
-      disposition: "rolled_back_failure",
-      kernel: callback.value,
-      wrapper_failure: null,
-      service_observation: null
-    };
-  }
-  return {
-    disposition: callback.value.ok
-      ? "committed_success"
-      : "committed_accepted_failure",
-    kernel: callback.value
-  };
-}
-
-const wrapperIntegrityFailure = {
-  status: 503,
-  code: "idempotency_integrity_invalid",
-  failures: ["idempotency_integrity_invalid"],
-  stage: "preflight"
-};
-const preflightDisposition = classifyWrapperResult({
-  preflightOk: false,
-  callbackInvoked: false,
-  wrapperFailure: wrapperIntegrityFailure
-});
-validateDefinition("localObservedResult", preflightDisposition);
-assert.equal(preflightDisposition.kernel, null);
-assert.equal(preflightDisposition.service_observation, null);
-const fingerprintDisposition = classifyWrapperResult({
-  callback: {
-    commit: false,
-    value: {
-      ok: false,
-      status: 409,
-      code: "operation_rejected",
-      failures: ["idempotency_conflict"]
-    }
-  }
-});
-validateDefinition("localObservedResult", fingerprintDisposition);
-assert.equal(fingerprintDisposition.wrapper_failure, null);
-assert.equal(fingerprintDisposition.service_observation, null);
-const corruptResultDisposition = classifyWrapperResult({
-  callback: { commit: true, value: kernelAcceptedFailure }
-});
-assert.equal(
-  corruptResultDisposition.disposition,
-  "committed_accepted_failure"
-);
-
-function queryCommitmentFor(contract) {
+function queryCommitmentFor(contract, {
+  principalId = null,
+  actorId = "agent:anko",
+  runtimeKeyId = null
+} = {}) {
   return canonicalHash({
     operation_contract: contract,
-    principal_id: null,
-    actor_id: "agent:anko",
-    runtime_key_id: null,
+    principal_id: principalId,
+    actor_id: actorId,
+    runtime_key_id: runtimeKeyId,
     body_hash: canonicalHash({}),
     subject_refs: [],
     authorization_refs: [],
@@ -1345,7 +1318,21 @@ function signedObservation({
   scopeBefore,
   scopeAfter,
   kernel,
-  outcome
+  outcome,
+  contract = capabilityContract,
+  principalId = null,
+  actorId = "agent:anko",
+  runtimeKeyId = null,
+  ownerKind = "actor",
+  ownerId = actorId,
+  nonceDisposition = "newly_reserved",
+  idempotency = {
+    structural_key_commitment: null,
+    disposition: "not_applicable",
+    original_result_hash: null,
+    original_observation_ref: null,
+    original_scope_sequence: null
+  }
 }) {
   const draft = {
     schema: "cairn.service_observation.v0.1",
@@ -1363,22 +1350,26 @@ function signedObservation({
       key_profile_hash: serviceProfile.profile_hash
     },
     access: {
-      consequence: capabilityContract.consequence,
+      consequence: contract.consequence,
       visibility: "private",
-      owner_kind: "actor",
-      owner_id: "agent:anko"
+      owner_kind: ownerKind,
+      owner_id: ownerId
     },
     request: {
       envelope_hash: `sha-256:${"1".repeat(64)}`,
       message_id: "urn:uuid:00000000-0000-4000-8000-000000000020",
-      operation_contract: capabilityContract,
-      principal_id: null,
-      actor_id: "agent:anko",
-      runtime_key_id: null,
+      operation_contract: contract,
+      principal_id: principalId,
+      actor_id: actorId,
+      runtime_key_id: runtimeKeyId,
       body_hash: canonicalHash({}),
       subject_refs: [],
       authorization_refs: [],
-      query_commitment: queryCommitmentFor(capabilityContract),
+      query_commitment: queryCommitmentFor(contract, {
+        principalId,
+        actorId,
+        runtimeKeyId
+      }),
       host_authentication_context_hash: hostContext.context_hash
     },
     observed_at: NOW,
@@ -1397,19 +1388,13 @@ function signedObservation({
       code: kernel.ok ? null : kernel.code,
       failures: kernel.ok ? [] : kernel.failures,
       replayed: kernel.ok ? kernel.replayed : false,
-      response_schema: kernel.ok ? capabilityContract.response_schema : null,
+      response_schema: kernel.ok ? contract.response_schema : null,
       kernel_result_hash: canonicalHash(kernel),
       returned_refs: [],
       relevant_heads: [],
-      nonce_disposition: "newly_reserved",
+      nonce_disposition: nonceDisposition,
       grant_effects: [],
-      idempotency: {
-        structural_key_commitment: null,
-        disposition: "not_applicable",
-        original_result_hash: null,
-        original_observation_ref: null,
-        original_scope_sequence: null
-      }
+      idempotency
     },
     page: {
       kind: "single_result",
@@ -1452,9 +1437,38 @@ const acceptedFailureObservation = signedObservation({
   kernel: kernelAcceptedFailure,
   outcome: "accepted_failure"
 });
+const replayAcceptedFailureObservation = signedObservation({
+  observationId: "urn:uuid:00000000-0000-4000-8000-000000000025",
+  snapshotId: "urn:uuid:00000000-0000-4000-8000-000000000026",
+  scopeBefore: 1,
+  scopeAfter: 2,
+  kernel: kernelAcceptedFailure,
+  outcome: "accepted_failure",
+  contract: actionPrepareContract,
+  principalId: "principal:alice",
+  ownerKind: "principal",
+  ownerId: "principal:alice",
+  nonceDisposition: "replay_fresh_nonce",
+  idempotency: {
+    structural_key_commitment: idempotencyStructuralKeyCommitmentValue,
+    disposition: "replayed",
+    original_result_hash: idempotencyOperatorRow.kernel_result_hash,
+    original_observation_ref: {
+      artifact_schema: "cairn.service_observation.v0.1",
+      artifact_id: "urn:uuid:00000000-0000-4000-8000-000000000027",
+      artifact_hash: `sha-256:${"9".repeat(64)}`
+    },
+    original_scope_sequence: 1
+  }
+});
 validateDefinition("serviceObservation", successObservation);
 validateDefinition("serviceObservation", acceptedFailureObservation);
-for (const signed of [successObservation, acceptedFailureObservation]) {
+validateDefinition("serviceObservation", replayAcceptedFailureObservation);
+for (const signed of [
+  successObservation,
+  acceptedFailureObservation,
+  replayAcceptedFailureObservation
+]) {
   assert.equal(
     objectHash(signed, schema.$defs.serviceObservation),
     signed.observation_hash
@@ -1538,6 +1552,184 @@ const validateLocalResult = ajv.compile({
   "$ref": `${schema.$id}#/$defs/localObservedResult`
 });
 assert.equal(validateLocalResult(swappedObservation), false, "outcome branch swap accepted");
+
+const wrapperIntegrityFailure = {
+  status: 503,
+  code: "idempotency_integrity_invalid",
+  failures: ["idempotency_integrity_invalid"],
+  stage: "preflight"
+};
+
+function runWrapperStoreHarness({
+  initialState,
+  preflight,
+  frozenCallback,
+  observation = null,
+  wrapperFailure = null
+}) {
+  const state = structuredClone(initialState);
+  const before = canonicalText(state);
+  let callbackCalls = 0;
+  let callbackResult = null;
+  let result;
+
+  if (!preflight(state)) {
+    result = {
+      schema: "cairn.local_observed_result.v0.1",
+      disposition: "rolled_back_failure",
+      kernel: null,
+      wrapper_failure: wrapperIntegrityFailure,
+      service_observation: null
+    };
+  } else {
+    const draft = structuredClone(state);
+    callbackCalls += 1;
+    callbackResult = frozenCallback(draft);
+    assert.equal(typeof callbackResult.commit, "boolean");
+    if (!callbackResult.commit) {
+      result = {
+        schema: "cairn.local_observed_result.v0.1",
+        disposition: "rolled_back_failure",
+        kernel: callbackResult.value,
+        wrapper_failure: null,
+        service_observation: null
+      };
+    } else if (wrapperFailure) {
+      result = {
+        schema: "cairn.local_observed_result.v0.1",
+        disposition: "rolled_back_failure",
+        kernel: callbackResult.value,
+        wrapper_failure: wrapperFailure,
+        service_observation: null
+      };
+    } else {
+      assert.ok(observation);
+      draft.scope_sequence += 1;
+      draft.observation_ids.push(observation.observation_id);
+      for (const key of Object.keys(state)) delete state[key];
+      Object.assign(state, structuredClone(draft));
+      result = {
+        schema: "cairn.local_observed_result.v0.1",
+        disposition: callbackResult.value.ok
+          ? "committed_success"
+          : "committed_accepted_failure",
+        kernel: callbackResult.value,
+        wrapper_failure: null,
+        service_observation: observation
+      };
+    }
+  }
+
+  validateDefinition("localObservedResult", result);
+  assert.equal(localResultIsCoherent(result), true);
+  return {
+    result,
+    callbackCalls,
+    callbackCommit: callbackResult?.commit ?? null,
+    before,
+    after: canonicalText(state),
+    state
+  };
+}
+
+const wrapperHarnessBaseState = {
+  used_nonces: ["nonce:original"],
+  scope_sequence: 1,
+  observation_ids: ["urn:uuid:00000000-0000-4000-8000-000000000027"],
+  objects: ["object:original-result"],
+  idempotency_row: structuredClone(idempotencyOperatorRow),
+  grant_remaining: 7,
+  result_object_available: true,
+  result_acl_valid: true
+};
+const coherentRichRow = (state) =>
+  idempotencyOperatorRowIsCoherent(
+    state.idempotency_row,
+    idempotencyIntegrityTruth
+  );
+
+const richMismatchState = structuredClone(wrapperHarnessBaseState);
+richMismatchState.idempotency_row.actor_id = "agent:mallory";
+const richMismatchRun = runWrapperStoreHarness({
+  initialState: richMismatchState,
+  preflight: coherentRichRow,
+  frozenCallback: () => {
+    throw new Error("rich mismatch invoked frozen callback");
+  }
+});
+assert.equal(richMismatchRun.callbackCalls, 0);
+assert.equal(richMismatchRun.callbackCommit, null);
+assert.equal(richMismatchRun.before, richMismatchRun.after);
+assert.equal(richMismatchRun.result.kernel, null);
+assert.equal(richMismatchRun.result.service_observation, null);
+
+const fingerprintConflictRun = runWrapperStoreHarness({
+  initialState: wrapperHarnessBaseState,
+  preflight: coherentRichRow,
+  frozenCallback: () => ({
+    commit: false,
+    value: {
+      ok: false,
+      status: 409,
+      code: "operation_rejected",
+      failures: ["idempotency_conflict"]
+    }
+  })
+});
+assert.equal(fingerprintConflictRun.callbackCalls, 1);
+assert.equal(fingerprintConflictRun.callbackCommit, false);
+assert.equal(fingerprintConflictRun.before, fingerprintConflictRun.after);
+assert.equal(fingerprintConflictRun.result.wrapper_failure, null);
+assert.equal(fingerprintConflictRun.result.service_observation, null);
+
+const missingResultState = structuredClone(wrapperHarnessBaseState);
+missingResultState.result_object_available = false;
+const acceptedFailureRun = runWrapperStoreHarness({
+  initialState: missingResultState,
+  preflight: coherentRichRow,
+  frozenCallback: (draft) => {
+    assert.equal(draft.result_object_available, false);
+    draft.used_nonces.push("nonce:corrupt-replay");
+    return { commit: true, value: kernelAcceptedFailure };
+  },
+  observation: replayAcceptedFailureObservation
+});
+assert.equal(acceptedFailureRun.callbackCalls, 1);
+assert.equal(acceptedFailureRun.callbackCommit, true);
+assert.equal(
+  acceptedFailureRun.result.disposition,
+  "committed_accepted_failure"
+);
+assert.deepEqual(
+  acceptedFailureRun.state.used_nonces,
+  [...missingResultState.used_nonces, "nonce:corrupt-replay"]
+);
+assert.equal(acceptedFailureRun.state.scope_sequence, 2);
+assert.deepEqual(
+  acceptedFailureRun.state.observation_ids,
+  [
+    ...missingResultState.observation_ids,
+    replayAcceptedFailureObservation.observation_id
+  ]
+);
+assert.deepEqual(acceptedFailureRun.state.objects, missingResultState.objects);
+assert.deepEqual(
+  acceptedFailureRun.state.idempotency_row,
+  missingResultState.idempotency_row
+);
+assert.equal(
+  acceptedFailureRun.state.grant_remaining,
+  missingResultState.grant_remaining
+);
+assert.equal(
+  acceptedFailureRun.result.service_observation.result.nonce_disposition,
+  "replay_fresh_nonce"
+);
+assert.equal(
+  acceptedFailureRun.result.service_observation.result.idempotency.disposition,
+  "replayed"
+);
+
 for (const artifact of [
   serviceProfile,
   validationManifest,
@@ -1548,6 +1740,7 @@ for (const artifact of [
   rowVector.value,
   idempotencyIntegrityProjection,
   successObservation,
+  replayAcceptedFailureObservation,
   localSuccess,
   localAcceptedFailure,
   localRolledBackFailure
@@ -1602,7 +1795,7 @@ const frozenReplayPathControl = spawnSync(
   [
     "--test",
     "--test-name-pattern",
-    "a changed fingerprint cannot reuse|replay fails closed|replay result remains bound",
+    "a changed fingerprint cannot reuse|replay fails closed when its stored exact result binding is corrupt",
     "protocol/tests/reference-service.test.mjs"
   ],
   {
@@ -1615,6 +1808,16 @@ assert.equal(
   0,
   `${frozenReplayPathControl.stdout}\n${frozenReplayPathControl.stderr}`
 );
+for (const testName of [
+  "a changed fingerprint cannot reuse a committed idempotency key",
+  "replay fails closed when its stored exact result binding is corrupt"
+]) {
+  assert.equal(
+    frozenReplayPathControl.stdout.includes(testName),
+    true,
+    `actual frozen replay control did not execute: ${testName}`
+  );
+}
 
 console.log(`authoritative_design_schema_defs=${EXPECTED_DEFS.length}`);
 console.log(`authoritative_design_entrypoints=${EXPECTED_ENTRYPOINTS.length}`);
