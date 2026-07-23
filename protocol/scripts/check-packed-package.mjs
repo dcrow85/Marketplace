@@ -44,6 +44,10 @@ function pack(directory, destination) {
   const paths = report.files.map(({ path: pathname }) => pathname);
   const unexpected = paths.filter((pathname) => !allowedTopLevel.has(pathname.split("/")[0]));
   if (unexpected.length) throw new Error(`packed package contains unexpected files: ${unexpected.join(", ")}`);
+  const transient = paths.filter((pathname) =>
+    pathname.split("/").includes("__pycache__") || /\.py[co]$/.test(pathname)
+  );
+  if (transient.length) throw new Error(`packed package contains transient compiler files: ${transient.join(", ")}`);
   if (paths.some((pathname) => pathname === "execution" || pathname.startsWith("execution/"))) {
     throw new Error("packed package contains rejected execution implementation");
   }

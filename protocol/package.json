@@ -19,6 +19,9 @@
     "release",
     "schemas",
     "scripts",
+    "!scripts/**/__pycache__",
+    "!scripts/**/*.pyc",
+    "!scripts/**/*.pyo",
     "tests",
     "vectors"
   ],

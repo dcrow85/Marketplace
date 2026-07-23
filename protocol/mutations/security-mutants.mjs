@@ -153,6 +153,15 @@ export const SECURITY_MUTANTS = [
     expectedOutput: "minimum kernel package file allowlist differs"
   },
   {
+    id: "minimum-kernel-package-transient-exclusion",
+    finding: "clean-package-release-reproducibility",
+    file: "package.json",
+    jsonPointer: "/files/15",
+    value: "scripts/**/__pycache__",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel package file allowlist differs"
+  },
+  {
     id: "minimum-kernel-runtime-import-exclusion",
     finding: "mechanical-execution-exclusion",
     file: "reference-service/service.mjs",
@@ -189,8 +198,8 @@ export const SECURITY_MUTANTS = [
     id: "minimum-kernel-package-archive-exclusion",
     finding: "clean-package-release-reproducibility",
     file: "lib/minimum-kernel.mjs",
-    search: 'const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter((name) => name !== "dist");',
-    replace: 'const SOURCE_COMMITMENT_ROOTS = [...EXPECTED_PACKAGE_FILES.filter((name) => name !== "dist"), "cairn-protocol-foundation-0.1.0.tgz"];',
+    search: 'const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter(\n  (name) => name !== "dist" && !name.startsWith("!")\n);',
+    replace: 'const SOURCE_COMMITMENT_ROOTS = [...EXPECTED_PACKAGE_FILES.filter(\n  (name) => name !== "dist" && !name.startsWith("!")\n), "cairn-protocol-foundation-0.1.0.tgz"];',
     test: "kernel release source commitments ignore package archives"
   },
   {

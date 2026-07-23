@@ -112,10 +112,16 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   pins five BYO prerequisites plus service/transport non-claims, packages an
   explicit proposal-authority boundary, signs bounded exact-copy projection
   values, rejects future derivation, and performs private access preflight before
-  object semantics. It passes 96/96 authored controls, kills 115/115 direct
-  mutants, and excludes every rejected execution file from the 56-file package.
-  A new containing commit, disposable clean replay, and three fresh exact-commit
-  reviews remain pending.
+  object semantics. Containing freeze `b0ab625` is rejected by clean package
+  comparison: the working tree packed a Python `__pycache__` artifact and
+  produced 56 files while the clean archive produced 55. Both independently
+  passed their internal gates, but their package bytes differed. The package
+  allowlist now carries explicit recursive `__pycache__`, `.pyc`, and `.pyo`
+  exclusions; the package checker rejects transient compiler files; and a
+  direct test/mutant creates those files and requires their absence. The working
+  replacement passes 97/97 authored controls, kills 116/116 direct mutants, and
+  now packs 55 files in the dirty tree. A new containing commit, disposable
+  clean replay, and three fresh exact-commit reviews remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —

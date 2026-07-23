@@ -1642,6 +1642,33 @@ test("kernel release source commitments exclude standalone compiler bytecode", a
   }
 });
 
+test("packed inventory excludes transient compiler artifacts", () => {
+  const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-package-cache-"));
+  const candidate = path.join(parent, "protocol");
+  try {
+    cpSync(root, candidate, {
+      recursive: true,
+      filter: (source) => path.basename(source) !== "node_modules"
+    });
+    const cache = path.join(candidate, "scripts", "__pycache__");
+    mkdirSync(cache, { recursive: true });
+    writeFileSync(path.join(cache, "transient.pyc"), "not a package source");
+    writeFileSync(path.join(candidate, "scripts", "transient.pyo"), "not a package source");
+    const result = spawnSync("npm", ["pack", "--json", "--dry-run"], {
+      cwd: candidate,
+      encoding: "utf8"
+    });
+    assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    const paths = JSON.parse(result.stdout)[0].files.map(({ path: pathname }) => pathname);
+    assert.equal(
+      paths.some((pathname) => pathname.includes("__pycache__") || /\.py[co]$/.test(pathname)),
+      false
+    );
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
+  }
+});
+
 test("kernel release source commitments ignore package archives", async () => {
   const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-kernel-archive-"));
   const candidate = path.join(parent, "protocol");

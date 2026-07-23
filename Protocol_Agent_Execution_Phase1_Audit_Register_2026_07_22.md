@@ -862,11 +862,24 @@ rejected that exact commit.
 | P2R46-S-001 | P2 | A validly signed projection with future `derived_at` was accepted | accepted_and_fixed | Signed-object currentness includes `derived_at`; the regression proves rejection without nonce or grant-budget consumption |
 | P2R46-S-002 | P2 | Full semantic validation before ownership preflight let cross-principal callers distinguish existing private objects from absent refs | accepted_and_fixed | Access preflight occurs after fresh transport/idempotent replay but before object semantics; foreign correct, wrong-purpose, wrong-use, and absent reads collapse to the same private 404 |
 
-The working replacement passes 96/96 authored controls and kills 115/115 direct
+The working replacement passes 97/97 authored controls and kills 116/116 direct
 security mutants. `release:verify` additionally installs and tests the extracted
 package from its own shrinkwrap, rebuilds both generated artifacts byte-for-byte,
 requires pack/build/repack convergence, and confirms zero rejected execution
-files. Its foundation bundle and registry are respectively
+files.
+
+Containing freeze `b0ab625` is rejected by clean package comparison. Its working
+tree pack contained
+`scripts/__pycache__/check-json-sources.cpython-314.pyc` and had 56 files, while
+the clean Git archive had 55. Each pack separately converged, but the
+cross-environment archive bytes did not match. This is a package-inventory
+reproducibility failure, not a semantic test failure. The working replacement
+adds self-contained `files` exclusions for recursive `__pycache__`, `.pyc`, and
+`.pyo` paths; the package checker now rejects those paths; and a focused authored
+test plus direct mutant create transient compiler files and require them to stay
+out of the pack.
+
+The current foundation bundle and registry are respectively
 `sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24`
 and
 `sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d`.

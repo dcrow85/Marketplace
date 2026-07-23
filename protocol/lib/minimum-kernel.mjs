@@ -80,10 +80,15 @@ const EXPECTED_PACKAGE_FILES = [
   "release",
   "schemas",
   "scripts",
+  "!scripts/**/__pycache__",
+  "!scripts/**/*.pyc",
+  "!scripts/**/*.pyo",
   "tests",
   "vectors"
 ];
-const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter((name) => name !== "dist");
+const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter(
+  (name) => name !== "dist" && !name.startsWith("!")
+);
 
 function exact(actual, expected, message) {
   if (canonicalText(actual) !== canonicalText(expected)) throw new Error(message);
