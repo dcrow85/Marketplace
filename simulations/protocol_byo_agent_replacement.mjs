@@ -17,6 +17,7 @@ import {
   createPublicKey,
   sign as signBytes
 } from "node:crypto";
+import { realpathSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 
@@ -1224,8 +1225,8 @@ function humanSummary(report) {
   ].join("\n");
 }
 
-const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;
-if (invokedPath === fileURLToPath(import.meta.url)) {
+const invokedPath = process.argv[1] ? realpathSync(process.argv[1]) : null;
+if (invokedPath === realpathSync(fileURLToPath(import.meta.url))) {
   const report = await runReplacementDrill();
   if (process.argv.includes("--human")) {
     process.stdout.write(`${humanSummary(report)}\n`);
