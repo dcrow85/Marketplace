@@ -64,6 +64,16 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: BYO replacement boundary inventory]` 2026-07-23 · Codex —
+  Third cold audit of exact commit `e406987` produced two independent PASS
+  verdicts with zero P0/P1/material P2 findings and one reproducibility-lane P2
+  limited to documentation: the prose's “contain only” inventory omitted the
+  separately serialized `context_grant_ref` and `prepare_grant_ref`, although
+  the executable report, allowlists, and tests included and content-bound both.
+  The document now names every exact top-level key for resume, proposal, and
+  prepare. No executable or report bytes changed. A final cold documentation
+  read is required before closure; no push or deploy is in scope.
+
 - `[BLOCKING: BYO replacement second audit remediation]` 2026-07-23 · Codex —
   Frozen candidate `8837315` completed a second independent cold audit with zero
   P0/P1 findings but four accepted material P2 gaps: preparation widened B from

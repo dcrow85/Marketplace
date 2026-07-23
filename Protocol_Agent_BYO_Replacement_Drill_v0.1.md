@@ -1,7 +1,8 @@
 # Cairn BYO-agent replacement drill v0.1
 
-**Status:** two cold-audit rounds found and remediated material P2 evidence
-gaps; the next local candidate awaits repeat independent verification
+**Status:** three cold-audit rounds found and remediated material P2 evidence
+and release-boundary gaps; the next local candidate awaits repeat independent
+verification
 
 **Kernel under test:** `cairn-proposal-foundation-v0.1`
 
@@ -22,24 +23,27 @@ This remediated candidate says **yes at the current proposal-only boundary**.
 
 The user—not Anko—signs the intent. The service creates separate scoped
 projections for each runtime, disclosing only `/targets` while redacting
-`/constraints/total_budget`. After Anko is revoked, Agent B's initial resume step
-runs in a separately invoked Node process whose serialized inputs contain only:
+`/constraints/total_budget`. After Anko is revoked, Agent B's work runs in
+separately invoked Node processes. The exact serialized top-level keys are:
 
-1. Agent B's public runtime binding;
-2. a principal-signed DataGrant addressed to Agent B's exact runtime and naming
-   the scoped projection reference and retrieval URI;
-3. a mode label telling the worker which bounded artifact to construct.
+- resume: `mode`, `runtime_binding`, `context_grant`, `context_grant_ref`;
+- proposal: `mode`, `projection`, `effect`, `intent_ref`;
+- prepare: `mode`, `proposal`, `prepare_grant`, `prepare_grant_ref`.
+
+`runtime_binding` contains the public binding object, its exact object reference,
+and its retrieval URI. `context_grant` is principal-signed, addressed to B's
+exact runtime, and names the scoped projection reference and retrieval URI. Each
+separately serialized `*_ref` is shape-checked and content-bound to its signed
+object before the worker emits a request.
 
 The fixture worker carries fixed public verification roots for the collector,
 service, object issuer, and Agent B provider. The host cannot redefine those
 controllers through serialized input.
 
-Each worker mode has an exact closed input shape; unknown top-level fields are
-rejected. The later proposal step receives the B-scoped projection, a signed
-no-effect descriptor, and the already disclosed source intent reference. The
-preparation step receives the B-signed proposal plus a principal-signed grant
-covering exactly the proposal, B-scoped projection, and no-effect descriptor.
-Neither normal B grant scopes the private `ActiveIntent`.
+Each worker mode has that exact closed input shape; unknown top-level fields are
+rejected. The signed preparation grant covers exactly the proposal, B-scoped
+projection, and no-effect descriptor. Neither normal B grant scopes the private
+`ActiveIntent`.
 
 The normal Agent B process receives no serialized Anko prompt, chat transcript,
 database, key, grant, idempotency record, service store, or action authority.
