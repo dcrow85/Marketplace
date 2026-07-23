@@ -64,6 +64,21 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service second audit remediation]` 2026-07-23 · Codex —
+  Exact candidate `8c06892` is not a pass. Three repeat cold auditors found no
+  kernel drift but accepted remaining design gaps: validation-key resolver state
+  was not versioned in the dependency root; owner derivation, raw authority
+  namespace provenance, and multi-owner sequence-zero behavior were not closed;
+  accepted-envelope failures contradicted blanket rollback prose; local wrapper
+  failures, dependency alias/negative reads, committed row shapes, canonical
+  hashing, and the full signed nonclaim inventory lacked machine-exact
+  contracts. Remediation adds one strict external Draft 2020-12 schema bundle,
+  a pinned design checker, exact callback outcome/commit matrix, resolver and
+  dependency instrumentation, stable receiver namespace/owner rules, genesis
+  semantics, and direct AS-33..AS-40 controls. A new frozen candidate must pass
+  repeat independent audit before reference-service implementation begins;
+  `protocol/` remains untouched and no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service audit remediation]` 2026-07-23 · Codex —
   Exact design candidate `b86ceae` is not a pass. Three cold auditors found no
   kernel drift but accepted blocking findings: replay reused an observation that

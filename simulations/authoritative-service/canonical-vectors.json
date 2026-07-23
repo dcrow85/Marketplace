@@ -1,0 +1,90 @@
+{
+  "schema": "cairn.authoritative_service_design_vectors.v0.1",
+  "vectors": [
+    {
+      "id": "operational_object_row",
+      "value": {
+        "schema": "cairn.authoritative_row_projection.v0.1",
+        "table": "objects",
+        "structural_key": "[\"cairn.active_intent.v0.1\",\"urn:uuid:00000000-0000-4000-8000-000000000101\",\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\"]",
+        "columns": {
+          "ref": {
+            "schema": "cairn.active_intent.v0.1",
+            "object_id": "urn:uuid:00000000-0000-4000-8000-000000000101",
+            "object_hash": "sha-256:0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          "schema_id": "cairn.active_intent.v0.1",
+          "object_hash": "sha-256:0000000000000000000000000000000000000000000000000000000000000000",
+          "retrieval_uri": "https://cairn.invalid/objects/101",
+          "visibility": "private",
+          "principal_id": "principal:alice",
+          "owner_scope_sequence": 1
+        }
+      },
+      "canonical_text": "{\"columns\":{\"object_hash\":\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\",\"owner_scope_sequence\":1,\"principal_id\":\"principal:alice\",\"ref\":{\"object_hash\":\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\",\"object_id\":\"urn:uuid:00000000-0000-4000-8000-000000000101\",\"schema\":\"cairn.active_intent.v0.1\"},\"retrieval_uri\":\"https://cairn.invalid/objects/101\",\"schema_id\":\"cairn.active_intent.v0.1\",\"visibility\":\"private\"},\"schema\":\"cairn.authoritative_row_projection.v0.1\",\"structural_key\":\"[\\\"cairn.active_intent.v0.1\\\",\\\"urn:uuid:00000000-0000-4000-8000-000000000101\\\",\\\"sha-256:0000000000000000000000000000000000000000000000000000000000000000\\\"]\",\"table\":\"objects\"}",
+      "canonical_hash": "sha-256:b946f2cb391f379c5834affa12c36b1b5109a7ff461aba20fc98464cbf97911b"
+    },
+    {
+      "id": "absent_runtime_binding_row",
+      "value": [
+        "cairn-authoritative-absent-row-v0.1",
+        "runtime_bindings",
+        "runtime_key_id",
+        "[\"did:key:runtime-missing\"]"
+      ],
+      "canonical_text": "[\"cairn-authoritative-absent-row-v0.1\",\"runtime_bindings\",\"runtime_key_id\",\"[\\\"did:key:runtime-missing\\\"]\"]",
+      "canonical_hash": "sha-256:342e857713fa41d5790ccfdf398d0e481f4f8d06a9f2ee39a9ccf8b64c049498"
+    },
+    {
+      "id": "authority_namespace_commitment",
+      "value": [
+        "cairn-authority-namespace-v0.1",
+        "sha-256:1111111111111111111111111111111111111111111111111111111111111111",
+        "tenant:demo"
+      ],
+      "canonical_text": "[\"cairn-authority-namespace-v0.1\",\"sha-256:1111111111111111111111111111111111111111111111111111111111111111\",\"tenant:demo\"]",
+      "canonical_hash": "sha-256:953ee7fe990d5fc7401423fdb7b286c5a9cade8e70a8312e43622b20943853d9"
+    },
+    {
+      "id": "query_commitment",
+      "value": {
+        "operation": "projection.get",
+        "principal_id": "principal:alice",
+        "actor_id": "agent:anko",
+        "runtime_key_id": "did:key:anko-runtime",
+        "body_schema": "cairn.projection_get_request.v0.1",
+        "body_hash": "sha-256:2222222222222222222222222222222222222222222222222222222222222222",
+        "subject_refs": [],
+        "authorization_refs": [],
+        "host_authentication_context_hash": "sha-256:3333333333333333333333333333333333333333333333333333333333333333",
+        "declared_purpose": "search",
+        "intended_use": "read_local",
+        "filters": [],
+        "ordering": null,
+        "page_boundary": null
+      },
+      "canonical_text": "{\"actor_id\":\"agent:anko\",\"authorization_refs\":[],\"body_hash\":\"sha-256:2222222222222222222222222222222222222222222222222222222222222222\",\"body_schema\":\"cairn.projection_get_request.v0.1\",\"declared_purpose\":\"search\",\"filters\":[],\"host_authentication_context_hash\":\"sha-256:3333333333333333333333333333333333333333333333333333333333333333\",\"intended_use\":\"read_local\",\"operation\":\"projection.get\",\"ordering\":null,\"page_boundary\":null,\"principal_id\":\"principal:alice\",\"runtime_key_id\":\"did:key:anko-runtime\",\"subject_refs\":[]}",
+      "canonical_hash": "sha-256:91ce4517181ef6f6cebd65ea8d2ef8c6e4fc112880dd0277fa6ad0461acf7c9d"
+    },
+    {
+      "id": "first_owner_scope_root",
+      "value": [
+        "cairn-reference-owner-state-v0.1",
+        "cairn:reference-service",
+        "urn:uuid:00000000-0000-4000-8000-000000000001",
+        "principal",
+        "principal:alice",
+        1,
+        [
+          [
+            "used_nonces",
+            "[\"nonce-001\"]",
+            "sha-256:4444444444444444444444444444444444444444444444444444444444444444"
+          ]
+        ]
+      ],
+      "canonical_text": "[\"cairn-reference-owner-state-v0.1\",\"cairn:reference-service\",\"urn:uuid:00000000-0000-4000-8000-000000000001\",\"principal\",\"principal:alice\",1,[[\"used_nonces\",\"[\\\"nonce-001\\\"]\",\"sha-256:4444444444444444444444444444444444444444444444444444444444444444\"]]]",
+      "canonical_hash": "sha-256:62a9bed96b3a5575958650471899c6c0738acab3b012dfa393b960f64631b766"
+    }
+  ]
+}

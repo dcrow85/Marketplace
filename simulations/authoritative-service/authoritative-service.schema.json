@@ -1,0 +1,1190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/simulations/authoritative-service/v0.1/authoritative-service.schema.json",
+  "title": "Cairn authoritative service external contract v0.1",
+  "description": "Closed external schemas for the proposal-only authoritative reference service. This is not part of the frozen protocol bundle.",
+  "oneOf": [
+    { "$ref": "#/$defs/localServiceKeyProfile" },
+    { "$ref": "#/$defs/validationKeyManifest" },
+    { "$ref": "#/$defs/receiverAuthenticationRecord" },
+    { "$ref": "#/$defs/hostAuthenticationContext" },
+    { "$ref": "#/$defs/genesisManifest" },
+    { "$ref": "#/$defs/dependencyManifest" },
+    { "$ref": "#/$defs/operationalRowProjection" },
+    { "$ref": "#/$defs/serviceObservation" },
+    { "$ref": "#/$defs/localObservedResult" }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha-256:[0-9a-f]{64}$"
+    },
+    "nullableSha256": {
+      "oneOf": [
+        { "$ref": "#/$defs/sha256" },
+        { "type": "null" }
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12][0-9]|3[01])T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]+)?Z$"
+    },
+    "nullableTimestamp": {
+      "oneOf": [
+        { "$ref": "#/$defs/timestamp" },
+        { "type": "null" }
+      ]
+    },
+    "uuidUrn": {
+      "type": "string",
+      "pattern": "^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "schemaId": {
+      "type": "string",
+      "pattern": "^cairn\\.[a-z0-9_]+\\.v0\\.1$"
+    },
+    "structuralKey": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 8192,
+      "pattern": "^\\[.*\\]$",
+      "description": "Exact UTF-8 RFC 8785/JCS array text."
+    },
+    "objectRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "object_id", "object_hash"],
+      "properties": {
+        "schema": { "$ref": "#/$defs/schemaId" },
+        "object_id": { "$ref": "#/$defs/uuidUrn" },
+        "object_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "nullableObjectRef": {
+      "oneOf": [
+        { "$ref": "#/$defs/objectRef" },
+        { "type": "null" }
+      ]
+    },
+    "externalArtifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["artifact_schema", "artifact_id", "artifact_hash"],
+      "properties": {
+        "artifact_schema": { "$ref": "#/$defs/schemaId" },
+        "artifact_id": { "$ref": "#/$defs/identifier" },
+        "artifact_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "nullableExternalArtifactRef": {
+      "oneOf": [
+        { "$ref": "#/$defs/externalArtifactRef" },
+        { "type": "null" }
+      ]
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile", "key_id", "signed_hash", "signed_at", "value"],
+      "properties": {
+        "profile": { "const": "cairn-ed25519-v0.1" },
+        "key_id": { "$ref": "#/$defs/identifier" },
+        "signed_hash": { "$ref": "#/$defs/sha256" },
+        "signed_at": { "$ref": "#/$defs/timestamp" },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{86}$"
+        }
+      }
+    },
+    "keyRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key_id",
+        "controller",
+        "key_type",
+        "public_key",
+        "status",
+        "not_before",
+        "expires_at",
+        "revocation_time",
+        "profile_revision"
+      ],
+      "properties": {
+        "key_id": { "$ref": "#/$defs/identifier" },
+        "controller": { "$ref": "#/$defs/identifier" },
+        "key_type": { "const": "Ed25519" },
+        "public_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "status": { "enum": ["active", "revoked"] },
+        "not_before": { "$ref": "#/$defs/timestamp" },
+        "expires_at": { "$ref": "#/$defs/nullableTimestamp" },
+        "revocation_time": { "$ref": "#/$defs/nullableTimestamp" },
+        "profile_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "active" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": { "revocation_time": { "type": "null" } }
+          }
+        },
+        {
+          "if": {
+            "properties": { "status": { "const": "revoked" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": { "revocation_time": { "$ref": "#/$defs/timestamp" } }
+          }
+        }
+      ]
+    },
+    "localServiceKeyProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "x-cairn-object-schema": "cairn.local_service_key_profile.v0.1",
+      "x-cairn-self-hash-pointer": "/profile_hash",
+      "x-cairn-signature-pointers": [],
+      "x-cairn-hash-exclusion-pointers": [],
+      "required": [
+        "schema",
+        "profile_id",
+        "profile_hash",
+        "service_id",
+        "store_id",
+        "kernel_profile",
+        "bundle_hash",
+        "allowed_observation_schema",
+        "current_key_id",
+        "keys",
+        "prior_profile_hash",
+        "created_at"
+      ],
+      "properties": {
+        "schema": { "const": "cairn.local_service_key_profile.v0.1" },
+        "profile_id": { "$ref": "#/$defs/uuidUrn" },
+        "profile_hash": { "$ref": "#/$defs/sha256" },
+        "service_id": { "$ref": "#/$defs/identifier" },
+        "store_id": { "$ref": "#/$defs/uuidUrn" },
+        "kernel_profile": { "const": "cairn-proposal-foundation-v0.1" },
+        "bundle_hash": { "$ref": "#/$defs/sha256" },
+        "allowed_observation_schema": { "const": "cairn.service_observation.v0.1" },
+        "current_key_id": { "$ref": "#/$defs/identifier" },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "items": { "$ref": "#/$defs/keyRecord" }
+        },
+        "prior_profile_hash": { "$ref": "#/$defs/nullableSha256" },
+        "created_at": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "validationKeyManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "x-cairn-object-schema": "cairn.validation_key_manifest.v0.1",
+      "x-cairn-self-hash-pointer": "/manifest_hash",
+      "x-cairn-signature-pointers": [],
+      "x-cairn-hash-exclusion-pointers": [],
+      "required": ["schema", "manifest_id", "manifest_hash", "keys"],
+      "properties": {
+        "schema": { "const": "cairn.validation_key_manifest.v0.1" },
+        "manifest_id": { "$ref": "#/$defs/uuidUrn" },
+        "manifest_hash": { "$ref": "#/$defs/sha256" },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1024,
+          "items": { "$ref": "#/$defs/keyRecord" }
+        }
+      }
+    },
+    "receiverAuthenticationRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "authentication_handle",
+        "account_tenant_commitment",
+        "principal_id",
+        "actor_id",
+        "runtime_key_id",
+        "authority_namespace_raw",
+        "authority_namespace_commitment",
+        "trust_profile_id",
+        "trust_profile_hash",
+        "authentication_evidence_commitment",
+        "assertion_level"
+      ],
+      "properties": {
+        "schema": { "const": "cairn.receiver_authentication_record.v0.1" },
+        "authentication_handle": { "$ref": "#/$defs/identifier" },
+        "account_tenant_commitment": { "$ref": "#/$defs/sha256" },
+        "principal_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "actor_id": { "$ref": "#/$defs/identifier" },
+        "runtime_key_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "authority_namespace_raw": { "$ref": "#/$defs/identifier" },
+        "authority_namespace_commitment": { "$ref": "#/$defs/sha256" },
+        "trust_profile_id": { "$ref": "#/$defs/identifier" },
+        "trust_profile_hash": { "$ref": "#/$defs/sha256" },
+        "authentication_evidence_commitment": { "$ref": "#/$defs/sha256" },
+        "assertion_level": { "const": "host_asserted" }
+      }
+    },
+    "hostAuthenticationContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "x-cairn-object-schema": "cairn.host_authentication_context.v0.1",
+      "x-cairn-self-hash-pointer": "/context_hash",
+      "x-cairn-signature-pointers": [],
+      "x-cairn-hash-exclusion-pointers": [],
+      "required": [
+        "schema",
+        "context_hash",
+        "account_tenant_commitment",
+        "principal_id",
+        "actor_id",
+        "runtime_key_id",
+        "authority_namespace_commitment",
+        "trust_profile_id",
+        "trust_profile_hash",
+        "authentication_evidence_commitment",
+        "assertion_level"
+      ],
+      "properties": {
+        "schema": { "const": "cairn.host_authentication_context.v0.1" },
+        "context_hash": { "$ref": "#/$defs/sha256" },
+        "account_tenant_commitment": { "$ref": "#/$defs/sha256" },
+        "principal_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "actor_id": { "$ref": "#/$defs/identifier" },
+        "runtime_key_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "authority_namespace_commitment": { "$ref": "#/$defs/sha256" },
+        "trust_profile_id": { "$ref": "#/$defs/identifier" },
+        "trust_profile_hash": { "$ref": "#/$defs/sha256" },
+        "authentication_evidence_commitment": { "$ref": "#/$defs/sha256" },
+        "assertion_level": { "const": "host_asserted" }
+      }
+    },
+    "objectRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "schema_id",
+        "object_hash",
+        "retrieval_uri",
+        "visibility",
+        "principal_id",
+        "owner_scope_sequence"
+      ],
+      "properties": {
+        "ref": { "$ref": "#/$defs/objectRef" },
+        "schema_id": { "$ref": "#/$defs/schemaId" },
+        "object_hash": { "$ref": "#/$defs/sha256" },
+        "retrieval_uri": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1,
+          "maxLength": 2048
+        },
+        "visibility": { "enum": ["public", "private"] },
+        "principal_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/identifier" },
+            { "type": "null" }
+          ]
+        },
+        "owner_scope_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "runtimeBindingRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runtime_key_id", "ref"],
+      "properties": {
+        "runtime_key_id": { "$ref": "#/$defs/identifier" },
+        "ref": { "$ref": "#/$defs/objectRef" }
+      }
+    },
+    "referenceRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref"],
+      "properties": {
+        "ref": { "$ref": "#/$defs/objectRef" }
+      }
+    },
+    "validationKeyRow": {
+      "$ref": "#/$defs/keyRecord"
+    },
+    "grantStateRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grant_ref",
+        "status",
+        "revocation_nonce",
+        "remaining_disclosures",
+        "state_version",
+        "owner_scope_sequence"
+      ],
+      "properties": {
+        "grant_ref": { "$ref": "#/$defs/objectRef" },
+        "status": { "enum": ["active", "revoked"] },
+        "revocation_nonce": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "remaining_disclosures": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state_version": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "owner_scope_sequence": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "usedNonceRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nonce",
+        "envelope_hash",
+        "operation",
+        "owner_kind",
+        "owner_id",
+        "owner_scope_sequence"
+      ],
+      "properties": {
+        "nonce": { "$ref": "#/$defs/identifier" },
+        "envelope_hash": { "$ref": "#/$defs/sha256" },
+        "operation": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_.]{1,95}$"
+        },
+        "owner_kind": { "enum": ["principal", "actor"] },
+        "owner_id": { "$ref": "#/$defs/identifier" },
+        "owner_scope_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "idempotencyRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "structural_key_hash",
+        "fingerprint",
+        "result_ref",
+        "owner_scope_sequence"
+      ],
+      "properties": {
+        "structural_key_hash": { "$ref": "#/$defs/sha256" },
+        "fingerprint": { "$ref": "#/$defs/sha256" },
+        "result_ref": { "$ref": "#/$defs/objectRef" },
+        "owner_scope_sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "operationalRowProjection": {
+      "oneOf": [
+        { "$ref": "#/$defs/objectRowProjection" },
+        { "$ref": "#/$defs/runtimeBindingRowProjection" },
+        { "$ref": "#/$defs/dataGrantRowProjection" },
+        { "$ref": "#/$defs/effectDescriptorRowProjection" },
+        { "$ref": "#/$defs/validationKeyRowProjection" },
+        { "$ref": "#/$defs/grantStateRowProjection" },
+        { "$ref": "#/$defs/usedNonceRowProjection" },
+        { "$ref": "#/$defs/idempotencyRowProjection" }
+      ]
+    },
+    "objectRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "objects" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/objectRow" }
+      }
+    },
+    "runtimeBindingRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "runtime_bindings" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/runtimeBindingRow" }
+      }
+    },
+    "dataGrantRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "data_grants" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/referenceRow" }
+      }
+    },
+    "effectDescriptorRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "effect_descriptors" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/referenceRow" }
+      }
+    },
+    "validationKeyRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "validation_keys" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/validationKeyRow" }
+      }
+    },
+    "grantStateRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "grant_state" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/grantStateRow" }
+      }
+    },
+    "usedNonceRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "used_nonces" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/usedNonceRow" }
+      }
+    },
+    "idempotencyRowProjection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "table", "structural_key", "columns"],
+      "properties": {
+        "schema": { "const": "cairn.authoritative_row_projection.v0.1" },
+        "table": { "const": "idempotency_records" },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "columns": { "$ref": "#/$defs/idempotencyRow" }
+      }
+    },
+    "dependencyEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "table_name",
+        "structural_key",
+        "access_kind",
+        "canonical_row_hash"
+      ],
+      "properties": {
+        "table_name": {
+          "enum": [
+            "objects",
+            "runtime_bindings",
+            "data_grants",
+            "effect_descriptors",
+            "validation_keys",
+            "grant_state",
+            "used_nonces",
+            "idempotency_records"
+          ]
+        },
+        "structural_key": { "$ref": "#/$defs/structuralKey" },
+        "access_kind": {
+          "enum": [
+            "read_present",
+            "read_absent",
+            "write_insert",
+            "write_update",
+            "read_absent_write_insert",
+            "read_present_write_update"
+          ]
+        },
+        "canonical_row_hash": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "dependencyManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "x-cairn-object-schema": "cairn.dependency_manifest.v0.1",
+      "x-cairn-self-hash-pointer": "/dependency_set_commitment",
+      "x-cairn-signature-pointers": [],
+      "x-cairn-hash-exclusion-pointers": [],
+      "required": ["schema", "entries", "dependency_set_commitment"],
+      "properties": {
+        "schema": { "const": "cairn.dependency_manifest.v0.1" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4096,
+          "items": { "$ref": "#/$defs/dependencyEntry" }
+        },
+        "dependency_set_commitment": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "genesisManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "x-cairn-object-schema": "cairn.genesis_manifest.v0.1",
+      "x-cairn-self-hash-pointer": "/manifest_hash",
+      "x-cairn-signature-pointers": [],
+      "x-cairn-hash-exclusion-pointers": [],
+      "required": [
+        "schema",
+        "manifest_id",
+        "manifest_hash",
+        "store_id",
+        "kernel_profile",
+        "bundle_hash",
+        "service_key_profile_ref",
+        "validation_key_manifest_ref",
+        "initial_rows"
+      ],
+      "properties": {
+        "schema": { "const": "cairn.genesis_manifest.v0.1" },
+        "manifest_id": { "$ref": "#/$defs/uuidUrn" },
+        "manifest_hash": { "$ref": "#/$defs/sha256" },
+        "store_id": { "$ref": "#/$defs/uuidUrn" },
+        "kernel_profile": { "const": "cairn-proposal-foundation-v0.1" },
+        "bundle_hash": { "$ref": "#/$defs/sha256" },
+        "service_key_profile_ref": { "$ref": "#/$defs/externalArtifactRef" },
+        "validation_key_manifest_ref": { "$ref": "#/$defs/externalArtifactRef" },
+        "initial_rows": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 65536,
+          "items": {
+            "allOf": [
+              { "$ref": "#/$defs/operationalRowProjection" },
+              {
+                "not": {
+                  "type": "object",
+                  "required": ["table"],
+                  "properties": {
+                    "table": {
+                      "enum": ["used_nonces", "idempotency_records"]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "type": "object",
+                  "required": ["table"],
+                  "properties": {
+                    "table": { "enum": ["objects", "grant_state"] }
+                  }
+                },
+                "then": {
+                  "type": "object",
+                  "required": ["columns"],
+                  "properties": {
+                    "columns": {
+                      "type": "object",
+                      "required": ["owner_scope_sequence"],
+                      "properties": {
+                        "owner_scope_sequence": { "const": 0 }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "grantEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grant_ref",
+        "state_version_before",
+        "state_version_after",
+        "remaining_before",
+        "remaining_after"
+      ],
+      "properties": {
+        "grant_ref": { "$ref": "#/$defs/objectRef" },
+        "state_version_before": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "state_version_after": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "remaining_before": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "remaining_after": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      }
+    },
+    "notClaiming": {
+      "type": "array",
+      "minItems": 39,
+      "maxItems": 39,
+      "prefixItems": [
+        { "const": "production_service" },
+        { "const": "deployed_service" },
+        { "const": "authenticated_transport" },
+        { "const": "delivery_to_caller" },
+        { "const": "continuation_delivery" },
+        { "const": "cross_page_continuity" },
+        { "const": "runtime_onboarding" },
+        { "const": "grant_issuance" },
+        { "const": "authenticated_service_discovery" },
+        { "const": "production_service_identity" },
+        { "const": "host_authentication_truth" },
+        { "const": "authority_to_act" },
+        { "const": "authorization" },
+        { "const": "execution" },
+        { "const": "payment" },
+        { "const": "settlement" },
+        { "const": "escrow" },
+        { "const": "release" },
+        { "const": "waiver" },
+        { "const": "external_exactly_once" },
+        { "const": "card_authenticity" },
+        { "const": "card_condition" },
+        { "const": "custody" },
+        { "const": "shipment" },
+        { "const": "delivery" },
+        { "const": "legal_identity" },
+        { "const": "postgresql_equivalence" },
+        { "const": "protocol_conformance" },
+        { "const": "external_effect" },
+        { "const": "confidential_computing" },
+        { "const": "operator_blindness" },
+        { "const": "unlinkability" },
+        { "const": "deletion_enforced" },
+        { "const": "service_availability" },
+        { "const": "runtime_conformance" },
+        { "const": "object_reference_discovery" },
+        { "const": "transport_binding_conformance" },
+        { "const": "raw_runtime_private_key_transfer" },
+        { "const": "release_authenticity_without_external_pin" }
+      ],
+      "items": false
+    },
+    "serviceObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "x-cairn-object-schema": "cairn.service_observation.v0.1",
+      "x-cairn-self-hash-pointer": "/observation_hash",
+      "x-cairn-signature-pointers": ["/service_signature"],
+      "x-cairn-hash-exclusion-pointers": [
+        "/service_signature/signed_hash",
+        "/service_signature/value"
+      ],
+      "required": [
+        "schema",
+        "observation_id",
+        "service",
+        "access",
+        "request",
+        "observed_at",
+        "transaction",
+        "result",
+        "page",
+        "observation_hash",
+        "service_signature",
+        "not_claiming"
+      ],
+      "properties": {
+        "schema": { "const": "cairn.service_observation.v0.1" },
+        "observation_id": { "$ref": "#/$defs/uuidUrn" },
+        "service": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "service_id",
+            "profile",
+            "bundle_hash",
+            "store_id",
+            "key_profile_ref",
+            "key_profile_hash"
+          ],
+          "properties": {
+            "service_id": { "$ref": "#/$defs/identifier" },
+            "profile": { "const": "cairn-proposal-foundation-v0.1" },
+            "bundle_hash": { "$ref": "#/$defs/sha256" },
+            "store_id": { "$ref": "#/$defs/uuidUrn" },
+            "key_profile_ref": { "$ref": "#/$defs/externalArtifactRef" },
+            "key_profile_hash": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "access": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["consequence", "visibility", "owner_kind", "owner_id"],
+          "properties": {
+            "consequence": {
+              "enum": [
+                "public_read",
+                "private_read",
+                "private_state_write",
+                "preparation_only"
+              ]
+            },
+            "visibility": { "const": "private" },
+            "owner_kind": { "enum": ["principal", "actor"] },
+            "owner_id": { "$ref": "#/$defs/identifier" }
+          }
+        },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "envelope_hash",
+            "message_id",
+            "operation",
+            "principal_id",
+            "actor_id",
+            "runtime_key_id",
+            "body_schema",
+            "body_hash",
+            "subject_refs",
+            "authorization_refs",
+            "query_commitment",
+            "host_authentication_context_hash"
+          ],
+          "properties": {
+            "envelope_hash": { "$ref": "#/$defs/sha256" },
+            "message_id": { "$ref": "#/$defs/uuidUrn" },
+            "operation": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_.]{1,95}$"
+            },
+            "principal_id": {
+              "oneOf": [
+                { "$ref": "#/$defs/identifier" },
+                { "type": "null" }
+              ]
+            },
+            "actor_id": { "$ref": "#/$defs/identifier" },
+            "runtime_key_id": {
+              "oneOf": [
+                { "$ref": "#/$defs/identifier" },
+                { "type": "null" }
+              ]
+            },
+            "body_schema": { "$ref": "#/$defs/schemaId" },
+            "body_hash": { "$ref": "#/$defs/sha256" },
+            "subject_refs": {
+              "type": "array",
+              "maxItems": 1024,
+              "items": { "$ref": "#/$defs/objectRef" }
+            },
+            "authorization_refs": {
+              "type": "array",
+              "maxItems": 1024,
+              "items": { "$ref": "#/$defs/objectRef" }
+            },
+            "query_commitment": { "$ref": "#/$defs/sha256" },
+            "host_authentication_context_hash": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "observed_at": { "$ref": "#/$defs/timestamp" },
+        "transaction": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "isolation",
+            "snapshot_id",
+            "scope_sequence_before",
+            "scope_sequence_after",
+            "dependency_set_commitment",
+            "scope_state_commitment_after",
+            "committed"
+          ],
+          "properties": {
+            "isolation": { "const": "serializable" },
+            "snapshot_id": { "$ref": "#/$defs/uuidUrn" },
+            "scope_sequence_before": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740990
+            },
+            "scope_sequence_after": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "dependency_set_commitment": { "$ref": "#/$defs/sha256" },
+            "scope_state_commitment_after": { "$ref": "#/$defs/sha256" },
+            "committed": { "const": true }
+          }
+        },
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "outcome",
+            "status",
+            "code",
+            "failures",
+            "replayed",
+            "response_schema",
+            "response_hash",
+            "returned_refs",
+            "relevant_heads",
+            "nonce_disposition",
+            "grant_effects",
+            "idempotency"
+          ],
+          "properties": {
+            "outcome": { "enum": ["success", "accepted_failure"] },
+            "status": {
+              "type": "integer",
+              "minimum": 100,
+              "maximum": 599
+            },
+            "code": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]{1,95}$"
+                },
+                { "type": "null" }
+              ]
+            },
+            "failures": {
+              "type": "array",
+              "maxItems": 256,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]{1,95}$"
+              }
+            },
+            "replayed": { "type": "boolean" },
+            "response_schema": {
+              "oneOf": [
+                { "$ref": "#/$defs/schemaId" },
+                { "type": "null" }
+              ]
+            },
+            "response_hash": { "$ref": "#/$defs/sha256" },
+            "returned_refs": {
+              "type": "array",
+              "maxItems": 1024,
+              "items": { "$ref": "#/$defs/objectRef" }
+            },
+            "relevant_heads": {
+              "type": "array",
+              "maxItems": 1024,
+              "items": { "$ref": "#/$defs/objectRef" }
+            },
+            "nonce_disposition": {
+              "enum": ["newly_reserved", "replay_fresh_nonce"]
+            },
+            "grant_effects": {
+              "type": "array",
+              "maxItems": 1024,
+              "items": { "$ref": "#/$defs/grantEffect" }
+            },
+            "idempotency": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "structural_key_hash",
+                "disposition",
+                "original_result_hash",
+                "original_observation_ref",
+                "original_scope_sequence"
+              ],
+              "properties": {
+                "structural_key_hash": { "$ref": "#/$defs/nullableSha256" },
+                "disposition": {
+                  "enum": ["not_applicable", "created", "replayed"]
+                },
+                "original_result_hash": { "$ref": "#/$defs/nullableSha256" },
+                "original_observation_ref": {
+                  "$ref": "#/$defs/nullableExternalArtifactRef"
+                },
+                "original_scope_sequence": {
+                  "oneOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 9007199254740991
+                    },
+                    { "type": "null" }
+                  ]
+                }
+              }
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": { "outcome": { "const": "success" } },
+                "required": ["outcome"]
+              },
+              "then": {
+                "properties": {
+                  "status": {
+                    "type": "integer",
+                    "minimum": 200,
+                    "maximum": 299
+                  },
+                  "code": { "type": "null" },
+                  "failures": { "type": "array", "maxItems": 0 },
+                  "response_schema": { "$ref": "#/$defs/schemaId" }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": { "outcome": { "const": "accepted_failure" } },
+                "required": ["outcome"]
+              },
+              "then": {
+                "properties": {
+                  "status": {
+                    "type": "integer",
+                    "minimum": 300,
+                    "maximum": 599
+                  },
+                  "code": {
+                    "type": "string",
+                    "pattern": "^[a-z][a-z0-9_]{1,95}$"
+                  },
+                  "response_schema": { "type": "null" },
+                  "returned_refs": { "type": "array", "maxItems": 0 },
+                  "grant_effects": { "type": "array", "maxItems": 0 }
+                }
+              }
+            }
+          ]
+        },
+        "page": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "ordering", "boundary", "cursor"],
+          "properties": {
+            "kind": { "const": "single_result" },
+            "ordering": { "const": "not_applicable" },
+            "boundary": { "type": "null" },
+            "cursor": { "type": "null" }
+          }
+        },
+        "observation_hash": { "$ref": "#/$defs/sha256" },
+        "service_signature": { "$ref": "#/$defs/signature" },
+        "not_claiming": { "$ref": "#/$defs/notClaiming" }
+      }
+    },
+    "kernelSuccess": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ok", "status", "body", "replayed"],
+      "properties": {
+        "ok": { "const": true },
+        "status": {
+          "type": "integer",
+          "minimum": 200,
+          "maximum": 299
+        },
+        "body": {
+          "type": "object",
+          "description": "Validated separately by the frozen registry against service_observation.result.response_schema."
+        },
+        "replayed": { "type": "boolean" }
+      }
+    },
+    "kernelFailure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ok", "status", "code", "failures"],
+      "properties": {
+        "ok": { "const": false },
+        "status": {
+          "type": "integer",
+          "minimum": 300,
+          "maximum": 599
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]{1,95}$"
+        },
+        "failures": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,95}$"
+          }
+        }
+      }
+    },
+    "localObservedResult": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema",
+            "disposition",
+            "kernel",
+            "service_observation"
+          ],
+          "properties": {
+            "schema": { "const": "cairn.local_observed_result.v0.1" },
+            "disposition": { "const": "committed_success" },
+            "kernel": { "$ref": "#/$defs/kernelSuccess" },
+            "service_observation": {
+              "allOf": [
+                { "$ref": "#/$defs/serviceObservation" },
+                {
+                  "type": "object",
+                  "required": ["result"],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": ["outcome"],
+                      "properties": {
+                        "outcome": { "const": "success" }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema",
+            "disposition",
+            "kernel",
+            "service_observation"
+          ],
+          "properties": {
+            "schema": { "const": "cairn.local_observed_result.v0.1" },
+            "disposition": { "const": "committed_accepted_failure" },
+            "kernel": { "$ref": "#/$defs/kernelFailure" },
+            "service_observation": {
+              "allOf": [
+                { "$ref": "#/$defs/serviceObservation" },
+                {
+                  "type": "object",
+                  "required": ["result"],
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "required": ["outcome"],
+                      "properties": {
+                        "outcome": { "const": "accepted_failure" }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema",
+            "disposition",
+            "kernel",
+            "service_observation"
+          ],
+          "properties": {
+            "schema": { "const": "cairn.local_observed_result.v0.1" },
+            "disposition": { "const": "rolled_back_failure" },
+            "kernel": { "$ref": "#/$defs/kernelFailure" },
+            "service_observation": { "type": "null" }
+          }
+        }
+      ]
+    }
+  }
+}
