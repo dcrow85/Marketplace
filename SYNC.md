@@ -64,6 +64,25 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service thirteenth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `035ca82b0537e084eded3b773cef33f1df0cc4a1`
+  is rejected by all three usable clean-archive reviewers. Accepted findings:
+  the stored request's excluded signature proof was not cryptographically
+  reverified; the signed query commitment was produced but not recomputed;
+  historical observation verification validated only the selected profile
+  prefix, not a malformed later suffix; operational history could admit an
+  uncommitted future version as current; and receiver namespace stability was
+  checked after history existed rather than before a transaction could publish.
+  Thirteenth-pass remediation verifies the exact request schema, object/body
+  bindings, transaction-visible key lifecycle, and Ed25519 proof; recomputes the
+  query commitment; validates the complete profile chain; bounds and
+  cross-binds every operational version; rejects an actual operation-qualified
+  receiver at preflight with zero callback/state delta; and verifies the entire
+  staged history again before publication. The working result is 31 cases at
+  `sha-256:4fce83bfd0545c6bce5dee28f4f3d029583b057289c03118a03d59d7dfefb268`.
+  It remains under review; `protocol/` and `mockups/` remain untouched and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service twelfth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `a50f546fd559e8d9b3034b937e0372e0b4c54e6d`
   is rejected by all three usable clean-archive reviewers. Accepted findings:

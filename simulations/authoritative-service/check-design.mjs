@@ -52,7 +52,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:37191919df69558b8b3df50850ea1d86873950a137c31cdc7491b73223b7a66f";
+  "sha-256:4fce83bfd0545c6bce5dee28f4f3d029583b057289c03118a03d59d7dfefb268";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -3213,8 +3213,12 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "host_runtime_key_id",
   "host_trust_profile_hash",
   "host_trust_profile_id",
+  "operational_version_future_sequence",
   "owner_counter_substitution",
   "receiver_operation_qualified_namespace",
+  "request_envelope_signature_signed_hash",
+  "request_envelope_signature_value",
+  "request_query_commitment",
   "rich_actor_id",
   "rich_authority_namespace",
   "rich_created_global_commit_sequence",
@@ -3277,6 +3281,7 @@ const EXPECTED_SERVICE_PROFILE_MUTATIONS = [
   "profile_expired_key",
   "profile_future_created",
   "profile_historical_expired_at_creation",
+  "profile_historical_invalid_suffix",
   "profile_historical_missing_current",
   "profile_historical_revoked_key",
   "profile_missing_current_key",
@@ -3497,6 +3502,22 @@ assertCompositeRollback(
   { callbackCommit: false }
 );
 
+const actualReceiverFailure = compositeProbe.receiver_stability_failure;
+assert.equal(
+  actualReceiverFailure.raw.code,
+  "receiver_authentication_invalid"
+);
+assert.equal(actualReceiverFailure.trace.callback_value, null);
+assert.deepEqual(actualReceiverFailure.trace.callback_access_trace, []);
+assertCompositeRollback(
+  "receiver_stability_preflight",
+  actualReceiverFailure.trace,
+  {
+    callbackCommit: null,
+    wrapperCode: "receiver_authentication_invalid"
+  }
+);
+
 const originSidecar = compositeProbe.origin.sidecar;
 function assertActualCompositeMutationRejected(
   caseId,
@@ -3511,6 +3532,40 @@ function assertActualCompositeMutationRejected(
     `actual composite mutation escaped: ${caseId}`
   );
 }
+assertActualCompositeMutationRejected(
+  "independent_request_signature_value",
+  originSidecar,
+  (sidecar) => {
+    const row = sidecar.request_envelopes[0];
+    const envelope = JSON.parse(row.canonical_envelope_bytes);
+    envelope.signature.value = "A".repeat(86);
+    row.canonical_envelope_bytes = canonicalText(envelope);
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_future_operational_version",
+  originSidecar,
+  (sidecar) => {
+    const projection = sidecar.current_projections.find(
+      ({ table }) => table === "objects"
+    );
+    const prior = sidecar.operational_versions
+      .filter(
+        (version) =>
+          version.table === projection.table &&
+          version.structural_key === projection.structural_key
+      )
+      .sort(
+        (left, right) =>
+          right.valid_from_global_sequence -
+            left.valid_from_global_sequence
+      )[0];
+    sidecar.operational_versions.push({
+      ...structuredClone(prior),
+      valid_from_global_sequence: sidecar.global_sequence + 1
+    });
+  }
+);
 const actualRichRow = originSidecar.rich_idempotency_rows[0];
 for (const field of Object.keys(actualRichRow)) {
   assertActualCompositeMutationRejected(

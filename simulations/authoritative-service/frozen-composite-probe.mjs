@@ -18,7 +18,8 @@ import {
   objectRefKey,
   signatureInput,
   valueAtPointer,
-  verifyEd25519
+  verifyEd25519,
+  verifyObjectBindings
 } from "../../protocol/lib/core.mjs";
 import { createAjv } from "../../protocol/lib/schemas.mjs";
 import { loadReferenceFoundation } from "../../protocol/reference-service/service.mjs";
@@ -282,10 +283,15 @@ export function verifyCompositeObservation(
     ({ key_id: keyId }) => keyId === serviceKeyProfile.current_key_id
   );
   return verifyServiceKeyProfileChain(
-    effectiveChain,
-    observation?.observed_at,
-    observation?.service?.key_profile_hash
+    profileChain,
+    COMPOSITE_FIXTURE.now,
+    profileChain.at(-1).profile_hash
   ) &&
+    verifyServiceKeyProfileChain(
+      effectiveChain,
+      observation?.observed_at,
+      observation?.service?.key_profile_hash
+    ) &&
     profileChain.slice(profileIndex + 1).every(
       (profile) =>
         compareProtocolInstants(
@@ -722,6 +728,47 @@ function operationalVersionFor(projection, globalSequence) {
   };
 }
 
+const OPERATIONAL_VERSION_KEYS = [
+  "canonical_row_bytes",
+  "canonical_row_hash",
+  "owner_id",
+  "owner_kind",
+  "structural_key",
+  "table",
+  "valid_from_global_sequence",
+  "visibility"
+];
+
+function verifyOperationalVersionRecord(version, maximumSequence) {
+  try {
+    if (
+      !hasExactKeys(version, OPERATIONAL_VERSION_KEYS) ||
+      !Number.isSafeInteger(version.valid_from_global_sequence) ||
+      version.valid_from_global_sequence < 0 ||
+      version.valid_from_global_sequence > maximumSequence
+    ) {
+      return false;
+    }
+    const projection = JSON.parse(version.canonical_row_bytes);
+    const expectedOwnerKind = projection.columns.owner_kind ??
+      (projection.columns.principal_id ? "principal" : "service");
+    const expectedOwnerId = projection.columns.owner_id ??
+      projection.columns.principal_id ??
+      COMPOSITE_FIXTURE.service_id;
+    return canonicalText(projection) === version.canonical_row_bytes &&
+      canonicalHash(projection) === version.canonical_row_hash &&
+      validateOperationalProjection(projection) &&
+      version.table === projection.table &&
+      version.structural_key === projection.structural_key &&
+      version.visibility ===
+        (projection.columns.visibility ?? "private") &&
+      version.owner_kind === expectedOwnerKind &&
+      version.owner_id === expectedOwnerId;
+  } catch {
+    return false;
+  }
+}
+
 function ownerScopeCommitment(ownerKind, ownerId, scopeSequence, projections) {
   const committedRows = projections.map((projection) => [
     projection.table,
@@ -757,6 +804,40 @@ function queryCommitment(contract, context, hostContextHash) {
     ordering: null,
     page_boundary: null
   });
+}
+
+function receiverStableBinding(record) {
+  return canonicalText([
+    record.account_tenant_commitment,
+    record.principal_id,
+    record.actor_id,
+    record.runtime_key_id,
+    record.authority_namespace_raw,
+    record.trust_profile_id,
+    record.trust_profile_hash,
+    record.authentication_evidence_commitment,
+    record.assertion_level
+  ]);
+}
+
+function receiverAuthenticationFitsHistory(sidecar, candidate) {
+  if (!validateReceiverAuthenticationRecord(candidate)) return false;
+  for (const { record } of sidecar.receiver_authentication_records) {
+    if (
+      record.account_tenant_commitment ===
+        candidate.account_tenant_commitment &&
+      record.authority_namespace_raw !== candidate.authority_namespace_raw
+    ) {
+      return false;
+    }
+    if (
+      record.authentication_handle === candidate.authentication_handle &&
+      receiverStableBinding(record) !== receiverStableBinding(candidate)
+    ) {
+      return false;
+    }
+  }
+  return true;
 }
 
 function registeredResponseValidatorBinding(foundation, operation) {
@@ -834,6 +915,22 @@ export function verifyCompositeHistory(sidecar) {
       sidecar.access_traces.length !== sidecar.global_sequence ||
       Object.keys(sidecar.observation_by_envelope).length !==
         sidecar.global_sequence
+    ) {
+      return false;
+    }
+    if (
+      !sidecar.operational_versions.every((version) =>
+        verifyOperationalVersionRecord(version, sidecar.global_sequence)
+      ) ||
+      sidecar.operational_versions.some(
+        (version) =>
+          version.valid_from_global_sequence === 0 &&
+          !sidecar.dependency_rows.some(
+            (entry) =>
+              entry.table_name === version.table &&
+              entry.structural_key === version.structural_key
+          )
+      )
     ) {
       return false;
     }
@@ -930,6 +1027,10 @@ export function verifyCompositeHistory(sidecar) {
       const envelopeSchema = requestEnvelope === null
         ? null
         : FROZEN_FOUNDATION.schemasByObjectId.get(requestEnvelope.schema);
+      const envelopeValidator = envelopeSchema === null ||
+          envelopeSchema === undefined
+        ? null
+        : FROZEN_FOUNDATION.ajv.getSchema(envelopeSchema.$id);
       const expectedHostContext = receiverAuthentication === undefined
         ? null
         : hostAuthenticationContextFromReceiver(receiverAuthentication);
@@ -947,6 +1048,9 @@ export function verifyCompositeHistory(sidecar) {
         !validateReceiverAuthenticationRecord(receiverAuthentication) ||
         !requestEnvelope ||
         !envelopeSchema ||
+        typeof envelopeValidator !== "function" ||
+        !envelopeValidator(requestEnvelope) ||
+        verifyObjectBindings(requestEnvelope, envelopeSchema).length !== 0 ||
         canonicalText(requestEnvelope) !==
           requestEnvelopeRow.canonical_envelope_bytes ||
         objectHash(requestEnvelope, envelopeSchema) !==
@@ -971,6 +1075,14 @@ export function verifyCompositeHistory(sidecar) {
         }) ||
         canonicalText(expectedHostContext) !==
           canonicalText(hostAuthenticationContext) ||
+        observation.request.query_commitment !== queryCommitment(
+          observation.request.operation_contract,
+          {
+            authentication: expectedFrozenAuthentication,
+            envelope: requestEnvelope
+          },
+          hostAuthenticationContext.context_hash
+        ) ||
         receiverAuthentication.authority_namespace_commitment !==
           receiverAuthorityNamespaceCommitment(
             receiverAuthentication.account_tenant_commitment,
@@ -1134,6 +1246,39 @@ export function verifyCompositeHistory(sidecar) {
           canonicalText([version.table, version.structural_key]),
           projection
         );
+      }
+      const requestSigningKey = currentVersions.get(canonicalText([
+        "validation_keys",
+        canonicalText([requestEnvelope.signature.key_id])
+      ]));
+      if (
+        !requestSigningKey ||
+        requestEnvelope.signature.profile !== "cairn-ed25519-v0.1" ||
+        requestEnvelope.signature.key_id !==
+          requestEnvelope.sender.runtime_key_id ||
+        requestEnvelope.signature.signed_hash !==
+          requestEnvelope.envelope_hash ||
+        requestSigningKey.columns.controller !==
+          requestEnvelope.sender.actor_id ||
+        requestSigningKey.columns.key_type !== "Ed25519" ||
+        requestSigningKey.columns.status !== "active" ||
+        requestSigningKey.columns.revocation_time !== null ||
+        compareProtocolInstants(
+          requestSigningKey.columns.not_before,
+          requestEnvelope.signature.signed_at
+        ) > 0 ||
+        compareProtocolInstants(
+          requestEnvelope.signature.signed_at,
+          requestSigningKey.columns.expires_at
+        ) >= 0 ||
+        !verifyEd25519({
+          schemaId: requestEnvelope.schema,
+          objectHash: requestEnvelope.envelope_hash,
+          publicKey: requestSigningKey.columns.public_key,
+          signature: requestEnvelope.signature.value
+        })
+      ) {
+        return false;
       }
       const phase = serviceCommit.transaction_kind === "replay"
         ? "replay"
@@ -3437,6 +3582,13 @@ function stageAuthoritativeCommit(
       artifact_hash: observation.observation_hash
     };
   }
+  if (!verifyCompositeHistory(staged)) {
+    throw new CompositeStageFault(
+      activeStage,
+      staged,
+      new Error("staged authoritative history is internally inconsistent")
+    );
+  }
 
   return staged;
   } catch (error) {
@@ -3456,13 +3608,21 @@ class CompositeStageFault extends Error {
   }
 }
 
-function richIdempotencyPreflight(sidecar, kernelDraft, context) {
+function compositePreflightFailure(sidecar, kernelDraft, context) {
   if (
     !verifyCompositeHistory(sidecar) ||
     canonicalText(sortedMapEntries(kernelDraft.idempotencyRecords)) !==
     canonicalText(sidecar.frozen_idempotency_rows)
   ) {
-    return false;
+    return "idempotency_integrity_invalid";
+  }
+  if (
+    !receiverAuthenticationFitsHistory(
+      sidecar,
+      context.receiver_authentication
+    )
+  ) {
+    return "receiver_authentication_invalid";
   }
   const databaseKey = idempotencyLookupKey(context);
   const frozenRow = kernelDraft.idempotencyRecords.get(databaseKey);
@@ -3472,12 +3632,12 @@ function richIdempotencyPreflight(sidecar, kernelDraft, context) {
         context.authentication.authorityNamespace &&
       row.idempotency_key === context.envelope.idempotency_key
   );
-  if (!frozenRow && richRows.length === 0) return true;
+  if (!frozenRow && richRows.length === 0) return null;
   if (
     !frozenRow ||
     richRows.length !== 1
   ) {
-    return false;
+    return "idempotency_integrity_invalid";
   }
   const row = richRows[0];
   return row.operation_name === context.envelope.message_type &&
@@ -3486,7 +3646,9 @@ function richIdempotencyPreflight(sidecar, kernelDraft, context) {
     row.actor_id === context.authentication.actorId &&
     row.runtime_key_id === context.envelope.sender.runtime_key_id &&
     canonicalText(row.result_ref) ===
-      canonicalText(frozenRow.result_ref);
+      canonicalText(frozenRow.result_ref)
+    ? null
+    : "idempotency_integrity_invalid";
 }
 
 class CompositeReferenceStores extends MemoryReferenceStores {
@@ -3615,15 +3777,16 @@ class CompositeReferenceStores extends MemoryReferenceStores {
     try {
       this.accessRecorder.active = false;
       const callbackBefore = kernelSnapshot(kernelDraft);
-      if (!richIdempotencyPreflight(
+      const preflightFailureCode = compositePreflightFailure(
         this.sidecar,
         kernelDraft,
         context
-      )) {
+      );
+      if (preflightFailureCode !== null) {
         const wrapperFailure = {
           status: 503,
-          code: "idempotency_integrity_invalid",
-          failures: ["idempotency_integrity_invalid"],
+          code: preflightFailureCode,
+          failures: [preflightFailureCode],
           stage: "preflight"
         };
         const trace = {
@@ -4522,6 +4685,54 @@ export async function runCompositeProbe() {
         trace.events_commitment;
     });
   };
+  rejectHistoryMutation(
+    "request_envelope_signature_value",
+    origin.stores.sidecar,
+    (sidecar) => {
+      const row = sidecar.request_envelopes.find(
+        ({ global_sequence: sequence }) => sequence === 1
+      );
+      assert.ok(row);
+      const envelope = JSON.parse(row.canonical_envelope_bytes);
+      envelope.signature.value = "A".repeat(86);
+      row.canonical_envelope_bytes = canonicalText(envelope);
+    }
+  );
+  rejectHistoryMutation(
+    "request_envelope_signature_signed_hash",
+    origin.stores.sidecar,
+    (sidecar) => {
+      const row = sidecar.request_envelopes.find(
+        ({ global_sequence: sequence }) => sequence === 1
+      );
+      assert.ok(row);
+      const envelope = JSON.parse(row.canonical_envelope_bytes);
+      envelope.signature.signed_hash = ZERO_HASH;
+      row.canonical_envelope_bytes = canonicalText(envelope);
+    }
+  );
+  rejectHistoryMutation(
+    "request_query_commitment",
+    origin.stores.sidecar,
+    (sidecar) => {
+      replaceSignedObservation(sidecar, 1, (draft) => {
+        draft.request.query_commitment = `sha-256:${"4".repeat(64)}`;
+      });
+    }
+  );
+  rejectHistoryMutation(
+    "operational_version_future_sequence",
+    origin.stores.sidecar,
+    (sidecar) => {
+      const projection = sidecar.current_projections.find(
+        ({ table }) => table === "objects"
+      );
+      assert.ok(projection);
+      sidecar.operational_versions.push(
+        operationalVersionFor(projection, sidecar.global_sequence + 1)
+      );
+    }
+  );
   for (const [caseId, mutate] of [
     ["trace_remove_one_event", (events) => events.splice(0, 1)],
     ["trace_key_substitution", (events) => {
@@ -4887,6 +5098,18 @@ export async function runCompositeProbe() {
     SERVICE_KEY_PROFILE_CHAIN
   );
   assert.equal(historicalProfilePositive, true);
+  {
+    const invalidSuffix = reboundCurrentProfile((draft) => {
+      draft.keys[0].controller = "cairn:invalid-later-controller";
+    });
+    const rejected = verifyCompositeObservation(
+      historicalObservation,
+      invalidSuffix
+    ) === false;
+    assert.equal(rejected, true, "profile_historical_invalid_suffix");
+    serviceProfileMutationControls.profile_historical_invalid_suffix =
+      rejected;
+  }
   for (const [caseId, profileChain] of [
     ["profile_wrong_controller", reboundCurrentProfile((draft) => {
       draft.keys[0].controller = "cairn:substituted-controller";
@@ -5377,6 +5600,55 @@ export async function runCompositeProbe() {
   assert.deepEqual(grantTrace.kernel_after, grantBaselineKernel);
   assert.deepEqual(grantTrace.sidecar_after, grantBaselineSidecar);
 
+  const receiverStabilityScenario =
+    await buildIntentScenario("receiver_stability_origin");
+  const receiverStabilityBaselineKernel =
+    kernelSnapshot(receiverStabilityScenario.stores);
+  const receiverStabilityBaselineSidecar =
+    sidecarSnapshot(receiverStabilityScenario.stores.sidecar);
+  const receiverStabilityEnvelope =
+    receiverStabilityScenario.helpers.freshTransport(
+      receiverStabilityScenario.envelope,
+      59
+    );
+  const operationQualifiedReceiver = receiverAuthenticationRecord({
+    ...receiverStabilityScenario.authentication,
+    authorityNamespace:
+      `${receiverStabilityScenario.authentication.authorityNamespace}|intent.put`
+  }, receiverStabilityEnvelope);
+  const operationQualifiedAuthentication =
+    frozenAuthenticationFromReceiver(operationQualifiedReceiver);
+  receiverStabilityScenario.stores.setContext({
+    case_id: "receiver_stability_preflight",
+    phase: "replay",
+    envelope: receiverStabilityEnvelope,
+    authentication: operationQualifiedAuthentication,
+    receiver_authentication: operationQualifiedReceiver
+  });
+  const receiverStabilityRaw =
+    receiverStabilityScenario.harness.service.handleEnvelope(
+      receiverStabilityEnvelope,
+      operationQualifiedAuthentication
+    );
+  const receiverStabilityTrace =
+    receiverStabilityScenario.stores.traces.at(-1);
+  assert.equal(
+    receiverStabilityRaw.code,
+    "receiver_authentication_invalid"
+  );
+  assert.equal(receiverStabilityTrace.callback_commit, null);
+  assert.equal(receiverStabilityTrace.callback_value, null);
+  assert.deepEqual(receiverStabilityTrace.callback_access_trace, []);
+  assert.equal(receiverStabilityTrace.wrapper_failure.stage, "preflight");
+  assert.deepEqual(
+    receiverStabilityTrace.kernel_after,
+    receiverStabilityBaselineKernel
+  );
+  assert.deepEqual(
+    receiverStabilityTrace.sidecar_after,
+    receiverStabilityBaselineSidecar
+  );
+
   const preflightFaults = {};
   for (const kind of [
     "rich_row_corrupt",
@@ -5618,6 +5890,10 @@ export async function runCompositeProbe() {
       raw: structuredClone(grantRaw),
       trace: grantTrace
     },
+    receiver_stability_failure: {
+      raw: structuredClone(receiverStabilityRaw),
+      trace: receiverStabilityTrace
+    },
     preflight_faults: preflightFaults,
     interleaved_history: {
       isolated_origin_root: isolatedOriginRoot,
@@ -5643,7 +5919,7 @@ if (
       Object.keys(report.unexpected_wrapper_faults).length +
       Object.keys(report.preflight_faults).length +
       report.interleaved_history.foreign_traces.length +
-      5
+      6
     }\n`
   );
   process.stdout.write(
