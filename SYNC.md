@@ -64,6 +64,23 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service third audit remediation]` 2026-07-23 · Codex —
+  Exact candidate `3394747` is not a pass. Three clean-archive auditors found
+  no protocol drift but accepted two P1s and material P2s: the observation
+  machine schema rejected every real registry request/response URI while
+  allowing arbitrary operation names; replay-integrity decisions read rich
+  idempotency fields omitted from the signed root; key profiles admitted
+  null-expiry/noncanonical/duplicate/missing-current keys; dependency manifests
+  did not machine-enforce normalization; accepted-failure hashing was ambiguous;
+  signed nonclaims omitted `agent_onboarding`; and core entrypoint/self-hash/
+  signature/outcome vectors were incomplete. Remediation machine-pins the exact
+  nine registry tuples, full wrapper-integrity idempotency projection, finite
+  key lifecycle, semantic dependency checker, exact canonical kernel-result
+  hash, 41 ordered nonclaims, all entrypoint/result fixtures, and direct
+  AS-15/20/26/31/33/37..40 negatives. A new frozen candidate must repeat the
+  independent audit before implementation; `protocol/` remains untouched and
+  no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service second audit remediation]` 2026-07-23 · Codex —
   Exact candidate `8c06892` is not a pass. Three repeat cold auditors found no
   kernel drift but accepted remaining design gaps: validation-key resolver state

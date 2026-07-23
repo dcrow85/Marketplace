@@ -1,8 +1,9 @@
 # Cairn authoritative store and signed service-observation change spec v0.1
 
-**Status:** two cold-audit rounds rejected frozen candidates `b86ceae` and
-`8c06892`; every P1/material-P2 finding is accepted for remediation. This revised
-local design is not independently re-audited, implemented, or conforming.
+**Status:** three cold-audit rounds rejected frozen candidates `b86ceae`,
+`8c06892`, and `3394747`; every P1/material-P2 finding is accepted for
+remediation. This revised local design is not independently re-audited,
+implemented, or conforming.
 
 **Depends on:** the independently audited proposal-only BYO checkpoint at
 `5216424` and the unchanged nine-operation kernel tree
@@ -172,8 +173,8 @@ The commitment preimage is the domain-separated JCS array:
 
 Rows sort by UTF-8 table name and then UTF-8 structural key. The exact included
 tables are `objects`, `runtime_bindings`, `data_grants`, `effect_descriptors`,
-`validation_keys`, `grant_state`, `used_nonces`, and the frozen two-field
-idempotency-record projection. Membership is every row the kernel
+`validation_keys`, `grant_state`, `used_nonces`, and the wrapper-integrity
+idempotency-record projection. Membership is every row the kernel or wrapper
 validation/result path materially read or wrote for this accepted transaction,
 including public runtime bindings and every resolved signature key; unrelated
 rows are excluded. Instrumented store/resolver access records this closed
@@ -190,11 +191,13 @@ The committed row bytes use these closed owner-visible column projections:
 | `validation_keys` | key ID, controller, type, public key, status, validity, revocation time, profile revision |
 | `grant_state` | grant ref, status, revocation nonce, remaining disclosures, state version, owner scope sequence |
 | `used_nonces` | nonce, envelope hash, operation, owner, owner scope sequence |
-| `idempotency_records` | structural-key hash, frozen fingerprint, result ref, owner scope sequence |
+| `idempotency_records` | structural-key hash, operation/fingerprint, principal, actor, runtime key, result ref/hash, origin and creation global/scope sequences |
 
 Global sequences, global roots, observation/commit refs, signatures, raw
-authentication evidence, and rich idempotency metadata never enter these row
-bytes.
+authentication evidence, raw authority namespace, and raw idempotency key never
+enter these row bytes. Idempotency origin/creation global sequences are
+operator-side integrity inputs inside the private row/root; they are never
+serialized in an observation or returned to a caller.
 
 The machine schema at
 `simulations/authoritative-service/authoritative-service.schema.json#/$defs/operationalRowProjection`
@@ -208,7 +211,7 @@ key spelling is allowed.
 The commitment is a transaction-scope root, not a commitment to all tenant or
 global state. It explicitly excludes observation bytes/signatures/refs, service
 commit rows, scope-commit rows, key-profile bytes, authentication evidence, and
-the richer idempotency metadata columns. Therefore it has no self-reference.
+raw idempotency namespace/key columns. Therefore it has no self-reference.
 Every included row has an append-only version sufficient for the operator-side
 verifier to reconstruct the root at the internal global sequence mapped from the
 signed opaque snapshot ID and owner scope sequence.
@@ -373,7 +376,7 @@ key_type                     Ed25519
 public_key
 status                       active | revoked
 not_before
-expires_at
+expires_at                    required finite protocol timestamp
 revocation_time              null iff never revoked
 profile_revision
 ```
@@ -387,7 +390,10 @@ context. Every process loads the same manifest hash from the database.
 
 Key rotation/revocation inserts a new version in later profiles; Phase B itself
 uses sealed deterministic fixture history. Caller-supplied key records are never
-accepted.
+accepted. Every key array has unique IDs and is strictly UTF-8 sorted by key ID;
+public keys/signatures use the frozen canonical base64url formats and key IDs
+use URI-reference syntax. Validation manifest keys have required finite expiry
+and the frozen lifecycle fields.
 
 ### 5.6 `grant_state`
 
@@ -441,12 +447,22 @@ principal_id
 actor_id
 runtime_key_id               nullable
 result_ref_key
-response_hash
+kernel_result_hash
 origin_global_commit_sequence
 origin_scope_sequence
 created_global_commit_sequence
 created_scope_sequence
 ```
+
+`operation_name` is exactly `intent.put | action.prepare`; no read or
+consequential name is admitted to this table.
+`structural_key_hash` is exactly `SHA-256(UTF8(structural_key))`.
+`kernel_result_hash` is exactly the canonical frozen local result hash defined
+in §7. The full
+operation, owner/runtime, result, hash, and origin/creation sequence projection
+is versioned and dependency-bound whenever the wrapper decides whether a replay
+is safe. Only `authority_namespace` and `idempotency_key` remain receiver-private
+raw columns.
 
 The row is insert-only. A replay may read it but never rewrite its fingerprint,
 operation, owner, result, response, or origin sequence.
@@ -461,7 +477,9 @@ projects exactly:
 into `draft.idempotencyRecords`. On a new validator write, the adapter accepts
 only those two closed fields, combines them atomically with receiver-owned
 request/auth/result metadata, and inserts the durable row. A validator replay
-cannot erase or rewrite the richer columns.
+cannot erase or rewrite the richer columns. The wrapper separately validates
+the full integrity projection before it accepts the kernel replay; a mismatch
+after nonce admission follows the signed `accepted_failure` branch.
 
 ### 5.9 Version and commit history
 
@@ -564,8 +582,14 @@ records the resolved base row. This prevents a missing identity, URI, runtime,
 grant, idempotency tuple, nonce, or key from being silently borrowed from
 another snapshot. Any uninstrumented read/write, unknown alias, unknown
 `access_kind`, or dependency-table omission is a hard transaction failure.
-The manifest sorts by UTF-8 table name, structural key, then access kind and
-hashes the closed `DependencyEntry[]` schema.
+Each entry also carries
+`entry_key = JCS([table_name, structural_key])`. One transaction may contain
+only one coalesced entry per `entry_key`; duplicates are schema-invalid. The
+manifest sorts entries by UTF-8 `entry_key` and hashes the closed
+`DependencyEntry[]` schema. The semantic manifest verifier independently
+recomputes every `entry_key`, coalescing result, alias key, absent sentinel,
+present row hash, strict ordering, and dependency self-hash before accepting a
+root.
 
 The observation is constructed after sequence allocation and operational
 versioning, then its ref is inserted into both commit rows in the same
@@ -599,7 +623,7 @@ Phase A freezes one machine-readable external contract:
 path:
   simulations/authoritative-service/authoritative-service.schema.json
 canonical JCS hash:
-  sha-256:f65d946131f6b2a6e203728e36508fef7a2dbc67fd5092b47f3d63c5c3a61020
+  sha-256:225a6e85866b98937b91f77a265c7a8a7aa3c6d38022ea043a3b0720f47297fd
 ```
 
 Its nine independently addressable entry points are:
@@ -622,16 +646,31 @@ and committed column is explicit. The top-level `oneOf` also permits validating
 an artifact without selecting a definition programmatically. The companion
 `simulations/authoritative-service/check-design.mjs` compiles the bundle in
 strict Draft 2020-12 mode and pins its definition inventory, entry points,
-nonclaim order, hashing annotations, and canonical hash. The prose examples
-below are explanatory only; if they differ, the frozen machine schema wins.
+nonclaim order, hashing annotations, and canonical hash. It imports the frozen
+registry/profile tuples and validates all nine exact
+operation/request/response/consequence contracts while rejecting
+`action.execute`. It deterministically constructs and validates every one of the
+nine external entrypoint families, all three local-result branches, the actual
+capabilities response, self-hashes, service Ed25519 domain/signature bytes,
+profile/current-key lifecycle, host-auth, dependency and genesis manifests, and
+kernel/observation cross-field equality. It pins the fixture public key and the
+profile, key-manifest, host-context, dependency, genesis-manifest/genesis-state,
+success-observation, and accepted-failure observation hashes/signatures.
+Independent negatives cover
+unknown fields, noncanonical/duplicate/missing-current keys, nonzero owner
+genesis, duplicated/reordered/wrong-absent/wrong-present dependencies,
+consequential operations, every rich idempotency integrity-field hash,
+outcome swaps, and kernel-result mismatch. The prose examples below are
+explanatory only; if they differ, the frozen machine schema wins.
 
 Exact RFC 8785/JCS text and SHA-256 results for a committed row, absent lookup,
-receiver authority namespace, query commitment, and first owner-scoped root are
+receiver authority namespace, query commitment with real registry URIs, first
+owner-scoped root, and accepted-failure kernel result are
 frozen in
 `simulations/authoritative-service/canonical-vectors.json` at canonical hash
-`sha-256:b4420c3f0e7603c61d4d86b91d4750df1567559f868127ef7ef490770ec4ce60`.
-The checker recomputes every vector and validates the row through both its
-named definition and the bundle's top-level union.
+`sha-256:18fb8a5b2fd2a05f1b95dd2f0de4c1fb1be46295ab49f2162c2dc3440152d4e0`.
+The checker recomputes every vector and validates all entrypoint fixtures
+through both their named definitions and the bundle's top-level union.
 
 ## 6. Signed service observation v0.1
 
@@ -666,6 +705,12 @@ harness/out-of-band configuration. It requires
 `key.controller === service_id`, exact store/profile/bundle scope, and
 `service_signature.signed_at === observed_at`. Historical validation uses the
 append-only configured key-profile chain at that instant.
+
+The profile key array has unique IDs and strict UTF-8 key-ID order.
+`current_key_id` resolves exactly one key; that key is active, unrevoked,
+controlled by the exact service ID, and current within its required finite
+`not_before`/`expires_at` interval. Schema validation rejects null expiry and
+noncanonical Ed25519 encodings before lifecycle verification.
 
 This proves locally configured service-key control, not authenticated service
 discovery, production identity, DNS control, or transport identity.
@@ -762,11 +807,14 @@ access:
 request:
   envelope_hash: sha-256:<exact signed envelope>
   message_id: urn:uuid:<uuid>
-  operation: projection.get
+  operation_contract:
+    operation: projection.get
+    request_schema: https://cairn.cards/protocol/schemas/v0.1/operation-bodies.schema.json#/$defs/projectionGetRequest
+    response_schema: https://cairn.cards/protocol/schemas/v0.1/scoped-projection.schema.json
+    consequence: private_read
   principal_id: <principal or null>
   actor_id: <authenticated actor>
   runtime_key_id: <exact runtime or null>
-  body_schema: <exact request schema>
   body_hash: sha-256:<exact body>
   subject_refs: []
   authorization_refs: []
@@ -788,7 +836,7 @@ result:
   failures: []
   replayed: false
   response_schema: <exact registered response schema or null for failure>
-  response_hash: sha-256:<JCS response or failure body>
+  kernel_result_hash: sha-256:<JCS exact frozen kernel result>
   returned_refs: []
   relevant_heads: []
   nonce_disposition: newly_reserved | replay_fresh_nonce
@@ -819,6 +867,7 @@ not_claiming:
   - continuation_delivery
   - cross_page_continuity
   - runtime_onboarding
+  - agent_onboarding
   - grant_issuance
   - authenticated_service_discovery
   - production_service_identity
@@ -832,6 +881,7 @@ not_claiming:
   - release
   - waiver
   - external_exactly_once
+  - external_system_idempotency
   - card_authenticity
   - card_condition
   - custody
@@ -861,11 +911,14 @@ reordering, or generic substitutions fail.
 `query_commitment` hashes a closed object containing:
 
 ```text
-operation
+operation_contract:
+  operation
+  request_schema
+  response_schema
+  consequence
 principal_id
 actor_id
 runtime_key_id
-body_schema
 body_hash
 subject_refs
 authorization_refs
@@ -905,9 +958,14 @@ MUST:
   signature, exact controller equality, key-profile hash/lifecycle chain,
   `signed_at === observed_at`, and exact service/store/profile/bundle scope;
 - require signed access fields to equal the immutable repository ACL columns;
-- bind the request envelope hash, body hash, authenticated actor/principal, and
-  host-authentication-context hash and exact registered response schema;
-- recompute the response hash and returned refs;
+- require `operation_contract` to equal one exact
+  `(name, request_schema, response_schema, consequence)` tuple from the frozen
+  nine-operation registry, require `access.consequence` to match it, and reject
+  every other operation name including `action.execute`;
+- bind the request envelope hash/body hash, authenticated actor/principal, and
+  host-authentication-context hash; require a success result's response schema
+  to equal the operation contract and an accepted failure's to be null;
+- recompute the exact frozen kernel-result hash and returned refs;
 - verify scope-sequence and grant-effect arithmetic;
 - parse every structural key as I-JSON, require an array whose re-encoded JCS is
   byte-identical, and recompute the exact table/index key function in §5/§5.9;
@@ -974,13 +1032,25 @@ rolled_back_failure:
   service_observation: null
 ```
 
+For either committed branch:
+
+```text
+kernel_result_hash = SHA-256(UTF8(JCS(kernel)))
+```
+
+Here `kernel` is the exact local frozen result object:
+`{ok:true,status,body,replayed}` or
+`{ok:false,status,code,failures}`. It is not the HTTP adapter's separate
+`{error,failures}` transport body and never hashes headers, framing, or an
+invented wrapper body. A rolled-back result has no observation/hash.
+
 This wrapper is not a protocol object, operation body, or HTTP media profile. The
 inner kernel body remains byte/schema-identical. Observations are stored only in
 the external observation repository, never in `objects`; none of the nine
 operations or two existing HTTP routes can resolve them.
 
 The external wrapper verifier requires `kernel.ok`, status, code/failures,
-replay flag, and canonical body hash to agree exactly with the observation
+replay flag, and canonical kernel-result hash to agree exactly with the observation
 outcome/result branch. A success body is validated through the frozen registry
 schema named only in `service_observation.result.response_schema`; the kernel
 object itself remains the byte/field-identical frozen result and gains no
@@ -1085,32 +1155,32 @@ The first executable drill MUST include at least these independent controls:
 | AS-12 | re-signed service/profile/bundle/store/key/controller/time mutation | trust-profile verifier rejects |
 | AS-13 | re-signed scope sequence/root lacks exact history/commit rows | historical-root verifier rejects |
 | AS-14 | re-signed grant before/after arithmetic mutation | grant/history verifier rejects |
-| AS-15 | idempotency row points to wrong operation/result/owner after valid admission | exactly one fresh nonce/sequence/private `accepted_failure` observation; no object, idempotency, grant, or result mutation |
+| AS-15 | any committed idempotency integrity field points to wrong operation/fingerprint/owner/runtime/result/hash/origin after valid admission | full wrapper-integrity row hash/root changes; exactly one fresh nonce/sequence/private `accepted_failure` observation; no object, idempotency, grant, or result mutation |
 | AS-16 | process dies before database commit | no partial nonce/grant/object/observation state |
 | AS-17 | process dies after commit but before response | committed state remains; delivery remains unknown |
 | AS-18 | opaque cursor or pagination claim appears | schema/verifier rejects for this profile |
 | AS-19 | internal audit repository receives foreign owner context | same private-not-found result; no network route exists |
-| AS-20 | any consequential operation name is submitted | `operation_unknown`; no state change |
+| AS-20 | any unregistered/consequential operation name, including `action.execute`, is submitted or substituted into an observation contract | schema/wrapper returns `operation_unknown`; no state change or observation |
 | AS-21 | observation ACL/owner column differs from signed access block | repository/verifier rejects |
 | AS-22 | enveloped public-read observation is inspected without owner context | private-not-found; no actor/runtime/global metadata leaks |
 | AS-23 | caller/header substitutes authority namespace or host-auth context | wrapper rejects; no idempotency/state change |
 | AS-24 | nested/reused/mismatched process context | adapter rejects before transaction |
 | AS-25 | durable idempotency metadata enters frozen two-field validator view | closed validator projection test rejects extra fields |
-| AS-26 | validator replay/write attempts to erase rich idempotency metadata | immutable durable row remains exact |
+| AS-26 | validator replay/write attempts to erase or mutate any full wrapper-integrity idempotency field | immutable durable row and its version/root remain exact while the kernel still sees only two fields |
 | AS-27 | duplicate, partial, forked, restarted, or concurrent genesis import | one sealed exact genesis or complete rollback |
 | AS-28 | state-root row omitted/reordered/duplicated/history-altered | recomputed historical root rejects |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
 | AS-30 | corrupt replay object, response schema, grant consumption, observation persistence, or commit call | each case matches §8.1 exactly: accepted failures retain only the enumerated nonce/history/observation delta; callback `commit:false` and wrapper/commit failures retain zero delta |
-| AS-31 | wrong/revoked historical service key or altered key-profile chain | observation trust verification rejects |
+| AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key or altered/unsorted key-profile chain | schema/profile/observation trust verification rejects |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
-| AS-33 | `keyResolver` row/version/manifest is missing, raced, revoked, or changed between validation and commit | one transaction-visible key version is dependency-bound; missing/history mutation and cross-process borrowing reject |
+| AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
 | AS-34 | signed access and repository columns agree but owner was derived from actor instead of non-null principal, or principal instead of actor for a permitted principal-less read | independent owner derivation rejects with `observation_owner_mismatch` |
 | AS-35 | header/caller/raw namespace/tenant changes across two operations or raw namespace appears in an observation/result | stable receiver binding is enforced; changed commitment rejects; raw value never serializes |
 | AS-36 | two previously unseen owners perform their first operations concurrently after genesis | both use before `0`/after `1` in separate owner chains; no owner sequence-zero row or cross-owner ancestry appears |
-| AS-37 | every row of the closed outcome/commit matrix is fault-injected | disposition, observation presence, nonce, sequence, object, idempotency, and grant deltas match §8.1 exactly |
-| AS-38 | unknown field, nullable-field substitution, wrong union branch, changed row column, wrong self-hash exclusion, or alternate JCS preimage is supplied to any schema entry point | strict schema/hash verifier rejects; clean canonical vectors remain exact |
-| AS-39 | dependency alias is omitted, absent lookup becomes present during a race, duplicate access changes order, or uninstrumented resolver/store read occurs | canonical manifest/root changes or transaction fails; no borrowed negative read passes |
-| AS-40 | any exact observation nonclaim is omitted, added, reordered, or replaced with a generic term | closed schema and verifier reject |
+| AS-37 | every row of the closed outcome/commit matrix is fault-injected, including local-kernel versus HTTP-failure hashing | disposition, exact canonical kernel-result hash, observation presence, nonce, sequence, object, idempotency, and grant deltas match §7/§8.1 exactly |
+| AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, changed row column, wrong self-hash/signature exclusion, outcome swap, kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
+| AS-39 | dependency alias is omitted, absent lookup becomes present during a race, entry is duplicated/reordered/uncoalesced, absent sentinel/present hash is wrong, or an uninstrumented resolver/store read occurs | schema/semantic manifest/root verification changes or transaction fails; no borrowed negative read passes |
+| AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
 
 Every accepted audit finding receives either a code/schema/test remediation or a
 documented rejection/deferral. No finding may be closed only by prose if a direct
@@ -1204,6 +1274,7 @@ This design does not claim:
 - `continuation_delivery`;
 - `cross_page_continuity`;
 - `runtime_onboarding`;
+- `agent_onboarding`;
 - `grant_issuance`;
 - `authenticated_service_discovery`;
 - `production_service_identity`;
@@ -1217,6 +1288,7 @@ This design does not claim:
 - `release`;
 - `waiver`;
 - `external_exactly_once`;
+- `external_system_idempotency`;
 - `card_authenticity`;
 - `card_condition`;
 - `custody`;
