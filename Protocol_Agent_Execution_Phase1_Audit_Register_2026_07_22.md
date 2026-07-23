@@ -841,3 +841,34 @@ Git archive, so the archive correctly failed the byte-for-byte release check.
 The source collector now excludes Python compiler caches, and a direct mutant
 creates such a cache and requires it to remain outside the release commitment.
 A new containing commit and clean replay are pending.
+
+## Round 46 — portable-kernel and private-projection hardening
+
+Second replacement freeze
+`ef2078f474c75ae17c00b98b70f9a3595f960aaa` passed disposable clean-archive
+`npm ci`, 90/90 authored controls, 101/101 direct mutants, byte-identical
+generation, zero production dependency vulnerabilities, and a 49-file package
+containing no rejected execution file. Three new cold reviewers nevertheless
+rejected that exact commit.
+
+| ID | Sev. | Cold-review finding | Disposition | Replacement control |
+|---|---:|---|---|---|
+| P1R46-R-001 | P1 | `npm pack` omitted `package-lock.json`, so the distributed artifact could not reproduce its advertised install/test path by itself | accepted_and_fixed | The release packages `npm-shrinkwrap.json`; its package gate installs and runs the packed artifact's advertised tests before rebuilding |
+| P1R46-R-002 | P1 | Normal `npm pack` wrote an archive into a source root that the release generator could recursively commit | accepted_and_fixed | Source commitments are the exact package allowlist minus generated `dist`; packing always targets a fresh temporary directory; a direct mutant tries to re-add the archive |
+| P2R46-R-003 | P2 | The generated release had no closed envelope schema and the kernel manifest schema admitted semantically broad values | accepted_and_fixed | Closed release-envelope and manifest schemas require exact profile, hashes, operations, effects, BYO prerequisites, exclusions, and non-claims |
+| P2R46-B-001 | P2 | The BYO claim named identity, grants, refs, and keys but omitted an available authenticated service endpoint and transport binding | accepted_and_fixed | A fifth prerequisite plus explicit service-availability and transport-conformance non-claims are exact machine constants with dedicated mutants |
+| P2R46-B-002 | P2 | The prose ActionProposal example showed `not_claiming: []` despite the machine no-authority boundary | accepted_and_fixed | Root prose and a packaged, directly mutated authority-boundary document require `authority_to_act` and `external_effect` |
+| P2R46-B-003 | P2 | ScopedProjection authenticated disclosure pointer names without carrying the disclosed values | accepted_and_fixed | A signed, bounded I-JSON payload binds each output path to an exact source ObjectRef/path and exact-copy value; disclosed/redacted path overlap is rejected |
+| P2R46-S-001 | P2 | A validly signed projection with future `derived_at` was accepted | accepted_and_fixed | Signed-object currentness includes `derived_at`; the regression proves rejection without nonce or grant-budget consumption |
+| P2R46-S-002 | P2 | Full semantic validation before ownership preflight let cross-principal callers distinguish existing private objects from absent refs | accepted_and_fixed | Access preflight occurs after fresh transport/idempotent replay but before object semantics; foreign correct, wrong-purpose, wrong-use, and absent reads collapse to the same private 404 |
+
+The working replacement passes 96/96 authored controls and kills 115/115 direct
+security mutants. `release:verify` additionally installs and tests the extracted
+package from its own shrinkwrap, rebuilds both generated artifacts byte-for-byte,
+requires pack/build/repack convergence, and confirms zero rejected execution
+files. Its foundation bundle and registry are respectively
+`sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24`
+and
+`sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d`.
+A containing commit, clean-archive replay, and three new exact-commit cold reviews
+remain required; no execution reference service is authorized.

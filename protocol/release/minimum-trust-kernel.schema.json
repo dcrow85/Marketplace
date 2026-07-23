@@ -25,91 +25,156 @@
     "kernel_id": { "const": "cairn-agent-minimum-trust-kernel-v0.1" },
     "profile": { "const": "cairn-proposal-foundation-v0.1" },
     "release_status": { "const": "active_narrowed_candidate" },
-    "foundation_bundle_hash": { "type": "string", "pattern": "^sha-256:[0-9a-f]{64}$" },
-    "operation_registry_hash": { "type": "string", "pattern": "^sha-256:[0-9a-f]{64}$" },
+    "foundation_bundle_hash": {
+      "const": "sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24"
+    },
+    "operation_registry_hash": {
+      "const": "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d"
+    },
     "included_operations": {
-      "type": "array",
-      "minItems": 10,
-      "maxItems": 10,
-      "items": { "type": "string" },
-      "uniqueItems": true
+      "const": [
+        "capabilities.get",
+        "runtime_binding.get",
+        "intent.put",
+        "intent.get",
+        "data_grant.get",
+        "projection.get",
+        "object.resolve",
+        "action.prepare",
+        "action.get",
+        "receipt.get"
+      ]
     },
     "allowed_object_store_mutations": {
-      "type": "array",
-      "minItems": 2,
-      "maxItems": 2,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["operation", "authority_effect"],
-        "properties": {
-          "operation": { "type": "string" },
-          "authority_effect": { "type": "string" }
+      "const": [
+        {
+          "operation": "intent.put",
+          "authority_effect": "records_principal_signed_intent_only"
+        },
+        {
+          "operation": "action.prepare",
+          "authority_effect": "none"
         }
-      }
+      ]
     },
     "operation_state_effects": {
-      "type": "array",
-      "minItems": 10,
-      "maxItems": 10,
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["operation", "object_store_mutating", "access_state_effects", "signed_envelope_effects"],
-        "properties": {
-          "operation": { "type": "string" },
-          "object_store_mutating": { "type": "boolean" },
-          "access_state_effects": {
-            "type": "array",
-            "maxItems": 1,
-            "items": { "const": "consume_grant_disclosure_budget" },
-            "uniqueItems": true
-          },
-          "signed_envelope_effects": {
-            "type": "array",
-            "minItems": 1,
-            "maxItems": 2,
-            "items": { "enum": ["consume_replay_nonce", "write_idempotency_record"] },
-            "uniqueItems": true
-          }
+      "const": [
+        {
+          "operation": "capabilities.get",
+          "object_store_mutating": false,
+          "access_state_effects": [],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "runtime_binding.get",
+          "object_store_mutating": false,
+          "access_state_effects": [],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "intent.put",
+          "object_store_mutating": true,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce", "write_idempotency_record"]
+        },
+        {
+          "operation": "intent.get",
+          "object_store_mutating": false,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "data_grant.get",
+          "object_store_mutating": false,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "projection.get",
+          "object_store_mutating": false,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "object.resolve",
+          "object_store_mutating": false,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "action.prepare",
+          "object_store_mutating": true,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce", "write_idempotency_record"]
+        },
+        {
+          "operation": "action.get",
+          "object_store_mutating": false,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce"]
+        },
+        {
+          "operation": "receipt.get",
+          "object_store_mutating": false,
+          "access_state_effects": ["consume_grant_disclosure_budget"],
+          "signed_envelope_effects": ["consume_replay_nonce"]
         }
-      }
+      ]
     },
     "byo_prerequisites": {
-      "type": "array",
-      "minItems": 4,
-      "maxItems": 4,
-      "items": { "type": "string" },
-      "uniqueItems": true
+      "const": [
+        "preprovisioned_authenticated_runtime_binding",
+        "principal_bound_exact_runtime_data_grants_and_state",
+        "authenticated_object_ref_and_uri_handoff",
+        "signing_key_resolution_profile",
+        "available_authenticated_proposal_foundation_service_endpoint_and_transport_profile"
+      ]
     },
     "forbidden_operation_terms": {
-      "type": "array",
-      "minItems": 9,
-      "maxItems": 9,
-      "items": { "type": "string" },
-      "uniqueItems": true
+      "const": [
+        "authorize",
+        "execute",
+        "dispatch",
+        "pay",
+        "payment",
+        "settle",
+        "release",
+        "waive",
+        "issue"
+      ]
     },
     "excluded_profiles": {
-      "type": "array",
-      "minItems": 1,
-      "maxItems": 1,
-      "prefixItems": [{ "const": "cairn-supervised-execution-v0.1" }],
-      "items": false
+      "const": ["cairn-supervised-execution-v0.1"]
     },
     "next_profile_requires": {
-      "type": "array",
-      "minItems": 4,
-      "maxItems": 4,
-      "items": { "type": "string" },
-      "uniqueItems": true
+      "const": [
+        "signed_service_read_snapshot",
+        "authenticated_service_key_profile",
+        "exact_dependency_semantics",
+        "independent_frozen_review"
+      ]
     },
-    "conformance_claims": { "type": "array", "maxItems": 0 },
+    "conformance_claims": { "const": [] },
     "not_claiming": {
-      "type": "array",
-      "minItems": 15,
-      "maxItems": 15,
-      "items": { "type": "string" },
-      "uniqueItems": true
+      "const": [
+        "production_service",
+        "runtime_conformance",
+        "authority_to_act",
+        "external_effect",
+        "authorization",
+        "execution",
+        "payment",
+        "settlement",
+        "release",
+        "waiver",
+        "authenticated_service_observation",
+        "agent_onboarding",
+        "grant_issuance",
+        "object_reference_discovery",
+        "continuation_delivery",
+        "service_availability",
+        "transport_binding_conformance"
+      ]
     }
   }
 }

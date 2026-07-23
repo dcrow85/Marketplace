@@ -42,7 +42,8 @@ const REQUIRED_BYO_PREREQUISITES = [
   "preprovisioned_authenticated_runtime_binding",
   "principal_bound_exact_runtime_data_grants_and_state",
   "authenticated_object_ref_and_uri_handoff",
-  "signing_key_resolution_profile"
+  "signing_key_resolution_profile",
+  "available_authenticated_proposal_foundation_service_endpoint_and_transport_profile"
 ];
 const REQUIRED_NON_CLAIMS = [
   "production_service",
@@ -59,10 +60,13 @@ const REQUIRED_NON_CLAIMS = [
   "agent_onboarding",
   "grant_issuance",
   "object_reference_discovery",
-  "continuation_delivery"
+  "continuation_delivery",
+  "service_availability",
+  "transport_binding_conformance"
 ];
 const EXPECTED_PACKAGE_FILES = [
   "README.md",
+  "docs",
   "dist",
   "fixtures",
   "lib",
@@ -70,7 +74,7 @@ const EXPECTED_PACKAGE_FILES = [
   "minimum-trust-kernel.json",
   "mutations",
   "operations",
-  "package-lock.json",
+  "npm-shrinkwrap.json",
   "package.json",
   "reference-service",
   "release",
@@ -79,6 +83,7 @@ const EXPECTED_PACKAGE_FILES = [
   "tests",
   "vectors"
 ];
+const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter((name) => name !== "dist");
 
 function exact(actual, expected, message) {
   if (canonicalText(actual) !== canonicalText(expected)) throw new Error(message);
@@ -96,8 +101,7 @@ function requireStrictJson(root) {
   const result = spawnSync("python3", [
     script,
     path.join(root, "minimum-trust-kernel.json"),
-    path.join(root, "release"),
-    path.join(root, "execution", "rejection.json")
+    path.join(root, "release")
   ], { encoding: "utf8" });
   if (result.status !== 0) {
     throw new Error(`minimum kernel strict JSON check failed: ${(result.stderr || result.stdout).trim()}`);
@@ -107,6 +111,7 @@ function requireStrictJson(root) {
 async function releaseSchemas(root) {
   const names = [
     "minimum-trust-kernel.schema.json",
+    "minimum-trust-kernel-release.schema.json",
     "rejected-profile-marker.schema.json"
   ];
   return Promise.all(names.map(async (name) => ({
@@ -130,12 +135,11 @@ function rawSha256(bytes) {
   return `sha-256:${createHash("sha256").update(bytes).digest("hex")}`;
 }
 
-async function sourceFiles(directory, prefix = "") {
+async function sourceFiles(directory, prefix) {
   const entries = await readdir(directory, { withFileTypes: true });
   const files = [];
   for (const entry of entries.sort((left, right) => left.name.localeCompare(right.name, "en"))) {
     if (entry.name === "__pycache__") continue;
-    if (["dist", "execution", "node_modules"].includes(entry.name) && prefix === "") continue;
     const absolute = path.join(directory, entry.name);
     const relative = prefix ? `${prefix}/${entry.name}` : entry.name;
     const metadata = await lstat(absolute);
@@ -150,15 +154,21 @@ async function sourceFiles(directory, prefix = "") {
   return files;
 }
 
+async function activeSourceFiles(root) {
+  const files = [];
+  for (const name of SOURCE_COMMITMENT_ROOTS) {
+    const absolute = path.join(root, name);
+    const metadata = await lstat(absolute);
+    if (metadata.isSymbolicLink()) throw new Error(`minimum kernel source may not be a symlink: ${name}`);
+    if (metadata.isDirectory()) files.push(...await sourceFiles(absolute, name));
+    else if (metadata.isFile()) files.push({ absolute, relative: name });
+    else throw new Error(`unsupported minimum kernel source type: ${name}`);
+  }
+  return files;
+}
+
 async function sourceCommitments(root) {
-  const files = await sourceFiles(root);
-  files.push(
-    { absolute: path.resolve(root, "..", "Protocol_Agent_Intent_Interop_v0.1.md"), relative: "../Protocol_Agent_Intent_Interop_v0.1.md" },
-    { absolute: path.resolve(root, "..", "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"), relative: "../Protocol_Agent_Minimum_Trust_Kernel_v0.1.md" },
-    { absolute: path.join(root, "execution", "README.md"), relative: "execution/README.md" },
-    { absolute: path.join(root, "execution", "REJECTED.md"), relative: "execution/REJECTED.md" },
-    { absolute: path.join(root, "execution", "rejection.json"), relative: "execution/rejection.json" }
-  );
+  const files = await activeSourceFiles(root);
   files.sort((left, right) => left.relative.localeCompare(right.relative, "en"));
   if (new Set(files.map(({ relative }) => relative)).size !== files.length) {
     throw new Error("minimum kernel source commitment paths must be unique");
@@ -170,7 +180,12 @@ async function sourceCommitments(root) {
 }
 
 async function auditExecutionExclusion(root, manifest, ajv) {
-  const rejection = await readJson(path.join(root, "execution", "rejection.json"));
+  const rejection = await readJson(path.join(
+    root,
+    "release",
+    "rejected-profiles",
+    "cairn-supervised-execution-v0.1.json"
+  ));
   requireValid(
     ajv.getSchema("https://cairn.cards/protocol/release/rejected-profile-marker.schema.json"),
     rejection,
@@ -179,28 +194,13 @@ async function auditExecutionExclusion(root, manifest, ajv) {
   exact([rejection.profile], manifest.excluded_profiles, "execution rejection profile differs from kernel exclusion");
   exact(rejection.reopen_requires, manifest.next_profile_requires, "execution reopen prerequisites differ");
 
-  const historicalManifest = await readJson(path.join(root, "execution", "manifest.json"));
-  const historicalPackage = await readJson(path.join(root, "execution", "package.json"));
-  if (historicalManifest.profile !== rejection.profile) throw new Error("historical execution profile differs from rejection marker");
-  exact(historicalManifest.conformance_claims, [], "historical execution artifact may not claim conformance");
-  if (historicalPackage.private !== true) throw new Error("historical execution package must remain private");
-
   const packageDocument = await readJson(path.join(root, "package.json"));
   exact(packageDocument.files, EXPECTED_PACKAGE_FILES, "minimum kernel package file allowlist differs");
   if (packageDocument.files.some((entry) => entry === "execution" || entry.startsWith("execution/"))) {
     throw new Error("rejected execution tree is present in package allowlist");
   }
 
-  const executionReadme = await readFile(path.join(root, "execution", "README.md"), "utf8");
-  const rejectedReadme = await readFile(path.join(root, "execution", "REJECTED.md"), "utf8");
-  if (!executionReadme.includes("Status: `rejected_research_only`") || !rejectedReadme.includes("`rejected_research_only`")) {
-    throw new Error("execution rejection prose status differs");
-  }
-  if (/current candidate|remains blocked until the narrowed artifact/i.test(executionReadme)) {
-    throw new Error("execution README retains an obsolete candidate gate");
-  }
-
-  const activeFiles = await sourceFiles(root);
+  const activeFiles = await activeSourceFiles(root);
   for (const { absolute, relative } of activeFiles) {
     if (!/\.(?:mjs|js|cjs)$/.test(relative)) continue;
     const source = await readFile(absolute, "utf8");
@@ -312,6 +312,12 @@ export async function buildMinimumTrustKernelRelease(root) {
     source_commitments: await sourceCommitments(root)
   };
   const release = { ...unsigned, release_hash: canonicalHash(unsigned) };
+  const ajv = createAjv(await releaseSchemas(root));
+  requireValid(
+    ajv.getSchema("https://cairn.cards/protocol/release/minimum-trust-kernel-release.schema.json"),
+    release,
+    "minimum trust kernel release"
+  );
   return {
     release,
     bytes: `${canonicalText(release)}\n`,

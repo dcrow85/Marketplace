@@ -2,7 +2,8 @@
 
 Status: `rejected_research_only`. This directory is historical falsification
 evidence, not an advertised, deployable, or reference-service-eligible profile.
-The closed machine marker is [`rejection.json`](rejection.json).
+The packaged closed machine marker is
+[`../release/rejected-profiles/cairn-supervised-execution-v0.1.json`](../release/rejected-profiles/cairn-supervised-execution-v0.1.json).
 
 This package was the first machine-readable translation of
 `Protocol_Agent_Execution_Change_Spec_v0.1.md`. It is a separate overlay on the
@@ -118,7 +119,7 @@ valid Phase-1 `allow`, gate-allowed/post-redemption action transition,
 redemption, recovery-control, nonempty disclosure, external-accounting,
 external-protection, or financial-execution path. A
 reference service is forbidden for this profile. Reopening requires the four
-prerequisites in `rejection.json`, beginning with a signed service read snapshot,
+prerequisites in the packaged rejection marker, beginning with a signed service read snapshot,
 and a new profile, frozen artifact, and independent review.
 
 ## Historical reproduction

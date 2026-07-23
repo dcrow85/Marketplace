@@ -55,12 +55,6 @@ function copyProtocol(destination) {
     recursive: true,
     filter: (source) => path.basename(source) !== "node_modules"
   });
-  for (const name of [
-    "Protocol_Agent_Intent_Interop_v0.1.md",
-    "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
-  ]) {
-    cpSync(path.resolve(root, "..", name), path.resolve(destination, "..", name));
-  }
   const modules = path.join(root, "node_modules");
   if (!lstatSync(modules).isDirectory()) throw new Error("node_modules is required; run npm install first");
   symlinkSync(modules, path.join(destination, "node_modules"), "dir");

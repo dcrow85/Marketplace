@@ -95,8 +95,27 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   `1276c3eb495317893136678377360422a534242f` is rejected by clean replay:
   a local Python bytecode cache entered the generated source commitment but is
   absent from a Git archive. The replacement now excludes and directly tests
-  transient compiler caches. A new containing commit, disposable clean replay,
-  and three fresh exact-commit reviews remain pending.
+  transient compiler caches. Second replacement freeze
+  `ef2078f474c75ae17c00b98b70f9a3595f960aaa` passes clean-archive replay,
+  byte-identical generation, exact package inspection, and zero production
+  vulnerabilities, but is rejected by three fresh cold reviews. They found that
+  the packed artifact omitted its lock, normal `npm pack` could pollute its own
+  source commitment, release schemas remained too generic, BYO replacement
+  omitted the available authenticated service/transport prerequisite,
+  ActionProposal prose omitted its authority/effect non-claims, ScopedProjection
+  signed only field names rather than disclosed values, future-derived
+  projections were accepted, and semantic validation preceded private-object
+  ownership checks.
+  The working replacement is now self-contained under `protocol/`: it packages
+  `npm-shrinkwrap.json`, packs only into temporary directories, tests/rebuilds/
+  repacks itself, closes the release envelope and manifest to exact constants,
+  pins five BYO prerequisites plus service/transport non-claims, packages an
+  explicit proposal-authority boundary, signs bounded exact-copy projection
+  values, rejects future derivation, and performs private access preflight before
+  object semantics. It passes 96/96 authored controls, kills 115/115 direct
+  mutants, and excludes every rejected execution file from the 56-file package.
+  A new containing commit, disposable clean replay, and three fresh exact-commit
+  reviews remain pending.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —

@@ -38,6 +38,7 @@ const CREATED = "2026-07-20T16:00:00Z";
 const NOW = "2026-07-20T16:30:00Z";
 const EXPIRES = "2026-07-20T17:00:00Z";
 const HASH_A = `sha-256:${"a".repeat(64)}`;
+const HASH_B = `sha-256:${"b".repeat(64)}`;
 
 const AGENT_IDENTITY = Object.freeze({
   agent_provider_id: AGENT_PROVIDER_ID,
@@ -256,14 +257,30 @@ function makeProjection(expiresAt = EXPIRES, overrides = {}) {
     audience: [AGENT_KEY_ID],
     data_uses: ["read_local"],
     disclosed_fields: ["/targets"],
-    redacted_fields: ["total_budget"],
+    payload: {
+      schema: "cairn.scoped_projection_payload.v0.1",
+      entries: [
+        {
+          output_path: "/targets",
+          source_ref: {
+            schema: "cairn.active_intent.v0.1",
+            object_id: uuid(30),
+            object_hash: HASH_A
+          },
+          source_path: "/targets",
+          derivation: "exact_copy",
+          value: ["cairn:card:azuki"]
+        }
+      ]
+    },
+    redacted_fields: ["/constraints/total_budget"],
     disclosure_authority_ref: null,
     derived_at: CREATED,
     expires_at: expiresAt,
     ...overrides,
     projection_hash: ZERO_HASH,
     issuer_signature: signature(SERVICE_KEY),
-    not_claiming: ["authority_to_act"]
+    not_claiming: ["authority_to_act", "source_value_independently_verified"]
   }, SERVICE_KEY);
 }
 
@@ -1321,6 +1338,140 @@ test("projection.get enforces exact audience, purpose, uses, and one covering gr
     actorId: PRINCIPAL_ID
   });
   assert.equal(directResult.ok, true, JSON.stringify(directResult));
+});
+
+test("scoped projection carries bounded signed values with exact disclosure paths", () => {
+  const value = makeHarness();
+  const projection = makeProjection();
+  const projectionRef = value.seeder.seedObject(projection);
+  const grant = makeReadGrant(value.service, {
+    ref: projectionRef,
+    purpose: "projection_read",
+    grantNumber: 175,
+    maximumDisclosures: 1
+  });
+  const grantRef = value.seeder.seedObject(grant, {
+    grantState: { status: "active", revocation_nonce: 175, remaining_disclosures: 1 }
+  });
+  const result = value.service.handleEnvelope(makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: projectionRef,
+      retrieval_uri: value.service.objectUri(projectionRef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
+    authorizationRefs: [grantRef],
+    messageNumber: 176,
+    nonce: "reference-nonce-00000176"
+  }), value.authentication);
+  assert.equal(result.ok, true, JSON.stringify(result));
+  assert.deepEqual(result.body.payload, projection.payload);
+
+  const missingPayload = structuredClone(projection);
+  delete missingPayload.payload;
+  assert.throws(() => value.seeder.seedObject(bindAndSign(missingPayload, SERVICE_KEY)), /object_schema_invalid/);
+
+  const wrongPath = structuredClone(projection);
+  wrongPath.payload.entries[0].output_path = "/other";
+  assert.throws(() => value.seeder.seedObject(bindAndSign(wrongPath, SERVICE_KEY)), /projection_payload_paths_mismatch/);
+
+  const overlappingRedaction = structuredClone(projection);
+  overlappingRedaction.redacted_fields = ["/targets/private"];
+  assert.throws(() => value.seeder.seedObject(bindAndSign(overlappingRedaction, SERVICE_KEY)), /projection_redaction_overlap/);
+
+  const floatingValue = structuredClone(projection);
+  floatingValue.payload.entries[0].value = 1.5;
+  assert.throws(() => value.seeder.seedObject(floatingValue), /object_schema_invalid/);
+
+  const tamperedValue = structuredClone(projection);
+  tamperedValue.payload.entries[0].value = ["cairn:card:tampered"];
+  assert.throws(() => value.seeder.seedObject(tamperedValue), /object_hash_mismatch|signature_hash_mismatch/);
+});
+
+test("future-derived projection is unavailable without consuming access state", () => {
+  const value = makeHarness();
+  const projection = makeProjection(EXPIRES, {
+    projection_id: uuid(177),
+    derived_at: "2026-07-20T16:45:00Z"
+  });
+  assert.throws(() => value.seeder.seedObject(projection), /object_not_yet_valid/);
+  const futureSeeder = createReferenceSeeder({
+    foundation,
+    stores: value.stores,
+    keyResolver,
+    clock: () => "2026-07-20T16:50:00Z"
+  });
+  const projectionRef = futureSeeder.seedObject(projection);
+  const grant = makeReadGrant(value.service, {
+    ref: projectionRef,
+    purpose: "projection_read",
+    grantNumber: 178,
+    maximumDisclosures: 1
+  });
+  const grantRef = value.seeder.seedObject(grant, {
+    grantState: { status: "active", revocation_nonce: 178, remaining_disclosures: 1 }
+  });
+  const envelope = makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref: projectionRef,
+      retrieval_uri: value.service.objectUri(projectionRef),
+      declared_purpose: "search",
+      intended_use: "read_local"
+    },
+    authorizationRefs: [grantRef],
+    messageNumber: 179,
+    nonce: "reference-nonce-00000179"
+  });
+  const result = value.service.handleEnvelope(envelope, value.authentication);
+  assert.equal(result.ok, false);
+  assert.ok(result.failures.includes("projection_object_not_yet_valid"));
+  assert.equal(value.stores.usedNonces.has(envelope.nonce), false);
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(grantRef)).remaining_disclosures, 1);
+});
+
+test("foreign projection reads collapse to the same private not-found result", () => {
+  const value = makeHarness();
+  const projection = makeProjection(EXPIRES, { projection_id: uuid(180) });
+  const projectionRef = value.seeder.seedObject(projection);
+  const foreignGrant = makeReadGrant(value.service, {
+    ref: projectionRef,
+    purpose: "projection_read",
+    principalId: OTHER_PRINCIPAL_ID,
+    principalKey: OTHER_PRINCIPAL_KEY,
+    grantNumber: 181,
+    maximumDisclosures: 2
+  });
+  const foreignGrantRef = value.seeder.seedObject(foreignGrant, {
+    grantState: { status: "active", revocation_nonce: 181, remaining_disclosures: 2 }
+  });
+  const request = (number, declaredPurpose, intendedUse, ref = projectionRef) => makeEnvelope({
+    operationName: "projection.get",
+    body: {
+      ref,
+      retrieval_uri: value.service.objectUri(ref),
+      declared_purpose: declaredPurpose,
+      intended_use: intendedUse
+    },
+    authorizationRefs: [foreignGrantRef],
+    messageNumber: number,
+    nonce: `reference-nonce-00000${number}`,
+    principalId: OTHER_PRINCIPAL_ID
+  });
+  const authentication = { principalId: OTHER_PRINCIPAL_ID, actorId: AGENT_PROVIDER_ID };
+  const correct = request(182, "search", "read_local");
+  const wrongPurpose = request(183, "checkout", "read_local");
+  const wrongUse = request(184, "search", "derive");
+  const absentRef = { ...projectionRef, object_hash: HASH_B };
+  const absent = request(185, "search", "read_local", absentRef);
+  for (const envelope of [correct, wrongPurpose, wrongUse, absent]) {
+    const result = value.service.handleEnvelope(envelope, authentication);
+    assert.equal(result.status, 404);
+    assert.deepEqual(result.failures, ["object_not_found"]);
+    assert.equal(value.stores.usedNonces.has(envelope.nonce), false);
+  }
+  assert.equal(value.stores.grantStatesByRef.get(objectRefKey(foreignGrantRef)).remaining_disclosures, 2);
 });
 
 test("replay fails closed when its stored exact result binding is corrupt", () => {

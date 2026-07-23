@@ -2,7 +2,8 @@
 
 `cairn-supervised-execution-v0.1` is not an active Cairn release candidate.
 Its machine status is `rejected_research_only` in
-[`rejection.json`](rejection.json): it is not advertised, deployable, or
+[`../release/rejected-profiles/cairn-supervised-execution-v0.1.json`](../release/rejected-profiles/cairn-supervised-execution-v0.1.json):
+it is not advertised, deployable, or
 reference-service-eligible.
 
 Every frozen form, including exact commit

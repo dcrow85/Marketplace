@@ -33,6 +33,29 @@
     "projectionDataUse": {
       "enum": ["read_local", "derive"]
     },
+    "jsonValue": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "boolean" },
+        {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        { "type": "string", "maxLength": 4096 },
+        {
+          "type": "array",
+          "maxItems": 64,
+          "items": { "$ref": "#/$defs/jsonValue" }
+        },
+        {
+          "type": "object",
+          "maxProperties": 64,
+          "propertyNames": { "type": "string", "maxLength": 256 },
+          "additionalProperties": { "$ref": "#/$defs/jsonValue" }
+        }
+      ]
+    },
     "schemaId": {
       "type": "string",
       "pattern": "^cairn\\.[a-z0-9_]+\\.v0\\.1$"

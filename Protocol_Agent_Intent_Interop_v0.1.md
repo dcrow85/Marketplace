@@ -513,20 +513,35 @@ source_refs:
 purpose: search | recommend | negotiate | checkout | fulfillment | dispute
 audience: [<specific services or counterparties>]
 data_uses: [read_local, derive]
-disclosed_fields: <allowlisted data>
-redacted_fields: [total_budget, private_holdings]
+disclosed_fields: [/targets]
+payload:
+  schema: cairn.scoped_projection_payload.v0.1
+  entries:
+    - output_path: /targets
+      source_ref: <exact ObjectRef>
+      source_path: /targets
+      derivation: exact_copy
+      value: <bounded I-JSON value>
+redacted_fields: [/constraints/total_budget, /private_holdings]
 disclosure_authority_ref: <ObjectRef or null; required for external disclosure>
 derived_at: <timestamp>
 expires_at: <timestamp>
 projection_hash: sha-256:<hex>
 issuer_signature: <principal signature, or store signature backed by a separate
                    principal disclosure grant>
-not_claiming: [authority_to_act]
+not_claiming:
+  - authority_to_act
+  - source_value_independently_verified
 ```
 
 The Cairn-controlled recipient MUST enforce purpose, audience, expiry, and data
 uses. External recipient compliance is a legible contractual boundary, not a
-technical guarantee. A projection MUST NOT be treated as an `AgentMandate`.
+technical guarantee. `disclosed_fields` MUST exactly equal the sorted
+`payload.entries[*].output_path` set. A disclosed path and a redacted path MUST
+NOT be equal or stand in an ancestor/descendant relationship. Every payload
+entry is signed through `projection_hash`; `source_ref` and `source_path` name
+the exact-copy provenance, but Cairn does not claim that the source value was
+independently verified. A projection MUST NOT be treated as an `AgentMandate`.
 
 ### 5.5 `DataGrant` and `DisclosureAuthorization`
 
@@ -1495,7 +1510,9 @@ effect_id: sha-256:<EffectDescriptor semantic projection hash>
 unknowns:
   - code: <typed unknown>
     blocking_capabilities: []
-not_claiming: []
+not_claiming:
+  - authority_to_act
+  - external_effect
 created_at: <time>
 expires_at: <time>
 action_proposal_hash: sha-256:<hex>

@@ -43,7 +43,12 @@ the result factory nor consumes the grant again.
 `projection.get` additionally binds the signed request's declared purpose and
 intended use to the stored projection, requires its audience to contain the exact
 runtime key (or direct principal), and requires one covering DataGrant to carry
-all required uses. `object.resolve` cannot return a ScopedProjection.
+all required uses. The signed projection carries its bounded disclosed values,
+binds them one-for-one to output paths and exact-copy source references, forbids
+disclosed/redacted path overlap, and cannot be future-derived. Private ownership
+is checked before object semantics so an unauthorized caller cannot use detailed
+validation failures to distinguish an existing foreign object from an absent
+one. `object.resolve` cannot return a ScopedProjection.
 
 `createReferenceSeeder` is a trusted import/bootstrap helper, not a network
 operation. It accepts only runtime bindings, DataGrants, effect descriptors, and

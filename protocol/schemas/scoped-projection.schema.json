@@ -18,6 +18,7 @@
     "audience",
     "data_uses",
     "disclosed_fields",
+    "payload",
     "redacted_fields",
     "disclosure_authority_ref",
     "derived_at",
@@ -44,8 +45,48 @@
     "purpose": { "$ref": "common.schema.json#/$defs/projectionPurpose" },
     "audience": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/actorId" }, "uniqueItems": true },
     "data_uses": { "type": "array", "minItems": 1, "items": { "$ref": "common.schema.json#/$defs/projectionDataUse" }, "uniqueItems": true },
-    "disclosed_fields": { "type": "array", "items": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" }, "uniqueItems": true },
-    "redacted_fields": { "type": "array", "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,95}$" }, "uniqueItems": true },
+    "disclosed_fields": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" },
+      "uniqueItems": true,
+      "x-cairn-utf8-sorted": true
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "entries"],
+      "properties": {
+        "schema": { "const": "cairn.scoped_projection_payload.v0.1" },
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["output_path", "source_ref", "source_path", "derivation", "value"],
+            "properties": {
+              "output_path": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" },
+              "source_ref": { "$ref": "common.schema.json#/$defs/objectRef" },
+              "source_path": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" },
+              "derivation": { "const": "exact_copy" },
+              "value": { "$ref": "common.schema.json#/$defs/jsonValue" }
+            }
+          },
+          "uniqueItems": true,
+          "x-cairn-unique-by": "output_path"
+        }
+      }
+    },
+    "redacted_fields": {
+      "type": "array",
+      "maxItems": 256,
+      "items": { "type": "string", "pattern": "^/(?:[^~/]|~0|~1)+(?:/(?:[^~/]|~0|~1)+)*$" },
+      "uniqueItems": true,
+      "x-cairn-utf8-sorted": true
+    },
     "disclosure_authority_ref": { "$ref": "common.schema.json#/$defs/nullableObjectRef" },
     "derived_at": { "$ref": "common.schema.json#/$defs/timestamp" },
     "expires_at": { "$ref": "common.schema.json#/$defs/timestamp" },
@@ -53,9 +94,12 @@
     "issuer_signature": { "$ref": "common.schema.json#/$defs/signature" },
     "not_claiming": {
       "type": "array",
-      "minItems": 1,
-      "maxItems": 1,
-      "prefixItems": [{ "const": "authority_to_act" }],
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        { "const": "authority_to_act" },
+        { "const": "source_value_independently_verified" }
+      ],
       "items": false
     }
   }

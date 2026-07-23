@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cairn.cards/protocol/release/minimum-trust-kernel-release.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "kernel_manifest",
+    "foundation_bundle_hash",
+    "operation_registry_hash",
+    "foundation_bundle_file_hash",
+    "source_commitments",
+    "release_hash"
+  ],
+  "properties": {
+    "schema": { "const": "cairn.minimum_trust_kernel_release.v0.1" },
+    "kernel_manifest": {
+      "$ref": "https://cairn.cards/protocol/release/minimum-trust-kernel.schema.json"
+    },
+    "foundation_bundle_hash": {
+      "const": "sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24"
+    },
+    "operation_registry_hash": {
+      "const": "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d"
+    },
+    "foundation_bundle_file_hash": {
+      "const": "sha-256:1e7fde88dbe22eeaffcb50493a28c7b4834137c4346de78f25b4116c7ee75a7e"
+    },
+    "source_commitments": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$)).+$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^sha-256:[0-9a-f]{64}$"
+      }
+    },
+    "release_hash": {
+      "type": "string",
+      "pattern": "^sha-256:[0-9a-f]{64}$"
+    }
+  }
+}

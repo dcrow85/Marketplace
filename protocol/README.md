@@ -7,7 +7,7 @@ live Cairn service, authority ledger, payment adapter, or conformance profile
 already exists.
 
 It is also the active
-[minimum trust kernel](../Protocol_Agent_Minimum_Trust_Kernel_v0.1.md). The
+[minimum trust kernel](docs/Protocol_Agent_Minimum_Trust_Kernel_v0.1.md). The
 machine-enforced release boundary is
 [`minimum-trust-kernel.json`](minimum-trust-kernel.json): ten exact operations,
 two object-store writes, eight explicit disclosure-budget consumers, and no
@@ -64,10 +64,8 @@ delimiter strings are not protocol-compatible.
 
 ```bash
 cd protocol
-npm install
-npm test
-npm run test:mutations
-npm run check
+npm ci
+npm run release:verify
 ```
 
 `npm run build` writes `dist/cairn-protocol-bundle-v0.1.json` and
@@ -78,6 +76,10 @@ bundle and registry hashes, operation list, object-store and access-state
 effects, conditional BYO prerequisites, rejected execution profile,
 prerequisites for expansion, source commitments, package closure, and
 non-claims.
+`release:verify` also packs into a temporary directory, installs from the
+included `npm-shrinkwrap.json`, runs the packed package's advertised tests,
+rebuilds both artifacts byte-identically, confirms the rejected execution tree
+is absent, and requires a second pack to converge to the same archive hash.
 
 See [`reference-service/README.md`](reference-service/README.md) for the injected
 identity/store contract and the explicit non-production boundary.

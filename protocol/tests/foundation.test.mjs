@@ -66,8 +66,58 @@ test("minimum trust kernel pins the exact proposal-only release boundary", async
   assert.equal(result.operationCount, 10);
   assert.equal(result.objectStoreMutationCount, 2);
   assert.equal(result.grantConsumerCount, 8);
-  assert.equal(result.bundleHash, "sha-256:4eb3862fd13659131731f1202aecc62617044682bc7c0ce9e5cd2420061b3a85");
+  assert.equal(result.bundleHash, "sha-256:00e379db20f5557adc5ab1a31f3d60acdc7c038e5fe375ed8571bd1048c05a24");
   assert.equal(result.registryHash, "sha-256:71775e969dbfea218dffa45aa396282c7bd039a8e51863a8920a45976234b91d");
+  assert.equal(result.manifest.byo_prerequisites.length, 5);
+  assert.ok(result.manifest.byo_prerequisites.includes(
+    "available_authenticated_proposal_foundation_service_endpoint_and_transport_profile"
+  ));
+  assert.ok(result.manifest.not_claiming.includes("service_availability"));
+  assert.ok(result.manifest.not_claiming.includes("transport_binding_conformance"));
+});
+
+test("minimum trust kernel release schemas close the portable machine boundary", async () => {
+  const releaseDocuments = await Promise.all([
+    "minimum-trust-kernel.schema.json",
+    "minimum-trust-kernel-release.schema.json",
+    "rejected-profile-marker.schema.json"
+  ].map(async (name) => ({ name, document: await readJson(path.join(root, "release", name)) })));
+  const releaseAjv = createAjv(releaseDocuments);
+  const manifest = await readJson(path.join(root, "minimum-trust-kernel.json"));
+  const release = await readJson(path.join(root, "dist", "cairn-minimum-trust-kernel-v0.1.json"));
+  const validateManifest = releaseAjv.getSchema(
+    "https://cairn.cards/protocol/release/minimum-trust-kernel.schema.json"
+  );
+  const validateRelease = releaseAjv.getSchema(
+    "https://cairn.cards/protocol/release/minimum-trust-kernel-release.schema.json"
+  );
+  assert.equal(validateManifest(manifest), true, JSON.stringify(validateManifest.errors));
+  assert.equal(validateRelease(release), true, JSON.stringify(validateRelease.errors));
+
+  const widened = structuredClone(manifest);
+  widened.included_operations[9] = "action.execute";
+  assert.equal(validateManifest(widened), false);
+  const authority = structuredClone(manifest);
+  authority.allowed_object_store_mutations[1].authority_effect = "full_external_authority";
+  assert.equal(validateManifest(authority), false);
+  const weakened = structuredClone(manifest);
+  weakened.byo_prerequisites.pop();
+  weakened.not_claiming.pop();
+  assert.equal(validateManifest(weakened), false);
+
+  const unknownRelease = { ...release, production_service: true };
+  assert.equal(validateRelease(unknownRelease), false);
+  const missingRelease = structuredClone(release);
+  delete missingRelease.source_commitments;
+  assert.equal(validateRelease(missingRelease), false);
+});
+
+test("packaged proposal boundary preserves ActionProposal no-authority labels", () => {
+  const prose = readFileSync(path.join(root, "docs", "Agent_Proposal_Authority_Boundary_v0.1.md"), "utf8");
+  assert.match(
+    prose,
+    /schema: cairn\.action_proposal\.v0\.1\nnot_claiming:\n  - authority_to_act\n  - external_effect\n/
+  );
 });
 
 function testKey(key_id, controller) {
@@ -1536,12 +1586,6 @@ test("kernel release check rejects a stale generated artifact", () => {
       filter: (source) => path.basename(source) !== "node_modules"
     });
     symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
-    for (const name of [
-      "Protocol_Agent_Intent_Interop_v0.1.md",
-      "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
-    ]) {
-      cpSync(path.resolve(root, "..", name), path.join(parent, name));
-    }
     const releasePath = path.join(candidate, "dist", "cairn-minimum-trust-kernel-v0.1.json");
     const release = readFileSync(releasePath, "utf8");
     writeFileSync(releasePath, release.replace("cairn.minimum_trust_kernel_release.v0.1", "cairn.stale_release.v0.1"));
@@ -1565,12 +1609,6 @@ test("kernel release source commitments exclude transient compiler cache directo
       filter: (source) => path.basename(source) !== "node_modules"
     });
     symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
-    for (const name of [
-      "Protocol_Agent_Intent_Interop_v0.1.md",
-      "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
-    ]) {
-      cpSync(path.resolve(root, "..", name), path.join(parent, name));
-    }
     const cache = path.join(candidate, "scripts", "__pycache__");
     mkdirSync(cache, { recursive: true });
     writeFileSync(path.join(cache, "transient.cache"), "not a release source");
@@ -1593,16 +1631,30 @@ test("kernel release source commitments exclude standalone compiler bytecode", a
       filter: (source) => path.basename(source) !== "node_modules"
     });
     symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
-    for (const name of [
-      "Protocol_Agent_Intent_Interop_v0.1.md",
-      "Protocol_Agent_Minimum_Trust_Kernel_v0.1.md"
-    ]) {
-      cpSync(path.resolve(root, "..", name), path.join(parent, name));
-    }
     writeFileSync(path.join(candidate, "scripts", "transient.pyc"), "not a release source");
     const { release } = await buildMinimumTrustKernelRelease(candidate);
     assert.equal(
       Object.keys(release.source_commitments).some((name) => name.endsWith(".pyc")),
+      false
+    );
+  } finally {
+    rmSync(parent, { recursive: true, force: true });
+  }
+});
+
+test("kernel release source commitments ignore package archives", async () => {
+  const parent = mkdtempSync(path.join(os.tmpdir(), "cairn-kernel-archive-"));
+  const candidate = path.join(parent, "protocol");
+  try {
+    cpSync(root, candidate, {
+      recursive: true,
+      filter: (source) => path.basename(source) !== "node_modules"
+    });
+    symlinkSync(path.join(root, "node_modules"), path.join(candidate, "node_modules"), "dir");
+    writeFileSync(path.join(candidate, "cairn-protocol-foundation-0.1.0.tgz"), "transient package archive");
+    const { release } = await buildMinimumTrustKernelRelease(candidate);
+    assert.equal(
+      Object.keys(release.source_commitments).some((name) => name.endsWith(".tgz")),
       false
     );
   } finally {

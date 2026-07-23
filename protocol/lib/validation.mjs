@@ -110,6 +110,16 @@ function validateSignedObjectUnsafe(object, {
   } catch {
     failures.push("object_binding_invalid");
   }
+  if (object.schema === "cairn.scoped_projection.v0.1") {
+    const disclosedPaths = object.disclosed_fields;
+    const payloadPaths = object.payload?.entries?.map(({ output_path }) => output_path);
+    if (!canonicalEqual(disclosedPaths, payloadPaths)) failures.push("projection_payload_paths_mismatch");
+    const overlaps = (left, right) =>
+      left === right || left.startsWith(`${right}/`) || right.startsWith(`${left}/`);
+    if (object.redacted_fields?.some((redacted) =>
+      disclosedPaths?.some((disclosed) => overlaps(redacted, disclosed))
+    )) failures.push("projection_redaction_overlap");
+  }
 
   for (const pointer of schema["x-cairn-signature-pointers"] ?? []) {
     let signature;
@@ -145,7 +155,7 @@ function validateSignedObjectUnsafe(object, {
       failures.push("signature_invalid");
     }
   }
-  const objectStart = object?.issued_at ?? object?.created_at ?? null;
+  const objectStart = object?.issued_at ?? object?.created_at ?? object?.derived_at ?? null;
   if (typeof objectStart === "string" && instant(objectStart) > nowInstant(now)) failures.push("object_not_yet_valid");
   if (
     historicalObjectLifecycle !== true &&
@@ -538,7 +548,28 @@ export function validateEnvelopeOperation(envelope, context = {}) {
   }
 }
 
-export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null, preflight = null) {
+function runPreflight(preflight) {
+  if (preflight === null) return [];
+  if (typeof preflight !== "function") return ["operation_preflight_invalid"];
+  let failures;
+  try {
+    failures = preflight();
+  } catch {
+    return ["operation_preflight_unavailable"];
+  }
+  if (!Array.isArray(failures) || failures.some((code) => typeof code !== "string" || code.length === 0)) {
+    return ["operation_preflight_invalid"];
+  }
+  return unique(failures);
+}
+
+export function acceptEnvelopeOperation(
+  envelope,
+  context = {},
+  resultRef = null,
+  workPreflight = null,
+  accessPreflight = null
+) {
   try {
     const transport = validateEnvelopeTransportUnsafe(envelope, context);
     if (transport.failures.length) return { accepted: false, failures: transport.failures };
@@ -561,21 +592,12 @@ export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null
         };
       }
     }
+    const accessPreflightFailures = runPreflight(accessPreflight);
+    if (accessPreflightFailures.length) return { accepted: false, failures: accessPreflightFailures };
     const failures = validateEnvelopeOperation(envelope, context);
     if (failures.length) return { accepted: false, failures };
-    if (preflight !== null) {
-      if (typeof preflight !== "function") return { accepted: false, failures: ["operation_preflight_invalid"] };
-      let preflightFailures;
-      try {
-        preflightFailures = preflight();
-      } catch {
-        return { accepted: false, failures: ["operation_preflight_unavailable"] };
-      }
-      if (!Array.isArray(preflightFailures) || preflightFailures.some((code) => typeof code !== "string" || code.length === 0)) {
-        return { accepted: false, failures: ["operation_preflight_invalid"] };
-      }
-      if (preflightFailures.length) return { accepted: false, failures: unique(preflightFailures) };
-    }
+    const workPreflightFailures = runPreflight(workPreflight);
+    if (workPreflightFailures.length) return { accepted: false, failures: workPreflightFailures };
     if (envelope.idempotency_key) {
       let resolvedResultRef;
       try {

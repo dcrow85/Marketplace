@@ -14,7 +14,6 @@ DEFAULT_SOURCE_ROOTS = [
     ROOT / "manifest.json",
     ROOT / "minimum-trust-kernel.json",
     ROOT / "release",
-    ROOT / "execution" / "rejection.json",
     ROOT / "schemas",
     ROOT / "operations",
     ROOT / "fixtures",

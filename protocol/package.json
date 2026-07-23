@@ -5,6 +5,7 @@
   "type": "module",
   "files": [
     "README.md",
+    "docs",
     "dist",
     "fixtures",
     "lib",
@@ -12,7 +13,7 @@
     "minimum-trust-kernel.json",
     "mutations",
     "operations",
-    "package-lock.json",
+    "npm-shrinkwrap.json",
     "package.json",
     "reference-service",
     "release",
@@ -27,7 +28,9 @@
     "check": "python3 scripts/check-json-sources.py && node scripts/check-bundle.mjs && node scripts/check-minimum-kernel.mjs",
     "test:unit": "npm run check && node --test tests/*.test.mjs",
     "test:mutations": "node scripts/run-security-mutants.mjs",
-    "test": "npm run test:unit && npm run test:mutations"
+    "test:package": "node scripts/check-packed-package.mjs",
+    "test": "npm run test:unit && npm run test:mutations",
+    "release:verify": "npm run check && npm test && npm run test:package"
   },
   "dependencies": {
     "ajv": "8.20.0",

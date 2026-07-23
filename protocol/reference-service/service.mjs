@@ -513,11 +513,21 @@ export function createReferenceService({
             return objectRefFor(staged.receipt, schemasByObjectId.get(staged.receipt.schema));
           };
         }
-        const preflight = () => {
-          const accessFailure = readAccessFailure(operation, envelope, draft) ?? preparationAccessFailure(envelope, draft, context);
+        const accessPreflight = () => {
+          const accessFailure = readAccessFailure(operation, envelope, draft);
           return accessFailure ? [accessFailure] : [];
         };
-        const admission = acceptEnvelopeOperation(envelope, context, resultRefFactory, preflight);
+        const workPreflight = () => {
+          const preparationFailure = preparationAccessFailure(envelope, draft, context);
+          return preparationFailure ? [preparationFailure] : [];
+        };
+        const admission = acceptEnvelopeOperation(
+          envelope,
+          context,
+          resultRefFactory,
+          workPreflight,
+          accessPreflight
+        );
         if (!admission.accepted) {
           return { commit: false, value: failure(statusForFailures(admission.failures), "operation_rejected", admission.failures) };
         }

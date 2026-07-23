@@ -6,7 +6,7 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/foundation_bundle_hash",
     value: "sha-256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel foundation bundle hash differs"
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-operation-surface",
@@ -15,7 +15,7 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/included_operations/9",
     value: "action.execute",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel operation surface differs"
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-mutation-boundary",
@@ -24,7 +24,7 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/allowed_object_store_mutations/1/authority_effect",
     value: "records_execution_authority",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel allowed object-store mutation boundary differs"
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-execution-exclusion",
@@ -42,7 +42,7 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/operation_state_effects/3/access_state_effects",
     value: [],
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel operation state effects differ"
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-byo-prerequisite",
@@ -51,7 +51,16 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/byo_prerequisites/2",
     value: "implicit_object_discovery",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel BYO prerequisites differ"
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-service-endpoint-prerequisite",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/byo_prerequisites/4",
+    value: "implicit_local_service",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-nonclaim",
@@ -60,7 +69,25 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/not_claiming/14",
     value: "continuation_delivery_available",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel non-claims differ"
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-service-availability-nonclaim",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/not_claiming/15",
+    value: "service_available",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
+  },
+  {
+    id: "minimum-kernel-transport-conformance-nonclaim",
+    finding: "conditional-byo-agent-boundary",
+    file: "minimum-trust-kernel.json",
+    jsonPointer: "/not_claiming/16",
+    value: "transport_profile_conforming",
+    expectedStage: "kernel",
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-forbidden-terms",
@@ -69,7 +96,7 @@ export const SECURITY_MUTANTS = [
     jsonPointer: "/forbidden_operation_terms/8",
     value: "launch",
     expectedStage: "kernel",
-    expectedOutput: "minimum kernel forbidden operation terms differ"
+    expectedOutput: "minimum trust kernel manifest:"
   },
   {
     id: "minimum-kernel-conformance-claim",
@@ -101,7 +128,7 @@ export const SECURITY_MUTANTS = [
   {
     id: "minimum-kernel-rejection-marker",
     finding: "mechanical-execution-exclusion",
-    file: "execution/rejection.json",
+    file: "release/rejected-profiles/cairn-supervised-execution-v0.1.json",
     jsonPointer: "/advertised",
     value: true,
     expectedStage: "kernel",
@@ -113,6 +140,15 @@ export const SECURITY_MUTANTS = [
     file: "package.json",
     jsonPointer: "/files/1",
     value: "execution",
+    expectedStage: "kernel",
+    expectedOutput: "minimum kernel package file allowlist differs"
+  },
+  {
+    id: "minimum-kernel-package-shrinkwrap",
+    finding: "self-verifying-packed-release",
+    file: "package.json",
+    jsonPointer: "/files/9",
+    value: "package-lock.json",
     expectedStage: "kernel",
     expectedOutput: "minimum kernel package file allowlist differs"
   },
@@ -148,6 +184,30 @@ export const SECURITY_MUTANTS = [
     search: '      if (/\\.py[co]$/.test(entry.name)) continue;',
     replace: "      // mutant commits standalone compiler bytecode",
     test: "kernel release source commitments exclude standalone compiler bytecode"
+  },
+  {
+    id: "minimum-kernel-package-archive-exclusion",
+    finding: "clean-package-release-reproducibility",
+    file: "lib/minimum-kernel.mjs",
+    search: 'const SOURCE_COMMITMENT_ROOTS = EXPECTED_PACKAGE_FILES.filter((name) => name !== "dist");',
+    replace: 'const SOURCE_COMMITMENT_ROOTS = [...EXPECTED_PACKAGE_FILES.filter((name) => name !== "dist"), "cairn-protocol-foundation-0.1.0.tgz"];',
+    test: "kernel release source commitments ignore package archives"
+  },
+  {
+    id: "minimum-kernel-release-envelope-closure",
+    finding: "portable-closed-release-schema",
+    file: "release/minimum-trust-kernel-release.schema.json",
+    jsonPointer: "/additionalProperties",
+    value: true,
+    test: "minimum trust kernel release schemas close the portable machine boundary"
+  },
+  {
+    id: "action-proposal-prose-no-authority-labels",
+    finding: "machine-prose-authority-parity",
+    file: "docs/Agent_Proposal_Authority_Boundary_v0.1.md",
+    search: "schema: cairn.action_proposal.v0.1\nnot_claiming:\n  - authority_to_act\n  - external_effect\n",
+    replace: "schema: cairn.action_proposal.v0.1\nnot_claiming: []\n",
+    test: "packaged proposal boundary preserves ActionProposal no-authority labels"
   },
   {
     id: "projection-exact-audience",
@@ -201,6 +261,69 @@ export const SECURITY_MUTANTS = [
     search: '    if (object?.schema === "cairn.scoped_projection.v0.1") failures.push("projection_specialized_operation_required");',
     replace: '    if (false) failures.push("projection_specialized_operation_required");',
     test: "projection.get enforces exact audience, purpose, uses, and one covering grant",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-payload-required",
+    finding: "signed-minimum-disclosure-payload",
+    file: "schemas/scoped-projection.schema.json",
+    search: '    "payload",\n    "redacted_fields",',
+    replace: '    \"redacted_fields\",',
+    test: "scoped projection carries bounded signed values with exact disclosure paths",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-payload-path-binding",
+    finding: "signed-minimum-disclosure-payload",
+    file: "lib/validation.mjs",
+    search: '    if (!canonicalEqual(disclosedPaths, payloadPaths)) failures.push(\"projection_payload_paths_mismatch\");',
+    replace: '    if (false) failures.push(\"projection_payload_paths_mismatch\");',
+    test: "scoped projection carries bounded signed values with exact disclosure paths",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-redaction-overlap",
+    finding: "signed-minimum-disclosure-payload",
+    file: "lib/validation.mjs",
+    search: '    if (object.redacted_fields?.some((redacted) =>\n      disclosedPaths?.some((disclosed) => overlaps(redacted, disclosed))\n    )) failures.push("projection_redaction_overlap");',
+    replace: "    // mutant accepts disclosed/redacted overlap",
+    test: "scoped projection carries bounded signed values with exact disclosure paths",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-payload-ijson-integer",
+    finding: "signed-minimum-disclosure-payload",
+    file: "schemas/common.schema.json",
+    search: '          "type": "integer",\n          "minimum": -9007199254740991,',
+    replace: '          "type": "number",\n          "minimum": -9007199254740991,',
+    test: "scoped projection carries bounded signed values with exact disclosure paths",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "projection-payload-hash-binding",
+    finding: "signed-minimum-disclosure-payload",
+    file: "schemas/scoped-projection.schema.json",
+    search: '  \"x-cairn-hash-exclusion-pointers\": [\"/issuer_signature/signed_hash\", \"/issuer_signature/value\"],',
+    replace: '  \"x-cairn-hash-exclusion-pointers\": [\"/payload\", \"/issuer_signature/signed_hash\", \"/issuer_signature/value\"],',
+    expectedStage: "build",
+    expectedOutput: "must hash signature metadata and exclude only signed_hash/value"
+  },
+  {
+    id: "projection-derived-at-currentness",
+    finding: "projection-temporal-integrity",
+    file: "lib/validation.mjs",
+    search: "  const objectStart = object?.issued_at ?? object?.created_at ?? object?.derived_at ?? null;",
+    replace: "  const objectStart = object?.issued_at ?? object?.created_at ?? null;",
+    test: "future-derived projection is unavailable without consuming access state",
+    testFile: "tests/reference-service.test.mjs"
+  },
+  {
+    id: "private-read-access-preflight-order",
+    finding: "private-object-error-indistinguishability",
+    file: "lib/validation.mjs",
+    search: "    const accessPreflightFailures = runPreflight(accessPreflight);",
+    replace: "    const accessPreflightFailures = [];",
+    test: "foreign projection reads collapse to the same private not-found result",
     testFile: "tests/reference-service.test.mjs"
   },
   {
@@ -329,8 +452,8 @@ export const SECURITY_MUTANTS = [
     id: "idempotency-fresh-transport",
     finding: "idempotency-replay-order",
     file: "lib/validation.mjs",
-    search: "export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null, preflight = null) {\n  try {\n    const transport = validateEnvelopeTransportUnsafe(envelope, context);",
-    replace: "export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null, preflight = null) {\n  try {\n    const transport = { failures: [] };",
+    search: "    const transport = validateEnvelopeTransportUnsafe(envelope, context);",
+    replace: "    const transport = { failures: [] };",
     test: "idempotency records are typed and replay precedes changed new-work state"
   },
   {
@@ -492,16 +615,16 @@ export const SECURITY_MUTANTS = [
     id: "idempotency-result-factory-lazy",
     finding: "replay-new-work-side-effect",
     file: "lib/validation.mjs",
-    search: "export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null, preflight = null) {\n  try {",
-    replace: "export function acceptEnvelopeOperation(envelope, context = {}, resultRef = null, preflight = null) {\n  try {\n    if (typeof resultRef === \"function\") resultRef();",
+    search: "  accessPreflight = null\n) {\n  try {",
+    replace: "  accessPreflight = null\n) {\n  try {\n    if (typeof resultRef === \"function\") resultRef();",
     test: "same-fingerprint retry returns the original result instead of accepting new work"
   },
   {
     id: "operation-preflight-before-result",
     finding: "service-preflight-order",
     file: "lib/validation.mjs",
-    search: "      if (preflightFailures.length) return { accepted: false, failures: unique(preflightFailures) };",
-    replace: "      if (false) return { accepted: false, failures: unique(preflightFailures) };",
+    search: "    if (workPreflightFailures.length) return { accepted: false, failures: workPreflightFailures };",
+    replace: "    if (false) return { accepted: false, failures: workPreflightFailures };",
     test: "operation preflight runs after validation but before result creation"
   },
   {
