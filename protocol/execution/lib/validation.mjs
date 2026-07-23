@@ -20,6 +20,17 @@ const CURRENT_EXACT_READ_OPERATIONS = new Set([
   "execution.compartment_state.get",
   "execution.lineage_state.get"
 ]);
+// Historical-evidence mode is deliberately unforgeable by library callers. Only
+// immutable read assemblers in this module receive the symbol-bearing context;
+// live authority paths cannot be relaxed with a caller-supplied boolean flag.
+const HISTORICAL_EVIDENCE = Symbol("cairnHistoricalEvidence");
+const isHistoricalEvidence = (context) => context?.[HISTORICAL_EVIDENCE] === true;
+const historicalEvidenceContext = (context, at = null) => ({
+  ...context,
+  [HISTORICAL_EVIDENCE]: true,
+  requireDependencySignatures: true,
+  historicalEvidenceAt: at
+});
 
 export const IMPLEMENTED_PHASE1_INVARIANTS = new Set([
   "connection_event_union", "control_target_union", "recovery_signature_union", "scoped_control_target_union",
@@ -200,9 +211,7 @@ export function validateExactObjectRead(operationName, request, responseObject, 
         !sameObjectRef(resolveCurrentHead(context, returnedRef), returnedRef)) {
       failures.push("object_read_current_head_mismatch");
     }
-    failures.push(...intrinsicObjectFailures(returnedObject, {
-      ...context, requireDependencySignatures: true, historicalRead: true
-    })
+    failures.push(...intrinsicObjectFailures(returnedObject, historicalEvidenceContext(context))
       .map((code) => `object_read_${code}`));
     if (operationName === "execution.enumerable_map.get") {
       failures.push(...validateEnumerableMapReadRequest(request, returnedObject, context)
@@ -297,6 +306,12 @@ function intrinsicObjectFailures(object, context) {
       context.binding ?? context.executionBindingSet ?? resolveObject(context.objectResolver, object.execution_binding_set_ref),
       context
     );
+    case "cairn.gate_dependency_state_head.v0.1":
+      return validateGateDependencyStateHead(object, context);
+    case "cairn.gate_dependency_attestation.v0.1":
+      return validateGateDependencyAttestation(object, context);
+    case "cairn.gate_dependency_manifest.v0.1":
+      return validateGateDependencyManifest(object, context);
     case "cairn.confirmation_receipt.v0.1": {
       const authority = context.authority ?? resolveObject(context.objectResolver, object.authority_object_ref);
       const binding = context.binding ?? context.executionBindingSet ??
@@ -412,7 +427,9 @@ function mandateBindingFailures(mandate, commitment, binding, context = {}) {
   const connection = resolveObject(context.objectResolver, binding.connection_state_head_ref);
   if (!connection || connection.schema !== "cairn.agent_connection_state_head.v0.1" ||
       !exactRef(binding.connection_state_head_ref, connection, context) ||
-      validateConnectionStateHead(connection, { ...context, requireCurrentConnection: true }).length ||
+      validateConnectionStateHead(connection, {
+        ...context, requireCurrentConnection: !isHistoricalEvidence(context)
+      }).length ||
       connection.state !== "active" ||
       connection.principal_id !== mandate.principal_id ||
       !sameObjectRef(connection.connection_authorization_ref, mandate.agent.connection_authorization_ref) ||
@@ -444,9 +461,7 @@ export function validateActionGetResponse(request, response, context = {}) {
     if (!requestValidate || !requestValidate(request)) return ["action_get_request_schema_invalid"];
     if (!validate || !validate(response)) return ["action_get_response_schema_invalid"];
     const failures = [];
-    const historicalEvidenceContext = {
-      ...context, historicalRead: true, requireDependencySignatures: true
-    };
+    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);
     for (const [name, object] of [
       ["view", response.view], ["action_record", response.action_record],
       ["execution_binding_set", response.execution_binding_set],
@@ -545,7 +560,8 @@ export function validateActionGetResponse(request, response, context = {}) {
         response.execution_binding_set.effect_id !== response.lineage_commitment.effect_id) {
       failures.push("action_get_binding_lineage_mismatch");
     }
-    failures.push(...validateBindingSet(response.execution_binding_set, context).map((code) => `action_get_binding_${code}`));
+    failures.push(...validateBindingSet(response.execution_binding_set, evidenceContext)
+      .map((code) => `action_get_binding_${code}`));
     failures.push(...validateLineageCommitment(response.lineage_commitment, context).map((code) => `action_get_commitment_${code}`));
     const authorityExpected = response.current_action_state_head.authority_ref;
     if (preauthorizedPrepared) {
@@ -553,22 +569,23 @@ export function validateActionGetResponse(request, response, context = {}) {
           !exactRef(response.lineage_commitment.mandate_ref, response.authority_basis, context)) {
         failures.push("action_get_authority_mismatch");
       } else {
-        failures.push(...validateMandate(response.authority_basis, context)
+        failures.push(...validateMandate(response.authority_basis, evidenceContext)
           .map((code) => `action_get_authority_${code}`));
       }
     } else if ((authorityExpected === null) !== (response.authority_basis === null) ||
         (authorityExpected !== null && !exactRef(authorityExpected, response.authority_basis, context))) {
       failures.push("action_get_authority_mismatch");
     } else if (response.authority_basis?.schema === "cairn.agent_mandate.v0.3") {
-      failures.push(...validateMandate(response.authority_basis, context).map((code) => `action_get_authority_${code}`));
+      failures.push(...validateMandate(response.authority_basis, evidenceContext)
+        .map((code) => `action_get_authority_${code}`));
     } else if (response.authority_basis?.schema === "cairn.action_authorization.v0.2") {
       failures.push(...validateActionAuthorization(
-        response.authority_basis, response.execution_binding_set, historicalEvidenceContext
+        response.authority_basis, response.execution_binding_set, evidenceContext
       )
         .map((code) => `action_get_authority_${code}`));
     } else if (response.authority_basis?.schema === "cairn.cancellation_authorization.v0.1") {
       failures.push(...validateCancellationAuthorization(
-        response.authority_basis, response.execution_binding_set, historicalEvidenceContext
+        response.authority_basis, response.execution_binding_set, evidenceContext
       )
         .map((code) => `action_get_authority_${code}`));
     }
@@ -584,7 +601,7 @@ export function validateActionGetResponse(request, response, context = {}) {
       }
       if (response.authority_basis.schema === "cairn.agent_mandate.v0.3") {
         failures.push(...mandateBindingFailures(
-          response.authority_basis, response.lineage_commitment, response.execution_binding_set, context
+          response.authority_basis, response.lineage_commitment, response.execution_binding_set, evidenceContext
         ).map((code) => `action_get_${code}`));
       }
     }
@@ -615,7 +632,7 @@ export function validateActionGetResponse(request, response, context = {}) {
       }
       failures.push(...validateAuthorityReservation(
         reservation, response.action_record, response.execution_binding_set,
-        { ...historicalEvidenceContext, lineageCommitment: response.lineage_commitment,
+        { ...evidenceContext, lineageCommitment: response.lineage_commitment,
           authority: response.authority_basis }
       ).map((code) => `action_get_reservation_${code}`));
     }
@@ -642,10 +659,10 @@ export function validateActionGetResponse(request, response, context = {}) {
       failures.push(...validateGateRequest(
         response.gate_request, response.execution_binding_set, response.authority_basis,
         response.confirmation_receipt,
-        { ...historicalEvidenceContext, lineageCommitment: response.lineage_commitment }
+        { ...evidenceContext, lineageCommitment: response.lineage_commitment }
       ).map((code) => `action_get_gate_request_${code}`));
       failures.push(...validateGateResult(response.gate_result, {
-        ...historicalEvidenceContext, gateRequest: response.gate_request,
+        ...evidenceContext, gateRequest: response.gate_request,
         binding: response.execution_binding_set,
         authority: response.authority_basis, confirmation: response.confirmation_receipt,
         lineageCommitment: response.lineage_commitment
@@ -669,7 +686,7 @@ export function validateActionGetResponse(request, response, context = {}) {
     } else if (issuanceConfirmationPresent) {
       failures.push(...validateExecutionConfirmation(
         response.confirmation_receipt, response.authority_basis, response.execution_binding_set, null,
-        { ...historicalEvidenceContext, confirmationEvaluationTime: response.retrieved_at }
+        { ...evidenceContext, confirmationEvaluationTime: response.retrieved_at }
       ).map((code) => `action_get_confirmation_${code}`));
     } else if (expectedGate !== null) {
       failures.push("action_get_gate_pair_mismatch");
@@ -949,6 +966,25 @@ export function validateExecutionControlReceipt(value, context = {}) {
         value.after_scoped_control_map_hash !== after?.scoped_control_map_hash) {
       failures.push("execution_control_receipt_map_binding_mismatch");
     }
+    const beforeMap = before === null ? null :
+      resolveObject(context.objectResolver, value.before_scoped_control_map_ref);
+    const afterMap = resolveObject(context.objectResolver, value.after_scoped_control_map_ref);
+    const validControlMap = (map, head) => Boolean(head) && map?.schema === "cairn.enumerable_map_root.v0.1" &&
+      exactRef(head.scoped_control_map_ref, map, context) &&
+      validateEnumerableMapRoot(map, {
+        ...context,
+        expectedMapDomain: "scoped_execution_control",
+        expectedMapKey: executionControlMapKey(
+          head.principal_id, head.authority_namespace, head.control_namespace_generation
+        )
+      }).length === 0 &&
+      (context.requireDependencySignatures !== true || validateResolvedSignedObject(map, context).length === 0) &&
+      head.scoped_control_map_hash === map.map_hash &&
+      head.scoped_control_head_count === map.entry_count &&
+      head.scoped_control_heads_root === map.entries_root;
+    if ((before !== null && !validControlMap(beforeMap, before)) || !validControlMap(afterMap, after)) {
+      failures.push("execution_control_receipt_map_commitment_mismatch");
+    }
     if (authorizationBasis) {
       const authorization = context.controlAuthorization ??
         resolveObject(context.objectResolver, value.control_authorization_ref);
@@ -975,6 +1011,22 @@ export function validateExecutionControlReceipt(value, context = {}) {
           : resolveObject(context.objectResolver, value.scoped_leaf_after_ref)?.state;
         if (expectedState === undefined || transitionedState !== expectedState) {
           failures.push("execution_control_receipt_authorized_transition_mismatch");
+        }
+        const beforeTarget = authorization.scope === "all_agents" ? before :
+          value.scoped_leaf_before_ref === null ? null :
+            resolveObject(context.objectResolver, value.scoped_leaf_before_ref);
+        const targetFields = ["scope", "target_kind", "target_ref", "compartment_control_key", "action_control_key"];
+        if (authorization.scope !== "all_agents" && (!beforeTarget ||
+            targetFields.some((field) => canonicalHash(authorization[field]) !== canonicalHash(beforeTarget[field])))) {
+          failures.push("execution_control_receipt_target_mismatch");
+        }
+        const beforePauseEpoch = authorization.scope === "all_agents"
+          ? before?.global_pause_epoch : beforeTarget?.pause_epoch;
+        const beforeRevocationNonce = authorization.scope === "all_agents"
+          ? before?.global_revocation_nonce : beforeTarget?.revocation_nonce;
+        if (authorization.expected_pause_epoch !== beforePauseEpoch ||
+            authorization.expected_revocation_nonce !== beforeRevocationNonce) {
+          failures.push("execution_control_receipt_epoch_nonce_mismatch");
         }
       }
     } else {
@@ -1008,6 +1060,78 @@ export function validateExecutionControlReceipt(value, context = {}) {
             leafAfter.principal_id !== leafBefore.principal_id))) {
         failures.push("execution_control_receipt_scoped_leaf_transition_mismatch");
       }
+      const beforeProof = beforeMap === null ? null : validateEnumerableMapPathProof(
+        value.before_change_proof, beforeMap,
+        leafBefore === null ? "nonmembership" : "membership",
+        leafBefore === null ? null : {
+          entry_object_ref: value.scoped_leaf_before_ref,
+          entry_object_hash: value.scoped_leaf_before_hash
+        }, { ...context, expectedEntryKey: leafAfter?.scoped_control_leaf_key }
+      );
+      const afterProof = afterMap === null ? null : validateEnumerableMapPathProof(
+        value.after_change_proof, afterMap, "membership", {
+          entry_object_ref: value.scoped_leaf_after_ref,
+          entry_object_hash: value.scoped_leaf_after_hash
+        }, { ...context, expectedEntryKey: leafAfter?.scoped_control_leaf_key }
+      );
+      const proofValid = beforeProof !== null && afterProof !== null &&
+        beforeProof.failures.length === 0 && afterProof.failures.length === 0 &&
+        canonicalHash(beforeProof.frontier) === canonicalHash(afterProof.frontier) &&
+        afterMap?.revision === beforeMap?.revision + 1 &&
+        afterMap?.entry_count === beforeMap?.entry_count + (leafBefore === null ? 1 : 0);
+      if (!proofValid) failures.push("execution_control_receipt_map_proof_mismatch");
+      const transitionMatrixValid = leafBefore && leafAfter && new Map([
+        ["pause", leafBefore.state === "active" && leafAfter.state === "paused" &&
+          leafAfter.pause_epoch === leafBefore.pause_epoch + 1 &&
+          leafAfter.revocation_nonce === leafBefore.revocation_nonce],
+        ["resume", ["paused", "frozen_new_redemptions"].includes(leafBefore.state) &&
+          leafAfter.state === "active" && leafAfter.pause_epoch === leafBefore.pause_epoch &&
+          leafAfter.revocation_nonce === leafBefore.revocation_nonce],
+        ["freeze_new_redemptions", leafBefore.state === "active" &&
+          leafAfter.state === "frozen_new_redemptions" && leafAfter.pause_epoch === leafBefore.pause_epoch &&
+          leafAfter.revocation_nonce === leafBefore.revocation_nonce],
+        ["revoke", leafBefore.state !== "revoked" && leafAfter.state === "revoked" &&
+          leafAfter.pause_epoch === leafBefore.pause_epoch &&
+          leafAfter.revocation_nonce === leafBefore.revocation_nonce + 1]
+      ]).get(authorizationBasis
+        ? (context.controlAuthorization ?? resolveObject(context.objectResolver,
+          value.control_authorization_ref))?.control_action
+        : null);
+      if (authorizationBasis && transitionMatrixValid !== true) {
+        failures.push("execution_control_receipt_transition_mismatch");
+      }
+    } else if (value.before_change_proof !== null || value.after_change_proof !== null) {
+      failures.push("execution_control_receipt_map_proof_mismatch");
+    } else if (value.cause === "global_control" && before !== null &&
+        (!sameObjectRef(before.scoped_control_map_ref, after?.scoped_control_map_ref) ||
+         before.scoped_control_map_hash !== after?.scoped_control_map_hash ||
+         before.scoped_control_head_count !== after?.scoped_control_head_count ||
+         before.scoped_control_heads_root !== after?.scoped_control_heads_root)) {
+      failures.push("execution_control_receipt_map_commitment_mismatch");
+    } else if (["namespace_genesis", "namespace_rotation"].includes(value.cause) &&
+        (afterMap?.entry_count !== 0 || afterMap?.revision !== 0 ||
+         afterMap?.entries_root !== enumerableMapEmptyEntriesRoot("scoped_execution_control"))) {
+      failures.push("execution_control_receipt_map_commitment_mismatch");
+    }
+    if (jointConnection) {
+      const connectionReceipt = resolveObject(context.objectResolver, value.connection_state_event_receipt_ref);
+      const outstandingHead = resolveObject(context.objectResolver, value.outstanding_action_index_head_ref);
+      if (!connectionReceipt || connectionReceipt.schema !== "cairn.connection_state_event_receipt.v0.1" ||
+          !exactRef(value.connection_state_event_receipt_ref, connectionReceipt, context) ||
+          (context.requireDependencySignatures === true &&
+            validateResolvedSignedObject(connectionReceipt, context).length) ||
+          connectionReceipt.authority_transaction_id !== value.authority_transaction_id ||
+          connectionReceipt.committed_at !== value.committed_at) {
+        failures.push("execution_control_receipt_connection_dependency_invalid");
+      }
+      if (!outstandingHead ||
+          outstandingHead.schema !== "cairn.connection_outstanding_action_index_state_head.v0.1" ||
+          !exactRef(value.outstanding_action_index_head_ref, outstandingHead, context) ||
+          validateConnectionOutstandingIndexHead(outstandingHead, context).length ||
+          (context.requireDependencySignatures === true &&
+            validateResolvedSignedObject(outstandingHead, context).length)) {
+        failures.push("execution_control_receipt_outstanding_dependency_invalid");
+      }
     }
     const committedAt = Date.parse(value.committed_at);
     const signedAt = Date.parse(value.authority_service_signature?.signed_at);
@@ -1025,6 +1149,19 @@ export function connectionOutstandingMapKey(outstandingActionIndexKey) {
     schema: "cairn.enumerable_map_key_preimage.v0.1",
     owner_stable_key: outstandingActionIndexKey,
     map_domain: "connection_outstanding_action"
+  });
+}
+
+export function executionControlMapKey(principalId, authorityNamespace, generation) {
+  return canonicalHash({
+    schema: "cairn.enumerable_map_key_preimage.v0.1",
+    owner_stable_key: canonicalHash({
+      schema: "cairn.execution_control_map_owner_preimage.v0.1",
+      principal_id: principalId,
+      authority_namespace: authorityNamespace,
+      control_namespace_generation: generation
+    }),
+    map_domain: "scoped_execution_control"
   });
 }
 
@@ -1262,6 +1399,12 @@ function inspectEnumerableMapNode(node, context, mapDomain) {
         keyField: "confirmed_event_key",
         hashField: "event_hash",
         external: true
+      }],
+      ["scoped_execution_control", {
+        entryKind: "scoped_execution_control",
+        schema: "cairn.scoped_execution_control_leaf_state_head.v0.1",
+        keyField: "scoped_control_leaf_key",
+        validate: validateScopedControlLeaf
       }]
     ]).get(mapDomain);
     const entryObject = resolveObject(context.objectResolver, leaf?.entry_object_ref);
@@ -1364,6 +1507,21 @@ export function compartmentEconomicAtomSubsetRoot(ledgerClass, entries) {
 export function compartmentConfirmedEventSubsetRoot(eventKind, entries) {
   return compartmentSubsetRoot(`confirmed_event:${eventKind}`,
     entries.filter(({ object }) => object?.event_kind === eventKind));
+}
+
+export function currentReservationHeldAtomsRoot(reservation, entries) {
+  const heldAtoms = entries
+    .filter(({ object }) => object?.ledger_class === "reserved" &&
+      object?.obligation_or_reservation_id === reservation?.authority_reservation_ref?.object_id &&
+      object?.reservation_fence === reservation?.reservation_fence)
+    .map(({ leaf, object }) => ({ atom_id: object.atom_id, atom_hash: leaf.entry_object_hash }))
+    .sort((left, right) => left.atom_id.localeCompare(right.atom_id) ||
+      left.atom_hash.localeCompare(right.atom_hash));
+  return canonicalHash({
+    schema: "cairn.current_reservation_held_atoms_root_preimage.v0.1",
+    reservation_index_key: reservation?.reservation_index_key ?? null,
+    held_atoms: heldAtoms
+  });
 }
 
 function checkedAmountSum(entries) {
@@ -1792,12 +1950,6 @@ function receiverEventIdentityTransitionFailures(reference, beforeEntry, afterEn
       receipt.identity_epoch_directory_before_head_hash !== scopeBefore?.index_epoch_directory_head_hash ||
       !sameObjectRef(receipt.identity_epoch_directory_after_head_ref, scopeAfter?.index_epoch_directory_head_ref) ||
       receipt.identity_epoch_directory_after_head_hash !== scopeAfter?.index_epoch_directory_head_hash ||
-      !sameObjectRef(receipt.assigned_identity_epoch_before_head_ref,
-        scopeBefore?.accepting_index_epoch_state_head_ref) ||
-      receipt.assigned_identity_epoch_before_head_hash !== scopeBefore?.accepting_index_epoch_state_head_hash ||
-      !sameObjectRef(receipt.assigned_identity_epoch_after_head_ref,
-        scopeAfter?.accepting_index_epoch_state_head_ref) ||
-      receipt.assigned_identity_epoch_after_head_hash !== scopeAfter?.accepting_index_epoch_state_head_hash ||
       !sameObjectRef(receipt.event_id_slot_assignment_before_ref, beforeEntry?.event_id_slot_assignment_ref) ||
       receipt.event_id_slot_assignment_before_hash !== beforeEntry?.event_id_slot_assignment_hash ||
       !sameObjectRef(receipt.event_id_slot_assignment_after_ref, afterEntry?.event_id_slot_assignment_ref) ||
@@ -1808,6 +1960,50 @@ function receiverEventIdentityTransitionFailures(reference, beforeEntry, afterEn
       receipt.sequence_slot_assignment_after_hash !== afterEntry?.sequence_slot_assignment_hash) {
     failures.push("receiver_event_identity_binding_receipt_mismatch");
   }
+  const assignedEpochBefore = resolveObject(context.objectResolver,
+    receipt.assigned_identity_epoch_before_head_ref);
+  const assignedEpochAfter = resolveObject(context.objectResolver,
+    receipt.assigned_identity_epoch_after_head_ref);
+  const assignedEpoch = beforeEntry?.assigned_identity_epoch;
+  const directoryKey = beforeEntry?.identity_scope_index_key;
+  const exactEpochHead = (epochRef, epochHead) => Boolean(
+    epochRef && epochHead && epochRef.schema === "cairn.bounded_index_epoch_state_head.v0.1" &&
+    epochHead.schema === epochRef.schema && epochRef.object_hash === epochHead.head_hash &&
+    epochRef.object_id === `${epochHead.directory_key}:${epochHead.epoch}` &&
+    typeof context.externalObjectVerifier === "function" &&
+    context.externalObjectVerifier({
+      reference: epochRef, object: epochHead,
+      expectedSchema: "cairn.bounded_index_epoch_state_head.v0.1"
+    }) === true
+  );
+  const exactBefore = exactEpochHead(receipt.assigned_identity_epoch_before_head_ref, assignedEpochBefore);
+  const exactAfter = exactEpochHead(receipt.assigned_identity_epoch_after_head_ref, assignedEpochAfter);
+  const assignedIsAccepting = assignedEpoch === scopeBefore?.accepting_index_epoch &&
+    assignedEpoch === scopeAfter?.accepting_index_epoch;
+  const epochBindingValid = exactBefore && exactAfter &&
+    receipt.assigned_identity_epoch_before_head_hash === assignedEpochBefore.head_hash &&
+    receipt.assigned_identity_epoch_after_head_hash === assignedEpochAfter.head_hash &&
+    assignedEpochBefore.directory_key === directoryKey && assignedEpochAfter.directory_key === directoryKey &&
+    assignedEpochBefore.epoch === assignedEpoch && assignedEpochAfter.epoch === assignedEpoch &&
+    assignedEpochAfter.sequence === assignedEpochBefore.sequence + 1 &&
+    assignedEpochAfter.previous_state_hash === assignedEpochBefore.head_hash &&
+    assignedEpochAfter.state === assignedEpochBefore.state &&
+    (assignedIsAccepting
+      ? assignedEpochBefore.state === "accepting" &&
+        sameObjectRef(receipt.assigned_identity_epoch_before_head_ref,
+          scopeBefore.accepting_index_epoch_state_head_ref) &&
+        sameObjectRef(receipt.assigned_identity_epoch_after_head_ref,
+          scopeAfter.accepting_index_epoch_state_head_ref)
+      : assignedEpoch < scopeBefore?.accepting_index_epoch &&
+        scopeBefore?.accepting_index_epoch === scopeAfter?.accepting_index_epoch &&
+        assignedEpochBefore.state === "draining" &&
+        !sameObjectRef(receipt.assigned_identity_epoch_before_head_ref,
+          scopeBefore?.accepting_index_epoch_state_head_ref) &&
+        !sameObjectRef(receipt.assigned_identity_epoch_after_head_ref,
+          scopeAfter?.accepting_index_epoch_state_head_ref) &&
+        sameObjectRef(scopeBefore?.accepting_index_epoch_state_head_ref,
+          scopeAfter?.accepting_index_epoch_state_head_ref));
+  if (!epochBindingValid) failures.push("receiver_event_identity_assigned_epoch_mismatch");
   const transitions = [
     {
       assignment_before_ref: receipt.event_id_slot_assignment_before_ref,
@@ -1958,7 +2154,14 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
         value.authority_transaction_id !== receiverTransition.authority_transaction_id) {
       failures.push("receiver_terminal_completion_plan_mismatch");
     }
-    const identityTransitionGroups = new Map();
+    const identityTransitionRefs = sortedUniqueRefs(
+      value.identity_epoch_transition_receipts.map(({ transition_receipt_ref }) => transition_receipt_ref)
+    );
+    if (identityTransitionRefs.length !== 1 ||
+        !sameObjectRef(identityTransitionRefs[0], receiverTransition.identity_epoch_transition_receipt_ref)) {
+      failures.push("receiver_terminal_completion_identity_transition_atomicity_mismatch");
+    }
+    const identityAssignments = [];
     for (const item of value.identity_epoch_transition_receipts) {
       const assignment = resolveObject(context.objectResolver, item.assignment_ref);
       if (!exactExternalObject(item.assignment_ref, assignment,
@@ -1967,15 +2170,10 @@ export function validateReceiverTerminalReleaseCompletion(value, context = {}) {
           item.transition_receipt_hash !== item.transition_receipt_ref.object_hash) {
         failures.push("receiver_terminal_completion_identity_transition_mismatch");
       }
-      const groupKey = canonicalText(item.transition_receipt_ref);
-      const group = identityTransitionGroups.get(groupKey) ?? {
-        ref: item.transition_receipt_ref, assignments: []
-      };
-      group.assignments.push(item.assignment_ref);
-      identityTransitionGroups.set(groupKey, group);
+      identityAssignments.push(item.assignment_ref);
     }
-    for (const group of identityTransitionGroups.values()) {
-      if (exactBoundedIdentityTransition(group.ref, group.assignments, plan.release_cause,
+    if (identityTransitionRefs.length === 1) {
+      if (exactBoundedIdentityTransition(identityTransitionRefs[0], identityAssignments, plan.release_cause,
         value.authority_transaction_id, plan.terminal_release_evidence_ref, context).failures.length) {
         failures.push("receiver_terminal_completion_identity_transition_mismatch");
       }
@@ -3159,26 +3357,53 @@ export function validateCompartmentStateHead(value, context = {}) {
       value.quarantine_exposure].filter((item) => item !== null)) {
       if (money.asset !== accountingAsset) failures.push("compartment_state_asset_mismatch");
     }
+    const reservationMap = resolvedMaps.get("compartment_active_reservation");
     const atomMap = resolvedMaps.get("compartment_economic_atom");
     const eventMap = resolvedMaps.get("compartment_confirmed_event");
+    const reservationResolution = reservationMap
+      ? resolveEnumerableMapEntries(reservationMap, "compartment_active_reservation", context)
+      : { entries: [], failures: ["compartment_state_reservation_map_unresolved"] };
     const atomResolution = atomMap
       ? resolveEnumerableMapEntries(atomMap, "compartment_economic_atom", context)
       : { entries: [], failures: ["compartment_state_atom_map_unresolved"] };
     const eventResolution = eventMap
       ? resolveEnumerableMapEntries(eventMap, "compartment_confirmed_event", context)
       : { entries: [], failures: ["compartment_state_event_map_unresolved"] };
-    if (atomResolution.failures.length || eventResolution.failures.length) {
+    if (reservationResolution.failures.length || atomResolution.failures.length || eventResolution.failures.length) {
       failures.push("compartment_state_accounting_map_unresolved");
     } else {
+      const reservationEntries = reservationResolution.entries;
       const atomEntries = atomResolution.entries;
       const eventEntries = eventResolution.entries;
-      if (atomEntries.some(({ object }) => object?.economic_resource_key !== value.economic_resource_key ||
+      if (reservationEntries.some(({ object }) => object?.compartment_control_key !== value.compartment_control_key) ||
+          atomEntries.some(({ object }) => object?.economic_resource_key !== value.economic_resource_key ||
           object?.compartment_control_key !== value.compartment_control_key ||
           object?.amount?.asset !== accountingAsset) ||
           eventEntries.some(({ object }) => object?.economic_resource_key !== value.economic_resource_key ||
           object?.compartment_control_key !== value.compartment_control_key ||
           object?.amount?.asset !== accountingAsset)) {
         failures.push("compartment_state_accounting_entry_mismatch");
+      }
+      const reservedAtoms = atomEntries.filter(({ object }) => object?.ledger_class === "reserved");
+      let reservationClosureMismatch = false;
+      for (const atomEntry of reservedAtoms) {
+        const matches = reservationEntries.filter(({ object }) =>
+          object?.authority_reservation_ref?.object_id === atomEntry.object?.obligation_or_reservation_id &&
+          object?.reservation_fence === atomEntry.object?.reservation_fence &&
+          object?.compartment_control_key === value.compartment_control_key);
+        if (matches.length !== 1) reservationClosureMismatch = true;
+      }
+      for (const { object: reservation } of reservationEntries) {
+        const held = reservedAtoms.filter(({ object }) =>
+          object?.obligation_or_reservation_id === reservation?.authority_reservation_ref?.object_id &&
+          object?.reservation_fence === reservation?.reservation_fence);
+        if (held.length === 0 ||
+            reservation?.held_atom_ids_root !== currentReservationHeldAtomsRoot(reservation, atomEntries)) {
+          reservationClosureMismatch = true;
+        }
+      }
+      if (reservationClosureMismatch) {
+        failures.push("compartment_state_reservation_atom_closure_mismatch");
       }
       const atomClasses = new Map([
         ["reserved", ["cairn_reserved", "active_hold_atoms_root"]],
@@ -3188,9 +3413,11 @@ export function validateCompartmentStateHead(value, context = {}) {
       for (const [ledgerClass, [amountField, rootField]] of atomClasses) {
         const subset = atomEntries.filter(({ object }) => object?.ledger_class === ledgerClass);
         const total = checkedAmountSum(subset);
-        if (total === null || amount(value[amountField]) !== total ||
-            value[rootField] !== compartmentEconomicAtomSubsetRoot(ledgerClass, atomEntries)) {
+        if (total === null || amount(value[amountField]) !== total) {
           failures.push("compartment_state_atom_accounting_mismatch", `compartment_state_atom_accounting_mismatch:${ledgerClass}`);
+        }
+        if (value[rootField] !== compartmentEconomicAtomSubsetRoot(ledgerClass, atomEntries)) {
+          failures.push("compartment_state_atom_accounting_mismatch", `compartment_state_atom_subset_root_mismatch:${ledgerClass}`);
         }
       }
       const eventKinds = new Map([
@@ -3201,9 +3428,11 @@ export function validateCompartmentStateHead(value, context = {}) {
       for (const [eventKind, [amountField, rootField]] of eventKinds) {
         const subset = eventEntries.filter(({ object }) => object?.event_kind === eventKind);
         const total = checkedAmountSum(subset);
-        if (total === null || amount(value[amountField]) !== total ||
-            value[rootField] !== compartmentConfirmedEventSubsetRoot(eventKind, eventEntries)) {
+        if (total === null || amount(value[amountField]) !== total) {
           failures.push("compartment_state_event_accounting_mismatch", `compartment_state_event_accounting_mismatch:${eventKind}`);
+        }
+        if (value[rootField] !== compartmentConfirmedEventSubsetRoot(eventKind, eventEntries)) {
+          failures.push("compartment_state_event_accounting_mismatch", `compartment_state_event_subset_root_mismatch:${eventKind}`);
         }
       }
       const outstanding = amount(value.cairn_reserved) + amount(value.outstanding_reversal_exposure) +
@@ -3908,6 +4137,14 @@ function cancellationOriginalActionFailures(cancellation, binding, context = {})
     ...validateActionRecord(originalAction, context).map((code) => `original_action_${code}`),
     ...validatePhase1Object(originalState, context).map((code) => `original_action_state_${code}`)
   ];
+  if (context.requireDependencySignatures === true) {
+    if (validateResolvedSignedObject(originalAction, context).length) {
+      failures.push("cancellation_original_action_signature_invalid");
+    }
+    if (validateResolvedSignedObject(originalState, context).length) {
+      failures.push("cancellation_original_action_state_signature_invalid");
+    }
+  }
   if (!exactRef(cancellation.original_action_ref, originalAction, context) ||
       !exactRef(cancellation.original_action_state_head_ref, originalState, context) ||
       originalAction.effect_id !== cancellation.original_effect_id ||
@@ -3956,7 +4193,7 @@ export function validateBindingSet(value, context = {}) {
             validateResolvedSignedObject(connection, context).length ||
             validateConnectionStateHead(connection, {
               ...context, runtimeBinding: runtime, connectionAuthorization: authorization,
-              requireCurrentConnection: true
+              requireCurrentConnection: !isHistoricalEvidence(context)
             }).length || connection.state !== "active" || connection.principal_id !== value.principal_id ||
             !sameObjectRef(connection.agent_runtime_binding_ref, value.agent_runtime_binding_ref) ||
             !sameObjectRef(connection.connection_authorization_ref, value.connection_authorization_ref)) {
@@ -4101,20 +4338,38 @@ export function validateBindingSet(value, context = {}) {
           grant.principal_id !== value.principal_id || current?.principal_id !== value.principal_id) {
         failures.push("binding_data_grant_principal_mismatch");
       }
+      const runtimeKey = (context.runtimeBinding ??
+        resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id;
       if (value.actor_branch === "agent_runtime" && grant &&
-          (grant.recipient !== (context.runtimeBinding ??
-            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id ||
-           !grant.audience?.includes((context.runtimeBinding ??
-            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id))) {
+          (grant.recipient !== runtimeKey ||
+           canonicalHash(grant.audience) !== canonicalHash([runtimeKey]))) {
         failures.push("binding_data_grant_runtime_recipient_mismatch");
+      }
+      if (!grant || grant.purpose !== head.required_purpose ||
+          canonicalHash([...grant.uses].sort()) !== canonicalHash([...head.required_uses].sort()) ||
+          canonicalHash(grant.resource_scopes) !== head.required_resource_scopes_root ||
+          canonicalHash(grant.audience) !== canonicalHash(head.required_audience)) {
+        failures.push("binding_data_grant_scope_mismatch");
+      }
+      if (!grant || Date.parse(grant.issued_at) > Date.parse(value.created_at) ||
+          Date.parse(grant.expires_at) < Date.parse(value.expires_at) ||
+          Date.parse(grant.retention?.expires_at) < Date.parse(value.expires_at)) {
+        failures.push("binding_data_grant_interval_mismatch");
       }
       if (!current || current.schema !== "cairn.data_grant_state_head.v0.1" ||
           !exactRef(head.current_state_head_ref, current, context) ||
           validateResolvedSignedObject(current, context).length ||
           validateDataGrantStateHead(current, { ...context, requireDependencySignatures: true }).length ||
-          !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref) ||
+          (!isHistoricalEvidence(context) &&
+            !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref)) ||
           !sameObjectRef(current.data_grant_ref, head.data_grant_ref) || current.revocation_nonce !== head.revocation_nonce) {
         failures.push("binding_data_grant_current_head_mismatch");
+      }
+      const finalReadDisclosure = current?.state === "exhausted" && value.disclosures.some((disclosure) =>
+        sameObjectRef(disclosure.source_read_next_state_head_ref, head.current_state_head_ref) &&
+        disclosure.source_read_next_state_head_hash === head.current_state_head_ref.object_hash);
+      if (!current || !((current.state === "active" && current.remaining_reads > 0) || finalReadDisclosure)) {
+        failures.push("binding_data_grant_state_ineligible");
       }
     }
     if (Date.parse(value.created_at) >= Date.parse(value.expires_at)) failures.push("binding_interval_invalid");
@@ -4258,7 +4513,7 @@ export function validateActionAuthorization(value, binding, context = {}) {
       ["fulfillment_attempt_core_ref", "fulfillment_attempt_core_hash"],
       ["explicit_scope_selection_proof_ref", "explicit_scope_selection_proof_hash"]
     ], "authorization_ref_hash_mismatch"));
-    if (context.historicalRead !== true) {
+    if (!isHistoricalEvidence(context)) {
       const currentPrincipalRevocationNonce = typeof context.principalRevocationNonceResolver === "function"
         ? context.principalRevocationNonceResolver(value.principal_id) : context.principalRevocationNonce;
       if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||
@@ -4330,16 +4585,27 @@ export function validateCancellationAuthorization(value, binding, context = {}) 
     if (failures.length) return failures;
     failures.push(...refHashPairFailures(value, CANCELLATION_AUTHORIZATION_REF_HASH_PAIRS,
       "cancellation_authorization_ref_hash_mismatch"));
-    if (context.historicalRead !== true) {
+    if (!isHistoricalEvidence(context)) {
       const currentPrincipalRevocationNonce = typeof context.principalRevocationNonceResolver === "function"
         ? context.principalRevocationNonceResolver(value.principal_id) : context.principalRevocationNonce;
       if (!Number.isInteger(currentPrincipalRevocationNonce) || currentPrincipalRevocationNonce < 0 ||
           value.principal_revocation_nonce !== currentPrincipalRevocationNonce) {
         failures.push("cancellation_principal_revocation_nonce_mismatch");
       }
-      const requiredReservedJudgments = typeof context.reservedJudgmentsResolver === "function"
-        ? context.reservedJudgmentsResolver(value.principal_id, binding) : context.requiredReservedJudgments;
-      if (!Array.isArray(requiredReservedJudgments) ||
+      const derivation = binding && typeof context.cancellationReservedJudgmentsResolver === "function"
+        ? context.cancellationReservedJudgmentsResolver(value.principal_id, binding) : null;
+      const requiredReservedJudgments = derivation?.decisions;
+      if (!isObject(derivation) || !binding ||
+          !sameObjectRef(derivation.binding_ref, objectRef(binding, context)) ||
+          canonicalHash(derivation.review_ref) !== canonicalHash(binding.execution_review_receipt_ref) ||
+          derivation.review_hash !== binding.review_hash ||
+          derivation.current_policy_hash !== binding.review_policy_hash ||
+          !Array.isArray(requiredReservedJudgments)) {
+        failures.push("cancellation_reserved_judgment_graph_unresolved");
+      } else if (new Set(requiredReservedJudgments.map(canonicalText)).size !== requiredReservedJudgments.length ||
+          canonicalHash([...requiredReservedJudgments].sort((left, right) =>
+            Buffer.compare(Buffer.from(canonicalText(left)), Buffer.from(canonicalText(right))))) !==
+            canonicalHash(requiredReservedJudgments) ||
           canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {
         failures.push("cancellation_reserved_judgments_mismatch");
       }
@@ -4498,7 +4764,9 @@ export function confirmationChallengeHash(authority, binding, confirmation) {
 }
 
 function currentPolicyLifecycleFailures(reference, immutablePolicyRef, policyKind, evaluationTime, context) {
-  const resolver = context.currentPolicyLifecycleResolver;
+  const resolver = isHistoricalEvidence(context)
+    ? context.policyLifecycleHistoryResolver ?? context.currentPolicyLifecycleResolver
+    : context.currentPolicyLifecycleResolver;
   let current = null;
   if (typeof resolver === "function") current = resolver(immutablePolicyRef, policyKind);
   else if (resolver instanceof Map) {
@@ -4636,6 +4904,134 @@ export const PHASE1_GATE_CHECK_CODES = Object.freeze([
   "EXECUTOR_TARGET", "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"
 ]);
 
+const GATE_WRAPPER_ROLES = new Set([
+  "execution_release", "execution_integrity", "policy_lifecycle", "execution_control",
+  "economic_resource", "business_state", "provider_identity", "provider_identity_trust_overlay",
+  "policy", "executor_policy", "receiver_finality", "accounting_policy",
+  "receiver_channel_policy", "receiver_sequence_selector", "checkout_dependency",
+  "checkout_readiness", "checkout_group_state", "checkout_terms"
+]);
+
+const GATE_DEPENDENCY_STATE_EDGES = new Map([
+  ["active", new Set(["paused", "restricted", "revoked", "expired"])],
+  ["paused", new Set(["active", "restricted", "revoked", "expired"])],
+  ["restricted", new Set(["active", "paused", "revoked", "expired"])],
+  ["revoked", new Set()],
+  ["expired", new Set()]
+]);
+
+export function gateDependencyKey(principalId, dependencyRole, subjectRef) {
+  return canonicalHash({
+    schema: "cairn.gate_dependency_key_preimage.v0.1",
+    principal_id: principalId,
+    dependency_role: dependencyRole,
+    subject_ref: subjectRef
+  });
+}
+
+function expectedGateDependencyAuthority(context, role) {
+  if (context.gateDependencyAuthorityResolver instanceof Map) {
+    return context.gateDependencyAuthorityResolver.get(role) ?? null;
+  }
+  if (typeof context.gateDependencyAuthorityResolver === "function") {
+    return context.gateDependencyAuthorityResolver(role);
+  }
+  return null;
+}
+
+export function validateGateDependencyAttestation(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    if (validateResolvedSignedObject(value, context).length) {
+      failures.push("gate_dependency_attestation_signature_invalid");
+    }
+    failures.push(...refHashPairFailures(value, [
+      ["subject_ref", "subject_hash"]
+    ], "gate_dependency_attestation_ref_hash_mismatch"));
+    if (!GATE_WRAPPER_ROLES.has(value.dependency_role) ||
+        expectedGateDependencyAuthority(context, value.dependency_role) !== value.issuing_authority_id ||
+        Date.parse(value.valid_from) >= Date.parse(value.valid_until) ||
+        Date.parse(value.issued_at) < Date.parse(value.valid_from) ||
+        Date.parse(value.issued_at) >= Date.parse(value.valid_until)) {
+      failures.push("gate_dependency_attestation_semantics_invalid");
+    }
+    return unique(failures);
+  } catch {
+    return ["gate_dependency_attestation_malformed"];
+  }
+}
+
+export function validateGateDependencyStateHead(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    const source = resolveObject(context.objectResolver, value.source_ref);
+    if (!GATE_WRAPPER_ROLES.has(value.dependency_role) ||
+        (value.sequence === 0) !== (value.previous_head_hash === null) ||
+        (value.sequence === 0 && value.state !== "active") ||
+        value.source_hash !== value.source_ref.object_hash ||
+        Date.parse(value.valid_from) >= Date.parse(value.valid_until) ||
+        Date.parse(value.updated_at) < Date.parse(value.valid_from) ||
+        Date.parse(value.updated_at) >= Date.parse(value.valid_until)) {
+      failures.push("gate_dependency_state_semantics_invalid");
+    }
+    if (!source || !exactRef(value.source_ref, source, context) ||
+        source.schema !== "cairn.gate_dependency_attestation.v0.1" ||
+        validateGateDependencyAttestation(source, context).length ||
+        source.principal_id !== value.principal_id ||
+        source.dependency_role !== value.dependency_role || source.state !== value.state ||
+        value.dependency_key !== gateDependencyKey(
+          value.principal_id, value.dependency_role, source.subject_ref
+        ) || Date.parse(value.valid_from) < Date.parse(source.valid_from) ||
+        Date.parse(value.valid_until) > Date.parse(source.valid_until)) {
+      failures.push("gate_dependency_state_source_mismatch");
+    }
+    if (value.sequence > 0) {
+      const predecessorRef = {
+        schema: value.schema, object_id: value.dependency_key, object_hash: value.previous_head_hash
+      };
+      const predecessor = typeof context.statePredecessorResolver === "function"
+        ? context.statePredecessorResolver(predecessorRef) : resolveObject(context.objectResolver, predecessorRef);
+      const predecessorSource = predecessor
+        ? resolveObject(context.objectResolver, predecessor.source_ref) : null;
+      if (!predecessor || !exactRef(predecessorRef, predecessor, context) ||
+          validateResolvedSignedObject(predecessor, context).length ||
+          predecessor.dependency_key !== value.dependency_key ||
+          predecessor.principal_id !== value.principal_id ||
+          predecessor.dependency_role !== value.dependency_role ||
+          !predecessorSource || !exactRef(predecessor.source_ref, predecessorSource, context) ||
+          validateGateDependencyAttestation(predecessorSource, context).length ||
+          !source || !sameObjectRef(predecessorSource.subject_ref, source.subject_ref) ||
+          !GATE_DEPENDENCY_STATE_EDGES.get(predecessor.state)?.has(value.state) ||
+          value.sequence !== predecessor.sequence + 1 ||
+          Date.parse(value.updated_at) < Date.parse(predecessor.updated_at) ||
+          Date.parse(source.issued_at) < Date.parse(predecessorSource.issued_at)) {
+        failures.push("gate_dependency_state_predecessor_mismatch");
+      }
+    }
+    return unique(failures);
+  } catch {
+    return ["gate_dependency_state_malformed"];
+  }
+}
+
+export function validateGateDependencyManifest(value, context = {}) {
+  try {
+    const failures = validatePhase1Object(value, context);
+    if (failures.length) return failures;
+    failures.push(...refHashPairFailures(value, [
+      ["execution_binding_set_ref", "execution_binding_set_hash"]
+    ], "gate_dependency_manifest_ref_hash_mismatch"));
+    if (Date.parse(value.created_at) >= Date.parse(value.expires_at)) {
+      failures.push("gate_dependency_manifest_interval_invalid");
+    }
+    return unique(failures);
+  } catch {
+    return ["gate_dependency_manifest_malformed"];
+  }
+}
+
 function sortedUniqueRefs(refs) {
   return [...new Map(refs.filter((reference) => reference !== null)
     .map((reference) => [canonicalText(reference), reference])).values()]
@@ -4671,6 +5067,205 @@ export function gateRequiredHeadRefs(request, binding) {
   ]);
 }
 
+function gateDependencyRoleEntries(request, binding) {
+  if (!request || !binding) return [];
+  const scalars = [
+    ["execution_release", binding.execution_release_state_head_ref],
+    ["execution_integrity", request.execution_integrity_state_head_ref],
+    ["policy_lifecycle", request.confirmation_assurance_policy_lifecycle_head_ref],
+    ["policy_lifecycle", request.confirmation_verifier_profile_lifecycle_head_ref],
+    ["execution_control", request.current_control_head_refs],
+    ["connection", request.current_connection_head_ref],
+    ["compartment", request.current_compartment_head_ref],
+    ["economic_resource", request.current_economic_resource_head_ref],
+    ["data_grant", request.current_data_grant_head_refs],
+    ["business_state", request.current_business_state_head_refs],
+    ["provider_identity", request.current_provider_identity_head_refs],
+    ["provider_identity_trust_overlay", request.current_provider_identity_trust_overlay_head_refs],
+    ["authority_reservation", request.reservation_receipt_refs],
+    ["policy", request.policy_refs],
+    ["executor_policy", request.executor_policy_ref],
+    ["receiver_finality", request.receiver_finality_profile_ref],
+    ["accounting_policy", request.accounting_policy_ref],
+    ["receiver_channel_policy", request.receiver_channel_policy_ref],
+    ["receiver_sequence_selector", request.receiver_sequence_epoch_selector_ref],
+    ["checkout_dependency", request.checkout_dependency_refs],
+    ["checkout_readiness", request.checkout_readiness_receipt_ref],
+    ["checkout_group_state", request.checkout_group_state_head_ref],
+    ["checkout_terms", request.checkout_terms_receipt_ref]
+  ];
+  return scalars.flatMap(([role, refs]) => (Array.isArray(refs) ? refs : [refs])
+    .filter((reference) => reference !== null).map((reference) => ({ role, reference })));
+}
+
+function gateDependencyGraph(request, binding, context = {}) {
+  const authenticationFailures = [];
+  const eligibilityFailures = [];
+  const evidenceRefs = [];
+  const roleStates = new Map();
+  const evaluationAt = Date.parse(context.gateEvaluationTime ?? request?.requested_at);
+  for (const { role, reference } of gateDependencyRoleEntries(request, binding)) {
+    const roleState = roleStates.get(role) ?? { authenticationFailures: [], eligible: true, evidenceRefs: [] };
+    roleState.evidenceRefs.push(reference);
+    roleStates.set(role, roleState);
+    const object = resolveObject(context.objectResolver, reference);
+    evidenceRefs.push(reference);
+    if (!object || !exactRef(reference, object, context)) {
+      authenticationFailures.push(`gate_request_dependency_unresolved:${role}`);
+      roleState.authenticationFailures.push("unresolved");
+      continue;
+    }
+    if (validateResolvedSignedObject(object, context).length) {
+      authenticationFailures.push(`gate_request_dependency_signature_invalid:${role}`);
+      roleState.authenticationFailures.push("signature_invalid");
+      continue;
+    }
+    if (object.schema === "cairn.gate_dependency_state_head.v0.1") {
+      const roleMatches = object.dependency_role === role ||
+        (role === "policy" && object.dependency_role === "policy_lifecycle");
+      const source = resolveObject(context.objectResolver, object.source_ref);
+      if (!roleMatches || object.principal_id !== binding?.principal_id ||
+          validateGateDependencyStateHead(object, context).length ||
+          !source || source.schema !== "cairn.gate_dependency_attestation.v0.1" ||
+          !exactRef(object.source_ref, source, context) || object.source_hash !== source.attestation_hash ||
+          validateGateDependencyAttestation(source, context).length ||
+          source.principal_id !== object.principal_id || source.dependency_role !== object.dependency_role ||
+          object.dependency_key !== gateDependencyKey(
+            object.principal_id, object.dependency_role, source.subject_ref
+          ) || object.state !== source.state ||
+          Date.parse(object.valid_from) < Date.parse(source.valid_from) ||
+          Date.parse(object.valid_until) > Date.parse(source.valid_until)) {
+        authenticationFailures.push(`gate_request_dependency_semantics_invalid:${role}`);
+        roleState.authenticationFailures.push("semantics_invalid");
+        continue;
+      }
+      evidenceRefs.push(object.source_ref);
+      roleState.evidenceRefs.push(object.source_ref);
+      if (object.state !== "active" || !Number.isFinite(evaluationAt) ||
+          evaluationAt < Date.parse(object.valid_from) || evaluationAt >= Date.parse(object.valid_until)) {
+        eligibilityFailures.push(role);
+        roleState.eligible = false;
+      }
+      continue;
+    }
+    const allowedSchemas = new Map([
+      ["authority_reservation", new Set(["cairn.authority_reservation.v0.2"])],
+      ["execution_control", new Set(["cairn.execution_control_state_head.v0.1"])],
+      ["connection", new Set(["cairn.agent_connection_state_head.v0.1"])],
+      ["compartment", new Set(["cairn.compartment_state_head.v0.1"])],
+      ["data_grant", new Set(["cairn.data_grant_state_head.v0.1"])],
+      ["policy", new Set([
+        "cairn.confirmation_assurance_policy.v0.1", "cairn.confirmation_verifier_profile.v0.1"
+      ])]
+    ]).get(role);
+    if (!allowedSchemas?.has(object.schema) || intrinsicObjectFailures(object, context).length) {
+      authenticationFailures.push(`gate_request_dependency_semantics_invalid:${role}`);
+      roleState.authenticationFailures.push("semantics_invalid");
+      continue;
+    }
+    if (["cairn.execution_control_state_head.v0.1", "cairn.agent_connection_state_head.v0.1",
+      "cairn.compartment_state_head.v0.1", "cairn.data_grant_state_head.v0.1"].includes(object.schema) &&
+      ![object.global_state, object.state].includes("active")) {
+      eligibilityFailures.push(role);
+      roleState.eligible = false;
+    }
+  }
+  return {
+    authenticationFailures: unique(authenticationFailures),
+    eligibilityFailures: unique(eligibilityFailures),
+    evidenceRefs: sortedUniqueRefs(evidenceRefs),
+    roleStates
+  };
+}
+
+export function evaluateGateChecks(request, binding, authority, confirmation, context = {}) {
+  const graph = gateDependencyGraph(request, binding, context);
+  const coreEvidence = sortedUniqueRefs([
+    request?.dependency_manifest_ref ?? null,
+    binding ? objectRef(binding, context) : null,
+    authority ? objectRef(authority, context) : null,
+    confirmation ? objectRef(confirmation, context) : null
+  ]);
+  const rolePass = (...roles) => roles.every((role) => {
+    const state = graph.roleStates.get(role);
+    return !state || (state.authenticationFailures.length === 0 && state.eligible);
+  });
+  const roleEvidence = (...roles) => sortedUniqueRefs([
+    ...coreEvidence,
+    ...roles.flatMap((role) => graph.roleStates.get(role)?.evidenceRefs ?? [])
+  ]);
+  const bindingFailures = binding ? validateBindingSet(binding, context) : ["binding_missing"];
+  let authorityFailures = ["authority_missing"];
+  if (authority?.schema === "cairn.action_authorization.v0.2") {
+    authorityFailures = validateActionAuthorization(authority, binding, context);
+  } else if (authority?.schema === "cairn.cancellation_authorization.v0.1") {
+    authorityFailures = validateCancellationAuthorization(authority, binding, context);
+  } else if (authority?.schema === "cairn.agent_mandate.v0.3") {
+    authorityFailures = validateMandate(authority, context);
+  }
+  const confirmationFailures = confirmation
+    ? validateExecutionConfirmation(confirmation, authority, binding, request, context)
+    : ["confirmation_missing"];
+  const reservationFailures = [];
+  for (const reservationRef of request?.reservation_receipt_refs ?? []) {
+    const reservation = resolveObject(context.objectResolver, reservationRef);
+    const preparedAction = resolveObject(context.objectResolver, reservation?.prepared_action_ref);
+    if (!reservation || !preparedAction ||
+        validateResolvedSignedObject(reservation, context).length ||
+        validateResolvedSignedObject(preparedAction, context).length ||
+        validateAuthorityReservation(reservation, preparedAction, binding, {
+          ...context, authority, lineageCommitment: context.lineageCommitment ??
+            resolveObject(context.objectResolver, binding?.lineage_commitment_ref)
+        }).length) {
+      reservationFailures.push("reservation_invalid");
+    }
+  }
+  const noBindingFailures = (...prefixes) => !bindingFailures.some((failure) =>
+    prefixes.some((prefix) => failure.includes(prefix)));
+  const authorityOkay = authorityFailures.length === 0;
+  const confirmationOkay = confirmationFailures.length === 0;
+  const reservationsOkay = reservationFailures.length === 0;
+  const allAuthenticated = graph.authenticationFailures.length === 0 &&
+    [request, binding, authority, confirmation].every((object) =>
+      object && validateResolvedSignedObject(object, context).length === 0);
+  const checks = new Map([
+    ["SCHEMA_SIGNATURE", [allAuthenticated, roleEvidence(...graph.roleStates.keys())]],
+    ["EXECUTION_RELEASE", [rolePass("execution_release"), roleEvidence("execution_release")]],
+    ["AUTHENTICATION_BRANCH", [noBindingFailures("actor", "runtime", "connection", "principal"),
+      roleEvidence("connection")]],
+    ["DATA_GRANTS_DISCLOSURES", [noBindingFailures("data_grant", "disclosure") && rolePass("data_grant"),
+      roleEvidence("data_grant")]],
+    ["EXECUTION_CONTROLS", [rolePass("execution_control"), roleEvidence("execution_control")]],
+    ["LIFECYCLES_KEYS", [rolePass("policy_lifecycle", "provider_identity", "provider_identity_trust_overlay"),
+      roleEvidence("policy_lifecycle", "provider_identity", "provider_identity_trust_overlay")]],
+    ["NONCES_FENCES", [authorityOkay && reservationsOkay, roleEvidence("authority_reservation")]],
+    ["AUTHORITY_CONFIRMATION", [authorityOkay && confirmationOkay, coreEvidence]],
+    ["BINDING_EQUALITY", [bindingFailures.length === 0, coreEvidence]],
+    ["BUSINESS_DEPENDENCIES", [rolePass("business_state", "provider_identity", "provider_identity_trust_overlay") &&
+      request?.current_seller_copy_lease_heads_root === null,
+      roleEvidence("business_state", "provider_identity", "provider_identity_trust_overlay")]],
+    ["REVIEWS_POLICIES", [rolePass("policy", "executor_policy"), roleEvidence("policy", "executor_policy")]],
+    ["RESERVED_JUDGMENTS", [authorityOkay, coreEvidence]],
+    ["LIMITS", [rolePass("compartment", "economic_resource", "accounting_policy"),
+      roleEvidence("compartment", "economic_resource", "accounting_policy")]],
+    ["ECONOMIC_EXPOSURE", [rolePass("compartment", "economic_resource") && reservationsOkay,
+      roleEvidence("compartment", "economic_resource", "authority_reservation")]],
+    ["RESERVATION_FENCES", [reservationsOkay, roleEvidence("authority_reservation")]],
+    ["DUPLICATE_EFFECT_LINEAGE", [rolePass("execution_integrity"), roleEvidence("execution_integrity")]],
+    ["EXECUTOR_TARGET", [rolePass("executor_policy") && typeof binding?.executor_target === "string",
+      roleEvidence("executor_policy")]],
+    ["DOMAIN_POLICY", [rolePass("policy", "accounting_policy", "receiver_channel_policy", "receiver_finality"),
+      roleEvidence("policy", "accounting_policy", "receiver_channel_policy", "receiver_finality")]],
+    ["ATOMIC_PRECONDITIONS", [rolePass("checkout_dependency", "checkout_readiness", "checkout_group_state", "checkout_terms") &&
+      reservationsOkay,
+      roleEvidence("checkout_dependency", "checkout_readiness", "checkout_group_state", "checkout_terms", "authority_reservation")]]
+  ]);
+  return PHASE1_GATE_CHECK_CODES.map((code) => {
+    const [pass, evidenceRefs] = checks.get(code);
+    return { code, decision: pass ? "pass" : "deny", evidence_refs: evidenceRefs };
+  });
+}
+
 const GATE_DEPENDENCY_ARRAY_FIELDS = Object.freeze([
   "reservation_receipt_refs", "current_control_head_refs", "current_data_grant_head_refs",
   "current_business_state_head_refs", "current_provider_identity_head_refs",
@@ -4686,23 +5281,39 @@ const GATE_DEPENDENCY_SCALAR_FIELDS = Object.freeze([
   "checkout_readiness_receipt_ref", "checkout_group_state_head_ref", "checkout_terms_receipt_ref"
 ]);
 
-function gateDependencyProjectionFailures(request, binding, context) {
-  const projection = typeof context.expectedGateDependencyProjection === "function"
-    ? context.expectedGateDependencyProjection(binding, context.authority ?? null, context.confirmation ?? null)
-    : context.expectedGateDependencyProjection;
-  if (!projection || typeof projection !== "object" || Array.isArray(projection)) {
-    return ["gate_request_required_dependency_projection_unresolved"];
+function gateDependencyProjectionFailures(request, binding, authority, confirmation, context) {
+  const manifest = resolveObject(context.objectResolver, request.dependency_manifest_ref);
+  if (!manifest || manifest.schema !== "cairn.gate_dependency_manifest.v0.1" ||
+      !exactRef(request.dependency_manifest_ref, manifest, context) ||
+      request.dependency_manifest_hash !== manifest.manifest_hash ||
+      validateResolvedSignedObject(manifest, context).length ||
+      validateGateDependencyManifest(manifest, context).length) {
+    return ["gate_request_dependency_manifest_unresolved"];
   }
   const failures = [];
+  if (manifest.principal_id !== binding?.principal_id ||
+      !sameObjectRef(manifest.execution_binding_set_ref, request.execution_binding_set_ref) ||
+      manifest.execution_binding_set_hash !== request.execution_binding_set_hash ||
+      !sameObjectRef(manifest.authority_basis_ref, request.authority_basis_ref) ||
+      !sameObjectRef(manifest.confirmation_receipt_ref, request.confirmation_receipt_ref) ||
+      !sameObjectRef(manifest.execution_release_state_head_ref, binding?.execution_release_state_head_ref) ||
+      (authority && !sameObjectRef(manifest.authority_basis_ref, objectRef(authority, context))) ||
+      (confirmation && !sameObjectRef(manifest.confirmation_receipt_ref, objectRef(confirmation, context)))) {
+    failures.push("gate_request_dependency_manifest_binding_mismatch");
+  }
+  if (Date.parse(manifest.created_at) > Date.parse(request.requested_at) ||
+      Date.parse(manifest.expires_at) <= Date.parse(request.requested_at)) {
+    failures.push("gate_request_dependency_manifest_interval_mismatch");
+  }
   for (const field of GATE_DEPENDENCY_ARRAY_FIELDS) {
-    if (!Array.isArray(projection[field]) ||
-        canonicalHash(sortedUniqueRefs(request[field])) !== canonicalHash(sortedUniqueRefs(projection[field]))) {
+    if (!Array.isArray(manifest[field]) ||
+        canonicalHash(sortedUniqueRefs(request[field])) !== canonicalHash(sortedUniqueRefs(manifest[field]))) {
       failures.push(`gate_request_dependency_projection_mismatch:${field}`);
     }
   }
   for (const field of GATE_DEPENDENCY_SCALAR_FIELDS) {
-    if (!Object.hasOwn(projection, field) ||
-        canonicalHash(request[field]) !== canonicalHash(projection[field])) {
+    if (!Object.hasOwn(manifest, field) ||
+        canonicalHash(request[field]) !== canonicalHash(manifest[field])) {
       failures.push(`gate_request_dependency_projection_mismatch:${field}`);
     }
   }
@@ -4747,32 +5358,34 @@ export function validateGateRequest(value, binding, authority, confirmation, con
   try {
     const failures = validatePhase1Object(value, context);
     if (failures.length) return failures;
+    if (validateResolvedSignedObject(value, context).length) {
+      failures.push("gate_request_signature_invalid");
+    }
     failures.push(...refHashPairFailures(value, [
       ["execution_binding_set_ref", "execution_binding_set_hash"],
+      ["dependency_manifest_ref", "dependency_manifest_hash"],
       ["confirmation_assurance_policy_lifecycle_head_ref", "confirmation_assurance_policy_lifecycle_head_hash"],
       ["confirmation_verifier_profile_lifecycle_head_ref", "confirmation_verifier_profile_lifecycle_head_hash"]
     ], "gate_request_ref_hash_mismatch"));
     if (!binding || !exactRef(value.execution_binding_set_ref, binding, context) || value.execution_binding_set_hash !== binding.binding_set_hash ||
         value.principal_id !== binding.principal_id || value.action_control_key !== binding.action_control_key) failures.push("gate_request_binding_mismatch");
-    if (context.requireDependencySignatures === true) {
-      if (binding && validateResolvedSignedObject(binding, context).length) {
-        failures.push("gate_request_binding_signature_invalid");
-      }
-      if (authority && validateResolvedSignedObject(authority, context).length) {
-        failures.push("gate_request_authority_signature_invalid");
-      }
-      if (confirmation && validateResolvedSignedObject(confirmation, context).length) {
-        failures.push("gate_request_confirmation_signature_invalid");
-      }
+    if (binding && validateResolvedSignedObject(binding, context).length) {
+      failures.push("gate_request_binding_signature_invalid");
     }
-    failures.push(...gateDependencyProjectionFailures(value, binding, {
-      ...context, authority, confirmation
-    }));
+    if (authority && validateResolvedSignedObject(authority, context).length) {
+      failures.push("gate_request_authority_signature_invalid");
+    }
+    if (confirmation && validateResolvedSignedObject(confirmation, context).length) {
+      failures.push("gate_request_confirmation_signature_invalid");
+    }
+    failures.push(...gateDependencyProjectionFailures(value, binding, authority, confirmation, context));
     const requiredHeadRefs = gateRequiredHeadRefs(value, binding);
-    if (requiredHeadRefs.length > 128 || requiredHeadRefs.some((reference) =>
-      !sameObjectRef(resolveCurrentHead(context, reference), reference))) {
+    if (!isHistoricalEvidence(context) && (requiredHeadRefs.length > 128 || requiredHeadRefs.some((reference) =>
+      !sameObjectRef(resolveCurrentHead(context, reference), reference)))) {
       failures.push("gate_request_current_head_set_mismatch");
     }
+    const dependencyGraph = gateDependencyGraph(value, binding, context);
+    failures.push(...dependencyGraph.authenticationFailures);
     const expectedGrantHeads = sortedUniqueRefs(binding?.data_grant_state_heads?.map(
       ({ current_state_head_ref }) => current_state_head_ref
     ) ?? []);
@@ -4840,6 +5453,9 @@ export function validateGateResult(value, context = {}) {
   try {
     const failures = validatePhase1Object(value, context);
     if (failures.length) return failures;
+    if (validateResolvedSignedObject(value, context).length) {
+      failures.push("gate_result_signature_invalid");
+    }
     failures.push(...refHashPairFailures(value, [
       ["gate_request_ref", "gate_request_hash"],
       ["execution_binding_set_ref", "execution_binding_set_hash"]
@@ -4858,8 +5474,7 @@ export function validateGateResult(value, context = {}) {
         value.gate_request_hash !== gateRequest.request_hash) {
       failures.push("gate_result_request_mismatch");
     }
-    if (gateRequest && context.requireDependencySignatures === true &&
-        validateResolvedSignedObject(gateRequest, context).length) {
+    if (gateRequest && validateResolvedSignedObject(gateRequest, context).length) {
       failures.push("gate_result_request_signature_invalid");
     }
     if (!binding || binding.schema !== "cairn.execution_binding_set.v0.1" ||
@@ -4869,7 +5484,9 @@ export function validateGateResult(value, context = {}) {
     }
     if (gateRequest && binding) {
       failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {
-        ...context, lineageCommitment
+        ...context, lineageCommitment, gateEvaluationTime: value.evaluated_at,
+        confirmationEvaluationTime: value.evaluated_at,
+        authorityServiceTime: Date.parse(value.evaluated_at)
       }).map((code) => `gate_result_${code}`));
     }
     if (gateRequest && binding &&
@@ -4891,9 +5508,15 @@ export function validateGateResult(value, context = {}) {
         })) {
       failures.push("gate_result_complete_head_commitment_mismatch");
     }
+    const expectedCheckResults = evaluateGateChecks(gateRequest, binding, authority, confirmation, {
+      ...context, gateEvaluationTime: value.evaluated_at,
+      confirmationEvaluationTime: value.evaluated_at,
+      authorityServiceTime: Date.parse(value.evaluated_at)
+    });
+    const expectedDecision = expectedCheckResults.every(({ decision }) => decision === "pass") ? "allow" : "deny";
     if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||
-        (value.decision === "allow" && value.check_results.some(({ decision }) => decision !== "pass")) ||
-        (value.decision === "deny" && value.check_results.every(({ decision }) => decision !== "deny"))) {
+        canonicalHash(value.check_results) !== canonicalHash(expectedCheckResults) ||
+        value.decision !== expectedDecision) {
       failures.push("gate_result_check_set_mismatch");
     }
     const requestedAt = Date.parse(gateRequest?.requested_at);
@@ -4904,12 +5527,24 @@ export function validateGateResult(value, context = {}) {
     const bindingCreatedAt = Date.parse(binding?.created_at);
     const bindingSignedAt = Date.parse(binding?.binding_service_signature?.signed_at);
     const bindingExpiresAt = Date.parse(binding?.expires_at);
+    const manifest = resolveObject(context.objectResolver, gateRequest?.dependency_manifest_ref);
+    const authorityDeadlines = [
+      bindingExpiresAt,
+      Date.parse(authority?.expires_at),
+      Date.parse(confirmation?.expires_at),
+      Date.parse(manifest?.expires_at),
+      ...gateRequiredHeadRefs(gateRequest, binding).map((reference) => {
+        const dependency = resolveObject(context.objectResolver, reference);
+        return Date.parse(dependency?.valid_until ?? dependency?.expires_at);
+      })
+    ].filter(Number.isFinite);
+    const authorityDeadline = authorityDeadlines.length ? Math.min(...authorityDeadlines) : Number.NaN;
     if (![requestedAt, evaluatedAt, expiresAt, requestSignedAt, resultSignedAt,
-      bindingCreatedAt, bindingSignedAt, bindingExpiresAt].every(Number.isFinite) ||
-        requestedAt > evaluatedAt || requestSignedAt > evaluatedAt ||
+      bindingCreatedAt, bindingSignedAt, bindingExpiresAt, authorityDeadline].every(Number.isFinite) ||
+        requestedAt > requestSignedAt || requestSignedAt > evaluatedAt ||
         bindingCreatedAt > evaluatedAt || bindingSignedAt > evaluatedAt ||
         evaluatedAt >= expiresAt || resultSignedAt < evaluatedAt || resultSignedAt >= expiresAt ||
-        expiresAt > bindingExpiresAt) {
+        expiresAt > authorityDeadline) {
       failures.push("gate_result_interval_invalid");
     }
     return unique(failures);

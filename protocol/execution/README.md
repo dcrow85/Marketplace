@@ -55,18 +55,21 @@ reference service.
   derived domain key, count, and entries commitment; exact index, entry,
   transition-receipt, map-root, and bounded ancestor-path node reads invoke the
   same semantic validators without recursively scanning an unbounded trie;
-- authoritative GateRequest dependency projection rejects both omitted and
-  request-invented reservation, control, grant, business, provider, policy,
-  inventory, and checkout dependencies; current heads resolve independently and
-  GateResult carries the exact closed 19-check code set;
+- authoritative GateRequest dependency projection is a complete signed manifest
+  bound to the exact principal, binding, authority, confirmation, and dependency
+  sets; non-native dependencies resolve through role-authorized signed
+  attestations and predecessor-closed state heads whose active genesis and legal
+  subject-preserving successor graph are exact; GateResult derives 19 distinct
+  predicates and their smallest evaluated evidence sets rather than trusting
+  caller-selected outcomes;
 - connection authorization/state exact reads resolve runtime and authorization
   graphs, enforce current-head authority and validity intervals, and mandate
   validity is contained by both runtime and connection authorization;
 - DataGrant state is a first-class signed current-head chain: genesis binds the
   issued grant/count, reads decrement exactly once, pause/resume/revoke/expiry
   advance the revocation nonce, the `expired` state begins at the exact expiry
-  boundary, and bindings resolve the exact signed current grant and principal/
-  runtime recipient graph rather than trusting a caller-supplied tuple;
+  boundary, and bindings enforce the signed purpose/use/scope/audience contract,
+  exact runtime recipient, contained lifetime, and current eligible nonzero head;
 - receiver-stream entry keys are derived; slot/trust/future/stream/connection
   dependencies are exact; receiver map transitions carry before/after proofs
   and immutable-frontier checks; authenticated events advance both assignment
@@ -102,7 +105,7 @@ reference service.
 - direct mutation controls for namespace, dependency, authority, target-union,
   limit, connection, chain, compatibility-envelope, registry-metadata,
   package-isolation, and read-only-surface failures. The current suite kills all
-  349 declared direct mutants.
+  369 declared direct mutants.
 
 ## Excluded
 

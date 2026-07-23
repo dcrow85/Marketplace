@@ -3,7 +3,7 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "3d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
+    search: 'export const SPEC_SHA256 = "84ce1928f090977cc5691f35f161c21b6504fc1b9e52394745f808d2703e732a";',
     replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
@@ -548,7 +548,7 @@ export const PHASE1_MUTANTS = [
     id: "binding-set-grant-current-head-hash",
     finding: "binding-set-stale-grant-head-ref",
     file: "lib/validation.mjs",
-    search: '          !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref) ||',
+    search: '          (!isHistoricalEvidence(context) &&\n            !sameObjectRef(resolveCurrentHead(context, head.current_state_head_ref), head.current_state_head_ref)) ||',
     replace: '          false ||',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
@@ -1176,7 +1176,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-reservation-full-validation",
     finding: "action-read-reservation-skips-fence-semantics",
     file: "lib/validation.mjs",
-    search: '      failures.push(...validateAuthorityReservation(\n        reservation, response.action_record, response.execution_binding_set,\n        { ...historicalEvidenceContext, lineageCommitment: response.lineage_commitment,\n          authority: response.authority_basis }\n      ).map((code) => `action_get_reservation_${code}`));',
+    search: '      failures.push(...validateAuthorityReservation(\n        reservation, response.action_record, response.execution_binding_set,\n        { ...evidenceContext, lineageCommitment: response.lineage_commitment,\n          authority: response.authority_basis }\n      ).map((code) => `action_get_reservation_${code}`));',
     replace: '      failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1312,7 +1312,7 @@ export const PHASE1_MUTANTS = [
     id: "action-get-mandate-semantic-binding",
     finding: "preauthorized-action-read-carries-alien-mandate-semantics",
     file: "lib/validation.mjs",
-    search: '        failures.push(...mandateBindingFailures(\n          response.authority_basis, response.lineage_commitment, response.execution_binding_set, context\n        ).map((code) => `action_get_${code}`));',
+    search: '        failures.push(...mandateBindingFailures(\n          response.authority_basis, response.lineage_commitment, response.execution_binding_set, evidenceContext\n        ).map((code) => `action_get_${code}`));',
     replace: '        failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1408,7 +1408,7 @@ export const PHASE1_MUTANTS = [
     id: "object-get-intrinsic-semantic-validation",
     finding: "exact-object-read-stops-at-shape-validation",
     file: "lib/validation.mjs",
-    search: '    failures.push(...intrinsicObjectFailures(returnedObject, {\n      ...context, requireDependencySignatures: true, historicalRead: true\n    })\n      .map((code) => `object_read_${code}`));',
+    search: '    failures.push(...intrinsicObjectFailures(returnedObject, historicalEvidenceContext(context))\n      .map((code) => `object_read_${code}`));',
     replace: '    failures.push(...[]);',
     test: "read surfaces close every execution family and bind object requests to returned identity"
   },
@@ -1812,7 +1812,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-result-interval",
     finding: "gate-result-evaluates-at-or-after-expiry",
     file: "lib/validation.mjs",
-    search: '    if (![requestedAt, evaluatedAt, expiresAt, requestSignedAt, resultSignedAt,\n      bindingCreatedAt, bindingSignedAt, bindingExpiresAt].every(Number.isFinite) ||\n        requestedAt > evaluatedAt || requestSignedAt > evaluatedAt ||\n        bindingCreatedAt > evaluatedAt || bindingSignedAt > evaluatedAt ||\n        evaluatedAt >= expiresAt || resultSignedAt < evaluatedAt || resultSignedAt >= expiresAt ||\n        expiresAt > bindingExpiresAt) {',
+    search: '    if (![requestedAt, evaluatedAt, expiresAt, requestSignedAt, resultSignedAt,\n      bindingCreatedAt, bindingSignedAt, bindingExpiresAt, authorityDeadline].every(Number.isFinite) ||\n        requestedAt > requestSignedAt || requestSignedAt > evaluatedAt ||\n        bindingCreatedAt > evaluatedAt || bindingSignedAt > evaluatedAt ||\n        evaluatedAt >= expiresAt || resultSignedAt < evaluatedAt || resultSignedAt >= expiresAt ||\n        expiresAt > authorityDeadline) {',
     replace: '    if (false) {',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1876,7 +1876,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-result-gate-request-semantics",
     finding: "gate-result-skips-authority-and-confirmation-semantics",
     file: "lib/validation.mjs",
-    search: '    if (gateRequest && binding) {\n      failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {\n        ...context, lineageCommitment\n      }).map((code) => `gate_result_${code}`));\n    }',
+    search: '    if (gateRequest && binding) {\n      failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {\n        ...context, lineageCommitment, gateEvaluationTime: value.evaluated_at,\n        confirmationEvaluationTime: value.evaluated_at,\n        authorityServiceTime: Date.parse(value.evaluated_at)\n      }).map((code) => `gate_result_${code}`));\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2029,8 +2029,8 @@ export const PHASE1_MUTANTS = [
     id: "outstanding-map-key-domain",
     finding: "outstanding-map-key-is-caller-selected",
     file: "lib/validation.mjs",
-    search: '    schema: "cairn.enumerable_map_key_preimage.v0.1",\n',
-    replace: '    schema: "cairn.enumerable_map_key_preimage.v0.2",\n',
+    search: 'export function connectionOutstandingMapKey(outstandingActionIndexKey) {\n  return canonicalHash({\n    schema: "cairn.enumerable_map_key_preimage.v0.1",',
+    replace: 'export function connectionOutstandingMapKey(outstandingActionIndexKey) {\n  return canonicalHash({\n    schema: "cairn.enumerable_map_key_preimage.v0.2",',
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
@@ -2203,10 +2203,10 @@ export const PHASE1_MUTANTS = [
   },
   {
     id: "gate-authoritative-dependency-projection",
-    finding: "gate-request-self-selects-required-dependencies",
+    finding: "gate-request-accepts-an-unresolved-authoritative-manifest",
     file: "lib/validation.mjs",
-    search: '  if (!projection || typeof projection !== "object" || Array.isArray(projection)) {\n    return ["gate_request_required_dependency_projection_unresolved"];\n  }',
-    replace: '  if (false) {\n    return ["gate_request_required_dependency_projection_unresolved"];\n  }',
+    search: '  if (!manifest || manifest.schema !== "cairn.gate_dependency_manifest.v0.1" ||\n      !exactRef(request.dependency_manifest_ref, manifest, context) ||\n      request.dependency_manifest_hash !== manifest.manifest_hash ||\n      validateResolvedSignedObject(manifest, context).length ||\n      validateGateDependencyManifest(manifest, context).length) {\n    return ["gate_request_dependency_manifest_unresolved"];\n  }',
+    replace: '  if (false) {\n    return ["gate_request_dependency_manifest_unresolved"];\n  }',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -2330,14 +2330,6 @@ export const PHASE1_MUTANTS = [
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
-    id: "receiver-terminal-completion-identity-transitions",
-    finding: "receiver-terminal-completion-does-not-resolve-identity-transitions",
-    file: "lib/validation.mjs",
-    search: '      if (exactBoundedIdentityTransition(group.ref, group.assignments, plan.release_cause,\n        value.authority_transaction_id, plan.terminal_release_evidence_ref, context).failures.length) {\n        failures.push("receiver_terminal_completion_identity_transition_mismatch");\n      }',
-    replace: '      if (false) {\n        failures.push("receiver_terminal_completion_identity_transition_mismatch");\n      }',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
     id: "exact-read-receiver-entry-semantics",
     finding: "receiver-entry-read-skips-semantic-validation",
     file: "lib/validation.mjs",
@@ -2386,14 +2378,6 @@ export const PHASE1_MUTANTS = [
     test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
   },
   {
-    id: "receiver-terminal-completion-identity-assignment-binding",
-    finding: "terminal-identity-transition-does-not-bind-its-assignment",
-    file: "lib/validation.mjs",
-    search: '  if (canonicalHash(sortedUniqueRefs(matchedRefs)) !== canonicalHash(sortedUniqueRefs(expectedAssignmentRefs)) ||\n      matchedRefs.length !== expectedAssignmentRefs.length) {',
-    replace: '  if (false) {',
-    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
-  },
-  {
     id: "receiver-terminal-completion-trust-assignment-set",
     finding: "terminal-trust-transitions-do-not-cover-the-planned-assignment-set",
     file: "lib/validation.mjs",
@@ -2437,8 +2421,8 @@ export const PHASE1_MUTANTS = [
     id: "exact-read-historical-authority-semantics",
     finding: "historical-read-incorrectly-requires-current-authority-policy",
     file: "lib/validation.mjs",
-    search: '      ...context, requireDependencySignatures: true, historicalRead: true',
-    replace: '      ...context, requireDependencySignatures: true, historicalRead: false',
+    search: '    failures.push(...intrinsicObjectFailures(returnedObject, historicalEvidenceContext(context))',
+    replace: '    failures.push(...intrinsicObjectFailures(returnedObject, context)',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -2589,8 +2573,8 @@ export const PHASE1_MUTANTS = [
     id: "gate-result-check-order",
     finding: "gate-result-treats-ordered-check-vector-as-a-set",
     file: "lib/validation.mjs",
-    search: '    if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||',
-    replace: '    if (canonicalHash([...actualCodes].sort()) !== canonicalHash([...expectedCodes].sort()) ||',
+    search: '    if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||\n        canonicalHash(value.check_results) !== canonicalHash(expectedCheckResults) ||\n        value.decision !== expectedDecision) {',
+    replace: '    if (canonicalHash([...actualCodes].sort()) !== canonicalHash([...expectedCodes].sort()) ||\n        canonicalHash([...value.check_results].sort((left, right) => left.code.localeCompare(right.code))) !==\n          canonicalHash([...expectedCheckResults].sort((left, right) => left.code.localeCompare(right.code))) ||\n        value.decision !== expectedDecision) {',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -2605,7 +2589,7 @@ export const PHASE1_MUTANTS = [
     id: "compartment-map-domains-closed",
     finding: "compartment-state-map-domains-not-machine-representable",
     file: "lib/objects.mjs",
-    search: '      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event"],\n      ["node_kind", "enum:empty|leaf|branch"],',
+    search: '      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event|scoped_execution_control"],\n      ["node_kind", "enum:empty|leaf|branch"],',
     replace: '      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream"],\n      ["node_kind", "enum:empty|leaf|branch"],',
     test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
   },
@@ -2669,7 +2653,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-result-request-dependency-signature",
     finding: "gate-result-trusts-an-unsigned-request-dependency",
     file: "lib/validation.mjs",
-    search: '    if (gateRequest && context.requireDependencySignatures === true &&\n        validateResolvedSignedObject(gateRequest, context).length) {\n      failures.push("gate_result_request_signature_invalid");\n    }',
+    search: '    if (gateRequest && validateResolvedSignedObject(gateRequest, context).length) {\n      failures.push("gate_result_request_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2677,7 +2661,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-binding-dependency-signature",
     finding: "gate-request-trusts-an-unsigned-binding-dependency",
     file: "lib/validation.mjs",
-    search: '      if (binding && validateResolvedSignedObject(binding, context).length) {\n        failures.push("gate_request_binding_signature_invalid");\n      }',
+    search: '    if (binding && validateResolvedSignedObject(binding, context).length) {\n      failures.push("gate_request_binding_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2685,7 +2669,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-authority-dependency-signature",
     finding: "gate-request-trusts-an-unsigned-authority-dependency",
     file: "lib/validation.mjs",
-    search: '      if (authority && validateResolvedSignedObject(authority, context).length) {\n        failures.push("gate_request_authority_signature_invalid");\n      }',
+    search: '    if (authority && validateResolvedSignedObject(authority, context).length) {\n      failures.push("gate_request_authority_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2693,7 +2677,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-confirmation-dependency-signature",
     finding: "gate-request-trusts-an-unsigned-confirmation-dependency",
     file: "lib/validation.mjs",
-    search: '      if (confirmation && validateResolvedSignedObject(confirmation, context).length) {\n        failures.push("gate_request_confirmation_signature_invalid");\n      }',
+    search: '    if (confirmation && validateResolvedSignedObject(confirmation, context).length) {\n      failures.push("gate_request_confirmation_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2709,7 +2693,7 @@ export const PHASE1_MUTANTS = [
     id: "binding-data-grant-runtime-recipient",
     finding: "binding-accepts-a-grant-for-another-runtime",
     file: "lib/validation.mjs",
-    search: '      if (value.actor_branch === "agent_runtime" && grant &&\n          (grant.recipient !== (context.runtimeBinding ??\n            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id ||\n           !grant.audience?.includes((context.runtimeBinding ??\n            resolveObject(context.objectResolver, value.agent_runtime_binding_ref))?.agent_identity?.runtime_instance_key_id))) {\n        failures.push("binding_data_grant_runtime_recipient_mismatch");\n      }',
+    search: '      if (value.actor_branch === "agent_runtime" && grant &&\n          (grant.recipient !== runtimeKey ||\n           canonicalHash(grant.audience) !== canonicalHash([runtimeKey]))) {\n        failures.push("binding_data_grant_runtime_recipient_mismatch");\n      }',
     replace: '',
     test: "binding sets separate direct principals from connected runtimes and bind the exact release"
   },
@@ -2717,8 +2701,8 @@ export const PHASE1_MUTANTS = [
     id: "cancellation-current-reserved-judgments",
     finding: "cancellation-ignores-current-reserved-judgments",
     file: "lib/validation.mjs",
-    search: '      if (!Array.isArray(requiredReservedJudgments) ||\n          canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {\n        failures.push("cancellation_reserved_judgments_mismatch");\n      }',
-    replace: '',
+    search: '      } else if (new Set(requiredReservedJudgments.map(canonicalText)).size !== requiredReservedJudgments.length ||\n          canonicalHash([...requiredReservedJudgments].sort((left, right) =>\n            Buffer.compare(Buffer.from(canonicalText(left)), Buffer.from(canonicalText(right))))) !==\n            canonicalHash(requiredReservedJudgments) ||\n          canonicalHash(value.reserved_judgments_decided) !== canonicalHash(requiredReservedJudgments)) {\n        failures.push("cancellation_reserved_judgments_mismatch");\n      }',
+    replace: '      }',
     test: "cancellation authority is an exact projection of one binding and one gate chain"
   },
   {
@@ -2741,8 +2725,8 @@ export const PHASE1_MUTANTS = [
     id: "action-get-historical-authority-evidence",
     finding: "historical-action-read-requires-current-authority-state",
     file: "lib/validation.mjs",
-    search: '    const historicalEvidenceContext = {\n      ...context, historicalRead: true, requireDependencySignatures: true\n    };',
-    replace: '    const historicalEvidenceContext = {\n      ...context, historicalRead: false, requireDependencySignatures: true\n    };',
+    search: '    const evidenceContext = historicalEvidenceContext(context, response.retrieved_at);',
+    replace: '    const evidenceContext = context;',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
   {
@@ -2816,5 +2800,181 @@ export const PHASE1_MUTANTS = [
     search: '        failures.push("compartment_transition_confirmed_event_diff_mismatch");',
     replace: '',
     test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "cancellation-original-action-signature",
+    finding: "cancellation-trusts-unsigned-original-action",
+    file: "lib/validation.mjs",
+    search: '      failures.push("cancellation_original_action_signature_invalid");',
+    replace: '',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "cancellation-original-state-signature",
+    finding: "cancellation-trusts-unsigned-original-state",
+    file: "lib/validation.mjs",
+    search: '      failures.push("cancellation_original_action_state_signature_invalid");',
+    replace: '',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "cancellation-judgment-graph-required",
+    finding: "cancellation-judgments-not-derived-from-exact-graph",
+    file: "lib/validation.mjs",
+    search: '        failures.push("cancellation_reserved_judgment_graph_unresolved");',
+    replace: '',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "binding-data-grant-contract",
+    finding: "binding-data-grant-contract-not-exact",
+    file: "lib/validation.mjs",
+    search: '        failures.push("binding_data_grant_scope_mismatch");',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-data-grant-interval",
+    finding: "binding-outlives-data-grant",
+    file: "lib/validation.mjs",
+    search: '        failures.push("binding_data_grant_interval_mismatch");',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "binding-data-grant-live-state",
+    finding: "binding-accepts-ineligible-data-grant-state",
+    file: "lib/validation.mjs",
+    search: '        failures.push("binding_data_grant_state_ineligible");',
+    replace: '',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "gate-request-own-signature",
+    finding: "gate-request-not-authenticated",
+    file: "lib/validation.mjs",
+    search: '      failures.push("gate_request_signature_invalid");',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-result-own-signature",
+    finding: "gate-result-not-authenticated",
+    file: "lib/validation.mjs",
+    search: '      failures.push("gate_result_signature_invalid");',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-dependency-signature",
+    finding: "gate-dependency-not-authenticated",
+    file: "lib/validation.mjs",
+    search: '      authenticationFailures.push(`gate_request_dependency_signature_invalid:${role}`);',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-derived-check-results",
+    finding: "gate-result-self-selects-check-results",
+    file: "lib/validation.mjs",
+    search: '    if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||\n        canonicalHash(value.check_results) !== canonicalHash(expectedCheckResults) ||\n        value.decision !== expectedDecision) {\n      failures.push("gate_result_check_set_mismatch");\n    }',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "control-receipt-map-proof",
+    finding: "control-receipt-does-not-prove-map-change",
+    file: "lib/validation.mjs",
+    search: '      if (!proofValid) failures.push("execution_control_receipt_map_proof_mismatch");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-target",
+    finding: "control-receipt-does-not-bind-target",
+    file: "lib/validation.mjs",
+    search: '          failures.push("execution_control_receipt_target_mismatch");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-epoch-nonce",
+    finding: "control-receipt-ignores-expected-epoch-nonce",
+    file: "lib/validation.mjs",
+    search: '          failures.push("execution_control_receipt_epoch_nonce_mismatch");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-connection-dependency",
+    finding: "joint-control-receipt-skips-connection-dependency",
+    file: "lib/validation.mjs",
+    search: '        failures.push("execution_control_receipt_connection_dependency_invalid");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "control-receipt-outstanding-dependency",
+    finding: "joint-control-receipt-skips-outstanding-index",
+    file: "lib/validation.mjs",
+    search: '        failures.push("execution_control_receipt_outstanding_dependency_invalid");',
+    replace: '',
+    test: "connection transition binds exact heads, sequence, epochs, nonce, and control basis"
+  },
+  {
+    id: "compartment-reservation-atom-closure",
+    finding: "active-reservations-not-closed-over-held-atoms",
+    file: "lib/validation.mjs",
+    search: '      if (reservationClosureMismatch) {\n        failures.push("compartment_state_reservation_atom_closure_mismatch");\n      }',
+    replace: '',
+    test: "compartment state heads bind definitions, typed manifests, assets, and predecessors"
+  },
+  {
+    id: "receiver-terminal-single-identity-transition",
+    finding: "terminal-release-allows-split-identity-transitions",
+    file: "lib/validation.mjs",
+    search: '    if (identityTransitionRefs.length !== 1 ||\n        !sameObjectRef(identityTransitionRefs[0], receiverTransition.identity_epoch_transition_receipt_ref)) {\n      failures.push("receiver_terminal_completion_identity_transition_atomicity_mismatch");\n    }',
+    replace: '',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "receiver-event-draining-assigned-epoch",
+    finding: "late-event-rejects-valid-draining-epoch",
+    file: "lib/validation.mjs",
+    search: '      : assignedEpoch < scopeBefore?.accepting_index_epoch &&\n        scopeBefore?.accepting_index_epoch === scopeAfter?.accepting_index_epoch &&\n        assignedEpochBefore.state === "draining" &&',
+    replace: '      : false &&',
+    test: "connection outstanding maps bind exact roots, entries, transitions, and parent-authorized reads"
+  },
+  {
+    id: "gate-manifest-binding",
+    finding: "gate-manifest-detaches-from-authority-graph",
+    file: "lib/validation.mjs",
+    search: '    failures.push("gate_request_dependency_manifest_binding_mismatch");',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-dependency-source-signature",
+    finding: "gate-wrapper-launders-an-unsigned-source-attestation",
+    file: "lib/validation.mjs",
+    search: '      failures.push("gate_dependency_attestation_signature_invalid");',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-dependency-active-genesis",
+    finding: "gate-dependency-allows-revoked-genesis",
+    file: "lib/validation.mjs",
+    search: '        (value.sequence === 0 && value.state !== "active") ||',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-dependency-subject-continuity",
+    finding: "gate-dependency-successor-switches-subject",
+    file: "lib/validation.mjs",
+    search: '          !source || !sameObjectRef(predecessorSource.subject_ref, source.subject_ref) ||',
+    replace: '          !source ||',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   }
 ];

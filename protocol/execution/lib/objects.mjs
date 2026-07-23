@@ -99,7 +99,7 @@ export const PHASE1_OBJECTS = Object.freeze([
     id: "node_hash",
     hash: "node_hash",
     entries: [
-      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event"],
+      ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event|scoped_execution_control"],
       ["node_kind", "enum:empty|leaf|branch"],
       ["path_prefix_nibbles", "hexNibbles"], ["leaf_entry", "nenumerableMapLeafEntry"],
       ["branch_children", "enumerableMapBranchChildren"], ["subtree_entry_count", uint],
@@ -115,7 +115,7 @@ export const PHASE1_OBJECTS = Object.freeze([
     hash: "map_hash",
     signatures: ["issuing_authority_signature"],
     entries: [
-      ["map_key", hash], ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event"],
+      ["map_key", hash], ["map_domain", "enum:connection_outstanding_action|receiver_outstanding_stream|compartment_active_reservation|compartment_economic_atom|compartment_confirmed_event|scoped_execution_control"],
       ["revision", uint], ["root_node_ref", ref], ["root_node_hash", hash],
       ["entry_count", uint], ["entries_root", hash], ["map_hash", hash],
       ["issuing_authority_id", str], ["issuing_authority_signature", sig]
@@ -389,6 +389,7 @@ export const PHASE1_OBJECTS = Object.freeze([
       ["before_control_head_hash", nhash], ["after_control_head_ref", ref], ["after_control_head_hash", hash],
       ["before_scoped_control_map_ref", nref], ["before_scoped_control_map_hash", nhash],
       ["after_scoped_control_map_ref", ref], ["after_scoped_control_map_hash", hash],
+      ["before_change_proof", "nenumerableMapPathProof"], ["after_change_proof", "nenumerableMapPathProof"],
       ["scoped_leaf_before_ref", nref], ["scoped_leaf_before_hash", nhash],
       ["scoped_leaf_after_ref", nref], ["scoped_leaf_after_hash", nhash],
       ["connection_state_event_receipt_ref", nref], ["connection_state_event_receipt_hash", nhash],
@@ -843,8 +844,41 @@ function executionChainProfiles() {
       ["data_grant_state_head_refs", "refs32"], ["fencing_token", uint], ["reserved_at", time], ["expires_at", time],
       ["reservation_hash", hash], ["authority_service_signature", sig]
     ], ["reservation_lineage_fence_increment", "reservation_inventory_union"]),
+    base("gate-dependency-attestation-v0.1.schema.json", "cairn.gate_dependency_attestation.v0.1", "attestation_id", "attestation_hash", "issuing_authority_signature", [
+      ["attestation_id", "uuid"], ["principal_id", str],
+      ["dependency_role", "enum:execution_release|execution_integrity|policy_lifecycle|execution_control|economic_resource|business_state|provider_identity|provider_identity_trust_overlay|policy|executor_policy|receiver_finality|accounting_policy|receiver_channel_policy|receiver_sequence_selector|checkout_dependency|checkout_readiness|checkout_group_state|checkout_terms"],
+      ["subject_ref", ref], ["subject_hash", hash], ["state", "enum:active|paused|restricted|revoked|expired"],
+      ["valid_from", time], ["valid_until", time], ["issued_at", time], ["issuing_authority_id", str],
+      ["attestation_hash", hash], ["issuing_authority_signature", sig]
+    ]),
+    base("gate-dependency-state-head-v0.1.schema.json", "cairn.gate_dependency_state_head.v0.1", "dependency_key", "head_hash", "authority_service_signature", [
+      ["dependency_key", hash], ["principal_id", str],
+      ["dependency_role", "enum:execution_release|execution_integrity|policy_lifecycle|execution_control|economic_resource|business_state|provider_identity|provider_identity_trust_overlay|policy|executor_policy|receiver_finality|accounting_policy|receiver_channel_policy|receiver_sequence_selector|checkout_dependency|checkout_readiness|checkout_group_state|checkout_terms"],
+      ["source_ref", ref], ["source_hash", hash], ["sequence", uint], ["previous_head_hash", nhash],
+      ["state", "enum:active|paused|restricted|revoked|expired"], ["valid_from", time], ["valid_until", time],
+      ["updated_at", time], ["head_hash", hash], ["authority_service_signature", sig]
+    ]),
+    base("gate-dependency-manifest-v0.1.schema.json", "cairn.gate_dependency_manifest.v0.1", "manifest_id", "manifest_hash", "authority_service_signature", [
+      ["manifest_id", "uuid"], ["principal_id", str], ["execution_binding_set_ref", ref],
+      ["execution_binding_set_hash", hash], ["authority_basis_ref", ref], ["confirmation_receipt_ref", ref],
+      ["execution_release_state_head_ref", ref], ["execution_integrity_state_head_ref", ref],
+      ["confirmation_assurance_policy_lifecycle_head_ref", ref],
+      ["confirmation_verifier_profile_lifecycle_head_ref", ref], ["reservation_receipt_refs", "refs32"],
+      ["current_control_head_refs", "refs64"], ["current_connection_head_ref", nref],
+      ["current_compartment_head_ref", nref], ["current_economic_resource_head_ref", nref],
+      ["current_data_grant_head_refs", "refs32"], ["current_business_state_head_refs", "refs32"],
+      ["current_provider_identity_head_refs", "refs32"],
+      ["current_provider_identity_trust_overlay_head_refs", "refs32"],
+      ["current_seller_copy_lease_heads_root", nhash], ["policy_refs", "refs32"],
+      ["executor_policy_ref", ref], ["receiver_finality_profile_ref", ref], ["accounting_policy_ref", nref],
+      ["receiver_channel_policy_ref", nref], ["receiver_sequence_epoch_selector_ref", ref],
+      ["checkout_dependency_refs", "refs32"], ["checkout_readiness_receipt_ref", nref],
+      ["checkout_group_state_head_ref", nref], ["checkout_terms_receipt_ref", nref],
+      ["created_at", time], ["expires_at", time], ["manifest_hash", hash], ["authority_service_signature", sig]
+    ]),
     base("gate-request-v0.2.schema.json", "cairn.gate_request.v0.2", "gate_request_id", "request_hash", "gate_service_signature", [
       ["gate_request_id", "uuid"], ["principal_id", str], ["execution_binding_set_ref", ref], ["execution_binding_set_hash", hash],
+      ["dependency_manifest_ref", ref], ["dependency_manifest_hash", hash],
       ["execution_integrity_state_head_ref", ref], ["authority_basis_ref", ref], ["confirmation_receipt_ref", ref],
       ["confirmation_assurance_policy_lifecycle_head_ref", ref], ["confirmation_assurance_policy_lifecycle_head_hash", hash],
       ["confirmation_verifier_profile_lifecycle_head_ref", ref], ["confirmation_verifier_profile_lifecycle_head_hash", hash],

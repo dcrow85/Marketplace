@@ -2611,10 +2611,22 @@ action_ref: <ObjectRef>
 effect_id: sha-256:<hex>
 lineage_id: sha-256:<hex>
 reservation_fence: <monotonic integer>
-held_atom_ids_root: sha-256:<exact current atom set>
+held_atom_ids_root: sha-256:<canonical sorted current (atom_id, atom_hash) set>
 entry_hash: sha-256:<hex>
 authority_service_signature: <Signature>
 ```
+
+Every `ledger_class: reserved` atom and every current reservation-index entry
+form one closed bipartite set. A reserved atom matches exactly one reservation
+whose `authority_reservation_ref.object_id`, `reservation_fence`, and
+`compartment_control_key` equal the atom's reservation identifier, fence, and
+compartment. Every reservation matches at least one reserved atom. Its
+`held_atom_ids_root` is exactly `H({schema:
+"cairn.current_reservation_held_atoms_root_preimage.v0.1",
+reservation_index_key, held_atoms})`, where `held_atoms` is the UTF-8/JCS-sorted
+array of the matching current `{atom_id, atom_hash}` pairs. Bare atom IDs,
+orphaned reservations, orphaned reserved atoms, duplicate matches, fence drift,
+and a stale root after any atom successor deny.
 
 ```yaml
 schema: cairn.current_economic_atom.v0.1
@@ -5467,6 +5479,8 @@ before_scoped_control_map_ref: <ObjectRef or null only for namespace genesis>
 before_scoped_control_map_hash: sha-256:<hex or null>
 after_scoped_control_map_ref: <ObjectRef>
 after_scoped_control_map_hash: sha-256:<hex>
+before_change_proof: <closed membership/nonmembership path proof, or null for global/namespace causes>
+after_change_proof: <closed membership path proof, or null for global/namespace causes>
 scoped_leaf_before_ref: <ObjectRef or null for global/genesis or absent new leaf>
 scoped_leaf_before_hash: sha-256:<hex or null>
 scoped_leaf_after_ref: <ObjectRef or null for global control>
@@ -5510,6 +5524,19 @@ inside that generation. On the recovery-signed branch, the referenced upstream
 RecoveryGrantTransitionReceipt's `control_successor_commitment_hash` must
 recompute from this receipt's exact after-head/map/leaf tuple and shared
 transaction ID; any reciprocal control-receipt ref is forbidden.
+For a scoped or connection-joint cause, both committed map roots are resolved
+under the `scoped_execution_control` domain and the key
+`H(cairn.enumerable_map_key_preimage.v0.1, "scoped_execution_control",
+principal_id, authority_namespace, control_namespace_generation)`. The receipt's
+before/after proofs must authenticate the exact leaf key/ref/hash and have an
+identical untouched frontier; revision advances by one and count changes only
+for a genuine insertion. The signed authorization's target union, expected
+aggregate head, pause epoch, and revocation nonce must equal the authenticated
+predecessor leaf. Pause, resume, freeze, and revoke then follow their exact
+state/epoch/nonce matrix. Global control leaves the entire scoped-map commitment
+unchanged. Genesis and rotation require an authenticated revision-zero empty
+map. An arbitrary map ref, a membership proof without frontier equality, or an
+otherwise valid leaf under the wrong target cannot authorize the transition.
 `execution.control_namespace.issue` creates generation 0
 plus its initial active control head exactly once for a principal/profile under a
 fresh high-assurance signature; both prior fields are null and a second genesis
@@ -6390,6 +6417,17 @@ runtime, and authorization, and the binding interval must be contained in their
 validity intervals. The DataGrant head set is likewise an exact projection of
 the grant set: every grant has one current head, no duplicate or extra head is
 accepted, and every current ref is independently resolved.
+Each signed BindingSet grant-head entry also commits the required `purpose`,
+the exact sorted `uses`, the canonical `resource_scopes` root, and the exact
+audience. Live validation authenticates both the DataGrant and its current state
+head, requires those commitments to equal the grant, contains the full
+BindingSet interval inside both grant and retention expiry, and requires an
+`active` current head with `remaining_reads > 0`. For `agent_runtime`, both the
+recipient and the complete audience set equal the one runtime-instance key;
+membership in a wider provider or agent audience is insufficient. An exhausted
+successor is historical final-read evidence only when the bound disclosure
+names that exact signed read successor; it is never generic current execution
+eligibility.
 
 The schema uses a closed effect-context union. `cancel_receiver_action` requires
 the complete cancellation context and forbids checkout fields. Ordinary actions
@@ -6445,8 +6483,11 @@ inheritance—for these versions:
 | Object | Required execution-profile additions |
 |---|---|
 | `cairn.action_authorization.v0.2` | exact `execution_binding_set_ref/hash`, warning acknowledgements, exact reserved-judgment decisions, lineage commitment, effect, confirmation policy/nonce, short expiry, principal nonce |
-| `cairn.cancellation_authorization.v0.1` | exact cancellation binding set, original action/effect/locator/account/state, new cancellation effect, finality profile, confirmation policy/nonce, warnings, short expiry, principal nonce |
+| `cairn.cancellation_authorization.v0.1` | exact cancellation binding set, original action/effect/locator/account/state, new cancellation effect, finality profile, confirmation policy/nonce, warnings, exact cancellation-specific reserved-judgment decisions, short expiry, principal nonce |
 | `cairn.authority_reservation.v0.2` | chosen prepared action, action-control key, binding set, authority basis, lineage commitment and expected/next fence, discriminated ledger commits, universal obligation core/state for financial branches, economic-resource exposure before/after head, exact branch-stage seller-inventory context (ordinary held, paired-checkout prepared, readiness-refreshed checkout held, or adopted consumed) plus matching global copy-lease root/receipt, every before/after head and fence, full exposure vector, exact source-read receipts, active disclosure fences and current DataGrant heads/nonces |
+| `cairn.gate_dependency_attestation.v0.1` | role-authorized immutable subject, principal, role, state, validity interval, issuing authority, exact issuer signature |
+| `cairn.gate_dependency_state_head.v0.1` | authority-normalized current head over one exact role attestation, derived dependency key, predecessor continuity, state and bounded validity |
+| `cairn.gate_dependency_manifest.v0.1` | authority-signed complete dependency projection bound to the exact principal, BindingSet, authority, confirmation, release head, all scalar/set dependencies, and gate interval |
 | `cairn.gate_request.v0.2` | binding set, current healthy execution-integrity head, authority, confirmation receipt plus current assurance/verifier lifecycle heads, reservation receipts, action-control key, current control/connection/compartment/economic-resource/grant/obligation/deal/listing/market heads, current external provider-identity heads plus eligible trust overlays, current global seller-copy lease set for every inventory action, executor/finality/accounting/channel policies, exact current receiver-sequence epoch selector for every not-yet-handed-off external effect, checkout readiness for terms, and checkout head/terms receipt for payment |
 | `cairn.gate_result.v0.2` | exact request/binding hashes, evaluated heads/nonces/fences/business-state/checkout dependency, checks, short expiry, single-use result ID |
 | `cairn.action_record.v0.2` | immutable prepared record with binding set, lineage commitment, proposal/effect, and no future authority/reservation refs |
@@ -6535,17 +6576,18 @@ bytes or credentials can leave Cairn.
 
 At each of those boundaries, the authority service derives the complete required
 reserved-judgment decision set from the exact BindingSet, review, capability,
-and applicable current policy heads. For ActionAuthorization, the signed
-`reserved_judgments_decided` array MUST be sorted by ascending UTF-8 byte order
-of each item's RFC 8785 JCS encoding, duplicate-free under that byte equality,
-and set-equal to the authority-derived set. CancellationAuthorization
-intentionally has no `reserved_judgments_decided` field; its gate MUST instead
-resolve the exact GateRequest → cancellation BindingSet → review graph, derive
-the set again from that graph and current policies, and require the request
-context to prove that same complete set. It MUST NOT read, synthesize, or infer a
-cancellation-authorization field. In either branch, missing, extra, substituted,
-or unresolved decisions deny, and an unavailable judgment-policy or graph
-resolver cannot be treated as an empty set. These nonce and judgment checks
+and applicable authoritative current policy heads. For both ActionAuthorization
+and CancellationAuthorization, the signed `reserved_judgments_decided` array
+MUST be sorted by ascending UTF-8 byte order of each item's RFC 8785 JCS
+encoding, duplicate-free under that byte equality, and set-equal to the
+authority-derived set. Cancellation derives its vector only from the exact
+cancellation BindingSet → review graph and applicable cancellation policies; it
+MUST NOT inherit or copy the original action's vector. Authorization admission,
+reservation, gate, redemption, and handoff independently rederive the current
+required set and require exact equality with the signed vector. A missing graph
+or policy resolver, missing or unknown judgment, omission, addition, duplicate,
+substitution, or policy drift denies and cannot be treated as an empty set.
+These nonce and judgment checks
 determine current usability only. An immutable historical getter may still
 return an old authorization after
 revocation when its ObjectRef, canonical bytes, hash, and principal signature
@@ -6906,20 +6948,84 @@ Staleness creates a new object; it never edits an existing receipt.
 
 ## 8. Deterministic execution gate
 
-Before evaluating checks, the authority service derives an authoritative
-`expectedGateDependencyProjection` from the exact BindingSet, action,
-reservations, confirmation, post-reservation state transitions, provider
-identity/lifecycle graph, inventory graph, and capability policy registry. It is
-never copied from GateRequest. GateRequest must equal that projection field for
-field: reservation receipts; control, DataGrant, business, provider-identity,
-trust-overlay, policy, and checkout sets; integrity and confirmation lifecycle
-heads; connection, compartment, and economic-resource heads; seller-copy root;
-executor, finality, accounting, channel, and selector policies/heads; and
-checkout readiness/group/terms refs. Arrays compare as sorted unique exact
-ObjectRef sets, rejecting both omissions and extras. Scalars compare as exact
-refs or exact nulls. Every mutable projected ref must independently resolve as
-the current head. If the trusted projection or any dependency graph is
-unavailable, validation denies; it never falls back to the request-selected set.
+Before evaluating checks, the authority service derives and signs a
+`cairn.gate_dependency_manifest.v0.1` from the exact BindingSet, authority,
+confirmation, action, reservations, post-reservation transitions, provider
+identity/lifecycle graph, inventory graph, and capability-policy registry. The
+GateRequest binds that manifest by exact ObjectRef/hash. The manifest, rather
+than a caller callback or a copy of GateRequest, is the authoritative complete
+projection: reservation receipts; control, DataGrant, business,
+provider-identity, trust-overlay, policy, and checkout sets; release, integrity,
+and confirmation-lifecycle heads; connection, compartment, and
+economic-resource heads; seller-copy root; executor, finality, accounting,
+channel, and selector policies/heads; and checkout readiness/group/terms refs.
+Arrays compare as sorted unique exact ObjectRef sets, rejecting omissions and
+extras; scalars compare as exact refs or exact nulls. The manifest binds the
+exact principal, BindingSet, authority, confirmation, and an interval containing
+`requested_at`. Missing, unsigned, expired, or cross-wired manifests deny.
+
+Every projected role that is not represented by a locally validated native
+Phase-1 object resolves a `cairn.gate_dependency_state_head.v0.1`. That head is
+not an opaque generic assertion: it names a non-null, exact
+`cairn.gate_dependency_attestation.v0.1`, whose signature controller must equal
+the configured trusted authority for that role. The attestation binds an
+immutable subject ref/hash, principal, role, state, and validity interval. The
+normalized head's `dependency_key` is derived from
+`(principal_id, dependency_role, subject_ref)`, its role/principal/state must
+equal the source attestation, its interval must be contained by the source, and
+genesis is exactly sequence zero in `active` state with no predecessor. Every
+non-genesis head authenticates the exact signed predecessor and a newly signed
+role attestation over the same immutable subject. The closed successor graph is
+`active → paused | restricted | revoked | expired`,
+`paused → active | restricted | revoked | expired`, and
+`restricted → active | paused | revoked | expired`; `revoked` and `expired` are
+terminal. Sequence advances exactly one, update and attestation issuance time
+are monotonic, and neither a new subject nor a non-active genesis can manufacture
+history. One generic
+signer cannot relabel a source across release, integrity, lifecycle, provider,
+finality, accounting, or checkout trust domains. A role with no locally
+validated native object and no trusted source attestation is unsupported and
+denies `allow`. Every mutable projected ref also resolves as the authoritative
+current head at the GateResult evaluation time.
+
+```yaml
+schema: cairn.gate_dependency_attestation.v0.1
+attestation_id: urn:uuid:<uuid>
+principal_id: <principal>
+dependency_role: <closed gate role>
+subject_ref: <immutable role-specific subject ObjectRef>
+subject_hash: sha-256:<same hash>
+state: active | paused | restricted | revoked | expired
+valid_from: <time>
+valid_until: <time>
+issued_at: <time within interval>
+issuing_authority_id: <configured authority for this exact role>
+attestation_hash: sha-256:<hex>
+issuing_authority_signature: <Signature>
+```
+
+```yaml
+schema: cairn.gate_dependency_state_head.v0.1
+dependency_key: sha-256:<principal/role/subject preimage>
+principal_id: <same principal>
+dependency_role: <same role>
+source_ref: <GateDependencyAttestation ObjectRef>
+source_hash: sha-256:<exact attestation hash>
+sequence: <zero at active genesis; exact predecessor + 1 thereafter>
+previous_head_hash: sha-256:<null exactly at active genesis; exact predecessor otherwise>
+state: active | paused | restricted | revoked | expired
+valid_from: <contained interval>
+valid_until: <contained interval>
+updated_at: <monotonic authority time>
+head_hash: sha-256:<hex>
+authority_service_signature: <Signature>
+```
+
+`cairn.gate_dependency_manifest.v0.1` carries the complete projection fields
+listed above plus `manifest_id`, `principal_id`, exact BindingSet ref/hash,
+authority ref, confirmation ref, execution-release ref, `created_at`,
+`expires_at`, `manifest_hash`, and `authority_service_signature`. GateRequest
+adds `dependency_manifest_ref/hash`; neither object accepts extensions.
 
 GateResult contains exactly these 19 check codes, in this order, with no missing,
 duplicate, or extra code:
@@ -6929,9 +7035,25 @@ duplicate, or extra code:
 `BUSINESS_DEPENDENCIES`, `REVIEWS_POLICIES`, `RESERVED_JUDGMENTS`, `LIMITS`,
 `ECONOMIC_EXPOSURE`, `RESERVATION_FENCES`, `DUPLICATE_EFFECT_LINEAGE`,
 `EXECUTOR_TARGET`, `DOMAIN_POLICY`, and `ATOMIC_PRECONDITIONS`. `allow` requires
-all 19 to pass; `deny` requires at least one deny. The evaluated-head,
-business-state, and checkout roots are recomputed from the same authoritative
-projection rather than from an independently supplied set.
+all 19 to pass; `deny` requires at least one deny. Each code has its own
+predicate and the smallest exact evidence-ref set actually evaluated for that
+predicate. A single global “all dependencies active” bit, identical evidence on
+all checks, caller-selected labels, and empty evidence are nonconforming.
+Reservation-related checks resolve the signed reservation, prepared action,
+BindingSet, authority, and lineage commitment and run the full reservation/fence
+semantics. Unimplemented predicates deny rather than inherit another check's
+pass. The evaluated-head, business-state, and checkout roots are recomputed from
+the same signed manifest and authenticated graph rather than from an
+independently supplied set.
+
+GateRequest and GateResult signatures are mandatory on every live gate,
+redemption, and handoff path. GateResult establishes one trusted
+`evaluationTime = evaluated_at`, passes it to authority, confirmation, current
+head, lifecycle, and dependency eligibility checks, and enforces
+`requested_at ≤ request signature time ≤ evaluated_at ≤ result signature time`.
+Its expiry cannot exceed the BindingSet, one-shot authority, confirmation,
+manifest, reservation, or any evaluated dependency deadline. Backdating a
+request into an earlier active interval cannot revive an expired dependency.
 
 The gate evaluates in this exact fail-closed order:
 
@@ -6977,12 +7099,13 @@ The gate evaluates in this exact fail-closed order:
 11. review, quote, taint, accounting, and finality signatures, policy hashes,
     warnings, unknowns, source paths, event order, and expiry;
 12. the authority-derived complete reserved-judgment set and required human/
-    warning decisions; ActionAuthorization's signed
-    `reserved_judgments_decided` array is JCS-byte-sorted, unique under JCS-byte
-    equality, and set-equal, while cancellation proves the same completeness
-    through its exact GateRequest → BindingSet → review graph and never through a
-    CancellationAuthorization field; any missing resolver, unknown judgment,
-    omission, addition, duplicate, or substitution denies;
+    warning decisions; both one-shot authorization branches carry a signed,
+    JCS-byte-sorted, duplicate-free `reserved_judgments_decided` array set-equal
+    to the exact branch-specific BindingSet → review → applicable-policy
+    derivation. Cancellation derives this vector from the cancellation graph and
+    never inherits it from the original action. Any missing resolver, unknown
+    judgment, omission, addition, duplicate, substitution, or current-policy
+    mismatch denies;
 13. all action/window/aggregate/outstanding/cost/rate limits;
 14. compartment definition, protection attestation, unique current resource-cap
     selector, current compartment and economic-resource exposure heads, exact
@@ -7565,11 +7688,12 @@ for the plan's event-ID assignment and one for its sequence assignment. Item
 uniqueness and plan equality are keyed by
 `(transition_receipt_ref, assignment_ref)`, not by receipt ref alone; each
 `assignment_ref/hash` is explicitly the pre-transition assignment identity from
-the plan. Both items MAY name one atomic BoundedIndexEpochTransitionReceipt. A
-shared receipt MUST contain exactly the two matching before assignments and
+the plan. Both items MUST name the single atomic
+BoundedIndexEpochTransitionReceipt also named by the terminal receiver-stream
+transition. That shared receipt MUST contain exactly the two matching before assignments and
 their exact successors in its canonical `reservation_assignment_transitions`,
 under the same `authority_transaction_id`; two wrappers around one assignment, a
-third assignment, or two non-atomic transitions deny. Thus the value `2` in
+third assignment, a different shared receipt, or two one-assignment transitions deny. Thus the value `2` in
 `identity_transition_count` counts assignment items, not distinct receipts. The
 completion also proves exact assignment-key equality plus
 the complete cause-derived identity, trust, future-pool, receiver-stream-or-
@@ -7744,10 +7868,20 @@ provider epoch rotation, `execution.receiver_event_identity_scope.import` is an
 internal consequence of the selector CAS and creates the new epoch-specific
 scope before the selector points to it. Exact replay is byte-identical; a second selector genesis or same
 provider-epoch scope genesis conflicts. Every event import CASes the action's
-assigned active epoch-specific index head plus the stable selector,
+assigned accepting-or-draining epoch-specific index head plus the stable selector,
 its directory and assigned epoch's two manifests/assignments, and the two keyed
 identity heads; missing/forked scope head, epoch, manifest, entry, or
 count fail-stops through the global integrity state.
+
+The receiver-event identity receipt resolves and authenticates both assigned
+epoch heads. Their directory and epoch equal the entry's assigned scope; the
+after head preserves directory, epoch, and state and is the exact
+sequence/predecessor successor. If the assignment is in the scope's current
+accepting epoch, both refs equal the accepting heads and state is `accepting`.
+Otherwise the assigned epoch is lower, both heads are `draining`, neither ref is
+the accepting head, and the accepting epoch/ref remains unchanged across the
+late-event transaction. Migrating a late event into the new epoch, changing the
+accepting ref, or treating a draining predecessor as inactive denies.
 
 `execution.receiver_event_identity.bind` is an authority-
 internal insert-only two-key transaction inside provider-event import: both keys
@@ -8135,6 +8269,10 @@ gate, redeem, or send. The principal then sees that binding set and separately
 signs CancellationAuthorization. The graph is one-way:
 cost attestation → preparation intent → commitment/review/binding set →
 CancellationAuthorization/ConfirmationReceipt → reservation/gate/outbox.
+Before signing, the principal is shown the cancellation-specific
+reserved-judgment vector derived from that exact BindingSet and review graph.
+The signed CancellationAuthorization commits that exact vector; it does not
+inherit the original action's decisions.
 
 ```yaml
 schema: cairn.cancellation_authorization.v0.1
@@ -8219,12 +8357,14 @@ original locator/state/account, and an applicability-matched cancellation-
 finality profile. Request acknowledgement is never cancellation confirmation.
 The fresh current-principal-nonce rule above applies unchanged to
 CancellationAuthorization at authorization admission, reservation, gate,
-redemption, and cancellation-request handoff. Its reserved-judgment completeness
-is enforced only through the exact cancellation GateRequest → BindingSet →
-review graph and current policy resolution; CancellationAuthorization has no
-`reserved_judgments_decided` field and cannot inherit or synthesize one from the
-original action. A historical valid signature on either authorization does not
-make the cancellation currently eligible.
+redemption, and cancellation-request handoff. Its signed
+`reserved_judgments_decided` vector MUST equal the complete set independently
+derived at each boundary from the exact cancellation GateRequest → BindingSet →
+review graph and applicable authoritative current policy heads. It cannot
+inherit decisions from the original action. Later nonce or policy drift
+invalidates current use but does not erase authenticated historical evidence.
+A historical valid signature on either authorization does not make the
+cancellation currently eligible.
 The authorization, BindingSet cancellation context, reservation, deterministic
 gate result, redemption receipt, cancellation action binding, and outbox handoff
 each repeat—or content-addressedly bind—the exact original binding core/head,
@@ -10505,6 +10645,28 @@ head unless their registry contract promises current state; they still verify
 the complete exact graph and signatures at the authenticated signing time and
 must not promote historical validity into current eligibility.
 
+`execution.action.get` is deliberately a mixed current/historical composite.
+Its returned `current_action_state_head`, `current_lineage_state_head`, and
+`current_activity_detail` equal their authoritative retrieval-time current
+heads. Objects reachable only as immutable evidence—BindingSet, mandate or
+one-shot authority, captured connection and DataGrant heads, reservations,
+confirmation, GateRequest, GateResult, signed dependency manifest, dependency
+attestations, and their referenced heads—use historical-evidence semantics.
+Historical validation still verifies exact ObjectRefs, canonical hashes,
+signatures and signer lifecycle at signing time, predecessor chains,
+principal/runtime/recipient identity, mandate scope and business tuple, captured
+eligibility state, signed dependency projection, evaluated roots, the exact
+per-code check vector and evidence, decision, and chronology. Authenticated
+as-of history is used for the relevant event time; retrieval-time successors do
+not invalidate an earlier captured head.
+
+Historical-evidence mode is an internal, unforgeable validator capability, not
+a request flag. Supplying `historicalRead:true` or any equivalent caller field
+to a live reservation, gate, redemption, outbox, or handoff validator does
+nothing. Those paths always require retrieval/evaluation-time current heads,
+nonces, policies, lifecycles, states, and expiries. Historical validity can
+explain what happened; it can never become current execution eligibility.
+
 These rules apply equally to connection authorization/state, enumerable roots/
 nodes, connection outstanding entries and transitions, receiver outstanding
 entries/transitions, terminal release plans and completions, and all other
@@ -11035,6 +11197,27 @@ invalidate the held reservation. A reservation created without the matching
 head successor, two holds from one null tuple, an opaque root without an
 enumerable ref, a hidden writer, or a terminal authorization retaining a usable
 held reservation fails.
+
+The release gate additionally mutates each signed gate-manifest field, source
+attestation role/subject/controller, normalized dependency predecessor,
+evaluation timestamp, per-code evidence set, and decision independently. An
+unsigned GateRequest or GateResult, a request-reflecting projection, an active
+wrapper over a revoked source, one generic signer relabeling another trust
+domain, a backdated request, an expired dependency, a signed reservation for the
+wrong action/binding/fence, or a forged all-pass vector fails. DataGrant controls
+independently vary purpose, uses, scope root, audience, recipient, issue/retention
+interval, active-zero, paused, exhausted, revoked, expired, and stale signed
+predecessor. Historical ActionGet must remain readable after authenticated
+connection, grant, policy, or gate-head successors while every corresponding
+live gate rejects the captured head; altered old bytes, refs, signatures, or
+chronology still fail. Receiver controls include a valid late event in an older
+draining epoch and reject accepting-head substitution, epoch migration, skipped
+successor, directory drift, and state drift. Compartment controls isolate orphan
+reserved atoms, orphan reservations, duplicate matches, wrong fences, stale
+held-atom roots, atom/event subset-root drift, balance drift, non-append-only
+events, and recursively invalid map descendants. Terminal release tests both
+split one-assignment identity receipts and one shared receipt different from the
+receiver transition's atomic receipt.
 
 Review controls independently mutate target, receiver, payee account, copy,
 terms/cart, evidence, price, fees, shipping, tax, total, rail, executor, quote,

@@ -221,7 +221,7 @@ function commonSchema() {
     entry_key: hash(),
     entry_kind: { enum: [
       "connection_outstanding_action", "receiver_outstanding_stream", "compartment_active_reservation",
-      "compartment_economic_atom", "compartment_confirmed_event"
+      "compartment_economic_atom", "compartment_confirmed_event", "scoped_execution_control"
     ] },
     entry_object_ref: ref(),
     entry_object_hash: hash()
@@ -270,7 +270,14 @@ function commonSchema() {
       queryBound,
       enumerableMapLeafEntry, enumerableMapBranchChild, enumerableMapPathProof, identityTransitionReceipt,
       sellerInventoryContext,
-      grantHead: closed({ data_grant_ref: ref(), current_state_head_ref: ref(), revocation_nonce: { $ref: "#/$defs/uint" } }),
+      grantHead: closed({
+        data_grant_ref: ref(), current_state_head_ref: ref(), revocation_nonce: { $ref: "#/$defs/uint" },
+        required_purpose: { type: "string", minLength: 1, maxLength: 96 },
+        required_uses: array({ enum: ["read_local", "derive", "disclose_to_audience", "retain_until_expiry", "write_object"] },
+          { minItems: 1, maxItems: 5, uniqueItems: true }),
+        required_resource_scopes_root: hash(),
+        required_audience: stringArray(undefined, 1)
+      }),
       checkResult: closed({ code: { type: "string", pattern: "^[A-Z0-9_]+$" }, decision: { enum: ["pass", "deny"] }, evidence_refs: refArray() })
     }
   };

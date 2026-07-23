@@ -2,10 +2,10 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: rounds 1–35 findings remediated; replacement candidate frozen for a fresh exact-commit three-reviewer gate
-Prose dependency SHA-256: `3d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764`
-Candidate internal bundle hash: `sha-256:098b1c75096d0c9af4ebc794aa414ada5b704744a8f9d95d55e72ff77b4e082e`
-Candidate operation-registry hash: `sha-256:4cf66e2b5cf428617c8df1cb3ad3e1b46fc405a5efb44a3fd075f9d011fe9a96`
+Status: rounds 1–37 findings remediated; replacement candidate prepared for an exact-commit three-reviewer gate
+Prose dependency SHA-256: `84ce1928f090977cc5691f35f161c21b6504fc1b9e52394745f808d2703e732a`
+Candidate internal bundle hash: `sha-256:0788cbbcd7100f7c0d90bc9d1414781bf36cd29a38d96fac5ba29b2bbc0670e9`
+Candidate operation-registry hash: `sha-256:2fcc19bcf9ce9435520e1ecd4323bf01dfdb764c1f15a9674ef9a506309ce7d8`
 
 ## Claim boundary
 
@@ -22,7 +22,7 @@ The package pins and does not widen the proposal foundation:
 
 ## Candidate contents
 
-- 48 JSON Schema documents in the bundle, including 43 closed signed-object
+- 51 JSON Schema documents in the bundle, including 46 closed signed-object
   schemas and one content-addressed enumerable-map node schema;
 - all nine closed execution-chain versions required by §7.2 of the prose spec,
   including `CancellationAuthorization`;
@@ -54,7 +54,7 @@ The current local suite passes 30/30 controls:
 2. deterministic bundle and registry bytes;
 3. exact read-only/non-effectful registry surface;
 4. typed, endpoint-family-closed, request-bound generic and composite action
-   read responses with all 44 Phase 1 object families reachable;
+   read responses with all 47 Phase 1 object families reachable;
 5. byte-based request/object/string/ref, depth, property, per-array, and
    aggregate-array resource ceilings;
 6. valid bound specimen plus extension rejection for every object schema;
@@ -95,7 +95,7 @@ The current local suite passes 30/30 controls:
 
 ## Direct mutation controls
 
-The package kills 349/349 direct mutants. Covered failure families are:
+The package kills 369/369 direct mutants. Covered failure families are:
 
 - prose, base-bundle, and base-registry drift;
 - accidentally mutating or effectful operation advertisement;
@@ -473,13 +473,35 @@ accepted and remediated before preparing this replacement freeze:
 | P2R34-003 | P2 | DataGrant expiry-state timing rejected the exact expiry boundary | accepted_and_fixed | Nonexpired states require `updated_at < expires_at`; `expired` requires `updated_at >= expires_at`, including equality |
 | P2R35-001 | P2 | Release documentation retained obsolete hashes, object/receipt family counts, mutation totals, and pre-freeze wording | accepted_and_fixed | This register, the package README, and the coordination marker now state the exact 44-object/34-operation/349-control candidate and distinguish the rejected freeze from the pending replacement |
 
+The second replacement freeze, commit
+`393b87f1ef77275a631c2196a376e52b30a78861`, was rejected by the fresh
+exact-commit gate. The rejected bytes and their hashes are retained in git
+history; they are not the current candidate. Round-36 remediation and two
+read-only round-37 pre-freeze audits produced the following accepted findings:
+
+| ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
+|---|---:|---|---|---|
+| P1R36-001 | P1 | Cancellation accepted an unauthenticated original action/state or a caller-shaped current judgment vector | accepted_and_fixed | Original signed objects are mandatory, and a structured resolver binds the exact current binding/review/policy/decision graph |
+| P1R36-002 | P1 | Gate dependency outcomes could be caller-projected, globally collapsed, unsigned, or evaluated at a backdatable request time | accepted_and_fixed | Added a signed exact dependency manifest, mandatory GateRequest/GateResult signatures, one trusted evaluation time/causal interval, and 19 independently derived predicates/evidence sets |
+| P1R36-003 | P1 | DataGrant bindings did not close purpose/use/scope/audience, full lifetime, or current nonzero eligibility | accepted_and_fixed | Grant-head commitments now bind the exact signed contract, exact runtime recipient/audience, contained interval, and current active positive state; historical final-read evidence remains separate |
+| P1R36-004 | P1 | Execution-control receipts named scoped map successors without proving the exact authenticated change | accepted_and_fixed | Added the scoped-control map domain, before/after proofs, derived map key, frontier equality, target/epoch/nonce matrix, and joint connection/outstanding dependencies |
+| P1R36-005 | P1 | Active reservations and reserved economic atoms were not closed bidirectionally | accepted_and_fixed | Compartment validation recomputes the exact reservation-to-held-atom closure and committed held-root |
+| P1R36-006 | P1 | Terminal receiver completion could split identity release across multiple transactions | accepted_and_fixed | Both identity assignments must share one transition receipt equal to the receiver transition under one authority transaction |
+| P1R36-007 | P1 | Valid late events assigned to an older draining epoch were rejected, while migration boundaries were not explicit | accepted_and_fixed | The accepting/draining epoch matrix now accepts only the exact unchanged assigned draining epoch and rejects epoch migration |
+| P1R36-008 | P1 | A caller-visible historical flag risked relaxing live validation | accepted_and_fixed | Historical evidence mode is private and unforgeable; caller `historicalRead:true` has no effect on live gate/current-head checks |
+| P1R37-001 | P1 | A generic gate wrapper could collapse independent trust domains under one opaque signer | accepted_and_fixed | Added role-authorized signed source attestations, derived principal/role/subject keys, exact current heads, and fail-closed unsupported roles |
+| P1R37-002 | P1 | Gate checks could inherit one global active bit rather than evaluate their named condition | accepted_and_fixed | Each closed check code has an independent predicate and minimal exact evidence; reservation checks run the full action/binding/authority/lineage/fence graph |
+| P1R37-003 | P1 | Dependency state history admitted a revoked genesis and could not honestly rotate to a newly signed revoked source | accepted_and_fixed | Genesis is active-only; every successor uses a newly signed attestation over the same immutable subject and a closed monotonic transition graph |
+| P2R37-004 | P2 | New predicates lacked isolated counterexamples, 15 inherited mutation anchors were stale, and four first-replay controls were masked | accepted_and_fixed | Repaired every anchor, added direct variations for each new boundary, isolated gate order/signature checks, and retired two redundant receiver controls subsumed by stronger atomicity/set controls |
+
 The current replacement candidate is the exact bundle and registry hash at the
-top of this register. It has 48 schema documents: 43 signed object families,
+top of this register. It has 51 schema documents: 46 signed object families,
 one content-addressed map-node family, and four bundle/registry/common
 documents. It exposes 34 schema-only read operations, passes 30/30 authored
-test groups, and kills 349/349 direct mutants. These exact bytes are frozen;
-closure remains open until fresh blind semantic, blind mutation/receiver, and
-informed release reviewers all accept the frozen commit.
+test groups, and kills 369/369 direct mutants. The unchanged proposal baseline
+passes 83/83 and kills 75/75 mutants. These bytes are prepared for a new exact
+freeze; closure remains open until fresh blind semantic, blind state/mutation,
+and informed release reviewers all accept that commit.
 
 ## Local remediation ledger
 
@@ -499,7 +521,7 @@ informed release reviewers all accept the frozen commit.
 This register remains open until a reviewer who did not author the candidate:
 
 1. verifies the candidate hash before and after a read-only review;
-2. reproduces all 30 authored controls and 349 killed mutants;
+2. reproduces all 30 authored controls and 369 killed mutants;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
 4. audits field closure against the fixed prose, especially the execution-chain
