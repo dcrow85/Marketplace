@@ -69,9 +69,10 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   dispatch; cursors/cross-page snapshots were unauthenticated; and provenance
   enforcement relied on naming conventions. These findings are
   `accepted_by_scope_removal`, not fixed.
-  The narrowed candidate is `cairn-proposal-foundation-v0.1`: ten exact
-  operations, only `intent.put` and `action.prepare` as local writes, no action
-  authority, no external effects, and no conformance claim. A machine release
+  The narrowed release line is `cairn-proposal-foundation-v0.1`: now nine exact
+  operations after removing `action.get`, only `intent.put` and
+  `action.prepare` as local writes, no action authority, no external effects,
+  and no conformance claim. A machine release
   manifest now pins the exact bundle/registry/surface/non-claims and keeps
   `cairn-supervised-execution-v0.1` excluded. Execution reference-service work
   remains blocked until a signed service observation profile authenticates
@@ -146,13 +147,14 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   release schema alone did not authenticate commitment values or self-hash, and
   the pending ledger carried the pre-freeze rather than clean-freeze archive hash.
   All are accepted.
-  The current replacement closes the packed artifact to exactly 53 committed
-  sources plus two named generated files, forbids an `execution` segment at any
+  Freeze `705d627a16c6eb7ce612dc9990153afa983d17ea` closes the packed artifact
+  to exactly 53 committed sources plus two named generated files, forbids an
+  `execution` segment at any
   path depth, distinguishes schema shape/name closure from recomputed value and
   self-hash verification, requires a trusted external release-hash pin, adds an
   explicit authenticity nonclaim, pins the npm/engine profile, publishes a
   non-self-referential repository release-pin record, and corrects the root
-  protocol prose. Direct controls cover every new boundary. The working tree
+  protocol prose. Direct controls cover every new boundary. That exact commit
   passes 101/101 authored controls, kills 134/134 mutants, packs exactly 55 files
   at
   `sha-256:bef5888e5b4f090fc5e66075a0095f0baf33e795d47b99c5dbe634547d33effd`,
@@ -163,8 +165,18 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
   `sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe`;
   current generated release
   `sha-256:9b6c2c1842659bb1e94085cf07ec4d0b160133b455f0c0c943623dc014476cc3`.
-  A containing commit, two disposable clean replays, and fresh exact-commit
-  reviews remain pending.
+  It is nevertheless rejected by the fresh interoperability review because two
+  active root documents still described the superseded ten-operation baseline:
+  `Protocol_Rundown_v0.2.md` and
+  `Protocol_Agent_Execution_Change_Spec_v0.1.md`. The replacement corrects the
+  rundown to nine operations and marks the execution change spec, its old
+  `d84dd…` foundation, implementation sequence, and pending closure language as
+  rejected historical research. A new containing commit and fresh exact-commit
+  reviews remain pending. The independent regression review otherwise returned
+  clean and reproduced the full gate and exact package hash. The independent
+  release review also reproduced every package, pollution-rejection,
+  recomputation, and external-pin control, and rejected only the same two active
+  prose discrepancies.
   No UI, catalogue, profile, offer, payment, contract, deployment, or live state
   is changed or authorized.
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —

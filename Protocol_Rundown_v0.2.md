@@ -88,7 +88,7 @@ spendability bypass, wall-bundle, evidence manifest).
   action receipts, and HTTP/MCP/A2A bindings. It keeps Anko as a reference agent,
   never a privileged protocol actor. Its first [machine-readable proposal
   foundation](protocol/) is now the active [minimum trust
-  kernel](Protocol_Agent_Minimum_Trust_Kernel_v0.1.md): ten exact operations,
+  kernel](Protocol_Agent_Minimum_Trust_Kernel_v0.1.md): nine exact operations,
   two bounded local writes, canonical hash/signature vectors, and no authority
   to act. The larger supervised-execution candidate is rejected research.
   Production services, authenticated service observations, consequential

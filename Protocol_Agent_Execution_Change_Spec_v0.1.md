@@ -1,11 +1,23 @@
 # Cairn Agent Execution Change Specification v0.1
 
-Status: prose design with a locally verified narrowed Phase-1 containment profile pending an exact containing-commit freeze and fresh three-reviewer verification; not implementation-authorizing
+Status: superseded historical research; the supervised-execution machine candidate is rejected and no execution profile or reference-service work is active; not implementation-authorizing
 Date: 2026-07-21
 Containment amendment: 2026-07-23
+Supersession amendment: 2026-07-23
 Change class: additive; no existing machine operation is widened
-Baseline: `Protocol_Agent_Intent_Interop_v0.1.md`, frozen proposal foundation
-`e653556`, and frozen proposal-only service `1711a56`
+Historical drafting baseline: `Protocol_Agent_Intent_Interop_v0.1.md`, the
+then-frozen ten-operation proposal foundation `e653556`, and the then-frozen
+proposal-only service `1711a56`
+Active baseline: the nine-operation minimum trust kernel and its external
+release pin in `Protocol_Agent_Minimum_Trust_Kernel_Release_Pin_v0.1.json`
+
+> **Supersession notice.** This document records rejected execution research.
+> Its execution schemas, operations, hashes, phases, and closure language are
+> not an active candidate, compatibility baseline, or instruction to build.
+> Any future execution change MUST start from the active minimum trust kernel,
+> define a new profile and machine bundle, and pass a new frozen independent
+> audit. Historical ten-operation and `d84dd…` references below describe the
+> drafting baseline only.
 
 ## 0. Decision
 
@@ -87,35 +99,42 @@ compartment for a rail without genuinely segregated funds.
 
 ### 2.2 Out of scope
 
-This change does not modify the frozen ten-operation proposal foundation, make
-Anko required or authoritative, make OAuth sufficient authority, let a model
-validate its own mandate, authorize release/waiver/arbitration, prove physical
-facts, promise distributed exactly-once execution, require escrow, add a provider
-adapter, or claim conformance from prose.
+This rejected historical change did not modify its then-frozen ten-operation
+proposal foundation, make Anko required or authoritative, make OAuth sufficient
+authority, let a model validate its own mandate, authorize
+release/waiver/arbitration, prove physical facts, promise distributed
+exactly-once execution, require escrow, add a provider adapter, or claim
+conformance from prose. The active foundation now has nine operations.
 
-### 2.3 Compatibility law
+### 2.3 Historical compatibility record and future rebase law
 
-The existing `cairn-proposal-foundation-v0.1` profile remains byte-stable at base
-bundle `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
-The execution profile identifier is exactly
-`cairn-supervised-execution-v0.1`. It uses a distinct protected-resource audience,
-HTTP route, MCP server identity, registry, and schema bundle. Existing operation
-meanings and schemas MUST NOT be widened in place.
+At drafting time, `cairn-proposal-foundation-v0.1` was byte-stable at historical
+base bundle
+`sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
+That value is not the active compatibility baseline. The rejected execution
+candidate used the identifier `cairn-supervised-execution-v0.1`, a distinct
+protected-resource audience, HTTP route, MCP server identity, registry, and
+schema bundle. It was never published as an active profile.
 
-The future execution envelope MUST bind all of:
+Any newly proposed execution envelope MUST rebase on and bind the active
+nine-operation kernel:
 
 ```yaml
 protocol_version: "0.1"
-profile_id: cairn-supervised-execution-v0.1
-base_bundle_hash: sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c
+profile_id: <new separately frozen execution profile>
+base_bundle_hash: sha-256:9f5caa6b0819836e1d70c4f79a8869d10936a2a55acabc2a358aec569efe36cb
+base_operation_registry_hash: sha-256:403be425bd3708903e489147f133d0ca5a55c4aa279839101ad1550bd2e2d7fe
+base_release_hash: sha-256:9b6c2c1842659bb1e94085cf07ec4d0b160133b455f0c0c943623dc014476cc3
 execution_bundle_hash: sha-256:<frozen execution bundle hash>
 operation_registry_hash: sha-256:<frozen execution registry hash>
 ```
 
-The execution profile cannot be published until the two new hashes exist. Both
-profiles MUST reject a request bearing the other profile, resource audience,
-bundle hash, or operation registry hash before any mutation. The proposal-only
-service never routes an execution operation, even if the operation name is known.
+A future execution profile cannot be published until its new hashes exist and
+the active external release pin has been verified independently. Profiles MUST
+reject a request bearing the other profile, resource audience, bundle hash, or
+operation registry hash before any mutation. The proposal-only service never
+routes an execution operation, even if the operation name is known. Existing
+operation meanings and schemas MUST NOT be widened in place.
 
 ## 3. Design laws
 
@@ -12509,7 +12528,12 @@ signature metadata must match for intent, proposal semantics, effect, terms,
 exposure, receiver import, and final state. Runtime-specific authority and receipt
 hashes differ and neither runtime may continue the other's live chain.
 
-## 14. Implementation sequence
+## 14. Rejected historical implementation sequence
+
+The sequence below is retained for research provenance only. It is not active
+work, and none of its later phases may begin from the superseded bundle or
+profile. A future execution effort requires a new change spec rebased on the
+active nine-operation kernel and a new independent release gate.
 
 - **Phase 0:** preserve proposal-only bytes; separate execution package/profile.
 - **Phase 1:** closed machine schemas/registry for connection, compartment,
@@ -12807,10 +12831,10 @@ closure review; and author replay.
 P0 permits unauthorized/unbounded effect or corrupts authoritative history. P1
 permits wrong recipient/amount/scope, budget/duplicate/revocation bypass, false
 receiver finality, or material disclosure. P2 creates likely interoperability,
-recovery, UX, or audit forks. P3 is editorial/hardening. No closure claim is
-made while the current remediation is pending a fresh containing-commit freeze
-and three-reviewer gate. A deferred P2 names owner, trigger,
-safe interim behavior, and fail-closed basis.
+recovery, UX, or audit forks. P3 is editorial/hardening. No closure claim was
+made for the rejected candidate. A future execution candidate would require a
+fresh containing-commit freeze and three-reviewer gate. A deferred P2 names
+owner, trigger, safe interim behavior, and fail-closed basis.
 
 ## 16. Weakest point and serious alternative
 
