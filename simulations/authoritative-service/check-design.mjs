@@ -52,7 +52,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:e679a87fb64e7c26a62f20483731c97aeef9c443ceb68ad4de062ea74e174a91";
+  "sha-256:37191919df69558b8b3df50850ea1d86873950a137c31cdc7491b73223b7a66f";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -2769,27 +2769,57 @@ assert.deepEqual(
     context_hash:
       originalMutationObservation.request.host_authentication_context_hash,
     account_tenant_commitment:
-      compositeProbe.origin.authentication.account_tenant_commitment,
+      compositeProbe.origin.receiver_authentication
+        .account_tenant_commitment,
     principal_id: compositeProbe.origin.authentication.principalId,
     actor_id: compositeProbe.origin.authentication.actorId,
     runtime_key_id: compositeProbe.origin.envelope.sender.runtime_key_id,
     authority_namespace_commitment:
-      compositeProbe.origin.authentication.authority_namespace_commitment,
+      compositeProbe.origin.receiver_authentication
+        .authority_namespace_commitment,
     trust_profile_id:
-      compositeProbe.origin.authentication.trust_profile_id,
+      compositeProbe.origin.receiver_authentication.trust_profile_id,
     trust_profile_hash:
-      compositeProbe.origin.authentication.trust_profile_hash,
+      compositeProbe.origin.receiver_authentication.trust_profile_hash,
     authentication_evidence_commitment:
-      compositeProbe.origin.authentication
+      compositeProbe.origin.receiver_authentication
         .authentication_evidence_commitment,
     assertion_level:
-      compositeProbe.origin.authentication.assertion_level
+      compositeProbe.origin.receiver_authentication.assertion_level
   }
+);
+assert.deepEqual(
+  compositeProbe.origin.sidecar.receiver_authentication_records[0],
+  {
+    global_sequence: 1,
+    record: compositeProbe.origin.receiver_authentication
+  },
+  "the committed receiver authentication record differs from the record used by the transaction"
+);
+assert.equal(
+  compositeProbe.origin.sidecar.request_envelopes[0].global_sequence,
+  1
+);
+assert.deepEqual(
+  JSON.parse(
+    compositeProbe.origin.sidecar.request_envelopes[0]
+      .canonical_envelope_bytes
+  ),
+  compositeProbe.origin.envelope,
+  "the committed request bytes do not reconstruct the exact signed envelope"
+);
+assert.equal(
+  compositeProbe.origin.sidecar.request_envelopes[0]
+    .canonical_envelope_bytes,
+  canonicalText(compositeProbe.origin.envelope),
+  "the committed request envelope was not stored as exact canonical bytes"
 );
 assert.equal(
   canonicalText(
     compositeProbe.origin.sidecar.host_authentication_contexts[0].context
-  ).includes(compositeProbe.origin.authentication.authorityNamespace),
+  ).includes(
+    compositeProbe.origin.receiver_authentication.authority_namespace_raw
+  ),
   false,
   "raw authority namespace leaked into the durable host context"
 );
@@ -3038,13 +3068,14 @@ assert.deepEqual(
     "live_frozen_missing",
     "live_frozen_result_ref_corrupt",
     "rich_row_corrupt",
-    "rich_row_duplicate"
+    "rich_row_duplicate",
+    "unrelated_rich_corruption"
   ],
   "preflight fault inventory changed"
 );
 assert.equal(
   Object.keys(compositeProbe.preflight_faults).length,
-  6,
+  7,
   "preflight control count changed"
 );
 for (const [caseId, { raw, trace }] of Object.entries(
@@ -3114,12 +3145,27 @@ assert.deepEqual(
   "the second key replay selected the wrong origin row"
 );
 assert.equal(
+  compositeProbe.multi_idempotency.exact_key_relink_rejected,
+  true,
+  "a signed envelope could be coherently relinked to another idempotency row"
+);
+assert.equal(
+  compositeProbe.multi_idempotency.version_order_independent,
+  true,
+  "operational-version reconstruction depended on array order"
+);
+assert.equal(
   compositeProbe.durable_artifact_controls.origin_bound,
   true
 );
 assert.equal(
   compositeProbe.durable_artifact_controls.replay_bound,
   true
+);
+assert.equal(
+  compositeProbe.durable_artifact_controls.historical_profile_positive,
+  true,
+  "a valid observation under a prior service-key profile did not verify"
 );
 assert.equal(
   Object.keys(
@@ -3158,7 +3204,17 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "grant_effect_remaining",
   "grant_effect_removed",
   "grant_effect_state_version",
+  "host_account_tenant_commitment",
+  "host_actor_id",
+  "host_assertion_level",
+  "host_authentication_evidence",
+  "host_authority_namespace_commitment",
+  "host_principal_id",
+  "host_runtime_key_id",
+  "host_trust_profile_hash",
+  "host_trust_profile_id",
   "owner_counter_substitution",
+  "receiver_operation_qualified_namespace",
   "rich_actor_id",
   "rich_authority_namespace",
   "rich_created_global_commit_sequence",
@@ -3185,6 +3241,7 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trace_presence_substitution",
   "trace_remove_one_event",
   "trace_value_and_hash_substitution",
+  "trace_write_before_value_and_hash_substitution",
   "transaction_kind_genesis_as_operation",
   "transaction_kind_open_value",
   "transaction_kind_origin_as_genesis",
@@ -3218,6 +3275,10 @@ const EXPECTED_SERVICE_PROFILE_MUTATIONS = [
   "profile_chain_order",
   "profile_chain_rollback",
   "profile_expired_key",
+  "profile_future_created",
+  "profile_historical_expired_at_creation",
+  "profile_historical_missing_current",
+  "profile_historical_revoked_key",
   "profile_missing_current_key",
   "profile_noncurrent_interval",
   "profile_noncurrent_signing_key",
@@ -3257,8 +3318,12 @@ assert.deepEqual(
 const replayTraceHashes = new Set();
 for (const caseId of EXPECTED_REPLAY_FAULTS) {
   const { raw, trace } = compositeProbe.replay_faults[caseId];
-  assert.equal(raw.code, "idempotency_result_unavailable", caseId);
-  assert.equal(trace.callback_value.code, raw.code, caseId);
+  assert.equal(raw.code, "authoritative_integrity_invalid", caseId);
+  assert.equal(
+    trace.callback_value.code,
+    "idempotency_result_unavailable",
+    caseId
+  );
   assert.equal(
     trace.callback_after.used_nonces.length,
     trace.callback_before.used_nonces.length + 1,
@@ -3286,7 +3351,9 @@ assert.deepEqual(
   EXPECTED_WRAPPER_FAULTS
 );
 for (const stage of EXPECTED_WRAPPER_FAULTS) {
-  const { trace } = compositeProbe.wrapper_faults[stage];
+  const { raw, trace } = compositeProbe.wrapper_faults[stage];
+  assert.equal(raw.ok, false, stage);
+  assert.equal(raw.code, `${stage}_failed`, stage);
   assert.equal(trace.callback_value.ok, true, stage);
   assert.equal(trace.callback_after.used_nonces.length, 2, stage);
   assertCompositeRollback(stage, trace, {
@@ -3398,7 +3465,9 @@ assert.deepEqual(
   ["observation", "persistence", "commit"]
 );
 for (const stage of ["observation", "persistence", "commit"]) {
-  const { trace } = compositeProbe.unexpected_wrapper_faults[stage];
+  const { raw, trace } = compositeProbe.unexpected_wrapper_faults[stage];
+  assert.equal(raw.ok, false, stage);
+  assert.equal(raw.code, `${stage}_failed`, stage);
   assert.equal(trace.callback_value.ok, true, stage);
   assertCompositeRollback(`unexpected_${stage}`, trace, {
     callbackCommit: true,

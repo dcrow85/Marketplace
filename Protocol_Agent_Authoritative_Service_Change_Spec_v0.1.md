@@ -1,9 +1,9 @@
 # Cairn authoritative store and signed service-observation change spec v0.1
 
-**Status:** the tenth frozen candidate,
-`5e6e579a9fa7412b73d285a0f19910368e4413f2`, was rejected by all three
-usable clean-archive reviewers in the eleventh audit cycle. This working tree
-contains eleventh-pass remediation under review. It is not independently
+**Status:** the eleventh frozen candidate,
+`a50f546fd559e8d9b3034b937e0372e0b4c54e6d`, was rejected by all three
+usable clean-archive reviewers in the twelfth audit cycle. This working tree
+contains twelfth-pass remediation under review. It is not independently
 re-audited, implemented as a durable SQLite service, or conforming.
 
 **Depends on:** the independently audited proposal-only BYO checkpoint at
@@ -67,8 +67,9 @@ result passing in SQLite does not by itself claim the PostgreSQL mapping passes.
 
 Every signed operation runs in one database transaction at serializable
 isolation. The outer wrapper owns the store adapter. That adapter begins the
-transaction and validates any existing rich idempotency row before it invokes
-the frozen transaction callback. The transaction:
+transaction and validates the complete existing rich-idempotency history before
+it considers the requested key or invokes the frozen transaction callback. The
+transaction:
 
 1. reads the service clock once;
 2. validates the receiver-private idempotency row, its version/history, and its
@@ -89,10 +90,12 @@ the frozen transaction callback. The transaction:
 12. commits all changes together or rolls all of them back.
 
 Before enabling callback-access recording or invoking the frozen callback, the
-interposer compares the complete live frozen two-field idempotency map with its
-exact durable snapshot. For the requested receiver-private database key, either
-both rows are absent or exactly one frozen row and one rich row must agree with
-the already verified sidecar history. A mismatch returns
+interposer verifies every existing rich row, frozen projection, origin link,
+version, and commit mapping, then compares the complete live frozen two-field
+idempotency map with its exact durable snapshot. Only after that complete
+preflight may it decide that the requested receiver-private database key is
+absent or validate the requested pair. A mismatch anywhere, including in an
+unrelated existing row, returns
 `idempotency_integrity_invalid` with `kernel:null`, an empty callback trace,
 unchanged kernel/sidecar snapshots, and no callback invocation.
 
@@ -117,10 +120,13 @@ The adapter preserves the frozen callback's accepted-envelope semantics:
   preserve the callback's raw result in `kernel`, report
   `authoritative_integrity_invalid` separately as an observation-stage wrapper
   failure, and roll the whole composite transaction back; and
-- signer, observation, persistence, or database commit-call failure: complete
-  rollback because no verifiable commit artifact can be completed; if the
-  callback already returned, preserve that exact result in `kernel` and report
-  the infrastructure problem separately in `wrapper_failure`.
+- signer, observation, persistence, publication, or database commit-call
+  failure: complete rollback because no verifiable commit artifact can be
+  completed; the boundary that catches the exception assigns its own stable
+  stage rather than accepting a fixture-supplied label, restores every partially
+  published live map, nonce set, and sidecar, preserves the exact callback result
+  in `kernel`, and returns the wrapper failure—not the callback success—as the
+  outer service result.
 
 The wrapper never rewrites, relabels, or replaces a frozen callback result.
 A rich-row mismatch is distinguished from a legitimate new request whose
@@ -178,12 +184,15 @@ the same structural key and operation fingerprint.
   back with no nonce, sequence, dependency, observation, or repository delta.
 
 The wrapper compares the stored rich row and frozen row with the origin
-observation, repository, owner/global mapping, projection, version, and origin
-dependency to establish row integrity. It does not compare that fingerprint
-with the new request during rich-row preflight; the unchanged frozen callback
-owns that request-conflict decision. The Phase-A sidecar does not retain the
-original signed envelope bytes and therefore does not independently recompute
-the original operation fingerprint from those bytes.
+observation, repository, owner/global mapping, projection, version, origin
+dependency, exact canonical signed-envelope bytes, and receiver-authentication
+record to establish row integrity. It recomputes the database key as
+`JCS([receiver_namespace_raw, envelope.idempotency_key])`, its opaque
+commitment, and the complete signed-envelope/request projection. A coherently
+re-signed envelope cannot be relinked to a different rich row. The wrapper does
+not compare the stored operation fingerprint with the new request during
+rich-row preflight; after history is proven coherent, the unchanged frozen
+callback owns that request-conflict decision.
 
 ### 4.4 Commit ordering
 
@@ -750,7 +759,13 @@ The current Phase-A verifier pins event order, store, method, key, presence
 transition, exact canonical before/after witnesses, hashes recomputed from
 those witnesses, and each witness's independently derived operational
 projection or committed row. A coherently changed witness and matching hash
-therefore fails unless it still denotes the exact authoritative value.
+therefore fails unless it still denotes the exact authoritative value. In the
+unchanged frozen service, a `set` against an already present key is an exact
+replacement, so its signed before and after witnesses MUST be canonically equal;
+the after witness is then cross-bound to the committed authoritative version.
+This makes the before witness independently meaningful rather than merely
+self-hashed. An insert instead requires a proven absent before state and the
+exact committed after value.
 
 Non-genesis `service_commits.transaction_kind` admits only
 `service_operation` and `replay`. `replay` is required exactly when the signed
@@ -859,9 +874,13 @@ hand-author an incomplete dependency set.
 
 The same wrapper transaction constructs, signs, and persists the actual origin
 and replay observations, dependency and scope commits, operational versions,
-repository ACL rows, validator binding, access trace, envelope index, and rich
-idempotency origin link. The checker consumes those exact durable artifacts; it
-does not fabricate a second signed history from a reduced probe result.
+repository ACL rows, validator binding, access trace, exact canonical request
+envelope, exact private receiver-authentication record, public host-context
+projection, envelope index, and rich idempotency origin link. The frozen
+authentication object and signed host context are derived from that exact
+receiver record; the runtime key is cross-bound to the signed envelope. The
+checker consumes those exact committed artifacts; it does not fabricate a
+second signed history from a reduced probe result.
 
 The probe executes seventeen independent real `intent.put` branches after
 their scenario origins: one successful fresh-envelope replay, one
@@ -899,22 +918,24 @@ controls accept the registered body and reject a missing `ref`, missing
 weaker substitute validator from satisfying the control. The checker validates
 every local-result branch and proves the `intent.put` traces are distinct.
 
-Observation, persistence, and final-commit controls throw
-`CompositeStageFault` at distinct wrapper boundaries. Observation fails before
-signing; persistence fails after observation construction/accounting but before
-durable sidecar rows are appended; commit fails after the complete staged
-sidecar and commit accounting, immediately before publication. The transaction
-catches each thrown fault after the actual frozen callback, preserves its exact
-value in `local_result.kernel`, derives the wrapper stage/code internally, and
-publishes neither draft. These are real deterministic thrown-and-caught test
-hooks, not simulated failures from an Ed25519 provider, SQLite statement,
-filesystem, or database commit; crash durability remains Phase B.
+Observation, persistence, and final-publication controls throw at distinct
+wrapper-owned boundaries. Observation fails before signing; persistence fails
+after observation construction/accounting but before durable sidecar rows are
+appended; commit fails after the first live collection has been replaced during
+final publication. The transaction catches each thrown fault after the actual
+frozen callback, assigns the stage at the throwing boundary, preserves its exact
+value in `local_result.kernel`, restores every published live collection and the
+sidecar, and returns the wrapper failure as the outer result. These are real
+deterministic thrown-and-caught in-memory hooks, not failures from an Ed25519
+provider, SQLite statement, filesystem, process termination, or database commit;
+those durability controls remain Phase B.
 
-Six additional replay attempts corrupt the rich row, duplicate it, remove or
-add a live frozen row, or change the live frozen fingerprint/result ref. Every
-case returns `idempotency_integrity_invalid` at preflight with no callback
-invocation, no access trace, `kernel:null`, and identical before/after state.
-A coherent new request with a different fingerprint instead reaches the real
+Seven additional preflight attempts corrupt the rich row, duplicate it, remove
+or add a live frozen row, change the live frozen fingerprint/result ref, or
+corrupt an unrelated existing rich row before submitting a new absent key.
+Every case returns `idempotency_integrity_invalid` at preflight with no callback
+invocation, no access trace, `kernel:null`, and identical before/after state. A
+coherent new request with a different fingerprint instead reaches the real
 frozen callback and remains its exact `commit:false` conflict.
 
 A separate interleaving scenario commits one actual `intent.put` origin at
@@ -927,17 +948,19 @@ validator binding, access trace, and service/scope commit. They share the same
 frozen actor/runtime and validation-key fixtures; they are not independent
 service identities or runtime trust domains.
 
-The deterministic composite report is pinned at
-`sha-256:e679a87fb64e7c26a62f20483731c97aeef9c443ceb68ad4de062ea74e174a91`;
-its CLI summary reports 29 exercised cases, and fresh process executions must
+The deterministic composite result is pinned at
+`sha-256:37191919df69558b8b3df50850ea1d86873950a137c31cdc7491b73223b7a66f`;
+its CLI summary reports 30 exercised cases, and fresh process executions must
 reproduce it exactly.
 
-Origin verification begins from the actual signed envelope, authenticated
-principal/actor/runtime and receiver namespace, actual callback result, actual
-canonical object bytes, actual schema-derived identity/URI/ACL, and actual
-global/scope mapping. It requires exact unique inventories for versions,
-dependency rows/commits, service commits, owner commits, observation repository
-rows, and envelope indexes. Negative controls add both duplicate and extra rows,
+Origin verification begins from the exact stored canonical signed envelope,
+exact receiver-authentication record, derived host context and frozen
+authentication projection, actual callback result, actual canonical object
+bytes, actual schema-derived identity/URI/ACL, and actual global/scope mapping.
+It requires exact unique inventories for versions, dependency rows/commits,
+service commits, owner commits, receiver records, request envelopes,
+observation repository rows, and envelope indexes. Negative controls add both
+duplicate and extra rows,
 claim an absent alias while its typed base is present or hidden from the
 dependency manifest, change every repository
 ownership field, alter object bytes/revision, break all replay-origin links, and
@@ -951,7 +974,10 @@ replay observation and checks its fresh envelope/nonce, scope sequence/root,
 service/scope commit ancestry, repository ACL, dependency inventory, returned
 result, and immutable origin result/observation links. The first owner row is
 sequence one with previous zero; only the global service chain has a sequence
-zero genesis row.
+zero genesis row. Separate controls reverse operational-version storage order
+without changing verification, coherently relink a freshly signed request to the
+wrong idempotency row and require rejection, mutate every host-context field,
+and make a receiver namespace operation-qualified.
 
 Exact RFC 8785/JCS text and SHA-256 results for a committed row, absent lookup,
 receiver authority-namespace HMAC preimage, query commitment with real registry URIs, first
@@ -1058,11 +1084,16 @@ query, or caller-selected authentication object. The observation binds the
 public `HostAuthenticationContext` projection (all fields above except the raw
 namespace and opaque handle) and states only that the service relied on that host
 assertion unless the host authentication boundary is separately trusted.
-The Phase-A sidecar persists that exact closed projection for every commit,
-including account/tenant, authority-namespace, trust-profile, authentication-
-evidence, and assertion-level commitments. Its self-hash must equal the signed
-request hash, and the verifier recomputes the namespace HMAC from the stable,
-operation-independent receiver namespace rather than accepting a reduced
+The Phase-A sidecar privately persists the exact closed receiver record used by
+each transaction and separately persists its exact public projection, including
+account/tenant, authority-namespace, trust-profile, authentication-evidence, and
+assertion-level commitments. Its self-hash must equal the signed request hash.
+The verifier derives the frozen camelCase authentication object and public
+context again from that persisted record, requires its runtime key to equal the
+signed envelope sender, recomputes the namespace HMAC, and enforces stable
+account-to-namespace and authentication-handle bindings across operations.
+Direct re-signed controls cover every public host-context field and an
+operation-qualified raw namespace rather than accepting a reduced
 principal/actor/runtime digest.
 
 The wrapper owns the raw frozen service and exposes one method:
@@ -1301,9 +1332,14 @@ MUST:
   `(name, request_schema, response_schema, consequence)` tuple from the frozen
   nine-operation registry, require `access.consequence` to match it, and reject
   every other operation name including `action.execute`;
-- bind the request envelope hash/body hash, authenticated actor/principal, and
-  host-authentication-context hash; require a success result's response schema
-  to equal the operation contract and an accepted failure's to be null;
+- parse the exact stored canonical envelope bytes, revalidate its self-hash and
+  signature, bind its envelope/message/body/subject/authorization fields to the
+  signed request projection, and derive authenticated actor/principal/runtime
+  plus the host-authentication-context hash from the exact receiver record;
+- for an idempotent operation, recompute the receiver-private database key and
+  signed structural-key commitment from that exact envelope's idempotency key
+  and stable receiver namespace; require a success result's response schema to
+  equal the operation contract and an accepted failure's to be null;
 - recompute the exact frozen kernel-result hash and returned refs;
 - verify scope-sequence and grant-effect arithmetic;
 - parse every structural key as I-JSON, require an array whose re-encoded JCS is
@@ -1314,17 +1350,24 @@ MUST:
 
 The Phase-A composite verifier resolves an actual two-profile, closed,
 self-hashed, append-only service-key chain whose current bundle hash equals the
-frozen kernel bundle. It validates every key's controller and non-inverted
-finite interval, each profile's unique/sorted membership, exact prior-hash link
-and increasing creation time, and the current key's active/unrevoked state,
-observation time, signature key, public key, service/store/profile scope,
-signed hash, and signed time. Re-bound wrong controller, revoked, expired,
-missing-current, non-current signer, non-current inverted interval, self-hash,
-chain-link, order, fork, and rollback mutants reject. The in-memory sidecar
-pins this configured chain; durable profile-chain persistence remains Phase B.
+frozen kernel bundle. It validates every profile's current-key membership and
+lifecycle at that profile's creation time, every key's controller and
+non-inverted finite interval, each profile's unique/sorted membership, exact
+prior-hash link and increasing creation time, and rejects any profile created
+after the verification instant. It selects the observation's profile by the
+signed profile hash, requires later profiles to have been created after the
+observation, and validates the signing key, public key,
+service/store/profile/bundle scope, signature, and signed time at that historical
+instant. Re-bound wrong controller, revoked, expired, missing-current,
+non-current signer, non-current inverted interval, future profile, self-hash,
+chain-link, order, real sibling fork, and rollback mutants reject, including
+missing/revoked/expired-current mutations in the historical profile. A positive
+observation signed under the prior profile verifies through the complete later
+chain. The in-memory sidecar pins this configured chain; durable profile-chain
+persistence remains Phase B.
 
-Historical verification may preserve a key that was valid at `observed_at`.
-Historical proof does not make an expired returned object or grant current.
+Historical proof preserves only a key and profile that were valid at
+`observed_at`. It does not make an expired returned object or grant current.
 
 The observation self-hash uses the exact existing foundation algorithm in
 `protocol/lib/core.mjs`, without a placeholder convention. Its external schema
@@ -1528,7 +1571,7 @@ described above.
 | ID | Concurrent or mutated case | Required result |
 |---|---|---|
 | AS-01 | two processes submit the same fresh nonce | exactly one commit; one `nonce_replay` |
-| AS-02 | same idempotency tuple + same fingerprint + fresh nonces, plus two distinct idempotency keys sharing one operation fingerprint | an actual second `intent.put` callback commits a second nonce, observation, global/owner sequence, dependency history, and repository ACL with no second result construction/charge; a separate actual two-row origin/replay control selects by the signed structural-key commitment and binds the second key only to its own origin; the closed schema and exact replay-history verifier bind the fresh envelope and every original result/ref/scope link |
+| AS-02 | same idempotency tuple + same fingerprint + fresh nonces, plus two distinct idempotency keys sharing one operation fingerprint | an actual second `intent.put` callback commits a second nonce, observation, global/owner sequence, dependency history, and repository ACL with no second result construction/charge; a separate actual two-row origin/replay control recomputes the database key and signed structural-key commitment from the exact persisted envelope and receiver record, binds the second key only to its own origin, and rejects a coherently re-signed envelope relinked to the other row; the closed schema and exact replay-history verifier bind the fresh envelope and every original result/ref/scope link |
 | AS-03 | same idempotency tuple + different fingerprint | original remains; second `idempotency_conflict`; no second work |
 | AS-04 | two reads race for one remaining disclosure | exactly one response/observation; counter ends at zero |
 | AS-05 | multi-grant read where one counter is exhausted | no grant changes; no nonce reservation; no observation |
@@ -1557,15 +1600,15 @@ described above.
 | AS-28 | state-root row omitted/reordered/duplicated/history-altered | recomputed historical root rejects |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
 | AS-30 | corrupt replay object/ACL, malformed response, substitute/weakened response validator, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; the malformed boundary value itself fails the validator bound to the frozen bundle, registered operation, and canonical source schema, with valid/missing-field/extra-field/malformed-ref controls proving its boundary; that value becomes the exact preserved local kernel result; corrupt/unreconstructible and wrapper failures retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
-| AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval on any current or historical key, arbitrary fractional boundary error, or broken/reordered/forked/rolled-back key-profile chain | independently re-bound schema/profile/observation trust probes reject while exact lower-bound and pre-expiry fractional positives pass |
+| AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval on any current or historical key, future-dated profile, arbitrary fractional boundary error, or broken/reordered/sibling-forked/rolled-back key-profile chain | independently re-bound schema/profile/observation trust probes reject while exact lower-bound, pre-expiry fractional, and prior-profile historical-observation positives pass |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
 | AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
 | AS-34 | signed access and repository columns agree but owner was derived from actor instead of non-null principal, or principal instead of actor for a permitted principal-less read | independent owner derivation rejects with `observation_owner_mismatch` |
-| AS-35 | header/caller/raw namespace/tenant, trust profile, authentication evidence, assertion level, account commitment, or authority commitment changes across two operations; the namespace becomes operation-qualified; or the raw namespace appears in an observation/result | the exact closed host context and stable operation-independent receiver binding are enforced; changed commitment rejects; raw value never serializes |
+| AS-35 | header/caller/raw namespace/tenant, principal, actor, runtime key, trust profile, authentication evidence, assertion level, account commitment, or authority commitment changes across two operations; the namespace becomes operation-qualified; the receiver record differs from the frozen authentication/host projection; or the raw namespace appears in an observation/result | the exact transaction-owned receiver record, derived frozen authentication, closed host context, envelope sender, and stable operation-independent account/handle namespace bindings are enforced; every field has a direct mutation control; changed commitment rejects; raw value never serializes into a caller artifact |
 | AS-36 | two previously unseen owners perform their first operations concurrently after genesis | both use before `0`/after `1` in separate owner chains; no owner sequence-zero row or cross-owner ancestry appears |
 | AS-37 | every row of the closed outcome/commit matrix is fault-injected, including local-kernel versus HTTP-failure hashing | disposition, exact canonical kernel-result hash, observation presence, nonce, sequence, object, idempotency, and grant deltas match §7/§8.1 exactly |
 | AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, `accepted_failure` claiming replay, replay claiming a non-success outcome, changed row column, wrong self-hash/signature exclusion, outcome swap, kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
-| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it or while the matching base row was hidden from the manifest, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash/access kind, misclassifies singleton `["index"]`, coherently substitutes a trace value and matching hash, or omits/leaves unsupported or unconsumed any required frozen callback Map/Set/resolver access | the ordered callback trace with exact canonical value witnesses is the sole dependency producer; exact origin/replay store-and-index surfaces, access kinds, nonce absence/insertion, grant read/update, idempotency absence/insertion or replay-read, validation keys, runtime binding, and joined object/ACL/URI accesses are pinned and cross-bound to authoritative projections; schema/semantic manifest/root verification changes or the transaction fails |
+| AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it or while the matching base row was hidden from the manifest, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash/access kind, misclassifies singleton `["index"]`, coherently substitutes a read or present-write before/after trace value and matching hash, depends on operational-version array order, or omits/leaves unsupported or unconsumed any required frozen callback Map/Set/resolver access | the ordered callback trace with exact canonical value witnesses is the sole dependency producer; exact origin/replay store-and-index surfaces, access kinds, read values, present-write preimages, nonce absence/insertion, grant read/update, idempotency absence/insertion or replay-read, validation keys, runtime binding, and joined object/ACL/URI accesses are pinned and cross-bound to the greatest valid authoritative version selected by sequence; schema/semantic manifest/root verification changes or the transaction fails |
 | AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
 | AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/identity/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict remains the frozen `commit:false` outcome; each result/identity/ACL corruption captures its own actual frozen `commit:true` outcome but the outer integrity decision rolls back the staged nonce and sidecar; no raw result is rewritten |
 | AS-42 | raw namespace/idempotency guesses, changed operator-global origin/creation sequences, or unrelated foreign commits are varied while owner facts and injected randomness stay fixed | HMAC commitments resist public dictionary reproduction; dependency artifacts contain neither raw secret; the same exact-history verifier accepts a complete six-foreign-commit interleaving made only of independently valid signed observations and complete commits without changing owner projection/root bytes, but rejects any invalid foreign signature/artifact, missing intermediate global commit, or false owner-to-global mapping |
@@ -1576,16 +1619,20 @@ machine control is feasible.
 
 ### 9.1 Deterministic fixture and report
 
-The executable drill pins:
+The current Phase-A `frozen-composite-probe.mjs` is an in-memory design
+evidence object, not the Phase-B durable drill report. It pins deterministic
+fixture keys, clocks, UUIDs, observations, snapshot IDs, exact
+kernel/profile/bundle/key-profile hashes, actual frozen `intent.put` callback
+branches, stage-local thrown exceptions, direct signed-history mutants, and
+stable result hashing. Its CLI computes and prints the canonical object hash and
+top-level exercised-case count externally. The returned JavaScript object is
+not claimed to implement a typed report schema, explicit pass inventory,
+child-process barriers, database races, process termination, crash recovery, or
+restart verification.
+
+The Phase-B executable drill MUST additionally pin:
 
 - one deterministic database/store/genesis ID and file manifest;
-- deterministic fixture keys derived from named public test seeds;
-- injected clock values and UUID/observation/snapshot ID factories;
-- exact kernel/profile/bundle/key-profile hashes;
-- the in-memory `frozen-composite-probe.mjs` interposer around the unchanged
-  frozen `intent.put` service for actual callback-level `commit:false`
-  fingerprint conflict/post-staging grant failure and five independent
-  `commit:true` corrupt-result/ACL paths;
 - child-process `ready` barriers and one parent `release` event for each race;
 - a ten-second per-child timeout and forced cleanup;
 - stable fault hooks:
@@ -1602,12 +1649,12 @@ the intended semantic control. AS-31/41/42 independently re-bind every mutated
 profile/row/manifest and use the actual frozen replay paths where applicable.
 Each asserts its named stable failure code.
 
-The machine report is
-`cairn.authoritative_service_drill_report.v0.1`, uses only deterministic values,
-lists every unique case and intended boundary, records the unchanged kernel tree,
-and carries a canonical report hash. Tests pin the exact case count, IDs, pass
-count, failure codes, kernel tree, and report hash. Clean archives at two
-different filesystem paths must produce byte-identical reports.
+The Phase-B machine report MUST use the schema
+`cairn.authoritative_service_drill_report.v0.1`, contain only deterministic
+values, list every unique case and intended boundary, record the unchanged
+kernel tree, and carry a canonical report hash. Tests pin the exact case count,
+IDs, pass count, failure codes, kernel tree, and report hash. Clean archives at
+two different filesystem paths must produce byte-identical reports.
 
 ## 10. Implementation order
 

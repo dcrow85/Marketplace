@@ -64,6 +64,27 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service twelfth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `a50f546fd559e8d9b3034b937e0372e0b4c54e6d`
+  is rejected by all three usable clean-archive reviewers. Accepted findings:
+  present-write preimages were self-hashed but not bound; preflight could skip
+  unrelated corrupt history for a new key; the composite used a decorated
+  authentication object rather than the specified receiver record; exact signed
+  envelopes did not bind their idempotency keys to rich rows; partial
+  publication and unexpected exception staging were not transaction-owned;
+  wrapper rollback could still return the raw callback success; historical
+  profiles lacked complete lifecycle, time, positive-prior-profile, and real
+  sibling-fork controls; version reconstruction depended on array order; access
+  precedence contradicted the prose; and §9.1 overclaimed Phase-B race/crash
+  machinery. Twelfth-pass remediation adds direct executable controls for every
+  item, privately persists the exact receiver record and canonical envelope,
+  derives all auth projections from that record, restores partial publication,
+  validates all history before callback, and narrows Phase-A claims. The new
+  working result is 30 cases at
+  `sha-256:37191919df69558b8b3df50850ea1d86873950a137c31cdc7491b73223b7a66f`.
+  It remains under review; `protocol/` and `mockups/` remain untouched and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service eleventh audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `5e6e579a9fa7412b73d285a0f19910368e4413f2`
   is rejected by all three usable clean-archive reviewers. Accepted findings:

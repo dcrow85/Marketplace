@@ -43,6 +43,9 @@ const validateOperationalProjection = AUTHORITATIVE_AJV.compile({
 const validateHostAuthenticationContext = AUTHORITATIVE_AJV.compile({
   "$ref": `${AUTHORITATIVE_SCHEMA.$id}#/$defs/hostAuthenticationContext`
 });
+const validateReceiverAuthenticationRecord = AUTHORITATIVE_AJV.compile({
+  "$ref": `${AUTHORITATIVE_SCHEMA.$id}#/$defs/receiverAuthenticationRecord`
+});
 const FROZEN_FOUNDATION = await loadReferenceFoundation();
 
 const PKCS8_ED25519_PREFIX =
@@ -224,6 +227,8 @@ export function verifyServiceKeyProfileChain(
           first.allowed_observation_schema ||
         profile.prior_profile_hash !==
           (index === 0 ? null : profiles[index - 1].profile_hash) ||
+        !verifyServiceKeyProfile(profile, profile.created_at) ||
+        compareProtocolInstants(profile.created_at, at) > 0 ||
         (
           index > 0 &&
           compareProtocolInstants(
@@ -266,15 +271,28 @@ export function verifyCompositeObservation(
   const profileChain = Array.isArray(serviceKeyProfiles)
     ? serviceKeyProfiles
     : [serviceKeyProfiles];
-  const serviceKeyProfile = profileChain.at(-1);
+  const profileIndex = profileChain.findIndex(
+    ({ profile_hash: profileHash }) =>
+      profileHash === observation?.service?.key_profile_hash
+  );
+  if (profileIndex < 0) return false;
+  const effectiveChain = profileChain.slice(0, profileIndex + 1);
+  const serviceKeyProfile = effectiveChain.at(-1);
   const currentKey = serviceKeyProfile.keys?.find(
     ({ key_id: keyId }) => keyId === serviceKeyProfile.current_key_id
   );
   return verifyServiceKeyProfileChain(
-    profileChain,
+    effectiveChain,
     observation?.observed_at,
     observation?.service?.key_profile_hash
   ) &&
+    profileChain.slice(profileIndex + 1).every(
+      (profile) =>
+        compareProtocolInstants(
+          observation.observed_at,
+          profile.created_at
+        ) < 0
+    ) &&
     validateServiceObservation(observation) &&
     observation.service.service_id === serviceKeyProfile.service_id &&
     observation.service.profile === serviceKeyProfile.kernel_profile &&
@@ -586,6 +604,34 @@ function richRowForObservation(sidecar, observation) {
   return matches.length === 1 ? matches[0] : null;
 }
 
+function verifyIdempotencyEnvelopeBinding(
+  receiverAuthentication,
+  envelope,
+  observation,
+  richRow
+) {
+  const commitment =
+    observation.result.idempotency.structural_key_commitment;
+  if (commitment === null) {
+    return richRow === null && envelope.idempotency_key === null;
+  }
+  if (
+    !richRow ||
+    typeof envelope.idempotency_key !== "string"
+  ) {
+    return false;
+  }
+  const exactDatabaseKey = canonicalText([
+    receiverAuthentication.authority_namespace_raw,
+    envelope.idempotency_key
+  ]);
+  return compositeIdempotencyStructuralKeyCommitment(exactDatabaseKey) ===
+      commitment &&
+    richRow.authority_namespace ===
+      receiverAuthentication.authority_namespace_raw &&
+    richRow.idempotency_key === envelope.idempotency_key;
+}
+
 function projectionKey(projection) {
   return canonicalText([projection.table, projection.structural_key]);
 }
@@ -780,8 +826,11 @@ export function verifyCompositeHistory(sidecar) {
       sidecar.observation_repository.length !== sidecar.global_sequence ||
       sidecar.observations.length !== sidecar.global_sequence ||
       sidecar.validation_bindings.length !== sidecar.global_sequence ||
+      sidecar.receiver_authentication_records.length !==
+        sidecar.global_sequence ||
       sidecar.host_authentication_contexts.length !==
         sidecar.global_sequence ||
+      sidecar.request_envelopes.length !== sidecar.global_sequence ||
       sidecar.access_traces.length !== sidecar.global_sequence ||
       Object.keys(sidecar.observation_by_envelope).length !==
         sidecar.global_sequence
@@ -796,6 +845,8 @@ export function verifyCompositeHistory(sidecar) {
       ])
     );
     if (new Set(versionKeys).size !== versionKeys.length) return false;
+    const receiverNamespaceByAccount = new Map();
+    const receiverBindingByHandle = new Map();
     for (
       let globalSequence = 0;
       globalSequence <= sidecar.global_sequence;
@@ -853,6 +904,13 @@ export function verifyCompositeHistory(sidecar) {
       const validationBinding = sidecar.validation_bindings.find(
         (candidate) => candidate.global_sequence === globalSequence
       );
+      const receiverAuthenticationRecordRow =
+        sidecar.receiver_authentication_records.find(
+          (candidate) => candidate.global_sequence === globalSequence
+        );
+      const requestEnvelopeRow = sidecar.request_envelopes.find(
+        (candidate) => candidate.global_sequence === globalSequence
+      );
       const hostAuthenticationContext =
         sidecar.host_authentication_contexts.find(
           (candidate) => candidate.global_sequence === globalSequence
@@ -864,11 +922,60 @@ export function verifyCompositeHistory(sidecar) {
         FROZEN_FOUNDATION,
         observation.request.operation_contract
       );
+      const receiverAuthentication =
+        receiverAuthenticationRecordRow?.record;
+      const requestEnvelope = requestEnvelopeRow
+        ? JSON.parse(requestEnvelopeRow.canonical_envelope_bytes)
+        : null;
+      const envelopeSchema = requestEnvelope === null
+        ? null
+        : FROZEN_FOUNDATION.schemasByObjectId.get(requestEnvelope.schema);
+      const expectedHostContext = receiverAuthentication === undefined
+        ? null
+        : hostAuthenticationContextFromReceiver(receiverAuthentication);
+      const expectedFrozenAuthentication =
+        receiverAuthentication === undefined
+          ? null
+          : frozenAuthenticationFromReceiver(receiverAuthentication);
       if (
         !durableObservation ||
         !validationBinding ||
+        !receiverAuthenticationRecordRow ||
+        !requestEnvelopeRow ||
         !hostAuthenticationContext ||
         !accessTrace ||
+        !validateReceiverAuthenticationRecord(receiverAuthentication) ||
+        !requestEnvelope ||
+        !envelopeSchema ||
+        canonicalText(requestEnvelope) !==
+          requestEnvelopeRow.canonical_envelope_bytes ||
+        objectHash(requestEnvelope, envelopeSchema) !==
+          requestEnvelope.envelope_hash ||
+        requestEnvelope.envelope_hash !==
+          observation.request.envelope_hash ||
+        requestEnvelope.message_id !== observation.request.message_id ||
+        requestEnvelope.message_type !==
+          observation.request.operation_contract.operation ||
+        requestEnvelope.body_hash !== observation.request.body_hash ||
+        canonicalText(requestEnvelope.subject_refs) !==
+          canonicalText(observation.request.subject_refs) ||
+        canonicalText(requestEnvelope.authorization_refs) !==
+          canonicalText(observation.request.authorization_refs) ||
+        receiverAuthentication.runtime_key_id !==
+          requestEnvelope.sender.runtime_key_id ||
+        canonicalText(expectedFrozenAuthentication) !== canonicalText({
+          principalId: observation.request.principal_id,
+          actorId: observation.request.actor_id,
+          authorityNamespace:
+            receiverAuthentication.authority_namespace_raw
+        }) ||
+        canonicalText(expectedHostContext) !==
+          canonicalText(hostAuthenticationContext) ||
+        receiverAuthentication.authority_namespace_commitment !==
+          receiverAuthorityNamespaceCommitment(
+            receiverAuthentication.account_tenant_commitment,
+            receiverAuthentication.authority_namespace_raw
+          ) ||
         canonicalText(durableObservation) !==
           repositoryRow.canonical_observation_bytes ||
         validationBinding.authoritative_schema_hash !==
@@ -939,6 +1046,44 @@ export function verifyCompositeHistory(sidecar) {
       ) {
         return false;
       }
+      const priorNamespace = receiverNamespaceByAccount.get(
+        receiverAuthentication.account_tenant_commitment
+      );
+      const receiverBinding = canonicalText([
+        receiverAuthentication.account_tenant_commitment,
+        receiverAuthentication.principal_id,
+        receiverAuthentication.actor_id,
+        receiverAuthentication.runtime_key_id,
+        receiverAuthentication.authority_namespace_raw,
+        receiverAuthentication.trust_profile_id,
+        receiverAuthentication.trust_profile_hash,
+        receiverAuthentication.authentication_evidence_commitment,
+        receiverAuthentication.assertion_level
+      ]);
+      const priorBinding = receiverBindingByHandle.get(
+        receiverAuthentication.authentication_handle
+      );
+      if (
+        (
+          priorNamespace !== undefined &&
+          priorNamespace !==
+            receiverAuthentication.authority_namespace_raw
+        ) ||
+        (
+          priorBinding !== undefined &&
+          priorBinding !== receiverBinding
+        )
+      ) {
+        return false;
+      }
+      receiverNamespaceByAccount.set(
+        receiverAuthentication.account_tenant_commitment,
+        receiverAuthentication.authority_namespace_raw
+      );
+      receiverBindingByHandle.set(
+        receiverAuthentication.authentication_handle,
+        receiverBinding
+      );
       const dependencyEntries = sidecar.dependency_rows
         .filter((row) => row.global_sequence === globalSequence)
         .map(({ global_sequence: _globalSequence, ...entry }) => entry);
@@ -963,10 +1108,20 @@ export function verifyCompositeHistory(sidecar) {
         }
       }
       const currentVersions = new Map();
-      for (const version of sidecar.operational_versions.filter(
-        (candidate) =>
-          candidate.valid_from_global_sequence <= globalSequence
-      )) {
+      for (const version of sidecar.operational_versions
+        .filter(
+          (candidate) =>
+            candidate.valid_from_global_sequence <= globalSequence
+        )
+        .sort(
+          (left, right) =>
+            left.valid_from_global_sequence -
+              right.valid_from_global_sequence ||
+            compareUtf8(
+              canonicalText([left.table, left.structural_key]),
+              canonicalText([right.table, right.structural_key])
+            )
+        )) {
         const projection = JSON.parse(version.canonical_row_bytes);
         if (
           canonicalText(projection) !== version.canonical_row_bytes ||
@@ -1002,6 +1157,16 @@ export function verifyCompositeHistory(sidecar) {
       const richRow = resultRef === null
         ? null
         : richRowForObservation(sidecar, observation);
+      if (
+        !verifyIdempotencyEnvelopeBinding(
+          receiverAuthentication,
+          requestEnvelope,
+          observation,
+          richRow
+        )
+      ) {
+        return false;
+      }
       assert.ok(nonceProjection);
       const accessFacts = {
         runtime_key_id: observation.request.runtime_key_id,
@@ -1124,7 +1289,15 @@ export function verifyCompositeHistory(sidecar) {
       }
     }
     const latestByKey = new Map();
-    for (const version of sidecar.operational_versions) {
+    for (const version of [...sidecar.operational_versions].sort(
+      (left, right) =>
+        left.valid_from_global_sequence -
+          right.valid_from_global_sequence ||
+        compareUtf8(
+          canonicalText([left.table, left.structural_key]),
+          canonicalText([right.table, right.structural_key])
+        )
+    )) {
       latestByKey.set(
         canonicalText([version.table, version.structural_key]),
         JSON.parse(version.canonical_row_bytes)
@@ -1295,7 +1468,9 @@ function emptySidecar() {
     observation_by_envelope: {},
     observations: [],
     validation_bindings: [],
+    receiver_authentication_records: [],
     host_authentication_contexts: [],
+    request_envelopes: [],
     access_traces: [],
     counters: {
       callback_calls: 0,
@@ -1709,10 +1884,10 @@ function traceKey(event) {
 const ACCESS_KIND_PRECEDENCE = new Map([
   ["read_absent", 0],
   ["read_present", 1],
-  ["write_insert", 2],
-  ["write_update", 3],
-  ["read_absent_write_insert", 4],
-  ["read_present_write_update", 5]
+  ["write_update", 2],
+  ["write_insert", 3],
+  ["read_present_write_update", 4],
+  ["read_absent_write_insert", 5]
 ]);
 
 function mergeDependencyEntry(entriesByKey, entry) {
@@ -2241,6 +2416,14 @@ function verifyAccessTraceValueBindings({
       const value = event.method === "set" || event.method === "add"
         ? event.after_value
         : event.before_value;
+      if (
+        event.method === "set" &&
+        event.before_present &&
+        canonicalText(event.before_value) !==
+          canonicalText(event.after_value)
+      ) {
+        return false;
+      }
       if (event.store === "usedNonces") {
         if (
           typeof value !== "boolean" ||
@@ -2805,6 +2988,8 @@ function stageAuthoritativeCommit(
   keyResolver
 ) {
   const staged = structuredClone(sidecar);
+  let activeStage = "observation";
+  try {
   const ownerId =
     context.authentication.principalId ?? context.authentication.actorId;
   const ownerKind =
@@ -3040,22 +3225,21 @@ function stageAuthoritativeCommit(
     scopeAfter,
     ownerProjections
   );
-  const hostContext = bindObjectHash({
-    schema: "cairn.host_authentication_context.v0.1",
-    context_hash: ZERO_HASH,
-    account_tenant_commitment:
-      context.authentication.account_tenant_commitment,
-    principal_id: context.authentication.principalId,
-    actor_id: context.authentication.actorId,
-    runtime_key_id: context.envelope.sender.runtime_key_id,
-    authority_namespace_commitment:
-      context.authentication.authority_namespace_commitment,
-    trust_profile_id: context.authentication.trust_profile_id,
-    trust_profile_hash: context.authentication.trust_profile_hash,
-    authentication_evidence_commitment:
-      context.authentication.authentication_evidence_commitment,
-    assertion_level: context.authentication.assertion_level
-  }, AUTHORITATIVE_SCHEMA.$defs.hostAuthenticationContext);
+  const receiverAuthentication = context.receiver_authentication;
+  assert.equal(
+    validateReceiverAuthenticationRecord(receiverAuthentication),
+    true
+  );
+  assert.deepEqual(
+    context.authentication,
+    frozenAuthenticationFromReceiver(receiverAuthentication)
+  );
+  assert.equal(
+    receiverAuthentication.runtime_key_id,
+    context.envelope.sender.runtime_key_id
+  );
+  const hostContext =
+    hostAuthenticationContextFromReceiver(receiverAuthentication);
   const hostContextHash = hostContext.context_hash;
   const operationalSnapshot = {
     global_sequence: globalAfter,
@@ -3178,6 +3362,7 @@ function stageAuthoritativeCommit(
     scope_sequence: scopeAfter
   };
   staged.counters.observation_calls += 1;
+  activeStage = "persistence";
   if (context.throw_stage === "persistence") {
     throw new CompositeStageFault("persistence", staged);
   }
@@ -3225,9 +3410,17 @@ function stageAuthoritativeCommit(
   staged.observation_by_envelope[observation.request.envelope_hash] =
     observation.observation_id;
   staged.validation_bindings.push(validationBinding);
+  staged.receiver_authentication_records.push({
+    global_sequence: globalAfter,
+    record: structuredClone(receiverAuthentication)
+  });
   staged.host_authentication_contexts.push({
     global_sequence: globalAfter,
     context: structuredClone(hostContext)
+  });
+  staged.request_envelopes.push({
+    global_sequence: globalAfter,
+    canonical_envelope_bytes: canonicalText(context.envelope)
   });
   staged.access_traces.push({
     global_sequence: globalAfter,
@@ -3246,20 +3439,26 @@ function stageAuthoritativeCommit(
   }
 
   return staged;
+  } catch (error) {
+    if (error instanceof CompositeStageFault) throw error;
+    throw new CompositeStageFault(activeStage, staged, error);
+  }
 }
 
 class CompositeStageFault extends Error {
-  constructor(stage, stagedSidecar) {
+  constructor(stage, stagedSidecar, cause = undefined) {
     super(`${stage}_failed`);
     this.name = "CompositeStageFault";
     this.stage = stage;
     this.code = `${stage}_failed`;
     this.staged_sidecar = structuredClone(stagedSidecar);
+    this.cause = cause;
   }
 }
 
 function richIdempotencyPreflight(sidecar, kernelDraft, context) {
   if (
+    !verifyCompositeHistory(sidecar) ||
     canonicalText(sortedMapEntries(kernelDraft.idempotencyRecords)) !==
     canonicalText(sidecar.frozen_idempotency_rows)
   ) {
@@ -3276,8 +3475,7 @@ function richIdempotencyPreflight(sidecar, kernelDraft, context) {
   if (!frozenRow && richRows.length === 0) return true;
   if (
     !frozenRow ||
-    richRows.length !== 1 ||
-    !verifyCompositeHistory(sidecar)
+    richRows.length !== 1
   ) {
     return false;
   }
@@ -3303,9 +3501,30 @@ class CompositeReferenceStores extends MemoryReferenceStores {
   }
 
   setContext(context) {
+    const receiverAuthentication =
+      context.receiver_authentication ?? this.receiverAuthentication;
+    assert.equal(
+      validateReceiverAuthenticationRecord(receiverAuthentication),
+      true,
+      "composite context lacks a valid receiver authentication record"
+    );
+    assert.deepEqual(
+      context.authentication,
+      frozenAuthenticationFromReceiver(receiverAuthentication),
+      "frozen authentication diverged from the receiver record"
+    );
+    assert.equal(
+      receiverAuthentication.runtime_key_id,
+      context.envelope.sender.runtime_key_id,
+      "receiver runtime key diverged from the signed envelope"
+    );
     this.accessRecorder.events.length = 0;
     this.accessRecorder.active = true;
-    this.context = structuredClone(context);
+    this.receiverAuthentication = structuredClone(receiverAuthentication);
+    this.context = structuredClone({
+      ...context,
+      receiver_authentication: receiverAuthentication
+    });
   }
 
   trackedResolver(source) {
@@ -3351,6 +3570,16 @@ class CompositeReferenceStores extends MemoryReferenceStores {
     this.compositeActive = true;
     const context = structuredClone(this.context);
     const kernelBefore = kernelSnapshot(this);
+    const liveKernelBackup = Object.fromEntries(
+      MAP_NAMES.map((name) => [
+        name,
+        new Map([...this[name]].map(([key, value]) => [
+          key,
+          structuredClone(value)
+        ]))
+      ])
+    );
+    liveKernelBackup.usedNonces = new Set(this.usedNonces);
     const sidecarBefore = sidecarSnapshot(this.sidecar);
     const kernelDraft = Object.fromEntries(
       MAP_NAMES.map((name) => [
@@ -3402,6 +3631,8 @@ class CompositeReferenceStores extends MemoryReferenceStores {
           operation: context.envelope.message_type,
           envelope_hash: context.envelope.envelope_hash,
           authentication: structuredClone(context.authentication),
+          receiver_authentication:
+            structuredClone(context.receiver_authentication),
           callback_before: callbackBefore,
           callback_after: structuredClone(callbackBefore),
           callback_commit: null,
@@ -3543,16 +3774,10 @@ class CompositeReferenceStores extends MemoryReferenceStores {
             this.keyResolver
           );
           stagedSidecar.counters.commit_calls += 1;
-          if (context.throw_stage === "commit") {
-            throw new CompositeStageFault("commit", stagedSidecar);
-          }
-          if (context.throw_untyped_stage === "commit") {
-            throw new Error("fixture database commit failed");
-          }
         } catch (error) {
           const stage = error instanceof CompositeStageFault
             ? error.stage
-            : context.throw_untyped_stage ?? "observation";
+            : "observation";
           const code = `${stage}_failed`;
           if (error instanceof CompositeStageFault) {
             stagedSidecar = structuredClone(error.staged_sidecar);
@@ -3565,17 +3790,46 @@ class CompositeReferenceStores extends MemoryReferenceStores {
           };
         }
       }
-      const finalCommit =
+      let finalCommit =
         callbackOutcome?.commit !== false && wrapperFailure === null;
       if (finalCommit) {
-        for (const name of MAP_NAMES) {
-          replaceMap(this[name], kernelDraft[name]);
+        try {
+          for (const [index, name] of MAP_NAMES.entries()) {
+            replaceMap(this[name], kernelDraft[name]);
+            if (index === 0 && context.throw_stage === "commit") {
+              throw new CompositeStageFault("commit", stagedSidecar);
+            }
+            if (
+              index === 0 &&
+              context.throw_untyped_stage === "commit"
+            ) {
+              throw new Error("fixture database publication failed");
+            }
+          }
+          this.usedNonces.clear();
+          for (const nonce of kernelDraft.usedNonces) {
+            this.usedNonces.add(nonce);
+          }
+          this.sidecar = structuredClone(stagedSidecar);
+        } catch (error) {
+          for (const name of MAP_NAMES) {
+            replaceMap(this[name], liveKernelBackup[name]);
+          }
+          this.usedNonces.clear();
+          for (const nonce of liveKernelBackup.usedNonces) {
+            this.usedNonces.add(nonce);
+          }
+          this.sidecar = structuredClone(sidecarBefore.value);
+          const stage = "commit";
+          const code = `${stage}_failed`;
+          wrapperFailure = {
+            status: 503,
+            code,
+            failures: [code],
+            stage
+          };
+          finalCommit = false;
         }
-        this.usedNonces.clear();
-        for (const nonce of kernelDraft.usedNonces) {
-          this.usedNonces.add(nonce);
-        }
-        this.sidecar = structuredClone(stagedSidecar);
       }
 
       const localResult = wrapperFailure
@@ -3605,6 +3859,8 @@ class CompositeReferenceStores extends MemoryReferenceStores {
         operation: context.envelope.message_type,
         envelope_hash: context.envelope.envelope_hash,
         authentication: structuredClone(context.authentication),
+        receiver_authentication:
+          structuredClone(context.receiver_authentication),
         callback_before: callbackBefore,
         callback_after: callbackAfter,
         callback_commit: callbackOutcome?.commit ?? null,
@@ -3623,7 +3879,14 @@ class CompositeReferenceStores extends MemoryReferenceStores {
         sidecar_after: sidecarSnapshot(this.sidecar)
       };
       this.traces.push(trace);
-      return callbackOutcome?.value;
+      return wrapperFailure
+        ? {
+            ok: false,
+            status: wrapperFailure.status,
+            code: wrapperFailure.code,
+            failures: structuredClone(wrapperFailure.failures)
+          }
+        : callbackOutcome?.value;
     } finally {
       this.accessRecorder.active = false;
       this.compositeActive = false;
@@ -3733,7 +3996,7 @@ function receiverAuthorityNamespaceCommitment(
     .digest("hex")}`;
 }
 
-function compositeAuthentication(authentication, envelope) {
+function receiverAuthenticationRecord(authentication, envelope) {
   const accountTenantCommitment = canonicalHash([
     "cairn-composite-account-tenant-v0.1",
     authentication.principalId,
@@ -3744,9 +4007,15 @@ function compositeAuthentication(authentication, envelope) {
       accountTenantCommitment,
       authentication.authorityNamespace
     );
-  return {
-    ...authentication,
+  const record = {
+    schema: "cairn.receiver_authentication_record.v0.1",
+    authentication_handle:
+      `${authentication.principalId ?? authentication.actorId}|host-auth`,
     account_tenant_commitment: accountTenantCommitment,
+    principal_id: authentication.principalId,
+    actor_id: authentication.actorId,
+    runtime_key_id: envelope.sender.runtime_key_id,
+    authority_namespace_raw: authentication.authorityNamespace,
     authority_namespace_commitment: authorityNamespaceCommitment,
     trust_profile_id: "cairn:fixture:host-auth",
     trust_profile_hash: canonicalHash([
@@ -3760,6 +4029,40 @@ function compositeAuthentication(authentication, envelope) {
     ]),
     assertion_level: "host_asserted"
   };
+  assert.equal(
+    validateReceiverAuthenticationRecord(record),
+    true,
+    JSON.stringify(validateReceiverAuthenticationRecord.errors)
+  );
+  return record;
+}
+
+function frozenAuthenticationFromReceiver(record) {
+  assert.equal(validateReceiverAuthenticationRecord(record), true);
+  return {
+    principalId: record.principal_id,
+    actorId: record.actor_id,
+    authorityNamespace: record.authority_namespace_raw
+  };
+}
+
+function hostAuthenticationContextFromReceiver(record) {
+  assert.equal(validateReceiverAuthenticationRecord(record), true);
+  return bindObjectHash({
+    schema: "cairn.host_authentication_context.v0.1",
+    context_hash: ZERO_HASH,
+    account_tenant_commitment: record.account_tenant_commitment,
+    principal_id: record.principal_id,
+    actor_id: record.actor_id,
+    runtime_key_id: record.runtime_key_id,
+    authority_namespace_commitment:
+      record.authority_namespace_commitment,
+    trust_profile_id: record.trust_profile_id,
+    trust_profile_hash: record.trust_profile_hash,
+    authentication_evidence_commitment:
+      record.authentication_evidence_commitment,
+    assertion_level: record.assertion_level
+  }, AUTHORITATIVE_SCHEMA.$defs.hostAuthenticationContext);
 }
 
 async function buildIntentScenario(caseId = "origin") {
@@ -3796,16 +4099,19 @@ async function buildIntentScenario(caseId = "origin") {
     nonce: "reference-nonce-00000054",
     idempotencyKey: "reference-intent-idempotency-0001"
   });
-  const authentication = compositeAuthentication({
+  const receiverAuthentication = receiverAuthenticationRecord({
     ...harness.authentication,
     authorityNamespace:
       `${harness.authentication.principalId}|cairn-account`
   }, envelope);
+  const authentication =
+    frozenAuthenticationFromReceiver(receiverAuthentication);
   stores.setContext({
     case_id: `${caseId}:origin`,
     phase: "origin",
     envelope,
-    authentication
+    authentication,
+    receiver_authentication: receiverAuthentication
   });
   const first = harness.service.handleEnvelope(envelope, authentication);
   assert.equal(first.ok, true, JSON.stringify(first));
@@ -3836,6 +4142,7 @@ async function buildIntentScenario(caseId = "origin") {
     stores,
     envelope,
     authentication,
+    receiverAuthentication,
     first,
     originTrace,
     originObject: {
@@ -3853,6 +4160,8 @@ export async function runCompositeProbe() {
   const originReport = {
     envelope: structuredClone(origin.envelope),
     authentication: structuredClone(origin.authentication),
+    receiver_authentication:
+      structuredClone(origin.receiverAuthentication),
     callback: structuredClone(origin.originTrace),
     object: structuredClone(origin.originObject),
     sidecar: structuredClone(origin.stores.sidecar)
@@ -3982,6 +4291,8 @@ export async function runCompositeProbe() {
     verifyCompositeHistory(multiRowScenario.stores.sidecar),
     true
   );
+  const multiOriginSidecar =
+    structuredClone(multiRowScenario.stores.sidecar);
   const replaySecondKeyEnvelope =
     multiRowScenario.helpers.freshTransport(secondKeyEnvelope, 63);
   multiRowScenario.stores.setContext({
@@ -4016,10 +4327,30 @@ export async function runCompositeProbe() {
       .idempotency.original_observation_ref,
     secondRichRow.origin_observation_ref
   );
+  const coherentFirstKeyRelinkEnvelope =
+    multiRowScenario.helpers.newIdempotentAttempt(
+      multiRowScenario.envelope,
+      64,
+      firstRichRow.idempotency_key
+    );
+  const exactKeyRelinkRejected =
+    verifyIdempotencyEnvelopeBinding(
+      multiRowScenario.receiverAuthentication,
+      coherentFirstKeyRelinkEnvelope,
+      replaySecondKeyTrace.local_result.service_observation,
+      secondRichRow
+    ) === false;
+  assert.equal(exactKeyRelinkRejected, true);
   assert.equal(
     verifyCompositeHistory(multiRowScenario.stores.sidecar),
     true
   );
+  const reorderedVersionHistory =
+    structuredClone(multiRowScenario.stores.sidecar);
+  reorderedVersionHistory.operational_versions.reverse();
+  const versionOrderIndependent =
+    verifyCompositeHistory(reorderedVersionHistory);
+  assert.equal(versionOrderIndependent, true);
   const replayHistoryMutationControls = {};
   for (const [caseId, mutate] of [
     ["repository_bytes", (sidecar) => {
@@ -4226,12 +4557,128 @@ export async function runCompositeProbe() {
     );
   }
   rejectHistoryMutation(
+    "trace_write_before_value_and_hash_substitution",
+    multiOriginSidecar,
+    (sidecar) => {
+      const trace = sidecar.access_traces.find(
+        ({ global_sequence: sequence }) => sequence === 2
+      );
+      assert.ok(trace);
+      const write = trace.events.find(
+        (event) => event.method === "set" && event.before_present
+      );
+      assert.ok(write);
+      write.before_value = {
+        substituted: "coherent-but-not-authoritative"
+      };
+      write.before_hash = canonicalHash(write.before_value);
+      trace.events_commitment = canonicalHash(trace.events);
+      const observation = replaceSignedObservation(
+        sidecar,
+        2,
+        (draft) => {
+          draft.transaction.access_trace_commitment =
+            trace.events_commitment;
+        }
+      );
+      const richRow = sidecar.rich_idempotency_rows.find(
+        ({ origin_global_commit_sequence: sequence }) => sequence === 2
+      );
+      assert.ok(richRow);
+      richRow.origin_observation_ref = {
+        artifact_schema: observation.schema,
+        artifact_id: observation.observation_id,
+        artifact_hash: observation.observation_hash
+      };
+    }
+  );
+  rejectHistoryMutation(
     "signed_trace_commitment_divergence",
     origin.stores.sidecar,
     (sidecar) => {
       replaceSignedObservation(sidecar, 1, (draft) => {
         draft.transaction.access_trace_commitment =
           `sha-256:${"8".repeat(64)}`;
+      });
+    }
+  );
+  for (const [caseId, mutate] of [
+    ["host_account_tenant_commitment", (context) => {
+      context.account_tenant_commitment = `sha-256:${"1".repeat(64)}`;
+    }],
+    ["host_principal_id", (context) => {
+      context.principal_id = "did:example:substituted-principal";
+    }],
+    ["host_actor_id", (context) => {
+      context.actor_id = "did:example:substituted-actor";
+    }],
+    ["host_runtime_key_id", (context) => {
+      context.runtime_key_id = "did:example:substituted-runtime";
+    }],
+    ["host_authority_namespace_commitment", (context) => {
+      context.authority_namespace_commitment =
+        `sha-256:${"2".repeat(64)}`;
+    }],
+    ["host_trust_profile_id", (context) => {
+      context.trust_profile_id = "cairn:substituted-host-profile";
+    }],
+    ["host_trust_profile_hash", (context) => {
+      context.trust_profile_hash = `sha-256:${"3".repeat(64)}`;
+    }],
+    ["host_authentication_evidence", (context) => {
+      context.authentication_evidence_commitment =
+        `sha-256:${"4".repeat(64)}`;
+    }],
+    ["host_assertion_level", (context) => {
+      context.assertion_level = "substituted";
+    }]
+  ]) {
+    rejectHistoryMutation(
+      caseId,
+      origin.stores.sidecar,
+      (sidecar) => {
+        const row = sidecar.host_authentication_contexts.find(
+          ({ global_sequence: sequence }) => sequence === 1
+        );
+        assert.ok(row);
+        const draft = structuredClone(row.context);
+        mutate(draft);
+        draft.context_hash = ZERO_HASH;
+        row.context = bindObjectHash(
+          draft,
+          AUTHORITATIVE_SCHEMA.$defs.hostAuthenticationContext
+        );
+        replaceSignedObservation(sidecar, 1, (observation) => {
+          observation.request.host_authentication_context_hash =
+            row.context.context_hash;
+        });
+      }
+    );
+  }
+  rejectHistoryMutation(
+    "receiver_operation_qualified_namespace",
+    replayScenario.stores.sidecar,
+    (sidecar) => {
+      const receiverRow =
+        sidecar.receiver_authentication_records.find(
+          ({ global_sequence: sequence }) => sequence === 2
+        );
+      const hostRow = sidecar.host_authentication_contexts.find(
+        ({ global_sequence: sequence }) => sequence === 2
+      );
+      assert.ok(receiverRow);
+      assert.ok(hostRow);
+      receiverRow.record.authority_namespace_raw += "|intent.put";
+      receiverRow.record.authority_namespace_commitment =
+        receiverAuthorityNamespaceCommitment(
+          receiverRow.record.account_tenant_commitment,
+          receiverRow.record.authority_namespace_raw
+        );
+      hostRow.context =
+        hostAuthenticationContextFromReceiver(receiverRow.record);
+      replaceSignedObservation(sidecar, 2, (observation) => {
+        observation.request.host_authentication_context_hash =
+          hostRow.context.context_hash;
       });
     }
   );
@@ -4376,8 +4823,12 @@ export async function runCompositeProbe() {
     }
   );
   const serviceProfileMutationControls = {};
-  const observationForProfileChain = (profileChain) => {
-    const profile = profileChain.at(-1);
+  const observationForProfileChain = (
+    profileChain,
+    profileIndex = profileChain.length - 1,
+    observedAt = COMPOSITE_FIXTURE.now
+  ) => {
+    const profile = profileChain[profileIndex];
     const draft = structuredClone(
       origin.originTrace.local_result.service_observation
     );
@@ -4391,6 +4842,9 @@ export async function runCompositeProbe() {
       artifact_hash: profile.profile_hash
     };
     draft.service.key_profile_hash = profile.profile_hash;
+    draft.observed_at = observedAt;
+    draft.service_signature.key_id = profile.current_key_id;
+    draft.service_signature.signed_at = observedAt;
     draft.observation_hash = ZERO_HASH;
     draft.service_signature.signed_hash = ZERO_HASH;
     draft.service_signature.value = "A".repeat(86);
@@ -4407,6 +4861,32 @@ export async function runCompositeProbe() {
     );
     return chain;
   };
+  const reboundProfileChain = (profileIndex, mutate) => {
+    const chain = structuredClone(SERVICE_KEY_PROFILE_CHAIN);
+    mutate(chain[profileIndex]);
+    for (let index = profileIndex; index < chain.length; index += 1) {
+      const draft = chain[index];
+      if (index > 0) {
+        draft.prior_profile_hash = chain[index - 1].profile_hash;
+      }
+      draft.profile_hash = ZERO_HASH;
+      chain[index] = bindObjectHash(
+        draft,
+        AUTHORITATIVE_SCHEMA.$defs.localServiceKeyProfile
+      );
+    }
+    return chain;
+  };
+  const historicalObservation = observationForProfileChain(
+    SERVICE_KEY_PROFILE_CHAIN,
+    0,
+    "2026-07-01T12:00:00Z"
+  );
+  const historicalProfilePositive = verifyCompositeObservation(
+    historicalObservation,
+    SERVICE_KEY_PROFILE_CHAIN
+  );
+  assert.equal(historicalProfilePositive, true);
   for (const [caseId, profileChain] of [
     ["profile_wrong_controller", reboundCurrentProfile((draft) => {
       draft.keys[0].controller = "cairn:substituted-controller";
@@ -4427,11 +4907,50 @@ export async function runCompositeProbe() {
         ...structuredClone(draft.keys[0]),
         key_id: "https://cairn.invalid/keys/service-0"
       });
-      draft.current_key_id =
-        "https://cairn.invalid/keys/service-0";
     })]
   ]) {
-    const observation = observationForProfileChain(profileChain);
+    let observation = observationForProfileChain(profileChain);
+    if (caseId === "profile_noncurrent_signing_key") {
+      const draft = structuredClone(observation);
+      draft.service_signature.key_id =
+        "https://cairn.invalid/keys/service-0";
+      draft.observation_hash = ZERO_HASH;
+      draft.service_signature.signed_hash = ZERO_HASH;
+      draft.service_signature.value = "A".repeat(86);
+      observation = bindAndSignServiceObservation(draft);
+    }
+    const rejected =
+      verifyCompositeObservation(observation, profileChain) === false;
+    assert.equal(rejected, true, caseId);
+    serviceProfileMutationControls[caseId] = rejected;
+  }
+  for (const [caseId, profileChain] of [
+    [
+      "profile_historical_missing_current",
+      reboundProfileChain(0, (draft) => {
+        draft.current_key_id =
+          "https://cairn.invalid/keys/missing-historical";
+      })
+    ],
+    [
+      "profile_historical_revoked_key",
+      reboundProfileChain(0, (draft) => {
+        draft.keys[0].status = "revoked";
+        draft.keys[0].revocation_time = "2026-06-30T00:00:00Z";
+      })
+    ],
+    [
+      "profile_historical_expired_at_creation",
+      reboundProfileChain(0, (draft) => {
+        draft.keys[0].expires_at = draft.created_at;
+      })
+    ]
+  ]) {
+    const observation = observationForProfileChain(
+      profileChain,
+      0,
+      "2026-07-01T12:00:00Z"
+    );
     const rejected =
       verifyCompositeObservation(observation, profileChain) === false;
     assert.equal(rejected, true, caseId);
@@ -4447,6 +4966,16 @@ export async function runCompositeProbe() {
     assert.equal(rejected, true, "profile_self_hash");
     serviceProfileMutationControls.profile_self_hash = rejected;
   }
+  const siblingProfileDraft = {
+    ...structuredClone(SERVICE_KEY_PROFILE),
+    profile_id: "urn:uuid:90000000-0000-4000-8000-000000000002",
+    profile_hash: ZERO_HASH,
+    created_at: "2026-07-23T15:59:58Z"
+  };
+  const siblingProfile = bindObjectHash(
+    siblingProfileDraft,
+    AUTHORITATIVE_SCHEMA.$defs.localServiceKeyProfile
+  );
   for (const [caseId, profileChain, expectedHash] of [
     [
       "profile_chain_link",
@@ -4463,8 +4992,9 @@ export async function runCompositeProbe() {
     [
       "profile_chain_fork",
       [
-        ...SERVICE_KEY_PROFILE_CHAIN,
-        structuredClone(SERVICE_KEY_PROFILE)
+        PRIOR_SERVICE_KEY_PROFILE,
+        siblingProfile,
+        SERVICE_KEY_PROFILE
       ],
       SERVICE_KEY_PROFILE.profile_hash
     ],
@@ -4482,6 +5012,13 @@ export async function runCompositeProbe() {
           not_before: "2027-01-01T00:00:00Z",
           expires_at: "2026-01-01T00:00:00Z"
         });
+      }),
+      null
+    ],
+    [
+      "profile_future_created",
+      reboundCurrentProfile((draft) => {
+        draft.created_at = "2026-07-23T16:00:01Z";
       }),
       null
     ]
@@ -4715,7 +5252,12 @@ export async function runCompositeProbe() {
       scenario.authentication
     );
     const trace = scenario.stores.traces.at(-1);
-    assert.equal(raw.code, "idempotency_result_unavailable", kind);
+    assert.equal(raw.code, "authoritative_integrity_invalid", kind);
+    assert.equal(
+      trace.callback_value.code,
+      "idempotency_result_unavailable",
+      kind
+    );
     assert.equal(trace.callback_commit, true, kind);
     assert.equal(trace.final_commit, false, kind);
     assert.deepEqual(trace.kernel_after, baselineKernel, kind);
@@ -4754,13 +5296,15 @@ export async function runCompositeProbe() {
       scenario.authentication
     );
     const trace = scenario.stores.traces.at(-1);
+    assert.equal(raw.ok, false, stage);
+    assert.equal(raw.code, `${stage}_failed`, stage);
     assert.equal(trace.callback_commit, true, stage);
     assert.equal(trace.final_commit, false, stage);
     assert.deepEqual(trace.kernel_after, baselineKernel, stage);
     assert.deepEqual(trace.sidecar_after, baselineSidecar, stage);
     if (stage === "response_schema") {
       assert.equal(trace.response_validation.accepted, false);
-      assert.equal(Object.hasOwn(raw.body, "ref"), false);
+      assert.equal(Object.hasOwn(trace.callback_value.body, "ref"), false);
       assert.equal(Object.hasOwn(trace.frozen_callback_value.body, "ref"), true);
     }
     wrapperFaults[stage] = { raw: structuredClone(raw), trace };
@@ -4789,13 +5333,14 @@ export async function runCompositeProbe() {
       scenario.authentication
     );
     const trace = scenario.stores.traces.at(-1);
-    assert.equal(raw.ok, true, stage);
+    assert.equal(raw.ok, false, stage);
+    assert.equal(raw.code, `${stage}_failed`, stage);
     assert.equal(trace.callback_commit, true, stage);
     assert.equal(trace.final_commit, false, stage);
     assert.equal(trace.wrapper_failure.code, `${stage}_failed`, stage);
     assert.equal(
       trace.local_result.kernel.status,
-      raw.status,
+      trace.callback_value.status,
       stage
     );
     assert.deepEqual(trace.kernel_after, baselineKernel, stage);
@@ -4839,10 +5384,14 @@ export async function runCompositeProbe() {
     "live_frozen_result_ref_corrupt",
     "live_frozen_missing",
     "live_frozen_extra",
-    "rich_row_duplicate"
+    "rich_row_duplicate",
+    "unrelated_rich_corruption"
   ]) {
     const scenario = await buildIntentScenario(`preflight_${kind}`);
-    if (kind === "rich_row_corrupt") {
+    if (
+      kind === "rich_row_corrupt" ||
+      kind === "unrelated_rich_corruption"
+    ) {
       scenario.stores.sidecar.rich_idempotency_rows[0].operation_name =
         "capabilities.get";
     } else if (kind === "live_frozen_fingerprint_corrupt") {
@@ -4885,13 +5434,21 @@ export async function runCompositeProbe() {
     }
     const baselineKernel = kernelSnapshot(scenario.stores);
     const baselineSidecar = sidecarSnapshot(scenario.stores.sidecar);
-    const envelope = scenario.helpers.freshTransport(
-      scenario.envelope,
-      60
-    );
+    const envelope = kind === "unrelated_rich_corruption"
+      ? scenario.helpers.newIdempotentAttempt(
+          scenario.envelope,
+          60,
+          "reference-intent-idempotency-unrelated-new-key"
+        )
+      : scenario.helpers.freshTransport(
+          scenario.envelope,
+          60
+        );
     scenario.stores.setContext({
       case_id: `preflight_${kind}`,
-      phase: "replay",
+      phase: kind === "unrelated_rich_corruption"
+        ? "origin"
+        : "replay",
       envelope,
       authentication: scenario.authentication
     });
@@ -4930,16 +5487,19 @@ export async function runCompositeProbe() {
       nonce: `reference-foreign-nonce-${String(number).padStart(8, "0")}`,
       principalId
     });
-    const authentication = compositeAuthentication({
+    const receiverAuthentication = receiverAuthenticationRecord({
       ...interleavedScenario.authentication,
       principalId,
       authorityNamespace: `${principalId}|cairn-account`
     }, envelope);
+    const authentication =
+      frozenAuthenticationFromReceiver(receiverAuthentication);
     interleavedScenario.stores.setContext({
       case_id: `foreign_capabilities_${index + 1}`,
       phase: "capabilities",
       envelope,
-      authentication
+      authentication,
+      receiver_authentication: receiverAuthentication
     });
     const raw =
       interleavedScenario.harness.service.handleEnvelope(
@@ -5029,6 +5589,8 @@ export async function runCompositeProbe() {
         raw: structuredClone(replaySecondKeyRaw),
         trace: replaySecondKeyTrace
       },
+      exact_key_relink_rejected: exactKeyRelinkRejected,
+      version_order_independent: versionOrderIndependent,
       sidecar: structuredClone(multiRowScenario.stores.sidecar)
     },
     durable_artifact_controls: {
@@ -5046,7 +5608,8 @@ export async function runCompositeProbe() {
       access_trace_mutations: accessTraceMutationControls,
       signed_history_mutations: signedHistoryMutationControls,
       foreign_history_mutations: foreignHistoryMutationControls,
-      service_profile_mutations: serviceProfileMutationControls
+      service_profile_mutations: serviceProfileMutationControls,
+      historical_profile_positive: historicalProfilePositive
     },
     replay_faults: replayFaults,
     wrapper_faults: wrapperFaults,
