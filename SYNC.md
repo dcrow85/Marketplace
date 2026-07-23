@@ -59,30 +59,31 @@ live on `main`; each lane branch merges `main` to pick them up. KEEP WORKTREES O
 
 ## Handshake log — newest on top; tag `[passive]` or `[BLOCKING: seam]`
 - `[BLOCKING: Phase 1 agent execution machine bundle]` 2026-07-22 · Codex —
-  **The freezes `0b98fff` and `393b87f` were rejected. Every accepted
-  P1/material-P2 finding through the round-36 remediation and round-37
-  pre-freeze audits is now remediated; the next exact freeze and fresh
+  **The freezes `0b98fff`, `393b87f`, and `902abec` were rejected. Every accepted
+  P1/material-P2 finding through the round-38 audits is now remediated; the next exact freeze and fresh
   three-reviewer gate are pending. Reference-service construction remains
   blocked.**
   Candidate internal hash is
-  `sha-256:0788cbbcd7100f7c0d90bc9d1414781bf36cd29a38d96fac5ba29b2bbc0670e9`
+  `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`
   and registry hash is
-  `sha-256:2fcc19bcf9ce9435520e1ecd4323bf01dfdb764c1f15a9674ef9a506309ce7d8`.
+  `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`.
   The audited prose hash is
-  `84ce1928f090977cc5691f35f161c21b6504fc1b9e52394745f808d2703e732a`.
+  `3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec`.
   It contains 46 closed signed-object schemas, one content-addressed map-node
   schema, four support documents, and 34 schema-only read operations, with zero
   mutation, external-effect, or authority-effect rows. Local controls pass
-  30/30 and kill 369/369 direct mutants. The frozen proposal baseline separately
+  31/31 and kill 390/390 direct mutants. The frozen proposal baseline separately
   remains 83/83 with 75/75 mutants killed at bundle hash
   `sha-256:d84dd5c2a925575c4889ab51f784cca58bd7c7ec14fcf0ae66dd7d8a6eeff29c`.
   This replacement additionally closes signed cancellation dependencies and
-  judgment graphs; exact DataGrant contracts/liveness; scoped control-map
-  proofs; reservation-to-atom accounting; terminal identity atomicity; draining
-  epochs; caller-inaccessible historical mode; signed complete gate manifests;
-  role-authorized dependency attestations/history; 19 distinct derived checks;
-  mandatory gate signatures; and trusted evaluation-time chronology. Every new
-  boundary is isolated by a direct killed mutant.
+  currentness; exact DataGrant contracts/liveness without an exhausted-final-read
+  bypass; global/scoped control transitions and namespace rotation; reservation
+  provenance and confirmed-event correlation; terminal identity atomicity;
+  caller-inaccessible historical mode; signed complete gate manifests; mandatory
+  gate signatures; and trusted evaluation-time chronology. Nine unimplemented
+  predicate families, every `allow`, authorization redemption, and recovery are
+  denied in this schema-only phase. Every new boundary is isolated by a direct
+  killed mutant.
   No executor, provider/network review, authorization redemption, outbox,
   payment, release, waiver, UI, catalogue, profile, offer, contract, deployment,
   or live state change is created or authorized. The reference service remains

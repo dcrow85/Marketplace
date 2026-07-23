@@ -406,6 +406,13 @@ function localSemantics(schemaId) {
       } }
     }];
   }
+  if (schemaId === "cairn.execution_control_namespace.v0.1") {
+    return [{
+      if: { properties: { generation: { const: 0 } } },
+      then: { properties: nullProperties(["prior_namespace_ref", "prior_revoked_head_ref"]) },
+      else: { properties: nonNullProperties(["prior_namespace_ref", "prior_revoked_head_ref"]) }
+    }];
+  }
   if (schemaId === "cairn.execution_control_receipt.v0.1") {
     const authorization = ["control_authorization_ref", "control_authorization_hash"];
     const namespace = ["control_namespace_ref", "control_namespace_hash"];
@@ -429,8 +436,8 @@ function localSemantics(schemaId) {
         } },
         { properties: {
           cause: { const: "scoped_control" }, authorization_basis_kind: { const: "control_authorization" },
-          ...nonNullProperties([...authorization, ...before, ...after, ...leafAfter, ...outstanding]),
-          ...nullProperties([...namespace, ...priorNamespace, ...connection])
+          ...nonNullProperties([...authorization, ...before, ...after, ...leafAfter]),
+          ...nullProperties([...namespace, ...priorNamespace, ...connection, ...outstanding])
         } },
         { properties: {
           cause: { const: "connection_joint_control" }, authorization_basis_kind: { const: "control_authorization" },

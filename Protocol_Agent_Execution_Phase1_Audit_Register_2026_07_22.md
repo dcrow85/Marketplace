@@ -2,10 +2,10 @@
 
 Artifact: `protocol/execution/dist/cairn-supervised-execution-phase1-v0.1.json`
 Source package: `protocol/execution/`
-Status: rounds 1–37 findings remediated; replacement candidate prepared for an exact-commit three-reviewer gate
-Prose dependency SHA-256: `84ce1928f090977cc5691f35f161c21b6504fc1b9e52394745f808d2703e732a`
-Candidate internal bundle hash: `sha-256:0788cbbcd7100f7c0d90bc9d1414781bf36cd29a38d96fac5ba29b2bbc0670e9`
-Candidate operation-registry hash: `sha-256:2fcc19bcf9ce9435520e1ecd4323bf01dfdb764c1f15a9674ef9a506309ce7d8`
+Status: rounds 1–38 findings remediated; replacement candidate pending exact freeze and three-reviewer gate
+Prose dependency SHA-256: `3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec`
+Candidate internal bundle hash: `sha-256:2e20299693d593fbf66f5e0b0512fbd0e8a080159cc1f99c3990d00eedb49a8e`
+Candidate operation-registry hash: `sha-256:14b3c86c4cc1b419ae6055d97e7696659c0697a96ac608ff5af3d1450e069726`
 
 ## Claim boundary
 
@@ -48,7 +48,7 @@ The package pins and does not widen the proposal foundation:
 
 ## Local authored controls
 
-The current local suite passes 30/30 controls:
+The current local suite passes 31/31 controls:
 
 1. fixed prose and proposal dependency pins;
 2. deterministic bundle and registry bytes;
@@ -93,9 +93,13 @@ The current local suite passes 30/30 controls:
     and reserved-judgment policy, ordered gates, and receiver assignment
     consumption/completion closure.
 
+31. deny-only Phase-1 authority, gate-evaluation chronology, current
+    cancellation state, exact execution-control/namespace transitions,
+    reservation provenance, and confirmed-event correlation.
+
 ## Direct mutation controls
 
-The package kills 369/369 direct mutants. Covered failure families are:
+The package kills 390/390 direct mutants. Covered failure families are:
 
 - prose, base-bundle, and base-registry drift;
 - accidentally mutating or effectful operation advertisement;
@@ -188,6 +192,15 @@ aggregate/index/control dependencies, index-to-map count or entries-root drift,
 caller-selected outstanding map/entry keys, omitted exact index/entry/transition/
 map getters, unowned map-node reads, and invalid reservation, update, removal,
 restriction-snapshot, or nonempty terminal-seal transitions.
+
+The round-38 remediation set additionally kills any Phase-1 `allow` or
+redemption path, missing gate roles, unsupported-check promotion, stale
+cancellation state, post-evaluation attestations/wrappers/signatures, wall-clock
+current-head resolution, exhausted-grant final-read shortcuts, recovery-control
+promotion, scoped-key aliasing, epoch reuse, scoped/global tuple mixing,
+namespace-generation skips, ordinary scoped use of a connection index,
+reservation provenance rewrite or unexplained change, and confirmed-event
+component/correlation drift.
 
 ## Independent audit round 1
 
@@ -315,7 +328,7 @@ made no edits:
 
 | ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
 |---|---:|---|---|---|
-| P2R10-001 | P2 | The internal digest omitted shared `core.mjs` bytes and integrity-locked AJV/canonicalization dependencies, allowing validator semantics to drift without changing the candidate | accepted_and_fixed | Source commitments include `../lib/core.mjs` and `package-lock.json`; exact dependencies and installed versions are audited at build, with three direct controls |
+| P2R10-001 | P2 | The internal digest omitted shared `core.mjs` bytes and integrity-locked AJV/canonicalization dependencies, allowing validator semantics to drift without changing the candidate | accepted_and_fixed | Source commitments include `../lib/core.mjs` and `package-lock.json`; package declarations and lock closure are audited at build, and release replay uses a disposable clean install without claiming arbitrary installed-tree byte attestation |
 | P2R10-002 | P2 | `LineageStateHead` transitions admitted fencing-token rollback | accepted_and_fixed | Every successor requires `after.fencing_token >= before.fencing_token`, with a direct rollback counterexample and mutant |
 | P2R10-003 | P2 | Per-array caps did not enforce the frozen 4,096 total inline-array-entry ceiling | accepted_and_fixed | The common Phase 1 validator recursively counts every nested array member and rejects totals above 4,096; a schema-valid 4,000-plus-entry mandate is the direct counterexample |
 | P2R10-004 | P2 | `AuthorityReservation` advertised an inventory union but did not preserve the binding's exact seller-inventory stage/context | accepted_and_fixed | Binding validation closes inventory applicability, stage/kind, checkout, and readiness branches; reservation validation requires an exact compact projection of that binding context |
@@ -471,7 +484,7 @@ accepted and remediated before preparing this replacement freeze:
 | P1R34-001 | P1 | Authenticated receiver events and closure did not require the entry to advance to exact successor assignments or consume the closing event | accepted_and_fixed | Nonterminal events bind before and after assignment refs, consume exactly one while capacity remains, and update the entry to both exact successors; authenticated closure consumes exactly one and then releases, while horizon/fence release preserves consumption |
 | P1R34-002 | P1 | Compartment balances, roots, exposure limits, and delta manifests were not recomputed from complete committed map trees | accepted_and_fixed | Recursive map resolution derives all economic-atom and confirmed-event subsets, balances, roots, and exposure; transitions require the exact changed-atom keyset, exact semantic values, append-only event diff, and cause-specific event kinds |
 | P2R34-003 | P2 | DataGrant expiry-state timing rejected the exact expiry boundary | accepted_and_fixed | Nonexpired states require `updated_at < expires_at`; `expired` requires `updated_at >= expires_at`, including equality |
-| P2R35-001 | P2 | Release documentation retained obsolete hashes, object/receipt family counts, mutation totals, and pre-freeze wording | accepted_and_fixed | This register, the package README, and the coordination marker now state the exact 44-object/34-operation/349-control candidate and distinguish the rejected freeze from the pending replacement |
+| P2R35-001 | P2 | Release documentation retained obsolete hashes, object/receipt family counts, mutation totals, and pre-freeze wording | accepted_and_fixed | The then-current `393b87f` candidate documentation was corrected to its exact 44-object/34-operation/349-control evidence and distinguished from the earlier rejected freeze |
 
 The second replacement freeze, commit
 `393b87f1ef77275a631c2196a376e52b30a78861`, was rejected by the fresh
@@ -494,11 +507,33 @@ read-only round-37 pre-freeze audits produced the following accepted findings:
 | P1R37-003 | P1 | Dependency state history admitted a revoked genesis and could not honestly rotate to a newly signed revoked source | accepted_and_fixed | Genesis is active-only; every successor uses a newly signed attestation over the same immutable subject and a closed monotonic transition graph |
 | P2R37-004 | P2 | New predicates lacked isolated counterexamples, 15 inherited mutation anchors were stale, and four first-replay controls were masked | accepted_and_fixed | Repaired every anchor, added direct variations for each new boundary, isolated gate order/signature checks, and retired two redundant receiver controls subsumed by stronger atomicity/set controls |
 
+## Independent audit round 38
+
+The third replacement freeze, commit
+`902abec8ed10a937ce2fc52a4ed708d1873ad092`, was rejected independently by a
+context-blind authority reviewer, a context-blind state/transition reviewer, and
+an informed release reviewer. They reproduced its exact bundle
+`sha-256:0788cbbcd7100f7c0d90bc9d1414781bf36cd29a38d96fac5ba29b2bbc0670e9`,
+registry
+`sha-256:2fcc19bcf9ce9435520e1ecd4323bf01dfdb764c1f15a9674ef9a506309ce7d8`,
+30/30 authored controls, and 369/369 killed mutants. Those bytes are rejected
+history, not the current candidate. No reviewer edited candidate files.
+
+| ID | Sev. | Independent finding | Disposition | Remediation in the current candidate |
+|---|---:|---|---|---|
+| P1R38-001 | P1 | Several of the 19 gate predicates remained shallow projections of missing or caller-shaped roles, yet the partial machine could still represent an `allow` result and redemption | accepted_and_fixed | Phase 1 is now explicitly deny-only: missing roles deny, nine predicates without authoritative evaluators always deny, every `allow` GateResult is rejected, every redemption is unsupported, and direct mutants protect each boundary |
+| P1R38-002 | P1 | Cancellation did not unconditionally authenticate the original action/state or prove that the original state remained current; gate attestations, wrappers, signatures, and current-head resolution could be evaluated after the claimed gate instant | accepted_and_fixed | Original action and state signatures are always required, live cancellation requires the exact current state, source/wrapper/signature chronology is bounded by `evaluated_at`, and the current-head resolver receives the recorded evaluation time |
+| P1R38-003 | P1 | An inline disclosure could make an exhausted DataGrant head eligible as a forged final-read shortcut | accepted_and_fixed | BindingSet requires a current `active` head with positive reads; exhausted heads remain historical only, including when named by an inline disclosure |
+| P1R38-004 | P1 | Global/scoped control transitions, recovery use, namespace rotation, scoped target identity, and connection/outstanding-index authority were not one closed machine | accepted_and_fixed | Added derived scoped keys, one exact transition matrix, virtual scoped genesis, global/scoped separation, exact generation rotation, connection-only outstanding-index binding, and fail-closed unsupported recovery |
+| P1R38-005 | P1 | Compartment transitions could rewrite reservation provenance or insert confirmed events without exact obligation/component/amount correlation to the atom deltas | accepted_and_fixed | Reservation identity is immutable, every reservation change requires its matching reserved-class delta, and each confirmed group requires one exact domain-separated event with checked amount and no extras |
+| P2R38-006 | P2 | The release claim treated a lockfile/package-local install as byte verification of the installed transitive dependency tree | accepted_and_fixed | Claims are narrowed to exact lockfile/source commitments plus a disposable clean `npm ci --ignore-scripts` replay; no arbitrary installed-tree byte attestation is claimed |
+| P2R38-007 | P2 | Prose and release docs lagged the machine on grant-head commitments, final-read behavior, recovery availability, control unions, and candidate/count evidence | accepted_and_fixed | The fixed prose, package README, coordination marker, and this register now state the exact deny-only Phase-1 boundary and 31/31 plus 390/390 local controls |
+
 The current replacement candidate is the exact bundle and registry hash at the
 top of this register. It has 51 schema documents: 46 signed object families,
 one content-addressed map-node family, and four bundle/registry/common
-documents. It exposes 34 schema-only read operations, passes 30/30 authored
-test groups, and kills 369/369 direct mutants. The unchanged proposal baseline
+documents. It exposes 34 schema-only read operations, passes 31/31 authored
+test groups, and kills 390/390 direct mutants. The unchanged proposal baseline
 passes 83/83 and kills 75/75 mutants. These bytes are prepared for a new exact
 freeze; closure remains open until fresh blind semantic, blind state/mutation,
 and informed release reviewers all accept that commit.
@@ -521,7 +556,7 @@ and informed release reviewers all accept that commit.
 This register remains open until a reviewer who did not author the candidate:
 
 1. verifies the candidate hash before and after a read-only review;
-2. reproduces all 30 authored controls and 369 killed mutants;
+2. reproduces all 31 authored controls and 390 killed mutants;
 3. replays the 83/83 proposal controls and 75/75 proposal mutants with the same
    base bundle hash;
 4. audits field closure against the fixed prose, especially the execution-chain

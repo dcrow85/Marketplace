@@ -539,6 +539,15 @@ or expired. The disclosure reservation therefore follows the final read. Outbox
 rechecks this exception and records the source-read receipt; it never authorizes
 another read or a different payload. Paused, revoked, and expired always deny.
 
+This final-read disclosure ordering is a target for a later mutating profile,
+not an exception in the Phase-1 schema-only bundle. Phase 1 has no read writer,
+disclosure-reservation writer, or atomic read/disclosure transaction. Its
+BindingSet validator therefore accepts only a current `active` grant head with
+`remaining_reads > 0`; an `exhausted,0` head is historical evidence only and
+cannot make a BindingSet eligible, even when an inline disclosure names that
+head. Implementing the target ordering requires a separately frozen atomic
+writer and new mutation/audit evidence.
+
 The closed lifecycle is `active → active(read decrement) | paused | exhausted |
 revoked | expired`; `paused → active | revoked | expired`; and `exhausted →
 revoked | expired`. Exhausted preserves zero reads but is not immune to principal
@@ -2628,6 +2637,14 @@ array of the matching current `{atom_id, atom_hash}` pairs. Bare atom IDs,
 orphaned reservations, orphaned reserved atoms, duplicate matches, fence drift,
 and a stale root after any atom successor deny.
 
+Across a compartment transition, an existing reservation entry may update its
+held-atom root but may not rewrite its reservation key, compartment key,
+authority reservation ref/hash, action ref, effect ID, lineage ID, or reservation
+fence. Every reservation insertion, removal, or content change must be explained
+by at least one exact economic-atom delta entering or leaving `reserved` for
+that same authority-reservation object ID and fence. A coherent replacement map
+without that economic cause is invalid.
+
 ```yaml
 schema: cairn.current_economic_atom.v0.1
 atom_id: sha-256:<canonical immutable atom identity>
@@ -2663,6 +2680,23 @@ accounting_policy_hash: sha-256:<hex>
 event_hash: sha-256:<hex>
 authority_service_signature: <Signature>
 ```
+
+`component_ids_root` is not a caller-supplied summary. It is the RFC 8785/JCS
+SHA-256 hash of this exact domain-separated preimage, with duplicate component
+IDs removed and the remaining strings sorted lexicographically:
+
+```yaml
+schema: cairn.confirmed_economic_event_component_set_preimage.v0.1
+component_ids: [<sorted unique exact component IDs>]
+```
+
+For a confirmed debit, refund, or reversal transition, the authority groups the
+exact economic-atom deltas entering that confirmed class by
+`obligation_or_reservation_id`. Each group requires exactly one newly inserted
+event with the same obligation, this exact component root, the state accounting
+asset, and the checked overflow-safe sum of the group amounts. Extra events,
+missing events, reused events, or mismatched obligations, components, assets, or
+amounts deny the transition.
 
 ```yaml
 schema: cairn.authority_limit_ledger_event_entry.v0.1
@@ -5371,6 +5405,13 @@ respective commitments; no recovery receipt points back to the later control
 receipt. The successor grant head points one way to the transition receipt, so
 there is no receipt↔receipt or receipt↔head content cycle.
 
+The Phase-1 schema-only bundle does not implement this recovery transaction or
+the `execution.recovery_status.get` operation. Until a separately frozen
+recovery writer and replay validator exist, any control authorization carrying
+the recovery tuple and any execution-control receipt carrying recovery evidence
+is rejected as `phase1_recovery_control_unsupported`. Phase-1 direct-principal
+controls do not infer recovery authority from these future-profile shapes.
+
 ```yaml
 schema: cairn.execution_control_authorization.v0.1
 control_authorization_id: urn:uuid:<uuid>
@@ -5437,6 +5478,21 @@ head_hash: sha-256:<hex>
 authority_service_signature: <Signature>
 ```
 
+The leaf key is derived, never selected by the caller:
+
+```text
+JCS-SHA256({
+  schema: "cairn.scoped_execution_control_leaf_key_preimage.v0.1",
+  principal_id,
+  control_namespace_generation,
+  scope,
+  target_kind,
+  target_ref,
+  compartment_control_key,
+  action_control_key
+})
+```
+
 ```yaml
 schema: cairn.scoped_execution_control_leaf_state_head.v0.1
 scoped_control_leaf_key: sha-256:<namespace generation/scope/canonical target>
@@ -5489,8 +5545,8 @@ connection_state_event_receipt_ref: <ObjectRef or null unless connection joint>
 connection_state_event_receipt_hash: sha-256:<hex or null>
 recovery_grant_transition_receipt_ref: <ObjectRef or null unless recovery-signed>
 recovery_grant_transition_receipt_hash: sha-256:<hex or null>
-outstanding_action_index_head_ref: <current ObjectRef or null unless scoped target>
-outstanding_action_index_head_hash: sha-256:<hex or null>
+outstanding_action_index_head_ref: <current ObjectRef only for connection_joint_control; null otherwise>
+outstanding_action_index_head_hash: sha-256:<hex only for connection_joint_control; null otherwise>
 authority_transaction_id: <one control/map/optional connection-or-recovery CAS>
 committed_at: <authority-service time>
 receipt_hash: sha-256:<hex>
@@ -5533,16 +5589,37 @@ identical untouched frontier; revision advances by one and count changes only
 for a genuine insertion. The signed authorization's target union, expected
 aggregate head, pause epoch, and revocation nonce must equal the authenticated
 predecessor leaf. Pause, resume, freeze, and revoke then follow their exact
-state/epoch/nonce matrix. Global control leaves the entire scoped-map commitment
-unchanged. Genesis and rotation require an authenticated revision-zero empty
-map. An arbitrary map ref, a membership proof without frontier equality, or an
-otherwise valid leaf under the wrong target cannot authorize the transition.
+state/epoch/nonce matrix:
+
+- `pause`: `active → paused`, `pause_epoch + 1`, nonce unchanged;
+- `freeze_new_redemptions`: `active → frozen_new_redemptions`,
+  `pause_epoch + 1`, nonce unchanged;
+- `resume`: `paused | frozen_new_redemptions → active`, epoch and nonce
+  unchanged;
+- `revoke`: `active | paused | frozen_new_redemptions → revoked`, epoch
+  unchanged and `revocation_nonce + 1`.
+
+No terminal state has a successor inside the generation. First insertion of a
+scoped leaf is evaluated from a virtual `active, pause_epoch:0,
+revocation_nonce:0` predecessor and must create sequence zero with a null
+predecessor hash; `resume` cannot be the first insertion. A scoped transition
+must preserve the aggregate global state/epoch/nonce tuple, while a global
+transition must leave the entire scoped-map commitment unchanged. Ordinary
+scoped receipts have no outstanding-action-index pair; only the joint
+connection writer authenticates and binds that current index. Genesis and
+rotation require an authenticated revision-zero empty map. An arbitrary map
+ref, a membership proof without frontier equality, or an otherwise valid leaf
+under the wrong target cannot authorize the transition.
 `execution.control_namespace.issue` creates generation 0
 plus its initial active control head exactly once for a principal/profile under a
 fresh high-assurance signature; both prior fields are null and a second genesis
 conflicts. `execution.control_namespace.rotate` requires a fresh
 principal-present high-assurance ceremony over the prior revoked head and creates
-a new namespace plus initial active head in one CAS. No connection, mandate,
+a new namespace plus initial active head in one CAS. Rotation resolves and
+authenticates the exact prior namespace and exact prior aggregate head, requires
+that head to be terminal `revoked`, increments namespace generation by exactly
+one, and creates an `active` successor with zero epoch, zero nonce, and an empty
+scoped map. No connection, mandate,
 authorization, reservation, alias, or pending action migrates; all new authority
 must bind the new namespace/generation, every old-generation recovery grant is
 ineligible by exact generation even before its own terminalization receipt, and
@@ -6211,6 +6288,10 @@ data_grant_state_heads:
   - data_grant_ref: <ObjectRef>
     current_state_head_ref: <ObjectRef>
     revocation_nonce: <integer>
+    required_purpose: <exact DataGrant purpose>
+    required_uses: <exact sorted DataGrant uses>
+    required_resource_scopes_root: sha-256:<canonical exact DataGrant resource_scopes>
+    required_audience: <exact DataGrant audience>
 disclosures:
   - disclosure_authorization_ref: <ObjectRef>
     disclosure_authorization_hash: sha-256:<hex>
@@ -6425,9 +6506,9 @@ BindingSet interval inside both grant and retention expiry, and requires an
 `active` current head with `remaining_reads > 0`. For `agent_runtime`, both the
 recipient and the complete audience set equal the one runtime-instance key;
 membership in a wider provider or agent audience is insufficient. An exhausted
-successor is historical final-read evidence only when the bound disclosure
-names that exact signed read successor; it is never generic current execution
-eligibility.
+successor is historical read-chain evidence only in Phase 1. It cannot appear as
+an eligible BindingSet grant head, and no inline disclosure can turn it into
+current execution eligibility.
 
 The schema uses a closed effect-context union. `cancel_receiver_action` requires
 the complete cancellation context and forbids checkout fields. Ordinary actions
@@ -7046,6 +7127,16 @@ pass. The evaluated-head, business-state, and checkout roots are recomputed from
 the same signed manifest and authenticated graph rather than from an
 independently supplied set.
 
+The Phase-1 schema-only bundle deliberately has no valid `allow` path. The
+checks `BUSINESS_DEPENDENCIES`, `REVIEWS_POLICIES`, `RESERVED_JUDGMENTS`,
+`LIMITS`, `ECONOMIC_EXPOSURE`, `DUPLICATE_EFFECT_LINEAGE`, `EXECUTOR_TARGET`,
+`DOMAIN_POLICY`, and `ATOMIC_PRECONDITIONS` do not yet have complete
+authoritative evaluators and therefore always deny. Missing role evidence also
+denies; caller-provided maps, booleans, callbacks, or wrapper labels cannot
+supply a pass. GateResult validation rejects every `decision:allow` as
+`phase1_gate_allow_unsupported`, even if its submitted check list says all pass.
+Phase-1 GateResults are authenticated deny diagnostics only.
+
 GateRequest and GateResult signatures are mandatory on every live gate,
 redemption, and handoff path. GateResult establishes one trusted
 `evaluationTime = evaluated_at`, passes it to authority, confirmation, current
@@ -7054,6 +7145,14 @@ head, lifecycle, and dependency eligibility checks, and enforces
 Its expiry cannot exceed the BindingSet, one-shot authority, confirmation,
 manifest, reservation, or any evaluated dependency deadline. Backdating a
 request into an earlier active interval cannot revive an expired dependency.
+
+Gate evaluation authenticates every dependency at `evaluated_at`: source
+attestations must have `issued_at <= evaluated_at`, state wrappers must have
+`updated_at <= evaluated_at`, signatures must already be valid at that instant,
+and a current-head resolver receives that same evaluation time. Cancellation
+also authenticates the exact original action and its state head unconditionally,
+and a live cancellation gate requires that original state head to remain the
+current head at evaluation.
 
 The gate evaluates in this exact fail-closed order:
 
@@ -12414,7 +12513,10 @@ hashes differ and neither runtime may continue the other's live chain.
 - **Phase 0:** preserve proposal-only bytes; separate execution package/profile.
 - **Phase 1:** closed machine schemas/registry for connection, compartment,
   mandate v0.3, control, binding set, chain objects, consent receipts, and
-  read-only activity; no executor or network review.
+  read-only activity; no executor or network review. All 34 operations are
+  schema-only reads. No GateResult can validate as `allow`, every redemption
+  receipt is `phase1_redemption_unsupported`, recovery-bearing controls are
+  unsupported, and exhausted DataGrant heads cannot make a BindingSet eligible.
 - **Phase 2:** pure review, taint, staleness, and UI over local terms, fixtures,
   sandbox fixtures, or previously authorized/imported quote snapshots; every
   receipt fixes `external_effect:false`. A live provider quote/review that
@@ -12435,7 +12537,9 @@ separately frozen machine bundle and mutation audit before implementation. Phase
 2 requires that Phase-1 closure plus proof that review is pure and makes no
 network disclosure/effect. Each later phase requires its own frozen artifact,
 independent audit, mutations, and exit evidence. This document does not authorize
-an execution service or Phase 5.
+an execution service or Phase 5. A schema-valid Phase-1 object is never evidence
+that an authority service accepted it, and no caller or agent can promote the
+read-only profile into a writer by supplying a callback or resolver.
 
 ## 15. Audit protocol
 

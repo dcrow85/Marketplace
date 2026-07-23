@@ -32,8 +32,9 @@ reference service.
   ref/hash pair is checked against the bound object;
 - exact dependency pins to the proposal bundle and registry, shared core
   validator and strict-JSON preflight bytes, a package-local byte-identical core
-  whose parity to the frozen shared core is enforced, and an integrity-closed
-  package-local runtime dependency tree;
+  whose parity to the frozen shared core is enforced, plus an exact npm lockfile
+  and clean `npm ci --ignore-scripts` release replay; this does not claim that an
+  arbitrary pre-existing `node_modules` tree is byte-attested;
 - deterministic JCS bundle generation;
 - exact SHA-256 commitments for every authored package source, validator, test,
   mutation control, and build/check script included in the audit candidate;
@@ -61,7 +62,9 @@ reference service.
   attestations and predecessor-closed state heads whose active genesis and legal
   subject-preserving successor graph are exact; GateResult derives 19 distinct
   predicates and their smallest evaluated evidence sets rather than trusting
-  caller-selected outcomes;
+  caller-selected outcomes; nine predicates without complete authoritative
+  evaluators deny in Phase 1, missing roles deny, and every `allow` GateResult is
+  rejected, so the schema-only profile has no execution-authorizing gate path;
 - connection authorization/state exact reads resolve runtime and authorization
   graphs, enforce current-head authority and validity intervals, and mandate
   validity is contained by both runtime and connection authorization;
@@ -69,7 +72,9 @@ reference service.
   issued grant/count, reads decrement exactly once, pause/resume/revoke/expiry
   advance the revocation nonce, the `expired` state begins at the exact expiry
   boundary, and bindings enforce the signed purpose/use/scope/audience contract,
-  exact runtime recipient, contained lifetime, and current eligible nonzero head;
+  exact runtime recipient, contained lifetime, and current active nonzero head;
+  an exhausted head remains historical evidence and no inline final-read
+  disclosure can restore BindingSet eligibility;
 - receiver-stream entry keys are derived; slot/trust/future/stream/connection
   dependencies are exact; receiver map transitions carry before/after proofs
   and immutable-frontier checks; authenticated events advance both assignment
@@ -81,8 +86,10 @@ reference service.
   confirmed-event map trees; balances, exposure ceilings, and subset roots are
   recomputed from their leaves, while transition receipts bind the exact map
   diff, cause core, manifest projections, semantic atom deltas, confirmed-event
-  insertions, money-class projection, closure emptiness, predecessor, asset,
-  transaction, and signature chronology;
+  insertions, immutable reservation provenance, reservation-change causes,
+  exact obligation/component/asset/amount event correlation, money-class
+  projection, closure emptiness, predecessor, asset, transaction, and signature
+  chronology;
 - request-bound composite action reads that close the exact action, current
   state, binding, commitment, authority branch, lineage, private activity
   detail, authority reservations, and gate chain rather than merely checking
@@ -105,7 +112,7 @@ reference service.
 - direct mutation controls for namespace, dependency, authority, target-union,
   limit, connection, chain, compatibility-envelope, registry-metadata,
   package-isolation, and read-only-surface failures. The current suite kills all
-  369 declared direct mutants.
+  390 declared direct mutants across 31 authored test groups.
 
 ## Excluded
 
@@ -114,6 +121,9 @@ payment, escrow release, waiver, dispute, UI, server, database, or deployment.
 Every registry operation has `mutating:false`, `external_effect:false`, and
 `implementation_status:"schema_only"`. Passing the package controls establishes
 only deterministic internal consistency for this frozen Phase 1 artifact.
+There is no valid Phase-1 `allow`, redemption, recovery-control, or exhausted-
+grant execution path; those shapes fail closed until separately frozen writers
+and their audit evidence exist.
 
 ## Commands
 
@@ -121,6 +131,7 @@ only deterministic internal consistency for this frozen Phase 1 artifact.
 cd protocol/execution
 npm test
 npm run check
+npm run test:mutations
 ```
 
 `npm run build` writes `dist/cairn-supervised-execution-phase1-v0.1.json` and

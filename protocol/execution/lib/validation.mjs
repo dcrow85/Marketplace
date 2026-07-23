@@ -659,7 +659,13 @@ export function validateActionGetResponse(request, response, context = {}) {
       failures.push(...validateGateRequest(
         response.gate_request, response.execution_binding_set, response.authority_basis,
         response.confirmation_receipt,
-        { ...evidenceContext, lineageCommitment: response.lineage_commitment }
+        {
+          ...evidenceContext,
+          lineageCommitment: response.lineage_commitment,
+          gateEvaluationTime: response.gate_result.evaluated_at,
+          confirmationEvaluationTime: response.gate_result.evaluated_at,
+          authorityServiceTime: Date.parse(response.gate_result.evaluated_at)
+        }
       ).map((code) => `action_get_gate_request_${code}`));
       failures.push(...validateGateResult(response.gate_result, {
         ...evidenceContext, gateRequest: response.gate_request,
@@ -882,15 +888,7 @@ export function validateControlAuthorization(value, context = {}) {
     const recovery = [value.recovery_grant_ref, value.recovery_grant_state_head_ref, value.recovery_grant_state_head_hash, value.recovery_use_idempotency_nonce];
     if (!(recovery.every(isNull) || recovery.every((item) => item !== null))) failures.push("control_recovery_union_mismatch");
     if (recovery.every((item) => item !== null)) {
-      const grant = resolveObject(context.objectResolver, value.recovery_grant_ref);
-      const head = resolveObject(context.objectResolver, value.recovery_grant_state_head_ref);
-      if (!grant || grant.schema !== "cairn.recovery_grant.v0.1" || grant.principal_id !== value.principal_id ||
-          !grant.allowed_control_actions?.includes(value.control_action) || !grant.allowed_scopes?.includes(value.scope) ||
-          grant.control_namespace_generation !== context.controlNamespaceGeneration) failures.push("control_recovery_grant_mismatch");
-      if (!head || head.schema !== "cairn.recovery_grant_state_head.v0.1" || head.state !== "active" ||
-          head.state_hash !== value.recovery_grant_state_head_hash || head.recovery_grant_ref?.object_hash !== value.recovery_grant_ref.object_hash) {
-        failures.push("control_recovery_head_mismatch");
-      }
+      failures.push("phase1_recovery_control_unsupported");
     }
     if (Date.parse(value.requested_at) >= Date.parse(value.expires_at)) failures.push("control_authorization_not_current_interval");
     return unique(failures);
@@ -899,11 +897,42 @@ export function validateControlAuthorization(value, context = {}) {
   }
 }
 
+export function scopedControlLeafKey(value) {
+  return canonicalHash({
+    schema: "cairn.scoped_execution_control_leaf_key_preimage.v0.1",
+    principal_id: value.principal_id,
+    control_namespace_generation: value.control_namespace_generation,
+    scope: value.scope,
+    target_kind: value.target_kind,
+    target_ref: value.target_ref,
+    compartment_control_key: value.compartment_control_key,
+    action_control_key: value.action_control_key
+  });
+}
+
+function controlTransitionFailures(action, beforeState, beforePauseEpoch, beforeNonce,
+  afterState, afterPauseEpoch, afterNonce) {
+  const valid = new Map([
+    ["pause", beforeState === "active" && afterState === "paused" &&
+      afterPauseEpoch === beforePauseEpoch + 1 && afterNonce === beforeNonce],
+    ["freeze_new_redemptions", beforeState === "active" && afterState === "frozen_new_redemptions" &&
+      afterPauseEpoch === beforePauseEpoch + 1 && afterNonce === beforeNonce],
+    ["resume", ["paused", "frozen_new_redemptions"].includes(beforeState) && afterState === "active" &&
+      afterPauseEpoch === beforePauseEpoch && afterNonce === beforeNonce],
+    ["revoke", ["active", "paused", "frozen_new_redemptions"].includes(beforeState) &&
+      afterState === "revoked" && afterPauseEpoch === beforePauseEpoch && afterNonce === beforeNonce + 1]
+  ]).get(action);
+  return valid === true ? [] : ["control_transition_invalid"];
+}
+
 export function validateScopedControlLeaf(value, context = {}) {
   try {
     const failures = validatePhase1Object(value, context);
     if (failures.length) return failures;
     failures.push(...targetUnionFailures(value, true));
+    if (value.scoped_control_leaf_key !== scopedControlLeafKey(value)) {
+      failures.push("scoped_control_leaf_key_mismatch");
+    }
     if (value.state === "revoked" && value.revocation_nonce === 0) failures.push("revoked_control_without_nonce");
     return unique(failures);
   } catch {
@@ -938,6 +967,19 @@ export function validateExecutionControlReceipt(value, context = {}) {
     const scoped = value.cause === "scoped_control";
     const jointConnection = value.cause === "connection_joint_control";
     const scopedLeafCause = scoped || jointConnection;
+    const authorization = authorizationBasis
+      ? context.controlAuthorization ?? resolveObject(context.objectResolver, value.control_authorization_ref)
+      : null;
+    const recoveryAuthorization = authorization !== null && authorization?.recovery_grant_ref !== null;
+    const recoveryReceiptPresent = value.recovery_grant_transition_receipt_ref !== null;
+    if (recoveryReceiptPresent !== recoveryAuthorization || recoveryReceiptPresent) {
+      failures.push("phase1_recovery_control_unsupported");
+    }
+    if (authorizationBasis && authorization &&
+        ((authorization.scope === "connection") !== jointConnection ||
+         (authorization.scope !== "connection" && !["global_control", "scoped_control"].includes(value.cause)))) {
+      failures.push("execution_control_receipt_cause_scope_mismatch");
+    }
     if (scopedLeafCause !== (value.scoped_leaf_after_ref !== null) ||
         (jointConnection && value.scoped_leaf_before_ref === null) ||
         (!scopedLeafCause && (value.scoped_leaf_before_ref !== null || value.scoped_leaf_after_ref !== null)) ||
@@ -957,6 +999,15 @@ export function validateExecutionControlReceipt(value, context = {}) {
           after.previous_head_hash !== before.head_hash || after.principal_id !== before.principal_id ||
           after.principal_id !== value.principal_id))) {
       failures.push("execution_control_receipt_head_transition_mismatch");
+    }
+    if (after?.updated_at !== value.committed_at) {
+      failures.push("execution_control_receipt_head_time_mismatch");
+    }
+    if (authorizationBasis && before && after &&
+        (after.authority_namespace !== before.authority_namespace ||
+         !sameObjectRef(after.control_namespace_ref, before.control_namespace_ref) ||
+         after.control_namespace_generation !== before.control_namespace_generation)) {
+      failures.push("execution_control_receipt_namespace_identity_mismatch");
     }
     if ((before === null
       ? value.before_scoped_control_map_ref !== null || value.before_scoped_control_map_hash !== null
@@ -986,8 +1037,6 @@ export function validateExecutionControlReceipt(value, context = {}) {
       failures.push("execution_control_receipt_map_commitment_mismatch");
     }
     if (authorizationBasis) {
-      const authorization = context.controlAuthorization ??
-        resolveObject(context.objectResolver, value.control_authorization_ref);
       if (!authorization || authorization.schema !== "cairn.execution_control_authorization.v0.1" ||
           !exactRef(value.control_authorization_ref, authorization, context)) {
         failures.push("execution_control_receipt_authorization_unresolved");
@@ -1013,17 +1062,19 @@ export function validateExecutionControlReceipt(value, context = {}) {
           failures.push("execution_control_receipt_authorized_transition_mismatch");
         }
         const beforeTarget = authorization.scope === "all_agents" ? before :
-          value.scoped_leaf_before_ref === null ? null :
-            resolveObject(context.objectResolver, value.scoped_leaf_before_ref);
+          value.scoped_leaf_before_ref === null
+            ? resolveObject(context.objectResolver, value.scoped_leaf_after_ref)
+            : resolveObject(context.objectResolver, value.scoped_leaf_before_ref);
         const targetFields = ["scope", "target_kind", "target_ref", "compartment_control_key", "action_control_key"];
         if (authorization.scope !== "all_agents" && (!beforeTarget ||
             targetFields.some((field) => canonicalHash(authorization[field]) !== canonicalHash(beforeTarget[field])))) {
           failures.push("execution_control_receipt_target_mismatch");
         }
+        const insertingLeaf = authorization.scope !== "all_agents" && value.scoped_leaf_before_ref === null;
         const beforePauseEpoch = authorization.scope === "all_agents"
-          ? before?.global_pause_epoch : beforeTarget?.pause_epoch;
+          ? before?.global_pause_epoch : insertingLeaf ? 0 : beforeTarget?.pause_epoch;
         const beforeRevocationNonce = authorization.scope === "all_agents"
-          ? before?.global_revocation_nonce : beforeTarget?.revocation_nonce;
+          ? before?.global_revocation_nonce : insertingLeaf ? 0 : beforeTarget?.revocation_nonce;
         if (authorization.expected_pause_epoch !== beforePauseEpoch ||
             authorization.expected_revocation_nonce !== beforeRevocationNonce) {
           failures.push("execution_control_receipt_epoch_nonce_mismatch");
@@ -1043,6 +1094,33 @@ export function validateExecutionControlReceipt(value, context = {}) {
             (!sameObjectRef(namespace.prior_namespace_ref, value.prior_control_namespace_ref) || before === null))) {
         failures.push("execution_control_receipt_namespace_basis_mismatch");
       }
+      if (value.cause === "namespace_genesis" && after &&
+          (after.global_state !== "active" || after.global_pause_epoch !== 0 ||
+           after.global_revocation_nonce !== 0 || after.sequence !== 0 || after.previous_head_hash !== null)) {
+        failures.push("execution_control_receipt_namespace_genesis_invalid");
+      }
+      if (value.cause === "namespace_rotation" && before && after && namespace) {
+        const priorNamespace = resolveObject(context.objectResolver, value.prior_control_namespace_ref);
+        const priorHead = resolveObject(context.objectResolver, value.prior_revoked_control_head_ref);
+        if (!priorNamespace || priorNamespace.schema !== "cairn.execution_control_namespace.v0.1" ||
+            !exactRef(value.prior_control_namespace_ref, priorNamespace, context) ||
+            (context.requireDependencySignatures === true && validateResolvedSignedObject(priorNamespace, context).length) ||
+            !priorHead || !exactRef(value.prior_revoked_control_head_ref, priorHead, context) ||
+            !sameObjectRef(value.prior_revoked_control_head_ref, value.before_control_head_ref) ||
+            (context.requireDependencySignatures === true && validateResolvedSignedObject(priorHead, context).length) ||
+            priorHead.global_state !== "revoked" ||
+            !sameObjectRef(priorHead.control_namespace_ref, value.prior_control_namespace_ref) ||
+            priorHead.control_namespace_generation !== priorNamespace.generation ||
+            priorNamespace.principal_id !== value.principal_id ||
+            priorNamespace.authority_namespace !== priorHead.authority_namespace ||
+            namespace.generation !== priorNamespace.generation + 1 ||
+            !sameObjectRef(namespace.prior_revoked_head_ref, value.prior_revoked_control_head_ref) ||
+            after.global_state !== "active" || after.global_pause_epoch !== 0 ||
+            after.global_revocation_nonce !== 0 ||
+            after.authority_namespace !== namespace.authority_namespace) {
+          failures.push("execution_control_receipt_namespace_rotation_invalid");
+        }
+      }
     }
     if (scopedLeafCause) {
       const leafBefore = value.scoped_leaf_before_ref === null ? null :
@@ -1059,6 +1137,14 @@ export function validateExecutionControlReceipt(value, context = {}) {
             leafAfter.scoped_control_leaf_key !== leafBefore.scoped_control_leaf_key ||
             leafAfter.principal_id !== leafBefore.principal_id))) {
         failures.push("execution_control_receipt_scoped_leaf_transition_mismatch");
+      }
+      const leafIdentityFields = ["principal_id", "control_namespace_generation", "scope", "target_kind",
+        "target_ref", "compartment_control_key", "action_control_key", "scoped_control_leaf_key"];
+      if (leafAfter?.updated_at !== value.committed_at ||
+          leafAfter?.control_namespace_generation !== after?.control_namespace_generation ||
+          (leafBefore !== null && leafIdentityFields.some((field) =>
+            canonicalHash(leafAfter?.[field]) !== canonicalHash(leafBefore?.[field])))) {
+        failures.push("execution_control_receipt_scoped_leaf_identity_mismatch");
       }
       const beforeProof = beforeMap === null ? null : validateEnumerableMapPathProof(
         value.before_change_proof, beforeMap,
@@ -1080,25 +1166,26 @@ export function validateExecutionControlReceipt(value, context = {}) {
         afterMap?.revision === beforeMap?.revision + 1 &&
         afterMap?.entry_count === beforeMap?.entry_count + (leafBefore === null ? 1 : 0);
       if (!proofValid) failures.push("execution_control_receipt_map_proof_mismatch");
-      const transitionMatrixValid = leafBefore && leafAfter && new Map([
-        ["pause", leafBefore.state === "active" && leafAfter.state === "paused" &&
-          leafAfter.pause_epoch === leafBefore.pause_epoch + 1 &&
-          leafAfter.revocation_nonce === leafBefore.revocation_nonce],
-        ["resume", ["paused", "frozen_new_redemptions"].includes(leafBefore.state) &&
-          leafAfter.state === "active" && leafAfter.pause_epoch === leafBefore.pause_epoch &&
-          leafAfter.revocation_nonce === leafBefore.revocation_nonce],
-        ["freeze_new_redemptions", leafBefore.state === "active" &&
-          leafAfter.state === "frozen_new_redemptions" && leafAfter.pause_epoch === leafBefore.pause_epoch &&
-          leafAfter.revocation_nonce === leafBefore.revocation_nonce],
-        ["revoke", leafBefore.state !== "revoked" && leafAfter.state === "revoked" &&
-          leafAfter.pause_epoch === leafBefore.pause_epoch &&
-          leafAfter.revocation_nonce === leafBefore.revocation_nonce + 1]
-      ]).get(authorizationBasis
-        ? (context.controlAuthorization ?? resolveObject(context.objectResolver,
-          value.control_authorization_ref))?.control_action
-        : null);
-      if (authorizationBasis && transitionMatrixValid !== true) {
+      const transitionBefore = leafBefore ?? {
+        state: "active", pause_epoch: 0, revocation_nonce: 0, sequence: -1, head_hash: null
+      };
+      if (leafBefore === null && leafAfter &&
+          (leafAfter.sequence !== 0 || leafAfter.previous_state_hash !== null ||
+           authorization?.control_action === "resume")) {
+        failures.push("execution_control_receipt_scoped_genesis_invalid");
+      }
+      if (authorizationBasis && (!leafAfter || controlTransitionFailures(
+        authorization?.control_action,
+        transitionBefore.state, transitionBefore.pause_epoch, transitionBefore.revocation_nonce,
+        leafAfter.state, leafAfter.pause_epoch, leafAfter.revocation_nonce
+      ).length)) {
         failures.push("execution_control_receipt_transition_mismatch");
+      }
+      if (before && after &&
+          (after.global_state !== before.global_state ||
+           after.global_pause_epoch !== before.global_pause_epoch ||
+           after.global_revocation_nonce !== before.global_revocation_nonce)) {
+        failures.push("execution_control_receipt_scoped_global_tuple_mismatch");
       }
     } else if (value.before_change_proof !== null || value.after_change_proof !== null) {
       failures.push("execution_control_receipt_map_proof_mismatch");
@@ -1113,9 +1200,20 @@ export function validateExecutionControlReceipt(value, context = {}) {
          afterMap?.entries_root !== enumerableMapEmptyEntriesRoot("scoped_execution_control"))) {
       failures.push("execution_control_receipt_map_commitment_mismatch");
     }
+    if (value.cause === "global_control" && authorizationBasis && before && after &&
+        controlTransitionFailures(
+          authorization?.control_action,
+          before.global_state, before.global_pause_epoch, before.global_revocation_nonce,
+          after.global_state, after.global_pause_epoch, after.global_revocation_nonce
+        ).length) {
+      failures.push("execution_control_receipt_transition_mismatch");
+    }
     if (jointConnection) {
       const connectionReceipt = resolveObject(context.objectResolver, value.connection_state_event_receipt_ref);
       const outstandingHead = resolveObject(context.objectResolver, value.outstanding_action_index_head_ref);
+      const connectionAfter = connectionReceipt
+        ? resolveObject(context.objectResolver, connectionReceipt.connection_after_head_ref)
+        : null;
       if (!connectionReceipt || connectionReceipt.schema !== "cairn.connection_state_event_receipt.v0.1" ||
           !exactRef(value.connection_state_event_receipt_ref, connectionReceipt, context) ||
           (context.requireDependencySignatures === true &&
@@ -1127,9 +1225,18 @@ export function validateExecutionControlReceipt(value, context = {}) {
       if (!outstandingHead ||
           outstandingHead.schema !== "cairn.connection_outstanding_action_index_state_head.v0.1" ||
           !exactRef(value.outstanding_action_index_head_ref, outstandingHead, context) ||
-          validateConnectionOutstandingIndexHead(outstandingHead, context).length ||
+          validateConnectionOutstandingIndexHead(outstandingHead, {
+            ...context, expectedConnectionStateId: connectionAfter?.connection_state_id
+          }).length ||
           (context.requireDependencySignatures === true &&
-            validateResolvedSignedObject(outstandingHead, context).length)) {
+            validateResolvedSignedObject(outstandingHead, context).length) ||
+          !sameObjectRef(resolveCurrentHead(context, value.outstanding_action_index_head_ref),
+            value.outstanding_action_index_head_ref) ||
+          !connectionAfter || !exactRef(connectionReceipt?.connection_after_head_ref, connectionAfter, context) ||
+          connectionAfter.connection_state_id !== outstandingHead?.connection_state_id ||
+          !sameObjectRef(connectionReceipt?.outstanding_action_index_after_head_ref,
+            value.outstanding_action_index_head_ref) ||
+          !sameObjectRef(authorization?.target_ref, connectionReceipt?.connection_authorization_ref)) {
         failures.push("execution_control_receipt_outstanding_dependency_invalid");
       }
     }
@@ -1507,6 +1614,13 @@ export function compartmentEconomicAtomSubsetRoot(ledgerClass, entries) {
 export function compartmentConfirmedEventSubsetRoot(eventKind, entries) {
   return compartmentSubsetRoot(`confirmed_event:${eventKind}`,
     entries.filter(({ object }) => object?.event_kind === eventKind));
+}
+
+export function compartmentConfirmedEventComponentRoot(componentIds) {
+  return canonicalHash({
+    schema: "cairn.confirmed_economic_event_component_set_preimage.v0.1",
+    component_ids: [...new Set(componentIds)].sort()
+  });
 }
 
 export function currentReservationHeldAtomsRoot(reservation, entries) {
@@ -3596,6 +3710,49 @@ export function validateCompartmentStateTransitionReceipt(value, context = {}) {
         }
       }
     }
+    const reservationBeforeSnapshot = resolveSnapshot(
+      value.reservation_manifest_before_ref, "compartment_active_reservation"
+    );
+    const reservationAfterSnapshot = resolveSnapshot(
+      value.reservation_manifest_after_ref, "compartment_active_reservation"
+    );
+    if (reservationBeforeSnapshot.failures.length || reservationAfterSnapshot.failures.length) {
+      failures.push("compartment_transition_reservation_map_unresolved");
+    } else {
+      const reservationKeys = [...new Set([
+        ...reservationBeforeSnapshot.entries.keys(), ...reservationAfterSnapshot.entries.keys()
+      ])];
+      const immutableReservationFields = [
+        "reservation_index_key", "compartment_control_key", "authority_reservation_ref",
+        "authority_reservation_hash", "action_ref", "effect_id", "lineage_id", "reservation_fence"
+      ];
+      for (const key of reservationKeys) {
+        const beforeEntry = reservationBeforeSnapshot.entries.get(key);
+        const afterEntry = reservationAfterSnapshot.entries.get(key);
+        const beforeReservation = beforeEntry?.object ?? null;
+        const afterReservation = afterEntry?.object ?? null;
+        if (beforeReservation && afterReservation && immutableReservationFields.some((field) =>
+          canonicalHash(beforeReservation[field]) !== canonicalHash(afterReservation[field]))) {
+          failures.push("compartment_transition_reservation_provenance_mismatch");
+          continue;
+        }
+        if (beforeEntry?.leaf.entry_object_hash === afterEntry?.leaf.entry_object_hash) continue;
+        const relevantDeltas = deltaEntries.filter((delta) => {
+          const reservation = afterReservation ?? beforeReservation;
+          return reservation && delta.obligation_or_reservation_id === reservation.authority_reservation_ref?.object_id &&
+            [
+              atomBeforeSnapshot.entries.get(delta.atom_id)?.object?.reservation_fence,
+              atomAfterSnapshot.entries.get(delta.atom_id)?.object?.reservation_fence
+            ].includes(reservation.reservation_fence) &&
+            (delta.before_class === "reserved" || delta.after_class === "reserved");
+        });
+        if (relevantDeltas.length === 0 ||
+            (!beforeReservation && !relevantDeltas.some((delta) => delta.after_class === "reserved")) ||
+            (!afterReservation && !relevantDeltas.some((delta) => delta.before_class === "reserved"))) {
+          failures.push("compartment_transition_reservation_change_unexplained");
+        }
+      }
+    }
     const eventBeforeSnapshot = resolveSnapshot(value.confirmed_event_manifest_before_ref, "compartment_confirmed_event");
     const eventAfterSnapshot = resolveSnapshot(value.confirmed_event_manifest_after_ref, "compartment_confirmed_event");
     if (eventBeforeSnapshot.failures.length || eventAfterSnapshot.failures.length) {
@@ -3619,6 +3776,38 @@ export function validateCompartmentStateTransitionReceipt(value, context = {}) {
           (expectedEventKind !== undefined &&
             (insertedEvents.length === 0 || insertedEvents.some(({ object }) => object?.event_kind !== expectedEventKind)))) {
         failures.push("compartment_transition_confirmed_event_diff_mismatch");
+      }
+      if (expectedEventKind !== undefined) {
+        const relevantDeltas = deltaEntries.filter((delta) => delta.after_class === expectedEventKind);
+        const grouped = new Map();
+        for (const delta of relevantDeltas) {
+          const afterAtom = atomAfterSnapshot.entries.get(delta.atom_id)?.object;
+          const group = grouped.get(delta.obligation_or_reservation_id) ?? [];
+          group.push({ delta, afterAtom });
+          grouped.set(delta.obligation_or_reservation_id, group);
+        }
+        const unmatchedEvents = new Set(insertedEvents);
+        let correlationInvalid = grouped.size !== insertedEvents.length;
+        for (const [obligationId, group] of grouped) {
+          const expectedAmount = checkedAmountSum(group.map(({ delta }) => ({
+            object: { amount: delta.amount }
+          })));
+          const expectedComponentRoot = compartmentConfirmedEventComponentRoot(
+            group.map(({ afterAtom }) => afterAtom?.component_id).filter(Boolean)
+          );
+          const matches = insertedEvents.filter(({ object }) =>
+            object?.event_kind === expectedEventKind &&
+            object?.obligation_exposure_id === obligationId &&
+            object?.component_ids_root === expectedComponentRoot &&
+            object?.amount?.asset === compartmentAssetForState(after, context) &&
+            amount(object?.amount) === expectedAmount);
+          if (expectedAmount === null || matches.length !== 1 || group.some(({ afterAtom }) => !afterAtom)) {
+            correlationInvalid = true;
+          } else unmatchedEvents.delete(matches[0]);
+        }
+        if (correlationInvalid || unmatchedEvents.size !== 0) {
+          failures.push("compartment_transition_confirmed_event_correlation_mismatch");
+        }
       }
     }
     const headManifestPairs = [
@@ -4137,13 +4326,17 @@ function cancellationOriginalActionFailures(cancellation, binding, context = {})
     ...validateActionRecord(originalAction, context).map((code) => `original_action_${code}`),
     ...validatePhase1Object(originalState, context).map((code) => `original_action_state_${code}`)
   ];
-  if (context.requireDependencySignatures === true) {
-    if (validateResolvedSignedObject(originalAction, context).length) {
-      failures.push("cancellation_original_action_signature_invalid");
-    }
-    if (validateResolvedSignedObject(originalState, context).length) {
-      failures.push("cancellation_original_action_state_signature_invalid");
-    }
+  if (validateResolvedSignedObject(originalAction, context).length) {
+    failures.push("cancellation_original_action_signature_invalid");
+  }
+  if (validateResolvedSignedObject(originalState, context).length) {
+    failures.push("cancellation_original_action_state_signature_invalid");
+  }
+  if (!isHistoricalEvidence(context) &&
+      !sameObjectRef(resolveCurrentHead(
+        context, cancellation.original_action_state_head_ref, context.gateEvaluationTime ?? context.now
+      ), cancellation.original_action_state_head_ref)) {
+    failures.push("cancellation_original_action_state_not_current");
   }
   if (!exactRef(cancellation.original_action_ref, originalAction, context) ||
       !exactRef(cancellation.original_action_state_head_ref, originalState, context) ||
@@ -4365,10 +4558,7 @@ export function validateBindingSet(value, context = {}) {
           !sameObjectRef(current.data_grant_ref, head.data_grant_ref) || current.revocation_nonce !== head.revocation_nonce) {
         failures.push("binding_data_grant_current_head_mismatch");
       }
-      const finalReadDisclosure = current?.state === "exhausted" && value.disclosures.some((disclosure) =>
-        sameObjectRef(disclosure.source_read_next_state_head_ref, head.current_state_head_ref) &&
-        disclosure.source_read_next_state_head_hash === head.current_state_head_ref.object_hash);
-      if (!current || !((current.state === "active" && current.remaining_reads > 0) || finalReadDisclosure)) {
+      if (!current || current.state !== "active" || current.remaining_reads <= 0) {
         failures.push("binding_data_grant_state_ineligible");
       }
     }
@@ -4949,11 +5139,13 @@ export function validateGateDependencyAttestation(value, context = {}) {
     failures.push(...refHashPairFailures(value, [
       ["subject_ref", "subject_hash"]
     ], "gate_dependency_attestation_ref_hash_mismatch"));
+    const evaluationAt = Date.parse(context.gateEvaluationTime ?? context.now);
     if (!GATE_WRAPPER_ROLES.has(value.dependency_role) ||
         expectedGateDependencyAuthority(context, value.dependency_role) !== value.issuing_authority_id ||
         Date.parse(value.valid_from) >= Date.parse(value.valid_until) ||
         Date.parse(value.issued_at) < Date.parse(value.valid_from) ||
-        Date.parse(value.issued_at) >= Date.parse(value.valid_until)) {
+        Date.parse(value.issued_at) >= Date.parse(value.valid_until) ||
+        (Number.isFinite(evaluationAt) && Date.parse(value.issued_at) > evaluationAt)) {
       failures.push("gate_dependency_attestation_semantics_invalid");
     }
     return unique(failures);
@@ -4967,13 +5159,15 @@ export function validateGateDependencyStateHead(value, context = {}) {
     const failures = validatePhase1Object(value, context);
     if (failures.length) return failures;
     const source = resolveObject(context.objectResolver, value.source_ref);
+    const evaluationAt = Date.parse(context.gateEvaluationTime ?? context.now);
     if (!GATE_WRAPPER_ROLES.has(value.dependency_role) ||
         (value.sequence === 0) !== (value.previous_head_hash === null) ||
         (value.sequence === 0 && value.state !== "active") ||
         value.source_hash !== value.source_ref.object_hash ||
         Date.parse(value.valid_from) >= Date.parse(value.valid_until) ||
         Date.parse(value.updated_at) < Date.parse(value.valid_from) ||
-        Date.parse(value.updated_at) >= Date.parse(value.valid_until)) {
+        Date.parse(value.updated_at) >= Date.parse(value.valid_until) ||
+        (Number.isFinite(evaluationAt) && Date.parse(value.updated_at) > evaluationAt)) {
       failures.push("gate_dependency_state_semantics_invalid");
     }
     if (!source || !exactRef(value.source_ref, source, context) ||
@@ -5042,6 +5236,7 @@ export function gateRequiredHeadRefs(request, binding) {
   if (!request || !binding) return [];
   return sortedUniqueRefs([
     binding.execution_release_state_head_ref,
+    binding.cancellation_context?.original_action_state_head_ref ?? null,
     request.execution_integrity_state_head_ref,
     request.confirmation_assurance_policy_lifecycle_head_ref,
     request.confirmation_verifier_profile_lifecycle_head_ref,
@@ -5104,6 +5299,12 @@ function gateDependencyGraph(request, binding, context = {}) {
   const evidenceRefs = [];
   const roleStates = new Map();
   const evaluationAt = Date.parse(context.gateEvaluationTime ?? request?.requested_at);
+  const dependencyContext = {
+    ...context,
+    now: Number.isFinite(evaluationAt) ? new Date(evaluationAt).toISOString().replace(".000Z", "Z") : context.now,
+    requireDependencySignatures: true,
+    requireCurrentKeyEligibility: true
+  };
   for (const { role, reference } of gateDependencyRoleEntries(request, binding)) {
     const roleState = roleStates.get(role) ?? { authenticationFailures: [], eligible: true, evidenceRefs: [] };
     roleState.evidenceRefs.push(reference);
@@ -5115,7 +5316,7 @@ function gateDependencyGraph(request, binding, context = {}) {
       roleState.authenticationFailures.push("unresolved");
       continue;
     }
-    if (validateResolvedSignedObject(object, context).length) {
+    if (validateResolvedSignedObject(object, dependencyContext).length) {
       authenticationFailures.push(`gate_request_dependency_signature_invalid:${role}`);
       roleState.authenticationFailures.push("signature_invalid");
       continue;
@@ -5125,10 +5326,10 @@ function gateDependencyGraph(request, binding, context = {}) {
         (role === "policy" && object.dependency_role === "policy_lifecycle");
       const source = resolveObject(context.objectResolver, object.source_ref);
       if (!roleMatches || object.principal_id !== binding?.principal_id ||
-          validateGateDependencyStateHead(object, context).length ||
+          validateGateDependencyStateHead(object, dependencyContext).length ||
           !source || source.schema !== "cairn.gate_dependency_attestation.v0.1" ||
           !exactRef(object.source_ref, source, context) || object.source_hash !== source.attestation_hash ||
-          validateGateDependencyAttestation(source, context).length ||
+          validateGateDependencyAttestation(source, dependencyContext).length ||
           source.principal_id !== object.principal_id || source.dependency_role !== object.dependency_role ||
           object.dependency_key !== gateDependencyKey(
             object.principal_id, object.dependency_role, source.subject_ref
@@ -5158,7 +5359,7 @@ function gateDependencyGraph(request, binding, context = {}) {
         "cairn.confirmation_assurance_policy.v0.1", "cairn.confirmation_verifier_profile.v0.1"
       ])]
     ]).get(role);
-    if (!allowedSchemas?.has(object.schema) || intrinsicObjectFailures(object, context).length) {
+    if (!allowedSchemas?.has(object.schema) || intrinsicObjectFailures(object, dependencyContext).length) {
       authenticationFailures.push(`gate_request_dependency_semantics_invalid:${role}`);
       roleState.authenticationFailures.push("semantics_invalid");
       continue;
@@ -5188,7 +5389,7 @@ export function evaluateGateChecks(request, binding, authority, confirmation, co
   ]);
   const rolePass = (...roles) => roles.every((role) => {
     const state = graph.roleStates.get(role);
-    return !state || (state.authenticationFailures.length === 0 && state.eligible);
+    return Boolean(state) && state.authenticationFailures.length === 0 && state.eligible;
   });
   const roleEvidence = (...roles) => sortedUniqueRefs([
     ...coreEvidence,
@@ -5260,9 +5461,18 @@ export function evaluateGateChecks(request, binding, authority, confirmation, co
       reservationsOkay,
       roleEvidence("checkout_dependency", "checkout_readiness", "checkout_group_state", "checkout_terms", "authority_reservation")]]
   ]);
+  const phase1UnsupportedChecks = new Set([
+    "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",
+    "ECONOMIC_EXPOSURE", "DUPLICATE_EFFECT_LINEAGE", "EXECUTOR_TARGET",
+    "DOMAIN_POLICY", "ATOMIC_PRECONDITIONS"
+  ]);
   return PHASE1_GATE_CHECK_CODES.map((code) => {
     const [pass, evidenceRefs] = checks.get(code);
-    return { code, decision: pass ? "pass" : "deny", evidence_refs: evidenceRefs };
+    return {
+      code,
+      decision: pass && !phase1UnsupportedChecks.has(code) ? "pass" : "deny",
+      evidence_refs: evidenceRefs
+    };
   });
 }
 
@@ -5346,8 +5556,8 @@ export function gateCheckoutDependencyRoot(request) {
   });
 }
 
-function resolveCurrentHead(context, reference) {
-  if (typeof context.currentHeadResolver === "function") return context.currentHeadResolver(reference);
+function resolveCurrentHead(context, reference, evaluationTime = context.gateEvaluationTime ?? context.now) {
+  if (typeof context.currentHeadResolver === "function") return context.currentHeadResolver(reference, evaluationTime);
   if (context.currentHeadResolver instanceof Map) {
     return context.currentHeadResolver.get(canonicalText({ schema: reference.schema, object_id: reference.object_id })) ?? null;
   }
@@ -5356,9 +5566,12 @@ function resolveCurrentHead(context, reference) {
 
 export function validateGateRequest(value, binding, authority, confirmation, context = {}) {
   try {
-    const failures = validatePhase1Object(value, context);
+    const liveContext = isHistoricalEvidence(context)
+      ? context
+      : { ...context, requireDependencySignatures: true, requireCurrentKeyEligibility: true };
+    const failures = validatePhase1Object(value, liveContext);
     if (failures.length) return failures;
-    if (validateResolvedSignedObject(value, context).length) {
+    if (validateResolvedSignedObject(value, liveContext).length) {
       failures.push("gate_request_signature_invalid");
     }
     failures.push(...refHashPairFailures(value, [
@@ -5367,24 +5580,24 @@ export function validateGateRequest(value, binding, authority, confirmation, con
       ["confirmation_assurance_policy_lifecycle_head_ref", "confirmation_assurance_policy_lifecycle_head_hash"],
       ["confirmation_verifier_profile_lifecycle_head_ref", "confirmation_verifier_profile_lifecycle_head_hash"]
     ], "gate_request_ref_hash_mismatch"));
-    if (!binding || !exactRef(value.execution_binding_set_ref, binding, context) || value.execution_binding_set_hash !== binding.binding_set_hash ||
+    if (!binding || !exactRef(value.execution_binding_set_ref, binding, liveContext) || value.execution_binding_set_hash !== binding.binding_set_hash ||
         value.principal_id !== binding.principal_id || value.action_control_key !== binding.action_control_key) failures.push("gate_request_binding_mismatch");
-    if (binding && validateResolvedSignedObject(binding, context).length) {
+    if (binding && validateResolvedSignedObject(binding, liveContext).length) {
       failures.push("gate_request_binding_signature_invalid");
     }
-    if (authority && validateResolvedSignedObject(authority, context).length) {
+    if (authority && validateResolvedSignedObject(authority, liveContext).length) {
       failures.push("gate_request_authority_signature_invalid");
     }
-    if (confirmation && validateResolvedSignedObject(confirmation, context).length) {
+    if (confirmation && validateResolvedSignedObject(confirmation, liveContext).length) {
       failures.push("gate_request_confirmation_signature_invalid");
     }
-    failures.push(...gateDependencyProjectionFailures(value, binding, authority, confirmation, context));
+    failures.push(...gateDependencyProjectionFailures(value, binding, authority, confirmation, liveContext));
     const requiredHeadRefs = gateRequiredHeadRefs(value, binding);
     if (!isHistoricalEvidence(context) && (requiredHeadRefs.length > 128 || requiredHeadRefs.some((reference) =>
-      !sameObjectRef(resolveCurrentHead(context, reference), reference)))) {
+      !sameObjectRef(resolveCurrentHead(liveContext, reference), reference)))) {
       failures.push("gate_request_current_head_set_mismatch");
     }
-    const dependencyGraph = gateDependencyGraph(value, binding, context);
+    const dependencyGraph = gateDependencyGraph(value, binding, liveContext);
     failures.push(...dependencyGraph.authenticationFailures);
     const expectedGrantHeads = sortedUniqueRefs(binding?.data_grant_state_heads?.map(
       ({ current_state_head_ref }) => current_state_head_ref
@@ -5400,40 +5613,40 @@ export function validateGateRequest(value, binding, authority, confirmation, con
         canonicalHash(value.current_seller_copy_lease_heads_root) !== canonicalHash(binding?.seller_copy_lease_heads_root)) {
       failures.push("gate_request_complete_dependency_set_mismatch");
     }
-    if (!authority || !sameObjectRef(value.authority_basis_ref, objectRef(authority, context))) {
+    if (!authority || !sameObjectRef(value.authority_basis_ref, objectRef(authority, liveContext))) {
       failures.push("gate_request_authority_mismatch");
     } else if (binding?.capability === "cancel_receiver_action") {
       if (authority.schema !== "cairn.cancellation_authorization.v0.1" ||
-          validateCancellationAuthorization(authority, binding, context).length ||
+          validateCancellationAuthorization(authority, binding, liveContext).length ||
           !sameObjectRef(value.receiver_finality_profile_ref, binding.receiver_finality_profile_ref) ||
           !sameObjectRef(value.receiver_finality_profile_ref, binding.cancellation_context?.cancellation_finality_profile_ref)) {
         failures.push("gate_request_cancellation_authority_mismatch");
       }
     } else if (authority.schema === "cairn.action_authorization.v0.2") {
-      if (validateActionAuthorization(authority, binding, context).length ||
+      if (validateActionAuthorization(authority, binding, liveContext).length ||
           !sameObjectRef(authority.execution_binding_set_ref, value.execution_binding_set_ref)) {
         failures.push("gate_request_authority_binding_mismatch");
       }
     } else if (authority.schema === "cairn.agent_mandate.v0.3") {
-      if (validateMandate(authority, context).length) failures.push("gate_request_authority_semantics_invalid");
+      if (validateMandate(authority, liveContext).length) failures.push("gate_request_authority_semantics_invalid");
     } else {
       failures.push("gate_request_authority_schema_invalid");
     }
-    if (!confirmation || !sameObjectRef(value.confirmation_receipt_ref, objectRef(confirmation, context))) {
+    if (!confirmation || !sameObjectRef(value.confirmation_receipt_ref, objectRef(confirmation, liveContext))) {
       failures.push("gate_request_confirmation_mismatch");
     } else {
-      failures.push(...validateExecutionConfirmation(confirmation, authority, binding, value, context)
+      failures.push(...validateExecutionConfirmation(confirmation, authority, binding, value, liveContext)
         .map((code) => `gate_request_${code}`));
     }
     if (authority?.schema === "cairn.agent_mandate.v0.3") {
-      const commitment = context.lineageCommitment ?? resolveObject(context.objectResolver, binding?.lineage_commitment_ref);
-      if (!commitment || !exactRef(binding?.lineage_commitment_ref, commitment, context)) {
+      const commitment = liveContext.lineageCommitment ?? resolveObject(liveContext.objectResolver, binding?.lineage_commitment_ref);
+      if (!commitment || !exactRef(binding?.lineage_commitment_ref, commitment, liveContext)) {
         failures.push("gate_request_mandate_commitment_unresolved");
       } else {
-        if (context.requireDependencySignatures === true && validateResolvedSignedObject(commitment, context).length) {
+        if (validateResolvedSignedObject(commitment, liveContext).length) {
           failures.push("gate_request_lineage_commitment_signature_invalid");
         }
-        failures.push(...mandateBindingFailures(authority, commitment, binding, context)
+        failures.push(...mandateBindingFailures(authority, commitment, binding, liveContext)
           .map((code) => `gate_request_${code}`));
       }
     }
@@ -5469,6 +5682,15 @@ export function validateGateResult(value, context = {}) {
       resolveObject(context.objectResolver, gateRequest?.confirmation_receipt_ref);
     const lineageCommitment = context.lineageCommitment ??
       resolveObject(context.objectResolver, binding?.lineage_commitment_ref);
+    const evaluationContext = {
+      ...context,
+      now: value.evaluated_at,
+      gateEvaluationTime: value.evaluated_at,
+      confirmationEvaluationTime: value.evaluated_at,
+      authorityServiceTime: Date.parse(value.evaluated_at),
+      requireDependencySignatures: true,
+      requireCurrentKeyEligibility: true
+    };
     if (!gateRequest || gateRequest.schema !== "cairn.gate_request.v0.2" ||
         validatePhase1Object(gateRequest, context).length || !exactRef(value.gate_request_ref, gateRequest, context) ||
         value.gate_request_hash !== gateRequest.request_hash) {
@@ -5484,9 +5706,7 @@ export function validateGateResult(value, context = {}) {
     }
     if (gateRequest && binding) {
       failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {
-        ...context, lineageCommitment, gateEvaluationTime: value.evaluated_at,
-        confirmationEvaluationTime: value.evaluated_at,
-        authorityServiceTime: Date.parse(value.evaluated_at)
+        ...evaluationContext, lineageCommitment
       }).map((code) => `gate_result_${code}`));
     }
     if (gateRequest && binding &&
@@ -5508,17 +5728,16 @@ export function validateGateResult(value, context = {}) {
         })) {
       failures.push("gate_result_complete_head_commitment_mismatch");
     }
-    const expectedCheckResults = evaluateGateChecks(gateRequest, binding, authority, confirmation, {
-      ...context, gateEvaluationTime: value.evaluated_at,
-      confirmationEvaluationTime: value.evaluated_at,
-      authorityServiceTime: Date.parse(value.evaluated_at)
-    });
+    const expectedCheckResults = evaluateGateChecks(
+      gateRequest, binding, authority, confirmation, { ...evaluationContext, lineageCommitment }
+    );
     const expectedDecision = expectedCheckResults.every(({ decision }) => decision === "pass") ? "allow" : "deny";
     if (canonicalHash(actualCodes) !== canonicalHash(expectedCodes) ||
         canonicalHash(value.check_results) !== canonicalHash(expectedCheckResults) ||
         value.decision !== expectedDecision) {
       failures.push("gate_result_check_set_mismatch");
     }
+    if (value.decision === "allow") failures.push("phase1_gate_allow_unsupported");
     const requestedAt = Date.parse(gateRequest?.requested_at);
     const evaluatedAt = Date.parse(value.evaluated_at);
     const expiresAt = Date.parse(value.expires_at);
@@ -5572,6 +5791,7 @@ export function validateExecutionRedemptionReceipt(value, gateResult, binding, c
   try {
     const failures = validatePhase1Object(value, context);
     if (failures.length) return failures;
+    failures.push("phase1_redemption_unsupported");
     const gateRequest = context.gateRequest ?? resolveObject(context.objectResolver, gateResult?.gate_request_ref);
     if (!gateResult || gateResult.decision !== "allow" ||
         validateGateResult(gateResult, { ...context, gateRequest, binding }).length ||

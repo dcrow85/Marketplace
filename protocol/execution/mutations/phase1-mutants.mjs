@@ -3,7 +3,7 @@ export const PHASE1_MUTANTS = [
     id: "audited-spec-pin",
     finding: "fixed-prose-dependency",
     file: "lib/profile.mjs",
-    search: 'export const SPEC_SHA256 = "84ce1928f090977cc5691f35f161c21b6504fc1b9e52394745f808d2703e732a";',
+    search: 'export const SPEC_SHA256 = "3c0452ab6d8a9ed7e1b029a26cd07d454da755f22168392d2e9b13ff2c858aec";',
     replace: 'export const SPEC_SHA256 = "4d5f0b93b553ad05cc9405ec26f53cdd58a807219a7da2b0c7cafb3d482a8764";',
     expectedStage: "build",
     expectedOutput: "audited prose spec hash differs"
@@ -1248,7 +1248,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-mandate-semantic-binding",
     finding: "standalone-gate-skips-selected-mandate-scope-closure",
     file: "lib/validation.mjs",
-    search: '        failures.push(...mandateBindingFailures(authority, commitment, binding, context)\n          .map((code) => `gate_request_${code}`));',
+    search: '        failures.push(...mandateBindingFailures(authority, commitment, binding, liveContext)\n          .map((code) => `gate_request_${code}`));',
     replace: '        failures.push(...[]);',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1876,7 +1876,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-result-gate-request-semantics",
     finding: "gate-result-skips-authority-and-confirmation-semantics",
     file: "lib/validation.mjs",
-    search: '    if (gateRequest && binding) {\n      failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {\n        ...context, lineageCommitment, gateEvaluationTime: value.evaluated_at,\n        confirmationEvaluationTime: value.evaluated_at,\n        authorityServiceTime: Date.parse(value.evaluated_at)\n      }).map((code) => `gate_result_${code}`));\n    }',
+    search: '    if (gateRequest && binding) {\n      failures.push(...validateGateRequest(gateRequest, binding, authority, confirmation, {\n        ...evaluationContext, lineageCommitment\n      }).map((code) => `gate_result_${code}`));\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -1884,7 +1884,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-action-authorization-semantics",
     finding: "gate-request-accepts-invalid-action-authorization",
     file: "lib/validation.mjs",
-    search: '      if (validateActionAuthorization(authority, binding, context).length ||\n          !sameObjectRef(authority.execution_binding_set_ref, value.execution_binding_set_ref)) {',
+    search: '      if (validateActionAuthorization(authority, binding, liveContext).length ||\n          !sameObjectRef(authority.execution_binding_set_ref, value.execution_binding_set_ref)) {',
     replace: '      if (false ||\n          !sameObjectRef(authority.execution_binding_set_ref, value.execution_binding_set_ref)) {',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2661,7 +2661,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-binding-dependency-signature",
     finding: "gate-request-trusts-an-unsigned-binding-dependency",
     file: "lib/validation.mjs",
-    search: '    if (binding && validateResolvedSignedObject(binding, context).length) {\n      failures.push("gate_request_binding_signature_invalid");\n    }',
+    search: '    if (binding && validateResolvedSignedObject(binding, liveContext).length) {\n      failures.push("gate_request_binding_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2669,7 +2669,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-authority-dependency-signature",
     finding: "gate-request-trusts-an-unsigned-authority-dependency",
     file: "lib/validation.mjs",
-    search: '    if (authority && validateResolvedSignedObject(authority, context).length) {\n      failures.push("gate_request_authority_signature_invalid");\n    }',
+    search: '    if (authority && validateResolvedSignedObject(authority, liveContext).length) {\n      failures.push("gate_request_authority_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2677,7 +2677,7 @@ export const PHASE1_MUTANTS = [
     id: "gate-request-confirmation-dependency-signature",
     finding: "gate-request-trusts-an-unsigned-confirmation-dependency",
     file: "lib/validation.mjs",
-    search: '    if (confirmation && validateResolvedSignedObject(confirmation, context).length) {\n      failures.push("gate_request_confirmation_signature_invalid");\n    }',
+    search: '    if (confirmation && validateResolvedSignedObject(confirmation, liveContext).length) {\n      failures.push("gate_request_confirmation_signature_invalid");\n    }',
     replace: '',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
   },
@@ -2805,7 +2805,7 @@ export const PHASE1_MUTANTS = [
     id: "cancellation-original-action-signature",
     finding: "cancellation-trusts-unsigned-original-action",
     file: "lib/validation.mjs",
-    search: '      failures.push("cancellation_original_action_signature_invalid");',
+    search: '    failures.push("cancellation_original_action_signature_invalid");',
     replace: '',
     test: "cancellation authority is an exact projection of one binding and one gate chain"
   },
@@ -2813,7 +2813,7 @@ export const PHASE1_MUTANTS = [
     id: "cancellation-original-state-signature",
     finding: "cancellation-trusts-unsigned-original-state",
     file: "lib/validation.mjs",
-    search: '      failures.push("cancellation_original_action_state_signature_invalid");',
+    search: '    failures.push("cancellation_original_action_state_signature_invalid");',
     replace: '',
     test: "cancellation authority is an exact projection of one binding and one gate chain"
   },
@@ -2976,5 +2976,173 @@ export const PHASE1_MUTANTS = [
     search: '          !source || !sameObjectRef(predecessorSource.subject_ref, source.subject_ref) ||',
     replace: '          !source ||',
     test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-gate-allow-remains-unavailable",
+    finding: "phase1-partial-gate-authorizes-execution",
+    file: "lib/validation.mjs",
+    search: '    if (value.decision === "allow") failures.push("phase1_gate_allow_unsupported");',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-redemption-remains-unavailable",
+    finding: "phase1-partial-redemption-authorizes-execution",
+    file: "lib/validation.mjs",
+    search: '    failures.push("phase1_redemption_unsupported");',
+    replace: '',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-role-evidence-required",
+    finding: "missing-gate-role-treated-as-pass",
+    file: "lib/validation.mjs",
+    search: '    return Boolean(state) && state.authenticationFailures.length === 0 && state.eligible;',
+    replace: '    return !state || (state.authenticationFailures.length === 0 && state.eligible);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "phase1-unimplemented-reserved-judgments-deny",
+    finding: "caller-supplied-judgment-wrapper-passes-an-unimplemented-check",
+    file: "lib/validation.mjs",
+    search: '    "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "RESERVED_JUDGMENTS", "LIMITS",',
+    replace: '    "BUSINESS_DEPENDENCIES", "REVIEWS_POLICIES", "LIMITS",',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "cancellation-original-state-current",
+    finding: "cancellation-targets-stale-original-state",
+    file: "lib/validation.mjs",
+    search: '    failures.push("cancellation_original_action_state_not_current");',
+    replace: '',
+    test: "cancellation authority is an exact projection of one binding and one gate chain"
+  },
+  {
+    id: "gate-source-issued-before-evaluation",
+    finding: "post-evaluation-attestation-backfills-gate",
+    file: "lib/validation.mjs",
+    search: '        (Number.isFinite(evaluationAt) && Date.parse(value.issued_at) > evaluationAt)) {',
+    replace: '        false) {',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-wrapper-updated-before-evaluation",
+    finding: "post-evaluation-wrapper-backfills-gate",
+    file: "lib/validation.mjs",
+    search: '        (Number.isFinite(evaluationAt) && Date.parse(value.updated_at) > evaluationAt)) {',
+    replace: '        false) {',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "gate-dependency-signature-evaluation-time",
+    finding: "post-evaluation-signature-authenticates-gate-dependency",
+    file: "lib/validation.mjs",
+    search: '    now: Number.isFinite(evaluationAt) ? new Date(evaluationAt).toISOString().replace(".000Z", "Z") : context.now,',
+    replace: '    now: context.now,',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "current-head-resolver-receives-evaluation-time",
+    finding: "current-head-resolver-uses-wall-clock-instead-of-gate-time",
+    file: "lib/validation.mjs",
+    search: '  if (typeof context.currentHeadResolver === "function") return context.currentHeadResolver(reference, evaluationTime);',
+    replace: '  if (typeof context.currentHeadResolver === "function") return context.currentHeadResolver(reference);',
+    test: "gate, authorization, reservation, cancellation, and receipt branches are executable constraints"
+  },
+  {
+    id: "data-grant-final-read-shortcut-unavailable",
+    finding: "inline-disclosure-revives-exhausted-data-grant",
+    file: "lib/validation.mjs",
+    search: '      if (!current || current.state !== "active" || current.remaining_reads <= 0) {',
+    replace: '      if (!current || (current.state !== "active" && current.state !== "exhausted") || current.remaining_reads < 0) {',
+    test: "binding sets separate direct principals from connected runtimes and bind the exact release"
+  },
+  {
+    id: "phase1-recovery-control-unavailable",
+    finding: "partial-recovery-graph-authorizes-control",
+    file: "lib/validation.mjs",
+    search: '    if (recovery.every((item) => item !== null)) {\n      failures.push("phase1_recovery_control_unsupported");\n    }',
+    replace: '',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "scoped-control-key-derived",
+    finding: "scoped-control-key-aliases-different-target",
+    file: "lib/validation.mjs",
+    search: '      failures.push("scoped_control_leaf_key_mismatch");',
+    replace: '',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "global-pause-increments-epoch",
+    finding: "global-pause-reuses-epoch",
+    file: "lib/validation.mjs",
+    search: '    ["pause", beforeState === "active" && afterState === "paused" &&\n      afterPauseEpoch === beforePauseEpoch + 1 && afterNonce === beforeNonce],',
+    replace: '    ["pause", beforeState === "active" && afterState === "paused" &&\n      afterPauseEpoch === beforePauseEpoch && afterNonce === beforeNonce],',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "scoped-control-preserves-global-tuple",
+    finding: "scoped-control-smuggles-global-transition",
+    file: "lib/validation.mjs",
+    search: '        failures.push("execution_control_receipt_scoped_global_tuple_mismatch");',
+    replace: '',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "namespace-rotation-exact-predecessor",
+    finding: "namespace-rotation-skips-generation",
+    file: "lib/validation.mjs",
+    search: '          failures.push("execution_control_receipt_namespace_rotation_invalid");',
+    replace: '',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "ordinary-scoped-control-has-no-outstanding-index",
+    finding: "ordinary-scoped-control-imports-connection-authority",
+    file: "lib/schema-factory.mjs",
+    search: '          ...nonNullProperties([...authorization, ...before, ...after, ...leafAfter]),\n          ...nullProperties([...namespace, ...priorNamespace, ...connection, ...outstanding])',
+    replace: '          ...nonNullProperties([...authorization, ...before, ...after, ...leafAfter, ...outstanding]),\n          ...nullProperties([...namespace, ...priorNamespace, ...connection])',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "namespace-genesis-has-no-prior",
+    finding: "namespace-genesis-imports-prior-authority",
+    file: "lib/schema-factory.mjs",
+    search: '      then: { properties: nullProperties(["prior_namespace_ref", "prior_revoked_head_ref"]) },',
+    replace: '      then: {},',
+    test: "execution controls close global, scoped genesis, recovery, and namespace rotation edges"
+  },
+  {
+    id: "reservation-provenance-immutable",
+    finding: "reservation-index-rewrites-authority-provenance",
+    file: "lib/validation.mjs",
+    search: '          failures.push("compartment_transition_reservation_provenance_mismatch");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "reservation-change-has-economic-cause",
+    finding: "reservation-index-changes-without-atom-delta",
+    file: "lib/validation.mjs",
+    search: '          failures.push("compartment_transition_reservation_change_unexplained");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "confirmed-event-correlates-exact-components",
+    finding: "confirmed-event-does-not-match-atom-components",
+    file: "lib/validation.mjs",
+    search: '          failures.push("compartment_transition_confirmed_event_correlation_mismatch");',
+    replace: '',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
+  },
+  {
+    id: "confirmed-event-component-root-domain",
+    finding: "confirmed-event-component-root-is-not-domain-separated",
+    file: "lib/validation.mjs",
+    search: '    schema: "cairn.confirmed_economic_event_component_set_preimage.v0.1",',
+    replace: '    schema: "cairn.confirmed_economic_event_component_set_preimage.v0.0",',
+    test: "compartment transitions enforce exact causes, manifests, economics, closure, and chronology"
   }
 ];
