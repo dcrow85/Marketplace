@@ -64,6 +64,25 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service seventeenth fixed-commit review]` 2026-07-24 ·
+  Codex — Seventeenth-pass remediation is frozen at exact candidate
+  `b8a8441633a406418924e8d653aa49c83ad115d4`. The deterministic composite
+  exercises 37 cases at
+  `sha-256:23a2a326fde4dadddb6f4e87548c0263f699a5ab0da291d888a287496319d63c`;
+  the design checker reports 49 schema definitions, nine entrypoints, and 41
+  nonclaims. Two clean archives reproduce the exact probe and checker outputs.
+  One clean archive also passes 102/102 unit tests, 139/139 security mutants
+  through the direct mutation runner, and the 55-file packed-package check at
+  `sha-256:d726c2d58882f8a0f606123c9e50ef19bb3957a1a530200e2eb3f959b1d0b6fb`
+  with zero rejected execution files. This is reproducible author evidence, not
+  independent verification: author != verifier, so the candidate remains
+  blocked on fixed-commit review. The nested `npm run test:mutations` wrapper
+  also exposes an inherited npm `devEngines` metadata quirk while the exact
+  underlying `node scripts/run-security-mutants.mjs` control passes; that
+  frozen-kernel harness issue requires a separate disposition and is not hidden
+  by this candidate. `protocol/` and `mockups/` are byte-untouched; no push or
+  deploy occurred.
+
 - `[BLOCKING: authoritative service seventeenth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `828d2da0f8f83257bb5db63d3fdd471424818c7f`
   is rejected by all three usable fixed-commit reviewers. Accepted findings:
