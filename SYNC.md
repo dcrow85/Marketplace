@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service seventeenth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `828d2da0f8f83257bb5db63d3fdd471424818c7f`
+  is rejected by all three usable fixed-commit reviewers. Accepted findings:
+  per-operation history rows were not order-bound; principal/actor controls did
+  not traverse the signed request path; committed non-success results existed
+  only in synthetic artifacts; request context could be nested/reused and a
+  missing context could fall through to the raw store; the operational-version
+  inventory could admit a backdated extra seed; and the closed service-commit
+  row differed from the normative table. Seventeenth-pass remediation is in
+  progress with direct full-path controls for every finding. `protocol/` and
+  `mockups/` remain untouched and no push/deploy is in scope.
+
 - `[BLOCKING: authoritative service sixteenth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `c2797f977dd26d9da2d0e6dc15021b3d3db99c96`
   received one pass and two rejections from three usable fixed-commit reviewers.

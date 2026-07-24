@@ -53,7 +53,9 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:d42e4c06d611ae591b72cadf7af8ad5965a2bc37d9355e38aaa67d02fa8624cd";
+  "sha-256:23a2a326fde4dadddb6f4e87548c0263f699a5ab0da291d888a287496319d63c";
+const EXPECTED_COMPOSITE_GENESIS_MANIFEST_HASH =
+  "sha-256:4d611336b590521b5ec06a659d958912ae4b6fe2e5c2f7b30a28a386abc3f8aa";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -209,6 +211,19 @@ assert.equal(
   "probe replay trace and durable observation are not the same artifact"
 );
 assert.equal(
+  verifyCompositeHistory(compositeProbe.accepted_failure.sidecar),
+  true,
+  "probe accepted-failure durable history failed independent verification"
+);
+assert.equal(
+  verifyCompositeArtifactBinding(
+    compositeProbe.accepted_failure.sidecar,
+    compositeProbe.accepted_failure.trace
+  ),
+  true,
+  "probe accepted-failure trace and durable observation are not the same artifact"
+);
+assert.equal(
   verifyServiceKeyProfile(SERVICE_KEY_PROFILE, COMPOSITE_FIXTURE.now),
   true,
   "composite service key profile is not independently coherent"
@@ -301,8 +316,14 @@ const actualOriginObservation =
   compositeProbe.origin.callback.local_result.service_observation;
 const actualReplayObservation =
   compositeProbe.successful_replay.trace.local_result.service_observation;
+const actualAcceptedFailureObservation =
+  compositeProbe.accepted_failure.trace.local_result.service_observation;
 assert.equal(verifyCompositeObservation(actualOriginObservation), true);
 assert.equal(verifyCompositeObservation(actualReplayObservation), true);
+assert.equal(
+  verifyCompositeObservation(actualAcceptedFailureObservation),
+  true
+);
 assert.equal(
   compositeObservationRefKey(actualOriginObservation),
   compositeProbe.origin.sidecar.service_commits.at(-1)
@@ -311,6 +332,11 @@ assert.equal(
 assert.equal(
   compositeObservationRefKey(actualReplayObservation),
   compositeProbe.successful_replay.sidecar.service_commits.at(-1)
+    .observation_ref_key
+);
+assert.equal(
+  compositeObservationRefKey(actualAcceptedFailureObservation),
+  compositeProbe.accepted_failure.sidecar.service_commits.at(-1)
     .observation_ref_key
 );
 assert.equal(
@@ -3116,6 +3142,75 @@ assert.deepEqual(
   ]),
   [[1, 0, 1], [2, 1, 2]]
 );
+assert.deepEqual(compositeProbe.accepted_failure.raw, {
+  ok: false,
+  status: 422,
+  code: "response_schema_mismatch",
+  failures: ["response_schema_mismatch"]
+});
+assert.equal(
+  compositeProbe.accepted_failure.trace.operation,
+  "runtime_binding.get"
+);
+assert.equal(
+  compositeProbe.accepted_failure.trace.callback_commit,
+  true
+);
+assert.equal(
+  compositeProbe.accepted_failure.trace.final_commit,
+  true
+);
+assert.equal(
+  compositeProbe.accepted_failure.trace.local_result.disposition,
+  "committed_accepted_failure"
+);
+assert.deepEqual(
+  compositeProbe.accepted_failure.trace.local_result.kernel,
+  compositeProbe.accepted_failure.raw
+);
+assert.equal(
+  actualAcceptedFailureObservation.result.outcome,
+  "accepted_failure"
+);
+assert.equal(
+  actualAcceptedFailureObservation.result.nonce_disposition,
+  "newly_reserved"
+);
+assert.equal(
+  actualAcceptedFailureObservation.transaction.committed,
+  true
+);
+assert.equal(
+  compositeProbe.accepted_failure.trace.callback_after.used_nonces.length,
+  compositeProbe.accepted_failure.trace.callback_before.used_nonces.length + 1
+);
+assert.deepEqual(
+  compositeProbe.accepted_failure.trace.callback_after.maps,
+  compositeProbe.accepted_failure.trace.callback_before.maps,
+  "accepted failure changed a frozen object map"
+);
+assert.equal(
+  compositeProbe.accepted_failure.trace.callback_access_trace.length,
+  16,
+  "accepted failure did not traverse the real frozen callback path"
+);
+assert.deepEqual(
+  compositeProbe.accepted_failure.sidecar.service_commits.map(
+    ({ transaction_kind: kind }) => kind
+  ),
+  ["genesis", "service_operation", "service_operation"]
+);
+{
+  const local = schemaLocalResult(
+    compositeProbe.accepted_failure.trace.local_result
+  );
+  validateDefinition("localObservedResult", local);
+  assert.equal(
+    localResultIsCoherent(local),
+    true,
+    "real accepted failure did not satisfy the local result contract"
+  );
+}
 assert.equal(
   verifyCompositeHistory(compositeProbe.multi_idempotency.sidecar),
   true,
@@ -3257,13 +3352,17 @@ assert.equal(
 );
 const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "access_trace_wrapper_extra",
+  "access_traces_reordered",
   "alias_noncanonical_attempted_key",
   "callback_witness_bytes",
   "callback_witness_commit",
   "callback_witness_missing",
   "callback_witness_wrapper_extra",
+  "callback_witnesses_reordered",
   "dependency_access_kind_substitution",
   "dependency_commit_wrapper_extra",
+  "dependency_commits_reordered",
+  "dependency_rows_reordered",
   "dependency_sequence_future",
   "dependency_sequence_negative",
   "dependency_sequence_zero",
@@ -3273,6 +3372,8 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "frozen_fingerprint",
   "frozen_missing_row",
   "frozen_result_ref",
+  "genesis_manifest_rebound_extra",
+  "genesis_version_backdated_extra",
   "grant_effect_ref",
   "grant_effect_remaining",
   "grant_effect_removed",
@@ -3280,6 +3381,7 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "host_account_tenant_commitment",
   "host_actor_id",
   "host_assertion_level",
+  "host_authentication_contexts_reordered",
   "host_authentication_evidence",
   "host_authentication_wrapper_extra",
   "host_authority_namespace_commitment",
@@ -3287,18 +3389,23 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "host_runtime_key_id",
   "host_trust_profile_hash",
   "host_trust_profile_id",
+  "observation_repository_reordered",
+  "observations_reordered",
+  "operational_version_extra_without_write",
   "operational_version_future_sequence",
   "operational_version_negative_sequence",
   "owner_counter_substitution",
   "owner_derivation_actor_for_principal",
   "owner_derivation_history",
   "owner_derivation_principal_for_actor",
+  "receiver_authentication_records_reordered",
   "receiver_authentication_wrapper_extra",
   "receiver_operation_qualified_namespace",
   "repository_wrapper_extra",
   "request_envelope_signature_signed_hash",
   "request_envelope_signature_value",
   "request_envelope_wrapper_extra",
+  "request_envelopes_reordered",
   "request_operation_fingerprint",
   "request_query_commitment",
   "request_receiver_actor_binding",
@@ -3323,7 +3430,11 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "rich_runtime_key_id",
   "rich_version_missing",
   "scope_commit_wrapper_extra",
+  "scope_commits_reordered",
+  "service_commit_committed_at",
+  "service_commit_global_sequence",
   "service_commit_wrapper_extra",
+  "service_commits_reordered",
   "sidecar_counter_substitution",
   "sidecar_uncommitted_operational_snapshot",
   "signed_trace_commitment_divergence",
@@ -3356,7 +3467,8 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trust_signature_time",
   "trust_store_id",
   "validation_binding_operation_contract",
-  "validation_binding_wrapper_extra"
+  "validation_binding_wrapper_extra",
+  "validation_bindings_reordered"
 ];
 const EXPECTED_FOREIGN_HISTORY_MUTATIONS = [
   "foreign_access_trace",
@@ -3646,6 +3758,77 @@ assert.equal(
   ),
   true
 );
+assert.deepEqual(
+  Object.keys(compositeProbe.receiver_identity_mismatches).sort(),
+  ["actor", "principal"]
+);
+for (const kind of ["principal", "actor"]) {
+  const mismatch = compositeProbe.receiver_identity_mismatches[kind];
+  assert.equal(
+    mismatch.raw.code,
+    "receiver_authentication_invalid",
+    kind
+  );
+  assert.equal(mismatch.trace.callback_value, null, kind);
+  assert.deepEqual(mismatch.trace.callback_access_trace, [], kind);
+  assertCompositeRollback(
+    `receiver_${kind}_mismatch`,
+    mismatch.trace,
+    {
+      callbackCommit: null,
+      wrapperCode: "receiver_authentication_invalid"
+    }
+  );
+}
+assert.deepEqual(
+  compositeProbe.context_lifecycle.missing_context.raw,
+  {
+    ok: false,
+    status: 503,
+    code: "receiver_authentication_required",
+    failures: ["receiver_authentication_required"]
+  }
+);
+assert.equal(
+  compositeProbe.context_lifecycle.missing_context.kernel_unchanged,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.missing_context.sidecar_unchanged,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.missing_context.trace_count_unchanged,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.nested_context_rejected,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.reused_context_rejected,
+  true
+);
+assert.equal(compositeProbe.context_lifecycle.installed_raw.ok, true);
+assert.equal(
+  compositeProbe.context_lifecycle.installed_raw.replayed,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.installed_trace.callback_commit,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.installed_trace.final_commit,
+  true
+);
+assert.equal(
+  verifyCompositeHistory(
+    compositeProbe.context_lifecycle.installed_trace.sidecar_after.value
+  ),
+  true,
+  "a fresh one-shot context token did not preserve the positive replay path"
+);
 
 const originSidecar = compositeProbe.origin.sidecar;
 function assertActualCompositeMutationRejected(
@@ -3661,6 +3844,180 @@ function assertActualCompositeMutationRejected(
     `actual composite mutation escaped: ${caseId}`
   );
 }
+assert.equal(
+  originSidecar.genesis_manifest.manifest_hash,
+  EXPECTED_COMPOSITE_GENESIS_MANIFEST_HASH
+);
+assert.equal(
+  originSidecar.genesis_manifest.store_id,
+  COMPOSITE_FIXTURE.store_id
+);
+assert.equal(
+  originSidecar.genesis_manifest.initial_rows.length,
+  17
+);
+const expectedGenesisVersionTuples =
+  originSidecar.genesis_manifest.initial_rows.map((row) => [
+    row.table,
+    row.structural_key,
+    canonicalHash(row)
+  ]).sort((left, right) =>
+    canonicalText(left).localeCompare(canonicalText(right))
+  );
+const actualGenesisVersionTuples =
+  originSidecar.operational_versions
+    .filter(({ valid_from_global_sequence: sequence }) => sequence === 0)
+    .map((version) => [
+      version.table,
+      version.structural_key,
+      version.canonical_row_hash
+    ])
+    .sort((left, right) =>
+      canonicalText(left).localeCompare(canonicalText(right))
+    );
+assert.deepEqual(
+  actualGenesisVersionTuples,
+  expectedGenesisVersionTuples,
+  "sequence-zero operational versions diverged from the pinned genesis manifest"
+);
+for (const commit of originSidecar.service_commits) {
+  assert.deepEqual(
+    Object.keys(commit).sort(),
+    [
+      "committed_at",
+      "global_commit_sequence",
+      "observation_ref_key",
+      "previous_global_sequence",
+      "transaction_kind"
+    ],
+    "service commit shape diverged from the closed normative row"
+  );
+}
+assert.deepEqual(originSidecar.service_commits.map((commit) => [
+  commit.global_commit_sequence,
+  commit.previous_global_sequence,
+  commit.transaction_kind,
+  commit.committed_at
+]), [
+  [0, null, "genesis", COMPOSITE_FIXTURE.genesis_at],
+  [1, 0, "service_operation", COMPOSITE_FIXTURE.now]
+]);
+for (const [caseId, collection, first, second] of [
+  ["independent_service_commit_order", "service_commits", 1, 2],
+  ["independent_dependency_commit_order", "dependency_commits", 1, 2],
+  ["independent_scope_commit_order", "scope_commits", 0, 1],
+  [
+    "independent_observation_repository_order",
+    "observation_repository",
+    0,
+    1
+  ],
+  ["independent_observation_order", "observations", 0, 1],
+  ["independent_validation_binding_order", "validation_bindings", 0, 1],
+  [
+    "independent_receiver_record_order",
+    "receiver_authentication_records",
+    0,
+    1
+  ],
+  [
+    "independent_host_context_order",
+    "host_authentication_contexts",
+    0,
+    1
+  ],
+  ["independent_request_envelope_order", "request_envelopes", 0, 1],
+  ["independent_access_trace_order", "access_traces", 0, 1],
+  ["independent_callback_witness_order", "callback_witnesses", 0, 1]
+]) {
+  assertActualCompositeMutationRejected(
+    caseId,
+    compositeProbe.successful_replay.sidecar,
+    (sidecar) => {
+      [sidecar[collection][first], sidecar[collection][second]] = [
+        sidecar[collection][second],
+        sidecar[collection][first]
+      ];
+    }
+  );
+}
+assertActualCompositeMutationRejected(
+  "independent_dependency_row_order",
+  compositeProbe.successful_replay.sidecar,
+  (sidecar) => {
+    const first = sidecar.dependency_rows.findIndex(
+      ({ global_sequence: sequence }) => sequence === 1
+    );
+    assert.notEqual(first, -1);
+    [
+      sidecar.dependency_rows[first],
+      sidecar.dependency_rows[first + 1]
+    ] = [
+      sidecar.dependency_rows[first + 1],
+      sidecar.dependency_rows[first]
+    ];
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_backdated_genesis_version",
+  originSidecar,
+  (sidecar) => {
+    const version = structuredClone(
+      sidecar.operational_versions.find(
+        (candidate) =>
+          candidate.table === "used_nonces" &&
+          candidate.valid_from_global_sequence === 1
+      )
+    );
+    assert.ok(version);
+    version.valid_from_global_sequence = 0;
+    sidecar.operational_versions.push(version);
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_rebound_genesis_manifest",
+  originSidecar,
+  (sidecar) => {
+    const draft = structuredClone(sidecar.genesis_manifest);
+    draft.initial_rows.push(structuredClone(draft.initial_rows[0]));
+    draft.manifest_hash = ZERO_HASH;
+    sidecar.genesis_manifest = bindObjectHash(
+      draft,
+      schema.$defs.genesisManifest
+    );
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_version_without_write",
+  originSidecar,
+  (sidecar) => {
+    const version = structuredClone(
+      sidecar.operational_versions.find(
+        (candidate) =>
+          candidate.table === "validation_keys" &&
+          candidate.valid_from_global_sequence === 0
+      )
+    );
+    assert.ok(version);
+    version.valid_from_global_sequence = 1;
+    sidecar.operational_versions.push(version);
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_service_commit_time",
+  originSidecar,
+  (sidecar) => {
+    sidecar.service_commits[1].committed_at =
+      COMPOSITE_FIXTURE.genesis_at;
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_service_commit_sequence",
+  originSidecar,
+  (sidecar) => {
+    sidecar.service_commits[1].global_commit_sequence = 7;
+  }
+);
 assertActualCompositeMutationRejected(
   "independent_request_signature_value",
   originSidecar,
@@ -3767,7 +4124,7 @@ for (const [caseId, mutate] of [
 }
 assert.deepEqual(
   originSidecar.service_commits.map((commit) => [
-    commit.global_sequence,
+    commit.global_commit_sequence,
     commit.previous_global_sequence
   ]),
   [[0, null], [1, 0]],
@@ -4532,7 +4889,7 @@ assert.equal(
 assert.deepEqual(
   compositeProbe.successful_replay.sidecar.service_commits.map(
     (commit) => [
-      commit.global_sequence,
+      commit.global_commit_sequence,
       commit.previous_global_sequence,
       commit.transaction_kind
     ]
