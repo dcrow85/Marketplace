@@ -744,6 +744,28 @@ const OPERATIONAL_VERSION_KEYS = [
   "visibility"
 ];
 
+const SIDECAR_KEYS = [
+  "access_traces",
+  "counters",
+  "current_projections",
+  "dependency_commits",
+  "dependency_rows",
+  "frozen_idempotency_rows",
+  "global_sequence",
+  "host_authentication_contexts",
+  "observation_by_envelope",
+  "observation_repository",
+  "observations",
+  "operational_versions",
+  "owner_sequences",
+  "receiver_authentication_records",
+  "request_envelopes",
+  "rich_idempotency_rows",
+  "scope_commits",
+  "service_commits",
+  "validation_bindings"
+];
+
 function verifyOperationalVersionRecord(version, maximumSequence) {
   try {
     if (
@@ -841,6 +863,7 @@ function deriveObservationOwner(observation) {
 
 function receiverStableBinding(record) {
   return canonicalText([
+    record.authentication_handle,
     record.account_tenant_commitment,
     record.principal_id,
     record.actor_id,
@@ -881,7 +904,7 @@ function signedObjectKeyResolver(currentVersions) {
   );
 }
 
-function verifySignedObjectWitness(
+export function verifySignedObjectWitness(
   value,
   currentVersions,
   observedAt
@@ -957,6 +980,7 @@ function signServiceObservation(draft) {
 export function verifyCompositeHistory(sidecar) {
   try {
     if (
+      !hasExactKeys(sidecar, SIDECAR_KEYS) ||
       sidecar.service_commits.length !== sidecar.global_sequence + 1 ||
       sidecar.dependency_commits.length !== sidecar.global_sequence + 1 ||
       sidecar.scope_commits.length !== sidecar.global_sequence ||
@@ -1161,6 +1185,8 @@ export function verifyCompositeHistory(sidecar) {
           repositoryRow.canonical_observation_bytes ||
         validationBinding.authoritative_schema_hash !==
           AUTHORITATIVE_SCHEMA_HASH ||
+        canonicalText(validationBinding.operation_contract) !==
+          canonicalText(observation.request.operation_contract) ||
         validationBinding.operation_contract_hash !==
           canonicalHash(observation.request.operation_contract) ||
         validationBinding.frozen_bundle_hash !==
@@ -1533,8 +1559,17 @@ export function verifyCompositeArtifactBinding(sidecar, trace) {
     const scopeCommit = sidecar.scope_commits.at(-1);
     const accessTrace = sidecar.access_traces.at(-1);
     return trace.final_commit === true &&
+      trace.callback_commit === true &&
       observation !== null &&
       verifyCompositeHistory(sidecar) &&
+      canonicalText(trace.frozen_callback_value) ===
+        canonicalText(trace.callback_value) &&
+      canonicalText(trace.callback_value) ===
+        canonicalText(trace.local_result.kernel) &&
+      canonicalHash(trace.callback_value) ===
+        observation.result.kernel_result_hash &&
+      trace.callback_value.status === observation.result.status &&
+      trace.callback_value.replayed === observation.result.replayed &&
       accessTrace.global_sequence ===
         repositoryRow.global_commit_sequence &&
       accessTrace.envelope_hash === trace.envelope_hash &&
@@ -1662,7 +1697,6 @@ function emptySidecar() {
       global_sequence: 0,
       dependency_set_commitment: ZERO_HASH
     }],
-    operational_snapshots: [],
     service_commits: [{
       global_sequence: 0,
       previous_global_sequence: null,
@@ -3462,13 +3496,6 @@ function stageAuthoritativeCommit(
   const hostContext =
     hostAuthenticationContextFromReceiver(receiverAuthentication);
   const hostContextHash = hostContext.context_hash;
-  const operationalSnapshot = {
-    global_sequence: globalAfter,
-    kernel_state_hash: canonicalHash(kernelSnapshot(kernelDraft)),
-    scope_state_commitment: scopeStateCommitment,
-    dependency_set_commitment:
-      dependencyManifest.dependency_set_commitment
-  };
   if (context.throw_stage === "observation") {
     throw new CompositeStageFault("observation", staged);
   }
@@ -3595,7 +3622,6 @@ function stageAuthoritativeCommit(
   staged.owner_sequences[ownerKey] = scopeAfter;
   staged.frozen_idempotency_rows =
     structuredClone(sortedMapEntries(kernelDraft.idempotencyRecords));
-  staged.operational_snapshots.push(operationalSnapshot);
   staged.dependency_rows.push(
     ...dependencyManifest.entries.map((entry) => ({
       global_sequence: globalAfter,
@@ -4405,6 +4431,20 @@ export async function runCompositeProbe() {
     object: structuredClone(origin.originObject),
     sidecar: structuredClone(origin.stores.sidecar)
   };
+  const changedCallbackArtifact = structuredClone(origin.originTrace);
+  changedCallbackArtifact.frozen_callback_value.status = 299;
+  changedCallbackArtifact.callback_value.status = 299;
+  changedCallbackArtifact.local_result.kernel.status = 299;
+  const callbackValueArtifactMutationRejected =
+    verifyCompositeArtifactBinding(
+      origin.stores.sidecar,
+      changedCallbackArtifact
+    ) === false;
+  assert.equal(
+    callbackValueArtifactMutationRejected,
+    true,
+    "callback_value_artifact_binding"
+  );
 
   const conflictScenario = await buildIntentScenario("fingerprint_conflict");
   const conflictKernelBaseline = kernelSnapshot(conflictScenario.stores);
@@ -4787,21 +4827,57 @@ export async function runCompositeProbe() {
       rejected;
   }
   {
-    const changedObject = structuredClone(origin.originObject.value);
-    changedObject.constraints.geography = ["substituted-region"];
-    const currentVersions = new Map(
+    const baseVersions = new Map(
       origin.stores.sidecar.current_projections.map((projection) => [
         projectionKey(projection),
         projection
       ])
     );
-    const rejected = verifySignedObjectWitness(
-      changedObject,
-      currentVersions,
-      COMPOSITE_FIXTURE.now
-    ) === false;
-    assert.equal(rejected, true, "trace_signed_object_binding");
-    signedHistoryMutationControls.trace_signed_object_binding = rejected;
+    const objectSchema = FROZEN_FOUNDATION.schemasByObjectId.get(
+      origin.originObject.value.schema
+    );
+    assert.ok(objectSchema);
+    const signaturePointer =
+      objectSchema["x-cairn-signature-pointers"][0];
+    const signingKeyId = valueAtPointer(
+      origin.originObject.value,
+      signaturePointer
+    ).key_id;
+    for (const [caseId, mutate] of [
+      ["trace_signed_object_binding", (value) => {
+        value.constraints.geography = ["substituted-region"];
+      }],
+      ["trace_signed_object_signed_hash", (value) => {
+        valueAtPointer(value, signaturePointer).signed_hash = ZERO_HASH;
+      }],
+      ["trace_signed_object_signature_value", (value) => {
+        valueAtPointer(value, signaturePointer).value = "A".repeat(86);
+      }],
+      ["trace_signed_object_historical_key", (_value, versions) => {
+        const keyProjection = [...versions.values()].find(
+          ({ table, columns }) =>
+            table === "validation_keys" &&
+            columns.key_id === signingKeyId
+        );
+        assert.ok(keyProjection);
+        assert.notEqual(
+          keyProjection.columns.public_key,
+          SERVICE_OBSERVATION_PUBLIC_KEY
+        );
+        keyProjection.columns.public_key = SERVICE_OBSERVATION_PUBLIC_KEY;
+      }]
+    ]) {
+      const changedObject = structuredClone(origin.originObject.value);
+      const changedVersions = structuredClone(baseVersions);
+      mutate(changedObject, changedVersions);
+      const rejected = verifySignedObjectWitness(
+        changedObject,
+        changedVersions,
+        COMPOSITE_FIXTURE.now
+      ) === false;
+      assert.equal(rejected, true, caseId);
+      signedHistoryMutationControls[caseId] = rejected;
+    }
   }
   for (const [caseId, sequence] of [
     ["dependency_sequence_negative", -1],
@@ -4815,6 +4891,21 @@ export async function runCompositeProbe() {
       });
     });
   }
+  rejectHistoryMutation(
+    "sidecar_uncommitted_operational_snapshot",
+    origin.stores.sidecar,
+    (sidecar) => {
+      sidecar.operational_snapshots = [];
+    }
+  );
+  rejectHistoryMutation(
+    "validation_binding_operation_contract",
+    origin.stores.sidecar,
+    (sidecar) => {
+      sidecar.validation_bindings[0].operation_contract.consequence =
+        "public_read";
+    }
+  );
   rejectHistoryMutation(
     "request_envelope_signature_value",
     origin.stores.sidecar,
@@ -4860,6 +4951,19 @@ export async function runCompositeProbe() {
       assert.ok(projection);
       sidecar.operational_versions.push(
         operationalVersionFor(projection, sidecar.global_sequence + 1)
+      );
+    }
+  );
+  rejectHistoryMutation(
+    "operational_version_negative_sequence",
+    origin.stores.sidecar,
+    (sidecar) => {
+      const projection = sidecar.current_projections.find(
+        ({ table }) => table === "objects"
+      );
+      assert.ok(projection);
+      sidecar.operational_versions.push(
+        operationalVersionFor(projection, -1)
       );
     }
   );
@@ -5827,11 +5931,6 @@ export async function runCompositeProbe() {
   );
   receiverContextRecord.authentication_handle =
     `${receiverContextRecord.authentication_handle}|rotated`;
-  receiverContextRecord.trust_profile_id =
-    "cairn:fixture:rotated-host-auth";
-  receiverContextRecord.trust_profile_hash = canonicalHash([
-    "cairn-composite-rotated-host-trust-profile-v0.1"
-  ]);
   assert.equal(
     validateReceiverAuthenticationRecord(receiverContextRecord),
     true
@@ -5839,7 +5938,7 @@ export async function runCompositeProbe() {
   const receiverContextAuthentication =
     frozenAuthenticationFromReceiver(receiverContextRecord);
   receiverStabilityScenario.stores.setContext({
-    case_id: "receiver_context_stability_preflight",
+    case_id: "receiver_handle_stability_preflight",
     phase: "replay",
     envelope: receiverContextEnvelope,
     authentication: receiverContextAuthentication,
@@ -6016,6 +6115,22 @@ export async function runCompositeProbe() {
     ).scope_state_commitment_after,
     isolatedOriginRoot
   );
+  {
+    const capabilityObservation = JSON.parse(
+      interleavedScenario.stores.sidecar.observation_repository.find(
+        ({ global_commit_sequence: sequence }) => sequence === 2
+      ).canonical_observation_bytes
+    );
+    capabilityObservation.request.principal_id = null;
+    capabilityObservation.access.owner_kind = "principal";
+    const derivedOwner = deriveObservationOwner(capabilityObservation);
+    const rejected = derivedOwner === null ||
+      capabilityObservation.access.owner_kind !== derivedOwner.owner_kind ||
+      capabilityObservation.access.owner_id !== derivedOwner.owner_id;
+    assert.equal(rejected, true, "owner_derivation_principal_for_actor");
+    signedHistoryMutationControls.owner_derivation_principal_for_actor =
+      rejected;
+  }
   rejectHistoryMutation(
     "owner_derivation_history",
     interleavedScenario.stores.sidecar,
@@ -6081,15 +6196,10 @@ export async function runCompositeProbe() {
       const scopeCommit = sidecar.scope_commits.find(
         ({ global_sequence: sequence }) => sequence === globalSequence
       );
-      const snapshot = sidecar.operational_snapshots.find(
-        ({ global_sequence: sequence }) => sequence === globalSequence
-      );
       assert.ok(scopeCommit);
-      assert.ok(snapshot);
       scopeCommit.owner_kind = "actor";
       scopeCommit.owner_id = actorId;
       scopeCommit.scope_state_commitment_after = actorRoot;
-      snapshot.scope_state_commitment = actorRoot;
       delete sidecar.owner_sequences[ownerSequenceKey(
         "principal",
         originalObservation.request.principal_id
@@ -6178,6 +6288,8 @@ export async function runCompositeProbe() {
           replayScenario.stores.sidecar,
           successfulReplayTrace
         ),
+      callback_value_artifact_mutation_rejected:
+        callbackValueArtifactMutationRejected,
       replay_history_mutations: replayHistoryMutationControls,
       access_trace_mutations: accessTraceMutationControls,
       signed_history_mutations: signedHistoryMutationControls,
@@ -6196,7 +6308,7 @@ export async function runCompositeProbe() {
       raw: structuredClone(receiverStabilityRaw),
       trace: receiverStabilityTrace
     },
-    receiver_context_stability_failure: {
+    receiver_handle_stability_failure: {
       raw: structuredClone(receiverContextRaw),
       trace: receiverContextTrace
     },

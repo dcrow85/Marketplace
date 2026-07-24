@@ -34,6 +34,7 @@ import {
   verifyCompositeArtifactBinding,
   verifyCompositeHistory,
   verifyCompositeObservation,
+  verifySignedObjectWitness,
   verifyServiceKeyProfileChain,
   verifyServiceKeyProfile
 } from "./frozen-composite-probe.mjs";
@@ -52,7 +53,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:78b87fdfcdd88f7f4ad3add023811f0310980ebeffbd68522fbfc2b08df535d6";
+  "sha-256:88a96e151be9d1331eaba026662f36d3ba488331522481b7319fd3ec8c99a5a5";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -3163,6 +3164,69 @@ assert.equal(
   true
 );
 assert.equal(
+  compositeProbe.durable_artifact_controls
+    .callback_value_artifact_mutation_rejected,
+  true
+);
+{
+  const changedTrace = structuredClone(compositeProbe.origin.callback);
+  changedTrace.frozen_callback_value.status = 299;
+  changedTrace.callback_value.status = 299;
+  changedTrace.local_result.kernel.status = 299;
+  assert.equal(
+    verifyCompositeArtifactBinding(
+      compositeProbe.origin.sidecar,
+      changedTrace
+    ),
+    false,
+    "coherent callback artifact substitution escaped"
+  );
+}
+{
+  const witness = compositeProbe.origin.object.value;
+  const witnessSchema = foundation.schemasByObjectId.get(witness.schema);
+  assert.ok(witnessSchema);
+  const signaturePointer =
+    witnessSchema["x-cairn-signature-pointers"][0];
+  const signingKeyId = valueAtPointer(witness, signaturePointer).key_id;
+  const baseVersions = new Map(
+    compositeProbe.origin.sidecar.current_projections.map(
+      (projection, index) => [String(index), projection]
+    )
+  );
+  for (const [caseId, mutate] of [
+    ["independent_witness_signed_hash", (value) => {
+      valueAtPointer(value, signaturePointer).signed_hash =
+        `sha-256:${"0".repeat(64)}`;
+    }],
+    ["independent_witness_signature_value", (value) => {
+      valueAtPointer(value, signaturePointer).value = "A".repeat(86);
+    }],
+    ["independent_witness_historical_key", (_value, versions) => {
+      const keyProjection = [...versions.values()].find(
+        ({ table, columns }) =>
+          table === "validation_keys" &&
+          columns.key_id === signingKeyId
+      );
+      assert.ok(keyProjection);
+      keyProjection.columns.public_key = SERVICE_OBSERVATION_PUBLIC_KEY;
+    }]
+  ]) {
+    const changedWitness = structuredClone(witness);
+    const changedVersions = structuredClone(baseVersions);
+    mutate(changedWitness, changedVersions);
+    assert.equal(
+      verifySignedObjectWitness(
+        changedWitness,
+        changedVersions,
+        COMPOSITE_FIXTURE.now
+      ),
+      false,
+      caseId
+    );
+  }
+}
+assert.equal(
   compositeProbe.durable_artifact_controls.historical_profile_positive,
   true,
   "a valid observation under a prior service-key profile did not verify"
@@ -3217,9 +3281,11 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "host_trust_profile_hash",
   "host_trust_profile_id",
   "operational_version_future_sequence",
+  "operational_version_negative_sequence",
   "owner_counter_substitution",
   "owner_derivation_actor_for_principal",
   "owner_derivation_history",
+  "owner_derivation_principal_for_actor",
   "receiver_operation_qualified_namespace",
   "request_envelope_signature_signed_hash",
   "request_envelope_signature_value",
@@ -3244,6 +3310,7 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "rich_result_ref",
   "rich_runtime_key_id",
   "rich_version_missing",
+  "sidecar_uncommitted_operational_snapshot",
   "signed_trace_commitment_divergence",
   "trace_duplicate_event",
   "trace_hash_substitution",
@@ -3252,6 +3319,9 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trace_remove_one_event",
   "trace_signed_object_binding",
   "trace_signed_object_binding_history",
+  "trace_signed_object_historical_key",
+  "trace_signed_object_signature_value",
+  "trace_signed_object_signed_hash",
   "trace_value_and_hash_substitution",
   "trace_write_before_value_and_hash_substitution",
   "transaction_kind_genesis_as_operation",
@@ -3269,7 +3339,8 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trust_signature_profile",
   "trust_signature_signed_hash",
   "trust_signature_time",
-  "trust_store_id"
+  "trust_store_id",
+  "validation_binding_operation_contract"
 ];
 const EXPECTED_FOREIGN_HISTORY_MUTATIONS = [
   "foreign_access_trace",
@@ -3527,7 +3598,7 @@ assertCompositeRollback(
 );
 
 const actualReceiverContextFailure =
-  compositeProbe.receiver_context_stability_failure;
+  compositeProbe.receiver_handle_stability_failure;
 assert.equal(
   actualReceiverContextFailure.raw.code,
   "receiver_authentication_invalid"
@@ -3538,7 +3609,7 @@ assert.deepEqual(
   []
 );
 assertCompositeRollback(
-  "receiver_context_stability_preflight",
+  "receiver_handle_stability_preflight",
   actualReceiverContextFailure.trace,
   {
     callbackCommit: null,

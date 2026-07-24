@@ -64,6 +64,24 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service fifteenth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `bf7350841dd5e6ee7e5fb8d1441a204af61d5bb0`
+  is rejected by all three usable fixed-commit reviewers. Accepted findings:
+  a redundant operational-snapshot cache was appended but not verified; the
+  stored validation contract object was not byte-compared with the signed
+  observation; three callback-result copies were not cross-bound to each other
+  and the signed result hash; signed witness controls omitted proof,
+  signed-hash, and historical-key mutations; only one owner-inversion direction
+  had a named control; a handle-only rotation was not bound; and negative
+  operational versions lacked a direct control. Fifteenth-pass remediation
+  removes the unverified cache and closes the sidecar shape, exact-binds the
+  stored contract and callback artifact, binds the opaque handle into account
+  continuity, and adds direct plus independent controls for every missing case.
+  The working result is 32 cases at
+  `sha-256:88a96e151be9d1331eaba026662f36d3ba488331522481b7319fd3ec8c99a5a5`.
+  It remains under review; `protocol/` and `mockups/` remain untouched and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service fourteenth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `44a9ad9495693c418779dc7eb27b8f29e1cbca12`
   is rejected by all three usable fixed-commit reviewers. Accepted findings:
