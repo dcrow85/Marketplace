@@ -66,7 +66,7 @@ supersession or closure.
 
 - `[BLOCKING: authoritative service seventeenth fixed-commit review]` 2026-07-24 ·
   Codex — Seventeenth-pass remediation is frozen at exact candidate
-  `b8a8441633a406418924e8d653aa49c83ad115d4`. The deterministic composite
+  `b8a84410f8770f4b4c045f2868af8852f2ebf5d4`. The deterministic composite
   exercises 37 cases at
   `sha-256:23a2a326fde4dadddb6f4e87548c0263f699a5ab0da291d888a287496319d63c`;
   the design checker reports 49 schema definitions, nine entrypoints, and 41
