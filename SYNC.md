@@ -64,6 +64,24 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] authoritative service eighteenth fixed-commit passed` 2026-07-24 ·
+  Codex — Exact candidate
+  `b3ead637cea7d59d2224a6103938743de3bcc107` passes independent fixed-commit
+  review. Its executable parent `35e46ab654879832d38f677050b87798ca778a1e`
+  closed all four seventeenth findings: staged atomic genesis, idempotent exact
+  duplicate genesis, distinct real committed 422/16-access and 404/15-access
+  accepted-failure histories, and store-generation-bound context expiry. The
+  final commit changes only one stale coverage sentence. Clean archives
+  reproduce 41 cases at
+  `sha-256:07808cc00404d9c316177d171f2b0a2a14969f55e03c760e5c60a9d9e6754056`,
+  49 schema definitions, nine entrypoints, and 41 nonclaims. Author evidence
+  remains 102/102 unit tests, 139/139 direct security mutants, and the 55-file
+  package boundary with zero rejected execution files. This closes Phase-A
+  design review only: SQLite durability, concurrency, crash/restart, production,
+  transport, PostgreSQL equivalence, and protocol conformance remain nonclaims.
+  `protocol/` and `mockups/` are untouched; no push or deploy occurred. The next
+  authorized lane is the plain-English Golden Transaction v0.1.
+
 - `[BLOCKING: authoritative service eighteenth audit remediation]` 2026-07-24 ·
   Codex — Exact seventeenth candidate
   `b8a84410f8770f4b4c045f2868af8852f2ebf5d4` received one independent pass
