@@ -1,9 +1,9 @@
 # Cairn authoritative store and signed service-observation change spec v0.1
 
-**Status:** the fourteenth frozen candidate,
-`bf7350841dd5e6ee7e5fb8d1441a204af61d5bb0`, was rejected by all three
-usable fixed-commit reviewers in the fifteenth audit cycle. This working tree
-contains fifteenth-pass remediation under review. It is not independently
+**Status:** the fifteenth frozen candidate,
+`c2797f977dd26d9da2d0e6dc15021b3d3db99c96`, was rejected by two of
+three usable fixed-commit reviewers in the sixteenth audit cycle. This working
+tree contains sixteenth-pass remediation under review. It is not independently
 re-audited, implemented as a durable SQLite service, or conforming.
 
 **Depends on:** the independently audited proposal-only BYO checkpoint at
@@ -640,12 +640,15 @@ historical key before independently re-deriving each object ref and identity
 alias. A self-consistent but false projected identity or a changed witness that
 retains its old declared hash fails.
 
-The Phase-A sidecar has one exact closed top-level field set. It does not retain
-a second `operational_snapshots` cache: the prior cache repeated scope and
-dependency commitments beside the signed observation while carrying a kernel
-snapshot hash the history verifier could not independently reconstruct. The
-authoritative sources are the exact operational versions, commits, dependencies,
-and signed observations above; adding an unverified cache field fails closure.
+The Phase-A sidecar has one exact closed top-level field set, exact closed
+wrapper rows, and four diagnostic stage counters that must each equal the
+committed global-operation count. It does not retain a second
+`operational_snapshots` cache: the prior cache repeated scope and dependency
+commitments beside the signed observation while carrying a kernel snapshot hash
+the history verifier could not independently reconstruct. The authoritative
+sources are the exact operational versions, commits, dependencies, callback
+witnesses, and signed observations above; adding an unverified cache or wrapper
+field, or changing a counter, fails closure.
 
 `service_commits` is operator-private and append-only:
 
@@ -915,11 +918,13 @@ Historical verification recalculates the request operation fingerprint,
 derives principal-versus-actor ownership independently, and rejects dependency
 rows outside committed operation sequences. The stored validation binding must
 carry the byte-exact operation contract as well as its recomputed hash. The
-committed trace artifact must carry one exact callback result across the frozen
-callback, wrapper callback, and local kernel result, and its hash/status/replay
-fields must equal the signed observation. The checker consumes those exact
-committed artifacts; it does not fabricate a second signed history from a
-reduced probe result.
+authoritative sidecar stores one exact canonical callback-result witness per
+operation with `callback_commit:true`, validates its operation response body,
+and binds its hash/status/replay fields to the signed observation. The external
+trace must carry those same exact bytes across the frozen callback, wrapper
+callback, and local kernel result. The checker consumes those exact committed
+artifacts; it does not fabricate a second signed history from a reduced probe
+result.
 
 Historical verification compiles the exact frozen envelope schema, validates
 the stored canonical request bytes, recomputes all signed-object/body bindings,
@@ -1010,8 +1015,8 @@ frozen actor/runtime and validation-key fixtures; they are not independent
 service identities or runtime trust domains.
 
 The deterministic composite result is pinned at
-`sha-256:88a96e151be9d1331eaba026662f36d3ba488331522481b7319fd3ec8c99a5a5`;
-its CLI summary reports 32 exercised cases, and fresh process executions must
+`sha-256:d42e4c06d611ae591b72cadf7af8ad5965a2bc37d9355e38aaa67d02fa8624cd`;
+its CLI summary reports 33 exercised cases, and fresh process executions must
 reproduce it exactly.
 
 Origin verification begins from the exact stored canonical signed envelope,
@@ -1020,7 +1025,8 @@ authentication projection, actual callback result, actual canonical object
 bytes, actual schema-derived identity/URI/ACL, and actual global/scope mapping.
 It requires exact unique inventories for versions, dependency rows/commits,
 service commits, owner commits, receiver records, request envelopes,
-observation repository rows, and envelope indexes. Negative controls add both
+callback witnesses, observation repository rows, and envelope indexes.
+Negative controls add both
 duplicate and extra rows,
 claim an absent alias while its typed base is present or hidden from the
 dependency manifest, change every repository
@@ -1151,10 +1157,13 @@ assertion unless the host authentication boundary is separately trusted.
 The Phase-A sidecar privately persists the exact closed receiver record used by
 each transaction and separately persists its exact public projection, including
 account/tenant, authority-namespace, trust-profile, authentication-evidence, and
-assertion-level commitments. Its self-hash must equal the signed request hash.
+assertion-level commitments. The public context self-hash must equal the host
+context hash carried by the signed service observation.
 The verifier derives the frozen camelCase authentication object and public
 context again from that persisted record, requires its runtime key to equal the
-signed envelope sender, recomputes the namespace HMAC, and enforces the same
+signed envelope sender, requires the envelope principal and sender actor to
+equal the receiver principal and actor, recomputes the namespace HMAC, and
+enforces the same
 complete principal/actor/runtime/namespace/trust/evidence/assertion binding by
 both account commitment and authentication handle across operations. Direct
 controls cover every public host-context field, an operation-qualified raw
@@ -1164,7 +1173,10 @@ reduced principal/actor/runtime digest.
 Those stability rules are admission rules, not merely after-the-fact audit
 rules. Before the callback, the candidate receiver record is compared with all
 already verified receiver records. The same complete check runs against the
-staged history before publication.
+staged history before publication. The receiver record is request-scoped and
+mandatory: the adapter has no previous-request fallback cache. A rejected
+record is discarded, omission on the next request rejects at context admission,
+and an explicit valid record can immediately complete a fresh replay.
 
 The wrapper owns the raw frozen service and exposes one method:
 
@@ -1674,17 +1686,17 @@ described above.
 | AS-25 | durable idempotency metadata enters frozen two-field validator view | closed validator projection test rejects extra fields |
 | AS-26 | validator replay/write uses set, delete, or clear against the two-field callback idempotency view, or any full wrapper-integrity idempotency field is mutated | the adapter discards the callback view and reconstructs it from the immutable durable row; the rich row, projection, hash, version, root, and origin history remain exact; every owner-visible field is independently compared with authenticated request, exact callback result, signed origin observation, and append-only history truth |
 | AS-27 | duplicate, partial, forked, restarted, or concurrent genesis import | one sealed exact genesis or complete rollback |
-| AS-28 | state-root row, dependency row, or operational version is omitted/reordered/duplicated/history-altered, has mismatched wrapper columns, or names a genesis, negative, or uncommitted-future operation sequence; or an unverified snapshot/cache field is added | bounded exact version/dependency inventory, closed sidecar shape, direct negative/future controls, and recomputed historical root reject |
+| AS-28 | state-root row, dependency row, operational version, callback witness, or commit/authentication/envelope/repository/trace wrapper row is omitted/reordered/duplicated/history-altered, has an extra or mismatched wrapper column, or names a genesis, negative, or uncommitted-future operation sequence; an unverified snapshot/cache field is added; or a stage counter differs from the committed global sequence | bounded exact inventories, closed sidecar and wrapper-row shapes, exact counters, direct negative/future/wrapper/counter controls, and recomputed historical root reject |
 | AS-29 | observation/signature/commit back-reference enters state-root domain | domain guard rejects cyclic field/table |
 | AS-30 | corrupt replay object/ACL, malformed response, substitute/weakened response validator, grant consumption after idempotency staging, observation construction, persistence, or commit call | the actual frozen `intent.put` callback runs independently in every case; the malformed boundary value itself fails the validator bound to the frozen bundle, registered operation, and canonical source schema, with valid/missing-field/extra-field/malformed-ref controls proving its boundary; that value becomes the exact preserved local kernel result; corrupt/unreconstructible and wrapper failures retain zero kernel/sidecar delta, while actual `grant_consumption_failed` remains callback `commit:false` with zero delta |
 | AS-31 | wrong/revoked/expired/noncanonical/duplicate/missing-current service key, equal/inverted validity interval on any current or historical key, future-dated profile, arbitrary fractional boundary error, broken/reordered/sibling-forked/rolled-back key-profile chain, or malformed later suffix behind a historical observation | independently re-bound schema/profile/observation trust probes reject across the complete supplied chain while exact lower-bound, pre-expiry fractional, and prior-profile historical-observation positives pass |
 | AS-32 | signed `not_claiming` set is changed/reordered | schema/verifier rejects |
 | AS-33 | `keyResolver` row/version/manifest is missing, duplicated, unsorted, null-expiry, raced, revoked, or changed between validation and commit | one finite transaction-visible key version is dependency-bound; malformed/history mutation and cross-process borrowing reject |
 | AS-34 | signed access and repository columns agree but owner was derived from actor instead of non-null principal, or principal instead of actor for a permitted principal-less read | named direct controls for both inversions and the history verifier's independent owner derivation reject |
-| AS-35 | header/caller/raw namespace/tenant, principal, actor, runtime key, trust profile, authentication evidence, assertion level, account commitment, authority commitment, or opaque handle changes across two operations; the namespace becomes operation-qualified; the receiver record differs from the frozen authentication/host projection; or the raw namespace appears in an observation/result | the exact transaction-owned receiver record, derived frozen authentication, closed host context, envelope sender, and complete stable operation-independent binding by both account commitment and handle are enforced before callback and again before publication; actual operation-qualified and handle-only replays are rejected with zero callback/state delta; every public field has a direct mutation control; raw value never serializes into a caller artifact |
+| AS-35 | header/caller/raw namespace/tenant, principal, actor, runtime key, trust profile, authentication evidence, assertion level, account commitment, authority commitment, or opaque handle changes across two operations; the envelope principal or sender actor differs from the request-scoped receiver record; the namespace becomes operation-qualified; a rejected receiver record is cached or reused when the next request omits it; the receiver record differs from the frozen authentication/host projection; or the raw namespace appears in an observation/result | the mandatory transaction-owned receiver record, derived frozen authentication, closed host context, envelope principal/sender, and complete stable operation-independent binding by both account commitment and handle are enforced before callback and again before publication; actual principal/actor substitutions, operation-qualified and handle-only replays, and missing-record cache fallback are rejected with zero callback/state delta; an explicit valid record can immediately complete a fresh replay; every public field has a direct mutation control; raw value never serializes into a caller artifact |
 | AS-36 | two previously unseen owners perform their first operations concurrently after genesis | both use before `0`/after `1` in separate owner chains; no owner sequence-zero row or cross-owner ancestry appears |
 | AS-37 | every row of the closed outcome/commit matrix is fault-injected, including local-kernel versus HTTP-failure hashing | disposition, exact canonical kernel-result hash, observation presence, nonce, sequence, object, idempotency, and grant deltas match §7/§8.1 exactly |
-| AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, `accepted_failure` claiming replay, replay claiming a non-success outcome, changed row column, stored operation-contract substitution, wrong self-hash/signature exclusion, query-commitment substitution, outcome swap, callback/kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature/query/artifact verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
+| AS-38 | unknown field, nullable substitution, registry URI/tuple mutation, wrong union branch, `accepted_failure` claiming replay, replay claiming a non-success outcome, changed row column, stored operation-contract substitution, wrong self-hash/signature exclusion, query-commitment substitution, outcome swap, missing/noncommitted/byte-changed callback witness, callback/kernel/observation mismatch, or alternate JCS preimage is supplied to any entry point | strict schema/semantic/hash/signature/query/callback-witness/artifact verifier rejects; all nine deterministic entrypoint fixtures, three result branches, real registry tuples, and canonical vectors remain exact |
 | AS-39 | dependency alias is omitted, mapped to the wrong table/index/base key, binds a well-shaped attempted key for a different typed row, is declared absent while a typed base row deterministically resolves to it or while the matching base row was hidden from the manifest, becomes present during a race, lacks its exact base row when present, is duplicated/reordered/uncoalesced, has the wrong attempted-key shape/absent sentinel/present hash/access kind, misclassifies singleton `["index"]`, coherently substitutes a read or present-write before/after trace value and matching hash, changes a signed-object witness while retaining its declared hash, signature signed-hash, proof, or historical key, depends on operational-version array order or an out-of-range version, or omits/leaves unsupported or unconsumed any required frozen callback Map/Set/resolver access | the ordered callback trace with exact canonical value witnesses is the sole dependency producer; signed witnesses are schema/binding/signature verified against transaction-visible historical keys with separate direct and independent mutations; exact origin/replay store-and-index surfaces, access kinds, read values, present-write preimages, nonce absence/insertion, grant read/update, idempotency absence/insertion or replay-read, validation keys, runtime binding, and joined object/ACL/URI accesses are pinned and cross-bound to the greatest valid committed authoritative version selected by sequence; schema/semantic manifest/root verification changes or the transaction fails |
 | AS-40 | any exact observation nonclaim, including `agent_onboarding`, is omitted, added, reordered, or replaced with a generic term | closed schema, checker, and verifier reject |
 | AS-41 | each rich-only idempotency field/self-hash/history mapping is mutated, a valid row receives a different new-request fingerprint, or the frozen result object/identity/ACL is corrupted | rich mismatch vetoes before callback with zero delta; request conflict remains the frozen `commit:false` outcome; each result/identity/ACL corruption captures its own actual frozen `commit:true` outcome but the outer integrity decision rolls back the staged nonce and sidecar; no raw result is rewritten |

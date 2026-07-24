@@ -64,6 +64,23 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service sixteenth audit remediation]` 2026-07-23 ·
+  Codex — Exact candidate `c2797f977dd26d9da2d0e6dc15021b3d3db99c96`
+  received one pass and two rejections from three usable fixed-commit reviewers.
+  Accepted findings: a rejected receiver record could remain cached and affect
+  the next request; the stored envelope principal and actor were not directly
+  cross-bound to the receiver record; nested sidecar wrapper rows and stage
+  counters were not closed; and callback-result binding was checked only in the
+  exported trace rather than persisted and reverified in authoritative history.
+  Sixteenth-pass remediation removes receiver fallback state, proves rejection
+  followed by an explicit valid recovery, exact-binds receiver principal/actor,
+  closes every wrapper row and counter with named controls, and stores one
+  canonical callback witness per committed operation. The working result is 33
+  cases at
+  `sha-256:d42e4c06d611ae591b72cadf7af8ad5965a2bc37d9355e38aaa67d02fa8624cd`.
+  It remains under review; `protocol/` and `mockups/` remain untouched and no
+  push/deploy is in scope.
+
 - `[BLOCKING: authoritative service fifteenth audit remediation]` 2026-07-23 ·
   Codex — Exact candidate `bf7350841dd5e6ee7e5fb8d1441a204af61d5bb0`
   is rejected by all three usable fixed-commit reviewers. Accepted findings:

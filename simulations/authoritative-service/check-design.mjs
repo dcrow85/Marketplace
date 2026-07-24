@@ -53,7 +53,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:88a96e151be9d1331eaba026662f36d3ba488331522481b7319fd3ec8c99a5a5";
+  "sha-256:d42e4c06d611ae591b72cadf7af8ad5965a2bc37d9355e38aaa67d02fa8624cd";
 const EXPECTED_DEFS = [
   "sha256",
   "nullableSha256",
@@ -3256,8 +3256,14 @@ assert.equal(
   true
 );
 const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
+  "access_trace_wrapper_extra",
   "alias_noncanonical_attempted_key",
+  "callback_witness_bytes",
+  "callback_witness_commit",
+  "callback_witness_missing",
+  "callback_witness_wrapper_extra",
   "dependency_access_kind_substitution",
+  "dependency_commit_wrapper_extra",
   "dependency_sequence_future",
   "dependency_sequence_negative",
   "dependency_sequence_zero",
@@ -3275,6 +3281,7 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "host_actor_id",
   "host_assertion_level",
   "host_authentication_evidence",
+  "host_authentication_wrapper_extra",
   "host_authority_namespace_commitment",
   "host_principal_id",
   "host_runtime_key_id",
@@ -3286,11 +3293,16 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "owner_derivation_actor_for_principal",
   "owner_derivation_history",
   "owner_derivation_principal_for_actor",
+  "receiver_authentication_wrapper_extra",
   "receiver_operation_qualified_namespace",
+  "repository_wrapper_extra",
   "request_envelope_signature_signed_hash",
   "request_envelope_signature_value",
+  "request_envelope_wrapper_extra",
   "request_operation_fingerprint",
   "request_query_commitment",
+  "request_receiver_actor_binding",
+  "request_receiver_principal_binding",
   "rich_actor_id",
   "rich_authority_namespace",
   "rich_created_global_commit_sequence",
@@ -3310,6 +3322,9 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "rich_result_ref",
   "rich_runtime_key_id",
   "rich_version_missing",
+  "scope_commit_wrapper_extra",
+  "service_commit_wrapper_extra",
+  "sidecar_counter_substitution",
   "sidecar_uncommitted_operational_snapshot",
   "signed_trace_commitment_divergence",
   "trace_duplicate_event",
@@ -3340,7 +3355,8 @@ const EXPECTED_SIGNED_HISTORY_MUTATIONS = [
   "trust_signature_signed_hash",
   "trust_signature_time",
   "trust_store_id",
-  "validation_binding_operation_contract"
+  "validation_binding_operation_contract",
+  "validation_binding_wrapper_extra"
 ];
 const EXPECTED_FOREIGN_HISTORY_MUTATIONS = [
   "foreign_access_trace",
@@ -3616,6 +3632,20 @@ assertCompositeRollback(
     wrapperCode: "receiver_authentication_invalid"
   }
 );
+assert.equal(
+  compositeProbe.receiver_recovery.cache_fallback_rejected,
+  true
+);
+assert.equal(compositeProbe.receiver_recovery.raw.ok, true);
+assert.equal(compositeProbe.receiver_recovery.raw.replayed, true);
+assert.equal(compositeProbe.receiver_recovery.trace.callback_commit, true);
+assert.equal(compositeProbe.receiver_recovery.trace.final_commit, true);
+assert.equal(
+  verifyCompositeHistory(
+    compositeProbe.receiver_recovery.trace.sidecar_after.value
+  ),
+  true
+);
 
 const originSidecar = compositeProbe.origin.sidecar;
 function assertActualCompositeMutationRejected(
@@ -3663,6 +3693,13 @@ assertActualCompositeMutationRejected(
       ...structuredClone(prior),
       valid_from_global_sequence: sidecar.global_sequence + 1
     });
+  }
+);
+assertActualCompositeMutationRejected(
+  "independent_callback_witness_bytes",
+  originSidecar,
+  (sidecar) => {
+    sidecar.callback_witnesses[0].canonical_result_bytes += " ";
   }
 );
 const actualRichRow = originSidecar.rich_idempotency_rows[0];

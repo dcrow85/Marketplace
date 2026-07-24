@@ -746,6 +746,7 @@ const OPERATIONAL_VERSION_KEYS = [
 
 const SIDECAR_KEYS = [
   "access_traces",
+  "callback_witnesses",
   "counters",
   "current_projections",
   "dependency_commits",
@@ -764,6 +765,82 @@ const SIDECAR_KEYS = [
   "scope_commits",
   "service_commits",
   "validation_bindings"
+];
+
+const SIDECAR_COUNTER_KEYS = [
+  "callback_calls",
+  "commit_calls",
+  "observation_calls",
+  "persistence_calls"
+];
+const SERVICE_COMMIT_KEYS = [
+  "global_sequence",
+  "observation_ref_key",
+  "previous_global_sequence",
+  "transaction_kind"
+];
+const DEPENDENCY_COMMIT_KEYS = [
+  "dependency_set_commitment",
+  "global_sequence"
+];
+const SCOPE_COMMIT_KEYS = [
+  "dependency_set_commitment",
+  "global_sequence",
+  "observation_ref_key",
+  "owner_id",
+  "owner_kind",
+  "previous_scope_sequence",
+  "scope_sequence",
+  "scope_state_commitment_after",
+  "snapshot_id"
+];
+const OBSERVATION_REPOSITORY_ROW_KEYS = [
+  "canonical_observation_bytes",
+  "global_commit_sequence",
+  "observation_hash",
+  "observation_id",
+  "observation_ref_key",
+  "owner_id",
+  "owner_kind",
+  "principal_id",
+  "request_envelope_hash",
+  "scope_sequence",
+  "visibility"
+];
+const VALIDATION_BINDING_KEYS = [
+  "authoritative_schema_hash",
+  "frozen_bundle_hash",
+  "global_sequence",
+  "operation_contract",
+  "operation_contract_hash",
+  "response_schema",
+  "response_source_schema_bytes",
+  "response_source_schema_hash",
+  "validator_binding_hash"
+];
+const RECEIVER_AUTHENTICATION_ROW_KEYS = [
+  "global_sequence",
+  "record"
+];
+const HOST_AUTHENTICATION_ROW_KEYS = [
+  "context",
+  "global_sequence"
+];
+const REQUEST_ENVELOPE_ROW_KEYS = [
+  "canonical_envelope_bytes",
+  "global_sequence"
+];
+const ACCESS_TRACE_ROW_KEYS = [
+  "envelope_hash",
+  "events",
+  "events_commitment",
+  "global_sequence"
+];
+const CALLBACK_WITNESS_ROW_KEYS = [
+  "callback_commit",
+  "canonical_result_bytes",
+  "global_sequence",
+  "kernel_result_hash"
 ];
 
 function verifyOperationalVersionRecord(version, maximumSequence) {
@@ -876,6 +953,13 @@ function receiverStableBinding(record) {
   ]);
 }
 
+function receiverAuthenticationMatchesEnvelope(record, envelope) {
+  return validateReceiverAuthenticationRecord(record) &&
+    record.principal_id === envelope.principal_id &&
+    record.actor_id === envelope.sender.actor_id &&
+    record.runtime_key_id === envelope.sender.runtime_key_id;
+}
+
 function receiverAuthenticationFitsHistory(sidecar, candidate) {
   if (!validateReceiverAuthenticationRecord(candidate)) return false;
   for (const { record } of sidecar.receiver_authentication_records) {
@@ -894,6 +978,45 @@ function receiverAuthenticationFitsHistory(sidecar, candidate) {
     }
   }
   return true;
+}
+
+function sidecarWrapperShapesAreExact(sidecar) {
+  return hasExactKeys(sidecar.counters, SIDECAR_COUNTER_KEYS) &&
+    Object.values(sidecar.counters).every(
+      (value) =>
+        Number.isSafeInteger(value) &&
+        value === sidecar.global_sequence
+    ) &&
+    sidecar.service_commits.every(
+      (row) => hasExactKeys(row, SERVICE_COMMIT_KEYS)
+    ) &&
+    sidecar.dependency_commits.every(
+      (row) => hasExactKeys(row, DEPENDENCY_COMMIT_KEYS)
+    ) &&
+    sidecar.scope_commits.every(
+      (row) => hasExactKeys(row, SCOPE_COMMIT_KEYS)
+    ) &&
+    sidecar.observation_repository.every(
+      (row) => hasExactKeys(row, OBSERVATION_REPOSITORY_ROW_KEYS)
+    ) &&
+    sidecar.validation_bindings.every(
+      (row) => hasExactKeys(row, VALIDATION_BINDING_KEYS)
+    ) &&
+    sidecar.receiver_authentication_records.every(
+      (row) => hasExactKeys(row, RECEIVER_AUTHENTICATION_ROW_KEYS)
+    ) &&
+    sidecar.host_authentication_contexts.every(
+      (row) => hasExactKeys(row, HOST_AUTHENTICATION_ROW_KEYS)
+    ) &&
+    sidecar.request_envelopes.every(
+      (row) => hasExactKeys(row, REQUEST_ENVELOPE_ROW_KEYS)
+    ) &&
+    sidecar.access_traces.every(
+      (row) => hasExactKeys(row, ACCESS_TRACE_ROW_KEYS)
+    ) &&
+    sidecar.callback_witnesses.every(
+      (row) => hasExactKeys(row, CALLBACK_WITNESS_ROW_KEYS)
+    );
 }
 
 function signedObjectKeyResolver(currentVersions) {
@@ -981,6 +1104,7 @@ export function verifyCompositeHistory(sidecar) {
   try {
     if (
       !hasExactKeys(sidecar, SIDECAR_KEYS) ||
+      !sidecarWrapperShapesAreExact(sidecar) ||
       sidecar.service_commits.length !== sidecar.global_sequence + 1 ||
       sidecar.dependency_commits.length !== sidecar.global_sequence + 1 ||
       sidecar.scope_commits.length !== sidecar.global_sequence ||
@@ -993,6 +1117,7 @@ export function verifyCompositeHistory(sidecar) {
         sidecar.global_sequence ||
       sidecar.request_envelopes.length !== sidecar.global_sequence ||
       sidecar.access_traces.length !== sidecar.global_sequence ||
+      sidecar.callback_witnesses.length !== sidecar.global_sequence ||
       Object.keys(sidecar.observation_by_envelope).length !==
         sidecar.global_sequence
     ) {
@@ -1106,6 +1231,15 @@ export function verifyCompositeHistory(sidecar) {
       const accessTrace = sidecar.access_traces.find(
         (candidate) => candidate.global_sequence === globalSequence
       );
+      const callbackWitness = sidecar.callback_witnesses.find(
+        (candidate) => candidate.global_sequence === globalSequence
+      );
+      const callbackResult = callbackWitness === undefined
+        ? null
+        : JSON.parse(callbackWitness.canonical_result_bytes);
+      const callbackBodyValidator = FROZEN_FOUNDATION.ajv.getSchema(
+        observation.request.operation_contract.response_schema
+      );
       const expectedValidatorBinding = registeredResponseValidatorBinding(
         FROZEN_FOUNDATION,
         observation.request.operation_contract
@@ -1137,6 +1271,9 @@ export function verifyCompositeHistory(sidecar) {
         !requestEnvelopeRow ||
         !hostAuthenticationContext ||
         !accessTrace ||
+        !callbackWitness ||
+        !callbackResult ||
+        typeof callbackBodyValidator !== "function" ||
         !validateReceiverAuthenticationRecord(receiverAuthentication) ||
         !requestEnvelope ||
         !envelopeSchema ||
@@ -1152,6 +1289,10 @@ export function verifyCompositeHistory(sidecar) {
         requestEnvelope.message_id !== observation.request.message_id ||
         requestEnvelope.message_type !==
           observation.request.operation_contract.operation ||
+        !receiverAuthenticationMatchesEnvelope(
+          receiverAuthentication,
+          requestEnvelope
+        ) ||
         !requestOperationFingerprintMatches(requestEnvelope) ||
         requestEnvelope.body_hash !== observation.request.body_hash ||
         canonicalText(requestEnvelope.subject_refs) !==
@@ -1219,6 +1360,23 @@ export function verifyCompositeHistory(sidecar) {
           canonicalHash(accessTrace.events) ||
         accessTrace.events_commitment !==
           observation.transaction.access_trace_commitment ||
+        callbackWitness.callback_commit !== true ||
+        canonicalText(callbackResult) !==
+          callbackWitness.canonical_result_bytes ||
+        canonicalHash(callbackResult) !==
+          callbackWitness.kernel_result_hash ||
+        callbackWitness.kernel_result_hash !==
+          observation.result.kernel_result_hash ||
+        !hasExactKeys(callbackResult, [
+          "body",
+          "ok",
+          "replayed",
+          "status"
+        ]) ||
+        callbackResult.ok !== true ||
+        callbackResult.status !== observation.result.status ||
+        callbackResult.replayed !== observation.result.replayed ||
+        !callbackBodyValidator(callbackResult.body) ||
         canonicalText(observation) !==
           repositoryRow.canonical_observation_bytes ||
         !verifyCompositeObservation(observation) ||
@@ -1558,6 +1716,7 @@ export function verifyCompositeArtifactBinding(sidecar, trace) {
     const serviceCommit = sidecar.service_commits.at(-1);
     const scopeCommit = sidecar.scope_commits.at(-1);
     const accessTrace = sidecar.access_traces.at(-1);
+    const callbackWitness = sidecar.callback_witnesses.at(-1);
     return trace.final_commit === true &&
       trace.callback_commit === true &&
       observation !== null &&
@@ -1566,7 +1725,11 @@ export function verifyCompositeArtifactBinding(sidecar, trace) {
         canonicalText(trace.callback_value) &&
       canonicalText(trace.callback_value) ===
         canonicalText(trace.local_result.kernel) &&
+      canonicalText(trace.callback_value) ===
+        callbackWitness.canonical_result_bytes &&
       canonicalHash(trace.callback_value) ===
+        callbackWitness.kernel_result_hash &&
+      callbackWitness.kernel_result_hash ===
         observation.result.kernel_result_hash &&
       trace.callback_value.status === observation.result.status &&
       trace.callback_value.replayed === observation.result.replayed &&
@@ -1697,6 +1860,7 @@ function emptySidecar() {
       global_sequence: 0,
       dependency_set_commitment: ZERO_HASH
     }],
+    callback_witnesses: [],
     service_commits: [{
       global_sequence: 0,
       previous_global_sequence: null,
@@ -3675,7 +3839,14 @@ function stageAuthoritativeCommit(
     events_commitment: canonicalHash(accessTrace),
     events: structuredClone(accessTrace)
   });
+  staged.callback_witnesses.push({
+    global_sequence: globalAfter,
+    callback_commit: true,
+    canonical_result_bytes: canonicalText(outcome.value),
+    kernel_result_hash: canonicalHash(outcome.value)
+  });
   staged.counters.persistence_calls += 1;
+  staged.counters.commit_calls += 1;
 
   if (isIdempotentMutation && !replayed) {
     richRow.origin_observation_ref = {
@@ -3765,26 +3936,22 @@ class CompositeReferenceStores extends MemoryReferenceStores {
   }
 
   setContext(context) {
-    const receiverAuthentication =
-      context.receiver_authentication ?? this.receiverAuthentication;
+    const receiverAuthentication = context.receiver_authentication;
     assert.equal(
-      validateReceiverAuthenticationRecord(receiverAuthentication),
+      receiverAuthenticationMatchesEnvelope(
+        receiverAuthentication,
+        context.envelope
+      ),
       true,
-      "composite context lacks a valid receiver authentication record"
+      "composite context lacks an exact receiver authentication record"
     );
     assert.deepEqual(
       context.authentication,
       frozenAuthenticationFromReceiver(receiverAuthentication),
       "frozen authentication diverged from the receiver record"
     );
-    assert.equal(
-      receiverAuthentication.runtime_key_id,
-      context.envelope.sender.runtime_key_id,
-      "receiver runtime key diverged from the signed envelope"
-    );
     this.accessRecorder.events.length = 0;
     this.accessRecorder.active = true;
-    this.receiverAuthentication = structuredClone(receiverAuthentication);
     this.context = structuredClone({
       ...context,
       receiver_authentication: receiverAuthentication
@@ -4038,7 +4205,6 @@ class CompositeReferenceStores extends MemoryReferenceStores {
             this.foundation,
             this.keyResolver
           );
-          stagedSidecar.counters.commit_calls += 1;
         } catch (error) {
           const stage = error instanceof CompositeStageFault
             ? error.stage
@@ -4472,7 +4638,8 @@ export async function runCompositeProbe() {
     case_id: "fingerprint_conflict",
     phase: "replay",
     envelope: conflictEnvelope,
-    authentication: conflictScenario.authentication
+    authentication: conflictScenario.authentication,
+    receiver_authentication: conflictScenario.receiverAuthentication
   });
   const conflictRaw = conflictScenario.harness.service.handleEnvelope(
     conflictEnvelope,
@@ -4498,7 +4665,8 @@ export async function runCompositeProbe() {
     case_id: "successful_replay",
     phase: "replay",
     envelope: successfulReplayEnvelope,
-    authentication: replayScenario.authentication
+    authentication: replayScenario.authentication,
+    receiver_authentication: replayScenario.receiverAuthentication
   });
   const successfulReplayRaw =
     replayScenario.harness.service.handleEnvelope(
@@ -4543,7 +4711,8 @@ export async function runCompositeProbe() {
     case_id: "multi_idempotency:second_origin",
     phase: "origin",
     envelope: secondKeyEnvelope,
-    authentication: multiRowScenario.authentication
+    authentication: multiRowScenario.authentication,
+    receiver_authentication: multiRowScenario.receiverAuthentication
   });
   const secondKeyRaw =
     multiRowScenario.harness.service.handleEnvelope(
@@ -4578,7 +4747,8 @@ export async function runCompositeProbe() {
     case_id: "multi_idempotency:second_replay",
     phase: "replay",
     envelope: replaySecondKeyEnvelope,
-    authentication: multiRowScenario.authentication
+    authentication: multiRowScenario.authentication,
+    receiver_authentication: multiRowScenario.receiverAuthentication
   });
   const replaySecondKeyRaw =
     multiRowScenario.harness.service.handleEnvelope(
@@ -4809,6 +4979,23 @@ export async function runCompositeProbe() {
     assert.equal(rejected, true, "request_operation_fingerprint");
     signedHistoryMutationControls.request_operation_fingerprint = rejected;
   }
+  for (const [caseId, mutate] of [
+    ["request_receiver_principal_binding", (envelope) => {
+      envelope.principal_id = "did:example:substituted-principal";
+    }],
+    ["request_receiver_actor_binding", (envelope) => {
+      envelope.sender.actor_id = "did:example:substituted-actor";
+    }]
+  ]) {
+    const changedEnvelope = structuredClone(origin.envelope);
+    mutate(changedEnvelope);
+    const rejected = receiverAuthenticationMatchesEnvelope(
+      origin.receiverAuthentication,
+      changedEnvelope
+    ) === false;
+    assert.equal(rejected, true, caseId);
+    signedHistoryMutationControls[caseId] = rejected;
+  }
   {
     const originObservation = JSON.parse(
       origin.stores.sidecar.observation_repository[0]
@@ -4898,6 +5085,61 @@ export async function runCompositeProbe() {
       sidecar.operational_snapshots = [];
     }
   );
+  for (const [caseId, mutate] of [
+    ["sidecar_counter_substitution", (sidecar) => {
+      sidecar.counters.callback_calls += 1;
+    }],
+    ["request_envelope_wrapper_extra", (sidecar) => {
+      sidecar.request_envelopes[0].unexpected = true;
+    }],
+    ["receiver_authentication_wrapper_extra", (sidecar) => {
+      sidecar.receiver_authentication_records[0].unexpected = true;
+    }],
+    ["validation_binding_wrapper_extra", (sidecar) => {
+      sidecar.validation_bindings[0].unexpected = true;
+    }],
+    ["host_authentication_wrapper_extra", (sidecar) => {
+      sidecar.host_authentication_contexts[0].unexpected = true;
+    }],
+    ["repository_wrapper_extra", (sidecar) => {
+      sidecar.observation_repository[0].unexpected = true;
+    }],
+    ["service_commit_wrapper_extra", (sidecar) => {
+      sidecar.service_commits[1].unexpected = true;
+    }],
+    ["dependency_commit_wrapper_extra", (sidecar) => {
+      sidecar.dependency_commits[1].unexpected = true;
+    }],
+    ["scope_commit_wrapper_extra", (sidecar) => {
+      sidecar.scope_commits[0].unexpected = true;
+    }],
+    ["access_trace_wrapper_extra", (sidecar) => {
+      sidecar.access_traces[0].unexpected = true;
+    }],
+    ["callback_witness_wrapper_extra", (sidecar) => {
+      sidecar.callback_witnesses[0].unexpected = true;
+    }]
+  ]) {
+    rejectHistoryMutation(caseId, origin.stores.sidecar, mutate);
+  }
+  for (const [caseId, mutate] of [
+    ["callback_witness_missing", (sidecar) => {
+      sidecar.callback_witnesses.length = 0;
+    }],
+    ["callback_witness_commit", (sidecar) => {
+      sidecar.callback_witnesses[0].callback_commit = false;
+    }],
+    ["callback_witness_bytes", (sidecar) => {
+      const result = JSON.parse(
+        sidecar.callback_witnesses[0].canonical_result_bytes
+      );
+      result.status = 299;
+      sidecar.callback_witnesses[0].canonical_result_bytes =
+        canonicalText(result);
+    }]
+  ]) {
+    rejectHistoryMutation(caseId, origin.stores.sidecar, mutate);
+  }
   rejectHistoryMutation(
     "validation_binding_operation_contract",
     origin.stores.sidecar,
@@ -5739,6 +5981,7 @@ export async function runCompositeProbe() {
       phase: "replay",
       envelope: replayEnvelope,
       authentication: scenario.authentication,
+      receiver_authentication: scenario.receiverAuthentication,
       integrity_fault: kind
     });
     const raw = scenario.harness.service.handleEnvelope(
@@ -5777,7 +6020,8 @@ export async function runCompositeProbe() {
       case_id: `${stage}_failure`,
       phase: "replay",
       envelope: replayEnvelope,
-      authentication: scenario.authentication
+      authentication: scenario.authentication,
+      receiver_authentication: scenario.receiverAuthentication
     };
     if (stage === "response_schema") {
       context.response_schema_mutation = "delete_ref";
@@ -5820,6 +6064,7 @@ export async function runCompositeProbe() {
       phase: "replay",
       envelope: replayEnvelope,
       authentication: scenario.authentication,
+      receiver_authentication: scenario.receiverAuthentication,
       throw_untyped_stage: stage
     });
     const raw = scenario.harness.service.handleEnvelope(
@@ -5858,6 +6103,7 @@ export async function runCompositeProbe() {
     phase: "new_operation",
     envelope: grantAttempt,
     authentication: grantScenario.authentication,
+    receiver_authentication: grantScenario.receiverAuthentication,
     fault: "grant_consumption_failed"
   });
   const grantRaw = grantScenario.harness.service.handleEnvelope(
@@ -5967,6 +6213,50 @@ export async function runCompositeProbe() {
     receiverContextTrace.sidecar_after,
     receiverStabilityBaselineSidecar
   );
+  assert.equal(
+    Object.hasOwn(receiverStabilityScenario.stores, "receiverAuthentication"),
+    false
+  );
+  let receiverCacheFallbackRejected = false;
+  try {
+    receiverStabilityScenario.stores.setContext({
+      case_id: "receiver_cache_fallback_rejected",
+      phase: "replay",
+      envelope: receiverContextEnvelope,
+      authentication: receiverStabilityScenario.authentication
+    });
+  } catch {
+    receiverCacheFallbackRejected = true;
+  }
+  assert.equal(receiverCacheFallbackRejected, true);
+  const receiverRecoveryEnvelope =
+    receiverStabilityScenario.helpers.freshTransport(
+      receiverStabilityScenario.envelope,
+      61
+    );
+  receiverStabilityScenario.stores.setContext({
+    case_id: "receiver_recovery_success",
+    phase: "replay",
+    envelope: receiverRecoveryEnvelope,
+    authentication: receiverStabilityScenario.authentication,
+    receiver_authentication:
+      receiverStabilityScenario.receiverAuthentication
+  });
+  const receiverRecoveryRaw =
+    receiverStabilityScenario.harness.service.handleEnvelope(
+      receiverRecoveryEnvelope,
+      receiverStabilityScenario.authentication
+    );
+  const receiverRecoveryTrace =
+    receiverStabilityScenario.stores.traces.at(-1);
+  assert.equal(receiverRecoveryRaw.ok, true);
+  assert.equal(receiverRecoveryRaw.replayed, true);
+  assert.equal(receiverRecoveryTrace.callback_commit, true);
+  assert.equal(receiverRecoveryTrace.final_commit, true);
+  assert.equal(
+    verifyCompositeHistory(receiverStabilityScenario.stores.sidecar),
+    true
+  );
 
   const preflightFaults = {};
   for (const kind of [
@@ -6041,7 +6331,8 @@ export async function runCompositeProbe() {
         ? "origin"
         : "replay",
       envelope,
-      authentication: scenario.authentication
+      authentication: scenario.authentication,
+      receiver_authentication: scenario.receiverAuthentication
     });
     const raw = scenario.harness.service.handleEnvelope(
       envelope,
@@ -6312,6 +6603,11 @@ export async function runCompositeProbe() {
       raw: structuredClone(receiverContextRaw),
       trace: receiverContextTrace
     },
+    receiver_recovery: {
+      cache_fallback_rejected: receiverCacheFallbackRejected,
+      raw: structuredClone(receiverRecoveryRaw),
+      trace: receiverRecoveryTrace
+    },
     preflight_faults: preflightFaults,
     interleaved_history: {
       isolated_origin_root: isolatedOriginRoot,
@@ -6337,7 +6633,7 @@ if (
       Object.keys(report.unexpected_wrapper_faults).length +
       Object.keys(report.preflight_faults).length +
       report.interleaved_history.foreign_traces.length +
-      7
+      8
     }\n`
   );
   process.stdout.write(
