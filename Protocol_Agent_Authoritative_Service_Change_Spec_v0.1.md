@@ -1757,7 +1757,8 @@ The current Phase-A `frozen-composite-probe.mjs` is an in-memory design
 evidence object, not the Phase-B durable drill report. It pins deterministic
 fixture keys, clocks, UUIDs, observations, snapshot IDs, exact
 kernel/profile/bundle/key-profile hashes, actual frozen `intent.put` callback
-branches, one actual committed non-success `runtime_binding.get` callback,
+branches, two actual committed non-success `runtime_binding.get` callbacks
+with distinct 422/16-access and 404/15-access histories,
 stage-local thrown exceptions, full-path receiver-identity requests, one-shot
 context lifecycle, sealed-genesis and ordered-history controls, direct
 signed-history mutants, and stable result hashing. Its CLI computes and prints
