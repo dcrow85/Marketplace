@@ -53,7 +53,7 @@ const FROZEN_SERVICE_PATH = new URL(
 const EXPECTED_SCHEMA_HASH = "sha-256:7ea19c53cc58bbce686a8dd5d39aa74d45dd6cd56662429ee16d94c7fc50bfb9";
 const EXPECTED_VECTORS_HASH = "sha-256:1b708027482289eabc06ed2247b6f112cd61ac6b92112b83152d5e6f730d9120";
 const EXPECTED_COMPOSITE_PROBE_HASH =
-  "sha-256:23a2a326fde4dadddb6f4e87548c0263f699a5ab0da291d888a287496319d63c";
+  "sha-256:07808cc00404d9c316177d171f2b0a2a14969f55e03c760e5c60a9d9e6754056";
 const EXPECTED_COMPOSITE_GENESIS_MANIFEST_HASH =
   "sha-256:4d611336b590521b5ec06a659d958912ae4b6fe2e5c2f7b30a28a386abc3f8aa";
 const EXPECTED_DEFS = [
@@ -224,6 +224,21 @@ assert.equal(
   "probe accepted-failure trace and durable observation are not the same artifact"
 );
 assert.equal(
+  verifyCompositeHistory(
+    compositeProbe.accepted_failure_not_found.sidecar
+  ),
+  true,
+  "probe accepted 404 history failed independent verification"
+);
+assert.equal(
+  verifyCompositeArtifactBinding(
+    compositeProbe.accepted_failure_not_found.sidecar,
+    compositeProbe.accepted_failure_not_found.trace
+  ),
+  true,
+  "probe accepted 404 trace and durable observation are not the same artifact"
+);
+assert.equal(
   verifyServiceKeyProfile(SERVICE_KEY_PROFILE, COMPOSITE_FIXTURE.now),
   true,
   "composite service key profile is not independently coherent"
@@ -318,10 +333,17 @@ const actualReplayObservation =
   compositeProbe.successful_replay.trace.local_result.service_observation;
 const actualAcceptedFailureObservation =
   compositeProbe.accepted_failure.trace.local_result.service_observation;
+const actualAcceptedNotFoundObservation =
+  compositeProbe.accepted_failure_not_found.trace.local_result
+    .service_observation;
 assert.equal(verifyCompositeObservation(actualOriginObservation), true);
 assert.equal(verifyCompositeObservation(actualReplayObservation), true);
 assert.equal(
   verifyCompositeObservation(actualAcceptedFailureObservation),
+  true
+);
+assert.equal(
+  verifyCompositeObservation(actualAcceptedNotFoundObservation),
   true
 );
 assert.equal(
@@ -338,6 +360,11 @@ assert.equal(
   compositeObservationRefKey(actualAcceptedFailureObservation),
   compositeProbe.accepted_failure.sidecar.service_commits.at(-1)
     .observation_ref_key
+);
+assert.equal(
+  compositeObservationRefKey(actualAcceptedNotFoundObservation),
+  compositeProbe.accepted_failure_not_found.sidecar.service_commits
+    .at(-1).observation_ref_key
 );
 assert.equal(
   SERVICE_OBSERVATION_PUBLIC_KEY,
@@ -3120,6 +3147,13 @@ for (const [caseId, { raw, trace }] of Object.entries(
   assert.deepEqual(trace.sidecar_after, trace.sidecar_before, caseId);
 }
 
+assert.deepEqual(compositeProbe.genesis_lifecycle, {
+  duplicate_seal_idempotent: true,
+  rejected_seal_error:
+    "sealed genesis history is invalid\n\nfalse !== true\n",
+  rejected_seal_bootstrap_open: true,
+  rejected_seal_sidecar_unchanged: true
+});
 assert.equal(compositeProbe.successful_replay.raw.ok, true);
 assert.equal(compositeProbe.successful_replay.raw.replayed, true);
 assert.equal(
@@ -3209,6 +3243,77 @@ assert.deepEqual(
     localResultIsCoherent(local),
     true,
     "real accepted failure did not satisfy the local result contract"
+  );
+}
+assert.deepEqual(compositeProbe.accepted_failure_not_found.raw, {
+  ok: false,
+  status: 404,
+  code: "object_not_found",
+  failures: ["object_not_found"]
+});
+assert.equal(
+  compositeProbe.accepted_failure_not_found.trace.operation,
+  "runtime_binding.get"
+);
+assert.equal(
+  compositeProbe.accepted_failure_not_found.trace.callback_commit,
+  true
+);
+assert.equal(
+  compositeProbe.accepted_failure_not_found.trace.final_commit,
+  true
+);
+assert.equal(
+  compositeProbe.accepted_failure_not_found.trace.local_result
+    .disposition,
+  "committed_accepted_failure"
+);
+assert.deepEqual(
+  compositeProbe.accepted_failure_not_found.trace.local_result.kernel,
+  compositeProbe.accepted_failure_not_found.raw
+);
+assert.equal(
+  actualAcceptedNotFoundObservation.result.outcome,
+  "accepted_failure"
+);
+assert.equal(
+  actualAcceptedNotFoundObservation.result.code,
+  "object_not_found"
+);
+assert.equal(
+  actualAcceptedNotFoundObservation.result.nonce_disposition,
+  "newly_reserved"
+);
+assert.equal(
+  actualAcceptedNotFoundObservation.transaction.committed,
+  true
+);
+assert.equal(
+  compositeProbe.accepted_failure_not_found.trace.callback_after
+    .used_nonces.length,
+  compositeProbe.accepted_failure_not_found.trace.callback_before
+    .used_nonces.length + 1
+);
+assert.deepEqual(
+  compositeProbe.accepted_failure_not_found.trace.callback_after.maps,
+  compositeProbe.accepted_failure_not_found.trace.callback_before.maps,
+  "accepted 404 changed a frozen object map"
+);
+assert.equal(
+  compositeProbe.accepted_failure_not_found.trace
+    .callback_access_trace.length,
+  15,
+  "accepted 404 did not traverse its real frozen callback path"
+);
+{
+  const local = schemaLocalResult(
+    compositeProbe.accepted_failure_not_found.trace.local_result
+  );
+  validateDefinition("localObservedResult", local);
+  assert.equal(
+    localResultIsCoherent(local),
+    true,
+    "real accepted 404 did not satisfy the local result contract"
   );
 }
 assert.equal(
@@ -3803,6 +3908,10 @@ assert.equal(
 );
 assert.equal(
   compositeProbe.context_lifecycle.nested_context_rejected,
+  true
+);
+assert.equal(
+  compositeProbe.context_lifecycle.expired_context_rejected,
   true
 );
 assert.equal(

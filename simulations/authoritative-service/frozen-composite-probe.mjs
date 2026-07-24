@@ -1820,6 +1820,7 @@ export function verifyCompositeHistory(sidecar) {
         runtime_key_id: observation.request.runtime_key_id,
         provider_key_id: COMPOSITE_FIXTURE.provider_key_id,
         principal_key_id: COMPOSITE_FIXTURE.principal_key_id,
+        result_code: observation.result.code,
         object_signing_key_id:
           accessedObjectEvent?.before_value
             ?.descriptor_issuer_signature?.key_id ?? null,
@@ -2911,7 +2912,7 @@ function expectedAccessTrace(phase, facts) {
   }
   if (phase === "accepted_failure") {
     const accessedRefKey = facts.result_ref_key;
-    return [
+    const trace = [
       event("runtimeBindingsByKey", "get", runtime, true, true),
       event("keyResolver", "get", runtime, true, true),
       event("usedNonces", "has", nonce, false, false),
@@ -2926,15 +2927,20 @@ function expectedAccessTrace(phase, facts) {
       event("keyResolver", "get", provider, true, true),
       event("usedNonces", "add", nonce, false, true),
       event("objectsByRef", "get", accessedRefKey, true, true),
-      event("urisByRef", "get", accessedRefKey, true, true),
-      event(
+      event("urisByRef", "get", accessedRefKey, true, true)
+    ];
+    if (facts.result_code === "response_schema_mismatch") {
+      trace.push(event(
         "keyResolver",
         "get",
         facts.object_signing_key_id,
         true,
         true
-      )
-    ];
+      ));
+    } else {
+      assert.equal(facts.result_code, "object_not_found");
+    }
+    return trace;
   }
   const databaseKey = facts.database_key;
   const resultRefKey = facts.result_ref_key;
@@ -4019,6 +4025,7 @@ function stageAuthoritativeCommit(
     runtime_key_id: context.envelope.sender.runtime_key_id,
     provider_key_id: COMPOSITE_FIXTURE.provider_key_id,
     principal_key_id: COMPOSITE_FIXTURE.principal_key_id,
+    result_code: acceptedFailure ? outcome.value.code : null,
     object_signing_key_id:
       accessedObject?.descriptor_issuer_signature?.key_id ?? null,
     nonce: context.envelope.nonce,
@@ -4396,7 +4403,7 @@ class CompositeReferenceStores extends MemoryReferenceStores {
     this.sidecar = emptySidecar();
     this.context = null;
     this.installedContextToken = null;
-    this.issuedContextTokens = new Set();
+    this.issuedContextTokens = new Map();
     this.consumedContextTokens = new Set();
     this.contextTokenSequence = 0;
     this.bootstrapOpen = true;
@@ -4406,32 +4413,46 @@ class CompositeReferenceStores extends MemoryReferenceStores {
   }
 
   sealGenesis() {
-    assert.equal(this.bootstrapOpen, true, "genesis is already sealed");
     assert.ok(this.keyResolver, "genesis requires the frozen key resolver");
     const manifest = compositeGenesisManifest(
       this,
       this.foundation,
       this.keyResolver
     );
-    this.sidecar.genesis_manifest = manifest;
-    this.sidecar.current_projections =
+    if (!this.bootstrapOpen) {
+      assert.equal(
+        canonicalText(manifest),
+        canonicalText(this.sidecar.genesis_manifest),
+        "genesis is already sealed with a different manifest"
+      );
+      assert.equal(
+        verifyCompositeHistory(this.sidecar),
+        true,
+        "existing sealed genesis history is invalid"
+      );
+      return this.sidecar.genesis_manifest.manifest_hash;
+    }
+    const staged = structuredClone(this.sidecar);
+    staged.genesis_manifest = manifest;
+    staged.current_projections =
       structuredClone(manifest.initial_rows);
-    this.sidecar.operational_versions = manifest.initial_rows.map(
+    staged.operational_versions = manifest.initial_rows.map(
       (projection) => operationalVersionFor(projection, 0)
     );
-    this.bootstrapOpen = false;
     assert.equal(
-      verifyCompositeHistory(this.sidecar),
+      verifyCompositeHistory(staged),
       true,
       "sealed genesis history is invalid"
     );
+    this.sidecar = staged;
+    this.bootstrapOpen = false;
     return manifest.manifest_hash;
   }
 
   issueContextToken() {
     assert.equal(this.bootstrapOpen, false, "genesis is not sealed");
     const token = `context-lease-${++this.contextTokenSequence}`;
-    this.issuedContextTokens.add(token);
+    this.issuedContextTokens.set(token, this.sidecar.global_sequence);
     return token;
   }
 
@@ -4443,8 +4464,12 @@ class CompositeReferenceStores extends MemoryReferenceStores {
     ) {
       throw new Error("context_token_invalid");
     }
+    const issuedAtGlobalSequence = this.issuedContextTokens.get(token);
     this.issuedContextTokens.delete(token);
     this.consumedContextTokens.add(token);
+    if (issuedAtGlobalSequence !== this.sidecar.global_sequence) {
+      throw new Error("context_token_expired");
+    }
     if (
       this.context !== null ||
       this.installedContextToken !== null ||
@@ -5052,6 +5077,12 @@ async function buildIntentScenario(caseId = "origin") {
     principal_id: null
   });
   const genesisManifestHash = stores.sealGenesis();
+  const duplicateGenesisManifestHash = stores.sealGenesis();
+  assert.equal(
+    duplicateGenesisManifestHash,
+    genesisManifestHash,
+    "exact duplicate genesis seal was not idempotent"
+  );
   const envelope = helpers.makeEnvelope({
     operationName: "intent.put",
     body: intent,
@@ -5107,6 +5138,7 @@ async function buildIntentScenario(caseId = "origin") {
     receiverAuthentication,
     originContextToken,
     genesisManifestHash,
+    duplicateGenesisManifestHash,
     effectRef,
     first,
     originTrace,
@@ -5122,6 +5154,26 @@ async function buildIntentScenario(caseId = "origin") {
 
 export async function runCompositeProbe() {
   const origin = await buildIntentScenario("canonical");
+  const rejectedGenesisStores =
+    new CompositeReferenceStores(origin.helpers.foundation);
+  rejectedGenesisStores.trackedResolver(origin.helpers.keyResolver);
+  const rejectedGenesisBefore =
+    sidecarSnapshot(rejectedGenesisStores.sidecar);
+  let rejectedGenesisError = null;
+  try {
+    rejectedGenesisStores.sealGenesis();
+  } catch (error) {
+    rejectedGenesisError = error.message;
+  }
+  assert.match(
+    rejectedGenesisError,
+    /sealed genesis history is invalid/
+  );
+  assert.equal(rejectedGenesisStores.bootstrapOpen, true);
+  assert.deepEqual(
+    sidecarSnapshot(rejectedGenesisStores.sidecar),
+    rejectedGenesisBefore
+  );
   const originReport = {
     envelope: structuredClone(origin.envelope),
     authentication: structuredClone(origin.authentication),
@@ -5313,6 +5365,92 @@ export async function runCompositeProbe() {
     verifyCompositeArtifactBinding(
       acceptedFailureScenario.stores.sidecar,
       acceptedFailureTrace
+    ),
+    true
+  );
+
+  const acceptedNotFoundScenario =
+    await buildIntentScenario("accepted_failure_not_found");
+  const acceptedNotFoundEnvelope =
+    acceptedNotFoundScenario.helpers.makeEnvelope({
+      operationName: "runtime_binding.get",
+      body: {
+        ref: acceptedNotFoundScenario.effectRef,
+        retrieval_uri:
+          "https://cairn.invalid/objects/not-the-requested-copy"
+      },
+      messageNumber: 58,
+      nonce: "reference-nonce-00000058"
+    });
+  const acceptedNotFoundReceiver = receiverAuthenticationRecord(
+    acceptedNotFoundScenario.authentication,
+    acceptedNotFoundEnvelope
+  );
+  const acceptedNotFoundKernelBefore =
+    kernelSnapshot(acceptedNotFoundScenario.stores);
+  const acceptedNotFoundGlobalBefore =
+    acceptedNotFoundScenario.stores.sidecar.global_sequence;
+  acceptedNotFoundScenario.stores.installContext({
+    case_id: "accepted_failure_not_found",
+    phase: "accepted_failure",
+    envelope: acceptedNotFoundEnvelope,
+    authentication: acceptedNotFoundScenario.authentication,
+    receiver_authentication: acceptedNotFoundReceiver
+  });
+  const acceptedNotFoundRaw =
+    acceptedNotFoundScenario.harness.service.handleEnvelope(
+      acceptedNotFoundEnvelope,
+      acceptedNotFoundScenario.authentication
+    );
+  const acceptedNotFoundTrace =
+    acceptedNotFoundScenario.stores.traces.at(-1);
+  assert.deepEqual(acceptedNotFoundRaw, {
+    ok: false,
+    status: 404,
+    code: "object_not_found",
+    failures: ["object_not_found"]
+  });
+  assert.equal(acceptedNotFoundTrace.callback_commit, true);
+  assert.equal(acceptedNotFoundTrace.final_commit, true);
+  assert.equal(
+    acceptedNotFoundScenario.stores.sidecar.global_sequence,
+    acceptedNotFoundGlobalBefore + 1
+  );
+  assert.equal(
+    acceptedNotFoundTrace.callback_access_trace.length,
+    15
+  );
+  assert.equal(
+    acceptedNotFoundTrace.local_result.disposition,
+    "committed_accepted_failure"
+  );
+  assert.equal(
+    acceptedNotFoundTrace.local_result.service_observation.result.outcome,
+    "accepted_failure"
+  );
+  for (const mapName of [
+    "objectsByRef",
+    "idempotencyRecords",
+    "grantStatesByRef"
+  ]) {
+    assert.deepEqual(
+      acceptedNotFoundTrace.kernel_after.maps[mapName],
+      acceptedNotFoundKernelBefore.maps[mapName],
+      mapName
+    );
+  }
+  assert.notDeepEqual(
+    acceptedNotFoundTrace.kernel_after.used_nonces,
+    acceptedNotFoundKernelBefore.used_nonces
+  );
+  assert.equal(
+    verifyCompositeHistory(acceptedNotFoundScenario.stores.sidecar),
+    true
+  );
+  assert.equal(
+    verifyCompositeArtifactBinding(
+      acceptedNotFoundScenario.stores.sidecar,
+      acceptedNotFoundTrace
     ),
     true
   );
@@ -7098,6 +7236,8 @@ export async function runCompositeProbe() {
       nestedEnvelope
     )
   };
+  const expiringToken =
+    contextLifecycleScenario.stores.issueContextToken();
   const installedToken =
     contextLifecycleScenario.stores.issueContextToken();
   contextLifecycleScenario.stores.setContext(
@@ -7130,6 +7270,17 @@ export async function runCompositeProbe() {
   assert.equal(installedRaw.ok, true);
   assert.equal(installedRaw.replayed, true);
   assert.equal(installedTrace.final_commit, true);
+  let expiredContextRejected = false;
+  try {
+    contextLifecycleScenario.stores.setContext(
+      nestedContext,
+      expiringToken
+    );
+  } catch (error) {
+    expiredContextRejected =
+      error.message === "context_token_expired";
+  }
+  assert.equal(expiredContextRejected, true);
   let reusedContextRejected = false;
   try {
     contextLifecycleScenario.stores.setContext(
@@ -7427,6 +7578,17 @@ export async function runCompositeProbe() {
 
   return {
     origin: originReport,
+    genesis_lifecycle: {
+      duplicate_seal_idempotent:
+        origin.duplicateGenesisManifestHash ===
+          origin.genesisManifestHash,
+      rejected_seal_error: rejectedGenesisError,
+      rejected_seal_bootstrap_open:
+        rejectedGenesisStores.bootstrapOpen,
+      rejected_seal_sidecar_unchanged:
+        canonicalText(sidecarSnapshot(rejectedGenesisStores.sidecar)) ===
+          canonicalText(rejectedGenesisBefore)
+    },
     fingerprint_conflict: {
       raw: structuredClone(conflictRaw),
       trace: conflictTrace
@@ -7443,6 +7605,14 @@ export async function runCompositeProbe() {
       trace: acceptedFailureTrace,
       sidecar: structuredClone(
         acceptedFailureScenario.stores.sidecar
+      )
+    },
+    accepted_failure_not_found: {
+      envelope: structuredClone(acceptedNotFoundEnvelope),
+      raw: structuredClone(acceptedNotFoundRaw),
+      trace: acceptedNotFoundTrace,
+      sidecar: structuredClone(
+        acceptedNotFoundScenario.stores.sidecar
       )
     },
     multi_idempotency: {
@@ -7509,6 +7679,7 @@ export async function runCompositeProbe() {
         trace_count_unchanged: missingContextTraceCountUnchanged
       },
       nested_context_rejected: nestedContextRejected,
+      expired_context_rejected: expiredContextRejected,
       reused_context_rejected: reusedContextRejected,
       installed_raw: structuredClone(installedRaw),
       installed_trace: installedTrace
@@ -7538,7 +7709,7 @@ if (
       Object.keys(report.unexpected_wrapper_faults).length +
       Object.keys(report.preflight_faults).length +
       report.interleaved_history.foreign_traces.length +
-      12
+      16
     }\n`
   );
   process.stdout.write(

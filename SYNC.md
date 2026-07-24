@@ -64,6 +64,21 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: authoritative service eighteenth audit remediation]` 2026-07-24 ·
+  Codex — Exact seventeenth candidate
+  `b8a84410f8770f4b4c045f2868af8852f2ebf5d4` received one independent pass
+  and two independent rejections. Accepted findings: genesis sealing publishes
+  and closes bootstrap before validation instead of failing atomically; an exact
+  repeated genesis import is not idempotent; committed non-success observation
+  reconstruction is hard-coded to the single 422 fixture and rolls back a real
+  404 `object_not_found`; and an issued-but-unused context token can survive an
+  intervening transaction instead of expiring. Eighteenth-pass remediation will
+  stage and verify genesis before publication, return the existing result for an
+  exact duplicate seal, derive accepted-failure evidence from the actual closed
+  callback trace/result, and bind context leases to one store generation. Direct
+  lifecycle controls are required for every finding. `protocol/` and `mockups/`
+  remain untouched; no push or deploy is in scope.
+
 - `[BLOCKING: authoritative service seventeenth fixed-commit review]` 2026-07-24 ·
   Codex — Seventeenth-pass remediation is frozen at exact candidate
   `b8a84410f8770f4b4c045f2868af8852f2ebf5d4`. The deterministic composite
