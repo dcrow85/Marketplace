@@ -16,14 +16,14 @@ import MarketFinds from '../market/MarketFinds.jsx'
 import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../market/mockAgents.js'
 import { HaveActionsLesson, WantActionsLesson } from '../agent/MeetAnko.jsx'
 import { cardMatchesText, initialFamilyFilter } from './catalogSearch.js'
+import { fetchJson } from '../lib/data.js'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
 // the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
 // and under a '/app/' base path on the deployed site.
 const API_BASE = import.meta.env.VITE_API_BASE || ''
-const DEFAULT_CATALOG = { id: 'azuki-tcg', path: 'catalogs/azuki-tcg.json', title: 'Azuki TCG catalog' }
-const catalogUrl = (catalog) => import.meta.env.BASE_URL + (catalog?.path || DEFAULT_CATALOG.path)
+const DEFAULT_CATALOG = { id: 'azuki-tcg', path: 'catalogs/azuki-tcg.json', marketPath: 'market-sample.json', title: 'Azuki TCG catalog' }
 
 
 function chipsFor() {
@@ -136,17 +136,20 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   useEffect(() => {
     let live = true
-    fetch((import.meta.env.BASE_URL || '/') + 'market-sample.json')
-      .then((r) => r.json())
-      .then((m) => { if (live) setMkt(m && m.catalog_id === catalog.id ? m : null) })
-      .catch(() => {})
+    const marketRequest = catalog.marketPath ? fetchJson(catalog.marketPath) : Promise.resolve(null)
+    marketRequest.then((m) => {
+      if (live) setMkt(m && m.catalog_id === catalog.id ? m : null)
+    })
     return () => { live = false }
   }, [catalog])
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
     setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false)
-    fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch((e) => setErr(String(e)))
+    fetchJson(catalog.path).then((payload) => {
+      if (!payload) throw new Error(`Could not load ${catalog.title}`)
+      setData(payload)
+    }).catch((e) => setErr(String(e)))
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [catalog])
   useEffect(() => {

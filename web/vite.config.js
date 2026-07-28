@@ -26,7 +26,7 @@ export default defineConfig({
     proxy: {
       '/api/store': PILOT_STORE,
       '/api': BROWSE,
-      '/assets/cards': BROWSE,
+      '/assets': BROWSE,
     },
   },
 })

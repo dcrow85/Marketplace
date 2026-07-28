@@ -6,9 +6,24 @@ import { useEffect, useMemo, useState } from 'react'
 const BASE = import.meta.env.BASE_URL || '/'
 const cache = new Map()
 
+function resolvedImage(image) {
+  if (!image || /^(?:[a-z]+:|\/|#)/i.test(image)) return image
+  return BASE + image
+}
+
+function normalizePayload(payload) {
+  if (!payload || !Array.isArray(payload.cards)) return payload
+  return {
+    ...payload,
+    cards: payload.cards.map((card) => (
+      card.image ? { ...card, image: resolvedImage(card.image) } : card
+    )),
+  }
+}
+
 export function fetchJson(path) {
   if (!cache.has(path)) {
-    cache.set(path, fetch(BASE + path).then((r) => r.json()).catch(() => null))
+    cache.set(path, fetch(BASE + path).then((r) => r.json()).then(normalizePayload).catch(() => null))
   }
   return cache.get(path)
 }
@@ -19,7 +34,7 @@ export function useCatalog(catalog) {
     /* eslint-disable react-hooks/set-state-in-effect -- reset while the payload loads */
     let live = true
     setD(null)
-    fetchJson(catalog?.path || 'catalog-sample.json').then((x) => { if (live) setD(x) })
+    fetchJson(catalog?.path).then((x) => { if (live) setD(x) })
     /* eslint-enable react-hooks/set-state-in-effect */
     return () => { live = false }
   }, [catalog])
@@ -32,7 +47,10 @@ export function useMarket(catalog) {
     /* eslint-disable react-hooks/set-state-in-effect -- reset while the payload loads */
     let live = true
     setM(null)
-    fetchJson('market-sample.json').then((x) => { if (live) setM(x && x.catalog_id === catalog?.id ? x : null) })
+    const request = catalog?.marketPath
+      ? fetchJson(catalog.marketPath)
+      : Promise.resolve({ catalog_id: catalog?.id, sellers: [], sales: {} })
+    request.then((x) => { if (live) setM(x && x.catalog_id === catalog?.id ? x : null) })
     /* eslint-enable react-hooks/set-state-in-effect */
     return () => { live = false }
   }, [catalog])

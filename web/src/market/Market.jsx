@@ -367,7 +367,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   }, [aisleMatch, allSellers, byUid])
 
   if (!data || !mkt) return <div className="empty">Opening the market…</div>
-  if (!allSellers.length) return <div className="empty">No tables in this catalog yet.</div>
+  if (!allSellers.length) return <div className="empty">No tables in {catalog.label || 'this catalogue'} yet.</div>
 
   const open = allSellers.find((s) => s.id === sel)
   const pileOf = (sellerId) => piles[sellerId] || []

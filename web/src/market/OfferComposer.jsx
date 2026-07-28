@@ -1,17 +1,16 @@
 import { useEffect, useMemo, useState } from 'react'
-import { storeKeyFor, loadStore, catalogUrl, entryFor, condStr } from '../binder/collection.js'
+import { storeKeyFor, loadStore, entryFor, condStr } from '../binder/collection.js'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
 import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import { handleFor, avatarSVG } from '../identity.js'
 import CardZoom from './CardZoom.jsx'
 import { retryImg } from '../binder/helpers.jsx'
 import { paymentRailFor, railCurrency, cleanPayPalHandle, RAIL_ESCROW, RAIL_PAYPAL } from '../payments/rails.js'
+import { fetchJson } from '../lib/data.js'
 
 // The offer composer: everything on ONE screen — their cards, your cards, the cash
 // leg, and the send. No wizard. Anko's line quotes the RECORD (latest settlements per
 // card), never a value: pricing stays the humans' judgment.
-const MARKET_URL = (import.meta.env.BASE_URL || '/') + 'market-sample.json'
-
 function Avatar({ seed, size = 22 }) {
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
@@ -34,8 +33,8 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
   const store = useMemo(() => loadStore(storeKey), [storeKey])
 
   useEffect(() => {
-    fetch(catalogUrl(catalog)).then((r) => r.json()).then(setData).catch(() => {})
-    fetch(MARKET_URL).then((r) => r.json()).then(setMkt).catch(() => {})
+    fetchJson(catalog.path).then(setData).catch(() => {})
+    if (catalog.marketPath) fetchJson(catalog.marketPath).then(setMkt).catch(() => {})
   }, [catalog])
 
   const byUid = useMemo(() => new Map((data?.cards || []).map((c) => [c.uid, c])), [data])

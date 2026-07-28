@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-13 · Codex (Lady Emberheart STT04-008 WINNER now carries two independently hashed user-photo references under one observation row. The clearer original remains the display image; the second photo corroborates the visible treatment without asserting physical-copy identity, authenticity, tournament origin, or AX association. Catalogue remains 353 rows; no first real pilot trade is claimed.)
+UNREAD-FOR: none · LAST: 2026-07-28 · Codex (Vintage Pokémon is restored as a separate `japanese-pre-english` room with 1,258 records across 40 sets. Existing account-scoped stores remain attached; old demo ownership was removed from the derived UI payload. Ninety-six explicitly displayable images ship, 1,144 restricted references remain searchable with honest suppression language, and the empty market makes no seller claims. No deploy occurred.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,28 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] vintage Pokémon web reintegration complete` 2026-07-28 · Codex —
+  The `japanese-pre-english` browser identity is live in the app registry as
+  **Vintage Pokémon**: 1,258 searchable records, 40 sets, 1,258 static card
+  routes, and a clean zero-state binder. Existing account-scoped local stores
+  remain attached. The derived payload strips all old demo ownership/stance
+  fields; 96 `display_allowed` images ship with the Pages build and 1,144
+  source-restricted references remain as visible metadata records with explicit
+  “reference image not displayed” language. The room has no invented sample
+  sellers or settlements. Scoped ESLint, production build, payload invariants,
+  image presence, catalogue switching, English-name search, modal provenance,
+  and honest empty-market behavior pass. `mockups/`, protocol, chain, payments,
+  and source catalogue data were not edited. No deploy occurred.
+
+- `[BLOCKING: vintage Pokémon web reintegration]` 2026-07-28 · Codex —
+  Restoring the parked `japanese-pre-english` catalogue as a separate **Vintage
+  Pokémon** room while preserving its catalog ID and account-scoped browser
+  stores. Scope is the `web/` catalogue registry, data loading, build assembly,
+  and a derived clean payload. No edits to `mockups/`, protocol, chain, payment
+  semantics, or authoritative source data. The derived UI payload removes old
+  demo ownership/stance fields. Artwork is shipped only when its source row says
+  `display_allowed`; suppressed rows keep their metadata and provenance visible.
 
 - `[passive] authoritative service eighteenth fixed-commit passed` 2026-07-24 ·
   Codex — Exact candidate

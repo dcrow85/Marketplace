@@ -21,6 +21,7 @@ import { loadProfile } from './profile/profileStore.js'
 import { useMilestoneProgress } from './profile/progress.js'
 import GettingStarted from './profile/GettingStarted.jsx'
 import { cardPath, cardSlugFromPath } from './cards/cardRoute.js'
+import { CATALOGS } from './catalogs.js'
 import './trade/trade.css'
 
 // Dev-only: open /?preview to see the signed-in app with a mock account (no Privy login).
@@ -32,19 +33,6 @@ const PREVIEW_ID = PREVIEW_PARAMS.get('preview')
 const MOCK_ID = DEV_PREVIEW && /^0x[0-9a-fA-F]{40}$/.test(PREVIEW_ID || '')
   ? PREVIEW_ID.toLowerCase()
   : '0x0000000000000000000000000000000000c0ffee'
-const CATALOGS = [
-  {
-    id: 'azuki-tcg',
-    label: 'Azuki TCG',
-    title: 'Azuki TCG catalog',
-    path: 'catalogs/azuki-tcg.json',
-    note: 'Alpha, Gates Awakened, observations, and source scars.',
-  },
-  // Japanese pre-English (Pokemon) parked while the pilot focuses on Azuki — data and
-  // stores stay intact; restore by re-adding the entry:
-  // { id: 'japanese-pre-english', label: 'Japanese pre-English', title: 'Japanese pre-English catalog', path: 'catalog-sample.json', note: 'Pokemon launch-era and pre-English references.' },
-]
-
 function catalogFromUrl() {
   const wanted = new URLSearchParams(window.location.search).get('catalog')
   return CATALOGS.find((c) => c.id === wanted) || CATALOGS[0]
@@ -195,16 +183,19 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   useEffect(() => {
     let stop = () => {}
     let live = true
+    const marketRequest = catalog.marketPath ? fetchJson(catalog.marketPath) : Promise.resolve(null)
     Promise.all([
-      fetchJson(catalog.path || 'catalog-sample.json'),
-      fetchJson('market-sample.json'),
+      fetchJson(catalog.path),
+      marketRequest,
     ]).then(([d, m]) => {
       if (!d) return
       if (!live) return
       const byUid = new Map((d.cards || []).map((c) => [c.uid, c]))
       const asks = new Map()
       if (m && m.catalog_id === catalog.id) for (const sl of m.sellers) for (const l of sl.listings) asks.set(sl.id + '|' + l.uid, l.ask)
-      const stopMock = startMockMarket({ catalogId: catalog.id, accountId, byUid, askOf: (seller, uid) => asks.get(seller + '|' + uid) })
+      const stopMock = m
+        ? startMockMarket({ catalogId: catalog.id, accountId, byUid, askOf: (seller, uid) => asks.get(seller + '|' + uid) })
+        : () => {}
       const stopChain = startChainRail({ catalogId: catalog.id, accountId, byUid })
       stop = () => { stopMock(); stopChain() }
     }).catch(() => {})

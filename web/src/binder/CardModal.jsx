@@ -193,7 +193,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
             <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
               {shownImg
                 ? <img src={shownImg} className={'zoomable' + (imp === 'reading' || imp === 'review' ? ' pending' : '')} alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, shownImg)} />
-                : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">no reference image on file</div></div>}
+                : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">{c.image_suppressed ? 'reference image not displayed' : 'no reference image on file'}</div></div>}
               {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
               {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
               {frontPhoto && <span className="contribbadge">your front · witness, not proof</span>}
@@ -364,9 +364,13 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                 <div className="provbox">
                   <div className="pt"><span className={'lgdot ' + dot} /> Image provenance</div>
                   <div className="pb">
-                    <b>{c.image ? (PROV_LABEL[c.image_status] || 'Reference image') : 'No image on file'}.</b>{' '}
-                    {c.image_status === 'no_rarity_reference'
-                      ? 'Source-labeled No Rarity reference.'
+                    <b>{c.image
+                      ? (PROV_LABEL[c.image_status] || 'Reference image')
+                      : c.image_suppressed ? 'Reference image not displayed' : 'No image on file'}.</b>{' '}
+                    {c.image_suppressed
+                      ? 'The source record is preserved, but its artwork is not cleared for display here.'
+                      : c.image_status === 'no_rarity_reference'
+                        ? 'Source-labeled No Rarity reference.'
                       : c.image_status === 'no_reference_photo'
                         ? 'The candidate image was suppressed by the catalogue audit. This row currently has no honest reference photo.'
                         : c.image_status === 'user_observation_no_public_image'

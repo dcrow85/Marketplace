@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto'
 import { copyFile, mkdir, readFile, rename, writeFile } from 'node:fs/promises'
+import { CATALOGS } from '../src/catalogs.js'
 
 const dist = new URL('../dist/', import.meta.url)
 await mkdir(new URL('assets/', dist), { recursive: true })
@@ -48,9 +49,29 @@ await writeFile(appIndex, deferred)
 const cardSlug = (uid) => String(uid).trim().toLowerCase()
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-+|-+$/g, '')
-const catalogue = JSON.parse(await readFile(new URL('../public/catalogs/azuki-tcg.json', import.meta.url), 'utf8'))
-await Promise.all((catalogue.cards || []).map(async (card) => {
-  const route = new URL(`app/cards/${cardSlug(card.uid)}/`, dist)
+const catalogues = await Promise.all(CATALOGS.map(async (catalog) => ({
+  config: catalog,
+  payload: JSON.parse(await readFile(new URL(`../public/${catalog.path}`, import.meta.url), 'utf8')),
+})))
+const routeSlugs = new Set(catalogues.flatMap(({ payload }) => (
+  (payload.cards || []).map((card) => cardSlug(card.uid))
+)))
+await Promise.all([...routeSlugs].map(async (slug) => {
+  const route = new URL(`app/cards/${slug}/`, dist)
   await mkdir(route, { recursive: true })
   await writeFile(new URL('index.html', route), deferred)
+}))
+
+// Vintage card artwork is deliberately not copied into web/public: mockups remain
+// read-only source material and the production bundle receives only images whose
+// catalogue rows explicitly permit display.
+const vintage = catalogues.find(({ config }) => config.id === 'japanese-pre-english')
+const vintageImages = new Set((vintage?.payload.cards || [])
+  .filter((card) => card.display_allowed !== false && card.image)
+  .map((card) => card.image))
+await Promise.all([...vintageImages].map(async (image) => {
+  if (!image.startsWith('assets/')) throw new Error(`Unexpected vintage image path: ${image}`)
+  const destination = new URL(`app/${image}`, dist)
+  await mkdir(new URL('./', destination), { recursive: true })
+  await copyFile(new URL(`../../mockups/${image}`, import.meta.url), destination)
 }))

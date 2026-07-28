@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/prepare-pages.mjs",
+    "prebuild": "node scripts/prepare-pages.mjs && node scripts/build-vintage-catalog.mjs",
+    "build:vintage": "node scripts/build-vintage-catalog.mjs",
     "dev": "vite",
     "build": "vite build --base=/app/ --outDir dist/app",
     "postbuild": "node scripts/assemble-pages.mjs",
