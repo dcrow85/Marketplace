@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-28 · Codex (Vintage Pokémon is restored as a separate `japanese-pre-english` room with 1,258 records across 40 sets. Existing account-scoped stores remain attached; old demo ownership was removed from the derived UI payload. Ninety-six explicitly displayable images ship, 1,144 restricted references remain searchable with honest suppression language, and the empty market makes no seller claims. No deploy occurred.)
+UNREAD-FOR: none · LAST: 2026-07-29 · Codex (Vintage Pokémon reference-image presentation is repaired and live from source commit `845a755`: 1,240 of 1,258 records now render available catalogue artwork, including 1,144 visibly labeled reference-only images; 18 genuinely image-less rows remain honest placeholders. Catalogue art is never presented as seller evidence, authentication, condition, or proof. Apex, `www`, static assets, catalogue payload, and PayPal sandbox Function were production-verified.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,23 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] vintage Pokémon reference-image presentation complete` 2026-07-29 ·
+  Codex — Supersedes the blocker below. Source commit `845a755` restores every
+  available mirrored catalogue image without changing authoritative catalogue
+  data: 1,240 of 1,258 records render artwork, 1,144 reference-only images carry
+  compact `REF` / “catalogue reference” labels, and the 18 records with no image
+  remain placeholders. Binder pockets, card modal, card page, market zoom, and
+  catalogue switcher distinguish catalogue art from seller evidence; expanded
+  provenance explicitly says it is not authentication, condition, or proof of
+  a physical card. Build invariants found zero missing files among the 1,240
+  references. Scoped ESLint, production build, local browser search/modal QA,
+  and `git diff --check` pass. Cloudflare Pages deployment `cf50d6c1` is live;
+  preview, apex, and `www` serve the same `cairn-site-2fa27702aac2.js` bundle.
+  Live catalogue counts and representative image assets return 200, as does the
+  PayPal sandbox configuration Function. `mockups/`, authoritative catalogue
+  data, protocol, chain, payment behavior, ownership, listing, and settlement
+  semantics were untouched.
 
 - `[BLOCKING: vintage Pokémon reference-image presentation]` 2026-07-29 ·
   Codex — Live review found that the restored 1,258-row room renders only the 96
