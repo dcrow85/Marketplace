@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: unified Vintage Pokémon web catalogue]` 2026-07-29 · Codex —
+  The live room's broad **Vintage Pokémon** label currently masks a narrow
+  Japanese-only payload. This web/catalogue integration will merge the complete
+  1,789-row English WotC corpus with the existing 1,258 Japanese rows under the
+  preserved `japanese-pre-english` browser-store ID, expose language as an
+  explicit filter, and generate one durable `/app/cards/<slug>/` route for every
+  distinct printing. English API artwork remains visibly labeled external
+  catalogue reference material—not seller evidence, image-rights approval,
+  authentication, condition, or proof of a physical card. Authoritative source
+  corpora, `mockups/`, protocol, chain, payment, ownership, listing, and
+  settlement semantics remain untouched.
+
 - `[passive] mobile Binder continuous scroll complete` 2026-07-29 · Codex —
   Source commit `e6a1bc6` replaces mobile nine-card pagination with a free-scrolling
   two-column card flow. Phones reveal 24 cards initially and another 24 as the

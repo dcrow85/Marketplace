@@ -11,6 +11,8 @@ export function cardMatchesText(card, needle, setById = {}) {
     card.name_en,
     card.romaji,
     card.name_ja,
+    card.language,
+    card.language_code,
     card.element,
     card.rarity,
     card.illustrator,

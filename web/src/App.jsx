@@ -35,7 +35,16 @@ const MOCK_ID = DEV_PREVIEW && /^0x[0-9a-fA-F]{40}$/.test(PREVIEW_ID || '')
   : '0x0000000000000000000000000000000000c0ffee'
 function catalogFromUrl() {
   const wanted = new URLSearchParams(window.location.search).get('catalog')
-  return CATALOGS.find((c) => c.id === wanted) || CATALOGS[0]
+  const explicit = CATALOGS.find((c) => c.id === wanted)
+  if (explicit) return explicit
+  const slug = cardSlugFromPath()
+  if (slug) {
+    const routed = CATALOGS.find((catalog) => (
+      (catalog.routePrefixes || []).some((prefix) => slug.startsWith(prefix))
+    ))
+    if (routed) return routed
+  }
+  return CATALOGS[0]
 }
 
 function cardRouteFromUrl() {

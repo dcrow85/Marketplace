@@ -14,5 +14,6 @@ WORKDIR /app
 COPY simulations/ ./simulations/
 COPY mockups/catalog-sample.json ./mockups/catalog-sample.json
 COPY web/public/catalogs/azuki-tcg.json ./web/public/catalogs/azuki-tcg.json
+COPY web/public/catalogs/vintage-pokemon.json ./web/public/catalogs/vintage-pokemon.json
 # Host provides $PORT; bind 0.0.0.0.
 CMD ["sh", "-c", "python3 simulations/cairn_browse_server.py --host 0.0.0.0 --port ${PORT:-8788}"]

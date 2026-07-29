@@ -53,25 +53,32 @@ const catalogues = await Promise.all(CATALOGS.map(async (catalog) => ({
   config: catalog,
   payload: JSON.parse(await readFile(new URL(`../public/${catalog.path}`, import.meta.url), 'utf8')),
 })))
-const routeSlugs = new Set(catalogues.flatMap(({ payload }) => (
-  (payload.cards || []).map((card) => cardSlug(card.uid))
-)))
+const routeCards = catalogues.flatMap(({ config, payload }) => (
+  (payload.cards || []).map((card) => ({ catalog: config.id, uid: card.uid, slug: cardSlug(card.uid) }))
+))
+const routeBySlug = new Map()
+for (const card of routeCards) {
+  const previous = routeBySlug.get(card.slug)
+  if (previous && previous.uid !== card.uid) {
+    throw new Error(`Card route collision at ${card.slug}: ${previous.catalog}/${previous.uid} and ${card.catalog}/${card.uid}`)
+  }
+  routeBySlug.set(card.slug, card)
+}
+const routeSlugs = new Set(routeBySlug.keys())
 await Promise.all([...routeSlugs].map(async (slug) => {
   const route = new URL(`app/cards/${slug}/`, dist)
   await mkdir(route, { recursive: true })
   await writeFile(new URL('index.html', route), deferred)
 }))
 
-// Vintage card artwork is deliberately not copied into web/public: mockups remain
-// read-only source material. The production bundle receives each locally mirrored
-// catalogue witness, while the payload preserves display_allowed/image_status so
-// the UI can distinguish a catalogue reference from seller evidence.
+// Locally mirrored Vintage artwork is deliberately not copied into web/public:
+// mockups remain read-only source material. External English WotC API references
+// stay external and visibly labeled; only local `assets/` witnesses are assembled.
 const vintage = catalogues.find(({ config }) => config.id === 'japanese-pre-english')
 const vintageImages = new Set((vintage?.payload.cards || [])
-  .filter((card) => card.image)
+  .filter((card) => card.image?.startsWith('assets/'))
   .map((card) => card.image))
 await Promise.all([...vintageImages].map(async (image) => {
-  if (!image.startsWith('assets/')) throw new Error(`Unexpected vintage image path: ${image}`)
   const destination = new URL(`app/${image}`, dist)
   await mkdir(new URL('./', destination), { recursive: true })
   await copyFile(new URL(`../../mockups/${image}`, import.meta.url), destination)

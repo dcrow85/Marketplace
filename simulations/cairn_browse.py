@@ -75,9 +75,10 @@ COST_FIELD = {
 
 CATALOG_PATHS = {
     "japanese-pre-english": [
+        ROOT / "web" / "public" / "catalogs" / "vintage-pokemon.json",
         ROOT / "mockups" / "catalog-sample.json",
         ROOT / "web" / "public" / "catalog-sample.json",
-        ROOT / "web" / "dist" / "catalog-sample.json",
+        ROOT / "web" / "dist" / "app" / "catalogs" / "vintage-pokemon.json",
     ],
     "azuki-tcg": [
         ROOT / "web" / "public" / "catalogs" / "azuki-tcg.json",
@@ -488,8 +489,9 @@ def filter_system(data: dict) -> str:
             'Return ONLY JSON: {"holo":..,"star_alt":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"element":..,"rarity":..,"release_family":..,"product_channel":..,"card_type":..,"plane":..,"lore_term":..,"theme":..,"character_thread":..,"event":..,"lore":..,"sort":..,"action":..,"reading":"ONE line spoken TO the collector in Anko\'s voice — \'You want\u2026\' / \'Putting\u2026\', plain words, never \'the user\'"}'
         )
     return (
-        "You translate a collector's loose browse CALL into a structured filter over a Japanese Pokemon "
-        "card catalog, using their standing COST FIELD. The catalog has NO dollar prices, only value bands.\n\n"
+        "You translate a collector's loose browse CALL into a structured filter over a vintage Pokemon "
+        "card catalog containing distinct Japanese and English WotC printings, using their standing COST FIELD. "
+        "The catalog has NO dollar prices, only catalogue fields and attention bands.\n\n"
         "Available filter dimensions (use only these):\n"
         " - holo: true | false | null\n"
         " - owned: true | false | null   (for 'missing' / 'don't have', set false)\n"
@@ -497,8 +499,9 @@ def filter_system(data: dict) -> str:
         "'cheap' / 'affordable' / \"won't break the bank\")\n"
         " - set: a set-name substring, or null\n"
         " - character: a pokemon-name substring, or null\n"
-        " - category: \"Pokemon\" | \"Trainer\" | \"Energy\" | null\n\n"
-        'Return ONLY JSON: {"holo":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"reading":"one line on how you read the call against the cost field"}'
+        " - category: \"Pokemon\" | \"Trainer\" | \"Energy\" | null\n"
+        " - language: \"Japanese\" | \"English\" | null\n\n"
+        'Return ONLY JSON: {"holo":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"language":..,"reading":"one line on how you read the call against the cost field"}'
     )
 
 COMMENT_SYS = (
@@ -611,11 +614,19 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
     if f.get("star_alt") is not None:
         out = [c for c in out if bool(c.get("star_alt")) == bool(f["star_alt"])]
     if f.get("owned") is not None:
-        out = [c for c in out if bool(c["owned"]) == bool(f["owned"])]
+        # Ownership belongs to the collector's private browser store. A public
+        # catalogue payload may carry legacy ownership flags, but the unified
+        # Vintage catalogue intentionally does not. Never manufacture "missing"
+        # status from absent private data.
+        owned_cards = [c for c in out if "owned" in c]
+        if owned_cards:
+            out = [c for c in owned_cards if bool(c.get("owned")) == bool(f["owned"])]
     if f.get("exclude_grails"):
         out = [c for c in out if (c.get("band_rank") or 0) < 3]  # band 3 = high-scrutiny holo grail
     if f.get("category"):
         out = [c for c in out if (c.get("category") or "").lower() == str(f["category"]).lower()]
+    if f.get("language"):
+        out = [c for c in out if (c.get("language") or "").lower() == str(f["language"]).lower()]
     if f.get("card_type"):
         t = str(f["card_type"]).lower()
         out = [c for c in out if any(t in (x or "").lower() for x in (c.get("types") or []) + (c.get("subtypes") or []))]
@@ -935,7 +946,7 @@ def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) ->
 ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market", "match_value"}
 SCOPE_KEYS = {
     "rarity", "release_family", "product_channel", "star_alt", "holo", "category",
-    "element", "set", "character", "exclude_grails", "duplicates", "card_type",
+    "element", "language", "set", "character", "exclude_grails", "duplicates", "card_type",
     "plane", "lore_term", "theme", "character_thread", "event", "lore",
 }
 
@@ -1034,13 +1045,19 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
         return {"call": call, "catalog": data.get("profile", {}).get("id", data.get("_catalog_id")),
                 "filter": f, "action": action,
                 "result": {"commentary": "", "picks": [], "caveat": ""}, "overclaim_flags": []}
+    if f.get("owned") is not None and not any("owned" in card for card in data["cards"]):
+        f["ignored_private_ownership"] = f["owned"]
+        f["owned"] = None
+        f["reading"] = (
+            "I can search the public catalogue here, but your Have and Want marks stay in your private Binder."
+        )
     named_decks = named_deck_signals_for_call(call, data)
     archetype_decks = archetype_deck_signals_for_call(call, data)
     deck_cards = deck_card_names_for_call(call, data)
     if named_decks or archetype_decks:
         ignored = {}
         for key in (
-            "holo", "star_alt", "owned", "exclude_grails", "set", "character", "category", "element",
+            "holo", "star_alt", "owned", "exclude_grails", "set", "character", "category", "element", "language",
             "rarity", "release_family", "product_channel", "card_type", "plane", "lore_term", "theme",
             "character_thread", "event", "lore",
         ):
@@ -1075,7 +1092,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             survivors = fallback_survivors
     if not survivors and deck_signal_context:
         context_only_keys = (
-            "holo", "star_alt", "owned", "exclude_grails", "set", "character", "category", "element",
+            "holo", "star_alt", "owned", "exclude_grails", "set", "character", "category", "element", "language",
             "rarity", "release_family", "product_channel", "card_type", "plane", "lore_term", "theme",
             "character_thread", "event", "lore",
         )
@@ -1094,7 +1111,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
         + community_context
         + deck_signal_context
         + f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
@@ -1146,7 +1163,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]

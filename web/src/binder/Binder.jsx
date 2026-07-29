@@ -56,6 +56,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [channelF, setChannelF] = useState(() => new Set())
   const [catF, setCatF] = useState(() => new Set())
   const [elementF, setElementF] = useState(() => new Set())
+  const [languageF, setLanguageF] = useState(() => new Set())
   const [rarityF, setRarityF] = useState(() => new Set())
   const [holoOnly, setHoloOnly] = useState(false)
   const [agentRes, setAgentRes] = useState(null)
@@ -76,6 +77,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     setChannelF(new Set())
     setCatF(new Set())
     setElementF(new Set())
+    setLanguageF(new Set())
     setRarityF(new Set())
     setHoloOnly(false)
   }, [])
@@ -145,7 +147,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
-    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setRarityF(new Set()); setHoloOnly(false)
+    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setLanguageF(new Set()); setRarityF(new Set()); setHoloOnly(false)
     fetchJson(catalog.path).then((payload) => {
       if (!payload) throw new Error(`Could not load ${catalog.title}`)
       setData(payload)
@@ -411,6 +413,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       }
       if (catF.size && !catF.has(c.category)) return false
       if (elementF.size && !elementF.has(c.element)) return false
+      if (languageF.size && !languageF.has(c.language)) return false
       if (rarityF.size && !rarityF.has(c.rarity)) return false
       if (holoOnly && !c.holo) return false
       return true
@@ -426,7 +429,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       return cmp(a, b)
     })
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, familyF, channelF, catF, elementF, rarityF, holoOnly, store, setById, agentRes, agentActive, agentCurating, pickRank, agentAction, plan])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, languageF, rarityF, holoOnly, store, setById, agentRes, agentActive, agentCurating, pickRank, agentAction, plan])
 
   const directSearchMiss = !!q.trim() && !!rows.length && !rows.some((card) => cardMatchesText(card, q, setById))
   const grouped = (!q.trim() || directSearchMiss) && !agentActive && !agentCurating
@@ -434,6 +437,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const CHANNELS = useMemo(() => data?.ui?.product_channel_chips || [], [data])
   const CATS = useMemo(() => data?.ui?.category_chips || [], [data])
   const ELEMENTS = useMemo(() => data?.ui?.element_chips || [], [data])
+  const LANGUAGES = useMemo(() => data?.ui?.language_chips || [], [data])
   const FAMILIES = useMemo(() => data?.ui?.family_chips || [], [data])
   const toggleChip = (ch) => {
     if (ch.g === 'all') clearBrowseFilters()
@@ -445,7 +449,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
     else if (ch.g === 'holo') setHoloOnly((v) => !v)
   }
   const chipOn = (ch) => ch.g === 'all'
-    ? (!stanceF.size && !familyF.size && !channelF.size && !catF.size && !elementF.size && !holoOnly)
+    ? (!stanceF.size && !familyF.size && !channelF.size && !catF.size && !elementF.size && !languageF.size && !holoOnly)
     : ch.g === 'stance' ? stanceF.has(ch.v)
       : ch.g === 'family' ? familyF.has(ch.v)
         : ch.g === 'channel' ? channelF.has(ch.v)
@@ -456,7 +460,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   if (err) return <div className="empty">could not load catalog ({err})</div>
   if (!data) return <div className="empty">loading catalog…</div>
 
-  const refineCount = familyF.size + channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
+  const refineCount = familyF.size + channelF.size + catF.size + elementF.size + languageF.size + rarityF.size + (holoOnly ? 1 : 0)
   const dockSetup = onboardingStep === 'profile'
   const chooseFamily = (family) => {
     setFamilyF(family ? new Set([family]) : new Set())
@@ -475,7 +479,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const ask = () => {
     const c = query.trim()
     if (!c || agentBusy) return
-    const browseFilterCount = stanceF.size + familyF.size + channelF.size + catF.size + elementF.size + rarityF.size + (holoOnly ? 1 : 0)
+    const browseFilterCount = stanceF.size + familyF.size + channelF.size + catF.size + elementF.size + languageF.size + rarityF.size + (holoOnly ? 1 : 0)
     askAgent(c, browseFilterCount)
     setQ('')
     setQuery('')
@@ -535,7 +539,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
             return <button key={value} className="chip on scopechip" onClick={() => setFamilyF(new Set())}
               title="remove release filter">{family?.label || value} ×</button>
           })}
-          {(FAMILIES.length || CHANNELS.length || CATS.length || ELEMENTS.length) > 0 && (
+          {[...languageF].map((value) => {
+            const language = LANGUAGES.find((item) => item.value === value)
+            return <button key={value} className="chip on scopechip" onClick={() => setLanguageF(new Set())}
+              title="remove language filter">{language?.label || value} ×</button>
+          })}
+          {(FAMILIES.length || CHANNELS.length || CATS.length || ELEMENTS.length || LANGUAGES.length) > 0 && (
             <button className={'chip filterbtn' + (refineCount ? ' on' : '')} onClick={() => setFiltersOpen(true)} aria-label="Filters">
               ⚑ Filters{refineCount ? ` · ${refineCount}` : ''}
             </button>
@@ -575,6 +584,13 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
                 <div className="fs-group"><label>Element</label><div className="fs-opts">
                   <button className={'fo' + (!elementF.size ? ' on' : '')} onClick={() => setElementF(new Set())}>Any</button>
                   {ELEMENTS.map((el) => <button key={el} className={'fo' + (elementF.has(el) ? ' on' : '')} onClick={() => setElementF(elementF.has(el) ? new Set() : new Set([el]))}>{el}</button>)}
+                </div></div>
+              )}
+              {LANGUAGES.length > 0 && (
+                <div className="fs-group"><label>Language</label><div className="fs-opts">
+                  <button className={'fo' + (!languageF.size ? ' on' : '')} onClick={() => setLanguageF(new Set())}>Any</button>
+                  {LANGUAGES.map((language) => <button key={language.value} className={'fo' + (languageF.has(language.value) ? ' on' : '')}
+                    onClick={() => setLanguageF(languageF.has(language.value) ? new Set() : new Set([language.value]))}>{language.label}</button>)}
                 </div></div>
               )}
               <div className="fs-group"><label>Rarity</label><div className="fs-opts">

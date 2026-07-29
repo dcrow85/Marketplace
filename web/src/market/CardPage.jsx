@@ -35,6 +35,7 @@ function CardDetails({ card, listings, sales }) {
       <summary><span>Card details</span><small>{typeLine || 'recorded catalogue fields'}</small></summary>
       <div className="cp-detailbody">
         <div className="cp-statline">
+          <Fact label="Language">{card.language}</Fact>
           <Fact label="Type">{typeLine}</Fact>
           <Fact label="Element">{card.element}</Fact>
           <Fact label="IKZ cost">{card.ikz_cost}</Fact>

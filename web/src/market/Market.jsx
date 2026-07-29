@@ -367,7 +367,6 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   }, [aisleMatch, allSellers, byUid])
 
   if (!data || !mkt) return <div className="empty">Opening the market…</div>
-  if (!allSellers.length) return <div className="empty">No tables in {catalog.label || 'this catalogue'} yet.</div>
 
   const open = allSellers.find((s) => s.id === sel)
   const pileOf = (sellerId) => piles[sellerId] || []
@@ -504,7 +503,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   })()
   const msgEl = swapMsg && <div className="mk-swapmsg mono" role="status"><span>{swapMsg}</span><button type="button" onClick={() => setSwapMsg(null)} aria-label="Dismiss update">✕</button></div>
   const roomNote = (
-    <div className="mk-samplenote mono">{open?.live
+    <div className="mk-samplenote mono">{!allSellers.length
+      ? 'catalogue record — no seller copy is listed right now.'
+      : open?.live
       ? <><span className="mk-livetag">● live</span> {sellerName(open)} is a real collector in the pilot — a deal here goes to their inbox.</>
       : liveSellers.length
         ? <>tables marked <span className="mk-livetag">● live</span> are real collectors — deals there reach a real inbox. the rest are sample sellers for shaping the browse.</>
@@ -526,6 +527,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
       }}
       onVisitSeller={visitSellerPile} onBack={onClearFocus} onChangeStance={changeMyStance} />
   }
+
+  if (!allSellers.length) return <div className="empty">No tables in {catalog.label || 'this catalogue'} yet.</div>
 
   // ---- the Settle page: its own room ----
   if (open && settling) {

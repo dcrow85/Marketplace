@@ -32,6 +32,7 @@ export function applyAgentFilter(cards, f, setById) {
   if (f.owned != null) out = out.filter((c) => !!c.owned === !!f.owned)
   if (f.exclude_grails) out = out.filter((c) => (c.band_rank || 0) < 3)
   if (f.category) out = out.filter((c) => (c.category || '').toLowerCase() === String(f.category).toLowerCase())
+  if (f.language) out = out.filter((c) => (c.language || '').toLowerCase() === String(f.language).toLowerCase())
   if (f.card_type) {
     const t = String(f.card_type).toLowerCase()
     out = out.filter((c) => [...(c.types || []), ...(c.subtypes || [])].some((x) => (x || '').toLowerCase().includes(t)))
