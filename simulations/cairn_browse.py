@@ -1019,6 +1019,13 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
             for card in data["cards"]
             if exact_name.casefold() == (card.get("name_en") or card.get("name_ja") or "").casefold()
         ]
+        parsed_set = str(f.get("set") or "").strip()
+        if parsed_set and not any(
+            parsed_set.casefold() in setlabel.get(card["set_id"], "").casefold()
+            for card in exact_name_cards
+        ):
+            f["ignored_unmatched_set"] = parsed_set
+            f["set"] = None
         if "winner" in call.casefold() and any("winner" in world_search_text(card) for card in exact_name_cards):
             f["lore"] = "winner"
             f["deterministic_lore_match"] = "winner"
@@ -1119,7 +1126,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
         + community_context
         + deck_signal_context
         + f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_set','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
@@ -1171,7 +1178,7 @@ def main() -> int:
     data = load_catalog(catalog)
     setlabel = data["_set_label"]
     print(f"CATALOG: {out['catalog']}")
-    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
+    print(f"FILTER (Qwen read): {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_set','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity')})}")
     print(f"  reading: {f.get('reading','')}")
     print(f"  -> {out['n_survivors']} of {len(data['cards'])} cards survive\n")
     r = out["result"]
