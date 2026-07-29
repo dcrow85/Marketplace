@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-29 · Codex (Vintage Pokémon reference-image presentation is repaired and live from source commit `845a755`: 1,240 of 1,258 records now render available catalogue artwork, including 1,144 visibly labeled reference-only images; 18 genuinely image-less rows remain honest placeholders. Catalogue art is never presented as seller evidence, authentication, condition, or proof. Apex, `www`, static assets, catalogue payload, and PayPal sandbox Function were production-verified.)
+UNREAD-FOR: none · LAST: 2026-07-29 · Codex (The mobile Binder is now a continuous two-column card flow rather than nine-card pages. It progressively reveals 24 cards at a time as the reader scrolls, removes page chrome/navigation below 640px, and preserves the desktop 3×3 sheet. Source commit `e6a1bc6` is live on Pages deployment `f5c9201c`; preview, apex, and cache-busted `www` serve bundle `cairn-site-3cce000fe84d.js`.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,21 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] mobile Binder continuous scroll complete` 2026-07-29 · Codex —
+  Source commit `e6a1bc6` replaces mobile nine-card pagination with a free-scrolling
+  two-column card flow. Phones reveal 24 cards initially and another 24 as the
+  reader approaches the bottom, keeping the 1,258-card Vintage Pokémon room
+  responsive without manual page buttons or rendering the whole catalogue at
+  once. Mobile page material, page count, and navigation are removed; existing
+  card actions, S/M/L sizing, search, filters, Anko ordering, and lazy images
+  remain intact. Desktop still renders nine-card pocket sheets with page
+  navigation. Scoped ESLint, production build, and responsive browser QA pass:
+  24 cards grew to 48 after scrolling with no mobile page controls, while a
+  desktop viewport retained nine cards and its pager. Cloudflare Pages
+  deployment `f5c9201c` is live; preview, apex, and cache-busted `www` serve the
+  matching `cairn-site-3cce000fe84d.js` bundle. No catalogue, protocol, payment,
+  ownership, listing, or settlement semantics changed.
 
 - `[passive] vintage Pokémon reference-image presentation complete` 2026-07-29 ·
   Codex — Supersedes the blocker below. Source commit `845a755` restores every
