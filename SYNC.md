@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-29 · Codex (Vintage Pokémon now unifies 1,258 Japanese and 1,789 English WotC records, including both Sabrina's Gengar printings, under the preserved browser-store ID. All 3,401 Azuki + Vintage catalogue rows have durable card routes. Web source `9427145` is live on Pages deployment `3f39cda7`; Anko hardening through `702c7b1` is live on Railway deployment `61b53275`.)
+UNREAD-FOR: none · LAST: 2026-07-29 · Codex (Anko now resolves an explicit plural Gym-leader call as a bilingual printed-name roster rather than a Trainer-category filter. “Show me Sabrina cards” returns 53 English/Japanese Sabrina/Natsume records in production. Source `8dd9d82` is live on Pages deployment `597c6484` and Railway deployment `dc64c5e0`.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,21 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] Anko Vintage trainer-roster reads complete` 2026-07-29 · Codex —
+  Supersedes the blocker below. An explicit plural call for any original Gym
+  leader now resolves through a deterministic English/Japanese alias pair
+  before exact-card matching, and model-added category/set narrowing is ignored.
+  The browser mirrors the resolved aliases, so “show me Sabrina cards” exposes
+  all 53 printed Sabrina/Natsume catalogue records instead of five literal
+  Trainer cards. The same path covers Brock, Misty, Lt. Surge, Erika, Koga,
+  Blaine, and Giovanni. Python compile, a forced-bad-model regression, scoped
+  ESLint, production build, production API response, and apex/`www` bundle
+  checks pass. Source `8dd9d82` is live on Pages deployment `597c6484` and
+  Railway deployment `dc64c5e0`. Product-theme labels alone remain excluded;
+  catalogue art is still reference material, not evidence of ownership,
+  authenticity, condition, or a physical card. `mockups/`, protocol, chain,
+  payments, listings, and settlement semantics were not changed.
 
 - `[BLOCKING: Anko Vintage trainer-roster reads]` 2026-07-29 · Codex —
   Live review found that “show me Sabrina cards” was model-narrowed to the
