@@ -48,8 +48,13 @@ export function applyAgentFilter(cards, f, setById) {
   }
   if (f.set) { const s = String(f.set).toLowerCase(); out = out.filter((c) => (setById[c.set_id]?.label || '').toLowerCase().includes(s)) }
   if (f.character) {
-    const ch = String(f.character).toLowerCase()
-    out = out.filter((c) => (c.name_en || '').toLowerCase().includes(ch) || (c.name_ja || '').toLowerCase().includes(ch) || worldSearchText(c).includes(ch))
+    const aliases = Array.isArray(f.character_aliases) && f.character_aliases.length ? f.character_aliases : [f.character]
+    const needles = aliases.map((alias) => String(alias).toLowerCase()).filter(Boolean)
+    out = out.filter((c) => needles.some((ch) => (
+      (c.name_en || '').toLowerCase().includes(ch)
+      || (c.name_ja || '').toLowerCase().includes(ch)
+      || worldSearchText(c).includes(ch)
+    )))
   }
   if (f.plane) {
     const plane = String(f.plane).toLowerCase()

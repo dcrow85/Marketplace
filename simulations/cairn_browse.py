@@ -73,6 +73,21 @@ COST_FIELD = {
     "trust": "",
 }
 
+# Gym-leader roster calls need a bilingual identity bridge. The model may know
+# that Sabrina is a Trainer and incorrectly narrow the *card category* to
+# Trainer, losing Sabrina's Pokémon. These aliases are catalogue search terms,
+# not same-printing or ownership claims.
+TRAINER_ROSTERS = {
+    "brock": ("Brock", ["Brock", "タケシ"]),
+    "misty": ("Misty", ["Misty", "カスミ"]),
+    "lt. surge": ("Lt. Surge", ["Lt. Surge", "マチス"]),
+    "erika": ("Erika", ["Erika", "エリカ"]),
+    "koga": ("Koga", ["Koga", "キョウ"]),
+    "sabrina": ("Sabrina", ["Sabrina", "ナツメ"]),
+    "blaine": ("Blaine", ["Blaine", "カツラ"]),
+    "giovanni": ("Giovanni", ["Giovanni", "サカキ"]),
+}
+
 CATALOG_PATHS = {
     "japanese-pre-english": [
         ROOT / "web" / "public" / "catalogs" / "vintage-pokemon.json",
@@ -498,7 +513,8 @@ def filter_system(data: dict) -> str:
         " - exclude_grails: true | false  (the top value tier is 'high-scrutiny holo' grails; set true for "
         "'cheap' / 'affordable' / \"won't break the bank\")\n"
         " - set: a set-name substring, or null\n"
-        " - character: a pokemon-name substring, or null\n"
+        " - character: a printed-name or trainer-roster substring, or null. A plural request such as "
+        "'Sabrina cards' means Sabrina's entire roster, including Pokémon; do not add category=Trainer.\n"
         " - category: \"Pokemon\" | \"Trainer\" | \"Energy\" | null\n"
         " - language: \"Japanese\" | \"English\" | null\n\n"
         'Return ONLY JSON: {"holo":..,"owned":..,"exclude_grails":..,"set":..,"character":..,"category":..,"language":..,"reading":"one line on how you read the call against the cost field"}'
@@ -604,6 +620,18 @@ def exact_card_name_in_call(call: str, cards: list[dict]) -> str | None:
     return None
 
 
+def trainer_roster_in_call(call: str) -> tuple[str, list[str]] | None:
+    """Resolve "Sabrina cards" as a roster, not the Trainer card named Sabrina."""
+    folded = call.casefold()
+    roster_context = bool(re.search(r"\b(cards?|roster|lineup|collection)\b", folded))
+    if not roster_context:
+        return None
+    for key, roster in sorted(TRAINER_ROSTERS.items(), key=lambda item: -len(item[0])):
+        if re.search(rf"(?<!\w){re.escape(key)}(?:'s)?(?!\w)", folded):
+            return roster
+    return None
+
+
 def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[dict]:
     out = cards
     if f.get("deck_card_names"):
@@ -650,12 +678,16 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
         out = [c for c in out if s in setlabel.get(c["set_id"], "").lower()]
     if f.get("character"):
         apostrophes = str.maketrans({"\u2018": "'", "\u2019": "'", "\u201b": "'", "\uff07": "'"})
-        ch = str(f["character"]).translate(apostrophes).lower()
+        aliases = f.get("character_aliases") or [f["character"]]
+        needles = [str(alias).translate(apostrophes).lower() for alias in aliases if str(alias).strip()]
         out = [
             c for c in out
-            if ch in (c.get("name_en") or "").translate(apostrophes).lower()
-            or ch in (c.get("name_ja") or "").translate(apostrophes).lower()
-            or ch in world_search_text(c)
+            if any(
+                needle in (c.get("name_en") or "").translate(apostrophes).lower()
+                or needle in (c.get("name_ja") or "").translate(apostrophes).lower()
+                or needle in world_search_text(c)
+                for needle in needles
+            )
         ]
     if f.get("plane"):
         plane = str(f["plane"]).casefold()
@@ -954,7 +986,7 @@ def deterministic_deck_signal_result(call: str, data: dict, pool: list[dict]) ->
 ACTION_OPS = {"mark_have", "mark_want", "unmark_have", "unmark_want", "list_for_sale", "open_to_trade", "unlist", "close_trade", "find_market", "match_value"}
 SCOPE_KEYS = {
     "rarity", "release_family", "product_channel", "star_alt", "holo", "category",
-    "element", "language", "set", "character", "exclude_grails", "duplicates", "card_type",
+    "element", "language", "set", "character", "character_aliases", "exclude_grails", "duplicates", "card_type",
     "plane", "lore_term", "theme", "character_thread", "event", "lore",
 }
 
@@ -1001,7 +1033,26 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
     setlabel = data["_set_label"]
     fuser = f"COST FIELD: {json.dumps(COST_FIELD)}\n\nCALL: \"{call}\"\n\nReturn the filter JSON."
     f = call_model(MODEL, filter_system(data), fuser, ENDPOINT, 260)
-    exact_name = exact_card_name_in_call(call, data["cards"])
+    roster = trainer_roster_in_call(call) if data.get("_catalog_id") == "japanese-pre-english" else None
+    exact_name = None if roster else exact_card_name_in_call(call, data["cards"])
+    if roster:
+        roster_name, aliases = roster
+        ignored = {
+            key: f.get(key)
+            for key in ("category", "set")
+            if f.get(key) is not None
+        }
+        f["character"] = roster_name
+        f["character_aliases"] = aliases
+        f["category"] = None
+        f["set"] = None
+        f["deterministic_roster_match"] = roster_name
+        if ignored:
+            f["ignored_roster_narrowing"] = ignored
+        f["reading"] = (
+            f"You want the full {roster_name} roster across English and Japanese names, "
+            "not only cards whose category is Trainer."
+        )
     if exact_name:
         parsed_name = str(f.get("character") or "")
         if parsed_name.casefold() != exact_name.casefold():
@@ -1126,7 +1177,7 @@ def browse(call: str, catalog: str | None = None, cap: int = 42) -> dict:
         + community_context
         + deck_signal_context
         + f"Catalog: {data.get('profile', {}).get('title') or data.get('title','catalog')} ({data.get('profile',{}).get('id', data.get('_catalog_id'))})\n"
-        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_set','ignored_unmatched_lore','ignored_unmatched_deck_filter','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
+        f"The filter resolved to: {json.dumps({k: f.get(k) for k in ('holo','star_alt','owned','exclude_grails','set','character','character_aliases','category','element','language','rarity','release_family','product_channel','card_type','plane','lore_term','theme','character_thread','event','lore','sort','ignored_private_ownership','ignored_unmatched_set','ignored_unmatched_lore','ignored_unmatched_deck_filter','ignored_roster_narrowing','deterministic_roster_match','deterministic_deck_match','deterministic_name_match','deterministic_lore_match','deterministic_event_match','deterministic_product_match','overrode_model_identity') if k in f or f.get(k) is not None})}\n"
         f"It cut the {len(data['cards'])}-row catalog to {len(survivors)} candidates across {n_sets} sets"
         + (f" (showing a sample of {len(pool)} spread across those sets)" if len(survivors) > len(pool) else "")
         + ":\n" + "\n".join(brief(c, setlabel) for c in pool) + "\n\nWrite the commentary JSON."
