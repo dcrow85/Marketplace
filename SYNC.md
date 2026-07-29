@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: Anko Vintage trainer-roster reads]` 2026-07-29 · Codex —
+  Live review found that “show me Sabrina cards” was model-narrowed to the
+  Trainer category, returning only literal Sabrina Trainer cards and hiding
+  Sabrina’s Pokémon. This bounded repair will add deterministic bilingual
+  roster intent for the eight original Gym leaders, ignore model-added category
+  or set narrowing for an explicit plural roster call, and mirror the resolved
+  aliases in the browser filter. Matching remains restricted to printed
+  catalogue names; a themed product or release label alone is not treated as
+  ownership, identity, authenticity, or proof of a physical card. `mockups/`,
+  protocol, chain, payments, listings, and settlement semantics remain out of
+  scope.
+
 - `[passive] Vintage Japanese completeness + printing relationships complete`
   2026-07-29 · Codex — Supersedes the blocker below. The web catalogue now
   assembles all nine audited vintage corpora rather than the earlier partial
