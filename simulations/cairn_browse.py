@@ -588,12 +588,18 @@ def world_search_text(card: dict) -> str:
 
 def exact_card_name_in_call(call: str, cards: list[dict]) -> str | None:
     """Return the longest explicit catalogue name in the call, if one exists."""
+    def normalized(value: str) -> str:
+        return value.translate(str.maketrans({
+            "\u2018": "'", "\u2019": "'", "\u201b": "'", "\uff07": "'",
+        }))
+
+    normalized_call = normalized(call)
     names = {
         card.get("name_en") or card.get("name_ja") or ""
         for card in cards
     }
     for name in sorted((name for name in names if len(name) >= 4), key=lambda value: (-len(value), value.casefold())):
-        if re.search(rf"(?<!\w){re.escape(name)}(?!\w)", call, flags=re.IGNORECASE):
+        if re.search(rf"(?<!\w){re.escape(normalized(name))}(?!\w)", normalized_call, flags=re.IGNORECASE):
             return name
     return None
 
@@ -643,11 +649,12 @@ def apply_filter(cards: list[dict], f: dict, setlabel: dict[str, str]) -> list[d
         s = str(f["set"]).lower()
         out = [c for c in out if s in setlabel.get(c["set_id"], "").lower()]
     if f.get("character"):
-        ch = str(f["character"]).lower()
+        apostrophes = str.maketrans({"\u2018": "'", "\u2019": "'", "\u201b": "'", "\uff07": "'"})
+        ch = str(f["character"]).translate(apostrophes).lower()
         out = [
             c for c in out
-            if ch in (c.get("name_en") or "").lower()
-            or ch in (c.get("name_ja") or "").lower()
+            if ch in (c.get("name_en") or "").translate(apostrophes).lower()
+            or ch in (c.get("name_ja") or "").translate(apostrophes).lower()
             or ch in world_search_text(c)
         ]
     if f.get("plane"):
@@ -736,7 +743,8 @@ def brief(c: dict, setlabel: dict[str, str]) -> str:
     collection = c.get("collection_assertion") or {}
     if collection.get("name"):
         tags.append(f"collection:{collection['name']}[{collection.get('membership_authority', 'unrated')}]")
-    tags.append("in-collection" if c["owned"] else "unowned")
+    if "owned" in c:
+        tags.append("in-collection" if c.get("owned") else "unowned")
     lore = world.get("lore_summary") or ""
     visual = world.get("visual_note") or ""
     context = " | ".join(part for part in [lore, visual] if part)
