@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { entryFor as effStance } from './collection.js'
-import { nm, retryImg } from './helpers.jsx'
+import { nm, retryImg, provBadge } from './helpers.jsx'
 
 const releaseLabel = (card) => card.release_family_label || card.set_label || card.product_channel_label || ''
 
@@ -43,6 +43,7 @@ export default function PocketPages({
               <div key={c.uid} className={'bv-pocket filled' + (isPick ? ' is-pick' : '')}>
                 <button type="button" className="bv-open" onClick={() => onOpen(c.uid)} aria-label={`Open ${nm(c)}`} />
                 {img ? <img src={img} alt={nm(c)} loading="lazy" decoding="async" onError={userPhotos[c.uid] ? undefined : (ev) => retryImg(ev, c.image)} /> : <span className="bv-noimg">{nm(c)}</span>}
+                {!userPhotos[c.uid] && provBadge(c)}
                 {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
                 {(e.copies || (store[c.uid] || {}).copies || 1) > 1 && <span className="bv-count mono">×{(store[c.uid] || {}).copies}</span>}
                 {e.grail && <span className="bv-grail">★</span>}
@@ -68,6 +69,7 @@ export default function PocketPages({
             <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '') + (isPick ? ' is-pick' : '')}>
               <button type="button" className="bv-open" onClick={() => onOpen(c.uid)} aria-label={`Open ${nm(c)}`} />
               {img && <img className="bv-ghostart" src={img} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
+              {provBadge(c)}
               {isPick && <span className="bv-pickflag mono" title="Anko placed this card first">★ Anko</span>}
               <span className="mono bv-gnum">{c.num}</span>
               <span className="bv-gtxt">{e.stance === 'want' ? 'wanted ✓' : nm(c)}</span>

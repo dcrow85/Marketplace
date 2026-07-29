@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: vintage Pokémon reference-image presentation]` 2026-07-29 ·
+  Codex — Live review found that the restored 1,258-row room renders only the 96
+  `display_allowed` No Rarity images even though the derived source payload has
+  1,240 locally mirrored catalogue-reference images. The web-only repair will
+  keep each row's exact `image_status`, `display_allowed`, provenance, and
+  no-overclaim language intact while presenting available artwork as an
+  explicitly labeled catalogue reference—not seller evidence, authentication,
+  condition, or proof of a physical card. The 18 rows with no recorded image
+  remain honest placeholders. `mockups/`, authoritative catalogue data,
+  protocol, chain, payment, ownership, listing, and settlement semantics remain
+  untouched.
+
 - `[passive] vintage Pokémon web reintegration complete` 2026-07-28 · Codex —
   The `japanese-pre-english` browser identity is live in the app registry as
   **Vintage Pokémon**: 1,258 searchable records, 40 sets, 1,258 static card

@@ -63,11 +63,12 @@ await Promise.all([...routeSlugs].map(async (slug) => {
 }))
 
 // Vintage card artwork is deliberately not copied into web/public: mockups remain
-// read-only source material and the production bundle receives only images whose
-// catalogue rows explicitly permit display.
+// read-only source material. The production bundle receives each locally mirrored
+// catalogue witness, while the payload preserves display_allowed/image_status so
+// the UI can distinguish a catalogue reference from seller evidence.
 const vintage = catalogues.find(({ config }) => config.id === 'japanese-pre-english')
 const vintageImages = new Set((vintage?.payload.cards || [])
-  .filter((card) => card.display_allowed !== false && card.image)
+  .filter((card) => card.image)
   .map((card) => card.image))
 await Promise.all([...vintageImages].map(async (image) => {
   if (!image.startsWith('assets/')) throw new Error(`Unexpected vintage image path: ${image}`)

@@ -29,6 +29,9 @@ export default function CardZoom({ card, sub, witness, ask = 0, decision = null,
             {card.rarity && <><span aria-hidden="true"> · </span><span>{card.rarity}</span></>}
             {sub && <><span aria-hidden="true"> · </span><span>{sub}</span></>}
           </div>
+          {card.image && (card.display_allowed === false || card.image_reference_only) && (
+            <div className="zoom-reference mono">catalogue reference · not this seller&rsquo;s card</div>
+          )}
           {!!witness && <div className="zoom-evidence recorded">
             <b>✓ {witness} seller photo{witness === 1 ? '' : 's'} recorded</b>
             <span>The record says these scans exist; the images are not available in this view.</span>

@@ -194,6 +194,9 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {shownImg
                 ? <img src={shownImg} className={'zoomable' + (imp === 'reading' || imp === 'review' ? ' pending' : '')} alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, shownImg)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">{c.image_suppressed ? 'reference image not displayed' : 'no reference image on file'}</div></div>}
+              {shownImg === c.image && (c.display_allowed === false || c.image_reference_only)
+                ? <span className="prov pv-ref" title="Catalogue reference — not seller evidence">ref</span>
+                : null}
               {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
               {shownImg && <button className="zoombtn" onClick={() => setZoom(true)} title="View full screen" aria-label="View full screen">⛶</button>}
               {frontPhoto && <span className="contribbadge">your front · witness, not proof</span>}
@@ -367,8 +370,10 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                     <b>{c.image
                       ? (PROV_LABEL[c.image_status] || 'Reference image')
                       : c.image_suppressed ? 'Reference image not displayed' : 'No image on file'}.</b>{' '}
-                    {c.image_suppressed
-                      ? 'The source record is preserved, but its artwork is not cleared for display here.'
+                    {c.image_reference_only || c.display_allowed === false
+                      ? 'Catalogue reference only — not seller evidence, authentication, condition, or proof of a physical card.'
+                      : c.image_suppressed
+                        ? 'The source record is preserved, but its artwork is not cleared for display here.'
                       : c.image_status === 'no_rarity_reference'
                         ? 'Source-labeled No Rarity reference.'
                       : c.image_status === 'no_reference_photo'

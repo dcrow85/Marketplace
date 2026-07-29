@@ -273,6 +273,9 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
               {CATALOGS.map((c) => (
                 <button key={c.id} className={'cpill' + (c.id === catalog.id ? ' on' : '')} onClick={() => setCatalog(c)} title={c.note}>{c.label}</button>
               ))}
+              {catalog.id === 'japanese-pre-english' && (
+                <span className="catalog-note mono">reference art · seller photos stay separate</span>
+              )}
             </div>
           )}
           </div>}

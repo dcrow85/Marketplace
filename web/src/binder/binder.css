@@ -342,6 +342,7 @@ section { padding: 14px 0 70px; }
 .bv-page { background: #141310; border: 0.5px solid rgba(236,234,227,.14); border-radius: 12px; padding: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .bv-have-guide { grid-column: 1 / -1; }
 .bv-pocket { position: relative; aspect-ratio: 5 / 7; border-radius: 7px; overflow: hidden; }
+.bv-pocket > .prov { top: 7px; bottom: auto; }
 .bv-open { position: absolute; z-index: 2; inset: 0; width: 100%; border: 0; background: transparent; cursor: pointer; }
 .bv-open:focus-visible { outline: 3px solid var(--agent); outline-offset: -3px; }
 .bv-pocket > .bv-from, .bv-pocket > .bv-q, .bv-pocket > .bv-mobile-intent, .bv-pocket > .bv-intent { position: relative; z-index: 3; }

@@ -68,8 +68,11 @@ export function rarityOrder(cards) {
 }
 export function provBadge(c) {
   if (!c.image) return null
+  if (c.display_allowed === false || c.image_reference_only) {
+    return <span className="prov pv-ref" title="Catalogue reference — not seller evidence">ref</span>
+  }
   if (c.image_status === 'exact_source') return null // the default is unmarked — badge only exceptions
-  if (c.image_status === 'provider_path') return <span className="prov pv-ref">ref</span>
+  if (c.image_status === 'provider_path') return <span className="prov pv-ref" title="Catalogue reference — not seller evidence">ref</span>
   return null
 }
 

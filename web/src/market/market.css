@@ -417,6 +417,7 @@
 .zoom-evidence.missing { border-color: color-mix(in srgb, var(--signal) 70%, transparent); }
 .zoom-evidence.missing b { color: #e28d77; }
 .zoom-evidence.recorded b { color: #8bc7a0; }
+.zoom-reference { display: inline-flex; margin-top: 7px; padding: 4px 7px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; color: #c9c3b8; font-size: 9px; letter-spacing: .035em; }
 .zoom-anko { box-sizing: border-box; width: 100%; color: var(--ink2); background: var(--paper); border: .5px solid rgba(236,234,227,.28); border-radius: 10px; padding: 10px; }
 .zoom-secondlook { display: block; margin-bottom: 7px; color: var(--dim); font-size: 9.5px; text-transform: uppercase; letter-spacing: .06em; }
 .zoom-anko .anko-read { margin: 0; }

@@ -10,6 +10,7 @@
 .cp-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .24; background-image: linear-gradient(105deg, transparent 49.5%, var(--rule2) 50%, transparent 50.5%); }
 .cp-artstage { position: relative; z-index: 1; width: min(100%, 330px); justify-self: center; }
 .cp-artstage > img { display: block; width: 100%; aspect-ratio: 5 / 7; object-fit: cover; border-radius: 17px; background: var(--mount); box-shadow: 0 28px 58px rgba(0,0,0,.38), 0 0 0 1px rgba(255,255,255,.11); }
+.cp-reference { position: absolute; top: 12px; left: 12px; color: #fff; background: rgba(17,15,12,.74); border: 1px solid rgba(255,255,255,.62); border-radius: 999px; padding: 4px 8px; font: 8px var(--mono); text-transform: uppercase; letter-spacing: .07em; backdrop-filter: blur(5px); }
 .cp-noart { display: grid; place-items: center; width: 100%; aspect-ratio: 5 / 7; padding: 22px; color: var(--dim); background: var(--mount); border: 1px dashed var(--rule); border-radius: 17px; text-align: center; }
 .cp-holo { position: absolute; left: 12px; bottom: 12px; color: #201709; background: linear-gradient(135deg, #f5dda0, #cfa84e); border: 1px solid rgba(81,54,6,.35); border-radius: 999px; padding: 4px 9px; font: 9px var(--mono); text-transform: uppercase; letter-spacing: .06em; box-shadow: 0 5px 16px rgba(0,0,0,.24); }
 .cp-identity { position: relative; z-index: 1; min-width: 0; }

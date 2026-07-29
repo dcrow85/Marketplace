@@ -157,6 +157,9 @@ export default function CardPage({
         {card.image
           ? <img src={assetSrc(card.image)} alt={card.name_en || card.num} onError={(event) => retryImg(event, assetSrc(card.image))} />
           : <div className="cp-noart">{card.image_suppressed ? 'Reference image not displayed' : 'Catalogue image not recorded'}</div>}
+        {card.image && (card.display_allowed === false || card.image_reference_only)
+          ? <span className="cp-reference">catalogue reference</span>
+          : null}
         {card.holo && <span className="cp-holo">{card.star_alt ? '★ alternate art' : '✦ holo'}</span>}
       </div>
       <div className="cp-identity">
