@@ -495,6 +495,24 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
   .grid, .grid.gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
   html[data-tile-size="l"] .grid,
   html[data-tile-size="l"] .grid.gallery { grid-template-columns: minmax(0, 1fr); max-width: 300px; margin-inline: auto; }
+  .bv.is-scroll .bv-head, .bv.is-scroll .bv-nav { display: none; }
+  .bv.is-scroll .bv-page {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    gap: 14px 10px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+  .bv-scroll-more {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dim);
+    font-size: 10px;
+  }
   .bv-page { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px; gap: 10px; }
   html[data-tile-size="l"] .bv-page { grid-template-columns: minmax(0, 1fr); width: min(100%, 320px); }
   .bv-pocket, .bv-pocket.ghost {

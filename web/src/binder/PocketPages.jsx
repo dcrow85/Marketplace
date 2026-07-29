@@ -1,26 +1,49 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { entryFor as effStance } from './collection.js'
 import { nm, retryImg, provBadge } from './helpers.jsx'
 
 const releaseLabel = (card) => card.release_family_label || card.set_label || card.product_channel_label || ''
+const MOBILE_QUERY = '(max-width: 640px)'
+const MOBILE_BATCH = 24
 
 // The binder's paged layout: the SAME filtered rows as the grid, nine cards at a
-// time. Desktop keeps the 3×3 pocket sheet; phones use the Market's card rhythm.
-// Every card opens the full modal, so search, Anko, filters, and scanning stay here.
+// time on desktop. Phones use the Market's continuous card rhythm and reveal another
+// batch as the reader approaches the end. Every card opens the full modal, so search,
+// Anko, filters, and scanning stay here.
 export default function PocketPages({
   rows, store, userPhotos, onOpen, onMarket, setStance, setField, askIndex, onQuickSell,
   onboarding = false, haveLessonUid = null, haveActionsGuide = null, onUseHaveAction,
   wantLessonUid = null, wantActionsGuide = null, pickSet = null, focusKey = '',
 }) {
   const [page, setPage] = useState(0)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches)
+  const [mobileCount, setMobileCount] = useState(MOBILE_BATCH)
+  const loadMoreRef = useRef(null)
   useEffect(() => { setPage(0) }, [rows.length, focusKey]) // eslint-disable-line react-hooks/set-state-in-effect -- filters or Anko's curation changed; back to page 1
+  useEffect(() => {
+    const media = window.matchMedia(MOBILE_QUERY)
+    const onChange = (event) => setIsMobile(event.matches)
+    media.addEventListener('change', onChange)
+    return () => media.removeEventListener('change', onChange)
+  }, [])
+  useEffect(() => { setMobileCount(MOBILE_BATCH) }, [rows.length, focusKey]) // eslint-disable-line react-hooks/set-state-in-effect -- a new result set starts at the top
+  useEffect(() => {
+    if (!isMobile || mobileCount >= rows.length || !loadMoreRef.current) return undefined
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setMobileCount((count) => Math.min(count + MOBILE_BATCH, rows.length))
+      }
+    }, { rootMargin: '500px 0px' })
+    observer.observe(loadMoreRef.current)
+    return () => observer.disconnect()
+  }, [isMobile, mobileCount, rows.length])
   const pages = []
   for (let i = 0; i < rows.length; i += 9) pages.push(rows.slice(i, i + 9))
-  const pg = pages[Math.min(page, pages.length - 1)] || []
+  const pg = isMobile ? rows.slice(0, mobileCount) : (pages[Math.min(page, pages.length - 1)] || [])
   const filled = pg.filter((c) => effStance(c, store).stance === 'have').length
   const showIntent = onboarding && rows.length === 1
   return (
-    <div className="bv">
+    <div className={'bv' + (isMobile ? ' is-scroll' : '')}>
       <div className="bv-head">
         <div className="bv-title">Page {Math.min(page, pages.length - 1) + 1} of {pages.length}
           <span className="dim"> · {filled} of {pg.length} pockets filled</span></div>
@@ -98,11 +121,15 @@ export default function PocketPages({
           )
         })}
       </div>
-      <div className="bv-nav">
-        <button className="ghost sm" disabled={page <= 0} onClick={() => setPage((p) => p - 1)}>← page {page}</button>
-        <span className="dim bv-hint">every pocket opens the card — gaps included</span>
-        <button className="ghost sm" disabled={page >= pages.length - 1} onClick={() => setPage((p) => p + 1)}>page {page + 2} →</button>
-      </div>
+      {isMobile ? (
+        mobileCount < rows.length && <div ref={loadMoreRef} className="bv-scroll-more mono" aria-hidden="true">loading more cards…</div>
+      ) : (
+        <div className="bv-nav">
+          <button className="ghost sm" disabled={page <= 0} onClick={() => setPage((p) => p - 1)}>← page {page}</button>
+          <span className="dim bv-hint">every pocket opens the card — gaps included</span>
+          <button className="ghost sm" disabled={page >= pages.length - 1} onClick={() => setPage((p) => p + 1)}>page {page + 2} →</button>
+        </div>
+      )}
     </div>
   )
 }
