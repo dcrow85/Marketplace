@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-29 · Codex (The mobile Binder is now a continuous two-column card flow rather than nine-card pages. It progressively reveals 24 cards at a time as the reader scrolls, removes page chrome/navigation below 640px, and preserves the desktop 3×3 sheet. Source commit `e6a1bc6` is live on Pages deployment `f5c9201c`; preview, apex, and cache-busted `www` serve bundle `cairn-site-3cce000fe84d.js`.)
+UNREAD-FOR: none · LAST: 2026-07-29 · Codex (Vintage Pokémon now unifies 1,258 Japanese and 1,789 English WotC records, including both Sabrina's Gengar printings, under the preserved browser-store ID. All 3,401 Azuki + Vintage catalogue rows have durable card routes. Web source `9427145` is live on Pages deployment `3f39cda7`; Anko hardening through `702c7b1` is live on Railway deployment `61b53275`.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,33 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] unified Vintage Pokémon web catalogue complete` 2026-07-29 ·
+  Codex — Supersedes the blocker below. Web source commit `9427145` merges the
+  audited 1,789-row English WotC corpus with 1,258 Japanese rows under the
+  preserved `japanese-pre-english` store ID: 3,047 distinct cards, 58 sets,
+  3,029 catalogue-reference images, 18 honest no-image rows, and explicit
+  English/Japanese filters. Every catalogue row now has a durable route; the
+  assembled build contains 3,401 collision-free Azuki + Vintage card pages.
+  Empty-market card pages render the identity/details record and say no seller
+  copy is listed instead of being swallowed by the table-directory empty state.
+  Pasted Vintage URLs select their own catalogue without relying on query state.
+  Both Sabrina's Gengar records are searchable and live at Gym Heroes #14 and
+  Gym Challenge #29; both source images and permanent routes return 200.
+  Browser QA covered direct routes, Binder search, modal-to-page navigation,
+  English language display, and the no-listed-copy state. Corpus check, scoped
+  ESLint, Python compile/deterministic tests, production build, 3,401-route
+  audit, and `git diff --check` pass. Pages deployment `3f39cda7` is live.
+  Backend commits `100d058` and `702c7b1` keep private ownership out of the
+  public catalogue read, normalize curly apostrophes, prevent absent ownership
+  fields from crashing commentary, and let exact card identity override a bogus
+  set parse while preserving a real explicit set qualifier. Production Anko
+  returns both Sabrina printings for “show me Sabrina’s Gengar” with no
+  overclaim flags on Railway deployment `61b53275`. External API artwork remains
+  visibly labelled catalogue reference material—not seller evidence, image
+  rights approval, authentication, condition, possession, or physical-card
+  proof. `mockups/`, authoritative source corpora, protocol, chain, payment,
+  listing, and settlement semantics were not changed.
 
 - `[BLOCKING: unified Vintage Pokémon web catalogue]` 2026-07-29 · Codex —
   The live room's broad **Vintage Pokémon** label currently masks a narrow
