@@ -1,0 +1,84 @@
+{
+  "schema": "marketplace.vintage_printing_relationships.v0.1",
+  "generated_at": "2026-07-29T00:00:00Z",
+  "relationships": [
+    {
+      "id": "sabrinas-gengar-pain-amplifier-call-of-the-night",
+      "relationship_type": "same_card_localized_printing",
+      "confidence": "source_verified",
+      "artwork_relationship": "localized_artwork_change",
+      "label": "Same card · localized artwork differs",
+      "members": [
+        "en_wotc_gym_heroes_20000814:gym1-14",
+        "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-054"
+      ],
+      "display_overrides": {
+        "jp_tcg_challenge_from_the_darkness_19990625:PMCG6-054": {
+          "name_en": "Sabrina's Gengar",
+          "name_ja": "ナツメのゲンガー",
+          "name_ja_status": "source_verified_override"
+        }
+      },
+      "source_refs": [
+        {
+          "source": "Bulbapedia card printing page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Sabrina%27s_Gengar_%28Challenge_from_the_Darkness%29",
+          "authority": "English and Japanese release membership, card text lineage, and localized artwork note."
+        }
+      ],
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition",
+        "that the localized artworks are visually identical"
+      ]
+    },
+    {
+      "id": "sabrinas-gengar-dark-wave-shadow-bind",
+      "relationship_type": "same_card_localized_printing",
+      "confidence": "source_verified",
+      "artwork_relationship": "same_illustration_lineage",
+      "label": "Same card · Japanese deck printing",
+      "members": [
+        "en_wotc_gym_challenge_20001016:gym2-29",
+        "jp_tcg_yamabuki_city_gym_sabrina_19990226:008"
+      ],
+      "display_overrides": {
+        "jp_tcg_yamabuki_city_gym_sabrina_19990226:008": {
+          "name_ja": "ナツメのゲンガー",
+          "name_ja_status": "source_verified_override"
+        }
+      },
+      "source_refs": [
+        {
+          "source": "Bulbapedia card printing page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Sabrina%27s_Gengar_%28Yamabuki_City_Gym%29",
+          "authority": "English and Japanese release membership for this card."
+        },
+        {
+          "source": "Bulbapedia Yamabuki City Gym deck page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Yamabuki_City_Gym_%28TCG%29",
+          "authority": "Deck checklist and product boundary."
+        }
+      ],
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition"
+      ]
+    }
+  ],
+  "relationship_policy": {
+    "same_card_localized_printing": "A source explicitly places the localized printings in the same card lineage.",
+    "same_artwork_reprint": "A source explicitly identifies the same illustration/card reprint.",
+    "related_character_only": "The cards depict the same character but are not asserted to be the same card.",
+    "prohibited_shortcut": "Name-only, Pokédex-number-only, or set-proximity matches may not be promoted to same-card relationships."
+  },
+  "not_claiming": [
+    "complete cross-language relationship coverage",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
+  ]
+}

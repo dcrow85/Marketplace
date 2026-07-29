@@ -64,6 +64,37 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] Vintage Japanese completeness + printing relationships complete`
+  2026-07-29 · Codex — Supersedes the blocker below. The web catalogue now
+  assembles all nine audited vintage corpora rather than the earlier partial
+  sample: 4,872 unique rows across 223 release families, including 3,056
+  Japanese rows. Added the missing Yamabuki City Gym/Sabrina and Guren Town
+  Gym/Blaine decks plus the bounded Southern Islands, Intro Pack, Intro Pack
+  Neo, Pokémon-e Starter, McDonald's e, T, J, and first-season PLAY products.
+  The completion ledger passes as
+  `bounded_source_complete_with_disclosed_residuals`; the unresolved English
+  Jumbo source-count mismatch remains explicit and non-blocking, and the claim
+  does not extend beyond pinned source surfaces. Card pages now expose typed,
+  source-verified related printings; Sabrina's Gengar has both verified
+  English/Japanese paths, including the Japanese-deck image. Scoped ESLint,
+  Python compilation, six catalogue audits, catalogue invariants, the
+  production Pages build, reciprocal navigation, and a 390 px no-overflow
+  browser check pass. `mockups/` was not touched.
+
+- `[BLOCKING: Vintage Japanese completeness + printing relationships]` 2026-07-29 ·
+  Codex — User review found that the unified room contains English WotC Gym
+  printings without their Japanese originals/counterparts: notably Sabrina's
+  Gengar from Challenge from the Darkness and Yamabuki City Gym. This lane will
+  audit the Japanese release/product manifest against the room's stated Vintage
+  scope, import missing Japanese records only from attributable catalogue
+  sources, and add explicit typed printing relationships to card pages.
+  “Counterpart,” “same card,” “adapted artwork,” and “related character” will
+  remain distinct claims; no name-only inference may promote a relationship.
+  External catalogue art remains reference material—not seller evidence,
+  image-rights approval, authenticity, condition, possession, or physical-card
+  proof. `mockups/`, protocol, chain, payment, ownership, listing, and settlement
+  semantics remain out of scope.
+
 - `[passive] unified Vintage Pokémon web catalogue complete` 2026-07-29 ·
   Codex — Supersedes the blocker below. Web source commit `9427145` merges the
   audited 1,789-row English WotC corpus with 1,258 Japanese rows under the

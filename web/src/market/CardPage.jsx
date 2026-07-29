@@ -71,9 +71,49 @@ function CardDetails({ card, listings, sales }) {
   </div>
 }
 
+function RelatedPrintings({ card, byUid, onOpenCard }) {
+  const printings = (card.printing_relationships || []).flatMap((relationship) => (
+    (relationship.related_uids || []).map((uid) => ({
+      relationship,
+      card: byUid?.get(uid),
+    }))
+  )).filter(({ card: related }) => related)
+  if (!printings.length) return null
+  return <section className="cp-printings" aria-labelledby="related-printings">
+    <div className="cp-sectionhead">
+      <div>
+        <span className="ek">Source-linked records</span>
+        <h2 id="related-printings">Other printings</h2>
+        <p>The same card in another language or release—not a name-only match.</p>
+      </div>
+    </div>
+    <div className="cp-printinggrid">
+      {printings.map(({ card: related, relationship }) => {
+        const relatedName = related.name_en || related.name_ja || related.num || related.uid
+        return <button type="button" className="cp-printing" key={`${relationship.id}:${related.uid}`}
+          onClick={() => onOpenCard?.(related)}>
+          <span className="cp-printingart">
+            {related.image
+              ? <img src={assetSrc(related.image)} alt="" onError={(event) => retryImg(event, assetSrc(related.image))} />
+              : <i aria-hidden="true">◇</i>}
+          </span>
+          <span className="cp-printingcopy">
+            <span className="cp-printinglang mono">{related.language || related.language_code || 'Printing'}</span>
+            <b>{relatedName}</b>
+            {related.name_ja && related.name_ja !== relatedName && <span>{related.name_ja}</span>}
+            <small>{related.release_family_label || related.set_id} · {related.num}</small>
+            <em>{relationship.label || 'Verified related printing'}</em>
+          </span>
+          <span className="cp-printingarrow" aria-hidden="true">→</span>
+        </button>
+      })}
+    </div>
+  </section>
+}
+
 export default function CardPage({
   card, listings, sales = [], myEntry, initialSellerId, agentName = 'Anko', roomNote,
-  sellerName, inPile, onPickUp, onVisitSeller, onBack, onChangeStance,
+  sellerName, inPile, onPickUp, onVisitSeller, onBack, onChangeStance, byUid, onOpenCard,
 }) {
   const [sort, setSort] = useState('best')
   const [selectedSellerId, setSelectedSellerId] = useState(initialSellerId || listings[0]?.s.id || null)
@@ -97,7 +137,7 @@ export default function CardPage({
 
   useEffect(() => {
     const previousTitle = document.title
-    document.title = `${card.name_en || card.num || 'Card'} · Cairn`
+    document.title = `${card.name_en || card.name_ja || card.num || 'Card'} · Cairn`
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     return () => { document.title = previousTitle }
   }, [card])
@@ -183,6 +223,8 @@ export default function CardPage({
         <p className="cp-truth mono">Asks and condition are seller claims. Recorded scans show what Cairn can point to—not a guarantee of authenticity or grade.</p>
       </div>
     </header>
+
+    <RelatedPrintings card={card} byUid={byUid} onOpenCard={onOpenCard} />
 
     <section className="cp-marketsection" aria-labelledby="available-copies">
       <div className="cp-sectionhead">

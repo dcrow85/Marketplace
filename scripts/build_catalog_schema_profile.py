@@ -27,6 +27,8 @@ RELEASE_ROOTS = [
     "data/japanese-pre-english/releases",
     "data/english-wotc/releases",
     "data/japanese-classic/releases",
+    "data/japanese-classic-decks/releases",
+    "data/japanese-vintage-supplemental/releases",
     "data/japanese-adv-pre-wotc/releases",
     "data/japanese-promo-wotc/releases",
     "data/japanese-unnumbered-promo-wotc/releases",

@@ -4,7 +4,7 @@
     "reason": "API-visible main-set/promo boundaries are accounted for, but English Jumbo remains partial and final external-source completion still needs a dedicated audit.",
     "status": "in_progress"
   },
-  "generated_at": "2026-06-18T20:56:44Z",
+  "generated_at": "2026-07-29T16:59:12Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "goal complete",
@@ -18,7 +18,7 @@
     "price truth"
   ],
   "passed": true,
-  "proof_hash": "d0a56212744883f79ed77a3d4e51d8a0c5c7f6832f8bd865596635500ba9e281",
+  "proof_hash": "63c3def7f37a04590f8dedf49fd17ff81fc02f3713d5944c65c8b6bc2430fecc",
   "schema": "marketplace.catalog_boundary_proof.v0.1",
   "sections": {
     "english_pokemontcg_api": {
@@ -164,7 +164,7 @@
         "jumbo"
       ],
       "jumbo_boundary_proof": {
-        "hash": "70d8d7de1864d10cbd70e5b642ca031e98638930ab7e3a4435cb38f9e2cef279",
+        "hash": "f56bb2a310bb220d79196528198871ba70c0649e8feab49b04a513d8566d93fb",
         "modeled_prefix": {
           "entries": [
             {
@@ -257,7 +257,7 @@
         },
         "passed": true,
         "path": "data/catalog-expansion/english-jumbo-boundary-proof.json",
-        "proof_hash": "d378bb185220d589fd423d3a75ae8c51a5a5059d6f32b16413c8ee74b0b15423",
+        "proof_hash": "f025791c285e1c7721ed6e82d10b243e01c2e7d1b2e388deae6b27c083c1f214",
         "source_row_count": 390,
         "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
         "unclassified_excluded_count": 0
@@ -287,6 +287,28 @@
       "source_gap_register_path": "data/catalog-expansion/source-gaps.json",
       "supplemental_manifest_hash": "193dd361d0b1e0a2b7dfc248f8fca0211f4fec151d44e1fda505c7b42b93dda2",
       "supplemental_manifest_path": "data/english-supplemental-wotc/manifest.json"
+    },
+    "japanese_fixed_deck_sources": {
+      "expected_release_family_rows": {
+        "jp_tcg_guren_town_gym_blaine_19990226": 25,
+        "jp_tcg_yamabuki_city_gym_sabrina_19990226": 26
+      },
+      "missing_release_family_ids": [],
+      "modeled_release_family_rows": {
+        "jp_tcg_guren_town_gym_blaine_19990226": 25,
+        "jp_tcg_yamabuki_city_gym_sabrina_19990226": 26
+      },
+      "modeled_rows": 51,
+      "not_claiming": [
+        "all Japanese constructed decks outside the bounded Original-era Gym release line",
+        "official source status for PokéCardex or Bulbapedia",
+        "approved image rights",
+        "physical-card truth"
+      ],
+      "passed": true,
+      "schema": "marketplace.boundary_proof.japanese_fixed_deck_sources.v0.1",
+      "source": "PokéCardex Japanese deck checklists cross-checked against Bulbapedia product pages",
+      "unexpected_release_family_ids": []
     },
     "japanese_promo_sources": {
       "modeled_rows": 313,
@@ -325,6 +347,48 @@
       "passed": true,
       "schema": "marketplace.boundary_proof.japanese_promo_sources.v0.1",
       "source": "Bulbapedia raw promo setlist pages plus existing Japanese pre-English source slice"
+    },
+    "japanese_supplemental_sources": {
+      "boundary_note": "PLAY is limited to 001-007; 008/PLAY begins at Battle Road Summer 2003 after the selected cutoff.",
+      "expected_release_family_rows": {
+        "jp_promo_j_promotional_200108_200207": 2,
+        "jp_promo_mcdonalds_e_minimum_pack_20020126": 30,
+        "jp_promo_play_first_season_200301": 7,
+        "jp_promo_t_promotional_200201_200303": 24,
+        "jp_tcg_intro_pack_bulbasaur_deck_19990730": 41,
+        "jp_tcg_intro_pack_neo_chikorita_half_deck_20010406": 30,
+        "jp_tcg_intro_pack_neo_chikorita_side_deck_20010406": 10,
+        "jp_tcg_intro_pack_neo_totodile_half_deck_20010406": 30,
+        "jp_tcg_intro_pack_neo_totodile_side_deck_20010406": 10,
+        "jp_tcg_intro_pack_squirtle_deck_19990730": 41,
+        "jp_tcg_pokemon_e_starter_deck_20011201": 29,
+        "jp_tcg_southern_islands_19990717": 18
+      },
+      "modeled_release_family_rows": {
+        "jp_promo_j_promotional_200108_200207": 2,
+        "jp_promo_mcdonalds_e_minimum_pack_20020126": 30,
+        "jp_promo_play_first_season_200301": 7,
+        "jp_promo_t_promotional_200201_200303": 24,
+        "jp_tcg_intro_pack_bulbasaur_deck_19990730": 41,
+        "jp_tcg_intro_pack_neo_chikorita_half_deck_20010406": 30,
+        "jp_tcg_intro_pack_neo_chikorita_side_deck_20010406": 10,
+        "jp_tcg_intro_pack_neo_totodile_half_deck_20010406": 30,
+        "jp_tcg_intro_pack_neo_totodile_side_deck_20010406": 10,
+        "jp_tcg_intro_pack_squirtle_deck_19990730": 41,
+        "jp_tcg_pokemon_e_starter_deck_20011201": 29,
+        "jp_tcg_southern_islands_19990717": 18
+      },
+      "modeled_rows": 272,
+      "not_claiming": [
+        "every Japanese sealed product or reprint deck",
+        "post-cutoff PLAY promotional coverage",
+        "official source status for PokéCardex or Bulbapedia",
+        "approved image rights",
+        "physical-card truth"
+      ],
+      "passed": true,
+      "schema": "marketplace.boundary_proof.japanese_supplemental_sources.v0.1",
+      "source": "Bulbapedia Japanese expansion/product index plus PokéCardex Japanese row checklists"
     },
     "japanese_tcgdex_api": {
       "cutoff": "2003-05-12",

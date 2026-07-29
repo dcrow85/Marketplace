@@ -38,6 +38,24 @@
 .cp-fact.recorded b { color: var(--have); font-family: var(--mono); font-size: 11px; }
 .cp-truth { max-width: 68ch; margin: 12px 0 0; color: var(--dim); font-size: 9px; line-height: 1.5; }
 
+.cp-printings { display: flex; flex-direction: column; gap: 13px; }
+.cp-printinggrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.cp-printing { min-width: 0; display: grid; grid-template-columns: 78px minmax(0, 1fr) auto; align-items: center; gap: 14px; color: var(--ink2); background:
+  linear-gradient(135deg, color-mix(in srgb, var(--agent-bg) 54%, var(--paper)), var(--paper));
+  border: 1px solid color-mix(in srgb, var(--agent) 30%, var(--rule)); border-radius: 14px; padding: 10px; text-align: left; cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+.cp-printing:hover { border-color: var(--agent); transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0,0,0,.1); }
+.cp-printingart { overflow: hidden; display: grid; place-items: center; width: 78px; aspect-ratio: 5 / 7; color: var(--dim); background: var(--mount); border: 1px solid var(--rule); border-radius: 8px; }
+.cp-printingart img { width: 100%; height: 100%; object-fit: cover; }
+.cp-printingart i { font: 24px var(--serif); }
+.cp-printingcopy { min-width: 0; display: grid; gap: 3px; }
+.cp-printingcopy b { overflow: hidden; color: var(--ink); font-family: var(--serif); font-size: 18px; line-height: 1.15; text-overflow: ellipsis; white-space: nowrap; }
+.cp-printingcopy > span:not(.cp-printinglang) { overflow: hidden; color: var(--ink2); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.cp-printingcopy small { overflow: hidden; color: var(--dim); font: 9px var(--mono); line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }
+.cp-printingcopy em { width: fit-content; margin-top: 3px; color: var(--agent); background: var(--agent-bg); border-radius: 999px; padding: 3px 7px; font: 8px var(--mono); font-style: normal; }
+.cp-printinglang { width: fit-content; color: var(--agent); font-size: 8px; text-transform: uppercase; letter-spacing: .09em; }
+.cp-printingarrow { color: var(--agent); font: 19px var(--serif); padding-right: 5px; }
+
 .cp-marketsection { display: flex; flex-direction: column; gap: 15px; }
 .cp-sectionhead { display: flex; align-items: end; justify-content: space-between; gap: 18px; padding: 0 2px; }
 .cp-sectionhead h2 { margin: 3px 0 0; color: var(--ink); font-family: var(--serif); font-size: 28px; font-weight: 550; letter-spacing: -.02em; }
@@ -135,6 +153,7 @@
   .cp-anko { position: static; grid-row: 1; }
   .cp-copyselect { grid-template-columns: minmax(150px, 1.2fr) minmax(110px, .85fr) minmax(125px, 1fr) auto; }
   .cp-detailsgrid { grid-template-columns: 1fr; }
+  .cp-printinggrid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -148,6 +167,10 @@
   .cp-fact { padding: 12px 10px; }
   .cp-sectionhead { align-items: flex-start; flex-direction: column; }
   .cp-sectionhead h2 { font-size: 25px; }
+  .cp-printing { grid-template-columns: 62px minmax(0, 1fr) auto; gap: 11px; }
+  .cp-printingart { width: 62px; }
+  .cp-printingcopy b { font-size: 16px; }
+  .cp-printingcopy em { white-space: normal; }
   .cp-sort { width: 100%; justify-content: space-between; }
   .cp-sort select { min-height: 44px; flex: 1; }
   .cp-anko { margin-inline: -2px; padding: 15px; }
@@ -170,5 +193,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cp-copy { transition: none; }
+  .cp-copy, .cp-printing { transition: none; }
 }

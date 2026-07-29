@@ -74,6 +74,8 @@ def build() -> dict[str, Any]:
         section_status(boundary, "english_pokemontcg_api"),
         section_status(boundary, "english_supplemental_sources"),
         section_status(boundary, "japanese_tcgdex_api"),
+        section_status(boundary, "japanese_fixed_deck_sources"),
+        section_status(boundary, "japanese_supplemental_sources"),
         section_status(boundary, "japanese_promo_sources"),
     ]
     active_gaps = gaps.get("gaps", [])

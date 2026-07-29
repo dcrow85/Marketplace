@@ -337,11 +337,87 @@ def japanese_promo_source_proof() -> dict[str, Any]:
     }
 
 
+def japanese_fixed_deck_source_proof() -> dict[str, Any]:
+    manifest = read_json("data/japanese-classic-decks/manifest.json")
+    audit = read_json("data/japanese-classic-decks/audit.json")
+    expected = {
+        "jp_tcg_yamabuki_city_gym_sabrina_19990226": 26,
+        "jp_tcg_guren_town_gym_blaine_19990226": 25,
+    }
+    modeled = {
+        item.get("release_family_id", ""): int(item.get("row_count") or 0)
+        for item in manifest.get("releases", [])
+    }
+    missing = sorted(set(expected) - set(modeled))
+    unexpected = sorted(set(modeled) - set(expected))
+    return {
+        "schema": "marketplace.boundary_proof.japanese_fixed_deck_sources.v0.1",
+        "source": "PokéCardex Japanese deck checklists cross-checked against Bulbapedia product pages",
+        "expected_release_family_rows": expected,
+        "modeled_release_family_rows": modeled,
+        "missing_release_family_ids": missing,
+        "unexpected_release_family_ids": unexpected,
+        "modeled_rows": sum(modeled.values()),
+        "passed": (
+            bool(audit.get("passed"))
+            and modeled == expected
+            and int(manifest.get("total_rows") or 0) == 51
+        ),
+        "not_claiming": [
+            "all Japanese constructed decks outside the bounded Original-era Gym release line",
+            "official source status for PokéCardex or Bulbapedia",
+            "approved image rights",
+            "physical-card truth",
+        ],
+    }
+
+
+def japanese_supplemental_source_proof() -> dict[str, Any]:
+    manifest = read_json("data/japanese-vintage-supplemental/manifest.json")
+    audit = read_json("data/japanese-vintage-supplemental/audit.json")
+    expected = {
+        "jp_tcg_southern_islands_19990717": 18,
+        "jp_tcg_intro_pack_bulbasaur_deck_19990730": 41,
+        "jp_tcg_intro_pack_squirtle_deck_19990730": 41,
+        "jp_tcg_intro_pack_neo_chikorita_half_deck_20010406": 30,
+        "jp_tcg_intro_pack_neo_chikorita_side_deck_20010406": 10,
+        "jp_tcg_intro_pack_neo_totodile_half_deck_20010406": 30,
+        "jp_tcg_intro_pack_neo_totodile_side_deck_20010406": 10,
+        "jp_tcg_pokemon_e_starter_deck_20011201": 29,
+        "jp_promo_j_promotional_200108_200207": 2,
+        "jp_promo_t_promotional_200201_200303": 24,
+        "jp_promo_mcdonalds_e_minimum_pack_20020126": 30,
+        "jp_promo_play_first_season_200301": 7,
+    }
+    modeled = {
+        item.get("release_family_id", ""): int(item.get("row_count") or 0)
+        for item in manifest.get("releases", [])
+    }
+    return {
+        "schema": "marketplace.boundary_proof.japanese_supplemental_sources.v0.1",
+        "source": "Bulbapedia Japanese expansion/product index plus PokéCardex Japanese row checklists",
+        "expected_release_family_rows": expected,
+        "modeled_release_family_rows": modeled,
+        "modeled_rows": sum(modeled.values()),
+        "passed": bool(audit.get("passed")) and modeled == expected and sum(modeled.values()) == 272,
+        "boundary_note": "PLAY is limited to 001-007; 008/PLAY begins at Battle Road Summer 2003 after the selected cutoff.",
+        "not_claiming": [
+            "every Japanese sealed product or reprint deck",
+            "post-cutoff PLAY promotional coverage",
+            "official source status for PokéCardex or Bulbapedia",
+            "approved image rights",
+            "physical-card truth",
+        ],
+    }
+
+
 def build() -> dict[str, Any]:
     sections = {
         "english_pokemontcg_api": english_pokemontcg_api_proof(),
         "english_supplemental_sources": english_supplemental_proof(),
         "japanese_tcgdex_api": japanese_tcgdex_api_proof(),
+        "japanese_fixed_deck_sources": japanese_fixed_deck_source_proof(),
+        "japanese_supplemental_sources": japanese_supplemental_source_proof(),
         "japanese_promo_sources": japanese_promo_source_proof(),
     }
     proof = {

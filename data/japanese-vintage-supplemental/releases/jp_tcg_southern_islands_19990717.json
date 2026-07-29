@@ -1,0 +1,4199 @@
+{
+  "cards": [
+    {
+      "card_number": "001",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Mew is cataloged here as row 1 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "001",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/1.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/1.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11838",
+        "provider_title": "Mew - Southern Islands #1",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:001",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "001",
+      "name_en": "Mew",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          151
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Mew",
+        "comment": "",
+        "id_card": 11838,
+        "id_tcgplayer": 607942,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11838",
+        "provider_title": "Mew - Southern Islands #1",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 1,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11838,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:001",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "028b9858ab4f9b91b8bfa3c58979f091cbb1fa8ecf0e18f214a611ef7ad90c63",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "002",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Pidgeot is cataloged here as row 2 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "002",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/2.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/2.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11839",
+        "provider_title": "Pidgeot - Southern Islands #2",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:002",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "002",
+      "name_en": "Pidgeot",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          18
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Pidgeot",
+        "comment": "",
+        "id_card": 11839,
+        "id_tcgplayer": 607943,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11839",
+        "provider_title": "Pidgeot - Southern Islands #2",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 2,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11839,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:002",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "6ccdc38e700aa2a8b4b0a207b2f9a6a94d40d4d8f18c3bfd3ee4aa04c3bd1645",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "003",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Onix is cataloged here as row 3 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "003",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/3.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/3.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11840",
+        "provider_title": "Onix - Southern Islands #3",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:003",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "003",
+      "name_en": "Onix",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          95
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Onix",
+        "comment": "",
+        "id_card": 11840,
+        "id_tcgplayer": 607944,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11840",
+        "provider_title": "Onix - Southern Islands #3",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 3,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11840,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:003",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "d2cb02ec2500344747981bc4dda63c3723d761ac9b15e2689c5fcec70fc02c8f",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "004",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Togepi is cataloged here as row 4 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "004",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/4.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/4.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11841",
+        "provider_title": "Togepi - Southern Islands #4",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:004",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "004",
+      "name_en": "Togepi",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          175
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Togepi",
+        "comment": "",
+        "id_card": 11841,
+        "id_tcgplayer": 607945,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11841",
+        "provider_title": "Togepi - Southern Islands #4",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 4,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11841,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:004",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "f779c446b54d404c984d5369b5c16325514b558e1584cac9f25683b81e3a505c",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "005",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Ivysaur is cataloged here as row 5 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "005",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/5.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/5.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11842",
+        "provider_title": "Ivysaur - Southern Islands #5",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:005",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "005",
+      "name_en": "Ivysaur",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          2
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Ivysaur",
+        "comment": "",
+        "id_card": 11842,
+        "id_tcgplayer": 607946,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11842",
+        "provider_title": "Ivysaur - Southern Islands #5",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 5,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11842,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:005",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "81f0c2811ed572b5b22d0fd519921917bb502a63905a1b88a745c8c0d073c11a",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "006",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Raticate is cataloged here as row 6 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "006",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/6.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/6.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11843",
+        "provider_title": "Raticate - Southern Islands #6",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:006",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "006",
+      "name_en": "Raticate",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          20
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Raticate",
+        "comment": "",
+        "id_card": 11843,
+        "id_tcgplayer": 607947,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11843",
+        "provider_title": "Raticate - Southern Islands #6",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 6,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11843,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:006",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "67a37fe4114dcd99331466c5c5350638e1d4c15a4850c0cb6791cce74ddf78d3",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "007",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Ledyba is cataloged here as row 7 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "007",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/7.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/7.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11844",
+        "provider_title": "Ledyba - Southern Islands #7",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:007",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "007",
+      "name_en": "Ledyba",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          165
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Ledyba",
+        "comment": "",
+        "id_card": 11844,
+        "id_tcgplayer": 607948,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11844",
+        "provider_title": "Ledyba - Southern Islands #7",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 7,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11844,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:007",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "1f4f716e72ba559d26edcac59daead36fb83d983b508ca4945d4590557bd46c0",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "008",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Jigglypuff is cataloged here as row 8 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "008",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/8.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/8.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11845",
+        "provider_title": "Jigglypuff - Southern Islands #8",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:008",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "008",
+      "name_en": "Jigglypuff",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          39
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Jigglypuff",
+        "comment": "",
+        "id_card": 11845,
+        "id_tcgplayer": 607949,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11845",
+        "provider_title": "Jigglypuff - Southern Islands #8",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 8,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11845,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:008",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "b3abeac1a6064f0a52cea75d3e59f71ff573f787fddda082e0fe76d792fe38f2",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "009",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Butterfree is cataloged here as row 9 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "009",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Keiko Fukuyama",
+        "name": "Keiko Fukuyama",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/9.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/9.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11846",
+        "provider_title": "Butterfree - Southern Islands #9",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:009",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "009",
+      "name_en": "Butterfree",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          12
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Butterfree",
+        "comment": "",
+        "id_card": 11846,
+        "id_tcgplayer": 607950,
+        "illustrator": "Keiko Fukuyama",
+        "provider_id": "pokecardex:11846",
+        "provider_title": "Butterfree - Southern Islands #9",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 9,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11846,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:009",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "0424de1c6f4e70ddfa9365c268e5f617d84ec4758f50a34c4a2b715775de7838",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "010",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Tentacruel is cataloged here as row 10 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "010",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/10.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/10.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11847",
+        "provider_title": "Tentacruel - Southern Islands #10",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:010",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "010",
+      "name_en": "Tentacruel",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          73
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Tentacruel",
+        "comment": "",
+        "id_card": 11847,
+        "id_tcgplayer": 607951,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11847",
+        "provider_title": "Tentacruel - Southern Islands #10",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 10,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11847,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:010",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "c6d0556c8bfc4b439423277d293e7321cf744b0a8afcaa7387a921d87ae8ca08",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "011",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Marill is cataloged here as row 11 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "011",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/11.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/11.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11848",
+        "provider_title": "Marill - Southern Islands #11",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:011",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "011",
+      "name_en": "Marill",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          183
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Marill",
+        "comment": "",
+        "id_card": 11848,
+        "id_tcgplayer": 607952,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11848",
+        "provider_title": "Marill - Southern Islands #11",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 11,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11848,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:011",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "5fcdcee99bfaabf6e178cf10eb258c39509cc4403c5883b58829ee8fc0ec4cf0",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "012",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Lapras is cataloged here as row 12 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "012",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/12.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/12.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11849",
+        "provider_title": "Lapras - Southern Islands #12",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:012",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "012",
+      "name_en": "Lapras",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          131
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Lapras",
+        "comment": "",
+        "id_card": 11849,
+        "id_tcgplayer": 607953,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11849",
+        "provider_title": "Lapras - Southern Islands #12",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 12,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11849,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:012",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "cf1865341ed205c02a9dc88f5120052187c0a20b44d178b2439040637c932459",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "013",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Exeggutor is cataloged here as row 13 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "013",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/13.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/13.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11850",
+        "provider_title": "Exeggutor - Southern Islands #13",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:013",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "013",
+      "name_en": "Exeggutor",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          103
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Exeggutor",
+        "comment": "",
+        "id_card": 11850,
+        "id_tcgplayer": 607954,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11850",
+        "provider_title": "Exeggutor - Southern Islands #13",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 13,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11850,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:013",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "0efcd2fc6915da952be4712c33dded39d1563ac696dbf1a5396b394f91d5a8a2",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "014",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Slowking is cataloged here as row 14 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "014",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/14.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/14.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11851",
+        "provider_title": "Slowking - Southern Islands #14",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:014",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "014",
+      "name_en": "Slowking",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          199
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Slowking",
+        "comment": "",
+        "id_card": 11851,
+        "id_tcgplayer": 607955,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11851",
+        "provider_title": "Slowking - Southern Islands #14",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 14,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11851,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:014",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "06bfd6747fa57fa7cd3f4b21aef581268db016db45ea32dd3454aa7da70f1023",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "015",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Wartortle is cataloged here as row 15 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "015",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/15.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/15.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11852",
+        "provider_title": "Wartortle - Southern Islands #15",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:015",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "015",
+      "name_en": "Wartortle",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          8
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Wartortle",
+        "comment": "",
+        "id_card": 11852,
+        "id_tcgplayer": 607956,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11852",
+        "provider_title": "Wartortle - Southern Islands #15",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 15,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11852,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:015",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "b00561b236f893194a7dd6d88bcd473048aa5242332ebe41b62c084f6dd62d8b",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "016",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Lickitung is cataloged here as row 16 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "016",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/16.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/16.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11853",
+        "provider_title": "Lickitung - Southern Islands #16",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:016",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "016",
+      "name_en": "Lickitung",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          108
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Lickitung",
+        "comment": "",
+        "id_card": 11853,
+        "id_tcgplayer": 607957,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11853",
+        "provider_title": "Lickitung - Southern Islands #16",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 16,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11853,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:016",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "fa474cc94667394d48cac1c9b04bd4db5bdc35cac67213b608f311f11ad31b47",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "017",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Vileplume is cataloged here as row 17 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "017",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/17.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/17.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11854",
+        "provider_title": "Vileplume - Southern Islands #17",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:017",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "017",
+      "name_en": "Vileplume",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          45
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Vileplume",
+        "comment": "",
+        "id_card": 11854,
+        "id_tcgplayer": 607958,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11854",
+        "provider_title": "Vileplume - Southern Islands #17",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 17,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11854,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:017",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "e662628f7bade4cd54cda79e52bd6edeb3b4a3bce4e0efc095004cb2f9224bb9",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    },
+    {
+      "card_number": "018",
+      "category": "Pokemon",
+      "collector_texture": {
+        "authority": "Collector texture only. It helps an agent search and explain the row; it is not transaction evidence.",
+        "basis": [
+          "PokéCardex Japanese row",
+          "Bulbapedia release page"
+        ],
+        "note": "Primeape is cataloged here as row 18 of Southern Islands. Treat the image as a reference witness, then ask for seller evidence before any trade.",
+        "signals": [
+          "Southern Islands",
+          "018",
+          "Sans rareté",
+          "1999-07-17"
+        ]
+      },
+      "holo_source": false,
+      "illustrator": {
+        "authority": "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof.",
+        "caption": "",
+        "credit_status": "credited",
+        "display": "Illus. Naoyo Kimura",
+        "name": "Naoyo Kimura",
+        "not_claiming": [
+          "seller possession",
+          "authenticity",
+          "condition",
+          "Japanese print authority"
+        ],
+        "requested_page_title": "",
+        "resolved_page_title": "",
+        "source": "pokecardex",
+        "source_page_sha256": "",
+        "source_page_url": ""
+      },
+      "image_provenance": {
+        "allowed_use": [
+          "manual_review",
+          "catalog_reference_link"
+        ],
+        "display_allowed": false,
+        "exactness_basis": [
+          "same PokéCardex Japanese series page",
+          "same decrypted source row order",
+          "same provider image path convention derived from the public site bundle",
+          "not a per-row image field inside the decrypted source payload"
+        ],
+        "image_large": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/18.jpg",
+        "image_role": "Provider-path-derived external reference witness for this catalog row; rights not promoted to approved in-app display.",
+        "image_small": "https://www.pokecardex.com/assets/images/sets_jp/SOIS/18.jpg",
+        "not_allowed_by_default": [
+          "training",
+          "seller evidence",
+          "authentication proof"
+        ],
+        "not_claiming": [
+          "seller possession",
+          "seller card match",
+          "condition",
+          "authenticity"
+        ],
+        "provider_id": "pokecardex:11855",
+        "provider_title": "Primeape - Southern Islands #18",
+        "release_family_id": "jp_tcg_southern_islands_19990717",
+        "rights_status": "external_reference_witness",
+        "row_id": "jp_tcg_southern_islands_19990717:018",
+        "source": "PokéCardex",
+        "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS",
+        "status": "provider_path_reference_image",
+        "verification_status": "provider_path_derived_external_reference_witness"
+      },
+      "information_audit": {
+        "agent_only": [
+          {
+            "field": "source page hashes",
+            "why": "Useful for audit and re-fetch checks, noisy for the human glance."
+          },
+          {
+            "field": "TCGdex details",
+            "why": "Structured metadata helps agents, but is not seller evidence."
+          }
+        ],
+        "audit_scope": "Information architecture only. This row does not authenticate a physical card, condition, possession, or price.",
+        "earns_keep": [
+          {
+            "field": "provider-path external reference image",
+            "surface": "primary",
+            "why": "The agent needs a row-specific visual reference, but rights/use remain bounded."
+          },
+          {
+            "field": "release family and row id",
+            "surface": "primary",
+            "why": "These prevent cross-set image or name laundering."
+          },
+          {
+            "field": "symbol status",
+            "surface": "agent",
+            "why": "Missing-symbol claims must be judged in their release-family context."
+          }
+        ]
+      },
+      "local_id": "018",
+      "name_en": "Primeape",
+      "name_ja": "",
+      "name_ja_status": "missing_from_exact_source",
+      "name_source_note": "PokéCardex payload provides English/French/German names for this page; Japanese print name remains pending a separate source.",
+      "not_claiming": [
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "spendability"
+      ],
+      "pokemon_profile": {
+        "abilities": [],
+        "attacks": [],
+        "dex_id": [
+          57
+        ],
+        "hp": null,
+        "level": null,
+        "retreat": null,
+        "stage": "",
+        "types": []
+      },
+      "product_scope": {
+        "authority": "Japanese vintage supplemental row from PokéCardex, with Bulbapedia release-boundary context.",
+        "catalog_treatment": "Catalog target",
+        "counting_note": "This row belongs to Southern Islands; it is not a No Rarity Base claim.",
+        "date_precision": "exact",
+        "japanese_set_name": "サザンアイランド",
+        "membership_note": "Strict release-family catalog row.",
+        "parent_release_family_id": "",
+        "product_card_count": 18,
+        "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+        "release_date": "1999-07-17",
+        "release_type": "special_collection",
+        "strict_release_member": true,
+        "unique_catalog_row_count": 18
+      },
+      "promo_context": {},
+      "provider_row": {
+        "adapter": "pokecardex",
+        "cardmarket_url": "Southern-Islands-JP/Primeape",
+        "comment": "",
+        "id_card": 11855,
+        "id_tcgplayer": 607959,
+        "illustrator": "Naoyo Kimura",
+        "provider_id": "pokecardex:11855",
+        "provider_title": "Primeape - Southern Islands #18",
+        "rarity": "Sans rareté",
+        "series_code": "SOIS",
+        "series_name": "Southern Islands",
+        "sort": 18,
+        "versions": [
+          {
+            "comment": "",
+            "comment_us": "",
+            "id_card": 11855,
+            "id_version": 1,
+            "nom_version": "Standard",
+            "nom_version_us": "Standard",
+            "only_english": false
+          }
+        ]
+      },
+      "rarity_source": "Sans rareté",
+      "release_family_id": "jp_tcg_southern_islands_19990717",
+      "romaji": "",
+      "row_id": "jp_tcg_southern_islands_19990717:018",
+      "schema": "marketplace.japanese_vintage_supplemental_card_row.v0.1",
+      "source_contacts": [
+        {
+          "card_data_hash": "7559e200aa179cd3eecd8d9d28312a981bf2eeb721db8a63937437b95ed8ca1c",
+          "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition"
+          ],
+          "series_code": "SOIS",
+          "source": "PokéCardex",
+          "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+        },
+        {
+          "authority": "Release/product boundary and checklist context.",
+          "not_claiming": [
+            "official source",
+            "seller possession",
+            "authenticity",
+            "condition truth",
+            "approved image rights"
+          ],
+          "source": "Bulbapedia release page",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+        }
+      ],
+      "special_identification_instructions": [],
+      "symbol_status": {
+        "confidence": "medium",
+        "not_claiming": [
+          "row-level physical truth",
+          "seller-card symbol state",
+          "seller possession"
+        ],
+        "prints_without_rarity_symbol": "context_dependent",
+        "scope": "release_context_not_row_fact",
+        "source_mode": "direct_release_family",
+        "source_release_family_id": "jp_tcg_southern_islands_19990717"
+      },
+      "tags": [
+        "jp_tcg_southern_islands_19990717",
+        "Southern Islands",
+        "1999-07-17",
+        "Sans rareté",
+        "",
+        "Japanese",
+        "Vintage supplemental"
+      ],
+      "tcgdex": {
+        "id": "",
+        "image_field_present": false,
+        "set_id": "",
+        "url": "",
+        "variants": {}
+      }
+    }
+  ],
+  "not_claiming": [
+    "all Japanese product variants",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image display rights"
+  ],
+  "release": {
+    "catalog_treatment": "Catalog target",
+    "count_confidence": "pokecardex_source",
+    "date_precision": "exact",
+    "expected_row_count": 18,
+    "name_en": "Southern Islands",
+    "name_ja": "サザンアイランド",
+    "note": "Supplemental Japanese vintage release family omitted by the API-only set census.",
+    "parent_release_family_id": "",
+    "product_card_count": 18,
+    "product_count_basis": "Pinned source checklist rows inside the bounded vintage release window.",
+    "release_date": "1999-07-17",
+    "release_family_id": "jp_tcg_southern_islands_19990717",
+    "release_type": "special_collection",
+    "strict_release_member": true,
+    "unique_catalog_row_count": 18
+  },
+  "schema": "marketplace.japanese_vintage_supplemental_release_catalog.v0.1",
+  "sources": [
+    {
+      "cards_found": 18,
+      "encrypted_page_sha256": "611fd7383a05c9f153a3421492aa6bc938d87d13c40358d56fb8129bcb1b0e0e",
+      "not_claiming": [
+        "official source",
+        "seller possession",
+        "authenticity",
+        "condition"
+      ],
+      "payload_hash": "b335392ee178409eac9a2a0e17ed42e37d227f4ced9908bcb424309a9520d42b",
+      "series": {
+        "fullName": "Southern Islands",
+        "id": 151,
+        "releaseDateFR": "1999-07-17 00:00:00",
+        "shortName": "SOIS",
+        "totalCards": 18
+      },
+      "source": "PokéCardex",
+      "source_page_url": "https://www.pokecardex.com/en/series/jp/SOIS"
+    },
+    {
+      "authority": "Release/product boundary and checklist context.",
+      "not_claiming": [
+        "official source",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "approved image rights"
+      ],
+      "source": "Bulbapedia release page",
+      "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Southern_Islands_%28TCG%29"
+    }
+  ],
+  "symbol_status": {
+    "confidence": "medium",
+    "not_claiming": [
+      "row-level physical truth",
+      "seller possession",
+      "Base No Rarity claim"
+    ],
+    "prints_without_rarity_symbol": "context_dependent",
+    "scope": "release_context_not_row_fact",
+    "source": "data/pre-english-symbol-status.json and Japanese_Pre_English_Release_Map_v0.1.md",
+    "source_mode": "direct_release_family",
+    "source_release_family_id": "jp_tcg_southern_islands_19990717"
+  }
+}

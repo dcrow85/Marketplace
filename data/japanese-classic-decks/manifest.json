@@ -1,0 +1,55 @@
+{
+  "boundary": "Late Original-era Japanese fixed Gym decks released on 1999-02-26: Yamabuki City Gym and Guren Town Gym.",
+  "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
+  "generated_at": "2026-07-29T16:50:55Z",
+  "hash_algorithm": "sha256",
+  "not_claiming": [
+    "all Japanese constructed decks",
+    "official source status for PokéCardex or Bulbapedia",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth",
+    "approved image rights"
+  ],
+  "reference_image_rows": 51,
+  "release_count": 2,
+  "releases": [
+    {
+      "catalog_hash": "b00ff4f09b8e017e0a2a53e0bc5b2c65766aa7107465b278f103889276bd3f5f",
+      "name_en": "Yamabuki City Gym / Sabrina",
+      "name_ja": "ヤマブキシティジム ナツメ",
+      "path": "data/japanese-classic-decks/releases/jp_tcg_yamabuki_city_gym_sabrina_19990226.json",
+      "product_card_count": 64,
+      "reference_image_rows": 26,
+      "release_date": "1999-02-26",
+      "release_family_id": "jp_tcg_yamabuki_city_gym_sabrina_19990226",
+      "release_type": "gym_standard_deck_unique_rows",
+      "row_count": 26,
+      "schema": "marketplace.japanese_classic_deck_manifest_release.v0.1",
+      "source_urls": [
+        "https://www.pokecardex.com/series/jp/YCGYM",
+        "https://bulbapedia.bulbagarden.net/wiki/Yamabuki_City_Gym_%28TCG%29"
+      ]
+    },
+    {
+      "catalog_hash": "e4890fcbb5004c210c3df5e1ae482914bc4f686159f7218a356af9f65b2305b1",
+      "name_en": "Guren Town Gym / Blaine",
+      "name_ja": "グレンタウンジム カツラ",
+      "path": "data/japanese-classic-decks/releases/jp_tcg_guren_town_gym_blaine_19990226.json",
+      "product_card_count": 64,
+      "reference_image_rows": 25,
+      "release_date": "1999-02-26",
+      "release_family_id": "jp_tcg_guren_town_gym_blaine_19990226",
+      "release_type": "gym_standard_deck_unique_rows",
+      "row_count": 25,
+      "schema": "marketplace.japanese_classic_deck_manifest_release.v0.1",
+      "source_urls": [
+        "https://www.pokecardex.com/series/jp/GTGYM",
+        "https://bulbapedia.bulbagarden.net/wiki/Guren_Town_Gym_%28TCG%29"
+      ]
+    }
+  ],
+  "schema": "marketplace.japanese_classic_deck_manifest.v0.1",
+  "total_rows": 51
+}

@@ -525,7 +525,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
         pickUp(sellerId, uid, mode)
         setSwapMsg(`${focusCard.name_en} is in your pile at ${sellerName(allSellers.find((seller) => seller.id === sellerId))}'s table.`)
       }}
-      onVisitSeller={visitSellerPile} onBack={onClearFocus} onChangeStance={changeMyStance} />
+      onVisitSeller={visitSellerPile} onBack={onClearFocus} onChangeStance={changeMyStance}
+      byUid={byUid} onOpenCard={(related) => openCardPage(related, null, null)} />
   }
 
   if (!allSellers.length) return <div className="empty">No tables in {catalog.label || 'this catalogue'} yet.</div>

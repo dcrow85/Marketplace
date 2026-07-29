@@ -1,5 +1,5 @@
 {
-  "audit_hash": "568d87b4a24ac5a8a362d709c37d98fcf191240e464f9a27bb5a6d493c0c0800",
+  "audit_hash": "6f64165ee7c7da87a5561757f4eb4328c99c40e7d70ded6b7bb6d03dce00312b",
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "claim_supported": [
     "No known source-visible in-scope English/Japanese TCG set, promo, or bounded supplemental row is missing from the current modeled corpus.",
@@ -12,10 +12,10 @@
   },
   "evidence": {
     "boundary_proof": {
-      "hash": "209780a4aef44578c38441860e15ca1064c333549107c91d7da84a51a4373008",
+      "hash": "4f23c04eb36f1abf86a8624e6cc1658e3bd9a247ddf3ee06a37cc7c81c5c964c",
       "passed": true,
       "path": "data/catalog-expansion/boundary-proof.json",
-      "proof_hash": "d0a56212744883f79ed77a3d4e51d8a0c5c7f6832f8bd865596635500ba9e281",
+      "proof_hash": "63c3def7f37a04590f8dedf49fd17ff81fc02f3713d5944c65c8b6bc2430fecc",
       "section_checks": [
         {
           "not_claiming": [
@@ -49,6 +49,27 @@
         },
         {
           "not_claiming": [
+            "all Japanese constructed decks outside the bounded Original-era Gym release line",
+            "official source status for PokéCardex or Bulbapedia",
+            "approved image rights",
+            "physical-card truth"
+          ],
+          "passed": true,
+          "section": "japanese_fixed_deck_sources"
+        },
+        {
+          "not_claiming": [
+            "every Japanese sealed product or reprint deck",
+            "post-cutoff PLAY promotional coverage",
+            "official source status for PokéCardex or Bulbapedia",
+            "approved image rights",
+            "physical-card truth"
+          ],
+          "passed": true,
+          "section": "japanese_supplemental_sources"
+        },
+        {
+          "not_claiming": [
             "official campaign boundary proof beyond source promotion notes",
             "official source",
             "post-boundary promo coverage",
@@ -60,8 +81,8 @@
       ]
     },
     "coverage_ledger": {
-      "modeled_release_count": 209,
-      "modeled_row_count": 4549,
+      "modeled_release_count": 223,
+      "modeled_row_count": 4872,
       "note": "Consumes ledger values without hashing the ledger file so the ledger may cite this audit without a circular hash dependency.",
       "path": "data/catalog-expansion/coverage-ledger.json",
       "row_invariants_passed": true
@@ -96,11 +117,11 @@
     "schema": "marketplace.catalog_completion_audit_evidence.v0.1",
     "schema_profile": {
       "canonical_fields_passed": true,
-      "hash": "bdae1a8d5e16d4c6d2a7321fed206d6ca88b8cd9f64582c4e67cf13c3cddde28",
+      "hash": "75a78759199e3e5f5dad9238a766c24b865572aa1bffb898cb37db3238d89295",
       "passed": true,
       "path": "data/catalog-expansion/schema-profile.json",
-      "profile_hash": "9a4d3e5b7092988209b7b048ae08d509ac6c2d031cf6c789f12e2b83596de888",
-      "row_count": 4549
+      "profile_hash": "45618fdbb0f067baab0c2ba5a49998e868212596e1a1488a9760a2e9ec654759",
+      "row_count": 4872
     },
     "source_gap_register": {
       "active_gap_ids": [
@@ -123,7 +144,7 @@
       "resolved_gap_count": 4
     }
   },
-  "generated_at": "2026-06-18T20:57:03Z",
+  "generated_at": "2026-07-29T16:59:12Z",
   "hash_algorithm": "sha256",
   "not_claiming": [
     "physical-card truth",

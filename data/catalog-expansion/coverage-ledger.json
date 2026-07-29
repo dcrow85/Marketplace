@@ -1,9 +1,9 @@
 {
   "boundary_proof": {
-    "hash": "209780a4aef44578c38441860e15ca1064c333549107c91d7da84a51a4373008",
+    "hash": "4f23c04eb36f1abf86a8624e6cc1658e3bd9a247ddf3ee06a37cc7c81c5c964c",
     "passed": true,
     "path": "data/catalog-expansion/boundary-proof.json",
-    "proof_hash": "d0a56212744883f79ed77a3d4e51d8a0c5c7f6832f8bd865596635500ba9e281",
+    "proof_hash": "63c3def7f37a04590f8dedf49fd17ff81fc02f3713d5944c65c8b6bc2430fecc",
     "sections": {
       "english_pokemontcg_api": {
         "not_claiming": [
@@ -23,11 +23,30 @@
         ],
         "passed": true
       },
+      "japanese_fixed_deck_sources": {
+        "not_claiming": [
+          "all Japanese constructed decks outside the bounded Original-era Gym release line",
+          "official source status for PokéCardex or Bulbapedia",
+          "approved image rights",
+          "physical-card truth"
+        ],
+        "passed": true
+      },
       "japanese_promo_sources": {
         "not_claiming": [
           "official campaign boundary proof beyond source promotion notes",
           "official source",
           "post-boundary promo coverage",
+          "physical-card truth"
+        ],
+        "passed": true
+      },
+      "japanese_supplemental_sources": {
+        "not_claiming": [
+          "every Japanese sealed product or reprint deck",
+          "post-cutoff PLAY promotional coverage",
+          "official source status for PokéCardex or Bulbapedia",
+          "approved image rights",
           "physical-card truth"
         ],
         "passed": true
@@ -45,13 +64,13 @@
   },
   "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
   "completion_audit": {
-    "audit_hash": "568d87b4a24ac5a8a362d709c37d98fcf191240e464f9a27bb5a6d493c0c0800",
+    "audit_hash": "6f64165ee7c7da87a5561757f4eb4328c99c40e7d70ded6b7bb6d03dce00312b",
     "claim_supported": [
       "No known source-visible in-scope English/Japanese TCG set, promo, or bounded supplemental row is missing from the current modeled corpus.",
       "Every modeled card row has the current canonical row fields, including special_identification_instructions and source_contacts.",
       "English Jumbo is bounded by row-level source proof rather than accepted from TCGdex's zero-ref aggregate count."
     ],
-    "hash": "f1d319471efaa1c0807feabdabd42152b02e1571266ed2f7a40476d7d8928b65",
+    "hash": "46c44b880c6104806c11a5af6bb4b15a7fa3b7d13be799bab6d716753ef96bb8",
     "not_claiming": [
       "physical-card truth",
       "seller possession",
@@ -109,9 +128,9 @@
     "status": "bounded_prefix_proven_not_complete_jumbo_resolution",
     "unclassified_excluded_count": 0
   },
-  "generated_at": "2026-06-18T20:57:03Z",
+  "generated_at": "2026-07-29T16:59:12Z",
   "hash_algorithm": "sha256",
-  "ledger_hash": "d241030dfb7cdad7d6bf71f93c78ea995b6d99be0c5e18912bf4680847b48adb",
+  "ledger_hash": "581f877c9ac7059b7059f81c9f51af0f9e5c1702f7144cf422c78b9230353475",
   "modeled_corpora": [
     {
       "audit_hash": "8c0d7ba95a16fed58677001f743480e775476385cb0f4c8b309b7df51a82246d",
@@ -180,6 +199,52 @@
       "row_count": 1103,
       "schema": "marketplace.catalog_coverage_corpus.v0.1",
       "source_gap_count": 1,
+      "special_identification_instruction_rows": 0
+    },
+    {
+      "audit_hash": "8d0845ad8f4e0e544f30f25bb84bdbb958cc18fbf1e0c43c0707c2d294380de1",
+      "audit_passed": true,
+      "audit_path": "data/japanese-classic-decks/audit.json",
+      "boundary": "Late Original-era Japanese fixed Gym decks: Yamabuki City Gym and Guren Town Gym.",
+      "corpus_id": "japanese_classic_decks",
+      "language_scope": "ja",
+      "manifest_hash": "86b91cc397c65a955a8a05fb8f0ca7e1fef886f56d7135a78b45cb28356dd56f",
+      "manifest_path": "data/japanese-classic-decks/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 2,
+      "row_count": 51,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
+      "special_identification_instruction_rows": 0
+    },
+    {
+      "audit_hash": "8ec4219799609db56fd1b3c9f5738dcfecda84fe4a77f73af9e77507ce28b1cf",
+      "audit_passed": true,
+      "audit_path": "data/japanese-vintage-supplemental/audit.json",
+      "boundary": "Japanese special/promotional sets and identity-critical fixed products omitted by the API-only set census.",
+      "corpus_id": "japanese_vintage_supplemental",
+      "language_scope": "ja",
+      "manifest_hash": "7c589b80caee74258709ea5c1c0fbf84d50b23fab8f9070b7eff35fd6503241c",
+      "manifest_path": "data/japanese-vintage-supplemental/manifest.json",
+      "not_claiming": [
+        "complete through-2003 universe by itself",
+        "seller possession",
+        "authenticity",
+        "condition truth",
+        "price truth",
+        "approved image rights"
+      ],
+      "release_count": 12,
+      "row_count": 272,
+      "schema": "marketplace.catalog_coverage_corpus.v0.1",
+      "source_gap_count": 0,
       "special_identification_instruction_rows": 0
     },
     {
@@ -275,8 +340,8 @@
       "special_identification_instruction_rows": 27
     }
   ],
-  "modeled_release_count": 209,
-  "modeled_row_count": 4549,
+  "modeled_release_count": 223,
+  "modeled_row_count": 4872,
   "not_claiming": [
     "goal complete",
     "complete English/Japanese through-2003 universe",
@@ -291,7 +356,7 @@
     "missing_source_contacts": 0,
     "missing_special_identification_instructions": 0,
     "passed": true,
-    "row_count": 4549,
+    "row_count": 4872,
     "sample_failures": {
       "malformed_special_identification_instructions": [],
       "missing_source_contacts": [],
@@ -303,7 +368,7 @@
   "schema": "marketplace.catalog_coverage_ledger.v0.1",
   "schema_profile": {
     "canonical_fields_passed": true,
-    "hash": "bdae1a8d5e16d4c6d2a7321fed206d6ca88b8cd9f64582c4e67cf13c3cddde28",
+    "hash": "75a78759199e3e5f5dad9238a766c24b865572aa1bffb898cb37db3238d89295",
     "known_schema_asymmetries": [
       {
         "affected_schema": "marketplace.japanese_pre_english_card_row.v0.1",
@@ -319,16 +384,18 @@
     "normalized_projection_schema": "marketplace.catalog_agent_projection.v0.1",
     "passed": true,
     "path": "data/catalog-expansion/schema-profile.json",
-    "profile_hash": "9a4d3e5b7092988209b7b048ae08d509ac6c2d031cf6c789f12e2b83596de888",
-    "row_count": 4549,
+    "profile_hash": "45618fdbb0f067baab0c2ba5a49998e868212596e1a1488a9760a2e9ec654759",
+    "row_count": 4872,
     "schema_counts": {
       "marketplace.english_supplemental_wotc_card_row.v0.1": 27,
       "marketplace.english_wotc_card_row.v0.1": 1789,
       "marketplace.japanese_adv_pre_wotc_card_row.v0.1": 108,
       "marketplace.japanese_classic_card_row.v0.1": 1103,
+      "marketplace.japanese_classic_deck_card_row.v0.1": 51,
       "marketplace.japanese_pre_english_card_row.v0.1": 1264,
       "marketplace.japanese_promo_wotc_card_row.v0.1": 61,
-      "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1": 197
+      "marketplace.japanese_unnumbered_promo_wotc_card_row.v0.1": 197,
+      "marketplace.japanese_vintage_supplemental_card_row.v0.1": 272
     }
   },
   "source_gap_register": {
