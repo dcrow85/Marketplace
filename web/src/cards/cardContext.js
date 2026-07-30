@@ -71,8 +71,7 @@ export function cardContext(card = {}) {
   const type = categoryName(card.category)
   const identity = `${name} is recorded as a ${text(card.language).toLowerCase() || 'catalogued'}${type ? ` ${type}` : ''} printing from ${releaseLabel}.`
   const sourceRefs = [
-    ...(curated?.source_refs || []),
-    ...(research?.source_refs || []),
+    ...(curated ? curated.source_refs || [] : research?.source_refs || []),
     ...(card.source_contacts || []),
     card.source_page_url ? {
       source: `${card.source_authority || 'Catalogue source'} · card record`,
