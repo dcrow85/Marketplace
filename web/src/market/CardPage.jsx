@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { retryImg } from '../binder/helpers.jsx'
+import { cardContext, cardNumber, cardRarity } from '../cards/cardContext.js'
 import { avatarSVG } from '../identity.js'
 import AskAnko from '../trade/AskAnko.jsx'
 import './card-page.css'
@@ -25,7 +26,43 @@ function EvidenceMark({ listing }) {
   return <span className="cp-evidence optional"><i>○</i><span><b>Catalogue art</b><small>photos optional at this ask</small></span></span>
 }
 
+function CardContext({ card, context }) {
+  const number = cardNumber(card)
+  return <section className="cp-context" aria-labelledby="card-context-title">
+    <div className="cp-contexthead">
+      <div>
+        <span className="ek">The card</span>
+        <h2 id="card-context-title">About this printing</h2>
+      </div>
+      <span className="cp-contextconfidence mono">{context.confidence}</span>
+    </div>
+    <div className="cp-contextlayout">
+      <div className="cp-contextstory">
+        <h3>{context.headline}</h3>
+        <p>{context.summary}</p>
+        {context.laterHistory && <p className="cp-contextlater">{context.laterHistory}</p>}
+      </div>
+      <dl className="cp-contextfacts">
+        <div><dt>Artist</dt><dd>{context.artist || 'Not recorded'}</dd></div>
+        <div><dt>Released</dt><dd>{context.releasePeriod || 'Not recorded'}</dd></div>
+        <div><dt>Distribution</dt><dd>{context.distribution}</dd></div>
+        <div><dt>Card number</dt><dd>{number.primary}{number.catalogueOrder ? <small>Catalogue order {number.catalogueOrder}</small> : null}</dd></div>
+        {context.dexNumber && <div><dt>National Pokédex</dt><dd>{context.dexNumber}</dd></div>}
+        <div><dt>Language</dt><dd>{card.language || 'Not recorded'}</dd></div>
+      </dl>
+    </div>
+    {context.sourceRefs.length ? <div className="cp-contextsources">
+      <span className="mono">History sources</span>
+      <div>{context.sourceRefs.map((source) => <a key={source.source_page_url || source.source}
+        href={source.source_page_url} target="_blank" rel="noreferrer"
+        title={source.authority || ''}>{source.source || 'Source record'} ↗</a>)}</div>
+    </div> : null}
+    <p className="cp-contextboundary">Catalogue history describes the printing, not a seller&rsquo;s physical copy. It does not establish possession, authenticity, condition, or grade.</p>
+  </section>
+}
+
 function CardDetails({ card, listings, sales }) {
+  const context = cardContext(card)
   const typeLine = [...new Set([...(card.types || []), ...(card.subtypes || [])].filter(Boolean))].join(' · ')
   const effects = Array.isArray(card.effects) ? card.effects.map((effect) => typeof effect === 'string' ? effect : [effect?.label, effect?.text].filter(Boolean).join(': ')).filter(Boolean).join(' · ') : card.effects
   const rules = card.card_text || card.definition_text || card.ruling_text || effects
@@ -38,6 +75,8 @@ function CardDetails({ card, listings, sales }) {
           <Fact label="Language">{card.language}</Fact>
           <Fact label="Type">{typeLine}</Fact>
           <Fact label="Element">{card.element}</Fact>
+          <Fact label="Artist">{context.artist}</Fact>
+          <Fact label="Released">{context.releasePeriod}</Fact>
           <Fact label="IKZ cost">{card.ikz_cost}</Fact>
           <Fact label="Attack">{card.attack}</Fact>
           <Fact label="Health">{card.health}</Fact>
@@ -64,7 +103,9 @@ function CardDetails({ card, listings, sales }) {
       <div className="cp-detailbody mono cp-provenance">
         <p><b>Catalogue entry</b>{card.uid}</p>
         {card.source_authority && <p><b>Source</b>{card.source_authority.replaceAll('_', ' ')}</p>}
-        {card.illustrator && <p><b>Illustrator</b>{card.illustrator}</p>}
+        {card.release_type && <p><b>Release type</b>{card.release_type.replaceAll('_', ' ')}</p>}
+        {card.collector_context?.authority && <p><b>Context authority</b>{card.collector_context.authority}</p>}
+        {card.symbol_context?.prints_without_rarity_symbol && <p><b>Rarity-symbol scope</b>{card.symbol_context.prints_without_rarity_symbol} · {card.symbol_context.scope?.replaceAll('_', ' ')}</p>}
         {card.image_status && <p><b>Image</b>{card.image_status.replaceAll('_', ' ')}</p>}
       </div>
     </details>
@@ -134,6 +175,8 @@ export default function CardPage({
   const latestSale = sales[0] || null
   const stance = myEntry?.stance || 'none'
   const selectedPile = selected ? inPile(selected.s.id, card.uid) : null
+  const context = cardContext(card)
+  const number = cardNumber(card)
 
   useEffect(() => {
     const previousTitle = document.title
@@ -204,9 +247,9 @@ export default function CardPage({
         {card.holo && <span className="cp-holo">{card.star_alt ? '★ alternate art' : '✦ holo'}</span>}
       </div>
       <div className="cp-identity">
-        <div className="cp-kicker mono"><span>{card.release_family_label || card.release_family || 'Azuki TCG'}</span><i>Card record</i></div>
+        <div className="cp-kicker mono"><span>{context.label || card.release_family || 'Azuki TCG'}</span><i>Card record</i></div>
         <h1>{card.name_en || card.name_ja || card.uid}</h1>
-        <p className="cp-meta mono"><b>{card.num}</b><span>{card.rarity}</span><span>{card.category}</span>{card.element && <span>{card.element}</span>}</p>
+        <p className="cp-meta mono"><b>{number.primary}</b>{number.catalogueOrder && <span>catalogue {number.catalogueOrder}</span>}<span>{cardRarity(card)}</span><span>{card.category}</span>{card.element && <span>{card.element}</span>}</p>
         {card.name_ja && card.name_ja !== card.name_en && <p className="cp-altname">{card.name_ja}{card.romaji ? ` · ${card.romaji}` : ''}</p>}
         <div className="cp-stance" aria-label="Your collection status">
           <span className="mono">Your Binder</span>
@@ -223,6 +266,8 @@ export default function CardPage({
         <p className="cp-truth mono">Asks and condition are seller claims. Recorded scans show what Cairn can point to—not a guarantee of authenticity or grade.</p>
       </div>
     </header>
+
+    {card.canonical_row_id && <CardContext card={card} context={context} />}
 
     <RelatedPrintings card={card} byUid={byUid} onOpenCard={onOpenCard} />
 

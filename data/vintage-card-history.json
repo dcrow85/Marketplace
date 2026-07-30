@@ -1,0 +1,53 @@
+{
+  "schema": "marketplace.vintage_card_history.v0.1",
+  "generated_at": "2026-07-30T00:00:00Z",
+  "entries": [
+    {
+      "uid": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:034",
+      "confidence": "attributed_reference",
+      "collection_label": "Japanese Unnumbered Promo",
+      "headline": "A mail-in trade from Pokémon’s first era",
+      "summary": "This Charizard was offered through Japan’s 1998 Trade Please campaign. Collectors mailed the campaign flyer, any two Pokémon cards, and a return envelope to Media Factory; choosing Course A returned this unnumbered Charizard with the Trade Please! promotional card.",
+      "later_history": "Reference histories also record this Charizard print in the later Pokémon Song Best Collection release. A loose card does not by itself establish which distribution it came from.",
+      "acquisition": "Trade Please mail-in · Course A",
+      "source_refs": [
+        {
+          "source": "Bulbapedia card printing history",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Charizard_%28Trade_Please_promo%29",
+          "authority": "Campaign dates, mail-in method, Course A contents, and later release context."
+        },
+        {
+          "source": "PokéBoon Japanese card reference",
+          "source_page_url": "https://pokeboon.com/jp/tradeplease-charizard-promo/",
+          "authority": "Japanese card identity, Ken Sugimori credit, and February 10, 1998 release context."
+        }
+      ],
+      "not_claiming": [
+        "that a loose copy came from the 1998 campaign rather than a later distribution",
+        "seller possession",
+        "authenticity",
+        "condition",
+        "grade"
+      ]
+    }
+  ],
+  "policy": {
+    "confidence": "Attributed history is catalogue context supported by named references. It is not direct evidence about a seller’s physical copy.",
+    "required_fields": [
+      "uid",
+      "confidence",
+      "headline",
+      "summary",
+      "source_refs",
+      "not_claiming"
+    ]
+  },
+  "not_claiming": [
+    "complete historical coverage for every catalogue row",
+    "official-source status for community references",
+    "seller possession",
+    "authenticity",
+    "condition truth",
+    "price truth"
+  ]
+}

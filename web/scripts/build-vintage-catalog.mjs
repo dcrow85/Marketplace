@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 const rootUrl = new URL('../../', import.meta.url)
 const sourceUrl = new URL('../public/catalog-sample.json', import.meta.url)
 const relationshipsUrl = new URL('../../data/vintage-printing-relationships.json', import.meta.url)
+const historyUrl = new URL('../../data/vintage-card-history.json', import.meta.url)
 const outputUrl = new URL('../public/catalogs/vintage-pokemon.json', import.meta.url)
 
 const corpusConfigs = [
@@ -19,6 +20,7 @@ const corpusConfigs = [
 
 const source = JSON.parse(await readFile(sourceUrl, 'utf8'))
 const relationships = JSON.parse(await readFile(relationshipsUrl, 'utf8'))
+const history = JSON.parse(await readFile(historyUrl, 'utf8'))
 const corpora = await Promise.all(corpusConfigs.map(async (config) => {
   const manifest = JSON.parse(await readFile(new URL(config.manifest, rootUrl), 'utf8'))
   const releases = await Promise.all((manifest.releases || []).map(async (entry) => ({
@@ -40,6 +42,14 @@ const legacyCards = new Map((source.cards || []).map((card) => [card.uid, cleanL
 const legacySetLabels = new Map((source.sets || []).map((set) => [set.id, set.label]))
 const relationshipByUid = new Map()
 const displayOverrides = new Map()
+const historyByUid = new Map()
+for (const entry of history.entries || []) {
+  if (!entry.uid || !entry.headline || !entry.summary || !(entry.source_refs || []).length || !(entry.not_claiming || []).length) {
+    throw new Error(`Vintage history entry is incomplete: ${entry.uid || 'missing uid'}`)
+  }
+  if (historyByUid.has(entry.uid)) throw new Error(`Vintage history entry is duplicated: ${entry.uid}`)
+  historyByUid.set(entry.uid, entry)
+}
 for (const relationship of relationships.relationships || []) {
   for (const uid of relationship.members || []) {
     const siblings = (relationship.members || []).filter((candidate) => candidate !== uid)
@@ -115,6 +125,7 @@ const normalizeRow = (row, release, corpus) => {
   const sourceAuthority = provenance.source || sourceContact.source || corpus.id
   const displayName = override.name_en || legacy?.name_en || row.name_en || row.name_ja || row.row_id
   const japaneseName = override.name_ja || legacy?.name_ja || row.name_ja || ''
+  const historicalContext = historyByUid.get(row.row_id) || historyByUid.get(uid) || null
   return {
     ...(legacy || {}),
     uid,
@@ -150,6 +161,23 @@ const normalizeRow = (row, release, corpus) => {
     release_family_label: releaseLabel,
     release_date: row.product_scope?.release_date || setMeta.release_date || release.entry.release_date || '',
     release_type: row.product_scope?.release_type || setMeta.release_type || '',
+    promo_context: row.promo_context || legacy?.promo_context || null,
+    collector_context: row.collector_texture
+      ? {
+          note: row.collector_texture.note || '',
+          authority: row.collector_texture.authority || '',
+          signals: row.collector_texture.signals || [],
+        }
+      : legacy?.collector_context || null,
+    symbol_context: row.symbol_status
+      ? {
+          confidence: row.symbol_status.confidence || '',
+          prints_without_rarity_symbol: row.symbol_status.prints_without_rarity_symbol || '',
+          scope: row.symbol_status.scope || '',
+          not_claiming: row.symbol_status.not_claiming || [],
+        }
+      : legacy?.symbol_context || null,
+    historical_context: historicalContext,
     health: profile.hp ?? legacy?.health ?? '',
     attack: (profile.attacks || []).map((attack) => attack.name).filter(Boolean).join(' · ') || legacy?.attack || '',
     effects: effectsFrom(row).length ? effectsFrom(row) : legacy?.effects || [],
@@ -175,6 +203,11 @@ if (uniqueUids.size !== cards.length) {
 }
 if (uniqueCanonicalRows.size !== cards.length) {
   throw new Error(`Vintage catalogue canonical-row collision: ${cards.length - uniqueCanonicalRows.size} duplicate row(s)`)
+}
+for (const uid of historyByUid.keys()) {
+  if (!uniqueUids.has(uid) && !uniqueCanonicalRows.has(uid)) {
+    throw new Error(`Vintage history entry points to an unknown row: ${uid}`)
+  }
 }
 
 const sets = corpora.flatMap((corpus) => corpus.releases.map((release) => {
@@ -220,6 +253,7 @@ const payload = {
     english_wotc_cards: englishCards,
     languages: 2,
     verified_printing_relationships: (relationships.relationships || []).length,
+    curated_history_entries: historyByUid.size,
   },
   ui: {
     ...(source.ui || {}),
@@ -238,6 +272,7 @@ const payload = {
     sets: corpus.releases.length,
   })),
   relationship_policy: relationships.relationship_policy,
+  history_policy: history.policy,
   ui_summary: {
     cards: cards.length,
     sets: sets.length,
