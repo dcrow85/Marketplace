@@ -64,6 +64,16 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: Vintage Pokémon card-page context]` 2026-07-30 · Codex —
+  Card pages currently expose identity and source provenance but little useful
+  collecting context. This bounded web/catalogue change will surface recorded
+  artist, release timing, product history, and source/confidence labels where
+  the assembled catalogue supports them, with an honest unknown state where it
+  does not. Historical narrative will remain attributed catalogue context—not
+  evidence of ownership, authenticity, condition, possession, or a physical
+  card. Authoritative source corpora, `mockups/`, protocol, chain, payments,
+  listings, and settlement semantics remain out of scope.
+
 - `[passive] Anko Vintage trainer-roster reads complete` 2026-07-29 · Codex —
   Supersedes the blocker below. An explicit plural call for any original Gym
   leader now resolves through a deterministic English/Japanese alias pair
