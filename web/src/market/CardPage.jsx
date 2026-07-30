@@ -43,16 +43,18 @@ function CardContext({ card, context }) {
         {context.laterHistory && <p className="cp-contextlater">{context.laterHistory}</p>}
       </div>
       <dl className="cp-contextfacts">
-        <div><dt>Artist</dt><dd>{context.artist || 'Not recorded'}</dd></div>
+        <div><dt>Artist</dt><dd>{context.artist || 'Not recorded in source'}</dd></div>
         <div><dt>Released</dt><dd>{context.releasePeriod || 'Not recorded'}</dd></div>
         <div><dt>Distribution</dt><dd>{context.distribution}</dd></div>
         <div><dt>Card number</dt><dd>{number.primary}{number.catalogueOrder ? <small>Catalogue order {number.catalogueOrder}</small> : null}</dd></div>
         {context.dexNumber && <div><dt>National Pokédex</dt><dd>{context.dexNumber}</dd></div>}
         <div><dt>Language</dt><dd>{card.language || 'Not recorded'}</dd></div>
+        {context.releaseKind && <div><dt>Release kind</dt><dd>{context.releaseKind}</dd></div>}
+        {context.releaseRowCount > 0 && <div><dt>Source coverage</dt><dd>{context.releaseRowCount} card record{context.releaseRowCount === 1 ? '' : 's'}<small>in this release source</small></dd></div>}
       </dl>
     </div>
     {context.sourceRefs.length ? <div className="cp-contextsources">
-      <span className="mono">History sources</span>
+      <span className="mono">{context.sourceLabel}</span>
       <div>{context.sourceRefs.map((source) => <a key={source.source_page_url || source.source}
         href={source.source_page_url} target="_blank" rel="noreferrer"
         title={source.authority || ''}>{source.source || 'Source record'} ↗</a>)}</div>

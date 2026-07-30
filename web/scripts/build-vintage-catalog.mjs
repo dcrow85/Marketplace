@@ -69,6 +69,109 @@ for (const relationship of relationships.relationships || []) {
   }
 }
 
+const cleanText = (value) => String(value || '').replace(/\s+/g, ' ').trim()
+const isWebUrl = (value) => /^https?:\/\//i.test(cleanText(value))
+const displayDate = (value = '') => {
+  const parts = cleanText(value).split('/')
+  const format = (part) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(part)) return part
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(new Date(`${part}T00:00:00Z`))
+  }
+  return parts.map(format).join(' through ')
+}
+const releaseKind = (releaseType = '') => {
+  const type = cleanText(releaseType).toLowerCase()
+  if (type.includes('promo') || type.includes('campaign') || type.includes('prize')) return 'Promotional release'
+  if (type.includes('deck') || type.includes('starter') || type.includes('gift_pack')) return 'Preconstructed product'
+  if (type.includes('vending')) return 'Vending-series release'
+  if (type.includes('sample')) return 'Sample release'
+  if (type.includes('jumbo')) return 'Oversize-card release'
+  if (type.includes('special') || type.includes('mini_set')) return 'Special collection'
+  if (type.includes('web')) return 'Web-series release'
+  if (type.includes('expansion')) return 'Expansion'
+  return 'Catalogue release'
+}
+const releaseHeadline = (label, kind) => {
+  if (kind === 'Promotional release') return `How ${label} reached collectors`
+  if (kind === 'Preconstructed product') return `A card from ${label}`
+  if (kind === 'Vending-series release') return `From the ${label} vending series`
+  if (kind === 'Sample release') return `A sample printing from ${label}`
+  if (kind === 'Oversize-card release') return `An oversize printing from ${label}`
+  if (kind === 'Special collection') return `Part of the ${label} collection`
+  if (kind === 'Web-series release') return `Part of the ${label} release`
+  if (kind === 'Expansion') return `Part of the ${label} expansion`
+  return `A printing from ${label}`
+}
+const researchSourceUrl = (source = {}) => [
+  source.source_page_url,
+  source.set_api_url,
+  source.card_api_url,
+  source.cards_api_url,
+  source.oldid_url,
+  ...(source.supporting_page_urls || []),
+  source.docs_url,
+].find(isWebUrl) || ''
+const releaseSourceRefs = (release, row, corpus) => {
+  const candidates = [
+    ...(release.payload.sources || []),
+    ...(row.source_contacts || []),
+    row.image_provenance?.source_page_url ? {
+      source: row.image_provenance.source || corpus.id,
+      source_page_url: row.image_provenance.source_page_url,
+    } : null,
+  ].filter(Boolean).map((source) => ({
+    source: cleanText(source.source) || corpus.id,
+    source_page_url: researchSourceUrl(source),
+    authority: cleanText(source.authority)
+      || 'Release identity, date, and catalogue-row context from the named source.',
+  })).filter((source) => isWebUrl(source.source_page_url))
+  return candidates.filter((source, index, all) => (
+    all.findIndex((candidate) => candidate.source_page_url === source.source_page_url) === index
+  )).slice(0, 4)
+}
+const releaseResearch = (row, release, corpus, releaseLabel) => {
+  const meta = release.payload.release || {}
+  const type = row.product_scope?.release_type || meta.release_type || release.entry.release_type || ''
+  const kind = releaseKind(type)
+  const releaseDate = row.product_scope?.release_date || meta.release_date || release.entry.release_date || ''
+  const rowCount = (release.payload.cards || []).length
+  const distribution = cleanText(row.promo_context?.distribution_comment)
+    || cleanText(row.promo_context?.date_label)
+    || kind
+  const sources = releaseSourceRefs(release, row, corpus)
+  const dateClause = releaseDate ? ` The release record dates it to ${displayDate(releaseDate)}.` : ''
+  const scopeClause = rowCount === 1
+    ? 'This source models one card record for the release.'
+    : `This source models ${rowCount} card records for the release.`
+  return {
+    scope: 'release_and_card_record',
+    confidence: sources.length ? 'source_recorded' : 'catalogue_recorded',
+    collection_label: releaseLabel,
+    release_kind: kind,
+    headline: releaseHeadline(releaseLabel, kind),
+    summary: `This ${corpus.language} printing is catalogued as part of ${releaseLabel}.${dateClause} ${scopeClause}`,
+    history_note: distribution !== kind
+      ? `The source associates this card with ${distribution}.`
+      : '',
+    release_date: releaseDate,
+    distribution_label: distribution,
+    release_row_count: rowCount,
+    source_refs: sources,
+    not_claiming: [
+      'that shared release history proves the origin of a loose physical copy',
+      'seller possession',
+      'authenticity',
+      'condition',
+      'grade',
+    ],
+  }
+}
+
 let approvedDisplayImages = 0
 let referenceOnlyImages = 0
 let missingImages = 0
@@ -126,6 +229,8 @@ const normalizeRow = (row, release, corpus) => {
   const displayName = override.name_en || legacy?.name_en || row.name_en || row.name_ja || row.row_id
   const japaneseName = override.name_ja || legacy?.name_ja || row.name_ja || ''
   const historicalContext = historyByUid.get(row.row_id) || historyByUid.get(uid) || null
+  const researchContext = releaseResearch(row, release, corpus, releaseLabel)
+  const illustrator = row.illustrator?.display || row.illustrator?.name || provider.artist || provider.illustrator || legacy?.illustrator || ''
   return {
     ...(legacy || {}),
     uid,
@@ -157,7 +262,8 @@ const normalizeRow = (row, release, corpus) => {
       : 'Catalogue identity row; no row-specific reference image is recorded.',
     source_authority: sourceAuthority,
     source_page_url: provenance.source_page_url || sourceContact.source_page_url || '',
-    illustrator: row.illustrator?.display || row.illustrator?.name || provider.artist || provider.illustrator || legacy?.illustrator || '',
+    illustrator,
+    illustrator_status: illustrator ? 'source_recorded' : 'not_recorded_in_current_sources',
     release_family_label: releaseLabel,
     release_date: row.product_scope?.release_date || setMeta.release_date || release.entry.release_date || '',
     release_type: row.product_scope?.release_type || setMeta.release_type || '',
@@ -178,6 +284,7 @@ const normalizeRow = (row, release, corpus) => {
         }
       : legacy?.symbol_context || null,
     historical_context: historicalContext,
+    research_context: researchContext,
     health: profile.hp ?? legacy?.health ?? '',
     attack: (profile.attacks || []).map((attack) => attack.name).filter(Boolean).join(' · ') || legacy?.attack || '',
     effects: effectsFrom(row).length ? effectsFrom(row) : legacy?.effects || [],
@@ -208,6 +315,19 @@ for (const uid of historyByUid.keys()) {
   if (!uniqueUids.has(uid) && !uniqueCanonicalRows.has(uid)) {
     throw new Error(`Vintage history entry points to an unknown row: ${uid}`)
   }
+}
+const researchedCards = cards.filter((card) => (
+  card.research_context?.headline
+  && card.research_context?.summary
+  && card.research_context?.scope
+  && (card.research_context?.source_refs || []).length
+  && (card.research_context?.not_claiming || []).length
+)).length
+if (researchedCards !== cards.length) {
+  const missing = cards.filter((card) => !(card.research_context?.source_refs || []).length)
+    .map((card) => card.canonical_row_id)
+    .slice(0, 12)
+  throw new Error(`Vintage research coverage incomplete: ${researchedCards}/${cards.length} card rows; missing ${missing.join(', ')}`)
 }
 
 const sets = corpora.flatMap((corpus) => corpus.releases.map((release) => {
@@ -254,6 +374,10 @@ const payload = {
     languages: 2,
     verified_printing_relationships: (relationships.relationships || []).length,
     curated_history_entries: historyByUid.size,
+    researched_card_rows: researchedCards,
+    researched_release_families: new Set(cards.map((card) => card.set_id)).size,
+    artist_recorded_rows: cards.filter((card) => card.illustrator_status === 'source_recorded').length,
+    artist_unknown_rows: cards.filter((card) => card.illustrator_status !== 'source_recorded').length,
   },
   ui: {
     ...(source.ui || {}),
@@ -273,6 +397,12 @@ const payload = {
   })),
   relationship_policy: relationships.relationship_policy,
   history_policy: history.policy,
+  research_policy: {
+    coverage: 'Every card inherits source-linked release context and keeps card-specific facts separate.',
+    card_specific_claims: 'Artist, number, language, species, rules, and variant fields come from the individual catalogue row when recorded.',
+    release_claims: 'Release history is shared context. It does not prove how a loose seller copy was acquired.',
+    unknowns: 'Missing artist or release details remain visibly not recorded; they are never inferred from another printing.',
+  },
   ui_summary: {
     cards: cards.length,
     sets: sets.length,

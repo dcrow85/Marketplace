@@ -62,40 +62,47 @@ export function cardRarity(card = {}) {
 
 export function cardContext(card = {}) {
   const curated = card.historical_context || null
+  const research = card.research_context || null
   const promo = card.promo_context || card.promo || {}
   const name = text(card.name_en) || text(card.name_ja) || 'This card'
-  const releaseLabel = text(curated?.collection_label) || text(card.release_family_label) || 'Vintage Pokémon'
-  const releasePeriod = cardReleasePeriod(text(promo.date_label) || text(promo.date) || text(card.release_date))
+  const releaseLabel = text(curated?.collection_label) || text(research?.collection_label) || text(card.release_family_label) || 'Vintage Pokémon'
+  const releasePeriod = cardReleasePeriod(text(promo.date_label) || text(promo.date) || text(research?.release_date) || text(card.release_date))
   const distribution = text(promo.distribution_comment) || text(promo.comment)
   const type = categoryName(card.category)
   const identity = `${name} is recorded as a ${text(card.language).toLowerCase() || 'catalogued'}${type ? ` ${type}` : ''} printing from ${releaseLabel}.`
   const sourceRefs = [
     ...(curated?.source_refs || []),
+    ...(research?.source_refs || []),
     ...(card.source_contacts || []),
     card.source_page_url ? {
       source: card.source_authority || 'Catalogue source',
       source_page_url: card.source_page_url,
       authority: 'Catalogue identity and source-row context.',
     } : null,
-  ].filter((source) => text(source?.source_page_url)).filter((source, index, all) => {
+  ].filter((source) => /^https?:\/\//i.test(text(source?.source_page_url))).filter((source, index, all) => {
     const key = text(source.source_page_url)
     return all.findIndex((candidate) => text(candidate.source_page_url) === key) === index
   })
   const notClaiming = [...new Set([
     ...(curated?.not_claiming || []),
+    ...(research?.not_claiming || []),
     ...(promo.not_claiming || []),
     ...(card.not_claiming || []),
   ].map(text).filter(Boolean))]
   return {
     label: releaseLabel,
-    headline: text(curated?.headline) || (distribution ? 'How this printing entered the hobby' : `A printing from ${releaseLabel}`),
-    summary: text(curated?.summary) || `${identity}${distribution ? ` ${sentence(`The catalogue associates it with ${distribution}`)}` : ''}`,
-    laterHistory: text(curated?.later_history),
+    headline: text(curated?.headline) || text(research?.headline) || (distribution ? 'How this printing entered the hobby' : `A printing from ${releaseLabel}`),
+    summary: text(curated?.summary) || text(research?.summary) || `${identity}${distribution ? ` ${sentence(`The catalogue associates it with ${distribution}`)}` : ''}`,
+    laterHistory: text(curated?.later_history) || text(research?.history_note),
     artist: cardArtist(card),
+    artistStatus: text(card.illustrator_status),
     releasePeriod,
-    distribution: text(curated?.acquisition) || distribution || humanize(card.release_type) || 'Not recorded',
+    distribution: text(curated?.acquisition) || distribution || text(research?.distribution_label) || humanize(card.release_type) || 'Not recorded',
+    releaseKind: text(research?.release_kind) || humanize(card.release_type),
+    releaseRowCount: Number(research?.release_row_count) || 0,
     dexNumber: (card.dex_ids || []).filter((value) => value != null && value !== '').map((value) => `#${String(value).padStart(3, '0')}`).join(' · '),
-    confidence: curated ? 'Attributed history' : distribution ? 'Source-recorded context' : 'Catalogue context',
+    confidence: curated ? 'Attributed history' : research?.confidence === 'source_recorded' ? 'Source-linked research' : distribution ? 'Source-recorded context' : 'Catalogue context',
+    sourceLabel: curated ? 'History sources' : 'Research sources',
     sourceRefs,
     notClaiming,
   }
