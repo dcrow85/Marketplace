@@ -117,24 +117,27 @@ const researchSourceUrl = (source = {}) => [
   source.docs_url,
 ].find(isWebUrl) || ''
 const releaseSourceRefs = (release, corpus) => {
-  const candidates = [
-    ...(release.payload.sources || []),
-    ...(release.payload.cards || []).flatMap((row) => [
+  const normalizeSources = (sources, suffix) => sources.filter(Boolean).map((source) => ({
+    source: `${cleanText(source.source) || corpus.id}${suffix}`,
+    source_page_url: researchSourceUrl(source),
+    authority: cleanText(source.authority)
+      || 'Release identity, date, and catalogue-row context from the named source.',
+  })).filter((source) => isWebUrl(source.source_page_url))
+  const releaseCandidates = normalizeSources(release.payload.sources || [], ' · release')
+  const cardCandidates = normalizeSources(
+    (release.payload.cards || []).flatMap((row) => [
       ...(row.source_contacts || []),
       row.image_provenance?.source_page_url ? {
         source: row.image_provenance.source || corpus.id,
         source_page_url: row.image_provenance.source_page_url,
       } : null,
     ]),
-  ].filter(Boolean).map((source) => ({
-    source: cleanText(source.source) || corpus.id,
-    source_page_url: researchSourceUrl(source),
-    authority: cleanText(source.authority)
-      || 'Release identity, date, and catalogue-row context from the named source.',
-  })).filter((source) => isWebUrl(source.source_page_url))
+    ' · source record',
+  )
+  const candidates = releaseCandidates.length ? releaseCandidates : cardCandidates
   return candidates.filter((source, index, all) => (
     all.findIndex((candidate) => candidate.source_page_url === source.source_page_url) === index
-  )).slice(0, 4)
+  )).slice(0, 2)
 }
 const releaseResearch = (release, corpus, releaseLabel) => {
   const meta = release.payload.release || {}

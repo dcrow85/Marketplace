@@ -75,7 +75,7 @@ export function cardContext(card = {}) {
     ...(research?.source_refs || []),
     ...(card.source_contacts || []),
     card.source_page_url ? {
-      source: card.source_authority || 'Catalogue source',
+      source: `${card.source_authority || 'Catalogue source'} · card record`,
       source_page_url: card.source_page_url,
       authority: 'Catalogue identity and source-row context.',
     } : null,
