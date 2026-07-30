@@ -3,11 +3,12 @@ import { readFile } from 'node:fs/promises'
 const catalogUrl = new URL('../public/catalogs/vintage-pokemon.json', import.meta.url)
 const catalog = JSON.parse(await readFile(catalogUrl, 'utf8'))
 const cards = catalog.cards || []
+const researchBySetId = new Map((catalog.sets || []).map((set) => [set.id, set.research_context]))
 const failures = []
 const isWebUrl = (value) => /^https?:\/\//i.test(String(value || ''))
 
 for (const card of cards) {
-  const research = card.research_context || {}
+  const research = researchBySetId.get(card.research_context_id || card.set_id) || {}
   const prefix = card.canonical_row_id || card.uid || 'unknown row'
   if (!research.headline) failures.push(`${prefix}: missing research headline`)
   if (!research.summary) failures.push(`${prefix}: missing research summary`)
@@ -24,7 +25,7 @@ for (const card of cards) {
 
 const releaseIds = new Set(cards.map((card) => card.set_id))
 const researchedReleases = new Set(cards
-  .filter((card) => card.research_context?.summary)
+  .filter((card) => researchBySetId.get(card.research_context_id || card.set_id)?.summary)
   .map((card) => card.set_id))
 
 if (failures.length) {

@@ -116,14 +116,16 @@ const researchSourceUrl = (source = {}) => [
   ...(source.supporting_page_urls || []),
   source.docs_url,
 ].find(isWebUrl) || ''
-const releaseSourceRefs = (release, row, corpus) => {
+const releaseSourceRefs = (release, corpus) => {
   const candidates = [
     ...(release.payload.sources || []),
-    ...(row.source_contacts || []),
-    row.image_provenance?.source_page_url ? {
-      source: row.image_provenance.source || corpus.id,
-      source_page_url: row.image_provenance.source_page_url,
-    } : null,
+    ...(release.payload.cards || []).flatMap((row) => [
+      ...(row.source_contacts || []),
+      row.image_provenance?.source_page_url ? {
+        source: row.image_provenance.source || corpus.id,
+        source_page_url: row.image_provenance.source_page_url,
+      } : null,
+    ]),
   ].filter(Boolean).map((source) => ({
     source: cleanText(source.source) || corpus.id,
     source_page_url: researchSourceUrl(source),
@@ -134,16 +136,17 @@ const releaseSourceRefs = (release, row, corpus) => {
     all.findIndex((candidate) => candidate.source_page_url === source.source_page_url) === index
   )).slice(0, 4)
 }
-const releaseResearch = (row, release, corpus, releaseLabel) => {
+const releaseResearch = (release, corpus, releaseLabel) => {
   const meta = release.payload.release || {}
-  const type = row.product_scope?.release_type || meta.release_type || release.entry.release_type || ''
+  const type = meta.release_type || release.entry.release_type || ''
   const kind = releaseKind(type)
-  const releaseDate = row.product_scope?.release_date || meta.release_date || release.entry.release_date || ''
+  const releaseDate = meta.release_date || release.entry.release_date || ''
   const rowCount = (release.payload.cards || []).length
-  const distribution = cleanText(row.promo_context?.distribution_comment)
-    || cleanText(row.promo_context?.date_label)
+  const promoContexts = (release.payload.cards || []).map((row) => row.promo_context).filter(Boolean)
+  const distribution = cleanText(promoContexts.find((promo) => promo.distribution_comment)?.distribution_comment)
+    || cleanText(promoContexts.find((promo) => promo.date_label)?.date_label)
     || kind
-  const sources = releaseSourceRefs(release, row, corpus)
+  const sources = releaseSourceRefs(release, corpus)
   const dateClause = releaseDate ? ` The release record dates it to ${displayDate(releaseDate)}.` : ''
   const scopeClause = rowCount === 1
     ? 'This source models one card record for the release.'
@@ -176,6 +179,7 @@ let approvedDisplayImages = 0
 let referenceOnlyImages = 0
 let missingImages = 0
 let usedLegacyCards = 0
+const researchBySetId = new Map()
 
 const effectsFrom = (row) => {
   const profile = row.pokemon_profile || {}
@@ -229,7 +233,9 @@ const normalizeRow = (row, release, corpus) => {
   const displayName = override.name_en || legacy?.name_en || row.name_en || row.name_ja || row.row_id
   const japaneseName = override.name_ja || legacy?.name_ja || row.name_ja || ''
   const historicalContext = historyByUid.get(row.row_id) || historyByUid.get(uid) || null
-  const researchContext = releaseResearch(row, release, corpus, releaseLabel)
+  if (!researchBySetId.has(row.release_family_id)) {
+    researchBySetId.set(row.release_family_id, releaseResearch(release, corpus, releaseLabel))
+  }
   const illustrator = row.illustrator?.display || row.illustrator?.name || provider.artist || provider.illustrator || legacy?.illustrator || ''
   return {
     ...(legacy || {}),
@@ -284,7 +290,7 @@ const normalizeRow = (row, release, corpus) => {
         }
       : legacy?.symbol_context || null,
     historical_context: historicalContext,
-    research_context: researchContext,
+    research_context_id: row.release_family_id,
     health: profile.hp ?? legacy?.health ?? '',
     attack: (profile.attacks || []).map((attack) => attack.name).filter(Boolean).join(' · ') || legacy?.attack || '',
     effects: effectsFrom(row).length ? effectsFrom(row) : legacy?.effects || [],
@@ -317,14 +323,14 @@ for (const uid of historyByUid.keys()) {
   }
 }
 const researchedCards = cards.filter((card) => (
-  card.research_context?.headline
-  && card.research_context?.summary
-  && card.research_context?.scope
-  && (card.research_context?.source_refs || []).length
-  && (card.research_context?.not_claiming || []).length
+  researchBySetId.get(card.research_context_id)?.headline
+  && researchBySetId.get(card.research_context_id)?.summary
+  && researchBySetId.get(card.research_context_id)?.scope
+  && (researchBySetId.get(card.research_context_id)?.source_refs || []).length
+  && (researchBySetId.get(card.research_context_id)?.not_claiming || []).length
 )).length
 if (researchedCards !== cards.length) {
-  const missing = cards.filter((card) => !(card.research_context?.source_refs || []).length)
+  const missing = cards.filter((card) => !(researchBySetId.get(card.research_context_id)?.source_refs || []).length)
     .map((card) => card.canonical_row_id)
     .slice(0, 12)
   throw new Error(`Vintage research coverage incomplete: ${researchedCards}/${cards.length} card rows; missing ${missing.join(', ')}`)
@@ -349,6 +355,7 @@ const sets = corpora.flatMap((corpus) => corpus.releases.map((release) => {
     policy: 'external_reference',
     exact_rows: 0,
     ref_rows: (release.payload.cards || []).length,
+    research_context: researchBySetId.get(meta.release_family_id || release.entry.release_family_id) || null,
   }
 })).sort((a, b) => String(a.date || '').localeCompare(String(b.date || ''))
   || String(a.language || '').localeCompare(String(b.language || ''))

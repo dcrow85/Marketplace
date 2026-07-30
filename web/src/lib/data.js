@@ -13,10 +13,17 @@ function resolvedImage(image) {
 
 function normalizePayload(payload) {
   if (!payload || !Array.isArray(payload.cards)) return payload
+  const researchBySetId = new Map((payload.sets || []).map((set) => [set.id, set.research_context]))
   return {
     ...payload,
     cards: payload.cards.map((card) => (
-      card.image ? { ...card, image: resolvedImage(card.image) } : card
+      {
+        ...card,
+        ...(researchBySetId.has(card.research_context_id || card.set_id)
+          ? { research_context: researchBySetId.get(card.research_context_id || card.set_id) }
+          : {}),
+        ...(card.image ? { image: resolvedImage(card.image) } : {}),
+      }
     )),
   }
 }
