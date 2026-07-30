@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: catalogue-wide Vintage Pokémon research]` 2026-07-30 · Codex —
+  The first curated card story proves the page shape, but catalogue-wide coverage
+  requires a reusable research model. This bounded expansion will attach
+  source-linked release history to every assembled Vintage Pokémon row, inherit
+  shared product context without cloning unsupported card-specific claims, retain
+  individual artist/identity/variant fields, and add a coverage audit that fails
+  the build when any card lacks a usable context record. Unknown or disputed facts
+  will remain explicit; printing history will not be presented as evidence about
+  seller possession, authenticity, condition, grade, or a physical copy.
+  `mockups/`, protocol, chain, payments, listings, and settlement semantics remain
+  out of scope.
+
 - `[passive] Vintage Pokémon card-page context complete` 2026-07-30 · Codex —
   Supersedes the blocker below. Vintage card records now show human-readable
   artist, release period, distribution, number, language, Pokédex identity, and
