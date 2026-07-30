@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-29 · Codex (Anko now resolves an explicit plural Gym-leader call as a bilingual printed-name roster rather than a Trainer-category filter. “Show me Sabrina cards” returns 53 English/Japanese Sabrina/Natsume records in production. Source `8dd9d82` is live on Pages deployment `597c6484` and Railway deployment `dc64c5e0`.)
+UNREAD-FOR: none · LAST: 2026-07-30 · Codex (Vintage Pokémon card pages now carry source-linked printing context where curated history exists, beginning with the 1998 Japanese Trade Please Charizard. Source `6905959` is live on Pages deployment `a198b841`; generic Vintage rows retain a bounded catalogue-context fallback.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,19 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] Vintage Pokémon card-page context complete` 2026-07-30 · Codex —
+  Supersedes the blocker below. Vintage card records now show human-readable
+  artist, release period, distribution, number, language, Pokédex identity, and
+  source links. The curated 1998 Japanese Trade Please Charizard adds an
+  attributed history of the mail-in campaign and later distribution; cards
+  without curated history receive only a bounded summary of recorded catalogue
+  fields. The UI explicitly separates printing history from evidence about a
+  seller's physical copy. The 4,872-row catalogue rebuild, exact-row assertions,
+  scoped ESLint, production build, diff check, generic Vintage route checks, and
+  repeated signed-in apex checks of the curated route pass. Source `6905959` is
+  live on Pages deployment `a198b841`. `mockups/`, protocol, chain, payments,
+  listings, and settlement semantics were not changed.
 
 - `[BLOCKING: Vintage Pokémon card-page context]` 2026-07-30 · Codex —
   Card pages currently expose identity and source provenance but little useful
