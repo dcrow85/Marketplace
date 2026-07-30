@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-30 · Codex (Vintage Pokémon card pages now carry source-linked printing context where curated history exists, beginning with the 1998 Japanese Trade Please Charizard. Source `6905959` is live on Pages deployment `a198b841`; generic Vintage rows retain a bounded catalogue-context fallback.)
+UNREAD-FOR: none · LAST: 2026-07-30 · Codex (Every one of the 4,872 Vintage Pokémon card pages now resolves source-linked release research plus individual recorded facts. Source `ab2d619` is live on Pages deployment `4428e681`; 1,396 artist fields remain explicitly not recorded rather than inferred.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,24 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] catalogue-wide Vintage Pokémon research complete` 2026-07-30 · Codex —
+  Supersedes the blocker below. All 4,872 assembled Vintage Pokémon rows across
+  all 223 release families now resolve a source-linked research panel with
+  release story, date, distribution/release kind, language, identifier, source
+  coverage, and individual artist/Pokédex data where recorded. The 1,396 rows
+  whose pinned sources do not name an artist say so explicitly; the UI does not
+  borrow an artist from another language or printing. Release research is stored
+  once per family and joined to card rows in memory, avoiding a 4,872-fold payload
+  duplication. A build-breaking audit enforces complete research, source,
+  uncertainty, artist-status, release, language, and identifier coverage. The
+  catalogue rebuild, 4,872/4,872 research audit, scoped ESLint, production build,
+  direct helper assertions, three representative signed-in apex routes, visual
+  review, and post-propagation bundle checks pass. Source `ab2d619` is live on
+  Pages deployment `4428e681`. Printing research remains catalogue context—not
+  seller possession, authenticity, condition, grade, or proof of a physical
+  copy. `mockups/`, protocol, chain, payments, listings, and settlement semantics
+  were not changed.
 
 - `[BLOCKING: catalogue-wide Vintage Pokémon research]` 2026-07-30 · Codex —
   The first curated card story proves the page shape, but catalogue-wide coverage
