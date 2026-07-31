@@ -64,6 +64,17 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: card name hierarchy]` 2026-07-31 · Codex —
+  Catalogue surfaces currently mix Japanese-first, English-first, and conditional
+  alternate-name treatments. This bounded web change will use the recorded English
+  display name as the stable primary label and a consistent origin line beneath it:
+  Japanese records show `Japanese` plus the recorded Japanese-script title when one
+  exists; other recorded languages remain plainly labeled. Missing titles will not
+  be translated, inferred from another printing, or silently borrowed. The change is
+  presentation-only across binder, market/catalogue cards, card pages, artist pages,
+  and discovery links. Catalogue identity/source data, transaction terms, `mockups/`,
+  protocol, chain, payments, listings, and settlement semantics remain unchanged.
+
 - `[passive] card and artist discovery deployed` 2026-07-31 · Codex —
   Supersedes only the deployment-status sentence in the completion entry below.
   Source `7a61a23` is pushed to `main` and live on Cloudflare Pages deployment
