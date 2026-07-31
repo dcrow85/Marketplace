@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] card naming and Ivy Pikachu correction deployed` 2026-07-31 · Codex —
+  Source `38965ac` is pushed to `main` and live on Cloudflare Pages deployment
+  `7ed9fddc`. The immutable deployment, `cairn.cards`, and `www.cairn.cards`
+  return `200` for the exact Ivy Pikachu card route with no-store HTML. The live
+  bundle carries the artwork/printed-credit split, and the live 4,872-row Vintage
+  payload records Keiji Kinebuchi as artwork artist plus Ken Sugimori as the known
+  incorrect printed credit on both the aggregate UPC row and CoroCoro child row.
+  The card-name hierarchy committed immediately before this correction is included
+  in the same deployment. Pages Functions and the existing KV binding were compiled
+  and deployed; Railway, protocol, chain, payment, listing, settlement, and
+  `mockups/` semantics were not changed.
+
 - `[passive] Ivy Pikachu artist attribution complete` 2026-07-31 · Codex —
   Supersedes the blocker below. The 1996 glossy CoroCoro Pikachu now records
   Keiji Kinebuchi as the artwork artist while preserving Ken Sugimori only as
