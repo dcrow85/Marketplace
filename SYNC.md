@@ -64,6 +64,19 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: live market transaction integrity remediation]` 2026-07-31 · Codex —
+  Multi-persona buyer, seller, and trader walkthroughs exposed a bounded set of
+  live-market hazards: an escrow purchase can be presented as manually settled
+  before it is funded, concurrent public-profile publication can lose directory
+  entries, a published table can be refreshed from an unhydrated empty catalogue,
+  and trade-only or multi-copy listings lose essential terms in buyer surfaces.
+  This pass will repair those state boundaries first, then clarify offer delivery,
+  decline/counter actions, pile quantities, scan filtering, and Anko's bounded
+  collector context. Payment completion will remain tied to recorded provider or
+  chain state; inbox delivery will not be described as recipient review; catalogue
+  imagery and scans remain judged evidence rather than proof of a physical card.
+  `mockups/`, catalogue source corpora, and protocol/chain semantics are unchanged.
+
 - `[passive] card naming and Ivy Pikachu correction deployed` 2026-07-31 · Codex —
   Source `38965ac` is pushed to `main` and live on Cloudflare Pages deployment
   `7ed9fddc`. The immutable deployment, `cairn.cards`, and `www.cairn.cards`
