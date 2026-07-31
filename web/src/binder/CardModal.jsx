@@ -8,12 +8,11 @@ import { getPhoto, putPhoto } from '../scan/photoStore.js'
 import { preparePhoto } from '../scan/preparePhoto.js'
 import { handleFor } from '../identity.js'
 import { cardOriginText } from '../cards/cardNames.js'
+import { API_BASE } from '../lib/apiBase.js'
 import {
   nm, retryImg, wantActive, Frow, mpill, PROV_LABEL,
   COND_TYPES, GRADERS, COND_GRADES, COND_OPTS, gradePrompt,
 } from './helpers.jsx'
-
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 
 // Photo-entry is the primary path (collectors add cards by photo), so it's on for
 // everyone — not hidden behind a flag. The agent read is live; a confirmed photo is

@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { API_BASE } from '../lib/apiBase.js'
 
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 const LEAN_LABEL = {
   accept: 'My lean: accept',
   counter: 'My lean: counter',

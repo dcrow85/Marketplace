@@ -4,8 +4,8 @@
 // keccak(value), and on read we recompute keccak and reject anything that doesn't match the
 // on-chain hash. A bad/again store can only make a record unreadable, never forge one.
 import { hashText } from '../chain/escrow.js' // keccak256(toHex(s)) — identical to the on-chain commitment
+import { API_BASE } from '../lib/apiBase.js'
 
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 const isZero = (h) => !h || /^0x0{64}$/i.test(h)
 
 // Store a preimage under its own keccak hash. Pass the EXACT string that was hashed for the

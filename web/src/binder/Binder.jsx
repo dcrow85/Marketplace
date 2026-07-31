@@ -17,12 +17,12 @@ import { loadMockSales, mockSalesKeyFor, loadHidden, hiddenKeyFor } from '../mar
 import { HaveActionsLesson, WantActionsLesson } from '../agent/MeetAnko.jsx'
 import { cardMatchesText, initialFamilyFilter } from './catalogSearch.js'
 import { fetchJson } from '../lib/data.js'
+import { API_BASE } from '../lib/apiBase.js'
 import '../scan/scan.css'
 
 // Prod: the agent API lives on a separate origin (api.cairn.cards, via VITE_API_BASE);
 // the catalog ships with the app build. Both resolve in dev (Vite proxy, BASE_URL='/')
 // and under a '/app/' base path on the deployed site.
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 const DEFAULT_CATALOG = { id: 'azuki-tcg', path: 'catalogs/azuki-tcg.json', marketPath: 'market-sample.json', title: 'Azuki TCG catalog' }
 
 

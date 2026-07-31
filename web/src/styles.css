@@ -112,6 +112,9 @@ body { margin: 0; background: var(--paper); color: var(--ink2); font-family: var
 /* ambient glance — one quiet line above the cards; oxblood accent ONLY when something needs you */
 .ambient { max-width: 1120px; margin: 14px auto 0; padding: 0 36px; font-size: 13px; color: var(--ink2); }
 .ambient button { font: inherit; color: var(--ink); background: transparent; border: 0; border-left: 2px solid var(--signal); padding: 2px 0 2px 10px; cursor: pointer; text-align: left; }
+.live-notice { display: flex; align-items: center; gap: 8px; }
+.live-notice > button:first-child { flex: 1; }
+.live-notice .live-notice-dismiss { flex: none; border: 0; padding: 4px 8px; color: var(--ink2); }
 @media (max-width: 640px) { .ambient { padding: 0 20px; } }
 
 /* touch pass — every primary control ≥ ~44px on touch devices; inputs ≥16px so iOS

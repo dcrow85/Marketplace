@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Dev: proxy card images and the agent API to a local (ungated) browse instance.
-// Catalog payloads are shipped from web/public so each catalog tab can load even
-// when the browse server is offline.
+// Dev: proxy the agent API to a local (ungated) browse instance. Catalogue payloads
+// and card images ship from web/public and must stay on Vite; proxying /assets made
+// a healthy local catalogue look like its imagery was missing whenever Anko was off.
 const BROWSE = 'http://127.0.0.1:8790'
 const PILOT_STORE = globalThis.process?.env?.VITE_PILOT_STORE_PROXY || BROWSE
 
@@ -26,7 +26,6 @@ export default defineConfig({
     proxy: {
       '/api/store': PILOT_STORE,
       '/api': BROWSE,
-      '/assets': BROWSE,
     },
   },
 })

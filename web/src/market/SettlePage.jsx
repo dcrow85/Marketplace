@@ -2,14 +2,15 @@ import { useEffect, useMemo, useState } from 'react'
 import { entryFor, condStr } from '../binder/collection.js'
 import { applyAgentFilter } from '../binder/agentFilter.js'
 import { offersKeyFor, sendOffer } from '../trade/offers.js'
-import { removeFromPile, toggleMode, clearPile } from './pile.js'
+import { removeFromPile, toggleMode, clearPile, setPileQuantity } from './pile.js'
 import { loadMockSales, mockSalesKeyFor } from './mockAgents.js'
 import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { railCurrency, sellerPayPalHandle, RAIL_ESCROW, RAIL_PAYPAL } from '../payments/rails.js'
+import { loadProfile } from '../profile/profileStore.js'
+import { API_BASE } from '../lib/apiBase.js'
 
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
 const scanLabel = (w, ask) => w ? `✓ ${w} scan${w === 1 ? '' : 's'}` : Number(ask) > SCAN_REQUEST_USDC ? 'scan requested' : 'stock photo · scan optional'
 const EVIDENCE_VIEWS = [
@@ -43,7 +44,9 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const [ankoScope, setAnkoScope] = useState(null) // his lens on YOUR side
   const [ankoLine, setAnkoLine] = useState(null)
   const [ankoPicks, setAnkoPicks] = useState(() => new Set()) // advice, distinct from the collector's final terms
+  const [sending, setSending] = useState(false)
   const paypalHandle = sellerPayPalHandle(open)
+  const collectorProfile = loadProfile(accountId)
   const sellerLabel = open.handle || handleFor(open.id)
   const [settlementRail, setSettlementRail] = useState(RAIL_ESCROW)
   const settlementCurrency = railCurrency(settlementRail)
@@ -51,7 +54,8 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   const askOf = (uid) => open.listings.find((l) => l.uid === uid)?.ask ?? 0
   const buys = pile.filter((p) => p.mode === 'buy')
   const trades = pile.filter((p) => p.mode === 'trade')
-  const buysSum = buys.reduce((t, p) => t + askOf(p.uid), 0)
+  const pileCardCount = pile.reduce((sum, item) => sum + (item.qty || 1), 0)
+  const buysSum = buys.reduce((t, p) => t + askOf(p.uid) * (p.qty || 1), 0)
   const cash = cashEdit == null ? buysSum : Math.max(0, Number(cashEdit) || 0)
   const scanCandidates = pile.filter((item) => {
     const listing = open.listings.find((candidate) => candidate.uid === item.uid)
@@ -86,7 +90,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   // "match the value of that Mizuki": their side priced by asks (buys) and recorded
   // settlements (trades), your side by settlements only — then a greedy closest-sum
   // pick from your candidates. History does the matching; you still decide.
-  const theirValue = () => pile.reduce((t, p) => t + (p.mode === 'buy' ? askOf(p.uid) : (lastPrice(p.uid) ?? askOf(p.uid))), 0)
+  const theirValue = () => pile.reduce((t, p) => t + (p.mode === 'buy' ? askOf(p.uid) : (lastPrice(p.uid) ?? askOf(p.uid))) * (p.qty || 1), 0)
   const runMatch = (rows) => {
     const target = theirValue()
     const cands = rows.map(({ c }) => ({ uid: c.uid, p: lastPrice(c.uid) })).filter((x) => x.p != null).sort((a, b) => b.p - a.p)
@@ -142,16 +146,23 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   }
 
   const recordLine = useMemo(() => {
-    const sum = (uids) => {
+    const sum = (items) => {
       let t = 0, known = 0
-      for (const uid of uids) { const x = salesMap[uid]?.[0]; if (x) { t += x.p; known++ } }
-      return { t, known, n: uids.length }
+      let n = 0
+      for (const item of items) {
+        const uid = typeof item === 'string' ? item : item.uid
+        const quantity = typeof item === 'string' ? 1 : (item.qty || 1)
+        const x = salesMap[uid]?.[0]
+        n += quantity
+        if (x) { t += x.p * quantity; known += quantity }
+      }
+      return { t, known, n }
     }
-    const w = sum(pile.map((p) => p.uid)), g = sum([...give])
+    const w = sum(pile), g = sum([...give])
     if (!w.n && !g.n) return null
     const part = (x, label) => x.n ? <span key={label}>{label} {x.known
-      ? <><b className="money mono">~{x.t} USDC</b> across {x.known} of {x.n}</>
-      : <>no settlements on record ({x.n})</>}</span> : null
+      ? <><b className="money mono">~{x.t} USDC</b> across {x.known} of {x.n} card{x.n === 1 ? '' : 's'}</>
+      : <>no settlements on record ({x.n} card{x.n === 1 ? '' : 's'})</>}</span> : null
     return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean)
   }, [salesMap, pile, give])
 
@@ -169,12 +180,13 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       cash_amount: cash,
       cash_currency: settlementCurrency,
       settlement_rail: settlementRail,
-      you_receive_count: pile.length,
-      you_receive_unitemized_count: Math.max(0, pile.length - decisionPile.length),
+      you_receive_count: pileCardCount,
+      you_receive_listing_count: pile.length,
+      you_receive_unitemized_listing_count: Math.max(0, pile.length - decisionPile.length),
       you_receive: decisionPile.map((p) => {
         const c = byUid.get(p.uid)
         const l = open.listings.find((x) => x.uid === p.uid)
-        return { uid: p.uid, name: c?.name_en || p.uid, number: c?.num || null, mode: p.mode, ask_usdc: l?.ask ?? null, seller_condition_claim: l?.cond || null }
+        return { uid: p.uid, name: c?.name_en || p.uid, number: c?.num || null, mode: p.mode, quantity: p.qty || 1, ask_each_usdc: l?.ask ?? null, seller_condition_claim: l?.cond || null }
       }),
       you_give_count: give.size,
       you_give_unitemized_count: Math.max(0, give.size - decisionGive.length),
@@ -183,7 +195,17 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
         return { uid, name: c?.name_en || uid, number: c?.num || null }
       }),
     },
-    principal_context: { recorded_policy: 'No signed buying or trade policy is available to this interface.' },
+    principal_context: {
+      profile_claim: collectorProfile.name || null,
+      signed_policy: null,
+      collector_markings: {
+        wants: data.cards.filter((card) => entryFor(card, store).stance === 'want').slice(0, 24)
+          .map((card) => ({ uid: card.uid, name: card.name_en, number: card.num })),
+        open_to_trade: myCards.filter(({ e }) => e.trade).slice(0, 24)
+          .map(({ c }) => ({ uid: c.uid, name: c.name_en, number: c.num })),
+      },
+      boundary: 'These are local collector markings, not a signed delegation or instruction to transact.',
+    },
     evidence: {
       cards_without_recorded_scans: pile.filter((p) => !open.listings.find((l) => l.uid === p.uid)?.witness).length,
       cards_with_recorded_settlements: pile.filter((p) => salesMap[p.uid]?.[0]?.p != null).length,
@@ -207,7 +229,7 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
     return Number(listing?.ask) > SCAN_REQUEST_USDC && !listing?.witness
   })
   const counterStart = useMemo(() => {
-    const recordBased = pile.reduce((total, item) => total + (lastPrice(item.uid) ?? askOf(item.uid)), 0)
+    const recordBased = pile.reduce((total, item) => total + (lastPrice(item.uid) ?? askOf(item.uid)) * (item.qty || 1), 0)
     const belowCurrent = recordBased > 0 && recordBased < cash ? recordBased : cash * .9
     return Math.round(Math.max(0, belowCurrent) * 100) / 100
   }, [pile, cash, salesMap]) // eslint-disable-line react-hooks/exhaustive-deps -- lastPrice/askOf read these stable inputs
@@ -231,23 +253,26 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
   }
 
   const canSend = pile.length > 0 && (give.size > 0 || cash > 0)
-  const send = () => {
+  const send = async () => {
+    setSending(true)
     const pileUids = new Set(pile.map((item) => item.uid))
     const request = evidenceRequest ? { ...evidenceRequest, cardUids: evidenceRequest.cardUids.filter((uid) => pileUids.has(uid)) } : null
     const sendRequest = request?.cardUids.length && request.views.length ? { ...request, line: evidenceLine(request) } : null
-    sendOffer(offersKeyFor(catalog.id, accountId), {
+    const result = await sendOffer(offersKeyFor(catalog.id, accountId), {
       to: open.id,
       toHandle: open.handle || handleFor(open.id),
-      want: pile.map((p) => ({ uid: p.uid })),
+      want: pile.map((p) => ({ uid: p.uid, qty: p.qty || 1 })),
       give: [...give].map((uid) => ({ uid })),
       cash: cash > 0 ? { side: 'from', amount: cash } : null,
       note,
       evidenceRequest: sendRequest,
       settlement: { rail: settlementRail, paypal_handle: settlementRail === RAIL_PAYPAL ? paypalHandle : null },
-      live: open.live, from: accountId, cat: catalog.id,
+      live: open.live, from: accountId,
+      fromHandle: loadProfile(accountId).name.trim() || handleFor(accountId), cat: catalog.id,
     })
     clearPile(pileKey, open.id)
-    onSent({ evidenceRequestIncluded: !!sendRequest })
+    setSending(false)
+    onSent({ evidenceRequestIncluded: !!sendRequest, delivery: result })
   }
 
   return (
@@ -275,11 +300,18 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
             const l = open.listings.find((x) => x.uid === p.uid)
             return (
               <MiniCard key={p.uid} c={c}
-                sub={<>{p.mode === 'buy' ? <><span className="money mono">{askOf(p.uid)} USDC ask</span> · </> : null}{scanLabel(l?.witness, l?.ask)}</>}
+                sub={<>{p.mode === 'buy' ? <><span className="money mono">{askOf(p.uid)} USDC each</span> · </> : null}{scanLabel(l?.witness, l?.ask)}</>}
                 actions={<span className="ofr-acts">
+                  {(p.maxQty || 1) > 1 && <label className="stl-qty mono" onClick={(event) => event.stopPropagation()}>
+                    <span>Qty</span><select value={p.qty || 1} aria-label={`Quantity of ${c.name_en}`}
+                      onChange={(event) => setPileQuantity(pileKey, open.id, p.uid, event.target.value)}>
+                      {Array.from({ length: p.maxQty || 1 }, (_, index) => index + 1).map((qty) => <option key={qty} value={qty}>{qty}</option>)}
+                    </select><small>of {p.maxQty}</small>
+                  </label>}
                   <button className={'ofr-tradebtn stl-mode' + (p.mode === 'trade' ? ' on' : '')}
+                    disabled={p.allowBuy === false || p.allowTrade === false}
                     onClick={() => toggleMode(pileKey, open.id, p.uid)}
-                    title="flip between buying at the ask and trading for it">
+                    title={p.allowBuy === false ? 'this listing is trade only' : p.allowTrade === false ? 'this listing is for sale only' : 'flip between buying at the ask and trading for it'}>
                     {p.mode === 'buy' ? '$ buy' : '⇄ trade'}</button>
                   <button className="ofr-tradebtn stl-x" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back on their table">✕</button>
                 </span>} />
@@ -405,10 +437,10 @@ export default function SettlePage({ open, pile, byUid, data, store, mkt, catalo
       </div>
 
       <div className="stl-foot">
-        <span className="mono deal-summary"><b>You get</b> {pile.length} card{pile.length === 1 ? '' : 's'}
+        <span className="mono deal-summary"><b>You get</b> {pileCardCount} card{pileCardCount === 1 ? '' : 's'}
           {(trades.length > 0 || give.size > 0) && <> ⇄ <b>You give</b> {give.size} card{give.size === 1 ? '' : 's'}</>}
           {cash > 0 && <> · <strong className="money">{cash} {settlementCurrency}</strong></>}</span>
-        <button className="primary stl-send" disabled={!canSend} onClick={send}>Send offer to {sellerLabel} →</button>
+        <button className="primary stl-send" disabled={!canSend || sending} onClick={send}>{sending ? 'Delivering…' : `Send offer to ${sellerLabel} →`}</button>
       </div>
       <p className="sc-note dim">An offer is a message, not a payment or lock. It proposes {settlementRail === RAIL_PAYPAL ? 'PayPal, where PayPal handles the money and Cairn records the terms' : 'Cairn Escrow, where the contract can hold and release funds'}.
         {open.live ? ` This is a live table: ${open.handle || handleFor(open.id)} is a real collector, and the offer lands in their inbox.` : ' Their agent answers the whole basket at once.'}</p>

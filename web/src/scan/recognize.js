@@ -5,8 +5,7 @@
 // trusted for pixels; local CV is never trusted for names. If the worker isn't ready or
 // a card doesn't resolve, that card falls back to an edge-snapped box crop.
 import LocateWorker from './locate.worker.js?worker'
-
-const API_BASE = import.meta.env?.VITE_API_BASE || ''
+import { API_BASE } from '../lib/apiBase.js'
 
 function loadImage(file) {
   return new Promise((resolve, reject) => {

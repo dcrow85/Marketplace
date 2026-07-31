@@ -127,6 +127,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   const [bseg, setBseg] = useState('binder') // 'binder' | 'sale' | 'market'
   const [tradesOpen, setTradesOpen] = useState(false)
   const [openTrade, setOpenTrade] = useState(null) // trade id the ambient line asked to open
+  const [liveNotice, setLiveNotice] = useState(null)
   const [cardRoute, setCardRoute] = useState(cardRouteFromUrl) // one durable page for the card and every public copy
   const [artistRoute, setArtistRoute] = useState(artistRouteFromUrl)
   const artistReturnRef = useRef(null)
@@ -253,7 +254,32 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
   useEffect(() => {
     if (!isLiveAddr(accountId)) return undefined
     let stop = false
-    const tick = () => fetchInbox(accountId).then((box) => { if (box && !stop) mergeInbox(catalog.id, accountId, box) })
+    const tick = () => fetchInbox(accountId).then((box) => {
+      if (!box || stop) return
+      const key = offersKeyFor(catalog.id, accountId)
+      const before = new Map(loadOffers(key).map((offer) => [offer.id, {
+        state: offer.state,
+        evidence: offer.evidenceThread?.length || 0,
+      }]))
+      if (!mergeInbox(catalog.id, accountId, box)) return
+      const changed = loadOffers(key).find((offer) => {
+        const prior = before.get(offer.id)
+        return offer.live && (!prior || prior.state !== offer.state || prior.evidence !== (offer.evidenceThread?.length || 0))
+      })
+      if (!changed) return
+      const other = (changed.dir === 'out' ? changed.toHandle : changed.fromHandle)
+        || handleFor(changed.dir === 'out' ? changed.to : changed.from)
+      const text = !before.has(changed.id)
+        ? `${changed.counterOf ? 'New counter' : 'New offer'} from ${other}.`
+        : changed.state === 'accepted'
+          ? `${other} accepted your offer. Your next step is in Trades.`
+          : changed.state === 'declined'
+            ? `${other} declined your offer${changed.response?.line ? `: ${changed.response.line}` : '.'}`
+            : changed.state === 'settled'
+              ? `${other} recorded the exchange complete.`
+              : `New update from ${other}.`
+      setLiveNotice({ id: changed.id, text })
+    })
     tick()
     const iv = setInterval(tick, 45000)
     const wake = () => tick()
@@ -308,6 +334,10 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
           </button>
         </div>
       </nav>
+      {liveNotice && <div className="ambient needs live-notice" role="status">
+        <button onClick={() => { setLiveNotice(null); setOpenTrade(null); setTradesOpen(true) }}>{liveNotice.text} Open Trades →</button>
+        <button className="live-notice-dismiss" aria-label="Dismiss trade update" onClick={() => setLiveNotice(null)}>✕</button>
+      </div>}
       <Ambient onOpenTrade={(id) => { setOpenTrade(id); setTradesOpen(true) }} />
       <main className="main">
         {!cardRoute && !artistRoute && <GettingStarted key={accountId} accountId={accountId}
@@ -340,6 +370,7 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
       </main>
       {offerSeed && (
         <OfferComposer accountId={accountId} catalog={catalog} seller={offerSeed.seller}
+          sellerHandle={offerSeed.sellerHandle}
           initialWant={offerSeed.want} initialGive={offerSeed.give}
           initialCash={offerSeed.cash} initialSettlement={offerSeed.settlement}
           counterOf={offerSeed.counterOf} live={offerSeed.live}
@@ -353,12 +384,16 @@ function AuthedApp({ accountId, agent, catalog, setCatalog, onSignOut, showMeet,
               <button ref={tradesCloseRef} className="ghost sm" onClick={() => setTradesOpen(false)}>✕ close</button>
             </div>
             <div className="trades-body">
-              <Offers accountId={accountId} catalog={catalog} onBrowseMarket={() => visit('market')} onScan={(uid) => { setTradesOpen(false); openScanner(uid) }} onCounter={(o) => setOfferSeed({
-                seller: o.from, want: o.give.map((x) => x.uid), give: o.want.map((x) => x.uid),
-                cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
-                settlement: o.settlement || null,
-                counterOf: o.id, live: o.live,
-              })} />
+              <Offers accountId={accountId} catalog={catalog} onBrowseMarket={() => visit('market')} onScan={(uid) => { setTradesOpen(false); openScanner(uid) }} onCounter={(o) => {
+                setTradesOpen(false)
+                setOfferSeed({
+                  seller: o.from, want: o.give, give: o.want,
+                  sellerHandle: o.fromHandle || '',
+                  cash: o.cash ? { side: o.cash.side === 'to' ? 'from' : 'to', amount: o.cash.amount } : null,
+                  settlement: o.settlement || null,
+                  counterOf: o.id, live: o.live,
+                })
+              }} />
               <TradePanel openTradeId={openTrade} />
             </div>
           </div>

@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-30 · Codex (Every one of the 4,872 Vintage Pokémon card pages now resolves source-linked release research plus individual recorded facts. Source `ab2d619` is live on Pages deployment `4428e681`; 1,396 artist fields remain explicitly not recorded rather than inferred.)
+UNREAD-FOR: none · LAST: 2026-07-31 · Codex (The multi-persona live-market remediation is complete locally: settlement gates, concurrent inbox/profile storage, hydrated publication, listing terms and quantities, live delivery/response clarity, counter/decline flow, Anko context, search recovery, and responsive image loading passed the bounded checks below. Not deployed.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,27 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] live market transaction integrity remediation complete` 2026-07-31 · Codex —
+  Supersedes the blocker below. Live cash exchanges can be recorded complete only
+  after delivery; accepted no-cash exchanges retain their direct completion path.
+  Public profiles and inbox messages now use independent KV keys instead of shared
+  read-modify-write arrays, and published tables wait for catalogue hydration before
+  refreshing. Sale/trade permissions and physical copy quantities now survive table,
+  pile, checkout, offer, counter, Anko packet, and binder consequence paths. Live
+  offers report Cairn-inbox acceptance separately from human review, incoming state
+  changes surface above the collection, declines require confirmation and can carry a
+  reason, and accepted deals that require this collector's payment remain under
+  `Needs you`. Anko receives bounded local collector markings labeled as claims rather
+  than signed authority; failed or unmatched direct search no longer empties the
+  market. The dev API proxy, production API base, and local catalogue image path are
+  separated so local Anko testing does not break catalogue art. Verification: full
+  scoped ESLint passed; Python server compilation passed; production Pages assembly
+  built 4,872 Vintage rows; settlement gate matrix passed; concurrent fake-KV drill
+  retained 2/2 profiles and 25/25 inbox messages; desktop and 390px browser walkthroughs
+  showed no console errors, horizontal overflow, or broken visible images. Existing
+  third-party bundle-size/PURE-annotation warnings remain. No deployment was made;
+  public pilot-store writes remain unsigned as already disclosed by that endpoint.
 
 - `[BLOCKING: live market transaction integrity remediation]` 2026-07-31 · Codex —
   Multi-persona buyer, seller, and trader walkthroughs exposed a bounded set of

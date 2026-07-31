@@ -25,16 +25,37 @@ async function readBody(request, cap) {
 export async function onRequestGet({ params, env }) {
   const parts = params.key || []
   if (parts[0] === 'profiles') {
-    const idx = await env.PILOT.get('profiles-index', 'json')
-    return json(idx || [])
+    // A single read-modify-write index loses collectors when two people publish at
+    // once: KV has no compare-and-swap primitive. The profile keys themselves are
+    // the source of truth, so build this small pilot directory from those keys.
+    const listed = await env.PILOT.list({ prefix: 'p:', limit: 200 })
+    const profiles = await Promise.all((listed.keys || []).map((key) => env.PILOT.get(key.name, 'json')))
+    const directory = profiles.filter(Boolean).map((profile) => ({
+      addr: String(profile.addr || '').toLowerCase(),
+      sign: String(profile.sign || '').slice(0, 140),
+      listed: Array.isArray(profile.table) ? profile.table.length : 0,
+      wants: Array.isArray(profile.wants) ? profile.wants.length : 0,
+      showcase: Array.isArray(profile.showcase) ? profile.showcase.slice(0, 5) : [],
+      updated: Number(profile.updated) || 0,
+    })).filter((entry) => ADDR.test(entry.addr)).sort((a, b) => b.updated - a.updated)
+    return json(directory)
   }
   if (parts[0] === 'profile' && ADDR.test(parts[1] || '')) {
     const p = await env.PILOT.get(`p:${parts[1].toLowerCase()}`, 'json')
     return p ? json(p) : json({ error: 'not published' }, 404)
   }
   if (parts[0] === 'inbox' && ADDR.test(parts[1] || '')) {
-    const box = await env.PILOT.get(`i:${parts[1].toLowerCase()}`, 'json')
-    return json(box || [])
+    const addr = parts[1].toLowerCase()
+    const listed = await env.PILOT.list({ prefix: `i:${addr}:`, limit: 200 })
+    const messages = await Promise.all((listed.keys || []).map((key) => env.PILOT.get(key.name, 'json')))
+    // Read the old aggregate key during migration so pre-remediation messages stay
+    // visible. New writes are one key per message and cannot overwrite a neighbor.
+    const legacy = await env.PILOT.get(`i:${addr}`, 'json')
+    const combined = [...(Array.isArray(legacy) ? legacy : []), ...messages.filter(Boolean)]
+    const unique = new Map(combined.filter((message) => message?.id).map((message) => [
+      `${message.type || ''}:${message.id}:${message.state || ''}`, message,
+    ]))
+    return json([...unique.values()].sort((a, b) => (Number(a.at) || 0) - (Number(b.at) || 0)).slice(-200))
   }
   return json({ error: 'unknown path' }, 404)
 }
@@ -46,10 +67,8 @@ export async function onRequestPut({ params, env, request }) {
   const body = await readBody(request, 64 * 1024)
   if (!body) return json({ error: 'bad body (64KB json cap)' }, 400)
 
-  const idx = (await env.PILOT.get('profiles-index', 'json')) || []
   if (body.removed) {
     await env.PILOT.delete(`p:${addr}`)
-    await env.PILOT.put('profiles-index', JSON.stringify(idx.filter((e) => e.addr !== addr)))
     return json({ ok: true, removed: true })
   }
   const paypalHandle = String(body.payment?.paypal?.handle || '')
@@ -60,13 +79,6 @@ export async function onRequestPut({ params, env, request }) {
       : null,
   }
   await env.PILOT.put(`p:${addr}`, JSON.stringify({ ...body, payment, addr, updated: Date.now() }))
-  const entry = {
-    addr, sign: String(body.sign || '').slice(0, 140),
-    listed: (body.table || []).length, wants: (body.wants || []).length,
-    showcase: (body.showcase || []).slice(0, 5), updated: Date.now(),
-  }
-  const next = [entry, ...idx.filter((e) => e.addr !== addr)].slice(0, 200)
-  await env.PILOT.put('profiles-index', JSON.stringify(next))
   return json({ ok: true })
 }
 
@@ -76,9 +88,10 @@ export async function onRequestPost({ params, env, request }) {
   const addr = parts[1].toLowerCase()
   const msg = await readBody(request, 16 * 1024)
   if (!msg || !msg.id) return json({ error: 'bad message (16KB json cap, id required)' }, 400)
-  const box = (await env.PILOT.get(`i:${addr}`, 'json')) || []
-  if (box.some((m) => m.id === msg.id && m.type === msg.type && m.state === msg.state)) return json({ ok: true, dup: true })
-  const next = [...box, { ...msg, at: Date.now() }].slice(-200)
-  await env.PILOT.put(`i:${addr}`, JSON.stringify(next))
+  const safe = (value, fallback) => String(value || fallback).replace(/[^A-Za-z0-9_-]/g, '').slice(0, 72) || fallback
+  const messageKey = `i:${addr}:${safe(msg.id, 'message')}:${safe(msg.type, 'event')}:${safe(msg.state, 'none')}`
+  const previous = await env.PILOT.get(messageKey)
+  if (previous) return json({ ok: true, dup: true })
+  await env.PILOT.put(messageKey, JSON.stringify({ ...msg, at: Date.now() }))
   return json({ ok: true })
 }

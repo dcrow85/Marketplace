@@ -1,7 +1,7 @@
 // My page: your binder's public lens, pointed at yourself — exactly what the room
 // sees. Binder (grails first), table (deals), the hunt (wants, public by design), and
 // the record strip with facts computed from records. Absorbs the old SellPile.
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo, useState, useEffect, useRef } from 'react'
 import { storeKeyFor, loadStore, saveStore, entryFor, condStr } from '../binder/collection.js'
 import { offersKeyFor, loadOffers } from '../trade/offers.js'
 import { publishProfile, unpublishProfile, isLiveAddr } from '../live/pilotStore.js'
@@ -16,9 +16,9 @@ import { retryImg } from '../binder/helpers.jsx'
 import { loadProfile, resetAccountLocal, saveProfile } from './profileStore.js'
 import { deletePhotosWithPrefix } from '../scan/photoStore.js'
 import { AgentPanel } from '../binder/agentPanels.jsx'
+import { API_BASE } from '../lib/apiBase.js'
 
 const TABLE_TILE_SCALES = { s: 0.78, m: 1, l: 1.3 }
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
 
 function loadSize(key, fallback) {
@@ -179,16 +179,17 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan,
     const rank = new Map(displayOrder.map((uid, index) => [uid, index]))
     return rows.display.slice().sort((a, b) => (rank.get(a.c.uid) ?? Number.MAX_SAFE_INTEGER) - (rank.get(b.c.uid) ?? Number.MAX_SAFE_INTEGER))
   }, [rows.display, displayOrder])
-  const displayRows = orderedDisplayRows.filter(({ c }) => listingMatches(c))
-  const binderBaseRows = rows.listed.filter(({ e }) => !(e.sell && e.display))
-  const binderRows = binderBaseRows.filter(({ c }) => listingMatches(c)).filter(({ e }) => {
+  const filterListing = ({ e }) => {
     const scanned = !!((e.pile || []).length || e.photo_hash)
     if (binderFilter === 'sale') return !!e.sell
     if (binderFilter === 'trade') return !!e.trade
     if (binderFilter === 'scanned') return scanned
     if (binderFilter === 'needs_scan') return Number(e.ask) > SCAN_REQUEST_USDC && !scanned
     return true
-  }).sort((a, b) => {
+  }
+  const displayRows = orderedDisplayRows.filter(({ c }) => listingMatches(c)).filter(filterListing)
+  const binderBaseRows = rows.listed.filter(({ e }) => !(e.sell && e.display))
+  const binderRows = binderBaseRows.filter(({ c }) => listingMatches(c)).filter(filterListing).sort((a, b) => {
     if (binderSort === 'name') return (a.c.name_en || '').localeCompare(b.c.name_en || '')
     if (binderSort === 'price_asc') return (Number(a.e.ask) || 0) - (Number(b.e.ask) || 0)
     if (binderSort === 'price_desc') return (Number(b.e.ask) || 0) - (Number(a.e.ask) || 0)
@@ -234,6 +235,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan,
   const [resetOpen, setResetOpen] = useState(false)
   const [resetBusy, setResetBusy] = useState(false)
   const [resetErr, setResetErr] = useState(false)
+  const refreshedPublishedOwner = useRef('')
   const buildSnapshot = (profileValue = profile) => ({
     v: 3, cat: catalog.id, sign: profileValue.sign.trim(), handle: profileValue.name.trim() || handleFor(accountId), photo: profileValue.photo,
     payment: {
@@ -280,9 +282,13 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan,
   }
   // a published page stays fresh: republish quietly whenever you visit your page
   useEffect(() => {
-    if (!canPublish || !pubAt) return
+    // Wait for catalogue hydration. Publishing the initial empty render can erase
+    // a healthy public table before its local collection rows have loaded.
+    const owner = `${catalog.id}:${accountId}`
+    if (!data || !canPublish || !pubAt || refreshedPublishedOwner.current === owner) return
+    refreshedPublishedOwner.current = owner
     publishProfile(accountId, buildSnapshot()).then((r) => { if (r?.ok) markPublished() })
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps -- on mount only, by design
+  }, [data, canPublish, pubAt]) // eslint-disable-line react-hooks/exhaustive-deps -- one hydrated refresh per visit
 
   if (!data) return <div className="empty">Opening your table…</div>
 
@@ -343,7 +349,7 @@ export default function MyPage({ accountId, catalog, agentName = 'Anko', onScan,
       {displayRows.length
         ? <ListingTiles rows={displayRows} size={displaySize} setSel={openCard} setAsk={setAsk} setDisplay={setDisplay}
             onMove={moveDisplay} onNudge={nudgeDisplay} reorderable ankoPicks={ankoPicks} onScan={onScan} />
-        : <div className="empty">{query ? 'No display cards match that search.' : 'Your case is empty. Star a for-sale card and it moves here.'}</div>}
+        : <div className="empty">{query || binderFilter !== 'all' ? 'No display cards match this search and filter.' : 'Your case is empty. Star a for-sale card and it moves here.'}</div>}
 
       <div className="pf-sechead">
         <span className="pf-sectiontitle"><span className="ek">Binder</span><span className="mono dim">{binderBaseRows.length ? `${query || binderFilter !== 'all' ? `${binderRows.length} of ` : ''}${binderBaseRows.length} listed · asks are per copy` : ''}</span></span>

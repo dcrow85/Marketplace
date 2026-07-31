@@ -18,6 +18,7 @@ import {
   sellerPayPalMode, RAIL_ESCROW, RAIL_PAYPAL,
 } from '../payments/rails.js'
 import PayPalSandboxButton from '../payments/PayPalSandboxButton.jsx'
+import { loadProfile } from '../profile/profileStore.js'
 
 const DEFAULT_ARBITER = import.meta.env.VITE_DEFAULT_ARBITER || ''
 const ARBITER_KEY = 'cairn-checkout-arbiter'
@@ -75,6 +76,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
   const usesPresetArbiter = IS_LOCAL_CHAIN || isAddress(DEFAULT_ARBITER)
   const overCap = total > VALUE_CAP_USDC
   const sellerLabel = open.handle || handleFor(open.id)
+  const buyerHandle = loadProfile(accountId).name.trim() || handleFor(accountId)
   const paypalUrl = useMemo(() => payPalMeUrl(paypalHandle, total), [paypalHandle, total])
   const escrowCurrency = IS_TESTNET_CHAIN ? 'test USDC' : 'USDC'
   const amountLabel = rail === RAIL_PAYPAL
@@ -87,6 +89,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
       uid: item.uid,
       name: card?.name_en || item.uid,
       number: card?.num || null,
+      quantity: item.qty || 1,
       ask: listing?.ask ?? null,
       seller_condition_claim: listing?.cond || null,
       recorded_scan_count: listing?.witness || 0,
@@ -187,9 +190,9 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
         try { localStorage.setItem(ARBITER_KEY, chosenArbiter) } catch { /* ignore */ }
       }
       recordFundedPurchase(offersKeyFor(catalog.id, accountId), {
-        to: open.id, want: pile.map((item) => ({ uid: item.uid })),
+        to: open.id, want: pile.map((item) => ({ uid: item.uid, qty: item.qty || 1 })),
         toHandle: sellerLabel,
-        amount: total, live: open.live, from: accountId, cat: catalog.id,
+        amount: total, live: open.live, from: accountId, fromHandle: buyerHandle, cat: catalog.id,
         tradeId, txHash: hash, rail: RAIL_ESCROW,
       })
       clearPile(pileKey, open.id)
@@ -211,8 +214,8 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
   const reportPayPalPayment = () => {
     const id = recordExternalPurchase(offersKeyFor(catalog.id, accountId), {
-      to: open.id, want: pile.map((item) => ({ uid: item.uid })), amount: total,
-      toHandle: sellerLabel,
+      to: open.id, want: pile.map((item) => ({ uid: item.uid, qty: item.qty || 1 })), amount: total,
+      toHandle: sellerLabel, fromHandle: buyerHandle,
       live: open.live, from: accountId, cat: catalog.id, paypalHandle,
       paymentRef: payRef, providerRef,
     })
@@ -223,8 +226,8 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
 
   const completePayPalSandbox = (capture) => {
     const id = recordPayPalCapture(offersKeyFor(catalog.id, accountId), {
-      to: open.id, want: pile.map((item) => ({ uid: item.uid })), amount: total,
-      toHandle: sellerLabel, paymentRef: payRef, capture,
+      to: open.id, want: pile.map((item) => ({ uid: item.uid, qty: item.qty || 1 })), amount: total,
+      toHandle: sellerLabel, fromHandle: buyerHandle, paymentRef: payRef, capture,
     })
     if (!id) { setError('PayPal confirmed the sandbox capture, but Cairn could not record it. Keep the PayPal order ID.'); return }
     clearPile(pileKey, open.id)
@@ -249,7 +252,7 @@ export default function BuyNow({ open, pile, total, catalog, accountId, pileKey,
         <div className="buy-headtotal">
           <span>Total due</span>
           <strong className="mono">{amountLabel}</strong>
-          <small>one table · {pile.length} card{pile.length === 1 ? '' : 's'}</small>
+          <small>one table · {pile.reduce((sum, item) => sum + (item.qty || 1), 0)} card{pile.reduce((sum, item) => sum + (item.qty || 1), 0) === 1 ? '' : 's'}</small>
         </div>
       </div>
 

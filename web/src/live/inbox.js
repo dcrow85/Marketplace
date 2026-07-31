@@ -5,6 +5,7 @@
 import { offersKeyFor, loadOffers, saveOffers } from '../trade/offers.js'
 import { settleOffer } from '../market/mockAgents.js'
 import { pushInbox, isLiveAddr } from './pilotStore.js'
+import { canRecordSettledLive } from '../trade/settlementGate.js'
 
 const seenKeyFor = (catalogId, accountId) => `cairn-inbox-seen:${catalogId}:${accountId}`
 const readSeen = (k) => { try { const a = JSON.parse(localStorage.getItem(k) || '[]'); return Array.isArray(a) ? a : [] } catch { return [] } }
@@ -83,7 +84,10 @@ export function recordSettledLive(catalogId, accountId, id) {
   const key = offersKeyFor(catalogId, accountId)
   const offers = loadOffers(key)
   const o = offers.find((x) => x.id === id)
-  if (!o || !o.live || !['accepted', 'escrow_locked', 'payment_confirmed', 'in_transit', 'delivered'].includes(o.state)) return
+  // A no-cash exchange can be recorded after terms are accepted. A cash deal may
+  // only be completed after delivery is recorded; acceptance, funding, payment
+  // confirmation, and shipment are deliberately not settlement.
+  if (!canRecordSettledLive(o)) return false
   o.state = 'settled'
   o.nextAt = null
   o.log = [...(o.log || []), 'Recorded settled by you — your copy of the record. Theirs updates when their app hears it.']
@@ -91,4 +95,5 @@ export function recordSettledLive(catalogId, accountId, id) {
   settleOffer({ catalogId, accountId, o })
   const other = o.dir === 'out' ? o.to : o.from
   if (isLiveAddr(other)) pushInbox(other, { id: o.id, type: 'response', state: 'settled' })
+  return true
 }

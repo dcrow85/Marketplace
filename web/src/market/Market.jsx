@@ -17,15 +17,16 @@ import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
+import { loadProfile } from '../profile/profileStore.js'
 import { cleanPayPalHandle, sellerAcceptsPayPal } from '../payments/rails.js'
 import { artistFromSlug, cardFromSlug } from '../cards/cardRoute.js'
 import './market.css'
+import { API_BASE } from '../lib/apiBase.js'
 
 // The market: other people's tables, run like a card show. You pick cards up (zoom)
 // and drop them on YOUR PILE tagged buy or trade. A pile entirely at posted asks can
 // go straight to payment; changed prices and trade cards become one offer. Everything
 // shown is a CLAIM; the witness counts say what's recorded behind it.
-const API_BASE = import.meta.env.VITE_API_BASE || ''
 const SCAN_REQUEST_USDC = 10
 const SAMPLE_PAYPAL_HANDLE = cleanPayPalHandle(import.meta.env.VITE_SAMPLE_PAYPAL_HANDLE) || 'CairnDemo'
 
@@ -52,6 +53,7 @@ function MissingPhotosButton({ card, ask, onOpen }) {
 // collector's own claim, carried from their page — so no green here, and no 'record'.
 const profileToSeller = (p) => ({
   id: p.addr,
+  cat: p.cat || null,
   handle: typeof p.handle === 'string' ? p.handle.trim().slice(0, 32) : '',
   photo: cleanProfilePhoto(p.photo),
   live: true,
@@ -59,6 +61,7 @@ const profileToSeller = (p) => ({
   bio: p.sign || '',
   listings: (p.table || []).filter((t) => t && t.uid).map((t) => ({
     uid: t.uid, ask: Number(t.ask) || 0, cond: t.cond || 'their claim', witness: t.scans || 0, copies: t.copies || 1,
+    sell: t.sell !== false, trade: t.trade !== false,
   })),
   wants: p.wants || [],
   showcase: p.showcase || [],
@@ -69,17 +72,17 @@ const profileToSeller = (p) => ({
 const sellerName = (seller) => seller?.handle || handleFor(seller?.id)
 
 // buy · 9 USDC / ⇄ trade — both just drop the card on your pile, tagged. Nothing sends.
-function PileButtons({ ask, inPile, mode, onBuy, onTrade }) {
+function PileButtons({ ask, sell = true, trade = true, inPile, mode, onBuy, onTrade }) {
   return (
     <span className="ofr-acts ofr-pileacts">
-      <button type="button" className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
+      {sell && Number(ask) > 0 && <button type="button" className={'ofr-buy' + (inPile && mode === 'buy' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onBuy() }}
         title="into your pile at the ask — review and pay when the pile is ready">
-        {inPile && mode === 'buy' ? '✓ In pile' : <><span className="ofr-wide-label"><span>Buy</span><small>{ask} USDC</small></span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>
-      <button type="button" className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
+        {inPile && mode === 'buy' ? '✓ In pile' : <><span className="ofr-wide-label"><span>Buy</span><small>{ask} USDC</small></span><span className="ofr-phone-label">Buy ${ask}</span></>}</button>}
+      {trade && <button type="button" className={'ofr-tradebtn' + (inPile && mode === 'trade' ? ' on' : '')}
         onClick={(ev) => { ev.stopPropagation(); onTrade() }}
         title="into your pile as a trade-for — you pick your side at checkout">
-        {inPile && mode === 'trade' ? '✓ Trade' : '⇄ Trade'}</button>
+        {inPile && mode === 'trade' ? '✓ Trade' : '⇄ Trade'}</button>}
     </span>
   )
 }
@@ -120,7 +123,7 @@ function MarketBag({ orders, cardCount, cashTotal, byUid, onBack, onOpenOrder })
             <Avatar seed={order.seller.id} size={34} photo={order.seller.photo} />
             <span><strong>{sellerName(order.seller)}</strong><small>{order.seller.live ? '● live table' : 'sample table'}</small></span>
           </div>
-          <div className="mk-bagthumbs" aria-label={`${order.pile.length} selected cards`}>
+          <div className="mk-bagthumbs" aria-label={`${order.cardCount} selected cards`}>
             {order.pile.slice(0, 5).map((item) => {
               const card = byUid.get(item.uid)
               return card?.image ? <img key={item.uid} src={card.image} alt={card.name_en || ''} /> : null
@@ -128,7 +131,7 @@ function MarketBag({ orders, cardCount, cashTotal, byUid, onBack, onOpenOrder })
             {order.pile.length > 5 && <span className="mono">+{order.pile.length - 5}</span>}
           </div>
           <div className="mk-bagterms">
-            <span><b>{order.pile.length} card{order.pile.length === 1 ? '' : 's'}</b><small>{order.buyCount} buy · {order.tradeCount} trade</small></span>
+            <span><b>{order.cardCount} card{order.cardCount === 1 ? '' : 's'}</b><small>{order.buyCount} buy · {order.tradeCount} trade</small></span>
             {order.buyTotal > 0 && <strong className="money mono">{order.buyTotal} USDC</strong>}
           </div>
           <div className={'mk-bagpath ' + (order.canCheckout ? 'direct' : 'offer')}>
@@ -207,9 +210,9 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   const focusCard = cardFromSlug(data?.cards, focusSlug)
   const focusUid = focusCard?.uid || null
   const focusArtist = artistFromSlug(data?.cards, focusArtistSlug)
-  const marketNeedle = aq.trim().toLowerCase()
-  const cardMatchesSearch = (c) => !marketNeedle || [c?.name_en, c?.name_ja, c?.romaji, c?.num, c?.element, c?.rarity]
-    .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
+  const rawMarketNeedle = aq.trim().toLowerCase()
+  const cardMatchesNeedle = (c, needle) => !needle || [c?.name_en, c?.name_ja, c?.romaji, c?.num, c?.element, c?.rarity]
+    .filter(Boolean).join(' ').toLowerCase().includes(needle)
   const sellers = useBus(() => {
     if (!mkt) return []
     const hidden = loadHidden(hiddenKeyFor(catalog.id, accountId))
@@ -240,7 +243,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
       const mine = (accountId || '').toLowerCase()
       const full = await Promise.all(idx.filter((e) => e.addr && e.addr !== mine).slice(0, 40).map((e) => fetchProfile(e.addr)))
       if (stop) return
-      setLiveSellers(full.filter(Boolean).map(profileToSeller).filter((s) => s.listings.length || s.wants.length || s.showcase.length))
+      setLiveSellers(full.filter((profile) => profile?.cat === catalog.id).map(profileToSeller)
+        .filter((s) => s.listings.length || s.wants.length || s.showcase.length))
     }
     load()
     const iv = setInterval(load, 90000)
@@ -252,6 +256,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
     const lv = liveSellers.map((sl) => ({ ...sl, listings: sl.listings.filter((l) => !gone.has(sl.id + '|' + l.uid)) }))
     return [...lv, ...sellers]
   }, [liveSellers, sellers, catalog, accountId])
+  const directSearchHasMatch = !!rawMarketNeedle && allSellers.some((seller) =>
+    [sellerName(seller), seller.id, seller.bio].filter(Boolean).join(' ').toLowerCase().includes(rawMarketNeedle)
+      || seller.listings.some((listing) => cardMatchesNeedle(byUid.get(listing.uid), rawMarketNeedle)))
+  // Typing an unmatched literal should not empty the market. Once Anko has been
+  // asked, his structured aisle/find result owns the lens; an agent outage also
+  // leaves the tables visible instead of stranding the user on a blank return.
+  const marketNeedle = !ares && directSearchHasMatch ? rawMarketNeedle : ''
+  const cardMatchesSearch = (c) => cardMatchesNeedle(c, marketNeedle)
   const visibleTables = allSellers.filter((seller) => !marketNeedle || [sellerName(seller), seller.id, seller.bio]
     .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
     || seller.listings.some((listing) => cardMatchesSearch(byUid.get(listing.uid))))
@@ -269,6 +281,20 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
     if (!data) return new Set()
     return new Set(data.cards.filter((c) => entryFor(c, store).stance === 'have').map((c) => c.uid))
   }, [data, store])
+  const collectorProfile = useBus(() => loadProfile(accountId), [accountId])
+  const principalContext = useMemo(() => ({
+    profile_claim: collectorProfile.name || null,
+    signed_policy: null,
+    collector_markings: {
+      wants: (data?.cards || []).filter((card) => entryFor(card, store).stance === 'want').slice(0, 24)
+        .map((card) => ({ uid: card.uid, name: card.name_en, number: card.num })),
+      open_to_trade: (data?.cards || []).filter((card) => {
+        const entry = entryFor(card, store)
+        return entry.stance === 'have' && entry.trade
+      }).slice(0, 24).map((card) => ({ uid: card.uid, name: card.name_en, number: card.num })),
+    },
+    boundary: 'These are local collector markings, not a signed delegation or instruction to transact.',
+  }), [collectorProfile.name, data, store])
   const salesAll = useBus(() => ({ ...(mkt?.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }), [mkt, catalog])
   const myTradeSum = useMemo(() => {
     if (!data) return 0
@@ -279,7 +305,13 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
     }, 0)
   }, [data, store, salesAll])
 
-  const pickUp = (sellerId, uid, mode) => addToPile(pileKey, sellerId, uid, mode)
+  const pickUp = (sellerId, uid, mode) => {
+    const listing = allSellers.find((seller) => seller.id === sellerId)?.listings.find((item) => item.uid === uid)
+    addToPile(pileKey, sellerId, uid, mode, listing?.copies || 1, {
+      buy: listing?.sell !== false && Number(listing?.ask) > 0,
+      trade: listing?.trade !== false,
+    })
+  }
   const openCardPage = (c, l, sellerId) => {
     if (onOpenCard) onOpenCard(c.uid, { sellerId })
     else setZoom({ c, l, sellerId })
@@ -375,20 +407,21 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   const inPile = (sellerId, uid) => pileOf(sellerId).find((x) => x.uid === uid)
   const marketOrders = allSellers.map((seller) => {
     const pile = pileOf(seller.id)
-    const buyCount = pile.filter((item) => item.mode === 'buy').length
-    const tradeCount = pile.length - buyCount
+    const buyCount = pile.filter((item) => item.mode === 'buy').reduce((sum, item) => sum + (item.qty || 1), 0)
+    const tradeCount = pile.filter((item) => item.mode === 'trade').reduce((sum, item) => sum + (item.qty || 1), 0)
     const buyTotal = pile.reduce((total, item) => item.mode === 'buy'
-      ? total + (Number(seller.listings.find((listing) => listing.uid === item.uid)?.ask) || 0)
+      ? total + (Number(seller.listings.find((listing) => listing.uid === item.uid)?.ask) || 0) * (item.qty || 1)
       : total, 0)
     return {
       seller, pile, buyCount, tradeCount, buyTotal,
+      cardCount: buyCount + tradeCount,
       // Accepting unchanged posted asks is checkout even when the seller still
       // needs to expose a usable payment rail. Missing payment setup must not
       // silently turn a purchase into a negotiable offer.
       canCheckout: pile.length > 0 && tradeCount === 0 && buyTotal > 0,
     }
   }).filter((order) => order.pile.length > 0)
-  const marketBagCards = marketOrders.reduce((total, order) => total + order.pile.length, 0)
+  const marketBagCards = marketOrders.reduce((total, order) => total + order.pile.reduce((sum, item) => sum + (item.qty || 1), 0), 0)
   const marketBagCash = marketOrders.reduce((total, order) => total + order.buyTotal, 0)
   const openBagOrder = (order) => {
     setBagOpen(false)
@@ -473,10 +506,11 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
     return [keepBrowsing]
   }
   const zoomEl = zoom && (
-    <CardZoom card={zoom.c} sub={zoom.l ? <><span className="money mono">{zoom.l.ask} USDC</span> · {zoom.l.cond}</> : null} witness={zoom.l ? zoom.l.witness : null}
+    <CardZoom card={zoom.c} sub={zoom.l ? <>{zoom.l.sell !== false && Number(zoom.l.ask) > 0 ? <><span className="money mono">{zoom.l.ask} USDC</span> · </> : <><span className="mono">trade only</span> · </>}{zoom.l.cond}</> : null} witness={zoom.l ? zoom.l.witness : null}
       ask={zoom.l?.ask} decision={zoomDecision} actionsForRead={actionsForZoomRead} onClose={() => setZoom(null)}>
       {zoom.l && zoom.sellerId && (
         <PileButtons ask={zoom.l.ask}
+          sell={zoom.l.sell} trade={zoom.l.trade}
           inPile={!!inPile(zoom.sellerId, zoom.c.uid)} mode={inPile(zoom.sellerId, zoom.c.uid)?.mode}
           onBuy={() => chooseZoomPile('buy')}
           onTrade={() => chooseZoomPile('trade')} />
@@ -549,10 +583,12 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
         catalog={catalog} accountId={accountId} pileKey={pileKey} agentName={agentName}
         initialCash={offerCashSeed} initialNote={offerNoteSeed}
         onBack={returnToPile}
-        onSent={({ evidenceRequestIncluded } = {}) => {
+        onSent={({ evidenceRequestIncluded, delivery } = {}) => {
           setSettling(false)
           setSwapMsg(open.live
-            ? `${evidenceRequestIncluded ? 'Offer and photo request' : 'Offer'} saved here. Live delivery is not confirmed yet; follow it in Trades.`
+            ? delivery?.delivered
+              ? `${evidenceRequestIncluded ? 'Offer and photo request' : 'Offer'} delivered to ${sellerName(open)}'s Cairn inbox. This does not mean they have read it yet.`
+              : `${evidenceRequestIncluded ? 'Offer and photo request' : 'Offer'} saved here, but Cairn's inbox did not confirm delivery. You can follow or retry from Trades.`
             : `${evidenceRequestIncluded ? 'Offer and photo request' : 'Offer'} saved. This sample seller answers locally in Trades.`)
           if (returnToBag) {
             setReturnToBag(false)
@@ -579,7 +615,10 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
     const wantsTheyHave = open.listings.filter((l) => myWants.has(l.uid)).length
     const theirWants = (open.wants || []).map((u) => byUid.get(u)).filter(Boolean)
     const swapBait = theirWants.filter((c) => myHaves.has(c.uid))
-    const buysSum = pile.filter((p) => p.mode === 'buy').reduce((t, p) => t + (open.listings.find((l) => l.uid === p.uid)?.ask ?? 0), 0)
+    const pileCardCount = pile.reduce((sum, item) => sum + (item.qty || 1), 0)
+    const buyCardCount = pile.filter((item) => item.mode === 'buy').reduce((sum, item) => sum + (item.qty || 1), 0)
+    const tradeCardCount = pile.filter((item) => item.mode === 'trade').reduce((sum, item) => sum + (item.qty || 1), 0)
+    const buysSum = pile.filter((p) => p.mode === 'buy').reduce((t, p) => t + (open.listings.find((l) => l.uid === p.uid)?.ask ?? 0) * (p.qty || 1), 0)
     const decisionPile = pile.slice(0, 24)
     const purchaseDecision = pile.length > 0 ? {
       decision_ref: `market:${catalog.id}:${open.id}:${pile.length}:${buysSum}:${pile.slice(0, 6).map((p) => p.uid).join(',')}`,
@@ -591,18 +630,19 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
         seller: open.id,
         live_table: !!open.live,
         cash_at_current_asks_usdc: buysSum,
-        selected_card_count: pile.length,
-        unitemized_card_count: Math.max(0, pile.length - decisionPile.length),
+        selected_card_count: pileCardCount,
+        selected_listing_count: pile.length,
+        unitemized_listing_count: Math.max(0, pile.length - decisionPile.length),
         selected_cards: decisionPile.map((p) => {
           const c = byUid.get(p.uid)
           const l = open.listings.find((x) => x.uid === p.uid)
           return {
             uid: p.uid, name: c?.name_en || p.uid, number: c?.num || null,
-            mode: p.mode, ask_usdc: l?.ask ?? null, seller_condition_claim: l?.cond || null,
+            mode: p.mode, quantity: p.qty || 1, ask_each_usdc: l?.ask ?? null, seller_condition_claim: l?.cond || null,
           }
         }),
       },
-      principal_context: { recorded_policy: 'No signed buying or trade policy is available to this interface.' },
+      principal_context: principalContext,
       evidence: {
         cards_without_recorded_scans: pile.filter((p) => !open.listings.find((l) => l.uid === p.uid)?.witness).length,
         cards_with_recorded_settlements: pile.filter((p) => salesAll[p.uid]?.[0]?.p != null).length,
@@ -675,8 +715,8 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
               title="open card page" onTap={() => openCardPage(c, l, open.id)}
               corner={<>{myWants.has(c.uid) ? <span className="mk-public-want mono">★ your want</span> : null}
                 {!l.witness && <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: open.id })} />}</>}
-              sub={<>{c.num} · {l.cond || 'condition unlisted'}{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
-              actions={<PileButtons ask={l.ask} inPile={!!p} mode={p?.mode}
+              sub={<>{c.num} · {l.cond || 'condition unlisted'}{(l.copies || 1) > 1 ? ` · ${l.copies} copies` : ''}{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
+              actions={<PileButtons ask={l.ask} sell={l.sell} trade={l.trade} inPile={!!p} mode={p?.mode}
                 onBuy={() => pickUp(open.id, c.uid, 'buy')}
                 onTrade={() => pickUp(open.id, c.uid, 'trade')} />} />
           )
@@ -791,6 +831,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
                   return (
                     <span key={p.uid} className="mk-ckthumb" title={`${c?.name_en || p.uid} — tap the tag to flip buy/trade`}>
                       {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
+                      {(p.qty || 1) > 1 && <span className="mk-ckqty mono">×{p.qty}</span>}
                       <button className={'mk-cktag mono' + (p.mode === 'trade' ? ' tr' : '')} aria-label={`${c?.name_en || p.uid}: ${p.mode === 'buy' ? 'buying at the ask; switch to trade' : 'trading; switch to buy at the ask'}`} aria-pressed={p.mode === 'trade'} onClick={() => toggleMode(pileKey, open.id, p.uid)}>{p.mode === 'buy' ? '$' : '⇄'}</button>
                       <button className="mk-ckx mono" onClick={() => removeFromPile(pileKey, open.id, p.uid)} title="put it back" aria-label={`Remove ${c?.name_en || p.uid} from pile`}>✕</button>
                     </span>
@@ -799,16 +840,16 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
               </div>
               <div className="mk-cksummary">
                 <span className="mono mk-ckeyebrow">Your pile</span>
-                <span className="mk-cksum"><strong>{pile.length} card{pile.length === 1 ? '' : 's'}</strong>
+                <span className="mk-cksum"><strong>{pileCardCount} card{pileCardCount === 1 ? '' : 's'}</strong>
                   {buysSum > 0 && <b className="mono mk-ckmoney">{buysSum} USDC</b>}</span>
-                <small>{pile.filter((p) => p.mode === 'buy').length} buy · {pile.filter((p) => p.mode === 'trade').length} trade</small>
+                <small>{buyCardCount ? `${buyCardCount} buy` : 'no buys'} · {tradeCardCount ? `${tradeCardCount} trade` : 'no trades'}</small>
                 <span className={'mono mk-ckpath' + (canBuyNow ? ' direct' : '')}>
                   {canBuyNow ? 'Listed price · no seller reply' : 'Offer · seller reply required'}
                 </span>
                 {(() => {
                   const pileVal = pile.reduce((t, p) => {
                     const l = open.listings.find((x) => x.uid === p.uid)
-                    return t + (p.mode === 'buy' ? (l?.ask ?? 0) : (salesAll[p.uid]?.[0]?.p ?? l?.ask ?? 0))
+                    return t + (p.mode === 'buy' ? (l?.ask ?? 0) : (salesAll[p.uid]?.[0]?.p ?? l?.ask ?? 0)) * (p.qty || 1)
                   }, 0)
                   if (!pileVal || !myTradeSum) return null
                   const pct = Math.round((myTradeSum / pileVal) * 100)
@@ -821,7 +862,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
               <button className="primary mk-settle" onClick={() => {
                 if (canBuyNow) setBuyingNow(true)
                 else { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }
-              }}><span>{canBuyNow ? 'Checkout' : 'Review offer'}</span><strong className={canBuyNow ? 'mono' : ''}>{canBuyNow ? `Pay ${buysSum} USDC` : `${pile.length} card${pile.length === 1 ? '' : 's'}`}</strong></button>
+              }}><span>{canBuyNow ? 'Checkout' : 'Review offer'}</span><strong className={canBuyNow ? 'mono' : ''}>{canBuyNow ? `Pay ${buysSum} USDC` : `${pileCardCount} card${pileCardCount === 1 ? '' : 's'}`}</strong></button>
               <span className="mk-cksecondary">
                 {canBuyNow && <button className="ghost sm" onClick={() => { setOfferCashSeed(null); setOfferNoteSeed(''); setSettling(true) }}>Change terms</button>}
                 <button className="ghost sm" onClick={() => { setBuyingNow(false); clearPile(pileKey, open.id) }}>Clear</button>
@@ -862,14 +903,14 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
             {directFinds.map(({ c, l, seller }) => (
               <MiniCard key={`${seller.id}|${l.uid}`} c={c}
                 corner={!l.witness ? <MissingPhotosButton card={c} ask={l.ask} onOpen={() => setEvidenceTip({ c, l, sellerId: seller.id })} /> : null}
-                sub={<>{c.num} · <span className="money mono">{l.ask} USDC</span>{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
+                sub={<>{c.num} · {l.sell !== false && Number(l.ask) > 0 ? <span className="money mono">{l.ask} USDC</span> : <span className="mono">trade only</span>}{(l.copies || 1) > 1 ? ` · ${l.copies} copies` : ''}{l.witness ? <> · {witnessCell(l.witness)}</> : null}</>}
                 onTap={() => openCardPage(c, l, seller.id)}
                 actions={<>
                   <button className="mk-resulttable" onClick={(ev) => { ev.stopPropagation(); setSel(seller.id) }} title={`visit ${sellerName(seller)}'s table`}>
                     <Avatar seed={seller.id} size={18} photo={seller.photo} />
                     <span>on <b>{sellerName(seller)}</b>{seller.live && <i className="mk-livetag mono"> ● live</i>}</span>
                   </button>
-                  <PileButtons ask={l.ask}
+                  <PileButtons ask={l.ask} sell={l.sell} trade={l.trade}
                     inPile={!!inPile(seller.id, c.uid)} mode={inPile(seller.id, c.uid)?.mode}
                     onBuy={() => { pickUp(seller.id, c.uid, 'buy'); setSwapMsg(`in your pile at ${sellerName(seller)}'s table.`) }}
                     onTrade={() => { pickUp(seller.id, c.uid, 'trade'); setSwapMsg(`in your pile at ${sellerName(seller)}'s table.`) }} />

@@ -74,7 +74,7 @@ const FLOW_LINES = {
 const FLOW_DWELL = [2500, 5000]
 
 function valueOf(cards, cashUsdc, byUid) {
-  const rungs = cards.reduce((s, x) => s + rank(byUid.get(x.uid)?.rarity), 0)
+  const rungs = cards.reduce((s, x) => s + rank(byUid.get(x.uid)?.rarity) * Math.max(1, Number(x.qty) || 1), 0)
   return rungs + (cashUsdc || 0) / CASH_PER_RUNG
 }
 
@@ -84,7 +84,7 @@ function decide({ o, byUid, askOf }) {
   const cashTo = o.cash?.side === 'to' ? o.cash.amount : 0
   // pure buy: no cards from your side — judged against the asks, not the ladder
   if (!o.give.length && cashFrom > 0) {
-    const asks = o.want.reduce((s, w) => s + (askOf(o.to, w.uid) ?? 0), 0)
+    const asks = o.want.reduce((s, w) => s + (askOf(o.to, w.uid) ?? 0) * Math.max(1, Number(w.qty) || 1), 0)
     const floor = (p.buyFloor ?? 1) * asks
     if (cashFrom >= floor) return { verdict: 'accepted', line: (p.buy || p.accept)() }
     return { verdict: 'countered', cash: { side: 'from', amount: asks }, line: `The asks come to ${asks} USDC — meet them and it’s done.` }
@@ -109,14 +109,21 @@ export function settleOffer({ catalogId, accountId, o }) {
   const word = o.live ? `live offer ${o.id} (pilot record, kept by each side)` : `mock offer ${o.id}`
   for (const w of gets) {
     const u = { ...(next[w.uid] || {}) }
+    const quantity = Math.max(1, Number(w.qty) || 1)
+    const alreadyHeld = u.stance === 'have' ? Math.max(1, Number(u.copies) || 1) : 0
     u.stance = 'have'
-    u.note = [(u.note || '').trim(), `acquired in ${word}${o.cash ? ` · cash leg ${o.cash.amount} USDC` : ''}`].filter(Boolean).join('\n')
+    u.copies = alreadyHeld + quantity
+    u.note = [(u.note || '').trim(), `acquired ${quantity > 1 ? `${quantity} copies ` : ''}in ${word}${o.cash ? ` · cash leg ${o.cash.amount} USDC` : ''}`].filter(Boolean).join('\n')
     next[w.uid] = u
   }
   for (const g of gives) {
     const u = { ...(next[g.uid] || {}) }
-    u.stance = 'none'; u.sell = false; u.trade = false; u.grail = false
-    u.note = [(u.note || '').trim(), `traded away in ${word}`].filter(Boolean).join('\n')
+    const quantity = Math.max(1, Number(g.qty) || 1)
+    const held = u.stance === 'have' ? Math.max(1, Number(u.copies) || 1) : 0
+    const remaining = Math.max(0, held - quantity)
+    u.copies = remaining || 1
+    if (!remaining) { u.stance = 'none'; u.sell = false; u.trade = false; u.grail = false }
+    u.note = [(u.note || '').trim(), `traded away ${quantity > 1 ? `${quantity} copies ` : ''}in ${word}`].filter(Boolean).join('\n')
     next[g.uid] = u
   }
   saveStore(storeKey, next)
@@ -125,7 +132,7 @@ export function settleOffer({ catalogId, accountId, o }) {
   // a price is only a recorded fact when the trade WAS a price: one card, cash, no
   // basket — and live pilot prices stay OUT of the ledger until an escrow rail
   // witnesses them (a self-recorded settlement is a claim, not a price fact)
-  if (!gives.length && o.cash && gets.length === 1 && !o.live) {
+  if (!gives.length && o.cash && gets.length === 1 && (gets[0].qty || 1) === 1 && !o.live) {
     const sk = mockSalesKeyFor(catalogId)
     const sales = loadMockSales(sk)
     sales[gets[0].uid] = [{ d: new Date().toISOString().slice(0, 10), p: o.cash.amount, cond: 'raw', wit: true, mock: true }, ...(sales[gets[0].uid] || [])]
@@ -255,12 +262,18 @@ export function acceptIncoming(key, id) {
   saveOffers(key, offers)
 }
 
-export function declineIncoming(key, id) {
+export function declineIncoming(key, id, reason = '') {
   const offers = loadOffers(key)
   const o = offers.find((x) => x.id === id)
   if (!o || o.dir !== 'in' || !['sent', 'seen'].includes(o.state)) return
   o.state = 'declined'
   o.nextAt = null
-  if (o.live && isLiveAddr(o.from)) pushInbox(o.from, { id: o.id, type: 'response', state: 'declined' })
+  const cleanReason = String(reason || '').trim().slice(0, 240)
+  o.response = cleanReason ? { line: cleanReason } : o.response
+  o.log = [...(o.log || []), cleanReason ? `Declined · ${cleanReason}` : 'Declined without a note.']
+  if (o.live && isLiveAddr(o.from)) pushInbox(o.from, {
+    id: o.id, type: 'response', state: 'declined',
+    line: cleanReason ? `Declined · ${cleanReason}` : 'Declined.',
+  })
   saveOffers(key, offers)
 }

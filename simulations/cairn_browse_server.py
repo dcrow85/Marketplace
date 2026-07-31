@@ -53,7 +53,13 @@ MAX_READ_BYTES = 12 * 1024 * 1024  # /api/read accepts a down-res'd image (base6
 _MODEL_LOCK = threading.Lock()  # single-flight: serialize calls to the one local model
 
 # Cloud-deploy config (all env-gated; unset = current local behavior).
-ALLOW_ORIGIN = os.environ.get("CAIRN_ALLOW_ORIGIN", "")  # frontend origin for CORS, e.g. https://cairn.cards; empty = same-origin only
+ALLOW_ORIGINS = {origin.strip().rstrip("/") for origin in os.environ.get("CAIRN_ALLOW_ORIGIN", "").split(",") if origin.strip()}
+# The two public Cairn hostnames are one site. Configuring either admits the other;
+# arbitrary subdomains and localhost are not implicitly trusted.
+if "https://cairn.cards" in ALLOW_ORIGINS:
+    ALLOW_ORIGINS.add("https://www.cairn.cards")
+if "https://www.cairn.cards" in ALLOW_ORIGINS:
+    ALLOW_ORIGINS.add("https://cairn.cards")
 _EP = urlparse(ENDPOINT)
 LOCAL_MODEL = (_EP.hostname or "127.0.0.1") in ("127.0.0.1", "localhost", "::1")  # remote (DeepInfra) -> skip single-flight + socket liveness
 
@@ -269,8 +275,9 @@ class BrowseHandler(SimpleHTTPRequestHandler):
             self.send_json({"error": "record_put_failed", "detail": type(exc).__name__}, status=502)
 
     def _send_cors(self) -> None:
-        if ALLOW_ORIGIN:
-            self.send_header("Access-Control-Allow-Origin", ALLOW_ORIGIN)
+        origin = self.headers.get("Origin", "").rstrip("/")
+        if origin and origin in ALLOW_ORIGINS:
+            self.send_header("Access-Control-Allow-Origin", origin)
             self.send_header("Access-Control-Allow-Credentials", "true")
             self.send_header("Vary", "Origin")
             self.send_header("Access-Control-Allow-Headers", "Authorization, Content-Type")

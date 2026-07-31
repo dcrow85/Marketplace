@@ -14,6 +14,8 @@ import AskAnko from './AskAnko.jsx'
 import OfferFollowThrough from './OfferFollowThrough.jsx'
 import OfferSummary from './OfferSummary.jsx'
 import { paymentReference, payPalMeUrl, RAIL_PAYPAL } from '../payments/rails.js'
+import { storeKeyFor, loadStore, entryFor } from '../binder/collection.js'
+import { loadProfile } from '../profile/profileStore.js'
 
 // The offers ledger: every conversation, both directions, counters chained. An
 // accepted offer walks the settlement steps right here; everything else shows its
@@ -109,9 +111,13 @@ function LiveLeg({ o, offersKey, catalogId, accountId, decision, recommended }) 
       {o.cash && !o.tradeId && !payer && <span className="dim">{paypal ? 'They act in PayPal next. Do not ship until you confirm the payment in your own PayPal activity.' : 'cash leg: they fund escrow — the trade # lands here when they do'}</span>}
       {o.tradeId && <span>escrow trade <b>#{o.tradeId}</b> — load it in the Escrow tab below to ship / receive / accept</span>}
       {!o.cash && <span className="dim">no cash leg — move the cards, then record it settled</span>}
-      {!paypal && <button className="sheetbtn mk-sm mono" onClick={() => recordSettledLive(catalogId, accountId, o.id)}
+      {!o.cash && <button className="sheetbtn mk-sm mono" onClick={() => recordSettledLive(catalogId, accountId, o.id)}
         title="moves the cards in your binder and tells their app — your copy of the record, theirs stays theirs">✓ record settled</button>
       }
+      {!paypal && o.cash && o.state === 'delivered' && <button className="sheetbtn mk-sm mono sw-boot"
+        onClick={() => recordSettledLive(catalogId, accountId, o.id)}
+        title="records your inspection decision and moves the cards in your binder; it does not move money">
+        Looks right · record complete</button>}
       {err && <span className="ofl-err">{err}</span>}
     </div>
   )
@@ -172,10 +178,13 @@ function PayPalLeg({ o, offersKey, catalogId, accountId }) {
 export default function Offers({ accountId, catalog, onCounter, onScan, onBrowseMarket }) {
   const [reads, setReads] = useState({})
   const [evidenceNotice, setEvidenceNotice] = useState(null)
+  const [declineDraft, setDeclineDraft] = useState(null)
   const data = useCatalog(catalog)
   const key = offersKeyFor(catalog.id, accountId)
   const offers = useBus(() => loadOffers(key), [key])
   const byUid = useByUid(data)
+  const collection = useBus(() => loadStore(storeKeyFor(catalog.id, accountId)), [catalog.id, accountId])
+  const collectorProfile = useBus(() => loadProfile(accountId), [accountId])
 
   if (!data) return null
   if (!offers.length) return <div className="trades-empty">
@@ -189,7 +198,7 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
     return (
       <span key={i} className="ofl-chip" title={c?.name_en || x.uid}>
         {c?.image ? <img src={c.image} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} /> : null}
-        <span>{c?.name_en || x.uid}</span>
+        <span>{c?.name_en || x.uid}{(x.qty || 1) > 1 ? ` ×${x.qty}` : ''}</span>
       </span>
     )
   }
@@ -210,6 +219,8 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
   const groupFor = (o) => {
     const open = ['sent', 'seen'].includes(o.state)
     const paypal = o.rail === RAIL_PAYPAL || o.settlement?.rail === RAIL_PAYPAL
+    const cashFromYou = o.cash && (o.dir === 'out' ? o.cash.side === 'from' : o.cash.side === 'to')
+    if (o.state === 'accepted') return !o.cash || cashFromYou ? 'needs' : 'waiting'
     if (paypal && o.state === 'payment_reported') return o.dir === 'in' ? 'needs' : 'waiting'
     if (paypal && o.state === 'payment_confirmed') return o.dir === 'in' ? 'needs' : 'waiting'
     if (paypal && o.state === 'delivered') return o.dir === 'out' ? 'needs' : 'waiting'
@@ -246,11 +257,31 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
           question: 'Should I accept, counter, or decline this offer?',
           terms: {
             direction: o.dir, state: o.state, live: !!o.live,
-            you_receive: getCards.map((c) => ({ uid: c.uid, name: c.name_en, number: c.num, attention_band: c.band_rank || null })),
-            you_give: giveCards.map((c) => ({ uid: c.uid, name: c.name_en, number: c.num, attention_band: c.band_rank || null })),
+            you_receive_count: receiveItems.reduce((sum, item) => sum + (item.qty || 1), 0),
+            you_receive: receiveItems.map((item) => {
+              const c = byUid.get(item.uid)
+              return { uid: item.uid, quantity: item.qty || 1, name: c?.name_en || item.uid, number: c?.num || null, attention_band: c?.band_rank || null }
+            }),
+            you_give_count: giveItems.reduce((sum, item) => sum + (item.qty || 1), 0),
+            you_give: giveItems.map((item) => {
+              const c = byUid.get(item.uid)
+              return { uid: item.uid, quantity: item.qty || 1, name: c?.name_en || item.uid, number: c?.num || null, attention_band: c?.band_rank || null }
+            }),
             cash: o.cash || null,
           },
-          principal_context: { recorded_policy: 'No signed trade policy is available to this interface.' },
+          principal_context: {
+            profile_claim: collectorProfile.name || null,
+            signed_policy: null,
+            collector_markings: {
+              wants: data.cards.filter((card) => entryFor(card, collection).stance === 'want').slice(0, 24)
+                .map((card) => ({ uid: card.uid, name: card.name_en, number: card.num })),
+              open_to_trade: data.cards.filter((card) => {
+                const entry = entryFor(card, collection)
+                return entry.stance === 'have' && entry.trade
+              }).slice(0, 24).map((card) => ({ uid: card.uid, name: card.name_en, number: card.num })),
+            },
+            boundary: 'These are local collector markings, not a signed delegation or instruction to transact.',
+          },
           evidence: {
             counterparty_statement: o.response?.line || null,
             scans_or_condition_evidence: 'not included in this offer packet',
@@ -276,7 +307,7 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
                     ? { label: 'Terms accepted', tone: 'agreed' }
                     : { label: STATUS_LABEL[o.state] || o.state.replace('_', ' '), tone: o.state === 'settled' ? 'agreed' : 'closed' }
         return (
-          <div key={o.id} className={'ofl-row' + (((o.dir === 'in' && open) && !waitingEvidence) || needsEvidence || answeredEvidence ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
+          <div key={o.id} className={'ofl-row' + (groupFor(o) === 'needs' ? ' needs-you' : '') + (o.state === 'settled' ? ' done' : '') + (o.state === 'countered' || o.state === 'withdrawn' || o.state === 'declined' ? ' closed' : '')}>
             <OfferSummary o={o} otherName={otherName} status={dealStatus} receiveItems={receiveItems} giveItems={giveItems}
               cashFromYou={cashFromYou} renderChip={chip} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid} open={open} />
             {settling && (
@@ -294,13 +325,13 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
             {(needsEvidence || answeredEvidence) && <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
               cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
               onEvidenceSent={setEvidenceNotice} onScan={onScan} showThread={false}
-              onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />}
+              onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => setDeclineDraft({ id: o.id, reason: '' })} />}
 
             {o.dir === 'in' && open && !needsEvidence && !answeredEvidence && <div className="checkout-actions">
               <button className="checkout-primary" onClick={() => acceptIncoming(key, o.id)}>Accept offer</button>
               <span className="checkout-secondary">
                 <button onClick={() => onCounter && onCounter(o)}>Make a counter</button>
-                <button onClick={() => declineIncoming(key, o.id)}>Decline</button>
+                <button onClick={() => setDeclineDraft({ id: o.id, reason: '' })}>Decline</button>
               </span>
               {recommended && <div className="checkout-anko">
                 <AskAnko decision={decision} recommended
@@ -314,7 +345,7 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
                   <OfferFollowThrough o={o} offersKey={key} read={currentRead} cardNames={getCards.map((c) => c.name_en)}
                     cardUids={getCards.map((c) => c.uid)} cardNameFor={(uid) => byUid.get(uid)?.name_en || uid}
                     onEvidenceSent={setEvidenceNotice} onScan={onScan} showThread={false}
-                    onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => declineIncoming(key, o.id)} />
+                    onAccept={() => acceptIncoming(key, o.id)} onCounter={() => onCounter?.(o)} onDecline={() => setDeclineDraft({ id: o.id, reason: '' })} />
                 </div>
               </details>
             </div>}
@@ -331,6 +362,23 @@ export default function Offers({ accountId, catalog, onCounter, onScan, onBrowse
 
             {o.dir === 'out' && open && !answeredEvidence && <div className="checkout-quietaction">
               <button onClick={() => withdrawOffer(key, o.id)}>Withdraw offer</button>
+            </div>}
+            {o.dir === 'out' && o.live && o.delivery && <div className={`ofl-delivery mono ${o.delivery.status}`}>
+              {o.delivery.status === 'inbox'
+                ? '✓ Cairn inbox accepted this offer · not yet marked read'
+                : o.delivery.status === 'failed'
+                  ? 'Delivery was not confirmed · your local copy is saved'
+                  : o.delivery.status === 'sending' ? 'Delivering to Cairn inbox…' : null}
+            </div>}
+            {declineDraft?.id === o.id && <div className="checkout-decline" role="group" aria-label="Confirm decline">
+              <label><b>Decline this offer?</b><span>Add a short reason if it would help the other collector.</span>
+                <input autoFocus maxLength={240} placeholder="Optional reason" value={declineDraft.reason}
+                  onChange={(event) => setDeclineDraft({ id: o.id, reason: event.target.value })} /></label>
+              <span><button className="ghost sm" onClick={() => setDeclineDraft(null)}>Keep offer</button>
+                <button className="sheetbtn mk-sm mono" onClick={() => {
+                  declineIncoming(key, o.id, declineDraft.reason)
+                  setDeclineDraft(null)
+                }}>Confirm decline</button></span>
             </div>}
             {!open && !OFFER_SETTLING.includes(o.state) && <div className="checkout-quietaction">
               <button onClick={() => clearOffer(key, o.id)}>Clear from history</button>

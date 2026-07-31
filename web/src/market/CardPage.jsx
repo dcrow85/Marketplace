@@ -90,7 +90,7 @@ function CardDetails({ card, listings, sales }) {
   const typeLine = [...new Set([...(card.types || []), ...(card.subtypes || [])].filter(Boolean))].join(' · ')
   const effects = Array.isArray(card.effects) ? card.effects.map((effect) => typeof effect === 'string' ? effect : [effect?.label, effect?.text].filter(Boolean).join(': ')).filter(Boolean).join(' · ') : card.effects
   const rules = card.card_text || card.definition_text || card.ruling_text || effects
-  const asks = listings.map(({ l }) => Number(l.ask) || 0).filter((ask) => ask > 0)
+  const asks = listings.filter(({ l }) => l.sell !== false).map(({ l }) => Number(l.ask) || 0).filter((ask) => ask > 0)
   return <div className="cp-detailsgrid">
     <details className="cp-detail" open>
       <summary><span>Card details</span><small>{typeLine || 'recorded catalogue fields'}</small></summary>
@@ -216,6 +216,7 @@ export default function CardPage({
   }
   const stageAndVisit = (flow, cash = null, note = '') => {
     if (!selected) return
+    if (flow === 'buy' && (selected.l.sell === false || !(Number(selected.l.ask) > 0))) return
     onPickUp(selected.s.id, card.uid, 'buy')
     onVisitSeller(selected.s.id, flow, cash, note)
   }
@@ -243,7 +244,7 @@ export default function CardPage({
   } : null
   const actionsForRead = (read) => {
     if (!selected) return []
-    if (read.lean === 'accept') return [{
+    if (read.lean === 'accept' && selected.l.sell !== false && Number(selected.l.ask) > 0) return [{
       id: 'continue-buy', label: `Checkout · ${selected.l.ask} USDC`, primary: true,
       onSelect: () => stageAndVisit('buy'),
     }]
@@ -280,7 +281,7 @@ export default function CardPage({
         {artist && <button type="button" className="cp-artistjump" onClick={() => onOpenArtist?.(artist)}><span>Artwork by</span><b>{artist}</b><i>View artist catalogue →</i></button>}
         <div className="cp-stance" aria-label="Your collection status">
           <span className="mono">Your Binder</span>
-          <button className={stance === 'have' ? 'have on' : 'have'} onClick={() => onChangeStance(card.uid, 'have')}>✓ Have</button>
+          <button className={stance === 'have' ? 'have on' : 'have'} onClick={() => onChangeStance(card.uid, 'have')}>{stance === 'have' ? '✓ Have' : 'Have'}</button>
           <button className={stance === 'want' ? 'want on' : 'want'} onClick={() => onChangeStance(card.uid, 'want')}>Want</button>
           <small>{stance === 'have' ? 'In your collection' : stance === 'want' ? 'On your hunt list' : 'Not marked yet'}</small>
         </div>
@@ -327,15 +328,15 @@ export default function CardPage({
                 <span className="cp-seller"><Avatar seller={s} /><span><b>{sellerName(s)}</b><small>{s.live ? '● live table' : 'sample table'} · {Math.max(1, Number(l.copies) || 1)} cop{Math.max(1, Number(l.copies) || 1) === 1 ? 'y' : 'ies'}</small></span></span>
                 <span className="cp-condition"><small>Condition claim</small><b>{l.cond || 'not listed'}</b></span>
                 <EvidenceMark listing={l} />
-                <span className="cp-price"><small>Seller ask</small><b>{l.ask} <i>USDC</i></b></span>
+                <span className="cp-price"><small>{l.sell === false ? 'Terms' : 'Seller ask'}</small><b>{l.sell === false ? 'Trade only' : <>{l.ask} <i>USDC</i></>}</b></span>
               </button>
               <div className="cp-copyactions">
-                <button type="button" className={`cp-buy${pile?.mode === 'buy' ? ' on' : ''}`} onClick={() => { selectCopy(s.id); onPickUp(s.id, card.uid, 'buy') }}>
+                {l.sell !== false && Number(l.ask) > 0 && <button type="button" className={`cp-buy${pile?.mode === 'buy' ? ' on' : ''}`} onClick={() => { selectCopy(s.id); onPickUp(s.id, card.uid, 'buy') }}>
                   {pile?.mode === 'buy' ? '✓ In pile' : <>Buy <span>{l.ask} USDC</span></>}
-                </button>
-                <button type="button" className={`cp-trade${pile?.mode === 'trade' ? ' on' : ''}`} onClick={() => { selectCopy(s.id); onPickUp(s.id, card.uid, 'trade') }}>
+                </button>}
+                {l.trade !== false && <button type="button" className={`cp-trade${pile?.mode === 'trade' ? ' on' : ''}`} onClick={() => { selectCopy(s.id); onPickUp(s.id, card.uid, 'trade') }}>
                   {pile?.mode === 'trade' ? '✓ Trade' : '⇄ Trade'}
-                </button>
+                </button>}
                 <button type="button" className="cp-tablelink" onClick={() => onVisitSeller(s.id, 'table')}>View table →</button>
               </div>
               {ankoActive && <span className="cp-ankoflag mono">{agentName} is reading this copy</span>}

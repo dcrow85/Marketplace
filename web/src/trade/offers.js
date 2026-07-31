@@ -28,7 +28,7 @@ export function saveOffers(key, offers) {
 }
 
 // dir 'out' = you sent it; dir 'in' = it arrived (a persona counter, or a live inbox).
-export function sendOffer(key, { to, toHandle, want, give, cash, note, evidenceRequest, counterOf, live, from, fromHandle, cat, settlement }) {
+export async function sendOffer(key, { to, toHandle, want, give, cash, note, evidenceRequest, counterOf, live, from, fromHandle, cat, settlement }) {
   const offers = loadOffers(key)
   const id = 'of_' + Math.random().toString(36).slice(2, 10)
   const rail = paymentRailFor(settlement?.rail)
@@ -51,6 +51,7 @@ export function sendOffer(key, { to, toHandle, want, give, cash, note, evidenceR
     counterOf: counterOf || null,
     state: 'sent',
     live: !!live,
+    delivery: live ? { status: 'sending' } : { status: 'local' },
   }
   offers.unshift(o)
   if (counterOf) {
@@ -58,15 +59,27 @@ export function sendOffer(key, { to, toHandle, want, give, cash, note, evidenceR
     if (prev && ['sent', 'seen'].includes(prev.state)) prev.state = 'countered'
   }
   saveOffers(key, offers)
-  // a live offer also travels: fire-and-forget to their inbox — the local copy is
-  // already saved, so a failed push just means they hear it on your next visit
-  if (live && isLiveAddr(to)) pushInbox(to, { id, type: 'offer', offer: { ...o, from: from || null, cat: cat || null } })
-  return id
+  // The local ledger is durable first; then record what the room actually accepted.
+  // "delivered" here means Cairn's inbox store accepted it, never that the person
+  // opened or read it.
+  if (live && isLiveAddr(to)) {
+    const receipt = await pushInbox(to, { id, type: 'offer', offer: { ...o, from: from || null, cat: cat || null } })
+    const current = loadOffers(key)
+    const saved = current.find((item) => item.id === id)
+    if (saved) {
+      saved.delivery = receipt?.ok
+        ? { status: 'inbox', at: new Date().toISOString() }
+        : { status: 'failed', at: new Date().toISOString() }
+      saveOffers(key, current)
+    }
+    return { id, delivered: !!receipt?.ok, status: receipt?.ok ? 'inbox' : 'failed' }
+  }
+  return { id, delivered: !live, status: live ? 'unavailable' : 'local' }
 }
 
 // PayPal is an external rail. The buyer can report a provider payment, but Cairn
 // keeps that as a claim until the seller separately confirms receipt in PayPal.
-export function recordExternalPurchase(key, { to, toHandle, want, amount, live, from, cat, paypalHandle, paymentRef, providerRef }) {
+export function recordExternalPurchase(key, { to, toHandle, want, amount, live, from, fromHandle, cat, paypalHandle, paymentRef, providerRef }) {
   const offers = loadOffers(key)
   const id = 'buy_' + Math.random().toString(36).slice(2, 10)
   const cleanHandle = cleanPayPalHandle(paypalHandle)
@@ -74,6 +87,7 @@ export function recordExternalPurchase(key, { to, toHandle, want, amount, live, 
   if (!cleanHandle || !(numericAmount > 0)) return null
   const o = {
     id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    fromHandle: String(fromHandle || '').trim().slice(0, 32) || null,
     at: new Date().toISOString().slice(0, 10),
     want, give: [], cash: { side: 'from', amount: numericAmount }, note: null,
     state: 'payment_reported', live: !!live, rail: RAIL_PAYPAL,
@@ -95,7 +109,7 @@ export function recordExternalPurchase(key, { to, toHandle, want, amount, live, 
 // A PayPal API capture is stronger than a buyer statement but still belongs to an
 // external provider: PayPal reports the sandbox payment state; Cairn neither holds
 // nor reverses it. This path is sandbox-only until connected sellers are approved.
-export function recordPayPalCapture(key, { to, toHandle, want, amount, paymentRef, capture }) {
+export function recordPayPalCapture(key, { to, toHandle, want, amount, paymentRef, capture, fromHandle }) {
   const offers = loadOffers(key)
   const numericAmount = Number(amount)
   if (!(numericAmount > 0) || capture?.mode !== 'sandbox' || capture?.status !== 'COMPLETED'
@@ -104,6 +118,7 @@ export function recordPayPalCapture(key, { to, toHandle, want, amount, paymentRe
   const id = 'buy_' + Math.random().toString(36).slice(2, 10)
   const o = {
     id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    fromHandle: String(fromHandle || '').trim().slice(0, 32) || null,
     at: new Date().toISOString().slice(0, 10),
     want, give: [], cash: { side: 'from', amount: numericAmount }, note: null,
     state: 'payment_confirmed', live: false, rail: RAIL_PAYPAL,
@@ -126,11 +141,12 @@ export function recordPayPalCapture(key, { to, toHandle, want, amount, paymentRe
 // Accepting a posted ask is not an offer round-trip: the buyer has already funded
 // escrow. Keep the same ledger shape, but enter it at escrow_locked and send one
 // complete event to the seller so no response can race ahead of the purchase record.
-export function recordFundedPurchase(key, { to, toHandle, want, amount, live, from, cat, tradeId, txHash, rail = 'escrow' }) {
+export function recordFundedPurchase(key, { to, toHandle, want, amount, live, from, fromHandle, cat, tradeId, txHash, rail = 'escrow' }) {
   const offers = loadOffers(key)
   const id = 'buy_' + Math.random().toString(36).slice(2, 10)
   const o = {
     id, dir: 'out', to, toHandle: String(toHandle || '').trim().slice(0, 32) || null,
+    fromHandle: String(fromHandle || '').trim().slice(0, 32) || null,
     at: new Date().toISOString().slice(0, 10),
     want, give: [], cash: { side: 'from', amount }, note: null,
     state: 'escrow_locked', live: !!live, tradeId, rail,
@@ -219,11 +235,11 @@ export const OFFER_OPEN = ['sent', 'seen']
 export const OFFER_SETTLING = ['accepted', 'escrow_locked', 'payment_reported', 'payment_confirmed', 'in_transit', 'delivered', 'provider_disputed']
 
 export function offerSheet({ offer, byUid, myId }) {
-  const nm = (uid) => { const c = byUid.get(uid); return c ? `${c.name_en || uid} · ${c.num}` : uid }
+  const nm = (item) => { const c = byUid.get(item.uid); const name = c ? `${c.name_en || item.uid} · ${c.num}` : item.uid; return `${name}${(item.qty || 1) > 1 ? ` ×${item.qty}` : ''}` }
   return [
     'CAIRN OFFER SHEET',
-    ...offer.want.map((w) => `want       ${nm(w.uid)}`),
-    ...offer.give.map((g) => `give       ${nm(g.uid)}`),
+    ...offer.want.map((w) => `want       ${nm(w)}`),
+    ...offer.give.map((g) => `give       ${nm(g)}`),
     offer.cash ? `cash       ${offer.cash.amount} ${offer.settlement?.currency || 'USDC'} · paid by ${offer.cash.side === 'from' ? 'me' : 'them'}` : null,
     offer.cash ? `rail       ${offer.settlement?.rail === RAIL_PAYPAL ? 'PayPal · external, not held by Cairn' : 'Cairn Escrow'}` : null,
     offer.note ? `note       ${offer.note}` : null,

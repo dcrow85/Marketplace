@@ -7,6 +7,7 @@ import CardZoom from './CardZoom.jsx'
 import { retryImg } from '../binder/helpers.jsx'
 import { paymentRailFor, railCurrency, cleanPayPalHandle, RAIL_ESCROW, RAIL_PAYPAL } from '../payments/rails.js'
 import { fetchJson } from '../lib/data.js'
+import { loadProfile } from '../profile/profileStore.js'
 
 // The offer composer: everything on ONE screen — their cards, your cards, the cash
 // leg, and the send. No wizard. Anko's line quotes the RECORD (latest settlements per
@@ -15,14 +16,23 @@ function Avatar({ seed, size = 22 }) {
   return <span className="av" dangerouslySetInnerHTML={{ __html: avatarSVG(seed, size) }} />
 }
 
-export default function OfferComposer({ accountId, catalog, seller, initialWant, initialGive, initialCash, initialSettlement, counterOf, live, onClose, onSent }) {
+const normalizeSeedItems = (items = []) => items.map((item) => typeof item === 'string'
+  ? { uid: item, qty: 1 }
+  : { uid: item.uid, qty: Math.max(1, Number(item.qty) || 1) })
+
+export default function OfferComposer({ accountId, catalog, seller, sellerHandle = '', initialWant, initialGive, initialCash, initialSettlement, counterOf, live, onClose, onSent }) {
+  const seededWant = useMemo(() => normalizeSeedItems(initialWant), [initialWant])
+  const seededGive = useMemo(() => normalizeSeedItems(initialGive), [initialGive])
+  const seededWantQty = useMemo(() => new Map(seededWant.map((item) => [item.uid, item.qty])), [seededWant])
+  const seededGiveQty = useMemo(() => new Map(seededGive.map((item) => [item.uid, item.qty])), [seededGive])
   const [data, setData] = useState(null)
   const [mkt, setMkt] = useState(null)
-  const [want, setWant] = useState(() => new Set(initialWant || []))
-  const [give, setGive] = useState(() => new Set(initialGive || []))
+  const [want, setWant] = useState(() => new Set(normalizeSeedItems(initialWant).map((item) => item.uid)))
+  const [give, setGive] = useState(() => new Set(normalizeSeedItems(initialGive).map((item) => item.uid)))
   const [cashAmt, setCashAmt] = useState(initialCash ? String(initialCash.amount) : '')
   const [cashSide, setCashSide] = useState(initialCash?.side || 'from')
   const [note, setNote] = useState('')
+  const [sending, setSending] = useState(false)
   const paypalHandle = cleanPayPalHandle(initialSettlement?.paypal_handle)
   const [settlementRail, setSettlementRail] = useState(() => paymentRailFor(initialSettlement?.rail))
   const settlementCurrency = railCurrency(settlementRail)
@@ -43,8 +53,8 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
     const sl = mkt.sellers.find((x) => x.id === seller)
     if (sl) return (sl.listings || []).map((l) => ({ c: byUid.get(l.uid), l })).filter((x) => x.c)
     // a live counterpart isn't in the sample market — their side is the offer being countered
-    return [...(initialWant || [])].map((uid) => ({ c: byUid.get(uid), l: { ask: null, witness: null } })).filter((x) => x.c)
-  }, [mkt, seller, byUid, initialWant])
+    return seededWant.map((item) => ({ c: byUid.get(item.uid), l: { ask: null, witness: null, qty: item.qty } })).filter((x) => x.c)
+  }, [mkt, seller, byUid, seededWant])
   const myCards = useMemo(() => {
     if (!data) return []
     const rows = data.cards.map((c) => ({ c, e: entryFor(c, store) })).filter(({ e }) => e.stance === 'have')
@@ -55,36 +65,48 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
   const recordLine = useMemo(() => {
     if (!mkt || !data) return null
     const sales = { ...(mkt.sales || {}), ...loadMockSales(mockSalesKeyFor(catalog.id)) }
-    const sum = (uids) => {
+    const sum = (uids, quantities) => {
       let t = 0, known = 0
-      for (const uid of uids) { const s = sales[uid]?.[0]; if (s) { t += s.p; known++ } }
-      return { t, known, n: uids.length }
+      let n = 0
+      for (const uid of uids) {
+        const quantity = quantities.get(uid) || 1
+        const s = sales[uid]?.[0]
+        n += quantity
+        if (s) { t += s.p * quantity; known += quantity }
+      }
+      return { t, known, n }
     }
-    const w = sum([...want]), g = sum([...give])
+    const w = sum([...want], seededWantQty), g = sum([...give], seededGiveQty)
     if (!w.n && !g.n) return null
     const part = (x, label) => x.n ? <span key={label}>{label} {x.known
       ? <><b className="money mono">~{x.t} USDC</b> across {x.known} of {x.n} card{x.n === 1 ? '' : 's'}</>
       : <>no settlements on record ({x.n} card{x.n === 1 ? '' : 's'})</>}</span> : null
     return [part(w, 'Their side:'), part(g, 'Your side:')].filter(Boolean)
-  }, [mkt, data, want, give, catalog])
+  }, [mkt, data, want, give, catalog, seededWantQty, seededGiveQty])
 
   if (!data || !mkt) return null
   const toggle = (set, setter) => (uid) => setter((p) => { const n = new Set(p); if (n.has(uid)) n.delete(uid); else n.add(uid); return n })
   const amt = Math.max(0, Number(cashAmt) || 0)
-  const canSend = want.size > 0 && (give.size > 0 || (amt > 0 && cashSide === 'from'))
+  const canSend = (want.size > 0 && give.size > 0)
+    || (want.size > 0 && amt > 0 && cashSide === 'from')
+    || (give.size > 0 && amt > 0 && cashSide === 'to')
 
-  const doSend = () => {
+  const doSend = async () => {
+    setSending(true)
+    const fromHandle = loadProfile(accountId).name.trim() || handleFor(accountId)
     const offer = {
       to: seller,
-      want: [...want].map((uid) => ({ uid })),
-      give: [...give].map((uid) => ({ uid })),
+      toHandle: sellerHandle || handleFor(seller),
+      want: [...want].map((uid) => ({ uid, qty: seededWantQty.get(uid) || 1 })),
+      give: [...give].map((uid) => ({ uid, qty: seededGiveQty.get(uid) || 1 })),
       cash: amt > 0 ? { side: cashSide, amount: amt } : null,
       settlement: { rail: settlementRail, paypal_handle: settlementRail === RAIL_PAYPAL ? paypalHandle : null },
       note, counterOf,
-      live, from: accountId, cat: catalog.id,
+      live, from: accountId, fromHandle, cat: catalog.id,
     }
-    sendOffer(offersKeyFor(catalog.id, accountId), offer)
-    onSent && onSent()
+    const result = await sendOffer(offersKeyFor(catalog.id, accountId), offer)
+    onSent && onSent(result)
+    setSending(false)
     onClose()
   }
 
@@ -106,7 +128,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
         <div className="ofr-head">
           <div>
             <div className="ek">{counterOf ? 'Counter-offer' : 'Your offer'}</div>
-            <div className="ofr-title"><Avatar seed={seller} size={20} /> {handleFor(seller)}</div>
+            <div className="ofr-title"><Avatar seed={seller} size={20} /> {sellerHandle || handleFor(seller)}</div>
           </div>
           <button className="ghost sm" onClick={onClose}>✕</button>
         </div>
@@ -148,7 +170,7 @@ export default function OfferComposer({ accountId, catalog, seller, initialWant,
           <div className="ofr-sum mono">
             <b>Their side</b> {want.size} ⇄ <b>Your side</b> {give.size}{amt > 0 ? <> · <strong className="money">{amt} {settlementCurrency}</strong> ({cashSide === 'from' ? 'you' : 'they'} pay)</> : ''}
           </div>
-          <button className="primary ofr-send" disabled={!canSend} onClick={doSend}>{counterOf ? 'Send counter' : 'Send offer'}</button>
+          <button className="primary ofr-send" disabled={!canSend || sending} onClick={doSend}>{sending ? 'Delivering…' : counterOf ? 'Send counter' : 'Send offer'}</button>
         </div>
         <p className="sc-note dim ofr-fine">An offer is a message, not a lock. It proposes {settlementRail === RAIL_PAYPAL ? 'PayPal; PayPal handles the money and Cairn records the terms' : 'Cairn Escrow; the contract holds funds after the payer funds it'}.
           {' '}Sample sellers answer right here in your browser.</p>
