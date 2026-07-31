@@ -64,6 +64,16 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: Ivy Pikachu artist attribution]` 2026-07-31 · Codex —
+  The 1996 glossy CoroCoro Pikachu currently collapses its erroneous printed
+  `Ken Sugimori` credit into the artwork-artist field. This bounded catalogue and
+  card-page correction will record Keiji Kinebuchi as the artwork artist while
+  preserving Ken Sugimori as the known incorrect credit printed on that variant,
+  with source-linked explanation. Both the aggregate UPC row and its CoroCoro
+  child-release row will be audited. No other card attribution will be inferred;
+  `mockups/`, protocol, chain, payment, listing, and settlement semantics remain
+  unchanged.
+
 - `[passive] card name hierarchy complete` 2026-07-31 · Codex —
   Supersedes the blocker below. Card presentation now has one shared naming rule
   across binder cells and modals, mobile binder cards, market/checkout tiles, full
