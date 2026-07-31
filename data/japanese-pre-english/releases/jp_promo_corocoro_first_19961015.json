@@ -23,32 +23,33 @@
       },
       "holo_source": false,
       "illustrator": {
-        "authority": "Selected source snapshot credit preferred over conflicting provider metadata. Useful for catalog texture, not direct print authenticity proof.",
+        "authority": "Source-linked artwork attribution separated from the card's known incorrect printed credit. Useful for catalogue identity, not direct print authenticity proof.",
         "caption": "",
         "conflict": {
-          "conflicting_name": "Keiji Kinebuchi",
-          "conflicting_source": "pokecardex",
+          "conflicting_name": "Ken Sugimori",
+          "conflicting_source": "printed_card_credit",
           "not_claiming": [
-            "provider metadata is false in all contexts",
             "direct physical-card inspection",
             "authenticity"
           ],
-          "resolution": "selected_source_snapshot_preferred"
+          "resolution": "printed_credit_preserved_separately_from_artwork_artist"
         },
-        "credit_status": "source_conflict_preferred_selected_snapshot",
-        "display": "Illus. Ken Sugimori",
-        "name": "Ken Sugimori",
+        "credit_status": "artwork_artist_resolved_printed_credit_error",
+        "display": "Illus. Keiji Kinebuchi",
+        "name": "Keiji Kinebuchi",
         "not_claiming": [
           "seller possession",
           "authenticity",
           "condition",
           "Japanese print authority"
         ],
+        "printed_credit": "Ken Sugimori",
+        "printed_credit_status": "known_incorrect_attribution",
         "requested_page_title": "",
         "resolved_page_title": "",
-        "source": "Bulbapedia selected source snapshot",
+        "source": "Bulbapedia card-page release information",
         "source_page_sha256": "",
-        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Asobikata_promo%29"
       },
       "image_provenance": {
         "allowed_use": [
@@ -80,7 +81,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+        "promo_family_source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
         "promo_family_source_sort": 1,
@@ -203,7 +204,7 @@
         "complete_family_modeled": false,
         "complete_source_boundary_denial": "",
         "expected_cards": [
-          "Pikachu [Glossy, Ken Sugimori]",
+          "Pikachu [Glossy, incorrect Ken Sugimori printed credit; artwork by Keiji Kinebuchi]",
           "Jigglypuff [Glossy]"
         ],
         "expected_source_card_count": 2,
@@ -221,7 +222,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_corocoro_first_19961015",
-        "source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+        "source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
         "source_gap_count": 0,
         "source_gap_reason": "Bulbapedia lists glossy Pikachu and glossy Jigglypuff for CoroCoro Comic November 1996. Pikachu is inherited from the parent UPC aggregate row; Jigglypuff is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
         "source_local_id": "001",
@@ -236,7 +237,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+        "source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
         "source_gap_count": 0,
         "source_local_id": "001",
         "source_provider_row": {
@@ -303,7 +304,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+          "catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "001",
           "not_claiming": [
@@ -326,7 +327,7 @@
         {
           "complete_source_boundary_denial": "",
           "expected_cards": [
-            "Pikachu [Glossy, Ken Sugimori]",
+            "Pikachu [Glossy, incorrect Ken Sugimori printed credit; artwork by Keiji Kinebuchi]",
             "Jigglypuff [Glossy]"
           ],
           "not_claiming": [
@@ -364,7 +365,7 @@
         },
         {
           "card_data_hash": "b4f822871b6fdedfff8ec8893356b9da46fbc9f1a96428e53c68060dcafaf39c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "hash_preimage_scope": "inherited from parent UPC source-slice contact; raw decrypted provider payload is not embedded in this child row",
           "hash_reproducibility": "reproduce from the parent source release and builder/live-fetch lineage, not from this child release alone",
           "inherited_from_promo_family_source": true,
@@ -382,7 +383,7 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "promo_family_source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+          "promo_family_source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
           "series_code": "UPC",
@@ -390,7 +391,7 @@
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
         },
         {
-          "conflicting_provider_illustrator": "Keiji Kinebuchi",
+          "artwork_artist": "Keiji Kinebuchi",
           "inherited_from_promo_family_source": true,
           "not_claiming": [
             "raw HTML snapshot",
@@ -407,15 +408,17 @@
             "unmodeled expected card row",
             "price truth"
           ],
-          "preferred_illustrator": "Ken Sugimori",
-          "promo_family_source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+          "printed_credit_status": "known_incorrect_attribution",
+          "printed_illustrator_credit": "Ken Sugimori",
+          "promo_family_source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131:001",
-          "reason": "The selected early-1996 promo snapshot places Ken Sugimori immediately under Pikachu [Glossy]; PokéCardex provider metadata is preserved as a conflict artifact, not the preferred credit.",
-          "selected_line": "Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-          "source": "Bulbapedia selected source snapshot",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+          "provider_illustrator": "Keiji Kinebuchi",
+          "reason": "The card face's Ken Sugimori credit is a known attribution error. The artwork is attributed to Keiji Kinebuchi; both facts must remain visible.",
+          "selected_line": "The glossy 1996 CoroCoro print incorrectly credits Ken Sugimori; the correct artwork artist is Keiji Kinebuchi.",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_ivy_pikachu_credit_selected_lines.json",
+          "source": "Bulbapedia card-page release information",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Asobikata_promo%29"
         }
       ],
       "special_identification_instructions": [
@@ -431,23 +434,28 @@
           ],
           "source_refs": [
             {
-              "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-              "source": "Bulbapedia selected source snapshot",
-              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+              "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_ivy_pikachu_credit_selected_lines.json",
+              "source": "Bulbapedia card-page release information",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Asobikata_promo%29"
             },
             {
-              "conflicting_provider_illustrator": "Keiji Kinebuchi",
+              "printed_credit_status": "known_incorrect_attribution",
+              "printed_illustrator_credit": "Ken Sugimori",
+              "source": "Card-face credit recorded by the source"
+            },
+            {
+              "artwork_artist": "Keiji Kinebuchi",
               "source": "PokéCardex provider metadata"
             }
           ],
           "steps": [
             "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
-            "Use the selected source line: Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
-            "Do not infer illustrator from provider metadata alone when selected source lines disagree.",
+            "Use the selected source line: The glossy 1996 CoroCoro print incorrectly credits Ken Sugimori; the correct artwork artist is Keiji Kinebuchi.",
+            "Do not treat the name printed on this error card as the artwork attribution.",
             "Do not merge this with non-glossy, How-to-Play, Game Boy, or other early Pikachu rows.",
             "For a seller-provided card, use this only as catalog identification guidance; require seller evidence for the physical card."
           ],
-          "summary": "Prefer the selected source snapshot's Ken Sugimori credit; preserve the PokéCardex Keiji Kinebuchi value as conflicting provider metadata.",
+          "summary": "Record Keiji Kinebuchi as the artwork artist and preserve Ken Sugimori as the known incorrect illustrator credit printed on this variant.",
           "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit."
         }
       ],
@@ -547,7 +555,7 @@
           "complete promo family",
           "unmodeled expected card row"
         ],
-        "promo_family_source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+        "promo_family_source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
         "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/002",
         "promo_family_source_sort": 2,
@@ -663,7 +671,7 @@
         "complete_family_modeled": false,
         "complete_source_boundary_denial": "",
         "expected_cards": [
-          "Pikachu [Glossy, Ken Sugimori]",
+          "Pikachu [Glossy, incorrect Ken Sugimori printed credit; artwork by Keiji Kinebuchi]",
           "Jigglypuff [Glossy]"
         ],
         "expected_source_card_count": 2,
@@ -681,7 +689,7 @@
           "price truth"
         ],
         "promo_family_id": "jp_promo_corocoro_first_19961015",
-        "source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+        "source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
         "source_gap_count": 0,
         "source_gap_reason": "Bulbapedia lists glossy Pikachu and glossy Jigglypuff for CoroCoro Comic November 1996. Pikachu is inherited from the parent UPC aggregate row; Jigglypuff is modeled as a manual provider-path gap row because the current parent aggregate does not decrypt a dedicated row while the provider image path and selected source lines remain usable as bounded references.",
         "source_local_id": "002",
@@ -696,7 +704,7 @@
       "provider_row": {
         "adapter": "promo_family_child_rollup",
         "expected_source_card_count": 2,
-        "source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+        "source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
         "source_gap_count": 0,
         "source_local_id": "002",
         "source_provider_row": {
@@ -730,7 +738,7 @@
       "source_contacts": [
         {
           "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
-          "catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+          "catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
           "catalog_path": "data/japanese-pre-english/releases/jp_promo_unnumbered_pre_english_source_slice_19961015_19990131.json",
           "local_row_id": "002",
           "not_claiming": [
@@ -753,7 +761,7 @@
         {
           "complete_source_boundary_denial": "",
           "expected_cards": [
-            "Pikachu [Glossy, Ken Sugimori]",
+            "Pikachu [Glossy, incorrect Ken Sugimori printed credit; artwork by Keiji Kinebuchi]",
             "Jigglypuff [Glossy]"
           ],
           "not_claiming": [
@@ -808,7 +816,7 @@
             "complete event source",
             "unmodeled expected card row"
           ],
-          "promo_family_source_catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+          "promo_family_source_catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
           "promo_family_source_release_family_id": "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
           "promo_family_source_row_id": "manual-provider-path:pokecardex:UPC/002",
           "provider_image_path": "UPC/2.jpg",
@@ -896,10 +904,10 @@
     {
       "canonicalization": "json_sorted_keys_no_whitespace_v0.1",
       "cards_found": 2,
-      "catalog_hash": "8dcbaa0e0859a5512eb90946a3bb187047ec8472df1535f66d4a99fcaa5973cd",
+      "catalog_hash": "40d988a68d8da3b6749336c5d5ec6bfcebffd3ac1de2b28eb158ed6d15f8c040",
       "complete_source_boundary_denial": "",
       "expected_cards": [
-        "Pikachu [Glossy, Ken Sugimori]",
+        "Pikachu [Glossy, incorrect Ken Sugimori printed credit; artwork by Keiji Kinebuchi]",
         "Jigglypuff [Glossy]"
       ],
       "expected_source_card_count": 2,

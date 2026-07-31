@@ -65,6 +65,11 @@ EARLY_1996_PROMO_SOURCE_SNAPSHOT_PATH = (
     / "source-snapshots"
     / "bulbapedia_early_1996_promos_selected_lines.json"
 )
+IVY_PIKACHU_CREDIT_SOURCE_SNAPSHOT_PATH = (
+    OUT_DIR
+    / "source-snapshots"
+    / "bulbapedia_ivy_pikachu_credit_selected_lines.json"
+)
 COROCORO_EARLY_1997_SOURCE_SNAPSHOT_PATH = (
     OUT_DIR
     / "source-snapshots"
@@ -236,12 +241,15 @@ UPC_SELECTED_SNAPSHOT_ILLUSTRATOR_OVERRIDES: dict[tuple[str, int], dict[str, Any
         "jp_promo_unnumbered_pre_english_source_slice_19961015_19990131",
         1,
     ): {
-        "name": "Ken Sugimori",
-        "source": "Bulbapedia selected source snapshot",
-        "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-        "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005",
-        "selected_line": "Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
-        "reason": "The selected early-1996 promo snapshot places Ken Sugimori immediately under Pikachu [Glossy]; PokéCardex provider metadata is preserved as a conflict artifact, not the preferred credit.",
+        "name": "Keiji Kinebuchi",
+        "printed_credit": "Ken Sugimori",
+        "printed_credit_status": "known_incorrect_attribution",
+        "credit_status": "artwork_artist_resolved_printed_credit_error",
+        "source": "Bulbapedia card-page release information",
+        "snapshot_path": str(IVY_PIKACHU_CREDIT_SOURCE_SNAPSHOT_PATH.relative_to(ROOT)),
+        "source_page_url": f"{BULBAPEDIA_BASE}/wiki/Pikachu_%28Asobikata_promo%29",
+        "selected_line": "The glossy 1996 CoroCoro print incorrectly credits Ken Sugimori; the correct artwork artist is Keiji Kinebuchi.",
+        "reason": "The card face's Ken Sugimori credit is a known attribution error. The artwork is attributed to Keiji Kinebuchi; both facts must remain visible.",
     },
 }
 
@@ -259,13 +267,13 @@ def special_identification_instructions_for_source_row(
                 "authority_label": "legible",
                 "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit.",
                 "summary": (
-                    "Prefer the selected source snapshot's Ken Sugimori credit; preserve the "
-                    "PokéCardex Keiji Kinebuchi value as conflicting provider metadata."
+                    "Record Keiji Kinebuchi as the artwork artist and preserve Ken Sugimori "
+                    "as the known incorrect illustrator credit printed on this variant."
                 ),
                 "steps": [
                     "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
                     f"Use the selected source line: {illustrator_override.get('selected_line', '')}",
-                    "Do not infer illustrator from provider metadata alone when selected source lines disagree.",
+                    "Do not treat the name printed on this error card as the artwork attribution.",
                     "Do not merge this with non-glossy, How-to-Play, Game Boy, or other early Pikachu rows.",
                     "For a seller-provided card, use this only as catalog identification guidance; require seller evidence for the physical card.",
                 ],
@@ -276,8 +284,13 @@ def special_identification_instructions_for_source_row(
                         "snapshot_path": illustrator_override.get("snapshot_path", ""),
                     },
                     {
+                        "source": "Card-face credit recorded by the source",
+                        "printed_illustrator_credit": illustrator_override.get("printed_credit", ""),
+                        "printed_credit_status": illustrator_override.get("printed_credit_status", ""),
+                    },
+                    {
                         "source": "PokéCardex provider metadata",
-                        "conflicting_provider_illustrator": provider_illustrator,
+                        "artwork_artist": provider_illustrator,
                     },
                 ],
                 "not_claiming": [
@@ -296,7 +309,7 @@ PROMO_FAMILY_CHILD_SPECS: dict[str, dict[str, Any]] = {
     "jp_promo_corocoro_first_19961015": {
         "source_snapshot": "early_1996_promos",
         "expected_source_card_count": 2,
-        "expected_cards": ["Pikachu [Glossy, Ken Sugimori]", "Jigglypuff [Glossy]"],
+        "expected_cards": ["Pikachu [Glossy, incorrect Ken Sugimori printed credit; artwork by Keiji Kinebuchi]", "Jigglypuff [Glossy]"],
         "modeled_source_sorts": [1, 2],
         "manual_source_rows": [
             {
@@ -3535,15 +3548,14 @@ def row_from_sources(
         illustrator_requested_title = illustrator_credit.get("requested_page_title", "")
         illustrator_resolved_title = illustrator_credit.get("resolved_page_title", "")
     if illustrator_override:
-        illustrator_status = "source_conflict_preferred_selected_snapshot"
+        illustrator_status = illustrator_override.get("credit_status", "source_override")
         illustrator_source_page_url = illustrator_override.get("source_page_url", "")
-        if provider_illustrator and provider_illustrator != illustrator_name:
+        if illustrator_override.get("printed_credit"):
             illustrator_conflict = {
-                "conflicting_name": provider_illustrator,
-                "conflicting_source": adapter,
-                "resolution": "selected_source_snapshot_preferred",
+                "conflicting_name": illustrator_override.get("printed_credit", ""),
+                "conflicting_source": "printed_card_credit",
+                "resolution": "printed_credit_preserved_separately_from_artwork_artist",
                 "not_claiming": [
-                    "provider metadata is false in all contexts",
                     "direct physical-card inspection",
                     "authenticity",
                 ],
@@ -3556,7 +3568,7 @@ def row_from_sources(
     illustrator_authority = (
         "Bulbapedia card-page caption metadata. Useful for catalog texture, not direct print-name or authenticity proof."
         if illustrator_source == "Bulbapedia card page"
-        else "Selected source snapshot credit preferred over conflicting provider metadata. Useful for catalog texture, not direct print authenticity proof."
+        else "Source-linked artwork attribution separated from the card's known incorrect printed credit. Useful for catalogue identity, not direct print authenticity proof."
         if illustrator_override
         else "Source provider metadata only. Useful for catalog texture, not direct print-name or authenticity proof."
     )
@@ -3607,6 +3619,8 @@ def row_from_sources(
             "credit_status": illustrator_status,
             "display": illustrator_display,
             "name": illustrator_name,
+            **({"printed_credit": illustrator_override.get("printed_credit", "")} if illustrator_override.get("printed_credit") else {}),
+            **({"printed_credit_status": illustrator_override.get("printed_credit_status", "")} if illustrator_override.get("printed_credit_status") else {}),
             **({"conflict": illustrator_conflict} if illustrator_conflict else {}),
             "not_claiming": ["seller possession", "authenticity", "condition", "Japanese print authority"],
             "requested_page_title": illustrator_requested_title,
@@ -3699,8 +3713,10 @@ def row_from_sources(
                         "source_page_url": illustrator_override.get("source_page_url", ""),
                         "snapshot_path": illustrator_override.get("snapshot_path", ""),
                         "selected_line": illustrator_override.get("selected_line", ""),
-                        "preferred_illustrator": illustrator_override.get("name", ""),
-                        "conflicting_provider_illustrator": provider_illustrator,
+                        "artwork_artist": illustrator_override.get("name", ""),
+                        "printed_illustrator_credit": illustrator_override.get("printed_credit", ""),
+                        "printed_credit_status": illustrator_override.get("printed_credit_status", ""),
+                        "provider_illustrator": provider_illustrator,
                         "reason": illustrator_override.get("reason", ""),
                         "not_claiming": [
                             "raw HTML snapshot",
@@ -5799,15 +5815,17 @@ def audit_release(release: dict[str, Any]) -> dict[str, Any]:
         glossy_pikachu = row_by_id.get(glossy_pikachu_row_id)
         if glossy_pikachu:
             illustrator = glossy_pikachu.get("illustrator", {})
-            if illustrator.get("name") != "Ken Sugimori":
-                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_illustrator_not_ken_sugimori")
-            if illustrator.get("conflict", {}).get("conflicting_name") != "Keiji Kinebuchi":
-                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_provider_conflict_not_recorded")
+            if illustrator.get("name") != "Keiji Kinebuchi":
+                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_artwork_artist_not_keiji_kinebuchi")
+            if illustrator.get("printed_credit") != "Ken Sugimori":
+                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_printed_credit_not_ken_sugimori")
+            if illustrator.get("printed_credit_status") != "known_incorrect_attribution":
+                failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_printed_credit_error_status_missing")
             instructions = glossy_pikachu.get("special_identification_instructions", [])
             if not any(
                 instruction.get("id") == "glossy_pikachu_illustrator_conflict_v0.1"
                 and instruction.get("authority_label") == "legible"
-                and "Do not infer illustrator from provider metadata alone" in " ".join(instruction.get("steps", []))
+                and "Do not treat the name printed on this error card" in " ".join(instruction.get("steps", []))
                 for instruction in instructions
             ):
                 failures.append(f"{glossy_pikachu_row_id}: glossy_pikachu_special_identification_instruction_missing")

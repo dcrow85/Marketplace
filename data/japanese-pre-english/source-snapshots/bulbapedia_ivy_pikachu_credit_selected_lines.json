@@ -1,0 +1,31 @@
+{
+  "schema": "marketplace.source_snapshot.selected_claims.v0.1",
+  "source": "Bulbapedia",
+  "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_(Asobikata_promo)",
+  "retrieved_at": "2026-07-31T14:20:00Z",
+  "retrieval_method": "Codex web.open rendered text lines",
+  "content_scope": "Paraphrased release-information claims distinguishing the 1996 glossy CoroCoro card's printed illustrator error from the artwork artist.",
+  "selected_claims": [
+    {
+      "source_line": 317,
+      "text": "The glossy 1996 CoroCoro print incorrectly credits Ken Sugimori as illustrator."
+    },
+    {
+      "source_line": 318,
+      "text": "The November 1996 non-glossy reprint updates the credit to the correct Keiji Kinebuchi."
+    }
+  ],
+  "extracted_claims": {
+    "artwork_artist": "Keiji Kinebuchi",
+    "original_glossy_printed_credit": "Ken Sugimori",
+    "original_glossy_printed_credit_status": "known_incorrect_attribution"
+  },
+  "not_claiming": [
+    "raw HTML snapshot",
+    "official source",
+    "seller possession",
+    "authenticity",
+    "condition",
+    "physical-card inspection"
+  ]
+}

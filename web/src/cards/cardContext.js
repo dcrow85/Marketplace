@@ -95,6 +95,8 @@ export function cardContext(card = {}) {
     laterHistory: text(curated?.later_history) || text(research?.history_note),
     artist: cardArtist(card),
     artistStatus: text(card.illustrator_status),
+    printedArtistCredit: text(card.printed_illustrator_credit),
+    printedArtistCreditStatus: text(card.printed_illustrator_credit_status),
     releasePeriod,
     distribution: text(curated?.acquisition) || distribution || text(research?.distribution_label) || humanize(card.release_type) || 'Not recorded',
     releaseKind: text(research?.release_kind) || humanize(card.release_type),

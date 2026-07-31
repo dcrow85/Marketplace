@@ -19,32 +19,33 @@
       },
       "holo_source": false,
       "illustrator": {
-        "authority": "Selected source snapshot credit preferred over conflicting provider metadata. Useful for catalog texture, not direct print authenticity proof.",
+        "authority": "Source-linked artwork attribution separated from the card's known incorrect printed credit. Useful for catalogue identity, not direct print authenticity proof.",
         "caption": "",
         "conflict": {
-          "conflicting_name": "Keiji Kinebuchi",
-          "conflicting_source": "pokecardex",
+          "conflicting_name": "Ken Sugimori",
+          "conflicting_source": "printed_card_credit",
           "not_claiming": [
-            "provider metadata is false in all contexts",
             "direct physical-card inspection",
             "authenticity"
           ],
-          "resolution": "selected_source_snapshot_preferred"
+          "resolution": "printed_credit_preserved_separately_from_artwork_artist"
         },
-        "credit_status": "source_conflict_preferred_selected_snapshot",
-        "display": "Illus. Ken Sugimori",
-        "name": "Ken Sugimori",
+        "credit_status": "artwork_artist_resolved_printed_credit_error",
+        "display": "Illus. Keiji Kinebuchi",
+        "name": "Keiji Kinebuchi",
         "not_claiming": [
           "seller possession",
           "authenticity",
           "condition",
           "Japanese print authority"
         ],
+        "printed_credit": "Ken Sugimori",
+        "printed_credit_status": "known_incorrect_attribution",
         "requested_page_title": "",
         "resolved_page_title": "",
-        "source": "Bulbapedia selected source snapshot",
+        "source": "Bulbapedia card-page release information",
         "source_page_sha256": "",
-        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+        "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Asobikata_promo%29"
       },
       "image_provenance": {
         "allowed_use": [
@@ -216,7 +217,7 @@
       "source_contacts": [
         {
           "card_data_hash": "b4f822871b6fdedfff8ec8893356b9da46fbc9f1a96428e53c68060dcafaf39c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -228,7 +229,7 @@
           "source_page_url": "https://www.pokecardex.com/en/series/jp/UPC"
         },
         {
-          "conflicting_provider_illustrator": "Keiji Kinebuchi",
+          "artwork_artist": "Keiji Kinebuchi",
           "not_claiming": [
             "raw HTML snapshot",
             "seller possession",
@@ -236,12 +237,14 @@
             "condition",
             "physical-card inspection"
           ],
-          "preferred_illustrator": "Ken Sugimori",
-          "reason": "The selected early-1996 promo snapshot places Ken Sugimori immediately under Pikachu [Glossy]; PokéCardex provider metadata is preserved as a conflict artifact, not the preferred credit.",
-          "selected_line": "Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
-          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-          "source": "Bulbapedia selected source snapshot",
-          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+          "printed_credit_status": "known_incorrect_attribution",
+          "printed_illustrator_credit": "Ken Sugimori",
+          "provider_illustrator": "Keiji Kinebuchi",
+          "reason": "The card face's Ken Sugimori credit is a known attribution error. The artwork is attributed to Keiji Kinebuchi; both facts must remain visible.",
+          "selected_line": "The glossy 1996 CoroCoro print incorrectly credits Ken Sugimori; the correct artwork artist is Keiji Kinebuchi.",
+          "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_ivy_pikachu_credit_selected_lines.json",
+          "source": "Bulbapedia card-page release information",
+          "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Asobikata_promo%29"
         }
       ],
       "special_identification_instructions": [
@@ -257,23 +260,28 @@
           ],
           "source_refs": [
             {
-              "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_early_1996_promos_selected_lines.json",
-              "source": "Bulbapedia selected source snapshot",
-              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Unnumbered_Promotional_cards_%28TCG%29/1996-2005"
+              "snapshot_path": "data/japanese-pre-english/source-snapshots/bulbapedia_ivy_pikachu_credit_selected_lines.json",
+              "source": "Bulbapedia card-page release information",
+              "source_page_url": "https://bulbapedia.bulbagarden.net/wiki/Pikachu_%28Asobikata_promo%29"
             },
             {
-              "conflicting_provider_illustrator": "Keiji Kinebuchi",
+              "printed_credit_status": "known_incorrect_attribution",
+              "printed_illustrator_credit": "Ken Sugimori",
+              "source": "Card-face credit recorded by the source"
+            },
+            {
+              "artwork_artist": "Keiji Kinebuchi",
               "source": "PokéCardex provider metadata"
             }
           ],
           "steps": [
             "Confirm the row is Pikachu [Glossy] from the CoroCoro Comic November 1996 issue insert / UPC sort 1.",
-            "Use the selected source line: Pikachu [Glossy] / Ken Sugimori / CoroCoro Comic November 1996 issue insert",
-            "Do not infer illustrator from provider metadata alone when selected source lines disagree.",
+            "Use the selected source line: The glossy 1996 CoroCoro print incorrectly credits Ken Sugimori; the correct artwork artist is Keiji Kinebuchi.",
+            "Do not treat the name printed on this error card as the artwork attribution.",
             "Do not merge this with non-glossy, How-to-Play, Game Boy, or other early Pikachu rows.",
             "For a seller-provided card, use this only as catalog identification guidance; require seller evidence for the physical card."
           ],
-          "summary": "Prefer the selected source snapshot's Ken Sugimori credit; preserve the PokéCardex Keiji Kinebuchi value as conflicting provider metadata.",
+          "summary": "Record Keiji Kinebuchi as the artwork artist and preserve Ken Sugimori as the known incorrect illustrator credit printed on this variant.",
           "trigger": "Identifying the first CoroCoro glossy Pikachu or resolving its illustrator credit."
         }
       ],
@@ -501,7 +509,7 @@
       "source_contacts": [
         {
           "card_data_hash": "665162a14f1b47b8a54806ec32cabb8db20555cf1064b039835a07757c25a818",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -738,7 +746,7 @@
       "source_contacts": [
         {
           "card_data_hash": "878230f23f121cd061e2b351a11dc166782342323c2a5342ef563f57657e8959",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -966,7 +974,7 @@
       "source_contacts": [
         {
           "card_data_hash": "6d8ed193aaa9efcdebac1e361de8802155bc8090acec434c1995f877caf2efe4",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -1194,7 +1202,7 @@
       "source_contacts": [
         {
           "card_data_hash": "0de8c5d931c8e2f519c36b53e90dd183dfa691b9d91c75b3278c4e40e4864e82",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -1422,7 +1430,7 @@
       "source_contacts": [
         {
           "card_data_hash": "433acae6741c6ff0722ee9b91d8e755eb01bd3fa3ec3ce3c18cb545bf51e4b3c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -1648,7 +1656,7 @@
       "source_contacts": [
         {
           "card_data_hash": "9d79e700b10a50040b53881430bfbfde74822fe324e36d21910f81db5342072c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -1876,7 +1884,7 @@
       "source_contacts": [
         {
           "card_data_hash": "dab3aa3728841aa726641cc6457f83ca898e96302e42dec183a98ffba3e29c9c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -2102,7 +2110,7 @@
       "source_contacts": [
         {
           "card_data_hash": "8145871c4954ba4ce528232800dcf60bbdd2b5b814308f33bd47f723549d89d9",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -2328,7 +2336,7 @@
       "source_contacts": [
         {
           "card_data_hash": "fd65fdd116db6c7a492b1ea90411774f072061477e50137727dc41c6d4550c8d",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -2554,7 +2562,7 @@
       "source_contacts": [
         {
           "card_data_hash": "870dd42c7264b86c747c2f29d9803c36b2a8992948093a116b65d34811ab5fb7",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -2782,7 +2790,7 @@
       "source_contacts": [
         {
           "card_data_hash": "00efd55dcd6b355152c48c276b81d783d73f3aab50ef034422db5a1a2c9cb2e5",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -3010,7 +3018,7 @@
       "source_contacts": [
         {
           "card_data_hash": "e9fa459202ee7d568828216984eab97c500a708aec2d5e9e8f279923e53a3f21",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -3245,7 +3253,7 @@
       "source_contacts": [
         {
           "card_data_hash": "3faa5b35a0e40262fcfd8e862bb7d75f36cd90d4d2725023e77b01178f46f9f5",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -3473,7 +3481,7 @@
       "source_contacts": [
         {
           "card_data_hash": "920468fca244117a8b7dac6718929a946e81cdc1ee4998a396ea4c38a85b173a",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -3701,7 +3709,7 @@
       "source_contacts": [
         {
           "card_data_hash": "fa1aaa09359098a5e22d6076d64b217eb1f3c4a1a24ab8187bdd415f66105939",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -3929,7 +3937,7 @@
       "source_contacts": [
         {
           "card_data_hash": "e5ed4b42d6ff538916a442f21d8ef46679d67ead6126e00b5f0a0664cf3a76fd",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -4155,7 +4163,7 @@
       "source_contacts": [
         {
           "card_data_hash": "7afe2c6fc34b807fc2d101c1e347cf05691f31c265f29378e3b0b87fed9ac89e",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -4381,7 +4389,7 @@
       "source_contacts": [
         {
           "card_data_hash": "b7cf45dbd6b86d4388c4a114cfecdc56a08a907ab595d7d27507485be45147f6",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -4607,7 +4615,7 @@
       "source_contacts": [
         {
           "card_data_hash": "b70a16fe3ea736cc5f1d714a223d93280eba970b1aff0951d08dbb795eabd962",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -4835,7 +4843,7 @@
       "source_contacts": [
         {
           "card_data_hash": "1b9b599bd8a0e2a43a6958727ee371adef0260b5d17d0557f9578fca56ba2f05",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -5063,7 +5071,7 @@
       "source_contacts": [
         {
           "card_data_hash": "9ec6d1a61f64934952302417976a939015bf43f1eee4a7c439e23359202204db",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -5291,7 +5299,7 @@
       "source_contacts": [
         {
           "card_data_hash": "9b24d9459efdb9fc45af8724447d3f8f15b30a63b18783b2029ad4d1f8a7a8de",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -5519,7 +5527,7 @@
       "source_contacts": [
         {
           "card_data_hash": "45d038dbb95af6a846171d77c4fe4a6434aa84ecccf3355ae376f5ad3e4e26fa",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -5747,7 +5755,7 @@
       "source_contacts": [
         {
           "card_data_hash": "c40cd5cfd4419a7f2271a47ac78eaf030aec71391154031b851394394d9055e4",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -5975,7 +5983,7 @@
       "source_contacts": [
         {
           "card_data_hash": "aa1667abe9a0a895c5680ae2d83bab60f013c74afd5879c132772da50f376c52",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -6203,7 +6211,7 @@
       "source_contacts": [
         {
           "card_data_hash": "7200e113ce8d2108d9e2704fd48e0a4e8b18c6def927731946e40c92779d0166",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -6429,7 +6437,7 @@
       "source_contacts": [
         {
           "card_data_hash": "58c53e65ea7f7d50fc69142a61a9a263b4b19c580934ca770db5267cc1b7e69f",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -6657,7 +6665,7 @@
       "source_contacts": [
         {
           "card_data_hash": "96eb6122e4858763e6523256aaaf2d42907195d85c09567729a1853a1f83bd88",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -6885,7 +6893,7 @@
       "source_contacts": [
         {
           "card_data_hash": "12daa490795035114d724814a2976eab2396b0ff80f82e894201d2daea2b2d1c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -7113,7 +7121,7 @@
       "source_contacts": [
         {
           "card_data_hash": "208c4ccdc638502a93749c6e3fa1fbfe5241a002a202667f8eb50dc1866c64ff",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -7339,7 +7347,7 @@
       "source_contacts": [
         {
           "card_data_hash": "5745cbd0a1dd3bb2fbbb57ce3b7a0feb86fc2956870ec1cce43c4684fcde308a",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -7567,7 +7575,7 @@
       "source_contacts": [
         {
           "card_data_hash": "c0b3146a812635fd55ad68d86d998b5f63d242c6259ca7aace2a8bcbc5a51c7a",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -7795,7 +7803,7 @@
       "source_contacts": [
         {
           "card_data_hash": "287bc6f66816b2ae402dcf6a929a5b8af89a39f694c20cba8da454c086d105e5",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -8023,7 +8031,7 @@
       "source_contacts": [
         {
           "card_data_hash": "58e2cfa6daf9b947362d445cc87b875865619abb17fb6f347040ef6eaa243fbd",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -8251,7 +8259,7 @@
       "source_contacts": [
         {
           "card_data_hash": "0800b499188c7a246b321db59c10d69e04328d94776dfffffd7deafd281f88dc",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -8479,7 +8487,7 @@
       "source_contacts": [
         {
           "card_data_hash": "d2b36a74b6620aac5b538a5899ea8c559d576953371847707a8cea899a437d0f",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -8705,7 +8713,7 @@
       "source_contacts": [
         {
           "card_data_hash": "506ec06c792a318a30fa175be75c8f5434369a439d65129cd7571f303359db76",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -8933,7 +8941,7 @@
       "source_contacts": [
         {
           "card_data_hash": "0faef479f021c94fe100ec7fece9775312460f5c429319ad827a3f1ca677078e",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -9168,7 +9176,7 @@
       "source_contacts": [
         {
           "card_data_hash": "d6c0cf2fafce50cafba3a05f76efb90fb0a410bff2070f4bf6e822ed92420e8c",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -9394,7 +9402,7 @@
       "source_contacts": [
         {
           "card_data_hash": "a55ef21b23532ce47441dea58f4a3284e495a634bffe16bf16ff5637efc96fc2",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -9620,7 +9628,7 @@
       "source_contacts": [
         {
           "card_data_hash": "41baabde6cd50cc59265dfd6e3f8dd4ce875fed018b5728c01f2fb23b378c65b",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -9846,7 +9854,7 @@
       "source_contacts": [
         {
           "card_data_hash": "8d7e0700e492c7da34912c6ac8b98d6ae0b07281d1878afb782b7e7693230b8b",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -10074,7 +10082,7 @@
       "source_contacts": [
         {
           "card_data_hash": "c6ca568601ad3a0133735199cc2955b0c5fa2f8c2eebf1ca3339c92d7a1721d8",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -10302,7 +10310,7 @@
       "source_contacts": [
         {
           "card_data_hash": "d99fb0b77e7a38d2750284ae60fc1456c05b232ff752ee6b1f841c687d94ccac",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -10530,7 +10538,7 @@
       "source_contacts": [
         {
           "card_data_hash": "61331773d5882def2d697604b7333608487af4ebe165c54fad5d7a8cdb87d078",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -10758,7 +10766,7 @@
       "source_contacts": [
         {
           "card_data_hash": "80fe702870fb7b7567404e93e8168adc242d906fa0af52946147c11ee138f1cb",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -10986,7 +10994,7 @@
       "source_contacts": [
         {
           "card_data_hash": "433571d728fdb026e7a147bc2042cb1104723e498242d4ca953d824c30e00504",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -11214,7 +11222,7 @@
       "source_contacts": [
         {
           "card_data_hash": "aaf61e0a6dcde3e7b1eaafaa641e7863f56be2c3b66589f0337b158bd0212d4a",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -11442,7 +11450,7 @@
       "source_contacts": [
         {
           "card_data_hash": "2de9d42b3a2592cc7a43f5830045dee3870d0f71a1bdf05f99cefc53c57fcff5",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -11670,7 +11678,7 @@
       "source_contacts": [
         {
           "card_data_hash": "866cad30c0bf45bd37cf738e32d1573b1d699e18f7a98637da4997ed3e29bc81",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -11898,7 +11906,7 @@
       "source_contacts": [
         {
           "card_data_hash": "9897b7983b600ab87c2c2e82808e70b8a96fc0adc0a3dfe20fa2025f80a62d94",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -12126,7 +12134,7 @@
       "source_contacts": [
         {
           "card_data_hash": "c253613d2f446eae468cc107be24de38ab975c25e2841e5b3edc8161edd116b7",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -12354,7 +12362,7 @@
       "source_contacts": [
         {
           "card_data_hash": "4018ab7e08cb150e9a1a2a950c962e044847fdfca02397ad78a5c2741bd68680",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -12582,7 +12590,7 @@
       "source_contacts": [
         {
           "card_data_hash": "eb22d566b259b4b7c5a924aa33b2866349bcde3fb9136de4bdd24d8370ec8fb7",
-          "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+          "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
           "not_claiming": [
             "official source",
             "seller possession",
@@ -12652,14 +12660,14 @@
   "sources": [
     {
       "cards_found": 55,
-      "encrypted_page_sha256": "3b6ea95d147e85437466f339361f33ac657fcf1e2a81ea8614b62fda5d45d8cb",
+      "encrypted_page_sha256": "e8c008f83b29efb3819e234f529142142f750d528602ed2b54d6110819bc83b1",
       "not_claiming": [
         "official source",
         "seller possession",
         "authenticity",
         "condition"
       ],
-      "payload_hash": "8310ea797779c97eb4335695f339f5ee8861750b76172d4d228dacb48c54017a",
+      "payload_hash": "00d1cc13c6eb44a40739f17f28317057ea5a1c511f6cde0ce4d20dfcdef384d9",
       "series": {
         "fullName": "Unnumbered Promotional",
         "id": 177,

@@ -64,6 +64,21 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] Ivy Pikachu artist attribution complete` 2026-07-31 · Codex —
+  Supersedes the blocker below. The 1996 glossy CoroCoro Pikachu now records
+  Keiji Kinebuchi as the artwork artist while preserving Ken Sugimori only as
+  the known erroneous illustrator credit printed on this variant. The aggregate
+  UPC row and CoroCoro child row carry the same split, their manifest hashes
+  match, and the assembled catalogue exposes both fields. The card page leads
+  with `Artwork by Keiji Kinebuchi`, links artist discovery through Keiji, and
+  explains the Ken credit separately in About and Card details. All 40 Japanese
+  release audits passed during regeneration; scoped Python compilation, ESLint,
+  production Pages build, exact assembled-row audit, manifest-hash audit, and a
+  local desktop visual/DOM check passed. Unrelated upstream source-page hash
+  drift was excluded. No physical-card truth, authenticity, condition, or grade
+  was inferred; `mockups/`, protocol, chain, payment, listing, and settlement
+  semantics are unchanged.
+
 - `[BLOCKING: Ivy Pikachu artist attribution]` 2026-07-31 · Codex —
   The 1996 glossy CoroCoro Pikachu currently collapses its erroneous printed
   `Ken Sugimori` credit into the artwork-artist field. This bounded catalogue and

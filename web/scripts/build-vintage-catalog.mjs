@@ -240,6 +240,8 @@ const normalizeRow = (row, release, corpus) => {
     researchBySetId.set(row.release_family_id, releaseResearch(release, corpus, releaseLabel))
   }
   const illustrator = row.illustrator?.display || row.illustrator?.name || provider.artist || provider.illustrator || legacy?.illustrator || ''
+  const printedIllustratorCredit = row.illustrator?.printed_credit || ''
+  const printedIllustratorCreditStatus = row.illustrator?.printed_credit_status || ''
   return {
     ...(legacy || {}),
     uid,
@@ -273,6 +275,8 @@ const normalizeRow = (row, release, corpus) => {
     source_page_url: provenance.source_page_url || sourceContact.source_page_url || '',
     illustrator,
     illustrator_status: illustrator ? 'source_recorded' : 'not_recorded_in_current_sources',
+    printed_illustrator_credit: printedIllustratorCredit,
+    printed_illustrator_credit_status: printedIllustratorCreditStatus,
     release_family_label: releaseLabel,
     release_date: row.product_scope?.release_date || setMeta.release_date || release.entry.release_date || '',
     release_type: row.product_scope?.release_type || setMeta.release_type || '',

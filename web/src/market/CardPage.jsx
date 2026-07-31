@@ -46,7 +46,8 @@ function CardContext({ card, context, onOpenArtist }) {
         {context.laterHistory && <p className="cp-contextlater">{context.laterHistory}</p>}
       </div>
       <dl className="cp-contextfacts">
-        <div><dt>Artist</dt><dd>{context.artist ? <button type="button" className="cp-artistlink" onClick={() => onOpenArtist?.(context.artist)}>{context.artist}<span>view catalogue →</span></button> : 'Not recorded in source'}</dd></div>
+        <div><dt>Artwork artist</dt><dd>{context.artist ? <button type="button" className="cp-artistlink" onClick={() => onOpenArtist?.(context.artist)}>{context.artist}<span>view catalogue →</span></button> : 'Not recorded in source'}</dd></div>
+        {context.printedArtistCredit && <div className="cp-crediterror"><dt>Printed credit</dt><dd>{context.printedArtistCredit}<small>{context.printedArtistCreditStatus === 'known_incorrect_attribution' ? 'Known attribution error on this printing' : 'Recorded from this printing'}</small></dd></div>}
         <div><dt>Released</dt><dd>{context.releasePeriod || 'Not recorded'}</dd></div>
         <div><dt>Distribution</dt><dd>{context.distribution}</dd></div>
         <div><dt>Card number</dt><dd>{number.primary}{number.catalogueOrder ? <small>Catalogue order {number.catalogueOrder}</small> : null}</dd></div>
@@ -98,7 +99,8 @@ function CardDetails({ card, listings, sales }) {
           <Fact label="Language">{card.language}</Fact>
           <Fact label="Type">{typeLine}</Fact>
           <Fact label="Element">{card.element}</Fact>
-          <Fact label="Artist">{context.artist}</Fact>
+          <Fact label="Artwork artist">{context.artist}</Fact>
+          {context.printedArtistCredit && <Fact label="Printed credit">{`${context.printedArtistCredit}${context.printedArtistCreditStatus === 'known_incorrect_attribution' ? ' · known error' : ''}`}</Fact>}
           <Fact label="Released">{context.releasePeriod}</Fact>
           <Fact label="IKZ cost">{card.ikz_cost}</Fact>
           <Fact label="Attack">{card.attack}</Fact>
@@ -275,7 +277,7 @@ export default function CardPage({
         <h1>{cardDisplayName(card)}</h1>
         <p className="cp-meta mono"><b>{number.primary}</b>{number.catalogueOrder && <span>catalogue {number.catalogueOrder}</span>}<span>{cardRarity(card)}</span><span>{card.category}</span>{card.element && <span>{card.element}</span>}</p>
         {cardOriginText(card) && <p className="cp-altname mono">{cardOriginText(card)}</p>}
-        {artist && <button type="button" className="cp-artistjump" onClick={() => onOpenArtist?.(artist)}><span>Illustrated by</span><b>{artist}</b><i>View artist catalogue →</i></button>}
+        {artist && <button type="button" className="cp-artistjump" onClick={() => onOpenArtist?.(artist)}><span>Artwork by</span><b>{artist}</b><i>View artist catalogue →</i></button>}
         <div className="cp-stance" aria-label="Your collection status">
           <span className="mono">Your Binder</span>
           <button className={stance === 'have' ? 'have on' : 'have'} onClick={() => onChangeStance(card.uid, 'have')}>✓ Have</button>

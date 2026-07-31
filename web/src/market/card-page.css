@@ -60,6 +60,8 @@
 .cp-contextfacts dt { color: var(--dim); font: 8px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
 .cp-contextfacts dd { min-width: 0; margin: 0; color: var(--ink); font-size: 12px; font-weight: 650; line-height: 1.35; overflow-wrap: anywhere; }
 .cp-contextfacts dd small { display: block; margin-top: 2px; color: var(--dim); font: 8.5px var(--mono); font-weight: 400; }
+.cp-contextfacts .cp-crediterror { background: color-mix(in srgb, var(--signal) 7%, transparent); }
+.cp-contextfacts .cp-crediterror dd { color: var(--signal); }
 .cp-artistlink { display: grid; gap: 2px; color: inherit; background: transparent; border: 0; padding: 0; cursor: pointer; text-align: left; font: inherit; font-weight: inherit; }
 .cp-artistlink:hover { color: var(--agent); }
 .cp-artistlink span { color: var(--agent); font: 7.5px var(--mono); font-weight: 400; text-transform: uppercase; letter-spacing: .05em; }
