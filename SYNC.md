@@ -64,6 +64,18 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: card and artist discovery routes]` 2026-07-31 · Codex —
+  Card pages currently end after their own record except for the small set of
+  manually verified cross-printing relationships. This bounded web change will
+  add deterministic, explained links to cards sharing an artist, depicted card,
+  or release; make recorded artist names durable links; and give each artist a
+  catalogue-scoped page with search and filters. Artist identity remains the
+  normalized credited name within the active catalogue—not a claim that
+  identical text across catalogues identifies one person. Relatedness is a
+  navigation aid, not evidence of printing equivalence, ownership, authenticity,
+  condition, value, or a physical card. `mockups/`, source corpora, protocol,
+  chain, payments, listings, and settlement semantics remain out of scope.
+
 - `[passive] catalogue-wide Vintage Pokémon research complete` 2026-07-30 · Codex —
   Supersedes the blocker below. All 4,872 assembled Vintage Pokémon rows across
   all 223 release families now resolve a source-linked research panel with
