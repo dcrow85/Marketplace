@@ -7,6 +7,7 @@ import { useScrollLock } from '../useScrollLock.js'
 import { getPhoto, putPhoto } from '../scan/photoStore.js'
 import { preparePhoto } from '../scan/preparePhoto.js'
 import { handleFor } from '../identity.js'
+import { cardOriginText } from '../cards/cardNames.js'
 import {
   nm, retryImg, wantActive, Frow, mpill, PROV_LABEL,
   COND_TYPES, GRADERS, COND_GRADES, COND_OPTS, gradePrompt,
@@ -263,8 +264,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
             <h2 className="m-name">{nm(c)}</h2>
             <div className="m-sub">
               <span className="cnum mono">#{c.num}</span>
-              {(c.romaji || c.name_en) && nm(c) !== (c.romaji || c.name_en) ? <span> · {c.romaji || c.name_en}</span> : null}
-              {c.name_is_en && <span className="enmark">EN</span>}
+              {cardOriginText(c) && <span>· {cardOriginText(c)}</span>}
             </div>
             {onBrowseCard && <button type="button" className="cardpage-link mono" onClick={() => { onClose(); onBrowseCard(c.uid) }}>
               Open full card page <span>market · details · copies</span> →

@@ -1,10 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { retryImg } from '../binder/helpers.jsx'
+import { cardDisplayName, cardOriginText } from '../cards/cardNames.js'
 import { artistCards } from '../cards/discovery.js'
 import './artist-page.css'
-
-const text = (value) => String(value || '').trim()
-const displayName = (card) => text(card.name_en) || text(card.name_ja) || text(card.num) || 'Untitled card'
 
 export default function ArtistPage({ artist, cards = [], catalog, onBack, onOpenCard }) {
   const [query, setQuery] = useState('')
@@ -20,7 +18,7 @@ export default function ArtistPage({ artist, cards = [], catalog, onBack, onOpen
   }])).values()].sort((a, b) => a.label.localeCompare(b.label)), [credited])
   const subjects = useMemo(() => {
     const counts = new Map()
-    for (const card of credited) counts.set(displayName(card), (counts.get(displayName(card)) || 0) + 1)
+    for (const card of credited) counts.set(cardDisplayName(card), (counts.get(cardDisplayName(card)) || 0) + 1)
     return [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8)
   }, [credited])
   const filtered = useMemo(() => {
@@ -101,7 +99,7 @@ export default function ArtistPage({ artist, cards = [], catalog, onBack, onOpen
             {card.image ? <img src={card.image} alt="" loading="lazy" onError={(event) => retryImg(event, card.image)} /> : <i>◇</i>}
             {card.image_reference_only || card.display_allowed === false ? <em>reference</em> : null}
           </span>
-          <span className="artist-cardcopy"><b>{displayName(card)}</b>{card.name_ja && card.name_ja !== displayName(card) && <span>{card.name_ja}</span>}<small>{card.release_family_label || card.set_id}</small><small>{card.num || 'number not recorded'}{card.release_date ? ` · ${String(card.release_date).slice(0, 4)}` : ''}</small></span>
+          <span className="artist-cardcopy"><b>{cardDisplayName(card)}</b>{cardOriginText(card) && <span className="artist-cardorigin mono">{cardOriginText(card)}</span>}<small>{card.release_family_label || card.set_id}</small><small>{card.num || 'number not recorded'}{card.release_date ? ` · ${String(card.release_date).slice(0, 4)}` : ''}</small></span>
         </button>)}
       </div> : <div className="artist-empty"><strong>No cards match this view.</strong><button type="button" onClick={() => { setQuery(''); setLanguage('all'); setRelease('all') }}>Show the full catalogue</button></div>}
       {shown.length < filtered.length && <button ref={moreRef} type="button" className="artist-more" onClick={() => setLimit((current) => Math.min(current + 120, filtered.length))}>Keep browsing · {filtered.length - shown.length} more cards</button>}

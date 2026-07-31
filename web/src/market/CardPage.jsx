@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { retryImg } from '../binder/helpers.jsx'
 import { cardContext, cardNumber, cardRarity } from '../cards/cardContext.js'
+import { cardDisplayName, cardOriginText } from '../cards/cardNames.js'
 import { artistCredit } from '../cards/cardRoute.js'
 import { relatedCards } from '../cards/discovery.js'
 import { avatarSVG } from '../identity.js'
@@ -77,7 +78,7 @@ function RelatedDiscovery({ card, byUid, onOpenCard }) {
         <span className="cp-discoveryart">{relatedCard.image
           ? <img src={assetSrc(relatedCard.image)} alt="" loading="lazy" onError={(event) => retryImg(event, assetSrc(relatedCard.image))} />
           : <i>◇</i>}</span>
-        <span className="cp-discoverycopy"><span className="cp-discoveryreasons">{reasons.map((reason) => <em key={reason}>{reason}</em>)}</span><b>{relatedCard.name_en || relatedCard.name_ja || relatedCard.num}</b><small>{relatedCard.release_family_label || relatedCard.set_id}</small><small>{relatedCard.language || ''}{relatedCard.num ? ` · ${relatedCard.num}` : ''}</small></span>
+        <span className="cp-discoverycopy"><span className="cp-discoveryreasons">{reasons.map((reason) => <em key={reason}>{reason}</em>)}</span><b>{cardDisplayName(relatedCard)}</b>{cardOriginText(relatedCard) && <span className="cp-cardorigin mono">{cardOriginText(relatedCard)}</span>}<small>{relatedCard.release_family_label || relatedCard.set_id}</small><small>{relatedCard.num || ''}</small></span>
       </button>)}
     </div>
   </section>
@@ -152,7 +153,7 @@ function RelatedPrintings({ card, byUid, onOpenCard }) {
     </div>
     <div className="cp-printinggrid">
       {printings.map(({ card: related, relationship }) => {
-        const relatedName = related.name_en || related.name_ja || related.num || related.uid
+        const relatedName = cardDisplayName(related)
         return <button type="button" className="cp-printing" key={`${relationship.id}:${related.uid}`}
           onClick={() => onOpenCard?.(related)}>
           <span className="cp-printingart">
@@ -161,9 +162,8 @@ function RelatedPrintings({ card, byUid, onOpenCard }) {
               : <i aria-hidden="true">◇</i>}
           </span>
           <span className="cp-printingcopy">
-            <span className="cp-printinglang mono">{related.language || related.language_code || 'Printing'}</span>
+            <span className="cp-printinglang mono">{cardOriginText(related) || related.language_code || 'Printing'}</span>
             <b>{relatedName}</b>
-            {related.name_ja && related.name_ja !== relatedName && <span>{related.name_ja}</span>}
             <small>{related.release_family_label || related.set_id} · {related.num}</small>
             <em>{relationship.label || 'Verified related printing'}</em>
           </span>
@@ -204,7 +204,7 @@ export default function CardPage({
 
   useEffect(() => {
     const previousTitle = document.title
-    document.title = `${card.name_en || card.name_ja || card.num || 'Card'} · Cairn`
+    document.title = `${cardDisplayName(card)} · Cairn`
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     return () => { document.title = previousTitle }
   }, [card])
@@ -263,7 +263,7 @@ export default function CardPage({
     <header className="cp-hero">
       <div className="cp-artstage">
         {card.image
-          ? <img src={assetSrc(card.image)} alt={card.name_en || card.num} onError={(event) => retryImg(event, assetSrc(card.image))} />
+          ? <img src={assetSrc(card.image)} alt={cardDisplayName(card)} onError={(event) => retryImg(event, assetSrc(card.image))} />
           : <div className="cp-noart">{card.image_suppressed ? 'Reference image not displayed' : 'Catalogue image not recorded'}</div>}
         {card.image && (card.display_allowed === false || card.image_reference_only)
           ? <span className="cp-reference">catalogue reference</span>
@@ -272,9 +272,9 @@ export default function CardPage({
       </div>
       <div className="cp-identity">
         <div className="cp-kicker mono"><span>{context.label || card.release_family || 'Azuki TCG'}</span><i>Card record</i></div>
-        <h1>{card.name_en || card.name_ja || card.uid}</h1>
+        <h1>{cardDisplayName(card)}</h1>
         <p className="cp-meta mono"><b>{number.primary}</b>{number.catalogueOrder && <span>catalogue {number.catalogueOrder}</span>}<span>{cardRarity(card)}</span><span>{card.category}</span>{card.element && <span>{card.element}</span>}</p>
-        {card.name_ja && card.name_ja !== card.name_en && <p className="cp-altname">{card.name_ja}{card.romaji ? ` · ${card.romaji}` : ''}</p>}
+        {cardOriginText(card) && <p className="cp-altname mono">{cardOriginText(card)}</p>}
         {artist && <button type="button" className="cp-artistjump" onClick={() => onOpenArtist?.(artist)}><span>Illustrated by</span><b>{artist}</b><i>View artist catalogue →</i></button>}
         <div className="cp-stance" aria-label="Your collection status">
           <span className="mono">Your Binder</span>

@@ -42,6 +42,7 @@
 .artist-cardcopy b, .artist-cardcopy span, .artist-cardcopy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .artist-cardcopy b { color: var(--ink); font: 550 15px var(--serif); }
 .artist-cardcopy span { color: var(--ink2); font-size: 10px; }
+.artist-cardcopy .artist-cardorigin { color: var(--dim); font-size: 8px; }
 .artist-cardcopy small { color: var(--dim); font: 8px var(--mono); }
 .artist-page.size-s .artist-cardcopy { padding: 7px; }
 .artist-page.size-s .artist-cardcopy b { font-size: 12px; }

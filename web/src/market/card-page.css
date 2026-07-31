@@ -21,7 +21,7 @@
 .cp-meta b { color: var(--ink); font-size: 13px; }
 .cp-meta span { position: relative; }
 .cp-meta span::before { content: '·'; position: absolute; left: -8px; color: var(--faint); }
-.cp-altname { margin: 8px 0 0; color: var(--dim); font-family: var(--serif); font-size: 14px; }
+.cp-altname { margin: 8px 0 0; color: var(--dim); font-size: 11px; letter-spacing: .025em; }
 .cp-artistjump { width: fit-content; display: inline-flex; align-items: baseline; gap: 7px; margin-top: 13px; color: var(--ink2); background: color-mix(in srgb, var(--agent-bg) 62%, transparent); border: 1px solid color-mix(in srgb, var(--agent) 25%, var(--rule)); border-radius: 999px; padding: 7px 10px; cursor: pointer; text-align: left; }
 .cp-artistjump:hover { color: var(--agent); border-color: var(--agent); }
 .cp-artistjump span { color: var(--dim); font: 8px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
@@ -99,6 +99,7 @@
 .cp-discoverycopy { min-width: 0; display: grid; gap: 3px; padding: 9px; }
 .cp-discoverycopy b, .cp-discoverycopy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cp-discoverycopy b { color: var(--ink); font: 550 14px var(--serif); }
+.cp-discoverycopy .cp-cardorigin { color: var(--dim); font-size: 7.5px; }
 .cp-discoverycopy small { color: var(--dim); font: 7.5px var(--mono); }
 .cp-discoveryreasons { display: flex; gap: 3px; min-height: 17px; }
 .cp-discoveryreasons em { overflow: hidden; color: var(--agent); background: var(--agent-bg); border-radius: 999px; padding: 3px 5px; font: 6.8px var(--mono); font-style: normal; text-transform: uppercase; letter-spacing: .04em; text-overflow: ellipsis; white-space: nowrap; }

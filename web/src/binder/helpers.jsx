@@ -1,7 +1,8 @@
 /* eslint-disable react-refresh/only-export-components -- shared helpers, not hot-reload roots */
 // Shared card-metadata helpers + condition vocabulary for the binder's components.
+import { cardDisplayName } from '../cards/cardNames.js'
 
-export const nm = (c) => c.name_ja || c.name_en || c.uid
+export const nm = cardDisplayName
 
 // Flaky-network resilience: the card images all serve 200, but a bad connection drops
 // a fraction of the parallel lazy loads. Retry a failed image a few times with backoff

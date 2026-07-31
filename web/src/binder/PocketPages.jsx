@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { entryFor as effStance } from './collection.js'
 import { nm, retryImg, provBadge } from './helpers.jsx'
+import { cardOriginText } from '../cards/cardNames.js'
 
 const releaseLabel = (card) => card.release_family_label || card.set_label || card.product_channel_label || ''
 const MOBILE_QUERY = '(max-width: 640px)'
@@ -73,6 +74,7 @@ export default function PocketPages({
                 <span className="bv-mobile-cardinfo">
                   {releaseLabel(c) && <span className="mono bv-mobile-kicker">{releaseLabel(c)}</span>}
                   <span className="bv-mobile-name">{nm(c)}</span>
+                  {cardOriginText(c) && <span className="mono bv-mobile-origin">{cardOriginText(c)}</span>}
                   <span className="mono bv-mobile-sub">{c.num} · Have{(e.copies || 1) > 1 ? ` · ×${e.copies}` : ''}</span>
                 </span>
                 {fromAsk != null && <button type="button" className="bv-from onart mono"
@@ -99,6 +101,7 @@ export default function PocketPages({
               <span className="bv-mobile-cardinfo">
                 {releaseLabel(c) && <span className="mono bv-mobile-kicker">{releaseLabel(c)}</span>}
                 <span className="bv-mobile-name">{nm(c)}</span>
+                {cardOriginText(c) && <span className="mono bv-mobile-origin">{cardOriginText(c)}</span>}
                 <span className="mono bv-mobile-sub">{c.num} · {e.stance === 'want' ? 'Want' : 'Not marked'}</span>
               </span>
               {fromAsk != null && <button type="button" className="bv-from mono"

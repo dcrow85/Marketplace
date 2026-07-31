@@ -64,6 +64,20 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] card name hierarchy complete` 2026-07-31 · Codex —
+  Supersedes the blocker below. Card presentation now has one shared naming rule
+  across binder cells and modals, mobile binder cards, market/checkout tiles, full
+  card pages, related-card and related-printing paths, and artist catalogues. The
+  stable catalogue display label leads; a compact origin line follows for recorded
+  Vintage languages. Japanese cards always show `JP`: the recorded distinct
+  Japanese-script title appears when present, otherwise the honest fallback is
+  `Japanese printing`. English printings show `EN · English printing`; Azuki cards
+  do not gain a false language label. No translation or cross-printing title was
+  inferred. The 5,226-row naming audit, scoped ESLint, production Pages build,
+  desktop card/artist visual checks, and 390 px no-overflow check pass. `mockups/`,
+  catalogue source data, protocol, chain, payment, listing, and settlement semantics
+  were not changed. Not deployed pending an explicit production request.
+
 - `[BLOCKING: card name hierarchy]` 2026-07-31 · Codex —
   Catalogue surfaces currently mix Japanese-first, English-first, and conditional
   alternate-name treatments. This bounded web change will use the recorded English

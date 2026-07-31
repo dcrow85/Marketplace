@@ -2,12 +2,14 @@
 // tables borrow this exact skeleton so every page speaks one visual language.
 import { entryFor as effStance } from './collection.js'
 import { nm, retryImg, wantActive, capMeta, provBadge } from './helpers.jsx'
+import { cardOriginText } from '../cards/cardNames.js'
 
 export default function Card({ c, store, setStance, setField, showSet, setLabel, pick, onOpen, onMarket, userPhoto, fromAsk, onQuickSell, haveActionsGuide, onUseHaveAction }) {
   const e = effStance(c, store)
   const have = e.stance === 'have'
   const ring = e.stance === 'pass' ? 's-pass' : e.grail ? 's-grail' : have ? 's-have' : e.stance === 'want' ? (wantActive(c, store) ? 's-want' : 's-wish') : ''
   const meta = capMeta(c, e, store)
+  const origin = cardOriginText(c)
   return (
     <div className={'cell ' + (have ? 'own' : 'ghost') + (pick ? ' is-pick' : '') + (e.stance === 'pass' ? ' passed' : '')}>
       <div className="stancebar">
@@ -26,7 +28,7 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
       {haveActionsGuide}
       <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
-        <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{c.romaji || (c.name_is_en ? 'EN' : '')}</div></div>
+        <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{origin}</div></div>
         {(userPhoto || c.image) && <img src={userPhoto || c.image} alt={nm(c)} loading="lazy" decoding="async" onError={userPhoto ? undefined : (e) => retryImg(e, c.image)} />}
         {userPhoto && <span className="yoursflag" title="your photo">yours</span>}
         {c.holo ? <span className="holodot" title={c.star_alt ? 'star / alternate-art signal' : 'holo'} /> : null}
@@ -36,7 +38,7 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
         {showSet && <div className="cset">{setLabel}</div>}
         <div className="cap-top"><span className="cnum">{c.num}</span><span className="cja">{nm(c)}</span></div>
         <div className="cap-sub">
-          <span className="crom">{c.romaji || c.name_en || ''}{c.name_is_en && <span className="enmark">EN</span>}</span>
+          <span className="crom">{origin}</span>
           <span className={'cmeta ' + meta.cls}>{meta.t}</span>
         </div>
         {fromAsk != null && <button type="button" className="cap-avail mono"
