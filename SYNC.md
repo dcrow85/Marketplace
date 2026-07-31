@@ -64,6 +64,16 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] card and artist discovery deployed` 2026-07-31 · Codex —
+  Supersedes only the deployment-status sentence in the completion entry below.
+  Source `7a61a23` is pushed to `main` and live on Cloudflare Pages deployment
+  `0ed7f661`. The immutable deployment, `cairn.cards`, and `www.cairn.cards`
+  return the direct Ken Sugimori artist route and Sabrina's Gengar card route;
+  the apex bundle contains `Artist catalogue`, `Keep exploring`, and
+  `nearby in catalogue`, and mirrored Vintage artwork serves `200` with an
+  immutable cache policy. The existing Pages Functions/KV binding was compiled
+  and deployed; Railway was not changed because this is a web-only feature.
+
 - `[passive] card and artist discovery routes complete` 2026-07-31 · Codex —
   Supersedes the blocker below. Every card page now offers twelve deterministic,
   plainly labeled onward paths: same card, recorded artist, release, or an honest
