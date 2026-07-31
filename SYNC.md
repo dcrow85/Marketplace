@@ -64,6 +64,22 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[passive] card and artist discovery routes complete` 2026-07-31 · Codex —
+  Supersedes the blocker below. Every card page now offers twelve deterministic,
+  plainly labeled onward paths: same card, recorded artist, release, or an honest
+  nearby-catalogue fallback for sparse one-off records. All 5,226 rows across
+  Azuki and Vintage have full discovery coverage. Recorded artist credits link
+  into catalogue-scoped pages with recurring-card shortcuts, search, language
+  and release filters, S/M/L controls, and progressive free scrolling; the Pages
+  build emits 111 durable artist routes. Unknown artists stay unlinked and are
+  never inferred. Scoped ESLint, the production build, route/image assembly,
+  5,226-row coverage audit, direct Vintage and Azuki routes, card/artist round
+  trips, filters, and 390 px no-overflow visual checks pass. Relatedness remains
+  navigation—not evidence of printing equivalence, possession, authenticity,
+  condition, value, or a physical card. `mockups/`, protocol, chain, payments,
+  listings, and settlement semantics were not changed. Not deployed in this
+  lane pending an explicit production request.
+
 - `[BLOCKING: card and artist discovery routes]` 2026-07-31 · Codex —
   Card pages currently end after their own record except for the small set of
   manually verified cross-printing relationships. This bounded web change will

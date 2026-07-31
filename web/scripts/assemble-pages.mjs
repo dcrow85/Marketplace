@@ -49,6 +49,11 @@ await writeFile(appIndex, deferred)
 const cardSlug = (uid) => String(uid).trim().toLowerCase()
   .replace(/[^a-z0-9]+/g, '-')
   .replace(/^-+|-+$/g, '')
+const artistCredit = (card) => String(card.illustrator || card.artist || '')
+  .replace(/^illus(?:tration)?\.?\s*/i, '')
+  .replace(/\s+/g, ' ')
+  .trim()
+const artistSlug = (name) => cardSlug(String(name).normalize('NFKD').replace(/[\u0300-\u036f]/g, ''))
 const catalogues = await Promise.all(CATALOGS.map(async (catalog) => ({
   config: catalog,
   payload: JSON.parse(await readFile(new URL(`../public/${catalog.path}`, import.meta.url), 'utf8')),
@@ -67,6 +72,19 @@ for (const card of routeCards) {
 const routeSlugs = new Set(routeBySlug.keys())
 await Promise.all([...routeSlugs].map(async (slug) => {
   const route = new URL(`app/cards/${slug}/`, dist)
+  await mkdir(route, { recursive: true })
+  await writeFile(new URL('index.html', route), deferred)
+}))
+
+// Artist catalogues are first-class, shareable discovery pages too. A matching
+// name may exist in more than one catalogue; the route shell is shared and the
+// catalogue query keeps the client-side record set explicit.
+const artistSlugs = new Set(catalogues.flatMap(({ payload }) => (payload.cards || [])
+  .map((card) => artistCredit(card))
+  .filter(Boolean)
+  .map((artist) => artistSlug(artist))))
+await Promise.all([...artistSlugs].map(async (slug) => {
+  const route = new URL(`app/artists/${slug}/`, dist)
   await mkdir(route, { recursive: true })
   await writeFile(new URL('index.html', route), deferred)
 }))

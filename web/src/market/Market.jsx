@@ -12,12 +12,13 @@ import SettlePage from './SettlePage.jsx'
 import BuyNow from './BuyNow.jsx'
 import CardZoom from './CardZoom.jsx'
 import CardPage from './CardPage.jsx'
+import ArtistPage from './ArtistPage.jsx'
 import MiniCard from '../components/MiniCard.jsx'
 import AskAnko from '../trade/AskAnko.jsx'
 import { handleFor, avatarSVG } from '../identity.js'
 import { cleanProfilePhoto } from '../profile/profilePhoto.js'
 import { cleanPayPalHandle, sellerAcceptsPayPal } from '../payments/rails.js'
-import { cardFromSlug } from '../cards/cardRoute.js'
+import { artistFromSlug, cardFromSlug } from '../cards/cardRoute.js'
 import './market.css'
 
 // The market: other people's tables, run like a card show. You pick cards up (zoom)
@@ -146,7 +147,7 @@ function MarketBag({ orders, cardCount, cashTotal, byUid, onBack, onOpenOrder })
   </div>
 }
 
-export default function Market({ accountId, agentName = 'Anko', catalog, focusSlug, focusSellerId, onClearFocus, onOpenCard }) {
+export default function Market({ accountId, agentName = 'Anko', catalog, focusSlug, focusSellerId, focusArtistSlug, onClearFocus, onClearArtistFocus, onOpenCard, onOpenArtist }) {
   const data = useCatalog(catalog)
   const mkt = useMarket(catalog)
   const [sel, setSel] = useState(null) // seller id whose table is open
@@ -205,6 +206,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   const byUid = useByUid(data)
   const focusCard = cardFromSlug(data?.cards, focusSlug)
   const focusUid = focusCard?.uid || null
+  const focusArtist = artistFromSlug(data?.cards, focusArtistSlug)
   const marketNeedle = aq.trim().toLowerCase()
   const cardMatchesSearch = (c) => !marketNeedle || [c?.name_en, c?.name_ja, c?.romaji, c?.num, c?.element, c?.rarity]
     .filter(Boolean).join(' ').toLowerCase().includes(marketNeedle)
@@ -513,6 +515,13 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
   )
 
   // ---- canonical card page: card identity first, then each physical seller copy ----
+  if (focusArtistSlug) {
+    if (!data) return <div className="cp-empty"><strong>Opening the artist catalogue…</strong></div>
+    if (!focusArtist) return <div className="cp-empty"><strong>Artist page not found.</strong><p>This catalogue does not contain that recorded artist credit.</p><button onClick={onClearArtistFocus}>Back to the market</button></div>
+    return <ArtistPage artist={focusArtist} cards={data.cards || []} catalog={catalog}
+      onBack={onClearArtistFocus} onOpenCard={(card) => openCardPage(card, null, null)} />
+  }
+
   if (focusSlug) {
     if (!focusCard) return <div className="cp-empty"><strong>Card page not found.</strong><p>This catalogue does not contain that card route.</p><button onClick={onClearFocus}>Back to the market</button></div>
     const asks = allSellers.flatMap((seller) => seller.listings
@@ -526,7 +535,7 @@ export default function Market({ accountId, agentName = 'Anko', catalog, focusSl
         setSwapMsg(`${focusCard.name_en} is in your pile at ${sellerName(allSellers.find((seller) => seller.id === sellerId))}'s table.`)
       }}
       onVisitSeller={visitSellerPile} onBack={onClearFocus} onChangeStance={changeMyStance}
-      byUid={byUid} onOpenCard={(related) => openCardPage(related, null, null)} />
+      byUid={byUid} onOpenCard={(related) => openCardPage(related, null, null)} onOpenArtist={onOpenArtist} />
   }
 
   if (!allSellers.length) return <div className="empty">No tables in {catalog.label || 'this catalogue'} yet.</div>

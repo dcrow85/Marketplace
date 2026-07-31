@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { retryImg } from '../binder/helpers.jsx'
 import { cardContext, cardNumber, cardRarity } from '../cards/cardContext.js'
+import { artistCredit } from '../cards/cardRoute.js'
+import { relatedCards } from '../cards/discovery.js'
 import { avatarSVG } from '../identity.js'
 import AskAnko from '../trade/AskAnko.jsx'
 import './card-page.css'
@@ -26,7 +28,7 @@ function EvidenceMark({ listing }) {
   return <span className="cp-evidence optional"><i>○</i><span><b>Catalogue art</b><small>photos optional at this ask</small></span></span>
 }
 
-function CardContext({ card, context }) {
+function CardContext({ card, context, onOpenArtist }) {
   const number = cardNumber(card)
   return <section className="cp-context" aria-labelledby="card-context-title">
     <div className="cp-contexthead">
@@ -43,7 +45,7 @@ function CardContext({ card, context }) {
         {context.laterHistory && <p className="cp-contextlater">{context.laterHistory}</p>}
       </div>
       <dl className="cp-contextfacts">
-        <div><dt>Artist</dt><dd>{context.artist || 'Not recorded in source'}</dd></div>
+        <div><dt>Artist</dt><dd>{context.artist ? <button type="button" className="cp-artistlink" onClick={() => onOpenArtist?.(context.artist)}>{context.artist}<span>view catalogue →</span></button> : 'Not recorded in source'}</dd></div>
         <div><dt>Released</dt><dd>{context.releasePeriod || 'Not recorded'}</dd></div>
         <div><dt>Distribution</dt><dd>{context.distribution}</dd></div>
         <div><dt>Card number</dt><dd>{number.primary}{number.catalogueOrder ? <small>Catalogue order {number.catalogueOrder}</small> : null}</dd></div>
@@ -60,6 +62,24 @@ function CardContext({ card, context }) {
         title={source.authority || ''}>{source.source || 'Source record'} ↗</a>)}</div>
     </div> : null}
     <p className="cp-contextboundary">Catalogue history describes the printing, not a seller&rsquo;s physical copy. It does not establish possession, authenticity, condition, or grade.</p>
+  </section>
+}
+
+function RelatedDiscovery({ card, byUid, onOpenCard }) {
+  const related = useMemo(() => relatedCards([...byUid.values()], card, 12), [byUid, card])
+  if (!related.length) return null
+  return <section className="cp-discovery" aria-labelledby="related-cards-title">
+    <div className="cp-sectionhead">
+      <div><span className="ek">Paths through the catalogue</span><h2 id="related-cards-title">Keep exploring</h2><p>Every connection says why it is here.</p></div>
+    </div>
+    <div className="cp-discoveryrail">
+      {related.map(({ card: relatedCard, reasons }) => <button type="button" className="cp-discoverycard" key={relatedCard.uid} onClick={() => onOpenCard?.(relatedCard)}>
+        <span className="cp-discoveryart">{relatedCard.image
+          ? <img src={assetSrc(relatedCard.image)} alt="" loading="lazy" onError={(event) => retryImg(event, assetSrc(relatedCard.image))} />
+          : <i>◇</i>}</span>
+        <span className="cp-discoverycopy"><span className="cp-discoveryreasons">{reasons.map((reason) => <em key={reason}>{reason}</em>)}</span><b>{relatedCard.name_en || relatedCard.name_ja || relatedCard.num}</b><small>{relatedCard.release_family_label || relatedCard.set_id}</small><small>{relatedCard.language || ''}{relatedCard.num ? ` · ${relatedCard.num}` : ''}</small></span>
+      </button>)}
+    </div>
   </section>
 }
 
@@ -157,6 +177,7 @@ function RelatedPrintings({ card, byUid, onOpenCard }) {
 export default function CardPage({
   card, listings, sales = [], myEntry, initialSellerId, agentName = 'Anko', roomNote,
   sellerName, inPile, onPickUp, onVisitSeller, onBack, onChangeStance, byUid, onOpenCard,
+  onOpenArtist,
 }) {
   const [sort, setSort] = useState('best')
   const [selectedSellerId, setSelectedSellerId] = useState(initialSellerId || listings[0]?.s.id || null)
@@ -179,6 +200,7 @@ export default function CardPage({
   const selectedPile = selected ? inPile(selected.s.id, card.uid) : null
   const context = cardContext(card)
   const number = cardNumber(card)
+  const artist = artistCredit(card)
 
   useEffect(() => {
     const previousTitle = document.title
@@ -253,6 +275,7 @@ export default function CardPage({
         <h1>{card.name_en || card.name_ja || card.uid}</h1>
         <p className="cp-meta mono"><b>{number.primary}</b>{number.catalogueOrder && <span>catalogue {number.catalogueOrder}</span>}<span>{cardRarity(card)}</span><span>{card.category}</span>{card.element && <span>{card.element}</span>}</p>
         {card.name_ja && card.name_ja !== card.name_en && <p className="cp-altname">{card.name_ja}{card.romaji ? ` · ${card.romaji}` : ''}</p>}
+        {artist && <button type="button" className="cp-artistjump" onClick={() => onOpenArtist?.(artist)}><span>Illustrated by</span><b>{artist}</b><i>View artist catalogue →</i></button>}
         <div className="cp-stance" aria-label="Your collection status">
           <span className="mono">Your Binder</span>
           <button className={stance === 'have' ? 'have on' : 'have'} onClick={() => onChangeStance(card.uid, 'have')}>✓ Have</button>
@@ -269,9 +292,11 @@ export default function CardPage({
       </div>
     </header>
 
-    {card.canonical_row_id && <CardContext card={card} context={context} />}
+    {card.canonical_row_id && <CardContext card={card} context={context} onOpenArtist={onOpenArtist} />}
 
     <RelatedPrintings card={card} byUid={byUid} onOpenCard={onOpenCard} />
+
+    <RelatedDiscovery card={card} byUid={byUid} onOpenCard={onOpenCard} />
 
     <section className="cp-marketsection" aria-labelledby="available-copies">
       <div className="cp-sectionhead">
