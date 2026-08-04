@@ -41,15 +41,13 @@ if (expectedImagePaths.size !== assetsByUpstreamPath.size) {
 await Promise.all([...assetsByUpstreamPath.values()].map((asset) => access(new URL(`../public/${asset.local_path}`, import.meta.url))))
 
 const seenUids = new Set()
-const catalogueCards = cards.map((card) => {
+const catalogueCards = cards.flatMap((card) => {
   const slug = text(card.slug)
   const code = text(card.code)
   if (!slug || !code || !text(card.name) || !text(card.setCode) || !text(card.set)) {
     throw new Error(`Palify card lacks identity fields: ${JSON.stringify({ slug, code, name: card.name, setCode: card.setCode, set: card.set })}`)
   }
-  const uid = `palify:${slug}`
-  if (seenUids.has(uid)) throw new Error(`Palify catalogue UID collision: ${uid}`)
-  seenUids.add(uid)
+  const canonicalUid = `palify:${slug}`
   const printings = (card.printings || []).map((printing) => {
     const printingAsset = assetFor(printing.image)
     return {
@@ -62,13 +60,26 @@ const catalogueCards = cards.map((card) => {
       upstream_image_url: printingAsset?.upstream_url || '',
     }
   }).filter((printing) => printing.code)
-  const primaryAsset = assetFor(card.image)
+  const basePrintings = printings.filter((printing) => !printing.variant)
+  if (basePrintings.length !== 1 || basePrintings[0].code !== code) {
+    throw new Error(`Palify card must have one matching base printing: ${code}`)
+  }
   const hasAlternatePrinting = printings.some((printing) => printing.variant)
-  return {
+  return printings.map((printing, printingIndex) => {
+    const isAlternatePrinting = printing.variant
+    const uid = isAlternatePrinting ? `${canonicalUid}:printing:${printing.code.toLowerCase()}` : canonicalUid
+    if (seenUids.has(uid)) throw new Error(`Palify catalogue UID collision: ${uid}`)
+    seenUids.add(uid)
+    return {
     uid,
     row_id: uid,
-    canonical_row_id: uid,
-    card_id: code,
+    canonical_row_id: canonicalUid,
+    card_id: printing.code,
+    base_card_id: code,
+    printing_code: printing.code,
+    printing_index: printingIndex,
+    printing_family_size: printings.length,
+    is_alternate_printing: isAlternatePrinting,
     catalog_profile: policy.catalog_id,
     set_id: `palify_${text(card.setCode).toLowerCase()}`,
     source_set_label: text(card.set),
@@ -77,7 +88,7 @@ const catalogueCards = cards.map((card) => {
     release_type: releaseType(text(card.setCode)),
     product_channel: productChannel(text(card.setCode)),
     product_channel_label: productChannelLabel(text(card.setCode)),
-    num: code,
+    num: printing.code,
     name_en: text(card.name),
     name_ja: text(card.nameJp),
     name_is_en: true,
@@ -88,21 +99,21 @@ const catalogueCards = cards.map((card) => {
     subtypes: [text(card.subtype)].filter(Boolean),
     types: [text(card.type), text(card.subtype)].filter(Boolean),
     element: text(card.color),
-    rarity: text(card.rarity),
-    image: primaryAsset?.local_path || '',
-    image_status: primaryAsset ? 'palify_authorized_local_catalogue_reference' : 'not_recorded_by_source',
+    rarity: printing.rarity || text(card.rarity),
+    image: printing.image,
+    image_status: printing.image ? 'palify_authorized_local_catalogue_reference' : 'not_recorded_by_source',
     image_reference_only: true,
-    display_allowed: Boolean(card.image),
-    image_hosting: primaryAsset ? 'cairn_public_asset' : 'none',
-    image_asset_sha256: primaryAsset?.sha256 || '',
-    image_asset_bytes: primaryAsset?.bytes || 0,
-    upstream_image_url: primaryAsset?.upstream_url || '',
+    display_allowed: Boolean(printing.image),
+    image_hosting: printing.image ? 'cairn_public_asset' : 'none',
+    image_asset_sha256: printing.image_asset_sha256,
+    image_asset_bytes: printing.image_asset_bytes,
+    upstream_image_url: printing.upstream_image_url,
     provenance: 'Palify catalogue record and authorized card-image reference; not seller evidence or physical-card proof.',
     source_authority: 'Palify hand-checked catalogue API',
-    source_page_url: `https://palify.org/cards/${slug}`,
+    source_page_url: `https://palify.org/card/${slug}`,
     source_api_url: policy.source_api,
     source_snapshot: policy.snapshot,
-    source_snapshot_hash: hash(card),
+    source_snapshot_hash: hash({ card, printing }),
     color: text(card.color),
     cost: card.cost ?? null,
     power: card.power ?? null,
@@ -115,8 +126,8 @@ const catalogueCards = cards.map((card) => {
     flavor_text: text(card.flavor),
     errata: text(card.errata),
     landscape: Boolean(card.landscape),
-    holo: hasAlternatePrinting,
-    star_alt: hasAlternatePrinting,
+    holo: isAlternatePrinting,
+    star_alt: isAlternatePrinting,
     has_alternate_printing: hasAlternatePrinting,
     game: card.game || {},
     printings,
@@ -125,15 +136,17 @@ const catalogueCards = cards.map((card) => {
       confidence: 'source_recorded',
       collection_label: text(card.set),
       release_kind: releaseLabel(text(card.setCode)),
-      headline: `A ${text(card.set)} catalogue record`,
-      summary: `${text(card.name)} is recorded by Palify as ${code} in ${text(card.set)}.`,
+      headline: `A ${text(card.set)} ${isAlternatePrinting ? 'alternate' : 'base'} printing`,
+      summary: `${text(card.name)} is recorded by Palify as ${printing.code} (${printing.rarity || text(card.rarity)}) in ${text(card.set)}.`,
       release_row_count: cards.filter((candidate) => candidate.setCode === card.setCode).length,
+      release_printing_count: cards.filter((candidate) => candidate.setCode === card.setCode).flatMap((candidate) => candidate.printings || []).length,
       source_refs: [{ source: 'Palify · API snapshot', source_page_url: policy.source_page, authority: 'Card identity, text, attributes, printings, and authorized catalogue-reference asset path.' }],
       not_claiming: policy.not_claiming,
     },
     source_contacts: [{ source: 'Palify · card API', source_page_url: policy.source_api, authority: 'Cached source API record.' }],
     not_claiming: policy.not_claiming,
-  }
+    }
+  })
 })
 
 const setCards = new Map()
@@ -150,6 +163,8 @@ const sets = [...setCards.entries()].map(([code, rows], order) => ({
   source: 'Palify hand-checked catalogue API',
   source_url: policy.source_page,
   count: rows.length,
+  printing_count: rows.flatMap((card) => card.printings || []).length,
+  alternate_printing_count: rows.flatMap((card) => card.printings || []).filter((printing) => printing.variant).length,
   catalog_hash: hash(rows),
   policy: 'authorized_local_reference',
   order,
@@ -243,7 +258,7 @@ const payload = {
   data_policy: policy.data_policy,
   source_snapshot: { path: 'data/palworld/palify-cards-2026-08-04.json', date: policy.snapshot_date, declared_cards: source.count, sha256: hash(source) },
   ui: {
-    holo_label: '★ Alternate printing available',
+    holo_label: '★ Alternate printings',
     family_chips: sets.map((set) => ({ label: set.code, value: set.release_family })),
     product_channel_chips: [
       { label: 'Booster', value: 'booster' },
@@ -256,7 +271,7 @@ const payload = {
   sets,
   products: catalogueProducts,
   asset_manifest: { path: 'data/palworld/palify-assets-2026-08-04.json', unique_assets: assetManifest.summary.unique_assets, total_bytes: assetManifest.summary.total_bytes, sha256: assetManifest.summary.sha256 },
-  summary: { sets: sets.length, cards: catalogueCards.length, products: catalogueProducts.length, items: catalogueItems.length, with_image: catalogueItems.filter((card) => card.image).length, local_reference_images: catalogueItems.filter((card) => card.image).length, remote_reference_images: 0, unique_local_image_assets: assetManifest.summary.unique_assets, local_image_bytes: assetManifest.summary.total_bytes, source: policy.source },
+  summary: { sets: sets.length, base_cards: cards.length, cards: catalogueCards.length, base_printings: catalogueCards.filter((card) => !card.is_alternate_printing).length, alternate_printings: catalogueCards.filter((card) => card.is_alternate_printing).length, products: catalogueProducts.length, items: catalogueItems.length, with_image: catalogueItems.filter((card) => card.image).length, local_reference_images: catalogueItems.filter((card) => card.image).length, remote_reference_images: 0, unique_local_image_assets: assetManifest.summary.unique_assets, local_image_bytes: assetManifest.summary.total_bytes, source: policy.source },
   manifest_total_rows: catalogueItems.length,
   catalog_hash: hash(catalogueItems),
   cards: catalogueItems,

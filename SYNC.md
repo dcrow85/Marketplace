@@ -64,6 +64,13 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: Palworld printing expansion production release]` 2026-08-04 · Codex/Kepler —
+  Correcting the Palworld catalogue so each source-recorded printing is a distinct
+  collectible and market row instead of hiding alternate art inside the base-card
+  metadata. Scope is the Palworld builder, generated catalogue, bounded validation,
+  and Cairn Pages release; existing base-card UIDs remain stable, all alternate rows
+  retain their shared canonical identity, and the no-overclaim/image policy is unchanged.
+
 - `[passive] Palworld catalogue production release deployed` 2026-08-04 · Codex/Kepler —
   Supersedes the production-release blocker below. Commit `b4552d5` is live on
   Cloudflare Pages deployment `f59c2457`; the immutable deployment and
