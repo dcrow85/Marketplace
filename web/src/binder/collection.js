@@ -32,7 +32,13 @@ export function entryFor(c, store) {
   const trade = u.trade !== undefined ? !!u.trade : extra
   const sell = u.sell !== undefined ? !!u.sell : !!c.sell
   const grail = u.grail !== undefined ? !!u.grail : !!c.grail
-  return { ...u, stance: st, extra, trade, sell, grail }
+  return {
+    ...u,
+    cond_type: u.cond_type !== undefined ? u.cond_type : c.cond_type,
+    cond_grade: u.cond_grade !== undefined ? u.cond_grade : c.cond_grade,
+    cond_grader: u.cond_grader !== undefined ? u.cond_grader : c.cond_grader,
+    stance: st, extra, trade, sell, grail,
+  }
 }
 
 export function condStr(u) {

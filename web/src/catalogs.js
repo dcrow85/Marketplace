@@ -18,6 +18,15 @@ export const CATALOGS = [
     routePrefixes: ['pmcg', 'jp-', 'en-wotc-'],
     note: 'Japanese vintage and English WotC printings, with source status kept visible.',
   },
+  {
+    id: 'palworld-ocg',
+    label: 'Palworld OCG',
+    title: 'Palworld Original Card Game catalogue',
+    path: 'catalogs/palworld-ocg.json',
+    marketPath: null,
+    routePrefixes: ['palify-'],
+    note: 'Palify-authorized local catalogue references; seller evidence stays separate.',
+  },
 ]
 
 export const DEFAULT_CATALOG = CATALOGS[0]

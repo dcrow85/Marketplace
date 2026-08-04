@@ -4,8 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/prepare-pages.mjs && node scripts/build-vintage-catalog.mjs",
+    "prebuild": "node scripts/prepare-pages.mjs && node scripts/build-vintage-catalog.mjs && node scripts/build-palworld-catalog.mjs",
     "build:vintage": "node scripts/build-vintage-catalog.mjs && node scripts/audit-vintage-research.mjs",
+    "build:palworld": "node scripts/build-palworld-catalog.mjs",
+    "mirror:palworld": "node scripts/mirror-palworld-assets.mjs",
     "dev": "vite",
     "build": "vite build --base=/app/ --outDir dist/app",
     "postbuild": "node scripts/assemble-pages.mjs",

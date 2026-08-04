@@ -79,6 +79,7 @@ section { padding: 14px 0 70px; }
 .card.s-want { box-shadow: 0 0 0 3px var(--ink); border-color: var(--ink); }
 .card.s-wish { box-shadow: 0 0 0 1.5px var(--ink); border-color: var(--ink); border-style: dashed; }
 .card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card.is-landscape img { object-fit: contain; background: #171512; }
 .card.ghost img { filter: none; opacity: 1; }
 .card .face { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px; gap: 3px; }
 .card .face .ja { font-size: 16px; line-height: 1.12; color: var(--ink); font-weight: 500; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: break-word; }
@@ -127,6 +128,7 @@ section { padding: 14px 0 70px; }
 .mcard { position: relative; aspect-ratio: 63/88; border: 0.75px solid #6E6A60; background: var(--mount); border-radius: 6px; overflow: hidden; }
 .mcard.ghost { border-color: var(--rule); }
 .mcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mcard.is-landscape img { object-fit: contain; background: #171512; }
 .mcard img.zoomable { cursor: zoom-in; }
 .zoombtn { position: absolute; bottom: 7px; right: 7px; z-index: 4; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 6px; border: 0; cursor: pointer; font-size: 13px; line-height: 1; color: #fff; background: rgba(20,18,14,.5); }
 .zoombtn:hover { background: rgba(20,18,14,.8); }
@@ -351,6 +353,7 @@ section { padding: 14px 0 70px; }
 .bv-pickflag { position: absolute; z-index: 4; top: 6px; left: 6px; font-size: 8.5px; line-height: 1; letter-spacing: .03em; color: #fff; background: var(--agent); border-radius: 4px; padding: 4px 5px; box-shadow: 0 1px 3px rgba(0,0,0,.28); }
 .bv-pocket.is-pick .bv-grail { top: 28px; }
 .bv-pocket.filled img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bv-pocket.is-landscape > img { object-fit: contain; background: #171512; }
 .bv-mobile-cardinfo, .bv-mobile-intent, .bv-qlabel { display: none; }
 .bv-noimg { display: flex; align-items: center; justify-content: center; height: 100%; padding: 8px; font-size: 12px; color: #DBD5C8; text-align: center; }
 .bv-count { position: absolute; top: 6px; right: 6px; font-size: 11px; color: #ECEAE3; background: rgba(13,12,16,.85); border: 0.5px solid rgba(236,234,227,.25); border-radius: 5px; padding: 1px 6px; }
@@ -538,6 +541,7 @@ button.bv-pocket { padding: 0; text-align: inherit; font: inherit; cursor: point
     filter: none;
     border-bottom: .5px solid var(--rule2);
   }
+  .bv-pocket.is-landscape > img { object-fit: contain; background: #171512; }
   .bv-pocket.ghost:not(.wanted) .bv-ghostart { opacity: .72; filter: saturate(.72); }
   .bv-pocket.ghost::after, .bv-gnum, .bv-gtxt { display: none; }
   .bv-mobile-cardinfo {

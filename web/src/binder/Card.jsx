@@ -26,7 +26,7 @@ export default function Card({ c, store, setStance, setField, showSet, setLabel,
           : <button className={'seg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>}
       </div>
       {haveActionsGuide}
-      <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
+      <div className={'card ' + (have ? 'own' : 'ghost') + (ring ? ' ' + ring : '') + (c.landscape && !userPhoto ? ' is-landscape' : '')} onClick={() => onOpen && onOpen(c.uid)} role="button" tabIndex={0} title="open card">
         {pick && <span className="pickflag" title="your agent surfaced this">★</span>}
         <div className="face"><div className="ja">{nm(c)}</div><div className="nn">{origin}</div></div>
         {(userPhoto || c.image) && <img src={userPhoto || c.image} alt={nm(c)} loading="lazy" decoding="async" onError={userPhoto ? undefined : (e) => retryImg(e, c.image)} />}

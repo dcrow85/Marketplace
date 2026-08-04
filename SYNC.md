@@ -64,6 +64,17 @@ non-superseded entry for a seam controls current work; words such as “current,
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
 
+- `[BLOCKING: Palworld catalogue production release]` 2026-08-04 · Codex/Kepler —
+  Publishing the new Palworld OCG catalogue to the existing Cairn Pages site.
+  The bounded release adds 158 Palify-sourced card records, two official BP01
+  sealed-product records, 264 locally mirrored and hashed catalogue-reference
+  assets, catalogue sorting/filtering, and honest landscape/product presentation.
+  Palify assets are used under Che's direct permission from the source operator;
+  official product specifications remain attributed catalogue context. Images do
+  not prove seller possession, authenticity, sealed status, condition, grade, or
+  value. Unrelated run artifacts, `mockups/`, chain, and protocol semantics remain
+  outside this release.
+
 - `[passive] live market transaction integrity remediation complete` 2026-07-31 · Codex —
   Supersedes the blocker below. Live cash exchanges can be recorded complete only
   after delivery; accepted no-cash exchanges retain their direct completion path.

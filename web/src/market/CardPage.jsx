@@ -181,6 +181,7 @@ export default function CardPage({
   sellerName, inPile, onPickUp, onVisitSeller, onBack, onChangeStance, byUid, onOpenCard,
   onOpenArtist,
 }) {
+  const isProduct = card?.catalog_item_kind === 'sealed_product'
   const [sort, setSort] = useState('best')
   const [selectedSellerId, setSelectedSellerId] = useState(initialSellerId || listings[0]?.s.id || null)
   const [ankoRead, setAnkoRead] = useState(null)
@@ -266,7 +267,7 @@ export default function CardPage({
     <header className="cp-hero">
       <div className="cp-artstage">
         {card.image
-          ? <img src={assetSrc(card.image)} alt={cardDisplayName(card)} onError={(event) => retryImg(event, assetSrc(card.image))} />
+          ? <img className={card.landscape ? 'is-landscape' : undefined} src={assetSrc(card.image)} alt={cardDisplayName(card)} onError={(event) => retryImg(event, assetSrc(card.image))} />
           : <div className="cp-noart">{card.image_suppressed ? 'Reference image not displayed' : 'Catalogue image not recorded'}</div>}
         {card.image && (card.display_allowed === false || card.image_reference_only)
           ? <span className="cp-reference">catalogue reference</span>
@@ -274,7 +275,7 @@ export default function CardPage({
         {card.holo && <span className="cp-holo">{card.star_alt ? '★ alternate art' : '✦ holo'}</span>}
       </div>
       <div className="cp-identity">
-        <div className="cp-kicker mono"><span>{context.label || card.release_family || 'Azuki TCG'}</span><i>Card record</i></div>
+        <div className="cp-kicker mono"><span>{context.label || card.release_family || 'Azuki TCG'}</span><i>{isProduct ? 'Product' : 'Card'} record</i></div>
         <h1>{cardDisplayName(card)}</h1>
         <p className="cp-meta mono"><b>{number.primary}</b>{number.catalogueOrder && <span>catalogue {number.catalogueOrder}</span>}<span>{cardRarity(card)}</span><span>{card.category}</span>{card.element && <span>{card.element}</span>}</p>
         {cardOriginText(card) && <p className="cp-altname mono">{cardOriginText(card)}</p>}

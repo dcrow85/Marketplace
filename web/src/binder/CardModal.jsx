@@ -11,7 +11,7 @@ import { cardOriginText } from '../cards/cardNames.js'
 import { API_BASE } from '../lib/apiBase.js'
 import {
   nm, retryImg, wantActive, Frow, mpill, PROV_LABEL,
-  COND_TYPES, GRADERS, COND_GRADES, COND_OPTS, gradePrompt,
+  COND_TYPES, PRODUCT_CONDITIONS, GRADERS, COND_GRADES, COND_OPTS, gradePrompt,
 } from './helpers.jsx'
 
 // Photo-entry is the primary path (collectors add cards by photo), so it's on for
@@ -113,6 +113,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
   }, [onClose, zoom])
   const c = byUid(data, uid)
   if (!c || !c.set_id) return null
+  const isProduct = c.catalog_item_kind === 'sealed_product'
   const e = effStance(c, store)
   const s = setById[c.set_id] || {}
   const u = store[c.uid] || {}
@@ -190,7 +191,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
         <button className="mx" onClick={onClose} aria-label="close">✕</button>
         <div className="mcols">
           <div className="mleft">
-            <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost')}>
+            <div className={'mcard ' + (e.stance === 'have' ? 'own' : 'ghost') + (c.landscape && shownImg === c.image ? ' is-landscape' : '')}>
               {shownImg
                 ? <img src={shownImg} className={'zoomable' + (imp === 'reading' || imp === 'review' ? ' pending' : '')} alt={nm(c)} onClick={() => setZoom(true)} onError={(ev) => retryImg(ev, shownImg)} />
                 : <div className="noimg"><div className="ja">{nm(c)}</div><div className="nn">{c.image_suppressed ? 'reference image not displayed' : 'no reference image on file'}</div></div>}
@@ -266,14 +267,14 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               {cardOriginText(c) && <span>· {cardOriginText(c)}</span>}
             </div>
             {onBrowseCard && <button type="button" className="cardpage-link mono" onClick={() => { onClose(); onBrowseCard(c.uid) }}>
-              Open full card page <span>market · details · copies</span> →
+              Open full {isProduct ? 'product' : 'card'} page <span>market · details · copies</span> →
             </button>}
             <div className="m-attrs">
               {[c.release_family_label, c.category, c.star_alt ? '★ alt art' : c.holo ? 'holo' : '', c.rarity]
                 .map((t, i) => mpill(t, i))}
             </div>
             <div className="m-actionblock">
-              <div className="m-sectionlabel mono">Your card</div>
+              <div className="m-sectionlabel mono">Your {isProduct ? 'product' : 'card'}</div>
             <div className="m-stance">
               <button className={'mseg sg-have' + (e.stance === 'have' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'have' ? 'none' : 'have')}>Have</button>
               <button className={'mseg sg-want' + (e.stance === 'want' ? ' on' : '')} onClick={() => setStance(c.uid, e.stance === 'want' ? 'none' : 'want')}>Want</button>
@@ -303,6 +304,9 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                   : e.sell ? 'On your table — buyers copy your sheet and fund escrow.'
                   : 'On your table — a trader can offer one of their cards for it.'}</div>}
                 <Frow label="Condition">
+                  {isProduct ? <select className="ti condtype" value={u.cond_type || c.cond_type || 'factory sealed'} onChange={(ev) => setField(c.uid, 'cond_type', ev.target.value)}>
+                    {PRODUCT_CONDITIONS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                  </select> : <>
                   <select className="ti condtype" value={u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')} onChange={(ev) => { setField(c.uid, 'cond_type', ev.target.value); setField(c.uid, 'cond_grade', ''); setField(c.uid, 'cond_grader', '') }}>
                     {COND_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                   </select>
@@ -316,6 +320,7 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
                     <option value="">{gradePrompt(u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw'))}</option>
                     {(COND_GRADES[u.cond_type === 'tag' ? 'graded' : (u.cond_type || 'raw')] || COND_GRADES.raw).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                   </select>
+                  </>}
                 </Frow>
                 {(e.trade || e.sell) && (
                   <Frow label="Ask"><span className="fpre money">$</span><input className="ti num money-input" type="number" min="0" placeholder="USDC" value={u.ask || ''} onChange={(ev) => setField(c.uid, 'ask', ev.target.value)} /></Frow>
@@ -345,13 +350,18 @@ export default function CardModal({ uid, data, setById, store, setStance, setFie
               <div className="card-morebody"><MarketBlock c={c} market={market} mockSales={mockSales} onBrowseCard={onBrowseCard} /></div>
             </details>}
             <details className="card-more">
-              <summary><span>Card details &amp; provenance</span><small className="mono">rules · illustrator · image source</small></summary>
+              <summary><span>{isProduct ? 'Product' : 'Card'} details &amp; provenance</span><small className="mono">{isProduct ? 'contents · release · image source' : 'rules · illustrator · image source'}</small></summary>
               <div className="card-morebody">
-                {(c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text || collection.name) && (
+                {(isProduct || c.illustrator || c.stamp || c.card_text || visibleEffects.length || c.flavor_text || collection.name) && (
                   <div className="dossier">
                     {collection.name && <div><b>Collection</b><span>{collection.name} · observed at {collection.position || 'unrecorded position'}</span></div>}
                     {reportedPrice.amount != null && <div><b>Event sale</b><span><span className="money mono">{reportedPrice.amount} {reportedPrice.currency || 'USD'}</span> · user-reported, not independently verified</span></div>}
                     {c.product_channel_label && <div><b>Product</b><span>{c.product_channel_label}</span></div>}
+                    {c.product_type_label && <div><b>Format</b><span>{c.product_type_label}</span></div>}
+                    {c.release_date && <div><b>Release date</b><span>{c.release_date}</span></div>}
+                    {c.cards_per_pack && <div><b>Pack contents</b><span>{c.cards_per_pack} randomized cards</span></div>}
+                    {c.packs_per_box && <div><b>Box contents</b><span>{c.packs_per_box} booster packs · {c.total_cards_nominal} cards nominal</span></div>}
+                    {isProduct && c.effect && <div><b>Description</b><span>{c.effect}</span></div>}
                     {types && <div><b>Type</b><span>{types}</span></div>}
                     {c.band_rank && <div><b>Attention</b><span>tier {c.band_rank}</span></div>}
                     {c.illustrator && <div><b>Illustrator</b><span>{c.illustrator}</span></div>}

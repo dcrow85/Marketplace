@@ -59,6 +59,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const [languageF, setLanguageF] = useState(() => new Set())
   const [rarityF, setRarityF] = useState(() => new Set())
   const [holoOnly, setHoloOnly] = useState(false)
+  const [sortMode, setSortMode] = useState('catalog')
   const [agentRes, setAgentRes] = useState(null)
   const [agentBusy, setAgentBusy] = useState(false)
   const [agentClearedFilters, setAgentClearedFilters] = useState(0)
@@ -147,7 +148,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
 
   useEffect(() => {
     /* eslint-disable react-hooks/set-state-in-effect -- catalog switches intentionally reset local UI filters before fetching. */
-    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setLanguageF(new Set()); setRarityF(new Set()); setHoloOnly(false)
+    setData(null); setErr(''); setAgentRes(null); setQ(''); setStanceF(new Set()); setFamilyF(new Set()); setChannelF(new Set()); setCatF(new Set()); setElementF(new Set()); setLanguageF(new Set()); setRarityF(new Set()); setHoloOnly(false); setSortMode('catalog')
     fetchJson(catalog.path).then((payload) => {
       if (!payload) throw new Error(`Could not load ${catalog.title}`)
       setData(payload)
@@ -398,7 +399,15 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
   const rows = useMemo(() => {
     if (!data) return []
     const passed = (c) => effStance(c, store).stance === 'pass' ? 1 : 0
-    const cmp = (a, b) => (setById[a.set_id].order - setById[b.set_id].order) || (passed(a) - passed(b)) || ('' + a.num).localeCompare('' + b.num, undefined, { numeric: true })
+    const catalogCmp = (a, b) => ((setById[a.set_id]?.order ?? Number.MAX_SAFE_INTEGER) - (setById[b.set_id]?.order ?? Number.MAX_SAFE_INTEGER)) || (passed(a) - passed(b)) || ('' + a.num).localeCompare('' + b.num, undefined, { numeric: true })
+    const rarityRank = new Map(rarityOrder(data.cards).map((rarity, index) => [rarity, index]))
+    const cmp = sortMode === 'name'
+      ? (a, b) => nm(a).localeCompare(nm(b), undefined, { numeric: true }) || catalogCmp(a, b)
+      : sortMode === 'rarity'
+        ? (a, b) => (rarityRank.get(a.rarity) ?? Number.MAX_SAFE_INTEGER) - (rarityRank.get(b.rarity) ?? Number.MAX_SAFE_INTEGER) || catalogCmp(a, b)
+        : sortMode === 'type'
+          ? (a, b) => String(a.category || '').localeCompare(String(b.category || '')) || String(a.element || '').localeCompare(String(b.element || '')) || nm(a).localeCompare(nm(b)) || catalogCmp(a, b)
+          : catalogCmp
     let base = data.cards
     if (agentActive) base = applyAgentFilter(base, agentRes.data.filter || {}, setById)
     if (agentAction && plan) { const ids = new Set(plan.steps.flatMap((st) => st.affected.map((c) => c.uid))); base = base.filter((c) => ids.has(c.uid)) }
@@ -429,16 +438,17 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       return cmp(a, b)
     })
     return base.slice().sort(cmp)
-  }, [data, q, stanceF, familyF, channelF, catF, elementF, languageF, rarityF, holoOnly, store, setById, agentRes, agentActive, agentCurating, pickRank, agentAction, plan])
+  }, [data, q, stanceF, familyF, channelF, catF, elementF, languageF, rarityF, holoOnly, sortMode, store, setById, agentRes, agentActive, agentCurating, pickRank, agentAction, plan])
 
   const directSearchMiss = !!q.trim() && !!rows.length && !rows.some((card) => cardMatchesText(card, q, setById))
-  const grouped = (!q.trim() || directSearchMiss) && !agentActive && !agentCurating
+  const grouped = sortMode === 'catalog' && (!q.trim() || directSearchMiss) && !agentActive && !agentCurating
   const CHIPS = useMemo(() => chipsFor(), [])
   const CHANNELS = useMemo(() => data?.ui?.product_channel_chips || [], [data])
   const CATS = useMemo(() => data?.ui?.category_chips || [], [data])
   const ELEMENTS = useMemo(() => data?.ui?.element_chips || [], [data])
   const LANGUAGES = useMemo(() => data?.ui?.language_chips || [], [data])
   const FAMILIES = useMemo(() => data?.ui?.family_chips || [], [data])
+  const CATALOG_TOTAL = data?.summary?.items || data?.summary?.cards || data?.cards?.length || 0
   const toggleChip = (ch) => {
     if (ch.g === 'all') clearBrowseFilters()
     else if (ch.g === 'stance') setStanceF((p) => toggle(p, ch.v))
@@ -497,8 +507,8 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       <div className="tallies mono">
         <span><b className="t-have">{countStance('have')}</b> have</span>
         <span><b className="t-want">{countStance('want')}</b> want</span>
-        {rows.length !== data.summary.cards && <span><b>{rows.length}</b> shown</span>}
-        <span><b>{data.summary.cards}</b> in catalog</span>
+        {rows.length !== CATALOG_TOTAL && <span><b>{rows.length}</b> shown</span>}
+        <span><b>{CATALOG_TOTAL}</b> in catalog</span>
         <div className="binder-tools">
           {toolbar}
           <button className={'scanbtn' + (dockSetup ? ' anko-setup-hidden' : '')} data-tour-target={onboardingStep === 'scan' ? 'scan' : undefined}
@@ -607,6 +617,12 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
                 <button className={'fo' + (view === 'standard' ? ' on' : '')} onClick={() => chooseView('standard')}>Standard</button>
                 <button className={'fo' + (view === 'gallery' ? ' on' : '')} onClick={() => chooseView('gallery')}>Gallery</button>
               </div></div>
+              <div className="fs-group"><label>Sort</label><div className="fs-opts">
+                <button className={'fo' + (sortMode === 'catalog' ? ' on' : '')} onClick={() => setSortMode('catalog')}>Set + number</button>
+                <button className={'fo' + (sortMode === 'name' ? ' on' : '')} onClick={() => setSortMode('name')}>Name A–Z</button>
+                <button className={'fo' + (sortMode === 'rarity' ? ' on' : '')} onClick={() => setSortMode('rarity')}>Rarity</button>
+                <button className={'fo' + (sortMode === 'type' ? ' on' : '')} onClick={() => setSortMode('type')}>Type + element</button>
+              </div></div>
             </div>
             <div className="fsheet-actions">
               <button className="ghost sm" onClick={clearBrowseFilters}>Clear all</button>
@@ -617,7 +633,7 @@ export default function Binder({ accountId, agentName, catalog = DEFAULT_CATALOG
       )}
       {(agentActive || agentCurating) && !agentNoMatch && (
         <div className="agentband">
-          <span>{agentActive ? <><b>{agentName}</b> narrowed {data.summary.cards} → <b>{agentRes.data.n_survivors}</b></> : <><b>{agentName}</b> kept the Binder open</>}{agentCurating ? ` · placed ${pickList.length} highlighted card${pickList.length === 1 ? '' : 's'} first, in his order ★` : ''}{agentClearedFilters ? ` · opened the whole Binder (cleared ${agentClearedFilters} filter${agentClearedFilters === 1 ? '' : 's'})` : ''}{agentActive && rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>
+          <span>{agentActive ? <><b>{agentName}</b> narrowed {CATALOG_TOTAL} → <b>{agentRes.data.n_survivors}</b></> : <><b>{agentName}</b> kept the Binder open</>}{agentCurating ? ` · placed ${pickList.length} highlighted card${pickList.length === 1 ? '' : 's'} first, in his order ★` : ''}{agentClearedFilters ? ` · opened the whole Binder (cleared ${agentClearedFilters} filter${agentClearedFilters === 1 ? '' : 's'})` : ''}{agentActive && rows.length !== agentRes.data.n_survivors ? ` · ${rows.length} after your filters` : ''}</span>
           <button className="ghost sm" onClick={clearAgent}>clear</button>
         </div>
       )}

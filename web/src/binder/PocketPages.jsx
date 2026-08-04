@@ -64,7 +64,7 @@ export default function PocketPages({
           const isPick = !!pickSet?.has(c.uid)
           if (e.stance === 'have') {
             return (
-              <div key={c.uid} className={'bv-pocket filled' + (isPick ? ' is-pick' : '')}>
+              <div key={c.uid} className={'bv-pocket filled' + (isPick ? ' is-pick' : '') + (c.landscape && !userPhotos[c.uid] ? ' is-landscape' : '')}>
                 <button type="button" className="bv-open" onClick={() => onOpen(c.uid)} aria-label={`Open ${nm(c)}`} />
                 {img ? <img src={img} alt={nm(c)} loading="lazy" decoding="async" onError={userPhotos[c.uid] ? undefined : (ev) => retryImg(ev, c.image)} /> : <span className="bv-noimg">{nm(c)}</span>}
                 {!userPhotos[c.uid] && provBadge(c)}
@@ -91,7 +91,7 @@ export default function PocketPages({
             )
           }
           return (
-            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '') + (isPick ? ' is-pick' : '')}>
+            <div key={c.uid} className={'bv-pocket ghost' + (e.stance === 'want' ? ' wanted' : '') + (isPick ? ' is-pick' : '') + (c.landscape && !userPhotos[c.uid] ? ' is-landscape' : '')}>
               <button type="button" className="bv-open" onClick={() => onOpen(c.uid)} aria-label={`Open ${nm(c)}`} />
               {img && <img className="bv-ghostart" src={img} alt="" loading="lazy" decoding="async" onError={(ev) => retryImg(ev, c.image)} />}
               {provBadge(c)}

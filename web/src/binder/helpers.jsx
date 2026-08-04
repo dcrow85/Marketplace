@@ -25,6 +25,7 @@ export function wantActive(c, store) {
 // everyone — no free text. A legacy free-text `cond` is still read for display
 // (collections saved before the dropdowns existed).
 export const COND_TYPES = [['raw', 'Raw'], ['graded', 'Graded']]
+export const PRODUCT_CONDITIONS = [['factory sealed', 'Factory sealed'], ['damaged seal', 'Damaged seal'], ['opened packaging', 'Opened packaging']]
 export const GRADERS = [['PSA', 'PSA'], ['BGS', 'BGS'], ['CGC', 'CGC'], ['SGC', 'SGC'], ['TAG', 'TAG'], ['other', 'Other']]
 export const NUM_GRADES = ['10', '9.5', '9', '8.5', '8', '7.5', '7', '6.5', '6', '5.5', '5', '4', '3', '2', '1']
 export const COND_GRADES = {
@@ -43,7 +44,7 @@ export function condText(c, store) {
     const g = grader && grader !== 'other' ? grader : 'graded'
     return grade ? g + ' ' + grade : g
   }
-  return grade || 'raw'
+  return grade || (type && type !== 'raw' ? type : 'raw')
 }
 export function capMeta(c, e, store) {
   if (e.grail && (e.stance === 'have' || e.stance === 'want')) return { t: 'grail ★', cls: 'm-grail' }
@@ -58,7 +59,7 @@ export function capMeta(c, e, store) {
   return { t: c.rarity || '', cls: 'm-none' }
 }
 // Distinct rarities in ladder order — common first, chase last; unknown codes trail in data order.
-export const RARITY_LADDER = ['C', 'UC', 'R', 'SR', 'SR ★', 'SR ★★', 'L', 'L ★', 'G', 'G ★']
+export const RARITY_LADDER = ['C', 'U', 'UC', 'R', 'RR', 'SR', 'SR ★', 'SR ★★', 'TD', 'PR', 'L', 'L ★', 'G', 'G ★', 'SSS', 'Sealed']
 export function rarityOrder(cards) {
   const seen = [...new Set(cards.map((c) => c.rarity).filter(Boolean))]
   const first = new Map(seen.map((r, i) => [r, i]))
