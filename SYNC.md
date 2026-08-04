@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-07-31 · Codex (The multi-persona live-market remediation is complete locally: settlement gates, concurrent inbox/profile storage, hydrated publication, listing terms and quantities, live delivery/response clarity, counter/decline flow, Anko context, search recovery, and responsive image loading passed the bounded checks below. Not deployed.)
+UNREAD-FOR: none · LAST: 2026-08-04 · Codex/Kepler (The Palworld catalogue is deployed on cairn.cards: 158 card records, 2 sealed products, and 264 local hashed reference assets. Production Pages deployment f59c2457 serves commit b4552d5.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,17 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] Palworld catalogue production release deployed` 2026-08-04 · Codex/Kepler —
+  Supersedes the production-release blocker below. Commit `b4552d5` is live on
+  Cloudflare Pages deployment `f59c2457`; the immutable deployment and
+  `https://cairn.cards/app/` apex serve the assembled application. The production
+  catalogue reports 158 cards, 2 sealed products, 160 total entries, 4 sets, and
+  264 unique local image assets (85,403,588 bytes); representative portrait,
+  landscape Structure, and sealed-product assets return 200 from the apex. The
+  release preserves the recorded Palify permission and source attribution, while
+  making no claim that catalogue images establish possession, authenticity, sealed
+  status, condition, grade, or value.
 
 - `[BLOCKING: Palworld catalogue production release]` 2026-08-04 · Codex/Kepler —
   Publishing the new Palworld OCG catalogue to the existing Cairn Pages site.
