@@ -5,7 +5,7 @@ agent) and **Codex** (enforced/legible backbone). This filename never moves; dat
 Briefs are point-in-time archives it links to. Read this first, every session.
 
 ```
-UNREAD-FOR: none · LAST: 2026-08-04 · Codex/Kepler (The Palworld catalogue is deployed on cairn.cards: 158 card records, 2 sealed products, and 264 local hashed reference assets. Production Pages deployment f59c2457 serves commit b4552d5.)
+UNREAD-FOR: none · LAST: 2026-08-04 · Codex/Kepler (Every Palworld printing is deployed on cairn.cards: 158 base plus 106 alternate printings, 2 sealed products, and 264 local hashed reference assets. Production Pages deployment 85165c79 serves commit 2f95887.)
 ```
 
 ## Sync routine — do this BEFORE working any lane
@@ -63,6 +63,18 @@ Handshake entries are append-only, time-local snapshots. Only the newest
 non-superseded entry for a seam controls current work; words such as “current,”
 “remains,” “passes,” or “pending” in an older entry do not override a newer
 supersession or closure.
+
+- `[passive] Palworld printing expansion deployed` 2026-08-04 · Codex/Kepler —
+  Supersedes the printing-expansion blocker below. Commit `2f95887` is live on
+  Cloudflare Pages deployment `85165c79` and the `cairn.cards` apex. The catalogue
+  now exposes all 264 source-recorded card printings as distinct inventory and market
+  rows: 158 base and 106 alternate, plus 2 sealed-product rows. Existing base UIDs
+  remain stable; alternate rows have distinct UIDs, printing codes, rarities, local
+  images, Have/Want state, listing identity, and canonical links to their base card.
+  OSR, SSP, SP, SR, TSR, TSP, S, and PR samples, an alternate share route, the
+  106-row alternate filter, scoped lint, production build, immutable deployment, and
+  apex parity all pass. TD01 and TD02 Soul correctly remain distinct rows sharing the
+  source's single `SOUL-001` image. No-overclaim/image policy is unchanged.
 
 - `[BLOCKING: Palworld printing expansion production release]` 2026-08-04 · Codex/Kepler —
   Correcting the Palworld catalogue so each source-recorded printing is a distinct
