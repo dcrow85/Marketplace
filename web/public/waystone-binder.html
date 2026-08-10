@@ -13,59 +13,128 @@
   html, body { margin: 0; height: 100%; background: #0b0a08; }
   body { overflow: hidden; font: 13px "IBM Plex Mono", ui-monospace, monospace; color: #cfc3a4; }
 
-  /* the room behind: we're at the reading table */
   .room { position: fixed; inset: -2%; background: url('waystone-art/inn-b.png') center/cover;
-    filter: blur(7px) brightness(.5) saturate(.8); transition: filter .5s ease; }
-  body.regarding .room { filter: blur(12px) brightness(.28) saturate(.5); }
+    filter: blur(7px) brightness(.48) saturate(.8); transition: filter .5s ease; }
+  body.regarding .room { filter: blur(12px) brightness(.26) saturate(.5); }
 
   .stage { position: fixed; inset: 0; display: grid; place-items: center; grid-template-rows: 1fr auto; }
-
-  /* ── the album ── */
-  .albumwrap { display: grid; place-items: center; width: 100%; padding: clamp(6px, 2vh, 22px) 8px 0; transition: filter .5s ease, opacity .5s ease; }
+  .albumwrap { display: grid; place-items: center; width: 100%; padding: clamp(26px, 4.5vh, 44px) 8px 0;
+    transition: filter .5s ease; }
   body.regarding .albumwrap { filter: blur(3px) brightness(.55); }
+
+  /* ═══ THE RELIC: leather, brass, stitching, the weight of pages ═══ */
   .album {
-    position: relative; width: min(96vw, 152svh, 1180px);
-    background: linear-gradient(172deg, #3d2f1e, #2a2013);
-    border-radius: 14px; padding: clamp(10px, 1.6vw, 20px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .65), inset 0 1px 0 rgba(244, 205, 130, .12);
+    position: relative; width: min(96vw, 150svh, 1180px);
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(120, 84, 44, .25), transparent 60%),
+      radial-gradient(ellipse at 75% 85%, rgba(40, 24, 10, .5), transparent 55%),
+      linear-gradient(168deg, #4a3820, #332512 55%, #241a0c);
+    border-radius: 14px; padding: clamp(14px, 2vw, 26px);
+    box-shadow: 0 34px 90px rgba(0, 0, 0, .7), 0 4px 14px rgba(0, 0, 0, .5),
+      inset 0 1px 0 rgba(244, 205, 130, .16), inset 0 -2px 6px rgba(0, 0, 0, .5);
   }
-  .spread { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(8px, 1.4vw, 18px); position: relative; }
-  .spread::before { content: ""; position: absolute; left: 50%; top: -2%; bottom: -2%; width: 3px; transform: translateX(-50%);
-    background: linear-gradient(90deg, transparent, rgba(0,0,0,.55), transparent); z-index: 2; }
-  .page { background: linear-gradient(174deg, #e7dcc0, #d9cba8); border-radius: 6px; padding: clamp(8px, 1.2vw, 16px);
-    box-shadow: inset 0 0 26px rgba(90, 70, 40, .28); }
+  /* tooled border, worked into the leather */
+  .album::before { content: ""; position: absolute; inset: 7px; border-radius: 9px; pointer-events: none;
+    border: 1.5px solid rgba(210, 170, 100, .18);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .35), 0 0 0 1px rgba(0, 0, 0, .3); }
+  /* the stack of pages showing at the fore-edge */
+  .album::after { content: ""; position: absolute; right: -5px; top: 18px; bottom: 18px; width: 5px; border-radius: 0 3px 3px 0;
+    background: repeating-linear-gradient(180deg, #d9cba8 0 2px, #b9a77f 2px 3px);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, .45); }
+  /* brass corners */
+  .corner { position: absolute; width: 26px; height: 26px; pointer-events: none; z-index: 3;
+    border: 3px solid #8a6f36; border-radius: 3px;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,.6)); }
+  .corner::after { content: ""; position: absolute; inset: 1px;
+    border: 1px solid rgba(244, 205, 130, .5); border-radius: 2px;
+    clip-path: inherit; }
+  .c-tl { top: -4px; left: -4px; border-right: 0; border-bottom: 0; clip-path: polygon(0 0, 100% 0, 100% 34%, 34% 34%, 34% 100%, 0 100%); }
+  .c-tr { top: -4px; right: -4px; border-left: 0; border-bottom: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 66% 100%, 66% 34%, 0 34%); }
+  .c-bl { bottom: -4px; left: -4px; border-right: 0; border-top: 0; clip-path: polygon(0 0, 34% 0, 34% 66%, 100% 66%, 100% 100%, 0 100%); }
+  .c-br { bottom: -4px; right: -4px; border-left: 0; border-top: 0; clip-path: polygon(66% 0, 100% 0, 100% 100%, 0 100%, 0 66%, 66% 66%); }
+
+  .spread { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(10px, 1.6vw, 20px); position: relative; }
+  /* stitched, shadowed spine */
+  .spread::before { content: ""; position: absolute; left: 50%; top: -1.5%; bottom: -1.5%; width: 4px; transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .6), transparent); z-index: 2; }
+  .spread::after { content: ""; position: absolute; left: 50%; top: 2%; bottom: 2%; width: 0; transform: translateX(-50%); z-index: 2;
+    border-left: 2px dashed rgba(210, 170, 100, .28); }
+
+  .page { position: relative; border-radius: 6px; padding: clamp(9px, 1.3vw, 17px);
+    background:
+      radial-gradient(ellipse at 50% 45%, rgba(255, 250, 235, .1), transparent 70%),
+      repeating-linear-gradient(97deg, rgba(120, 95, 55, .04) 0 3px, transparent 3px 7px),
+      linear-gradient(174deg, #e9dec2, #d8caa5);
+    box-shadow: inset 0 0 30px rgba(90, 70, 40, .3), inset 0 0 3px rgba(60, 45, 25, .25); }
+
   .pockets { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(6px, 1vw, 12px); }
   .pocket { position: relative; aspect-ratio: 5 / 7; border-radius: 5px; overflow: hidden;
-    background: rgba(120, 100, 70, .18); box-shadow: inset 0 0 0 1px rgba(90, 70, 40, .25), inset 0 2px 8px rgba(60, 45, 25, .25);
+    background: rgba(120, 100, 70, .18);
+    box-shadow: inset 0 0 0 1px rgba(90, 70, 40, .28), inset 0 2px 8px rgba(60, 45, 25, .25);
     cursor: pointer; border: 0; padding: 0; }
   .pocket img { width: 100%; height: 100%; object-fit: contain; display: block;
     filter: saturate(.92) brightness(.97); transition: filter .25s ease, transform .25s ease; }
   .pocket.landscape img { transform: rotate(90deg) scale(1.38); }
-  .pocket:hover img { filter: saturate(1.05) brightness(1.04); }
+  .pocket:hover img { filter: saturate(1.06) brightness(1.05); }
   .pocket.landscape:hover img { transform: rotate(90deg) scale(1.41); }
-  /* sleeve sheen: it lives in plastic, like it should */
   .pocket::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(115deg, rgba(255, 255, 255, .14) 0%, rgba(255, 255, 255, 0) 26%); }
+    background: linear-gradient(115deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, 0) 26%); }
   .pocket.empty { cursor: default; background: rgba(120, 100, 70, .08); box-shadow: inset 0 0 0 1.5px rgba(90, 70, 40, .2); }
   .plabel { font: italic 500 clamp(7.5px, .82vw, 11px)/1.2 "Spectral", serif; color: #5d4c30;
     text-align: center; padding-top: 3px; min-height: 1.5em; }
 
-  /* page furniture */
-  .albumbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 4px 0; }
+  /* pocket cells re-seat with a small settle when the magic sorts them */
+  .cell.pop { animation: seat .5s cubic-bezier(.2, .9, .3, 1) both; }
+  @keyframes seat { from { opacity: 0; transform: translateY(9px) scale(.94); } to { opacity: 1; transform: none; } }
+  .spread.turnL .cell { animation: turnL .32s ease both; }
+  .spread.turnR .cell { animation: turnR .32s ease both; }
+  @keyframes turnL { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+  @keyframes turnR { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+
+  /* the sweep of the sorting magic */
+  .sweep { position: absolute; inset: 0; border-radius: 14px; pointer-events: none; z-index: 4; opacity: 0; }
+  .sweep.go { animation: sweep .8s ease-out; }
+  @keyframes sweep {
+    0% { opacity: 0; background: linear-gradient(100deg, transparent 0%, var(--sweep, rgba(244,205,130,.4)) 6%, transparent 14%); background-position: 0 0; background-size: 300% 100%; background-position-x: 140%; }
+    18% { opacity: 1; }
+    100% { opacity: 0; background: linear-gradient(100deg, transparent 86%, var(--sweep, rgba(244,205,130,.4)) 94%, transparent 100%); background-size: 300% 100%; background-position-x: -160%; }
+  }
+
+  /* ═══ THE RIBBONS: the binder's own magic, keyed to the cards' elements ═══ */
+  .ribbons { position: absolute; top: clamp(-24px, -3.4vh, -30px); right: clamp(16px, 4vw, 60px); display: flex; gap: clamp(7px, 1vw, 13px); z-index: 5; }
+  .ribbon { position: relative; width: clamp(22px, 2.6vw, 30px); height: clamp(46px, 6.4vh, 62px); border: 0; cursor: pointer; padding: 0;
+    background: linear-gradient(178deg, var(--r1), var(--r2));
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+    box-shadow: inset 0 -6px 10px rgba(0, 0, 0, .3), 0 3px 7px rgba(0, 0, 0, .45);
+    transition: transform .28s cubic-bezier(.3, 1.4, .5, 1), filter .28s ease;
+    filter: saturate(.75) brightness(.85); }
+  .ribbon:hover { transform: translateY(7px); filter: saturate(.95) brightness(1); }
+  .ribbon.on { transform: translateY(13px); filter: saturate(1.1) brightness(1.12);
+    box-shadow: inset 0 -6px 10px rgba(0, 0, 0, .3), 0 4px 10px rgba(0, 0, 0, .5), 0 0 18px var(--rglow); }
+  .ribbon i { position: absolute; left: 50%; top: 32%; transform: translate(-50%, -50%);
+    font-style: normal; font-size: clamp(11px, 1.3vw, 15px); color: rgba(255, 248, 230, .9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .55); }
+  .r-order { --r1: #7a6a4c; --r2: #4c4028; --rglow: rgba(200, 180, 130, .4); }
+  .r-rarity { --r1: #d0a542; --r2: #8a6716; --rglow: rgba(244, 205, 130, .55); }
+  .r-red { --r1: #c85a41; --r2: #86331f; --rglow: rgba(240, 120, 80, .5); }
+  .r-blue { --r1: #5a89c8; --r2: #2f5386; --rglow: rgba(120, 170, 240, .5); }
+  .r-green { --r1: #6da45c; --r2: #3d6b31; --rglow: rgba(140, 220, 120, .5); }
+  .r-purple { --r1: #9268c4; --r2: #5c3a8a; --rglow: rgba(180, 140, 240, .5); }
+
+  .albumbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 4px 0; flex-wrap: wrap; }
   .albumbar .ek { font: italic 600 clamp(13px, 1.5vw, 17px) "Spectral", serif; color: #e9dcb8; }
-  .albumbar .ek span { font: 500 11px "IBM Plex Mono", monospace; color: #93876b; font-style: normal; margin-left: 8px; }
+  .drill { font: italic 500 clamp(11px, 1.2vw, 13.5px) "Spectral", serif; color: #b3a072; }
+  .drill b { color: #e8b45a; font-weight: 600; }
   .turns { display: flex; align-items: center; gap: 8px; }
   .turn { font: inherit; background: rgba(233, 220, 184, .1); color: #e9dcb8; border: 1px solid rgba(233, 220, 184, .25);
     border-radius: 7px; padding: 5px 13px; cursor: pointer; }
   .turn:hover { background: rgba(233, 220, 184, .18); }
   .turn:disabled { opacity: .3; cursor: default; }
   .where { color: #93876b; font-size: 11.5px; min-width: 11ch; text-align: center; }
-  .seek { display: flex; align-items: center; gap: 6px; }
-  .seek input { font: inherit; font-size: 12px; width: clamp(120px, 16vw, 210px); background: rgba(233, 220, 184, .08);
+  .seek input { font: inherit; font-size: 12px; width: clamp(120px, 15vw, 200px); background: rgba(233, 220, 184, .08);
     border: 1px solid rgba(233, 220, 184, .2); border-radius: 7px; padding: 5px 9px; color: #e9dcb8; }
   .seek input::placeholder { color: #93876b; }
 
-  /* ── the regard ── */
   .lens { position: fixed; inset: 0; z-index: 30; display: none; place-items: center; }
   body.regarding .lens { display: grid; }
   .lens .card { width: min(34vh, 78vw); border-radius: 10px; cursor: pointer;
@@ -81,7 +150,6 @@
   .facts .flavor { font: italic 500 13px/1.5 "Spectral", serif; color: #8f8468; margin-top: 8px; }
   .facts .honest { font-size: 10px; color: #6e6752; margin-top: 10px; letter-spacing: .05em; }
 
-  /* ── the dock: plain words, ease first ── */
   .dock { display: flex; gap: 6px; justify-content: center; padding: 10px 0 max(10px, env(safe-area-inset-bottom)); z-index: 20; }
   .dock a, .dock span { font: 500 12.5px "IBM Plex Mono", monospace; text-decoration: none;
     padding: 8px 16px; border-radius: 9px; letter-spacing: .02em; }
@@ -89,7 +157,6 @@
   .dock span { color: #6e6752; border: 1px solid rgba(147, 135, 107, .15); }
   .dock span i { font-style: normal; font-size: 9.5px; opacity: .7; margin-left: 5px; }
 
-  /* the wisp keeps you company at the table */
   .wisp { position: fixed; z-index: 25; width: 10px; height: 10px; border-radius: 50%; left: 8%; top: 12%;
     background: #fff3cf; pointer-events: none;
     box-shadow: 0 0 14px 5px rgba(244, 205, 130, .6), 0 0 36px 12px rgba(232, 180, 90, .22);
@@ -101,11 +168,14 @@
 
   @media (max-width: 760px) {
     .spread { grid-template-columns: 1fr; }
-    .spread::before { display: none; }
+    .spread::before, .spread::after { display: none; }
     .page.right { display: none; }
-    .albumbar { flex-wrap: wrap; }
+    .ribbons { right: 8px; }
   }
-  @media (prefers-reduced-motion: reduce) { .wisp { animation: none; } .lens .card { animation: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .wisp, .lens .card, .cell.pop, .sweep.go { animation: none; }
+    .spread.turnL .cell, .spread.turnR .cell { animation: none; }
+  }
 </style>
 </head>
 <body>
@@ -114,12 +184,24 @@
 <div class="stage">
   <div class="albumwrap">
     <div class="album">
-      <div class="spread">
+      <span class="corner c-tl"></span><span class="corner c-tr"></span>
+      <span class="corner c-bl"></span><span class="corner c-br"></span>
+      <div class="ribbons" id="ribbons">
+        <button class="ribbon r-order on" data-mode="order" title="the maker&#8217;s order"><i>&#10087;</i></button>
+        <button class="ribbon r-rarity" data-mode="rarity" title="ranked by rarity — chase first"><i>&#10022;</i></button>
+        <button class="ribbon r-red" data-mode="Red" title="gather the flame"><i>&#128293;&#xFE0E;</i></button>
+        <button class="ribbon r-blue" data-mode="Blue" title="gather the tide"><i>&#9737;</i></button>
+        <button class="ribbon r-green" data-mode="Green" title="gather the grove"><i>&#10047;</i></button>
+        <button class="ribbon r-purple" data-mode="Purple" title="gather the gloam"><i>&#9789;</i></button>
+      </div>
+      <div class="sweep" id="sweep"></div>
+      <div class="spread" id="spread">
         <div class="page left"><div class="pockets" id="pgL"></div></div>
         <div class="page right"><div class="pockets" id="pgR"></div></div>
       </div>
       <div class="albumbar">
-        <div class="ek">The Great Binder <span id="setname"></span></div>
+        <div class="ek">The Great Binder</div>
+        <div class="drill" id="drill"></div>
         <div class="seek"><input id="seek" placeholder="find a card by name…" autocomplete="off"></div>
         <div class="turns">
           <button class="turn" id="prev">&#8249; back</button>
@@ -152,15 +234,46 @@
 
 <script>
 const PER = 9
-let cards = [], spread = 0, isNarrow = matchMedia('(max-width: 760px)').matches
+const LADDER = ['SSS', 'SSP', 'TSP', 'OSR', 'SP', 'TSR', 'SR', 'S', 'RR', 'R', 'PR', 'TD', 'U', 'C', 'Sealed']
+const DRILLS = {
+  order: 'the maker&#8217;s order — as the album was bound',
+  rarity: 'ranked by rarity — <b>chase first</b>',
+  Red: 'gathered by <b>flame</b>', Blue: 'gathered by <b>tide</b>',
+  Green: 'gathered by <b>grove</b>', Purple: 'gathered by <b>gloam</b>',
+}
+const GLOWS = {
+  order: 'rgba(220,195,140,.35)', rarity: 'rgba(244,205,130,.5)',
+  Red: 'rgba(230,110,70,.42)', Blue: 'rgba(110,160,235,.42)',
+  Green: 'rgba(130,210,110,.42)', Purple: 'rgba(175,135,235,.42)',
+}
+let all = [], view = [], spread = 0, mode = 'order'
+let isNarrow = matchMedia('(max-width: 760px)').matches
 const perView = () => isNarrow ? PER : PER * 2
 const $ = (id) => document.getElementById(id)
 
 fetch('catalogs/palworld-ocg.json').then((r) => r.json()).then((d) => {
-  cards = d.cards.filter((c) => c.image)
-  $('setname').textContent = '· ' + (cards[0]?.release_family_label || 'Palworld OCG') + ' · ' + cards.length + ' printings'
-  render()
+  all = d.cards.filter((c) => c.image)
+  applyMode('order', true)
 })
+
+function applyMode(m, first) {
+  mode = m
+  if (m === 'order') view = [...all]
+  else if (m === 'rarity') view = [...all].sort((a, b) =>
+    (LADDER.indexOf(a.rarity) + 99 * (LADDER.indexOf(a.rarity) < 0)) - (LADDER.indexOf(b.rarity) + 99 * (LADDER.indexOf(b.rarity) < 0))
+    || (a.printing_code || '').localeCompare(b.printing_code || ''))
+  else view = all.filter((c) => c.color === m)
+    .sort((a, b) => (Number(a.cost) || 0) - (Number(b.cost) || 0) || (a.printing_code || '').localeCompare(b.printing_code || ''))
+  spread = 0
+  document.querySelectorAll('.ribbon').forEach((r) => r.classList.toggle('on', r.dataset.mode === m))
+  $('drill').innerHTML = DRILLS[m] + ' · ' + view.length + ' cards'
+  if (!first) {
+    const sw = $('sweep')
+    sw.style.setProperty('--sweep', GLOWS[m])
+    sw.classList.remove('go'); void sw.offsetWidth; sw.classList.add('go')
+  }
+  render(first ? null : 'pop')
+}
 
 function pocket(c) {
   if (!c) { const e = document.createElement('div'); e.className = 'pocket empty'; return [e, ''] }
@@ -169,19 +282,22 @@ function pocket(c) {
   b.title = c.name_en
   const img = document.createElement('img')
   img.loading = 'lazy'; img.src = c.image; img.alt = c.name_en
-  b.appendChild(b.img = img)
+  b.appendChild(img)
   b.addEventListener('click', () => regard(c))
   return [b, (c.printing_code || '') + ' · ' + (c.rarity || '')]
 }
 
-function render() {
+function render(anim) {
   const start = spread * perView()
+  let idx = 0
   const fill = (el, from) => {
     el.innerHTML = ''
     for (let i = 0; i < PER; i++) {
-      const c = cards[from + i]
+      const c = view[from + i]
       const [p, label] = pocket(c)
       const cell = document.createElement('div')
+      cell.className = 'cell' + (anim === 'pop' ? ' pop' : '')
+      if (anim === 'pop') cell.style.animationDelay = (idx++ * 26) + 'ms'
       cell.appendChild(p)
       const l = document.createElement('div'); l.className = 'plabel'; l.textContent = label
       cell.appendChild(l)
@@ -190,15 +306,28 @@ function render() {
   }
   fill($('pgL'), start)
   if (!isNarrow) fill($('pgR'), start + PER)
-  const total = Math.ceil(cards.length / perView())
+  const total = Math.max(1, Math.ceil(view.length / perView()))
   $('where').textContent = 'spread ' + (spread + 1) + ' of ' + total
   $('prev').disabled = spread === 0
   $('next').disabled = spread >= total - 1
+  const sp = $('spread')
+  sp.classList.remove('turnL', 'turnR')
+  if (anim === 'turnL' || anim === 'turnR') { void sp.offsetWidth; sp.classList.add(anim) }
 }
 
-const turn = (d) => { spread = Math.max(0, Math.min(Math.ceil(cards.length / perView()) - 1, spread + d)); render() }
+const turn = (d) => {
+  const total = Math.max(1, Math.ceil(view.length / perView()))
+  const nxt = Math.max(0, Math.min(total - 1, spread + d))
+  if (nxt === spread) return
+  spread = nxt
+  render(d > 0 ? 'turnR' : 'turnL')
+}
 $('prev').addEventListener('click', () => turn(-1))
 $('next').addEventListener('click', () => turn(1))
+$('ribbons').addEventListener('click', (e) => {
+  const r = e.target.closest('.ribbon')
+  if (r) applyMode(r.dataset.mode === mode && r.dataset.mode !== 'order' ? 'order' : r.dataset.mode)
+})
 window.addEventListener('keydown', (e) => {
   if (document.body.classList.contains('regarding')) { if (e.key === 'Escape') unregard(); return }
   if (e.key === 'ArrowLeft') turn(-1)
@@ -215,8 +344,8 @@ window.addEventListener('touchend', (e) => {
 $('seek').addEventListener('input', (e) => {
   const q = e.target.value.trim().toLowerCase()
   if (q.length < 2) return
-  const i = cards.findIndex((c) => (c.name_en || '').toLowerCase().includes(q))
-  if (i >= 0) { spread = Math.floor(i / perView()); render() }
+  const i = view.findIndex((c) => (c.name_en || '').toLowerCase().includes(q))
+  if (i >= 0) { spread = Math.floor(i / perView()); render('pop') }
 })
 
 function regard(c) {
