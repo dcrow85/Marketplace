@@ -84,19 +84,19 @@
     text-align: center; padding-top: 3px; min-height: 1.5em; }
 
   /* pocket cells re-seat with a small settle when the magic sorts them */
-  .cell.pop { animation: seat .5s cubic-bezier(.2, .9, .3, 1) both; }
-  @keyframes seat { from { opacity: 0; transform: translateY(9px) scale(.94); } to { opacity: 1; transform: none; } }
-  .spread.turnL .cell { animation: turnL .32s ease both; }
-  .spread.turnR .cell { animation: turnR .32s ease both; }
-  @keyframes turnL { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
-  @keyframes turnR { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+  .cell.pop { animation: seat .45s cubic-bezier(.2, .9, .3, 1) both; }
+  @keyframes seat { from { opacity: .6; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .spread.turnL .cell { animation: turnL .28s ease both; }
+  .spread.turnR .cell { animation: turnR .28s ease both; }
+  @keyframes turnL { from { opacity: .65; transform: translateX(-9px); } to { opacity: 1; transform: none; } }
+  @keyframes turnR { from { opacity: .65; transform: translateX(9px); } to { opacity: 1; transform: none; } }
 
   /* the sweep of the sorting magic */
   .sweep { position: absolute; inset: 0; border-radius: 14px; pointer-events: none; z-index: 4; opacity: 0; }
   .sweep.go { animation: sweep .8s ease-out; }
   @keyframes sweep {
     0% { opacity: 0; background: linear-gradient(100deg, transparent 0%, var(--sweep, rgba(244,205,130,.4)) 6%, transparent 14%); background-position: 0 0; background-size: 300% 100%; background-position-x: 140%; }
-    18% { opacity: 1; }
+    18% { opacity: .38; }
     100% { opacity: 0; background: linear-gradient(100deg, transparent 86%, var(--sweep, rgba(244,205,130,.4)) 94%, transparent 100%); background-size: 300% 100%; background-position-x: -160%; }
   }
 
@@ -363,37 +363,68 @@ function apply(first, sweepColor) {
   render(first ? null : 'pop')
 }
 
-function pocket(c) {
-  if (!c) { const e = document.createElement('div'); e.className = 'pocket empty'; return [e, ''] }
-  const b = document.createElement('button')
-  b.className = 'pocket' + (c.landscape === 'True' ? ' landscape' : '')
-  b.title = c.name_en
-  const img = document.createElement('img')
-  img.loading = 'lazy'; img.src = c.image; img.alt = c.name_en
-  b.appendChild(img)
-  b.addEventListener('click', () => regard(c))
-  return [b, (c.printing_code || '') + ' · ' + (c.rarity || '')]
+let CELLS = null, renderToken = 0
+function buildCells() {
+  CELLS = []
+  const make = (host) => {
+    host.innerHTML = ''
+    for (let i = 0; i < PER; i++) {
+      const cell = document.createElement('div'); cell.className = 'cell'
+      const b = document.createElement('button'); b.className = 'pocket empty'
+      const img = document.createElement('img'); img.style.display = 'none'
+      b.appendChild(img)
+      const l = document.createElement('div'); l.className = 'plabel'; l.textContent = ''
+      cell.appendChild(b); cell.appendChild(l)
+      const slot = { cell, b, img, l, card: null }
+      b.addEventListener('click', () => { if (slot.card) regard(slot.card) })
+      host.appendChild(cell)
+      CELLS.push(slot)
+    }
+  }
+  make($('pgL'))
+  make($('pgR'))
+}
+
+function seat(slot, c, token) {
+  slot.card = c
+  if (!c) {
+    slot.b.className = 'pocket empty'; slot.b.title = ''
+    slot.img.style.display = 'none'; slot.img.src = ''
+    slot.l.textContent = ''
+    return
+  }
+  slot.l.textContent = (c.printing_code || '') + ' · ' + (c.rarity || '')
+  slot.b.title = c.name_en
+  slot.b.className = 'pocket' + (c.landscape === 'True' ? ' landscape' : '')
+  if (slot.img.getAttribute('src') === c.image) { slot.img.style.display = ''; return }
+  // decode off-screen, then swap: the pocket keeps its old card until the new
+  // one is ready — the binder never shows a blank sleeve
+  const pre = new Image()
+  pre.src = c.image
+  const place = () => {
+    if (token !== renderToken || slot.card !== c) return
+    slot.img.src = c.image; slot.img.alt = c.name_en; slot.img.style.display = ''
+  }
+  if (pre.decode) pre.decode().then(place).catch(place)
+  else { pre.onload = place; pre.onerror = place }
 }
 
 function render(anim) {
+  if (!CELLS) buildCells()
+  const token = ++renderToken
   const start = spread * perView()
-  let idx = 0
-  const fill = (el, from) => {
-    el.innerHTML = ''
-    for (let i = 0; i < PER; i++) {
-      const c = view[from + i]
-      const [p, label] = pocket(c)
-      const cell = document.createElement('div')
-      cell.className = 'cell' + (anim === 'pop' ? ' pop' : '')
-      if (anim === 'pop') cell.style.animationDelay = (idx++ * 24) + 'ms'
-      cell.appendChild(p)
-      const l = document.createElement('div'); l.className = 'plabel'; l.textContent = label
-      cell.appendChild(l)
-      el.appendChild(cell)
+  const n = perView()
+  for (let i = 0; i < PER * 2; i++) {
+    const slot = CELLS[i]
+    const c = i < n ? view[start + i] : null
+    seat(slot, c, token)
+    slot.cell.classList.remove('pop')
+    if (anim === 'pop') {
+      void slot.cell.offsetWidth
+      slot.cell.classList.add('pop')
+      slot.cell.style.animationDelay = (i * 22) + 'ms'
     }
   }
-  fill($('pgL'), start)
-  if (!isNarrow) fill($('pgR'), start + PER)
   const total = Math.max(1, Math.ceil(view.length / perView()))
   $('where').textContent = view.length ? 'spread ' + (spread + 1) + ' of ' + total : 'no cards match'
   $('prev').disabled = spread === 0
@@ -401,6 +432,11 @@ function render(anim) {
   const sp = $('spread')
   sp.classList.remove('turnL', 'turnR')
   if (anim === 'turnL' || anim === 'turnR') { void sp.offsetWidth; sp.classList.add(anim) }
+  // warm the next spread so a turn is instant
+  for (let i = 0; i < n; i++) {
+    const c = view[start + n + i]
+    if (c) { const w = new Image(); w.src = c.image }
+  }
 }
 
 const turn = (d) => {
@@ -464,7 +500,7 @@ function regard(c) {
 const unregard = () => document.body.classList.remove('regarding')
 $('lens').addEventListener('click', unregard)
 
-matchMedia('(max-width: 760px)').addEventListener('change', (m) => { isNarrow = m.matches; spread = 0; render() })
+matchMedia('(max-width: 760px)').addEventListener('change', (m) => { isNarrow = m.matches; spread = 0; CELLS = null; render() })
 </script>
 </body>
 </html>
