@@ -33,7 +33,29 @@
   .fy1 { left: 8%; top: 80%; } .fy2 { left: 90%; top: 70%; animation-duration: 18s; animation-delay: 2s; }
   @keyframes fly { from { transform: translate(0,0); opacity: .1; } 30% { opacity: .9; } to { transform: translate(300%, -200%); opacity: .7; } }
 
-  /* ── the pinned cards: the village's wants, in the ghost slots ── */
+  /* ── paper only: cardboard never weathers at the gate ── */
+  .paper {
+    position: absolute; z-index: 4; display: block; text-decoration: none;
+    font: italic 500 clamp(8px, 1.05vw, 14px)/1.35 "Spectral", serif; color: #3a2f1d;
+    background: linear-gradient(178deg, #d8c9a4, #c4b48c);
+    padding: .5em .7em .55em; border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .45);
+  }
+  .paper b { letter-spacing: .02em; }
+  .paper a { color: #6b4f22; font-weight: 600; text-decoration: none; }
+  .paper a:hover { color: #8a5f2e; }
+  .sketchwant { left: 39.6%; top: 55.8%; width: 9.2%; transform: rotate(-2deg); cursor: pointer; }
+  .sketchwant img { display: block; width: 78%; margin: 0 auto .4em;
+    /* a charcoal sketch OF the card — paper about the thing, not the thing */
+    filter: grayscale(1) sepia(.55) contrast(.82) brightness(.95) opacity(.85);
+    mix-blend-mode: multiply; border-radius: 3px; }
+  .sketchwant:hover img { filter: grayscale(.7) sepia(.5) contrast(.85) opacity(.95); }
+  .sketchwant .pw-t { display: block; text-align: center; font-size: .92em; }
+  .welcome { left: 50.6%; top: 58.6%; max-width: 14.5em; transform: rotate(1.4deg); }
+  .market { left: 51.8%; top: 77.5%; max-width: 12em; transform: rotate(-1deg);
+    background: linear-gradient(178deg, #c9b990, #b3a37c); font-size: .92em; }
+  .foundslip { left: 45.2%; top: 36.5%; }
+  /* ── (legacy pin styles, unused) ── */
   .pin {
     position: absolute; z-index: 4; cursor: pointer;
     filter: saturate(.86) brightness(.93) drop-shadow(0 3px 7px rgba(0,0,0,.5));
@@ -109,29 +131,27 @@
       <div class="ov fly fy1"></div><div class="ov fly fy2"></div>
       <div class="plaque">
         <h1>The board at the gate.</h1>
-        <p>The village speaks to the road: what Waystone wants, posted where travelers pass —
-          because any arrival might be carrying it.</p>
+        <p>Paper speaks to the road; the cards live indoors. A sketch of what&#8217;s sought,
+          word of market-day &mdash; and the way to the fire.</p>
       </div>
     </div>
 
-    <img class="pin sought" id="sought" src="assets/palworld/BP01-006SR.webp"
-      alt="Foxparks – Light of Courage, SR — sought by the village" title="regard the card">
-    <img class="pin found" src="assets/palworld/BP01-004SR.webp"
-      alt="Bushi – Ephemeral Blade, SR — found, settled at market-day">
-    <span class="pinhead ph1"></span><span class="pinhead ph2"></span>
-    <div class="notice n-sought">sought &mdash; Merra, by the mill.<br>will trade three alternates. ask at the inn.</div>
+    <a class="paper sketchwant" href="waystone-inn.html" title="ask at the inn">
+      <img src="assets/palworld/BP01-006SR.webp" alt="charcoal sketch of the sought card">
+      <span class="pw-t">SOUGHT &mdash; the courage printing.<br>ask for Merra, at the inn.</span>
+    </a>
+    <div class="paper welcome">
+      <b>Travelers &mdash;</b> the inn is open.<br>
+      The Great Binder is free to leaf.<br>
+      <a href="waystone-inn.html">&rarr; this way, by the fire</a>
+    </div>
+    <div class="paper market">market-day, next full moon.<br>the square, from first light.</div>
     <div class="foundslip">FOUND</div>
-    <div class="notice n-found"><b>settled</b> at market-day.<br>the stone remembers it.</div>
   </div>
   <div class="conceptnote">internal concept study — artist-brief material, not final art</div>
-  <div class="hint idle">tap the sought card — the board will step back</div>
-  <div class="hint back">tap anywhere — the board returns</div>
+  
+  
 </div>
-<script>
-  document.getElementById('sought').addEventListener('click', (e) => {
-    e.stopPropagation(); document.body.classList.toggle('regarding')
-  })
-  document.getElementById('stage').addEventListener('click', () => document.body.classList.remove('regarding'))
-</script>
+
 </body>
 </html>

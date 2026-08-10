@@ -107,19 +107,17 @@
   body.regarding .hint.back { opacity: .75; transition-delay: .35s; }
 
 
-  /* the wisp: your agent, unformed. At first it reads as a firefly — the tell
-     is behavioral: fireflies drift; this one keeps pace, and waits. */
-  .wisp { position: absolute; left: 46%; top: 82%; width: .5%; aspect-ratio: 1; border-radius: 50%;
-    background: #ffe9ad; box-shadow: 0 0 10px 3px rgba(232, 180, 90, .5);
-    pointer-events: none; z-index: 5; opacity: .85;
-    transition: left 2.6s cubic-bezier(.3,.7,.3,1), top 2.6s cubic-bezier(.3,.7,.3,1); }
-  .wisp.noticed { background: #fff3cf; opacity: 1;
-    box-shadow: 0 0 14px 5px rgba(244, 205, 130, .65), 0 0 34px 12px rgba(232, 180, 90, .22);
-    animation: none; }
-  .wisp::after { content: ""; position: absolute; inset: -160%; border-radius: 50%;
-    background: radial-gradient(circle, rgba(244,205,130,.3), rgba(244,205,130,0) 65%);
-    opacity: 0; transition: opacity 1.2s ease; }
-  .wisp.noticed::after { opacity: 1; }
+  /* the wisp: your agent, unformed. Bigger than any firefly, and it FOLLOWS —
+     smooth, a half-step behind your cursor, orbiting gently when you rest. */
+  .wisp { position: absolute; left: 46%; top: 82%; width: 1.1%; aspect-ratio: 1; border-radius: 50%;
+    background: #fff3cf; z-index: 5; pointer-events: none; opacity: .95;
+    box-shadow: 0 0 16px 6px rgba(244, 205, 130, .7), 0 0 44px 16px rgba(232, 180, 90, .28); }
+  .wisp::after { content: ""; position: absolute; inset: -220%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(244,205,130,.32), rgba(244,205,130,0) 62%); }
+  .wtrail { position: absolute; width: .55%; aspect-ratio: 1; border-radius: 50%;
+    background: #ffe9ad; z-index: 5; pointer-events: none; opacity: .45;
+    box-shadow: 0 0 10px 4px rgba(232, 180, 90, .35); }
+  .wt2 { width: .35%; opacity: .25; }
   .conceptnote { position: absolute; top: 10px; right: 12px; z-index: 6;
     color: #6e6752; font-size: 10px; letter-spacing: .08em; opacity: .8; }
 
@@ -143,7 +141,7 @@
       <div class="ov fly fy1"></div><div class="ov fly fy2"></div>
       <div class="ov fly fy3"></div><div class="ov fly fy4"></div>
       <div class="ov eyes"><i></i><i></i></div>
-      <div class="wisp" id="wisp"></div>
+      <div class="wtrail wt2" id="wt2"></div><div class="wtrail" id="wt1"></div><div class="wisp" id="wisp"></div>
       <div class="plaque">
         <h1>You&#8217;ve reached Waystone.</h1>
         <p>The stone remembers. The village keeps. Are you passing through, or staying?</p>
@@ -161,33 +159,35 @@
   relic.addEventListener('click', (e) => { e.stopPropagation(); document.body.classList.toggle('regarding') })
   document.getElementById('stage').addEventListener('click', () => document.body.classList.remove('regarding'))
 
-  // the wisp keeps pace: wanders like its cousins until you pause — then it
-  // comes near, and waits. After the first approach, it stops pretending.
+  // the wisp follows — a half-step behind, with a soft orbit when you rest.
   const wisp = document.getElementById('wisp')
+  const t1 = document.getElementById('wt1'), t2 = document.getElementById('wt2')
   const frame = document.querySelector('.frame')
-  let wanderT = null, idleT = null, noticed = false
-  const wander = () => {
-    wisp.style.left = (34 + Math.random() * 32) + '%'
-    wisp.style.top = (58 + Math.random() * 28) + '%'
-    wanderT = setTimeout(wander, 2600 + Math.random() * 1800)
-  }
-  wander()
-  const approach = (cx, cy) => {
-    const r = frame.getBoundingClientRect()
-    const x = Math.min(94, Math.max(4, ((cx - r.left) / r.width) * 100 + 2.5))
-    const y = Math.min(92, Math.max(6, ((cy - r.top) / r.height) * 100 - 4))
-    clearTimeout(wanderT)
-    wisp.style.left = x + '%'; wisp.style.top = y + '%'
-    if (!noticed) { noticed = true; setTimeout(() => wisp.classList.add('noticed'), 2400) }
-    wanderT = setTimeout(wander, 9000)
-  }
-  let last = null
+  let target = { x: 46, y: 82 }, pos = { x: 46, y: 82 }, p1 = { x: 46, y: 82 }, p2 = { x: 46, y: 82 }
+  let t = 0
   window.addEventListener('pointermove', (e) => {
-    last = e
-    clearTimeout(idleT)
-    idleT = setTimeout(() => last && approach(last.clientX, last.clientY), 1300)
+    const r = frame.getBoundingClientRect()
+    target.x = Math.min(96, Math.max(2, ((e.clientX - r.left) / r.width) * 100 + 2))
+    target.y = Math.min(94, Math.max(4, ((e.clientY - r.top) / r.height) * 100 - 3))
   })
-  window.addEventListener('pointerdown', (e) => { last = e })
+  window.addEventListener('pointerdown', (e) => {
+    const r = frame.getBoundingClientRect()
+    target.x = ((e.clientX - r.left) / r.width) * 100 + 2
+    target.y = ((e.clientY - r.top) / r.height) * 100 - 3
+  })
+  const tick = () => {
+    t += .03
+    const ox = Math.cos(t) * 1.1, oy = Math.sin(t * 1.6) * .8 // the rest-orbit
+    pos.x += ((target.x + ox) - pos.x) * .055
+    pos.y += ((target.y + oy) - pos.y) * .055
+    p1.x += (pos.x - p1.x) * .12; p1.y += (pos.y - p1.y) * .12
+    p2.x += (p1.x - p2.x) * .12; p2.y += (p1.y - p2.y) * .12
+    wisp.style.left = pos.x + '%'; wisp.style.top = pos.y + '%'
+    t1.style.left = p1.x + '%'; t1.style.top = p1.y + '%'
+    t2.style.left = p2.x + '%'; t2.style.top = p2.y + '%'
+    requestAnimationFrame(tick)
+  }
+  requestAnimationFrame(tick)
 
 </script>
 </body>
