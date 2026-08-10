@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0d12">
+<title>Waystone — pixel corner study</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #060809; }
+  body { display: grid; place-items: center; font: 12px "IBM Plex Mono", ui-monospace, monospace; color: #5d6b5e; }
+  .frame { position: relative; width: min(100vw, 178svh); aspect-ratio: 16/9; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; display: block; }
+
+  /* THE LAW, literal: the one hi-res object in a pixel world. Its glow breathes. */
+  .relic {
+    position: absolute; left: 61.8%; top: 57.5%; width: 9.6%;
+    transform: rotate(-2.5deg);
+    border-radius: 4.5% / 3.2%;
+    animation: relic 5.2s ease-in-out infinite;
+    box-shadow: 0 0 24px rgba(244, 205, 130, .38), 0 0 70px rgba(232, 180, 90, .2);
+  }
+  @keyframes relic {
+    0%, 100% { box-shadow: 0 0 22px rgba(244, 205, 130, .32), 0 0 60px rgba(232, 180, 90, .16); filter: saturate(1.12) brightness(1.04); }
+    50%      { box-shadow: 0 0 34px rgba(244, 205, 130, .55), 0 0 96px rgba(232, 180, 90, .3); filter: saturate(1.22) brightness(1.1); }
+  }
+  .cap { position: absolute; left: 12px; bottom: 10px; opacity: .55; letter-spacing: .06em; }
+  @media (prefers-reduced-motion: reduce) { .relic { animation: none; } }
+</style>
+</head>
+<body>
+<div class="frame">
+  <canvas id="cv" width="240" height="135"></canvas>
+  <img class="relic" src="assets/palworld/BP01-006SR.webp" alt="Foxparks – Light of Courage, SR — the luminous card">
+  <div class="cap">waystone · pixel corner study — muted village, luminous cards</div>
+</div>
+<script>
+const cv = document.getElementById('cv'), g = cv.getContext('2d')
+const W = 240, H = 135
+const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches
+
+// ---- night-forest palette: 14 colors + ember light ----
+const P = {
+  sky0:'#0a0d12', sky1:'#0e1319', sky2:'#131a22', sky3:'#182029',
+  ridge:'#0d1216', ground:'#141d18', ground2:'#18231c', ground3:'#1e2b21',
+  moss:'#2f4a38', moss2:'#43614a', mossHi:'#5d7a58',
+  stone:'#4a5259', stone2:'#5d666d', stoneHi:'#7c868c',
+  wood:'#3a2f22', wood2:'#4a3c2a', woodHi:'#5c4a33',
+  ember:'#e8b45a', emberHi:'#f4cd82', emberLo:'#8a5f2e',
+  star:'#c7d0d4', moon:'#aab6a8',
+}
+const px = (x, y, c) => { g.fillStyle = c; g.fillRect(x|0, y|0, 1, 1) }
+const rect = (x, y, w, h, c) => { g.fillStyle = c; g.fillRect(x|0, y|0, w, h) }
+
+// deterministic scatter
+let seed = 7
+const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647
+
+// star field + moss speckles fixed at load
+const stars = Array.from({length: 46}, () => ({ x: rnd()*W, y: rnd()*54, tw: rnd()*6.28, s: .5 + rnd()*1.6 }))
+const speck = Array.from({length: 170}, () => ({ x: rnd()*W, y: 92 + rnd()*40, c: rnd() }))
+const flies = Array.from({length: 5}, (_, i) => ({ ph: i*1.4, sp: .12 + rnd()*.1, cx: 30 + rnd()*180, cy: 96 + rnd()*22, rx: 8+rnd()*14, ry: 3+rnd()*4 }))
+const tufts = Array.from({length: 26}, () => ({ x: 4 + rnd()*232, y: 100 + rnd()*30, h: 2 + (rnd()*3|0), ph: rnd()*6.28 }))
+
+function sky(t) {
+  rect(0, 0, W, 26, P.sky0); rect(0, 26, W, 16, P.sky1)
+  rect(0, 42, W, 14, P.sky2); rect(0, 56, W, 14, P.sky3)
+  // dither the band seams
+  for (let x = 0; x < W; x += 2) {
+    px(x + (x/2 % 2), 26, P.sky0); px(x + (x/2 % 2 ? 0 : 1), 42, P.sky1)
+    px(x + (x/2 % 2), 56, P.sky2); px(x + (x/2 % 2 ? 0 : 1), 57, P.sky2)
+    px(x + (x/2 % 2), 41, P.sky1); px(x + (x/2 % 2 ? 0 : 1), 27, P.sky0)
+  }
+  for (const s of stars) {
+    const a = .35 + .65 * Math.abs(Math.sin(t*.6 + s.tw))
+    if (a > .55 || s.s > 1.4) { g.globalAlpha = a; px(s.x, s.y, P.star); g.globalAlpha = 1 }
+  }
+  // the moon — and the small wrong one, green-shouldered
+  rect(196, 12, 7, 7, P.moon); rect(197, 11, 5, 9, P.moon); rect(195, 13, 9, 5, P.moon)
+  px(198, 13, '#c3cec0'); px(200, 15, '#95a294')
+  rect(38, 22, 3, 3, '#5d7a58'); px(39, 21, '#6d8a66'); px(38, 22, '#43614a')
+}
+
+function ridge() {
+  g.fillStyle = P.ridge
+  g.beginPath(); g.moveTo(0, 78)
+  for (let x = 0; x <= W; x += 8) g.lineTo(x, 70 + Math.sin(x*.08)*4 + Math.sin(x*.023)*3)
+  g.lineTo(W, 90); g.lineTo(0, 90); g.fill()
+  // pines
+  const pine = (x, y, h) => { for (let i = 0; i < h; i++) rect(x-i*.6, y-h+i, 1+i*1.2, 1, P.ridge) }
+  pine(22, 74, 6); pine(30, 76, 4); pine(118, 72, 5); pine(206, 75, 6); pine(214, 77, 4); pine(74, 74, 4)
+}
+
+function ground(t, emberA) {
+  rect(0, 88, W, 47, P.ground)
+  rect(0, 88, W, 3, P.ground2)
+  for (const s of speck) px(s.x, s.y, s.c < .5 ? P.ground2 : (s.c < .82 ? P.ground3 : P.moss))
+  // the path of light the stone lays on the grass — it breathes with the marks
+  const grd = g.createRadialGradient(56, 116, 2, 56, 116, 34)
+  grd.addColorStop(0, `rgba(232,180,90,${.16*emberA})`)
+  grd.addColorStop(1, 'rgba(232,180,90,0)')
+  g.fillStyle = grd; g.fillRect(18, 96, 80, 39)
+  // lantern pool by the board
+  const l = g.createRadialGradient(190, 112, 1, 190, 112, 22)
+  l.addColorStop(0, 'rgba(244,205,130,.14)'); l.addColorStop(1, 'rgba(244,205,130,0)')
+  g.fillStyle = l; g.fillRect(166, 92, 50, 40)
+}
+
+// ---- the waystone: three stacked stones, mossy, marks that remember ----
+function waystone(t, emberA) {
+  const X = 48, Y = 78 // top-left of the stack region
+  const sLo = '#333b42', sMd = '#3f484f', sHi = '#565f66', sRim = '#6d767d'
+  // base stone
+  rect(X-2, Y+26, 22, 12, sMd); rect(X-1, Y+25, 20, 1, sHi)
+  rect(X-2, Y+32, 22, 6, sLo)
+  // middle
+  rect(X+1, Y+14, 16, 12, sMd); rect(X+2, Y+13, 14, 1, sHi)
+  rect(X+1, Y+21, 16, 5, sLo)
+  // crown
+  rect(X+4, Y+4, 10, 10, sMd); rect(X+5, Y+3, 8, 1, sHi)
+  // roughen the silhouette — weather did this
+  px(X-2, Y+26, P.ground); px(X+19, Y+37, P.ground); px(X+1, Y+14, P.ground)
+  px(X+16, Y+25, P.ground); px(X+4, Y+4, P.ground); px(X+13, Y+13, P.ground)
+  px(X+3, Y+9, sMd); px(X+18, Y+29, sMd)
+  // rim light (moon side, right)
+  for (let i = 1; i < 10; i++) px(X+13, Y+4+i, sRim)
+  for (let i = 1; i < 11; i++) px(X+16, Y+14+i, sHi)
+  px(X+19, Y+27, sHi); px(X+19, Y+31, sHi)
+  // moss shoulders (left, where weather comes from) — memory is visible
+  rect(X-2, Y+26, 5, 3, P.moss); rect(X-1, Y+31, 4, 4, P.moss2); px(X, Y+25, P.mossHi); px(X+1, Y+29, P.mossHi)
+  rect(X+1, Y+14, 4, 3, P.moss2); px(X+2, Y+13, P.mossHi); rect(X+1, Y+18, 2, 2, P.moss)
+  rect(X+4, Y+4, 2, 3, P.moss2); px(X+5, Y+3, P.mossHi); px(X+6, Y+6, P.moss)
+  // small companion stones in the grass
+  rect(X-9, Y+34, 4, 3, P.stone); px(X-9, Y+33, P.stone2); px(X-6, Y+36, P.moss)
+  rect(X+24, Y+35, 3, 2, P.stone); px(X+24, Y+34, P.moss2)
+  // THE MARKS — the stone remembers; they breathe ember
+  const on = (x, y, k) => {
+    const a = emberA * (.75 + .25*Math.sin(t*1.2 + k))
+    g.globalAlpha = Math.min(1, a)
+    px(x, y, P.emberHi); g.globalAlpha = Math.min(1, a*.55)
+    px(x-1, y, P.ember); px(x+1, y, P.ember); px(x, y-1, P.ember); px(x, y+1, P.ember)
+    g.globalAlpha = 1
+  }
+  on(X+8, Y+8, 0); on(X+10, Y+10, 1.1)
+  on(X+7, Y+17, 2.3); on(X+11, Y+18, 3.1); on(X+9, Y+21, 4.4)
+  on(X+5, Y+29, 5.2); on(X+13, Y+30, .7)
+  // stone glow halo
+  const grd = g.createRadialGradient(X+9, Y+18, 1, X+9, Y+18, 20)
+  grd.addColorStop(0, `rgba(232,180,90,${.12*emberA})`)
+  grd.addColorStop(1, 'rgba(232,180,90,0)')
+  g.fillStyle = grd; g.fillRect(X-14, Y-6, 46, 48)
+}
+
+// ---- the notice board: mundane wood; the relic card (DOM, hi-res) pins to it ----
+function board(t, flick) {
+  const X = 142, Y = 74
+  // posts
+  rect(X+2, Y+14, 3, 32, P.wood); rect(X+49, Y+14, 3, 32, P.wood)
+  px(X+2, Y+14, P.wood2); px(X+49, Y+14, P.wood2)
+  // board
+  rect(X, Y+12, 53, 24, P.wood2)
+  rect(X+1, Y+13, 51, 22, P.wood)
+  // plank seams
+  for (let y = Y+13; y < Y+35; y += 6) { g.fillStyle = P.wood2; g.fillRect(X+1, y, 51, 1) }
+  // roof
+  rect(X-3, Y+8, 59, 3, P.woodHi); rect(X-1, Y+6, 55, 2, P.wood2); rect(X+1, Y+11, 51, 1, '#241d13')
+  // two muted pixel notices (the ordinary pins — the myth stays in the relic)
+  rect(X+6, Y+16, 9, 12, '#26313a'); rect(X+7, Y+17, 7, 10, '#31404b'); px(X+10, Y+16, P.emberLo)
+  rect(X+38, Y+18, 9, 12, '#26313a'); rect(X+39, Y+19, 7, 10, '#31404b'); px(X+42, Y+18, P.emberLo)
+  // warm cast on the planks where the relic hangs (under the DOM card)
+  const grd = g.createRadialGradient(X+26, Y+25, 2, X+26, Y+25, 20)
+  grd.addColorStop(0, 'rgba(244,205,130,.28)'); grd.addColorStop(1, 'rgba(244,205,130,0)')
+  g.fillStyle = grd; g.fillRect(X+2, Y+6, 49, 38)
+  // the lantern — hung from the roof beam, it flickers like a real one
+  px(X+55, Y+9, P.woodHi)
+  rect(X+55, Y+10, 1, 4, P.wood2)
+  rect(X+53, Y+14, 5, 7, '#241d13')
+  rect(X+54, Y+15, 3, 5, flick > .5 ? P.emberHi : P.ember)
+  px(X+55, Y+17, '#fff3d6')
+  const l = g.createRadialGradient(X+55, Y+17, 1, X+55, Y+17, 13 + flick*2)
+  l.addColorStop(0, `rgba(244,205,130,${.22 + flick*.08})`); l.addColorStop(1, 'rgba(244,205,130,0)')
+  g.fillStyle = l; g.fillRect(X+38, Y+4, 34, 32)
+}
+
+function grassAndLife(t) {
+  for (const f of tufts) {
+    const sway = REDUCE ? 0 : Math.round(Math.sin(t*.8 + f.ph) * .8)
+    g.fillStyle = f.y > 116 ? P.moss2 : P.moss
+    for (let i = 0; i < f.h; i++) px(f.x + (i === f.h-1 ? sway : 0), f.y - i, g.fillStyle)
+  }
+  // fireflies — tiny wandering lights
+  for (const f of flies) {
+    const a = Math.max(0, Math.sin(t*.9 + f.ph*2.4))
+    if (a < .12) continue
+    const x = f.cx + Math.cos(t*f.sp + f.ph) * f.rx
+    const y = f.cy + Math.sin(t*f.sp*1.7 + f.ph) * f.ry
+    g.globalAlpha = a; px(x, y, P.emberHi)
+    g.globalAlpha = a*.3; px(x-1, y, P.ember); px(x+1, y, P.ember); px(x, y-1, P.ember); px(x, y+1, P.ember)
+    g.globalAlpha = 1
+  }
+  // the whisperer: two eyes in the dark grass, rarely — glimpsed, never shown
+  const cycle = (t % 24)
+  if (cycle > 21 && cycle < 22.6) {
+    const blink = (cycle > 21.6 && cycle < 21.75) ? 0 : 1
+    if (blink) { px(226, 122, P.emberHi); px(229, 122, P.emberHi) }
+  }
+}
+
+function mist(t) {
+  // a low breath of mist drifting — the scene inhales
+  const y = 100
+  for (let i = 0; i < 3; i++) {
+    const off = ((t * (2.2 + i*1.3)) % (W + 90)) - 45
+    const grd = g.createLinearGradient(0, y + i*9, 0, y + i*9 + 7)
+    grd.addColorStop(0, 'rgba(93,122,88,0)')
+    grd.addColorStop(.5, `rgba(93,122,88,${.045 + i*.012})`)
+    grd.addColorStop(1, 'rgba(93,122,88,0)')
+    g.fillStyle = grd
+    g.fillRect(off - 40, y + i*9, 90, 7)
+    g.fillRect(off + 80, y + i*9 + 3, 70, 6)
+  }
+}
+
+let f0 = 0
+function frame(ms) {
+  const t = REDUCE ? 40 : ms / 1000
+  // everything breathes on the same slow lung: ~5s cycle
+  const breath = .72 + .28 * Math.sin(t * 1.2)
+  const flick = (Math.sin(t*9.3) + Math.sin(t*23.7)) > .9 ? 1 : 0
+  sky(t); ridge(); ground(t, breath)
+  waystone(t, breath)
+  board(t, flick)
+  grassAndLife(t)
+  mist(t)
+  // vignette — night holds the edges
+  const v = g.createRadialGradient(W/2, H*.58, 40, W/2, H*.58, 150)
+  v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(4,6,8,.55)')
+  g.fillStyle = v; g.fillRect(0, 0, W, H)
+  if (!REDUCE) requestAnimationFrame(frame)
+}
+requestAnimationFrame(frame)
+</script>
+</body>
+</html>
