@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171b21">
+<title>Waystone — painted study (internal concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #0b0e12; }
+  body { overflow: hidden; font: 13px "IBM Plex Mono", ui-monospace, monospace; }
+
+  .stage { position: fixed; inset: 0; display: grid; place-items: center; }
+  /* the frame keeps the painting's aspect; overlays position in % of it */
+  .frame { position: relative; width: min(100vw, 175svh); aspect-ratio: 1344/768; }
+  .painting { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .scenewrap { position: absolute; inset: 0; transition: filter .5s ease; }
+  body.regarding .scenewrap { filter: brightness(.4) saturate(.55) blur(4px); }
+
+  /* ── coded breath over the painting ── */
+  .ov { position: absolute; pointer-events: none; }
+  .runeglow {
+    left: 10.5%; top: 44%; width: 12%; height: 38%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(244, 205, 130, .22), rgba(244, 205, 130, 0) 68%);
+    animation: breath 5.4s ease-in-out infinite; border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+  .lampglow {
+    left: 63%; top: 52%; width: 14%; height: 30%;
+    background: radial-gradient(ellipse at 50% 42%, rgba(244, 205, 130, .2), rgba(232, 180, 90, 0) 62%);
+    animation: flick 3.1s steps(3) infinite; border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+  .doorglow {
+    left: 44.5%; top: 40%; width: 12%; height: 16%;
+    background: radial-gradient(ellipse at 50% 60%, rgba(244, 205, 130, .18), rgba(232, 180, 90, 0) 65%);
+    animation: breath 5.4s ease-in-out infinite; animation-delay: 2.7s; border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+  @keyframes breath { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+  @keyframes flick { 0%, 86% { opacity: .9; } 90% { opacity: .5; } 95% { opacity: .75; } 100% { opacity: .9; } }
+
+  .mist {
+    left: -10%; width: 70%; height: 9%; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(158, 178, 168, .1), rgba(158, 178, 168, 0) 70%);
+    animation: drift 30s ease-in-out infinite alternate;
+  }
+  .mi1 { top: 55%; } .mi2 { top: 66%; left: 30%; animation-duration: 38s; animation-delay: 6s; }
+  @keyframes drift { from { transform: translateX(-3%); } to { transform: translateX(14%); } }
+
+  .fly {
+    width: .45%; aspect-ratio: 1; border-radius: 50%;
+    background: #ffe08f; box-shadow: 0 0 10px 3px rgba(232, 180, 90, .5);
+    animation: fly 13s ease-in-out infinite alternate;
+  }
+  .fy1 { left: 40%; top: 78%; } .fy2 { left: 55%; top: 66%; animation-duration: 17s; animation-delay: 1s; }
+  .fy3 { left: 49%; top: 55%; animation-duration: 10s; animation-delay: 2.5s; }
+  .fy4 { left: 24%; top: 84%; animation-duration: 15s; animation-delay: .5s; }
+  @keyframes fly {
+    from { transform: translate(0, 0); opacity: .1; }
+    30% { opacity: .95; } 60% { opacity: .25; }
+    to { transform: translate(340%, -240%); opacity: .8; }
+  }
+
+  /* the whisperer: eyes under the right pine, rarely */
+  .eyes { left: 84.5%; top: 78%; width: 1.6%; display: flex; gap: 34%;
+    opacity: 0; animation: peek 26s linear infinite; }
+  .eyes i { flex: 1; aspect-ratio: 1; border-radius: 50%; background: #f4cd82; box-shadow: 0 0 6px rgba(244,205,130,.8); }
+  @keyframes peek { 0%, 87% { opacity: 0; } 88%, 91% { opacity: .9; } 91.6%, 92.4% { opacity: 0; } 93%, 96% { opacity: .9; } 97%, 100% { opacity: 0; } }
+
+  /* ── the relic: pinned to the painted board; regarded, it blooms ── */
+  .relic {
+    position: absolute; left: 68.7%; top: 59.2%; width: 5.7%;
+    transform: rotate(-1.5deg);
+    border-radius: 5.5% / 3.8%;
+    cursor: pointer;
+    filter: saturate(.84) brightness(.92) drop-shadow(0 3px 8px rgba(0,0,0,.55));
+    transition: all .5s cubic-bezier(.22, .9, .3, 1);
+    z-index: 4;
+  }
+  .relic:hover { filter: saturate(.95) brightness(1) drop-shadow(0 3px 10px rgba(0,0,0,.55)); }
+  body.regarding .relic {
+    left: 50%; top: 50%; width: min(30vh, 76vw);
+    transform: translate(-50%, -50%) rotate(0deg);
+    filter: saturate(1.16) brightness(1.05);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, .7), 0 0 60px rgba(244, 205, 130, .35), 0 0 140px rgba(232, 180, 90, .16);
+  }
+
+  .plaque {
+    position: absolute; z-index: 3; left: clamp(14px, 3vw, 44px); bottom: clamp(14px, 4vh, 36px);
+    max-width: 300px; color: #cfc3a4; transition: opacity .4s ease;
+    text-shadow: 0 2px 10px rgba(0,0,0,.7);
+  }
+  body.regarding .plaque { opacity: 0; }
+  .plaque h1 { font: 500 20px/1.35 "Spectral", serif; color: #efe6cc; margin: 0 0 4px; }
+  .plaque p { font: italic 500 13.5px/1.5 "Spectral", serif; margin: 0; color: #b3a687; }
+
+  .hint { position: absolute; z-index: 5; left: 50%; bottom: 3.4%; transform: translateX(-50%);
+    color: #9c8f6f; letter-spacing: .08em; font-size: 11px; opacity: .75; transition: opacity .4s ease;
+    pointer-events: none; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+  body.regarding .hint.idle { opacity: 0; }
+  .hint.back { opacity: 0; }
+  body.regarding .hint.back { opacity: .75; transition-delay: .35s; }
+
+  .conceptnote { position: absolute; top: 10px; right: 12px; z-index: 6;
+    color: #6e6752; font-size: 10px; letter-spacing: .08em; opacity: .8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .runeglow, .lampglow, .doorglow, .mist, .fly, .eyes { animation: none; }
+    .scenewrap, .relic { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="frame">
+    <div class="scenewrap">
+      <img class="painting" src="waystone-art/nocturne-a.png" alt="The village of Waystone at night — concept painting">
+      <div class="ov runeglow"></div>
+      <div class="ov doorglow"></div>
+      <div class="ov lampglow"></div>
+      <div class="ov mist mi1"></div>
+      <div class="ov mist mi2"></div>
+      <div class="ov fly fy1"></div><div class="ov fly fy2"></div>
+      <div class="ov fly fy3"></div><div class="ov fly fy4"></div>
+      <div class="ov eyes"><i></i><i></i></div>
+      <div class="plaque">
+        <h1>You&#8217;ve reached Waystone.</h1>
+        <p>The stone remembers. The village keeps. Are you passing through, or staying?</p>
+      </div>
+    </div>
+    <img class="relic" id="relic" src="assets/palworld/BP01-006SR.webp"
+      alt="Foxparks – Light of Courage, SR — pinned to the notice board" title="regard the card">
+  </div>
+  <div class="conceptnote">internal concept study — artist-brief material, not final art</div>
+  <div class="hint idle">tap the card on the board — the village will step back</div>
+  <div class="hint back">tap anywhere — the village returns</div>
+</div>
+<script>
+  const relic = document.getElementById('relic')
+  relic.addEventListener('click', (e) => { e.stopPropagation(); document.body.classList.toggle('regarding') })
+  document.getElementById('stage').addEventListener('click', () => document.body.classList.remove('regarding'))
+</script>
+</body>
+</html>
