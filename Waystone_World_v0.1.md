@@ -115,7 +115,10 @@ Never a settings form. The ritual:
 outdoors. Card art appears ONLY where cards truly live: binders, sleeves,
 display cases, reliquary niches, hands at a table. A notice board, if present,
 holds paper — sketch-wants, market-day announcements — muted, never luminous.
-(The gate notice board is demoted to optional set dressing.)
+(The gate notice board is RETIRED as a destination entirely — its functions all
+migrated: catalogue -> the Great Binder; wants -> people in the room;
+directions -> the wisp, who leads. It survives only as a background prop in the
+wide shot; announcements live INSIDE the inn, pinned by the door like any pub.)
 
 **The beats:**
 1. THE TRAIL — short, one screen. The waystone glows a mark as you pass (the

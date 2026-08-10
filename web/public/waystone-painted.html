@@ -159,27 +159,60 @@
   relic.addEventListener('click', (e) => { e.stopPropagation(); document.body.classList.toggle('regarding') })
   document.getElementById('stage').addEventListener('click', () => document.body.classList.remove('regarding'))
 
-  // the wisp follows — a half-step behind, with a soft orbit when you rest.
+  // the wisp has errands. It visits the stone's runes, the board's lantern, the
+  // path — and keeps circling back to the inn door, waiting there: come on. Your
+  // cursor is interesting to it, not commanding: come near and it attends a while,
+  // click and it comes — then it remembers where you were both headed.
   const wisp = document.getElementById('wisp')
   const t1 = document.getElementById('wt1'), t2 = document.getElementById('wt2')
   const frame = document.querySelector('.frame')
-  let target = { x: 46, y: 82 }, pos = { x: 46, y: 82 }, p1 = { x: 46, y: 82 }, p2 = { x: 46, y: 82 }
-  let t = 0
-  window.addEventListener('pointermove', (e) => {
+  const DOOR = { x: 54.5, y: 47 }
+  const POIS = [
+    { x: 17, y: 62 },   // the stone's runes
+    { x: 74, y: 60 },   // the board lantern
+    { x: 52, y: 72 },   // the path bend
+    { x: 40, y: 80 },   // low meadow
+    DOOR,               // and always, again, the door
+  ]
+  let target = { ...POIS[3] }, pos = { x: 46, y: 82 }, p1 = { ...pos }, p2 = { ...pos }
+  let t = 0, mode = 'errand', modeUntil = 0, poiIdx = 3, cursor = null, cursorAt = 0
+  const now = () => performance.now()
+  const dist = (ax, ay, bx, by) => Math.hypot(ax - bx, ay - by)
+  const nextErrand = () => {
+    // every other errand tends toward the door — it is leading you, after all
+    poiIdx = (poiIdx + 1) % POIS.length
+    const poi = (poiIdx % 2 === 0) ? POIS[poiIdx] : DOOR
+    target = { x: poi.x, y: poi.y }
+    mode = poi === DOOR ? 'waiting' : 'errand'
+    modeUntil = now() + (mode === 'waiting' ? 5200 : 3400) + Math.random() * 2200
+  }
+  const toFrame = (e) => {
     const r = frame.getBoundingClientRect()
-    target.x = Math.min(96, Math.max(2, ((e.clientX - r.left) / r.width) * 100 + 2))
-    target.y = Math.min(94, Math.max(4, ((e.clientY - r.top) / r.height) * 100 - 3))
-  })
+    return { x: ((e.clientX - r.left) / r.width) * 100, y: ((e.clientY - r.top) / r.height) * 100 }
+  }
+  window.addEventListener('pointermove', (e) => { cursor = toFrame(e); cursorAt = now() })
   window.addEventListener('pointerdown', (e) => {
-    const r = frame.getBoundingClientRect()
-    target.x = ((e.clientX - r.left) / r.width) * 100 + 2
-    target.y = ((e.clientY - r.top) / r.height) * 100 - 3
+    cursor = toFrame(e); cursorAt = now()
+    mode = 'called'; target = { x: cursor.x + 2, y: cursor.y - 3 }
+    modeUntil = now() + 2600
   })
   const tick = () => {
-    t += .03
-    const ox = Math.cos(t) * 1.1, oy = Math.sin(t * 1.6) * .8 // the rest-orbit
-    pos.x += ((target.x + ox) - pos.x) * .055
-    pos.y += ((target.y + oy) - pos.y) * .055
+    t += .028
+    const n = now()
+    // a fresh cursor nearby earns its attention — briefly
+    if (mode !== 'called' && cursor && n - cursorAt < 900 && dist(pos.x, pos.y, cursor.x, cursor.y) < 14) {
+      mode = 'attending'; target = { x: cursor.x + 2.5, y: cursor.y - 3.5 }
+      modeUntil = n + 2200
+    }
+    if (n > modeUntil) {
+      if (mode === 'called') { target = { ...DOOR }; mode = 'waiting'; modeUntil = n + 5200 }
+      else nextErrand()
+    }
+    const wob = mode === 'waiting' ? 1.6 : 1
+    const ox = Math.cos(t) * 1.2 * wob, oy = Math.sin(t * 1.6) * .9 * wob
+    const ease = mode === 'called' ? .08 : .04
+    pos.x += ((target.x + ox) - pos.x) * ease
+    pos.y += ((target.y + oy) - pos.y) * ease
     p1.x += (pos.x - p1.x) * .12; p1.y += (pos.y - p1.y) * .12
     p2.x += (p1.x - p2.x) * .12; p2.y += (p1.y - p2.y) * .12
     wisp.style.left = pos.x + '%'; wisp.style.top = pos.y + '%'
@@ -188,7 +221,6 @@
     requestAnimationFrame(tick)
   }
   requestAnimationFrame(tick)
-
 </script>
 </body>
 </html>
