@@ -30,6 +30,12 @@
   .bldg:hover .lbl, .bldg:focus .lbl { opacity: 1; }
   .bldg .win { transition: filter .25s ease; }
   .bldg:hover .win { filter: brightness(1.35) drop-shadow(0 0 6px rgba(244, 205, 130, .8)); }
+  /* THE LAW: muted village, luminous cards. The card art is the only thing in the
+     frame allowed full saturation — little windows into the mythology. */
+  svg.scene image {
+    filter: saturate(1.18) brightness(1.07) drop-shadow(0 0 9px rgba(255, 219, 140, .45));
+  }
+  .bldg:hover image { filter: saturate(1.28) brightness(1.14) drop-shadow(0 0 14px rgba(255, 219, 140, .7)); transition: filter .25s ease; }
   .bldg:focus { outline: none; }
   .bldg:focus-visible .body { stroke: #f4cd82; stroke-width: 2; }
 
