@@ -22,7 +22,7 @@
 
   /* the card: at rest it sleeps in the village's grade; regarded, it blooms */
   .relic {
-    position: absolute; left: 64.4%; top: 68.4%; width: 4.6%;
+    position: absolute; left: 68.9%; top: 73.6%; width: 3.7%;
     transform: rotate(-2deg);
     border-radius: 5.5% / 3.8%;
     cursor: pointer;
@@ -62,70 +62,77 @@
 <body>
 <div class="stage" id="stage">
   <div class="scenewrap">
-  <svg class="scene" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMax slice" aria-label="Waystone at night — painted stage">
+  <svg class="scene" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMax slice" aria-label="Waystone at night — the traveler approaches">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#04060d"/>
-        <stop offset=".3" stop-color="#0a1124"/>
-        <stop offset=".55" stop-color="#122238"/>
-        <stop offset=".76" stop-color="#173441"/>
-        <stop offset=".92" stop-color="#23423f"/>
-        <stop offset="1" stop-color="#31473a"/>
+        <stop offset="0" stop-color="#03050b"/>
+        <stop offset=".34" stop-color="#081020"/>
+        <stop offset=".62" stop-color="#0f2030"/>
+        <stop offset=".85" stop-color="#173438"/>
+        <stop offset="1" stop-color="#204234"/>
       </linearGradient>
-      <linearGradient id="hill4" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#244252"/><stop offset="1" stop-color="#1b3240"/>
+      <radialGradient id="skypocket" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#3d6270" stop-opacity=".55"/>
+        <stop offset=".5" stop-color="#2c4a58" stop-opacity=".28"/>
+        <stop offset="1" stop-color="#2c4a58" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="hillfar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1c3545"/><stop offset="1" stop-color="#152836"/>
       </linearGradient>
-      <linearGradient id="hill3" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#1b3140"/><stop offset="1" stop-color="#142633"/>
+      <linearGradient id="hillvil" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#152a30"/><stop offset="1" stop-color="#0e1d22"/>
       </linearGradient>
-      <linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#15282c"/><stop offset="1" stop-color="#0f1d20"/>
+      <linearGradient id="hillnear" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0f1e1a"/><stop offset="1" stop-color="#081210"/>
       </linearGradient>
-      <linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#11201b"/><stop offset="1" stop-color="#0a1410"/>
+      <linearGradient id="bank" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#070f0b"/><stop offset="1" stop-color="#030705"/>
       </linearGradient>
-      <linearGradient id="meadow" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#0e1a14"/><stop offset=".5" stop-color="#0a130e"/><stop offset="1" stop-color="#060b08"/>
+      <linearGradient id="pathlight" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#2c2a20"/>
+        <stop offset=".55" stop-color="#3d3a28"/>
+        <stop offset=".9" stop-color="#5c5236"/>
+        <stop offset="1" stop-color="#6b5c38"/>
       </linearGradient>
-      <linearGradient id="wallL" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#0b131c"/><stop offset=".7" stop-color="#101b26"/><stop offset="1" stop-color="#18242f"/>
+      <linearGradient id="wallwarm" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2733"/><stop offset=".6" stop-color="#22303a"/><stop offset="1" stop-color="#2c3a40"/>
       </linearGradient>
-      <linearGradient id="roofL" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#1d2a35"/><stop offset="1" stop-color="#0d151d"/>
+      <linearGradient id="roofmoon" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#31485a"/><stop offset="1" stop-color="#15242f"/>
       </linearGradient>
-      <linearGradient id="stoneBody" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stop-color="#171f24"/><stop offset=".45" stop-color="#242e34"/>
-        <stop offset=".8" stop-color="#33404a"/><stop offset="1" stop-color="#46555f"/>
+      <linearGradient id="stoneN" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#0b1013"/><stop offset=".55" stop-color="#131b20"/>
+        <stop offset=".85" stop-color="#20303b"/><stop offset="1" stop-color="#31434f"/>
       </linearGradient>
       <linearGradient id="woodBody" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#2b2214"/><stop offset="1" stop-color="#191208"/>
+        <stop offset="0" stop-color="#292013"/><stop offset="1" stop-color="#151007"/>
       </linearGradient>
-      <radialGradient id="emberpool" cx=".5" cy=".5" r=".5">
-        <stop offset="0" stop-color="#e8b45a" stop-opacity=".22"/>
-        <stop offset=".55" stop-color="#c98f45" stop-opacity=".09"/>
-        <stop offset="1" stop-color="#e8b45a" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="lampool" cx=".5" cy=".5" r=".5">
-        <stop offset="0" stop-color="#f4cd82" stop-opacity=".3"/>
-        <stop offset=".5" stop-color="#e8b45a" stop-opacity=".12"/>
+      <radialGradient id="vilglow" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#f4cd82" stop-opacity=".34"/>
+        <stop offset=".45" stop-color="#e8b45a" stop-opacity=".14"/>
         <stop offset="1" stop-color="#e8b45a" stop-opacity="0"/>
       </radialGradient>
       <radialGradient id="winspill" cx=".5" cy=".5" r=".5">
-        <stop offset="0" stop-color="#f2c46b" stop-opacity=".5"/>
+        <stop offset="0" stop-color="#f2c46b" stop-opacity=".55"/>
         <stop offset="1" stop-color="#f2c46b" stop-opacity="0"/>
       </radialGradient>
+      <radialGradient id="lampool" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#f4cd82" stop-opacity=".3"/>
+        <stop offset="1" stop-color="#e8b45a" stop-opacity="0"/>
+      </radialGradient>
       <radialGradient id="moonhalo" cx=".5" cy=".5" r=".5">
-        <stop offset="0" stop-color="#cfdad2" stop-opacity=".22"/>
-        <stop offset=".45" stop-color="#a9bdb6" stop-opacity=".08"/>
+        <stop offset="0" stop-color="#d5e0d6" stop-opacity=".26"/>
+        <stop offset=".45" stop-color="#a9bdb6" stop-opacity=".1"/>
         <stop offset="1" stop-color="#a9bdb6" stop-opacity="0"/>
       </radialGradient>
-      <linearGradient id="horizonair" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#7fb3a4" stop-opacity="0"/>
-        <stop offset="1" stop-color="#7fb3a4" stop-opacity=".14"/>
-      </linearGradient>
+      <radialGradient id="emberpool" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#e8b45a" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#e8b45a" stop-opacity="0"/>
+      </radialGradient>
       <filter id="soft1"><feGaussianBlur stdDeviation="1.2"/></filter>
       <filter id="soft3"><feGaussianBlur stdDeviation="3"/></filter>
-      <filter id="soft8"><feGaussianBlur stdDeviation="8"/></filter>
+      <filter id="soft6"><feGaussianBlur stdDeviation="6"/></filter>
+      <filter id="soft10"><feGaussianBlur stdDeviation="10"/></filter>
       <filter id="grain">
         <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/>
         <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  .6 .6 .6 0 0"/>
@@ -133,208 +140,157 @@
       </filter>
     </defs>
 
-    <!-- ═══ SKY: indigo to a drowned teal horizon ═══ -->
+    <!-- ═══ SKY, with the luminous pocket the village sits in ═══ -->
     <rect width="1440" height="810" fill="url(#sky)"/>
+    <ellipse cx="710" cy="330" rx="430" ry="260" fill="url(#skypocket)"/>
     <g fill="#e6edea">
-      <circle cx="140" cy="96" r="1.7" opacity=".8"/><circle cx="342" cy="58" r="1" opacity=".5"/>
-      <circle cx="516" cy="142" r="1.3" opacity=".6"/><circle cx="694" cy="66" r="1.8" opacity=".85"/>
-      <circle cx="921" cy="118" r="1" opacity=".4"/><circle cx="1104" cy="76" r="1.4" opacity=".6"/>
-      <circle cx="1258" cy="150" r="1.1" opacity=".45"/><circle cx="1392" cy="92" r="1.5" opacity=".55"/>
-      <circle cx="240" cy="196" r="1" opacity=".38"/><circle cx="836" cy="182" r="1.1" opacity=".42"/>
-      <circle cx="1030" cy="236" r="1" opacity=".3"/><circle cx="452" cy="228" r="1" opacity=".33"/>
-      <circle cx="72" cy="150" r="1.2" opacity=".5"/><circle cx="610" cy="104" r="1" opacity=".4"/>
-      <circle cx="775" cy="238" r=".9" opacity=".3"/><circle cx="1330" cy="212" r="1" opacity=".35"/>
+      <circle cx="128" cy="86" r="1.5" opacity=".7"/><circle cx="288" cy="150" r="1" opacity=".45"/>
+      <circle cx="452" cy="72" r="1.3" opacity=".6"/><circle cx="600" cy="140" r="1" opacity=".4"/>
+      <circle cx="962" cy="92" r="1.5" opacity=".65"/><circle cx="1104" cy="170" r="1.1" opacity=".45"/>
+      <circle cx="1234" cy="80" r="1.4" opacity=".6"/><circle cx="1372" cy="140" r="1.2" opacity=".5"/>
+      <circle cx="1318" cy="240" r="1" opacity=".35"/><circle cx="180" cy="230" r="1" opacity=".4"/>
+      <circle cx="836" cy="60" r="1.2" opacity=".55"/><circle cx="60 " cy="170" r="1.1" opacity=".45"/>
+    </g>
+    <!-- moon stacked above the village: light falls to the door -->
+    <circle cx="770" cy="128" r="150" fill="url(#moonhalo)"/>
+    <path d="M742 92a40 40 0 1 0 38 58 46 46 0 0 1-38-58z" fill="#ddd8c2"/>
+    <path d="M742 92a40 40 0 0 0-16 11 46 46 0 0 1 32 53 40 40 0 0 0 22-6 46 46 0 0 1-38-58z" fill="#c6c2ad" opacity=".55"/>
+    <g filter="url(#soft10)">
+      <ellipse cx="640" cy="196" rx="200" ry="13" fill="#9fb3b8" opacity=".1"/>
+      <ellipse cx="880" cy="222" rx="150" ry="10" fill="#9fb3b8" opacity=".08"/>
+      <ellipse cx="1160" cy="130" rx="160" ry="10" fill="#7f97a3" opacity=".05"/>
+      <ellipse cx="260" cy="180" rx="180" ry="11" fill="#7f97a3" opacity=".05"/>
+    </g>
+    <!-- the wrong moon keeps its distance, dim in the west -->
+    <circle cx="120" cy="268" r="14" fill="#5d7a58" opacity=".1" filter="url(#soft3)"/>
+    <circle cx="120" cy="268" r="6" fill="#5d7a58" opacity=".7"/>
+    <circle cx="118" cy="266" r="2.6" fill="#84a077" opacity=".8"/>
+
+    <!-- ═══ FAR HILLS ═══ -->
+    <path d="M0 470 Q 200 420 420 448 T 860 430 T 1230 456 T 1440 430 V 810 H 0 Z" fill="url(#hillfar)"/>
+    <path d="M0 470 Q 200 420 420 448 T 860 430 T 1230 456 T 1440 430" fill="none" stroke="#4b6d7c" stroke-width="1.8" opacity=".3"/>
+    <g fill="#16303c">
+      <path d="M132 448 q 12 -44 19 -50 q 7 6 17 46 q -18 8 -36 4 z"/>
+      <path d="M1250 452 q 12 -42 18 -48 q 7 6 16 46 q -17 7 -34 2 z"/>
+      <path d="M1298 458 q 8 -30 13 -34 q 5 4 11 32 q -12 5 -24 2 z"/>
+      <path d="M348 444 q 10 -36 16 -41 q 6 5 14 39 q -15 6 -30 2 z"/>
     </g>
 
-    <!-- moon + halo + lit night clouds -->
-    <circle cx="1180" cy="118" r="150" fill="url(#moonhalo)"/>
-    <path d="M1148 80a42 42 0 1 0 40 62 48 48 0 0 1-40-62z" fill="#ddd8c2"/>
-    <path d="M1148 80a42 42 0 0 0-18 12 48 48 0 0 1 34 56 42 42 0 0 0 24-6 48 48 0 0 1-40-62z" fill="#c6c2ad" opacity=".6"/>
-    <g filter="url(#soft8)">
-      <ellipse cx="1065" cy="180" rx="180" ry="14" fill="#9fb3b8" opacity=".10"/>
-      <ellipse cx="1215" cy="205" rx="140" ry="10" fill="#9fb3b8" opacity=".08"/>
-      <ellipse cx="960" cy="150" rx="120" ry="9" fill="#8ba4ab" opacity=".06"/>
-      <ellipse cx="420" cy="120" rx="200" ry="12" fill="#7f97a3" opacity=".05"/>
-      <ellipse cx="260" cy="260" rx="170" ry="10" fill="#7f97a3" opacity=".05"/>
-    </g>
-    <!-- the wrong moon: small, green-shouldered, low in the west -->
-    <circle cx="176" cy="236" r="16" fill="#5d7a58" opacity=".12" filter="url(#soft3)"/>
-    <circle cx="176" cy="236" r="7" fill="#5d7a58" opacity=".85"/>
-    <circle cx="174" cy="234" r="3.2" fill="#84a077" opacity=".9"/>
-
-    <!-- ═══ HILLS: four breaths of distance, each crest kissed by the moon ═══ -->
-    <path d="M0 490 Q 190 428 400 458 T 800 434 T 1160 462 T 1440 428 V 810 H 0 Z" fill="url(#hill4)"/>
-    <path d="M0 490 Q 190 428 400 458 T 800 434 T 1160 462 T 1440 428" fill="none" stroke="#4b6d7c" stroke-width="2" opacity=".35"/>
-    <g fill="#1a303e">
-      <path d="M186 452 q 14 -50 22 -56 q 8 6 20 54 q -22 8 -42 2 z"/>
-      <path d="M232 458 q 10 -36 16 -40 q 6 4 14 38 q -16 6 -30 2 z"/>
-      <path d="M1078 448 q 12 -44 19 -50 q 7 6 17 46 q -18 8 -36 4 z"/>
-      <path d="M655 440 q 11 -40 17 -45 q 6 5 15 42 q -16 6 -32 3 z"/>
-      <path d="M1350 436 q 10 -34 15 -38 q 5 4 13 36 q -14 5 -28 2 z"/>
-    </g>
-    <path d="M0 568 Q 250 502 530 536 T 1040 524 T 1440 548 V 810 H 0 Z" fill="url(#hill3)"/>
-    <path d="M0 568 Q 250 502 530 536 T 1040 524 T 1440 548" fill="none" stroke="#3d5a6b" stroke-width="1.6" opacity=".3"/>
-    <g fill="#122430">
-      <path d="M84 532 q 12 -42 19 -48 q 7 6 17 46 q -18 7 -36 2 z"/>
-      <path d="M1206 534 q 13 -46 20 -52 q 8 6 18 50 q -19 8 -38 2 z"/>
-      <path d="M1258 542 q 9 -32 14 -36 q 5 4 12 34 q -13 5 -26 2 z"/>
-    </g>
-
-    <!-- ═══ THE VILLAGE on its hill: two lights argue on every wall ═══ -->
+    <!-- ═══ THE VILLAGE: one gathered, glowing destination ═══ -->
+    <path d="M0 540 Q 240 480 500 508 Q 700 522 900 500 T 1440 528 V 810 H 0 Z" fill="url(#hillvil)"/>
+    <path d="M0 540 Q 240 480 500 508 Q 700 522 900 500" fill="none" stroke="#3d5a6b" stroke-width="1.5" opacity=".28"/>
+    <!-- the warm breath of the whole village, first thing the eye finds -->
+    <ellipse cx="716" cy="452" rx="230" ry="105" fill="url(#vilglow)" filter="url(#soft6)"/>
     <g>
-      <!-- ── the inn ── -->
+      <!-- ── rear cottage, half-lost in glow ── -->
       <g>
-        <rect x="560" y="430" width="150" height="94" fill="url(#wallL)"/>
-        <path d="M545 430 h180 l-32 -56 h-116 z" fill="url(#roofL)"/>
-        <path d="M545 430 h180" stroke="#3a4f5e" stroke-width="1.6" opacity=".55"/>
-        <path d="M577 374 h116" stroke="#43596a" stroke-width="1.4" opacity=".5"/>
-        <path d="M562 418 l 152 0 M570 404 l 136 0 M580 390 l 116 0" stroke="#0a1118" stroke-width="1" opacity=".5"/>
-        <rect x="666" y="348" width="20" height="40" fill="#101a24"/>
-        <path d="M666 348 h20" stroke="#4b6272" stroke-width="1.5" opacity=".6"/>
-        <!-- moon rims the right edge; hearth-light warms the wall by the door -->
-        <path d="M710 430 v94" stroke="#41565e" stroke-width="1.4" opacity=".5"/>
-        <ellipse cx="612" cy="505" rx="42" ry="26" fill="url(#winspill)" opacity=".18"/>
-        <!-- windows: lit unevenly, someone is home -->
-        <rect x="584" y="452" width="22" height="27" rx="1.5" fill="#f2c46b" opacity=".92"/>
-        <rect x="584" y="452" width="22" height="27" rx="1.5" fill="none" stroke="#0a0d08" stroke-width="1.4"/>
-        <path d="M595 452 v27 M584 465 h22" stroke="#0a0d08" stroke-width="1.2"/>
-        <rect x="624" y="452" width="22" height="27" rx="1.5" fill="#d9a54b" opacity=".55"/>
-        <path d="M635 452 v27 M624 465 h22" stroke="#0a0d08" stroke-width="1.2"/>
-        <rect x="664" y="452" width="22" height="27" rx="1.5" fill="#efc06a" opacity=".8"/>
-        <path d="M675 452 v27 M664 465 h22" stroke="#0a0d08" stroke-width="1.2"/>
-        <g><ellipse cx="595" cy="483" rx="16" ry="5" fill="url(#winspill)" opacity=".5"/></g>
-        <!-- the door, and its warm doorstep -->
-        <rect x="592" y="494" width="32" height="30" rx="2" fill="#f4cd82" opacity=".95"/>
-        <rect x="592" y="494" width="32" height="30" rx="2" fill="none" stroke="#0a0d08" stroke-width="1.6"/>
-        <path d="M608 494 v30" stroke="#0a0d08" stroke-width="1.2"/>
-        <ellipse cx="608" cy="527" rx="42" ry="8" fill="url(#winspill)" opacity=".55"/>
-        <!-- reliquary niche: a card-shaped shrine glowing in the wall -->
-        <rect x="691" y="486" width="14" height="19" rx="2" fill="#0a0d08"/>
-        <rect x="692.5" y="487.5" width="11" height="16" rx="1.5" fill="#e8b45a" opacity=".8"/>
-        <rect x="694.5" y="490" width="7" height="11" rx="1" fill="#f7dba2" opacity=".9"/>
-        <!-- hanging sign -->
-        <path d="M710 446 h26" stroke="#141a14" stroke-width="3.4" stroke-linecap="round"/>
-        <path d="M732 446 v10" stroke="#141a14" stroke-width="2"/>
-        <rect x="722" y="456" width="21" height="17" rx="3" fill="#22190d" stroke="#0d0a05" stroke-width="1"/>
-        <path d="M728 460 v9 m4 -9 v9 m4 -9 v9" stroke="#e8b45a" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
-        <!-- chimney smoke -->
-        <g class="smokes" fill="#93a29b" opacity=".2" filter="url(#soft3)">
-          <circle class="puff p1" cx="676" cy="340" r="8"/>
-          <circle class="puff p2" cx="676" cy="340" r="10"/>
+        <rect x="596" y="420" width="66" height="44" fill="#1a2b33"/>
+        <path d="M588 420 h82 l-18 -28 h-46 z" fill="#243b47"/>
+        <path d="M588 420 h82" stroke="#41606e" stroke-width="1.2" opacity=".5"/>
+        <rect x="612" y="434" width="12" height="14" rx="1" fill="#e3ad50" opacity=".65"/>
+        <path d="M618 434 v14" stroke="#0a0d08" stroke-width="1"/>
+      </g>
+      <!-- ── THE INN: the destination, its door at the top of our path ── -->
+      <g>
+        <rect x="668" y="384" width="104" height="86" fill="url(#wallwarm)"/>
+        <!-- siding texture -->
+        <path d="M670 398 h100 M670 412 h100 M670 426 h100 M670 440 h100 M670 454 h100" stroke="#131e26" stroke-width="1" opacity=".55"/>
+        <path d="M736 384 v86" stroke="#131e26" stroke-width="1" opacity=".4"/>
+        <!-- roof: steep, shingled, moonlit -->
+        <path d="M656 384 h128 l-28 -50 h-72 z" fill="url(#roofmoon)"/>
+        <path d="M656 384 h128" stroke="#0a1118" stroke-width="1.6"/>
+        <path d="M684 334 h72" stroke="#5b7c8d" stroke-width="1.8" opacity=".7"/>
+        <path d="M663 373 h114 M671 361 h98 M678 350 h84 M683 341 h74" stroke="#0e1820" stroke-width="1" opacity=".55"/>
+        <!-- chimney: stacked stone, smoke into the moonlight -->
+        <rect x="748" y="312" width="16" height="36" fill="#1c2830"/>
+        <path d="M748 320 h16 M748 330 h16 M748 340 h16" stroke="#0e161d" stroke-width="1" opacity=".7"/>
+        <path d="M748 312 h16" stroke="#5b7c8d" stroke-width="1.4" opacity=".7"/>
+        <g class="smokes" fill="#a3b2ab" opacity=".22" filter="url(#soft3)">
+          <circle class="puff p1" cx="756" cy="306" r="7"/>
+          <circle class="puff p2" cx="756" cy="306" r="9"/>
         </g>
+        <!-- gable window up in the dark -->
+        <rect x="712" y="352" width="14" height="16" rx="1.5" fill="#d9a54b" opacity=".5"/>
+        <path d="M719 352 v16" stroke="#0a0d08" stroke-width="1"/>
+        <!-- lit windows flanking the door: uneven, inhabited -->
+        <rect x="678" y="404" width="20" height="24" rx="1.5" fill="#f2c46b" opacity=".95"/>
+        <path d="M688 404 v24 M678 416 h20" stroke="#100c05" stroke-width="1.3"/>
+        <ellipse cx="688" cy="430" rx="15" ry="4.5" fill="url(#winspill)" opacity=".5"/>
+        <rect x="742" y="404" width="20" height="24" rx="1.5" fill="#e8b45a" opacity=".7"/>
+        <path d="M752 404 v24 M742 416 h20" stroke="#100c05" stroke-width="1.3"/>
+        <!-- THE DOOR: where the path ends; the warmest note in the painting -->
+        <rect x="706" y="424" width="28" height="46" rx="2.5" fill="#f7dba2"/>
+        <rect x="706" y="424" width="28" height="46" rx="2.5" fill="none" stroke="#100c05" stroke-width="1.8"/>
+        <path d="M720 424 v46" stroke="#c9973f" stroke-width="1.4" opacity=".6"/>
+        <circle cx="727" cy="449" r="1.4" fill="#8a5f2e"/>
+        <!-- door light floods the threshold and the last of the path -->
+        <ellipse cx="720" cy="474" rx="52" ry="12" fill="url(#winspill)" opacity=".7"/>
+        <!-- the inn sign, catching door-light from below -->
+        <path d="M772 402 h24" stroke="#141a14" stroke-width="3" stroke-linecap="round"/>
+        <path d="M792 402 v9" stroke="#141a14" stroke-width="2"/>
+        <rect x="783" y="411" width="19" height="15" rx="2.5" fill="#241a0c" stroke="#0d0a05" stroke-width="1"/>
+        <path d="M788 414 v8 m4 -8 v8 m4 -8 v8" stroke="#e8b45a" stroke-width="1.4" stroke-linecap="round" opacity=".85"/>
       </g>
-      <!-- ── cottage right ── -->
+      <!-- ── front-right cottage, its shoulder to us ── -->
       <g>
-        <rect x="812" y="466" width="104" height="64" fill="url(#wallL)"/>
-        <path d="M800 466 h128 l-26 -42 h-76 z" fill="url(#roofL)"/>
-        <path d="M800 466 h128" stroke="#3a4f5e" stroke-width="1.4" opacity=".5"/>
-        <path d="M826 424 h76" stroke="#43596a" stroke-width="1.2" opacity=".45"/>
-        <path d="M916 466 v64" stroke="#41565e" stroke-width="1.2" opacity=".45"/>
-        <rect x="836" y="488" width="18" height="21" rx="1.5" fill="#e3ad50" opacity=".8"/>
-        <path d="M845 488 v21 M836 498 h18" stroke="#0a0d08" stroke-width="1.1"/>
-        <ellipse cx="845" cy="512" rx="14" ry="4" fill="url(#winspill)" opacity=".4"/>
-        <rect x="878" y="492" width="16" height="38" rx="1.5" fill="#131a10"/>
-        <circle cx="882" cy="511" r="1.3" fill="#8a7c54"/>
+        <rect x="790" y="424" width="74" height="48" fill="#16242e"/>
+        <path d="M790 436 h74 M790 450 h74" stroke="#0f1922" stroke-width="1" opacity=".5"/>
+        <path d="M782 424 h90 l-20 -32 h-52 z" fill="#22384a"/>
+        <path d="M782 424 h90" stroke="#0c141b" stroke-width="1.4"/>
+        <path d="M801 392 h52" stroke="#4b6a7c" stroke-width="1.4" opacity=".6"/>
+        <path d="M788 416 h78 M794 407 h66 M799 399 h56" stroke="#101c26" stroke-width="1" opacity=".5"/>
+        <rect x="806" y="438" width="15" height="18" rx="1.5" fill="#f2c46b" opacity=".8"/>
+        <path d="M813 438 v18 M806 447 h15" stroke="#100c05" stroke-width="1.1"/>
+        <ellipse cx="813" cy="458" rx="12" ry="3.5" fill="url(#winspill)" opacity=".4"/>
+        <!-- reliquary niche: the village shows its treasure even at night -->
+        <rect x="838" y="440" width="11" height="15" rx="1.5" fill="#0a0d08"/>
+        <rect x="839.5" y="441.5" width="8" height="12" rx="1" fill="#e8b45a" opacity=".8"/>
+        <rect x="841" y="443.5" width="5" height="8" rx=".8" fill="#f7dba2" opacity=".95"/>
       </g>
-      <!-- ── cottage left ── -->
-      <g>
-        <rect x="446" y="480" width="84" height="52" fill="url(#wallL)"/>
-        <path d="M436 480 h104 l-22 -34 h-60 z" fill="url(#roofL)"/>
-        <path d="M436 480 h104" stroke="#374c5a" stroke-width="1.3" opacity=".45"/>
-        <rect x="466" y="496" width="15" height="18" rx="1.5" fill="#f2c46b" opacity=".7"/>
-        <path d="M473 496 v18 M466 504 h15" stroke="#0a0d08" stroke-width="1"/>
-        <ellipse cx="473" cy="516" rx="12" ry="3.5" fill="url(#winspill)" opacity=".35"/>
-      </g>
-      <!-- warm haze the village breathes out -->
-      <ellipse cx="640" cy="516" rx="230" ry="46" fill="url(#lampool)" opacity=".22" filter="url(#soft8)"/>
+      <!-- low garden walls stitching the cluster together -->
+      <path d="M596 466 q 36 8 72 6 M772 470 q 10 2 18 2" stroke="#101c1e" stroke-width="5" fill="none" opacity=".8" stroke-linecap="round"/>
     </g>
 
-    <!-- near hill closes behind the meadow -->
-    <path d="M0 640 Q 310 580 700 612 T 1440 618 V 810 H 0 Z" fill="url(#hill2)"/>
-    <path d="M0 640 Q 310 580 700 612 T 1440 618" fill="none" stroke="#2c4a48" stroke-width="1.4" opacity=".3"/>
+    <!-- ═══ NEAR GROUND ═══ -->
+    <path d="M0 636 Q 300 578 660 606 Q 1000 628 1440 600 V 810 H 0 Z" fill="url(#hillnear)"/>
 
-    <!-- the path: worn, moon-caught on its edges -->
-    <path d="M720 810 C 700 742 726 702 680 670 C 640 642 588 632 545 620 M720 810 C 745 738 720 702 780 670 C 850 634 920 632 968 614"
-      fill="none" stroke="#332e22" stroke-width="24" stroke-linecap="round" opacity=".8" filter="url(#soft1)"/>
-    <path d="M720 810 C 700 742 726 702 680 670 C 640 642 588 632 545 620 M720 810 C 745 738 720 702 780 670 C 850 634 920 632 968 614"
-      fill="none" stroke="#453d2c" stroke-width="12" stroke-linecap="round" opacity=".5" filter="url(#soft1)"/>
+    <!-- THE PATH: from our feet to their door, one line of intent -->
+    <path d="M600 810 C 630 748 700 712 692 664 C 686 630 668 596 686 552 C 698 520 712 496 716 474
+             L 726 474 C 726 502 738 528 742 556 C 748 596 726 636 736 672 C 748 724 812 762 850 810 Z"
+      fill="url(#pathlight)" opacity=".85"/>
+    <path d="M600 810 C 630 748 700 712 692 664 C 686 630 668 596 686 552" fill="none" stroke="#0a120d" stroke-width="3" opacity=".5" filter="url(#soft1)"/>
+    <path d="M850 810 C 812 762 748 724 736 672 C 726 636 748 596 742 556" fill="none" stroke="#0a120d" stroke-width="3" opacity=".5" filter="url(#soft1)"/>
+    <!-- moon-sheen worn into the path's stones -->
+    <path d="M700 700 q 14 -8 32 -4 M694 636 q 16 -6 40 -2 M700 576 q 14 -5 34 -2 M708 520 q 10 -4 22 -2" stroke="#6b6b4e" stroke-width="2.4" opacity=".4" stroke-linecap="round"/>
+    <path d="M672 760 q 20 -8 48 -4" stroke="#6b6b4e" stroke-width="2.8" opacity=".3" stroke-linecap="round"/>
 
-    <!-- meadow -->
-    <path d="M0 810 V 700 Q 360 662 720 684 T 1440 688 V 810 Z" fill="url(#meadow)"/>
-
-    <!-- ═══ THE WAYSTONE: faceted, moss-shouldered, remembering ═══ -->
-    <g id="stone">
-      <ellipse cx="248" cy="702" rx="126" ry="20" fill="#020405" opacity=".65" filter="url(#soft3)"/>
-      <ellipse cx="248" cy="672" rx="160" ry="95" fill="url(#emberpool)" class="breathpool"/>
-      <!-- body: one gradient, five planes -->
-      <path d="M196 700 q -8 -78 14 -128 q 16 -38 44 -40 q 26 2 38 44 q 16 58 8 124 z" fill="url(#stoneBody)"/>
-      <path d="M196 700 q -8 -78 14 -128 q 10 -24 24 -34 q -20 46 -22 162 z" fill="#131a1f" opacity=".85"/>
-      <path d="M254 532 q 14 6 22 44 q 10 46 8 124 l -18 0 q 4 -102 -12 -168 z" fill="#3c4a54" opacity=".7"/>
-      <path d="M234 540 q -10 30 -12 80 q 16 -6 22 -2 q 2 -46 6 -76 q -8 -6 -16 -2 z" fill="#2a343b" opacity=".5"/>
-      <!-- moonlight rims the east face -->
-      <path d="M282 660 q 6 -70 -8 -116 q 12 24 16 58 q 4 32 2 90 l -10 0 z" fill="#5b6d78" opacity=".55"/>
-      <path d="M256 533 q 16 8 24 46" fill="none" stroke="#8fa3ad" stroke-width="2" opacity=".5" stroke-linecap="round"/>
-      <!-- ember-light kisses the west facets, faint and warm -->
-      <path d="M212 700 q -6 -70 10 -120 q 6 -14 12 -22 q -10 50 -10 142 z" fill="#e8b45a" opacity=".05"/>
-      <!-- moss: the stone's memory -->
-      <path d="M208 574 q 18 -18 40 -10 q -6 10 -18 14 q 6 2 14 0 q -10 12 -26 10 q -12 -2 -10 -14 z" fill="#2f4a38"/>
-      <path d="M214 572 q 12 -10 26 -7 q -8 8 -20 10 z" fill="#43614a"/>
-      <path d="M196 644 q 14 -10 26 -3 q -6 12 -20 12 q -8 -2 -6 -9 z" fill="#3c5844"/>
-      <path d="M200 642 q 8 -6 16 -3 q -5 7 -14 7 z" fill="#54724c"/>
-      <path d="M240 534 q 12 -8 22 -3 q -5 9 -16 10 q -8 -1 -6 -7 z" fill="#43614a"/>
-      <path d="M244 533 q 7 -4 13 -2 q -3 5 -10 6 z" fill="#5d7a58"/>
-      <path d="M282 610 q 10 -4 16 0 q -4 8 -12 8 q -6 -2 -4 -8 z" fill="#2f4a38" opacity=".8"/>
-      <!-- the marks: a column of remembering -->
-      <g class="marks" fill="#f4cd82">
-        <path class="mk m1" d="M236 580 h16 v4 h-16 z"/>
-        <path class="mk m2" d="M240 596 h8 v4 h-8 z M252 596 h6 v4 h-6 z"/>
-        <path class="mk m3" d="M234 614 h20 v4 h-20 z"/>
-        <path class="mk m4" d="M242 632 h12 v4 h-12 z"/>
-        <circle class="mk m5" cx="246" cy="656" r="3"/>
-      </g>
-      <g class="marks" filter="url(#soft3)" fill="#e8b45a" opacity=".5">
-        <path class="mk m1" d="M236 580 h16 v4 h-16 z"/>
-        <path class="mk m3" d="M234 614 h20 v4 h-20 z"/>
-      </g>
-      <!-- companion stones, moss-kissed -->
-      <path d="M168 700 q 0 -20 15 -22 q 13 2 13 22 z" fill="#1a2226"/>
-      <path d="M180 679 q 9 1 12 12 l -4 9 q -2 -14 -8 -21 z" fill="#39444b" opacity=".6"/>
-      <path d="M170 690 q 9 -7 16 -2 l -3 7 q -9 2 -13 -5 z" fill="#2f4a38"/>
-      <path d="M316 703 q 2 -16 13 -17 q 10 1 11 17 z" fill="#20282c"/>
-      <path d="M330 687 q 7 2 9 16 l -5 0 q 0 -10 -4 -16 z" fill="#41505a" opacity=".5"/>
-    </g>
-
-    <!-- ═══ THE NOTICE BOARD: carpentry under lantern-light ═══ -->
-    <g id="board" transform="translate(960 600) scale(1.35) translate(-960 -600)">
+    <!-- ═══ THE NOTICE BOARD: a stop along the way, right of the path ═══ -->
+    <g id="board" transform="translate(1010 636) scale(1.06) translate(-960 -600)">
       <ellipse cx="960" cy="670" rx="96" ry="13" fill="#020405" opacity=".6" filter="url(#soft1)"/>
       <rect x="886" y="548" width="9" height="120" rx="2" fill="url(#woodBody)"/>
       <rect x="1024" y="548" width="9" height="120" rx="2" fill="url(#woodBody)"/>
       <path d="M886 548 h3 v120 h-3 z" fill="#3d2f1a" opacity=".7"/>
       <path d="M1024 548 h3 v120 h-3 z" fill="#3d2f1a" opacity=".7"/>
-      <!-- roof: shingled, moon on the ridge -->
       <path d="M872 552 h176 l-14 -28 h-148 z" fill="#241b0e"/>
       <path d="M872 552 h176" stroke="#0c0805" stroke-width="2"/>
       <path d="M886 524 h148" stroke="#4d5e63" stroke-width="1.6" opacity=".6"/>
       <path d="M880 543 h160 M876 548 h168 M885 536 h150 M891 530 h138" stroke="#0f0b06" stroke-width="1" opacity=".6"/>
-      <!-- board face: planked, warm under the lantern -->
-      <rect x="880" y="556" width="160" height="86" rx="3" fill="#191207"/>
-      <rect x="885" y="561" width="150" height="76" rx="2" fill="#241a0d"/>
-      <path d="M885 580 h150 M885 599 h150 M885 618 h150" stroke="#120c05" stroke-width="1.4" opacity=".8"/>
-      <path d="M902 561 v76 M986 561 v76" stroke="#120c05" stroke-width="1" opacity=".5"/>
-      <ellipse cx="960" cy="596" rx="74" ry="46" fill="url(#lampool)" opacity=".8"/>
-      <!-- muted pinned notices, curling at a corner -->
+      <rect x="880" y="556" width="160" height="86" rx="3" fill="#171106"/>
+      <rect x="885" y="561" width="150" height="76" rx="2" fill="#221a0c"/>
+      <path d="M885 580 h150 M885 599 h150 M885 618 h150" stroke="#110b04" stroke-width="1.4" opacity=".8"/>
+      <path d="M902 561 v76 M986 561 v76" stroke="#110b04" stroke-width="1" opacity=".5"/>
+      <ellipse cx="960" cy="596" rx="74" ry="46" fill="url(#lampool)" opacity=".75"/>
       <g transform="rotate(-2 913 596)">
-        <rect x="896" y="572" width="34" height="48" rx="2" fill="#26313a"/>
-        <path d="M896 572 h34 v6 q -18 4 -34 0 z" fill="#32404b"/>
-        <path d="M896 616 q 6 6 12 3 l -12 -8 z" fill="#1c252c"/>
+        <rect x="896" y="572" width="34" height="48" rx="2" fill="#233039"/>
+        <path d="M896 572 h34 v6 q -18 4 -34 0 z" fill="#2f3d48"/>
+        <path d="M896 616 q 6 6 12 3 l -12 -8 z" fill="#1a232a"/>
         <circle cx="913" cy="574" r="1.8" fill="#a3823f"/>
       </g>
       <g transform="rotate(2 1005 600)">
-        <rect x="988" y="576" width="34" height="48" rx="2" fill="#202a32"/>
-        <path d="M988 576 h34 v5 q -20 4 -34 0 z" fill="#2b3842"/>
+        <rect x="988" y="576" width="34" height="48" rx="2" fill="#1e2830"/>
+        <path d="M988 576 h34 v5 q -20 4 -34 0 z" fill="#293641"/>
         <circle cx="1005" cy="578" r="1.8" fill="#a3823f"/>
       </g>
-      <!-- lantern: glass, flame, halo -->
       <path d="M1028 540 q 6 2 4 10" fill="none" stroke="#0d0a05" stroke-width="2.4" stroke-linecap="round"/>
       <rect x="1024" y="550" width="15" height="20" rx="3" fill="#0c0803"/>
       <rect x="1026.5" y="552.5" width="10" height="15" rx="2" fill="#3d2c10"/>
@@ -343,55 +299,99 @@
       <ellipse cx="1031" cy="644" rx="58" ry="14" fill="url(#lampool)"/>
     </g>
 
-    <!-- ═══ MEADOW LIFE ═══ -->
-    <!-- grass clumps: dark blades against the pooled light -->
-    <g stroke="#0b140e" stroke-width="2.4" stroke-linecap="round" fill="none">
-      <path d="M120 776 q 3 -16 -2 -26 M130 778 q 5 -12 2 -24 M138 776 q 6 -10 3 -20"/>
-      <path d="M470 788 q 4 -14 0 -24 M480 790 q 6 -11 2 -22 M489 787 q 5 -9 2 -18"/>
-      <path d="M985 780 q 4 -13 0 -24 M995 782 q 6 -10 1 -22 M1003 779 q 5 -9 2 -17"/>
-      <path d="M1290 768 q 4 -14 -1 -26 M1301 770 q 6 -11 1 -22 M1310 767 q 5 -9 2 -18"/>
-      <path d="M320 794 q 4 -12 0 -22 M330 796 q 5 -10 1 -20"/>
-      <path d="M700 764 q 3 -12 -1 -20 M709 766 q 5 -9 1 -18"/>
-      <path d="M1140 790 q 4 -12 0 -22 M1150 792 q 5 -10 1 -20"/>
-    </g>
-    <g stroke="#1c3125" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".8">
-      <path d="M126 774 q 2 -12 0 -20 M476 786 q 3 -11 1 -18 M991 778 q 3 -10 1 -18 M1296 766 q 3 -11 0 -19"/>
-      <path d="M212 706 q 3 -10 0 -18 M290 710 q 3 -9 1 -16 M868 700 q 3 -10 0 -17"/>
-    </g>
-    <!-- seed heads catching lantern light -->
-    <g fill="#8a7c54" opacity=".7">
-      <circle cx="489" cy="768" r="1.6"/><circle cx="1003" cy="761" r="1.6"/><circle cx="138" cy="755" r="1.5"/><circle cx="1310" cy="748" r="1.5"/>
+    <!-- ═══ THE WAYSTONE: at our shoulder, dark sentinel, remembering ═══ -->
+    <g id="stone">
+      <ellipse cx="238" cy="768" rx="150" ry="24" fill="#010304" opacity=".7" filter="url(#soft3)"/>
+      <ellipse cx="238" cy="710" rx="180" ry="120" fill="url(#emberpool)" class="breathpool"/>
+      <path d="M172 766 q -12 -110 18 -180 q 22 -54 58 -58 q 34 4 50 62 q 22 82 12 176 z" fill="url(#stoneN)"/>
+      <path d="M172 766 q -12 -110 18 -180 q 14 -34 32 -48 q -26 66 -30 228 z" fill="#080d10" opacity=".9"/>
+      <path d="M262 546 q 18 10 28 62 q 14 66 10 158 l -22 0 q 6 -140 -16 -220 z" fill="#2a3a45" opacity=".6"/>
+      <!-- moonlight on the crown and east arris -->
+      <path d="M250 530 q 22 10 32 62" fill="none" stroke="#7d939f" stroke-width="2.4" opacity=".55" stroke-linecap="round"/>
+      <path d="M288 640 q 6 60 2 126 l -8 0 q 6 -66 6 -126 z" fill="#4b5d68" opacity=".5"/>
+      <!-- moss: deep shoulders of memory -->
+      <path d="M196 604 q 24 -22 52 -12 q -8 14 -24 18 q 8 2 18 0 q -14 16 -34 13 q -16 -3 -12 -19 z" fill="#2c4635"/>
+      <path d="M204 601 q 16 -13 34 -9 q -10 11 -26 13 z" fill="#3f5c46"/>
+      <path d="M210 598 q 10 -8 20 -6 q -6 7 -16 9 z" fill="#547048"/>
+      <path d="M180 692 q 18 -13 34 -4 q -8 15 -26 15 q -11 -2 -8 -11 z" fill="#38523f"/>
+      <path d="M186 690 q 10 -8 20 -4 q -6 9 -18 9 z" fill="#4c6a4a"/>
+      <path d="M236 548 q 15 -10 28 -4 q -7 11 -20 12 q -10 -1 -8 -8 z" fill="#3f5c46"/>
+      <path d="M241 546 q 9 -5 16 -2 q -4 6 -13 7 z" fill="#5d7a58"/>
+      <path d="M286 660 q 12 -5 20 0 q -5 10 -15 10 q -8 -2 -5 -10 z" fill="#2c4635" opacity=".85"/>
+      <!-- the marks: the column of remembering, at our height -->
+      <g class="marks" fill="#f4cd82">
+        <path class="mk m1" d="M226 618 h22 v5 h-22 z"/>
+        <path class="mk m2" d="M232 640 h11 v5 h-11 z M248 640 h8 v5 h-8 z"/>
+        <path class="mk m3" d="M224 664 h27 v5 h-27 z"/>
+        <path class="mk m4" d="M234 688 h16 v5 h-16 z"/>
+        <circle class="mk m5" cx="240" cy="718" r="4"/>
+      </g>
+      <g class="marks" filter="url(#soft3)" fill="#e8b45a" opacity=".5">
+        <path class="mk m1" d="M226 618 h22 v5 h-22 z"/>
+        <path class="mk m3" d="M224 664 h27 v5 h-27 z"/>
+      </g>
+      <!-- ember warms the stone's west cheek, faintly -->
+      <path d="M196 760 q -8 -96 14 -164 q 6 -18 14 -30 q -14 66 -12 194 z" fill="#e8b45a" opacity=".05"/>
+      <!-- companion stones at its feet -->
+      <path d="M138 768 q 0 -26 19 -28 q 17 2 17 28 z" fill="#131a1f"/>
+      <path d="M154 741 q 11 2 15 15 l -5 12 q -3 -18 -10 -27 z" fill="#31434f" opacity=".55"/>
+      <path d="M140 755 q 11 -9 20 -3 l -4 9 q -11 3 -16 -6 z" fill="#2c4635"/>
+      <path d="M322 770 q 3 -20 16 -21 q 12 1 14 21 z" fill="#181f24"/>
     </g>
 
-    <!-- fireflies: small suns of our own -->
+    <!-- ═══ RIGHT WING: pines close the frame ═══ -->
+    <g fill="#050a0d">
+      <path d="M1440 810 v-400 q -30 10 -48 60 q -14 -30 -34 -34 q -24 4 -34 52 q -18 -22 -36 -20 q -26 6 -32 68 q -20 82 -8 274 z"/>
+      <path d="M1290 810 q -6 -140 16 -196 q -28 8 -40 60 q -12 62 -6 136 z"/>
+    </g>
+    <path d="M1348 470 q 24 10 36 52" stroke="#3d5a6b" stroke-width="1.6" opacity=".3" fill="none"/>
+    <!-- a pine's shoulder catches the moon -->
+
+    <!-- ═══ FOREGROUND BANK: where we stand ═══ -->
+    <path d="M0 810 V 724 Q 260 700 520 726 Q 700 742 900 730 T 1440 736 V 810 Z" fill="url(#bank)"/>
+    <!-- grass against the pooled lights -->
+    <g stroke="#091209" stroke-width="2.6" stroke-linecap="round" fill="none">
+      <path d="M420 748 q 4 -16 -1 -28 M431 750 q 6 -12 2 -24 M440 747 q 5 -10 2 -19"/>
+      <path d="M905 742 q 4 -14 0 -26 M916 744 q 6 -11 1 -22 M925 741 q 5 -9 2 -18"/>
+      <path d="M560 756 q 4 -13 0 -24 M570 758 q 5 -10 1 -20"/>
+      <path d="M1120 748 q 4 -13 0 -24 M1130 750 q 5 -10 1 -20"/>
+    </g>
+    <g stroke="#1c3125" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".7">
+      <path d="M426 746 q 2 -12 0 -20 M911 740 q 3 -11 1 -18 M565 754 q 3 -10 1 -18 M1125 746 q 3 -11 0 -19"/>
+    </g>
+    <g fill="#8a7c54" opacity=".65">
+      <circle cx="440" cy="728" r="1.6"/><circle cx="925" cy="723" r="1.6"/><circle cx="1130" cy="728" r="1.4"/>
+    </g>
+
+    <!-- fireflies mark the way like dropped sparks -->
     <g>
-      <g class="fly f1"><circle cx="420" cy="700" r="2.4" fill="#ffe08f"/><circle cx="420" cy="700" r="6" fill="#e8b45a" opacity=".25" filter="url(#soft3)"/></g>
-      <g class="fly f2"><circle cx="1150" cy="700" r="2" fill="#ffe08f"/><circle cx="1150" cy="700" r="5" fill="#e8b45a" opacity=".25" filter="url(#soft3)"/></g>
-      <g class="fly f3"><circle cx="700" cy="660" r="2.2" fill="#ffe08f"/><circle cx="700" cy="660" r="6" fill="#e8b45a" opacity=".25" filter="url(#soft3)"/></g>
-      <g class="fly f4"><circle cx="160" cy="740" r="1.9" fill="#ffe08f"/><circle cx="160" cy="740" r="5" fill="#e8b45a" opacity=".22" filter="url(#soft3)"/></g>
+      <g class="fly f1"><circle cx="655" cy="700" r="2.3" fill="#ffe08f"/><circle cx="655" cy="700" r="6" fill="#e8b45a" opacity=".25" filter="url(#soft3)"/></g>
+      <g class="fly f2"><circle cx="742" cy="618" r="2" fill="#ffe08f"/><circle cx="742" cy="618" r="5" fill="#e8b45a" opacity=".25" filter="url(#soft3)"/></g>
+      <g class="fly f3"><circle cx="700" cy="540" r="1.8" fill="#ffe08f"/><circle cx="700" cy="540" r="5" fill="#e8b45a" opacity=".22" filter="url(#soft3)"/></g>
+      <g class="fly f4"><circle cx="380" cy="720" r="1.9" fill="#ffe08f"/><circle cx="380" cy="720" r="5" fill="#e8b45a" opacity=".22" filter="url(#soft3)"/></g>
     </g>
 
-    <!-- the whisperer: eyes in the meadow dark, rarely -->
+    <!-- the whisperer waits in the pine-dark tonight -->
     <g class="eyes" fill="#f4cd82">
-      <circle cx="1348" cy="742" r="2.2"/><circle cx="1357" cy="742" r="2.2"/>
+      <circle cx="1330" cy="700" r="2.2"/><circle cx="1339" cy="700" r="2.2"/>
     </g>
 
-    <!-- night air: mist over everything it should be over -->
+    <!-- night air -->
     <g fill="#6e8a78">
-      <ellipse class="mist mi1" cx="360" cy="656" rx="280" ry="17" opacity=".055" filter="url(#soft3)"/>
-      <ellipse class="mist mi2" cx="1050" cy="698" rx="320" ry="19" opacity=".045" filter="url(#soft3)"/>
-      <ellipse class="mist mi1" cx="740" cy="600" rx="360" ry="14" opacity=".03" filter="url(#soft3)"/>
-    </g>
-    <rect y="560" width="1440" height="250" fill="url(#horizonair)" opacity=".35"/>
-
-    <!-- foreground framing: tall grass out of focus at the bottom edge -->
-    <g stroke="#03070a" stroke-width="5" stroke-linecap="round" fill="none" filter="url(#soft3)" opacity=".9">
-      <path d="M30 812 q 6 -34 -4 -54 M52 812 q 10 -28 4 -48 M74 812 q 6 -22 0 -38"/>
-      <path d="M1370 812 q 8 -32 -2 -52 M1394 812 q 10 -26 2 -44 M1416 812 q 6 -20 0 -36"/>
-      <path d="M690 812 q 6 -26 -2 -40 M714 812 q 8 -20 2 -34"/>
+      <ellipse class="mist mi1" cx="420" cy="620" rx="300" ry="16" opacity=".05" filter="url(#soft3)"/>
+      <ellipse class="mist mi2" cx="1020" cy="660" rx="300" ry="17" opacity=".045" filter="url(#soft3)"/>
+      <ellipse class="mist mi1" cx="720" cy="500" rx="330" ry="13" opacity=".035" filter="url(#soft3)"/>
     </g>
 
-    <!-- grain: the painter's tooth -->
+    <!-- foreground: blurred grass at our boots -->
+    <g stroke="#020507" stroke-width="6" stroke-linecap="round" fill="none" filter="url(#soft3)" opacity=".95">
+      <path d="M40 812 q 8 -38 -4 -60 M68 812 q 12 -30 4 -52 M96 812 q 8 -24 0 -42"/>
+      <path d="M1130 812 q 8 -34 -2 -56 M1158 812 q 10 -28 2 -46"/>
+      <path d="M520 812 q 6 -28 -2 -44 M548 812 q 8 -22 2 -36"/>
+      <path d="M950 812 q 6 -26 -2 -42 M978 812 q 8 -20 2 -34"/>
+    </g>
+
+    <!-- grain -->
     <rect width="1440" height="810" filter="url(#grain)" opacity=".05"/>
 
     <style>
@@ -399,7 +399,7 @@
       .m2 { animation-delay: .7s; } .m3 { animation-delay: 1.5s; }
       .m4 { animation-delay: 2.3s; } .m5 { animation-delay: 3.2s; }
       @keyframes mark { 0%, 100% { opacity: .3; } 50% { opacity: .95; } }
-      .breathpool { animation: pool 5.4s ease-in-out infinite; transform-origin: 248px 672px; }
+      .breathpool { animation: pool 5.4s ease-in-out infinite; transform-origin: 238px 710px; }
       @keyframes pool { 0%, 100% { opacity: .5; } 50% { opacity: 1; } }
       .flame { animation: flame 3.1s steps(3) infinite; transform-origin: 1031px 560px; }
       @keyframes flame { 0%, 88% { opacity: 1; } 92% { opacity: .55; } 96% { opacity: .85; } 100% { opacity: 1; } }
@@ -408,12 +408,12 @@
       @keyframes puff {
         0% { transform: translate(0, 0) scale(.6); opacity: 0; }
         14% { opacity: .2; }
-        100% { transform: translate(22px, -115px) scale(2); opacity: 0; }
+        100% { transform: translate(24px, -120px) scale(2); opacity: 0; }
       }
       .fly { animation: drift 13s ease-in-out infinite alternate; }
       .f2 { animation-duration: 17s; animation-delay: 1s; } .f3 { animation-duration: 10s; animation-delay: 2.5s; }
       .f4 { animation-duration: 15s; animation-delay: .5s; }
-      @keyframes drift { from { transform: translate(0, 0); opacity: .1; } 30% { opacity: .95; } 60% { opacity: .25; } to { transform: translate(54px, -36px); opacity: .8; } }
+      @keyframes drift { from { transform: translate(0, 0); opacity: .1; } 30% { opacity: .95; } 60% { opacity: .25; } to { transform: translate(40px, -30px); opacity: .8; } }
       .eyes { opacity: 0; animation: peek 26s linear infinite; }
       @keyframes peek { 0%, 87% { opacity: 0; } 88%, 91% { opacity: .9; } 91.6%, 92.4% { opacity: 0; } 93%, 96% { opacity: .9; } 97%, 100% { opacity: 0; } }
       .mist { animation: mistdrift 26s ease-in-out infinite alternate; }
