@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#141b2b">
+<title>Waystone — a village for Palworld card collectors</title>
+<meta name="description" content="A small village for Palworld card collectors. Walk in, browse the notice board, have a drink at the inn — or stay, build a modest house, and set up your own shop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Spectral:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: #0d1220;
+    color: #d8d2c0;
+    font: 15px/1.55 "Spectral", Georgia, serif;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+
+  /* ---- the scene fills the sky ---- */
+  .scene-wrap { position: relative; width: 100%; height: 100svh; min-height: 540px; overflow: hidden; }
+  svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+  /* buildings glow + name themselves when you look at them */
+  .bldg { cursor: pointer; }
+  .bldg .lbl { opacity: 0; transition: opacity .25s ease; pointer-events: none; }
+  .bldg:hover .lbl, .bldg:focus .lbl { opacity: 1; }
+  .bldg .win { transition: filter .25s ease; }
+  .bldg:hover .win { filter: brightness(1.35) drop-shadow(0 0 6px rgba(244, 205, 130, .8)); }
+  .bldg:focus { outline: none; }
+  .bldg:focus-visible .body { stroke: #f4cd82; stroke-width: 2; }
+
+  /* ambient life */
+  .smoke { animation: smoke 7s linear infinite; transform-origin: center; }
+  .smoke.s2 { animation-delay: 2.4s; }
+  .smoke.s3 { animation-delay: 4.8s; }
+  @keyframes smoke {
+    0%   { transform: translate(0, 0) scale(.7); opacity: 0; }
+    12%  { opacity: .5; }
+    100% { transform: translate(14px, -80px) scale(1.7); opacity: 0; }
+  }
+  .fly { animation: fly 11s ease-in-out infinite alternate; }
+  .fly circle { animation: blink 3.2s ease-in-out infinite; }
+  .fly.f2 { animation-duration: 14s; animation-delay: 1.2s; }
+  .fly.f3 { animation-duration: 9s; animation-delay: 2.8s; }
+  .fly.f4 { animation-duration: 16s; animation-delay: 0.6s; }
+  @keyframes fly {
+    from { transform: translate(0, 0); }
+    to   { transform: translate(46px, -30px); }
+  }
+  @keyframes blink { 0%, 100% { opacity: .1; } 50% { opacity: .95; } }
+  .flick { animation: flick 4.6s steps(2) infinite; }
+  @keyframes flick { 0%, 92% { opacity: 1; } 96% { opacity: .55; } 100% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .smoke, .fly, .fly circle, .flick { animation: none; } }
+
+  /* ---- the traveler's plaque ---- */
+  .plaque {
+    position: absolute; left: 50%; transform: translateX(-50%); bottom: clamp(12px, 3.5vh, 32px); z-index: 5;
+    max-width: 380px;
+    background: linear-gradient(175deg, #3a2f21, #2c2317);
+    border: 1px solid #57462c; border-radius: 10px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(244, 205, 130, .14);
+    padding: 20px 22px 18px;
+  }
+  .plaque::before {
+    content: ""; position: absolute; inset: 5px; border: 1px solid rgba(244, 205, 130, .16); border-radius: 7px; pointer-events: none;
+  }
+  .plaque h1 { font: 600 21px/1.3 "Spectral", serif; color: #f0e6cd; margin: 0 0 6px; letter-spacing: .01em; }
+  .plaque p { margin: 0 0 14px; font-size: 14px; color: #c9bda0; font-style: italic; }
+  .roads { display: flex; gap: 9px; flex-wrap: wrap; }
+  .road {
+    font: 500 12.5px "IBM Plex Mono", monospace; text-decoration: none;
+    border-radius: 8px; padding: 10px 14px; letter-spacing: .02em;
+  }
+  .road.stay { background: #f4cd82; color: #2c2010; font-weight: 600; }
+  .road.stay:hover { background: #ffe0a1; }
+  .road.pass { border: 1px solid #6b5836; color: #e4d7b4; }
+  .road.pass:hover { border-color: #a08654; }
+  .plaque .small { margin: 12px 0 0; font: 11px/1.6 "IBM Plex Mono", monospace; color: #93876b; font-style: normal; }
+
+  .wm {
+    position: absolute; top: 18px; left: clamp(16px, 4vw, 56px); z-index: 5;
+    display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+    font: 600 17px "Spectral", serif; color: #e9e0c8; letter-spacing: .04em;
+    text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  }
+
+  /* ---- beneath the scene: one quiet strip ---- */
+  .under { max-width: 980px; margin: 0 auto; padding: 42px 26px 60px; }
+  .under p { margin: 0 0 10px; font-size: 14.5px; color: #a99f86; }
+  .under .word { color: #cfc5a8; }
+  .under .g { color: #9db388; } .under .b { color: #86aecf; }
+  .legal { margin-top: 26px; font: 11.5px/1.8 "IBM Plex Mono", monospace; color: #6e6752; }
+  .legal a { color: #93876b; }
+
+  @media (max-width: 720px) {
+    .plaque { left: 12px; right: 12px; max-width: none; bottom: 12px; transform: none; }
+    .wm { top: 12px; }
+    .scene-wrap { min-height: 480px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scene-wrap">
+  <a class="wm" href="#">
+    <svg width="19" height="21" viewBox="0 0 22 24" fill="none" aria-hidden="true">
+      <rect x="5.5" y="14.5" width="11" height="6" rx="2.6" fill="#77946b"/>
+      <rect x="7" y="8.8" width="8.4" height="5.6" rx="2.4" fill="#8ca678"/>
+      <rect x="8.4" y="3.6" width="5.6" height="5" rx="2.2" fill="#a5ba8e"/>
+      <circle cx="15.6" cy="16.4" r="1.2" fill="#f4cd82"/>
+    </svg>
+    Waystone
+  </a>
+
+  <svg class="scene" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMax slice" aria-label="The village of Waystone at dusk">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c1226"/>
+        <stop offset=".45" stop-color="#1a2440"/>
+        <stop offset=".78" stop-color="#3a3a52"/>
+        <stop offset="1" stop-color="#6b4f46"/>
+      </linearGradient>
+      <linearGradient id="glowh" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f4cd82" stop-opacity="0"/>
+        <stop offset="1" stop-color="#e8a45a" stop-opacity=".22"/>
+      </linearGradient>
+      <radialGradient id="winglow" cx=".5" cy=".5" r=".5">
+        <stop offset="0" stop-color="#ffd98a" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#ffd98a" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- sky -->
+    <rect width="1440" height="810" fill="url(#sky)"/>
+    <rect y="480" width="1440" height="330" fill="url(#glowh)"/>
+    <g fill="#e9ecf5">
+      <circle cx="150" cy="90" r="1.5" opacity=".8"/><circle cx="320" cy="60" r="1.1" opacity=".6"/>
+      <circle cx="480" cy="130" r="1.3" opacity=".7"/><circle cx="705" cy="55" r="1.6" opacity=".8"/>
+      <circle cx="905" cy="105" r="1.1" opacity=".55"/><circle cx="1090" cy="70" r="1.4" opacity=".75"/>
+      <circle cx="1245" cy="140" r="1.2" opacity=".6"/><circle cx="1370" cy="85" r="1.5" opacity=".7"/>
+      <circle cx="580" cy="200" r="1" opacity=".45"/><circle cx="1180" cy="215" r="1" opacity=".4"/>
+      <circle cx="240" cy="185" r="1" opacity=".5"/><circle cx="820" cy="170" r="1.1" opacity=".5"/>
+    </g>
+    <path d="M1247 78a34 34 0 1 0 30 50 40 40 0 0 1-30-50z" fill="#e8ddc0" opacity=".85"/>
+
+    <g transform="translate(0,-88)">
+    <!-- far ridge + pines -->
+    <path d="M0 470 Q 180 380 400 430 T 800 400 T 1160 430 T 1440 390 V 810 H 0 Z" fill="#161e30"/>
+    <g fill="#121a2b">
+      <path d="M120 432 l 16 -46 16 46 z"/><path d="M152 438 l 13 -36 13 36 z"/>
+      <path d="M840 402 l 15 -44 15 44 z"/><path d="M872 408 l 12 -32 12 32 z"/>
+      <path d="M1330 398 l 16 -46 16 46 z"/><path d="M1362 404 l 12 -34 12 34 z"/>
+      <path d="M540 418 l 14 -40 14 40 z"/>
+    </g>
+
+    <!-- village hill -->
+    <path d="M0 810 V 560 Q 260 500 520 528 T 1040 520 T 1440 545 V 810 Z" fill="#1d2a26"/>
+    <path d="M0 810 V 640 Q 340 588 720 618 T 1440 630 V 810 Z" fill="#243530"/>
+
+    <!-- the path in -->
+    <path d="M700 810 C 660 740 690 700 640 668 C 600 642 560 630 520 615 M700 810 C 730 730 700 690 760 660 C 830 626 920 620 990 606"
+      fill="none" stroke="#4a4335" stroke-width="26" stroke-linecap="round" opacity=".85"/>
+    <path d="M700 810 C 660 740 690 700 640 668 C 600 642 560 630 520 615 M700 810 C 730 730 700 690 760 660 C 830 626 920 620 990 606"
+      fill="none" stroke="#5a5140" stroke-width="18" stroke-linecap="round" opacity=".6"/>
+
+    <!-- ══ THE TRADING POST (market) ══ -->
+    <a href="/app/?catalog=palworld-ocg&view=market" aria-label="The trading post — the village market">
+    <g class="bldg">
+      <ellipse cx="330" cy="620" rx="150" ry="16" fill="#101a17" opacity=".55"/>
+      <rect class="body" x="230" y="500" width="200" height="118" rx="4" fill="#3b3226"/>
+      <rect x="230" y="500" width="200" height="14" fill="#2e281e"/>
+      <polygon points="214,504 446,504 400,438 260,438" fill="#57432c"/>
+      <polygon points="214,504 446,504 438,494 222,494" fill="#493823"/>
+      <!-- awning -->
+      <g>
+        <rect x="246" y="540" width="112" height="10" fill="#6b3f33"/>
+        <path d="M246 550 h14 v12 a7 7 0 0 1 -14 0 z M274 550 h14 v12 a7 7 0 0 1 -14 0 z M302 550 h14 v12 a7 7 0 0 1 -14 0 z M330 550 h14 v12 a7 7 0 0 1 -14 0 z" fill="#8a4f3d"/>
+      </g>
+      <rect class="win flick" x="256" y="566" width="92" height="40" fill="#f2c46b" opacity=".92"/>
+      <rect x="256" y="566" width="92" height="40" fill="none" stroke="#241d12" stroke-width="3"/>
+      <line x1="302" y1="566" x2="302" y2="606" stroke="#241d12" stroke-width="3"/>
+      <rect class="win" x="376" y="556" width="34" height="62" rx="3" fill="#e0a94f"/>
+      <rect x="391" y="580" width="5" height="9" rx="2" fill="#3a2c17"/>
+      <!-- crates of goods -->
+      <rect x="182" y="588" width="34" height="30" fill="#4a3b26"/><rect x="186" y="592" width="26" height="9" fill="#5c4a30"/>
+      <rect x="196" y="562" width="30" height="26" fill="#42351f"/>
+      <ellipse cx="452" cy="606" rx="16" ry="13" fill="#4a3b26"/>
+      <g class="lbl">
+        <rect x="252" y="392" width="158" height="34" rx="8" fill="#20180f" opacity=".92"/>
+        <text x="331" y="414" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" fill="#f0d9a4">the trading post</text>
+      </g>
+    </g>
+    </a>
+
+    <!-- ══ THE INN (gather · deals by the fire) ══ -->
+    <a href="/app/?view=inn" aria-label="The inn — a drink, a game, a deal by the fire">
+    <g class="bldg">
+      <ellipse cx="620" cy="626" rx="160" ry="17" fill="#101a17" opacity=".55"/>
+      <rect class="body" x="530" y="428" width="182" height="196" rx="4" fill="#463829"/>
+      <rect x="530" y="520" width="182" height="8" fill="#382d20"/>
+      <polygon points="512,432 730,432 688,356 554,356" fill="#685033"/>
+      <polygon points="512,432 730,432 722,420 520,420" fill="#54402a"/>
+      <!-- chimney + smoke -->
+      <rect x="656" y="330" width="26" height="52" fill="#3a3026"/>
+      <rect x="652" y="322" width="34" height="12" rx="2" fill="#2e2519"/>
+      <g fill="#9a978e" opacity=".55">
+        <circle class="smoke" cx="669" cy="312" r="7"/>
+        <circle class="smoke s2" cx="669" cy="312" r="9"/>
+        <circle class="smoke s3" cx="669" cy="312" r="6"/>
+      </g>
+      <!-- windows upstairs -->
+      <rect class="win" x="548" y="450" width="30" height="36" fill="#f2c46b" opacity=".9"/>
+      <rect class="win flick" x="596" y="450" width="30" height="36" fill="#f2c46b" opacity=".85"/>
+      <rect class="win" x="644" y="450" width="30" height="36" fill="#eab959" opacity=".9"/>
+      <g stroke="#241d12" stroke-width="2.5" fill="none">
+        <rect x="548" y="450" width="30" height="36"/><rect x="596" y="450" width="30" height="36"/><rect x="644" y="450" width="30" height="36"/>
+      </g>
+      <!-- big warm ground window + door -->
+      <rect class="win" x="544" y="546" width="72" height="52" fill="#f4cd82"/>
+      <rect x="544" y="546" width="72" height="52" fill="none" stroke="#241d12" stroke-width="3"/>
+      <line x1="580" y1="546" x2="580" y2="598" stroke="#241d12" stroke-width="3"/>
+      <line x1="544" y1="572" x2="616" y2="572" stroke="#241d12" stroke-width="3"/>
+      <ellipse cx="580" cy="600" rx="60" ry="10" fill="url(#winglow)"/>
+      <rect class="win" x="646" y="546" width="40" height="78" rx="4" fill="#e0a94f"/>
+      <rect x="664" y="578" width="5" height="10" rx="2" fill="#3a2c17"/>
+      <!-- hanging sign: tankard -->
+      <line x1="712" y1="452" x2="742" y2="452" stroke="#2e2519" stroke-width="5"/>
+      <line x1="738" y1="452" x2="738" y2="468" stroke="#2e2519" stroke-width="3"/>
+      <rect x="722" y="468" width="34" height="30" rx="5" fill="#57432c" stroke="#2e2519" stroke-width="2"/>
+      <path d="M732 476 v14 m6 -14 v14 m6 -14 v14" stroke="#f0d9a4" stroke-width="2.4" stroke-linecap="round"/>
+      <g class="lbl">
+        <rect x="562" y="300" width="120" height="34" rx="8" fill="#20180f" opacity=".92"/>
+        <text x="622" y="322" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" fill="#f0d9a4">the inn</text>
+      </g>
+    </g>
+    </a>
+
+    <!-- ══ THE NOTICE BOARD (catalogue · free) ══ -->
+    <a href="/app/?catalog=palworld-ocg" aria-label="The notice board — browse every Palworld printing, free">
+    <g class="bldg">
+      <ellipse cx="905" cy="612" rx="95" ry="12" fill="#101a17" opacity=".5"/>
+      <rect x="836" y="502" width="10" height="106" fill="#3a3026"/>
+      <rect x="964" y="502" width="10" height="106" fill="#3a3026"/>
+      <polygon points="820,508 990,508 962,470 848,470" fill="#57432c"/>
+      <rect class="body" x="830" y="508" width="150" height="72" rx="3" fill="#2c2519"/>
+      <rect x="830" y="508" width="150" height="72" rx="3" fill="none" stroke="#1d1810" stroke-width="3"/>
+      <!-- pinned cards: the actual catalogue peeking through -->
+      <g>
+        <image href="assets/palworld/BP01-006SR.webp" x="842" y="516" width="38" height="53" transform="rotate(-4 861 542)"/>
+        <image href="assets/palworld/BP01-001.webp" x="888" y="514" width="38" height="53" transform="rotate(2 907 540)"/>
+        <image href="assets/palworld/BP01-004SR.webp" x="934" y="517" width="38" height="53" transform="rotate(-2 953 543)"/>
+        <circle cx="861" cy="518" r="2.4" fill="#d6b269"/><circle cx="907" cy="516" r="2.4" fill="#d6b269"/><circle cx="953" cy="519" r="2.4" fill="#d6b269"/>
+      </g>
+      <!-- lantern -->
+      <line x1="990" y1="470" x2="990" y2="456" stroke="#2e2519" stroke-width="3"/>
+      <rect class="win flick" x="983" y="470" width="15" height="19" rx="3" fill="#f4cd82"/>
+      <g class="lbl">
+        <rect x="810" y="418" width="192" height="34" rx="8" fill="#20180f" opacity=".92"/>
+        <text x="906" y="440" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" fill="#f0d9a4">the notice board · free</text>
+      </g>
+    </g>
+    </a>
+
+    <!-- ══ A NEIGHBOR'S COTTAGE (a resident's shop) ══ -->
+    <a href="/app/?view=village" aria-label="A neighbor's cottage — villagers' houses and shops">
+    <g class="bldg">
+      <ellipse cx="1105" cy="596" rx="90" ry="12" fill="#101a17" opacity=".5"/>
+      <rect class="body" x="1044" y="510" width="122" height="84" rx="4" fill="#3d3327"/>
+      <polygon points="1032,514 1178,514 1140,458 1070,458" fill="#5c4832"/>
+      <rect class="win" x="1062" y="534" width="28" height="30" fill="#f2c46b" opacity=".88"/>
+      <rect x="1062" y="534" width="28" height="30" fill="none" stroke="#241d12" stroke-width="2.5"/>
+      <rect class="win" x="1112" y="530" width="30" height="64" rx="3" fill="#e0a94f"/>
+      <rect x="1125" y="556" width="5" height="9" rx="2" fill="#3a2c17"/>
+      <rect x="1052" y="470" width="16" height="34" fill="#352b1e"/>
+      <g fill="#c9c5bb"><circle class="smoke s2" cx="1060" cy="462" r="6"/></g>
+      <g class="lbl">
+        <rect x="1014" y="404" width="200" height="34" rx="8" fill="#20180f" opacity=".92"/>
+        <text x="1114" y="426" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" fill="#f0d9a4">a neighbor&#8217;s cottage</text>
+      </g>
+    </g>
+    </a>
+
+    <!-- ══ THE EMPTY LOT (your house, someday) ══ -->
+    <a href="/app/?join=1" aria-label="An empty lot — a modest house could go here">
+    <g class="bldg">
+      <g stroke="#4a4335" stroke-width="4" stroke-linecap="round">
+        <line x1="1240" y1="600" x2="1240" y2="620"/><line x1="1272" y1="596" x2="1272" y2="618"/>
+        <line x1="1304" y1="594" x2="1304" y2="616"/><line x1="1336" y1="596" x2="1336" y2="618"/>
+        <line x1="1234" y1="606" x2="1342" y2="602"/>
+      </g>
+      <rect x="1256" y="548" width="6" height="42" fill="#4a3b26"/>
+      <rect class="body" x="1230" y="540" width="60" height="26" rx="3" fill="#57432c" transform="rotate(-2 1260 553)"/>
+      <text x="1260" y="558" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#f0d9a4" transform="rotate(-2 1260 553)">your house?</text>
+      <g class="lbl">
+        <rect x="1176" y="470" width="230" height="34" rx="8" fill="#20180f" opacity=".92"/>
+        <text x="1291" y="492" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13.5" fill="#f0d9a4">a modest house could go here</text>
+      </g>
+    </g>
+    </a>
+
+    <!-- ══ THE WAYSTONE (trust · built on cairn) ══ -->
+    <a href="#trust" aria-label="The waystone — why the village holds">
+    <g class="bldg">
+      <ellipse cx="196" cy="700" rx="60" ry="11" fill="#0d1512" opacity=".6"/>
+      <rect class="body" x="164" y="654" width="64" height="42" rx="14" fill="#5f7d5a"/>
+      <rect x="172" y="622" width="48" height="36" rx="12" fill="#77946b"/>
+      <rect x="180" y="594" width="32" height="32" rx="11" fill="#94ab80"/>
+      <circle class="win flick" cx="216" cy="668" r="4.5" fill="#f4cd82"/>
+      <circle cx="178" cy="634" r="3" fill="#f4cd82" opacity=".6"/>
+      <path d="M150 700 q 18 -8 30 -2 M240 698 q -14 -9 -26 -3" stroke="#3f5844" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <g class="lbl">
+        <rect x="120" y="546" width="152" height="34" rx="8" fill="#20180f" opacity=".92"/>
+        <text x="196" y="568" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" fill="#f0d9a4">the waystone</text>
+      </g>
+    </g>
+    </a>
+
+    <!-- lanterns along the path -->
+    <g>
+      <line x1="770" y1="700" x2="770" y2="654" stroke="#2e2519" stroke-width="5"/>
+      <rect class="win flick" x="761" y="636" width="18" height="22" rx="4" fill="#f4cd82"/>
+      <ellipse cx="770" cy="700" rx="26" ry="6" fill="url(#winglow)"/>
+      <line x1="560" y1="676" x2="560" y2="636" stroke="#2e2519" stroke-width="4"/>
+      <rect class="win" x="552" y="620" width="16" height="20" rx="4" fill="#eab959"/>
+    </g>
+
+    <!-- fireflies -->
+    <g fill="#ffe08f">
+      <g class="fly"><circle cx="420" cy="660" r="2.4"/></g>
+      <g class="fly f2"><circle cx="960" cy="650" r="2"/></g>
+      <g class="fly f3"><circle cx="700" cy="620" r="2.2"/></g>
+      <g class="fly f4"><circle cx="1180" cy="680" r="1.9"/></g>
+      <g class="fly f2"><circle cx="250" cy="730" r="2.1"/></g>
+    </g>
+
+    </g>
+
+    <!-- foreground meadow: the traveler's side of the frame -->
+    <rect y="700" width="1440" height="110" fill="#243530"/>
+    <path d="M700 810 L 706 722" stroke="#4a4335" stroke-width="26" stroke-linecap="round" opacity=".85"/>
+    <g stroke="#2c4034" stroke-width="3" stroke-linecap="round" fill="none">
+      <path d="M120 780 q 4 -16 -2 -26 M132 782 q 6 -12 2 -24 M1300 770 q 5 -14 -1 -26 M1316 774 q 6 -12 1 -22 M470 790 q 5 -14 0 -24 M980 782 q 5 -13 0 -24 M1150 792 q 5 -14 0 -24 M320 796 q 5 -13 0 -22"/>
+    </g>
+    <g fill="#ffe08f">
+      <g class="fly f2"><circle cx="380" cy="750" r="2.1"/></g>
+      <g class="fly f4"><circle cx="1080" cy="760" r="2"/></g>
+    </g>
+  </svg>
+
+  <div class="plaque">
+    <h1>You&#8217;ve reached Waystone.</h1>
+    <p>A small village where Palworld collectors keep their cards, their shops, and their word.
+      Are you just passing through &mdash; or staying?</p>
+    <div class="roads">
+      <a class="road stay" href="/app/?join=1">Stay &mdash; start with a modest house</a>
+      <a class="road pass" href="/app/?catalog=palworld-ocg">Just passing through &rarr;</a>
+    </div>
+    <p class="small">passing through is free forever &mdash; every printing, no account</p>
+  </div>
+</div>
+
+<div class="under" id="trust">
+  <p><span class="word">The waystone at the edge of the village remembers.</span> When a trade truly settles,
+    the stone keeps the record — <span class="g">green means recorded</span>. When a seller says a card is
+    near-mint, the stone keeps that too, <span class="b">as their claim</span>, plainly marked. The village never
+    pretends to verify authenticity or condition; it records claims, locks terms, and keeps honest memory.</p>
+  <p class="legal">Built on <a href="https://cairn.cards">Cairn</a>, the record layer under the village ·
+    Waystone is a fan-made collector community — not affiliated with, endorsed by, or sponsored by Pocketpair, Inc. ·
+    Card imagery courtesy of Palify, used with the operator&#8217;s permission; catalogue images are references,
+    never proof of a seller&#8217;s physical copy · waystone.town</p>
+</div>
+
+</body>
+</html>
