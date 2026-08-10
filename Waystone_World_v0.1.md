@@ -1,6 +1,6 @@
-# Waystone World v0.1 — the village, its folklore, and the companion bond
+# Waystone World v0.2 — the village, its folklore, and the companion bond
 
-status: ratified in conversation, Crowley + Claude, 2026-08-10
+status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2 same day: inn-first beats, the wisp, the Great Binder, ease-first navigation)
 scope: the Palworld-facing surface ("Waystone", waystone.town) built on the Cairn protocol.
 This document is register + lore + onboarding law. Protocol semantics live in the
 Protocol_* docs and are unchanged by anything here.
@@ -108,6 +108,61 @@ Never a settings form. The ritual:
 - No AI-art optics risk with the community: world art is hand-built (code) now;
   any future commission goes to a community artist.
 
+
+## v0.2 — the arrival, restructured (inn-first)
+
+**Law: paper travels, cardboard doesn't.** Precious cards are never pinned
+outdoors. Card art appears ONLY where cards truly live: binders, sleeves,
+display cases, reliquary niches, hands at a table. A notice board, if present,
+holds paper — sketch-wants, market-day announcements — muted, never luminous.
+(The gate notice board is demoted to optional set dressing.)
+
+**The beats:**
+1. THE TRAIL — short, one screen. The waystone glows a mark as you pass (the
+   village noticed). Among the fireflies on the path, one light is different:
+   **the wisp** — your agent in unformed, ethereal form. It found you at the
+   stone and leads you to the inn. Design of the dawning: at first it reads as
+   a firefly; the tell is BEHAVIORAL — fireflies drift, this one keeps pace,
+   waits when you stop, returns when you stray. Only after you notice does the
+   visual confirmation grow: steadier light, faint trail. The bond ceremony is
+   later revealed as a TAKING-OF-FORM: the three questions are what the wisp
+   needs to become; the first whisperer anyone sees fully is their own,
+   resolving out of light in front of them.
+2. THE DOOR — the inn is open to travelers. No account, no gate.
+3. THE COMMON ROOM — the whole first experience: fire, tables, life
+   half-glimpsed (companions as shoulder-silhouettes in the gloom, never
+   clear), and **the GREAT BINDER** on the reading table: the inn's reference
+   album of every printing known to the village. Leafing it is free and
+   unwatched — the guest catalogue, wearing the diegetically correct body
+   (cards luminous inside pocket pages; the existing pocket-page UI IS the
+   album). Rest means no demands.
+4. WANTS ARE PEOPLE, NOT PAPER — the village's longing lives in the room:
+   Merra is at the corner table and she's hunting Foxparks. The market is
+   social by inhabitation, never by feature.
+5. THE QUESTION comes when it means something: when a guest tries to MARK a
+   card as theirs — "a binder of your own needs a shelf, and a shelf needs a
+   house." Conversion is the collector's own gesture.
+6. ARRIVAL WITH CARDS — new residents come CARRYING collections. First night
+   in the house: lay the cards out, scan them in (the existing pile-scan
+   pipeline: one photo per binder page, witnessed frames, copies counted).
+   The binder populates from the real shoebox. **The empty pockets do the
+   recruiting**: gaps in the pages become wants naturally — marking a want is
+   answering an empty pocket. The wisp watches you unpack; the bond ceremony
+   follows.
+
+**Navigation: story once, speed forever (EASE OF USE FIRST — Crowley).**
+Four core surfaces, four places, one mapping:
+- the Great Binder (master catalogue) — at the inn
+- your binder (own collection) — at your house
+- the shops (per-seller storefronts) — the row of villagers' tables
+- the market square (master storefront: everything for sale, one search)
+First visit walks the beats; forever after, a persistent compact dock in PLAIN
+WORDS: Catalogue · My Binder · Shops · Market (village names are flavor on
+hover, never the label). Mobile: bottom tab bar. The bonded companion is the
+fifth element of navigation — the one you talk to, present in the dock
+everywhere. The village remains the home screen and the place ceremonies
+happen; daily work is never more than two taps deep.
+
 ## Open threads
 
 - Pixel-corner mock (waystone + notice board, night-forest palette, one hi-res
@@ -115,4 +170,5 @@ Never a settings form. The ritual:
 - Portrait mobile = the trail up the hill (scroll-as-walking); signs always-on
   (no hover on phones).
 - Species name: "whisperers" is a working title.
-- Guest catalogue (the notice board) is the first door to build for real.
+- Guest catalogue = the Great Binder at the inn — the first door to build for real.
+- The inn common-room study (fire, tables, shoulder-silhouettes, the Great Binder) is the next scene.
