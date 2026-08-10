@@ -131,9 +131,29 @@
   .turn:hover { background: rgba(233, 220, 184, .18); }
   .turn:disabled { opacity: .3; cursor: default; }
   .where { color: #93876b; font-size: 11.5px; min-width: 11ch; text-align: center; }
-  .seek input { font: inherit; font-size: 12px; width: clamp(120px, 15vw, 200px); background: rgba(233, 220, 184, .08);
-    border: 1px solid rgba(233, 220, 184, .2); border-radius: 7px; padding: 5px 9px; color: #e9dcb8; }
-  .seek input::placeholder { color: #93876b; }
+  /* ═══ the rail: how a collector actually finds a card ═══ */
+  .rail { display: flex; align-items: center; gap: clamp(6px, 1vw, 12px); flex-wrap: wrap;
+    padding: 10px 4px 2px; }
+  .costs { display: flex; gap: 4px; }
+  .cost { position: relative; width: clamp(24px, 2.6vw, 30px); aspect-ratio: 1; border: 0; padding: 0; cursor: pointer; background: none; }
+  .cost span { position: absolute; inset: 12%; transform: rotate(45deg); border-radius: 4px;
+    background: linear-gradient(135deg, #8a4433, #5c2418); border: 1px solid rgba(240, 150, 110, .35);
+    box-shadow: inset 0 1px 2px rgba(255, 200, 160, .25), 0 2px 4px rgba(0, 0, 0, .4);
+    display: grid; place-items: center; transition: all .2s ease; }
+  .cost span { color: #f0d9c4; font: 600 clamp(10px, 1.1vw, 12.5px) "IBM Plex Mono", monospace; }
+  .cost span::before { content: attr(data-n); }
+  .cost span > i { transform: rotate(-45deg); font-style: normal; }
+  .cost:hover span { filter: brightness(1.2); }
+  .cost.on span { background: linear-gradient(135deg, #d0603f, #8a2f1a); border-color: #f4a67e;
+    box-shadow: 0 0 12px rgba(240, 130, 80, .55), inset 0 1px 2px rgba(255, 210, 170, .4); }
+  .pick { font: 500 11.5px "IBM Plex Mono", monospace; color: #e9dcb8; cursor: pointer;
+    background: rgba(233, 220, 184, .09); border: 1px solid rgba(233, 220, 184, .22); border-radius: 7px; padding: 6px 8px;
+    appearance: none; -webkit-appearance: none; }
+  .pick:hover { background: rgba(233, 220, 184, .16); }
+  .pick option { background: #2a2013; color: #e9dcb8; }
+  .seekin { font: inherit; font-size: 12px; flex: 1; min-width: 140px; background: rgba(233, 220, 184, .08);
+    border: 1px solid rgba(233, 220, 184, .2); border-radius: 7px; padding: 6px 10px; color: #e9dcb8; }
+  .seekin::placeholder { color: #93876b; }
 
   .lens { position: fixed; inset: 0; z-index: 30; display: none; place-items: center; }
   body.regarding .lens { display: grid; }
@@ -187,25 +207,49 @@
       <span class="corner c-tl"></span><span class="corner c-tr"></span>
       <span class="corner c-bl"></span><span class="corner c-br"></span>
       <div class="ribbons" id="ribbons">
-        <button class="ribbon r-order on" data-mode="order" title="the maker&#8217;s order"><i>&#10087;</i></button>
-        <button class="ribbon r-rarity" data-mode="rarity" title="ranked by rarity — chase first"><i>&#10022;</i></button>
-        <button class="ribbon r-red" data-mode="Red" title="gather the flame"><i>&#128293;&#xFE0E;</i></button>
-        <button class="ribbon r-blue" data-mode="Blue" title="gather the tide"><i>&#9737;</i></button>
-        <button class="ribbon r-green" data-mode="Green" title="gather the grove"><i>&#10047;</i></button>
-        <button class="ribbon r-purple" data-mode="Purple" title="gather the gloam"><i>&#9789;</i></button>
+        <button class="ribbon r-order on" data-color="" title="every element"><i>&#10087;</i></button>
+        <button class="ribbon r-red" data-color="Red" title="flame"><i>&#128293;&#xFE0E;</i></button>
+        <button class="ribbon r-blue" data-color="Blue" title="tide"><i>&#9737;</i></button>
+        <button class="ribbon r-green" data-color="Green" title="grove"><i>&#10047;</i></button>
+        <button class="ribbon r-purple" data-color="Purple" title="gloam"><i>&#9789;</i></button>
       </div>
       <div class="sweep" id="sweep"></div>
       <div class="spread" id="spread">
         <div class="page left"><div class="pockets" id="pgL"></div></div>
         <div class="page right"><div class="pockets" id="pgR"></div></div>
       </div>
+      <div class="rail">
+        <div class="costs" id="costs" title="cost">
+          <button class="cost" data-cost="1"><span>1</span></button><button class="cost" data-cost="2"><span>2</span></button>
+          <button class="cost" data-cost="3"><span>3</span></button><button class="cost" data-cost="4"><span>4</span></button>
+          <button class="cost" data-cost="5"><span>5</span></button><button class="cost" data-cost="6"><span>6</span></button>
+          <button class="cost" data-cost="7"><span>7</span></button><button class="cost" data-cost="8"><span>8</span></button>
+        </div>
+        <select class="pick" id="rarity">
+          <option value="">any rarity</option>
+          <option>C</option><option>U</option><option>R</option><option>RR</option><option>SR</option>
+          <option>OSR</option><option>SP</option><option>SSP</option><option>TSR</option><option>TSP</option>
+          <option>SSS</option><option>S</option><option>PR</option><option>TD</option><option>Sealed</option>
+        </select>
+        <select class="pick" id="kind">
+          <option value="">any kind</option>
+          <option>Pal</option><option>Gear</option><option>Structure</option><option>Event</option><option>Soul</option>
+          <option value="Sealed product">Sealed</option>
+        </select>
+        <select class="pick" id="sort">
+          <option value="order">maker&#8217;s order</option>
+          <option value="cost">by cost</option>
+          <option value="rarity">by rarity — chase first</option>
+          <option value="name">by name</option>
+        </select>
+        <input class="seekin" id="seek" placeholder="search name or card text&hellip;" autocomplete="off">
+      </div>
       <div class="albumbar">
         <div class="ek">The Great Binder</div>
         <div class="drill" id="drill"></div>
-        <div class="seek"><input id="seek" placeholder="find a card by name…" autocomplete="off"></div>
         <div class="turns">
           <button class="turn" id="prev">&#8249; back</button>
-          <div class="where" id="where">…</div>
+          <div class="where" id="where">&hellip;</div>
           <button class="turn" id="next">turn &#8250;</button>
         </div>
       </div>
@@ -235,41 +279,46 @@
 <script>
 const PER = 9
 const LADDER = ['SSS', 'SSP', 'TSP', 'OSR', 'SP', 'TSR', 'SR', 'S', 'RR', 'R', 'PR', 'TD', 'U', 'C', 'Sealed']
-const DRILLS = {
-  order: 'the maker&#8217;s order — as the album was bound',
-  rarity: 'ranked by rarity — <b>chase first</b>',
-  Red: 'gathered by <b>flame</b>', Blue: 'gathered by <b>tide</b>',
-  Green: 'gathered by <b>grove</b>', Purple: 'gathered by <b>gloam</b>',
-}
-const GLOWS = {
-  order: 'rgba(220,195,140,.35)', rarity: 'rgba(244,205,130,.5)',
-  Red: 'rgba(230,110,70,.42)', Blue: 'rgba(110,160,235,.42)',
-  Green: 'rgba(130,210,110,.42)', Purple: 'rgba(175,135,235,.42)',
-}
-let all = [], view = [], spread = 0, mode = 'order'
+const ELEMENTS = { '': 'every element', Red: 'flame', Blue: 'tide', Green: 'grove', Purple: 'gloam' }
+const GLOWS = { '': 'rgba(220,195,140,.35)', Red: 'rgba(230,110,70,.42)', Blue: 'rgba(110,160,235,.42)',
+  Green: 'rgba(130,210,110,.42)', Purple: 'rgba(175,135,235,.42)' }
+let all = [], view = [], spread = 0
+const F = { color: '', cost: '', rarity: '', kind: '', q: '', sort: 'order' }
 let isNarrow = matchMedia('(max-width: 760px)').matches
 const perView = () => isNarrow ? PER : PER * 2
 const $ = (id) => document.getElementById(id)
 
 fetch('catalogs/palworld-ocg.json').then((r) => r.json()).then((d) => {
   all = d.cards.filter((c) => c.image)
-  applyMode('order', true)
+  apply(true)
 })
 
-function applyMode(m, first) {
-  mode = m
-  if (m === 'order') view = [...all]
-  else if (m === 'rarity') view = [...all].sort((a, b) =>
-    (LADDER.indexOf(a.rarity) + 99 * (LADDER.indexOf(a.rarity) < 0)) - (LADDER.indexOf(b.rarity) + 99 * (LADDER.indexOf(b.rarity) < 0))
-    || (a.printing_code || '').localeCompare(b.printing_code || ''))
-  else view = all.filter((c) => c.color === m)
-    .sort((a, b) => (Number(a.cost) || 0) - (Number(b.cost) || 0) || (a.printing_code || '').localeCompare(b.printing_code || ''))
+const rIdx = (r) => { const i = LADDER.indexOf(r); return i < 0 ? 99 : i }
+function apply(first, sweepColor) {
+  const q = F.q.toLowerCase()
+  view = all.filter((c) =>
+    (!F.color || c.color === F.color)
+    && (!F.cost || String(c.cost) === F.cost)
+    && (!F.rarity || c.rarity === F.rarity)
+    && (!F.kind || c.category === F.kind)
+    && (!q || ((c.name_en || '') + ' ' + (c.name_ja || '') + ' ' + (c.effect || '') + ' ' + (c.flavor_text || '')).toLowerCase().includes(q)))
+  if (F.sort === 'cost') view.sort((a, b) => (Number(a.cost) || 99) - (Number(b.cost) || 99) || (a.printing_code || '').localeCompare(b.printing_code || ''))
+  else if (F.sort === 'rarity') view.sort((a, b) => rIdx(a.rarity) - rIdx(b.rarity) || (a.printing_code || '').localeCompare(b.printing_code || ''))
+  else if (F.sort === 'name') view.sort((a, b) => (a.name_en || '').localeCompare(b.name_en || ''))
   spread = 0
-  document.querySelectorAll('.ribbon').forEach((r) => r.classList.toggle('on', r.dataset.mode === m))
-  $('drill').innerHTML = DRILLS[m] + ' · ' + view.length + ' cards'
-  if (!first) {
+
+  const bits = []
+  if (F.color) bits.push('<b>' + ELEMENTS[F.color] + '</b>')
+  if (F.cost) bits.push('cost <b>' + F.cost + '</b>')
+  if (F.rarity) bits.push('<b>' + F.rarity + '</b>')
+  if (F.kind) bits.push(F.kind.toLowerCase())
+  if (F.q) bits.push('&#8220;' + F.q + '&#8221;')
+  const sorted = F.sort === 'order' ? '' : ' · ' + $('sort').selectedOptions[0].text
+  $('drill').innerHTML = (bits.length ? bits.join(' · ') : 'the whole album') + ' — ' + view.length + ' card' + (view.length === 1 ? '' : 's') + sorted
+
+  if (!first && sweepColor !== undefined) {
     const sw = $('sweep')
-    sw.style.setProperty('--sweep', GLOWS[m])
+    sw.style.setProperty('--sweep', GLOWS[sweepColor] || GLOWS[''])
     sw.classList.remove('go'); void sw.offsetWidth; sw.classList.add('go')
   }
   render(first ? null : 'pop')
@@ -297,7 +346,7 @@ function render(anim) {
       const [p, label] = pocket(c)
       const cell = document.createElement('div')
       cell.className = 'cell' + (anim === 'pop' ? ' pop' : '')
-      if (anim === 'pop') cell.style.animationDelay = (idx++ * 26) + 'ms'
+      if (anim === 'pop') cell.style.animationDelay = (idx++ * 24) + 'ms'
       cell.appendChild(p)
       const l = document.createElement('div'); l.className = 'plabel'; l.textContent = label
       cell.appendChild(l)
@@ -307,7 +356,7 @@ function render(anim) {
   fill($('pgL'), start)
   if (!isNarrow) fill($('pgR'), start + PER)
   const total = Math.max(1, Math.ceil(view.length / perView()))
-  $('where').textContent = 'spread ' + (spread + 1) + ' of ' + total
+  $('where').textContent = view.length ? 'spread ' + (spread + 1) + ' of ' + total : 'no cards match'
   $('prev').disabled = spread === 0
   $('next').disabled = spread >= total - 1
   const sp = $('spread')
@@ -324,12 +373,31 @@ const turn = (d) => {
 }
 $('prev').addEventListener('click', () => turn(-1))
 $('next').addEventListener('click', () => turn(1))
+
 $('ribbons').addEventListener('click', (e) => {
-  const r = e.target.closest('.ribbon')
-  if (r) applyMode(r.dataset.mode === mode && r.dataset.mode !== 'order' ? 'order' : r.dataset.mode)
+  const r = e.target.closest('.ribbon'); if (!r) return
+  F.color = (r.dataset.color === F.color) ? '' : r.dataset.color
+  document.querySelectorAll('.ribbon').forEach((x) => x.classList.toggle('on', x.dataset.color === F.color))
+  apply(false, F.color)
 })
+$('costs').addEventListener('click', (e) => {
+  const c = e.target.closest('.cost'); if (!c) return
+  F.cost = (c.dataset.cost === F.cost) ? '' : c.dataset.cost
+  document.querySelectorAll('.cost').forEach((x) => x.classList.toggle('on', x.dataset.cost === F.cost))
+  apply(false, F.color)
+})
+$('rarity').addEventListener('change', (e) => { F.rarity = e.target.value; apply(false, F.color) })
+$('kind').addEventListener('change', (e) => { F.kind = e.target.value; apply(false, F.color) })
+$('sort').addEventListener('change', (e) => { F.sort = e.target.value; apply(false, F.color) })
+let deb = null
+$('seek').addEventListener('input', (e) => {
+  clearTimeout(deb)
+  deb = setTimeout(() => { F.q = e.target.value.trim(); apply(false, F.color) }, 220)
+})
+
 window.addEventListener('keydown', (e) => {
   if (document.body.classList.contains('regarding')) { if (e.key === 'Escape') unregard(); return }
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return
   if (e.key === 'ArrowLeft') turn(-1)
   if (e.key === 'ArrowRight') turn(1)
 })
@@ -340,12 +408,6 @@ window.addEventListener('touchend', (e) => {
   const dx = e.changedTouches[0].clientX - tx
   if (Math.abs(dx) > 60 && !document.body.classList.contains('regarding')) turn(dx < 0 ? 1 : -1)
   tx = null
-})
-$('seek').addEventListener('input', (e) => {
-  const q = e.target.value.trim().toLowerCase()
-  if (q.length < 2) return
-  const i = view.findIndex((c) => (c.name_en || '').toLowerCase().includes(q))
-  if (i >= 0) { spread = Math.floor(i / perView()); render('pop') }
 })
 
 function regard(c) {
