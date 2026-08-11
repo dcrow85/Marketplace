@@ -1,6 +1,6 @@
-# Waystone World v0.3 — the village, its folklore, and the companion bond
+# Waystone World v0.4 — the village, its folklore, and the companion bond
 
-status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one)
+status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry)
 scope: the Palworld-facing surface ("Waystone", waystone.town) built on the Cairn protocol.
 This document is register + lore + onboarding law. Protocol semantics live in the
 Protocol_* docs and are unchanged by anything here.
@@ -273,6 +273,69 @@ Not modes to be locked into — emphases. One real fork deserves a control:
 **by card vs by printing.** A player wants one Foxparks with three skins; a
 collector wants three rows because the SR is a different object. Same toggle a
 trader flips to see inventory rather than checklist.
+
+
+## v0.4 — the 32, and the road between villages
+
+### Artisanship is NOT industry (correction to v0.3)
+> **Workshop, not factory. Instrument, not engine.**
+
+Industry is mass, repetition, efficiency. Artisanship is the single thing made
+well. Visible mechanism stays — but for the reason a watch has a display back:
+the movement is BEAUTIFUL, not productive. In: hand-wound coils, fitted brass,
+a latch turned on a lathe, oiled wood, waxed canvas, hand-cut acetate, the
+bookbinder's press, the jeweler's loupe. OUT: conveyors, assembly, smokestacks,
+rivets-as-mass-production. The waystone is an INSTRUMENT (an orrery's cousin,
+tended and precise), never a generator.
+
+### Objects are made in Waystone, and show it
+Possessions carry their origin: boards from village timber, waxed canvas dyed
+with hill moss, brass fittings turned in town, hand-cut sleeves. Stamped,
+numbered, made HERE. The binder is the resident's first possession, issued on
+settling.
+**PROPOSED (awaiting Crowley):** a chip of the waystone set into every binder
+cover — a sliver of the apparatus that warms when something of yours settles.
+It is the strongest "made here" symbol available, it is literally true (your
+record and the stone's are the same rails), and it gives notification a home
+that is not a badge.
+
+### THE 32 (ratified)
+A Palworld dedicated server holds 32. **The town has 32 plots and a known edge.**
+- A real place with a capacity — not an infinite feed of usernames. Everyone can
+  be known; 32 is the actual roster of the hall.
+- Scarcity that is not invented: it is the server's own truth.
+- **The dream: everyone on the server also has a home outside the server.** Your
+  house mirrors your slot; the village is the server's daytime.
+- Empty plots are seats at a table not yet full. The 32nd window completes the
+  town rather than crowding it.
+- BUILD IMPLICATION: paint the village ONCE with all 32 plots present and every
+  window dark; light the windows that are real. The skyline exists from day one,
+  the lights arrive. (Growth-as-lit-windows, v0.3, rendered in one image.)
+
+### Federation: villages, not a city (ratified)
+When a town fills, you do not grow it — **you found another.** Another server,
+another village, its own 32. Villages are interconnected **digitally AND
+physically**, and the connective tissue is the protocol itself: waystones mark
+roads BETWEEN settlements, so each village's stone is a node on the network.
+- Villages differ, and the differences are EARNED not chosen: setting
+  (hillside, lakeside, cliff, ashfield); who lives there (players fill the hall
+  with game tables, collectors fill front rooms with cases, traders run open
+  clasps and full back rooms); age (moss, at town scale); and its stone (every
+  waystone is a different ancient instrument — you would know your own on sight).
+- Visiting is informative: you can see what a town is about before anyone speaks.
+
+### The two ways to shop (both legitimate)
+> **The stone is eBay. The road is the card show.**
+
+- **The stone (query)** — you know what you want. Stand at your own waystone and
+  ask; it answers across every village on the network. This is the dock's
+  "Market": the master storefront, everything for sale, one search.
+- **The road (visit)** — you want to be surprised. Walk into a village, look in
+  windows, meet who is there. Discovery, atmosphere, serendipity.
+Neither pretends to be the other; the resident chooses. Real collectors do both.
+
+### Scope now
+Start with ONE village of 32. Federation is designed-for, not built-yet.
 
 ## Open threads
 
