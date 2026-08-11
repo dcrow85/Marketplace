@@ -372,6 +372,22 @@ where storybook needs to breathe. Corrected:
   conduit taps (not a battery). The village lights its windows from the same
   flow. And the beings carry it inside them. One source, from crater to cabin to
   living body.
+- **THE DWELLINGS ARE SPIRALS (ratified, from first principles).** Not cottages —
+  cottages are OUR world's and were wrong. A dwelling is a coiled wall of stacked
+  volcanic stone spiralling inward like a fern frond or a snail shell (the shape
+  their own ears make), roofed over the coils with salvaged sheet and fern
+  thatch, entered at the open mouth.
+  - **Sited on a vein.** Green surfaces in a crack; the dwelling is built around
+    it. They did not build a hearth, they FOUND one — and that is why each house
+    is where it is. The lit heart is the innermost point, which is also where an
+    archive belongs: mouth public, core private, depth literal.
+  - **You add a coil.** A house grows by one more turn as its keeper stays and
+    accumulates — the append-only law as architecture. A newcomer has a single
+    tight curl; an elder has many wide coils. **Tenure is readable from above**,
+    the same fact the shoulder tally and the unfurled ears already tell.
+  - **Materials the mountain gives:** stacked pumice light enough for small
+    hands, basalt columns as ready-made posts, ash-clay packed in the joints,
+    salvaged sheet, fern thatch.
 - **Residents are lit from within:** a GLOWING GREEN EYE, and a few GREEN TALLY
   MARKS set into the shoulder — the same count the stone keeps. More marks,
   longer here, more kept. Tenure readable on the body, as it is on the stone and
