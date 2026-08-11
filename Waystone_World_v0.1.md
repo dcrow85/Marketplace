@@ -1,6 +1,6 @@
-# Waystone World v0.5 — the village, its folklore, and the companion bond
+# Waystone World v0.6 — the village, its folklore, and the companion bond
 
-status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry. v0.5: contemporary frontier craft, resident-built plots, the append-only village, and agents as the permanent residents)
+status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry. v0.5: contemporary frontier craft, resident-built plots, the append-only village, and agents as the permanent residents. v0.6: the visual language — white-line wood engraving)
 scope: the Palworld-facing surface ("Waystone", waystone.town) built on the Cairn protocol.
 This document is register + lore + onboarding law. Protocol semantics live in the
 Protocol_* docs and are unchanged by anything here.
@@ -337,6 +337,36 @@ Neither pretends to be the other; the resident chooses. Real collectors do both.
 ### Scope now
 Start with ONE village of 32. Federation is designed-for, not built-yet.
 
+
+## v0.6 — THE VISUAL LANGUAGE: light carved out of the dark
+
+**White-line wood engraving.** The image is solid black; every form is revealed
+by fine WHITE CARVED LINES — parallel shading, stipple, contour cuts that follow
+each object. No greys, no gradients, no soft glow.
+
+- **ONE accent: saturated warm gold**, used exclusively for light. A window is a
+  flat gold rectangle; a carried lamp is a gold point; the stone's marks are gold
+  tally strokes. Flat colour beats glow at every size — a gold dot reads at 40px
+  where a soft halo turns to mush.
+- **Beings are solid black silhouettes with a carved WHITE RIM-LIGHT** along the
+  edge, so a black shape stays legible against a black world. Featureless, read
+  entirely by posture. (Presence law, given a technique.)
+- **Scale still told by nature** — ferns arching over rooflines, a pine cone
+  bigger than a cabin.
+- **The medium's logic IS the world's logic:** in this village the only thing
+  that matters is light found in darkness, and in this technique light is
+  literally what you carve.
+- The stone's marks are TALLY STROKES — a count, never a language. No runes, no
+  invented glyphs, anywhere in this world.
+
+**Provenance, recorded honestly:** the search passed through a style-transfer of
+Deth P. Sun's work (a painting Crowley owns), which was too close and was
+quarantined to `art/reference/` and removed from the site. What was kept is
+general and old: vast scale against tiny beings, hard contrast, one vibrant
+colour, silhouette figures. The technique was then deliberately INVERTED — his
+is dark line on a pale ground; ours is light cut from black — into a different
+tradition entirely. His vocabulary (the black cat protagonist, salmon-coral,
+chevron peaks) is his and is not used. Waystone's beings are not cats.
 
 ## v0.5 — contemporary frontier craft, and a village its agents inhabit
 
