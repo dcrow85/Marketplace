@@ -431,6 +431,17 @@ where storybook needs to breathe. Corrected:
   Cute by WEIGHT AND STANCE, never by an oversized head. Chibi (big head, big
   eyes, top-heavy) is the cheap route and is wrong; so is squat (head/body
   distinction collapsed).
+  **VARIANTS ARE PAINTED, NEVER PASTED.** Vector accessories drawn over a painted
+  body always read wrong — flat shapes on brushed paint. The method instead:
+  EDIT THE CANON SHEET once per combination ("show the first creature holding a
+  card AND wearing a satchel"), crop figure one, and let the interface swap
+  between real paintings. Nine states proved it (3 carrying x 3 wearing); the
+  body, proportions and brushwork are identical in every one because they all
+  descend from the same master. Flat green LIGHT may still be drawn (light is
+  flat everywhere in this world); everything material must be painted.
+  Combinations beat extracted layers here: fewer moving parts, no alpha
+  extraction, and every state is verifiable by eye. **This is the same pipeline
+  as the house build loop** — a record, a render, and edits that touch one field.
   **METHOD (proven): the character is a MASTER FILE that gets EDITED, never
   re-prompted.** `art/canon/CHARACTER-MASTER.png` is canon; variants are made
   with the image-edit model changing one thing and preserving every other pixel.
