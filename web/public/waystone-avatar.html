@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e6e3dc">
+<title>Waystone — the maker's bench</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  :root { --bone: #e7e4dd; --ink: #17181a; --green: #7fe07a; --dim: #8a8578; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; background: #101112; }
+  body { font: 12.5px "IBM Plex Mono", ui-monospace, monospace; color: var(--dim);
+    display: grid; place-items: start center; padding: 20px 12px 48px; }
+  .wrap { width: min(1080px, 100%); }
+  h1 { font: italic 500 20px "Spectral", serif; color: #efe9dc; margin: 0 0 3px; text-align: center; }
+  .sub { text-align: center; opacity: .8; margin-bottom: 18px; }
+
+  .bench { display: grid; grid-template-columns: minmax(280px, 420px) 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 760px) { .bench { grid-template-columns: 1fr; } }
+
+  /* ── the panel: painted bone ground, the creature standing on it ── */
+  .panel { position: relative; background: var(--bone); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 14px 40px rgba(0,0,0,.55), inset 0 0 60px rgba(120,110,90,.10); aspect-ratio: 215/380; }
+  .panel img.body { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .panel svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  /* patches sample the artwork's OWN pixels so painted texture is preserved */
+  .patch { position: absolute; overflow: hidden; }
+  .patch img { position: absolute; display: block; }
+  .pearL, .pearR { top: 16.8%; width: 19.5%; height: 11.05%; display: none; }
+  .pearL { left: 26.0%; } .pearR { left: 54.4%; }
+  .pearL img, .pearR img { width: 511.9%; height: 904.8%; left: -19%; top: -33.3%; }
+  .pchest { left: 38.1%; top: 51.05%; width: 29.8%; height: 10.5%; }
+  .pchest img { width: 335.9%; height: 950%; left: -109.4%; top: -237.5%; }
+  .cap { text-align: center; margin-top: 8px; font: italic 500 13px "Spectral", serif; color: #b9b2a2; }
+  .cap b { font-style: normal; font-weight: 500; color: #cfc8b6; }
+
+  /* ── controls ── */
+  .rack { display: grid; gap: 12px; }
+  .grp { background: #191a1b; border: 1px solid rgba(231,228,221,.12); border-radius: 10px; padding: 11px 12px 12px; }
+  .grp h2 { font: 500 10px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase;
+    color: #6f6a5e; margin: 0 0 8px; }
+  .opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  button { font: inherit; font-size: 11.5px; cursor: pointer; padding: 6px 11px; border-radius: 7px;
+    background: #202122; color: #b9b2a2; border: 1px solid rgba(231,228,221,.14); }
+  button:hover { background: #2a2b2c; color: #ddd6c6; }
+  button.on { background: var(--green); border-color: var(--green); color: #10210f; font-weight: 500; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .roll { background: #2b2c2d; color: #efe9dc; padding: 9px 16px; }
+  .name { font: italic 500 15px "Spectral", serif; background: transparent; border: 0;
+    border-bottom: 1px dashed rgba(231,228,221,.3); color: #efe9dc; padding: 3px 2px; width: 190px; }
+  .name::placeholder { color: #6f6a5e; }
+  .note { font-size: 10.5px; color: #6f6a5e; line-height: 1.6; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The maker&rsquo;s bench</h1>
+  <div class="sub">the bear is the species &mdash; identity lives in what they carry, wear and have kept</div>
+
+  <div class="bench">
+    <div>
+      <div class="panel" id="panel">
+        <img class="body" src="waystone-art/avatar-body.png" alt="a resident of Waystone"
+          onerror="if((this.dataset.r|0)<6){this.dataset.r=(this.dataset.r|0)+1;const s=this.src.split('?')[0];setTimeout(()=>{this.src=s+'?r='+this.dataset.r},600*this.dataset.r)}">
+        <!-- overlays: viewBox matches the crop so coordinates are stable -->
+        <div class="patch pchest"><img src="waystone-art/avatar-body.png" alt=""></div>
+        <svg viewBox="0 0 215 380" id="ov" aria-hidden="true"></svg>
+      </div>
+      <div class="cap" id="cap"></div>
+    </div>
+
+    <div class="rack">
+      <div class="grp"><h2>carrying</h2><div class="opts" id="hold"></div></div>
+      <div class="grp"><h2>wearing</h2><div class="opts" id="wear"></div></div>
+      <div class="grp"><h2>tally &mdash; seasons kept</h2><div class="opts" id="tally"></div>
+        <div class="note">The same count the stone keeps. More marks, longer here.</div></div>
+      <div class="grp"><h2>name</h2>
+        <div class="row">
+          <input class="name" id="nm" placeholder="name them&hellip;" maxlength="22">
+          <button class="roll" id="roll">roll a resident</button>
+        </div>
+        <div class="note">Nothing here is saved yet &mdash; this is a bench for playing, not a profile.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const G = '#7fe07a', K = '#17181a', BONE = '#e7e4dd';
+// the head sits roughly x 55–160, y 75–175 in the 215×380 crop; ears cap at y≈78
+const EARS = {
+  bear:   { label: 'bear (canon)', d: null },
+  rabbit: { label: 'rabbit', d: `<path d="M78 104 q-9-54 3-60 q13-3 14 58z" fill="${K}"/><path d="M137 104 q9-54-3-60 q-13-3-14 58z" fill="${K}"/>` },
+  point:  { label: 'pointed', d: `<path d="M74 106 l3-32 23 22z" fill="${K}"/><path d="M141 106 l-3-32 -23 22z" fill="${K}"/>` },
+  wide:   { label: 'wide', d: `<ellipse cx="72" cy="94" rx="19" ry="16" fill="${K}"/><ellipse cx="143" cy="94" rx="19" ry="16" fill="${K}"/>` },
+  fold:   { label: 'folded', d: `<path d="M76 92 q-18 2-15 24 q16 6 22-10z" fill="${K}"/><path d="M139 92 q18 2 15 24 q-16 6-22-10z" fill="${K}"/>` },
+  none:   { label: 'barely any', d: `` },
+};
+const HOLD = {
+  none:  { label: 'nothing', d: '' },
+  card:  { label: 'a card', d: `<rect x="86" y="236" width="43" height="58" rx="3" fill="#f4f1e8" stroke="${K}" stroke-width="2.5"/><rect x="91" y="242" width="33" height="33" rx="2" fill="${G}" opacity=".5"/><line x1="91" y1="282" x2="118" y2="282" stroke="${K}" stroke-width="2" opacity=".4"/>` },
+  lamp:  { label: 'a lamp', d: `<line x1="150" y1="196" x2="150" y2="214" stroke="${K}" stroke-width="3"/><rect x="140" y="214" width="21" height="26" rx="4" fill="${K}"/><rect x="145" y="220" width="11" height="15" rx="2" fill="${G}"/><circle cx="150" cy="228" r="17" fill="${G}" opacity=".13"/>` },
+  jar:   { label: 'a jar', d: `<rect x="86" y="206" width="43" height="52" rx="7" fill="none" stroke="${K}" stroke-width="3"/><rect x="93" y="228" width="29" height="26" rx="4" fill="${G}" opacity=".6"/><rect x="92" y="199" width="31" height="8" rx="3" fill="${K}"/>` },
+  tool:  { label: 'a tool', d: `<line x1="72" y1="252" x2="128" y2="196" stroke="${K}" stroke-width="6" stroke-linecap="round"/><path d="M124 192 l14-6 -6 14z" fill="${K}"/>` },
+  page:  { label: 'a folded page', d: `<path d="M78 200 l58 6 -6 62 -56-8z" fill="#f4f1e8" stroke="${K}" stroke-width="3"/><path d="M88 220 h34 M88 234 h30 M88 248 h22" stroke="${K}" stroke-width="2.5" opacity=".5"/>` },
+};
+const WEAR = {
+  none:   { label: 'nothing', d: '' },
+  satchel:{ label: 'satchel', d: `<path d="M62 168 q46 26 92 0" stroke="${K}" stroke-width="6" fill="none"/><rect x="128" y="212" width="44" height="38" rx="7" fill="${K}"/><rect x="128" y="212" width="44" height="12" rx="5" fill="#2e3033"/><rect x="146" y="226" width="8" height="10" rx="2" fill="${G}" opacity=".8"/>` },
+  belt:   { label: 'tool belt', d: `<rect x="52" y="250" width="112" height="15" rx="6" fill="#2e3033"/><rect x="98" y="250" width="18" height="15" rx="4" fill="${K}"/><rect x="66" y="262" width="9" height="19" rx="3" fill="${K}"/><rect x="136" y="262" width="9" height="19" rx="3" fill="${K}"/>` },
+  scarf:  { label: 'scarf', d: `<path d="M60 176 q47 24 95 0 l4 16 q-51 26-103 0z" fill="#2e3033"/><path d="M140 190 l14 40 -16 4z" fill="#2e3033"/>` },
+  apron:  { label: 'apron', d: `<path d="M74 190 h67 l10 96 q-44 12-87 0z" fill="#2e3033" opacity=".9"/><path d="M74 190 q34-14 67 0" stroke="#2e3033" stroke-width="5" fill="none"/><rect x="96" y="236" width="24" height="18" rx="3" fill="#1f2123"/>` },
+  lantern:{ label: 'shoulder lantern', d: `<rect x="150" y="176" width="16" height="20" rx="4" fill="${K}"/><rect x="154" y="181" width="8" height="11" rx="2" fill="${G}"/><circle cx="158" cy="186" r="15" fill="${G}" opacity=".13"/>` },
+};
+const state = { ears: 'bear', hold: 'none', wear: 'none', tally: 3, name: '' };
+
+function tallyMarks(n) {
+  // gate tally at the chest: groups of five, four uprights and a crossbar
+  let out = '', x = 88 - Math.min(n, 5) * 3;
+  for (let i = 0; i < n; i++) {
+    const g = Math.floor(i / 5), k = i % 5;
+    const bx = 82 + g * 22;
+    if (k < 4) out += `<line x1="${bx + k * 5}" y1="208" x2="${bx + k * 5}" y2="226" stroke="${G}" stroke-width="3.4" stroke-linecap="round"/>`;
+    else out += `<line x1="${bx - 3}" y1="226" x2="${bx + 19}" y2="207" stroke="${G}" stroke-width="3.4" stroke-linecap="round"/>`;
+  }
+  return out;
+}
+
+function draw() {
+  document.getElementById('ov').innerHTML = tallyMarks(state.tally) + WEAR[state.wear].d + HOLD[state.hold].d;
+  const bits = [];
+  if (state.hold !== 'none') bits.push('carrying ' + HOLD[state.hold].label.replace(/^an? /, ''));
+  if (state.wear !== 'none') bits.push('wearing a ' + WEAR[state.wear].label);
+  document.getElementById('cap').innerHTML =
+    (state.name ? `<b>${state.name.replace(/[<>&]/g, '')}</b> &mdash; ` : '') +
+    `${state.tally} season${state.tally === 1 ? '' : 's'} kept` + (bits.length ? ' &middot; ' + bits.join(' &middot; ') : '');
+}
+
+function rack(id, obj, key) {
+  const host = document.getElementById(id);
+  host.innerHTML = '';
+  for (const [k, v] of Object.entries(obj)) {
+    const b = document.createElement('button');
+    b.textContent = v.label; b.dataset.k = k;
+    b.className = state[key] === k ? 'on' : '';
+    b.onclick = () => { state[key] = k; rack(id, obj, key); draw(); };
+    host.appendChild(b);
+  }
+}
+const tallyRack = () => {
+  const host = document.getElementById('tally'); host.innerHTML = '';
+  for (let n = 1; n <= 12; n++) {
+    const b = document.createElement('button');
+    b.textContent = n; b.className = state.tally === n ? 'on' : '';
+    b.onclick = () => { state.tally = n; tallyRack(); draw(); };
+    host.appendChild(b);
+  }
+};
+const pick = (o) => { const k = Object.keys(o); return k[Math.floor(Math.random() * k.length)] };
+const NAMES = ['Mull','Pell','Bramble','Quill','Tuck','Nettle','Sorrel','Wick','Fen','Rill','Cobble','Ash','Vetch','Moss','Tally','Hollow'];
+document.getElementById('roll').onclick = () => {
+  state.hold = pick(HOLD); state.wear = pick(WEAR);
+  state.tally = 1 + Math.floor(Math.random() * 12);
+  state.name = NAMES[Math.floor(Math.random() * NAMES.length)];
+  document.getElementById('nm').value = state.name;
+  rack('hold', HOLD, 'hold'); rack('wear', WEAR, 'wear'); tallyRack(); draw();
+};
+document.getElementById('nm').oninput = (e) => { state.name = e.target.value; draw(); };
+
+rack('hold', HOLD, 'hold'); rack('wear', WEAR, 'wear'); tallyRack(); draw();
+</script>
+</body>
+</html>
