@@ -1,6 +1,6 @@
-# Waystone World v0.4 — the village, its folklore, and the companion bond
+# Waystone World v0.5 — the village, its folklore, and the companion bond
 
-status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry)
+status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry. v0.5: contemporary frontier craft, resident-built plots, the append-only village, and agents as the permanent residents)
 scope: the Palworld-facing surface ("Waystone", waystone.town) built on the Cairn protocol.
 This document is register + lore + onboarding law. Protocol semantics live in the
 Protocol_* docs and are unchanged by anything here.
@@ -337,6 +337,92 @@ Neither pretends to be the other; the resident chooses. Real collectors do both.
 ### Scope now
 Start with ONE village of 32. Federation is designed-for, not built-yet.
 
+
+## v0.5 — contemporary frontier craft, and a village its agents inhabit
+
+### Aesthetic correction #2: we escaped medieval and landed in steampunk
+Brass collars, copper pipe, Victorian frontier — another rented costume. Keep the
+frontier SPIRIT (self-reliance, handmade, edge of the known, everything in its
+place); drop the period.
+
+> **CONTEMPORARY FRONTIER CRAFT. Not 1890. Now.**
+
+Blackened steel, plywood and raw timber, waxed canvas, glass, corrugated metal,
+rope, concrete, warm-tuned LED. The register of a modern off-grid homestead, a
+mountain workshop, a small-batch maker's shed, a research station at the edge of
+somewhere. Present-day materials, handmade care.
+
+**The waystone, re-bodied:** an ancient stone with MODERN PRECISION
+INSTRUMENTATION attached — machined aluminium collars, matte black fittings, a
+small clean readout, fibre threaded into the rock. The way a real team monitors
+a megalith they do not fully understand. Ancient object, contemporary listening
+— which is the truest possible picture of Cairn: a modern protocol carefully
+attached to something very old, human trust.
+
+### Residents build their own plots (the generative layer)
+The AI-anxiety knot, untied: **art direction is authored; personal expression is
+the resident's.** The world's palette, material language, building grammar and
+canonical objects are CRAFTED (ideally commissioned from a community artist).
+What a resident makes on their own plot is theirs, generated from their words
+inside the world's constraint — you cannot build a neon tower because this world
+has no neon. The constraint is why 32 strangers still produce one coherent place.
+(Nobody thinks a Minecraft player replaced an artist.)
+
+- **The companion builds it WITH you.** This is the whisperer's first real job:
+  it knows the local style and has opinions ("canvas, not tin — nobody here uses
+  tin"). Building is a conversation with a craftsman who lives here, over days,
+  piece by piece — a relationship, not a prompt box. The most honest use of the
+  technology: ordinary people able to make things, in a world with taste.
+- **Tokens: EARNED AND PURCHASABLE (ratified).** Earned from recorded activity
+  (settled trades, scans contributed, catalogue work) so a house is built out of
+  participation; purchasable so a newcomer can make something real on day one
+  and so generation costs are honestly covered. **Patina/wear stays strictly
+  earned — never purchasable.**
+- Real quality control is not a rule: your house is visible to your neighbours
+  forever.
+
+### THE APPEND-ONLY VILLAGE (the pond law)
+From the Japanese practice of building AROUND what is there — a pond instead of
+a demolition — so beauty and history stay intact as a thing evolves.
+**You never demolish. You only add.** A lean-to, a second storey, a garden built
+around the tree that was already growing; the old parts stay visible. A house's
+SHAPE IS ITS HISTORY — you can read how long someone has been here and what they
+came to care about. This is the same law as the waystone's marks and the moss:
+nothing in this world is rewritten, only added to, and the past stays legible.
+
+### Agents are the permanent residents (ratified)
+**The humans visit; the companions live here.** At 3am the village is not empty —
+thirty-two small lights move between the houses running errands for sleeping
+people. (This retroactively explains the wisps on the path: those wandering
+lights are other residents' companions, out on business.)
+
+- **This replaces the notification treadmill.** No badges, no streaks, no pings.
+  The village kept living while you were gone and has news when you return.
+  Calm technology's answer to "why come back".
+- **HARD LIMIT: agents make INTRODUCTIONS, not trades.** Your companion learns
+  you are hunting a printing; a neighbour's companion knows their human has a
+  spare; by morning there is a note on your bench naming the possibility. The
+  match is surfaced, the deal stays human — capability, never authority. The
+  agents are the village's gossip network, which is what a small town's social
+  fabric actually is.
+- **NEVER MORE AGENTS THAN RESIDENTS.** Every light out there belongs to a real
+  person. The village is populated by representatives, never by phantoms
+  (the no-fake-neighbours law, extended).
+
+### The commons, and proxy voting
+Common spaces (the hall, the well, the road, the stone) carry real decisions:
+what gets built there, where the road goes next, who takes a plot when someone
+leaves. A resident's agent may hold their proxy under the standing law:
+**it DRAFTS the vote from what it knows of you, shows you the draft, and silence
+lets it stand** — your voice, never its own, always reversible before the tally
+closes.
+
+**CAUTION (recorded deliberately):** "community token" pulls hard toward crypto
+and almost nothing here needs a chain. A village pool of build-credits — earned
+by participation, spent by vote — is a LEDGER, and this project already is one.
+Build it as a ledger; tokenise only if something appears that a token solves and
+a ledger cannot. Otherwise we import the culture this work was designed against.
+
 ## Open threads
 
 - Pixel-corner mock (waystone + notice board, night-forest palette, one hi-res
@@ -345,8 +431,9 @@ Start with ONE village of 32. Federation is designed-for, not built-yet.
   (no hover on phones).
 - Species name: "whisperers" is a working title.
 - Guest catalogue = the Great Binder at the inn — the first door to build for real.
-- Concept paintings (village, inn, board) were generated against the OLD medieval
-  brief and must be regenerated against the v0.3 material language.
+- Concept paintings must be regenerated AGAIN against v0.5 (contemporary frontier
+  craft): no brass/copper period fittings, no invented runes or signage, all
+  windows dark but the real ones, and the full 32-plot layout.
 - How loud is the industry? Leaning early-electric workshop (filament bulbs,
   cloth wire, small motors) over pre-electric or full frontier-industrial.
 - Cosmetics: aging/patina is EARNED (recorded activity, same law as the
