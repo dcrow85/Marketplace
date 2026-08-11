@@ -414,6 +414,30 @@ SHAPE IS ITS HISTORY — you can read how long someone has been here and what th
 came to care about. This is the same law as the waystone's marks and the moss:
 nothing in this world is rewritten, only added to, and the past stays legible.
 
+### How residents are RENDERED (the category error, corrected)
+Designing the creature as a portrait was the wrong artifact. At village scale a
+cat-sized resident is ~40px tall: fiddlehead ears, chest-ember detail, fur and
+aprons do not exist there. And generation is excellent at ENVIRONMENTS and bad
+at CONSISTENT CHARACTERS — the same resident must recur across many frames and
+look like itself, which is exactly where this pipeline fails and where a human
+artist is irreplaceable.
+
+> **Presence is silhouette and carried light. You never see them clearly.**
+
+- **World scale:** small dark rounded shapes with a warm ember at the chest — in
+  lit windows, on veranda rails, and as points of carried light moving along the
+  lane at 3am. Legible at any size, animatable, cheap, and consistent BECAUSE it
+  is simple. (This is why the wisp always worked.)
+- **Close scale:** the full creature appears only inside its own house or when it
+  speaks to you directly.
+- **The lore already licensed this:** the first whisperer anyone sees fully is
+  their own. So no species sheet is required to build — only a silhouette
+  language and, eventually, ONE COMMISSIONED REVEAL IMAGE for the moment a
+  companion takes form. That is a single beautiful thing an artist can make,
+  not a sprite sheet.
+- Verified by test renders (the hall, the lane): the creatures work when they are
+  NOT the subject. The scene carries the feeling; they inhabit it.
+
 ### Agents are the permanent residents (ratified)
 **The humans visit; the companions live here.** At 3am the village is not empty —
 thirty-two small lights move between the houses running errands for sleeping
