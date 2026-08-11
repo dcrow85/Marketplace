@@ -337,7 +337,7 @@
   <button class="lensx" id="lensx">&#10005; close</button>
   <div class="duo">
     <div class="cardcol">
-      <img class="card" id="lensCard" src="" alt="">
+      <img class="card" id="lensCard" src="" alt="" onerror="if((this.dataset.r|0)<5){this.dataset.r=(this.dataset.r|0)+1;const s=this.src.split('?')[0];setTimeout(()=>{this.src=s+'?r='+this.dataset.r},700*this.dataset.r)}">
       <div class="prints" id="fPrints"></div>
     </div>
     <div class="dossier" id="dossier">
