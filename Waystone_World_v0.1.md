@@ -431,6 +431,15 @@ where storybook needs to breathe. Corrected:
   Cute by WEIGHT AND STANCE, never by an oversized head. Chibi (big head, big
   eyes, top-heavy) is the cheap route and is wrong; so is squat (head/body
   distinction collapsed).
+  **PAINT WITH CARE, AND CHAIN THE EDITS.** Two refinements learned building the
+  bench: (a) describe an accessory as a MADE OBJECT — its material, construction,
+  how it hangs, how the hands hold it — and forbid the digital tells (gradients,
+  gloss, vector-sharp edges, drop shadows); a "satchel" gives a grey blob, "a
+  small satchel of dark waxed canvas hanging at the hip on a strap across the
+  chest, soft flap, dull buckle, hanging with weight" gives a bag. State SIZE and
+  POSITION explicitly or objects balloon over the face. (b) NEVER ask one edit
+  for two additions — the model honours one and drops the other. CHAIN instead:
+  edit the card version to add the satchel, so every edit does exactly one job.
   **VARIANTS ARE PAINTED, NEVER PASTED.** Vector accessories drawn over a painted
   body always read wrong — flat shapes on brushed paint. The method instead:
   EDIT THE CANON SHEET once per combination ("show the first creature holding a
