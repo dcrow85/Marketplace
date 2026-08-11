@@ -1,6 +1,6 @@
-# Waystone World v0.6 — the village, its folklore, and the companion bond
+# Waystone World v0.7 — the village, its folklore, and the companion bond
 
-status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry. v0.5: contemporary frontier craft, resident-built plots, the append-only village, and agents as the permanent residents. v0.6: the visual language — white-line wood engraving)
+status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one. v0.4: the 32, federation, the two ways to shop, artisanship != industry. v0.5: contemporary frontier craft, resident-built plots, the append-only village, and agents as the permanent residents. v0.6-0.7: the visual language — painted panel, foxfire green)
 scope: the Palworld-facing surface ("Waystone", waystone.town) built on the Cairn protocol.
 This document is register + lore + onboarding law. Protocol semantics live in the
 Protocol_* docs and are unchanged by anything here.
@@ -338,7 +338,29 @@ Neither pretends to be the other; the resident chooses. Real collectors do both.
 Start with ONE village of 32. Federation is designed-for, not built-yet.
 
 
-## v0.6 — THE VISUAL LANGUAGE: light carved out of the dark
+## v0.7 — THE VISUAL LANGUAGE (current): painted panel, foxfire green
+
+Engraving (v0.6, below) was beautiful but TOO BUSY — every square inch worked,
+where storybook needs to breathe. Corrected:
+
+- **Painted on a wood panel**, grain showing through matte paint.
+- **Big calm flat shapes, generous empty space, sparing line detail.** Not dense,
+  not intricate. Naive storybook charm.
+- **Palette: pale bone-grey ground, flat black, white, and ONE accent —
+  BIOLUMINESCENT FOXFIRE GREEN.** Light that GROWS rather than burns; forest-
+  native, faintly uncanny, and nobody else's. (Coral was Deth P. Sun's; gold was
+  every cozy game's.)
+- **WHIMSY IS REQUIRED.** A being hauling a card twice its size up a path is the
+  register: small, sweet, slightly absurd, tender.
+- **NO HUMAN FIGURES ANYWHERE, EVER.** Only the beings. (Human-ish figures crept
+  into the engraved village lane; they are wrong.)
+- **The species marker in silhouette is the CURLED SPIRAL FIDDLEHEAD EAR** — it
+  reads at any size and can never be mistaken for a cat (which matters doubly:
+  a black cat is Deth P. Sun's character).
+- Kept from earlier: scale told by nature, presence by silhouette, tally strokes
+  never glyphs, purpose before decoration.
+
+## v0.6 — earlier: light carved out of the dark (superseded, kept for reference)
 
 **White-line wood engraving.** The image is solid black; every form is revealed
 by fine WHITE CARVED LINES — parallel shading, stipple, contour cuts that follow
