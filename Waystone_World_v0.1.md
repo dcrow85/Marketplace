@@ -424,6 +424,18 @@ where storybook needs to breathe. Corrected:
   creature, which also makes a 32-house village read varied for free.
   **CONSTANT:** rounded black body, tiny hands and feet, two glowing green dot
   eyes, green chest tally marks (the life force is universal).
+  **PROPORTION IS THE WHOLE TRICK: THE WEIGHT SITS LOW.** Head only ~40% of
+  total height; pear-shaped body widening toward the base; figure slightly
+  taller than wide; small ears (~1/5 head width); small dot eyes set wide and
+  high; arms as nubs; tiny short feet so the body nearly meets the ground.
+  Cute by WEIGHT AND STANCE, never by an oversized head. Chibi (big head, big
+  eyes, top-heavy) is the cheap route and is wrong; so is squat (head/body
+  distinction collapsed).
+  **METHOD (proven): the character is a MASTER FILE that gets EDITED, never
+  re-prompted.** `art/canon/CHARACTER-MASTER.png` is canon; variants are made
+  with the image-edit model changing one thing and preserving every other pixel.
+  Two attempts to improve it by fresh prompting degraded it in opposite
+  directions; an edit pass changed only the ears and kept everything else exact.
   **WHY THE SIMPLE SHEET WORKS (studied, and now law):**
   (1) the creature is SMALL IN FRAME with generous empty air around it;
   (2) the black is PAINTED — brush texture and panel showing through, never a
