@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waystone — the body, at resolution</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box} html,body{margin:0;min-height:100%;background:#101112}
+  body{font:12.5px "IBM Plex Mono",monospace;color:#8a8578;display:grid;place-items:start center;padding:22px 12px 48px}
+  h1{font:italic 500 20px "Spectral",serif;color:#efe9dc;margin:0 0 4px;text-align:center}
+  .sub{text-align:center;opacity:.8;margin-bottom:20px}
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;max-width:900px;width:100%}
+  figure{margin:0;background:#191a1b;border:1px solid rgba(231,228,221,.12);border-radius:10px;padding:12px}
+  img{width:100%;display:block;border-radius:6px}
+  figcaption{margin-top:10px;font:italic 500 13px/1.55 "Spectral",serif;color:#a49b8c}
+  figcaption b{display:block;font-style:normal;font:500 11px "IBM Plex Mono",monospace;color:#7fe07a;letter-spacing:.08em;margin-bottom:3px}
+</style></head><body>
+<h1>The body, at resolution</h1>
+<div class="sub">upscaled from canon &mdash; versus a fresh render of the same brief</div>
+<div class="two">
+  <figure><img src="waystone-art/body-hires.png" alt="the canon body upscaled"
+    onerror="if((this.dataset.r|0)<6){this.dataset.r=(this.dataset.r|0)+1;const s=this.src.split('?')[0];setTimeout(()=>{this.src=s+'?r='+this.dataset.r},600*this.dataset.r)}">
+    <figcaption><b>upscaled from canon &mdash; keep</b>The exact design at full resolution, and better painted than the original: brush texture in the black, eyes properly glowing, the pear body and low weight intact, and a small spiral worked into each ear.</figcaption></figure>
+  <figure><img src="waystone-art/body-fresh.png" alt="a fresh render of the same brief"
+    onerror="if((this.dataset.r|0)<6){this.dataset.r=(this.dataset.r|0)+1;const s=this.src.split('?')[0];setTimeout(()=>{this.src=s+'?r='+this.dataset.r},600*this.dataset.r)}">
+    <figcaption><b>fresh render &mdash; drifted</b>Same brief, written as precisely as I know how. Flatter, ears detached into circles, eyes shrunk, body reshaped. The design has no drift-resistance in a fresh generation.</figcaption></figure>
+</div>
+</body></html>
