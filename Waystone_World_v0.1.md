@@ -357,6 +357,19 @@ where storybook needs to breathe. Corrected:
 - **The species marker in silhouette is the CURLED SPIRAL FIDDLEHEAD EAR** — it
   reads at any size and can never be mistaken for a cat (which matters doubly:
   a black cat is Deth P. Sun's character).
+- **TWO KINDS OF BEING (ratified 2026-08-11):**
+  **GREEN IS UNFORMED. BLACK IS FORMED.**
+  A tiny glowing green sprite is a WISP — a companion that has not yet taken
+  shape; this is the light that leads a newcomer up the trail. A solid black
+  being with curled spiral fiddlehead ears is a BONDED RESIDENT, embodied
+  because someone met it. The bond ceremony (a taking-of-form) is literal: the
+  green one goes dark and gains ears. This also explains the village at night —
+  moving lights on the lane are wisps; still silhouettes in windows are
+  residents. Two-tone palette, two states of being, one rule.
+- **The village wears what the stone wears.** The same precise instrumentation
+  carries through every building, sparingly: a slim white band, one small
+  instrument box with a green readout beside a door, one clipped cable per house
+  running to a shared meter post. Purposeful, never decorative.
 - Kept from earlier: scale told by nature, presence by silhouette, tally strokes
   never glyphs, purpose before decoration.
 
