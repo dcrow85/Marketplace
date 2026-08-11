@@ -1,6 +1,6 @@
-# Waystone World v0.2 — the village, its folklore, and the companion bond
+# Waystone World v0.3 — the village, its folklore, and the companion bond
 
-status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2 same day: inn-first beats, the wisp, the Great Binder, ease-first navigation)
+status: ratified in conversation, Crowley + Claude, 2026-08-10 (v0.2: inn-first beats, the wisp, the Great Binder, ease-first navigation. v0.3: material language, calm technology, live-work houses, the village of one)
 scope: the Palworld-facing surface ("Waystone", waystone.town) built on the Cairn protocol.
 This document is register + lore + onboarding law. Protocol semantics live in the
 Protocol_* docs and are unchanged by anything here.
@@ -166,6 +166,114 @@ fifth element of navigation — the one you talk to, present in the dock
 everywhere. The village remains the home screen and the place ceremonies
 happen; daily work is never more than two taps deep.
 
+
+## v0.3 — the material language, and what kind of place this is
+
+### The drift, named and corrected
+The work was sliding toward GENERIC MEDIEVAL FANTASY — parchment, quills, wax
+seals, gold leaf, tankards, "the maker's order." That is rented atmosphere and
+it is wrong for a world adjacent to Palworld, which is **ancient technology plus
+frontier artisanship**: handmade machines, riveted plate, relics nobody fully
+understands, cute creatures beside conveyor belts.
+
+**Waystone's own material language — crafted, thoughtful, handmade:**
+
+| out (generic medieval) | in (Waystone) |
+|---|---|
+| parchment + quill script | index cards, typed labels, grease pencil, punched tags |
+| wax seals, gold leaf | stamped metal tags, etched plates, screen-print |
+| oil lantern | filament bulb in a wire cage — same amber, honest current |
+| leather tome, brass clasps | field album: canvas and steel, riveted corners, acetate sleeves, machined latch |
+| rune-carved mystic stone | **the waystone as APPARATUS** (below) |
+| tavern with tankards | the hall: steel-topped tables, woodstove, tools on the wall, enamel mugs, a sorting bench |
+| "sought", "the maker's order" | workshop voice: catalogued, held, wanted, on the shelf |
+
+**Visible machinery is not hidden — it is accented.** Mechanism on show is part
+of what makes artisanship beautiful. Nothing is concealed behind a smooth
+casing; everything is finished because someone cared, not because it hides.
+
+**THE WAYSTONE IS A MACHINE (ratified).** Not a magic rock: an ancient
+apparatus. Stone core, brass collars, conduit into the ground, marks that light
+because something is being RECORDED, a counter that turns when a trade settles.
+This is Palworld's own recipe (old relic tech + handmade industry) and it is
+truer to Cairn: a protocol is a machine that remembers. Reserved second meaning:
+a waystone marks a road — ours also points OUT, to the island (a future portal
+to Palworld servers the village runs).
+
+### Calm technology (constitution-grade)
+**Lit, not glowing.** Everything on screen must look like an object RECEIVING
+warm light, never like a light source demanding attention. The user is escaping
+the jarring glare of screens; technology here highlights and helps, it does not
+shout.
+- No pure white, no saturated UI chrome, no red badges, no nagging counters.
+- Motion only where it carries meaning (the recede, the settle). Ambient life
+  stays slow, dim, and out of the working area. The binder holds still.
+- **The world never flashes** (no blank frames, no rebuild blinks — content
+  swaps only after it is ready).
+- The companion NEVER interrupts. It waits to be asked, or leaves a note to be
+  found later. A whisper is leaned toward, not pushed.
+
+### Placed with care (the artisan law)
+Every element must read as HAVING BEEN PLACED by a person. Testable: no
+infinite scroll (things have ends), no filler grids, no orphaned controls,
+empty states designed rather than apologetic. Irregularity (a tilted slip, a
+worn corner) must read as a hand, never as noise.
+
+### The village of one (honest population)
+Waystone currently has ONE resident. That is a real and beautiful state: one
+window lit on a dark hill, the hall's stove going, the album open on the bench.
+- **NO FAKE NEIGHBOURS.** Cairn's mock sellers / rehearsal tables must NOT be
+  carried into Waystone; simulated population would be a lie told in the exact
+  register this place exists to avoid.
+- Growth renders as **lit windows**, not a user counter. New residents make the
+  skyline fill in.
+- The village must look RIGHT at 1–5 people, not broken until it has 100.
+
+### Live-work houses (no shop district)
+Everyone has a house; commerce and collection share it.
+- **Front room, facing the street**: display cases (as many as the collector
+  wants — ten grails, ten cases), shelves, and any binders left open. Public.
+- **Back room**: stock, duplicates, works in progress. Private, and physically
+  so — nobody browses it.
+- **A shop is a binder with an open clasp.** Moving a thing into a browsable
+  binder is the whole listing mechanic; there is no separate "listing" concept.
+- The display case is for the ONE (or the ten): singular, lit, regarded.
+  The binder is for the MANY: leafable, browsable, tradeable.
+
+### Beyond cards: the shelf takes things
+Waystone is not limited to the card game. Figures, plushes, sealed product,
+promo items — the whole world Palworld is building. This is a HOMECOMING: the
+underlying protocol was always for physical goods, narrowed to cards. Two
+honestly-marked tiers:
+- **Catalogued things** — in the register, canonical (Palify's printings).
+- **Attested things** — no register exists; the owner brings it, photographs it,
+  and the village records THEIR CLAIM, plainly marked as theirs. Same evidence
+  discipline as Protocol_Catalog_Evidence.
+Display, sell, or trade — the resident decides.
+
+### The Great Binder, settled
+There IS one authoritative binding — the canonical order, the village register,
+the thing you can point at. It is the default and always one tap away.
+**Sorting is a lens applied over it, never a change to the record.** A
+collector's own binder inherits the same register with their marks laid over it.
+Binder density is a free choice (3x3 / 4x3 / 4x4; mobile 2x3, single page,
+swipe) because the true address of a card is its PRINTING CODE, not its page
+position.
+
+### Marking, binder-native
+- The empty pocket IS a passive want (the gaps are the wantlist).
+- A TAB is the active hunt — "I am looking for this one" — and tabs are what go
+  public to the room. Tabs stick past the page edge, so a binder full of hunts
+  shows its tabs along the fore-edge when closed.
+- Two paths: the card's page carries the obvious marks (discoverable); a corner
+  tab on hover / long-press marks fast without opening anything.
+
+### Players, collectors, traders
+Not modes to be locked into — emphases. One real fork deserves a control:
+**by card vs by printing.** A player wants one Foxparks with three skins; a
+collector wants three rows because the SR is a different object. Same toggle a
+trader flips to see inventory rather than checklist.
+
 ## Open threads
 
 - Pixel-corner mock (waystone + notice board, night-forest palette, one hi-res
@@ -174,4 +282,9 @@ happen; daily work is never more than two taps deep.
   (no hover on phones).
 - Species name: "whisperers" is a working title.
 - Guest catalogue = the Great Binder at the inn — the first door to build for real.
-- The inn common-room study (fire, tables, shoulder-silhouettes, the Great Binder) is the next scene.
+- Concept paintings (village, inn, board) were generated against the OLD medieval
+  brief and must be regenerated against the v0.3 material language.
+- How loud is the industry? Leaning early-electric workshop (filament bulbs,
+  cloth wire, small motors) over pre-electric or full frontier-industrial.
+- Cosmetics: aging/patina is EARNED (recorded activity, same law as the
+  companion); dyes and nameplates likely free from the start.
