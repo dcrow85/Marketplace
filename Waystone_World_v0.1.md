@@ -359,6 +359,30 @@ a megalith they do not fully understand. Ancient object, contemporary listening
 — which is the truest possible picture of Cairn: a modern protocol carefully
 attached to something very old, human trust.
 
+### Purpose before decoration (enforced)
+> **Every wire runs from a source to a load.** If you cannot say what a cable
+> connects, it is not drawn.
+
+Technology in this world is never texture. One shared solar array on one rack,
+all panels angled alike, feeding one power shed; one tidy conduit branching to
+the dwellings; a meter by each door because power is accounted for; work-lights
+only where work happens; sensors on the stone running through ONE armoured
+cable to ONE logger. A dwelling carries only what an off-grid dwelling needs:
+stovepipe, covered porch, a window at the workbench, a meter, a gutter into a
+rain barrel, stacked fuel.
+
+**Fresh milled timber is pale; weathered timber is silver.** Age reads in the
+wood itself — the patina law, written into the architecture.
+
+**A plot's stage is legible from the lane:** surveyed (stakes and string) ->
+pad poured -> milled lumber stacked and covered -> framed -> built. The build
+loop, rendered as landscape.
+
+**The dwelling is a SCHEMA, and that is the proof of the render pipeline:**
+every element of a house is a nameable field (roof, porch, stove, bench window,
+meter, water, fuel, array). A house record renders to an image; changing one
+field re-renders only that part.
+
 ### Residents build their own plots (the generative layer)
 The AI-anxiety knot, untied: **art direction is authored; personal expression is
 the resident's.** The world's palette, material language, building grammar and
