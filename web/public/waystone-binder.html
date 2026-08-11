@@ -180,31 +180,55 @@
   .seekin:focus { outline: none; box-shadow: inset 0 1px 4px rgba(90, 70, 40, .35), 0 0 0 2px rgba(244, 205, 130, .3); }
   .seekin::placeholder { color: #8a785a; }
 
-  .lens { position: fixed; inset: 0; z-index: 30; display: none; place-items: center; }
+  .lens { position: fixed; inset: 0; z-index: 30; display: none; place-items: center; overflow-y: auto; padding: 3vh 14px; }
   body.regarding .lens { display: grid; }
-  .lens .card { width: min(34vh, 78vw); border-radius: 10px; cursor: pointer;
+  .duo { display: grid; grid-template-columns: auto minmax(280px, 430px); gap: clamp(16px, 3vw, 34px); align-items: center; max-width: 96vw; }
+  .cardcol { text-align: center; }
+  .lens .card { width: min(38vh, 76vw); border-radius: 10px; cursor: pointer; display: block; margin: 0 auto;
     box-shadow: 0 30px 90px rgba(0, 0, 0, .75), 0 0 60px rgba(244, 205, 130, .35), 0 0 140px rgba(232, 180, 90, .15);
     filter: saturate(1.14) brightness(1.05); animation: bloom .45s cubic-bezier(.22, .9, .3, 1); }
-  .lens .card.landscape { width: min(52vh, 88vw); }
-  @keyframes bloom { from { transform: scale(.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  .facts { margin: 14px auto 0; text-align: center; max-width: min(560px, 88vw);
-    background: linear-gradient(180deg, rgba(24, 18, 10, .82), rgba(24, 18, 10, .66));
-    border: 1px solid rgba(210, 170, 100, .22); border-radius: 10px; padding: 13px 18px 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(244, 205, 130, .1);
-    backdrop-filter: blur(3px); }
-  .facts h2 { font: 600 clamp(17px, 2.2vw, 23px)/1.25 "Spectral", serif; color: #efe6cc; margin: 0; }
-  .facts .ja { font: 500 12.5px "Spectral", serif; color: #a99c7d; margin-top: 2px; }
-  .facts .meta { font-size: 11.5px; color: #b3a687; margin-top: 8px; }
-  .facts .meta b { color: #e8b45a; font-weight: 500; }
-  .prints { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+  .lens .card.landscape { width: min(52vh, 86vw); }
+  @keyframes bloom { from { transform: scale(.72); opacity: .4; } to { transform: scale(1); opacity: 1; } }
+  .prints { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
   .print { font: 600 11px "IBM Plex Mono", monospace; cursor: pointer; padding: 5px 11px; border-radius: 6px;
     background: linear-gradient(174deg, #4a3a1c, #322411); color: #c9b98a; border: 1px solid rgba(210, 170, 100, .3);
     box-shadow: inset 0 1px 0 rgba(244, 205, 130, .12), 0 2px 4px rgba(0, 0, 0, .4); }
   .print:hover { filter: brightness(1.2); }
   .print.on { background: linear-gradient(174deg, #8a6f36, #64491d); color: #f7e7bd; border-color: rgba(244, 205, 130, .6);
     box-shadow: inset 0 1px 0 rgba(255, 230, 170, .4), 0 0 12px rgba(244, 205, 130, .35); }
-  .facts .flavor { font: italic 500 13px/1.5 "Spectral", serif; color: #8f8468; margin-top: 8px; }
-  .facts .honest { font-size: 10px; color: #6e6752; margin-top: 10px; letter-spacing: .05em; }
+
+  /* the dossier: a waxed dark plaque, written like a keeper's page */
+  .dossier { background: linear-gradient(180deg, rgba(26, 20, 11, .88), rgba(24, 18, 10, .78));
+    border: 1px solid rgba(210, 170, 100, .24); border-radius: 12px; padding: 18px 20px 16px;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(244, 205, 130, .1);
+    backdrop-filter: blur(4px); max-height: 82vh; overflow-y: auto; }
+  .dossier h2 { font: 600 clamp(17px, 2.1vw, 22px)/1.25 "Spectral", serif; color: #efe6cc; margin: 0; }
+  .dossier .ja { font: 500 13px "Spectral", serif; color: #a99c7d; margin-top: 3px; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+  .chip { font: 500 10.5px "IBM Plex Mono", monospace; color: #d8c49a; padding: 3px 9px; border-radius: 12px;
+    border: 1px solid rgba(210, 170, 100, .3); }
+  .chip.lucky { color: #f4cd82; border-color: rgba(244, 205, 130, .55); text-shadow: 0 0 6px rgba(244, 205, 130, .5); }
+  .sect { margin-top: 13px; padding-top: 11px; border-top: 1px dashed rgba(210, 170, 100, .18); }
+  .sect .sk { font: 600 9.5px "IBM Plex Mono", monospace; letter-spacing: .14em; color: #93876b; text-transform: uppercase; }
+  .kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(86px, 1fr)); gap: 7px; margin-top: 8px; }
+  .kv div { text-align: center; background: rgba(233, 220, 184, .05); border: 1px solid rgba(210, 170, 100, .14);
+    border-radius: 7px; padding: 6px 4px; }
+  .kv b { display: block; font: 600 14px "Spectral", serif; color: #e8c87e; }
+  .kv span { font-size: 9px; color: #93876b; letter-spacing: .06em; text-transform: uppercase; }
+  .rules { font: 500 12.5px/1.6 "IBM Plex Mono", monospace; color: #cfc3a4; margin-top: 8px; white-space: pre-wrap; }
+  .flavor { font: italic 500 13.5px/1.55 "Spectral", serif; color: #b3a072; margin-top: 8px; }
+  .srcline { font-size: 10.5px; color: #8a7c54; margin-top: 8px; }
+  .srcline a { color: #b8985a; }
+  .honest { font-size: 9.5px; color: #6e6752; margin-top: 10px; letter-spacing: .05em; line-height: 1.6; }
+  .lensx { position: absolute; top: 12px; right: 16px; z-index: 31; font: 500 13px "IBM Plex Mono", monospace;
+    background: none; border: 1px solid rgba(210, 170, 100, .3); color: #c9b98a; border-radius: 7px; padding: 6px 12px; cursor: pointer; }
+  .lensx:hover { filter: brightness(1.3); }
+  @media (max-width: 900px) {
+    .duo { grid-template-columns: 1fr; gap: 14px; }
+    .lens .card { width: min(30vh, 70vw); }
+    .dossier { max-height: none; }
+    .lens { place-items: start center; }
+  }
 
   .dock { display: flex; gap: 9px; justify-content: center; padding: 12px 0 max(12px, env(safe-area-inset-bottom)); z-index: 20; }
   .dock a, .dock span { position: relative; font: 500 12.5px "IBM Plex Mono", monospace; text-decoration: none;
@@ -310,15 +334,34 @@
 </div>
 
 <div class="lens" id="lens">
-  <div>
-    <img class="card" id="lensCard" src="" alt="">
-    <div class="facts">
+  <button class="lensx" id="lensx">&#10005; close</button>
+  <div class="duo">
+    <div class="cardcol">
+      <img class="card" id="lensCard" src="" alt="">
+      <div class="prints" id="fPrints"></div>
+    </div>
+    <div class="dossier" id="dossier">
       <h2 id="fName"></h2>
       <div class="ja" id="fJa"></div>
-      <div class="meta" id="fMeta"></div>
-      <div class="prints" id="fPrints"></div>
-      <div class="flavor" id="fFlavor"></div>
-      <div class="honest">catalogue reference — never proof of a seller&#8217;s physical copy · imagery courtesy of Palify, with permission</div>
+      <div class="chips" id="fChips"></div>
+      <div class="sect" id="sPal" hidden>
+        <div class="sk">the pal, in the neighboring world</div>
+        <div class="kv" id="fPal"></div>
+      </div>
+      <div class="sect" id="sTable" hidden>
+        <div class="sk">at the table</div>
+        <div class="kv" id="fStats"></div>
+        <div class="rules" id="fRules"></div>
+      </div>
+      <div class="sect" id="sWords" hidden>
+        <div class="sk">the words it carries</div>
+        <div class="flavor" id="fFlavor"></div>
+      </div>
+      <div class="sect">
+        <div class="sk">the record</div>
+        <div class="srcline" id="fSrc"></div>
+        <div class="honest">catalogue reference — never proof of a seller&#8217;s physical copy · imagery courtesy of Palify, with permission · Waystone is a fan work, not affiliated with Pocketpair, Inc.</div>
+      </div>
     </div>
   </div>
 </div>
@@ -500,23 +543,60 @@ function famOf(c) {
     || (a.printing_code || '').localeCompare(b.printing_code || ''))
 }
 
+const pdict = (v) => (v && typeof v === 'object') ? v
+  : (() => { const o = {}; for (const m of String(v || '').matchAll(/'([\w ]+)':\s*'([^']*)'/g)) o[m[1]] = m[2]; return o })()
+const plist = (v) => Array.isArray(v) ? v : [...String(v || '').matchAll(/'([^']+)'/g)].map((m) => m[1])
+
 function showPrinting(c) {
   const img = $('lensCard')
   const place = () => {
     img.src = c.image; img.alt = c.name_en
     img.className = 'card' + (c.landscape === 'True' ? ' landscape' : '')
   }
-  if (img.src) { // swap only when decoded — the regard never flashes either
+  if (img.getAttribute('src')) {
     const pre = new Image(); pre.src = c.image
     if (pre.decode) pre.decode().then(place).catch(place); else { pre.onload = place; pre.onerror = place }
   } else place()
+
   $('fName').textContent = c.name_en
-  $('fJa').textContent = c.name_ja !== c.name_en ? (c.name_ja || '') : ''
+  $('fJa').textContent = c.name_ja && c.name_ja !== c.name_en ? c.name_ja + ' — the same title, in the other tongue' : ''
+
+  // chips: identity at a glance
+  const chips = $('fChips'); chips.innerHTML = ''
   const fam = famOf(c)
-  $('fMeta').innerHTML = '<b>' + (c.printing_code || '') + '</b> · ' + (c.rarity || '') + ' · ' + (c.category || '')
-    + (fam.length > 1 ? ' · one of <b>' + fam.length + '</b> printings' : ' · the only printing')
-  const pr = $('fPrints')
-  pr.innerHTML = ''
+  const add = (t, cls) => { const x = document.createElement('span'); x.className = 'chip' + (cls ? ' ' + cls : ''); x.textContent = t; chips.appendChild(x) }
+  add(c.printing_code || ''); add(c.rarity || ''); add(c.category || '')
+  if (c.color && c.color !== 'Colorless') add({ Red: 'flame', Blue: 'tide', Green: 'grove', Purple: 'gloam' }[c.color] || c.color)
+  for (const t of plist(c.subtypes)) add(t, t === 'Lucky' ? 'lucky' : '')
+  if (fam.length > 1) add('one of ' + fam.length + ' printings')
+
+  // the Pal, in the neighboring world
+  const g = pdict(c.game)
+  const pal = $('fPal'); pal.innerHTML = ''
+  const kv = (host, v, k) => { if (!v) return; const d = document.createElement('div'); d.innerHTML = '<b>' + v + '</b><span>' + k + '</span>'; host.appendChild(d) }
+  kv(pal, g.paldex, 'paldex no.')
+  kv(pal, g.element, 'element')
+  kv(pal, g.size, 'size')
+  kv(pal, c.work_suitability, 'work')
+  $('sPal').hidden = !pal.children.length
+
+  // at the table
+  const st = $('fStats'); st.innerHTML = ''
+  kv(st, c.cost, 'cost'); kv(st, c.power, 'power'); kv(st, c.strike, 'strike'); kv(st, c.durability !== 'None' ? c.durability : '', 'durability')
+  $('fRules').textContent = c.effect || ''
+  $('sTable').hidden = !st.children.length && !c.effect
+
+  // the words
+  $('fFlavor').textContent = c.flavor_text || ''
+  $('sWords').hidden = !c.flavor_text
+
+  // the record
+  $('fSrc').innerHTML = c.source_page_url
+    ? 'kept from the <a href="' + c.source_page_url + '" target="_blank" rel="noreferrer">Palify record</a> of this printing'
+    : 'kept from the Palify catalogue record'
+
+  // the printings, as seals
+  const pr = $('fPrints'); pr.innerHTML = ''
   if (fam.length > 1) {
     for (const m of fam) {
       const b = document.createElement('button')
@@ -527,7 +607,6 @@ function showPrinting(c) {
       pr.appendChild(b)
     }
   }
-  $('fFlavor').textContent = c.flavor_text || ''
 }
 
 function regard(c) {
@@ -536,7 +615,10 @@ function regard(c) {
   document.body.classList.add('regarding')
 }
 const unregard = () => document.body.classList.remove('regarding')
-$('lens').addEventListener('click', unregard)
+$('lens').addEventListener('click', (e) => { if (e.target === $('lens') || e.target.closest('.cardcol') === null && !e.target.closest('.dossier')) unregard() })
+$('dossier').addEventListener('click', (e) => e.stopPropagation())
+$('lensCard').addEventListener('click', unregard)
+$('lensx').addEventListener('click', unregard)
 
 matchMedia('(max-width: 760px)').addEventListener('change', (m) => { isNarrow = m.matches; spread = 0; CELLS = null; render() })
 </script>
