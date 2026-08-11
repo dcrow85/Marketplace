@@ -423,6 +423,16 @@ look like itself, which is exactly where this pipeline fails and where a human
 artist is irreplaceable.
 
 > **Presence is silhouette and carried light. You never see them clearly.**
+> **Scale is told by NATURE, never by architecture.**
+
+The whole town is designed at cat scale, and the only way that reads is by what
+grows around it: fern fronds arch higher than the rooflines, grass blades pass
+the eaves, a fallen pine cone outsizes a barrel, mushroom caps stand as tall as
+a doorway, dewdrops hang heavy. Build the buildings small and beautiful; let the
+forest establish how small. (Arrietty's trick.)
+
+Silhouettes are HARD — true black, strongly backlit, zero facial detail, read
+entirely by posture and shape.
 
 - **World scale:** small dark rounded shapes with a warm ember at the chest — in
   lit windows, on veranda rails, and as points of carried light moving along the
