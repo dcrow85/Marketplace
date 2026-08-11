@@ -424,7 +424,22 @@ where storybook needs to breathe. Corrected:
   creature, which also makes a 32-house village read varied for free.
   **CONSTANT:** rounded black body, tiny hands and feet, two glowing green dot
   eyes, green chest tally marks (the life force is universal).
-  **VARIABLE:** ears, tail, one silhouette feature — and species markings may
+  **WHY THE SIMPLE SHEET WORKS (studied, and now law):**
+  (1) the creature is SMALL IN FRAME with generous empty air around it;
+  (2) the black is PAINTED — brush texture and panel showing through, never a
+      flat vector fill;
+  (3) the face carries TWO GREEN DOTS AND NOTHING ELSE — adding a nose or muzzle
+      instantly turns a being into a cartoon animal;
+  (4) the silhouette is ONE UNBROKEN ROUNDED MASS — antlers, spikes, tufts and
+      oversized tails destroy it;
+  (5) chunky proportion discipline — same head-to-body ratio, same tiny hands
+      and feet, every time.
+  **They must read as ONE SPECIES WEARING DIFFERENT EARS, never as a bestiary.**
+  The first family grid failed exactly here: it redesigned heads per animal and
+  added muzzles.
+  Chest marks are a GATE TALLY (four strokes and a crossbar) — a real count, the
+  same one the stone keeps.
+  **VARIABLE:** ears, and optionally one small simple tail — and species markings may
   themselves carry green (the raccoon's ringed tail is striped green).
 - **THE CHARACTER: UPRIGHT AND HANDED.** It stands on two legs with small dexterous hands — a creature that cannot hold things cannot be a collector. (Sitting-animal posture is wrong.) Otherwise: CURLED
   SPIRAL FIDDLEHEAD EARS, one white eye dot, thin white outline. Black when
