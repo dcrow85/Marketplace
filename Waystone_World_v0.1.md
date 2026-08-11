@@ -411,7 +411,15 @@ where storybook needs to breathe. Corrected:
   MARKS set into the shoulder — the same count the stone keeps. More marks,
   longer here, more kept. Tenure readable on the body, as it is on the stone and
   in the moss.
-- **THE CHARACTER (locked): UPRIGHT AND HANDED.** It stands on two legs with small dexterous hands — a creature that cannot hold things cannot be a collector. (Sitting-animal posture is wrong.) Otherwise: CURLED
+- **SIMPLICITY RULE: the creature must read at 32 pixels as a simple shape.**
+  Detail is for close-ups only. Complexity crept in (ornate ear curls, white
+  outlines, a big glowing eye, chest tallies, posture) and had to be pulled back
+  toward the tiny sprite in the village painting: soft rounded body, two small
+  dot eyes, small ears, tiny hands. **Ear shape is the OPEN QUESTION** — round
+  ears are cutest but generic; flat side-spirals are ours but read as horns;
+  standing spiral curls are the most distinctive and want simplifying to one
+  plain loop.
+- **THE CHARACTER: UPRIGHT AND HANDED.** It stands on two legs with small dexterous hands — a creature that cannot hold things cannot be a collector. (Sitting-animal posture is wrong.) Otherwise: CURLED
   SPIRAL FIDDLEHEAD EARS, one white eye dot, thin white outline. Black when
   formed. The wisp is THE SAME SHAPE made of glowing green light — translucent,
   fraying into tendrils at the back, hovering over a ripple of light. Two states,
