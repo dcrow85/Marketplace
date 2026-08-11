@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waystone — every angle, at resolution</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box} html,body{margin:0;min-height:100%;background:#101112}
+  body{font:12.5px "IBM Plex Mono",monospace;color:#8a8578;display:grid;place-items:start center;padding:22px 12px 52px}
+  h1{font:italic 500 20px "Spectral",serif;color:#efe9dc;margin:0 0 4px;text-align:center}
+  .sub{text-align:center;opacity:.8;margin-bottom:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;max-width:1120px;width:100%}
+  figure{margin:0;background:#191a1b;border:1px solid rgba(231,228,221,.12);border-radius:10px;padding:10px}
+  img{width:100%;display:block;border-radius:6px}
+  figcaption{margin-top:8px;font:500 10.5px "IBM Plex Mono",monospace;color:#7fe07a;letter-spacing:.09em;text-transform:uppercase;text-align:center}
+</style></head><body>
+<h1>Every angle, at resolution</h1>
+<div class="sub">each pose cropped from the canon sheet and upscaled &mdash; nothing re-rendered, nothing drifted</div>
+<div class="grid" id="g"></div>
+<script>
+const P = [['front','standing'],['profile','in profile'],['sitting','sitting'],['walking','walking'],['holding','holding a card']];
+document.getElementById('g').innerHTML = P.map(([k,l]) =>
+  `<figure><img src="waystone-art/hi/${k}.png" alt="${l}"
+     onerror="if((this.dataset.r|0)<6){this.dataset.r=(this.dataset.r|0)+1;const s=this.src.split('?')[0];setTimeout(()=>{this.src=s+'?r='+this.dataset.r},600*this.dataset.r)}">
+   <figcaption>${l}</figcaption></figure>`).join('');
+</script>
+</body></html>
