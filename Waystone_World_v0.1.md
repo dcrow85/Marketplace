@@ -338,6 +338,13 @@ Neither pretends to be the other; the resident chooses. Real collectors do both.
 Start with ONE village of 32. Federation is designed-for, not built-yet.
 
 
+## THE HERO FRAME (the canonical composition)
+Low horizon; the volcano centred and distant with green in its crater; rolling
+hand-hatched pale hills; flat black sky; and ONE creature in the foreground on a
+dark rise, rendered carefully as the clear subject — green eye, shoulder tally,
+curled ears, thin white outline, a faint green pool beneath. The world is vast
+behind; the creature is the hero. This is the composition to return to.
+
 ## v0.7 — THE VISUAL LANGUAGE (current): painted panel, foxfire green
 
 Engraving (v0.6, below) was beautiful but TOO BUSY — every square inch worked,
@@ -377,7 +384,13 @@ where storybook needs to breathe. Corrected:
   volcanic stone spiralling inward like a fern frond or a snail shell (the shape
   their own ears make), roofed over the coils with salvaged sheet and fern
   thatch, entered at the open mouth.
-  - **Sited on a vein.** Green surfaces in a crack; the dwelling is built around
+  - **CORRECTED: the coil DESCENDS and has NO ROOF.** A stone wall plus a
+    separate roof was two shelters stacked — indecision. A dwelling is a spiral
+    BURROW: stone-lined, winding down toward the vein, with worn steps following
+    the turns, OPEN AT THE TOP so the green light rises straight out in a soft
+    column. No roof is needed below the wind, and at night the plain is a field
+    of quiet green shafts — a village visible from far off by its breathing.
+  - **Sited on a vein.** Green surfaces in a crack; the dwelling is dug around
     it. They did not build a hearth, they FOUND one — and that is why each house
     is where it is. The lit heart is the innermost point, which is also where an
     archive belongs: mouth public, core private, depth literal.
