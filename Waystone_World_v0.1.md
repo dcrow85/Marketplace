@@ -394,6 +394,12 @@ where storybook needs to breathe. Corrected:
     it. They did not build a hearth, they FOUND one — and that is why each house
     is where it is. The lit heart is the innermost point, which is also where an
     archive belongs: mouth public, core private, depth literal.
+  - **A burrow is a HOME, and it is FULL.** Shelves are built into every turn of
+    the coil: cards standing upright in sleeves, archive boxes, jars of kept
+    treasures, tools on pegs, a rolled sleeping mat in a niche, a low work table.
+    The vein blooms green out of the floor at the bottom and lights the whole
+    spiral from below. These are collectors — their homes must read as lived in
+    and full of kept things, never as empty structures.
   - **You add a coil.** A house grows by one more turn as its keeper stays and
     accumulates — the append-only law as architecture. A newcomer has a single
     tight curl; an elder has many wide coils. **Tenure is readable from above**,
@@ -405,7 +411,7 @@ where storybook needs to breathe. Corrected:
   MARKS set into the shoulder — the same count the stone keeps. More marks,
   longer here, more kept. Tenure readable on the body, as it is on the stone and
   in the moss.
-- **THE CHARACTER (locked):** a small rounded creature, sitting posture, CURLED
+- **THE CHARACTER (locked): UPRIGHT AND HANDED.** It stands on two legs with small dexterous hands — a creature that cannot hold things cannot be a collector. (Sitting-animal posture is wrong.) Otherwise: CURLED
   SPIRAL FIDDLEHEAD EARS, one white eye dot, thin white outline. Black when
   formed. The wisp is THE SAME SHAPE made of glowing green light — translucent,
   fraying into tendrils at the back, hovering over a ripple of light. Two states,
