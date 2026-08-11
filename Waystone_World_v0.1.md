@@ -366,6 +366,16 @@ where storybook needs to breathe. Corrected:
   green one goes dark and gains ears. This also explains the village at night —
   moving lights on the lane are wisps; still silhouettes in windows are
   residents. Two-tone palette, two states of being, one rule.
+- **THE SOURCE (ratified): the volcano.** All green light in this world comes
+  from it. Glowing VEINS branch out underground from the crater and run beneath
+  the plain as seams of light. The waystone sits on a vein — that is what its
+  conduit taps (not a battery). The village lights its windows from the same
+  flow. And the beings carry it inside them. One source, from crater to cabin to
+  living body.
+- **Residents are lit from within:** a GLOWING GREEN EYE, and a few GREEN TALLY
+  MARKS set into the shoulder — the same count the stone keeps. More marks,
+  longer here, more kept. Tenure readable on the body, as it is on the stone and
+  in the moss.
 - **THE CHARACTER (locked):** a small rounded creature, sitting posture, CURLED
   SPIRAL FIDDLEHEAD EARS, one white eye dot, thin white outline. Black when
   formed. The wisp is THE SAME SHAPE made of glowing green light — translucent,
