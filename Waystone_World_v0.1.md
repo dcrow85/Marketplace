@@ -416,9 +416,16 @@ where storybook needs to breathe. Corrected:
   outlines, a big glowing eye, chest tallies, posture) and had to be pulled back
   toward the tiny sprite in the village painting: soft rounded body, two small
   dot eyes, small ears, tiny hands. **Ear shape is the OPEN QUESTION** — round
-  ears are cutest but generic; flat side-spirals are ours but read as horns;
-  standing spiral curls are the most distinctive and want simplifying to one
-  plain loop.
+  ROUND EARS CHOSEN (Crowley: "the right edge of simplicity and expressiveness").
+- **THE SPECIES IS A FAMILY, and the family is the identity.** One creature with
+  round ears is generic; a whole forest range in one design language is a
+  signature — bear, rabbit, fox, raccoon, deer, owl, squirrel, mouse, hedgehog,
+  badger, lynx, moth, otter and so on. Every collector's companion is a different
+  creature, which also makes a 32-house village read varied for free.
+  **CONSTANT:** rounded black body, tiny hands and feet, two glowing green dot
+  eyes, green chest tally marks (the life force is universal).
+  **VARIABLE:** ears, tail, one silhouette feature — and species markings may
+  themselves carry green (the raccoon's ringed tail is striped green).
 - **THE CHARACTER: UPRIGHT AND HANDED.** It stands on two legs with small dexterous hands — a creature that cannot hold things cannot be a collector. (Sitting-animal posture is wrong.) Otherwise: CURLED
   SPIRAL FIDDLEHEAD EARS, one white eye dot, thin white outline. Black when
   formed. The wisp is THE SAME SHAPE made of glowing green light — translucent,
