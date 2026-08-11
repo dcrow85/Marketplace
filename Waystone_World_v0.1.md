@@ -366,6 +366,17 @@ where storybook needs to breathe. Corrected:
   green one goes dark and gains ears. This also explains the village at night —
   moving lights on the lane are wisps; still silhouettes in windows are
   residents. Two-tone palette, two states of being, one rule.
+- **THE CHARACTER (locked):** a small rounded creature, sitting posture, CURLED
+  SPIRAL FIDDLEHEAD EARS, one white eye dot, thin white outline. Black when
+  formed. The wisp is THE SAME SHAPE made of glowing green light — translucent,
+  fraying into tendrils at the back, hovering over a ripple of light. Two states,
+  one design; the transformation is self-evident.
+- **Hand over vector.** Visible brush and pen irregularity, slight wobble in the
+  line. Loose and illustrative — the storybook character lives in the imperfection.
+  (The crisp flat-vector renders lost it.)
+- **Scale is told by LANDSCAPE, not by giant flora.** Volcanoes, ridges, far
+  shores, still water — vast hand-hatched country with the settlement tiny inside
+  it. Repeated giant ferns and pine cones became wallpaper; the world should vary.
 - **The village wears what the stone wears.** The same precise instrumentation
   carries through every building, sparingly: a slim white band, one small
   instrument box with a green readout beside a door, one clipped cable per house
